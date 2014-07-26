@@ -1,0 +1,509 @@
+/* 
+  Localizable.strings
+  SmartReceipts
+
+  Created on 23/04/14.
+  Copyright (c) 2014 Will Baumann. All rights reserved.
+*/
+
+/* No comment provided by engineer. */
+"<Category>" = "<Kategoria>";
+
+/* No comment provided by engineer. */
+"Add" = "Dodaj";
+
+/* No comment provided by engineer. */
+"Add distance" = "Dodaj dystans";
+
+/* No comment provided by engineer. */
+"Airfare" = "Przelot";
+
+/* No comment provided by engineer. */
+"AIRP" = "AIRP";
+
+/* No comment provided by engineer. */
+"Attach Image" = "Dołącz Obrazek";
+
+/* No comment provided by engineer. */
+"Attach PDF" = "Dołącz PDF";
+
+/* No comment provided by engineer. */
+"Backup" = "Kopia zapasowa";
+
+/* No comment provided by engineer. */
+"Blank Column" = "Pusta Kolumna";
+
+/* No comment provided by engineer. */
+"Books/Periodicals" = "Książki/Czasopisma";
+
+/* No comment provided by engineer. */
+"Breakfast" = "Śniadanie";
+
+/* No comment provided by engineer. */
+"BRFT" = "BRFT";
+
+/* No comment provided by engineer. */
+"Camera is not available." = "Kamera nie jest dostępna.";
+
+/* No comment provided by engineer. */
+"Cancel" = "Anuluj";
+
+/* No comment provided by engineer. */
+"Cannot add this category" = "Nie można dodać tej kategorii";
+
+/* No comment provided by engineer. */
+"Cannot add this receipt" = "Nie można dodać tego paragonu";
+
+/* No comment provided by engineer. */
+"Cannot add this trip" = "Nie można dodać tego raportu";
+
+/* No comment provided by engineer. */
+"Cannot edit this category" = "Nie można zedytować tej kategorii";
+
+/* No comment provided by engineer. */
+"Cannot save this receipt" = "Nie można zapisać tego paragonu";
+
+/* No comment provided by engineer. */
+"Cannot save this trip" = "Nie można zapisać tego raportu";
+
+/* No comment provided by engineer. */
+"Car Rental" = "Wynajem samochodu";
+
+/* No comment provided by engineer. */
+"Categories" = "Kategorie";
+
+/* No comment provided by engineer. */
+"Category" = "Kategoria";
+
+/* No comment provided by engineer. */
+"Category Code" = "Kod Kategorii";
+
+/* No comment provided by engineer. */
+"Category Name" = "Nazwa Kategorii";
+
+/* No comment provided by engineer. */
+"Cell Phone" = "Tel. Komórkowy";
+
+/* Column prefix used while ordering */
+"Col." = "Kol.";
+
+/* No comment provided by engineer. */
+"Columns" = "Kolumny";
+
+/* No comment provided by engineer. */
+"Comment" = "Komentarz";
+
+/* No comment provided by engineer. */
+"Configure CSV" = "Konfiguracja CSV";
+
+/* No comment provided by engineer. */
+"Configure CSV Columns" = "Konfiguruj kolumny CSV";
+
+/* No comment provided by engineer. */
+"Configure PDF" = "Konfiguracja PDF";
+
+/* No comment provided by engineer. */
+"Configure PDF Columns" = "Konfiguruj kolumny PDF";
+
+/* No comment provided by engineer. */
+"Copy" = "Kopiuj";
+
+/* No comment provided by engineer. */
+"Copy to" = "Kopiuj do";
+
+/* No comment provided by engineer. */
+"Couldn't generate selected reports" = "Nie udało się wygenerować wybranych raportów";
+
+/* No comment provided by engineer. */
+"CSV File" = "Plik CSV";
+
+/* No comment provided by engineer. */
+"Currencies" = "Waluty";
+
+/* No comment provided by engineer. */
+"Currency" = "Waluta";
+
+/* No comment provided by engineer. */
+"Customize CSV Output" = "Dostosuj Wyjście CSV";
+
+/* No comment provided by engineer. */
+"Customize PDF Output" = "Dostosuj Wyjście PDF";
+
+/* No comment provided by engineer. */
+"Date" = "Data";
+
+/* No comment provided by engineer. */
+"Date Separator" = "Separator Daty";
+
+/* No comment provided by engineer. */
+"Default" = "Domyślne";
+
+/* No comment provided by engineer. */
+"Default Currency" = "Domyślna Waluta";
+
+/* No comment provided by engineer. */
+"Default Email Recipient" = "Domyślny Odbiorca Email";
+
+/* No comment provided by engineer. */
+"Default Receipt Date to Report Start Date" = "Domyślna Data Startu Raportu jako Data Paragonu";
+
+/* No comment provided by engineer. */
+"Default Trip Length (Days)" = "Domyślna długość raportu (Dni)";
+
+/* No comment provided by engineer. */
+"DINN" = "DINN";
+
+/* No comment provided by engineer. */
+"Dinner" = "Obiad";
+
+/* No comment provided by engineer. */
+"Dues/Subscriptions" = "Składki/Subskrypcje";
+
+/* No comment provided by engineer. */
+"e.g. 25.00" = "np. 25.00";
+
+/* No comment provided by engineer. */
+"Edit Receipt" = "Edytuj Paragon";
+
+/* No comment provided by engineer. */
+"Edit Trip" = "Edytuj Raport";
+
+/* No comment provided by engineer. */
+"Enable AutoComplete Suggestions" = "Włącz AutoUzupełnianie";
+
+/* No comment provided by engineer. */
+"End Date" = "Data Końcowa";
+
+/* No comment provided by engineer. */
+"ENT" = "ENT";
+
+/* No comment provided by engineer. */
+"Entertainment" = "Rozrywka";
+
+/* No comment provided by engineer. */
+"Error" = "Error";
+
+/* No comment provided by engineer. */
+"Expensable" = "Wliczane w Wydatki";
+
+/* No comment provided by engineer. */
+"Export" = "Eksport";
+
+/* No comment provided by engineer. */
+"Export your receipts?" = "Eksportować paragony?";
+
+/* No comment provided by engineer. */
+"Exporting ..." = "Eksportuję ...";
+
+/* No comment provided by engineer. */
+"Failed to properly export your data." = "Nie udało się poprawnie wyeksportować danych.";
+
+/* No comment provided by engineer. */
+"Failed to recognize the file as importable." = "Nie rozpoznano pliku jako importowalny.";
+
+/* No comment provided by engineer. */
+"Full Page Image" = "Obraz na całą stronę";
+
+/* No comment provided by engineer. */
+"Full PDF Report" = "Pełny Raport PDF";
+
+/* No comment provided by engineer. */
+"GAS" = "GAS";
+
+/* No comment provided by engineer. */
+"Gasoline" = "Benzyna";
+
+/* No comment provided by engineer. */
+"General" = "Ogólne";
+
+/* No comment provided by engineer. */
+"Generate Report" = "Generuj Raport";
+
+/* No comment provided by engineer. */
+"Generating ..." = "Generuję ...";
+
+/* No comment provided by engineer. */
+"GIFT" = "GIFT";
+
+/* No comment provided by engineer. */
+"Gift" = "Prezent";
+
+/* No comment provided by engineer. */
+"Hotel" = "Hotel";
+
+/* No comment provided by engineer. */
+"HTL" = "HTL";
+
+/* No comment provided by engineer. */
+"Image Name" = "Nazwa Obrazu";
+
+/* No comment provided by engineer. */
+"Image Path" = "Scieżka Obrazu";
+
+/* No comment provided by engineer. */
+"Import" = "Import";
+
+/* No comment provided by engineer. */
+"Importing ..." = "Importuję ...";
+
+/* No comment provided by engineer. */
+"Include Header Columns" = "Dołącz Kolumy Nagłówkowe";
+
+/* No comment provided by engineer. */
+"Include Tax Field For Receipts" = "Dodaj Pole Podatku dla Paragonów";
+
+/* No comment provided by engineer. */
+"LAUN" = "LAUN";
+
+/* No comment provided by engineer. */
+"Laundry" = "Pranie";
+
+/* No comment provided by engineer. */
+"LNCH" = "LNCH";
+
+/* No comment provided by engineer. */
+"Lunch" = "Lunch";
+
+/* No comment provided by engineer. */
+"Make Backup" = "Zrób Kopię Zapasową";
+
+/* No comment provided by engineer. */
+"Manage Categories" = "Zarządzaj Kategoriami";
+
+/* No comment provided by engineer. */
+"Match Comments to Categories" = "Dopasuj Komentarze do Kategorii";
+
+/* No comment provided by engineer. */
+"Match Name to Categories" = "Dopasuj Nazwę do Kategorii";
+
+/* No comment provided by engineer. */
+"Max. Camera Height / Width" = "Max. Wysokość / Szerokość Kamery";
+
+/* No comment provided by engineer. */
+"Meals (Justified)" = "Dania";
+
+/* No comment provided by engineer. */
+"Min. Receipt Price to Report" = "Min. Cena do Raportu";
+
+/* No comment provided by engineer. */
+"MISC" = "MISC";
+
+/* No comment provided by engineer. */
+"Move" = "Przenieś";
+
+/* No comment provided by engineer. */
+"Move to" = "Przenieś do";
+
+/* No comment provided by engineer. */
+"Name" = "Nazwa";
+
+/* No comment provided by engineer. */
+"Name of your receipt" = "Nazwa twojego paragonu";
+
+/* No comment provided by engineer. */
+"New Receipt" = "Nowy Paragon";
+
+/* No comment provided by engineer. */
+"New Trip" = "Nowy Raport";
+
+/* No comment provided by engineer. */
+"No" = "Nie";
+
+/* No comment provided by engineer. */
+"No camera" = "Brak kamery";
+
+/* No comment provided by engineer. */
+"No report selected" = "Nie wybrano raportu";
+
+/* No comment provided by engineer. */
+"No reports selected" = "Nie wybrano raportów";
+
+/* No comment provided by engineer. */
+"NUL" = "NUL";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Only Report Expensable Receipts" = "Raportuj tylko \"Wliczane w wydatki\"";
+
+/* No comment provided by engineer. */
+"Other" = "Inne";
+
+/* No comment provided by engineer. */
+"Overwrite Existing Data?" = "Nadpisać istniejące dane?";
+
+/* No comment provided by engineer. */
+"PARK" = "PARK";
+
+/* No comment provided by engineer. */
+"Parking/Tolls" = "Parkowanie/Opłaty";
+
+/* No comment provided by engineer. */
+"PDF Report - No Table" = "Raport PDF - Bez Tabeli";
+
+/* No comment provided by engineer. */
+"Pictured" = "Ze zdjęciem";
+
+/* No comment provided by engineer. */
+"Pixels" = "Piksele";
+
+/* No comment provided by engineer. */
+"Please enter a name" = "Proszę wprowadzić nazwę";
+
+/* No comment provided by engineer. */
+"POST" = "POST";
+
+/* No comment provided by engineer. */
+"Postage/Shipping" = "Poczta/Dostawy";
+
+/* No comment provided by engineer. */
+"Predict Receipt Categories" = "Predykcja Kategorii Paragonu";
+
+/* No comment provided by engineer. */
+"Price" = "Cena";
+
+/* No comment provided by engineer. */
+"RCAR" = "RCAR";
+
+/* No comment provided by engineer. */
+"Receipt Index" = "Indeks Paragonu";
+
+/* No comment provided by engineer. */
+"Replace Image" = "Zastąp Obraz";
+
+/* No comment provided by engineer. */
+"Replace Image with PDF" = "Zastąp Obraz przez PDF";
+
+/* No comment provided by engineer. */
+"Replace PDF" = "Zastąp PDF";
+
+/* No comment provided by engineer. */
+"Replace PDF with Image" = "Zastąp PDF przez Obraz";
+
+/* No comment provided by engineer. */
+"report attached" = "raport załączony";
+
+/* No comment provided by engineer. */
+"Report End Date" = "Końcowa Data Raportu";
+
+/* No comment provided by engineer. */
+"Report Name" = "Nazwa Raportu";
+
+/* No comment provided by engineer. */
+"Report Start Date" = "Startowa Data Raportu";
+
+/* No comment provided by engineer. */
+"reports attached" = "raportów załączono";
+
+/* No comment provided by engineer. */
+"Retake Receipt Image" = "Zrób ponownie Zdjęcie Paragonu";
+
+/* No comment provided by engineer. */
+"Settings" = "Ustawienia";
+
+/* No comment provided by engineer. */
+"Smart Receipts" = "Smart Receipts";
+
+/* No comment provided by engineer. */
+"Start Date" = "Data Startowa";
+
+/* No comment provided by engineer. */
+"Stationery/Stations" = "Papeteria/Stanowiska";
+
+/* No comment provided by engineer. */
+"Successfully imported all files." = "Wszystkie pliki zaimportowano z sukcesem.";
+
+/* No comment provided by engineer. */
+"Swap Down" = "Przenieś w dół";
+
+/* No comment provided by engineer. */
+"Swap Up" = "Przenieś w górę";
+
+/* No comment provided by engineer. */
+"Take Receipt Image" = "Zrób Zdjęcie Paragonu";
+
+/* No comment provided by engineer. */
+"Tap on an existing receipt to add this Image to it" = "Nacisnij na istniejący paragon aby dodać do niego Obraz";
+
+/* No comment provided by engineer. */
+"Tap on an existing receipt to add this PDF to it" = "Nacisnij na istniejący paragon aby dodać do niego PDF";
+
+/* No comment provided by engineer. */
+"Tax" = "Podatek";
+
+/* No comment provided by engineer. */
+"TAXI" = "TAXI";
+
+/* No comment provided by engineer. */
+"Taxi/Bus" = "Taxi/Autobus";
+
+/* No comment provided by engineer. */
+"TELE" = "TELE";
+
+/* No comment provided by engineer. */
+"Telephone/Fax" = "Telefon/Fax";
+
+/* No comment provided by engineer. */
+"TIP" = "TIP";
+
+/* No comment provided by engineer. */
+"Tip" = "Napiwek";
+
+/* No comment provided by engineer. */
+"Total" = "Ogółem";
+
+/* No comment provided by engineer. */
+"Train" = "Pociąg";
+
+/* No comment provided by engineer. */
+"Training Fees" = "Opłaty Szkoleniowe";
+
+/* No comment provided by engineer. */
+"TRN" = "TRN";
+
+/* No comment provided by engineer. */
+"User ID" = "ID Użytkownika";
+
+/* No comment provided by engineer. */
+"View Receipt Image" = "Pokaż Zdjęcie Paragonu";
+
+/* No comment provided by engineer. */
+"View Receipt PDF" = "Pokaż PDF Paragonu";
+
+/* No comment provided by engineer. */
+"Yes" = "Tak";
+
+/* No comment provided by engineer. */
+"Yes - As PDF" = "Tak - Jako PDF";
+
+/* No comment provided by engineer. */
+"You can also disable autocomplete if you'd prefer" = "Jeżeli preferujesz możesz również wyłączyć autouzupełnianie";
+
+/* No comment provided by engineer. */
+"You can reimport your data by clicking on the SmartReceipts.SMR file, which is generated by clicking below." = "Możesz ponownie zaimportować swoje dane klikając na plik SmartReceipts.SMR, ktory zostanie wygenerowany po kliknięciu poniżej.";
+
+/* No comment provided by engineer. */
+"Your comments here" = "Twój komentarz tutaj";
+
+/* No comment provided by engineer. */
+"ZBKP" = "ZBKP";
+
+/* No comment provided by engineer. */
+"ZCEL" = "ZCEL";
+
+/* No comment provided by engineer. */
+"ZDUE" = "ZDUE";
+
+/* No comment provided by engineer. */
+"ZIP - Stamped JPGs" = "ZIP - Podpisane JPG";
+
+/* No comment provided by engineer. */
+"ZMEO" = "ZMEO";
+
+/* No comment provided by engineer. */
+"ZSTS" = "ZSTS";
+
+/* No comment provided by engineer. */
+"ZTRN" = "ZTRN";
+
