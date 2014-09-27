@@ -230,7 +230,7 @@ static NSString * const NO_DATA = @"null";
         
         trip = [[WBTrip alloc]
                 initWithName:dir
-                price:[oldTrip price]
+                price:[oldTrip price_as_string]
                 startDate:from
                 endDate:to
                 startTimeZone:startTimeZone

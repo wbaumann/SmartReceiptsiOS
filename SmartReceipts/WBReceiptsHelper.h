@@ -28,8 +28,8 @@
                       dateMs:(long long)dateMs
                 timeZoneName:(NSString*)timeZoneName
                      comment:(NSString*)comment
-                       price:(NSString*)price
-                         tax:(NSString*)tax
+                       price:(NSDecimalNumber*)price
+                         tax:(NSDecimalNumber*)tax
                 currencyCode:(NSString*)currencyCode
                 isExpensable:(BOOL)isExpensable
                   isFullPage:(BOOL)isFullPage
@@ -43,8 +43,8 @@
                    category:(NSString*)category
                      dateMs:(long long)dateMs
                     comment:(NSString*)comment
-                      price:(NSString*)price
-                        tax:(NSString*)tax
+                      price:(NSDecimalNumber*)price
+                        tax:(NSDecimalNumber*)tax
                currencyCode:(NSString*)currencyCode
                isExpensable:(BOOL)isExpensable
                  isFullPage:(BOOL)isFullPage

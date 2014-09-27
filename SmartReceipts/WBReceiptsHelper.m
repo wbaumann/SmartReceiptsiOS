@@ -120,8 +120,8 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
                                    dateMs:[resultSet longLongIntForColumnIndex:dateIndex]
                              timeZoneName:[resultSet stringForColumnIndex:timeZoneIndex]
                                   comment:[resultSet stringForColumnIndex:commentIndex]
-                                    price:[resultSet stringForColumnIndex:priceIndex]
-                                      tax:[resultSet stringForColumnIndex:taxIndex]
+                                    price:[[NSDecimalNumber alloc] initWithDouble:[resultSet doubleForColumnIndex:priceIndex]]
+                                      tax:[[NSDecimalNumber alloc] initWithDouble:[resultSet doubleForColumnIndex:taxIndex]]
                              currencyCode:[resultSet stringForColumnIndex:currencyIndex]
                              isExpensable:[resultSet boolForColumnIndex:expenseableIndex]
                                isFullPage:![resultSet boolForColumnIndex:fullpageIndex]
@@ -157,8 +157,8 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
                                    dateMs:[resultSet longLongIntForColumn:COLUMN_DATE]
                              timeZoneName:[resultSet stringForColumn:COLUMN_TIMEZONE]
                                   comment:[resultSet stringForColumn:COLUMN_COMMENT]
-                                    price:[resultSet stringForColumn:COLUMN_PRICE]
-                                      tax:[resultSet stringForColumn:COLUMN_TAX]
+                                    price:[[NSDecimalNumber alloc] initWithDouble:[resultSet doubleForColumn:COLUMN_PRICE]]
+                                      tax:[[NSDecimalNumber alloc] initWithDouble:[resultSet doubleForColumn:COLUMN_TAX]]
                              currencyCode:[resultSet stringForColumn:COLUMN_ISO4217]
                              isExpensable:[resultSet boolForColumn:COLUMN_EXPENSEABLE]
                                isFullPage:![resultSet boolForColumn:COLUMN_NOTFULLPAGEIMAGE]
@@ -212,8 +212,8 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
                       dateMs:(long long)dateMs
                 timeZoneName:(NSString*)timeZoneName
                      comment:(NSString*)comment
-                       price:(NSString*)price
-                         tax:(NSString*)tax
+                       price:(NSDecimalNumber*)price
+                         tax:(NSDecimalNumber*)tax
                 currencyCode:(NSString*)currencyCode
                 isExpensable:(BOOL)isExpensable
                   isFullPage:(BOOL)isFullPage
@@ -269,12 +269,12 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     [qBuilder addColumn:COLUMN_NOTFULLPAGEIMAGE
              andBoolean:!isFullPage];
     
-    if ([price length] > 0) {
+    if (price != 0) {
         [qBuilder addColumn:COLUMN_PRICE
                   andObject:price];
     }
     
-    if ([tax length] > 0) {
+    if (tax != 0) {
         [qBuilder addColumn:COLUMN_TAX
                   andObject:tax];
     }
@@ -350,7 +350,7 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
                    category:(NSString*)category
                      dateMs:(long long)dateMs
                     comment:(NSString*)comment
-                      price:(NSString*)price
+                      price:(NSDecimalNumber*)price
                         tax:(NSString*)tax
                currencyCode:(NSString*)currencyCode
                isExpensable:(BOOL)isExpensable
@@ -386,11 +386,11 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     
     qPut(COLUMN_COMMENT, comment);
     
-    if ([price length] > 0) {
+    if (price != 0) {
         qPut(COLUMN_PRICE, price);
     }
     
-    if ([tax length] > 0) {
+    if (tax != 0) {
         qPut(COLUMN_TAX, tax);
     }
     

@@ -23,7 +23,8 @@ static NSString* checkNoData(NSString* str) {
 {
     int _id;
     NSString *_fileName;
-    NSString *_name, *_category, *_comment, *_price, *_tax;
+    NSString *_name, *_category, *_comment;
+    NSDecimalNumber *_price, *_tax;
     NSString *_extraEditText1, *_extraEditText2, *_extraEditText3;
     long long _dateMs;
     NSTimeZone *_timeZone;
@@ -42,8 +43,8 @@ static NSString* checkNoData(NSString* str) {
           dateMs:(long long)dateMs
     timeZoneName:(NSString*)timeZoneName
          comment:(NSString*)comment
-           price:(NSString*)price
-             tax:(NSString*)tax
+           price:(NSDecimalNumber*)price
+             tax:(NSDecimalNumber*)tax
     currencyCode:(NSString*)currencyCode
     isExpensable:(BOOL)isExpensable
       isFullPage:(BOOL)isFullPage
@@ -113,12 +114,14 @@ static NSString* checkNoData(NSString* str) {
     return _comment;
 }
 
--(NSString*)price {
-    return _price;
+-(NSString*)price_as_string {
+    NSString* price = [NSString stringWithFormat:@"%@", _price];
+    return price;
 }
 
--(NSString*)tax {
-    return _tax;
+-(NSString*)tax_as_string {
+    NSString* tax = [NSString stringWithFormat:@"%@", _tax];
+    return tax;
 }
 
 -(WBCurrency*)currency {

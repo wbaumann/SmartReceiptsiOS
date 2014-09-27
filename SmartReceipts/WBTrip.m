@@ -16,7 +16,7 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
 @implementation WBTrip
 {
     NSString* _reportDirectoryName;
-    NSString* _price;
+    NSDecimalNumber *_price;
     NSDate *_startDate, *_endDate;
     NSTimeZone *_startTimeZone, *_endTimeZone;
     WBCurrency *_currency;
@@ -32,7 +32,7 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
     self = [super init];
     if (self) {
         _reportDirectoryName = [dirName lastPathComponent];
-        _price = price;
+        _price = [[NSDecimalNumber alloc] initWithString:price];
         _startDate = startDate;
         _endDate = endDate;
         _startTimeZone = startTimeZone;
@@ -56,7 +56,7 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
     }
     
     self = [self initWithName:dirName
-                        price:price
+                        price:[[NSDecimalNumber alloc] initWithString:price]
                     startDate:[NSDate dateWithTimeIntervalSince1970:(startDateMs/1000)]
                       endDate:[NSDate dateWithTimeIntervalSince1970:(endDateMs/1000)]
                 startTimeZone:startTimeZone
@@ -97,8 +97,8 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
     return _miles;
 }
 
--(NSString*) price {
-    return _price;
+-(NSString*) price_as_string {
+    return [NSString stringWithFormat:@"%@", _price];
 }
 
 -(NSDate*) startDate {
@@ -129,7 +129,7 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
 }
 
 -(void) setPrice:(NSString*) price {
-    _price = price;
+    _price = [[NSDecimalNumber alloc] initWithString:price];
 }
 
 -(void) setCurrencyFromCode:(NSString*) currencyCode {

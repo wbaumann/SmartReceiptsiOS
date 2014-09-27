@@ -26,7 +26,7 @@
 -(NSString*) name;
 
 -(float) miles;
--(NSString*) price;
+-(NSString*) price_as_string;
 
 -(NSDate*) startDate;
 -(NSDate*) endDate;
