@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D33F3E219D8965800FE4EC4 /* GADConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33F3E119D8965800FE4EC4 /* GADConstants.m */; };
 		4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BB304190818E100D28CBF /* WBActionSheetPicker.m */; };
+		4DC6A9F119D7610900258DE3 /* GADMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC6A9F019D7610900258DE3 /* GADMasterViewController.m */; };
 		4DCAD096197E08A000CD5F23 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCAD094197E08A000CD5F23 /* libGoogleAdMobAds.a */; };
 		4DCAD097197E08A000CD5F23 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4DCAD095197E08A000CD5F23 /* README.txt */; };
-		4DF22944192867380008D359 /* GADMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF22943192867380008D359 /* GADMasterViewController.m */; };
 		4DF229461928678A0008D359 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF229451928678A0008D359 /* AdSupport.framework */; };
 		4DF22948192867940008D359 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF22947192867940008D359 /* AudioToolbox.framework */; };
 		4DF2294A1928679D0008D359 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF229491928679D0008D359 /* AVFoundation.framework */; };
@@ -143,6 +144,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D33F3E019D8964200FE4EC4 /* GADConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADConstants.h; sourceTree = "<group>"; };
+		4D33F3E119D8965800FE4EC4 /* GADConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADConstants.m; sourceTree = "<group>"; };
+		4DC6A9F019D7610900258DE3 /* GADMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADMasterViewController.m; sourceTree = "<group>"; };
+		4DC6A9F219D7666900258DE3 /* GADMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMasterViewController.h; sourceTree = "<group>"; };
 		4DCAD088197E08A000CD5F23 /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADAdMobExtras.h; path = Google/AdMob/GADAdMobExtras.h; sourceTree = "<group>"; };
 		4DCAD089197E08A000CD5F23 /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADAdNetworkExtras.h; path = Google/AdMob/GADAdNetworkExtras.h; sourceTree = "<group>"; };
 		4DCAD08A197E08A000CD5F23 /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADAdSize.h; path = Google/AdMob/GADAdSize.h; sourceTree = "<group>"; };
@@ -157,8 +162,6 @@
 		4DCAD093197E08A000CD5F23 /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADRequestError.h; path = Google/AdMob/GADRequestError.h; sourceTree = "<group>"; };
 		4DCAD094197E08A000CD5F23 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAdMobAds.a; path = Google/AdMob/libGoogleAdMobAds.a; sourceTree = "<group>"; };
 		4DCAD095197E08A000CD5F23 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = Google/AdMob/README.txt; sourceTree = "<group>"; };
-		4DF22942192867380008D359 /* GADMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADMasterViewController.h; path = "../../SmartReceiptsMaster-OLD/SmartReceipts/GADMasterViewController.h"; sourceTree = "<group>"; };
-		4DF22943192867380008D359 /* GADMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GADMasterViewController.m; path = "../../SmartReceiptsMaster-OLD/SmartReceipts/GADMasterViewController.m"; sourceTree = "<group>"; };
 		4DF229451928678A0008D359 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		4DF22947192867940008D359 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4DF229491928679D0008D359 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -434,8 +437,10 @@
 		4DF22941192867120008D359 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				4DF22942192867380008D359 /* GADMasterViewController.h */,
-				4DF22943192867380008D359 /* GADMasterViewController.m */,
+				4DC6A9F019D7610900258DE3 /* GADMasterViewController.m */,
+				4DC6A9F219D7666900258DE3 /* GADMasterViewController.h */,
+				4D33F3E019D8964200FE4EC4 /* GADConstants.h */,
+				4D33F3E119D8965800FE4EC4 /* GADConstants.m */,
 			);
 			name = Ads;
 			sourceTree = "<group>";
@@ -1076,6 +1081,7 @@
 				8478B77D18D395280041CBA3 /* WBNewReceiptViewController.m in Sources */,
 				845E33EC18D8AE24006A506A /* WBReceipt.m in Sources */,
 				84ABAD0218DB700000F8D3EB /* WBTripsHelper.m in Sources */,
+				4D33F3E219D8965800FE4EC4 /* GADConstants.m in Sources */,
 				84AA926218EEBBFB0096013D /* WBReportUtils.m in Sources */,
 				8467EFE618F6E0310076BE6E /* WBImageViewController.m in Sources */,
 				84AEE5CD18EB47AB005DB908 /* WBMoveCopyReceiptViewController.m in Sources */,
@@ -1088,6 +1094,7 @@
 				84AA925C18EEAF0C0096013D /* inftrees.c in Sources */,
 				84AA925D18EEAF0C0096013D /* trees.c in Sources */,
 				841BB308190837F100D28CBF /* WBNoTripsViewController.m in Sources */,
+				4DC6A9F119D7610900258DE3 /* GADMasterViewController.m in Sources */,
 				84AA0AD118E5F624008A85F9 /* WBFileManager.m in Sources */,
 				84553A5018D09D230009057B /* WBTripsViewController.m in Sources */,
 				84EA5C4C18F2E28A001BAA10 /* HTAutocompleteTextField.m in Sources */,
@@ -1124,7 +1131,6 @@
 				843F623F18EF9E78001ACBB1 /* HUD.m in Sources */,
 				843F620218EF4BB0001ACBB1 /* WBImageUtils.m in Sources */,
 				84ABACF918DB66FA00F8D3EB /* FMDatabaseQueue.m in Sources */,
-				4DF22944192867380008D359 /* GADMasterViewController.m in Sources */,
 				84AA925F18EEAF0C0096013D /* zutil.c in Sources */,
 				84AA925918EEAF0C0096013D /* infback.c in Sources */,
 				847C887218D7ACC600A33397 /* WBTableViewController.m in Sources */,
