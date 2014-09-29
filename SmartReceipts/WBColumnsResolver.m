@@ -55,7 +55,7 @@
         return [receipt name];
     } else if (opt(WBColumnNamePrice)) {
         if (isCsv) {
-            return [NSString stringWithFormat:@"%.2f",[[receipt price] doubleValue]];
+            return [receipt price_as_string];
         }
         return [receipt priceWithCurrencyFormatted];
     } else if (opt(WBColumnNameTax)) {

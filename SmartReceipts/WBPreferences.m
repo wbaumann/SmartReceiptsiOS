@@ -14,7 +14,7 @@
 
 #import "GDataXMLNode.h"
 
-static const float MIN_FLOAT = -FLT_MAX;
+//static NSDecimalNumber* const MIN_FLOAT = ;
 
 static NSString * const STRING_DEFAULT_EMAIL_TO = @"EmailTo";
 static NSString * const INT_DEFAULT_TRIP_DURATION = @"TripDuration";
@@ -92,7 +92,7 @@ static NSDictionary* getDefaultValues() {
     
     return @{
              INT_DEFAULT_TRIP_DURATION: @3,
-             FLOAT_MIN_RECEIPT_PRICE: [NSNumber numberWithFloat:(MIN_FLOAT)],
+             FLOAT_MIN_RECEIPT_PRICE: [NSDecimalNumber minimumDecimalNumber],
              STRING_DEFAULT_EMAIL_TO: @"",
              
              BOOL_PREDICT_CATEGORIES: @YES,
@@ -210,11 +210,11 @@ static NSUserDefaults* instance() {
     [instance() setInteger:defaultTripDuration forKey:INT_DEFAULT_TRIP_DURATION];
 }
 
-+(float) minimumReceiptPriceToIncludeInReports {
-    return [instance() floatForKey:FLOAT_MIN_RECEIPT_PRICE];
++(NSDecimalNumber*) minimumReceiptPriceToIncludeInReports {
+    return [NSDecimalNumber decimalNumberWithString:FLOAT_MIN_RECEIPT_PRICE];
 }
-+(void) setMinimumReceiptPriceToIncludeInReports:(float) minimumReceiptPriceToIncludeInReports {
-    [instance() setFloat:minimumReceiptPriceToIncludeInReports forKey:FLOAT_MIN_RECEIPT_PRICE];
++(void) setMinimumReceiptPriceToIncludeInReports:(NSDecimalNumber*) minimumReceiptPriceToIncludeInReports {
+    minimumReceiptPriceToIncludeInReports = [NSDecimalNumber decimalNumberWithString:FLOAT_MIN_RECEIPT_PRICE];
 }
 
 +(BOOL) defaultToFirstReportDate {
@@ -242,9 +242,9 @@ static NSUserDefaults* instance() {
     [instance() synchronize];
 }
 
-+(float) MIN_FLOAT {
-    return MIN_FLOAT;
-}
+//+(NSDecimalNumber*) MIN_FLOAT {
+//    return MIN_FLOAT;
+//}
 
 // for import / export
 
