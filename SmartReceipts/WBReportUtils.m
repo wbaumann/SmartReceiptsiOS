@@ -15,7 +15,7 @@
     if ([WBPreferences onlyIncludeExpensableReceiptsInReports] && ![receipt isExpensable]) {
         return true;
     }
-    else if ([receipt price_as_nsdecnum] < [WBPreferences minimumReceiptPriceToIncludeInReports]) {
+    else if ([receipt price_as_nsdecnum] < [[NSDecimalNumber alloc] initWithFloat:[WBPreferences minimumReceiptPriceToIncludeInReports]]) {
         return true;
     }
     else {

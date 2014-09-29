@@ -184,7 +184,7 @@ static WBSettingsViewController *visibleInstance = nil;
     
     NSString *priceStr = self.minimumReceiptPriceField.text;
     if ([priceStr length] > 0 && [priceStr length] < 4) {
-        [WBPreferences setMinimumReceiptPriceToIncludeInReports:[NSDecimalNumber decimalNumberWithString:priceStr]];
+        [WBPreferences setMinimumReceiptPriceToIncludeInReports:[priceStr floatValue]];
     } else if ([priceStr length] == 0) {
         [WBPreferences setMinimumReceiptPriceToIncludeInReports:[WBPreferences MIN_FLOAT]];
     }
