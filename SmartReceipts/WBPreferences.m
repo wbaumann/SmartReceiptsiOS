@@ -92,7 +92,7 @@ static NSDictionary* getDefaultValues() {
     
     return @{
              INT_DEFAULT_TRIP_DURATION: @3,
-             FLOAT_MIN_RECEIPT_PRICE: [NSDecimalNumber minimumDecimalNumber],
+             FLOAT_MIN_RECEIPT_PRICE: [NSNumber minimumDecimalNumber],
              STRING_DEFAULT_EMAIL_TO: @"",
              
              BOOL_PREDICT_CATEGORIES: @YES,
@@ -210,11 +210,11 @@ static NSUserDefaults* instance() {
     [instance() setInteger:defaultTripDuration forKey:INT_DEFAULT_TRIP_DURATION];
 }
 
-+(NSDecimalNumber*) minimumReceiptPriceToIncludeInReports {
-    return [NSDecimalNumber decimalNumberWithString:FLOAT_MIN_RECEIPT_PRICE];
++(float) minimumReceiptPriceToIncludeInReports {
+    return [instance() floatForKey:FLOAT_MIN_RECEIPT_PRICE];
 }
-+(void) setMinimumReceiptPriceToIncludeInReports:(NSDecimalNumber*) minimumReceiptPriceToIncludeInReports {
-    minimumReceiptPriceToIncludeInReports = [NSDecimalNumber decimalNumberWithString:FLOAT_MIN_RECEIPT_PRICE];
++(void) setMinimumReceiptPriceToIncludeInReports:(float) minimumReceiptPriceToIncludeInReports {
+    [instance() setFloat:minimumReceiptPriceToIncludeInReports forKey:FLOAT_MIN_RECEIPT_PRICE];
 }
 
 +(BOOL) defaultToFirstReportDate {
