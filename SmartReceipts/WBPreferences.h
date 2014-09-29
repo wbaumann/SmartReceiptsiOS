@@ -43,8 +43,8 @@
 +(int) defaultTripDuration;
 +(void) setDefaultTripDuration:(int) defaultTripDuration;
 
-+(NSDecimalNumber*) minimumReceiptPriceToIncludeInReports;
-+(void) setMinimumReceiptPriceToIncludeInReports:(NSDecimalNumber*) minimumReceiptPriceToIncludeInReports;
++(float) minimumReceiptPriceToIncludeInReports;
++(void) setMinimumReceiptPriceToIncludeInReports:(float) minimumReceiptPriceToIncludeInReports;
 
 +(BOOL) defaultToFirstReportDate;
 +(void) setDefaultToFirstReportDate:(BOOL) defaultToFirstReportDate;
@@ -57,7 +57,7 @@
 
 +(void) save;
 
-+(NSDecimalNumber*) MIN_FLOAT;
++(float) MIN_FLOAT;
 
 +(void) setFromXmlString:(NSString*) xmlString;
 +(NSString*) xmlString;

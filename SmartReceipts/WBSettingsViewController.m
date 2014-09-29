@@ -123,7 +123,7 @@ static WBSettingsViewController *visibleInstance = nil;
     
 #warning REVIEW: taking MIN_FLOAT is risky because they are not guaranted to have the same representation
     
-    NSDecimalNumber* price = [WBPreferences minimumReceiptPriceToIncludeInReports];
+    float price = [WBPreferences minimumReceiptPriceToIncludeInReports];
     NSDecimalNumber* minPrice = [[NSDecimalNumber alloc] initWithFloat:-MAXFLOAT/4.0]; // we have to make significant change because it's long float and have little precision
     if (price < minPrice) {
         self.minimumReceiptPriceField.text = @"";
