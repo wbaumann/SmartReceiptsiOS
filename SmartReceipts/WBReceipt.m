@@ -198,11 +198,13 @@ static NSString* checkNoData(NSString* str) {
 }
 
 -(NSString*)priceWithCurrencyFormatted {
-    return [self formattedMoneyString:_price];
+    NSString *string_price = [NSString stringWithFormat:@"%@", _price];
+    return [self formattedMoneyString:string_price];
 }
 
 -(NSString*)taxWithCurrencyFormatted {
-    return [self formattedMoneyString:_tax];
+    NSString *string_tax = [NSString stringWithFormat:@"%@", _tax];
+    return [self formattedMoneyString:string_tax];
 }
 
 -(NSString*)formattedMoneyString:(NSString*) moneyString {

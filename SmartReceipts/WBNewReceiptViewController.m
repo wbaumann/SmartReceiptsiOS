@@ -100,8 +100,8 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
     if (_receipt) {
         self.navigationItem.title = NSLocalizedString(@"Edit Receipt", nil);
         self.nameTextField.text = [_receipt name];
-        self.priceTextField.text = [_receipt price];
-        self.taxTextField.text = [_receipt tax];
+        self.priceTextField.text = [_receipt price_as_string];
+        self.taxTextField.text = [_receipt tax_as_string];
         currencyCode = [[_receipt currency] code];
         _dateMs = [_receipt dateMs];
         category = [_receipt category];
@@ -342,8 +342,8 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
                                  dateMs:_dateMs
                            timeZoneName:[_timeZone name]
                                 comment:self.commentField.text
-                                  price:self.priceTextField.text
-                                    tax:self.taxTextField.text
+                                  price:[NSDecimalNumber decimalNumberWithString:self.priceTextField.text]
+                                    tax:[NSDecimalNumber decimalNumberWithString:self.taxTextField.text]
                            currencyCode:[self.currencyButton titleForState:UIControlStateNormal]
                            isExpensable:self.expensableSwitch.on
                              isFullPage:self.fullPageImageSwitch.on
@@ -365,8 +365,8 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
                               category:[self.categoryButton.titleLabel text]
                                 dateMs:_dateMs
                                comment:self.commentField.text
-                                 price:self.priceTextField.text
-                                   tax:self.taxTextField.text
+                                 price:[NSDecimalNumber decimalNumberWithString:self.priceTextField.text]
+                                   tax:[NSDecimalNumber decimalNumberWithString:self.taxTextField.text]
                           currencyCode:[self.currencyButton.titleLabel text]
                           isExpensable:self.expensableSwitch.on
                             isFullPage:self.fullPageImageSwitch.on

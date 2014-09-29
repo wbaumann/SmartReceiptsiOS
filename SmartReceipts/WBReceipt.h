@@ -39,8 +39,8 @@
 -(NSString*)name;
 -(NSString*)category;
 -(NSString*)comment;
--(NSDecimalNumber*)price;
--(NSDecimalNumber*)tax;
+-(NSString*)price_as_string;
+-(NSString*)tax_as_string;
 -(WBCurrency*)currency;
 -(BOOL)isExpensable;
 -(BOOL)isFullPage;
