@@ -195,8 +195,8 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
                          dateMs:[receipt dateMs]
                    timeZoneName:[[receipt timeZone] name]
                         comment:[receipt comment]
-                          price:[receipt price]
-                            tax:[receipt tax]
+                          price:[receipt price_as_nsdecnum]
+                            tax:[receipt tax_as_nsdecnum]
                    currencyCode:[[receipt currency] code]
                    isExpensable:[receipt isExpensable]
                      isFullPage:[receipt isFullPage]
@@ -351,7 +351,7 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
                      dateMs:(long long)dateMs
                     comment:(NSString*)comment
                       price:(NSDecimalNumber*)price
-                        tax:(NSString*)tax
+                        tax:(NSDecimalNumber*)tax
                currencyCode:(NSString*)currencyCode
                isExpensable:(BOOL)isExpensable
                  isFullPage:(BOOL)isFullPage

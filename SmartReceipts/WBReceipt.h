@@ -41,6 +41,8 @@
 -(NSString*)comment;
 -(NSString*)price_as_string;
 -(NSString*)tax_as_string;
+-(NSDecimalNumber*)price_as_nsdecnum;
+-(NSDecimalNumber*)tax_as_nsdecnum;
 -(WBCurrency*)currency;
 -(BOOL)isExpensable;
 -(BOOL)isFullPage;

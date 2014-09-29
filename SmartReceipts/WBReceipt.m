@@ -124,6 +124,14 @@ static NSString* checkNoData(NSString* str) {
     return tax;
 }
 
+-(NSDecimalNumber*)price_as_nsdecnum {
+    return _price;
+}
+
+-(NSDecimalNumber*)tax_as_nsdecnum{
+    return _tax;
+}
+
 -(WBCurrency*)currency {
     return _currency;
 }
