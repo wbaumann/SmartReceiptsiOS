@@ -56,7 +56,7 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
     }
     
     self = [self initWithName:dirName
-                        price:[[NSDecimalNumber alloc] initWithString:price]
+                        price:price
                     startDate:[NSDate dateWithTimeIntervalSince1970:(startDateMs/1000)]
                       endDate:[NSDate dateWithTimeIntervalSince1970:(endDateMs/1000)]
                 startTimeZone:startTimeZone
