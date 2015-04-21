@@ -111,7 +111,7 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
         const int extra_edittext_3_Index = [resultSet columnIndexForName:COLUMN_EXTRA_EDITTEXT_3];
         
         while ([resultSet next]) {
-            
+
             WBReceipt *receipt =
             [[WBReceipt alloc] initWithId:[resultSet intForColumnIndex:idIndex]
                                      name:[resultSet stringForColumnIndex:nameIndex]
@@ -120,8 +120,8 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
                                    dateMs:[resultSet longLongIntForColumnIndex:dateIndex]
                              timeZoneName:[resultSet stringForColumnIndex:timeZoneIndex]
                                   comment:[resultSet stringForColumnIndex:commentIndex]
-                                    price:[[NSDecimalNumber alloc] initWithDouble:[resultSet doubleForColumnIndex:priceIndex]]
-                                      tax:[[NSDecimalNumber alloc] initWithDouble:[resultSet doubleForColumnIndex:taxIndex]]
+                                    price:[NSDecimalNumber decimalNumberWithString:[resultSet stringForColumnIndex:priceIndex]]
+                                      tax:[NSDecimalNumber decimalNumberWithString:[resultSet stringForColumnIndex:taxIndex]]
                              currencyCode:[resultSet stringForColumnIndex:currencyIndex]
                              isExpensable:[resultSet boolForColumnIndex:expenseableIndex]
                                isFullPage:![resultSet boolForColumnIndex:fullpageIndex]
@@ -148,7 +148,6 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
         FMResultSet* resultSet = [database executeQuery:query, [NSNumber numberWithInt:receiptId] ];
         
         if ([resultSet next]) {
-            
             receipt =
             [[WBReceipt alloc] initWithId:[resultSet intForColumn:COLUMN_ID]
                                      name:[resultSet stringForColumn:COLUMN_NAME]
@@ -157,8 +156,8 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
                                    dateMs:[resultSet longLongIntForColumn:COLUMN_DATE]
                              timeZoneName:[resultSet stringForColumn:COLUMN_TIMEZONE]
                                   comment:[resultSet stringForColumn:COLUMN_COMMENT]
-                                    price:[[NSDecimalNumber alloc] initWithDouble:[resultSet doubleForColumn:COLUMN_PRICE]]
-                                      tax:[[NSDecimalNumber alloc] initWithDouble:[resultSet doubleForColumn:COLUMN_TAX]]
+                                    price:[NSDecimalNumber decimalNumberWithString:[resultSet stringForColumn:COLUMN_PRICE]]
+                                      tax:[NSDecimalNumber decimalNumberWithString:[resultSet stringForColumn:COLUMN_TAX]]
                              currencyCode:[resultSet stringForColumn:COLUMN_ISO4217]
                              isExpensable:[resultSet boolForColumn:COLUMN_EXPENSEABLE]
                                isFullPage:![resultSet boolForColumn:COLUMN_NOTFULLPAGEIMAGE]
@@ -269,12 +268,12 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     [qBuilder addColumn:COLUMN_NOTFULLPAGEIMAGE
              andBoolean:!isFullPage];
     
-    if (price != 0) {
+    if (![price isEqualToNumber:[NSDecimalNumber zero]]) {
         [qBuilder addColumn:COLUMN_PRICE
                   andObject:price];
     }
     
-    if (tax != 0) {
+    if (![tax isEqualToNumber:[NSDecimalNumber zero]]) {
         [qBuilder addColumn:COLUMN_TAX
                   andObject:tax];
     }
