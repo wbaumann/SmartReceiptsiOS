@@ -205,21 +205,19 @@ static NSString* checkNoData(NSString* str) {
     self->_dateMs = dateMs;
 }
 
--(NSString*)priceWithCurrencyFormatted {
-    NSString *string_price = [NSString stringWithFormat:@"%@", _price];
-    return [self formattedMoneyString:string_price];
+- (NSString *)priceWithCurrencyFormatted {
+    return [self formattedMoneyString:_price];
 }
 
--(NSString*)taxWithCurrencyFormatted {
-    NSString *string_tax = [NSString stringWithFormat:@"%@", _tax];
-    return [self formattedMoneyString:string_tax];
+- (NSString *)taxWithCurrencyFormatted {
+    return [self formattedMoneyString:_tax];
 }
 
--(NSString*)formattedMoneyString:(NSString*) moneyString {
+- (NSString *)formattedMoneyString:(NSDecimalNumber *)moneyAmount {
     NSNumberFormatter *_currencyFormatter = [[NSNumberFormatter alloc] init];
     [_currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     [_currencyFormatter setCurrencyCode:[[self currency] code]];
-    return [_currencyFormatter stringFromNumber:[NSNumber numberWithDouble:[moneyString doubleValue]]];
+    return [_currencyFormatter stringFromNumber:moneyAmount];
 }
 
 -(BOOL)hasExtraEditText1 {

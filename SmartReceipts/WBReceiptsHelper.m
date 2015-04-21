@@ -300,7 +300,7 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
         }
         
         // update prices in the same transaction
-        NSString *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:trip inDatabase:database];
+        NSDecimalNumber *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:trip inDatabase:database];
         if (newSumPrice == nil) {
             *rollback = YES;
             return;
@@ -385,11 +385,11 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     
     qPut(COLUMN_COMMENT, comment);
     
-    if (price != 0) {
+    if (![price isEqualToNumber:[NSDecimalNumber zero]]) {
         qPut(COLUMN_PRICE, price);
     }
     
-    if (tax != 0) {
+    if (![tax isEqualToNumber:[NSDecimalNumber zero]]) {
         qPut(COLUMN_TAX, tax);
     }
     
@@ -425,7 +425,7 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
         }
         
         // update prices in the same transaction
-        NSString *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:trip inDatabase:database];
+        NSDecimalNumber *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:trip inDatabase:database];
         if (newSumPrice == nil) {
             *rollback = YES;
             return;
@@ -547,7 +547,7 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     [_databaseQueue inTransaction:^(FMDatabase *database, BOOL *rollback){
         result = [database executeUpdate:query, [NSNumber numberWithInt:receiptId]];
         if (result) {
-            NSString *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:currentTrip inDatabase:database];
+            NSDecimalNumber *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:currentTrip inDatabase:database];
             if (newSumPrice == nil) {
                 *rollback = YES;
                 result = NO;
@@ -622,18 +622,17 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     return curr;
 }
 
--(NSString*) sumPricesForReceiptsWithParent:(NSString*) parent inDatabase:(FMDatabase*) database {
-#warning REVIEW: using prices as strings is likely to cause bugs
-    NSString* query = [NSString stringWithFormat:@"SELECT SUM(%@) FROM %@ WHERE %@ = ? AND %@ = 1", COLUMN_PRICE, TABLE_NAME, COLUMN_PARENT, COLUMN_EXPENSEABLE];
-    
-    FMResultSet* resultSet = [database executeQuery:query, parent];
+- (NSDecimalNumber *)sumPricesForReceiptsWithParent:(NSString *)parent inDatabase:(FMDatabase *)database {
+    NSString *query = [NSString stringWithFormat:@"SELECT SUM(%@) FROM %@ WHERE %@ = ? AND %@ = 1", COLUMN_PRICE, TABLE_NAME, COLUMN_PARENT, COLUMN_EXPENSEABLE];
+
+    FMResultSet *resultSet = [database executeQuery:query, parent];
 
     if ([resultSet next] && [resultSet columnCount] > 0) {
-        double sum = [resultSet doubleForColumnIndex:0];
+        NSString *sum = [resultSet stringForColumnIndex:0];
         [resultSet close];
-        return [NSString stringWithFormat:@"%.2f",sum];
+        return [NSDecimalNumber decimalNumberWithString:sum];
     }
-    
+
     return nil;
 }
 

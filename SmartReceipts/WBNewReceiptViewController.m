@@ -36,7 +36,6 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
     UIImage *_image;
     
     NSString *_name;
-    NSString *_price;
     long long _dateMs;
     NSString *_comment;
     BOOL _isExpensable;

@@ -12,13 +12,15 @@
 
 @interface WBTrip : NSObject
 
+@property (nonatomic, strong) NSDecimalNumber *price;
+
 +(NSString*) MULTI_CURRENCY;
 
-- (id)initWithName:(NSString*) dirName price:(NSString*) price startDate:(NSDate*) startDate endDate:(NSDate*) endDate startTimeZone:(NSTimeZone*)startTimeZone endTimeZone:(NSTimeZone*)endTimeZone currency:(WBCurrency*) currency miles:(float) miles;
+- (id)initWithName:(NSString *)dirName price:(NSDecimalNumber *)price startDate:(NSDate *)startDate endDate:(NSDate *)endDate startTimeZone:(NSTimeZone *)startTimeZone endTimeZone:(NSTimeZone *)endTimeZone currency:(WBCurrency *)currency miles:(float)miles;
 
-- (id)initWithName:(NSString*) dirName price:(NSString*) price startDateMs:(long long) startDateMs endDateMs:(long long) endDateMs startTimeZoneName:(NSString*) startTimeZoneName endTimeZoneName:(NSString*) endTimeZoneName currencyCode:(NSString*) currencyCode miles:(float) miles;
+- (id)initWithName:(NSString *)dirName price:(NSDecimalNumber *)price startDateMs:(long long)startDateMs endDateMs:(long long)endDateMs startTimeZoneName:(NSString *)startTimeZoneName endTimeZoneName:(NSString *)endTimeZoneName currencyCode:(NSString *)currencyCode miles:(float)miles;
 
-- (id)initWithName:(NSString*) dirName startDate:(NSDate*) startDate endDate:(NSDate*) endDate currencyCode:(NSString*) currencyCode;
+- (id)initWithName:(NSString *)dirName startDate:(NSDate *)startDate endDate:(NSDate *)endDate currencyCode:(NSString *)currencyCode;
 
 -(NSString*) directoryPath;
 -(NSString*) fileInDirectoryPath:(NSString*) filename;
@@ -37,7 +39,6 @@
 -(WBCurrency*) currency;
 
 -(void) setMileage:(float) mileage;
--(void) setPrice:(NSString*) price;
 -(void) setCurrencyFromCode:(NSString*) currencyCode;
 
 -(BOOL) createDirectoryIfNotExists;

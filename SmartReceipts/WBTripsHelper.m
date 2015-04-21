@@ -99,7 +99,7 @@ static NSString * const NO_DATA = @"null";
         }
         
         WBTrip *trip = [[WBTrip alloc] initWithName:name
-                                              price:[resultSet stringForColumnIndex:priceIndex]
+                                              price:[NSDecimalNumber decimalNumberWithString:[resultSet stringForColumnIndex:priceIndex]]
                                         startDateMs:[resultSet longLongIntForColumnIndex:fromIndex]
                                           endDateMs:[resultSet longLongIntForColumnIndex:toIndex]
                                   startTimeZoneName:[resultSet stringForColumnIndex:fromTimeZoneIndex]
@@ -141,7 +141,7 @@ static NSString * const NO_DATA = @"null";
             }
             
             trip = [[WBTrip alloc] initWithName:name
-                                          price:[resultSet stringForColumn:COLUMN_PRICE]
+                                          price:[NSDecimalNumber decimalNumberWithString:[resultSet stringForColumn:COLUMN_PRICE]]
                                     startDateMs:[resultSet longLongIntForColumn:COLUMN_FROM]
                                       endDateMs:[resultSet longLongIntForColumn:COLUMN_TO]
                               startTimeZoneName:[resultSet stringForColumn:COLUMN_FROM_TIMEZONE]
@@ -230,7 +230,7 @@ static NSString * const NO_DATA = @"null";
         
         trip = [[WBTrip alloc]
                 initWithName:dir
-                price:[oldTrip price_as_string]
+                price:[oldTrip price]
                 startDate:from
                 endDate:to
                 startTimeZone:startTimeZone
@@ -273,11 +273,11 @@ static NSString * const NO_DATA = @"null";
 
 #pragma mark - for another tables
 
--(NSString*) sumAndUpdatePriceForTrip:(WBTrip*) trip inDatabase:(FMDatabase*)db {
+- (NSDecimalNumber *)sumAndUpdatePriceForTrip:(WBTrip *)trip inDatabase:(FMDatabase *)db {
     NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ? WHERE %@ = ?", TABLE_NAME, COLUMN_PRICE, COLUMN_NAME];
-    
-    NSString* price = [[WBDB receipts] sumPricesForReceiptsWithParent:[trip name] inDatabase:db];
-    
+
+    NSDecimalNumber *price = [[WBDB receipts] sumPricesForReceiptsWithParent:[trip name] inDatabase:db];
+
     if (price) {
         if ([db executeUpdate:query, price, [trip name]]) {
             return price; // sum & update ok
