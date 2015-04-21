@@ -20,6 +20,7 @@
 		4DF22952192867CC0008D359 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF22951192867CC0008D359 /* SystemConfiguration.framework */; };
 		4DF2295419296DFF0008D359 /* BugSense-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF2295319296DFF0008D359 /* BugSense-iOS.framework */; };
 		4DF2295619296E170008D359 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF2295519296E170008D359 /* libz.dylib */; };
+		510ACBCB0286B2F6B361D945 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC1BDDC7B500AA1408D37DF /* libPods.a */; };
 		841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB2FE1908167700D28CBF /* WBAbstractPicker.h */; };
 		841BB3011908173600D28CBF /* WBAbstractPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BB3001908173600D28CBF /* WBAbstractPicker.m */; };
 		841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB302190818C400D28CBF /* WBActionSheetPicker.h */; };
@@ -170,6 +171,8 @@
 		4DF22951192867CC0008D359 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4DF2295319296DFF0008D359 /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BugSense-iOS.framework"; path = "3rdparty/BugSense/BugSense-iOS.framework"; sourceTree = "<group>"; };
 		4DF2295519296E170008D359 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		5371FEA3FE41B7AFF41AFB84 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		6FC1BDDC7B500AA1408D37DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		841BB2FB190806F600D28CBF /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		841BB2FC190806F600D28CBF /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		841BB2FD190806F600D28CBF /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -368,6 +371,7 @@
 		84F4F36618CFCCD000F69A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84F4F36818CFCCD000F69A35 /* SmartReceiptsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartReceiptsTests.m; sourceTree = "<group>"; };
 		84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,6 +393,7 @@
 				4DCAD096197E08A000CD5F23 /* libGoogleAdMobAds.a in Frameworks */,
 				84F4F34818CFCCD000F69A35 /* UIKit.framework in Frameworks */,
 				84F4F34418CFCCD000F69A35 /* Foundation.framework in Frameworks */,
+				510ACBCB0286B2F6B361D945 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +448,15 @@
 				4D33F3E119D8965800FE4EC4 /* GADConstants.m */,
 			);
 			name = Ads;
+			sourceTree = "<group>";
+		};
+		7AB70D3C8F1E6FC81F10B74C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */,
+				5371FEA3FE41B7AFF41AFB84 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		8421A1F61907C03B001DF38D /* iPhone */ = {
@@ -867,6 +881,7 @@
 				84F4F36218CFCCD000F69A35 /* SmartReceiptsTests */,
 				84F4F34218CFCCD000F69A35 /* Frameworks */,
 				84F4F34118CFCCD000F69A35 /* Products */,
+				7AB70D3C8F1E6FC81F10B74C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -896,6 +911,7 @@
 				84F4F34518CFCCD000F69A35 /* CoreGraphics.framework */,
 				84F4F34718CFCCD000F69A35 /* UIKit.framework */,
 				84F4F35C18CFCCD000F69A35 /* XCTest.framework */,
+				6FC1BDDC7B500AA1408D37DF /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -959,9 +975,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F4F36C18CFCCD000F69A35 /* Build configuration list for PBXNativeTarget "SmartReceipts" */;
 			buildPhases = (
+				E0DEB0FB94C7DB5A57D0C4D4 /* Check Pods Manifest.lock */,
 				84F4F33C18CFCCD000F69A35 /* Sources */,
 				84F4F33D18CFCCD000F69A35 /* Frameworks */,
 				84F4F33E18CFCCD000F69A35 /* Resources */,
+				599975B777AB4CAB9B08A26B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1001,7 +1019,7 @@
 				ORGANIZATIONNAME = "Will Baumann";
 				TargetAttributes = {
 					84F4F33F18CFCCD000F69A35 = {
-						DevelopmentTeam = UX5Z7CLP7J;
+						DevelopmentTeam = 5T8DRBFCBP;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -1068,6 +1086,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		599975B777AB4CAB9B08A26B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0DEB0FB94C7DB5A57D0C4D4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84F4F33C18CFCCD000F69A35 /* Sources */ = {
@@ -1229,8 +1280,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: William Baumann (BLDB6AFZTL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Baumann (BLDB6AFZTL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1254,9 +1305,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lxml2";
-				PROVISIONING_PROFILE = "0C665D01-AA02-4086-AD47-3D147A250377";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7s";
 			};
 			name = Debug;
 		};
@@ -1276,8 +1328,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: William Baumann (BLDB6AFZTL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Baumann (BLDB6AFZTL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1294,20 +1346,22 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-lxml2";
-				PROVISIONING_PROFILE = "0C665D01-AA02-4086-AD47-3D147A250377";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7s";
 			};
 			name = Release;
 		};
 		84F4F36D18CFCCD000F69A35 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: William Baumann (BLDB6AFZTL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Baumann (BLDB6AFZTL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1324,21 +1378,25 @@
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-ObjC",
+					"$(inherited)",
 				);
+				OTHER_LIBTOOLFLAGS = "$(inherited) $(OTHER_LDFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0C665D01-AA02-4086-AD47-3D147A250377";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		84F4F36E18CFCCD000F69A35 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5371FEA3FE41B7AFF41AFB84 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: William Baumann (BLDB6AFZTL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Baumann (BLDB6AFZTL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/3rdparty/BugSense",
@@ -1354,10 +1412,13 @@
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-ObjC",
+					"$(inherited)",
 				);
+				OTHER_LIBTOOLFLAGS = "$(inherited) $(OTHER_LDFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0C665D01-AA02-4086-AD47-3D147A250377";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

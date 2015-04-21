@@ -1,0 +1,455 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05A76B3F51AB4F9372F87540 /* UIActionSheet+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = B4514C927DC3A7133037CD09 /* UIActionSheet+Blocks.h */; };
+		07D7FC8611508B8D4B37204F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AAC843AB2975F95B1B4835 /* Foundation.framework */; };
+		409AB6A1D5AAECC4946854B4 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 852628BE1660C200E21A3813 /* UIActionSheet+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		51D72F558CA6ED68D495427D /* RIButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = E243AD7D02CC008224D76F9B /* RIButtonItem.h */; };
+		6B9FB98C0229C7F88A349344 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC5B7062DC23A4DA65B4047 /* RIButtonItem.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9FF201884A0CF0AC45348826 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F916297A6E12F5148DCBEB /* Pods-dummy.m */; };
+		BA89F8AFE4D090004381A202 /* UIAlertView+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = FBA1E987883F17B3E16EFF60 /* UIAlertView+Blocks.h */; };
+		D0678667C21CA6D69DF30CF4 /* Pods-UIAlertView-Blocks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B79DE32804098782C5DD4BA4 /* Pods-UIAlertView-Blocks-dummy.m */; };
+		DB6BA5B24F962977D25A01C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AAC843AB2975F95B1B4835 /* Foundation.framework */; };
+		F32FC253E5EB8D27A25B3CEC /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFBF7587F6BC17A2396DFA /* UIAlertView+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E98C80EE630842FC7DB79FA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76C361A729E7CBDEDF412A9A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E77A99B98E8035F691FBC7B3;
+			remoteInfo = "Pods-UIAlertView-Blocks";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0034954BE0916DE46248C86E /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0AF11A8C87B393667DECF184 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		157F68B76C1CEAF0C44FEA50 /* Pods-UIAlertView-Blocks-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UIAlertView-Blocks-Private.xcconfig"; sourceTree = "<group>"; };
+		1F08EC91087F572572B8C773 /* libPods-UIAlertView-Blocks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UIAlertView-Blocks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EFDBCE372A6CBA19DD72C2A /* Pods-UIAlertView-Blocks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-UIAlertView-Blocks-prefix.pch"; sourceTree = "<group>"; };
+		35AAC843AB2975F95B1B4835 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		40C92113589019303F8B9B78 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		5EAFBF7587F6BC17A2396DFA /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
+		852628BE1660C200E21A3813 /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
+		B4514C927DC3A7133037CD09 /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
+		B6C99AAC08C70F2E3CE1CD94 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B79DE32804098782C5DD4BA4 /* Pods-UIAlertView-Blocks-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-UIAlertView-Blocks-dummy.m"; sourceTree = "<group>"; };
+		B9AD5BD697866E91B6349E0B /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		BA9CF32012AD9368634A9326 /* Pods-UIAlertView-Blocks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UIAlertView-Blocks.xcconfig"; sourceTree = "<group>"; };
+		C0BABD84A3A8AAFB99CEA575 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		CCC5B7062DC23A4DA65B4047 /* RIButtonItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RIButtonItem.m; sourceTree = "<group>"; };
+		DDB820B225F2340A07E7963B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		E0F916297A6E12F5148DCBEB /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		E243AD7D02CC008224D76F9B /* RIButtonItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RIButtonItem.h; sourceTree = "<group>"; };
+		F854A9078A9DBCFBA490753B /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		FBA1E987883F17B3E16EFF60 /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A32D4661400D1F7D3BBCEDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07D7FC8611508B8D4B37204F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1DF498DD937B69D098E09D06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB6BA5B24F962977D25A01C3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18B016175444F366406E43A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0AF11A8C87B393667DECF184 /* libPods.a */,
+				1F08EC91087F572572B8C773 /* libPods-UIAlertView-Blocks.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		43E7768161783D35D7827F50 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AADDA1C382F213D058EF1DD5 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		63558BC179DB5DA903A2058A /* UIAlertView-Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				E243AD7D02CC008224D76F9B /* RIButtonItem.h */,
+				CCC5B7062DC23A4DA65B4047 /* RIButtonItem.m */,
+				B4514C927DC3A7133037CD09 /* UIActionSheet+Blocks.h */,
+				852628BE1660C200E21A3813 /* UIActionSheet+Blocks.m */,
+				FBA1E987883F17B3E16EFF60 /* UIAlertView+Blocks.h */,
+				5EAFBF7587F6BC17A2396DFA /* UIAlertView+Blocks.m */,
+				F9EF1E5D88415FF2A1DEDFC5 /* Support Files */,
+			);
+			path = "UIAlertView-Blocks";
+			sourceTree = "<group>";
+		};
+		686022F06D2BBAF8C44FE130 = {
+			isa = PBXGroup;
+			children = (
+				B6C99AAC08C70F2E3CE1CD94 /* Podfile */,
+				43E7768161783D35D7827F50 /* Frameworks */,
+				CEFFF71FDDB3DFF4081FBCEA /* Pods */,
+				18B016175444F366406E43A1 /* Products */,
+				D9003704AC7802CF8E8BAA26 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		AADDA1C382F213D058EF1DD5 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				35AAC843AB2975F95B1B4835 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CEFFF71FDDB3DFF4081FBCEA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				63558BC179DB5DA903A2058A /* UIAlertView-Blocks */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D251174E0220F9F478AE1062 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0034954BE0916DE46248C86E /* Pods-acknowledgements.markdown */,
+				B9AD5BD697866E91B6349E0B /* Pods-acknowledgements.plist */,
+				E0F916297A6E12F5148DCBEB /* Pods-dummy.m */,
+				C0BABD84A3A8AAFB99CEA575 /* Pods-environment.h */,
+				F854A9078A9DBCFBA490753B /* Pods-resources.sh */,
+				DDB820B225F2340A07E7963B /* Pods.debug.xcconfig */,
+				40C92113589019303F8B9B78 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			path = "Target Support Files/Pods";
+			sourceTree = "<group>";
+		};
+		D9003704AC7802CF8E8BAA26 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D251174E0220F9F478AE1062 /* Pods */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		F9EF1E5D88415FF2A1DEDFC5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA9CF32012AD9368634A9326 /* Pods-UIAlertView-Blocks.xcconfig */,
+				157F68B76C1CEAF0C44FEA50 /* Pods-UIAlertView-Blocks-Private.xcconfig */,
+				B79DE32804098782C5DD4BA4 /* Pods-UIAlertView-Blocks-dummy.m */,
+				2EFDBCE372A6CBA19DD72C2A /* Pods-UIAlertView-Blocks-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-UIAlertView-Blocks";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B7F48F419894B599FE2C1110 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51D72F558CA6ED68D495427D /* RIButtonItem.h in Headers */,
+				05A76B3F51AB4F9372F87540 /* UIActionSheet+Blocks.h in Headers */,
+				BA89F8AFE4D090004381A202 /* UIAlertView+Blocks.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7F10F51986C60AE5B5448975 /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBC6539A341366391827BC1B /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				148F380C9EDD778FE15811A7 /* Sources */,
+				1DF498DD937B69D098E09D06 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F16010FD374B0941D54662B /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = 0AF11A8C87B393667DECF184 /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E77A99B98E8035F691FBC7B3 /* Pods-UIAlertView-Blocks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31A7A438AAC2E1C29B6DBBE7 /* Build configuration list for PBXNativeTarget "Pods-UIAlertView-Blocks" */;
+			buildPhases = (
+				2A2E57C448F0812FD18AFA04 /* Sources */,
+				1A32D4661400D1F7D3BBCEDE /* Frameworks */,
+				B7F48F419894B599FE2C1110 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-UIAlertView-Blocks";
+			productName = "Pods-UIAlertView-Blocks";
+			productReference = 1F08EC91087F572572B8C773 /* libPods-UIAlertView-Blocks.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		76C361A729E7CBDEDF412A9A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = F2B78EC679DAED2A4615DC8F /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 686022F06D2BBAF8C44FE130;
+			productRefGroup = 18B016175444F366406E43A1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7F10F51986C60AE5B5448975 /* Pods */,
+				E77A99B98E8035F691FBC7B3 /* Pods-UIAlertView-Blocks */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		148F380C9EDD778FE15811A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FF201884A0CF0AC45348826 /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A2E57C448F0812FD18AFA04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0678667C21CA6D69DF30CF4 /* Pods-UIAlertView-Blocks-dummy.m in Sources */,
+				6B9FB98C0229C7F88A349344 /* RIButtonItem.m in Sources */,
+				409AB6A1D5AAECC4946854B4 /* UIActionSheet+Blocks.m in Sources */,
+				F32FC253E5EB8D27A25B3CEC /* UIAlertView+Blocks.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F16010FD374B0941D54662B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-UIAlertView-Blocks";
+			target = E77A99B98E8035F691FBC7B3 /* Pods-UIAlertView-Blocks */;
+			targetProxy = E98C80EE630842FC7DB79FA1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		04AEDE29402F7B14E2ADDF94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		40546832EE01612914731142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6F9BB358A77CA18AC04B5274 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 157F68B76C1CEAF0C44FEA50 /* Pods-UIAlertView-Blocks-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-UIAlertView-Blocks/Pods-UIAlertView-Blocks-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7";
+			};
+			name = Release;
+		};
+		87733D153322CFC84F8E9EDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB820B225F2340A07E7963B /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7";
+			};
+			name = Debug;
+		};
+		C2443D841FD5D5933110F167 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 157F68B76C1CEAF0C44FEA50 /* Pods-UIAlertView-Blocks-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-UIAlertView-Blocks/Pods-UIAlertView-Blocks-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7";
+			};
+			name = Debug;
+		};
+		CFED9D380388CDEC0ECDA08C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40C92113589019303F8B9B78 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		31A7A438AAC2E1C29B6DBBE7 /* Build configuration list for PBXNativeTarget "Pods-UIAlertView-Blocks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2443D841FD5D5933110F167 /* Debug */,
+				6F9BB358A77CA18AC04B5274 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBC6539A341366391827BC1B /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87733D153322CFC84F8E9EDE /* Debug */,
+				CFED9D380388CDEC0ECDA08C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2B78EC679DAED2A4615DC8F /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04AEDE29402F7B14E2ADDF94 /* Debug */,
+				40546832EE01612914731142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 76C361A729E7CBDEDF412A9A /* Project object */;
+}
