@@ -36,7 +36,7 @@
 
 - (BOOL) attachPdfOrImageFile:(NSString*)pdfFile toReceipt:(WBReceipt*) receipt;
 
-+ (void) takePhotoWithViewController:(UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate> *) vcDelegate;
++ (void)takePhotoWithViewController:(UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> *)vcDelegate;
 
 - (void) notifyReceiptRemoved:(WBReceipt*) receipt;
 - (BOOL) updateReceipt:(WBReceipt*) receipt image:(UIImage*) image;

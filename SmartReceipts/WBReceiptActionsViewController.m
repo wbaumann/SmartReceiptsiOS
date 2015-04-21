@@ -213,7 +213,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     
     int size = [WBPreferences cameraMaxHeightWidth];
     if (size > 0) {

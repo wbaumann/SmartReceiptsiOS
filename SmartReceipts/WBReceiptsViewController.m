@@ -26,6 +26,7 @@
 #import "HUD.h"
 
 #import "WBAppDelegate.h"
+#import "UIActionSheet+Blocks.h"
 
 static NSString *CellIdentifier = @"Cell";
 
@@ -411,8 +412,7 @@ static NSString *CellIdentifier = @"Cell";
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     
     int size = [WBPreferences cameraMaxHeightWidth];
     if (size > 0) {
@@ -432,34 +432,34 @@ static NSString *CellIdentifier = @"Cell";
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
-+ (void) takePhotoWithViewController:(UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate> *) vcDelegate {
-    BOOL isPhysicalDevice = YES;
-    
-#if (TARGET_IPHONE_SIMULATOR)
-    isPhysicalDevice = NO;
-#endif
-    
-    if (isPhysicalDevice && ![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No camera",nil)
-                                    message:NSLocalizedString(@"Camera is not available.",nil)
-                                   delegate:nil
-                          cancelButtonTitle:NSLocalizedString(@"OK",nil)
-                          otherButtonTitles:nil] show];
++ (void)takePhotoWithViewController:(UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> *)vcDelegate {
+    BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+    if (!hasCamera) {
+        [self presentImagePickerWithSource:UIImagePickerControllerSourceTypePhotoLibrary onController:vcDelegate];
         return;
     }
-    
+
+    void (^chooseFromLibraryAction)() = ^{
+        [WBReceiptsViewController presentImagePickerWithSource:UIImagePickerControllerSourceTypePhotoLibrary onController:vcDelegate];
+    };
+    void (^takeImageAction)() = ^{
+        [WBReceiptsViewController presentImagePickerWithSource:UIImagePickerControllerSourceTypeCamera onController:vcDelegate];
+    };
+
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Select image from", nil)
+                                                     cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"Cancel", nil)]
+                                                destructiveButtonItem:nil
+                                                     otherButtonItems:[RIButtonItem itemWithLabel:NSLocalizedString(@"Choose Existing", nil) action:chooseFromLibraryAction],
+                                                                      [RIButtonItem itemWithLabel:NSLocalizedString(@"Take Photo", nil) action:takeImageAction], nil];
+    [actionSheet showInView:vcDelegate.view];
+}
+
++ (void)presentImagePickerWithSource:(UIImagePickerControllerSourceType)source onController:(UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> *)controller {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = vcDelegate;
-    picker.allowsEditing = YES;
-    
-    if (isPhysicalDevice) {
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        [vcDelegate presentViewController:picker animated:YES completion:NULL];
-    } else {
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        [vcDelegate presentViewController:picker animated:YES completion:NULL];
-    }
-    
+    picker.delegate = controller;
+    picker.sourceType = source;
+
+    [controller presentViewController:picker animated:YES completion:NULL];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
