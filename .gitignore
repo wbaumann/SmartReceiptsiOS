@@ -27,3 +27,5 @@ DerivedData
 
 # Hiding ad constants
 SmartReceipts/GADConstants.m
+
+.idea

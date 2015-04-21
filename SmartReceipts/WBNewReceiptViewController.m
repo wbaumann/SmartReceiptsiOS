@@ -89,7 +89,9 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
     _autocompleteHelper = [[WBAutocompleteHelper alloc] initWithAutocompleteField:self.nameTextField inView:self.view useReceiptsHints:YES];
     
     self.priceTextField.delegate = self;
+    self.priceTextField.keyboardType = UIKeyboardTypeDecimalPad;
     self.taxTextField.delegate = self;
+    self.taxTextField.keyboardType = UIKeyboardTypeDecimalPad;
     self.nameTextField.delegate = self;
     
     [self.nameTextField becomeFirstResponder];
