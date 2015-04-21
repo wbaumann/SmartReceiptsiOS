@@ -344,8 +344,8 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
                                  dateMs:_dateMs
                            timeZoneName:[_timeZone name]
                                 comment:self.commentField.text
-                                  price:[NSDecimalNumber decimalNumberWithString:self.priceTextField.text]
-                                    tax:[NSDecimalNumber decimalNumberWithString:self.taxTextField.text]
+                                  price:[NSDecimalNumber decimalNumberWithString:self.priceTextField.text locale:[NSLocale currentLocale]]
+                                    tax:[NSDecimalNumber decimalNumberWithString:self.taxTextField.text locale:[NSLocale currentLocale]]
                            currencyCode:[self.currencyButton titleForState:UIControlStateNormal]
                            isExpensable:self.expensableSwitch.on
                              isFullPage:self.fullPageImageSwitch.on
@@ -367,8 +367,8 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
                               category:[self.categoryButton.titleLabel text]
                                 dateMs:_dateMs
                                comment:self.commentField.text
-                                 price:[NSDecimalNumber decimalNumberWithString:self.priceTextField.text]
-                                   tax:[NSDecimalNumber decimalNumberWithString:self.taxTextField.text]
+                                 price:[NSDecimalNumber decimalNumberWithString:self.priceTextField.text locale:[NSLocale currentLocale]]
+                                   tax:[NSDecimalNumber decimalNumberWithString:self.taxTextField.text locale:[NSLocale currentLocale]]
                           currencyCode:[self.currencyButton.titleLabel text]
                           isExpensable:self.expensableSwitch.on
                             isFullPage:self.fullPageImageSwitch.on
