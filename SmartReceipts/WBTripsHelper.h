@@ -25,7 +25,7 @@
 -(BOOL) updateTrip:(WBTrip*) trip miles:(double) total;
 -(BOOL) deleteWithName:(NSString*) name;
 
--(NSString*) sumAndUpdatePriceForTrip:(WBTrip*) trip inDatabase:(FMDatabase*)db;
+- (NSDecimalNumber *)sumAndUpdatePriceForTrip:(WBTrip *)trip inDatabase:(FMDatabase *)db;
 
 -(int) cachedCount;
     
