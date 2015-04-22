@@ -313,7 +313,6 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
         if (!curr) {
             curr = [WBTrip MULTI_CURRENCY];
         }
-        [trip setCurrencyFromCode:curr];
         [trip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
 
         FMResultSet* cres = [database executeQuery:@"SELECT last_insert_rowid()"];
@@ -436,7 +435,6 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
         if (!curr) {
             curr = [WBTrip MULTI_CURRENCY];
         }
-        [trip setCurrencyFromCode:curr];
         [trip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
 
         receipt =
@@ -557,7 +555,6 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
             if (!curr) {
                 curr = [WBTrip MULTI_CURRENCY];
             }
-            [currentTrip setCurrencyFromCode:curr];
 
             [currentTrip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
         }

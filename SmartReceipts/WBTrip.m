@@ -7,7 +7,6 @@
 //
 
 #import "WBTrip.h"
-#import "WBCurrency.h"
 #import "WBFileManager.h"
 #import "WBPrice.h"
 
@@ -18,7 +17,6 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
     NSString* _reportDirectoryName;
     NSDate *_startDate, *_endDate;
     NSTimeZone *_startTimeZone, *_endTimeZone;
-    WBCurrency *_currency;
     float _miles;
 }
 
@@ -26,7 +24,7 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
     return MULTI_CURRENCY;
 }
 
-- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDate:(NSDate *)startDate endDate:(NSDate *)endDate startTimeZone:(NSTimeZone *)startTimeZone endTimeZone:(NSTimeZone *)endTimeZone currency:(WBCurrency *)currency miles:(float) miles
+- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDate:(NSDate *)startDate endDate:(NSDate *)endDate startTimeZone:(NSTimeZone *)startTimeZone endTimeZone:(NSTimeZone *)endTimeZone miles:(float) miles
 {
     self = [super init];
     if (self) {
@@ -36,13 +34,12 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
         _endDate = endDate;
         _startTimeZone = startTimeZone;
         _endTimeZone = endTimeZone;
-        _currency = currency;
         _miles = miles;
     }
     return self;
 }
 
-- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDateMs:(long long)startDateMs endDateMs:(long long)endDateMs startTimeZoneName:(NSString *)startTimeZoneName endTimeZoneName:(NSString *)endTimeZoneName currencyCode:(NSString *)currencyCode miles:(float) miles
+- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDateMs:(long long)startDateMs endDateMs:(long long)endDateMs startTimeZoneName:(NSString *)startTimeZoneName endTimeZoneName:(NSString *)endTimeZoneName miles:(float) miles
 {
     NSTimeZone *startTimeZone = [NSTimeZone timeZoneWithName:startTimeZoneName];
     if (!startTimeZone) {
@@ -60,7 +57,6 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
                       endDate:[NSDate dateWithTimeIntervalSince1970:(endDateMs/1000)]
                 startTimeZone:startTimeZone
                   endTimeZone:endTimeZone
-                     currency:[WBCurrency currencyForCode:currencyCode]
                         miles:miles];
     
     return self;
@@ -74,7 +70,6 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
                       endDate:endDate
                 startTimeZone:[NSTimeZone localTimeZone]
                   endTimeZone:[NSTimeZone localTimeZone]
-                     currency:[WBCurrency currencyForCode:currencyCode]
                         miles:0];
     
     return self;
@@ -116,19 +111,11 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
     return _endTimeZone;
 }
 
--(WBCurrency*) currency {
-    return _currency;
-}
-
 -(void) setMileage:(float) mileage {
     if (mileage<0) {
         mileage = 0;
     }
     _miles = mileage;
-}
-
--(void) setCurrencyFromCode:(NSString*) currencyCode {
-    _currency = [WBCurrency currencyForCode:currencyCode];
 }
 
 -(BOOL) createDirectoryIfNotExists {

@@ -17,9 +17,9 @@
 
 +(NSString*) MULTI_CURRENCY;
 
-- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDate:(NSDate *)startDate endDate:(NSDate *)endDate startTimeZone:(NSTimeZone *)startTimeZone endTimeZone:(NSTimeZone *)endTimeZone currency:(WBCurrency *)currency miles:(float)miles;
+- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDate:(NSDate *)startDate endDate:(NSDate *)endDate startTimeZone:(NSTimeZone *)startTimeZone endTimeZone:(NSTimeZone *)endTimeZone miles:(float)miles;
 
-- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDateMs:(long long)startDateMs endDateMs:(long long)endDateMs startTimeZoneName:(NSString *)startTimeZoneName endTimeZoneName:(NSString *)endTimeZoneName currencyCode:(NSString *)currencyCode miles:(float)miles;
+- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDateMs:(long long)startDateMs endDateMs:(long long)endDateMs startTimeZoneName:(NSString *)startTimeZoneName endTimeZoneName:(NSString *)endTimeZoneName miles:(float)miles;
 
 - (id)initWithName:(NSString *)dirName startDate:(NSDate *)startDate endDate:(NSDate *)endDate currencyCode:(NSString *)currencyCode;
 
@@ -37,10 +37,7 @@
 -(NSTimeZone*) startTimeZone;
 -(NSTimeZone*) endTimeZone;
 
--(WBCurrency*) currency;
-
 -(void) setMileage:(float) mileage;
--(void) setCurrencyFromCode:(NSString*) currencyCode;
 
 -(BOOL) createDirectoryIfNotExists;
 

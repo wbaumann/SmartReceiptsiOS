@@ -107,7 +107,6 @@ static NSString * const NO_DATA = @"null";
                                           endDateMs:[resultSet longLongIntForColumnIndex:toIndex]
                                   startTimeZoneName:[resultSet stringForColumnIndex:fromTimeZoneIndex]
                                     endTimeZoneName:[resultSet stringForColumnIndex:toTimeZoneIndex]
-                                       currencyCode:curr
                                               miles:[resultSet doubleForColumnIndex:milesIndex]];
         
         [allTrips addObject:trip];
@@ -150,7 +149,6 @@ static NSString * const NO_DATA = @"null";
                                       endDateMs:[resultSet longLongIntForColumn:COLUMN_TO]
                               startTimeZoneName:[resultSet stringForColumn:COLUMN_FROM_TIMEZONE]
                                 endTimeZoneName:[resultSet stringForColumn:COLUMN_TO_TIMEZONE]
-                                   currencyCode:curr
                                           miles:[resultSet doubleForColumn:COLUMN_MILEAGE]];
         }
         
@@ -239,7 +237,6 @@ static NSString * const NO_DATA = @"null";
                 endDate:to
                 startTimeZone:startTimeZone
                 endTimeZone:endTimeZone
-                currency:[oldTrip currency]
                 miles:[oldTrip miles]];
         
         [[NSFileManager defaultManager] moveItemAtPath:[oldTrip directoryPath] toPath:[trip directoryPath] error:nil];
