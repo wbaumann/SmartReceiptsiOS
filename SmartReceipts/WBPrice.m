@@ -8,7 +8,6 @@
 
 #import "WBPrice.h"
 #import "WBCurrency.h"
-#import "Constants.h"
 
 @interface WBPrice ()
 
@@ -30,16 +29,18 @@
     return [WBPrice priceWithAmount:[NSDecimalNumber zero] currencyCode:currencyCode];
 }
 
-static NSNumberFormatter *__noCurrencyFormatter;
 - (NSString *)amountAsString {
-    if (!__noCurrencyFormatter) {
-        __noCurrencyFormatter = [[NSNumberFormatter alloc] init];
-        [__noCurrencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-        [__noCurrencyFormatter setCurrencySymbol:@""];
-        [__noCurrencyFormatter setGroupingSeparator:@""];
+    static NSString const *noCurrencyKey = @"noCurrencyFormatter";
+    NSNumberFormatter *noCurrencyFormatter = [[NSThread currentThread] threadDictionary][noCurrencyKey];
+    if (!noCurrencyFormatter) {
+        noCurrencyFormatter = [[NSNumberFormatter alloc] init];
+        [noCurrencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        [noCurrencyFormatter setCurrencySymbol:@""];
+        [noCurrencyFormatter setGroupingSeparator:@""];
+        [[NSThread currentThread] threadDictionary][noCurrencyKey] = noCurrencyFormatter;
     }
 
-    return [[__noCurrencyFormatter stringFromNumber:self.amount] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    return [[noCurrencyFormatter stringFromNumber:self.amount] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
 - (NSString *)currencyFormattedPrice {
@@ -51,21 +52,15 @@ static NSNumberFormatter *__noCurrencyFormatter;
 }
 
 + (NSNumberFormatter *)formatterForCurrencyCode:(NSString *)code {
-    NSNumberFormatter *formatter = [WBPrice sharedFormatterCache][code];
+    NSNumberFormatter *formatter = [[NSThread currentThread] threadDictionary][code];
     if (!formatter) {
         formatter = [[NSNumberFormatter alloc] init];
         [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
         [formatter setCurrencyCode:code];
-        [WBPrice sharedFormatterCache][code] = formatter;
+        [[NSThread currentThread] threadDictionary][code] = formatter;
     }
 
     return formatter;
-}
-
-+ (NSMutableDictionary *)sharedFormatterCache {
-    DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
-        return [[NSMutableDictionary alloc] init];
-    });
 }
 
 @end
