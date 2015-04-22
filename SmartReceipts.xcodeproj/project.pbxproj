@@ -133,6 +133,9 @@
 		84F4F36918CFCCD000F69A35 /* SmartReceiptsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F36818CFCCD000F69A35 /* SmartReceiptsTests.m */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
 		EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3CF0931AE68CF500B14B73 /* LaunchView.xib */; };
+		EA3CF0971AE77E1900B14B73 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF0961AE77E1900B14B73 /* WBPrice.m */; };
+		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
+		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -374,6 +377,12 @@
 		84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA3CF0931AE68CF500B14B73 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
+		EA3CF0951AE77E1900B14B73 /* WBPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPrice.h; sourceTree = "<group>"; };
+		EA3CF0961AE77E1900B14B73 /* WBPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPrice.m; sourceTree = "<group>"; };
+		EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+WBNumberParse.h"; sourceTree = "<group>"; };
+		EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+WBNumberParse.m"; sourceTree = "<group>"; };
+		EA3CF09C1AE7C45C00B14B73 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		EA3CF09D1AE7C45C00B14B73 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -564,10 +573,12 @@
 		845E33E618D8ADE9006A506A /* model */ = {
 			isa = PBXGroup;
 			children = (
-				84A3ADE718D4A0FC003DB722 /* WBColumn.h */,
-				84A3ADE818D4A0FC003DB722 /* WBColumn.m */,
 				845E33E718D8ADF9006A506A /* WBCategory.h */,
 				845E33E818D8ADF9006A506A /* WBCategory.m */,
+				84A3ADE718D4A0FC003DB722 /* WBColumn.h */,
+				84A3ADE818D4A0FC003DB722 /* WBColumn.m */,
+				EA3CF0951AE77E1900B14B73 /* WBPrice.h */,
+				EA3CF0961AE77E1900B14B73 /* WBPrice.m */,
 				845E33EA18D8AE24006A506A /* WBReceipt.h */,
 				845E33EB18D8AE24006A506A /* WBReceipt.m */,
 				845E33ED18D8AE2E006A506A /* WBTrip.h */,
@@ -923,6 +934,7 @@
 			isa = PBXGroup;
 			children = (
 				4DF22941192867120008D359 /* Ads */,
+				EA3CF0981AE7962C00B14B73 /* Extensions */,
 				848EFA5D18EDC33F00AC01B4 /* reports */,
 				84D6719818D34E3200B704A4 /* util */,
 				847EFA5118E6BBF3006BE520 /* persistence */,
@@ -938,6 +950,8 @@
 				84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */,
 				8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */,
 				8421A1FF1907E304001DF38D /* Localizable.strings */,
+				EA3CF09C1AE7C45C00B14B73 /* Constants.h */,
+				EA3CF09D1AE7C45C00B14B73 /* Constants.m */,
 			);
 			path = SmartReceipts;
 			sourceTree = "<group>";
@@ -969,6 +983,15 @@
 				84F4F36518CFCCD000F69A35 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EA3CF0981AE7962C00B14B73 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */,
+				EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1143,6 +1166,7 @@
 				843950A418ED1D2E00A1CF83 /* WBPdfDrawer.m in Sources */,
 				84AF861018E895CF00F15C3A /* WBDateFormatter.m in Sources */,
 				84553A5318D0D2CA0009057B /* WBReceiptsViewController.m in Sources */,
+				EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */,
 				84AA925618EEAF0C0096013D /* gzlib.c in Sources */,
 				845E33DC18D86D84006A506A /* WBReceiptActionsViewController.m in Sources */,
 				84AA924C18EEAF0C0096013D /* FileInZipInfo.m in Sources */,
@@ -1163,12 +1187,14 @@
 				84AEE5D318EB54EF005DB908 /* WBObservableTripsBrowser.m in Sources */,
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
 				845E33E018D87CEF006A506A /* WBDynamicPicker.m in Sources */,
+				EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */,
 				84ABAD0618DB780E00F8D3EB /* WBReceiptsHelper.m in Sources */,
 				8478B77618D37D350041CBA3 /* WBColumnsViewController.m in Sources */,
 				8467EFE918F6E3170076BE6E /* WBImageSegue.m in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
 				84ABACF818DB66FA00F8D3EB /* FMDatabasePool.m in Sources */,
 				84AA925218EEAF0C0096013D /* compress.c in Sources */,
+				EA3CF0971AE77E1900B14B73 /* WBPrice.m in Sources */,
 				847C887518D7BA4500A33397 /* WBGenerateViewController.m in Sources */,
 				84A3ADE918D4A0FC003DB722 /* WBColumn.m in Sources */,
 				84ABAD0918DB79D900F8D3EB /* WBCategoriesHelper.m in Sources */,

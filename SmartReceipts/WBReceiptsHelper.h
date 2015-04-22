@@ -10,47 +10,47 @@
 #import "FMDatabase.h"
 #import "FMDatabaseQueue.h"
 
+@class WBPrice;
+
 @interface WBReceiptsHelper : NSObject
 
 - (id)initWithDatabaseQueue:(FMDatabaseQueue*) db;
 - (BOOL)createTable;
 
--(NSArray*) selectAllForTrip:(WBTrip*) trip descending:(BOOL) desc;
+- (NSArray *)selectAllForTrip:(WBTrip *)trip descending:(BOOL)desc;
 
--(WBReceipt*) selectWithId:(int) receiptId;
+- (WBReceipt *)selectWithId:(int)receiptId;
 
--(WBReceipt*) insertReceipt:(WBReceipt*) receipt withTrip:(WBTrip*) trip;
+- (WBReceipt *)insertReceipt:(WBReceipt *)receipt withTrip:(WBTrip *)trip;
 
--(WBReceipt*) insertWithTrip:(WBTrip*)trip
-                        name:(NSString*)name
-                    category:(NSString*)category
-               imageFileName:(NSString*)imageFileName
+- (WBReceipt *)insertWithTrip:(WBTrip *)trip
+                         name:(NSString *)name
+                     category:(NSString *)category
+                imageFileName:(NSString *)imageFileName
+                       dateMs:(long long)dateMs
+                 timeZoneName:(NSString *)timeZoneName
+                      comment:(NSString *)comment
+                        price:(WBPrice *)price
+                          tax:(WBPrice *)tax
+                 isExpensable:(BOOL)isExpensable
+                   isFullPage:(BOOL)isFullPage
+               extraEditText1:(NSString *)extraEditText1
+               extraEditText2:(NSString *)extraEditText2
+               extraEditText3:(NSString *)extraEditText3;
+
+- (WBReceipt *)updateReceipt:(WBReceipt *)oldReceipt
+                        trip:(WBTrip *)trip
+                        name:(NSString *)name
+                    category:(NSString *)category
                       dateMs:(long long)dateMs
-                timeZoneName:(NSString*)timeZoneName
-                     comment:(NSString*)comment
-                       price:(NSDecimalNumber*)price
-                         tax:(NSDecimalNumber*)tax
-                currencyCode:(NSString*)currencyCode
+                     comment:(NSString *)comment
+                       price:(WBPrice *)price
+                         tax:(WBPrice *)tax
                 isExpensable:(BOOL)isExpensable
                   isFullPage:(BOOL)isFullPage
-              extraEditText1:(NSString*)extraEditText1
-              extraEditText2:(NSString*)extraEditText2
-              extraEditText3:(NSString*)extraEditText3;
-
--(WBReceipt*) updateReceipt:(WBReceipt*)oldReceipt
-                       trip:(WBTrip*)trip
-                       name:(NSString*)name
-                   category:(NSString*)category
-                     dateMs:(long long)dateMs
-                    comment:(NSString*)comment
-                      price:(NSDecimalNumber*)price
-                        tax:(NSDecimalNumber*)tax
-               currencyCode:(NSString*)currencyCode
-               isExpensable:(BOOL)isExpensable
-                 isFullPage:(BOOL)isFullPage
-             extraEditText1:(NSString*)extraEditText1
-             extraEditText2:(NSString*)extraEditText2
-             extraEditText3:(NSString*)extraEditText3;
+              extraEditText1:(NSString *)extraEditText1
+              extraEditText2:(NSString *)extraEditText2
+              extraEditText3:(NSString *)extraEditText3;
 
 -(BOOL) updateReceipt:(WBReceipt*) receipt imageFileName:(NSString*) imageFileName;
 -(WBReceipt*) copyReceipt:(WBReceipt*) receipt fromTrip:(WBTrip*)oldTrip toTrip:(WBTrip*) newTrip;

@@ -9,6 +9,7 @@
 #import "WBReceipt.h"
 #import "WBTrip.h"
 #import "WBCurrency.h"
+#import "WBPrice.h"
 
 static NSString * const NO_DATA = @"null";
 
@@ -19,61 +20,62 @@ static NSString* checkNoData(NSString* str) {
     return str;
 }
 
+@interface WBReceipt ()
+
+@property (nonatomic, strong) WBPrice *price;
+@property (nonatomic, strong) WBPrice *tax;
+
+@end
+
 @implementation WBReceipt
 {
     int _id;
     NSString *_fileName;
     NSString *_name, *_category, *_comment;
-    NSDecimalNumber *_price, *_tax;
     NSString *_extraEditText1, *_extraEditText2, *_extraEditText3;
     long long _dateMs;
     NSTimeZone *_timeZone;
     BOOL _isExpensable, _isFullPage;
-    WBCurrency *_currency;
 }
 
 +(NSString*) NO_DATA {
     return NO_DATA;
 }
 
-- (id)initWithId:(int) rid
-            name:(NSString*)name
-        category:(NSString*)category
-   imageFileName:(NSString*)imageFileName
+- (id)initWithId:(int)rid
+            name:(NSString *)name
+        category:(NSString *)category
+   imageFileName:(NSString *)imageFileName
           dateMs:(long long)dateMs
-    timeZoneName:(NSString*)timeZoneName
-         comment:(NSString*)comment
-           price:(NSDecimalNumber*)price
-             tax:(NSDecimalNumber*)tax
-    currencyCode:(NSString*)currencyCode
+    timeZoneName:(NSString *)timeZoneName
+         comment:(NSString *)comment
+           price:(WBPrice *)price
+             tax:(WBPrice *)tax
     isExpensable:(BOOL)isExpensable
       isFullPage:(BOOL)isFullPage
-  extraEditText1:(NSString*)extraEditText1
-  extraEditText2:(NSString*)extraEditText2
-  extraEditText3:(NSString*)extraEditText3
-{
+  extraEditText1:(NSString *)extraEditText1
+  extraEditText2:(NSString *)extraEditText2
+  extraEditText3:(NSString *)extraEditText3 {
     self = [super init];
     if (self) {
         _id = rid;
         _name = [name lastPathComponent];
         _category = category;
         _fileName = checkNoData([imageFileName lastPathComponent]);
-        
+
         // _date = [NSDate dateWithTimeIntervalSince1970:(dateMs/1000)];
         // NSDate store seconds so we have to store just milliseconds
         _dateMs = dateMs;
-        
+
         _timeZone = [NSTimeZone timeZoneWithName:timeZoneName];
         if (!_timeZone) {
             _timeZone = [NSTimeZone localTimeZone];
         }
-        
+
         _comment = comment;
         _price = price;
         _tax = tax;
-        
-        _currency = [WBCurrency currencyForCode:currencyCode];
-        
+
         _isExpensable = isExpensable;
         _isFullPage = isFullPage;
         _extraEditText1 = checkNoData(extraEditText1);
@@ -114,26 +116,25 @@ static NSString* checkNoData(NSString* str) {
     return _comment;
 }
 
--(NSString*)price_as_string {
-    NSString* price = [NSString stringWithFormat:@"%@", _price];
-    return price;
+- (NSString *)priceAsString {
+    return self.price.amountAsString;
 }
 
--(NSString*)tax_as_string {
-    NSString* tax = [NSString stringWithFormat:@"%@", _tax];
-    return tax;
+- (NSString *)taxAsString {
+    return self.tax.amountAsString;
 }
 
--(NSDecimalNumber*)price_as_nsdecnum {
-    return _price;
+- (NSDecimalNumber *)priceAmount {
+    return self.price.amount;
 }
 
--(NSDecimalNumber*)tax_as_nsdecnum{
-    return _tax;
+- (NSDecimalNumber *)tax_as_nsdecnum {
+    return self.tax.amount;
 }
 
--(WBCurrency*)currency {
-    return _currency;
+//TODO jaanus: check where it's called
+- (WBCurrency *)currency {
+    return self.price.currency;
 }
 
 -(BOOL)isExpensable {
@@ -206,18 +207,11 @@ static NSString* checkNoData(NSString* str) {
 }
 
 - (NSString *)priceWithCurrencyFormatted {
-    return [self formattedMoneyString:_price];
+    return self.price.currencyFormattedPrice;
 }
 
 - (NSString *)taxWithCurrencyFormatted {
-    return [self formattedMoneyString:_tax];
-}
-
-- (NSString *)formattedMoneyString:(NSDecimalNumber *)moneyAmount {
-    NSNumberFormatter *_currencyFormatter = [[NSNumberFormatter alloc] init];
-    [_currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [_currencyFormatter setCurrencyCode:[[self currency] code]];
-    return [_currencyFormatter stringFromNumber:moneyAmount];
+    return self.tax.currencyFormattedPrice;
 }
 
 -(BOOL)hasExtraEditText1 {

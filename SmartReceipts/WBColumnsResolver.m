@@ -55,7 +55,7 @@
         return [receipt name];
     } else if (opt(WBColumnNamePrice)) {
         if (isCsv) {
-            return [receipt price_as_string];
+            return [receipt priceAsString];
         }
         return [receipt priceWithCurrencyFormatted];
     } else if (opt(WBColumnNameTax)) {

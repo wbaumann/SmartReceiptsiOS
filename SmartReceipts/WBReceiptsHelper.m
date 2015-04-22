@@ -15,6 +15,8 @@
 #import "WBSqlBuilder.h"
 
 #import "WBDB.h"
+#import "WBPrice.h"
+#import "NSDecimalNumber+WBNumberParse.h"
 
 static NSString * const TABLE_NAME = @"receipts";
 static NSString * const COLUMN_ID = @"id";
@@ -85,15 +87,15 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
 
 #pragma mark - CRUD
 
--(NSArray*) selectAllForTrip:(WBTrip*) trip descending:(BOOL) desc {
-    
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ? ORDER BY %@ %@", TABLE_NAME, COLUMN_PARENT, COLUMN_DATE, (desc ? @" DESC":@" ASC")];
-    
+- (NSArray *)selectAllForTrip:(WBTrip *)trip descending:(BOOL)desc {
+
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ? ORDER BY %@ %@", TABLE_NAME, COLUMN_PARENT, COLUMN_DATE, (desc ? @" DESC" : @" ASC")];
+
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    
-    [_databaseQueue inDatabase:^(FMDatabase* database){
-        FMResultSet* resultSet = [database executeQuery:query, [trip name]];
-        
+
+    [_databaseQueue inDatabase:^(FMDatabase *database) {
+        FMResultSet *resultSet = [database executeQuery:query, [trip name]];
+
         const int idIndex = [resultSet columnIndexForName:COLUMN_ID];
         const int pathIndex = [resultSet columnIndexForName:COLUMN_PATH];
         const int nameIndex = [resultSet columnIndexForName:COLUMN_NAME];
@@ -109,66 +111,70 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
         const int extra_edittext_1_Index = [resultSet columnIndexForName:COLUMN_EXTRA_EDITTEXT_1];
         const int extra_edittext_2_Index = [resultSet columnIndexForName:COLUMN_EXTRA_EDITTEXT_2];
         const int extra_edittext_3_Index = [resultSet columnIndexForName:COLUMN_EXTRA_EDITTEXT_3];
-        
+
         while ([resultSet next]) {
+            NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumnIndex:priceIndex]];
+            NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumnIndex:taxIndex]];
+            NSString *currencyCode = [resultSet stringForColumnIndex:currencyIndex];
 
             WBReceipt *receipt =
-            [[WBReceipt alloc] initWithId:[resultSet intForColumnIndex:idIndex]
-                                     name:[resultSet stringForColumnIndex:nameIndex]
-                                 category:[resultSet stringForColumnIndex:categoryIndex]
-                            imageFileName:[resultSet stringForColumnIndex:pathIndex]
-                                   dateMs:[resultSet longLongIntForColumnIndex:dateIndex]
-                             timeZoneName:[resultSet stringForColumnIndex:timeZoneIndex]
-                                  comment:[resultSet stringForColumnIndex:commentIndex]
-                                    price:[NSDecimalNumber decimalNumberWithString:[resultSet stringForColumnIndex:priceIndex]]
-                                      tax:[NSDecimalNumber decimalNumberWithString:[resultSet stringForColumnIndex:taxIndex]]
-                             currencyCode:[resultSet stringForColumnIndex:currencyIndex]
-                             isExpensable:[resultSet boolForColumnIndex:expenseableIndex]
-                               isFullPage:![resultSet boolForColumnIndex:fullpageIndex]
-                           extraEditText1:[resultSet stringForColumnIndex:extra_edittext_1_Index]
-                           extraEditText2:[resultSet stringForColumnIndex:extra_edittext_2_Index]
-                           extraEditText3:[resultSet stringForColumnIndex:extra_edittext_3_Index]];
-            
+                    [[WBReceipt alloc] initWithId:[resultSet intForColumnIndex:idIndex]
+                                             name:[resultSet stringForColumnIndex:nameIndex]
+                                         category:[resultSet stringForColumnIndex:categoryIndex]
+                                    imageFileName:[resultSet stringForColumnIndex:pathIndex]
+                                           dateMs:[resultSet longLongIntForColumnIndex:dateIndex]
+                                     timeZoneName:[resultSet stringForColumnIndex:timeZoneIndex]
+                                          comment:[resultSet stringForColumnIndex:commentIndex]
+                                            price:[WBPrice priceWithAmount:price currencyCode:currencyCode]
+                                              tax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]
+                                     isExpensable:[resultSet boolForColumnIndex:expenseableIndex]
+                                       isFullPage:![resultSet boolForColumnIndex:fullpageIndex]
+                                   extraEditText1:[resultSet stringForColumnIndex:extra_edittext_1_Index]
+                                   extraEditText2:[resultSet stringForColumnIndex:extra_edittext_2_Index]
+                                   extraEditText3:[resultSet stringForColumnIndex:extra_edittext_3_Index]];
+
             [array addObject:receipt];
         }
-        
+
     }];
-    
+
     // copy to make immutable
     return [array copy];
 }
 
--(WBReceipt*) selectWithId:(int) receiptId {
-    
+- (WBReceipt *)selectWithId:(int)receiptId {
+
     NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ?", TABLE_NAME, COLUMN_ID];
-    
+
     __block WBReceipt *receipt = nil;
-    
-    [_databaseQueue inDatabase:^(FMDatabase* database){
-        FMResultSet* resultSet = [database executeQuery:query, [NSNumber numberWithInt:receiptId] ];
-        
+
+    [_databaseQueue inDatabase:^(FMDatabase *database) {
+        FMResultSet *resultSet = [database executeQuery:query, [NSNumber numberWithInt:receiptId]];
+
         if ([resultSet next]) {
+            NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:COLUMN_PRICE]];
+            NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:COLUMN_TAX]];
+            NSString *currencyCode = [resultSet stringForColumn:COLUMN_ISO4217];
+
             receipt =
-            [[WBReceipt alloc] initWithId:[resultSet intForColumn:COLUMN_ID]
-                                     name:[resultSet stringForColumn:COLUMN_NAME]
-                                 category:[resultSet stringForColumn:COLUMN_CATEGORY]
-                            imageFileName:[resultSet stringForColumn:COLUMN_PATH]
-                                   dateMs:[resultSet longLongIntForColumn:COLUMN_DATE]
-                             timeZoneName:[resultSet stringForColumn:COLUMN_TIMEZONE]
-                                  comment:[resultSet stringForColumn:COLUMN_COMMENT]
-                                    price:[NSDecimalNumber decimalNumberWithString:[resultSet stringForColumn:COLUMN_PRICE]]
-                                      tax:[NSDecimalNumber decimalNumberWithString:[resultSet stringForColumn:COLUMN_TAX]]
-                             currencyCode:[resultSet stringForColumn:COLUMN_ISO4217]
-                             isExpensable:[resultSet boolForColumn:COLUMN_EXPENSEABLE]
-                               isFullPage:![resultSet boolForColumn:COLUMN_NOTFULLPAGEIMAGE]
-                           extraEditText1:[resultSet stringForColumn:COLUMN_EXTRA_EDITTEXT_1]
-                           extraEditText2:[resultSet stringForColumn:COLUMN_EXTRA_EDITTEXT_2]
-                           extraEditText3:[resultSet stringForColumn:COLUMN_EXTRA_EDITTEXT_3]];
-            
+                    [[WBReceipt alloc] initWithId:[resultSet intForColumn:COLUMN_ID]
+                                             name:[resultSet stringForColumn:COLUMN_NAME]
+                                         category:[resultSet stringForColumn:COLUMN_CATEGORY]
+                                    imageFileName:[resultSet stringForColumn:COLUMN_PATH]
+                                           dateMs:[resultSet longLongIntForColumn:COLUMN_DATE]
+                                     timeZoneName:[resultSet stringForColumn:COLUMN_TIMEZONE]
+                                          comment:[resultSet stringForColumn:COLUMN_COMMENT]
+                                            price:[WBPrice priceWithAmount:price currencyCode:currencyCode]
+                                              tax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]
+                                     isExpensable:[resultSet boolForColumn:COLUMN_EXPENSEABLE]
+                                       isFullPage:![resultSet boolForColumn:COLUMN_NOTFULLPAGEIMAGE]
+                                   extraEditText1:[resultSet stringForColumn:COLUMN_EXTRA_EDITTEXT_1]
+                                   extraEditText2:[resultSet stringForColumn:COLUMN_EXTRA_EDITTEXT_2]
+                                   extraEditText3:[resultSet stringForColumn:COLUMN_EXTRA_EDITTEXT_3]];
         }
-        
+
     }];
-    
+
     return receipt;
 }
 
@@ -186,7 +192,7 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     return extra; // to update original value if changed
 }
 
--(WBReceipt*) insertReceipt:(WBReceipt*) receipt withTrip:(WBTrip*) trip {
+- (WBReceipt *)insertReceipt:(WBReceipt *)receipt withTrip:(WBTrip *)trip {
     return [self insertWithTrip:trip
                            name:[receipt name]
                        category:[receipt category]
@@ -194,9 +200,8 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
                          dateMs:[receipt dateMs]
                    timeZoneName:[[receipt timeZone] name]
                         comment:[receipt comment]
-                          price:[receipt price_as_nsdecnum]
-                            tax:[receipt tax_as_nsdecnum]
-                   currencyCode:[[receipt currency] code]
+                          price:[receipt price]
+                            tax:[receipt tax]
                    isExpensable:[receipt isExpensable]
                      isFullPage:[receipt isFullPage]
                  extraEditText1:[receipt extraEditText1]
@@ -204,25 +209,24 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
                  extraEditText3:[receipt extraEditText3]];
 }
 
--(WBReceipt*) insertWithTrip:(WBTrip*)trip
-                        name:(NSString*)name
-                    category:(NSString*)category
-               imageFileName:(NSString*)imageFileName
-                      dateMs:(long long)dateMs
-                timeZoneName:(NSString*)timeZoneName
-                     comment:(NSString*)comment
-                       price:(NSDecimalNumber*)price
-                         tax:(NSDecimalNumber*)tax
-                currencyCode:(NSString*)currencyCode
-                isExpensable:(BOOL)isExpensable
-                  isFullPage:(BOOL)isFullPage
-              extraEditText1:(NSString*)extraEditText1
-              extraEditText2:(NSString*)extraEditText2
-              extraEditText3:(NSString*)extraEditText3
+- (WBReceipt *)insertWithTrip:(WBTrip *)trip
+                         name:(NSString *)name
+                     category:(NSString *)category
+                imageFileName:(NSString *)imageFileName
+                       dateMs:(long long)dateMs
+                 timeZoneName:(NSString *)timeZoneName
+                      comment:(NSString *)comment
+                        price:(WBPrice *)price
+                          tax:(WBPrice *)tax
+                 isExpensable:(BOOL)isExpensable
+                   isFullPage:(BOOL)isFullPage
+               extraEditText1:(NSString *)extraEditText1
+               extraEditText2:(NSString *)extraEditText2
+               extraEditText3:(NSString *)extraEditText3
 {
     name = [name lastPathComponent];
     imageFileName = [imageFileName lastPathComponent];
-    
+
     WBSqlBuilder *qBuilder = [[WBSqlBuilder alloc] init];
     
     int rcptCnt = [[WBDB trips] cachedCount]; //Use this to order things more properly
@@ -263,21 +267,21 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
              andBoolean:isExpensable];
     
     [qBuilder addColumn:COLUMN_ISO4217
-              andObject:currencyCode];
+              andObject:price.currency.code];
     
     [qBuilder addColumn:COLUMN_NOTFULLPAGEIMAGE
              andBoolean:!isFullPage];
-    
-    if (![price isEqualToNumber:[NSDecimalNumber zero]]) {
+
+    if (![price.amount isEqualToNumber:[NSDecimalNumber zero]]) {
         [qBuilder addColumn:COLUMN_PRICE
-                  andObject:price];
+                  andObject:price.amount];
     }
-    
-    if (![tax isEqualToNumber:[NSDecimalNumber zero]]) {
+
+    if (![tax.amount isEqualToNumber:[NSDecimalNumber zero]]) {
         [qBuilder addColumn:COLUMN_TAX
-                  andObject:tax];
+                  andObject:tax.amount];
     }
-    
+
     //Extras
     [qBuilder addColumn:COLUMN_EXTRA_EDITTEXT_1];
     extraEditText1 = addExtra(qBuilder, extraEditText1);
@@ -305,14 +309,12 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
             *rollback = YES;
             return;
         }
-        [trip setPrice:newSumPrice];
-        
         NSString* curr = [self selectCurrencyForReceiptsWithParent:[trip name] inDatabase:database];
         if (!curr) {
             curr = [WBTrip MULTI_CURRENCY];
         }
-        [trip setCurrencyFromCode:curr];
-        
+        [trip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
+
         FMResultSet* cres = [database executeQuery:@"SELECT last_insert_rowid()"];
         if (!([cres next] && [cres columnCount]>0)) {
             *rollback = YES;
@@ -332,7 +334,6 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
                               comment:comment
                                 price:price
                                   tax:tax
-                         currencyCode:currencyCode
                          isExpensable:isExpensable
                            isFullPage:isFullPage
                        extraEditText1:extraEditText1
@@ -343,20 +344,19 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     return receipt;
 }
 
--(WBReceipt*) updateReceipt:(WBReceipt*)oldReceipt
-                       trip:(WBTrip*)trip
-                       name:(NSString*)name
-                   category:(NSString*)category
-                     dateMs:(long long)dateMs
-                    comment:(NSString*)comment
-                      price:(NSDecimalNumber*)price
-                        tax:(NSDecimalNumber*)tax
-               currencyCode:(NSString*)currencyCode
-               isExpensable:(BOOL)isExpensable
-                 isFullPage:(BOOL)isFullPage
-             extraEditText1:(NSString*)extraEditText1
-             extraEditText2:(NSString*)extraEditText2
-             extraEditText3:(NSString*)extraEditText3 {
+- (WBReceipt *)updateReceipt:(WBReceipt *)oldReceipt
+                        trip:(WBTrip *)trip
+                        name:(NSString *)name
+                    category:(NSString *)category
+                      dateMs:(long long)dateMs
+                     comment:(NSString *)comment
+                       price:(WBPrice *)price
+                         tax:(WBPrice *)tax
+                isExpensable:(BOOL)isExpensable
+                  isFullPage:(BOOL)isFullPage
+              extraEditText1:(NSString *)extraEditText1
+              extraEditText2:(NSString *)extraEditText2
+              extraEditText3:(NSString *)extraEditText3 {
     
     name = [name lastPathComponent];
     
@@ -385,16 +385,16 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     
     qPut(COLUMN_COMMENT, comment);
     
-    if (![price isEqualToNumber:[NSDecimalNumber zero]]) {
-        qPut(COLUMN_PRICE, price);
+    if (![price.amount isEqualToNumber:[NSDecimalNumber zero]]) {
+        qPut(COLUMN_PRICE, price.amount);
     }
     
-    if (![tax isEqualToNumber:[NSDecimalNumber zero]]) {
-        qPut(COLUMN_TAX, tax);
+    if (![tax.amount isEqualToNumber:[NSDecimalNumber zero]]) {
+        qPut(COLUMN_TAX, tax.amount);
     }
     
     qPut(COLUMN_EXPENSEABLE, (isExpensable? @1 : @0));
-    qPut(COLUMN_ISO4217, currencyCode);
+    qPut(COLUMN_ISO4217, price.currency.code);
     qPut(COLUMN_NOTFULLPAGEIMAGE, (isFullPage? @0 : @1));
     
     //Extras
@@ -430,14 +430,13 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
             *rollback = YES;
             return;
         }
-        [trip setPrice:newSumPrice];
-        
+
         NSString* curr = [self selectCurrencyForReceiptsWithParent:[trip name] inDatabase:database];
         if (!curr) {
             curr = [WBTrip MULTI_CURRENCY];
         }
-        [trip setCurrencyFromCode:curr];
-        
+        [trip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
+
         receipt =
         [[WBReceipt alloc] initWithId:[oldReceipt receiptId]
                                  name:name
@@ -448,7 +447,6 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
                               comment:comment
                                 price:price
                                   tax:tax
-                         currencyCode:currencyCode
                          isExpensable:isExpensable
                            isFullPage:isFullPage
                        extraEditText1:extraEditText1
@@ -553,13 +551,12 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
                 result = NO;
                 return;
             }
-            [currentTrip setPrice:newSumPrice];
-            
             NSString* curr = [self selectCurrencyForReceiptsWithParent:[currentTrip name] inDatabase:database];
             if (!curr) {
                 curr = [WBTrip MULTI_CURRENCY];
             }
-            [currentTrip setCurrencyFromCode:curr];
+
+            [currentTrip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
         }
     }];
     return result;
@@ -630,7 +627,7 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     if ([resultSet next] && [resultSet columnCount] > 0) {
         NSString *sum = [resultSet stringForColumnIndex:0];
         [resultSet close];
-        return [NSDecimalNumber decimalNumberWithString:sum];
+        return [NSDecimalNumber decimalNumberOrZero:sum];
     }
 
     return nil;
