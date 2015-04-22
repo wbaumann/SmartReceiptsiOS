@@ -132,6 +132,7 @@
 		84F4F36718CFCCD000F69A35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F36518CFCCD000F69A35 /* InfoPlist.strings */; };
 		84F4F36918CFCCD000F69A35 /* SmartReceiptsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F36818CFCCD000F69A35 /* SmartReceiptsTests.m */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
+		EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3CF0931AE68CF500B14B73 /* LaunchView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -372,6 +373,7 @@
 		84F4F36818CFCCD000F69A35 /* SmartReceiptsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartReceiptsTests.m; sourceTree = "<group>"; };
 		84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EA3CF0931AE68CF500B14B73 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -518,6 +520,7 @@
 				841BB3001908173600D28CBF /* WBAbstractPicker.m */,
 				845E33DE18D87CEF006A506A /* WBDynamicPicker.h */,
 				845E33DF18D87CEF006A506A /* WBDynamicPicker.m */,
+				EA3CF0931AE68CF500B14B73 /* LaunchView.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -1073,6 +1076,7 @@
 				8467EFF018F6FC450076BE6E /* ic_rotate_ccw@2x.png in Resources */,
 				84EA5C4818F2D52B001BAA10 /* LICENSE_CMPopTipView in Resources */,
 				8467EFF118F6FC450076BE6E /* ic_rotate_cw@2x.png in Resources */,
+				EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */,
 				8421A1F51907AF18001DF38D /* wheel@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
