@@ -18,5 +18,6 @@
 + (WBPrice *)priceWithAmount:(NSDecimalNumber *)amount currencyCode:(NSString *)currencyCode;
 - (NSString *)currencyFormattedPrice;
 + (WBPrice *)zeroPriceWithCurrencyCode:(NSString *)currencyCode;
+- (NSString *)amountAsString;
 
 @end

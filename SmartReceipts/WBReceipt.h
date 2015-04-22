@@ -42,9 +42,9 @@
 -(NSString*)name;
 -(NSString*)category;
 -(NSString*)comment;
--(NSString*)price_as_string;
--(NSString*)tax_as_string;
--(NSDecimalNumber*)price_as_nsdecnum;
+- (NSString *)priceAsString;
+- (NSString *)taxAsString;
+- (NSDecimalNumber *)priceAmount;
 -(NSDecimalNumber*)tax_as_nsdecnum;
 -(WBCurrency*)currency;
 -(BOOL)isExpensable;

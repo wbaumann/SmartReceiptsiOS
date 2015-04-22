@@ -29,6 +29,18 @@
     return [WBPrice priceWithAmount:[NSDecimalNumber zero] currencyCode:currencyCode];
 }
 
+static NSNumberFormatter *__noCurrencyFormatter;
+- (NSString *)amountAsString {
+    if (!__noCurrencyFormatter) {
+        __noCurrencyFormatter = [[NSNumberFormatter alloc] init];
+        [__noCurrencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        [__noCurrencyFormatter setCurrencySymbol:@""];
+        [__noCurrencyFormatter setGroupingSeparator:@""];
+    }
+
+    return [[__noCurrencyFormatter stringFromNumber:self.amount] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
 - (NSString *)currencyFormattedPrice {
     return [self formattedMoneyString:self.amount];
 }

@@ -116,17 +116,15 @@ static NSString* checkNoData(NSString* str) {
     return _comment;
 }
 
--(NSString*)price_as_string {
-    NSString* price = [NSString stringWithFormat:@"%@", _price];
-    return price;
+- (NSString *)priceAsString {
+    return self.price.amountAsString;
 }
 
--(NSString*)tax_as_string {
-    NSString* tax = [NSString stringWithFormat:@"%@", _tax];
-    return tax;
+- (NSString *)taxAsString {
+    return self.tax.amountAsString;
 }
 
-- (NSDecimalNumber *)price_as_nsdecnum {
+- (NSDecimalNumber *)priceAmount {
     return self.price.amount;
 }
 
