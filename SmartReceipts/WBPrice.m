@@ -25,6 +25,10 @@
     return price;
 }
 
++ (WBPrice *)zeroPriceWithCurrencyCode:(NSString *)currencyCode {
+    return [WBPrice priceWithAmount:[NSDecimalNumber zero] currencyCode:currencyCode];
+}
+
 - (NSString *)currencyFormattedPrice {
     return [self formattedMoneyString:self.amount];
 }

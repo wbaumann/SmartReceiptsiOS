@@ -9,6 +9,7 @@
 #import "WBTrip.h"
 #import "WBCurrency.h"
 #import "WBFileManager.h"
+#import "WBPrice.h"
 
 static NSString * const MULTI_CURRENCY = @"XXXXXX";
 
@@ -25,7 +26,7 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
     return MULTI_CURRENCY;
 }
 
-- (id)initWithName:(NSString *)dirName price:(NSDecimalNumber *)price startDate:(NSDate *)startDate endDate:(NSDate *)endDate startTimeZone:(NSTimeZone *)startTimeZone endTimeZone:(NSTimeZone *)endTimeZone currency:(WBCurrency *)currency miles:(float) miles
+- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDate:(NSDate *)startDate endDate:(NSDate *)endDate startTimeZone:(NSTimeZone *)startTimeZone endTimeZone:(NSTimeZone *)endTimeZone currency:(WBCurrency *)currency miles:(float) miles
 {
     self = [super init];
     if (self) {
@@ -41,7 +42,7 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
     return self;
 }
 
-- (id)initWithName:(NSString *)dirName price:(NSDecimalNumber *)price startDateMs:(long long)startDateMs endDateMs:(long long)endDateMs startTimeZoneName:(NSString *)startTimeZoneName endTimeZoneName:(NSString *)endTimeZoneName currencyCode:(NSString *)currencyCode miles:(float) miles
+- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDateMs:(long long)startDateMs endDateMs:(long long)endDateMs startTimeZoneName:(NSString *)startTimeZoneName endTimeZoneName:(NSString *)endTimeZoneName currencyCode:(NSString *)currencyCode miles:(float) miles
 {
     NSTimeZone *startTimeZone = [NSTimeZone timeZoneWithName:startTimeZoneName];
     if (!startTimeZone) {
@@ -68,7 +69,7 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
 - (id)initWithName:(NSString*) dirName startDate:(NSDate*) startDate endDate:(NSDate*) endDate currencyCode:(NSString*) currencyCode
 {
     self = [self initWithName:dirName
-                        price:[NSDecimalNumber zero]
+                        price:[WBPrice zeroPriceWithCurrencyCode:currencyCode]
                     startDate:startDate
                       endDate:endDate
                 startTimeZone:[NSTimeZone localTimeZone]
@@ -149,10 +150,7 @@ static NSString * const MULTI_CURRENCY = @"XXXXXX";
 }
 
 -(NSString*)priceWithCurrencyFormatted {
-    NSNumberFormatter *_currencyFormatter = [[NSNumberFormatter alloc] init];
-    [_currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [_currencyFormatter setCurrencyCode:[[self currency] code]];
-    return [_currencyFormatter stringFromNumber:_price];
+    return self.price.currencyFormattedPrice;
 }
 
 @end

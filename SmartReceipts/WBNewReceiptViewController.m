@@ -22,6 +22,7 @@
 
 #import "WBAutocompleteHelper.h"
 #import "WBPrice.h"
+#import "NSDecimalNumber+WBNumberParse.h"
 
 static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
 
@@ -324,9 +325,9 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
         return;
     }
 
-    NSDecimalNumber *price = [NSDecimalNumber decimalNumberWithString:self.priceTextField.text locale:[NSLocale currentLocale]];
-    NSDecimalNumber *tax = [NSDecimalNumber decimalNumberWithString:self.taxTextField.text locale:[NSLocale currentLocale]];
-    
+    NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:self.priceTextField.text withLocale:[NSLocale currentLocale]];
+    NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZero:self.taxTextField.text withLocale:[NSLocale currentLocale]];
+
     if (_receipt == nil) {
         
         NSString *imageFileName = nil;

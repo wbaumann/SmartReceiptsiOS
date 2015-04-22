@@ -11,6 +11,8 @@
 #import "WBDB.h"
 
 #import "WBPreferences.h"
+#import "WBPrice.h"
+#import "NSDecimalNumber+WBNumberParse.h"
 
 static NSString * const TABLE_NAME = @"trips";
 static NSString * const COLUMN_NAME = @"name";
@@ -97,9 +99,10 @@ static NSString * const NO_DATA = @"null";
         if (!curr) {
             curr = [WBTrip MULTI_CURRENCY];
         }
-        
+
+        NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumnIndex:priceIndex]];
         WBTrip *trip = [[WBTrip alloc] initWithName:name
-                                              price:[NSDecimalNumber decimalNumberWithString:[resultSet stringForColumnIndex:priceIndex]]
+                                              price:[WBPrice priceWithAmount:price currencyCode:curr]
                                         startDateMs:[resultSet longLongIntForColumnIndex:fromIndex]
                                           endDateMs:[resultSet longLongIntForColumnIndex:toIndex]
                                   startTimeZoneName:[resultSet stringForColumnIndex:fromTimeZoneIndex]
@@ -139,9 +142,10 @@ static NSString * const NO_DATA = @"null";
             if (!curr) {
                 curr = [WBTrip MULTI_CURRENCY];
             }
-            
+
+            NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:COLUMN_PRICE]];
             trip = [[WBTrip alloc] initWithName:name
-                                          price:[NSDecimalNumber decimalNumberWithString:[resultSet stringForColumn:COLUMN_PRICE]]
+                                          price:[WBPrice priceWithAmount:price currencyCode:curr]
                                     startDateMs:[resultSet longLongIntForColumn:COLUMN_FROM]
                                       endDateMs:[resultSet longLongIntForColumn:COLUMN_TO]
                               startTimeZoneName:[resultSet stringForColumn:COLUMN_FROM_TIMEZONE]

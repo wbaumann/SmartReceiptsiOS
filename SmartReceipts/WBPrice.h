@@ -12,10 +12,11 @@
 
 @interface WBPrice : NSObject
 
-@property (nonatomic, strong, readonly) NSDecimalNumber *value;
+@property (nonatomic, strong, readonly) NSDecimalNumber *amount;
 @property (nonatomic, strong, readonly) WBCurrency *currency;
 
 + (WBPrice *)priceWithAmount:(NSDecimalNumber *)amount currencyCode:(NSString *)currencyCode;
 - (NSString *)currencyFormattedPrice;
++ (WBPrice *)zeroPriceWithCurrencyCode:(NSString *)currencyCode;
 
 @end

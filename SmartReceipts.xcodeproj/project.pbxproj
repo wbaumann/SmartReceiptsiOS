@@ -134,6 +134,7 @@
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
 		EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3CF0931AE68CF500B14B73 /* LaunchView.xib */; };
 		EA3CF0971AE77E1900B14B73 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF0961AE77E1900B14B73 /* WBPrice.m */; };
+		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -377,6 +378,8 @@
 		EA3CF0931AE68CF500B14B73 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		EA3CF0951AE77E1900B14B73 /* WBPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPrice.h; sourceTree = "<group>"; };
 		EA3CF0961AE77E1900B14B73 /* WBPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPrice.m; sourceTree = "<group>"; };
+		EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+WBNumberParse.h"; sourceTree = "<group>"; };
+		EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+WBNumberParse.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -928,6 +931,7 @@
 			isa = PBXGroup;
 			children = (
 				4DF22941192867120008D359 /* Ads */,
+				EA3CF0981AE7962C00B14B73 /* Extensions */,
 				848EFA5D18EDC33F00AC01B4 /* reports */,
 				84D6719818D34E3200B704A4 /* util */,
 				847EFA5118E6BBF3006BE520 /* persistence */,
@@ -974,6 +978,15 @@
 				84F4F36518CFCCD000F69A35 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EA3CF0981AE7962C00B14B73 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */,
+				EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1148,6 +1161,7 @@
 				843950A418ED1D2E00A1CF83 /* WBPdfDrawer.m in Sources */,
 				84AF861018E895CF00F15C3A /* WBDateFormatter.m in Sources */,
 				84553A5318D0D2CA0009057B /* WBReceiptsViewController.m in Sources */,
+				EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */,
 				84AA925618EEAF0C0096013D /* gzlib.c in Sources */,
 				845E33DC18D86D84006A506A /* WBReceiptActionsViewController.m in Sources */,
 				84AA924C18EEAF0C0096013D /* FileInZipInfo.m in Sources */,

@@ -127,11 +127,11 @@ static NSString* checkNoData(NSString* str) {
 }
 
 - (NSDecimalNumber *)price_as_nsdecnum {
-    return self.price.value;
+    return self.price.amount;
 }
 
 - (NSDecimalNumber *)tax_as_nsdecnum {
-    return self.tax.value;
+    return self.tax.amount;
 }
 
 //TODO jaanus: check where it's called
