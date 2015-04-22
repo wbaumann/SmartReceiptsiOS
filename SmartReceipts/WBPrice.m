@@ -8,6 +8,7 @@
 
 #import "WBPrice.h"
 #import "WBCurrency.h"
+#import "Constants.h"
 
 @interface WBPrice ()
 
@@ -46,10 +47,25 @@ static NSNumberFormatter *__noCurrencyFormatter;
 }
 
 - (NSString *)formattedMoneyString:(NSDecimalNumber *)moneyAmount {
-    NSNumberFormatter *currencyFormatter = [[NSNumberFormatter alloc] init];
-    [currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [currencyFormatter setCurrencyCode:[self.currency code]];
-    return [currencyFormatter stringFromNumber:moneyAmount];
+    return [[WBPrice formatterForCurrencyCode:self.currency.code] stringFromNumber:moneyAmount];
+}
+
++ (NSNumberFormatter *)formatterForCurrencyCode:(NSString *)code {
+    NSNumberFormatter *formatter = [WBPrice sharedFormatterCache][code];
+    if (!formatter) {
+        formatter = [[NSNumberFormatter alloc] init];
+        [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        [formatter setCurrencyCode:code];
+        [WBPrice sharedFormatterCache][code] = formatter;
+    }
+
+    return formatter;
+}
+
++ (NSMutableDictionary *)sharedFormatterCache {
+    DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
+        return [[NSMutableDictionary alloc] init];
+    });
 }
 
 @end

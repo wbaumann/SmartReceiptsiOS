@@ -135,6 +135,7 @@
 		EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3CF0931AE68CF500B14B73 /* LaunchView.xib */; };
 		EA3CF0971AE77E1900B14B73 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF0961AE77E1900B14B73 /* WBPrice.m */; };
 		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
+		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -380,6 +381,8 @@
 		EA3CF0961AE77E1900B14B73 /* WBPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPrice.m; sourceTree = "<group>"; };
 		EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+WBNumberParse.h"; sourceTree = "<group>"; };
 		EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+WBNumberParse.m"; sourceTree = "<group>"; };
+		EA3CF09C1AE7C45C00B14B73 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		EA3CF09D1AE7C45C00B14B73 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -947,6 +950,8 @@
 				84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */,
 				8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */,
 				8421A1FF1907E304001DF38D /* Localizable.strings */,
+				EA3CF09C1AE7C45C00B14B73 /* Constants.h */,
+				EA3CF09D1AE7C45C00B14B73 /* Constants.m */,
 			);
 			path = SmartReceipts;
 			sourceTree = "<group>";
@@ -1182,6 +1187,7 @@
 				84AEE5D318EB54EF005DB908 /* WBObservableTripsBrowser.m in Sources */,
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
 				845E33E018D87CEF006A506A /* WBDynamicPicker.m in Sources */,
+				EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */,
 				84ABAD0618DB780E00F8D3EB /* WBReceiptsHelper.m in Sources */,
 				8478B77618D37D350041CBA3 /* WBColumnsViewController.m in Sources */,
 				8467EFE918F6E3170076BE6E /* WBImageSegue.m in Sources */,

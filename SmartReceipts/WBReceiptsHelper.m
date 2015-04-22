@@ -309,14 +309,13 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
             *rollback = YES;
             return;
         }
-        [trip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:trip.currency.code]];
-        
         NSString* curr = [self selectCurrencyForReceiptsWithParent:[trip name] inDatabase:database];
         if (!curr) {
             curr = [WBTrip MULTI_CURRENCY];
         }
         [trip setCurrencyFromCode:curr];
-        
+        [trip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
+
         FMResultSet* cres = [database executeQuery:@"SELECT last_insert_rowid()"];
         if (!([cres next] && [cres columnCount]>0)) {
             *rollback = YES;
@@ -432,14 +431,14 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
             *rollback = YES;
             return;
         }
-        [trip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:trip.currency.code]];
-        
+
         NSString* curr = [self selectCurrencyForReceiptsWithParent:[trip name] inDatabase:database];
         if (!curr) {
             curr = [WBTrip MULTI_CURRENCY];
         }
         [trip setCurrencyFromCode:curr];
-        
+        [trip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
+
         receipt =
         [[WBReceipt alloc] initWithId:[oldReceipt receiptId]
                                  name:name
@@ -554,13 +553,13 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
                 result = NO;
                 return;
             }
-            [currentTrip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:currentTrip.currency.code]];
-            
             NSString* curr = [self selectCurrencyForReceiptsWithParent:[currentTrip name] inDatabase:database];
             if (!curr) {
                 curr = [WBTrip MULTI_CURRENCY];
             }
             [currentTrip setCurrencyFromCode:curr];
+
+            [currentTrip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
         }
     }];
     return result;
