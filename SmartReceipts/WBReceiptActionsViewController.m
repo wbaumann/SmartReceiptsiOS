@@ -12,12 +12,8 @@
 
 #import "WBImageViewController.h"
 
-#import "WBReceipt.h"
-
 #import "WBAppDelegate.h"
-
-#import "WBPreferences.h"
-#import "WBImageUtils.h"
+#import "WBImagePicker.h"
 
 @interface WBReceiptActionsViewController ()
 
@@ -183,7 +179,7 @@
         }
         case 2: {
             // take / replace receipt image
-            [WBReceiptsViewController takePhotoWithViewController:self];
+            [self takePhoto];
             break;
         }
         case 3:
@@ -211,26 +207,15 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
-    
-    int size = [WBPreferences cameraMaxHeightWidth];
-    if (size > 0) {
-        chosenImage = [WBImageUtils image:chosenImage scaledToFitSize:CGSizeMake(size, size)];
-    }
-    
-    [picker dismissViewControllerAnimated:YES completion:^{
-        if (chosenImage) {
-            [self.receiptsViewController updateReceipt:self.receipt image:chosenImage];
-            [self createCellsTextsAndIndices];
+- (void)takePhoto {
+    [[WBImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *image) {
+        if (!image) {
+            return;
         }
-    }];
-    
-}
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [picker dismissViewControllerAnimated:YES completion:NULL];
+        [self.receiptsViewController updateReceipt:self.receipt image:image];
+        [self createCellsTextsAndIndices];
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

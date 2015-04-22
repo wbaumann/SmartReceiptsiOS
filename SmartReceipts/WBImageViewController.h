@@ -10,7 +10,7 @@
 
 #import "WBReceiptsViewController.h"
 
-@interface WBImageViewController : WBViewController<UIScrollViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface WBImageViewController : WBViewController<UIScrollViewDelegate>
 
 @property (strong) NSString *path;
 @property (strong) NSString *name;

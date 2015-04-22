@@ -136,6 +136,7 @@
 		EA3CF0971AE77E1900B14B73 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF0961AE77E1900B14B73 /* WBPrice.m */; };
 		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
+		EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -383,6 +384,8 @@
 		EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+WBNumberParse.m"; sourceTree = "<group>"; };
 		EA3CF09C1AE7C45C00B14B73 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		EA3CF09D1AE7C45C00B14B73 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		EA46678D1AE7EA1600B4E502 /* WBImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImagePicker.h; sourceTree = "<group>"; };
+		EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImagePicker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -935,6 +938,7 @@
 			children = (
 				4DF22941192867120008D359 /* Ads */,
 				EA3CF0981AE7962C00B14B73 /* Extensions */,
+				EA46678C1AE7EA0300B4E502 /* Utils */,
 				848EFA5D18EDC33F00AC01B4 /* reports */,
 				84D6719818D34E3200B704A4 /* util */,
 				847EFA5118E6BBF3006BE520 /* persistence */,
@@ -992,6 +996,15 @@
 				EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EA46678C1AE7EA0300B4E502 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EA46678D1AE7EA1600B4E502 /* WBImagePicker.h */,
+				EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1240,6 +1253,7 @@
 				8453368018F475E2001072AA /* WBAutocompleteHelper.m in Sources */,
 				8472F01818D6F50B00929C5B /* WBNewTripViewController.m in Sources */,
 				845E33EF18D8AE2E006A506A /* WBTrip.m in Sources */,
+				EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */,
 				84ABACF718DB66FA00F8D3EB /* FMDatabaseAdditions.m in Sources */,
 				848EFA6018EDC37100AC01B4 /* WBTripPdfCreator.m in Sources */,
 			);

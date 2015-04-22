@@ -18,7 +18,6 @@
 
 #import "WBDB.h"
 #import "WBPreferences.h"
-#import "WBImageUtils.h"
 
 #import "WBTextUtils.h"
 #import "WBBackupHelper.h"
@@ -26,7 +25,7 @@
 #import "HUD.h"
 
 #import "WBAppDelegate.h"
-#import "UIActionSheet+Blocks.h"
+#import "WBImagePicker.h"
 
 static NSString *CellIdentifier = @"Cell";
 
@@ -411,57 +410,6 @@ static NSString *CellIdentifier = @"Cell";
     [self.tableView setEditing:editing animated:animated];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
-    
-    int size = [WBPreferences cameraMaxHeightWidth];
-    if (size > 0) {
-        chosenImage = [WBImageUtils image:chosenImage scaledToFitSize:CGSizeMake(size, size)];
-    }
-    
-    [picker dismissViewControllerAnimated:YES completion:^{
-        if (chosenImage) {
-            _imageForCreatorSegue = chosenImage;
-            _receiptForCretorSegue = nil;
-            [self performSegueWithIdentifier: @"ReceiptCreator" sender: self];
-        }
-    }];
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-}
-
-+ (void)takePhotoWithViewController:(UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> *)vcDelegate {
-    BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
-    if (!hasCamera) {
-        [self presentImagePickerWithSource:UIImagePickerControllerSourceTypePhotoLibrary onController:vcDelegate];
-        return;
-    }
-
-    void (^chooseFromLibraryAction)() = ^{
-        [WBReceiptsViewController presentImagePickerWithSource:UIImagePickerControllerSourceTypePhotoLibrary onController:vcDelegate];
-    };
-    void (^takeImageAction)() = ^{
-        [WBReceiptsViewController presentImagePickerWithSource:UIImagePickerControllerSourceTypeCamera onController:vcDelegate];
-    };
-
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Select image from", nil)
-                                                     cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"Cancel", nil)]
-                                                destructiveButtonItem:nil
-                                                     otherButtonItems:[RIButtonItem itemWithLabel:NSLocalizedString(@"Choose Existing", nil) action:chooseFromLibraryAction],
-                                                                      [RIButtonItem itemWithLabel:NSLocalizedString(@"Take Photo", nil) action:takeImageAction], nil];
-    [actionSheet showInView:vcDelegate.view];
-}
-
-+ (void)presentImagePickerWithSource:(UIImagePickerControllerSourceType)source onController:(UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> *)controller {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = controller;
-    picker.sourceType = source;
-
-    [controller presentViewController:picker animated:YES completion:NULL];
-}
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex!=1) {
         return;
@@ -478,7 +426,15 @@ static NSString *CellIdentifier = @"Cell";
 }
 
 - (IBAction)actionCamera:(id)sender {
-    [WBReceiptsViewController takePhotoWithViewController:self];
+    [[WBImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *image) {
+        if (!image) {
+            return;
+        }
+
+        _imageForCreatorSegue = image;
+        _receiptForCretorSegue = nil;
+        [self performSegueWithIdentifier:@"ReceiptCreator" sender:self];
+    }];
 }
 
 - (IBAction)actionDistance:(id)sender {

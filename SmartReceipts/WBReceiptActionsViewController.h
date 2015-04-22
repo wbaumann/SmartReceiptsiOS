@@ -14,10 +14,11 @@
 
 #import <QuickLook/QuickLook.h>
 
-@interface WBReceiptActionsViewController : WBTableViewController<UIDocumentInteractionControllerDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-- (IBAction)actionDone:(id)sender;
+@interface WBReceiptActionsViewController : WBTableViewController<UIDocumentInteractionControllerDelegate>
 
 @property (weak,nonatomic) WBReceiptsViewController* receiptsViewController;
 @property WBReceipt* receipt;
+
+- (IBAction)actionDone:(id)sender;
 
 @end

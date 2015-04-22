@@ -19,7 +19,7 @@
 
 @end
 
-@interface WBReceiptsViewController : WBTableViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,WBObservableReceiptsDelegate,WBNewReceiptViewControllerDelegate,UITextFieldDelegate>
+@interface WBReceiptsViewController : WBTableViewController<UIAlertViewDelegate,WBObservableReceiptsDelegate,WBNewReceiptViewControllerDelegate,UITextFieldDelegate>
 
 @property (weak,nonatomic) id<WBReceiptsViewControllerDelegate> delegate;
 
@@ -35,8 +35,6 @@
 - (void) swapDownReceipt:(WBReceipt*) receipt;
 
 - (BOOL) attachPdfOrImageFile:(NSString*)pdfFile toReceipt:(WBReceipt*) receipt;
-
-+ (void)takePhotoWithViewController:(UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate> *)vcDelegate;
 
 - (void) notifyReceiptRemoved:(WBReceipt*) receipt;
 - (BOOL) updateReceipt:(WBReceipt*) receipt image:(UIImage*) image;
