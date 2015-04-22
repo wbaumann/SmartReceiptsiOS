@@ -9,27 +9,30 @@
 #import <Foundation/Foundation.h>
 
 @class WBTrip, WBCurrency;
+@class WBPrice;
 
 @interface WBReceipt : NSObject
+
+@property (nonatomic, strong, readonly) WBPrice *price;
+@property (nonatomic, strong, readonly) WBPrice *tax;
+
 
 +(NSString*) NO_DATA;
 
 - (id)initWithId:(int)rid
-            name:(NSString*)name
-        category:(NSString*)category
-   imageFileName:(NSString*)imageFileName
+            name:(NSString *)name
+        category:(NSString *)category
+   imageFileName:(NSString *)imageFileName
           dateMs:(long long)dateMs
-    timeZoneName:(NSString*)timeZoneName
-         comment:(NSString*)comment
-           price:(NSDecimalNumber*)price
-             tax:(NSDecimalNumber*)tax
-    currencyCode:(NSString*)currencyCode
+    timeZoneName:(NSString *)timeZoneName
+         comment:(NSString *)comment
+           price:(WBPrice *)price
+             tax:(WBPrice *)tax
     isExpensable:(BOOL)isExpensable
       isFullPage:(BOOL)isFullPage
-  extraEditText1:(NSString*)extraEditText1
-  extraEditText2:(NSString*)extraEditText2
-  extraEditText3:(NSString*)extraEditText3
-;
+  extraEditText1:(NSString *)extraEditText1
+  extraEditText2:(NSString *)extraEditText2
+  extraEditText3:(NSString *)extraEditText3;
 
 -(int)receiptId;
 -(NSString*)imageFileName;

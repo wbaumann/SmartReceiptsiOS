@@ -21,6 +21,7 @@
 #import "WBFileManager.h"
 
 #import "WBAutocompleteHelper.h"
+#import "WBPrice.h"
 
 static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
 
@@ -322,6 +323,9 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
         [WBNewReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Please enter a name",nil)];
         return;
     }
+
+    NSDecimalNumber *price = [NSDecimalNumber decimalNumberWithString:self.priceTextField.text locale:[NSLocale currentLocale]];
+    NSDecimalNumber *tax = [NSDecimalNumber decimalNumberWithString:self.taxTextField.text locale:[NSLocale currentLocale]];
     
     if (_receipt == nil) {
         
@@ -334,7 +338,8 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
                 imageFileName = nil;
             }
         }
-        
+
+        NSString *currencyCode = [self.currencyButton titleForState:UIControlStateNormal];
         newReceipt =
         [[WBDB receipts] insertWithTrip:_trip
                                    name:name
@@ -343,9 +348,8 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
                                  dateMs:_dateMs
                            timeZoneName:[_timeZone name]
                                 comment:self.commentField.text
-                                  price:[NSDecimalNumber decimalNumberWithString:self.priceTextField.text locale:[NSLocale currentLocale]]
-                                    tax:[NSDecimalNumber decimalNumberWithString:self.taxTextField.text locale:[NSLocale currentLocale]]
-                           currencyCode:[self.currencyButton titleForState:UIControlStateNormal]
+                                  price:[WBPrice priceWithAmount:price currencyCode:currencyCode]
+                                    tax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]
                            isExpensable:self.expensableSwitch.on
                              isFullPage:self.fullPageImageSwitch.on
                          extraEditText1:nil
@@ -358,7 +362,8 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
         }
         [self.delegate viewController:self newReceipt:newReceipt];
     } else {
-        
+
+        NSString *currencyCode = [self.currencyButton.titleLabel text];
         newReceipt =
         [[WBDB receipts] updateReceipt:_receipt
                                   trip:_trip
@@ -366,9 +371,8 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
                               category:[self.categoryButton.titleLabel text]
                                 dateMs:_dateMs
                                comment:self.commentField.text
-                                 price:[NSDecimalNumber decimalNumberWithString:self.priceTextField.text locale:[NSLocale currentLocale]]
-                                   tax:[NSDecimalNumber decimalNumberWithString:self.taxTextField.text locale:[NSLocale currentLocale]]
-                          currencyCode:[self.currencyButton.titleLabel text]
+                                 price:[WBPrice priceWithAmount:price currencyCode:currencyCode]
+                                   tax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]
                           isExpensable:self.expensableSwitch.on
                             isFullPage:self.fullPageImageSwitch.on
                         extraEditText1:nil
