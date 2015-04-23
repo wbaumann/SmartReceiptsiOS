@@ -13,7 +13,7 @@
 
 #import "WBImageUtils.h"
 #import "WBFileManager.h"
-#import "WBPreferences.h"
+#import "WBImagePicker.h"
 
 @interface WBImageViewController ()
 {
@@ -88,38 +88,6 @@
     });
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
-    
-    int size = [WBPreferences cameraMaxHeightWidth];
-    if (size > 0) {
-        chosenImage = [WBImageUtils image:chosenImage scaledToFitSize:CGSizeMake(size, size)];
-    }
-    
-    [picker dismissViewControllerAnimated:YES completion:^{
-        if (chosenImage) {
-            image = chosenImage;
-            
-            NSData *data;
-            if([[self.path pathExtension] caseInsensitiveCompare:@"png"] == NSOrderedSame) {
-                data = UIImagePNGRepresentation(image);
-            } else {
-                data = UIImageJPEGRepresentation(image, 0.85);
-            }
-            
-            [WBFileManager forceWriteData:data to:self.path];
-            
-            [self refreshSizes];
-        }
-    }];
-    
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-}
-
 - (IBAction)actionRotateCcw:(id)sender {
     [self rotateToOrientation:UIImageOrientationLeft];
 }
@@ -129,6 +97,25 @@
 }
 
 - (IBAction)actionCamera:(id)sender {
-    [WBReceiptsViewController takePhotoWithViewController:self];
+    [[WBImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *picked) {
+        if (!picked) {
+            return;
+        }
+
+        UIImage *chosenImage = picked;
+
+        image = chosenImage;
+
+        NSData *data;
+        if ([[self.path pathExtension] caseInsensitiveCompare:@"png"] == NSOrderedSame) {
+            data = UIImagePNGRepresentation(image);
+        } else {
+            data = UIImageJPEGRepresentation(image, 0.85);
+        }
+
+        [WBFileManager forceWriteData:data to:self.path];
+
+        [self refreshSizes];
+    }];
 }
 @end
