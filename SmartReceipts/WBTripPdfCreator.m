@@ -7,21 +7,10 @@
 //
 
 #import "WBTripPdfCreator.h"
-
 #import "WBPdfDrawer.h"
-
-#import "WBDB.h"
-
-#import "WBReceipt.h"
-#import "WBCategory.h"
-
-#import "WBColumnsResolver.h"
 #import "WBDateFormatter.h"
-
 #import "WBReceiptAndIndex.h"
-
-#import "WBPreferences.h"
-#import "WBReportUtils.h"
+#import "ReceiptColumn.h"
 
 static inline NSString* safeString(NSString* str) {
     return str ? str : @"";
@@ -30,19 +19,16 @@ static inline NSString* safeString(NSString* str) {
 @implementation WBTripPdfCreator
 {
     WBPdfDrawer *_pdfDrawer;
-    WBColumnsResolver *_columnsResolver;
     WBDateFormatter *_dateFormatter;
     
     NSArray *_columns;
 }
 
-- (id)initWithColumns:(NSArray*)columns columnsResolver:(WBColumnsResolver*)columnsResolver
-{
+- (id)initWithColumns:(NSArray *)columns {
     self = [super init];
     if (self) {
         _columns = columns;
         _pdfDrawer = [[WBPdfDrawer alloc] init];
-        _columnsResolver = columnsResolver;
         _dateFormatter = [[WBDateFormatter alloc] init];
     }
     return self;
@@ -68,7 +54,7 @@ static inline NSString* safeString(NSString* str) {
     {
         // header
         NSMutableArray *array = @[].mutableCopy;
-        for (WBColumn* column in _columns) {
+        for (Column *column in _columns) {
             [array addObject:safeString([column name])];
         }
         [_pdfDrawer drawRowBorderedTexts:array];
@@ -80,8 +66,8 @@ static inline NSString* safeString(NSString* str) {
             int index = [rwi index];
             
             NSMutableArray *array = @[].mutableCopy;
-            for (WBColumn* column in _columns) {
-                NSString *val = [_columnsResolver resolveToString:column forTrip:trip forReceipt:receipt withReceiptIndex:index isCsv:NO];
+            for (ReceiptColumn* column in _columns) {
+                NSString *val = [column valueFromReceipt:receipt inTrip:trip receiptIndex:index forCSV:NO];
                 [array addObject:safeString(val)];
             }
             

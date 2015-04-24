@@ -71,9 +71,8 @@
     }];
     NSArray *pdfColumns = [[WBDB pdfColumns] selectAll];
     NSArray *csvColumns = [[WBDB csvColumns] selectAll];
-    WBColumnsResolver *columnsResolver = [[WBColumnsResolver alloc] initWithCategories:[[WBDB categories] selectAll]];
-    
-    WBTripPdfCreator *pdfCreator = [[WBTripPdfCreator alloc] initWithColumns:pdfColumns columnsResolver:columnsResolver];
+
+    WBTripPdfCreator *pdfCreator = [[WBTripPdfCreator alloc] initWithColumns:pdfColumns];
     WBTripCsvCreator *csvCreator = [[WBTripCsvCreator alloc] initWithColumns:csvColumns];
     WBImageStampler *imagesStampler = [[WBImageStampler alloc] init];
     

@@ -13,7 +13,7 @@
 
 @interface WBTripPdfCreator : NSObject
 
--(id)initWithColumns:(NSArray*)columns columnsResolver:(WBColumnsResolver*)columnsResolver;
+- (id)initWithColumns:(NSArray *)columns;
 
 -(BOOL) createFullPdfFileAtPath:(NSString*) filePath receiptsAndIndexes:(NSArray*)receiptsAndIndexes trip:(WBTrip*) trip;
 
