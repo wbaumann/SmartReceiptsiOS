@@ -90,7 +90,6 @@
 		84AA925D18EEAF0C0096013D /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA924218EEAF0C0096013D /* trees.c */; };
 		84AA925E18EEAF0C0096013D /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA924418EEAF0C0096013D /* uncompr.c */; };
 		84AA925F18EEAF0C0096013D /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA924718EEAF0C0096013D /* zutil.c */; };
-		84AA926218EEBBFB0096013D /* WBReportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA926118EEBBFB0096013D /* WBReportUtils.m */; };
 		84AA926518EEC0A00096013D /* WBTripCsvCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA926418EEC0A00096013D /* WBTripCsvCreator.m */; };
 		84ABACF618DB66FA00F8D3EB /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACED18DB66FA00F8D3EB /* FMDatabase.m */; };
 		84ABACF718DB66FA00F8D3EB /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACEF18DB66FA00F8D3EB /* FMDatabaseAdditions.m */; };
@@ -123,6 +122,7 @@
 		84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */; };
 		84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F35518CFCCD000F69A35 /* Images.xcassets */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
+		EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */; };
 		EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3CF0931AE68CF500B14B73 /* LaunchView.xib */; };
 		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
@@ -154,6 +154,8 @@
 		EA8D81B81AEA7EE200BAC943 /* Column.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B71AEA7EE200BAC943 /* Column.m */; };
 		EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81BA1AEA861400BAC943 /* ReceiptUnknownColumn.m */; };
 		EA8D81D41AEA956600BAC943 /* SmartReceiptsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81D31AEA956600BAC943 /* SmartReceiptsTests.m */; };
+		EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */; };
+		EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -321,8 +323,6 @@
 		84AA924618EEAF0C0096013D /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
 		84AA924718EEAF0C0096013D /* zutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zutil.c; sourceTree = "<group>"; };
 		84AA924818EEAF0C0096013D /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zutil.h; sourceTree = "<group>"; };
-		84AA926018EEBBFB0096013D /* WBReportUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReportUtils.h; sourceTree = "<group>"; };
-		84AA926118EEBBFB0096013D /* WBReportUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtils.m; sourceTree = "<group>"; };
 		84AA926318EEC0A00096013D /* WBTripCsvCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTripCsvCreator.h; sourceTree = "<group>"; };
 		84AA926418EEC0A00096013D /* WBTripCsvCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTripCsvCreator.m; sourceTree = "<group>"; };
 		84ABACEC18DB66FA00F8D3EB /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -381,6 +381,7 @@
 		84F4F35C18CFCCD000F69A35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtilsTest.m; sourceTree = "<group>"; };
 		EA3CF0931AE68CF500B14B73 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+WBNumberParse.h"; sourceTree = "<group>"; };
 		EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+WBNumberParse.m"; sourceTree = "<group>"; };
@@ -443,6 +444,8 @@
 		EA8D81CF1AEA956600BAC943 /* SmartReceiptsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartReceiptsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA8D81D21AEA956600BAC943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA8D81D31AEA956600BAC943 /* SmartReceiptsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartReceiptsTests.m; sourceTree = "<group>"; };
+		EA8D81DB1AEA965D00BAC943 /* WBReportUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReportUtils.h; sourceTree = "<group>"; };
+		EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -686,8 +689,6 @@
 				84A5834718EDEA27003A464D /* WBColumnsResolver.m */,
 				84AA921318EE89E00096013D /* WBImageStampler.h */,
 				84AA921418EE89E00096013D /* WBImageStampler.m */,
-				84AA926018EEBBFB0096013D /* WBReportUtils.h */,
-				84AA926118EEBBFB0096013D /* WBReportUtils.m */,
 			);
 			name = reports;
 			sourceTree = "<group>";
@@ -979,6 +980,7 @@
 				84D6719518D336E100B704A4 /* images */,
 				EA8D81691AEA668100BAC943 /* Model */,
 				847EFA5118E6BBF3006BE520 /* persistence */,
+				EA8D81DA1AEA965D00BAC943 /* Reports */,
 				848EFA5D18EDC33F00AC01B4 /* reports */,
 				84F4F34A18CFCCD000F69A35 /* Supporting Files */,
 				EA46678C1AE7EA0300B4E502 /* Utils */,
@@ -1096,8 +1098,9 @@
 		EA8D81D01AEA956600BAC943 /* SmartReceiptsTests */ = {
 			isa = PBXGroup;
 			children = (
-				EA8D81D31AEA956600BAC943 /* SmartReceiptsTests.m */,
+				EA8D81DE1AEA96A700BAC943 /* Reports */,
 				EA8D81D11AEA956600BAC943 /* Supporting Files */,
+				EA8D81D31AEA956600BAC943 /* SmartReceiptsTests.m */,
 			);
 			path = SmartReceiptsTests;
 			sourceTree = "<group>";
@@ -1108,6 +1111,23 @@
 				EA8D81D21AEA956600BAC943 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EA8D81DA1AEA965D00BAC943 /* Reports */ = {
+			isa = PBXGroup;
+			children = (
+				EA8D81DB1AEA965D00BAC943 /* WBReportUtils.h */,
+				EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */,
+			);
+			path = Reports;
+			sourceTree = "<group>";
+		};
+		EA8D81DE1AEA96A700BAC943 /* Reports */ = {
+			isa = PBXGroup;
+			children = (
+				EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */,
+			);
+			path = Reports;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1281,7 +1301,6 @@
 				EA8D819A1AEA7C3100BAC943 /* ReceiptColumnImagePath.m in Sources */,
 				EA8D81781AEA668100BAC943 /* WBTrip.m in Sources */,
 				EA8D817C1AEA6AF000BAC943 /* ReceiptColumn.m in Sources */,
-				84AA926218EEBBFB0096013D /* WBReportUtils.m in Sources */,
 				EA8D81A61AEA7C7D00BAC943 /* ReceiptColumnName.m in Sources */,
 				8467EFE618F6E0310076BE6E /* WBImageViewController.m in Sources */,
 				EA8D81A31AEA7C6B00BAC943 /* ReceiptColumnDate.m in Sources */,
@@ -1323,6 +1342,7 @@
 				84AA925218EEAF0C0096013D /* compress.c in Sources */,
 				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
 				847C887518D7BA4500A33397 /* WBGenerateViewController.m in Sources */,
+				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
 				84ABAD0918DB79D900F8D3EB /* WBCategoriesHelper.m in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
 				84AA925818EEAF0C0096013D /* gzwrite.c in Sources */,
@@ -1388,6 +1408,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA8D81D41AEA956600BAC943 /* SmartReceiptsTests.m in Sources */,
+				EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */,
+				EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1660,6 +1682,7 @@
 				EA8D81D91AEA956600BAC943 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

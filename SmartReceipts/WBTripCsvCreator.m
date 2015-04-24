@@ -16,9 +16,10 @@ static NSString* const QUOTE = @"\"";
 static NSString* const ESCAPED_QUOTE = @"\"\"";
 
 static NSString *escapedCSV(NSString* csv) {
-    if (!csv)
+    if (!csv) {
         return @"";
-    
+    }
+
 #warning FIXME: on Android is csv.replace(QUOTE, ESCAPED_QUOTE); that means that result of replacement is not saved
     
     if ([csv rangeOfString:QUOTE].location != NSNotFound){
@@ -52,9 +53,6 @@ static NSString *escapedCSV(NSString* csv) {
 }
 
 - (BOOL)createCsvFileAtPath:(NSString *)filePath receiptsAndIndexes:(NSArray *)receiptsAndIndexes trip:(WBTrip *)trip includeHeaders:(BOOL)includeHeaders {
-    NSLog(@"Columns:%@", self.columns);
-    NSLog(@"Receipts:%@", receiptsAndIndexes);
-
     NSMutableString *data = [[NSMutableString alloc] init];
 
     if (includeHeaders) {
@@ -82,7 +80,6 @@ static NSString *escapedCSV(NSString* csv) {
         }
     }
 
-    NSLog(@"Data:'%@'", data);
     NSError *writeError = nil;
     BOOL writeSuccess = [data writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&writeError];
     if (writeError) {

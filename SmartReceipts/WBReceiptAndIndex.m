@@ -32,11 +32,11 @@
     return _index;
 }
 
-+ (NSArray*) receiptsAndIndicesFromReceipts:(NSArray*) receipts filteredWith:(BOOL (^)(WBReceipt*)) filter {
++ (NSArray *)receiptsAndIndicesFromReceipts:(NSArray *)receipts filteredWith:(BOOL (^)(WBReceipt *))filter {
     NSMutableArray *arr = [NSMutableArray new];
     int i = 0;
-    for (WBReceipt* rec in receipts) {
-        if (!filter(rec)) {
+    for (WBReceipt *rec in receipts) {
+        if (filter(rec)) {
             continue;
         }
         ++i;

@@ -18,6 +18,6 @@
 
 - (int) index;
 
-+ (NSArray*) receiptsAndIndicesFromReceipts:(NSArray*) receipts filteredWith:(BOOL (^)(WBReceipt*)) filter;
++ (NSArray *)receiptsAndIndicesFromReceipts:(NSArray *)receipts filteredWith:(BOOL (^)(WBReceipt *))filter;
 
 @end

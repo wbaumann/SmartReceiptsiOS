@@ -11,15 +11,15 @@
 
 @implementation WBReportUtils
 
-+(BOOL) filterOutReceipt:(WBReceipt*) receipt {
++ (BOOL)filterOutReceipt:(WBReceipt *)receipt {
     if ([WBPreferences onlyIncludeExpensableReceiptsInReports] && ![receipt isExpensable]) {
-        return true;
+        return YES;
     }
-    else if ([receipt priceAmount] < [[NSDecimalNumber alloc] initWithFloat:[WBPreferences minimumReceiptPriceToIncludeInReports]]) {
-        return true;
+    else if ([[receipt priceAmount] compare:[[NSDecimalNumber alloc] initWithFloat:[WBPreferences minimumReceiptPriceToIncludeInReports]]] == NSOrderedAscending) {
+        return YES;
     }
     else {
-        return false;
+        return NO;
     }
 }
 

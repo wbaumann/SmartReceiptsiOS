@@ -65,9 +65,9 @@
     NSString *pdfImagesPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@Images.pdf", [_trip name]]];
     NSString *csvPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@.csv", [_trip name]]];
     NSString *zipPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@.zip", [_trip name]]];
-    
+
     NSArray *rai = [WBReceiptAndIndex receiptsAndIndicesFromReceipts:_receipts filteredWith:^BOOL(WBReceipt *r) {
-        return ![WBReportUtils filterOutReceipt:r];
+        return [WBReportUtils filterOutReceipt:r];
     }];
     NSArray *pdfColumns = [[WBDB pdfColumns] selectAll];
     NSArray *csvColumns = [[WBDB csvColumns] selectAll];
