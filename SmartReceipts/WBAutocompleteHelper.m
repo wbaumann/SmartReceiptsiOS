@@ -49,7 +49,11 @@
     if (!hint) {
         return @"";
     }
-    
+
+    if ([prefix length] >= [hint length]) {
+        return @"";
+    }
+
     return [hint substringFromIndex:[prefix length]];
 }
 
