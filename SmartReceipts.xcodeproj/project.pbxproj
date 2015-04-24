@@ -42,9 +42,6 @@
 		845E33DC18D86D84006A506A /* WBReceiptActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33DB18D86D84006A506A /* WBReceiptActionsViewController.m */; };
 		845E33E018D87CEF006A506A /* WBDynamicPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33DF18D87CEF006A506A /* WBDynamicPicker.m */; };
 		845E33E318D8A12C006A506A /* WBTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33E218D8A12C006A506A /* WBTextUtils.m */; };
-		845E33E918D8ADF9006A506A /* WBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33E818D8ADF9006A506A /* WBCategory.m */; };
-		845E33EC18D8AE24006A506A /* WBReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33EB18D8AE24006A506A /* WBReceipt.m */; };
-		845E33EF18D8AE2E006A506A /* WBTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33EE18D8AE2E006A506A /* WBTrip.m */; };
 		8467EFE618F6E0310076BE6E /* WBImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467EFE518F6E0310076BE6E /* WBImageViewController.m */; };
 		8467EFE918F6E3170076BE6E /* WBImageSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467EFE818F6E3170076BE6E /* WBImageSegue.m */; };
 		8467EFEC18F6F9530076BE6E /* ic_rotate_ccw.png in Resources */ = {isa = PBXBuildFile; fileRef = 8467EFEA18F6F9530076BE6E /* ic_rotate_ccw.png */; };
@@ -63,7 +60,6 @@
 		848EFA6018EDC37100AC01B4 /* WBTripPdfCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EFA5F18EDC37100AC01B4 /* WBTripPdfCreator.m */; };
 		849A142F18D240D200399A0F /* WBSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849A142E18D240D200399A0F /* WBSettingsViewController.m */; };
 		84A3ADE318D48E15003DB722 /* WBNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3ADE218D48E15003DB722 /* WBNewCategoryViewController.m */; };
-		84A3ADE918D4A0FC003DB722 /* WBColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3ADE818D4A0FC003DB722 /* WBColumn.m */; };
 		84A5834818EDEA27003A464D /* WBColumnsResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A5834718EDEA27003A464D /* WBColumnsResolver.m */; };
 		84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A5834D18EDF897003A464D /* WBReceiptAndIndex.m */; };
 		84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A6C82A18F510B6003B876F /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -133,10 +129,14 @@
 		84F4F36918CFCCD000F69A35 /* SmartReceiptsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F36818CFCCD000F69A35 /* SmartReceiptsTests.m */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
 		EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3CF0931AE68CF500B14B73 /* LaunchView.xib */; };
-		EA3CF0971AE77E1900B14B73 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF0961AE77E1900B14B73 /* WBPrice.m */; };
 		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
 		EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */; };
+		EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816B1AEA668100BAC943 /* WBCategory.m */; };
+		EA8D81751AEA668100BAC943 /* WBColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816D1AEA668100BAC943 /* WBColumn.m */; };
+		EA8D81761AEA668100BAC943 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816F1AEA668100BAC943 /* WBPrice.m */; };
+		EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81711AEA668100BAC943 /* WBReceipt.m */; };
+		EA8D81781AEA668100BAC943 /* WBTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81731AEA668100BAC943 /* WBTrip.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,12 +216,6 @@
 		845E33DF18D87CEF006A506A /* WBDynamicPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDynamicPicker.m; sourceTree = "<group>"; };
 		845E33E118D8A12C006A506A /* WBTextUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTextUtils.h; sourceTree = "<group>"; };
 		845E33E218D8A12C006A506A /* WBTextUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTextUtils.m; sourceTree = "<group>"; };
-		845E33E718D8ADF9006A506A /* WBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategory.h; sourceTree = "<group>"; };
-		845E33E818D8ADF9006A506A /* WBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategory.m; sourceTree = "<group>"; };
-		845E33EA18D8AE24006A506A /* WBReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceipt.h; sourceTree = "<group>"; };
-		845E33EB18D8AE24006A506A /* WBReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReceipt.m; sourceTree = "<group>"; };
-		845E33ED18D8AE2E006A506A /* WBTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTrip.h; sourceTree = "<group>"; };
-		845E33EE18D8AE2E006A506A /* WBTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTrip.m; sourceTree = "<group>"; };
 		8467EFE418F6E0310076BE6E /* WBImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageViewController.h; sourceTree = "<group>"; };
 		8467EFE518F6E0310076BE6E /* WBImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageViewController.m; sourceTree = "<group>"; };
 		8467EFE718F6E3170076BE6E /* WBImageSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageSegue.h; sourceTree = "<group>"; };
@@ -254,8 +248,6 @@
 		849A142E18D240D200399A0F /* WBSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSettingsViewController.m; sourceTree = "<group>"; };
 		84A3ADE118D48E15003DB722 /* WBNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBNewCategoryViewController.h; sourceTree = "<group>"; };
 		84A3ADE218D48E15003DB722 /* WBNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNewCategoryViewController.m; sourceTree = "<group>"; };
-		84A3ADE718D4A0FC003DB722 /* WBColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumn.h; sourceTree = "<group>"; };
-		84A3ADE818D4A0FC003DB722 /* WBColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumn.m; sourceTree = "<group>"; };
 		84A5834618EDEA27003A464D /* WBColumnsResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnsResolver.h; sourceTree = "<group>"; };
 		84A5834718EDEA27003A464D /* WBColumnsResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnsResolver.m; sourceTree = "<group>"; };
 		84A5834C18EDF897003A464D /* WBReceiptAndIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceiptAndIndex.h; sourceTree = "<group>"; };
@@ -378,14 +370,22 @@
 		84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA3CF0931AE68CF500B14B73 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
-		EA3CF0951AE77E1900B14B73 /* WBPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPrice.h; sourceTree = "<group>"; };
-		EA3CF0961AE77E1900B14B73 /* WBPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPrice.m; sourceTree = "<group>"; };
 		EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+WBNumberParse.h"; sourceTree = "<group>"; };
 		EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+WBNumberParse.m"; sourceTree = "<group>"; };
 		EA3CF09C1AE7C45C00B14B73 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		EA3CF09D1AE7C45C00B14B73 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		EA46678D1AE7EA1600B4E502 /* WBImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImagePicker.h; sourceTree = "<group>"; };
 		EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImagePicker.m; sourceTree = "<group>"; };
+		EA8D816A1AEA668100BAC943 /* WBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategory.h; sourceTree = "<group>"; };
+		EA8D816B1AEA668100BAC943 /* WBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategory.m; sourceTree = "<group>"; };
+		EA8D816C1AEA668100BAC943 /* WBColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumn.h; sourceTree = "<group>"; };
+		EA8D816D1AEA668100BAC943 /* WBColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumn.m; sourceTree = "<group>"; };
+		EA8D816E1AEA668100BAC943 /* WBPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPrice.h; sourceTree = "<group>"; };
+		EA8D816F1AEA668100BAC943 /* WBPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPrice.m; sourceTree = "<group>"; };
+		EA8D81701AEA668100BAC943 /* WBReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceipt.h; sourceTree = "<group>"; };
+		EA8D81711AEA668100BAC943 /* WBReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReceipt.m; sourceTree = "<group>"; };
+		EA8D81721AEA668100BAC943 /* WBTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTrip.h; sourceTree = "<group>"; };
+		EA8D81731AEA668100BAC943 /* WBTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTrip.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -571,23 +571,6 @@
 				841BB307190837F000D28CBF /* WBNoTripsViewController.m */,
 			);
 			name = Receipts;
-			sourceTree = "<group>";
-		};
-		845E33E618D8ADE9006A506A /* model */ = {
-			isa = PBXGroup;
-			children = (
-				845E33E718D8ADF9006A506A /* WBCategory.h */,
-				845E33E818D8ADF9006A506A /* WBCategory.m */,
-				84A3ADE718D4A0FC003DB722 /* WBColumn.h */,
-				84A3ADE818D4A0FC003DB722 /* WBColumn.m */,
-				EA3CF0951AE77E1900B14B73 /* WBPrice.h */,
-				EA3CF0961AE77E1900B14B73 /* WBPrice.m */,
-				845E33EA18D8AE24006A506A /* WBReceipt.h */,
-				845E33EB18D8AE24006A506A /* WBReceipt.m */,
-				845E33ED18D8AE2E006A506A /* WBTrip.h */,
-				845E33EE18D8AE2E006A506A /* WBTrip.m */,
-			);
-			name = model;
 			sourceTree = "<group>";
 		};
 		8467EFE318F6E01C0076BE6E /* Image */ = {
@@ -937,25 +920,25 @@
 			isa = PBXGroup;
 			children = (
 				4DF22941192867120008D359 /* Ads */,
-				EA3CF0981AE7962C00B14B73 /* Extensions */,
-				EA46678C1AE7EA0300B4E502 /* Utils */,
-				848EFA5D18EDC33F00AC01B4 /* reports */,
-				84D6719818D34E3200B704A4 /* util */,
-				847EFA5118E6BBF3006BE520 /* persistence */,
-				845E33E618D8ADE9006A506A /* model */,
-				845E33DD18D87CB9006A506A /* views */,
 				84A73C3418E74C5C00D35A57 /* collections */,
+				EA3CF0981AE7962C00B14B73 /* Extensions */,
 				84D6719518D336E100B704A4 /* images */,
-				84553A4518D09B2E0009057B /* VC */,
-				84F4F35218CFCCD000F69A35 /* WBAppDelegate.h */,
-				84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */,
-				84F4F35518CFCCD000F69A35 /* Images.xcassets */,
+				EA8D81691AEA668100BAC943 /* Model */,
+				847EFA5118E6BBF3006BE520 /* persistence */,
+				848EFA5D18EDC33F00AC01B4 /* reports */,
 				84F4F34A18CFCCD000F69A35 /* Supporting Files */,
-				84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */,
-				8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */,
-				8421A1FF1907E304001DF38D /* Localizable.strings */,
+				EA46678C1AE7EA0300B4E502 /* Utils */,
+				84D6719818D34E3200B704A4 /* util */,
+				84553A4518D09B2E0009057B /* VC */,
+				845E33DD18D87CB9006A506A /* views */,
 				EA3CF09C1AE7C45C00B14B73 /* Constants.h */,
 				EA3CF09D1AE7C45C00B14B73 /* Constants.m */,
+				84F4F35518CFCCD000F69A35 /* Images.xcassets */,
+				8421A1FF1907E304001DF38D /* Localizable.strings */,
+				84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */,
+				8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */,
+				84F4F35218CFCCD000F69A35 /* WBAppDelegate.h */,
+				84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */,
 			);
 			path = SmartReceipts;
 			sourceTree = "<group>";
@@ -1005,6 +988,23 @@
 				EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		EA8D81691AEA668100BAC943 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EA8D816A1AEA668100BAC943 /* WBCategory.h */,
+				EA8D816B1AEA668100BAC943 /* WBCategory.m */,
+				EA8D816C1AEA668100BAC943 /* WBColumn.h */,
+				EA8D816D1AEA668100BAC943 /* WBColumn.m */,
+				EA8D816E1AEA668100BAC943 /* WBPrice.h */,
+				EA8D816F1AEA668100BAC943 /* WBPrice.m */,
+				EA8D81701AEA668100BAC943 /* WBReceipt.h */,
+				EA8D81711AEA668100BAC943 /* WBReceipt.m */,
+				EA8D81721AEA668100BAC943 /* WBTrip.h */,
+				EA8D81731AEA668100BAC943 /* WBTrip.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1170,9 +1170,9 @@
 				849A142F18D240D200399A0F /* WBSettingsViewController.m in Sources */,
 				84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */,
 				8478B77D18D395280041CBA3 /* WBNewReceiptViewController.m in Sources */,
-				845E33EC18D8AE24006A506A /* WBReceipt.m in Sources */,
 				84ABAD0218DB700000F8D3EB /* WBTripsHelper.m in Sources */,
 				4D33F3E219D8965800FE4EC4 /* GADConstants.m in Sources */,
+				EA8D81781AEA668100BAC943 /* WBTrip.m in Sources */,
 				84AA926218EEBBFB0096013D /* WBReportUtils.m in Sources */,
 				8467EFE618F6E0310076BE6E /* WBImageViewController.m in Sources */,
 				84AEE5CD18EB47AB005DB908 /* WBMoveCopyReceiptViewController.m in Sources */,
@@ -1207,9 +1207,8 @@
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
 				84ABACF818DB66FA00F8D3EB /* FMDatabasePool.m in Sources */,
 				84AA925218EEAF0C0096013D /* compress.c in Sources */,
-				EA3CF0971AE77E1900B14B73 /* WBPrice.m in Sources */,
+				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
 				847C887518D7BA4500A33397 /* WBGenerateViewController.m in Sources */,
-				84A3ADE918D4A0FC003DB722 /* WBColumn.m in Sources */,
 				84ABAD0918DB79D900F8D3EB /* WBCategoriesHelper.m in Sources */,
 				84AA925818EEAF0C0096013D /* gzwrite.c in Sources */,
 				84ABACFA18DB66FA00F8D3EB /* FMResultSet.m in Sources */,
@@ -1228,6 +1227,7 @@
 				84AA925F18EEAF0C0096013D /* zutil.c in Sources */,
 				84AA925918EEAF0C0096013D /* infback.c in Sources */,
 				847C887218D7ACC600A33397 /* WBTableViewController.m in Sources */,
+				EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */,
 				847EFA5418E6BC93006BE520 /* WBSqlBuilder.m in Sources */,
 				84DCAAE318E4B48A00ECAECC /* WBPreferences.m in Sources */,
 				84AA924F18EEAF0C0096013D /* ZipReadStream.m in Sources */,
@@ -1243,16 +1243,16 @@
 				84AA925318EEAF0C0096013D /* crc32.c in Sources */,
 				84B4691E18E98838006E7A77 /* WBObservableReceipts.m in Sources */,
 				84AA924E18EEAF0C0096013D /* ZipFile.m in Sources */,
+				EA8D81751AEA668100BAC943 /* WBColumn.m in Sources */,
 				84AF861418E8C27600F15C3A /* WBCellWithPriceNameDate.m in Sources */,
 				84AA925A18EEAF0C0096013D /* inffast.c in Sources */,
-				845E33E918D8ADF9006A506A /* WBCategory.m in Sources */,
 				84ABAD0C18DB7B4400F8D3EB /* WBColumnsHelper.m in Sources */,
 				84AA924B18EEAF0C0096013D /* zip.c in Sources */,
 				84AA924918EEAF0C0096013D /* ioapi.c in Sources */,
 				84ABACFF18DB6F5F00F8D3EB /* WBDB.m in Sources */,
+				EA8D81761AEA668100BAC943 /* WBPrice.m in Sources */,
 				8453368018F475E2001072AA /* WBAutocompleteHelper.m in Sources */,
 				8472F01818D6F50B00929C5B /* WBNewTripViewController.m in Sources */,
-				845E33EF18D8AE2E006A506A /* WBTrip.m in Sources */,
 				EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */,
 				84ABACF718DB66FA00F8D3EB /* FMDatabaseAdditions.m in Sources */,
 				848EFA6018EDC37100AC01B4 /* WBTripPdfCreator.m in Sources */,
