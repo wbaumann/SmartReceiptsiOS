@@ -12,7 +12,7 @@
 
 @implementation ReceiptColumnImagePath
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt inTrip:(WBTrip *)trip forCSV:(BOOL)forCSV {
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt inTrip:(WBTrip *)trip receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
     return [receipt hasFileForTrip:trip] ? [receipt imageFilePathForTrip:trip] : @"";
 }
 

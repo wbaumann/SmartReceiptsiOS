@@ -16,7 +16,7 @@
 
 @implementation ReceiptColumnDate
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt inTrip:(WBTrip *)trip receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
     return [self.dateFormatter formattedDate:[receipt dateFromDateMs] inTimeZone:[receipt timeZone]];
 }
 

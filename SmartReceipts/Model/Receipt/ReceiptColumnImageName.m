@@ -12,7 +12,7 @@
 
 @implementation ReceiptColumnImageName
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt inTrip:(WBTrip *)trip forCSV:(BOOL)forCSV {
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt inTrip:(WBTrip *)trip receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
 #warning FIXME: on Android (receipt.hasFile()) ? "" : receipt.getFileName() looks like bug
     return [receipt hasFileForTrip:trip] ? [receipt imageFileName] : @"";
 }

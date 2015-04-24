@@ -6,11 +6,32 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <objc/NSObjCRuntime.h>
+#import <objc/objc.h>
 #import "ReceiptColumnCategoryCode.h"
+#import "WBReceipt.h"
+#import "WBTrip.h"
+#import "WBDB.h"
+
+@interface ReceiptColumnCategoryCode ()
+
+@property (nonatomic, strong) NSDictionary *categoriesMap;
+
+@end
 
 @implementation ReceiptColumnCategoryCode
 
-//} else if (opt(WBColumnNameCategoryCode)) {
-//    return [_categoriesMap objectForKey:[receipt category]];
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt inTrip:(WBTrip *)trip receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
+    return self.categoriesMap[[receipt category]];
+}
+
+
+- (NSDictionary *)categoriesMap {
+    if (!_categoriesMap) {
+        NSArray *categories = [[WBDB categories] selectAll];
+        _categoriesMap = [WBCategory namesToCodeMapFromCategories:categories];
+    }
+    return _categoriesMap;
+}
 
 @end
