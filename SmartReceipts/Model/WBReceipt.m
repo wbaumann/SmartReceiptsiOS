@@ -172,7 +172,7 @@ static NSString* checkNoData(NSString* str) {
     return [[trip directoryPath] stringByAppendingPathComponent:_fileName];
 }
 
--(BOOL)hasFileForTrip:(WBTrip*)trip{
+- (BOOL)hasFileForTrip:(WBTrip *)trip {
     return _fileName && ([[NSFileManager defaultManager] fileExistsAtPath:[self imageFilePathForTrip:trip]]);
 }
 

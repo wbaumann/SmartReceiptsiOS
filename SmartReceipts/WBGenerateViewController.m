@@ -74,7 +74,7 @@
     WBColumnsResolver *columnsResolver = [[WBColumnsResolver alloc] initWithCategories:[[WBDB categories] selectAll]];
     
     WBTripPdfCreator *pdfCreator = [[WBTripPdfCreator alloc] initWithColumns:pdfColumns columnsResolver:columnsResolver];
-    WBTripCsvCreator *csvCreator = [[WBTripCsvCreator alloc] initWithColumns:csvColumns columnsResolver:columnsResolver];
+    WBTripCsvCreator *csvCreator = [[WBTripCsvCreator alloc] initWithColumns:csvColumns];
     WBImageStampler *imagesStampler = [[WBImageStampler alloc] init];
     
     NSMutableArray *createdAttachements = @[].mutableCopy;

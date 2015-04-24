@@ -7,13 +7,10 @@
 //
 
 #import "WBTripCsvCreator.h"
-
-#import "WBColumnsResolver.h"
-#import "WBDateFormatter.h"
-
 #import "WBReceiptAndIndex.h"
-
-#import "WBReportUtils.h"
+#import "Column.h"
+#import "ReceiptColumn.h"
+#import "WBTrip.h"
 
 static NSString* const QUOTE = @"\"";
 static NSString* const ESCAPED_QUOTE = @"\"\"";
@@ -38,52 +35,61 @@ static NSString *escapedCSV(NSString* csv) {
     return csv;
 }
 
-@implementation WBTripCsvCreator
-{
-    WBColumnsResolver *_columnsResolver;
-    NSArray *_columns;
-}
+@interface WBTripCsvCreator ()
 
-- (id)initWithColumns:(NSArray*)columns columnsResolver:(WBColumnsResolver*)columnsResolver
-{
+@property (nonatomic, strong) NSArray *columns;
+
+@end
+
+@implementation WBTripCsvCreator
+
+- (id)initWithColumns:(NSArray *)columns {
     self = [super init];
     if (self) {
         _columns = columns;
-        _columnsResolver = columnsResolver;
     }
     return self;
 }
 
--(BOOL) createCsvFileAtPath:(NSString*) filePath receiptsAndIndexes:(NSArray*)receiptsAndIndexes trip:(WBTrip*) trip includeHeaders:(BOOL) includeHeaders {
+- (BOOL)createCsvFileAtPath:(NSString *)filePath receiptsAndIndexes:(NSArray *)receiptsAndIndexes trip:(WBTrip *)trip includeHeaders:(BOOL)includeHeaders {
+    NSLog(@"Columns:%@", self.columns);
+    NSLog(@"Receipts:%@", receiptsAndIndexes);
 
-    NSMutableString* data = [[NSMutableString alloc] init];
-    
+    NSMutableString *data = [[NSMutableString alloc] init];
+
     if (includeHeaders) {
         NSMutableArray *array = @[].mutableCopy;
-        for (WBColumn* column in _columns) {
+        for (Column *column in self.columns) {
             [array addObject:escapedCSV([column name])];
         }
         [data appendString:[array componentsJoinedByString:@","]];
         [data appendString:@"\n"];
     }
-    
+
     for (WBReceiptAndIndex *rwi in receiptsAndIndexes) {
         @autoreleasepool {
             WBReceipt *receipt = [rwi receipt];
             int index = [rwi index];
-            
+
             NSMutableArray *array = @[].mutableCopy;
-            for (WBColumn* column in _columns) {
-                NSString *val = [_columnsResolver resolveToString:column forTrip:trip forReceipt:receipt withReceiptIndex:index isCsv:YES];
+            for (ReceiptColumn *column in self.columns) {
+                NSString *val = [column valueFromReceipt:receipt inTrip:trip receiptIndex:index forCSV:YES];
                 [array addObject:escapedCSV(val)];
             }
-            
+
             [data appendString:[array componentsJoinedByString:@","]];
             [data appendString:@"\n"];
         }
     }
-    
-    return [data writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+
+    NSLog(@"Data:'%@'", data);
+    NSError *writeError = nil;
+    BOOL writeSuccess = [data writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&writeError];
+    if (writeError) {
+        NSLog(@"CSV write error:%@", writeError);
+    }
+
+    return writeSuccess;
 }
 
 @end

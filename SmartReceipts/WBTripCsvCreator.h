@@ -8,12 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "WBColumnsResolver.h"
+@class WBTrip;
 
 @interface WBTripCsvCreator : NSObject
 
-- (id)initWithColumns:(NSArray*)columns columnsResolver:(WBColumnsResolver*)columnsResolver;
-
--(BOOL) createCsvFileAtPath:(NSString*) filePath receiptsAndIndexes:(NSArray*)receiptsAndIndexes trip:(WBTrip*) trip includeHeaders:(BOOL) includeHeaders;
+- (id)initWithColumns:(NSArray *)columns;
+- (BOOL)createCsvFileAtPath:(NSString *)filePath receiptsAndIndexes:(NSArray *)receiptsAndIndexes trip:(WBTrip *)trip includeHeaders:(BOOL)includeHeaders;
 
 @end

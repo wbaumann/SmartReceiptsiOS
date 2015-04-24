@@ -7,6 +7,7 @@
 //
 
 #import "WBColumnsHelper.h"
+#import "ReceiptColumn.h"
 
 static NSString * const TABLE_NAME_PDF = @"pdfcolumns";
 static NSString * const TABLE_NAME_CSV = @"csvcolumns";
@@ -67,8 +68,7 @@ static NSString * const COLUMN_TYPE = @"type";
         const int typeIndex = [resultSet columnIndexForName:COLUMN_TYPE];
         
         while ([resultSet next]) {
-            WBColumn *col = [[WBColumn alloc] initWithIndex:[resultSet intForColumnIndex:idIndex] name:[resultSet stringForColumnIndex:typeIndex]];
-            
+            ReceiptColumn *col = [ReceiptColumn columnWithIndex:[resultSet intForColumnIndex:idIndex] name:[resultSet stringForColumnIndex:typeIndex]];
             [array addObject:col];
         }
         
