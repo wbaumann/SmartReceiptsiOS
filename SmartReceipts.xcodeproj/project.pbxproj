@@ -122,11 +122,6 @@
 		84F4F35018CFCCD000F69A35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F34F18CFCCD000F69A35 /* main.m */; };
 		84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */; };
 		84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F35518CFCCD000F69A35 /* Images.xcassets */; };
-		84F4F35D18CFCCD000F69A35 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F35C18CFCCD000F69A35 /* XCTest.framework */; };
-		84F4F35E18CFCCD000F69A35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34318CFCCD000F69A35 /* Foundation.framework */; };
-		84F4F35F18CFCCD000F69A35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34718CFCCD000F69A35 /* UIKit.framework */; };
-		84F4F36718CFCCD000F69A35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F36518CFCCD000F69A35 /* InfoPlist.strings */; };
-		84F4F36918CFCCD000F69A35 /* SmartReceiptsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F36818CFCCD000F69A35 /* SmartReceiptsTests.m */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
 		EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3CF0931AE68CF500B14B73 /* LaunchView.xib */; };
 		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
@@ -158,10 +153,11 @@
 		EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B41AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m */; };
 		EA8D81B81AEA7EE200BAC943 /* Column.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B71AEA7EE200BAC943 /* Column.m */; };
 		EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81BA1AEA861400BAC943 /* ReceiptUnknownColumn.m */; };
+		EA8D81D41AEA956600BAC943 /* SmartReceiptsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81D31AEA956600BAC943 /* SmartReceiptsTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		84F4F36018CFCCD000F69A35 /* PBXContainerItemProxy */ = {
+		EA8D81D51AEA956600BAC943 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 84F4F33818CFCCD000F69A35 /* Project object */;
 			proxyType = 1;
@@ -201,7 +197,6 @@
 		6FC1BDDC7B500AA1408D37DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		841BB2FB190806F600D28CBF /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		841BB2FC190806F600D28CBF /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		841BB2FD190806F600D28CBF /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		841BB2FE1908167700D28CBF /* WBAbstractPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAbstractPicker.h; sourceTree = "<group>"; };
 		841BB3001908173600D28CBF /* WBAbstractPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAbstractPicker.m; sourceTree = "<group>"; };
 		841BB302190818C400D28CBF /* WBActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBActionSheetPicker.h; sourceTree = "<group>"; };
@@ -383,11 +378,7 @@
 		84F4F35218CFCCD000F69A35 /* WBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBAppDelegate.h; sourceTree = "<group>"; };
 		84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBAppDelegate.m; sourceTree = "<group>"; };
 		84F4F35518CFCCD000F69A35 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		84F4F35B18CFCCD000F69A35 /* SmartReceiptsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartReceiptsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F4F35C18CFCCD000F69A35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		84F4F36418CFCCD000F69A35 /* SmartReceiptsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartReceiptsTests-Info.plist"; sourceTree = "<group>"; };
-		84F4F36618CFCCD000F69A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		84F4F36818CFCCD000F69A35 /* SmartReceiptsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartReceiptsTests.m; sourceTree = "<group>"; };
 		84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA3CF0931AE68CF500B14B73 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
@@ -449,6 +440,9 @@
 		EA8D81B71AEA7EE200BAC943 /* Column.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Column.m; sourceTree = "<group>"; };
 		EA8D81B91AEA861400BAC943 /* ReceiptUnknownColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptUnknownColumn.h; sourceTree = "<group>"; };
 		EA8D81BA1AEA861400BAC943 /* ReceiptUnknownColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptUnknownColumn.m; sourceTree = "<group>"; };
+		EA8D81CF1AEA956600BAC943 /* SmartReceiptsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartReceiptsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA8D81D21AEA956600BAC943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA8D81D31AEA956600BAC943 /* SmartReceiptsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartReceiptsTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -474,13 +468,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84F4F35818CFCCD000F69A35 /* Frameworks */ = {
+		EA8D81CC1AEA956600BAC943 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F4F35D18CFCCD000F69A35 /* XCTest.framework in Frameworks */,
-				84F4F35F18CFCCD000F69A35 /* UIKit.framework in Frameworks */,
-				84F4F35E18CFCCD000F69A35 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -941,7 +932,7 @@
 			children = (
 				84AA921618EEAE590096013D /* 3rdparty */,
 				84F4F34918CFCCD000F69A35 /* SmartReceipts */,
-				84F4F36218CFCCD000F69A35 /* SmartReceiptsTests */,
+				EA8D81D01AEA956600BAC943 /* SmartReceiptsTests */,
 				84F4F34218CFCCD000F69A35 /* Frameworks */,
 				84F4F34118CFCCD000F69A35 /* Products */,
 				7AB70D3C8F1E6FC81F10B74C /* Pods */,
@@ -952,7 +943,7 @@
 			isa = PBXGroup;
 			children = (
 				84F4F34018CFCCD000F69A35 /* SmartReceipts.app */,
-				84F4F35B18CFCCD000F69A35 /* SmartReceiptsTests.xctest */,
+				EA8D81CF1AEA956600BAC943 /* SmartReceiptsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1013,24 +1004,6 @@
 				84F4F34C18CFCCD000F69A35 /* InfoPlist.strings */,
 				84F4F34F18CFCCD000F69A35 /* main.m */,
 				84F4F35118CFCCD000F69A35 /* SmartReceipts-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		84F4F36218CFCCD000F69A35 /* SmartReceiptsTests */ = {
-			isa = PBXGroup;
-			children = (
-				84F4F36818CFCCD000F69A35 /* SmartReceiptsTests.m */,
-				84F4F36318CFCCD000F69A35 /* Supporting Files */,
-			);
-			path = SmartReceiptsTests;
-			sourceTree = "<group>";
-		};
-		84F4F36318CFCCD000F69A35 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				84F4F36418CFCCD000F69A35 /* SmartReceiptsTests-Info.plist */,
-				84F4F36518CFCCD000F69A35 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1120,6 +1093,23 @@
 			path = Receipt;
 			sourceTree = "<group>";
 		};
+		EA8D81D01AEA956600BAC943 /* SmartReceiptsTests */ = {
+			isa = PBXGroup;
+			children = (
+				EA8D81D31AEA956600BAC943 /* SmartReceiptsTests.m */,
+				EA8D81D11AEA956600BAC943 /* Supporting Files */,
+			);
+			path = SmartReceiptsTests;
+			sourceTree = "<group>";
+		};
+		EA8D81D11AEA956600BAC943 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA8D81D21AEA956600BAC943 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1142,22 +1132,22 @@
 			productReference = 84F4F34018CFCCD000F69A35 /* SmartReceipts.app */;
 			productType = "com.apple.product-type.application";
 		};
-		84F4F35A18CFCCD000F69A35 /* SmartReceiptsTests */ = {
+		EA8D81CE1AEA956600BAC943 /* SmartReceiptsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84F4F36F18CFCCD000F69A35 /* Build configuration list for PBXNativeTarget "SmartReceiptsTests" */;
+			buildConfigurationList = EA8D81D71AEA956600BAC943 /* Build configuration list for PBXNativeTarget "SmartReceiptsTests" */;
 			buildPhases = (
-				84F4F35718CFCCD000F69A35 /* Sources */,
-				84F4F35818CFCCD000F69A35 /* Frameworks */,
-				84F4F35918CFCCD000F69A35 /* Resources */,
+				EA8D81CB1AEA956600BAC943 /* Sources */,
+				EA8D81CC1AEA956600BAC943 /* Frameworks */,
+				EA8D81CD1AEA956600BAC943 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				84F4F36118CFCCD000F69A35 /* PBXTargetDependency */,
+				EA8D81D61AEA956600BAC943 /* PBXTargetDependency */,
 			);
 			name = SmartReceiptsTests;
 			productName = SmartReceiptsTests;
-			productReference = 84F4F35B18CFCCD000F69A35 /* SmartReceiptsTests.xctest */;
+			productReference = EA8D81CF1AEA956600BAC943 /* SmartReceiptsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1178,7 +1168,8 @@
 							};
 						};
 					};
-					84F4F35A18CFCCD000F69A35 = {
+					EA8D81CE1AEA956600BAC943 = {
+						CreatedOnToolsVersion = 6.3;
 						TestTargetID = 84F4F33F18CFCCD000F69A35;
 					};
 				};
@@ -1198,7 +1189,7 @@
 			projectRoot = "";
 			targets = (
 				84F4F33F18CFCCD000F69A35 /* SmartReceipts */,
-				84F4F35A18CFCCD000F69A35 /* SmartReceiptsTests */,
+				EA8D81CE1AEA956600BAC943 /* SmartReceiptsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1230,11 +1221,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84F4F35918CFCCD000F69A35 /* Resources */ = {
+		EA8D81CD1AEA956600BAC943 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F4F36718CFCCD000F69A35 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1393,21 +1383,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84F4F35718CFCCD000F69A35 /* Sources */ = {
+		EA8D81CB1AEA956600BAC943 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F4F36918CFCCD000F69A35 /* SmartReceiptsTests.m in Sources */,
+				EA8D81D41AEA956600BAC943 /* SmartReceiptsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		84F4F36118CFCCD000F69A35 /* PBXTargetDependency */ = {
+		EA8D81D61AEA956600BAC943 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 84F4F33F18CFCCD000F69A35 /* SmartReceipts */;
-			targetProxy = 84F4F36018CFCCD000F69A35 /* PBXContainerItemProxy */;
+			targetProxy = EA8D81D51AEA956600BAC943 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1426,15 +1416,6 @@
 			children = (
 				84F4F34D18CFCCD000F69A35 /* en */,
 				841BB2FB190806F600D28CBF /* pl */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		84F4F36518CFCCD000F69A35 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84F4F36618CFCCD000F69A35 /* en */,
-				841BB2FD190806F600D28CBF /* pl */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1601,43 +1582,53 @@
 			};
 			name = Release;
 		};
-		84F4F37018CFCCD000F69A35 /* Debug */ = {
+		EA8D81D81AEA956600BAC943 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartReceipts.app/SmartReceipts";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SmartReceipts/SmartReceipts-Prefix.pch";
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "SmartReceiptsTests/SmartReceiptsTests-Info.plist";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = SmartReceiptsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartReceipts.app/SmartReceipts";
 			};
 			name = Debug;
 		};
-		84F4F37118CFCCD000F69A35 /* Release */ = {
+		EA8D81D91AEA956600BAC943 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartReceipts.app/SmartReceipts";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SmartReceipts/SmartReceipts-Prefix.pch";
-				INFOPLIST_FILE = "SmartReceiptsTests/SmartReceiptsTests-Info.plist";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = SmartReceiptsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartReceipts.app/SmartReceipts";
 			};
 			name = Release;
 		};
@@ -1662,14 +1653,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84F4F36F18CFCCD000F69A35 /* Build configuration list for PBXNativeTarget "SmartReceiptsTests" */ = {
+		EA8D81D71AEA956600BAC943 /* Build configuration list for PBXNativeTarget "SmartReceiptsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				84F4F37018CFCCD000F69A35 /* Debug */,
-				84F4F37118CFCCD000F69A35 /* Release */,
+				EA8D81D81AEA956600BAC943 /* Debug */,
+				EA8D81D91AEA956600BAC943 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
