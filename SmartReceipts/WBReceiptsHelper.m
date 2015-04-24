@@ -620,7 +620,10 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
 }
 
 - (NSDecimalNumber *)sumPricesForReceiptsWithParent:(NSString *)parent inDatabase:(FMDatabase *)database {
-    NSString *query = [NSString stringWithFormat:@"SELECT SUM(%@) FROM %@ WHERE %@ = ? AND %@ = 1", COLUMN_PRICE, TABLE_NAME, COLUMN_PARENT, COLUMN_EXPENSEABLE];
+    NSString *query = [NSString stringWithFormat:@"SELECT SUM(%@) FROM %@ WHERE %@ = ?", COLUMN_PRICE, TABLE_NAME, COLUMN_PARENT];
+    if ([WBPreferences onlyIncludeExpensableReceiptsInReports]) {
+        query = [query stringByAppendingFormat:@" AND %@ = 1", COLUMN_EXPENSEABLE];
+    }
 
     FMResultSet *resultSet = [database executeQuery:query, parent];
 
