@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong, readonly) WBPrice *price;
 @property (nonatomic, strong, readonly) WBPrice *tax;
+@property (nonatomic, strong) WBTrip *trip;
 
 
 +(NSString*) NO_DATA;

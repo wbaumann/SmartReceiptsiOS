@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <objc/NSObjCRuntime.h>
+#import <objc/objc.h>
 #import "ReceiptColumnReportEndDate.h"
 #import "WBReceipt.h"
 #import "WBTrip.h"
@@ -13,8 +15,8 @@
 
 @implementation ReceiptColumnReportEndDate
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt inTrip:(WBTrip *)trip receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
-    return [self.dateFormatter formattedDate:[trip endDate] inTimeZone:[trip endTimeZone]];
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
+    return [self.dateFormatter formattedDate:[receipt.trip endDate] inTimeZone:[receipt.trip endTimeZone]];
 }
 
 @end

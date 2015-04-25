@@ -6,14 +6,16 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <objc/NSObjCRuntime.h>
+#import <objc/objc.h>
 #import "ReceiptColumnImagePath.h"
 #import "WBReceipt.h"
 #import "WBTrip.h"
 
 @implementation ReceiptColumnImagePath
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt inTrip:(WBTrip *)trip receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
-    return [receipt hasFileForTrip:trip] ? [receipt imageFilePathForTrip:trip] : @"";
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
+    return [receipt hasFileForTrip:receipt.trip] ? [receipt imageFilePathForTrip:receipt.trip] : @"";
 }
 
 @end

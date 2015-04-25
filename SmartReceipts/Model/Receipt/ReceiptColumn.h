@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <objc/NSObjCRuntime.h>
+#import <objc/objc.h>
 #import "Column.h"
 
 @class WBReceipt;
@@ -18,6 +20,6 @@
 + (ReceiptColumn *)columnWithIndex:(NSInteger)index name:(NSString *)columnName;
 + (NSArray *)availableColumnsNames;
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt inTrip:(WBTrip *)trip receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV;
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV;
 
 @end

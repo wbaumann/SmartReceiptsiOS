@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
+#import <objc/objc.h>
 #import "WBTripCsvCreator.h"
 #import "WBReceiptAndIndex.h"
 #import "Column.h"
@@ -52,7 +53,7 @@ static NSString *escapedCSV(NSString* csv) {
     return self;
 }
 
-- (BOOL)createCsvFileAtPath:(NSString *)filePath receiptsAndIndexes:(NSArray *)receiptsAndIndexes trip:(WBTrip *)trip includeHeaders:(BOOL)includeHeaders {
+- (BOOL)createCsvFileAtPath:(NSString *)filePath receiptsAndIndexes:(NSArray *)receiptsAndIndexes includeHeaders:(BOOL)includeHeaders {
     NSMutableString *data = [[NSMutableString alloc] init];
 
     if (includeHeaders) {
@@ -71,7 +72,7 @@ static NSString *escapedCSV(NSString* csv) {
 
             NSMutableArray *array = @[].mutableCopy;
             for (ReceiptColumn *column in self.columns) {
-                NSString *val = [column valueFromReceipt:receipt inTrip:trip receiptIndex:index forCSV:YES];
+                NSString *val = [column valueFromReceipt:receipt receiptIndex:index forCSV:YES];
                 [array addObject:escapedCSV(val)];
             }
 

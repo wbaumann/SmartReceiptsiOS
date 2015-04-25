@@ -22,10 +22,9 @@
 #import "WBAppDelegate.h"
 
 @interface WBGenerateViewController ()
-{
-    NSArray *_receipts;
-    WBTrip *_trip;
-}
+
+@property (nonatomic, strong) WBTrip *trip;
+@property (nonatomic, strong) NSArray *receipts;
 
 @property (weak) UIViewController *viewControllerForMail;
 
@@ -60,7 +59,12 @@
 - (MFMailComposeViewController*) preparedComposer {
     
     [_trip createDirectoryIfNotExists];
-    
+
+    //TODO jaanus: this should be done when receipt loaded from DB
+    for (WBReceipt *receipt in self.receipts) {
+        [receipt setTrip:self.trip];
+    }
+
     NSString *pdfPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@.pdf", [_trip name]]];
     NSString *pdfImagesPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@Images.pdf", [_trip name]]];
     NSString *csvPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@.csv", [_trip name]]];
@@ -88,7 +92,7 @@
     
     if (self.pdfImagesField.on) {
         [self clearPath:pdfImagesPath];
-        if(![pdfCreator createImagesPdfFileAtPath:pdfImagesPath receiptsAndIndexes:rai trip:_trip]) {
+        if(![pdfCreator createImagesPdfFileAtPath:pdfImagesPath receiptsAndIndexes:rai]) {
             return nil;
         }
         [createdAttachements addObject:pdfImagesPath];
@@ -96,7 +100,7 @@
     
     if (self.csvFileField.on) {
         [self clearPath:csvPath];
-        if (![csvCreator createCsvFileAtPath:csvPath receiptsAndIndexes:rai trip:_trip includeHeaders:[WBPreferences includeCSVHeaders]]) {
+        if (![csvCreator createCsvFileAtPath:csvPath receiptsAndIndexes:rai includeHeaders:[WBPreferences includeCSVHeaders]]) {
             return nil;
         }
         [createdAttachements addObject:csvPath];

@@ -6,14 +6,16 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <objc/NSObjCRuntime.h>
+#import <objc/objc.h>
 #import "ReceiptColumnReportName.h"
 #import "WBReceipt.h"
 #import "WBTrip.h"
 
 @implementation ReceiptColumnReportName
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt inTrip:(WBTrip *)trip receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
-    return [trip name];
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
+    return [receipt.trip name];
 }
 
 @end

@@ -19,8 +19,6 @@
 
 - (NSArray *)selectAllForTrip:(WBTrip *)trip descending:(BOOL)desc;
 
-- (WBReceipt *)selectWithId:(int)receiptId;
-
 - (WBReceipt *)insertReceipt:(WBReceipt *)receipt withTrip:(WBTrip *)trip;
 
 - (WBReceipt *)insertWithTrip:(WBTrip *)trip

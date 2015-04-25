@@ -6,12 +6,14 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <objc/NSObjCRuntime.h>
+#import <objc/objc.h>
 #import "ReceiptColumnTax.h"
 #import "WBReceipt.h"
 
 @implementation ReceiptColumnTax
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt inTrip:(WBTrip *)trip receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
     return [receipt taxWithCurrencyFormatted];
 }
 

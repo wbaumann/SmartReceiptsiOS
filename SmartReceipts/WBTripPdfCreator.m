@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
+#import <objc/objc.h>
 #import "WBTripPdfCreator.h"
 #import "WBPdfDrawer.h"
 #import "WBDateFormatter.h"
@@ -67,7 +68,7 @@ static inline NSString* safeString(NSString* str) {
             
             NSMutableArray *array = @[].mutableCopy;
             for (ReceiptColumn* column in _columns) {
-                NSString *val = [column valueFromReceipt:receipt inTrip:trip receiptIndex:index forCSV:NO];
+                NSString *val = [column valueFromReceipt:receipt receiptIndex:index forCSV:NO];
                 [array addObject:safeString(val)];
             }
             
@@ -81,7 +82,7 @@ static inline NSString* safeString(NSString* str) {
     return true;
 }
 
--(BOOL) createImagesPdfFileAtPath:(NSString*) filePath receiptsAndIndexes:(NSArray*)receiptsAndIndexes trip:(WBTrip*) trip {
+- (BOOL)createImagesPdfFileAtPath:(NSString *)filePath receiptsAndIndexes:(NSArray *)receiptsAndIndexes {
     if(![_pdfDrawer beginDrawingToFile:filePath]) return false;
     
     [self fillPdfWithImagesForTrip:trip receiptsAndIndexes:receiptsAndIndexes];
