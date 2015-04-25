@@ -15,7 +15,7 @@
 
 @implementation ReceiptColumnReportEndDate
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
     return [self.dateFormatter formattedDate:[receipt.trip endDate] inTimeZone:[receipt.trip endTimeZone]];
 }
 

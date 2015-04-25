@@ -40,6 +40,7 @@
             continue;
         }
         ++i;
+        [rec setReportIndex:i];
         [arr addObject:[[WBReceiptAndIndex alloc] initWithReceipt:rec andIndex:i]];
     }
     return arr.copy;

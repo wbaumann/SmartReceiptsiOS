@@ -14,7 +14,7 @@
 
 @implementation ReceiptColumnCurrency
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
     return [[receipt currency] code];
 }
 

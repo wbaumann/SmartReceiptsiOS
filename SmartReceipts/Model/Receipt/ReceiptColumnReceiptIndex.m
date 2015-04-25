@@ -14,8 +14,8 @@
 
 @implementation ReceiptColumnReceiptIndex
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
-    return [NSString stringWithFormat:@"%d", receiptIndex];
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
+    return [NSString stringWithFormat:@"%d", receipt.reportIndex];
 }
 
 @end

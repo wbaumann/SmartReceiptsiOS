@@ -67,7 +67,7 @@ static inline NSString* safeString(NSString* str) {
             
             NSMutableArray *array = @[].mutableCopy;
             for (ReceiptColumn* column in _columns) {
-                NSString *val = [column valueFromReceipt:receipt receiptIndex:index forCSV:NO];
+                NSString *val = [column valueFromReceipt:receipt forCSV:NO];
                 [array addObject:safeString(val)];
             }
             

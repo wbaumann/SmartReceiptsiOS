@@ -20,6 +20,6 @@
 + (ReceiptColumn *)columnWithIndex:(NSInteger)index name:(NSString *)columnName;
 + (NSArray *)availableColumnsNames;
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV;
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV;
 
 @end

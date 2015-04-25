@@ -72,7 +72,7 @@ static NSString *escapedCSV(NSString* csv) {
 
             NSMutableArray *array = @[].mutableCopy;
             for (ReceiptColumn *column in self.columns) {
-                NSString *val = [column valueFromReceipt:receipt receiptIndex:index forCSV:YES];
+                NSString *val = [column valueFromReceipt:receipt forCSV:YES];
                 [array addObject:escapedCSV(val)];
             }
 

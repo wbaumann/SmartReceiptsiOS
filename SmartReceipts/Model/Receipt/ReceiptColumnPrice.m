@@ -13,7 +13,7 @@
 
 @implementation ReceiptColumnPrice
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
     //TODO jaanus: price has if(forCSV) and tax does not?
     if (forCSV) {
         return [receipt priceAsString];

@@ -15,7 +15,7 @@
 
 @implementation ReceiptColumnUserID
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
     return [WBPreferences userID];
 }
 

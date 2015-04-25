@@ -60,7 +60,7 @@ static NSDictionary *__receiptColumnNameToClassMapping;
     };
 }
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV {
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
     WB_ABSTRACT_METHOD
     return nil;
 }
