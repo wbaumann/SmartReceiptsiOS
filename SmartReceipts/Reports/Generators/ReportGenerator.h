@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class WBTrip;
+
 @interface ReportGenerator : NSObject
+
+- (instancetype)initWithTrip:(WBTrip *)trip;
+- (BOOL)generateToPath:(NSString *)outputPath;
+- (NSArray *)receiptColumns;
+- (NSArray *)receipts;
 
 @end

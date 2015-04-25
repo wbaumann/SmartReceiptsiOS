@@ -11,7 +11,9 @@
 @interface ReportTable : NSObject
 
 @property (nonatomic, assign) BOOL includeHeaders;
+@property (nonatomic, strong, readonly) NSArray *columns;
 
-- (void)generateTableWithColumns:(NSArray *)columns;
+- (instancetype)initWithColumns:(NSArray *)columns;
+- (void)appendTableWithRows:(NSArray *)rows;
 
 @end

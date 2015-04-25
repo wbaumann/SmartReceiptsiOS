@@ -11,4 +11,6 @@
 
 @interface ReportCSVTable : ReportTable
 
+- (instancetype)initWithContent:(NSMutableString *)content columns:(NSArray *)columns;
+
 @end

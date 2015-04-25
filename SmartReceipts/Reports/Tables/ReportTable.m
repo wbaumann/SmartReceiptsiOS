@@ -9,9 +9,23 @@
 #import "ReportTable.h"
 #import "Constants.h"
 
+@interface ReportTable ()
+
+@property (nonatomic, strong) NSArray *columns;
+
+@end
+
 @implementation ReportTable
 
-- (void)generateTableWithColumns:(NSArray *)columns {
+- (instancetype)initWithColumns:(NSArray *)columns {
+    self = [super init];
+    if (self) {
+        _columns = columns;
+    }
+    return self;
+}
+
+- (void)appendTableWithRows:(NSArray *)rows {
     ABSTRACT_METHOD
 }
 

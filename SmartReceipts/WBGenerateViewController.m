@@ -9,7 +9,6 @@
 #import "WBGenerateViewController.h"
 
 #import "WBTripPdfCreator.h"
-#import "WBTripCsvCreator.h"
 #import "WBImageStampler.h"
 
 #import "WBReceiptAndIndex.h"
@@ -20,6 +19,7 @@
 
 #import "HUD.h"
 #import "WBAppDelegate.h"
+#import "TripCSVGenerator.h"
 
 @interface WBGenerateViewController ()
 
@@ -74,10 +74,8 @@
         return [WBReportUtils filterOutReceipt:r];
     }];
     NSArray *pdfColumns = [[WBDB pdfColumns] selectAll];
-    NSArray *csvColumns = [[WBDB csvColumns] selectAll];
 
     WBTripPdfCreator *pdfCreator = [[WBTripPdfCreator alloc] initWithColumns:pdfColumns];
-    WBTripCsvCreator *csvCreator = [[WBTripCsvCreator alloc] initWithColumns:csvColumns];
     WBImageStampler *imagesStampler = [[WBImageStampler alloc] init];
     
     NSMutableArray *createdAttachements = @[].mutableCopy;
@@ -97,10 +95,11 @@
         }
         [createdAttachements addObject:pdfImagesPath];
     }
-    
+
     if (self.csvFileField.on) {
         [self clearPath:csvPath];
-        if (![csvCreator createCsvFileAtPath:csvPath receiptsAndIndexes:rai includeHeaders:[WBPreferences includeCSVHeaders]]) {
+        TripCSVGenerator *tripCSVGenerator = [[TripCSVGenerator alloc] initWithTrip:self.trip];
+        if (![tripCSVGenerator generateToPath:csvPath]) {
             return nil;
         }
         [createdAttachements addObject:csvPath];

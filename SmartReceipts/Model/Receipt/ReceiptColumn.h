@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <objc/NSObjCRuntime.h>
-#import <objc/objc.h>
 #import "Column.h"
 
 @class WBReceipt;
@@ -16,7 +14,6 @@
 
 @interface ReceiptColumn : Column
 
-+ (NSArray *)allColumns;
 + (ReceiptColumn *)columnWithIndex:(NSInteger)index name:(NSString *)columnName;
 + (NSArray *)availableColumnsNames;
 

@@ -17,4 +17,6 @@
 
 - (instancetype)initWithIndex:(NSInteger)index name:(NSString *)name;
 
+- (NSString *)valueFromRow:(id)row forCSV:(BOOL)forCVS;
+
 @end

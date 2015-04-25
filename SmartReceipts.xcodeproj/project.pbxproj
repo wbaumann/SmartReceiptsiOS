@@ -89,7 +89,6 @@
 		84AA925D18EEAF0C0096013D /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA924218EEAF0C0096013D /* trees.c */; };
 		84AA925E18EEAF0C0096013D /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA924418EEAF0C0096013D /* uncompr.c */; };
 		84AA925F18EEAF0C0096013D /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA924718EEAF0C0096013D /* zutil.c */; };
-		84AA926518EEC0A00096013D /* WBTripCsvCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA926418EEC0A00096013D /* WBTripCsvCreator.m */; };
 		84ABACF618DB66FA00F8D3EB /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACED18DB66FA00F8D3EB /* FMDatabase.m */; };
 		84ABACF718DB66FA00F8D3EB /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACEF18DB66FA00F8D3EB /* FMDatabaseAdditions.m */; };
 		84ABACF818DB66FA00F8D3EB /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACF118DB66FA00F8D3EB /* FMDatabasePool.m */; };
@@ -130,6 +129,7 @@
 		EA3C969E1AEBA94200A2A5F9 /* ReportPDFGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C969D1AEBA94200A2A5F9 /* ReportPDFGenerator.m */; };
 		EA3C96A11AEBA9B200A2A5F9 /* TripPDFGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96A01AEBA9B200A2A5F9 /* TripPDFGenerator.m */; };
 		EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96A31AEBAB0200A2A5F9 /* TripCSVGenerator.m */; };
+		EA3C96A71AEBC1A500A2A5F9 /* ReceiptIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96A61AEBC1A500A2A5F9 /* ReceiptIndexer.m */; };
 		EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3CF0931AE68CF500B14B73 /* LaunchView.xib */; };
 		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
@@ -328,8 +328,6 @@
 		84AA924618EEAF0C0096013D /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
 		84AA924718EEAF0C0096013D /* zutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zutil.c; sourceTree = "<group>"; };
 		84AA924818EEAF0C0096013D /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zutil.h; sourceTree = "<group>"; };
-		84AA926318EEC0A00096013D /* WBTripCsvCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTripCsvCreator.h; sourceTree = "<group>"; };
-		84AA926418EEC0A00096013D /* WBTripCsvCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTripCsvCreator.m; sourceTree = "<group>"; };
 		84ABACEC18DB66FA00F8D3EB /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		84ABACED18DB66FA00F8D3EB /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		84ABACEE18DB66FA00F8D3EB /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -403,6 +401,8 @@
 		EA3C96A01AEBA9B200A2A5F9 /* TripPDFGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripPDFGenerator.m; sourceTree = "<group>"; };
 		EA3C96A21AEBAB0200A2A5F9 /* TripCSVGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripCSVGenerator.h; sourceTree = "<group>"; };
 		EA3C96A31AEBAB0200A2A5F9 /* TripCSVGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripCSVGenerator.m; sourceTree = "<group>"; };
+		EA3C96A51AEBC1A500A2A5F9 /* ReceiptIndexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptIndexer.h; sourceTree = "<group>"; };
+		EA3C96A61AEBC1A500A2A5F9 /* ReceiptIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptIndexer.m; sourceTree = "<group>"; };
 		EA3CF0931AE68CF500B14B73 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+WBNumberParse.h"; sourceTree = "<group>"; };
 		EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+WBNumberParse.m"; sourceTree = "<group>"; };
@@ -704,8 +704,6 @@
 				843950A318ED1D2E00A1CF83 /* WBPdfDrawer.m */,
 				848EFA5E18EDC37100AC01B4 /* WBTripPdfCreator.h */,
 				848EFA5F18EDC37100AC01B4 /* WBTripPdfCreator.m */,
-				84AA926318EEC0A00096013D /* WBTripCsvCreator.h */,
-				84AA926418EEC0A00096013D /* WBTripCsvCreator.m */,
 				84AA921318EE89E00096013D /* WBImageStampler.h */,
 				84AA921418EE89E00096013D /* WBImageStampler.m */,
 			);
@@ -1167,6 +1165,8 @@
 			children = (
 				EA3C96951AEBA90300A2A5F9 /* Generators */,
 				EA3C968B1AEBA29C00A2A5F9 /* Tables */,
+				EA3C96A51AEBC1A500A2A5F9 /* ReceiptIndexer.h */,
+				EA3C96A61AEBC1A500A2A5F9 /* ReceiptIndexer.m */,
 				EA8D81DB1AEA965D00BAC943 /* WBReportUtils.h */,
 				EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */,
 			);
@@ -1374,7 +1374,6 @@
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,
 				84EA5C4C18F2E28A001BAA10 /* HTAutocompleteTextField.m in Sources */,
 				84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */,
-				84AA926518EEC0A00096013D /* WBTripCsvCreator.m in Sources */,
 				EA8D81B81AEA7EE200BAC943 /* Column.m in Sources */,
 				84AA925B18EEAF0C0096013D /* inflate.c in Sources */,
 				8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */,
@@ -1401,6 +1400,7 @@
 				84ABACFA18DB66FA00F8D3EB /* FMResultSet.m in Sources */,
 				84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */,
 				EA3C969E1AEBA94200A2A5F9 /* ReportPDFGenerator.m in Sources */,
+				EA3C96A71AEBC1A500A2A5F9 /* ReceiptIndexer.m in Sources */,
 				8472F01518D6F1B400929C5B /* WBViewController.m in Sources */,
 				84AA925018EEAF0C0096013D /* ZipWriteStream.m in Sources */,
 				84EA5C4718F2D52B001BAA10 /* CMPopTipView.m in Sources */,
