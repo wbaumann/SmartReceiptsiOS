@@ -9,7 +9,7 @@
 #import "ReceiptColumn.h"
 #import "WBReceipt.h"
 #import "Constants.h"
-#import "WBColumn.h"
+#import "WBColumnNames.h"
 #import "ReceiptColumnBlank.h"
 #import "ReceiptColumnCategoryCode.h"
 #import "ReceiptColumnCategoryName.h"
@@ -76,6 +76,41 @@ static NSDictionary *__receiptColumnNameToClassMapping;
     Class columnClass = NSClassFromString(columnClassName);
     ReceiptColumn *column = [(ReceiptColumn *) [columnClass alloc] initWithIndex:index name:columnName];
     return column;
+}
+
++ (NSArray *)availableColumnsNames {
+    NSMutableArray *arr = [@[
+            WBColumnNameBlank,
+            WBColumnNameCategoryCode,
+            WBColumnNameCategoryName,
+            WBColumnNameUserId,
+            WBColumnNameReportName,
+            WBColumnNameReportStartDate,
+            WBColumnNameReportEndDate,
+            WBColumnNameImageFileName,
+            WBColumnNameImagePath,
+            WBColumnNameComment,
+            WBColumnNameCurrency,
+            WBColumnNameDate,
+            WBColumnNameName,
+            WBColumnNamePrice,
+            WBColumnNameTax,
+            WBColumnNamePictured,
+            WBColumnNameExpensable,
+            WBColumnNameIndex,
+    ] mutableCopy];
+
+    [arr sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+
+    NSArray *optional = @[WBColumnNameExtraEdittext1, WBColumnNameExtraEdittext2, WBColumnNameExtraEdittext3];
+
+    for (NSString *str in optional) {
+        if (str.length > 0) {
+            [arr addObject:str];
+        }
+    }
+
+    return arr;
 }
 
 @end

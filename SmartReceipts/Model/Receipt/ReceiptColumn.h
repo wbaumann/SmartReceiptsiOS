@@ -16,6 +16,7 @@
 
 + (NSArray *)allColumns;
 + (ReceiptColumn *)columnWithIndex:(NSInteger)index name:(NSString *)columnName;
++ (NSArray *)availableColumnsNames;
 
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt inTrip:(WBTrip *)trip receiptIndex:(NSInteger)receiptIndex forCSV:(BOOL)forCSV;
 

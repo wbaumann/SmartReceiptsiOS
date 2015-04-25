@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBColumn.h"
+#import "WBColumnNames.h"
 #import "FMDatabase.h"
 #import "FMDatabaseQueue.h"
 

@@ -9,14 +9,11 @@
 #import <Foundation/Foundation.h>
 
 #import "WBTrip.h"
-#import "WBColumnsResolver.h"
 
 @interface WBTripPdfCreator : NSObject
 
 - (id)initWithColumns:(NSArray *)columns;
-
--(BOOL) createFullPdfFileAtPath:(NSString*) filePath receiptsAndIndexes:(NSArray*)receiptsAndIndexes trip:(WBTrip*) trip;
-
--(BOOL) createImagesPdfFileAtPath:(NSString*) filePath receiptsAndIndexes:(NSArray*)receiptsAndIndexes trip:(WBTrip*) trip;
+- (BOOL)createFullPdfFileAtPath:(NSString *)filePath receiptsAndIndexes:(NSArray *)receiptsAndIndexes trip:(WBTrip *)trip;
+- (BOOL)createImagesPdfFileAtPath:(NSString *)filePath receiptsAndIndexes:(NSArray *)receiptsAndIndexes trip:(WBTrip *)trip;
 
 @end

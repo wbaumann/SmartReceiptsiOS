@@ -120,7 +120,7 @@ static NSString * const COLUMN_TYPE = @"type";
             return;
         }
         
-        for (WBColumn *col in columns) {
+        for (Column *col in columns) {
             if (![self insertWithColumnName:[col name] inDatabase:database]) {
                 *rollback = YES;
                 return;

@@ -60,7 +60,6 @@
 		848EFA6018EDC37100AC01B4 /* WBTripPdfCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EFA5F18EDC37100AC01B4 /* WBTripPdfCreator.m */; };
 		849A142F18D240D200399A0F /* WBSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849A142E18D240D200399A0F /* WBSettingsViewController.m */; };
 		84A3ADE318D48E15003DB722 /* WBNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3ADE218D48E15003DB722 /* WBNewCategoryViewController.m */; };
-		84A5834818EDEA27003A464D /* WBColumnsResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A5834718EDEA27003A464D /* WBColumnsResolver.m */; };
 		84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A5834D18EDF897003A464D /* WBReceiptAndIndex.m */; };
 		84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A6C82A18F510B6003B876F /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84A6C82D18F510E5003B876F /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A6C82C18F510E5003B876F /* libxml2.dylib */; };
@@ -128,7 +127,7 @@
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
 		EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */; };
 		EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816B1AEA668100BAC943 /* WBCategory.m */; };
-		EA8D81751AEA668100BAC943 /* WBColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816D1AEA668100BAC943 /* WBColumn.m */; };
+		EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816D1AEA668100BAC943 /* WBColumnNames.m */; };
 		EA8D81761AEA668100BAC943 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816F1AEA668100BAC943 /* WBPrice.m */; };
 		EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81711AEA668100BAC943 /* WBReceipt.m */; };
 		EA8D81781AEA668100BAC943 /* WBTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81731AEA668100BAC943 /* WBTrip.m */; };
@@ -266,8 +265,6 @@
 		849A142E18D240D200399A0F /* WBSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSettingsViewController.m; sourceTree = "<group>"; };
 		84A3ADE118D48E15003DB722 /* WBNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBNewCategoryViewController.h; sourceTree = "<group>"; };
 		84A3ADE218D48E15003DB722 /* WBNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNewCategoryViewController.m; sourceTree = "<group>"; };
-		84A5834618EDEA27003A464D /* WBColumnsResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnsResolver.h; sourceTree = "<group>"; };
-		84A5834718EDEA27003A464D /* WBColumnsResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnsResolver.m; sourceTree = "<group>"; };
 		84A5834C18EDF897003A464D /* WBReceiptAndIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceiptAndIndex.h; sourceTree = "<group>"; };
 		84A5834D18EDF897003A464D /* WBReceiptAndIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReceiptAndIndex.m; sourceTree = "<group>"; };
 		84A6C82918F510B6003B876F /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
@@ -391,8 +388,8 @@
 		EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImagePicker.m; sourceTree = "<group>"; };
 		EA8D816A1AEA668100BAC943 /* WBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategory.h; sourceTree = "<group>"; };
 		EA8D816B1AEA668100BAC943 /* WBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategory.m; sourceTree = "<group>"; };
-		EA8D816C1AEA668100BAC943 /* WBColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumn.h; sourceTree = "<group>"; };
-		EA8D816D1AEA668100BAC943 /* WBColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumn.m; sourceTree = "<group>"; };
+		EA8D816C1AEA668100BAC943 /* WBColumnNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnNames.h; sourceTree = "<group>"; };
+		EA8D816D1AEA668100BAC943 /* WBColumnNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnNames.m; sourceTree = "<group>"; };
 		EA8D816E1AEA668100BAC943 /* WBPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPrice.h; sourceTree = "<group>"; };
 		EA8D816F1AEA668100BAC943 /* WBPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPrice.m; sourceTree = "<group>"; };
 		EA8D81701AEA668100BAC943 /* WBReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceipt.h; sourceTree = "<group>"; };
@@ -685,8 +682,6 @@
 				848EFA5F18EDC37100AC01B4 /* WBTripPdfCreator.m */,
 				84AA926318EEC0A00096013D /* WBTripCsvCreator.h */,
 				84AA926418EEC0A00096013D /* WBTripCsvCreator.m */,
-				84A5834618EDEA27003A464D /* WBColumnsResolver.h */,
-				84A5834718EDEA27003A464D /* WBColumnsResolver.m */,
 				84AA921318EE89E00096013D /* WBImageStampler.h */,
 				84AA921418EE89E00096013D /* WBImageStampler.m */,
 			);
@@ -1036,8 +1031,8 @@
 				EA8D81B71AEA7EE200BAC943 /* Column.m */,
 				EA8D816A1AEA668100BAC943 /* WBCategory.h */,
 				EA8D816B1AEA668100BAC943 /* WBCategory.m */,
-				EA8D816C1AEA668100BAC943 /* WBColumn.h */,
-				EA8D816D1AEA668100BAC943 /* WBColumn.m */,
+				EA8D816C1AEA668100BAC943 /* WBColumnNames.h */,
+				EA8D816D1AEA668100BAC943 /* WBColumnNames.m */,
 				EA8D816E1AEA668100BAC943 /* WBPrice.h */,
 				EA8D816F1AEA668100BAC943 /* WBPrice.m */,
 				EA8D81701AEA668100BAC943 /* WBReceipt.h */,
@@ -1177,7 +1172,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = WB;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Will Baumann";
 				TargetAttributes = {
 					84F4F33F18CFCCD000F69A35 = {
@@ -1290,7 +1285,6 @@
 			files = (
 				EA8D81AC1AEA7C9D00BAC943 /* ReceiptColumnTax.m in Sources */,
 				4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */,
-				84A5834818EDEA27003A464D /* WBColumnsResolver.m in Sources */,
 				849A142F18D240D200399A0F /* WBSettingsViewController.m in Sources */,
 				84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */,
 				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
@@ -1382,7 +1376,7 @@
 				84AA925318EEAF0C0096013D /* crc32.c in Sources */,
 				84B4691E18E98838006E7A77 /* WBObservableReceipts.m in Sources */,
 				84AA924E18EEAF0C0096013D /* ZipFile.m in Sources */,
-				EA8D81751AEA668100BAC943 /* WBColumn.m in Sources */,
+				EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */,
 				84AF861418E8C27600F15C3A /* WBCellWithPriceNameDate.m in Sources */,
 				84AA925A18EEAF0C0096013D /* inffast.c in Sources */,
 				84ABAD0C18DB7B4400F8D3EB /* WBColumnsHelper.m in Sources */,
@@ -1484,7 +1478,7 @@
 					/usr/include/libxml2,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1556,6 +1550,7 @@
 					"/Users/williambaumann/Downloads/GoogleMobileAdsSdkiOS-6.9.2",
 					"$(PROJECT_DIR)/3rdparty/Google/AdMob",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-ObjC",
