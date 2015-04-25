@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import <objc/objc.h>
 #import "WBTripPdfCreator.h"
 #import "WBPdfDrawer.h"
 #import "WBDateFormatter.h"
@@ -82,7 +81,7 @@ static inline NSString* safeString(NSString* str) {
     return true;
 }
 
-- (BOOL)createImagesPdfFileAtPath:(NSString *)filePath receiptsAndIndexes:(NSArray *)receiptsAndIndexes {
+- (BOOL)createImagesPdfFileAtPath:(NSString *)filePath receiptsAndIndexes:(NSArray *)receiptsAndIndexes trip:(WBTrip *)trip {
     if(![_pdfDrawer beginDrawingToFile:filePath]) return false;
     
     [self fillPdfWithImagesForTrip:trip receiptsAndIndexes:receiptsAndIndexes];

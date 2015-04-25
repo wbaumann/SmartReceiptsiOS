@@ -92,7 +92,7 @@
     
     if (self.pdfImagesField.on) {
         [self clearPath:pdfImagesPath];
-        if(![pdfCreator createImagesPdfFileAtPath:pdfImagesPath receiptsAndIndexes:rai]) {
+        if(![pdfCreator createImagesPdfFileAtPath:pdfImagesPath receiptsAndIndexes:rai trip:_trip]) {
             return nil;
         }
         [createdAttachements addObject:pdfImagesPath];

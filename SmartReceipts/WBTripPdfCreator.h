@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <objc/objc.h>
 
 #import "WBTrip.h"
 
@@ -15,6 +14,6 @@
 
 - (id)initWithColumns:(NSArray *)columns;
 - (BOOL)createFullPdfFileAtPath:(NSString *)filePath receiptsAndIndexes:(NSArray *)receiptsAndIndexes trip:(WBTrip *)trip;
-- (BOOL)createImagesPdfFileAtPath:(NSString *)filePath receiptsAndIndexes:(NSArray *)receiptsAndIndexes;
+- (BOOL)createImagesPdfFileAtPath:(NSString *)filePath receiptsAndIndexes:(NSArray *)receiptsAndIndexes trip:(WBTrip *)trip;
 
 @end
