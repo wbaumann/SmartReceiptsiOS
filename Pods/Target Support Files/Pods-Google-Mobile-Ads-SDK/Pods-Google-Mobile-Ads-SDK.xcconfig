@@ -1,0 +1,2 @@
+PODS_GOOGLE_MOBILE_ADS_SDK_LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/Google-Mobile-Ads-SDK/GoogleMobileAdsSdkiOS-6.12.2"
+PODS_GOOGLE_MOBILE_ADS_SDK_OTHER_LDFLAGS = -ObjC -l"GoogleAdMobAds" -framework "AVFoundation" -framework "AudioToolbox" -framework "CoreGraphics" -framework "CoreTelephony" -framework "EventKit" -framework "EventKitUI" -framework "MessageUI" -framework "StoreKit" -framework "SystemConfiguration" -weak_framework "AdSupport"

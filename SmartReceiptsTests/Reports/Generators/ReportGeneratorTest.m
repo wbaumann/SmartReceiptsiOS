@@ -46,7 +46,7 @@
 
 - (void)createTestReceipt:(NSInteger)marker {
     [[WBDB receipts] insertWithTrip:self.testTrip
-                               name:[NSString stringWithFormat:@"TEST Receipt %l", marker]
+                               name:[NSString stringWithFormat:@"TEST Receipt %li", marker]
                            category:@""
                       imageFileName:@""
                              dateMs:0
