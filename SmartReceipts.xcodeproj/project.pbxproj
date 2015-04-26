@@ -1449,7 +1449,6 @@
 				INFOPLIST_FILE = "SmartReceipts/SmartReceipts-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/williambaumann/Downloads/GoogleMobileAdsSdkiOS-6.9.2",
 					"$(PROJECT_DIR)/3rdparty/Google/AdMob",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -1495,7 +1494,6 @@
 				INFOPLIST_FILE = "SmartReceipts/SmartReceipts-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/williambaumann/Downloads/GoogleMobileAdsSdkiOS-6.9.2",
 					"$(PROJECT_DIR)/3rdparty/Google/AdMob",
 				);
 				OTHER_CFLAGS = (
