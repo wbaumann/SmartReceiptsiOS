@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39E8134E46F1C948F3A688EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC1BDDC7B500AA1408D37DF /* libPods.a */; };
 		4D33F3E219D8965800FE4EC4 /* GADConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33F3E119D8965800FE4EC4 /* GADConstants.m */; };
 		4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BB304190818E100D28CBF /* WBActionSheetPicker.m */; };
 		4DC6A9F119D7610900258DE3 /* GADMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC6A9F019D7610900258DE3 /* GADMasterViewController.m */; };
@@ -65,11 +66,6 @@
 		84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A73C3618E74C9900D35A57 /* WBObservableTrips.m */; };
 		84AA0AD118E5F624008A85F9 /* WBFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA0AD018E5F624008A85F9 /* WBFileManager.m */; };
 		84AA921518EE89E00096013D /* WBImageStampler.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA921418EE89E00096013D /* WBImageStampler.m */; };
-		84ABACF618DB66FA00F8D3EB /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACED18DB66FA00F8D3EB /* FMDatabase.m */; };
-		84ABACF718DB66FA00F8D3EB /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACEF18DB66FA00F8D3EB /* FMDatabaseAdditions.m */; };
-		84ABACF818DB66FA00F8D3EB /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACF118DB66FA00F8D3EB /* FMDatabasePool.m */; };
-		84ABACF918DB66FA00F8D3EB /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACF318DB66FA00F8D3EB /* FMDatabaseQueue.m */; };
-		84ABACFA18DB66FA00F8D3EB /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACF518DB66FA00F8D3EB /* FMResultSet.m */; };
 		84ABACFC18DB673B00F8D3EB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84ABACFB18DB673B00F8D3EB /* libsqlite3.dylib */; };
 		84ABACFF18DB6F5F00F8D3EB /* WBDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACFE18DB6F5F00F8D3EB /* WBDB.m */; };
 		84ABAD0218DB700000F8D3EB /* WBTripsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABAD0118DB700000F8D3EB /* WBTripsHelper.m */; };
@@ -258,16 +254,6 @@
 		84AA0AD018E5F624008A85F9 /* WBFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBFileManager.m; sourceTree = "<group>"; };
 		84AA921318EE89E00096013D /* WBImageStampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageStampler.h; sourceTree = "<group>"; };
 		84AA921418EE89E00096013D /* WBImageStampler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageStampler.m; sourceTree = "<group>"; };
-		84ABACEC18DB66FA00F8D3EB /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		84ABACED18DB66FA00F8D3EB /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		84ABACEE18DB66FA00F8D3EB /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		84ABACEF18DB66FA00F8D3EB /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		84ABACF018DB66FA00F8D3EB /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
-		84ABACF118DB66FA00F8D3EB /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
-		84ABACF218DB66FA00F8D3EB /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
-		84ABACF318DB66FA00F8D3EB /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
-		84ABACF418DB66FA00F8D3EB /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		84ABACF518DB66FA00F8D3EB /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		84ABACFB18DB673B00F8D3EB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		84ABACFD18DB6F5F00F8D3EB /* WBDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDB.h; sourceTree = "<group>"; };
 		84ABACFE18DB6F5F00F8D3EB /* WBDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDB.m; sourceTree = "<group>"; };
@@ -426,6 +412,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39E8134E46F1C948F3A688EF /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,26 +676,8 @@
 				84A6C82818F510B6003B876F /* GDataXML */,
 				84EA5C4918F2E28A001BAA10 /* HTAutocompleteTextField */,
 				843F623718EF9A5F001ACBB1 /* MBProgressHUD */,
-				84ABACEB18DB66E700F8D3EB /* FMDB */,
 			);
 			path = 3rdparty;
-			sourceTree = "<group>";
-		};
-		84ABACEB18DB66E700F8D3EB /* FMDB */ = {
-			isa = PBXGroup;
-			children = (
-				84ABACEC18DB66FA00F8D3EB /* FMDatabase.h */,
-				84ABACED18DB66FA00F8D3EB /* FMDatabase.m */,
-				84ABACEE18DB66FA00F8D3EB /* FMDatabaseAdditions.h */,
-				84ABACEF18DB66FA00F8D3EB /* FMDatabaseAdditions.m */,
-				84ABACF018DB66FA00F8D3EB /* FMDatabasePool.h */,
-				84ABACF118DB66FA00F8D3EB /* FMDatabasePool.m */,
-				84ABACF218DB66FA00F8D3EB /* FMDatabaseQueue.h */,
-				84ABACF318DB66FA00F8D3EB /* FMDatabaseQueue.m */,
-				84ABACF418DB66FA00F8D3EB /* FMResultSet.h */,
-				84ABACF518DB66FA00F8D3EB /* FMResultSet.m */,
-			);
-			path = FMDB;
 			sourceTree = "<group>";
 		};
 		84ABAD0318DB700400F8D3EB /* helpers */ = {
@@ -1051,9 +1020,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA8D81D71AEA956600BAC943 /* Build configuration list for PBXNativeTarget "SmartReceiptsTests" */;
 			buildPhases = (
+				5E138B64458B68FB6A407FA5 /* Check Pods Manifest.lock */,
 				EA8D81CB1AEA956600BAC943 /* Sources */,
 				EA8D81CC1AEA956600BAC943 /* Frameworks */,
 				EA8D81CD1AEA956600BAC943 /* Resources */,
+				D6F9BDC31D3FE23624CA011B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1160,6 +1131,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5E138B64458B68FB6A407FA5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D6F9BDC31D3FE23624CA011B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E0DEB0FB94C7DB5A57D0C4D4 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1217,7 +1218,6 @@
 				8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */,
 				843F61FF18EF3F46001ACBB1 /* WBCustomization.m in Sources */,
 				8478B77318D37BFB0041CBA3 /* WBCategoriesViewController.m in Sources */,
-				84ABACF618DB66FA00F8D3EB /* FMDatabase.m in Sources */,
 				EA3C96AD1AECC95100A2A5F9 /* TripImagesPDFGenerator.m in Sources */,
 				84AEE5D318EB54EF005DB908 /* WBObservableTripsBrowser.m in Sources */,
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
@@ -1228,13 +1228,11 @@
 				8478B77618D37D350041CBA3 /* WBColumnsViewController.m in Sources */,
 				8467EFE918F6E3170076BE6E /* WBImageSegue.m in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
-				84ABACF818DB66FA00F8D3EB /* FMDatabasePool.m in Sources */,
 				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
 				847C887518D7BA4500A33397 /* WBGenerateViewController.m in Sources */,
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
 				84ABAD0918DB79D900F8D3EB /* WBCategoriesHelper.m in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
-				84ABACFA18DB66FA00F8D3EB /* FMResultSet.m in Sources */,
 				84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */,
 				EA3C969E1AEBA94200A2A5F9 /* ReportPDFGenerator.m in Sources */,
 				EA3C96A71AEBC1A500A2A5F9 /* ReceiptIndexer.m in Sources */,
@@ -1245,7 +1243,6 @@
 				843F620218EF4BB0001ACBB1 /* WBImageUtils.m in Sources */,
 				EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */,
 				EA8D81AF1AEA7CAD00BAC943 /* ReceiptColumnPictured.m in Sources */,
-				84ABACF918DB66FA00F8D3EB /* FMDatabaseQueue.m in Sources */,
 				847C887218D7ACC600A33397 /* WBTableViewController.m in Sources */,
 				EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */,
 				847EFA5418E6BC93006BE520 /* WBSqlBuilder.m in Sources */,
@@ -1276,7 +1273,6 @@
 				EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */,
 				8472F01818D6F50B00929C5B /* WBNewTripViewController.m in Sources */,
 				EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */,
-				84ABACF718DB66FA00F8D3EB /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1505,6 +1501,7 @@
 		};
 		EA8D81D81AEA956600BAC943 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -1532,6 +1529,7 @@
 		};
 		EA8D81D91AEA956600BAC943 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5371FEA3FE41B7AFF41AFB84 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;

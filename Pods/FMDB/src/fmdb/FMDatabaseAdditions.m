@@ -90,7 +90,7 @@ return ret;
 - (FMResultSet*)getTableSchema:(NSString*)tableName {
     
     //result colums: cid[INTEGER], name,type [STRING], notnull[INTEGER], dflt_value[],pk[INTEGER]
-    FMResultSet *rs = [self executeQuery:[NSString stringWithFormat: @"PRAGMA table_info('%@')", tableName]];
+    FMResultSet *rs = [self executeQuery:[NSString stringWithFormat: @"pragma table_info('%@')", tableName]];
     
     return rs;
 }
@@ -137,7 +137,7 @@ return ret;
 }
 
 - (void)setApplicationID:(uint32_t)appID {
-    NSString *query = [NSString stringWithFormat:@"PRAGMA application_id=%d", appID];
+    NSString *query = [NSString stringWithFormat:@"pragma application_id=%d", appID];
     FMResultSet *rs = [self executeQuery:query];
     [rs next];
     [rs close];
@@ -170,6 +170,26 @@ return ret;
 #endif
 
 #endif
+
+- (uint32_t)userVersion {
+    uint32_t r = 0;
+    
+    FMResultSet *rs = [self executeQuery:@"pragma user_version"];
+    
+    if ([rs next]) {
+        r = (uint32_t)[rs longLongIntForColumnIndex:0];
+    }
+    
+    [rs close];
+    return r;
+}
+
+- (void)setUserVersion:(uint32_t)version {
+    NSString *query = [NSString stringWithFormat:@"pragma user_version = %d", version];
+    FMResultSet *rs = [self executeQuery:query];
+    [rs next];
+    [rs close];
+}
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-implementations"
