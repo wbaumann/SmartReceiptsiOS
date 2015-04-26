@@ -57,7 +57,6 @@
 		847C887218D7ACC600A33397 /* WBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C887118D7ACC600A33397 /* WBTableViewController.m */; };
 		847C887518D7BA4500A33397 /* WBGenerateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C887418D7BA4500A33397 /* WBGenerateViewController.m */; };
 		847EFA5418E6BC93006BE520 /* WBSqlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 847EFA5318E6BC93006BE520 /* WBSqlBuilder.m */; };
-		848EFA6018EDC37100AC01B4 /* WBTripPdfCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EFA5F18EDC37100AC01B4 /* WBTripPdfCreator.m */; };
 		849A142F18D240D200399A0F /* WBSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849A142E18D240D200399A0F /* WBSettingsViewController.m */; };
 		84A3ADE318D48E15003DB722 /* WBNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3ADE218D48E15003DB722 /* WBNewCategoryViewController.m */; };
 		84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A5834D18EDF897003A464D /* WBReceiptAndIndex.m */; };
@@ -269,8 +268,6 @@
 		847C887418D7BA4500A33397 /* WBGenerateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBGenerateViewController.m; sourceTree = "<group>"; };
 		847EFA5218E6BC93006BE520 /* WBSqlBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSqlBuilder.h; sourceTree = "<group>"; };
 		847EFA5318E6BC93006BE520 /* WBSqlBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSqlBuilder.m; sourceTree = "<group>"; };
-		848EFA5E18EDC37100AC01B4 /* WBTripPdfCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTripPdfCreator.h; sourceTree = "<group>"; };
-		848EFA5F18EDC37100AC01B4 /* WBTripPdfCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTripPdfCreator.m; sourceTree = "<group>"; };
 		849A142D18D240D200399A0F /* WBSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSettingsViewController.h; sourceTree = "<group>"; };
 		849A142E18D240D200399A0F /* WBSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSettingsViewController.m; sourceTree = "<group>"; };
 		84A3ADE118D48E15003DB722 /* WBNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBNewCategoryViewController.h; sourceTree = "<group>"; };
@@ -707,8 +704,6 @@
 				84A5834F18EDFBA9003A464D /* items */,
 				843950A218ED1D2E00A1CF83 /* WBPdfDrawer.h */,
 				843950A318ED1D2E00A1CF83 /* WBPdfDrawer.m */,
-				848EFA5E18EDC37100AC01B4 /* WBTripPdfCreator.h */,
-				848EFA5F18EDC37100AC01B4 /* WBTripPdfCreator.m */,
 				84AA921318EE89E00096013D /* WBImageStampler.h */,
 				84AA921418EE89E00096013D /* WBImageStampler.m */,
 			);
@@ -1474,7 +1469,6 @@
 				8472F01818D6F50B00929C5B /* WBNewTripViewController.m in Sources */,
 				EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */,
 				84ABACF718DB66FA00F8D3EB /* FMDatabaseAdditions.m in Sources */,
-				848EFA6018EDC37100AC01B4 /* WBTripPdfCreator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

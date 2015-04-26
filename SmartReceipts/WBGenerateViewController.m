@@ -8,11 +8,9 @@
 
 #import "WBGenerateViewController.h"
 
-#import "WBTripPdfCreator.h"
 #import "WBImageStampler.h"
 
 #import "WBReceiptAndIndex.h"
-#import "WBDB.h"
 #import "WBPreferences.h"
 
 #import "WBReportUtils.h"
@@ -21,6 +19,7 @@
 #import "WBAppDelegate.h"
 #import "TripCSVGenerator.h"
 #import "TripImagesPDFGenerator.h"
+#import "TripFullPDFGenerator.h"
 
 @interface WBGenerateViewController ()
 
@@ -74,16 +73,15 @@
     NSArray *rai = [WBReceiptAndIndex receiptsAndIndicesFromReceipts:_receipts filteredWith:^BOOL(WBReceipt *r) {
         return [WBReportUtils filterOutReceipt:r];
     }];
-    NSArray *pdfColumns = [[WBDB pdfColumns] selectAll];
 
-    WBTripPdfCreator *pdfCreator = [[WBTripPdfCreator alloc] initWithColumns:pdfColumns];
     WBImageStampler *imagesStampler = [[WBImageStampler alloc] init];
     
     NSMutableArray *createdAttachements = @[].mutableCopy;
-    
+
     if (self.fullPdfReportField.on) {
         [self clearPath:pdfPath];
-        if(![pdfCreator createFullPdfFileAtPath:pdfPath receiptsAndIndexes:rai trip:_trip]) {
+        TripFullPDFGenerator *generator = [[TripFullPDFGenerator alloc] initWithTrip:self.trip];
+        if (![generator generateToPath:pdfPath]) {
             return nil;
         }
         [createdAttachements addObject:pdfPath];

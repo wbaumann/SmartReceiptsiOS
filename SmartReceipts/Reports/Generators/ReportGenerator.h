@@ -12,6 +12,8 @@
 
 @interface ReportGenerator : NSObject
 
+@property (nonatomic, strong, readonly) WBTrip *trip;
+
 - (instancetype)initWithTrip:(WBTrip *)trip;
 - (BOOL)generateToPath:(NSString *)outputPath;
 - (NSArray *)receiptColumns;

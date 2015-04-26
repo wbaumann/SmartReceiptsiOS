@@ -44,7 +44,6 @@
     return YES;
 }
 
-
 - (void)appendImages {
     [self fillPdfWithImagesUsingReceipts:[self receipts]];
 }
@@ -53,7 +52,6 @@
     NSMutableArray *awaitingFullPageImages = [NSMutableArray array];
     BOOL hitFirstNonFullPage = NO;
 
-    NSLog(@"receipts: %@", receipts);
     for (WBReceipt *receipt in receipts) {
         @autoreleasepool {
             if ([receipt isFullPage] || [receipt hasPDFFileName]) {
