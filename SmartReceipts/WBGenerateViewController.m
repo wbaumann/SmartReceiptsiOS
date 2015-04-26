@@ -8,18 +8,18 @@
 
 #import "WBGenerateViewController.h"
 
-#import "WBTripPdfCreator.h"
-#import "WBTripCsvCreator.h"
 #import "WBImageStampler.h"
 
 #import "WBReceiptAndIndex.h"
-#import "WBDB.h"
 #import "WBPreferences.h"
 
 #import "WBReportUtils.h"
 
 #import "HUD.h"
 #import "WBAppDelegate.h"
+#import "TripCSVGenerator.h"
+#import "TripImagesPDFGenerator.h"
+#import "TripFullPDFGenerator.h"
 
 @interface WBGenerateViewController ()
 
@@ -60,7 +60,7 @@
     
     [_trip createDirectoryIfNotExists];
 
-    //TODO jaanus: this should be done when receipt loaded from DB
+    //TODO jaanus: this should be done when receipt loaded from DB or created
     for (WBReceipt *receipt in self.receipts) {
         [receipt setTrip:self.trip];
     }
@@ -73,34 +73,33 @@
     NSArray *rai = [WBReceiptAndIndex receiptsAndIndicesFromReceipts:_receipts filteredWith:^BOOL(WBReceipt *r) {
         return [WBReportUtils filterOutReceipt:r];
     }];
-    NSArray *pdfColumns = [[WBDB pdfColumns] selectAll];
-    NSArray *csvColumns = [[WBDB csvColumns] selectAll];
 
-    WBTripPdfCreator *pdfCreator = [[WBTripPdfCreator alloc] initWithColumns:pdfColumns];
-    WBTripCsvCreator *csvCreator = [[WBTripCsvCreator alloc] initWithColumns:csvColumns];
     WBImageStampler *imagesStampler = [[WBImageStampler alloc] init];
     
     NSMutableArray *createdAttachements = @[].mutableCopy;
-    
+
     if (self.fullPdfReportField.on) {
         [self clearPath:pdfPath];
-        if(![pdfCreator createFullPdfFileAtPath:pdfPath receiptsAndIndexes:rai trip:_trip]) {
+        TripFullPDFGenerator *generator = [[TripFullPDFGenerator alloc] initWithTrip:self.trip];
+        if (![generator generateToPath:pdfPath]) {
             return nil;
         }
         [createdAttachements addObject:pdfPath];
     }
-    
+
     if (self.pdfImagesField.on) {
         [self clearPath:pdfImagesPath];
-        if(![pdfCreator createImagesPdfFileAtPath:pdfImagesPath receiptsAndIndexes:rai trip:_trip]) {
+        TripImagesPDFGenerator *generator = [[TripImagesPDFGenerator alloc] initWithTrip:self.trip];
+        if (![generator generateToPath:pdfImagesPath]) {
             return nil;
         }
         [createdAttachements addObject:pdfImagesPath];
     }
-    
+
     if (self.csvFileField.on) {
         [self clearPath:csvPath];
-        if (![csvCreator createCsvFileAtPath:csvPath receiptsAndIndexes:rai includeHeaders:[WBPreferences includeCSVHeaders]]) {
+        TripCSVGenerator *generator = [[TripCSVGenerator alloc] initWithTrip:self.trip];
+        if (![generator generateToPath:csvPath]) {
             return nil;
         }
         [createdAttachements addObject:csvPath];

@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <objc/NSObjCRuntime.h>
-#import <objc/objc.h>
 #import "ReceiptColumn.h"
 #import "WBReceipt.h"
 #import "Constants.h"
@@ -18,7 +16,6 @@
 #import "ReceiptColumnUserID.h"
 #import "ReceiptColumnReportName.h"
 #import "ReceiptColumnReportStartDate.h"
-#import "WBTrip.h"
 #import "ReceiptColumnReportEndDate.h"
 #import "ReceiptColumnImageName.h"
 #import "ReceiptColumnImagePath.h"
@@ -60,12 +57,12 @@ static NSDictionary *__receiptColumnNameToClassMapping;
     };
 }
 
-- (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
-    WB_ABSTRACT_METHOD
-    return nil;
+- (NSString *)valueFromRow:(id)row forCSV:(BOOL)forCVS {
+    return [self valueFromReceipt:row forCSV:forCVS];
 }
 
-+ (NSArray *)allColumns {
+- (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
+    ABSTRACT_METHOD
     return nil;
 }
 

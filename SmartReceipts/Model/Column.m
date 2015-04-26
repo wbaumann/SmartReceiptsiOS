@@ -8,6 +8,7 @@
 
 #import "Column.h"
 #import "WBDateFormatter.h"
+#import "Constants.h"
 
 @interface Column ()
 
@@ -33,6 +34,11 @@
         _dateFormatter = [[WBDateFormatter alloc] init];
     }
     return _dateFormatter;
+}
+
+- (NSString *)valueFromRow:(id)row forCSV:(BOOL)forCVS {
+    ABSTRACT_METHOD
+    return nil;
 }
 
 @end
