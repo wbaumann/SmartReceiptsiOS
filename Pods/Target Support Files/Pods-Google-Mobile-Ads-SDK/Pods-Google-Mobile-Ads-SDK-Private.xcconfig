@@ -1,0 +1,7 @@
+#include "Pods-Google-Mobile-Ads-SDK.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/Google-Mobile-Ads-SDK" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CMPopTipView" "${PODS_ROOT}/Headers/Public/FMDB" "${PODS_ROOT}/Headers/Public/Google-Mobile-Ads-SDK" "${PODS_ROOT}/Headers/Public/HTAutocompleteTextField" "${PODS_ROOT}/Headers/Public/UIAlertView-Blocks" "${PODS_ROOT}/Headers/Public/objective-zip"
+LIBRARY_SEARCH_PATHS = ${PODS_GOOGLE_MOBILE_ADS_SDK_LIBRARY_SEARCH_PATHS}
+OTHER_LDFLAGS = ${PODS_GOOGLE_MOBILE_ADS_SDK_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}
+SKIP_INSTALL = YES

@@ -30,6 +30,12 @@
 #define COCOAPODS_VERSION_MINOR_FMDB_standard 5
 #define COCOAPODS_VERSION_PATCH_FMDB_standard 0
 
+// Google-Mobile-Ads-SDK
+#define COCOAPODS_POD_AVAILABLE_Google_Mobile_Ads_SDK
+#define COCOAPODS_VERSION_MAJOR_Google_Mobile_Ads_SDK 6
+#define COCOAPODS_VERSION_MINOR_Google_Mobile_Ads_SDK 12
+#define COCOAPODS_VERSION_PATCH_Google_Mobile_Ads_SDK 2
+
 // HTAutocompleteTextField
 #define COCOAPODS_POD_AVAILABLE_HTAutocompleteTextField
 #define COCOAPODS_VERSION_MAJOR_HTAutocompleteTextField 1

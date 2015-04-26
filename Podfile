@@ -7,3 +7,4 @@ pod 'objective-zip', :inhibit_warnings => true
 pod 'CMPopTipView', '~> 2.2.0'
 pod 'FMDB'
 pod 'HTAutocompleteTextField'
+pod 'Google-Mobile-Ads-SDK', '~> 6.12.2'

@@ -7,617 +7,733 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		029C5B4C1C5362CB7372251D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E747AE28579A27142708DB /* UIKit.framework */; };
-		0554A4D986F4B657B2D14326 /* Pods-CMPopTipView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 486F35411462421358DFAA8D /* Pods-CMPopTipView-dummy.m */; };
-		0807B1230110C4CD908BF929 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9440B7199E543C89F06809E0 /* ZipFile.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		102E7CEDF603D3B2AA3C2985 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 886559F9F58897A0836807C5 /* FMDatabase.h */; };
-		1074B59766DF47123220998B /* HTEmailAutocompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 195D62FF16B25C58B96E42F5 /* HTEmailAutocompleteTextField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		12B7ECD983C441A3FB137305 /* ZipWriteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = D8374C3CD105D31DF78FB1DB /* ZipWriteStream.h */; };
-		1BA28245ADFAC795CAE0BFA0 /* Pods-objective-zip-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F99FC1D6042286C7A3D8FBD5 /* Pods-objective-zip-dummy.m */; };
-		1BCC9787F92DE30F44BEA506 /* HTEmailAutocompleteTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 57D7D4E076DD4310331538CD /* HTEmailAutocompleteTextField.h */; };
-		1CA25838B596A64DD320FDDF /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 25D1143CAF623D3A28EA3271 /* Pods-dummy.m */; };
-		1FDAC13447231C2F2B43280A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6EF5D223765B35AAC6467A /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		332DC456DDB25315A53050D0 /* FileInZipInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D570BCBAE3521D548516675 /* FileInZipInfo.h */; };
-		34A7598022CFC58C543FE466 /* HTAutocompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C04FBE5B5527FF8D98EA6D8 /* HTAutocompleteTextField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		469F50DD65E45248EFE53E2D /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = D202317C1B39E2A999548DF4 /* ioapi.h */; };
-		48F8E63819C2B72B0182352A /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 739FA79E05FF16ACEEE463AB /* ioapi.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		4AEE82A5E6843C7E5C081CD3 /* Pods-HTAutocompleteTextField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 16063D92772154B962785C0E /* Pods-HTAutocompleteTextField-dummy.m */; };
-		4BA86B3D059D7367CE2AF5B9 /* UIAlertView+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 4ABBB098AAD2566485CC2BDD /* UIAlertView+Blocks.h */; };
-		4FC67EB2C4FEE3533C9BBBA9 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9515942D03F6E618470612F1 /* RIButtonItem.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		509520D105BAEBA126610DD2 /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF229B0B93FCA0FD593F2BB5 /* CMPopTipView.m */; };
-		55AD211A0F23FDBB865516FC /* Pods-UIAlertView-Blocks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 863A0ADDFC7F611D910128DE /* Pods-UIAlertView-Blocks-dummy.m */; };
-		5790BA827544E639A4CF46B5 /* ZipReadStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 3444BE78C4D2655798736DD9 /* ZipReadStream.h */; };
-		5EFEA15C5180A61A62EBE4A9 /* HTAutocompleteTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = E6FF594D3C31B842B3475A24 /* HTAutocompleteTextField.h */; };
-		622D4676A4EB6A317A147B5E /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = F6098F7F149EDE97ED95AC93 /* FMDatabasePool.h */; };
-		65467B543506FA12FD02AE44 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A9E427E26ABE443FFBA6845C /* unzip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		65623DB9A5DA27C51B412565 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF881EC4C753745708DFFED /* Foundation.framework */; };
-		6F70B48E6BFC520D1F92E5AC /* ZipFile.h in Headers */ = {isa = PBXBuildFile; fileRef = A88AA6D8F6A858CE58CC9880 /* ZipFile.h */; };
-		7A767C2485A0F6F92167B098 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF881EC4C753745708DFFED /* Foundation.framework */; };
-		7DDC33629A9E5175A32618D6 /* UIActionSheet+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 04544C3BCA8D15800CCFAAAB /* UIActionSheet+Blocks.h */; };
-		8157EC0311E1D0F77973058C /* CMPopTipView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C22A34404DD17E41CB616AE /* CMPopTipView.h */; };
-		86F385D0B68DF63C8CE25178 /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = 1741A970AB7E8D009C48EF41 /* ZipException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		882AB8AAD451B23B325E5EED /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A96E5897742354F135880A /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		8F0160757B7EDA65CC5A402D /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 268788262B69FA8087934304 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		9308643BCB96205FF06B24A0 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F8975B057BC274730F74766 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		97B4AFE5D9998995BB80A878 /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DB33D9761D3D0D8A968697E /* FMDatabaseQueue.h */; };
-		99F67CB7FE2A4E4AA98AD974 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF881EC4C753745708DFFED /* Foundation.framework */; };
-		9F85B16F882A5FDD72E643A3 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 029FE735D5E7D80F26052B3F /* zip.h */; };
-		A04B4693BF827A0C340F18C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF881EC4C753745708DFFED /* Foundation.framework */; };
-		A2B95CE395D466FC3E5B738B /* RIButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = DC19FEFBEAE3736CC71A1D27 /* RIButtonItem.h */; };
-		A36F8AE1E43B5B817268CFB7 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EC2C1132395BDD823A0B2B9 /* crypt.h */; };
-		B19610203F4D69FE87314529 /* ARCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AD6737E4640CBDD3D2CFC3DF /* ARCHelper.h */; };
-		B694661A4F4DCF8A956D0EA3 /* ZipException.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE76D67602E3A31F73E0F19 /* ZipException.h */; };
-		BFD66166F2B1F2A2882A4387 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0F9A0E71B17A94E59D8BB /* UIAlertView+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		CACDA29A95BD3BCCAB38C26C /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = B68B51AE12CFE0E4937DACFC /* unzip.h */; };
-		D1DA77F9FA95E622A37254BE /* FMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 91D61B1A30A6241664ED309D /* FMDB.h */; };
-		D340E60FC2655F8AC583EE95 /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BF100048052A27FC22EEBBD3 /* FileInZipInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		D4C15A49594B5F2FE4F50B6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF881EC4C753745708DFFED /* Foundation.framework */; };
-		D5E2DE75562162B866BE6715 /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F3F15A6AA46FB2EF4E79E58F /* FMDatabaseAdditions.h */; };
-		DF0126027937E289EDFF76CC /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD8C80ABDB7466D4A00FD02 /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		EDE60145CBE2814C608CC376 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 51CA53A645B9FA1D272052F3 /* FMResultSet.h */; };
-		EE3F8F500FF1B95A758FC1A7 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 811285B27E5BF24DF655B058 /* UIActionSheet+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		F60CD119595C66761E7BD041 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF881EC4C753745708DFFED /* Foundation.framework */; };
-		F7A40EA4A3C719AD119C4B8E /* Pods-FMDB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3714A6024C56DA3EC67114DD /* Pods-FMDB-dummy.m */; };
-		FA99268A22ECA9541E3D50CB /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 674B3C0F1C0C15460CBEC89A /* ZipReadStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		FC927CE6AE2A528325DEB9A1 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = BA23911371B41B4DB405A4C9 /* ZipWriteStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		FE1261B05EE13C00FE608DE2 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 88543041A8146BBC16EC7FB1 /* zip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		006C81A9AA0BA342D2CB3786 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB96C6D61170543BBEEC86 /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0654F241E10527822E9BA0EE /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = A90DBC234DF34CE38C6BB740 /* FMDatabase.h */; };
+		08265DB99E5698705643F4B8 /* Pods-UIAlertView-Blocks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E362EF9DD2E73B6EB6F5F1C2 /* Pods-UIAlertView-Blocks-dummy.m */; };
+		12F03E55028778FB994B5752 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B699B02166A6045C55B9F6C0 /* Foundation.framework */; };
+		15E8DD8A3FD28B20C60589E4 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AF3763BBB7788A7D681CF1 /* ioapi.h */; };
+		16187B6C2139A631AFD28974 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09265CFF32004623A1FAA91F /* CoreGraphics.framework */; };
+		16E2121E165820F03217437B /* GADAdNetworkExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 8238F667AB0E395593C98D88 /* GADAdNetworkExtras.h */; };
+		17378FEFBDD0FBF96B220A87 /* Pods-FMDB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F600EBBCA9BB85006130A53 /* Pods-FMDB-dummy.m */; };
+		1A64943716B98A9CEBBB36E1 /* DFPSwipeableBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = F98FE547FADB5C8F8B57B516 /* DFPSwipeableBannerView.h */; };
+		1E3E83D4E0E03FFBC7447084 /* FMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = DC76BB9447422AE4202731A9 /* FMDB.h */; };
+		24DA9FA7B5059564B5424DB5 /* GADCustomEventInterstitial.h in Headers */ = {isa = PBXBuildFile; fileRef = C4AF3DB0CA1984D48CB7505E /* GADCustomEventInterstitial.h */; };
+		26717E943E1C3EB3241125D1 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A524B822AB30D96F0C7F1A9 /* ZipReadStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		2DFD3516E4361E33E9158928 /* GADBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F174293D59A0D2053E3062 /* GADBannerView.h */; };
+		328455F0C09414636E6131AF /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B9DF27C9D4150B312B4203 /* EventKitUI.framework */; };
+		3E80BF1BA2847B7F103CAED6 /* ZipWriteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 120178D2CBD922DC40AA7FA6 /* ZipWriteStream.h */; };
+		3EBA469AC2D604382CD20D84 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 26018EBDAF3D0F1D2303CC19 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		40673D1A2B427D484215C16F /* GADModules.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B01DF72A9E786437BFAC00 /* GADModules.h */; };
+		44F558D7E0F06737514E80E7 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09AC35373EFB407C8D2B4D /* UIActionSheet+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		45A77AEFB73288A742C8D238 /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4180B28576F21F2BE1B635C4 /* FMDatabaseAdditions.h */; };
+		4741691E6C884EF32D2E56AF /* ZipReadStream.h in Headers */ = {isa = PBXBuildFile; fileRef = C20BFFDB2843F76DB41F0519 /* ZipReadStream.h */; };
+		4B21C66FFFE331FE41A83E0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B699B02166A6045C55B9F6C0 /* Foundation.framework */; };
+		4B984B24745687E5F919A68E /* GADInterstitial.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ED5593ADDBE5A6EC3EDF817 /* GADInterstitial.h */; };
+		4E29F686660349322810BA65 /* Pods-CMPopTipView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C8543A9556DD9BCBC11F5FEE /* Pods-CMPopTipView-dummy.m */; };
+		4E84BF7608F602513250A3C3 /* DFPBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = A74D3386451F3C21B9594152 /* DFPBannerView.h */; };
+		50F62F28F7C6111A3A14A850 /* HTEmailAutocompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F83E42A611B1013C6C9F829 /* HTEmailAutocompleteTextField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5326FCE6028DE509B1880A38 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9F1A647D87FFE96F329A53 /* UIKit.framework */; };
+		54DB60DFB1277105A16BE65D /* HTAutocompleteTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = D25C08D7976EFC70A8E22B24 /* HTAutocompleteTextField.h */; };
+		556AEFA715C33693A53EE6ED /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC23E76FFE9666091274D0A /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		574BEE8018465F103C501B83 /* GADAdSize.h in Headers */ = {isa = PBXBuildFile; fileRef = 227FC82A1CBC3F27ACF86481 /* GADAdSize.h */; };
+		58BC8E328F1711622D89C295 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = B554A43649F72EA3B6244A31 /* FMResultSet.h */; };
+		5E018F097200F58C5E274237 /* CMPopTipView.h in Headers */ = {isa = PBXBuildFile; fileRef = FE64D5F4042012D72966EDD2 /* CMPopTipView.h */; };
+		604AAB45602018C366F85DBF /* GADCustomEventBannerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 13855006248B503512B70E8C /* GADCustomEventBannerDelegate.h */; };
+		6094729A3B34783C5AFFAC07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B699B02166A6045C55B9F6C0 /* Foundation.framework */; };
+		6AF03DFEB9877B1A2C31BDFE /* GADSwipeableBannerViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E2F4550312FE4F579BD0360 /* GADSwipeableBannerViewDelegate.h */; };
+		6BF83CC1A44F7D64046FD267 /* GADAdSizeDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A2E055DCD2DBEF95A4335F1 /* GADAdSizeDelegate.h */; };
+		6D117D9F94D48BBC76CE5B84 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE0CB43C4225630883C362D /* ZipFile.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		6E62CC84558111F711E29329 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5690CDF15FD8E84A9F84B5FE /* RIButtonItem.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6E94C7F1251CB848FD9D876C /* HTAutocompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E382C76CFBE2CEFA52F20848 /* HTAutocompleteTextField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6EB517DEE2766D6DE2C10041 /* ZipException.h in Headers */ = {isa = PBXBuildFile; fileRef = FFE5D20F1551B9E1866A06B0 /* ZipException.h */; };
+		704ACFEC04DECB78C4BA4B6D /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = E90CA6762E4D19E37CD5F436 /* FMDatabaseQueue.h */; };
+		72F3F01647EFD83CC249EC13 /* GADSearchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 02E295D0022578AD60125F19 /* GADSearchRequest.h */; };
+		77188A1A0F6594EBF09BFB73 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2EB56A4671B15E63BB7BCC /* ZipWriteStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		783359D2D2A94C3F0C793BE1 /* GADInterstitialDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C7933D64D539D32E5E8CC22 /* GADInterstitialDelegate.h */; };
+		866A797FEBE9C4D97912384D /* GADCustomEventRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AE8A9E063BE3940D60BC478E /* GADCustomEventRequest.h */; };
+		8696FF80E2A6FFBDECEB5230 /* ZipFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C091A9C7676B6A333006183 /* ZipFile.h */; };
+		8A6BAC16F0C3478140A424C5 /* UIAlertView+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 10803704814E2285C08E4F6A /* UIAlertView+Blocks.h */; };
+		8EEB58A920087189FB235937 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = BB60BC7CF9B085F7CDF6A7E5 /* ioapi.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		9A2CFBAB1BCB9B3095220BC7 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E79EB34C2E8B735077AB28C /* unzip.h */; };
+		9C60C9974E5F63FCF1AD1A32 /* GADAppEventDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 764C8247CCA002D37328879E /* GADAppEventDelegate.h */; };
+		A34D8B28EC90C8051A8CF366 /* GADBannerViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 37AE4FAB3951560D61F7CA8D /* GADBannerViewDelegate.h */; };
+		A58AC5E41217DCD22AA05553 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE49A23EBFFE224FE48D7220 /* StoreKit.framework */; };
+		A737F2115AEA867D22EE2DC9 /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = A95DB08C2D820B5A003FAA46 /* ZipException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		AAA8A62339F83CB6328B2406 /* HTEmailAutocompleteTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 89686F3C6A69201E9D13C3D9 /* HTEmailAutocompleteTextField.h */; };
+		AB7D1B889D2F1EC8A54EEEC7 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E734BE4804DCFB990515D65 /* UIAlertView+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		AE3E2E8658D677823D24ABE5 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4269E37899B1E70991755304 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		AE95A1B8C151A65E4A95D6ED /* GADSearchBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 702DBDA0CFE52B33D032096B /* GADSearchBannerView.h */; };
+		AFD6107EA7DC78DE1452C411 /* Pods-Google-Mobile-Ads-SDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B212C22A93CA139359DE2EE /* Pods-Google-Mobile-Ads-SDK-dummy.m */; };
+		B35E1414E635C454A3299886 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B699B02166A6045C55B9F6C0 /* Foundation.framework */; };
+		B99350C976FB35BAE95D23B9 /* GADInAppPurchase.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A25219026000733A557326E /* GADInAppPurchase.h */; };
+		B9F6D30D5B863FF4C5E0E579 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2349C55A9205C3F56F4A152D /* unzip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		B9F7D7DBAE9DD86B1D5EAA47 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 7361E15A93507101D868152B /* crypt.h */; };
+		BBE126DE115CD23E7CD157DE /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8527258623ACD6B60738E3 /* Pods-dummy.m */; };
+		BF305509EAA2A657DC8A0F54 /* Pods-HTAutocompleteTextField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 806BBBF8D9B7F1C77D1419FE /* Pods-HTAutocompleteTextField-dummy.m */; };
+		C15DBC4FA9ADB65DCC44EEAE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED848A9A5FD2E2FDA291B3C /* MessageUI.framework */; };
+		CB2762E44212C1933882358C /* RIButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 239D528E645B2D9B25C06C76 /* RIButtonItem.h */; };
+		CBF3D363D3DC6A141C588001 /* FileInZipInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 54D51EF520E59E4AF5868CD5 /* FileInZipInfo.h */; };
+		CDD826F09ECB4EDD6116AA6B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C09AD4A31DC45CFA86106646 /* AVFoundation.framework */; };
+		D0285F3318F3CE92F64ECFB8 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A079FEE7932B2426349EE6F /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D2D5D76519C6B6BD9472B610 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCAC613CB72EEC6EC003616 /* FMDatabasePool.h */; };
+		D2FAA16736A22294A4EE8C7D /* UIActionSheet+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F21B3DCD9199C0D02A52103 /* UIActionSheet+Blocks.h */; };
+		D4B0BD2EB571003A85367D65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B699B02166A6045C55B9F6C0 /* Foundation.framework */; };
+		D532F189AE1C1133BB7EEF31 /* GADRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F018E706591318719391C87 /* GADRequest.h */; };
+		D913CDFD626FF0E173B9ADAB /* Pods-objective-zip-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1172A20C8EC548921F684DCF /* Pods-objective-zip-dummy.m */; };
+		D965D3ABEABB8C8F27B7E3B4 /* GADAdMobExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = B962D779C1AD84514A4E1218 /* GADAdMobExtras.h */; };
+		D9D0C86A559FCED5B39CD652 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E26974B92E1672210FAFC70 /* EventKit.framework */; };
+		DA51505D2E571DC71B55E771 /* ARCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 53788A581FB51554A312FD91 /* ARCHelper.h */; };
+		DA8AF03EE9022E7A6BE762B5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9C303B3F012FB2B0B3B7C0 /* SystemConfiguration.framework */; };
+		DAE1AFE8B69F5658154F4E13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B699B02166A6045C55B9F6C0 /* Foundation.framework */; };
+		DC6BCBD2B68FCD1094D7F527 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF156ED180FF3E910B37AD40 /* AudioToolbox.framework */; };
+		DCABA302FF0C295EDD464957 /* GADInAppPurchaseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4295F0A44E5909148FD5701D /* GADInAppPurchaseDelegate.h */; };
+		DDBDE31F41A9411CDCE86E6B /* DFPInterstitial.h in Headers */ = {isa = PBXBuildFile; fileRef = D92503DA63C6D4E8041EBD85 /* DFPInterstitial.h */; };
+		DF6B9486FCA9E909E574C802 /* GADRequestError.h in Headers */ = {isa = PBXBuildFile; fileRef = 815FCCBD63A2D469D0E5D14A /* GADRequestError.h */; };
+		E75DCB6683D2BD7101CD1C1E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B8F012DEF1D05628788446 /* CoreTelephony.framework */; };
+		EE42D9E594B6598530ED30CD /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44333961BE5642B71914D6C5 /* CMPopTipView.m */; };
+		F12B5E95853300C22E13FC80 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D2DB10EEFAE7711559B86DE /* zip.h */; };
+		F1358D644FBBBC38FAF8F4C5 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA9B785B6E01063A2B6476 /* zip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		F1979FF0BE28DE5D18F2BD46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B699B02166A6045C55B9F6C0 /* Foundation.framework */; };
+		F69AE522906B51C3E42751EA /* GADCustomEventBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = F12E85EFFD5C7CD83A62B0EB /* GADCustomEventBanner.h */; };
+		F81E428A8C2BC2A0C018E5B9 /* DFPExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 4076E4675C7BE75D13C7F553 /* DFPExtras.h */; };
+		FA9827E5ECFC055AD2643348 /* GADCustomEventInterstitialDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AF6AEDBD8939132B8F0FE702 /* GADCustomEventInterstitialDelegate.h */; };
+		FE3FFD65C0521D96E4CCB711 /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A8077F58673599050768FF /* FileInZipInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		FFC54DDEE8453EF91F0A931B /* GADCustomEventExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 7373516AF2548B08DFC5F09C /* GADCustomEventExtras.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0F81C2E9E5849031A6DF4D8A /* PBXContainerItemProxy */ = {
+		008F1EF5A14192016253A24B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F9E122E68B59EA56763CF60B /* Project object */;
+			containerPortal = C1AD6564FDDEDC20E234DB1D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A9D10812EBCC82D130B66D66;
+			remoteGlobalIDString = E693151B9D38E52DC6B62DE6;
 			remoteInfo = "Pods-FMDB";
 		};
-		19E3C3AE8F2144A561297822 /* PBXContainerItemProxy */ = {
+		0BD853B3413D087BC81F7F52 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F9E122E68B59EA56763CF60B /* Project object */;
+			containerPortal = C1AD6564FDDEDC20E234DB1D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DE7005B09AB1EDADC478638F;
-			remoteInfo = "Pods-CMPopTipView";
-		};
-		1B8099C34AC3BF4CF2C288A9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F9E122E68B59EA56763CF60B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E32EE32E17ED4E838A001F88;
-			remoteInfo = "Pods-UIAlertView-Blocks";
-		};
-		8F7E4AFCEA1945CBC0231F18 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F9E122E68B59EA56763CF60B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B203B53E99CF021D8A1D0444;
+			remoteGlobalIDString = 5559CA440F71F0A003C4752E;
 			remoteInfo = "Pods-objective-zip";
 		};
-		939C56B42ED3D807E54F820C /* PBXContainerItemProxy */ = {
+		10DF7A6D4B6F94F71D3AC028 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F9E122E68B59EA56763CF60B /* Project object */;
+			containerPortal = C1AD6564FDDEDC20E234DB1D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6B7128CC4686335E739C171E;
+			remoteGlobalIDString = 3F833FE99EC0A340BDBDBFE3;
 			remoteInfo = "Pods-HTAutocompleteTextField";
+		};
+		41B1D67AE364C73126DEE87F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1AD6564FDDEDC20E234DB1D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A72C82DE8BB01FF539EE4DB;
+			remoteInfo = "Pods-CMPopTipView";
+		};
+		CE81DBCD9FD388801E985D89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1AD6564FDDEDC20E234DB1D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0648F51307643757407AC9A0;
+			remoteInfo = "Pods-UIAlertView-Blocks";
+		};
+		F982E81DB17F86242EF2A87C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1AD6564FDDEDC20E234DB1D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB5FD06968C3F615BC765421;
+			remoteInfo = "Pods-Google-Mobile-Ads-SDK";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		020F062D6403987BCF4444DF /* libPods-HTAutocompleteTextField.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HTAutocompleteTextField.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		029FE735D5E7D80F26052B3F /* zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = zip.h; path = MiniZip/zip.h; sourceTree = "<group>"; };
-		04544C3BCA8D15800CCFAAAB /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
-		0BD8C80ABDB7466D4A00FD02 /* FMDatabasePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = src/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
-		0F0AB9FBC72331CA5BA4A052 /* Pods-FMDB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FMDB-prefix.pch"; sourceTree = "<group>"; };
-		16063D92772154B962785C0E /* Pods-HTAutocompleteTextField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HTAutocompleteTextField-dummy.m"; sourceTree = "<group>"; };
-		1741A970AB7E8D009C48EF41 /* ZipException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipException.m; path = "Objective-Zip/ZipException.m"; sourceTree = "<group>"; };
-		195D62FF16B25C58B96E42F5 /* HTEmailAutocompleteTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTEmailAutocompleteTextField.m; path = Classes/HTEmailAutocompleteTextField.m; sourceTree = "<group>"; };
-		1C04FBE5B5527FF8D98EA6D8 /* HTAutocompleteTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTAutocompleteTextField.m; path = Classes/HTAutocompleteTextField.m; sourceTree = "<group>"; };
-		1D570BCBAE3521D548516675 /* FileInZipInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FileInZipInfo.h; path = "Objective-Zip/FileInZipInfo.h"; sourceTree = "<group>"; };
-		259FD5B9741B28334E382668 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		25D1143CAF623D3A28EA3271 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		268788262B69FA8087934304 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = src/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		28854003F795EA4C48E12828 /* Pods-CMPopTipView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMPopTipView-Private.xcconfig"; sourceTree = "<group>"; };
-		2C81F7EDA815A3E7172FB912 /* libPods-FMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FMDB.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3444BE78C4D2655798736DD9 /* ZipReadStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipReadStream.h; path = "Objective-Zip/ZipReadStream.h"; sourceTree = "<group>"; };
-		35F7C8C01C8D622E75789D21 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
-		3714A6024C56DA3EC67114DD /* Pods-FMDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FMDB-dummy.m"; sourceTree = "<group>"; };
-		3817CBA27C8E695E107D11DB /* Pods-HTAutocompleteTextField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HTAutocompleteTextField.xcconfig"; sourceTree = "<group>"; };
-		3EC2C1132395BDD823A0B2B9 /* crypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = MiniZip/crypt.h; sourceTree = "<group>"; };
-		42530A3D0712985827F87D75 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		474D2EFF0CFA5C5C5628A8A5 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		486F35411462421358DFAA8D /* Pods-CMPopTipView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CMPopTipView-dummy.m"; sourceTree = "<group>"; };
-		4ABBB098AAD2566485CC2BDD /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
-		4E6EF5D223765B35AAC6467A /* FMResultSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = src/fmdb/FMResultSet.m; sourceTree = "<group>"; };
-		506A787CF3764A2C8B7ECFB7 /* libPods-UIAlertView-Blocks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UIAlertView-Blocks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		51CA53A645B9FA1D272052F3 /* FMResultSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = src/fmdb/FMResultSet.h; sourceTree = "<group>"; };
-		57D7D4E076DD4310331538CD /* HTEmailAutocompleteTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTEmailAutocompleteTextField.h; path = Classes/HTEmailAutocompleteTextField.h; sourceTree = "<group>"; };
-		5C0B65AB25F1B6F00D5808B4 /* Pods-HTAutocompleteTextField-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HTAutocompleteTextField-prefix.pch"; sourceTree = "<group>"; };
-		674B3C0F1C0C15460CBEC89A /* ZipReadStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipReadStream.m; path = "Objective-Zip/ZipReadStream.m"; sourceTree = "<group>"; };
-		68004663F76D04F701F18B4D /* Pods-CMPopTipView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMPopTipView.xcconfig"; sourceTree = "<group>"; };
-		6F8975B057BC274730F74766 /* FMDatabase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = src/fmdb/FMDatabase.m; sourceTree = "<group>"; };
-		739FA79E05FF16ACEEE463AB /* ioapi.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = MiniZip/ioapi.c; sourceTree = "<group>"; };
-		7DB33D9761D3D0D8A968697E /* FMDatabaseQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = src/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
-		811285B27E5BF24DF655B058 /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
-		863A0ADDFC7F611D910128DE /* Pods-UIAlertView-Blocks-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-UIAlertView-Blocks-dummy.m"; sourceTree = "<group>"; };
-		88543041A8146BBC16EC7FB1 /* zip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = zip.c; path = MiniZip/zip.c; sourceTree = "<group>"; };
-		886559F9F58897A0836807C5 /* FMDatabase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = src/fmdb/FMDatabase.h; sourceTree = "<group>"; };
-		8B3617C370F606E220BA9241 /* Pods-UIAlertView-Blocks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UIAlertView-Blocks.xcconfig"; sourceTree = "<group>"; };
-		8C8E2A9CB9C0C7121E25050F /* Pods-CMPopTipView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CMPopTipView-prefix.pch"; sourceTree = "<group>"; };
-		91A96E5897742354F135880A /* FMDatabaseQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = src/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
-		91D61B1A30A6241664ED309D /* FMDB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = src/fmdb/FMDB.h; sourceTree = "<group>"; };
-		92E747AE28579A27142708DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		9440B7199E543C89F06809E0 /* ZipFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipFile.m; path = "Objective-Zip/ZipFile.m"; sourceTree = "<group>"; };
-		9515942D03F6E618470612F1 /* RIButtonItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RIButtonItem.m; sourceTree = "<group>"; };
-		9BF881EC4C753745708DFFED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		9C22A34404DD17E41CB616AE /* CMPopTipView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CMPopTipView.h; path = CMPopTipView/CMPopTipView.h; sourceTree = "<group>"; };
-		9C81F41BF862E4EBF0958AA5 /* Pods-FMDB-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FMDB-Private.xcconfig"; sourceTree = "<group>"; };
-		9CCDB3AFD7EB6642A57ED099 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		9E1CEA5631B1AB829A6CB562 /* Pods-HTAutocompleteTextField-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HTAutocompleteTextField-Private.xcconfig"; sourceTree = "<group>"; };
-		A5213E1C8E6FC50B2A113FB0 /* Pods-FMDB.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FMDB.xcconfig"; sourceTree = "<group>"; };
-		A88AA6D8F6A858CE58CC9880 /* ZipFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipFile.h; path = "Objective-Zip/ZipFile.h"; sourceTree = "<group>"; };
-		A9E427E26ABE443FFBA6845C /* unzip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = MiniZip/unzip.c; sourceTree = "<group>"; };
-		AD6737E4640CBDD3D2CFC3DF /* ARCHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ARCHelper.h; path = ARCHelper/ARCHelper.h; sourceTree = "<group>"; };
-		B61A1B780AE20AD249DABD6A /* Pods-UIAlertView-Blocks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-UIAlertView-Blocks-prefix.pch"; sourceTree = "<group>"; };
-		B68B51AE12CFE0E4937DACFC /* unzip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = MiniZip/unzip.h; sourceTree = "<group>"; };
-		B7962EE574A9060774224838 /* Pods-objective-zip-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-objective-zip-Private.xcconfig"; sourceTree = "<group>"; };
-		BA23911371B41B4DB405A4C9 /* ZipWriteStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipWriteStream.m; path = "Objective-Zip/ZipWriteStream.m"; sourceTree = "<group>"; };
-		BBC0F9A0E71B17A94E59D8BB /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
-		BC723BCA2828146F68EC29C0 /* libPods-objective-zip.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-objective-zip.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE6378761754D17407F3F5FA /* Pods-objective-zip-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-objective-zip-prefix.pch"; sourceTree = "<group>"; };
-		BF100048052A27FC22EEBBD3 /* FileInZipInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FileInZipInfo.m; path = "Objective-Zip/FileInZipInfo.m"; sourceTree = "<group>"; };
-		C43E108B168E5E12121E2CFE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFE76D67602E3A31F73E0F19 /* ZipException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipException.h; path = "Objective-Zip/ZipException.h"; sourceTree = "<group>"; };
-		D202317C1B39E2A999548DF4 /* ioapi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = MiniZip/ioapi.h; sourceTree = "<group>"; };
-		D8374C3CD105D31DF78FB1DB /* ZipWriteStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipWriteStream.h; path = "Objective-Zip/ZipWriteStream.h"; sourceTree = "<group>"; };
-		DC19FEFBEAE3736CC71A1D27 /* RIButtonItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RIButtonItem.h; sourceTree = "<group>"; };
-		DCDF9E471483F2E03AD25C2B /* libPods-CMPopTipView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CMPopTipView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E05194610B9F1467B8DD1456 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E2C6581F894060D5B020C1A8 /* Pods-UIAlertView-Blocks-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UIAlertView-Blocks-Private.xcconfig"; sourceTree = "<group>"; };
-		E6FF594D3C31B842B3475A24 /* HTAutocompleteTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTAutocompleteTextField.h; path = Classes/HTAutocompleteTextField.h; sourceTree = "<group>"; };
-		EF229B0B93FCA0FD593F2BB5 /* CMPopTipView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CMPopTipView.m; path = CMPopTipView/CMPopTipView.m; sourceTree = "<group>"; };
-		EF44D55D3FF384DA8DB8B684 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		F0E6DD96032A05749526F744 /* Pods-objective-zip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-objective-zip.xcconfig"; sourceTree = "<group>"; };
-		F3F15A6AA46FB2EF4E79E58F /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = src/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		F6098F7F149EDE97ED95AC93 /* FMDatabasePool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = src/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
-		F99FC1D6042286C7A3D8FBD5 /* Pods-objective-zip-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-objective-zip-dummy.m"; sourceTree = "<group>"; };
+		01AF3763BBB7788A7D681CF1 /* ioapi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = MiniZip/ioapi.h; sourceTree = "<group>"; };
+		02E295D0022578AD60125F19 /* GADSearchRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADSearchRequest.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/Search/GADSearchRequest.h"; sourceTree = "<group>"; };
+		041A6CDF330AD841A4E04053 /* Pods-HTAutocompleteTextField-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HTAutocompleteTextField-Private.xcconfig"; sourceTree = "<group>"; };
+		09265CFF32004623A1FAA91F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		09E00B4BD70E6F3F61176470 /* Pods-CMPopTipView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CMPopTipView-prefix.pch"; sourceTree = "<group>"; };
+		0E2EB56A4671B15E63BB7BCC /* ZipWriteStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipWriteStream.m; path = "Objective-Zip/ZipWriteStream.m"; sourceTree = "<group>"; };
+		0ED5593ADDBE5A6EC3EDF817 /* GADInterstitial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADInterstitial.h; path = "GoogleMobileAdsSdkiOS-6.12.2/GADInterstitial.h"; sourceTree = "<group>"; };
+		10803704814E2285C08E4F6A /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		1172A20C8EC548921F684DCF /* Pods-objective-zip-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-objective-zip-dummy.m"; sourceTree = "<group>"; };
+		120178D2CBD922DC40AA7FA6 /* ZipWriteStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipWriteStream.h; path = "Objective-Zip/ZipWriteStream.h"; sourceTree = "<group>"; };
+		13855006248B503512B70E8C /* GADCustomEventBannerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADCustomEventBannerDelegate.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/Mediation/GADCustomEventBannerDelegate.h"; sourceTree = "<group>"; };
+		1C8527258623ACD6B60738E3 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		1E26974B92E1672210FAFC70 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/EventKit.framework; sourceTree = DEVELOPER_DIR; };
+		1E734BE4804DCFB990515D65 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
+		1F600EBBCA9BB85006130A53 /* Pods-FMDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FMDB-dummy.m"; sourceTree = "<group>"; };
+		21052ECC95FF808D80155AAC /* Pods-HTAutocompleteTextField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HTAutocompleteTextField.xcconfig"; sourceTree = "<group>"; };
+		227FC82A1CBC3F27ACF86481 /* GADAdSize.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADAdSize.h; path = "GoogleMobileAdsSdkiOS-6.12.2/GADAdSize.h"; sourceTree = "<group>"; };
+		2283CDB3E968D3A16ACCE47B /* libPods-FMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FMDB.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2349C55A9205C3F56F4A152D /* unzip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = MiniZip/unzip.c; sourceTree = "<group>"; };
+		239D528E645B2D9B25C06C76 /* RIButtonItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RIButtonItem.h; sourceTree = "<group>"; };
+		26018EBDAF3D0F1D2303CC19 /* FMDatabase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = src/fmdb/FMDatabase.m; sourceTree = "<group>"; };
+		28409690FBEA82946F13403D /* libPods-Google-Mobile-Ads-SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Google-Mobile-Ads-SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A524B822AB30D96F0C7F1A9 /* ZipReadStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipReadStream.m; path = "Objective-Zip/ZipReadStream.m"; sourceTree = "<group>"; };
+		2B212C22A93CA139359DE2EE /* Pods-Google-Mobile-Ads-SDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Google-Mobile-Ads-SDK-dummy.m"; sourceTree = "<group>"; };
+		2CCB797EDA20C82324736731 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		2D9C303B3F012FB2B0B3B7C0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		2E79EB34C2E8B735077AB28C /* unzip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = MiniZip/unzip.h; sourceTree = "<group>"; };
+		2FEB96C6D61170543BBEEC86 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = src/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
+		35B9DF27C9D4150B312B4203 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/EventKitUI.framework; sourceTree = DEVELOPER_DIR; };
+		37AE4FAB3951560D61F7CA8D /* GADBannerViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADBannerViewDelegate.h; path = "GoogleMobileAdsSdkiOS-6.12.2/GADBannerViewDelegate.h"; sourceTree = "<group>"; };
+		38F174293D59A0D2053E3062 /* GADBannerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADBannerView.h; path = "GoogleMobileAdsSdkiOS-6.12.2/GADBannerView.h"; sourceTree = "<group>"; };
+		3B09AC35373EFB407C8D2B4D /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
+		3C091A9C7676B6A333006183 /* ZipFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipFile.h; path = "Objective-Zip/ZipFile.h"; sourceTree = "<group>"; };
+		3C7933D64D539D32E5E8CC22 /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADInterstitialDelegate.h; path = "GoogleMobileAdsSdkiOS-6.12.2/GADInterstitialDelegate.h"; sourceTree = "<group>"; };
+		3E2F4550312FE4F579BD0360 /* GADSwipeableBannerViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADSwipeableBannerViewDelegate.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/DoubleClick/GADSwipeableBannerViewDelegate.h"; sourceTree = "<group>"; };
+		4076E4675C7BE75D13C7F553 /* DFPExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DFPExtras.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/DoubleClick/DFPExtras.h"; sourceTree = "<group>"; };
+		4180B28576F21F2BE1B635C4 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = src/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		4269E37899B1E70991755304 /* FMResultSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = src/fmdb/FMResultSet.m; sourceTree = "<group>"; };
+		4295F0A44E5909148FD5701D /* GADInAppPurchaseDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADInAppPurchaseDelegate.h; path = "GoogleMobileAdsSdkiOS-6.12.2/GADInAppPurchaseDelegate.h"; sourceTree = "<group>"; };
+		44333961BE5642B71914D6C5 /* CMPopTipView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CMPopTipView.m; path = CMPopTipView/CMPopTipView.m; sourceTree = "<group>"; };
+		448C4B7FDAB24CCCD20AD557 /* Pods-FMDB-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FMDB-Private.xcconfig"; sourceTree = "<group>"; };
+		4A079FEE7932B2426349EE6F /* FMDatabasePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = src/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
+		4A25219026000733A557326E /* GADInAppPurchase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADInAppPurchase.h; path = "GoogleMobileAdsSdkiOS-6.12.2/GADInAppPurchase.h"; sourceTree = "<group>"; };
+		4D2DB10EEFAE7711559B86DE /* zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = zip.h; path = MiniZip/zip.h; sourceTree = "<group>"; };
+		4DCA0E1B316F8EF6E4AB1E0C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E80ECE66385A6F1B584A004 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGoogleAdMobAds.a; path = "GoogleMobileAdsSdkiOS-6.12.2/libGoogleAdMobAds.a"; sourceTree = "<group>"; };
+		4FEA9B785B6E01063A2B6476 /* zip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = zip.c; path = MiniZip/zip.c; sourceTree = "<group>"; };
+		536E25489214E901E5E46281 /* Pods-UIAlertView-Blocks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UIAlertView-Blocks.xcconfig"; sourceTree = "<group>"; };
+		53788A581FB51554A312FD91 /* ARCHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ARCHelper.h; path = ARCHelper/ARCHelper.h; sourceTree = "<group>"; };
+		54D51EF520E59E4AF5868CD5 /* FileInZipInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FileInZipInfo.h; path = "Objective-Zip/FileInZipInfo.h"; sourceTree = "<group>"; };
+		55E1DA075E2EA7CD78809BEC /* Pods-objective-zip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-objective-zip.xcconfig"; sourceTree = "<group>"; };
+		5690CDF15FD8E84A9F84B5FE /* RIButtonItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RIButtonItem.m; sourceTree = "<group>"; };
+		59AA224DEACCA93571FE7D08 /* Pods-FMDB.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FMDB.xcconfig"; sourceTree = "<group>"; };
+		5B1F4BFFA158BEC0583521B1 /* Pods-CMPopTipView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMPopTipView-Private.xcconfig"; sourceTree = "<group>"; };
+		66F2FDE525B1409A9197D4F5 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		6CC23E76FFE9666091274D0A /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = src/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		6E542A07E5C548505AD98A89 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		6F018E706591318719391C87 /* GADRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADRequest.h; path = "GoogleMobileAdsSdkiOS-6.12.2/GADRequest.h"; sourceTree = "<group>"; };
+		6F21B3DCD9199C0D02A52103 /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
+		6FE0CB43C4225630883C362D /* ZipFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipFile.m; path = "Objective-Zip/ZipFile.m"; sourceTree = "<group>"; };
+		702DBDA0CFE52B33D032096B /* GADSearchBannerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADSearchBannerView.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/Search/GADSearchBannerView.h"; sourceTree = "<group>"; };
+		7361E15A93507101D868152B /* crypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = MiniZip/crypt.h; sourceTree = "<group>"; };
+		7373516AF2548B08DFC5F09C /* GADCustomEventExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADCustomEventExtras.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/Mediation/GADCustomEventExtras.h"; sourceTree = "<group>"; };
+		764C8247CCA002D37328879E /* GADAppEventDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADAppEventDelegate.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/DoubleClick/GADAppEventDelegate.h"; sourceTree = "<group>"; };
+		7A2E42F6ADCDF65D5A9C5F94 /* Pods-UIAlertView-Blocks-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UIAlertView-Blocks-Private.xcconfig"; sourceTree = "<group>"; };
+		7A4EC1B2E5824713B908940B /* libPods-CMPopTipView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CMPopTipView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C87D6A2ED72666C64081A39 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		7DCAC613CB72EEC6EC003616 /* FMDatabasePool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = src/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
+		7F83E42A611B1013C6C9F829 /* HTEmailAutocompleteTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTEmailAutocompleteTextField.m; path = Classes/HTEmailAutocompleteTextField.m; sourceTree = "<group>"; };
+		806BBBF8D9B7F1C77D1419FE /* Pods-HTAutocompleteTextField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HTAutocompleteTextField-dummy.m"; sourceTree = "<group>"; };
+		815FCCBD63A2D469D0E5D14A /* GADRequestError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADRequestError.h; path = "GoogleMobileAdsSdkiOS-6.12.2/GADRequestError.h"; sourceTree = "<group>"; };
+		8238F667AB0E395593C98D88 /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADAdNetworkExtras.h; path = "GoogleMobileAdsSdkiOS-6.12.2/GADAdNetworkExtras.h"; sourceTree = "<group>"; };
+		8305E7E3ABC7130BAA8D5E35 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		89686F3C6A69201E9D13C3D9 /* HTEmailAutocompleteTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTEmailAutocompleteTextField.h; path = Classes/HTEmailAutocompleteTextField.h; sourceTree = "<group>"; };
+		8A4D66DB27A21CCE93EF727E /* Pods-FMDB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FMDB-prefix.pch"; sourceTree = "<group>"; };
+		90B01DF72A9E786437BFAC00 /* GADModules.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADModules.h; path = "GoogleMobileAdsSdkiOS-6.12.2/GADModules.h"; sourceTree = "<group>"; };
+		9A2E055DCD2DBEF95A4335F1 /* GADAdSizeDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADAdSizeDelegate.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/DoubleClick/GADAdSizeDelegate.h"; sourceTree = "<group>"; };
+		A74D3386451F3C21B9594152 /* DFPBannerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DFPBannerView.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/DoubleClick/DFPBannerView.h"; sourceTree = "<group>"; };
+		A90DBC234DF34CE38C6BB740 /* FMDatabase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = src/fmdb/FMDatabase.h; sourceTree = "<group>"; };
+		A95DB08C2D820B5A003FAA46 /* ZipException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipException.m; path = "Objective-Zip/ZipException.m"; sourceTree = "<group>"; };
+		A9696C9CF03400C75C052C4D /* libPods-HTAutocompleteTextField.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HTAutocompleteTextField.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB9F1A647D87FFE96F329A53 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		AE8A9E063BE3940D60BC478E /* GADCustomEventRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADCustomEventRequest.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/Mediation/GADCustomEventRequest.h"; sourceTree = "<group>"; };
+		AED848A9A5FD2E2FDA291B3C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MessageUI.framework; sourceTree = DEVELOPER_DIR; };
+		AF6AEDBD8939132B8F0FE702 /* GADCustomEventInterstitialDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADCustomEventInterstitialDelegate.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/Mediation/GADCustomEventInterstitialDelegate.h"; sourceTree = "<group>"; };
+		B14A712A0B74A094EBC91A43 /* Pods-Google-Mobile-Ads-SDK-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Google-Mobile-Ads-SDK-Private.xcconfig"; sourceTree = "<group>"; };
+		B554A43649F72EA3B6244A31 /* FMResultSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = src/fmdb/FMResultSet.h; sourceTree = "<group>"; };
+		B699B02166A6045C55B9F6C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B962D779C1AD84514A4E1218 /* GADAdMobExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADAdMobExtras.h; path = "GoogleMobileAdsSdkiOS-6.12.2/GADAdMobExtras.h"; sourceTree = "<group>"; };
+		BB60BC7CF9B085F7CDF6A7E5 /* ioapi.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = MiniZip/ioapi.c; sourceTree = "<group>"; };
+		C09AD4A31DC45CFA86106646 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		C20BFFDB2843F76DB41F0519 /* ZipReadStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipReadStream.h; path = "Objective-Zip/ZipReadStream.h"; sourceTree = "<group>"; };
+		C4AF3DB0CA1984D48CB7505E /* GADCustomEventInterstitial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADCustomEventInterstitial.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/Mediation/GADCustomEventInterstitial.h"; sourceTree = "<group>"; };
+		C6E810BC7AD5DD7C30560D81 /* libPods-UIAlertView-Blocks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UIAlertView-Blocks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8543A9556DD9BCBC11F5FEE /* Pods-CMPopTipView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CMPopTipView-dummy.m"; sourceTree = "<group>"; };
+		C8A8077F58673599050768FF /* FileInZipInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FileInZipInfo.m; path = "Objective-Zip/FileInZipInfo.m"; sourceTree = "<group>"; };
+		C9B8F012DEF1D05628788446 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
+		CDF597F1CC3D510D20A9C181 /* Pods-objective-zip-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-objective-zip-Private.xcconfig"; sourceTree = "<group>"; };
+		CF156ED180FF3E910B37AD40 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		D25C08D7976EFC70A8E22B24 /* HTAutocompleteTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTAutocompleteTextField.h; path = Classes/HTAutocompleteTextField.h; sourceTree = "<group>"; };
+		D7A48C9AA17A64BCD1E97D68 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D92503DA63C6D4E8041EBD85 /* DFPInterstitial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DFPInterstitial.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/DoubleClick/DFPInterstitial.h"; sourceTree = "<group>"; };
+		DBB1E4F33A66FBA0207AFC37 /* Pods-CMPopTipView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMPopTipView.xcconfig"; sourceTree = "<group>"; };
+		DC76BB9447422AE4202731A9 /* FMDB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = src/fmdb/FMDB.h; sourceTree = "<group>"; };
+		DC8B9911490019F73D15173C /* Pods-Google-Mobile-Ads-SDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Google-Mobile-Ads-SDK-prefix.pch"; sourceTree = "<group>"; };
+		DCFEB0996F0DD1171D0BFB04 /* libPods-objective-zip.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-objective-zip.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE0071BB643E342BF5ACAA72 /* Pods-objective-zip-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-objective-zip-prefix.pch"; sourceTree = "<group>"; };
+		DEF02690E37B79CCD8B3D063 /* Pods-Google-Mobile-Ads-SDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Google-Mobile-Ads-SDK.xcconfig"; sourceTree = "<group>"; };
+		E362EF9DD2E73B6EB6F5F1C2 /* Pods-UIAlertView-Blocks-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-UIAlertView-Blocks-dummy.m"; sourceTree = "<group>"; };
+		E382C76CFBE2CEFA52F20848 /* HTAutocompleteTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTAutocompleteTextField.m; path = Classes/HTAutocompleteTextField.m; sourceTree = "<group>"; };
+		E90CA6762E4D19E37CD5F436 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = src/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
+		EE49A23EBFFE224FE48D7220 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		F10CA0BF2EAD514362CE23D1 /* Pods-UIAlertView-Blocks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-UIAlertView-Blocks-prefix.pch"; sourceTree = "<group>"; };
+		F12E85EFFD5C7CD83A62B0EB /* GADCustomEventBanner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GADCustomEventBanner.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/Mediation/GADCustomEventBanner.h"; sourceTree = "<group>"; };
+		F3A935BDE38B3F5DFD1AB323 /* Pods-HTAutocompleteTextField-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HTAutocompleteTextField-prefix.pch"; sourceTree = "<group>"; };
+		F8DD4F0B2BBA0E75DDE3CCFA /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F98FE547FADB5C8F8B57B516 /* DFPSwipeableBannerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DFPSwipeableBannerView.h; path = "GoogleMobileAdsSdkiOS-6.12.2/Add-ons/DoubleClick/DFPSwipeableBannerView.h"; sourceTree = "<group>"; };
+		FE64D5F4042012D72966EDD2 /* CMPopTipView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CMPopTipView.h; path = CMPopTipView/CMPopTipView.h; sourceTree = "<group>"; };
+		FFE5D20F1551B9E1866A06B0 /* ZipException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipException.h; path = "Objective-Zip/ZipException.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		257C1E682CA1C8BB6A49CB90 /* Frameworks */ = {
+		0BD73ED098FAF327CBC1A4C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F60CD119595C66761E7BD041 /* Foundation.framework in Frameworks */,
-				029C5B4C1C5362CB7372251D /* UIKit.framework in Frameworks */,
+				B35E1414E635C454A3299886 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		41164973252E483DBDDF372C /* Frameworks */ = {
+		20A1750EADDB7D316FE8B520 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4C15A49594B5F2FE4F50B6A /* Foundation.framework in Frameworks */,
+				6094729A3B34783C5AFFAC07 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		637A4BB2B7F5337952842991 /* Frameworks */ = {
+		28270C5715242BD21914DDC7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99F67CB7FE2A4E4AA98AD974 /* Foundation.framework in Frameworks */,
+				D4B0BD2EB571003A85367D65 /* Foundation.framework in Frameworks */,
+				5326FCE6028DE509B1880A38 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C14F144850B7CA1C9E187B52 /* Frameworks */ = {
+		2E56EA0C3487372B75AE2688 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A767C2485A0F6F92167B098 /* Foundation.framework in Frameworks */,
+				F1979FF0BE28DE5D18F2BD46 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E20BE5377143DE823A5665CA /* Frameworks */ = {
+		36959A0241CD2FC67A339E08 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A04B4693BF827A0C340F18C3 /* Foundation.framework in Frameworks */,
+				4B21C66FFFE331FE41A83E0F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E69AB00ECA69298B6A64BC95 /* Frameworks */ = {
+		7C133136E9BDD888D09DFD92 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65623DB9A5DA27C51B412565 /* Foundation.framework in Frameworks */,
+				CDD826F09ECB4EDD6116AA6B /* AVFoundation.framework in Frameworks */,
+				DC6BCBD2B68FCD1094D7F527 /* AudioToolbox.framework in Frameworks */,
+				16187B6C2139A631AFD28974 /* CoreGraphics.framework in Frameworks */,
+				E75DCB6683D2BD7101CD1C1E /* CoreTelephony.framework in Frameworks */,
+				D9D0C86A559FCED5B39CD652 /* EventKit.framework in Frameworks */,
+				328455F0C09414636E6131AF /* EventKitUI.framework in Frameworks */,
+				DAE1AFE8B69F5658154F4E13 /* Foundation.framework in Frameworks */,
+				C15DBC4FA9ADB65DCC44EEAE /* MessageUI.framework in Frameworks */,
+				A58AC5E41217DCD22AA05553 /* StoreKit.framework in Frameworks */,
+				DA8AF03EE9022E7A6BE762B5 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91B2BCA6FFE8DE4BB5261CE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12F03E55028778FB994B5752 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D9C7B6F2B5D47775C80438B /* Targets Support Files */ = {
+		0D17D46B61ED101D76AC9655 /* Google-Mobile-Ads-SDK */ = {
 			isa = PBXGroup;
 			children = (
-				84A079923CFD33EBD6CCBDC3 /* Pods */,
+				A74D3386451F3C21B9594152 /* DFPBannerView.h */,
+				4076E4675C7BE75D13C7F553 /* DFPExtras.h */,
+				D92503DA63C6D4E8041EBD85 /* DFPInterstitial.h */,
+				F98FE547FADB5C8F8B57B516 /* DFPSwipeableBannerView.h */,
+				B962D779C1AD84514A4E1218 /* GADAdMobExtras.h */,
+				8238F667AB0E395593C98D88 /* GADAdNetworkExtras.h */,
+				227FC82A1CBC3F27ACF86481 /* GADAdSize.h */,
+				9A2E055DCD2DBEF95A4335F1 /* GADAdSizeDelegate.h */,
+				764C8247CCA002D37328879E /* GADAppEventDelegate.h */,
+				38F174293D59A0D2053E3062 /* GADBannerView.h */,
+				37AE4FAB3951560D61F7CA8D /* GADBannerViewDelegate.h */,
+				F12E85EFFD5C7CD83A62B0EB /* GADCustomEventBanner.h */,
+				13855006248B503512B70E8C /* GADCustomEventBannerDelegate.h */,
+				7373516AF2548B08DFC5F09C /* GADCustomEventExtras.h */,
+				C4AF3DB0CA1984D48CB7505E /* GADCustomEventInterstitial.h */,
+				AF6AEDBD8939132B8F0FE702 /* GADCustomEventInterstitialDelegate.h */,
+				AE8A9E063BE3940D60BC478E /* GADCustomEventRequest.h */,
+				4A25219026000733A557326E /* GADInAppPurchase.h */,
+				4295F0A44E5909148FD5701D /* GADInAppPurchaseDelegate.h */,
+				0ED5593ADDBE5A6EC3EDF817 /* GADInterstitial.h */,
+				3C7933D64D539D32E5E8CC22 /* GADInterstitialDelegate.h */,
+				90B01DF72A9E786437BFAC00 /* GADModules.h */,
+				6F018E706591318719391C87 /* GADRequest.h */,
+				815FCCBD63A2D469D0E5D14A /* GADRequestError.h */,
+				702DBDA0CFE52B33D032096B /* GADSearchBannerView.h */,
+				02E295D0022578AD60125F19 /* GADSearchRequest.h */,
+				3E2F4550312FE4F579BD0360 /* GADSwipeableBannerViewDelegate.h */,
+				1FE027F8BC03E25882A40B8B /* Frameworks */,
+				D7AF0FA944CF41BC263C5329 /* Support Files */,
 			);
-			name = "Targets Support Files";
+			path = "Google-Mobile-Ads-SDK";
 			sourceTree = "<group>";
 		};
-		20CA9DDA282354402370054B /* Support Files */ = {
+		1FE027F8BC03E25882A40B8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A5213E1C8E6FC50B2A113FB0 /* Pods-FMDB.xcconfig */,
-				9C81F41BF862E4EBF0958AA5 /* Pods-FMDB-Private.xcconfig */,
-				3714A6024C56DA3EC67114DD /* Pods-FMDB-dummy.m */,
-				0F0AB9FBC72331CA5BA4A052 /* Pods-FMDB-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-FMDB";
-			sourceTree = "<group>";
-		};
-		25EA18FD2E4AD69ED8652F2C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				96FEA395079E7F44502C4D1D /* CMPopTipView */,
-				E28D0B9B5B56E35CAA990E97 /* FMDB */,
-				B940279AA6D5594DD13ACE38 /* HTAutocompleteTextField */,
-				DA79861F904A0C8916383FA9 /* UIAlertView-Blocks */,
-				BF27A2264920FAD4A5E7A341 /* objective-zip */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		2A1871C60E904E29BC4A68EC /* common */ = {
-			isa = PBXGroup;
-			children = (
-				91D61B1A30A6241664ED309D /* FMDB.h */,
-				886559F9F58897A0836807C5 /* FMDatabase.h */,
-				6F8975B057BC274730F74766 /* FMDatabase.m */,
-				F3F15A6AA46FB2EF4E79E58F /* FMDatabaseAdditions.h */,
-				268788262B69FA8087934304 /* FMDatabaseAdditions.m */,
-				F6098F7F149EDE97ED95AC93 /* FMDatabasePool.h */,
-				0BD8C80ABDB7466D4A00FD02 /* FMDatabasePool.m */,
-				7DB33D9761D3D0D8A968697E /* FMDatabaseQueue.h */,
-				91A96E5897742354F135880A /* FMDatabaseQueue.m */,
-				51CA53A645B9FA1D272052F3 /* FMResultSet.h */,
-				4E6EF5D223765B35AAC6467A /* FMResultSet.m */,
-			);
-			name = common;
-			sourceTree = "<group>";
-		};
-		4F57D1DA57F32D924E64656E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C43E108B168E5E12121E2CFE /* libPods.a */,
-				DCDF9E471483F2E03AD25C2B /* libPods-CMPopTipView.a */,
-				2C81F7EDA815A3E7172FB912 /* libPods-FMDB.a */,
-				020F062D6403987BCF4444DF /* libPods-HTAutocompleteTextField.a */,
-				506A787CF3764A2C8B7ECFB7 /* libPods-UIAlertView-Blocks.a */,
-				BC723BCA2828146F68EC29C0 /* libPods-objective-zip.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		57037479E06B8EFBC644BF98 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				9BF881EC4C753745708DFFED /* Foundation.framework */,
-				92E747AE28579A27142708DB /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		6805CD74A8DF51DCB9B4A468 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				57037479E06B8EFBC644BF98 /* iOS */,
+				4E80ECE66385A6F1B584A004 /* libGoogleAdMobAds.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7A63C03EABB9FD5D112A48C0 /* Support Files */ = {
+		1FE539AB7FE098FE1A80D0F0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				8B3617C370F606E220BA9241 /* Pods-UIAlertView-Blocks.xcconfig */,
-				E2C6581F894060D5B020C1A8 /* Pods-UIAlertView-Blocks-Private.xcconfig */,
-				863A0ADDFC7F611D910128DE /* Pods-UIAlertView-Blocks-dummy.m */,
-				B61A1B780AE20AD249DABD6A /* Pods-UIAlertView-Blocks-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-UIAlertView-Blocks";
-			sourceTree = "<group>";
-		};
-		84A079923CFD33EBD6CCBDC3 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E05194610B9F1467B8DD1456 /* Pods-acknowledgements.markdown */,
-				474D2EFF0CFA5C5C5628A8A5 /* Pods-acknowledgements.plist */,
-				25D1143CAF623D3A28EA3271 /* Pods-dummy.m */,
-				35F7C8C01C8D622E75789D21 /* Pods-environment.h */,
-				42530A3D0712985827F87D75 /* Pods-resources.sh */,
-				259FD5B9741B28334E382668 /* Pods.debug.xcconfig */,
-				9CCDB3AFD7EB6642A57ED099 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			path = "Target Support Files/Pods";
-			sourceTree = "<group>";
-		};
-		96FEA395079E7F44502C4D1D /* CMPopTipView */ = {
-			isa = PBXGroup;
-			children = (
-				9C22A34404DD17E41CB616AE /* CMPopTipView.h */,
-				EF229B0B93FCA0FD593F2BB5 /* CMPopTipView.m */,
-				B49C91EA4550B9AF80FC1C21 /* Support Files */,
-			);
-			path = CMPopTipView;
-			sourceTree = "<group>";
-		};
-		AAE4F0433162503C803D1DD5 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				3817CBA27C8E695E107D11DB /* Pods-HTAutocompleteTextField.xcconfig */,
-				9E1CEA5631B1AB829A6CB562 /* Pods-HTAutocompleteTextField-Private.xcconfig */,
-				16063D92772154B962785C0E /* Pods-HTAutocompleteTextField-dummy.m */,
-				5C0B65AB25F1B6F00D5808B4 /* Pods-HTAutocompleteTextField-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-HTAutocompleteTextField";
-			sourceTree = "<group>";
-		};
-		B49C91EA4550B9AF80FC1C21 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				68004663F76D04F701F18B4D /* Pods-CMPopTipView.xcconfig */,
-				28854003F795EA4C48E12828 /* Pods-CMPopTipView-Private.xcconfig */,
-				486F35411462421358DFAA8D /* Pods-CMPopTipView-dummy.m */,
-				8C8E2A9CB9C0C7121E25050F /* Pods-CMPopTipView-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-CMPopTipView";
-			sourceTree = "<group>";
-		};
-		B940279AA6D5594DD13ACE38 /* HTAutocompleteTextField */ = {
-			isa = PBXGroup;
-			children = (
-				E6FF594D3C31B842B3475A24 /* HTAutocompleteTextField.h */,
-				1C04FBE5B5527FF8D98EA6D8 /* HTAutocompleteTextField.m */,
-				57D7D4E076DD4310331538CD /* HTEmailAutocompleteTextField.h */,
-				195D62FF16B25C58B96E42F5 /* HTEmailAutocompleteTextField.m */,
-				AAE4F0433162503C803D1DD5 /* Support Files */,
-			);
-			path = HTAutocompleteTextField;
-			sourceTree = "<group>";
-		};
-		BF27A2264920FAD4A5E7A341 /* objective-zip */ = {
-			isa = PBXGroup;
-			children = (
-				AD6737E4640CBDD3D2CFC3DF /* ARCHelper.h */,
-				1D570BCBAE3521D548516675 /* FileInZipInfo.h */,
-				BF100048052A27FC22EEBBD3 /* FileInZipInfo.m */,
-				CFE76D67602E3A31F73E0F19 /* ZipException.h */,
-				1741A970AB7E8D009C48EF41 /* ZipException.m */,
-				A88AA6D8F6A858CE58CC9880 /* ZipFile.h */,
-				9440B7199E543C89F06809E0 /* ZipFile.m */,
-				3444BE78C4D2655798736DD9 /* ZipReadStream.h */,
-				674B3C0F1C0C15460CBEC89A /* ZipReadStream.m */,
-				D8374C3CD105D31DF78FB1DB /* ZipWriteStream.h */,
-				BA23911371B41B4DB405A4C9 /* ZipWriteStream.m */,
-				3EC2C1132395BDD823A0B2B9 /* crypt.h */,
-				739FA79E05FF16ACEEE463AB /* ioapi.c */,
-				D202317C1B39E2A999548DF4 /* ioapi.h */,
-				A9E427E26ABE443FFBA6845C /* unzip.c */,
-				B68B51AE12CFE0E4937DACFC /* unzip.h */,
-				88543041A8146BBC16EC7FB1 /* zip.c */,
-				029FE735D5E7D80F26052B3F /* zip.h */,
-				FE89ED37C8CA020AD99D3789 /* Support Files */,
-			);
-			path = "objective-zip";
-			sourceTree = "<group>";
-		};
-		DA79861F904A0C8916383FA9 /* UIAlertView-Blocks */ = {
-			isa = PBXGroup;
-			children = (
-				DC19FEFBEAE3736CC71A1D27 /* RIButtonItem.h */,
-				9515942D03F6E618470612F1 /* RIButtonItem.m */,
-				04544C3BCA8D15800CCFAAAB /* UIActionSheet+Blocks.h */,
-				811285B27E5BF24DF655B058 /* UIActionSheet+Blocks.m */,
-				4ABBB098AAD2566485CC2BDD /* UIAlertView+Blocks.h */,
-				BBC0F9A0E71B17A94E59D8BB /* UIAlertView+Blocks.m */,
-				7A63C03EABB9FD5D112A48C0 /* Support Files */,
-			);
-			path = "UIAlertView-Blocks";
-			sourceTree = "<group>";
-		};
-		E28D0B9B5B56E35CAA990E97 /* FMDB */ = {
-			isa = PBXGroup;
-			children = (
-				20CA9DDA282354402370054B /* Support Files */,
-				2A1871C60E904E29BC4A68EC /* common */,
-			);
-			path = FMDB;
-			sourceTree = "<group>";
-		};
-		FDDFE4D4BF69968764E0D491 = {
-			isa = PBXGroup;
-			children = (
-				EF44D55D3FF384DA8DB8B684 /* Podfile */,
-				6805CD74A8DF51DCB9B4A468 /* Frameworks */,
-				25EA18FD2E4AD69ED8652F2C /* Pods */,
-				4F57D1DA57F32D924E64656E /* Products */,
-				0D9C7B6F2B5D47775C80438B /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		FE89ED37C8CA020AD99D3789 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				F0E6DD96032A05749526F744 /* Pods-objective-zip.xcconfig */,
-				B7962EE574A9060774224838 /* Pods-objective-zip-Private.xcconfig */,
-				F99FC1D6042286C7A3D8FBD5 /* Pods-objective-zip-dummy.m */,
-				BE6378761754D17407F3F5FA /* Pods-objective-zip-prefix.pch */,
+				55E1DA075E2EA7CD78809BEC /* Pods-objective-zip.xcconfig */,
+				CDF597F1CC3D510D20A9C181 /* Pods-objective-zip-Private.xcconfig */,
+				1172A20C8EC548921F684DCF /* Pods-objective-zip-dummy.m */,
+				DE0071BB643E342BF5ACAA72 /* Pods-objective-zip-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Pods-objective-zip";
 			sourceTree = "<group>";
 		};
+		219288D1D811FB5B6F96374F /* objective-zip */ = {
+			isa = PBXGroup;
+			children = (
+				53788A581FB51554A312FD91 /* ARCHelper.h */,
+				54D51EF520E59E4AF5868CD5 /* FileInZipInfo.h */,
+				C8A8077F58673599050768FF /* FileInZipInfo.m */,
+				FFE5D20F1551B9E1866A06B0 /* ZipException.h */,
+				A95DB08C2D820B5A003FAA46 /* ZipException.m */,
+				3C091A9C7676B6A333006183 /* ZipFile.h */,
+				6FE0CB43C4225630883C362D /* ZipFile.m */,
+				C20BFFDB2843F76DB41F0519 /* ZipReadStream.h */,
+				2A524B822AB30D96F0C7F1A9 /* ZipReadStream.m */,
+				120178D2CBD922DC40AA7FA6 /* ZipWriteStream.h */,
+				0E2EB56A4671B15E63BB7BCC /* ZipWriteStream.m */,
+				7361E15A93507101D868152B /* crypt.h */,
+				BB60BC7CF9B085F7CDF6A7E5 /* ioapi.c */,
+				01AF3763BBB7788A7D681CF1 /* ioapi.h */,
+				2349C55A9205C3F56F4A152D /* unzip.c */,
+				2E79EB34C2E8B735077AB28C /* unzip.h */,
+				4FEA9B785B6E01063A2B6476 /* zip.c */,
+				4D2DB10EEFAE7711559B86DE /* zip.h */,
+				1FE539AB7FE098FE1A80D0F0 /* Support Files */,
+			);
+			path = "objective-zip";
+			sourceTree = "<group>";
+		};
+		262F5EB928C4AAB06B8A5E1D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				21052ECC95FF808D80155AAC /* Pods-HTAutocompleteTextField.xcconfig */,
+				041A6CDF330AD841A4E04053 /* Pods-HTAutocompleteTextField-Private.xcconfig */,
+				806BBBF8D9B7F1C77D1419FE /* Pods-HTAutocompleteTextField-dummy.m */,
+				F3A935BDE38B3F5DFD1AB323 /* Pods-HTAutocompleteTextField-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-HTAutocompleteTextField";
+			sourceTree = "<group>";
+		};
+		348DEE91D9217AE1A5926C74 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D40E2C6584690D6155174EB8 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49470620C03BA20F7851752E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DCA0E1B316F8EF6E4AB1E0C /* libPods.a */,
+				7A4EC1B2E5824713B908940B /* libPods-CMPopTipView.a */,
+				2283CDB3E968D3A16ACCE47B /* libPods-FMDB.a */,
+				28409690FBEA82946F13403D /* libPods-Google-Mobile-Ads-SDK.a */,
+				A9696C9CF03400C75C052C4D /* libPods-HTAutocompleteTextField.a */,
+				C6E810BC7AD5DD7C30560D81 /* libPods-UIAlertView-Blocks.a */,
+				DCFEB0996F0DD1171D0BFB04 /* libPods-objective-zip.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4E82818DBC18FE1F4F837718 /* UIAlertView-Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				239D528E645B2D9B25C06C76 /* RIButtonItem.h */,
+				5690CDF15FD8E84A9F84B5FE /* RIButtonItem.m */,
+				6F21B3DCD9199C0D02A52103 /* UIActionSheet+Blocks.h */,
+				3B09AC35373EFB407C8D2B4D /* UIActionSheet+Blocks.m */,
+				10803704814E2285C08E4F6A /* UIAlertView+Blocks.h */,
+				1E734BE4804DCFB990515D65 /* UIAlertView+Blocks.m */,
+				CBB651135AABA1B89FF9FC8E /* Support Files */,
+			);
+			path = "UIAlertView-Blocks";
+			sourceTree = "<group>";
+		};
+		545ECEFD5080A7CE2FB59334 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				DC76BB9447422AE4202731A9 /* FMDB.h */,
+				A90DBC234DF34CE38C6BB740 /* FMDatabase.h */,
+				26018EBDAF3D0F1D2303CC19 /* FMDatabase.m */,
+				4180B28576F21F2BE1B635C4 /* FMDatabaseAdditions.h */,
+				6CC23E76FFE9666091274D0A /* FMDatabaseAdditions.m */,
+				7DCAC613CB72EEC6EC003616 /* FMDatabasePool.h */,
+				4A079FEE7932B2426349EE6F /* FMDatabasePool.m */,
+				E90CA6762E4D19E37CD5F436 /* FMDatabaseQueue.h */,
+				2FEB96C6D61170543BBEEC86 /* FMDatabaseQueue.m */,
+				B554A43649F72EA3B6244A31 /* FMResultSet.h */,
+				4269E37899B1E70991755304 /* FMResultSet.m */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		6BC4FA17C678A4B6DFB73626 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F8DD4F0B2BBA0E75DDE3CCFA /* Pods-acknowledgements.markdown */,
+				6E542A07E5C548505AD98A89 /* Pods-acknowledgements.plist */,
+				1C8527258623ACD6B60738E3 /* Pods-dummy.m */,
+				66F2FDE525B1409A9197D4F5 /* Pods-environment.h */,
+				8305E7E3ABC7130BAA8D5E35 /* Pods-resources.sh */,
+				2CCB797EDA20C82324736731 /* Pods.debug.xcconfig */,
+				7C87D6A2ED72666C64081A39 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			path = "Target Support Files/Pods";
+			sourceTree = "<group>";
+		};
+		7335F0477282C45F436CDBA1 /* CMPopTipView */ = {
+			isa = PBXGroup;
+			children = (
+				FE64D5F4042012D72966EDD2 /* CMPopTipView.h */,
+				44333961BE5642B71914D6C5 /* CMPopTipView.m */,
+				8A26BD649ECDD0A5DE2F1620 /* Support Files */,
+			);
+			path = CMPopTipView;
+			sourceTree = "<group>";
+		};
+		7A854C6109BD7C75D99FEF93 = {
+			isa = PBXGroup;
+			children = (
+				D7A48C9AA17A64BCD1E97D68 /* Podfile */,
+				348DEE91D9217AE1A5926C74 /* Frameworks */,
+				DE5A51AEF27E17D4D3D4710C /* Pods */,
+				49470620C03BA20F7851752E /* Products */,
+				C97311A591DE402E5A2BD536 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8A26BD649ECDD0A5DE2F1620 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DBB1E4F33A66FBA0207AFC37 /* Pods-CMPopTipView.xcconfig */,
+				5B1F4BFFA158BEC0583521B1 /* Pods-CMPopTipView-Private.xcconfig */,
+				C8543A9556DD9BCBC11F5FEE /* Pods-CMPopTipView-dummy.m */,
+				09E00B4BD70E6F3F61176470 /* Pods-CMPopTipView-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-CMPopTipView";
+			sourceTree = "<group>";
+		};
+		B694B51A63985439F38C5B72 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				59AA224DEACCA93571FE7D08 /* Pods-FMDB.xcconfig */,
+				448C4B7FDAB24CCCD20AD557 /* Pods-FMDB-Private.xcconfig */,
+				1F600EBBCA9BB85006130A53 /* Pods-FMDB-dummy.m */,
+				8A4D66DB27A21CCE93EF727E /* Pods-FMDB-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-FMDB";
+			sourceTree = "<group>";
+		};
+		B9B2A4CC842D0CB314A41B1C /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				B694B51A63985439F38C5B72 /* Support Files */,
+				545ECEFD5080A7CE2FB59334 /* common */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		C97311A591DE402E5A2BD536 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6BC4FA17C678A4B6DFB73626 /* Pods */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		CBB651135AABA1B89FF9FC8E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				536E25489214E901E5E46281 /* Pods-UIAlertView-Blocks.xcconfig */,
+				7A2E42F6ADCDF65D5A9C5F94 /* Pods-UIAlertView-Blocks-Private.xcconfig */,
+				E362EF9DD2E73B6EB6F5F1C2 /* Pods-UIAlertView-Blocks-dummy.m */,
+				F10CA0BF2EAD514362CE23D1 /* Pods-UIAlertView-Blocks-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-UIAlertView-Blocks";
+			sourceTree = "<group>";
+		};
+		D40E2C6584690D6155174EB8 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				C09AD4A31DC45CFA86106646 /* AVFoundation.framework */,
+				CF156ED180FF3E910B37AD40 /* AudioToolbox.framework */,
+				09265CFF32004623A1FAA91F /* CoreGraphics.framework */,
+				C9B8F012DEF1D05628788446 /* CoreTelephony.framework */,
+				1E26974B92E1672210FAFC70 /* EventKit.framework */,
+				35B9DF27C9D4150B312B4203 /* EventKitUI.framework */,
+				B699B02166A6045C55B9F6C0 /* Foundation.framework */,
+				AED848A9A5FD2E2FDA291B3C /* MessageUI.framework */,
+				EE49A23EBFFE224FE48D7220 /* StoreKit.framework */,
+				2D9C303B3F012FB2B0B3B7C0 /* SystemConfiguration.framework */,
+				AB9F1A647D87FFE96F329A53 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		D7AF0FA944CF41BC263C5329 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DEF02690E37B79CCD8B3D063 /* Pods-Google-Mobile-Ads-SDK.xcconfig */,
+				B14A712A0B74A094EBC91A43 /* Pods-Google-Mobile-Ads-SDK-Private.xcconfig */,
+				2B212C22A93CA139359DE2EE /* Pods-Google-Mobile-Ads-SDK-dummy.m */,
+				DC8B9911490019F73D15173C /* Pods-Google-Mobile-Ads-SDK-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Google-Mobile-Ads-SDK";
+			sourceTree = "<group>";
+		};
+		D921DEB7A65F08817F3FA6B7 /* HTAutocompleteTextField */ = {
+			isa = PBXGroup;
+			children = (
+				D25C08D7976EFC70A8E22B24 /* HTAutocompleteTextField.h */,
+				E382C76CFBE2CEFA52F20848 /* HTAutocompleteTextField.m */,
+				89686F3C6A69201E9D13C3D9 /* HTEmailAutocompleteTextField.h */,
+				7F83E42A611B1013C6C9F829 /* HTEmailAutocompleteTextField.m */,
+				262F5EB928C4AAB06B8A5E1D /* Support Files */,
+			);
+			path = HTAutocompleteTextField;
+			sourceTree = "<group>";
+		};
+		DE5A51AEF27E17D4D3D4710C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7335F0477282C45F436CDBA1 /* CMPopTipView */,
+				B9B2A4CC842D0CB314A41B1C /* FMDB */,
+				0D17D46B61ED101D76AC9655 /* Google-Mobile-Ads-SDK */,
+				D921DEB7A65F08817F3FA6B7 /* HTAutocompleteTextField */,
+				4E82818DBC18FE1F4F837718 /* UIAlertView-Blocks */,
+				219288D1D811FB5B6F96374F /* objective-zip */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		36B419051D80D4F0D32C2F69 /* Headers */ = {
+		38BC31CAEC38B8A704FA77AE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1DA77F9FA95E622A37254BE /* FMDB.h in Headers */,
-				102E7CEDF603D3B2AA3C2985 /* FMDatabase.h in Headers */,
-				D5E2DE75562162B866BE6715 /* FMDatabaseAdditions.h in Headers */,
-				622D4676A4EB6A317A147B5E /* FMDatabasePool.h in Headers */,
-				97B4AFE5D9998995BB80A878 /* FMDatabaseQueue.h in Headers */,
-				EDE60145CBE2814C608CC376 /* FMResultSet.h in Headers */,
+				DA51505D2E571DC71B55E771 /* ARCHelper.h in Headers */,
+				CBF3D363D3DC6A141C588001 /* FileInZipInfo.h in Headers */,
+				6EB517DEE2766D6DE2C10041 /* ZipException.h in Headers */,
+				8696FF80E2A6FFBDECEB5230 /* ZipFile.h in Headers */,
+				4741691E6C884EF32D2E56AF /* ZipReadStream.h in Headers */,
+				3E80BF1BA2847B7F103CAED6 /* ZipWriteStream.h in Headers */,
+				B9F7D7DBAE9DD86B1D5EAA47 /* crypt.h in Headers */,
+				15E8DD8A3FD28B20C60589E4 /* ioapi.h in Headers */,
+				9A2CFBAB1BCB9B3095220BC7 /* unzip.h in Headers */,
+				F12B5E95853300C22E13FC80 /* zip.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5C76C25269DBBDAE3FD107E2 /* Headers */ = {
+		626FA030E6070B205D53C8B9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EFEA15C5180A61A62EBE4A9 /* HTAutocompleteTextField.h in Headers */,
-				1BCC9787F92DE30F44BEA506 /* HTEmailAutocompleteTextField.h in Headers */,
+				1E3E83D4E0E03FFBC7447084 /* FMDB.h in Headers */,
+				0654F241E10527822E9BA0EE /* FMDatabase.h in Headers */,
+				45A77AEFB73288A742C8D238 /* FMDatabaseAdditions.h in Headers */,
+				D2D5D76519C6B6BD9472B610 /* FMDatabasePool.h in Headers */,
+				704ACFEC04DECB78C4BA4B6D /* FMDatabaseQueue.h in Headers */,
+				58BC8E328F1711622D89C295 /* FMResultSet.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FA0DF252B0F0E2F4831E4DB /* Headers */ = {
+		8AA4A518C9AAD1F6BB94DC61 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B19610203F4D69FE87314529 /* ARCHelper.h in Headers */,
-				332DC456DDB25315A53050D0 /* FileInZipInfo.h in Headers */,
-				B694661A4F4DCF8A956D0EA3 /* ZipException.h in Headers */,
-				6F70B48E6BFC520D1F92E5AC /* ZipFile.h in Headers */,
-				5790BA827544E639A4CF46B5 /* ZipReadStream.h in Headers */,
-				12B7ECD983C441A3FB137305 /* ZipWriteStream.h in Headers */,
-				A36F8AE1E43B5B817268CFB7 /* crypt.h in Headers */,
-				469F50DD65E45248EFE53E2D /* ioapi.h in Headers */,
-				CACDA29A95BD3BCCAB38C26C /* unzip.h in Headers */,
-				9F85B16F882A5FDD72E643A3 /* zip.h in Headers */,
+				54DB60DFB1277105A16BE65D /* HTAutocompleteTextField.h in Headers */,
+				AAA8A62339F83CB6328B2406 /* HTEmailAutocompleteTextField.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AAED37CEE297017116D25378 /* Headers */ = {
+		C08A3BE6C79C9926FDDCBB67 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2B95CE395D466FC3E5B738B /* RIButtonItem.h in Headers */,
-				7DDC33629A9E5175A32618D6 /* UIActionSheet+Blocks.h in Headers */,
-				4BA86B3D059D7367CE2AF5B9 /* UIAlertView+Blocks.h in Headers */,
+				4E84BF7608F602513250A3C3 /* DFPBannerView.h in Headers */,
+				F81E428A8C2BC2A0C018E5B9 /* DFPExtras.h in Headers */,
+				DDBDE31F41A9411CDCE86E6B /* DFPInterstitial.h in Headers */,
+				1A64943716B98A9CEBBB36E1 /* DFPSwipeableBannerView.h in Headers */,
+				D965D3ABEABB8C8F27B7E3B4 /* GADAdMobExtras.h in Headers */,
+				16E2121E165820F03217437B /* GADAdNetworkExtras.h in Headers */,
+				574BEE8018465F103C501B83 /* GADAdSize.h in Headers */,
+				6BF83CC1A44F7D64046FD267 /* GADAdSizeDelegate.h in Headers */,
+				9C60C9974E5F63FCF1AD1A32 /* GADAppEventDelegate.h in Headers */,
+				2DFD3516E4361E33E9158928 /* GADBannerView.h in Headers */,
+				A34D8B28EC90C8051A8CF366 /* GADBannerViewDelegate.h in Headers */,
+				F69AE522906B51C3E42751EA /* GADCustomEventBanner.h in Headers */,
+				604AAB45602018C366F85DBF /* GADCustomEventBannerDelegate.h in Headers */,
+				FFC54DDEE8453EF91F0A931B /* GADCustomEventExtras.h in Headers */,
+				24DA9FA7B5059564B5424DB5 /* GADCustomEventInterstitial.h in Headers */,
+				FA9827E5ECFC055AD2643348 /* GADCustomEventInterstitialDelegate.h in Headers */,
+				866A797FEBE9C4D97912384D /* GADCustomEventRequest.h in Headers */,
+				B99350C976FB35BAE95D23B9 /* GADInAppPurchase.h in Headers */,
+				DCABA302FF0C295EDD464957 /* GADInAppPurchaseDelegate.h in Headers */,
+				4B984B24745687E5F919A68E /* GADInterstitial.h in Headers */,
+				783359D2D2A94C3F0C793BE1 /* GADInterstitialDelegate.h in Headers */,
+				40673D1A2B427D484215C16F /* GADModules.h in Headers */,
+				D532F189AE1C1133BB7EEF31 /* GADRequest.h in Headers */,
+				DF6B9486FCA9E909E574C802 /* GADRequestError.h in Headers */,
+				AE95A1B8C151A65E4A95D6ED /* GADSearchBannerView.h in Headers */,
+				72F3F01647EFD83CC249EC13 /* GADSearchRequest.h in Headers */,
+				6AF03DFEB9877B1A2C31BDFE /* GADSwipeableBannerViewDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C37CCC0B4973D16F55112F49 /* Headers */ = {
+		D20C16D51C75FB952197A384 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8157EC0311E1D0F77973058C /* CMPopTipView.h in Headers */,
+				5E018F097200F58C5E274237 /* CMPopTipView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD420627DBEE68D728C347A9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB2762E44212C1933882358C /* RIButtonItem.h in Headers */,
+				D2FAA16736A22294A4EE8C7D /* UIActionSheet+Blocks.h in Headers */,
+				8A6BAC16F0C3478140A424C5 /* UIAlertView+Blocks.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6B7128CC4686335E739C171E /* Pods-HTAutocompleteTextField */ = {
+		0648F51307643757407AC9A0 /* Pods-UIAlertView-Blocks */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E6D4E77F6C9AE4F8E425CE62 /* Build configuration list for PBXNativeTarget "Pods-HTAutocompleteTextField" */;
+			buildConfigurationList = 588AE3180EE4F8BFED3C8AA9 /* Build configuration list for PBXNativeTarget "Pods-UIAlertView-Blocks" */;
 			buildPhases = (
-				56D6C5770239B367E621FB43 /* Sources */,
-				41164973252E483DBDDF372C /* Frameworks */,
-				5C76C25269DBBDAE3FD107E2 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-HTAutocompleteTextField";
-			productName = "Pods-HTAutocompleteTextField";
-			productReference = 020F062D6403987BCF4444DF /* libPods-HTAutocompleteTextField.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		A9D10812EBCC82D130B66D66 /* Pods-FMDB */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EF56647A2507BA653A009D6D /* Build configuration list for PBXNativeTarget "Pods-FMDB" */;
-			buildPhases = (
-				193453181A62948FBC30E245 /* Sources */,
-				E20BE5377143DE823A5665CA /* Frameworks */,
-				36B419051D80D4F0D32C2F69 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-FMDB";
-			productName = "Pods-FMDB";
-			productReference = 2C81F7EDA815A3E7172FB912 /* libPods-FMDB.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		B203B53E99CF021D8A1D0444 /* Pods-objective-zip */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1D7F44A494E4D9FDA40C6DC2 /* Build configuration list for PBXNativeTarget "Pods-objective-zip" */;
-			buildPhases = (
-				D8F5C60227C3BA5B62428EA6 /* Sources */,
-				637A4BB2B7F5337952842991 /* Frameworks */,
-				7FA0DF252B0F0E2F4831E4DB /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-objective-zip";
-			productName = "Pods-objective-zip";
-			productReference = BC723BCA2828146F68EC29C0 /* libPods-objective-zip.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		D653CE0250ADA8A3D9C78683 /* Pods */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FE77673C99724A87F5F9C668 /* Build configuration list for PBXNativeTarget "Pods" */;
-			buildPhases = (
-				D601FCE23DB5DB1E6D1978AA /* Sources */,
-				E69AB00ECA69298B6A64BC95 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				54B2ABD28330086A8E164F10 /* PBXTargetDependency */,
-				D9264CDB03F10C757D905247 /* PBXTargetDependency */,
-				2D76FC06B2CD646BEC8BD80A /* PBXTargetDependency */,
-				8E776F862CF79D26A8C55588 /* PBXTargetDependency */,
-				9468699C2B0059453499F2CE /* PBXTargetDependency */,
-			);
-			name = Pods;
-			productName = Pods;
-			productReference = C43E108B168E5E12121E2CFE /* libPods.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		DE7005B09AB1EDADC478638F /* Pods-CMPopTipView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A411F87C3F26325AC00049CD /* Build configuration list for PBXNativeTarget "Pods-CMPopTipView" */;
-			buildPhases = (
-				13D0993B79E269DCEF7BA37A /* Sources */,
-				257C1E682CA1C8BB6A49CB90 /* Frameworks */,
-				C37CCC0B4973D16F55112F49 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-CMPopTipView";
-			productName = "Pods-CMPopTipView";
-			productReference = DCDF9E471483F2E03AD25C2B /* libPods-CMPopTipView.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		E32EE32E17ED4E838A001F88 /* Pods-UIAlertView-Blocks */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2A48A2999AC408F19A1758CB /* Build configuration list for PBXNativeTarget "Pods-UIAlertView-Blocks" */;
-			buildPhases = (
-				E4A4A622E9A77A1EA68B6E23 /* Sources */,
-				C14F144850B7CA1C9E187B52 /* Frameworks */,
-				AAED37CEE297017116D25378 /* Headers */,
+				DC0FD39A6D2BF478B5793962 /* Sources */,
+				36959A0241CD2FC67A339E08 /* Frameworks */,
+				FD420627DBEE68D728C347A9 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -625,149 +741,271 @@
 			);
 			name = "Pods-UIAlertView-Blocks";
 			productName = "Pods-UIAlertView-Blocks";
-			productReference = 506A787CF3764A2C8B7ECFB7 /* libPods-UIAlertView-Blocks.a */;
+			productReference = C6E810BC7AD5DD7C30560D81 /* libPods-UIAlertView-Blocks.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3A72C82DE8BB01FF539EE4DB /* Pods-CMPopTipView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4448070673262BAA93EB0C7C /* Build configuration list for PBXNativeTarget "Pods-CMPopTipView" */;
+			buildPhases = (
+				5D8BE8AEA38CABA4C131B0A4 /* Sources */,
+				28270C5715242BD21914DDC7 /* Frameworks */,
+				D20C16D51C75FB952197A384 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-CMPopTipView";
+			productName = "Pods-CMPopTipView";
+			productReference = 7A4EC1B2E5824713B908940B /* libPods-CMPopTipView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3F833FE99EC0A340BDBDBFE3 /* Pods-HTAutocompleteTextField */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F8247741156BBB53C6608AD /* Build configuration list for PBXNativeTarget "Pods-HTAutocompleteTextField" */;
+			buildPhases = (
+				97665A186E1E0D9620F53BE7 /* Sources */,
+				91B2BCA6FFE8DE4BB5261CE8 /* Frameworks */,
+				8AA4A518C9AAD1F6BB94DC61 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-HTAutocompleteTextField";
+			productName = "Pods-HTAutocompleteTextField";
+			productReference = A9696C9CF03400C75C052C4D /* libPods-HTAutocompleteTextField.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5559CA440F71F0A003C4752E /* Pods-objective-zip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A160F8D560F8786426684B2 /* Build configuration list for PBXNativeTarget "Pods-objective-zip" */;
+			buildPhases = (
+				501EA945264989993776EAA2 /* Sources */,
+				2E56EA0C3487372B75AE2688 /* Frameworks */,
+				38BC31CAEC38B8A704FA77AE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-objective-zip";
+			productName = "Pods-objective-zip";
+			productReference = DCFEB0996F0DD1171D0BFB04 /* libPods-objective-zip.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		97F8F7D34C55CD292E46B3DA /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAC1510A19DC1E2A170E1281 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				E6DECCE6F4001ABC22E4CC07 /* Sources */,
+				0BD73ED098FAF327CBC1A4C9 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				07C01BF1C8952C97B1610BA6 /* PBXTargetDependency */,
+				B632CED111B79787293A74E9 /* PBXTargetDependency */,
+				51B8826B437F9596591AF836 /* PBXTargetDependency */,
+				F600D100E3A2E766B24BF98B /* PBXTargetDependency */,
+				D26986E8544440E91D773873 /* PBXTargetDependency */,
+				D4185B2F1C3A0D1E715DE9A3 /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = 4DCA0E1B316F8EF6E4AB1E0C /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E693151B9D38E52DC6B62DE6 /* Pods-FMDB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF01AA0D84093AF277BD772C /* Build configuration list for PBXNativeTarget "Pods-FMDB" */;
+			buildPhases = (
+				2D3ACB1EDDE7E1BCACB456A2 /* Sources */,
+				20A1750EADDB7D316FE8B520 /* Frameworks */,
+				626FA030E6070B205D53C8B9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-FMDB";
+			productName = "Pods-FMDB";
+			productReference = 2283CDB3E968D3A16ACCE47B /* libPods-FMDB.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		EB5FD06968C3F615BC765421 /* Pods-Google-Mobile-Ads-SDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBAD6C4EA31AF5B22EECD529 /* Build configuration list for PBXNativeTarget "Pods-Google-Mobile-Ads-SDK" */;
+			buildPhases = (
+				105053ECC3F79F35AFF0813D /* Sources */,
+				7C133136E9BDD888D09DFD92 /* Frameworks */,
+				C08A3BE6C79C9926FDDCBB67 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Google-Mobile-Ads-SDK";
+			productName = "Pods-Google-Mobile-Ads-SDK";
+			productReference = 28409690FBEA82946F13403D /* libPods-Google-Mobile-Ads-SDK.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F9E122E68B59EA56763CF60B /* Project object */ = {
+		C1AD6564FDDEDC20E234DB1D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
 			};
-			buildConfigurationList = 2207012A4A56B94D06C11ED0 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = C71585C0E93610FCF7700EA2 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = FDDFE4D4BF69968764E0D491;
-			productRefGroup = 4F57D1DA57F32D924E64656E /* Products */;
+			mainGroup = 7A854C6109BD7C75D99FEF93;
+			productRefGroup = 49470620C03BA20F7851752E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D653CE0250ADA8A3D9C78683 /* Pods */,
-				DE7005B09AB1EDADC478638F /* Pods-CMPopTipView */,
-				A9D10812EBCC82D130B66D66 /* Pods-FMDB */,
-				6B7128CC4686335E739C171E /* Pods-HTAutocompleteTextField */,
-				E32EE32E17ED4E838A001F88 /* Pods-UIAlertView-Blocks */,
-				B203B53E99CF021D8A1D0444 /* Pods-objective-zip */,
+				97F8F7D34C55CD292E46B3DA /* Pods */,
+				3A72C82DE8BB01FF539EE4DB /* Pods-CMPopTipView */,
+				E693151B9D38E52DC6B62DE6 /* Pods-FMDB */,
+				EB5FD06968C3F615BC765421 /* Pods-Google-Mobile-Ads-SDK */,
+				3F833FE99EC0A340BDBDBFE3 /* Pods-HTAutocompleteTextField */,
+				0648F51307643757407AC9A0 /* Pods-UIAlertView-Blocks */,
+				5559CA440F71F0A003C4752E /* Pods-objective-zip */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		13D0993B79E269DCEF7BA37A /* Sources */ = {
+		105053ECC3F79F35AFF0813D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				509520D105BAEBA126610DD2 /* CMPopTipView.m in Sources */,
-				0554A4D986F4B657B2D14326 /* Pods-CMPopTipView-dummy.m in Sources */,
+				AFD6107EA7DC78DE1452C411 /* Pods-Google-Mobile-Ads-SDK-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		193453181A62948FBC30E245 /* Sources */ = {
+		2D3ACB1EDDE7E1BCACB456A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9308643BCB96205FF06B24A0 /* FMDatabase.m in Sources */,
-				8F0160757B7EDA65CC5A402D /* FMDatabaseAdditions.m in Sources */,
-				DF0126027937E289EDFF76CC /* FMDatabasePool.m in Sources */,
-				882AB8AAD451B23B325E5EED /* FMDatabaseQueue.m in Sources */,
-				1FDAC13447231C2F2B43280A /* FMResultSet.m in Sources */,
-				F7A40EA4A3C719AD119C4B8E /* Pods-FMDB-dummy.m in Sources */,
+				3EBA469AC2D604382CD20D84 /* FMDatabase.m in Sources */,
+				556AEFA715C33693A53EE6ED /* FMDatabaseAdditions.m in Sources */,
+				D0285F3318F3CE92F64ECFB8 /* FMDatabasePool.m in Sources */,
+				006C81A9AA0BA342D2CB3786 /* FMDatabaseQueue.m in Sources */,
+				AE3E2E8658D677823D24ABE5 /* FMResultSet.m in Sources */,
+				17378FEFBDD0FBF96B220A87 /* Pods-FMDB-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		56D6C5770239B367E621FB43 /* Sources */ = {
+		501EA945264989993776EAA2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34A7598022CFC58C543FE466 /* HTAutocompleteTextField.m in Sources */,
-				1074B59766DF47123220998B /* HTEmailAutocompleteTextField.m in Sources */,
-				4AEE82A5E6843C7E5C081CD3 /* Pods-HTAutocompleteTextField-dummy.m in Sources */,
+				FE3FFD65C0521D96E4CCB711 /* FileInZipInfo.m in Sources */,
+				D913CDFD626FF0E173B9ADAB /* Pods-objective-zip-dummy.m in Sources */,
+				A737F2115AEA867D22EE2DC9 /* ZipException.m in Sources */,
+				6D117D9F94D48BBC76CE5B84 /* ZipFile.m in Sources */,
+				26717E943E1C3EB3241125D1 /* ZipReadStream.m in Sources */,
+				77188A1A0F6594EBF09BFB73 /* ZipWriteStream.m in Sources */,
+				8EEB58A920087189FB235937 /* ioapi.c in Sources */,
+				B9F6D30D5B863FF4C5E0E579 /* unzip.c in Sources */,
+				F1358D644FBBBC38FAF8F4C5 /* zip.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D601FCE23DB5DB1E6D1978AA /* Sources */ = {
+		5D8BE8AEA38CABA4C131B0A4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CA25838B596A64DD320FDDF /* Pods-dummy.m in Sources */,
+				EE42D9E594B6598530ED30CD /* CMPopTipView.m in Sources */,
+				4E29F686660349322810BA65 /* Pods-CMPopTipView-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D8F5C60227C3BA5B62428EA6 /* Sources */ = {
+		97665A186E1E0D9620F53BE7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D340E60FC2655F8AC583EE95 /* FileInZipInfo.m in Sources */,
-				1BA28245ADFAC795CAE0BFA0 /* Pods-objective-zip-dummy.m in Sources */,
-				86F385D0B68DF63C8CE25178 /* ZipException.m in Sources */,
-				0807B1230110C4CD908BF929 /* ZipFile.m in Sources */,
-				FA99268A22ECA9541E3D50CB /* ZipReadStream.m in Sources */,
-				FC927CE6AE2A528325DEB9A1 /* ZipWriteStream.m in Sources */,
-				48F8E63819C2B72B0182352A /* ioapi.c in Sources */,
-				65467B543506FA12FD02AE44 /* unzip.c in Sources */,
-				FE1261B05EE13C00FE608DE2 /* zip.c in Sources */,
+				6E94C7F1251CB848FD9D876C /* HTAutocompleteTextField.m in Sources */,
+				50F62F28F7C6111A3A14A850 /* HTEmailAutocompleteTextField.m in Sources */,
+				BF305509EAA2A657DC8A0F54 /* Pods-HTAutocompleteTextField-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E4A4A622E9A77A1EA68B6E23 /* Sources */ = {
+		DC0FD39A6D2BF478B5793962 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55AD211A0F23FDBB865516FC /* Pods-UIAlertView-Blocks-dummy.m in Sources */,
-				4FC67EB2C4FEE3533C9BBBA9 /* RIButtonItem.m in Sources */,
-				EE3F8F500FF1B95A758FC1A7 /* UIActionSheet+Blocks.m in Sources */,
-				BFD66166F2B1F2A2882A4387 /* UIAlertView+Blocks.m in Sources */,
+				08265DB99E5698705643F4B8 /* Pods-UIAlertView-Blocks-dummy.m in Sources */,
+				6E62CC84558111F711E29329 /* RIButtonItem.m in Sources */,
+				44F558D7E0F06737514E80E7 /* UIActionSheet+Blocks.m in Sources */,
+				AB7D1B889D2F1EC8A54EEEC7 /* UIAlertView+Blocks.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6DECCE6F4001ABC22E4CC07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBE126DE115CD23E7CD157DE /* Pods-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2D76FC06B2CD646BEC8BD80A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-HTAutocompleteTextField";
-			target = 6B7128CC4686335E739C171E /* Pods-HTAutocompleteTextField */;
-			targetProxy = 939C56B42ED3D807E54F820C /* PBXContainerItemProxy */;
-		};
-		54B2ABD28330086A8E164F10 /* PBXTargetDependency */ = {
+		07C01BF1C8952C97B1610BA6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-CMPopTipView";
-			target = DE7005B09AB1EDADC478638F /* Pods-CMPopTipView */;
-			targetProxy = 19E3C3AE8F2144A561297822 /* PBXContainerItemProxy */;
+			target = 3A72C82DE8BB01FF539EE4DB /* Pods-CMPopTipView */;
+			targetProxy = 41B1D67AE364C73126DEE87F /* PBXContainerItemProxy */;
 		};
-		8E776F862CF79D26A8C55588 /* PBXTargetDependency */ = {
+		51B8826B437F9596591AF836 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-UIAlertView-Blocks";
-			target = E32EE32E17ED4E838A001F88 /* Pods-UIAlertView-Blocks */;
-			targetProxy = 1B8099C34AC3BF4CF2C288A9 /* PBXContainerItemProxy */;
+			name = "Pods-Google-Mobile-Ads-SDK";
+			target = EB5FD06968C3F615BC765421 /* Pods-Google-Mobile-Ads-SDK */;
+			targetProxy = F982E81DB17F86242EF2A87C /* PBXContainerItemProxy */;
 		};
-		9468699C2B0059453499F2CE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-objective-zip";
-			target = B203B53E99CF021D8A1D0444 /* Pods-objective-zip */;
-			targetProxy = 8F7E4AFCEA1945CBC0231F18 /* PBXContainerItemProxy */;
-		};
-		D9264CDB03F10C757D905247 /* PBXTargetDependency */ = {
+		B632CED111B79787293A74E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-FMDB";
-			target = A9D10812EBCC82D130B66D66 /* Pods-FMDB */;
-			targetProxy = 0F81C2E9E5849031A6DF4D8A /* PBXContainerItemProxy */;
+			target = E693151B9D38E52DC6B62DE6 /* Pods-FMDB */;
+			targetProxy = 008F1EF5A14192016253A24B /* PBXContainerItemProxy */;
+		};
+		D26986E8544440E91D773873 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-UIAlertView-Blocks";
+			target = 0648F51307643757407AC9A0 /* Pods-UIAlertView-Blocks */;
+			targetProxy = CE81DBCD9FD388801E985D89 /* PBXContainerItemProxy */;
+		};
+		D4185B2F1C3A0D1E715DE9A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-objective-zip";
+			target = 5559CA440F71F0A003C4752E /* Pods-objective-zip */;
+			targetProxy = 0BD853B3413D087BC81F7F52 /* PBXContainerItemProxy */;
+		};
+		F600D100E3A2E766B24BF98B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-HTAutocompleteTextField";
+			target = 3F833FE99EC0A340BDBDBFE3 /* Pods-HTAutocompleteTextField */;
+			targetProxy = 10DF7A6D4B6F94F71D3AC028 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0335E3D883A49E8324080B3B /* Debug */ = {
+		2246D54964978A9C37ADAB4D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C81F41BF862E4EBF0958AA5 /* Pods-FMDB-Private.xcconfig */;
+			baseConfigurationReference = B14A712A0B74A094EBC91A43 /* Pods-Google-Mobile-Ads-SDK-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-FMDB/Pods-FMDB-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Google-Mobile-Ads-SDK/Pods-Google-Mobile-Ads-SDK-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -778,55 +1016,23 @@
 			};
 			name = Debug;
 		};
-		040BD54A98FA691209F698E9 /* Debug */ = {
+		23BE9F2082302116067C12B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 259FD5B9741B28334E382668 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 041A6CDF330AD841A4E04053 /* Pods-HTAutocompleteTextField-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-HTAutocompleteTextField/Pods-HTAutocompleteTextField-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		0D381528FD67DE4A8A0AA186 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9CCDB3AFD7EB6642A57ED099 /* Pods.release.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		0EDD32B3C88EC5CFBB53A65B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 28854003F795EA4C48E12828 /* Pods-CMPopTipView-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-CMPopTipView/Pods-CMPopTipView-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		1D482E0B19C9FDDD33AB64DB /* Release */ = {
+		28850E56B1832447938A6DF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -860,87 +1066,7 @@
 			};
 			name = Release;
 		};
-		1DD0AC8F38B8E80A41B03C41 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E1CEA5631B1AB829A6CB562 /* Pods-HTAutocompleteTextField-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-HTAutocompleteTextField/Pods-HTAutocompleteTextField-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		36013827C7D94B6E69E1C4EE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2C6581F894060D5B020C1A8 /* Pods-UIAlertView-Blocks-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-UIAlertView-Blocks/Pods-UIAlertView-Blocks-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		6148E3D5C11D833D4BCF3565 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E1CEA5631B1AB829A6CB562 /* Pods-HTAutocompleteTextField-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-HTAutocompleteTextField/Pods-HTAutocompleteTextField-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		8DC06F5B391979D30A62BCC1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 28854003F795EA4C48E12828 /* Pods-CMPopTipView-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-CMPopTipView/Pods-CMPopTipView-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		908E9E2C0646B5781078E378 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C81F41BF862E4EBF0958AA5 /* Pods-FMDB-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-FMDB/Pods-FMDB-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		A92988C4CA52272895A24FCB /* Debug */ = {
+		30C6B47513AD8064662A4AD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -979,12 +1105,28 @@
 			};
 			name = Debug;
 		};
-		AA47869BF28286562B3177F3 /* Release */ = {
+		37FAB953F9CC75558298BA4E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7962EE574A9060774224838 /* Pods-objective-zip-Private.xcconfig */;
+			baseConfigurationReference = 7C87D6A2ED72666C64081A39 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-objective-zip/Pods-objective-zip-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		506BEE0E3259CDFCBF1074A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B1F4BFFA158BEC0583521B1 /* Pods-CMPopTipView-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-CMPopTipView/Pods-CMPopTipView-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -995,25 +1137,25 @@
 			};
 			name = Release;
 		};
-		C9D4F3925EF7FC5BD30C0CED /* Debug */ = {
+		52EA415F60A51458CF514074 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7962EE574A9060774224838 /* Pods-objective-zip-Private.xcconfig */;
+			baseConfigurationReference = 041A6CDF330AD841A4E04053 /* Pods-HTAutocompleteTextField-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-objective-zip/Pods-objective-zip-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-HTAutocompleteTextField/Pods-HTAutocompleteTextField-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
-		E32F7585572E6D0CFD18F0DD /* Debug */ = {
+		5A494B936C7BDECC6D3E6697 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2C6581F894060D5B020C1A8 /* Pods-UIAlertView-Blocks-Private.xcconfig */;
+			baseConfigurationReference = 7A2E42F6ADCDF65D5A9C5F94 /* Pods-UIAlertView-Blocks-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-UIAlertView-Blocks/Pods-UIAlertView-Blocks-prefix.pch";
@@ -1027,73 +1169,210 @@
 			};
 			name = Debug;
 		};
+		686DFA8AAEDB4D768D094EE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A2E42F6ADCDF65D5A9C5F94 /* Pods-UIAlertView-Blocks-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-UIAlertView-Blocks/Pods-UIAlertView-Blocks-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		907D6AA76A462868D2D79ACD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 448C4B7FDAB24CCCD20AD557 /* Pods-FMDB-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-FMDB/Pods-FMDB-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B0048F653DFFA68BA94E4742 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 448C4B7FDAB24CCCD20AD557 /* Pods-FMDB-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-FMDB/Pods-FMDB-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C129DAF05F885D585179D1CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B1F4BFFA158BEC0583521B1 /* Pods-CMPopTipView-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-CMPopTipView/Pods-CMPopTipView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D0F985D8730C6C8F55E5C169 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDF597F1CC3D510D20A9C181 /* Pods-objective-zip-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-objective-zip/Pods-objective-zip-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D8702C687685F3597450291B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B14A712A0B74A094EBC91A43 /* Pods-Google-Mobile-Ads-SDK-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Google-Mobile-Ads-SDK/Pods-Google-Mobile-Ads-SDK-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		DE0B4A13437293A87137B2CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CCB797EDA20C82324736731 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FDFFDFDF13FCC17A0F26A73E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDF597F1CC3D510D20A9C181 /* Pods-objective-zip-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-objective-zip/Pods-objective-zip-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D7F44A494E4D9FDA40C6DC2 /* Build configuration list for PBXNativeTarget "Pods-objective-zip" */ = {
+		1A160F8D560F8786426684B2 /* Build configuration list for PBXNativeTarget "Pods-objective-zip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C9D4F3925EF7FC5BD30C0CED /* Debug */,
-				AA47869BF28286562B3177F3 /* Release */,
+				D0F985D8730C6C8F55E5C169 /* Debug */,
+				FDFFDFDF13FCC17A0F26A73E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2207012A4A56B94D06C11ED0 /* Build configuration list for PBXProject "Pods" */ = {
+		1F8247741156BBB53C6608AD /* Build configuration list for PBXNativeTarget "Pods-HTAutocompleteTextField" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A92988C4CA52272895A24FCB /* Debug */,
-				1D482E0B19C9FDDD33AB64DB /* Release */,
+				23BE9F2082302116067C12B6 /* Debug */,
+				52EA415F60A51458CF514074 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2A48A2999AC408F19A1758CB /* Build configuration list for PBXNativeTarget "Pods-UIAlertView-Blocks" */ = {
+		4448070673262BAA93EB0C7C /* Build configuration list for PBXNativeTarget "Pods-CMPopTipView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E32F7585572E6D0CFD18F0DD /* Debug */,
-				36013827C7D94B6E69E1C4EE /* Release */,
+				C129DAF05F885D585179D1CE /* Debug */,
+				506BEE0E3259CDFCBF1074A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A411F87C3F26325AC00049CD /* Build configuration list for PBXNativeTarget "Pods-CMPopTipView" */ = {
+		588AE3180EE4F8BFED3C8AA9 /* Build configuration list for PBXNativeTarget "Pods-UIAlertView-Blocks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8DC06F5B391979D30A62BCC1 /* Debug */,
-				0EDD32B3C88EC5CFBB53A65B /* Release */,
+				5A494B936C7BDECC6D3E6697 /* Debug */,
+				686DFA8AAEDB4D768D094EE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E6D4E77F6C9AE4F8E425CE62 /* Build configuration list for PBXNativeTarget "Pods-HTAutocompleteTextField" */ = {
+		C71585C0E93610FCF7700EA2 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1DD0AC8F38B8E80A41B03C41 /* Debug */,
-				6148E3D5C11D833D4BCF3565 /* Release */,
+				30C6B47513AD8064662A4AD4 /* Debug */,
+				28850E56B1832447938A6DF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EF56647A2507BA653A009D6D /* Build configuration list for PBXNativeTarget "Pods-FMDB" */ = {
+		CAC1510A19DC1E2A170E1281 /* Build configuration list for PBXNativeTarget "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0335E3D883A49E8324080B3B /* Debug */,
-				908E9E2C0646B5781078E378 /* Release */,
+				DE0B4A13437293A87137B2CA /* Debug */,
+				37FAB953F9CC75558298BA4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FE77673C99724A87F5F9C668 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		CBAD6C4EA31AF5B22EECD529 /* Build configuration list for PBXNativeTarget "Pods-Google-Mobile-Ads-SDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				040BD54A98FA691209F698E9 /* Debug */,
-				0D381528FD67DE4A8A0AA186 /* Release */,
+				2246D54964978A9C37ADAB4D /* Debug */,
+				D8702C687685F3597450291B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF01AA0D84093AF277BD772C /* Build configuration list for PBXNativeTarget "Pods-FMDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0048F653DFFA68BA94E4742 /* Debug */,
+				907D6AA76A462868D2D79ACD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F9E122E68B59EA56763CF60B /* Project object */;
+	rootObject = C1AD6564FDDEDC20E234DB1D /* Project object */;
 }
