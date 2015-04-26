@@ -12,3 +12,9 @@
 #define COCOAPODS_VERSION_MINOR_UIAlertView_Blocks 0
 #define COCOAPODS_VERSION_PATCH_UIAlertView_Blocks 0
 
+// objective-zip
+#define COCOAPODS_POD_AVAILABLE_objective_zip
+#define COCOAPODS_VERSION_MAJOR_objective_zip 0
+#define COCOAPODS_VERSION_MINOR_objective_zip 8
+#define COCOAPODS_VERSION_PATCH_objective_zip 3
+

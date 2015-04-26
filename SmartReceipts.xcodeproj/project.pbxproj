@@ -65,29 +65,6 @@
 		84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A73C3618E74C9900D35A57 /* WBObservableTrips.m */; };
 		84AA0AD118E5F624008A85F9 /* WBFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA0AD018E5F624008A85F9 /* WBFileManager.m */; };
 		84AA921518EE89E00096013D /* WBImageStampler.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA921418EE89E00096013D /* WBImageStampler.m */; };
-		84AA924918EEAF0C0096013D /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA921D18EEAF0C0096013D /* ioapi.c */; };
-		84AA924A18EEAF0C0096013D /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA921F18EEAF0C0096013D /* unzip.c */; };
-		84AA924B18EEAF0C0096013D /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA922118EEAF0C0096013D /* zip.c */; };
-		84AA924C18EEAF0C0096013D /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA922518EEAF0C0096013D /* FileInZipInfo.m */; };
-		84AA924D18EEAF0C0096013D /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA922718EEAF0C0096013D /* ZipException.m */; };
-		84AA924E18EEAF0C0096013D /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA922918EEAF0C0096013D /* ZipFile.m */; };
-		84AA924F18EEAF0C0096013D /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA922B18EEAF0C0096013D /* ZipReadStream.m */; };
-		84AA925018EEAF0C0096013D /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA922D18EEAF0C0096013D /* ZipWriteStream.m */; };
-		84AA925118EEAF0C0096013D /* adler32.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA922F18EEAF0C0096013D /* adler32.c */; };
-		84AA925218EEAF0C0096013D /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA923018EEAF0C0096013D /* compress.c */; };
-		84AA925318EEAF0C0096013D /* crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA923118EEAF0C0096013D /* crc32.c */; };
-		84AA925418EEAF0C0096013D /* deflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA923318EEAF0C0096013D /* deflate.c */; };
-		84AA925518EEAF0C0096013D /* gzclose.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA923518EEAF0C0096013D /* gzclose.c */; };
-		84AA925618EEAF0C0096013D /* gzlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA923718EEAF0C0096013D /* gzlib.c */; };
-		84AA925718EEAF0C0096013D /* gzread.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA923818EEAF0C0096013D /* gzread.c */; };
-		84AA925818EEAF0C0096013D /* gzwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA923918EEAF0C0096013D /* gzwrite.c */; };
-		84AA925918EEAF0C0096013D /* infback.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA923A18EEAF0C0096013D /* infback.c */; };
-		84AA925A18EEAF0C0096013D /* inffast.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA923B18EEAF0C0096013D /* inffast.c */; };
-		84AA925B18EEAF0C0096013D /* inflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA923E18EEAF0C0096013D /* inflate.c */; };
-		84AA925C18EEAF0C0096013D /* inftrees.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA924018EEAF0C0096013D /* inftrees.c */; };
-		84AA925D18EEAF0C0096013D /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA924218EEAF0C0096013D /* trees.c */; };
-		84AA925E18EEAF0C0096013D /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA924418EEAF0C0096013D /* uncompr.c */; };
-		84AA925F18EEAF0C0096013D /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA924718EEAF0C0096013D /* zutil.c */; };
 		84ABACF618DB66FA00F8D3EB /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACED18DB66FA00F8D3EB /* FMDatabase.m */; };
 		84ABACF718DB66FA00F8D3EB /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACEF18DB66FA00F8D3EB /* FMDatabaseAdditions.m */; };
 		84ABACF818DB66FA00F8D3EB /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACF118DB66FA00F8D3EB /* FMDatabasePool.m */; };
@@ -283,50 +260,6 @@
 		84AA0AD018E5F624008A85F9 /* WBFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBFileManager.m; sourceTree = "<group>"; };
 		84AA921318EE89E00096013D /* WBImageStampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageStampler.h; sourceTree = "<group>"; };
 		84AA921418EE89E00096013D /* WBImageStampler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageStampler.m; sourceTree = "<group>"; };
-		84AA921A18EEAF0C0096013D /* ARCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCHelper.h; sourceTree = "<group>"; };
-		84AA921C18EEAF0C0096013D /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		84AA921D18EEAF0C0096013D /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		84AA921E18EEAF0C0096013D /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		84AA921F18EEAF0C0096013D /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		84AA922018EEAF0C0096013D /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		84AA922118EEAF0C0096013D /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		84AA922218EEAF0C0096013D /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		84AA922418EEAF0C0096013D /* FileInZipInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileInZipInfo.h; sourceTree = "<group>"; };
-		84AA922518EEAF0C0096013D /* FileInZipInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileInZipInfo.m; sourceTree = "<group>"; };
-		84AA922618EEAF0C0096013D /* ZipException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipException.h; sourceTree = "<group>"; };
-		84AA922718EEAF0C0096013D /* ZipException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipException.m; sourceTree = "<group>"; };
-		84AA922818EEAF0C0096013D /* ZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipFile.h; sourceTree = "<group>"; };
-		84AA922918EEAF0C0096013D /* ZipFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipFile.m; sourceTree = "<group>"; };
-		84AA922A18EEAF0C0096013D /* ZipReadStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipReadStream.h; sourceTree = "<group>"; };
-		84AA922B18EEAF0C0096013D /* ZipReadStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipReadStream.m; sourceTree = "<group>"; };
-		84AA922C18EEAF0C0096013D /* ZipWriteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipWriteStream.h; sourceTree = "<group>"; };
-		84AA922D18EEAF0C0096013D /* ZipWriteStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipWriteStream.m; sourceTree = "<group>"; };
-		84AA922F18EEAF0C0096013D /* adler32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = adler32.c; sourceTree = "<group>"; };
-		84AA923018EEAF0C0096013D /* compress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = compress.c; sourceTree = "<group>"; };
-		84AA923118EEAF0C0096013D /* crc32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crc32.c; sourceTree = "<group>"; };
-		84AA923218EEAF0C0096013D /* crc32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crc32.h; sourceTree = "<group>"; };
-		84AA923318EEAF0C0096013D /* deflate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = deflate.c; sourceTree = "<group>"; };
-		84AA923418EEAF0C0096013D /* deflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = deflate.h; sourceTree = "<group>"; };
-		84AA923518EEAF0C0096013D /* gzclose.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzclose.c; sourceTree = "<group>"; };
-		84AA923618EEAF0C0096013D /* gzguts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gzguts.h; sourceTree = "<group>"; };
-		84AA923718EEAF0C0096013D /* gzlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzlib.c; sourceTree = "<group>"; };
-		84AA923818EEAF0C0096013D /* gzread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzread.c; sourceTree = "<group>"; };
-		84AA923918EEAF0C0096013D /* gzwrite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzwrite.c; sourceTree = "<group>"; };
-		84AA923A18EEAF0C0096013D /* infback.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = infback.c; sourceTree = "<group>"; };
-		84AA923B18EEAF0C0096013D /* inffast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inffast.c; sourceTree = "<group>"; };
-		84AA923C18EEAF0C0096013D /* inffast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inffast.h; sourceTree = "<group>"; };
-		84AA923D18EEAF0C0096013D /* inffixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inffixed.h; sourceTree = "<group>"; };
-		84AA923E18EEAF0C0096013D /* inflate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inflate.c; sourceTree = "<group>"; };
-		84AA923F18EEAF0C0096013D /* inflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inflate.h; sourceTree = "<group>"; };
-		84AA924018EEAF0C0096013D /* inftrees.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inftrees.c; sourceTree = "<group>"; };
-		84AA924118EEAF0C0096013D /* inftrees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inftrees.h; sourceTree = "<group>"; };
-		84AA924218EEAF0C0096013D /* trees.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trees.c; sourceTree = "<group>"; };
-		84AA924318EEAF0C0096013D /* trees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trees.h; sourceTree = "<group>"; };
-		84AA924418EEAF0C0096013D /* uncompr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = uncompr.c; sourceTree = "<group>"; };
-		84AA924518EEAF0C0096013D /* zconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zconf.h; sourceTree = "<group>"; };
-		84AA924618EEAF0C0096013D /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
-		84AA924718EEAF0C0096013D /* zutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zutil.c; sourceTree = "<group>"; };
-		84AA924818EEAF0C0096013D /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zutil.h; sourceTree = "<group>"; };
 		84ABACEC18DB66FA00F8D3EB /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		84ABACED18DB66FA00F8D3EB /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		84ABACEE18DB66FA00F8D3EB /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -762,93 +695,9 @@
 				84EA5C4918F2E28A001BAA10 /* HTAutocompleteTextField */,
 				84EA5C4318F2D52B001BAA10 /* CMPopTipView */,
 				843F623718EF9A5F001ACBB1 /* MBProgressHUD */,
-				84AA921818EEAF0C0096013D /* Objective-Zip */,
 				84ABACEB18DB66E700F8D3EB /* FMDB */,
 			);
 			path = 3rdparty;
-			sourceTree = "<group>";
-		};
-		84AA921818EEAF0C0096013D /* Objective-Zip */ = {
-			isa = PBXGroup;
-			children = (
-				84AA921918EEAF0C0096013D /* ARCHelper */,
-				84AA921B18EEAF0C0096013D /* MiniZip */,
-				84AA922318EEAF0C0096013D /* Objective-Zip */,
-				84AA922E18EEAF0C0096013D /* ZLib */,
-			);
-			path = "Objective-Zip";
-			sourceTree = "<group>";
-		};
-		84AA921918EEAF0C0096013D /* ARCHelper */ = {
-			isa = PBXGroup;
-			children = (
-				84AA921A18EEAF0C0096013D /* ARCHelper.h */,
-			);
-			path = ARCHelper;
-			sourceTree = "<group>";
-		};
-		84AA921B18EEAF0C0096013D /* MiniZip */ = {
-			isa = PBXGroup;
-			children = (
-				84AA921C18EEAF0C0096013D /* crypt.h */,
-				84AA921D18EEAF0C0096013D /* ioapi.c */,
-				84AA921E18EEAF0C0096013D /* ioapi.h */,
-				84AA921F18EEAF0C0096013D /* unzip.c */,
-				84AA922018EEAF0C0096013D /* unzip.h */,
-				84AA922118EEAF0C0096013D /* zip.c */,
-				84AA922218EEAF0C0096013D /* zip.h */,
-			);
-			path = MiniZip;
-			sourceTree = "<group>";
-		};
-		84AA922318EEAF0C0096013D /* Objective-Zip */ = {
-			isa = PBXGroup;
-			children = (
-				84AA922418EEAF0C0096013D /* FileInZipInfo.h */,
-				84AA922518EEAF0C0096013D /* FileInZipInfo.m */,
-				84AA922618EEAF0C0096013D /* ZipException.h */,
-				84AA922718EEAF0C0096013D /* ZipException.m */,
-				84AA922818EEAF0C0096013D /* ZipFile.h */,
-				84AA922918EEAF0C0096013D /* ZipFile.m */,
-				84AA922A18EEAF0C0096013D /* ZipReadStream.h */,
-				84AA922B18EEAF0C0096013D /* ZipReadStream.m */,
-				84AA922C18EEAF0C0096013D /* ZipWriteStream.h */,
-				84AA922D18EEAF0C0096013D /* ZipWriteStream.m */,
-			);
-			path = "Objective-Zip";
-			sourceTree = "<group>";
-		};
-		84AA922E18EEAF0C0096013D /* ZLib */ = {
-			isa = PBXGroup;
-			children = (
-				84AA922F18EEAF0C0096013D /* adler32.c */,
-				84AA923018EEAF0C0096013D /* compress.c */,
-				84AA923118EEAF0C0096013D /* crc32.c */,
-				84AA923218EEAF0C0096013D /* crc32.h */,
-				84AA923318EEAF0C0096013D /* deflate.c */,
-				84AA923418EEAF0C0096013D /* deflate.h */,
-				84AA923518EEAF0C0096013D /* gzclose.c */,
-				84AA923618EEAF0C0096013D /* gzguts.h */,
-				84AA923718EEAF0C0096013D /* gzlib.c */,
-				84AA923818EEAF0C0096013D /* gzread.c */,
-				84AA923918EEAF0C0096013D /* gzwrite.c */,
-				84AA923A18EEAF0C0096013D /* infback.c */,
-				84AA923B18EEAF0C0096013D /* inffast.c */,
-				84AA923C18EEAF0C0096013D /* inffast.h */,
-				84AA923D18EEAF0C0096013D /* inffixed.h */,
-				84AA923E18EEAF0C0096013D /* inflate.c */,
-				84AA923F18EEAF0C0096013D /* inflate.h */,
-				84AA924018EEAF0C0096013D /* inftrees.c */,
-				84AA924118EEAF0C0096013D /* inftrees.h */,
-				84AA924218EEAF0C0096013D /* trees.c */,
-				84AA924318EEAF0C0096013D /* trees.h */,
-				84AA924418EEAF0C0096013D /* uncompr.c */,
-				84AA924518EEAF0C0096013D /* zconf.h */,
-				84AA924618EEAF0C0096013D /* zlib.h */,
-				84AA924718EEAF0C0096013D /* zutil.c */,
-				84AA924818EEAF0C0096013D /* zutil.h */,
-			);
-			path = ZLib;
 			sourceTree = "<group>";
 		};
 		84ABACEB18DB66E700F8D3EB /* FMDB */ = {
@@ -1371,12 +1220,8 @@
 				84AF861018E895CF00F15C3A /* WBDateFormatter.m in Sources */,
 				84553A5318D0D2CA0009057B /* WBReceiptsViewController.m in Sources */,
 				EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */,
-				84AA925618EEAF0C0096013D /* gzlib.c in Sources */,
 				EA8D81941AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.m in Sources */,
 				845E33DC18D86D84006A506A /* WBReceiptActionsViewController.m in Sources */,
-				84AA924C18EEAF0C0096013D /* FileInZipInfo.m in Sources */,
-				84AA925C18EEAF0C0096013D /* inftrees.c in Sources */,
-				84AA925D18EEAF0C0096013D /* trees.c in Sources */,
 				EA8D81971AEA7C1E00BAC943 /* ReceiptColumnImageName.m in Sources */,
 				841BB308190837F100D28CBF /* WBNoTripsViewController.m in Sources */,
 				4DC6A9F119D7610900258DE3 /* GADMasterViewController.m in Sources */,
@@ -1386,7 +1231,6 @@
 				84EA5C4C18F2E28A001BAA10 /* HTAutocompleteTextField.m in Sources */,
 				84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */,
 				EA8D81B81AEA7EE200BAC943 /* Column.m in Sources */,
-				84AA925B18EEAF0C0096013D /* inflate.c in Sources */,
 				8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */,
 				843F61FF18EF3F46001ACBB1 /* WBCustomization.m in Sources */,
 				8478B77318D37BFB0041CBA3 /* WBCategoriesViewController.m in Sources */,
@@ -1402,60 +1246,42 @@
 				8467EFE918F6E3170076BE6E /* WBImageSegue.m in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
 				84ABACF818DB66FA00F8D3EB /* FMDatabasePool.m in Sources */,
-				84AA925218EEAF0C0096013D /* compress.c in Sources */,
 				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
 				847C887518D7BA4500A33397 /* WBGenerateViewController.m in Sources */,
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
 				84ABAD0918DB79D900F8D3EB /* WBCategoriesHelper.m in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
-				84AA925818EEAF0C0096013D /* gzwrite.c in Sources */,
 				84ABACFA18DB66FA00F8D3EB /* FMResultSet.m in Sources */,
 				84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */,
 				EA3C969E1AEBA94200A2A5F9 /* ReportPDFGenerator.m in Sources */,
 				EA3C96A71AEBC1A500A2A5F9 /* ReceiptIndexer.m in Sources */,
 				8472F01518D6F1B400929C5B /* WBViewController.m in Sources */,
-				84AA925018EEAF0C0096013D /* ZipWriteStream.m in Sources */,
 				84EA5C4718F2D52B001BAA10 /* CMPopTipView.m in Sources */,
-				84AA925518EEAF0C0096013D /* gzclose.c in Sources */,
-				84AA924D18EEAF0C0096013D /* ZipException.m in Sources */,
 				84AA921518EE89E00096013D /* WBImageStampler.m in Sources */,
-				84AA925418EEAF0C0096013D /* deflate.c in Sources */,
 				EA3C96A11AEBA9B200A2A5F9 /* TripFullPDFGenerator.m in Sources */,
-				84AA925E18EEAF0C0096013D /* uncompr.c in Sources */,
 				843F623F18EF9E78001ACBB1 /* HUD.m in Sources */,
 				843F620218EF4BB0001ACBB1 /* WBImageUtils.m in Sources */,
 				EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */,
 				EA8D81AF1AEA7CAD00BAC943 /* ReceiptColumnPictured.m in Sources */,
 				84ABACF918DB66FA00F8D3EB /* FMDatabaseQueue.m in Sources */,
-				84AA925F18EEAF0C0096013D /* zutil.c in Sources */,
-				84AA925918EEAF0C0096013D /* infback.c in Sources */,
 				847C887218D7ACC600A33397 /* WBTableViewController.m in Sources */,
 				EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */,
 				847EFA5418E6BC93006BE520 /* WBSqlBuilder.m in Sources */,
 				84DCAAE318E4B48A00ECAECC /* WBPreferences.m in Sources */,
 				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
-				84AA924F18EEAF0C0096013D /* ZipReadStream.m in Sources */,
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
 				8453368418F4950E001072AA /* WBBackupHelper.m in Sources */,
-				84AA925118EEAF0C0096013D /* adler32.c in Sources */,
 				84A3ADE318D48E15003DB722 /* WBNewCategoryViewController.m in Sources */,
-				84AA924A18EEAF0C0096013D /* unzip.c in Sources */,
 				841BB3011908173600D28CBF /* WBAbstractPicker.m in Sources */,
-				84AA925718EEAF0C0096013D /* gzread.c in Sources */,
 				845E33E318D8A12C006A506A /* WBTextUtils.m in Sources */,
 				84D6719B18D34E4900B704A4 /* WBCurrency.m in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */,
 				843F623C18EF9A5F001ACBB1 /* MBProgressHUD.m in Sources */,
-				84AA925318EEAF0C0096013D /* crc32.c in Sources */,
 				EA3C969B1AEBA93000A2A5F9 /* ReportCSVGenerator.m in Sources */,
 				84B4691E18E98838006E7A77 /* WBObservableReceipts.m in Sources */,
-				84AA924E18EEAF0C0096013D /* ZipFile.m in Sources */,
 				EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */,
 				84AF861418E8C27600F15C3A /* WBCellWithPriceNameDate.m in Sources */,
-				84AA925A18EEAF0C0096013D /* inffast.c in Sources */,
 				84ABAD0C18DB7B4400F8D3EB /* WBColumnsHelper.m in Sources */,
-				84AA924B18EEAF0C0096013D /* zip.c in Sources */,
-				84AA924918EEAF0C0096013D /* ioapi.c in Sources */,
 				84ABACFF18DB6F5F00F8D3EB /* WBDB.m in Sources */,
 				EA8D81761AEA668100BAC943 /* WBPrice.m in Sources */,
 				EA8D818E1AEA7BBC00BAC943 /* ReceiptColumnReportName.m in Sources */,
