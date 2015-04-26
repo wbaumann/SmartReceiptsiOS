@@ -80,8 +80,6 @@
 		84D6719718D3392D00B704A4 /* dropdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D6719618D3392D00B704A4 /* dropdown.png */; };
 		84D6719B18D34E4900B704A4 /* WBCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6719A18D34E4900B704A4 /* WBCurrency.m */; };
 		84DCAAE318E4B48A00ECAECC /* WBPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DCAAE218E4B48A00ECAECC /* WBPreferences.m */; };
-		84EA5C4C18F2E28A001BAA10 /* HTAutocompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA5C4B18F2E28A001BAA10 /* HTAutocompleteTextField.m */; };
-		84EA5C4E18F2E29D001BAA10 /* LICENSE_HTAutocompleteTextField in Resources */ = {isa = PBXBuildFile; fileRef = 84EA5C4D18F2E29D001BAA10 /* LICENSE_HTAutocompleteTextField */; };
 		84F4F34418CFCCD000F69A35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34318CFCCD000F69A35 /* Foundation.framework */; };
 		84F4F34618CFCCD000F69A35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34518CFCCD000F69A35 /* CoreGraphics.framework */; };
 		84F4F34818CFCCD000F69A35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34718CFCCD000F69A35 /* UIKit.framework */; };
@@ -280,9 +278,6 @@
 		84D6719A18D34E4900B704A4 /* WBCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCurrency.m; sourceTree = "<group>"; };
 		84DCAAE118E4B48A00ECAECC /* WBPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPreferences.h; sourceTree = "<group>"; };
 		84DCAAE218E4B48A00ECAECC /* WBPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPreferences.m; sourceTree = "<group>"; };
-		84EA5C4A18F2E28A001BAA10 /* HTAutocompleteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTAutocompleteTextField.h; sourceTree = "<group>"; };
-		84EA5C4B18F2E28A001BAA10 /* HTAutocompleteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTAutocompleteTextField.m; sourceTree = "<group>"; };
-		84EA5C4D18F2E29D001BAA10 /* LICENSE_HTAutocompleteTextField */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_HTAutocompleteTextField; sourceTree = "<group>"; };
 		84F4F34018CFCCD000F69A35 /* SmartReceipts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartReceipts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F4F34318CFCCD000F69A35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84F4F34518CFCCD000F69A35 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -674,7 +669,6 @@
 			children = (
 				4DCAD086197E087200CD5F23 /* Google */,
 				84A6C82818F510B6003B876F /* GDataXML */,
-				84EA5C4918F2E28A001BAA10 /* HTAutocompleteTextField */,
 				843F623718EF9A5F001ACBB1 /* MBProgressHUD */,
 			);
 			path = 3rdparty;
@@ -735,16 +729,6 @@
 				847EFA5318E6BC93006BE520 /* WBSqlBuilder.m */,
 			);
 			name = util;
-			sourceTree = "<group>";
-		};
-		84EA5C4918F2E28A001BAA10 /* HTAutocompleteTextField */ = {
-			isa = PBXGroup;
-			children = (
-				84EA5C4D18F2E29D001BAA10 /* LICENSE_HTAutocompleteTextField */,
-				84EA5C4A18F2E28A001BAA10 /* HTAutocompleteTextField.h */,
-				84EA5C4B18F2E28A001BAA10 /* HTAutocompleteTextField.m */,
-			);
-			path = HTAutocompleteTextField;
 			sourceTree = "<group>";
 		};
 		84F4F33718CFCCD000F69A35 = {
@@ -1085,7 +1069,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84EA5C4E18F2E29D001BAA10 /* LICENSE_HTAutocompleteTextField in Resources */,
 				8421A1F41907AF18001DF38D /* wheel.png in Resources */,
 				843F623B18EF9A5F001ACBB1 /* LICENSE_MBProgressHUD in Resources */,
 				8421A1FD1907E304001DF38D /* Localizable.strings in Resources */,
@@ -1212,7 +1195,6 @@
 				84AA0AD118E5F624008A85F9 /* WBFileManager.m in Sources */,
 				84553A5018D09D230009057B /* WBTripsViewController.m in Sources */,
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,
-				84EA5C4C18F2E28A001BAA10 /* HTAutocompleteTextField.m in Sources */,
 				84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */,
 				EA8D81B81AEA7EE200BAC943 /* Column.m in Sources */,
 				8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */,

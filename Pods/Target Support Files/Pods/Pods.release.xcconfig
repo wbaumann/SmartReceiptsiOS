@@ -1,6 +1,6 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CMPopTipView" "${PODS_ROOT}/Headers/Public/FMDB" "${PODS_ROOT}/Headers/Public/UIAlertView-Blocks" "${PODS_ROOT}/Headers/Public/objective-zip"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/CMPopTipView" -isystem "${PODS_ROOT}/Headers/Public/FMDB" -isystem "${PODS_ROOT}/Headers/Public/UIAlertView-Blocks" -isystem "${PODS_ROOT}/Headers/Public/objective-zip"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-CMPopTipView" -l"Pods-FMDB" -l"Pods-UIAlertView-Blocks" -l"Pods-objective-zip" -l"sqlite3" -l"z" -framework "UIKit"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CMPopTipView" "${PODS_ROOT}/Headers/Public/FMDB" "${PODS_ROOT}/Headers/Public/HTAutocompleteTextField" "${PODS_ROOT}/Headers/Public/UIAlertView-Blocks" "${PODS_ROOT}/Headers/Public/objective-zip"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/CMPopTipView" -isystem "${PODS_ROOT}/Headers/Public/FMDB" -isystem "${PODS_ROOT}/Headers/Public/HTAutocompleteTextField" -isystem "${PODS_ROOT}/Headers/Public/UIAlertView-Blocks" -isystem "${PODS_ROOT}/Headers/Public/objective-zip"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-CMPopTipView" -l"Pods-FMDB" -l"Pods-HTAutocompleteTextField" -l"Pods-UIAlertView-Blocks" -l"Pods-objective-zip" -l"sqlite3" -l"z" -framework "UIKit"
 OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
 PODS_ROOT = ${SRCROOT}/Pods

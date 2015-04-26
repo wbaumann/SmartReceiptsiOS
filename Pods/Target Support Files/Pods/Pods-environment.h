@@ -30,6 +30,12 @@
 #define COCOAPODS_VERSION_MINOR_FMDB_standard 5
 #define COCOAPODS_VERSION_PATCH_FMDB_standard 0
 
+// HTAutocompleteTextField
+#define COCOAPODS_POD_AVAILABLE_HTAutocompleteTextField
+#define COCOAPODS_VERSION_MAJOR_HTAutocompleteTextField 1
+#define COCOAPODS_VERSION_MINOR_HTAutocompleteTextField 3
+#define COCOAPODS_VERSION_PATCH_HTAutocompleteTextField 2
+
 // UIAlertView-Blocks
 #define COCOAPODS_POD_AVAILABLE_UIAlertView_Blocks
 #define COCOAPODS_VERSION_MAJOR_UIAlertView_Blocks 1
