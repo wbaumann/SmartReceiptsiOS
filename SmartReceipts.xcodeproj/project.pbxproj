@@ -1627,6 +1627,16 @@
 					"$(PROJECT_DIR)/3rdparty/Google/AdMob",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/UIAlertView-Blocks\"",
+					"-Wall",
+					"-Wextra",
+					"-Wno-unused-parameter",
+				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-ObjC",
@@ -1637,6 +1647,7 @@
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
+				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1661,6 +1672,16 @@
 					"/Users/williambaumann/Downloads/GoogleMobileAdsSdkiOS-6.9.2",
 					"$(PROJECT_DIR)/3rdparty/Google/AdMob",
 				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/UIAlertView-Blocks\"",
+					"-Wall",
+					"-Wextra",
+					"-Wno-unused-parameter",
+				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-ObjC",
@@ -1671,6 +1692,7 @@
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
+				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
