@@ -1,5 +1,5 @@
 //
-//  TripPDFGenerator.h
+//  TripFullPDFGenerator.h
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 25/04/15.
@@ -7,7 +7,8 @@
 //
 
 #import "ReportPDFGenerator.h"
+#import "TripImagesPDFGenerator.h"
 
-@interface TripPDFGenerator : ReportPDFGenerator
+@interface TripFullPDFGenerator : TripImagesPDFGenerator
 
 @end

@@ -132,7 +132,7 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
                                    extraEditText1:[resultSet stringForColumnIndex:extra_edittext_1_Index]
                                    extraEditText2:[resultSet stringForColumnIndex:extra_edittext_2_Index]
                                    extraEditText3:[resultSet stringForColumnIndex:extra_edittext_3_Index]];
-
+            [receipt setTrip:trip];
             [array addObject:receipt];
         }
 

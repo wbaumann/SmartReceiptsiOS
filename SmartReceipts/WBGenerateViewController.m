@@ -20,6 +20,7 @@
 #import "HUD.h"
 #import "WBAppDelegate.h"
 #import "TripCSVGenerator.h"
+#import "TripImagesPDFGenerator.h"
 
 @interface WBGenerateViewController ()
 
@@ -60,7 +61,7 @@
     
     [_trip createDirectoryIfNotExists];
 
-    //TODO jaanus: this should be done when receipt loaded from DB
+    //TODO jaanus: this should be done when receipt loaded from DB or created
     for (WBReceipt *receipt in self.receipts) {
         [receipt setTrip:self.trip];
     }
@@ -87,10 +88,11 @@
         }
         [createdAttachements addObject:pdfPath];
     }
-    
+
     if (self.pdfImagesField.on) {
         [self clearPath:pdfImagesPath];
-        if(![pdfCreator createImagesPdfFileAtPath:pdfImagesPath receiptsAndIndexes:rai trip:_trip]) {
+        TripImagesPDFGenerator *generator = [[TripImagesPDFGenerator alloc] initWithTrip:self.trip];
+        if (![generator generateToPath:pdfImagesPath]) {
             return nil;
         }
         [createdAttachements addObject:pdfImagesPath];
@@ -98,8 +100,8 @@
 
     if (self.csvFileField.on) {
         [self clearPath:csvPath];
-        TripCSVGenerator *tripCSVGenerator = [[TripCSVGenerator alloc] initWithTrip:self.trip];
-        if (![tripCSVGenerator generateToPath:csvPath]) {
+        TripCSVGenerator *generator = [[TripCSVGenerator alloc] initWithTrip:self.trip];
+        if (![generator generateToPath:csvPath]) {
             return nil;
         }
         [createdAttachements addObject:csvPath];

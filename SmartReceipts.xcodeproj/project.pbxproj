@@ -127,9 +127,10 @@
 		EA3C96981AEBA91400A2A5F9 /* ReportGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96971AEBA91400A2A5F9 /* ReportGenerator.m */; };
 		EA3C969B1AEBA93000A2A5F9 /* ReportCSVGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C969A1AEBA93000A2A5F9 /* ReportCSVGenerator.m */; };
 		EA3C969E1AEBA94200A2A5F9 /* ReportPDFGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C969D1AEBA94200A2A5F9 /* ReportPDFGenerator.m */; };
-		EA3C96A11AEBA9B200A2A5F9 /* TripPDFGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96A01AEBA9B200A2A5F9 /* TripPDFGenerator.m */; };
+		EA3C96A11AEBA9B200A2A5F9 /* TripFullPDFGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96A01AEBA9B200A2A5F9 /* TripFullPDFGenerator.m */; };
 		EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96A31AEBAB0200A2A5F9 /* TripCSVGenerator.m */; };
 		EA3C96A71AEBC1A500A2A5F9 /* ReceiptIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96A61AEBC1A500A2A5F9 /* ReceiptIndexer.m */; };
+		EA3C96AD1AECC95100A2A5F9 /* TripImagesPDFGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96AC1AECC95100A2A5F9 /* TripImagesPDFGenerator.m */; };
 		EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3CF0931AE68CF500B14B73 /* LaunchView.xib */; };
 		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
@@ -163,6 +164,7 @@
 		EA8D81D41AEA956600BAC943 /* SmartReceiptsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81D31AEA956600BAC943 /* SmartReceiptsTests.m */; };
 		EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */; };
 		EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */; };
+		EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADDD1AECD2D20000AC84 /* ReportGeneratorTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -397,12 +399,14 @@
 		EA3C969A1AEBA93000A2A5F9 /* ReportCSVGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportCSVGenerator.m; sourceTree = "<group>"; };
 		EA3C969C1AEBA94200A2A5F9 /* ReportPDFGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportPDFGenerator.h; sourceTree = "<group>"; };
 		EA3C969D1AEBA94200A2A5F9 /* ReportPDFGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportPDFGenerator.m; sourceTree = "<group>"; };
-		EA3C969F1AEBA9B200A2A5F9 /* TripPDFGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripPDFGenerator.h; sourceTree = "<group>"; };
-		EA3C96A01AEBA9B200A2A5F9 /* TripPDFGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripPDFGenerator.m; sourceTree = "<group>"; };
+		EA3C969F1AEBA9B200A2A5F9 /* TripFullPDFGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripFullPDFGenerator.h; sourceTree = "<group>"; };
+		EA3C96A01AEBA9B200A2A5F9 /* TripFullPDFGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripFullPDFGenerator.m; sourceTree = "<group>"; };
 		EA3C96A21AEBAB0200A2A5F9 /* TripCSVGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripCSVGenerator.h; sourceTree = "<group>"; };
 		EA3C96A31AEBAB0200A2A5F9 /* TripCSVGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripCSVGenerator.m; sourceTree = "<group>"; };
 		EA3C96A51AEBC1A500A2A5F9 /* ReceiptIndexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptIndexer.h; sourceTree = "<group>"; };
 		EA3C96A61AEBC1A500A2A5F9 /* ReceiptIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptIndexer.m; sourceTree = "<group>"; };
+		EA3C96AB1AECC95100A2A5F9 /* TripImagesPDFGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripImagesPDFGenerator.h; sourceTree = "<group>"; };
+		EA3C96AC1AECC95100A2A5F9 /* TripImagesPDFGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripImagesPDFGenerator.m; sourceTree = "<group>"; };
 		EA3CF0931AE68CF500B14B73 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+WBNumberParse.h"; sourceTree = "<group>"; };
 		EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+WBNumberParse.m"; sourceTree = "<group>"; };
@@ -467,6 +471,7 @@
 		EA8D81D31AEA956600BAC943 /* SmartReceiptsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartReceiptsTests.m; sourceTree = "<group>"; };
 		EA8D81DB1AEA965D00BAC943 /* WBReportUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReportUtils.h; sourceTree = "<group>"; };
 		EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtils.m; sourceTree = "<group>"; };
+		EAF9ADDD1AECD2D20000AC84 /* ReportGeneratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportGeneratorTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1051,8 +1056,10 @@
 				EA3C969D1AEBA94200A2A5F9 /* ReportPDFGenerator.m */,
 				EA3C96A21AEBAB0200A2A5F9 /* TripCSVGenerator.h */,
 				EA3C96A31AEBAB0200A2A5F9 /* TripCSVGenerator.m */,
-				EA3C969F1AEBA9B200A2A5F9 /* TripPDFGenerator.h */,
-				EA3C96A01AEBA9B200A2A5F9 /* TripPDFGenerator.m */,
+				EA3C96AB1AECC95100A2A5F9 /* TripImagesPDFGenerator.h */,
+				EA3C96AC1AECC95100A2A5F9 /* TripImagesPDFGenerator.m */,
+				EA3C969F1AEBA9B200A2A5F9 /* TripFullPDFGenerator.h */,
+				EA3C96A01AEBA9B200A2A5F9 /* TripFullPDFGenerator.m */,
 			);
 			path = Generators;
 			sourceTree = "<group>";
@@ -1176,9 +1183,18 @@
 		EA8D81DE1AEA96A700BAC943 /* Reports */ = {
 			isa = PBXGroup;
 			children = (
+				EAF9ADDC1AECD2A50000AC84 /* Generators */,
 				EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */,
 			);
 			path = Reports;
+			sourceTree = "<group>";
+		};
+		EAF9ADDC1AECD2A50000AC84 /* Generators */ = {
+			isa = PBXGroup;
+			children = (
+				EAF9ADDD1AECD2D20000AC84 /* ReportGeneratorTest.m */,
+			);
+			path = Generators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1380,6 +1396,7 @@
 				843F61FF18EF3F46001ACBB1 /* WBCustomization.m in Sources */,
 				8478B77318D37BFB0041CBA3 /* WBCategoriesViewController.m in Sources */,
 				84ABACF618DB66FA00F8D3EB /* FMDatabase.m in Sources */,
+				EA3C96AD1AECC95100A2A5F9 /* TripImagesPDFGenerator.m in Sources */,
 				84AEE5D318EB54EF005DB908 /* WBObservableTripsBrowser.m in Sources */,
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
@@ -1408,7 +1425,7 @@
 				84AA924D18EEAF0C0096013D /* ZipException.m in Sources */,
 				84AA921518EE89E00096013D /* WBImageStampler.m in Sources */,
 				84AA925418EEAF0C0096013D /* deflate.c in Sources */,
-				EA3C96A11AEBA9B200A2A5F9 /* TripPDFGenerator.m in Sources */,
+				EA3C96A11AEBA9B200A2A5F9 /* TripFullPDFGenerator.m in Sources */,
 				84AA925E18EEAF0C0096013D /* uncompr.c in Sources */,
 				843F623F18EF9E78001ACBB1 /* HUD.m in Sources */,
 				843F620218EF4BB0001ACBB1 /* WBImageUtils.m in Sources */,
@@ -1468,6 +1485,7 @@
 				EA8D81D41AEA956600BAC943 /* SmartReceiptsTests.m in Sources */,
 				EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */,
 				EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */,
+				EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
