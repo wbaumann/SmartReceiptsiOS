@@ -84,8 +84,6 @@
 		84D6719718D3392D00B704A4 /* dropdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D6719618D3392D00B704A4 /* dropdown.png */; };
 		84D6719B18D34E4900B704A4 /* WBCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6719A18D34E4900B704A4 /* WBCurrency.m */; };
 		84DCAAE318E4B48A00ECAECC /* WBPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DCAAE218E4B48A00ECAECC /* WBPreferences.m */; };
-		84EA5C4718F2D52B001BAA10 /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA5C4518F2D52B001BAA10 /* CMPopTipView.m */; };
-		84EA5C4818F2D52B001BAA10 /* LICENSE_CMPopTipView in Resources */ = {isa = PBXBuildFile; fileRef = 84EA5C4618F2D52B001BAA10 /* LICENSE_CMPopTipView */; };
 		84EA5C4C18F2E28A001BAA10 /* HTAutocompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA5C4B18F2E28A001BAA10 /* HTAutocompleteTextField.m */; };
 		84EA5C4E18F2E29D001BAA10 /* LICENSE_HTAutocompleteTextField in Resources */ = {isa = PBXBuildFile; fileRef = 84EA5C4D18F2E29D001BAA10 /* LICENSE_HTAutocompleteTextField */; };
 		84F4F34418CFCCD000F69A35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34318CFCCD000F69A35 /* Foundation.framework */; };
@@ -296,9 +294,6 @@
 		84D6719A18D34E4900B704A4 /* WBCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCurrency.m; sourceTree = "<group>"; };
 		84DCAAE118E4B48A00ECAECC /* WBPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPreferences.h; sourceTree = "<group>"; };
 		84DCAAE218E4B48A00ECAECC /* WBPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPreferences.m; sourceTree = "<group>"; };
-		84EA5C4418F2D52B001BAA10 /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
-		84EA5C4518F2D52B001BAA10 /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
-		84EA5C4618F2D52B001BAA10 /* LICENSE_CMPopTipView */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_CMPopTipView; sourceTree = "<group>"; };
 		84EA5C4A18F2E28A001BAA10 /* HTAutocompleteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTAutocompleteTextField.h; sourceTree = "<group>"; };
 		84EA5C4B18F2E28A001BAA10 /* HTAutocompleteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTAutocompleteTextField.m; sourceTree = "<group>"; };
 		84EA5C4D18F2E29D001BAA10 /* LICENSE_HTAutocompleteTextField */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_HTAutocompleteTextField; sourceTree = "<group>"; };
@@ -693,7 +688,6 @@
 				4DCAD086197E087200CD5F23 /* Google */,
 				84A6C82818F510B6003B876F /* GDataXML */,
 				84EA5C4918F2E28A001BAA10 /* HTAutocompleteTextField */,
-				84EA5C4318F2D52B001BAA10 /* CMPopTipView */,
 				843F623718EF9A5F001ACBB1 /* MBProgressHUD */,
 				84ABACEB18DB66E700F8D3EB /* FMDB */,
 			);
@@ -772,16 +766,6 @@
 				847EFA5318E6BC93006BE520 /* WBSqlBuilder.m */,
 			);
 			name = util;
-			sourceTree = "<group>";
-		};
-		84EA5C4318F2D52B001BAA10 /* CMPopTipView */ = {
-			isa = PBXGroup;
-			children = (
-				84EA5C4418F2D52B001BAA10 /* CMPopTipView.h */,
-				84EA5C4518F2D52B001BAA10 /* CMPopTipView.m */,
-				84EA5C4618F2D52B001BAA10 /* LICENSE_CMPopTipView */,
-			);
-			path = CMPopTipView;
 			sourceTree = "<group>";
 		};
 		84EA5C4918F2E28A001BAA10 /* HTAutocompleteTextField */ = {
@@ -1145,7 +1129,6 @@
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
 				841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */,
 				8467EFF018F6FC450076BE6E /* ic_rotate_ccw@2x.png in Resources */,
-				84EA5C4818F2D52B001BAA10 /* LICENSE_CMPopTipView in Resources */,
 				8467EFF118F6FC450076BE6E /* ic_rotate_cw@2x.png in Resources */,
 				EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */,
 				8421A1F51907AF18001DF38D /* wheel@2x.png in Resources */,
@@ -1256,7 +1239,6 @@
 				EA3C969E1AEBA94200A2A5F9 /* ReportPDFGenerator.m in Sources */,
 				EA3C96A71AEBC1A500A2A5F9 /* ReceiptIndexer.m in Sources */,
 				8472F01518D6F1B400929C5B /* WBViewController.m in Sources */,
-				84EA5C4718F2D52B001BAA10 /* CMPopTipView.m in Sources */,
 				84AA921518EE89E00096013D /* WBImageStampler.m in Sources */,
 				EA3C96A11AEBA9B200A2A5F9 /* TripFullPDFGenerator.m in Sources */,
 				843F623F18EF9E78001ACBB1 /* HUD.m in Sources */,

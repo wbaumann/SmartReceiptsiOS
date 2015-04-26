@@ -6,6 +6,12 @@
 // project.
 
 
+// CMPopTipView
+#define COCOAPODS_POD_AVAILABLE_CMPopTipView
+#define COCOAPODS_VERSION_MAJOR_CMPopTipView 2
+#define COCOAPODS_VERSION_MINOR_CMPopTipView 2
+#define COCOAPODS_VERSION_PATCH_CMPopTipView 0
+
 // UIAlertView-Blocks
 #define COCOAPODS_POD_AVAILABLE_UIAlertView_Blocks
 #define COCOAPODS_VERSION_MAJOR_UIAlertView_Blocks 1

@@ -1,0 +1,1 @@
+PODS_CMPOPTIPVIEW_OTHER_LDFLAGS = -framework "UIKit"

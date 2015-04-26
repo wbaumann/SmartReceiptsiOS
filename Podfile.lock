@@ -1,12 +1,15 @@
 PODS:
+  - CMPopTipView (2.2.0)
   - objective-zip (0.8.3)
   - UIAlertView-Blocks (1.0)
 
 DEPENDENCIES:
+  - CMPopTipView (~> 2.2.0)
   - objective-zip
   - UIAlertView-Blocks (~> 1.0)
 
 SPEC CHECKSUMS:
+  CMPopTipView: a0a88404b9f46a5cfc16ce54bdb1b9bf9acb9aff
   objective-zip: a27d4b3c060eead4325159e49178e7f0ad5ee808
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
 
