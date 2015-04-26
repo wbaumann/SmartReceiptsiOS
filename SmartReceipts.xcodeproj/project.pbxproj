@@ -42,9 +42,6 @@
 		845E33DC18D86D84006A506A /* WBReceiptActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33DB18D86D84006A506A /* WBReceiptActionsViewController.m */; };
 		845E33E018D87CEF006A506A /* WBDynamicPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33DF18D87CEF006A506A /* WBDynamicPicker.m */; };
 		845E33E318D8A12C006A506A /* WBTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33E218D8A12C006A506A /* WBTextUtils.m */; };
-		845E33E918D8ADF9006A506A /* WBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33E818D8ADF9006A506A /* WBCategory.m */; };
-		845E33EC18D8AE24006A506A /* WBReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33EB18D8AE24006A506A /* WBReceipt.m */; };
-		845E33EF18D8AE2E006A506A /* WBTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33EE18D8AE2E006A506A /* WBTrip.m */; };
 		8467EFE618F6E0310076BE6E /* WBImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467EFE518F6E0310076BE6E /* WBImageViewController.m */; };
 		8467EFE918F6E3170076BE6E /* WBImageSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467EFE818F6E3170076BE6E /* WBImageSegue.m */; };
 		8467EFEC18F6F9530076BE6E /* ic_rotate_ccw.png in Resources */ = {isa = PBXBuildFile; fileRef = 8467EFEA18F6F9530076BE6E /* ic_rotate_ccw.png */; };
@@ -63,8 +60,6 @@
 		848EFA6018EDC37100AC01B4 /* WBTripPdfCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EFA5F18EDC37100AC01B4 /* WBTripPdfCreator.m */; };
 		849A142F18D240D200399A0F /* WBSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849A142E18D240D200399A0F /* WBSettingsViewController.m */; };
 		84A3ADE318D48E15003DB722 /* WBNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3ADE218D48E15003DB722 /* WBNewCategoryViewController.m */; };
-		84A3ADE918D4A0FC003DB722 /* WBColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3ADE818D4A0FC003DB722 /* WBColumn.m */; };
-		84A5834818EDEA27003A464D /* WBColumnsResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A5834718EDEA27003A464D /* WBColumnsResolver.m */; };
 		84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A5834D18EDF897003A464D /* WBReceiptAndIndex.m */; };
 		84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A6C82A18F510B6003B876F /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84A6C82D18F510E5003B876F /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A6C82C18F510E5003B876F /* libxml2.dylib */; };
@@ -94,7 +89,6 @@
 		84AA925D18EEAF0C0096013D /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA924218EEAF0C0096013D /* trees.c */; };
 		84AA925E18EEAF0C0096013D /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA924418EEAF0C0096013D /* uncompr.c */; };
 		84AA925F18EEAF0C0096013D /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 84AA924718EEAF0C0096013D /* zutil.c */; };
-		84AA926218EEBBFB0096013D /* WBReportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA926118EEBBFB0096013D /* WBReportUtils.m */; };
 		84AA926518EEC0A00096013D /* WBTripCsvCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA926418EEC0A00096013D /* WBTripCsvCreator.m */; };
 		84ABACF618DB66FA00F8D3EB /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACED18DB66FA00F8D3EB /* FMDatabase.m */; };
 		84ABACF718DB66FA00F8D3EB /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACEF18DB66FA00F8D3EB /* FMDatabaseAdditions.m */; };
@@ -126,21 +120,45 @@
 		84F4F35018CFCCD000F69A35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F34F18CFCCD000F69A35 /* main.m */; };
 		84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */; };
 		84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F35518CFCCD000F69A35 /* Images.xcassets */; };
-		84F4F35D18CFCCD000F69A35 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F35C18CFCCD000F69A35 /* XCTest.framework */; };
-		84F4F35E18CFCCD000F69A35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34318CFCCD000F69A35 /* Foundation.framework */; };
-		84F4F35F18CFCCD000F69A35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34718CFCCD000F69A35 /* UIKit.framework */; };
-		84F4F36718CFCCD000F69A35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F36518CFCCD000F69A35 /* InfoPlist.strings */; };
-		84F4F36918CFCCD000F69A35 /* SmartReceiptsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F36818CFCCD000F69A35 /* SmartReceiptsTests.m */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
+		EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */; };
 		EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3CF0931AE68CF500B14B73 /* LaunchView.xib */; };
-		EA3CF0971AE77E1900B14B73 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF0961AE77E1900B14B73 /* WBPrice.m */; };
 		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
 		EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */; };
+		EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816B1AEA668100BAC943 /* WBCategory.m */; };
+		EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816D1AEA668100BAC943 /* WBColumnNames.m */; };
+		EA8D81761AEA668100BAC943 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816F1AEA668100BAC943 /* WBPrice.m */; };
+		EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81711AEA668100BAC943 /* WBReceipt.m */; };
+		EA8D81781AEA668100BAC943 /* WBTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81731AEA668100BAC943 /* WBTrip.m */; };
+		EA8D817C1AEA6AF000BAC943 /* ReceiptColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D817B1AEA6AF000BAC943 /* ReceiptColumn.m */; };
+		EA8D81821AEA7B5800BAC943 /* ReceiptColumnBlank.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81811AEA7B5800BAC943 /* ReceiptColumnBlank.m */; };
+		EA8D81851AEA7B7500BAC943 /* ReceiptColumnCategoryCode.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81841AEA7B7500BAC943 /* ReceiptColumnCategoryCode.m */; };
+		EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81871AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m */; };
+		EA8D818B1AEA7BA400BAC943 /* ReceiptColumnUserID.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D818A1AEA7BA400BAC943 /* ReceiptColumnUserID.m */; };
+		EA8D818E1AEA7BBC00BAC943 /* ReceiptColumnReportName.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D818D1AEA7BBC00BAC943 /* ReceiptColumnReportName.m */; };
+		EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81901AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m */; };
+		EA8D81941AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81931AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.m */; };
+		EA8D81971AEA7C1E00BAC943 /* ReceiptColumnImageName.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81961AEA7C1E00BAC943 /* ReceiptColumnImageName.m */; };
+		EA8D819A1AEA7C3100BAC943 /* ReceiptColumnImagePath.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81991AEA7C3100BAC943 /* ReceiptColumnImagePath.m */; };
+		EA8D819D1AEA7C4200BAC943 /* ReceiptColumnComment.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D819C1AEA7C4200BAC943 /* ReceiptColumnComment.m */; };
+		EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D819F1AEA7C5A00BAC943 /* ReceiptColumnCurrency.m */; };
+		EA8D81A31AEA7C6B00BAC943 /* ReceiptColumnDate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81A21AEA7C6B00BAC943 /* ReceiptColumnDate.m */; };
+		EA8D81A61AEA7C7D00BAC943 /* ReceiptColumnName.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81A51AEA7C7D00BAC943 /* ReceiptColumnName.m */; };
+		EA8D81A91AEA7C8E00BAC943 /* ReceiptColumnPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81A81AEA7C8E00BAC943 /* ReceiptColumnPrice.m */; };
+		EA8D81AC1AEA7C9D00BAC943 /* ReceiptColumnTax.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81AB1AEA7C9D00BAC943 /* ReceiptColumnTax.m */; };
+		EA8D81AF1AEA7CAD00BAC943 /* ReceiptColumnPictured.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81AE1AEA7CAD00BAC943 /* ReceiptColumnPictured.m */; };
+		EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnExpensable.m */; };
+		EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B41AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m */; };
+		EA8D81B81AEA7EE200BAC943 /* Column.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B71AEA7EE200BAC943 /* Column.m */; };
+		EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81BA1AEA861400BAC943 /* ReceiptUnknownColumn.m */; };
+		EA8D81D41AEA956600BAC943 /* SmartReceiptsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81D31AEA956600BAC943 /* SmartReceiptsTests.m */; };
+		EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */; };
+		EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		84F4F36018CFCCD000F69A35 /* PBXContainerItemProxy */ = {
+		EA8D81D51AEA956600BAC943 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 84F4F33818CFCCD000F69A35 /* Project object */;
 			proxyType = 1;
@@ -180,7 +198,6 @@
 		6FC1BDDC7B500AA1408D37DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		841BB2FB190806F600D28CBF /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		841BB2FC190806F600D28CBF /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		841BB2FD190806F600D28CBF /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		841BB2FE1908167700D28CBF /* WBAbstractPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAbstractPicker.h; sourceTree = "<group>"; };
 		841BB3001908173600D28CBF /* WBAbstractPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAbstractPicker.m; sourceTree = "<group>"; };
 		841BB302190818C400D28CBF /* WBActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBActionSheetPicker.h; sourceTree = "<group>"; };
@@ -216,12 +233,6 @@
 		845E33DF18D87CEF006A506A /* WBDynamicPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDynamicPicker.m; sourceTree = "<group>"; };
 		845E33E118D8A12C006A506A /* WBTextUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTextUtils.h; sourceTree = "<group>"; };
 		845E33E218D8A12C006A506A /* WBTextUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTextUtils.m; sourceTree = "<group>"; };
-		845E33E718D8ADF9006A506A /* WBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategory.h; sourceTree = "<group>"; };
-		845E33E818D8ADF9006A506A /* WBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategory.m; sourceTree = "<group>"; };
-		845E33EA18D8AE24006A506A /* WBReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceipt.h; sourceTree = "<group>"; };
-		845E33EB18D8AE24006A506A /* WBReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReceipt.m; sourceTree = "<group>"; };
-		845E33ED18D8AE2E006A506A /* WBTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTrip.h; sourceTree = "<group>"; };
-		845E33EE18D8AE2E006A506A /* WBTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTrip.m; sourceTree = "<group>"; };
 		8467EFE418F6E0310076BE6E /* WBImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageViewController.h; sourceTree = "<group>"; };
 		8467EFE518F6E0310076BE6E /* WBImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageViewController.m; sourceTree = "<group>"; };
 		8467EFE718F6E3170076BE6E /* WBImageSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageSegue.h; sourceTree = "<group>"; };
@@ -254,10 +265,6 @@
 		849A142E18D240D200399A0F /* WBSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSettingsViewController.m; sourceTree = "<group>"; };
 		84A3ADE118D48E15003DB722 /* WBNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBNewCategoryViewController.h; sourceTree = "<group>"; };
 		84A3ADE218D48E15003DB722 /* WBNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNewCategoryViewController.m; sourceTree = "<group>"; };
-		84A3ADE718D4A0FC003DB722 /* WBColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumn.h; sourceTree = "<group>"; };
-		84A3ADE818D4A0FC003DB722 /* WBColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumn.m; sourceTree = "<group>"; };
-		84A5834618EDEA27003A464D /* WBColumnsResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnsResolver.h; sourceTree = "<group>"; };
-		84A5834718EDEA27003A464D /* WBColumnsResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnsResolver.m; sourceTree = "<group>"; };
 		84A5834C18EDF897003A464D /* WBReceiptAndIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceiptAndIndex.h; sourceTree = "<group>"; };
 		84A5834D18EDF897003A464D /* WBReceiptAndIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReceiptAndIndex.m; sourceTree = "<group>"; };
 		84A6C82918F510B6003B876F /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
@@ -313,8 +320,6 @@
 		84AA924618EEAF0C0096013D /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
 		84AA924718EEAF0C0096013D /* zutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zutil.c; sourceTree = "<group>"; };
 		84AA924818EEAF0C0096013D /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zutil.h; sourceTree = "<group>"; };
-		84AA926018EEBBFB0096013D /* WBReportUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReportUtils.h; sourceTree = "<group>"; };
-		84AA926118EEBBFB0096013D /* WBReportUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtils.m; sourceTree = "<group>"; };
 		84AA926318EEC0A00096013D /* WBTripCsvCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTripCsvCreator.h; sourceTree = "<group>"; };
 		84AA926418EEC0A00096013D /* WBTripCsvCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTripCsvCreator.m; sourceTree = "<group>"; };
 		84ABACEC18DB66FA00F8D3EB /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -370,22 +375,74 @@
 		84F4F35218CFCCD000F69A35 /* WBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBAppDelegate.h; sourceTree = "<group>"; };
 		84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBAppDelegate.m; sourceTree = "<group>"; };
 		84F4F35518CFCCD000F69A35 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		84F4F35B18CFCCD000F69A35 /* SmartReceiptsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartReceiptsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F4F35C18CFCCD000F69A35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		84F4F36418CFCCD000F69A35 /* SmartReceiptsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartReceiptsTests-Info.plist"; sourceTree = "<group>"; };
-		84F4F36618CFCCD000F69A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		84F4F36818CFCCD000F69A35 /* SmartReceiptsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartReceiptsTests.m; sourceTree = "<group>"; };
 		84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtilsTest.m; sourceTree = "<group>"; };
 		EA3CF0931AE68CF500B14B73 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
-		EA3CF0951AE77E1900B14B73 /* WBPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPrice.h; sourceTree = "<group>"; };
-		EA3CF0961AE77E1900B14B73 /* WBPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPrice.m; sourceTree = "<group>"; };
 		EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+WBNumberParse.h"; sourceTree = "<group>"; };
 		EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+WBNumberParse.m"; sourceTree = "<group>"; };
 		EA3CF09C1AE7C45C00B14B73 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		EA3CF09D1AE7C45C00B14B73 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		EA46678D1AE7EA1600B4E502 /* WBImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImagePicker.h; sourceTree = "<group>"; };
 		EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImagePicker.m; sourceTree = "<group>"; };
+		EA8D816A1AEA668100BAC943 /* WBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategory.h; sourceTree = "<group>"; };
+		EA8D816B1AEA668100BAC943 /* WBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategory.m; sourceTree = "<group>"; };
+		EA8D816C1AEA668100BAC943 /* WBColumnNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnNames.h; sourceTree = "<group>"; };
+		EA8D816D1AEA668100BAC943 /* WBColumnNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnNames.m; sourceTree = "<group>"; };
+		EA8D816E1AEA668100BAC943 /* WBPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPrice.h; sourceTree = "<group>"; };
+		EA8D816F1AEA668100BAC943 /* WBPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPrice.m; sourceTree = "<group>"; };
+		EA8D81701AEA668100BAC943 /* WBReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceipt.h; sourceTree = "<group>"; };
+		EA8D81711AEA668100BAC943 /* WBReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReceipt.m; sourceTree = "<group>"; };
+		EA8D81721AEA668100BAC943 /* WBTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTrip.h; sourceTree = "<group>"; };
+		EA8D81731AEA668100BAC943 /* WBTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTrip.m; sourceTree = "<group>"; };
+		EA8D817A1AEA6AF000BAC943 /* ReceiptColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumn.h; sourceTree = "<group>"; };
+		EA8D817B1AEA6AF000BAC943 /* ReceiptColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumn.m; sourceTree = "<group>"; };
+		EA8D81801AEA7B5800BAC943 /* ReceiptColumnBlank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnBlank.h; sourceTree = "<group>"; };
+		EA8D81811AEA7B5800BAC943 /* ReceiptColumnBlank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnBlank.m; sourceTree = "<group>"; };
+		EA8D81831AEA7B7500BAC943 /* ReceiptColumnCategoryCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnCategoryCode.h; sourceTree = "<group>"; };
+		EA8D81841AEA7B7500BAC943 /* ReceiptColumnCategoryCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnCategoryCode.m; sourceTree = "<group>"; };
+		EA8D81861AEA7B8C00BAC943 /* ReceiptColumnCategoryName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnCategoryName.h; sourceTree = "<group>"; };
+		EA8D81871AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnCategoryName.m; sourceTree = "<group>"; };
+		EA8D81891AEA7BA400BAC943 /* ReceiptColumnUserID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnUserID.h; sourceTree = "<group>"; };
+		EA8D818A1AEA7BA400BAC943 /* ReceiptColumnUserID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnUserID.m; sourceTree = "<group>"; };
+		EA8D818C1AEA7BBC00BAC943 /* ReceiptColumnReportName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnReportName.h; sourceTree = "<group>"; };
+		EA8D818D1AEA7BBC00BAC943 /* ReceiptColumnReportName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnReportName.m; sourceTree = "<group>"; };
+		EA8D818F1AEA7BF600BAC943 /* ReceiptColumnReportStartDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnReportStartDate.h; sourceTree = "<group>"; };
+		EA8D81901AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnReportStartDate.m; sourceTree = "<group>"; };
+		EA8D81921AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnReportEndDate.h; sourceTree = "<group>"; };
+		EA8D81931AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnReportEndDate.m; sourceTree = "<group>"; };
+		EA8D81951AEA7C1E00BAC943 /* ReceiptColumnImageName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnImageName.h; sourceTree = "<group>"; };
+		EA8D81961AEA7C1E00BAC943 /* ReceiptColumnImageName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnImageName.m; sourceTree = "<group>"; };
+		EA8D81981AEA7C3100BAC943 /* ReceiptColumnImagePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnImagePath.h; sourceTree = "<group>"; };
+		EA8D81991AEA7C3100BAC943 /* ReceiptColumnImagePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnImagePath.m; sourceTree = "<group>"; };
+		EA8D819B1AEA7C4200BAC943 /* ReceiptColumnComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnComment.h; sourceTree = "<group>"; };
+		EA8D819C1AEA7C4200BAC943 /* ReceiptColumnComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnComment.m; sourceTree = "<group>"; };
+		EA8D819E1AEA7C5A00BAC943 /* ReceiptColumnCurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnCurrency.h; sourceTree = "<group>"; };
+		EA8D819F1AEA7C5A00BAC943 /* ReceiptColumnCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnCurrency.m; sourceTree = "<group>"; };
+		EA8D81A11AEA7C6B00BAC943 /* ReceiptColumnDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnDate.h; sourceTree = "<group>"; };
+		EA8D81A21AEA7C6B00BAC943 /* ReceiptColumnDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnDate.m; sourceTree = "<group>"; };
+		EA8D81A41AEA7C7D00BAC943 /* ReceiptColumnName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnName.h; sourceTree = "<group>"; };
+		EA8D81A51AEA7C7D00BAC943 /* ReceiptColumnName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnName.m; sourceTree = "<group>"; };
+		EA8D81A71AEA7C8E00BAC943 /* ReceiptColumnPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnPrice.h; sourceTree = "<group>"; };
+		EA8D81A81AEA7C8E00BAC943 /* ReceiptColumnPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnPrice.m; sourceTree = "<group>"; };
+		EA8D81AA1AEA7C9D00BAC943 /* ReceiptColumnTax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnTax.h; sourceTree = "<group>"; };
+		EA8D81AB1AEA7C9D00BAC943 /* ReceiptColumnTax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnTax.m; sourceTree = "<group>"; };
+		EA8D81AD1AEA7CAD00BAC943 /* ReceiptColumnPictured.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnPictured.h; sourceTree = "<group>"; };
+		EA8D81AE1AEA7CAD00BAC943 /* ReceiptColumnPictured.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnPictured.m; sourceTree = "<group>"; };
+		EA8D81B01AEA7CBD00BAC943 /* ReceiptColumnExpensable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnExpensable.h; sourceTree = "<group>"; };
+		EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnExpensable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnExpensable.m; sourceTree = "<group>"; };
+		EA8D81B31AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnReceiptIndex.h; sourceTree = "<group>"; };
+		EA8D81B41AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnReceiptIndex.m; sourceTree = "<group>"; };
+		EA8D81B61AEA7EE200BAC943 /* Column.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Column.h; sourceTree = "<group>"; };
+		EA8D81B71AEA7EE200BAC943 /* Column.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Column.m; sourceTree = "<group>"; };
+		EA8D81B91AEA861400BAC943 /* ReceiptUnknownColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptUnknownColumn.h; sourceTree = "<group>"; };
+		EA8D81BA1AEA861400BAC943 /* ReceiptUnknownColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptUnknownColumn.m; sourceTree = "<group>"; };
+		EA8D81CF1AEA956600BAC943 /* SmartReceiptsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartReceiptsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA8D81D21AEA956600BAC943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA8D81D31AEA956600BAC943 /* SmartReceiptsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartReceiptsTests.m; sourceTree = "<group>"; };
+		EA8D81DB1AEA965D00BAC943 /* WBReportUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReportUtils.h; sourceTree = "<group>"; };
+		EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,13 +468,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84F4F35818CFCCD000F69A35 /* Frameworks */ = {
+		EA8D81CC1AEA956600BAC943 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F4F35D18CFCCD000F69A35 /* XCTest.framework in Frameworks */,
-				84F4F35F18CFCCD000F69A35 /* UIKit.framework in Frameworks */,
-				84F4F35E18CFCCD000F69A35 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,23 +627,6 @@
 			name = Receipts;
 			sourceTree = "<group>";
 		};
-		845E33E618D8ADE9006A506A /* model */ = {
-			isa = PBXGroup;
-			children = (
-				845E33E718D8ADF9006A506A /* WBCategory.h */,
-				845E33E818D8ADF9006A506A /* WBCategory.m */,
-				84A3ADE718D4A0FC003DB722 /* WBColumn.h */,
-				84A3ADE818D4A0FC003DB722 /* WBColumn.m */,
-				EA3CF0951AE77E1900B14B73 /* WBPrice.h */,
-				EA3CF0961AE77E1900B14B73 /* WBPrice.m */,
-				845E33EA18D8AE24006A506A /* WBReceipt.h */,
-				845E33EB18D8AE24006A506A /* WBReceipt.m */,
-				845E33ED18D8AE2E006A506A /* WBTrip.h */,
-				845E33EE18D8AE2E006A506A /* WBTrip.m */,
-			);
-			name = model;
-			sourceTree = "<group>";
-		};
 		8467EFE318F6E01C0076BE6E /* Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -645,12 +682,8 @@
 				848EFA5F18EDC37100AC01B4 /* WBTripPdfCreator.m */,
 				84AA926318EEC0A00096013D /* WBTripCsvCreator.h */,
 				84AA926418EEC0A00096013D /* WBTripCsvCreator.m */,
-				84A5834618EDEA27003A464D /* WBColumnsResolver.h */,
-				84A5834718EDEA27003A464D /* WBColumnsResolver.m */,
 				84AA921318EE89E00096013D /* WBImageStampler.h */,
 				84AA921418EE89E00096013D /* WBImageStampler.m */,
-				84AA926018EEBBFB0096013D /* WBReportUtils.h */,
-				84AA926118EEBBFB0096013D /* WBReportUtils.m */,
 			);
 			name = reports;
 			sourceTree = "<group>";
@@ -895,7 +928,7 @@
 			children = (
 				84AA921618EEAE590096013D /* 3rdparty */,
 				84F4F34918CFCCD000F69A35 /* SmartReceipts */,
-				84F4F36218CFCCD000F69A35 /* SmartReceiptsTests */,
+				EA8D81D01AEA956600BAC943 /* SmartReceiptsTests */,
 				84F4F34218CFCCD000F69A35 /* Frameworks */,
 				84F4F34118CFCCD000F69A35 /* Products */,
 				7AB70D3C8F1E6FC81F10B74C /* Pods */,
@@ -906,7 +939,7 @@
 			isa = PBXGroup;
 			children = (
 				84F4F34018CFCCD000F69A35 /* SmartReceipts.app */,
-				84F4F35B18CFCCD000F69A35 /* SmartReceiptsTests.xctest */,
+				EA8D81CF1AEA956600BAC943 /* SmartReceiptsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -937,25 +970,26 @@
 			isa = PBXGroup;
 			children = (
 				4DF22941192867120008D359 /* Ads */,
-				EA3CF0981AE7962C00B14B73 /* Extensions */,
-				EA46678C1AE7EA0300B4E502 /* Utils */,
-				848EFA5D18EDC33F00AC01B4 /* reports */,
-				84D6719818D34E3200B704A4 /* util */,
-				847EFA5118E6BBF3006BE520 /* persistence */,
-				845E33E618D8ADE9006A506A /* model */,
-				845E33DD18D87CB9006A506A /* views */,
 				84A73C3418E74C5C00D35A57 /* collections */,
+				EA3CF0981AE7962C00B14B73 /* Extensions */,
 				84D6719518D336E100B704A4 /* images */,
-				84553A4518D09B2E0009057B /* VC */,
-				84F4F35218CFCCD000F69A35 /* WBAppDelegate.h */,
-				84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */,
-				84F4F35518CFCCD000F69A35 /* Images.xcassets */,
+				EA8D81691AEA668100BAC943 /* Model */,
+				847EFA5118E6BBF3006BE520 /* persistence */,
+				EA8D81DA1AEA965D00BAC943 /* Reports */,
+				848EFA5D18EDC33F00AC01B4 /* reports */,
 				84F4F34A18CFCCD000F69A35 /* Supporting Files */,
-				84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */,
-				8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */,
-				8421A1FF1907E304001DF38D /* Localizable.strings */,
+				EA46678C1AE7EA0300B4E502 /* Utils */,
+				84D6719818D34E3200B704A4 /* util */,
+				84553A4518D09B2E0009057B /* VC */,
+				845E33DD18D87CB9006A506A /* views */,
 				EA3CF09C1AE7C45C00B14B73 /* Constants.h */,
 				EA3CF09D1AE7C45C00B14B73 /* Constants.m */,
+				84F4F35518CFCCD000F69A35 /* Images.xcassets */,
+				8421A1FF1907E304001DF38D /* Localizable.strings */,
+				84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */,
+				8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */,
+				84F4F35218CFCCD000F69A35 /* WBAppDelegate.h */,
+				84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */,
 			);
 			path = SmartReceipts;
 			sourceTree = "<group>";
@@ -967,24 +1001,6 @@
 				84F4F34C18CFCCD000F69A35 /* InfoPlist.strings */,
 				84F4F34F18CFCCD000F69A35 /* main.m */,
 				84F4F35118CFCCD000F69A35 /* SmartReceipts-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		84F4F36218CFCCD000F69A35 /* SmartReceiptsTests */ = {
-			isa = PBXGroup;
-			children = (
-				84F4F36818CFCCD000F69A35 /* SmartReceiptsTests.m */,
-				84F4F36318CFCCD000F69A35 /* Supporting Files */,
-			);
-			path = SmartReceiptsTests;
-			sourceTree = "<group>";
-		};
-		84F4F36318CFCCD000F69A35 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				84F4F36418CFCCD000F69A35 /* SmartReceiptsTests-Info.plist */,
-				84F4F36518CFCCD000F69A35 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1005,6 +1021,108 @@
 				EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		EA8D81691AEA668100BAC943 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EA8D81791AEA674100BAC943 /* Receipt */,
+				EA8D81B61AEA7EE200BAC943 /* Column.h */,
+				EA8D81B71AEA7EE200BAC943 /* Column.m */,
+				EA8D816A1AEA668100BAC943 /* WBCategory.h */,
+				EA8D816B1AEA668100BAC943 /* WBCategory.m */,
+				EA8D816C1AEA668100BAC943 /* WBColumnNames.h */,
+				EA8D816D1AEA668100BAC943 /* WBColumnNames.m */,
+				EA8D816E1AEA668100BAC943 /* WBPrice.h */,
+				EA8D816F1AEA668100BAC943 /* WBPrice.m */,
+				EA8D81701AEA668100BAC943 /* WBReceipt.h */,
+				EA8D81711AEA668100BAC943 /* WBReceipt.m */,
+				EA8D81721AEA668100BAC943 /* WBTrip.h */,
+				EA8D81731AEA668100BAC943 /* WBTrip.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EA8D81791AEA674100BAC943 /* Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				EA8D817A1AEA6AF000BAC943 /* ReceiptColumn.h */,
+				EA8D817B1AEA6AF000BAC943 /* ReceiptColumn.m */,
+				EA8D81801AEA7B5800BAC943 /* ReceiptColumnBlank.h */,
+				EA8D81811AEA7B5800BAC943 /* ReceiptColumnBlank.m */,
+				EA8D81831AEA7B7500BAC943 /* ReceiptColumnCategoryCode.h */,
+				EA8D81841AEA7B7500BAC943 /* ReceiptColumnCategoryCode.m */,
+				EA8D81861AEA7B8C00BAC943 /* ReceiptColumnCategoryName.h */,
+				EA8D81871AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m */,
+				EA8D819B1AEA7C4200BAC943 /* ReceiptColumnComment.h */,
+				EA8D819C1AEA7C4200BAC943 /* ReceiptColumnComment.m */,
+				EA8D819E1AEA7C5A00BAC943 /* ReceiptColumnCurrency.h */,
+				EA8D819F1AEA7C5A00BAC943 /* ReceiptColumnCurrency.m */,
+				EA8D81A11AEA7C6B00BAC943 /* ReceiptColumnDate.h */,
+				EA8D81A21AEA7C6B00BAC943 /* ReceiptColumnDate.m */,
+				EA8D81B01AEA7CBD00BAC943 /* ReceiptColumnExpensable.h */,
+				EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnExpensable.m */,
+				EA8D81951AEA7C1E00BAC943 /* ReceiptColumnImageName.h */,
+				EA8D81961AEA7C1E00BAC943 /* ReceiptColumnImageName.m */,
+				EA8D81981AEA7C3100BAC943 /* ReceiptColumnImagePath.h */,
+				EA8D81991AEA7C3100BAC943 /* ReceiptColumnImagePath.m */,
+				EA8D81A41AEA7C7D00BAC943 /* ReceiptColumnName.h */,
+				EA8D81A51AEA7C7D00BAC943 /* ReceiptColumnName.m */,
+				EA8D81AD1AEA7CAD00BAC943 /* ReceiptColumnPictured.h */,
+				EA8D81AE1AEA7CAD00BAC943 /* ReceiptColumnPictured.m */,
+				EA8D81A71AEA7C8E00BAC943 /* ReceiptColumnPrice.h */,
+				EA8D81A81AEA7C8E00BAC943 /* ReceiptColumnPrice.m */,
+				EA8D81B31AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.h */,
+				EA8D81B41AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m */,
+				EA8D81921AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.h */,
+				EA8D81931AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.m */,
+				EA8D818C1AEA7BBC00BAC943 /* ReceiptColumnReportName.h */,
+				EA8D818D1AEA7BBC00BAC943 /* ReceiptColumnReportName.m */,
+				EA8D818F1AEA7BF600BAC943 /* ReceiptColumnReportStartDate.h */,
+				EA8D81901AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m */,
+				EA8D81AA1AEA7C9D00BAC943 /* ReceiptColumnTax.h */,
+				EA8D81AB1AEA7C9D00BAC943 /* ReceiptColumnTax.m */,
+				EA8D81891AEA7BA400BAC943 /* ReceiptColumnUserID.h */,
+				EA8D818A1AEA7BA400BAC943 /* ReceiptColumnUserID.m */,
+				EA8D81B91AEA861400BAC943 /* ReceiptUnknownColumn.h */,
+				EA8D81BA1AEA861400BAC943 /* ReceiptUnknownColumn.m */,
+			);
+			path = Receipt;
+			sourceTree = "<group>";
+		};
+		EA8D81D01AEA956600BAC943 /* SmartReceiptsTests */ = {
+			isa = PBXGroup;
+			children = (
+				EA8D81DE1AEA96A700BAC943 /* Reports */,
+				EA8D81D11AEA956600BAC943 /* Supporting Files */,
+				EA8D81D31AEA956600BAC943 /* SmartReceiptsTests.m */,
+			);
+			path = SmartReceiptsTests;
+			sourceTree = "<group>";
+		};
+		EA8D81D11AEA956600BAC943 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA8D81D21AEA956600BAC943 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EA8D81DA1AEA965D00BAC943 /* Reports */ = {
+			isa = PBXGroup;
+			children = (
+				EA8D81DB1AEA965D00BAC943 /* WBReportUtils.h */,
+				EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */,
+			);
+			path = Reports;
+			sourceTree = "<group>";
+		};
+		EA8D81DE1AEA96A700BAC943 /* Reports */ = {
+			isa = PBXGroup;
+			children = (
+				EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */,
+			);
+			path = Reports;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1029,22 +1147,22 @@
 			productReference = 84F4F34018CFCCD000F69A35 /* SmartReceipts.app */;
 			productType = "com.apple.product-type.application";
 		};
-		84F4F35A18CFCCD000F69A35 /* SmartReceiptsTests */ = {
+		EA8D81CE1AEA956600BAC943 /* SmartReceiptsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84F4F36F18CFCCD000F69A35 /* Build configuration list for PBXNativeTarget "SmartReceiptsTests" */;
+			buildConfigurationList = EA8D81D71AEA956600BAC943 /* Build configuration list for PBXNativeTarget "SmartReceiptsTests" */;
 			buildPhases = (
-				84F4F35718CFCCD000F69A35 /* Sources */,
-				84F4F35818CFCCD000F69A35 /* Frameworks */,
-				84F4F35918CFCCD000F69A35 /* Resources */,
+				EA8D81CB1AEA956600BAC943 /* Sources */,
+				EA8D81CC1AEA956600BAC943 /* Frameworks */,
+				EA8D81CD1AEA956600BAC943 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				84F4F36118CFCCD000F69A35 /* PBXTargetDependency */,
+				EA8D81D61AEA956600BAC943 /* PBXTargetDependency */,
 			);
 			name = SmartReceiptsTests;
 			productName = SmartReceiptsTests;
-			productReference = 84F4F35B18CFCCD000F69A35 /* SmartReceiptsTests.xctest */;
+			productReference = EA8D81CF1AEA956600BAC943 /* SmartReceiptsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1054,7 +1172,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = WB;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Will Baumann";
 				TargetAttributes = {
 					84F4F33F18CFCCD000F69A35 = {
@@ -1065,7 +1183,8 @@
 							};
 						};
 					};
-					84F4F35A18CFCCD000F69A35 = {
+					EA8D81CE1AEA956600BAC943 = {
+						CreatedOnToolsVersion = 6.3;
 						TestTargetID = 84F4F33F18CFCCD000F69A35;
 					};
 				};
@@ -1085,7 +1204,7 @@
 			projectRoot = "";
 			targets = (
 				84F4F33F18CFCCD000F69A35 /* SmartReceipts */,
-				84F4F35A18CFCCD000F69A35 /* SmartReceiptsTests */,
+				EA8D81CE1AEA956600BAC943 /* SmartReceiptsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1117,11 +1236,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84F4F35918CFCCD000F69A35 /* Resources */ = {
+		EA8D81CD1AEA956600BAC943 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F4F36718CFCCD000F69A35 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1165,26 +1283,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA8D81AC1AEA7C9D00BAC943 /* ReceiptColumnTax.m in Sources */,
 				4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */,
-				84A5834818EDEA27003A464D /* WBColumnsResolver.m in Sources */,
 				849A142F18D240D200399A0F /* WBSettingsViewController.m in Sources */,
 				84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */,
+				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
 				8478B77D18D395280041CBA3 /* WBNewReceiptViewController.m in Sources */,
-				845E33EC18D8AE24006A506A /* WBReceipt.m in Sources */,
+				EA8D81A91AEA7C8E00BAC943 /* ReceiptColumnPrice.m in Sources */,
 				84ABAD0218DB700000F8D3EB /* WBTripsHelper.m in Sources */,
 				4D33F3E219D8965800FE4EC4 /* GADConstants.m in Sources */,
-				84AA926218EEBBFB0096013D /* WBReportUtils.m in Sources */,
+				EA8D819A1AEA7C3100BAC943 /* ReceiptColumnImagePath.m in Sources */,
+				EA8D81781AEA668100BAC943 /* WBTrip.m in Sources */,
+				EA8D817C1AEA6AF000BAC943 /* ReceiptColumn.m in Sources */,
+				EA8D81A61AEA7C7D00BAC943 /* ReceiptColumnName.m in Sources */,
 				8467EFE618F6E0310076BE6E /* WBImageViewController.m in Sources */,
+				EA8D81A31AEA7C6B00BAC943 /* ReceiptColumnDate.m in Sources */,
 				84AEE5CD18EB47AB005DB908 /* WBMoveCopyReceiptViewController.m in Sources */,
+				EA8D81851AEA7B7500BAC943 /* ReceiptColumnCategoryCode.m in Sources */,
 				843950A418ED1D2E00A1CF83 /* WBPdfDrawer.m in Sources */,
 				84AF861018E895CF00F15C3A /* WBDateFormatter.m in Sources */,
 				84553A5318D0D2CA0009057B /* WBReceiptsViewController.m in Sources */,
 				EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */,
 				84AA925618EEAF0C0096013D /* gzlib.c in Sources */,
+				EA8D81941AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.m in Sources */,
 				845E33DC18D86D84006A506A /* WBReceiptActionsViewController.m in Sources */,
 				84AA924C18EEAF0C0096013D /* FileInZipInfo.m in Sources */,
 				84AA925C18EEAF0C0096013D /* inftrees.c in Sources */,
 				84AA925D18EEAF0C0096013D /* trees.c in Sources */,
+				EA8D81971AEA7C1E00BAC943 /* ReceiptColumnImageName.m in Sources */,
 				841BB308190837F100D28CBF /* WBNoTripsViewController.m in Sources */,
 				4DC6A9F119D7610900258DE3 /* GADMasterViewController.m in Sources */,
 				84AA0AD118E5F624008A85F9 /* WBFileManager.m in Sources */,
@@ -1192,6 +1318,7 @@
 				84EA5C4C18F2E28A001BAA10 /* HTAutocompleteTextField.m in Sources */,
 				84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */,
 				84AA926518EEC0A00096013D /* WBTripCsvCreator.m in Sources */,
+				EA8D81B81AEA7EE200BAC943 /* Column.m in Sources */,
 				84AA925B18EEAF0C0096013D /* inflate.c in Sources */,
 				8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */,
 				843F61FF18EF3F46001ACBB1 /* WBCustomization.m in Sources */,
@@ -1207,10 +1334,11 @@
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
 				84ABACF818DB66FA00F8D3EB /* FMDatabasePool.m in Sources */,
 				84AA925218EEAF0C0096013D /* compress.c in Sources */,
-				EA3CF0971AE77E1900B14B73 /* WBPrice.m in Sources */,
+				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
 				847C887518D7BA4500A33397 /* WBGenerateViewController.m in Sources */,
-				84A3ADE918D4A0FC003DB722 /* WBColumn.m in Sources */,
+				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
 				84ABAD0918DB79D900F8D3EB /* WBCategoriesHelper.m in Sources */,
+				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
 				84AA925818EEAF0C0096013D /* gzwrite.c in Sources */,
 				84ABACFA18DB66FA00F8D3EB /* FMResultSet.m in Sources */,
 				84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */,
@@ -1224,13 +1352,17 @@
 				84AA925E18EEAF0C0096013D /* uncompr.c in Sources */,
 				843F623F18EF9E78001ACBB1 /* HUD.m in Sources */,
 				843F620218EF4BB0001ACBB1 /* WBImageUtils.m in Sources */,
+				EA8D81AF1AEA7CAD00BAC943 /* ReceiptColumnPictured.m in Sources */,
 				84ABACF918DB66FA00F8D3EB /* FMDatabaseQueue.m in Sources */,
 				84AA925F18EEAF0C0096013D /* zutil.c in Sources */,
 				84AA925918EEAF0C0096013D /* infback.c in Sources */,
 				847C887218D7ACC600A33397 /* WBTableViewController.m in Sources */,
+				EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */,
 				847EFA5418E6BC93006BE520 /* WBSqlBuilder.m in Sources */,
 				84DCAAE318E4B48A00ECAECC /* WBPreferences.m in Sources */,
+				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
 				84AA924F18EEAF0C0096013D /* ZipReadStream.m in Sources */,
+				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
 				8453368418F4950E001072AA /* WBBackupHelper.m in Sources */,
 				84AA925118EEAF0C0096013D /* adler32.c in Sources */,
 				84A3ADE318D48E15003DB722 /* WBNewCategoryViewController.m in Sources */,
@@ -1239,41 +1371,49 @@
 				84AA925718EEAF0C0096013D /* gzread.c in Sources */,
 				845E33E318D8A12C006A506A /* WBTextUtils.m in Sources */,
 				84D6719B18D34E4900B704A4 /* WBCurrency.m in Sources */,
+				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */,
 				843F623C18EF9A5F001ACBB1 /* MBProgressHUD.m in Sources */,
 				84AA925318EEAF0C0096013D /* crc32.c in Sources */,
 				84B4691E18E98838006E7A77 /* WBObservableReceipts.m in Sources */,
 				84AA924E18EEAF0C0096013D /* ZipFile.m in Sources */,
+				EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */,
 				84AF861418E8C27600F15C3A /* WBCellWithPriceNameDate.m in Sources */,
 				84AA925A18EEAF0C0096013D /* inffast.c in Sources */,
-				845E33E918D8ADF9006A506A /* WBCategory.m in Sources */,
 				84ABAD0C18DB7B4400F8D3EB /* WBColumnsHelper.m in Sources */,
 				84AA924B18EEAF0C0096013D /* zip.c in Sources */,
 				84AA924918EEAF0C0096013D /* ioapi.c in Sources */,
 				84ABACFF18DB6F5F00F8D3EB /* WBDB.m in Sources */,
+				EA8D81761AEA668100BAC943 /* WBPrice.m in Sources */,
+				EA8D818E1AEA7BBC00BAC943 /* ReceiptColumnReportName.m in Sources */,
+				EA8D81821AEA7B5800BAC943 /* ReceiptColumnBlank.m in Sources */,
 				8453368018F475E2001072AA /* WBAutocompleteHelper.m in Sources */,
+				EA8D818B1AEA7BA400BAC943 /* ReceiptColumnUserID.m in Sources */,
+				EA8D819D1AEA7C4200BAC943 /* ReceiptColumnComment.m in Sources */,
+				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				8472F01818D6F50B00929C5B /* WBNewTripViewController.m in Sources */,
-				845E33EF18D8AE2E006A506A /* WBTrip.m in Sources */,
 				EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */,
 				84ABACF718DB66FA00F8D3EB /* FMDatabaseAdditions.m in Sources */,
 				848EFA6018EDC37100AC01B4 /* WBTripPdfCreator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84F4F35718CFCCD000F69A35 /* Sources */ = {
+		EA8D81CB1AEA956600BAC943 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F4F36918CFCCD000F69A35 /* SmartReceiptsTests.m in Sources */,
+				EA8D81D41AEA956600BAC943 /* SmartReceiptsTests.m in Sources */,
+				EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */,
+				EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		84F4F36118CFCCD000F69A35 /* PBXTargetDependency */ = {
+		EA8D81D61AEA956600BAC943 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 84F4F33F18CFCCD000F69A35 /* SmartReceipts */;
-			targetProxy = 84F4F36018CFCCD000F69A35 /* PBXContainerItemProxy */;
+			targetProxy = EA8D81D51AEA956600BAC943 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1292,15 +1432,6 @@
 			children = (
 				84F4F34D18CFCCD000F69A35 /* en */,
 				841BB2FB190806F600D28CBF /* pl */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		84F4F36518CFCCD000F69A35 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84F4F36618CFCCD000F69A35 /* en */,
-				841BB2FD190806F600D28CBF /* pl */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1347,7 +1478,7 @@
 					/usr/include/libxml2,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1419,6 +1550,7 @@
 					"/Users/williambaumann/Downloads/GoogleMobileAdsSdkiOS-6.9.2",
 					"$(PROJECT_DIR)/3rdparty/Google/AdMob",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-ObjC",
@@ -1467,43 +1599,53 @@
 			};
 			name = Release;
 		};
-		84F4F37018CFCCD000F69A35 /* Debug */ = {
+		EA8D81D81AEA956600BAC943 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartReceipts.app/SmartReceipts";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SmartReceipts/SmartReceipts-Prefix.pch";
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "SmartReceiptsTests/SmartReceiptsTests-Info.plist";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = SmartReceiptsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartReceipts.app/SmartReceipts";
 			};
 			name = Debug;
 		};
-		84F4F37118CFCCD000F69A35 /* Release */ = {
+		EA8D81D91AEA956600BAC943 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartReceipts.app/SmartReceipts";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SmartReceipts/SmartReceipts-Prefix.pch";
-				INFOPLIST_FILE = "SmartReceiptsTests/SmartReceiptsTests-Info.plist";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = SmartReceiptsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartReceipts.app/SmartReceipts";
 			};
 			name = Release;
 		};
@@ -1528,11 +1670,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84F4F36F18CFCCD000F69A35 /* Build configuration list for PBXNativeTarget "SmartReceiptsTests" */ = {
+		EA8D81D71AEA956600BAC943 /* Build configuration list for PBXNativeTarget "SmartReceiptsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				84F4F37018CFCCD000F69A35 /* Debug */,
-				84F4F37118CFCCD000F69A35 /* Release */,
+				EA8D81D81AEA956600BAC943 /* Debug */,
+				EA8D81D91AEA956600BAC943 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

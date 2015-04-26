@@ -32,14 +32,3 @@ extern NSString * const WBColumnNameIndex;
 extern NSString * const WBColumnNameExtraEdittext1;
 extern NSString * const WBColumnNameExtraEdittext2;
 extern NSString * const WBColumnNameExtraEdittext3;
-
-@interface WBColumn : NSObject
-
-+ (NSArray*)availableColumnsNames;
-
-- (id)initWithIndex:(int) index name:(NSString*) columnName;
-
-- (int)index;
-- (NSString*)name;
-
-@end

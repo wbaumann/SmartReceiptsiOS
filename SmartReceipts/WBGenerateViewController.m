@@ -22,10 +22,9 @@
 #import "WBAppDelegate.h"
 
 @interface WBGenerateViewController ()
-{
-    NSArray *_receipts;
-    WBTrip *_trip;
-}
+
+@property (nonatomic, strong) WBTrip *trip;
+@property (nonatomic, strong) NSArray *receipts;
 
 @property (weak) UIViewController *viewControllerForMail;
 
@@ -60,21 +59,25 @@
 - (MFMailComposeViewController*) preparedComposer {
     
     [_trip createDirectoryIfNotExists];
-    
+
+    //TODO jaanus: this should be done when receipt loaded from DB
+    for (WBReceipt *receipt in self.receipts) {
+        [receipt setTrip:self.trip];
+    }
+
     NSString *pdfPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@.pdf", [_trip name]]];
     NSString *pdfImagesPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@Images.pdf", [_trip name]]];
     NSString *csvPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@.csv", [_trip name]]];
     NSString *zipPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@.zip", [_trip name]]];
-    
+
     NSArray *rai = [WBReceiptAndIndex receiptsAndIndicesFromReceipts:_receipts filteredWith:^BOOL(WBReceipt *r) {
-        return ![WBReportUtils filterOutReceipt:r];
+        return [WBReportUtils filterOutReceipt:r];
     }];
     NSArray *pdfColumns = [[WBDB pdfColumns] selectAll];
     NSArray *csvColumns = [[WBDB csvColumns] selectAll];
-    WBColumnsResolver *columnsResolver = [[WBColumnsResolver alloc] initWithCategories:[[WBDB categories] selectAll]];
-    
-    WBTripPdfCreator *pdfCreator = [[WBTripPdfCreator alloc] initWithColumns:pdfColumns columnsResolver:columnsResolver];
-    WBTripCsvCreator *csvCreator = [[WBTripCsvCreator alloc] initWithColumns:csvColumns columnsResolver:columnsResolver];
+
+    WBTripPdfCreator *pdfCreator = [[WBTripPdfCreator alloc] initWithColumns:pdfColumns];
+    WBTripCsvCreator *csvCreator = [[WBTripCsvCreator alloc] initWithColumns:csvColumns];
     WBImageStampler *imagesStampler = [[WBImageStampler alloc] init];
     
     NSMutableArray *createdAttachements = @[].mutableCopy;
@@ -97,7 +100,7 @@
     
     if (self.csvFileField.on) {
         [self clearPath:csvPath];
-        if (![csvCreator createCsvFileAtPath:csvPath receiptsAndIndexes:rai trip:_trip includeHeaders:[WBPreferences includeCSVHeaders]]) {
+        if (![csvCreator createCsvFileAtPath:csvPath receiptsAndIndexes:rai includeHeaders:[WBPreferences includeCSVHeaders]]) {
             return nil;
         }
         [createdAttachements addObject:csvPath];

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBColumn.h"
+#import "WBColumnNames.h"
 
 // store original NS/LocalizedString, it's for case when you want to use localization after column names definitions
 //static NSString* proxy_NS/LocalizedString(NSString* key, NSString* comment)
@@ -45,70 +45,3 @@ NSString * const WBColumnNameExtraEdittext3 = @"";
 // restore NS/LocalizedString
 //#undef NS/LocalizedString
 //#define NS/LocalizedString(key, comment) (proxy_NS/LocalizedString(key,comment))
-
-@interface WBColumn()
-{
-    int _index;
-    NSString *_name;
-}
-@end
-
-@implementation WBColumn
-
-+ (NSArray*)availableColumnsNames
-{
-    NSMutableArray *arr = [@[
-                             WBColumnNameBlank,
-                             WBColumnNameCategoryCode,
-                             WBColumnNameCategoryName,
-                             WBColumnNameUserId,
-                             WBColumnNameReportName,
-                             WBColumnNameReportStartDate,
-                             WBColumnNameReportEndDate,
-                             WBColumnNameImageFileName,
-                             WBColumnNameImagePath,
-                             WBColumnNameComment,
-                             WBColumnNameCurrency,
-                             WBColumnNameDate,
-                             WBColumnNameName,
-                             WBColumnNamePrice,
-                             WBColumnNameTax,
-                             WBColumnNamePictured,
-                             WBColumnNameExpensable,
-                             WBColumnNameIndex,
-                             ] mutableCopy];
-    
-    [arr sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    
-    NSArray *optional = @[WBColumnNameExtraEdittext1,WBColumnNameExtraEdittext2,WBColumnNameExtraEdittext3];
-    
-    for (NSString* str in optional) {
-        if (str.length > 0) {
-            [arr addObject:str];
-        }
-    }
-    
-    return arr;
-}
-
-- (id)initWithIndex:(int) index name:(NSString*) columnName
-{
-    self = [super init];
-    if (self) {
-        _index = index;
-        _name = columnName;
-    }
-    return self;
-}
-
-- (int) index
-{
-    return _index;
-}
-
-- (NSString*)name
-{
-    return _name;
-}
-
-@end

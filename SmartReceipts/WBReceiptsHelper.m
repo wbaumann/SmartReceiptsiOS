@@ -142,42 +142,6 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
     return [array copy];
 }
 
-- (WBReceipt *)selectWithId:(int)receiptId {
-
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ?", TABLE_NAME, COLUMN_ID];
-
-    __block WBReceipt *receipt = nil;
-
-    [_databaseQueue inDatabase:^(FMDatabase *database) {
-        FMResultSet *resultSet = [database executeQuery:query, [NSNumber numberWithInt:receiptId]];
-
-        if ([resultSet next]) {
-            NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:COLUMN_PRICE]];
-            NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:COLUMN_TAX]];
-            NSString *currencyCode = [resultSet stringForColumn:COLUMN_ISO4217];
-
-            receipt =
-                    [[WBReceipt alloc] initWithId:[resultSet intForColumn:COLUMN_ID]
-                                             name:[resultSet stringForColumn:COLUMN_NAME]
-                                         category:[resultSet stringForColumn:COLUMN_CATEGORY]
-                                    imageFileName:[resultSet stringForColumn:COLUMN_PATH]
-                                           dateMs:[resultSet longLongIntForColumn:COLUMN_DATE]
-                                     timeZoneName:[resultSet stringForColumn:COLUMN_TIMEZONE]
-                                          comment:[resultSet stringForColumn:COLUMN_COMMENT]
-                                            price:[WBPrice priceWithAmount:price currencyCode:currencyCode]
-                                              tax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]
-                                     isExpensable:[resultSet boolForColumn:COLUMN_EXPENSEABLE]
-                                       isFullPage:![resultSet boolForColumn:COLUMN_NOTFULLPAGEIMAGE]
-                                   extraEditText1:[resultSet stringForColumn:COLUMN_EXTRA_EDITTEXT_1]
-                                   extraEditText2:[resultSet stringForColumn:COLUMN_EXTRA_EDITTEXT_2]
-                                   extraEditText3:[resultSet stringForColumn:COLUMN_EXTRA_EDITTEXT_3]];
-        }
-
-    }];
-
-    return receipt;
-}
-
 static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
 #warning FIXME: ported from Android but misconception is visible here, null->"null"->"" when used multiple times on the same row.
     

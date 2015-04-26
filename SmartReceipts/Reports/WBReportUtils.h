@@ -12,6 +12,6 @@
 
 @interface WBReportUtils : NSObject
 
-+(BOOL) filterOutReceipt:(WBReceipt*) receipt;
++ (BOOL)filterOutReceipt:(WBReceipt *)receipt;
 
 @end

@@ -7,9 +7,9 @@
 //
 
 #import "WBColumnsViewController.h"
-#import "WBColumn.h"
 
 #import "WBDB.h"
+#import "ReceiptColumn.h"
 
 @interface WBColumnsViewController () {
     WBDynamicPicker *_dynamicPicker;
@@ -32,7 +32,7 @@
     
     _tableHelper = self.forCSV ? [WBDB csvColumns] : [WBDB pdfColumns];
     
-    _columnsNames = [WBColumn availableColumnsNames];
+    _columnsNames = [ReceiptColumn availableColumnsNames];
     _columns = [_tableHelper selectAll].mutableCopy;
     _changed = NO;
     
@@ -70,7 +70,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    WBColumn *col = [_columns objectAtIndex:indexPath.row];
+    Column *col = _columns[indexPath.row];
     
     NSString *colPrefix = NSLocalizedString(@"Col.", @"Column prefix used while ordering");
     
@@ -101,7 +101,7 @@
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         cell.textLabel.text  = [NSString stringWithFormat:@"%@ %d", colPrefix, (i + 1 + change)];
         
-        WBColumn *col = [_columns objectAtIndex:i];
+        Column *col = _columns[i];
         cell.detailTextLabel.text = [col name];
     }
 }
@@ -142,7 +142,7 @@
         [self refreshCellsInTableView:tableView fromIndex:idx2 toIndex:(idx1-1) changeIndex:(+1)];
     }
     
-    WBColumn *col = [_columns objectAtIndex:idx1];
+    Column *col = [_columns objectAtIndex:idx1];
     [_columns removeObjectAtIndex:idx1];
     [_columns insertObject:col atIndex:idx2];
     _changed = YES;
@@ -173,7 +173,7 @@
 {
     NSString *columnName = [_columnsNames objectAtIndex:[dynamicPicker selectedRow]];
     int idx = (int)_columns.count;
-    [_columns addObject:[[WBColumn alloc] initWithIndex:0 name:columnName]];
+    [_columns addObject:[[Column alloc] initWithIndex:0 name:columnName]];
     _changed = YES;
     
     [self.columnsTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
