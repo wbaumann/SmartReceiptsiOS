@@ -14,7 +14,6 @@
 #import "WBPreferences.h"
 #import "WBDateFormatter.h"
 
-#import "WBFileManager.h"
 #import "WBBackupHelper.h"
 
 #import "HUD.h"
@@ -133,17 +132,20 @@ static WBSettingsViewController *visibleInstance = nil;
     }
     
     [self.defaultCurrencyButton setTitle:[WBPreferences defaultCurrency] forState:UIControlStateNormal];
-    
-    [self.dateSeparatorField removeAllSegments];
-    [self.dateSeparatorField insertSegmentWithTitle:@"-" atIndex:0 animated:NO];
-    [self.dateSeparatorField insertSegmentWithTitle:@"/" atIndex:1 animated:NO];
-    
-    NSString *defSep = [[[WBDateFormatter alloc] init] separatorForCurrentLocale];
-    if (![defSep isEqualToString:@"-"] && ![defSep isEqualToString:@"/"]) {
-        [self.dateSeparatorField insertSegmentWithTitle:defSep atIndex:2 animated:NO];
+
+    NSArray *separators = @[@"-", @"/", @"."];
+    NSString *systemSeparator = [[[WBDateFormatter alloc] init] separatorForCurrentLocale];
+    if ([separators indexOfObject:systemSeparator] == NSNotFound) {
+        separators = [separators arrayByAddingObject:systemSeparator];
     }
-    
-    NSUInteger idx = [@[@"-",@"/",defSep] indexOfObject:[WBPreferences dateSeparator]];
+
+    [self.dateSeparatorField removeAllSegments];
+    for (NSUInteger index = 0; index < separators.count; index++) {
+        NSString *separator = separators[index];
+        [self.dateSeparatorField insertSegmentWithTitle:separator atIndex:index animated:NO];
+    }
+
+    NSUInteger idx = [separators indexOfObject:[WBPreferences dateSeparator]];
     if (idx == NSNotFound) {
         idx = 1;
     }
