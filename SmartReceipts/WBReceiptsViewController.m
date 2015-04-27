@@ -191,7 +191,7 @@ static NSString *CellIdentifier = @"Cell";
     }
 }
 
-#warning REVIEW: Current DB fits only move up/down by 1 so it is not so good for iOS-style reordering. We would have to do N swaps for all rows between, do we want it?
+
 //- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    return YES;

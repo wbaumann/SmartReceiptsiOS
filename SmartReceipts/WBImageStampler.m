@@ -148,15 +148,6 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
     
 #undef entry
     
-#warning REVIEW: how to handle EXTRAS?
-    
-    /*
-     Java code that maybe should be translated.
-     
-     if (receipt.hasExtraEditText1()) { canvas.drawText(mFlex.getString(mContext, R.string.RECEIPTMENU_FIELD_EXTRA_EDITTEXT_1) + ": " + receipt.getExtraEditText1(), xPad/2, y, brush); y += spacing; }
-     if (receipt.hasExtraEditText2()) { canvas.drawText(mFlex.getString(mContext, R.string.RECEIPTMENU_FIELD_EXTRA_EDITTEXT_2) + ": " + receipt.getExtraEditText2(), xPad/2, y, brush); y += spacing; }
-     if (receipt.hasExtraEditText3()) { canvas.drawText(mFlex.getString(mContext, R.string.RECEIPTMENU_FIELD_EXTRA_EDITTEXT_3) + ": " + receipt.getExtraEditText3(), xPad/2, y, brush); y += spacing; }
-     */
     
     UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
     

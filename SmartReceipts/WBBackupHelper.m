@@ -29,8 +29,6 @@
 
 NSString *DATABASE_EXPORT_NAME = @"receipts_backup.db";
 
-#warning INFO: data is in Documents/ and Library/ so it is anyway backuped by itunes
-
 @implementation WBBackupHelper
 {
     NSURL *_url;

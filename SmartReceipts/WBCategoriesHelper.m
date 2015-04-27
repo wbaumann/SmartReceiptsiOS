@@ -163,7 +163,6 @@ static NSString * const COLUMN_BREAKDOWN = @"breakdown";
         NSString *name = [resultSet stringForColumnIndex:nameIndex];
         NSString *code = [resultSet stringForColumnIndex:codeIndex];
         
-#warning REVIEW: as on Android we ignore insert success, but should it be like this?
         [currDB executeUpdate:insertQuery,name,code];
         
     } while ([resultSet next]);

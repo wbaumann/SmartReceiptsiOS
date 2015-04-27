@@ -120,8 +120,6 @@ static WBSettingsViewController *visibleInstance = nil;
     self.enableAutoCompleteSuggestionsField.on = [WBPreferences enableAutoCompleteSuggestions];
     self.defaultReceiptDateToReportStartDateField.on = [WBPreferences defaultToFirstReportDate];
     
-#warning REVIEW: taking MIN_FLOAT is risky because they are not guaranted to have the same representation
-    
     double price = [WBPreferences minimumReceiptPriceToIncludeInReports];
     double minPrice = ([WBPreferences MIN_FLOAT]/4.0); // we have to make significant change because it's long float and have little precision
     if (price < minPrice) {
@@ -230,7 +228,7 @@ static WBSettingsViewController *visibleInstance = nil;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-#warning REVIEW: money everywhere are %.2f format but here we limit them to integer
+
     NSString *str = [textField.text stringByReplacingCharactersInRange:range withString:string];
 //    if (textField == self.minimumReceiptPriceField) {
 //        return [WBTextUtils isNonnegativeMoney:str];

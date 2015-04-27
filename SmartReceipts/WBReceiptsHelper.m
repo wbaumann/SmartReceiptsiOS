@@ -143,7 +143,6 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
 }
 
 static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
-#warning FIXME: ported from Android but misconception is visible here, null->"null"->"" when used multiple times on the same row.
     
     if (extra == nil) {
         [builder addValue:[WBReceipt NO_DATA]];
@@ -287,7 +286,6 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
         
         const int rid = [cres intForColumnIndex:0];
         
-#warning REVIEW: why default timezone? We have timezone from argument.
         receipt =
         [[WBReceipt alloc] initWithId:rid
                                  name:name
@@ -333,7 +331,6 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     
     qPut(COLUMN_CATEGORY, category);
     
-#warning REVIEW: on Android here is null what means that after building updated object on success we have timezone different than the one in DB. On iOS old timezone is set for new object if no change.
     
     NSString *timeZoneName = [[oldReceipt timeZone] name];
     if (dateMs != [oldReceipt dateMs]) {
@@ -468,7 +465,6 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     }
 }
 
-#warning REVIEW: style - delete doesn't delete files related to row, but move does
 
 -(WBReceipt*) moveReceipt:(WBReceipt*) receipt fromTrip:(WBTrip*)oldTrip toTrip:(WBTrip*) newTrip {
     WBReceipt* newReceipt = [self copyReceipt:receipt fromTrip:oldTrip toTrip:newTrip];
@@ -477,7 +473,6 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
             if ([receipt hasFileForTrip:oldTrip]) {
                 NSString* oldFile = [receipt imageFilePathForTrip:oldTrip];
                 
-#warning REVIEW: ported from Android version, it's weird that receipt is copied and returns false/nil
                 if ([[NSFileManager defaultManager] removeItemAtPath:oldFile error:nil]) {
                     return newReceipt;
                 } else {
@@ -526,7 +521,7 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     return result;
 }
 
-#warning REVIEW: it's like move up/down from Android version, anyway this method doesn't look good cos we swap dates. There should be something like one another field for ordering, or maybe I didn't get the idea and it's ok.
+
 -(BOOL) swapReceipt:(WBReceipt*) receipt1 andReceipt:(WBReceipt*) receipt2 {
     NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ? WHERE %@ = ?", TABLE_NAME, COLUMN_DATE, COLUMN_ID];
     
@@ -732,10 +727,8 @@ static inline id getString(FMResultSet* resultSet, int index) {
         
         [values addObject:getString(resultSet, paymentMethodIndex)];
         
-#warning REVIEW: as on Android we ignore insert/update success, but should it be like this?
         
         if (count > 0 && overwrite) {
-#warning FIXME: as on Android we update also ID of our row with id from external ID, it's going to cause bugs
             // add value for 'where id = ?'
             [values addObject:[NSNumber numberWithInt:updateID]];
             [currDB executeUpdate:updateQuery withArgumentsInArray:values];

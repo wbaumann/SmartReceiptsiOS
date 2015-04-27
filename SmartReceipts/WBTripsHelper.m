@@ -221,7 +221,6 @@ static NSString * const NO_DATA = @"null";
             return;
         }
         
-#warning REVIEW: on Android we have oldTrip.getName().equalsIgnoreCase(dir.getName()) that seems incorrect because trip name in sqlite db is case sensitive
         
         if (![[oldTrip name] caseInsensitiveCompare:dir] == NSOrderedSame) {
             if (![[WBDB receipts] replaceParentName:[oldTrip name] to:dir inDatabase:database]) {
@@ -303,7 +302,6 @@ static inline NSObject* checkNil(NSObject* obj) {
     return (obj?obj:[NSNull null]);
 }
 
-#warning Updated to import trip comments and time zone
 +(BOOL) mergeDatabase:(FMDatabase*) currDB withDatabase:(FMDatabase*) importDB overwrite:(BOOL) overwrite {
     NSLog(@"Merging trips");
     
@@ -346,8 +344,6 @@ static inline NSObject* checkNil(NSObject* obj) {
         // no package name here so we just get directory name
         name = [name lastPathComponent];
         
-#warning REVIEW: we get miles as double here - on Android there is 'int'
-        
         NSMutableArray *values =
         [@[
            checkNil(name),
@@ -362,7 +358,6 @@ static inline NSObject* checkNil(NSObject* obj) {
             [values addObject:checkNil([resultSet stringForColumnIndex:toTimeZoneIndex])];
         }
         
-#warning REVIEW: as on Android we ignore insert success, but should it be like this?
         [currDB executeUpdate:insertQuery withArgumentsInArray:values];
         
     } while ([resultSet next]);

@@ -160,7 +160,6 @@ static NSString * const COLUMN_TYPE = @"type";
         NSNumber *index = [NSNumber numberWithInt:[resultSet intForColumnIndex:idIndex]];
         NSString *type = [resultSet stringForColumnIndex:typeIndex];
         
-#warning REVIEW: as on Android we ignore insert success, but should it be like this?
         [currDB executeUpdate:insertQuery,index,type];
         
     } while ([resultSet next]);

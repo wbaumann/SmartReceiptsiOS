@@ -8,7 +8,7 @@
 
 #import "WBTextUtils.h"
 
-#warning FIXME: on Android '_' character is allowed, here not, because it gives user option to enter shared_prefs name that creates trash during exports (the same applies to Internal folder), it's not critical bug but app takes more space
+
 static NSString * const RESERVED_CHARS = @"_|\\?*<\":>+[]/'\n\r\t\0\f";
 
 static BOOL matchRegex(NSString *expression, NSString *text)
