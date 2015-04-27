@@ -56,6 +56,23 @@
     NSArray *tablesInChecked = [self tableNames:checkedDB];
     XCTAssertEqual(tablesInReference.count, tablesInChecked.count);
     XCTAssertTrue([tablesInReference isEqualToArray:tablesInChecked]);
+
+    for (NSString *tableName in tablesInReference) {
+        NSArray *tableColumnsInReference = [self columnsInTableNamed:tableName inDatabase:referenceDB];
+        NSArray *tableColumnsInChecked = [self columnsInTableNamed:tableName inDatabase:referenceDB];
+        XCTAssertTrue([tableColumnsInReference isEqualToArray:tableColumnsInChecked]);
+    }
+}
+
+- (NSArray *)columnsInTableNamed:(NSString *)name inDatabase:(FMDatabaseQueue *)database {
+    __block NSMutableArray *columns = [NSMutableArray array];
+    [database inDatabase:^(FMDatabase *db) {
+        FMResultSet *resultSet = [db executeQuery:[NSString stringWithFormat:@"PRAGMA table_info('%@')", name]];
+        while ([resultSet next]) {
+            [columns addObject:[resultSet stringForColumnIndex:1]];
+        }
+    }];
+    return [columns sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
 }
 
 - (NSArray *)tableNames:(FMDatabaseQueue *)database {
