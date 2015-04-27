@@ -32,7 +32,10 @@ static NSString * const COLUMN_BREAKDOWN = @"breakdown";
 }
 
 - (BOOL) createTable {
-    
+    return [WBCategoriesHelper createTableInQueue:_databaseQueue];
+}
+
++ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue {
     NSString* query = [@[
                          @"CREATE TABLE " , TABLE_NAME , @" ("
                          , COLUMN_NAME , @" TEXT PRIMARY KEY, "
@@ -40,9 +43,9 @@ static NSString * const COLUMN_BREAKDOWN = @"breakdown";
                          , COLUMN_BREAKDOWN , @" BOOLEAN DEFAULT 1"
                          , @");"
                          ] componentsJoinedByString:@""];
-    
+
     __block BOOL result;
-    [_databaseQueue inDatabase:^(FMDatabase* database){
+    [queue inDatabase:^(FMDatabase *database) {
         result = [database executeUpdate:query];
     }];
     return result;

@@ -74,14 +74,14 @@ static WBColumnsHelper* pdfColumnsHelper;
         NSLog(@"Create new database");
         
         // Android related settings in sqlite db
-        if (![WBDB setupAndroidDatabaseVersion]) {
+        if (![WBDB setupAndroidDatabaseVersionInQueue:databaseQueue]) {
             NSLog(@"Failed to set user_version");
             return NO;
         } else {
             NSLog(@"Set database version to %d", ANDROID_DATABASE_VERSION);
         }
         
-        if (![WBDB setupAndroidMetadataTable]) {
+        if (![WBDB setupAndroidMetadataTableInQueue:databaseQueue]) {
             NSLog(@"Failed to set up android metadata");
             return NO;
         } else {
@@ -106,13 +106,13 @@ static WBColumnsHelper* pdfColumnsHelper;
     return YES;
 }
 
-+(BOOL) createAllTables{
++ (BOOL)createAllTables {
     NSLog(@"Create tables");
     return [tripsHelper createTable]
-    && [receiptsHelper createTable]
-    && [categoriesHelper createTable]
-    && [csvColumnsHelper createTable]
-    && [pdfColumnsHelper createTable];
+            && [receiptsHelper createTable]
+            && [categoriesHelper createTable]
+            && [csvColumnsHelper createTable]
+            && [pdfColumnsHelper createTable];
 }
 
 +(BOOL) insertDefaultValues {
@@ -201,18 +201,18 @@ static WBColumnsHelper* pdfColumnsHelper;
     return true;
 }
 
-+(BOOL) setupAndroidDatabaseVersion {
++ (BOOL)setupAndroidDatabaseVersionInQueue:(FMDatabaseQueue *)queue {
     __block BOOL result;
-    [databaseQueue inDatabase:^(FMDatabase* database){
+    [queue inDatabase:^(FMDatabase *database) {
         NSString *q = [NSString stringWithFormat:@"PRAGMA user_version = %d", ANDROID_DATABASE_VERSION];
         result = [database executeUpdate:q];
     }];
     return result;
 }
 
-+(BOOL) setupAndroidMetadataTable {
++ (BOOL)setupAndroidMetadataTableInQueue:(FMDatabaseQueue *)queue {
     __block BOOL result;
-    [databaseQueue inDatabase:^(FMDatabase* database){
+    [queue inDatabase:^(FMDatabase *database) {
         result = [database executeUpdate:@"CREATE TABLE android_metadata (locale TEXT)"];
         if (result) {
             // Android need at least 1 locale to not crush, let it be en_US
