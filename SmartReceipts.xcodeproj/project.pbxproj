@@ -101,6 +101,10 @@
 		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
 		EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */; };
+		EA69EF121AEFC7EE00276B70 /* DistancesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF111AEFC7EE00276B70 /* DistancesHelper.m */; };
+		EA69EF151AEFC81A00276B70 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF141AEFC81A00276B70 /* Database.m */; };
+		EA69EF181AEFCBB600276B70 /* PaymentMethodsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF171AEFCBB600276B70 /* PaymentMethodsHelper.m */; };
+		EA69EF1E1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF1D1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m */; };
 		EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816B1AEA668100BAC943 /* WBCategory.m */; };
 		EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816D1AEA668100BAC943 /* WBColumnNames.m */; };
 		EA8D81761AEA668100BAC943 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816F1AEA668100BAC943 /* WBPrice.m */; };
@@ -310,6 +314,14 @@
 		EA3CF09D1AE7C45C00B14B73 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		EA46678D1AE7EA1600B4E502 /* WBImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImagePicker.h; sourceTree = "<group>"; };
 		EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImagePicker.m; sourceTree = "<group>"; };
+		EA69EF101AEFC7EE00276B70 /* DistancesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancesHelper.h; sourceTree = "<group>"; };
+		EA69EF111AEFC7EE00276B70 /* DistancesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancesHelper.m; sourceTree = "<group>"; };
+		EA69EF131AEFC81A00276B70 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		EA69EF141AEFC81A00276B70 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
+		EA69EF161AEFCBB600276B70 /* PaymentMethodsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentMethodsHelper.h; sourceTree = "<group>"; };
+		EA69EF171AEFCBB600276B70 /* PaymentMethodsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentMethodsHelper.m; sourceTree = "<group>"; };
+		EA69EF1C1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabaseQueue+QueueShortcuts.h"; sourceTree = "<group>"; };
+		EA69EF1D1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDatabaseQueue+QueueShortcuts.m"; sourceTree = "<group>"; };
 		EA8D816A1AEA668100BAC943 /* WBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategory.h; sourceTree = "<group>"; };
 		EA8D816B1AEA668100BAC943 /* WBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategory.m; sourceTree = "<group>"; };
 		EA8D816C1AEA668100BAC943 /* WBColumnNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnNames.h; sourceTree = "<group>"; };
@@ -818,6 +830,8 @@
 		EA3CF0981AE7962C00B14B73 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				EA69EF1C1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.h */,
+				EA69EF1D1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m */,
 				EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */,
 				EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */,
 			);
@@ -831,6 +845,17 @@
 				EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		EA69EF061AEFC6F300276B70 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				EA69EF101AEFC7EE00276B70 /* DistancesHelper.h */,
+				EA69EF111AEFC7EE00276B70 /* DistancesHelper.m */,
+				EA69EF161AEFCBB600276B70 /* PaymentMethodsHelper.h */,
+				EA69EF171AEFCBB600276B70 /* PaymentMethodsHelper.m */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		EA8D81691AEA668100BAC943 /* Model */ = {
@@ -969,7 +994,10 @@
 		EAF9ADDF1AECF8BF0000AC84 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				EA69EF061AEFC6F300276B70 /* Helpers */,
 				EAF9ADE01AECF8BF0000AC84 /* Migrations */,
+				EA69EF131AEFC81A00276B70 /* Database.h */,
+				EA69EF141AEFC81A00276B70 /* Database.m */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -1183,6 +1211,7 @@
 				849A142F18D240D200399A0F /* WBSettingsViewController.m in Sources */,
 				84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */,
 				EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */,
+				EA69EF1E1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m in Sources */,
 				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
 				8478B77D18D395280041CBA3 /* WBNewReceiptViewController.m in Sources */,
 				EA8D81A91AEA7C8E00BAC943 /* ReceiptColumnPrice.m in Sources */,
@@ -1219,6 +1248,7 @@
 				EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */,
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
 				845E33E018D87CEF006A506A /* WBDynamicPicker.m in Sources */,
+				EA69EF121AEFC7EE00276B70 /* DistancesHelper.m in Sources */,
 				EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */,
 				84ABAD0618DB780E00F8D3EB /* WBReceiptsHelper.m in Sources */,
 				8478B77618D37D350041CBA3 /* WBColumnsViewController.m in Sources */,
@@ -1243,10 +1273,12 @@
 				EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */,
 				847EFA5418E6BC93006BE520 /* WBSqlBuilder.m in Sources */,
 				84DCAAE318E4B48A00ECAECC /* WBPreferences.m in Sources */,
+				EA69EF181AEFCBB600276B70 /* PaymentMethodsHelper.m in Sources */,
 				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
 				8453368418F4950E001072AA /* WBBackupHelper.m in Sources */,
 				84A3ADE318D48E15003DB722 /* WBNewCategoryViewController.m in Sources */,
+				EA69EF151AEFC81A00276B70 /* Database.m in Sources */,
 				841BB3011908173600D28CBF /* WBAbstractPicker.m in Sources */,
 				845E33E318D8A12C006A506A /* WBTextUtils.m in Sources */,
 				84D6719B18D34E4900B704A4 /* WBCurrency.m in Sources */,
@@ -1413,9 +1445,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/3rdparty/BugSense",
@@ -1423,6 +1457,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartReceipts/SmartReceipts-Prefix.pch";
 				INFOPLIST_FILE = "SmartReceipts/SmartReceipts-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/3rdparty/Google/AdMob",
@@ -1446,6 +1481,8 @@
 				OTHER_LIBTOOLFLAGS = "$(inherited) $(OTHER_LDFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceipts/SmartReceipts-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WARNING_CFLAGS = "";
@@ -1459,8 +1496,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/3rdparty/BugSense",
@@ -1468,6 +1507,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartReceipts/SmartReceipts-Prefix.pch";
 				INFOPLIST_FILE = "SmartReceipts/SmartReceipts-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/3rdparty/Google/AdMob",
@@ -1490,6 +1530,7 @@
 				OTHER_LIBTOOLFLAGS = "$(inherited) $(OTHER_LDFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceipts/SmartReceipts-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WARNING_CFLAGS = "";
