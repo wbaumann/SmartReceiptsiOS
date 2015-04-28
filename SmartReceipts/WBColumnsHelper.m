@@ -86,9 +86,13 @@ static NSString * const COLUMN_TYPE = @"type";
     return [database executeUpdate:q, columnName];
 }
 
-- (BOOL) insertWithColumnName:(NSString*) columnName {
+- (BOOL)insertWithColumnName:(NSString *)columnName {
+    return [self insertWithColumnName:columnName intoQueue:_databaseQueue];
+}
+
+- (BOOL)insertWithColumnName:(NSString *)columnName intoQueue:(FMDatabaseQueue *)queue {
     __block BOOL result;
-    [_databaseQueue inDatabase:^(FMDatabase* database){
+    [queue inDatabase:^(FMDatabase *database) {
         result = [self insertWithColumnName:columnName inDatabase:database];
     }];
     return result;

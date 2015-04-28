@@ -19,6 +19,7 @@
 -(NSArray*) selectAll;
 
 -(BOOL) insertWithName:(NSString*) name code:(NSString*) code;
++(BOOL) insertWithName:(NSString*) name code:(NSString*) code intoQueue:(FMDatabaseQueue *)queue;
 -(BOOL) updateWithName:(NSString*) oldName toName:(NSString*) newName code:(NSString*) code;
 -(BOOL) deleteWithName:(NSString*) name;
 

@@ -9,8 +9,9 @@
 #import "WBDB.h"
 #import "FMDatabase.h"
 #import "FMDatabaseQueue.h"
-
 #import "WBFileManager.h"
+#import "DatabaseMigration.h"
+#import "Constants.h"
 
 static const int ANDROID_DATABASE_VERSION = 11;
 
@@ -69,7 +70,9 @@ static WBColumnsHelper* pdfColumnsHelper;
         csvColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_CSV]];
         pdfColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_PDF]];
     }
-    
+
+    [DatabaseMigration migrateDatabase:db];
+
     if (!existed) {
         NSLog(@"Create new database");
         
@@ -131,8 +134,12 @@ static WBColumnsHelper* pdfColumnsHelper;
     return true;
 }
 
-+(BOOL) insertDefaultCategories {
-    NSLog(@"Insert default categories");
++ (BOOL)insertDefaultCategories {
+    return [self insertDefaultCategoriesIntoQueue:databaseQueue];
+}
+
++ (BOOL)insertDefaultCategoriesIntoQueue:(FMDatabaseQueue *)queue {
+    SRLog(@"Insert default categories");
     
     // categories are localized because they are custom and red from db anyway
     NSArray* cats = @[
@@ -163,41 +170,45 @@ static WBColumnsHelper* pdfColumnsHelper;
                       ];
     
     for (int i=0; i<cats.count-1; i+=2) {
-        if (![categoriesHelper insertWithName:[cats objectAtIndex:i] code:[cats objectAtIndex:i+1]]) {
-            return false;
+        if (![WBCategoriesHelper insertWithName:[cats objectAtIndex:i] code:[cats objectAtIndex:i+1] intoQueue:queue]) {
+            return NO;
         }
     }
     
-    return true;
+    return YES;
 }
 
-+(BOOL) insertDefaultColumns {
++ (BOOL)insertDefaultColumns {
+    return [self insertDefaultColumnsIntoQueue:databaseQueue];
+}
+
++ (BOOL)insertDefaultColumnsIntoQueue:(FMDatabaseQueue *)queue {
     NSLog(@"Insert default CSV columns");
-    
-    BOOL success = [csvColumnsHelper insertWithColumnName:WBColumnNameCategoryCode]
-    && [csvColumnsHelper insertWithColumnName:WBColumnNameName]
-    && [csvColumnsHelper insertWithColumnName:WBColumnNamePrice]
-    && [csvColumnsHelper insertWithColumnName:WBColumnNameCurrency]
-    && [csvColumnsHelper insertWithColumnName:WBColumnNameDate];
-    
+
+    BOOL success = [csvColumnsHelper insertWithColumnName:WBColumnNameCategoryCode intoQueue:queue]
+            && [csvColumnsHelper insertWithColumnName:WBColumnNameName intoQueue:queue]
+            && [csvColumnsHelper insertWithColumnName:WBColumnNamePrice intoQueue:queue]
+            && [csvColumnsHelper insertWithColumnName:WBColumnNameCurrency intoQueue:queue]
+            && [csvColumnsHelper insertWithColumnName:WBColumnNameDate intoQueue:queue];
+
     if (!success) {
         NSLog(@"Error while inserting CSV columns");
         return false;
     }
-    
+
     NSLog(@"Insert default PDF columns");
-    success = [pdfColumnsHelper insertWithColumnName:WBColumnNameName]
-    && [pdfColumnsHelper insertWithColumnName:WBColumnNamePrice]
-    && [pdfColumnsHelper insertWithColumnName:WBColumnNameDate]
-    && [pdfColumnsHelper insertWithColumnName:WBColumnNameCategoryName]
-    && [pdfColumnsHelper insertWithColumnName:WBColumnNameExpensable]
-    && [pdfColumnsHelper insertWithColumnName:WBColumnNamePictured];
-    
+    success = [pdfColumnsHelper insertWithColumnName:WBColumnNameName intoQueue:queue]
+            && [pdfColumnsHelper insertWithColumnName:WBColumnNamePrice intoQueue:queue]
+            && [pdfColumnsHelper insertWithColumnName:WBColumnNameDate intoQueue:queue]
+            && [pdfColumnsHelper insertWithColumnName:WBColumnNameCategoryName intoQueue:queue]
+            && [pdfColumnsHelper insertWithColumnName:WBColumnNameExpensable intoQueue:queue]
+            && [pdfColumnsHelper insertWithColumnName:WBColumnNamePictured intoQueue:queue];
+
     if (!success) {
         NSLog(@"Error while inserting PDF columns");
         return false;
     }
-    
+
     return true;
 }
 

@@ -14,5 +14,6 @@
 - (BOOL)executeUpdateWithStatementComponents:(NSArray *)components;
 - (NSUInteger)databaseVersion;
 - (void)setDatabaseVersion:(NSUInteger)version;
+- (NSUInteger)countRowsInTable:(NSString *)tableName;
 
 @end

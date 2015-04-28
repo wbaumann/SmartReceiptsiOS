@@ -14,6 +14,7 @@
 #import "FMDatabaseAdditions.h"
 #import "DatabaseTestsBase.h"
 #import "FMDatabaseQueue+QueueShortcuts.h"
+#import "Database.h"
 
 @interface DatabaseCreateAtVersion11Test : DatabaseTestsBase
 
@@ -26,6 +27,8 @@
 - (void)setUp {
     self.testDBPath = [self generateTestDBPath];
     self.db = [FMDatabaseQueue databaseQueueWithPath:self.testDBPath];
+    DatabaseMigration *migration = [[DatabaseCreateAtVersion11 alloc] init];
+    [migration migrate:self.db];
 }
 
 - (void)tearDown {
@@ -33,9 +36,19 @@
 }
 
 - (void)testSameStructureDatabaseWasGenerated {
-    DatabaseMigration *migration = [[DatabaseCreateAtVersion11 alloc] init];
-    [migration migrate:self.db];
     [self checkDatabasesSame:[[NSBundle bundleForClass:[self class]] pathForResource:@"receipts_at_v11" ofType:@"db"] checked:self.testDBPath];
+}
+
+- (void)testDefaultValuesAddedForCategories {
+    XCTAssertEqual(24, [self.db countRowsInTable:CategoriesTable.TABLE_NAME], @"Default categories not entered");
+}
+
+- (void)testDefaultValuesAddedForCSVColumns {
+    XCTAssertEqual(5, [self.db countRowsInTable:CSVTable.TABLE_NAME], @"Default CSV columns not entered");
+}
+
+- (void)testDefaultValuesAddedForPDFColumns {
+    XCTAssertEqual(6, [self.db countRowsInTable:PDFTable.TABLE_NAME], @"Default PDF columns not entered");
 }
 
 - (void)checkDatabasesSame:(NSString *)pathToReferenceDB checked:(NSString *)pathToCheckedDB {

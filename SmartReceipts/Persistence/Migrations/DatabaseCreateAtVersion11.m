@@ -14,6 +14,8 @@
 
 + (BOOL)setupAndroidDatabaseVersionInQueue:(FMDatabaseQueue *)queue;
 + (BOOL)setupAndroidMetadataTableInQueue:(FMDatabaseQueue *)queue;
++ (BOOL)insertDefaultCategoriesIntoQueue:(FMDatabaseQueue *)queue;
++ (BOOL)insertDefaultColumnsIntoQueue:(FMDatabaseQueue *)queue;
 
 @end
 
@@ -54,7 +56,9 @@
             && [WBReceiptsHelper createTableInQueue:databaseQueue]
             && [WBCategoriesHelper createTableInQueue:databaseQueue]
             && [WBColumnsHelper createTableInQueue:databaseQueue withTableName:[WBColumnsHelper TABLE_NAME_CSV]]
-            && [WBColumnsHelper createTableInQueue:databaseQueue withTableName:[WBColumnsHelper TABLE_NAME_PDF]];
+            && [WBColumnsHelper createTableInQueue:databaseQueue withTableName:[WBColumnsHelper TABLE_NAME_PDF]]
+            && [WBDB insertDefaultCategoriesIntoQueue:databaseQueue]
+            && [WBDB insertDefaultColumnsIntoQueue:databaseQueue];
 }
 
 @end

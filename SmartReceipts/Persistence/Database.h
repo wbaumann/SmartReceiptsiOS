@@ -32,7 +32,7 @@ struct PaymentMethodsTableStruct {
 };
 extern const struct PaymentMethodsTableStruct PaymentMethodsTable;
 
-struct  ReceiptsTableStruct {
+struct ReceiptsTableStruct {
     __unsafe_unretained NSString *const TABLE_NAME;
     __unsafe_unretained NSString *const COLUMN_ID;
     __unsafe_unretained NSString *const COLUMN_PATH;
@@ -68,6 +68,28 @@ struct DistanceTableStruct {
     __unsafe_unretained NSString *const COLUMN_RATE_CURRENCY;
 };
 extern const struct DistanceTableStruct DistanceTable;
+
+struct CategoriesTableStruct {
+    __unsafe_unretained NSString *const TABLE_NAME;
+    __unsafe_unretained NSString *const COLUMN_NAME;
+    __unsafe_unretained NSString *const COLUMN_CODE;
+    __unsafe_unretained NSString *const COLUMN_BREAKDOWN;
+};
+extern const struct CategoriesTableStruct CategoriesTable;
+
+struct CSVTableStruct {
+    __unsafe_unretained NSString *const TABLE_NAME;
+    __unsafe_unretained NSString *const COLUMN_ID;
+    __unsafe_unretained NSString *const COLUMN_TYPE;
+};
+extern const struct CSVTableStruct CSVTable;
+
+struct PDFTableStruct {
+    __unsafe_unretained NSString *const TABLE_NAME;
+    __unsafe_unretained NSString *const COLUMN_ID;
+    __unsafe_unretained NSString *const COLUMN_TYPE;
+};
+extern const struct PDFTableStruct PDFTable;
 
 @interface Database : NSObject
 

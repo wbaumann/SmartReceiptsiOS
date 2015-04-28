@@ -37,8 +37,17 @@
 
 - (void)setDatabaseVersion:(NSUInteger)version {
     [self inDatabase:^(FMDatabase *db) {
-        [db executeUpdate:[NSString stringWithFormat:@"PRAGMA user_version = %d", version]];
+        [db executeUpdate:[NSString stringWithFormat:@"PRAGMA user_version = %lu", version]];
     }];
+}
+
+- (NSUInteger)countRowsInTable:(NSString *)tableName {
+    __block NSUInteger result;
+    [self inDatabase:^(FMDatabase *db) {
+        NSString *countQuery = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@", tableName];
+        result = (NSUInteger) [db intForQuery:countQuery];
+    }];
+    return result;
 }
 
 @end

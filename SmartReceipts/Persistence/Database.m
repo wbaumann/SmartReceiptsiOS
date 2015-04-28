@@ -25,45 +25,64 @@ const struct TripsTableStruct TripsTable = {
 };
 
 const struct PaymentMethodsTableStruct PaymentMethodsTable = {
-    .TABLE_NAME = @"paymentmethods",
-    .COLUMN_ID = @"id",
-    .COLUMN_METHOD = @"method"
+        .TABLE_NAME = @"paymentmethods",
+        .COLUMN_ID = @"id",
+        .COLUMN_METHOD = @"method"
 };
 
 
 const struct ReceiptsTableStruct ReceiptsTable = {
-    .TABLE_NAME = @"receipts",
-    .COLUMN_ID = @"id",
-    .COLUMN_PATH = @"path",
-    .COLUMN_NAME = @"name",
-    .COLUMN_PARENT = @"parent",
-    .COLUMN_CATEGORY = @"category",
-    .COLUMN_PRICE = @"price",
-    .COLUMN_TAX = @"tax",
-    .COLUMN_DATE = @"rcpt_date",
-    .COLUMN_TIMEZONE = @"timezone",
-    .COLUMN_COMMENT = @"comment",
-    .COLUMN_EXPENSEABLE = @"expenseable",
-    .COLUMN_ISO4217 = @"isocode",
-    .COLUMN_PAYMENT_METHOD_ID = @"paymentMethodKey",
-    .COLUMN_NOTFULLPAGEIMAGE = @"fullpageimage",
-    .COLUMN_PROCESSING_STATUS = @"receipt_processing_status",
-    .COLUMN_EXTRA_EDITTEXT_1 = @"extra_edittext_1",
-    .COLUMN_EXTRA_EDITTEXT_2 = @"extra_edittext_2",
-    .COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3"
+        .TABLE_NAME = @"receipts",
+        .COLUMN_ID = @"id",
+        .COLUMN_PATH = @"path",
+        .COLUMN_NAME = @"name",
+        .COLUMN_PARENT = @"parent",
+        .COLUMN_CATEGORY = @"category",
+        .COLUMN_PRICE = @"price",
+        .COLUMN_TAX = @"tax",
+        .COLUMN_DATE = @"rcpt_date",
+        .COLUMN_TIMEZONE = @"timezone",
+        .COLUMN_COMMENT = @"comment",
+        .COLUMN_EXPENSEABLE = @"expenseable",
+        .COLUMN_ISO4217 = @"isocode",
+        .COLUMN_PAYMENT_METHOD_ID = @"paymentMethodKey",
+        .COLUMN_NOTFULLPAGEIMAGE = @"fullpageimage",
+        .COLUMN_PROCESSING_STATUS = @"receipt_processing_status",
+        .COLUMN_EXTRA_EDITTEXT_1 = @"extra_edittext_1",
+        .COLUMN_EXTRA_EDITTEXT_2 = @"extra_edittext_2",
+        .COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3"
 };
 
 const struct DistanceTableStruct DistanceTable = {
-    .TABLE_NAME = @"distance",
-    .COLUMN_ID = @"id",
-    .COLUMN_PARENT = @"parent",
-    .COLUMN_DISTANCE = @"distance",
-    .COLUMN_LOCATION = @"location",
-    .COLUMN_DATE = @"date",
-    .COLUMN_TIMEZONE = @"timezone",
-    .COLUMN_COMMENT = @"comment",
-    .COLUMN_RATE = @"rate",
-    .COLUMN_RATE_CURRENCY = @"rate_currency"
+        .TABLE_NAME = @"distance",
+        .COLUMN_ID = @"id",
+        .COLUMN_PARENT = @"parent",
+        .COLUMN_DISTANCE = @"distance",
+        .COLUMN_LOCATION = @"location",
+        .COLUMN_DATE = @"date",
+        .COLUMN_TIMEZONE = @"timezone",
+        .COLUMN_COMMENT = @"comment",
+        .COLUMN_RATE = @"rate",
+        .COLUMN_RATE_CURRENCY = @"rate_currency"
+};
+
+const struct CategoriesTableStruct CategoriesTable = {
+        .TABLE_NAME = @"categories",
+        .COLUMN_NAME = @"name",
+        .COLUMN_CODE = @"code",
+        .COLUMN_BREAKDOWN = @"breakdown"
+};
+
+const struct CSVTableStruct CSVTable = {
+        .TABLE_NAME = @"csvcolumns",
+        .COLUMN_ID = @"id",
+        .COLUMN_TYPE = @"type"
+};
+
+const struct PDFTableStruct PDFTable = {
+        .TABLE_NAME = @"pdfcolumns",
+        .COLUMN_ID = @"id",
+        .COLUMN_TYPE = @"type"
 };
 
 @implementation Database
