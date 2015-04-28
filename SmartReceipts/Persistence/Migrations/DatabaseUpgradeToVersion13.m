@@ -24,9 +24,7 @@
     return 13;
 }
 
-- (void)migrate:(FMDatabaseQueue *)databaseQueue {
-    [DistancesHelper createTableInQueue:databaseQueue];
-
+- (BOOL)migrate:(FMDatabaseQueue *)databaseQueue {
     NSArray *distanceMigrateBase = @[@"INSERT INTO ", DistanceTable.TABLE_NAME, @"(", DistanceTable.COLUMN_PARENT, @", ", DistanceTable.COLUMN_DISTANCE, @", ", DistanceTable.COLUMN_LOCATION, @", ", DistanceTable.COLUMN_DATE, @", ", DistanceTable.COLUMN_TIMEZONE, @", ", DistanceTable.COLUMN_COMMENT, @", ", DistanceTable.COLUMN_RATE_CURRENCY, @")",
             @" SELECT ", TripsTable.COLUMN_NAME, @", ", TripsTable.COLUMN_MILEAGE, @" , \"\" as ", DistanceTable.COLUMN_LOCATION, @", ", TripsTable.COLUMN_FROM, @", ", TripsTable.COLUMN_FROM_TIMEZONE, @" , \"\" as ", DistanceTable.COLUMN_COMMENT, @", "];
 
@@ -36,11 +34,12 @@
     NSArray *alterTripsWithProcessingStatus = @[@"ALTER TABLE ", TripsTable.TABLE_NAME, @" ADD ", TripsTable.COLUMN_PROCESSING_STATUS, @" TEXT"];
     NSArray *alterReceiptsWithProcessingStatus = @[@"ALTER TABLE ", ReceiptsTable.TABLE_NAME, @" ADD ", ReceiptsTable.COLUMN_PROCESSING_STATUS, @" TEXT"];
 
-    [databaseQueue executeUpdateWithStatementComponents:distanceMigrateNotNullCurrency];
-    [databaseQueue executeUpdateWithStatementComponents:distanceMigrateNullCurrency];
-    [databaseQueue executeUpdateWithStatementComponents:alterTripsWithCostCenter];
-    [databaseQueue executeUpdateWithStatementComponents:alterTripsWithProcessingStatus];
-    [databaseQueue executeUpdateWithStatementComponents:alterReceiptsWithProcessingStatus];
+    return [DistancesHelper createTableInQueue:databaseQueue]
+            && [databaseQueue executeUpdateWithStatementComponents:distanceMigrateNotNullCurrency]
+            && [databaseQueue executeUpdateWithStatementComponents:distanceMigrateNullCurrency]
+            && [databaseQueue executeUpdateWithStatementComponents:alterTripsWithCostCenter]
+            && [databaseQueue executeUpdateWithStatementComponents:alterTripsWithProcessingStatus]
+            && [databaseQueue executeUpdateWithStatementComponents:alterReceiptsWithProcessingStatus];
 }
 
 @end

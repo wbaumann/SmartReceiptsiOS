@@ -12,19 +12,16 @@
 #import "DatabaseMigration.h"
 #import "DatabaseCreateAtVersion11.h"
 #import "FMDatabaseAdditions.h"
+#import "DatabaseTestsBase.h"
+#import "FMDatabaseQueue+QueueShortcuts.h"
 
-@interface DatabaseCreateAtVersion11Test : XCTestCase
+@interface DatabaseCreateAtVersion11Test : DatabaseTestsBase
 
-@property (nonatomic, copy) NSString *testDBPath;
 @property (nonatomic, strong) FMDatabaseQueue *db;
 
 @end
 
 @implementation DatabaseCreateAtVersion11Test
-
-- (NSString *)generateTestDBPath {
-    return [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"test_db_%d", (int) [NSDate timeIntervalSinceReferenceDate]]];
-}
 
 - (void)setUp {
     self.testDBPath = [self generateTestDBPath];
@@ -50,7 +47,7 @@
     XCTAssertNotNil(referenceDB);
     XCTAssertNotNil(checkedDB);
 
-    XCTAssertEqual([self databaseVersion:referenceDB], [self databaseVersion:checkedDB]);
+    XCTAssertEqual([referenceDB databaseVersion], [checkedDB databaseVersion]);
 
     NSArray *tablesInReference = [self tableNames:referenceDB];
     NSArray *tablesInChecked = [self tableNames:checkedDB];
@@ -84,14 +81,6 @@
         }
     }];
     return [tables sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-}
-
-- (NSUInteger)databaseVersion:(FMDatabaseQueue *)database {
-    __block NSUInteger version = 0;
-    [database inDatabase:^(FMDatabase *db) {
-        version = (NSUInteger) [db intForQuery:@"PRAGMA user_version"];
-    }];
-    return version;
 }
 
 @end

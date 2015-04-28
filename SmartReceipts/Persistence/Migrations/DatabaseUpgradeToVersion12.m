@@ -23,15 +23,13 @@
     return 12;
 }
 
-+ (BOOL)migrateDatabase:(FMDatabaseQueue *)databaseQueue {
-    [PaymentMethodsHelper createTableInQueue:databaseQueue];
+- (BOOL)migrate:(FMDatabaseQueue *)databaseQueue {
     NSArray *alterTrips = @[@"ALTER TABLE ", TripsTable.TABLE_NAME, @" ADD ", TripsTable.COLUMN_FILTERS, @" TEXT"];
-    [databaseQueue executeUpdateWithStatementComponents:alterTrips];
-
     NSArray *alterReceipts = @[@"ALTER TABLE ", ReceiptsTable.TABLE_NAME, @" ADD ", ReceiptsTable.COLUMN_PAYMENT_METHOD_ID, @" INTEGER REFERENCES ", PaymentMethodsTable.TABLE_NAME, @" ON DELETE NO ACTION"];
-    [databaseQueue executeUpdateWithStatementComponents:alterReceipts];
 
-    return YES;
+    return [PaymentMethodsHelper createTableInQueue:databaseQueue]
+            && [databaseQueue executeUpdateWithStatementComponents:alterTrips]
+            && [databaseQueue executeUpdateWithStatementComponents:alterReceipts];
 }
 
 @end

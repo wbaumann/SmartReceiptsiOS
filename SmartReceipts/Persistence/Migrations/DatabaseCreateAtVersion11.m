@@ -47,14 +47,14 @@
     return 11;
 }
 
-- (void)migrate:(FMDatabaseQueue *)databaseQueue {
-    [WBDB setupAndroidDatabaseVersionInQueue:databaseQueue];
-    [WBDB setupAndroidMetadataTableInQueue:databaseQueue];
-    [WBTripsHelper createTableInQueue:databaseQueue];
-    [WBReceiptsHelper createTableInQueue:databaseQueue];
-    [WBCategoriesHelper createTableInQueue:databaseQueue];
-    [WBColumnsHelper createTableInQueue:databaseQueue withTableName:[WBColumnsHelper TABLE_NAME_CSV]];
-    [WBColumnsHelper createTableInQueue:databaseQueue withTableName:[WBColumnsHelper TABLE_NAME_PDF]];
+- (BOOL)migrate:(FMDatabaseQueue *)databaseQueue {
+    return [WBDB setupAndroidDatabaseVersionInQueue:databaseQueue]
+            && [WBDB setupAndroidMetadataTableInQueue:databaseQueue]
+            && [WBTripsHelper createTableInQueue:databaseQueue]
+            && [WBReceiptsHelper createTableInQueue:databaseQueue]
+            && [WBCategoriesHelper createTableInQueue:databaseQueue]
+            && [WBColumnsHelper createTableInQueue:databaseQueue withTableName:[WBColumnsHelper TABLE_NAME_CSV]]
+            && [WBColumnsHelper createTableInQueue:databaseQueue withTableName:[WBColumnsHelper TABLE_NAME_PDF]];
 }
 
 @end

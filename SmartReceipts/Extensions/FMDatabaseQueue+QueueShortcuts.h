@@ -12,5 +12,7 @@
 
 - (BOOL)executeUpdate:(NSString *)sqlStatement;
 - (BOOL)executeUpdateWithStatementComponents:(NSArray *)components;
+- (NSUInteger)databaseVersion;
+- (void)setDatabaseVersion:(NSUInteger)version;
 
 @end

@@ -12,18 +12,16 @@
 #import "DatabaseCreateAtVersion11.h"
 #import "DatabaseUpgradeToVersion12.h"
 #import "FMDatabaseAdditions.h"
+#import "DatabaseUpgradeToVersion13.h"
+#import "FMDatabaseQueue+QueueShortcuts.h"
 
 @implementation DatabaseMigration
 
-
-+ (instancetype)createDBMigration {
-    return [[DatabaseCreateAtVersion11 alloc] init];
-}
-
-+ (NSArray *)upgradeMigrations {
++ (NSArray *)allMigrations {
     return @[
+            [[DatabaseCreateAtVersion11 alloc] init],
             [[DatabaseUpgradeToVersion12 alloc] init],
-            [[DatabaseUpgradeToVersion12 alloc] init]
+            [[DatabaseUpgradeToVersion13 alloc] init]
     ];
 }
 
@@ -32,23 +30,33 @@
     return 0;
 }
 
-- (void)migrate:(FMDatabaseQueue *)databaseQueue {
+- (BOOL)migrate:(FMDatabaseQueue *)databaseQueue {
     ABSTRACT_METHOD
-}
-
-+ (BOOL)migrateDatabase:(FMDatabaseQueue *)databaseQueue {
-    NSInteger currentVersion = [self databaseVersion:databaseQueue];
-    NSLog(@"Current version: %d", currentVersion);
-
     return NO;
 }
 
-+ (NSInteger)databaseVersion:(FMDatabaseQueue *)databaseQueue {
-    __block NSInteger version = 0;
-    [databaseQueue inDatabase:^(FMDatabase *db) {
-        version = [db intForQuery:@"PRAGMA user_version"];
-    }];
-    return version;
++ (BOOL)migrateDatabase:(FMDatabaseQueue *)databaseQueue {
+    NSUInteger currentVersion = [databaseQueue databaseVersion];
+    NSLog(@"Current version: %d", currentVersion);
+
+    NSArray *migrations = [self allMigrations];
+    for (DatabaseMigration *migration in migrations) {
+        if (currentVersion >= migration.version) {
+            SRLog(@"DB at version %d, will skip migration to %d", currentVersion, migration.version);
+            continue;
+        }
+
+        SRLog(@"Migrate to version %d", migration.version);
+        if (![migration migrate:databaseQueue]) {
+            SRLog(@"Failed on migration %d", migration.version);
+            return NO;
+        }
+
+        currentVersion = migration.version;
+        [databaseQueue setDatabaseVersion:currentVersion];
+    }
+
+    return YES;
 }
 
 @end

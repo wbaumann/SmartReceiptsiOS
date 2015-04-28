@@ -12,11 +12,10 @@
 
 @interface DatabaseMigration : NSObject
 
-+ (instancetype)createDBMigration;
-+ (NSArray *)upgradeMigrations;
++ (NSArray *)allMigrations;
 + (BOOL)migrateDatabase:(FMDatabaseQueue *)databaseQueue;
 
 - (NSUInteger)version;
-- (void)migrate:(FMDatabaseQueue *)databaseQueue;
+- (BOOL)migrate:(FMDatabaseQueue *)databaseQueue;
 
 @end

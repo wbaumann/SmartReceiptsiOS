@@ -11,7 +11,6 @@
 #import "FMDatabaseAdditions.h"
 #import "Database.h"
 #import "FMDatabaseQueue+QueueShortcuts.h"
-#import "SmartReceipts-Swift.h"
 
 @implementation PaymentMethodsHelper
 

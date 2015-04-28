@@ -9,6 +9,7 @@
 #import <FMDB/FMDatabase.h>
 #import "FMDatabaseQueue+QueueShortcuts.h"
 #import "Constants.h"
+#import "FMDatabaseAdditions.h"
 
 @implementation FMDatabaseQueue (QueueShortcuts)
 
@@ -24,6 +25,20 @@
 
 - (BOOL)executeUpdateWithStatementComponents:(NSArray *)components {
     return [self executeUpdate:[components componentsJoinedByString:@""]];
+}
+
+- (NSUInteger)databaseVersion {
+    __block NSUInteger version = 0;
+    [self inDatabase:^(FMDatabase *db) {
+        version = (NSUInteger) [db intForQuery:@"PRAGMA user_version"];
+    }];
+    return version;
+}
+
+- (void)setDatabaseVersion:(NSUInteger)version {
+    [self inDatabase:^(FMDatabase *db) {
+        [db executeUpdate:[NSString stringWithFormat:@"PRAGMA user_version = %d", version]];
+    }];
 }
 
 @end
