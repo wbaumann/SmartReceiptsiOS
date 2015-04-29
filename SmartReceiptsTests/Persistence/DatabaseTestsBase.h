@@ -6,10 +6,13 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+@class FMDatabaseQueue;
+
 @interface DatabaseTestsBase : XCTestCase
 
 @property (nonatomic, copy) NSString *testDBPath;
+@property (nonatomic, strong) FMDatabaseQueue *db;
 
-- (NSString *)generateTestDBPath;
+- (void)deleteTestDatabase;
 
 @end

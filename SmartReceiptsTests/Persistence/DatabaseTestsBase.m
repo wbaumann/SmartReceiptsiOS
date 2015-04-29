@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import <FMDB/FMDatabaseQueue.h>
 #import "DatabaseTestsBase.h"
 
 @implementation DatabaseTestsBase
@@ -17,13 +18,18 @@
 }
 
 - (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.testDBPath = self.generateTestDBPath;
+    self.db = [FMDatabaseQueue databaseQueueWithPath:self.testDBPath];
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
+    [self deleteTestDatabase];
+}
+
+- (void)deleteTestDatabase {
+    [self.db close];
+    [self setDb:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:self.testDBPath error:nil];
 }
 
 @end

@@ -22,12 +22,9 @@
 @implementation DatabaseMigrationTest
 
 - (void)setUp {
-    self.testDBPath = [self generateTestDBPath];
-    self.referenceDBPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"receipts_at_v11" ofType:@"db"];
-}
+    [super setUp];
 
-- (void)tearDown {
-    [[NSFileManager defaultManager] removeItemAtPath:self.testDBPath error:nil];
+    self.referenceDBPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"receipts_at_v11" ofType:@"db"];
 }
 
 - (void)testCreatedDatabaseMigratedToVersion13 {
@@ -42,6 +39,8 @@
 }
 
 - (void)testReferenceDatabaseMigratedFromVersion11ToVersion13 {
+    [self deleteTestDatabase];
+
     NSError *copyError = nil;
     [[NSFileManager defaultManager] copyItemAtPath:self.referenceDBPath toPath:self.testDBPath error:&copyError];
     XCTAssertNil(copyError);

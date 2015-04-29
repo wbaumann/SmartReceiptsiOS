@@ -18,21 +18,14 @@
 
 @interface DatabaseCreateAtVersion11Test : DatabaseTestsBase
 
-@property (nonatomic, strong) FMDatabaseQueue *db;
-
 @end
 
 @implementation DatabaseCreateAtVersion11Test
 
 - (void)setUp {
-    self.testDBPath = [self generateTestDBPath];
-    self.db = [FMDatabaseQueue databaseQueueWithPath:self.testDBPath];
+    [super setUp];
     DatabaseMigration *migration = [[DatabaseCreateAtVersion11 alloc] init];
     [migration migrate:self.db];
-}
-
-- (void)tearDown {
-    [[NSFileManager defaultManager] removeItemAtPath:self.testDBPath error:nil];
 }
 
 - (void)testSameStructureDatabaseWasGenerated {
