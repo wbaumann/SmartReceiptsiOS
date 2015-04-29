@@ -7,12 +7,8 @@
 //
 
 #import "WBDB.h"
-#import "FMDatabase.h"
-#import "FMDatabaseQueue.h"
-
 #import "WBFileManager.h"
-
-static const int ANDROID_DATABASE_VERSION = 11;
+#import "DatabaseMigration.h"
 
 static FMDatabaseQueue* databaseQueue = nil;
 
@@ -52,8 +48,6 @@ static WBColumnsHelper* pdfColumnsHelper;
 +(BOOL) open {
     NSString *dbPath = [WBFileManager pathInDocuments:@"receipts.db"];
     
-    BOOL existed = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
-    
     FMDatabaseQueue *db = [FMDatabaseQueue databaseQueueWithPath:dbPath];
     
     if (!db) {
@@ -69,157 +63,38 @@ static WBColumnsHelper* pdfColumnsHelper;
         csvColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_CSV]];
         pdfColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_PDF]];
     }
-    
-    if (!existed) {
-        NSLog(@"Create new database");
-        
-        // Android related settings in sqlite db
-        if (![WBDB setupAndroidDatabaseVersion]) {
-            NSLog(@"Failed to set user_version");
-            return NO;
-        } else {
-            NSLog(@"Set database version to %d", ANDROID_DATABASE_VERSION);
-        }
-        
-        if (![WBDB setupAndroidMetadataTable]) {
-            NSLog(@"Failed to set up android metadata");
-            return NO;
-        } else {
-            NSLog(@"Set up android metadata");
-        }
-        
-        if ([WBDB createAllTables]) {
-            NSLog(@"Created tables");
-        } else {
-            NSLog(@"Error while creating tables");
-            return NO;
-        }
-        
-        if ([WBDB insertDefaultValues]) {
-            NSLog(@"Inserted default tables");
-        } else {
-            NSLog(@"Error while inserting default values");
-            return NO;
-        }
-    }
-    
-    return YES;
+
+    return [DatabaseMigration migrateDatabase:db];
 }
 
-+(BOOL) createAllTables{
-    NSLog(@"Create tables");
-    return [tripsHelper createTable]
-    && [receiptsHelper createTable]
-    && [categoriesHelper createTable]
-    && [csvColumnsHelper createTable]
-    && [pdfColumnsHelper createTable];
-}
-
-+(BOOL) insertDefaultValues {
-    NSLog(@"Insert default values");
-    
-    if (![self insertDefaultCategories]) {
-        NSLog(@"Error while inserting default categories");
-        return false;
-    }
-    
-    if (![self insertDefaultColumns]) {
-        NSLog(@"Error while inserting default columns");
-        return false;
-    }
-    
-    return true;
-}
-
-+(BOOL) insertDefaultCategories {
-    NSLog(@"Insert default categories");
-    
-    // categories are localized because they are custom and red from db anyway
-    NSArray* cats = @[
-                      NSLocalizedString(@"<Category>", nil), NSLocalizedString(@"NUL", nil), //
-                      NSLocalizedString(@"Airfare", nil), NSLocalizedString(@"AIRP", nil), //
-                      NSLocalizedString(@"Breakfast", nil), NSLocalizedString(@"BRFT", nil), //
-                      NSLocalizedString(@"Dinner", nil), NSLocalizedString(@"DINN", nil), //
-                      NSLocalizedString(@"Entertainment", nil), NSLocalizedString(@"ENT", nil), //
-                      NSLocalizedString(@"Gasoline", nil), NSLocalizedString(@"GAS", nil), //
-                      NSLocalizedString(@"Gift", nil), NSLocalizedString(@"GIFT", nil), //
-                      NSLocalizedString(@"Hotel", nil), NSLocalizedString(@"HTL", nil), //
-                      NSLocalizedString(@"Laundry", nil), NSLocalizedString(@"LAUN", nil), //
-                      NSLocalizedString(@"Lunch", nil), NSLocalizedString(@"LNCH", nil), //
-                      NSLocalizedString(@"Other", nil), NSLocalizedString(@"MISC", nil), //
-                      NSLocalizedString(@"Parking/Tolls", nil), NSLocalizedString(@"PARK", nil), //
-                      NSLocalizedString(@"Postage/Shipping", nil), NSLocalizedString(@"POST", nil), //
-                      NSLocalizedString(@"Car Rental", nil), NSLocalizedString(@"RCAR", nil), //
-                      NSLocalizedString(@"Taxi/Bus", nil), NSLocalizedString(@"TAXI", nil), //
-                      NSLocalizedString(@"Telephone/Fax", nil), NSLocalizedString(@"TELE", nil), //
-                      NSLocalizedString(@"Tip", nil), NSLocalizedString(@"TIP", nil), //
-                      NSLocalizedString(@"Train", nil), NSLocalizedString(@"TRN", nil), //
-                      NSLocalizedString(@"Books/Periodicals", nil), NSLocalizedString(@"ZBKP", nil), //
-                      NSLocalizedString(@"Cell Phone", nil), NSLocalizedString(@"ZCEL", nil), //
-                      NSLocalizedString(@"Dues/Subscriptions", nil), NSLocalizedString(@"ZDUE", nil), //
-                      NSLocalizedString(@"Meals (Justified)", nil), NSLocalizedString(@"ZMEO", nil), //
-                      NSLocalizedString(@"Stationery/Stations", nil), NSLocalizedString(@"ZSTS", nil), //
-                      NSLocalizedString(@"Training Fees", nil), NSLocalizedString(@"ZTRN", nil), //
-                      ];
-    
-    for (int i=0; i<cats.count-1; i+=2) {
-        if (![categoriesHelper insertWithName:[cats objectAtIndex:i] code:[cats objectAtIndex:i+1]]) {
-            return false;
-        }
-    }
-    
-    return true;
-}
-
-+(BOOL) insertDefaultColumns {
++ (BOOL)insertDefaultColumnsIntoQueue:(FMDatabaseQueue *)queue {
     NSLog(@"Insert default CSV columns");
-    
-    BOOL success = [csvColumnsHelper insertWithColumnName:WBColumnNameCategoryCode]
-    && [csvColumnsHelper insertWithColumnName:WBColumnNameName]
-    && [csvColumnsHelper insertWithColumnName:WBColumnNamePrice]
-    && [csvColumnsHelper insertWithColumnName:WBColumnNameCurrency]
-    && [csvColumnsHelper insertWithColumnName:WBColumnNameDate];
-    
+
+    BOOL success = [csvColumnsHelper insertWithColumnName:WBColumnNameCategoryCode intoQueue:queue]
+            && [csvColumnsHelper insertWithColumnName:WBColumnNameName intoQueue:queue]
+            && [csvColumnsHelper insertWithColumnName:WBColumnNamePrice intoQueue:queue]
+            && [csvColumnsHelper insertWithColumnName:WBColumnNameCurrency intoQueue:queue]
+            && [csvColumnsHelper insertWithColumnName:WBColumnNameDate intoQueue:queue];
+
     if (!success) {
         NSLog(@"Error while inserting CSV columns");
         return false;
     }
-    
+
     NSLog(@"Insert default PDF columns");
-    success = [pdfColumnsHelper insertWithColumnName:WBColumnNameName]
-    && [pdfColumnsHelper insertWithColumnName:WBColumnNamePrice]
-    && [pdfColumnsHelper insertWithColumnName:WBColumnNameDate]
-    && [pdfColumnsHelper insertWithColumnName:WBColumnNameCategoryName]
-    && [pdfColumnsHelper insertWithColumnName:WBColumnNameExpensable]
-    && [pdfColumnsHelper insertWithColumnName:WBColumnNamePictured];
-    
+    success = [pdfColumnsHelper insertWithColumnName:WBColumnNameName intoQueue:queue]
+            && [pdfColumnsHelper insertWithColumnName:WBColumnNamePrice intoQueue:queue]
+            && [pdfColumnsHelper insertWithColumnName:WBColumnNameDate intoQueue:queue]
+            && [pdfColumnsHelper insertWithColumnName:WBColumnNameCategoryName intoQueue:queue]
+            && [pdfColumnsHelper insertWithColumnName:WBColumnNameExpensable intoQueue:queue]
+            && [pdfColumnsHelper insertWithColumnName:WBColumnNamePictured intoQueue:queue];
+
     if (!success) {
         NSLog(@"Error while inserting PDF columns");
         return false;
     }
-    
+
     return true;
-}
-
-+(BOOL) setupAndroidDatabaseVersion {
-    __block BOOL result;
-    [databaseQueue inDatabase:^(FMDatabase* database){
-        NSString *q = [NSString stringWithFormat:@"PRAGMA user_version = %d", ANDROID_DATABASE_VERSION];
-        result = [database executeUpdate:q];
-    }];
-    return result;
-}
-
-+(BOOL) setupAndroidMetadataTable {
-    __block BOOL result;
-    [databaseQueue inDatabase:^(FMDatabase* database){
-        result = [database executeUpdate:@"CREATE TABLE android_metadata (locale TEXT)"];
-        if (result) {
-            // Android need at least 1 locale to not crush, let it be en_US
-            result = [database executeUpdate:@"INSERT INTO \"android_metadata\" VALUES('en_US')"];
-        }
-    }];
-    return result;
 }
 
 +(BOOL) mergeWithDatabaseAtPath:(NSString*) dbPath overwrite:(BOOL) overwrite {

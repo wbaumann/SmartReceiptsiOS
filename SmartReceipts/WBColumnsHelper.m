@@ -38,16 +38,20 @@ static NSString * const COLUMN_TYPE = @"type";
     return self;
 }
 
-- (BOOL) createTable {
+- (BOOL)createTable {
+    return [WBColumnsHelper createTableInQueue:_databaseQueue withTableName:_tableName];
+}
+
++ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue withTableName:(NSString *)tableName {
     NSString* query = [@[
-                         @"CREATE TABLE " , _tableName , @" ("
+                         @"CREATE TABLE " , tableName , @" ("
                          , COLUMN_ID , @" INTEGER PRIMARY KEY AUTOINCREMENT, "
                          , COLUMN_TYPE , @" TEXT"
                          , @");"
                          ] componentsJoinedByString:@""];
     
     __block BOOL result;
-    [_databaseQueue inDatabase:^(FMDatabase* database){
+    [queue inDatabase:^(FMDatabase* database){
         result = [database executeUpdate:query];
     }];
     return result;
@@ -82,9 +86,13 @@ static NSString * const COLUMN_TYPE = @"type";
     return [database executeUpdate:q, columnName];
 }
 
-- (BOOL) insertWithColumnName:(NSString*) columnName {
+- (BOOL)insertWithColumnName:(NSString *)columnName {
+    return [self insertWithColumnName:columnName intoQueue:_databaseQueue];
+}
+
+- (BOOL)insertWithColumnName:(NSString *)columnName intoQueue:(FMDatabaseQueue *)queue {
     __block BOOL result;
-    [_databaseQueue inDatabase:^(FMDatabase* database){
+    [queue inDatabase:^(FMDatabase *database) {
         result = [self insertWithColumnName:columnName inDatabase:database];
     }];
     return result;

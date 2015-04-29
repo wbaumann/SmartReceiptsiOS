@@ -49,29 +49,32 @@ static NSString * const NO_DATA = @"null";
     return self;
 }
 
--(BOOL) createTable {
-    
-    NSString* query = [@[
-                         @"CREATE TABLE ", TABLE_NAME, @" (",
-                         COLUMN_NAME , @" TEXT PRIMARY KEY, ",
-                         COLUMN_FROM , @" DATE, ",
-                         COLUMN_TO , @" DATE, ",
-                         COLUMN_FROM_TIMEZONE , @" TEXT, ",
-                         COLUMN_TO_TIMEZONE , @" TEXT, ",
-                         COLUMN_PRICE , @" DECIMAL(10, 2) DEFAULT 0.00, ",
-                         COLUMN_MILEAGE , @" DECIMAL(10, 2) DEFAULT 0.00, ",
-                         COLUMN_COMMENT , @" TEXT, ",
-                         COLUMN_DEFAULT_CURRENCY , @" TEXT",
-                         @");"
-                         ] componentsJoinedByString:@""];
-    
+- (BOOL)createTable {
+    _cachedCount = -1;
+
+    return [WBTripsHelper createTableInQueue:_databaseQueue];
+}
+
++ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue {
+    NSString *query = [@[
+            @"CREATE TABLE ", TABLE_NAME, @" (",
+            COLUMN_NAME, @" TEXT PRIMARY KEY, ",
+            COLUMN_FROM, @" DATE, ",
+            COLUMN_TO, @" DATE, ",
+            COLUMN_FROM_TIMEZONE, @" TEXT, ",
+            COLUMN_TO_TIMEZONE, @" TEXT, ",
+            COLUMN_PRICE, @" DECIMAL(10, 2) DEFAULT 0.00, ",
+            COLUMN_MILEAGE, @" DECIMAL(10, 2) DEFAULT 0.00, ",
+            COLUMN_COMMENT, @" TEXT, ",
+            COLUMN_DEFAULT_CURRENCY, @" TEXT",
+            @");"
+    ] componentsJoinedByString:@""];
+
     __block BOOL result;
-    [_databaseQueue inDatabase:^(FMDatabase* database){
+    [queue inDatabase:^(FMDatabase *database) {
         result = [database executeUpdate:query];
     }];
-    
-    _cachedCount = -1;
-    
+
     return result;
 }
 

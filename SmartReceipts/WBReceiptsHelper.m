@@ -55,7 +55,10 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
 }
 
 -(BOOL) createTable {
-    
+    return [WBReceiptsHelper createTableInQueue:_databaseQueue];
+}
+
++ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue {
     NSString* query = [@[
                          @"CREATE TABLE " ,TABLE_NAME , @" ("
                          ,COLUMN_ID , @" INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -77,9 +80,9 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
                          ,COLUMN_EXTRA_EDITTEXT_3 , @" TEXT"
                          , @");"
                          ] componentsJoinedByString:@""];
-    
+
     __block BOOL result;
-    [_databaseQueue inDatabase:^(FMDatabase* database){
+    [queue inDatabase:^(FMDatabase* database){
         result = [database executeUpdate:query];
     }];
     return result;

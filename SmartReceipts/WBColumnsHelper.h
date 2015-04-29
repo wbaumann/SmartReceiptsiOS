@@ -21,6 +21,7 @@
 
 -(NSArray*) selectAll;
 -(BOOL) insertWithColumnName:(NSString*) columnName;
+-(BOOL) insertWithColumnName:(NSString*) columnName intoQueue:(FMDatabaseQueue *)queue;
 -(BOOL) updateWithIndex:(int) index name:(NSString*) name;
 -(BOOL) deleteWithIndex:(int) index;
 

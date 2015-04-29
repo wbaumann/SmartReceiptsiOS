@@ -7,6 +7,7 @@
 //
 
 #import "WBCategoriesHelper.h"
+#import "Database.h"
 
 static NSString * const TABLE_NAME = @"categories";
 static NSString * const COLUMN_NAME = @"name";
@@ -32,7 +33,10 @@ static NSString * const COLUMN_BREAKDOWN = @"breakdown";
 }
 
 - (BOOL) createTable {
-    
+    return [WBCategoriesHelper createTableInQueue:_databaseQueue];
+}
+
++ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue {
     NSString* query = [@[
                          @"CREATE TABLE " , TABLE_NAME , @" ("
                          , COLUMN_NAME , @" TEXT PRIMARY KEY, "
@@ -40,9 +44,9 @@ static NSString * const COLUMN_BREAKDOWN = @"breakdown";
                          , COLUMN_BREAKDOWN , @" BOOLEAN DEFAULT 1"
                          , @");"
                          ] componentsJoinedByString:@""];
-    
+
     __block BOOL result;
-    [_databaseQueue inDatabase:^(FMDatabase* database){
+    [queue inDatabase:^(FMDatabase *database) {
         result = [database executeUpdate:query];
     }];
     return result;
@@ -87,14 +91,19 @@ static NSString * const COLUMN_BREAKDOWN = @"breakdown";
     return categories;
 }
 
-- (BOOL) insertWithName:(NSString*) name code:(NSString*) code {
-    NSString *q = [NSString stringWithFormat:@"INSERT INTO %@ (%@,%@) VALUES (?,?)", TABLE_NAME, COLUMN_NAME, COLUMN_CODE];
-    
+- (BOOL)insertWithName:(NSString *)name code:(NSString *)code {
+    _cachedCategories = nil;
+    return [WBCategoriesHelper insertWithName:name code:code intoQueue:_databaseQueue];
+}
+
++ (BOOL)insertWithName:(NSString *)name code:(NSString *)code intoQueue:(FMDatabaseQueue *)queue {
+    NSString *q = [NSString stringWithFormat:@"INSERT INTO %@ (%@,%@) VALUES (?,?)", CategoriesTable.TABLE_NAME, CategoriesTable.COLUMN_NAME, CategoriesTable.COLUMN_CODE];
+
     __block BOOL result;
-    [_databaseQueue inDatabase:^(FMDatabase* database){
-        _cachedCategories = nil;
+    [queue inDatabase:^(FMDatabase *database) {
         result = [database executeUpdate:q, name, code];
     }];
+
     return result;
 }
 
