@@ -188,8 +188,8 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
 
 - (NSIndexPath*)offsetIndexPath:(NSIndexPath*)indexPath
 {
-    int offsetSection = indexPath.section; // Also offset section if you intend to hide whole sections
-    int offsetRow = indexPath.row + [self numberOfHiddenCellsAbove:indexPath.row];
+    NSInteger offsetSection = indexPath.section; // Also offset section if you intend to hide whole sections
+    NSInteger offsetRow = indexPath.row + [self numberOfHiddenCellsAbove:indexPath.row];
 
     return [NSIndexPath indexPathForRow:offsetRow inSection:offsetSection];
 }

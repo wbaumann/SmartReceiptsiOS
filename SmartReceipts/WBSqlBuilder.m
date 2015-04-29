@@ -75,9 +75,9 @@
     return[a componentsJoinedByString:@", "];
 }
 
-+(NSString*) questionMarksStringForInsertWithColumns:(NSArray*) columns {
-    NSMutableArray *a = @[].mutableCopy;
-    for (id i in columns) {
++ (NSString *)questionMarksStringForInsertWithColumns:(NSArray *)columns {
+    NSMutableArray *a = [NSMutableArray array];
+    while (a.count < columns.count) {
         [a addObject:@"?"];
     }
     return [a componentsJoinedByString:@","];

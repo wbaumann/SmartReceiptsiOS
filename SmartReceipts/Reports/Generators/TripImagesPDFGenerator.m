@@ -113,7 +113,7 @@
     }
 
     @autoreleasepool {
-        for (int i = 0; i < CGPDFDocumentGetNumberOfPages(pdf); ++i) {
+        for (NSUInteger i = 0; i < CGPDFDocumentGetNumberOfPages(pdf); ++i) {
             CGPDFPageRef page = CGPDFDocumentGetPage(pdf, i + 1);
             [self.pdfDrawer drawFullPagePDFPage:page withLabel:label];
         }

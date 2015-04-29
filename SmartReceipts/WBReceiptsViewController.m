@@ -126,7 +126,7 @@ static NSString *CellIdentifier = @"Cell";
     
     UILabel *priceField = _protoCell.priceField;
     
-    for (int i = 0; i < [_receipts count]; ++i) {
+    for (NSUInteger i = 0; i < [_receipts count]; ++i) {
         NSString *str = [[_receipts receiptAtIndex:i] priceWithCurrencyFormatted];
         
         // dumb, but works better than calculating bounds for attributed text because dynamically includes paddings etc.

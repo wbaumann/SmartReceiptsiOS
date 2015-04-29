@@ -42,17 +42,17 @@
 
 + (BOOL)runMigrations:(NSArray *)migrations onQueue:(FMDatabaseQueue *)queue {
     NSUInteger currentVersion = [queue databaseVersion];
-    SRLog(@"Current version: %d", currentVersion);
+    SRLog(@"Current version: %lu", currentVersion);
 
     for (DatabaseMigration *migration in migrations) {
         if (currentVersion >= migration.version) {
-            SRLog(@"DB at version %d, will skip migration to %d", currentVersion, migration.version);
+            SRLog(@"DB at version %lu, will skip migration to %lu", currentVersion, migration.version);
             continue;
         }
 
-        SRLog(@"Migrate to version %d", migration.version);
+        SRLog(@"Migrate to version %lu", migration.version);
         if (![migration migrate:queue]) {
-            SRLog(@"Failed on migration %d", migration.version);
+            SRLog(@"Failed on migration %lu", migration.version);
             return NO;
         }
 

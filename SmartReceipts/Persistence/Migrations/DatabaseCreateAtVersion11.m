@@ -101,7 +101,7 @@
             NSLocalizedString(@"Training Fees", nil), NSLocalizedString(@"ZTRN", nil), //
     ];
 
-    for (int i = 0; i < cats.count - 1; i += 2) {
+    for (NSUInteger i = 0; i < cats.count - 1; i += 2) {
         if (![WBCategoriesHelper insertWithName:[cats objectAtIndex:i] code:[cats objectAtIndex:i + 1] intoQueue:queue]) {
             return NO;
         }
