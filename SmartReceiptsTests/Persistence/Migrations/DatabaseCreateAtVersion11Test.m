@@ -16,6 +16,12 @@
 #import "FMDatabaseQueue+QueueShortcuts.h"
 #import "Database.h"
 
+@interface DatabaseMigration (TestExpose)
+
++ (BOOL)runMigrations:(NSArray *)migrations onQueue:(FMDatabaseQueue *)queue;
+
+@end
+
 @interface DatabaseCreateAtVersion11Test : DatabaseTestsBase
 
 @end
@@ -25,7 +31,7 @@
 - (void)setUp {
     [super setUp];
     DatabaseMigration *migration = [[DatabaseCreateAtVersion11 alloc] init];
-    [migration migrate:self.db];
+    [DatabaseMigration runMigrations:@[migration] onQueue:self.db];
 }
 
 - (void)testSameStructureDatabaseWasGenerated {

@@ -140,15 +140,6 @@ static WBColumnsHelper* pdfColumnsHelper;
     return true;
 }
 
-+ (BOOL)setupAndroidDatabaseVersionInQueue:(FMDatabaseQueue *)queue {
-    __block BOOL result;
-    [queue inDatabase:^(FMDatabase *database) {
-        NSString *q = [NSString stringWithFormat:@"PRAGMA user_version = %d", ANDROID_DATABASE_VERSION];
-        result = [database executeUpdate:q];
-    }];
-    return result;
-}
-
 + (BOOL)setupAndroidMetadataTableInQueue:(FMDatabaseQueue *)queue {
     __block BOOL result;
     [queue inDatabase:^(FMDatabase *database) {

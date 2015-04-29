@@ -50,8 +50,7 @@
 }
 
 - (BOOL)migrate:(FMDatabaseQueue *)databaseQueue {
-    return [WBDB setupAndroidDatabaseVersionInQueue:databaseQueue]
-            && [WBDB setupAndroidMetadataTableInQueue:databaseQueue]
+    return [WBDB setupAndroidMetadataTableInQueue:databaseQueue]
             && [WBTripsHelper createTableInQueue:databaseQueue]
             && [WBReceiptsHelper createTableInQueue:databaseQueue]
             && [WBCategoriesHelper createTableInQueue:databaseQueue]
