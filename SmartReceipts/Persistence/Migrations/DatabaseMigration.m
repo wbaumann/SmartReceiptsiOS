@@ -37,7 +37,7 @@
 
 + (BOOL)migrateDatabase:(FMDatabaseQueue *)databaseQueue {
     NSUInteger currentVersion = [databaseQueue databaseVersion];
-    NSLog(@"Current version: %d", currentVersion);
+    SRLog(@"Current version: %d", currentVersion);
 
     NSArray *migrations = [self allMigrations];
     for (DatabaseMigration *migration in migrations) {

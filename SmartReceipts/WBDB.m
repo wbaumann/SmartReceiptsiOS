@@ -7,8 +7,6 @@
 //
 
 #import "WBDB.h"
-#import "FMDatabase.h"
-#import "FMDatabaseQueue.h"
 #import "WBFileManager.h"
 #import "DatabaseMigration.h"
 #import "Constants.h"
@@ -53,8 +51,6 @@ static WBColumnsHelper* pdfColumnsHelper;
 +(BOOL) open {
     NSString *dbPath = [WBFileManager pathInDocuments:@"receipts.db"];
     
-    BOOL existed = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
-    
     FMDatabaseQueue *db = [FMDatabaseQueue databaseQueueWithPath:dbPath];
     
     if (!db) {
@@ -71,71 +67,7 @@ static WBColumnsHelper* pdfColumnsHelper;
         pdfColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_PDF]];
     }
 
-    [DatabaseMigration migrateDatabase:db];
-
-    if (!existed) {
-        NSLog(@"Create new database");
-        
-        // Android related settings in sqlite db
-        if (![WBDB setupAndroidDatabaseVersionInQueue:databaseQueue]) {
-            NSLog(@"Failed to set user_version");
-            return NO;
-        } else {
-            NSLog(@"Set database version to %d", ANDROID_DATABASE_VERSION);
-        }
-        
-        if (![WBDB setupAndroidMetadataTableInQueue:databaseQueue]) {
-            NSLog(@"Failed to set up android metadata");
-            return NO;
-        } else {
-            NSLog(@"Set up android metadata");
-        }
-        
-        if ([WBDB createAllTables]) {
-            NSLog(@"Created tables");
-        } else {
-            NSLog(@"Error while creating tables");
-            return NO;
-        }
-        
-        if ([WBDB insertDefaultValues]) {
-            NSLog(@"Inserted default tables");
-        } else {
-            NSLog(@"Error while inserting default values");
-            return NO;
-        }
-    }
-    
-    return YES;
-}
-
-+ (BOOL)createAllTables {
-    NSLog(@"Create tables");
-    return [tripsHelper createTable]
-            && [receiptsHelper createTable]
-            && [categoriesHelper createTable]
-            && [csvColumnsHelper createTable]
-            && [pdfColumnsHelper createTable];
-}
-
-+(BOOL) insertDefaultValues {
-    NSLog(@"Insert default values");
-    
-    if (![self insertDefaultCategories]) {
-        NSLog(@"Error while inserting default categories");
-        return false;
-    }
-    
-    if (![self insertDefaultColumns]) {
-        NSLog(@"Error while inserting default columns");
-        return false;
-    }
-    
-    return true;
-}
-
-+ (BOOL)insertDefaultCategories {
-    return [self insertDefaultCategoriesIntoQueue:databaseQueue];
+    return [DatabaseMigration migrateDatabase:db];
 }
 
 + (BOOL)insertDefaultCategoriesIntoQueue:(FMDatabaseQueue *)queue {
@@ -176,10 +108,6 @@ static WBColumnsHelper* pdfColumnsHelper;
     }
     
     return YES;
-}
-
-+ (BOOL)insertDefaultColumns {
-    return [self insertDefaultColumnsIntoQueue:databaseQueue];
 }
 
 + (BOOL)insertDefaultColumnsIntoQueue:(FMDatabaseQueue *)queue {
