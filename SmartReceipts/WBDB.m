@@ -133,7 +133,6 @@ static WBColumnsHelper* pdfColumnsHelper;
         return false;
     }
     
-#warning REVIEW: should we update trip prices on end? - there is no step like this on Android
     
     NSArray *trips = [[WBDB trips] selectAllInDatabase:currDB];
     for (WBTrip* trip in trips) {

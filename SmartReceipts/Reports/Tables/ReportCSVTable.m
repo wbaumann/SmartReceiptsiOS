@@ -17,7 +17,6 @@ static NSString *escapedCSV(NSString* csv) {
         return @"";
     }
 
-#warning FIXME: on Android is csv.replace(QUOTE, ESCAPED_QUOTE); that means that result of replacement is not saved
 
     if ([csv rangeOfString:QUOTE].location != NSNotFound){
         csv = [csv stringByReplacingOccurrencesOfString:QUOTE withString:ESCAPED_QUOTE];
