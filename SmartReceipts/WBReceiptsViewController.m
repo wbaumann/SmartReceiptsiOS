@@ -26,8 +26,10 @@
 
 #import "WBAppDelegate.h"
 #import "WBImagePicker.h"
+#import "TripDistancesViewController.h"
 
 static NSString *CellIdentifier = @"Cell";
+static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
 @interface WBReceiptsViewController ()
 {
@@ -326,6 +328,9 @@ static NSString *CellIdentifier = @"Cell";
         WBGenerateViewController* vc = (WBGenerateViewController*)[[segue destinationViewController] topViewController];
         
         [vc setReceipts:[_receipts receiptsArrayCopy] forTrip:self.trip andViewController:self];
+    } else if ([PresentTripDistancesSegue isEqualToString:segue.identifier]) {
+        TripDistancesViewController *controller = (TripDistancesViewController *) [[segue destinationViewController] topViewController];
+        [controller setTrip:self.trip];
     }
 }
 

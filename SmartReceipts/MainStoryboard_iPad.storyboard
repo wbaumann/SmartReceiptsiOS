@@ -217,7 +217,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="A25-iQ-VRl"/>
                         <barButtonItem image="wheel.png" id="5LZ-9J-JcM">
                             <connections>
-                                <action selector="actionDistance:" destination="XIL-BS-K8W" id="3cO-xA-9Nr"/>
+                                <segue destination="qxL-dM-7MZ" kind="modal" identifier="PresentTripDistancesSegue" modalPresentationStyle="formSheet" modalTransitionStyle="crossDissolve" id="LyW-wA-Xfq"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="6Sf-ey-9E4"/>
@@ -1870,6 +1870,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMu-CQ-3j1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="211" y="-2423"/>
+        </scene>
+        <!--Distances-->
+        <scene sceneID="6gh-cH-qy3">
+            <objects>
+                <tableViewController id="yRQ-ct-dta" customClass="TripDistancesViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0BR-Un-5hy">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="yRQ-ct-dta" id="be2-x4-pdZ"/>
+                            <outlet property="delegate" destination="yRQ-ct-dta" id="RFn-yo-sAn"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Distances" id="CL1-J5-bJd">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="cLi-ag-fhf">
+                            <connections>
+                                <action selector="done" destination="yRQ-ct-dta" id="IU8-4M-xSi"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8UK-xX-lMc">
+                            <connections>
+                                <segue destination="yTB-BU-tva" kind="push" identifier="PushDistanceAddViewControllerSegue" id="LyS-sb-cMl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gay-kZ-PPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2550" y="1973"/>
+        </scene>
+        <!--Add Distance View Controller-->
+        <scene sceneID="ocf-8K-caK">
+            <objects>
+                <tableViewController id="yTB-BU-tva" customClass="AddDistanceViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Tem-0j-BUg">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="yTB-BU-tva" id="sKI-dF-KVQ"/>
+                            <outlet property="delegate" destination="yTB-BU-tva" id="00n-FE-FV1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="bsZ-vz-r4U">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gro-Uc-HKa">
+                            <connections>
+                                <action selector="saveDistance" destination="yTB-BU-tva" id="U0v-BM-WhL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z9R-VT-Ef4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2688" y="2863"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EBh-0z-aIg">
+            <objects>
+                <navigationController id="qxL-dM-7MZ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tuG-9N-UGf">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yRQ-ct-dta" kind="relationship" relationship="rootViewController" id="4hJ-dc-t5S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qgf-dj-TCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1769" y="1044"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bja-UG-oUO">

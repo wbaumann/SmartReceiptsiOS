@@ -217,7 +217,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="A25-iQ-VRl"/>
                         <barButtonItem image="wheel.png" id="5LZ-9J-JcM">
                             <connections>
-                                <action selector="actionDistance:" destination="XIL-BS-K8W" id="3cO-xA-9Nr"/>
+                                <segue destination="4uL-r9-cZ2" kind="modal" identifier="PresentTripDistancesSegue" id="5Km-y5-ncR"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="6Sf-ey-9E4"/>
@@ -235,6 +235,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFT-qn-acT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2445" y="-65"/>
+        </scene>
+        <!--Distances-->
+        <scene sceneID="r3O-ll-UTO">
+            <objects>
+                <tableViewController id="NlZ-U8-dmL" customClass="TripDistancesViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="zgz-Lo-xhM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="NlZ-U8-dmL" id="pvs-bc-23Q"/>
+                            <outlet property="delegate" destination="NlZ-U8-dmL" id="Sbo-vP-AYK"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Distances" id="a2f-Av-Nk0">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="opw-uY-sD7">
+                            <connections>
+                                <action selector="done" destination="NlZ-U8-dmL" id="Xqa-1H-Jce"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wl2-gK-TJJ">
+                            <connections>
+                                <segue destination="nx9-eb-Qoz" kind="push" identifier="PushDistanceAddViewControllerSegue" id="jPU-eO-MTe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Stl-Er-C9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2834" y="1267"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1PQ-uK-jZ0">
+            <objects>
+                <navigationController id="4uL-r9-cZ2" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9It-eF-CsA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="NlZ-U8-dmL" kind="relationship" relationship="rootViewController" id="oQi-ey-pqU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ab-23-pHW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2410" y="856"/>
         </scene>
         <!--New Receipt-->
         <scene sceneID="wvb-zr-7OQ">
@@ -1954,6 +2000,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XwQ-Ws-yw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5115" y="1839"/>
+        </scene>
+        <!--Add Distance View Controller-->
+        <scene sceneID="7Qt-vE-mMd">
+            <objects>
+                <tableViewController id="nx9-eb-Qoz" customClass="AddDistanceViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Unl-YA-skm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <outlet property="dataSource" destination="nx9-eb-Qoz" id="7N3-gH-5It"/>
+                            <outlet property="delegate" destination="nx9-eb-Qoz" id="Och-iW-MkI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="2eT-50-vpJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="1eh-8K-t45">
+                            <connections>
+                                <action selector="saveDistance" destination="nx9-eb-Qoz" id="gFX-aZ-cGM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hPn-ss-hlg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2921" y="2013"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eFW-CK-kDo">
