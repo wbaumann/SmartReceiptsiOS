@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class InputCellsSection;
+
 @interface InputCellsViewController : UITableViewController
+
+- (void)addSectionForPresentation:(InputCellsSection *)section;
 
 @end

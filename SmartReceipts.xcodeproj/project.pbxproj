@@ -101,8 +101,21 @@
 		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
 		EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */; };
+		EA4C5CBA1AF2864B0083FDD7 /* TextEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CB81AF2864B0083FDD7 /* TextEntryCell.m */; };
+		EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CBD1AF2866E0083FDD7 /* UIView+LoadHelpers.m */; };
+		EA4C5CC11AF286990083FDD7 /* InputCellsSection.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CC01AF286990083FDD7 /* InputCellsSection.m */; };
+		EA4C5CC51AF287330083FDD7 /* TitledTextEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CC31AF287330083FDD7 /* TitledTextEntryCell.m */; };
+		EA4C5CC61AF287330083FDD7 /* TitledTextEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4C5CC41AF287330083FDD7 /* TitledTextEntryCell.xib */; };
+		EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CC81AF288570083FDD7 /* UITableViewCell+Identifier.m */; };
 		EA4DC9921AF154E000CEF1B9 /* AddDistanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DC9911AF154E000CEF1B9 /* AddDistanceViewController.m */; };
 		EA4DC9961AF1580100CEF1B9 /* InputCellsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DC9951AF1580100CEF1B9 /* InputCellsViewController.m */; };
+		EA5963E31AF2912900935344 /* PickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963E21AF2912900935344 /* PickerCell.m */; };
+		EA5963E71AF2926900935344 /* CurrencyPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963E51AF2926900935344 /* CurrencyPickerCell.m */; };
+		EA5963E81AF2926900935344 /* CurrencyPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5963E61AF2926900935344 /* CurrencyPickerCell.xib */; };
+		EA5963EC1AF2957200935344 /* NoCaretTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963EB1AF2957200935344 /* NoCaretTextField.m */; };
+		EA5963EF1AF295E800935344 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963EE1AF295E800935344 /* DatePickerCell.m */; };
+		EA5963F11AF295FF00935344 /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5963F01AF295FF00935344 /* DatePickerCell.xib */; };
+		EA5963F41AF29B1A00935344 /* UIView+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963F31AF29B1A00935344 /* UIView+Search.m */; };
 		EA69EF121AEFC7EE00276B70 /* DistancesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF111AEFC7EE00276B70 /* DistancesHelper.m */; };
 		EA69EF151AEFC81A00276B70 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF141AEFC81A00276B70 /* Database.m */; };
 		EA69EF181AEFCBB600276B70 /* PaymentMethodsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF171AEFCBB600276B70 /* PaymentMethodsHelper.m */; };
@@ -322,10 +335,33 @@
 		EA3CF09D1AE7C45C00B14B73 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		EA46678D1AE7EA1600B4E502 /* WBImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImagePicker.h; sourceTree = "<group>"; };
 		EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImagePicker.m; sourceTree = "<group>"; };
+		EA4C5CB71AF2864B0083FDD7 /* TextEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEntryCell.h; sourceTree = "<group>"; };
+		EA4C5CB81AF2864B0083FDD7 /* TextEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEntryCell.m; sourceTree = "<group>"; };
+		EA4C5CBC1AF2866E0083FDD7 /* UIView+LoadHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LoadHelpers.h"; sourceTree = "<group>"; };
+		EA4C5CBD1AF2866E0083FDD7 /* UIView+LoadHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LoadHelpers.m"; sourceTree = "<group>"; };
+		EA4C5CBF1AF286990083FDD7 /* InputCellsSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCellsSection.h; sourceTree = "<group>"; };
+		EA4C5CC01AF286990083FDD7 /* InputCellsSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCellsSection.m; sourceTree = "<group>"; };
+		EA4C5CC21AF287330083FDD7 /* TitledTextEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitledTextEntryCell.h; sourceTree = "<group>"; };
+		EA4C5CC31AF287330083FDD7 /* TitledTextEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitledTextEntryCell.m; sourceTree = "<group>"; };
+		EA4C5CC41AF287330083FDD7 /* TitledTextEntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitledTextEntryCell.xib; sourceTree = "<group>"; };
+		EA4C5CC71AF288570083FDD7 /* UITableViewCell+Identifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Identifier.h"; sourceTree = "<group>"; };
+		EA4C5CC81AF288570083FDD7 /* UITableViewCell+Identifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Identifier.m"; sourceTree = "<group>"; };
 		EA4DC9901AF154E000CEF1B9 /* AddDistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDistanceViewController.h; sourceTree = "<group>"; };
 		EA4DC9911AF154E000CEF1B9 /* AddDistanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDistanceViewController.m; sourceTree = "<group>"; };
 		EA4DC9941AF1580100CEF1B9 /* InputCellsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCellsViewController.h; sourceTree = "<group>"; };
 		EA4DC9951AF1580100CEF1B9 /* InputCellsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCellsViewController.m; sourceTree = "<group>"; };
+		EA5963E11AF2912900935344 /* PickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCell.h; sourceTree = "<group>"; };
+		EA5963E21AF2912900935344 /* PickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerCell.m; sourceTree = "<group>"; };
+		EA5963E41AF2926900935344 /* CurrencyPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyPickerCell.h; sourceTree = "<group>"; };
+		EA5963E51AF2926900935344 /* CurrencyPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyPickerCell.m; sourceTree = "<group>"; };
+		EA5963E61AF2926900935344 /* CurrencyPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrencyPickerCell.xib; sourceTree = "<group>"; };
+		EA5963EA1AF2957200935344 /* NoCaretTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoCaretTextField.h; sourceTree = "<group>"; };
+		EA5963EB1AF2957200935344 /* NoCaretTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoCaretTextField.m; sourceTree = "<group>"; };
+		EA5963ED1AF295E800935344 /* DatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerCell.h; sourceTree = "<group>"; };
+		EA5963EE1AF295E800935344 /* DatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerCell.m; sourceTree = "<group>"; };
+		EA5963F01AF295FF00935344 /* DatePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerCell.xib; sourceTree = "<group>"; };
+		EA5963F21AF29B1A00935344 /* UIView+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Search.h"; sourceTree = "<group>"; };
+		EA5963F31AF29B1A00935344 /* UIView+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Search.m"; sourceTree = "<group>"; };
 		EA69EF101AEFC7EE00276B70 /* DistancesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancesHelper.h; sourceTree = "<group>"; };
 		EA69EF111AEFC7EE00276B70 /* DistancesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancesHelper.m; sourceTree = "<group>"; };
 		EA69EF131AEFC81A00276B70 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
@@ -792,6 +828,7 @@
 				EA46678C1AE7EA0300B4E502 /* Utils */,
 				84D6719818D34E3200B704A4 /* util */,
 				EAE8F9AF1AF149B300E837E3 /* ViewControllers */,
+				EA5963E91AF2955300935344 /* Views */,
 				845E33DD18D87CB9006A506A /* views */,
 				84553A4518D09B2E0009057B /* VC */,
 				EA3CF09C1AE7C45C00B14B73 /* Constants.h */,
@@ -856,6 +893,12 @@
 				EA69EF1D1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m */,
 				EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */,
 				EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */,
+				EA4C5CC71AF288570083FDD7 /* UITableViewCell+Identifier.h */,
+				EA4C5CC81AF288570083FDD7 /* UITableViewCell+Identifier.m */,
+				EA4C5CBC1AF2866E0083FDD7 /* UIView+LoadHelpers.h */,
+				EA4C5CBD1AF2866E0083FDD7 /* UIView+LoadHelpers.m */,
+				EA5963F21AF29B1A00935344 /* UIView+Search.h */,
+				EA5963F31AF29B1A00935344 /* UIView+Search.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -872,8 +915,30 @@
 		EA4DC9931AF1578300CEF1B9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				EA5963E41AF2926900935344 /* CurrencyPickerCell.h */,
+				EA5963E51AF2926900935344 /* CurrencyPickerCell.m */,
+				EA5963E61AF2926900935344 /* CurrencyPickerCell.xib */,
+				EA5963ED1AF295E800935344 /* DatePickerCell.h */,
+				EA5963EE1AF295E800935344 /* DatePickerCell.m */,
+				EA5963F01AF295FF00935344 /* DatePickerCell.xib */,
+				EA5963E11AF2912900935344 /* PickerCell.h */,
+				EA5963E21AF2912900935344 /* PickerCell.m */,
+				EA4C5CB71AF2864B0083FDD7 /* TextEntryCell.h */,
+				EA4C5CB81AF2864B0083FDD7 /* TextEntryCell.m */,
+				EA4C5CC21AF287330083FDD7 /* TitledTextEntryCell.h */,
+				EA4C5CC31AF287330083FDD7 /* TitledTextEntryCell.m */,
+				EA4C5CC41AF287330083FDD7 /* TitledTextEntryCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		EA5963E91AF2955300935344 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EA5963EA1AF2957200935344 /* NoCaretTextField.h */,
+				EA5963EB1AF2957200935344 /* NoCaretTextField.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		EA69EF061AEFC6F300276B70 /* Helpers */ = {
@@ -1010,6 +1075,8 @@
 			children = (
 				EA4DC9901AF154E000CEF1B9 /* AddDistanceViewController.h */,
 				EA4DC9911AF154E000CEF1B9 /* AddDistanceViewController.m */,
+				EA4C5CBF1AF286990083FDD7 /* InputCellsSection.h */,
+				EA4C5CC01AF286990083FDD7 /* InputCellsSection.m */,
 				EA4DC9941AF1580100CEF1B9 /* InputCellsViewController.h */,
 				EA4DC9951AF1580100CEF1B9 /* InputCellsViewController.m */,
 				EAE8F9B01AF149DC00E837E3 /* TripDistancesViewController.h */,
@@ -1168,15 +1235,18 @@
 				843F623B18EF9A5F001ACBB1 /* LICENSE_MBProgressHUD in Resources */,
 				8421A1FD1907E304001DF38D /* Localizable.strings in Resources */,
 				84D6719718D3392D00B704A4 /* dropdown.png in Resources */,
+				EA4C5CC61AF287330083FDD7 /* TitledTextEntryCell.xib in Resources */,
 				84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */,
 				841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */,
 				84F4F34E18CFCCD000F69A35 /* InfoPlist.strings in Resources */,
 				8467EFED18F6F9530076BE6E /* ic_rotate_cw.png in Resources */,
+				EA5963F11AF295FF00935344 /* DatePickerCell.xib in Resources */,
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
 				8467EFEC18F6F9530076BE6E /* ic_rotate_ccw.png in Resources */,
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
 				841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */,
 				8467EFF018F6FC450076BE6E /* ic_rotate_ccw@2x.png in Resources */,
+				EA5963E81AF2926900935344 /* CurrencyPickerCell.xib in Resources */,
 				8467EFF118F6FC450076BE6E /* ic_rotate_cw@2x.png in Resources */,
 				EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */,
 				8421A1F51907AF18001DF38D /* wheel@2x.png in Resources */,
@@ -1271,6 +1341,7 @@
 				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
 				8478B77D18D395280041CBA3 /* WBNewReceiptViewController.m in Sources */,
 				EA8D81A91AEA7C8E00BAC943 /* ReceiptColumnPrice.m in Sources */,
+				EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */,
 				84ABAD0218DB700000F8D3EB /* WBTripsHelper.m in Sources */,
 				4D33F3E219D8965800FE4EC4 /* GADConstants.m in Sources */,
 				EA8D819A1AEA7C3100BAC943 /* ReceiptColumnImagePath.m in Sources */,
@@ -1289,13 +1360,17 @@
 				845E33DC18D86D84006A506A /* WBReceiptActionsViewController.m in Sources */,
 				EA8D81971AEA7C1E00BAC943 /* ReceiptColumnImageName.m in Sources */,
 				841BB308190837F100D28CBF /* WBNoTripsViewController.m in Sources */,
+				EA5963EF1AF295E800935344 /* DatePickerCell.m in Sources */,
 				4DC6A9F119D7610900258DE3 /* GADMasterViewController.m in Sources */,
+				EA5963F41AF29B1A00935344 /* UIView+Search.m in Sources */,
 				84AA0AD118E5F624008A85F9 /* WBFileManager.m in Sources */,
 				84553A5018D09D230009057B /* WBTripsViewController.m in Sources */,
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,
 				84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */,
+				EA5963EC1AF2957200935344 /* NoCaretTextField.m in Sources */,
 				EA8D81B81AEA7EE200BAC943 /* Column.m in Sources */,
 				8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */,
+				EA5963E71AF2926900935344 /* CurrencyPickerCell.m in Sources */,
 				843F61FF18EF3F46001ACBB1 /* WBCustomization.m in Sources */,
 				8478B77318D37BFB0041CBA3 /* WBCategoriesViewController.m in Sources */,
 				EA3C96AD1AECC95100A2A5F9 /* TripImagesPDFGenerator.m in Sources */,
@@ -1316,6 +1391,7 @@
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
 				84ABAD0918DB79D900F8D3EB /* WBCategoriesHelper.m in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
+				EA4C5CBA1AF2864B0083FDD7 /* TextEntryCell.m in Sources */,
 				84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */,
 				EA3C969E1AEBA94200A2A5F9 /* ReportPDFGenerator.m in Sources */,
 				EA3C96A71AEBC1A500A2A5F9 /* ReceiptIndexer.m in Sources */,
@@ -1330,14 +1406,17 @@
 				EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */,
 				847EFA5418E6BC93006BE520 /* WBSqlBuilder.m in Sources */,
 				84DCAAE318E4B48A00ECAECC /* WBPreferences.m in Sources */,
+				EA4C5CC11AF286990083FDD7 /* InputCellsSection.m in Sources */,
 				EA69EF181AEFCBB600276B70 /* PaymentMethodsHelper.m in Sources */,
 				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
 				8453368418F4950E001072AA /* WBBackupHelper.m in Sources */,
 				84A3ADE318D48E15003DB722 /* WBNewCategoryViewController.m in Sources */,
 				EAE8F9B21AF149DC00E837E3 /* TripDistancesViewController.m in Sources */,
+				EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */,
 				EA69EF151AEFC81A00276B70 /* Database.m in Sources */,
 				841BB3011908173600D28CBF /* WBAbstractPicker.m in Sources */,
+				EA4C5CC51AF287330083FDD7 /* TitledTextEntryCell.m in Sources */,
 				845E33E318D8A12C006A506A /* WBTextUtils.m in Sources */,
 				84D6719B18D34E4900B704A4 /* WBCurrency.m in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */,
@@ -1357,6 +1436,7 @@
 				8453368018F475E2001072AA /* WBAutocompleteHelper.m in Sources */,
 				EA8D818B1AEA7BA400BAC943 /* ReceiptColumnUserID.m in Sources */,
 				EA8D819D1AEA7C4200BAC943 /* ReceiptColumnComment.m in Sources */,
+				EA5963E31AF2912900935344 /* PickerCell.m in Sources */,
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */,
 				8472F01818D6F50B00929C5B /* WBNewTripViewController.m in Sources */,
