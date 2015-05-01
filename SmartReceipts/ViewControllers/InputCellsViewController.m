@@ -130,7 +130,19 @@
     if ([self hasInlinedPickerAttachedAtIndexPath:indexPath]) {
         [UIApplication dismissKeyboard];
         [self handleInlinePickerForIndexPath:indexPath];
+        return;
     }
+
+    UITableViewCell *cell = [self cellAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[TextEntryCell class]]) {
+        TextEntryCell *entryCell = (TextEntryCell *) cell;
+        [entryCell.entryField becomeFirstResponder];
+    }
+}
+
+- (UITableViewCell *)cellAtIndexPath:(NSIndexPath *)indexPath {
+    InputCellsSection *section = self.presentedSections[indexPath.section];
+    return [section cellAtIndex:indexPath.row];
 }
 
 - (void)handleInlinePickerForIndexPath:(NSIndexPath *)indexPath {
@@ -185,8 +197,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    InputCellsSection *section = self.presentedSections[indexPath.section];
-    UITableViewCell *cell = [section cellAtIndex:indexPath.row];
+    UITableViewCell *cell = [self cellAtIndexPath:indexPath];
     return CGRectGetHeight(cell.frame);
 }
 

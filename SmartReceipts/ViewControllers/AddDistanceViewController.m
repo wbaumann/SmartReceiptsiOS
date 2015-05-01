@@ -11,19 +11,18 @@
 #import "UIView+LoadHelpers.h"
 #import "UITableViewCell+Identifier.h"
 #import "InputCellsSection.h"
-#import "CurrencyPickerCell.h"
-#import "DatePickerCell.h"
 #import "InlinedPickerCell.h"
 #import "InlinedDatePickerCell.h"
+#import "PickerCell.h"
 
 @interface AddDistanceViewController ()
 
 @property (nonatomic, strong) TitledTextEntryCell *distanceCell;
 @property (nonatomic, strong) TitledTextEntryCell *rateCell;
-@property (nonatomic, strong) CurrencyPickerCell *currencyCell;
+@property (nonatomic, strong) PickerCell *currencyCell;
 @property (nonatomic, strong) InlinedPickerCell *currencyPickerCell;
 @property (nonatomic, strong) TitledTextEntryCell *locationCell;
-@property (nonatomic, strong) DatePickerCell *dateCell;
+@property (nonatomic, strong) PickerCell *dateCell;
 @property (nonatomic, strong) InlinedDatePickerCell *datePickerCell;
 
 @end
@@ -36,8 +35,7 @@
     [self.navigationItem setTitle:NSLocalizedString(@"Add dictance", nil)];
 
     [self.tableView registerNib:[TitledTextEntryCell viewNib] forCellReuseIdentifier:[TitledTextEntryCell cellIdentifier]];
-    [self.tableView registerNib:[CurrencyPickerCell viewNib] forCellReuseIdentifier:[CurrencyPickerCell cellIdentifier]];
-    [self.tableView registerNib:[DatePickerCell viewNib] forCellReuseIdentifier:[DatePickerCell cellIdentifier]];
+    [self.tableView registerNib:[PickerCell viewNib] forCellReuseIdentifier:[PickerCell cellIdentifier]];
     [self.tableView registerNib:[InlinedPickerCell viewNib] forCellReuseIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.tableView registerNib:[InlinedDatePickerCell viewNib] forCellReuseIdentifier:[InlinedDatePickerCell cellIdentifier]];
 
@@ -47,7 +45,7 @@
     self.rateCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.rateCell setTitle:NSLocalizedString(@"Rate", nil)];
 
-    self.currencyCell = [self.tableView dequeueReusableCellWithIdentifier:[CurrencyPickerCell cellIdentifier]];
+    self.currencyCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
     [self.currencyCell setTitle:NSLocalizedString(@"Currency", nil)];
 
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
@@ -55,7 +53,7 @@
     self.locationCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.locationCell setTitle:NSLocalizedString(@"Location", nil)];
 
-    self.dateCell = [self.tableView dequeueReusableCellWithIdentifier:[DatePickerCell cellIdentifier]];
+    self.dateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
     [self.dateCell setTitle:NSLocalizedString(@"Date", nil)];
 
     self.datePickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedDatePickerCell cellIdentifier]];

@@ -8,6 +8,13 @@
 
 #import "PickerCell.h"
 
+@interface PickerCell ()
+
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *valueLabel;
+
+@end
+
 @implementation PickerCell
 
 - (void)awakeFromNib {
@@ -18,6 +25,10 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setTitle:(NSString *)title {
+    [self.titleLabel setText:title];
 }
 
 @end

@@ -10,6 +10,8 @@
 #import "TextEntryCell.h"
 #import "TitledTextEntryCell.h"
 
-@interface PickerCell : TitledTextEntryCell
+@interface PickerCell : UITableViewCell
+
+- (void)setTitle:(NSString *)title;
 
 @end
