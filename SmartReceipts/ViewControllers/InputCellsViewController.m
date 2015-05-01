@@ -68,6 +68,7 @@
 
         TextEntryCell *textEntryCell = (TextEntryCell *) cell;
         [textEntryCell.entryField setDelegate:self];
+        [textEntryCell.entryField setReturnKeyType:UIReturnKeyNext];
     }
 }
 

@@ -31,4 +31,13 @@
     [self.titleLabel setText:title];
 }
 
+- (void)setTitle:(NSString *)title value:(NSString *)value {
+    [self.titleLabel setText:title];
+    [self.valueLabel setText:value];
+}
+
+- (void)setValue:(NSString *)value {
+    [self.valueLabel setText:value];
+}
+
 @end

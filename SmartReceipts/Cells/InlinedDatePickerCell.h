@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InlinedPickerCell.h"
+
+typedef void (^InlinedDatePickerSelectionChangeBlock)(NSDate *selected);
 
 @interface InlinedDatePickerCell : UITableViewCell
+
+@property (nonatomic, copy) InlinedDatePickerSelectionChangeBlock changeHandler;
+
+- (void)setDate:(NSDate *)date;
 
 @end

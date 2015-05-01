@@ -16,6 +16,10 @@
                 <subviews>
                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CL5-D4-2Qr">
                         <rect key="frame" x="0.0" y="-1" width="320" height="162"/>
+                        <connections>
+                            <outlet property="dataSource" destination="KGk-i7-Jjw" id="J0a-yd-wMI"/>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="8kp-3Y-Kjt"/>
+                        </connections>
                     </pickerView>
                 </subviews>
                 <constraints>
@@ -25,6 +29,9 @@
                     <constraint firstItem="CL5-D4-2Qr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ztd-nY-Sdx"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="picker" destination="CL5-D4-2Qr" id="Omn-AV-bjf"/>
+            </connections>
             <point key="canvasLocation" x="445" y="231"/>
         </tableViewCell>
     </objects>

@@ -8,16 +8,24 @@
 
 #import "InlinedDatePickerCell.h"
 
+@interface InlinedDatePickerCell ()
+
+@property (nonatomic, strong) IBOutlet UIDatePicker *datePicker;
+
+@end
+
 @implementation InlinedDatePickerCell
 
-- (void)awakeFromNib {
-    // Initialization code
+- (IBAction)dateChanged {
+    if (!self.changeHandler) {
+        return;
+    }
+
+    self.changeHandler(self.datePicker.date);
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setDate:(NSDate *)date {
+    [self.datePicker setDate:date];
 }
 
 @end

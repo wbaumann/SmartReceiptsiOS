@@ -14,11 +14,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="BrC-Yl-Ags">
+                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="BrC-Yl-Ags">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
                         <date key="date" timeIntervalSinceReferenceDate="452179735.73776102">
                             <!--2015-05-01 13:28:55 +0000-->
                         </date>
+                        <connections>
+                            <action selector="dateChanged" destination="KGk-i7-Jjw" eventType="valueChanged" id="zA5-XV-eT8"/>
+                        </connections>
                     </datePicker>
                 </subviews>
                 <constraints>
@@ -28,6 +31,9 @@
                     <constraint firstItem="BrC-Yl-Ags" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="nFJ-7h-fc4"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="datePicker" destination="BrC-Yl-Ags" id="ZNa-GP-YFs"/>
+            </connections>
             <point key="canvasLocation" x="430" y="431.5"/>
         </tableViewCell>
     </objects>

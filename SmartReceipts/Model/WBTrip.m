@@ -10,7 +10,7 @@
 #import "WBFileManager.h"
 #import "WBPrice.h"
 
-static NSString * const MULTI_CURRENCY = @"XXXXXX";
+NSString *const MULTI_CURRENCY = @"XXXXXX";
 
 @implementation WBTrip
 {

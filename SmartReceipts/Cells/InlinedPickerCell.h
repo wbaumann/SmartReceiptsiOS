@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^InlinedPickerSelectionChangeBlock)(NSString *selected);
+
 @interface InlinedPickerCell : UITableViewCell
+
+@property (nonatomic, copy) InlinedPickerSelectionChangeBlock valueChangeHandler;
+@property (nonatomic, copy) NSString *selectedValue;
+@property (nonatomic, strong) NSArray *allValues;
 
 @end

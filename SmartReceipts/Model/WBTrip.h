@@ -11,6 +11,8 @@
 @class WBCurrency;
 @class WBPrice;
 
+extern NSString *const MULTI_CURRENCY;
+
 @interface WBTrip : NSObject
 
 @property (nonatomic, strong) WBPrice *price;
