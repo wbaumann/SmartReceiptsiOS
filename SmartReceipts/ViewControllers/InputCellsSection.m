@@ -30,4 +30,16 @@
     return self.cells[index];
 }
 
+- (void)insertCell:(UITableViewCell *)cell atIndex:(NSInteger)index {
+    NSMutableArray *presented = [NSMutableArray arrayWithArray:self.cells];
+    [presented insertObject:cell atIndex:index];
+    [self setCells:[NSArray arrayWithArray:presented]];
+}
+
+- (void)removeCellAtIndex:(NSInteger)row {
+    NSMutableArray *presented = [NSMutableArray arrayWithArray:self.cells];
+    [presented removeObjectAtIndex:row];
+    [self setCells:[NSArray arrayWithArray:presented]];
+}
+
 @end

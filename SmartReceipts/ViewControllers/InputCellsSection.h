@@ -14,5 +14,7 @@
 
 - (NSUInteger)numberOfCells;
 - (UITableViewCell *)cellAtIndex:(NSUInteger)index;
+- (void)insertCell:(UITableViewCell *)cell atIndex:(NSInteger)index;
+- (void)removeCellAtIndex:(NSInteger)row;
 
 @end

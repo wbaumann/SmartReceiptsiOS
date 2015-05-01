@@ -13,14 +13,18 @@
 #import "InputCellsSection.h"
 #import "CurrencyPickerCell.h"
 #import "DatePickerCell.h"
+#import "InlinedPickerCell.h"
+#import "InlinedDatePickerCell.h"
 
 @interface AddDistanceViewController ()
 
 @property (nonatomic, strong) TitledTextEntryCell *distanceCell;
 @property (nonatomic, strong) TitledTextEntryCell *rateCell;
 @property (nonatomic, strong) CurrencyPickerCell *currencyCell;
+@property (nonatomic, strong) InlinedPickerCell *currencyPickerCell;
 @property (nonatomic, strong) TitledTextEntryCell *locationCell;
 @property (nonatomic, strong) DatePickerCell *dateCell;
+@property (nonatomic, strong) InlinedDatePickerCell *datePickerCell;
 
 @end
 
@@ -34,6 +38,8 @@
     [self.tableView registerNib:[TitledTextEntryCell viewNib] forCellReuseIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.tableView registerNib:[CurrencyPickerCell viewNib] forCellReuseIdentifier:[CurrencyPickerCell cellIdentifier]];
     [self.tableView registerNib:[DatePickerCell viewNib] forCellReuseIdentifier:[DatePickerCell cellIdentifier]];
+    [self.tableView registerNib:[InlinedPickerCell viewNib] forCellReuseIdentifier:[InlinedPickerCell cellIdentifier]];
+    [self.tableView registerNib:[InlinedDatePickerCell viewNib] forCellReuseIdentifier:[InlinedDatePickerCell cellIdentifier]];
 
     self.distanceCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.distanceCell setTitle:NSLocalizedString(@"Distance", nil)];
@@ -44,14 +50,21 @@
     self.currencyCell = [self.tableView dequeueReusableCellWithIdentifier:[CurrencyPickerCell cellIdentifier]];
     [self.currencyCell setTitle:NSLocalizedString(@"Currency", nil)];
 
+    self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
+
     self.locationCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.locationCell setTitle:NSLocalizedString(@"Location", nil)];
 
     self.dateCell = [self.tableView dequeueReusableCellWithIdentifier:[DatePickerCell cellIdentifier]];
     [self.dateCell setTitle:NSLocalizedString(@"Date", nil)];
 
+    self.datePickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedDatePickerCell cellIdentifier]];
+
     InputCellsSection *section = [InputCellsSection sectionWithCells:@[self.distanceCell, self.rateCell, self.currencyCell, self.locationCell, self.dateCell]];
     [self addSectionForPresentation:section];
+
+    [self addInlinedPickerCell:self.currencyPickerCell forCell:self.currencyCell];
+    [self addInlinedPickerCell:self.datePickerCell forCell:self.self.dateCell];
 }
 
 - (void)didReceiveMemoryWarning {

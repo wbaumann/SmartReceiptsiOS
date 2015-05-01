@@ -86,6 +86,9 @@
 		84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */; };
 		84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F35518CFCCD000F69A35 /* Images.xcassets */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
+		EA07BF301AF3B472004D17F6 /* UIApplication+DismissKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF2F1AF3B472004D17F6 /* UIApplication+DismissKeyboard.m */; };
+		EA07BF341AF3B703004D17F6 /* InlinedDatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF321AF3B703004D17F6 /* InlinedDatePickerCell.m */; };
+		EA07BF351AF3B703004D17F6 /* InlinedDatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA07BF331AF3B703004D17F6 /* InlinedDatePickerCell.xib */; };
 		EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */; };
 		EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C968D1AEBA4F600A2A5F9 /* ReportCSVTable.m */; };
 		EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96901AEBA50500A2A5F9 /* ReportPDFTable.m */; };
@@ -116,6 +119,8 @@
 		EA5963EF1AF295E800935344 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963EE1AF295E800935344 /* DatePickerCell.m */; };
 		EA5963F11AF295FF00935344 /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5963F01AF295FF00935344 /* DatePickerCell.xib */; };
 		EA5963F41AF29B1A00935344 /* UIView+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963F31AF29B1A00935344 /* UIView+Search.m */; };
+		EA5963FB1AF2A07200935344 /* InlinedPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963F91AF2A07200935344 /* InlinedPickerCell.m */; };
+		EA5963FC1AF2A07200935344 /* InlinedPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5963FA1AF2A07200935344 /* InlinedPickerCell.xib */; };
 		EA69EF121AEFC7EE00276B70 /* DistancesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF111AEFC7EE00276B70 /* DistancesHelper.m */; };
 		EA69EF151AEFC81A00276B70 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF141AEFC81A00276B70 /* Database.m */; };
 		EA69EF181AEFCBB600276B70 /* PaymentMethodsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF171AEFCBB600276B70 /* PaymentMethodsHelper.m */; };
@@ -307,6 +312,11 @@
 		84F4F35C18CFCCD000F69A35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EA07BF2E1AF3B472004D17F6 /* UIApplication+DismissKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+DismissKeyboard.h"; sourceTree = "<group>"; };
+		EA07BF2F1AF3B472004D17F6 /* UIApplication+DismissKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+DismissKeyboard.m"; sourceTree = "<group>"; };
+		EA07BF311AF3B703004D17F6 /* InlinedDatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InlinedDatePickerCell.h; sourceTree = "<group>"; };
+		EA07BF321AF3B703004D17F6 /* InlinedDatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InlinedDatePickerCell.m; sourceTree = "<group>"; };
+		EA07BF331AF3B703004D17F6 /* InlinedDatePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InlinedDatePickerCell.xib; sourceTree = "<group>"; };
 		EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtilsTest.m; sourceTree = "<group>"; };
 		EA3C968C1AEBA4F600A2A5F9 /* ReportCSVTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportCSVTable.h; sourceTree = "<group>"; };
 		EA3C968D1AEBA4F600A2A5F9 /* ReportCSVTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportCSVTable.m; sourceTree = "<group>"; };
@@ -362,6 +372,9 @@
 		EA5963F01AF295FF00935344 /* DatePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerCell.xib; sourceTree = "<group>"; };
 		EA5963F21AF29B1A00935344 /* UIView+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Search.h"; sourceTree = "<group>"; };
 		EA5963F31AF29B1A00935344 /* UIView+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Search.m"; sourceTree = "<group>"; };
+		EA5963F81AF2A07200935344 /* InlinedPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InlinedPickerCell.h; sourceTree = "<group>"; };
+		EA5963F91AF2A07200935344 /* InlinedPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InlinedPickerCell.m; sourceTree = "<group>"; };
+		EA5963FA1AF2A07200935344 /* InlinedPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InlinedPickerCell.xib; sourceTree = "<group>"; };
 		EA69EF101AEFC7EE00276B70 /* DistancesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancesHelper.h; sourceTree = "<group>"; };
 		EA69EF111AEFC7EE00276B70 /* DistancesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancesHelper.m; sourceTree = "<group>"; };
 		EA69EF131AEFC81A00276B70 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
@@ -893,6 +906,8 @@
 				EA69EF1D1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m */,
 				EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */,
 				EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */,
+				EA07BF2E1AF3B472004D17F6 /* UIApplication+DismissKeyboard.h */,
+				EA07BF2F1AF3B472004D17F6 /* UIApplication+DismissKeyboard.m */,
 				EA4C5CC71AF288570083FDD7 /* UITableViewCell+Identifier.h */,
 				EA4C5CC81AF288570083FDD7 /* UITableViewCell+Identifier.m */,
 				EA4C5CBC1AF2866E0083FDD7 /* UIView+LoadHelpers.h */,
@@ -921,6 +936,12 @@
 				EA5963ED1AF295E800935344 /* DatePickerCell.h */,
 				EA5963EE1AF295E800935344 /* DatePickerCell.m */,
 				EA5963F01AF295FF00935344 /* DatePickerCell.xib */,
+				EA07BF311AF3B703004D17F6 /* InlinedDatePickerCell.h */,
+				EA07BF321AF3B703004D17F6 /* InlinedDatePickerCell.m */,
+				EA07BF331AF3B703004D17F6 /* InlinedDatePickerCell.xib */,
+				EA5963F81AF2A07200935344 /* InlinedPickerCell.h */,
+				EA5963F91AF2A07200935344 /* InlinedPickerCell.m */,
+				EA5963FA1AF2A07200935344 /* InlinedPickerCell.xib */,
 				EA5963E11AF2912900935344 /* PickerCell.h */,
 				EA5963E21AF2912900935344 /* PickerCell.m */,
 				EA4C5CB71AF2864B0083FDD7 /* TextEntryCell.h */,
@@ -1231,6 +1252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA5963FC1AF2A07200935344 /* InlinedPickerCell.xib in Resources */,
 				8421A1F41907AF18001DF38D /* wheel.png in Resources */,
 				843F623B18EF9A5F001ACBB1 /* LICENSE_MBProgressHUD in Resources */,
 				8421A1FD1907E304001DF38D /* Localizable.strings in Resources */,
@@ -1246,6 +1268,7 @@
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
 				841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */,
 				8467EFF018F6FC450076BE6E /* ic_rotate_ccw@2x.png in Resources */,
+				EA07BF351AF3B703004D17F6 /* InlinedDatePickerCell.xib in Resources */,
 				EA5963E81AF2926900935344 /* CurrencyPickerCell.xib in Resources */,
 				8467EFF118F6FC450076BE6E /* ic_rotate_cw@2x.png in Resources */,
 				EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */,
@@ -1335,6 +1358,7 @@
 				EA8D81AC1AEA7C9D00BAC943 /* ReceiptColumnTax.m in Sources */,
 				4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */,
 				849A142F18D240D200399A0F /* WBSettingsViewController.m in Sources */,
+				EA5963FB1AF2A07200935344 /* InlinedPickerCell.m in Sources */,
 				84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */,
 				EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */,
 				EA69EF1E1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m in Sources */,
@@ -1419,6 +1443,7 @@
 				EA4C5CC51AF287330083FDD7 /* TitledTextEntryCell.m in Sources */,
 				845E33E318D8A12C006A506A /* WBTextUtils.m in Sources */,
 				84D6719B18D34E4900B704A4 /* WBCurrency.m in Sources */,
+				EA07BF341AF3B703004D17F6 /* InlinedDatePickerCell.m in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */,
 				843F623C18EF9A5F001ACBB1 /* MBProgressHUD.m in Sources */,
 				EA4DC9961AF1580100CEF1B9 /* InputCellsViewController.m in Sources */,
@@ -1441,6 +1466,7 @@
 				EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */,
 				8472F01818D6F50B00929C5B /* WBNewTripViewController.m in Sources */,
 				EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */,
+				EA07BF301AF3B472004D17F6 /* UIApplication+DismissKeyboard.m in Sources */,
 				EA69EF301AF0914000276B70 /* PaymentMethod.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
