@@ -11,7 +11,6 @@
 #import "TextEntryCell.h"
 #import "UIView+Search.h"
 #import "Constants.h"
-#import "UIApplication+DismissKeyboard.h"
 
 @interface InputCellsViewController () <UITextFieldDelegate>
 
@@ -129,7 +128,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     if ([self hasInlinedPickerAttachedAtIndexPath:indexPath]) {
-        [UIApplication dismissKeyboard];
         [self handleInlinePickerForIndexPath:indexPath];
         return;
     }

@@ -29,6 +29,7 @@
 @property (nonatomic, strong) TitledTextEntryCell *locationCell;
 @property (nonatomic, strong) PickerCell *dateCell;
 @property (nonatomic, strong) InlinedDatePickerCell *datePickerCell;
+@property (nonatomic, strong) TitledTextEntryCell *commentCell;
 
 @end
 
@@ -83,7 +84,10 @@
         [weakSelf.dateCell setValue:[dateFormatter formattedDate:selected inTimeZone:timeZone]];
     }];
 
-    InputCellsSection *section = [InputCellsSection sectionWithCells:@[self.distanceCell, self.rateCell, self.currencyCell, self.locationCell, self.dateCell]];
+    self.commentCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
+    [self.commentCell setTitle:NSLocalizedString(@"Comment", nil)];
+
+    InputCellsSection *section = [InputCellsSection sectionWithCells:@[self.distanceCell, self.rateCell, self.currencyCell, self.locationCell, self.dateCell, self.commentCell]];
     [self addSectionForPresentation:section];
 
     [self addInlinedPickerCell:self.currencyPickerCell forCell:self.currencyCell];
