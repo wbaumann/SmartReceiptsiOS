@@ -92,6 +92,7 @@
 		EA07BF371AF3B88C004D17F6 /* PickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA07BF361AF3B88C004D17F6 /* PickerCell.xib */; };
 		EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF391AF3C80C004D17F6 /* NSMutableString+Issues.m */; };
 		EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF3C1AF3C885004D17F6 /* NSString+Validation.m */; };
+		EA07BF441AF3F882004D17F6 /* DecimalInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF431AF3F882004D17F6 /* DecimalInputValidation.m */; };
 		EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */; };
 		EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C968D1AEBA4F600A2A5F9 /* ReportCSVTable.m */; };
 		EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96901AEBA50500A2A5F9 /* ReportPDFTable.m */; };
@@ -321,6 +322,9 @@
 		EA07BF391AF3C80C004D17F6 /* NSMutableString+Issues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Issues.m"; sourceTree = "<group>"; };
 		EA07BF3B1AF3C885004D17F6 /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
 		EA07BF3C1AF3C885004D17F6 /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
+		EA07BF411AF3F84E004D17F6 /* InputValidation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputValidation.h; sourceTree = "<group>"; };
+		EA07BF421AF3F882004D17F6 /* DecimalInputValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecimalInputValidation.h; sourceTree = "<group>"; };
+		EA07BF431AF3F882004D17F6 /* DecimalInputValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecimalInputValidation.m; sourceTree = "<group>"; };
 		EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtilsTest.m; sourceTree = "<group>"; };
 		EA3C968C1AEBA4F600A2A5F9 /* ReportCSVTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportCSVTable.h; sourceTree = "<group>"; };
 		EA3C968D1AEBA4F600A2A5F9 /* ReportCSVTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportCSVTable.m; sourceTree = "<group>"; };
@@ -923,6 +927,9 @@
 		EA46678C1AE7EA0300B4E502 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				EA07BF421AF3F882004D17F6 /* DecimalInputValidation.h */,
+				EA07BF431AF3F882004D17F6 /* DecimalInputValidation.m */,
+				EA07BF411AF3F84E004D17F6 /* InputValidation.h */,
 				EA46678D1AE7EA1600B4E502 /* WBImagePicker.h */,
 				EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */,
 			);
@@ -1382,6 +1389,7 @@
 				841BB308190837F100D28CBF /* WBNoTripsViewController.m in Sources */,
 				4DC6A9F119D7610900258DE3 /* GADMasterViewController.m in Sources */,
 				EA5963F41AF29B1A00935344 /* UIView+Search.m in Sources */,
+				EA07BF441AF3F882004D17F6 /* DecimalInputValidation.m in Sources */,
 				84AA0AD118E5F624008A85F9 /* WBFileManager.m in Sources */,
 				84553A5018D09D230009057B /* WBTripsViewController.m in Sources */,
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,

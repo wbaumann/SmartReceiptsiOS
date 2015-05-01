@@ -52,9 +52,11 @@
 
     self.distanceCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.distanceCell setTitle:NSLocalizedString(@"Distance", nil)];
+    [self.distanceCell activateDecimalEntryMode];
 
     self.rateCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.rateCell setTitle:NSLocalizedString(@"Rate", nil)];
+    [self.rateCell activateDecimalEntryMode];
 
     NSString *selectedCurrency = self.trip.price.currency.code;
     if ([MULTI_CURRENCY isEqualToString:selectedCurrency]) {
@@ -73,6 +75,7 @@
 
     self.locationCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.locationCell setTitle:NSLocalizedString(@"Location", nil)];
+    [self.locationCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
 
     NSDate *date = self.trip.startDate;
     NSTimeZone *timeZone = self.trip.startTimeZone;
@@ -90,6 +93,7 @@
 
     self.commentCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.commentCell setTitle:NSLocalizedString(@"Comment", nil)];
+    [self.commentCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
 
     InputCellsSection *section = [InputCellsSection sectionWithCells:@[self.distanceCell, self.rateCell, self.currencyCell, self.locationCell, self.dateCell, self.commentCell]];
     [self addSectionForPresentation:section];

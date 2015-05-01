@@ -11,6 +11,7 @@
 #import "TextEntryCell.h"
 #import "UIView+Search.h"
 #import "Constants.h"
+#import "InputValidation.h"
 
 @interface InputCellsViewController () <UITextFieldDelegate>
 
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) TextEntryCell *lastEntryCell;
 @property (nonatomic, strong) NSMutableDictionary *inlinedPickers;
 @property (nonatomic, strong) NSIndexPath *presentingPickerForIndexPath;
+@property (nonatomic, strong) id<InputValidation> activeFieldInputValidation;
 
 @end
 
@@ -106,6 +108,28 @@
         [textField resignFirstResponder];
     }
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    UITableViewCell *cell = [textField superviewOfType:[UITableViewCell class]];
+
+    if (![cell isKindOfClass:[TextEntryCell class]]) {
+        [self setActiveFieldInputValidation:nil];
+        return;
+    }
+
+    TextEntryCell *textEntryCell = (TextEntryCell *) cell;
+    [self setActiveFieldInputValidation:textEntryCell.inputValidation];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSString *validate = [textField.text stringByReplacingCharactersInRange:range withString:string];
+
+    if (!self.activeFieldInputValidation) {
+        return YES;
+    }
+
+    return [self.activeFieldInputValidation isValidInput:validate];
 }
 
 - (UITableViewCell *)nextEntryCellAfterIndexPath:(NSIndexPath *)indexPath {
