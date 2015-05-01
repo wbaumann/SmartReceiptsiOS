@@ -40,4 +40,8 @@
     [self.valueLabel setText:value];
 }
 
+- (NSString *)value {
+    return self.valueLabel.text;
+}
+
 @end

@@ -325,8 +325,8 @@ static const int TAG_CURRENCY = 1, TAG_CATEGORY = 2;
         return;
     }
 
-    NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:self.priceTextField.text withLocale:[NSLocale currentLocale]];
-    NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZero:self.taxTextField.text withLocale:[NSLocale currentLocale]];
+    NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.priceTextField.text];
+    NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.taxTextField.text];
 
     if (_receipt == nil) {
         

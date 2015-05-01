@@ -7,7 +7,7 @@
 //
 
 #import "WBCategoriesHelper.h"
-#import "Database.h"
+#import "DatabaseTableNames.h"
 
 static NSString * const TABLE_NAME = @"categories";
 static NSString * const COLUMN_NAME = @"name";

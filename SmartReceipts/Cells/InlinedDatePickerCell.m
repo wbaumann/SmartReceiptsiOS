@@ -33,4 +33,8 @@
     [self.datePicker setMaximumDate:maxDate];
 }
 
+- (NSDate *)value {
+    return self.datePicker.date;
+}
+
 @end

@@ -22,6 +22,10 @@
 #import "NSString+Validation.h"
 #import "NSMutableString+Issues.h"
 #import "UIAlertView+Blocks.h"
+#import "NSDecimalNumber+WBNumberParse.h"
+#import "Distance.h"
+#import "Database.h"
+#import "Database+Distances.h"
 
 @interface AddDistanceViewController ()
 
@@ -116,6 +120,19 @@
                                                    otherButtonItems:nil];
         [alertView show];
         return;
+    }
+
+    NSDecimalNumber *distance = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.distanceCell.value];
+    NSDecimalNumber *rate = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.rateCell.value];
+    NSString *currency = self.currencyCell.value;
+    NSString *location = self.locationCell.value;
+    NSDate *date = self.datePickerCell.value;
+    NSString *comment = self.commentCell.value;
+    Distance *distanceObject = [[Distance alloc] initWithDistance:distance rate:[WBPrice priceWithAmount:rate currencyCode:currency] location:location date:date comment:comment];
+    if ([[Database sharedInstance] saveDistance:distanceObject]) {
+
+    } else {
+
     }
 }
 

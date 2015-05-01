@@ -11,6 +11,7 @@
 #import "PaymentMethodsHelper.h"
 #import "Database.h"
 #import "FMDatabaseQueue+QueueShortcuts.h"
+#import "DatabaseTableNames.h"
 
 @implementation PaymentMethodsHelper
 

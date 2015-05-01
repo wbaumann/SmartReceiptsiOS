@@ -47,15 +47,16 @@
     return 11;
 }
 
-- (BOOL)migrate:(FMDatabaseQueue *)databaseQueue {
-    return [DatabaseCreateAtVersion11 setupAndroidMetadataTableInQueue:databaseQueue]
-            && [WBTripsHelper createTableInQueue:databaseQueue]
-            && [WBReceiptsHelper createTableInQueue:databaseQueue]
-            && [WBCategoriesHelper createTableInQueue:databaseQueue]
-            && [WBColumnsHelper createTableInQueue:databaseQueue withTableName:[WBColumnsHelper TABLE_NAME_CSV]]
-            && [WBColumnsHelper createTableInQueue:databaseQueue withTableName:[WBColumnsHelper TABLE_NAME_PDF]]
-            && [DatabaseCreateAtVersion11 insertDefaultCategoriesIntoQueue:databaseQueue]
-            && [WBDB insertDefaultColumnsIntoQueue:databaseQueue];
+- (BOOL)migrate:(Database *)database {
+    FMDatabaseQueue *queue = database.databaseQueue;
+    return [DatabaseCreateAtVersion11 setupAndroidMetadataTableInQueue:queue]
+            && [WBTripsHelper createTableInQueue:queue]
+            && [WBReceiptsHelper createTableInQueue:queue]
+            && [WBCategoriesHelper createTableInQueue:queue]
+            && [WBColumnsHelper createTableInQueue:queue withTableName:[WBColumnsHelper TABLE_NAME_CSV]]
+            && [WBColumnsHelper createTableInQueue:queue withTableName:[WBColumnsHelper TABLE_NAME_PDF]]
+            && [DatabaseCreateAtVersion11 insertDefaultCategoriesIntoQueue:queue]
+            && [WBDB insertDefaultColumnsIntoQueue:queue];
 }
 
 + (BOOL)setupAndroidMetadataTableInQueue:(FMDatabaseQueue *)queue {

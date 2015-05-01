@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "DatabaseCreateAtVersion11.h"
 #import "DatabaseUpgradeToVersion12.h"
+#import "Database.h"
 #import "FMDatabaseAdditions.h"
 #import "DatabaseUpgradeToVersion13.h"
 #import "FMDatabaseQueue+QueueShortcuts.h"
@@ -30,18 +31,18 @@
     return 0;
 }
 
-- (BOOL)migrate:(FMDatabaseQueue *)databaseQueue {
+- (BOOL)migrate:(Database *)database {
     ABSTRACT_METHOD
     return NO;
 }
 
-+ (BOOL)migrateDatabase:(FMDatabaseQueue *)databaseQueue {
++ (BOOL)migrateDatabase:(Database *)database {
     NSArray *migrations = [self allMigrations];
-    return [self runMigrations:migrations onQueue:databaseQueue];
+    return [self runMigrations:migrations onDatabase:database];
 }
 
-+ (BOOL)runMigrations:(NSArray *)migrations onQueue:(FMDatabaseQueue *)queue {
-    NSUInteger currentVersion = [queue databaseVersion];
++ (BOOL)runMigrations:(NSArray *)migrations onDatabase:(Database *)database {
+    NSUInteger currentVersion = [database databaseVersion];
     SRLog(@"Current version: %lu", currentVersion);
 
     for (DatabaseMigration *migration in migrations) {
@@ -51,13 +52,13 @@
         }
 
         SRLog(@"Migrate to version %lu", migration.version);
-        if (![migration migrate:queue]) {
+        if (![migration migrate:database]) {
             SRLog(@"Failed on migration %lu", migration.version);
             return NO;
         }
 
         currentVersion = migration.version;
-        [queue setDatabaseVersion:currentVersion];
+        [database setDatabaseVersion:currentVersion];
     }
 
     return YES;

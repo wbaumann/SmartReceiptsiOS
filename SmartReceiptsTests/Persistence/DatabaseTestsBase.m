@@ -10,6 +10,14 @@
 #import <XCTest/XCTest.h>
 #import <FMDB/FMDatabaseQueue.h>
 #import "DatabaseTestsBase.h"
+#import "Database.h"
+
+@interface Database (TestExpose)
+
+- (id)initWithDatabasePath:(NSString *)path;
+- (BOOL)open:(BOOL)migrateDatabase;
+
+@end
 
 @implementation DatabaseTestsBase
 
@@ -19,7 +27,7 @@
 
 - (void)setUp {
     self.testDBPath = self.generateTestDBPath;
-    self.db = [FMDatabaseQueue databaseQueueWithPath:self.testDBPath];
+    [self setDb:[self createAndOpenDatabaseWithPath:self.testDBPath]];
 }
 
 - (void)tearDown {
@@ -31,5 +39,12 @@
     [self setDb:nil];
     [[NSFileManager defaultManager] removeItemAtPath:self.testDBPath error:nil];
 }
+
+- (Database *)createAndOpenDatabaseWithPath:(NSString *)path {
+    Database *db = [[Database alloc] initWithDatabasePath:path];
+    [db open:NO];
+    return db;
+}
+
 
 @end

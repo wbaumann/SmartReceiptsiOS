@@ -10,8 +10,6 @@
 #import "WBFileManager.h"
 #import "DatabaseMigration.h"
 
-static FMDatabaseQueue* databaseQueue = nil;
-
 static WBTripsHelper* tripsHelper;
 static WBReceiptsHelper* receiptsHelper;
 static WBCategoriesHelper* categoriesHelper;
@@ -20,9 +18,8 @@ static WBColumnsHelper* pdfColumnsHelper;
 
 @implementation WBDB
 
-+(void) close {
-    [databaseQueue close];
-    databaseQueue = nil;
++ (void)close {
+    [[Database sharedInstance] close];
 }
 
 +(WBTripsHelper*) trips {
@@ -45,18 +42,13 @@ static WBColumnsHelper* pdfColumnsHelper;
     return pdfColumnsHelper;
 }
 
-+(BOOL) open {
-    NSString *dbPath = [WBFileManager pathInDocuments:@"receipts.db"];
-    
-    FMDatabaseQueue *db = [FMDatabaseQueue databaseQueueWithPath:dbPath];
-    
-    if (!db) {
++ (BOOL)open {
+    if (![[Database sharedInstance] open]) {
         return NO;
     }
-    
-    databaseQueue = db;
-    
-    @synchronized([WBDB class]) {
+
+    @synchronized ([WBDB class]) {
+        FMDatabaseQueue *db = [[Database sharedInstance] databaseQueue];
         tripsHelper = [[WBTripsHelper alloc] initWithDatabaseQueue:db];
         receiptsHelper = [[WBReceiptsHelper alloc] initWithDatabaseQueue:db];
         categoriesHelper = [[WBCategoriesHelper alloc] initWithDatabaseQueue:db];
@@ -64,7 +56,7 @@ static WBColumnsHelper* pdfColumnsHelper;
         pdfColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_PDF]];
     }
 
-    return [DatabaseMigration migrateDatabase:db];
+    return YES;
 }
 
 + (BOOL)insertDefaultColumnsIntoQueue:(FMDatabaseQueue *)queue {
@@ -97,21 +89,21 @@ static WBColumnsHelper* pdfColumnsHelper;
     return true;
 }
 
-+(BOOL) mergeWithDatabaseAtPath:(NSString*) dbPath overwrite:(BOOL) overwrite {
++ (BOOL)mergeWithDatabaseAtPath:(NSString *)dbPath overwrite:(BOOL)overwrite {
     FMDatabase *otherDb = [FMDatabase databaseWithPath:dbPath];
     if (![otherDb open]) {
         return NO;
     }
-    
+
     __block BOOL result = false;
-    
-    [databaseQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+
+    [[[Database sharedInstance] databaseQueue] inTransaction:^(FMDatabase *db, BOOL *rollback) {
         result = [WBDB mergeDatabase:db withDatabase:otherDb overwrite:overwrite];
         if (!result) {
             *rollback = YES;
         }
     }];
-    
+
     return result;
 }
 

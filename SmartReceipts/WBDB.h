@@ -12,6 +12,7 @@
 #import "WBReceiptsHelper.h"
 #import "WBCategoriesHelper.h"
 #import "WBColumnsHelper.h"
+#import "Database.h"
 
 /*
  Messages sent to table helpers are queued if they do not require passing (FMDatabase*)database as argument.
@@ -21,17 +22,17 @@
  All methods in helpers are sync.
  */
 
-@interface WBDB : NSObject
+@interface WBDB : Database
 
-+(BOOL) open;
-+(void) close;
++ (BOOL)open;
++ (void)close;
 
-+(WBTripsHelper*) trips;
-+(WBReceiptsHelper*) receipts;
-+(WBCategoriesHelper*) categories;
-+(WBColumnsHelper*) csvColumns;
-+(WBColumnsHelper*) pdfColumns;
++ (WBTripsHelper *)trips;
++ (WBReceiptsHelper *)receipts;
++ (WBCategoriesHelper *)categories;
++ (WBColumnsHelper *)csvColumns;
++ (WBColumnsHelper *)pdfColumns;
 
-+(BOOL) mergeWithDatabaseAtPath:(NSString*) dbPath overwrite:(BOOL) overwrite;
++ (BOOL)mergeWithDatabaseAtPath:(NSString *)dbPath overwrite:(BOOL)overwrite;
 
 @end

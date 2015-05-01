@@ -1,20 +1,21 @@
 //
-//  DistancesHelper.m
+//  Database+Distances.m
 //  SmartReceipts
 //
-//  Created by Jaanus Siim on 28/04/15.
+//  Created by Jaanus Siim on 01/05/15.
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
 #import <FMDB/FMDatabaseQueue.h>
-#import <FMDB/FMDatabase.h>
-#import "DistancesHelper.h"
-#import "FMDatabaseAdditions.h"
+#import <objc/objc.h>
+#import "Database+Distances.h"
+#import "DatabaseTableNames.h"
 #import "FMDatabaseQueue+QueueShortcuts.h"
+#import "Distance.h"
 
-@implementation DistancesHelper
+@implementation Database (Distances)
 
-+ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue {
+- (BOOL)createDistanceTable {
     NSArray *createDistanceTable =
             @[@"CREATE TABLE ", DistanceTable.TABLE_NAME, @" (", //
                     DistanceTable.COLUMN_ID, @" INTEGER PRIMARY KEY AUTOINCREMENT,", //
@@ -26,7 +27,11 @@
                     DistanceTable.COLUMN_COMMENT, @" TEXT,", //
                     DistanceTable.COLUMN_RATE_CURRENCY, @" TEXT NOT NULL, ", //
                     DistanceTable.COLUMN_RATE, @" DECIMAL(10, 2) DEFAULT 0.00 );"];
-    return [queue executeUpdateWithStatementComponents:createDistanceTable];
+    return [self.databaseQueue executeUpdateWithStatementComponents:createDistanceTable];
+}
+
+- (BOOL)saveDistance:(Distance *)distance {
+    return NO;
 }
 
 @end

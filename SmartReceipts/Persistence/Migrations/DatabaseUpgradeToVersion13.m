@@ -8,15 +8,11 @@
 
 #import <FMDB/FMDatabaseQueue.h>
 #import "DatabaseUpgradeToVersion13.h"
-#import "DistancesHelper.h"
 #import "FMDatabaseQueue+QueueShortcuts.h"
 #import "WBPreferences.h"
-
-@interface DistancesHelper (Expose)
-
-+ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue;
-
-@end
+#import "DatabaseTableNames.h"
+#import "Database.h"
+#import "Database+Distances.h"
 
 @implementation DatabaseUpgradeToVersion13
 
@@ -24,7 +20,9 @@
     return 13;
 }
 
-- (BOOL)migrate:(FMDatabaseQueue *)databaseQueue {
+- (BOOL)migrate:(Database *)database {
+    FMDatabaseQueue *databaseQueue = database.databaseQueue;
+
     NSArray *distanceMigrateBase = @[@"INSERT INTO ", DistanceTable.TABLE_NAME, @"(", DistanceTable.COLUMN_PARENT, @", ", DistanceTable.COLUMN_DISTANCE, @", ", DistanceTable.COLUMN_LOCATION, @", ", DistanceTable.COLUMN_DATE, @", ", DistanceTable.COLUMN_TIMEZONE, @", ", DistanceTable.COLUMN_COMMENT, @", ", DistanceTable.COLUMN_RATE_CURRENCY, @")",
             @" SELECT ", TripsTable.COLUMN_NAME, @", ", TripsTable.COLUMN_MILEAGE, @" , \"\" as ", DistanceTable.COLUMN_LOCATION, @", ", TripsTable.COLUMN_FROM, @", ", TripsTable.COLUMN_FROM_TIMEZONE, @" , \"\" as ", DistanceTable.COLUMN_COMMENT, @", "];
 
@@ -34,7 +32,7 @@
     NSArray *alterTripsWithProcessingStatus = @[@"ALTER TABLE ", TripsTable.TABLE_NAME, @" ADD ", TripsTable.COLUMN_PROCESSING_STATUS, @" TEXT"];
     NSArray *alterReceiptsWithProcessingStatus = @[@"ALTER TABLE ", ReceiptsTable.TABLE_NAME, @" ADD ", ReceiptsTable.COLUMN_PROCESSING_STATUS, @" TEXT"];
 
-    return [DistancesHelper createTableInQueue:databaseQueue]
+    return [database createDistanceTable]
             && [databaseQueue executeUpdateWithStatementComponents:distanceMigrateNotNullCurrency]
             && [databaseQueue executeUpdateWithStatementComponents:distanceMigrateNullCurrency]
             && [databaseQueue executeUpdateWithStatementComponents:alterTripsWithCostCenter]

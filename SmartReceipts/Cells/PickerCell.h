@@ -15,5 +15,6 @@
 - (void)setTitle:(NSString *)title;
 - (void)setTitle:(NSString *)title value:(NSString *)value;
 - (void)setValue:(NSString *)value;
+- (NSString *)value;
 
 @end

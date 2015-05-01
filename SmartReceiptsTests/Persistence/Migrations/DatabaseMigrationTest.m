@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import <FMDB/FMDatabaseQueue.h>
 #import "DatabaseTestsBase.h"
-#import "FMDatabaseQueue+QueueShortcuts.h"
 #import "DatabaseMigration.h"
+#import "Database.h"
 
 @interface DatabaseMigrationTest : DatabaseTestsBase
 
@@ -28,12 +27,12 @@
 }
 
 - (void)testCreatedDatabaseMigratedToVersion13 {
-    FMDatabaseQueue *databaseQueue = [FMDatabaseQueue databaseQueueWithPath:self.testDBPath];
-    XCTAssertEqual(0, databaseQueue.databaseVersion);
-    BOOL migrationSuccess = [DatabaseMigration migrateDatabase:databaseQueue];
+    Database *database = [self createAndOpenDatabaseWithPath:self.testDBPath];
+    XCTAssertEqual(0, database.databaseVersion);
+    BOOL migrationSuccess = [DatabaseMigration migrateDatabase:database];
     XCTAssertTrue(migrationSuccess);
 
-    XCTAssertEqual(13, databaseQueue.databaseVersion);
+    XCTAssertEqual(13, database.databaseVersion);
 
     //TODO jaanus: check also against reference db at version 13
 }
@@ -45,12 +44,12 @@
     [[NSFileManager defaultManager] copyItemAtPath:self.referenceDBPath toPath:self.testDBPath error:&copyError];
     XCTAssertNil(copyError);
 
-    FMDatabaseQueue *databaseQueue = [FMDatabaseQueue databaseQueueWithPath:self.testDBPath];
-    XCTAssertEqual(11, databaseQueue.databaseVersion);
-    BOOL migrationSuccess = [DatabaseMigration migrateDatabase:databaseQueue];
+    Database *database = [self createAndOpenDatabaseWithPath:self.testDBPath];
+    XCTAssertEqual(11, database.databaseVersion);
+    BOOL migrationSuccess = [DatabaseMigration migrateDatabase:database];
     XCTAssertTrue(migrationSuccess);
 
-    XCTAssertEqual(13, databaseQueue.databaseVersion);
+    XCTAssertEqual(13, database.databaseVersion);
 
     //TODO jaanus: check also against reference db at version 13
 }
