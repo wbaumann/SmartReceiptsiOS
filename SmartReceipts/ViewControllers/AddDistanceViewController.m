@@ -19,6 +19,9 @@
 #import "WBCurrency.h"
 #import "WBPreferences.h"
 #import "WBDateFormatter.h"
+#import "NSString+Validation.h"
+#import "NSMutableString+Issues.h"
+#import "UIAlertView+Blocks.h"
 
 @interface AddDistanceViewController ()
 
@@ -83,6 +86,7 @@
     [self.datePickerCell setChangeHandler:^(NSDate *selected) {
         [weakSelf.dateCell setValue:[dateFormatter formattedDate:selected inTimeZone:timeZone]];
     }];
+    [self.datePickerCell setMinDate:self.trip.startDate maxDate:self.trip.endDate];
 
     self.commentCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.commentCell setTitle:NSLocalizedString(@"Comment", nil)];
@@ -100,7 +104,32 @@
 }
 
 - (IBAction)saveDistance {
+    NSString *issues = [self validateInput];
+    if (issues.hasValue) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Can't add distance", nil)
+                                                            message:issues
+                                                   cancelButtonItem:[RIButtonItem itemWithLabel:@"OK"]
+                                                   otherButtonItems:nil];
+        [alertView show];
+        return;
+    }
+}
 
+- (NSString *)validateInput {
+    NSMutableString *issues = [NSMutableString string];
+    if (![[self.distanceCell value] hasValue]) {
+        [issues appendIssue:NSLocalizedString(@"Distance not entered", nil)];
+    }
+
+    if (![self.rateCell value].hasValue) {
+        [issues appendIssue:NSLocalizedString(@"Rate not entered", nil)];
+    }
+
+    if (![self.locationCell value].hasValue) {
+        [issues appendIssue:NSLocalizedString(@"Location not entered", nil)];
+    }
+
+    return [NSString stringWithString:issues];
 }
 
 @end

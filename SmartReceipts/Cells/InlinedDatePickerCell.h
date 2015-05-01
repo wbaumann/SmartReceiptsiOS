@@ -16,5 +16,6 @@ typedef void (^InlinedDatePickerSelectionChangeBlock)(NSDate *selected);
 @property (nonatomic, copy) InlinedDatePickerSelectionChangeBlock changeHandler;
 
 - (void)setDate:(NSDate *)date;
+- (void)setMinDate:(NSDate *)minDate maxDate:(NSDate *)maxDate;
 
 @end

@@ -28,4 +28,9 @@
     [self.datePicker setDate:date];
 }
 
+- (void)setMinDate:(NSDate *)minDate maxDate:(NSDate *)maxDate {
+    [self.datePicker setMinimumDate:minDate];
+    [self.datePicker setMaximumDate:maxDate];
+}
+
 @end

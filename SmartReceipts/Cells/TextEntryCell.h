@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong, readonly) UITextField *entryField;
 
+- (NSString *)value;
+
 @end
