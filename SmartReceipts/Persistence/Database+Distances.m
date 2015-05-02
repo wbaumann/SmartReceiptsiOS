@@ -47,7 +47,7 @@
 }
 
 - (NSArray *)fetchAllDistancesForTrip:(WBTrip *)trip {
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ?", DistanceTable.TABLE_NAME, DistanceTable.COLUMN_PARENT];
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ? ORDER BY %@ DESC", DistanceTable.TABLE_NAME, DistanceTable.COLUMN_PARENT, DistanceTable.COLUMN_DATE];
     NSMutableArray *result = [NSMutableArray array];
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         FMResultSet *resultSet = [db executeQuery:query, trip.name];
