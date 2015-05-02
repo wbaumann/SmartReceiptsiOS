@@ -39,8 +39,8 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
     [self.tableView setRowHeight:78];
 }
 
-- (NSArray *)fetchPresentedObjects {
-    return [[Database sharedInstance] fetchAllDistancesForTrip:self.trip];
+- (FetchedModelAdapter *)createFetchedModelAdapter {
+    return [[Database sharedInstance] fetchedAdapterForDistancesInTrip:self.trip];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {

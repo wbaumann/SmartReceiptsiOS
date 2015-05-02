@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FetchedModel.h"
 
 @class WBCurrency;
 @class WBPrice;
 @class WBTrip;
 @class FMResultSet;
 
-@interface Distance : NSObject
+@interface Distance : NSObject <FetchedModel>
 
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, strong, readonly) NSDecimalNumber *distance;
@@ -25,7 +26,5 @@
 
 - (id)initWithTrip:(WBTrip *)trip distance:(NSDecimalNumber *)distance rate:(WBPrice *)rate location:(NSString *)location date:(NSDate *)date timeZone:(NSTimeZone *)timeZone comment:(NSString *)comment;
 - (WBPrice *)totalRate;
-
-+ (Distance *)createFromResultSet:(FMResultSet *)resultSet;
 
 @end

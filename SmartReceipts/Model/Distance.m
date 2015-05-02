@@ -47,18 +47,16 @@
     return [WBPrice priceWithAmount:totalValue currencyCode:self.rate.currency.code];
 }
 
-+ (Distance *)createFromResultSet:(FMResultSet *)resultSet {
-    Distance *distance = [[Distance alloc] init];
-    [distance setObjectId:(NSUInteger *) [resultSet intForColumn:DistanceTable.COLUMN_ID]];
-    [distance setDistance:[NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:DistanceTable.COLUMN_DISTANCE]]];
+- (void)loadDataFromResultSet:(FMResultSet *)resultSet {
+    [self setObjectId:(NSUInteger *) [resultSet intForColumn:DistanceTable.COLUMN_ID]];
+    [self setDistance:[NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:DistanceTable.COLUMN_DISTANCE]]];
     NSString *rateString = [resultSet stringForColumn:DistanceTable.COLUMN_RATE];
     NSString *currency = [resultSet stringForColumn:DistanceTable.COLUMN_RATE_CURRENCY];
-    [distance setRate:[WBPrice priceWithAmount:[NSDecimalNumber decimalNumberOrZero:rateString] currencyCode:currency]];
-    [distance setLocation:[resultSet stringForColumn:DistanceTable.COLUMN_LOCATION]];
-    [distance setDate:[resultSet dateForColumn:DistanceTable.COLUMN_DATE]];
-    [distance setTimeZone:[NSTimeZone timeZoneWithName:[resultSet stringForColumn:DistanceTable.COLUMN_TIMEZONE]]];
-    [distance setComment:[resultSet stringForColumn:DistanceTable.COLUMN_COMMENT]];
-    return distance;
+    [self setRate:[WBPrice priceWithAmount:[NSDecimalNumber decimalNumberOrZero:rateString] currencyCode:currency]];
+    [self setLocation:[resultSet stringForColumn:DistanceTable.COLUMN_LOCATION]];
+    [self setDate:[resultSet dateForColumn:DistanceTable.COLUMN_DATE]];
+    [self setTimeZone:[NSTimeZone timeZoneWithName:[resultSet stringForColumn:DistanceTable.COLUMN_TIMEZONE]]];
+    [self setComment:[resultSet stringForColumn:DistanceTable.COLUMN_COMMENT]];
 }
 
 @end

@@ -14,7 +14,7 @@
 #import "WBTrip.h"
 #import "WBPrice.h"
 #import "WBCurrency.h"
-#import "FMDatabase.h"
+#import "FetchedModelAdapter.h"
 
 @implementation Database (Distances)
 
@@ -46,18 +46,13 @@
     return [self executeQuery:insert];
 }
 
-- (NSArray *)fetchAllDistancesForTrip:(WBTrip *)trip {
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ? ORDER BY %@ DESC", DistanceTable.TABLE_NAME, DistanceTable.COLUMN_PARENT, DistanceTable.COLUMN_DATE];
-    NSMutableArray *result = [NSMutableArray array];
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet *resultSet = [db executeQuery:query, trip.name];
-        while ([resultSet next]) {
-            Distance *distance = [Distance createFromResultSet:resultSet];
-            [distance setTrip:trip];
-            [result addObject:distance];
-        }
-    }];
-    return [NSArray arrayWithArray:result];
+- (FetchedModelAdapter *)fetchedAdapterForDistancesInTrip:(WBTrip *)trip {
+    FetchedModelAdapter *adapter = [[FetchedModelAdapter alloc] initWithDatabase:self];
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = :parent ORDER BY %@ DESC", DistanceTable.TABLE_NAME, DistanceTable.COLUMN_PARENT, DistanceTable.COLUMN_DATE];
+    [adapter setFetchQuery:query parameters:@{@"parent": trip.name}];
+    [adapter setModelClass:[Distance class]];
+    [adapter fetch];
+    return adapter;
 }
 
 @end

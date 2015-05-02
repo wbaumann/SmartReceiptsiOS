@@ -11,11 +11,12 @@
 
 @class Distance;
 @class WBTrip;
+@class FetchedModelAdapter;
 
 @interface Database (Distances)
 
 - (BOOL)createDistanceTable;
 - (BOOL)saveDistance:(Distance *)distance;
-- (NSArray *)fetchAllDistancesForTrip:(WBTrip *)trip;
+- (FetchedModelAdapter *)fetchedAdapterForDistancesInTrip:(WBTrip *)trip;
 
 @end

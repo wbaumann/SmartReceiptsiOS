@@ -15,6 +15,7 @@
 #import "WBTrip.h"
 #import "WBPrice.h"
 #import "Database+Distances.h"
+#import "DatabaseTestsHelper.h"
 
 @interface DatabaseDistancesTest : DatabaseTestsBase
 
@@ -34,7 +35,7 @@
 }
 
 - (Distance *)createTestDistance {
-    WBTrip *testTrip = [[WBTrip alloc] initWithName:@"Test trip" startDate:[NSDate date] endDate:[NSDate date] currencyCode:@"EUR"];
+    WBTrip *testTrip = [self.db createTestTrip];
     return [[Distance alloc] initWithTrip:testTrip
                                  distance:[NSDecimalNumber decimalNumberWithString:@"10"]
                                      rate:[WBPrice priceWithAmount:[NSDecimalNumber decimalNumberWithString:@"1"] currencyCode:@"EUR"]

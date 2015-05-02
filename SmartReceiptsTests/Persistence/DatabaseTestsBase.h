@@ -8,14 +8,15 @@
 
 @class FMDatabaseQueue;
 @class Database;
+@class DatabaseTestsHelper;
 
 @interface DatabaseTestsBase : XCTestCase
 
 @property (nonatomic, copy) NSString *testDBPath;
-@property (nonatomic, strong) Database *db;
+@property (nonatomic, strong) DatabaseTestsHelper *db;
 
 - (void)deleteTestDatabase;
-- (Database *)createAndOpenDatabaseWithPath:(NSString *)path;
-- (Database *)createAndOpenDatabaseWithPath:(NSString *)path migrated:(BOOL)migrated;
+- (DatabaseTestsHelper *)createAndOpenDatabaseWithPath:(NSString *)path;
+- (DatabaseTestsHelper *)createAndOpenDatabaseWithPath:(NSString *)path migrated:(BOOL)migrated;
 
 @end

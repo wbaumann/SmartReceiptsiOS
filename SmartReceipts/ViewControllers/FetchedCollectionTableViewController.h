@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class FetchedModelAdapter;
+
 @interface FetchedCollectionTableViewController : UITableViewController
 
 - (void)setPresentationCellNib:(UINib *)nib;
-- (NSArray *)fetchPresentedObjects;
+- (FetchedModelAdapter *)createFetchedModelAdapter;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object;
 - (void)contentChanged;
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;

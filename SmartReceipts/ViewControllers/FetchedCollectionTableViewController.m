@@ -10,12 +10,14 @@
 #import "HUD.h"
 #import "WBAppDelegate.h"
 #import "Constants.h"
+#import "FetchedModelAdapter.h"
+#import "FetchedModelAdapterDelegate.h"
 
 NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCollectionTableViewControllerCellIdentifier";
 
-@interface FetchedCollectionTableViewController ()
+@interface FetchedCollectionTableViewController () <FetchedModelAdapterDelegate>
 
-@property (nonatomic, strong) NSArray *presentedObjects;
+@property (nonatomic, strong) FetchedModelAdapter *presentedObjects;
 
 @end
 
@@ -54,7 +56,7 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FetchedCollectionTableViewControllerCellIdentifier];
-    id object = self.presentedObjects[indexPath.row];
+    id object = [self objectAtIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath withObject:object];
     return cell;
 }
@@ -70,7 +72,8 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 - (void)fetchObjects {
     [HUD showUIBlockingIndicatorWithText:@""];
     dispatch_async([[WBAppDelegate instance] dataQueue], ^{
-        NSArray *objects = [self fetchPresentedObjects];
+        FetchedModelAdapter *objects = [self createFetchedModelAdapter];
+        [objects setDelegate:self];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self setPresentedObjects:objects];
             [self.tableView reloadData];
@@ -80,17 +83,17 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
     });
 }
 
-- (NSArray *)fetchPresentedObjects {
+- (FetchedModelAdapter *)createFetchedModelAdapter {
     ABSTRACT_METHOD
     return nil;
 }
 
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
-    return self.presentedObjects[indexPath.row];
+    return [self.presentedObjects objectAtIndex:indexPath.row];
 }
 
 - (NSUInteger)numberOfItems {
-    return self.presentedObjects.count;
+    return self.presentedObjects.numberOfObjects;
 }
 
 @end
