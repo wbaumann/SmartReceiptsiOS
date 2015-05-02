@@ -41,10 +41,13 @@
 }
 
 - (Database *)createAndOpenDatabaseWithPath:(NSString *)path {
-    Database *db = [[Database alloc] initWithDatabasePath:path];
-    [db open:NO];
-    return db;
+    return [self createAndOpenDatabaseWithPath:path migrated:NO];
 }
 
+- (Database *)createAndOpenDatabaseWithPath:(NSString *)path migrated:(BOOL)migrated {
+    Database *db = [[Database alloc] initWithDatabasePath:path];
+    [db open:migrated];
+    return db;
+}
 
 @end

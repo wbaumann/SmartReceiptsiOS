@@ -128,11 +128,21 @@
     NSString *location = self.locationCell.value;
     NSDate *date = self.datePickerCell.value;
     NSString *comment = self.commentCell.value;
-    Distance *distanceObject = [[Distance alloc] initWithDistance:distance rate:[WBPrice priceWithAmount:rate currencyCode:currency] location:location date:date comment:comment];
+    Distance *distanceObject = [[Distance alloc] initWithTrip:self.trip
+                                                     distance:distance
+                                                         rate:[WBPrice priceWithAmount:rate currencyCode:currency]
+                                                     location:location
+                                                         date:date
+                                                     timeZone:self.trip.startTimeZone
+                                                      comment:comment];
     if ([[Database sharedInstance] saveDistance:distanceObject]) {
-
+        [self.navigationController popViewControllerAnimated:YES];
     } else {
-
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Distance not added", nil)
+                                                            message:NSLocalizedString(@"For some reason distance could not be added", nil)
+                                                   cancelButtonItem:[RIButtonItem itemWithLabel:@"OK"]
+                                                   otherButtonItems:nil];
+        [alertView show];
     }
 }
 

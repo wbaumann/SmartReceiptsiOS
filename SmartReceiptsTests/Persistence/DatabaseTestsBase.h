@@ -16,5 +16,6 @@
 
 - (void)deleteTestDatabase;
 - (Database *)createAndOpenDatabaseWithPath:(NSString *)path;
+- (Database *)createAndOpenDatabaseWithPath:(NSString *)path migrated:(BOOL)migrated;
 
 @end

@@ -6,11 +6,14 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <FMDB/FMDatabaseQueue.h>
 #import "Database+Distances.h"
 #import "DatabaseTableNames.h"
 #import "Distance.h"
 #import "Database+Functions.h"
+#import "DatabaseQueryBuilder.h"
+#import "WBTrip.h"
+#import "WBPrice.h"
+#import "WBCurrency.h"
 
 @implementation Database (Distances)
 
@@ -30,7 +33,16 @@
 }
 
 - (BOOL)saveDistance:(Distance *)distance {
-    return NO;
+    DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:DistanceTable.TABLE_NAME];
+    [insert addParam:DistanceTable.COLUMN_PARENT value:distance.trip.name];
+    [insert addParam:DistanceTable.COLUMN_DISTANCE value:distance.distance];
+    [insert addParam:DistanceTable.COLUMN_LOCATION value:distance.location];
+    [insert addParam:DistanceTable.COLUMN_DATE value:distance.date];
+    [insert addParam:DistanceTable.COLUMN_TIMEZONE value:distance.timeZone.name];
+    [insert addParam:DistanceTable.COLUMN_COMMENT value:distance.comment];
+    [insert addParam:DistanceTable.COLUMN_RATE_CURRENCY value:distance.rate.currency.code];
+    [insert addParam:DistanceTable.COLUMN_RATE value:distance.rate.amount];
+    return [self executeQuery:insert];
 }
 
 @end

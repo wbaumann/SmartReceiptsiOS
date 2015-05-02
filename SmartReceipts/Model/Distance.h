@@ -10,13 +10,18 @@
 
 @class WBCurrency;
 @class WBPrice;
+@class WBTrip;
 
 @interface Distance : NSObject
 
-- (id)initWithDistance:(NSDecimalNumber *)distance
-                  rate:(WBPrice *)rate
-              location:(NSString *)location
-                  date:(NSDate *)date
-               comment:(NSString *)comment;
+@property (nonatomic, strong, readonly) WBTrip *trip;
+@property (nonatomic, strong, readonly) NSDecimalNumber *distance;
+@property (nonatomic, strong, readonly) WBPrice *rate;
+@property (nonatomic, copy, readonly) NSString *location;
+@property (nonatomic, strong, readonly) NSDate *date;
+@property (nonatomic, strong, readonly) NSTimeZone *timeZone;
+@property (nonatomic, copy, readonly) NSString *comment;
+
+- (id)initWithTrip:(WBTrip *)trip distance:(NSDecimalNumber *)distance rate:(WBPrice *)rate location:(NSString *)location date:(NSDate *)date timeZone:(NSTimeZone *)timeZone comment:(NSString *)comment;
 
 @end

@@ -8,6 +8,8 @@
 
 #import "Database.h"
 
+@class DatabaseQueryBuilder;
+
 @interface Database (Functions)
 
 - (BOOL)executeUpdate:(NSString *)sqlStatement;
@@ -15,5 +17,6 @@
 - (NSUInteger)databaseVersion;
 - (void)setDatabaseVersion:(NSUInteger)version;
 - (NSUInteger)countRowsInTable:(NSString *)tableName;
+- (BOOL)executeQuery:(DatabaseQueryBuilder *)query;
 
 @end
