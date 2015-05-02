@@ -442,19 +442,4 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     }];
 }
 
-- (IBAction)actionDistance:(id)sender {
-    NSString *totalPrefix = NSLocalizedString(@"Total", nil);
-    NSString *total = [NSString stringWithFormat:@"%@: %.2f", totalPrefix, self.trip.miles];
-    
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle:total
-                          message:NSLocalizedString(@"Add distance", nil)
-                          delegate:self
-                          cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                          otherButtonTitles:NSLocalizedString(@"Add", nil), nil];
-    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
-    [alert textFieldAtIndex:0].keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-    [alert textFieldAtIndex:0].delegate = self;
-    [alert show];
-}
 @end

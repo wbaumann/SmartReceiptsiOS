@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FetchedCollectionTableViewController.h"
 
 @class WBTrip;
 
-@interface TripDistancesViewController : UITableViewController
+@interface TripDistancesViewController : FetchedCollectionTableViewController
 
 @property (nonatomic, strong) WBTrip *trip;
 

@@ -10,10 +10,12 @@
 #import "Database.h"
 
 @class Distance;
+@class WBTrip;
 
 @interface Database (Distances)
 
 - (BOOL)createDistanceTable;
 - (BOOL)saveDistance:(Distance *)distance;
+- (NSArray *)fetchAllDistancesForTrip:(WBTrip *)trip;
 
 @end

@@ -101,6 +101,9 @@
 		EA07BF561AF4D129004D17F6 /* DatabaseQueryBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF551AF4D129004D17F6 /* DatabaseQueryBuilder.m */; };
 		EA07BF591AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF581AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m */; };
 		EA07BF5B1AF4DA66004D17F6 /* DatabaseDistancesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF5A1AF4DA66004D17F6 /* DatabaseDistancesTest.m */; };
+		EA07BF5F1AF4E801004D17F6 /* DistanceSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF5D1AF4E801004D17F6 /* DistanceSummaryCell.m */; };
+		EA07BF601AF4E801004D17F6 /* DistanceSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA07BF5E1AF4E801004D17F6 /* DistanceSummaryCell.xib */; };
+		EA07BF631AF4EC1E004D17F6 /* FetchedCollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF621AF4EC1E004D17F6 /* FetchedCollectionTableViewController.m */; };
 		EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */; };
 		EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C968D1AEBA4F600A2A5F9 /* ReportCSVTable.m */; };
 		EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96901AEBA50500A2A5F9 /* ReportPDFTable.m */; };
@@ -343,6 +346,11 @@
 		EA07BF551AF4D129004D17F6 /* DatabaseQueryBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseQueryBuilder.m; sourceTree = "<group>"; };
 		EA07BF581AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseQueryBuilderTest.m; sourceTree = "<group>"; };
 		EA07BF5A1AF4DA66004D17F6 /* DatabaseDistancesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseDistancesTest.m; sourceTree = "<group>"; };
+		EA07BF5C1AF4E801004D17F6 /* DistanceSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceSummaryCell.h; sourceTree = "<group>"; };
+		EA07BF5D1AF4E801004D17F6 /* DistanceSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceSummaryCell.m; sourceTree = "<group>"; };
+		EA07BF5E1AF4E801004D17F6 /* DistanceSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistanceSummaryCell.xib; sourceTree = "<group>"; };
+		EA07BF611AF4EC1E004D17F6 /* FetchedCollectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedCollectionTableViewController.h; sourceTree = "<group>"; };
+		EA07BF621AF4EC1E004D17F6 /* FetchedCollectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedCollectionTableViewController.m; sourceTree = "<group>"; };
 		EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtilsTest.m; sourceTree = "<group>"; };
 		EA3C968C1AEBA4F600A2A5F9 /* ReportCSVTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportCSVTable.h; sourceTree = "<group>"; };
 		EA3C968D1AEBA4F600A2A5F9 /* ReportCSVTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportCSVTable.m; sourceTree = "<group>"; };
@@ -958,6 +966,9 @@
 		EA4DC9931AF1578300CEF1B9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				EA07BF5C1AF4E801004D17F6 /* DistanceSummaryCell.h */,
+				EA07BF5D1AF4E801004D17F6 /* DistanceSummaryCell.m */,
+				EA07BF5E1AF4E801004D17F6 /* DistanceSummaryCell.xib */,
 				EA07BF311AF3B703004D17F6 /* InlinedDatePickerCell.h */,
 				EA07BF321AF3B703004D17F6 /* InlinedDatePickerCell.m */,
 				EA07BF331AF3B703004D17F6 /* InlinedDatePickerCell.xib */,
@@ -1125,6 +1136,8 @@
 			children = (
 				EA4DC9901AF154E000CEF1B9 /* AddDistanceViewController.h */,
 				EA4DC9911AF154E000CEF1B9 /* AddDistanceViewController.m */,
+				EA07BF611AF4EC1E004D17F6 /* FetchedCollectionTableViewController.h */,
+				EA07BF621AF4EC1E004D17F6 /* FetchedCollectionTableViewController.m */,
 				EA4C5CBF1AF286990083FDD7 /* InputCellsSection.h */,
 				EA4C5CC01AF286990083FDD7 /* InputCellsSection.m */,
 				EA4DC9941AF1580100CEF1B9 /* InputCellsViewController.h */,
@@ -1290,6 +1303,7 @@
 				8421A1FD1907E304001DF38D /* Localizable.strings in Resources */,
 				84D6719718D3392D00B704A4 /* dropdown.png in Resources */,
 				EA4C5CC61AF287330083FDD7 /* TitledTextEntryCell.xib in Resources */,
+				EA07BF601AF4E801004D17F6 /* DistanceSummaryCell.xib in Resources */,
 				84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */,
 				841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */,
 				84F4F34E18CFCCD000F69A35 /* InfoPlist.strings in Resources */,
@@ -1480,6 +1494,7 @@
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */,
 				843F623C18EF9A5F001ACBB1 /* MBProgressHUD.m in Sources */,
 				EA4DC9961AF1580100CEF1B9 /* InputCellsViewController.m in Sources */,
+				EA07BF631AF4EC1E004D17F6 /* FetchedCollectionTableViewController.m in Sources */,
 				EA3C969B1AEBA93000A2A5F9 /* ReportCSVGenerator.m in Sources */,
 				84B4691E18E98838006E7A77 /* WBObservableReceipts.m in Sources */,
 				EA07BF561AF4D129004D17F6 /* DatabaseQueryBuilder.m in Sources */,
@@ -1497,6 +1512,7 @@
 				EA8D818B1AEA7BA400BAC943 /* ReceiptColumnUserID.m in Sources */,
 				EA8D819D1AEA7C4200BAC943 /* ReceiptColumnComment.m in Sources */,
 				EA5963E31AF2912900935344 /* PickerCell.m in Sources */,
+				EA07BF5F1AF4E801004D17F6 /* DistanceSummaryCell.m in Sources */,
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */,
 				8472F01818D6F50B00929C5B /* WBNewTripViewController.m in Sources */,

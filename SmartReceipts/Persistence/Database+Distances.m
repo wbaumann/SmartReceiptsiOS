@@ -14,6 +14,7 @@
 #import "WBTrip.h"
 #import "WBPrice.h"
 #import "WBCurrency.h"
+#import "FMDatabase.h"
 
 @implementation Database (Distances)
 
@@ -43,6 +44,20 @@
     [insert addParam:DistanceTable.COLUMN_RATE_CURRENCY value:distance.rate.currency.code];
     [insert addParam:DistanceTable.COLUMN_RATE value:distance.rate.amount];
     return [self executeQuery:insert];
+}
+
+- (NSArray *)fetchAllDistancesForTrip:(WBTrip *)trip {
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ?", DistanceTable.TABLE_NAME, DistanceTable.COLUMN_PARENT];
+    NSMutableArray *result = [NSMutableArray array];
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet *resultSet = [db executeQuery:query, trip.name];
+        while ([resultSet next]) {
+            Distance *distance = [Distance createFromResultSet:resultSet];
+            [distance setTrip:trip];
+            [result addObject:distance];
+        }
+    }];
+    return [NSArray arrayWithArray:result];
 }
 
 @end

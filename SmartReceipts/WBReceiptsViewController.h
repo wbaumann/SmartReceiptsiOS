@@ -29,7 +29,6 @@
 @property WBTrip* trip;
 
 - (IBAction)actionCamera:(id)sender;
-- (IBAction)actionDistance:(id)sender;
 
 - (void) swapUpReceipt:(WBReceipt*) receipt;
 - (void) swapDownReceipt:(WBReceipt*) receipt;

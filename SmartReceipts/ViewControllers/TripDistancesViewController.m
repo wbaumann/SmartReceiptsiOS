@@ -9,10 +9,20 @@
 #import "TripDistancesViewController.h"
 #import "WBTrip.h"
 #import "AddDistanceViewController.h"
+#import "DistanceSummaryCell.h"
+#import "UIView+LoadHelpers.h"
+#import "Database.h"
+#import "Database+Distances.h"
+#import "Distance.h"
+#import "WBDateFormatter.h"
+#import "WBPrice.h"
 
 static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddViewControllerSegue";
 
 @interface TripDistancesViewController ()
+
+@property (nonatomic, strong) WBDateFormatter *dateFormatter;
+@property (nonatomic, assign) CGFloat maxRateWidth;
 
 @end
 
@@ -22,77 +32,26 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
     [super viewDidLoad];
 
     [self.navigationItem setTitle:NSLocalizedString(@"Distances", nil)];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self setDateFormatter:[[WBDateFormatter alloc] init]];
+
+    [self setPresentationCellNib:[DistanceSummaryCell viewNib]];
+    [self.tableView setRowHeight:78];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSArray *)fetchPresentedObjects {
+    return [[Database sharedInstance] fetchAllDistancesForTrip:self.trip];
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {
+    DistanceSummaryCell *summaryCell = (DistanceSummaryCell *) cell;
+    Distance *distance = object;
+    WBPrice *rate = distance.rate;
+    summaryCell.rateLabel.text = rate.currencyFormattedPrice;
+    summaryCell.destinationLabel.text = distance.location;
+    summaryCell.totalLabel.text = distance.totalRate.currencyFormattedPrice;
+    summaryCell.dateLabel.text = [self.dateFormatter formattedDate:distance.date inTimeZone:distance.timeZone];
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([PushDistanceAddViewControllerSegue isEqualToString:segue.identifier]) {
@@ -103,6 +62,27 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
 
 - (IBAction)done {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)contentChanged {
+    self.maxRateWidth = [self findMaxRateWidth];
+
+    for (DistanceSummaryCell *cell in self.tableView.visibleCells) {
+        [cell setPriceLabelWidth:self.maxRateWidth];
+    }
+}
+
+- (CGFloat)findMaxRateWidth {
+    CGFloat max = 0;
+    for (NSUInteger row = 0; row < self.numberOfItems; row++) {
+        Distance *distance = [self objectAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+        NSString *rateString = distance.rate.currencyFormattedPrice;
+        CGRect bounds = [rateString boundingRectWithSize:CGSizeMake(100, 100) options:NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:21]} context:nil];
+        NSLog(@">>>>>> %@ - %@", rateString, NSStringFromCGRect(bounds));
+        max = MAX(max, CGRectGetWidth(bounds));
+    }
+    
+    return max;
 }
 
 @end
