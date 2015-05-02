@@ -78,8 +78,7 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
         Distance *distance = [self objectAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
         NSString *rateString = distance.rate.currencyFormattedPrice;
         CGRect bounds = [rateString boundingRectWithSize:CGSizeMake(100, 100) options:NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:21]} context:nil];
-        NSLog(@">>>>>> %@ - %@", rateString, NSStringFromCGRect(bounds));
-        max = MAX(max, CGRectGetWidth(bounds));
+        max = MAX(max, CGRectGetWidth(bounds) + 10);
     }
     
     return max;
