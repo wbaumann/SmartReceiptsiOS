@@ -8,11 +8,11 @@
 
 #import <FMDB/FMDatabaseQueue.h>
 #import "DatabaseUpgradeToVersion13.h"
-#import "FMDatabaseQueue+QueueShortcuts.h"
 #import "WBPreferences.h"
 #import "DatabaseTableNames.h"
 #import "Database.h"
 #import "Database+Distances.h"
+#import "Database+Functions.h"
 
 @implementation DatabaseUpgradeToVersion13
 
@@ -21,7 +21,6 @@
 }
 
 - (BOOL)migrate:(Database *)database {
-    FMDatabaseQueue *databaseQueue = database.databaseQueue;
 
     NSArray *distanceMigrateBase = @[@"INSERT INTO ", DistanceTable.TABLE_NAME, @"(", DistanceTable.COLUMN_PARENT, @", ", DistanceTable.COLUMN_DISTANCE, @", ", DistanceTable.COLUMN_LOCATION, @", ", DistanceTable.COLUMN_DATE, @", ", DistanceTable.COLUMN_TIMEZONE, @", ", DistanceTable.COLUMN_COMMENT, @", ", DistanceTable.COLUMN_RATE_CURRENCY, @")",
             @" SELECT ", TripsTable.COLUMN_NAME, @", ", TripsTable.COLUMN_MILEAGE, @" , \"\" as ", DistanceTable.COLUMN_LOCATION, @", ", TripsTable.COLUMN_FROM, @", ", TripsTable.COLUMN_FROM_TIMEZONE, @" , \"\" as ", DistanceTable.COLUMN_COMMENT, @", "];
@@ -33,11 +32,11 @@
     NSArray *alterReceiptsWithProcessingStatus = @[@"ALTER TABLE ", ReceiptsTable.TABLE_NAME, @" ADD ", ReceiptsTable.COLUMN_PROCESSING_STATUS, @" TEXT"];
 
     return [database createDistanceTable]
-            && [databaseQueue executeUpdateWithStatementComponents:distanceMigrateNotNullCurrency]
-            && [databaseQueue executeUpdateWithStatementComponents:distanceMigrateNullCurrency]
-            && [databaseQueue executeUpdateWithStatementComponents:alterTripsWithCostCenter]
-            && [databaseQueue executeUpdateWithStatementComponents:alterTripsWithProcessingStatus]
-            && [databaseQueue executeUpdateWithStatementComponents:alterReceiptsWithProcessingStatus];
+            && [database executeUpdateWithStatementComponents:distanceMigrateNotNullCurrency]
+            && [database executeUpdateWithStatementComponents:distanceMigrateNullCurrency]
+            && [database executeUpdateWithStatementComponents:alterTripsWithCostCenter]
+            && [database executeUpdateWithStatementComponents:alterTripsWithProcessingStatus]
+            && [database executeUpdateWithStatementComponents:alterReceiptsWithProcessingStatus];
 }
 
 @end

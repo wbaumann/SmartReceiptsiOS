@@ -12,6 +12,7 @@
 #import "DatabaseCreateAtVersion11.h"
 #import "DatabaseUpgradeToVersion12.h"
 #import "DatabaseTableNames.h"
+#import "Database+Functions.h"
 
 @interface DatabaseUpgradeToVersion12Test : DatabaseTestsBase
 

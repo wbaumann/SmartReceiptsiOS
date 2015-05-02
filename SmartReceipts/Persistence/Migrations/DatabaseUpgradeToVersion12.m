@@ -7,16 +7,10 @@
 //
 
 #import "DatabaseUpgradeToVersion12.h"
-#import "PaymentMethodsHelper.h"
-#import "FMDatabaseQueue+QueueShortcuts.h"
 #import "DatabaseTableNames.h"
 #import "Database.h"
-
-@interface PaymentMethodsHelper (Expose)
-
-+ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue;
-
-@end
+#import "Database+PaymentMethods.h"
+#import "Database+Functions.h"
 
 @implementation DatabaseUpgradeToVersion12
 
@@ -25,14 +19,12 @@
 }
 
 - (BOOL)migrate:(Database *)database {
-    FMDatabaseQueue *queue = database.databaseQueue;
-
     NSArray *alterTrips = @[@"ALTER TABLE ", TripsTable.TABLE_NAME, @" ADD ", TripsTable.COLUMN_FILTERS, @" TEXT"];
     NSArray *alterReceipts = @[@"ALTER TABLE ", ReceiptsTable.TABLE_NAME, @" ADD ", ReceiptsTable.COLUMN_PAYMENT_METHOD_ID, @" INTEGER REFERENCES ", PaymentMethodsTable.TABLE_NAME, @" ON DELETE NO ACTION"];
 
-    return [PaymentMethodsHelper createTableInQueue:queue]
-            && [queue executeUpdateWithStatementComponents:alterTrips]
-            && [queue executeUpdateWithStatementComponents:alterReceipts];
+    return [database createPaymentMethodsTable]
+            && [database executeUpdateWithStatementComponents:alterTrips]
+            && [database executeUpdateWithStatementComponents:alterReceipts];
 }
 
 @end

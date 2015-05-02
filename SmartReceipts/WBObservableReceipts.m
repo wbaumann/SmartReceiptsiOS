@@ -53,7 +53,7 @@
     [self.delegate observableReceipts:self replacedReceipt:oldReceipt toReceipt:newReceipt fromIndex:oldPos toIndex:newPos];
 }
 
--(WBReceipt*) receiptAtIndex:(int)index {
+- (WBReceipt *)receiptAtIndex:(NSUInteger)index {
     return [array objectAtIndex:index];
 }
 

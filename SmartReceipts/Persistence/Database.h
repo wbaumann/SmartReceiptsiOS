@@ -17,8 +17,5 @@
 
 - (BOOL)open;
 - (void)close;
-- (NSUInteger)databaseVersion;
-- (void)setDatabaseVersion:(NSUInteger)version;
-- (NSUInteger)countRowsInTable:(NSString *)tableName;
 
 @end

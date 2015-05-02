@@ -96,6 +96,8 @@
 		EA07BF471AF3FD1D004D17F6 /* Distance.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF461AF3FD1D004D17F6 /* Distance.m */; };
 		EA07BF4A1AF40066004D17F6 /* DatabaseTableNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF491AF40066004D17F6 /* DatabaseTableNames.m */; };
 		EA07BF4D1AF400CA004D17F6 /* Database+Distances.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF4C1AF400CA004D17F6 /* Database+Distances.m */; };
+		EA07BF501AF4CC19004D17F6 /* Database+Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF4F1AF4CC19004D17F6 /* Database+Functions.m */; };
+		EA07BF531AF4CD26004D17F6 /* Database+PaymentMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF521AF4CD26004D17F6 /* Database+PaymentMethods.m */; };
 		EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */; };
 		EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C968D1AEBA4F600A2A5F9 /* ReportCSVTable.m */; };
 		EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96901AEBA50500A2A5F9 /* ReportPDFTable.m */; };
@@ -125,11 +127,8 @@
 		EA5963FB1AF2A07200935344 /* InlinedPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963F91AF2A07200935344 /* InlinedPickerCell.m */; };
 		EA5963FC1AF2A07200935344 /* InlinedPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5963FA1AF2A07200935344 /* InlinedPickerCell.xib */; };
 		EA69EF151AEFC81A00276B70 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF141AEFC81A00276B70 /* Database.m */; };
-		EA69EF181AEFCBB600276B70 /* PaymentMethodsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF171AEFCBB600276B70 /* PaymentMethodsHelper.m */; };
-		EA69EF1E1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF1D1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m */; };
 		EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF231AEFEDCC00276B70 /* DatabaseMigrationTest.m */; };
 		EA69EF261AEFEE5D00276B70 /* DatabaseTestsBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF251AEFEE5D00276B70 /* DatabaseTestsBase.m */; };
-		EA69EF281AEFF11900276B70 /* FMDatabaseQueue+QueueShortcuts.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF1D1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m */; };
 		EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF291AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m */; };
 		EA69EF2D1AF0907300276B70 /* receipts_at_v11.db in Resources */ = {isa = PBXBuildFile; fileRef = EA69EF2C1AF0907300276B70 /* receipts_at_v11.db */; };
 		EA69EF301AF0914000276B70 /* PaymentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF2F1AF0914000276B70 /* PaymentMethod.m */; };
@@ -333,6 +332,10 @@
 		EA07BF491AF40066004D17F6 /* DatabaseTableNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTableNames.m; sourceTree = "<group>"; };
 		EA07BF4B1AF400CA004D17F6 /* Database+Distances.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Database+Distances.h"; path = "../Database+Distances.h"; sourceTree = "<group>"; };
 		EA07BF4C1AF400CA004D17F6 /* Database+Distances.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Database+Distances.m"; path = "../Database+Distances.m"; sourceTree = "<group>"; };
+		EA07BF4E1AF4CC19004D17F6 /* Database+Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Database+Functions.h"; sourceTree = "<group>"; };
+		EA07BF4F1AF4CC19004D17F6 /* Database+Functions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Database+Functions.m"; sourceTree = "<group>"; };
+		EA07BF511AF4CD26004D17F6 /* Database+PaymentMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Database+PaymentMethods.h"; sourceTree = "<group>"; };
+		EA07BF521AF4CD26004D17F6 /* Database+PaymentMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Database+PaymentMethods.m"; sourceTree = "<group>"; };
 		EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtilsTest.m; sourceTree = "<group>"; };
 		EA3C968C1AEBA4F600A2A5F9 /* ReportCSVTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportCSVTable.h; sourceTree = "<group>"; };
 		EA3C968D1AEBA4F600A2A5F9 /* ReportCSVTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportCSVTable.m; sourceTree = "<group>"; };
@@ -387,10 +390,6 @@
 		EA5963FA1AF2A07200935344 /* InlinedPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InlinedPickerCell.xib; sourceTree = "<group>"; };
 		EA69EF131AEFC81A00276B70 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		EA69EF141AEFC81A00276B70 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
-		EA69EF161AEFCBB600276B70 /* PaymentMethodsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentMethodsHelper.h; sourceTree = "<group>"; };
-		EA69EF171AEFCBB600276B70 /* PaymentMethodsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentMethodsHelper.m; sourceTree = "<group>"; };
-		EA69EF1C1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabaseQueue+QueueShortcuts.h"; sourceTree = "<group>"; };
-		EA69EF1D1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDatabaseQueue+QueueShortcuts.m"; sourceTree = "<group>"; };
 		EA69EF231AEFEDCC00276B70 /* DatabaseMigrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseMigrationTest.m; sourceTree = "<group>"; };
 		EA69EF251AEFEE5D00276B70 /* DatabaseTestsBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTestsBase.m; sourceTree = "<group>"; };
 		EA69EF271AEFEEAD00276B70 /* DatabaseTestsBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseTestsBase.h; sourceTree = "<group>"; };
@@ -910,8 +909,6 @@
 		EA3CF0981AE7962C00B14B73 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				EA69EF1C1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.h */,
-				EA69EF1D1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m */,
 				EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */,
 				EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */,
 				EA07BF381AF3C80C004D17F6 /* NSMutableString+Issues.h */,
@@ -977,8 +974,10 @@
 			children = (
 				EA07BF4B1AF400CA004D17F6 /* Database+Distances.h */,
 				EA07BF4C1AF400CA004D17F6 /* Database+Distances.m */,
-				EA69EF161AEFCBB600276B70 /* PaymentMethodsHelper.h */,
-				EA69EF171AEFCBB600276B70 /* PaymentMethodsHelper.m */,
+				EA07BF4E1AF4CC19004D17F6 /* Database+Functions.h */,
+				EA07BF4F1AF4CC19004D17F6 /* Database+Functions.m */,
+				EA07BF511AF4CD26004D17F6 /* Database+PaymentMethods.h */,
+				EA07BF521AF4CD26004D17F6 /* Database+PaymentMethods.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1374,7 +1373,6 @@
 				EA5963FB1AF2A07200935344 /* InlinedPickerCell.m in Sources */,
 				84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */,
 				EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */,
-				EA69EF1E1AEFE08D00276B70 /* FMDatabaseQueue+QueueShortcuts.m in Sources */,
 				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
 				8478B77D18D395280041CBA3 /* WBNewReceiptViewController.m in Sources */,
 				EA8D81A91AEA7C8E00BAC943 /* ReceiptColumnPrice.m in Sources */,
@@ -1403,6 +1401,7 @@
 				EA07BF441AF3F882004D17F6 /* DecimalInputValidation.m in Sources */,
 				84AA0AD118E5F624008A85F9 /* WBFileManager.m in Sources */,
 				84553A5018D09D230009057B /* WBTripsViewController.m in Sources */,
+				EA07BF501AF4CC19004D17F6 /* Database+Functions.m in Sources */,
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,
 				84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */,
 				EA5963EC1AF2957200935344 /* NoCaretTextField.m in Sources */,
@@ -1445,7 +1444,6 @@
 				84DCAAE318E4B48A00ECAECC /* WBPreferences.m in Sources */,
 				EA07BF4D1AF400CA004D17F6 /* Database+Distances.m in Sources */,
 				EA4C5CC11AF286990083FDD7 /* InputCellsSection.m in Sources */,
-				EA69EF181AEFCBB600276B70 /* PaymentMethodsHelper.m in Sources */,
 				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
 				8453368418F4950E001072AA /* WBBackupHelper.m in Sources */,
@@ -1457,6 +1455,7 @@
 				EA4C5CC51AF287330083FDD7 /* TitledTextEntryCell.m in Sources */,
 				845E33E318D8A12C006A506A /* WBTextUtils.m in Sources */,
 				84D6719B18D34E4900B704A4 /* WBCurrency.m in Sources */,
+				EA07BF531AF4CD26004D17F6 /* Database+PaymentMethods.m in Sources */,
 				EA07BF341AF3B703004D17F6 /* InlinedDatePickerCell.m in Sources */,
 				EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */,
@@ -1498,7 +1497,6 @@
 				EAED9B221AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m in Sources */,
 				EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */,
 				EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */,
-				EA69EF281AEFF11900276B70 /* FMDatabaseQueue+QueueShortcuts.m in Sources */,
 				EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

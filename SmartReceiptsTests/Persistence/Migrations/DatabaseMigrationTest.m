@@ -11,6 +11,7 @@
 #import "DatabaseTestsBase.h"
 #import "DatabaseMigration.h"
 #import "Database.h"
+#import "Database+Functions.h"
 
 @interface DatabaseMigrationTest : DatabaseTestsBase
 

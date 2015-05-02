@@ -6,15 +6,13 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <FMDB/FMDatabaseQueue.h>
 #import "DatabaseMigration.h"
 #import "Constants.h"
 #import "DatabaseCreateAtVersion11.h"
 #import "DatabaseUpgradeToVersion12.h"
 #import "Database.h"
-#import "FMDatabaseAdditions.h"
 #import "DatabaseUpgradeToVersion13.h"
-#import "FMDatabaseQueue+QueueShortcuts.h"
+#import "Database+Functions.h"
 
 @implementation DatabaseMigration
 

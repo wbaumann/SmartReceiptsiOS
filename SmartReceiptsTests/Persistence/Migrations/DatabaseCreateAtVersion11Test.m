@@ -13,9 +13,9 @@
 #import "DatabaseCreateAtVersion11.h"
 #import "FMDatabaseAdditions.h"
 #import "DatabaseTestsBase.h"
-#import "FMDatabaseQueue+QueueShortcuts.h"
 #import "Database.h"
 #import "DatabaseTableNames.h"
+#import "Database+Functions.h"
 
 @interface DatabaseMigration (TestExpose)
 
@@ -55,21 +55,21 @@
     XCTAssertTrue(([[NSFileManager defaultManager] fileExistsAtPath:pathToReferenceDB]));
     XCTAssertTrue(([[NSFileManager defaultManager] fileExistsAtPath:pathToCheckedDB]));
 
-    FMDatabaseQueue *referenceDB = [FMDatabaseQueue databaseQueueWithPath:pathToReferenceDB];
-    FMDatabaseQueue *checkedDB = [FMDatabaseQueue databaseQueueWithPath:pathToCheckedDB];
+    Database *referenceDB = [self createAndOpenDatabaseWithPath:pathToReferenceDB];
+    Database *checkedDB = [self createAndOpenDatabaseWithPath:pathToCheckedDB];
     XCTAssertNotNil(referenceDB);
     XCTAssertNotNil(checkedDB);
 
     XCTAssertEqual([referenceDB databaseVersion], [checkedDB databaseVersion]);
 
-    NSArray *tablesInReference = [self tableNames:referenceDB];
-    NSArray *tablesInChecked = [self tableNames:checkedDB];
+    NSArray *tablesInReference = [self tableNames:referenceDB.databaseQueue];
+    NSArray *tablesInChecked = [self tableNames:checkedDB.databaseQueue];
     XCTAssertEqual(tablesInReference.count, tablesInChecked.count);
     XCTAssertTrue([tablesInReference isEqualToArray:tablesInChecked]);
 
     for (NSString *tableName in tablesInReference) {
-        NSArray *tableColumnsInReference = [self columnsInTableNamed:tableName inDatabase:referenceDB];
-        NSArray *tableColumnsInChecked = [self columnsInTableNamed:tableName inDatabase:referenceDB];
+        NSArray *tableColumnsInReference = [self columnsInTableNamed:tableName inDatabase:referenceDB.databaseQueue];
+        NSArray *tableColumnsInChecked = [self columnsInTableNamed:tableName inDatabase:referenceDB.databaseQueue];
         XCTAssertTrue([tableColumnsInReference isEqualToArray:tableColumnsInChecked]);
     }
 }

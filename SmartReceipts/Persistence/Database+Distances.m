@@ -7,11 +7,10 @@
 //
 
 #import <FMDB/FMDatabaseQueue.h>
-#import <objc/objc.h>
 #import "Database+Distances.h"
 #import "DatabaseTableNames.h"
-#import "FMDatabaseQueue+QueueShortcuts.h"
 #import "Distance.h"
+#import "Database+Functions.h"
 
 @implementation Database (Distances)
 
@@ -27,7 +26,7 @@
                     DistanceTable.COLUMN_COMMENT, @" TEXT,", //
                     DistanceTable.COLUMN_RATE_CURRENCY, @" TEXT NOT NULL, ", //
                     DistanceTable.COLUMN_RATE, @" DECIMAL(10, 2) DEFAULT 0.00 );"];
-    return [self.databaseQueue executeUpdateWithStatementComponents:createDistanceTable];
+    return [self executeUpdateWithStatementComponents:createDistanceTable];
 }
 
 - (BOOL)saveDistance:(Distance *)distance {

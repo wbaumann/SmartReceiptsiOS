@@ -11,7 +11,6 @@
 #import "Constants.h"
 #import "WBFileManager.h"
 #import "DatabaseMigration.h"
-#import "FMDatabaseQueue+QueueShortcuts.h"
 
 @interface Database ()
 
@@ -71,18 +70,6 @@
 
 - (void)close {
     [self.databaseQueue close];
-}
-
-- (NSUInteger)databaseVersion {
-    return [self.databaseQueue databaseVersion];
-}
-
-- (void)setDatabaseVersion:(NSUInteger)version {
-    [self.databaseQueue setDatabaseVersion:version];
-}
-
-- (NSUInteger)countRowsInTable:(NSString *)tableName {
-    return [self.databaseQueue countRowsInTable:tableName];
 }
 
 @end
