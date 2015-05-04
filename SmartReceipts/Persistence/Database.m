@@ -12,6 +12,8 @@
 #import "WBFileManager.h"
 #import "DatabaseMigration.h"
 
+NSString *const DatabaseDidInsertModelNotification = @"DatabaseDidInsertModelNotification";
+
 @interface Database ()
 
 @property (nonatomic, copy) NSString *pathToDatabase;

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "FMDatabaseQueue.h"
 
+extern NSString *const DatabaseDidInsertModelNotification;
+
 @interface Database : NSObject
 
 @property (nonatomic, strong, readonly) FMDatabaseQueue *databaseQueue;

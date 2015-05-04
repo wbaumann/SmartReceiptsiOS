@@ -59,4 +59,28 @@
     [self setComment:[resultSet stringForColumn:DistanceTable.COLUMN_COMMENT]];
 }
 
+- (BOOL)isEqual:(id)other {
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![[other class] isEqual:[self class]]) {
+        return NO;
+    }
+
+    Distance *otherDistance = other;
+    return self.objectId == otherDistance.objectId;
+}
+
+- (NSUInteger)hash {
+    return [NSNumber numberWithInteger:self.objectId].hash;
+}
+
+
+- (NSString *)description {
+    NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+    [description appendFormat:@"id: %d", (int) self.objectId];
+    [description appendString:@">"];
+    return description;
+}
+
 @end

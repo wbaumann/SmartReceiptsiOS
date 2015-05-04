@@ -96,4 +96,17 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
     return self.presentedObjects.numberOfObjects;
 }
 
+- (void)willChangeContent {
+    [self.tableView beginUpdates];
+}
+
+- (void)didInsertObject:(id)object atIndex:(NSUInteger)index {
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)didChangeContent {
+    [self.tableView endUpdates];
+    [self contentChanged];
+}
+
 @end

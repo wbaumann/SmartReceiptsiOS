@@ -1,0 +1,36 @@
+//
+//  FetchAdapterDelegateCheckHelper.m
+//  SmartReceipts
+//
+//  Created by Jaanus Siim on 04/05/15.
+//  Copyright (c) 2015 Will Baumann. All rights reserved.
+//
+
+#import <objc/NSObjCRuntime.h>
+#import "FetchAdapterDelegateCheckHelper.h"
+
+@interface FetchAdapterDelegateCheckHelper ()
+
+@property (nonatomic, assign) BOOL willChangeCalled;
+@property (nonatomic, assign) BOOL didChangeCalled;
+@property (nonatomic, assign) NSUInteger insertIndex;
+@property (nonatomic, strong) id insertObject;
+
+@end
+
+@implementation FetchAdapterDelegateCheckHelper
+
+- (void)willChangeContent {
+    [self setWillChangeCalled:YES];
+}
+
+- (void)didInsertObject:(id)object atIndex:(NSUInteger)index {
+    [self setInsertObject:object];
+    [self setInsertIndex:index];
+}
+
+- (void)didChangeContent {
+    [self setDidChangeCalled:YES];
+}
+
+@end

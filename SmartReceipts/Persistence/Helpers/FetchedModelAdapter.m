@@ -11,6 +11,7 @@
 #import "FMDatabase.h"
 #import "FetchedModel.h"
 #import "Constants.h"
+#import "FetchedModelAdapterDelegate.h"
 
 @interface FetchedModelAdapter ()
 
@@ -27,8 +28,13 @@
     self = [super init];
     if (self) {
         _database = database;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didInsertObject:) name:DatabaseDidInsertModelNotification object:nil];
     }
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (id)objectAtIndex:(NSInteger)index {
@@ -45,6 +51,7 @@
 }
 
 - (void)fetch {
+    TICK;
     NSMutableArray *objects = [NSMutableArray array];
     SRLog(@"Fetch query: '%@'", self.fetchQuery);
     SRLog(@"Fetch params: %@", self.fetchParameters);
@@ -57,6 +64,34 @@
         }
     }];
     [self setModels:[NSMutableArray arrayWithArray:objects]];
+    TOCK(@"Fetch time");
+}
+
+- (void)didInsertObject:(NSNotification *)notification {
+    NSObject *inserted = notification.object;
+    if (![inserted isKindOfClass:self.modelClass]) {
+        return;
+    }
+
+    [self refreshContentAndNotifyChanges];
+}
+
+- (void)refreshContentAndNotifyChanges {
+    NSArray *previousObjects = [NSArray arrayWithArray:self.models];
+    [self fetch];
+    NSMutableArray *currentObjects = [NSMutableArray arrayWithArray:self.models];
+    [currentObjects removeObjectsInArray:previousObjects];
+
+    id added = [currentObjects lastObject];
+
+    NSUInteger index = [self.models indexOfObject:added];
+    [self.delegate willChangeContent];
+    [self.delegate didInsertObject:added atIndex:index];
+    [self.delegate didChangeContent];
+}
+
+- (void)clearNotificationListener {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

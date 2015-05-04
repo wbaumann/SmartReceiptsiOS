@@ -32,7 +32,13 @@
         do { if(!(expression)) { \
             NSLog(@"%@", [NSString stringWithFormat: @"Assertion failure: %s in %s on line %s:%d. %@", #expression, __PRETTY_FUNCTION__, __FILE__, __LINE__, [NSString stringWithFormat:@"" __VA_ARGS__]]); \
             abort(); }} while(0)
+
+    #define TICK   NSDate *startTime = [NSDate date]
+    #define TOCK(s)   SRLog(@"%@: %f", s, -[startTime timeIntervalSinceNow])
 #else
     #define SRLog(s, ...) //
     #define SRAssert(expression, ...) //
+
+    #define TICK //
+    #define TOCK(s) //
 #endif

@@ -8,4 +8,8 @@
 
 @protocol FetchedModelAdapterDelegate
 
+- (void)willChangeContent;
+- (void)didInsertObject:(id)object atIndex:(NSUInteger)index;
+- (void)didChangeContent;
+
 @end

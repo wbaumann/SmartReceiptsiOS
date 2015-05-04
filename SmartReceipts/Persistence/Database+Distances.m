@@ -43,7 +43,11 @@
     [insert addParam:DistanceTable.COLUMN_COMMENT value:distance.comment];
     [insert addParam:DistanceTable.COLUMN_RATE_CURRENCY value:distance.rate.currency.code];
     [insert addParam:DistanceTable.COLUMN_RATE value:distance.rate.amount];
-    return [self executeQuery:insert];
+    BOOL result = [self executeQuery:insert];
+    if (result) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidInsertModelNotification object:distance];
+    }
+    return result;
 }
 
 - (FetchedModelAdapter *)fetchedAdapterForDistancesInTrip:(WBTrip *)trip {

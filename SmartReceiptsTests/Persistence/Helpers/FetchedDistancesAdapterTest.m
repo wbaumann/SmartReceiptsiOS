@@ -14,10 +14,20 @@
 #import "DatabaseTestsHelper.h"
 #import "Database+Distances.h"
 #import "Distance.h"
+#import "FetchedModelAdapterDelegate.h"
+#import "FetchAdapterDelegateCheckHelper.h"
+
+@interface FetchedModelAdapter (TestExpose)
+
+- (void)clearNotificationListener;
+- (void)refreshContentAndNotifyChanges;
+
+@end
 
 @interface FetchedDistancesAdapterTest : DatabaseTestsBase
 
 @property (nonatomic, strong) FetchedModelAdapter *adapter;
+@property (nonatomic, strong) WBTrip *testTrip;
 
 @end
 
@@ -31,6 +41,7 @@
     WBTrip *dummyTrip = [self.db createTestTrip];
 
     WBTrip *testTrip = [self.db createTestTrip];
+    self.testTrip = testTrip;
     [self.db insertDistance:@{@"trip" : dummyTrip}];
     [self.db insertDistance:@{@"trip" : testTrip, @"date" : [NSDate date], @"location" : @"One"}];
     [self.db insertDistance:@{@"trip" : dummyTrip}];
@@ -47,6 +58,23 @@
     Distance *first = [self.adapter objectAtIndex:0];
     XCTAssertNotNil(first);
     XCTAssertEqualObjects(@"Three", first.location);
+}
+
+- (void)testInsertWillBeNotified {
+    [self.adapter clearNotificationListener];
+
+    FetchAdapterDelegateCheckHelper *delegateCheck = [[FetchAdapterDelegateCheckHelper alloc] init];
+    [self.adapter setDelegate:delegateCheck];
+
+    [self.db insertDistance:@{@"trip" : self.testTrip, @"date" : [[NSDate date] dateByAddingTimeInterval:10], @"location" : @"Four"}];
+
+    [self.adapter refreshContentAndNotifyChanges];
+
+    XCTAssertTrue(delegateCheck.willChangeCalled);
+    XCTAssertEqual(1, delegateCheck.insertIndex);
+    Distance *insertObject = delegateCheck.insertObject;
+    XCTAssertEqualObjects(@"Four", insertObject.location);
+    XCTAssertTrue(delegateCheck.didChangeCalled);
 }
 
 @end

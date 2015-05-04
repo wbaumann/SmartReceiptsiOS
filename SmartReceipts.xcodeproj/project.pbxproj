@@ -136,6 +136,8 @@
 		EA5963F41AF29B1A00935344 /* UIView+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963F31AF29B1A00935344 /* UIView+Search.m */; };
 		EA5963FB1AF2A07200935344 /* InlinedPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963F91AF2A07200935344 /* InlinedPickerCell.m */; };
 		EA5963FC1AF2A07200935344 /* InlinedPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5963FA1AF2A07200935344 /* InlinedPickerCell.xib */; };
+		EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5EF0D41AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m */; };
+		EA5EF0D61AF7E9C9009FA608 /* DatabaseTableNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF491AF40066004D17F6 /* DatabaseTableNames.m */; };
 		EA69EF151AEFC81A00276B70 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF141AEFC81A00276B70 /* Database.m */; };
 		EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF231AEFEDCC00276B70 /* DatabaseMigrationTest.m */; };
 		EA69EF261AEFEE5D00276B70 /* DatabaseTestsBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF251AEFEE5D00276B70 /* DatabaseTestsBase.m */; };
@@ -413,6 +415,8 @@
 		EA5963F81AF2A07200935344 /* InlinedPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InlinedPickerCell.h; sourceTree = "<group>"; };
 		EA5963F91AF2A07200935344 /* InlinedPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InlinedPickerCell.m; sourceTree = "<group>"; };
 		EA5963FA1AF2A07200935344 /* InlinedPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InlinedPickerCell.xib; sourceTree = "<group>"; };
+		EA5EF0D31AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchAdapterDelegateCheckHelper.h; sourceTree = "<group>"; };
+		EA5EF0D41AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchAdapterDelegateCheckHelper.m; sourceTree = "<group>"; };
 		EA69EF131AEFC81A00276B70 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		EA69EF141AEFC81A00276B70 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 		EA69EF231AEFEDCC00276B70 /* DatabaseMigrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseMigrationTest.m; sourceTree = "<group>"; };
@@ -903,6 +907,8 @@
 			children = (
 				EA07BF5A1AF4DA66004D17F6 /* DatabaseDistancesTest.m */,
 				EA07BF581AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m */,
+				EA5EF0D31AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.h */,
+				EA5EF0D41AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m */,
 				EA07BF681AF51C61004D17F6 /* FetchedDistancesAdapterTest.m */,
 			);
 			path = Helpers;
@@ -1552,6 +1558,8 @@
 				EA07BF5B1AF4DA66004D17F6 /* DatabaseDistancesTest.m in Sources */,
 				EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */,
 				EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */,
+				EA5EF0D61AF7E9C9009FA608 /* DatabaseTableNames.m in Sources */,
+				EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */,
 				EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */,
 				EA07BF591AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m in Sources */,
 			);
