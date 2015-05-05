@@ -10,6 +10,7 @@
 #import "FMDatabaseQueue.h"
 
 extern NSString *const DatabaseDidInsertModelNotification;
+extern NSString *const DatabaseDidDeleteModelNotification;
 
 @interface Database : NSObject
 

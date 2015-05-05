@@ -29,6 +29,7 @@
     if (self) {
         _database = database;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didInsertObject:) name:DatabaseDidInsertModelNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDeleteObject:) name:DatabaseDidDeleteModelNotification object:nil];
     }
     return self;
 }
@@ -73,10 +74,32 @@
         return;
     }
 
-    [self refreshContentAndNotifyChanges];
+    [self refreshContentAndNotifyInsertChanges];
 }
 
-- (void)refreshContentAndNotifyChanges {
+- (void)didDeleteObject:(NSNotification *)notification {
+    NSObject *inserted = notification.object;
+    if (![inserted isKindOfClass:self.modelClass]) {
+        return;
+    }
+
+    [self refreshContentAndNotifyDeleteChanges];
+}
+
+- (void)refreshContentAndNotifyDeleteChanges {
+    NSArray *previousObjectsForIndex = [NSArray arrayWithArray:self.models];
+    NSMutableArray *previousObjects = [NSMutableArray arrayWithArray:self.models];
+    [self fetch];
+    [previousObjects removeObjectsInArray:self.models];
+
+    id removed = [previousObjects lastObject];
+    NSUInteger index = [previousObjectsForIndex indexOfObject:removed];
+    [self.delegate willChangeContent];
+    [self.delegate didDeleteObject:removed atIndex:index];
+    [self.delegate didChangeContent];
+}
+
+- (void)refreshContentAndNotifyInsertChanges {
     NSArray *previousObjects = [NSArray arrayWithArray:self.models];
     [self fetch];
     NSMutableArray *currentObjects = [NSMutableArray arrayWithArray:self.models];

@@ -59,4 +59,14 @@
     return adapter;
 }
 
+- (BOOL)deleteDistance:(Distance *)distance {
+    DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:DistanceTable.TABLE_NAME];
+    [delete addParam:DistanceTable.COLUMN_ID value:[NSNumber numberWithUnsignedInteger:distance.objectId]];
+    BOOL result = [self executeQuery:delete];
+    if (result) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidDeleteModelNotification object:distance];
+    }
+    return result;
+}
+
 @end

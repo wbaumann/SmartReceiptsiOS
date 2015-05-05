@@ -75,7 +75,6 @@
     return [NSNumber numberWithInteger:self.objectId].hash;
 }
 
-
 - (NSString *)description {
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [description appendFormat:@"id: %d", (int) self.objectId];

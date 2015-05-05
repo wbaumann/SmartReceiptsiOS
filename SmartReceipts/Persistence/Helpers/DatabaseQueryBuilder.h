@@ -11,6 +11,7 @@
 @interface DatabaseQueryBuilder : NSObject
 
 + (DatabaseQueryBuilder *)insertStatementForTable:(NSString *)tableName;
++ (DatabaseQueryBuilder *)deleteStatementForTable:(NSString *)tableName;
 
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue;
 - (NSString *)buildStatement;

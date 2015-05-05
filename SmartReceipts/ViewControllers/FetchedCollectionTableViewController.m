@@ -104,9 +104,28 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (void)didDeleteObject:(id)object atIndex:(NSUInteger)index {
+    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 - (void)didChangeContent {
     [self.tableView endUpdates];
     [self contentChanged];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        id model = [self objectAtIndexPath:indexPath];
+        [self deleteObject:model atIndexPath:indexPath];
+    }
+}
+
+- (void)deleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+    SRLog(@"deleteObject:atIndexPath:%@", indexPath);
 }
 
 @end

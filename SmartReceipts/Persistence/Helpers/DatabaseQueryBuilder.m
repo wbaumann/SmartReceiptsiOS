@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(short, StatementType) {
     InsertStatement = 1,
-    UpdateStatement = 2
+    UpdateStatement = 2,
+    DeleteStatement = 3,
 };
 
 @interface DatabaseQueryBuilder ()
@@ -24,10 +25,10 @@ typedef NS_ENUM(short, StatementType) {
 
 @implementation DatabaseQueryBuilder
 
-- (id)initInsertStatementForTable:(NSString *)tableName {
+- (id)initStatementForTable:(NSString *)tableName statementType:(StatementType)statementType {
     self = [super init];
     if (self) {
-        _statement = InsertStatement;
+        _statement = statementType;
         _tableName = tableName;
         _params = [NSMutableArray array];
         _values = [NSMutableArray array];
@@ -36,7 +37,11 @@ typedef NS_ENUM(short, StatementType) {
 }
 
 + (DatabaseQueryBuilder *)insertStatementForTable:(NSString *)tableName {
-    return [[DatabaseQueryBuilder alloc] initInsertStatementForTable:tableName];
+    return [[DatabaseQueryBuilder alloc] initStatementForTable:tableName statementType:InsertStatement];
+}
+
++ (DatabaseQueryBuilder *)deleteStatementForTable:(NSString *)tableName {
+    return [[DatabaseQueryBuilder alloc] initStatementForTable:tableName statementType:DeleteStatement];
 }
 
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue {
@@ -48,9 +53,29 @@ typedef NS_ENUM(short, StatementType) {
     NSMutableString *query = [NSMutableString string];
     if (self.statement == InsertStatement) {
         [query appendString:@"INSERT INTO "];
+    } else if (self.statement == DeleteStatement) {
+        [query appendString:@"DELETE FROM "];        
     }
+    
     [query appendString:self.tableName];
-    [query appendString:@" ("];
+    [query appendString:@" "];
+    
+    if (self.statement == InsertStatement) {
+        [self appendInsertValues:query];
+    } else {
+        [self appendDeleteValues:query];
+    }
+
+    return [NSString stringWithString:query];
+}
+
+- (void)appendDeleteValues:(NSMutableString *)query {
+    NSString *param = self.params.firstObject;
+    [query appendFormat:@"WHERE %@ = :%@", param, param];
+}
+
+- (void)appendInsertValues:(NSMutableString *)query {
+    [query appendString:@"("];
 
     NSMutableString *columnsString = [NSMutableString string];
     for (NSString *name in self.params) {
@@ -72,7 +97,6 @@ typedef NS_ENUM(short, StatementType) {
     }
     [query appendString:valuesString];
     [query appendString:@")"];
-    return [NSString stringWithString:query];
 }
 
 - (NSDictionary *)parameters {

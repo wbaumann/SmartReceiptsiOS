@@ -18,5 +18,6 @@
 - (BOOL)createDistanceTable;
 - (BOOL)saveDistance:(Distance *)distance;
 - (FetchedModelAdapter *)fetchedAdapterForDistancesInTrip:(WBTrip *)trip;
+- (BOOL)deleteDistance:(Distance *)distance;
 
 @end

@@ -20,7 +20,8 @@
 @interface FetchedModelAdapter (TestExpose)
 
 - (void)clearNotificationListener;
-- (void)refreshContentAndNotifyChanges;
+- (void)refreshContentAndNotifyInsertChanges;
+- (void)refreshContentAndNotifyDeleteChanges;
 
 @end
 
@@ -68,12 +69,34 @@
 
     [self.db insertDistance:@{@"trip" : self.testTrip, @"date" : [[NSDate date] dateByAddingTimeInterval:10], @"location" : @"Four"}];
 
-    [self.adapter refreshContentAndNotifyChanges];
+    [self.adapter refreshContentAndNotifyInsertChanges];
 
     XCTAssertTrue(delegateCheck.willChangeCalled);
     XCTAssertEqual(1, delegateCheck.insertIndex);
     Distance *insertObject = delegateCheck.insertObject;
     XCTAssertEqualObjects(@"Four", insertObject.location);
+    XCTAssertNil(delegateCheck.deleteObject);
+    XCTAssertTrue(delegateCheck.didChangeCalled);
+}
+
+- (void)testDeleteWillBeNotified {
+    [self.adapter clearNotificationListener];
+
+    FetchAdapterDelegateCheckHelper *delegateCheck = [[FetchAdapterDelegateCheckHelper alloc] init];
+    [self.adapter setDelegate:delegateCheck];
+
+    NSUInteger count = self.adapter.numberOfObjects;
+    NSUInteger removeIndex = count - 1;
+    id removed = [self.adapter objectAtIndex:removeIndex];
+    [self.db deleteDistance:removed];
+
+    [self.adapter refreshContentAndNotifyDeleteChanges];
+
+    XCTAssertTrue(delegateCheck.willChangeCalled);
+    XCTAssertEqual(removeIndex, delegateCheck.deleteIndex);
+    Distance *deleteObject = delegateCheck.deleteObject;
+    XCTAssertEqualObjects(removed, deleteObject);
+    XCTAssertNil(delegateCheck.insertObject);
     XCTAssertTrue(delegateCheck.didChangeCalled);
 }
 

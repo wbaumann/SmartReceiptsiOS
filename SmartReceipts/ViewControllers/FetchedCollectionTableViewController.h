@@ -18,5 +18,6 @@
 - (void)contentChanged;
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
 - (NSUInteger)numberOfItems;
+- (void)deleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath;
 
 @end

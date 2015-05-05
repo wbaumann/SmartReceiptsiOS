@@ -13,6 +13,7 @@
 #import "DatabaseMigration.h"
 
 NSString *const DatabaseDidInsertModelNotification = @"DatabaseDidInsertModelNotification";
+NSString *const DatabaseDidDeleteModelNotification = @"DatabaseDidDeleteModelNotification";
 
 @interface Database ()
 

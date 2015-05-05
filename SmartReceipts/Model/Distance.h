@@ -16,6 +16,7 @@
 
 @interface Distance : NSObject <FetchedModel>
 
+@property (nonatomic, assign, readonly) NSUInteger *objectId;
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, strong, readonly) NSDecimalNumber *distance;
 @property (nonatomic, strong, readonly) WBPrice *rate;

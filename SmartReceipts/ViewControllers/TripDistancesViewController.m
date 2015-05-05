@@ -84,4 +84,8 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
     return max;
 }
 
+- (void)deleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+    [[Database sharedInstance] deleteDistance:object];
+}
+
 @end
