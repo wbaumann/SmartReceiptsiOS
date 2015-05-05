@@ -7,7 +7,6 @@
 //
 
 #import "WBPreferences.h"
-#import <float.h>
 
 #import "WBCurrency.h"
 #import "WBDateFormatter.h"
@@ -38,83 +37,99 @@ static NSString * const BOOL_DEFAULT_TO_FIRST_TRIP_DATE = @"DefaultToFirstReport
 // only for iOS
 static NSString * const INT_CAMERA_MAX_HEIGHT_WIDTH = @"CameraMaxHeightWidth";
 
+//distance settings
+static NSString *const BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT = @"MileageTotalInReport";
+static NSString *const FLOAT_DEFAULT_MILEAGE_RATE = @"MileageRate";
+static NSString *const BOOL_PRINT_MILEAGE_TABLE = @"MileagePrintTable";
+static NSString *const BOOL_DAILY_DISTANCE_REPORT = @"MileageAddToPDF";
+
 // there is no 100% guaranteed way to figure entry type so we have to hardcode them
-typedef enum {
+typedef NS_ENUM(short, EntryType){
     EntryTypeString = 0,
     EntryTypeInt,
     EntryTypeBool,
     EntryTypeFloat,
-} EntryType;
+};
 
-static NSDictionary* getEntryTypes() {
+static NSDictionary *getEntryTypes() {
     NSNumber *tString = @(EntryTypeString);
     NSNumber *tInt = @(EntryTypeInt);
     NSNumber *tBool = @(EntryTypeBool);
     NSNumber *tFloat = @(EntryTypeFloat);
-    
+
     return @{
-             INT_DEFAULT_TRIP_DURATION: tInt,
-             FLOAT_MIN_RECEIPT_PRICE: tFloat,
-             STRING_DEFAULT_EMAIL_TO: tString,
-             
-             BOOL_PREDICT_CATEGORIES: tBool,
-             BOOL_USE_NATIVE_CAMERA: tBool,
-             BOOL_MATCH_COMMENT_WITH_CATEGORIES: tBool,
-             
-             BOOL_MATCH_NAME_WITH_CATEGORIES: tBool,
-             BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS: tBool,
-             BOOL_ACTION_SEND_SHOW_HELP_DIALOG: tBool,
-             
-             BOOL_INCLUDE_TAX_FIELD: tBool,
-             BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS: tBool,
-             STRING_USERNAME: tString,
-             
-             STRING_CURRENCY: tString,
-             
-             BOOL_INCL_CSV_HEADERS: tBool,
-             STRING_DATE_SEPARATOR: tString,
-             BOOL_DEFAULT_TO_FIRST_TRIP_DATE: tBool,
-             
-             INT_CAMERA_MAX_HEIGHT_WIDTH: tInt
-             };
+            INT_DEFAULT_TRIP_DURATION : tInt,
+            FLOAT_MIN_RECEIPT_PRICE : tFloat,
+            STRING_DEFAULT_EMAIL_TO : tString,
+
+            BOOL_PREDICT_CATEGORIES : tBool,
+            BOOL_USE_NATIVE_CAMERA : tBool,
+            BOOL_MATCH_COMMENT_WITH_CATEGORIES : tBool,
+
+            BOOL_MATCH_NAME_WITH_CATEGORIES : tBool,
+            BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS : tBool,
+            BOOL_ACTION_SEND_SHOW_HELP_DIALOG : tBool,
+
+            BOOL_INCLUDE_TAX_FIELD : tBool,
+            BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS : tBool,
+            STRING_USERNAME : tString,
+
+            STRING_CURRENCY : tString,
+
+            BOOL_INCL_CSV_HEADERS : tBool,
+            STRING_DATE_SEPARATOR : tString,
+            BOOL_DEFAULT_TO_FIRST_TRIP_DATE : tBool,
+
+            INT_CAMERA_MAX_HEIGHT_WIDTH : tInt,
+
+            BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT: tBool,
+            FLOAT_DEFAULT_MILEAGE_RATE: tFloat,
+            BOOL_PRINT_MILEAGE_TABLE: tBool,
+            BOOL_DAILY_DISTANCE_REPORT: tBool
+    };
 }
 
-static NSDictionary* getDefaultValues() {
+static NSDictionary *getDefaultValues() {
     // we do it this way because wbcurrency will filter out invalid currency code
     NSString *currencyCode = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
     WBCurrency *currency = [WBCurrency currencyForCode:currencyCode];
     currencyCode = [currency code];
-    
+
     NSString *dateSeparator = [[[WBDateFormatter alloc] init] separatorForCurrentLocale];
-    
-    NSLog(@"default currency: %@",currencyCode);
-    NSLog(@"default date separator: %@",dateSeparator);
-    
+
+    NSLog(@"default currency: %@", currencyCode);
+    NSLog(@"default date separator: %@", dateSeparator);
+
     return @{
-             INT_DEFAULT_TRIP_DURATION: @3,
-             FLOAT_MIN_RECEIPT_PRICE: [NSNumber numberWithFloat:(MIN_FLOAT)],
-             STRING_DEFAULT_EMAIL_TO: @"",
-             
-             BOOL_PREDICT_CATEGORIES: @YES,
-             BOOL_USE_NATIVE_CAMERA: @NO,
-             BOOL_MATCH_COMMENT_WITH_CATEGORIES: @NO,
-             
-             BOOL_MATCH_NAME_WITH_CATEGORIES: @NO,
-             BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS: @NO,
-             BOOL_ACTION_SEND_SHOW_HELP_DIALOG: @YES,
-             
-             BOOL_INCLUDE_TAX_FIELD: @NO,
-             BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS: @YES,
-             STRING_USERNAME: @"",
-             
-             STRING_CURRENCY: currencyCode,
-             
-             BOOL_INCL_CSV_HEADERS: @NO,
-             STRING_DATE_SEPARATOR: dateSeparator,
-             BOOL_DEFAULT_TO_FIRST_TRIP_DATE: @NO,
-             
-             INT_CAMERA_MAX_HEIGHT_WIDTH: @1024
-             };
+            INT_DEFAULT_TRIP_DURATION : @3,
+            FLOAT_MIN_RECEIPT_PRICE : @(MIN_FLOAT),
+            STRING_DEFAULT_EMAIL_TO : @"",
+
+            BOOL_PREDICT_CATEGORIES : @YES,
+            BOOL_USE_NATIVE_CAMERA : @NO,
+            BOOL_MATCH_COMMENT_WITH_CATEGORIES : @NO,
+
+            BOOL_MATCH_NAME_WITH_CATEGORIES : @NO,
+            BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS : @NO,
+            BOOL_ACTION_SEND_SHOW_HELP_DIALOG : @YES,
+
+            BOOL_INCLUDE_TAX_FIELD : @NO,
+            BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS : @YES,
+            STRING_USERNAME : @"",
+
+            STRING_CURRENCY : currencyCode,
+
+            BOOL_INCL_CSV_HEADERS : @NO,
+            STRING_DATE_SEPARATOR : dateSeparator,
+            BOOL_DEFAULT_TO_FIRST_TRIP_DATE : @NO,
+
+            INT_CAMERA_MAX_HEIGHT_WIDTH : @1024,
+
+            BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT: @NO,
+            FLOAT_DEFAULT_MILEAGE_RATE: @(MIN_FLOAT),
+            BOOL_PRINT_MILEAGE_TABLE: @YES,
+            BOOL_DAILY_DISTANCE_REPORT: @NO
+    };
 }
 
 static NSUserDefaults* _sharedInstance = nil;
@@ -233,6 +248,38 @@ static NSUserDefaults* instance() {
 }
 +(void) setIncludeCSVHeaders:(BOOL) includeCSVHeaders {
     [instance() setBool:includeCSVHeaders forKey:BOOL_INCL_CSV_HEADERS];
+}
+
++ (BOOL)includeMileagePriceInTotalValue {
+    return [instance() boolForKey:BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT];
+}
+
++ (void)setIncludeMileagePriceInTotalValue:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT];
+}
+
++ (float)distanceRateDefaultValue {
+    return [instance() floatForKey:FLOAT_DEFAULT_MILEAGE_RATE];
+}
+
++ (void)setDistanceRateDefaultValue:(float)value {
+    [instance() setFloat:value forKey:FLOAT_DEFAULT_MILEAGE_RATE];
+}
+
++ (BOOL)printDistanceTables {
+    return [instance() boolForKey:BOOL_PRINT_MILEAGE_TABLE];
+}
+
++ (void)setPrintDistanceTables:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_PRINT_MILEAGE_TABLE];
+}
+
++ (BOOL)printDailyDistanceValues {
+    return [instance() boolForKey:BOOL_DAILY_DISTANCE_REPORT];
+}
+
++ (void)setPrintDailyDistanceValues:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_DAILY_DISTANCE_REPORT];
 }
 
 +(int) cameraMaxHeightWidth {
