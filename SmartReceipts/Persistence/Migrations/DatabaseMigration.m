@@ -41,17 +41,17 @@
 
 + (BOOL)runMigrations:(NSArray *)migrations onDatabase:(Database *)database {
     NSUInteger currentVersion = [database databaseVersion];
-    SRLog(@"Current version: %lu", currentVersion);
+    SRLog(@"Current version: %tu", currentVersion);
 
     for (DatabaseMigration *migration in migrations) {
         if (currentVersion >= migration.version) {
-            SRLog(@"DB at version %lu, will skip migration to %lu", currentVersion, migration.version);
+            SRLog(@"DB at version %tu, will skip migration to %tu", currentVersion, migration.version);
             continue;
         }
 
-        SRLog(@"Migrate to version %lu", migration.version);
+        SRLog(@"Migrate to version %tu", migration.version);
         if (![migration migrate:database]) {
-            SRLog(@"Failed on migration %lu", migration.version);
+            SRLog(@"Failed on migration %tu", migration.version);
             return NO;
         }
 

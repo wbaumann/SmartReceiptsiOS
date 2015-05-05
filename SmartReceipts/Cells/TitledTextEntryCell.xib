@@ -30,7 +30,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="YaW-69-Nuo"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>

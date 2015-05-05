@@ -95,7 +95,7 @@
     
     for (NSUInteger i = idx1; i <= idx2; ++i) {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        cell.textLabel.text  = [NSString stringWithFormat:@"%@ %ld", colPrefix, (i + 1 + change)];
+        cell.textLabel.text  = [NSString stringWithFormat:@"%@ %td", colPrefix, (i + 1 + change)];
         
         Column *col = _columns[i];
         cell.detailTextLabel.text = [col name];
@@ -130,7 +130,7 @@
     NSString *colPrefix = NSLocalizedString(@"Col.", @"Column prefix used while ordering");
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:idx1 inSection:0]];
-    cell.textLabel.text  = [NSString stringWithFormat:@"%@ %ld", colPrefix, (idx2 + 1)];
+    cell.textLabel.text  = [NSString stringWithFormat:@"%@ %td", colPrefix, (idx2 + 1)];
     
     if (idx1 < idx2) {
         [self refreshCellsInTableView:tableView fromIndex:(idx1+1) toIndex:idx2 changeIndex:(-1)];

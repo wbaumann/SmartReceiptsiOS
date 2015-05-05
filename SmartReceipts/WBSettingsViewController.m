@@ -153,7 +153,7 @@ static WBSettingsViewController *visibleInstance = nil;
     
     [self.cameraWidthHeightField removeAllSegments];
     
-    int selected = 1;
+    NSUInteger selected = 1;
     for (NSUInteger i = 0; i< cameraValues.count; ++i) {
         int val = [((NSNumber*)[cameraValues objectAtIndex:i]) intValue];
         if (val == 0) {

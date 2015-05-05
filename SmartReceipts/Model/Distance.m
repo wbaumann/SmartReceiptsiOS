@@ -16,7 +16,7 @@
 
 @interface Distance ()
 
-@property (nonatomic, assign) NSUInteger *objectId;
+@property (nonatomic, assign) NSUInteger objectId;
 
 @end
 
@@ -42,7 +42,7 @@
 }
 
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet {
-    [self setObjectId:(NSUInteger *) [resultSet intForColumn:DistanceTable.COLUMN_ID]];
+    [self setObjectId:(NSUInteger) [resultSet intForColumn:DistanceTable.COLUMN_ID]];
     [self setDistance:[NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:DistanceTable.COLUMN_DISTANCE]]];
     NSString *rateString = [resultSet stringForColumn:DistanceTable.COLUMN_RATE];
     NSString *currency = [resultSet stringForColumn:DistanceTable.COLUMN_RATE_CURRENCY];
@@ -66,12 +66,12 @@
 }
 
 - (NSUInteger)hash {
-    return [NSNumber numberWithInteger:self.objectId].hash;
+    return @(self.objectId).hash;
 }
 
 - (NSString *)description {
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
-    [description appendFormat:@"id: %d", (int) self.objectId];
+    [description appendFormat:@"id: %lu", (unsigned long)self.objectId];
     [description appendString:@">"];
     return description;
 }
