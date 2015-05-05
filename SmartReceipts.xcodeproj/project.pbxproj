@@ -173,6 +173,14 @@
 		EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */; };
 		EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */; };
 		EAE8F9B21AF149DC00E837E3 /* TripDistancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE8F9B11AF149DC00E837E3 /* TripDistancesViewController.m */; };
+		EAE9DAE81AF8E97100F4FE76 /* DistanceColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAE71AF8E97100F4FE76 /* DistanceColumn.m */; };
+		EAE9DAEB1AF8EA5500F4FE76 /* DistanceLocationColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAEA1AF8EA5500F4FE76 /* DistanceLocationColumn.m */; };
+		EAE9DAEE1AF8EA6D00F4FE76 /* DistancePriceColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAED1AF8EA6D00F4FE76 /* DistancePriceColumn.m */; };
+		EAE9DAF11AF8EA8300F4FE76 /* DistanceDistanceColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAF01AF8EA8300F4FE76 /* DistanceDistanceColumn.m */; };
+		EAE9DAF41AF8EA9600F4FE76 /* DistanceCurrencyColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAF31AF8EA9600F4FE76 /* DistanceCurrencyColumn.m */; };
+		EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAF61AF8EAAE00F4FE76 /* DistanceRateColumn.m */; };
+		EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAF91AF8EAC000F4FE76 /* DistanceDateColumn.m */; };
+		EAE9DAFD1AF8EAD100F4FE76 /* DistanceCommentColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAFC1AF8EAD100F4FE76 /* DistanceCommentColumn.m */; };
 		EAED9B221AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m in Sources */ = {isa = PBXBuildFile; fileRef = EAED9B211AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m */; };
 		EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADDD1AECD2D20000AC84 /* ReportGeneratorTest.m */; };
 		EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADE21AECF8E30000AC84 /* DatabaseMigration.m */; };
@@ -484,6 +492,22 @@
 		EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtils.m; sourceTree = "<group>"; };
 		EAE8F9B01AF149DC00E837E3 /* TripDistancesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripDistancesViewController.h; sourceTree = "<group>"; };
 		EAE8F9B11AF149DC00E837E3 /* TripDistancesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripDistancesViewController.m; sourceTree = "<group>"; };
+		EAE9DAE61AF8E97100F4FE76 /* DistanceColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceColumn.h; sourceTree = "<group>"; };
+		EAE9DAE71AF8E97100F4FE76 /* DistanceColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceColumn.m; sourceTree = "<group>"; };
+		EAE9DAE91AF8EA5500F4FE76 /* DistanceLocationColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceLocationColumn.h; sourceTree = "<group>"; };
+		EAE9DAEA1AF8EA5500F4FE76 /* DistanceLocationColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceLocationColumn.m; sourceTree = "<group>"; };
+		EAE9DAEC1AF8EA6D00F4FE76 /* DistancePriceColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancePriceColumn.h; sourceTree = "<group>"; };
+		EAE9DAED1AF8EA6D00F4FE76 /* DistancePriceColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancePriceColumn.m; sourceTree = "<group>"; };
+		EAE9DAEF1AF8EA8300F4FE76 /* DistanceDistanceColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceDistanceColumn.h; sourceTree = "<group>"; };
+		EAE9DAF01AF8EA8300F4FE76 /* DistanceDistanceColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceDistanceColumn.m; sourceTree = "<group>"; };
+		EAE9DAF21AF8EA9600F4FE76 /* DistanceCurrencyColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceCurrencyColumn.h; sourceTree = "<group>"; };
+		EAE9DAF31AF8EA9600F4FE76 /* DistanceCurrencyColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceCurrencyColumn.m; sourceTree = "<group>"; };
+		EAE9DAF51AF8EAAE00F4FE76 /* DistanceRateColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceRateColumn.h; sourceTree = "<group>"; };
+		EAE9DAF61AF8EAAE00F4FE76 /* DistanceRateColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceRateColumn.m; sourceTree = "<group>"; };
+		EAE9DAF81AF8EAC000F4FE76 /* DistanceDateColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceDateColumn.h; sourceTree = "<group>"; };
+		EAE9DAF91AF8EAC000F4FE76 /* DistanceDateColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceDateColumn.m; sourceTree = "<group>"; };
+		EAE9DAFB1AF8EAD100F4FE76 /* DistanceCommentColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceCommentColumn.h; sourceTree = "<group>"; };
+		EAE9DAFC1AF8EAD100F4FE76 /* DistanceCommentColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceCommentColumn.m; sourceTree = "<group>"; };
 		EAED9B211AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseCreateAtVersion11Test.m; sourceTree = "<group>"; };
 		EAF9ADDD1AECD2D20000AC84 /* ReportGeneratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportGeneratorTest.m; sourceTree = "<group>"; };
 		EAF9ADE11AECF8E30000AC84 /* DatabaseMigration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseMigration.h; sourceTree = "<group>"; };
@@ -1041,6 +1065,7 @@
 		EA8D81691AEA668100BAC943 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EAE9DAE51AF8E91F00F4FE76 /* Distance */,
 				EA8D81791AEA674100BAC943 /* Receipt */,
 				EA8D81B61AEA7EE200BAC943 /* Column.h */,
 				EA8D81B71AEA7EE200BAC943 /* Column.m */,
@@ -1165,6 +1190,29 @@
 				EAE8F9B11AF149DC00E837E3 /* TripDistancesViewController.m */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EAE9DAE51AF8E91F00F4FE76 /* Distance */ = {
+			isa = PBXGroup;
+			children = (
+				EAE9DAE61AF8E97100F4FE76 /* DistanceColumn.h */,
+				EAE9DAE71AF8E97100F4FE76 /* DistanceColumn.m */,
+				EAE9DAFB1AF8EAD100F4FE76 /* DistanceCommentColumn.h */,
+				EAE9DAFC1AF8EAD100F4FE76 /* DistanceCommentColumn.m */,
+				EAE9DAF21AF8EA9600F4FE76 /* DistanceCurrencyColumn.h */,
+				EAE9DAF31AF8EA9600F4FE76 /* DistanceCurrencyColumn.m */,
+				EAE9DAF81AF8EAC000F4FE76 /* DistanceDateColumn.h */,
+				EAE9DAF91AF8EAC000F4FE76 /* DistanceDateColumn.m */,
+				EAE9DAEF1AF8EA8300F4FE76 /* DistanceDistanceColumn.h */,
+				EAE9DAF01AF8EA8300F4FE76 /* DistanceDistanceColumn.m */,
+				EAE9DAE91AF8EA5500F4FE76 /* DistanceLocationColumn.h */,
+				EAE9DAEA1AF8EA5500F4FE76 /* DistanceLocationColumn.m */,
+				EAE9DAEC1AF8EA6D00F4FE76 /* DistancePriceColumn.h */,
+				EAE9DAED1AF8EA6D00F4FE76 /* DistancePriceColumn.m */,
+				EAE9DAF51AF8EAAE00F4FE76 /* DistanceRateColumn.h */,
+				EAE9DAF61AF8EAAE00F4FE76 /* DistanceRateColumn.m */,
+			);
+			path = Distance;
 			sourceTree = "<group>";
 		};
 		EAED9B1C1AEE9F8C00BB8773 /* Persistence */ = {
@@ -1423,6 +1471,7 @@
 				EAF9ADE91AECF9200000AC84 /* DatabaseUpgradeToVersion12.m in Sources */,
 				EA8D81AC1AEA7C9D00BAC943 /* ReceiptColumnTax.m in Sources */,
 				4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */,
+				EAE9DAF41AF8EA9600F4FE76 /* DistanceCurrencyColumn.m in Sources */,
 				849A142F18D240D200399A0F /* WBSettingsViewController.m in Sources */,
 				EA5963FB1AF2A07200935344 /* InlinedPickerCell.m in Sources */,
 				84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */,
@@ -1444,6 +1493,7 @@
 				843950A418ED1D2E00A1CF83 /* WBPdfDrawer.m in Sources */,
 				84AF861018E895CF00F15C3A /* WBDateFormatter.m in Sources */,
 				84553A5318D0D2CA0009057B /* WBReceiptsViewController.m in Sources */,
+				EAE9DAEE1AF8EA6D00F4FE76 /* DistancePriceColumn.m in Sources */,
 				EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */,
 				EA8D81941AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.m in Sources */,
 				845E33DC18D86D84006A506A /* WBReceiptActionsViewController.m in Sources */,
@@ -1476,20 +1526,24 @@
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
 				EA4DC9921AF154E000CEF1B9 /* EditDistanceViewController.m in Sources */,
 				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
+				EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */,
 				847C887518D7BA4500A33397 /* WBGenerateViewController.m in Sources */,
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
 				84ABAD0918DB79D900F8D3EB /* WBCategoriesHelper.m in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
 				EA4C5CBA1AF2864B0083FDD7 /* TextEntryCell.m in Sources */,
 				84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */,
+				EAE9DAE81AF8E97100F4FE76 /* DistanceColumn.m in Sources */,
 				EA3C969E1AEBA94200A2A5F9 /* ReportPDFGenerator.m in Sources */,
 				EA3C96A71AEBC1A500A2A5F9 /* ReceiptIndexer.m in Sources */,
 				8472F01518D6F1B400929C5B /* WBViewController.m in Sources */,
 				84AA921518EE89E00096013D /* WBImageStampler.m in Sources */,
+				EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */,
 				EA3C96A11AEBA9B200A2A5F9 /* TripFullPDFGenerator.m in Sources */,
 				843F623F18EF9E78001ACBB1 /* HUD.m in Sources */,
 				EA07BF471AF3FD1D004D17F6 /* Distance.m in Sources */,
 				843F620218EF4BB0001ACBB1 /* WBImageUtils.m in Sources */,
+				EAE9DAFD1AF8EAD100F4FE76 /* DistanceCommentColumn.m in Sources */,
 				EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */,
 				EA8D81AF1AEA7CAD00BAC943 /* ReceiptColumnPictured.m in Sources */,
 				847C887218D7ACC600A33397 /* WBTableViewController.m in Sources */,
@@ -1497,6 +1551,7 @@
 				847EFA5418E6BC93006BE520 /* WBSqlBuilder.m in Sources */,
 				84DCAAE318E4B48A00ECAECC /* WBPreferences.m in Sources */,
 				EA07BF4D1AF400CA004D17F6 /* Database+Distances.m in Sources */,
+				EAE9DAF11AF8EA8300F4FE76 /* DistanceDistanceColumn.m in Sources */,
 				EA4C5CC11AF286990083FDD7 /* InputCellsSection.m in Sources */,
 				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
@@ -1528,6 +1583,7 @@
 				EAF9ADE61AECF8F80000AC84 /* DatabaseCreateAtVersion11.m in Sources */,
 				EA8D818E1AEA7BBC00BAC943 /* ReceiptColumnReportName.m in Sources */,
 				EA3C96981AEBA91400A2A5F9 /* ReportGenerator.m in Sources */,
+				EAE9DAEB1AF8EA5500F4FE76 /* DistanceLocationColumn.m in Sources */,
 				EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */,
 				EA8D81821AEA7B5800BAC943 /* ReceiptColumnBlank.m in Sources */,
 				8453368018F475E2001072AA /* WBAutocompleteHelper.m in Sources */,

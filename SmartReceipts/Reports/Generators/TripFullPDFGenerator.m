@@ -45,6 +45,17 @@
     ReportPDFTable *receiptsTable = [[ReportPDFTable alloc] initWithPDFDrawer:self.pdfDrawer columns:[self receiptColumns]];
     [receiptsTable setIncludeHeaders:YES];
     [receiptsTable appendTableWithRows:[self receipts]];
+
+    NSArray *distances = [self distances];
+    if (distances.count == 0) {
+        return;
+    }
+
+    [self.pdfDrawer drawGap];
+
+    ReportPDFTable *distancesTable = [[ReportPDFTable alloc] initWithPDFDrawer:self.pdfDrawer columns:[self distanceColumns]];
+    [distancesTable setIncludeHeaders:YES];
+    [distancesTable appendTableWithRows:distances];
 }
 
 @end

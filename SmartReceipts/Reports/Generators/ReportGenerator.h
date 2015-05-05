@@ -18,5 +18,7 @@
 - (BOOL)generateToPath:(NSString *)outputPath;
 - (NSArray *)receiptColumns;
 - (NSArray *)receipts;
+- (NSArray *)distanceColumns;
+- (NSArray *)distances;
 
 @end

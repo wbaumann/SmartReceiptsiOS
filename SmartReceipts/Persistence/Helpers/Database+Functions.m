@@ -37,7 +37,7 @@
 
 - (void)setDatabaseVersion:(NSUInteger)version {
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        [db executeUpdate:[NSString stringWithFormat:@"PRAGMA user_version = %lu", version]];
+        [db executeUpdate:[NSString stringWithFormat:@"PRAGMA user_version = %tu", version]];
     }];
 }
 

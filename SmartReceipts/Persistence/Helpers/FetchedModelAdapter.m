@@ -69,6 +69,10 @@
     TOCK(@"Fetch time");
 }
 
+- (NSArray *)allObjects {
+    return [NSArray arrayWithArray:self.models];
+}
+
 - (void)didInsertObject:(NSNotification *)notification {
     NSObject *inserted = notification.object;
     if (![inserted isKindOfClass:self.modelClass]) {
