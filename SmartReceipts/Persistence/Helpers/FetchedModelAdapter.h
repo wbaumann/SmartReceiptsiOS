@@ -21,5 +21,6 @@
 - (NSUInteger)numberOfObjects;
 - (void)setFetchQuery:(NSString *)query parameters:(NSDictionary *)parameters;
 - (void)fetch;
+- (NSArray *)allObjects;
 
 @end

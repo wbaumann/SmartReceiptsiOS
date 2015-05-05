@@ -12,6 +12,9 @@
 #import "WBDB.h"
 #import "WBReportUtils.h"
 #import "ReceiptIndexer.h"
+#import "Database+Distances.h"
+#import "FetchedModelAdapter.h"
+#import "DistanceColumn.h"
 
 @interface ReportGenerator ()
 
@@ -44,6 +47,15 @@
     return  [ReceiptIndexer indexReceipts:receipts filteredWith:^BOOL(WBReceipt *receipt) {
         return [WBReportUtils filterOutReceipt:receipt];
     }];
+}
+
+- (NSArray *)distanceColumns {
+    return [DistanceColumn allColumns];
+}
+
+- (NSArray *)distances {
+    FetchedModelAdapter *distances = [[Database sharedInstance] fetchedAdapterForDistancesInTrip:self.trip];
+    return [distances allObjects];
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "DatabaseMigration.h"
 #import "Database.h"
 #import "Database+Functions.h"
+#import "DatabaseTestsHelper.h"
 
 @interface DatabaseMigrationTest : DatabaseTestsBase
 
@@ -28,7 +29,7 @@
 }
 
 - (void)testCreatedDatabaseMigratedToVersion13 {
-    Database *database = [self createAndOpenDatabaseWithPath:self.testDBPath];
+    DatabaseTestsHelper *database = [self createAndOpenDatabaseWithPath:self.testDBPath];
     XCTAssertEqual(0, database.databaseVersion);
     BOOL migrationSuccess = [DatabaseMigration migrateDatabase:database];
     XCTAssertTrue(migrationSuccess);
@@ -45,7 +46,7 @@
     [[NSFileManager defaultManager] copyItemAtPath:self.referenceDBPath toPath:self.testDBPath error:&copyError];
     XCTAssertNil(copyError);
 
-    Database *database = [self createAndOpenDatabaseWithPath:self.testDBPath];
+    DatabaseTestsHelper *database = [self createAndOpenDatabaseWithPath:self.testDBPath];
     XCTAssertEqual(11, database.databaseVersion);
     BOOL migrationSuccess = [DatabaseMigration migrateDatabase:database];
     XCTAssertTrue(migrationSuccess);

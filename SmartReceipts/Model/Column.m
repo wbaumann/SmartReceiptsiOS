@@ -36,7 +36,7 @@
     return _dateFormatter;
 }
 
-- (NSString *)valueFromRow:(id)row forCSV:(BOOL)forCVS {
+- (NSString *)valueFromRow:(id)row forCSV:(BOOL)forCSV {
     ABSTRACT_METHOD
     return nil;
 }
