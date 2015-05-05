@@ -60,7 +60,7 @@ WBObservableTrips *_lastInstance;
     [self.delegate observableTrips:self replacedTrip:oldTrip toTrip:newTrip fromIndex:oldPos toIndex:newPos];
 }
 
--(WBTrip*) tripAtIndex:(int)index {
+-(WBTrip*) tripAtIndex:(NSUInteger)index {
     return [array objectAtIndex:index];
 }
 

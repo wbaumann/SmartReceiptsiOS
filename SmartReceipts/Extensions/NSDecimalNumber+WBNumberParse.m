@@ -18,9 +18,9 @@
     }
 }
 
-+ (NSDecimalNumber *)decimalNumberOrZero:(NSString *)value withLocale:(NSLocale *)locale {
++ (NSDecimalNumber *)decimalNumberOrZeroUsingCurrentLocale:(NSString *)value {
     if (value.length > 0) {
-        return [NSDecimalNumber decimalNumberWithString:value locale:locale];
+        return [NSDecimalNumber decimalNumberWithString:value locale:[NSLocale currentLocale]];
     } else {
         return [NSDecimalNumber zero];
     }

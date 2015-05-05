@@ -86,8 +86,8 @@
 }
 
 - (NSString *)labelForReceipt:(WBReceipt *)receipt {
-    return [NSString stringWithFormat:@"%d  \u2022  %@  \u2022  %@",
-                                      receipt.reportIndex,
+    return [NSString stringWithFormat:@"%ld  \u2022  %@  \u2022  %@",
+                                      (long)receipt.reportIndex,
                                       [receipt name],
                                       [self.dateFormatter formattedDate:[receipt dateFromDateMs] inTimeZone:[receipt timeZone]]];
 }
@@ -113,7 +113,7 @@
     }
 
     @autoreleasepool {
-        for (int i = 0; i < CGPDFDocumentGetNumberOfPages(pdf); ++i) {
+        for (NSUInteger i = 0; i < CGPDFDocumentGetNumberOfPages(pdf); ++i) {
             CGPDFPageRef page = CGPDFDocumentGetPage(pdf, i + 1);
             [self.pdfDrawer drawFullPagePDFPage:page withLabel:label];
         }

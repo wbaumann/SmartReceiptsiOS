@@ -33,7 +33,7 @@
 -(void) replaceReceipt:(WBReceipt*) oldReceipt toReceipt:(WBReceipt*) newReceipt;
 -(void) swapReceiptAtIndex:(int)idx1 withReceiptAtIndex:(int)idx2;
 
--(WBReceipt*) receiptAtIndex:(int)index;
+- (WBReceipt *)receiptAtIndex:(NSUInteger)index;
 -(NSUInteger) indexOfReceipt:(WBReceipt*)receipt;
 
 -(NSArray*) receiptsArrayCopy;

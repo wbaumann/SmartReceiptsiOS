@@ -26,8 +26,10 @@
 
 #import "WBAppDelegate.h"
 #import "WBImagePicker.h"
+#import "TripDistancesViewController.h"
 
 static NSString *CellIdentifier = @"Cell";
+static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
 @interface WBReceiptsViewController ()
 {
@@ -126,7 +128,7 @@ static NSString *CellIdentifier = @"Cell";
     
     UILabel *priceField = _protoCell.priceField;
     
-    for (int i = 0; i < [_receipts count]; ++i) {
+    for (NSUInteger i = 0; i < [_receipts count]; ++i) {
         NSString *str = [[_receipts receiptAtIndex:i] priceWithCurrencyFormatted];
         
         // dumb, but works better than calculating bounds for attributed text because dynamically includes paddings etc.
@@ -326,6 +328,9 @@ static NSString *CellIdentifier = @"Cell";
         WBGenerateViewController* vc = (WBGenerateViewController*)[[segue destinationViewController] topViewController];
         
         [vc setReceipts:[_receipts receiptsArrayCopy] forTrip:self.trip andViewController:self];
+    } else if ([PresentTripDistancesSegue isEqualToString:segue.identifier]) {
+        TripDistancesViewController *controller = (TripDistancesViewController *) [[segue destinationViewController] topViewController];
+        [controller setTrip:self.trip];
     }
 }
 
@@ -437,19 +442,4 @@ static NSString *CellIdentifier = @"Cell";
     }];
 }
 
-- (IBAction)actionDistance:(id)sender {
-    NSString *totalPrefix = NSLocalizedString(@"Total", nil);
-    NSString *total = [NSString stringWithFormat:@"%@: %.2f", totalPrefix, self.trip.miles];
-    
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle:total
-                          message:NSLocalizedString(@"Add distance", nil)
-                          delegate:self
-                          cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                          otherButtonTitles:NSLocalizedString(@"Add", nil), nil];
-    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
-    [alert textFieldAtIndex:0].keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-    [alert textFieldAtIndex:0].delegate = self;
-    [alert show];
-}
 @end

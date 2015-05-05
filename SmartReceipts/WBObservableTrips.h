@@ -33,7 +33,7 @@
 -(void) removeTrip:(WBTrip*) trip;
 -(void) replaceTrip:(WBTrip*) oldTrip toTrip:(WBTrip*) newTrip;
 
--(WBTrip*) tripAtIndex:(int)index;
+-(WBTrip*) tripAtIndex:(NSUInteger)index;
 -(NSUInteger) indexOfTrip:(WBTrip*) trip;
 
 @end

@@ -80,26 +80,22 @@
     return cell;
 }
 
-- (void)refreshCellsInTableView:(UITableView*)tableView fromIndex:(int)idx1 toIndex:(int)idx2 changeIndex:(int) change {
+- (void)refreshCellsInTableView:(UITableView*)tableView fromIndex:(NSUInteger)idx1 toIndex:(NSUInteger)idx2 changeIndex:(NSInteger) change {
     if (idx2 < idx1) {
-        int tmp = idx1;
+        NSUInteger tmp = idx1;
         idx1 = idx2;
         idx2 = tmp;
     }
-    
-    if (idx1 < 0) {
-        idx1 = 0;
-    }
-    
+
     if (idx2 >= _columns.count) {
-        idx2 = (int)_columns.count - 1;
+        idx2 = _columns.count - 1;
     }
     
     NSString *colPrefix = NSLocalizedString(@"Col.", @"Column prefix used while ordering");
     
-    for (int i = idx1; i <= idx2; ++i) {
+    for (NSUInteger i = idx1; i <= idx2; ++i) {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        cell.textLabel.text  = [NSString stringWithFormat:@"%@ %d", colPrefix, (i + 1 + change)];
+        cell.textLabel.text  = [NSString stringWithFormat:@"%@ %td", colPrefix, (i + 1 + change)];
         
         Column *col = _columns[i];
         cell.detailTextLabel.text = [col name];
@@ -118,14 +114,14 @@
         _changed = YES;
         
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [self refreshCellsInTableView:tableView fromIndex:(int)indexPath.row toIndex:((int)_columns.count-1) changeIndex:0];
+        [self refreshCellsInTableView:tableView fromIndex:indexPath.row toIndex:(_columns.count-1) changeIndex:0];
     }
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-    int idx1 = (int)fromIndexPath.row;
-    int idx2 = (int)toIndexPath.row;
+    NSInteger idx1 = fromIndexPath.row;
+    NSInteger idx2 = toIndexPath.row;
     
     if (idx1 == idx2) {
         return;
@@ -134,7 +130,7 @@
     NSString *colPrefix = NSLocalizedString(@"Col.", @"Column prefix used while ordering");
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:idx1 inSection:0]];
-    cell.textLabel.text  = [NSString stringWithFormat:@"%@ %d", colPrefix, (idx2 + 1)];
+    cell.textLabel.text  = [NSString stringWithFormat:@"%@ %td", colPrefix, (idx2 + 1)];
     
     if (idx1 < idx2) {
         [self refreshCellsInTableView:tableView fromIndex:(idx1+1) toIndex:idx2 changeIndex:(-1)];

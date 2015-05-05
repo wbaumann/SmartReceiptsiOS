@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @class FMDatabaseQueue;
+@class Database;
 
 @interface DatabaseMigration : NSObject
 
 + (NSArray *)allMigrations;
-+ (BOOL)migrateDatabase:(FMDatabaseQueue *)databaseQueue;
++ (BOOL)migrateDatabase:(Database *)database;
 
 - (NSUInteger)version;
-- (BOOL)migrate:(FMDatabaseQueue *)databaseQueue;
+- (BOOL)migrate:(Database *)database;
 
 @end

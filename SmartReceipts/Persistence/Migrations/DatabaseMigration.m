@@ -6,14 +6,13 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <FMDB/FMDatabaseQueue.h>
 #import "DatabaseMigration.h"
 #import "Constants.h"
 #import "DatabaseCreateAtVersion11.h"
 #import "DatabaseUpgradeToVersion12.h"
-#import "FMDatabaseAdditions.h"
+#import "Database.h"
 #import "DatabaseUpgradeToVersion13.h"
-#import "FMDatabaseQueue+QueueShortcuts.h"
+#import "Database+Functions.h"
 
 @implementation DatabaseMigration
 
@@ -30,34 +29,34 @@
     return 0;
 }
 
-- (BOOL)migrate:(FMDatabaseQueue *)databaseQueue {
+- (BOOL)migrate:(Database *)database {
     ABSTRACT_METHOD
     return NO;
 }
 
-+ (BOOL)migrateDatabase:(FMDatabaseQueue *)databaseQueue {
++ (BOOL)migrateDatabase:(Database *)database {
     NSArray *migrations = [self allMigrations];
-    return [self runMigrations:migrations onQueue:databaseQueue];
+    return [self runMigrations:migrations onDatabase:database];
 }
 
-+ (BOOL)runMigrations:(NSArray *)migrations onQueue:(FMDatabaseQueue *)queue {
-    NSUInteger currentVersion = [queue databaseVersion];
-    SRLog(@"Current version: %d", currentVersion);
++ (BOOL)runMigrations:(NSArray *)migrations onDatabase:(Database *)database {
+    NSUInteger currentVersion = [database databaseVersion];
+    SRLog(@"Current version: %tu", currentVersion);
 
     for (DatabaseMigration *migration in migrations) {
         if (currentVersion >= migration.version) {
-            SRLog(@"DB at version %d, will skip migration to %d", currentVersion, migration.version);
+            SRLog(@"DB at version %tu, will skip migration to %tu", currentVersion, migration.version);
             continue;
         }
 
-        SRLog(@"Migrate to version %d", migration.version);
-        if (![migration migrate:queue]) {
-            SRLog(@"Failed on migration %d", migration.version);
+        SRLog(@"Migrate to version %tu", migration.version);
+        if (![migration migrate:database]) {
+            SRLog(@"Failed on migration %tu", migration.version);
             return NO;
         }
 
         currentVersion = migration.version;
-        [queue setDatabaseVersion:currentVersion];
+        [database setDatabaseVersion:currentVersion];
     }
 
     return YES;

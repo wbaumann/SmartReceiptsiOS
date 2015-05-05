@@ -260,7 +260,7 @@ static WBImageCell createCell(CGRect rect, int labelHeight) {
     
     int xAdv = _lineSize + (_spaceFromLine * 2) + columnSize.width;
     
-    for (int i = 0; i < texts.count; ++i) {
+    for (NSUInteger i = 0; i < texts.count; ++i) {
         CGRect rect = CGRectMake(startX + _lineSize + _spaceFromLine + (xAdv * i),
                                  startY + _lineSize + _spaceFromLine,
                                  columnSize.width,

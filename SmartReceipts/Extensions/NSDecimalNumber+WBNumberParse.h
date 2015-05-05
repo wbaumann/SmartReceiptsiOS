@@ -11,6 +11,6 @@
 @interface NSDecimalNumber (WBNumberParse)
 
 + (NSDecimalNumber *)decimalNumberOrZero:(NSString *)value;
-+ (NSDecimalNumber *)decimalNumberOrZero:(NSString *)value withLocale:(NSLocale *)locale;
++ (NSDecimalNumber *)decimalNumberOrZeroUsingCurrentLocale:(NSString *)value;
 
 @end

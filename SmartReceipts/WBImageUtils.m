@@ -8,10 +8,6 @@
 
 #import "WBImageUtils.h"
 
-static inline double radians (double degrees) {
-    return degrees * M_PI/180;
-}
-
 @implementation WBImageUtils
 
 + (UIImage *)image:(UIImage*) image scaledToSize:(CGSize)size
