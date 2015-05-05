@@ -19,6 +19,8 @@
 @property (nonatomic, strong) id insertObject;
 @property (nonatomic, strong) id deleteObject;
 @property (nonatomic, strong) id updateObject;
+@property (nonatomic, assign) NSUInteger moveFromIndex;
+@property (nonatomic, assign) NSUInteger moveToIndex;
 
 @end
 
@@ -41,6 +43,11 @@
 - (void)didUpdateObject:(id)object atIndex:(NSUInteger)index {
     [self setUpdateObject:object];
     [self setUpdateIndex:index];
+}
+
+- (void)didMoveObject:(id)object fromIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
+    [self setMoveFromIndex:fromIndex];
+    [self setMoveToIndex:toIndex];
 }
 
 - (void)didChangeContent {

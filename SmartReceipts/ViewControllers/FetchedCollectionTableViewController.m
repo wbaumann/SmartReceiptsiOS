@@ -112,6 +112,11 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (void)didMoveObject:(id)object fromIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
+    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:fromIndex inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:toIndex inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 - (void)didChangeContent {
     [self.tableView endUpdates];
     [self contentChanged];

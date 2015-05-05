@@ -19,5 +19,7 @@
 @property (nonatomic, strong, readonly) id insertObject;
 @property (nonatomic, strong, readonly) id deleteObject;
 @property (nonatomic, strong, readonly) id updateObject;
+@property (nonatomic, assign, readonly) NSUInteger moveFromIndex;
+@property (nonatomic, assign, readonly) NSUInteger moveToIndex;
 
 @end

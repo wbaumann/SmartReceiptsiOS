@@ -123,4 +123,24 @@
     XCTAssertTrue(delegateCheck.didChangeCalled);
 }
 
+- (void)testMoveWillBeNotified {
+    [self.adapter clearNotificationListener];
+
+    FetchAdapterDelegateCheckHelper *delegateCheck = [[FetchAdapterDelegateCheckHelper alloc] init];
+    [self.adapter setDelegate:delegateCheck];
+
+    NSUInteger beginIndex = 0;
+    NSUInteger endIndex = 2;
+    Distance *updated = [self.adapter objectAtIndex:beginIndex];
+    updated.date = [[NSDate date] dateByAddingTimeInterval:-1000000];
+    [self.db updateDistance:updated];
+
+    [self.adapter refreshContentAndNotifyUpdateChanges:updated];
+
+    XCTAssertTrue(delegateCheck.willChangeCalled);
+    XCTAssertEqual(beginIndex, delegateCheck.moveFromIndex);
+    XCTAssertEqual(endIndex, delegateCheck.moveToIndex);
+    XCTAssertTrue(delegateCheck.didChangeCalled);
+}
+
 @end

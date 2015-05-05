@@ -107,7 +107,7 @@
     if (indexBefore == indexAfter) {
         [self.delegate didUpdateObject:updated atIndex:indexBefore];
     } else {
-        SRAssert(NO);
+        [self.delegate didMoveObject:updated fromIndex:indexBefore toIndex:indexAfter];
     }
     [self.delegate didChangeContent];
 }
