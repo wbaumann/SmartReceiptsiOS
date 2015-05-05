@@ -12,6 +12,12 @@
 #import "WBPrice.h"
 #import "Database+Distances.h"
 
+@interface Distance (TestExpose)
+
+- (id)initWithTrip:(WBTrip *)trip distance:(NSDecimalNumber *)distance rate:(WBPrice *)rate location:(NSString *)location date:(NSDate *)date timeZone:(NSTimeZone *)timeZone comment:(NSString *)comment;
+
+@end
+
 @implementation DatabaseTestsHelper
 
 - (WBTrip *)createTestTrip {

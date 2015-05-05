@@ -8,7 +8,7 @@
 
 #import "TripDistancesViewController.h"
 #import "WBTrip.h"
-#import "AddDistanceViewController.h"
+#import "EditDistanceViewController.h"
 #import "DistanceSummaryCell.h"
 #import "UIView+LoadHelpers.h"
 #import "Database.h"
@@ -23,6 +23,7 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
 
 @property (nonatomic, strong) WBDateFormatter *dateFormatter;
 @property (nonatomic, assign) CGFloat maxRateWidth;
+@property (nonatomic, strong) Distance *tapped;
 
 @end
 
@@ -55,8 +56,11 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([PushDistanceAddViewControllerSegue isEqualToString:segue.identifier]) {
-        AddDistanceViewController *controller = [segue destinationViewController];
+        EditDistanceViewController *controller = [segue destinationViewController];
         [controller setTrip:self.trip];
+        [controller setDistance:self.tapped];
+
+        [self setTapped:nil];
     }
 }
 
@@ -86,6 +90,11 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
 
 - (void)deleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
     [[Database sharedInstance] deleteDistance:object];
+}
+
+- (void)tappedObject:(id)tapped atIndexPath:(NSIndexPath *)indexPath {
+    [self setTapped:tapped];
+    [self performSegueWithIdentifier:PushDistanceAddViewControllerSegue sender:nil];
 }
 
 @end

@@ -108,6 +108,10 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
     [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (void)didUpdateObject:(id)object atIndex:(NSUInteger)index {
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 - (void)didChangeContent {
     [self.tableView endUpdates];
     [self contentChanged];
@@ -126,6 +130,17 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 
 - (void)deleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
     SRLog(@"deleteObject:atIndexPath:%@", indexPath);
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    id tapped = [self objectAtIndexPath:indexPath];
+    [self tappedObject:tapped atIndexPath:indexPath];
+}
+
+- (void)tappedObject:(id)tapped atIndexPath:(NSIndexPath *)indexPath {
+    SRLog(@"tappedObject:atIndexPath:%@", indexPath);
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  AddDistanceViewController.h
+//  EditDistanceViewController.h
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 29/04/15.
@@ -10,9 +10,11 @@
 #import "InputCellsViewController.h"
 
 @class WBTrip;
+@class Distance;
 
-@interface AddDistanceViewController : InputCellsViewController
+@interface EditDistanceViewController : InputCellsViewController
 
 @property (nonatomic, strong) WBTrip *trip;
+@property (nonatomic, strong) Distance *distance;
 
 @end

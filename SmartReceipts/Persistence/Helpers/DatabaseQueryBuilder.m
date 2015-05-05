@@ -7,6 +7,7 @@
 //
 
 #import "DatabaseQueryBuilder.h"
+#import "Constants.h"
 
 typedef NS_ENUM(short, StatementType) {
     InsertStatement = 1,
@@ -20,6 +21,7 @@ typedef NS_ENUM(short, StatementType) {
 @property (nonatomic, copy) NSString *tableName;
 @property (nonatomic, strong) NSMutableArray *params;
 @property (nonatomic, strong) NSMutableArray *values;
+@property (nonatomic, strong) NSMutableDictionary *where;
 
 @end
 
@@ -32,6 +34,7 @@ typedef NS_ENUM(short, StatementType) {
         _tableName = tableName;
         _params = [NSMutableArray array];
         _values = [NSMutableArray array];
+        _where = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -44,9 +47,18 @@ typedef NS_ENUM(short, StatementType) {
     return [[DatabaseQueryBuilder alloc] initStatementForTable:tableName statementType:DeleteStatement];
 }
 
++ (DatabaseQueryBuilder *)updateStatementForTable:(NSString *)tableName {
+    return [[DatabaseQueryBuilder alloc] initStatementForTable:tableName statementType:UpdateStatement];
+}
+
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue {
     [self.params addObject:paramName];
     [self.values addObject:paramValue];
+}
+
+- (void)where:(NSString *)paramName value:(NSObject *)paramValue {
+    SRAssert(self.where.count == 0, @"Only one where clause parameter supported");
+    self.where[paramName] = paramValue;
 }
 
 - (NSString *)buildStatement {
@@ -55,6 +67,8 @@ typedef NS_ENUM(short, StatementType) {
         [query appendString:@"INSERT INTO "];
     } else if (self.statement == DeleteStatement) {
         [query appendString:@"DELETE FROM "];        
+    } else if (self.statement == UpdateStatement) {
+        [query appendString:@"UPDATE "];
     }
     
     [query appendString:self.tableName];
@@ -62,11 +76,24 @@ typedef NS_ENUM(short, StatementType) {
     
     if (self.statement == InsertStatement) {
         [self appendInsertValues:query];
-    } else {
+    } else if (self.statement == DeleteStatement) {
         [self appendDeleteValues:query];
+    } else if (self.statement == UpdateStatement) {
+        [self appendUpdateValues:query];
     }
 
     return [NSString stringWithString:query];
+}
+
+- (void)appendUpdateValues:(NSMutableString *)query {
+    [query appendString:@"SET "];
+    NSMutableArray *valuesSet = [NSMutableArray array];
+    for (NSString *param in self.params) {
+        [valuesSet addObject:[NSString stringWithFormat:@"%@ = :%@", param, param]];
+    }
+    [query appendString:[valuesSet componentsJoinedByString:@", "]];
+    NSString *whereKey = [self.where.keyEnumerator.allObjects firstObject];
+    [query appendFormat:@" WHERE %@ = :%@", whereKey, whereKey];
 }
 
 - (void)appendDeleteValues:(NSMutableString *)query {
@@ -106,6 +133,7 @@ typedef NS_ENUM(short, StatementType) {
         id value = self.values[index];
         result[key] = value;
     }
+    [result addEntriesFromDictionary:self.where];
     return [NSDictionary dictionaryWithDictionary:result];
 }
 

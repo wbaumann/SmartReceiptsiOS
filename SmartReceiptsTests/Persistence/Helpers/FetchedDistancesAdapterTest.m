@@ -22,6 +22,7 @@
 - (void)clearNotificationListener;
 - (void)refreshContentAndNotifyInsertChanges;
 - (void)refreshContentAndNotifyDeleteChanges;
+- (void)refreshContentAndNotifyUpdateChanges:(NSObject *)updated;
 
 @end
 
@@ -96,6 +97,28 @@
     XCTAssertEqual(removeIndex, delegateCheck.deleteIndex);
     Distance *deleteObject = delegateCheck.deleteObject;
     XCTAssertEqualObjects(removed, deleteObject);
+    XCTAssertNil(delegateCheck.insertObject);
+    XCTAssertTrue(delegateCheck.didChangeCalled);
+}
+
+- (void)testUpdateWillBeNotified {
+    [self.adapter clearNotificationListener];
+
+    FetchAdapterDelegateCheckHelper *delegateCheck = [[FetchAdapterDelegateCheckHelper alloc] init];
+    [self.adapter setDelegate:delegateCheck];
+
+    NSUInteger count = self.adapter.numberOfObjects;
+    NSUInteger updateIndex = MIN(2, count - 1);
+    Distance *updated = [self.adapter objectAtIndex:updateIndex];
+    updated.location = @"Updated location";
+    [self.db updateDistance:updated];
+
+    [self.adapter refreshContentAndNotifyUpdateChanges:updated];
+
+    XCTAssertTrue(delegateCheck.willChangeCalled);
+    XCTAssertEqual(updateIndex, delegateCheck.updateIndex);
+    Distance *updatedObject = [self.adapter objectAtIndex:updateIndex];
+    XCTAssertEqualObjects(updated.location, updatedObject.location);
     XCTAssertNil(delegateCheck.insertObject);
     XCTAssertTrue(delegateCheck.didChangeCalled);
 }

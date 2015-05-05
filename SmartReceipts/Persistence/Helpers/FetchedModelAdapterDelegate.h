@@ -11,6 +11,7 @@
 - (void)willChangeContent;
 - (void)didInsertObject:(id)object atIndex:(NSUInteger)index;
 - (void)didDeleteObject:(id)object atIndex:(NSUInteger)index;
+- (void)didUpdateObject:(id)object atIndex:(NSUInteger)index;
 - (void)didChangeContent;
 
 @end

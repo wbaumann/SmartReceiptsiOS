@@ -17,5 +17,6 @@
 
 - (NSString *)value;
 - (void)activateDecimalEntryMode;
+- (void)setValue:(NSString *)value;
 
 @end

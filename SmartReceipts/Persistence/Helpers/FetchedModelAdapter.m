@@ -30,6 +30,7 @@
         _database = database;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didInsertObject:) name:DatabaseDidInsertModelNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDeleteObject:) name:DatabaseDidDeleteModelNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateObject:) name:DatabaseDidUpdateModelNotification object:nil];
     }
     return self;
 }
@@ -78,12 +79,37 @@
 }
 
 - (void)didDeleteObject:(NSNotification *)notification {
-    NSObject *inserted = notification.object;
-    if (![inserted isKindOfClass:self.modelClass]) {
+    NSObject *deleted = notification.object;
+    if (![deleted isKindOfClass:self.modelClass]) {
         return;
     }
 
     [self refreshContentAndNotifyDeleteChanges];
+}
+
+- (void)didUpdateObject:(NSNotification *)notification {
+    NSObject *updated = notification.object;
+    if (![updated isKindOfClass:self.modelClass]) {
+        return;
+    }
+
+    [self refreshContentAndNotifyUpdateChanges:updated];
+}
+
+- (void)refreshContentAndNotifyUpdateChanges:(NSObject *)updated {
+    NSArray *before = [NSArray arrayWithArray:self.models];
+    [self fetch];
+    NSArray *after = [NSArray arrayWithArray:self.models];
+
+    NSUInteger indexBefore = [before indexOfObject:updated];
+    NSUInteger indexAfter = [after indexOfObject:updated];
+    [self.delegate willChangeContent];
+    if (indexBefore == indexAfter) {
+        [self.delegate didUpdateObject:updated atIndex:indexBefore];
+    } else {
+        SRAssert(NO);
+    }
+    [self.delegate didChangeContent];
 }
 
 - (void)refreshContentAndNotifyDeleteChanges {

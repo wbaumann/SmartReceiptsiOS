@@ -17,12 +17,6 @@
 @interface Distance ()
 
 @property (nonatomic, assign) NSUInteger *objectId;
-@property (nonatomic, strong) NSDecimalNumber *distance;
-@property (nonatomic, strong) WBPrice *rate;
-@property (nonatomic, copy) NSString *location;
-@property (nonatomic, strong) NSDate *date;
-@property (nonatomic, strong) NSTimeZone *timeZone;
-@property (nonatomic, copy) NSString *comment;
 
 @end
 

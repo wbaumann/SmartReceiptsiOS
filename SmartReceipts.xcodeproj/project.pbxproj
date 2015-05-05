@@ -129,7 +129,7 @@
 		EA4C5CC51AF287330083FDD7 /* TitledTextEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CC31AF287330083FDD7 /* TitledTextEntryCell.m */; };
 		EA4C5CC61AF287330083FDD7 /* TitledTextEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4C5CC41AF287330083FDD7 /* TitledTextEntryCell.xib */; };
 		EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CC81AF288570083FDD7 /* UITableViewCell+Identifier.m */; };
-		EA4DC9921AF154E000CEF1B9 /* AddDistanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DC9911AF154E000CEF1B9 /* AddDistanceViewController.m */; };
+		EA4DC9921AF154E000CEF1B9 /* EditDistanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DC9911AF154E000CEF1B9 /* EditDistanceViewController.m */; };
 		EA4DC9961AF1580100CEF1B9 /* InputCellsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DC9951AF1580100CEF1B9 /* InputCellsViewController.m */; };
 		EA5963E31AF2912900935344 /* PickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963E21AF2912900935344 /* PickerCell.m */; };
 		EA5963EC1AF2957200935344 /* NoCaretTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963EB1AF2957200935344 /* NoCaretTextField.m */; };
@@ -402,8 +402,8 @@
 		EA4C5CC41AF287330083FDD7 /* TitledTextEntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitledTextEntryCell.xib; sourceTree = "<group>"; };
 		EA4C5CC71AF288570083FDD7 /* UITableViewCell+Identifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Identifier.h"; sourceTree = "<group>"; };
 		EA4C5CC81AF288570083FDD7 /* UITableViewCell+Identifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Identifier.m"; sourceTree = "<group>"; };
-		EA4DC9901AF154E000CEF1B9 /* AddDistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDistanceViewController.h; sourceTree = "<group>"; };
-		EA4DC9911AF154E000CEF1B9 /* AddDistanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDistanceViewController.m; sourceTree = "<group>"; };
+		EA4DC9901AF154E000CEF1B9 /* EditDistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditDistanceViewController.h; sourceTree = "<group>"; };
+		EA4DC9911AF154E000CEF1B9 /* EditDistanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditDistanceViewController.m; sourceTree = "<group>"; };
 		EA4DC9941AF1580100CEF1B9 /* InputCellsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCellsViewController.h; sourceTree = "<group>"; };
 		EA4DC9951AF1580100CEF1B9 /* InputCellsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCellsViewController.m; sourceTree = "<group>"; };
 		EA5963E11AF2912900935344 /* PickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCell.h; sourceTree = "<group>"; };
@@ -1153,8 +1153,8 @@
 		EAE8F9AF1AF149B300E837E3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				EA4DC9901AF154E000CEF1B9 /* AddDistanceViewController.h */,
-				EA4DC9911AF154E000CEF1B9 /* AddDistanceViewController.m */,
+				EA4DC9901AF154E000CEF1B9 /* EditDistanceViewController.h */,
+				EA4DC9911AF154E000CEF1B9 /* EditDistanceViewController.m */,
 				EA07BF611AF4EC1E004D17F6 /* FetchedCollectionTableViewController.h */,
 				EA07BF621AF4EC1E004D17F6 /* FetchedCollectionTableViewController.m */,
 				EA4C5CBF1AF286990083FDD7 /* InputCellsSection.h */,
@@ -1474,7 +1474,7 @@
 				8478B77618D37D350041CBA3 /* WBColumnsViewController.m in Sources */,
 				8467EFE918F6E3170076BE6E /* WBImageSegue.m in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
-				EA4DC9921AF154E000CEF1B9 /* AddDistanceViewController.m in Sources */,
+				EA4DC9921AF154E000CEF1B9 /* EditDistanceViewController.m in Sources */,
 				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
 				847C887518D7BA4500A33397 /* WBGenerateViewController.m in Sources */,
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,

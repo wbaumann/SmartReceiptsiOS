@@ -11,6 +11,7 @@
 
 extern NSString *const DatabaseDidInsertModelNotification;
 extern NSString *const DatabaseDidDeleteModelNotification;
+extern NSString *const DatabaseDidUpdateModelNotification;
 
 @interface Database : NSObject
 

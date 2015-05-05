@@ -2001,10 +2001,10 @@
             </objects>
             <point key="canvasLocation" x="5115" y="1839"/>
         </scene>
-        <!--Add Distance View Controller-->
+        <!--Edit Distance View Controller-->
         <scene sceneID="7Qt-vE-mMd">
             <objects>
-                <tableViewController id="nx9-eb-Qoz" customClass="AddDistanceViewController" sceneMemberID="viewController">
+                <tableViewController id="nx9-eb-Qoz" customClass="EditDistanceViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Unl-YA-skm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

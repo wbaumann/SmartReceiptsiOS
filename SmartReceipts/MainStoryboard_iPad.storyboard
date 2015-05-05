@@ -1902,10 +1902,10 @@
             </objects>
             <point key="canvasLocation" x="2550" y="1973"/>
         </scene>
-        <!--Add Distance View Controller-->
+        <!--Edit Distance View Controller-->
         <scene sceneID="ocf-8K-caK">
             <objects>
-                <tableViewController id="yTB-BU-tva" customClass="AddDistanceViewController" sceneMemberID="viewController">
+                <tableViewController id="yTB-BU-tva" customClass="EditDistanceViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Tem-0j-BUg">
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

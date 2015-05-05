@@ -1,18 +1,19 @@
 //
-//  AddDistanceViewController.m
+//  EditDistanceViewController.m
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 29/04/15.
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import "AddDistanceViewController.h"
+#import "EditDistanceViewController.h"
 #import "TitledTextEntryCell.h"
 #import "UIView+LoadHelpers.h"
 #import "UITableViewCell+Identifier.h"
 #import "InputCellsSection.h"
 #import "InlinedPickerCell.h"
 #import "InlinedDatePickerCell.h"
+#import "Distance.h"
 #import "PickerCell.h"
 #import "WBTrip.h"
 #import "WBPrice.h"
@@ -23,11 +24,10 @@
 #import "NSMutableString+Issues.h"
 #import "UIAlertView+Blocks.h"
 #import "NSDecimalNumber+WBNumberParse.h"
-#import "Distance.h"
 #import "Database.h"
 #import "Database+Distances.h"
 
-@interface AddDistanceViewController ()
+@interface EditDistanceViewController ()
 
 @property (nonatomic, strong) TitledTextEntryCell *distanceCell;
 @property (nonatomic, strong) TitledTextEntryCell *rateCell;
@@ -37,17 +37,22 @@
 @property (nonatomic, strong) PickerCell *dateCell;
 @property (nonatomic, strong) InlinedDatePickerCell *datePickerCell;
 @property (nonatomic, strong) TitledTextEntryCell *commentCell;
+@property (nonatomic, strong) WBDateFormatter *dateFormatter;
 
 @end
 
-@implementation AddDistanceViewController
+@implementation EditDistanceViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.navigationItem setTitle:NSLocalizedString(@"Add dictance", nil)];
+    if (self.distance) {
+        [self.navigationItem setTitle:NSLocalizedString(@"Edit dictance", nil)];
+    } else {
+        [self.navigationItem setTitle:NSLocalizedString(@"Add dictance", nil)];
+    }
 
-    __weak AddDistanceViewController *weakSelf = self;
+    __weak EditDistanceViewController *weakSelf = self;
 
     [self.tableView registerNib:[TitledTextEntryCell viewNib] forCellReuseIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.tableView registerNib:[PickerCell viewNib] forCellReuseIdentifier:[PickerCell cellIdentifier]];
@@ -83,15 +88,15 @@
 
     NSDate *date = self.trip.startDate;
     NSTimeZone *timeZone = self.trip.startTimeZone;
-    WBDateFormatter *dateFormatter = [[WBDateFormatter alloc] init];
+    self.dateFormatter = [[WBDateFormatter alloc] init];
 
     self.dateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
-    [self.dateCell setTitle:NSLocalizedString(@"Date", nil) value:[dateFormatter formattedDate:date inTimeZone:timeZone]];
+    [self.dateCell setTitle:NSLocalizedString(@"Date", nil) value:[self.dateFormatter formattedDate:date inTimeZone:timeZone]];
 
     self.datePickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedDatePickerCell cellIdentifier]];
     [self.datePickerCell setDate:date];
     [self.datePickerCell setChangeHandler:^(NSDate *selected) {
-        [weakSelf.dateCell setValue:[dateFormatter formattedDate:selected inTimeZone:timeZone]];
+        [weakSelf.dateCell setValue:[weakSelf.dateFormatter formattedDate:selected inTimeZone:timeZone]];
     }];
     [self.datePickerCell setMinDate:self.trip.startDate maxDate:self.trip.endDate];
 
@@ -104,22 +109,40 @@
 
     [self addInlinedPickerCell:self.currencyPickerCell forCell:self.currencyCell];
     [self addInlinedPickerCell:self.datePickerCell forCell:self.self.dateCell];
+
+    [self loadExistingValues];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)loadExistingValues {
+    if (!self.distance) {
+        return;
+    }
+
+    [self.distanceCell setValue:[self.distance.distance descriptionWithLocale:[NSLocale currentLocale]]];
+    [self.rateCell setValue:[self.distance.rate amountAsString]];
+    NSString *currency = self.distance.rate.currency.code;
+    [self.currencyCell setValue:currency];
+    [self.currencyPickerCell setSelectedValue:currency];
+    [self.locationCell setValue:self.distance.location];
+    [self.dateCell setValue:[self.dateFormatter formattedDate:self.distance.date inTimeZone:self.distance.timeZone]];
+    [self.datePickerCell setDate:self.distance.date];
+    [self.commentCell setValue:self.distance.comment];
 }
 
 - (IBAction)saveDistance {
     NSString *issues = [self validateInput];
     if (issues.hasValue) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Can't add distance", nil)
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Can't save distance", nil)
                                                             message:issues
-                                                   cancelButtonItem:[RIButtonItem itemWithLabel:@"OK"]
+                                                   cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"OK", nil)]
                                                    otherButtonItems:nil];
         [alertView show];
         return;
+    }
+
+    if (!self.distance) {
+        self.distance = [[Distance alloc] init];
+        [self.distance setTrip:self.trip];
     }
 
     NSDecimalNumber *distance = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.distanceCell.value];
@@ -128,19 +151,22 @@
     NSString *location = self.locationCell.value;
     NSDate *date = self.datePickerCell.value;
     NSString *comment = self.commentCell.value;
-    Distance *distanceObject = [[Distance alloc] initWithTrip:self.trip
-                                                     distance:distance
-                                                         rate:[WBPrice priceWithAmount:rate currencyCode:currency]
-                                                     location:location
-                                                         date:date
-                                                     timeZone:self.trip.startTimeZone
-                                                      comment:comment];
-    if ([[Database sharedInstance] saveDistance:distanceObject]) {
+
+    [self.distance setDistance:distance];
+    [self.distance setRate:[WBPrice priceWithAmount:rate currencyCode:currency]];
+    [self.distance setLocation:location];
+    [self.distance setDate:date];
+    [self.distance setTimeZone:self.trip.startTimeZone];
+    [self.distance setComment:comment];
+
+    if (self.distance.objectId == 0 && [[Database sharedInstance] saveDistance:self.distance]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if ([[Database sharedInstance] updateDistance:self.distance]) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Distance not added", nil)
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Distance not saved", nil)
                                                             message:NSLocalizedString(@"For some reason distance could not be added", nil)
-                                                   cancelButtonItem:[RIButtonItem itemWithLabel:@"OK"]
+                                                   cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"OK", nil)]
                                                    otherButtonItems:nil];
         [alertView show];
     }

@@ -15,8 +15,10 @@
 @property (nonatomic, assign) BOOL didChangeCalled;
 @property (nonatomic, assign) NSUInteger insertIndex;
 @property (nonatomic, assign) NSUInteger deleteIndex;
+@property (nonatomic, assign) NSUInteger updateIndex;
 @property (nonatomic, strong) id insertObject;
 @property (nonatomic, strong) id deleteObject;
+@property (nonatomic, strong) id updateObject;
 
 @end
 
@@ -34,6 +36,11 @@
 - (void)didDeleteObject:(id)object atIndex:(NSUInteger)index {
     [self setDeleteObject:object];
     [self setDeleteIndex:index];
+}
+
+- (void)didUpdateObject:(id)object atIndex:(NSUInteger)index {
+    [self setUpdateObject:object];
+    [self setUpdateIndex:index];
 }
 
 - (void)didChangeContent {

@@ -37,6 +37,10 @@
     [self setInputValidation:[[DecimalInputValidation alloc] init]];
 }
 
+- (void)setValue:(NSString *)value {
+    [self.entryField setText:value];
+}
+
 - (void)donePressed {
     [self.entryField.delegate textFieldShouldReturn:self.entryField];
 }

@@ -19,5 +19,6 @@
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
 - (NSUInteger)numberOfItems;
 - (void)deleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath;
+- (void)tappedObject:(id)tapped atIndexPath:(NSIndexPath *)indexPath;
 
 @end

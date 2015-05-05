@@ -18,14 +18,13 @@
 
 @property (nonatomic, assign, readonly) NSUInteger *objectId;
 @property (nonatomic, strong) WBTrip *trip;
-@property (nonatomic, strong, readonly) NSDecimalNumber *distance;
-@property (nonatomic, strong, readonly) WBPrice *rate;
-@property (nonatomic, copy, readonly) NSString *location;
-@property (nonatomic, strong, readonly) NSDate *date;
-@property (nonatomic, strong, readonly) NSTimeZone *timeZone;
-@property (nonatomic, copy, readonly) NSString *comment;
+@property (nonatomic, strong) NSDecimalNumber *distance;
+@property (nonatomic, strong) WBPrice *rate;
+@property (nonatomic, copy) NSString *location;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSTimeZone *timeZone;
+@property (nonatomic, copy) NSString *comment;
 
-- (id)initWithTrip:(WBTrip *)trip distance:(NSDecimalNumber *)distance rate:(WBPrice *)rate location:(NSString *)location date:(NSDate *)date timeZone:(NSTimeZone *)timeZone comment:(NSString *)comment;
 - (WBPrice *)totalRate;
 
 @end
