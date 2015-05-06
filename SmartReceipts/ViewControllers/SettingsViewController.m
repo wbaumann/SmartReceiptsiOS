@@ -27,6 +27,7 @@
 #import "SettingsSwitchCell.h"
 #import "SettingsButtonCell.h"
 #import "UIAlertView+Blocks.h"
+#import "NSDecimalNumber+WBNumberParse.h"
 
 // for refreshing while backup
 static SettingsViewController *visibleInstance = nil;
@@ -61,6 +62,11 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
 @property (nonatomic, strong) SettingsButtonCell *configureCSVColumnsCell;
 
 @property (nonatomic, strong) SettingsButtonCell *configurePDFColumnsCell;
+
+@property (nonatomic, strong) SettingsSwitchCell *addDistancePriceToReportCell;
+@property (nonatomic, strong) SettingsTopTitledTextEntryCell *gasRateCell;
+@property (nonatomic, strong) SettingsSwitchCell *includeDistanceTableCell;
+@property (nonatomic, strong) SettingsSwitchCell *reportOnDailyDistanceCell;
 
 @property (nonatomic, strong) SettingsButtonCell *backupCell;
 
@@ -179,6 +185,27 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
 
     [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Customize PDF Output", nil) cells:@[self.configurePDFColumnsCell]]];
 
+    self.addDistancePriceToReportCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.addDistancePriceToReportCell setTitle:NSLocalizedString(@"Add Distane Price to Report", nil)];
+
+
+    self.gasRateCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
+    [self.gasRateCell setTitle:NSLocalizedString(@"Gas Rate", nil)];
+
+
+    self.includeDistanceTableCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.includeDistanceTableCell setTitle:NSLocalizedString(@"Include Distance Table", nil)];
+
+    self.reportOnDailyDistanceCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.reportOnDailyDistanceCell setTitle:NSLocalizedString(@"Report on Daily Distance", nil)];
+
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Distance", nil)
+                                                                  cells:@[self.addDistancePriceToReportCell,
+                                                                          self.gasRateCell,
+                                                                          self.includeDistanceTableCell,
+                                                                          self.reportOnDailyDistanceCell]]];
+
+
     self.backupCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
     [self.backupCell setTitle:NSLocalizedString(@"Make Backup", nil)];
 
@@ -242,6 +269,17 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
     [self.cameraSettingsCell setValues:presentedCameraValues selected:selectedCameraValueIndex];
 
     [self.includeCSVHeadersCell setSwitchOn:[WBPreferences includeCSVHeaders]];
+
+    [self.addDistancePriceToReportCell setSwitchOn:[WBPreferences includeMileagePriceInTotalValue]];
+    float defaultValue = [WBPreferences distanceRateDefaultValue];
+    if (defaultValue < 0.001) {
+        [self.gasRateCell setValue:@""];
+    } else {
+        NSDecimalNumber *mileageRate = (NSDecimalNumber *) [[NSDecimalNumber alloc] initWithFloat:defaultValue];
+        [self.gasRateCell setValue:[mileageRate descriptionWithLocale:[NSLocale currentLocale]]];
+    }
+    [self.includeDistanceTableCell setSwitchOn:[WBPreferences printDistanceTables]];
+    [self.reportOnDailyDistanceCell setSwitchOn:[WBPreferences printDailyDistanceValues]];
 }
 
 - (void)writeSettingsToPreferences {
@@ -273,6 +311,13 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
     [WBPreferences setEnableAutoCompleteSuggestions:self.enableAutocompleteSuggestionsCell.isSwitchOn];
     [WBPreferences setDefaultToFirstReportDate:self.defaultReceiptDateToReportStartCell.isSwitchOn];
     [WBPreferences setIncludeCSVHeaders:self.includeCSVHeadersCell.isSwitchOn];
+
+    [WBPreferences setIncludeMileagePriceInTotalValue:self.addDistancePriceToReportCell.isSwitchOn];
+    NSString *gasRate = [self.gasRateCell value];
+    NSDecimalNumber *rate = [NSDecimalNumber decimalNumberOrZero:gasRate];
+    [WBPreferences setDistanceRateDefaultValue:[rate floatValue]];
+    [WBPreferences setPrintDistanceTables:[self.includeDistanceTableCell isSwitchOn]];
+    [WBPreferences setPrintDailyDistanceValues:[self.reportOnDailyDistanceCell isSwitchOn]];
 
     [WBPreferences save];
 }
