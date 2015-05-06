@@ -11,6 +11,7 @@
 #import "WBTrip.h"
 #import "WBDateFormatter.h"
 #import "ReportPDFTable.h"
+#import "WBPreferences.h"
 
 @implementation TripFullPDFGenerator
 
@@ -45,6 +46,10 @@
     ReportPDFTable *receiptsTable = [[ReportPDFTable alloc] initWithPDFDrawer:self.pdfDrawer columns:[self receiptColumns]];
     [receiptsTable setIncludeHeaders:YES];
     [receiptsTable appendTableWithRows:[self receipts]];
+
+    if (![WBPreferences printDistanceTable]) {
+        return;
+    }
 
     NSArray *distances = [self distances];
     if (distances.count == 0) {
