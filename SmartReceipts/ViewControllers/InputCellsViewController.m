@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <objc/NSObjCRuntime.h>
 #import "InputCellsViewController.h"
 #import "InputCellsSection.h"
 #import "TextEntryCell.h"

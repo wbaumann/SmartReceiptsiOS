@@ -56,7 +56,6 @@
 		847C887218D7ACC600A33397 /* WBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C887118D7ACC600A33397 /* WBTableViewController.m */; };
 		847C887518D7BA4500A33397 /* WBGenerateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C887418D7BA4500A33397 /* WBGenerateViewController.m */; };
 		847EFA5418E6BC93006BE520 /* WBSqlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 847EFA5318E6BC93006BE520 /* WBSqlBuilder.m */; };
-		849A142F18D240D200399A0F /* WBSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849A142E18D240D200399A0F /* WBSettingsViewController.m */; };
 		84A3ADE318D48E15003DB722 /* WBNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3ADE218D48E15003DB722 /* WBNewCategoryViewController.m */; };
 		84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A5834D18EDF897003A464D /* WBReceiptAndIndex.m */; };
 		84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A6C82A18F510B6003B876F /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -151,6 +150,7 @@
 		EA888A711AFA38AD00DF2AE6 /* SettingsButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A701AFA38AD00DF2AE6 /* SettingsButtonCell.m */; };
 		EA888A731AFA38C100DF2AE6 /* SettingsButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA888A721AFA38C100DF2AE6 /* SettingsButtonCell.xib */; };
 		EA888A761AFA3D3F00DF2AE6 /* NumberInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A751AFA3D3F00DF2AE6 /* NumberInputValidation.m */; };
+		EA888A791AFA44E300DF2AE6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A781AFA44E300DF2AE6 /* SettingsViewController.m */; };
 		EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816B1AEA668100BAC943 /* WBCategory.m */; };
 		EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816D1AEA668100BAC943 /* WBColumnNames.m */; };
 		EA8D81761AEA668100BAC943 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816F1AEA668100BAC943 /* WBPrice.m */; };
@@ -286,8 +286,6 @@
 		847C887418D7BA4500A33397 /* WBGenerateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBGenerateViewController.m; sourceTree = "<group>"; };
 		847EFA5218E6BC93006BE520 /* WBSqlBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSqlBuilder.h; sourceTree = "<group>"; };
 		847EFA5318E6BC93006BE520 /* WBSqlBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSqlBuilder.m; sourceTree = "<group>"; };
-		849A142D18D240D200399A0F /* WBSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSettingsViewController.h; sourceTree = "<group>"; };
-		849A142E18D240D200399A0F /* WBSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSettingsViewController.m; sourceTree = "<group>"; };
 		84A3ADE118D48E15003DB722 /* WBNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBNewCategoryViewController.h; sourceTree = "<group>"; };
 		84A3ADE218D48E15003DB722 /* WBNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNewCategoryViewController.m; sourceTree = "<group>"; };
 		84A5834C18EDF897003A464D /* WBReceiptAndIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceiptAndIndex.h; sourceTree = "<group>"; };
@@ -454,6 +452,8 @@
 		EA888A721AFA38C100DF2AE6 /* SettingsButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsButtonCell.xib; sourceTree = "<group>"; };
 		EA888A741AFA3D3F00DF2AE6 /* NumberInputValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberInputValidation.h; sourceTree = "<group>"; };
 		EA888A751AFA3D3F00DF2AE6 /* NumberInputValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberInputValidation.m; sourceTree = "<group>"; };
+		EA888A771AFA44E300DF2AE6 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		EA888A781AFA44E300DF2AE6 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		EA8D816A1AEA668100BAC943 /* WBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategory.h; sourceTree = "<group>"; };
 		EA8D816B1AEA668100BAC943 /* WBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategory.m; sourceTree = "<group>"; };
 		EA8D816C1AEA668100BAC943 /* WBColumnNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnNames.h; sourceTree = "<group>"; };
@@ -663,8 +663,6 @@
 		845E33E418D8AC75006A506A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				849A142D18D240D200399A0F /* WBSettingsViewController.h */,
-				849A142E18D240D200399A0F /* WBSettingsViewController.m */,
 				8478B77418D37D350041CBA3 /* WBColumnsViewController.h */,
 				8478B77518D37D350041CBA3 /* WBColumnsViewController.m */,
 				8478B77118D37BFB0041CBA3 /* WBCategoriesViewController.h */,
@@ -1223,6 +1221,8 @@
 				EA4C5CC01AF286990083FDD7 /* InputCellsSection.m */,
 				EA4DC9941AF1580100CEF1B9 /* InputCellsViewController.h */,
 				EA4DC9951AF1580100CEF1B9 /* InputCellsViewController.m */,
+				EA888A771AFA44E300DF2AE6 /* SettingsViewController.h */,
+				EA888A781AFA44E300DF2AE6 /* SettingsViewController.m */,
 				EAE8F9B01AF149DC00E837E3 /* TripDistancesViewController.h */,
 				EAE8F9B11AF149DC00E837E3 /* TripDistancesViewController.m */,
 			);
@@ -1513,7 +1513,6 @@
 				EA8D81AC1AEA7C9D00BAC943 /* ReceiptColumnTax.m in Sources */,
 				4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */,
 				EAE9DAF41AF8EA9600F4FE76 /* DistanceCurrencyColumn.m in Sources */,
-				849A142F18D240D200399A0F /* WBSettingsViewController.m in Sources */,
 				EA5963FB1AF2A07200935344 /* InlinedPickerCell.m in Sources */,
 				84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */,
 				EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */,
@@ -1587,6 +1586,7 @@
 				843F623F18EF9E78001ACBB1 /* HUD.m in Sources */,
 				EA07BF471AF3FD1D004D17F6 /* Distance.m in Sources */,
 				843F620218EF4BB0001ACBB1 /* WBImageUtils.m in Sources */,
+				EA888A791AFA44E300DF2AE6 /* SettingsViewController.m in Sources */,
 				EAE9DAFD1AF8EAD100F4FE76 /* DistanceCommentColumn.m in Sources */,
 				EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */,
 				EA8D81AF1AEA7CAD00BAC943 /* ReceiptColumnPictured.m in Sources */,

@@ -1,12 +1,12 @@
 //
-//  WBSettingsViewController.m
+//  SettingsViewController.m
 //  SmartReceipts
 //
 //  Created on 13/03/14.
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBSettingsViewController.h"
+#import "SettingsViewController.h"
 #import "WBCurrency.h"
 #import "WBColumnsViewController.h"
 
@@ -29,13 +29,13 @@
 #import "UIAlertView+Blocks.h"
 
 // for refreshing while backup
-static WBSettingsViewController *visibleInstance = nil;
+static SettingsViewController *visibleInstance = nil;
 
 static NSString *const PushManageCategoriesSegueIdentifier = @"PushManageCategoriesSegueIdentifier";
 static NSString *const PushConfigurePDFColumnsSegueIdentifier = @"ConfigurePDF";
 static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
 
-@interface WBSettingsViewController () <UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
+@interface SettingsViewController () <UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *cameraValues;
 
@@ -66,9 +66,9 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
 
 @end
 
-@implementation WBSettingsViewController
+@implementation SettingsViewController
 
-+ (WBSettingsViewController*) visibleInstance {
++ (SettingsViewController *) visibleInstance {
     return visibleInstance;
 }
 
@@ -107,7 +107,7 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
     [self.defaultCurrencyCell setTitle:NSLocalizedString(@"Default Currency", nil)];
 
 
-    __weak WBSettingsViewController *weakSelf = self;
+    __weak SettingsViewController *weakSelf = self;
 
     self.defaultCurrencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.defaultCurrencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];

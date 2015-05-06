@@ -1,5 +1,5 @@
 //
-//  WBSettingsViewController.h
+//  SettingsViewController.h
 //  SmartReceipts
 //
 //  Created on 13/03/14.
@@ -12,9 +12,10 @@
 
 #import <MessageUI/MessageUI.h>
 
-@interface WBSettingsViewController : InputCellsViewController
+@interface SettingsViewController : InputCellsViewController
 
-+ (WBSettingsViewController*) visibleInstance;
++ (SettingsViewController *)visibleInstance;
 
 - (void)populateValues;
+
 @end

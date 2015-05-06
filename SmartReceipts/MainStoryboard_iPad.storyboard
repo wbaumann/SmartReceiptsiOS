@@ -622,7 +622,7 @@
         <!--Settings-->
         <scene sceneID="yPG-zQ-X1A">
             <objects>
-                <tableViewController id="Npz-x6-pwj" customClass="WBSettingsViewController" sceneMemberID="viewController">
+                <tableViewController id="Npz-x6-pwj" customClass="SettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="2DY-tD-Bcc">
                         <rect key="frame" x="0.0" y="64" width="540" height="512"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
