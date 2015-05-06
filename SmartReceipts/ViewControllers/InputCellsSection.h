@@ -10,6 +10,8 @@
 
 @interface InputCellsSection : NSObject
 
+@property (nonatomic, copy, readonly) NSString *sectionTitle;
+
 + (InputCellsSection *)sectionWithTitle:(NSString *)sectionTitle cells:(NSArray *)cells;
 + (InputCellsSection *)sectionWithCells:(NSArray *)cells;
 

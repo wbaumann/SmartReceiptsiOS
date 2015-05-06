@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <objc/NSObjCRuntime.h>
 #import "InputCellsViewController.h"
 #import "InputCellsSection.h"
 #import "TextEntryCell.h"
@@ -230,5 +231,9 @@
     return CGRectGetHeight(cell.frame);
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    InputCellsSection *cellsSection = self.presentedSections[section];
+    return [cellsSection sectionTitle];
+}
 
 @end
