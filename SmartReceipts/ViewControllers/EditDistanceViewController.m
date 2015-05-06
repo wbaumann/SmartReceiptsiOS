@@ -114,6 +114,12 @@
 }
 
 - (void)loadExistingValues {
+    float rateDefaultValue = [WBPreferences distanceRateDefaultValue];
+
+    if (rateDefaultValue > 0.001) {
+        [self.rateCell setValue:[[[NSDecimalNumber alloc] initWithFloat:rateDefaultValue] descriptionWithLocale:[NSLocale currentLocale]]];
+    }
+
     if (!self.distance) {
         return;
     }
