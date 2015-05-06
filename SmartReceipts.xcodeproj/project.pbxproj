@@ -136,6 +136,8 @@
 		EA5963F41AF29B1A00935344 /* UIView+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963F31AF29B1A00935344 /* UIView+Search.m */; };
 		EA5963FB1AF2A07200935344 /* InlinedPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963F91AF2A07200935344 /* InlinedPickerCell.m */; };
 		EA5963FC1AF2A07200935344 /* InlinedPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5963FA1AF2A07200935344 /* InlinedPickerCell.xib */; };
+		EA5ECA2E1AF9F43F008D2CFB /* SettingsSegmentControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5ECA2C1AF9F43F008D2CFB /* SettingsSegmentControlCell.m */; };
+		EA5ECA2F1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5ECA2D1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib */; };
 		EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5EF0D41AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m */; };
 		EA5EF0D61AF7E9C9009FA608 /* DatabaseTableNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF491AF40066004D17F6 /* DatabaseTableNames.m */; };
 		EA69EF151AEFC81A00276B70 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF141AEFC81A00276B70 /* Database.m */; };
@@ -144,6 +146,11 @@
 		EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF291AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m */; };
 		EA69EF2D1AF0907300276B70 /* receipts_at_v11.db in Resources */ = {isa = PBXBuildFile; fileRef = EA69EF2C1AF0907300276B70 /* receipts_at_v11.db */; };
 		EA69EF301AF0914000276B70 /* PaymentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF2F1AF0914000276B70 /* PaymentMethod.m */; };
+		EA71DFCC1AF9FEEC004092C3 /* SettingsSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA71DFCA1AF9FEEC004092C3 /* SettingsSwitchCell.m */; };
+		EA71DFCD1AF9FEEC004092C3 /* SettingsSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA71DFCB1AF9FEEC004092C3 /* SettingsSwitchCell.xib */; };
+		EA888A711AFA38AD00DF2AE6 /* SettingsButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A701AFA38AD00DF2AE6 /* SettingsButtonCell.m */; };
+		EA888A731AFA38C100DF2AE6 /* SettingsButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA888A721AFA38C100DF2AE6 /* SettingsButtonCell.xib */; };
+		EA888A761AFA3D3F00DF2AE6 /* NumberInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A751AFA3D3F00DF2AE6 /* NumberInputValidation.m */; };
 		EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816B1AEA668100BAC943 /* WBCategory.m */; };
 		EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816D1AEA668100BAC943 /* WBColumnNames.m */; };
 		EA8D81761AEA668100BAC943 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816F1AEA668100BAC943 /* WBPrice.m */; };
@@ -181,6 +188,8 @@
 		EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAF61AF8EAAE00F4FE76 /* DistanceRateColumn.m */; };
 		EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAF91AF8EAC000F4FE76 /* DistanceDateColumn.m */; };
 		EAE9DAFD1AF8EAD100F4FE76 /* DistanceCommentColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAFC1AF8EAD100F4FE76 /* DistanceCommentColumn.m */; };
+		EAE9DB011AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAFF1AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m */; };
+		EAE9DB021AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAE9DB001AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.xib */; };
 		EAED9B221AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m in Sources */ = {isa = PBXBuildFile; fileRef = EAED9B211AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m */; };
 		EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADDD1AECD2D20000AC84 /* ReportGeneratorTest.m */; };
 		EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADE21AECF8E30000AC84 /* DatabaseMigration.m */; };
@@ -423,6 +432,9 @@
 		EA5963F81AF2A07200935344 /* InlinedPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InlinedPickerCell.h; sourceTree = "<group>"; };
 		EA5963F91AF2A07200935344 /* InlinedPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InlinedPickerCell.m; sourceTree = "<group>"; };
 		EA5963FA1AF2A07200935344 /* InlinedPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InlinedPickerCell.xib; sourceTree = "<group>"; };
+		EA5ECA2B1AF9F43F008D2CFB /* SettingsSegmentControlCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSegmentControlCell.h; sourceTree = "<group>"; };
+		EA5ECA2C1AF9F43F008D2CFB /* SettingsSegmentControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSegmentControlCell.m; sourceTree = "<group>"; };
+		EA5ECA2D1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSegmentControlCell.xib; sourceTree = "<group>"; };
 		EA5EF0D31AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchAdapterDelegateCheckHelper.h; sourceTree = "<group>"; };
 		EA5EF0D41AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchAdapterDelegateCheckHelper.m; sourceTree = "<group>"; };
 		EA69EF131AEFC81A00276B70 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
@@ -434,6 +446,14 @@
 		EA69EF2C1AF0907300276B70 /* receipts_at_v11.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = receipts_at_v11.db; sourceTree = "<group>"; };
 		EA69EF2E1AF0914000276B70 /* PaymentMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentMethod.h; sourceTree = "<group>"; };
 		EA69EF2F1AF0914000276B70 /* PaymentMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentMethod.m; sourceTree = "<group>"; };
+		EA71DFC91AF9FEEC004092C3 /* SettingsSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSwitchCell.h; sourceTree = "<group>"; };
+		EA71DFCA1AF9FEEC004092C3 /* SettingsSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSwitchCell.m; sourceTree = "<group>"; };
+		EA71DFCB1AF9FEEC004092C3 /* SettingsSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSwitchCell.xib; sourceTree = "<group>"; };
+		EA888A6F1AFA38AD00DF2AE6 /* SettingsButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsButtonCell.h; sourceTree = "<group>"; };
+		EA888A701AFA38AD00DF2AE6 /* SettingsButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsButtonCell.m; sourceTree = "<group>"; };
+		EA888A721AFA38C100DF2AE6 /* SettingsButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsButtonCell.xib; sourceTree = "<group>"; };
+		EA888A741AFA3D3F00DF2AE6 /* NumberInputValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberInputValidation.h; sourceTree = "<group>"; };
+		EA888A751AFA3D3F00DF2AE6 /* NumberInputValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberInputValidation.m; sourceTree = "<group>"; };
 		EA8D816A1AEA668100BAC943 /* WBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategory.h; sourceTree = "<group>"; };
 		EA8D816B1AEA668100BAC943 /* WBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategory.m; sourceTree = "<group>"; };
 		EA8D816C1AEA668100BAC943 /* WBColumnNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnNames.h; sourceTree = "<group>"; };
@@ -508,6 +528,9 @@
 		EAE9DAF91AF8EAC000F4FE76 /* DistanceDateColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceDateColumn.m; sourceTree = "<group>"; };
 		EAE9DAFB1AF8EAD100F4FE76 /* DistanceCommentColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceCommentColumn.h; sourceTree = "<group>"; };
 		EAE9DAFC1AF8EAD100F4FE76 /* DistanceCommentColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceCommentColumn.m; sourceTree = "<group>"; };
+		EAE9DAFE1AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTopTitledTextEntryCell.h; sourceTree = "<group>"; };
+		EAE9DAFF1AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTopTitledTextEntryCell.m; sourceTree = "<group>"; };
+		EAE9DB001AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTopTitledTextEntryCell.xib; sourceTree = "<group>"; };
 		EAED9B211AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseCreateAtVersion11Test.m; sourceTree = "<group>"; };
 		EAF9ADDD1AECD2D20000AC84 /* ReportGeneratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportGeneratorTest.m; sourceTree = "<group>"; };
 		EAF9ADE11AECF8E30000AC84 /* DatabaseMigration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseMigration.h; sourceTree = "<group>"; };
@@ -997,6 +1020,8 @@
 				EA07BF421AF3F882004D17F6 /* DecimalInputValidation.h */,
 				EA07BF431AF3F882004D17F6 /* DecimalInputValidation.m */,
 				EA07BF411AF3F84E004D17F6 /* InputValidation.h */,
+				EA888A741AFA3D3F00DF2AE6 /* NumberInputValidation.h */,
+				EA888A751AFA3D3F00DF2AE6 /* NumberInputValidation.m */,
 				EA46678D1AE7EA1600B4E502 /* WBImagePicker.h */,
 				EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */,
 			);
@@ -1018,6 +1043,18 @@
 				EA5963E11AF2912900935344 /* PickerCell.h */,
 				EA5963E21AF2912900935344 /* PickerCell.m */,
 				EA07BF361AF3B88C004D17F6 /* PickerCell.xib */,
+				EA888A6F1AFA38AD00DF2AE6 /* SettingsButtonCell.h */,
+				EA888A701AFA38AD00DF2AE6 /* SettingsButtonCell.m */,
+				EA888A721AFA38C100DF2AE6 /* SettingsButtonCell.xib */,
+				EA5ECA2B1AF9F43F008D2CFB /* SettingsSegmentControlCell.h */,
+				EA5ECA2C1AF9F43F008D2CFB /* SettingsSegmentControlCell.m */,
+				EA5ECA2D1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib */,
+				EA71DFC91AF9FEEC004092C3 /* SettingsSwitchCell.h */,
+				EA71DFCA1AF9FEEC004092C3 /* SettingsSwitchCell.m */,
+				EA71DFCB1AF9FEEC004092C3 /* SettingsSwitchCell.xib */,
+				EAE9DAFE1AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.h */,
+				EAE9DAFF1AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m */,
+				EAE9DB001AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.xib */,
 				EA4C5CB71AF2864B0083FDD7 /* TextEntryCell.h */,
 				EA4C5CB81AF2864B0083FDD7 /* TextEntryCell.m */,
 				EA4C5CC21AF287330083FDD7 /* TitledTextEntryCell.h */,
@@ -1376,6 +1413,8 @@
 				84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */,
 				841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */,
 				84F4F34E18CFCCD000F69A35 /* InfoPlist.strings in Resources */,
+				EA71DFCD1AF9FEEC004092C3 /* SettingsSwitchCell.xib in Resources */,
+				EA888A731AFA38C100DF2AE6 /* SettingsButtonCell.xib in Resources */,
 				EA07BF371AF3B88C004D17F6 /* PickerCell.xib in Resources */,
 				8467EFED18F6F9530076BE6E /* ic_rotate_cw.png in Resources */,
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
@@ -1386,6 +1425,8 @@
 				EA07BF351AF3B703004D17F6 /* InlinedDatePickerCell.xib in Resources */,
 				8467EFF118F6FC450076BE6E /* ic_rotate_cw@2x.png in Resources */,
 				EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */,
+				EAE9DB021AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.xib in Resources */,
+				EA5ECA2F1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib in Resources */,
 				8421A1F51907AF18001DF38D /* wheel@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1479,6 +1520,7 @@
 				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
 				8478B77D18D395280041CBA3 /* WBNewReceiptViewController.m in Sources */,
 				EA8D81A91AEA7C8E00BAC943 /* ReceiptColumnPrice.m in Sources */,
+				EA888A711AFA38AD00DF2AE6 /* SettingsButtonCell.m in Sources */,
 				EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */,
 				84ABAD0218DB700000F8D3EB /* WBTripsHelper.m in Sources */,
 				4D33F3E219D8965800FE4EC4 /* GADConstants.m in Sources */,
@@ -1522,6 +1564,7 @@
 				EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */,
 				84ABAD0618DB780E00F8D3EB /* WBReceiptsHelper.m in Sources */,
 				8478B77618D37D350041CBA3 /* WBColumnsViewController.m in Sources */,
+				EA71DFCC1AF9FEEC004092C3 /* SettingsSwitchCell.m in Sources */,
 				8467EFE918F6E3170076BE6E /* WBImageSegue.m in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
 				EA4DC9921AF154E000CEF1B9 /* EditDistanceViewController.m in Sources */,
@@ -1530,6 +1573,7 @@
 				847C887518D7BA4500A33397 /* WBGenerateViewController.m in Sources */,
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
 				84ABAD0918DB79D900F8D3EB /* WBCategoriesHelper.m in Sources */,
+				EA5ECA2E1AF9F43F008D2CFB /* SettingsSegmentControlCell.m in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
 				EA4C5CBA1AF2864B0083FDD7 /* TextEntryCell.m in Sources */,
 				84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */,
@@ -1556,6 +1600,7 @@
 				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
 				8453368418F4950E001072AA /* WBBackupHelper.m in Sources */,
+				EAE9DB011AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m in Sources */,
 				84A3ADE318D48E15003DB722 /* WBNewCategoryViewController.m in Sources */,
 				EAE8F9B21AF149DC00E837E3 /* TripDistancesViewController.m in Sources */,
 				EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */,
@@ -1576,6 +1621,7 @@
 				84B4691E18E98838006E7A77 /* WBObservableReceipts.m in Sources */,
 				EA07BF561AF4D129004D17F6 /* DatabaseQueryBuilder.m in Sources */,
 				EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */,
+				EA888A761AFA3D3F00DF2AE6 /* NumberInputValidation.m in Sources */,
 				84AF861418E8C27600F15C3A /* WBCellWithPriceNameDate.m in Sources */,
 				84ABAD0C18DB7B4400F8D3EB /* WBColumnsHelper.m in Sources */,
 				84ABACFF18DB6F5F00F8D3EB /* WBDB.m in Sources */,

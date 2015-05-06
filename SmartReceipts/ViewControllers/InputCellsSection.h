@@ -10,6 +10,7 @@
 
 @interface InputCellsSection : NSObject
 
++ (InputCellsSection *)sectionWithTitle:(NSString *)sectionTitle cells:(NSArray *)cells;
 + (InputCellsSection *)sectionWithCells:(NSArray *)cells;
 
 - (NSUInteger)numberOfCells;

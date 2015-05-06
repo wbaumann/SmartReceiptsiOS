@@ -11,15 +11,21 @@
 @interface InputCellsSection ()
 
 @property (nonatomic, strong) NSArray *cells;
+@property (nonatomic, copy) NSString *sectionTitle;
 
 @end
 
 @implementation InputCellsSection
 
-+ (InputCellsSection *)sectionWithCells:(NSArray *)cells {
++ (InputCellsSection *)sectionWithTitle:(NSString *)sectionTitle cells:(NSArray *)cells {
     InputCellsSection *section = [[InputCellsSection alloc] init];
+    [section setSectionTitle:sectionTitle];
     [section setCells:cells];
     return section;
+}
+
++ (InputCellsSection *)sectionWithCells:(NSArray *)cells {
+    return [InputCellsSection sectionWithTitle:nil cells:cells];
 }
 
 - (NSUInteger)numberOfCells {

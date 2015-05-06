@@ -14,5 +14,6 @@
 
 - (void)addSectionForPresentation:(InputCellsSection *)section;
 - (void)addInlinedPickerCell:(UITableViewCell *)cell forCell:(UITableViewCell *)forCell;
+- (void)tappedCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 @end

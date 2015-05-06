@@ -9,6 +9,7 @@
 #import "TextEntryCell.h"
 #import "InputValidation.h"
 #import "DecimalInputValidation.h"
+#import "NumberInputValidation.h"
 
 @interface TextEntryCell ()
 
@@ -24,17 +25,33 @@
 }
 
 - (void)activateDecimalEntryMode {
+    [self addAccessoryView];
+    [self.entryField setKeyboardType:UIKeyboardTypeDecimalPad];
+
+    [self setInputValidation:[[DecimalInputValidation alloc] init]];
+}
+
+- (void)activateNumberEntryMode {
+    [self addAccessoryView];
+
+    [self.entryField setKeyboardType:UIKeyboardTypeNumberPad];
+
+    [self setInputValidation:[[NumberInputValidation alloc] init]];
+}
+
+- (void)addAccessoryView {
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(donePressed)];
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
-    [toolbar setBarStyle:UIBarStyleBlackTranslucent];
+    [toolbar setBarStyle:UIBarStyleDefault];
     [toolbar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     [toolbar setItems:@[spacer, doneButton]];
 
-    [self.entryField setKeyboardType:UIKeyboardTypeDecimalPad];
     [self.entryField setInputAccessoryView:toolbar];
+}
 
-    [self setInputValidation:[[DecimalInputValidation alloc] init]];
+- (void)activateEmailMode {
+    [self.entryField setKeyboardType:UIKeyboardTypeEmailAddress];
 }
 
 - (void)setValue:(NSString *)value {

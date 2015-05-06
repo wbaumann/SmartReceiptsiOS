@@ -9,7 +9,6 @@
 #import "WBSettingsViewController.h"
 #import "WBCurrency.h"
 #import "WBColumnsViewController.h"
-#import "WBTextUtils.h"
 
 #import "WBPreferences.h"
 #import "WBDateFormatter.h"
@@ -17,19 +16,53 @@
 #import "WBBackupHelper.h"
 
 #import "HUD.h"
+#import "WBCustomization.h"
+#import "SettingsTopTitledTextEntryCell.h"
+#import "UIView+LoadHelpers.h"
+#import "UITableViewCell+Identifier.h"
+#import "InputCellsSection.h"
+#import "InlinedPickerCell.h"
+#import "PickerCell.h"
+#import "SettingsSegmentControlCell.h"
+#import "SettingsSwitchCell.h"
+#import "SettingsButtonCell.h"
+#import "UIAlertView+Blocks.h"
 
 // for refreshing while backup
 static WBSettingsViewController *visibleInstance = nil;
 
-@interface WBSettingsViewController () {
-    WBDynamicPicker* dynamicPicker;
-    
-    NSArray *currencyCodes;
-    NSString *currentCurrencyCode;
-    int pickedRow;
-    
-    NSArray *cameraValues;
-}
+static NSString *const PushManageCategoriesSegueIdentifier = @"PushManageCategoriesSegueIdentifier";
+static NSString *const PushConfigurePDFColumnsSegueIdentifier = @"ConfigurePDF";
+static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
+
+@interface WBSettingsViewController () <UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
+
+@property (nonatomic, strong) NSArray *cameraValues;
+
+@property (nonatomic, strong) SettingsTopTitledTextEntryCell *emailCell;
+@property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultTripLengthCell;
+@property (nonatomic, strong) SettingsTopTitledTextEntryCell *minReportablePriceCell;
+@property (nonatomic, strong) SettingsTopTitledTextEntryCell *userIdCell;
+@property (nonatomic, strong) PickerCell *defaultCurrencyCell;
+@property (nonatomic, strong) InlinedPickerCell *defaultCurrencyPickerCell;
+@property (nonatomic, strong) SettingsSegmentControlCell *dateSeparatorCell;
+@property (nonatomic, strong) SettingsSegmentControlCell *cameraSettingsCell;
+@property (nonatomic, strong) SettingsSwitchCell *predictReceiptCategoriesCell;
+@property (nonatomic, strong) SettingsSwitchCell *includeTaxFieldCell;
+@property (nonatomic, strong) SettingsSwitchCell *matchNameToCategoriesCell;
+@property (nonatomic, strong) SettingsSwitchCell *matchCommentsToCategoriesCell;
+@property (nonatomic, strong) SettingsSwitchCell *onlyReportExpenseableCell;
+@property (nonatomic, strong) SettingsSwitchCell *enableAutocompleteSuggestionsCell;
+@property (nonatomic, strong) SettingsSwitchCell *defaultReceiptDateToReportStartCell;
+
+@property (nonatomic, strong) SettingsButtonCell *manageCategoriesCell;
+
+@property (nonatomic, strong) SettingsSwitchCell *includeCSVHeadersCell;
+@property (nonatomic, strong) SettingsButtonCell *configureCSVColumnsCell;
+
+@property (nonatomic, strong) SettingsButtonCell *configurePDFColumnsCell;
+
+@property (nonatomic, strong) SettingsButtonCell *backupCell;
 
 @end
 
@@ -42,94 +75,141 @@ static WBSettingsViewController *visibleInstance = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [WBCustomization customizeOnViewDidLoad:self];
     
     self.navigationItem.title = NSLocalizedString(@"Settings", nil);
-    
-    self.labelEmailReceipt.text = NSLocalizedString(@"Default Email Recipient", nil);
-    self.labelTripLength.text = NSLocalizedString(@"Default Trip Length (Days)", nil);
-    self.labelMinimumReceiptPrice.text = NSLocalizedString(@"Min. Receipt Price to Report", nil);
-    self.labelUserId.text = NSLocalizedString(@"User ID", nil);
-    
-    self.labelDefaultCurrency.text = NSLocalizedString(@"Default Currency", nil);
-    self.labelDateSeparator.text = NSLocalizedString(@"Date Separator", nil);
-    self.labelCameraWidthHeight.text = NSLocalizedString(@"Max. Camera Height / Width", nil);
-    
-    self.labelPredictReceiptCategories.text = NSLocalizedString(@"Predict Receipt Categories", nil);
-    self.labelIncludeTaxForReceipts.text = NSLocalizedString(@"Include Tax Field For Receipts", nil);
-    self.labelMatchNameToCategories.text = NSLocalizedString(@"Match Name to Categories", nil);
-    self.labelMatchCommentsToCategories.text = NSLocalizedString(@"Match Comments to Categories", nil);
-    self.labelOnlyReportExpensableReceipts.text = NSLocalizedString(@"Only Report Expensable Receipts", nil);
-    self.labelEnableAutoCompleteSuggestions.text = NSLocalizedString(@"Enable AutoComplete Suggestions", nil);
-    self.labelDefaultReceiptDateToReportStartDate.text = NSLocalizedString(@"Default Receipt Date to Report Start Date", nil);
-    
-    self.labelIncludeHeaderColumns.text = NSLocalizedString(@"Include Header Columns", nil);
-    
-    self.labelManageCategories.text = NSLocalizedString(@"Manage Categories", nil);
-    self.labelConfigureCsvColumns.text = NSLocalizedString(@"Configure CSV Columns", nil);
-    self.labelConfigurePdfColumns.text = NSLocalizedString(@"Configure PDF Columns", nil);
-    self.labelMakeBackup.text = NSLocalizedString(@"Make Backup", nil);
-    
-    currencyCodes = [WBCurrency allCurrencyCodes];
-    currentCurrencyCode = @"USD";
-    
-    dynamicPicker = [[WBDynamicPicker alloc] initWithType:WBDynamicPickerTypePicker withController:self];
-    [dynamicPicker setTitle:NSLocalizedString(@"Currencies",nil)];
-    dynamicPicker.delegate = self;
 
-    self.tripLengthField.delegate = self;
-    self.userIdField.delegate = self;
-    self.minimumReceiptPriceField.delegate = self;
-    
+    [self.tableView registerNib:[SettingsTopTitledTextEntryCell viewNib] forCellReuseIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
+    [self.tableView registerNib:[PickerCell viewNib] forCellReuseIdentifier:[PickerCell cellIdentifier]];
+    [self.tableView registerNib:[InlinedPickerCell viewNib] forCellReuseIdentifier:[InlinedPickerCell cellIdentifier]];
+    [self.tableView registerNib:[SettingsSegmentControlCell viewNib] forCellReuseIdentifier:[SettingsSegmentControlCell cellIdentifier]];
+    [self.tableView registerNib:[SettingsSwitchCell viewNib] forCellReuseIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.tableView registerNib:[SettingsButtonCell viewNib] forCellReuseIdentifier:[SettingsButtonCell cellIdentifier]];
+
+
+    self.emailCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
+    [self.emailCell setTitle:NSLocalizedString(@"Default Email Recipient", nil)];
+    [self.emailCell activateEmailMode];
+
+    self.defaultTripLengthCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
+    [self.defaultTripLengthCell setTitle:NSLocalizedString(@"Default Trip Length (Days)", nil)];
+    [self.defaultTripLengthCell activateNumberEntryMode];
+
+    self.minReportablePriceCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
+    [self.minReportablePriceCell setTitle:NSLocalizedString(@"Min. Receipt Price to Report", nil)];
+    [self.minReportablePriceCell activateDecimalEntryMode];
+
+    self.userIdCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
+    [self.userIdCell setTitle:NSLocalizedString(@"User ID", nil)];
+
+    self.defaultCurrencyCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
+    [self.defaultCurrencyCell setTitle:NSLocalizedString(@"Default Currency", nil)];
+
+
+    __weak WBSettingsViewController *weakSelf = self;
+
+    self.defaultCurrencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
+    [self.defaultCurrencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
+    [self.defaultCurrencyPickerCell setValueChangeHandler:^(NSString *selected) {
+        [weakSelf.defaultCurrencyCell setValue:selected];
+    }];
+
+    self.dateSeparatorCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSegmentControlCell cellIdentifier]];
+    [self.dateSeparatorCell setTitle:NSLocalizedString(@"Date Separator", nil)];
+
+    self.cameraSettingsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSegmentControlCell cellIdentifier]];
+    [self.cameraSettingsCell setTitle:NSLocalizedString(@"Max. Camera Height / Width", nil)];
+
+    self.predictReceiptCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.predictReceiptCategoriesCell setTitle:NSLocalizedString(@"Predict Receipt Categories", nil)];
+
+    self.includeTaxFieldCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.includeTaxFieldCell setTitle:NSLocalizedString(@"Include Tax Field For Receipts", nil)];
+
+    self.matchNameToCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.matchNameToCategoriesCell setTitle:NSLocalizedString(@"Match Name to Categories", nil)];
+
+    self.matchCommentsToCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.matchCommentsToCategoriesCell setTitle:NSLocalizedString(@"Match Comments to Categories", nil)];
+
+    self.onlyReportExpenseableCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.onlyReportExpenseableCell setTitle:NSLocalizedString(@"Only Report Expensable Receipts", nil)];
+
+    self.enableAutocompleteSuggestionsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.enableAutocompleteSuggestionsCell setTitle:NSLocalizedString(@"Enable AutoComplete Suggestions", nil)];
+
+    self.defaultReceiptDateToReportStartCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.defaultReceiptDateToReportStartCell setTitle:NSLocalizedString(@"Default Receipt Date to Report Start Date", nil)];
+
+    InputCellsSection *general = [InputCellsSection sectionWithTitle:NSLocalizedString(@"General", nil)
+                                                               cells:@[self.emailCell,
+                                                                       self.defaultTripLengthCell,
+                                                                       self.minReportablePriceCell,
+                                                                       self.userIdCell,
+                                                                       self.defaultCurrencyCell,
+                                                                       self.dateSeparatorCell,
+                                                                       self.cameraSettingsCell,
+                                                                       self.predictReceiptCategoriesCell,
+                                                                       self.includeTaxFieldCell,
+                                                                       self.matchNameToCategoriesCell,
+                                                                       self.matchCommentsToCategoriesCell,
+                                                                       self.onlyReportExpenseableCell,
+                                                                       self.enableAutocompleteSuggestionsCell,
+                                                                       self.defaultReceiptDateToReportStartCell]];
+    [self addSectionForPresentation:general];
+
+    [self addInlinedPickerCell:self.defaultCurrencyPickerCell forCell:self.defaultCurrencyCell];
+
+    self.manageCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
+    [self.manageCategoriesCell setTitle:NSLocalizedString(@"Manage Categories", nil)];
+
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Categories", nil) cells:@[self.manageCategoriesCell]]];
+
+    self.includeCSVHeadersCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.includeCSVHeadersCell setTitle:NSLocalizedString(@"Include Header Columns", nil)];
+
+    self.configureCSVColumnsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
+    [self.configureCSVColumnsCell setTitle:NSLocalizedString(@"Configure CSV Columns", nil)];
+
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Customize CSV Output", nil) cells:@[self.includeCSVHeadersCell, self.configureCSVColumnsCell]]];
+
+    self.configurePDFColumnsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
+    [self.configurePDFColumnsCell setTitle:NSLocalizedString(@"Configure PDF Columns", nil)];
+
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Customize PDF Output", nil) cells:@[self.configurePDFColumnsCell]]];
+
+    self.backupCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
+    [self.backupCell setTitle:NSLocalizedString(@"Make Backup", nil)];
+
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Backup", nil) cells:@[self.backupCell]]];
+
     [self.navigationController setToolbarHidden:YES];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    switch (section)
-    {
-        case 0:
-            return NSLocalizedString(@"General", nil);
-        case 1:
-            return NSLocalizedString(@"Categories", nil);
-        case 2:
-            return NSLocalizedString(@"Customize CSV Output", nil);
-        case 3:
-            return NSLocalizedString(@"Customize PDF Output", nil);
-        case 4:
-            return NSLocalizedString(@"Backup", nil);
-        default:
-            return NSLocalizedString(@"", nil);
-    }
-}
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
-}
-
 - (void)populateValues {
-    self.emailReceiptField.text = [WBPreferences defaultEmailReceipient];
-    self.tripLengthField.text = [NSString stringWithFormat:@"%d",[WBPreferences defaultTripDuration]];
-    self.userIdField.text = [WBPreferences userID];
-    self.predictReceiptCategoriesField.on = [WBPreferences predictCategories];
-    
-    self.includeTaxFieldForReceiptsField.on = [WBPreferences includeTaxField];
-    self.matchNameToCategoriesField.on = [WBPreferences matchNameToCategory];
-    self.matchCommentsToCategoriesField.on = [WBPreferences matchCommentToCategory];
-    self.onlyReportExpensableReceiptsField.on = [WBPreferences onlyIncludeExpensableReceiptsInReports];
-    
-    self.enableAutoCompleteSuggestionsField.on = [WBPreferences enableAutoCompleteSuggestions];
-    self.defaultReceiptDateToReportStartDateField.on = [WBPreferences defaultToFirstReportDate];
-    
+    [self.emailCell setValue:[WBPreferences defaultEmailReceipient]];
+    [self.defaultTripLengthCell setValue:[NSString stringWithFormat:@"%d",[WBPreferences defaultTripDuration]]];
+
     double price = [WBPreferences minimumReceiptPriceToIncludeInReports];
     double minPrice = ([WBPreferences MIN_FLOAT]/4.0); // we have to make significant change because it's long float and have little precision
     if (price < minPrice) {
-        self.minimumReceiptPriceField.text = @"";
+        [self.minReportablePriceCell setValue:@""];
     } else {
         long long priceLong = roundl(price);
-        self.minimumReceiptPriceField.text = [NSString stringWithFormat:@"%lld",priceLong];
+        [self.minReportablePriceCell setValue:[NSString stringWithFormat:@"%lld", priceLong]];
     }
-    
-    [self.defaultCurrencyButton setTitle:[WBPreferences defaultCurrency] forState:UIControlStateNormal];
+
+    [self.userIdCell setValue:[WBPreferences userID]];
+    [self.defaultCurrencyCell setValue:[WBPreferences defaultCurrency]];
+    [self.defaultCurrencyPickerCell setSelectedValue:[WBPreferences defaultCurrency]];
+    [self.predictReceiptCategoriesCell setSwitchOn:[WBPreferences predictCategories]];
+    [self.includeTaxFieldCell setSwitchOn:[WBPreferences includeTaxField]];
+    [self.matchNameToCategoriesCell setSwitchOn:[WBPreferences matchNameToCategory]];
+    [self.matchCommentsToCategoriesCell setSwitchOn:[WBPreferences matchCommentToCategory]];
+    [self.onlyReportExpenseableCell setSwitchOn:[WBPreferences onlyIncludeExpensableReceiptsInReports]];
+    [self.enableAutocompleteSuggestionsCell setSwitchOn:[WBPreferences enableAutoCompleteSuggestions]];
+    [self.defaultReceiptDateToReportStartCell setSwitchOn:[WBPreferences defaultToFirstReportDate]];
 
     NSArray *separators = @[@"-", @"/", @"."];
     NSString *systemSeparator = [[[WBDateFormatter alloc] init] separatorForCurrentLocale];
@@ -137,76 +217,62 @@ static WBSettingsViewController *visibleInstance = nil;
         separators = [separators arrayByAddingObject:systemSeparator];
     }
 
-    [self.dateSeparatorField removeAllSegments];
-    for (NSUInteger index = 0; index < separators.count; index++) {
-        NSString *separator = separators[index];
-        [self.dateSeparatorField insertSegmentWithTitle:separator atIndex:index animated:NO];
-    }
-
     NSUInteger idx = [separators indexOfObject:[WBPreferences dateSeparator]];
     if (idx == NSNotFound) {
         idx = 1;
     }
-    [self.dateSeparatorField setSelectedSegmentIndex:idx];
-    
-    cameraValues = @[@512, @1024, @0];
-    
-    [self.cameraWidthHeightField removeAllSegments];
-    
-    NSUInteger selected = 1;
-    for (NSUInteger i = 0; i< cameraValues.count; ++i) {
-        int val = [((NSNumber*)[cameraValues objectAtIndex:i]) intValue];
+    [self.dateSeparatorCell setValues:separators selected:idx];
+
+    self.cameraValues = @[@512, @1024, @0];
+
+    NSMutableArray *presentedCameraValues = [NSMutableArray array];
+    NSUInteger selectedCameraValueIndex = 1;
+    for (NSUInteger index = 0; index < self.cameraValues.count; index++) {
+        int val = [((NSNumber*) self.cameraValues[index]) intValue];
         if (val == 0) {
-            [self.cameraWidthHeightField
-             insertSegmentWithTitle:NSLocalizedString(@"Default", nil)
-             atIndex:i animated:NO];
+            [presentedCameraValues addObject:NSLocalizedString(@"Default", nil)];
         } else {
-            NSString *str = [NSString stringWithFormat:@"%d %@", val, NSLocalizedString(@"Pixels", nil)];
-            [self.cameraWidthHeightField
-             insertSegmentWithTitle:str
-             atIndex:i animated:NO];
+            [presentedCameraValues addObject:[NSString stringWithFormat:@"%d %@", val, NSLocalizedString(@"Pixels", nil)]];
         }
-        
+
         if (val == [WBPreferences cameraMaxHeightWidth]) {
-            selected = i;
+            selectedCameraValueIndex = index;
         }
     }
-    [self.cameraWidthHeightField setSelectedSegmentIndex:selected];
-    
-    self.includeHeaderColumnsField.on = [WBPreferences includeCSVHeaders];
+    [self.cameraSettingsCell setValues:presentedCameraValues selected:selectedCameraValueIndex];
+
+    [self.includeCSVHeadersCell setSwitchOn:[WBPreferences includeCSVHeaders]];
 }
 
 - (void)writeSettingsToPreferences {
-    NSString *daysStr = self.tripLengthField.text;
+    NSString *daysStr = self.defaultTripLengthCell.value;
     if ([daysStr length] > 0 && [daysStr length] < 4) {
         [WBPreferences setDefaultTripDuration:[daysStr intValue]];
     }
     
-    NSString *priceStr = self.minimumReceiptPriceField.text;
+    NSString *priceStr = [self.minReportablePriceCell value];
     if ([priceStr length] > 0 && [priceStr length] < 4) {
         [WBPreferences setMinimumReceiptPriceToIncludeInReports:[priceStr floatValue]];
     } else if ([priceStr length] == 0) {
         [WBPreferences setMinimumReceiptPriceToIncludeInReports:[WBPreferences MIN_FLOAT]];
     }
 
-    [WBPreferences setDefaultEmailReceipient:self.emailReceiptField.text];
-    [WBPreferences setDefaultCurrency:[self.defaultCurrencyButton titleForState:UIControlStateNormal]];
-    [WBPreferences setPredictCategories:self.predictReceiptCategoriesField.on];
-    
-    [WBPreferences setMatchNameToCategory:self.matchNameToCategoriesField.on];
-    [WBPreferences setMatchCommentToCategory:self.matchCommentsToCategoriesField.on];
-    [WBPreferences setOnlyIncludeExpensableReceiptsInReports:self.onlyReportExpensableReceiptsField.on];
-    [WBPreferences setIncludeTaxField:self.includeTaxFieldForReceiptsField.on];
-    
-    [WBPreferences setEnableAutoCompleteSuggestions:self.enableAutoCompleteSuggestionsField.on];
-    [WBPreferences setUserID:self.userIdField.text];
-    [WBPreferences setDateSeparator:[self.dateSeparatorField titleForSegmentAtIndex:self.dateSeparatorField.selectedSegmentIndex]];
-    [WBPreferences setDefaultToFirstReportDate:self.defaultReceiptDateToReportStartDateField.on];
+    [WBPreferences setDefaultEmailReceipient:self.emailCell.value];
+    [WBPreferences setUserID:self.userIdCell.value];
+    [WBPreferences setDefaultCurrency:[self.defaultCurrencyCell value]];
+    [WBPreferences setDateSeparator:[self.dateSeparatorCell selectedValue]];
 
-    NSNumber *cam = [cameraValues objectAtIndex:[self.cameraWidthHeightField selectedSegmentIndex]];
+    NSNumber *cam = self.cameraValues[(NSUInteger) [self.cameraSettingsCell selectedSegmentIndex]];
     [WBPreferences setCameraMaxHeightWidth:[cam intValue]];
-    
-    [WBPreferences setIncludeCSVHeaders:self.includeHeaderColumnsField.on];
+
+    [WBPreferences setPredictCategories:[self.predictReceiptCategoriesCell isSwitchOn]];
+    [WBPreferences setIncludeTaxField:self.includeTaxFieldCell.isSwitchOn];
+    [WBPreferences setMatchNameToCategory:self.matchNameToCategoriesCell.isSwitchOn];
+    [WBPreferences setMatchCommentToCategory:self.matchCommentsToCategoriesCell.isSwitchOn];
+    [WBPreferences setOnlyIncludeExpensableReceiptsInReports:self.onlyReportExpenseableCell.isSwitchOn];
+    [WBPreferences setEnableAutoCompleteSuggestions:self.enableAutocompleteSuggestionsCell.isSwitchOn];
+    [WBPreferences setDefaultToFirstReportDate:self.defaultReceiptDateToReportStartCell.isSwitchOn];
+    [WBPreferences setIncludeCSVHeaders:self.includeCSVHeadersCell.isSwitchOn];
 
     [WBPreferences save];
 }
@@ -226,74 +292,17 @@ static WBSettingsViewController *visibleInstance = nil;
     visibleInstance = nil;
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-
-    NSString *str = [textField.text stringByReplacingCharactersInRange:range withString:string];
-//    if (textField == self.minimumReceiptPriceField) {
-//        return [WBTextUtils isNonnegativeMoney:str];
-//    } else {
-        return [WBTextUtils isNonnegativeInteger:str];
-//    }
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] hasPrefix:@"Configure"]) {
-        WBColumnsViewController* vc = (WBColumnsViewController*)[segue destinationViewController];
+        WBColumnsViewController *vc = (WBColumnsViewController *) [segue destinationViewController];
         vc.forCSV = [[segue identifier] isEqualToString:@"ConfigureCSV"];
     }
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (cell.tag == 101) {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        [self actionExport];
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex!=1) {
-        return;
-    }
-    
-    [HUD showUIBlockingIndicatorWithText:NSLocalizedString(@"Exporting ...", nil)];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData *data = nil;
-        @try {
-            NSString *path = [[[WBBackupHelper alloc] init] exportAll];
-            if (path) {
-                data = [NSData dataWithContentsOfFile:path];
-            }
-        } @catch (NSException *e) {
-            data = nil;
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [HUD hideUIBlockingIndicator];
-            
-            if (data) {
-                [self showMailerForData:data];
-            } else {
-                [[[UIAlertView alloc]
-                 initWithTitle:NSLocalizedString(@"Error", nil)
-                 message:NSLocalizedString(@"Failed to properly export your data.", nil)
-                 delegate:nil
-                 cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                 otherButtonTitles:nil] show];
-            }
-            
-        });
-    });
-}
-
-- (void) showMailerForData:(NSData*) data {
-    
+- (void)showMailerForData:(NSData *)data {
     MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
     mc.mailComposeDelegate = self;
-    
+
     // forward our navbar tint color to mail composer
     [mc.navigationBar setTintColor:[UINavigationBar appearance].tintColor];
 
@@ -301,61 +310,80 @@ static WBSettingsViewController *visibleInstance = nil;
     [mc addAttachmentData:data
                  mimeType:@"application/octet-stream"
                  fileName:@"SmartReceipts.smr"];
-    
+
     // forward style, mail composer is so dumb and overrides our style
     UIStatusBarStyle barStyle = [UIApplication sharedApplication].statusBarStyle;
-    
+
     [self presentViewController:mc animated:YES completion:^{
         [[UIApplication sharedApplication] setStatusBarStyle:barStyle];
     }];
 }
 
-- (void)mailComposeController:(MFMailComposeViewController*)controller
+- (void)mailComposeController:(MFMailComposeViewController *)controller
           didFinishWithResult:(MFMailComposeResult)result
-                        error:(NSError*)error
-{
+                        error:(NSError *)error {
     if (error) {
         NSLog(@"Mail error: %@", [error localizedDescription]);
     }
-    
+
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)actionExport {
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle:NSLocalizedString(@"Export your receipts?", nil)
-                          message:NSLocalizedString(@"You can reimport your data by clicking on the SmartReceipts.SMR file, which is generated by clicking below.", nil)
-                          delegate:self
-                          cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                          otherButtonTitles:NSLocalizedString(@"Export", nil), nil];
-    [alert show];
-}
+- (void)actionExport {
+    void (^exportActionBlock)() = ^{
+        [HUD showUIBlockingIndicatorWithText:NSLocalizedString(@"Exporting ...", nil)];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSData *data = nil;
+            @try {
+                NSString *path = [[[WBBackupHelper alloc] init] exportAll];
+                if (path) {
+                    data = [NSData dataWithContentsOfFile:path];
+                }
+            } @catch (NSException *e) {
+                data = nil;
+            }
 
--(NSString*) dynamicPicker:(WBDynamicPicker*) dynamicPicker titleForRow:(NSInteger) row
-{
-    return [currencyCodes objectAtIndex:row];
-}
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [HUD hideUIBlockingIndicator];
 
--(NSInteger) dynamicPickerNumberOfRows:(WBDynamicPicker*) dynamicPicker
-{
-    return currencyCodes.count;
-}
+                if (data) {
+                    [self showMailerForData:data];
+                } else {
+                    [[[UIAlertView alloc]
+                            initWithTitle:NSLocalizedString(@"Error", nil)
+                                  message:NSLocalizedString(@"Failed to properly export your data.", nil)
+                                 delegate:nil
+                        cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                        otherButtonTitles:nil] show];
+                }
 
--(void)dynamicPicker:(WBDynamicPicker *)picker doneWith:(id)subject{
-    currentCurrencyCode = [currencyCodes objectAtIndex:[picker selectedRow]];
-    self.defaultCurrencyButton.titleLabel.text = currentCurrencyCode;
-    [self.defaultCurrencyButton setTitle:currentCurrencyCode forState:UIControlStateNormal];
-}
+            });
+        });
+    };
 
-- (IBAction)defaultCurrencyClicked:(id)sender {
-    pickedRow = (int)[currencyCodes indexOfObject:currentCurrencyCode];
-    [dynamicPicker setSelectedRow:pickedRow];
-    [dynamicPicker showFromView:self.defaultCurrencyButton];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Export your receipts?", nil)
+                                                        message:NSLocalizedString(@"You can reimport your data by clicking on the SmartReceipts.SMR file, which is generated by clicking below.", nil)
+                                               cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"Cancel", nil)]
+                                               otherButtonItems:[RIButtonItem itemWithLabel:NSLocalizedString(@"Export", nil) action:exportActionBlock], nil];
+
+    [alertView show];
 }
 
 - (IBAction)actionDone:(id)sender {
     [self writeSettingsToPreferences];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)tappedCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    if (cell == self.manageCategoriesCell) {
+        [self performSegueWithIdentifier:PushManageCategoriesSegueIdentifier sender:nil];
+    } else if (cell == self.configureCSVColumnsCell) {
+        [self performSegueWithIdentifier:PushConfigureCSVColumnsSegueIdentifier sender:nil];
+    } else if (cell == self.configurePDFColumnsCell) {
+        [self performSegueWithIdentifier:PushConfigurePDFColumnsSegueIdentifier sender:nil];
+    } else if (cell == self.backupCell) {
+        [self actionExport];
+    }
 }
 
 @end
