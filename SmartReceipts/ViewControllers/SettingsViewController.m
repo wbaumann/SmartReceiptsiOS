@@ -191,7 +191,7 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
 
     self.gasRateCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
     [self.gasRateCell setTitle:NSLocalizedString(@"Gas Rate", nil)];
-
+    [self.gasRateCell activateDecimalEntryMode];
 
     self.includeDistanceTableCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
     [self.includeDistanceTableCell setTitle:NSLocalizedString(@"Include Distance Table", nil)];
