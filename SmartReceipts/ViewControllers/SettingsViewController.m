@@ -272,7 +272,7 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
 
     [self.includeCSVHeadersCell setSwitchOn:[WBPreferences includeCSVHeaders]];
 
-    [self.addDistancePriceToReportCell setSwitchOn:[WBPreferences includeMileagePriceInTotalValue]];
+    [self.addDistancePriceToReportCell setSwitchOn:[WBPreferences isTheDistancePriceBeIncludedInReports]];
     float defaultValue = [WBPreferences distanceRateDefaultValue];
     if (defaultValue < 0.001) {
         [self.gasRateCell setValue:@""];
@@ -314,7 +314,7 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
     [WBPreferences setDefaultToFirstReportDate:self.defaultReceiptDateToReportStartCell.isSwitchOn];
     [WBPreferences setIncludeCSVHeaders:self.includeCSVHeadersCell.isSwitchOn];
 
-    [WBPreferences setIncludeMileagePriceInTotalValue:self.addDistancePriceToReportCell.isSwitchOn];
+    [WBPreferences setTheDistancePriceBeIncludedInReports:self.addDistancePriceToReportCell.isSwitchOn];
     NSString *gasRate = [self.gasRateCell value];
     NSDecimalNumber *rate = [NSDecimalNumber decimalNumberOrZero:gasRate];
     [WBPreferences setDistanceRateDefaultValue:[rate floatValue]];

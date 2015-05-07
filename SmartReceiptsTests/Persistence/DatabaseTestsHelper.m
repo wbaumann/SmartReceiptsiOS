@@ -45,4 +45,8 @@
     [self saveDistance:distance];
 }
 
+- (void)insertReceipt:(NSDictionary *)modifiedParams {
+
+}
+
 @end

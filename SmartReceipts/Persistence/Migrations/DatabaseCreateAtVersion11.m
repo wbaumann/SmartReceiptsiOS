@@ -10,6 +10,7 @@
 #import <FMDB/FMDatabaseQueue.h>
 #import "DatabaseCreateAtVersion11.h"
 #import "WBDB.h"
+#import "Database+Receipts.h"
 
 @interface WBDB (Expose)
 
@@ -18,12 +19,6 @@
 @end
 
 @interface WBTripsHelper (Expose)
-
-+ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue;
-
-@end
-
-@interface WBReceiptsHelper (Expose)
 
 + (BOOL)createTableInQueue:(FMDatabaseQueue *)queue;
 
@@ -51,7 +46,7 @@
     FMDatabaseQueue *queue = database.databaseQueue;
     return [DatabaseCreateAtVersion11 setupAndroidMetadataTableInQueue:queue]
             && [WBTripsHelper createTableInQueue:queue]
-            && [WBReceiptsHelper createTableInQueue:queue]
+            && [database createReceiptsTable]
             && [WBCategoriesHelper createTableInQueue:queue]
             && [WBColumnsHelper createTableInQueue:queue withTableName:[WBColumnsHelper TABLE_NAME_CSV]]
             && [WBColumnsHelper createTableInQueue:queue withTableName:[WBColumnsHelper TABLE_NAME_PDF]]

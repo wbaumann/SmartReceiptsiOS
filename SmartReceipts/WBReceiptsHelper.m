@@ -54,40 +54,6 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
     return self;
 }
 
--(BOOL) createTable {
-    return [WBReceiptsHelper createTableInQueue:_databaseQueue];
-}
-
-+ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue {
-    NSString* query = [@[
-                         @"CREATE TABLE " ,TABLE_NAME , @" ("
-                         ,COLUMN_ID , @" INTEGER PRIMARY KEY AUTOINCREMENT, "
-                         ,COLUMN_PATH , @" TEXT, "
-                         ,COLUMN_PARENT , @" TEXT REFERENCES " , [WBTripsHelper TABLE_NAME] , @" ON DELETE CASCADE, "
-                         ,COLUMN_NAME , @" TEXT DEFAULT \"New Receipt\", "
-                         ,COLUMN_CATEGORY , @" TEXT, "
-                         ,COLUMN_DATE , @" DATE DEFAULT (DATE('now', 'localtime')), "
-                         ,COLUMN_TIMEZONE , @" TEXT, "
-                         ,COLUMN_COMMENT , @" TEXT, "
-                         ,COLUMN_ISO4217 , @" TEXT NOT NULL, "
-                         ,COLUMN_PRICE , @" DECIMAL(10, 2) DEFAULT 0.00, "
-                         ,COLUMN_TAX , @" DECIMAL(10, 2) DEFAULT 0.00, "
-                         ,COLUMN_PAYMENTMETHOD , @" TEXT, "
-                         ,COLUMN_EXPENSEABLE , @" BOOLEAN DEFAULT 1, "
-                         ,COLUMN_NOTFULLPAGEIMAGE , @" BOOLEAN DEFAULT 1, "
-                         ,COLUMN_EXTRA_EDITTEXT_1 , @" TEXT, "
-                         ,COLUMN_EXTRA_EDITTEXT_2 , @" TEXT, "
-                         ,COLUMN_EXTRA_EDITTEXT_3 , @" TEXT"
-                         , @");"
-                         ] componentsJoinedByString:@""];
-
-    __block BOOL result;
-    [queue inDatabase:^(FMDatabase* database){
-        result = [database executeUpdate:query];
-    }];
-    return result;
-}
-
 #pragma mark - CRUD
 
 - (NSArray *)selectAllForTrip:(WBTrip *)trip descending:(BOOL)desc {

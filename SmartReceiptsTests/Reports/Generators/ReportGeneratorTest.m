@@ -13,21 +13,26 @@
 #import "WBPrice.h"
 #import "ReportGenerator.h"
 #import "WBPreferences.h"
+#import "WBPreferencesTestHelper.h"
 
 @interface ReportGeneratorTest : XCTestCase
 
 @property (nonatomic, strong) WBTrip *testTrip;
+@property (nonatomic, strong) WBPreferencesTestHelper *preferencesHelper;
 
 @end
 
 @implementation ReportGeneratorTest
 
 - (void)setUp {
+    self.preferencesHelper = [[WBPreferencesTestHelper alloc] init];
+    [self.preferencesHelper createPreferencesBackup];
+
     self.testTrip = [[WBDB trips] insertWithName:@"TEST XYZZZZZZZZZ" from:[NSDate date] to:[NSDate date]];
-    [WBPreferences setMinimumReceiptPriceToIncludeInReports:0];
 }
 
 - (void)tearDown {
+    [self.preferencesHelper restorePreferencesBackup];
     [[WBDB trips] deleteWithName:self.testTrip.name];
 }
 

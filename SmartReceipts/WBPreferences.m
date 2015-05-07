@@ -250,11 +250,11 @@ static NSUserDefaults* instance() {
     [instance() setBool:includeCSVHeaders forKey:BOOL_INCL_CSV_HEADERS];
 }
 
-+ (BOOL)includeMileagePriceInTotalValue {
++ (BOOL)isTheDistancePriceBeIncludedInReports {
     return [instance() boolForKey:BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT];
 }
 
-+ (void)setIncludeMileagePriceInTotalValue:(BOOL)value {
++ (void)setTheDistancePriceBeIncludedInReports:(BOOL)value {
     [instance() setBool:value forKey:BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT];
 }
 

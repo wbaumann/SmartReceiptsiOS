@@ -12,11 +12,18 @@
 #import "DatabaseTestsBase.h"
 #import "Database.h"
 #import "DatabaseTestsHelper.h"
+#import "WBPreferencesTestHelper.h"
 
 @interface Database (TestExpose)
 
 - (id)initWithDatabasePath:(NSString *)path;
 - (BOOL)open:(BOOL)migrateDatabase;
+
+@end
+
+@interface DatabaseTestsBase ()
+
+@property (nonatomic, strong) WBPreferencesTestHelper *preferencesHelper;
 
 @end
 
@@ -29,10 +36,14 @@
 - (void)setUp {
     self.testDBPath = self.generateTestDBPath;
     [self setDb:[self createAndOpenDatabaseWithPath:self.testDBPath]];
+
+    self.preferencesHelper = [[WBPreferencesTestHelper alloc] init];
+    [self.preferencesHelper createPreferencesBackup];
 }
 
 - (void)tearDown {
     [self deleteTestDatabase];
+    [self.preferencesHelper restorePreferencesBackup];
 }
 
 - (void)deleteTestDatabase {

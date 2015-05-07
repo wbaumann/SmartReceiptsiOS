@@ -52,8 +52,8 @@
 + (BOOL)includeCSVHeaders;
 + (void)setIncludeCSVHeaders:(BOOL)includeCSVHeaders;
 
-+ (BOOL)includeMileagePriceInTotalValue;
-+ (void)setIncludeMileagePriceInTotalValue:(BOOL)value;
++ (BOOL)isTheDistancePriceBeIncludedInReports;
++ (void)setTheDistancePriceBeIncludedInReports:(BOOL)value;
 
 + (float)distanceRateDefaultValue;
 + (void)setDistanceRateDefaultValue:(float)value;

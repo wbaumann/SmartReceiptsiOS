@@ -15,7 +15,6 @@
 @interface WBReceiptsHelper : NSObject
 
 - (id)initWithDatabaseQueue:(FMDatabaseQueue*) db;
-- (BOOL)createTable;
 
 - (NSArray *)selectAllForTrip:(WBTrip *)trip descending:(BOOL)desc;
 

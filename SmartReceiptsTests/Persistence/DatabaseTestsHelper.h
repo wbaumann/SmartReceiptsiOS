@@ -15,5 +15,6 @@
 
 - (WBTrip *)createTestTrip;
 - (void)insertDistance:(NSDictionary *)modifiedParams;
+- (void)insertReceipt:(NSDictionary *)modifiedParams;
 
 @end
