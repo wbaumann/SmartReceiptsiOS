@@ -58,8 +58,8 @@
 + (float)distanceRateDefaultValue;
 + (void)setDistanceRateDefaultValue:(float)value;
 
-+ (BOOL)printDistanceTables;
-+ (void)setPrintDistanceTables:(BOOL)value;
++ (BOOL)printDistanceTable;
++ (void)setPrintDistanceTable:(BOOL)value;
 
 + (BOOL)printDailyDistanceValues;
 + (void)setPrintDailyDistanceValues:(BOOL)value;

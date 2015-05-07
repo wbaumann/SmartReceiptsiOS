@@ -83,6 +83,8 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
     [super viewDidLoad];
 
     [WBCustomization customizeOnViewDidLoad:self];
+
+    [self setContainNextEditSearchInsideSection:YES];
     
     self.navigationItem.title = NSLocalizedString(@"Settings", nil);
 
@@ -278,7 +280,7 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
         NSDecimalNumber *mileageRate = (NSDecimalNumber *) [[NSDecimalNumber alloc] initWithFloat:defaultValue];
         [self.gasRateCell setValue:[mileageRate descriptionWithLocale:[NSLocale currentLocale]]];
     }
-    [self.includeDistanceTableCell setSwitchOn:[WBPreferences printDistanceTables]];
+    [self.includeDistanceTableCell setSwitchOn:[WBPreferences printDistanceTable]];
     [self.reportOnDailyDistanceCell setSwitchOn:[WBPreferences printDailyDistanceValues]];
 }
 
@@ -316,7 +318,7 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
     NSString *gasRate = [self.gasRateCell value];
     NSDecimalNumber *rate = [NSDecimalNumber decimalNumberOrZero:gasRate];
     [WBPreferences setDistanceRateDefaultValue:[rate floatValue]];
-    [WBPreferences setPrintDistanceTables:[self.includeDistanceTableCell isSwitchOn]];
+    [WBPreferences setPrintDistanceTable:[self.includeDistanceTableCell isSwitchOn]];
     [WBPreferences setPrintDailyDistanceValues:[self.reportOnDailyDistanceCell isSwitchOn]];
 
     [WBPreferences save];

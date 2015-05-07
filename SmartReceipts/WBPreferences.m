@@ -266,11 +266,11 @@ static NSUserDefaults* instance() {
     [instance() setFloat:value forKey:FLOAT_DEFAULT_MILEAGE_RATE];
 }
 
-+ (BOOL)printDistanceTables {
++ (BOOL)printDistanceTable {
     return [instance() boolForKey:BOOL_PRINT_MILEAGE_TABLE];
 }
 
-+ (void)setPrintDistanceTables:(BOOL)value {
++ (void)setPrintDistanceTable:(BOOL)value {
     [instance() setBool:value forKey:BOOL_PRINT_MILEAGE_TABLE];
 }
 

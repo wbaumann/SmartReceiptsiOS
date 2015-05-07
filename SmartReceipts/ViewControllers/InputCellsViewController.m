@@ -103,7 +103,9 @@
     NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
     TextEntryCell *nextCell = (TextEntryCell *) [self nextEntryCellAfterIndexPath:cellIndexPath];
     if (nextCell) {
+        NSIndexPath *indexPath = [self indexPathForCell:nextCell];
         [nextCell.entryField becomeFirstResponder];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
     } else {
         [textField resignFirstResponder];
     }
@@ -144,6 +146,10 @@
         }
 
         checkedRow = 0;
+
+        if (self.containNextEditSearchInsideSection) {
+            break;
+        }
     }
     return nil;
 }
