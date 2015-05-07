@@ -15,6 +15,7 @@
 + (DatabaseQueryBuilder *)updateStatementForTable:(NSString *)tableName;
 
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue;
+- (void)addParam:(NSString *)paramName value:(NSObject *)paramValue fallback:(NSObject *)valueFallback;
 - (void)where:(NSString *)paramName value:(NSObject *)paramValue;
 
 - (NSString *)buildStatement;

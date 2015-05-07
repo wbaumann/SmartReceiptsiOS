@@ -10,9 +10,12 @@
 #import "Database.h"
 
 @class WBReceipt;
+@class WBTrip;
 
 @interface Database (Receipts)
 
 - (BOOL)createReceiptsTable;
+- (BOOL)saveReceipt:(WBReceipt *)receipt;
+- (NSArray *)allReceiptsForTrip:(WBTrip *)trip descending:(BOOL)desc;
 
 @end

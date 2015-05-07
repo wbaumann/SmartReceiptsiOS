@@ -16,8 +16,6 @@
 
 @interface DatabaseReceiptsTest : DatabaseTestsBase
 
-@property (nonatomic, strong) WBTrip *testTrip;
-
 @end
 
 @implementation DatabaseReceiptsTest
@@ -25,7 +23,7 @@
 - (void)setUp {
     [super setUp];
 
-    self.testTrip = [self.db createTestTrip];
+    self.db = [self createAndOpenDatabaseWithPath:self.testDBPath migrated:YES];
 }
 
 - (void)testReceiptSaved {

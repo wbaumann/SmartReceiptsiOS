@@ -17,6 +17,7 @@
 #import "WBDB.h"
 #import "WBPrice.h"
 #import "NSDecimalNumber+WBNumberParse.h"
+#import "Database+Receipts.h"
 
 static NSString * const TABLE_NAME = @"receipts";
 static NSString * const COLUMN_ID = @"id";
@@ -159,82 +160,24 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     name = [name lastPathComponent];
     imageFileName = [imageFileName lastPathComponent];
 
-    WBSqlBuilder *qBuilder = [[WBSqlBuilder alloc] init];
-    
-    int rcptCnt = [[WBDB trips] cachedCount]; //Use this to order things more properly
-    
-    [qBuilder addColumn:COLUMN_PATH];
-    if (!imageFileName) {
-        [qBuilder addValue:[WBReceipt NO_DATA]];
-    } else {
-        [qBuilder addValue:imageFileName];
-    }
-    
-    [qBuilder addColumn:COLUMN_PARENT
-              andObject:[trip name]];
-    
-    if ([name length] > 0) {
-        [qBuilder addColumn:COLUMN_NAME
-                  andObject:[name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-    }
-    
-    [qBuilder addColumn:COLUMN_CATEGORY
-              andObject:category];
-    
-    
-    [qBuilder addColumn:COLUMN_DATE
-              andObject:[NSNumber numberWithLongLong:(dateMs + rcptCnt)]];
-    
-    if (!timeZoneName) {
-        timeZoneName = [[NSTimeZone localTimeZone] name];
-    }
-    
-    [qBuilder addColumn:COLUMN_TIMEZONE
-              andObject:timeZoneName];
-    
-    [qBuilder addColumn:COLUMN_COMMENT
-              andObject:comment];
-    
-    [qBuilder addColumn:COLUMN_EXPENSEABLE
-             andBoolean:isExpensable];
-    
-    [qBuilder addColumn:COLUMN_ISO4217
-              andObject:price.currency.code];
-    
-    [qBuilder addColumn:COLUMN_NOTFULLPAGEIMAGE
-             andBoolean:!isFullPage];
+    WBReceipt *receipt = [[WBReceipt alloc] initWithId:NSNotFound
+                                                  name:name
+                                              category:category
+                                         imageFileName:imageFileName
+                                                dateMs:dateMs
+                                          timeZoneName:[[NSTimeZone localTimeZone] name]
+                                               comment:comment
+                                                 price:price
+                                                   tax:tax
+                                          isExpensable:isExpensable
+                                            isFullPage:isFullPage
+                                        extraEditText1:extraEditText1
+                                        extraEditText2:extraEditText2
+                                        extraEditText3:extraEditText3];
 
-    if (![price.amount isEqualToNumber:[NSDecimalNumber zero]]) {
-        [qBuilder addColumn:COLUMN_PRICE
-                  andObject:price.amount];
-    }
+    [[Database sharedInstance] saveReceipt:receipt];
 
-    if (![tax.amount isEqualToNumber:[NSDecimalNumber zero]]) {
-        [qBuilder addColumn:COLUMN_TAX
-                  andObject:tax.amount];
-    }
-
-    //Extras
-    [qBuilder addColumn:COLUMN_EXTRA_EDITTEXT_1];
-    extraEditText1 = addExtra(qBuilder, extraEditText1);
-    
-    [qBuilder addColumn:COLUMN_EXTRA_EDITTEXT_2];
-    extraEditText2 = addExtra(qBuilder, extraEditText2);
-    
-    [qBuilder addColumn:COLUMN_EXTRA_EDITTEXT_3];
-    extraEditText3 = addExtra(qBuilder, extraEditText3);
-    
-    NSString *q = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)",
-                   TABLE_NAME, [qBuilder columnsStringForInsert], [qBuilder questionMarksStringForInsert]];
-    
-    __block WBReceipt* receipt = nil;
     [_databaseQueue inTransaction:^(FMDatabase *database, BOOL *rollback){
-        
-        if(![database executeUpdate:q withArgumentsInArray:qBuilder.values]) {
-            *rollback = YES;
-            return;
-        }
-        
         // update prices in the same transaction
         NSDecimalNumber *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:trip inDatabase:database];
         if (newSumPrice == nil) {
@@ -253,24 +196,8 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
             return;
         }
         
-        const int rid = [cres intForColumnIndex:0];
-        
-        receipt =
-        [[WBReceipt alloc] initWithId:rid
-                                 name:name
-                             category:category
-                        imageFileName:imageFileName
-                               dateMs:dateMs
-                         timeZoneName:[[NSTimeZone localTimeZone] name]
-                              comment:comment
-                                price:price
-                                  tax:tax
-                         isExpensable:isExpensable
-                           isFullPage:isFullPage
-                       extraEditText1:extraEditText1
-                       extraEditText2:extraEditText2
-                       extraEditText3:extraEditText3];
-        
+        NSUInteger rid = (NSUInteger) [cres intForColumnIndex:0];
+        [receipt setId:rid];
     }];
     return receipt;
 }

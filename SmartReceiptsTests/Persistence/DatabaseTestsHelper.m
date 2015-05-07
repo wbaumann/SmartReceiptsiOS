@@ -12,6 +12,9 @@
 #import "WBPrice.h"
 #import "Database+Distances.h"
 #import "Database+Trips.h"
+#import "WBReceipt.h"
+#import "DatabaseTableNames.h"
+#import "Database+Receipts.h"
 
 @interface Distance (TestExpose)
 
@@ -56,7 +59,28 @@
 }
 
 - (void)insertReceipt:(NSDictionary *)modifiedParams {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[ReceiptsTable.COLUMN_NAME] = [NSString stringWithFormat:@"TestReceipt - %f", [NSDate timeIntervalSinceReferenceDate]];
+    params[ReceiptsTable.COLUMN_PARENT] = [self createTestTrip];
 
+    [params addEntriesFromDictionary:modifiedParams];
+
+    WBReceipt *receipt = [[WBReceipt alloc] initWithId:NSNotFound
+                                                  name:params[ReceiptsTable.COLUMN_NAME]
+                                              category:@""
+                                         imageFileName:@""
+                                                dateMs:0
+                                          timeZoneName:[NSTimeZone localTimeZone].name
+                                               comment:@""
+                                                 price:[WBPrice zeroPriceWithCurrencyCode:@"USD"]
+                                                   tax:[WBPrice zeroPriceWithCurrencyCode:@"USD"]
+                                          isExpensable:1
+                                            isFullPage:0
+                                        extraEditText1:@""
+                                        extraEditText2:@""
+                                        extraEditText3:@""];
+    [receipt setTrip:params[ReceiptsTable.COLUMN_PARENT]];
+    [self saveReceipt:receipt];
 }
 
 @end

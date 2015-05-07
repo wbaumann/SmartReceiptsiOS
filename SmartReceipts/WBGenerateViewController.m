@@ -20,6 +20,7 @@
 #import "TripCSVGenerator.h"
 #import "TripImagesPDFGenerator.h"
 #import "TripFullPDFGenerator.h"
+#import "Database.h"
 
 @interface WBGenerateViewController ()
 
@@ -80,7 +81,7 @@
 
     if (self.fullPdfReportField.on) {
         [self clearPath:pdfPath];
-        TripFullPDFGenerator *generator = [[TripFullPDFGenerator alloc] initWithTrip:self.trip];
+        TripFullPDFGenerator *generator = [[TripFullPDFGenerator alloc] initWithTrip:self.trip database:[Database sharedInstance]];
         if (![generator generateToPath:pdfPath]) {
             return nil;
         }
@@ -89,7 +90,7 @@
 
     if (self.pdfImagesField.on) {
         [self clearPath:pdfImagesPath];
-        TripImagesPDFGenerator *generator = [[TripImagesPDFGenerator alloc] initWithTrip:self.trip];
+        TripImagesPDFGenerator *generator = [[TripImagesPDFGenerator alloc] initWithTrip:self.trip database:[Database sharedInstance]];
         if (![generator generateToPath:pdfImagesPath]) {
             return nil;
         }
@@ -98,7 +99,7 @@
 
     if (self.csvFileField.on) {
         [self clearPath:csvPath];
-        TripCSVGenerator *generator = [[TripCSVGenerator alloc] initWithTrip:self.trip];
+        TripCSVGenerator *generator = [[TripCSVGenerator alloc] initWithTrip:self.trip database:[Database sharedInstance]];
         if (![generator generateToPath:csvPath]) {
             return nil;
         }

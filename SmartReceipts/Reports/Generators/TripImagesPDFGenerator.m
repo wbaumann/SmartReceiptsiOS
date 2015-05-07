@@ -11,6 +11,7 @@
 #import "WBPdfDrawer.h"
 #import "WBReceipt.h"
 #import "WBDateFormatter.h"
+#import "Database.h"
 
 @interface TripImagesPDFGenerator ()
 
@@ -21,8 +22,8 @@
 
 @implementation TripImagesPDFGenerator
 
-- (instancetype)initWithTrip:(WBTrip *)trip {
-    self = [super initWithTrip:trip];
+- (instancetype)initWithTrip:(WBTrip *)trip database:(Database *)database {
+    self = [super initWithTrip:trip database:database];
     if (self) {
         _pdfDrawer = [[WBPdfDrawer alloc] init];
         _dateFormatter = [[WBDateFormatter alloc] init];

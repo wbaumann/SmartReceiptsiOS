@@ -56,6 +56,11 @@ typedef NS_ENUM(short, StatementType) {
     [self.values addObject:paramValue];
 }
 
+- (void)addParam:(NSString *)paramName value:(NSObject *)paramValue fallback:(NSObject *)valueFallback {
+    NSObject *value = paramValue ? paramValue : valueFallback;
+    [self addParam:paramName value:value];
+}
+
 - (void)where:(NSString *)paramName value:(NSObject *)paramValue {
     SRAssert(self.where.count == 0, @"Only one where clause parameter supported");
     self.where[paramName] = paramValue;

@@ -14,26 +14,24 @@
 #import "ReportGenerator.h"
 #import "WBPreferences.h"
 #import "WBPreferencesTestHelper.h"
+#import "DatabaseTestsBase.h"
+#import "DatabaseTestsHelper.h"
+#import "DatabaseTableNames.h"
 
-@interface ReportGeneratorTest : XCTestCase
+@interface ReportGeneratorTest : DatabaseTestsBase
 
 @property (nonatomic, strong) WBTrip *testTrip;
-@property (nonatomic, strong) WBPreferencesTestHelper *preferencesHelper;
 
 @end
 
 @implementation ReportGeneratorTest
 
 - (void)setUp {
-    self.preferencesHelper = [[WBPreferencesTestHelper alloc] init];
-    [self.preferencesHelper createPreferencesBackup];
+    [super setUp];
 
-    self.testTrip = [[WBDB trips] insertWithName:@"TEST XYZZZZZZZZZ" from:[NSDate date] to:[NSDate date]];
-}
+    self.db = [self createAndOpenDatabaseWithPath:self.testDBPath migrated:YES];
 
-- (void)tearDown {
-    [self.preferencesHelper restorePreferencesBackup];
-    [[WBDB trips] deleteWithName:self.testTrip.name];
+    self.testTrip = [self.db insertTrip:@{}];
 }
 
 - (void)testReceiptsProvidedHaveTripObject {
@@ -41,7 +39,7 @@
     [self createTestReceipt:2];
     [self createTestReceipt:3];
     
-    ReportGenerator *generator = [[ReportGenerator alloc] initWithTrip:self.testTrip];
+    ReportGenerator *generator = [[ReportGenerator alloc] initWithTrip:self.testTrip database:self.db];
     NSArray *receipts = [generator receipts];
     XCTAssertEqual(3, receipts.count);
     for (WBReceipt *receipt in receipts) {
@@ -50,20 +48,7 @@
 }
 
 - (void)createTestReceipt:(NSInteger)marker {
-    [[WBDB receipts] insertWithTrip:self.testTrip
-                               name:[NSString stringWithFormat:@"TEST Receipt %li", marker]
-                           category:@""
-                      imageFileName:@""
-                             dateMs:0
-                       timeZoneName:@""
-                            comment:@""
-                              price:[WBPrice priceWithAmount:[NSDecimalNumber decimalNumberWithString:@"11"] currencyCode:@"USD"]
-                                tax:nil
-                       isExpensable:YES
-                         isFullPage:YES
-                     extraEditText1:@""
-                     extraEditText2:@""
-                     extraEditText3:@""];
+    [self.db insertReceipt:@{ReceiptsTable.COLUMN_NAME: [NSString stringWithFormat:@"TEST Receipt %li", marker], ReceiptsTable.COLUMN_PARENT: self.testTrip}];
 }
 
 @end
