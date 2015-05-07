@@ -10,56 +10,68 @@
 
 @interface WBPreferences : NSObject
 
-+(BOOL) predictCategories;
-+(void) setPredictCategories:(BOOL) predictCategories;
++ (BOOL)predictCategories;
++ (void)setPredictCategories:(BOOL)predictCategories;
 
-+(BOOL) matchCommentToCategory;
-+(void) setMatchCommentToCategory:(BOOL) matchCommentToCategory;
++ (BOOL)matchCommentToCategory;
++ (void)setMatchCommentToCategory:(BOOL)matchCommentToCategory;
 
-+(BOOL) matchNameToCategory;
-+(void) setMatchNameToCategory:(BOOL) matchNameToCategory;
++ (BOOL)matchNameToCategory;
++ (void)setMatchNameToCategory:(BOOL)matchNameToCategory;
 
-+(BOOL) onlyIncludeExpensableReceiptsInReports;
-+(void) setOnlyIncludeExpensableReceiptsInReports:(BOOL) onlyIncludeExpensableReceiptsInReports;
++ (BOOL)onlyIncludeExpensableReceiptsInReports;
++ (void)setOnlyIncludeExpensableReceiptsInReports:(BOOL)onlyIncludeExpensableReceiptsInReports;
 
-+(BOOL) includeTaxField;
-+(void) setIncludeTaxField:(BOOL) includeTaxField;
++ (BOOL)includeTaxField;
++ (void)setIncludeTaxField:(BOOL)includeTaxField;
 
-+(NSString*) dateSeparator;
-+(void) setDateSeparator:(NSString*) dateSeparator;
++ (NSString *)dateSeparator;
++ (void)setDateSeparator:(NSString *)dateSeparator;
 
-+(BOOL) enableAutoCompleteSuggestions;
-+(void) setEnableAutoCompleteSuggestions:(BOOL) enableAutoCompleteSuggestions;
++ (BOOL)enableAutoCompleteSuggestions;
++ (void)setEnableAutoCompleteSuggestions:(BOOL)enableAutoCompleteSuggestions;
 
-+(NSString*) defaultEmailReceipient;
-+(void) setDefaultEmailReceipient:(NSString*) defaultEmailReceipient;
++ (NSString *)defaultEmailReceipient;
++ (void)setDefaultEmailReceipient:(NSString *)defaultEmailReceipient;
 
-+(NSString*) defaultCurrency;
-+(void) setDefaultCurrency:(NSString*) defaultCurrency;
++ (NSString *)defaultCurrency;
++ (void)setDefaultCurrency:(NSString *)defaultCurrency;
 
-+(NSString*) userID;
-+(void) setUserID:(NSString*) userID;
++ (NSString *)userID;
++ (void)setUserID:(NSString *)userID;
 
-+(int) defaultTripDuration;
-+(void) setDefaultTripDuration:(int) defaultTripDuration;
++ (int)defaultTripDuration;
++ (void)setDefaultTripDuration:(int)defaultTripDuration;
 
-+(float) minimumReceiptPriceToIncludeInReports;
-+(void) setMinimumReceiptPriceToIncludeInReports:(float) minimumReceiptPriceToIncludeInReports;
++ (float)minimumReceiptPriceToIncludeInReports;
++ (void)setMinimumReceiptPriceToIncludeInReports:(float)minimumReceiptPriceToIncludeInReports;
 
-+(BOOL) defaultToFirstReportDate;
-+(void) setDefaultToFirstReportDate:(BOOL) defaultToFirstReportDate;
++ (BOOL)defaultToFirstReportDate;
++ (void)setDefaultToFirstReportDate:(BOOL)defaultToFirstReportDate;
 
-+(BOOL) includeCSVHeaders;
-+(void) setIncludeCSVHeaders:(BOOL) includeCSVHeaders;
++ (BOOL)includeCSVHeaders;
++ (void)setIncludeCSVHeaders:(BOOL)includeCSVHeaders;
 
-+(int) cameraMaxHeightWidth;
-+(void) setCameraMaxHeightWidth:(int) cameraMaxHeightWidth;
++ (BOOL)includeMileagePriceInTotalValue;
++ (void)setIncludeMileagePriceInTotalValue:(BOOL)value;
 
-+(void) save;
++ (float)distanceRateDefaultValue;
++ (void)setDistanceRateDefaultValue:(float)value;
 
-+(float) MIN_FLOAT;
++ (BOOL)printDistanceTables;
++ (void)setPrintDistanceTables:(BOOL)value;
 
-+(void) setFromXmlString:(NSString*) xmlString;
-+(NSString*) xmlString;
++ (BOOL)printDailyDistanceValues;
++ (void)setPrintDailyDistanceValues:(BOOL)value;
+
++ (int)cameraMaxHeightWidth;
++ (void)setCameraMaxHeightWidth:(int)cameraMaxHeightWidth;
+
++ (void)save;
+
++ (float)MIN_FLOAT;
+
++ (void)setFromXmlString:(NSString *)xmlString;
++ (NSString *)xmlString;
 
 @end

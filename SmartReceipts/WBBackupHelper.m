@@ -25,7 +25,7 @@
 
 #import "WBAppDelegate.h"
 
-#import "WBSettingsViewController.h"
+#import "SettingsViewController.h"
 
 NSString *DATABASE_EXPORT_NAME = @"receipts_backup.db";
 
@@ -240,7 +240,7 @@ NSString *DATABASE_EXPORT_NAME = @"receipts_backup.db";
             [WBBackupHelper setDataBlocked:NO];
             
             // refresh if visible
-            [[WBSettingsViewController visibleInstance] populateValues];
+            [[SettingsViewController visibleInstance] populateValues];
             
             if (result) {
                 [[[UIAlertView alloc]

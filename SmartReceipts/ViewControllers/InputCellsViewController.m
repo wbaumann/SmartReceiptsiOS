@@ -160,7 +160,13 @@
     if ([cell isKindOfClass:[TextEntryCell class]]) {
         TextEntryCell *entryCell = (TextEntryCell *) cell;
         [entryCell.entryField becomeFirstResponder];
+    } else {
+        [self tappedCell:cell atIndexPath:indexPath];
     }
+}
+
+- (void)tappedCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    SRLog(@"tappedCell:atIndexPath:%@", indexPath);
 }
 
 - (UITableViewCell *)cellAtIndexPath:(NSIndexPath *)indexPath {
@@ -224,5 +230,9 @@
     return CGRectGetHeight(cell.frame);
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    InputCellsSection *cellsSection = self.presentedSections[section];
+    return [cellsSection sectionTitle];
+}
 
 @end

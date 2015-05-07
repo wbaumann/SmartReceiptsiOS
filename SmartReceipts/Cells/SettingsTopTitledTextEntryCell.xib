@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="55" id="6Cs-Nm-hqT" customClass="SettingsTopTitledTextEntryCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Cs-Nm-hqT" id="Lg2-eo-MkG">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Email Recipient" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riF-oq-YSf">
+                        <rect key="frame" x="20" y="2" width="150" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PfW-ms-OQK">
+                        <rect key="frame" x="20" y="20" width="290" height="30"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PfW-ms-OQK" firstAttribute="leading" secondItem="Lg2-eo-MkG" secondAttribute="leading" constant="20" id="A8V-Z9-hM6"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PfW-ms-OQK" secondAttribute="bottom" constant="2" id="LK5-hC-cWF"/>
+                    <constraint firstAttribute="trailing" secondItem="PfW-ms-OQK" secondAttribute="trailing" constant="10" id="NI7-Rn-30r"/>
+                    <constraint firstItem="PfW-ms-OQK" firstAttribute="top" secondItem="riF-oq-YSf" secondAttribute="bottom" constant="1" id="NYZ-qN-LFU"/>
+                    <constraint firstItem="riF-oq-YSf" firstAttribute="leading" secondItem="Lg2-eo-MkG" secondAttribute="leading" constant="20" id="UuC-L4-4dR"/>
+                    <constraint firstItem="riF-oq-YSf" firstAttribute="top" secondItem="Lg2-eo-MkG" secondAttribute="top" constant="2" id="c8r-jL-XAJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="entryField" destination="PfW-ms-OQK" id="JJh-gF-ran"/>
+                <outlet property="titleLabel" destination="riF-oq-YSf" id="N9w-OR-UMy"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
