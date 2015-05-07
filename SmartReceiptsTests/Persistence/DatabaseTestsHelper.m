@@ -11,6 +11,7 @@
 #import "Distance.h"
 #import "WBPrice.h"
 #import "Database+Distances.h"
+#import "Database+Trips.h"
 
 @interface Distance (TestExpose)
 
@@ -21,8 +22,17 @@
 @implementation DatabaseTestsHelper
 
 - (WBTrip *)createTestTrip {
-    NSString *name = [NSString stringWithFormat:@"TestTrip - %f", [NSDate timeIntervalSinceReferenceDate]];
-    return [[WBTrip alloc] initWithName:name startDate:[NSDate date] endDate:[NSDate date] currencyCode:@"USD"];
+    return [self insertTrip:@{}];
+}
+
+- (WBTrip *)insertTrip:(NSDictionary *)modifiedParams {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"name"] = [NSString stringWithFormat:@"TestTrip - %f", [NSDate timeIntervalSinceReferenceDate]];
+    [params addEntriesFromDictionary:modifiedParams];
+
+    WBTrip *trip = [[WBTrip alloc] initWithName:params[@"name"] startDate:[NSDate date] endDate:[NSDate date] currencyCode:@"USD"];
+    [self saveTrip:trip];
+    return trip;
 }
 
 - (void)insertDistance:(NSDictionary *)modifiedParams {

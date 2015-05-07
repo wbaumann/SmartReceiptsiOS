@@ -13,6 +13,7 @@
 #import "WBPreferences.h"
 #import "WBPrice.h"
 #import "NSDecimalNumber+WBNumberParse.h"
+#import "Database+Trips.h"
 
 static NSString * const TABLE_NAME = @"trips";
 static NSString * const COLUMN_NAME = @"name";
@@ -47,35 +48,6 @@ static NSString * const NO_DATA = @"null";
         self->_databaseQueue = db;
     }
     return self;
-}
-
-- (BOOL)createTable {
-    _cachedCount = -1;
-
-    return [WBTripsHelper createTableInQueue:_databaseQueue];
-}
-
-+ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue {
-    NSString *query = [@[
-            @"CREATE TABLE ", TABLE_NAME, @" (",
-            COLUMN_NAME, @" TEXT PRIMARY KEY, ",
-            COLUMN_FROM, @" DATE, ",
-            COLUMN_TO, @" DATE, ",
-            COLUMN_FROM_TIMEZONE, @" TEXT, ",
-            COLUMN_TO_TIMEZONE, @" TEXT, ",
-            COLUMN_PRICE, @" DECIMAL(10, 2) DEFAULT 0.00, ",
-            COLUMN_MILEAGE, @" DECIMAL(10, 2) DEFAULT 0.00, ",
-            COLUMN_COMMENT, @" TEXT, ",
-            COLUMN_DEFAULT_CURRENCY, @" TEXT",
-            @");"
-    ] componentsJoinedByString:@""];
-
-    __block BOOL result;
-    [queue inDatabase:^(FMDatabase *database) {
-        result = [database executeUpdate:query];
-    }];
-
-    return result;
 }
 
 #pragma mark - CRUD
@@ -129,61 +101,20 @@ static NSString * const NO_DATA = @"null";
     return array;
 }
 
--(WBTrip*) selectWithName:(NSString*) name {
-    
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = ?", TABLE_NAME, COLUMN_NAME];
-    
-    __block WBTrip *trip = nil;
-    
-    [_databaseQueue inDatabase:^(FMDatabase* database){
-        FMResultSet* resultSet = [database executeQuery:query];
-        
-        if ([resultSet next]) {
-            NSString* name = [resultSet stringForColumn:COLUMN_NAME];
-            NSString* curr = [[WBDB receipts] selectCurrencyForReceiptsWithParent:name inDatabase:database];
-            if (!curr) {
-                curr = [WBTrip MULTI_CURRENCY];
-            }
-
-            NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:COLUMN_PRICE]];
-            trip = [[WBTrip alloc] initWithName:name
-                                          price:[WBPrice priceWithAmount:price currencyCode:curr]
-                                    startDateMs:[resultSet longLongIntForColumn:COLUMN_FROM]
-                                      endDateMs:[resultSet longLongIntForColumn:COLUMN_TO]
-                              startTimeZoneName:[resultSet stringForColumn:COLUMN_FROM_TIMEZONE]
-                                endTimeZoneName:[resultSet stringForColumn:COLUMN_TO_TIMEZONE]
-                                          miles:[resultSet doubleForColumn:COLUMN_MILEAGE]];
-        }
-        
-    }];
-    
-    return trip;
-}
-
--(WBTrip*) insertWithName:(NSString*) name from:(NSDate*) from to:(NSDate*) to {
-    NSString *q = [NSString stringWithFormat:@"INSERT INTO %@ (%@,%@,%@,%@,%@,%@) VALUES (?,?,?,?,?,?)", TABLE_NAME, COLUMN_NAME, COLUMN_FROM, COLUMN_TO, COLUMN_FROM_TIMEZONE, COLUMN_TO_TIMEZONE, COLUMN_DEFAULT_CURRENCY];
-    
+- (WBTrip *)insertWithName:(NSString *)name from:(NSDate *)from to:(NSDate *)to {
     name = [name lastPathComponent]; // for removing slashes
-    
-    NSNumber* llFrom = [NSNumber numberWithLongLong:(long long)([from timeIntervalSince1970] * 1000.0)];
-    NSNumber* llTo = [NSNumber numberWithLongLong:(long long)([to timeIntervalSince1970] * 1000.0)];
-    
-    NSString* localTimeZoneName = [[NSTimeZone localTimeZone] name];
-    NSString* defaultCurr = [WBPreferences defaultCurrency];
-    
-    __block WBTrip* trip = nil;
-    [_databaseQueue inDatabase:^(FMDatabase* database){
-        if(![database executeUpdate:q, name, llFrom, llTo, localTimeZoneName, localTimeZoneName, defaultCurr]) {
-            return;
-        }
-        
-        trip = [[WBTrip alloc] initWithName:name startDate:from endDate:to currencyCode:[WBPreferences defaultCurrency]];
-        
-        if (_cachedCount != -1) {
-            ++_cachedCount;
-        }
-        
-    }];
+    NSString *defaultCurr = [WBPreferences defaultCurrency];
+    WBTrip *trip = [[WBTrip alloc] initWithName:name
+                                          price:[WBPrice zeroPriceWithCurrencyCode:defaultCurr]
+                                      startDate:from
+                                        endDate:to
+                                  startTimeZone:[NSTimeZone localTimeZone]
+                                    endTimeZone:[NSTimeZone localTimeZone]
+                                          miles:0];
+    [[Database sharedInstance] saveTrip:trip];
+    if (_cachedCount != -1) {
+        ++_cachedCount;
+    }
     return trip;
 }
 

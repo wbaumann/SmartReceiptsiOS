@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import <FMDB/FMDatabaseQueue.h>
 #import "DatabaseTestsBase.h"
 #import "Database.h"
 #import "DatabaseTestsHelper.h"

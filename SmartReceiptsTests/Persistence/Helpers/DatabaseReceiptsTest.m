@@ -28,7 +28,7 @@
     self.testTrip = [self.db createTestTrip];
 }
 
-- (void)testTripSaved {
+- (void)testReceiptSaved {
     NSUInteger countBefore = [self.db countRowsInTable:ReceiptsTable.TABLE_NAME];
     [self.db insertReceipt:@{}];
     NSUInteger countAfter = [self.db countRowsInTable:ReceiptsTable.TABLE_NAME];

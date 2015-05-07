@@ -16,8 +16,8 @@ struct TripsTableStruct {
     __unsafe_unretained NSString *const COLUMN_FROM_TIMEZONE;
     __unsafe_unretained NSString *const COLUMN_TO_TIMEZONE;
     __unsafe_unretained NSString *const COLUMN_PRICE; // Deprecated, since this is receipt info
-    __unsafe_unretained NSString *const COLUMN_MILEAGE;
-    __unsafe_unretained NSString *const COLUMN_COMMENT;
+    __unsafe_unretained NSString *const COLUMN_MILEAGE; // deprecated
+    __unsafe_unretained NSString *const COLUMN_COMMENT; // TODO jaanus: never used?
     __unsafe_unretained NSString *const COLUMN_COST_CENTER;
     __unsafe_unretained NSString *const COLUMN_DEFAULT_CURRENCY;
     __unsafe_unretained NSString *const COLUMN_FILTERS;
