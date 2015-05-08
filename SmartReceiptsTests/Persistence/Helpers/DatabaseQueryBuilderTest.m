@@ -73,4 +73,20 @@
     XCTAssertEqual(@"brown", params[@"cake"]);
 }
 
+- (void)testSumMultiWhereClauses {
+    DatabaseQueryBuilder *statement = [DatabaseQueryBuilder sumStatementForTable:@"testing_sum"];
+    [statement setSumColumn:@"amount"];
+    [statement where:@"cake" value:@"brown"];
+    [statement where:@"baked" value:@"good"];
+
+    NSString *query = [statement buildStatement];
+    //TODO jaanus: two spaces between 'testing_sum  WHERE'. Maybe will fix it later
+    NSString *expected = @"SELECT SUM(amount) FROM testing_sum  WHERE baked = :baked AND cake = :cake";
+    XCTAssertEqualObjects(expected, query, @"Got %@", query);
+
+    NSDictionary *params = [statement parameters];
+    XCTAssertEqual(@"brown", params[@"cake"]);
+    XCTAssertEqual(@"good", params[@"baked"]);
+}
+
 @end

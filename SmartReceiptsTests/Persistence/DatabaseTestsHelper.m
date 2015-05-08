@@ -63,6 +63,7 @@
     params[ReceiptsTable.COLUMN_NAME] = [NSString stringWithFormat:@"TestReceipt - %f", [NSDate timeIntervalSinceReferenceDate]];
     params[ReceiptsTable.COLUMN_PARENT] = [self createTestTrip];
     params[ReceiptsTable.COLUMN_PRICE] = [NSDecimalNumber decimalNumberWithString:@"20"];
+    params[ReceiptsTable.COLUMN_EXPENSEABLE] = @(YES);
 
     [params addEntriesFromDictionary:modifiedParams];
 
@@ -75,7 +76,7 @@
                                                comment:@""
                                                  price:[WBPrice priceWithAmount:params[ReceiptsTable.COLUMN_PRICE] currencyCode:@"USD"]
                                                    tax:[WBPrice zeroPriceWithCurrencyCode:@"USD"]
-                                          isExpensable:1
+                                          isExpensable:[params[ReceiptsTable.COLUMN_EXPENSEABLE] boolValue]
                                             isFullPage:0
                                         extraEditText1:@""
                                         extraEditText2:@""

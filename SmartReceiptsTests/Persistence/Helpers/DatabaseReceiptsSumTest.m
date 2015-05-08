@@ -15,6 +15,12 @@
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "Database+Receipts.h"
 
+@interface Database (TestExpose)
+
+- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip onlyExpenseableReceipts:(BOOL)onlyExpenseable;
+
+@end
+
 @interface DatabaseReceiptsSumTest : DatabaseTestsBase
 
 @property (nonatomic, strong) WBTrip *trip;
@@ -30,13 +36,29 @@
 }
 
 - (void)testSumReceipts {
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: self.trip, ReceiptsTable.COLUMN_PRICE: [NSDecimalNumber decimalNumberOrZero:@"10"]}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: self.trip, ReceiptsTable.COLUMN_PRICE: [NSDecimalNumber decimalNumberOrZero:@"15"]}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: self.trip, ReceiptsTable.COLUMN_PRICE: [NSDecimalNumber decimalNumberOrZero:@"12"]}];
+    [self createTestReceipts];
 
-    NSDecimalNumber *sumOfReceipts = [self.db sumOfReceiptsForTrip:self.trip];
+    NSDecimalNumber *sumOfReceipts = [self.db sumOfReceiptsForTrip:self.trip onlyExpenseableReceipts:NO];
     NSDecimalNumber *expected = [NSDecimalNumber decimalNumberWithString:@"37"];
     XCTAssertEqualObjects(expected, sumOfReceipts);
+}
+
+- (void)testSumWithNonExpenseableExcluded {
+    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip,
+            ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"200"],
+            ReceiptsTable.COLUMN_EXPENSEABLE : @(NO)}];
+    [self createTestReceipts];
+
+    NSDecimalNumber *sumOfReceipts = [self.db sumOfReceiptsForTrip:self.trip onlyExpenseableReceipts:YES];
+    NSDecimalNumber *expected = [NSDecimalNumber decimalNumberWithString:@"37"];
+    XCTAssertEqualObjects(expected, sumOfReceipts);
+}
+
+- (void)createTestReceipts {
+    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"10"]}];
+    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"15"]}];
+    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"12"]}];
+    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"100"]}];
 }
 
 @end

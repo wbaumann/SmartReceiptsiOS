@@ -68,7 +68,6 @@ typedef NS_ENUM(short, StatementType) {
 }
 
 - (void)where:(NSString *)paramName value:(NSObject *)paramValue {
-    SRAssert(self.where.count == 0, @"Only one where clause parameter supported");
     self.where[paramName] = paramValue;
 }
 
@@ -101,8 +100,16 @@ typedef NS_ENUM(short, StatementType) {
 }
 
 - (void)appendWhereClause:(NSMutableString *)query {
-    NSString *whereKey = [self.where.keyEnumerator.allObjects firstObject];
-    [query appendFormat:@" WHERE %@ = :%@", whereKey, whereKey];
+    [query appendString:@" WHERE "];
+
+    NSArray *keys = self.where.keyEnumerator.allObjects;
+    //sorted only for unit tests
+    keys = [keys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    NSMutableArray *whereParams = [NSMutableArray array];
+    for (NSString *whereKey in keys) {
+        [whereParams addObject:[NSString stringWithFormat:@"%@ = :%@", whereKey, whereKey]];
+    }
+    [query appendString:[whereParams componentsJoinedByString:@" AND "]];
 }
 
 - (void)appendUpdateValues:(NSMutableString *)query {

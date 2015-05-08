@@ -15,6 +15,7 @@
 #import "WBCurrency.h"
 #import "WBPrice.h"
 #import "FetchedModelAdapter.h"
+#import "WBPreferences.h"
 
 @implementation Database (Receipts)
 
@@ -76,9 +77,16 @@
 }
 
 - (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip {
+    return [self sumOfReceiptsForTrip:trip onlyExpenseableReceipts:[WBPreferences onlyIncludeExpensableReceiptsInReports]];
+}
+
+- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip onlyExpenseableReceipts:(BOOL)onlyExpenseable {
     DatabaseQueryBuilder *sumStatement = [DatabaseQueryBuilder sumStatementForTable:ReceiptsTable.TABLE_NAME];
     [sumStatement setSumColumn:ReceiptsTable.COLUMN_PRICE];
     [sumStatement where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    if (onlyExpenseable) {
+        [sumStatement where:ReceiptsTable.COLUMN_EXPENSEABLE value:@(YES)];
+    }
     return [self executeDecimalQuery:sumStatement];
 }
 
