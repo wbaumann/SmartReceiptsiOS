@@ -158,6 +158,7 @@
 		EA888A861AFB4FBD00DF2AE6 /* Database+Trips.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A851AFB4FBD00DF2AE6 /* Database+Trips.m */; };
 		EA888A881AFB4FD600DF2AE6 /* DatabaseTripsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A871AFB4FD600DF2AE6 /* DatabaseTripsTest.m */; };
 		EA8CEAE51AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CEAE41AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m */; };
+		EA8CEAE71AFCEBE90007B3F5 /* DatabaseTripsSumTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CEAE61AFCEBE90007B3F5 /* DatabaseTripsSumTest.m */; };
 		EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816B1AEA668100BAC943 /* WBCategory.m */; };
 		EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816D1AEA668100BAC943 /* WBColumnNames.m */; };
 		EA8D81761AEA668100BAC943 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816F1AEA668100BAC943 /* WBPrice.m */; };
@@ -471,6 +472,7 @@
 		EA888A851AFB4FBD00DF2AE6 /* Database+Trips.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Database+Trips.m"; sourceTree = "<group>"; };
 		EA888A871AFB4FD600DF2AE6 /* DatabaseTripsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTripsTest.m; sourceTree = "<group>"; };
 		EA8CEAE41AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseDistancesSumTest.m; sourceTree = "<group>"; };
+		EA8CEAE61AFCEBE90007B3F5 /* DatabaseTripsSumTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTripsSumTest.m; sourceTree = "<group>"; };
 		EA8D816A1AEA668100BAC943 /* WBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategory.h; sourceTree = "<group>"; };
 		EA8D816B1AEA668100BAC943 /* WBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategory.m; sourceTree = "<group>"; };
 		EA8D816C1AEA668100BAC943 /* WBColumnNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnNames.h; sourceTree = "<group>"; };
@@ -972,6 +974,7 @@
 				EA07BF581AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m */,
 				EA888A821AFA601100DF2AE6 /* DatabaseReceiptsSumTest.m */,
 				EA888A7D1AFA5C8A00DF2AE6 /* DatabaseReceiptsTest.m */,
+				EA8CEAE61AFCEBE90007B3F5 /* DatabaseTripsSumTest.m */,
 				EA888A871AFB4FD600DF2AE6 /* DatabaseTripsTest.m */,
 				EA5EF0D31AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.h */,
 				EA5EF0D41AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m */,
@@ -1684,6 +1687,7 @@
 				EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */,
 				EA888A7E1AFA5C8A00DF2AE6 /* DatabaseReceiptsTest.m in Sources */,
 				EA69EF261AEFEE5D00276B70 /* DatabaseTestsBase.m in Sources */,
+				EA8CEAE71AFCEBE90007B3F5 /* DatabaseTripsSumTest.m in Sources */,
 				EAED9B221AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m in Sources */,
 				EA07BF6E1AF525A4004D17F6 /* Database+Distances.m in Sources */,
 				EA07BF691AF51C61004D17F6 /* FetchedDistancesAdapterTest.m in Sources */,

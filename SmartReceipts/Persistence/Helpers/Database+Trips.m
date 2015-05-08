@@ -13,6 +13,9 @@
 #import "DatabaseQueryBuilder.h"
 #import "WBPrice.h"
 #import "WBCurrency.h"
+#import "Database+Receipts.h"
+#import "WBPreferences.h"
+#import "Database+Distances.h"
 
 @implementation Database (Trips)
 
@@ -43,6 +46,15 @@
     [insert addParam:TripsTable.COLUMN_DEFAULT_CURRENCY value:trip.price.currency.code];
     BOOL result = [self executeQuery:insert];
     return result;
+}
+
+- (NSDecimalNumber *)totalPriceForTrip:(WBTrip *)trip {
+    NSDecimalNumber *priceOfTrip = [self sumOfReceiptsForTrip:trip];
+    if ([WBPreferences isTheDistancePriceBeIncludedInReports]) {
+        priceOfTrip = [priceOfTrip decimalNumberByAdding:[self sumOfDistancesForTrip:trip]];
+    }
+
+    return priceOfTrip;
 }
 
 @end
