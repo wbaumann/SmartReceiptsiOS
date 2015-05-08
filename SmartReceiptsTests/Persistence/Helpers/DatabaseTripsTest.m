@@ -12,8 +12,11 @@
 #import "DatabaseTestsHelper.h"
 #import "Database+Functions.h"
 #import "Database+Trips.h"
+#import "WBTrip.h"
 
 @interface DatabaseTripsTest : DatabaseTestsBase
+
+@property (nonatomic, strong) WBTrip *trip;
 
 @end
 
@@ -22,7 +25,7 @@
 - (void)setUp {
     [super setUp];
 
-    self.db = [self createAndOpenDatabaseWithPath:self.testDBPath migrated:YES];
+    self.trip = [self.db insertTrip:@{TripsTable.COLUMN_NAME: @"Test my load"}];
 }
 
 - (void)testTripSaved {
@@ -33,6 +36,7 @@
 }
 
 - (void)testSelectAll {
+    //one added in setup
     [self.db insertTrip:@{}];
     [self.db insertTrip:@{}];
     [self.db insertTrip:@{}];
@@ -40,7 +44,13 @@
     [self.db insertTrip:@{}];
 
     NSArray *allTrips = [self.db allTrips];
-    XCTAssertEqual(5, allTrips.count);
+    XCTAssertEqual(6, allTrips.count);
+}
+
+- (void)testSelectByName {
+    WBTrip *loaded = [self.db tripWithName:@"Test my load"];
+    XCTAssertNotNil(loaded);
+    XCTAssertEqualObjects(@"Test my load", loaded.name);
 }
 
 @end

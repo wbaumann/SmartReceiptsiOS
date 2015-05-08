@@ -67,4 +67,10 @@
     return [adapter allObjects];
 }
 
+- (WBTrip *)tripWithName:(NSString *)tripName {
+    DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:TripsTable.TABLE_NAME];
+    [select where:TripsTable.COLUMN_NAME value:tripName];
+    return [self executeFetchFor:[WBTrip class] withQuery:select];
+}
+
 @end

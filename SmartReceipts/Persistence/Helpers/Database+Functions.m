@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "DatabaseQueryBuilder.h"
 #import "NSDecimalNumber+WBNumberParse.h"
+#import "FetchedModel.h"
 
 @implementation Database (Functions)
 
@@ -80,6 +81,29 @@
             NSString *sum = [resultSet stringForColumnIndex:0];
             [resultSet close];
             result = [NSDecimalNumber decimalNumberOrZero:sum];
+        }
+    }];
+
+    return result;
+}
+
+- (id<FetchedModel>)executeFetchFor:(Class)fetchedClass withQuery:(DatabaseQueryBuilder *)query {
+    SRLog(@"executeFetchFor: %@", NSStringFromClass(fetchedClass));
+
+    NSString *statement = query.buildStatement;
+    NSDictionary *parameters = query.parameters;
+
+    SRLog(@"Query: '%@'", statement);
+    SRLog(@"Parameters: %@", parameters);
+    __block id<FetchedModel> result = nil;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet *resultSet = [db executeQuery:statement withParameterDictionary:parameters];
+
+        while ([resultSet next]) {
+            id<FetchedModel> fetched = (id <FetchedModel>) [[fetchedClass alloc] init];
+            [fetched loadDataFromResultSet:resultSet];
+            result = fetched;
+            break;
         }
     }];
 

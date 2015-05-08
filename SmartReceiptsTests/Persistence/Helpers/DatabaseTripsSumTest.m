@@ -37,23 +37,26 @@
     [self.db insertDistance:@{DistanceTable.COLUMN_PARENT: self.trip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE: [NSDecimalNumber decimalNumberOrZero:@"10"]}];
     [self.db insertDistance:@{DistanceTable.COLUMN_PARENT: self.trip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE: [NSDecimalNumber decimalNumberOrZero:@"20"]}];
     [self.db insertDistance:@{DistanceTable.COLUMN_PARENT: self.trip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE: [NSDecimalNumber decimalNumberOrZero:@"30"]}];
+
+    [WBPreferences setOnlyIncludeExpensableReceiptsInReports:NO];
+    [WBPreferences setTheDistancePriceBeIncludedInReports:YES];
 }
 
 
 - (void)testSumOfTripWithDistances {
-    [WBPreferences setOnlyIncludeExpensableReceiptsInReports:NO];
-    [WBPreferences setTheDistancePriceBeIncludedInReports:YES];
-
     NSDecimalNumber *sum = [self.db totalPriceForTrip:self.trip];
     XCTAssertEqualObjects([NSDecimalNumber decimalNumberOrZero:@"66"], sum);
 }
 
 - (void)testSumOfTripWithoutDistances {
-    [WBPreferences setOnlyIncludeExpensableReceiptsInReports:NO];
     [WBPreferences setTheDistancePriceBeIncludedInReports:NO];
 
     NSDecimalNumber *sum = [self.db totalPriceForTrip:self.trip];
     XCTAssertEqualObjects([NSDecimalNumber decimalNumberOrZero:@"6"], sum);
+}
+
+- (void)testTripPriceUpdated {
+
 }
 
 @end

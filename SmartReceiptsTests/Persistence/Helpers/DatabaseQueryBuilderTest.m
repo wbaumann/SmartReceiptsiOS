@@ -104,4 +104,17 @@
     XCTAssertEqual(@"brown", params[@"cake"]);
 }
 
+- (void)testSelectAllQueryBuild {
+    DatabaseQueryBuilder *statement = [DatabaseQueryBuilder selectAllStatementForTable:@"testing_select_all"];
+    [statement where:@"id" value:@12];
+
+    NSString *query = [statement buildStatement];
+    NSString *expected = @"SELECT * FROM testing_select_all  WHERE id = :id";
+    XCTAssertEqualObjects(expected, query, @"Got %@", query);
+
+    NSDictionary *params = [statement parameters];
+    XCTAssertEqual(@12, params[@"id"]);
+}
+
+
 @end

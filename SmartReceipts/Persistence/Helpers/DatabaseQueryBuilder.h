@@ -16,6 +16,7 @@
 + (DatabaseQueryBuilder *)deleteStatementForTable:(NSString *)tableName;
 + (DatabaseQueryBuilder *)updateStatementForTable:(NSString *)tableName;
 + (DatabaseQueryBuilder *)sumStatementForTable:(NSString *)tableName;
++ (DatabaseQueryBuilder *)selectAllStatementForTable:(NSString *)tableName;
 
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue;
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue fallback:(NSObject *)valueFallback;

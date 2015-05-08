@@ -9,6 +9,7 @@
 #import "Database.h"
 
 @class DatabaseQueryBuilder;
+@protocol FetchedModel;
 
 @interface Database (Functions)
 
@@ -19,5 +20,6 @@
 - (NSUInteger)countRowsInTable:(NSString *)tableName;
 - (BOOL)executeQuery:(DatabaseQueryBuilder *)query;
 - (NSDecimalNumber *)executeDecimalQuery:(DatabaseQueryBuilder *)query;
+- (id<FetchedModel>)executeFetchFor:(Class)fetchedClass withQuery:(DatabaseQueryBuilder *)query;
 
 @end

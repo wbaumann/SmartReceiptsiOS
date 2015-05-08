@@ -7,13 +7,13 @@
 //
 
 #import "DatabaseQueryBuilder.h"
-#import "Constants.h"
 
 typedef NS_ENUM(short, StatementType) {
     InsertStatement = 1,
     UpdateStatement = 2,
     DeleteStatement = 3,
     SumStatement = 4,
+    SelectAllStatement = 5,
 };
 
 @interface DatabaseQueryBuilder ()
@@ -57,6 +57,10 @@ typedef NS_ENUM(short, StatementType) {
     return [[DatabaseQueryBuilder alloc] initStatementForTable:tableName statementType:SumStatement];
 }
 
++ (DatabaseQueryBuilder *)selectAllStatementForTable:(NSString *)tableName {
+    return [[DatabaseQueryBuilder alloc] initStatementForTable:tableName statementType:SelectAllStatement];
+}
+
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue {
     [self.params addObject:paramName];
     [self.values addObject:paramValue];
@@ -81,6 +85,8 @@ typedef NS_ENUM(short, StatementType) {
         [query appendString:@"UPDATE "];
     } else if (self.statement == SumStatement) {
         [query appendFormat:@"SELECT SUM(%@) FROM ", self.sumColumn];
+    } else if (self.statement == SelectAllStatement) {
+        [query appendString:@"SELECT * FROM "];
     }
     
     [query appendString:self.tableName];
@@ -92,7 +98,7 @@ typedef NS_ENUM(short, StatementType) {
         [self appendDeleteValues:query];
     } else if (self.statement == UpdateStatement) {
         [self appendUpdateValues:query];
-    } else if (self.statement == SumStatement) {
+    } else if (self.statement == SumStatement || self.statement == SelectAllStatement) {
         [self appendWhereClause:query];
     }
 
