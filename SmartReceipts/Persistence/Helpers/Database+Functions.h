@@ -18,5 +18,6 @@
 - (void)setDatabaseVersion:(NSUInteger)version;
 - (NSUInteger)countRowsInTable:(NSString *)tableName;
 - (BOOL)executeQuery:(DatabaseQueryBuilder *)query;
+- (NSDecimalNumber *)executeDecimalQuery:(DatabaseQueryBuilder *)query;
 
 @end

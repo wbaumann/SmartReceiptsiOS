@@ -34,7 +34,7 @@
 
 - (void)setUp {
     self.testDBPath = self.generateTestDBPath;
-    [self setDb:[self createAndOpenDatabaseWithPath:self.testDBPath]];
+    [self setDb:[self createTestDatabase]];
 
     self.preferencesHelper = [[WBPreferencesTestHelper alloc] init];
     [self.preferencesHelper createPreferencesBackup];
@@ -51,7 +51,11 @@
     [[NSFileManager defaultManager] removeItemAtPath:self.testDBPath error:nil];
 }
 
-- (DatabaseTestsHelper *)createAndOpenDatabaseWithPath:(NSString *)path {
+- (DatabaseTestsHelper *)createTestDatabase {
+    return [self createAndOpenDatabaseWithPath:self.testDBPath migrated:YES];
+}
+
+- (DatabaseTestsHelper *)createAndOpenUnmigratedDatabaseWithPath:(NSString *)path {
     return [self createAndOpenDatabaseWithPath:path migrated:NO];
 }
 

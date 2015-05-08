@@ -10,9 +10,12 @@
 
 @interface DatabaseQueryBuilder : NSObject
 
+@property (nonatomic, copy) NSString *sumColumn;
+
 + (DatabaseQueryBuilder *)insertStatementForTable:(NSString *)tableName;
 + (DatabaseQueryBuilder *)deleteStatementForTable:(NSString *)tableName;
 + (DatabaseQueryBuilder *)updateStatementForTable:(NSString *)tableName;
++ (DatabaseQueryBuilder *)sumStatementForTable:(NSString *)tableName;
 
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue;
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue fallback:(NSObject *)valueFallback;

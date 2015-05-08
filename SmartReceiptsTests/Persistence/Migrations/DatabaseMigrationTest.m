@@ -29,7 +29,9 @@
 }
 
 - (void)testCreatedDatabaseMigratedToVersion13 {
-    DatabaseTestsHelper *database = [self createAndOpenDatabaseWithPath:self.testDBPath];
+    [self deleteTestDatabase];
+
+    DatabaseTestsHelper *database = [self createAndOpenUnmigratedDatabaseWithPath:self.testDBPath];
     XCTAssertEqual(0, database.databaseVersion);
     BOOL migrationSuccess = [DatabaseMigration migrateDatabase:database];
     XCTAssertTrue(migrationSuccess);
@@ -46,7 +48,7 @@
     [[NSFileManager defaultManager] copyItemAtPath:self.referenceDBPath toPath:self.testDBPath error:&copyError];
     XCTAssertNil(copyError);
 
-    DatabaseTestsHelper *database = [self createAndOpenDatabaseWithPath:self.testDBPath];
+    DatabaseTestsHelper *database = [self createAndOpenUnmigratedDatabaseWithPath:self.testDBPath];
     XCTAssertEqual(11, database.databaseVersion);
     BOOL migrationSuccess = [DatabaseMigration migrateDatabase:database];
     XCTAssertTrue(migrationSuccess);

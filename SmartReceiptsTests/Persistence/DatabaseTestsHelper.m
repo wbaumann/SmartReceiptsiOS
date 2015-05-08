@@ -62,6 +62,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[ReceiptsTable.COLUMN_NAME] = [NSString stringWithFormat:@"TestReceipt - %f", [NSDate timeIntervalSinceReferenceDate]];
     params[ReceiptsTable.COLUMN_PARENT] = [self createTestTrip];
+    params[ReceiptsTable.COLUMN_PRICE] = [NSDecimalNumber decimalNumberWithString:@"20"];
 
     [params addEntriesFromDictionary:modifiedParams];
 
@@ -72,7 +73,7 @@
                                                 dateMs:0
                                           timeZoneName:[NSTimeZone localTimeZone].name
                                                comment:@""
-                                                 price:[WBPrice zeroPriceWithCurrencyCode:@"USD"]
+                                                 price:[WBPrice priceWithAmount:params[ReceiptsTable.COLUMN_PRICE] currencyCode:@"USD"]
                                                    tax:[WBPrice zeroPriceWithCurrencyCode:@"USD"]
                                           isExpensable:1
                                             isFullPage:0

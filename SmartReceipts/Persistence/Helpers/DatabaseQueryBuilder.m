@@ -13,6 +13,7 @@ typedef NS_ENUM(short, StatementType) {
     InsertStatement = 1,
     UpdateStatement = 2,
     DeleteStatement = 3,
+    SumStatement = 4,
 };
 
 @interface DatabaseQueryBuilder ()
@@ -51,6 +52,11 @@ typedef NS_ENUM(short, StatementType) {
     return [[DatabaseQueryBuilder alloc] initStatementForTable:tableName statementType:UpdateStatement];
 }
 
+
++ (DatabaseQueryBuilder *)sumStatementForTable:(NSString *)tableName {
+    return [[DatabaseQueryBuilder alloc] initStatementForTable:tableName statementType:SumStatement];
+}
+
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue {
     [self.params addObject:paramName];
     [self.values addObject:paramValue];
@@ -74,6 +80,8 @@ typedef NS_ENUM(short, StatementType) {
         [query appendString:@"DELETE FROM "];        
     } else if (self.statement == UpdateStatement) {
         [query appendString:@"UPDATE "];
+    } else if (self.statement == SumStatement) {
+        [query appendFormat:@"SELECT SUM(%@) FROM ", self.sumColumn];
     }
     
     [query appendString:self.tableName];
@@ -85,9 +93,16 @@ typedef NS_ENUM(short, StatementType) {
         [self appendDeleteValues:query];
     } else if (self.statement == UpdateStatement) {
         [self appendUpdateValues:query];
+    } else if (self.statement == SumStatement) {
+        [self appendWhereClause:query];
     }
 
     return [NSString stringWithString:query];
+}
+
+- (void)appendWhereClause:(NSMutableString *)query {
+    NSString *whereKey = [self.where.keyEnumerator.allObjects firstObject];
+    [query appendFormat:@" WHERE %@ = :%@", whereKey, whereKey];
 }
 
 - (void)appendUpdateValues:(NSMutableString *)query {
@@ -97,8 +112,7 @@ typedef NS_ENUM(short, StatementType) {
         [valuesSet addObject:[NSString stringWithFormat:@"%@ = :%@", param, param]];
     }
     [query appendString:[valuesSet componentsJoinedByString:@", "]];
-    NSString *whereKey = [self.where.keyEnumerator.allObjects firstObject];
-    [query appendFormat:@" WHERE %@ = :%@", whereKey, whereKey];
+    [self appendWhereClause:query];
 }
 
 - (void)appendDeleteValues:(NSMutableString *)query {

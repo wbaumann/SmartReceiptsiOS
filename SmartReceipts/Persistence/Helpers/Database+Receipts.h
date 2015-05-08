@@ -17,5 +17,6 @@
 - (BOOL)createReceiptsTable;
 - (BOOL)saveReceipt:(WBReceipt *)receipt;
 - (NSArray *)allReceiptsForTrip:(WBTrip *)trip descending:(BOOL)desc;
+- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip;
 
 @end

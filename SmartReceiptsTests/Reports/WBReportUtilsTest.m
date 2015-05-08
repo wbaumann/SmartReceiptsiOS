@@ -25,6 +25,7 @@
 - (void)setUp {
     self.preferencesHelper = [[WBPreferencesTestHelper alloc] init];
     [self.preferencesHelper createPreferencesBackup];
+    [WBPreferences setOnlyIncludeExpensableReceiptsInReports:YES];
 }
 
 - (void)tearDown {

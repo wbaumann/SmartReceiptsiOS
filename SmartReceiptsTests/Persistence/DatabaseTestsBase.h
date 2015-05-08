@@ -16,7 +16,8 @@
 @property (nonatomic, strong) DatabaseTestsHelper *db;
 
 - (void)deleteTestDatabase;
-- (DatabaseTestsHelper *)createAndOpenDatabaseWithPath:(NSString *)path;
+- (DatabaseTestsHelper *)createAndOpenUnmigratedDatabaseWithPath:(NSString *)path;
 - (DatabaseTestsHelper *)createAndOpenDatabaseWithPath:(NSString *)path migrated:(BOOL)migrated;
+- (DatabaseTestsHelper *)createTestDatabase;
 
 @end

@@ -10,6 +10,7 @@
 #import "Database+Functions.h"
 #import "Constants.h"
 #import "DatabaseQueryBuilder.h"
+#import "NSDecimalNumber+WBNumberParse.h"
 
 @implementation Database (Functions)
 
@@ -61,6 +62,27 @@
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         result = [db executeUpdate:statement withParameterDictionary:parameters];
     }];
+    return result;
+}
+
+- (NSDecimalNumber *)executeDecimalQuery:(DatabaseQueryBuilder *)query {
+    NSString *statement = [query buildStatement];
+    NSDictionary *parameters = [query parameters];
+
+    SRLog(@"Execute query: '%@'", statement);
+    SRLog(@"With parameters: %@", parameters);
+
+    __block NSDecimalNumber *result = [NSDecimalNumber zero];
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet *resultSet = [db executeQuery:statement withParameterDictionary:parameters];
+
+        if ([resultSet next] && [resultSet columnCount] > 0) {
+            NSString *sum = [resultSet stringForColumnIndex:0];
+            [resultSet close];
+            result = [NSDecimalNumber decimalNumberOrZero:sum];
+        }
+    }];
+
     return result;
 }
 

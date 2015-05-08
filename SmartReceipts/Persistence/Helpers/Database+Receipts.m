@@ -75,6 +75,13 @@
     return receipts;
 }
 
+- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip {
+    DatabaseQueryBuilder *sumStatement = [DatabaseQueryBuilder sumStatementForTable:ReceiptsTable.TABLE_NAME];
+    [sumStatement setSumColumn:ReceiptsTable.COLUMN_PRICE];
+    [sumStatement where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    return [self executeDecimalQuery:sumStatement];
+}
+
 + (NSString *)extraInsertValue:(NSString *)extraValue {
     if (!extraValue) {
         return [WBReceipt NO_DATA];
