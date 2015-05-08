@@ -53,7 +53,7 @@
 - (FetchedModelAdapter *)fetchedAdapterForDistancesInTrip:(WBTrip *)trip {
     FetchedModelAdapter *adapter = [[FetchedModelAdapter alloc] initWithDatabase:self];
     NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = :parent ORDER BY %@ DESC", DistanceTable.TABLE_NAME, DistanceTable.COLUMN_PARENT, DistanceTable.COLUMN_DATE];
-    [adapter setFetchQuery:query parameters:@{@"parent": trip.name}];
+    [adapter setQuery:query parameters:@{@"parent" : trip.name}];
     [adapter setModelClass:[Distance class]];
     [adapter fetch];
     return adapter;

@@ -66,7 +66,7 @@
 - (NSArray *)allReceiptsForTrip:(WBTrip *)trip descending:(BOOL)desc {
     FetchedModelAdapter *adapter = [[FetchedModelAdapter alloc] initWithDatabase:self];
     NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = :parent ORDER BY %@ %@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_PARENT, ReceiptsTable.COLUMN_DATE, (desc ? @" DESC" : @" ASC")];
-    [adapter setFetchQuery:query parameters:@{@"parent": trip.name}];
+    [adapter setQuery:query parameters:@{@"parent" : trip.name}];
     [adapter setModelClass:[WBReceipt class]];
     [adapter fetch];
     NSArray *receipts = [adapter allObjects];

@@ -47,7 +47,11 @@
     return self.models.count;
 }
 
-- (void)setFetchQuery:(NSString *)query parameters:(NSDictionary *)parameters {
+- (void)setQuery:(NSString *)query {
+    [self setQuery:query parameters:@{}];
+}
+
+- (void)setQuery:(NSString *)query parameters:(NSDictionary *)parameters {
     [self setFetchQuery:query];
     [self setFetchParameters:parameters];
 }

@@ -6,9 +6,12 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
+#import <FMDB/FMResultSet.h>
 #import "WBTrip.h"
 #import "WBFileManager.h"
 #import "WBPrice.h"
+#import "DatabaseTableNames.h"
+#import "NSDecimalNumber+WBNumberParse.h"
 
 NSString *const MULTI_CURRENCY = @"XXXXXX";
 
@@ -138,6 +141,18 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
 
 -(NSString*)priceWithCurrencyFormatted {
     return self.price.currencyFormattedPrice;
+}
+
+- (void)loadDataFromResultSet:(FMResultSet *)resultSet {
+    _reportDirectoryName = [resultSet stringForColumn:TripsTable.COLUMN_NAME];
+
+    NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:TripsTable.COLUMN_PRICE]];
+    NSString *currency = [resultSet stringForColumn:TripsTable.COLUMN_DEFAULT_CURRENCY];
+    _price = [WBPrice priceWithAmount:price currencyCode:currency];
+    _startDate = [resultSet dateForColumn:TripsTable.COLUMN_FROM];
+    _startTimeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:TripsTable.COLUMN_FROM_TIMEZONE]];
+    _endDate = [resultSet dateForColumn:TripsTable.COLUMN_TO];
+    _endTimeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:TripsTable.COLUMN_TO_TIMEZONE]];
 }
 
 @end

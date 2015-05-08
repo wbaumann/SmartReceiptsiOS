@@ -16,6 +16,7 @@
 #import "Database+Receipts.h"
 #import "WBPreferences.h"
 #import "Database+Distances.h"
+#import "FetchedModelAdapter.h"
 
 @implementation Database (Trips)
 
@@ -55,6 +56,15 @@
     }
 
     return priceOfTrip;
+}
+
+- (NSArray *)allTrips {
+    FetchedModelAdapter *adapter = [[FetchedModelAdapter alloc] initWithDatabase:self];
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY %@ DESC", TripsTable.TABLE_NAME, TripsTable.COLUMN_TO];
+    [adapter setQuery:query];
+    [adapter setModelClass:[WBTrip class]];
+    [adapter fetch];
+    return [adapter allObjects];
 }
 
 @end

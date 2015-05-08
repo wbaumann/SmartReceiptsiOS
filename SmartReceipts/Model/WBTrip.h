@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FetchedModel.h"
 
 @class WBCurrency;
 @class WBPrice;
 
 extern NSString *const MULTI_CURRENCY;
 
-@interface WBTrip : NSObject
+@interface WBTrip : NSObject <FetchedModel>
 
 @property (nonatomic, strong) WBPrice *price;
 
