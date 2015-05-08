@@ -43,8 +43,8 @@
     [_values addObject:(valueObject==nil?[NSNull null]:valueObject)];
 }
 
--(void) addValueFromInt:(int) valueInt {
-    [_values addObject:[NSNumber numberWithInt:valueInt]];
+-(void)addValueFromInt:(NSInteger) valueInt {
+    [_values addObject:@(valueInt)];
 }
 
 -(void) addValueFromBoolean:(BOOL) valueBoolean {

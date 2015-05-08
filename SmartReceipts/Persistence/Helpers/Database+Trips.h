@@ -17,5 +17,6 @@
 - (NSDecimalNumber *)totalPriceForTrip:(WBTrip *)trip;
 - (NSArray *)allTrips;
 - (WBTrip *)tripWithName:(NSString *)tripName;
+- (BOOL)updatePriceOfTrip:(WBTrip *)trip;
 
 @end

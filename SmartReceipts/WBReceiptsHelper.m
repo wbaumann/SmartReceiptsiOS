@@ -325,7 +325,7 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     
     __block BOOL result;
     [_databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [db executeUpdate:query, imageFileName, [NSNumber numberWithInt:[receipt receiptId]]];
+        result = [db executeUpdate:query, imageFileName, @([receipt receiptId])];
     }];
     return result;
 }
@@ -393,12 +393,12 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     return [database executeUpdate:query, parent];
 }
 
--(BOOL) deleteWithId:(int) receiptId forTrip:(WBTrip*) currentTrip {
+-(BOOL) deleteWithId:(NSUInteger) receiptId forTrip:(WBTrip*) currentTrip {
     NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@ = ?", TABLE_NAME, COLUMN_ID];
     
     __block BOOL result;
     [_databaseQueue inTransaction:^(FMDatabase *database, BOOL *rollback){
-        result = [database executeUpdate:query, [NSNumber numberWithInt:receiptId]];
+        result = [database executeUpdate:query, @(receiptId)];
         if (result) {
             NSDecimalNumber *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:currentTrip inDatabase:database];
             if (newSumPrice == nil) {
@@ -437,8 +437,8 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
         NSNumber *date1 = [NSNumber numberWithLongLong:dateMs1];
         NSNumber *date2 = [NSNumber numberWithLongLong:dateMs2];
         
-        if ([database executeUpdate:query, date1, [NSNumber numberWithInt:[receipt2 receiptId]] ]
-            && [database executeUpdate:query, date2, [NSNumber numberWithInt:[receipt1 receiptId]]]) {
+        if ([database executeUpdate:query, date1, @([receipt2 receiptId]) ]
+            && [database executeUpdate:query, date2, @([receipt1 receiptId])]) {
             
             [receipt1 setDateMs:dateMs2];
             [receipt2 setDateMs:dateMs1];

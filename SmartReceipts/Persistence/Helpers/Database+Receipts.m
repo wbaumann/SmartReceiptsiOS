@@ -16,6 +16,7 @@
 #import "WBPrice.h"
 #import "FetchedModelAdapter.h"
 #import "WBPreferences.h"
+#import "Database+Trips.h"
 
 @implementation Database (Receipts)
 
@@ -60,6 +61,9 @@
     [insert addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2 value:[Database extraInsertValue:receipt.extraEditText2]];
     [insert addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3 value:[Database extraInsertValue:receipt.extraEditText3]];
     BOOL result = [self executeQuery:insert];
+    if (result) {
+        [self updatePriceOfTrip:receipt.trip];
+    }
     return result;
 }
 

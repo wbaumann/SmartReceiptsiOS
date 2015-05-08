@@ -15,6 +15,7 @@
 #import "WBPrice.h"
 #import "WBCurrency.h"
 #import "FetchedModelAdapter.h"
+#import "Database+Trips.h"
 
 @implementation Database (Distances)
 
@@ -45,6 +46,7 @@
     [insert addParam:DistanceTable.COLUMN_RATE value:distance.rate.amount];
     BOOL result = [self executeQuery:insert];
     if (result) {
+        [self updatePriceOfTrip:distance.trip];
         [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidInsertModelNotification object:distance];
     }
     return result;

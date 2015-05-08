@@ -70,7 +70,15 @@
 - (WBTrip *)tripWithName:(NSString *)tripName {
     DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:TripsTable.TABLE_NAME];
     [select where:TripsTable.COLUMN_NAME value:tripName];
-    return [self executeFetchFor:[WBTrip class] withQuery:select];
+    return (WBTrip *)[self executeFetchFor:[WBTrip class] withQuery:select];
+}
+
+- (BOOL)updatePriceOfTrip:(WBTrip *)trip {
+    NSDecimalNumber *total = [self totalPriceForTrip:trip];
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:TripsTable.TABLE_NAME];
+    [update addParam:TripsTable.COLUMN_PRICE value:total];
+    [update where:TripsTable.COLUMN_NAME value:trip.name];
+    return [self executeQuery:update];
 }
 
 @end

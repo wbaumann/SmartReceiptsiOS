@@ -38,7 +38,7 @@
   extraEditText2:(NSString *)extraEditText2
   extraEditText3:(NSString *)extraEditText3;
 
--(int)receiptId;
+-(NSUInteger)receiptId;
 -(NSString*)imageFileName;
 -(long long)dateMs;
 -(NSTimeZone*)timeZone;

@@ -16,6 +16,7 @@
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "Database+Trips.h"
 #import "WBPreferences.h"
+#import "WBPrice.h"
 
 @interface DatabaseTripsSumTest : DatabaseTestsBase
 
@@ -55,8 +56,24 @@
     XCTAssertEqualObjects([NSDecimalNumber decimalNumberOrZero:@"6"], sum);
 }
 
-- (void)testTripPriceUpdated {
+- (void)testTripPriceUpdatedOnDistanceEntry {
+    NSDecimalNumber *startPrice = [self.db totalPriceForTrip:self.trip];
 
+    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT: self.trip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberOrZero:@"10"], DistanceTable.COLUMN_RATE: [NSDecimalNumber decimalNumberOrZero:@"10"]}];
+
+    WBTrip *fetched = [self.db tripWithName:self.trip.name];
+    NSDecimalNumber *expected = [startPrice decimalNumberByAdding:[NSDecimalNumber decimalNumberOrZero:@"100"]];
+    XCTAssertEqualObjects(expected, fetched.price.amount);
+}
+
+- (void)testTripPriceUpdatedOnReceiptEntry {
+    NSDecimalNumber *startPrice = [self.db totalPriceForTrip:self.trip];
+
+    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: self.trip, ReceiptsTable.COLUMN_PRICE: [NSDecimalNumber decimalNumberOrZero:@"50"]}];
+
+    WBTrip *fetched = [self.db tripWithName:self.trip.name];
+    NSDecimalNumber *expected = [startPrice decimalNumberByAdding:[NSDecimalNumber decimalNumberOrZero:@"50"]];
+    XCTAssertEqualObjects(expected, fetched.price.amount);
 }
 
 @end

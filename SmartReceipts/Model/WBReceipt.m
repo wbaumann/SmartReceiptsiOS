@@ -87,7 +87,7 @@ static NSString* checkNoData(NSString* str) {
     return self;
 }
 
--(int)receiptId {
+-(NSUInteger)receiptId {
     return _id;
 }
 
