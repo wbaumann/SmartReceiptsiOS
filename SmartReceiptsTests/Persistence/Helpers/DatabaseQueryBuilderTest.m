@@ -89,4 +89,19 @@
     XCTAssertEqual(@"good", params[@"baked"]);
 }
 
+- (void)testOddSumQueryBuilder {
+    DatabaseQueryBuilder *statement = [DatabaseQueryBuilder sumStatementForTable:@"testing_sum"];
+    //TODO jaanus: this may need rethinking
+    [statement setSumColumn:@"distance * rate"];
+    [statement where:@"cake" value:@"brown"];
+
+    NSString *query = [statement buildStatement];
+    //TODO jaanus: two spaces between 'testing_sum  WHERE'. Maybe will fix it later
+    NSString *expected = @"SELECT SUM(distance * rate) FROM testing_sum  WHERE cake = :cake";
+    XCTAssertEqualObjects(expected, query, @"Got %@", query);
+
+    NSDictionary *params = [statement parameters];
+    XCTAssertEqual(@"brown", params[@"cake"]);
+}
+
 @end

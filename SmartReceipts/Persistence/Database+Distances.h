@@ -20,5 +20,6 @@
 - (FetchedModelAdapter *)fetchedAdapterForDistancesInTrip:(WBTrip *)trip;
 - (BOOL)deleteDistance:(Distance *)distance;
 - (BOOL)updateDistance:(Distance *)distance;
+- (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip;
 
 @end

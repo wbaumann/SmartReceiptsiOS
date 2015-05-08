@@ -86,4 +86,11 @@
     return result;
 }
 
+- (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip {
+    DatabaseQueryBuilder *sumStatement = [DatabaseQueryBuilder sumStatementForTable:DistanceTable.TABLE_NAME];
+    [sumStatement setSumColumn:@"distance * rate"];
+    [sumStatement where:DistanceTable.COLUMN_PARENT value:trip.name];
+    return [self executeDecimalQuery:sumStatement];
+}
+
 @end

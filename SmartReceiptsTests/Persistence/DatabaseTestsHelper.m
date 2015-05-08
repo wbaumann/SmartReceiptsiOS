@@ -40,19 +40,21 @@
 
 - (void)insertDistance:(NSDictionary *)modifiedParams {
     NSMutableDictionary *defaultParams = [NSMutableDictionary dictionary];
-    defaultParams[@"location"] = @"Test location";
-    defaultParams[@"trip"] = [self createTestTrip];
-    defaultParams[@"date"] = [NSDate date];
+    defaultParams[DistanceTable.COLUMN_LOCATION] = @"Test location";
+    defaultParams[DistanceTable.COLUMN_PARENT] = [self createTestTrip];
+    defaultParams[DistanceTable.COLUMN_DATE] = [NSDate date];
+    defaultParams[DistanceTable.COLUMN_DISTANCE] = [NSDecimalNumber decimalNumberWithString:@"10"];
+    defaultParams[DistanceTable.COLUMN_RATE] = [NSDecimalNumber decimalNumberWithString:@"12"];
 
     [defaultParams addEntriesFromDictionary:modifiedParams];
 
     NSDictionary *params = [NSDictionary dictionaryWithDictionary:defaultParams];
 
-    Distance *distance = [[Distance alloc] initWithTrip:params[@"trip"]
-                                               distance:[NSDecimalNumber decimalNumberWithString:@"10"]
-                                                   rate:[WBPrice priceWithAmount:[NSDecimalNumber decimalNumberWithString:@"12"] currencyCode:@"USD"]
-                                               location:params[@"location"]
-                                                   date:params[@"date"]
+    Distance *distance = [[Distance alloc] initWithTrip:params[DistanceTable.COLUMN_PARENT]
+                                               distance:params[DistanceTable.COLUMN_DISTANCE]
+                                                   rate:[WBPrice priceWithAmount:params[DistanceTable.COLUMN_RATE] currencyCode:@"USD"]
+                                               location:params[DistanceTable.COLUMN_LOCATION]
+                                                   date:params[DistanceTable.COLUMN_DATE]
                                                timeZone:[NSTimeZone defaultTimeZone]
                                                 comment:@"Comment"];
     [self saveDistance:distance];
