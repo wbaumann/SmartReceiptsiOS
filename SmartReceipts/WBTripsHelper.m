@@ -14,6 +14,7 @@
 #import "WBPrice.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "Database+Trips.h"
+#import "NSDate+Calculations.h"
 
 static NSString * const TABLE_NAME = @"trips";
 static NSString * const COLUMN_NAME = @"name";
@@ -78,8 +79,8 @@ static NSString * const NO_DATA = @"null";
         NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumnIndex:priceIndex]];
         WBTrip *trip = [[WBTrip alloc] initWithName:name
                                               price:[WBPrice priceWithAmount:price currencyCode:curr]
-                                          startDate:[resultSet dateForColumnIndex:fromIndex]
-                                            endDate:[resultSet dateForColumnIndex:toIndex]
+                                          startDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumnIndex:fromIndex]]
+                                            endDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumnIndex:toIndex]]
                                       startTimeZone:[NSTimeZone timeZoneWithName:[resultSet stringForColumnIndex:fromTimeZoneIndex]]
                                         endTimeZone:[NSTimeZone timeZoneWithName:[resultSet stringForColumnIndex:toTimeZoneIndex]]
                                               miles:[resultSet doubleForColumnIndex:milesIndex]];

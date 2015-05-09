@@ -64,7 +64,7 @@
 
 - (BOOL)deleteDistance:(Distance *)distance {
     DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:DistanceTable.TABLE_NAME];
-    [delete addParam:DistanceTable.COLUMN_ID value:[NSNumber numberWithUnsignedInteger:distance.objectId]];
+    [delete addParam:DistanceTable.COLUMN_ID value:@(distance.objectId)];
     BOOL result = [self executeQuery:delete];
     if (result) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidDeleteModelNotification object:distance];
@@ -81,7 +81,7 @@
     [update addParam:DistanceTable.COLUMN_COMMENT value:distance.comment];
     [update addParam:DistanceTable.COLUMN_RATE_CURRENCY value:distance.rate.currency.code];
     [update addParam:DistanceTable.COLUMN_RATE value:distance.rate.amount];
-    [update where:DistanceTable.COLUMN_ID value:[NSNumber numberWithUnsignedInteger:distance.objectId]];
+    [update where:DistanceTable.COLUMN_ID value:@(distance.objectId)];
     BOOL result = [self executeQuery:update];
     if (result) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidUpdateModelNotification object:distance];
