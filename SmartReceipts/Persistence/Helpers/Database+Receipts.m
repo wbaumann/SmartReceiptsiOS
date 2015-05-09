@@ -50,7 +50,7 @@
     [insert addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];
     [insert addParam:ReceiptsTable.COLUMN_NAME value:[receipt.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     [insert addParam:ReceiptsTable.COLUMN_CATEGORY value:receipt.category];
-    [insert addParam:ReceiptsTable.COLUMN_DATE value:receipt.dateFromDateMs];
+    [insert addParam:ReceiptsTable.COLUMN_DATE value:@(receipt.dateMs)];
     [insert addParam:ReceiptsTable.COLUMN_TIMEZONE value:receipt.timeZone.name];
     [insert addParam:ReceiptsTable.COLUMN_EXPENSEABLE value:@(receipt.isExpensable)];
     [insert addParam:ReceiptsTable.COLUMN_ISO4217 value:receipt.price.currency.code];
@@ -68,9 +68,21 @@
 }
 
 - (NSArray *)allReceiptsForTrip:(WBTrip *)trip descending:(BOOL)desc {
+    DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
+    [selectAll where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    [selectAll orderBy:ReceiptsTable.COLUMN_DATE ascending:!desc];
+    return [self allReceiptsWithQuery:selectAll forTrip:trip];
+}
+
+- (NSArray *)allReceipts {
+    DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
+    [selectAll orderBy:ReceiptsTable.COLUMN_DATE ascending:YES];
+    return [self allReceiptsWithQuery:selectAll forTrip:nil];
+}
+
+- (NSArray *)allReceiptsWithQuery:(DatabaseQueryBuilder *)query forTrip:(WBTrip *)trip {
     FetchedModelAdapter *adapter = [[FetchedModelAdapter alloc] initWithDatabase:self];
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = :parent ORDER BY %@ %@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_PARENT, ReceiptsTable.COLUMN_DATE, (desc ? @" DESC" : @" ASC")];
-    [adapter setQuery:query parameters:@{@"parent" : trip.name}];
+    [adapter setQuery:query.buildStatement parameters:query.parameters];
     [adapter setModelClass:[WBReceipt class]];
     [adapter fetch];
     NSArray *receipts = [adapter allObjects];

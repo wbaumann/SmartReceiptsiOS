@@ -16,6 +16,7 @@
 #import "WBCurrency.h"
 #import "FetchedModelAdapter.h"
 #import "Database+Trips.h"
+#import "NSDate+Calculations.h"
 
 @implementation Database (Distances)
 
@@ -39,7 +40,7 @@
     [insert addParam:DistanceTable.COLUMN_PARENT value:distance.trip.name];
     [insert addParam:DistanceTable.COLUMN_DISTANCE value:distance.distance];
     [insert addParam:DistanceTable.COLUMN_LOCATION value:distance.location];
-    [insert addParam:DistanceTable.COLUMN_DATE value:distance.date];
+    [insert addParam:DistanceTable.COLUMN_DATE value:distance.date.milliseconds];
     [insert addParam:DistanceTable.COLUMN_TIMEZONE value:distance.timeZone.name];
     [insert addParam:DistanceTable.COLUMN_COMMENT value:distance.comment];
     [insert addParam:DistanceTable.COLUMN_RATE_CURRENCY value:distance.rate.currency.code];
@@ -75,7 +76,7 @@
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:DistanceTable.TABLE_NAME];
     [update addParam:DistanceTable.COLUMN_DISTANCE value:distance.distance];
     [update addParam:DistanceTable.COLUMN_LOCATION value:distance.location];
-    [update addParam:DistanceTable.COLUMN_DATE value:distance.date];
+    [update addParam:DistanceTable.COLUMN_DATE value:distance.date.milliseconds];
     [update addParam:DistanceTable.COLUMN_TIMEZONE value:distance.timeZone.name];
     [update addParam:DistanceTable.COLUMN_COMMENT value:distance.comment];
     [update addParam:DistanceTable.COLUMN_RATE_CURRENCY value:distance.rate.currency.code];

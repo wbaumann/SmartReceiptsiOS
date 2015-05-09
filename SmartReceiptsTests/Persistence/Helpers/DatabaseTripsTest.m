@@ -13,6 +13,7 @@
 #import "Database+Functions.h"
 #import "Database+Trips.h"
 #import "WBTrip.h"
+#import "NSDate+Calculations.h"
 
 @interface DatabaseTripsTest : DatabaseTestsBase
 
@@ -51,6 +52,15 @@
     WBTrip *loaded = [self.db tripWithName:@"Test my load"];
     XCTAssertNotNil(loaded);
     XCTAssertEqualObjects(@"Test my load", loaded.name);
+}
+
+- (void)testDateSaveAndLoad {
+    NSString *testName = @"Testing here abz";
+    [self.db insertTrip:@{TripsTable.COLUMN_NAME : testName, TripsTable.COLUMN_FROM : [NSDate date], TripsTable.COLUMN_TO : [[NSDate date] dateByAddingTimeInterval:60 * 60 * 24 * 5]}];
+
+    WBTrip *trip = [self.db tripWithName:testName];
+    XCTAssertNotNil(trip);
+    XCTAssertTrue([trip.startDate isToday], @"Start date is %@", trip.startDate);
 }
 
 @end

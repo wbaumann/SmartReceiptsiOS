@@ -174,6 +174,7 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
                                         extraEditText1:extraEditText1
                                         extraEditText2:extraEditText2
                                         extraEditText3:extraEditText3];
+    [receipt setTrip:trip];
 
     [[Database sharedInstance] saveReceipt:receipt];
 
@@ -434,8 +435,8 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
             }
         }
         
-        NSNumber *date1 = [NSNumber numberWithLongLong:dateMs1];
-        NSNumber *date2 = [NSNumber numberWithLongLong:dateMs2];
+        NSNumber *date1 = @(dateMs1);
+        NSNumber *date2 = @(dateMs2);
         
         if ([database executeUpdate:query, date1, @([receipt2 receiptId]) ]
             && [database executeUpdate:query, date2, @([receipt1 receiptId])]) {

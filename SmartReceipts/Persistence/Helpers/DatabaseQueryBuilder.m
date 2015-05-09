@@ -7,6 +7,7 @@
 //
 
 #import "DatabaseQueryBuilder.h"
+#import "Constants.h"
 
 typedef NS_ENUM(short, StatementType) {
     InsertStatement = 1,
@@ -23,6 +24,7 @@ typedef NS_ENUM(short, StatementType) {
 @property (nonatomic, strong) NSMutableArray *params;
 @property (nonatomic, strong) NSMutableArray *values;
 @property (nonatomic, strong) NSMutableDictionary *where;
+@property (nonatomic, strong) NSDictionary *orderBy;
 
 @end
 
@@ -80,7 +82,7 @@ typedef NS_ENUM(short, StatementType) {
     if (self.statement == InsertStatement) {
         [query appendString:@"INSERT INTO "];
     } else if (self.statement == DeleteStatement) {
-        [query appendString:@"DELETE FROM "];        
+        [query appendString:@"DELETE FROM "];
     } else if (self.statement == UpdateStatement) {
         [query appendString:@"UPDATE "];
     } else if (self.statement == SumStatement) {
@@ -88,10 +90,9 @@ typedef NS_ENUM(short, StatementType) {
     } else if (self.statement == SelectAllStatement) {
         [query appendString:@"SELECT * FROM "];
     }
-    
+
     [query appendString:self.tableName];
-    [query appendString:@" "];
-    
+
     if (self.statement == InsertStatement) {
         [self appendInsertValues:query];
     } else if (self.statement == DeleteStatement) {
@@ -102,10 +103,24 @@ typedef NS_ENUM(short, StatementType) {
         [self appendWhereClause:query];
     }
 
+    if (self.orderBy) {
+        [self appendOrderBy:query];
+    }
+
     return [NSString stringWithString:query];
 }
 
+- (void)appendOrderBy:(NSMutableString *)query {
+    NSString *key = self.orderBy.keyEnumerator.allObjects.firstObject;
+    BOOL ascending = [self.orderBy[key] boolValue];
+    [query appendFormat:@" ORDER BY %@ %@", key, (ascending ? @"ASC" : @"DESC")];
+}
+
 - (void)appendWhereClause:(NSMutableString *)query {
+    if (self.where.count == 0) {
+        return;
+    }
+
     [query appendString:@" WHERE "];
 
     NSArray *keys = self.where.keyEnumerator.allObjects;
@@ -119,7 +134,7 @@ typedef NS_ENUM(short, StatementType) {
 }
 
 - (void)appendUpdateValues:(NSMutableString *)query {
-    [query appendString:@"SET "];
+    [query appendString:@" SET "];
     NSMutableArray *valuesSet = [NSMutableArray array];
     for (NSString *param in self.params) {
         [valuesSet addObject:[NSString stringWithFormat:@"%@ = :%@", param, param]];
@@ -130,11 +145,11 @@ typedef NS_ENUM(short, StatementType) {
 
 - (void)appendDeleteValues:(NSMutableString *)query {
     NSString *param = self.params.firstObject;
-    [query appendFormat:@"WHERE %@ = :%@", param, param];
+    [query appendFormat:@" WHERE %@ = :%@", param, param];
 }
 
 - (void)appendInsertValues:(NSMutableString *)query {
-    [query appendString:@"("];
+    [query appendString:@" ("];
 
     NSMutableString *columnsString = [NSMutableString string];
     for (NSString *name in self.params) {
@@ -167,6 +182,11 @@ typedef NS_ENUM(short, StatementType) {
     }
     [result addEntriesFromDictionary:self.where];
     return [NSDictionary dictionaryWithDictionary:result];
+}
+
+- (void)orderBy:(NSString *)column ascending:(BOOL)ascending {
+    SRAssert(!self.orderBy);
+    self.orderBy = @{column : @(ascending)};
 }
 
 @end

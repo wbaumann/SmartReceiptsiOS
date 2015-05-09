@@ -30,10 +30,12 @@
 
 - (WBTrip *)insertTrip:(NSDictionary *)modifiedParams {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"name"] = [NSString stringWithFormat:@"TestTrip - %f", [NSDate timeIntervalSinceReferenceDate]];
+    params[TripsTable.COLUMN_NAME] = [NSString stringWithFormat:@"TestTrip - %f", [NSDate timeIntervalSinceReferenceDate]];
+    params[TripsTable.COLUMN_FROM] = [NSDate date];
+    params[TripsTable.COLUMN_TO] = [NSDate date];
     [params addEntriesFromDictionary:modifiedParams];
 
-    WBTrip *trip = [[WBTrip alloc] initWithName:params[@"name"] startDate:[NSDate date] endDate:[NSDate date] currencyCode:@"USD"];
+    WBTrip *trip = [[WBTrip alloc] initWithName:params[TripsTable.COLUMN_NAME] startDate:params[TripsTable.COLUMN_FROM] endDate:params[TripsTable.COLUMN_TO] currencyCode:@"USD"];
     [self saveTrip:trip];
     return trip;
 }

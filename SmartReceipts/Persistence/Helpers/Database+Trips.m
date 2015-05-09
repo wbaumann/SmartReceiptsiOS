@@ -17,6 +17,7 @@
 #import "WBPreferences.h"
 #import "Database+Distances.h"
 #import "FetchedModelAdapter.h"
+#import "NSDate+Calculations.h"
 
 @implementation Database (Trips)
 
@@ -39,8 +40,8 @@
 - (BOOL)saveTrip:(WBTrip *)trip {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:TripsTable.TABLE_NAME];
     [insert addParam:TripsTable.COLUMN_NAME value:trip.name];
-    [insert addParam:TripsTable.COLUMN_FROM value:trip.startDate];
-    [insert addParam:TripsTable.COLUMN_TO value:trip.endDate];
+    [insert addParam:TripsTable.COLUMN_FROM value:trip.startDate.milliseconds];
+    [insert addParam:TripsTable.COLUMN_TO value:trip.endDate.milliseconds];
     [insert addParam:TripsTable.COLUMN_FROM_TIMEZONE value:trip.startTimeZone.name];
     [insert addParam:TripsTable.COLUMN_TO_TIMEZONE value:trip.endTimeZone.name];
     [insert addParam:TripsTable.COLUMN_PRICE value:trip.price.amount];

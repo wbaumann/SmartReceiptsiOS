@@ -85,6 +85,7 @@
 		84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */; };
 		84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F35518CFCCD000F69A35 /* Images.xcassets */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
+		BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66588B7C2114029521A399 /* NSDate+Calculations.m */; };
 		EA07BF301AF3B472004D17F6 /* UIApplication+DismissKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF2F1AF3B472004D17F6 /* UIApplication+DismissKeyboard.m */; };
 		EA07BF341AF3B703004D17F6 /* InlinedDatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF321AF3B703004D17F6 /* InlinedDatePickerCell.m */; };
 		EA07BF351AF3B703004D17F6 /* InlinedDatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA07BF331AF3B703004D17F6 /* InlinedDatePickerCell.xib */; };
@@ -107,6 +108,9 @@
 		EA07BF691AF51C61004D17F6 /* FetchedDistancesAdapterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF681AF51C61004D17F6 /* FetchedDistancesAdapterTest.m */; };
 		EA07BF6C1AF51D5D004D17F6 /* DatabaseTestsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF6B1AF51D5D004D17F6 /* DatabaseTestsHelper.m */; };
 		EA07BF6E1AF525A4004D17F6 /* Database+Distances.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF4C1AF400CA004D17F6 /* Database+Distances.m */; };
+		EA159E7F1AFE704D00DBB6CF /* android-receipts-v13.db in Resources */ = {isa = PBXBuildFile; fileRef = EA159E7B1AFE6F4E00DBB6CF /* android-receipts-v13.db */; };
+		EA159E801AFE705000DBB6CF /* android-receipts-v11.db in Resources */ = {isa = PBXBuildFile; fileRef = EA159E7C1AFE6F4E00DBB6CF /* android-receipts-v11.db */; };
+		EA159E811AFE7CDC00DBB6CF /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66588B7C2114029521A399 /* NSDate+Calculations.m */; };
 		EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */; };
 		EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C968D1AEBA4F600A2A5F9 /* ReportCSVTable.m */; };
 		EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96901AEBA50500A2A5F9 /* ReportPDFTable.m */; };
@@ -139,6 +143,8 @@
 		EA5ECA2F1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5ECA2D1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib */; };
 		EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5EF0D41AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m */; };
 		EA5EF0D61AF7E9C9009FA608 /* DatabaseTableNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF491AF40066004D17F6 /* DatabaseTableNames.m */; };
+		EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */; };
+		EA6888D31AFE699A00A910FC /* receipts-dates-test.db in Resources */ = {isa = PBXBuildFile; fileRef = EA6888D21AFE699A00A910FC /* receipts-dates-test.db */; };
 		EA69EF151AEFC81A00276B70 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF141AEFC81A00276B70 /* Database.m */; };
 		EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF231AEFEDCC00276B70 /* DatabaseMigrationTest.m */; };
 		EA69EF261AEFEE5D00276B70 /* DatabaseTestsBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF251AEFEE5D00276B70 /* DatabaseTestsBase.m */; };
@@ -346,6 +352,8 @@
 		84F4F35518CFCCD000F69A35 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84F4F35C18CFCCD000F69A35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		BA6656B86F52D1B546848E92 /* NSDate+Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calculations.h"; sourceTree = "<group>"; };
+		BA66588B7C2114029521A399 /* NSDate+Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calculations.m"; sourceTree = "<group>"; };
 		D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA07BF2E1AF3B472004D17F6 /* UIApplication+DismissKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+DismissKeyboard.h"; sourceTree = "<group>"; };
 		EA07BF2F1AF3B472004D17F6 /* UIApplication+DismissKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+DismissKeyboard.m"; sourceTree = "<group>"; };
@@ -386,6 +394,8 @@
 		EA07BF6A1AF51D5D004D17F6 /* DatabaseTestsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseTestsHelper.h; sourceTree = "<group>"; };
 		EA07BF6B1AF51D5D004D17F6 /* DatabaseTestsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTestsHelper.m; sourceTree = "<group>"; };
 		EA07BF6D1AF5212D004D17F6 /* FetchedModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FetchedModel.h; sourceTree = "<group>"; };
+		EA159E7B1AFE6F4E00DBB6CF /* android-receipts-v13.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "android-receipts-v13.db"; sourceTree = "<group>"; };
+		EA159E7C1AFE6F4E00DBB6CF /* android-receipts-v11.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "android-receipts-v11.db"; sourceTree = "<group>"; };
 		EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtilsTest.m; sourceTree = "<group>"; };
 		EA3C968C1AEBA4F600A2A5F9 /* ReportCSVTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportCSVTable.h; sourceTree = "<group>"; };
 		EA3C968D1AEBA4F600A2A5F9 /* ReportCSVTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportCSVTable.m; sourceTree = "<group>"; };
@@ -443,6 +453,8 @@
 		EA5ECA2D1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSegmentControlCell.xib; sourceTree = "<group>"; };
 		EA5EF0D31AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchAdapterDelegateCheckHelper.h; sourceTree = "<group>"; };
 		EA5EF0D41AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchAdapterDelegateCheckHelper.m; sourceTree = "<group>"; };
+		EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseDatesTest.m; sourceTree = "<group>"; };
+		EA6888D21AFE699A00A910FC /* receipts-dates-test.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "receipts-dates-test.db"; sourceTree = "<group>"; };
 		EA69EF131AEFC81A00276B70 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		EA69EF141AEFC81A00276B70 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 		EA69EF231AEFEDCC00276B70 /* DatabaseMigrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseMigrationTest.m; sourceTree = "<group>"; };
@@ -1018,6 +1030,8 @@
 		EA3CF0981AE7962C00B14B73 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BA6656B86F52D1B546848E92 /* NSDate+Calculations.h */,
+				BA66588B7C2114029521A399 /* NSDate+Calculations.m */,
 				EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */,
 				EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */,
 				EA07BF381AF3C80C004D17F6 /* NSMutableString+Issues.h */,
@@ -1120,7 +1134,10 @@
 		EA69EF2B1AF0907300276B70 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				EA159E7C1AFE6F4E00DBB6CF /* android-receipts-v11.db */,
+				EA159E7B1AFE6F4E00DBB6CF /* android-receipts-v13.db */,
 				EA69EF2C1AF0907300276B70 /* receipts_at_v11.db */,
+				EA6888D21AFE699A00A910FC /* receipts-dates-test.db */,
 			);
 			path = TestData;
 			sourceTree = "<group>";
@@ -1288,6 +1305,7 @@
 				EA07BF571AF4D6D3004D17F6 /* Helpers */,
 				EAED9B1D1AEE9F8C00BB8773 /* Migrations */,
 				EA69EF2B1AF0907300276B70 /* TestData */,
+				EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */,
 				EA69EF271AEFEEAD00276B70 /* DatabaseTestsBase.h */,
 				EA69EF251AEFEE5D00276B70 /* DatabaseTestsBase.m */,
 				EA07BF6A1AF51D5D004D17F6 /* DatabaseTestsHelper.h */,
@@ -1465,7 +1483,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA6888D31AFE699A00A910FC /* receipts-dates-test.db in Resources */,
+				EA159E801AFE705000DBB6CF /* android-receipts-v11.db in Resources */,
 				EA69EF2D1AF0907300276B70 /* receipts_at_v11.db in Resources */,
+				EA159E7F1AFE704D00DBB6CF /* android-receipts-v13.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1675,6 +1696,7 @@
 				EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */,
 				EA07BF301AF3B472004D17F6 /* UIApplication+DismissKeyboard.m in Sources */,
 				EA69EF301AF0914000276B70 /* PaymentMethod.m in Sources */,
+				BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1693,12 +1715,14 @@
 				EA07BF691AF51C61004D17F6 /* FetchedDistancesAdapterTest.m in Sources */,
 				EA07BF5B1AF4DA66004D17F6 /* DatabaseDistancesTest.m in Sources */,
 				EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */,
+				EA159E811AFE7CDC00DBB6CF /* NSDate+Calculations.m in Sources */,
 				EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */,
 				EA8CEAE51AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m in Sources */,
 				EA888A831AFA601100DF2AE6 /* DatabaseReceiptsSumTest.m in Sources */,
 				EA5EF0D61AF7E9C9009FA608 /* DatabaseTableNames.m in Sources */,
 				EA888A881AFB4FD600DF2AE6 /* DatabaseTripsTest.m in Sources */,
 				EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */,
+				EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */,
 				EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */,
 				EA07BF591AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m in Sources */,
 				EA888A811AFA5D1D00DF2AE6 /* WBPreferencesTestHelper.m in Sources */,

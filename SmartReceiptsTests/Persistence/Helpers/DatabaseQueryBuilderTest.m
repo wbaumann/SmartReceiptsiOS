@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "DatabaseQueryBuilder.h"
+#import "DatabaseTableNames.h"
 
 @interface DatabaseQueryBuilderTest : XCTestCase
 
@@ -65,8 +66,7 @@
     [statement where:@"cake" value:@"brown"];
 
     NSString *query = [statement buildStatement];
-    //TODO jaanus: two spaces between 'testing_sum  WHERE'. Maybe will fix it later
-    NSString *expected = @"SELECT SUM(amount) FROM testing_sum  WHERE cake = :cake";
+    NSString *expected = @"SELECT SUM(amount) FROM testing_sum WHERE cake = :cake";
     XCTAssertEqualObjects(expected, query, @"Got %@", query);
 
     NSDictionary *params = [statement parameters];
@@ -80,8 +80,7 @@
     [statement where:@"baked" value:@"good"];
 
     NSString *query = [statement buildStatement];
-    //TODO jaanus: two spaces between 'testing_sum  WHERE'. Maybe will fix it later
-    NSString *expected = @"SELECT SUM(amount) FROM testing_sum  WHERE baked = :baked AND cake = :cake";
+    NSString *expected = @"SELECT SUM(amount) FROM testing_sum WHERE baked = :baked AND cake = :cake";
     XCTAssertEqualObjects(expected, query, @"Got %@", query);
 
     NSDictionary *params = [statement parameters];
@@ -96,8 +95,7 @@
     [statement where:@"cake" value:@"brown"];
 
     NSString *query = [statement buildStatement];
-    //TODO jaanus: two spaces between 'testing_sum  WHERE'. Maybe will fix it later
-    NSString *expected = @"SELECT SUM(distance * rate) FROM testing_sum  WHERE cake = :cake";
+    NSString *expected = @"SELECT SUM(distance * rate) FROM testing_sum WHERE cake = :cake";
     XCTAssertEqualObjects(expected, query, @"Got %@", query);
 
     NSDictionary *params = [statement parameters];
@@ -109,12 +107,23 @@
     [statement where:@"id" value:@12];
 
     NSString *query = [statement buildStatement];
-    NSString *expected = @"SELECT * FROM testing_select_all  WHERE id = :id";
+    NSString *expected = @"SELECT * FROM testing_select_all WHERE id = :id";
     XCTAssertEqualObjects(expected, query, @"Got %@", query);
 
     NSDictionary *params = [statement parameters];
     XCTAssertEqual(@12, params[@"id"]);
 }
 
+- (void)testSelectAllAndOrderBy {
+    DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
+    [select orderBy:ReceiptsTable.COLUMN_DATE ascending:YES];
+
+    NSString *query = [select buildStatement];
+    NSString *expected = @"SELECT * FROM receipts ORDER BY rcpt_date ASC";
+    XCTAssertEqualObjects(expected, query, @"Got %@", query);
+
+    NSDictionary *params = [select parameters];
+    XCTAssertEqual(0, params.count);
+}
 
 @end

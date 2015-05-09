@@ -13,6 +13,7 @@
 #import "DatabaseTableNames.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "WBCurrency.h"
+#import "NSDate+Calculations.h"
 
 @interface Distance ()
 
@@ -48,7 +49,8 @@
     NSString *currency = [resultSet stringForColumn:DistanceTable.COLUMN_RATE_CURRENCY];
     [self setRate:[WBPrice priceWithAmount:[NSDecimalNumber decimalNumberOrZero:rateString] currencyCode:currency]];
     [self setLocation:[resultSet stringForColumn:DistanceTable.COLUMN_LOCATION]];
-    [self setDate:[resultSet dateForColumn:DistanceTable.COLUMN_DATE]];
+    long long int dateMilliseconds = [resultSet longLongIntForColumn:DistanceTable.COLUMN_DATE];
+    [self setDate:[NSDate dateWithMilliseconds:dateMilliseconds]];
     [self setTimeZone:[NSTimeZone timeZoneWithName:[resultSet stringForColumn:DistanceTable.COLUMN_TIMEZONE]]];
     [self setComment:[resultSet stringForColumn:DistanceTable.COLUMN_COMMENT]];
 }
