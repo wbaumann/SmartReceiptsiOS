@@ -38,13 +38,7 @@
 - (BOOL)saveDistance:(Distance *)distance {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:DistanceTable.TABLE_NAME];
     [insert addParam:DistanceTable.COLUMN_PARENT value:distance.trip.name];
-    [insert addParam:DistanceTable.COLUMN_DISTANCE value:distance.distance];
-    [insert addParam:DistanceTable.COLUMN_LOCATION value:distance.location];
-    [insert addParam:DistanceTable.COLUMN_DATE value:distance.date.milliseconds];
-    [insert addParam:DistanceTable.COLUMN_TIMEZONE value:distance.timeZone.name];
-    [insert addParam:DistanceTable.COLUMN_COMMENT value:distance.comment];
-    [insert addParam:DistanceTable.COLUMN_RATE_CURRENCY value:distance.rate.currency.code];
-    [insert addParam:DistanceTable.COLUMN_RATE value:distance.rate.amount];
+    [self appendCommonValuesFromDistance:distance toQuery:insert];
     BOOL result = [self executeQuery:insert];
     if (result) {
         [self updatePriceOfTrip:distance.trip];
@@ -74,19 +68,23 @@
 
 - (BOOL)updateDistance:(Distance *)distance {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:DistanceTable.TABLE_NAME];
-    [update addParam:DistanceTable.COLUMN_DISTANCE value:distance.distance];
-    [update addParam:DistanceTable.COLUMN_LOCATION value:distance.location];
-    [update addParam:DistanceTable.COLUMN_DATE value:distance.date.milliseconds];
-    [update addParam:DistanceTable.COLUMN_TIMEZONE value:distance.timeZone.name];
-    [update addParam:DistanceTable.COLUMN_COMMENT value:distance.comment];
-    [update addParam:DistanceTable.COLUMN_RATE_CURRENCY value:distance.rate.currency.code];
-    [update addParam:DistanceTable.COLUMN_RATE value:distance.rate.amount];
+    [self appendCommonValuesFromDistance:distance toQuery:update];
     [update where:DistanceTable.COLUMN_ID value:@(distance.objectId)];
     BOOL result = [self executeQuery:update];
     if (result) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidUpdateModelNotification object:distance];
     }
     return result;
+}
+
+- (void)appendCommonValuesFromDistance:(Distance *)distance toQuery:(DatabaseQueryBuilder *)query {
+    [query addParam:DistanceTable.COLUMN_DISTANCE value:distance.distance];
+    [query addParam:DistanceTable.COLUMN_LOCATION value:distance.location];
+    [query addParam:DistanceTable.COLUMN_DATE value:distance.date.milliseconds];
+    [query addParam:DistanceTable.COLUMN_TIMEZONE value:distance.timeZone.name];
+    [query addParam:DistanceTable.COLUMN_COMMENT value:distance.comment];
+    [query addParam:DistanceTable.COLUMN_RATE_CURRENCY value:distance.rate.currency.code];
+    [query addParam:DistanceTable.COLUMN_RATE value:distance.rate.amount];
 }
 
 - (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip {

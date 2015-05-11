@@ -29,8 +29,6 @@
 @implementation DatabaseDistancesTest
 
 - (void)testSaveDistance {
-    self.db = [self createAndOpenDatabaseWithPath:self.testDBPath migrated:YES];
-
     XCTAssertEqual(0, [self.db countRowsInTable:DistanceTable.TABLE_NAME]);
 
     [self.db insertDistance:@{}];

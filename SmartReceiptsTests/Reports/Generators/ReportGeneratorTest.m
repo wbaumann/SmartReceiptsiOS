@@ -29,7 +29,7 @@
 - (void)setUp {
     [super setUp];
 
-    self.db = [self createAndOpenDatabaseWithPath:self.testDBPath migrated:YES];
+    self.db = [self createTestDatabase];
 
     self.testTrip = [self.db insertTrip:@{}];
 }

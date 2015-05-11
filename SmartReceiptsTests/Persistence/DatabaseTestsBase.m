@@ -52,7 +52,7 @@
 }
 
 - (DatabaseTestsHelper *)createTestDatabase {
-    return [self createAndOpenDatabaseWithPath:self.testDBPath migrated:YES];
+    return [self createAndOpenDatabaseWithPath:@":memory:" migrated:YES];
 }
 
 - (DatabaseTestsHelper *)createAndOpenUnmigratedDatabaseWithPath:(NSString *)path {
