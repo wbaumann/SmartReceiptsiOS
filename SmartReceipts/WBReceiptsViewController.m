@@ -415,15 +415,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self.tableView setEditing:editing animated:animated];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex!=1) {
-        return;
-    }
-    NSString *text = [[alertView textFieldAtIndex:0] text];
-    double miles = self.trip.miles + [text doubleValue];
-    [[WBDB trips] updateTrip:self.trip miles:miles];
-}
-
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];

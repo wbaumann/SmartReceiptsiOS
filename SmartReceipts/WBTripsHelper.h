@@ -20,7 +20,6 @@
 - (NSArray *)selectAll;
 - (WBTrip *)insertWithName:(NSString *)name from:(NSDate *)from to:(NSDate *)to;
 - (WBTrip *)updateTrip:(WBTrip *)oldTrip dir:(NSString *)dir from:(NSDate *)from to:(NSDate *)to;
-- (BOOL)updateTrip:(WBTrip *)trip miles:(double)total;
 - (BOOL)deleteWithName:(NSString *)name;
 
 - (NSDecimalNumber *)sumAndUpdatePriceForTrip:(WBTrip *)trip inDatabase:(FMDatabase *)db;
@@ -28,7 +27,5 @@
 - (int)cachedCount;
 
 + (BOOL)mergeDatabase:(FMDatabase *)currDB withDatabase:(FMDatabase *)importDB overwrite:(BOOL)overwrite;
-
-- (NSString *)hintForString:(NSString *)str;
 
 @end

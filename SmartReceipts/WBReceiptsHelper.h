@@ -62,6 +62,4 @@
 
 +(BOOL) mergeDatabase:(FMDatabase*) currDB withDatabase:(FMDatabase*) importDB overwrite:(BOOL) overwrite;
 
--(NSString*) hintForString:(NSString*) str;
-
 @end

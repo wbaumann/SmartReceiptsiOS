@@ -638,22 +638,4 @@ static inline id getString(FMResultSet* resultSet, int index) {
     return true;
 }
 
-#pragma mark - autocomplete
-
--(NSString*)hintForString:(NSString*) str {
-    NSString *q = [NSString stringWithFormat:@"SELECT DISTINCT TRIM(%@) AS _id FROM %@ WHERE %@ LIKE ? ORDER BY %@", COLUMN_NAME, TABLE_NAME, COLUMN_NAME, COLUMN_NAME];
-    
-    NSString *like = [NSString stringWithFormat:@"%@%%", str];
-    
-    __block NSString *hint = nil;
-    [_databaseQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet *result = [db executeQuery:q, like];
-        if ([result next]) {
-            hint = [result stringForColumn:@"_id"];
-        }
-    }];
-    
-    return hint;
-}
-
 @end

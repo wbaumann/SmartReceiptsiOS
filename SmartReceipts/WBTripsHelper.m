@@ -178,17 +178,6 @@ static NSString * const NO_DATA = @"null";
     return trip;
 }
 
--(BOOL) updateTrip:(WBTrip*) trip miles:(double) total {
-    NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ? WHERE %@ = ?", TABLE_NAME, COLUMN_MILEAGE, COLUMN_NAME];
-
-    __block BOOL result;
-    [_databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [db executeUpdate:query, [NSNumber numberWithDouble:total], [trip name]];
-        [trip setMileage:total];
-    }];
-    return result;
-}
-
 -(BOOL) deleteWithName:(NSString*) name {
     NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@ = ?", TABLE_NAME, COLUMN_NAME];
 
@@ -298,24 +287,6 @@ static inline NSObject* checkNil(NSObject* obj) {
     } while ([resultSet next]);
 
     return true;
-}
-
-#pragma mark - autocomplete
-
--(NSString*)hintForString:(NSString*) str {
-    NSString *q = [NSString stringWithFormat:@"SELECT DISTINCT TRIM(%@) AS _id FROM %@ WHERE %@ LIKE ? ORDER BY %@", COLUMN_NAME, TABLE_NAME, COLUMN_NAME, COLUMN_NAME];
-
-    NSString *like = [NSString stringWithFormat:@"%@%%", str];
-
-    __block NSString *hint = nil;
-    [_databaseQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet *result = [db executeQuery:q, like];
-        if ([result next]) {
-            hint = [result stringForColumn:@"_id"];
-        }
-    }];
-
-    return hint;
 }
 
 @end

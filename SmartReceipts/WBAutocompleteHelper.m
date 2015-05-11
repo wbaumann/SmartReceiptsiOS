@@ -10,6 +10,7 @@
 
 #import "WBDB.h"
 #import "WBPreferences.h"
+#import "Database+Hints.h"
 
 @implementation WBAutocompleteHelper
 {
@@ -44,8 +45,9 @@
     if (_didAutocomplete || ![WBPreferences enableAutoCompleteSuggestions]) {
         return @"";
     }
-    
-    NSString *hint = _forReceipts ? [[WBDB receipts] hintForString:prefix] : [[WBDB trips] hintForString:prefix];
+
+    Database *database = [Database sharedInstance];
+    NSString *hint = _forReceipts ? [database hintForReceiptBasedOnEntry:prefix] : [database hintForTripBasedOnEntry:prefix];
     if (!hint) {
         return @"";
     }
