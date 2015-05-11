@@ -47,6 +47,7 @@
     defaultParams[DistanceTable.COLUMN_DATE] = [NSDate date];
     defaultParams[DistanceTable.COLUMN_DISTANCE] = [NSDecimalNumber decimalNumberWithString:@"10"];
     defaultParams[DistanceTable.COLUMN_RATE] = [NSDecimalNumber decimalNumberWithString:@"12"];
+    defaultParams[DistanceTable.COLUMN_RATE_CURRENCY] = @"USD";
 
     [defaultParams addEntriesFromDictionary:modifiedParams];
 
@@ -54,7 +55,7 @@
 
     Distance *distance = [[Distance alloc] initWithTrip:params[DistanceTable.COLUMN_PARENT]
                                                distance:params[DistanceTable.COLUMN_DISTANCE]
-                                                   rate:[WBPrice priceWithAmount:params[DistanceTable.COLUMN_RATE] currencyCode:@"USD"]
+                                                   rate:[WBPrice priceWithAmount:params[DistanceTable.COLUMN_RATE] currencyCode:params[DistanceTable.COLUMN_RATE_CURRENCY]]
                                                location:params[DistanceTable.COLUMN_LOCATION]
                                                    date:params[DistanceTable.COLUMN_DATE]
                                                timeZone:[NSTimeZone defaultTimeZone]
@@ -67,6 +68,7 @@
     params[ReceiptsTable.COLUMN_NAME] = [NSString stringWithFormat:@"TestReceipt - %f", [NSDate timeIntervalSinceReferenceDate]];
     params[ReceiptsTable.COLUMN_PARENT] = [self createTestTrip];
     params[ReceiptsTable.COLUMN_PRICE] = [NSDecimalNumber decimalNumberWithString:@"20"];
+    params[ReceiptsTable.COLUMN_ISO4217] = @"USD";
     params[ReceiptsTable.COLUMN_EXPENSEABLE] = @(YES);
 
     [params addEntriesFromDictionary:modifiedParams];
@@ -78,7 +80,7 @@
                                                 dateMs:0
                                           timeZoneName:[NSTimeZone localTimeZone].name
                                                comment:@""
-                                                 price:[WBPrice priceWithAmount:params[ReceiptsTable.COLUMN_PRICE] currencyCode:@"USD"]
+                                                 price:[WBPrice priceWithAmount:params[ReceiptsTable.COLUMN_PRICE] currencyCode:params[ReceiptsTable.COLUMN_ISO4217]]
                                                    tax:[WBPrice zeroPriceWithCurrencyCode:@"USD"]
                                           isExpensable:[params[ReceiptsTable.COLUMN_EXPENSEABLE] boolValue]
                                             isFullPage:0

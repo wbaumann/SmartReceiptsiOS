@@ -9,6 +9,7 @@
 #import "Database.h"
 
 @class WBTrip;
+@class WBPrice;
 
 @interface Database (Trips)
 
@@ -17,6 +18,6 @@
 - (NSDecimalNumber *)totalPriceForTrip:(WBTrip *)trip;
 - (NSArray *)allTrips;
 - (WBTrip *)tripWithName:(NSString *)tripName;
-- (BOOL)updatePriceOfTrip:(WBTrip *)trip;
+- (WBPrice *)updatePriceOfTrip:(WBTrip *)trip;
 
 @end

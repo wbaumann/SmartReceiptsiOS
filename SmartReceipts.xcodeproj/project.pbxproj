@@ -113,6 +113,7 @@
 		EA159E811AFE7CDC00DBB6CF /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66588B7C2114029521A399 /* NSDate+Calculations.m */; };
 		EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */ = {isa = PBXBuildFile; fileRef = EA36DE501B0118EE0034CC2D /* Database+Hints.m */; };
 		EA36DE531B0119150034CC2D /* DatabaseHintsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA36DE521B0119150034CC2D /* DatabaseHintsTest.m */; };
+		EA36DE551B0121990034CC2D /* DatabaseCurrenciesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA36DE541B0121990034CC2D /* DatabaseCurrenciesTest.m */; };
 		EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */; };
 		EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C968D1AEBA4F600A2A5F9 /* ReportCSVTable.m */; };
 		EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96901AEBA50500A2A5F9 /* ReportPDFTable.m */; };
@@ -401,6 +402,7 @@
 		EA36DE4F1B0118EE0034CC2D /* Database+Hints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Database+Hints.h"; sourceTree = "<group>"; };
 		EA36DE501B0118EE0034CC2D /* Database+Hints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Database+Hints.m"; sourceTree = "<group>"; };
 		EA36DE521B0119150034CC2D /* DatabaseHintsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseHintsTest.m; sourceTree = "<group>"; };
+		EA36DE541B0121990034CC2D /* DatabaseCurrenciesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseCurrenciesTest.m; sourceTree = "<group>"; };
 		EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtilsTest.m; sourceTree = "<group>"; };
 		EA3C968C1AEBA4F600A2A5F9 /* ReportCSVTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportCSVTable.h; sourceTree = "<group>"; };
 		EA3C968D1AEBA4F600A2A5F9 /* ReportCSVTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportCSVTable.m; sourceTree = "<group>"; };
@@ -986,6 +988,7 @@
 		EA07BF571AF4D6D3004D17F6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EA36DE541B0121990034CC2D /* DatabaseCurrenciesTest.m */,
 				EA8CEAE41AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m */,
 				EA07BF5A1AF4DA66004D17F6 /* DatabaseDistancesTest.m */,
 				EA36DE521B0119150034CC2D /* DatabaseHintsTest.m */,
@@ -1724,6 +1727,7 @@
 				EA07BF691AF51C61004D17F6 /* FetchedDistancesAdapterTest.m in Sources */,
 				EA07BF5B1AF4DA66004D17F6 /* DatabaseDistancesTest.m in Sources */,
 				EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */,
+				EA36DE551B0121990034CC2D /* DatabaseCurrenciesTest.m in Sources */,
 				EA159E811AFE7CDC00DBB6CF /* NSDate+Calculations.m in Sources */,
 				EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */,
 				EA8CEAE51AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m in Sources */,

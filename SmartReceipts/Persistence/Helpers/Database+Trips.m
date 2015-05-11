@@ -74,12 +74,36 @@
     return (WBTrip *)[self executeFetchFor:[WBTrip class] withQuery:select];
 }
 
-- (BOOL)updatePriceOfTrip:(WBTrip *)trip {
+- (WBPrice *)updatePriceOfTrip:(WBTrip *)trip {
     NSDecimalNumber *total = [self totalPriceForTrip:trip];
+    NSString *currencyCode = [self aggregateCurrencyCodeForTrip:trip];
+
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:TripsTable.TABLE_NAME];
     [update addParam:TripsTable.COLUMN_PRICE value:total];
+    [update addParam:TripsTable.COLUMN_DEFAULT_CURRENCY value:currencyCode];
     [update where:TripsTable.COLUMN_NAME value:trip.name];
-    return [self executeQuery:update];
+
+    [self executeQuery:update];
+
+    return [WBPrice priceWithAmount:total currencyCode:currencyCode];
+}
+
+- (NSString *)aggregateCurrencyCodeForTrip:(WBTrip *)trip {
+    NSString *receiptsCurrency = [self currencyForTripReceipts:trip];
+    if ([MULTI_CURRENCY isEqualToString:receiptsCurrency]) {
+        return receiptsCurrency;
+    }
+
+    if (![WBPreferences isTheDistancePriceBeIncludedInReports]) {
+        return receiptsCurrency;
+    }
+
+    NSString *distancesCurrency = [self currencyForTripDistances:trip];
+    if ([receiptsCurrency isEqualToString:distancesCurrency]) {
+        return receiptsCurrency;
+    }
+
+    return MULTI_CURRENCY;
 }
 
 @end

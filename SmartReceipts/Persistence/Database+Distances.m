@@ -94,4 +94,8 @@
     return [self executeDecimalQuery:sumStatement];
 }
 
+- (NSString *)currencyForTripDistances:(WBTrip *)trip {
+    return [self selectCurrencyFromTable:DistanceTable.TABLE_NAME currencyColumn:DistanceTable.COLUMN_RATE_CURRENCY forTrip:trip];
+}
+
 @end

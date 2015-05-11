@@ -10,6 +10,7 @@
 
 @class DatabaseQueryBuilder;
 @protocol FetchedModel;
+@class WBTrip;
 
 @interface Database (Functions)
 
@@ -21,5 +22,6 @@
 - (BOOL)executeQuery:(DatabaseQueryBuilder *)query;
 - (NSDecimalNumber *)executeDecimalQuery:(DatabaseQueryBuilder *)query;
 - (id<FetchedModel>)executeFetchFor:(Class)fetchedClass withQuery:(DatabaseQueryBuilder *)query;
+- (NSString *)selectCurrencyFromTable:(NSString *)tableName currencyColumn:(NSString *)currencyColumn forTrip:(WBTrip *)trip;
 
 @end

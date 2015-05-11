@@ -12,6 +12,9 @@
 #import "DatabaseQueryBuilder.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "FetchedModel.h"
+#import "WBTrip.h"
+#import "DatabaseTableNames.h"
+#import "WBPreferences.h"
 
 @implementation Database (Functions)
 
@@ -87,7 +90,7 @@
     return result;
 }
 
-- (id<FetchedModel>)executeFetchFor:(Class)fetchedClass withQuery:(DatabaseQueryBuilder *)query {
+- (id <FetchedModel>)executeFetchFor:(Class)fetchedClass withQuery:(DatabaseQueryBuilder *)query {
     SRLog(@"executeFetchFor: %@", NSStringFromClass(fetchedClass));
 
     NSString *statement = query.buildStatement;
@@ -95,19 +98,46 @@
 
     SRLog(@"Query: '%@'", statement);
     SRLog(@"Parameters: %@", parameters);
-    __block id<FetchedModel> result = nil;
+    __block id <FetchedModel> result = nil;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         FMResultSet *resultSet = [db executeQuery:statement withParameterDictionary:parameters];
 
         while ([resultSet next]) {
-            id<FetchedModel> fetched = (id <FetchedModel>) [[fetchedClass alloc] init];
+            id <FetchedModel> fetched = (id <FetchedModel>) [[fetchedClass alloc] init];
             [fetched loadDataFromResultSet:resultSet];
             result = fetched;
             break;
         }
+
+        [resultSet close];
     }];
 
     return result;
+}
+
+- (NSString *)selectCurrencyFromTable:(NSString *)tableName currencyColumn:(NSString *)currencyColumn forTrip:(WBTrip *)trip {
+    NSString *query = [NSString stringWithFormat:@"SELECT COUNT(*), %@ FROM (SELECT COUNT(*), %@ FROM %@ WHERE %@ = ? GROUP BY %@ );", currencyColumn, currencyColumn, tableName, ReceiptsTable.COLUMN_PARENT, currencyColumn];
+
+    __block NSString *curr = MULTI_CURRENCY;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet *resultSet = [db executeQuery:query, trip.name];
+
+        if (resultSet) {
+            if ([resultSet next] && [resultSet columnCount] > 0) {
+                int cnt = [resultSet intForColumnIndex:0];
+
+                if (cnt == 1) {
+                    curr = [resultSet stringForColumnIndex:1];
+                } else if (cnt == 0) {
+                    curr = [WBPreferences defaultCurrency];
+                }
+            }
+            [resultSet close];
+        }
+    }];
+
+
+    return curr;
 }
 
 @end

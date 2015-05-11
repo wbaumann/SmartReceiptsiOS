@@ -21,5 +21,6 @@
 - (BOOL)deleteDistance:(Distance *)distance;
 - (BOOL)updateDistance:(Distance *)distance;
 - (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip;
+- (NSString *)currencyForTripDistances:(WBTrip *)trip;
 
 @end

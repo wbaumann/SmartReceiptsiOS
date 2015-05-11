@@ -118,4 +118,8 @@
     return extraValue;
 }
 
+- (NSString *)currencyForTripReceipts:(WBTrip *)trip {
+    return [self selectCurrencyFromTable:ReceiptsTable.TABLE_NAME currencyColumn:ReceiptsTable.COLUMN_ISO4217 forTrip:trip];
+}
+
 @end
