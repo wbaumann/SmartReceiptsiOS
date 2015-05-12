@@ -7,21 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FetchedModel.h"
 
 @class WBCurrency;
 @class WBPrice;
 
 extern NSString *const MULTI_CURRENCY;
 
-@interface WBTrip : NSObject
+@interface WBTrip : NSObject <FetchedModel>
 
+@property (nonatomic, copy) NSString *reportDirectoryName;
 @property (nonatomic, strong) WBPrice *price;
 
 +(NSString*) MULTI_CURRENCY;
 
 - (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDate:(NSDate *)startDate endDate:(NSDate *)endDate startTimeZone:(NSTimeZone *)startTimeZone endTimeZone:(NSTimeZone *)endTimeZone miles:(float)miles;
-
-- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDateMs:(long long)startDateMs endDateMs:(long long)endDateMs startTimeZoneName:(NSString *)startTimeZoneName endTimeZoneName:(NSString *)endTimeZoneName miles:(float)miles;
 
 - (id)initWithName:(NSString *)dirName startDate:(NSDate *)startDate endDate:(NSDate *)endDate currencyCode:(NSString *)currencyCode;
 
@@ -31,7 +31,6 @@ extern NSString *const MULTI_CURRENCY;
 -(NSString*) name;
 
 -(float) miles;
--(NSString*) price_as_string;
 
 -(NSDate*) startDate;
 -(NSDate*) endDate;

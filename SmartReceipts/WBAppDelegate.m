@@ -35,7 +35,7 @@
     
     [WBFileManager initTripsDirectory];
     [WBDB open];
-    
+
     NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
     NSLog(@"lang: %@", language);
     

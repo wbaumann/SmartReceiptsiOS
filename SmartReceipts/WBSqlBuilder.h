@@ -26,7 +26,7 @@
 -(void) addColumn:(NSString*) columnName;
 
 -(void) addValue:(NSObject*) valueObject;
--(void) addValueFromInt:(int) valueInt;
+-(void)addValueFromInt:(NSInteger) valueInt;
 -(void) addValueFromBoolean:(BOOL) valueBoolean;
 
 -(NSString*) columnsStringForInsert;

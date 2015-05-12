@@ -11,6 +11,10 @@
 #import "Constants.h"
 #import "WBFileManager.h"
 #import "DatabaseMigration.h"
+#import "WBTripsHelper.h"
+#import "WBReceiptsHelper.h"
+#import "WBCategoriesHelper.h"
+#import "WBColumnsHelper.h"
 
 NSString *const DatabaseDidInsertModelNotification = @"DatabaseDidInsertModelNotification";
 NSString *const DatabaseDidDeleteModelNotification = @"DatabaseDidDeleteModelNotification";
@@ -20,6 +24,11 @@ NSString *const DatabaseDidUpdateModelNotification = @"DatabaseDidUpdateModelNot
 
 @property (nonatomic, copy) NSString *pathToDatabase;
 @property (nonatomic, strong) FMDatabaseQueue *databaseQueue;
+@property (nonatomic, strong) WBTripsHelper *tripsHelper;
+@property (nonatomic, strong) WBReceiptsHelper *receiptsHelper;
+@property (nonatomic, strong) WBCategoriesHelper *categoriesHelper;
+@property (nonatomic, strong) WBColumnsHelper *csvColumnsHelper;
+@property (nonatomic, strong) WBColumnsHelper *pdfColumnsHelper;
 
 @end
 
@@ -64,6 +73,14 @@ NSString *const DatabaseDidUpdateModelNotification = @"DatabaseDidUpdateModelNot
     }
 
     [self setDatabaseQueue:db];
+
+    @synchronized ([Database class]) {
+        self.tripsHelper = [[WBTripsHelper alloc] initWithDatabaseQueue:db];
+        self.receiptsHelper = [[WBReceiptsHelper alloc] initWithDatabaseQueue:db];
+        self.categoriesHelper = [[WBCategoriesHelper alloc] initWithDatabaseQueue:db];
+        self.csvColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_CSV]];
+        self.pdfColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_PDF]];
+    }
 
     if (!migrateDatabase) {
         return YES;

@@ -32,6 +32,10 @@
 
 - (void)setUp {
     [super setUp];
+
+    [self deleteTestDatabase];
+
+    self.db = [self createAndOpenDatabaseWithPath:self.testDBPath migrated:NO];
     DatabaseMigration *migration = [[DatabaseCreateAtVersion11 alloc] init];
     [DatabaseMigration runMigrations:@[migration] onDatabase:self.db];
 }
@@ -56,8 +60,8 @@
     XCTAssertTrue(([[NSFileManager defaultManager] fileExistsAtPath:pathToReferenceDB]));
     XCTAssertTrue(([[NSFileManager defaultManager] fileExistsAtPath:pathToCheckedDB]));
 
-    Database *referenceDB = [self createAndOpenDatabaseWithPath:pathToReferenceDB];
-    Database *checkedDB = [self createAndOpenDatabaseWithPath:pathToCheckedDB];
+    Database *referenceDB = [self createAndOpenUnmigratedDatabaseWithPath:pathToReferenceDB];
+    Database *checkedDB = [self createAndOpenUnmigratedDatabaseWithPath:pathToCheckedDB];
     XCTAssertNotNil(referenceDB);
     XCTAssertNotNil(checkedDB);
 

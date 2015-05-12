@@ -9,7 +9,6 @@
 #import "WBReceiptsHelper.h"
 #import "WBTripsHelper.h"
 
-#import "WBPreferences.h"
 #import "WBCurrency.h"
 
 #import "WBSqlBuilder.h"
@@ -17,6 +16,8 @@
 #import "WBDB.h"
 #import "WBPrice.h"
 #import "NSDecimalNumber+WBNumberParse.h"
+#import "Database+Receipts.h"
+#import "Database+Trips.h"
 
 static NSString * const TABLE_NAME = @"receipts";
 static NSString * const COLUMN_ID = @"id";
@@ -52,40 +53,6 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
         CURR_CNT_QUERY = [NSString stringWithFormat:@"SELECT COUNT(*), %@ FROM (SELECT COUNT(*), %@ FROM %@ WHERE %@ = ? GROUP BY %@ );", COLUMN_ISO4217, COLUMN_ISO4217, TABLE_NAME, COLUMN_PARENT, COLUMN_ISO4217];
     }
     return self;
-}
-
--(BOOL) createTable {
-    return [WBReceiptsHelper createTableInQueue:_databaseQueue];
-}
-
-+ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue {
-    NSString* query = [@[
-                         @"CREATE TABLE " ,TABLE_NAME , @" ("
-                         ,COLUMN_ID , @" INTEGER PRIMARY KEY AUTOINCREMENT, "
-                         ,COLUMN_PATH , @" TEXT, "
-                         ,COLUMN_PARENT , @" TEXT REFERENCES " , [WBTripsHelper TABLE_NAME] , @" ON DELETE CASCADE, "
-                         ,COLUMN_NAME , @" TEXT DEFAULT \"New Receipt\", "
-                         ,COLUMN_CATEGORY , @" TEXT, "
-                         ,COLUMN_DATE , @" DATE DEFAULT (DATE('now', 'localtime')), "
-                         ,COLUMN_TIMEZONE , @" TEXT, "
-                         ,COLUMN_COMMENT , @" TEXT, "
-                         ,COLUMN_ISO4217 , @" TEXT NOT NULL, "
-                         ,COLUMN_PRICE , @" DECIMAL(10, 2) DEFAULT 0.00, "
-                         ,COLUMN_TAX , @" DECIMAL(10, 2) DEFAULT 0.00, "
-                         ,COLUMN_PAYMENTMETHOD , @" TEXT, "
-                         ,COLUMN_EXPENSEABLE , @" BOOLEAN DEFAULT 1, "
-                         ,COLUMN_NOTFULLPAGEIMAGE , @" BOOLEAN DEFAULT 1, "
-                         ,COLUMN_EXTRA_EDITTEXT_1 , @" TEXT, "
-                         ,COLUMN_EXTRA_EDITTEXT_2 , @" TEXT, "
-                         ,COLUMN_EXTRA_EDITTEXT_3 , @" TEXT"
-                         , @");"
-                         ] componentsJoinedByString:@""];
-
-    __block BOOL result;
-    [queue inDatabase:^(FMDatabase* database){
-        result = [database executeUpdate:query];
-    }];
-    return result;
 }
 
 #pragma mark - CRUD
@@ -193,93 +160,37 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     name = [name lastPathComponent];
     imageFileName = [imageFileName lastPathComponent];
 
-    WBSqlBuilder *qBuilder = [[WBSqlBuilder alloc] init];
-    
-    int rcptCnt = [[WBDB trips] cachedCount]; //Use this to order things more properly
-    
-    [qBuilder addColumn:COLUMN_PATH];
-    if (!imageFileName) {
-        [qBuilder addValue:[WBReceipt NO_DATA]];
-    } else {
-        [qBuilder addValue:imageFileName];
-    }
-    
-    [qBuilder addColumn:COLUMN_PARENT
-              andObject:[trip name]];
-    
-    if ([name length] > 0) {
-        [qBuilder addColumn:COLUMN_NAME
-                  andObject:[name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-    }
-    
-    [qBuilder addColumn:COLUMN_CATEGORY
-              andObject:category];
-    
-    
-    [qBuilder addColumn:COLUMN_DATE
-              andObject:[NSNumber numberWithLongLong:(dateMs + rcptCnt)]];
-    
-    if (!timeZoneName) {
-        timeZoneName = [[NSTimeZone localTimeZone] name];
-    }
-    
-    [qBuilder addColumn:COLUMN_TIMEZONE
-              andObject:timeZoneName];
-    
-    [qBuilder addColumn:COLUMN_COMMENT
-              andObject:comment];
-    
-    [qBuilder addColumn:COLUMN_EXPENSEABLE
-             andBoolean:isExpensable];
-    
-    [qBuilder addColumn:COLUMN_ISO4217
-              andObject:price.currency.code];
-    
-    [qBuilder addColumn:COLUMN_NOTFULLPAGEIMAGE
-             andBoolean:!isFullPage];
+    WBReceipt *receipt = [[WBReceipt alloc] initWithId:NSNotFound
+                                                  name:name
+                                              category:category
+                                         imageFileName:imageFileName
+                                                dateMs:dateMs
+                                          timeZoneName:[[NSTimeZone localTimeZone] name]
+                                               comment:comment
+                                                 price:price
+                                                   tax:tax
+                                          isExpensable:isExpensable
+                                            isFullPage:isFullPage
+                                        extraEditText1:extraEditText1
+                                        extraEditText2:extraEditText2
+                                        extraEditText3:extraEditText3];
+    [receipt setTrip:trip];
 
-    if (![price.amount isEqualToNumber:[NSDecimalNumber zero]]) {
-        [qBuilder addColumn:COLUMN_PRICE
-                  andObject:price.amount];
-    }
 
-    if (![tax.amount isEqualToNumber:[NSDecimalNumber zero]]) {
-        [qBuilder addColumn:COLUMN_TAX
-                  andObject:tax.amount];
-    }
-
-    //Extras
-    [qBuilder addColumn:COLUMN_EXTRA_EDITTEXT_1];
-    extraEditText1 = addExtra(qBuilder, extraEditText1);
-    
-    [qBuilder addColumn:COLUMN_EXTRA_EDITTEXT_2];
-    extraEditText2 = addExtra(qBuilder, extraEditText2);
-    
-    [qBuilder addColumn:COLUMN_EXTRA_EDITTEXT_3];
-    extraEditText3 = addExtra(qBuilder, extraEditText3);
-    
-    NSString *q = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)",
-                   TABLE_NAME, [qBuilder columnsStringForInsert], [qBuilder questionMarksStringForInsert]];
-    
-    __block WBReceipt* receipt = nil;
     [_databaseQueue inTransaction:^(FMDatabase *database, BOOL *rollback){
-        
-        if(![database executeUpdate:q withArgumentsInArray:qBuilder.values]) {
+        BOOL result = [[Database sharedInstance] saveReceipt:receipt usingDatabase:database];
+        if (!result) {
             *rollback = YES;
             return;
         }
-        
+
         // update prices in the same transaction
-        NSDecimalNumber *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:trip inDatabase:database];
-        if (newSumPrice == nil) {
+        WBPrice *totalPrice = [[Database sharedInstance] updatePriceOfTrip:trip usingDatabase:database];
+        if (!totalPrice) {
             *rollback = YES;
             return;
         }
-        NSString* curr = [self selectCurrencyForReceiptsWithParent:[trip name] inDatabase:database];
-        if (!curr) {
-            curr = [WBTrip MULTI_CURRENCY];
-        }
-        [trip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
+        [trip setPrice:totalPrice];
 
         FMResultSet* cres = [database executeQuery:@"SELECT last_insert_rowid()"];
         if (!([cres next] && [cres columnCount]>0)) {
@@ -287,24 +198,8 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
             return;
         }
         
-        const int rid = [cres intForColumnIndex:0];
-        
-        receipt =
-        [[WBReceipt alloc] initWithId:rid
-                                 name:name
-                             category:category
-                        imageFileName:imageFileName
-                               dateMs:dateMs
-                         timeZoneName:[[NSTimeZone localTimeZone] name]
-                              comment:comment
-                                price:price
-                                  tax:tax
-                         isExpensable:isExpensable
-                           isFullPage:isFullPage
-                       extraEditText1:extraEditText1
-                       extraEditText2:extraEditText2
-                       extraEditText3:extraEditText3];
-        
+        NSUInteger rid = (NSUInteger) [cres intForColumnIndex:0];
+        [receipt setId:rid];
     }];
     return receipt;
 }
@@ -389,17 +284,8 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
         }
         
         // update prices in the same transaction
-        NSDecimalNumber *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:trip inDatabase:database];
-        if (newSumPrice == nil) {
-            *rollback = YES;
-            return;
-        }
-
-        NSString* curr = [self selectCurrencyForReceiptsWithParent:[trip name] inDatabase:database];
-        if (!curr) {
-            curr = [WBTrip MULTI_CURRENCY];
-        }
-        [trip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
+        WBPrice *totalPrice = [[Database sharedInstance] updatePriceOfTrip:trip usingDatabase:database];
+        [trip setPrice:totalPrice];
 
         receipt =
         [[WBReceipt alloc] initWithId:[oldReceipt receiptId]
@@ -432,7 +318,7 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     
     __block BOOL result;
     [_databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [db executeUpdate:query, imageFileName, [NSNumber numberWithInt:[receipt receiptId]]];
+        result = [db executeUpdate:query, imageFileName, @([receipt receiptId])];
     }];
     return result;
 }
@@ -500,25 +386,15 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     return [database executeUpdate:query, parent];
 }
 
--(BOOL) deleteWithId:(int) receiptId forTrip:(WBTrip*) currentTrip {
+-(BOOL) deleteWithId:(NSUInteger) receiptId forTrip:(WBTrip*) currentTrip {
     NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@ = ?", TABLE_NAME, COLUMN_ID];
     
     __block BOOL result;
     [_databaseQueue inTransaction:^(FMDatabase *database, BOOL *rollback){
-        result = [database executeUpdate:query, [NSNumber numberWithInt:receiptId]];
+        result = [database executeUpdate:query, @(receiptId)];
         if (result) {
-            NSDecimalNumber *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:currentTrip inDatabase:database];
-            if (newSumPrice == nil) {
-                *rollback = YES;
-                result = NO;
-                return;
-            }
-            NSString* curr = [self selectCurrencyForReceiptsWithParent:[currentTrip name] inDatabase:database];
-            if (!curr) {
-                curr = [WBTrip MULTI_CURRENCY];
-            }
-
-            [currentTrip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
+            WBPrice *totalPrice = [[Database sharedInstance] updatePriceOfTrip:currentTrip usingDatabase:database];
+            [currentTrip setPrice:totalPrice];
         }
     }];
     return result;
@@ -541,11 +417,11 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
             }
         }
         
-        NSNumber *date1 = [NSNumber numberWithLongLong:dateMs1];
-        NSNumber *date2 = [NSNumber numberWithLongLong:dateMs2];
+        NSNumber *date1 = @(dateMs1);
+        NSNumber *date2 = @(dateMs2);
         
-        if ([database executeUpdate:query, date1, [NSNumber numberWithInt:[receipt2 receiptId]] ]
-            && [database executeUpdate:query, date2, [NSNumber numberWithInt:[receipt1 receiptId]]]) {
+        if ([database executeUpdate:query, date1, @([receipt2 receiptId]) ]
+            && [database executeUpdate:query, date2, @([receipt1 receiptId])]) {
             
             [receipt1 setDateMs:dateMs2];
             [receipt2 setDateMs:dateMs1];
@@ -559,44 +435,6 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
 }
 
 #pragma mark - for another tables
-
--(NSString*) selectCurrencyForReceiptsWithParent:(NSString*) parent inDatabase:(FMDatabase*) database {
-    NSString* curr = nil;
-    
-    FMResultSet* resultSet = [database executeQuery:CURR_CNT_QUERY, parent];
-    
-    if (resultSet) {
-        if ([resultSet next] && [resultSet columnCount] > 0) {
-            int cnt = [resultSet intForColumnIndex:0];
-            
-            if (cnt == 1) {
-                curr = [resultSet stringForColumnIndex:1];
-            } else if (cnt == 0) {
-                curr = [WBPreferences defaultCurrency];
-            }
-        }
-        [resultSet close];
-    }
-    
-    return curr;
-}
-
-- (NSDecimalNumber *)sumPricesForReceiptsWithParent:(NSString *)parent inDatabase:(FMDatabase *)database {
-    NSString *query = [NSString stringWithFormat:@"SELECT SUM(%@) FROM %@ WHERE %@ = ?", COLUMN_PRICE, TABLE_NAME, COLUMN_PARENT];
-    if ([WBPreferences onlyIncludeExpensableReceiptsInReports]) {
-        query = [query stringByAppendingFormat:@" AND %@ = 1", COLUMN_EXPENSEABLE];
-    }
-
-    FMResultSet *resultSet = [database executeQuery:query, parent];
-
-    if ([resultSet next] && [resultSet columnCount] > 0) {
-        NSString *sum = [resultSet stringForColumnIndex:0];
-        [resultSet close];
-        return [NSDecimalNumber decimalNumberOrZero:sum];
-    }
-
-    return nil;
-}
 
 -(BOOL) replaceParentName:(NSString*) oldName to:(NSString*) newName inDatabase:(FMDatabase*) database {
     NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ? WHERE %@ = ?", TABLE_NAME, COLUMN_PARENT, COLUMN_PARENT];
@@ -742,24 +580,6 @@ static inline id getString(FMResultSet* resultSet, int index) {
     } while ([resultSet next]);
     
     return true;
-}
-
-#pragma mark - autocomplete
-
--(NSString*)hintForString:(NSString*) str {
-    NSString *q = [NSString stringWithFormat:@"SELECT DISTINCT TRIM(%@) AS _id FROM %@ WHERE %@ LIKE ? ORDER BY %@", COLUMN_NAME, TABLE_NAME, COLUMN_NAME, COLUMN_NAME];
-    
-    NSString *like = [NSString stringWithFormat:@"%@%%", str];
-    
-    __block NSString *hint = nil;
-    [_databaseQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet *result = [db executeQuery:q, like];
-        if ([result next]) {
-            hint = [result stringForColumn:@"_id"];
-        }
-    }];
-    
-    return hint;
 }
 
 @end

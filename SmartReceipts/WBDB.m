@@ -7,14 +7,17 @@
 //
 
 #import "WBDB.h"
-#import "WBFileManager.h"
-#import "DatabaseMigration.h"
+#import "Database+Trips.h"
 
-static WBTripsHelper* tripsHelper;
-static WBReceiptsHelper* receiptsHelper;
-static WBCategoriesHelper* categoriesHelper;
-static WBColumnsHelper* csvColumnsHelper;
-static WBColumnsHelper* pdfColumnsHelper;
+@interface Database (Expose)
+
+@property (nonatomic, strong) WBTripsHelper *tripsHelper;
+@property (nonatomic, strong) WBReceiptsHelper *receiptsHelper;
+@property (nonatomic, strong) WBCategoriesHelper *categoriesHelper;
+@property (nonatomic, strong) WBColumnsHelper *csvColumnsHelper;
+@property (nonatomic, strong) WBColumnsHelper *pdfColumnsHelper;
+
+@end
 
 @implementation WBDB
 
@@ -22,51 +25,39 @@ static WBColumnsHelper* pdfColumnsHelper;
     [[Database sharedInstance] close];
 }
 
-+(WBTripsHelper*) trips {
-    return tripsHelper;
++ (WBTripsHelper *)trips {
+    return [[Database sharedInstance] tripsHelper];
 }
 
-+(WBReceiptsHelper*) receipts {
-    return receiptsHelper;
++ (WBReceiptsHelper *)receipts {
+    return [[Database sharedInstance] receiptsHelper];
 }
 
-+(WBCategoriesHelper*) categories {
-    return categoriesHelper;
++ (WBCategoriesHelper *)categories {
+    return [[Database sharedInstance] categoriesHelper];
 }
 
-+(WBColumnsHelper*) csvColumns {
-    return csvColumnsHelper;
++ (WBColumnsHelper *)csvColumns {
+    return [[Database sharedInstance] csvColumnsHelper];
 }
 
-+(WBColumnsHelper*) pdfColumns {
-    return pdfColumnsHelper;
++ (WBColumnsHelper *)pdfColumns {
+    return [[Database sharedInstance] pdfColumnsHelper];
 }
 
 + (BOOL)open {
-    if (![[Database sharedInstance] open]) {
-        return NO;
-    }
-
-    @synchronized ([WBDB class]) {
-        FMDatabaseQueue *db = [[Database sharedInstance] databaseQueue];
-        tripsHelper = [[WBTripsHelper alloc] initWithDatabaseQueue:db];
-        receiptsHelper = [[WBReceiptsHelper alloc] initWithDatabaseQueue:db];
-        categoriesHelper = [[WBCategoriesHelper alloc] initWithDatabaseQueue:db];
-        csvColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_CSV]];
-        pdfColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_PDF]];
-    }
-
-    return YES;
+    return [[Database sharedInstance] open];
 }
 
 + (BOOL)insertDefaultColumnsIntoQueue:(FMDatabaseQueue *)queue {
     NSLog(@"Insert default CSV columns");
 
-    BOOL success = [csvColumnsHelper insertWithColumnName:WBColumnNameCategoryCode intoQueue:queue]
-            && [csvColumnsHelper insertWithColumnName:WBColumnNameName intoQueue:queue]
-            && [csvColumnsHelper insertWithColumnName:WBColumnNamePrice intoQueue:queue]
-            && [csvColumnsHelper insertWithColumnName:WBColumnNameCurrency intoQueue:queue]
-            && [csvColumnsHelper insertWithColumnName:WBColumnNameDate intoQueue:queue];
+    WBColumnsHelper *csvColumns = [Database sharedInstance].csvColumnsHelper;
+    BOOL success = [csvColumns insertWithColumnName:WBColumnNameCategoryCode intoQueue:queue]
+            && [csvColumns insertWithColumnName:WBColumnNameName intoQueue:queue]
+            && [csvColumns insertWithColumnName:WBColumnNamePrice intoQueue:queue]
+            && [csvColumns insertWithColumnName:WBColumnNameCurrency intoQueue:queue]
+            && [csvColumns insertWithColumnName:WBColumnNameDate intoQueue:queue];
 
     if (!success) {
         NSLog(@"Error while inserting CSV columns");
@@ -74,12 +65,13 @@ static WBColumnsHelper* pdfColumnsHelper;
     }
 
     NSLog(@"Insert default PDF columns");
-    success = [pdfColumnsHelper insertWithColumnName:WBColumnNameName intoQueue:queue]
-            && [pdfColumnsHelper insertWithColumnName:WBColumnNamePrice intoQueue:queue]
-            && [pdfColumnsHelper insertWithColumnName:WBColumnNameDate intoQueue:queue]
-            && [pdfColumnsHelper insertWithColumnName:WBColumnNameCategoryName intoQueue:queue]
-            && [pdfColumnsHelper insertWithColumnName:WBColumnNameExpensable intoQueue:queue]
-            && [pdfColumnsHelper insertWithColumnName:WBColumnNamePictured intoQueue:queue];
+    WBColumnsHelper *pdfColumns = [Database sharedInstance].pdfColumnsHelper;
+    success = [pdfColumns insertWithColumnName:WBColumnNameName intoQueue:queue]
+            && [pdfColumns insertWithColumnName:WBColumnNamePrice intoQueue:queue]
+            && [pdfColumns insertWithColumnName:WBColumnNameDate intoQueue:queue]
+            && [pdfColumns insertWithColumnName:WBColumnNameCategoryName intoQueue:queue]
+            && [pdfColumns insertWithColumnName:WBColumnNameExpensable intoQueue:queue]
+            && [pdfColumns insertWithColumnName:WBColumnNamePictured intoQueue:queue];
 
     if (!success) {
         NSLog(@"Error while inserting PDF columns");
@@ -124,11 +116,11 @@ static WBColumnsHelper* pdfColumnsHelper;
     if (![WBColumnsHelper mergeDatabase:currDB withDatabase:importDB forTable:[WBColumnsHelper TABLE_NAME_PDF]]) {
         return false;
     }
-    
-    
+
+
     NSArray *trips = [[WBDB trips] selectAllInDatabase:currDB];
-    for (WBTrip* trip in trips) {
-        [[WBDB trips] sumAndUpdatePriceForTrip:trip inDatabase:currDB];
+    for (WBTrip *trip in trips) {
+        [[Database sharedInstance] updatePriceOfTrip:trip];
     }
     
     [[WBDB categories] clearCache];

@@ -230,7 +230,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     
     NSString *ext = [oldFile pathExtension];
     
-    NSString *imageFileName = [NSString stringWithFormat:@"%dx.%@",
+    NSString *imageFileName = [NSString stringWithFormat:@"%tx.%@",
                                [receipt receiptId], ext];
     NSString *newFile = [self.trip fileInDirectoryPath:imageFileName];
     
@@ -255,7 +255,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     
     NSString *imageFileName = nil;
     if (image) {
-        imageFileName = [NSString stringWithFormat:@"%dx.jpg", [receipt receiptId]];
+        imageFileName = [NSString stringWithFormat:@"%tx.jpg", [receipt receiptId]];
         NSString *path = [self.trip fileInDirectoryPath:imageFileName];
         if(![WBFileManager forceWriteData:UIImageJPEGRepresentation(image, 0.85) to:path]) {
             imageFileName = nil;
@@ -413,15 +413,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 {
     [super setEditing:editing animated:animated];
     [self.tableView setEditing:editing animated:animated];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex!=1) {
-        return;
-    }
-    NSString *text = [[alertView textFieldAtIndex:0] text];
-    double miles = self.trip.miles + [text doubleValue];
-    [[WBDB trips] updateTrip:self.trip miles:miles];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

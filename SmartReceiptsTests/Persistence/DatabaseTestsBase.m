@@ -8,15 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import <FMDB/FMDatabaseQueue.h>
 #import "DatabaseTestsBase.h"
 #import "Database.h"
 #import "DatabaseTestsHelper.h"
+#import "WBPreferencesTestHelper.h"
 
 @interface Database (TestExpose)
 
 - (id)initWithDatabasePath:(NSString *)path;
 - (BOOL)open:(BOOL)migrateDatabase;
+
+@end
+
+@interface DatabaseTestsBase ()
+
+@property (nonatomic, strong) WBPreferencesTestHelper *preferencesHelper;
 
 @end
 
@@ -28,11 +34,15 @@
 
 - (void)setUp {
     self.testDBPath = self.generateTestDBPath;
-    [self setDb:[self createAndOpenDatabaseWithPath:self.testDBPath]];
+    [self setDb:[self createTestDatabase]];
+
+    self.preferencesHelper = [[WBPreferencesTestHelper alloc] init];
+    [self.preferencesHelper createPreferencesBackup];
 }
 
 - (void)tearDown {
     [self deleteTestDatabase];
+    [self.preferencesHelper restorePreferencesBackup];
 }
 
 - (void)deleteTestDatabase {
@@ -41,7 +51,11 @@
     [[NSFileManager defaultManager] removeItemAtPath:self.testDBPath error:nil];
 }
 
-- (DatabaseTestsHelper *)createAndOpenDatabaseWithPath:(NSString *)path {
+- (DatabaseTestsHelper *)createTestDatabase {
+    return [self createAndOpenDatabaseWithPath:@":memory:" migrated:YES];
+}
+
+- (DatabaseTestsHelper *)createAndOpenUnmigratedDatabaseWithPath:(NSString *)path {
     return [self createAndOpenDatabaseWithPath:path migrated:NO];
 }
 

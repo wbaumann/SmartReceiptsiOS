@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @class WBTrip;
+@class Database;
 
 @interface ReportGenerator : NSObject
 
 @property (nonatomic, strong, readonly) WBTrip *trip;
 
-- (instancetype)initWithTrip:(WBTrip *)trip;
+- (instancetype)initWithTrip:(WBTrip *)trip database:(Database *)database;
 - (BOOL)generateToPath:(NSString *)outputPath;
 - (NSArray *)receiptColumns;
 - (NSArray *)receipts;

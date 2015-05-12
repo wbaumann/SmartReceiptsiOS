@@ -10,27 +10,20 @@
 #import "FMDatabase.h"
 #import "FMDatabaseQueue.h"
 
-@interface WBTripsHelper : NSObject 
+@interface WBTripsHelper : NSObject
 
-+(NSString*) TABLE_NAME;
++ (NSString *)TABLE_NAME;
 
-- (id)initWithDatabaseQueue:(FMDatabaseQueue*) db;
-- (BOOL)createTable;
+- (id)initWithDatabaseQueue:(FMDatabaseQueue *)db;
 
--(NSArray*) selectAllInDatabase:(FMDatabase*) database;
--(NSArray*) selectAll;
--(WBTrip*) selectWithName:(NSString*) name;
--(WBTrip*) insertWithName:(NSString*) name from:(NSDate*) from to:(NSDate*) to;
--(WBTrip*) updateTrip:(WBTrip*) oldTrip dir:(NSString*) dir from:(NSDate*) from to:(NSDate*) to;
--(BOOL) updateTrip:(WBTrip*) trip miles:(double) total;
--(BOOL) deleteWithName:(NSString*) name;
+- (NSArray *)selectAllInDatabase:(FMDatabase *)database;
+- (NSArray *)selectAll;
+- (WBTrip *)insertWithName:(NSString *)name from:(NSDate *)from to:(NSDate *)to;
+- (WBTrip *)updateTrip:(WBTrip *)oldTrip dir:(NSString *)dir from:(NSDate *)from to:(NSDate *)to;
+- (BOOL)deleteWithName:(NSString *)name;
 
-- (NSDecimalNumber *)sumAndUpdatePriceForTrip:(WBTrip *)trip inDatabase:(FMDatabase *)db;
+- (int)cachedCount;
 
--(int) cachedCount;
-    
-+(BOOL) mergeDatabase:(FMDatabase*) currDB withDatabase:(FMDatabase*) importDB overwrite:(BOOL) overwrite;
-
--(NSString*) hintForString:(NSString*) str;
++ (BOOL)mergeDatabase:(FMDatabase *)currDB withDatabase:(FMDatabase *)importDB overwrite:(BOOL)overwrite;
 
 @end

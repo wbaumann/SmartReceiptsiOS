@@ -6,15 +6,18 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
+#import <FMDB/FMResultSet.h>
 #import "WBTrip.h"
 #import "WBFileManager.h"
 #import "WBPrice.h"
+#import "DatabaseTableNames.h"
+#import "NSDecimalNumber+WBNumberParse.h"
+#import "NSDate+Calculations.h"
 
 NSString *const MULTI_CURRENCY = @"XXXXXX";
 
 @implementation WBTrip
 {
-    NSString* _reportDirectoryName;
     NSDate *_startDate, *_endDate;
     NSTimeZone *_startTimeZone, *_endTimeZone;
     float _miles;
@@ -28,6 +31,14 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
 {
     self = [super init];
     if (self) {
+        if (!startTimeZone) {
+            startTimeZone = [NSTimeZone localTimeZone];
+        }
+
+        if (!endTimeZone) {
+            endTimeZone = [NSTimeZone localTimeZone];
+        }
+
         _reportDirectoryName = [dirName lastPathComponent];
         _price = price;
         _startDate = startDate;
@@ -36,29 +47,6 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
         _endTimeZone = endTimeZone;
         _miles = miles;
     }
-    return self;
-}
-
-- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDateMs:(long long)startDateMs endDateMs:(long long)endDateMs startTimeZoneName:(NSString *)startTimeZoneName endTimeZoneName:(NSString *)endTimeZoneName miles:(float) miles
-{
-    NSTimeZone *startTimeZone = [NSTimeZone timeZoneWithName:startTimeZoneName];
-    if (!startTimeZone) {
-        startTimeZone = [NSTimeZone localTimeZone];
-    }
-    
-    NSTimeZone *endTimeZone = [NSTimeZone timeZoneWithName:endTimeZoneName];
-    if (!endTimeZone) {
-        endTimeZone = [NSTimeZone localTimeZone];
-    }
-    
-    self = [self initWithName:dirName
-                        price:price
-                    startDate:[NSDate dateWithTimeIntervalSince1970:(startDateMs/1000)]
-                      endDate:[NSDate dateWithTimeIntervalSince1970:(endDateMs/1000)]
-                startTimeZone:startTimeZone
-                  endTimeZone:endTimeZone
-                        miles:miles];
-    
     return self;
 }
 
@@ -89,10 +77,6 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
 
 -(float) miles {
     return _miles;
-}
-
--(NSString*) price_as_string {
-    return [NSString stringWithFormat:@"%@", _price];
 }
 
 -(NSDate*) startDate {
@@ -138,6 +122,20 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
 
 -(NSString*)priceWithCurrencyFormatted {
     return self.price.currencyFormattedPrice;
+}
+
+- (void)loadDataFromResultSet:(FMResultSet *)resultSet {
+    _reportDirectoryName = [resultSet stringForColumn:TripsTable.COLUMN_NAME];
+
+    NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:TripsTable.COLUMN_PRICE]];
+    NSString *currency = [resultSet stringForColumn:TripsTable.COLUMN_DEFAULT_CURRENCY];
+    _price = [WBPrice priceWithAmount:price currencyCode:currency];
+    long long int startDateMilliseconds = [resultSet longLongIntForColumn:TripsTable.COLUMN_FROM];
+    _startDate = [NSDate dateWithMilliseconds:startDateMilliseconds];
+    _startTimeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:TripsTable.COLUMN_FROM_TIMEZONE]];
+    long long int endDateMilliseconds = [resultSet longLongIntForColumn:TripsTable.COLUMN_FROM];
+    _endDate = [NSDate dateWithMilliseconds:endDateMilliseconds];
+    _endTimeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:TripsTable.COLUMN_TO_TIMEZONE]];
 }
 
 @end

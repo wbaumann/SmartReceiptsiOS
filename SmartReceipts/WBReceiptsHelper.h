@@ -15,7 +15,6 @@
 @interface WBReceiptsHelper : NSObject
 
 - (id)initWithDatabaseQueue:(FMDatabaseQueue*) db;
-- (BOOL)createTable;
 
 - (NSArray *)selectAllForTrip:(WBTrip *)trip descending:(BOOL)desc;
 
@@ -54,15 +53,11 @@
 -(WBReceipt*) copyReceipt:(WBReceipt*) receipt fromTrip:(WBTrip*)oldTrip toTrip:(WBTrip*) newTrip;
 -(WBReceipt*) moveReceipt:(WBReceipt*) receipt fromTrip:(WBTrip*)oldTrip toTrip:(WBTrip*) newTrip;
 -(BOOL) deleteWithParent:(NSString*) parent inDatabase:(FMDatabase*) database;
--(BOOL) deleteWithId:(int) receiptId forTrip:(WBTrip*) currentTrip;
+-(BOOL) deleteWithId:(NSUInteger) receiptId forTrip:(WBTrip*) currentTrip;
 -(BOOL) swapReceipt:(WBReceipt*) receipt1 andReceipt:(WBReceipt*) receipt2;
 
--(NSString*) selectCurrencyForReceiptsWithParent:(NSString*) parent inDatabase:(FMDatabase*) database;
-- (NSDecimalNumber *)sumPricesForReceiptsWithParent:(NSString *)parent inDatabase:(FMDatabase *)database;
 -(BOOL) replaceParentName:(NSString*) oldName to:(NSString*) newName inDatabase:(FMDatabase*) database;
 
 +(BOOL) mergeDatabase:(FMDatabase*) currDB withDatabase:(FMDatabase*) importDB overwrite:(BOOL) overwrite;
-
--(NSString*) hintForString:(NSString*) str;
 
 @end

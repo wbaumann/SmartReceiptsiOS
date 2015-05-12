@@ -15,19 +15,22 @@
 #import "Database+Distances.h"
 #import "FetchedModelAdapter.h"
 #import "DistanceColumn.h"
+#import "Database+Receipts.h"
 
 @interface ReportGenerator ()
 
 @property (nonatomic, strong) WBTrip *trip;
+@property (nonatomic, strong) Database *database;
 
 @end
 
 @implementation ReportGenerator
 
-- (instancetype)initWithTrip:(WBTrip *)trip {
+- (instancetype)initWithTrip:(WBTrip *)trip database:(Database *)database {
     self = [super init];
     if (self) {
         _trip = trip;
+        _database = database;
     }
     return self;
 }
@@ -43,7 +46,7 @@
 }
 
 - (NSArray *)receipts {
-    NSArray *receipts = [[WBDB receipts] selectAllForTrip:self.trip descending:true];
+    NSArray *receipts = [self.database allReceiptsForTrip:self.trip descending:YES];
     return  [ReceiptIndexer indexReceipts:receipts filteredWith:^BOOL(WBReceipt *receipt) {
         return [WBReportUtils filterOutReceipt:receipt];
     }];
@@ -54,7 +57,7 @@
 }
 
 - (NSArray *)distances {
-    FetchedModelAdapter *distances = [[Database sharedInstance] fetchedAdapterForDistancesInTrip:self.trip];
+    FetchedModelAdapter *distances = [self.database fetchedAdapterForDistancesInTrip:self.trip];
     return [distances allObjects];
 }
 

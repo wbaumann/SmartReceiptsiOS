@@ -19,7 +19,8 @@
 - (id)objectAtIndex:(NSInteger)index;
 - (id)initWithDatabase:(Database *)database;
 - (NSUInteger)numberOfObjects;
-- (void)setFetchQuery:(NSString *)query parameters:(NSDictionary *)parameters;
+- (void)setQuery:(NSString *)query;
+- (void)setQuery:(NSString *)query parameters:(NSDictionary *)parameters;
 - (void)fetch;
 - (NSArray *)allObjects;
 

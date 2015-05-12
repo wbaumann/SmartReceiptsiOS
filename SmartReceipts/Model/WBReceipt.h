@@ -7,21 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FetchedModel.h"
 
 @class WBTrip, WBCurrency;
 @class WBPrice;
 
-@interface WBReceipt : NSObject
+@interface WBReceipt : NSObject <FetchedModel>
 
 @property (nonatomic, strong, readonly) WBPrice *price;
 @property (nonatomic, strong, readonly) WBPrice *tax;
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, assign) NSInteger reportIndex;
+@property (nonatomic, assign) NSUInteger id;
 
 
 +(NSString*) NO_DATA;
 
-- (id)initWithId:(int)rid
+- (id)initWithId:(NSUInteger)rid
             name:(NSString *)name
         category:(NSString *)category
    imageFileName:(NSString *)imageFileName
@@ -36,7 +38,7 @@
   extraEditText2:(NSString *)extraEditText2
   extraEditText3:(NSString *)extraEditText3;
 
--(int)receiptId;
+-(NSUInteger)receiptId;
 -(NSString*)imageFileName;
 -(long long)dateMs;
 -(NSTimeZone*)timeZone;

@@ -19,7 +19,7 @@
 
 @end
 
-@interface WBReceiptsViewController : WBTableViewController<UIAlertViewDelegate,WBObservableReceiptsDelegate,WBNewReceiptViewControllerDelegate,UITextFieldDelegate>
+@interface WBReceiptsViewController : WBTableViewController<WBObservableReceiptsDelegate,WBNewReceiptViewControllerDelegate,UITextFieldDelegate>
 
 @property (weak,nonatomic) id<WBReceiptsViewControllerDelegate> delegate;
 

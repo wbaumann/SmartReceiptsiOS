@@ -14,7 +14,6 @@
 #import "Distance.h"
 #import "WBTrip.h"
 #import "WBPrice.h"
-#import "Database+Distances.h"
 #import "DatabaseTestsHelper.h"
 
 @interface Distance (TestExpose)
@@ -30,25 +29,11 @@
 @implementation DatabaseDistancesTest
 
 - (void)testSaveDistance {
-    self.db = [self createAndOpenDatabaseWithPath:self.testDBPath migrated:YES];
-
     XCTAssertEqual(0, [self.db countRowsInTable:DistanceTable.TABLE_NAME]);
 
-    Distance *distance = [self createTestDistance];
-    [self.db saveDistance:distance];
+    [self.db insertDistance:@{}];
 
     XCTAssertEqual(1, [self.db countRowsInTable:DistanceTable.TABLE_NAME]);
-}
-
-- (Distance *)createTestDistance {
-    WBTrip *testTrip = [self.db createTestTrip];
-    return [[Distance alloc] initWithTrip:testTrip
-                                 distance:[NSDecimalNumber decimalNumberWithString:@"10"]
-                                     rate:[WBPrice priceWithAmount:[NSDecimalNumber decimalNumberWithString:@"1"] currencyCode:@"EUR"]
-                                 location:@"Location"
-                                     date:[NSDate date]
-                                 timeZone:[NSTimeZone defaultTimeZone]
-                                  comment:@"Comment"];
 }
 
 @end

@@ -9,6 +9,9 @@
 #import "Database.h"
 
 @class DatabaseQueryBuilder;
+@protocol FetchedModel;
+@class WBTrip;
+@class FMDatabase;
 
 @interface Database (Functions)
 
@@ -18,5 +21,11 @@
 - (void)setDatabaseVersion:(NSUInteger)version;
 - (NSUInteger)countRowsInTable:(NSString *)tableName;
 - (BOOL)executeQuery:(DatabaseQueryBuilder *)query;
+- (BOOL)executeQuery:(DatabaseQueryBuilder *)query usingDatabase:(FMDatabase *)database;
+- (NSDecimalNumber *)executeDecimalQuery:(DatabaseQueryBuilder *)query;
+- (NSDecimalNumber *)executeDecimalQuery:(DatabaseQueryBuilder *)query usingDatabase:(FMDatabase *)database;
+- (id<FetchedModel>)executeFetchFor:(Class)fetchedClass withQuery:(DatabaseQueryBuilder *)query;
+- (NSString *)selectCurrencyFromTable:(NSString *)tableName currencyColumn:(NSString *)currencyColumn forTrip:(WBTrip *)trip;
+- (NSString *)selectCurrencyFromTable:(NSString *)tableName currencyColumn:(NSString *)currencyColumn forTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 
 @end

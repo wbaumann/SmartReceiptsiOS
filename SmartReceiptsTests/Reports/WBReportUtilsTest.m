@@ -12,17 +12,24 @@
 #import "WBReceipt.h"
 #import "WBReportUtils.h"
 #import "WBPrice.h"
+#import "WBPreferencesTestHelper.h"
 
 @interface WBReportUtilsTest : XCTestCase
+
+@property (nonatomic, strong) WBPreferencesTestHelper *preferencesHelper;
 
 @end
 
 @implementation WBReportUtilsTest
 
 - (void)setUp {
-    [WBPreferences setMinimumReceiptPriceToIncludeInReports:0];
+    self.preferencesHelper = [[WBPreferencesTestHelper alloc] init];
+    [self.preferencesHelper createPreferencesBackup];
     [WBPreferences setOnlyIncludeExpensableReceiptsInReports:YES];
-    [WBPreferences save];
+}
+
+- (void)tearDown {
+    [self.preferencesHelper restorePreferencesBackup];
 }
 
 - (void)testFiltersOutNonExpensableWhenSettingToIncludeOnlyExpensable {

@@ -13,6 +13,8 @@ typedef NS_ENUM(short, StatementType) {
     InsertStatement = 1,
     UpdateStatement = 2,
     DeleteStatement = 3,
+    SumStatement = 4,
+    SelectAllStatement = 5,
 };
 
 @interface DatabaseQueryBuilder ()
@@ -22,6 +24,7 @@ typedef NS_ENUM(short, StatementType) {
 @property (nonatomic, strong) NSMutableArray *params;
 @property (nonatomic, strong) NSMutableArray *values;
 @property (nonatomic, strong) NSMutableDictionary *where;
+@property (nonatomic, strong) NSDictionary *orderBy;
 
 @end
 
@@ -51,13 +54,26 @@ typedef NS_ENUM(short, StatementType) {
     return [[DatabaseQueryBuilder alloc] initStatementForTable:tableName statementType:UpdateStatement];
 }
 
+
++ (DatabaseQueryBuilder *)sumStatementForTable:(NSString *)tableName {
+    return [[DatabaseQueryBuilder alloc] initStatementForTable:tableName statementType:SumStatement];
+}
+
++ (DatabaseQueryBuilder *)selectAllStatementForTable:(NSString *)tableName {
+    return [[DatabaseQueryBuilder alloc] initStatementForTable:tableName statementType:SelectAllStatement];
+}
+
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue {
     [self.params addObject:paramName];
     [self.values addObject:paramValue];
 }
 
+- (void)addParam:(NSString *)paramName value:(NSObject *)paramValue fallback:(NSObject *)valueFallback {
+    NSObject *value = paramValue ? paramValue : valueFallback;
+    [self addParam:paramName value:value];
+}
+
 - (void)where:(NSString *)paramName value:(NSObject *)paramValue {
-    SRAssert(self.where.count == 0, @"Only one where clause parameter supported");
     self.where[paramName] = paramValue;
 }
 
@@ -66,43 +82,74 @@ typedef NS_ENUM(short, StatementType) {
     if (self.statement == InsertStatement) {
         [query appendString:@"INSERT INTO "];
     } else if (self.statement == DeleteStatement) {
-        [query appendString:@"DELETE FROM "];        
+        [query appendString:@"DELETE FROM "];
     } else if (self.statement == UpdateStatement) {
         [query appendString:@"UPDATE "];
+    } else if (self.statement == SumStatement) {
+        [query appendFormat:@"SELECT SUM(%@) FROM ", self.sumColumn];
+    } else if (self.statement == SelectAllStatement) {
+        [query appendString:@"SELECT * FROM "];
     }
-    
+
     [query appendString:self.tableName];
-    [query appendString:@" "];
-    
+
     if (self.statement == InsertStatement) {
         [self appendInsertValues:query];
     } else if (self.statement == DeleteStatement) {
         [self appendDeleteValues:query];
     } else if (self.statement == UpdateStatement) {
         [self appendUpdateValues:query];
+    } else if (self.statement == SumStatement || self.statement == SelectAllStatement) {
+        [self appendWhereClause:query];
+    }
+
+    if (self.orderBy) {
+        [self appendOrderBy:query];
     }
 
     return [NSString stringWithString:query];
 }
 
+- (void)appendOrderBy:(NSMutableString *)query {
+    NSString *key = self.orderBy.keyEnumerator.allObjects.firstObject;
+    BOOL ascending = [self.orderBy[key] boolValue];
+    [query appendFormat:@" ORDER BY %@ %@", key, (ascending ? @"ASC" : @"DESC")];
+}
+
+- (void)appendWhereClause:(NSMutableString *)query {
+    if (self.where.count == 0) {
+        return;
+    }
+
+    [query appendString:@" WHERE "];
+
+    NSArray *keys = self.where.keyEnumerator.allObjects;
+    //sorted only for unit tests
+    keys = [keys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    NSMutableArray *whereParams = [NSMutableArray array];
+    for (NSString *whereKey in keys) {
+        [whereParams addObject:[NSString stringWithFormat:@"%@ = :%@", whereKey, whereKey]];
+    }
+    [query appendString:[whereParams componentsJoinedByString:@" AND "]];
+}
+
 - (void)appendUpdateValues:(NSMutableString *)query {
-    [query appendString:@"SET "];
+    [query appendString:@" SET "];
     NSMutableArray *valuesSet = [NSMutableArray array];
     for (NSString *param in self.params) {
         [valuesSet addObject:[NSString stringWithFormat:@"%@ = :%@", param, param]];
     }
     [query appendString:[valuesSet componentsJoinedByString:@", "]];
-    NSString *whereKey = [self.where.keyEnumerator.allObjects firstObject];
-    [query appendFormat:@" WHERE %@ = :%@", whereKey, whereKey];
+    [self appendWhereClause:query];
 }
 
 - (void)appendDeleteValues:(NSMutableString *)query {
     NSString *param = self.params.firstObject;
-    [query appendFormat:@"WHERE %@ = :%@", param, param];
+    [query appendFormat:@" WHERE %@ = :%@", param, param];
 }
 
 - (void)appendInsertValues:(NSMutableString *)query {
-    [query appendString:@"("];
+    [query appendString:@" ("];
 
     NSMutableString *columnsString = [NSMutableString string];
     for (NSString *name in self.params) {
@@ -135,6 +182,11 @@ typedef NS_ENUM(short, StatementType) {
     }
     [result addEntriesFromDictionary:self.where];
     return [NSDictionary dictionaryWithDictionary:result];
+}
+
+- (void)orderBy:(NSString *)column ascending:(BOOL)ascending {
+    SRAssert(!self.orderBy);
+    self.orderBy = @{column : @(ascending)};
 }
 
 @end

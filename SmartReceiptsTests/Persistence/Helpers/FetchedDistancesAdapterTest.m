@@ -16,6 +16,7 @@
 #import "Distance.h"
 #import "FetchedModelAdapterDelegate.h"
 #import "FetchAdapterDelegateCheckHelper.h"
+#import "DatabaseTableNames.h"
 
 @interface FetchedModelAdapter (TestExpose)
 
@@ -38,19 +39,17 @@
 - (void)setUp {
     [super setUp];
 
-    self.db = [self createAndOpenDatabaseWithPath:self.testDBPath migrated:YES];
-
     WBTrip *dummyTrip = [self.db createTestTrip];
 
     WBTrip *testTrip = [self.db createTestTrip];
     self.testTrip = testTrip;
-    [self.db insertDistance:@{@"trip" : dummyTrip}];
-    [self.db insertDistance:@{@"trip" : testTrip, @"date" : [NSDate date], @"location" : @"One"}];
-    [self.db insertDistance:@{@"trip" : dummyTrip}];
-    [self.db insertDistance:@{@"trip" : testTrip, @"date" : [[NSDate date] dateByAddingTimeInterval:-100], @"location" : @"Two"}];
-    [self.db insertDistance:@{@"trip" : dummyTrip}];
-    [self.db insertDistance:@{@"trip" : testTrip, @"date" : [[NSDate date] dateByAddingTimeInterval:100], @"location" : @"Three"}];
-    [self.db insertDistance:@{@"trip" : dummyTrip}];
+    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : dummyTrip}];
+    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : testTrip, DistanceTable.COLUMN_DATE : [NSDate date], DistanceTable.COLUMN_LOCATION : @"One"}];
+    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : dummyTrip}];
+    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : testTrip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingTimeInterval:-100], DistanceTable.COLUMN_LOCATION : @"Two"}];
+    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : dummyTrip}];
+    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : testTrip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingTimeInterval:100], DistanceTable.COLUMN_LOCATION : @"Three"}];
+    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : dummyTrip}];
 
     self.adapter = [self.db fetchedAdapterForDistancesInTrip:testTrip];
 }
@@ -68,7 +67,7 @@
     FetchAdapterDelegateCheckHelper *delegateCheck = [[FetchAdapterDelegateCheckHelper alloc] init];
     [self.adapter setDelegate:delegateCheck];
 
-    [self.db insertDistance:@{@"trip" : self.testTrip, @"date" : [[NSDate date] dateByAddingTimeInterval:10], @"location" : @"Four"}];
+    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : self.testTrip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingTimeInterval:10], DistanceTable.COLUMN_LOCATION : @"Four"}];
 
     [self.adapter refreshContentAndNotifyInsertChanges];
 

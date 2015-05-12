@@ -6,10 +6,13 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
+#import <FMDB/FMResultSet.h>
 #import "WBReceipt.h"
 #import "WBTrip.h"
 #import "WBCurrency.h"
 #import "WBPrice.h"
+#import "NSDecimalNumber+WBNumberParse.h"
+#import "DatabaseTableNames.h"
 
 static NSString * const NO_DATA = @"null";
 
@@ -29,7 +32,6 @@ static NSString* checkNoData(NSString* str) {
 
 @implementation WBReceipt
 {
-    int _id;
     NSString *_fileName;
     NSString *_name, *_category, *_comment;
     NSString *_extraEditText1, *_extraEditText2, *_extraEditText3;
@@ -42,7 +44,7 @@ static NSString* checkNoData(NSString* str) {
     return NO_DATA;
 }
 
-- (id)initWithId:(int)rid
+- (id)initWithId:(NSUInteger)rid
             name:(NSString *)name
         category:(NSString *)category
    imageFileName:(NSString *)imageFileName
@@ -85,7 +87,7 @@ static NSString* checkNoData(NSString* str) {
     return self;
 }
 
--(int)receiptId {
+-(NSUInteger)receiptId {
     return _id;
 }
 
@@ -224,6 +226,27 @@ static NSString* checkNoData(NSString* str) {
 
 -(BOOL)hasExtraEditText3 {
     return _extraEditText3 != nil;
+}
+
+- (void)loadDataFromResultSet:(FMResultSet *)resultSet {
+    NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:ReceiptsTable.COLUMN_PRICE]];
+    NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:ReceiptsTable.COLUMN_TAX]];
+    NSString *currencyCode = [resultSet stringForColumn:ReceiptsTable.COLUMN_ISO4217];
+
+    [self setId:(NSUInteger) [resultSet intForColumn:ReceiptsTable.COLUMN_ID]];
+    _name = [resultSet stringForColumn:ReceiptsTable.COLUMN_NAME];
+    _category = [resultSet stringForColumn:ReceiptsTable.COLUMN_CATEGORY];
+    _fileName = [resultSet stringForColumn:ReceiptsTable.COLUMN_PATH];
+    _comment = [resultSet stringForColumn:ReceiptsTable.COLUMN_COMMENT];
+    _price = [WBPrice priceWithAmount:price currencyCode:currencyCode];
+    _tax = [WBPrice priceWithAmount:tax currencyCode:currencyCode];
+    _isExpensable = [resultSet boolForColumn:ReceiptsTable.COLUMN_EXPENSEABLE];
+    _isFullPage = ![resultSet boolForColumn:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE];
+    _extraEditText1 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1];
+    _extraEditText2 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2];
+    _extraEditText3 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3];
+    _timeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:ReceiptsTable.COLUMN_TIMEZONE]];
+    _dateMs = [resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE];
 }
 
 @end

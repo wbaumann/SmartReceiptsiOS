@@ -40,6 +40,7 @@ const struct ReceiptsTableStruct ReceiptsTable = {
         .COLUMN_CATEGORY = @"category",
         .COLUMN_PRICE = @"price",
         .COLUMN_TAX = @"tax",
+        .COLUMN_PAYMENTMETHOD = @"paymentmethod", // Deprecated
         .COLUMN_DATE = @"rcpt_date",
         .COLUMN_TIMEZONE = @"timezone",
         .COLUMN_COMMENT = @"comment",
