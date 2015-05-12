@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <FMDB/FMDatabase.h>
 #import "Database+Distances.h"
 #import "DatabaseTableNames.h"
 #import "Distance.h"
@@ -36,13 +37,24 @@
 }
 
 - (BOOL)saveDistance:(Distance *)distance {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self saveDistance:distance usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (BOOL)saveDistance:(Distance *)distance usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:DistanceTable.TABLE_NAME];
     [insert addParam:DistanceTable.COLUMN_PARENT value:distance.trip.name];
     [self appendCommonValuesFromDistance:distance toQuery:insert];
-    BOOL result = [self executeQuery:insert];
+    BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {
-        [self updatePriceOfTrip:distance.trip];
-        [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidInsertModelNotification object:distance];
+        [self updatePriceOfTrip:distance.trip usingDatabase:database];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidInsertModelNotification object:distance];
+        });
     }
     return result;
 }
@@ -61,7 +73,9 @@
     [delete addParam:DistanceTable.COLUMN_ID value:@(distance.objectId)];
     BOOL result = [self executeQuery:delete];
     if (result) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidDeleteModelNotification object:distance];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidDeleteModelNotification object:distance];
+        });
     }
     return result;
 }
@@ -72,7 +86,9 @@
     [update where:DistanceTable.COLUMN_ID value:@(distance.objectId)];
     BOOL result = [self executeQuery:update];
     if (result) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidUpdateModelNotification object:distance];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidUpdateModelNotification object:distance];
+        });
     }
     return result;
 }
@@ -88,14 +104,32 @@
 }
 
 - (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip {
+    __block NSDecimalNumber *result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self sumOfDistancesForTrip:trip usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *sumStatement = [DatabaseQueryBuilder sumStatementForTable:DistanceTable.TABLE_NAME];
     [sumStatement setSumColumn:@"distance * rate"];
     [sumStatement where:DistanceTable.COLUMN_PARENT value:trip.name];
-    return [self executeDecimalQuery:sumStatement];
+    return [self executeDecimalQuery:sumStatement usingDatabase:database];
 }
 
 - (NSString *)currencyForTripDistances:(WBTrip *)trip {
-    return [self selectCurrencyFromTable:DistanceTable.TABLE_NAME currencyColumn:DistanceTable.COLUMN_RATE_CURRENCY forTrip:trip];
+    __block NSString *result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self currencyForTripDistances:trip usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (NSString *)currencyForTripDistances:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    return [self selectCurrencyFromTable:DistanceTable.TABLE_NAME currencyColumn:DistanceTable.COLUMN_RATE_CURRENCY forTrip:trip usingDatabase:database];
 }
 
 @end

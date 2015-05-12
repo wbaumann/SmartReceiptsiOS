@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <FMDB/FMDatabase.h>
 #import "Database+Receipts.h"
 #import "DatabaseTableNames.h"
 #import "Database+Functions.h"
@@ -45,6 +46,15 @@
 }
 
 - (BOOL)saveReceipt:(WBReceipt *)receipt {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self saveReceipt:receipt usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (BOOL)saveReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:ReceiptsTable.TABLE_NAME];
     [insert addParam:ReceiptsTable.COLUMN_PATH value:receipt.imageFileName fallback:[WBReceipt NO_DATA]];
     [insert addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];
@@ -60,9 +70,9 @@
     [insert addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1 value:[Database extraInsertValue:receipt.extraEditText1]];
     [insert addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2 value:[Database extraInsertValue:receipt.extraEditText2]];
     [insert addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3 value:[Database extraInsertValue:receipt.extraEditText3]];
-    BOOL result = [self executeQuery:insert];
+    BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {
-        [self updatePriceOfTrip:receipt.trip];
+        [self updatePriceOfTrip:receipt.trip usingDatabase:database];
     }
     return result;
 }
@@ -93,17 +103,35 @@
 }
 
 - (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip {
-    return [self sumOfReceiptsForTrip:trip onlyExpenseableReceipts:[WBPreferences onlyIncludeExpensableReceiptsInReports]];
+    __block NSDecimalNumber *result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self sumOfReceiptsForTrip:trip usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    return [self sumOfReceiptsForTrip:trip onlyExpenseableReceipts:[WBPreferences onlyIncludeExpensableReceiptsInReports] usingDatabase:database];
 }
 
 - (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip onlyExpenseableReceipts:(BOOL)onlyExpenseable {
+    __block NSDecimalNumber *result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self sumOfReceiptsForTrip:trip onlyExpenseableReceipts:onlyExpenseable usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip onlyExpenseableReceipts:(BOOL)onlyExpenseable usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *sumStatement = [DatabaseQueryBuilder sumStatementForTable:ReceiptsTable.TABLE_NAME];
     [sumStatement setSumColumn:ReceiptsTable.COLUMN_PRICE];
     [sumStatement where:ReceiptsTable.COLUMN_PARENT value:trip.name];
     if (onlyExpenseable) {
         [sumStatement where:ReceiptsTable.COLUMN_EXPENSEABLE value:@(YES)];
     }
-    return [self executeDecimalQuery:sumStatement];
+    return [self executeDecimalQuery:sumStatement usingDatabase:database];
 }
 
 + (NSString *)extraInsertValue:(NSString *)extraValue {
@@ -119,7 +147,16 @@
 }
 
 - (NSString *)currencyForTripReceipts:(WBTrip *)trip {
-    return [self selectCurrencyFromTable:ReceiptsTable.TABLE_NAME currencyColumn:ReceiptsTable.COLUMN_ISO4217 forTrip:trip];
+    __block NSString *result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self currencyForTripReceipts:trip usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (NSString *)currencyForTripReceipts:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    return [self selectCurrencyFromTable:ReceiptsTable.TABLE_NAME currencyColumn:ReceiptsTable.COLUMN_ISO4217 forTrip:trip usingDatabase:database];
 }
 
 @end

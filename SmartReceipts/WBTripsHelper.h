@@ -22,8 +22,6 @@
 - (WBTrip *)updateTrip:(WBTrip *)oldTrip dir:(NSString *)dir from:(NSDate *)from to:(NSDate *)to;
 - (BOOL)deleteWithName:(NSString *)name;
 
-- (NSDecimalNumber *)sumAndUpdatePriceForTrip:(WBTrip *)trip inDatabase:(FMDatabase *)db;
-
 - (int)cachedCount;
 
 + (BOOL)mergeDatabase:(FMDatabase *)currDB withDatabase:(FMDatabase *)importDB overwrite:(BOOL)overwrite;

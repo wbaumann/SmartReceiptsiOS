@@ -56,8 +56,6 @@
 -(BOOL) deleteWithId:(NSUInteger) receiptId forTrip:(WBTrip*) currentTrip;
 -(BOOL) swapReceipt:(WBReceipt*) receipt1 andReceipt:(WBReceipt*) receipt2;
 
--(NSString*) selectCurrencyForReceiptsWithParent:(NSString*) parent inDatabase:(FMDatabase*) database;
-- (NSDecimalNumber *)sumPricesForReceiptsWithParent:(NSString *)parent inDatabase:(FMDatabase *)database;
 -(BOOL) replaceParentName:(NSString*) oldName to:(NSString*) newName inDatabase:(FMDatabase*) database;
 
 +(BOOL) mergeDatabase:(FMDatabase*) currDB withDatabase:(FMDatabase*) importDB overwrite:(BOOL) overwrite;

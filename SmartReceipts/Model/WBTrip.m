@@ -18,7 +18,6 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
 
 @implementation WBTrip
 {
-    NSString* _reportDirectoryName;
     NSDate *_startDate, *_endDate;
     NSTimeZone *_startTimeZone, *_endTimeZone;
     float _miles;

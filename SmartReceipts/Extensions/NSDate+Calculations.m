@@ -11,7 +11,7 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
 @implementation NSDate (Calculations)
 
 - (BOOL)isToday {
-    enum NSCalendarUnit dayComponents = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    enum NSCalendarUnit dayComponents = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
     NSDateComponents *todayComponents = [[NSDate gregorian] components:dayComponents fromDate:[NSDate date]];
     NSDateComponents *myComponents = [[NSDate gregorian] components:dayComponents fromDate:self];
 
@@ -19,7 +19,7 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
 }
 
 - (NSInteger)year {
-    NSDateComponents *components = [[NSDate gregorian] components:NSYearCalendarUnit fromDate:self];
+    NSDateComponents *components = [[NSDate gregorian] components:NSCalendarUnitYear fromDate:self];
     return components.year;
 }
 
@@ -30,7 +30,7 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
 + (NSCalendar *)gregorian {
     NSCalendar *calendar = [[NSThread currentThread] threadDictionary][SmartReceiptsGregorianCalendarKey];
     if (!calendar) {
-        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         [[NSThread currentThread] threadDictionary][SmartReceiptsGregorianCalendarKey] = calendar;
     }
 

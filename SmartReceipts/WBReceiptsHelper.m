@@ -9,7 +9,6 @@
 #import "WBReceiptsHelper.h"
 #import "WBTripsHelper.h"
 
-#import "WBPreferences.h"
 #import "WBCurrency.h"
 
 #import "WBSqlBuilder.h"
@@ -18,6 +17,7 @@
 #import "WBPrice.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "Database+Receipts.h"
+#import "Database+Trips.h"
 
 static NSString * const TABLE_NAME = @"receipts";
 static NSString * const COLUMN_ID = @"id";
@@ -176,20 +176,21 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
                                         extraEditText3:extraEditText3];
     [receipt setTrip:trip];
 
-    [[Database sharedInstance] saveReceipt:receipt];
 
     [_databaseQueue inTransaction:^(FMDatabase *database, BOOL *rollback){
-        // update prices in the same transaction
-        NSDecimalNumber *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:trip inDatabase:database];
-        if (newSumPrice == nil) {
+        BOOL result = [[Database sharedInstance] saveReceipt:receipt usingDatabase:database];
+        if (!result) {
             *rollback = YES;
             return;
         }
-        NSString* curr = [self selectCurrencyForReceiptsWithParent:[trip name] inDatabase:database];
-        if (!curr) {
-            curr = [WBTrip MULTI_CURRENCY];
+
+        // update prices in the same transaction
+        WBPrice *totalPrice = [[Database sharedInstance] updatePriceOfTrip:trip usingDatabase:database];
+        if (!totalPrice) {
+            *rollback = YES;
+            return;
         }
-        [trip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
+        [trip setPrice:totalPrice];
 
         FMResultSet* cres = [database executeQuery:@"SELECT last_insert_rowid()"];
         if (!([cres next] && [cres columnCount]>0)) {
@@ -283,17 +284,8 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
         }
         
         // update prices in the same transaction
-        NSDecimalNumber *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:trip inDatabase:database];
-        if (newSumPrice == nil) {
-            *rollback = YES;
-            return;
-        }
-
-        NSString* curr = [self selectCurrencyForReceiptsWithParent:[trip name] inDatabase:database];
-        if (!curr) {
-            curr = [WBTrip MULTI_CURRENCY];
-        }
-        [trip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
+        WBPrice *totalPrice = [[Database sharedInstance] updatePriceOfTrip:trip usingDatabase:database];
+        [trip setPrice:totalPrice];
 
         receipt =
         [[WBReceipt alloc] initWithId:[oldReceipt receiptId]
@@ -401,18 +393,8 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     [_databaseQueue inTransaction:^(FMDatabase *database, BOOL *rollback){
         result = [database executeUpdate:query, @(receiptId)];
         if (result) {
-            NSDecimalNumber *newSumPrice = [[WBDB trips] sumAndUpdatePriceForTrip:currentTrip inDatabase:database];
-            if (newSumPrice == nil) {
-                *rollback = YES;
-                result = NO;
-                return;
-            }
-            NSString* curr = [self selectCurrencyForReceiptsWithParent:[currentTrip name] inDatabase:database];
-            if (!curr) {
-                curr = [WBTrip MULTI_CURRENCY];
-            }
-
-            [currentTrip setPrice:[WBPrice priceWithAmount:newSumPrice currencyCode:curr]];
+            WBPrice *totalPrice = [[Database sharedInstance] updatePriceOfTrip:currentTrip usingDatabase:database];
+            [currentTrip setPrice:totalPrice];
         }
     }];
     return result;
@@ -453,44 +435,6 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
 }
 
 #pragma mark - for another tables
-
--(NSString*) selectCurrencyForReceiptsWithParent:(NSString*) parent inDatabase:(FMDatabase*) database {
-    NSString* curr = nil;
-    
-    FMResultSet* resultSet = [database executeQuery:CURR_CNT_QUERY, parent];
-    
-    if (resultSet) {
-        if ([resultSet next] && [resultSet columnCount] > 0) {
-            int cnt = [resultSet intForColumnIndex:0];
-            
-            if (cnt == 1) {
-                curr = [resultSet stringForColumnIndex:1];
-            } else if (cnt == 0) {
-                curr = [WBPreferences defaultCurrency];
-            }
-        }
-        [resultSet close];
-    }
-    
-    return curr;
-}
-
-- (NSDecimalNumber *)sumPricesForReceiptsWithParent:(NSString *)parent inDatabase:(FMDatabase *)database {
-    NSString *query = [NSString stringWithFormat:@"SELECT SUM(%@) FROM %@ WHERE %@ = ?", COLUMN_PRICE, TABLE_NAME, COLUMN_PARENT];
-    if ([WBPreferences onlyIncludeExpensableReceiptsInReports]) {
-        query = [query stringByAppendingFormat:@" AND %@ = 1", COLUMN_EXPENSEABLE];
-    }
-
-    FMResultSet *resultSet = [database executeQuery:query, parent];
-
-    if ([resultSet next] && [resultSet columnCount] > 0) {
-        NSString *sum = [resultSet stringForColumnIndex:0];
-        [resultSet close];
-        return [NSDecimalNumber decimalNumberOrZero:sum];
-    }
-
-    return nil;
-}
 
 -(BOOL) replaceParentName:(NSString*) oldName to:(NSString*) newName inDatabase:(FMDatabase*) database {
     NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ? WHERE %@ = ?", TABLE_NAME, COLUMN_PARENT, COLUMN_PARENT];

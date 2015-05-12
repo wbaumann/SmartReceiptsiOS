@@ -56,36 +56,47 @@
 }
 
 - (BOOL)executeQuery:(DatabaseQueryBuilder *)query {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self executeQuery:query usingDatabase:db];
+    }];
+    return result;
+}
+
+- (BOOL)executeQuery:(DatabaseQueryBuilder *)query usingDatabase:(FMDatabase *)database {
     NSString *statement = [query buildStatement];
     NSDictionary *parameters = [query parameters];
 
     SRLog(@"Execute update: '%@'", statement);
     SRLog(@"With parameters: %@", parameters);
 
-    __block BOOL result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [db executeUpdate:statement withParameterDictionary:parameters];
-    }];
-    return result;
+    return [database executeUpdate:statement withParameterDictionary:parameters];
 }
 
 - (NSDecimalNumber *)executeDecimalQuery:(DatabaseQueryBuilder *)query {
+    __block NSDecimalNumber *result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self executeDecimalQuery:query usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (NSDecimalNumber *)executeDecimalQuery:(DatabaseQueryBuilder *)query usingDatabase:(FMDatabase *)db {
     NSString *statement = [query buildStatement];
     NSDictionary *parameters = [query parameters];
 
     SRLog(@"Execute query: '%@'", statement);
     SRLog(@"With parameters: %@", parameters);
 
-    __block NSDecimalNumber *result = [NSDecimalNumber zero];
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet *resultSet = [db executeQuery:statement withParameterDictionary:parameters];
+    NSDecimalNumber *result = [NSDecimalNumber zero];
+    FMResultSet *resultSet = [db executeQuery:statement withParameterDictionary:parameters];
 
-        if ([resultSet next] && [resultSet columnCount] > 0) {
-            NSString *sum = [resultSet stringForColumnIndex:0];
-            [resultSet close];
-            result = [NSDecimalNumber decimalNumberOrZero:sum];
-        }
-    }];
+    if ([resultSet next] && [resultSet columnCount] > 0) {
+        NSString *sum = [resultSet stringForColumnIndex:0];
+        [resultSet close];
+        result = [NSDecimalNumber decimalNumberOrZero:sum];
+    }
 
     return result;
 }
@@ -116,26 +127,32 @@
 }
 
 - (NSString *)selectCurrencyFromTable:(NSString *)tableName currencyColumn:(NSString *)currencyColumn forTrip:(WBTrip *)trip {
-    NSString *query = [NSString stringWithFormat:@"SELECT COUNT(*), %@ FROM (SELECT COUNT(*), %@ FROM %@ WHERE %@ = ? GROUP BY %@ );", currencyColumn, currencyColumn, tableName, ReceiptsTable.COLUMN_PARENT, currencyColumn];
-
-    __block NSString *curr = MULTI_CURRENCY;
+    __block NSString *result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet *resultSet = [db executeQuery:query, trip.name];
-
-        if (resultSet) {
-            if ([resultSet next] && [resultSet columnCount] > 0) {
-                int cnt = [resultSet intForColumnIndex:0];
-
-                if (cnt == 1) {
-                    curr = [resultSet stringForColumnIndex:1];
-                } else if (cnt == 0) {
-                    curr = [WBPreferences defaultCurrency];
-                }
-            }
-            [resultSet close];
-        }
+        result = [self selectCurrencyFromTable:tableName currencyColumn:currencyColumn forTrip:trip usingDatabase:db];
     }];
 
+    return result;
+}
+
+- (NSString *)selectCurrencyFromTable:(NSString *)tableName currencyColumn:(NSString *)currencyColumn forTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)db {
+    NSString *query = [NSString stringWithFormat:@"SELECT COUNT(*), %@ FROM (SELECT COUNT(*), %@ FROM %@ WHERE %@ = ? GROUP BY %@ );", currencyColumn, currencyColumn, tableName, ReceiptsTable.COLUMN_PARENT, currencyColumn];
+
+    NSString *curr = MULTI_CURRENCY;
+
+    FMResultSet *resultSet = [db executeQuery:query, trip.name];
+    if (resultSet) {
+        if ([resultSet next] && [resultSet columnCount] > 0) {
+            int cnt = [resultSet intForColumnIndex:0];
+
+            if (cnt == 1) {
+                curr = [resultSet stringForColumnIndex:1];
+            } else if (cnt == 0) {
+                curr = [WBPreferences defaultCurrency];
+            }
+        }
+        [resultSet close];
+    }
 
     return curr;
 }

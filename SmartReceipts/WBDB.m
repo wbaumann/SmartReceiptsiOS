@@ -7,6 +7,7 @@
 //
 
 #import "WBDB.h"
+#import "Database+Trips.h"
 
 @interface Database (Expose)
 
@@ -115,11 +116,11 @@
     if (![WBColumnsHelper mergeDatabase:currDB withDatabase:importDB forTable:[WBColumnsHelper TABLE_NAME_PDF]]) {
         return false;
     }
-    
-    
+
+
     NSArray *trips = [[WBDB trips] selectAllInDatabase:currDB];
-    for (WBTrip* trip in trips) {
-        [[WBDB trips] sumAndUpdatePriceForTrip:trip inDatabase:currDB];
+    for (WBTrip *trip in trips) {
+        [[Database sharedInstance] updatePriceOfTrip:trip];
     }
     
     [[WBDB categories] clearCache];

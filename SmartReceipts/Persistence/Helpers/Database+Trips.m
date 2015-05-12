@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <FMDB/FMDatabase.h>
 #import "Database+Trips.h"
 #import "WBTrip.h"
 #import "DatabaseTableNames.h"
@@ -51,9 +52,18 @@
 }
 
 - (NSDecimalNumber *)totalPriceForTrip:(WBTrip *)trip {
-    NSDecimalNumber *priceOfTrip = [self sumOfReceiptsForTrip:trip];
+    __block NSDecimalNumber *result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self totalPriceForTrip:trip usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (NSDecimalNumber *)totalPriceForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    NSDecimalNumber *priceOfTrip = [self sumOfReceiptsForTrip:trip usingDatabase:database];
     if ([WBPreferences isTheDistancePriceBeIncludedInReports]) {
-        priceOfTrip = [priceOfTrip decimalNumberByAdding:[self sumOfDistancesForTrip:trip]];
+        priceOfTrip = [priceOfTrip decimalNumberByAdding:[self sumOfDistancesForTrip:trip usingDatabase:database]];
     }
 
     return priceOfTrip;
@@ -75,21 +85,54 @@
 }
 
 - (WBPrice *)updatePriceOfTrip:(WBTrip *)trip {
-    NSDecimalNumber *total = [self totalPriceForTrip:trip];
-    NSString *currencyCode = [self aggregateCurrencyCodeForTrip:trip];
+    __block WBPrice *result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self updatePriceOfTrip:trip usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (WBPrice *)updatePriceOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    WBPrice *price = [self tripPrice:trip usingDatabase:database];
 
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:TripsTable.TABLE_NAME];
-    [update addParam:TripsTable.COLUMN_PRICE value:total];
-    [update addParam:TripsTable.COLUMN_DEFAULT_CURRENCY value:currencyCode];
+    [update addParam:TripsTable.COLUMN_PRICE value:price.amount];
+    [update addParam:TripsTable.COLUMN_DEFAULT_CURRENCY value:price.currency.code];
     [update where:TripsTable.COLUMN_NAME value:trip.name];
 
-    [self executeQuery:update];
+    [self executeQuery:update usingDatabase:database];
+
+    return price;
+}
+
+- (WBPrice *)tripPrice:(WBTrip *)trip {
+    __block WBPrice *result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self tripPrice:trip usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (WBPrice *)tripPrice:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    NSDecimalNumber *total = [self totalPriceForTrip:trip usingDatabase:database];
+    NSString *currencyCode = [self aggregateCurrencyCodeForTrip:trip usingDatabase:database];
 
     return [WBPrice priceWithAmount:total currencyCode:currencyCode];
 }
 
 - (NSString *)aggregateCurrencyCodeForTrip:(WBTrip *)trip {
-    NSString *receiptsCurrency = [self currencyForTripReceipts:trip];
+    __block NSString *result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self aggregateCurrencyCodeForTrip:trip usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (NSString *)aggregateCurrencyCodeForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    NSString *receiptsCurrency = [self currencyForTripReceipts:trip usingDatabase:database];
     if ([MULTI_CURRENCY isEqualToString:receiptsCurrency]) {
         return receiptsCurrency;
     }
@@ -98,7 +141,7 @@
         return receiptsCurrency;
     }
 
-    NSString *distancesCurrency = [self currencyForTripDistances:trip];
+    NSString *distancesCurrency = [self currencyForTripDistances:trip usingDatabase:database];
     if ([receiptsCurrency isEqualToString:distancesCurrency]) {
         return receiptsCurrency;
     }

@@ -15,6 +15,7 @@
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "Database+Trips.h"
 #import "NSDate+Calculations.h"
+#import "Database+Receipts.h"
 
 static NSString * const TABLE_NAME = @"trips";
 static NSString * const COLUMN_NAME = @"name";
@@ -71,10 +72,11 @@ static NSString * const NO_DATA = @"null";
 
     while ([resultSet next]) {
         NSString *name = [resultSet stringForColumnIndex:nameIndex];
-        NSString *curr = [[WBDB receipts] selectCurrencyForReceiptsWithParent:name inDatabase:database];
-        if (!curr) {
-            curr = [WBTrip MULTI_CURRENCY];
-        }
+        //TODO jaanus: fix this
+        WBTrip *fetchTrip = [[WBTrip alloc] init];
+        [fetchTrip setReportDirectoryName:name];
+        NSString *curr = [[Database sharedInstance] currencyForTripReceipts:fetchTrip usingDatabase:database];
+        ////////
 
         NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumnIndex:priceIndex]];
         WBTrip *trip = [[WBTrip alloc] initWithName:name
@@ -196,19 +198,6 @@ static NSString * const NO_DATA = @"null";
 }
 
 #pragma mark - for another tables
-
-- (NSDecimalNumber *)sumAndUpdatePriceForTrip:(WBTrip *)trip inDatabase:(FMDatabase *)db {
-    NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ? WHERE %@ = ?", TABLE_NAME, COLUMN_PRICE, COLUMN_NAME];
-
-    NSDecimalNumber *price = [[WBDB receipts] sumPricesForReceiptsWithParent:[trip name] inDatabase:db];
-
-    if (price) {
-        if ([db executeUpdate:query, price, [trip name]]) {
-            return price; // sum & update ok
-        }
-    }
-    return nil; // returns nil in case of failure
-}
 
 -(int)cachedCount {
     if (_cachedCount == -1) {

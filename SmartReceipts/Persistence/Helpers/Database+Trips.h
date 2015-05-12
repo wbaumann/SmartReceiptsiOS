@@ -10,14 +10,19 @@
 
 @class WBTrip;
 @class WBPrice;
+@class FMDatabase;
 
 @interface Database (Trips)
 
 - (BOOL)createTripsTable;
 - (BOOL)saveTrip:(WBTrip *)trip;
 - (NSDecimalNumber *)totalPriceForTrip:(WBTrip *)trip;
+- (NSDecimalNumber *)totalPriceForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (NSArray *)allTrips;
 - (WBTrip *)tripWithName:(NSString *)tripName;
 - (WBPrice *)updatePriceOfTrip:(WBTrip *)trip;
+- (WBPrice *)updatePriceOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
+- (WBPrice *)tripPrice:(WBTrip *)trip;
+- (WBPrice *)tripPrice:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 
 @end
