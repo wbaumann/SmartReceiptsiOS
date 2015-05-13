@@ -10,7 +10,10 @@
 #import <FMDB/FMDatabaseAdditions.h>
 #import "Database+PaymentMethods.h"
 #import "DatabaseTableNames.h"
+#import "FetchedModelAdapter.h"
 #import "Database+Functions.h"
+#import "DatabaseQueryBuilder.h"
+#import "PaymentMethod.h"
 
 @implementation Database (PaymentMethods)
 
@@ -39,6 +42,12 @@
     return result;
 
     return NO;
+}
+
+- (FetchedModelAdapter *)fetchedAdapterForPaymentMethods {
+    DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:PaymentMethodsTable.TABLE_NAME];
+    [selectAll orderBy:PaymentMethodsTable.COLUMN_METHOD ascending:YES];
+    return [self createAdapterUsingQuery:selectAll forMode:[PaymentMethod class]];
 }
 
 @end

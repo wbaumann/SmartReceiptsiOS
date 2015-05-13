@@ -12,6 +12,7 @@
 @protocol FetchedModel;
 @class WBTrip;
 @class FMDatabase;
+@class FetchedModelAdapter;
 
 @interface Database (Functions)
 
@@ -27,5 +28,6 @@
 - (id<FetchedModel>)executeFetchFor:(Class)fetchedClass withQuery:(DatabaseQueryBuilder *)query;
 - (NSString *)selectCurrencyFromTable:(NSString *)tableName currencyColumn:(NSString *)currencyColumn forTrip:(WBTrip *)trip;
 - (NSString *)selectCurrencyFromTable:(NSString *)tableName currencyColumn:(NSString *)currencyColumn forTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
+- (FetchedModelAdapter *)createAdapterUsingQuery:(DatabaseQueryBuilder *)query forMode:(Class)modelClass;
 
 @end

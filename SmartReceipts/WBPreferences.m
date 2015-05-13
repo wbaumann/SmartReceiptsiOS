@@ -43,6 +43,8 @@ static NSString *const FLOAT_DEFAULT_MILEAGE_RATE = @"MileageRate";
 static NSString *const BOOL_PRINT_MILEAGE_TABLE = @"MileagePrintTable";
 static NSString *const BOOL_DAILY_DISTANCE_REPORT = @"MileageAddToPDF";
 
+static NSString *const BOOL_USE_PAYMENT_METHODS = @"UsePaymentMethods";
+
 // there is no 100% guaranteed way to figure entry type so we have to hardcode them
 typedef NS_ENUM(short, EntryType){
     EntryTypeString = 0,
@@ -85,7 +87,9 @@ static NSDictionary *getEntryTypes() {
             BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT: tBool,
             FLOAT_DEFAULT_MILEAGE_RATE: tFloat,
             BOOL_PRINT_MILEAGE_TABLE: tBool,
-            BOOL_DAILY_DISTANCE_REPORT: tBool
+            BOOL_DAILY_DISTANCE_REPORT: tBool,
+
+            BOOL_USE_PAYMENT_METHODS: tBool
     };
 }
 
@@ -281,6 +285,15 @@ static NSUserDefaults* instance() {
 + (void)setPrintDailyDistanceValues:(BOOL)value {
     [instance() setBool:value forKey:BOOL_DAILY_DISTANCE_REPORT];
 }
+
++ (BOOL)usePaymentMethods {
+    return [instance() boolForKey:BOOL_USE_PAYMENT_METHODS];
+}
+
++ (void)setUsePaymentMethods:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_USE_PAYMENT_METHODS];
+}
+
 
 +(int) cameraMaxHeightWidth {
     return (int)[instance() integerForKey:INT_CAMERA_MAX_HEIGHT_WIDTH];

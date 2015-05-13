@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FetchedModel.h"
 
-@interface PaymentMethod : NSObject
+@interface PaymentMethod : NSObject <FetchedModel>
+
+@property (nonatomic, copy, readonly) NSString *method;
 
 @end

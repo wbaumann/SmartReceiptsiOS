@@ -15,6 +15,7 @@
 #import "WBTrip.h"
 #import "DatabaseTableNames.h"
 #import "WBPreferences.h"
+#import "FetchedModelAdapter.h"
 
 @implementation Database (Functions)
 
@@ -155,6 +156,14 @@
     }
 
     return curr;
+}
+
+- (FetchedModelAdapter *)createAdapterUsingQuery:(DatabaseQueryBuilder *)query forMode:(Class)modelClass {
+    FetchedModelAdapter *adapter = [[FetchedModelAdapter alloc] initWithDatabase:self];
+    [adapter setQuery:query.buildStatement parameters:query.parameters];
+    [adapter setModelClass:modelClass];
+    [adapter fetch];
+    return adapter;
 }
 
 @end

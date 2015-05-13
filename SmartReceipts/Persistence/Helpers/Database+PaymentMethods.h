@@ -8,8 +8,11 @@
 
 #import "Database.h"
 
+@class FetchedModelAdapter;
+
 @interface Database (PaymentMethods)
 
 - (BOOL)createPaymentMethodsTable;
+- (FetchedModelAdapter *)fetchedAdapterForPaymentMethods;
 
 @end

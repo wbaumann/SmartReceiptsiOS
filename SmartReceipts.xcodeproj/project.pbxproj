@@ -111,6 +111,9 @@
 		EA159E7F1AFE704D00DBB6CF /* android-receipts-v13.db in Resources */ = {isa = PBXBuildFile; fileRef = EA159E7B1AFE6F4E00DBB6CF /* android-receipts-v13.db */; };
 		EA159E801AFE705000DBB6CF /* android-receipts-v11.db in Resources */ = {isa = PBXBuildFile; fileRef = EA159E7C1AFE6F4E00DBB6CF /* android-receipts-v11.db */; };
 		EA159E811AFE7CDC00DBB6CF /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66588B7C2114029521A399 /* NSDate+Calculations.m */; };
+		EA1D42B91B03831700D64D3A /* PaymentMethodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1D42B81B03831700D64D3A /* PaymentMethodsViewController.m */; };
+		EA1D42BD1B03851C00D64D3A /* TitleOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1D42BB1B03851C00D64D3A /* TitleOnlyCell.m */; };
+		EA1D42BE1B03851C00D64D3A /* TitleOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1D42BC1B03851C00D64D3A /* TitleOnlyCell.xib */; };
 		EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */ = {isa = PBXBuildFile; fileRef = EA36DE501B0118EE0034CC2D /* Database+Hints.m */; };
 		EA36DE531B0119150034CC2D /* DatabaseHintsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA36DE521B0119150034CC2D /* DatabaseHintsTest.m */; };
 		EA36DE551B0121990034CC2D /* DatabaseCurrenciesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA36DE541B0121990034CC2D /* DatabaseCurrenciesTest.m */; };
@@ -401,6 +404,11 @@
 		EA07BF6D1AF5212D004D17F6 /* FetchedModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FetchedModel.h; sourceTree = "<group>"; };
 		EA159E7B1AFE6F4E00DBB6CF /* android-receipts-v13.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "android-receipts-v13.db"; sourceTree = "<group>"; };
 		EA159E7C1AFE6F4E00DBB6CF /* android-receipts-v11.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "android-receipts-v11.db"; sourceTree = "<group>"; };
+		EA1D42B71B03831700D64D3A /* PaymentMethodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentMethodsViewController.h; sourceTree = "<group>"; };
+		EA1D42B81B03831700D64D3A /* PaymentMethodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentMethodsViewController.m; sourceTree = "<group>"; };
+		EA1D42BA1B03851C00D64D3A /* TitleOnlyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleOnlyCell.h; sourceTree = "<group>"; };
+		EA1D42BB1B03851C00D64D3A /* TitleOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleOnlyCell.m; sourceTree = "<group>"; };
+		EA1D42BC1B03851C00D64D3A /* TitleOnlyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleOnlyCell.xib; sourceTree = "<group>"; };
 		EA36DE4F1B0118EE0034CC2D /* Database+Hints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Database+Hints.h"; sourceTree = "<group>"; };
 		EA36DE501B0118EE0034CC2D /* Database+Hints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Database+Hints.m"; sourceTree = "<group>"; };
 		EA36DE521B0119150034CC2D /* DatabaseHintsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseHintsTest.m; sourceTree = "<group>"; };
@@ -1110,6 +1118,9 @@
 				EA4C5CC21AF287330083FDD7 /* TitledTextEntryCell.h */,
 				EA4C5CC31AF287330083FDD7 /* TitledTextEntryCell.m */,
 				EA4C5CC41AF287330083FDD7 /* TitledTextEntryCell.xib */,
+				EA1D42BA1B03851C00D64D3A /* TitleOnlyCell.h */,
+				EA1D42BB1B03851C00D64D3A /* TitleOnlyCell.m */,
+				EA1D42BC1B03851C00D64D3A /* TitleOnlyCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1295,6 +1306,8 @@
 				EA4C5CC01AF286990083FDD7 /* InputCellsSection.m */,
 				EA4DC9941AF1580100CEF1B9 /* InputCellsViewController.h */,
 				EA4DC9951AF1580100CEF1B9 /* InputCellsViewController.m */,
+				EA1D42B71B03831700D64D3A /* PaymentMethodsViewController.h */,
+				EA1D42B81B03831700D64D3A /* PaymentMethodsViewController.m */,
 				EA888A771AFA44E300DF2AE6 /* SettingsViewController.h */,
 				EA888A781AFA44E300DF2AE6 /* SettingsViewController.m */,
 				EAE8F9B01AF149DC00E837E3 /* TripDistancesViewController.h */,
@@ -1486,6 +1499,7 @@
 				EA4C5CC61AF287330083FDD7 /* TitledTextEntryCell.xib in Resources */,
 				EA07BF601AF4E801004D17F6 /* DistanceSummaryCell.xib in Resources */,
 				84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */,
+				EA1D42BE1B03851C00D64D3A /* TitleOnlyCell.xib in Resources */,
 				841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */,
 				84F4F34E18CFCCD000F69A35 /* InfoPlist.strings in Resources */,
 				EA71DFCD1AF9FEEC004092C3 /* SettingsSwitchCell.xib in Resources */,
@@ -1693,6 +1707,7 @@
 				84D6719B18D34E4900B704A4 /* WBCurrency.m in Sources */,
 				EA07BF531AF4CD26004D17F6 /* Database+PaymentMethods.m in Sources */,
 				EA07BF341AF3B703004D17F6 /* InlinedDatePickerCell.m in Sources */,
+				EA1D42B91B03831700D64D3A /* PaymentMethodsViewController.m in Sources */,
 				EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */,
 				843F623C18EF9A5F001ACBB1 /* MBProgressHUD.m in Sources */,
@@ -1721,6 +1736,7 @@
 				EA07BF5F1AF4E801004D17F6 /* DistanceSummaryCell.m in Sources */,
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */,
+				EA1D42BD1B03851C00D64D3A /* TitleOnlyCell.m in Sources */,
 				8472F01818D6F50B00929C5B /* WBNewTripViewController.m in Sources */,
 				EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */,
 				EA07BF301AF3B472004D17F6 /* UIApplication+DismissKeyboard.m in Sources */,

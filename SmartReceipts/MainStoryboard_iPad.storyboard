@@ -556,6 +556,28 @@
             </objects>
             <point key="canvasLocation" x="4261" y="-65"/>
         </scene>
+        <!--Payment Methods View Controller-->
+        <scene sceneID="Khb-A3-DmU">
+            <objects>
+                <tableViewController id="aRp-HI-WZn" customClass="PaymentMethodsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="hNv-HS-jLD">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="556"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="aRp-HI-WZn" id="7jv-1d-d2J"/>
+                            <outlet property="delegate" destination="aRp-HI-WZn" id="oWX-Ie-VQS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="tzG-Db-6Df">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2vX-rZ-OYR"/>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AHz-fx-UeD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3400" y="-1183"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="vFZ-GA-8Fq">
             <objects>
@@ -641,6 +663,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="aRp-HI-WZn" kind="push" identifier="PushPaymentMethodsControllerSegueIdentifier" id="fuE-F1-pYv"/>
+                        <segue destination="qpT-VU-o50" kind="push" identifier="ConfigurePDF" id="DxA-Mq-uge"/>
+                        <segue destination="qpT-VU-o50" kind="push" identifier="ConfigureCSV" id="Cu5-yV-39Q"/>
+                        <segue destination="zRm-IZ-bzQ" kind="push" identifier="PushManageCategoriesSegueIdentifier" id="ohu-ec-8mb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7au-SN-eAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -811,11 +839,11 @@
                         <viewControllerLayoutGuide type="bottom" id="342-LS-RKF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="J69-wx-ark">
-                        <rect key="frame" x="0.0" y="64" width="768" height="980"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="512"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7id-u8-hpY">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="660"/>
+                                <rect key="frame" x="0.0" y="0.0" width="540" height="660"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="5Vv-ve-ck6" detailTextLabel="06O-72-qVN" style="IBUITableViewCellStyleSubtitle" id="ZC5-1D-g85">
@@ -897,7 +925,7 @@
             <objects>
                 <tableViewController id="S6x-5P-T24" customClass="WBNewCategoryViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="tyu-oV-cNl">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -916,7 +944,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9HR-ms-PhT">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9HR-ms-PhT">
                                                     <rect key="frame" x="74" y="1" width="621" height="41"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -945,7 +973,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qqa-hv-lfm">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qqa-hv-lfm">
                                                     <rect key="frame" x="70" y="1" width="625" height="41"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -999,11 +1027,11 @@
                         <viewControllerLayoutGuide type="bottom" id="5dj-6S-sse"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eAC-MV-07V">
-                        <rect key="frame" x="0.0" y="64" width="768" height="980"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="512"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qOq-nc-Hl3">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="660"/>
+                                <rect key="frame" x="0.0" y="0.0" width="540" height="660"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="ZE0-rJ-7xB" detailTextLabel="bpi-nE-1vW" style="IBUITableViewCellStyleValue2" id="cZo-V3-Cfe">
@@ -1061,7 +1089,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYg-uM-MSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3461" y="-1280"/>
+            <point key="canvasLocation" x="2525" y="-2332"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="ejl-Yh-6jH">
@@ -1526,5 +1554,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="dER-xx-mm6"/>
         <segue reference="Pu5-7V-Vh4"/>
+        <segue reference="DxA-Mq-uge"/>
     </inferredMetricsTieBreakers>
 </document>
