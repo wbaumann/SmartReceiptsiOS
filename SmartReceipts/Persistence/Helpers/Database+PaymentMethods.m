@@ -89,7 +89,7 @@
 - (PaymentMethod *)methodById:(NSUInteger)methodId {
     DatabaseQueryBuilder *fetch = [DatabaseQueryBuilder selectAllStatementForTable:PaymentMethodsTable.TABLE_NAME];
     [fetch where:PaymentMethodsTable.COLUMN_ID value:@(methodId)];
-    return [self executeFetchFor:[PaymentMethod class] withQuery:fetch];
+    return (PaymentMethod *)[self executeFetchFor:[PaymentMethod class] withQuery:fetch];
 }
 
 @end
