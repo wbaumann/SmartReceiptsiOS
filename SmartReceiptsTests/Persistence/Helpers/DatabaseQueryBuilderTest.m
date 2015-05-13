@@ -35,7 +35,7 @@
 
 - (void)testDeleteQueryBuild {
     DatabaseQueryBuilder *statement = [DatabaseQueryBuilder deleteStatementForTable:@"testing_delete"];
-    [statement addParam:@"id" value:@12];
+    [statement where:@"id" value:@12];
 
     NSString *query = [statement buildStatement];
     NSString *expected = @"DELETE FROM testing_delete WHERE id = :id";

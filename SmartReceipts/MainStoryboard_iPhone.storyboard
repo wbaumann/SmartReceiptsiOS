@@ -688,13 +688,41 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="MyA-2E-EtP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="B1I-8r-aVB"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="B1I-8r-aVB">
+                            <connections>
+                                <segue destination="vNg-YF-QYK" kind="push" identifier="PushEditPaymentMethodSequeIdentifier" id="vMl-b7-jhk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
-                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jxy-Ny-9nH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2948" y="-840"/>
+        </scene>
+        <!--Edit Payment Method View Controller-->
+        <scene sceneID="U4N-yO-Kin">
+            <objects>
+                <tableViewController id="vNg-YF-QYK" customClass="EditPaymentMethodViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="lZR-CL-CEq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="vNg-YF-QYK" id="YXc-k5-f0E"/>
+                            <outlet property="delegate" destination="vNg-YF-QYK" id="6F6-KW-g2c"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="lBd-4z-bct">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ojq-3v-rEJ">
+                            <connections>
+                                <action selector="donePressed" destination="vNg-YF-QYK" id="Y12-E5-g4L"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qzH-Wm-SRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3383" y="-641"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QOo-Wt-TgO">

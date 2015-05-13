@@ -9,10 +9,14 @@
 #import "Database.h"
 
 @class FetchedModelAdapter;
+@class PaymentMethod;
 
 @interface Database (PaymentMethods)
 
 - (BOOL)createPaymentMethodsTable;
 - (FetchedModelAdapter *)fetchedAdapterForPaymentMethods;
+- (BOOL)savePaymentMethod:(PaymentMethod *)method;
+- (BOOL)updatePaymentMethod:(PaymentMethod *)method;
+- (BOOL)deletePaymentMethod:(PaymentMethod *)method;
 
 @end

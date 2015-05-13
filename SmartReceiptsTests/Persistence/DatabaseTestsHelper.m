@@ -15,6 +15,9 @@
 #import "WBReceipt.h"
 #import "DatabaseTableNames.h"
 #import "Database+Receipts.h"
+#import "NSString+Validation.h"
+#import "PaymentMethod.h"
+#import "Database+PaymentMethods.h"
 
 @interface Distance (TestExpose)
 
@@ -38,6 +41,13 @@
     WBTrip *trip = [[WBTrip alloc] initWithName:params[TripsTable.COLUMN_NAME] startDate:params[TripsTable.COLUMN_FROM] endDate:params[TripsTable.COLUMN_TO] currencyCode:@"USD"];
     [self saveTrip:trip];
     return trip;
+}
+
+- (void)insertPaymentMethod:(NSString *)name {
+    name = [name hasValue] ? name : [NSString stringWithFormat:@"TestMethod - %f", [NSDate timeIntervalSinceReferenceDate]];
+    PaymentMethod *method = [[PaymentMethod alloc] init];
+    [method setMethod:name];
+    [self savePaymentMethod:method];
 }
 
 - (void)insertDistance:(NSDictionary *)modifiedParams {

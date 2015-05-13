@@ -13,8 +13,13 @@
 #import "Database.h"
 #import "Database+PaymentMethods.h"
 #import "PaymentMethod.h"
+#import "EditPaymentMethodViewController.h"
+
+NSString *const PushEditPaymentMethodSequeIdentifier = @"PushEditPaymentMethodSequeIdentifier";
 
 @interface PaymentMethodsViewController ()
+
+@property (nonatomic, strong) PaymentMethod *tapped;
 
 @end
 
@@ -27,7 +32,7 @@
 
     [self setPresentationCellNib:[TitleOnlyCell viewNib]];
 
-    [self.navigationController setToolbarHidden:YES];
+    [self setHidesBottomBarWhenPushed:YES];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {
@@ -38,6 +43,24 @@
 
 - (FetchedModelAdapter *)createFetchedModelAdapter {
     return [[Database sharedInstance] fetchedAdapterForPaymentMethods];
+}
+
+- (void)deleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+    [[Database sharedInstance] deletePaymentMethod:object];
+}
+
+- (void)tappedObject:(id)tapped atIndexPath:(NSIndexPath *)indexPath {
+    [self setTapped:tapped];
+
+    [self performSegueWithIdentifier:PushEditPaymentMethodSequeIdentifier sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([PushEditPaymentMethodSequeIdentifier isEqualToString:segue.identifier]) {
+        EditPaymentMethodViewController *controller = segue.destinationViewController;
+        [controller setMethod:self.tapped];
+        [self setTapped:nil];
+    }
 }
 
 @end

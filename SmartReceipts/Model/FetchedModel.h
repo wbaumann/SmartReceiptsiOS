@@ -11,5 +11,7 @@
 @protocol FetchedModel
 
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet;
+- (BOOL)isEqual:(id)other;
+- (NSUInteger)hash;
 
 @end
