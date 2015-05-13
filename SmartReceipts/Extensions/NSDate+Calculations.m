@@ -23,6 +23,10 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
     return components.year;
 }
 
+- (NSDate *)dateByAddingDays:(NSInteger)daysToAdd {
+    return [self dateByAddingTimeInterval:60 * 60 * 24 * daysToAdd];
+}
+
 - (NSNumber *)milliseconds {
     return @([self timeIntervalSince1970] * 1000);
 }

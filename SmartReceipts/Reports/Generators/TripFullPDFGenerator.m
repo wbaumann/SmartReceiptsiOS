@@ -12,6 +12,9 @@
 #import "WBDateFormatter.h"
 #import "ReportPDFTable.h"
 #import "WBPreferences.h"
+#import "Database+Distances.h"
+#import "WBReceipt.h"
+#import "DistancesToReceiptsConverter.h"
 
 @implementation TripFullPDFGenerator
 
@@ -45,7 +48,19 @@
 
     ReportPDFTable *receiptsTable = [[ReportPDFTable alloc] initWithPDFDrawer:self.pdfDrawer columns:[self receiptColumns]];
     [receiptsTable setIncludeHeaders:YES];
-    [receiptsTable appendTableWithRows:[self receipts]];
+    NSArray *rows = [self receipts];
+    if ([WBPreferences printDailyDistanceValues]) {
+        NSArray *distances = [self.database allDistancesForTrip:self.trip];
+        NSArray *receipts = [DistancesToReceiptsConverter convertDistances:distances];
+        rows = [rows arrayByAddingObjectsFromArray:receipts];
+        rows = [rows sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            WBReceipt *one = obj1;
+            WBReceipt *two = obj2;
+            return [two.dateFromDateMs compare:one.dateFromDateMs];
+        }];
+    }
+
+    [receiptsTable appendTableWithRows:rows];
 
     if (![WBPreferences printDistanceTable]) {
         return;
