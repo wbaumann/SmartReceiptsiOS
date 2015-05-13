@@ -14,6 +14,7 @@
 @interface ReportGenerator : NSObject
 
 @property (nonatomic, strong, readonly) WBTrip *trip;
+@property (nonatomic, strong, readonly) Database *database;
 
 - (instancetype)initWithTrip:(WBTrip *)trip database:(Database *)database;
 - (BOOL)generateToPath:(NSString *)outputPath;

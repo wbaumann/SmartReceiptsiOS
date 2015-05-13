@@ -132,4 +132,9 @@
     return [self selectCurrencyFromTable:DistanceTable.TABLE_NAME currencyColumn:DistanceTable.COLUMN_RATE_CURRENCY forTrip:trip usingDatabase:database];
 }
 
+- (NSArray *)allDistancesForTrip:(WBTrip *)trip {
+    return [[self fetchedAdapterForDistancesInTrip:trip] allObjects];
+}
+
+
 @end

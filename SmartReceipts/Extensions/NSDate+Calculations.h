@@ -9,6 +9,7 @@
 
 - (BOOL)isToday;
 - (NSInteger)year;
+- (NSDate *)dateByAddingDays:(NSInteger)daysToAdd;
 
 - (NSNumber *)milliseconds;
 + (NSDate *)dateWithMilliseconds:(long long int)milliseconds;
