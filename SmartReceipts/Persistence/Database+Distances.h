@@ -26,5 +26,6 @@
 - (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (NSString *)currencyForTripDistances:(WBTrip *)trip;
 - (NSString *)currencyForTripDistances:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
+- (NSArray *)allDistancesForTrip:(WBTrip *)trip;
 
 @end
