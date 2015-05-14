@@ -30,6 +30,7 @@
 #import "InputCellsSection.h"
 #import "InlinedPickerCell.h"
 #import "InlinedDatePickerCell.h"
+#import "TitledAutocompleteEntryCell.h"
 
 @interface WBNewReceiptViewController () <WBDynamicPickerDelegate,UITextFieldDelegate> {
     UIImage *_image;
@@ -37,8 +38,6 @@
     NSString *_name;
 
     NSTimeZone *_timeZone;
-    
-    WBAutocompleteHelper *_autocompleteHelper;
 }
 
 @property (nonatomic, strong) WBTrip *trip;
@@ -48,7 +47,7 @@
 
 @property (nonatomic, assign) long long dateMs;
 
-@property (nonatomic, strong) TitledTextEntryCell *nameCell;
+@property (nonatomic, strong) TitledAutocompleteEntryCell *nameCell;
 @property (nonatomic, strong) TitledTextEntryCell *priceCell;
 @property (nonatomic, strong) TitledTextEntryCell *taxCell;
 @property (nonatomic, strong) PickerCell *currencyCell;
@@ -77,16 +76,18 @@
 
     self.dateFormatter = [[WBDateFormatter alloc] init];
 
+    [self.tableView registerNib:[TitledAutocompleteEntryCell viewNib] forCellReuseIdentifier:[TitledAutocompleteEntryCell cellIdentifier]];
     [self.tableView registerNib:[TitledTextEntryCell viewNib] forCellReuseIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.tableView registerNib:[PickerCell viewNib] forCellReuseIdentifier:[PickerCell cellIdentifier]];
     [self.tableView registerNib:[SwitchControlCell viewNib] forCellReuseIdentifier:[SwitchControlCell cellIdentifier]];
     [self.tableView registerNib:[InlinedPickerCell viewNib] forCellReuseIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.tableView registerNib:[InlinedDatePickerCell viewNib] forCellReuseIdentifier:[InlinedDatePickerCell cellIdentifier]];
 
-    self.nameCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
+    self.nameCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledAutocompleteEntryCell cellIdentifier]];
     [self.nameCell setTitle:NSLocalizedString(@"Name", nil)];
     [self.nameCell setPlaceholder:NSLocalizedString(@"Name of your receipt", nil)];
     [self.nameCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
+    [self.nameCell setAutocompleteHelper:[[WBAutocompleteHelper alloc] initWithAutocompleteField:(HTAutocompleteTextField *) self.nameCell.entryField inView:self.view useReceiptsHints:YES]];
 
     self.priceCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.priceCell setTitle:NSLocalizedString(@"Price", nil)];
@@ -161,8 +162,6 @@
     [self.nameCell.entryField becomeFirstResponder];
 
     [self loadDataToCells];
-
-    _autocompleteHelper = [[WBAutocompleteHelper alloc] initWithAutocompleteField:self.nameTextField inView:self.view useReceiptsHints:YES];
 }
 
 - (void)loadDataToCells {
@@ -255,19 +254,6 @@
 
 - (void)setReceiptImage:(UIImage *)image{
     _image = image;
-}
-
--(void)textFieldDidBeginEditing:(UITextField *)textField {
-    [_autocompleteHelper textFieldDidBeginEditing:textField];
-}
-
--(void)textFieldDidEndEditing:(UITextField *)textField {
-    [_autocompleteHelper textFieldDidEndEditing:textField];
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    return YES;
 }
 
 - (IBAction)actionDone:(id)sender {

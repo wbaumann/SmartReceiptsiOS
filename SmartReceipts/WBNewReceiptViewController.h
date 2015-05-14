@@ -23,7 +23,6 @@
 
 @interface WBNewReceiptViewController : InputCellsViewController
 
-@property (weak, nonatomic) IBOutlet HTAutocompleteTextField *nameTextField;
 @property (weak, nonatomic) id <WBNewReceiptViewControllerDelegate> delegate;
 @property (weak, nonatomic) WBReceiptsViewController *receiptsViewController;
 
