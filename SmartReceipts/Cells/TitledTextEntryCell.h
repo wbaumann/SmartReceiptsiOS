@@ -12,5 +12,6 @@
 @interface TitledTextEntryCell : TextEntryCell
 
 - (void)setTitle:(NSString *)title;
+- (void)setPlaceholder:(NSString *)placeholder;
 
 @end

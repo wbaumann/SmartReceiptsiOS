@@ -24,7 +24,7 @@
 #import "InlinedPickerCell.h"
 #import "PickerCell.h"
 #import "SettingsSegmentControlCell.h"
-#import "SettingsSwitchCell.h"
+#import "SwitchControlCell.h"
 #import "SettingsButtonCell.h"
 #import "UIAlertView+Blocks.h"
 #import "NSDecimalNumber+WBNumberParse.h"
@@ -49,27 +49,27 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) InlinedPickerCell *defaultCurrencyPickerCell;
 @property (nonatomic, strong) SettingsSegmentControlCell *dateSeparatorCell;
 @property (nonatomic, strong) SettingsSegmentControlCell *cameraSettingsCell;
-@property (nonatomic, strong) SettingsSwitchCell *predictReceiptCategoriesCell;
-@property (nonatomic, strong) SettingsSwitchCell *includeTaxFieldCell;
-@property (nonatomic, strong) SettingsSwitchCell *matchNameToCategoriesCell;
-@property (nonatomic, strong) SettingsSwitchCell *matchCommentsToCategoriesCell;
-@property (nonatomic, strong) SettingsSwitchCell *onlyReportExpenseableCell;
-@property (nonatomic, strong) SettingsSwitchCell *enableAutocompleteSuggestionsCell;
-@property (nonatomic, strong) SettingsSwitchCell *defaultReceiptDateToReportStartCell;
-@property (nonatomic, strong) SettingsSwitchCell *usePaymentMethodsCell;
+@property (nonatomic, strong) SwitchControlCell *predictReceiptCategoriesCell;
+@property (nonatomic, strong) SwitchControlCell *includeTaxFieldCell;
+@property (nonatomic, strong) SwitchControlCell *matchNameToCategoriesCell;
+@property (nonatomic, strong) SwitchControlCell *matchCommentsToCategoriesCell;
+@property (nonatomic, strong) SwitchControlCell *onlyReportExpenseableCell;
+@property (nonatomic, strong) SwitchControlCell *enableAutocompleteSuggestionsCell;
+@property (nonatomic, strong) SwitchControlCell *defaultReceiptDateToReportStartCell;
+@property (nonatomic, strong) SwitchControlCell *usePaymentMethodsCell;
 @property (nonatomic, strong) SettingsButtonCell *customizePaymentMethodsCell;
 
 @property (nonatomic, strong) SettingsButtonCell *manageCategoriesCell;
 
-@property (nonatomic, strong) SettingsSwitchCell *includeCSVHeadersCell;
+@property (nonatomic, strong) SwitchControlCell *includeCSVHeadersCell;
 @property (nonatomic, strong) SettingsButtonCell *configureCSVColumnsCell;
 
 @property (nonatomic, strong) SettingsButtonCell *configurePDFColumnsCell;
 
-@property (nonatomic, strong) SettingsSwitchCell *addDistancePriceToReportCell;
+@property (nonatomic, strong) SwitchControlCell *addDistancePriceToReportCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *gasRateCell;
-@property (nonatomic, strong) SettingsSwitchCell *includeDistanceTableCell;
-@property (nonatomic, strong) SettingsSwitchCell *reportOnDailyDistanceCell;
+@property (nonatomic, strong) SwitchControlCell *includeDistanceTableCell;
+@property (nonatomic, strong) SwitchControlCell *reportOnDailyDistanceCell;
 
 @property (nonatomic, strong) SettingsButtonCell *backupCell;
 
@@ -95,7 +95,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.tableView registerNib:[PickerCell viewNib] forCellReuseIdentifier:[PickerCell cellIdentifier]];
     [self.tableView registerNib:[InlinedPickerCell viewNib] forCellReuseIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.tableView registerNib:[SettingsSegmentControlCell viewNib] forCellReuseIdentifier:[SettingsSegmentControlCell cellIdentifier]];
-    [self.tableView registerNib:[SettingsSwitchCell viewNib] forCellReuseIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.tableView registerNib:[SwitchControlCell viewNib] forCellReuseIdentifier:[SwitchControlCell cellIdentifier]];
     [self.tableView registerNib:[SettingsButtonCell viewNib] forCellReuseIdentifier:[SettingsButtonCell cellIdentifier]];
 
 
@@ -132,28 +132,28 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     self.cameraSettingsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSegmentControlCell cellIdentifier]];
     [self.cameraSettingsCell setTitle:NSLocalizedString(@"Max. Camera Height / Width", nil)];
 
-    self.predictReceiptCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    self.predictReceiptCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.predictReceiptCategoriesCell setTitle:NSLocalizedString(@"Predict Receipt Categories", nil)];
 
-    self.includeTaxFieldCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    self.includeTaxFieldCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.includeTaxFieldCell setTitle:NSLocalizedString(@"Include Tax Field For Receipts", nil)];
 
-    self.matchNameToCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    self.matchNameToCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.matchNameToCategoriesCell setTitle:NSLocalizedString(@"Match Name to Categories", nil)];
 
-    self.matchCommentsToCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    self.matchCommentsToCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.matchCommentsToCategoriesCell setTitle:NSLocalizedString(@"Match Comments to Categories", nil)];
 
-    self.onlyReportExpenseableCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    self.onlyReportExpenseableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.onlyReportExpenseableCell setTitle:NSLocalizedString(@"Only Report Expensable Receipts", nil)];
 
-    self.enableAutocompleteSuggestionsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    self.enableAutocompleteSuggestionsCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.enableAutocompleteSuggestionsCell setTitle:NSLocalizedString(@"Enable AutoComplete Suggestions", nil)];
 
-    self.defaultReceiptDateToReportStartCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    self.defaultReceiptDateToReportStartCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.defaultReceiptDateToReportStartCell setTitle:NSLocalizedString(@"Default Receipt Date to Report Start Date", nil)];
 
-    self.usePaymentMethodsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    self.usePaymentMethodsCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.usePaymentMethodsCell setTitle:NSLocalizedString(@"Enable Payment Methods", nil)];
 
     self.customizePaymentMethodsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
@@ -185,7 +185,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Categories", nil) cells:@[self.manageCategoriesCell]]];
 
-    self.includeCSVHeadersCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    self.includeCSVHeadersCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.includeCSVHeadersCell setTitle:NSLocalizedString(@"Include Header Columns", nil)];
 
     self.configureCSVColumnsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
@@ -198,7 +198,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Customize PDF Output", nil) cells:@[self.configurePDFColumnsCell]]];
 
-    self.addDistancePriceToReportCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    self.addDistancePriceToReportCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.addDistancePriceToReportCell setTitle:NSLocalizedString(@"Add Distane Price to Report", nil)];
 
 
@@ -206,10 +206,10 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.gasRateCell setTitle:NSLocalizedString(@"Gas Rate", nil)];
     [self.gasRateCell activateDecimalEntryMode];
 
-    self.includeDistanceTableCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    self.includeDistanceTableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.includeDistanceTableCell setTitle:NSLocalizedString(@"Include Distance Table", nil)];
 
-    self.reportOnDailyDistanceCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    self.reportOnDailyDistanceCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.reportOnDailyDistanceCell setTitle:NSLocalizedString(@"Report on Daily Distance", nil)];
 
     [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Distance", nil)

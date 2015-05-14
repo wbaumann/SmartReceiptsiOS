@@ -26,7 +26,7 @@
 }
 
 - (void)setSelectedValue:(NSString *)selectedValue {
-    _selectedValue = [selectedValue mutableCopy];
+    _selectedValue = [selectedValue copy];
 
     NSUInteger index = [self.allValues indexOfObject:selectedValue];
     [self.picker selectRow:index inComponent:0 animated:NO];

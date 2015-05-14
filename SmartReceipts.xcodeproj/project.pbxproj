@@ -161,8 +161,8 @@
 		EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF291AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m */; };
 		EA69EF2D1AF0907300276B70 /* receipts_at_v11.db in Resources */ = {isa = PBXBuildFile; fileRef = EA69EF2C1AF0907300276B70 /* receipts_at_v11.db */; };
 		EA69EF301AF0914000276B70 /* PaymentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF2F1AF0914000276B70 /* PaymentMethod.m */; };
-		EA71DFCC1AF9FEEC004092C3 /* SettingsSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA71DFCA1AF9FEEC004092C3 /* SettingsSwitchCell.m */; };
-		EA71DFCD1AF9FEEC004092C3 /* SettingsSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA71DFCB1AF9FEEC004092C3 /* SettingsSwitchCell.xib */; };
+		EA71DFCC1AF9FEEC004092C3 /* SwitchControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA71DFCA1AF9FEEC004092C3 /* SwitchControlCell.m */; };
+		EA71DFCD1AF9FEEC004092C3 /* SwitchControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA71DFCB1AF9FEEC004092C3 /* SwitchControlCell.xib */; };
 		EA888A711AFA38AD00DF2AE6 /* SettingsButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A701AFA38AD00DF2AE6 /* SettingsButtonCell.m */; };
 		EA888A731AFA38C100DF2AE6 /* SettingsButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA888A721AFA38C100DF2AE6 /* SettingsButtonCell.xib */; };
 		EA888A761AFA3D3F00DF2AE6 /* NumberInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A751AFA3D3F00DF2AE6 /* NumberInputValidation.m */; };
@@ -491,9 +491,9 @@
 		EA69EF2C1AF0907300276B70 /* receipts_at_v11.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = receipts_at_v11.db; sourceTree = "<group>"; };
 		EA69EF2E1AF0914000276B70 /* PaymentMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentMethod.h; sourceTree = "<group>"; };
 		EA69EF2F1AF0914000276B70 /* PaymentMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentMethod.m; sourceTree = "<group>"; };
-		EA71DFC91AF9FEEC004092C3 /* SettingsSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSwitchCell.h; sourceTree = "<group>"; };
-		EA71DFCA1AF9FEEC004092C3 /* SettingsSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSwitchCell.m; sourceTree = "<group>"; };
-		EA71DFCB1AF9FEEC004092C3 /* SettingsSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSwitchCell.xib; sourceTree = "<group>"; };
+		EA71DFC91AF9FEEC004092C3 /* SwitchControlCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchControlCell.h; sourceTree = "<group>"; };
+		EA71DFCA1AF9FEEC004092C3 /* SwitchControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchControlCell.m; sourceTree = "<group>"; };
+		EA71DFCB1AF9FEEC004092C3 /* SwitchControlCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchControlCell.xib; sourceTree = "<group>"; };
 		EA888A6F1AFA38AD00DF2AE6 /* SettingsButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsButtonCell.h; sourceTree = "<group>"; };
 		EA888A701AFA38AD00DF2AE6 /* SettingsButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsButtonCell.m; sourceTree = "<group>"; };
 		EA888A721AFA38C100DF2AE6 /* SettingsButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsButtonCell.xib; sourceTree = "<group>"; };
@@ -1121,9 +1121,9 @@
 				EA5ECA2B1AF9F43F008D2CFB /* SettingsSegmentControlCell.h */,
 				EA5ECA2C1AF9F43F008D2CFB /* SettingsSegmentControlCell.m */,
 				EA5ECA2D1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib */,
-				EA71DFC91AF9FEEC004092C3 /* SettingsSwitchCell.h */,
-				EA71DFCA1AF9FEEC004092C3 /* SettingsSwitchCell.m */,
-				EA71DFCB1AF9FEEC004092C3 /* SettingsSwitchCell.xib */,
+				EA71DFC91AF9FEEC004092C3 /* SwitchControlCell.h */,
+				EA71DFCA1AF9FEEC004092C3 /* SwitchControlCell.m */,
+				EA71DFCB1AF9FEEC004092C3 /* SwitchControlCell.xib */,
 				EAE9DAFE1AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.h */,
 				EAE9DAFF1AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m */,
 				EAE9DB001AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.xib */,
@@ -1518,7 +1518,7 @@
 				EA1D42BE1B03851C00D64D3A /* TitleOnlyCell.xib in Resources */,
 				841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */,
 				84F4F34E18CFCCD000F69A35 /* InfoPlist.strings in Resources */,
-				EA71DFCD1AF9FEEC004092C3 /* SettingsSwitchCell.xib in Resources */,
+				EA71DFCD1AF9FEEC004092C3 /* SwitchControlCell.xib in Resources */,
 				EA888A731AFA38C100DF2AE6 /* SettingsButtonCell.xib in Resources */,
 				EA07BF371AF3B88C004D17F6 /* PickerCell.xib in Resources */,
 				8467EFED18F6F9530076BE6E /* ic_rotate_cw.png in Resources */,
@@ -1676,7 +1676,7 @@
 				EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */,
 				84ABAD0618DB780E00F8D3EB /* WBReceiptsHelper.m in Sources */,
 				8478B77618D37D350041CBA3 /* WBColumnsViewController.m in Sources */,
-				EA71DFCC1AF9FEEC004092C3 /* SettingsSwitchCell.m in Sources */,
+				EA71DFCC1AF9FEEC004092C3 /* SwitchControlCell.m in Sources */,
 				EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */,
 				8467EFE918F6E3170076BE6E /* WBImageSegue.m in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
