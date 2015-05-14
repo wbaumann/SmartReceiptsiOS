@@ -96,7 +96,7 @@ typedef NS_ENUM(short, StatementType) {
     if (self.statement == InsertStatement) {
         [self appendInsertValues:query];
     } else if (self.statement == DeleteStatement) {
-        [self appendDeleteValues:query];
+        [self appendWhereClause:query];
     } else if (self.statement == UpdateStatement) {
         [self appendUpdateValues:query];
     } else if (self.statement == SumStatement || self.statement == SelectAllStatement) {
@@ -141,11 +141,6 @@ typedef NS_ENUM(short, StatementType) {
     }
     [query appendString:[valuesSet componentsJoinedByString:@", "]];
     [self appendWhereClause:query];
-}
-
-- (void)appendDeleteValues:(NSMutableString *)query {
-    NSString *param = self.params.firstObject;
-    [query appendFormat:@" WHERE %@ = :%@", param, param];
 }
 
 - (void)appendInsertValues:(NSMutableString *)query {

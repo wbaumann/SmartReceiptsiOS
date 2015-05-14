@@ -64,6 +64,9 @@
 + (BOOL)printDailyDistanceValues;
 + (void)setPrintDailyDistanceValues:(BOOL)value;
 
++ (BOOL)usePaymentMethods;
++ (void)setUsePaymentMethods:(BOOL)value;
+
 + (int)cameraMaxHeightWidth;
 + (void)setCameraMaxHeightWidth:(int)cameraMaxHeightWidth;
 

@@ -70,7 +70,7 @@
 
 - (BOOL)deleteDistance:(Distance *)distance {
     DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:DistanceTable.TABLE_NAME];
-    [delete addParam:DistanceTable.COLUMN_ID value:@(distance.objectId)];
+    [delete where:DistanceTable.COLUMN_ID value:@(distance.objectId)];
     BOOL result = [self executeQuery:delete];
     if (result) {
         dispatch_async(dispatch_get_main_queue(), ^{

@@ -663,10 +663,66 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ZPX-hr-elc" kind="push" identifier="PushPaymentMethodsControllerSegueIdentifier" id="v4m-gW-qdb"/>
+                        <segue destination="qpT-VU-o50" kind="push" identifier="ConfigurePDF" id="6j3-Ji-wh4"/>
+                        <segue destination="qpT-VU-o50" kind="push" identifier="ConfigureCSV" id="Cfe-cU-FgY"/>
+                        <segue destination="zRm-IZ-bzQ" kind="push" identifier="PushManageCategoriesSegueIdentifier" id="ez9-4g-lM1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7au-SN-eAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2445" y="-1280"/>
+        </scene>
+        <!--Payment Methods View Controller-->
+        <scene sceneID="E2b-sJ-2t3">
+            <objects>
+                <tableViewController id="ZPX-hr-elc" customClass="PaymentMethodsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="prS-Qu-7uu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="ZPX-hr-elc" id="2hn-wz-jGd"/>
+                            <outlet property="delegate" destination="ZPX-hr-elc" id="che-Hk-3n2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="MyA-2E-EtP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="B1I-8r-aVB">
+                            <connections>
+                                <segue destination="vNg-YF-QYK" kind="push" identifier="PushEditPaymentMethodSequeIdentifier" id="vMl-b7-jhk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jxy-Ny-9nH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2948" y="-840"/>
+        </scene>
+        <!--Edit Payment Method View Controller-->
+        <scene sceneID="U4N-yO-Kin">
+            <objects>
+                <tableViewController id="vNg-YF-QYK" customClass="EditPaymentMethodViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="lZR-CL-CEq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="vNg-YF-QYK" id="YXc-k5-f0E"/>
+                            <outlet property="delegate" destination="vNg-YF-QYK" id="6F6-KW-g2c"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="lBd-4z-bct">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ojq-3v-rEJ">
+                            <connections>
+                                <action selector="donePressed" destination="vNg-YF-QYK" id="Y12-E5-g4L"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qzH-Wm-SRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3383" y="-641"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QOo-Wt-TgO">
@@ -832,10 +888,10 @@
                         <viewControllerLayoutGuide type="bottom" id="342-LS-RKF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="J69-wx-ark">
-                        <rect key="frame" x="0.0" y="64" width="320" height="524"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7id-u8-hpY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7id-u8-hpY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1019,10 +1075,10 @@
                         <viewControllerLayoutGuide type="bottom" id="5dj-6S-sse"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eAC-MV-07V">
-                        <rect key="frame" x="0.0" y="64" width="320" height="524"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qOq-nc-Hl3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qOq-nc-Hl3">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1478,6 +1534,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Cfe-cU-FgY"/>
         <segue reference="Pu5-7V-Vh4"/>
     </inferredMetricsTieBreakers>
 </document>

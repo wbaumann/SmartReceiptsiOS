@@ -17,5 +17,6 @@
 - (void)insertDistance:(NSDictionary *)modifiedParams;
 - (void)insertReceipt:(NSDictionary *)modifiedParams;
 - (WBTrip *)insertTrip:(NSDictionary *)modifiedParams;
+- (void)insertPaymentMethod:(NSString *)name;
 
 @end

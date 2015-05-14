@@ -35,6 +35,7 @@ static SettingsViewController *visibleInstance = nil;
 static NSString *const PushManageCategoriesSegueIdentifier = @"PushManageCategoriesSegueIdentifier";
 static NSString *const PushConfigurePDFColumnsSegueIdentifier = @"ConfigurePDF";
 static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
+static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPaymentMethodsControllerSegueIdentifier";
 
 @interface SettingsViewController () <UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -55,6 +56,8 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
 @property (nonatomic, strong) SettingsSwitchCell *onlyReportExpenseableCell;
 @property (nonatomic, strong) SettingsSwitchCell *enableAutocompleteSuggestionsCell;
 @property (nonatomic, strong) SettingsSwitchCell *defaultReceiptDateToReportStartCell;
+@property (nonatomic, strong) SettingsSwitchCell *usePaymentMethodsCell;
+@property (nonatomic, strong) SettingsButtonCell *customizePaymentMethodsCell;
 
 @property (nonatomic, strong) SettingsButtonCell *manageCategoriesCell;
 
@@ -150,6 +153,12 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
     self.defaultReceiptDateToReportStartCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
     [self.defaultReceiptDateToReportStartCell setTitle:NSLocalizedString(@"Default Receipt Date to Report Start Date", nil)];
 
+    self.usePaymentMethodsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSwitchCell cellIdentifier]];
+    [self.usePaymentMethodsCell setTitle:NSLocalizedString(@"Enable Payment Methods", nil)];
+
+    self.customizePaymentMethodsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
+    [self.customizePaymentMethodsCell setTitle:NSLocalizedString(@"Customize Payment Methods", nil)];
+
     InputCellsSection *general = [InputCellsSection sectionWithTitle:NSLocalizedString(@"General", nil)
                                                                cells:@[self.emailCell,
                                                                        self.defaultTripLengthCell,
@@ -164,7 +173,9 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
                                                                        self.matchCommentsToCategoriesCell,
                                                                        self.onlyReportExpenseableCell,
                                                                        self.enableAutocompleteSuggestionsCell,
-                                                                       self.defaultReceiptDateToReportStartCell]];
+                                                                       self.defaultReceiptDateToReportStartCell,
+                                                                       self.usePaymentMethodsCell,
+                                                                       self.customizePaymentMethodsCell]];
     [self addSectionForPresentation:general];
 
     [self addInlinedPickerCell:self.defaultCurrencyPickerCell forCell:self.defaultCurrencyCell];
@@ -239,6 +250,7 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
     [self.onlyReportExpenseableCell setSwitchOn:[WBPreferences onlyIncludeExpensableReceiptsInReports]];
     [self.enableAutocompleteSuggestionsCell setSwitchOn:[WBPreferences enableAutoCompleteSuggestions]];
     [self.defaultReceiptDateToReportStartCell setSwitchOn:[WBPreferences defaultToFirstReportDate]];
+    [self.usePaymentMethodsCell setSwitchOn:[WBPreferences usePaymentMethods]];
 
     NSArray *separators = @[@"-", @"/", @"."];
     NSString *systemSeparator = [[[WBDateFormatter alloc] init] separatorForCurrentLocale];
@@ -312,6 +324,8 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
     [WBPreferences setOnlyIncludeExpensableReceiptsInReports:self.onlyReportExpenseableCell.isSwitchOn];
     [WBPreferences setEnableAutoCompleteSuggestions:self.enableAutocompleteSuggestionsCell.isSwitchOn];
     [WBPreferences setDefaultToFirstReportDate:self.defaultReceiptDateToReportStartCell.isSwitchOn];
+    [WBPreferences setUsePaymentMethods:self.usePaymentMethodsCell.isSwitchOn];
+
     [WBPreferences setIncludeCSVHeaders:self.includeCSVHeadersCell.isSwitchOn];
 
     [WBPreferences setTheDistancePriceBeIncludedInReports:self.addDistancePriceToReportCell.isSwitchOn];
@@ -430,6 +444,8 @@ static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
         [self performSegueWithIdentifier:PushConfigurePDFColumnsSegueIdentifier sender:nil];
     } else if (cell == self.backupCell) {
         [self actionExport];
+    } else if (cell == self.customizePaymentMethodsCell) {
+        [self performSegueWithIdentifier:PushPaymentMethodsControllerSegueIdentifier sender:nil];
     }
 }
 

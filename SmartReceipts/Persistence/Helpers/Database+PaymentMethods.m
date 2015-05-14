@@ -6,11 +6,13 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <objc/objc.h>
 #import <FMDB/FMDatabaseAdditions.h>
 #import "Database+PaymentMethods.h"
 #import "DatabaseTableNames.h"
+#import "FetchedModelAdapter.h"
 #import "Database+Functions.h"
+#import "DatabaseQueryBuilder.h"
+#import "PaymentMethod.h"
 
 @implementation Database (PaymentMethods)
 
@@ -39,6 +41,55 @@
     return result;
 
     return NO;
+}
+
+- (FetchedModelAdapter *)fetchedAdapterForPaymentMethods {
+    DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:PaymentMethodsTable.TABLE_NAME];
+    [selectAll orderBy:PaymentMethodsTable.COLUMN_METHOD ascending:YES];
+    return [self createAdapterUsingQuery:selectAll forMode:[PaymentMethod class]];
+}
+
+- (BOOL)savePaymentMethod:(PaymentMethod *)method {
+    DatabaseQueryBuilder *insertStatement = [DatabaseQueryBuilder insertStatementForTable:PaymentMethodsTable.TABLE_NAME];
+    [insertStatement addParam:PaymentMethodsTable.COLUMN_METHOD value:method.method];
+    BOOL result = [self executeQuery:insertStatement];
+    if (result) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidInsertModelNotification object:method];
+        });
+    }
+    return result;
+}
+
+- (BOOL)updatePaymentMethod:(PaymentMethod *)method {
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:PaymentMethodsTable.TABLE_NAME];
+    [update addParam:PaymentMethodsTable.COLUMN_METHOD value:method.method];
+    [update where:PaymentMethodsTable.COLUMN_ID value:@(method.objectId)];
+    BOOL result = [self executeQuery:update];
+    if (result) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidUpdateModelNotification object:method];
+        });
+    }
+    return result;
+}
+
+- (BOOL)deletePaymentMethod:(PaymentMethod *)method {
+    DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:PaymentMethodsTable.TABLE_NAME];
+    [delete where:PaymentMethodsTable.COLUMN_ID value:@(method.objectId)];
+    BOOL result = [self executeQuery:delete];
+    if (result) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidDeleteModelNotification object:method];
+        });
+    }
+    return result;
+}
+
+- (PaymentMethod *)methodById:(NSUInteger)methodId {
+    DatabaseQueryBuilder *fetch = [DatabaseQueryBuilder selectAllStatementForTable:PaymentMethodsTable.TABLE_NAME];
+    [fetch where:PaymentMethodsTable.COLUMN_ID value:@(methodId)];
+    return (PaymentMethod *)[self executeFetchFor:[PaymentMethod class] withQuery:fetch];
 }
 
 @end
