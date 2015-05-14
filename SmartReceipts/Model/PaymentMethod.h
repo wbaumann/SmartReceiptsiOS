@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "FetchedModel.h"
+#import "Pickable.h"
 
-@interface PaymentMethod : NSObject <FetchedModel>
+@interface PaymentMethod : NSObject <FetchedModel, Pickable>
 
 @property (nonatomic, assign) NSUInteger objectId;
 @property (nonatomic, copy) NSString *method;

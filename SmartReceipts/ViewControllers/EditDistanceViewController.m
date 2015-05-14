@@ -26,6 +26,7 @@
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "Database.h"
 #import "Database+Distances.h"
+#import "StringPickableWrapper.h"
 
 @interface EditDistanceViewController ()
 
@@ -77,9 +78,9 @@
 
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.currencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
-    [self.currencyPickerCell setSelectedValue:selectedCurrency];
-    [self.currencyPickerCell setValueChangeHandler:^(NSString *selected) {
-        [weakSelf.currencyCell setValue:selected];
+    [self.currencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:selectedCurrency]];
+    [self.currencyPickerCell setValueChangeHandler:^(id<Pickable> selected) {
+        [weakSelf.currencyCell setValue:selected.presentedValue];
     }];
 
     self.locationCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
@@ -128,7 +129,7 @@
     [self.rateCell setValue:[self.distance.rate amountAsString]];
     NSString *currency = self.distance.rate.currency.code;
     [self.currencyCell setValue:currency];
-    [self.currencyPickerCell setSelectedValue:currency];
+    [self.currencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:currency]];
     [self.locationCell setValue:self.distance.location];
     [self.dateCell setValue:[self.dateFormatter formattedDate:self.distance.date inTimeZone:self.distance.timeZone]];
     [self.datePickerCell setDate:self.distance.date];

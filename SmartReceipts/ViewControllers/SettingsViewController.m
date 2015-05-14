@@ -28,6 +28,8 @@
 #import "SettingsButtonCell.h"
 #import "UIAlertView+Blocks.h"
 #import "NSDecimalNumber+WBNumberParse.h"
+#import "Pickable.h"
+#import "StringPickableWrapper.h"
 
 // for refreshing while backup
 static SettingsViewController *visibleInstance = nil;
@@ -122,8 +124,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     self.defaultCurrencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.defaultCurrencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
-    [self.defaultCurrencyPickerCell setValueChangeHandler:^(NSString *selected) {
-        [weakSelf.defaultCurrencyCell setValue:selected];
+    [self.defaultCurrencyPickerCell setValueChangeHandler:^(id<Pickable> selected) {
+        [weakSelf.defaultCurrencyCell setValue:selected.presentedValue];
     }];
 
     self.dateSeparatorCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSegmentControlCell cellIdentifier]];
@@ -242,7 +244,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     [self.userIdCell setValue:[WBPreferences userID]];
     [self.defaultCurrencyCell setValue:[WBPreferences defaultCurrency]];
-    [self.defaultCurrencyPickerCell setSelectedValue:[WBPreferences defaultCurrency]];
+    [self.defaultCurrencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:[WBPreferences defaultCurrency]]];
     [self.predictReceiptCategoriesCell setSwitchOn:[WBPreferences predictCategories]];
     [self.includeTaxFieldCell setSwitchOn:[WBPreferences includeTaxField]];
     [self.matchNameToCategoriesCell setSwitchOn:[WBPreferences matchNameToCategory]];

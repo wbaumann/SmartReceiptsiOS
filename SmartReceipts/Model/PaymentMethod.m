@@ -37,4 +37,8 @@
     return @(self.objectId).hash;
 }
 
+- (NSString *)presentedValue {
+    return self.method;
+}
+
 @end

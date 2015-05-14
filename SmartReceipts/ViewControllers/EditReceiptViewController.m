@@ -31,6 +31,10 @@
 #import "InlinedPickerCell.h"
 #import "InlinedDatePickerCell.h"
 #import "TitledAutocompleteEntryCell.h"
+#import "Database+PaymentMethods.h"
+#import "FetchedModelAdapter.h"
+#import "Pickable.h"
+#import "StringPickableWrapper.h"
 
 @interface EditReceiptViewController () <WBDynamicPickerDelegate,UITextFieldDelegate> {
     UIImage *_image;
@@ -57,6 +61,8 @@
 @property (nonatomic, strong) PickerCell *categoryCell;
 @property (nonatomic, strong) InlinedPickerCell *categoryPickerCell;
 @property (nonatomic, strong) TitledTextEntryCell *commentCell;
+@property (nonatomic, strong) PickerCell *paymenMethodCell;
+@property (nonatomic, strong) InlinedPickerCell *paymenMethodPickerCell;
 @property (nonatomic, strong) SwitchControlCell *expenseableCell;
 @property (nonatomic, strong) SwitchControlCell *fullPageImageCell;
 
@@ -104,8 +110,8 @@
 
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.currencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
-    [self.currencyPickerCell setValueChangeHandler:^(NSString *selected) {
-        [weakSelf.currencyCell setValue:selected];
+    [self.currencyPickerCell setValueChangeHandler:^(id<Pickable> selected) {
+        [weakSelf.currencyCell setValue:selected.presentedValue];
     }];
 
     self.dateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
@@ -124,8 +130,8 @@
     self.categoryPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     self.categoryNames = [[WBDB categories] categoriesNames];
     [self.categoryPickerCell setAllValues:self.categoryNames];
-    [self.categoryPickerCell setValueChangeHandler:^(NSString *selected) {
-        [weakSelf.categoryCell setValue:selected];
+    [self.categoryPickerCell setValueChangeHandler:^(id<Pickable> selected) {
+        [weakSelf.categoryCell setValue:selected.presentedValue];
         [weakSelf checkCategoryMatches];
     }];
 
@@ -133,6 +139,15 @@
     [self.commentCell setTitle:NSLocalizedString(@"Comment", nil)];
     [self.commentCell setPlaceholder:NSLocalizedString(@"Your comments here", nil)];
     [self.commentCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
+
+    self.paymenMethodCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
+    [self.paymenMethodCell setTitle:NSLocalizedString(@"Payment Method", nil)];
+
+    self.paymenMethodPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
+    [self.paymenMethodPickerCell setAllPickabelValues:[[[Database sharedInstance] fetchedAdapterForPaymentMethods] allObjects]];
+    [self.paymenMethodPickerCell setValueChangeHandler:^(id<Pickable> selected) {
+        [weakSelf.paymenMethodCell setValue:selected.presentedValue];
+    }];
 
     self.expenseableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.expenseableCell setTitle:NSLocalizedString(@"Expensable", nil)];
@@ -150,6 +165,9 @@
     [presentedCells addObject:self.dateCell];
     [presentedCells addObject:self.categoryCell];
     [presentedCells addObject:self.commentCell];
+    if ([WBPreferences usePaymentMethods]) {
+        [presentedCells addObject:self.paymenMethodCell];
+    }
     [presentedCells addObject:self.expenseableCell];
     [presentedCells addObject:self.fullPageImageCell];
 
@@ -158,6 +176,7 @@
     [self addInlinedPickerCell:self.currencyPickerCell forCell:self.currencyCell];
     [self addInlinedPickerCell:self.datePickerCell forCell:self.dateCell];
     [self addInlinedPickerCell:self.categoryPickerCell forCell:self.categoryCell];
+    [self addInlinedPickerCell:self.paymenMethodPickerCell forCell:self.paymenMethodCell];
 
     [self.nameCell.entryField becomeFirstResponder];
 
@@ -209,10 +228,10 @@
     }
 
     [self.currencyCell setValue:currencyCode];
-    [self.currencyPickerCell setSelectedValue:currencyCode];
+    [self.currencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:currencyCode]];
 
     [self.categoryCell setValue:category];
-    [self.categoryPickerCell setSelectedValue:category];
+    [self.categoryPickerCell setSelectedValue:[StringPickableWrapper wrapValue:category]];
 
     [self.dateCell setValue:[_dateFormatter formattedDateMs:_dateMs inTimeZone:_timeZone]];
     [self.datePickerCell setDate:[NSDate dateWithTimeIntervalSince1970:_dateMs / 1000]];
