@@ -285,7 +285,7 @@
         <!--New Receipt-->
         <scene sceneID="wvb-zr-7OQ">
             <objects>
-                <tableViewController id="JZz-Nj-VJL" customClass="WBNewReceiptViewController" sceneMemberID="viewController">
+                <tableViewController id="JZz-Nj-VJL" customClass="EditReceiptViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" id="uUt-xn-4Xp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

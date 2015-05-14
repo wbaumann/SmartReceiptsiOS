@@ -1,12 +1,12 @@
 //
-//  WBNewReceiptViewController.m
+//  EditReceiptViewController.m
 //  SmartReceipts
 //
 //  Created on 14/03/14.
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBNewReceiptViewController.h"
+#import "EditReceiptViewController.h"
 
 #import "WBReceiptsViewController.h"
 
@@ -32,7 +32,7 @@
 #import "InlinedDatePickerCell.h"
 #import "TitledAutocompleteEntryCell.h"
 
-@interface WBNewReceiptViewController () <WBDynamicPickerDelegate,UITextFieldDelegate> {
+@interface EditReceiptViewController () <WBDynamicPickerDelegate,UITextFieldDelegate> {
     UIImage *_image;
     
     NSString *_name;
@@ -64,7 +64,7 @@
 
 @end
 
-@implementation WBNewReceiptViewController
+@implementation EditReceiptViewController
 
 - (void)viewDidLoad
 {
@@ -72,7 +72,7 @@
 
     [WBCustomization customizeOnViewDidLoad:self];
 
-    __weak WBNewReceiptViewController *weakSelf = self;
+    __weak EditReceiptViewController *weakSelf = self;
 
     self.dateFormatter = [[WBDateFormatter alloc] init];
 
@@ -261,7 +261,7 @@
 
     NSString *name = [[self.nameCell value] lastPathComponent];
     if ([name length] <= 0) {
-        [WBNewReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Please enter a name", nil)];
+        [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Please enter a name", nil)];
         return;
     }
 
@@ -298,7 +298,7 @@
                          extraEditText3:nil];
         
         if(!newReceipt){
-            [WBNewReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot add this receipt",nil)];
+            [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot add this receipt", nil)];
             return;
         }
         [self.delegate viewController:self newReceipt:newReceipt];
@@ -321,7 +321,7 @@
                         extraEditText3:nil];
         
         if(!newReceipt){
-            [WBNewReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot save this receipt",nil)];
+            [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot save this receipt", nil)];
             return;
         }
         [self.delegate viewController:self updatedReceipt:newReceipt fromReceipt:_receipt];

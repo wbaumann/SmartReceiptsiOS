@@ -52,7 +52,6 @@
 		8478B77318D37BFB0041CBA3 /* WBCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478B77218D37BFB0041CBA3 /* WBCategoriesViewController.m */; };
 		8478B77618D37D350041CBA3 /* WBColumnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478B77518D37D350041CBA3 /* WBColumnsViewController.m */; };
 		8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478B77918D385160041CBA3 /* WBPopoverPicker.m */; };
-		8478B77D18D395280041CBA3 /* WBNewReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478B77C18D395280041CBA3 /* WBNewReceiptViewController.m */; };
 		847C887218D7ACC600A33397 /* WBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C887118D7ACC600A33397 /* WBTableViewController.m */; };
 		847C887518D7BA4500A33397 /* WBGenerateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847C887418D7BA4500A33397 /* WBGenerateViewController.m */; };
 		847EFA5418E6BC93006BE520 /* WBSqlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 847EFA5318E6BC93006BE520 /* WBSqlBuilder.m */; };
@@ -88,6 +87,7 @@
 		BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66588B7C2114029521A399 /* NSDate+Calculations.m */; };
 		EA0677ED1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0677EC1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m */; };
 		EA0677EF1B04DCEA0058A326 /* TitledAutocompleteEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA0677EE1B04DCE90058A326 /* TitledAutocompleteEntryCell.xib */; };
+		EA0677F21B04E38F0058A326 /* EditReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0677F11B04E38F0058A326 /* EditReceiptViewController.m */; };
 		EA07BF301AF3B472004D17F6 /* UIApplication+DismissKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF2F1AF3B472004D17F6 /* UIApplication+DismissKeyboard.m */; };
 		EA07BF341AF3B703004D17F6 /* InlinedDatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF321AF3B703004D17F6 /* InlinedDatePickerCell.m */; };
 		EA07BF351AF3B703004D17F6 /* InlinedDatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA07BF331AF3B703004D17F6 /* InlinedDatePickerCell.xib */; };
@@ -306,8 +306,6 @@
 		8478B77518D37D350041CBA3 /* WBColumnsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnsViewController.m; sourceTree = "<group>"; };
 		8478B77818D385160041CBA3 /* WBPopoverPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPopoverPicker.h; sourceTree = "<group>"; };
 		8478B77918D385160041CBA3 /* WBPopoverPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPopoverPicker.m; sourceTree = "<group>"; };
-		8478B77B18D395280041CBA3 /* WBNewReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBNewReceiptViewController.h; sourceTree = "<group>"; };
-		8478B77C18D395280041CBA3 /* WBNewReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNewReceiptViewController.m; sourceTree = "<group>"; };
 		847C887018D7ACC600A33397 /* WBTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTableViewController.h; sourceTree = "<group>"; };
 		847C887118D7ACC600A33397 /* WBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableViewController.m; sourceTree = "<group>"; };
 		847C887318D7BA4500A33397 /* WBGenerateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBGenerateViewController.h; sourceTree = "<group>"; };
@@ -372,6 +370,8 @@
 		EA0677EB1B04DCDA0058A326 /* TitledAutocompleteEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitledAutocompleteEntryCell.h; sourceTree = "<group>"; };
 		EA0677EC1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitledAutocompleteEntryCell.m; sourceTree = "<group>"; };
 		EA0677EE1B04DCE90058A326 /* TitledAutocompleteEntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitledAutocompleteEntryCell.xib; sourceTree = "<group>"; };
+		EA0677F01B04E38F0058A326 /* EditReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditReceiptViewController.h; sourceTree = "<group>"; };
+		EA0677F11B04E38F0058A326 /* EditReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditReceiptViewController.m; sourceTree = "<group>"; };
 		EA07BF2E1AF3B472004D17F6 /* UIApplication+DismissKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+DismissKeyboard.h"; sourceTree = "<group>"; };
 		EA07BF2F1AF3B472004D17F6 /* UIApplication+DismissKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+DismissKeyboard.m"; sourceTree = "<group>"; };
 		EA07BF311AF3B703004D17F6 /* InlinedDatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InlinedDatePickerCell.h; sourceTree = "<group>"; };
@@ -831,8 +831,6 @@
 			children = (
 				8472F01618D6F50B00929C5B /* WBNewTripViewController.h */,
 				8472F01718D6F50B00929C5B /* WBNewTripViewController.m */,
-				8478B77B18D395280041CBA3 /* WBNewReceiptViewController.h */,
-				8478B77C18D395280041CBA3 /* WBNewReceiptViewController.m */,
 				8453367E18F475E2001072AA /* WBAutocompleteHelper.h */,
 				8453367F18F475E2001072AA /* WBAutocompleteHelper.m */,
 			);
@@ -1324,6 +1322,8 @@
 				EA4DC9911AF154E000CEF1B9 /* EditDistanceViewController.m */,
 				EA1D42BF1B038D8F00D64D3A /* EditPaymentMethodViewController.h */,
 				EA1D42C01B038D8F00D64D3A /* EditPaymentMethodViewController.m */,
+				EA0677F01B04E38F0058A326 /* EditReceiptViewController.h */,
+				EA0677F11B04E38F0058A326 /* EditReceiptViewController.m */,
 				EA07BF611AF4EC1E004D17F6 /* FetchedCollectionTableViewController.h */,
 				EA07BF621AF4EC1E004D17F6 /* FetchedCollectionTableViewController.m */,
 				EA4C5CBF1AF286990083FDD7 /* InputCellsSection.h */,
@@ -1635,7 +1635,6 @@
 				84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */,
 				EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */,
 				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
-				8478B77D18D395280041CBA3 /* WBNewReceiptViewController.m in Sources */,
 				EA8D81A91AEA7C8E00BAC943 /* ReceiptColumnPrice.m in Sources */,
 				EA888A711AFA38AD00DF2AE6 /* SettingsButtonCell.m in Sources */,
 				EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */,
@@ -1651,6 +1650,7 @@
 				EA8D81A31AEA7C6B00BAC943 /* ReceiptColumnDate.m in Sources */,
 				84AEE5CD18EB47AB005DB908 /* WBMoveCopyReceiptViewController.m in Sources */,
 				EA8D81851AEA7B7500BAC943 /* ReceiptColumnCategoryCode.m in Sources */,
+				EA0677F21B04E38F0058A326 /* EditReceiptViewController.m in Sources */,
 				EA1D42C41B03901A00D64D3A /* EntryOnlyCell.m in Sources */,
 				843950A418ED1D2E00A1CF83 /* WBPdfDrawer.m in Sources */,
 				84AF861018E895CF00F15C3A /* WBDateFormatter.m in Sources */,
