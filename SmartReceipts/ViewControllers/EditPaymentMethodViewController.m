@@ -52,6 +52,15 @@
         return;
     }
 
+    if ([[Database sharedInstance] hasPaymentMethodWithName:entry]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Can't save", nil)
+                                                            message:NSLocalizedString(@"Payment method with given name already exists", nil)
+                                                   cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"OK", nil)]
+                                                   otherButtonItems:nil];
+        [alertView show];
+        return;
+    }
+
     if (!self.method) {
         self.method = [[PaymentMethod alloc] init];
     }

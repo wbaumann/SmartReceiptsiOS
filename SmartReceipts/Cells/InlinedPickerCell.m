@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <objc/NSObjCRuntime.h>
 #import "InlinedPickerCell.h"
+#import "Pickable.h"
+#import "StringPickableWrapper.h"
 
 @interface InlinedPickerCell () <UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -22,18 +23,19 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [self.allValues count];
+    return [self.allPickabelValues count];
 }
 
-- (void)setSelectedValue:(NSString *)selectedValue {
-    _selectedValue = [selectedValue mutableCopy];
+- (void)setSelectedValue:(id<Pickable>)selectedValue {
+    _selectedValue = selectedValue;
 
-    NSUInteger index = [self.allValues indexOfObject:selectedValue];
+    NSUInteger index = [self.allPickabelValues indexOfObject:selectedValue];
     [self.picker selectRow:index inComponent:0 animated:NO];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return self.allValues[row];
+    id<Pickable> selected = self.allPickabelValues[row];
+    return selected.presentedValue;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
@@ -41,9 +43,12 @@
         return;
     }
 
-    NSString *selected = self.allValues[row];
+    id<Pickable> selected = self.allPickabelValues[row];
     self.valueChangeHandler(selected);
 }
 
+- (void)setAllValues:(NSArray *)allValues {
+    [self setAllPickabelValues:[StringPickableWrapper wrapValues:allValues]];
+}
 
 @end

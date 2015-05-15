@@ -18,6 +18,8 @@
 - (BOOL)createReceiptsTable;
 - (BOOL)saveReceipt:(WBReceipt *)receipt;
 - (BOOL)saveReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database;
+- (BOOL)updateReceipt:(WBReceipt *)receipt;
+- (BOOL)updateReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database;
 - (NSArray *)allReceiptsForTrip:(WBTrip *)trip descending:(BOOL)desc;
 - (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip;
 - (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;

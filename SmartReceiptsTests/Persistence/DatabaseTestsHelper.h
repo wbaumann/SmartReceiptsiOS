@@ -10,6 +10,7 @@
 
 @class WBTrip;
 @class Distance;
+@class WBReceipt;
 
 @interface DatabaseTestsHelper : Database
 
@@ -18,5 +19,6 @@
 - (void)insertReceipt:(NSDictionary *)modifiedParams;
 - (WBTrip *)insertTrip:(NSDictionary *)modifiedParams;
 - (void)insertPaymentMethod:(NSString *)name;
+- (WBReceipt *)receiptWithName:(NSString *)receiptName;
 
 @end

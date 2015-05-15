@@ -12,6 +12,8 @@
 #import "UIView+Search.h"
 #import "Constants.h"
 #import "InputValidation.h"
+#import "WBAutocompleteHelper.h"
+#import "TitledAutocompleteEntryCell.h"
 
 @interface InputCellsViewController () <UITextFieldDelegate>
 
@@ -112,8 +114,24 @@
     return YES;
 }
 
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    UITableViewCell *cell = [textField superviewOfType:[UITableViewCell class]];
+
+    if (![cell isKindOfClass:[TitledAutocompleteEntryCell class]]) {
+        return;
+    }
+
+    TitledAutocompleteEntryCell *autocompleteEntryCell = (TitledAutocompleteEntryCell *) cell;
+    [autocompleteEntryCell.autocompleteHelper textFieldDidEndEditing:textField];
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     UITableViewCell *cell = [textField superviewOfType:[UITableViewCell class]];
+
+    if ([cell isKindOfClass:[TitledAutocompleteEntryCell class]]) {
+        TitledAutocompleteEntryCell *autocompleteEntryCell = (TitledAutocompleteEntryCell *) cell;
+        [autocompleteEntryCell.autocompleteHelper textFieldDidBeginEditing:textField];
+    }
 
     if (![cell isKindOfClass:[TextEntryCell class]]) {
         [self setActiveFieldInputValidation:nil];

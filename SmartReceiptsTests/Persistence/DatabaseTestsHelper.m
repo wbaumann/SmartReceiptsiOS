@@ -18,6 +18,8 @@
 #import "NSString+Validation.h"
 #import "PaymentMethod.h"
 #import "Database+PaymentMethods.h"
+#import "Database+Functions.h"
+#import "DatabaseQueryBuilder.h"
 
 @interface Distance (TestExpose)
 
@@ -98,7 +100,17 @@
                                         extraEditText2:@""
                                         extraEditText3:@""];
     [receipt setTrip:params[ReceiptsTable.COLUMN_PARENT]];
+    [receipt setPaymentMethod:params[ReceiptsTable.COLUMN_PAYMENT_METHOD_ID]];
     [self saveReceipt:receipt];
+}
+
+- (WBReceipt *)receiptWithName:(NSString *)receiptName {
+    DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
+    [selectAll where:ReceiptsTable.COLUMN_NAME value:receiptName];
+    WBReceipt *receipt = (WBReceipt *)[self executeFetchFor:[WBReceipt class] withQuery:selectAll];
+    [receipt setTrip:[self tripWithName:receipt.tripName]];
+    [receipt setPaymentMethod:[self paymentMethodById:receipt.paymentMethodId]];
+    return receipt;
 }
 
 @end

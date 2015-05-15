@@ -11,6 +11,7 @@
 
 @class WBTrip, WBCurrency;
 @class WBPrice;
+@class PaymentMethod;
 
 @interface WBReceipt : NSObject <FetchedModel>
 
@@ -19,6 +20,10 @@
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, assign) NSInteger reportIndex;
 @property (nonatomic, assign) NSUInteger id;
+@property (nonatomic, strong) PaymentMethod *paymentMethod;
+@property (nonatomic, assign) NSUInteger paymentMethodId;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *tripName;
 
 
 +(NSString*) NO_DATA;

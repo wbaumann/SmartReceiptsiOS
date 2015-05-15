@@ -13,6 +13,7 @@
 #import "Database+Functions.h"
 #import "DatabaseQueryBuilder.h"
 #import "PaymentMethod.h"
+#import "NSString+Helpers.h"
 
 @implementation Database (PaymentMethods)
 
@@ -84,6 +85,24 @@
         });
     }
     return result;
+}
+
+- (NSArray *)allPaymentMethods {
+    return [[self fetchedAdapterForPaymentMethods] allObjects];
+}
+
+- (PaymentMethod *)paymentMethodById:(NSUInteger)methodId {
+    DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:PaymentMethodsTable.TABLE_NAME];
+    [selectAll where:PaymentMethodsTable.COLUMN_ID value:@(methodId)];
+    return (PaymentMethod *)[self executeFetchFor:[PaymentMethod class] withQuery:selectAll];
+}
+
+- (BOOL)hasPaymentMethodWithName:(NSString *)name {
+    NSString *checked = [name trimmedString];
+    DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:PaymentMethodsTable.TABLE_NAME];
+    [select where:PaymentMethodsTable.COLUMN_METHOD value:checked caseInsensitive:YES];
+    PaymentMethod *method = (PaymentMethod *)[self executeFetchFor:[PaymentMethod class] withQuery:select];
+    return method != nil;
 }
 
 - (PaymentMethod *)methodById:(NSUInteger)methodId {

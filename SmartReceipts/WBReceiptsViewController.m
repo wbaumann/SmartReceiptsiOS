@@ -303,7 +303,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     }
     else if([[segue identifier] isEqualToString:@"ReceiptCreator"])
     {
-        WBNewReceiptViewController* vc = (WBNewReceiptViewController*)[[segue destinationViewController] topViewController];
+        EditReceiptViewController * vc = (EditReceiptViewController *)[[segue destinationViewController] topViewController];
         
         vc.delegate = self;
         vc.receiptsViewController = self;
@@ -336,13 +336,13 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
 #pragma mark - WBNewReceiptViewControllerDelegate
 
--(void)viewController:(WBNewReceiptViewController *)viewController newReceipt:(WBReceipt *)receipt {
+-(void)viewController:(EditReceiptViewController *)viewController newReceipt:(WBReceipt *)receipt {
     // We start our updates here for new Receipts, since ios8 checks the table size at different time than ios7
     [self.tableView beginUpdates];
     [_receipts addReceipt:receipt];
 }
 
--(void)viewController:(WBNewReceiptViewController *)viewController updatedReceipt:(WBReceipt *)newReceipt fromReceipt:(WBReceipt *)oldReceipt {
+-(void)viewController:(EditReceiptViewController *)viewController updatedReceipt:(WBReceipt *)newReceipt fromReceipt:(WBReceipt *)oldReceipt {
     [_receipts replaceReceipt:oldReceipt toReceipt:newReceipt];
 }
 

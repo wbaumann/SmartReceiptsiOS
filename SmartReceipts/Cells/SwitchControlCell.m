@@ -1,5 +1,5 @@
 //
-//  SettingsSwitchCell.m
+//  SwitchControlCell.m
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 06/05/15.
@@ -7,16 +7,16 @@
 //
 
 #import <objc/objc.h>
-#import "SettingsSwitchCell.h"
+#import "SwitchControlCell.h"
 
-@interface SettingsSwitchCell ()
+@interface SwitchControlCell ()
 
 @property (nonatomic, strong) IBOutlet UISwitch *switchControl;
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 
 @end
 
-@implementation SettingsSwitchCell
+@implementation SwitchControlCell
 
 - (void)awakeFromNib {
     // Initialization code

@@ -18,6 +18,8 @@
 #import "FetchedModelAdapter.h"
 #import "WBPreferences.h"
 #import "Database+Trips.h"
+#import "Database+PaymentMethods.h"
+#import "PaymentMethod.h"
 
 @implementation Database (Receipts)
 
@@ -56,21 +58,28 @@
 
 - (BOOL)saveReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:ReceiptsTable.TABLE_NAME];
-    [insert addParam:ReceiptsTable.COLUMN_PATH value:receipt.imageFileName fallback:[WBReceipt NO_DATA]];
-    [insert addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];
-    [insert addParam:ReceiptsTable.COLUMN_NAME value:[receipt.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-    [insert addParam:ReceiptsTable.COLUMN_CATEGORY value:receipt.category];
-    [insert addParam:ReceiptsTable.COLUMN_DATE value:@(receipt.dateMs)];
-    [insert addParam:ReceiptsTable.COLUMN_TIMEZONE value:receipt.timeZone.name];
-    [insert addParam:ReceiptsTable.COLUMN_EXPENSEABLE value:@(receipt.isExpensable)];
-    [insert addParam:ReceiptsTable.COLUMN_ISO4217 value:receipt.price.currency.code];
-    [insert addParam:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE value:@(!receipt.isFullPage)];
-    [insert addParam:ReceiptsTable.COLUMN_PRICE value:receipt.price.amount];
-    [insert addParam:ReceiptsTable.COLUMN_TAX value:receipt.tax.amount];
-    [insert addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1 value:[Database extraInsertValue:receipt.extraEditText1]];
-    [insert addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2 value:[Database extraInsertValue:receipt.extraEditText2]];
-    [insert addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3 value:[Database extraInsertValue:receipt.extraEditText3]];
+    [self appendCommonValuesFromReceipt:receipt toQuery:insert];
     BOOL result = [self executeQuery:insert usingDatabase:database];
+    if (result) {
+        [self updatePriceOfTrip:receipt.trip usingDatabase:database];
+    }
+    return result;
+}
+
+- (BOOL)updateReceipt:(WBReceipt *)receipt {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self updateReceipt:receipt usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (BOOL)updateReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
+    [self appendCommonValuesFromReceipt:receipt toQuery:update];
+    [update where:ReceiptsTable.COLUMN_ID value:@(receipt.id)];
+    BOOL result = [self executeQuery:update usingDatabase:database];
     if (result) {
         [self updatePriceOfTrip:receipt.trip usingDatabase:database];
     }
@@ -95,9 +104,15 @@
     [adapter setQuery:query.buildStatement parameters:query.parameters];
     [adapter setModelClass:[WBReceipt class]];
     [adapter fetch];
+    //TODO jaanus: maybe can do this better
+    NSArray *paymentMethods = [self allPaymentMethods];
     NSArray *receipts = [adapter allObjects];
     for (WBReceipt *receipt in receipts) {
         [receipt setTrip:trip];
+        [receipt setPaymentMethod:[paymentMethods filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+            PaymentMethod *method = evaluatedObject;
+            return method.objectId == receipt.paymentMethodId;
+        }]].firstObject];
     }
     return receipts;
 }
@@ -157,6 +172,24 @@
 
 - (NSString *)currencyForTripReceipts:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
     return [self selectCurrencyFromTable:ReceiptsTable.TABLE_NAME currencyColumn:ReceiptsTable.COLUMN_ISO4217 forTrip:trip usingDatabase:database];
+}
+
+- (void)appendCommonValuesFromReceipt:(WBReceipt *)receipt toQuery:(DatabaseQueryBuilder *)query {
+    [query addParam:ReceiptsTable.COLUMN_PATH value:receipt.imageFileName fallback:[WBReceipt NO_DATA]];
+    [query addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];
+    [query addParam:ReceiptsTable.COLUMN_NAME value:[receipt.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+    [query addParam:ReceiptsTable.COLUMN_CATEGORY value:receipt.category];
+    [query addParam:ReceiptsTable.COLUMN_DATE value:@(receipt.dateMs)];
+    [query addParam:ReceiptsTable.COLUMN_TIMEZONE value:receipt.timeZone.name];
+    [query addParam:ReceiptsTable.COLUMN_EXPENSEABLE value:@(receipt.isExpensable)];
+    [query addParam:ReceiptsTable.COLUMN_ISO4217 value:receipt.price.currency.code];
+    [query addParam:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE value:@(!receipt.isFullPage)];
+    [query addParam:ReceiptsTable.COLUMN_PRICE value:receipt.price.amount];
+    [query addParam:ReceiptsTable.COLUMN_TAX value:receipt.tax.amount];
+    [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1 value:[Database extraInsertValue:receipt.extraEditText1]];
+    [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2 value:[Database extraInsertValue:receipt.extraEditText2]];
+    [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3 value:[Database extraInsertValue:receipt.extraEditText3]];
+    [query addParam:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID value:@(receipt.paymentMethod.objectId)];
 }
 
 @end

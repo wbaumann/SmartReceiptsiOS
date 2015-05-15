@@ -30,4 +30,9 @@
     [self.titleLabel setText:title];
 }
 
+- (void)setPlaceholder:(NSString *)placeholder {
+    [self.entryField setPlaceholder:placeholder];
+}
+
+
 @end

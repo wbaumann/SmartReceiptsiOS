@@ -9,7 +9,7 @@
 #import "WBTableViewController.h"
 
 #import "WBObservableReceipts.h"
-#import "WBNewReceiptViewController.h"
+#import "EditReceiptViewController.h"
 
 @class WBTrip,WBReceiptsViewController,WBTripsViewController;
 

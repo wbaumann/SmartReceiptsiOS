@@ -1,5 +1,5 @@
 //
-//  SettingsSwitchCell.h
+//  SwitchControlCell.h
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 06/05/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsSwitchCell : UITableViewCell
+@interface SwitchControlCell : UITableViewCell
 
 - (void)setTitle:(NSString *)title;
 - (void)setSwitchOn:(BOOL)isOn;
