@@ -37,6 +37,7 @@ NSString * const WBColumnNameTax = NSLocalizedString(               @"Tax", nil)
 NSString * const WBColumnNamePictured = NSLocalizedString(          @"Pictured", nil);
 NSString * const WBColumnNameExpensable = NSLocalizedString(        @"Expensable", nil);
 NSString * const WBColumnNameIndex = NSLocalizedString(             @"Receipt Index", nil);
+NSString * const WBColumnNamePaymentMethod = NSLocalizedString(     @"Payment Method", nil);
 // Extras have to be filled to be active.
 NSString * const WBColumnNameExtraEdittext1 = @"";
 NSString * const WBColumnNameExtraEdittext2 = @"";
