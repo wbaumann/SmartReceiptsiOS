@@ -67,6 +67,9 @@
 + (BOOL)usePaymentMethods;
 + (void)setUsePaymentMethods:(BOOL)value;
 
++ (BOOL)trackConstCenter;
++ (void)setTrackConstCenter:(BOOL)value;
+
 + (int)cameraMaxHeightWidth;
 + (void)setCameraMaxHeightWidth:(int)cameraMaxHeightWidth;
 
