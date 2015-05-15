@@ -106,10 +106,6 @@ static NSString* checkNoData(NSString* str) {
     return [NSTimeZone localTimeZone];
 }
 
--(NSString*)name {
-    return _name;
-}
-
 -(NSString*)category {
     return _category;
 }
@@ -247,6 +243,8 @@ static NSString* checkNoData(NSString* str) {
     _extraEditText3 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3];
     _timeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:ReceiptsTable.COLUMN_TIMEZONE]];
     _dateMs = [resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE];
+    [self setPaymentMethodId:(NSUInteger) [resultSet intForColumn:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID]];
+    [self setTripName:[resultSet stringForColumn:ReceiptsTable.COLUMN_PARENT]];
 }
 
 @end

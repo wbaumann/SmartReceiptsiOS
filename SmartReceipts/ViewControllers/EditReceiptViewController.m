@@ -35,6 +35,8 @@
 #import "FetchedModelAdapter.h"
 #import "Pickable.h"
 #import "StringPickableWrapper.h"
+#import "PaymentMethod.h"
+#import "Constants.h"
 
 @interface EditReceiptViewController () <WBDynamicPickerDelegate,UITextFieldDelegate> {
     UIImage *_image;
@@ -144,9 +146,11 @@
     [self.paymenMethodCell setTitle:NSLocalizedString(@"Payment Method", nil)];
 
     self.paymenMethodPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
-    [self.paymenMethodPickerCell setAllPickabelValues:[[[Database sharedInstance] fetchedAdapterForPaymentMethods] allObjects]];
+    NSArray *paymentMethods = [[[Database sharedInstance] fetchedAdapterForPaymentMethods] allObjects];
+    [self.paymenMethodPickerCell setAllPickabelValues:paymentMethods];
+    [self.paymenMethodPickerCell setSelectedValue:[self defaultPaymentMethodFrom:paymentMethods]];
     [self.paymenMethodPickerCell setValueChangeHandler:^(id<Pickable> selected) {
-        [weakSelf.paymenMethodCell setValue:selected.presentedValue];
+        [weakSelf.paymenMethodCell setPickableValue:selected];
     }];
 
     self.expenseableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
@@ -183,6 +187,17 @@
     [self loadDataToCells];
 }
 
+- (id <Pickable>)defaultPaymentMethodFrom:(NSArray *)methods {
+    for (PaymentMethod *method in methods) {
+        if ([NSLocalizedString(@"Unspecified", nil) isEqualToString:method.presentedValue]) {
+            return method;
+        }
+    }
+
+    SRAssert(NO);
+    return nil;
+}
+
 - (void)loadDataToCells {
     NSString *currencyCode = nil;
     NSString *category = nil;
@@ -198,6 +213,12 @@
         [self.commentCell setValue:[self.receipt comment]];
         [self.expenseableCell setSwitchOn:[self.receipt isExpensable]];
         [self.fullPageImageCell setSwitchOn:[self.receipt isFullPage]];
+        if (self.receipt.paymentMethod) {
+            [self.paymenMethodCell setPickableValue:self.receipt.paymentMethod];
+            [self.paymenMethodPickerCell setSelectedValue:self.receipt.paymentMethod];
+        } else {
+            [self.paymenMethodCell setPickableValue:self.paymenMethodPickerCell.selectedValue];
+        }
         _timeZone = [self.receipt timeZone];
     } else {
         self.navigationItem.title = NSLocalizedString(@"New Receipt", nil);
@@ -216,6 +237,7 @@
 
         [self.expenseableCell setSwitchOn:YES];
         [self.fullPageImageCell setSwitchOn:NO];
+        [self.paymenMethodCell setPickableValue:self.paymenMethodPickerCell.selectedValue];
     }
 
     if (!_receipt) {
@@ -300,21 +322,21 @@
         }
 
         NSString *currencyCode = [self.currencyCell value];
-        newReceipt =
-        [[WBDB receipts] insertWithTrip:_trip
-                                   name:name
-                               category:[self.categoryCell value]
-                          imageFileName:imageFileName
-                                 dateMs:_dateMs
-                           timeZoneName:[_timeZone name]
-                                comment:[self.commentCell value]
-                                  price:[WBPrice priceWithAmount:price currencyCode:currencyCode]
-                                    tax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]
-                           isExpensable:self.expenseableCell.isSwitchOn
-                             isFullPage:self.fullPageImageCell.isSwitchOn
-                         extraEditText1:nil
-                         extraEditText2:nil
-                         extraEditText3:nil];
+        newReceipt =[[WBDB receipts] insertWithTrip:_trip
+                                               name:name
+                                           category:[self.categoryCell value]
+                                      imageFileName:imageFileName
+                                             dateMs:_dateMs
+                                       timeZoneName:[_timeZone name]
+                                            comment:[self.commentCell value]
+                                              price:[WBPrice priceWithAmount:price currencyCode:currencyCode]
+                                                tax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]
+                                       isExpensable:self.expenseableCell.isSwitchOn
+                                         isFullPage:self.fullPageImageCell.isSwitchOn
+                                     extraEditText1:nil
+                                     extraEditText2:nil
+                                     extraEditText3:nil
+                                      paymentMethod:(PaymentMethod *)self.paymenMethodCell.pickableValue];
         
         if(!newReceipt){
             [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot add this receipt", nil)];
@@ -324,20 +346,20 @@
     } else {
 
         NSString *currencyCode = [self.currencyCell value];
-        newReceipt =
-        [[WBDB receipts] updateReceipt:_receipt
-                                  trip:_trip
-                                  name:name
-                              category:[self.categoryCell value]
-                                dateMs:_dateMs
-                               comment:[self.commentCell value]
-                                 price:[WBPrice priceWithAmount:price currencyCode:currencyCode]
-                                   tax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]
-                          isExpensable:self.expenseableCell.isSwitchOn
-                            isFullPage:self.fullPageImageCell.isSwitchOn
-                        extraEditText1:nil
-                        extraEditText2:nil
-                        extraEditText3:nil];
+        newReceipt = [[WBDB receipts] updateReceipt:_receipt
+                                               trip:_trip
+                                               name:name
+                                           category:[self.categoryCell value]
+                                             dateMs:_dateMs
+                                            comment:[self.commentCell value]
+                                              price:[WBPrice priceWithAmount:price currencyCode:currencyCode]
+                                                tax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]
+                                       isExpensable:self.expenseableCell.isSwitchOn
+                                         isFullPage:self.fullPageImageCell.isSwitchOn
+                                     extraEditText1:nil
+                                     extraEditText2:nil
+                                     extraEditText3:nil
+                                      paymentMethed:(PaymentMethod *)self.paymenMethodCell.pickableValue];
         
         if(!newReceipt){
             [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot save this receipt", nil)];

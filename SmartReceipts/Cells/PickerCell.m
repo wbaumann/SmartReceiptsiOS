@@ -7,6 +7,7 @@
 //
 
 #import "PickerCell.h"
+#import "Pickable.h"
 
 @interface PickerCell ()
 
@@ -42,6 +43,12 @@
 
 - (NSString *)value {
     return self.valueLabel.text;
+}
+
+- (void)setPickableValue:(id <Pickable>)pickableValue {
+    _pickableValue = pickableValue;
+
+    [self.valueLabel setText:pickableValue.presentedValue];
 }
 
 @end

@@ -156,6 +156,8 @@
 		EA5ECA2F1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5ECA2D1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib */; };
 		EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5EF0D41AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m */; };
 		EA5EF0D61AF7E9C9009FA608 /* DatabaseTableNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF491AF40066004D17F6 /* DatabaseTableNames.m */; };
+		EA6677741B05F6D3004D3993 /* DatabaseReceiptsPaymentMethodTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6677731B05F6D3004D3993 /* DatabaseReceiptsPaymentMethodTest.m */; };
+		EA6677761B05FD8A004D3993 /* DatabaseReceiptsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6677751B05FD8A004D3993 /* DatabaseReceiptsTest.m */; };
 		EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */; };
 		EA6888D31AFE699A00A910FC /* receipts-dates-test.db in Resources */ = {isa = PBXBuildFile; fileRef = EA6888D21AFE699A00A910FC /* receipts-dates-test.db */; };
 		EA69EF151AEFC81A00276B70 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF141AEFC81A00276B70 /* Database.m */; };
@@ -171,7 +173,6 @@
 		EA888A761AFA3D3F00DF2AE6 /* NumberInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A751AFA3D3F00DF2AE6 /* NumberInputValidation.m */; };
 		EA888A791AFA44E300DF2AE6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A781AFA44E300DF2AE6 /* SettingsViewController.m */; };
 		EA888A7C1AFA5C5900DF2AE6 /* Database+Receipts.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A7B1AFA5C5900DF2AE6 /* Database+Receipts.m */; };
-		EA888A7E1AFA5C8A00DF2AE6 /* DatabaseReceiptsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A7D1AFA5C8A00DF2AE6 /* DatabaseReceiptsTest.m */; };
 		EA888A811AFA5D1D00DF2AE6 /* WBPreferencesTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A801AFA5D1D00DF2AE6 /* WBPreferencesTestHelper.m */; };
 		EA888A831AFA601100DF2AE6 /* DatabaseReceiptsSumTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A821AFA601100DF2AE6 /* DatabaseReceiptsSumTest.m */; };
 		EA888A861AFB4FBD00DF2AE6 /* Database+Trips.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A851AFB4FBD00DF2AE6 /* Database+Trips.m */; };
@@ -489,6 +490,8 @@
 		EA5ECA2D1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSegmentControlCell.xib; sourceTree = "<group>"; };
 		EA5EF0D31AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchAdapterDelegateCheckHelper.h; sourceTree = "<group>"; };
 		EA5EF0D41AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchAdapterDelegateCheckHelper.m; sourceTree = "<group>"; };
+		EA6677731B05F6D3004D3993 /* DatabaseReceiptsPaymentMethodTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseReceiptsPaymentMethodTest.m; sourceTree = "<group>"; };
+		EA6677751B05FD8A004D3993 /* DatabaseReceiptsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseReceiptsTest.m; sourceTree = "<group>"; };
 		EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseDatesTest.m; sourceTree = "<group>"; };
 		EA6888D21AFE699A00A910FC /* receipts-dates-test.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "receipts-dates-test.db"; sourceTree = "<group>"; };
 		EA69EF131AEFC81A00276B70 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
@@ -512,7 +515,6 @@
 		EA888A781AFA44E300DF2AE6 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		EA888A7A1AFA5C5900DF2AE6 /* Database+Receipts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Database+Receipts.h"; sourceTree = "<group>"; };
 		EA888A7B1AFA5C5900DF2AE6 /* Database+Receipts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Database+Receipts.m"; sourceTree = "<group>"; };
-		EA888A7D1AFA5C8A00DF2AE6 /* DatabaseReceiptsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseReceiptsTest.m; sourceTree = "<group>"; };
 		EA888A7F1AFA5D1D00DF2AE6 /* WBPreferencesTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPreferencesTestHelper.h; sourceTree = "<group>"; };
 		EA888A801AFA5D1D00DF2AE6 /* WBPreferencesTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPreferencesTestHelper.m; sourceTree = "<group>"; };
 		EA888A821AFA601100DF2AE6 /* DatabaseReceiptsSumTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseReceiptsSumTest.m; sourceTree = "<group>"; };
@@ -1024,8 +1026,9 @@
 				EA36DE521B0119150034CC2D /* DatabaseHintsTest.m */,
 				EA1D42C81B03931400D64D3A /* DatabasePaymentMethodsTest.m */,
 				EA07BF581AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m */,
+				EA6677731B05F6D3004D3993 /* DatabaseReceiptsPaymentMethodTest.m */,
 				EA888A821AFA601100DF2AE6 /* DatabaseReceiptsSumTest.m */,
-				EA888A7D1AFA5C8A00DF2AE6 /* DatabaseReceiptsTest.m */,
+				EA6677751B05FD8A004D3993 /* DatabaseReceiptsTest.m */,
 				EA8CEAE61AFCEBE90007B3F5 /* DatabaseTripsSumTest.m */,
 				EA888A871AFB4FD600DF2AE6 /* DatabaseTripsTest.m */,
 				EA5EF0D31AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.h */,
@@ -1789,13 +1792,13 @@
 				EA07BF6C1AF51D5D004D17F6 /* DatabaseTestsHelper.m in Sources */,
 				EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */,
 				EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */,
-				EA888A7E1AFA5C8A00DF2AE6 /* DatabaseReceiptsTest.m in Sources */,
 				EA69EF261AEFEE5D00276B70 /* DatabaseTestsBase.m in Sources */,
 				EA8CEAE71AFCEBE90007B3F5 /* DatabaseTripsSumTest.m in Sources */,
 				EAED9B221AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m in Sources */,
 				EA07BF6E1AF525A4004D17F6 /* Database+Distances.m in Sources */,
 				EA07BF691AF51C61004D17F6 /* FetchedDistancesAdapterTest.m in Sources */,
 				EA07BF5B1AF4DA66004D17F6 /* DatabaseDistancesTest.m in Sources */,
+				EA6677741B05F6D3004D3993 /* DatabaseReceiptsPaymentMethodTest.m in Sources */,
 				EAE725DA1B022E9100402689 /* TripsToReceiptsConverterTest.m in Sources */,
 				EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */,
 				EA36DE551B0121990034CC2D /* DatabaseCurrenciesTest.m in Sources */,
@@ -1804,6 +1807,7 @@
 				EA8CEAE51AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m in Sources */,
 				EA888A831AFA601100DF2AE6 /* DatabaseReceiptsSumTest.m in Sources */,
 				EA5EF0D61AF7E9C9009FA608 /* DatabaseTableNames.m in Sources */,
+				EA6677761B05FD8A004D3993 /* DatabaseReceiptsTest.m in Sources */,
 				EA888A881AFB4FD600DF2AE6 /* DatabaseTripsTest.m in Sources */,
 				EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */,
 				EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */,

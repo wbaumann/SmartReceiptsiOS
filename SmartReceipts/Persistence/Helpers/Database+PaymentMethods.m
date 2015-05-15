@@ -86,6 +86,16 @@
     return result;
 }
 
+- (NSArray *)allPaymentMethods {
+    return [[self fetchedAdapterForPaymentMethods] allObjects];
+}
+
+- (PaymentMethod *)paymentMethodById:(NSUInteger)methodId {
+    DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:PaymentMethodsTable.TABLE_NAME];
+    [selectAll where:PaymentMethodsTable.COLUMN_ID value:@(methodId)];
+    return (PaymentMethod *)[self executeFetchFor:[PaymentMethod class] withQuery:selectAll];
+}
+
 - (PaymentMethod *)methodById:(NSUInteger)methodId {
     DatabaseQueryBuilder *fetch = [DatabaseQueryBuilder selectAllStatementForTable:PaymentMethodsTable.TABLE_NAME];
     [fetch where:PaymentMethodsTable.COLUMN_ID value:@(methodId)];

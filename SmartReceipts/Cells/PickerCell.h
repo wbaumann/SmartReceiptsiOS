@@ -10,7 +10,11 @@
 #import "TextEntryCell.h"
 #import "TitledTextEntryCell.h"
 
+@protocol Pickable;
+
 @interface PickerCell : UITableViewCell
+
+@property (nonatomic, strong) id<Pickable> pickableValue;
 
 - (void)setTitle:(NSString *)title;
 - (void)setTitle:(NSString *)title value:(NSString *)value;
