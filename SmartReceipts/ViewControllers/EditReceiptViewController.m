@@ -194,8 +194,7 @@
         }
     }
 
-    SRAssert(NO);
-    return nil;
+    return [methods lastObject];
 }
 
 - (void)loadDataToCells {
