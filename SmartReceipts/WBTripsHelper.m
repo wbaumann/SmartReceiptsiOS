@@ -68,25 +68,23 @@ static NSString * const NO_DATA = @"null";
     const int fromTimeZoneIndex = [resultSet columnIndexForName:COLUMN_FROM_TIMEZONE];
     const int toTimeZoneIndex = [resultSet columnIndexForName:COLUMN_TO_TIMEZONE];
     const int priceIndex = [resultSet columnIndexForName:COLUMN_PRICE];
-    const int milesIndex = [resultSet columnIndexForName:COLUMN_MILEAGE];
 
     while ([resultSet next]) {
         NSString *name = [resultSet stringForColumnIndex:nameIndex];
         //TODO jaanus: fix this
         WBTrip *fetchTrip = [[WBTrip alloc] init];
-        [fetchTrip setReportDirectoryName:name];
+        [fetchTrip setName:name];
         NSString *curr = [[Database sharedInstance] currencyForTripReceipts:fetchTrip usingDatabase:database];
         ////////
 
         NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumnIndex:priceIndex]];
-        WBTrip *trip = [[WBTrip alloc] initWithName:name
-                                              price:[WBPrice priceWithAmount:price currencyCode:curr]
-                                          startDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumnIndex:fromIndex]]
-                                            endDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumnIndex:toIndex]]
-                                      startTimeZone:[NSTimeZone timeZoneWithName:[resultSet stringForColumnIndex:fromTimeZoneIndex]]
-                                        endTimeZone:[NSTimeZone timeZoneWithName:[resultSet stringForColumnIndex:toTimeZoneIndex]]
-                                              miles:[resultSet doubleForColumnIndex:milesIndex]];
-
+        WBTrip *trip = [[WBTrip alloc] init];
+        [trip setName:name];
+        [trip setPrice:[WBPrice priceWithAmount:price currencyCode:curr]];
+        [trip setStartDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumnIndex:fromIndex]]];
+        [trip setEndDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumnIndex:toIndex]]];
+        [trip setStartTimeZone:[NSTimeZone timeZoneWithName:[resultSet stringForColumnIndex:fromTimeZoneIndex]]];
+        [trip setEndTimeZone:[NSTimeZone timeZoneWithName:[resultSet stringForColumnIndex:toTimeZoneIndex]]];
         [allTrips addObject:trip];
     }
 
@@ -102,23 +100,6 @@ static NSString * const NO_DATA = @"null";
         array = [self selectAllInDatabase:database];
     }];
     return array;
-}
-
-- (WBTrip *)insertWithName:(NSString *)name from:(NSDate *)from to:(NSDate *)to {
-    name = [name lastPathComponent]; // for removing slashes
-    NSString *defaultCurr = [WBPreferences defaultCurrency];
-    WBTrip *trip = [[WBTrip alloc] initWithName:name
-                                          price:[WBPrice zeroPriceWithCurrencyCode:defaultCurr]
-                                      startDate:from
-                                        endDate:to
-                                  startTimeZone:[NSTimeZone localTimeZone]
-                                    endTimeZone:[NSTimeZone localTimeZone]
-                                          miles:0];
-    [[Database sharedInstance] saveTrip:trip];
-    if (_cachedCount != -1) {
-        ++_cachedCount;
-    }
-    return trip;
 }
 
 -(WBTrip*) updateTrip:(WBTrip*) oldTrip dir:(NSString*) dir from:(NSDate*) from to:(NSDate*) to {
@@ -166,14 +147,13 @@ static NSString * const NO_DATA = @"null";
             }
         }
 
-        trip = [[WBTrip alloc]
-                initWithName:dir
-                price:[oldTrip price]
-                startDate:from
-                endDate:to
-                startTimeZone:startTimeZone
-                endTimeZone:endTimeZone
-                miles:[oldTrip miles]];
+        trip = [[WBTrip alloc] init];
+        [trip setName:dir];
+        [trip setPrice:[oldTrip price]];
+        [trip setStartDate:from];
+        [trip setEndDate:to];
+        [trip setStartTimeZone:startTimeZone];
+        [trip setEndTimeZone:endTimeZone];
 
         [[NSFileManager defaultManager] moveItemAtPath:[oldTrip directoryPath] toPath:[trip directoryPath] error:nil];
     }];

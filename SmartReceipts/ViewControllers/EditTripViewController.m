@@ -149,6 +149,9 @@
         _endDate = [_trip endDate];
         _startTimeZone = [_trip startTimeZone];
         _endTimeZone = [_trip endTimeZone];
+        currency = self.trip.defaultCurrency.code;
+        [self.commentCell setValue:self.trip.comment];
+        [self.costCenterCell setValue:self.trip.costCenter];
     } else {
         self.navigationItem.title = NSLocalizedString(@"New Trip", nil);
         _startDate = [NSDate date];

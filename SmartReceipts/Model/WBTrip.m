@@ -17,101 +17,56 @@
 
 NSString *const MULTI_CURRENCY = @"XXXXXX";
 
-@implementation WBTrip
-{
-    NSDate *_startDate, *_endDate;
-    NSTimeZone *_startTimeZone, *_endTimeZone;
+@implementation WBTrip {
     float _miles;
 }
 
-+(NSString*) MULTI_CURRENCY{
++ (NSString *)MULTI_CURRENCY {
     return MULTI_CURRENCY;
 }
 
-- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDate:(NSDate *)startDate endDate:(NSDate *)endDate startTimeZone:(NSTimeZone *)startTimeZone endTimeZone:(NSTimeZone *)endTimeZone miles:(float) miles
-{
+- (id)init {
     self = [super init];
     if (self) {
-        if (!startTimeZone) {
-            startTimeZone = [NSTimeZone localTimeZone];
-        }
-
-        if (!endTimeZone) {
-            endTimeZone = [NSTimeZone localTimeZone];
-        }
-
-        _reportDirectoryName = [dirName lastPathComponent];
-        _price = price;
-        _startDate = startDate;
-        _endDate = endDate;
-        _startTimeZone = startTimeZone;
-        _endTimeZone = endTimeZone;
-        _miles = miles;
+        _startTimeZone = [NSTimeZone localTimeZone];
+        _endTimeZone = [NSTimeZone localTimeZone];
     }
+
     return self;
 }
 
-- (id)initWithName:(NSString*) dirName startDate:(NSDate*) startDate endDate:(NSDate*) endDate currencyCode:(NSString*) currencyCode
-{
-    self = [self initWithName:dirName
-                        price:[WBPrice zeroPriceWithCurrencyCode:currencyCode]
-                    startDate:startDate
-                      endDate:endDate
-                startTimeZone:[NSTimeZone localTimeZone]
-                  endTimeZone:[NSTimeZone localTimeZone]
-                        miles:0];
-    
-    return self;
+- (NSString *)directoryPath {
+    return [[WBFileManager tripsDirectoryPath] stringByAppendingPathComponent:_name];
 }
 
--(NSString*) directoryPath {
-    return [[WBFileManager tripsDirectoryPath] stringByAppendingPathComponent:_reportDirectoryName];
-}
-
--(NSString*) fileInDirectoryPath:(NSString*) filename {
+- (NSString *)fileInDirectoryPath:(NSString *)filename {
     return [[self directoryPath] stringByAppendingPathComponent:filename];
 }
 
--(NSString*) name {
-    return _reportDirectoryName;
+- (void)setName:(NSString *)name {
+    _name = [[name lastPathComponent] mutableCopy];
 }
 
--(float) miles {
+- (float)miles {
     return _miles;
 }
 
--(NSDate*) startDate {
-    return _startDate;
-}
-
--(NSDate*) endDate {
-    return _endDate;
-}
-
--(NSTimeZone*) startTimeZone {
-    return _startTimeZone;
-}
-
--(NSTimeZone*) endTimeZone {
-    return _endTimeZone;
-}
-
--(void) setMileage:(float) mileage {
-    if (mileage<0) {
+- (void)setMileage:(float)mileage {
+    if (mileage < 0) {
         mileage = 0;
     }
     _miles = mileage;
 }
 
--(BOOL) createDirectoryIfNotExists {
-    NSString* dir = [self directoryPath];
-    
+- (BOOL)createDirectoryIfNotExists {
+    NSString *dir = [self directoryPath];
+
     if (![[NSFileManager defaultManager] fileExistsAtPath:dir]) {
         NSError *error;
-        if([[NSFileManager defaultManager] createDirectoryAtPath:dir
-                                     withIntermediateDirectories:YES
-                                                      attributes:nil
-                                                           error:&error]){
+        if ([[NSFileManager defaultManager] createDirectoryAtPath:dir
+                                      withIntermediateDirectories:YES
+                                                       attributes:nil
+                                                            error:&error]) {
             return true;
         } else {
             NSLog(@"Couldn't create trip directory: %@", [error localizedDescription]);
@@ -121,12 +76,12 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
     return true;
 }
 
--(NSString*)priceWithCurrencyFormatted {
+- (NSString *)priceWithCurrencyFormatted {
     return self.price.currencyFormattedPrice;
 }
 
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet {
-    _reportDirectoryName = [resultSet stringForColumn:TripsTable.COLUMN_NAME];
+    _name = [resultSet stringForColumn:TripsTable.COLUMN_NAME];
 
     NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:TripsTable.COLUMN_PRICE]];
     NSString *currencyCode = [resultSet stringForColumn:TripsTable.COLUMN_DEFAULT_CURRENCY];

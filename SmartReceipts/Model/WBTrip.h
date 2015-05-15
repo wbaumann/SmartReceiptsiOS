@@ -16,35 +16,23 @@ extern NSString *const MULTI_CURRENCY;
 
 @interface WBTrip : NSObject <FetchedModel>
 
-@property (nonatomic, copy) NSString *reportDirectoryName;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) WBPrice *price;
 @property (nonatomic, strong) WBCurrency *defaultCurrency;
 @property (nonatomic, strong) NSString *comment;
 @property (nonatomic, strong) NSString *costCenter;
+@property (nonatomic, strong) NSDate *startDate;
+@property (nonatomic, strong) NSTimeZone *startTimeZone;
+@property (nonatomic, strong) NSDate *endDate;
+@property (nonatomic, strong) NSTimeZone *endTimeZone;
 
-+(NSString*) MULTI_CURRENCY;
++ (NSString *)MULTI_CURRENCY;
 
-- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDate:(NSDate *)startDate endDate:(NSDate *)endDate startTimeZone:(NSTimeZone *)startTimeZone endTimeZone:(NSTimeZone *)endTimeZone miles:(float)miles;
-
-- (id)initWithName:(NSString *)dirName startDate:(NSDate *)startDate endDate:(NSDate *)endDate currencyCode:(NSString *)currencyCode;
-
--(NSString*) directoryPath;
--(NSString*) fileInDirectoryPath:(NSString*) filename;
-
--(NSString*) name;
-
--(float) miles;
-
--(NSDate*) startDate;
--(NSDate*) endDate;
-
--(NSTimeZone*) startTimeZone;
--(NSTimeZone*) endTimeZone;
-
--(void) setMileage:(float) mileage;
-
--(BOOL) createDirectoryIfNotExists;
-
--(NSString*)priceWithCurrencyFormatted;
+- (NSString *)directoryPath;
+- (NSString *)fileInDirectoryPath:(NSString *)filename;
+- (float)miles;
+- (void)setMileage:(float)mileage;
+- (BOOL)createDirectoryIfNotExists;
+- (NSString *)priceWithCurrencyFormatted;
 
 @end
