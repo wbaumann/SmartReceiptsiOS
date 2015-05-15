@@ -126,4 +126,18 @@
     XCTAssertEqual(0, params.count);
 }
 
+- (void)testWhereCaseInsensitive {
+    DatabaseQueryBuilder *statement = [DatabaseQueryBuilder sumStatementForTable:@"testing_sum"];
+    [statement setSumColumn:@"amount"];
+    [statement where:@"cake" value:@"brown" caseInsensitive:YES];
+
+    NSString *query = [statement buildStatement];
+    NSString *expected = @"SELECT SUM(amount) FROM testing_sum WHERE cake = :cake COLLATE NOCASE";
+    XCTAssertEqualObjects(expected, query, @"Got %@", query);
+
+    NSDictionary *params = [statement parameters];
+    XCTAssertEqual(@"brown", params[@"cake"]);
+}
+
+
 @end

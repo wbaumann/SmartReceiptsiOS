@@ -159,6 +159,7 @@
 		EA6677741B05F6D3004D3993 /* DatabaseReceiptsPaymentMethodTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6677731B05F6D3004D3993 /* DatabaseReceiptsPaymentMethodTest.m */; };
 		EA6677761B05FD8A004D3993 /* DatabaseReceiptsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6677751B05FD8A004D3993 /* DatabaseReceiptsTest.m */; };
 		EA6677791B060FC4004D3993 /* ReceiptColumnPaymentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6677781B060FC4004D3993 /* ReceiptColumnPaymentMethod.m */; };
+		EA66777C1B06154F004D3993 /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = EA66777B1B06154F004D3993 /* NSString+Helpers.m */; };
 		EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */; };
 		EA6888D31AFE699A00A910FC /* receipts-dates-test.db in Resources */ = {isa = PBXBuildFile; fileRef = EA6888D21AFE699A00A910FC /* receipts-dates-test.db */; };
 		EA69EF151AEFC81A00276B70 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF141AEFC81A00276B70 /* Database.m */; };
@@ -495,6 +496,8 @@
 		EA6677751B05FD8A004D3993 /* DatabaseReceiptsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseReceiptsTest.m; sourceTree = "<group>"; };
 		EA6677771B060FC4004D3993 /* ReceiptColumnPaymentMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnPaymentMethod.h; sourceTree = "<group>"; };
 		EA6677781B060FC4004D3993 /* ReceiptColumnPaymentMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnPaymentMethod.m; sourceTree = "<group>"; };
+		EA66777A1B06154F004D3993 /* NSString+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helpers.h"; sourceTree = "<group>"; };
+		EA66777B1B06154F004D3993 /* NSString+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helpers.m"; sourceTree = "<group>"; };
 		EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseDatesTest.m; sourceTree = "<group>"; };
 		EA6888D21AFE699A00A910FC /* receipts-dates-test.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "receipts-dates-test.db"; sourceTree = "<group>"; };
 		EA69EF131AEFC81A00276B70 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
@@ -1082,6 +1085,8 @@
 				EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */,
 				EA07BF381AF3C80C004D17F6 /* NSMutableString+Issues.h */,
 				EA07BF391AF3C80C004D17F6 /* NSMutableString+Issues.m */,
+				EA66777A1B06154F004D3993 /* NSString+Helpers.h */,
+				EA66777B1B06154F004D3993 /* NSString+Helpers.m */,
 				EA07BF3B1AF3C885004D17F6 /* NSString+Validation.h */,
 				EA07BF3C1AF3C885004D17F6 /* NSString+Validation.m */,
 				EA07BF2E1AF3B472004D17F6 /* UIApplication+DismissKeyboard.h */,
@@ -1785,6 +1790,7 @@
 				8472F01818D6F50B00929C5B /* WBNewTripViewController.m in Sources */,
 				EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */,
 				EA1D42C11B038D8F00D64D3A /* EditPaymentMethodViewController.m in Sources */,
+				EA66777C1B06154F004D3993 /* NSString+Helpers.m in Sources */,
 				EA07BF301AF3B472004D17F6 /* UIApplication+DismissKeyboard.m in Sources */,
 				EA69EF301AF0914000276B70 /* PaymentMethod.m in Sources */,
 				BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */,

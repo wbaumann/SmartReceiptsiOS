@@ -7,11 +7,12 @@
 //
 
 #import "NSString+Validation.h"
+#import "NSString+Helpers.h"
 
 @implementation NSString (Validation)
 
 - (BOOL)hasValue {
-    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0;
+    return [self trimmedString].length > 0;
 }
 
 @end

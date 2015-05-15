@@ -21,6 +21,7 @@
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue;
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue fallback:(NSObject *)valueFallback;
 - (void)where:(NSString *)paramName value:(NSObject *)paramValue;
+- (void)where:(NSString *)paramName value:(NSObject *)paramValue caseInsensitive:(BOOL)caseInsensitive;
 - (void)orderBy:(NSString *)column ascending:(BOOL)ascending;
 
 - (NSString *)buildStatement;

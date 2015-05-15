@@ -60,4 +60,13 @@
     XCTAssertEqual(countBefore - 1, countAfter);
 }
 
+- (void)testExistingMethodCheck {
+    NSString *testMethodName = @"Test method - 123456789";
+    [self.db insertPaymentMethod:testMethodName];
+
+    XCTAssertTrue([self.db hasPaymentMethodWithName:testMethodName]);
+    XCTAssertTrue([self.db hasPaymentMethodWithName:[testMethodName stringByAppendingString:@" "]]);
+    XCTAssertTrue([self.db hasPaymentMethodWithName:[testMethodName uppercaseString]]);
+}
+
 @end

@@ -25,6 +25,7 @@ typedef NS_ENUM(short, StatementType) {
 @property (nonatomic, strong) NSMutableArray *values;
 @property (nonatomic, strong) NSMutableDictionary *where;
 @property (nonatomic, strong) NSDictionary *orderBy;
+@property (nonatomic, strong) NSMutableArray *caseInsensitiveWhereParams;
 
 @end
 
@@ -38,6 +39,7 @@ typedef NS_ENUM(short, StatementType) {
         _params = [NSMutableArray array];
         _values = [NSMutableArray array];
         _where = [NSMutableDictionary dictionary];
+        _caseInsensitiveWhereParams = [NSMutableArray array];
     }
     return self;
 }
@@ -74,7 +76,14 @@ typedef NS_ENUM(short, StatementType) {
 }
 
 - (void)where:(NSString *)paramName value:(NSObject *)paramValue {
+    [self where:paramName value:paramValue caseInsensitive:NO];
+}
+
+- (void)where:(NSString *)paramName value:(NSObject *)paramValue caseInsensitive:(BOOL)caseInsensitive {
     self.where[paramName] = paramValue;
+    if (caseInsensitive) {
+        [self.caseInsensitiveWhereParams addObject:paramName];
+    }
 }
 
 - (NSString *)buildStatement {
@@ -128,7 +137,11 @@ typedef NS_ENUM(short, StatementType) {
     keys = [keys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSMutableArray *whereParams = [NSMutableArray array];
     for (NSString *whereKey in keys) {
-        [whereParams addObject:[NSString stringWithFormat:@"%@ = :%@", whereKey, whereKey]];
+        NSString *paramString = [NSString stringWithFormat:@"%@ = :%@", whereKey, whereKey];
+        if ([self.caseInsensitiveWhereParams containsObject:whereKey]) {
+            paramString = [paramString stringByAppendingString:@" COLLATE NOCASE"];
+        }
+        [whereParams addObject:paramString];
     }
     [query appendString:[whereParams componentsJoinedByString:@" AND "]];
 }
