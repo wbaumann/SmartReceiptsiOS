@@ -24,6 +24,9 @@
 #import "ProperNameInputValidation.h"
 #import "NSString+Validation.h"
 #import "InlinedDatePickerCell.h"
+#import "Pickable.h"
+#import "StringPickableWrapper.h"
+#import "WBCurrency.h"
 
 @interface EditTripViewController ()
 
@@ -33,6 +36,10 @@
 @property (nonatomic, strong) InlinedDatePickerCell *startDatePickerCell;
 @property (nonatomic, strong) PickerCell *endDateCell;
 @property (nonatomic, strong) InlinedDatePickerCell *endDatePickerCell;
+@property (nonatomic, strong) PickerCell *currencyCell;
+@property (nonatomic, strong) InlinedPickerCell *currencyPickerCell;
+@property (nonatomic, strong) TitledTextEntryCell *commentCell;
+@property (nonatomic, strong) TitledTextEntryCell *costCenterCell;
 
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *endDate;
@@ -54,6 +61,8 @@
     [self.tableView registerNib:[TitledAutocompleteEntryCell viewNib] forCellReuseIdentifier:[TitledAutocompleteEntryCell cellIdentifier]];
     [self.tableView registerNib:[PickerCell viewNib] forCellReuseIdentifier:[PickerCell cellIdentifier]];
     [self.tableView registerNib:[InlinedDatePickerCell viewNib] forCellReuseIdentifier:[InlinedDatePickerCell cellIdentifier]];
+    [self.tableView registerNib:[TitledTextEntryCell viewNib] forCellReuseIdentifier:[TitledTextEntryCell cellIdentifier]];
+    [self.tableView registerNib:[InlinedPickerCell viewNib] forCellReuseIdentifier:[InlinedPickerCell cellIdentifier]];
 
     self.nameCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledAutocompleteEntryCell cellIdentifier]];
     [self.nameCell setTitle:NSLocalizedString(@"Name", nil)];
@@ -81,16 +90,39 @@
         [weakSelf.startDatePickerCell setMinDate:nil maxDate:selected];
     }];
 
+    self.currencyCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
+    [self.currencyCell setTitle:NSLocalizedString(@"Default Currency", nil)];
+
+    self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
+    [self.currencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
+    [self.currencyPickerCell setValueChangeHandler:^(id<Pickable> selected) {
+        [weakSelf.currencyCell setValue:selected.presentedValue];
+    }];
+
+    self.commentCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
+    [self.commentCell setTitle:NSLocalizedString(@"Comment", nil)];
+    [self.commentCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
+
+    self.costCenterCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
+    [self.costCenterCell setTitle:NSLocalizedString(@"Cost Center", nil)];
+    [self.costCenterCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
+
     NSMutableArray *presentedCells = [NSMutableArray array];
 
     [presentedCells addObject:self.nameCell];
     [presentedCells addObject:self.startDateCell];
     [presentedCells addObject:self.endDateCell];
+    [presentedCells addObject:self.currencyCell];
+    [presentedCells addObject:self.commentCell];
+    if ([WBPreferences trackConstCenter]) {
+        [presentedCells addObject:self.costCenterCell];
+    }
 
     [self addSectionForPresentation:[InputCellsSection sectionWithCells:presentedCells]];
 
     [self addInlinedPickerCell:self.startDatePickerCell forCell:self.startDateCell];
     [self addInlinedPickerCell:self.endDatePickerCell forCell:self.endDateCell];
+    [self addInlinedPickerCell:self.currencyPickerCell forCell:self.currencyCell];
 
     self.dateFormatter = [[WBDateFormatter alloc] init];
     
@@ -109,6 +141,7 @@
 }
 
 - (void)loadDataToCells {
+    NSString *currency;
     if (_trip) {
         self.navigationItem.title = NSLocalizedString(@"Edit Trip", nil);
         self.nameCell.value = [_trip name];
@@ -126,6 +159,7 @@
         _endDate = [theCalendar dateByAddingComponents:dayComponent toDate:_startDate options:0];
 
         _startTimeZone = _endTimeZone = [NSTimeZone localTimeZone];
+        currency = [WBPreferences defaultCurrency];
     }
 
     [self.startDateCell setValue:[self.dateFormatter formattedDate:_startDate inTimeZone:_startTimeZone]];
@@ -134,6 +168,8 @@
     [self.startDatePickerCell setMinDate:nil maxDate:self.endDate];
     [self.endDatePickerCell setDate:_endDate];
     [self.endDatePickerCell setMinDate:self.startDate maxDate:nil];
+    [self.currencyCell setValue:currency];
+    [self.currencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:currency]];
 }
 
 - (IBAction)actionDone:(id)sender {

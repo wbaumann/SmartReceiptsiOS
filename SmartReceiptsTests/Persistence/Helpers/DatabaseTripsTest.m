@@ -63,4 +63,8 @@
     XCTAssertTrue([trip.startDate isToday], @"Start date is %@", trip.startDate);
 }
 
+- (void)testAdditionalFieldsSavedAndLoaded {
+
+}
+
 @end
