@@ -85,6 +85,7 @@
 		84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F35518CFCCD000F69A35 /* Images.xcassets */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
 		BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66588B7C2114029521A399 /* NSDate+Calculations.m */; };
+		EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */; };
 		EA0677ED1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0677EC1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m */; };
 		EA0677EF1B04DCEA0058A326 /* TitledAutocompleteEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA0677EE1B04DCE90058A326 /* TitledAutocompleteEntryCell.xib */; };
 		EA0677F21B04E38F0058A326 /* EditReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0677F11B04E38F0058A326 /* EditReceiptViewController.m */; };
@@ -371,6 +372,7 @@
 		BA6656B86F52D1B546848E92 /* NSDate+Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calculations.h"; sourceTree = "<group>"; };
 		BA66588B7C2114029521A399 /* NSDate+Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calculations.m"; sourceTree = "<group>"; };
 		D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTestVersion13.m; sourceTree = "<group>"; };
 		EA0677EB1B04DCDA0058A326 /* TitledAutocompleteEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitledAutocompleteEntryCell.h; sourceTree = "<group>"; };
 		EA0677EC1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitledAutocompleteEntryCell.m; sourceTree = "<group>"; };
 		EA0677EE1B04DCE90058A326 /* TitledAutocompleteEntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitledAutocompleteEntryCell.xib; sourceTree = "<group>"; };
@@ -1403,6 +1405,7 @@
 			children = (
 				EAED9B211AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m */,
 				EA69EF231AEFEDCC00276B70 /* DatabaseMigrationTest.m */,
+				EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */,
 				EA69EF291AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m */,
 			);
 			path = Migrations;
@@ -1821,6 +1824,7 @@
 				EA5EF0D61AF7E9C9009FA608 /* DatabaseTableNames.m in Sources */,
 				EA6677761B05FD8A004D3993 /* DatabaseReceiptsTest.m in Sources */,
 				EA888A881AFB4FD600DF2AE6 /* DatabaseTripsTest.m in Sources */,
+				EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */,
 				EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */,
 				EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */,
 				EA36DE531B0119150034CC2D /* DatabaseHintsTest.m in Sources */,
