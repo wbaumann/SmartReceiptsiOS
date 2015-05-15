@@ -1,4 +1,3 @@
-//
 //  DatabaseTripsTest.m
 //  SmartReceipts
 //
@@ -14,6 +13,7 @@
 #import "Database+Trips.h"
 #import "WBTrip.h"
 #import "NSDate+Calculations.h"
+#import "WBCurrency.h"
 
 @interface DatabaseTripsTest : DatabaseTestsBase
 
@@ -64,7 +64,18 @@
 }
 
 - (void)testAdditionalFieldsSavedAndLoaded {
+    NSString *testName = @"Testing my thingie";
+    NSString *defaultCurrency = @"XYZ";
+    NSString *comment = @"Test comment";
+    NSString *costCenter = @"Test const center";
 
+    [self.db insertTrip:@{TripsTable.COLUMN_NAME : testName, TripsTable.COLUMN_DEFAULT_CURRENCY : defaultCurrency, TripsTable.COLUMN_COMMENT : comment, TripsTable.COLUMN_COST_CENTER : costCenter}];
+
+    WBTrip *loaded = [self.db tripWithName:testName];
+
+    XCTAssertEqualObjects(defaultCurrency, loaded.defaultCurrency.code);
+    XCTAssertEqualObjects(comment, loaded.comment);
+    XCTAssertEqualObjects(costCenter, loaded.costCenter);
 }
 
 @end

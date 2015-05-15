@@ -13,6 +13,7 @@
 #import "DatabaseTableNames.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "NSDate+Calculations.h"
+#import "WBCurrency.h"
 
 NSString *const MULTI_CURRENCY = @"XXXXXX";
 
@@ -128,14 +129,17 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
     _reportDirectoryName = [resultSet stringForColumn:TripsTable.COLUMN_NAME];
 
     NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:TripsTable.COLUMN_PRICE]];
-    NSString *currency = [resultSet stringForColumn:TripsTable.COLUMN_DEFAULT_CURRENCY];
-    _price = [WBPrice priceWithAmount:price currencyCode:currency];
+    NSString *currencyCode = [resultSet stringForColumn:TripsTable.COLUMN_DEFAULT_CURRENCY];
+    self.defaultCurrency = [WBCurrency currencyForCode:currencyCode];
+    _price = [WBPrice priceWithAmount:price currencyCode:currencyCode];
     long long int startDateMilliseconds = [resultSet longLongIntForColumn:TripsTable.COLUMN_FROM];
     _startDate = [NSDate dateWithMilliseconds:startDateMilliseconds];
     _startTimeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:TripsTable.COLUMN_FROM_TIMEZONE]];
     long long int endDateMilliseconds = [resultSet longLongIntForColumn:TripsTable.COLUMN_FROM];
     _endDate = [NSDate dateWithMilliseconds:endDateMilliseconds];
     _endTimeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:TripsTable.COLUMN_TO_TIMEZONE]];
+    self.comment = [resultSet stringForColumn:TripsTable.COLUMN_COMMENT];
+    self.costCenter = [resultSet stringForColumn:TripsTable.COLUMN_COST_CENTER];
 }
 
 @end

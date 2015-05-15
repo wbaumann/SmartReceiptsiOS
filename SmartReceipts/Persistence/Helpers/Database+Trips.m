@@ -46,7 +46,9 @@
     [insert addParam:TripsTable.COLUMN_FROM_TIMEZONE value:trip.startTimeZone.name];
     [insert addParam:TripsTable.COLUMN_TO_TIMEZONE value:trip.endTimeZone.name];
     [insert addParam:TripsTable.COLUMN_PRICE value:trip.price.amount];
-    [insert addParam:TripsTable.COLUMN_DEFAULT_CURRENCY value:trip.price.currency.code];
+    [insert addParam:TripsTable.COLUMN_DEFAULT_CURRENCY value:trip.defaultCurrency.code];
+    [insert addParam:TripsTable.COLUMN_COMMENT value:trip.comment];
+    [insert addParam:TripsTable.COLUMN_COST_CENTER value:trip.costCenter];
     BOOL result = [self executeQuery:insert];
     return result;
 }

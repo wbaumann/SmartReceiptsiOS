@@ -20,6 +20,7 @@
 #import "Database+PaymentMethods.h"
 #import "Database+Functions.h"
 #import "DatabaseQueryBuilder.h"
+#import "WBCurrency.h"
 
 @interface Distance (TestExpose)
 
@@ -38,9 +39,16 @@
     params[TripsTable.COLUMN_NAME] = [NSString stringWithFormat:@"TestTrip - %f", [NSDate timeIntervalSinceReferenceDate]];
     params[TripsTable.COLUMN_FROM] = [NSDate date];
     params[TripsTable.COLUMN_TO] = [NSDate date];
+    params[TripsTable.COLUMN_DEFAULT_CURRENCY] = @"USD";
     [params addEntriesFromDictionary:modifiedParams];
 
-    WBTrip *trip = [[WBTrip alloc] initWithName:params[TripsTable.COLUMN_NAME] startDate:params[TripsTable.COLUMN_FROM] endDate:params[TripsTable.COLUMN_TO] currencyCode:@"USD"];
+    WBTrip *trip = [[WBTrip alloc] initWithName:params[TripsTable.COLUMN_NAME]
+                                      startDate:params[TripsTable.COLUMN_FROM]
+                                        endDate:params[TripsTable.COLUMN_TO] currencyCode:@"USD"];
+    [trip setDefaultCurrency:[WBCurrency currencyForCode:params[TripsTable.COLUMN_DEFAULT_CURRENCY]]];
+    [trip setComment:params[TripsTable.COLUMN_COMMENT]];
+    [trip setCostCenter:params[TripsTable.COLUMN_COST_CENTER]];
+
     [self saveTrip:trip];
     return trip;
 }

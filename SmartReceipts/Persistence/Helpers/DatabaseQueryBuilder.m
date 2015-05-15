@@ -66,6 +66,10 @@ typedef NS_ENUM(short, StatementType) {
 }
 
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue {
+    if (!paramValue) {
+        SRLog(@"Warning: value for %@ not set. Ignoring", paramName);
+        return;
+    }
     [self.params addObject:paramName];
     [self.values addObject:paramValue];
 }

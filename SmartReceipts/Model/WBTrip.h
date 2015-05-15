@@ -18,6 +18,9 @@ extern NSString *const MULTI_CURRENCY;
 
 @property (nonatomic, copy) NSString *reportDirectoryName;
 @property (nonatomic, strong) WBPrice *price;
+@property (nonatomic, strong) WBCurrency *defaultCurrency;
+@property (nonatomic, strong) NSString *comment;
+@property (nonatomic, strong) NSString *costCenter;
 
 +(NSString*) MULTI_CURRENCY;
 
