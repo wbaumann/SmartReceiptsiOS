@@ -8,7 +8,7 @@
 
 #import "WBViewController.h"
 
-#import "WBNewTripViewController.h"
+#import "EditTripViewController.h"
 #import "WBReceiptsViewController.h"
 
 #import "WBObservableTrips.h"

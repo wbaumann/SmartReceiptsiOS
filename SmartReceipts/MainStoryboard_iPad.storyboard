@@ -438,7 +438,7 @@
         <!--New Trip-->
         <scene sceneID="zwt-Eh-YEk">
             <objects>
-                <tableViewController id="QbN-5U-G5a" customClass="WBNewTripViewController" sceneMemberID="viewController">
+                <tableViewController id="QbN-5U-G5a" customClass="EditTripViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="eEo-QU-wC0">
                         <rect key="frame" x="0.0" y="44" width="540" height="576"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

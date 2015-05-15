@@ -48,7 +48,6 @@
 		8467EFF018F6FC450076BE6E /* ic_rotate_ccw@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8467EFEE18F6FC450076BE6E /* ic_rotate_ccw@2x.png */; };
 		8467EFF118F6FC450076BE6E /* ic_rotate_cw@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8467EFEF18F6FC450076BE6E /* ic_rotate_cw@2x.png */; };
 		8472F01518D6F1B400929C5B /* WBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8472F01418D6F1B400929C5B /* WBViewController.m */; };
-		8472F01818D6F50B00929C5B /* WBNewTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8472F01718D6F50B00929C5B /* WBNewTripViewController.m */; };
 		8478B77318D37BFB0041CBA3 /* WBCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478B77218D37BFB0041CBA3 /* WBCategoriesViewController.m */; };
 		8478B77618D37D350041CBA3 /* WBColumnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478B77518D37D350041CBA3 /* WBColumnsViewController.m */; };
 		8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478B77918D385160041CBA3 /* WBPopoverPicker.m */; };
@@ -87,6 +86,7 @@
 		BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66588B7C2114029521A399 /* NSDate+Calculations.m */; };
 		EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */; };
 		EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D00C1B0629BE00C87678 /* ProperNameInputValidation.m */; };
+		EA00D0101B06321A00C87678 /* EditTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D00F1B06321A00C87678 /* EditTripViewController.m */; };
 		EA0677ED1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0677EC1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m */; };
 		EA0677EF1B04DCEA0058A326 /* TitledAutocompleteEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA0677EE1B04DCE90058A326 /* TitledAutocompleteEntryCell.xib */; };
 		EA0677F21B04E38F0058A326 /* EditReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0677F11B04E38F0058A326 /* EditReceiptViewController.m */; };
@@ -304,8 +304,6 @@
 		8467EFEF18F6FC450076BE6E /* ic_rotate_cw@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_rotate_cw@2x.png"; sourceTree = "<group>"; };
 		8472F01318D6F1B400929C5B /* WBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBViewController.h; sourceTree = "<group>"; };
 		8472F01418D6F1B400929C5B /* WBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBViewController.m; sourceTree = "<group>"; };
-		8472F01618D6F50B00929C5B /* WBNewTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBNewTripViewController.h; sourceTree = "<group>"; };
-		8472F01718D6F50B00929C5B /* WBNewTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNewTripViewController.m; sourceTree = "<group>"; };
 		8478B77118D37BFB0041CBA3 /* WBCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategoriesViewController.h; sourceTree = "<group>"; };
 		8478B77218D37BFB0041CBA3 /* WBCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategoriesViewController.m; sourceTree = "<group>"; };
 		8478B77418D37D350041CBA3 /* WBColumnsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnsViewController.h; sourceTree = "<group>"; };
@@ -376,6 +374,8 @@
 		EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTestVersion13.m; sourceTree = "<group>"; };
 		EA00D00B1B0629BE00C87678 /* ProperNameInputValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProperNameInputValidation.h; sourceTree = "<group>"; };
 		EA00D00C1B0629BE00C87678 /* ProperNameInputValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProperNameInputValidation.m; sourceTree = "<group>"; };
+		EA00D00E1B06321A00C87678 /* EditTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTripViewController.h; sourceTree = "<group>"; };
+		EA00D00F1B06321A00C87678 /* EditTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTripViewController.m; sourceTree = "<group>"; };
 		EA0677EB1B04DCDA0058A326 /* TitledAutocompleteEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitledAutocompleteEntryCell.h; sourceTree = "<group>"; };
 		EA0677EC1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitledAutocompleteEntryCell.m; sourceTree = "<group>"; };
 		EA0677EE1B04DCE90058A326 /* TitledAutocompleteEntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitledAutocompleteEntryCell.xib; sourceTree = "<group>"; };
@@ -846,8 +846,6 @@
 		84A5912018EA9981004946E4 /* Creators */ = {
 			isa = PBXGroup;
 			children = (
-				8472F01618D6F50B00929C5B /* WBNewTripViewController.h */,
-				8472F01718D6F50B00929C5B /* WBNewTripViewController.m */,
 				8453367E18F475E2001072AA /* WBAutocompleteHelper.h */,
 				8453367F18F475E2001072AA /* WBAutocompleteHelper.m */,
 			);
@@ -1351,6 +1349,8 @@
 				EA1D42C01B038D8F00D64D3A /* EditPaymentMethodViewController.m */,
 				EA0677F01B04E38F0058A326 /* EditReceiptViewController.h */,
 				EA0677F11B04E38F0058A326 /* EditReceiptViewController.m */,
+				EA00D00E1B06321A00C87678 /* EditTripViewController.h */,
+				EA00D00F1B06321A00C87678 /* EditTripViewController.m */,
 				EA07BF611AF4EC1E004D17F6 /* FetchedCollectionTableViewController.h */,
 				EA07BF621AF4EC1E004D17F6 /* FetchedCollectionTableViewController.m */,
 				EA4C5CBF1AF286990083FDD7 /* InputCellsSection.h */,
@@ -1670,6 +1670,7 @@
 				84ABAD0218DB700000F8D3EB /* WBTripsHelper.m in Sources */,
 				EA888A861AFB4FBD00DF2AE6 /* Database+Trips.m in Sources */,
 				4D33F3E219D8965800FE4EC4 /* GADConstants.m in Sources */,
+				EA00D0101B06321A00C87678 /* EditTripViewController.m in Sources */,
 				EA8D819A1AEA7C3100BAC943 /* ReceiptColumnImagePath.m in Sources */,
 				EA8D81781AEA668100BAC943 /* WBTrip.m in Sources */,
 				EA8D817C1AEA6AF000BAC943 /* ReceiptColumn.m in Sources */,
@@ -1796,7 +1797,6 @@
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
 				EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */,
 				EA1D42BD1B03851C00D64D3A /* TitleOnlyCell.m in Sources */,
-				8472F01818D6F50B00929C5B /* WBNewTripViewController.m in Sources */,
 				EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */,
 				EA1D42C11B038D8F00D64D3A /* EditPaymentMethodViewController.m in Sources */,
 				EA66777C1B06154F004D3993 /* NSString+Helpers.m in Sources */,

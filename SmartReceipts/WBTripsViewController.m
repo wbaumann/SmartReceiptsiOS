@@ -246,7 +246,7 @@ static NSString *CellIdentifier = @"Cell";
     }
     else if([[segue identifier] isEqualToString:@"TripCreator"])
     {
-        WBNewTripViewController* vc = (WBNewTripViewController*)[[segue destinationViewController] topViewController];
+        EditTripViewController * vc = (EditTripViewController *)[[segue destinationViewController] topViewController];
         
         vc.delegate = self;
         
@@ -267,11 +267,11 @@ static NSString *CellIdentifier = @"Cell";
 
 #pragma mark - WBNewTripViewControllerDelegate
 
--(void)viewController:(WBNewTripViewController *)viewController newTrip:(WBTrip *)trip{
+-(void)viewController:(EditTripViewController *)viewController newTrip:(WBTrip *)trip{
     [_trips addTrip:trip];
 }
 
--(void)viewController:(WBNewTripViewController *)viewController updatedTrip:(WBTrip *)trip fromTrip:(WBTrip *)oldTrip{
+-(void)viewController:(EditTripViewController *)viewController updatedTrip:(WBTrip *)trip fromTrip:(WBTrip *)oldTrip{
     [_trips replaceTrip:oldTrip toTrip:trip];
 }
 

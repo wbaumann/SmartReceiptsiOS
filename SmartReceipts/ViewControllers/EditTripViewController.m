@@ -1,12 +1,12 @@
 //
-//  WBNewTripViewController.m
+//  EditTripViewController.m
 //  SmartReceipts
 //
 //  Created on 17/03/14.
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBNewTripViewController.h"
+#import "EditTripViewController.h"
 #import "WBDateFormatter.h"
 #import "WBTrip.h"
 
@@ -25,7 +25,7 @@
 #import "NSString+Validation.h"
 #import "InlinedDatePickerCell.h"
 
-@interface WBNewTripViewController ()
+@interface EditTripViewController ()
 
 @property (nonatomic, strong) WBDateFormatter *dateFormatter;
 @property (nonatomic, strong) TitledAutocompleteEntryCell *nameCell;
@@ -41,7 +41,7 @@
 
 @end
 
-@implementation WBNewTripViewController
+@implementation EditTripViewController
 
 - (void)viewDidLoad
 {
@@ -49,7 +49,7 @@
 
     [WBCustomization customizeOnViewDidLoad:self];
 
-    __weak WBNewTripViewController *weakSelf = self;
+    __weak EditTripViewController *weakSelf = self;
 
     [self.tableView registerNib:[TitledAutocompleteEntryCell viewNib] forCellReuseIdentifier:[TitledAutocompleteEntryCell cellIdentifier]];
     [self.tableView registerNib:[PickerCell viewNib] forCellReuseIdentifier:[PickerCell cellIdentifier]];
@@ -142,21 +142,21 @@
     NSString* name = [self.nameCell.value lastPathComponent];
 
     if (![name hasValue]) {
-        [WBNewTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Please enter a name",nil)];
+        [EditTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Please enter a name", nil)];
         return;
     }
     
     if (_trip == nil) {
         newTrip = [[WBDB trips] insertWithName:name from:_startDate to:_endDate];
         if(!newTrip){
-            [WBNewTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot add this trip",nil)];
+            [EditTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot add this trip", nil)];
             return;
         }
         [self.delegate viewController:self newTrip:newTrip];
     } else {
         newTrip = [[WBDB trips] updateTrip:_trip dir:name from:_startDate to:_endDate];
         if(!newTrip){
-            [WBNewTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot save this trip",nil)];
+            [EditTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot save this trip", nil)];
             return;
         }
         [self.delegate viewController:self updatedTrip:newTrip fromTrip:_trip];

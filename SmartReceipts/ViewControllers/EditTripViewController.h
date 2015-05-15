@@ -1,5 +1,5 @@
 //
-//  WBNewTripViewController.h
+//  EditTripViewController.h
 //  SmartReceipts
 //
 //  Created on 17/03/14.
@@ -12,16 +12,16 @@
 #import "HTAutocompleteTextField.h"
 #import "InputCellsViewController.h"
 
-@class WBTrip, WBNewTripViewController;
+@class WBTrip, EditTripViewController;
 
 @protocol WBNewTripViewControllerDelegate <NSObject>
 
--(void) viewController:(WBNewTripViewController*)viewController newTrip:(WBTrip*) trip;
--(void) viewController:(WBNewTripViewController*)viewController updatedTrip:(WBTrip*) trip fromTrip:(WBTrip*) oldTrip;
+-(void) viewController:(EditTripViewController *)viewController newTrip:(WBTrip*) trip;
+-(void) viewController:(EditTripViewController *)viewController updatedTrip:(WBTrip*) trip fromTrip:(WBTrip*) oldTrip;
 
 @end
 
-@interface WBNewTripViewController : InputCellsViewController
+@interface EditTripViewController : InputCellsViewController
 
 @property (weak,nonatomic) id<WBNewTripViewControllerDelegate> delegate;
 @property (nonatomic, strong) WBTrip *trip;
