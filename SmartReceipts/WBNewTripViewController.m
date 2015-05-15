@@ -13,23 +13,32 @@
 #import "WBDB.h"
 #import "WBPreferences.h"
 
-#import "WBTextUtils.h"
-
 #import "WBAutocompleteHelper.h"
-
-static const int TAG_START = 1, TAG_END = 2;
+#import "WBCustomization.h"
+#import "TitledAutocompleteEntryCell.h"
+#import "UIView+LoadHelpers.h"
+#import "UITableViewCell+Identifier.h"
+#import "InputCellsSection.h"
+#import "UIApplication+DismissKeyboard.h"
+#import "PickerCell.h"
+#import "ProperNameInputValidation.h"
+#import "NSString+Validation.h"
+#import "InlinedDatePickerCell.h"
 
 @interface WBNewTripViewController ()
-{
-    WBDynamicPicker* _dynamicDatePicker;
-    WBTrip* _trip;
-    WBDateFormatter* _dateFormatter;
-    
-    NSDate *_startDate, *_endDate;
-    NSTimeZone *_startTimeZone, *_endTimeZone;
-    
-    WBAutocompleteHelper *_autocompleteHelper;
-}
+
+@property (nonatomic, strong) WBDateFormatter *dateFormatter;
+@property (nonatomic, strong) TitledAutocompleteEntryCell *nameCell;
+@property (nonatomic, strong) PickerCell *startDateCell;
+@property (nonatomic, strong) InlinedDatePickerCell *startDatePickerCell;
+@property (nonatomic, strong) PickerCell *endDateCell;
+@property (nonatomic, strong) InlinedDatePickerCell *endDatePickerCell;
+
+@property (nonatomic, strong) NSDate *startDate;
+@property (nonatomic, strong) NSDate *endDate;
+@property (nonatomic, strong) NSTimeZone *startTimeZone;
+@property (nonatomic, strong) NSTimeZone *endTimeZone;
+
 @end
 
 @implementation WBNewTripViewController
@@ -37,29 +46,72 @@ static const int TAG_START = 1, TAG_END = 2;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    [WBCustomization customizeOnViewDidLoad:self];
+
+    __weak WBNewTripViewController *weakSelf = self;
+
+    [self.tableView registerNib:[TitledAutocompleteEntryCell viewNib] forCellReuseIdentifier:[TitledAutocompleteEntryCell cellIdentifier]];
+    [self.tableView registerNib:[PickerCell viewNib] forCellReuseIdentifier:[PickerCell cellIdentifier]];
+    [self.tableView registerNib:[InlinedDatePickerCell viewNib] forCellReuseIdentifier:[InlinedDatePickerCell cellIdentifier]];
+
+    self.nameCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledAutocompleteEntryCell cellIdentifier]];
+    [self.nameCell setTitle:NSLocalizedString(@"Name", nil)];
+    [self.nameCell setAutocompleteHelper:[[WBAutocompleteHelper alloc] initWithAutocompleteField:(HTAutocompleteTextField *) self.nameCell.entryField inView:self.view useReceiptsHints:NO]];
+    [self.nameCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
+    [self.nameCell setInputValidation:[[ProperNameInputValidation alloc] init]];
+
+    self.startDateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
+    [self.startDateCell setTitle:NSLocalizedString(@"Start Date", nil)];
+
+    self.startDatePickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedDatePickerCell cellIdentifier]];
+    [self.startDatePickerCell setChangeHandler:^(NSDate *selected) {
+        [weakSelf.startDateCell setValue:[weakSelf.dateFormatter formattedDate:selected inTimeZone:weakSelf.startTimeZone]];
+        weakSelf.startDate = selected;
+        [weakSelf.endDatePickerCell setMinDate:selected maxDate:nil];
+    }];
+
+    self.endDateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
+    [self.endDateCell setTitle:NSLocalizedString(@"End Date", nil)];
+
+    self.endDatePickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedDatePickerCell cellIdentifier]];
+    [self.endDatePickerCell setChangeHandler:^(NSDate *selected) {
+        [weakSelf.endDateCell setValue:[weakSelf.dateFormatter formattedDate:selected inTimeZone:weakSelf.endTimeZone]];
+        weakSelf.endDate = selected;
+        [weakSelf.startDatePickerCell setMinDate:nil maxDate:selected];
+    }];
+
+    NSMutableArray *presentedCells = [NSMutableArray array];
+
+    [presentedCells addObject:self.nameCell];
+    [presentedCells addObject:self.startDateCell];
+    [presentedCells addObject:self.endDateCell];
+
+    [self addSectionForPresentation:[InputCellsSection sectionWithCells:presentedCells]];
+
+    [self addInlinedPickerCell:self.startDatePickerCell forCell:self.startDateCell];
+    [self addInlinedPickerCell:self.endDatePickerCell forCell:self.endDateCell];
+
+    self.dateFormatter = [[WBDateFormatter alloc] init];
     
-    _dateFormatter = [[WBDateFormatter alloc] init];
-    
-    _dynamicDatePicker =[[WBDynamicPicker alloc] initWithType:WBDynamicPickerTypeDate withController:self];
-    _dynamicDatePicker.delegate = self;
-    
-    _autocompleteHelper = [[WBAutocompleteHelper alloc] initWithAutocompleteField:self.nameTextField inView:self.view useReceiptsHints:NO];
-    
-    self.labelName.text = NSLocalizedString(@"Name", nil);
-    self.labelStartDate.text = NSLocalizedString(@"Start Date", nil);
-    self.labelEndDate.text = NSLocalizedString(@"End Date", nil);
-    
-    self.nameTextField.delegate = self;
-    
-    // to disable autocorrection, it may be irritating cos force it on auto-unfocus
-    // self.nameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-    
-    [self.nameTextField becomeFirstResponder];
-    
+    [self.nameCell.entryField becomeFirstResponder];
+
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(unfocusTextField:)];
+    [self.view addGestureRecognizer:gestureRecognizer];
+    gestureRecognizer.cancelsTouchesInView = NO;
+
+    [self loadDataToCells];
+}
+
+// unfocus textfield on touch out
+- (void)unfocusTextField:(UITapGestureRecognizer *)recognizer {
+    [UIApplication dismissKeyboard];
+}
+
+- (void)loadDataToCells {
     if (_trip) {
         self.navigationItem.title = NSLocalizedString(@"Edit Trip", nil);
-        self.nameTextField.text = [_trip name];
+        self.nameCell.value = [_trip name];
         _startDate = [_trip startDate];
         _endDate = [_trip endDate];
         _startTimeZone = [_trip startTimeZone];
@@ -67,65 +119,29 @@ static const int TAG_START = 1, TAG_END = 2;
     } else {
         self.navigationItem.title = NSLocalizedString(@"New Trip", nil);
         _startDate = [NSDate date];
-        
+
         NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
         dayComponent.day = [WBPreferences defaultTripDuration];
         NSCalendar *theCalendar = [NSCalendar currentCalendar];
         _endDate = [theCalendar dateByAddingComponents:dayComponent toDate:_startDate options:0];
-        
+
         _startTimeZone = _endTimeZone = [NSTimeZone localTimeZone];
     }
-    
-    [self.startDateButton setTitle:[_dateFormatter formattedDate:_startDate inTimeZone:_startTimeZone] forState:UIControlStateNormal];
-    [self.endDateButton setTitle:[_dateFormatter formattedDate:_endDate inTimeZone:_endTimeZone] forState:UIControlStateNormal];
-    
-    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(unfocusTextField:)];
-    [self.view addGestureRecognizer:gestureRecognizer];
-    gestureRecognizer.cancelsTouchesInView = NO;
 
-}
-
-// unfocus textfield on touch out
-- (void)unfocusTextField:(UITapGestureRecognizer*) recognizer {
-    [self.view endEditing:YES];
-}
-
--(void)textFieldDidBeginEditing:(UITextField *)textField {
-    [_autocompleteHelper textFieldDidBeginEditing:textField];
-}
-
--(void)textFieldDidEndEditing:(UITextField *)textField {
-    [_autocompleteHelper textFieldDidEndEditing:textField];
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    return [WBTextUtils isProperName:newText];
-}
-
-- (void)setTrip:(WBTrip*) trip
-{
-    _trip = trip;
-}
-
--(void)dynamicPicker:(WBDynamicPicker *)dynamicPicker doneWith:(id)subject
-{
-    if (dynamicPicker.tag == TAG_START) {
-        _startDate = [dynamicPicker selectedDate];
-        [self.startDateButton setTitle:[_dateFormatter formattedDate:_startDate inTimeZone:_startTimeZone] forState:UIControlStateNormal];
-    } else {
-        _endDate = [dynamicPicker selectedDate];
-        [self.endDateButton setTitle:[_dateFormatter formattedDate:_endDate inTimeZone:_endTimeZone] forState:UIControlStateNormal];
-    }
+    [self.startDateCell setValue:[self.dateFormatter formattedDate:_startDate inTimeZone:_startTimeZone]];
+    [self.endDateCell setValue:[self.dateFormatter formattedDate:_endDate inTimeZone:_endTimeZone]];
+    [self.startDatePickerCell setDate:_startDate];
+    [self.startDatePickerCell setMinDate:nil maxDate:self.endDate];
+    [self.endDatePickerCell setDate:_endDate];
+    [self.endDatePickerCell setMinDate:self.startDate maxDate:nil];
 }
 
 - (IBAction)actionDone:(id)sender {
     WBTrip* newTrip;
     
-    NSString* name = [self.nameTextField.text lastPathComponent];
-    
-    if ([name length]<=0) {
+    NSString* name = [self.nameCell.value lastPathComponent];
+
+    if (![name hasValue]) {
         [WBNewTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Please enter a name",nil)];
         return;
     }
@@ -153,21 +169,8 @@ static const int TAG_START = 1, TAG_END = 2;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)startDateButtonClicked:(id)sender {
-    [_dynamicDatePicker setTag:TAG_START];
-    [_dynamicDatePicker setDate:_startDate];
-    [_dynamicDatePicker showFromView:self.startDateButton];
-}
-
-- (IBAction)endDateButtonClicked:(id)sender {
-    [_dynamicDatePicker setTag:TAG_END];
-    [_dynamicDatePicker setDate:_endDate];
-    [_dynamicDatePicker showFromView:self.endDateButton];
-}
-
-+ (void)showAlertWithTitle:(NSString*) title message:(NSString*) message {
-    [[[UIAlertView alloc]
-      initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil] show];
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
+    [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
 }
 
 @end

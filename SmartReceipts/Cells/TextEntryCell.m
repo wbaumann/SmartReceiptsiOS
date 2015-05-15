@@ -14,7 +14,6 @@
 @interface TextEntryCell ()
 
 @property (nonatomic, strong) IBOutlet UITextField *entryField;
-@property (nonatomic, strong) id<InputValidation> inputValidation;
 
 @end
 
