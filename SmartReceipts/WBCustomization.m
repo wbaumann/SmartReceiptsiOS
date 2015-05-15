@@ -10,38 +10,38 @@
 
 @implementation WBCustomization
 
-+(UIColor*) themeColor {
-    return [UIColor colorWithRed:(148/255.0) green:(0/255.0) blue:(211/255.0) alpha:1.0];
++ (UIColor *)themeColor {
+    return [UIColor colorWithRed:(148 / 255.0) green:(0 / 255.0) blue:(211 / 255.0) alpha:1.0];
 }
 
-+(void) customizeOnAppLoad {
-    
++ (void)customizeOnAppLoad {
+
     // back button
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
+
     // bar background
     [[UINavigationBar appearance] setBarTintColor:[WBCustomization themeColor]];
-    
+
     // title color
     [[UINavigationBar appearance]
-     setTitleTextAttributes:@{
-                              NSForegroundColorAttributeName : [UIColor whiteColor]
-                              }
-     ];
+            setTitleTextAttributes:@{
+                    NSForegroundColorAttributeName : [UIColor whiteColor]
+            }
+    ];
 
     [[UIToolbar appearance] setTintColor:[WBCustomization themeColor]];
-    
+
 }
 
-+(void) customizeOnViewDidLoad:(UIViewController*) viewController {
++ (void)customizeOnViewDidLoad:(UIViewController *)viewController {
     UINavigationController *navigationController = viewController.navigationController;
     if (navigationController) {
         // configure navigation bar here, to do some more fancy things
     }
-    
+
     // changes color of active elements like buttons and segments, unfortunately alertview cannot be costumized
     [[UIApplication sharedApplication] keyWindow].tintColor = [WBCustomization themeColor];
-    
+
     // chanes status bar color, however iOS built-in controllers (for example mail composer) may override it
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
