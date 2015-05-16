@@ -122,6 +122,8 @@
 
     NSUInteger tripsCountAfter = [self.db countRowsInTable:TripsTable.TABLE_NAME];
     XCTAssertEqual(tripsCountBeforeRename, tripsCountAfter);
+
+    //TODO jaanus: check folder also moved
 }
 
 - (void)testDefaultCurrencyLoaded {
@@ -175,6 +177,8 @@
     XCTAssertEqual(tripsCountBefore - 1, tripsCountAfter);
     XCTAssertEqual(receiptsCountBefore - 5, receiptsCountAfter);
     XCTAssertEqual(distancesCountBefore - 4, distancesCountAfter);
+
+    //TODO jaanus: check dir also deleted
 }
 
 @end

@@ -183,16 +183,9 @@ static NSString *CellIdentifier = @"Cell";
     [cell.priceWidthConstraint setConstant:_priceWidth];
 }
 
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        WBTrip* trip = [_trips tripAtIndex:(int)indexPath.row];
-//        if([[WBDB trips] deleteWithName:[trip name]]){
-//            [_trips removeTrip:trip];
-//            [WBFileManager deleteIfExists:[trip directoryPath]];
-//        }
-//    }
-//}
+- (void)deleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+    [[Database sharedInstance] deleteTrip:object];
+}
 
 - (void)tappedObject:(id)tapped atIndexPath:(NSIndexPath *)indexPath {
     [self setTapped:tapped];

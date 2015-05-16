@@ -19,6 +19,7 @@
 #import "Database+Distances.h"
 #import "FetchedModelAdapter.h"
 #import "NSDate+Calculations.h"
+#import "WBFileManager.h"
 
 @interface WBTrip (Expose)
 
@@ -159,6 +160,11 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidDeleteModelNotification object:trip];
         });
     }
+
+    if (result) {
+        [WBFileManager deleteIfExists:[trip directoryPath]];
+    }
+
     return result;
 }
 
