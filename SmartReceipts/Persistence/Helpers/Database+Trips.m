@@ -68,11 +68,8 @@
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         result = [self executeQuery:update usingDatabase:db];
         if (trip.nameChanged) {
-            DatabaseQueryBuilder *updateReceipts = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
-            [updateReceipts addParam:ReceiptsTable.COLUMN_PARENT value:trip.name];
-            [updateReceipts where:ReceiptsTable.COLUMN_PARENT value:trip.originalName];
-
-            result = [self executeQuery:updateReceipts usingDatabase:db] && result;
+            [self moveReceiptsWithParent:trip.originalName toParent:trip.name usingDatabase:db];
+            [self moveDistancesWithParent:trip.originalName toParent:trip.name usingDatabase:db];
 
             [[NSFileManager defaultManager] moveItemAtPath:[trip directoryPathUsingName:trip.originalName] toPath:[trip directoryPath] error:nil];
         }
@@ -139,6 +136,30 @@
     DatabaseQueryBuilder *selectAllTrips = [DatabaseQueryBuilder selectAllStatementForTable:TripsTable.TABLE_NAME];
     [selectAllTrips orderBy:TripsTable.COLUMN_TO ascending:NO];
     return [self createAdapterUsingQuery:selectAllTrips forModel:[WBTrip class]];
+}
+
+- (BOOL)deleteTrip:(WBTrip *)trip {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self deleteTrip:trip usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (BOOL)deleteTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:TripsTable.TABLE_NAME];
+    [delete where:TripsTable.COLUMN_NAME value:trip.name];
+    BOOL result = [self executeQuery:delete usingDatabase:database];
+    if (result) {
+        [self deleteReceiptsForTrip:trip usingDatabase:database];
+        [self deleteDistancesForTrip:trip usingDatabase:database];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidDeleteModelNotification object:trip];
+        });
+    }
+    return result;
 }
 
 - (WBTrip *)tripWithName:(NSString *)tripName {

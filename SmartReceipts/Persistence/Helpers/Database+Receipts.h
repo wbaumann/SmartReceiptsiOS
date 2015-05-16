@@ -25,5 +25,7 @@
 - (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (NSString *)currencyForTripReceipts:(WBTrip *)trip;
 - (NSString *)currencyForTripReceipts:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
+- (BOOL)deleteReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
+- (BOOL)moveReceiptsWithParent:(NSString *)previous toParent:(NSString *)next usingDatabase:(FMDatabase *)database;
 
 @end

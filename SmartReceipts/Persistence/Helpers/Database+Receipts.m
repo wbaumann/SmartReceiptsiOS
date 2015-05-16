@@ -174,6 +174,19 @@
     return [self selectCurrencyFromTable:ReceiptsTable.TABLE_NAME currencyColumn:ReceiptsTable.COLUMN_ISO4217 forTrip:trip usingDatabase:database];
 }
 
+- (BOOL)deleteReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:ReceiptsTable.TABLE_NAME];
+    [delete where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    return [self executeQuery:delete usingDatabase:database];
+}
+
+- (BOOL)moveReceiptsWithParent:(NSString *)previous toParent:(NSString *)next usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
+    [update addParam:ReceiptsTable.COLUMN_PARENT value:next];
+    [update where:ReceiptsTable.COLUMN_PARENT value:previous];
+    return [self executeQuery:update usingDatabase:database];
+}
+
 - (void)appendCommonValuesFromReceipt:(WBReceipt *)receipt toQuery:(DatabaseQueryBuilder *)query {
     [query addParam:ReceiptsTable.COLUMN_PATH value:receipt.imageFileName fallback:[WBReceipt NO_DATA]];
     [query addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];

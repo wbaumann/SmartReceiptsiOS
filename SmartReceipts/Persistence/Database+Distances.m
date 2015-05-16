@@ -162,5 +162,17 @@
     return [[self fetchedAdapterForDistancesInTrip:trip] allObjects];
 }
 
+- (BOOL)deleteDistancesForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:DistanceTable.TABLE_NAME];
+    [delete where:DistanceTable.COLUMN_PARENT value:trip.name];
+    return [self executeQuery:delete usingDatabase:database];
+}
+
+- (BOOL)moveDistancesWithParent:(NSString *)previous toParent:(NSString *)next usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:DistanceTable.TABLE_NAME];
+    [update addParam:DistanceTable.COLUMN_PARENT value:next];
+    [update where:DistanceTable.COLUMN_PARENT value:previous];
+    return [self executeQuery:update usingDatabase:database];
+}
 
 @end

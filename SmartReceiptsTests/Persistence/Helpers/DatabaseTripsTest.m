@@ -15,6 +15,7 @@
 #import "NSDate+Calculations.h"
 #import "WBCurrency.h"
 #import "Database+Receipts.h"
+#import "Database+Distances.h"
 
 @interface DatabaseTripsTest : DatabaseTestsBase
 
@@ -96,13 +97,17 @@
     XCTAssertEqualObjects(@"Cost center this", reloaded.costCenter);
 }
 
-- (void)testOnTripNameReceiptsAreMoved {
+- (void)testOnTripNameReceiptsAndDistancesAreMoved {
     WBTrip *trip = [self.db insertTestTrip:@{}];
     [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
     [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
     [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
     [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
     [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
+
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
 
     NSUInteger tripsCountBeforeRename = [self.db countRowsInTable:TripsTable.TABLE_NAME];
 
@@ -111,6 +116,9 @@
 
     NSArray *receipts = [self.db allReceiptsForTrip:trip descending:YES];
     XCTAssertEqual(5, receipts.count);
+
+    NSArray *distances = [self.db allDistancesForTrip:trip];
+    XCTAssertEqual(3, distances.count);
 
     NSUInteger tripsCountAfter = [self.db countRowsInTable:TripsTable.TABLE_NAME];
     XCTAssertEqual(tripsCountBeforeRename, tripsCountAfter);
@@ -135,6 +143,38 @@
     WBTrip *loaded = [self.db tripWithName:tripName];
     XCTAssertNotNil(loaded);
     XCTAssertTrue([endDate isOnSameDate:loaded.endDate]);
+}
+
+- (void)testTripDeletion {
+    NSString *tripName = @"Original name goes here.";
+    [self.db insertTestTrip:@{TripsTable.COLUMN_NAME: tripName}];
+
+    WBTrip *trip = [self.db tripWithName:tripName];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
+
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
+
+
+    NSUInteger tripsCountBefore = [self.db countRowsInTable:TripsTable.TABLE_NAME];
+    NSUInteger receiptsCountBefore = [self.db countRowsInTable:ReceiptsTable.TABLE_NAME];
+    NSUInteger distancesCountBefore = [self.db countRowsInTable:DistanceTable.TABLE_NAME];
+
+    [self.db deleteTrip:trip];
+
+    NSUInteger tripsCountAfter = [self.db countRowsInTable:TripsTable.TABLE_NAME];
+    NSUInteger receiptsCountAfter = [self.db countRowsInTable:ReceiptsTable.TABLE_NAME];
+    NSUInteger distancesCountAfter = [self.db countRowsInTable:DistanceTable.TABLE_NAME];
+
+    XCTAssertEqual(tripsCountBefore - 1, tripsCountAfter);
+    XCTAssertEqual(receiptsCountBefore - 5, receiptsCountAfter);
+    XCTAssertEqual(distancesCountBefore - 4, distancesCountAfter);
 }
 
 @end
