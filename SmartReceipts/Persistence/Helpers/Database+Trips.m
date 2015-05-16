@@ -20,6 +20,15 @@
 #import "FetchedModelAdapter.h"
 #import "NSDate+Calculations.h"
 
+@interface WBTrip (Expose)
+
+@property (nonatomic, copy) NSString *originalName;
+
+- (BOOL)nameChanged;
+- (NSString *)directoryPathUsingName:(NSString *)name;
+
+@end
+
 @implementation Database (Trips)
 
 - (BOOL)createTripsTable {
@@ -40,17 +49,43 @@
 
 - (BOOL)saveTrip:(WBTrip *)trip {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:TripsTable.TABLE_NAME];
-    [insert addParam:TripsTable.COLUMN_NAME value:trip.name];
-    [insert addParam:TripsTable.COLUMN_FROM value:trip.startDate.milliseconds];
-    [insert addParam:TripsTable.COLUMN_TO value:trip.endDate.milliseconds];
-    [insert addParam:TripsTable.COLUMN_FROM_TIMEZONE value:trip.startTimeZone.name];
-    [insert addParam:TripsTable.COLUMN_TO_TIMEZONE value:trip.endTimeZone.name];
-    [insert addParam:TripsTable.COLUMN_PRICE value:trip.price.amount];
-    [insert addParam:TripsTable.COLUMN_DEFAULT_CURRENCY value:trip.defaultCurrency.code];
-    [insert addParam:TripsTable.COLUMN_COMMENT value:trip.comment];
-    [insert addParam:TripsTable.COLUMN_COST_CENTER value:trip.costCenter];
+    [self appendParamsFromTrip:trip toQuery:insert];
     BOOL result = [self executeQuery:insert];
     return result;
+}
+
+- (BOOL)updateTrip:(WBTrip *)trip {
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:TripsTable.TABLE_NAME];
+    [self appendParamsFromTrip:trip toQuery:update];
+    [update where:TripsTable.COLUMN_NAME value:trip.originalName];
+
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self executeQuery:update usingDatabase:db];
+        if (trip.nameChanged) {
+            DatabaseQueryBuilder *updateReceipts = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
+            [updateReceipts addParam:ReceiptsTable.COLUMN_PARENT value:trip.name];
+            [updateReceipts where:ReceiptsTable.COLUMN_PARENT value:trip.originalName];
+
+            result = [self executeQuery:updateReceipts usingDatabase:db] && result;
+
+            [[NSFileManager defaultManager] moveItemAtPath:[trip directoryPathUsingName:trip.originalName] toPath:[trip directoryPath] error:nil];
+        }
+    }];
+
+    return result;
+}
+
+- (void)appendParamsFromTrip:(WBTrip *)trip toQuery:(DatabaseQueryBuilder *)query {
+    [query addParam:TripsTable.COLUMN_NAME value:trip.name];
+    [query addParam:TripsTable.COLUMN_FROM value:trip.startDate.milliseconds];
+    [query addParam:TripsTable.COLUMN_TO value:trip.endDate.milliseconds];
+    [query addParam:TripsTable.COLUMN_FROM_TIMEZONE value:trip.startTimeZone.name];
+    [query addParam:TripsTable.COLUMN_TO_TIMEZONE value:trip.endTimeZone.name];
+    [query addParam:TripsTable.COLUMN_PRICE value:trip.price.amount];
+    [query addParam:TripsTable.COLUMN_DEFAULT_CURRENCY value:trip.defaultCurrency.code];
+    [query addParam:TripsTable.COLUMN_COMMENT value:trip.comment];
+    [query addParam:TripsTable.COLUMN_COST_CENTER value:trip.costCenter];
 }
 
 - (NSDecimalNumber *)totalPriceForTrip:(WBTrip *)trip {
@@ -72,11 +107,20 @@
 }
 
 - (NSArray *)allTrips {
+    __block NSArray *result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self allTripsUsingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (NSArray *)allTripsUsingDatabase:(FMDatabase *)database {
     FetchedModelAdapter *adapter = [[FetchedModelAdapter alloc] initWithDatabase:self];
     NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY %@ DESC", TripsTable.TABLE_NAME, TripsTable.COLUMN_TO];
     [adapter setQuery:query];
     [adapter setModelClass:[WBTrip class]];
-    [adapter fetch];
+    [adapter fetchUsingDatabase:database];
     return [adapter allObjects];
 }
 

@@ -15,11 +15,11 @@
 
 @interface WBReceipt : NSObject <FetchedModel>
 
+@property (nonatomic, assign) NSUInteger objectId;
 @property (nonatomic, strong, readonly) WBPrice *price;
 @property (nonatomic, strong, readonly) WBPrice *tax;
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, assign) NSInteger reportIndex;
-@property (nonatomic, assign) NSUInteger id;
 @property (nonatomic, strong) PaymentMethod *paymentMethod;
 @property (nonatomic, assign) NSUInteger paymentMethodId;
 @property (nonatomic, copy) NSString *name;

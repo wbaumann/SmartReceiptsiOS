@@ -51,7 +51,9 @@
     __block NSUInteger result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         NSString *countQuery = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@", tableName];
+        SRLog(@"Execute query:'%@'", countQuery);
         result = (NSUInteger) [db intForQuery:countQuery];
+        SRLog(@"Result:%tu", result);
     }];
     return result;
 }

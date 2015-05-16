@@ -16,9 +16,11 @@
 
 - (BOOL)createTripsTable;
 - (BOOL)saveTrip:(WBTrip *)trip;
+- (BOOL)updateTrip:(WBTrip *)trip;
 - (NSDecimalNumber *)totalPriceForTrip:(WBTrip *)trip;
 - (NSDecimalNumber *)totalPriceForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (NSArray *)allTrips;
+- (NSArray *)allTripsUsingDatabase:(FMDatabase *)database;
 - (WBTrip *)tripWithName:(NSString *)tripName;
 - (WBPrice *)updatePriceOfTrip:(WBTrip *)trip;
 - (WBPrice *)updatePriceOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;

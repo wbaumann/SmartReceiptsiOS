@@ -78,7 +78,7 @@
 - (BOOL)updateReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
     [self appendCommonValuesFromReceipt:receipt toQuery:update];
-    [update where:ReceiptsTable.COLUMN_ID value:@(receipt.id)];
+    [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
     BOOL result = [self executeQuery:update usingDatabase:database];
     if (result) {
         [self updatePriceOfTrip:receipt.trip usingDatabase:database];

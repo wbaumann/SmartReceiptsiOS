@@ -122,7 +122,7 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
         }
         
         NSUInteger rid = (NSUInteger) [cres intForColumnIndex:0];
-        [receipt setId:rid];
+        [receipt setObjectId:rid];
     }];
     return receipt;
 }

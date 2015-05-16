@@ -14,8 +14,16 @@
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "NSDate+Calculations.h"
 #import "WBCurrency.h"
+#import "NSString+Validation.h"
+#import "WBPreferences.h"
 
 NSString *const MULTI_CURRENCY = @"XXXXXX";
+
+@interface WBTrip ()
+
+@property (nonatomic, copy) NSString *originalName;
+
+@end
 
 @implementation WBTrip {
     float _miles;
@@ -36,7 +44,11 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
 }
 
 - (NSString *)directoryPath {
-    return [[WBFileManager tripsDirectoryPath] stringByAppendingPathComponent:_name];
+    return [self directoryPathUsingName:self.name];
+}
+
+- (NSString *)directoryPathUsingName:(NSString *)name {
+    return [[WBFileManager tripsDirectoryPath] stringByAppendingPathComponent:name];
 }
 
 - (NSString *)fileInDirectoryPath:(NSString *)filename {
@@ -45,6 +57,12 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
 
 - (void)setName:(NSString *)name {
     _name = [[name lastPathComponent] mutableCopy];
+
+    if (self.originalName.hasValue) {
+        return;
+    }
+
+    [self setOriginalName:_name];
 }
 
 - (float)miles {
@@ -81,10 +99,13 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
 }
 
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet {
-    _name = [resultSet stringForColumn:TripsTable.COLUMN_NAME];
+    [self setName:[resultSet stringForColumn:TripsTable.COLUMN_NAME]];
 
     NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:TripsTable.COLUMN_PRICE]];
     NSString *currencyCode = [resultSet stringForColumn:TripsTable.COLUMN_DEFAULT_CURRENCY];
+    if (!currencyCode.hasValue) {
+        currencyCode = [WBPreferences defaultCurrency];
+    }
     self.defaultCurrency = [WBCurrency currencyForCode:currencyCode];
     _price = [WBPrice priceWithAmount:price currencyCode:currencyCode];
     long long int startDateMilliseconds = [resultSet longLongIntForColumn:TripsTable.COLUMN_FROM];
@@ -95,6 +116,10 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
     _endTimeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:TripsTable.COLUMN_TO_TIMEZONE]];
     self.comment = [resultSet stringForColumn:TripsTable.COLUMN_COMMENT];
     self.costCenter = [resultSet stringForColumn:TripsTable.COLUMN_COST_CENTER];
+}
+
+- (BOOL)nameChanged {
+    return [self.name compare:self.originalName options:NSCaseInsensitiveSearch] != NSOrderedSame;
 }
 
 @end

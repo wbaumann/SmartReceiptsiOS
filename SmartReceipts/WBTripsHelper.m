@@ -94,70 +94,12 @@ static NSString * const NO_DATA = @"null";
     return [allTrips copy];
 }
 
--(NSArray*) selectAll {
+- (NSArray *)selectAll {
     __block NSArray *array = nil;
-    [_databaseQueue inDatabase:^(FMDatabase* database){
-        array = [self selectAllInDatabase:database];
+    [_databaseQueue inDatabase:^(FMDatabase *database) {
+        array = [[Database sharedInstance] allTripsUsingDatabase:database];
     }];
     return array;
-}
-
--(WBTrip*) updateTrip:(WBTrip*) oldTrip dir:(NSString*) dir from:(NSDate*) from to:(NSDate*) to {
-    NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ? , %@ = ? , %@ = ? ", TABLE_NAME, COLUMN_NAME, COLUMN_FROM, COLUMN_TO];
-
-    dir = [dir lastPathComponent];
-
-    NSNumber* llFrom = [NSNumber numberWithLongLong:(long long)([from timeIntervalSince1970] * 1000.0)];
-    NSNumber* llTo = [NSNumber numberWithLongLong:(long long)([to timeIntervalSince1970] * 1000.0)];
-
-    NSMutableArray *args = [[NSMutableArray alloc] initWithArray:@[dir, llFrom, llTo,]];
-
-    NSTimeZone *startTimeZone = [oldTrip startTimeZone];
-    NSTimeZone *endTimeZone = [oldTrip endTimeZone];
-
-    if (![from isEqualToDate:[oldTrip startDate]]) {
-        startTimeZone = [NSTimeZone localTimeZone];
-        query = [NSString stringWithFormat:@"%@ , %@ = ? ", query, COLUMN_FROM_TIMEZONE];
-        [args addObject:[startTimeZone name]];
-    }
-
-    if (![to isEqualToDate:[oldTrip endDate]]) {
-        endTimeZone = [NSTimeZone localTimeZone];
-        query = [NSString stringWithFormat:@"%@ , %@ = ? ", query, COLUMN_TO_TIMEZONE];
-        [args addObject:[endTimeZone name]];
-    }
-
-    query = [NSString stringWithFormat:@"%@ WHERE %@ = ? ", query, COLUMN_NAME];
-    [args addObject:[oldTrip name]];
-
-    __block WBTrip* trip = nil;
-    [_databaseQueue inTransaction:^(FMDatabase *database, BOOL *rollback) {
-        BOOL result = [database executeUpdate:query withArgumentsInArray:args];
-
-        if (!result) {
-            *rollback = YES;
-            return;
-        }
-
-
-        if (![[oldTrip name] caseInsensitiveCompare:dir] == NSOrderedSame) {
-            if (![[WBDB receipts] replaceParentName:[oldTrip name] to:dir inDatabase:database]) {
-                *rollback = YES;
-                return;
-            }
-        }
-
-        trip = [[WBTrip alloc] init];
-        [trip setName:dir];
-        [trip setPrice:[oldTrip price]];
-        [trip setStartDate:from];
-        [trip setEndDate:to];
-        [trip setStartTimeZone:startTimeZone];
-        [trip setEndTimeZone:endTimeZone];
-
-        [[NSFileManager defaultManager] moveItemAtPath:[oldTrip directoryPath] toPath:[trip directoryPath] error:nil];
-    }];
-    return trip;
 }
 
 -(BOOL) deleteWithName:(NSString*) name {
@@ -175,17 +117,6 @@ static NSString * const NO_DATA = @"null";
         }
     }];
     return result;
-}
-
-#pragma mark - for another tables
-
--(int)cachedCount {
-    if (_cachedCount == -1) {
-        // this shouldn't happen because we select all trips on launch, it's just for safety
-        NSLog(@"using cached count when there were no query before, default to 0");
-        return 0;
-    }
-    return _cachedCount;
 }
 
 #pragma mark - merge

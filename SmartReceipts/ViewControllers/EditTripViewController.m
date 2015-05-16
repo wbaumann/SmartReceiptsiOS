@@ -27,6 +27,7 @@
 #import "Pickable.h"
 #import "StringPickableWrapper.h"
 #import "WBCurrency.h"
+#import "Database+Trips.h"
 
 @interface EditTripViewController ()
 
@@ -45,6 +46,8 @@
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) NSTimeZone *startTimeZone;
 @property (nonatomic, strong) NSTimeZone *endTimeZone;
+
+@property (nonatomic, assign) BOOL creatingNewTrip;
 
 @end
 
@@ -141,6 +144,8 @@
 }
 
 - (void)loadDataToCells {
+    [self setCreatingNewTrip:!self.trip];
+
     NSString *currency;
     if (_trip) {
         self.navigationItem.title = NSLocalizedString(@"Edit Trip", nil);
@@ -176,29 +181,33 @@
 }
 
 - (IBAction)actionDone:(id)sender {
-    WBTrip* newTrip;
-    
-    NSString* name = [self.nameCell.value lastPathComponent];
+    WBTrip *newTrip;
+
+    NSString *name = [self.nameCell.value lastPathComponent];
 
     if (![name hasValue]) {
         [EditTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Please enter a name", nil)];
         return;
     }
-    
-    if (_trip == nil) {
-        newTrip = [[WBDB trips] insertWithName:name from:_startDate to:_endDate];
-        if(!newTrip){
-            [EditTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot add this trip", nil)];
-            return;
-        }
-        [self.delegate viewController:self newTrip:newTrip];
-    } else {
-        newTrip = [[WBDB trips] updateTrip:_trip dir:name from:_startDate to:_endDate];
-        if(!newTrip){
-            [EditTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot save this trip", nil)];
-            return;
-        }
+
+    if (!self.trip) {
+        self.trip = [[WBTrip alloc] init];
+    }
+
+    [self.trip setName:name];
+    [self.trip setStartDate:self.startDate];
+    [self.trip setEndDate:self.endDate];
+    [self.trip setDefaultCurrency:[WBCurrency currencyForCode:self.currencyCell.value]];
+    [self.trip setComment:self.commentCell.value];
+    [self.trip setCostCenter:self.costCenterCell.value];
+
+    if (self.creatingNewTrip && [[Database sharedInstance] saveTrip:self.trip]) {
+        [self.delegate viewController:self newTrip:self.trip];
+    } else if ([[Database sharedInstance] updateTrip:self.trip]) {
         [self.delegate viewController:self updatedTrip:newTrip fromTrip:_trip];
+    } else {
+        [EditTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot save this trip", nil)];
+        return;
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];

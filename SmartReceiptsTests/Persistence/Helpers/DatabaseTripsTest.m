@@ -14,6 +14,7 @@
 #import "WBTrip.h"
 #import "NSDate+Calculations.h"
 #import "WBCurrency.h"
+#import "Database+Receipts.h"
 
 @interface DatabaseTripsTest : DatabaseTestsBase
 
@@ -76,6 +77,54 @@
     XCTAssertEqualObjects(defaultCurrency, loaded.defaultCurrency.code);
     XCTAssertEqualObjects(comment, loaded.comment);
     XCTAssertEqualObjects(costCenter, loaded.costCenter);
+}
+
+- (void)testUpdateTrip {
+    NSString *testTripName = @"Tripping here";
+    [self.db insertTrip:@{TripsTable.COLUMN_NAME: testTripName}];
+
+    WBTrip *trip = [self.db tripWithName:testTripName];
+    [trip setName:@"Altered XZY"];
+    [trip setComment:@"My comment"];
+    [trip setCostCenter:@"Cost center this"];
+
+    [self.db updateTrip:trip];
+
+    WBTrip *reloaded = [self.db tripWithName:@"Altered XZY"];
+    XCTAssertNotNil(reloaded);
+    XCTAssertEqualObjects(@"My comment", reloaded.comment);
+    XCTAssertEqualObjects(@"Cost center this", reloaded.costCenter);
+}
+
+- (void)testOnTripNameReceiptsAreMoved {
+    WBTrip *trip = [self.db insertTrip:@{}];
+    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
+    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
+    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
+    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
+    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
+
+    NSUInteger tripsCountBeforeRename = [self.db countRowsInTable:TripsTable.TABLE_NAME];
+
+    trip.name = @"Rename me";
+    [self.db updateTrip:trip];
+
+    NSArray *receipts = [self.db allReceiptsForTrip:trip descending:YES];
+    XCTAssertEqual(5, receipts.count);
+
+    NSUInteger tripsCountAfter = [self.db countRowsInTable:TripsTable.TABLE_NAME];
+    XCTAssertEqual(tripsCountBeforeRename, tripsCountAfter);
+}
+
+- (void)testDefaultCurrencyLoaded {
+    NSString *testName = @"BOOOOOOOOYA";
+    NSString *testCurrency = @"EUR";
+    [self.db insertTrip:@{TripsTable.COLUMN_NAME: testName, TripsTable.COLUMN_DEFAULT_CURRENCY: testCurrency}];
+
+    WBTrip *loaded = [self.db tripWithName:testName];
+    XCTAssertNotNil(loaded);
+    XCTAssertNotNil(loaded.defaultCurrency);
+    XCTAssertEqualObjects(testCurrency, loaded.defaultCurrency.code);
 }
 
 @end

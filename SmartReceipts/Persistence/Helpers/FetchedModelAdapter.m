@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <FMDB/FMDatabase.h>
 #import "FetchedModelAdapter.h"
 #import "Database.h"
-#import "FMDatabase.h"
 #import "FetchedModel.h"
 #import "Constants.h"
 #import "FetchedModelAdapterDelegate.h"
@@ -57,18 +57,24 @@
 }
 
 - (void)fetch {
+    [self.database.databaseQueue inDatabase:^(FMDatabase *db) {
+        [self fetchUsingDatabase:db];
+    }];
+}
+
+- (void)fetchUsingDatabase:(FMDatabase *)database {
     TICK;
     NSMutableArray *objects = [NSMutableArray array];
     SRLog(@"Fetch query: '%@'", self.fetchQuery);
     SRLog(@"Fetch params: %@", self.fetchParameters);
-    [self.database.databaseQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet *resultSet = [db executeQuery:self.fetchQuery withParameterDictionary:self.fetchParameters];
-        while ([resultSet next]) {
-            id<FetchedModel> fetched = (id <FetchedModel>) [[self.modelClass alloc] init];
-            [fetched loadDataFromResultSet:resultSet];
-            [objects addObject:fetched];
-        }
-    }];
+
+    FMResultSet *resultSet = [database executeQuery:self.fetchQuery withParameterDictionary:self.fetchParameters];
+    while ([resultSet next]) {
+        id <FetchedModel> fetched = (id <FetchedModel>) [[self.modelClass alloc] init];
+        [fetched loadDataFromResultSet:resultSet];
+        [objects addObject:fetched];
+    }
+
     [self setModels:[NSMutableArray arrayWithArray:objects]];
     TOCK(@"Fetch time");
 }

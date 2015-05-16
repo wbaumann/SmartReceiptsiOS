@@ -60,7 +60,7 @@ static NSString* checkNoData(NSString* str) {
   extraEditText3:(NSString *)extraEditText3 {
     self = [super init];
     if (self) {
-        _id = rid;
+        _objectId = rid;
         _name = [name lastPathComponent];
         _category = category;
         _fileName = checkNoData([imageFileName lastPathComponent]);
@@ -88,7 +88,7 @@ static NSString* checkNoData(NSString* str) {
 }
 
 -(NSUInteger)receiptId {
-    return _id;
+    return self.objectId;
 }
 
 -(NSString*)imageFileName {
@@ -229,7 +229,7 @@ static NSString* checkNoData(NSString* str) {
     NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:ReceiptsTable.COLUMN_TAX]];
     NSString *currencyCode = [resultSet stringForColumn:ReceiptsTable.COLUMN_ISO4217];
 
-    [self setId:(NSUInteger) [resultSet intForColumn:ReceiptsTable.COLUMN_ID]];
+    [self setObjectId:(NSUInteger) [resultSet intForColumn:ReceiptsTable.COLUMN_ID]];
     _name = [resultSet stringForColumn:ReceiptsTable.COLUMN_NAME];
     _category = [resultSet stringForColumn:ReceiptsTable.COLUMN_CATEGORY];
     _fileName = [resultSet stringForColumn:ReceiptsTable.COLUMN_PATH];

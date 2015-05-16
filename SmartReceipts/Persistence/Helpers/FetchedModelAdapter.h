@@ -10,6 +10,7 @@
 
 @protocol FetchedModelAdapterDelegate;
 @class Database;
+@class FMDatabase;
 
 @interface FetchedModelAdapter : NSObject
 
@@ -22,6 +23,7 @@
 - (void)setQuery:(NSString *)query;
 - (void)setQuery:(NSString *)query parameters:(NSDictionary *)parameters;
 - (void)fetch;
+- (void)fetchUsingDatabase:(FMDatabase *)database;
 - (NSArray *)allObjects;
 
 @end
