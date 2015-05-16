@@ -8,7 +8,7 @@
 
 @class FMResultSet;
 
-@protocol FetchedModel
+@protocol FetchedModel <NSObject>
 
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet;
 - (BOOL)isEqual:(id)other;

@@ -161,9 +161,14 @@
 }
 
 - (FetchedModelAdapter *)createAdapterUsingQuery:(DatabaseQueryBuilder *)query forModel:(Class)modelClass {
+    return [self createAdapterUsingQuery:query forModel:modelClass associatedModel:nil];
+}
+
+- (FetchedModelAdapter *)createAdapterUsingQuery:(DatabaseQueryBuilder *)query forModel:(Class)modelClass associatedModel:(NSObject *)model {
     FetchedModelAdapter *adapter = [[FetchedModelAdapter alloc] initWithDatabase:self];
     [adapter setQuery:query.buildStatement parameters:query.parameters];
     [adapter setModelClass:modelClass];
+    [adapter setAssociatedModel:model];
     [adapter fetch];
     return adapter;
 }

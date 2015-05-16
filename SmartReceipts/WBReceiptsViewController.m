@@ -31,6 +31,7 @@
 #import "UIView+LoadHelpers.h"
 #import "FetchedModelAdapter.h"
 #import "Database+Receipts.h"
+#import "Database+Trips.h"
 
 static NSString *CellIdentifier = @"Cell";
 static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
@@ -54,6 +55,10 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 @end
 
 @implementation WBReceiptsViewController
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)viewDidLoad
 {
@@ -88,6 +93,20 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     //        });
     //    });
     //}
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUpdated:) name:DatabaseDidUpdateModelNotification object:nil];
+}
+
+- (void)tripUpdated:(NSNotification *)notification {
+    WBTrip *trip = notification.object;
+
+    if (![self.trip isEqual:trip]) {
+        return;;
+    }
+
+    //TODO jaanus: check posting already altered object
+    self.trip = [[Database sharedInstance] tripWithName:self.trip.name];
+    [self updateTitle];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -267,31 +286,20 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 }
 
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"ReceiptActions"])
-    {
-        WBReceiptActionsViewController* vc = (WBReceiptActionsViewController*)[[segue destinationViewController] topViewController];
-        
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"ReceiptActions"]) {
+        WBReceiptActionsViewController *vc = (WBReceiptActionsViewController *) [[segue destinationViewController] topViewController];
         vc.receiptsViewController = self;
-        
-        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-        if (ip) {
-            vc.receipt = [_receipts receiptAtIndex:ip.row];
-        }
-        
-    }
-    else if([[segue identifier] isEqualToString:@"ReceiptCreator"])
-    {
-        EditReceiptViewController * vc = (EditReceiptViewController *)[[segue destinationViewController] topViewController];
-        
+        vc.receipt = self.tapped;
+    } else if ([[segue identifier] isEqualToString:@"ReceiptCreator"]) {
+        EditReceiptViewController *vc = (EditReceiptViewController *) [[segue destinationViewController] topViewController];
+
         vc.delegate = self;
         vc.receiptsViewController = self;
-        
-        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
+
         WBReceipt *receipt = nil;
-        if (ip && [sender isKindOfClass:[UITableViewCell class]]) {
-            receipt = [_receipts receiptAtIndex:(int)ip.row];
+        if (self.tapped) {
+            receipt = self.tapped;
         } else {
             [vc setReceiptImage:_imageForCreatorSegue];
             receipt = _receiptForCretorSegue;
@@ -300,18 +308,19 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
         }
         [vc setReceipt:receipt withTrip:self.trip];
     }
-    else if([[segue identifier] isEqualToString:@"Settings"])
-    {
-        
+    else if ([[segue identifier] isEqualToString:@"Settings"]) {
+
     }
-    else if([[segue identifier] isEqualToString:@"GenerateReport"]) {
-        WBGenerateViewController* vc = (WBGenerateViewController*)[[segue destinationViewController] topViewController];
-        
+    else if ([[segue identifier] isEqualToString:@"GenerateReport"]) {
+        WBGenerateViewController *vc = (WBGenerateViewController *) [[segue destinationViewController] topViewController];
+
         [vc setReceipts:[_receipts receiptsArrayCopy] forTrip:self.trip andViewController:self];
     } else if ([PresentTripDistancesSegue isEqualToString:segue.identifier]) {
         TripDistancesViewController *controller = (TripDistancesViewController *) [[segue destinationViewController] topViewController];
         [controller setTrip:self.trip];
     }
+
+    [self setTapped:nil];
 }
 
 #pragma mark - WBNewReceiptViewControllerDelegate

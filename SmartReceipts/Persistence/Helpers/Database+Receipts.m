@@ -114,30 +114,17 @@
 }
 
 - (NSArray *)allReceiptsWithQuery:(DatabaseQueryBuilder *)query forTrip:(WBTrip *)trip {
-    FetchedModelAdapter *adapter = [[FetchedModelAdapter alloc] initWithDatabase:self];
-    [adapter setQuery:query.buildStatement parameters:query.parameters];
-    [adapter setModelClass:[WBReceipt class]];
-    [adapter fetch];
+    FetchedModelAdapter *adapter = [self createAdapterUsingQuery:query forModel:[WBReceipt class] associatedModel:trip];
     //TODO jaanus: maybe can do this better
     NSArray *paymentMethods = [self allPaymentMethods];
     NSArray *receipts = [adapter allObjects];
     for (WBReceipt *receipt in receipts) {
-        [receipt setTrip:trip];
         [receipt setPaymentMethod:[paymentMethods filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
             PaymentMethod *method = evaluatedObject;
             return method.objectId == receipt.paymentMethodId;
         }]].firstObject];
     }
     return receipts;
-}
-
-- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip {
-    __block NSDecimalNumber *result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self sumOfReceiptsForTrip:trip usingDatabase:db];
-    }];
-
-    return result;
 }
 
 - (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {

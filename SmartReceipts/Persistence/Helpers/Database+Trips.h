@@ -25,7 +25,6 @@
 - (WBTrip *)tripWithName:(NSString *)tripName;
 - (WBPrice *)updatePriceOfTrip:(WBTrip *)trip;
 - (WBPrice *)updatePriceOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
-- (WBPrice *)tripPrice:(WBTrip *)trip;
 - (WBPrice *)tripPrice:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (FetchedModelAdapter *)fetchedAdapterForAllTrips;
 - (BOOL)deleteTrip:(WBTrip *)trip;

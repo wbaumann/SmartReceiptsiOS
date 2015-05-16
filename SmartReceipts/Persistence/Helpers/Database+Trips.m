@@ -20,6 +20,7 @@
 #import "FetchedModelAdapter.h"
 #import "NSDate+Calculations.h"
 #import "WBFileManager.h"
+#import "Database+Notify.h"
 
 @interface WBTrip (Expose)
 
@@ -53,9 +54,7 @@
     [self appendParamsFromTrip:trip toQuery:insert];
     BOOL result = [self executeQuery:insert];
     if (result) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidInsertModelNotification object:trip];
-        });
+        [self notifyInsertOfModel:trip];
     }
     return result;
 }
@@ -77,9 +76,7 @@
     }];
 
     if (result) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidUpdateModelNotification object:trip];
-        });
+        [self notifyUpdateOfModel:trip];
     }
 
     return result;
@@ -156,9 +153,7 @@
         [self deleteReceiptsForTrip:trip usingDatabase:database];
         [self deleteDistancesForTrip:trip usingDatabase:database];
 
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidDeleteModelNotification object:trip];
-        });
+        [self notifyDeleteOfModel:trip];
     }
 
     if (result) {
@@ -193,16 +188,9 @@
 
     [self executeQuery:update usingDatabase:database];
 
+    [self notifyUpdateOfModel:trip];
+
     return price;
-}
-
-- (WBPrice *)tripPrice:(WBTrip *)trip {
-    __block WBPrice *result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self tripPrice:trip usingDatabase:db];
-    }];
-
-    return result;
 }
 
 - (WBPrice *)tripPrice:(WBTrip *)trip usingDatabase:(FMDatabase *)database {

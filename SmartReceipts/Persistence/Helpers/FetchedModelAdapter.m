@@ -19,6 +19,7 @@
 @property (nonatomic, copy) NSString *fetchQuery;
 @property (nonatomic, strong) NSDictionary *fetchParameters;
 @property (nonatomic, strong) NSArray *models;
+@property (nonatomic, assign) SEL associatedSelector;
 
 @end
 
@@ -173,11 +174,32 @@
     while ([resultSet next]) {
         id <FetchedModel> fetched = (id <FetchedModel>) [[self.modelClass alloc] init];
         [fetched loadDataFromResultSet:resultSet];
+
+        if (self.associatedModel) {
+            [fetched performSelector:self.associatedSelector withObject:self.associatedModel];
+        }
+
         [result addObject:fetched];
     }
 
     TOCK(@"Fetch time");
     return [NSArray arrayWithArray:result];
 }
+
+- (void)setAssociatedModel:(NSObject *)associatedModel {
+    _associatedModel = associatedModel;
+
+    if (!associatedModel) {
+        return;
+    }
+
+    NSString *className = NSStringFromClass(self.associatedModel.class);
+    if ([className rangeOfString:@"WB"].location == 0) {
+        className = [className substringFromIndex:2];
+    }
+    NSString *selectorPattern = [NSString stringWithFormat:@"set%@:", className];
+    [self setAssociatedSelector:NSSelectorFromString(selectorPattern)];
+}
+
 
 @end

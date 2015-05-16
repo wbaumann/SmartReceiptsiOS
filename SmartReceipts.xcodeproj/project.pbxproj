@@ -214,6 +214,7 @@
 		EA98B5211B077A9A006935AE /* NotifyMasterSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA98B5201B077A9A006935AE /* NotifyMasterSplitViewController.m */; };
 		EAB9700F1B078944005E1D63 /* MasterTripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB9700E1B078944005E1D63 /* MasterTripsViewController.m */; };
 		EAB970121B0790EE005E1D63 /* TripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB970111B0790EE005E1D63 /* TripsViewController.m */; };
+		EAD15C511B07C3A1003BB1F3 /* Database+Notify.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD15C501B07C3A1003BB1F3 /* Database+Notify.m */; };
 		EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */; };
 		EAE725DA1B022E9100402689 /* TripsToReceiptsConverterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */; };
 		EAE8F9B21AF149DC00E837E3 /* TripDistancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE8F9B11AF149DC00E837E3 /* TripDistancesViewController.m */; };
@@ -598,6 +599,8 @@
 		EAB9700E1B078944005E1D63 /* MasterTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterTripsViewController.m; sourceTree = "<group>"; };
 		EAB970101B0790EE005E1D63 /* TripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripsViewController.h; sourceTree = "<group>"; };
 		EAB970111B0790EE005E1D63 /* TripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsViewController.m; sourceTree = "<group>"; };
+		EAD15C4F1B07C3A1003BB1F3 /* Database+Notify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Database+Notify.h"; sourceTree = "<group>"; };
+		EAD15C501B07C3A1003BB1F3 /* Database+Notify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Database+Notify.m"; sourceTree = "<group>"; };
 		EAE725D51B022E3F00402689 /* DistancesToReceiptsConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancesToReceiptsConverter.h; sourceTree = "<group>"; };
 		EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancesToReceiptsConverter.m; sourceTree = "<group>"; };
 		EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsToReceiptsConverterTest.m; sourceTree = "<group>"; };
@@ -1190,6 +1193,8 @@
 				EA07BF4F1AF4CC19004D17F6 /* Database+Functions.m */,
 				EA36DE4F1B0118EE0034CC2D /* Database+Hints.h */,
 				EA36DE501B0118EE0034CC2D /* Database+Hints.m */,
+				EAD15C4F1B07C3A1003BB1F3 /* Database+Notify.h */,
+				EAD15C501B07C3A1003BB1F3 /* Database+Notify.m */,
 				EA07BF511AF4CD26004D17F6 /* Database+PaymentMethods.h */,
 				EA07BF521AF4CD26004D17F6 /* Database+PaymentMethods.m */,
 				EA888A7A1AFA5C5900DF2AE6 /* Database+Receipts.h */,
@@ -1709,6 +1714,7 @@
 				4DC6A9F119D7610900258DE3 /* GADMasterViewController.m in Sources */,
 				EA5963F41AF29B1A00935344 /* UIView+Search.m in Sources */,
 				EA07BF441AF3F882004D17F6 /* DecimalInputValidation.m in Sources */,
+				EAD15C511B07C3A1003BB1F3 /* Database+Notify.m in Sources */,
 				84AA0AD118E5F624008A85F9 /* WBFileManager.m in Sources */,
 				EA07BF501AF4CC19004D17F6 /* Database+Functions.m in Sources */,
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,

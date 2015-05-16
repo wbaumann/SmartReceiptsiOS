@@ -16,6 +16,7 @@
 
 @property (nonatomic, weak) id<FetchedModelAdapterDelegate> delegate;
 @property (nonatomic, strong) Class modelClass;
+@property (nonatomic, strong) NSObject *associatedModel;
 
 - (id)objectAtIndex:(NSInteger)index;
 - (id)initWithDatabase:(Database *)database;
