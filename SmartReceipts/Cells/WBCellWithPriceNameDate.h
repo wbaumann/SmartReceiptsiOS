@@ -10,10 +10,9 @@
 
 @interface WBCellWithPriceNameDate : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *priceField;
-@property (weak, nonatomic) IBOutlet UILabel *nameField;
-@property (weak, nonatomic) IBOutlet UILabel *dateField;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *priceWidthConstraint;
+@property (weak, nonatomic, readonly) UILabel *priceField;
+@property (weak, nonatomic, readonly) UILabel *nameField;
+@property (weak, nonatomic, readonly) UILabel *dateField;
+@property (weak, nonatomic, readonly) NSLayoutConstraint *priceWidthConstraint;
 
 @end

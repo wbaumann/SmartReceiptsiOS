@@ -27,11 +27,15 @@
 #import "WBAppDelegate.h"
 #import "WBImagePicker.h"
 #import "TripDistancesViewController.h"
+#import "WBCustomization.h"
+#import "UIView+LoadHelpers.h"
+#import "FetchedModelAdapter.h"
+#import "Database+Receipts.h"
 
 static NSString *CellIdentifier = @"Cell";
 static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
-@interface WBReceiptsViewController ()
+@interface WBReceiptsViewController () <WBObservableReceiptsDelegate,WBNewReceiptViewControllerDelegate>
 {
     WBObservableReceipts *_receipts;
     WBDateFormatter *_dateFormatter;
@@ -41,10 +45,12 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     WBReceipt *_receiptForCretorSegue;
     
     CGFloat _priceWidth;
-    WBCellWithPriceNameDate * _protoCell;
-    
+
     NSString * _lastDateSeparator;
 }
+
+@property (nonatomic, strong) WBReceipt *tapped;
+
 @end
 
 @implementation WBReceiptsViewController
@@ -52,8 +58,12 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
+    [WBCustomization customizeOnViewDidLoad:self];
+
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    [self setPresentationCellNib:[WBCellWithPriceNameDate viewNib]];
     
     _dateFormatter = [[WBDateFormatter alloc] init];
     
@@ -66,19 +76,18 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     
     [self updateEditButton];
     [self updateTitle];
-    
-    if ([WBBackupHelper isDataBlocked] == false) {
-        [HUD showUIBlockingIndicatorWithText:@""];
-        dispatch_async([[WBAppDelegate instance] dataQueue], ^{
-            NSArray *receipts = [[WBDB receipts] selectAllForTrip:self.trip descending:true];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [_receipts setReceipts:receipts];
-                [HUD hideUIBlockingIndicator];
-            });
-        });
-    }
 
-    _protoCell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //TODO jaanus: handle this
+    //if ([WBBackupHelper isDataBlocked] == false) {
+    //    [HUD showUIBlockingIndicatorWithText:@""];
+    //    dispatch_async([[WBAppDelegate instance] dataQueue], ^{
+    //        NSArray *receipts = [[WBDB receipts] selectAllForTrip:self.trip descending:true];
+    //        dispatch_async(dispatch_get_main_queue(), ^{
+    //            [_receipts setReceipts:receipts];
+    //            [HUD hideUIBlockingIndicator];
+    //        });
+    //    });
+    //}
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -94,8 +103,8 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     _lastDateSeparator = [WBPreferences dateSeparator];
 }
 
-- (void) updateEditButton {
-    self.editButtonItem.enabled = _receipts.count > 0;
+- (void)updateEditButton {
+    self.editButtonItem.enabled = self.numberOfItems > 0;
 }
 
 - (void) updateTitle {
@@ -108,42 +117,31 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self updateTitle];
 }
 
-- (void) updatePricesWidth {
+- (void)updatePricesWidth {
     CGFloat w = [self computePriceWidth];
     if (w == _priceWidth) {
         return;
     }
-    
-    [self.tableView beginUpdates];
+
     _priceWidth = w;
-    for (WBCellWithPriceNameDate* cell in self.tableView.visibleCells) {
+    for (WBCellWithPriceNameDate *cell in self.tableView.visibleCells) {
         [cell.priceWidthConstraint setConstant:w];
         [cell layoutIfNeeded];
     }
-    [self.tableView endUpdates];
 }
 
-- (CGFloat) computePriceWidth {
+- (CGFloat)computePriceWidth {
     CGFloat maxWidth = 0;
-    
-    UILabel *priceField = _protoCell.priceField;
-    
-    for (NSUInteger i = 0; i < [_receipts count]; ++i) {
-        NSString *str = [[_receipts receiptAtIndex:i] priceWithCurrencyFormatted];
-        
-        // dumb, but works better than calculating bounds for attributed text because dynamically includes paddings etc.
-        priceField.text = str;
-        [priceField sizeToFit];
-        CGFloat w = priceField.frame.size.width;
-        
-        if (w > maxWidth) {
-            maxWidth = w;
-        }
+
+    for (NSUInteger i = 0; i < [self numberOfItems]; ++i) {
+        NSString *str = [[self objectAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]] priceWithCurrencyFormatted];
+
+        CGRect bounds = [str boundingRectWithSize:CGSizeMake(1000, 100) options:NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:21]} context:nil];
+        maxWidth = MAX(maxWidth, CGRectGetWidth(bounds) + 10);
     }
-    
-    CGSize cellSize = _protoCell.frame.size;
-    maxWidth = MIN(maxWidth, cellSize.width / 2);
-    return MAX(cellSize.width / 6, maxWidth);
+
+    maxWidth = MIN(maxWidth, CGRectGetWidth(self.view.bounds) / 2);
+    return MAX(CGRectGetWidth(self.view.bounds) / 6, maxWidth);
 }
 
 - (void) notifyReceiptRemoved:(WBReceipt*) receipt {
@@ -155,44 +153,26 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     return [_receipts count];
 }
 
-#pragma mark - Table view data source
+- (void)configureCell:(UITableViewCell *)aCell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {
+    WBCellWithPriceNameDate *cell = (WBCellWithPriceNameDate *) aCell;
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_receipts count];
-}
+    WBReceipt *receipt = object;
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    WBCellWithPriceNameDate *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    WBReceipt* receipt = [_receipts receiptAtIndex:(int)indexPath.row];
-    
     cell.priceField.text = [receipt priceWithCurrencyFormatted];
     cell.nameField.text = [receipt name];
     cell.dateField.text = [_dateFormatter formattedDate:[receipt dateFromDateMs] inTimeZone:[receipt timeZone]];
-    
+
     [cell.priceWidthConstraint setConstant:_priceWidth];
-    
-    return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
+- (void)contentChanged {
+    [self updateEditButton];
+    [self updatePricesWidth];
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        WBReceipt* receipt = [_receipts receiptAtIndex:(int)indexPath.row];
-        if([[WBDB receipts] deleteWithId:[receipt receiptId] forTrip:self.trip]){
-            [_receipts removeReceipt:receipt];
-            [WBFileManager deleteIfExists:[receipt imageFilePathForTrip:self.trip]];
-        }
-    }
+- (void)deleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+    [[Database sharedInstance] deleteReceipt:object];
 }
-
 
 //- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -276,16 +256,16 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     return true;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    if (tableView.editing) {
-        [self performSegueWithIdentifier: @"ReceiptCreator" sender: cell];
+- (void)tappedObject:(id)tapped atIndexPath:(NSIndexPath *)indexPath {
+    [self setTapped:tapped];
+
+    if (self.tableView.editing) {
+        [self performSegueWithIdentifier:@"ReceiptCreator" sender:nil];
     } else {
-        [self performSegueWithIdentifier: @"ReceiptActions" sender: cell];
+        [self performSegueWithIdentifier:@"ReceiptActions" sender:nil];
     }
 }
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -415,12 +395,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self.tableView setEditing:editing animated:animated];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    return [WBTextUtils isMoney:newText];
-}
-
 - (IBAction)actionCamera:(id)sender {
     [[WBImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *image) {
         if (!image) {
@@ -431,6 +405,10 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
         _receiptForCretorSegue = nil;
         [self performSegueWithIdentifier:@"ReceiptCreator" sender:self];
     }];
+}
+
+- (FetchedModelAdapter *)createFetchedModelAdapter {
+    return [[Database sharedInstance] fetchedReceiptsAdapterForTrip:self.trip];
 }
 
 @end

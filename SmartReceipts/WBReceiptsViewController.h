@@ -10,6 +10,7 @@
 
 #import "WBObservableReceipts.h"
 #import "EditReceiptViewController.h"
+#import "FetchedCollectionTableViewController.h"
 
 @class WBTrip,WBReceiptsViewController, TripsViewController;
 
@@ -19,14 +20,13 @@
 
 @end
 
-@interface WBReceiptsViewController : WBTableViewController<WBObservableReceiptsDelegate,WBNewReceiptViewControllerDelegate,UITextFieldDelegate>
+@interface WBReceiptsViewController : FetchedCollectionTableViewController
 
 @property (weak,nonatomic) id<WBReceiptsViewControllerDelegate> delegate;
 
 // trips VC that spawned this VC
 @property (weak,nonatomic) TripsViewController * tripsViewController;
-
-@property WBTrip* trip;
+@property (nonatomic, strong) WBTrip *trip;
 
 - (IBAction)actionCamera:(id)sender;
 

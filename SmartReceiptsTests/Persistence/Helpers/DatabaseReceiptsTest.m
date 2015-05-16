@@ -48,7 +48,22 @@
     WBReceipt *loaded = [self.db receiptWithName:testName];
     XCTAssertNotNil(loaded);
     XCTAssertEqualObjects(testMethod, loaded.paymentMethod);
+}
 
+- (void)testReceiptDeleted {
+    NSString *receiptName = @"Unique12345678";
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME: receiptName}];
+
+    WBReceipt *receipt = [self.db receiptWithName:receiptName];
+
+    NSUInteger countBefore = [self.db countRowsInTable:ReceiptsTable.TABLE_NAME];
+    [self.db deleteReceipt:receipt];
+    NSUInteger countAfter = [self.db countRowsInTable:ReceiptsTable.TABLE_NAME];
+
+    XCTAssertEqual(countBefore - 1, countAfter);
+
+    //TODO jaanus: check that file removed
+    //TODO jaanus: check that trip price updated
 }
 
 @end

@@ -20,6 +20,7 @@
 #import "Database+Trips.h"
 #import "Database+PaymentMethods.h"
 #import "PaymentMethod.h"
+#import "WBFileManager.h"
 
 @implementation Database (Receipts)
 
@@ -82,6 +83,19 @@
     BOOL result = [self executeQuery:update usingDatabase:database];
     if (result) {
         [self updatePriceOfTrip:receipt.trip usingDatabase:database];
+    }
+    return result;
+}
+
+- (BOOL)deleteReceipt:(WBReceipt *)receipt {
+    DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:ReceiptsTable.TABLE_NAME];
+    [delete where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
+    BOOL result = [self executeQuery:delete];
+    if (result) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidDeleteModelNotification object:receipt];
+        });
+        [WBFileManager deleteIfExists:[receipt imageFilePathForTrip:receipt.trip]];
     }
     return result;
 }
@@ -185,6 +199,12 @@
     [update addParam:ReceiptsTable.COLUMN_PARENT value:next];
     [update where:ReceiptsTable.COLUMN_PARENT value:previous];
     return [self executeQuery:update usingDatabase:database];
+}
+
+- (FetchedModelAdapter *)fetchedReceiptsAdapterForTrip:(WBTrip *)trip {
+    DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
+    [select where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    return [self createAdapterUsingQuery:select forModel:[WBReceipt class]];
 }
 
 - (void)appendCommonValuesFromReceipt:(WBReceipt *)receipt toQuery:(DatabaseQueryBuilder *)query {

@@ -247,4 +247,20 @@ static NSString* checkNoData(NSString* str) {
     [self setTripName:[resultSet stringForColumn:ReceiptsTable.COLUMN_PARENT]];
 }
 
+- (BOOL)isEqual:(id)other {
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![[other class] isEqual:[self class]]) {
+        return NO;
+    }
+
+    WBReceipt *otherReceipt = other;
+    return self.objectId == otherReceipt.objectId;
+}
+
+- (NSUInteger)hash {
+    return @(self.objectId).hash;
+}
+
 @end

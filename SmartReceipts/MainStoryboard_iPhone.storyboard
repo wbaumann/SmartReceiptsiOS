@@ -77,54 +77,10 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="WA0-5u-oAF" customClass="WBCellWithPriceNameDate">
-                                <rect key="frame" x="0.0" y="22" width="320" height="48"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" tableViewCell="WA0-5u-oAF" id="pJp-Ro-YsI">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$12.53" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="go7-M6-bhe">
-                                            <rect key="frame" x="16" y="0.0" width="64" height="47"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="64" id="U75-IZ-htE"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                            <color key="textColor" red="0.46666666666666667" green="0.082352941176470587" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receipt Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0YP-fa-3XX">
-                                            <rect key="frame" x="92" y="2" width="112" height="21"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 6. 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYE-LW-NCy">
-                                            <rect key="frame" x="92" y="24" width="111" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="OYE-LW-NCy" firstAttribute="leading" secondItem="go7-M6-bhe" secondAttribute="trailing" constant="12" id="8vq-7S-W59"/>
-                                        <constraint firstAttribute="bottom" secondItem="go7-M6-bhe" secondAttribute="bottom" id="B4j-QQ-rqL"/>
-                                        <constraint firstItem="0YP-fa-3XX" firstAttribute="leading" secondItem="go7-M6-bhe" secondAttribute="trailing" constant="12" id="CRW-dZ-uAt"/>
-                                        <constraint firstAttribute="bottom" secondItem="OYE-LW-NCy" secondAttribute="bottom" constant="2" id="LdI-fG-7tA"/>
-                                        <constraint firstItem="0YP-fa-3XX" firstAttribute="top" secondItem="pJp-Ro-YsI" secondAttribute="top" constant="2" id="Sm6-TR-Buw"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0YP-fa-3XX" secondAttribute="trailing" constant="8" id="WSE-lO-XIh"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OYE-LW-NCy" secondAttribute="trailing" constant="8" id="i1C-aK-5NT"/>
-                                        <constraint firstItem="go7-M6-bhe" firstAttribute="leading" secondItem="pJp-Ro-YsI" secondAttribute="leading" constant="16" id="x8B-MI-a31"/>
-                                        <constraint firstItem="go7-M6-bhe" firstAttribute="top" secondItem="pJp-Ro-YsI" secondAttribute="top" id="xOB-zT-CLO"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="dateField" destination="OYE-LW-NCy" id="jrb-F6-Jb8"/>
-                                    <outlet property="nameField" destination="0YP-fa-3XX" id="bpo-gU-kdq"/>
-                                    <outlet property="priceField" destination="go7-M6-bhe" id="Ozr-9b-6in"/>
-                                    <outlet property="priceWidthConstraint" destination="U75-IZ-htE" id="coo-EW-yR0"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XIL-BS-K8W" id="UcB-wk-Aam"/>
+                            <outlet property="delegate" destination="XIL-BS-K8W" id="7f3-jv-dzH"/>
+                        </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems>
@@ -154,6 +110,7 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Report Name - $20.00" id="nsr-l6-Lmx"/>
                     <connections>
+                        <outlet property="view" destination="J8g-r8-o4p" id="gMK-fe-xau"/>
                         <segue destination="AwS-pP-SMl" kind="modal" identifier="ReceiptActions" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="FF7-A9-hDe"/>
                     </connections>
                 </tableViewController>
