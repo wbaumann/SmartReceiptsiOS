@@ -178,8 +178,7 @@ static NSString *CellIdentifier = @"Cell";
     cell.nameField.text = [trip name];
     cell.dateField.text = [NSString stringWithFormat:NSLocalizedString(@"%@ to %@", nil),
                                                      [_dateFormatter formattedDate:[trip startDate] inTimeZone:[trip startTimeZone]],
-                                                     [_dateFormatter formattedDate:[trip endDate] inTimeZone:[trip endTimeZone]]
-    ];
+                                                     [_dateFormatter formattedDate:[trip endDate] inTimeZone:[trip endTimeZone]]];
 
     [cell.priceWidthConstraint setConstant:_priceWidth];
 }

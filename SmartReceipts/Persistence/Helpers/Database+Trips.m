@@ -137,6 +137,7 @@
 
 - (FetchedModelAdapter *)fetchedAdapterForAllTrips {
     DatabaseQueryBuilder *selectAllTrips = [DatabaseQueryBuilder selectAllStatementForTable:TripsTable.TABLE_NAME];
+    [selectAllTrips orderBy:TripsTable.COLUMN_TO ascending:NO];
     return [self createAdapterUsingQuery:selectAllTrips forModel:[WBTrip class]];
 }
 

@@ -127,4 +127,14 @@
     XCTAssertEqualObjects(testCurrency, loaded.defaultCurrency.code);
 }
 
+- (void)testProperEndDateLoaded {
+    NSString *tripName = @"Tripinipi";
+    NSDate *endDate = [[NSDate date] dateByAddingDays:12];
+    [self.db insertTestTrip:@{TripsTable.COLUMN_NAME: tripName, TripsTable.COLUMN_TO: endDate}];
+
+    WBTrip *loaded = [self.db tripWithName:tripName];
+    XCTAssertNotNil(loaded);
+    XCTAssertTrue([endDate isOnSameDate:loaded.endDate]);
+}
+
 @end
