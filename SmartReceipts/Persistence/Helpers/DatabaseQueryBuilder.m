@@ -141,7 +141,7 @@ typedef NS_ENUM(short, StatementType) {
     keys = [keys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSMutableArray *whereParams = [NSMutableArray array];
     for (NSString *whereKey in keys) {
-        NSString *paramString = [NSString stringWithFormat:@"%@ = :%@", whereKey, whereKey];
+        NSString *paramString = [NSString stringWithFormat:@"%@ = :w%@", whereKey, whereKey];
         if ([self.caseInsensitiveWhereParams containsObject:whereKey]) {
             paramString = [paramString stringByAppendingString:@" COLLATE NOCASE"];
         }
@@ -192,7 +192,9 @@ typedef NS_ENUM(short, StatementType) {
         id value = self.values[index];
         result[key] = value;
     }
-    [result addEntriesFromDictionary:self.where];
+    for (NSString *whereKey in self.where) {
+        result[[NSString stringWithFormat:@"w%@", whereKey]] = self.where[whereKey];
+    }
     return [NSDictionary dictionaryWithDictionary:result];
 }
 
