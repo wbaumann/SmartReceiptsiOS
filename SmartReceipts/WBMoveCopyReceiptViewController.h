@@ -10,7 +10,7 @@
 
 #import "WBReceiptActionsViewController.h"
 #import "WBReceiptsViewController.h"
-#import "WBTripsViewController.h"
+#import "TripsViewController.h"
 
 @interface WBMoveCopyReceiptViewController : WBTableViewController
 

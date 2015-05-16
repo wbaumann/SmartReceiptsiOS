@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import "WBTripsViewController.h"
+#import "TripsViewController.h"
 
-@interface MasterTripsViewController : WBTripsViewController
+@interface MasterTripsViewController : TripsViewController
 
 @end

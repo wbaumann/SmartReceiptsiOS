@@ -13,7 +13,7 @@
 @interface WBMoveCopyReceiptViewController ()
 
 @property (weak) WBReceiptsViewController* receiptsViewController;
-@property (weak) WBTripsViewController* tripsViewController;
+@property (weak) TripsViewController * tripsViewController;
 
 @end
 

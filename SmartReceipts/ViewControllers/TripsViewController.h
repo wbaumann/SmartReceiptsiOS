@@ -1,5 +1,5 @@
 //
-//  WBTripsViewController.h
+//  TripsViewController.h
 //  SmartReceipts
 //
 //  Created on 12/03/14.
@@ -19,7 +19,7 @@
 
 extern NSString *const PresentTripDetailsSegueIdentifier;
 
-@interface WBTripsViewController : FetchedCollectionTableViewController
+@interface TripsViewController : FetchedCollectionTableViewController
 
 @property (nonatomic, strong) WBTrip *tapped;
 @property (nonatomic, strong, readonly) WBTrip *lastShownTrip;

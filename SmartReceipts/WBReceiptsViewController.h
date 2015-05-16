@@ -11,7 +11,7 @@
 #import "WBObservableReceipts.h"
 #import "EditReceiptViewController.h"
 
-@class WBTrip,WBReceiptsViewController,WBTripsViewController;
+@class WBTrip,WBReceiptsViewController, TripsViewController;
 
 @protocol WBReceiptsViewControllerDelegate <NSObject>
 
@@ -24,7 +24,7 @@
 @property (weak,nonatomic) id<WBReceiptsViewControllerDelegate> delegate;
 
 // trips VC that spawned this VC
-@property (weak,nonatomic) WBTripsViewController* tripsViewController;
+@property (weak,nonatomic) TripsViewController * tripsViewController;
 
 @property WBTrip* trip;
 

@@ -1,12 +1,12 @@
 //
-//  WBTripsViewController.m
+//  TripsViewController.m
 //  SmartReceipts
 //
 //  Created on 12/03/14.
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBTripsViewController.h"
+#import "TripsViewController.h"
 #import "WBCellWithPriceNameDate.h"
 #import "WBDB.h"
 #import "WBDateFormatter.h"
@@ -21,23 +21,18 @@
 
 NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 
-@interface WBTripsViewController () <GADBannerViewDelegate> {
-    WBDateFormatter *_dateFormatter;
+@interface TripsViewController () <GADBannerViewDelegate>
 
-    CGFloat _priceWidth;
-
-    NSString *_lastDateSeparator;
-
-    //Height 0 constraint
-    __weak IBOutlet NSLayoutConstraint *adConstraint;
-}
-
+@property (nonatomic, assign) CGFloat priceWidth;
+@property (nonatomic, strong) WBDateFormatter *dateFormatter;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *settingsButton;
 @property (nonatomic, strong) WBTrip *lastShownTrip;
+@property (nonatomic, copy) NSString *lastDateSeparator;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *adConstraint;
 
 @end
 
-@implementation WBTripsViewController
+@implementation TripsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,7 +44,7 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
     _dateFormatter = [[WBDateFormatter alloc] init];
 
 
-    //TODO jaanus
+    //TODO jaanus: fix this one
     //if ([WBBackupHelper isDataBlocked] == false) {
     //    [HUD showUIBlockingIndicatorWithText:@""];
     //    dispatch_async([[WBAppDelegate instance] dataQueue], ^{
@@ -78,20 +73,20 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 }
 
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
-    if (adConstraint) {
+    if (self.adConstraint) {
         bannerView.frame = CGRectMake(0.0,
                 self.view.frame.size.height -
                         bannerView.frame.size.height,
                 bannerView.frame.size.width,
                 bannerView.frame.size.height);
         [self.view addSubview:bannerView];
-        adConstraint.constant = 50.0f;
+        self.adConstraint.constant = 50.0f;
     }
 }
 
 - (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
-    if (adConstraint) {
-        adConstraint.constant = 0.0f;
+    if (self.adConstraint) {
+        self.adConstraint.constant = 0.0f;
     }
 }
 
