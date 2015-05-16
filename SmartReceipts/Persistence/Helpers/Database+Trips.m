@@ -51,6 +51,11 @@
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:TripsTable.TABLE_NAME];
     [self appendParamsFromTrip:trip toQuery:insert];
     BOOL result = [self executeQuery:insert];
+    if (result) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidInsertModelNotification object:trip];
+        });
+    }
     return result;
 }
 
@@ -72,6 +77,12 @@
             [[NSFileManager defaultManager] moveItemAtPath:[trip directoryPathUsingName:trip.originalName] toPath:[trip directoryPath] error:nil];
         }
     }];
+
+    if (result) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidUpdateModelNotification object:trip];
+        });
+    }
 
     return result;
 }

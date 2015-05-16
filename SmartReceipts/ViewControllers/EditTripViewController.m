@@ -181,8 +181,6 @@
 }
 
 - (IBAction)actionDone:(id)sender {
-    WBTrip *newTrip;
-
     NSString *name = [self.nameCell.value lastPathComponent];
 
     if (![name hasValue]) {
@@ -202,9 +200,9 @@
     [self.trip setCostCenter:self.costCenterCell.value];
 
     if (self.creatingNewTrip && [[Database sharedInstance] saveTrip:self.trip]) {
-        [self.delegate viewController:self newTrip:self.trip];
+        [self dismissViewControllerAnimated:YES completion:nil];
     } else if ([[Database sharedInstance] updateTrip:self.trip]) {
-        [self.delegate viewController:self updatedTrip:newTrip fromTrip:_trip];
+        [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         [EditTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot save this trip", nil)];
         return;
