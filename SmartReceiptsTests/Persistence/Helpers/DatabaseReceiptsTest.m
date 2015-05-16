@@ -25,13 +25,13 @@
 
 - (void)testReceiptSaved {
     NSUInteger countBefore = [self.db countRowsInTable:ReceiptsTable.TABLE_NAME];
-    [self.db insertReceipt:@{}];
+    [self.db insertTestReceipt:@{}];
     NSUInteger countAfter = [self.db countRowsInTable:ReceiptsTable.TABLE_NAME];
     XCTAssertEqual(countBefore + 1, countAfter);
 }
 
 - (void)testReceiptUpdated {
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_NAME: @"TestXYZ"}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : @"TestXYZ"}];
     NSUInteger countBefore = [self.db countRowsInTable:ReceiptsTable.TABLE_NAME];
 
     WBReceipt *receipt = [self.db receiptWithName:@"TestXYZ"];

@@ -22,13 +22,13 @@
 - (void)setUp {
     [super setUp];
 
-    [self.db insertTrip:@{TripsTable.COLUMN_NAME: @"Trip one"}];
-    [self.db insertTrip:@{TripsTable.COLUMN_NAME: @"Trip two"}];
-    [self.db insertTrip:@{TripsTable.COLUMN_NAME: @"Trip three"}];
+    [self.db insertTestTrip:@{TripsTable.COLUMN_NAME : @"Trip one"}];
+    [self.db insertTestTrip:@{TripsTable.COLUMN_NAME : @"Trip two"}];
+    [self.db insertTestTrip:@{TripsTable.COLUMN_NAME : @"Trip three"}];
 
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_NAME: @"Receipt one"}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_NAME: @"Receipt two"}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_NAME: @"Receipt three"}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : @"Receipt one"}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : @"Receipt two"}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : @"Receipt three"}];
 }
 
 - (void)testTripHintGotten {

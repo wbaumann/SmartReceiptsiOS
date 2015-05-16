@@ -23,7 +23,7 @@
 
 - (void)testReceiptPaymentMethodSaved {
     PaymentMethod *method = [[self.db allPaymentMethods] firstObject];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PAYMENT_METHOD_ID: method, ReceiptsTable.COLUMN_NAME: @"ReceiptXYZ"}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PAYMENT_METHOD_ID : method, ReceiptsTable.COLUMN_NAME : @"ReceiptXYZ"}];
 
     WBReceipt *receipt = [self.db receiptWithName:@"ReceiptXYZ"];
     XCTAssertNotNil(receipt);

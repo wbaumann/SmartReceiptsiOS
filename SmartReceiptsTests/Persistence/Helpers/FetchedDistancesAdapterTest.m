@@ -43,13 +43,13 @@
 
     WBTrip *testTrip = [self.db createTestTrip];
     self.testTrip = testTrip;
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : dummyTrip}];
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : testTrip, DistanceTable.COLUMN_DATE : [NSDate date], DistanceTable.COLUMN_LOCATION : @"One"}];
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : dummyTrip}];
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : testTrip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingTimeInterval:-100], DistanceTable.COLUMN_LOCATION : @"Two"}];
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : dummyTrip}];
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : testTrip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingTimeInterval:100], DistanceTable.COLUMN_LOCATION : @"Three"}];
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : dummyTrip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : dummyTrip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : testTrip, DistanceTable.COLUMN_DATE : [NSDate date], DistanceTable.COLUMN_LOCATION : @"One"}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : dummyTrip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : testTrip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingTimeInterval:-100], DistanceTable.COLUMN_LOCATION : @"Two"}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : dummyTrip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : testTrip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingTimeInterval:100], DistanceTable.COLUMN_LOCATION : @"Three"}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : dummyTrip}];
 
     self.adapter = [self.db fetchedAdapterForDistancesInTrip:testTrip];
 }
@@ -67,7 +67,7 @@
     FetchAdapterDelegateCheckHelper *delegateCheck = [[FetchAdapterDelegateCheckHelper alloc] init];
     [self.adapter setDelegate:delegateCheck];
 
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT : self.testTrip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingTimeInterval:10], DistanceTable.COLUMN_LOCATION : @"Four"}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.testTrip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingTimeInterval:10], DistanceTable.COLUMN_LOCATION : @"Four"}];
 
     [self.adapter refreshContentAndNotifyInsertChanges];
 
@@ -110,7 +110,7 @@
     NSUInteger updateIndex = MIN(2, count - 1);
     Distance *updated = [self.adapter objectAtIndex:updateIndex];
     updated.location = @"Updated location";
-    [self.db updateDistance:updated];
+    [self.db saveDistance:updated];
 
     [self.adapter refreshContentAndNotifyUpdateChanges:updated];
 
@@ -132,7 +132,7 @@
     NSUInteger endIndex = 2;
     Distance *updated = [self.adapter objectAtIndex:beginIndex];
     updated.date = [[NSDate date] dateByAddingTimeInterval:-1000000];
-    [self.db updateDistance:updated];
+    [self.db saveDistance:updated];
 
     [self.adapter refreshContentAndNotifyUpdateChanges:updated];
 

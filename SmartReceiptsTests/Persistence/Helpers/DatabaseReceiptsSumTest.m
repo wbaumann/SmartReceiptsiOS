@@ -32,7 +32,7 @@
 - (void)setUp {
     [super setUp];
 
-    self.trip = [self.db insertTrip:@{}];
+    self.trip = [self.db insertTestTrip:@{}];
 }
 
 - (void)testSumReceipts {
@@ -44,7 +44,7 @@
 }
 
 - (void)testSumWithNonExpenseableExcluded {
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip,
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip,
             ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"200"],
             ReceiptsTable.COLUMN_EXPENSEABLE : @(NO)}];
     [self createTestReceipts];
@@ -55,10 +55,10 @@
 }
 
 - (void)createTestReceipts {
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"10"]}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"15"]}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"12"]}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"100"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"10"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"15"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"12"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"100"]}];
 }
 
 @end

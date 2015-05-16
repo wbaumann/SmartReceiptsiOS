@@ -122,6 +122,22 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
     return [self.name compare:self.originalName options:NSCaseInsensitiveSearch] != NSOrderedSame;
 }
 
+- (BOOL)isEqual:(id)other {
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![[other class] isEqual:[self class]]) {
+        return NO;
+    }
+
+    WBTrip *otherTrip = other;
+    return [self.name isEqualToString:otherTrip.name];
+}
+
+- (NSUInteger)hash {
+    return [self.name hash];
+}
+
 @end
 
 

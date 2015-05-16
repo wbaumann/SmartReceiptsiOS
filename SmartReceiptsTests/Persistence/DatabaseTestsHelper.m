@@ -31,10 +31,10 @@
 @implementation DatabaseTestsHelper
 
 - (WBTrip *)createTestTrip {
-    return [self insertTrip:@{}];
+    return [self insertTestTrip:@{}];
 }
 
-- (WBTrip *)insertTrip:(NSDictionary *)modifiedParams {
+- (WBTrip *)insertTestTrip:(NSDictionary *)modifiedParams {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[TripsTable.COLUMN_NAME] = [NSString stringWithFormat:@"TestTrip - %f", [NSDate timeIntervalSinceReferenceDate]];
     params[TripsTable.COLUMN_FROM] = [NSDate date];
@@ -54,14 +54,14 @@
     return trip;
 }
 
-- (void)insertPaymentMethod:(NSString *)name {
+- (void)insertTestPaymentMethod:(NSString *)name {
     name = [name hasValue] ? name : [NSString stringWithFormat:@"TestMethod - %f", [NSDate timeIntervalSinceReferenceDate]];
     PaymentMethod *method = [[PaymentMethod alloc] init];
     [method setMethod:name];
     [self savePaymentMethod:method];
 }
 
-- (void)insertDistance:(NSDictionary *)modifiedParams {
+- (void)insertTestDistance:(NSDictionary *)modifiedParams {
     NSMutableDictionary *defaultParams = [NSMutableDictionary dictionary];
     defaultParams[DistanceTable.COLUMN_LOCATION] = @"Test location";
     defaultParams[DistanceTable.COLUMN_PARENT] = [self createTestTrip];
@@ -84,7 +84,7 @@
     [self saveDistance:distance];
 }
 
-- (void)insertReceipt:(NSDictionary *)modifiedParams {
+- (void)insertTestReceipt:(NSDictionary *)modifiedParams {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[ReceiptsTable.COLUMN_NAME] = [NSString stringWithFormat:@"TestReceipt - %f", [NSDate timeIntervalSinceReferenceDate]];
     params[ReceiptsTable.COLUMN_PARENT] = [self createTestTrip];

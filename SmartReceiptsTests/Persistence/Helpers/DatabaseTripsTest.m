@@ -27,23 +27,23 @@
 - (void)setUp {
     [super setUp];
 
-    self.trip = [self.db insertTrip:@{TripsTable.COLUMN_NAME: @"Test my load"}];
+    self.trip = [self.db insertTestTrip:@{TripsTable.COLUMN_NAME : @"Test my load"}];
 }
 
 - (void)testTripSaved {
     NSUInteger countBefore = [self.db countRowsInTable:TripsTable.TABLE_NAME];
-    [self.db insertTrip:@{}];
+    [self.db insertTestTrip:@{}];
     NSUInteger countAfter = [self.db countRowsInTable:TripsTable.TABLE_NAME];
     XCTAssertEqual(countBefore + 1, countAfter);
 }
 
 - (void)testSelectAll {
     //one added in setup
-    [self.db insertTrip:@{}];
-    [self.db insertTrip:@{}];
-    [self.db insertTrip:@{}];
-    [self.db insertTrip:@{}];
-    [self.db insertTrip:@{}];
+    [self.db insertTestTrip:@{}];
+    [self.db insertTestTrip:@{}];
+    [self.db insertTestTrip:@{}];
+    [self.db insertTestTrip:@{}];
+    [self.db insertTestTrip:@{}];
 
     NSArray *allTrips = [self.db allTrips];
     XCTAssertEqual(6, allTrips.count);
@@ -57,7 +57,7 @@
 
 - (void)testDateSaveAndLoad {
     NSString *testName = @"Testing here abz";
-    [self.db insertTrip:@{TripsTable.COLUMN_NAME : testName, TripsTable.COLUMN_FROM : [NSDate date], TripsTable.COLUMN_TO : [[NSDate date] dateByAddingTimeInterval:60 * 60 * 24 * 5]}];
+    [self.db insertTestTrip:@{TripsTable.COLUMN_NAME : testName, TripsTable.COLUMN_FROM : [NSDate date], TripsTable.COLUMN_TO : [[NSDate date] dateByAddingTimeInterval:60 * 60 * 24 * 5]}];
 
     WBTrip *trip = [self.db tripWithName:testName];
     XCTAssertNotNil(trip);
@@ -70,7 +70,7 @@
     NSString *comment = @"Test comment";
     NSString *costCenter = @"Test const center";
 
-    [self.db insertTrip:@{TripsTable.COLUMN_NAME : testName, TripsTable.COLUMN_DEFAULT_CURRENCY : defaultCurrency, TripsTable.COLUMN_COMMENT : comment, TripsTable.COLUMN_COST_CENTER : costCenter}];
+    [self.db insertTestTrip:@{TripsTable.COLUMN_NAME : testName, TripsTable.COLUMN_DEFAULT_CURRENCY : defaultCurrency, TripsTable.COLUMN_COMMENT : comment, TripsTable.COLUMN_COST_CENTER : costCenter}];
 
     WBTrip *loaded = [self.db tripWithName:testName];
 
@@ -81,7 +81,7 @@
 
 - (void)testUpdateTrip {
     NSString *testTripName = @"Tripping here";
-    [self.db insertTrip:@{TripsTable.COLUMN_NAME: testTripName}];
+    [self.db insertTestTrip:@{TripsTable.COLUMN_NAME : testTripName}];
 
     WBTrip *trip = [self.db tripWithName:testTripName];
     [trip setName:@"Altered XZY"];
@@ -97,12 +97,12 @@
 }
 
 - (void)testOnTripNameReceiptsAreMoved {
-    WBTrip *trip = [self.db insertTrip:@{}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
+    WBTrip *trip = [self.db insertTestTrip:@{}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
 
     NSUInteger tripsCountBeforeRename = [self.db countRowsInTable:TripsTable.TABLE_NAME];
 
@@ -119,7 +119,7 @@
 - (void)testDefaultCurrencyLoaded {
     NSString *testName = @"BOOOOOOOOYA";
     NSString *testCurrency = @"EUR";
-    [self.db insertTrip:@{TripsTable.COLUMN_NAME: testName, TripsTable.COLUMN_DEFAULT_CURRENCY: testCurrency}];
+    [self.db insertTestTrip:@{TripsTable.COLUMN_NAME : testName, TripsTable.COLUMN_DEFAULT_CURRENCY : testCurrency}];
 
     WBTrip *loaded = [self.db tripWithName:testName];
     XCTAssertNotNil(loaded);

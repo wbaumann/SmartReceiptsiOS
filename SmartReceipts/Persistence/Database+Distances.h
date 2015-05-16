@@ -21,7 +21,6 @@
 - (BOOL)saveDistance:(Distance *)distance usingDatabase:(FMDatabase *)database;
 - (FetchedModelAdapter *)fetchedAdapterForDistancesInTrip:(WBTrip *)trip;
 - (BOOL)deleteDistance:(Distance *)distance;
-- (BOOL)updateDistance:(Distance *)distance;
 - (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip;
 - (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (NSString *)currencyForTripDistances:(WBTrip *)trip;

@@ -30,7 +30,7 @@
 
 - (void)testMethodSaved {
     NSUInteger countBefore = [self.db countRowsInTable:PaymentMethodsTable.TABLE_NAME];
-    [self.db insertPaymentMethod:@"Test method"];
+    [self.db insertTestPaymentMethod:@"Test method"];
     NSUInteger countAfter = [self.db countRowsInTable:PaymentMethodsTable.TABLE_NAME];
     XCTAssertEqual(countBefore + 1, countAfter);
 }
@@ -62,7 +62,7 @@
 
 - (void)testExistingMethodCheck {
     NSString *testMethodName = @"Test method - 123456789";
-    [self.db insertPaymentMethod:testMethodName];
+    [self.db insertTestPaymentMethod:testMethodName];
 
     XCTAssertTrue([self.db hasPaymentMethodWithName:testMethodName]);
     XCTAssertTrue([self.db hasPaymentMethodWithName:[testMethodName stringByAppendingString:@" "]]);

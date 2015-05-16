@@ -31,7 +31,7 @@
 - (void)testSaveDistance {
     XCTAssertEqual(0, [self.db countRowsInTable:DistanceTable.TABLE_NAME]);
 
-    [self.db insertDistance:@{}];
+    [self.db insertTestDistance:@{}];
 
     XCTAssertEqual(1, [self.db countRowsInTable:DistanceTable.TABLE_NAME]);
 }

@@ -17,6 +17,7 @@
 
 @end
 
+//TODO jaanus: fix this controller
 @implementation WBMoveCopyReceiptViewController
 {
     WBObservableTripsBrowser * _trips;
@@ -47,7 +48,7 @@
     
     if (self.calledForCopy) {
         if ([[WBDB receipts] copyReceipt:_receipt fromTrip:_trip toTrip:selectedTrip]) {
-            [self.tripsViewController viewController:self.receiptsViewController updatedTrip:selectedTrip];
+            //[self.tripsViewController viewController:self.receiptsViewController updatedTrip:selectedTrip];
         } else {
             NSLog(@"Copying failed");
         }
@@ -56,7 +57,7 @@
     } else {
         if ([[WBDB receipts] moveReceipt:_receipt fromTrip:_trip toTrip:selectedTrip]) {
             [self.receiptsViewController notifyReceiptRemoved:_receipt];
-            [self.tripsViewController viewController:self.receiptsViewController updatedTrip:selectedTrip];
+            //[self.tripsViewController viewController:self.receiptsViewController updatedTrip:selectedTrip];
         } else {
             NSLog(@"Moving failed");
         }

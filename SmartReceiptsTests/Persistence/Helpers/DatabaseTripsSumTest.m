@@ -29,15 +29,15 @@
 - (void)setUp {
     [super setUp];
 
-    self.trip = [self.db insertTrip:@{}];
+    self.trip = [self.db insertTestTrip:@{}];
 
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: self.trip, ReceiptsTable.COLUMN_PRICE: [NSDecimalNumber decimalNumberOrZero:@"1"]}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: self.trip, ReceiptsTable.COLUMN_PRICE: [NSDecimalNumber decimalNumberOrZero:@"2"]}];
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: self.trip, ReceiptsTable.COLUMN_PRICE: [NSDecimalNumber decimalNumberOrZero:@"3"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"1"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"2"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"3"]}];
 
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT: self.trip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE: [NSDecimalNumber decimalNumberOrZero:@"10"]}];
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT: self.trip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE: [NSDecimalNumber decimalNumberOrZero:@"20"]}];
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT: self.trip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE: [NSDecimalNumber decimalNumberOrZero:@"30"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"10"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"20"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"30"]}];
 
     [WBPreferences setOnlyIncludeExpensableReceiptsInReports:NO];
     [WBPreferences setTheDistancePriceBeIncludedInReports:YES];
@@ -59,7 +59,7 @@
 - (void)testTripPriceUpdatedOnDistanceEntry {
     NSDecimalNumber *startPrice = [self.db totalPriceForTrip:self.trip];
 
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT: self.trip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberOrZero:@"10"], DistanceTable.COLUMN_RATE: [NSDecimalNumber decimalNumberOrZero:@"10"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"10"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"10"]}];
 
     WBTrip *fetched = [self.db tripWithName:self.trip.name];
     NSDecimalNumber *expected = [startPrice decimalNumberByAdding:[NSDecimalNumber decimalNumberOrZero:@"100"]];
@@ -69,7 +69,7 @@
 - (void)testTripPriceUpdatedOnReceiptEntry {
     NSDecimalNumber *startPrice = [self.db totalPriceForTrip:self.trip];
 
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_PARENT: self.trip, ReceiptsTable.COLUMN_PRICE: [NSDecimalNumber decimalNumberOrZero:@"50"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"50"]}];
 
     WBTrip *fetched = [self.db tripWithName:self.trip.name];
     NSDecimalNumber *expected = [startPrice decimalNumberByAdding:[NSDecimalNumber decimalNumberOrZero:@"50"]];

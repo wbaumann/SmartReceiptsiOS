@@ -15,10 +15,10 @@
 @interface DatabaseTestsHelper : Database
 
 - (WBTrip *)createTestTrip;
-- (void)insertDistance:(NSDictionary *)modifiedParams;
-- (void)insertReceipt:(NSDictionary *)modifiedParams;
-- (WBTrip *)insertTrip:(NSDictionary *)modifiedParams;
-- (void)insertPaymentMethod:(NSString *)name;
+- (void)insertTestDistance:(NSDictionary *)modifiedParams;
+- (void)insertTestReceipt:(NSDictionary *)modifiedParams;
+- (WBTrip *)insertTestTrip:(NSDictionary *)modifiedParams;
+- (void)insertTestPaymentMethod:(NSString *)name;
 - (WBReceipt *)receiptWithName:(NSString *)receiptName;
 
 @end

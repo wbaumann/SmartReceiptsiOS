@@ -46,6 +46,23 @@
 }
 
 - (BOOL)saveDistance:(Distance *)distance usingDatabase:(FMDatabase *)database {
+    if (distance.objectId == 0) {
+        return [self insertDistance:distance usingDatabase:database];
+    } else {
+        return [self updateDistance:distance usingDatabase:database];
+    }
+}
+
+- (BOOL)insertDistance:(Distance *)distance {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self insertDistance:distance usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (BOOL)insertDistance:(Distance *)distance usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:DistanceTable.TABLE_NAME];
     [insert addParam:DistanceTable.COLUMN_PARENT value:distance.trip.name];
     [self appendCommonValuesFromDistance:distance toQuery:insert];
@@ -81,10 +98,19 @@
 }
 
 - (BOOL)updateDistance:(Distance *)distance {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self updateDistance:distance usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (BOOL)updateDistance:(Distance *)distance usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:DistanceTable.TABLE_NAME];
     [self appendCommonValuesFromDistance:distance toQuery:update];
     [update where:DistanceTable.COLUMN_ID value:@(distance.objectId)];
-    BOOL result = [self executeQuery:update];
+    BOOL result = [self executeQuery:update usingDatabase:database];
     if (result) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidUpdateModelNotification object:distance];
