@@ -7,37 +7,22 @@
 //
 
 #import "WBTripsViewController.h"
-
 #import "WBCellWithPriceNameDate.h"
-
 #import "WBDB.h"
-
 #import "WBDateFormatter.h"
-
-#import "WBFileManager.h"
-
-#import "HUD.h"
-
-#import "WBBackupHelper.h"
-
-#import "WBAppDelegate.h"
-
 #import "WBPreferences.h"
-
 #import "GADMasterViewController.h"
-
 #import "GADBannerView.h"
 #import "WBCustomization.h"
 #import "UIView+LoadHelpers.h"
 #import "FetchedModelAdapter.h"
 #import "Database+Trips.h"
+#import "Constants.h"
 
-static NSString *CellIdentifier = @"Cell";
+NSString *const PresentTripDetailsSequeIdentifier = @"TripDetails";
 
 @interface WBTripsViewController () <UITableViewDataSource, UITableViewDelegate, UISplitViewControllerDelegate, WBNewTripViewControllerDelegate, WBObservableTripsDelegate, WBReceiptsViewControllerDelegate, GADBannerViewDelegate> {
     WBDateFormatter *_dateFormatter;
-
-    WBTrip *_lastShownTrip;
 
     CGFloat _priceWidth;
 
@@ -49,6 +34,7 @@ static NSString *CellIdentifier = @"Cell";
 
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *settingsButton;
 @property (nonatomic, strong) WBTrip *tapped;
+@property (nonatomic, strong) WBTrip *lastShownTrip;
 
 @end
 
@@ -137,20 +123,17 @@ static NSString *CellIdentifier = @"Cell";
     return [[Database sharedInstance] fetchedAdapterForAllTrips];
 }
 
-
 - (void)updatePricesWidth {
     CGFloat w = [self computePriceWidth];
     if (w == _priceWidth) {
         return;
     }
 
-    [self.tableView beginUpdates];
     _priceWidth = w;
     for (WBCellWithPriceNameDate *cell in self.tableView.visibleCells) {
         [cell.priceWidthConstraint setConstant:w];
         [cell layoutIfNeeded];
     }
-    [self.tableView endUpdates];
 }
 
 - (CGFloat)computePriceWidth {
@@ -189,6 +172,7 @@ static NSString *CellIdentifier = @"Cell";
 
 - (void)tappedObject:(id)tapped atIndexPath:(NSIndexPath *)indexPath {
     [self setTapped:tapped];
+
     if (self.editing) {
         [self performSegueWithIdentifier:@"TripCreator" sender:self];
     } else {
@@ -206,89 +190,48 @@ static NSString *CellIdentifier = @"Cell";
     if ([[segue identifier] isEqualToString:@"TripDetails"]) {
         WBReceiptsViewController *vc;
 
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        if (IS_IPAD) {
             vc = (WBReceiptsViewController *) [[segue destinationViewController] topViewController];
         } else {
             vc = (WBReceiptsViewController *) [segue destinationViewController];
         }
 
-        vc.delegate = self;
-        vc.tripsViewController = self;
-
-        vc.trip = self.tapped;
-        _lastShownTrip = vc.trip;
-        [self setTapped:nil];
-    }
-    else if ([[segue identifier] isEqualToString:@"TripCreator"]) {
-        EditTripViewController *vc = (EditTripViewController *) [[segue destinationViewController] topViewController];
-
-        vc.delegate = self;
-
         [vc setTrip:self.tapped];
-
+        [self setLastShownTrip:self.tapped];
+    } else if ([[segue identifier] isEqualToString:@"TripCreator"]) {
+        EditTripViewController *vc = (EditTripViewController *) [[segue destinationViewController] topViewController];
+        [vc setTrip:self.tapped];
     }
+
+    [self setTapped:nil];
 }
 
 - (void)contentChanged {
     [self updatePricesWidth];
     [self updateEditButton];
-}
-
-/*
-#pragma mark - WBNewTripViewControllerDelegate
-
--(void)viewController:(EditTripViewController *)viewController newTrip:(WBTrip *)trip{
-    [_trips addTrip:trip];
-}
-
--(void)viewController:(EditTripViewController *)viewController updatedTrip:(WBTrip *)trip fromTrip:(WBTrip *)oldTrip{
-    [_trips replaceTrip:oldTrip toTrip:trip];
-}
-
-#pragma mark - WBReceiptsViewControllerDelegate
-
--(void)viewController:(WBReceiptsViewController *)viewController updatedTrip:(WBTrip *)trip{
-    NSUInteger idx = [_trips indexOfTrip:trip];
-    if (idx == NSNotFound) {
-        return;
-    }
-
-    WBCellWithPriceNameDate* cell = (WBCellWithPriceNameDate*)[self.tripsTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:idx inSection:0]];
-
-    cell.priceField.text = [trip priceWithCurrencyFormatted];
-
-    [self updatePricesWidth];
-}
-
-#pragma mark - WBObservableTripsDelegate
-
--(void) showDefaultTripInDetailView {
-    if ([_trips count] > 0) {
-        [self.tripsTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
-
-        [self performSegueWithIdentifier: @"TripDetails" sender: self];
-
-    } else {
-        NSIndexPath *ip = [self.tripsTableView indexPathForSelectedRow];
-        if (ip) {
-            [self.tripsTableView deselectRowAtIndexPath:ip animated:YES];
-        }
-
-        [self performSegueWithIdentifier: @"NoTrip" sender: self];
-    }
-}
-
--(void) observableTrips:(WBObservableTrips*)observableTrips filledWithTrips:(NSArray*) trips {
-    [self.tripsTableView reloadData];
-
-    [self updatePricesWidth];
-
-    [self updateEditButton];
-
-    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ){
+    if (IS_IPAD) {
         [self showDefaultTripInDetailView];
     }
 }
+
+- (void)showDefaultTripInDetailView {
+    if ([self numberOfItems] > 0) {
+        [self setTapped:[self objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
+
+        [self performSegueWithIdentifier:@"TripDetails" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"NoTrip" sender:self];
+    }
+}
+
+- (void)didInsertObject:(id)object atIndex:(NSUInteger)index {
+    [super didInsertObject:object atIndex:index];
+
+    [self setTapped:object];
+    [self performSegueWithIdentifier:PresentTripDetailsSequeIdentifier sender:nil];
+}
+
+/*
 
 -(void) observableTrips:(WBObservableTrips*)observableTrips addedTrip:(WBTrip*)trip atIndex:(int)index {
     NSIndexPath *ip = [NSIndexPath indexPathForRow:index inSection:0];
@@ -352,4 +295,5 @@ static NSString *CellIdentifier = @"Cell";
     self.editing = false;
     [self performSegueWithIdentifier:@"TripCreator" sender:self];
 }
+
 @end

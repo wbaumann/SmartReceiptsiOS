@@ -31,7 +31,7 @@
         <scene sceneID="bcd-J7-h7B">
             <objects>
                 <viewController id="Rop-yq-bsL" customClass="WBTripsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="p4Y-j8-Y6U">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="p4Y-j8-Y6U">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="660"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -655,10 +655,10 @@
             </objects>
             <point key="canvasLocation" x="2525" y="-2332"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Notify Master Split View Controller-->
         <scene sceneID="ejl-Yh-6jH">
             <objects>
-                <splitViewController id="YkJ-tY-f5f" sceneMemberID="viewController">
+                <splitViewController id="YkJ-tY-f5f" customClass="NotifyMasterSplitViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -1116,8 +1116,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dER-xx-mm6"/>
-        <segue reference="Pu5-7V-Vh4"/>
+        <segue reference="SYg-rc-NvF"/>
         <segue reference="DxA-Mq-uge"/>
+        <segue reference="Pu5-7V-Vh4"/>
     </inferredMetricsTieBreakers>
 </document>

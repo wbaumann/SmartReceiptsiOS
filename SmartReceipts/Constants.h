@@ -42,3 +42,5 @@
     #define TICK //
     #define TOCK(s) //
 #endif
+
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)

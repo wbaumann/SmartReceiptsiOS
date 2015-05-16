@@ -11,11 +11,10 @@
 #import "WBAppDelegate.h"
 #import "Constants.h"
 #import "FetchedModelAdapter.h"
-#import "FetchedModelAdapterDelegate.h"
 
 NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCollectionTableViewControllerCellIdentifier";
 
-@interface FetchedCollectionTableViewController () <FetchedModelAdapterDelegate>
+@interface FetchedCollectionTableViewController ()
 
 @property (nonatomic, strong) FetchedModelAdapter *presentedObjects;
 
@@ -93,14 +92,17 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 }
 
 - (NSUInteger)numberOfItems {
+    SRLog(@"numberOfItems:%tu", self.presentedObjects.numberOfObjects);
     return self.presentedObjects.numberOfObjects;
 }
 
 - (void)willChangeContent {
+    SRLog(@"willChangeContent");
     [self.tableView beginUpdates];
 }
 
 - (void)didInsertObject:(id)object atIndex:(NSUInteger)index {
+    SRLog(@"didInsertObject:atIndex:%tu", index);
     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
@@ -118,6 +120,7 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 }
 
 - (void)didChangeContent {
+    SRLog(@"didChangeContent");
     [self.tableView endUpdates];
     [self contentChanged];
 }

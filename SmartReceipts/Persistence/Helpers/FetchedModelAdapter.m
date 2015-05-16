@@ -18,7 +18,7 @@
 @property (nonatomic, strong) Database *database;
 @property (nonatomic, copy) NSString *fetchQuery;
 @property (nonatomic, strong) NSDictionary *fetchParameters;
-@property (nonatomic, strong) NSMutableArray *models;
+@property (nonatomic, strong) NSArray *models;
 
 @end
 
@@ -63,20 +63,8 @@
 }
 
 - (void)fetchUsingDatabase:(FMDatabase *)database {
-    TICK;
-    NSMutableArray *objects = [NSMutableArray array];
-    SRLog(@"Fetch query: '%@'", self.fetchQuery);
-    SRLog(@"Fetch params: %@", self.fetchParameters);
-
-    FMResultSet *resultSet = [database executeQuery:self.fetchQuery withParameterDictionary:self.fetchParameters];
-    while ([resultSet next]) {
-        id <FetchedModel> fetched = (id <FetchedModel>) [[self.modelClass alloc] init];
-        [fetched loadDataFromResultSet:resultSet];
-        [objects addObject:fetched];
-    }
-
-    [self setModels:[NSMutableArray arrayWithArray:objects]];
-    TOCK(@"Fetch time");
+    NSArray *objects = [self performObjectsFetchUsingDatabase:database];
+    [self setModels:objects];
 }
 
 - (NSArray *)allObjects {
@@ -141,20 +129,50 @@
 
 - (void)refreshContentAndNotifyInsertChanges {
     NSArray *previousObjects = [NSArray arrayWithArray:self.models];
-    [self fetch];
-    NSMutableArray *currentObjects = [NSMutableArray arrayWithArray:self.models];
+    NSArray *refreshed = [self performObjectsFetch];
+    NSMutableArray *currentObjects = [NSMutableArray arrayWithArray:refreshed];
     [currentObjects removeObjectsInArray:previousObjects];
 
     id added = [currentObjects lastObject];
 
-    NSUInteger index = [self.models indexOfObject:added];
+    NSUInteger index = [refreshed indexOfObject:added];
+
     [self.delegate willChangeContent];
+
     [self.delegate didInsertObject:added atIndex:index];
+    [self setModels:refreshed];
+
     [self.delegate didChangeContent];
 }
 
 - (void)clearNotificationListener {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (NSArray *)performObjectsFetch {
+    __block NSArray *result;
+    [self.database.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self performObjectsFetchUsingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (NSArray *)performObjectsFetchUsingDatabase:(FMDatabase *)database {
+    TICK;
+    NSMutableArray *result = [NSMutableArray array];
+    SRLog(@"Fetch query: '%@'", self.fetchQuery);
+    SRLog(@"Fetch params: %@", self.fetchParameters);
+
+    FMResultSet *resultSet = [database executeQuery:self.fetchQuery withParameterDictionary:self.fetchParameters];
+    while ([resultSet next]) {
+        id <FetchedModel> fetched = (id <FetchedModel>) [[self.modelClass alloc] init];
+        [fetched loadDataFromResultSet:resultSet];
+        [result addObject:fetched];
+    }
+
+    TOCK(@"Fetch time");
+    return [NSArray arrayWithArray:result];
 }
 
 @end
