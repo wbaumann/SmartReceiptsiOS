@@ -31,89 +31,15 @@
         <scene sceneID="bcd-J7-h7B">
             <objects>
                 <viewController id="Rop-yq-bsL" customClass="WBTripsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lTb-u1-TQT"/>
-                        <viewControllerLayoutGuide type="bottom" id="woq-q0-vUc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="R0m-Vd-dub">
-                        <rect key="frame" x="0.0" y="64" width="320" height="660"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="p4Y-j8-Y6U">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="660"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mpz-rj-mcn">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="660"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="48" id="SAN-19-IGF" customClass="WBCellWithPriceNameDate">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="48"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SAN-19-IGF" id="uuT-x3-BpR">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$12.53" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAM-S5-ay6">
-                                                    <rect key="frame" x="16" y="0.0" width="64" height="47"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="64" id="XN9-F6-Afg"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                                    <color key="textColor" red="0.46666666670000001" green="0.08235294118" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzq-tM-ADv">
-                                                    <rect key="frame" x="92" y="2" width="80" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 6. 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YY7-7d-sLz">
-                                                    <rect key="frame" x="92" y="24" width="111" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="fAM-S5-ay6" firstAttribute="top" secondItem="uuT-x3-BpR" secondAttribute="top" id="2gT-8X-7am"/>
-                                                <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="YY7-7d-sLz" secondAttribute="right" constant="8" id="3aK-Tw-bhl"/>
-                                                <constraint firstAttribute="bottom" secondItem="YY7-7d-sLz" secondAttribute="bottom" constant="2" id="Aa3-Xl-xBF"/>
-                                                <constraint firstItem="fAM-S5-ay6" firstAttribute="left" secondItem="uuT-x3-BpR" secondAttribute="left" constant="16" id="N2Y-z2-fj5"/>
-                                                <constraint firstAttribute="bottom" secondItem="fAM-S5-ay6" secondAttribute="bottom" id="PRs-JE-Wgh"/>
-                                                <constraint firstItem="Mzq-tM-ADv" firstAttribute="left" secondItem="fAM-S5-ay6" secondAttribute="right" constant="12" id="QjZ-vo-VQW"/>
-                                                <constraint firstItem="YY7-7d-sLz" firstAttribute="left" secondItem="fAM-S5-ay6" secondAttribute="right" constant="12" id="S3T-Kv-Hpl"/>
-                                                <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="Mzq-tM-ADv" secondAttribute="right" constant="8" id="hRh-l3-40l"/>
-                                                <constraint firstItem="Mzq-tM-ADv" firstAttribute="top" secondItem="uuT-x3-BpR" secondAttribute="top" constant="2" id="o63-1o-5VQ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="dateField" destination="YY7-7d-sLz" id="Ai4-HY-VrZ"/>
-                                            <outlet property="nameField" destination="Mzq-tM-ADv" id="OSf-Lj-BVo"/>
-                                            <outlet property="priceField" destination="fAM-S5-ay6" id="mNf-QU-7a1"/>
-                                            <outlet property="priceWidthConstraint" destination="XN9-F6-Afg" id="oW7-AT-YYu"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Rop-yq-bsL" id="SNl-wS-eTh"/>
-                                    <outlet property="delegate" destination="Rop-yq-bsL" id="5wo-12-f2K"/>
-                                </connections>
-                            </tableView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nn3-ZA-1Ke">
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="OO1-P3-9G4"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="mpz-rj-mcn" firstAttribute="leading" secondItem="R0m-Vd-dub" secondAttribute="leading" id="4R1-kt-W8y"/>
-                            <constraint firstAttribute="trailing" secondItem="nn3-ZA-1Ke" secondAttribute="trailing" id="7RM-t3-7gW"/>
-                            <constraint firstAttribute="trailing" secondItem="mpz-rj-mcn" secondAttribute="trailing" id="Ff0-C9-G4j"/>
-                            <constraint firstItem="nn3-ZA-1Ke" firstAttribute="top" secondItem="mpz-rj-mcn" secondAttribute="bottom" id="KhS-Fg-UA0"/>
-                            <constraint firstItem="nn3-ZA-1Ke" firstAttribute="leading" secondItem="R0m-Vd-dub" secondAttribute="leading" id="aKj-7i-e7S"/>
-                            <constraint firstItem="mpz-rj-mcn" firstAttribute="top" secondItem="lTb-u1-TQT" secondAttribute="bottom" id="bjI-R3-cUu"/>
-                            <constraint firstItem="woq-q0-vUc" firstAttribute="top" secondItem="nn3-ZA-1Ke" secondAttribute="bottom" id="fRe-dU-Cog"/>
-                            <constraint firstItem="mpz-rj-mcn" firstAttribute="centerX" secondItem="nn3-ZA-1Ke" secondAttribute="centerX" id="zdp-FJ-3Ai"/>
-                        </constraints>
-                    </view>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Rop-yq-bsL" id="4QX-V6-e4o"/>
+                            <outlet property="delegate" destination="Rop-yq-bsL" id="Hg2-g5-JXk"/>
+                        </connections>
+                    </tableView>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="aLQ-cZ-ktz"/>
@@ -132,9 +58,8 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
-                        <outlet property="adConstraint" destination="OO1-P3-9G4" id="m8T-kg-bsh"/>
                         <outlet property="settingsButton" destination="vjI-bA-K0l" id="SaS-6M-zEv"/>
-                        <outlet property="tripsTableView" destination="mpz-rj-mcn" id="sDZ-kw-vQ1"/>
+                        <outlet property="view" destination="p4Y-j8-Y6U" id="geV-z7-bhj"/>
                         <segue destination="4XN-YK-YCV" kind="replace" identifier="TripDetails" splitViewControllerTargetIndex="1" id="dER-xx-mm6"/>
                         <segue destination="dZT-P6-71W" kind="modal" identifier="TripCreator" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="HN5-tU-TgG"/>
                         <segue destination="igX-mn-JI3" kind="replace" identifier="NoTrip" splitViewControllerTargetIndex="1" id="rCO-kH-PiZ"/>

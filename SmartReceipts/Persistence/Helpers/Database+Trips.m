@@ -124,6 +124,11 @@
     return [adapter allObjects];
 }
 
+- (FetchedModelAdapter *)fetchedAdapterForAllTrips {
+    DatabaseQueryBuilder *selectAllTrips = [DatabaseQueryBuilder selectAllStatementForTable:TripsTable.TABLE_NAME];
+    return [self createAdapterUsingQuery:selectAllTrips forModel:[WBTrip class]];
+}
+
 - (WBTrip *)tripWithName:(NSString *)tripName {
     DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:TripsTable.TABLE_NAME];
     [select where:TripsTable.COLUMN_NAME value:tripName];

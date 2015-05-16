@@ -15,14 +15,10 @@
 #import "WBObservableTripsBrowser.h"
 
 #import "GADBannerViewDelegate.h"
+#import "FetchedCollectionTableViewController.h"
 
-@interface WBTripsViewController : WBViewController<UITableViewDataSource,UITableViewDelegate,UISplitViewControllerDelegate,WBNewTripViewControllerDelegate,WBObservableTripsDelegate,WBReceiptsViewControllerDelegate,GADBannerViewDelegate>
+@interface WBTripsViewController : FetchedCollectionTableViewController
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
-@property (weak, nonatomic) IBOutlet UITableView *tripsTableView;
-
-- (IBAction)actionAdd:(id)sender;
-
-- (WBObservableTripsBrowser*) tripsBrowserExcludingTrip:(WBTrip*)trip;
+- (WBObservableTripsBrowser *)tripsBrowserExcludingTrip:(WBTrip *)trip;
 
 @end

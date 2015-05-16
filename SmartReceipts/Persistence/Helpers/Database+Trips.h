@@ -11,6 +11,7 @@
 @class WBTrip;
 @class WBPrice;
 @class FMDatabase;
+@class FetchedModelAdapter;
 
 @interface Database (Trips)
 
@@ -26,5 +27,6 @@
 - (WBPrice *)updatePriceOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (WBPrice *)tripPrice:(WBTrip *)trip;
 - (WBPrice *)tripPrice:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
+- (FetchedModelAdapter *)fetchedAdapterForAllTrips;
 
 @end

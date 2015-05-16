@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="48" id="HLE-YR-Vgg" customClass="WBCellWithPriceNameDate">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HLE-YR-Vgg" id="2dq-5d-s6c">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$12.53" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jik-bv-qxh">
+                        <rect key="frame" x="16" y="0.0" width="64" height="47"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="3LP-1g-ohx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                        <color key="textColor" red="0.46666666670000001" green="0.08235294118" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9K-TL-aOK">
+                        <rect key="frame" x="92" y="2" width="80" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 6. 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmB-uG-brk">
+                        <rect key="frame" x="92" y="24" width="111" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="cmB-uG-brk" secondAttribute="bottom" constant="2" id="2WG-0Q-urK"/>
+                    <constraint firstItem="cmB-uG-brk" firstAttribute="left" secondItem="jik-bv-qxh" secondAttribute="right" constant="12" id="4S9-bY-zDY"/>
+                    <constraint firstItem="jik-bv-qxh" firstAttribute="top" secondItem="2dq-5d-s6c" secondAttribute="top" id="9bI-1O-7Ff"/>
+                    <constraint firstItem="R9K-TL-aOK" firstAttribute="left" secondItem="jik-bv-qxh" secondAttribute="right" constant="12" id="BFh-3Z-hmq"/>
+                    <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="cmB-uG-brk" secondAttribute="right" constant="8" id="Byq-Lz-t4Y"/>
+                    <constraint firstItem="jik-bv-qxh" firstAttribute="left" secondItem="2dq-5d-s6c" secondAttribute="left" constant="16" id="P4H-7i-5cW"/>
+                    <constraint firstItem="R9K-TL-aOK" firstAttribute="top" secondItem="2dq-5d-s6c" secondAttribute="top" constant="2" id="SPe-Cw-wni"/>
+                    <constraint firstAttribute="bottom" secondItem="jik-bv-qxh" secondAttribute="bottom" id="ifV-0F-qvm"/>
+                    <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="R9K-TL-aOK" secondAttribute="right" constant="8" id="izJ-N0-vqx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dateField" destination="cmB-uG-brk" id="Aq0-3i-ZsI"/>
+                <outlet property="nameField" destination="R9K-TL-aOK" id="lY6-DG-uxB"/>
+                <outlet property="priceField" destination="jik-bv-qxh" id="tPF-g5-NSY"/>
+                <outlet property="priceWidthConstraint" destination="3LP-1g-ohx" id="rBQ-Su-DwT"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

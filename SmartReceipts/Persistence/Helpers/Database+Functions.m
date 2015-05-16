@@ -160,7 +160,7 @@
     return curr;
 }
 
-- (FetchedModelAdapter *)createAdapterUsingQuery:(DatabaseQueryBuilder *)query forMode:(Class)modelClass {
+- (FetchedModelAdapter *)createAdapterUsingQuery:(DatabaseQueryBuilder *)query forModel:(Class)modelClass {
     FetchedModelAdapter *adapter = [[FetchedModelAdapter alloc] initWithDatabase:self];
     [adapter setQuery:query.buildStatement parameters:query.parameters];
     [adapter setModelClass:modelClass];
