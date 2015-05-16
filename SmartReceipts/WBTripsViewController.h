@@ -17,7 +17,12 @@
 #import "GADBannerViewDelegate.h"
 #import "FetchedCollectionTableViewController.h"
 
+extern NSString *const PresentTripDetailsSegueIdentifier;
+
 @interface WBTripsViewController : FetchedCollectionTableViewController
+
+@property (nonatomic, strong) WBTrip *tapped;
+@property (nonatomic, strong, readonly) WBTrip *lastShownTrip;
 
 - (WBObservableTripsBrowser *)tripsBrowserExcludingTrip:(WBTrip *)trip;
 

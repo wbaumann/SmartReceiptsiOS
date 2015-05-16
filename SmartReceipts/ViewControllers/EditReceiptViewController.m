@@ -180,7 +180,9 @@
     [self addInlinedPickerCell:self.currencyPickerCell forCell:self.currencyCell];
     [self addInlinedPickerCell:self.datePickerCell forCell:self.dateCell];
     [self addInlinedPickerCell:self.categoryPickerCell forCell:self.categoryCell];
-    [self addInlinedPickerCell:self.paymenMethodPickerCell forCell:self.paymenMethodCell];
+    if ([WBPreferences usePaymentMethods]) {
+        [self addInlinedPickerCell:self.paymenMethodPickerCell forCell:self.paymenMethodCell];
+    }
 
     [self.nameCell.entryField becomeFirstResponder];
 

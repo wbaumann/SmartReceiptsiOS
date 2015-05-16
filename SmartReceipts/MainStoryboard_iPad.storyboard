@@ -30,7 +30,7 @@
         <!--Smart Receipts-->
         <scene sceneID="bcd-J7-h7B">
             <objects>
-                <viewController id="Rop-yq-bsL" customClass="WBTripsViewController" sceneMemberID="viewController">
+                <viewController id="Rop-yq-bsL" customClass="MasterTripsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="p4Y-j8-Y6U">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="660"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1116,7 +1116,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="SYg-rc-NvF"/>
+        <segue reference="dER-xx-mm6"/>
         <segue reference="DxA-Mq-uge"/>
         <segue reference="Pu5-7V-Vh4"/>
     </inferredMetricsTieBreakers>

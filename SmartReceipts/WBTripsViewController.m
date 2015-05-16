@@ -19,9 +19,9 @@
 #import "Database+Trips.h"
 #import "Constants.h"
 
-NSString *const PresentTripDetailsSequeIdentifier = @"TripDetails";
+NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 
-@interface WBTripsViewController () <UITableViewDataSource, UITableViewDelegate, UISplitViewControllerDelegate, WBNewTripViewControllerDelegate, WBObservableTripsDelegate, WBReceiptsViewControllerDelegate, GADBannerViewDelegate> {
+@interface WBTripsViewController () <GADBannerViewDelegate> {
     WBDateFormatter *_dateFormatter;
 
     CGFloat _priceWidth;
@@ -33,7 +33,6 @@ NSString *const PresentTripDetailsSequeIdentifier = @"TripDetails";
 }
 
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *settingsButton;
-@property (nonatomic, strong) WBTrip *tapped;
 @property (nonatomic, strong) WBTrip *lastShownTrip;
 
 @end
@@ -64,15 +63,9 @@ NSString *const PresentTripDetailsSequeIdentifier = @"TripDetails";
 
     self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], self.editButtonItem];
 
-    if (self.splitViewController) {
-        self.splitViewController.delegate = self;
-    }
-
-    {
-        self.settingsButton.title = @"\u2699";
-        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"Helvetica" size:24.0], NSFontAttributeName, nil];
-        [self.settingsButton setTitleTextAttributes:dict forState:UIControlStateNormal];
-    }
+    self.settingsButton.title = @"\u2699";
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"Helvetica" size:24.0], NSFontAttributeName, nil];
+    [self.settingsButton setTitleTextAttributes:dict forState:UIControlStateNormal];
 
     GADMasterViewController *sharedAdController = [GADMasterViewController sharedInstance];
     [sharedAdController resetAdView:self];
@@ -148,10 +141,6 @@ NSString *const PresentTripDetailsSequeIdentifier = @"TripDetails";
     return MAX(CGRectGetWidth(self.view.bounds) / 6, maxWidth);
 }
 
-- (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation {
-    return NO;
-}
-
 - (void)configureCell:(UITableViewCell *)aCell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {
     WBCellWithPriceNameDate *cell = (WBCellWithPriceNameDate *) aCell;
 
@@ -209,83 +198,14 @@ NSString *const PresentTripDetailsSequeIdentifier = @"TripDetails";
 - (void)contentChanged {
     [self updatePricesWidth];
     [self updateEditButton];
-    if (IS_IPAD) {
-        [self showDefaultTripInDetailView];
-    }
-}
-
-- (void)showDefaultTripInDetailView {
-    if ([self numberOfItems] > 0) {
-        [self setTapped:[self objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
-
-        [self performSegueWithIdentifier:@"TripDetails" sender:self];
-    } else {
-        [self performSegueWithIdentifier:@"NoTrip" sender:self];
-    }
 }
 
 - (void)didInsertObject:(id)object atIndex:(NSUInteger)index {
     [super didInsertObject:object atIndex:index];
 
     [self setTapped:object];
-    [self performSegueWithIdentifier:PresentTripDetailsSequeIdentifier sender:nil];
+    [self performSegueWithIdentifier:PresentTripDetailsSegueIdentifier sender:nil];
 }
-
-/*
-
--(void) observableTrips:(WBObservableTrips*)observableTrips addedTrip:(WBTrip*)trip atIndex:(int)index {
-    NSIndexPath *ip = [NSIndexPath indexPathForRow:index inSection:0];
-    [self.tripsTableView beginUpdates];
-    [self.tripsTableView insertRowsAtIndexPaths:@[ip] withRowAnimation:UITableViewRowAnimationLeft];
-    [self.tripsTableView endUpdates];
-
-    [self updatePricesWidth];
-
-    [self updateEditButton];
-
-    [self.tripsTableView selectRowAtIndexPath:ip animated:YES scrollPosition:UITableViewScrollPositionTop];
-    [self performSegueWithIdentifier: @"TripDetails" sender: self];
-}
-
--(void)observableTrips:(WBObservableTrips *)observableTrips replacedTrip:(WBTrip *)oldTrip toTrip:(WBTrip *)newTrip fromIndex:(int)oldIndex toIndex:(int)newIndex {
-    
-    [self.tripsTableView beginUpdates];
-    
-    if (oldIndex == newIndex) {
-        [self.tripsTableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:oldIndex inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-    } else {
-        [self.tripsTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:oldIndex inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-        
-        [self.tripsTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:newIndex inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    
-    [self.tripsTableView endUpdates];
-    
-    [self updatePricesWidth];
-    
-    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ){
-        // show new trip on iPad
-        [self.tripsTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:newIndex inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
-        [self performSegueWithIdentifier: @"TripDetails" sender: self];
-    }
-}
-
--(void) observableTrips:(WBObservableTrips*)observableTrips removedTrip:(WBTrip*)trip atIndex:(int)index {
-    
-    NSIndexPath *ip = [NSIndexPath indexPathForRow:index inSection:0];
-    [self.tripsTableView beginUpdates];
-    [self.tripsTableView deleteRowsAtIndexPaths:@[ip] withRowAnimation:UITableViewRowAnimationFade];
-    [self.tripsTableView endUpdates];
-    
-    [self updatePricesWidth];
-    
-    [self updateEditButton];
-    
-    if ((trip == _lastShownTrip) && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ){
-        // show default trip on iPad if we removed selected
-        [self showDefaultTripInDetailView];
-    }
-} */
 
 - (WBObservableTripsBrowser *)tripsBrowserExcludingTrip:(WBTrip *)trip {
     return nil;//[[WBObservableTripsBrowser alloc] initWithTrips:_trips excludingIndex:[_trips indexOfTrip:trip]];

@@ -117,13 +117,18 @@
 - (void)refreshContentAndNotifyDeleteChanges {
     NSArray *previousObjectsForIndex = [NSArray arrayWithArray:self.models];
     NSMutableArray *previousObjects = [NSMutableArray arrayWithArray:self.models];
-    [self fetch];
-    [previousObjects removeObjectsInArray:self.models];
+
+    NSArray *refreshed = [self performObjectsFetch];
+
+    [previousObjects removeObjectsInArray:refreshed];
 
     id removed = [previousObjects lastObject];
     NSUInteger index = [previousObjectsForIndex indexOfObject:removed];
     [self.delegate willChangeContent];
     [self.delegate didDeleteObject:removed atIndex:index];
+
+    [self setModels:refreshed];
+
     [self.delegate didChangeContent];
 }
 

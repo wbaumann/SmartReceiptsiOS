@@ -92,7 +92,6 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 }
 
 - (NSUInteger)numberOfItems {
-    SRLog(@"numberOfItems:%tu", self.presentedObjects.numberOfObjects);
     return self.presentedObjects.numberOfObjects;
 }
 
