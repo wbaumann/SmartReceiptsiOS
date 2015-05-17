@@ -33,7 +33,7 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
 }
 
 - (NSNumber *)milliseconds {
-    return @([self timeIntervalSince1970] * 1000);
+    return @((long long int)([self timeIntervalSince1970] * 1000));
 }
 
 + (NSCalendar *)gregorian {

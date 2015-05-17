@@ -22,6 +22,7 @@
 #import "PaymentMethod.h"
 #import "WBFileManager.h"
 #import "Database+Notify.h"
+#import "ReceiptFilesManager.h"
 
 @implementation Database (Receipts)
 
@@ -220,6 +221,8 @@
 - (BOOL)copyReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip {
     __block BOOL result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        [self.filesManager copyFileForReceipt:receipt toTrip:trip];
+
         WBTrip *original = receipt.trip;
         [receipt setTrip:trip];
         result = [self saveReceipt:receipt usingDatabase:db];
@@ -233,6 +236,8 @@
 - (BOOL)moveReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip {
     __block BOOL result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        [self.filesManager moveFileForReceipt:receipt toTrip:trip];
+
         [self deleteReceipt:receipt usingDatabase:db];
         [receipt setTrip:trip];
         result = [self saveReceipt:receipt usingDatabase:db];

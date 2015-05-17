@@ -24,7 +24,7 @@
 @property (nonatomic, strong) WBTrip *sourceTrip;
 @property (nonatomic, strong) WBTrip *destinationTrip;
 @property (nonatomic, strong) WBReceipt *testReceipt;
-@property (nonatomic, strong) NSDecimalNumber *testReciptPrice;
+@property (nonatomic, strong) NSDecimalNumber *testReceiptPrice;
 
 @end
 
@@ -34,12 +34,15 @@
     [super setUp];
 
     self.sourceTrip = [self.db insertTestTrip:@{TripsTable.COLUMN_NAME: @"Source"}];
-    self.testReciptPrice = [NSDecimalNumber decimalNumberOrZero:@"10"];
+    self.testReceiptPrice = [NSDecimalNumber decimalNumberOrZero:@"10"];
 
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: self.sourceTrip, ReceiptsTable.COLUMN_NAME: @"TestReceipt", ReceiptsTable.COLUMN_PRICE: self.testReciptPrice}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: self.sourceTrip, ReceiptsTable.COLUMN_NAME: @"TestReceipt", ReceiptsTable.COLUMN_PRICE: self.testReceiptPrice}];
     self.testReceipt = [self.db receiptWithName:@"TestReceipt"];
 
     self.destinationTrip = [self.db insertTestTrip:@{TripsTable.COLUMN_NAME: @"Destination"}];
+
+    UIImage *receiptImage = [UIImage imageWithContentsOfFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"sample-receipt" ofType:@"jpg"]];
+    [self.db.filesManager saveImage:receiptImage forReceipt:self.testReceipt];
 }
 
 
@@ -57,10 +60,15 @@
     XCTAssertEqual(1, [self.db allReceiptsForTrip:self.destinationTrip descending:NO].count);
 
     WBTrip *fetchedSource = [self.db tripWithName:self.sourceTrip.name];
-    XCTAssertEqualObjects(self.testReciptPrice, fetchedSource.price.amount);
+    XCTAssertEqualObjects(self.testReceiptPrice, fetchedSource.price.amount);
 
     WBTrip *fetchedDestination = [self.db tripWithName:self.destinationTrip.name];
-    XCTAssertEqualObjects(self.testReciptPrice, fetchedDestination.price.amount);
+    XCTAssertEqualObjects(self.testReceiptPrice, fetchedDestination.price.amount);
+
+    NSString *originalPath = [self.db.filesManager pathForReceiptFile:self.testReceipt withTrip:self.sourceTrip];
+    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:originalPath]);
+    NSString *destinationPath = [self.db.filesManager pathForReceiptFile:self.testReceipt withTrip:self.destinationTrip];
+    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:destinationPath], @"No file at %@", destinationPath);
 }
 
 - (void)testMoveReceipt {
@@ -80,8 +88,12 @@
     XCTAssertEqualObjects([NSDecimalNumber zero], fetchedSource.price.amount);
 
     WBTrip *fetchedDestination = [self.db tripWithName:self.destinationTrip.name];
-    XCTAssertEqualObjects(self.testReciptPrice, fetchedDestination.price.amount);
+    XCTAssertEqualObjects(self.testReceiptPrice, fetchedDestination.price.amount);
 
+    NSString *originalPath = [self.db.filesManager pathForReceiptFile:self.testReceipt withTrip:self.sourceTrip];
+    XCTAssertTrue(![[NSFileManager defaultManager] fileExistsAtPath:originalPath]);
+    NSString *destinationPath = [self.db.filesManager pathForReceiptFile:self.testReceipt withTrip:self.destinationTrip];
+    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:destinationPath]);
 }
 
 @end

@@ -218,6 +218,7 @@
 		EAD15C771B087029003BB1F3 /* DatabaseReceiptsCopyMoveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD15C761B087029003BB1F3 /* DatabaseReceiptsCopyMoveTest.m */; };
 		EAD15C7A1B0881C2003BB1F3 /* ReceiptFilesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD15C791B0881C2003BB1F3 /* ReceiptFilesManager.m */; };
 		EAD15C7D1B0881FE003BB1F3 /* ReceiptFilesManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD15C7C1B0881FE003BB1F3 /* ReceiptFilesManagerTest.m */; };
+		EAD15C7F1B088612003BB1F3 /* sample-receipt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EAD15C7E1B088612003BB1F3 /* sample-receipt.jpg */; };
 		EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */; };
 		EAE725DA1B022E9100402689 /* TripsToReceiptsConverterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */; };
 		EAE8F9B21AF149DC00E837E3 /* TripDistancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE8F9B11AF149DC00E837E3 /* TripDistancesViewController.m */; };
@@ -608,6 +609,7 @@
 		EAD15C781B0881C2003BB1F3 /* ReceiptFilesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptFilesManager.h; sourceTree = "<group>"; };
 		EAD15C791B0881C2003BB1F3 /* ReceiptFilesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptFilesManager.m; sourceTree = "<group>"; };
 		EAD15C7C1B0881FE003BB1F3 /* ReceiptFilesManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptFilesManagerTest.m; sourceTree = "<group>"; };
+		EAD15C7E1B088612003BB1F3 /* sample-receipt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sample-receipt.jpg"; sourceTree = "<group>"; };
 		EAE725D51B022E3F00402689 /* DistancesToReceiptsConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancesToReceiptsConverter.h; sourceTree = "<group>"; };
 		EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancesToReceiptsConverter.m; sourceTree = "<group>"; };
 		EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsToReceiptsConverterTest.m; sourceTree = "<group>"; };
@@ -1227,6 +1229,7 @@
 				EA159E7B1AFE6F4E00DBB6CF /* android-receipts-v13.db */,
 				EA69EF2C1AF0907300276B70 /* receipts_at_v11.db */,
 				EA6888D21AFE699A00A910FC /* receipts-dates-test.db */,
+				EAD15C7E1B088612003BB1F3 /* sample-receipt.jpg */,
 			);
 			path = TestData;
 			sourceTree = "<group>";
@@ -1620,6 +1623,7 @@
 				EA159E801AFE705000DBB6CF /* android-receipts-v11.db in Resources */,
 				EA69EF2D1AF0907300276B70 /* receipts_at_v11.db in Resources */,
 				EA159E7F1AFE704D00DBB6CF /* android-receipts-v13.db in Resources */,
+				EAD15C7F1B088612003BB1F3 /* sample-receipt.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

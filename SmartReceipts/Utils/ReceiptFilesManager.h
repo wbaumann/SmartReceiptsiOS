@@ -7,9 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+@import UIKit;
+
+@class WBReceipt;
+@class WBTrip;
 
 @interface ReceiptFilesManager : NSObject
 
 - (id)initWithTripsFolder:(NSString *)pathToTripsFolder;
+
+- (BOOL)saveImage:(UIImage *)image forReceipt:(WBReceipt *)receipt;
+- (BOOL)copyFileForReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
+- (BOOL)moveFileForReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
 
 @end
