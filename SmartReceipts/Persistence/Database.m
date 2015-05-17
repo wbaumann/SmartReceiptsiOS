@@ -15,6 +15,7 @@
 #import "WBReceiptsHelper.h"
 #import "WBCategoriesHelper.h"
 #import "WBColumnsHelper.h"
+#import "ReceiptFilesManager.h"
 
 NSString *const DatabaseDidInsertModelNotification = @"DatabaseDidInsertModelNotification";
 NSString *const DatabaseDidDeleteModelNotification = @"DatabaseDidDeleteModelNotification";
@@ -29,6 +30,7 @@ NSString *const DatabaseDidUpdateModelNotification = @"DatabaseDidUpdateModelNot
 @property (nonatomic, strong) WBCategoriesHelper *categoriesHelper;
 @property (nonatomic, strong) WBColumnsHelper *csvColumnsHelper;
 @property (nonatomic, strong) WBColumnsHelper *pdfColumnsHelper;
+@property (nonatomic, strong) ReceiptFilesManager *filesManager;
 
 @end
 
@@ -50,13 +52,14 @@ NSString *const DatabaseDidUpdateModelNotification = @"DatabaseDidUpdateModelNot
 }
 
 - (id)initSingleton {
-    return [self initWithDatabasePath:[WBFileManager pathInDocuments:@"receipts.db"]];
+    return [self initWithDatabasePath:[WBFileManager pathInDocuments:@"receipts.db"] tripsFolederPath:[WBFileManager tripsDirectoryPath]];
 }
 
-- (id)initWithDatabasePath:(NSString *)path {
+- (id)initWithDatabasePath:(NSString *)path tripsFolederPath:(NSString *)tripsFolderPath {
     self = [super init];
     if (self) {
         _pathToDatabase = path;
+        _filesManager = [[ReceiptFilesManager alloc] initWithTripsFolder:tripsFolderPath];
     }
     return self;
 }

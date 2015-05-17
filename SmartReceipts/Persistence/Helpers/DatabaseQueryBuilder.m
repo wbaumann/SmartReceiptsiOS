@@ -66,6 +66,10 @@ typedef NS_ENUM(short, StatementType) {
 }
 
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue {
+    if (!paramValue) {
+        SRLog(@"Warning: value for %@ not set. Ignoring", paramName);
+        return;
+    }
     [self.params addObject:paramName];
     [self.values addObject:paramValue];
 }
@@ -77,6 +81,10 @@ typedef NS_ENUM(short, StatementType) {
 
 - (void)where:(NSString *)paramName value:(NSObject *)paramValue {
     [self where:paramName value:paramValue caseInsensitive:NO];
+}
+
+- (void)where:(NSString *)paramName notValue:(NSObject *)paramValue {
+    [self where:[NSString stringWithFormat:@"!%@", paramName] value:paramValue];
 }
 
 - (void)where:(NSString *)paramName value:(NSObject *)paramValue caseInsensitive:(BOOL)caseInsensitive {
@@ -137,7 +145,14 @@ typedef NS_ENUM(short, StatementType) {
     keys = [keys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSMutableArray *whereParams = [NSMutableArray array];
     for (NSString *whereKey in keys) {
-        NSString *paramString = [NSString stringWithFormat:@"%@ = :%@", whereKey, whereKey];
+        NSString *paramString;
+        if ([whereKey rangeOfString:@"!"].location == 0) {
+            NSString *key = [whereKey substringFromIndex:1];
+            paramString = [NSString stringWithFormat:@"%@ != :w%@", key, key];
+        } else {
+            paramString = [NSString stringWithFormat:@"%@ = :w%@", whereKey, whereKey];
+        }
+
         if ([self.caseInsensitiveWhereParams containsObject:whereKey]) {
             paramString = [paramString stringByAppendingString:@" COLLATE NOCASE"];
         }
@@ -188,7 +203,13 @@ typedef NS_ENUM(short, StatementType) {
         id value = self.values[index];
         result[key] = value;
     }
-    [result addEntriesFromDictionary:self.where];
+    for (NSString *whereKey in self.where) {
+        NSString *key = whereKey;
+        if ([key rangeOfString:@"!"].location == 0) {
+            key = [key substringFromIndex:1];
+        }
+        result[[NSString stringWithFormat:@"w%@", key]] = self.where[whereKey];
+    }
     return [NSDictionary dictionaryWithDictionary:result];
 }
 

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "FMDatabaseQueue.h"
 
+@class ReceiptFilesManager;
+
 extern NSString *const DatabaseDidInsertModelNotification;
 extern NSString *const DatabaseDidDeleteModelNotification;
 extern NSString *const DatabaseDidUpdateModelNotification;
@@ -16,6 +18,7 @@ extern NSString *const DatabaseDidUpdateModelNotification;
 @interface Database : NSObject
 
 @property (nonatomic, strong, readonly) FMDatabaseQueue *databaseQueue;
+@property (nonatomic, strong, readonly) ReceiptFilesManager *filesManager;
 
 + (instancetype)sharedInstance;
 

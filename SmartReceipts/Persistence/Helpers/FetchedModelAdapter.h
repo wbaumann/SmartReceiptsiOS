@@ -10,11 +10,13 @@
 
 @protocol FetchedModelAdapterDelegate;
 @class Database;
+@class FMDatabase;
 
 @interface FetchedModelAdapter : NSObject
 
 @property (nonatomic, weak) id<FetchedModelAdapterDelegate> delegate;
 @property (nonatomic, strong) Class modelClass;
+@property (nonatomic, strong) NSObject *associatedModel;
 
 - (id)objectAtIndex:(NSInteger)index;
 - (id)initWithDatabase:(Database *)database;
@@ -22,6 +24,7 @@
 - (void)setQuery:(NSString *)query;
 - (void)setQuery:(NSString *)query parameters:(NSDictionary *)parameters;
 - (void)fetch;
+- (void)fetchUsingDatabase:(FMDatabase *)database;
 - (NSArray *)allObjects;
 
 @end

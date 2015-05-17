@@ -38,11 +38,11 @@
     [statement where:@"id" value:@12];
 
     NSString *query = [statement buildStatement];
-    NSString *expected = @"DELETE FROM testing_delete WHERE id = :id";
+    NSString *expected = @"DELETE FROM testing_delete WHERE id = :wid";
     XCTAssertEqualObjects(expected, query, @"Got %@", query);
 
     NSDictionary *params = [statement parameters];
-    XCTAssertEqual(@12, params[@"id"]);
+    XCTAssertEqual(@12, params[@"wid"]);
 }
 
 - (void)testUpdateQueryBuild {
@@ -53,11 +53,11 @@
     [statement where:@"id" value:@12];
 
     NSString *query = [statement buildStatement];
-    NSString *expected = @"UPDATE testing_update SET one = :one, three = :three, two = :two WHERE id = :id";
+    NSString *expected = @"UPDATE testing_update SET one = :one, three = :three, two = :two WHERE id = :wid";
     XCTAssertEqualObjects(expected, query, @"Got %@", query);
 
     NSDictionary *params = [statement parameters];
-    XCTAssertEqual(@12, params[@"id"]);
+    XCTAssertEqual(@12, params[@"wid"]);
 }
 
 - (void)testSumQueryBuilder {
@@ -66,11 +66,11 @@
     [statement where:@"cake" value:@"brown"];
 
     NSString *query = [statement buildStatement];
-    NSString *expected = @"SELECT SUM(amount) FROM testing_sum WHERE cake = :cake";
+    NSString *expected = @"SELECT SUM(amount) FROM testing_sum WHERE cake = :wcake";
     XCTAssertEqualObjects(expected, query, @"Got %@", query);
 
     NSDictionary *params = [statement parameters];
-    XCTAssertEqual(@"brown", params[@"cake"]);
+    XCTAssertEqual(@"brown", params[@"wcake"]);
 }
 
 - (void)testSumMultiWhereClauses {
@@ -80,12 +80,12 @@
     [statement where:@"baked" value:@"good"];
 
     NSString *query = [statement buildStatement];
-    NSString *expected = @"SELECT SUM(amount) FROM testing_sum WHERE baked = :baked AND cake = :cake";
+    NSString *expected = @"SELECT SUM(amount) FROM testing_sum WHERE baked = :wbaked AND cake = :wcake";
     XCTAssertEqualObjects(expected, query, @"Got %@", query);
 
     NSDictionary *params = [statement parameters];
-    XCTAssertEqual(@"brown", params[@"cake"]);
-    XCTAssertEqual(@"good", params[@"baked"]);
+    XCTAssertEqual(@"brown", params[@"wcake"]);
+    XCTAssertEqual(@"good", params[@"wbaked"]);
 }
 
 - (void)testOddSumQueryBuilder {
@@ -95,11 +95,11 @@
     [statement where:@"cake" value:@"brown"];
 
     NSString *query = [statement buildStatement];
-    NSString *expected = @"SELECT SUM(distance * rate) FROM testing_sum WHERE cake = :cake";
+    NSString *expected = @"SELECT SUM(distance * rate) FROM testing_sum WHERE cake = :wcake";
     XCTAssertEqualObjects(expected, query, @"Got %@", query);
 
     NSDictionary *params = [statement parameters];
-    XCTAssertEqual(@"brown", params[@"cake"]);
+    XCTAssertEqual(@"brown", params[@"wcake"]);
 }
 
 - (void)testSelectAllQueryBuild {
@@ -107,11 +107,11 @@
     [statement where:@"id" value:@12];
 
     NSString *query = [statement buildStatement];
-    NSString *expected = @"SELECT * FROM testing_select_all WHERE id = :id";
+    NSString *expected = @"SELECT * FROM testing_select_all WHERE id = :wid";
     XCTAssertEqualObjects(expected, query, @"Got %@", query);
 
     NSDictionary *params = [statement parameters];
-    XCTAssertEqual(@12, params[@"id"]);
+    XCTAssertEqual(@12, params[@"wid"]);
 }
 
 - (void)testSelectAllAndOrderBy {
@@ -132,12 +132,37 @@
     [statement where:@"cake" value:@"brown" caseInsensitive:YES];
 
     NSString *query = [statement buildStatement];
-    NSString *expected = @"SELECT SUM(amount) FROM testing_sum WHERE cake = :cake COLLATE NOCASE";
+    NSString *expected = @"SELECT SUM(amount) FROM testing_sum WHERE cake = :wcake COLLATE NOCASE";
     XCTAssertEqualObjects(expected, query, @"Got %@", query);
 
     NSDictionary *params = [statement parameters];
-    XCTAssertEqual(@"brown", params[@"cake"]);
+    XCTAssertEqual(@"brown", params[@"wcake"]);
 }
 
+- (void)testQueryForRenameTrip {
+    DatabaseQueryBuilder *statement = [DatabaseQueryBuilder updateStatementForTable:TripsTable.TABLE_NAME];
+    [statement addParam:TripsTable.COLUMN_NAME value:@"altered"];
+    [statement where:TripsTable.COLUMN_NAME value:@"old_name"];
+
+    NSString *query = [statement buildStatement];
+    NSString *expected = @"UPDATE trips SET name = :name WHERE name = :wname";
+    XCTAssertEqualObjects(expected, query, @"Got %@", query);
+
+    NSDictionary *params = [statement parameters];
+    XCTAssertEqual(@"altered", params[TripsTable.COLUMN_NAME]);
+    XCTAssertEqual(@"old_name", params[@"wname"]);
+}
+
+- (void)testSelectAllWhereNotValue {
+    DatabaseQueryBuilder *statement = [DatabaseQueryBuilder selectAllStatementForTable:TripsTable.TABLE_NAME];
+    [statement where:TripsTable.COLUMN_NAME notValue:@"excluded"];
+
+    NSString *query = [statement buildStatement];
+    NSString *expected = @"SELECT * FROM trips WHERE name != :wname";
+    XCTAssertEqualObjects(expected, query, @"Got %@", query);
+
+    NSDictionary *params = [statement parameters];
+    XCTAssertEqual(@"excluded", params[@"wname"]);
+}
 
 @end

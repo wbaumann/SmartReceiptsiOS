@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <FMDB/FMDatabase.h>
 #import "FetchedModelAdapter.h"
 #import "Database.h"
-#import "FMDatabase.h"
 #import "FetchedModel.h"
 #import "Constants.h"
 #import "FetchedModelAdapterDelegate.h"
@@ -18,7 +18,8 @@
 @property (nonatomic, strong) Database *database;
 @property (nonatomic, copy) NSString *fetchQuery;
 @property (nonatomic, strong) NSDictionary *fetchParameters;
-@property (nonatomic, strong) NSMutableArray *models;
+@property (nonatomic, strong) NSArray *models;
+@property (nonatomic, assign) SEL associatedSelector;
 
 @end
 
@@ -57,20 +58,14 @@
 }
 
 - (void)fetch {
-    TICK;
-    NSMutableArray *objects = [NSMutableArray array];
-    SRLog(@"Fetch query: '%@'", self.fetchQuery);
-    SRLog(@"Fetch params: %@", self.fetchParameters);
     [self.database.databaseQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet *resultSet = [db executeQuery:self.fetchQuery withParameterDictionary:self.fetchParameters];
-        while ([resultSet next]) {
-            id<FetchedModel> fetched = (id <FetchedModel>) [[self.modelClass alloc] init];
-            [fetched loadDataFromResultSet:resultSet];
-            [objects addObject:fetched];
-        }
+        [self fetchUsingDatabase:db];
     }];
-    [self setModels:[NSMutableArray arrayWithArray:objects]];
-    TOCK(@"Fetch time");
+}
+
+- (void)fetchUsingDatabase:(FMDatabase *)database {
+    NSArray *objects = [self performObjectsFetchUsingDatabase:database];
+    [self setModels:objects];
 }
 
 - (NSArray *)allObjects {
@@ -123,32 +118,95 @@
 - (void)refreshContentAndNotifyDeleteChanges {
     NSArray *previousObjectsForIndex = [NSArray arrayWithArray:self.models];
     NSMutableArray *previousObjects = [NSMutableArray arrayWithArray:self.models];
-    [self fetch];
-    [previousObjects removeObjectsInArray:self.models];
+
+    NSArray *refreshed = [self performObjectsFetch];
+
+    [previousObjects removeObjectsInArray:refreshed];
 
     id removed = [previousObjects lastObject];
     NSUInteger index = [previousObjectsForIndex indexOfObject:removed];
     [self.delegate willChangeContent];
     [self.delegate didDeleteObject:removed atIndex:index];
+
+    [self setModels:refreshed];
+
     [self.delegate didChangeContent];
 }
 
 - (void)refreshContentAndNotifyInsertChanges {
     NSArray *previousObjects = [NSArray arrayWithArray:self.models];
-    [self fetch];
-    NSMutableArray *currentObjects = [NSMutableArray arrayWithArray:self.models];
+    NSArray *refreshed = [self performObjectsFetch];
+    NSMutableArray *currentObjects = [NSMutableArray arrayWithArray:refreshed];
     [currentObjects removeObjectsInArray:previousObjects];
 
     id added = [currentObjects lastObject];
 
-    NSUInteger index = [self.models indexOfObject:added];
+    NSUInteger index = [refreshed indexOfObject:added];
+    //insert was done for some other monitored adapter. Nothing here to do
+    if (index == NSNotFound) {
+        [self setModels:refreshed];
+        return;
+    }
+
     [self.delegate willChangeContent];
+
     [self.delegate didInsertObject:added atIndex:index];
+    [self setModels:refreshed];
+
     [self.delegate didChangeContent];
 }
 
 - (void)clearNotificationListener {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+- (NSArray *)performObjectsFetch {
+    __block NSArray *result;
+    [self.database.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self performObjectsFetchUsingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (NSArray *)performObjectsFetchUsingDatabase:(FMDatabase *)database {
+    TICK;
+    NSMutableArray *result = [NSMutableArray array];
+    SRLog(@"Fetch query: '%@'", self.fetchQuery);
+    SRLog(@"Fetch params: %@", self.fetchParameters);
+
+    FMResultSet *resultSet = [database executeQuery:self.fetchQuery withParameterDictionary:self.fetchParameters];
+    while ([resultSet next]) {
+        NSObject<FetchedModel> *fetched = (NSObject<FetchedModel> *) [[self.modelClass alloc] init];
+        [fetched loadDataFromResultSet:resultSet];
+
+        if (self.associatedModel) {
+            IMP imp = [fetched methodForSelector:self.associatedSelector];
+            void (*func)(id, SEL, id) = (void *)imp;
+            func(fetched, self.associatedSelector, self.associatedModel);
+        }
+
+        [result addObject:fetched];
+    }
+
+    TOCK(@"Fetch time");
+    return [NSArray arrayWithArray:result];
+}
+
+- (void)setAssociatedModel:(NSObject *)associatedModel {
+    _associatedModel = associatedModel;
+
+    if (!associatedModel) {
+        return;
+    }
+
+    NSString *className = NSStringFromClass(self.associatedModel.class);
+    if ([className rangeOfString:@"WB"].location == 0) {
+        className = [className substringFromIndex:2];
+    }
+    NSString *selectorPattern = [NSString stringWithFormat:@"set%@:", className];
+    [self setAssociatedSelector:NSSelectorFromString(selectorPattern)];
+}
+
 
 @end

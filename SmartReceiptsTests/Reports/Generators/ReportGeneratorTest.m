@@ -14,11 +14,11 @@
 #import "ReportGenerator.h"
 #import "WBPreferences.h"
 #import "WBPreferencesTestHelper.h"
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "DatabaseTestsHelper.h"
 #import "DatabaseTableNames.h"
 
-@interface ReportGeneratorTest : DatabaseTestsBase
+@interface ReportGeneratorTest : SmartReceiptsTestsBase
 
 @property (nonatomic, strong) WBTrip *testTrip;
 
@@ -31,7 +31,7 @@
 
     self.db = [self createTestDatabase];
 
-    self.testTrip = [self.db insertTrip:@{}];
+    self.testTrip = [self.db insertTestTrip:@{}];
 }
 
 - (void)testReceiptsProvidedHaveTripObject {
@@ -48,7 +48,7 @@
 }
 
 - (void)createTestReceipt:(NSInteger)marker {
-    [self.db insertReceipt:@{ReceiptsTable.COLUMN_NAME: [NSString stringWithFormat:@"TEST Receipt %tu", marker], ReceiptsTable.COLUMN_PARENT: self.testTrip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : [NSString stringWithFormat:@"TEST Receipt %tu", marker], ReceiptsTable.COLUMN_PARENT : self.testTrip}];
 }
 
 @end

@@ -40,9 +40,9 @@
 
 -(void)createCellsTextsAndIndices {
     
-    if ([self.receipt hasImageForTrip:self.receiptsViewController.trip]) {
+    if ([self.receipt hasImage]) {
         _imgType = 1;
-    } else if ([self.receipt hasPDFForTrip:self.receiptsViewController.trip]) {
+    } else if ([self.receipt hasPDF]) {
         _imgType = 2;
     } else {
         _imgType = 0;
@@ -248,16 +248,16 @@
     {
         WBMoveCopyReceiptViewController* vc = (WBMoveCopyReceiptViewController*)[segue destinationViewController];
         
-        vc.receiptActionsViewController = self;
         vc.calledForCopy = NO;
+        vc.receipt = self.receipt;
     }
     
     if ([[segue identifier] isEqualToString:@"Copy"])
     {
         WBMoveCopyReceiptViewController* vc = (WBMoveCopyReceiptViewController*)[segue destinationViewController];
         
-        vc.receiptActionsViewController = self;
         vc.calledForCopy = YES;
+        vc.receipt = self.receipt;
     }
     
     if ([[segue identifier] isEqualToString:@"Image"])

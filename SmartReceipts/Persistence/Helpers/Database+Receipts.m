@@ -20,6 +20,9 @@
 #import "Database+Trips.h"
 #import "Database+PaymentMethods.h"
 #import "PaymentMethod.h"
+#import "WBFileManager.h"
+#import "Database+Notify.h"
+#import "ReceiptFilesManager.h"
 
 @implementation Database (Receipts)
 
@@ -62,6 +65,7 @@
     BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {
         [self updatePriceOfTrip:receipt.trip usingDatabase:database];
+        [self notifyInsertOfModel:receipt];
     }
     return result;
 }
@@ -78,10 +82,32 @@
 - (BOOL)updateReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
     [self appendCommonValuesFromReceipt:receipt toQuery:update];
-    [update where:ReceiptsTable.COLUMN_ID value:@(receipt.id)];
+    [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
     BOOL result = [self executeQuery:update usingDatabase:database];
     if (result) {
         [self updatePriceOfTrip:receipt.trip usingDatabase:database];
+        [self notifyUpdateOfModel:receipt];
+    }
+    return result;
+}
+
+- (BOOL)deleteReceipt:(WBReceipt *)receipt {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self deleteReceipt:receipt usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (BOOL)deleteReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:ReceiptsTable.TABLE_NAME];
+    [delete where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
+    BOOL result = [self executeQuery:delete usingDatabase:database];
+    if (result) {
+        [self.filesManager deleteFileForReceipt:receipt];
+        [self updatePriceOfTrip:receipt.trip usingDatabase:database];
+        [self notifyDeleteOfModel:receipt];
     }
     return result;
 }
@@ -100,30 +126,17 @@
 }
 
 - (NSArray *)allReceiptsWithQuery:(DatabaseQueryBuilder *)query forTrip:(WBTrip *)trip {
-    FetchedModelAdapter *adapter = [[FetchedModelAdapter alloc] initWithDatabase:self];
-    [adapter setQuery:query.buildStatement parameters:query.parameters];
-    [adapter setModelClass:[WBReceipt class]];
-    [adapter fetch];
+    FetchedModelAdapter *adapter = [self createAdapterUsingQuery:query forModel:[WBReceipt class] associatedModel:trip];
     //TODO jaanus: maybe can do this better
     NSArray *paymentMethods = [self allPaymentMethods];
     NSArray *receipts = [adapter allObjects];
     for (WBReceipt *receipt in receipts) {
-        [receipt setTrip:trip];
         [receipt setPaymentMethod:[paymentMethods filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
             PaymentMethod *method = evaluatedObject;
             return method.objectId == receipt.paymentMethodId;
         }]].firstObject];
     }
     return receipts;
-}
-
-- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip {
-    __block NSDecimalNumber *result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self sumOfReceiptsForTrip:trip usingDatabase:db];
-    }];
-
-    return result;
 }
 
 - (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
@@ -172,6 +185,64 @@
 
 - (NSString *)currencyForTripReceipts:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
     return [self selectCurrencyFromTable:ReceiptsTable.TABLE_NAME currencyColumn:ReceiptsTable.COLUMN_ISO4217 forTrip:trip usingDatabase:database];
+}
+
+- (BOOL)deleteReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:ReceiptsTable.TABLE_NAME];
+    [delete where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    return [self executeQuery:delete usingDatabase:database];
+}
+
+- (BOOL)moveReceiptsWithParent:(NSString *)previous toParent:(NSString *)next usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
+    [update addParam:ReceiptsTable.COLUMN_PARENT value:next];
+    [update where:ReceiptsTable.COLUMN_PARENT value:previous];
+    return [self executeQuery:update usingDatabase:database];
+}
+
+- (FetchedModelAdapter *)fetchedReceiptsAdapterForTrip:(WBTrip *)trip {
+    DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
+    [select where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    return [self createAdapterUsingQuery:select forModel:[WBReceipt class] associatedModel:trip];
+}
+
+- (BOOL)updateReceipt:(WBReceipt *)receipt changeFileNameTo:(NSString *)fileName {
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
+    [update addParam:ReceiptsTable.COLUMN_PATH value:fileName];
+    [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
+    BOOL result = [self executeQuery:update];
+    if (result) {
+        [receipt setImageFileName:fileName];
+        [self notifyUpdateOfModel:receipt];
+    }
+    return result;
+}
+
+- (BOOL)copyReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        [self.filesManager copyFileForReceipt:receipt toTrip:trip];
+
+        WBTrip *original = receipt.trip;
+        [receipt setTrip:trip];
+        result = [self saveReceipt:receipt usingDatabase:db];
+        [receipt setTrip:original];
+
+        [self notifyInsertOfModel:receipt];
+    }];
+    return result;
+}
+
+- (BOOL)moveReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        [self.filesManager moveFileForReceipt:receipt toTrip:trip];
+
+        [self deleteReceipt:receipt usingDatabase:db];
+        [receipt setTrip:trip];
+        result = [self saveReceipt:receipt usingDatabase:db];
+    }];
+    return result;
 }
 
 - (void)appendCommonValuesFromReceipt:(WBReceipt *)receipt toQuery:(DatabaseQueryBuilder *)query {

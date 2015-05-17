@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <objc/objc.h>
 #import "FetchedModel.h"
 
 @class WBTrip, WBCurrency;
@@ -15,16 +16,19 @@
 
 @interface WBReceipt : NSObject <FetchedModel>
 
-@property (nonatomic, strong, readonly) WBPrice *price;
-@property (nonatomic, strong, readonly) WBPrice *tax;
+@property (nonatomic, assign) NSUInteger objectId;
+@property (nonatomic, strong) WBPrice *price;
+@property (nonatomic, strong) WBPrice *tax;
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, assign) NSInteger reportIndex;
-@property (nonatomic, assign) NSUInteger id;
 @property (nonatomic, strong) PaymentMethod *paymentMethod;
 @property (nonatomic, assign) NSUInteger paymentMethodId;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *tripName;
-
+@property (nonatomic, copy) NSString *category;
+@property (nonatomic, strong) NSTimeZone *timeZone;
+@property (nonatomic, assign, getter=isExpensable) BOOL expensable;
+@property (nonatomic, assign, getter=isFullPage) BOOL fullPage;
 
 +(NSString*) NO_DATA;
 
@@ -71,8 +75,8 @@
 -(NSString*)imageFilePathForTrip:(WBTrip*)trip;
 -(BOOL)hasFileForTrip:(WBTrip*)trip;
 
--(BOOL)hasImageForTrip:(WBTrip*)trip;
--(BOOL)hasPDFForTrip:(WBTrip*)trip;
+- (BOOL)hasImage;
+- (BOOL)hasPDF;
 
 -(BOOL)hasImageFileName;
 -(BOOL)hasPDFFileName;

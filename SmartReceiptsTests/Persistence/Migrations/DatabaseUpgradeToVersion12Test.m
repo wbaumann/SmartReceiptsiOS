@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "Database.h"
 #import "DatabaseCreateAtVersion11.h"
 #import "DatabaseUpgradeToVersion12.h"
@@ -15,7 +15,7 @@
 #import "Database+Functions.h"
 #import "DatabaseTestsHelper.h"
 
-@interface DatabaseUpgradeToVersion12Test : DatabaseTestsBase
+@interface DatabaseUpgradeToVersion12Test : SmartReceiptsTestsBase
 
 @end
 

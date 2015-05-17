@@ -7,18 +7,27 @@
 //
 
 #import "Database.h"
+#import "ReceiptFilesManager.h"
 
 @class WBTrip;
 @class Distance;
 @class WBReceipt;
 
+@interface ReceiptFilesManager (TestExpose)
+
+- (NSString *)pathForReceiptFile:(WBReceipt *)receipt;
+- (NSString *)pathForReceiptFile:(WBReceipt *)receipt withTrip:(WBTrip *)trip;
+- (BOOL)fileExistsForReceipt:(WBReceipt *)receipt;
+
+@end
+
 @interface DatabaseTestsHelper : Database
 
 - (WBTrip *)createTestTrip;
-- (void)insertDistance:(NSDictionary *)modifiedParams;
-- (void)insertReceipt:(NSDictionary *)modifiedParams;
-- (WBTrip *)insertTrip:(NSDictionary *)modifiedParams;
-- (void)insertPaymentMethod:(NSString *)name;
+- (void)insertTestDistance:(NSDictionary *)modifiedParams;
+- (void)insertTestReceipt:(NSDictionary *)modifiedParams;
+- (WBTrip *)insertTestTrip:(NSDictionary *)modifiedParams;
+- (void)insertTestPaymentMethod:(NSString *)name;
 - (WBReceipt *)receiptWithName:(NSString *)receiptName;
 
 @end

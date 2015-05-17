@@ -51,7 +51,9 @@
     __block NSUInteger result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         NSString *countQuery = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@", tableName];
+        SRLog(@"Execute query:'%@'", countQuery);
         result = (NSUInteger) [db intForQuery:countQuery];
+        SRLog(@"Result:%tu", result);
     }];
     return result;
 }
@@ -158,10 +160,15 @@
     return curr;
 }
 
-- (FetchedModelAdapter *)createAdapterUsingQuery:(DatabaseQueryBuilder *)query forMode:(Class)modelClass {
+- (FetchedModelAdapter *)createAdapterUsingQuery:(DatabaseQueryBuilder *)query forModel:(Class)modelClass {
+    return [self createAdapterUsingQuery:query forModel:modelClass associatedModel:nil];
+}
+
+- (FetchedModelAdapter *)createAdapterUsingQuery:(DatabaseQueryBuilder *)query forModel:(Class)modelClass associatedModel:(NSObject *)model {
     FetchedModelAdapter *adapter = [[FetchedModelAdapter alloc] initWithDatabase:self];
     [adapter setQuery:query.buildStatement parameters:query.parameters];
     [adapter setModelClass:modelClass];
+    [adapter setAssociatedModel:model];
     [adapter fetch];
     return adapter;
 }

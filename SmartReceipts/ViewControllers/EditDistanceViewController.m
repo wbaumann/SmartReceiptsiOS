@@ -166,9 +166,7 @@
     [self.distance setTimeZone:self.trip.startTimeZone];
     [self.distance setComment:comment];
 
-    if (self.distance.objectId == 0 && [[Database sharedInstance] saveDistance:self.distance]) {
-        [self.navigationController popViewControllerAnimated:YES];
-    } else if ([[Database sharedInstance] updateDistance:self.distance]) {
+    if ([[Database sharedInstance] saveDistance:self.distance]) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Distance not saved", nil)

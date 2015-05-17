@@ -47,7 +47,7 @@
 - (FetchedModelAdapter *)fetchedAdapterForPaymentMethods {
     DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:PaymentMethodsTable.TABLE_NAME];
     [selectAll orderBy:PaymentMethodsTable.COLUMN_METHOD ascending:YES];
-    return [self createAdapterUsingQuery:selectAll forMode:[PaymentMethod class]];
+    return [self createAdapterUsingQuery:selectAll forModel:[PaymentMethod class]];
 }
 
 - (BOOL)savePaymentMethod:(PaymentMethod *)method {

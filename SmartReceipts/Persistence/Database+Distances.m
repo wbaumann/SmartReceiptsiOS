@@ -18,6 +18,8 @@
 #import "FetchedModelAdapter.h"
 #import "Database+Trips.h"
 #import "NSDate+Calculations.h"
+#import "Database+Notify.h"
+#import "WBPreferences.h"
 
 @implementation Database (Distances)
 
@@ -46,49 +48,62 @@
 }
 
 - (BOOL)saveDistance:(Distance *)distance usingDatabase:(FMDatabase *)database {
+    BOOL result;
+    if (distance.objectId == 0) {
+        result = [self insertDistance:distance usingDatabase:database];
+    } else {
+        result = [self updateDistance:distance usingDatabase:database];
+    }
+
+    [self triggerPriceUpdateOfTrip:distance.trip usingDatabase:database];
+    return result ;
+}
+
+- (BOOL)insertDistance:(Distance *)distance usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:DistanceTable.TABLE_NAME];
     [insert addParam:DistanceTable.COLUMN_PARENT value:distance.trip.name];
     [self appendCommonValuesFromDistance:distance toQuery:insert];
     BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {
-        [self updatePriceOfTrip:distance.trip usingDatabase:database];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidInsertModelNotification object:distance];
-        });
+        [self notifyInsertOfModel:distance];
     }
     return result;
 }
 
 - (FetchedModelAdapter *)fetchedAdapterForDistancesInTrip:(WBTrip *)trip {
-    FetchedModelAdapter *adapter = [[FetchedModelAdapter alloc] initWithDatabase:self];
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = :parent ORDER BY %@ DESC", DistanceTable.TABLE_NAME, DistanceTable.COLUMN_PARENT, DistanceTable.COLUMN_DATE];
-    [adapter setQuery:query parameters:@{@"parent" : trip.name}];
-    [adapter setModelClass:[Distance class]];
-    [adapter fetch];
-    return adapter;
+    DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:DistanceTable.TABLE_NAME];
+    [select where:DistanceTable.COLUMN_PARENT value:trip.name];
+    [select orderBy:DistanceTable.COLUMN_DATE ascending:NO];
+    return [self createAdapterUsingQuery:select forModel:[Distance class] associatedModel:trip];
 }
 
 - (BOOL)deleteDistance:(Distance *)distance {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self deleteDistance:distance usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (BOOL)deleteDistance:(Distance *)distance usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:DistanceTable.TABLE_NAME];
     [delete where:DistanceTable.COLUMN_ID value:@(distance.objectId)];
-    BOOL result = [self executeQuery:delete];
+    BOOL result = [self executeQuery:delete usingDatabase:database];
     if (result) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidDeleteModelNotification object:distance];
-        });
+        [self notifyDeleteOfModel:distance];
+        [self triggerPriceUpdateOfTrip:distance.trip usingDatabase:database];
     }
     return result;
 }
 
-- (BOOL)updateDistance:(Distance *)distance {
+- (BOOL)updateDistance:(Distance *)distance usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:DistanceTable.TABLE_NAME];
     [self appendCommonValuesFromDistance:distance toQuery:update];
     [update where:DistanceTable.COLUMN_ID value:@(distance.objectId)];
-    BOOL result = [self executeQuery:update];
+    BOOL result = [self executeQuery:update usingDatabase:database];
     if (result) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidUpdateModelNotification object:distance];
-        });
+        [self notifyUpdateOfModel:distance];
     }
     return result;
 }
@@ -136,5 +151,25 @@
     return [[self fetchedAdapterForDistancesInTrip:trip] allObjects];
 }
 
+- (BOOL)deleteDistancesForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:DistanceTable.TABLE_NAME];
+    [delete where:DistanceTable.COLUMN_PARENT value:trip.name];
+    return [self executeQuery:delete usingDatabase:database];
+}
+
+- (BOOL)moveDistancesWithParent:(NSString *)previous toParent:(NSString *)next usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:DistanceTable.TABLE_NAME];
+    [update addParam:DistanceTable.COLUMN_PARENT value:next];
+    [update where:DistanceTable.COLUMN_PARENT value:previous];
+    return [self executeQuery:update usingDatabase:database];
+}
+
+- (void)triggerPriceUpdateOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    if (![WBPreferences isTheDistancePriceBeIncludedInReports]) {
+        return;
+    }
+
+    [self updatePriceOfTrip:trip usingDatabase:database];
+}
 
 @end

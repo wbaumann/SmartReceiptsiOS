@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "WBTrip.h"
 #import "DatabaseTestsHelper.h"
 #import "DatabaseTableNames.h"
@@ -23,7 +23,7 @@
 
 @end
 
-@interface TripsToReceiptsConverterTest : DatabaseTestsBase
+@interface TripsToReceiptsConverterTest : SmartReceiptsTestsBase
 
 @property (nonatomic, strong) WBTrip *trip;
 
@@ -34,12 +34,12 @@
 - (void)setUp {
     [super setUp];
 
-    self.trip = [self.db insertTrip:@{}];
+    self.trip = [self.db insertTestTrip:@{}];
 
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT: self.trip, DistanceTable.COLUMN_DATE: [NSDate date]}];
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT: self.trip, DistanceTable.COLUMN_DATE: [NSDate date]}];
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT: self.trip, DistanceTable.COLUMN_DATE: [[NSDate date] dateByAddingDays:-1]}];
-    [self.db insertDistance:@{DistanceTable.COLUMN_PARENT: self.trip, DistanceTable.COLUMN_DATE: [[NSDate date] dateByAddingDays:-2]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DATE : [NSDate date]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DATE : [NSDate date]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingDays:-1]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingDays:-2]}];
 }
 
 - (void)testThreeReceiptsGenerated {

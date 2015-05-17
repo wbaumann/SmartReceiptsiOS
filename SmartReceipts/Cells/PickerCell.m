@@ -8,6 +8,7 @@
 
 #import "PickerCell.h"
 #import "Pickable.h"
+#import "WBCustomization.h"
 
 @interface PickerCell ()
 
@@ -19,7 +20,7 @@
 @implementation PickerCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    [self.valueLabel setTextColor:[WBCustomization themeColor]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

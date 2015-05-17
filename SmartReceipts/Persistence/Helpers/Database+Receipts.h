@@ -12,6 +12,7 @@
 @class WBReceipt;
 @class WBTrip;
 @class FMDatabase;
+@class FetchedModelAdapter;
 
 @interface Database (Receipts)
 
@@ -20,10 +21,17 @@
 - (BOOL)saveReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database;
 - (BOOL)updateReceipt:(WBReceipt *)receipt;
 - (BOOL)updateReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database;
+- (BOOL)deleteReceipt:(WBReceipt *)receipt;
+- (BOOL)deleteReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database;
 - (NSArray *)allReceiptsForTrip:(WBTrip *)trip descending:(BOOL)desc;
-- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip;
 - (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (NSString *)currencyForTripReceipts:(WBTrip *)trip;
 - (NSString *)currencyForTripReceipts:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
+- (BOOL)deleteReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
+- (BOOL)moveReceiptsWithParent:(NSString *)previous toParent:(NSString *)next usingDatabase:(FMDatabase *)database;
+- (FetchedModelAdapter *)fetchedReceiptsAdapterForTrip:(WBTrip *)trip;
+- (BOOL)updateReceipt:(WBReceipt *)receipt changeFileNameTo:(NSString *)fileName;
+- (BOOL)copyReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
+- (BOOL)moveReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
 
 @end

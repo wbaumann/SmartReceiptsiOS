@@ -1,5 +1,5 @@
 //
-//  DatabaseTestsBase.h
+//  SmartReceiptsTestsBase.h
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 28/04/15.
@@ -10,7 +10,7 @@
 @class Database;
 @class DatabaseTestsHelper;
 
-@interface DatabaseTestsBase : XCTestCase
+@interface SmartReceiptsTestsBase : XCTestCase
 
 @property (nonatomic, copy) NSString *testDBPath;
 @property (nonatomic, strong) DatabaseTestsHelper *db;
@@ -19,5 +19,6 @@
 - (DatabaseTestsHelper *)createAndOpenUnmigratedDatabaseWithPath:(NSString *)path;
 - (DatabaseTestsHelper *)createAndOpenDatabaseWithPath:(NSString *)path migrated:(BOOL)migrated;
 - (DatabaseTestsHelper *)createTestDatabase;
+- (void)checkDatabasesSame:(NSString *)pathToReferenceDB checked:(NSString *)pathToCheckedDB;
 
 @end

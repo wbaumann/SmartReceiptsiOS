@@ -12,7 +12,7 @@
 #import "DatabaseMigration.h"
 #import "DatabaseCreateAtVersion11.h"
 #import "FMDatabaseAdditions.h"
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "Database.h"
 #import "DatabaseTableNames.h"
 #import "Database+Functions.h"
@@ -24,7 +24,7 @@
 
 @end
 
-@interface DatabaseCreateAtVersion11Test : DatabaseTestsBase
+@interface DatabaseCreateAtVersion11Test : SmartReceiptsTestsBase
 
 @end
 
@@ -56,49 +56,8 @@
     XCTAssertEqual(6, [self.db countRowsInTable:PDFTable.TABLE_NAME], @"Default PDF columns not entered");
 }
 
-- (void)checkDatabasesSame:(NSString *)pathToReferenceDB checked:(NSString *)pathToCheckedDB {
-    XCTAssertTrue(([[NSFileManager defaultManager] fileExistsAtPath:pathToReferenceDB]));
-    XCTAssertTrue(([[NSFileManager defaultManager] fileExistsAtPath:pathToCheckedDB]));
-
-    Database *referenceDB = [self createAndOpenUnmigratedDatabaseWithPath:pathToReferenceDB];
-    Database *checkedDB = [self createAndOpenUnmigratedDatabaseWithPath:pathToCheckedDB];
-    XCTAssertNotNil(referenceDB);
-    XCTAssertNotNil(checkedDB);
-
-    XCTAssertEqual([referenceDB databaseVersion], [checkedDB databaseVersion]);
-
-    NSArray *tablesInReference = [self tableNames:referenceDB.databaseQueue];
-    NSArray *tablesInChecked = [self tableNames:checkedDB.databaseQueue];
-    XCTAssertEqual(tablesInReference.count, tablesInChecked.count);
-    XCTAssertTrue([tablesInReference isEqualToArray:tablesInChecked]);
-
-    for (NSString *tableName in tablesInReference) {
-        NSArray *tableColumnsInReference = [self columnsInTableNamed:tableName inDatabase:referenceDB.databaseQueue];
-        NSArray *tableColumnsInChecked = [self columnsInTableNamed:tableName inDatabase:referenceDB.databaseQueue];
-        XCTAssertTrue([tableColumnsInReference isEqualToArray:tableColumnsInChecked]);
-    }
-}
-
-- (NSArray *)columnsInTableNamed:(NSString *)name inDatabase:(FMDatabaseQueue *)database {
-    __block NSMutableArray *columns = [NSMutableArray array];
-    [database inDatabase:^(FMDatabase *db) {
-        FMResultSet *resultSet = [db executeQuery:[NSString stringWithFormat:@"PRAGMA table_info('%@')", name]];
-        while ([resultSet next]) {
-            [columns addObject:[resultSet stringForColumnIndex:1]];
-        }
-    }];
-    return [columns sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-}
-
-- (NSArray *)tableNames:(FMDatabaseQueue *)database {
-    __block NSMutableArray *tables = [NSMutableArray array];
-    [database inDatabase:^(FMDatabase *db) {
-        FMResultSet *resultSet = [db executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'"];
-        while ([resultSet next]) {
-            [tables addObject:[resultSet stringForColumnIndex:0]];
-        }
-    }];
-    return [tables sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+- (void)testCompareWithAndroidVersionAt11 {
+    [self checkDatabasesSame:[[NSBundle bundleForClass:[self class]] pathForResource:@"android-receipts-v11" ofType:@"db"] checked:self.testDBPath];
 }
 
 @end

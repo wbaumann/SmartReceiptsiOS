@@ -10,9 +10,10 @@
 
 @interface WBCustomization : NSObject
 
-+(void) customizeOnAppLoad;
++ (UIColor *)themeColor;
++ (void)customizeOnAppLoad;
 
 /* Customizes every view controller on load */
-+(void) customizeOnViewDidLoad:(UIViewController*) viewController;
++ (void)customizeOnViewDidLoad:(UIViewController *)viewController;
 
 @end

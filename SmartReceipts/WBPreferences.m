@@ -45,6 +45,8 @@ static NSString *const BOOL_DAILY_DISTANCE_REPORT = @"MileageAddToPDF";
 
 static NSString *const BOOL_USE_PAYMENT_METHODS = @"UsePaymentMethods";
 
+static NSString *const BOOL_TRACK_CONST_CENTER = @"trackcostcenter";
+
 // there is no 100% guaranteed way to figure entry type so we have to hardcode them
 typedef NS_ENUM(short, EntryType){
     EntryTypeString = 0,
@@ -89,7 +91,9 @@ static NSDictionary *getEntryTypes() {
             BOOL_PRINT_MILEAGE_TABLE: tBool,
             BOOL_DAILY_DISTANCE_REPORT: tBool,
 
-            BOOL_USE_PAYMENT_METHODS: tBool
+            BOOL_USE_PAYMENT_METHODS: tBool,
+
+            BOOL_TRACK_CONST_CENTER: tBool
     };
 }
 
@@ -132,7 +136,9 @@ static NSDictionary *getDefaultValues() {
             BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT: @NO,
             FLOAT_DEFAULT_MILEAGE_RATE: @(MIN_FLOAT),
             BOOL_PRINT_MILEAGE_TABLE: @YES,
-            BOOL_DAILY_DISTANCE_REPORT: @NO
+            BOOL_DAILY_DISTANCE_REPORT: @NO,
+
+            BOOL_TRACK_CONST_CENTER: @NO
     };
 }
 
@@ -292,6 +298,14 @@ static NSUserDefaults* instance() {
 
 + (void)setUsePaymentMethods:(BOOL)value {
     [instance() setBool:value forKey:BOOL_USE_PAYMENT_METHODS];
+}
+
++ (BOOL)trackConstCenter {
+    return [instance() boolForKey:BOOL_TRACK_CONST_CENTER];
+}
+
++ (void)setTrackConstCenter:(BOOL)value{
+    [instance() setBool:value forKey:BOOL_TRACK_CONST_CENTER];
 }
 
 

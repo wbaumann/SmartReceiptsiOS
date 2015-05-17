@@ -19,14 +19,14 @@
 #import "WBDB.h"
 #import "WBPreferences.h"
 
-#import "WBTextUtils.h"
-#import "WBBackupHelper.h"
-
-#import "HUD.h"
-
-#import "WBAppDelegate.h"
 #import "WBImagePicker.h"
 #import "TripDistancesViewController.h"
+#import "WBCustomization.h"
+#import "UIView+LoadHelpers.h"
+#import "FetchedModelAdapter.h"
+#import "Database+Receipts.h"
+#import "Database+Trips.h"
+#import "Constants.h"
 
 static NSString *CellIdentifier = @"Cell";
 static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
@@ -34,31 +34,38 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 @interface WBReceiptsViewController ()
 {
     WBObservableReceipts *_receipts;
-    WBDateFormatter *_dateFormatter;
     
     // ugly, but segues are limited
     UIImage *_imageForCreatorSegue;
     WBReceipt *_receiptForCretorSegue;
     
     CGFloat _priceWidth;
-    WBCellWithPriceNameDate * _protoCell;
-    
+
     NSString * _lastDateSeparator;
 }
+
+@property (nonatomic, strong) WBReceipt *tapped;
+@property (nonatomic, strong) WBDateFormatter *dateFormatter;
+
 @end
 
 @implementation WBReceiptsViewController
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
+    [WBCustomization customizeOnViewDidLoad:self];
+
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    [self setPresentationCellNib:[WBCellWithPriceNameDate viewNib]];
     
-    _dateFormatter = [[WBDateFormatter alloc] init];
-    
-    _receipts = [[WBObservableReceipts alloc] init];
-    _receipts.delegate = self;
+    self.dateFormatter = [[WBDateFormatter alloc] init];
     
     if (self.trip == nil) {
         return;
@@ -66,19 +73,33 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     
     [self updateEditButton];
     [self updateTitle];
-    
-    if ([WBBackupHelper isDataBlocked] == false) {
-        [HUD showUIBlockingIndicatorWithText:@""];
-        dispatch_async([[WBAppDelegate instance] dataQueue], ^{
-            NSArray *receipts = [[WBDB receipts] selectAllForTrip:self.trip descending:true];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [_receipts setReceipts:receipts];
-                [HUD hideUIBlockingIndicator];
-            });
-        });
+
+    //TODO jaanus: handle this
+    //if ([WBBackupHelper isDataBlocked] == false) {
+    //    [HUD showUIBlockingIndicatorWithText:@""];
+    //    dispatch_async([[WBAppDelegate instance] dataQueue], ^{
+    //        NSArray *receipts = [[WBDB receipts] selectAllForTrip:self.trip descending:true];
+    //        dispatch_async(dispatch_get_main_queue(), ^{
+    //            [_receipts setReceipts:receipts];
+    //            [HUD hideUIBlockingIndicator];
+    //        });
+    //    });
+    //}
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUpdated:) name:DatabaseDidUpdateModelNotification object:nil];
+}
+
+- (void)tripUpdated:(NSNotification *)notification {
+    WBTrip *trip = notification.object;
+    SRLog(@"updatTrip:%@", trip);
+
+    if (![self.trip isEqual:trip]) {
+        return;;
     }
 
-    _protoCell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //TODO jaanus: check posting already altered object
+    self.trip = [[Database sharedInstance] tripWithName:self.trip.name];
+    [self updateTitle];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -94,13 +115,14 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     _lastDateSeparator = [WBPreferences dateSeparator];
 }
 
-- (void) updateEditButton {
-    self.editButtonItem.enabled = _receipts.count > 0;
+- (void)updateEditButton {
+    self.editButtonItem.enabled = self.numberOfItems > 0;
 }
 
-- (void) updateTitle {
+- (void)updateTitle {
+    SRLog(@"updateTitle");
     self.navigationItem.title = [NSString stringWithFormat:@"%@ - %@",
-                                 [self.trip name], [self.trip priceWithCurrencyFormatted]];
+                                                           [self.trip name], [self.trip priceWithCurrencyFormatted]];
 }
 
 -(void)updateTrip {
@@ -108,42 +130,31 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self updateTitle];
 }
 
-- (void) updatePricesWidth {
+- (void)updatePricesWidth {
     CGFloat w = [self computePriceWidth];
     if (w == _priceWidth) {
         return;
     }
-    
-    [self.tableView beginUpdates];
+
     _priceWidth = w;
-    for (WBCellWithPriceNameDate* cell in self.tableView.visibleCells) {
+    for (WBCellWithPriceNameDate *cell in self.tableView.visibleCells) {
         [cell.priceWidthConstraint setConstant:w];
         [cell layoutIfNeeded];
     }
-    [self.tableView endUpdates];
 }
 
-- (CGFloat) computePriceWidth {
+- (CGFloat)computePriceWidth {
     CGFloat maxWidth = 0;
-    
-    UILabel *priceField = _protoCell.priceField;
-    
-    for (NSUInteger i = 0; i < [_receipts count]; ++i) {
-        NSString *str = [[_receipts receiptAtIndex:i] priceWithCurrencyFormatted];
-        
-        // dumb, but works better than calculating bounds for attributed text because dynamically includes paddings etc.
-        priceField.text = str;
-        [priceField sizeToFit];
-        CGFloat w = priceField.frame.size.width;
-        
-        if (w > maxWidth) {
-            maxWidth = w;
-        }
+
+    for (NSUInteger i = 0; i < [self numberOfItems]; ++i) {
+        NSString *str = [[self objectAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]] priceWithCurrencyFormatted];
+
+        CGRect bounds = [str boundingRectWithSize:CGSizeMake(1000, 100) options:NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:21]} context:nil];
+        maxWidth = MAX(maxWidth, CGRectGetWidth(bounds) + 10);
     }
-    
-    CGSize cellSize = _protoCell.frame.size;
-    maxWidth = MIN(maxWidth, cellSize.width / 2);
-    return MAX(cellSize.width / 6, maxWidth);
+
+    maxWidth = MIN(maxWidth, CGRectGetWidth(self.view.bounds) / 2);
+    return MAX(CGRectGetWidth(self.view.bounds) / 6, maxWidth);
 }
 
 - (void) notifyReceiptRemoved:(WBReceipt*) receipt {
@@ -151,48 +162,30 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self updateTrip];
 }
 
-- (NSUInteger) receiptsCount {
-    return [_receipts count];
+- (NSUInteger)receiptsCount {
+    return [self numberOfItems];
 }
 
-#pragma mark - Table view data source
+- (void)configureCell:(UITableViewCell *)aCell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {
+    WBCellWithPriceNameDate *cell = (WBCellWithPriceNameDate *) aCell;
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_receipts count];
-}
+    WBReceipt *receipt = object;
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    WBCellWithPriceNameDate *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    WBReceipt* receipt = [_receipts receiptAtIndex:(int)indexPath.row];
-    
     cell.priceField.text = [receipt priceWithCurrencyFormatted];
     cell.nameField.text = [receipt name];
     cell.dateField.text = [_dateFormatter formattedDate:[receipt dateFromDateMs] inTimeZone:[receipt timeZone]];
-    
+
     [cell.priceWidthConstraint setConstant:_priceWidth];
-    
-    return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
+- (void)contentChanged {
+    [self updateEditButton];
+    [self updatePricesWidth];
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        WBReceipt* receipt = [_receipts receiptAtIndex:(int)indexPath.row];
-        if([[WBDB receipts] deleteWithId:[receipt receiptId] forTrip:self.trip]){
-            [_receipts removeReceipt:receipt];
-            [WBFileManager deleteIfExists:[receipt imageFilePathForTrip:self.trip]];
-        }
-    }
+- (void)deleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+    [[Database sharedInstance] deleteReceipt:object];
 }
-
 
 //- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -226,92 +219,72 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self swapReceiptAtIndex:(int)idx withReceiptAtIndex:(int)(idx+1)];
 }
 
-- (BOOL) attachPdfOrImageFile:(NSString*)oldFile toReceipt:(WBReceipt*) receipt{
-    
+- (BOOL)attachPdfOrImageFile:(NSString *)oldFile toReceipt:(WBReceipt *)receipt {
+
     NSString *ext = [oldFile pathExtension];
-    
-    NSString *imageFileName = [NSString stringWithFormat:@"%tx.%@",
-                               [receipt receiptId], ext];
+
+    NSString *imageFileName = [NSString stringWithFormat:@"%tux.%@", [receipt receiptId], ext];
     NSString *newFile = [self.trip fileInDirectoryPath:imageFileName];
-    
+
     if (![WBFileManager forceCopyFrom:oldFile to:newFile]) {
         NSLog(@"Couldn't copy");
-        return false;
+        return NO;
     }
-    
-    if([[WBDB receipts] updateReceipt:receipt imageFileName:imageFileName]) {
-        [receipt setImageFileName:imageFileName];
-        // notify change
-        [_receipts replaceReceipt:receipt toReceipt:receipt];
-    } else {
-        NSLog(@"Error: cannot update image file");
-        return false;
+
+    if (![[Database sharedInstance] updateReceipt:receipt changeFileNameTo:imageFileName]) {
+        SRLog(@"Error: cannot update image file");
+        return NO;
     }
-    
-    return true;
+
+    return YES;
 }
 
-- (BOOL) updateReceipt:(WBReceipt*) receipt image:(UIImage*) image {
-    
+- (BOOL)updateReceipt:(WBReceipt *)receipt image:(UIImage *)image {
     NSString *imageFileName = nil;
     if (image) {
-        imageFileName = [NSString stringWithFormat:@"%tx.jpg", [receipt receiptId]];
+        //TODO jaanus: this leaves old file in documents folder
+        imageFileName = [NSString stringWithFormat:@"%tux.jpg", [receipt receiptId]];
         NSString *path = [self.trip fileInDirectoryPath:imageFileName];
-        if(![WBFileManager forceWriteData:UIImageJPEGRepresentation(image, 0.85) to:path]) {
+        if (![WBFileManager forceWriteData:UIImageJPEGRepresentation(image, 0.85) to:path]) {
             imageFileName = nil;
         }
     }
-    
+
     if (!imageFileName) {
-        return false;
+        return NO;
     }
-    
-    if([[WBDB receipts] updateReceipt:receipt imageFileName:imageFileName]) {
-        [receipt setImageFileName:imageFileName];
-        [_receipts replaceReceipt:receipt toReceipt:receipt];
-    } else {
-        NSLog(@"Error: cannot update image file");
-        return false;
+
+    if (![[Database sharedInstance] updateReceipt:receipt changeFileNameTo:imageFileName]) {
+        SRLog(@"Error: cannot update image file");
+        return NO;
     }
-    return true;
+    return YES;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    if (tableView.editing) {
-        [self performSegueWithIdentifier: @"ReceiptCreator" sender: cell];
+- (void)tappedObject:(id)tapped atIndexPath:(NSIndexPath *)indexPath {
+    [self setTapped:tapped];
+
+    if (self.tableView.editing) {
+        [self performSegueWithIdentifier:@"ReceiptCreator" sender:nil];
     } else {
-        [self performSegueWithIdentifier: @"ReceiptActions" sender: cell];
+        [self performSegueWithIdentifier:@"ReceiptActions" sender:nil];
     }
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"ReceiptActions"])
-    {
-        WBReceiptActionsViewController* vc = (WBReceiptActionsViewController*)[[segue destinationViewController] topViewController];
-        
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"ReceiptActions"]) {
+        WBReceiptActionsViewController *vc = (WBReceiptActionsViewController *) [[segue destinationViewController] topViewController];
         vc.receiptsViewController = self;
-        
-        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-        if (ip) {
-            vc.receipt = [_receipts receiptAtIndex:ip.row];
-        }
-        
-    }
-    else if([[segue identifier] isEqualToString:@"ReceiptCreator"])
-    {
-        EditReceiptViewController * vc = (EditReceiptViewController *)[[segue destinationViewController] topViewController];
-        
-        vc.delegate = self;
+        vc.receipt = self.tapped;
+    } else if ([[segue identifier] isEqualToString:@"ReceiptCreator"]) {
+        EditReceiptViewController *vc = (EditReceiptViewController *) [[segue destinationViewController] topViewController];
+
         vc.receiptsViewController = self;
-        
-        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
+
         WBReceipt *receipt = nil;
-        if (ip && [sender isKindOfClass:[UITableViewCell class]]) {
-            receipt = [_receipts receiptAtIndex:(int)ip.row];
+        if (self.tapped) {
+            receipt = self.tapped;
         } else {
             [vc setReceiptImage:_imageForCreatorSegue];
             receipt = _receiptForCretorSegue;
@@ -320,54 +293,23 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
         }
         [vc setReceipt:receipt withTrip:self.trip];
     }
-    else if([[segue identifier] isEqualToString:@"Settings"])
-    {
-        
+    else if ([[segue identifier] isEqualToString:@"Settings"]) {
+
     }
-    else if([[segue identifier] isEqualToString:@"GenerateReport"]) {
-        WBGenerateViewController* vc = (WBGenerateViewController*)[[segue destinationViewController] topViewController];
-        
+    else if ([[segue identifier] isEqualToString:@"GenerateReport"]) {
+        WBGenerateViewController *vc = (WBGenerateViewController *) [[segue destinationViewController] topViewController];
+
         [vc setReceipts:[_receipts receiptsArrayCopy] forTrip:self.trip andViewController:self];
     } else if ([PresentTripDistancesSegue isEqualToString:segue.identifier]) {
         TripDistancesViewController *controller = (TripDistancesViewController *) [[segue destinationViewController] topViewController];
         [controller setTrip:self.trip];
     }
-}
 
-#pragma mark - WBNewReceiptViewControllerDelegate
-
--(void)viewController:(EditReceiptViewController *)viewController newReceipt:(WBReceipt *)receipt {
-    // We start our updates here for new Receipts, since ios8 checks the table size at different time than ios7
-    [self.tableView beginUpdates];
-    [_receipts addReceipt:receipt];
+    [self setTapped:nil];
 }
 
 -(void)viewController:(EditReceiptViewController *)viewController updatedReceipt:(WBReceipt *)newReceipt fromReceipt:(WBReceipt *)oldReceipt {
     [_receipts replaceReceipt:oldReceipt toReceipt:newReceipt];
-}
-
-#pragma mark - WBObservableTripsDelegate
-
--(void)observableReceipts:(WBObservableReceipts *)observableReceipts filledWithReceipts:(NSArray *)receipts {
-    NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-    if (ip) {
-        [self.tableView deselectRowAtIndexPath:ip animated:YES];
-    }
-    
-    [self.tableView reloadData];
-    [self updateEditButton];
-    [self updatePricesWidth];
-}
-
--(void)observableReceipts:(WBObservableReceipts *)observableReceipts addedReceipt:(WBReceipt *)receipt atIndex:(int)index {
-    NSIndexPath *ip = [NSIndexPath indexPathForRow:index inSection:0];
-    // [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:@[ip] withRowAnimation:UITableViewRowAnimationLeft];
-    [self.tableView endUpdates];
-    
-    [self updateTrip];
-    [self updateEditButton];
-    [self updatePricesWidth];
 }
 
 -(void)observableReceipts:(WBObservableReceipts *)observableReceipts replacedReceipt:(WBReceipt *)oldReceipt toReceipt:(WBReceipt *)newReceipt fromIndex:(int)oldIndex toIndex:(int)newIndex {
@@ -415,12 +357,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self.tableView setEditing:editing animated:animated];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    return [WBTextUtils isMoney:newText];
-}
-
 - (IBAction)actionCamera:(id)sender {
     [[WBImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *image) {
         if (!image) {
@@ -431,6 +367,16 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
         _receiptForCretorSegue = nil;
         [self performSegueWithIdentifier:@"ReceiptCreator" sender:self];
     }];
+}
+
+- (FetchedModelAdapter *)createFetchedModelAdapter {
+    // This is needed on iPad. When ap is launched, then storyboard pushes unconfigured view.
+    // This is replaced right after by configured one
+    if (!self.trip) {
+        return nil;
+    }
+
+    return [[Database sharedInstance] fetchedReceiptsAdapterForTrip:self.trip];
 }
 
 @end

@@ -15,9 +15,9 @@
 @implementation ReceiptColumnPictured
 
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
-    if ([receipt hasImageForTrip:receipt.trip]) {
+    if ([receipt hasImage]) {
         return NSLocalizedString(@"Yes", nil);
-    } else if ([receipt hasPDFForTrip:receipt.trip]) {
+    } else if ([receipt hasPDF]) {
         return NSLocalizedString(@"Yes - As PDF", nil);
     } else {
         return NSLocalizedString(@"No", nil);

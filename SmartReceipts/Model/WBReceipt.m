@@ -7,12 +7,14 @@
 //
 
 #import <FMDB/FMResultSet.h>
+#import <objc/objc.h>
 #import "WBReceipt.h"
 #import "WBTrip.h"
 #import "WBCurrency.h"
 #import "WBPrice.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "DatabaseTableNames.h"
+#import "Constants.h"
 
 static NSString * const NO_DATA = @"null";
 
@@ -25,9 +27,6 @@ static NSString* checkNoData(NSString* str) {
 
 @interface WBReceipt ()
 
-@property (nonatomic, strong) WBPrice *price;
-@property (nonatomic, strong) WBPrice *tax;
-
 @end
 
 @implementation WBReceipt
@@ -37,7 +36,6 @@ static NSString* checkNoData(NSString* str) {
     NSString *_extraEditText1, *_extraEditText2, *_extraEditText3;
     long long _dateMs;
     NSTimeZone *_timeZone;
-    BOOL _isExpensable, _isFullPage;
 }
 
 +(NSString*) NO_DATA {
@@ -60,7 +58,7 @@ static NSString* checkNoData(NSString* str) {
   extraEditText3:(NSString *)extraEditText3 {
     self = [super init];
     if (self) {
-        _id = rid;
+        _objectId = rid;
         _name = [name lastPathComponent];
         _category = category;
         _fileName = checkNoData([imageFileName lastPathComponent]);
@@ -78,8 +76,8 @@ static NSString* checkNoData(NSString* str) {
         _price = price;
         _tax = tax;
 
-        _isExpensable = isExpensable;
-        _isFullPage = isFullPage;
+        _expensable = isExpensable;
+        _fullPage = isFullPage;
         _extraEditText1 = checkNoData(extraEditText1);
         _extraEditText2 = checkNoData(extraEditText2);
         _extraEditText3 = checkNoData(extraEditText3);
@@ -88,7 +86,7 @@ static NSString* checkNoData(NSString* str) {
 }
 
 -(NSUInteger)receiptId {
-    return _id;
+    return self.objectId;
 }
 
 -(NSString*)imageFileName {
@@ -135,14 +133,6 @@ static NSString* checkNoData(NSString* str) {
     return self.price.currency;
 }
 
--(BOOL)isExpensable {
-    return _isExpensable;
-}
-
--(BOOL)isFullPage {
-    return _isFullPage;
-}
-
 -(NSString*)extraEditText1 {
     return _extraEditText1;
 }
@@ -171,6 +161,7 @@ static NSString* checkNoData(NSString* str) {
 }
 
 - (BOOL)hasFileForTrip:(WBTrip *)trip {
+    SRAssert(trip);
     return _fileName && ([[NSFileManager defaultManager] fileExistsAtPath:[self imageFilePathForTrip:trip]]);
 }
 
@@ -184,12 +175,12 @@ static NSString* checkNoData(NSString* str) {
     return false;
 }
 
--(BOOL)hasImageForTrip:(WBTrip*)trip {
-    return [self hasFileForTrip:trip] && [self hasImageFileName];
+- (BOOL)hasImage {
+    return [self hasFileForTrip:self.trip] && [self hasImageFileName];
 }
 
--(BOOL)hasPDFForTrip:(WBTrip*)trip {
-    return [self hasFileForTrip:trip] && [self hasPDFFileName];
+- (BOOL)hasPDF {
+    return [self hasFileForTrip:self.trip] && [self hasPDFFileName];
 }
 
 -(BOOL)hasImageFileName {
@@ -229,15 +220,15 @@ static NSString* checkNoData(NSString* str) {
     NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:ReceiptsTable.COLUMN_TAX]];
     NSString *currencyCode = [resultSet stringForColumn:ReceiptsTable.COLUMN_ISO4217];
 
-    [self setId:(NSUInteger) [resultSet intForColumn:ReceiptsTable.COLUMN_ID]];
+    [self setObjectId:(NSUInteger) [resultSet intForColumn:ReceiptsTable.COLUMN_ID]];
     _name = [resultSet stringForColumn:ReceiptsTable.COLUMN_NAME];
     _category = [resultSet stringForColumn:ReceiptsTable.COLUMN_CATEGORY];
     _fileName = [resultSet stringForColumn:ReceiptsTable.COLUMN_PATH];
     _comment = [resultSet stringForColumn:ReceiptsTable.COLUMN_COMMENT];
     _price = [WBPrice priceWithAmount:price currencyCode:currencyCode];
     _tax = [WBPrice priceWithAmount:tax currencyCode:currencyCode];
-    _isExpensable = [resultSet boolForColumn:ReceiptsTable.COLUMN_EXPENSEABLE];
-    _isFullPage = ![resultSet boolForColumn:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE];
+    [self setExpensable:[resultSet boolForColumn:ReceiptsTable.COLUMN_EXPENSEABLE]];
+    [self setFullPage:![resultSet boolForColumn:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE]];
     _extraEditText1 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1];
     _extraEditText2 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2];
     _extraEditText3 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3];
@@ -245,6 +236,22 @@ static NSString* checkNoData(NSString* str) {
     _dateMs = [resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE];
     [self setPaymentMethodId:(NSUInteger) [resultSet intForColumn:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID]];
     [self setTripName:[resultSet stringForColumn:ReceiptsTable.COLUMN_PARENT]];
+}
+
+- (BOOL)isEqual:(id)other {
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![[other class] isEqual:[self class]]) {
+        return NO;
+    }
+
+    WBReceipt *otherReceipt = other;
+    return self.objectId == otherReceipt.objectId;
+}
+
+- (NSUInteger)hash {
+    return @(self.objectId).hash;
 }
 
 @end

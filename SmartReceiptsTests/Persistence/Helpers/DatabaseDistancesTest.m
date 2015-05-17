@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "Database+Functions.h"
 #import "DatabaseTableNames.h"
 #import "Distance.h"
@@ -22,7 +22,7 @@
 
 @end
 
-@interface DatabaseDistancesTest : DatabaseTestsBase
+@interface DatabaseDistancesTest : SmartReceiptsTestsBase
 
 @end
 
@@ -31,7 +31,7 @@
 - (void)testSaveDistance {
     XCTAssertEqual(0, [self.db countRowsInTable:DistanceTable.TABLE_NAME]);
 
-    [self.db insertDistance:@{}];
+    [self.db insertTestDistance:@{}];
 
     XCTAssertEqual(1, [self.db countRowsInTable:DistanceTable.TABLE_NAME]);
 }

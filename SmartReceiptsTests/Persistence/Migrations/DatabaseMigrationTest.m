@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "DatabaseMigration.h"
 #import "Database.h"
 #import "Database+Functions.h"
 #import "DatabaseTestsHelper.h"
 
-@interface DatabaseMigrationTest : DatabaseTestsBase
+@interface DatabaseMigrationTest : SmartReceiptsTestsBase
 
 @property (nonatomic, copy) NSString *referenceDBPath;
 

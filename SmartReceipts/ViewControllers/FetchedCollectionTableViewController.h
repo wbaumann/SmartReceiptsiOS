@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FetchedModelAdapterDelegate.h"
 
 @class FetchedModelAdapter;
 
-@interface FetchedCollectionTableViewController : UITableViewController
+@interface FetchedCollectionTableViewController : UITableViewController <FetchedModelAdapterDelegate>
 
 - (void)setPresentationCellNib:(UINib *)nib;
 - (FetchedModelAdapter *)createFetchedModelAdapter;

@@ -13,104 +13,78 @@
 #import "DatabaseTableNames.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "NSDate+Calculations.h"
+#import "WBCurrency.h"
+#import "NSString+Validation.h"
+#import "WBPreferences.h"
 
 NSString *const MULTI_CURRENCY = @"XXXXXX";
 
-@implementation WBTrip
-{
-    NSDate *_startDate, *_endDate;
-    NSTimeZone *_startTimeZone, *_endTimeZone;
+@interface WBTrip ()
+
+@property (nonatomic, copy) NSString *originalName;
+
+@end
+
+@implementation WBTrip {
     float _miles;
 }
 
-+(NSString*) MULTI_CURRENCY{
++ (NSString *)MULTI_CURRENCY {
     return MULTI_CURRENCY;
 }
 
-- (id)initWithName:(NSString *)dirName price:(WBPrice *)price startDate:(NSDate *)startDate endDate:(NSDate *)endDate startTimeZone:(NSTimeZone *)startTimeZone endTimeZone:(NSTimeZone *)endTimeZone miles:(float) miles
-{
+- (id)init {
     self = [super init];
     if (self) {
-        if (!startTimeZone) {
-            startTimeZone = [NSTimeZone localTimeZone];
-        }
-
-        if (!endTimeZone) {
-            endTimeZone = [NSTimeZone localTimeZone];
-        }
-
-        _reportDirectoryName = [dirName lastPathComponent];
-        _price = price;
-        _startDate = startDate;
-        _endDate = endDate;
-        _startTimeZone = startTimeZone;
-        _endTimeZone = endTimeZone;
-        _miles = miles;
+        _startTimeZone = [NSTimeZone localTimeZone];
+        _endTimeZone = [NSTimeZone localTimeZone];
     }
+
     return self;
 }
 
-- (id)initWithName:(NSString*) dirName startDate:(NSDate*) startDate endDate:(NSDate*) endDate currencyCode:(NSString*) currencyCode
-{
-    self = [self initWithName:dirName
-                        price:[WBPrice zeroPriceWithCurrencyCode:currencyCode]
-                    startDate:startDate
-                      endDate:endDate
-                startTimeZone:[NSTimeZone localTimeZone]
-                  endTimeZone:[NSTimeZone localTimeZone]
-                        miles:0];
-    
-    return self;
+- (NSString *)directoryPath {
+    return [self directoryPathUsingName:self.name];
 }
 
--(NSString*) directoryPath {
-    return [[WBFileManager tripsDirectoryPath] stringByAppendingPathComponent:_reportDirectoryName];
+- (NSString *)directoryPathUsingName:(NSString *)name {
+    return [[WBFileManager tripsDirectoryPath] stringByAppendingPathComponent:name];
 }
 
--(NSString*) fileInDirectoryPath:(NSString*) filename {
+- (NSString *)fileInDirectoryPath:(NSString *)filename {
     return [[self directoryPath] stringByAppendingPathComponent:filename];
 }
 
--(NSString*) name {
-    return _reportDirectoryName;
+- (void)setName:(NSString *)name {
+    _name = [[name lastPathComponent] mutableCopy];
+
+    if (self.originalName.hasValue) {
+        return;
+    }
+
+    [self setOriginalName:_name];
 }
 
--(float) miles {
+- (float)miles {
     return _miles;
 }
 
--(NSDate*) startDate {
-    return _startDate;
-}
-
--(NSDate*) endDate {
-    return _endDate;
-}
-
--(NSTimeZone*) startTimeZone {
-    return _startTimeZone;
-}
-
--(NSTimeZone*) endTimeZone {
-    return _endTimeZone;
-}
-
--(void) setMileage:(float) mileage {
-    if (mileage<0) {
+- (void)setMileage:(float)mileage {
+    if (mileage < 0) {
         mileage = 0;
     }
     _miles = mileage;
 }
 
--(BOOL) createDirectoryIfNotExists {
-    NSString* dir = [self directoryPath];
-    
+- (BOOL)createDirectoryIfNotExists {
+    NSString *dir = [self directoryPath];
+
     if (![[NSFileManager defaultManager] fileExistsAtPath:dir]) {
         NSError *error;
-        if([[NSFileManager defaultManager] createDirectoryAtPath:dir
-                                     withIntermediateDirectories:YES
-                                                      attributes:nil
-                                                           error:&error]){
+        if ([[NSFileManager defaultManager] createDirectoryAtPath:dir
+                                      withIntermediateDirectories:YES
+                                                       attributes:nil
+                                                            error:&error]) {
             return true;
         } else {
             NSLog(@"Couldn't create trip directory: %@", [error localizedDescription]);
@@ -120,22 +94,48 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
     return true;
 }
 
--(NSString*)priceWithCurrencyFormatted {
+- (NSString *)priceWithCurrencyFormatted {
     return self.price.currencyFormattedPrice;
 }
 
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet {
-    _reportDirectoryName = [resultSet stringForColumn:TripsTable.COLUMN_NAME];
+    [self setName:[resultSet stringForColumn:TripsTable.COLUMN_NAME]];
 
     NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:TripsTable.COLUMN_PRICE]];
-    NSString *currency = [resultSet stringForColumn:TripsTable.COLUMN_DEFAULT_CURRENCY];
-    _price = [WBPrice priceWithAmount:price currencyCode:currency];
+    NSString *currencyCode = [resultSet stringForColumn:TripsTable.COLUMN_DEFAULT_CURRENCY];
+    if (!currencyCode.hasValue) {
+        currencyCode = [WBPreferences defaultCurrency];
+    }
+    self.defaultCurrency = [WBCurrency currencyForCode:currencyCode];
+    _price = [WBPrice priceWithAmount:price currencyCode:currencyCode];
     long long int startDateMilliseconds = [resultSet longLongIntForColumn:TripsTable.COLUMN_FROM];
     _startDate = [NSDate dateWithMilliseconds:startDateMilliseconds];
     _startTimeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:TripsTable.COLUMN_FROM_TIMEZONE]];
-    long long int endDateMilliseconds = [resultSet longLongIntForColumn:TripsTable.COLUMN_FROM];
+    long long int endDateMilliseconds = [resultSet longLongIntForColumn:TripsTable.COLUMN_TO];
     _endDate = [NSDate dateWithMilliseconds:endDateMilliseconds];
     _endTimeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:TripsTable.COLUMN_TO_TIMEZONE]];
+    self.comment = [resultSet stringForColumn:TripsTable.COLUMN_COMMENT];
+    self.costCenter = [resultSet stringForColumn:TripsTable.COLUMN_COST_CENTER];
+}
+
+- (BOOL)nameChanged {
+    return [self.name compare:self.originalName options:NSCaseInsensitiveSearch] != NSOrderedSame;
+}
+
+- (BOOL)isEqual:(id)other {
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![[other class] isEqual:[self class]]) {
+        return NO;
+    }
+
+    WBTrip *otherTrip = other;
+    return [self.name isEqualToString:otherTrip.name];
+}
+
+- (NSUInteger)hash {
+    return [self.name hash];
 }
 
 @end

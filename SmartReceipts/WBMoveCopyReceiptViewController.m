@@ -9,80 +9,50 @@
 #import "WBMoveCopyReceiptViewController.h"
 
 #import "WBDB.h"
+#import "WBCustomization.h"
+#import "TitleOnlyCell.h"
+#import "UIView+LoadHelpers.h"
+#import "FetchedModelAdapter.h"
+#import "Database+Trips.h"
+#import "Database+Receipts.h"
 
 @interface WBMoveCopyReceiptViewController ()
-
-@property (weak) WBReceiptsViewController* receiptsViewController;
-@property (weak) WBTripsViewController* tripsViewController;
 
 @end
 
 @implementation WBMoveCopyReceiptViewController
-{
-    WBObservableTripsBrowser * _trips;
-    WBTrip * _trip;
-    WBReceipt * _receipt;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationItem.title = self.calledForCopy
-    ? NSLocalizedString(@"Copy to",nil)
-    : NSLocalizedString(@"Move to",nil);
-    
-    // go up in hierarchy for our data
-    self.receiptsViewController = self.receiptActionsViewController.receiptsViewController;
-    self.tripsViewController = self.receiptsViewController.tripsViewController;
-    
-    _trip = self.receiptsViewController.trip;
-    _receipt = self.receiptActionsViewController.receipt;
-    
-    _trips = [self.tripsViewController tripsBrowserExcludingTrip:_trip];
+
+    [WBCustomization customizeOnViewDidLoad:self];
+
+    [self setPresentationCellNib:[TitleOnlyCell viewNib]];
+
+    self.navigationItem.title = self.calledForCopy ? NSLocalizedString(@"Copy to", nil) : NSLocalizedString(@"Move to", nil);
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    WBTrip* selectedTrip = [_trips tripAtIndex:indexPath.row];
-    
+- (FetchedModelAdapter *)createFetchedModelAdapter {
+    return [[Database sharedInstance] fetchedAdapterForAllTripsExcluding:self.receipt.trip];
+}
+
+- (void)tappedObject:(id)tapped atIndexPath:(NSIndexPath *)indexPath {
+    WBTrip *destinationTrip = tapped;
     if (self.calledForCopy) {
-        if ([[WBDB receipts] copyReceipt:_receipt fromTrip:_trip toTrip:selectedTrip]) {
-            [self.tripsViewController viewController:self.receiptsViewController updatedTrip:selectedTrip];
-        } else {
-            NSLog(@"Copying failed");
-        }
-        
-        [self.navigationController popViewControllerAnimated:YES];
+        [[Database sharedInstance] copyReceipt:self.receipt toTrip:destinationTrip];
     } else {
-        if ([[WBDB receipts] moveReceipt:_receipt fromTrip:_trip toTrip:selectedTrip]) {
-            [self.receiptsViewController notifyReceiptRemoved:_receipt];
-            [self.tripsViewController viewController:self.receiptsViewController updatedTrip:selectedTrip];
-        } else {
-            NSLog(@"Moving failed");
-        }
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [[Database sharedInstance] moveReceipt:self.receipt toTrip:destinationTrip];
     }
+
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {
+    TitleOnlyCell *titleCell = (TitleOnlyCell *) cell;
+    WBTrip *trip = object;
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_trips count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    cell.textLabel.text = [[_trips tripAtIndex:indexPath.row] name];
-    
-    return cell;
+    [titleCell setTitle:trip.name];
 }
 
 @end

@@ -3,7 +3,6 @@
 // Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <objc/NSObjCRuntime.h>
 #import "NSDate+Calculations.h"
 
 static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregorianCalendarKey";
@@ -11,11 +10,7 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
 @implementation NSDate (Calculations)
 
 - (BOOL)isToday {
-    enum NSCalendarUnit dayComponents = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
-    NSDateComponents *todayComponents = [[NSDate gregorian] components:dayComponents fromDate:[NSDate date]];
-    NSDateComponents *myComponents = [[NSDate gregorian] components:dayComponents fromDate:self];
-
-    return todayComponents.year == myComponents.year && todayComponents.month == myComponents.month && todayComponents.day == myComponents.day;
+    return [self isOnSameDate:[NSDate date]];
 }
 
 - (NSInteger)year {
@@ -27,8 +22,18 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
     return [self dateByAddingTimeInterval:60 * 60 * 24 * daysToAdd];
 }
 
+- (BOOL)isOnSameDate:(NSDate *)date {
+    enum NSCalendarUnit dayComponents = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+    NSDateComponents *otherComponents = [[NSDate gregorian] components:dayComponents fromDate:date];
+    NSDateComponents *myComponents = [[NSDate gregorian] components:dayComponents fromDate:self];
+
+    return otherComponents.year == myComponents.year && otherComponents.month == myComponents.month && otherComponents.day == myComponents.day;
+
+    return NO;
+}
+
 - (NSNumber *)milliseconds {
-    return @([self timeIntervalSince1970] * 1000);
+    return @((long long int)([self timeIntervalSince1970] * 1000));
 }
 
 + (NSCalendar *)gregorian {
