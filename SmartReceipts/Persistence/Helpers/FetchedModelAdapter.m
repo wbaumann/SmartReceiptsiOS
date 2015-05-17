@@ -172,11 +172,13 @@
 
     FMResultSet *resultSet = [database executeQuery:self.fetchQuery withParameterDictionary:self.fetchParameters];
     while ([resultSet next]) {
-        id <FetchedModel> fetched = (id <FetchedModel>) [[self.modelClass alloc] init];
+        NSObject<FetchedModel> *fetched = (NSObject<FetchedModel> *) [[self.modelClass alloc] init];
         [fetched loadDataFromResultSet:resultSet];
 
         if (self.associatedModel) {
-            [fetched performSelector:self.associatedSelector withObject:self.associatedModel];
+            IMP imp = [fetched methodForSelector:self.associatedSelector];
+            void (*func)(id, SEL, id) = (void *)imp;
+            func(fetched, self.associatedSelector, self.associatedModel);
         }
 
         [result addObject:fetched];
