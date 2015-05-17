@@ -47,7 +47,7 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
             WBReceipt *receipt = [rwi receipt];
             int index = [rwi index];
             
-            if (![receipt hasImageForTrip:trip]) {
+            if (![receipt hasImage]) {
                 continue;
             }
             

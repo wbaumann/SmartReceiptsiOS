@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <objc/objc.h>
 #import "FetchedModel.h"
 
 @class WBTrip, WBCurrency;
@@ -74,8 +75,8 @@
 -(NSString*)imageFilePathForTrip:(WBTrip*)trip;
 -(BOOL)hasFileForTrip:(WBTrip*)trip;
 
--(BOOL)hasImageForTrip:(WBTrip*)trip;
--(BOOL)hasPDFForTrip:(WBTrip*)trip;
+- (BOOL)hasImage;
+- (BOOL)hasPDF;
 
 -(BOOL)hasImageFileName;
 -(BOOL)hasPDFFileName;

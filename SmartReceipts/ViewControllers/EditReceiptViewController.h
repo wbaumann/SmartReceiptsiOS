@@ -14,19 +14,11 @@
 
 @class WBReceipt, WBTrip, EditReceiptViewController, WBReceiptsViewController;
 
-@protocol WBNewReceiptViewControllerDelegate <NSObject>
-
-- (void)viewController:(EditReceiptViewController *)viewController newReceipt:(WBReceipt *)receipt;
-- (void)viewController:(EditReceiptViewController *)viewController updatedReceipt:(WBReceipt *)newReceipt fromReceipt:(WBReceipt *)oldReceipt;
-
-@end
-
 @interface EditReceiptViewController : InputCellsViewController
 
-@property (weak, nonatomic) id <WBNewReceiptViewControllerDelegate> delegate;
 @property (weak, nonatomic) WBReceiptsViewController *receiptsViewController;
+@property (nonatomic, strong) UIImage *receiptImage;
 
 - (void)setReceipt:(WBReceipt *)receipt withTrip:(WBTrip *)trip;
-- (void)setReceiptImage:(UIImage *)image;
 
 @end

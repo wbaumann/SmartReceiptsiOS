@@ -64,7 +64,7 @@
                 continue;
             }
 
-            if (![receipt hasImageForTrip:receipt.trip]) {
+            if (![receipt hasImage]) {
                 continue;
             }
 
@@ -94,12 +94,12 @@
 }
 
 - (void)drawFullPageReceipt:(WBReceipt *)receipt {
-    if ([receipt hasImageForTrip:receipt.trip]) {
+    if ([receipt hasImage]) {
         UIImage *img = [UIImage imageWithContentsOfFile:[receipt imageFilePathForTrip:receipt.trip]];
         if (img) {
             [self.pdfDrawer drawFullPageImage:img withLabel:[self labelForReceipt:receipt]];
         }
-    } else if ([receipt hasPDFForTrip:receipt.trip]) {
+    } else if ([receipt hasPDF]) {
         [self drawFullPagePDFFile:[receipt imageFilePathForTrip:receipt.trip] withLabel:[self labelForReceipt:receipt]];
     }
 

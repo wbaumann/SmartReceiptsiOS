@@ -40,9 +40,9 @@
 
 -(void)createCellsTextsAndIndices {
     
-    if ([self.receipt hasImageForTrip:self.receiptsViewController.trip]) {
+    if ([self.receipt hasImage]) {
         _imgType = 1;
-    } else if ([self.receipt hasPDFForTrip:self.receiptsViewController.trip]) {
+    } else if ([self.receipt hasPDF]) {
         _imgType = 2;
     } else {
         _imgType = 0;

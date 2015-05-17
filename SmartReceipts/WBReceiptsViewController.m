@@ -19,12 +19,6 @@
 #import "WBDB.h"
 #import "WBPreferences.h"
 
-#import "WBTextUtils.h"
-#import "WBBackupHelper.h"
-
-#import "HUD.h"
-
-#import "WBAppDelegate.h"
 #import "WBImagePicker.h"
 #import "TripDistancesViewController.h"
 #import "WBCustomization.h"
@@ -36,10 +30,9 @@
 static NSString *CellIdentifier = @"Cell";
 static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
-@interface WBReceiptsViewController () <WBObservableReceiptsDelegate,WBNewReceiptViewControllerDelegate>
+@interface WBReceiptsViewController ()
 {
     WBObservableReceipts *_receipts;
-    WBDateFormatter *_dateFormatter;
     
     // ugly, but segues are limited
     UIImage *_imageForCreatorSegue;
@@ -51,6 +44,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 }
 
 @property (nonatomic, strong) WBReceipt *tapped;
+@property (nonatomic, strong) WBDateFormatter *dateFormatter;
 
 @end
 
@@ -71,9 +65,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self setPresentationCellNib:[WBCellWithPriceNameDate viewNib]];
     
     _dateFormatter = [[WBDateFormatter alloc] init];
-    
-    _receipts = [[WBObservableReceipts alloc] init];
-    _receipts.delegate = self;
     
     if (self.trip == nil) {
         return;
@@ -294,7 +285,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     } else if ([[segue identifier] isEqualToString:@"ReceiptCreator"]) {
         EditReceiptViewController *vc = (EditReceiptViewController *) [[segue destinationViewController] topViewController];
 
-        vc.delegate = self;
         vc.receiptsViewController = self;
 
         WBReceipt *receipt = nil;
@@ -323,40 +313,8 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self setTapped:nil];
 }
 
-#pragma mark - WBNewReceiptViewControllerDelegate
-
--(void)viewController:(EditReceiptViewController *)viewController newReceipt:(WBReceipt *)receipt {
-    // We start our updates here for new Receipts, since ios8 checks the table size at different time than ios7
-    [self.tableView beginUpdates];
-    [_receipts addReceipt:receipt];
-}
-
 -(void)viewController:(EditReceiptViewController *)viewController updatedReceipt:(WBReceipt *)newReceipt fromReceipt:(WBReceipt *)oldReceipt {
     [_receipts replaceReceipt:oldReceipt toReceipt:newReceipt];
-}
-
-#pragma mark - WBObservableTripsDelegate
-
--(void)observableReceipts:(WBObservableReceipts *)observableReceipts filledWithReceipts:(NSArray *)receipts {
-    NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-    if (ip) {
-        [self.tableView deselectRowAtIndexPath:ip animated:YES];
-    }
-    
-    [self.tableView reloadData];
-    [self updateEditButton];
-    [self updatePricesWidth];
-}
-
--(void)observableReceipts:(WBObservableReceipts *)observableReceipts addedReceipt:(WBReceipt *)receipt atIndex:(int)index {
-    NSIndexPath *ip = [NSIndexPath indexPathForRow:index inSection:0];
-    // [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:@[ip] withRowAnimation:UITableViewRowAnimationLeft];
-    [self.tableView endUpdates];
-    
-    [self updateTrip];
-    [self updateEditButton];
-    [self updatePricesWidth];
 }
 
 -(void)observableReceipts:(WBObservableReceipts *)observableReceipts replacedReceipt:(WBReceipt *)oldReceipt toReceipt:(WBReceipt *)newReceipt fromIndex:(int)oldIndex toIndex:(int)newIndex {

@@ -7,12 +7,14 @@
 //
 
 #import <FMDB/FMResultSet.h>
+#import <objc/objc.h>
 #import "WBReceipt.h"
 #import "WBTrip.h"
 #import "WBCurrency.h"
 #import "WBPrice.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "DatabaseTableNames.h"
+#import "Constants.h"
 
 static NSString * const NO_DATA = @"null";
 
@@ -159,6 +161,7 @@ static NSString* checkNoData(NSString* str) {
 }
 
 - (BOOL)hasFileForTrip:(WBTrip *)trip {
+    SRAssert(trip);
     return _fileName && ([[NSFileManager defaultManager] fileExistsAtPath:[self imageFilePathForTrip:trip]]);
 }
 
@@ -172,12 +175,12 @@ static NSString* checkNoData(NSString* str) {
     return false;
 }
 
--(BOOL)hasImageForTrip:(WBTrip*)trip {
-    return [self hasFileForTrip:trip] && [self hasImageFileName];
+- (BOOL)hasImage {
+    return [self hasFileForTrip:self.trip] && [self hasImageFileName];
 }
 
--(BOOL)hasPDFForTrip:(WBTrip*)trip {
-    return [self hasFileForTrip:trip] && [self hasPDFFileName];
+- (BOOL)hasPDF {
+    return [self hasFileForTrip:self.trip] && [self hasPDFFileName];
 }
 
 -(BOOL)hasImageFileName {

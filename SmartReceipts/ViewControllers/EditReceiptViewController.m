@@ -38,20 +38,13 @@
 #import "PaymentMethod.h"
 #import "Database+Receipts.h"
 
-@interface EditReceiptViewController () <WBDynamicPickerDelegate,UITextFieldDelegate> {
-    UIImage *_image;
-    
-    NSString *_name;
-
-    NSTimeZone *_timeZone;
-}
+@interface EditReceiptViewController ()
 
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, strong) WBReceipt *receipt;
-
 @property (nonatomic, strong) WBDateFormatter *dateFormatter;
-
 @property (nonatomic, assign) long long dateMs;
+@property (nonatomic, strong) NSTimeZone *timeZone;
 
 @property (nonatomic, strong) TitledAutocompleteEntryCell *nameCell;
 @property (nonatomic, strong) TitledTextEntryCell *priceCell;
@@ -63,9 +56,9 @@
 @property (nonatomic, strong) PickerCell *categoryCell;
 @property (nonatomic, strong) InlinedPickerCell *categoryPickerCell;
 @property (nonatomic, strong) TitledTextEntryCell *commentCell;
-@property (nonatomic, strong) PickerCell *paymenMethodCell;
-@property (nonatomic, strong) InlinedPickerCell *paymenMethodPickerCell;
-@property (nonatomic, strong) SwitchControlCell *expenseableCell;
+@property (nonatomic, strong) PickerCell *paymentMethodCell;
+@property (nonatomic, strong) InlinedPickerCell *paymentMethodPickerCell;
+@property (nonatomic, strong) SwitchControlCell *expensableCell;
 @property (nonatomic, strong) SwitchControlCell *fullPageImageCell;
 
 @property (nonatomic, strong) NSArray *categoryNames;
@@ -142,19 +135,19 @@
     [self.commentCell setPlaceholder:NSLocalizedString(@"Your comments here", nil)];
     [self.commentCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
 
-    self.paymenMethodCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
-    [self.paymenMethodCell setTitle:NSLocalizedString(@"Payment Method", nil)];
+    self.paymentMethodCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
+    [self.paymentMethodCell setTitle:NSLocalizedString(@"Payment Method", nil)];
 
-    self.paymenMethodPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
+    self.paymentMethodPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     NSArray *paymentMethods = [[[Database sharedInstance] fetchedAdapterForPaymentMethods] allObjects];
-    [self.paymenMethodPickerCell setAllPickabelValues:paymentMethods];
-    [self.paymenMethodPickerCell setSelectedValue:[self defaultPaymentMethodFrom:paymentMethods]];
-    [self.paymenMethodPickerCell setValueChangeHandler:^(id<Pickable> selected) {
-        [weakSelf.paymenMethodCell setPickableValue:selected];
+    [self.paymentMethodPickerCell setAllPickabelValues:paymentMethods];
+    [self.paymentMethodPickerCell setSelectedValue:[self defaultPaymentMethodFrom:paymentMethods]];
+    [self.paymentMethodPickerCell setValueChangeHandler:^(id <Pickable> selected) {
+        [weakSelf.paymentMethodCell setPickableValue:selected];
     }];
 
-    self.expenseableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.expenseableCell setTitle:NSLocalizedString(@"Expensable", nil)];
+    self.expensableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.expensableCell setTitle:NSLocalizedString(@"Expensable", nil)];
 
     self.fullPageImageCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.fullPageImageCell setTitle:NSLocalizedString(@"Full Page Image", nil)];
@@ -170,9 +163,9 @@
     [presentedCells addObject:self.categoryCell];
     [presentedCells addObject:self.commentCell];
     if ([WBPreferences usePaymentMethods]) {
-        [presentedCells addObject:self.paymenMethodCell];
+        [presentedCells addObject:self.paymentMethodCell];
     }
-    [presentedCells addObject:self.expenseableCell];
+    [presentedCells addObject:self.expensableCell];
     [presentedCells addObject:self.fullPageImageCell];
 
     [self addSectionForPresentation:[InputCellsSection sectionWithCells:presentedCells]];
@@ -181,7 +174,7 @@
     [self addInlinedPickerCell:self.datePickerCell forCell:self.dateCell];
     [self addInlinedPickerCell:self.categoryPickerCell forCell:self.categoryCell];
     if ([WBPreferences usePaymentMethods]) {
-        [self addInlinedPickerCell:self.paymenMethodPickerCell forCell:self.paymenMethodCell];
+        [self addInlinedPickerCell:self.paymentMethodPickerCell forCell:self.paymentMethodCell];
     }
 
     [self.nameCell.entryField becomeFirstResponder];
@@ -212,13 +205,13 @@
         _dateMs = [self.receipt dateMs];
         category = [self.receipt category];
         [self.commentCell setValue:[self.receipt comment]];
-        [self.expenseableCell setSwitchOn:[self.receipt isExpensable]];
+        [self.expensableCell setSwitchOn:[self.receipt isExpensable]];
         [self.fullPageImageCell setSwitchOn:[self.receipt isFullPage]];
         if (self.receipt.paymentMethod) {
-            [self.paymenMethodCell setPickableValue:self.receipt.paymentMethod];
-            [self.paymenMethodPickerCell setSelectedValue:self.receipt.paymentMethod];
+            [self.paymentMethodCell setPickableValue:self.receipt.paymentMethod];
+            [self.paymentMethodPickerCell setSelectedValue:self.receipt.paymentMethod];
         } else {
-            [self.paymenMethodCell setPickableValue:self.paymenMethodPickerCell.selectedValue];
+            [self.paymentMethodCell setPickableValue:self.paymentMethodPickerCell.selectedValue];
         }
         _timeZone = [self.receipt timeZone];
     } else {
@@ -236,9 +229,9 @@
 
         _timeZone = [NSTimeZone localTimeZone];
 
-        [self.expenseableCell setSwitchOn:YES];
+        [self.expensableCell setSwitchOn:YES];
         [self.fullPageImageCell setSwitchOn:NO];
-        [self.paymenMethodCell setPickableValue:self.paymenMethodPickerCell.selectedValue];
+        [self.paymentMethodCell setPickableValue:self.paymentMethodPickerCell.selectedValue];
     }
 
     if (!_receipt) {
@@ -294,13 +287,7 @@
     _trip = trip;
 }
 
-- (void)setReceiptImage:(UIImage *)image{
-    _image = image;
-}
-
 - (IBAction)actionDone:(id)sender {
-    WBReceipt* newReceipt;
-
     NSString *name = [[self.nameCell value] lastPathComponent];
     if ([name length] <= 0) {
         [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Please enter a name", nil)];
@@ -323,20 +310,22 @@
     [self.receipt setTimeZone:_timeZone];
     [self.receipt setPrice:[WBPrice priceWithAmount:price currencyCode:currencyCode]];
     [self.receipt setTax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]];
-    [self.receipt setExpensable:self.expenseableCell.isSwitchOn];
+    [self.receipt setExpensable:self.expensableCell.isSwitchOn];
     [self.receipt setFullPage:self.fullPageImageCell.isSwitchOn];
-    [self.receipt setPaymentMethod:self.paymenMethodCell.pickableValue];
+    [self.receipt setPaymentMethod:(PaymentMethod *)self.paymentMethodCell.pickableValue];
 
     if (self.receipt.objectId == 0) {
         NSString *imageFileName = nil;
-        if (_image) {
+        if (self.receiptImage) {
             long long ms = (long long int) ([[NSDate date] timeIntervalSince1970] * 1000LL);
             //TODO jaanus: maybe can use something else here.
-            imageFileName = [NSString stringWithFormat:@"%lldx%d.jpg", ms, (int)[self.receiptsViewController receiptsCount]];
+            imageFileName = [NSString stringWithFormat:@"%lldx%d.jpg", ms, (int) [self.receiptsViewController receiptsCount]];
             NSString *path = [_trip fileInDirectoryPath:imageFileName];
-            if(![WBFileManager forceWriteData:UIImageJPEGRepresentation(_image, 0.85) to:path]) {
+            if (![WBFileManager forceWriteData:UIImageJPEGRepresentation(self.receiptImage, 0.85) to:path]) {
                 imageFileName = nil;
             }
+
+            [self.receipt setImageFileName:imageFileName];
         }
     }
 
