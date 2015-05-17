@@ -158,7 +158,7 @@
     [statement where:TripsTable.COLUMN_NAME notValue:@"excluded"];
 
     NSString *query = [statement buildStatement];
-    NSString *expected = @"SELECT * FROM trips WHERE name NOT :wname";
+    NSString *expected = @"SELECT * FROM trips WHERE name != :wname";
     XCTAssertEqualObjects(expected, query, @"Got %@", query);
 
     NSDictionary *params = [statement parameters];

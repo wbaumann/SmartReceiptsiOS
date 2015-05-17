@@ -142,6 +142,11 @@
     id added = [currentObjects lastObject];
 
     NSUInteger index = [refreshed indexOfObject:added];
+    //insert was done for some other monitored adapter. Nothing here to do
+    if (index == NSNotFound) {
+        [self setModels:refreshed];
+        return;
+    }
 
     [self.delegate willChangeContent];
 

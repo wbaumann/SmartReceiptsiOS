@@ -124,27 +124,27 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
     return result;
 }
 
--(WBReceipt*) copyReceipt:(WBReceipt*) receipt fromTrip:(WBTrip*)oldTrip toTrip:(WBTrip*) newTrip {
-    NSString* newFile = nil;
++ (WBReceipt *)copyReceipt:(WBReceipt *)receipt fromTrip:(WBTrip *)oldTrip toTrip:(WBTrip *)newTrip {
+    NSString *newFile = nil;
     if ([receipt hasFileForTrip:oldTrip]) {
         NSLog(@"copyReceipt -> hasFile");
-        
-        NSString* oldFile = [receipt imageFilePathForTrip:oldTrip];
+
+        NSString *oldFile = [receipt imageFilePathForTrip:oldTrip];
         newFile = [receipt imageFilePathForTrip:newTrip];
-        
+
         if ([[NSFileManager defaultManager] fileExistsAtPath:newFile]) {
             [[NSFileManager defaultManager] removeItemAtPath:newFile error:nil];
         }
-        
+
         [newTrip createDirectoryIfNotExists];
-        if(![[NSFileManager defaultManager] copyItemAtPath:oldFile toPath:newFile error:nil]){
+        if (![[NSFileManager defaultManager] copyItemAtPath:oldFile toPath:newFile error:nil]) {
             NSLog(@"Failed to copy file");
             newFile = nil;
             return nil;
         }
     }
-    
-    WBReceipt* newReceipt = [self insertReceipt:receipt withTrip:newTrip];
+
+    /*WBReceipt *newReceipt = [self insertReceipt:receipt withTrip:newTrip];
     if (newReceipt) {
         return newReceipt;
     } else {
@@ -152,17 +152,18 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
             [[NSFileManager defaultManager] removeItemAtPath:newFile error:nil];
         }
         return nil;
-    }
+    }*/
+
+    return nil;
 }
 
-
--(WBReceipt*) moveReceipt:(WBReceipt*) receipt fromTrip:(WBTrip*)oldTrip toTrip:(WBTrip*) newTrip {
-    WBReceipt* newReceipt = [self copyReceipt:receipt fromTrip:oldTrip toTrip:newTrip];
-    if (newReceipt) {
++ (WBReceipt *)moveReceipt:(WBReceipt *)receipt fromTrip:(WBTrip *)oldTrip toTrip:(WBTrip *)newTrip {
+    WBReceipt *newReceipt = [self copyReceipt:receipt fromTrip:oldTrip toTrip:newTrip];
+    /*if (newReceipt) {
         if ([self deleteWithId:[receipt receiptId] forTrip:oldTrip]) {
             if ([receipt hasFileForTrip:oldTrip]) {
-                NSString* oldFile = [receipt imageFilePathForTrip:oldTrip];
-                
+                NSString *oldFile = [receipt imageFilePathForTrip:oldTrip];
+
                 if ([[NSFileManager defaultManager] removeItemAtPath:oldFile error:nil]) {
                     return newReceipt;
                 } else {
@@ -178,7 +179,7 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
             [[NSFileManager defaultManager] removeItemAtPath:[newReceipt imageFilePathForTrip:newTrip] error:nil];
             return nil;
         }
-    }
+    }*/
     return nil;
 }
 

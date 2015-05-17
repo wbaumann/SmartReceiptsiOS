@@ -14,6 +14,7 @@
 #import "UIView+LoadHelpers.h"
 #import "FetchedModelAdapter.h"
 #import "Database+Trips.h"
+#import "Database+Receipts.h"
 
 @interface WBMoveCopyReceiptViewController ()
 
@@ -36,28 +37,15 @@
     return [[Database sharedInstance] fetchedAdapterForAllTripsExcluding:self.receipt.trip];
 }
 
-
--(void)tabaleView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    WBTrip* selectedTrip;// = [_trips tripAtIndex:indexPath.row];
-    
+- (void)tappedObject:(id)tapped atIndexPath:(NSIndexPath *)indexPath {
+    WBTrip *destinationTrip = tapped;
     if (self.calledForCopy) {
-        if ([[WBDB receipts] copyReceipt:_receipt fromTrip:self.receipt.trip toTrip:selectedTrip]) {
-            //[self.tripsViewController viewController:self.receiptsViewController updatedTrip:selectedTrip];
-        } else {
-            NSLog(@"Copying failed");
-        }
-        
-        [self.navigationController popViewControllerAnimated:YES];
+        [[Database sharedInstance] copyReceipt:self.receipt toTrip:destinationTrip];
     } else {
-        if ([[WBDB receipts] moveReceipt:_receipt fromTrip:self.receipt.trip toTrip:selectedTrip]) {
-            //[self.receiptsViewController notifyReceiptRemoved:_receipt];
-            //[self.tripsViewController viewController:self.receiptsViewController updatedTrip:selectedTrip];
-        } else {
-            NSLog(@"Moving failed");
-        }
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [[Database sharedInstance] moveReceipt:self.receipt toTrip:destinationTrip];
     }
+
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {

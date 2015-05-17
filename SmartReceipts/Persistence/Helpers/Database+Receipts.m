@@ -217,6 +217,28 @@
     return result;
 }
 
+- (BOOL)copyReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        WBTrip *original = receipt.trip;
+        [receipt setTrip:trip];
+        result = [self saveReceipt:receipt usingDatabase:db];
+        [receipt setTrip:original];
+
+        [self notifyInsertOfModel:receipt];
+    }];
+    return result;
+}
+
+- (BOOL)moveReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        [self deleteReceipt:receipt usingDatabase:db];
+        [receipt setTrip:trip];
+        result = [self saveReceipt:receipt usingDatabase:db];
+    }];
+    return result;
+}
 
 - (void)appendCommonValuesFromReceipt:(WBReceipt *)receipt toQuery:(DatabaseQueryBuilder *)query {
     [query addParam:ReceiptsTable.COLUMN_PATH value:receipt.imageFileName fallback:[WBReceipt NO_DATA]];
