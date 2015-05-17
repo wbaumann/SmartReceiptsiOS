@@ -16,6 +16,7 @@
 #import "WBCurrency.h"
 #import "Database+Receipts.h"
 #import "Database+Distances.h"
+#import "WBReceipt.h"
 
 @interface DatabaseTripsTest : DatabaseTestsBase
 
@@ -179,6 +180,18 @@
     XCTAssertEqual(distancesCountBefore - 4, distancesCountAfter);
 
     //TODO jaanus: check dir also deleted
+}
+
+- (void)testUpdateFileName {
+    NSString *receiptName = @"asdasdasdasd";
+    NSString *testFileName = @"this-is-a-uber-image.jpg";
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME: receiptName}];
+
+    WBReceipt *receipt = [self.db receiptWithName:receiptName];
+    [self.db updateReceipt:receipt changeFileNameTo:testFileName];
+
+    WBReceipt *reloaded = [self.db receiptWithName:receiptName];
+    XCTAssertEqualObjects(testFileName, reloaded.imageFileName);
 }
 
 @end

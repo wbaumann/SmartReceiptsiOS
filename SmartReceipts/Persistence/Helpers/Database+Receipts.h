@@ -30,5 +30,6 @@
 - (BOOL)deleteReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (BOOL)moveReceiptsWithParent:(NSString *)previous toParent:(NSString *)next usingDatabase:(FMDatabase *)database;
 - (FetchedModelAdapter *)fetchedReceiptsAdapterForTrip:(WBTrip *)trip;
+- (BOOL)updateReceipt:(WBReceipt *)receipt changeFileNameTo:(NSString *)fileName;
 
 @end

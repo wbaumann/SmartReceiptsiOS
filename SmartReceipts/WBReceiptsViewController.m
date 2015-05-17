@@ -26,6 +26,7 @@
 #import "FetchedModelAdapter.h"
 #import "Database+Receipts.h"
 #import "Database+Trips.h"
+#import "Constants.h"
 
 static NSString *CellIdentifier = @"Cell";
 static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
@@ -64,7 +65,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
     [self setPresentationCellNib:[WBCellWithPriceNameDate viewNib]];
     
-    _dateFormatter = [[WBDateFormatter alloc] init];
+    self.dateFormatter = [[WBDateFormatter alloc] init];
     
     if (self.trip == nil) {
         return;
@@ -216,54 +217,46 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self swapReceiptAtIndex:(int)idx withReceiptAtIndex:(int)(idx+1)];
 }
 
-- (BOOL) attachPdfOrImageFile:(NSString*)oldFile toReceipt:(WBReceipt*) receipt{
-    
+- (BOOL)attachPdfOrImageFile:(NSString *)oldFile toReceipt:(WBReceipt *)receipt {
+
     NSString *ext = [oldFile pathExtension];
-    
-    NSString *imageFileName = [NSString stringWithFormat:@"%tx.%@",
-                               [receipt receiptId], ext];
+
+    NSString *imageFileName = [NSString stringWithFormat:@"%tux.%@", [receipt receiptId], ext];
     NSString *newFile = [self.trip fileInDirectoryPath:imageFileName];
-    
+
     if (![WBFileManager forceCopyFrom:oldFile to:newFile]) {
         NSLog(@"Couldn't copy");
-        return false;
+        return NO;
     }
-    
-    if([[WBDB receipts] updateReceipt:receipt imageFileName:imageFileName]) {
-        [receipt setImageFileName:imageFileName];
-        // notify change
-        [_receipts replaceReceipt:receipt toReceipt:receipt];
-    } else {
-        NSLog(@"Error: cannot update image file");
-        return false;
+
+    if (![[Database sharedInstance] updateReceipt:receipt changeFileNameTo:imageFileName]) {
+        SRLog(@"Error: cannot update image file");
+        return NO;
     }
-    
-    return true;
+
+    return YES;
 }
 
-- (BOOL) updateReceipt:(WBReceipt*) receipt image:(UIImage*) image {
-    
+- (BOOL)updateReceipt:(WBReceipt *)receipt image:(UIImage *)image {
     NSString *imageFileName = nil;
     if (image) {
-        imageFileName = [NSString stringWithFormat:@"%tx.jpg", [receipt receiptId]];
+        //TODO jaanus: this leaves old file in documents folder
+        imageFileName = [NSString stringWithFormat:@"%tux.jpg", [receipt receiptId]];
         NSString *path = [self.trip fileInDirectoryPath:imageFileName];
-        if(![WBFileManager forceWriteData:UIImageJPEGRepresentation(image, 0.85) to:path]) {
+        if (![WBFileManager forceWriteData:UIImageJPEGRepresentation(image, 0.85) to:path]) {
             imageFileName = nil;
         }
     }
-    
+
     if (!imageFileName) {
-        return false;
+        return NO;
     }
-    
-    if([[WBDB receipts] updateReceipt:receipt imageFileName:imageFileName]) {
-        [receipt setImageFileName:imageFileName];
-        [_receipts replaceReceipt:receipt toReceipt:receipt];
-    } else {
-        NSLog(@"Error: cannot update image file");
-        return false;
+
+    if (![[Database sharedInstance] updateReceipt:receipt changeFileNameTo:imageFileName]) {
+        SRLog(@"Error: cannot update image file");
+        return NO;
     }
-    return true;
+    return YES;
 }
 
 - (void)tappedObject:(id)tapped atIndexPath:(NSIndexPath *)indexPath {

@@ -205,6 +205,19 @@
     return [self createAdapterUsingQuery:select forModel:[WBReceipt class] associatedModel:trip];
 }
 
+- (BOOL)updateReceipt:(WBReceipt *)receipt changeFileNameTo:(NSString *)fileName {
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
+    [update addParam:ReceiptsTable.COLUMN_PATH value:fileName];
+    [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
+    BOOL result = [self executeQuery:update];
+    if (result) {
+        [receipt setImageFileName:fileName];
+        [self notifyUpdateOfModel:receipt];
+    }
+    return result;
+}
+
+
 - (void)appendCommonValuesFromReceipt:(WBReceipt *)receipt toQuery:(DatabaseQueryBuilder *)query {
     [query addParam:ReceiptsTable.COLUMN_PATH value:receipt.imageFileName fallback:[WBReceipt NO_DATA]];
     [query addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];

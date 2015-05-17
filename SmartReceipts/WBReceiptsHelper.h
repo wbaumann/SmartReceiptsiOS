@@ -18,13 +18,9 @@
 
 - (id)initWithDatabaseQueue:(FMDatabaseQueue*) db;
 
-- (NSArray *)selectAllForTrip:(WBTrip *)trip descending:(BOOL)desc;
-
 - (WBReceipt *)insertReceipt:(WBReceipt *)receipt withTrip:(WBTrip *)trip;
 
 - (WBReceipt *)insertWithTrip:(WBTrip *)trip name:(NSString *)name category:(NSString *)category imageFileName:(NSString *)imageFileName dateMs:(long long)dateMs timeZoneName:(NSString *)timeZoneName comment:(NSString *)comment price:(WBPrice *)price tax:(WBPrice *)tax isExpensable:(BOOL)isExpensable isFullPage:(BOOL)isFullPage extraEditText1:(NSString *)extraEditText1 extraEditText2:(NSString *)extraEditText2 extraEditText3:(NSString *)extraEditText3 paymentMethod:(PaymentMethod *)paymentMethod;
-
-- (WBReceipt *)updateReceipt:(WBReceipt *)oldReceipt trip:(WBTrip *)trip name:(NSString *)name category:(NSString *)category dateMs:(long long)dateMs comment:(NSString *)comment price:(WBPrice *)price tax:(WBPrice *)tax isExpensable:(BOOL)isExpensable isFullPage:(BOOL)isFullPage extraEditText1:(NSString *)extraEditText1 extraEditText2:(NSString *)extraEditText2 extraEditText3:(NSString *)extraEditText3 paymentMethed:(PaymentMethod *)paymentMethod;
 
 -(BOOL) updateReceipt:(WBReceipt*) receipt imageFileName:(NSString*) imageFileName;
 -(WBReceipt*) copyReceipt:(WBReceipt*) receipt fromTrip:(WBTrip*)oldTrip toTrip:(WBTrip*) newTrip;

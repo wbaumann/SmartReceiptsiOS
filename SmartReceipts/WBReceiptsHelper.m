@@ -56,11 +56,6 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
 }
 
 #pragma mark - CRUD
-
-- (NSArray *)selectAllForTrip:(WBTrip *)trip descending:(BOOL)desc {
-    return [[Database sharedInstance] allReceiptsForTrip:trip descending:desc];
-}
-
 static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
     
     if (extra == nil) {
@@ -125,89 +120,6 @@ static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
         [receipt setObjectId:rid];
     }];
     return receipt;
-}
-
-- (WBReceipt *)updateReceipt:(WBReceipt *)oldReceipt trip:(WBTrip *)trip name:(NSString *)name category:(NSString *)category dateMs:(long long)dateMs comment:(NSString *)comment price:(WBPrice *)price tax:(WBPrice *)tax isExpensable:(BOOL)isExpensable isFullPage:(BOOL)isFullPage extraEditText1:(NSString *)extraEditText1 extraEditText2:(NSString *)extraEditText2 extraEditText3:(NSString *)extraEditText3 paymentMethed:(PaymentMethod *)paymentMethod {
-    
-    name = [name lastPathComponent];
-    
-    WBSqlBuilder *qBuilder = [[WBSqlBuilder alloc] init];
-    
-#define qPut(column,value) [qBuilder addColumn:column andObject:value];
-    
-    qPut(COLUMN_NAME, [name stringByTrimmingCharactersInSet:
-                       [NSCharacterSet whitespaceAndNewlineCharacterSet]]);
-    
-    qPut(COLUMN_CATEGORY, category);
-    
-    
-    NSString *timeZoneName = [[oldReceipt timeZone] name];
-    if (dateMs != [oldReceipt dateMs]) {
-        timeZoneName = [[NSTimeZone localTimeZone] name];
-        qPut(COLUMN_TIMEZONE, timeZoneName);
-    }
-    
-    if ((dateMs % 3600000) == 0) { // Hack to avoid identical dates (this occurs if it was set manually)
-        qPut(COLUMN_DATE, [NSNumber numberWithLongLong:(dateMs + [oldReceipt receiptId])]);
-    } else {
-        qPut(COLUMN_DATE, [NSNumber numberWithLongLong:(dateMs)]);
-    }
-    
-    qPut(COLUMN_COMMENT, comment);
-    
-    if (![price.amount isEqualToNumber:[NSDecimalNumber zero]]) {
-        qPut(COLUMN_PRICE, price.amount);
-    }
-    
-    if (![tax.amount isEqualToNumber:[NSDecimalNumber zero]]) {
-        qPut(COLUMN_TAX, tax.amount);
-    }
-    
-    qPut(COLUMN_EXPENSEABLE, (isExpensable? @1 : @0));
-    qPut(COLUMN_ISO4217, price.currency.code);
-    qPut(COLUMN_NOTFULLPAGEIMAGE, (isFullPage? @0 : @1));
-    
-    //Extras
-    [qBuilder addColumn:COLUMN_EXTRA_EDITTEXT_1];
-    extraEditText1 = addExtra(qBuilder, extraEditText1);
-    
-    [qBuilder addColumn:COLUMN_EXTRA_EDITTEXT_2];
-    extraEditText2 = addExtra(qBuilder, extraEditText2);
-    
-    [qBuilder addColumn:COLUMN_EXTRA_EDITTEXT_3];
-    extraEditText3 = addExtra(qBuilder, extraEditText3);
-    
-#undef qPut
-    
-    [qBuilder addValueFromInt:[oldReceipt receiptId]];
-
-    WBReceipt *altered = [[WBReceipt alloc] initWithId:[oldReceipt receiptId]
-                                                  name:name
-                                              category:category
-                                         imageFileName:[oldReceipt imageFileName]
-                                                dateMs:dateMs
-                                          timeZoneName:timeZoneName
-                                               comment:comment
-                                                 price:price
-                                                   tax:tax
-                                          isExpensable:isExpensable
-                                            isFullPage:isFullPage
-                                        extraEditText1:extraEditText1
-                                        extraEditText2:extraEditText2
-                                        extraEditText3:extraEditText3];
-    [altered setTrip:trip];
-    [altered setPaymentMethod:paymentMethod];
-
-
-    [_databaseQueue inTransaction:^(FMDatabase *database, BOOL *rollback){
-        // update prices in the same transaction
-        [[Database sharedInstance] updateReceipt:altered usingDatabase:database];
-        //TODO jaanus: double update...
-        WBPrice *totalPrice = [[Database sharedInstance] updatePriceOfTrip:trip usingDatabase:database];
-        [trip setPrice:totalPrice];
-    }];
-
-    return altered;
 }
 
 -(BOOL) updateReceipt:(WBReceipt*) receipt imageFileName:(NSString*) imageFileName {
