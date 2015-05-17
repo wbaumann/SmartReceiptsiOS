@@ -24,6 +24,4 @@ extern NSString *const PresentTripDetailsSegueIdentifier;
 @property (nonatomic, strong) WBTrip *tapped;
 @property (nonatomic, strong, readonly) WBTrip *lastShownTrip;
 
-- (WBObservableTripsBrowser *)tripsBrowserExcludingTrip:(WBTrip *)trip;
-
 @end

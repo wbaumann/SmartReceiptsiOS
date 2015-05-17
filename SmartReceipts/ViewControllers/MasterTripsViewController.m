@@ -55,16 +55,6 @@
     [self setPresentDefaultTrip:[object isEqual:self.lastShownTrip]];
 }
 
-- (void)didUpdateObject:(id)object atIndex:(NSUInteger)index {
-    [super didUpdateObject:object atIndex:index];
-
-    if ([object isEqual:self.lastShownTrip]) {
-        [self setTapped:object];
-
-        [self performSegueWithIdentifier:PresentTripDetailsSegueIdentifier sender:nil];
-    }
-}
-
 - (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation {
     return NO;
 }

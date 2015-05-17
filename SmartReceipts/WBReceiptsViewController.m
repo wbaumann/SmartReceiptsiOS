@@ -91,6 +91,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
 - (void)tripUpdated:(NSNotification *)notification {
     WBTrip *trip = notification.object;
+    SRLog(@"updatTrip:%@", trip);
 
     if (![self.trip isEqual:trip]) {
         return;;
@@ -118,9 +119,10 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     self.editButtonItem.enabled = self.numberOfItems > 0;
 }
 
-- (void) updateTitle {
+- (void)updateTitle {
+    SRLog(@"updateTitle");
     self.navigationItem.title = [NSString stringWithFormat:@"%@ - %@",
-                                 [self.trip name], [self.trip priceWithCurrencyFormatted]];
+                                                           [self.trip name], [self.trip priceWithCurrencyFormatted]];
 }
 
 -(void)updateTrip {
@@ -368,6 +370,12 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 }
 
 - (FetchedModelAdapter *)createFetchedModelAdapter {
+    // This is needed on iPad. When ap is launched, then storyboard pushes unconfigured view.
+    // This is replaced right after by configured one
+    if (!self.trip) {
+        return nil;
+    }
+
     return [[Database sharedInstance] fetchedReceiptsAdapterForTrip:self.trip];
 }
 

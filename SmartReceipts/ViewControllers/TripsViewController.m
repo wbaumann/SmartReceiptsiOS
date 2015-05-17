@@ -202,10 +202,6 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
     [self performSegueWithIdentifier:PresentTripDetailsSegueIdentifier sender:nil];
 }
 
-- (WBObservableTripsBrowser *)tripsBrowserExcludingTrip:(WBTrip *)trip {
-    return nil;//[[WBObservableTripsBrowser alloc] initWithTrips:_trips excludingIndex:[_trips indexOfTrip:trip]];
-}
-
 - (IBAction)actionAdd:(id)sender {
     self.editing = false;
     [self performSegueWithIdentifier:@"TripCreator" sender:self];

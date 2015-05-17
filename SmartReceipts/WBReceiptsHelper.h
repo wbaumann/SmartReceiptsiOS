@@ -18,18 +18,8 @@
 
 - (id)initWithDatabaseQueue:(FMDatabaseQueue*) db;
 
-- (WBReceipt *)insertReceipt:(WBReceipt *)receipt withTrip:(WBTrip *)trip;
-
-- (WBReceipt *)insertWithTrip:(WBTrip *)trip name:(NSString *)name category:(NSString *)category imageFileName:(NSString *)imageFileName dateMs:(long long)dateMs timeZoneName:(NSString *)timeZoneName comment:(NSString *)comment price:(WBPrice *)price tax:(WBPrice *)tax isExpensable:(BOOL)isExpensable isFullPage:(BOOL)isFullPage extraEditText1:(NSString *)extraEditText1 extraEditText2:(NSString *)extraEditText2 extraEditText3:(NSString *)extraEditText3 paymentMethod:(PaymentMethod *)paymentMethod;
-
--(BOOL) updateReceipt:(WBReceipt*) receipt imageFileName:(NSString*) imageFileName;
-+ (WBReceipt *)copyReceipt:(WBReceipt *)receipt fromTrip:(WBTrip *)oldTrip toTrip:(WBTrip *)newTrip;
-+ (WBReceipt *)moveReceipt:(WBReceipt *)receipt fromTrip:(WBTrip *)oldTrip toTrip:(WBTrip *)newTrip;
 -(BOOL) deleteWithParent:(NSString*) parent inDatabase:(FMDatabase*) database;
--(BOOL) deleteWithId:(NSUInteger) receiptId forTrip:(WBTrip*) currentTrip;
 -(BOOL) swapReceipt:(WBReceipt*) receipt1 andReceipt:(WBReceipt*) receipt2;
-
--(BOOL) replaceParentName:(NSString*) oldName to:(NSString*) newName inDatabase:(FMDatabase*) database;
 
 +(BOOL) mergeDatabase:(FMDatabase*) currDB withDatabase:(FMDatabase*) importDB overwrite:(BOOL) overwrite;
 
