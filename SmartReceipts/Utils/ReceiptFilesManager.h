@@ -19,5 +19,6 @@
 - (BOOL)saveImage:(UIImage *)image forReceipt:(WBReceipt *)receipt;
 - (BOOL)copyFileForReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
 - (BOOL)moveFileForReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
+- (BOOL)deleteFileForReceipt:(WBReceipt *)receipt;
 
 @end

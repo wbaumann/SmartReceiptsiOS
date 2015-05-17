@@ -60,4 +60,12 @@
     XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:movedPath]);
 }
 
+- (void)testFileDelete {
+    NSString *originalPath = [self.db.filesManager pathForReceiptFile:self.testReceipt];
+    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:originalPath]);
+
+    [self.db.filesManager deleteFileForReceipt:self.testReceipt];
+    XCTAssertFalse([[NSFileManager defaultManager] fileExistsAtPath:originalPath]);
+}
+
 @end

@@ -79,6 +79,22 @@
     return YES;
 }
 
+- (BOOL)deleteFileForReceipt:(WBReceipt *)receipt {
+    if (![self fileExistsForReceipt:receipt]) {
+        return YES;
+    }
+
+    NSString *path = [self pathForReceiptFile:receipt];
+    NSError *deleteError = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:path error:&deleteError];
+    if (deleteError) {
+        SRLog(@"Failet to delete file:%@", deleteError);
+        return NO;
+    }
+
+    return YES;
+}
+
 - (BOOL)fileExistsForReceipt:(WBReceipt *)receipt {
     NSString *path = [self pathForReceiptFile:receipt];
     return [[NSFileManager defaultManager] fileExistsAtPath:path];

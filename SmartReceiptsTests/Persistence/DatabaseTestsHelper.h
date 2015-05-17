@@ -17,6 +17,7 @@
 
 - (NSString *)pathForReceiptFile:(WBReceipt *)receipt;
 - (NSString *)pathForReceiptFile:(WBReceipt *)receipt withTrip:(WBTrip *)trip;
+- (BOOL)fileExistsForReceipt:(WBReceipt *)receipt;
 
 @end
 

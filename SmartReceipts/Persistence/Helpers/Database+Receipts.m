@@ -105,9 +105,9 @@
     [delete where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
     BOOL result = [self executeQuery:delete usingDatabase:database];
     if (result) {
+        [self.filesManager deleteFileForReceipt:receipt];
         [self updatePriceOfTrip:receipt.trip usingDatabase:database];
         [self notifyDeleteOfModel:receipt];
-        [WBFileManager deleteIfExists:[receipt imageFilePathForTrip:receipt.trip]];
     }
     return result;
 }
