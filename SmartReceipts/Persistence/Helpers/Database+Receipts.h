@@ -22,6 +22,7 @@
 - (BOOL)updateReceipt:(WBReceipt *)receipt;
 - (BOOL)updateReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database;
 - (BOOL)deleteReceipt:(WBReceipt *)receipt;
+- (BOOL)deleteReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database;
 - (NSArray *)allReceiptsForTrip:(WBTrip *)trip descending:(BOOL)desc;
 - (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (NSString *)currencyForTripReceipts:(WBTrip *)trip;

@@ -21,6 +21,7 @@
 #import "Database+PaymentMethods.h"
 #import "PaymentMethod.h"
 #import "WBFileManager.h"
+#import "Database+Notify.h"
 
 @implementation Database (Receipts)
 
@@ -63,6 +64,7 @@
     BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {
         [self updatePriceOfTrip:receipt.trip usingDatabase:database];
+        [self notifyInsertOfModel:receipt];
     }
     return result;
 }
@@ -83,18 +85,27 @@
     BOOL result = [self executeQuery:update usingDatabase:database];
     if (result) {
         [self updatePriceOfTrip:receipt.trip usingDatabase:database];
+        [self notifyUpdateOfModel:receipt];
     }
     return result;
 }
 
 - (BOOL)deleteReceipt:(WBReceipt *)receipt {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self deleteReceipt:receipt usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (BOOL)deleteReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:ReceiptsTable.TABLE_NAME];
     [delete where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
-    BOOL result = [self executeQuery:delete];
+    BOOL result = [self executeQuery:delete usingDatabase:database];
     if (result) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidDeleteModelNotification object:receipt];
-        });
+        [self updatePriceOfTrip:receipt.trip usingDatabase:database];
+        [self notifyDeleteOfModel:receipt];
         [WBFileManager deleteIfExists:[receipt imageFilePathForTrip:receipt.trip]];
     }
     return result;
@@ -191,7 +202,7 @@
 - (FetchedModelAdapter *)fetchedReceiptsAdapterForTrip:(WBTrip *)trip {
     DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
     [select where:ReceiptsTable.COLUMN_PARENT value:trip.name];
-    return [self createAdapterUsingQuery:select forModel:[WBReceipt class]];
+    return [self createAdapterUsingQuery:select forModel:[WBReceipt class] associatedModel:trip];
 }
 
 - (void)appendCommonValuesFromReceipt:(WBReceipt *)receipt toQuery:(DatabaseQueryBuilder *)query {

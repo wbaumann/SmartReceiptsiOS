@@ -168,8 +168,8 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self updateTrip];
 }
 
-- (NSUInteger) receiptsCount {
-    return [_receipts count];
+- (NSUInteger)receiptsCount {
+    return [self numberOfItems];
 }
 
 - (void)configureCell:(UITableViewCell *)aCell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {

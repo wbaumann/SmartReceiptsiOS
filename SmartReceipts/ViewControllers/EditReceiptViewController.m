@@ -36,7 +36,7 @@
 #import "Pickable.h"
 #import "StringPickableWrapper.h"
 #import "PaymentMethod.h"
-#import "Constants.h"
+#import "Database+Receipts.h"
 
 @interface EditReceiptViewController () <WBDynamicPickerDelegate,UITextFieldDelegate> {
     UIImage *_image;
@@ -309,67 +309,44 @@
 
     NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.priceCell.value];
     NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.taxCell.value];
+    
+    if (!self.receipt) {
+        self.receipt = [[WBReceipt alloc] init];
+        [self.receipt setTrip:self.trip];
+    }
 
-    if (_receipt == nil) {
-        
+    NSString *currencyCode = [self.currencyCell value];
+
+    [self.receipt setName:name];
+    [self.receipt setCategory:self.categoryCell.value];
+    [self.receipt setDateMs:_dateMs];
+    [self.receipt setTimeZone:_timeZone];
+    [self.receipt setPrice:[WBPrice priceWithAmount:price currencyCode:currencyCode]];
+    [self.receipt setTax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]];
+    [self.receipt setExpensable:self.expenseableCell.isSwitchOn];
+    [self.receipt setFullPage:self.fullPageImageCell.isSwitchOn];
+    [self.receipt setPaymentMethod:self.paymenMethodCell.pickableValue];
+
+    if (self.receipt.objectId == 0) {
         NSString *imageFileName = nil;
         if (_image) {
-            long long ms = ([[NSDate date] timeIntervalSince1970] * 1000LL);
+            long long ms = (long long int) ([[NSDate date] timeIntervalSince1970] * 1000LL);
+            //TODO jaanus: maybe can use something else here.
             imageFileName = [NSString stringWithFormat:@"%lldx%d.jpg", ms, (int)[self.receiptsViewController receiptsCount]];
             NSString *path = [_trip fileInDirectoryPath:imageFileName];
             if(![WBFileManager forceWriteData:UIImageJPEGRepresentation(_image, 0.85) to:path]) {
                 imageFileName = nil;
             }
         }
-
-        NSString *currencyCode = [self.currencyCell value];
-        newReceipt =[[WBDB receipts] insertWithTrip:_trip
-                                               name:name
-                                           category:[self.categoryCell value]
-                                      imageFileName:imageFileName
-                                             dateMs:_dateMs
-                                       timeZoneName:[_timeZone name]
-                                            comment:[self.commentCell value]
-                                              price:[WBPrice priceWithAmount:price currencyCode:currencyCode]
-                                                tax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]
-                                       isExpensable:self.expenseableCell.isSwitchOn
-                                         isFullPage:self.fullPageImageCell.isSwitchOn
-                                     extraEditText1:nil
-                                     extraEditText2:nil
-                                     extraEditText3:nil
-                                      paymentMethod:(PaymentMethod *)self.paymenMethodCell.pickableValue];
-        
-        if(!newReceipt){
-            [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot add this receipt", nil)];
-            return;
-        }
-        [self.delegate viewController:self newReceipt:newReceipt];
-    } else {
-
-        NSString *currencyCode = [self.currencyCell value];
-        newReceipt = [[WBDB receipts] updateReceipt:_receipt
-                                               trip:_trip
-                                               name:name
-                                           category:[self.categoryCell value]
-                                             dateMs:_dateMs
-                                            comment:[self.commentCell value]
-                                              price:[WBPrice priceWithAmount:price currencyCode:currencyCode]
-                                                tax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]
-                                       isExpensable:self.expenseableCell.isSwitchOn
-                                         isFullPage:self.fullPageImageCell.isSwitchOn
-                                     extraEditText1:nil
-                                     extraEditText2:nil
-                                     extraEditText3:nil
-                                      paymentMethed:(PaymentMethod *)self.paymenMethodCell.pickableValue];
-        
-        if(!newReceipt){
-            [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot save this receipt", nil)];
-            return;
-        }
-        [self.delegate viewController:self updatedReceipt:newReceipt fromReceipt:_receipt];
     }
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+
+    if (self.receipt.objectId == 0 && [[Database sharedInstance] saveReceipt:self.receipt]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else if ([[Database sharedInstance] updateReceipt:self.receipt]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot add this receipt", nil)];
+    }
 }
 
 - (IBAction)actionCancel:(id)sender {

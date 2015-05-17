@@ -25,9 +25,6 @@ static NSString* checkNoData(NSString* str) {
 
 @interface WBReceipt ()
 
-@property (nonatomic, strong) WBPrice *price;
-@property (nonatomic, strong) WBPrice *tax;
-
 @end
 
 @implementation WBReceipt
@@ -37,7 +34,6 @@ static NSString* checkNoData(NSString* str) {
     NSString *_extraEditText1, *_extraEditText2, *_extraEditText3;
     long long _dateMs;
     NSTimeZone *_timeZone;
-    BOOL _isExpensable, _isFullPage;
 }
 
 +(NSString*) NO_DATA {
@@ -78,8 +74,8 @@ static NSString* checkNoData(NSString* str) {
         _price = price;
         _tax = tax;
 
-        _isExpensable = isExpensable;
-        _isFullPage = isFullPage;
+        _expensable = isExpensable;
+        _fullPage = isFullPage;
         _extraEditText1 = checkNoData(extraEditText1);
         _extraEditText2 = checkNoData(extraEditText2);
         _extraEditText3 = checkNoData(extraEditText3);
@@ -133,14 +129,6 @@ static NSString* checkNoData(NSString* str) {
 //TODO jaanus: check where it's called
 - (WBCurrency *)currency {
     return self.price.currency;
-}
-
--(BOOL)isExpensable {
-    return _isExpensable;
-}
-
--(BOOL)isFullPage {
-    return _isFullPage;
 }
 
 -(NSString*)extraEditText1 {
@@ -236,8 +224,8 @@ static NSString* checkNoData(NSString* str) {
     _comment = [resultSet stringForColumn:ReceiptsTable.COLUMN_COMMENT];
     _price = [WBPrice priceWithAmount:price currencyCode:currencyCode];
     _tax = [WBPrice priceWithAmount:tax currencyCode:currencyCode];
-    _isExpensable = [resultSet boolForColumn:ReceiptsTable.COLUMN_EXPENSEABLE];
-    _isFullPage = ![resultSet boolForColumn:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE];
+    [self setExpensable:[resultSet boolForColumn:ReceiptsTable.COLUMN_EXPENSEABLE]];
+    [self setFullPage:![resultSet boolForColumn:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE]];
     _extraEditText1 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1];
     _extraEditText2 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2];
     _extraEditText3 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3];
