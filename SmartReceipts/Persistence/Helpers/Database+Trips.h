@@ -27,6 +27,7 @@
 - (WBPrice *)updatePriceOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (WBPrice *)tripPrice:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (FetchedModelAdapter *)fetchedAdapterForAllTrips;
+- (FetchedModelAdapter *)fetchedAdapterForAllTripsExcluding:(WBTrip *)trip;
 - (BOOL)deleteTrip:(WBTrip *)trip;
 - (BOOL)deleteTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 

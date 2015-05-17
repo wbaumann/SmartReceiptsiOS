@@ -248,16 +248,16 @@
     {
         WBMoveCopyReceiptViewController* vc = (WBMoveCopyReceiptViewController*)[segue destinationViewController];
         
-        vc.receiptActionsViewController = self;
         vc.calledForCopy = NO;
+        vc.receipt = self.receipt;
     }
     
     if ([[segue identifier] isEqualToString:@"Copy"])
     {
         WBMoveCopyReceiptViewController* vc = (WBMoveCopyReceiptViewController*)[segue destinationViewController];
         
-        vc.receiptActionsViewController = self;
         vc.calledForCopy = YES;
+        vc.receipt = self.receipt;
     }
     
     if ([[segue identifier] isEqualToString:@"Image"])

@@ -153,5 +153,16 @@
     XCTAssertEqual(@"old_name", params[@"wname"]);
 }
 
+- (void)testSelectAllWhereNotValue {
+    DatabaseQueryBuilder *statement = [DatabaseQueryBuilder selectAllStatementForTable:TripsTable.TABLE_NAME];
+    [statement where:TripsTable.COLUMN_NAME notValue:@"excluded"];
+
+    NSString *query = [statement buildStatement];
+    NSString *expected = @"SELECT * FROM trips WHERE name NOT :wname";
+    XCTAssertEqualObjects(expected, query, @"Got %@", query);
+
+    NSDictionary *params = [statement parameters];
+    XCTAssertEqual(@"excluded", params[@"wname"]);
+}
 
 @end

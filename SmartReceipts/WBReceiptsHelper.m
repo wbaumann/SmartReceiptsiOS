@@ -55,20 +55,6 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
     return self;
 }
 
-#pragma mark - CRUD
-static NSString* addExtra(WBSqlBuilder* builder, NSString* extra) {
-    
-    if (extra == nil) {
-        [builder addValue:[WBReceipt NO_DATA]];
-    } else {
-        if ([extra caseInsensitiveCompare:@"null"] == NSOrderedSame) {
-            extra = @"";
-        }
-        [builder addValue:extra];
-    }
-    return extra; // to update original value if changed
-}
-
 - (WBReceipt *)insertReceipt:(WBReceipt *)receipt withTrip:(WBTrip *)trip {
     return [self insertWithTrip:trip name:[receipt name] category:[receipt category] imageFileName:[receipt imageFileName] dateMs:[receipt dateMs] timeZoneName:[[receipt timeZone] name] comment:[receipt comment] price:[receipt price] tax:[receipt tax] isExpensable:[receipt isExpensable] isFullPage:[receipt isFullPage] extraEditText1:[receipt extraEditText1] extraEditText2:[receipt extraEditText2] extraEditText3:[receipt extraEditText3] paymentMethod:nil];
 }

@@ -136,6 +136,13 @@
     return [self createAdapterUsingQuery:selectAllTrips forModel:[WBTrip class]];
 }
 
+- (FetchedModelAdapter *)fetchedAdapterForAllTripsExcluding:(WBTrip *)trip {
+    DatabaseQueryBuilder *selectAllTrips = [DatabaseQueryBuilder selectAllStatementForTable:TripsTable.TABLE_NAME];
+    [selectAllTrips orderBy:TripsTable.COLUMN_TO ascending:NO];
+    [selectAllTrips where:TripsTable.COLUMN_NAME notValue:trip.name];
+    return [self createAdapterUsingQuery:selectAllTrips forModel:[WBTrip class]];
+}
+
 - (BOOL)deleteTrip:(WBTrip *)trip {
     __block BOOL result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {

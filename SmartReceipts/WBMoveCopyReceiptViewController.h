@@ -12,9 +12,9 @@
 #import "WBReceiptsViewController.h"
 #import "TripsViewController.h"
 
-@interface WBMoveCopyReceiptViewController : WBTableViewController
+@interface WBMoveCopyReceiptViewController : FetchedCollectionTableViewController
 
-@property (weak,nonatomic) WBReceiptActionsViewController* receiptActionsViewController;
-@property BOOL calledForCopy;
+@property (nonatomic, assign) BOOL calledForCopy;
+@property (nonatomic, strong) WBReceipt *receipt;
 
 @end
