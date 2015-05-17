@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "DatabaseTestsHelper.h"
 #import "WBTrip.h"
 #import "DatabaseTableNames.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "Database+Distances.h"
 
-@interface DatabaseDistancesSumTest : DatabaseTestsBase
+@interface DatabaseDistancesSumTest : SmartReceiptsTestsBase
 
 @property (nonatomic, strong) WBTrip *trip;
 

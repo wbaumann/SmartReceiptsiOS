@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "Database+Trips.h"
 #import "DatabaseTestsHelper.h"
 #import "WBTrip.h"
@@ -21,7 +21,7 @@
 
 @end
 
-@interface DatabaseDatesTest : DatabaseTestsBase
+@interface DatabaseDatesTest : SmartReceiptsTestsBase
 
 @end
 

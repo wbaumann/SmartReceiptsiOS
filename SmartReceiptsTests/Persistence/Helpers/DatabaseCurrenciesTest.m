@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "WBTrip.h"
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "DatabaseTestsHelper.h"
 #import "WBPreferences.h"
 #import "DatabaseTableNames.h"
@@ -22,7 +22,7 @@
 
 @end
 
-@interface DatabaseCurrenciesTest : DatabaseTestsBase
+@interface DatabaseCurrenciesTest : SmartReceiptsTestsBase
 
 @property (nonatomic, strong) WBTrip *trip;
 

@@ -12,7 +12,7 @@
 #import "DatabaseMigration.h"
 #import "DatabaseCreateAtVersion11.h"
 #import "FMDatabaseAdditions.h"
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "Database.h"
 #import "DatabaseTableNames.h"
 #import "Database+Functions.h"
@@ -24,7 +24,7 @@
 
 @end
 
-@interface DatabaseCreateAtVersion11Test : DatabaseTestsBase
+@interface DatabaseCreateAtVersion11Test : SmartReceiptsTestsBase
 
 @end
 

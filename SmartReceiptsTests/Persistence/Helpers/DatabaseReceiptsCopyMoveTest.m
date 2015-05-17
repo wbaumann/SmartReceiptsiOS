@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "WBTrip.h"
 #import "WBReceipt.h"
 #import "DatabaseTestsHelper.h"
@@ -19,7 +19,7 @@
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "WBPrice.h"
 
-@interface DatabaseReceiptsCopyMoveTest : DatabaseTestsBase
+@interface DatabaseReceiptsCopyMoveTest : SmartReceiptsTestsBase
 
 @property (nonatomic, strong) WBTrip *sourceTrip;
 @property (nonatomic, strong) WBTrip *destinationTrip;

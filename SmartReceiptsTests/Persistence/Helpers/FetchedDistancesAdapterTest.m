@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "FetchedModelAdapter.h"
 #import "WBTrip.h"
 #import "DatabaseTestsHelper.h"
@@ -27,7 +27,7 @@
 
 @end
 
-@interface FetchedDistancesAdapterTest : DatabaseTestsBase
+@interface FetchedDistancesAdapterTest : SmartReceiptsTestsBase
 
 @property (nonatomic, strong) FetchedModelAdapter *adapter;
 @property (nonatomic, strong) WBTrip *testTrip;

@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 
-@interface DatabaseTestVersion13 : DatabaseTestsBase
+@interface DatabaseTestVersion13 : SmartReceiptsTestsBase
 
 @end
 

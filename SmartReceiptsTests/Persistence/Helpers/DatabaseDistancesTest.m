@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "Database+Functions.h"
 #import "DatabaseTableNames.h"
 #import "Distance.h"
@@ -22,7 +22,7 @@
 
 @end
 
-@interface DatabaseDistancesTest : DatabaseTestsBase
+@interface DatabaseDistancesTest : SmartReceiptsTestsBase
 
 @end
 

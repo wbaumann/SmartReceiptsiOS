@@ -1,5 +1,5 @@
 //
-//  DatabaseTestsBase.m
+//  SmartReceiptsTestsBase.m
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 28/04/15.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import <FMDB/FMResultSet.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "Database.h"
 #import "DatabaseTestsHelper.h"
 #import "WBPreferencesTestHelper.h"
@@ -18,25 +18,32 @@
 
 @interface Database (TestExpose)
 
-- (id)initWithDatabasePath:(NSString *)path;
+- (id)initWithDatabasePath:(NSString *)path tripsFolederPath:(NSString *)tripsFolderPath;
 - (BOOL)open:(BOOL)migrateDatabase;
 
 @end
 
-@interface DatabaseTestsBase ()
+@interface SmartReceiptsTestsBase ()
 
 @property (nonatomic, strong) WBPreferencesTestHelper *preferencesHelper;
+@property (nonatomic, copy) NSString *testTripsPath;
 
 @end
 
-@implementation DatabaseTestsBase
+@implementation SmartReceiptsTestsBase
 
 - (NSString *)generateTestDBPath {
     return [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"test_db_%d", (int) [NSDate timeIntervalSinceReferenceDate]]];
 }
 
+- (NSString *)generateTestTripsPath {
+    return [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"test_trips_%d", (int) [NSDate timeIntervalSinceReferenceDate]]];
+}
+
 - (void)setUp {
     self.testDBPath = self.generateTestDBPath;
+    self.testTripsPath = self.generateTestTripsPath;
+
     [self setDb:[self createTestDatabase]];
 
     self.preferencesHelper = [[WBPreferencesTestHelper alloc] init];
@@ -46,6 +53,7 @@
 - (void)tearDown {
     [self deleteTestDatabase];
     [self.preferencesHelper restorePreferencesBackup];
+    [[NSFileManager defaultManager] removeItemAtPath:self.testTripsPath error:nil];
 }
 
 - (void)deleteTestDatabase {
@@ -63,7 +71,7 @@
 }
 
 - (DatabaseTestsHelper *)createAndOpenDatabaseWithPath:(NSString *)path migrated:(BOOL)migrated {
-    DatabaseTestsHelper *db = [[DatabaseTestsHelper alloc] initWithDatabasePath:path];
+    DatabaseTestsHelper *db = [[DatabaseTestsHelper alloc] initWithDatabasePath:path tripsFolederPath:self.testTripsPath];
     [db open:migrated];
     return db;
 }

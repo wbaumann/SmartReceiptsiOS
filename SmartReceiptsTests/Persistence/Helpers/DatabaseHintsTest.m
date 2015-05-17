@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "DatabaseTestsHelper.h"
 #import "DatabaseTableNames.h"
 #import "Database+Hints.h"
 
-@interface DatabaseHintsTest : DatabaseTestsBase
+@interface DatabaseHintsTest : SmartReceiptsTestsBase
 
 @end
 

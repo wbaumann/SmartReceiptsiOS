@@ -6,7 +6,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "DatabaseTableNames.h"
 #import "DatabaseTestsHelper.h"
 #import "Database+Functions.h"
@@ -18,7 +18,7 @@
 #import "Database+Distances.h"
 #import "WBReceipt.h"
 
-@interface DatabaseTripsTest : DatabaseTestsBase
+@interface DatabaseTripsTest : SmartReceiptsTestsBase
 
 @property (nonatomic, strong) WBTrip *trip;
 

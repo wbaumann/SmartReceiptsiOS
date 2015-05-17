@@ -14,11 +14,11 @@
 #import "ReportGenerator.h"
 #import "WBPreferences.h"
 #import "WBPreferencesTestHelper.h"
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "DatabaseTestsHelper.h"
 #import "DatabaseTableNames.h"
 
-@interface ReportGeneratorTest : DatabaseTestsBase
+@interface ReportGeneratorTest : SmartReceiptsTestsBase
 
 @property (nonatomic, strong) WBTrip *testTrip;
 

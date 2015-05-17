@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "DatabaseTestsBase.h"
+#import "SmartReceiptsTestsBase.h"
 #import "Database+PaymentMethods.h"
 #import "DatabaseTestsHelper.h"
 #import "PaymentMethod.h"
 #import "DatabaseTableNames.h"
 #import "WBReceipt.h"
 
-@interface DatabaseReceiptsPaymentMethodTest : DatabaseTestsBase
+@interface DatabaseReceiptsPaymentMethodTest : SmartReceiptsTestsBase
 
 @end
 
