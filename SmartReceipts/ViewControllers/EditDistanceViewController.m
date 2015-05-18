@@ -68,10 +68,7 @@
     [self.rateCell setTitle:NSLocalizedString(@"Rate", nil)];
     [self.rateCell activateDecimalEntryMode];
 
-    NSString *selectedCurrency = self.trip.price.currency.code;
-    if ([MULTI_CURRENCY isEqualToString:selectedCurrency]) {
-        selectedCurrency = [WBPreferences defaultCurrency];
-    }
+    NSString *selectedCurrency = [self.trip.defaultCurrency code];
 
     self.currencyCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
     [self.currencyCell setTitle:NSLocalizedString(@"Currency", nil) value:selectedCurrency];

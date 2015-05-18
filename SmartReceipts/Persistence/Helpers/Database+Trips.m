@@ -190,7 +190,6 @@
 
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:TripsTable.TABLE_NAME];
     [update addParam:TripsTable.COLUMN_PRICE value:price.amount];
-    [update addParam:TripsTable.COLUMN_DEFAULT_CURRENCY value:price.currency.code];
     [update where:TripsTable.COLUMN_NAME value:trip.name];
 
     [self executeQuery:update usingDatabase:database];
@@ -202,6 +201,7 @@
 
 - (WBPrice *)tripPrice:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
     NSDecimalNumber *total = [self totalPriceForTrip:trip usingDatabase:database];
+    //TODO jaanus: is this needed?
     NSString *currencyCode = [self aggregateCurrencyCodeForTrip:trip usingDatabase:database];
 
     return [WBPrice priceWithAmount:total currencyCode:currencyCode];
