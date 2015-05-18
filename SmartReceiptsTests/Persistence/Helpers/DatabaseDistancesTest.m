@@ -13,27 +13,44 @@
 #import "DatabaseTableNames.h"
 #import "Distance.h"
 #import "WBTrip.h"
-#import "WBPrice.h"
 #import "DatabaseTestsHelper.h"
-
-@interface Distance (TestExpose)
-
-- (id)initWithTrip:(WBTrip *)trip distance:(NSDecimalNumber *)distance rate:(WBPrice *)rate location:(NSString *)location date:(NSDate *)date timeZone:(NSTimeZone *)timeZone comment:(NSString *)comment;
-
-@end
+#import "Database+Distances.h"
 
 @interface DatabaseDistancesTest : SmartReceiptsTestsBase
+
+@property (nonatomic, strong) WBTrip *testTrip;
 
 @end
 
 @implementation DatabaseDistancesTest
 
+- (void)setUp {
+    [super setUp];
+
+    self.testTrip = [self.db createTestTrip];
+}
+
+
 - (void)testSaveDistance {
-    XCTAssertEqual(0, [self.db countRowsInTable:DistanceTable.TABLE_NAME]);
+    NSUInteger countBefore = [self.db countRowsInTable:DistanceTable.TABLE_NAME];
 
     [self.db insertTestDistance:@{}];
 
-    XCTAssertEqual(1, [self.db countRowsInTable:DistanceTable.TABLE_NAME]);
+    NSUInteger countAfter = [self.db countRowsInTable:DistanceTable.TABLE_NAME];
+
+    XCTAssertEqual(countBefore + 1, countAfter);
+}
+
+- (void)testDistanceTraveledForTrip {
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberWithString:@"20"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberWithString:@"20"]}];
+
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT: self.testTrip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberWithString:@"20"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT: self.testTrip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberWithString:@"30"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT: self.testTrip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberWithString:@"50"]}];
+
+    NSDecimalNumber *totalDistance = [self.db totalDistanceTraveledForTrip:self.testTrip];
+    XCTAssertEqualObjects([NSDecimalNumber decimalNumberWithString:@"100"], totalDistance);
 }
 
 @end

@@ -209,6 +209,8 @@
 		EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81BA1AEA861400BAC943 /* ReceiptUnknownColumn.m */; };
 		EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */; };
 		EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */; };
+		EA8EB1071B0A4AAF00780BA3 /* ReceiptColumnReportComment.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8EB1061B0A4AAF00780BA3 /* ReceiptColumnReportComment.m */; };
+		EA8EB10A1B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8EB1091B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m */; };
 		EA98B51C1B075042006935AE /* WBCellWithPriceNameDate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA98B51B1B075042006935AE /* WBCellWithPriceNameDate.m */; };
 		EA98B51E1B075057006935AE /* WBCellWithPriceNameDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA98B51D1B075057006935AE /* WBCellWithPriceNameDate.xib */; };
 		EA98B5211B077A9A006935AE /* NotifyMasterSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA98B5201B077A9A006935AE /* NotifyMasterSplitViewController.m */; };
@@ -594,6 +596,10 @@
 		EA8D81D21AEA956600BAC943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA8D81DB1AEA965D00BAC943 /* WBReportUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReportUtils.h; sourceTree = "<group>"; };
 		EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReportUtils.m; sourceTree = "<group>"; };
+		EA8EB1051B0A4AAF00780BA3 /* ReceiptColumnReportComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnReportComment.h; sourceTree = "<group>"; };
+		EA8EB1061B0A4AAF00780BA3 /* ReceiptColumnReportComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnReportComment.m; sourceTree = "<group>"; };
+		EA8EB1081B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnReportCostCenter.h; sourceTree = "<group>"; };
+		EA8EB1091B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnReportCostCenter.m; sourceTree = "<group>"; };
 		EA98B51A1B075042006935AE /* WBCellWithPriceNameDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCellWithPriceNameDate.h; sourceTree = "<group>"; };
 		EA98B51B1B075042006935AE /* WBCellWithPriceNameDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCellWithPriceNameDate.m; sourceTree = "<group>"; };
 		EA98B51D1B075057006935AE /* WBCellWithPriceNameDate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBCellWithPriceNameDate.xib; sourceTree = "<group>"; };
@@ -1298,6 +1304,10 @@
 				EA8D81A81AEA7C8E00BAC943 /* ReceiptColumnPrice.m */,
 				EA8D81B31AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.h */,
 				EA8D81B41AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m */,
+				EA8EB1051B0A4AAF00780BA3 /* ReceiptColumnReportComment.h */,
+				EA8EB1061B0A4AAF00780BA3 /* ReceiptColumnReportComment.m */,
+				EA8EB1081B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.h */,
+				EA8EB1091B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m */,
 				EA8D81921AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.h */,
 				EA8D81931AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.m */,
 				EA8D818C1AEA7BBC00BAC943 /* ReceiptColumnReportName.h */,
@@ -1763,6 +1773,7 @@
 				EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */,
 				8467EFE918F6E3170076BE6E /* WBImageSegue.m in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
+				EA8EB10A1B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m in Sources */,
 				EA4DC9921AF154E000CEF1B9 /* EditDistanceViewController.m in Sources */,
 				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
 				EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */,
@@ -1835,6 +1846,7 @@
 				EA8D81821AEA7B5800BAC943 /* ReceiptColumnBlank.m in Sources */,
 				8453368018F475E2001072AA /* WBAutocompleteHelper.m in Sources */,
 				EA8D818B1AEA7BA400BAC943 /* ReceiptColumnUserID.m in Sources */,
+				EA8EB1071B0A4AAF00780BA3 /* ReceiptColumnReportComment.m in Sources */,
 				EAD15C7A1B0881C2003BB1F3 /* ReceiptFilesManager.m in Sources */,
 				EA8D819D1AEA7C4200BAC943 /* ReceiptColumnComment.m in Sources */,
 				EA5963E31AF2912900935344 /* PickerCell.m in Sources */,

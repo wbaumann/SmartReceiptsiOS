@@ -30,6 +30,8 @@
 #import "ReceiptColumnReceiptIndex.h"
 #import "ReceiptUnknownColumn.h"
 #import "ReceiptColumnPaymentMethod.h"
+#import "ReceiptColumnReportComment.h"
+#import "ReceiptColumnReportCostCenter.h"
 
 static NSDictionary *__receiptColumnNameToClassMapping;
 
@@ -56,6 +58,8 @@ static NSDictionary *__receiptColumnNameToClassMapping;
             WBColumnNameExpensable : NSStringFromClass([ReceiptColumnExpensable class]),
             WBColumnNameIndex : NSStringFromClass([ReceiptColumnReceiptIndex class]),
             WBColumnNamePaymentMethod : NSStringFromClass([ReceiptColumnPaymentMethod class]),
+            WBColumnNameReportComment : NSStringFromClass([ReceiptColumnReportComment class]),
+            WBColumnNameReportCostCenter : NSStringFromClass([ReceiptColumnReportCostCenter class]),
     };
 }
 
@@ -100,6 +104,8 @@ static NSDictionary *__receiptColumnNameToClassMapping;
             WBColumnNameExpensable,
             WBColumnNameIndex,
             WBColumnNamePaymentMethod,
+            WBColumnNameReportComment,
+            WBColumnNameReportCostCenter,
     ] mutableCopy];
 
     [arr sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];

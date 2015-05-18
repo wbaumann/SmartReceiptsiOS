@@ -117,7 +117,7 @@
     [presentedCells addObject:self.endDateCell];
     [presentedCells addObject:self.currencyCell];
     [presentedCells addObject:self.commentCell];
-    if ([WBPreferences trackConstCenter]) {
+    if ([WBPreferences trackCostCenter]) {
         [presentedCells addObject:self.costCenterCell];
     }
 

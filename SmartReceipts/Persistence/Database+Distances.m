@@ -164,6 +164,13 @@
     return [self executeQuery:update usingDatabase:database];
 }
 
+- (NSDecimalNumber *)totalDistanceTraveledForTrip:(WBTrip *)trip {
+    DatabaseQueryBuilder *sum = [DatabaseQueryBuilder sumStatementForTable:DistanceTable.TABLE_NAME];
+    [sum setSumColumn:DistanceTable.COLUMN_DISTANCE];
+    [sum where:DistanceTable.COLUMN_PARENT value:trip.name];
+    return [self executeDecimalQuery:sum];
+}
+
 - (void)triggerPriceUpdateOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
     if (![WBPreferences isTheDistancePriceBeIncludedInReports]) {
         return;
