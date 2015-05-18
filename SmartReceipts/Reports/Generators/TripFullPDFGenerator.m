@@ -15,6 +15,7 @@
 #import "Database+Distances.h"
 #import "WBReceipt.h"
 #import "DistancesToReceiptsConverter.h"
+#import "NSString+Validation.h"
 
 @implementation TripFullPDFGenerator
 
@@ -41,8 +42,15 @@
                                                            [self.dateFormatter formattedDate:[self.trip endDate] inTimeZone:[self.trip endTimeZone]]
     ]];
 
-    [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"Distance Traveled: %.2f",
-                                                           [self.trip miles]]];
+    [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"Distance Traveled: %.2f", [self.database totalDistanceTraveledForTrip:self.trip].floatValue]];
+
+    if ([WBPreferences trackCostCenter] && self.trip.costCenter.hasValue) {
+        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Cost Center:", nil), self.trip.costCenter]];
+    }
+
+    if (self.trip.comment.hasValue) {
+        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Report Comment:", nil), self.trip.comment]];
+    }
 
     [self.pdfDrawer drawGap];
 

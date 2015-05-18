@@ -30,6 +30,8 @@ extern NSString * const WBColumnNamePictured;
 extern NSString * const WBColumnNameExpensable;
 extern NSString * const WBColumnNameIndex;
 extern NSString * const WBColumnNamePaymentMethod;
+extern NSString * const WBColumnNameReportComment;
+extern NSString * const WBColumnNameReportCostCenter;
 extern NSString * const WBColumnNameExtraEdittext1;
 extern NSString * const WBColumnNameExtraEdittext2;
 extern NSString * const WBColumnNameExtraEdittext3;

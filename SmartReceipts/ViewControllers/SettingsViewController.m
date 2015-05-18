@@ -271,7 +271,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     }
     [self.dateSeparatorCell setValues:separators selected:idx];
 
-    [self.costCenterCell setSwitchOn:[WBPreferences trackConstCenter]];
+    [self.costCenterCell setSwitchOn:[WBPreferences trackCostCenter]];
 
     self.cameraValues = @[@512, @1024, @0];
 
@@ -322,7 +322,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [WBPreferences setUserID:self.userIdCell.value];
     [WBPreferences setDefaultCurrency:[self.defaultCurrencyCell value]];
     [WBPreferences setDateSeparator:[self.dateSeparatorCell selectedValue]];
-    [WBPreferences setTrackConstCenter:[self.costCenterCell isSwitchOn]];
+    [WBPreferences setTrackCostCenter:[self.costCenterCell isSwitchOn]];
 
     NSNumber *cam = self.cameraValues[(NSUInteger) [self.cameraSettingsCell selectedSegmentIndex]];
     [WBPreferences setCameraMaxHeightWidth:[cam intValue]];
