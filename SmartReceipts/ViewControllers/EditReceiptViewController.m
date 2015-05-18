@@ -217,7 +217,7 @@
     } else {
         self.navigationItem.title = NSLocalizedString(@"New Receipt", nil);
 
-        currencyCode = [WBPreferences defaultCurrency];
+        currencyCode = [self.trip.defaultCurrency code];
 
         if ([WBPreferences defaultToFirstReportDate]) {
             _dateMs = [[_trip startDate] timeIntervalSince1970] * 1000;
