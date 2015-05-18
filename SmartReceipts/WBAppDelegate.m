@@ -121,7 +121,7 @@ void onUncaughtExcepetion(NSException* exception)
     } else if ([url.pathExtension caseInsensitiveCompare:@"pdf"] == NSOrderedSame) {
         NSLog(@"Launched for pdf");
         self.isFileImage = NO;
-        [self handleSMR:url];
+        [self handlePdfOrImage:url];
     } else if ([url.pathExtension caseInsensitiveCompare:@"smr"] == NSOrderedSame) {
         NSLog(@"Launched for smr");
         [self handleSMR:url];
