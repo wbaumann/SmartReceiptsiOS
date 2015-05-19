@@ -19,8 +19,8 @@
 #import "Database+Distances.h"
 #import "FetchedModelAdapter.h"
 #import "NSDate+Calculations.h"
-#import "WBFileManager.h"
 #import "Database+Notify.h"
+#import "ReceiptFilesManager.h"
 
 @interface WBTrip (Expose)
 
@@ -70,8 +70,7 @@
         if (trip.nameChanged) {
             [self moveReceiptsWithParent:trip.originalName toParent:trip.name usingDatabase:db];
             [self moveDistancesWithParent:trip.originalName toParent:trip.name usingDatabase:db];
-
-            [[NSFileManager defaultManager] moveItemAtPath:[trip directoryPathUsingName:trip.originalName] toPath:[trip directoryPath] error:nil];
+            [self.filesManager renameFolderForTrip:trip originalName:trip.originalName];
         }
     }];
 
@@ -157,14 +156,11 @@
     [delete where:TripsTable.COLUMN_NAME value:trip.name];
     BOOL result = [self executeQuery:delete usingDatabase:database];
     if (result) {
+        [self.filesManager deleteFolderForTrip:trip];
         [self deleteReceiptsForTrip:trip usingDatabase:database];
         [self deleteDistancesForTrip:trip usingDatabase:database];
 
         [self notifyDeleteOfModel:trip];
-    }
-
-    if (result) {
-        [WBFileManager deleteIfExists:[trip directoryPath]];
     }
 
     return result;
