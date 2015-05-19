@@ -68,4 +68,27 @@
     XCTAssertFalse([[NSFileManager defaultManager] fileExistsAtPath:originalPath]);
 }
 
+- (void)testTripFolderDelete {
+    WBTrip *trip = [self.db createTestTrip];
+    NSString *path = [self.db.filesManager receiptsFolderForTrip:trip];
+    [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+
+    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:path]);
+    [self.db.filesManager deleteFolderForTrip:trip];
+    XCTAssertFalse([[NSFileManager defaultManager] fileExistsAtPath:path]);
+}
+
+- (void)testTripFolderMove {
+    WBTrip *trip = [self.db createTestTrip];
+    NSString *path = [self.db.filesManager receiptsFolderForTrip:trip];
+    [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+
+    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:path]);
+    NSString *originalName = trip.name;
+    trip.name = @"Altered trip name";
+    [self.db.filesManager renameFolderForTrip:trip originalName:originalName];
+    XCTAssertFalse([[NSFileManager defaultManager] fileExistsAtPath:path]);
+    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:[self.db.filesManager receiptsFolderForTrip:trip]]);
+}
+
 @end

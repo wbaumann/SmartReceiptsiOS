@@ -110,6 +110,14 @@
     return filePath;
 }
 
+- (NSString *)receiptsFolderForTrip:(WBTrip *)trip {
+    return [self receiptsFolderForTripNamed:trip.name];
+}
+
+- (NSString *)receiptsFolderForTripNamed:(NSString *)tripName {
+    return [self.pathToTripsFolder stringByAppendingPathComponent:tripName];
+}
+
 - (void)ensureContainingFolderExists:(NSString *)filePath {
     SRLog(@"Ensure folder for path:%@", filePath);
     NSString *folderPath = [filePath substringToIndex:filePath.length - [filePath lastPathComponent].length];
@@ -118,6 +126,25 @@
     [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:&createFolderError];
     if (createFolderError) {
         SRLog(@"ensureContainingFolderExists:%@", createFolderError);
+    }
+}
+
+- (void)deleteFolderForTrip:(WBTrip *)trip {
+    NSString *path = [self receiptsFolderForTrip:trip];
+    NSError *deleteError = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:path error:&deleteError];
+    if (deleteError) {
+        SRLog(@"deleteFolderForTrip failed:%@", deleteError);
+    }
+}
+
+- (void)renameFolderForTrip:(WBTrip *)trip originalName:(NSString *)originalName {
+    NSString *originalPath = [self receiptsFolderForTripNamed:originalName];
+    NSString *destinationPath = [self receiptsFolderForTrip:trip];
+    NSError *moveError = nil;
+    [[NSFileManager defaultManager] moveItemAtPath:originalPath toPath:destinationPath error:&moveError];
+    if (moveError) {
+        SRLog(@"renameFolderForTrip error:%@", moveError);
     }
 }
 

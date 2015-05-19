@@ -20,5 +20,7 @@
 - (BOOL)copyFileForReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
 - (BOOL)moveFileForReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
 - (BOOL)deleteFileForReceipt:(WBReceipt *)receipt;
+- (void)deleteFolderForTrip:(WBTrip *)trip;
+- (void)renameFolderForTrip:(WBTrip *)trip originalName:(NSString *)originalName;
 
 @end
