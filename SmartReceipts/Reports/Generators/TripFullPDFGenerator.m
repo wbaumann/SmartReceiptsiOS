@@ -64,7 +64,7 @@
         rows = [rows sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
             WBReceipt *one = obj1;
             WBReceipt *two = obj2;
-            return [two.dateFromDateMs compare:one.dateFromDateMs];
+            return [two.date compare:one.date];
         }];
     }
 

@@ -165,4 +165,17 @@
     XCTAssertEqual(@"excluded", params[@"wname"]);
 }
 
+- (void)testRawQueryBuilder {
+    NSString *testRawQuery = @"SELECT strftime('%s', rcpt_date / 1000, 'unixepoch') - strftime('%s', :date) AS seconds from receipts where date(rcpt_date / 1000, 'unixepoch') = DATE(:date) ORDER BY seconds DESC LIMIT 1";
+    DatabaseQueryBuilder *statement = [DatabaseQueryBuilder rawQuery:testRawQuery];
+    NSDate *testDate = [NSDate date];
+    [statement addParam:@"date" value:testDate];
+
+    NSString *query = [statement buildStatement];
+    XCTAssertEqualObjects(testRawQuery, query, @"Got %@", query);
+
+    NSDictionary *params = [statement parameters];
+    XCTAssertEqualObjects(testDate, params[@"date"]);
+}
+
 @end

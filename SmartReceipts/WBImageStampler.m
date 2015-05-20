@@ -142,7 +142,7 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
     
     entry(NSLocalizedString(@"Name", nil), [receipt name]);
     entry(NSLocalizedString(@"Price", nil), [receipt priceWithCurrencyFormatted]);
-    entry(NSLocalizedString(@"Date", nil), [_dateFormatter formattedDate:[receipt dateFromDateMs] inTimeZone:[receipt timeZone]]);
+    entry(NSLocalizedString(@"Date", nil), [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]]);
     entry(NSLocalizedString(@"Category", nil), [receipt category]);
     entry(NSLocalizedString(@"Comment", nil), [receipt comment]);
     

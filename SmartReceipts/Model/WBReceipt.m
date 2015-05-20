@@ -15,6 +15,7 @@
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "DatabaseTableNames.h"
 #import "Constants.h"
+#import "NSDate+Calculations.h"
 
 static NSString * const NO_DATA = @"null";
 
@@ -34,7 +35,6 @@ static NSString* checkNoData(NSString* str) {
     NSString *_fileName;
     NSString *_name, *_category, *_comment;
     NSString *_extraEditText1, *_extraEditText2, *_extraEditText3;
-    long long _dateMs;
     NSTimeZone *_timeZone;
 }
 
@@ -46,7 +46,7 @@ static NSString* checkNoData(NSString* str) {
             name:(NSString *)name
         category:(NSString *)category
    imageFileName:(NSString *)imageFileName
-          dateMs:(long long)dateMs
+            date:(NSDate *)date
     timeZoneName:(NSString *)timeZoneName
          comment:(NSString *)comment
            price:(WBPrice *)price
@@ -63,9 +63,7 @@ static NSString* checkNoData(NSString* str) {
         _category = category;
         _fileName = checkNoData([imageFileName lastPathComponent]);
 
-        // _date = [NSDate dateWithTimeIntervalSince1970:(dateMs/1000)];
-        // NSDate store seconds so we have to store just milliseconds
-        _dateMs = dateMs;
+        _date = date;
 
         _timeZone = [NSTimeZone timeZoneWithName:timeZoneName];
         if (!_timeZone) {
@@ -91,10 +89,6 @@ static NSString* checkNoData(NSString* str) {
 
 -(NSString*)imageFileName {
     return _fileName;
-}
-
-- (long long) dateMs {
-    return _dateMs;
 }
 
 -(NSTimeZone*)timeZone {
@@ -145,10 +139,6 @@ static NSString* checkNoData(NSString* str) {
     return _extraEditText3;
 }
 
--(NSDate*) dateFromDateMs {
-    return [NSDate dateWithTimeIntervalSince1970:(_dateMs/1000)];
-}
-
 -(void)setImageFileName:(NSString*)imageFileName{
     _fileName = [imageFileName lastPathComponent];
 }
@@ -191,10 +181,6 @@ static NSString* checkNoData(NSString* str) {
     return [self fileHasExtension:@[@"pdf"]];
 }
 
--(void)setDateMs:(long long) dateMs {
-    self->_dateMs = dateMs;
-}
-
 - (NSString *)priceWithCurrencyFormatted {
     return self.price.currencyFormattedPrice;
 }
@@ -233,7 +219,7 @@ static NSString* checkNoData(NSString* str) {
     _extraEditText2 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2];
     _extraEditText3 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3];
     _timeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:ReceiptsTable.COLUMN_TIMEZONE]];
-    _dateMs = [resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE];
+    _date = [NSDate dateWithMilliseconds:[resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE]];
     [self setPaymentMethodId:(NSUInteger) [resultSet intForColumn:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID]];
     [self setTripName:[resultSet stringForColumn:ReceiptsTable.COLUMN_PARENT]];
 }

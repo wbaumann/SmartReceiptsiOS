@@ -8,6 +8,7 @@
 
 #import "WBReceiptsHelper.h"
 #import "WBSqlBuilder.h"
+#import "NSDate+Calculations.h"
 
 static NSString * const TABLE_NAME = @"receipts";
 static NSString * const COLUMN_ID = @"id";
@@ -47,8 +48,8 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
     
     __block BOOL result = NO;
     [_databaseQueue inTransaction:^(FMDatabase *database, BOOL *rollback) {
-        long long dateMs1 = [receipt1 dateMs];
-        long long dateMs2 = [receipt2 dateMs];
+        long long dateMs1 = [receipt1 date].milliseconds.longLongValue;
+        long long dateMs2 = [receipt2 date].milliseconds.longLongValue;
         
         if (dateMs1 == dateMs2) {
             if ([receipt1 receiptId] > [receipt2 receiptId]) {
@@ -64,8 +65,8 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
         if ([database executeUpdate:query, date1, @([receipt2 receiptId]) ]
             && [database executeUpdate:query, date2, @([receipt1 receiptId])]) {
             
-            [receipt1 setDateMs:dateMs2];
-            [receipt2 setDateMs:dateMs1];
+            [receipt1 setDate:[NSDate dateWithMilliseconds:dateMs2]];
+            [receipt2 setDate:[NSDate dateWithMilliseconds:dateMs1]];
             
             result = YES;
         } else {

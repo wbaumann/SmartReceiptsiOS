@@ -46,7 +46,7 @@
 
     XCTAssertEqual(6, receipts.count);
     for (WBReceipt *receipt in receipts) {
-        XCTAssertTrue([self hasSaneYear:receipt.dateFromDateMs]);
+        XCTAssertTrue([self hasSaneYear:receipt.date]);
     }
 }
 
@@ -69,7 +69,7 @@
 
     XCTAssertEqual(68, receipts.count);
     for (WBReceipt *receipt in receipts) {
-        XCTAssertTrue([self hasSaneYear:receipt.dateFromDateMs]);
+        XCTAssertTrue([self hasSaneYear:receipt.date]);
     }
 }
 

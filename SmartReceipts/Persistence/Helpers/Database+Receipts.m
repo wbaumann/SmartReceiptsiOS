@@ -7,6 +7,7 @@
 //
 
 #import <FMDB/FMDatabase.h>
+#import <sys/select.h>
 #import "Database+Receipts.h"
 #import "DatabaseTableNames.h"
 #import "Database+Functions.h"
@@ -22,6 +23,7 @@
 #import "PaymentMethod.h"
 #import "Database+Notify.h"
 #import "ReceiptFilesManager.h"
+#import "NSDate+Calculations.h"
 
 @implementation Database (Receipts)
 
@@ -69,6 +71,12 @@
 - (BOOL)insertReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:ReceiptsTable.TABLE_NAME];
     [self appendCommonValuesFromReceipt:receipt toQuery:insert];
+
+    // Do some second magic for insert order. This should give
+    NSTimeInterval secondsToAdd = [self maxSecondForReceiptsInTrip:receipt.trip onDate:receipt.date usingDatabase:database] + 1;
+    NSDate *modifiedInsertDate = [receipt.date.dateAtBeginningOfDay dateByAddingTimeInterval:secondsToAdd];
+    [insert addParam:ReceiptsTable.COLUMN_DATE value:modifiedInsertDate.milliseconds];
+
     BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {
         [self updatePriceOfTrip:receipt.trip usingDatabase:database];
@@ -201,6 +209,7 @@
 - (FetchedModelAdapter *)fetchedReceiptsAdapterForTrip:(WBTrip *)trip {
     DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
     [select where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    [select orderBy:ReceiptsTable.COLUMN_DATE ascending:NO];
     return [self createAdapterUsingQuery:select forModel:[WBReceipt class] associatedModel:trip];
 }
 
@@ -248,7 +257,7 @@
     [query addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];
     [query addParam:ReceiptsTable.COLUMN_NAME value:[receipt.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     [query addParam:ReceiptsTable.COLUMN_CATEGORY value:receipt.category];
-    [query addParam:ReceiptsTable.COLUMN_DATE value:@(receipt.dateMs)];
+    [query addParam:ReceiptsTable.COLUMN_DATE value:receipt.date.milliseconds];
     [query addParam:ReceiptsTable.COLUMN_TIMEZONE value:receipt.timeZone.name];
     [query addParam:ReceiptsTable.COLUMN_EXPENSEABLE value:@(receipt.isExpensable)];
     [query addParam:ReceiptsTable.COLUMN_ISO4217 value:receipt.price.currency.code];
@@ -259,6 +268,25 @@
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2 value:[Database extraInsertValue:receipt.extraEditText2]];
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3 value:[Database extraInsertValue:receipt.extraEditText3]];
     [query addParam:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID value:@(receipt.paymentMethod.objectId)];
+}
+
+- (NSTimeInterval)maxSecondForReceiptsInTrip:(WBTrip *)trip onDate:(NSDate *)date {
+    __block double result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self maxSecondForReceiptsInTrip:trip onDate:date usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (NSTimeInterval)maxSecondForReceiptsInTrip:(WBTrip *)trip onDate:(NSDate *)date usingDatabase:(FMDatabase *)database {
+    NSDate *beginningOfDay = [date dateAtBeginningOfDay];
+    NSString *query = @"SELECT (strftime('%s', rcpt_date / 1000, 'unixepoch') - strftime('%s', :date_start, 'unixepoch')) AS seconds FROM receipts WHERE parent = :parent AND rcpt_date / 1000  >= :date_start AND rcpt_date / 1000 < :date_end ORDER BY rcpt_date DESC LIMIT 1";
+    DatabaseQueryBuilder *selectSeconds = [DatabaseQueryBuilder rawQuery:query];
+    [selectSeconds addParam:@"date_start" value:@(beginningOfDay.timeIntervalSince1970)];
+    [selectSeconds addParam:@"date_end" value:@([beginningOfDay dateByAddingDays:1].timeIntervalSince1970)];
+    [selectSeconds addParam:@"parent" value:[trip name]];
+    return [self executeDoubleQuery:selectSeconds usingDatabase:database];
 }
 
 @end

@@ -90,7 +90,7 @@
     return [NSString stringWithFormat:@"%ld  \u2022  %@  \u2022  %@",
                                       (long)receipt.reportIndex,
                                       [receipt name],
-                                      [self.dateFormatter formattedDate:[receipt dateFromDateMs] inTimeZone:[receipt timeZone]]];
+                                      [self.dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]]];
 }
 
 - (void)drawFullPageReceipt:(WBReceipt *)receipt {

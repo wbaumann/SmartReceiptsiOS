@@ -173,7 +173,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
     cell.priceField.text = [receipt priceWithCurrencyFormatted];
     cell.nameField.text = [receipt name];
-    cell.dateField.text = [_dateFormatter formattedDate:[receipt dateFromDateMs] inTimeZone:[receipt timeZone]];
+    cell.dateField.text = [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]];
 
     [cell.priceWidthConstraint setConstant:_priceWidth];
 }
