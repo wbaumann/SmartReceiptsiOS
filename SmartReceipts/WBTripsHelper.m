@@ -102,23 +102,6 @@ static NSString * const NO_DATA = @"null";
     return array;
 }
 
--(BOOL) deleteWithName:(NSString*) name {
-    NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@ = ?", TABLE_NAME, COLUMN_NAME];
-
-    __block BOOL result;
-    [_databaseQueue inDatabase:^(FMDatabase* database){
-        // 'ON DELETE CASCADE' should take care of receipts but doesn't
-        result = [database executeUpdate:query, name];
-
-        [[WBDB receipts] deleteWithParent:name inDatabase:database];
-
-        if (_cachedCount != -1) {
-            --_cachedCount;
-        }
-    }];
-    return result;
-}
-
 #pragma mark - merge
 
 // NSArray doesn't accept nils so we have to check them

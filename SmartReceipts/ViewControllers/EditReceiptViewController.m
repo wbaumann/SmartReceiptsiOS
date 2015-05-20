@@ -329,9 +329,7 @@
         }
     }
 
-    if (self.receipt.objectId == 0 && [[Database sharedInstance] saveReceipt:self.receipt]) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } else if ([[Database sharedInstance] updateReceipt:self.receipt]) {
+    if ([[Database sharedInstance] saveReceipt:self.receipt]) {
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot add this receipt", nil)];

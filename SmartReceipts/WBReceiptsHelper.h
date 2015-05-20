@@ -18,7 +18,6 @@
 
 - (id)initWithDatabaseQueue:(FMDatabaseQueue*) db;
 
--(BOOL) deleteWithParent:(NSString*) parent inDatabase:(FMDatabase*) database;
 -(BOOL) swapReceipt:(WBReceipt*) receipt1 andReceipt:(WBReceipt*) receipt2;
 
 +(BOOL) mergeDatabase:(FMDatabase*) currDB withDatabase:(FMDatabase*) importDB overwrite:(BOOL) overwrite;

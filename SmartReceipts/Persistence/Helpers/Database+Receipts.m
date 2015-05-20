@@ -20,7 +20,6 @@
 #import "Database+Trips.h"
 #import "Database+PaymentMethods.h"
 #import "PaymentMethod.h"
-#import "WBFileManager.h"
 #import "Database+Notify.h"
 #import "ReceiptFilesManager.h"
 
@@ -60,6 +59,14 @@
 }
 
 - (BOOL)saveReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
+    if (receipt.objectId == 0) {
+        return [self insertReceipt:receipt usingDatabase:database];
+    } else {
+        return [self updateReceipt:receipt usingDatabase:database];
+    }
+}
+
+- (BOOL)insertReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:ReceiptsTable.TABLE_NAME];
     [self appendCommonValuesFromReceipt:receipt toQuery:insert];
     BOOL result = [self executeQuery:insert usingDatabase:database];
@@ -67,15 +74,6 @@
         [self updatePriceOfTrip:receipt.trip usingDatabase:database];
         [self notifyInsertOfModel:receipt];
     }
-    return result;
-}
-
-- (BOOL)updateReceipt:(WBReceipt *)receipt {
-    __block BOOL result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self updateReceipt:receipt usingDatabase:db];
-    }];
-
     return result;
 }
 
@@ -225,7 +223,7 @@
 
         WBTrip *original = receipt.trip;
         [receipt setTrip:trip];
-        result = [self saveReceipt:receipt usingDatabase:db];
+        result = [self insertReceipt:receipt usingDatabase:db];
         [receipt setTrip:original];
 
         [self notifyInsertOfModel:receipt];
@@ -240,7 +238,7 @@
 
         [self deleteReceipt:receipt usingDatabase:db];
         [receipt setTrip:trip];
-        result = [self saveReceipt:receipt usingDatabase:db];
+        result = [self insertReceipt:receipt usingDatabase:db];
     }];
     return result;
 }
