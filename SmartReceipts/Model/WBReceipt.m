@@ -28,6 +28,8 @@ static NSString* checkNoData(NSString* str) {
 
 @interface WBReceipt ()
 
+@property (nonatomic, strong) NSDate *originalDate;
+
 @end
 
 @implementation WBReceipt
@@ -127,6 +129,19 @@ static NSString* checkNoData(NSString* str) {
     return self.price.currency;
 }
 
+- (BOOL)dateChanged {
+    return ![self.date isEqualToDate:self.originalDate];
+}
+
+- (void)setDate:(NSDate *)date {
+    _date = date;
+
+    if (!self.originalDate) {
+        [self setOriginalDate:date];
+    }
+}
+
+
 -(NSString*)extraEditText1 {
     return _extraEditText1;
 }
@@ -219,7 +234,7 @@ static NSString* checkNoData(NSString* str) {
     _extraEditText2 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2];
     _extraEditText3 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3];
     _timeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:ReceiptsTable.COLUMN_TIMEZONE]];
-    _date = [NSDate dateWithMilliseconds:[resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE]];
+    [self setDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE]]];
     [self setPaymentMethodId:(NSUInteger) [resultSet intForColumn:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID]];
     [self setTripName:[resultSet stringForColumn:ReceiptsTable.COLUMN_PARENT]];
 }

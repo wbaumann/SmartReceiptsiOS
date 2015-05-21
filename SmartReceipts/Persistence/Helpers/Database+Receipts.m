@@ -24,6 +24,12 @@
 #import "ReceiptFilesManager.h"
 #import "NSDate+Calculations.h"
 
+@interface WBReceipt (Expose)
+
+- (BOOL)dateChanged;
+
+@end
+
 @implementation Database (Receipts)
 
 - (BOOL)createReceiptsTable {
@@ -71,9 +77,7 @@
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:ReceiptsTable.TABLE_NAME];
     [self appendCommonValuesFromReceipt:receipt toQuery:insert];
 
-    // Do some second magic for insert order. This should give
-    NSTimeInterval secondsToAdd = [self maxSecondForReceiptsInTrip:receipt.trip onDate:receipt.date usingDatabase:database] + 1;
-    NSDate *modifiedInsertDate = [receipt.date.dateAtBeginningOfDay dateByAddingTimeInterval:secondsToAdd];
+    NSDate *modifiedInsertDate = [self dateWithSecondsModifiedForTrip:receipt.trip basedOnDate:receipt.date usingDatabase:database];
     [insert addParam:ReceiptsTable.COLUMN_DATE value:modifiedInsertDate.milliseconds];
 
     BOOL result = [self executeQuery:insert usingDatabase:database];
@@ -87,14 +91,23 @@
 - (BOOL)updateReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
     [self appendCommonValuesFromReceipt:receipt toQuery:update];
+    if (receipt.dateChanged) {
+        NSDate *modifiedInsertDate = [self dateWithSecondsModifiedForTrip:receipt.trip basedOnDate:receipt.date usingDatabase:database];
+        [update addParam:ReceiptsTable.COLUMN_DATE value:modifiedInsertDate.milliseconds];
+    }
     [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
-    //TODO jaanus: on date change do some magic
     BOOL result = [self executeQuery:update usingDatabase:database];
     if (result) {
         [self updatePriceOfTrip:receipt.trip usingDatabase:database];
         [self notifyUpdateOfModel:receipt];
     }
     return result;
+}
+
+- (NSDate *)dateWithSecondsModifiedForTrip:(WBTrip *)trip basedOnDate:(NSDate *)date usingDatabase:(FMDatabase *)database {
+    // Do some second magic for insert order. This should give always unique receipt time
+    NSTimeInterval secondsToAdd = [self maxSecondForReceiptsInTrip:trip onDate:date usingDatabase:database] + 1;
+    return [date.dateAtBeginningOfDay dateByAddingTimeInterval:secondsToAdd];
 }
 
 - (BOOL)deleteReceipt:(WBReceipt *)receipt {

@@ -34,6 +34,10 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
     return NO;
 }
 
+- (NSTimeInterval)secondsOfDay {
+    return [self timeIntervalSince1970] - [[self dateAtBeginningOfDay] timeIntervalSince1970];
+}
+
 - (NSNumber *)milliseconds {
     return @((long long int)([self timeIntervalSince1970] * 1000));
 }
