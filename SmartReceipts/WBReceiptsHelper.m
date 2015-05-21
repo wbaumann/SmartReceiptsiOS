@@ -43,39 +43,6 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
     return self;
 }
 
--(BOOL) swapReceipt:(WBReceipt*) receipt1 andReceipt:(WBReceipt*) receipt2 {
-    NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ? WHERE %@ = ?", TABLE_NAME, COLUMN_DATE, COLUMN_ID];
-    
-    __block BOOL result = NO;
-    [_databaseQueue inTransaction:^(FMDatabase *database, BOOL *rollback) {
-        long long dateMs1 = [receipt1 date].milliseconds.longLongValue;
-        long long dateMs2 = [receipt2 date].milliseconds.longLongValue;
-        
-        if (dateMs1 == dateMs2) {
-            if ([receipt1 receiptId] > [receipt2 receiptId]) {
-                dateMs1++;
-            } else {
-                dateMs2++;
-            }
-        }
-        
-        NSNumber *date1 = @(dateMs1);
-        NSNumber *date2 = @(dateMs2);
-        
-        if ([database executeUpdate:query, date1, @([receipt2 receiptId]) ]
-            && [database executeUpdate:query, date2, @([receipt1 receiptId])]) {
-            
-            [receipt1 setDate:[NSDate dateWithMilliseconds:dateMs2]];
-            [receipt2 setDate:[NSDate dateWithMilliseconds:dateMs1]];
-            
-            result = YES;
-        } else {
-            *rollback = YES;
-        }
-    }];
-    return result;
-}
-
 #pragma mark - merge
 
 // NSArray doesn't accept nils so we have to check them

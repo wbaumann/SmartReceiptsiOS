@@ -20,6 +20,7 @@
 NSString *const DatabaseDidInsertModelNotification = @"DatabaseDidInsertModelNotification";
 NSString *const DatabaseDidDeleteModelNotification = @"DatabaseDidDeleteModelNotification";
 NSString *const DatabaseDidUpdateModelNotification = @"DatabaseDidUpdateModelNotification";
+NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotification";
 
 @interface Database ()
 

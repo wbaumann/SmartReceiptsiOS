@@ -150,4 +150,8 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
     SRLog(@"tappedObject:atIndexPath:%@", indexPath);
 }
 
+- (NSUInteger)indexOfObject:(id)object {
+    return [self.presentedObjects indexForObject:object];
+}
+
 @end

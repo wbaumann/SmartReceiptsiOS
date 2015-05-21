@@ -31,5 +31,6 @@
 - (BOOL)updateReceipt:(WBReceipt *)receipt changeFileNameTo:(NSString *)fileName;
 - (BOOL)copyReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
 - (BOOL)moveReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
+- (BOOL)swapReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo;
 
 @end

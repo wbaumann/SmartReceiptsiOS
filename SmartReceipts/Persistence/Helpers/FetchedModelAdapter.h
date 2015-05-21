@@ -26,5 +26,6 @@
 - (void)fetch;
 - (void)fetchUsingDatabase:(FMDatabase *)database;
 - (NSArray *)allObjects;
+- (NSUInteger)indexForObject:(id)object;
 
 @end

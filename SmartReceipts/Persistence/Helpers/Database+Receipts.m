@@ -7,7 +7,6 @@
 //
 
 #import <FMDB/FMDatabase.h>
-#import <sys/select.h>
 #import "Database+Receipts.h"
 #import "DatabaseTableNames.h"
 #import "Database+Functions.h"
@@ -89,6 +88,7 @@
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
     [self appendCommonValuesFromReceipt:receipt toQuery:update];
     [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
+    //TODO jaanus: on date change do some magic
     BOOL result = [self executeQuery:update usingDatabase:database];
     if (result) {
         [self updatePriceOfTrip:receipt.trip usingDatabase:database];
@@ -250,6 +250,31 @@
         result = [self insertReceipt:receipt usingDatabase:db];
     }];
     return result;
+}
+
+- (BOOL)swapReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self swapReceipt:receiptOne withReceipt:receiptTwo usingDatabase:db];
+    }];
+
+    if (result) {
+        [self notifySwapOfModels:@[receiptOne, receiptTwo]];
+    }
+
+    return result;
+}
+
+- (BOOL)swapReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo usingDatabase:(FMDatabase *)database {
+    return [self setDateTo:receiptOne.date onReceipt:receiptTwo usingDatabase:database]
+            && [self setDateTo:receiptTwo.date onReceipt:receiptOne usingDatabase:database];
+}
+
+- (BOOL)setDateTo:(NSDate *)date onReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
+    [update addParam:ReceiptsTable.COLUMN_DATE value:date.milliseconds];
+    [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
+    return [self executeQuery:update usingDatabase:database];
 }
 
 - (void)appendCommonValuesFromReceipt:(WBReceipt *)receipt toQuery:(DatabaseQueryBuilder *)query {
