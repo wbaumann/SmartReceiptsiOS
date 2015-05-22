@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="YkJ-tY-f5f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="zEU-Xc-4u1">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
@@ -611,6 +611,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYg-uM-MSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2525" y="-2332"/>
+        </scene>
+        <!--Ad Presenting Container View Controller-->
+        <scene sceneID="0Uh-fY-MVm">
+            <objects>
+                <viewController id="zEU-Xc-4u1" customClass="AdPresentingContainerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YER-L6-9Ch"/>
+                        <viewControllerLayoutGuide type="bottom" id="jai-dX-lod"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TYi-he-Fjv">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DND-L1-jlQ">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="934"/>
+                                <connections>
+                                    <segue destination="YkJ-tY-f5f" kind="embed" id="ufl-OI-yFg"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJl-WX-H17" userLabel="Ad view">
+                                <rect key="frame" x="0.0" y="934" width="768" height="90"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="67f-lR-Q6j"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jai-dX-lod" firstAttribute="top" secondItem="GJl-WX-H17" secondAttribute="bottom" id="1J4-gt-fgm"/>
+                            <constraint firstItem="GJl-WX-H17" firstAttribute="leading" secondItem="TYi-he-Fjv" secondAttribute="leading" id="GrC-KF-8MC"/>
+                            <constraint firstAttribute="trailing" secondItem="DND-L1-jlQ" secondAttribute="trailing" id="Iko-1o-aSM"/>
+                            <constraint firstItem="DND-L1-jlQ" firstAttribute="top" secondItem="TYi-he-Fjv" secondAttribute="top" id="OQC-Lj-SHb"/>
+                            <constraint firstItem="DND-L1-jlQ" firstAttribute="leading" secondItem="TYi-he-Fjv" secondAttribute="leading" id="RCs-8t-CXE"/>
+                            <constraint firstItem="GJl-WX-H17" firstAttribute="top" secondItem="DND-L1-jlQ" secondAttribute="bottom" id="iW0-oM-1lf"/>
+                            <constraint firstAttribute="trailing" secondItem="GJl-WX-H17" secondAttribute="trailing" id="nnw-ej-3lm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="adContainerHeight" destination="67f-lR-Q6j" id="B5a-zE-QfT"/>
+                        <outlet property="adContainerView" destination="GJl-WX-H17" id="66q-F1-hKe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CuC-sO-jld" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1048" y="-1214"/>
         </scene>
         <!--Notify Master Split View Controller-->
         <scene sceneID="ejl-Yh-6jH">

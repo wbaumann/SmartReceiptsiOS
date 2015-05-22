@@ -14,7 +14,6 @@
 #import "WBObservableTrips.h"
 #import "WBObservableTripsBrowser.h"
 
-#import "GADBannerViewDelegate.h"
 #import "FetchedCollectionTableViewController.h"
 
 extern NSString *const PresentTripDetailsSegueIdentifier;

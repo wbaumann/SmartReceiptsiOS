@@ -11,8 +11,6 @@
 #import "WBDB.h"
 #import "WBDateFormatter.h"
 #import "WBPreferences.h"
-#import "GADMasterViewController.h"
-#import "GADBannerView.h"
 #import "WBCustomization.h"
 #import "UIView+LoadHelpers.h"
 #import "FetchedModelAdapter.h"
@@ -21,14 +19,13 @@
 
 NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 
-@interface TripsViewController () <GADBannerViewDelegate>
+@interface TripsViewController ()
 
 @property (nonatomic, assign) CGFloat priceWidth;
 @property (nonatomic, strong) WBDateFormatter *dateFormatter;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *settingsButton;
 @property (nonatomic, strong) WBTrip *lastShownTrip;
 @property (nonatomic, copy) NSString *lastDateSeparator;
-@property (nonatomic, strong) IBOutlet NSLayoutConstraint *adConstraint;
 
 @end
 
@@ -61,33 +58,12 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
     self.settingsButton.title = @"\u2699";
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"Helvetica" size:24.0], NSFontAttributeName, nil];
     [self.settingsButton setTitleTextAttributes:dict forState:UIControlStateNormal];
-
-    GADMasterViewController *sharedAdController = [GADMasterViewController sharedInstance];
-    [sharedAdController resetAdView:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
     [self updateEditButton];
-}
-
-- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
-    if (self.adConstraint) {
-        bannerView.frame = CGRectMake(0.0,
-                self.view.frame.size.height -
-                        bannerView.frame.size.height,
-                bannerView.frame.size.width,
-                bannerView.frame.size.height);
-        [self.view addSubview:bannerView];
-        self.adConstraint.constant = 50.0f;
-    }
-}
-
-- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
-    if (self.adConstraint) {
-        self.adConstraint.constant = 0.0f;
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
