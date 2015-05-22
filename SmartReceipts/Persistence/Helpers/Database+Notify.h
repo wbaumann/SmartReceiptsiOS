@@ -15,5 +15,6 @@
 - (void)notifyInsertOfModel:(id<FetchedModel>)model;
 - (void)notifyUpdateOfModel:(id<FetchedModel>)model;
 - (void)notifyDeleteOfModel:(id<FetchedModel>)model;
+- (void)notifySwapOfModels:(NSArray *)models;
 
 @end

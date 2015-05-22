@@ -7,17 +7,12 @@
 //
 
 #import "EditReceiptViewController.h"
-
 #import "WBReceiptsViewController.h"
-
 #import "WBDateFormatter.h"
-
 #import "WBCurrency.h"
-
 #import "WBDB.h"
 #import "WBPreferences.h"
 #import "WBFileManager.h"
-
 #import "WBAutocompleteHelper.h"
 #import "WBPrice.h"
 #import "NSDecimalNumber+WBNumberParse.h"
@@ -37,6 +32,7 @@
 #import "StringPickableWrapper.h"
 #import "PaymentMethod.h"
 #import "Database+Receipts.h"
+#import "NSDate+Calculations.h"
 
 @interface EditReceiptViewController ()
 
@@ -202,7 +198,7 @@
         [self.priceCell setValue:[self.receipt priceAsString]];
         [self.taxCell setValue:[self.receipt taxAsString]];
         currencyCode = [[self.receipt currency] code];
-        _dateMs = [self.receipt dateMs];
+        _dateMs = [self.receipt date].milliseconds.longLongValue;
         category = [self.receipt category];
         [self.commentCell setValue:[self.receipt comment]];
         [self.expensableCell setSwitchOn:[self.receipt isExpensable]];
@@ -306,7 +302,7 @@
 
     [self.receipt setName:name];
     [self.receipt setCategory:self.categoryCell.value];
-    [self.receipt setDateMs:_dateMs];
+    [self.receipt setDate:[NSDate dateWithMilliseconds:_dateMs]];
     [self.receipt setTimeZone:_timeZone];
     [self.receipt setPrice:[WBPrice priceWithAmount:price currencyCode:currencyCode]];
     [self.receipt setTax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]];
@@ -329,9 +325,7 @@
         }
     }
 
-    if (self.receipt.objectId == 0 && [[Database sharedInstance] saveReceipt:self.receipt]) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } else if ([[Database sharedInstance] updateReceipt:self.receipt]) {
+    if ([[Database sharedInstance] saveReceipt:self.receipt]) {
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot add this receipt", nil)];

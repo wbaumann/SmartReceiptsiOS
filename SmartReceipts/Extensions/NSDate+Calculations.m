@@ -19,7 +19,9 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
 }
 
 - (NSDate *)dateByAddingDays:(NSInteger)daysToAdd {
-    return [self dateByAddingTimeInterval:60 * 60 * 24 * daysToAdd];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    components.day = daysToAdd;
+    return [[NSDate gregorian] dateByAddingComponents:components toDate:self options:NSCalendarWrapComponents];
 }
 
 - (BOOL)isOnSameDate:(NSDate *)date {
@@ -30,6 +32,10 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
     return otherComponents.year == myComponents.year && otherComponents.month == myComponents.month && otherComponents.day == myComponents.day;
 
     return NO;
+}
+
+- (NSTimeInterval)secondsOfDay {
+    return [self timeIntervalSince1970] - [[self dateAtBeginningOfDay] timeIntervalSince1970];
 }
 
 - (NSNumber *)milliseconds {
@@ -48,6 +54,19 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
 
 + (NSDate *)dateWithMilliseconds:(long long int)milliseconds {
     return [NSDate dateWithTimeIntervalSince1970:(milliseconds / 1000.0)];
+}
+
+- (NSDate *)dateAtBeginningOfDay {
+    return [NSDate dateForUnit:NSCalendarUnitDay beforeDate:self];
+}
+
++ (NSDate *)dateForUnit:(NSCalendarUnit)unit beforeDate:(NSDate *)date {
+    NSDate *result;
+    [[NSDate gregorian] rangeOfUnit:unit
+                          startDate:&result
+                           interval:0
+                            forDate:date];
+    return result;
 }
 
 @end

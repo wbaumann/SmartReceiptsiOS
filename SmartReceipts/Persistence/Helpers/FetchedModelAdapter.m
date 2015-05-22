@@ -32,6 +32,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didInsertObject:) name:DatabaseDidInsertModelNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDeleteObject:) name:DatabaseDidDeleteModelNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateObject:) name:DatabaseDidUpdateModelNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSwapObjects:) name:DatabaseDidSwapModelsNotification object:nil];
     }
     return self;
 }
@@ -99,6 +100,15 @@
     [self refreshContentAndNotifyUpdateChanges:updated];
 }
 
+- (void)didSwapObjects:(NSNotification *)notification {
+    NSArray *models = [notification object];
+    if (![models.firstObject isKindOfClass:self.modelClass]) {
+        return;
+    }
+
+    [self refreshContentAndNotifySwapChanges:models];
+}
+
 - (void)refreshContentAndNotifyUpdateChanges:(NSObject *)updated {
     NSArray *before = [NSArray arrayWithArray:self.models];
     [self fetch];
@@ -156,6 +166,17 @@
     [self.delegate didChangeContent];
 }
 
+- (void)refreshContentAndNotifySwapChanges:(NSArray *)swapped {
+    [self fetch];
+
+    [self.delegate willChangeContent];
+    for (NSObject<FetchedModel> *model in swapped) {
+        NSUInteger index = [self indexForObject:model];
+        [self.delegate didUpdateObject:model atIndex:index];
+    }
+    [self.delegate didChangeContent];
+}
+
 - (void)clearNotificationListener {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -208,5 +229,9 @@
     [self setAssociatedSelector:NSSelectorFromString(selectorPattern)];
 }
 
+
+- (NSUInteger)indexForObject:(id)object {
+    return [self.models indexOfObject:object];
+}
 
 @end

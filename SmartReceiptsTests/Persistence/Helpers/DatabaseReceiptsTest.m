@@ -45,7 +45,7 @@
     receipt.name = testName;
     PaymentMethod *testMethod = [[self.db allPaymentMethods] firstObject];
     receipt.paymentMethod = testMethod;
-    [self.db updateReceipt:receipt];
+    [self.db saveReceipt:receipt];
 
     NSUInteger countAfter = [self.db countRowsInTable:ReceiptsTable.TABLE_NAME];
     XCTAssertEqual(countBefore, countAfter);

@@ -173,4 +173,26 @@
     return adapter;
 }
 
+- (double)executeDoubleQuery:(DatabaseQueryBuilder *)query usingDatabase:(FMDatabase *)database {
+    NSString *statement = [query buildStatement];
+    NSDictionary *parameters = [query parameters];
+
+    SRLog(@"Execute query: '%@'", statement);
+    SRLog(@"With parameters: %@", parameters);
+
+    TICK;
+
+    double result = 0;
+    FMResultSet *resultSet = [database executeQuery:statement withParameterDictionary:parameters];
+
+    if ([resultSet next] && [resultSet columnCount] > 0) {
+        result = [resultSet doubleForColumnIndex:0];
+        [resultSet close];
+    }
+
+    TOCK(@"Seconds query time");
+
+    return result;
+}
+
 @end

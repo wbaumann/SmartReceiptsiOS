@@ -32,7 +32,7 @@
 }
 
 -(void) addReceipt:(WBReceipt*) receipt {
-    int pos = [self findIndexForDateMs:[receipt dateMs]];
+    int pos = [self findIndexForDateMs:[receipt date]];
     [array insertObject:receipt atIndex:pos];
     [self.delegate observableReceipts:self addedReceipt:receipt atIndex:pos];
 }
@@ -47,7 +47,7 @@
     int oldPos = (int)[array indexOfObject:oldReceipt];
     [array removeObjectAtIndex:oldPos];
     
-    int newPos = [self findIndexForDateMs:[newReceipt dateMs]];
+    int newPos = [self findIndexForDateMs:[newReceipt date]];
     [array insertObject:newReceipt atIndex:newPos];
     
     [self.delegate observableReceipts:self replacedReceipt:oldReceipt toReceipt:newReceipt fromIndex:oldPos toIndex:newPos];
@@ -70,7 +70,7 @@
     const int count = (int)[array count];
     int i = 0;
     for (; i<count; ++i) {
-        long long oed = [[self receiptAtIndex:i] dateMs];
+        long long oed = [[self receiptAtIndex:i] date];
         if (dateMs >= oed) {
             return i;
         }

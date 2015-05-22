@@ -15,6 +15,7 @@ typedef NS_ENUM(short, StatementType) {
     DeleteStatement = 3,
     SumStatement = 4,
     SelectAllStatement = 5,
+    RqwQuery = 6,
 };
 
 @interface DatabaseQueryBuilder ()
@@ -26,6 +27,7 @@ typedef NS_ENUM(short, StatementType) {
 @property (nonatomic, strong) NSMutableDictionary *where;
 @property (nonatomic, strong) NSDictionary *orderBy;
 @property (nonatomic, strong) NSMutableArray *caseInsensitiveWhereParams;
+@property (nonatomic, copy) NSString *rawQuery;
 
 @end
 
@@ -74,6 +76,12 @@ typedef NS_ENUM(short, StatementType) {
     [self.values addObject:paramValue];
 }
 
++ (DatabaseQueryBuilder *)rawQuery:(NSString *)rawQuery {
+    DatabaseQueryBuilder *builder = [[DatabaseQueryBuilder alloc] initStatementForTable:@"" statementType:RqwQuery];
+    [builder setRawQuery:rawQuery];
+    return builder;
+}
+
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue fallback:(NSObject *)valueFallback {
     NSObject *value = paramValue ? paramValue : valueFallback;
     [self addParam:paramName value:value];
@@ -95,6 +103,10 @@ typedef NS_ENUM(short, StatementType) {
 }
 
 - (NSString *)buildStatement {
+    if (self.statement == RqwQuery) {
+        return self.rawQuery;
+    }
+
     NSMutableString *query = [NSMutableString string];
     if (self.statement == InsertStatement) {
         [query appendString:@"INSERT INTO "];

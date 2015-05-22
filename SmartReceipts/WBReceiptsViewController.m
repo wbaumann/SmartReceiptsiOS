@@ -173,7 +173,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
     cell.priceField.text = [receipt priceWithCurrencyFormatted];
     cell.nameField.text = [receipt name];
-    cell.dateField.text = [_dateFormatter formattedDate:[receipt dateFromDateMs] inTimeZone:[receipt timeZone]];
+    cell.dateField.text = [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]];
 
     [cell.priceWidthConstraint setConstant:_priceWidth];
 }
@@ -187,36 +187,29 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [[Database sharedInstance] deleteReceipt:object];
 }
 
-//- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return YES;
-//}
+- (void)swapReceiptAtIndex:(NSUInteger)idx1 withReceiptAtIndex:(NSUInteger)idx2 {
+    WBReceipt *rec1 = [self objectAtIndexPath:[NSIndexPath indexPathForRow:idx1 inSection:0]];
+    WBReceipt *rec2 = [self objectAtIndexPath:[NSIndexPath indexPathForRow:idx2 inSection:0]];
 
-- (void) swapReceiptAtIndex:(int) idx1 withReceiptAtIndex:(int) idx2 {
-    WBReceipt *rec1 = [_receipts receiptAtIndex:idx1];
-    WBReceipt *rec2 = [_receipts receiptAtIndex:idx2];
-    
-    if([[WBDB receipts] swapReceipt:rec1 andReceipt:rec2]) {
-        [_receipts swapReceiptAtIndex:idx1 withReceiptAtIndex:idx2];
-    } else {
-        NSLog(@"Error: cannot swap");
+    if (![[Database sharedInstance] swapReceipt:rec1 withReceipt:rec2]) {
+        SRLog(@"Error: cannot swap");
     }
 }
 
-- (void) swapUpReceipt:(WBReceipt*) receipt {
-    NSUInteger idx = [_receipts indexOfReceipt:receipt];
+- (void)swapUpReceipt:(WBReceipt *)receipt {
+    NSUInteger idx = [self indexOfObject:receipt];
     if (idx == 0 || idx == NSNotFound) {
         return;
     }
-    [self swapReceiptAtIndex:(int)idx withReceiptAtIndex:(int)(idx-1)];
+    [self swapReceiptAtIndex:idx withReceiptAtIndex:(idx - 1)];
 }
 
-- (void) swapDownReceipt:(WBReceipt*) receipt {
-    NSUInteger idx = [_receipts indexOfReceipt:receipt];
-    if (idx >= ([_receipts count]-1) || idx == NSNotFound) {
+- (void)swapDownReceipt:(WBReceipt *)receipt {
+    NSUInteger idx = [self indexOfObject:receipt];
+    if (idx >= ([self numberOfItems] - 1) || idx == NSNotFound) {
         return;
     }
-    [self swapReceiptAtIndex:(int)idx withReceiptAtIndex:(int)(idx+1)];
+    [self swapReceiptAtIndex:idx withReceiptAtIndex:(idx + 1)];
 }
 
 - (BOOL)attachPdfOrImageFile:(NSString *)oldFile toReceipt:(WBReceipt *)receipt {

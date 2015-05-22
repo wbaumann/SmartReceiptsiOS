@@ -20,9 +20,15 @@
 #import "Database+Trips.h"
 #import "Database+PaymentMethods.h"
 #import "PaymentMethod.h"
-#import "WBFileManager.h"
 #import "Database+Notify.h"
 #import "ReceiptFilesManager.h"
+#import "NSDate+Calculations.h"
+
+@interface WBReceipt (Expose)
+
+- (BOOL)dateChanged;
+
+@end
 
 @implementation Database (Receipts)
 
@@ -60,8 +66,20 @@
 }
 
 - (BOOL)saveReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
+    if (receipt.objectId == 0) {
+        return [self insertReceipt:receipt usingDatabase:database];
+    } else {
+        return [self updateReceipt:receipt usingDatabase:database];
+    }
+}
+
+- (BOOL)insertReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:ReceiptsTable.TABLE_NAME];
     [self appendCommonValuesFromReceipt:receipt toQuery:insert];
+
+    NSDate *modifiedInsertDate = [self dateWithSecondsModifiedForTrip:receipt.trip basedOnDate:receipt.date usingDatabase:database];
+    [insert addParam:ReceiptsTable.COLUMN_DATE value:modifiedInsertDate.milliseconds];
+
     BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {
         [self updatePriceOfTrip:receipt.trip usingDatabase:database];
@@ -70,18 +88,13 @@
     return result;
 }
 
-- (BOOL)updateReceipt:(WBReceipt *)receipt {
-    __block BOOL result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self updateReceipt:receipt usingDatabase:db];
-    }];
-
-    return result;
-}
-
 - (BOOL)updateReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
     [self appendCommonValuesFromReceipt:receipt toQuery:update];
+    if (receipt.dateChanged) {
+        NSDate *modifiedInsertDate = [self dateWithSecondsModifiedForTrip:receipt.trip basedOnDate:receipt.date usingDatabase:database];
+        [update addParam:ReceiptsTable.COLUMN_DATE value:modifiedInsertDate.milliseconds];
+    }
     [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
     BOOL result = [self executeQuery:update usingDatabase:database];
     if (result) {
@@ -89,6 +102,12 @@
         [self notifyUpdateOfModel:receipt];
     }
     return result;
+}
+
+- (NSDate *)dateWithSecondsModifiedForTrip:(WBTrip *)trip basedOnDate:(NSDate *)date usingDatabase:(FMDatabase *)database {
+    // Do some second magic for insert order. This should give always unique receipt time
+    NSTimeInterval secondsToAdd = [self maxSecondForReceiptsInTrip:trip onDate:date usingDatabase:database] + 1;
+    return [date.dateAtBeginningOfDay dateByAddingTimeInterval:secondsToAdd];
 }
 
 - (BOOL)deleteReceipt:(WBReceipt *)receipt {
@@ -203,6 +222,7 @@
 - (FetchedModelAdapter *)fetchedReceiptsAdapterForTrip:(WBTrip *)trip {
     DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
     [select where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    [select orderBy:ReceiptsTable.COLUMN_DATE ascending:NO];
     return [self createAdapterUsingQuery:select forModel:[WBReceipt class] associatedModel:trip];
 }
 
@@ -225,7 +245,7 @@
 
         WBTrip *original = receipt.trip;
         [receipt setTrip:trip];
-        result = [self saveReceipt:receipt usingDatabase:db];
+        result = [self insertReceipt:receipt usingDatabase:db];
         [receipt setTrip:original];
 
         [self notifyInsertOfModel:receipt];
@@ -240,9 +260,34 @@
 
         [self deleteReceipt:receipt usingDatabase:db];
         [receipt setTrip:trip];
-        result = [self saveReceipt:receipt usingDatabase:db];
+        result = [self insertReceipt:receipt usingDatabase:db];
     }];
     return result;
+}
+
+- (BOOL)swapReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self swapReceipt:receiptOne withReceipt:receiptTwo usingDatabase:db];
+    }];
+
+    if (result) {
+        [self notifySwapOfModels:@[receiptOne, receiptTwo]];
+    }
+
+    return result;
+}
+
+- (BOOL)swapReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo usingDatabase:(FMDatabase *)database {
+    return [self setDateTo:receiptOne.date onReceipt:receiptTwo usingDatabase:database]
+            && [self setDateTo:receiptTwo.date onReceipt:receiptOne usingDatabase:database];
+}
+
+- (BOOL)setDateTo:(NSDate *)date onReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
+    [update addParam:ReceiptsTable.COLUMN_DATE value:date.milliseconds];
+    [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
+    return [self executeQuery:update usingDatabase:database];
 }
 
 - (void)appendCommonValuesFromReceipt:(WBReceipt *)receipt toQuery:(DatabaseQueryBuilder *)query {
@@ -250,7 +295,7 @@
     [query addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];
     [query addParam:ReceiptsTable.COLUMN_NAME value:[receipt.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     [query addParam:ReceiptsTable.COLUMN_CATEGORY value:receipt.category];
-    [query addParam:ReceiptsTable.COLUMN_DATE value:@(receipt.dateMs)];
+    [query addParam:ReceiptsTable.COLUMN_DATE value:receipt.date.milliseconds];
     [query addParam:ReceiptsTable.COLUMN_TIMEZONE value:receipt.timeZone.name];
     [query addParam:ReceiptsTable.COLUMN_EXPENSEABLE value:@(receipt.isExpensable)];
     [query addParam:ReceiptsTable.COLUMN_ISO4217 value:receipt.price.currency.code];
@@ -261,6 +306,25 @@
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2 value:[Database extraInsertValue:receipt.extraEditText2]];
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3 value:[Database extraInsertValue:receipt.extraEditText3]];
     [query addParam:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID value:@(receipt.paymentMethod.objectId)];
+}
+
+- (NSTimeInterval)maxSecondForReceiptsInTrip:(WBTrip *)trip onDate:(NSDate *)date {
+    __block double result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self maxSecondForReceiptsInTrip:trip onDate:date usingDatabase:db];
+    }];
+
+    return result;
+}
+
+- (NSTimeInterval)maxSecondForReceiptsInTrip:(WBTrip *)trip onDate:(NSDate *)date usingDatabase:(FMDatabase *)database {
+    NSDate *beginningOfDay = [date dateAtBeginningOfDay];
+    NSString *query = @"SELECT (strftime('%s', rcpt_date / 1000, 'unixepoch') - strftime('%s', :date_start, 'unixepoch')) AS seconds FROM receipts WHERE parent = :parent AND rcpt_date / 1000  >= :date_start AND rcpt_date / 1000 < :date_end ORDER BY rcpt_date DESC LIMIT 1";
+    DatabaseQueryBuilder *selectSeconds = [DatabaseQueryBuilder rawQuery:query];
+    [selectSeconds addParam:@"date_start" value:@(beginningOfDay.timeIntervalSince1970)];
+    [selectSeconds addParam:@"date_end" value:@([beginningOfDay dateByAddingDays:1].timeIntervalSince1970)];
+    [selectSeconds addParam:@"parent" value:[trip name]];
+    return [self executeDoubleQuery:selectSeconds usingDatabase:database];
 }
 
 @end

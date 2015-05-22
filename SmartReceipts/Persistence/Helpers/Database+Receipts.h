@@ -19,8 +19,6 @@
 - (BOOL)createReceiptsTable;
 - (BOOL)saveReceipt:(WBReceipt *)receipt;
 - (BOOL)saveReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database;
-- (BOOL)updateReceipt:(WBReceipt *)receipt;
-- (BOOL)updateReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database;
 - (BOOL)deleteReceipt:(WBReceipt *)receipt;
 - (BOOL)deleteReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database;
 - (NSArray *)allReceiptsForTrip:(WBTrip *)trip descending:(BOOL)desc;
@@ -33,5 +31,6 @@
 - (BOOL)updateReceipt:(WBReceipt *)receipt changeFileNameTo:(NSString *)fileName;
 - (BOOL)copyReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
 - (BOOL)moveReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
+- (BOOL)swapReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo;
 
 @end

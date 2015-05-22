@@ -18,7 +18,6 @@
 
 - (NSArray *)selectAllInDatabase:(FMDatabase *)database;
 - (NSArray *)selectAll;
-- (BOOL)deleteWithName:(NSString *)name;
 
 + (BOOL)mergeDatabase:(FMDatabase *)currDB withDatabase:(FMDatabase *)importDB overwrite:(BOOL)overwrite;
 

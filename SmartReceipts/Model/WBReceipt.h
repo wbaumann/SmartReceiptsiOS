@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSTimeZone *timeZone;
 @property (nonatomic, assign, getter=isExpensable) BOOL expensable;
 @property (nonatomic, assign, getter=isFullPage) BOOL fullPage;
+@property (nonatomic, strong) NSDate *date;
 
 +(NSString*) NO_DATA;
 
@@ -36,7 +37,7 @@
             name:(NSString *)name
         category:(NSString *)category
    imageFileName:(NSString *)imageFileName
-          dateMs:(long long)dateMs
+            date:(NSDate *)date
     timeZoneName:(NSString *)timeZoneName
          comment:(NSString *)comment
            price:(WBPrice *)price
@@ -49,7 +50,6 @@
 
 -(NSUInteger)receiptId;
 -(NSString*)imageFileName;
--(long long)dateMs;
 -(NSTimeZone*)timeZone;
 
 -(NSString*)name;
@@ -58,15 +58,12 @@
 - (NSString *)priceAsString;
 - (NSString *)taxAsString;
 - (NSDecimalNumber *)priceAmount;
--(NSDecimalNumber*)tax_as_nsdecnum;
 -(WBCurrency*)currency;
 -(BOOL)isExpensable;
 -(BOOL)isFullPage;
 -(NSString*)extraEditText1;
 -(NSString*)extraEditText2;
 -(NSString*)extraEditText3;
-
--(NSDate*) dateFromDateMs;
 
 -(void)setImageFileName:(NSString*)imageFileName;
 
@@ -80,8 +77,6 @@
 
 -(BOOL)hasImageFileName;
 -(BOOL)hasPDFFileName;
-
--(void)setDateMs:(long long) dateMs;
 
 -(NSString*)priceWithCurrencyFormatted;
 -(NSString*)taxWithCurrencyFormatted;

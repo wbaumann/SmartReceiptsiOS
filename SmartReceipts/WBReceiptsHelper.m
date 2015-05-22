@@ -8,6 +8,7 @@
 
 #import "WBReceiptsHelper.h"
 #import "WBSqlBuilder.h"
+#import "NSDate+Calculations.h"
 
 static NSString * const TABLE_NAME = @"receipts";
 static NSString * const COLUMN_ID = @"id";
@@ -40,44 +41,6 @@ static NSString * const COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3";
         self->_databaseQueue = db;
     }
     return self;
-}
-
--(BOOL) deleteWithParent:(NSString*) parent inDatabase:(FMDatabase*) database {
-    NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@ = ?", TABLE_NAME, COLUMN_PARENT];
-    return [database executeUpdate:query, parent];
-}
-
--(BOOL) swapReceipt:(WBReceipt*) receipt1 andReceipt:(WBReceipt*) receipt2 {
-    NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET %@ = ? WHERE %@ = ?", TABLE_NAME, COLUMN_DATE, COLUMN_ID];
-    
-    __block BOOL result = NO;
-    [_databaseQueue inTransaction:^(FMDatabase *database, BOOL *rollback) {
-        long long dateMs1 = [receipt1 dateMs];
-        long long dateMs2 = [receipt2 dateMs];
-        
-        if (dateMs1 == dateMs2) {
-            if ([receipt1 receiptId] > [receipt2 receiptId]) {
-                dateMs1++;
-            } else {
-                dateMs2++;
-            }
-        }
-        
-        NSNumber *date1 = @(dateMs1);
-        NSNumber *date2 = @(dateMs2);
-        
-        if ([database executeUpdate:query, date1, @([receipt2 receiptId]) ]
-            && [database executeUpdate:query, date2, @([receipt1 receiptId])]) {
-            
-            [receipt1 setDateMs:dateMs2];
-            [receipt2 setDateMs:dateMs1];
-            
-            result = YES;
-        } else {
-            *rollback = YES;
-        }
-    }];
-    return result;
 }
 
 #pragma mark - merge

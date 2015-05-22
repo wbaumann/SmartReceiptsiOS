@@ -68,7 +68,7 @@
                                     name:name
                                 category:category
                            imageFileName:nil
-                                  dateMs:(long long int) ([date timeIntervalSince1970] * 1000)
+                                    date:date
                             timeZoneName:timeZone.name
                                  comment:nil
                                    price:[WBPrice priceWithAmount:totalPrice currencyCode:currency]

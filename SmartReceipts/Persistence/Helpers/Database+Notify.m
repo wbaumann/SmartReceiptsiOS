@@ -23,6 +23,12 @@
     [self postNotificationWithName:DatabaseDidDeleteModelNotification withObject:model];
 }
 
+- (void)notifySwapOfModels:(NSArray *)models {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidSwapModelsNotification object:models];
+    });
+}
+
 - (void)postNotificationWithName:(NSString *)notificationName withObject:(id<FetchedModel>)model {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:model];
