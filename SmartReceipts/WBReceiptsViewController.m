@@ -33,8 +33,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
 @interface WBReceiptsViewController ()
 {
-    WBObservableReceipts *_receipts;
-    
     // ugly, but segues are limited
     UIImage *_imageForCreatorSegue;
     WBReceipt *_receiptForCretorSegue;
@@ -125,11 +123,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
                                                            [self.trip name], [self.trip priceWithCurrencyFormatted]];
 }
 
--(void)updateTrip {
-    [self.delegate viewController:self updatedTrip:self.trip];
-    [self updateTitle];
-}
-
 - (void)updatePricesWidth {
     CGFloat w = [self computePriceWidth];
     if (w == _priceWidth) {
@@ -155,11 +148,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
     maxWidth = MIN(maxWidth, CGRectGetWidth(self.view.bounds) / 2);
     return MAX(CGRectGetWidth(self.view.bounds) / 6, maxWidth);
-}
-
-- (void) notifyReceiptRemoved:(WBReceipt*) receipt {
-    [_receipts removeReceipt:receipt];
-    [self updateTrip];
 }
 
 - (NSUInteger)receiptsCount {
@@ -298,49 +286,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     }
 
     [self setTapped:nil];
-}
-
--(void)viewController:(EditReceiptViewController *)viewController updatedReceipt:(WBReceipt *)newReceipt fromReceipt:(WBReceipt *)oldReceipt {
-    [_receipts replaceReceipt:oldReceipt toReceipt:newReceipt];
-}
-
--(void)observableReceipts:(WBObservableReceipts *)observableReceipts replacedReceipt:(WBReceipt *)oldReceipt toReceipt:(WBReceipt *)newReceipt fromIndex:(int)oldIndex toIndex:(int)newIndex {
-    
-    [self.tableView beginUpdates];
-    
-    if (oldIndex == newIndex) {
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:oldIndex inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-    } else {
-        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:oldIndex inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-        
-        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:newIndex inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    
-    [self.tableView endUpdates];
-    
-    [self updateTrip];
-    [self updatePricesWidth];
-}
-
--(void)observableReceipts:(WBObservableReceipts *)observableReceipts removedReceipt:(WBReceipt *)receipt atIndex:(int)index {
-    NSIndexPath *ip = [NSIndexPath indexPathForRow:index inSection:0];
-    [self.tableView beginUpdates];
-    [self.tableView deleteRowsAtIndexPaths:@[ip] withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
-    
-    [self updateTrip];
-    [self updateEditButton];
-    [self updatePricesWidth];
-}
-
--(void)observableReceipts:(WBObservableReceipts *)observableReceipts swappedReceiptAtIndex:(int)idx1 withReceiptAtIndex:(int)idx2 {
-    [self.tableView beginUpdates];
-    [self.tableView
-     reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx1 inSection:0],[NSIndexPath indexPathForRow:idx2 inSection:0]]
-     withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
-    
-    [self updatePricesWidth];
 }
 
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated

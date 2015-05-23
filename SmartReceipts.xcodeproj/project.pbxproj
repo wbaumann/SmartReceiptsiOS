@@ -66,9 +66,7 @@
 		84ABAD0918DB79D900F8D3EB /* WBCategoriesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABAD0818DB79D900F8D3EB /* WBCategoriesHelper.m */; };
 		84ABAD0C18DB7B4400F8D3EB /* WBColumnsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABAD0B18DB7B4400F8D3EB /* WBColumnsHelper.m */; };
 		84AEE5CD18EB47AB005DB908 /* WBMoveCopyReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AEE5CC18EB47AB005DB908 /* WBMoveCopyReceiptViewController.m */; };
-		84AEE5D318EB54EF005DB908 /* WBObservableTripsBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AEE5D218EB54EF005DB908 /* WBObservableTripsBrowser.m */; };
 		84AF861018E895CF00F15C3A /* WBDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF860F18E895CF00F15C3A /* WBDateFormatter.m */; };
-		84B4691E18E98838006E7A77 /* WBObservableReceipts.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B4691D18E98838006E7A77 /* WBObservableReceipts.m */; };
 		84D6719718D3392D00B704A4 /* dropdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D6719618D3392D00B704A4 /* dropdown.png */; };
 		84D6719B18D34E4900B704A4 /* WBCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6719A18D34E4900B704A4 /* WBCurrency.m */; };
 		84DCAAE318E4B48A00ECAECC /* WBPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DCAAE218E4B48A00ECAECC /* WBPreferences.m */; };
@@ -352,12 +350,8 @@
 		84ABAD0B18DB7B4400F8D3EB /* WBColumnsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnsHelper.m; sourceTree = "<group>"; };
 		84AEE5CB18EB47AB005DB908 /* WBMoveCopyReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMoveCopyReceiptViewController.h; sourceTree = "<group>"; };
 		84AEE5CC18EB47AB005DB908 /* WBMoveCopyReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMoveCopyReceiptViewController.m; sourceTree = "<group>"; };
-		84AEE5D118EB54EF005DB908 /* WBObservableTripsBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBObservableTripsBrowser.h; sourceTree = "<group>"; };
-		84AEE5D218EB54EF005DB908 /* WBObservableTripsBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBObservableTripsBrowser.m; sourceTree = "<group>"; };
 		84AF860E18E895CF00F15C3A /* WBDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDateFormatter.h; sourceTree = "<group>"; };
 		84AF860F18E895CF00F15C3A /* WBDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDateFormatter.m; sourceTree = "<group>"; };
-		84B4691C18E98838006E7A77 /* WBObservableReceipts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBObservableReceipts.h; sourceTree = "<group>"; };
-		84B4691D18E98838006E7A77 /* WBObservableReceipts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBObservableReceipts.m; sourceTree = "<group>"; };
 		84D6719618D3392D00B704A4 /* dropdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropdown.png; sourceTree = "<group>"; };
 		84D6719918D34E4900B704A4 /* WBCurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCurrency.h; sourceTree = "<group>"; };
 		84D6719A18D34E4900B704A4 /* WBCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCurrency.m; sourceTree = "<group>"; };
@@ -896,10 +890,6 @@
 			children = (
 				84A73C3518E74C9900D35A57 /* WBObservableTrips.h */,
 				84A73C3618E74C9900D35A57 /* WBObservableTrips.m */,
-				84B4691C18E98838006E7A77 /* WBObservableReceipts.h */,
-				84B4691D18E98838006E7A77 /* WBObservableReceipts.m */,
-				84AEE5D118EB54EF005DB908 /* WBObservableTripsBrowser.h */,
-				84AEE5D218EB54EF005DB908 /* WBObservableTripsBrowser.m */,
 			);
 			name = collections;
 			sourceTree = "<group>";
@@ -1772,7 +1762,6 @@
 				8478B77318D37BFB0041CBA3 /* WBCategoriesViewController.m in Sources */,
 				EA3C96AD1AECC95100A2A5F9 /* TripImagesPDFGenerator.m in Sources */,
 				EA0677ED1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m in Sources */,
-				84AEE5D318EB54EF005DB908 /* WBObservableTripsBrowser.m in Sources */,
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
 				EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */,
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
@@ -1841,7 +1830,6 @@
 				EA07BF631AF4EC1E004D17F6 /* FetchedCollectionTableViewController.m in Sources */,
 				EA3C969B1AEBA93000A2A5F9 /* ReportCSVGenerator.m in Sources */,
 				EA07BF661AF51854004D17F6 /* FetchedModelAdapter.m in Sources */,
-				84B4691E18E98838006E7A77 /* WBObservableReceipts.m in Sources */,
 				EA07BF561AF4D129004D17F6 /* DatabaseQueryBuilder.m in Sources */,
 				EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */,
 				EA888A761AFA3D3F00DF2AE6 /* NumberInputValidation.m in Sources */,

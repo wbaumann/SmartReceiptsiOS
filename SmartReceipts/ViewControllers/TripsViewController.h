@@ -12,7 +12,6 @@
 #import "WBReceiptsViewController.h"
 
 #import "WBObservableTrips.h"
-#import "WBObservableTripsBrowser.h"
 
 #import "FetchedCollectionTableViewController.h"
 
