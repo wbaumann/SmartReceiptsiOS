@@ -43,7 +43,6 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 @property (nonatomic, strong) NSArray *cameraValues;
 
-@property (nonatomic, strong) SettingsTopTitledTextEntryCell *emailCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultTripLengthCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *minReportablePriceCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *userIdCell;
@@ -68,6 +67,11 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) SettingsButtonCell *configureCSVColumnsCell;
 
 @property (nonatomic, strong) SettingsButtonCell *configurePDFColumnsCell;
+
+@property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultEmailRecipientCell;
+@property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultEmailCCCell;
+@property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultEmailBCCCell;
+@property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultEmailSubjectCell;
 
 @property (nonatomic, strong) SwitchControlCell *addDistancePriceToReportCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *gasRateCell;
@@ -102,9 +106,31 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.tableView registerNib:[SettingsButtonCell viewNib] forCellReuseIdentifier:[SettingsButtonCell cellIdentifier]];
 
 
-    self.emailCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
-    [self.emailCell setTitle:NSLocalizedString(@"Default Email Recipient", nil)];
-    [self.emailCell activateEmailMode];
+    self.defaultEmailRecipientCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
+    [self.defaultEmailRecipientCell setTitle:NSLocalizedString(@"Default Email To Recipient", nil)];
+    [self.defaultEmailRecipientCell setPlaceholder:NSLocalizedString(@"Separate entries with a semicolon (;)", nil)];
+    [self.defaultEmailRecipientCell activateEmailMode];
+
+    self.defaultEmailCCCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
+    [self.defaultEmailCCCell setTitle:NSLocalizedString(@"Default Email CC Recipient", nil)];
+    [self.defaultEmailCCCell setPlaceholder:NSLocalizedString(@"Separate entries with a semicolon (;)", nil)];
+    [self.defaultEmailCCCell activateEmailMode];
+
+    self.defaultEmailBCCCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
+    [self.defaultEmailBCCCell setTitle:NSLocalizedString(@"Default Email BBC Recipient", nil)];
+    [self.defaultEmailBCCCell setPlaceholder:NSLocalizedString(@"Separate entries with a semicolon (;)", nil)];
+    [self.defaultEmailBCCCell activateEmailMode];
+
+    self.defaultEmailSubjectCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
+    [self.defaultEmailSubjectCell setTitle:NSLocalizedString(@"Default Email Subject", nil)];
+    [self.defaultEmailSubjectCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
+
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Email", nil) cells:@[
+            self.defaultEmailRecipientCell,
+            self.defaultEmailCCCell,
+            self.defaultEmailBCCCell,
+            self.defaultEmailSubjectCell
+    ]]];
 
     self.defaultTripLengthCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
     [self.defaultTripLengthCell setTitle:NSLocalizedString(@"Default Trip Length (Days)", nil)];
@@ -166,8 +192,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.customizePaymentMethodsCell setTitle:NSLocalizedString(@"Customize Payment Methods", nil)];
 
     InputCellsSection *general = [InputCellsSection sectionWithTitle:NSLocalizedString(@"General", nil)
-                                                               cells:@[self.emailCell,
-                                                                       self.defaultTripLengthCell,
+                                                               cells:@[self.defaultTripLengthCell,
                                                                        self.minReportablePriceCell,
                                                                        self.userIdCell,
                                                                        self.defaultCurrencyCell,
@@ -235,7 +260,11 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 }
 
 - (void)populateValues {
-    [self.emailCell setValue:[WBPreferences defaultEmailReceipient]];
+    [self.defaultEmailRecipientCell setValue:[WBPreferences defaultEmailRecipient]];
+    [self.defaultEmailCCCell setValue:[WBPreferences defaultEmailCC]];
+    [self.defaultEmailBCCCell setValue:[WBPreferences defaultEmailBCC]];
+    [self.defaultEmailSubjectCell setValue:[WBPreferences defaultEmailSubject]];
+
     [self.defaultTripLengthCell setValue:[NSString stringWithFormat:@"%d",[WBPreferences defaultTripDuration]]];
 
     double price = [WBPreferences minimumReceiptPriceToIncludeInReports];
@@ -318,7 +347,10 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [WBPreferences setMinimumReceiptPriceToIncludeInReports:[WBPreferences MIN_FLOAT]];
     }
 
-    [WBPreferences setDefaultEmailReceipient:self.emailCell.value];
+    [WBPreferences setDefaultEmailRecipient:self.defaultEmailRecipientCell.value];
+    [WBPreferences setDefaultEmailCC:self.defaultEmailCCCell.value];
+    [WBPreferences setDefaultEmailBCC:self.defaultEmailBCCCell.value];
+    [WBPreferences setDefaultEmailSubject:self.defaultEmailSubjectCell.value];
     [WBPreferences setUserID:self.userIdCell.value];
     [WBPreferences setDefaultCurrency:[self.defaultCurrencyCell value]];
     [WBPreferences setDateSeparator:[self.dateSeparatorCell selectedValue]];
@@ -377,7 +409,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     // forward our navbar tint color to mail composer
     [mc.navigationBar setTintColor:[UINavigationBar appearance].tintColor];
 
-    [mc setToRecipients:@[[WBPreferences defaultEmailReceipient]]];
+    [mc setToRecipients:@[[WBPreferences defaultEmailRecipient]]];
     [mc addAttachmentData:data
                  mimeType:@"application/octet-stream"
                  fileName:@"SmartReceipts.smr"];

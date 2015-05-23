@@ -16,6 +16,9 @@
 static const float MIN_FLOAT = -FLT_MAX;
 
 static NSString * const STRING_DEFAULT_EMAIL_TO = @"EmailTo";
+static NSString * const STRING_DEFAULT_EMAIL_CC = @"EmailCC";
+static NSString * const STRING_DEFAULT_EMAIL_BCC = @"EmailBCC";
+static NSString * const STRING_DEFAULT_EMAIL_SUBJECT = @"EmailSubject";
 static NSString * const INT_DEFAULT_TRIP_DURATION = @"TripDuration";
 static NSString * const STRING_USERNAME = @"UserName";
 static NSString * const BOOL_PREDICT_CATEGORIES = @"PredictCats";
@@ -64,7 +67,11 @@ static NSDictionary *getEntryTypes() {
     return @{
             INT_DEFAULT_TRIP_DURATION : tInt,
             FLOAT_MIN_RECEIPT_PRICE : tFloat,
+
             STRING_DEFAULT_EMAIL_TO : tString,
+            STRING_DEFAULT_EMAIL_CC : tString,
+            STRING_DEFAULT_EMAIL_BCC : tString,
+            STRING_DEFAULT_EMAIL_SUBJECT : tString,
 
             BOOL_PREDICT_CATEGORIES : tBool,
             BOOL_USE_NATIVE_CAMERA : tBool,
@@ -112,6 +119,9 @@ static NSDictionary *getDefaultValues() {
             INT_DEFAULT_TRIP_DURATION : @3,
             FLOAT_MIN_RECEIPT_PRICE : @(MIN_FLOAT),
             STRING_DEFAULT_EMAIL_TO : @"",
+            STRING_DEFAULT_EMAIL_CC : @"",
+            STRING_DEFAULT_EMAIL_BCC : @"",
+            STRING_DEFAULT_EMAIL_SUBJECT : NSLocalizedString(@"SmartReceipts - %REPORT_NAME%", nil),
 
             BOOL_PREDICT_CATEGORIES : @YES,
             BOOL_USE_NATIVE_CAMERA : @NO,
@@ -207,11 +217,36 @@ static NSUserDefaults* instance() {
     [instance() setBool:enableAutoCompleteSuggestions forKey:BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS];
 }
 
-+(NSString*) defaultEmailReceipient {
++ (NSString *)defaultEmailRecipient {
     return [instance() stringForKey:STRING_DEFAULT_EMAIL_TO];
 }
-+(void) setDefaultEmailReceipient:(NSString*) defaultEmailReceipient {
+
++ (void)setDefaultEmailRecipient:(NSString *)defaultEmailReceipient {
     [instance() setObject:defaultEmailReceipient forKey:STRING_DEFAULT_EMAIL_TO];
+}
+
++ (NSString *)defaultEmailCC {
+    return [instance() stringForKey:STRING_DEFAULT_EMAIL_CC];
+}
+
++ (void)setDefaultEmailCC:(NSString *)defaultEmailReceipient {
+    [instance() setObject:defaultEmailReceipient forKey:STRING_DEFAULT_EMAIL_CC];
+}
+
++ (NSString *)defaultEmailBCC {
+    return [instance() stringForKey:STRING_DEFAULT_EMAIL_BCC];
+}
+
++ (void)setDefaultEmailBCC:(NSString *)defaultEmailReceipient {
+    [instance() setObject:defaultEmailReceipient forKey:STRING_DEFAULT_EMAIL_BCC];
+}
+
++ (NSString *)defaultEmailSubject {
+    return [instance() stringForKey:STRING_DEFAULT_EMAIL_SUBJECT];
+}
+
++ (void)setDefaultEmailSubject:(NSString *)value {
+    [instance() setObject:value forKey:STRING_DEFAULT_EMAIL_SUBJECT];
 }
 
 +(NSString*) defaultCurrency {

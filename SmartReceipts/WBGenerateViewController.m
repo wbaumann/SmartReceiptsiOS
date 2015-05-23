@@ -125,7 +125,7 @@
     mc.mailComposeDelegate = self;
     [mc setSubject:NSLocalizedString(@"Smart Receipts",nil)];
     [mc setMessageBody:messageBody isHTML:NO];
-    [mc setToRecipients:@[[WBPreferences defaultEmailReceipient]]];
+    [mc setToRecipients:@[[WBPreferences defaultEmailRecipient]]];
     
     for (NSString* path in createdAttachements) {
         NSData *fileData = [NSData dataWithContentsOfFile:path];

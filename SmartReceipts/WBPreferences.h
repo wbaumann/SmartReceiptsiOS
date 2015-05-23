@@ -31,8 +31,17 @@
 + (BOOL)enableAutoCompleteSuggestions;
 + (void)setEnableAutoCompleteSuggestions:(BOOL)enableAutoCompleteSuggestions;
 
-+ (NSString *)defaultEmailReceipient;
-+ (void)setDefaultEmailReceipient:(NSString *)defaultEmailReceipient;
++ (NSString *)defaultEmailRecipient;
++ (void)setDefaultEmailRecipient:(NSString *)defaultEmailReceipient;
+
++ (NSString *)defaultEmailCC;
++ (void)setDefaultEmailCC:(NSString *)value;
+
++ (NSString *)defaultEmailBCC;
++ (void)setDefaultEmailBCC:(NSString *)value;
+
++ (NSString *)defaultEmailSubject;
++ (void)setDefaultEmailSubject:(NSString *)value;
 
 + (NSString *)defaultCurrency;
 + (void)setDefaultCurrency:(NSString *)defaultCurrency;
