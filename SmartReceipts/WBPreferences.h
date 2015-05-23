@@ -67,6 +67,12 @@
 + (float)distanceRateDefaultValue;
 + (void)setDistanceRateDefaultValue:(float)value;
 
++ (float)defaultTaxPercentage;
++ (void)setDefaultTaxPercentage:(float)value;
+
++ (BOOL)enteredPricePreTax;
++ (void)setEnteredPricePreTax:(BOOL)value;
+
 + (BOOL)printDistanceTable;
 + (void)setPrintDistanceTable:(BOOL)value;
 
