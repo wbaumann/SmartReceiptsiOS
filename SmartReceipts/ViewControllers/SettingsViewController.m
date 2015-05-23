@@ -108,17 +108,17 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     self.defaultEmailRecipientCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
     [self.defaultEmailRecipientCell setTitle:NSLocalizedString(@"Default Email To Recipient", nil)];
-    [self.defaultEmailRecipientCell setPlaceholder:NSLocalizedString(@"Separate entries with a semicolon (;)", nil)];
+    [self.defaultEmailRecipientCell setPlaceholder:NSLocalizedString(@"Separate entries with a comma (,)", nil)];
     [self.defaultEmailRecipientCell activateEmailMode];
 
     self.defaultEmailCCCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
     [self.defaultEmailCCCell setTitle:NSLocalizedString(@"Default Email CC Recipient", nil)];
-    [self.defaultEmailCCCell setPlaceholder:NSLocalizedString(@"Separate entries with a semicolon (;)", nil)];
+    [self.defaultEmailCCCell setPlaceholder:NSLocalizedString(@"Separate entries with a comma (,)", nil)];
     [self.defaultEmailCCCell activateEmailMode];
 
     self.defaultEmailBCCCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
     [self.defaultEmailBCCCell setTitle:NSLocalizedString(@"Default Email BBC Recipient", nil)];
-    [self.defaultEmailBCCCell setPlaceholder:NSLocalizedString(@"Separate entries with a semicolon (;)", nil)];
+    [self.defaultEmailBCCCell setPlaceholder:NSLocalizedString(@"Separate entries with a comma (,)", nil)];
     [self.defaultEmailBCCCell activateEmailMode];
 
     self.defaultEmailSubjectCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];

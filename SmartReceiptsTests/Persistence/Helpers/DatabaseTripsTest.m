@@ -115,7 +115,7 @@
     trip.name = @"Rename me";
     [self.db updateTrip:trip];
 
-    NSArray *receipts = [self.db allReceiptsForTrip:trip descending:YES];
+    NSArray *receipts = [self.db allReceiptsForTrip:trip];
     XCTAssertEqual(5, receipts.count);
 
     NSArray *distances = [self.db allDistancesForTrip:trip];

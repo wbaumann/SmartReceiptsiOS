@@ -47,8 +47,8 @@
 
 
 - (void)testCopyReceipt {
-    XCTAssertEqual(1, [self.db allReceiptsForTrip:self.sourceTrip descending:NO].count);
-    XCTAssertEqual(0, [self.db allReceiptsForTrip:self.destinationTrip descending:NO].count);
+    XCTAssertEqual(1, [self.db allReceiptsForTrip:self.sourceTrip].count);
+    XCTAssertEqual(0, [self.db allReceiptsForTrip:self.destinationTrip].count);
 
     NSUInteger countBefore = [self.db countRowsInTable:ReceiptsTable.TABLE_NAME];
     [self.db copyReceipt:self.testReceipt toTrip:self.destinationTrip];
@@ -56,8 +56,8 @@
 
     XCTAssertEqual(countBefore + 1, countAfter);
 
-    XCTAssertEqual(1, [self.db allReceiptsForTrip:self.sourceTrip descending:NO].count);
-    XCTAssertEqual(1, [self.db allReceiptsForTrip:self.destinationTrip descending:NO].count);
+    XCTAssertEqual(1, [self.db allReceiptsForTrip:self.sourceTrip].count);
+    XCTAssertEqual(1, [self.db allReceiptsForTrip:self.destinationTrip].count);
 
     WBTrip *fetchedSource = [self.db tripWithName:self.sourceTrip.name];
     XCTAssertEqualObjects(self.testReceiptPrice, fetchedSource.price.amount);
@@ -72,8 +72,8 @@
 }
 
 - (void)testMoveReceipt {
-    XCTAssertEqual(1, [self.db allReceiptsForTrip:self.sourceTrip descending:NO].count);
-    XCTAssertEqual(0, [self.db allReceiptsForTrip:self.destinationTrip descending:NO].count);
+    XCTAssertEqual(1, [self.db allReceiptsForTrip:self.sourceTrip].count);
+    XCTAssertEqual(0, [self.db allReceiptsForTrip:self.destinationTrip].count);
 
     NSUInteger countBefore = [self.db countRowsInTable:ReceiptsTable.TABLE_NAME];
     [self.db moveReceipt:self.testReceipt toTrip:self.destinationTrip];
@@ -81,8 +81,8 @@
 
     XCTAssertEqual(countBefore, countAfter);
 
-    XCTAssertEqual(0, [self.db allReceiptsForTrip:self.sourceTrip descending:NO].count);
-    XCTAssertEqual(1, [self.db allReceiptsForTrip:self.destinationTrip descending:NO].count);
+    XCTAssertEqual(0, [self.db allReceiptsForTrip:self.sourceTrip].count);
+    XCTAssertEqual(1, [self.db allReceiptsForTrip:self.destinationTrip].count);
 
     WBTrip *fetchedSource = [self.db tripWithName:self.sourceTrip.name];
     XCTAssertEqualObjects([NSDecimalNumber zero], fetchedSource.price.amount);

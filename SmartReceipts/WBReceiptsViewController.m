@@ -291,8 +291,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     }
     else if ([[segue identifier] isEqualToString:@"GenerateReport"]) {
         WBGenerateViewController *vc = (WBGenerateViewController *) [[segue destinationViewController] topViewController];
-
-        [vc setReceipts:[_receipts receiptsArrayCopy] forTrip:self.trip andViewController:self];
+        [vc setTrip:self.trip];
     } else if ([PresentTripDistancesSegue isEqualToString:segue.identifier]) {
         TripDistancesViewController *controller = (TripDistancesViewController *) [[segue destinationViewController] topViewController];
         [controller setTrip:self.trip];

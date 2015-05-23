@@ -46,7 +46,7 @@
 }
 
 - (NSArray *)receipts {
-    NSArray *receipts = [self.database allReceiptsForTrip:self.trip descending:YES];
+    NSArray *receipts = [self.database allReceiptsForTrip:self.trip];
     return  [ReceiptIndexer indexReceipts:receipts filteredWith:^BOOL(WBReceipt *receipt) {
         return [WBReportUtils filterOutReceipt:receipt];
     }];
