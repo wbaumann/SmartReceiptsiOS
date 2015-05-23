@@ -53,6 +53,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) SettingsSegmentControlCell *cameraSettingsCell;
 @property (nonatomic, strong) SwitchControlCell *predictReceiptCategoriesCell;
 @property (nonatomic, strong) SwitchControlCell *includeTaxFieldCell;
+@property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultTaxPercentageCell;
+@property (nonatomic, strong) SwitchControlCell *enteredPricePreTaxCell;
 @property (nonatomic, strong) SwitchControlCell *matchNameToCategoriesCell;
 @property (nonatomic, strong) SwitchControlCell *matchCommentsToCategoriesCell;
 @property (nonatomic, strong) SwitchControlCell *onlyReportExpenseableCell;
@@ -170,6 +172,13 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     self.includeTaxFieldCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.includeTaxFieldCell setTitle:NSLocalizedString(@"Include Tax Field For Receipts", nil)];
 
+    self.defaultTaxPercentageCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
+    [self.defaultTaxPercentageCell setTitle:NSLocalizedString(@"Default Tax Percentage", nil)];
+    [self.defaultTaxPercentageCell activateDecimalEntryMode];
+
+    self.enteredPricePreTaxCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.enteredPricePreTaxCell setTitle:NSLocalizedString(@"Assume Price is Pre-Tax", nil)];
+
     self.matchNameToCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.matchNameToCategoriesCell setTitle:NSLocalizedString(@"Match Name to Categories", nil)];
 
@@ -201,6 +210,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
                                                                        self.costCenterCell,
                                                                        self.predictReceiptCategoriesCell,
                                                                        self.includeTaxFieldCell,
+                                                                       self.defaultTaxPercentageCell,
+                                                                       self.enteredPricePreTaxCell,
                                                                        self.matchNameToCategoriesCell,
                                                                        self.matchCommentsToCategoriesCell,
                                                                        self.onlyReportExpenseableCell,
@@ -281,6 +292,14 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.defaultCurrencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:[WBPreferences defaultCurrency]]];
     [self.predictReceiptCategoriesCell setSwitchOn:[WBPreferences predictCategories]];
     [self.includeTaxFieldCell setSwitchOn:[WBPreferences includeTaxField]];
+    float defaultTax = [WBPreferences defaultTaxPercentage];
+    if (defaultTax < 0.001) {
+        [self.defaultTaxPercentageCell setValue:@""];
+    } else {
+        NSDecimalNumber *taxPercentage = (NSDecimalNumber *) [[NSDecimalNumber alloc] initWithFloat:defaultTax];
+        [self.defaultTaxPercentageCell setValue:[taxPercentage descriptionWithLocale:[NSLocale currentLocale]]];
+    }
+    [self.enteredPricePreTaxCell setSwitchOn:[WBPreferences enteredPricePreTax]];
     [self.matchNameToCategoriesCell setSwitchOn:[WBPreferences matchNameToCategory]];
     [self.matchCommentsToCategoriesCell setSwitchOn:[WBPreferences matchCommentToCategory]];
     [self.onlyReportExpenseableCell setSwitchOn:[WBPreferences onlyIncludeExpensableReceiptsInReports]];
@@ -361,6 +380,10 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     [WBPreferences setPredictCategories:[self.predictReceiptCategoriesCell isSwitchOn]];
     [WBPreferences setIncludeTaxField:self.includeTaxFieldCell.isSwitchOn];
+    NSString *tax = [self.defaultTaxPercentageCell value];
+    NSDecimalNumber *taxNumber = [NSDecimalNumber decimalNumberOrZero:tax];
+    [WBPreferences setDefaultTaxPercentage:taxNumber.floatValue];
+    [WBPreferences setEnteredPricePreTax:self.enteredPricePreTaxCell.isSwitchOn];
     [WBPreferences setMatchNameToCategory:self.matchNameToCategoriesCell.isSwitchOn];
     [WBPreferences setMatchCommentToCategory:self.matchCommentsToCategoriesCell.isSwitchOn];
     [WBPreferences setOnlyIncludeExpensableReceiptsInReports:self.onlyReportExpenseableCell.isSwitchOn];

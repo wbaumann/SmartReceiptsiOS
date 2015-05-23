@@ -50,6 +50,9 @@ static NSString *const BOOL_USE_PAYMENT_METHODS = @"UsePaymentMethods";
 
 static NSString *const BOOL_TRACK_COST_CENTER = @"trackcostcenter";
 
+static NSString *const FLOAT_DEFAULT_TAX_PERCENTAGE = @"TaxPercentage";
+static NSString *const BOOL_ENTERED_PRICE_PRE_TAX = @"PreTax";
+
 // there is no 100% guaranteed way to figure entry type so we have to hardcode them
 typedef NS_ENUM(short, EntryType){
     EntryTypeString = 0,
@@ -100,7 +103,10 @@ static NSDictionary *getEntryTypes() {
 
             BOOL_USE_PAYMENT_METHODS: tBool,
 
-            BOOL_TRACK_COST_CENTER : tBool
+            BOOL_TRACK_COST_CENTER : tBool,
+
+            FLOAT_DEFAULT_TAX_PERCENTAGE: tFloat,
+            BOOL_ENTERED_PRICE_PRE_TAX: tBool
     };
 }
 
@@ -148,7 +154,9 @@ static NSDictionary *getDefaultValues() {
             BOOL_PRINT_MILEAGE_TABLE: @YES,
             BOOL_DAILY_DISTANCE_REPORT: @NO,
 
-            BOOL_TRACK_COST_CENTER : @NO
+            BOOL_TRACK_COST_CENTER : @NO,
+
+            BOOL_ENTERED_PRICE_PRE_TAX: @YES
     };
 }
 
@@ -309,6 +317,22 @@ static NSUserDefaults* instance() {
 
 + (void)setDistanceRateDefaultValue:(float)value {
     [instance() setFloat:value forKey:FLOAT_DEFAULT_MILEAGE_RATE];
+}
+
++ (float)defaultTaxPercentage {
+    return [instance() floatForKey:FLOAT_DEFAULT_TAX_PERCENTAGE];
+}
+
++ (void)setDefaultTaxPercentage:(float)value {
+    [instance() setFloat:value forKey:FLOAT_DEFAULT_TAX_PERCENTAGE];
+}
+
++ (BOOL)enteredPricePreTax {
+    return [instance() boolForKey:BOOL_ENTERED_PRICE_PRE_TAX];
+}
+
++ (void)setEnteredPricePreTax:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_ENTERED_PRICE_PRE_TAX];
 }
 
 + (BOOL)printDistanceTable {
