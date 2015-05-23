@@ -131,10 +131,10 @@
     return result;
 }
 
-- (NSArray *)allReceiptsForTrip:(WBTrip *)trip descending:(BOOL)desc {
+- (NSArray *)allReceiptsForTrip:(WBTrip *)trip {
     DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
     [selectAll where:ReceiptsTable.COLUMN_PARENT value:trip.name];
-    [selectAll orderBy:ReceiptsTable.COLUMN_DATE ascending:!desc];
+    [selectAll orderBy:ReceiptsTable.COLUMN_DATE ascending:NO];
     return [self allReceiptsWithQuery:selectAll forTrip:trip];
 }
 

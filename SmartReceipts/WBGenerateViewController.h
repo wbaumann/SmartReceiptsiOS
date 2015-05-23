@@ -13,23 +13,8 @@
 #import "WBReceipt.h"
 #import "WBTrip.h"
 
-@interface WBGenerateViewController : WBTableViewController<MFMailComposeViewControllerDelegate>
+@interface WBGenerateViewController : WBTableViewController
 
-@property (weak, nonatomic) IBOutlet UISwitch *fullPdfReportField;
-@property (weak, nonatomic) IBOutlet UISwitch *pdfImagesField;
-@property (weak, nonatomic) IBOutlet UISwitch *csvFileField;
-@property (weak, nonatomic) IBOutlet UISwitch *zipImagesField;
-
-
-@property (weak, nonatomic) IBOutlet UILabel *labelFullPdfReport;
-@property (weak, nonatomic) IBOutlet UILabel *labelPdfReport;
-@property (weak, nonatomic) IBOutlet UILabel *labelCsvFile;
-@property (weak, nonatomic) IBOutlet UILabel *labelZipImages;
-
-
-- (void)setReceipts:(NSArray*)receipts forTrip:(WBTrip*) trip andViewController:(UIViewController*) vc;
-
-- (IBAction)actionDone:(id)sender;
-- (IBAction)actionCancel:(id)sender;
+@property (nonatomic, strong) WBTrip *trip;
 
 @end

@@ -16,18 +16,23 @@
 #import "WBReportUtils.h"
 
 #import "HUD.h"
-#import "WBAppDelegate.h"
 #import "TripCSVGenerator.h"
 #import "TripImagesPDFGenerator.h"
 #import "TripFullPDFGenerator.h"
 #import "Database.h"
+#import "Database+Receipts.h"
 
-@interface WBGenerateViewController ()
+@interface WBGenerateViewController () <MFMailComposeViewControllerDelegate>
 
-@property (nonatomic, strong) WBTrip *trip;
-@property (nonatomic, strong) NSArray *receipts;
+@property (weak, nonatomic) IBOutlet UISwitch *fullPdfReportField;
+@property (weak, nonatomic) IBOutlet UISwitch *pdfImagesField;
+@property (weak, nonatomic) IBOutlet UISwitch *csvFileField;
+@property (weak, nonatomic) IBOutlet UISwitch *zipImagesField;
+@property (weak, nonatomic) IBOutlet UILabel *labelFullPdfReport;
+@property (weak, nonatomic) IBOutlet UILabel *labelPdfReport;
+@property (weak, nonatomic) IBOutlet UILabel *labelCsvFile;
+@property (weak, nonatomic) IBOutlet UILabel *labelZipImages;
 
-@property (weak) UIViewController *viewControllerForMail;
 
 @end
 
@@ -45,12 +50,6 @@
     self.labelZipImages.text = NSLocalizedString(@"ZIP - Stamped JPGs", nil);
 }
 
-- (void)setReceipts:(NSArray*)receipts forTrip:(WBTrip*) trip andViewController:(UIViewController*) vc {
-    _receipts = receipts;
-    _trip = trip;
-    self.viewControllerForMail = vc;
-}
-
 - (void) clearPath:(NSString*) path {
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
@@ -61,19 +60,10 @@
     
     [_trip createDirectoryIfNotExists];
 
-    //TODO jaanus: this should be done when receipt loaded from DB or created
-    for (WBReceipt *receipt in self.receipts) {
-        [receipt setTrip:self.trip];
-    }
-
     NSString *pdfPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@.pdf", [_trip name]]];
     NSString *pdfImagesPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@Images.pdf", [_trip name]]];
     NSString *csvPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@.csv", [_trip name]]];
     NSString *zipPath = [_trip fileInDirectoryPath:[NSString stringWithFormat:@"%@.zip", [_trip name]]];
-
-    NSArray *rai = [WBReceiptAndIndex receiptsAndIndicesFromReceipts:_receipts filteredWith:^BOOL(WBReceipt *r) {
-        return [WBReportUtils filterOutReceipt:r];
-    }];
 
     WBImageStampler *imagesStampler = [[WBImageStampler alloc] init];
     
@@ -108,6 +98,11 @@
     
     if (self.zipImagesField.on) {
         [self clearPath:zipPath];
+
+        NSArray *rai = [WBReceiptAndIndex receiptsAndIndicesFromReceipts:[[Database sharedInstance] allReceiptsForTrip:self.trip] filteredWith:^BOOL(WBReceipt *r) {
+            return [WBReportUtils filterOutReceipt:r];
+        }];
+
         if (![imagesStampler zipToFile:zipPath stampedImagesForReceiptsAndIndexes:rai inTrip:_trip]) {
             return nil;
         }
@@ -119,14 +114,15 @@
     NSString *suffix = [createdAttachements count] > 1 ? NSLocalizedString(@"reports attached", nil) :NSLocalizedString(@"report attached", nil);
     NSString *messageBody = [NSString stringWithFormat:@"%d %@",
                              (int)[createdAttachements count], suffix];
-    
+
     MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-    
     mc.mailComposeDelegate = self;
-    [mc setSubject:NSLocalizedString(@"Smart Receipts",nil)];
+    [mc setSubject:[[WBPreferences defaultEmailSubject] stringByReplacingOccurrencesOfString:@"%REPORT_NAME%" withString:self.trip.name]];
     [mc setMessageBody:messageBody isHTML:NO];
-    [mc setToRecipients:@[[WBPreferences defaultEmailReceipient]]];
-    
+    [mc setToRecipients:[self splitValueFrom:[WBPreferences defaultEmailRecipient]]];
+    [mc setCcRecipients:[self splitValueFrom:[WBPreferences defaultEmailCC]]];
+    [mc setBccRecipients:[self splitValueFrom:[WBPreferences defaultEmailBCC]]];
+
     for (NSString* path in createdAttachements) {
         NSData *fileData = [NSData dataWithContentsOfFile:path];
         
@@ -148,6 +144,10 @@
     }
 
     return mc;
+}
+
+- (NSArray *)splitValueFrom:(NSString *)joined {
+    return [joined componentsSeparatedByString:@","];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller
@@ -186,9 +186,8 @@
     }
     
     [HUD showUIBlockingIndicatorWithText:NSLocalizedString(@"Generating ...", nil)];
-    
-    dispatch_async([[WBAppDelegate instance] dataQueue], ^{
-        
+
+    dispatch_async(dispatch_get_main_queue(), ^{
         MFMailComposeViewController *mc = nil;
         @try {
             mc = [self preparedComposer];
@@ -196,28 +195,25 @@
         @catch (NSException *exception) {
             mc = nil;
         }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            if (mc) {
-                // forward our navbar tint color to mail composer
-                [mc.navigationBar setTintColor:[UINavigationBar appearance].tintColor];
-                
-                // forward style, mail composer is so dumb and overrides our style
-                UIStatusBarStyle barStyle = [UIApplication sharedApplication].statusBarStyle;
-                
-                [self presentViewController:mc animated:YES completion:^{
-                    [[UIApplication sharedApplication] setStatusBarStyle:barStyle];
-                }];
-            } else {
-                [self showAlertWithTitle:NSLocalizedString(@"Error", nil)
-                                 message:NSLocalizedString(@"Couldn't generate selected reports", nil)];
-            }
-            
-            [HUD hideUIBlockingIndicator];
-        });
-    });
 
+
+        if (mc) {
+            // forward our navbar tint color to mail composer
+            [mc.navigationBar setTintColor:[UINavigationBar appearance].tintColor];
+
+            // forward style, mail composer is so dumb and overrides our style
+            UIStatusBarStyle barStyle = [UIApplication sharedApplication].statusBarStyle;
+
+            [self presentViewController:mc animated:YES completion:^{
+                [[UIApplication sharedApplication] setStatusBarStyle:barStyle];
+            }];
+        } else {
+            [self showAlertWithTitle:NSLocalizedString(@"Error", nil)
+                             message:NSLocalizedString(@"Couldn't generate selected reports", nil)];
+        }
+
+        [HUD hideUIBlockingIndicator];
+    });
 }
 
 - (IBAction)actionCancel:(id)sender {
