@@ -21,17 +21,30 @@
 #import "WBObservableTrips.h"
 
 #import "WBTextUtils.h"
-#import "HUD.h"
-
 #import "WBAppDelegate.h"
 
 #import "SettingsViewController.h"
+#import "PendingHUDView.h"
 
 NSString *DATABASE_EXPORT_NAME = @"receipts_backup.db";
+
+@interface WBBackupHelper ()
+
+@property (nonatomic, weak) UIViewController *presentationController;
+
+@end
 
 @implementation WBBackupHelper
 {
     NSURL *_url;
+}
+
+- (id)initWithController:(UIViewController *)controller {
+    self = [super init];
+    if (self) {
+        _presentationController = controller;
+    }
+    return self;
 }
 
 -(NSString*) exportAll {
@@ -220,7 +233,7 @@ NSString *DATABASE_EXPORT_NAME = @"receipts_backup.db";
     }
     
     [WBBackupHelper setDataBlocked:YES];
-    [HUD showUIBlockingIndicatorWithText:NSLocalizedString(@"Importing ...", nil)];
+    PendingHUDView *hud = [PendingHUDView showHUDOnView:self.presentationController.view];
     dispatch_async([[WBAppDelegate instance] dataQueue], ^{
         BOOL result = NO;
         @try {
@@ -236,7 +249,7 @@ NSString *DATABASE_EXPORT_NAME = @"receipts_backup.db";
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [[WBObservableTrips lastInstance] setTrips:trips];
-            [HUD hideUIBlockingIndicator];
+            [hud hide];
             [WBBackupHelper setDataBlocked:NO];
             
             // refresh if visible

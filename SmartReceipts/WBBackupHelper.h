@@ -10,6 +10,8 @@
 
 @interface WBBackupHelper : NSObject<UIAlertViewDelegate>
 
+- (id)initWithController:(UIViewController *)controller;
+
 -(NSString*) exportAll;
 -(BOOL) importAllFrom:(NSString*) path overwrite:(BOOL) overwrite;
 

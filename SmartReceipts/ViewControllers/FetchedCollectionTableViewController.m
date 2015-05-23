@@ -7,10 +7,10 @@
 //
 
 #import "FetchedCollectionTableViewController.h"
-#import "HUD.h"
 #import "WBAppDelegate.h"
 #import "Constants.h"
 #import "FetchedModelAdapter.h"
+#import "PendingHUDView.h"
 
 NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCollectionTableViewControllerCellIdentifier";
 
@@ -69,7 +69,7 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 }
 
 - (void)fetchObjects {
-    [HUD showUIBlockingIndicatorWithText:@""];
+    PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController ? self.navigationController.view : self.view];
     dispatch_async([[WBAppDelegate instance] dataQueue], ^{
         FetchedModelAdapter *objects = [self createFetchedModelAdapter];
         [objects setDelegate:self];
@@ -77,7 +77,7 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
             [self setPresentedObjects:objects];
             [self.tableView reloadData];
             [self contentChanged];
-            [HUD hideUIBlockingIndicator];
+            [hud hide];
         });
     });
 }
