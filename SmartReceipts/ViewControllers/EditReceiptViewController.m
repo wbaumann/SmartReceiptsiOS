@@ -33,6 +33,7 @@
 #import "PaymentMethod.h"
 #import "Database+Receipts.h"
 #import "NSDate+Calculations.h"
+#import "TaxCalculator.h"
 
 @interface EditReceiptViewController ()
 
@@ -58,6 +59,8 @@
 @property (nonatomic, strong) SwitchControlCell *fullPageImageCell;
 
 @property (nonatomic, strong) NSArray *categoryNames;
+
+@property (nonatomic, strong) TaxCalculator *taxCalculator;
 
 @end
 
@@ -95,6 +98,13 @@
     [self.taxCell setTitle:NSLocalizedString(@"Tax", nil)];
     [self.taxCell setPlaceholder:NSLocalizedString(@"e.g. 5.00", nil)];
     [self.taxCell activateDecimalEntryMode];
+
+    if ([WBPreferences includeTaxField]) {
+        TaxCalculator *calculator = [[TaxCalculator alloc] initWithSourceField:self.priceCell.entryField targetField:self.taxCell.entryField];
+        [calculator setPriceIsPreTax:[WBPreferences enteredPricePreTax]];
+        [calculator setTaxPercentage:[NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%f", [WBPreferences defaultTaxPercentage]]]];
+        [self setTaxCalculator:calculator];
+    }
 
     self.currencyCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
     [self.currencyCell setTitle:NSLocalizedString(@"Currency", nil)];
