@@ -15,12 +15,12 @@
 
 #import "WBReportUtils.h"
 
-#import "HUD.h"
 #import "TripCSVGenerator.h"
 #import "TripImagesPDFGenerator.h"
 #import "TripFullPDFGenerator.h"
 #import "Database.h"
 #import "Database+Receipts.h"
+#import "PendingHUDView.h"
 
 @interface WBGenerateViewController () <MFMailComposeViewControllerDelegate>
 
@@ -184,9 +184,8 @@
                          message:NSLocalizedString(@"No reports selected", nil)];
         return;
     }
-    
-    [HUD showUIBlockingIndicatorWithText:NSLocalizedString(@"Generating ...", nil)];
 
+    PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
     dispatch_async(dispatch_get_main_queue(), ^{
         MFMailComposeViewController *mc = nil;
         @try {
@@ -212,7 +211,7 @@
                              message:NSLocalizedString(@"Couldn't generate selected reports", nil)];
         }
 
-        [HUD hideUIBlockingIndicator];
+        [hud hide];
     });
 }
 

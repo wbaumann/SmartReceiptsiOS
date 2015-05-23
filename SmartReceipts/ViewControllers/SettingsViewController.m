@@ -15,7 +15,6 @@
 
 #import "WBBackupHelper.h"
 
-#import "HUD.h"
 #import "WBCustomization.h"
 #import "SettingsTopTitledTextEntryCell.h"
 #import "UIView+LoadHelpers.h"
@@ -30,6 +29,7 @@
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "Pickable.h"
 #import "StringPickableWrapper.h"
+#import "PendingHUDView.h"
 
 // for refreshing while backup
 static SettingsViewController *visibleInstance = nil;
@@ -434,11 +434,11 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 - (void)actionExport {
     void (^exportActionBlock)() = ^{
-        [HUD showUIBlockingIndicatorWithText:NSLocalizedString(@"Exporting ...", nil)];
+        PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSData *data = nil;
             @try {
-                NSString *path = [[[WBBackupHelper alloc] init] exportAll];
+                NSString *path = [[[WBBackupHelper alloc] initWithController:self.navigationController] exportAll];
                 if (path) {
                     data = [NSData dataWithContentsOfFile:path];
                 }
@@ -447,7 +447,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
             }
 
             dispatch_async(dispatch_get_main_queue(), ^{
-                [HUD hideUIBlockingIndicator];
+                [hud hide];
 
                 if (data) {
                     [self showMailerForData:data];

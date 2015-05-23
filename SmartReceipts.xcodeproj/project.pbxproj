@@ -30,9 +30,6 @@
 		843950A418ED1D2E00A1CF83 /* WBPdfDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 843950A318ED1D2E00A1CF83 /* WBPdfDrawer.m */; };
 		843F61FF18EF3F46001ACBB1 /* WBCustomization.m in Sources */ = {isa = PBXBuildFile; fileRef = 843F61FE18EF3F46001ACBB1 /* WBCustomization.m */; };
 		843F620218EF4BB0001ACBB1 /* WBImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 843F620118EF4BB0001ACBB1 /* WBImageUtils.m */; };
-		843F623B18EF9A5F001ACBB1 /* LICENSE_MBProgressHUD in Resources */ = {isa = PBXBuildFile; fileRef = 843F623818EF9A5F001ACBB1 /* LICENSE_MBProgressHUD */; };
-		843F623C18EF9A5F001ACBB1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 843F623A18EF9A5F001ACBB1 /* MBProgressHUD.m */; };
-		843F623F18EF9E78001ACBB1 /* HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 843F623E18EF9E78001ACBB1 /* HUD.m */; };
 		8453368018F475E2001072AA /* WBAutocompleteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8453367F18F475E2001072AA /* WBAutocompleteHelper.m */; };
 		8453368418F4950E001072AA /* WBBackupHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8453368318F4950E001072AA /* WBBackupHelper.m */; };
 		84553A5318D0D2CA0009057B /* WBReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84553A5218D0D2CA0009057B /* WBReceiptsViewController.m */; };
@@ -223,6 +220,7 @@
 		EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3EF861B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m */; };
 		EAD3EF8B1B0E154300CA1D4D /* AdPresentingContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3EF8A1B0E154300CA1D4D /* AdPresentingContainerViewController.m */; };
 		EADBB71F1B0B6CD600F4475F /* DatabaseTripsFilesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EADBB71E1B0B6CD600F4475F /* DatabaseTripsFilesTest.m */; };
+		EAE3195F1B10A5EE0032887E /* PendingHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE3195E1B10A5EE0032887E /* PendingHUDView.m */; };
 		EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */; };
 		EAE725DA1B022E9100402689 /* TripsToReceiptsConverterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */; };
 		EAE8F9B21AF149DC00E837E3 /* TripDistancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE8F9B11AF149DC00E837E3 /* TripDistancesViewController.m */; };
@@ -285,11 +283,6 @@
 		843F61FE18EF3F46001ACBB1 /* WBCustomization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCustomization.m; sourceTree = "<group>"; };
 		843F620018EF4BB0001ACBB1 /* WBImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageUtils.h; sourceTree = "<group>"; };
 		843F620118EF4BB0001ACBB1 /* WBImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageUtils.m; sourceTree = "<group>"; };
-		843F623818EF9A5F001ACBB1 /* LICENSE_MBProgressHUD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_MBProgressHUD; sourceTree = "<group>"; };
-		843F623918EF9A5F001ACBB1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		843F623A18EF9A5F001ACBB1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		843F623D18EF9E78001ACBB1 /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
-		843F623E18EF9E78001ACBB1 /* HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUD.m; sourceTree = "<group>"; };
 		8453367E18F475E2001072AA /* WBAutocompleteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAutocompleteHelper.h; sourceTree = "<group>"; };
 		8453367F18F475E2001072AA /* WBAutocompleteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAutocompleteHelper.m; sourceTree = "<group>"; };
 		8453368218F4950E001072AA /* WBBackupHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBBackupHelper.h; sourceTree = "<group>"; };
@@ -618,6 +611,8 @@
 		EAD3EF891B0E154300CA1D4D /* AdPresentingContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdPresentingContainerViewController.h; sourceTree = "<group>"; };
 		EAD3EF8A1B0E154300CA1D4D /* AdPresentingContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdPresentingContainerViewController.m; sourceTree = "<group>"; };
 		EADBB71E1B0B6CD600F4475F /* DatabaseTripsFilesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTripsFilesTest.m; sourceTree = "<group>"; };
+		EAE3195D1B10A5EE0032887E /* PendingHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingHUDView.h; sourceTree = "<group>"; };
+		EAE3195E1B10A5EE0032887E /* PendingHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingHUDView.m; sourceTree = "<group>"; };
 		EAE725D51B022E3F00402689 /* DistancesToReceiptsConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancesToReceiptsConverter.h; sourceTree = "<group>"; };
 		EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancesToReceiptsConverter.m; sourceTree = "<group>"; };
 		EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsToReceiptsConverterTest.m; sourceTree = "<group>"; };
@@ -721,18 +716,6 @@
 				843F61FE18EF3F46001ACBB1 /* WBCustomization.m */,
 			);
 			name = customization;
-			sourceTree = "<group>";
-		};
-		843F623718EF9A5F001ACBB1 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				843F623818EF9A5F001ACBB1 /* LICENSE_MBProgressHUD */,
-				843F623D18EF9E78001ACBB1 /* HUD.h */,
-				843F623E18EF9E78001ACBB1 /* HUD.m */,
-				843F623918EF9A5F001ACBB1 /* MBProgressHUD.h */,
-				843F623A18EF9A5F001ACBB1 /* MBProgressHUD.m */,
-			);
-			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		8453368118F494FE001072AA /* backup */ = {
@@ -898,7 +881,6 @@
 			isa = PBXGroup;
 			children = (
 				84A6C82818F510B6003B876F /* GDataXML */,
-				843F623718EF9A5F001ACBB1 /* MBProgressHUD */,
 			);
 			path = 3rdparty;
 			sourceTree = "<group>";
@@ -1198,6 +1180,8 @@
 			children = (
 				EA5963EA1AF2957200935344 /* NoCaretTextField.h */,
 				EA5963EB1AF2957200935344 /* NoCaretTextField.m */,
+				EAE3195D1B10A5EE0032887E /* PendingHUDView.h */,
+				EAE3195E1B10A5EE0032887E /* PendingHUDView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1598,7 +1582,6 @@
 				EA98B51E1B075057006935AE /* WBCellWithPriceNameDate.xib in Resources */,
 				EA5963FC1AF2A07200935344 /* InlinedPickerCell.xib in Resources */,
 				8421A1F41907AF18001DF38D /* wheel.png in Resources */,
-				843F623B18EF9A5F001ACBB1 /* LICENSE_MBProgressHUD in Resources */,
 				8421A1FD1907E304001DF38D /* Localizable.strings in Resources */,
 				84D6719718D3392D00B704A4 /* dropdown.png in Resources */,
 				EA4C5CC61AF287330083FDD7 /* TitledTextEntryCell.xib in Resources */,
@@ -1760,6 +1743,7 @@
 				843F61FF18EF3F46001ACBB1 /* WBCustomization.m in Sources */,
 				EA6677791B060FC4004D3993 /* ReceiptColumnPaymentMethod.m in Sources */,
 				8478B77318D37BFB0041CBA3 /* WBCategoriesViewController.m in Sources */,
+				EAE3195F1B10A5EE0032887E /* PendingHUDView.m in Sources */,
 				EA3C96AD1AECC95100A2A5F9 /* TripImagesPDFGenerator.m in Sources */,
 				EA0677ED1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m in Sources */,
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
@@ -1791,7 +1775,6 @@
 				84AA921518EE89E00096013D /* WBImageStampler.m in Sources */,
 				EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */,
 				EA3C96A11AEBA9B200A2A5F9 /* TripFullPDFGenerator.m in Sources */,
-				843F623F18EF9E78001ACBB1 /* HUD.m in Sources */,
 				EA07BF471AF3FD1D004D17F6 /* Distance.m in Sources */,
 				843F620218EF4BB0001ACBB1 /* WBImageUtils.m in Sources */,
 				EA888A791AFA44E300DF2AE6 /* SettingsViewController.m in Sources */,
@@ -1824,7 +1807,6 @@
 				EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */,
 				EAD3EF8B1B0E154300CA1D4D /* AdPresentingContainerViewController.m in Sources */,
-				843F623C18EF9A5F001ACBB1 /* MBProgressHUD.m in Sources */,
 				EA0677F61B04E61A0058A326 /* StringPickableWrapper.m in Sources */,
 				EA4DC9961AF1580100CEF1B9 /* InputCellsViewController.m in Sources */,
 				EA07BF631AF4EC1E004D17F6 /* FetchedCollectionTableViewController.m in Sources */,

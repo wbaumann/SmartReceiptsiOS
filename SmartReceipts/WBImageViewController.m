@@ -8,12 +8,12 @@
 
 #import "WBImageViewController.h"
 
-#import "HUD.h"
 #import "WBAppDelegate.h"
 
 #import "WBImageUtils.h"
 #import "WBFileManager.h"
 #import "WBImagePicker.h"
+#import "PendingHUDView.h"
 
 @interface WBImageViewController ()
 {
@@ -66,7 +66,7 @@
 }
 
 - (void)rotateToOrientation:(UIImageOrientation)orientation {
-    [HUD showUIBlockingIndicatorWithText:@""];
+    PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
     
     [self.scrollView zoomToRect:self.scrollView.bounds animated:NO];
     image = [WBImageUtils image:image withOrientation:orientation];
@@ -83,7 +83,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self refreshSizes];
-            [HUD hideUIBlockingIndicator];
+            [hud hide];
         });
     });
 }

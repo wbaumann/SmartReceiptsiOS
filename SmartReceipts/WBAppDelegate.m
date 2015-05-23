@@ -29,7 +29,7 @@
     // Override point for customization after application launch.
     _queue = dispatch_queue_create("wb.dataAccess", nil);
     
-    _backupHelper = [[WBBackupHelper alloc] init];
+    _backupHelper = [[WBBackupHelper alloc] initWithController:self.window.rootViewController];
     
     [WBCustomization customizeOnAppLoad];
     
