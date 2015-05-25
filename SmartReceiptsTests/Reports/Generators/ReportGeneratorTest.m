@@ -10,7 +10,7 @@
 #import <XCTest/XCTest.h>
 #import "WBTrip.h"
 #import "WBDB.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "ReportGenerator.h"
 #import "WBPreferences.h"
 #import "WBPreferencesTestHelper.h"

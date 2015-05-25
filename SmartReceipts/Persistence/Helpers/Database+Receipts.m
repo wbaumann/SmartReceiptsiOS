@@ -14,7 +14,7 @@
 #import "DatabaseQueryBuilder.h"
 #import "WBTrip.h"
 #import "WBCurrency.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "FetchedModelAdapter.h"
 #import "WBPreferences.h"
 #import "Database+Trips.h"

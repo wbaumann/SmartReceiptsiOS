@@ -7,7 +7,7 @@
 //
 
 #import "Distance.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "WBTrip.h"
 #import "FMResultSet.h"
 #import "DatabaseTableNames.h"
@@ -23,7 +23,7 @@
 
 @implementation Distance
 
-- (id)initWithTrip:(WBTrip *)trip distance:(NSDecimalNumber *)distance rate:(WBPrice *)rate location:(NSString *)location date:(NSDate *)date timeZone:(NSTimeZone *)timeZone comment:(NSString *)comment {
+- (id)initWithTrip:(WBTrip *)trip distance:(NSDecimalNumber *)distance rate:(Price *)rate location:(NSString *)location date:(NSDate *)date timeZone:(NSTimeZone *)timeZone comment:(NSString *)comment {
     self = [super init];
     if (self) {
         _trip = trip;
@@ -37,9 +37,9 @@
     return self;
 }
 
-- (WBPrice *)totalRate {
+- (Price *)totalRate {
     NSDecimalNumber *totalValue = [self.distance decimalNumberByMultiplyingBy:self.rate.amount];
-    return [WBPrice priceWithAmount:totalValue currencyCode:self.rate.currency.code];
+    return [Price priceWithAmount:totalValue currencyCode:self.rate.currency.code];
 }
 
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet {
@@ -47,7 +47,7 @@
     [self setDistance:[NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:DistanceTable.COLUMN_DISTANCE]]];
     NSString *rateString = [resultSet stringForColumn:DistanceTable.COLUMN_RATE];
     NSString *currency = [resultSet stringForColumn:DistanceTable.COLUMN_RATE_CURRENCY];
-    [self setRate:[WBPrice priceWithAmount:[NSDecimalNumber decimalNumberOrZero:rateString] currencyCode:currency]];
+    [self setRate:[Price priceWithAmount:[NSDecimalNumber decimalNumberOrZero:rateString] currencyCode:currency]];
     [self setLocation:[resultSet stringForColumn:DistanceTable.COLUMN_LOCATION]];
     long long int dateMilliseconds = [resultSet longLongIntForColumn:DistanceTable.COLUMN_DATE];
     [self setDate:[NSDate dateWithMilliseconds:dateMilliseconds]];

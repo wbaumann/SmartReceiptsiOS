@@ -177,7 +177,7 @@
 		EA8CEAE71AFCEBE90007B3F5 /* DatabaseTripsSumTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CEAE61AFCEBE90007B3F5 /* DatabaseTripsSumTest.m */; };
 		EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816B1AEA668100BAC943 /* WBCategory.m */; };
 		EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816D1AEA668100BAC943 /* WBColumnNames.m */; };
-		EA8D81761AEA668100BAC943 /* WBPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816F1AEA668100BAC943 /* WBPrice.m */; };
+		EA8D81761AEA668100BAC943 /* Price.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816F1AEA668100BAC943 /* Price.m */; };
 		EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81711AEA668100BAC943 /* WBReceipt.m */; };
 		EA8D81781AEA668100BAC943 /* WBTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81731AEA668100BAC943 /* WBTrip.m */; };
 		EA8D817C1AEA6AF000BAC943 /* ReceiptColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D817B1AEA6AF000BAC943 /* ReceiptColumn.m */; };
@@ -535,8 +535,8 @@
 		EA8D816B1AEA668100BAC943 /* WBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategory.m; sourceTree = "<group>"; };
 		EA8D816C1AEA668100BAC943 /* WBColumnNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnNames.h; sourceTree = "<group>"; };
 		EA8D816D1AEA668100BAC943 /* WBColumnNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnNames.m; sourceTree = "<group>"; };
-		EA8D816E1AEA668100BAC943 /* WBPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPrice.h; sourceTree = "<group>"; };
-		EA8D816F1AEA668100BAC943 /* WBPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPrice.m; sourceTree = "<group>"; };
+		EA8D816E1AEA668100BAC943 /* Price.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Price.h; sourceTree = "<group>"; };
+		EA8D816F1AEA668100BAC943 /* Price.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Price.m; sourceTree = "<group>"; };
 		EA8D81701AEA668100BAC943 /* WBReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceipt.h; sourceTree = "<group>"; };
 		EA8D81711AEA668100BAC943 /* WBReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReceipt.m; sourceTree = "<group>"; };
 		EA8D81721AEA668100BAC943 /* WBTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTrip.h; sourceTree = "<group>"; };
@@ -1244,6 +1244,8 @@
 				EA69EF2E1AF0914000276B70 /* PaymentMethod.h */,
 				EA69EF2F1AF0914000276B70 /* PaymentMethod.m */,
 				EA0677F31B04E5320058A326 /* Pickable.h */,
+				EA8D816E1AEA668100BAC943 /* Price.h */,
+				EA8D816F1AEA668100BAC943 /* Price.m */,
 				EA0677F41B04E61A0058A326 /* StringPickableWrapper.h */,
 				EA0677F51B04E61A0058A326 /* StringPickableWrapper.m */,
 				EAE319601B10BB5C0032887E /* TaxCalculator.h */,
@@ -1252,8 +1254,6 @@
 				EA8D816B1AEA668100BAC943 /* WBCategory.m */,
 				EA8D816C1AEA668100BAC943 /* WBColumnNames.h */,
 				EA8D816D1AEA668100BAC943 /* WBColumnNames.m */,
-				EA8D816E1AEA668100BAC943 /* WBPrice.h */,
-				EA8D816F1AEA668100BAC943 /* WBPrice.m */,
 				EA8D81701AEA668100BAC943 /* WBReceipt.h */,
 				EA8D81711AEA668100BAC943 /* WBReceipt.m */,
 				EA8D81721AEA668100BAC943 /* WBTrip.h */,
@@ -1828,7 +1828,7 @@
 				EAB970121B0790EE005E1D63 /* TripsViewController.m in Sources */,
 				84ABAD0C18DB7B4400F8D3EB /* WBColumnsHelper.m in Sources */,
 				84ABACFF18DB6F5F00F8D3EB /* WBDB.m in Sources */,
-				EA8D81761AEA668100BAC943 /* WBPrice.m in Sources */,
+				EA8D81761AEA668100BAC943 /* Price.m in Sources */,
 				EAF9ADE61AECF8F80000AC84 /* DatabaseCreateAtVersion11.m in Sources */,
 				EA8D818E1AEA7BBC00BAC943 /* ReceiptColumnReportName.m in Sources */,
 				EA3C96981AEBA91400A2A5F9 /* ReportGenerator.m in Sources */,

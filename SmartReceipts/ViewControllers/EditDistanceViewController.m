@@ -16,7 +16,7 @@
 #import "Distance.h"
 #import "PickerCell.h"
 #import "WBTrip.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "WBCurrency.h"
 #import "WBPreferences.h"
 #import "WBDateFormatter.h"
@@ -157,7 +157,7 @@
     NSString *comment = self.commentCell.value;
 
     [self.distance setDistance:distance];
-    [self.distance setRate:[WBPrice priceWithAmount:rate currencyCode:currency]];
+    [self.distance setRate:[Price priceWithAmount:rate currencyCode:currency]];
     [self.distance setLocation:location];
     [self.distance setDate:date];
     [self.distance setTimeZone:self.trip.startTimeZone];

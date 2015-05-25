@@ -17,7 +17,7 @@
 #import "Database+Receipts.h"
 #import "Database+PaymentMethods.h"
 #import "NSDecimalNumber+WBNumberParse.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "Database+Trips.h"
 
 @interface DatabaseReceiptsTest : SmartReceiptsTestsBase

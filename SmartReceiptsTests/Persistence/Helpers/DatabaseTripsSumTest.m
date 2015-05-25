@@ -16,7 +16,7 @@
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "Database+Trips.h"
 #import "WBPreferences.h"
-#import "WBPrice.h"
+#import "Price.h"
 
 @interface DatabaseTripsSumTest : SmartReceiptsTestsBase
 

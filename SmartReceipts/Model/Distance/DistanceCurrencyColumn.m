@@ -8,7 +8,7 @@
 
 #import "DistanceCurrencyColumn.h"
 #import "Distance.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "WBCurrency.h"
 
 @implementation DistanceCurrencyColumn

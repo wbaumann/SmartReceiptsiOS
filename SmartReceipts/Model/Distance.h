@@ -10,7 +10,7 @@
 #import "FetchedModel.h"
 
 @class WBCurrency;
-@class WBPrice;
+@class Price;
 @class WBTrip;
 @class FMResultSet;
 
@@ -19,12 +19,12 @@
 @property (nonatomic, assign, readonly) NSUInteger objectId;
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, strong) NSDecimalNumber *distance;
-@property (nonatomic, strong) WBPrice *rate;
+@property (nonatomic, strong) Price *rate;
 @property (nonatomic, copy) NSString *location;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSTimeZone *timeZone;
 @property (nonatomic, copy) NSString *comment;
 
-- (WBPrice *)totalRate;
+- (Price *)totalRate;
 
 @end

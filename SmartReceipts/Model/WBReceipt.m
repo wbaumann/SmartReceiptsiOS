@@ -11,7 +11,7 @@
 #import "WBReceipt.h"
 #import "WBTrip.h"
 #import "WBCurrency.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "DatabaseTableNames.h"
 #import "Constants.h"
@@ -51,8 +51,8 @@ static NSString* checkNoData(NSString* str) {
             date:(NSDate *)date
     timeZoneName:(NSString *)timeZoneName
          comment:(NSString *)comment
-           price:(WBPrice *)price
-             tax:(WBPrice *)tax
+           price:(Price *)price
+             tax:(Price *)tax
     isExpensable:(BOOL)isExpensable
       isFullPage:(BOOL)isFullPage
   extraEditText1:(NSString *)extraEditText1
@@ -226,8 +226,8 @@ static NSString* checkNoData(NSString* str) {
     _category = [resultSet stringForColumn:ReceiptsTable.COLUMN_CATEGORY];
     _fileName = [resultSet stringForColumn:ReceiptsTable.COLUMN_PATH];
     _comment = [resultSet stringForColumn:ReceiptsTable.COLUMN_COMMENT];
-    _price = [WBPrice priceWithAmount:price currencyCode:currencyCode];
-    _tax = [WBPrice priceWithAmount:tax currencyCode:currencyCode];
+    _price = [Price priceWithAmount:price currencyCode:currencyCode];
+    _tax = [Price priceWithAmount:tax currencyCode:currencyCode];
     [self setExpensable:[resultSet boolForColumn:ReceiptsTable.COLUMN_EXPENSEABLE]];
     [self setFullPage:![resultSet boolForColumn:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE]];
     _extraEditText1 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1];
