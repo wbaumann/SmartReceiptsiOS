@@ -10,7 +10,7 @@
 #import "FMDatabase.h"
 #import "FMDatabaseQueue.h"
 
-@class WBPrice;
+@class Price;
 @class WBTrip;
 @class PaymentMethod;
 

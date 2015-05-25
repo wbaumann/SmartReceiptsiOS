@@ -9,7 +9,7 @@
 #import "DatabaseTestsHelper.h"
 #import "WBTrip.h"
 #import "Distance.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "Database+Distances.h"
 #import "Database+Trips.h"
 #import "WBReceipt.h"
@@ -25,7 +25,7 @@
 
 @interface Distance (TestExpose)
 
-- (id)initWithTrip:(WBTrip *)trip distance:(NSDecimalNumber *)distance rate:(WBPrice *)rate location:(NSString *)location date:(NSDate *)date timeZone:(NSTimeZone *)timeZone comment:(NSString *)comment;
+- (id)initWithTrip:(WBTrip *)trip distance:(NSDecimalNumber *)distance rate:(Price *)rate location:(NSString *)location date:(NSDate *)date timeZone:(NSTimeZone *)timeZone comment:(NSString *)comment;
 
 @end
 
@@ -77,7 +77,7 @@
 
     Distance *distance = [[Distance alloc] initWithTrip:params[DistanceTable.COLUMN_PARENT]
                                                distance:params[DistanceTable.COLUMN_DISTANCE]
-                                                   rate:[WBPrice priceWithAmount:params[DistanceTable.COLUMN_RATE] currencyCode:params[DistanceTable.COLUMN_RATE_CURRENCY]]
+                                                   rate:[Price priceWithAmount:params[DistanceTable.COLUMN_RATE] currencyCode:params[DistanceTable.COLUMN_RATE_CURRENCY]]
                                                location:params[DistanceTable.COLUMN_LOCATION]
                                                    date:params[DistanceTable.COLUMN_DATE]
                                                timeZone:[NSTimeZone defaultTimeZone]
@@ -100,8 +100,8 @@
     WBReceipt *receipt = [[WBReceipt alloc] init];
     [receipt setName:params[ReceiptsTable.COLUMN_NAME]];
     [receipt setTimeZone:[NSTimeZone localTimeZone]];
-    [receipt setPrice:[WBPrice priceWithAmount:params[ReceiptsTable.COLUMN_PRICE] currencyCode:params[ReceiptsTable.COLUMN_ISO4217]]];
-    [receipt setTax:[WBPrice zeroPriceWithCurrencyCode:@"USD"]];
+    [receipt setPrice:[Price priceWithAmount:params[ReceiptsTable.COLUMN_PRICE] currencyCode:params[ReceiptsTable.COLUMN_ISO4217]]];
+    [receipt setTax:[Price zeroPriceWithCurrencyCode:@"USD"]];
     [receipt setExpensable:[params[ReceiptsTable.COLUMN_EXPENSEABLE] boolValue]];
     [receipt setTrip:params[ReceiptsTable.COLUMN_PARENT]];
     [receipt setPaymentMethod:params[ReceiptsTable.COLUMN_PAYMENT_METHOD_ID]];

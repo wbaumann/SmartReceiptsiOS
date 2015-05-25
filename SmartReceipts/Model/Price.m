@@ -1,32 +1,32 @@
 //
-//  WBPrice.m
+//  Price.m
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 22/04/15.
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import "WBPrice.h"
+#import "Price.h"
 #import "WBCurrency.h"
 
-@interface WBPrice ()
+@interface Price ()
 
 @property (nonatomic, strong) NSDecimalNumber *amount;
 @property (nonatomic, strong) WBCurrency *currency;
 
 @end
 
-@implementation WBPrice
+@implementation Price
 
-+ (WBPrice *)priceWithAmount:(NSDecimalNumber *)amount currencyCode:(NSString *)currencyCode {
-    WBPrice *price = [[WBPrice alloc] init];
++ (Price *)priceWithAmount:(NSDecimalNumber *)amount currencyCode:(NSString *)currencyCode {
+    Price *price = [[Price alloc] init];
     [price setAmount:amount];
     [price setCurrency:[WBCurrency currencyForCode:currencyCode]];
     return price;
 }
 
-+ (WBPrice *)zeroPriceWithCurrencyCode:(NSString *)currencyCode {
-    return [WBPrice priceWithAmount:[NSDecimalNumber zero] currencyCode:currencyCode];
++ (Price *)zeroPriceWithCurrencyCode:(NSString *)currencyCode {
+    return [Price priceWithAmount:[NSDecimalNumber zero] currencyCode:currencyCode];
 }
 
 - (NSString *)amountAsString {
@@ -48,7 +48,7 @@
 }
 
 - (NSString *)formattedMoneyString:(NSDecimalNumber *)moneyAmount {
-    return [[WBPrice formatterForCurrencyCode:self.currency.code] stringFromNumber:moneyAmount];
+    return [[Price formatterForCurrencyCode:self.currency.code] stringFromNumber:moneyAmount];
 }
 
 + (NSNumberFormatter *)formatterForCurrencyCode:(NSString *)code {

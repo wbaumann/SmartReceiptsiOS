@@ -161,7 +161,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.dateSeparatorCell setTitle:NSLocalizedString(@"Date Separator", nil)];
 
     self.costCenterCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.costCenterCell setTitle:NSLocalizedString(@"Track Const Center", nil)];
+    [self.costCenterCell setTitle:NSLocalizedString(@"Track Cost Center", nil)];
 
     self.cameraSettingsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSegmentControlCell cellIdentifier]];
     [self.cameraSettingsCell setTitle:NSLocalizedString(@"Max. Camera Height / Width", nil)];

@@ -14,7 +14,7 @@
 #import "WBPreferences.h"
 #import "WBFileManager.h"
 #import "WBAutocompleteHelper.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "WBCustomization.h"
 #import "TitledTextEntryCell.h"
@@ -314,8 +314,8 @@
     [self.receipt setCategory:self.categoryCell.value];
     [self.receipt setDate:[NSDate dateWithMilliseconds:_dateMs]];
     [self.receipt setTimeZone:_timeZone];
-    [self.receipt setPrice:[WBPrice priceWithAmount:price currencyCode:currencyCode]];
-    [self.receipt setTax:[WBPrice priceWithAmount:tax currencyCode:currencyCode]];
+    [self.receipt setPrice:[Price priceWithAmount:price currencyCode:currencyCode]];
+    [self.receipt setTax:[Price priceWithAmount:tax currencyCode:currencyCode]];
     [self.receipt setExpensable:self.expensableCell.isSwitchOn];
     [self.receipt setFullPage:self.fullPageImageCell.isSwitchOn];
     [self.receipt setPaymentMethod:(PaymentMethod *)self.paymentMethodCell.pickableValue];

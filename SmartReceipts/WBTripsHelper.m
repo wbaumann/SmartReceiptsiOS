@@ -11,7 +11,7 @@
 #import "WBDB.h"
 
 #import "WBPreferences.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "Database+Trips.h"
 #import "NSDate+Calculations.h"
@@ -80,7 +80,7 @@ static NSString * const NO_DATA = @"null";
         NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumnIndex:priceIndex]];
         WBTrip *trip = [[WBTrip alloc] init];
         [trip setName:name];
-        [trip setPrice:[WBPrice priceWithAmount:price currencyCode:curr]];
+        [trip setPrice:[Price priceWithAmount:price currencyCode:curr]];
         [trip setStartDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumnIndex:fromIndex]]];
         [trip setEndDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumnIndex:toIndex]]];
         [trip setStartTimeZone:[NSTimeZone timeZoneWithName:[resultSet stringForColumnIndex:fromTimeZoneIndex]]];
