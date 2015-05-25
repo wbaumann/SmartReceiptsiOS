@@ -155,6 +155,8 @@
 		EA6677761B05FD8A004D3993 /* DatabaseReceiptsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6677751B05FD8A004D3993 /* DatabaseReceiptsTest.m */; };
 		EA6677791B060FC4004D3993 /* ReceiptColumnPaymentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6677781B060FC4004D3993 /* ReceiptColumnPaymentMethod.m */; };
 		EA66777C1B06154F004D3993 /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = EA66777B1B06154F004D3993 /* NSString+Helpers.m */; };
+		EA66B2BA1B13669100A57750 /* PricesCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = EA66B2B91B13669100A57750 /* PricesCollection.m */; };
+		EA66B2BC1B136F1800A57750 /* PricesCollectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA66B2BB1B136F1800A57750 /* PricesCollectionTest.m */; };
 		EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */; };
 		EA6888D31AFE699A00A910FC /* receipts-dates-test.db in Resources */ = {isa = PBXBuildFile; fileRef = EA6888D21AFE699A00A910FC /* receipts-dates-test.db */; };
 		EA69EF151AEFC81A00276B70 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF141AEFC81A00276B70 /* Database.m */; };
@@ -502,6 +504,9 @@
 		EA6677781B060FC4004D3993 /* ReceiptColumnPaymentMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnPaymentMethod.m; sourceTree = "<group>"; };
 		EA66777A1B06154F004D3993 /* NSString+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helpers.h"; sourceTree = "<group>"; };
 		EA66777B1B06154F004D3993 /* NSString+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helpers.m"; sourceTree = "<group>"; };
+		EA66B2B81B13669100A57750 /* PricesCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PricesCollection.h; sourceTree = "<group>"; };
+		EA66B2B91B13669100A57750 /* PricesCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PricesCollection.m; sourceTree = "<group>"; };
+		EA66B2BB1B136F1800A57750 /* PricesCollectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PricesCollectionTest.m; sourceTree = "<group>"; };
 		EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseDatesTest.m; sourceTree = "<group>"; };
 		EA6888D21AFE699A00A910FC /* receipts-dates-test.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "receipts-dates-test.db"; sourceTree = "<group>"; };
 		EA69EF131AEFC81A00276B70 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
@@ -1246,6 +1251,8 @@
 				EA0677F31B04E5320058A326 /* Pickable.h */,
 				EA8D816E1AEA668100BAC943 /* Price.h */,
 				EA8D816F1AEA668100BAC943 /* Price.m */,
+				EA66B2B81B13669100A57750 /* PricesCollection.h */,
+				EA66B2B91B13669100A57750 /* PricesCollection.m */,
 				EA0677F41B04E61A0058A326 /* StringPickableWrapper.h */,
 				EA0677F51B04E61A0058A326 /* StringPickableWrapper.m */,
 				EAE319601B10BB5C0032887E /* TaxCalculator.h */,
@@ -1372,6 +1379,7 @@
 		EAE725D81B022E8600402689 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EA66B2BB1B136F1800A57750 /* PricesCollectionTest.m */,
 				EAE319631B10BF630032887E /* TaxCalculatorTest.m */,
 				EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */,
 			);
@@ -1835,6 +1843,7 @@
 				EAE9DAEB1AF8EA5500F4FE76 /* DistanceLocationColumn.m in Sources */,
 				EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */,
 				EA8D81821AEA7B5800BAC943 /* ReceiptColumnBlank.m in Sources */,
+				EA66B2BA1B13669100A57750 /* PricesCollection.m in Sources */,
 				8453368018F475E2001072AA /* WBAutocompleteHelper.m in Sources */,
 				EA8D818B1AEA7BA400BAC943 /* ReceiptColumnUserID.m in Sources */,
 				EA8EB1071B0A4AAF00780BA3 /* ReceiptColumnReportComment.m in Sources */,
@@ -1890,6 +1899,7 @@
 				EA1D42C91B03931400D64D3A /* DatabasePaymentMethodsTest.m in Sources */,
 				EA90F2921B0CC4DD00FD2DB6 /* DatabaseReceiptsDatesTest.m in Sources */,
 				EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */,
+				EA66B2BC1B136F1800A57750 /* PricesCollectionTest.m in Sources */,
 				EA07BF591AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m in Sources */,
 				EA888A811AFA5D1D00DF2AE6 /* WBPreferencesTestHelper.m in Sources */,
 				EAE319641B10BF630032887E /* TaxCalculatorTest.m in Sources */,

@@ -16,6 +16,8 @@
 #import "WBReceipt.h"
 #import "DistancesToReceiptsConverter.h"
 #import "NSString+Validation.h"
+#import "PricesCollection.h"
+#import "Distance.h"
 
 @implementation TripFullPDFGenerator
 
@@ -54,27 +56,60 @@
 
     [self.pdfDrawer drawGap];
 
+    PricesCollection *netTotal = [[PricesCollection alloc] init];
+    PricesCollection *receiptTotal = [[PricesCollection alloc] init];
+    PricesCollection *expensableTotal = [[PricesCollection alloc] init];
+    PricesCollection *noTaxesTotal = [[PricesCollection alloc] init];
+    PricesCollection *taxesTotal = [[PricesCollection alloc] init];
+    PricesCollection *distanceTotal = [[PricesCollection alloc] init];
+
+    NSArray *receipts = [self receipts];
+
+    BOOL pricesPreTax = [WBPreferences enteredPricePreTax];
+    BOOL reportOnlyExpensable = [WBPreferences onlyIncludeExpensableReceiptsInReports];
+
+    for (WBReceipt *receipt in receipts) {
+        if (reportOnlyExpensable && !receipt.isExpensable) {
+            continue;
+        }
+
+        [netTotal addPrice:receipt.price];
+        [receiptTotal addPrice:receipt.price];
+        [noTaxesTotal addPrice:receipt.price];
+        [noTaxesTotal subtractPrice:receipt.tax];
+        [taxesTotal addPrice:receipt.tax];
+        if (pricesPreTax) {
+            [netTotal addPrice:receipt.tax];
+        }
+        if (reportOnlyExpensable) {
+            [expensableTotal addPrice:receipt.price];
+        }
+    }
+
+    NSArray *distances = [self.database allDistancesForTrip:self.trip];
+    for (Distance *distance in distances) {
+        [netTotal addPrice:distance.totalRate];
+        [distanceTotal addPrice:distance.totalRate];
+    }
+
     ReportPDFTable *receiptsTable = [[ReportPDFTable alloc] initWithPDFDrawer:self.pdfDrawer columns:[self receiptColumns]];
     [receiptsTable setIncludeHeaders:YES];
-    NSArray *rows = [self receipts];
     if ([WBPreferences printDailyDistanceValues]) {
-        NSArray *distances = [self.database allDistancesForTrip:self.trip];
-        NSArray *receipts = [DistancesToReceiptsConverter convertDistances:distances];
-        rows = [rows arrayByAddingObjectsFromArray:receipts];
-        rows = [rows sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSArray *distanceReceipts = [DistancesToReceiptsConverter convertDistances:distances];
+        receipts = [receipts arrayByAddingObjectsFromArray:distanceReceipts];
+        receipts = [receipts sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
             WBReceipt *one = obj1;
             WBReceipt *two = obj2;
             return [two.date compare:one.date];
         }];
     }
 
-    [receiptsTable appendTableWithRows:rows];
+    [receiptsTable appendTableWithRows:receipts];
 
     if (![WBPreferences printDistanceTable]) {
         return;
     }
 
-    NSArray *distances = [self distances];
     if (distances.count == 0) {
         return;
     }
