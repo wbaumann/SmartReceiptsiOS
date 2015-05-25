@@ -12,7 +12,7 @@
 #import "DatabaseTableNames.h"
 #import "Database+Functions.h"
 #import "DatabaseQueryBuilder.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "WBCurrency.h"
 #import "Database+Receipts.h"
 #import "WBPreferences.h"
@@ -172,8 +172,8 @@
     return (WBTrip *)[self executeFetchFor:[WBTrip class] withQuery:select];
 }
 
-- (WBPrice *)updatePriceOfTrip:(WBTrip *)trip {
-    __block WBPrice *result;
+- (Price *)updatePriceOfTrip:(WBTrip *)trip {
+    __block Price *result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         result = [self updatePriceOfTrip:trip usingDatabase:db];
     }];
@@ -181,8 +181,8 @@
     return result;
 }
 
-- (WBPrice *)updatePriceOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
-    WBPrice *price = [self tripPrice:trip usingDatabase:database];
+- (Price *)updatePriceOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+    Price *price = [self tripPrice:trip usingDatabase:database];
 
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:TripsTable.TABLE_NAME];
     [update addParam:TripsTable.COLUMN_PRICE value:price.amount];
@@ -195,12 +195,12 @@
     return price;
 }
 
-- (WBPrice *)tripPrice:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
+- (Price *)tripPrice:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
     NSDecimalNumber *total = [self totalPriceForTrip:trip usingDatabase:database];
     //TODO jaanus: is this needed?
     NSString *currencyCode = [self aggregateCurrencyCodeForTrip:trip usingDatabase:database];
 
-    return [WBPrice priceWithAmount:total currencyCode:currencyCode];
+    return [Price priceWithAmount:total currencyCode:currencyCode];
 }
 
 - (NSString *)aggregateCurrencyCodeForTrip:(WBTrip *)trip {

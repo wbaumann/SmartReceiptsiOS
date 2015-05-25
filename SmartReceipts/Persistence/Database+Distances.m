@@ -13,7 +13,7 @@
 #import "Database+Functions.h"
 #import "DatabaseQueryBuilder.h"
 #import "WBTrip.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "WBCurrency.h"
 #import "FetchedModelAdapter.h"
 #import "Database+Trips.h"

@@ -10,14 +10,14 @@
 #import "FetchedModel.h"
 
 @class WBCurrency;
-@class WBPrice;
+@class Price;
 
 extern NSString *const MULTI_CURRENCY;
 
 @interface WBTrip : NSObject <FetchedModel>
 
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, strong) WBPrice *price;
+@property (nonatomic, strong) Price *price;
 @property (nonatomic, strong) WBCurrency *defaultCurrency;
 @property (nonatomic, strong) NSString *comment;
 @property (nonatomic, strong) NSString *costCenter;

@@ -8,12 +8,12 @@
 
 #import "DistancePriceColumn.h"
 #import "Distance.h"
-#import "WBPrice.h"
+#import "Price.h"
 
 @implementation DistancePriceColumn
 
 - (NSString *)valueFromDistance:(Distance *)distance forCSV:(BOOL)forCSV {
-    WBPrice *price = distance.totalRate;
+    Price *price = distance.totalRate;
     return (forCSV ? price.amountAsString : price.currencyFormattedPrice);
 }
 

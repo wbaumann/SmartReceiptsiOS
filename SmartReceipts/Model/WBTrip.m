@@ -9,7 +9,7 @@
 #import <FMDB/FMResultSet.h>
 #import "WBTrip.h"
 #import "WBFileManager.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "DatabaseTableNames.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "NSDate+Calculations.h"
@@ -107,7 +107,7 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
         currencyCode = [WBPreferences defaultCurrency];
     }
     self.defaultCurrency = [WBCurrency currencyForCode:currencyCode];
-    _price = [WBPrice priceWithAmount:price currencyCode:currencyCode];
+    _price = [Price priceWithAmount:price currencyCode:currencyCode];
     long long int startDateMilliseconds = [resultSet longLongIntForColumn:TripsTable.COLUMN_FROM];
     _startDate = [NSDate dateWithMilliseconds:startDateMilliseconds];
     _startTimeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:TripsTable.COLUMN_FROM_TIMEZONE]];

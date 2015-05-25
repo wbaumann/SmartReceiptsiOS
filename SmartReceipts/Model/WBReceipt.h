@@ -11,14 +11,14 @@
 #import "FetchedModel.h"
 
 @class WBTrip, WBCurrency;
-@class WBPrice;
+@class Price;
 @class PaymentMethod;
 
 @interface WBReceipt : NSObject <FetchedModel>
 
 @property (nonatomic, assign) NSUInteger objectId;
-@property (nonatomic, strong) WBPrice *price;
-@property (nonatomic, strong) WBPrice *tax;
+@property (nonatomic, strong) Price *price;
+@property (nonatomic, strong) Price *tax;
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, assign) NSInteger reportIndex;
 @property (nonatomic, strong) PaymentMethod *paymentMethod;
@@ -40,8 +40,8 @@
             date:(NSDate *)date
     timeZoneName:(NSString *)timeZoneName
          comment:(NSString *)comment
-           price:(WBPrice *)price
-             tax:(WBPrice *)tax
+           price:(Price *)price
+             tax:(Price *)tax
     isExpensable:(BOOL)isExpensable
       isFullPage:(BOOL)isFullPage
   extraEditText1:(NSString *)extraEditText1

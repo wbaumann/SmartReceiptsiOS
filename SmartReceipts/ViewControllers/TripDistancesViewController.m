@@ -15,7 +15,7 @@
 #import "Database+Distances.h"
 #import "Distance.h"
 #import "WBDateFormatter.h"
-#import "WBPrice.h"
+#import "Price.h"
 
 static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddViewControllerSegue";
 
@@ -47,7 +47,7 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {
     DistanceSummaryCell *summaryCell = (DistanceSummaryCell *) cell;
     Distance *distance = object;
-    WBPrice *rate = distance.rate;
+    Price *rate = distance.rate;
     summaryCell.rateLabel.text = rate.currencyFormattedPrice;
     summaryCell.destinationLabel.text = distance.location;
     summaryCell.totalLabel.text = distance.totalRate.currencyFormattedPrice;

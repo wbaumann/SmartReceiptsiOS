@@ -9,7 +9,7 @@
 #import "DistancesToReceiptsConverter.h"
 #import "WBReceipt.h"
 #import "Distance.h"
-#import "WBPrice.h"
+#import "Price.h"
 #import "WBCurrency.h"
 
 @interface DistancesToReceiptsConverter ()
@@ -71,8 +71,8 @@
                                     date:date
                             timeZoneName:timeZone.name
                                  comment:nil
-                                   price:[WBPrice priceWithAmount:totalPrice currencyCode:currency]
-                                     tax:[WBPrice zeroPriceWithCurrencyCode:currency]
+                                   price:[Price priceWithAmount:totalPrice currencyCode:currency]
+                                     tax:[Price zeroPriceWithCurrencyCode:currency]
                             isExpensable:YES
                               isFullPage:NO
                           extraEditText1:@""

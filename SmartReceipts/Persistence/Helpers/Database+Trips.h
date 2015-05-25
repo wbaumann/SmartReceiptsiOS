@@ -9,7 +9,7 @@
 #import "Database.h"
 
 @class WBTrip;
-@class WBPrice;
+@class Price;
 @class FMDatabase;
 @class FetchedModelAdapter;
 
@@ -23,9 +23,9 @@
 - (NSArray *)allTrips;
 - (NSArray *)allTripsUsingDatabase:(FMDatabase *)database;
 - (WBTrip *)tripWithName:(NSString *)tripName;
-- (WBPrice *)updatePriceOfTrip:(WBTrip *)trip;
-- (WBPrice *)updatePriceOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
-- (WBPrice *)tripPrice:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
+- (Price *)updatePriceOfTrip:(WBTrip *)trip;
+- (Price *)updatePriceOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
+- (Price *)tripPrice:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (FetchedModelAdapter *)fetchedAdapterForAllTrips;
 - (FetchedModelAdapter *)fetchedAdapterForAllTripsExcluding:(WBTrip *)trip;
 - (BOOL)deleteTrip:(WBTrip *)trip;

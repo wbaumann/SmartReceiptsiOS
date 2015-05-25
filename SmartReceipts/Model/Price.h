@@ -1,5 +1,5 @@
 //
-//  WBPrice.h
+//  Price.h
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 22/04/15.
@@ -10,14 +10,14 @@
 
 @class WBCurrency;
 
-@interface WBPrice : NSObject
+@interface Price : NSObject
 
 @property (nonatomic, strong, readonly) NSDecimalNumber *amount;
 @property (nonatomic, strong, readonly) WBCurrency *currency;
 
-+ (WBPrice *)priceWithAmount:(NSDecimalNumber *)amount currencyCode:(NSString *)currencyCode;
++ (Price *)priceWithAmount:(NSDecimalNumber *)amount currencyCode:(NSString *)currencyCode;
 - (NSString *)currencyFormattedPrice;
-+ (WBPrice *)zeroPriceWithCurrencyCode:(NSString *)currencyCode;
++ (Price *)zeroPriceWithCurrencyCode:(NSString *)currencyCode;
 - (NSString *)amountAsString;
 
 @end
