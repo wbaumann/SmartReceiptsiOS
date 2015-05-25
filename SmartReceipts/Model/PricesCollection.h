@@ -12,5 +12,6 @@
 
 - (void)addPrice:(Price *)price;
 - (void)subtractPrice:(Price *)price;
+- (BOOL)hasValue;
 
 @end

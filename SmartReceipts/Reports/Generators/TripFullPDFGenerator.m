@@ -18,6 +18,7 @@
 #import "NSString+Validation.h"
 #import "PricesCollection.h"
 #import "Distance.h"
+#import "Constants.h"
 
 @implementation TripFullPDFGenerator
 
@@ -36,26 +37,6 @@
 }
 
 - (void)appendSummaryAndTables {
-    [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@  \u2022  %@",
-                                                           [self.trip priceWithCurrencyFormatted], [self.trip name]]];
-
-    [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"From: %@ To: %@",
-                                                           [self.dateFormatter formattedDate:[self.trip startDate] inTimeZone:[self.trip startTimeZone]],
-                                                           [self.dateFormatter formattedDate:[self.trip endDate] inTimeZone:[self.trip endTimeZone]]
-    ]];
-
-    [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"Distance Traveled: %.2f", [self.database totalDistanceTraveledForTrip:self.trip].floatValue]];
-
-    if ([WBPreferences trackCostCenter] && self.trip.costCenter.hasValue) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Cost Center:", nil), self.trip.costCenter]];
-    }
-
-    if (self.trip.comment.hasValue) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Report Comment:", nil), self.trip.comment]];
-    }
-
-    [self.pdfDrawer drawGap];
-
     PricesCollection *netTotal = [[PricesCollection alloc] init];
     PricesCollection *receiptTotal = [[PricesCollection alloc] init];
     PricesCollection *expensableTotal = [[PricesCollection alloc] init];
@@ -81,16 +62,61 @@
         if (pricesPreTax) {
             [netTotal addPrice:receipt.tax];
         }
-        if (reportOnlyExpensable) {
+        if (receipt.isExpensable) {
             [expensableTotal addPrice:receipt.price];
         }
     }
 
     NSArray *distances = [self.database allDistancesForTrip:self.trip];
+
+    SRLog(@"Diatances:%@", distances);
+
     for (Distance *distance in distances) {
         [netTotal addPrice:distance.totalRate];
         [distanceTotal addPrice:distance.totalRate];
     }
+
+    [self.pdfDrawer drawRowText:self.trip.name];
+
+    if (![receiptTotal isEqual:netTotal]) {
+        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Receipts Total:", nil), receiptTotal.currencyFormattedPrice]];
+    }
+
+    if ([WBPreferences includeTaxField]) {
+        if (pricesPreTax && taxesTotal.hasValue) {
+            [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Tax Total:", nil), taxesTotal.currencyFormattedPrice]];
+        } else if (![noTaxesTotal isEqual:receiptTotal] && noTaxesTotal.hasValue) {
+            [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Receipts Total (Sans Tax):", nil), noTaxesTotal.currencyFormattedPrice]];
+        }
+    }
+
+    if (!reportOnlyExpensable && ![expensableTotal isEqual:receiptTotal]) {
+        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Receipts Total (Expenseable):", nil), expensableTotal.currencyFormattedPrice]];
+    }
+
+    if (distances.count > 0) {
+        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Distance Total:", nil), distanceTotal.currencyFormattedPrice]];
+    }
+
+    [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Gross Total:", nil), netTotal.currencyFormattedPrice]];
+
+
+    [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"From: %@ To: %@",
+                                                           [self.dateFormatter formattedDate:[self.trip startDate] inTimeZone:[self.trip startTimeZone]],
+                                                           [self.dateFormatter formattedDate:[self.trip endDate] inTimeZone:[self.trip endTimeZone]]
+    ]];
+
+    if ([WBPreferences trackCostCenter] && self.trip.costCenter.hasValue) {
+        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Cost Center:", nil), self.trip.costCenter]];
+    }
+
+    if (self.trip.comment.hasValue) {
+        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Report Comment:", nil), self.trip.comment]];
+    }
+
+    [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"Distance Traveled: %.2f", [self.database totalDistanceTraveledForTrip:self.trip].floatValue]];
+
+    [self.pdfDrawer drawGap];
 
     ReportPDFTable *receiptsTable = [[ReportPDFTable alloc] initWithPDFDrawer:self.pdfDrawer columns:[self receiptColumns]];
     [receiptsTable setIncludeHeaders:YES];

@@ -44,4 +44,16 @@
     XCTAssertEqualObjects(expected.currencyFormattedPrice, self.collection.currencyFormattedPrice);
 }
 
+- (void)testMultiCurrencyAdd {
+    [self.collection addPrice:[Price priceWithAmount:[NSDecimalNumber decimalNumberOrZero:@"10"] currencyCode:@"USD"]];
+    [self.collection addPrice:[Price priceWithAmount:[NSDecimalNumber decimalNumberOrZero:@"20"] currencyCode:@"EUR"]];
+    [self.collection addPrice:[Price priceWithAmount:[NSDecimalNumber decimalNumberOrZero:@"30"] currencyCode:@"USD"]];
+    [self.collection addPrice:[Price priceWithAmount:[NSDecimalNumber decimalNumberOrZero:@"40"] currencyCode:@"EUR"]];
+
+    Price *expectedEUR = [Price priceWithAmount:[NSDecimalNumber decimalNumberOrZero:@"60"] currencyCode:@"EUR"];
+    Price *expectedUSD = [Price priceWithAmount:[NSDecimalNumber decimalNumberOrZero:@"40"] currencyCode:@"USD"];
+    NSString *expectedResult = [@[expectedEUR.currencyFormattedPrice, expectedUSD.currencyFormattedPrice] componentsJoinedByString:@"; "];
+    XCTAssertEqualObjects(expectedResult, self.collection.currencyFormattedPrice);
+}
+
 @end

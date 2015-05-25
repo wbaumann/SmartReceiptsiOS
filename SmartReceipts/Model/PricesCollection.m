@@ -38,6 +38,16 @@
     [self addAmount:[price.amount decimalNumberByMultiplyingBy:self.minusOne] withCurrency:price.currency.code];
 }
 
+- (BOOL)hasValue {
+    NSArray *allValues = self.totals.allValues;
+    for (NSDecimalNumber *value in allValues) {
+        if (![value isEqualToNumber:[NSDecimalNumber zero]]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 - (void)addAmount:(NSDecimalNumber *)amount withCurrency:(NSString *)currency {
     NSDecimalNumber *total = self.totals[currency];
     if (!total) {
@@ -49,14 +59,29 @@
 }
 
 - (NSString *)currencyFormattedPrice {
+    NSArray *codes = [self.totals.keyEnumerator.allObjects sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSMutableArray *differentFormats = [NSMutableArray arrayWithCapacity:self.totals.count];
-    for (NSString *code in self.totals) {
+    for (NSString *code in codes) {
         NSDecimalNumber *amount = self.totals[code];
         Price *price = [Price priceWithAmount:amount currencyCode:code];
         [differentFormats addObject:price.currencyFormattedPrice];
     }
 
     return [differentFormats componentsJoinedByString:@"; "];
+}
+
+- (BOOL)isEqual:(id)other {
+    if (other == self)
+        return YES;
+    if (!other || ![[other class] isEqual:[self class]])
+        return NO;
+
+    PricesCollection *collection = other;
+    return [self.currencyFormattedPrice isEqualToString:collection.currencyFormattedPrice];
+}
+
+- (NSUInteger)hash {
+    return [self.currencyFormattedPrice hash];
 }
 
 @end
