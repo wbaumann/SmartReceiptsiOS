@@ -130,7 +130,6 @@
 		EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96A31AEBAB0200A2A5F9 /* TripCSVGenerator.m */; };
 		EA3C96A71AEBC1A500A2A5F9 /* ReceiptIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96A61AEBC1A500A2A5F9 /* ReceiptIndexer.m */; };
 		EA3C96AD1AECC95100A2A5F9 /* TripImagesPDFGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96AC1AECC95100A2A5F9 /* TripImagesPDFGenerator.m */; };
-		EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3CF0931AE68CF500B14B73 /* LaunchView.xib */; };
 		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
 		EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */; };
@@ -157,6 +156,7 @@
 		EA66777C1B06154F004D3993 /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = EA66777B1B06154F004D3993 /* NSString+Helpers.m */; };
 		EA66B2BA1B13669100A57750 /* PricesCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = EA66B2B91B13669100A57750 /* PricesCollection.m */; };
 		EA66B2BC1B136F1800A57750 /* PricesCollectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA66B2BB1B136F1800A57750 /* PricesCollectionTest.m */; };
+		EA66B2BE1B13809900A57750 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA66B2BD1B13809900A57750 /* LaunchView.xib */; };
 		EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */; };
 		EA6888D31AFE699A00A910FC /* receipts-dates-test.db in Resources */ = {isa = PBXBuildFile; fileRef = EA6888D21AFE699A00A910FC /* receipts-dates-test.db */; };
 		EA69EF151AEFC81A00276B70 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF141AEFC81A00276B70 /* Database.m */; };
@@ -462,7 +462,6 @@
 		EA3C96A61AEBC1A500A2A5F9 /* ReceiptIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptIndexer.m; sourceTree = "<group>"; };
 		EA3C96AB1AECC95100A2A5F9 /* TripImagesPDFGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripImagesPDFGenerator.h; sourceTree = "<group>"; };
 		EA3C96AC1AECC95100A2A5F9 /* TripImagesPDFGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripImagesPDFGenerator.m; sourceTree = "<group>"; };
-		EA3CF0931AE68CF500B14B73 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+WBNumberParse.h"; sourceTree = "<group>"; };
 		EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+WBNumberParse.m"; sourceTree = "<group>"; };
 		EA3CF09C1AE7C45C00B14B73 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -507,6 +506,7 @@
 		EA66B2B81B13669100A57750 /* PricesCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PricesCollection.h; sourceTree = "<group>"; };
 		EA66B2B91B13669100A57750 /* PricesCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PricesCollection.m; sourceTree = "<group>"; };
 		EA66B2BB1B136F1800A57750 /* PricesCollectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PricesCollectionTest.m; sourceTree = "<group>"; };
+		EA66B2BD1B13809900A57750 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseDatesTest.m; sourceTree = "<group>"; };
 		EA6888D21AFE699A00A910FC /* receipts-dates-test.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "receipts-dates-test.db"; sourceTree = "<group>"; };
 		EA69EF131AEFC81A00276B70 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
@@ -757,7 +757,6 @@
 				841BB3001908173600D28CBF /* WBAbstractPicker.m */,
 				845E33DE18D87CEF006A506A /* WBDynamicPicker.h */,
 				845E33DF18D87CEF006A506A /* WBDynamicPicker.m */,
-				EA3CF0931AE68CF500B14B73 /* LaunchView.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -1188,6 +1187,7 @@
 		EA5963E91AF2955300935344 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EA66B2BD1B13809900A57750 /* LaunchView.xib */,
 				EA5963EA1AF2957200935344 /* NoCaretTextField.h */,
 				EA5963EB1AF2957200935344 /* NoCaretTextField.m */,
 				EAE3195D1B10A5EE0032887E /* PendingHUDView.h */,
@@ -1612,13 +1612,13 @@
 				EA07BF371AF3B88C004D17F6 /* PickerCell.xib in Resources */,
 				8467EFED18F6F9530076BE6E /* ic_rotate_cw.png in Resources */,
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
+				EA66B2BE1B13809900A57750 /* LaunchView.xib in Resources */,
 				8467EFEC18F6F9530076BE6E /* ic_rotate_ccw.png in Resources */,
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
 				841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */,
 				8467EFF018F6FC450076BE6E /* ic_rotate_ccw@2x.png in Resources */,
 				EA07BF351AF3B703004D17F6 /* InlinedDatePickerCell.xib in Resources */,
 				8467EFF118F6FC450076BE6E /* ic_rotate_cw@2x.png in Resources */,
-				EA3CF0941AE68CF500B14B73 /* LaunchView.xib in Resources */,
 				EAE9DB021AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.xib in Resources */,
 				EA5ECA2F1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib in Resources */,
 				EA1D42C61B03902C00D64D3A /* EntryOnlyCell.xib in Resources */,
