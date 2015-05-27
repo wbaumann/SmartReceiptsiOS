@@ -30,6 +30,7 @@
 #import "Pickable.h"
 #import "StringPickableWrapper.h"
 #import "PendingHUDView.h"
+#import "Constants.h"
 
 // for refreshing while backup
 static SettingsViewController *visibleInstance = nil;
@@ -435,7 +436,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [mc setToRecipients:@[[WBPreferences defaultEmailRecipient]]];
     [mc addAttachmentData:data
                  mimeType:@"application/octet-stream"
-                 fileName:@"SmartReceipts.smr"];
+                 fileName:SmartReceiptsExportName];
 
     // forward style, mail composer is so dumb and overrides our style
     UIStatusBarStyle barStyle = [UIApplication sharedApplication].statusBarStyle;

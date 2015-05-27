@@ -53,7 +53,7 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 }
 
 - (id)initSingleton {
-    return [self initWithDatabasePath:[WBFileManager pathInDocuments:@"receipts.db"] tripsFolederPath:[WBFileManager tripsDirectoryPath]];
+    return [self initWithDatabasePath:[WBFileManager pathInDocuments:SmartReceiptsDatabaseName] tripsFolederPath:[WBFileManager tripsDirectoryPath]];
 }
 
 - (id)initWithDatabasePath:(NSString *)path tripsFolederPath:(NSString *)tripsFolderPath {

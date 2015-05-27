@@ -7,3 +7,8 @@
 //
 
 #import "Constants.h"
+
+NSString *const SmartReceiptsDatabaseName = @"receipts.db";
+NSString *const SmartReceiptsTripsDirectoryName = @"Trips";
+NSString *const SmartReceiptsExportName = @"SmartReceipts.smr";
+NSString *const SmartReceiptsDatabaseExportName = @"receipts_backup.db";

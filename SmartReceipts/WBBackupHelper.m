@@ -20,13 +20,11 @@
 
 #import "WBObservableTrips.h"
 
-#import "WBTextUtils.h"
 #import "WBAppDelegate.h"
 
 #import "SettingsViewController.h"
 #import "PendingHUDView.h"
-
-NSString *DATABASE_EXPORT_NAME = @"receipts_backup.db";
+#import "Constants.h"
 
 @interface WBBackupHelper ()
 
@@ -48,14 +46,14 @@ NSString *DATABASE_EXPORT_NAME = @"receipts_backup.db";
 }
 
 -(NSString*) exportAll {
-    NSString *zipPath = [WBFileManager pathInDocuments:@"SmartReceipts.smr"];
+    NSString *zipPath = [WBFileManager pathInDocuments:SmartReceiptsExportName];
     [WBFileManager deleteIfExists:zipPath];
     
     // DB file
-    NSString *dbPath = [WBFileManager pathInDocuments:@"receipts.db"];
+    NSString *dbPath = [WBFileManager pathInDocuments:SmartReceiptsDatabaseName];
     ZipFile *zipFile = [[ZipFile alloc] initWithFileName:zipPath mode:ZipFileModeCreate];
     {
-        ZipWriteStream *stream = [zipFile writeFileInZipWithName:DATABASE_EXPORT_NAME compressionLevel:ZipCompressionLevelDefault];
+        ZipWriteStream *stream = [zipFile writeFileInZipWithName:SmartReceiptsDatabaseExportName compressionLevel:ZipCompressionLevelDefault];
         [stream writeData:[NSData dataWithContentsOfFile:dbPath]];
         [stream finishedWriting];
     }
@@ -109,7 +107,7 @@ NSString *DATABASE_EXPORT_NAME = @"receipts_backup.db";
         return YES;
     }
     
-    NSString *backupDbPath = [WBFileManager pathInDocuments:DATABASE_EXPORT_NAME];
+    NSString *backupDbPath = [WBFileManager pathInDocuments:SmartReceiptsDatabaseExportName];
     [WBFileManager deleteIfExists:backupDbPath];
     
      NSMutableData *buffer = [[NSMutableData alloc] initWithLength:(8*1024)];
@@ -117,7 +115,7 @@ NSString *DATABASE_EXPORT_NAME = @"receipts_backup.db";
     
     // DB file
     @try {
-        if ([zipFile locateFileInZip:DATABASE_EXPORT_NAME]) {
+        if ([zipFile locateFileInZip:SmartReceiptsDatabaseExportName]) {
             ZipReadStream *stream = [zipFile readCurrentFileInZip];
             
             NSMutableData *resultData = [[NSMutableData alloc] init];
@@ -148,7 +146,7 @@ NSString *DATABASE_EXPORT_NAME = @"receipts_backup.db";
     [zipFile goToFirstFileInZip];
     do {
         NSString *name = [[zipFile getCurrentFileInZipInfo] name];
-        if ([name hasPrefix:DATABASE_EXPORT_NAME] ||
+        if ([name hasPrefix:SmartReceiptsDatabaseExportName] ||
             [name hasPrefix:@"shared_prefs/"]) {
             continue;
         }
