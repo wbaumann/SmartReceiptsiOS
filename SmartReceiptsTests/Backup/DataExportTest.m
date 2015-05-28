@@ -84,6 +84,12 @@
         if (![joinedFiles containsObject:info.name]) {
             return NO;
         }
+
+        if (info.size == 0) {
+            SRLog(@"Size of %@ is zero", info.name);
+            return NO;
+        }
+
         [joinedFiles removeObject:info.name];
     }
 

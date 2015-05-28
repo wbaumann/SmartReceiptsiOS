@@ -31,6 +31,8 @@
 #import "StringPickableWrapper.h"
 #import "PendingHUDView.h"
 #import "Constants.h"
+#import "DataExport.h"
+#import "WBFileManager.h"
 
 // for refreshing while backup
 static SettingsViewController *visibleInstance = nil;
@@ -460,21 +462,15 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     void (^exportActionBlock)() = ^{
         PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSData *data = nil;
-            @try {
-                NSString *path = [[[WBBackupHelper alloc] initWithController:self.navigationController] exportAll];
-                if (path) {
-                    data = [NSData dataWithContentsOfFile:path];
-                }
-            } @catch (NSException *e) {
-                data = nil;
-            }
+            DataExport *export = [[DataExport alloc] initWithWorkDirectory:[WBFileManager documentsPath]];
+            NSString *exportPath = [export execute];
+            NSData *exportData = [NSData dataWithContentsOfFile:exportPath];
 
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hide];
 
-                if (data) {
-                    [self showMailerForData:data];
+                if (exportData) {
+                    [self showMailerForData:exportData];
                 } else {
                     [[[UIAlertView alloc]
                             initWithTitle:NSLocalizedString(@"Error", nil)
@@ -483,7 +479,6 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
                         cancelButtonTitle:NSLocalizedString(@"OK", nil)
                         otherButtonTitles:nil] show];
                 }
-
             });
         });
     };
