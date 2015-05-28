@@ -59,7 +59,7 @@
     NSString *tripFolder = [[self.workDirectory stringByAppendingPathComponent:SmartReceiptsTripsDirectoryName] stringByAppendingPathComponent:trip];
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:tripFolder error:nil];
     for (NSString *file in files) {
-        NSString *zipName = [[SmartReceiptsTripsDirectoryName stringByAppendingPathComponent:trip] stringByAppendingPathComponent:file];
+        NSString *zipName = [trip stringByAppendingPathComponent:file];
         [self appendFileNamed:file inDirectory:tripFolder archiveName:zipName toZip:zip];
     }
 }
