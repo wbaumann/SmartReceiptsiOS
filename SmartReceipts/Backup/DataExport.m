@@ -10,6 +10,7 @@
 #import "DataExport.h"
 #import "Constants.h"
 #import "ZipFile.h"
+#import "WBPreferences.h"
 
 @interface DataExport ()
 
@@ -33,9 +34,17 @@
     ZipFile *zipFile = [[ZipFile alloc] initWithFileName:zipPath mode:ZipFileModeCreate];
     [self appendFileNamed:SmartReceiptsDatabaseName inDirectory:self.workDirectory archiveName:SmartReceiptsDatabaseExportName toZip:zipFile];
     [self appendAllTripFilesToZip:zipFile];
+    NSData *preferences = [[WBPreferences xmlString] dataUsingEncoding:NSUTF8StringEncoding];
+    [self appendData:preferences zipName:SmartReceiptsPreferencesExportName toFile:zipFile];
     [zipFile close];
 
     return zipPath;
+}
+
+- (void)appendData:(NSData *)data zipName:(NSString *)zipName toFile:(ZipFile *)zipFile {
+    ZipWriteStream *stream = [zipFile writeFileInZipWithName:zipName compressionLevel:ZipCompressionLevelDefault];
+    [stream writeData:data];
+    [stream finishedWriting];
 }
 
 - (void)appendAllTripFilesToZip:(ZipFile *)file {
@@ -58,9 +67,8 @@
 
 - (void)appendFileNamed:(NSString *)fileName inDirectory:(NSString *)containingDirectory archiveName:(NSString *)archiveName toZip:(ZipFile *)zipFile {
     NSString *filePath = [containingDirectory stringByAppendingPathComponent:fileName];
-    ZipWriteStream *stream = [zipFile writeFileInZipWithName:archiveName compressionLevel:ZipCompressionLevelDefault];
-    [stream writeData:[NSData dataWithContentsOfFile:filePath]];
-    [stream finishedWriting];
+    NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+    [self appendData:fileData zipName:archiveName toFile:zipFile];
 }
 
 @end

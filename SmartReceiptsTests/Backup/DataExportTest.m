@@ -34,7 +34,10 @@
             [SmartReceiptsTripsDirectoryName stringByAppendingPathComponent:@"Trip Three"] : @"smoked.png",
     };
 
-    self.files = files;
+    NSMutableDictionary *preferencesAdded = [NSMutableDictionary dictionaryWithDictionary:files];
+    NSArray *atoms = [SmartReceiptsPreferencesExportName componentsSeparatedByString:@"/"];
+    preferencesAdded[atoms.firstObject] = atoms.lastObject;
+    self.files = [NSDictionary dictionaryWithDictionary:preferencesAdded];
 
     for (NSString *folder in files) {
         NSString *path = [self.testPath stringByAppendingPathComponent:folder];

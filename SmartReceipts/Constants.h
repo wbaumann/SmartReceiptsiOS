@@ -49,3 +49,4 @@ extern NSString *const SmartReceiptsDatabaseName;
 extern NSString *const SmartReceiptsTripsDirectoryName;
 extern NSString *const SmartReceiptsExportName;
 extern NSString *const SmartReceiptsDatabaseExportName;
+extern NSString *const SmartReceiptsPreferencesExportName;

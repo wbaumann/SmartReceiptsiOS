@@ -84,7 +84,7 @@
     
     // prefs
     @try {
-        NSString *prefsPath = @"shared_prefs/SmartReceiptsPrefFile.xml";
+        NSString *prefsPath = SmartReceiptsPreferencesExportName;
         
         ZipWriteStream *stream = [zipFile writeFileInZipWithName:prefsPath compressionLevel:ZipCompressionLevelDefault];
         
@@ -176,7 +176,7 @@
     
     // prefs
     @try {
-        NSString *prefsPath = @"shared_prefs/SmartReceiptsPrefFile.xml";
+        NSString *prefsPath = SmartReceiptsPreferencesExportName;
         
         if ([zipFile locateFileInZip:prefsPath]) {
             NSLog(@"found prefs file");
