@@ -7,8 +7,18 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "DataImport.h"
+#import "NSDate+Calculations.h"
+#import "WBPreferencesTestHelper.h"
+#import "SmartReceiptsTestsBase.h"
+#import "Constants.h"
 
-@interface DataImportTest : XCTestCase
+NSString *const ImportTestFileName = @"2015_05_26_SmartReceipts.smr";
+
+@interface DataImportTest : SmartReceiptsTestsBase
+
+@property (nonatomic, strong) DataImport *dataImport;
+@property (nonatomic, copy) NSString *exportPath;
 
 @end
 
@@ -16,24 +26,38 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+
+    self.exportPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Eported.%@", [NSDate date].milliseconds]];
+    NSString *importFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:ImportTestFileName ofType:@""];
+    self.dataImport = [[DataImport alloc] initWithInputFile:importFilePath output:self.exportPath];
+
+    [WBPreferences setPredictCategories:NO];
+    [WBPreferences setMatchCommentToCategory:YES];
+    [WBPreferences setTheDistancePriceBeIncludedInReports:YES];
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+
+    [[NSFileManager defaultManager] removeItemAtPath:self.exportPath error:nil];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
-}
+- (void)testImport {
+    [self.dataImport execute];
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+    NSString *databaseBackup = [self.exportPath stringByAppendingPathComponent:SmartReceiptsDatabaseExportName];
+    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:databaseBackup]);
+    NSString *tripsFolder = [self.exportPath stringByAppendingPathComponent:SmartReceiptsTripsDirectoryName];
+    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:tripsFolder]);
+    NSString *testTripFolder = [tripsFolder stringByAppendingPathComponent:@"Test"];
+    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:testTripFolder]);
+    NSString *testTripFile = [testTripFolder stringByAppendingPathComponent:@"3_Fo.jpg"];
+    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:testTripFile]);
+
+    //Imported preferences should have changed these settings
+    XCTAssertTrue([WBPreferences predictCategories]);
+    XCTAssertFalse([WBPreferences matchCommentToCategory]);
+    XCTAssertFalse([WBPreferences isTheDistancePriceBeIncludedInReports]);
 }
 
 @end

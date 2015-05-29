@@ -76,7 +76,11 @@
         if ([value isEqualToString:SmartReceiptsDatabaseName]) {
             value = SmartReceiptsDatabaseExportName;
         }
-        [joinedFiles addObject:[key stringByAppendingPathComponent:value]];
+        if ([key hasPrefix:SmartReceiptsTripsDirectoryName]) {
+            [joinedFiles addObject:[[key lastPathComponent] stringByAppendingPathComponent:value]];
+        } else {
+            [joinedFiles addObject:[key stringByAppendingPathComponent:value]];
+        }
     }
 
     for (FileInZipInfo *info in fileNames) {

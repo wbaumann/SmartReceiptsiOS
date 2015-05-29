@@ -14,8 +14,4 @@
 
 @interface SettingsViewController : InputCellsViewController
 
-+ (SettingsViewController *)visibleInstance;
-
-- (void)populateValues;
-
 @end

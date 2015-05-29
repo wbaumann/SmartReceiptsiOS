@@ -250,9 +250,6 @@
             [hud hide];
             [WBBackupHelper setDataBlocked:NO];
             
-            // refresh if visible
-            [[SettingsViewController visibleInstance] populateValues];
-            
             if (result) {
                 [[[UIAlertView alloc]
                   initWithTitle:nil

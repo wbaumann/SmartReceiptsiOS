@@ -226,6 +226,7 @@
 		EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3EF861B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m */; };
 		EAD3EF8B1B0E154300CA1D4D /* AdPresentingContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3EF8A1B0E154300CA1D4D /* AdPresentingContainerViewController.m */; };
 		EADBB71F1B0B6CD600F4475F /* DatabaseTripsFilesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EADBB71E1B0B6CD600F4475F /* DatabaseTripsFilesTest.m */; };
+		EAE23CB51B1757590078F197 /* 2015_05_26_SmartReceipts.smr in Resources */ = {isa = PBXBuildFile; fileRef = EAE23CB41B1757590078F197 /* 2015_05_26_SmartReceipts.smr */; };
 		EAE3195F1B10A5EE0032887E /* PendingHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE3195E1B10A5EE0032887E /* PendingHUDView.m */; };
 		EAE319621B10BB5C0032887E /* TaxCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE319611B10BB5C0032887E /* TaxCalculator.m */; };
 		EAE319641B10BF630032887E /* TaxCalculatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE319631B10BF630032887E /* TaxCalculatorTest.m */; };
@@ -628,6 +629,7 @@
 		EAD3EF891B0E154300CA1D4D /* AdPresentingContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdPresentingContainerViewController.h; sourceTree = "<group>"; };
 		EAD3EF8A1B0E154300CA1D4D /* AdPresentingContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdPresentingContainerViewController.m; sourceTree = "<group>"; };
 		EADBB71E1B0B6CD600F4475F /* DatabaseTripsFilesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTripsFilesTest.m; sourceTree = "<group>"; };
+		EAE23CB41B1757590078F197 /* 2015_05_26_SmartReceipts.smr */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2015_05_26_SmartReceipts.smr; sourceTree = "<group>"; };
 		EAE3195D1B10A5EE0032887E /* PendingHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingHUDView.h; sourceTree = "<group>"; };
 		EAE3195E1B10A5EE0032887E /* PendingHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingHUDView.m; sourceTree = "<group>"; };
 		EAE319601B10BB5C0032887E /* TaxCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxCalculator.h; sourceTree = "<group>"; };
@@ -1256,6 +1258,7 @@
 		EA69EF2B1AF0907300276B70 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				EAE23CB41B1757590078F197 /* 2015_05_26_SmartReceipts.smr */,
 				EA159E7C1AFE6F4E00DBB6CF /* android-receipts-v11.db */,
 				EA159E7B1AFE6F4E00DBB6CF /* android-receipts-v13.db */,
 				EA69EF2C1AF0907300276B70 /* receipts_at_v11.db */,
@@ -1662,6 +1665,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAE23CB51B1757590078F197 /* 2015_05_26_SmartReceipts.smr in Resources */,
 				EA6888D31AFE699A00A910FC /* receipts-dates-test.db in Resources */,
 				EA159E801AFE705000DBB6CF /* android-receipts-v11.db in Resources */,
 				EA69EF2D1AF0907300276B70 /* receipts_at_v11.db in Resources */,

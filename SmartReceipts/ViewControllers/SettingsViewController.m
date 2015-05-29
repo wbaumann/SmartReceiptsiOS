@@ -34,9 +34,6 @@
 #import "DataExport.h"
 #import "WBFileManager.h"
 
-// for refreshing while backup
-static SettingsViewController *visibleInstance = nil;
-
 static NSString *const PushManageCategoriesSegueIdentifier = @"PushManageCategoriesSegueIdentifier";
 static NSString *const PushConfigurePDFColumnsSegueIdentifier = @"ConfigurePDF";
 static NSString *const PushConfigureCSVColumnsSegueIdentifier = @"ConfigureCSV";
@@ -89,8 +86,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 @implementation SettingsViewController
 
-+ (SettingsViewController *) visibleInstance {
-    return visibleInstance;
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -271,6 +268,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Backup", nil) cells:@[self.backupCell]]];
 
     [self.navigationController setToolbarHidden:YES];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(populateValues) name:SmartReceiptsPreferencesImportedNotification object:nil];
 }
 
 - (void)populateValues {
@@ -411,14 +410,12 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:YES];
     [self populateValues];
-    visibleInstance = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [self.navigationController setToolbarHidden:NO animated:YES];
-    visibleInstance = nil;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

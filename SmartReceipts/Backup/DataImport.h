@@ -10,4 +10,7 @@
 
 @interface DataImport : NSObject
 
+- (id)initWithInputFile:(NSString *)inputPath output:(NSString *)outputPath;
+- (void)execute;
+
 @end
