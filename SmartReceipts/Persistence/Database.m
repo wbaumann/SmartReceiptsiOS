@@ -32,6 +32,7 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 @property (nonatomic, strong) WBColumnsHelper *csvColumnsHelper;
 @property (nonatomic, strong) WBColumnsHelper *pdfColumnsHelper;
 @property (nonatomic, strong) ReceiptFilesManager *filesManager;
+@property (nonatomic, assign) BOOL disableFilesManager;
 
 @end
 
@@ -95,6 +96,14 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 
 - (void)close {
     [self.databaseQueue close];
+}
+
+- (ReceiptFilesManager *)filesManager {
+    if (self.disableFilesManager) {
+        return nil;
+    }
+
+    return _filesManager;
 }
 
 @end
