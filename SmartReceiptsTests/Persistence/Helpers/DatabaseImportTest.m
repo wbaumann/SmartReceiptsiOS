@@ -64,6 +64,46 @@
     XCTAssertEqual(1, [self.database countRowsInTable:ReceiptsTable.TABLE_NAME]);
 }
 
+- (void)testCategoriesImport {
+    NSUInteger before = [self.database countRowsInTable:CategoriesTable.TABLE_NAME];
+
+    //one removed and one added, resulting in one added
+    [self performExtrasImport];
+
+    NSUInteger after = [self.database countRowsInTable:CategoriesTable.TABLE_NAME];
+    XCTAssertEqual(before + 1, after);
+}
+
+- (void)testPaymentMethodsImport {
+    NSUInteger before = [self.database countRowsInTable:PaymentMethodsTable.TABLE_NAME];
+
+    //one removed and one added, resulting in one added
+    [self performExtrasImport];
+
+    NSUInteger after = [self.database countRowsInTable:PaymentMethodsTable.TABLE_NAME];
+    XCTAssertEqual(before + 1, after);
+}
+
+- (void)testCSVColumnsImport {
+    //new set defined in import
+    [self performExtrasImport];
+
+    NSUInteger after = [self.database countRowsInTable:CSVTable.TABLE_NAME];
+    XCTAssertEqual(2, after);
+}
+
+- (void)testPDFColumnsImport {
+    [self performExtrasImport];
+
+    NSUInteger after = [self.database countRowsInTable:PDFTable.TABLE_NAME];
+    XCTAssertEqual(3, after);
+}
+
+- (void)performExtrasImport {
+    NSString *copied = [self copyForImport:[[NSBundle bundleForClass:[self class]] pathForResource:@"exrtas-import-test" ofType:@"db"]];
+    [self.database importDataFromBackup:copied overwrite:YES];
+}
+
 - (NSString *)copyForImport:(NSString *)originalPath {
     self.importBasePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"ImportedBase%@", [NSDate date].milliseconds]];
     [[NSFileManager defaultManager] copyItemAtPath:originalPath toPath:self.importBasePath error:nil];

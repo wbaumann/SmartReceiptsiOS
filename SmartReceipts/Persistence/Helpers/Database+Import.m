@@ -15,6 +15,8 @@
 #import "Database+Distances.h"
 #import "Distance.h"
 #import "Constants.h"
+#import "Database+PaymentMethods.h"
+#import "PaymentMethod.h"
 
 @interface Distance (Expose)
 
@@ -43,6 +45,11 @@
     [self setDisableFilesManager:YES];
     [self setDisableNotifications:YES];
 
+    [self importCategoriesFrom:imported];
+    [self importPaymentMethodsFrom:imported];
+    [self importCSVColumnsFrom:imported];
+    [self importPDFColumnsFrom:imported];
+    
     NSArray *trips = [imported allTrips];
     for (WBTrip *trip in trips) {
         [self importTrip:trip importFrom:imported overwrite:overwrite];
@@ -81,6 +88,30 @@
         [distance setObjectId:0];
         [self saveDistance:distance];
     }
+}
+
+- (void)importPDFColumnsFrom:(Database *)database {
+
+}
+
+- (void)importCSVColumnsFrom:(Database *)database {
+
+}
+
+- (void)importPaymentMethodsFrom:(Database *)database {
+    NSArray *imported = [database allPaymentMethods];
+    NSArray *existing = [self allPaymentMethods];
+    for (PaymentMethod *method in imported) {
+        if ([existing containsObject:method]) {
+            continue;
+        }
+
+        [self savePaymentMethod:method];
+    }
+}
+
+- (void)importCategoriesFrom:(Database *)database {
+
 }
 
 @end

@@ -31,7 +31,6 @@
 		843F61FF18EF3F46001ACBB1 /* WBCustomization.m in Sources */ = {isa = PBXBuildFile; fileRef = 843F61FE18EF3F46001ACBB1 /* WBCustomization.m */; };
 		843F620218EF4BB0001ACBB1 /* WBImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 843F620118EF4BB0001ACBB1 /* WBImageUtils.m */; };
 		8453368018F475E2001072AA /* WBAutocompleteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8453367F18F475E2001072AA /* WBAutocompleteHelper.m */; };
-		8453368418F4950E001072AA /* WBBackupHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8453368318F4950E001072AA /* WBBackupHelper.m */; };
 		84553A5318D0D2CA0009057B /* WBReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84553A5218D0D2CA0009057B /* WBReceiptsViewController.m */; };
 		845E33DC18D86D84006A506A /* WBReceiptActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33DB18D86D84006A506A /* WBReceiptActionsViewController.m */; };
 		845E33E018D87CEF006A506A /* WBDynamicPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E33DF18D87CEF006A506A /* WBDynamicPicker.m */; };
@@ -182,6 +181,7 @@
 		EA888A881AFB4FD600DF2AE6 /* DatabaseTripsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A871AFB4FD600DF2AE6 /* DatabaseTripsTest.m */; };
 		EA8ABE3B1B1A05FA00DBFA29 /* clean.db in Resources */ = {isa = PBXBuildFile; fileRef = EA8ABE3A1B1A05FA00DBFA29 /* clean.db */; };
 		EA8ABE3D1B1A064A00DBFA29 /* DatabaseImportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8ABE3C1B1A064A00DBFA29 /* DatabaseImportTest.m */; };
+		EA8ABE3F1B1A147900DBFA29 /* exrtas-import-test.db in Resources */ = {isa = PBXBuildFile; fileRef = EA8ABE3E1B1A147900DBFA29 /* exrtas-import-test.db */; };
 		EA8CEAE51AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CEAE41AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m */; };
 		EA8CEAE71AFCEBE90007B3F5 /* DatabaseTripsSumTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CEAE61AFCEBE90007B3F5 /* DatabaseTripsSumTest.m */; };
 		EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816B1AEA668100BAC943 /* WBCategory.m */; };
@@ -297,8 +297,6 @@
 		843F620118EF4BB0001ACBB1 /* WBImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageUtils.m; sourceTree = "<group>"; };
 		8453367E18F475E2001072AA /* WBAutocompleteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAutocompleteHelper.h; sourceTree = "<group>"; };
 		8453367F18F475E2001072AA /* WBAutocompleteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAutocompleteHelper.m; sourceTree = "<group>"; };
-		8453368218F4950E001072AA /* WBBackupHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBBackupHelper.h; sourceTree = "<group>"; };
-		8453368318F4950E001072AA /* WBBackupHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBBackupHelper.m; sourceTree = "<group>"; };
 		84553A5118D0D2CA0009057B /* WBReceiptsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceiptsViewController.h; sourceTree = "<group>"; };
 		84553A5218D0D2CA0009057B /* WBReceiptsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReceiptsViewController.m; sourceTree = "<group>"; };
 		845E33DA18D86D84006A506A /* WBReceiptActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceiptActionsViewController.h; sourceTree = "<group>"; };
@@ -552,6 +550,7 @@
 		EA888A871AFB4FD600DF2AE6 /* DatabaseTripsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTripsTest.m; sourceTree = "<group>"; };
 		EA8ABE3A1B1A05FA00DBFA29 /* clean.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = clean.db; sourceTree = "<group>"; };
 		EA8ABE3C1B1A064A00DBFA29 /* DatabaseImportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseImportTest.m; sourceTree = "<group>"; };
+		EA8ABE3E1B1A147900DBFA29 /* exrtas-import-test.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "exrtas-import-test.db"; sourceTree = "<group>"; };
 		EA8CEAE41AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseDistancesSumTest.m; sourceTree = "<group>"; };
 		EA8CEAE61AFCEBE90007B3F5 /* DatabaseTripsSumTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTripsSumTest.m; sourceTree = "<group>"; };
 		EA8D816A1AEA668100BAC943 /* WBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategory.h; sourceTree = "<group>"; };
@@ -747,15 +746,6 @@
 			name = customization;
 			sourceTree = "<group>";
 		};
-		8453368118F494FE001072AA /* backup */ = {
-			isa = PBXGroup;
-			children = (
-				8453368218F4950E001072AA /* WBBackupHelper.h */,
-				8453368318F4950E001072AA /* WBBackupHelper.m */,
-			);
-			name = backup;
-			sourceTree = "<group>";
-		};
 		84553A4518D09B2E0009057B /* VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -847,7 +837,6 @@
 		847EFA5118E6BBF3006BE520 /* persistence */ = {
 			isa = PBXGroup;
 			children = (
-				8453368118F494FE001072AA /* backup */,
 				84ABAD0318DB700400F8D3EB /* helpers */,
 				84ABACFD18DB6F5F00F8D3EB /* WBDB.h */,
 				84ABACFE18DB6F5F00F8D3EB /* WBDB.m */,
@@ -1272,6 +1261,7 @@
 				EA159E7C1AFE6F4E00DBB6CF /* android-receipts-v11.db */,
 				EA159E7B1AFE6F4E00DBB6CF /* android-receipts-v13.db */,
 				EA8ABE3A1B1A05FA00DBFA29 /* clean.db */,
+				EA8ABE3E1B1A147900DBFA29 /* exrtas-import-test.db */,
 				EA69EF2C1AF0907300276B70 /* receipts_at_v11.db */,
 				EA6888D21AFE699A00A910FC /* receipts-dates-test.db */,
 				EAD15C7E1B088612003BB1F3 /* sample-receipt.jpg */,
@@ -1681,6 +1671,7 @@
 				EA159E801AFE705000DBB6CF /* android-receipts-v11.db in Resources */,
 				EA69EF2D1AF0907300276B70 /* receipts_at_v11.db in Resources */,
 				EA8ABE3B1B1A05FA00DBFA29 /* clean.db in Resources */,
+				EA8ABE3F1B1A147900DBFA29 /* exrtas-import-test.db in Resources */,
 				EA159E7F1AFE704D00DBB6CF /* android-receipts-v13.db in Resources */,
 				EAD15C7F1B088612003BB1F3 /* sample-receipt.jpg in Resources */,
 			);
@@ -1858,7 +1849,6 @@
 				EA4C5CC11AF286990083FDD7 /* InputCellsSection.m in Sources */,
 				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
-				8453368418F4950E001072AA /* WBBackupHelper.m in Sources */,
 				EAE9DB011AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m in Sources */,
 				84A3ADE318D48E15003DB722 /* WBNewCategoryViewController.m in Sources */,
 				EAE8F9B21AF149DC00E837E3 /* TripDistancesViewController.m in Sources */,

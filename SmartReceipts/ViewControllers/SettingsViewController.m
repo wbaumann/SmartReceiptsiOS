@@ -12,9 +12,6 @@
 
 #import "WBPreferences.h"
 #import "WBDateFormatter.h"
-
-#import "WBBackupHelper.h"
-
 #import "WBCustomization.h"
 #import "SettingsTopTitledTextEntryCell.h"
 #import "UIView+LoadHelpers.h"

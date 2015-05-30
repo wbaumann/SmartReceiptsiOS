@@ -30,11 +30,11 @@
     }
 
     PaymentMethod *otherMethod = other;
-    return self.objectId == otherMethod.objectId;
+    return [self.method isEqualToString:otherMethod.method];
 }
 
 - (NSUInteger)hash {
-    return @(self.objectId).hash;
+    return self.method.hash;
 }
 
 - (NSString *)presentedValue {
