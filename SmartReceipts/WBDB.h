@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "WBTripsHelper.h"
 #import "WBReceiptsHelper.h"
 #import "WBCategoriesHelper.h"
 #import "WBColumnsHelper.h"
@@ -27,12 +26,9 @@
 + (BOOL)open;
 + (void)close;
 
-+ (WBTripsHelper *)trips;
 + (WBReceiptsHelper *)receipts;
 + (WBCategoriesHelper *)categories;
 + (WBColumnsHelper *)csvColumns;
 + (WBColumnsHelper *)pdfColumns;
-
-+ (BOOL)mergeWithDatabaseAtPath:(NSString *)dbPath overwrite:(BOOL)overwrite;
 
 @end

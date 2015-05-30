@@ -11,7 +11,6 @@
 
 @interface Database (Expose)
 
-@property (nonatomic, strong) WBTripsHelper *tripsHelper;
 @property (nonatomic, strong) WBReceiptsHelper *receiptsHelper;
 @property (nonatomic, strong) WBCategoriesHelper *categoriesHelper;
 @property (nonatomic, strong) WBColumnsHelper *csvColumnsHelper;
@@ -23,10 +22,6 @@
 
 + (void)close {
     [[Database sharedInstance] close];
-}
-
-+ (WBTripsHelper *)trips {
-    return [[Database sharedInstance] tripsHelper];
 }
 
 + (WBReceiptsHelper *)receipts {
@@ -78,53 +73,6 @@
         return false;
     }
 
-    return true;
-}
-
-+ (BOOL)mergeWithDatabaseAtPath:(NSString *)dbPath overwrite:(BOOL)overwrite {
-    FMDatabase *otherDb = [FMDatabase databaseWithPath:dbPath];
-    if (![otherDb open]) {
-        return NO;
-    }
-
-    __block BOOL result = false;
-
-    [[[Database sharedInstance] databaseQueue] inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        result = [WBDB mergeDatabase:db withDatabase:otherDb overwrite:overwrite];
-        if (!result) {
-            *rollback = YES;
-        }
-    }];
-
-    return result;
-}
-
-+(BOOL) mergeDatabase:(FMDatabase*) currDB withDatabase:(FMDatabase*) importDB overwrite:(BOOL) overwrite {
-    
-    if (![WBTripsHelper mergeDatabase:currDB withDatabase:importDB overwrite:overwrite]) {
-        return false;
-    }
-    if (![WBReceiptsHelper mergeDatabase:currDB withDatabase:importDB overwrite:overwrite]) {
-        return false;
-    }
-    if (![WBCategoriesHelper mergeDatabase:currDB withDatabase:importDB]) {
-        return false;
-    }
-    if (![WBColumnsHelper mergeDatabase:currDB withDatabase:importDB forTable:[WBColumnsHelper TABLE_NAME_CSV]]) {
-        return false;
-    }
-    if (![WBColumnsHelper mergeDatabase:currDB withDatabase:importDB forTable:[WBColumnsHelper TABLE_NAME_PDF]]) {
-        return false;
-    }
-
-
-    NSArray *trips = [[WBDB trips] selectAllInDatabase:currDB];
-    for (WBTrip *trip in trips) {
-        [[Database sharedInstance] updatePriceOfTrip:trip];
-    }
-    
-    [[WBDB categories] clearCache];
-    
     return true;
 }
 

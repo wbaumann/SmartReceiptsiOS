@@ -32,10 +32,6 @@ static NSString * const COLUMN_BREAKDOWN = @"breakdown";
     return self;
 }
 
-- (BOOL) createTable {
-    return [WBCategoriesHelper createTableInQueue:_databaseQueue];
-}
-
 + (BOOL)createTableInQueue:(FMDatabaseQueue *)queue {
     NSString* query = [@[
                          @"CREATE TABLE " , TABLE_NAME , @" ("

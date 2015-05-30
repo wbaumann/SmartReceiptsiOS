@@ -34,6 +34,7 @@
 #import "Database+Receipts.h"
 #import "NSDate+Calculations.h"
 #import "TaxCalculator.h"
+#import "WBTrip.h"
 
 @interface EditReceiptViewController ()
 

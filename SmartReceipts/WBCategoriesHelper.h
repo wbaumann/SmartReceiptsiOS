@@ -13,7 +13,6 @@
 @interface WBCategoriesHelper : NSObject
 
 - (id)initWithDatabaseQueue:(FMDatabaseQueue*) db;
-- (BOOL)createTable;
 
 // select or get from cache if there was no insert/update/delete since last successful select
 -(NSArray*) selectAll;
