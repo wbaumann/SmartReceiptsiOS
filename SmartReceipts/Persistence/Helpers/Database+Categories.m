@@ -14,6 +14,12 @@
 #import "DatabaseQueryBuilder.h"
 #import "DatabaseTableNames.h"
 
+@interface WBCategory (Expose)
+
+@property (nonatomic, copy) NSString *originalName;
+
+@end
+
 @implementation Database (Categories)
 
 - (NSArray *)listAllCategories {
@@ -23,15 +29,24 @@
 }
 
 - (BOOL)saveCategory:(WBCategory *)category {
-    return NO;
+    DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:CategoriesTable.TABLE_NAME];
+    [insert addParam:CategoriesTable.COLUMN_CODE value:category.code];
+    [insert addParam:CategoriesTable.COLUMN_NAME value:category.name];
+    return [self executeQuery:insert];
 }
 
 - (BOOL)updateCategory:(WBCategory *)category {
-    return NO;
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:CategoriesTable.TABLE_NAME];
+    [update addParam:CategoriesTable.COLUMN_CODE value:category.code];
+    [update addParam:CategoriesTable.COLUMN_NAME value:category.name];
+    [update where:CategoriesTable.COLUMN_NAME value:category.originalName];
+    return [self executeQuery:update];
 }
 
 - (BOOL)deleteCategory:(WBCategory *)category {
-    return NO;
+    DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:CategoriesTable.TABLE_NAME];
+    [delete where:CategoriesTable.COLUMN_NAME value:category.name];
+    return [self executeQuery:delete];
 }
 
 @end

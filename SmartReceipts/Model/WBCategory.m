@@ -27,6 +27,7 @@ static NSString *const COLUMN_BREAKDOWN = @"breakdown";
     self = [super init];
     if (self) {
         _name = name;
+        _originalName = name;
         _code = code;
     }
     return self;
