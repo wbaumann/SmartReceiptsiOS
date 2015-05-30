@@ -180,6 +180,8 @@
 		EA8ABE3B1B1A05FA00DBFA29 /* clean.db in Resources */ = {isa = PBXBuildFile; fileRef = EA8ABE3A1B1A05FA00DBFA29 /* clean.db */; };
 		EA8ABE3D1B1A064A00DBFA29 /* DatabaseImportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8ABE3C1B1A064A00DBFA29 /* DatabaseImportTest.m */; };
 		EA8ABE3F1B1A147900DBFA29 /* exrtas-import-test.db in Resources */ = {isa = PBXBuildFile; fileRef = EA8ABE3E1B1A147900DBFA29 /* exrtas-import-test.db */; };
+		EA8ABE421B1A1D1700DBFA29 /* Database+Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8ABE411B1A1D1700DBFA29 /* Database+Categories.m */; };
+		EA8ABE441B1A1D6800DBFA29 /* DatabaseCategoriesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8ABE431B1A1D6800DBFA29 /* DatabaseCategoriesTest.m */; };
 		EA8CEAE51AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CEAE41AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m */; };
 		EA8CEAE71AFCEBE90007B3F5 /* DatabaseTripsSumTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CEAE61AFCEBE90007B3F5 /* DatabaseTripsSumTest.m */; };
 		EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816B1AEA668100BAC943 /* WBCategory.m */; };
@@ -545,6 +547,9 @@
 		EA8ABE3A1B1A05FA00DBFA29 /* clean.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = clean.db; sourceTree = "<group>"; };
 		EA8ABE3C1B1A064A00DBFA29 /* DatabaseImportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseImportTest.m; sourceTree = "<group>"; };
 		EA8ABE3E1B1A147900DBFA29 /* exrtas-import-test.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "exrtas-import-test.db"; sourceTree = "<group>"; };
+		EA8ABE401B1A1D1700DBFA29 /* Database+Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Database+Categories.h"; sourceTree = "<group>"; };
+		EA8ABE411B1A1D1700DBFA29 /* Database+Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Database+Categories.m"; sourceTree = "<group>"; };
+		EA8ABE431B1A1D6800DBFA29 /* DatabaseCategoriesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseCategoriesTest.m; sourceTree = "<group>"; };
 		EA8CEAE41AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseDistancesSumTest.m; sourceTree = "<group>"; };
 		EA8CEAE61AFCEBE90007B3F5 /* DatabaseTripsSumTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTripsSumTest.m; sourceTree = "<group>"; };
 		EA8D816A1AEA668100BAC943 /* WBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategory.h; sourceTree = "<group>"; };
@@ -1000,8 +1005,8 @@
 				EA3CF0981AE7962C00B14B73 /* Extensions */,
 				84D6719518D336E100B704A4 /* images */,
 				EA8D81691AEA668100BAC943 /* Model */,
-				847EFA5118E6BBF3006BE520 /* persistence */,
 				EAF9ADDF1AECF8BF0000AC84 /* Persistence */,
+				847EFA5118E6BBF3006BE520 /* persistence */,
 				848EFA5D18EDC33F00AC01B4 /* reports */,
 				EA8D81DA1AEA965D00BAC943 /* Reports */,
 				84F4F34A18CFCCD000F69A35 /* Supporting Files */,
@@ -1037,6 +1042,7 @@
 		EA07BF571AF4D6D3004D17F6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EA8ABE431B1A1D6800DBFA29 /* DatabaseCategoriesTest.m */,
 				EA36DE541B0121990034CC2D /* DatabaseCurrenciesTest.m */,
 				EA8CEAE41AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m */,
 				EA07BF5A1AF4DA66004D17F6 /* DatabaseDistancesTest.m */,
@@ -1219,6 +1225,8 @@
 		EA69EF061AEFC6F300276B70 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EA8ABE401B1A1D1700DBFA29 /* Database+Categories.h */,
+				EA8ABE411B1A1D1700DBFA29 /* Database+Categories.m */,
 				EA07BF4B1AF400CA004D17F6 /* Database+Distances.h */,
 				EA07BF4C1AF400CA004D17F6 /* Database+Distances.m */,
 				EA07BF4E1AF4CC19004D17F6 /* Database+Functions.h */,
@@ -1821,6 +1829,7 @@
 				84AA921518EE89E00096013D /* WBImageStampler.m in Sources */,
 				EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */,
 				EA3C96A11AEBA9B200A2A5F9 /* TripFullPDFGenerator.m in Sources */,
+				EA8ABE421B1A1D1700DBFA29 /* Database+Categories.m in Sources */,
 				EA07BF471AF3FD1D004D17F6 /* Distance.m in Sources */,
 				843F620218EF4BB0001ACBB1 /* WBImageUtils.m in Sources */,
 				EA888A791AFA44E300DF2AE6 /* SettingsViewController.m in Sources */,
@@ -1927,6 +1936,7 @@
 				EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */,
 				EA36DE531B0119150034CC2D /* DatabaseHintsTest.m in Sources */,
 				EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */,
+				EA8ABE441B1A1D6800DBFA29 /* DatabaseCategoriesTest.m in Sources */,
 				EA1D42C91B03931400D64D3A /* DatabasePaymentMethodsTest.m in Sources */,
 				EA90F2921B0CC4DD00FD2DB6 /* DatabaseReceiptsDatesTest.m in Sources */,
 				EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */,
