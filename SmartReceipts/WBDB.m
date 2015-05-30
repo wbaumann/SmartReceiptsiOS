@@ -11,7 +11,6 @@
 
 @interface Database (Expose)
 
-@property (nonatomic, strong) WBReceiptsHelper *receiptsHelper;
 @property (nonatomic, strong) WBCategoriesHelper *categoriesHelper;
 @property (nonatomic, strong) WBColumnsHelper *csvColumnsHelper;
 @property (nonatomic, strong) WBColumnsHelper *pdfColumnsHelper;
@@ -22,10 +21,6 @@
 
 + (void)close {
     [[Database sharedInstance] close];
-}
-
-+ (WBReceiptsHelper *)receipts {
-    return [[Database sharedInstance] receiptsHelper];
 }
 
 + (WBCategoriesHelper *)categories {
