@@ -33,6 +33,7 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 @property (nonatomic, strong) WBColumnsHelper *pdfColumnsHelper;
 @property (nonatomic, strong) ReceiptFilesManager *filesManager;
 @property (nonatomic, assign) BOOL disableFilesManager;
+@property (nonatomic, assign) BOOL disableNotifications;
 
 @end
 

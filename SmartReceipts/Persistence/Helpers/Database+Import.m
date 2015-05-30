@@ -14,6 +14,7 @@
 #import "WBReceipt.h"
 #import "Database+Distances.h"
 #import "Distance.h"
+#import "Constants.h"
 
 @interface Distance (Expose)
 
@@ -25,6 +26,7 @@
 
 - (id)initWithDatabasePath:(NSString *)path tripsFolederPath:(NSString *)tripsFolderPath;
 - (void)setDisableFilesManager:(BOOL)disable;
+@property (nonatomic, assign) BOOL disableNotifications;
 
 @end
 
@@ -39,6 +41,7 @@
     [imported open];
 
     [self setDisableFilesManager:YES];
+    [self setDisableNotifications:YES];
 
     NSArray *trips = [imported allTrips];
     for (WBTrip *trip in trips) {
@@ -46,6 +49,11 @@
     }
 
     [self setDisableFilesManager:NO];
+    [self setDisableNotifications:NO];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsDatabaseImportCompleteNotification object:nil];
+    });
 
     return YES;
 }

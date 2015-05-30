@@ -124,6 +124,11 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
     [self contentChanged];
 }
 
+- (void)reloadData {
+    [self.tableView reloadData];
+    [self contentChanged];
+}
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
