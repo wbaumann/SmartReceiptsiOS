@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <FMDB/FMDatabase.h>
 #import "Database+Categories.h"
 #import "WBCategory.h"
 #import "Database+Functions.h"
@@ -22,15 +23,33 @@
 
 @implementation Database (Categories)
 
+- (BOOL)createCategoriesTable {
+    NSArray *createCategoriesTable = @[
+            @"CREATE TABLE ", CategoriesTable.TABLE_NAME, @" (",
+            CategoriesTable.COLUMN_NAME, @" TEXT PRIMARY KEY, ",
+            CategoriesTable.COLUMN_CODE, @" TEXT, ",
+            CategoriesTable.COLUMN_BREAKDOWN, @" BOOLEAN DEFAULT 1", @");"
+    ];
+    return [self executeUpdateWithStatementComponents:createCategoriesTable];
+}
+
 - (NSArray *)listAllCategories {
     return [[self fetchedAdapterForCategories] allObjects];
 }
 
 - (BOOL)saveCategory:(WBCategory *)category {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self saveCategory:category usingDatabase:db];
+    }];
+    return result;
+}
+
+- (BOOL)saveCategory:(WBCategory *)category usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:CategoriesTable.TABLE_NAME];
     [insert addParam:CategoriesTable.COLUMN_CODE value:category.code];
     [insert addParam:CategoriesTable.COLUMN_NAME value:category.name];
-    BOOL result = [self executeQuery:insert];
+    BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {
         [self notifyInsertOfModel:category];
     }

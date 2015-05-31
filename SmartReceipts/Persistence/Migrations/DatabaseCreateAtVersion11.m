@@ -12,16 +12,11 @@
 #import "WBDB.h"
 #import "Database+Receipts.h"
 #import "Database+Trips.h"
+#import "Database+Categories.h"
 
 @interface WBDB (Expose)
 
 + (BOOL)insertDefaultColumnsIntoQueue:(FMDatabaseQueue *)queue;
-
-@end
-
-@interface WBCategoriesHelper (Expose)
-
-+ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue;
 
 @end
 
@@ -42,10 +37,10 @@
     return [DatabaseCreateAtVersion11 setupAndroidMetadataTableInQueue:queue]
             && [database createTripsTable]
             && [database createReceiptsTable]
-            && [WBCategoriesHelper createTableInQueue:queue]
+            && [database createCategoriesTable]
             && [WBColumnsHelper createTableInQueue:queue withTableName:[WBColumnsHelper TABLE_NAME_CSV]]
             && [WBColumnsHelper createTableInQueue:queue withTableName:[WBColumnsHelper TABLE_NAME_PDF]]
-            && [DatabaseCreateAtVersion11 insertDefaultCategoriesIntoQueue:queue]
+            && [DatabaseCreateAtVersion11 insertDefaultCategoriesIntoDatabase:database]
             && [WBDB insertDefaultColumnsIntoQueue:queue];
 }
 
@@ -61,7 +56,7 @@
     return result;
 }
 
-+ (BOOL)insertDefaultCategoriesIntoQueue:(FMDatabaseQueue *)queue {
++ (BOOL)insertDefaultCategoriesIntoDatabase:(Database *)database {
     SRLog(@"Insert default categories");
 
     // categories are localized because they are custom and red from db anyway
@@ -93,7 +88,8 @@
     ];
 
     for (NSUInteger i = 0; i < cats.count - 1; i += 2) {
-        if (![WBCategoriesHelper insertWithName:[cats objectAtIndex:i] code:[cats objectAtIndex:i + 1] intoQueue:queue]) {
+        WBCategory *category = [[WBCategory alloc] initWithName:cats[i] code:cats[i + 1]];
+        if (![database saveCategory:category]) {
             return NO;
         }
     }

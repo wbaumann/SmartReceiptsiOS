@@ -10,9 +10,11 @@
 
 @class WBCategory;
 @class FetchedModelAdapter;
+@class FMDatabase;
 
 @interface Database (Categories)
 
+- (BOOL)createCategoriesTable;
 - (NSArray *)listAllCategories;
 - (BOOL)saveCategory:(WBCategory *)category;
 - (BOOL)updateCategory:(WBCategory *)category;

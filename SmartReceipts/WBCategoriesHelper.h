@@ -13,12 +13,7 @@
 @interface WBCategoriesHelper : NSObject
 
 - (id)initWithDatabaseQueue:(FMDatabaseQueue*) db;
-
-// select or get from cache if there was no insert/update/delete since last successful select
 -(NSArray*) selectAll;
-
-+(BOOL) insertWithName:(NSString*) name code:(NSString*) code intoQueue:(FMDatabaseQueue *)queue;
-
 -(NSArray*) categoriesNames;
 
 @end
