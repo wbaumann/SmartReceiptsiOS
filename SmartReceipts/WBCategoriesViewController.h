@@ -7,10 +7,8 @@
 //
 
 #import "WBViewController.h"
+#import "FetchedCollectionTableViewController.h"
 
-#import "WBNewCategoryViewController.h"
-
-@interface WBCategoriesViewController : WBViewController<UITableViewDataSource,UITableViewDelegate,WBNewCategoryViewControllerDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *categoriesTableView;
+@interface WBCategoriesViewController : FetchedCollectionTableViewController
 
 @end

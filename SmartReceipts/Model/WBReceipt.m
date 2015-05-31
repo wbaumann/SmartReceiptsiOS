@@ -255,4 +255,12 @@ static NSString* checkNoData(NSString* str) {
     return @(self.objectId).hash;
 }
 
+- (NSString *)description {
+    NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+    [description appendFormat:@"name: %@, ", self.name];
+    [description appendFormat:@"date: %@", self.date];
+    [description appendString:@">"];
+    return description;
+}
+
 @end

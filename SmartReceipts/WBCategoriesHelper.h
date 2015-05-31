@@ -17,15 +17,8 @@
 // select or get from cache if there was no insert/update/delete since last successful select
 -(NSArray*) selectAll;
 
--(BOOL) insertWithName:(NSString*) name code:(NSString*) code;
 +(BOOL) insertWithName:(NSString*) name code:(NSString*) code intoQueue:(FMDatabaseQueue *)queue;
--(BOOL) updateWithName:(NSString*) oldName toName:(NSString*) newName code:(NSString*) code;
--(BOOL) deleteWithName:(NSString*) name;
 
 -(NSArray*) categoriesNames;
-
--(void) clearCache;
-
-+(BOOL) mergeDatabase:(FMDatabase*) currDB withDatabase:(FMDatabase*) importDB;
 
 @end

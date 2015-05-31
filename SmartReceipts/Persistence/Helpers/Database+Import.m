@@ -17,6 +17,8 @@
 #import "Constants.h"
 #import "Database+PaymentMethods.h"
 #import "PaymentMethod.h"
+#import "Database+Categories.h"
+#import "WBCategory.h"
 
 @interface Distance (Expose)
 
@@ -111,7 +113,15 @@
 }
 
 - (void)importCategoriesFrom:(Database *)database {
+    NSArray *imported = [database listAllCategories];
+    NSArray *existing = [self listAllCategories];
+    for (WBCategory *category in imported) {
+        if ([existing containsObject:category]) {
+            continue;
+        }
 
+        [self saveCategory:category];
+    }
 }
 
 @end

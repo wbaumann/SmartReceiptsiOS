@@ -8,24 +8,11 @@
 
 #import "WBTableViewController.h"
 
-@class WBNewCategoryViewController, WBCategory;
-
-@protocol WBNewCategoryViewControllerDelegate <NSObject>
-
--(void)viewController:(WBNewCategoryViewController*)viewController newCategory:(WBCategory*)category;
--(void)viewController:(WBNewCategoryViewController*)viewController updatedCategory:(WBCategory*)oldCategory toCategory:(WBCategory*)newCategory;
-
-@end
+@class WBCategory;
 
 @interface WBNewCategoryViewController : WBTableViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+@property (nonatomic, strong) WBCategory *category;
 
-- (IBAction)actionDone:(id)sender;
-- (IBAction)actionCancel:(id)sender;
-
-@property (weak,nonatomic) id<WBNewCategoryViewControllerDelegate> delegate;
-@property WBCategory *category;
 
 @end

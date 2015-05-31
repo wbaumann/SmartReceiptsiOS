@@ -9,6 +9,7 @@
 #import "Database.h"
 
 @class WBCategory;
+@class FetchedModelAdapter;
 
 @interface Database (Categories)
 
@@ -16,5 +17,6 @@
 - (BOOL)saveCategory:(WBCategory *)category;
 - (BOOL)updateCategory:(WBCategory *)category;
 - (BOOL)deleteCategory:(WBCategory *)category;
+- (FetchedModelAdapter *)fetchedAdapterForCategories;
 
 @end

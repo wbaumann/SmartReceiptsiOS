@@ -15,6 +15,8 @@
 #import "NSDate+Calculations.h"
 #import "WBReceipt.h"
 #import "Database+Receipts.h"
+#import "Constants.h"
+#import "Database+Trips.h"
 
 @interface DatabaseReceiptEditTest : SmartReceiptsTestsBase
 

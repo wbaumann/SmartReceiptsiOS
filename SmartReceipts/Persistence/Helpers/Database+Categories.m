@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <sys/select.h>
 #import "Database+Categories.h"
 #import "WBCategory.h"
 #import "Database+Functions.h"
 #import "FetchedModelAdapter.h"
 #import "DatabaseQueryBuilder.h"
 #import "DatabaseTableNames.h"
+#import "Database+Notify.h"
 
 @interface WBCategory (Expose)
 
@@ -23,16 +23,18 @@
 @implementation Database (Categories)
 
 - (NSArray *)listAllCategories {
-    DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:CategoriesTable.TABLE_NAME];
-    [select orderBy:CategoriesTable.COLUMN_NAME ascending:YES];
-    return [[self createAdapterUsingQuery:select forModel:[WBCategory class]] allObjects];
+    return [[self fetchedAdapterForCategories] allObjects];
 }
 
 - (BOOL)saveCategory:(WBCategory *)category {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:CategoriesTable.TABLE_NAME];
     [insert addParam:CategoriesTable.COLUMN_CODE value:category.code];
     [insert addParam:CategoriesTable.COLUMN_NAME value:category.name];
-    return [self executeQuery:insert];
+    BOOL result = [self executeQuery:insert];
+    if (result) {
+        [self notifyInsertOfModel:category];
+    }
+    return result;
 }
 
 - (BOOL)updateCategory:(WBCategory *)category {
@@ -40,13 +42,27 @@
     [update addParam:CategoriesTable.COLUMN_CODE value:category.code];
     [update addParam:CategoriesTable.COLUMN_NAME value:category.name];
     [update where:CategoriesTable.COLUMN_NAME value:category.originalName];
-    return [self executeQuery:update];
+    BOOL result = [self executeQuery:update];
+    if (result) {
+        [self notifyUpdateOfModel:category];
+    }
+    return result;
 }
 
 - (BOOL)deleteCategory:(WBCategory *)category {
     DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:CategoriesTable.TABLE_NAME];
     [delete where:CategoriesTable.COLUMN_NAME value:category.name];
-    return [self executeQuery:delete];
+    BOOL result = [self executeQuery:delete];
+    if (result) {
+        [self notifyDeleteOfModel:category];
+    }
+    return result;
+}
+
+- (FetchedModelAdapter *)fetchedAdapterForCategories {
+    DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:CategoriesTable.TABLE_NAME];
+    [select orderBy:CategoriesTable.COLUMN_NAME ascending:YES];
+    return [self createAdapterUsingQuery:select forModel:[WBCategory class]];
 }
 
 @end

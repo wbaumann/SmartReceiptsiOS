@@ -114,6 +114,8 @@
 		EA1D42C41B03901A00D64D3A /* EntryOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1D42C31B03901A00D64D3A /* EntryOnlyCell.m */; };
 		EA1D42C61B03902C00D64D3A /* EntryOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1D42C51B03902C00D64D3A /* EntryOnlyCell.xib */; };
 		EA1D42C91B03931400D64D3A /* DatabasePaymentMethodsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1D42C81B03931400D64D3A /* DatabasePaymentMethodsTest.m */; };
+		EA22FB4D1B1AF1A40060D23D /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA22FB4B1B1AF1A40060D23D /* CategoryCell.m */; };
+		EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA22FB4C1B1AF1A40060D23D /* CategoryCell.xib */; };
 		EA259CD51B1606DC00ECBD67 /* DataExport.m in Sources */ = {isa = PBXBuildFile; fileRef = EA259CD41B1606DC00ECBD67 /* DataExport.m */; };
 		EA259CD81B1606EC00ECBD67 /* DataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = EA259CD71B1606EC00ECBD67 /* DataImport.m */; };
 		EA259CDB1B16071F00ECBD67 /* DataImportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA259CDA1B16071F00ECBD67 /* DataImportTest.m */; };
@@ -441,6 +443,9 @@
 		EA1D42C31B03901A00D64D3A /* EntryOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryOnlyCell.m; sourceTree = "<group>"; };
 		EA1D42C51B03902C00D64D3A /* EntryOnlyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryOnlyCell.xib; sourceTree = "<group>"; };
 		EA1D42C81B03931400D64D3A /* DatabasePaymentMethodsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabasePaymentMethodsTest.m; sourceTree = "<group>"; };
+		EA22FB4A1B1AF1A40060D23D /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
+		EA22FB4B1B1AF1A40060D23D /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
+		EA22FB4C1B1AF1A40060D23D /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		EA259CD31B1606DC00ECBD67 /* DataExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataExport.h; sourceTree = "<group>"; };
 		EA259CD41B1606DC00ECBD67 /* DataExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataExport.m; sourceTree = "<group>"; };
 		EA259CD61B1606EC00ECBD67 /* DataImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataImport.h; sourceTree = "<group>"; };
@@ -1165,6 +1170,9 @@
 		EA4DC9931AF1578300CEF1B9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				EA22FB4A1B1AF1A40060D23D /* CategoryCell.h */,
+				EA22FB4B1B1AF1A40060D23D /* CategoryCell.m */,
+				EA22FB4C1B1AF1A40060D23D /* CategoryCell.xib */,
 				EA07BF5C1AF4E801004D17F6 /* DistanceSummaryCell.h */,
 				EA07BF5D1AF4E801004D17F6 /* DistanceSummaryCell.m */,
 				EA07BF5E1AF4E801004D17F6 /* DistanceSummaryCell.xib */,
@@ -1649,6 +1657,7 @@
 				EA66B2BE1B13809900A57750 /* LaunchView.xib in Resources */,
 				8467EFEC18F6F9530076BE6E /* ic_rotate_ccw.png in Resources */,
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
+				EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */,
 				841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */,
 				8467EFF018F6FC450076BE6E /* ic_rotate_ccw@2x.png in Resources */,
 				EA07BF351AF3B703004D17F6 /* InlinedDatePickerCell.xib in Resources */,
@@ -1806,6 +1815,7 @@
 				EAE319621B10BB5C0032887E /* TaxCalculator.m in Sources */,
 				845E33E018D87CEF006A506A /* WBDynamicPicker.m in Sources */,
 				EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */,
+				EA22FB4D1B1AF1A40060D23D /* CategoryCell.m in Sources */,
 				8478B77618D37D350041CBA3 /* WBColumnsViewController.m in Sources */,
 				EA71DFCC1AF9FEEC004092C3 /* SwitchControlCell.m in Sources */,
 				EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */,
