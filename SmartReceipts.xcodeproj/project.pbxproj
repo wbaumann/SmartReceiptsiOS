@@ -57,7 +57,6 @@
 		84AA921518EE89E00096013D /* WBImageStampler.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA921418EE89E00096013D /* WBImageStampler.m */; };
 		84ABACFC18DB673B00F8D3EB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84ABACFB18DB673B00F8D3EB /* libsqlite3.dylib */; };
 		84ABACFF18DB6F5F00F8D3EB /* WBDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABACFE18DB6F5F00F8D3EB /* WBDB.m */; };
-		84ABAD0918DB79D900F8D3EB /* WBCategoriesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABAD0818DB79D900F8D3EB /* WBCategoriesHelper.m */; };
 		84ABAD0C18DB7B4400F8D3EB /* WBColumnsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABAD0B18DB7B4400F8D3EB /* WBColumnsHelper.m */; };
 		84AEE5CD18EB47AB005DB908 /* WBMoveCopyReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AEE5CC18EB47AB005DB908 /* WBMoveCopyReceiptViewController.m */; };
 		84AF861018E895CF00F15C3A /* WBDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF860F18E895CF00F15C3A /* WBDateFormatter.m */; };
@@ -345,8 +344,6 @@
 		84ABACFB18DB673B00F8D3EB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		84ABACFD18DB6F5F00F8D3EB /* WBDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDB.h; sourceTree = "<group>"; };
 		84ABACFE18DB6F5F00F8D3EB /* WBDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDB.m; sourceTree = "<group>"; };
-		84ABAD0718DB79D900F8D3EB /* WBCategoriesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategoriesHelper.h; sourceTree = "<group>"; };
-		84ABAD0818DB79D900F8D3EB /* WBCategoriesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategoriesHelper.m; sourceTree = "<group>"; };
 		84ABAD0A18DB7B4400F8D3EB /* WBColumnsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnsHelper.h; sourceTree = "<group>"; };
 		84ABAD0B18DB7B4400F8D3EB /* WBColumnsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnsHelper.m; sourceTree = "<group>"; };
 		84AEE5CB18EB47AB005DB908 /* WBMoveCopyReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMoveCopyReceiptViewController.h; sourceTree = "<group>"; };
@@ -909,8 +906,6 @@
 		84ABAD0318DB700400F8D3EB /* helpers */ = {
 			isa = PBXGroup;
 			children = (
-				84ABAD0718DB79D900F8D3EB /* WBCategoriesHelper.h */,
-				84ABAD0818DB79D900F8D3EB /* WBCategoriesHelper.m */,
 				84ABAD0A18DB7B4400F8D3EB /* WBColumnsHelper.h */,
 				84ABAD0B18DB7B4400F8D3EB /* WBColumnsHelper.m */,
 			);
@@ -1827,7 +1822,6 @@
 				EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */,
 				847C887518D7BA4500A33397 /* WBGenerateViewController.m in Sources */,
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
-				84ABAD0918DB79D900F8D3EB /* WBCategoriesHelper.m in Sources */,
 				EA5ECA2E1AF9F43F008D2CFB /* SettingsSegmentControlCell.m in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
 				EA4C5CBA1AF2864B0083FDD7 /* TextEntryCell.m in Sources */,

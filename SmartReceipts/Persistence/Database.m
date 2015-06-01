@@ -11,7 +11,6 @@
 #import "Constants.h"
 #import "WBFileManager.h"
 #import "DatabaseMigration.h"
-#import "WBCategoriesHelper.h"
 #import "WBColumnsHelper.h"
 #import "ReceiptFilesManager.h"
 
@@ -24,7 +23,6 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 
 @property (nonatomic, copy) NSString *pathToDatabase;
 @property (nonatomic, strong) FMDatabaseQueue *databaseQueue;
-@property (nonatomic, strong) WBCategoriesHelper *categoriesHelper;
 @property (nonatomic, strong) WBColumnsHelper *csvColumnsHelper;
 @property (nonatomic, strong) WBColumnsHelper *pdfColumnsHelper;
 @property (nonatomic, strong) ReceiptFilesManager *filesManager;
@@ -77,7 +75,6 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
     [self setDatabaseQueue:db];
 
     @synchronized ([Database class]) {
-        self.categoriesHelper = [[WBCategoriesHelper alloc] initWithDatabaseQueue:db];
         self.csvColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_CSV]];
         self.pdfColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_PDF]];
     }

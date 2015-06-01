@@ -83,4 +83,15 @@ static NSString *const COLUMN_BREAKDOWN = @"breakdown";
     }
 }
 
+- (NSString *)presentedValue {
+    return self.name;
+}
+
+- (NSString *)description {
+    NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+    [description appendFormat:@"name: %@", self.name];
+    [description appendString:@">"];
+    return description;
+}
+
 @end

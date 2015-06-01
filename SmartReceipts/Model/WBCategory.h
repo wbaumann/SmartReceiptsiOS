@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "FetchedModel.h"
+#import "Pickable.h"
 
-@interface WBCategory : NSObject <FetchedModel>
+@interface WBCategory : NSObject <FetchedModel, Pickable>
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *code;

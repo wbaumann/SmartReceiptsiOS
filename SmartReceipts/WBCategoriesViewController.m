@@ -14,6 +14,7 @@
 #import "UIView+LoadHelpers.h"
 #import "FetchedModelAdapter.h"
 #import "Database+Categories.h"
+#import "WBCategory.h"
 
 @interface WBCategoriesViewController ()
 

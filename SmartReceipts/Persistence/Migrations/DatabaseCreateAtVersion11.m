@@ -13,6 +13,7 @@
 #import "Database+Receipts.h"
 #import "Database+Trips.h"
 #import "Database+Categories.h"
+#import "WBCategory.h"
 
 @interface WBDB (Expose)
 

@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "WBCategoriesHelper.h"
 #import "WBColumnsHelper.h"
 #import "Database.h"
 
@@ -25,7 +24,6 @@
 + (BOOL)open;
 + (void)close;
 
-+ (WBCategoriesHelper *)categories;
 + (WBColumnsHelper *)csvColumns;
 + (WBColumnsHelper *)pdfColumns;
 

@@ -7,11 +7,9 @@
 //
 
 #import "WBDB.h"
-#import "Database+Trips.h"
 
 @interface Database (Expose)
 
-@property (nonatomic, strong) WBCategoriesHelper *categoriesHelper;
 @property (nonatomic, strong) WBColumnsHelper *csvColumnsHelper;
 @property (nonatomic, strong) WBColumnsHelper *pdfColumnsHelper;
 
@@ -21,10 +19,6 @@
 
 + (void)close {
     [[Database sharedInstance] close];
-}
-
-+ (WBCategoriesHelper *)categories {
-    return [[Database sharedInstance] categoriesHelper];
 }
 
 + (WBColumnsHelper *)csvColumns {

@@ -30,6 +30,9 @@
     _selectedValue = selectedValue;
 
     NSUInteger index = [self.allPickabelValues indexOfObject:selectedValue];
+    if (index == NSNotFound) {
+        return;
+    }
     [self.picker selectRow:index inComponent:0 animated:NO];
 }
 

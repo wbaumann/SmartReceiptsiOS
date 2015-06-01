@@ -6,12 +6,11 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <objc/NSObjCRuntime.h>
-#import <objc/objc.h>
 #import "ReceiptColumnCategoryCode.h"
 #import "WBReceipt.h"
 #import "WBTrip.h"
-#import "WBDB.h"
+#import "Database+Categories.h"
+#import "WBCategory.h"
 
 @interface ReceiptColumnCategoryCode ()
 
@@ -28,7 +27,7 @@
 
 - (NSDictionary *)categoriesMap {
     if (!_categoriesMap) {
-        NSArray *categories = [[WBDB categories] selectAll];
+        NSArray *categories = [[Database sharedInstance] listAllCategories];
         _categoriesMap = [WBCategory namesToCodeMapFromCategories:categories];
     }
     return _categoriesMap;
