@@ -70,7 +70,7 @@
                 <outlet property="dateLabel" destination="VWL-FX-eJr" id="F9M-pN-u04"/>
                 <outlet property="destinationLabel" destination="pJ2-4J-3Gx" id="pep-B2-9mP"/>
                 <outlet property="priceWidthConstraint" destination="EU4-Yn-B8g" id="kFo-H9-lNu"/>
-                <outlet property="rateLabel" destination="9z6-tl-zVz" id="5ni-Rx-Je0"/>
+                <outlet property="distanceLabel" destination="9z6-tl-zVz" id="5ni-Rx-Je0"/>
                 <outlet property="totalLabel" destination="kAV-C9-6bN" id="pCI-e2-8sI"/>
             </connections>
             <point key="canvasLocation" x="445" y="497"/>

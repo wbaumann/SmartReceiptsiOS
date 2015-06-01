@@ -19,5 +19,6 @@
 - (NSString *)currencyFormattedPrice;
 + (Price *)zeroPriceWithCurrencyCode:(NSString *)currencyCode;
 - (NSString *)amountAsString;
++ (NSString *)amountAsString:(NSDecimalNumber *)amount;
 
 @end
