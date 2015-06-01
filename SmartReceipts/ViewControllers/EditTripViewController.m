@@ -9,10 +9,7 @@
 #import "EditTripViewController.h"
 #import "WBDateFormatter.h"
 #import "WBTrip.h"
-
-#import "WBDB.h"
 #import "WBPreferences.h"
-
 #import "WBAutocompleteHelper.h"
 #import "WBCustomization.h"
 #import "TitledAutocompleteEntryCell.h"

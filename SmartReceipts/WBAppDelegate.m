@@ -8,7 +8,6 @@
 
 #import "WBAppDelegate.h"
 
-#import "WBDB.h"
 #import "WBFileManager.h"
 
 #import "WBCustomization.h"
@@ -32,9 +31,9 @@
     [WBCustomization customizeOnAppLoad];
 
     [WBFileManager initTripsDirectory];
-    [WBDB open];
+    [[Database sharedInstance] open];
 
-    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    NSString *language = [NSLocale preferredLanguages][0];
     NSLog(@"lang: %@", language);
 
     NSURL *url = (NSURL *) [launchOptions valueForKey:UIApplicationLaunchOptionsURLKey];
@@ -78,7 +77,7 @@ void onUncaughtExcepetion(NSException *exception) {
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 
-    [WBDB close];
+    [[Database sharedInstance] close];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {

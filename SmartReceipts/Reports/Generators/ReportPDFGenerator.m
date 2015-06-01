@@ -7,12 +7,13 @@
 //
 
 #import "ReportPDFGenerator.h"
-#import "WBDB.h"
+#import "Database.h"
+#import "Database+PDFColumns.h"
 
 @implementation ReportPDFGenerator
 
 - (NSArray *)receiptColumns {
-    return [[WBDB pdfColumns] selectAll];
+    return [[Database sharedInstance] allPDFColumns];
 }
 
 @end

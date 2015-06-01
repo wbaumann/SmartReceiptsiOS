@@ -8,7 +8,6 @@
 
 #import "TripsViewController.h"
 #import "WBCellWithPriceNameDate.h"
-#import "WBDB.h"
 #import "WBDateFormatter.h"
 #import "WBPreferences.h"
 #import "WBCustomization.h"

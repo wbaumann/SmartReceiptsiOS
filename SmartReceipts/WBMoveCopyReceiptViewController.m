@@ -8,7 +8,6 @@
 
 #import "WBMoveCopyReceiptViewController.h"
 
-#import "WBDB.h"
 #import "WBCustomization.h"
 #import "TitleOnlyCell.h"
 #import "UIView+LoadHelpers.h"

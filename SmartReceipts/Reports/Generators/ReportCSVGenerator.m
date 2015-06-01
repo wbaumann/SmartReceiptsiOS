@@ -7,12 +7,13 @@
 //
 
 #import "ReportCSVGenerator.h"
-#import "WBDB.h"
+#import "Database.h"
+#import "Database+CSVColumns.h"
 
 @implementation ReportCSVGenerator
 
 - (NSArray *)receiptColumns {
-    return [[WBDB csvColumns] selectAll];
+    return [[Database sharedInstance] allCSVColumns];
 }
 
 @end

@@ -19,6 +19,8 @@
 #import "PaymentMethod.h"
 #import "Database+Categories.h"
 #import "WBCategory.h"
+#import "Database+PDFColumns.h"
+#import "Database+CSVColumns.h"
 
 @interface Distance (Expose)
 
@@ -93,11 +95,13 @@
 }
 
 - (void)importPDFColumnsFrom:(Database *)database {
-
+    NSArray *columns = [database allPDFColumns];
+    [self replaceAllPDFColumnsWith:columns];
 }
 
 - (void)importCSVColumnsFrom:(Database *)database {
-
+    NSArray *columns = [database allCSVColumns];
+    [self replaceAllCSVColumnsWith:columns];
 }
 
 - (void)importPaymentMethodsFrom:(Database *)database {

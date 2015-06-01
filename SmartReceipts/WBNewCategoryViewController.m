@@ -10,7 +10,6 @@
 
 #import "WBCategory.h"
 
-#import "WBDB.h"
 #import "Database+Categories.h"
 
 @interface WBNewCategoryViewController ()

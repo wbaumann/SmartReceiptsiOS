@@ -10,7 +10,6 @@
 #import "WBReceiptsViewController.h"
 #import "WBDateFormatter.h"
 #import "WBCurrency.h"
-#import "WBDB.h"
 #import "WBPreferences.h"
 #import "WBFileManager.h"
 #import "WBAutocompleteHelper.h"

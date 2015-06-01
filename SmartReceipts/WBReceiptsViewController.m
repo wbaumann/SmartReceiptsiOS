@@ -7,18 +7,12 @@
 //
 
 #import "WBReceiptsViewController.h"
-
 #import "WBReceiptActionsViewController.h"
 #import "WBGenerateViewController.h"
-
 #import "WBDateFormatter.h"
 #import "WBFileManager.h"
-
 #import "WBCellWithPriceNameDate.h"
-
-#import "WBDB.h"
 #import "WBPreferences.h"
-
 #import "WBImagePicker.h"
 #import "TripDistancesViewController.h"
 #import "WBCustomization.h"

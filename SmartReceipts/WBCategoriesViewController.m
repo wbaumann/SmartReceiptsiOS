@@ -7,7 +7,6 @@
 //
 
 #import "WBCategoriesViewController.h"
-#import "WBDB.h"
 #import "WBCustomization.h"
 #import "WBNewCategoryViewController.h"
 #import "CategoryCell.h"
