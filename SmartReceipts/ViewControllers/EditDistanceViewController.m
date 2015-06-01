@@ -184,10 +184,6 @@
         [issues appendIssue:NSLocalizedString(@"Rate not entered", nil)];
     }
 
-    if (![self.locationCell value].hasValue) {
-        [issues appendIssue:NSLocalizedString(@"Location not entered", nil)];
-    }
-
     return [NSString stringWithString:issues];
 }
 
