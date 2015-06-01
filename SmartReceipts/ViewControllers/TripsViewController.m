@@ -39,19 +39,6 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 
     _dateFormatter = [[WBDateFormatter alloc] init];
 
-
-    //TODO jaanus: fix this one
-    //if ([WBBackupHelper isDataBlocked] == false) {
-    //    [HUD showUIBlockingIndicatorWithText:@""];
-    //    dispatch_async([[WBAppDelegate instance] dataQueue], ^{
-    //        NSArray *trips = [[WBDB trips] selectAll];
-    //        dispatch_async(dispatch_get_main_queue(), ^{
-    //            [_trips setTrips:trips];
-    //            [HUD hideUIBlockingIndicator];
-    //        });
-    //    });
-    //}
-
     self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], self.editButtonItem];
 
     self.settingsButton.title = @"\u2699";

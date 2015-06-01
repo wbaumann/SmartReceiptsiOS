@@ -66,18 +66,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self updateEditButton];
     [self updateTitle];
 
-    //TODO jaanus: handle this
-    //if ([WBBackupHelper isDataBlocked] == false) {
-    //    [HUD showUIBlockingIndicatorWithText:@""];
-    //    dispatch_async([[WBAppDelegate instance] dataQueue], ^{
-    //        NSArray *receipts = [[WBDB receipts] selectAllForTrip:self.trip descending:true];
-    //        dispatch_async(dispatch_get_main_queue(), ^{
-    //            [_receipts setReceipts:receipts];
-    //            [HUD hideUIBlockingIndicator];
-    //        });
-    //    });
-    //}
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUpdated:) name:DatabaseDidUpdateModelNotification object:nil];
 }
 
