@@ -10,7 +10,7 @@
 
 @interface DistanceSummaryCell ()
 
-@property (nonatomic, strong) IBOutlet UILabel *rateLabel;
+@property (nonatomic, strong) IBOutlet UILabel *distanceLabel;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *priceWidthConstraint;
 @property (nonatomic, strong) IBOutlet UILabel *destinationLabel;
 @property (nonatomic, strong) IBOutlet UILabel *totalLabel;

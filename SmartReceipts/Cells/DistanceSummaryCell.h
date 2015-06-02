@@ -10,7 +10,7 @@
 
 @interface DistanceSummaryCell : UITableViewCell
 
-@property (nonatomic, strong, readonly) UILabel *rateLabel;
+@property (nonatomic, strong, readonly) UILabel *distanceLabel;
 @property (nonatomic, strong, readonly) UILabel *destinationLabel;
 @property (nonatomic, strong, readonly) UILabel *totalLabel;
 @property (nonatomic, strong, readonly) UILabel *dateLabel;

@@ -30,6 +30,10 @@
 }
 
 - (NSString *)amountAsString {
+    return [Price amountAsString:self.amount];
+}
+
++ (NSString *)amountAsString:(NSDecimalNumber *)amount {
     static NSString const *noCurrencyKey = @"noCurrencyFormatter";
     NSNumberFormatter *noCurrencyFormatter = [[NSThread currentThread] threadDictionary][noCurrencyKey];
     if (!noCurrencyFormatter) {
@@ -40,7 +44,7 @@
         [[NSThread currentThread] threadDictionary][noCurrencyKey] = noCurrencyFormatter;
     }
 
-    return [[noCurrencyFormatter stringFromNumber:self.amount] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    return [[noCurrencyFormatter stringFromNumber:amount] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
 - (NSString *)currencyFormattedPrice {

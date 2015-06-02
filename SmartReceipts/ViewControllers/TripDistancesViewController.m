@@ -47,8 +47,7 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {
     DistanceSummaryCell *summaryCell = (DistanceSummaryCell *) cell;
     Distance *distance = object;
-    Price *rate = distance.rate;
-    summaryCell.rateLabel.text = rate.currencyFormattedPrice;
+    summaryCell.distanceLabel.text = [Price amountAsString:distance.distance];
     summaryCell.destinationLabel.text = distance.location;
     summaryCell.totalLabel.text = distance.totalRate.currencyFormattedPrice;
     summaryCell.dateLabel.text = [self.dateFormatter formattedDate:distance.date inTimeZone:distance.timeZone];
