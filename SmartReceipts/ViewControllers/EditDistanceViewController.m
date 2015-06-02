@@ -48,9 +48,9 @@
     [super viewDidLoad];
 
     if (self.distance) {
-        [self.navigationItem setTitle:NSLocalizedString(@"Edit dictance", nil)];
+        [self.navigationItem setTitle:NSLocalizedString(@"Edit distance", nil)];
     } else {
-        [self.navigationItem setTitle:NSLocalizedString(@"Add dictance", nil)];
+        [self.navigationItem setTitle:NSLocalizedString(@"Add distance", nil)];
     }
 
     __weak EditDistanceViewController *weakSelf = self;
