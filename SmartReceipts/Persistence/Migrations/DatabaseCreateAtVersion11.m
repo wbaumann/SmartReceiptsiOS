@@ -8,28 +8,16 @@
 
 #import "Constants.h"
 #import <FMDB/FMDatabaseQueue.h>
+#import <FMDB/FMDatabaseAdditions.h>
 #import "DatabaseCreateAtVersion11.h"
-#import "WBDB.h"
 #import "Database+Receipts.h"
 #import "Database+Trips.h"
-
-@interface WBDB (Expose)
-
-+ (BOOL)insertDefaultColumnsIntoQueue:(FMDatabaseQueue *)queue;
-
-@end
-
-@interface WBCategoriesHelper (Expose)
-
-+ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue;
-
-@end
-
-@interface WBColumnsHelper (Expose)
-
-+ (BOOL)createTableInQueue:(FMDatabaseQueue *)queue withTableName:(NSString *)tableName;
-
-@end
+#import "Database+Categories.h"
+#import "WBCategory.h"
+#import "Database+CSVColumns.h"
+#import "Database+PDFColumns.h"
+#import "WBColumnNames.h"
+#import "ReceiptColumn.h"
 
 @implementation DatabaseCreateAtVersion11
 
@@ -39,17 +27,17 @@
 
 - (BOOL)migrate:(Database *)database {
     FMDatabaseQueue *queue = database.databaseQueue;
-    return [DatabaseCreateAtVersion11 setupAndroidMetadataTableInQueue:queue]
+    return [self setupAndroidMetadataTableInQueue:queue]
             && [database createTripsTable]
             && [database createReceiptsTable]
-            && [WBCategoriesHelper createTableInQueue:queue]
-            && [WBColumnsHelper createTableInQueue:queue withTableName:[WBColumnsHelper TABLE_NAME_CSV]]
-            && [WBColumnsHelper createTableInQueue:queue withTableName:[WBColumnsHelper TABLE_NAME_PDF]]
-            && [DatabaseCreateAtVersion11 insertDefaultCategoriesIntoQueue:queue]
-            && [WBDB insertDefaultColumnsIntoQueue:queue];
+            && [database createCategoriesTable]
+            && [database createCSVColumnsTable]
+            && [database createPDFColumnsTable]
+            && [self insertDefaultCategoriesIntoDatabase:database]
+            && [self insertDefaultReceiptColumnsIntoDatabase:database];
 }
 
-+ (BOOL)setupAndroidMetadataTableInQueue:(FMDatabaseQueue *)queue {
+- (BOOL)setupAndroidMetadataTableInQueue:(FMDatabaseQueue *)queue {
     __block BOOL result;
     [queue inDatabase:^(FMDatabase *database) {
         result = [database executeUpdate:@"CREATE TABLE android_metadata (locale TEXT)"];
@@ -61,7 +49,7 @@
     return result;
 }
 
-+ (BOOL)insertDefaultCategoriesIntoQueue:(FMDatabaseQueue *)queue {
+- (BOOL)insertDefaultCategoriesIntoDatabase:(Database *)database {
     SRLog(@"Insert default categories");
 
     // categories are localized because they are custom and red from db anyway
@@ -93,12 +81,40 @@
     ];
 
     for (NSUInteger i = 0; i < cats.count - 1; i += 2) {
-        if (![WBCategoriesHelper insertWithName:[cats objectAtIndex:i] code:[cats objectAtIndex:i + 1] intoQueue:queue]) {
+        WBCategory *category = [[WBCategory alloc] initWithName:cats[i] code:cats[i + 1]];
+        if (![database saveCategory:category]) {
             return NO;
         }
     }
 
     return YES;
+}
+
+- (BOOL)insertDefaultReceiptColumnsIntoDatabase:(Database *)database {
+    NSArray *csvColumns = @[
+            [ReceiptColumn columnWithIndex:0 name:WBColumnNameCategoryCode],
+            [ReceiptColumn columnWithIndex:0 name:WBColumnNameName],
+            [ReceiptColumn columnWithIndex:0 name:WBColumnNamePrice],
+            [ReceiptColumn columnWithIndex:0 name:WBColumnNameCurrency],
+            [ReceiptColumn columnWithIndex:0 name:WBColumnNameDate]
+    ];
+
+
+    if (![database replaceAllCSVColumnsWith:csvColumns]) {
+        SRLog(@"Error while inserting CSV columns");
+        return NO;
+    }
+
+    NSArray *pdfColumns = @[
+            [ReceiptColumn columnWithIndex:0 name:WBColumnNameName],
+            [ReceiptColumn columnWithIndex:0 name:WBColumnNamePrice],
+            [ReceiptColumn columnWithIndex:0 name:WBColumnNameDate],
+            [ReceiptColumn columnWithIndex:0 name:WBColumnNameCategoryName],
+            [ReceiptColumn columnWithIndex:0 name:WBColumnNameExpensable],
+            [ReceiptColumn columnWithIndex:0 name:WBColumnNamePictured]
+    ];
+
+    return [database replaceAllPDFColumnsWith:pdfColumns];
 }
 
 @end

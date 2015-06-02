@@ -15,4 +15,6 @@
 - (void)didMoveObject:(id)object fromIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
 - (void)didChangeContent;
 
+- (void)reloadData;
+
 @end

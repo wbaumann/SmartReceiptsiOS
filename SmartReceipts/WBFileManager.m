@@ -7,6 +7,7 @@
 //
 
 #import "WBFileManager.h"
+#import "Constants.h"
 
 @implementation WBFileManager
 
@@ -24,7 +25,7 @@
 }
 
 +(NSString*) tripsDirectoryPath {
-    return [WBFileManager pathInDocuments:@"Trips"];
+    return [WBFileManager pathInDocuments:SmartReceiptsTripsDirectoryName];
 }
 
 +(BOOL) initTripsDirectory {

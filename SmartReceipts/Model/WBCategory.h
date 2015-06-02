@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FetchedModel.h"
+#import "Pickable.h"
 
-@interface WBCategory : NSObject
+@interface WBCategory : NSObject <FetchedModel, Pickable>
+
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *code;
 
 - (id)initWithName:(NSString*)name code:(NSString*) code;
-
--(NSString*)name;
--(NSString*)code;
 
 +(NSString*) CATEGORY_NAME_BREAKFAST;
 +(NSString*) CATEGORY_NAME_LUNCH;

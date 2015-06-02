@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <FMDB/FMResultSet.h>
+#import <objc/objc.h>
 #import "ReceiptColumn.h"
 #import "WBReceipt.h"
 #import "Constants.h"

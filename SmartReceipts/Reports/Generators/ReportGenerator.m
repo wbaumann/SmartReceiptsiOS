@@ -9,7 +9,6 @@
 #import "ReportGenerator.h"
 #import "Constants.h"
 #import "WBTrip.h"
-#import "WBDB.h"
 #import "WBReportUtils.h"
 #import "ReceiptIndexer.h"
 #import "Database+Distances.h"

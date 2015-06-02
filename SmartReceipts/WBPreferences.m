@@ -12,6 +12,7 @@
 #import "WBDateFormatter.h"
 
 #import "GDataXMLNode.h"
+#import "Constants.h"
 
 static const float MIN_FLOAT = -FLT_MAX;
 
@@ -428,6 +429,10 @@ static NSUserDefaults* instance() {
     }
     
     [WBPreferences save];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsPreferencesImportedNotification object:nil];
+    });
 }
 
 +(NSString*) xmlString {

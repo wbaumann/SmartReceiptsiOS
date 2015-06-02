@@ -9,6 +9,12 @@
 #import "Database+Notify.h"
 #import "FetchedModel.h"
 
+@interface Database (Expose)
+
+@property (nonatomic, assign) BOOL disableNotifications;
+
+@end
+
 @implementation Database (Notify)
 
 - (void)notifyInsertOfModel:(id <FetchedModel>)model {
@@ -24,12 +30,20 @@
 }
 
 - (void)notifySwapOfModels:(NSArray *)models {
+    if (self.disableNotifications) {
+        return;
+    }
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidSwapModelsNotification object:models];
     });
 }
 
 - (void)postNotificationWithName:(NSString *)notificationName withObject:(id<FetchedModel>)model {
+    if (self.disableNotifications) {
+        return;
+    }
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:model];
     });

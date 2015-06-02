@@ -54,4 +54,8 @@
     [self setDidChangeCalled:YES];
 }
 
+- (void)reloadData {
+
+}
+
 @end

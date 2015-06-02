@@ -44,3 +44,11 @@
 #endif
 
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+
+extern NSString *const SmartReceiptsDatabaseName;
+extern NSString *const SmartReceiptsTripsDirectoryName;
+extern NSString *const SmartReceiptsExportName;
+extern NSString *const SmartReceiptsDatabaseExportName;
+extern NSString *const SmartReceiptsPreferencesExportName;
+extern NSString *const SmartReceiptsPreferencesImportedNotification;
+extern NSString *const SmartReceiptsDatabaseImportCompleteNotification;

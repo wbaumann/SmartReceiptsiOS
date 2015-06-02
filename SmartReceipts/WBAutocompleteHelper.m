@@ -8,7 +8,6 @@
 
 #import "WBAutocompleteHelper.h"
 
-#import "WBDB.h"
 #import "WBPreferences.h"
 #import "Database+Hints.h"
 

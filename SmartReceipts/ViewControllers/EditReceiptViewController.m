@@ -10,7 +10,6 @@
 #import "WBReceiptsViewController.h"
 #import "WBDateFormatter.h"
 #import "WBCurrency.h"
-#import "WBDB.h"
 #import "WBPreferences.h"
 #import "WBFileManager.h"
 #import "WBAutocompleteHelper.h"
@@ -34,6 +33,11 @@
 #import "Database+Receipts.h"
 #import "NSDate+Calculations.h"
 #import "TaxCalculator.h"
+#import "WBTrip.h"
+#import "WBReceipt.h"
+#import "WBCategory.h"
+#import "Database+Categories.h"
+#import "Constants.h"
 
 @interface EditReceiptViewController ()
 
@@ -58,7 +62,7 @@
 @property (nonatomic, strong) SwitchControlCell *expensableCell;
 @property (nonatomic, strong) SwitchControlCell *fullPageImageCell;
 
-@property (nonatomic, strong) NSArray *categoryNames;
+@property (nonatomic, strong) NSArray *categories;
 
 @property (nonatomic, strong) TaxCalculator *taxCalculator;
 
@@ -129,8 +133,8 @@
     [self.categoryCell setTitle:NSLocalizedString(@"Category", nil)];
 
     self.categoryPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
-    self.categoryNames = [[WBDB categories] categoriesNames];
-    [self.categoryPickerCell setAllValues:self.categoryNames];
+    self.categories = [[Database sharedInstance] listAllCategories];
+    [self.categoryPickerCell setAllPickabelValues:self.categories];
     [self.categoryPickerCell setValueChangeHandler:^(id<Pickable> selected) {
         [weakSelf.categoryCell setValue:selected.presentedValue];
         [weakSelf checkCategoryMatches];
@@ -200,7 +204,7 @@
 
 - (void)loadDataToCells {
     NSString *currencyCode = nil;
-    NSString *category = nil;
+    WBCategory *category = nil;
 
     if (self.receipt) {
         [self.navigationItem setTitle:NSLocalizedString(@"Edit Receipt", nil)];
@@ -209,7 +213,7 @@
         [self.taxCell setValue:[self.receipt taxAsString]];
         currencyCode = [[self.receipt currency] code];
         _dateMs = [self.receipt date].milliseconds.longLongValue;
-        category = [self.receipt category];
+        category = [self categoryWithName:[self.receipt category]];
         [self.commentCell setValue:[self.receipt comment]];
         [self.expensableCell setSwitchOn:[self.receipt isExpensable]];
         [self.fullPageImageCell setSwitchOn:[self.receipt isFullPage]];
@@ -231,7 +235,7 @@
             _dateMs = [[NSDate date] timeIntervalSince1970] * 1000;
         }
 
-        category = [self proposedCategory];
+        category = [self categoryWithName:[self proposedCategory]];
 
         _timeZone = [NSTimeZone localTimeZone];
 
@@ -242,22 +246,37 @@
 
     if (!_receipt) {
         if ([WBPreferences matchNameToCategory]) {
-            [self.nameCell setValue:category];
+            [self.nameCell setValue:category.name];
         }
         if ([WBPreferences matchCommentToCategory]) {
-            [self.commentCell setValue:category];
+            [self.commentCell setValue:category.name];
         }
     }
 
     [self.currencyCell setValue:currencyCode];
     [self.currencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:currencyCode]];
 
-    [self.categoryCell setValue:category];
-    [self.categoryPickerCell setSelectedValue:[StringPickableWrapper wrapValue:category]];
+    SRLog(@"Category:%@", category);
+
+    [self.categoryCell setPickableValue:category];
+    [self.categoryPickerCell setSelectedValue:category];
 
     [self.dateCell setValue:[_dateFormatter formattedDateMs:_dateMs inTimeZone:_timeZone]];
     [self.datePickerCell setDate:[NSDate dateWithTimeIntervalSince1970:_dateMs / 1000]];
 
+}
+
+- (WBCategory *)categoryWithName:(NSString *)name {
+    WBCategory *category = [self.categories filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        WBCategory *cat = evaluatedObject;
+        return [name isEqualToString:cat.name];
+    }]].firstObject;
+
+    if (!category) {
+        category = [[WBCategory alloc] initWithName:name code:@""];
+    }
+
+    return category;
 }
 
 - (void)checkCategoryMatches {
@@ -285,7 +304,7 @@
         }
     }
 
-    return self.categoryNames.count > 0 ? [self.categoryNames firstObject] : @"";
+    return self.categories.count > 0 ? [self.categories firstObject] : @"";
 }
 
 - (void)setReceipt:(WBReceipt *)receipt withTrip:(WBTrip*) trip{

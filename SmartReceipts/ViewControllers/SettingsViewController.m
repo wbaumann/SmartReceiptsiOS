@@ -12,9 +12,6 @@
 
 #import "WBPreferences.h"
 #import "WBDateFormatter.h"
-
-#import "WBBackupHelper.h"
-
 #import "WBCustomization.h"
 #import "SettingsTopTitledTextEntryCell.h"
 #import "UIView+LoadHelpers.h"
@@ -30,9 +27,9 @@
 #import "Pickable.h"
 #import "StringPickableWrapper.h"
 #import "PendingHUDView.h"
-
-// for refreshing while backup
-static SettingsViewController *visibleInstance = nil;
+#import "Constants.h"
+#import "DataExport.h"
+#import "WBFileManager.h"
 
 static NSString *const PushManageCategoriesSegueIdentifier = @"PushManageCategoriesSegueIdentifier";
 static NSString *const PushConfigurePDFColumnsSegueIdentifier = @"ConfigurePDF";
@@ -86,8 +83,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 @implementation SettingsViewController
 
-+ (SettingsViewController *) visibleInstance {
-    return visibleInstance;
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -268,6 +265,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Backup", nil) cells:@[self.backupCell]]];
 
     [self.navigationController setToolbarHidden:YES];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(populateValues) name:SmartReceiptsPreferencesImportedNotification object:nil];
 }
 
 - (void)populateValues {
@@ -408,14 +407,12 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:YES];
     [self populateValues];
-    visibleInstance = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [self.navigationController setToolbarHidden:NO animated:YES];
-    visibleInstance = nil;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -435,7 +432,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [mc setToRecipients:@[[WBPreferences defaultEmailRecipient]]];
     [mc addAttachmentData:data
                  mimeType:@"application/octet-stream"
-                 fileName:@"SmartReceipts.smr"];
+                 fileName:SmartReceiptsExportName];
 
     // forward style, mail composer is so dumb and overrides our style
     UIStatusBarStyle barStyle = [UIApplication sharedApplication].statusBarStyle;
@@ -459,21 +456,15 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     void (^exportActionBlock)() = ^{
         PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSData *data = nil;
-            @try {
-                NSString *path = [[[WBBackupHelper alloc] initWithController:self.navigationController] exportAll];
-                if (path) {
-                    data = [NSData dataWithContentsOfFile:path];
-                }
-            } @catch (NSException *e) {
-                data = nil;
-            }
+            DataExport *export = [[DataExport alloc] initWithWorkDirectory:[WBFileManager documentsPath]];
+            NSString *exportPath = [export execute];
+            NSData *exportData = [NSData dataWithContentsOfFile:exportPath];
 
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hide];
 
-                if (data) {
-                    [self showMailerForData:data];
+                if (exportData) {
+                    [self showMailerForData:exportData];
                 } else {
                     [[[UIAlertView alloc]
                             initWithTitle:NSLocalizedString(@"Error", nil)
@@ -482,7 +473,6 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
                         cancelButtonTitle:NSLocalizedString(@"OK", nil)
                         otherButtonTitles:nil] show];
                 }
-
             });
         });
     };

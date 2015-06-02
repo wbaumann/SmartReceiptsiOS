@@ -11,10 +11,6 @@
 #import "Constants.h"
 #import "WBFileManager.h"
 #import "DatabaseMigration.h"
-#import "WBTripsHelper.h"
-#import "WBReceiptsHelper.h"
-#import "WBCategoriesHelper.h"
-#import "WBColumnsHelper.h"
 #import "ReceiptFilesManager.h"
 
 NSString *const DatabaseDidInsertModelNotification = @"DatabaseDidInsertModelNotification";
@@ -26,12 +22,9 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 
 @property (nonatomic, copy) NSString *pathToDatabase;
 @property (nonatomic, strong) FMDatabaseQueue *databaseQueue;
-@property (nonatomic, strong) WBTripsHelper *tripsHelper;
-@property (nonatomic, strong) WBReceiptsHelper *receiptsHelper;
-@property (nonatomic, strong) WBCategoriesHelper *categoriesHelper;
-@property (nonatomic, strong) WBColumnsHelper *csvColumnsHelper;
-@property (nonatomic, strong) WBColumnsHelper *pdfColumnsHelper;
 @property (nonatomic, strong) ReceiptFilesManager *filesManager;
+@property (nonatomic, assign) BOOL disableFilesManager;
+@property (nonatomic, assign) BOOL disableNotifications;
 
 @end
 
@@ -53,7 +46,7 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 }
 
 - (id)initSingleton {
-    return [self initWithDatabasePath:[WBFileManager pathInDocuments:@"receipts.db"] tripsFolederPath:[WBFileManager tripsDirectoryPath]];
+    return [self initWithDatabasePath:[WBFileManager pathInDocuments:SmartReceiptsDatabaseName] tripsFolederPath:[WBFileManager tripsDirectoryPath]];
 }
 
 - (id)initWithDatabasePath:(NSString *)path tripsFolederPath:(NSString *)tripsFolderPath {
@@ -78,14 +71,6 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 
     [self setDatabaseQueue:db];
 
-    @synchronized ([Database class]) {
-        self.tripsHelper = [[WBTripsHelper alloc] initWithDatabaseQueue:db];
-        self.receiptsHelper = [[WBReceiptsHelper alloc] initWithDatabaseQueue:db];
-        self.categoriesHelper = [[WBCategoriesHelper alloc] initWithDatabaseQueue:db];
-        self.csvColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_CSV]];
-        self.pdfColumnsHelper = [[WBColumnsHelper alloc] initWithDatabaseQueue:db tableName:[WBColumnsHelper TABLE_NAME_PDF]];
-    }
-
     if (!migrateDatabase) {
         return YES;
     }
@@ -95,6 +80,14 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 
 - (void)close {
     [self.databaseQueue close];
+}
+
+- (ReceiptFilesManager *)filesManager {
+    if (self.disableFilesManager) {
+        return nil;
+    }
+
+    return _filesManager;
 }
 
 @end
