@@ -299,6 +299,7 @@
     [query addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];
     [query addParam:ReceiptsTable.COLUMN_NAME value:[receipt.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     [query addParam:ReceiptsTable.COLUMN_CATEGORY value:receipt.category];
+    [query addParam:ReceiptsTable.COLUMN_COMMENT value:receipt.comment];
     [query addParam:ReceiptsTable.COLUMN_DATE value:receipt.date.milliseconds];
     [query addParam:ReceiptsTable.COLUMN_TIMEZONE value:receipt.timeZone.name];
     [query addParam:ReceiptsTable.COLUMN_EXPENSEABLE value:@(receipt.isExpensable)];

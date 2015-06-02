@@ -35,7 +35,7 @@ static NSString* checkNoData(NSString* str) {
 @implementation WBReceipt
 {
     NSString *_fileName;
-    NSString *_name, *_category, *_comment;
+    NSString *_name, *_category;
     NSString *_extraEditText1, *_extraEditText2, *_extraEditText3;
     NSTimeZone *_timeZone;
 }
@@ -102,10 +102,6 @@ static NSString* checkNoData(NSString* str) {
 
 -(NSString*)category {
     return _category;
-}
-
--(NSString*)comment {
-    return _comment;
 }
 
 - (NSString *)priceAsString {

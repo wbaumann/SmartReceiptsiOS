@@ -30,6 +30,7 @@
 @property (nonatomic, assign, getter=isExpensable) BOOL expensable;
 @property (nonatomic, assign, getter=isFullPage) BOOL fullPage;
 @property (nonatomic, strong) NSDate *date;
+@property (nonatomic, copy) NSString *comment;
 
 +(NSString*) NO_DATA;
 
@@ -54,7 +55,6 @@
 
 -(NSString*)name;
 -(NSString*)category;
--(NSString*)comment;
 - (NSString *)priceAsString;
 - (NSString *)taxAsString;
 - (NSDecimalNumber *)priceAmount;

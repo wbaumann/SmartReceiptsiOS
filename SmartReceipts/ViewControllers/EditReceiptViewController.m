@@ -295,7 +295,7 @@
         [self.nameCell setValue:[self.categoryCell value]];
     }
     if ([WBPreferences matchCommentToCategory]) {
-        [self.commentCell setValue:[self.currencyCell value]];
+        [self.commentCell setValue:[self.categoryCell value]];
     }
 }
 
@@ -346,6 +346,7 @@
     [self.receipt setTimeZone:_timeZone];
     [self.receipt setPrice:[Price priceWithAmount:price currencyCode:currencyCode]];
     [self.receipt setTax:[Price priceWithAmount:tax currencyCode:currencyCode]];
+    [self.receipt setComment:self.commentCell.value];
     [self.receipt setExpensable:self.expensableCell.isSwitchOn];
     [self.receipt setFullPage:self.fullPageImageCell.isSwitchOn];
     [self.receipt setPaymentMethod:(PaymentMethod *)self.paymentMethodCell.pickableValue];
