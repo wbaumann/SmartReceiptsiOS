@@ -53,6 +53,7 @@ static NSString *const BOOL_TRACK_COST_CENTER = @"trackcostcenter";
 
 static NSString *const FLOAT_DEFAULT_TAX_PERCENTAGE = @"TaxPercentage";
 static NSString *const BOOL_ENTERED_PRICE_PRE_TAX = @"PreTax";
+static NSString *const BOOL_SHOW_RECEIPT_ID = @"ShowReceiptID";
 
 // there is no 100% guaranteed way to figure entry type so we have to hardcode them
 typedef NS_ENUM(short, EntryType){
@@ -107,7 +108,9 @@ static NSDictionary *getEntryTypes() {
             BOOL_TRACK_COST_CENTER : tBool,
 
             FLOAT_DEFAULT_TAX_PERCENTAGE: tFloat,
-            BOOL_ENTERED_PRICE_PRE_TAX: tBool
+            BOOL_ENTERED_PRICE_PRE_TAX: tBool,
+
+            BOOL_SHOW_RECEIPT_ID: tBool
     };
 }
 
@@ -157,7 +160,9 @@ static NSDictionary *getDefaultValues() {
 
             BOOL_TRACK_COST_CENTER : @NO,
 
-            BOOL_ENTERED_PRICE_PRE_TAX: @YES
+            BOOL_ENTERED_PRICE_PRE_TAX: @YES,
+
+            BOOL_SHOW_RECEIPT_ID: @NO
     };
 }
 
@@ -368,6 +373,13 @@ static NSUserDefaults* instance() {
     [instance() setBool:value forKey:BOOL_TRACK_COST_CENTER];
 }
 
++ (BOOL)showReceiptID {
+    return [instance() boolForKey:BOOL_SHOW_RECEIPT_ID];
+}
+
++ (void)setShowReceiptID:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_SHOW_RECEIPT_ID];
+}
 
 +(int) cameraMaxHeightWidth {
     return (int)[instance() integerForKey:INT_CAMERA_MAX_HEIGHT_WIDTH];

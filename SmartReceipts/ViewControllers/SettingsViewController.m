@@ -57,6 +57,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) SwitchControlCell *onlyReportExpenseableCell;
 @property (nonatomic, strong) SwitchControlCell *enableAutocompleteSuggestionsCell;
 @property (nonatomic, strong) SwitchControlCell *defaultReceiptDateToReportStartCell;
+@property (nonatomic, strong) SwitchControlCell *showReceiptIDCell;
 @property (nonatomic, strong) SwitchControlCell *usePaymentMethodsCell;
 @property (nonatomic, strong) SettingsButtonCell *customizePaymentMethodsCell;
 
@@ -191,6 +192,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     self.defaultReceiptDateToReportStartCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.defaultReceiptDateToReportStartCell setTitle:NSLocalizedString(@"Default Receipt Date to Report Start Date", nil)];
 
+    self.showReceiptIDCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.showReceiptIDCell setTitle:NSLocalizedString(@"Show Receipt ID", <#comment#>)];
+
     self.usePaymentMethodsCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.usePaymentMethodsCell setTitle:NSLocalizedString(@"Enable Payment Methods", nil)];
 
@@ -214,6 +218,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
                                                                        self.onlyReportExpenseableCell,
                                                                        self.enableAutocompleteSuggestionsCell,
                                                                        self.defaultReceiptDateToReportStartCell,
+                                                                       self.showReceiptIDCell,
                                                                        self.usePaymentMethodsCell,
                                                                        self.customizePaymentMethodsCell]];
     [self addSectionForPresentation:general];
@@ -304,6 +309,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.onlyReportExpenseableCell setSwitchOn:[WBPreferences onlyIncludeExpensableReceiptsInReports]];
     [self.enableAutocompleteSuggestionsCell setSwitchOn:[WBPreferences enableAutoCompleteSuggestions]];
     [self.defaultReceiptDateToReportStartCell setSwitchOn:[WBPreferences defaultToFirstReportDate]];
+    [self.showReceiptIDCell setSwitchOn:[WBPreferences showReceiptID]];
     [self.usePaymentMethodsCell setSwitchOn:[WBPreferences usePaymentMethods]];
 
     NSArray *separators = @[@"-", @"/", @"."];
@@ -388,6 +394,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [WBPreferences setOnlyIncludeExpensableReceiptsInReports:self.onlyReportExpenseableCell.isSwitchOn];
     [WBPreferences setEnableAutoCompleteSuggestions:self.enableAutocompleteSuggestionsCell.isSwitchOn];
     [WBPreferences setDefaultToFirstReportDate:self.defaultReceiptDateToReportStartCell.isSwitchOn];
+    [WBPreferences setShowReceiptID:self.showReceiptIDCell.isSwitchOn];
     [WBPreferences setUsePaymentMethods:self.usePaymentMethodsCell.isSwitchOn];
 
     [WBPreferences setIncludeCSVHeaders:self.includeCSVHeadersCell.isSwitchOn];
