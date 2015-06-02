@@ -11,7 +11,6 @@
 #import "WBGenerateViewController.h"
 #import "WBDateFormatter.h"
 #import "WBFileManager.h"
-#import "WBCellWithPriceNameDate.h"
 #import "WBPreferences.h"
 #import "WBImagePicker.h"
 #import "TripDistancesViewController.h"
@@ -21,6 +20,7 @@
 #import "Database+Receipts.h"
 #import "Database+Trips.h"
 #import "Constants.h"
+#import "ReceiptSummaryCell.h"
 
 static NSString *CellIdentifier = @"Cell";
 static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
@@ -38,6 +38,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
 @property (nonatomic, strong) WBReceipt *tapped;
 @property (nonatomic, strong) WBDateFormatter *dateFormatter;
+@property (nonatomic, assign) BOOL showReceiptDate;
 
 @end
 
@@ -55,7 +56,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
-    [self setPresentationCellNib:[WBCellWithPriceNameDate viewNib]];
+    [self setPresentationCellNib:[ReceiptSummaryCell viewNib]];
     
     self.dateFormatter = [[WBDateFormatter alloc] init];
     
@@ -66,7 +67,10 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self updateEditButton];
     [self updateTitle];
 
+    [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUpdated:) name:DatabaseDidUpdateModelNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsSaved) name:SmartReceiptsSettingsSavedNotification object:nil];
 }
 
 - (void)tripUpdated:(NSNotification *)notification {
@@ -112,7 +116,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     }
 
     _priceWidth = w;
-    for (WBCellWithPriceNameDate *cell in self.tableView.visibleCells) {
+    for (ReceiptSummaryCell *cell in self.tableView.visibleCells) {
         [cell.priceWidthConstraint setConstant:w];
         [cell layoutIfNeeded];
     }
@@ -137,13 +141,13 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 }
 
 - (void)configureCell:(UITableViewCell *)aCell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {
-    WBCellWithPriceNameDate *cell = (WBCellWithPriceNameDate *) aCell;
+    ReceiptSummaryCell *cell = (ReceiptSummaryCell *) aCell;
 
     WBReceipt *receipt = object;
 
     cell.priceField.text = [receipt priceWithCurrencyFormatted];
     cell.nameField.text = [receipt name];
-    cell.dateField.text = [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]];
+    cell.dateField.text = self.showReceiptDate ? [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]] : @"";
 
     [cell.priceWidthConstraint setConstant:_priceWidth];
 }
@@ -296,6 +300,15 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     }
 
     return [[Database sharedInstance] fetchedReceiptsAdapterForTrip:self.trip];
+}
+
+- (void)settingsSaved {
+    if (self.showReceiptDate == [WBPreferences layoutShowReceiptDate]) {
+        return;
+    }
+
+    [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
+    [self.tableView reloadData];
 }
 
 @end

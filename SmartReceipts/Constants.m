@@ -15,3 +15,4 @@ NSString *const SmartReceiptsDatabaseExportName = @"receipts_backup.db";
 NSString *const SmartReceiptsPreferencesExportName = @"shared_prefs/SmartReceiptsPrefFile.xml";
 NSString *const SmartReceiptsPreferencesImportedNotification = @"SmartReceiptsPreferencesImportedNotification";
 NSString *const SmartReceiptsDatabaseImportCompleteNotification = @"SmartReceiptsDatabaseImportCompleteNotification";
+NSString *const SmartReceiptsSettingsSavedNotification = @"SmartReceiptsSettingsSavedNotification";
