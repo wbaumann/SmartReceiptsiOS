@@ -39,6 +39,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 @property (nonatomic, strong) WBReceipt *tapped;
 @property (nonatomic, strong) WBDateFormatter *dateFormatter;
 @property (nonatomic, assign) BOOL showReceiptDate;
+@property (nonatomic, assign) BOOL showReceiptCategory;
 
 @end
 
@@ -54,6 +55,9 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
     [WBCustomization customizeOnViewDidLoad:self];
 
+    [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
+    [self setShowReceiptCategory:[WBPreferences layoutShowReceiptCategory]];
+
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     [self setPresentationCellNib:[ReceiptSummaryCell viewNib]];
@@ -67,10 +71,11 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self updateEditButton];
     [self updateTitle];
 
-    [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUpdated:) name:DatabaseDidUpdateModelNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsSaved) name:SmartReceiptsSettingsSavedNotification object:nil];
+
+    [self.tableView setEstimatedRowHeight:40];
+    [self.tableView setRowHeight:UITableViewAutomaticDimension];
 }
 
 - (void)tripUpdated:(NSNotification *)notification {
@@ -148,8 +153,29 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     cell.priceField.text = [receipt priceWithCurrencyFormatted];
     cell.nameField.text = [receipt name];
     cell.dateField.text = self.showReceiptDate ? [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]] : @"";
+    cell.categoryLabel.text = self.showReceiptCategory ? receipt.category : @"";
 
     [cell.priceWidthConstraint setConstant:_priceWidth];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static ReceiptSummaryCell *sizingCell = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sizingCell = [self.tableView dequeueReusableCellWithIdentifier:@"FetchedCollectionTableViewControllerCellIdentifier"];
+    });
+
+    id object = [self objectAtIndexPath:indexPath];
+    [self configureCell:sizingCell atIndexPath:indexPath withObject:object];
+    return [self calculateHeightForConfiguredSizingCell:sizingCell];
+}
+
+- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
+    [sizingCell setNeedsLayout];
+    [sizingCell layoutIfNeeded];
+
+    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 1.0f; // Add 1.0f for the cell separator height
 }
 
 - (void)contentChanged {
@@ -303,11 +329,12 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 }
 
 - (void)settingsSaved {
-    if (self.showReceiptDate == [WBPreferences layoutShowReceiptDate]) {
+    if (self.showReceiptDate == [WBPreferences layoutShowReceiptDate] && self.showReceiptCategory == [WBPreferences layoutShowReceiptCategory]) {
         return;
     }
 
     [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
+    [self setShowReceiptCategory:[WBPreferences layoutShowReceiptCategory]];
     [self.tableView reloadData];
 }
 

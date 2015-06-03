@@ -97,6 +97,9 @@
 + (BOOL)layoutShowReceiptDate;
 + (void)setLayoutShowReceiptDate:(BOOL)value;
 
++ (BOOL)layoutShowReceiptCategory;
++ (void)setLayoutShowReceiptCategory:(BOOL)value;
+
 + (int)cameraMaxHeightWidth;
 + (void)setCameraMaxHeightWidth:(int)cameraMaxHeightWidth;
 

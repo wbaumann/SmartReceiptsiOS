@@ -12,6 +12,7 @@
 
 - (void)setTitle:(NSString *)title;
 - (void)setSwitchOn:(BOOL)isOn;
+- (void)setSwitchOn:(BOOL)isOn animated:(BOOL)animated;
 - (BOOL)isSwitchOn;
 
 @end

@@ -36,6 +36,10 @@
     [self.switchControl setOn:isOn];
 }
 
+- (void)setSwitchOn:(BOOL)isOn animated:(BOOL)animated {
+    [self.switchControl setOn:isOn animated:animated];
+}
+
 - (BOOL)isSwitchOn {
     return self.switchControl.isOn;
 }

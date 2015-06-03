@@ -3,36 +3,35 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="48" id="eqW-9E-TfC" customClass="ReceiptSummaryCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="67" id="eqW-9E-TfC" customClass="ReceiptSummaryCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eqW-9E-TfC" id="fbQ-C6-6em">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$12.53" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ta-4Y-eDi">
-                        <rect key="frame" x="16" y="0.0" width="64" height="47"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$12.53" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ta-4Y-eDi" userLabel="Price">
+                        <rect key="frame" x="16" y="0.0" width="64" height="68"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="4Qn-Qo-Sys"/>
-                            <constraint firstAttribute="width" constant="64" id="U6W-NV-Nih"/>
+                            <constraint firstAttribute="width" constant="64" id="aQ0-BQ-6LJ"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="t66-aH-5DX"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                         <color key="textColor" red="0.46666666670000001" green="0.08235294118" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRi-pw-EYT">
-                        <rect key="frame" x="92" y="0.0" width="220" height="48"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRi-pw-EYT" userLabel="Lines">
+                        <rect key="frame" x="92" y="0.0" width="220" height="68.5"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9Q-Cn-vDU">
-                                <rect key="frame" x="0.0" y="2" width="80" height="21"/>
+                                <rect key="frame" x="0.0" y="2" width="80" height="20.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="BpW-2r-e5P"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="h6K-eg-RVM"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="gOM-FP-NWQ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="qYo-WY-atP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -40,39 +39,52 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="March 6. 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENq-TD-C4c">
                                 <rect key="frame" x="0.0" y="24" width="110.5" height="20.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="1rJ-TK-Oob"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Ftu-XZ-NYU"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="gQg-FK-Mh5"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="rxD-tZ-35F"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Category cake" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWA-Jn-Qzn">
+                                <rect key="frame" x="0.0" y="46" width="108" height="19.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="D1R-fQ-KKv"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="iZ3-fc-laA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="z9Q-Cn-vDU" firstAttribute="leading" secondItem="pRi-pw-EYT" secondAttribute="leading" id="8hu-lz-aA4"/>
-                            <constraint firstItem="ENq-TD-C4c" firstAttribute="leading" secondItem="pRi-pw-EYT" secondAttribute="leading" id="QAY-3i-tFX"/>
-                            <constraint firstItem="z9Q-Cn-vDU" firstAttribute="top" secondItem="pRi-pw-EYT" secondAttribute="top" constant="2" id="iqT-GA-uaL"/>
-                            <constraint firstAttribute="bottom" secondItem="ENq-TD-C4c" secondAttribute="bottom" constant="3" id="rWh-zs-nYC"/>
-                            <constraint firstItem="ENq-TD-C4c" firstAttribute="top" secondItem="z9Q-Cn-vDU" secondAttribute="bottom" constant="1.5" id="tZi-uj-cSZ"/>
+                            <constraint firstItem="ENq-TD-C4c" firstAttribute="top" secondItem="z9Q-Cn-vDU" secondAttribute="bottom" constant="2" id="5Mx-Ue-AG1"/>
+                            <constraint firstItem="z9Q-Cn-vDU" firstAttribute="leading" secondItem="pRi-pw-EYT" secondAttribute="leading" id="Cg5-r6-O0P"/>
+                            <constraint firstItem="z9Q-Cn-vDU" firstAttribute="top" secondItem="pRi-pw-EYT" secondAttribute="top" constant="2" id="KtP-E6-7GO"/>
+                            <constraint firstItem="hWA-Jn-Qzn" firstAttribute="top" secondItem="ENq-TD-C4c" secondAttribute="bottom" constant="1.5" id="gsp-ms-KjA"/>
+                            <constraint firstItem="hWA-Jn-Qzn" firstAttribute="leading" secondItem="pRi-pw-EYT" secondAttribute="leading" id="hcx-dx-QaT"/>
+                            <constraint firstAttribute="bottom" secondItem="hWA-Jn-Qzn" secondAttribute="bottom" constant="3" id="qLz-IM-X9K"/>
+                            <constraint firstItem="ENq-TD-C4c" firstAttribute="leading" secondItem="pRi-pw-EYT" secondAttribute="leading" id="zwl-jy-Rov"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="pRi-pw-EYT" secondAttribute="trailing" constant="8" id="GaS-BS-0b4"/>
-                    <constraint firstItem="0ta-4Y-eDi" firstAttribute="leading" secondItem="fbQ-C6-6em" secondAttribute="leadingMargin" constant="8" id="HaU-sO-oQh"/>
-                    <constraint firstItem="pRi-pw-EYT" firstAttribute="leading" secondItem="0ta-4Y-eDi" secondAttribute="trailing" constant="12" id="V08-Bq-ltt"/>
-                    <constraint firstItem="pRi-pw-EYT" firstAttribute="top" secondItem="fbQ-C6-6em" secondAttribute="top" id="qK6-km-mox"/>
-                    <constraint firstItem="0ta-4Y-eDi" firstAttribute="top" secondItem="fbQ-C6-6em" secondAttribute="top" id="r3z-SV-Shg"/>
-                    <constraint firstAttribute="bottom" secondItem="0ta-4Y-eDi" secondAttribute="bottom" id="tJB-YI-KpQ"/>
-                    <constraint firstAttribute="bottom" secondItem="pRi-pw-EYT" secondAttribute="bottom" id="wAU-UF-pRI"/>
+                    <constraint firstItem="pRi-pw-EYT" firstAttribute="height" secondItem="0ta-4Y-eDi" secondAttribute="height" id="4IA-y4-tWV"/>
+                    <constraint firstItem="0ta-4Y-eDi" firstAttribute="leading" secondItem="fbQ-C6-6em" secondAttribute="leading" constant="16" id="4mY-6o-aXm"/>
+                    <constraint firstAttribute="trailing" secondItem="pRi-pw-EYT" secondAttribute="trailing" constant="8" id="Isv-GC-6NK"/>
+                    <constraint firstItem="pRi-pw-EYT" firstAttribute="top" secondItem="fbQ-C6-6em" secondAttribute="top" id="lg5-yb-TfB"/>
+                    <constraint firstItem="pRi-pw-EYT" firstAttribute="leading" secondItem="0ta-4Y-eDi" secondAttribute="trailing" constant="12" id="nBy-Sl-MXr"/>
+                    <constraint firstAttribute="bottom" secondItem="0ta-4Y-eDi" secondAttribute="bottom" id="rch-sQ-tls"/>
+                    <constraint firstItem="0ta-4Y-eDi" firstAttribute="top" secondItem="fbQ-C6-6em" secondAttribute="top" id="zIu-bF-Xfj"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="categoryLabel" destination="hWA-Jn-Qzn" id="Ecy-3P-8LG"/>
                 <outlet property="dateField" destination="ENq-TD-C4c" id="Q2o-Od-OpV"/>
                 <outlet property="nameField" destination="z9Q-Cn-vDU" id="gAK-Gc-yyU"/>
                 <outlet property="priceField" destination="0ta-4Y-eDi" id="SAv-79-l9A"/>
-                <outlet property="priceWidthConstraint" destination="U6W-NV-Nih" id="fPT-KK-t5s"/>
+                <outlet property="priceWidthConstraint" destination="aQ0-BQ-6LJ" id="CUI-jH-grS"/>
             </connections>
+            <point key="canvasLocation" x="445" y="352.5"/>
         </tableViewCell>
     </objects>
 </document>
