@@ -20,6 +20,7 @@
     [super viewDidLoad];
 
     [self.splitViewController setDelegate:self];
+    [self setPresentDefaultTrip:YES];
 }
 
 
@@ -30,6 +31,10 @@
 }
 
 - (void)showDefaultTripInDetailView {
+    if (!self.presentDefaultTrip) {
+        return;
+    }
+
     if ([self numberOfItems] > 0) {
         [self setTapped:[self objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
 
@@ -37,15 +42,13 @@
     } else {
         [self performSegueWithIdentifier:@"NoTrip" sender:self];
     }
+
+    [self setPresentDefaultTrip:NO];
 }
 
 - (void)contentChanged {
     [super contentChanged];
-
-    if (self.presentDefaultTrip) {
-        [self showDefaultTripInDetailView];
-        [self setPresentDefaultTrip:NO];
-    }
+    [self showDefaultTripInDetailView];
 }
 
 
