@@ -55,6 +55,7 @@ static NSString *const FLOAT_DEFAULT_TAX_PERCENTAGE = @"TaxPercentage";
 static NSString *const BOOL_ENTERED_PRICE_PRE_TAX = @"PreTax";
 static NSString *const BOOL_SHOW_RECEIPT_ID = @"ShowReceiptID";
 static NSString *const BOOL_PHOTO_PRINT_ID_INSTEAD_OF_INDEX = @"PrintByIDPhotoKey";
+static NSString *const BOOL_PRINT_COMMENT_BY_PHOTO = @"PrintCommentByPhoto";
 
 // there is no 100% guaranteed way to figure entry type so we have to hardcode them
 typedef NS_ENUM(short, EntryType){
@@ -113,7 +114,8 @@ static NSDictionary *getEntryTypes() {
 
             BOOL_SHOW_RECEIPT_ID: tBool,
 
-            BOOL_PHOTO_PRINT_ID_INSTEAD_OF_INDEX: tBool
+            BOOL_PHOTO_PRINT_ID_INSTEAD_OF_INDEX: tBool,
+            BOOL_PRINT_COMMENT_BY_PHOTO: tBool
     };
 }
 
@@ -167,7 +169,8 @@ static NSDictionary *getDefaultValues() {
 
             BOOL_SHOW_RECEIPT_ID: @NO,
 
-            BOOL_PHOTO_PRINT_ID_INSTEAD_OF_INDEX: @NO
+            BOOL_PHOTO_PRINT_ID_INSTEAD_OF_INDEX: @NO,
+            BOOL_PRINT_COMMENT_BY_PHOTO: @NO
     };
 }
 
@@ -394,6 +397,13 @@ static NSUserDefaults* instance() {
     [instance() setBool:value forKey:BOOL_PHOTO_PRINT_ID_INSTEAD_OF_INDEX];
 }
 
++ (BOOL)printCommentByPhoto {
+    return [instance() boolForKey:BOOL_PRINT_COMMENT_BY_PHOTO];
+}
+
++ (void)setPrintCommentByPhoto:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_PRINT_COMMENT_BY_PHOTO];
+}
 
 +(int) cameraMaxHeightWidth {
     return (int)[instance() integerForKey:INT_CAMERA_MAX_HEIGHT_WIDTH];

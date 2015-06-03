@@ -91,6 +91,9 @@
 + (BOOL)printReceiptIDByPhoto;
 + (void)setPrintReceiptIDByPhoto:(BOOL)value;
 
++ (BOOL)printCommentByPhoto;
++ (void)setPrintCommentByPhoto:(BOOL)value;
+
 + (int)cameraMaxHeightWidth;
 + (void)setCameraMaxHeightWidth:(int)cameraMaxHeightWidth;
 

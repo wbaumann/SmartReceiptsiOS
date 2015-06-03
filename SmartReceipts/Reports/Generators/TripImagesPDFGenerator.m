@@ -13,6 +13,7 @@
 #import "WBDateFormatter.h"
 #import "Database.h"
 #import "WBPreferences.h"
+#import "NSString+Validation.h"
 
 @interface TripImagesPDFGenerator ()
 
@@ -88,11 +89,15 @@
 }
 
 - (NSString *)labelForReceipt:(WBReceipt *)receipt {
+    NSMutableString *photoLabel = [NSMutableString string];
     NSUInteger usedID = [WBPreferences printReceiptIDByPhoto] ? receipt.objectId : receipt.reportIndex;
-    return [NSString stringWithFormat:@"%tu  \u2022  %@  \u2022  %@",
-                                      usedID,
-                                      [receipt name],
-                                      [self.dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]]];
+    [photoLabel appendFormat:@"%tu", usedID];
+    [photoLabel appendFormat:@" \u2022  %@", [receipt name]];
+    [photoLabel appendFormat:@" \u2022  %@", [self.dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]]];
+    if ([WBPreferences printCommentByPhoto] && receipt.comment.hasValue) {
+        [photoLabel appendFormat:@" \u2022  %@", receipt.comment];
+    }
+    return [NSString stringWithString:photoLabel];
 }
 
 - (void)drawFullPageReceipt:(WBReceipt *)receipt {
