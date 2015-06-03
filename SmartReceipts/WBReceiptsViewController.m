@@ -39,6 +39,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 @property (nonatomic, strong) WBReceipt *tapped;
 @property (nonatomic, strong) WBDateFormatter *dateFormatter;
 @property (nonatomic, assign) BOOL showReceiptDate;
+@property (nonatomic, assign) BOOL showReceiptCategory;
 
 @end
 
@@ -54,6 +55,9 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
     [WBCustomization customizeOnViewDidLoad:self];
 
+    [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
+    [self setShowReceiptCategory:[WBPreferences layoutShowReceiptCategory]];
+
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     [self setPresentationCellNib:[ReceiptSummaryCell viewNib]];
@@ -66,8 +70,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     
     [self updateEditButton];
     [self updateTitle];
-
-    [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUpdated:) name:DatabaseDidUpdateModelNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsSaved) name:SmartReceiptsSettingsSavedNotification object:nil];
@@ -151,7 +153,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     cell.priceField.text = [receipt priceWithCurrencyFormatted];
     cell.nameField.text = [receipt name];
     cell.dateField.text = self.showReceiptDate ? [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]] : @"";
-    cell.categoryLabel.text = receipt.category;
+    cell.categoryLabel.text = self.showReceiptCategory ? receipt.category : @"";
 
     [cell.priceWidthConstraint setConstant:_priceWidth];
 }
@@ -327,11 +329,12 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 }
 
 - (void)settingsSaved {
-    if (self.showReceiptDate == [WBPreferences layoutShowReceiptDate]) {
+    if (self.showReceiptDate == [WBPreferences layoutShowReceiptDate] && self.showReceiptCategory == [WBPreferences layoutShowReceiptCategory]) {
         return;
     }
 
     [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
+    [self setShowReceiptCategory:[WBPreferences layoutShowReceiptCategory]];
     [self.tableView reloadData];
 }
 

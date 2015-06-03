@@ -14,6 +14,7 @@
 #import "InputValidation.h"
 #import "WBAutocompleteHelper.h"
 #import "TitledAutocompleteEntryCell.h"
+#import "SwitchControlCell.h"
 
 @interface InputCellsViewController () <UITextFieldDelegate>
 
@@ -184,6 +185,9 @@
     if ([cell isKindOfClass:[TextEntryCell class]]) {
         TextEntryCell *entryCell = (TextEntryCell *) cell;
         [entryCell.entryField becomeFirstResponder];
+    } else if ([cell isKindOfClass:[SwitchControlCell class]]) {
+        SwitchControlCell *switchCell = (SwitchControlCell *) cell;
+        [switchCell setSwitchOn:!switchCell.isSwitchOn animated:YES];
     } else {
         [self tappedCell:cell atIndexPath:indexPath];
     }

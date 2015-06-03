@@ -81,6 +81,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) SwitchControlCell *reportOnDailyDistanceCell;
 
 @property (nonatomic, strong) SwitchControlCell *layoutShowReceiptDateCell;
+@property (nonatomic, strong) SwitchControlCell *layoutShowReceiptCategoryCell;
 
 @property (nonatomic, strong) SettingsButtonCell *backupCell;
 
@@ -279,7 +280,13 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     self.layoutShowReceiptDateCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.layoutShowReceiptDateCell setTitle:NSLocalizedString(@"Include Receipt Date", nil)];
 
-    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Layout Customizations", nil) cells:@[self.layoutShowReceiptDateCell]]];
+    self.layoutShowReceiptCategoryCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.layoutShowReceiptCategoryCell setTitle:NSLocalizedString(@"Include Receipt Category", nil)];
+
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Layout Customizations", nil) cells:@[
+            self.layoutShowReceiptDateCell,
+            self.layoutShowReceiptCategoryCell
+    ]]];
 
 
     self.backupCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
@@ -379,6 +386,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.reportOnDailyDistanceCell setSwitchOn:[WBPreferences printDailyDistanceValues]];
 
     [self.layoutShowReceiptDateCell setSwitchOn:[WBPreferences layoutShowReceiptDate]];
+    [self.layoutShowReceiptCategoryCell setSwitchOn:[WBPreferences layoutShowReceiptCategory]];
 }
 
 - (void)writeSettingsToPreferences {
@@ -433,6 +441,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [WBPreferences setPrintDailyDistanceValues:[self.reportOnDailyDistanceCell isSwitchOn]];
 
     [WBPreferences setLayoutShowReceiptDate:[self.layoutShowReceiptDateCell isSwitchOn]];
+    [WBPreferences setLayoutShowReceiptCategory:[self.layoutShowReceiptCategoryCell isSwitchOn]];
 
     [WBPreferences save];
 }
