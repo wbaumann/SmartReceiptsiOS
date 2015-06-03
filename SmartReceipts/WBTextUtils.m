@@ -30,8 +30,12 @@ static BOOL matchRegex(NSString *expression, NSString *text)
 
 +(BOOL)isMoney:(NSString*) text
 {
-    NSString *expression = @"^\\-?([0-9]{1,10})?([\\.,]([0-9]{1,2})?)?$";
-    return matchRegex(expression,text);
+    return [WBTextUtils isDecimalNumber:text decimalPlaces:2];
+}
+
++ (BOOL)isDecimalNumber:(NSString *)text decimalPlaces:(NSUInteger)allowedDecimalPlaces {
+    NSString *expression = [NSString stringWithFormat:@"^\\-?([0-9]{1,10})?([\\.,]([0-9]{1,%tu})?)?$", allowedDecimalPlaces];
+    return matchRegex(expression, text);
 }
 
 +(BOOL)isNonnegativeMoney:(NSString*) text

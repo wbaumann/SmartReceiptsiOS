@@ -65,6 +65,7 @@ typedef NS_ENUM(short, EntryType){
     EntryTypeInt,
     EntryTypeBool,
     EntryTypeFloat,
+    EntryTypeDouble,
 };
 
 static NSDictionary *getEntryTypes() {
@@ -72,6 +73,7 @@ static NSDictionary *getEntryTypes() {
     NSNumber *tInt = @(EntryTypeInt);
     NSNumber *tBool = @(EntryTypeBool);
     NSNumber *tFloat = @(EntryTypeFloat);
+    NSNumber *tDouble = @(EntryTypeFloat);
 
     return @{
             INT_DEFAULT_TRIP_DURATION : tInt,
@@ -103,7 +105,7 @@ static NSDictionary *getEntryTypes() {
             INT_CAMERA_MAX_HEIGHT_WIDTH : tInt,
 
             BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT: tBool,
-            FLOAT_DEFAULT_MILEAGE_RATE: tFloat,
+            FLOAT_DEFAULT_MILEAGE_RATE: tDouble,
             BOOL_PRINT_MILEAGE_TABLE: tBool,
             BOOL_DAILY_DISTANCE_REPORT: tBool,
 
@@ -331,12 +333,12 @@ static NSUserDefaults* instance() {
     [instance() setBool:value forKey:BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT];
 }
 
-+ (float)distanceRateDefaultValue {
-    return [instance() floatForKey:FLOAT_DEFAULT_MILEAGE_RATE];
++ (double)distanceRateDefaultValue {
+    return [instance() doubleForKey:FLOAT_DEFAULT_MILEAGE_RATE];
 }
 
-+ (void)setDistanceRateDefaultValue:(float)value {
-    [instance() setFloat:value forKey:FLOAT_DEFAULT_MILEAGE_RATE];
++ (void)setDistanceRateDefaultValue:(double)value {
+    [instance() setDouble:value forKey:FLOAT_DEFAULT_MILEAGE_RATE];
 }
 
 + (float)defaultTaxPercentage {
@@ -515,7 +517,11 @@ static NSUserDefaults* instance() {
             case EntryTypeBool:
                 el = [GDataXMLNode elementWithName:@"boolean"];
                 break;
-                
+
+            case EntryTypeDouble:
+                el = [GDataXMLNode elementWithName:@"boolean"];
+                break;
+
             case EntryTypeInt:
                 el = [GDataXMLNode elementWithName:@"int"];
                 break;

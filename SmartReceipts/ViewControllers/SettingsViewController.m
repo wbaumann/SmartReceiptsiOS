@@ -30,6 +30,7 @@
 #import "Constants.h"
 #import "DataExport.h"
 #import "WBFileManager.h"
+#import "DecimalFormatter.h"
 
 static NSString *const PushManageCategoriesSegueIdentifier = @"PushManageCategoriesSegueIdentifier";
 static NSString *const PushConfigurePDFColumnsSegueIdentifier = @"ConfigurePDF";
@@ -263,7 +264,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     self.gasRateCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
     [self.gasRateCell setTitle:NSLocalizedString(@"Gas Rate", nil)];
-    [self.gasRateCell activateDecimalEntryMode];
+    [self.gasRateCell activateDecimalEntryModeWithDecimalPlaces:SmartReceiptsNumberOfDecimalPlacesForGasRate];
 
     self.includeDistanceTableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.includeDistanceTableCell setTitle:NSLocalizedString(@"Include Distance Table", nil)];
@@ -375,12 +376,11 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.printReceiptCommentByPhotoCell setSwitchOn:[WBPreferences printCommentByPhoto]];
 
     [self.addDistancePriceToReportCell setSwitchOn:[WBPreferences isTheDistancePriceBeIncludedInReports]];
-    float defaultValue = [WBPreferences distanceRateDefaultValue];
-    if (defaultValue < 0.001) {
+    double defaultValue = [WBPreferences distanceRateDefaultValue];
+    if (defaultValue < 0.0001) {
         [self.gasRateCell setValue:@""];
     } else {
-        NSDecimalNumber *mileageRate = (NSDecimalNumber *) [[NSDecimalNumber alloc] initWithFloat:defaultValue];
-        [self.gasRateCell setValue:[mileageRate descriptionWithLocale:[NSLocale currentLocale]]];
+        [self.gasRateCell setValue:[DecimalFormatter formatDouble:defaultValue decimalPlaces:SmartReceiptsNumberOfDecimalPlacesForGasRate]];
     }
     [self.includeDistanceTableCell setSwitchOn:[WBPreferences printDistanceTable]];
     [self.reportOnDailyDistanceCell setSwitchOn:[WBPreferences printDailyDistanceValues]];
@@ -436,7 +436,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [WBPreferences setTheDistancePriceBeIncludedInReports:self.addDistancePriceToReportCell.isSwitchOn];
     NSString *gasRate = [self.gasRateCell value];
     NSDecimalNumber *rate = [NSDecimalNumber decimalNumberOrZero:gasRate];
-    [WBPreferences setDistanceRateDefaultValue:[rate floatValue]];
+    [WBPreferences setDistanceRateDefaultValue:[rate doubleValue]];
     [WBPreferences setPrintDistanceTable:[self.includeDistanceTableCell isSwitchOn]];
     [WBPreferences setPrintDailyDistanceValues:[self.reportOnDailyDistanceCell isSwitchOn]];
 

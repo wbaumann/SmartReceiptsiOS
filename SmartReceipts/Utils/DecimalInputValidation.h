@@ -11,4 +11,6 @@
 
 @interface DecimalInputValidation : NSObject <InputValidation>
 
+- (id)initWithNumberOfDecimalPlaces:(NSUInteger)decimalPlaces;
+
 @end
