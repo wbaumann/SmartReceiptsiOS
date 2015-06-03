@@ -64,8 +64,8 @@
 + (BOOL)isTheDistancePriceBeIncludedInReports;
 + (void)setTheDistancePriceBeIncludedInReports:(BOOL)value;
 
-+ (float)distanceRateDefaultValue;
-+ (void)setDistanceRateDefaultValue:(float)value;
++ (double)distanceRateDefaultValue;
++ (void)setDistanceRateDefaultValue:(double)value;
 
 + (float)defaultTaxPercentage;
 + (void)setDefaultTaxPercentage:(float)value;

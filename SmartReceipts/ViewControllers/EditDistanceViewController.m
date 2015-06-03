@@ -28,6 +28,7 @@
 #import "Database+Distances.h"
 #import "StringPickableWrapper.h"
 #import "Constants.h"
+#import "DecimalFormatter.h"
 
 @interface EditDistanceViewController ()
 
@@ -113,10 +114,10 @@
 }
 
 - (void)loadExistingValues {
-    float rateDefaultValue = [WBPreferences distanceRateDefaultValue];
+    double rateDefaultValue = [WBPreferences distanceRateDefaultValue];
 
-    if (rateDefaultValue > 0.001) {
-        [self.rateCell setValue:[[[NSDecimalNumber alloc] initWithFloat:rateDefaultValue] descriptionWithLocale:[NSLocale currentLocale]]];
+    if (rateDefaultValue > 0.0001) {
+        [self.rateCell setValue:[DecimalFormatter formatDouble:rateDefaultValue decimalPlaces:SmartReceiptsNumberOfDecimalPlacesForGasRate]];
     }
 
     if (!self.distance) {
