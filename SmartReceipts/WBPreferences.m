@@ -56,6 +56,7 @@ static NSString *const BOOL_ENTERED_PRICE_PRE_TAX = @"PreTax";
 static NSString *const BOOL_SHOW_RECEIPT_ID = @"ShowReceiptID";
 static NSString *const BOOL_PHOTO_PRINT_ID_INSTEAD_OF_INDEX = @"PrintByIDPhotoKey";
 static NSString *const BOOL_PRINT_COMMENT_BY_PHOTO = @"PrintCommentByPhoto";
+static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_DATE = @"LayoutIncludeReceiptDate";
 
 // there is no 100% guaranteed way to figure entry type so we have to hardcode them
 typedef NS_ENUM(short, EntryType){
@@ -115,7 +116,8 @@ static NSDictionary *getEntryTypes() {
             BOOL_SHOW_RECEIPT_ID: tBool,
 
             BOOL_PHOTO_PRINT_ID_INSTEAD_OF_INDEX: tBool,
-            BOOL_PRINT_COMMENT_BY_PHOTO: tBool
+            BOOL_PRINT_COMMENT_BY_PHOTO: tBool,
+            BOOL_LAYOUT_SHOW_RECEIPT_DATE: tBool
     };
 }
 
@@ -170,7 +172,8 @@ static NSDictionary *getDefaultValues() {
             BOOL_SHOW_RECEIPT_ID: @NO,
 
             BOOL_PHOTO_PRINT_ID_INSTEAD_OF_INDEX: @NO,
-            BOOL_PRINT_COMMENT_BY_PHOTO: @NO
+            BOOL_PRINT_COMMENT_BY_PHOTO: @NO,
+            BOOL_LAYOUT_SHOW_RECEIPT_DATE: @YES
     };
 }
 
@@ -404,6 +407,15 @@ static NSUserDefaults* instance() {
 + (void)setPrintCommentByPhoto:(BOOL)value {
     [instance() setBool:value forKey:BOOL_PRINT_COMMENT_BY_PHOTO];
 }
+
++ (BOOL)layoutShowReceiptDate {
+    return [instance() boolForKey:BOOL_LAYOUT_SHOW_RECEIPT_DATE];
+}
+
++ (void)setLayoutShowReceiptDate:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_LAYOUT_SHOW_RECEIPT_DATE];
+}
+
 
 +(int) cameraMaxHeightWidth {
     return (int)[instance() integerForKey:INT_CAMERA_MAX_HEIGHT_WIDTH];

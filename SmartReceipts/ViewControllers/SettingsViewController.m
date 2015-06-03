@@ -80,6 +80,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) SwitchControlCell *includeDistanceTableCell;
 @property (nonatomic, strong) SwitchControlCell *reportOnDailyDistanceCell;
 
+@property (nonatomic, strong) SwitchControlCell *layoutShowReceiptDateCell;
+
 @property (nonatomic, strong) SettingsButtonCell *backupCell;
 
 @end
@@ -274,6 +276,11 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
                                                                           self.includeDistanceTableCell,
                                                                           self.reportOnDailyDistanceCell]]];
 
+    self.layoutShowReceiptDateCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.layoutShowReceiptDateCell setTitle:NSLocalizedString(@"Include Receipt Date", nil)];
+
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Layout Customizations", nil) cells:@[self.layoutShowReceiptDateCell]]];
+
 
     self.backupCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
     [self.backupCell setTitle:NSLocalizedString(@"Make Backup", nil)];
@@ -370,6 +377,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     }
     [self.includeDistanceTableCell setSwitchOn:[WBPreferences printDistanceTable]];
     [self.reportOnDailyDistanceCell setSwitchOn:[WBPreferences printDailyDistanceValues]];
+
+    [self.layoutShowReceiptDateCell setSwitchOn:[WBPreferences layoutShowReceiptDate]];
 }
 
 - (void)writeSettingsToPreferences {
@@ -422,6 +431,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [WBPreferences setDistanceRateDefaultValue:[rate floatValue]];
     [WBPreferences setPrintDistanceTable:[self.includeDistanceTableCell isSwitchOn]];
     [WBPreferences setPrintDailyDistanceValues:[self.reportOnDailyDistanceCell isSwitchOn]];
+
+    [WBPreferences setLayoutShowReceiptDate:[self.layoutShowReceiptDateCell isSwitchOn]];
 
     [WBPreferences save];
 }
@@ -511,6 +522,11 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 - (IBAction)actionDone:(id)sender {
     [self writeSettingsToPreferences];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsSettingsSavedNotification object:nil];
+    });
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -114,6 +114,8 @@
 		EA1D42C41B03901A00D64D3A /* EntryOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1D42C31B03901A00D64D3A /* EntryOnlyCell.m */; };
 		EA1D42C61B03902C00D64D3A /* EntryOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1D42C51B03902C00D64D3A /* EntryOnlyCell.xib */; };
 		EA1D42C91B03931400D64D3A /* DatabasePaymentMethodsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1D42C81B03931400D64D3A /* DatabasePaymentMethodsTest.m */; };
+		EA22679E1B1E035F005761E7 /* ReceiptSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA22679C1B1E035F005761E7 /* ReceiptSummaryCell.m */; };
+		EA22679F1B1E035F005761E7 /* ReceiptSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA22679D1B1E035F005761E7 /* ReceiptSummaryCell.xib */; };
 		EA22FB4D1B1AF1A40060D23D /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA22FB4B1B1AF1A40060D23D /* CategoryCell.m */; };
 		EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA22FB4C1B1AF1A40060D23D /* CategoryCell.xib */; };
 		EA259CD51B1606DC00ECBD67 /* DataExport.m in Sources */ = {isa = PBXBuildFile; fileRef = EA259CD41B1606DC00ECBD67 /* DataExport.m */; };
@@ -443,6 +445,9 @@
 		EA1D42C31B03901A00D64D3A /* EntryOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryOnlyCell.m; sourceTree = "<group>"; };
 		EA1D42C51B03902C00D64D3A /* EntryOnlyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryOnlyCell.xib; sourceTree = "<group>"; };
 		EA1D42C81B03931400D64D3A /* DatabasePaymentMethodsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabasePaymentMethodsTest.m; sourceTree = "<group>"; };
+		EA22679B1B1E035F005761E7 /* ReceiptSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptSummaryCell.h; sourceTree = "<group>"; };
+		EA22679C1B1E035F005761E7 /* ReceiptSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptSummaryCell.m; sourceTree = "<group>"; };
+		EA22679D1B1E035F005761E7 /* ReceiptSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiptSummaryCell.xib; sourceTree = "<group>"; };
 		EA22FB4A1B1AF1A40060D23D /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		EA22FB4B1B1AF1A40060D23D /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		EA22FB4C1B1AF1A40060D23D /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
@@ -1174,6 +1179,9 @@
 				EA5963E11AF2912900935344 /* PickerCell.h */,
 				EA5963E21AF2912900935344 /* PickerCell.m */,
 				EA07BF361AF3B88C004D17F6 /* PickerCell.xib */,
+				EA22679B1B1E035F005761E7 /* ReceiptSummaryCell.h */,
+				EA22679C1B1E035F005761E7 /* ReceiptSummaryCell.m */,
+				EA22679D1B1E035F005761E7 /* ReceiptSummaryCell.xib */,
 				EA888A6F1AFA38AD00DF2AE6 /* SettingsButtonCell.h */,
 				EA888A701AFA38AD00DF2AE6 /* SettingsButtonCell.m */,
 				EA888A721AFA38C100DF2AE6 /* SettingsButtonCell.xib */,
@@ -1650,6 +1658,7 @@
 				8467EFEC18F6F9530076BE6E /* ic_rotate_ccw.png in Resources */,
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
 				EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */,
+				EA22679F1B1E035F005761E7 /* ReceiptSummaryCell.xib in Resources */,
 				841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */,
 				8467EFF018F6FC450076BE6E /* ic_rotate_ccw@2x.png in Resources */,
 				EA07BF351AF3B703004D17F6 /* InlinedDatePickerCell.xib in Resources */,
@@ -1815,6 +1824,7 @@
 				8467EFE918F6E3170076BE6E /* WBImageSegue.m in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
 				EA8EB10A1B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m in Sources */,
+				EA22679E1B1E035F005761E7 /* ReceiptSummaryCell.m in Sources */,
 				EA4DC9921AF154E000CEF1B9 /* EditDistanceViewController.m in Sources */,
 				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
 				EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */,
