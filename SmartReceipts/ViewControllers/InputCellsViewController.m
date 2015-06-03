@@ -150,6 +150,11 @@
         return YES;
     }
 
+    if (string.length == 0) {
+        //always allow deletes
+        return YES;
+    }
+
     return [self.activeFieldInputValidation isValidInput:validate];
 }
 
