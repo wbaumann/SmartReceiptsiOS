@@ -206,8 +206,13 @@
     NSString *currencyCode = nil;
     WBCategory *category = nil;
 
+    NSString *controllerTitle;
+    NSUInteger receiptID;
+
     if (self.receipt) {
-        [self.navigationItem setTitle:NSLocalizedString(@"Edit Receipt", nil)];
+        controllerTitle = NSLocalizedString(@"Edit Receipt", nil);
+        receiptID = self.receipt.objectId;
+
         [self.nameCell setValue:[self.receipt name]];
         [self.priceCell setValue:[self.receipt priceAsString]];
         [self.taxCell setValue:[self.receipt taxAsString]];
@@ -225,7 +230,8 @@
         }
         _timeZone = [self.receipt timeZone];
     } else {
-        self.navigationItem.title = NSLocalizedString(@"New Receipt", nil);
+        controllerTitle = NSLocalizedString(@"New Receipt", nil);
+        receiptID = [[Database sharedInstance] nextReceiptID];
 
         currencyCode = [self.trip.defaultCurrency code];
 
@@ -252,6 +258,11 @@
             [self.commentCell setValue:category.name];
         }
     }
+
+    if ([WBPreferences showReceiptID]) {
+        controllerTitle = [controllerTitle stringByAppendingFormat:@" - %tu", receiptID];
+    }
+    [self.navigationItem setTitle:controllerTitle];
 
     [self.currencyCell setValue:currencyCode];
     [self.currencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:currencyCode]];

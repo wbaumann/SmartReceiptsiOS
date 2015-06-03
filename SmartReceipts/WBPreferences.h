@@ -85,6 +85,9 @@
 + (BOOL)trackCostCenter;
 + (void)setTrackCostCenter:(BOOL)value;
 
++ (BOOL)showReceiptID;
++ (void)setShowReceiptID:(BOOL)value;
+
 + (int)cameraMaxHeightWidth;
 + (void)setCameraMaxHeightWidth:(int)cameraMaxHeightWidth;
 
