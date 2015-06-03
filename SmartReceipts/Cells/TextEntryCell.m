@@ -24,10 +24,14 @@
 }
 
 - (void)activateDecimalEntryMode {
+    [self activateDecimalEntryModeWithDecimalPlaces:2];
+}
+
+- (void)activateDecimalEntryModeWithDecimalPlaces:(NSUInteger)decimalPlaces {
     [self addAccessoryView];
     [self.entryField setKeyboardType:UIKeyboardTypeDecimalPad];
 
-    [self setInputValidation:[[DecimalInputValidation alloc] init]];
+    [self setInputValidation:[[DecimalInputValidation alloc] initWithNumberOfDecimalPlaces:decimalPlaces]];
 }
 
 - (void)activateNumberEntryMode {

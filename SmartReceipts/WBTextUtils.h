@@ -10,11 +10,10 @@
 
 @interface WBTextUtils : NSObject
 
-+(BOOL)isMoney:(NSString*) text;
-+(BOOL)isNonnegativeMoney:(NSString*) text;
-
-+(BOOL)isNonnegativeInteger:(NSString*) text;
-
-+(BOOL)isProperName:(NSString*) name;
++ (BOOL)isMoney:(NSString *)text;
++ (BOOL)isDecimalNumber:(NSString *)text decimalPlaces:(NSUInteger)allowedDecimalPlaces;
++ (BOOL)isNonnegativeMoney:(NSString *)text;
++ (BOOL)isNonnegativeInteger:(NSString *)text;
++ (BOOL)isProperName:(NSString *)name;
 
 @end

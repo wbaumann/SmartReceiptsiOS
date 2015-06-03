@@ -17,6 +17,7 @@
 
 - (NSString *)value;
 - (void)activateDecimalEntryMode;
+- (void)activateDecimalEntryModeWithDecimalPlaces:(NSUInteger)decimalPlaces;
 - (void)activateNumberEntryMode;
 - (void)activateEmailMode;
 - (void)setValue:(NSString *)value;

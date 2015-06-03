@@ -27,6 +27,7 @@
 #import "Database.h"
 #import "Database+Distances.h"
 #import "StringPickableWrapper.h"
+#import "Constants.h"
 
 @interface EditDistanceViewController ()
 
@@ -66,7 +67,7 @@
 
     self.rateCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.rateCell setTitle:NSLocalizedString(@"Rate", nil)];
-    [self.rateCell activateDecimalEntryMode];
+    [self.rateCell activateDecimalEntryModeWithDecimalPlaces:SmartReceiptsNumberOfDecimalPlacesForGasRate];
 
     NSString *selectedCurrency = [self.trip.defaultCurrency code];
 

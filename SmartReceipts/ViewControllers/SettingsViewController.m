@@ -263,7 +263,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     self.gasRateCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
     [self.gasRateCell setTitle:NSLocalizedString(@"Gas Rate", nil)];
-    [self.gasRateCell activateDecimalEntryMode];
+    [self.gasRateCell activateDecimalEntryModeWithDecimalPlaces:SmartReceiptsNumberOfDecimalPlacesForGasRate];
 
     self.includeDistanceTableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.includeDistanceTableCell setTitle:NSLocalizedString(@"Include Distance Table", nil)];
