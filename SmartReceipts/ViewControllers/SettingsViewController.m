@@ -66,6 +66,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) SwitchControlCell *includeCSVHeadersCell;
 @property (nonatomic, strong) SettingsButtonCell *configureCSVColumnsCell;
 
+@property (nonatomic, strong) SwitchControlCell *printReceiptIDByPhotoCell;
 @property (nonatomic, strong) SettingsButtonCell *configurePDFColumnsCell;
 
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultEmailRecipientCell;
@@ -238,10 +239,13 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Customize CSV Output", nil) cells:@[self.includeCSVHeadersCell, self.configureCSVColumnsCell]]];
 
+    self.printReceiptIDByPhotoCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.printReceiptIDByPhotoCell setTitle:NSLocalizedString(@"Print ID By Photo", nil)];
+
     self.configurePDFColumnsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
     [self.configurePDFColumnsCell setTitle:NSLocalizedString(@"Configure PDF Columns", nil)];
 
-    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Customize PDF Output", nil) cells:@[self.configurePDFColumnsCell]]];
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Customize PDF Output", nil) cells:@[self.printReceiptIDByPhotoCell, self.configurePDFColumnsCell]]];
 
     self.addDistancePriceToReportCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.addDistancePriceToReportCell setTitle:NSLocalizedString(@"Add Distane Price to Report", nil)];
@@ -346,6 +350,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     [self.includeCSVHeadersCell setSwitchOn:[WBPreferences includeCSVHeaders]];
 
+    [self.printReceiptIDByPhotoCell setSwitchOn:[WBPreferences printReceiptIDByPhoto]];
+
     [self.addDistancePriceToReportCell setSwitchOn:[WBPreferences isTheDistancePriceBeIncludedInReports]];
     float defaultValue = [WBPreferences distanceRateDefaultValue];
     if (defaultValue < 0.001) {
@@ -398,6 +404,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [WBPreferences setUsePaymentMethods:self.usePaymentMethodsCell.isSwitchOn];
 
     [WBPreferences setIncludeCSVHeaders:self.includeCSVHeadersCell.isSwitchOn];
+
+    [WBPreferences setPrintReceiptIDByPhoto:self.printReceiptIDByPhotoCell.isSwitchOn];
 
     [WBPreferences setTheDistancePriceBeIncludedInReports:self.addDistancePriceToReportCell.isSwitchOn];
     NSString *gasRate = [self.gasRateCell value];

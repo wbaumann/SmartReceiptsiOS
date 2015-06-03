@@ -12,6 +12,7 @@
 #import "WBReceipt.h"
 #import "WBDateFormatter.h"
 #import "Database.h"
+#import "WBPreferences.h"
 
 @interface TripImagesPDFGenerator ()
 
@@ -87,8 +88,9 @@
 }
 
 - (NSString *)labelForReceipt:(WBReceipt *)receipt {
-    return [NSString stringWithFormat:@"%ld  \u2022  %@  \u2022  %@",
-                                      (long)receipt.reportIndex,
+    NSUInteger usedID = [WBPreferences printReceiptIDByPhoto] ? receipt.objectId : receipt.reportIndex;
+    return [NSString stringWithFormat:@"%tu  \u2022  %@  \u2022  %@",
+                                      usedID,
                                       [receipt name],
                                       [self.dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]]];
 }
