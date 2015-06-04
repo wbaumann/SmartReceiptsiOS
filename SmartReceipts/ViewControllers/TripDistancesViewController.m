@@ -37,7 +37,6 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
     [self setDateFormatter:[[WBDateFormatter alloc] init]];
 
     [self setPresentationCellNib:[DistanceSummaryCell viewNib]];
-    [self.tableView setRowHeight:78];
 }
 
 - (FetchedModelAdapter *)createFetchedModelAdapter {
@@ -51,6 +50,8 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
     summaryCell.destinationLabel.text = distance.location;
     summaryCell.totalLabel.text = distance.totalRate.currencyFormattedPrice;
     summaryCell.dateLabel.text = [self.dateFormatter formattedDate:distance.date inTimeZone:distance.timeZone];
+
+    [summaryCell setPriceLabelWidth:self.maxRateWidth];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

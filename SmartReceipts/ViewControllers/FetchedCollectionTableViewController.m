@@ -17,6 +17,7 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 @interface FetchedCollectionTableViewController ()
 
 @property (nonatomic, strong) FetchedModelAdapter *presentedObjects;
+@property (nonatomic, strong) UITableViewCell *sizingCell;
 
 @end
 
@@ -24,12 +25,9 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    [self.tableView setEstimatedRowHeight:40];
+    [self.tableView setRowHeight:UITableViewAutomaticDimension];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,6 +64,24 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 
 - (void)contentChanged {
     SRLog(@"contentChanged");
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (!self.sizingCell) {
+        self.sizingCell = [self.tableView dequeueReusableCellWithIdentifier:FetchedCollectionTableViewControllerCellIdentifier];
+    }
+
+    id object = [self objectAtIndexPath:indexPath];
+    [self configureCell:self.sizingCell atIndexPath:indexPath withObject:object];
+    return [self calculateHeightForConfiguredSizingCell:self.sizingCell];
+}
+
+- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
+    [sizingCell setNeedsLayout];
+    [sizingCell layoutIfNeeded];
+
+    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 1.0f; // Add 1.0f for the cell separator height
 }
 
 - (void)fetchObjects {

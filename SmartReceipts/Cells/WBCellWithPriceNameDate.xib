@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -17,7 +17,8 @@
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$12.53" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jik-bv-qxh">
                         <rect key="frame" x="16" y="0.0" width="64" height="47"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="64" id="3LP-1g-ohx"/>
+                            <constraint firstAttribute="width" constant="64" id="0BS-Hz-f8O"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="47" id="fYi-D1-qJV"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                         <color key="textColor" red="0.46666666670000001" green="0.08235294118" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -25,32 +26,38 @@
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9K-TL-aOK">
                         <rect key="frame" x="92" y="2" width="80" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Jpi-Gw-CTr"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" id="uGs-gz-8Cy"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 6. 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmB-uG-brk">
-                        <rect key="frame" x="92" y="24" width="111" height="21"/>
+                        <rect key="frame" x="92" y="24" width="110.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" id="3c5-kW-gDp"/>
+                            <constraint firstAttribute="height" constant="21" id="lbc-F2-OSK"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="cmB-uG-brk" secondAttribute="bottom" constant="2" id="2WG-0Q-urK"/>
-                    <constraint firstItem="cmB-uG-brk" firstAttribute="left" secondItem="jik-bv-qxh" secondAttribute="right" constant="12" id="4S9-bY-zDY"/>
-                    <constraint firstItem="jik-bv-qxh" firstAttribute="top" secondItem="2dq-5d-s6c" secondAttribute="top" id="9bI-1O-7Ff"/>
-                    <constraint firstItem="R9K-TL-aOK" firstAttribute="left" secondItem="jik-bv-qxh" secondAttribute="right" constant="12" id="BFh-3Z-hmq"/>
-                    <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="cmB-uG-brk" secondAttribute="right" constant="8" id="Byq-Lz-t4Y"/>
-                    <constraint firstItem="jik-bv-qxh" firstAttribute="left" secondItem="2dq-5d-s6c" secondAttribute="left" constant="16" id="P4H-7i-5cW"/>
-                    <constraint firstItem="R9K-TL-aOK" firstAttribute="top" secondItem="2dq-5d-s6c" secondAttribute="top" constant="2" id="SPe-Cw-wni"/>
-                    <constraint firstAttribute="bottom" secondItem="jik-bv-qxh" secondAttribute="bottom" id="ifV-0F-qvm"/>
-                    <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="R9K-TL-aOK" secondAttribute="right" constant="8" id="izJ-N0-vqx"/>
+                    <constraint firstItem="R9K-TL-aOK" firstAttribute="top" secondItem="2dq-5d-s6c" secondAttribute="top" constant="2" id="3nD-UL-egv"/>
+                    <constraint firstItem="jik-bv-qxh" firstAttribute="top" secondItem="2dq-5d-s6c" secondAttribute="top" id="JDK-Gq-RI3"/>
+                    <constraint firstItem="jik-bv-qxh" firstAttribute="leading" secondItem="2dq-5d-s6c" secondAttribute="leading" constant="16" id="TNK-aX-mbv"/>
+                    <constraint firstItem="cmB-uG-brk" firstAttribute="leading" secondItem="jik-bv-qxh" secondAttribute="trailing" constant="12" id="Tre-E4-DOd"/>
+                    <constraint firstAttribute="bottom" secondItem="jik-bv-qxh" secondAttribute="bottom" id="V9m-vI-b18"/>
+                    <constraint firstItem="R9K-TL-aOK" firstAttribute="leading" secondItem="jik-bv-qxh" secondAttribute="trailing" constant="12" id="qdo-vF-EVz"/>
+                    <constraint firstItem="cmB-uG-brk" firstAttribute="top" secondItem="R9K-TL-aOK" secondAttribute="bottom" constant="1" id="yOy-lA-pGX"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dateField" destination="cmB-uG-brk" id="Aq0-3i-ZsI"/>
                 <outlet property="nameField" destination="R9K-TL-aOK" id="lY6-DG-uxB"/>
                 <outlet property="priceField" destination="jik-bv-qxh" id="tPF-g5-NSY"/>
-                <outlet property="priceWidthConstraint" destination="3LP-1g-ohx" id="rBQ-Su-DwT"/>
+                <outlet property="priceWidthConstraint" destination="0BS-Hz-f8O" id="zW2-rG-mqi"/>
             </connections>
         </tableViewCell>
     </objects>
