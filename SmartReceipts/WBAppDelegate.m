@@ -34,7 +34,7 @@
     [[Database sharedInstance] open];
 
     NSString *language = [NSLocale preferredLanguages][0];
-    NSLog(@"lang: %@", language);
+    SRLog(@"lang: %@", language);
 
     NSURL *url = (NSURL *) [launchOptions valueForKey:UIApplicationLaunchOptionsURLKey];
     if (url != nil && [url isFileURL]) {
