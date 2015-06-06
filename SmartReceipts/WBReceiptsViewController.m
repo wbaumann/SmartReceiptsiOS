@@ -73,9 +73,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUpdated:) name:DatabaseDidUpdateModelNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsSaved) name:SmartReceiptsSettingsSavedNotification object:nil];
-
-    [self.tableView setEstimatedRowHeight:40];
-    [self.tableView setRowHeight:UITableViewAutomaticDimension];
 }
 
 - (void)tripUpdated:(NSNotification *)notification {
@@ -156,26 +153,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     cell.categoryLabel.text = self.showReceiptCategory ? receipt.category : @"";
 
     [cell.priceWidthConstraint setConstant:_priceWidth];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static ReceiptSummaryCell *sizingCell = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sizingCell = [self.tableView dequeueReusableCellWithIdentifier:@"FetchedCollectionTableViewControllerCellIdentifier"];
-    });
-
-    id object = [self objectAtIndexPath:indexPath];
-    [self configureCell:sizingCell atIndexPath:indexPath withObject:object];
-    return [self calculateHeightForConfiguredSizingCell:sizingCell];
-}
-
-- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
-    [sizingCell setNeedsLayout];
-    [sizingCell layoutIfNeeded];
-
-    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    return size.height + 1.0f; // Add 1.0f for the cell separator height
 }
 
 - (void)contentChanged {
