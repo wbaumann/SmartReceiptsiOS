@@ -30,6 +30,10 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 
 @implementation TripsViewController
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -44,25 +48,25 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
     self.settingsButton.title = @"\u2699";
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"Helvetica" size:24.0], NSFontAttributeName, nil];
     [self.settingsButton setTitleTextAttributes:dict forState:UIControlStateNormal];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsSaved) name:SmartReceiptsSettingsSavedNotification object:nil];
+
+    [self setLastDateSeparator:[WBPreferences dateSeparator]];
+}
+
+- (void)settingsSaved {
+    if ([self.lastDateSeparator isEqualToString:[WBPreferences dateSeparator]]) {
+        return;
+    }
+
+    [self setLastDateSeparator:[WBPreferences dateSeparator]];
+    [self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
     [self updateEditButton];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-
-    if (_lastDateSeparator && ![[WBPreferences dateSeparator] isEqualToString:_lastDateSeparator]) {
-        [self.tableView reloadData];
-    }
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    _lastDateSeparator = [WBPreferences dateSeparator];
 }
 
 - (void)updateEditButton {

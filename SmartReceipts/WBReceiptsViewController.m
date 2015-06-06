@@ -32,14 +32,13 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     WBReceipt *_receiptForCretorSegue;
     
     CGFloat _priceWidth;
-
-    NSString * _lastDateSeparator;
 }
 
 @property (nonatomic, strong) WBReceipt *tapped;
 @property (nonatomic, strong) WBDateFormatter *dateFormatter;
 @property (nonatomic, assign) BOOL showReceiptDate;
 @property (nonatomic, assign) BOOL showReceiptCategory;
+@property (nonatomic, copy) NSString *lastDateSeparator;
 
 @end
 
@@ -70,6 +69,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     
     [self updateEditButton];
     [self updateTitle];
+    [self setLastDateSeparator:[WBPreferences dateSeparator]];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUpdated:) name:DatabaseDidUpdateModelNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsSaved) name:SmartReceiptsSettingsSavedNotification object:nil];
@@ -86,19 +86,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     //TODO jaanus: check posting already altered object
     self.trip = [[Database sharedInstance] tripWithName:self.trip.name];
     [self updateTitle];
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    if (_lastDateSeparator && ![[WBPreferences dateSeparator] isEqualToString:_lastDateSeparator]) {
-        [self.tableView reloadData];
-    }
-}
-
--(void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    _lastDateSeparator = [WBPreferences dateSeparator];
 }
 
 - (void)updateEditButton {
@@ -306,10 +293,13 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 }
 
 - (void)settingsSaved {
-    if (self.showReceiptDate == [WBPreferences layoutShowReceiptDate] && self.showReceiptCategory == [WBPreferences layoutShowReceiptCategory]) {
+    if (self.showReceiptDate == [WBPreferences layoutShowReceiptDate]
+            && self.showReceiptCategory == [WBPreferences layoutShowReceiptCategory]
+            && [self.lastDateSeparator isEqualToString:[WBPreferences dateSeparator]]) {
         return;
     }
 
+    [self setLastDateSeparator:[WBPreferences dateSeparator]];
     [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
     [self setShowReceiptCategory:[WBPreferences layoutShowReceiptCategory]];
     [self.tableView reloadData];
