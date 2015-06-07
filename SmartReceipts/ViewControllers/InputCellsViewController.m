@@ -15,6 +15,7 @@
 #import "WBAutocompleteHelper.h"
 #import "TitledAutocompleteEntryCell.h"
 #import "SwitchControlCell.h"
+#import "UIApplication+DismissKeyboard.h"
 
 @interface InputCellsViewController () <UITextFieldDelegate>
 
@@ -225,6 +226,7 @@
 }
 
 - (void)presentPickerForIndexPath:(NSIndexPath *)indexPath {
+    [UIApplication dismissKeyboard];
     UITableViewCell *pickerCell = self.inlinedPickers[indexPath];
     NSIndexPath *insertPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
     InputCellsSection *section = self.presentedSections[insertPath.section];
