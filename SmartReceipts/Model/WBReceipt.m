@@ -7,7 +7,6 @@
 //
 
 #import <FMDB/FMResultSet.h>
-#import <objc/objc.h>
 #import "WBReceipt.h"
 #import "WBTrip.h"
 #import "WBCurrency.h"
@@ -257,6 +256,16 @@ static NSString* checkNoData(NSString* str) {
     [description appendFormat:@"date: %@", self.date];
     [description appendString:@">"];
     return description;
+}
+
+- (NSString *)attachmentMarker {
+    if (self.hasImage) {
+        return @"Image";
+    } else if (self.hasPDF) {
+        return @"PDF";
+    }
+
+    return @"";
 }
 
 @end

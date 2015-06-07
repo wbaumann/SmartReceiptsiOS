@@ -100,6 +100,9 @@
 + (BOOL)layoutShowReceiptCategory;
 + (void)setLayoutShowReceiptCategory:(BOOL)value;
 
++ (BOOL)layoutShowReceiptAttachmentMarker;
++ (void)setLayoutShowReceiptAttachmentMarker:(BOOL)value;
+
 + (int)cameraMaxHeightWidth;
 + (void)setCameraMaxHeightWidth:(int)cameraMaxHeightWidth;
 
