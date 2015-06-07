@@ -54,12 +54,23 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnh-b6-tOk" userLabel="Marker">
+                                <rect key="frame" x="182" y="45" width="38" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="9az-TI-gIm"/>
+                                    <constraint firstAttribute="height" constant="21" id="KnW-HV-wgm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ENq-TD-C4c" firstAttribute="top" secondItem="z9Q-Cn-vDU" secondAttribute="bottom" constant="2" id="5Mx-Ue-AG1"/>
                             <constraint firstItem="z9Q-Cn-vDU" firstAttribute="leading" secondItem="pRi-pw-EYT" secondAttribute="leading" id="Cg5-r6-O0P"/>
+                            <constraint firstAttribute="trailing" secondItem="hnh-b6-tOk" secondAttribute="trailing" id="Hrp-8w-ip2"/>
                             <constraint firstItem="z9Q-Cn-vDU" firstAttribute="top" secondItem="pRi-pw-EYT" secondAttribute="top" constant="2" id="KtP-E6-7GO"/>
+                            <constraint firstAttribute="bottom" secondItem="hnh-b6-tOk" secondAttribute="bottom" constant="2.5" id="WPW-DY-kIo"/>
                             <constraint firstItem="hWA-Jn-Qzn" firstAttribute="top" secondItem="ENq-TD-C4c" secondAttribute="bottom" constant="1.5" id="gsp-ms-KjA"/>
                             <constraint firstItem="hWA-Jn-Qzn" firstAttribute="leading" secondItem="pRi-pw-EYT" secondAttribute="leading" id="hcx-dx-QaT"/>
                             <constraint firstAttribute="bottom" secondItem="hWA-Jn-Qzn" secondAttribute="bottom" constant="3" id="qLz-IM-X9K"/>
@@ -80,6 +91,7 @@
             <connections>
                 <outlet property="categoryLabel" destination="hWA-Jn-Qzn" id="Ecy-3P-8LG"/>
                 <outlet property="dateField" destination="ENq-TD-C4c" id="Q2o-Od-OpV"/>
+                <outlet property="markerLabel" destination="hnh-b6-tOk" id="qES-bG-bes"/>
                 <outlet property="nameField" destination="z9Q-Cn-vDU" id="gAK-Gc-yyU"/>
                 <outlet property="priceField" destination="0ta-4Y-eDi" id="SAv-79-l9A"/>
                 <outlet property="priceWidthConstraint" destination="aQ0-BQ-6LJ" id="CUI-jH-grS"/>

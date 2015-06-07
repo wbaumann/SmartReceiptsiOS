@@ -85,4 +85,6 @@
 -(BOOL)hasExtraEditText2;
 -(BOOL)hasExtraEditText3;
 
+- (NSString *)attachmentMarker;
+
 @end

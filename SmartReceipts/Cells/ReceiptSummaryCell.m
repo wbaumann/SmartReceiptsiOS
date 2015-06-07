@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateField;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *priceWidthConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *markerLabel;
 
 @end
 

@@ -83,6 +83,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 @property (nonatomic, strong) SwitchControlCell *layoutShowReceiptDateCell;
 @property (nonatomic, strong) SwitchControlCell *layoutShowReceiptCategoryCell;
+@property (nonatomic, strong) SwitchControlCell *layoutShowReceiptAttachmentCell;
 
 @property (nonatomic, strong) SettingsButtonCell *backupCell;
 
@@ -284,9 +285,13 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     self.layoutShowReceiptCategoryCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.layoutShowReceiptCategoryCell setTitle:NSLocalizedString(@"Include Receipt Category", nil)];
 
+    self.layoutShowReceiptAttachmentCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.layoutShowReceiptAttachmentCell setTitle:NSLocalizedString(@"Include Picture/PDF Marker", nil)];
+
     [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Layout Customizations", nil) cells:@[
             self.layoutShowReceiptDateCell,
-            self.layoutShowReceiptCategoryCell
+            self.layoutShowReceiptCategoryCell,
+            self.layoutShowReceiptAttachmentCell
     ]]];
 
 
@@ -387,6 +392,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     [self.layoutShowReceiptDateCell setSwitchOn:[WBPreferences layoutShowReceiptDate]];
     [self.layoutShowReceiptCategoryCell setSwitchOn:[WBPreferences layoutShowReceiptCategory]];
+    [self.layoutShowReceiptAttachmentCell setSwitchOn:[WBPreferences layoutShowReceiptAttachmentMarker]];
 }
 
 - (void)writeSettingsToPreferences {
@@ -442,6 +448,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     [WBPreferences setLayoutShowReceiptDate:[self.layoutShowReceiptDateCell isSwitchOn]];
     [WBPreferences setLayoutShowReceiptCategory:[self.layoutShowReceiptCategoryCell isSwitchOn]];
+    [WBPreferences setLayoutShowReceiptAttachmentMarker:[self.layoutShowReceiptAttachmentCell isSwitchOn]];
 
     [WBPreferences save];
 }

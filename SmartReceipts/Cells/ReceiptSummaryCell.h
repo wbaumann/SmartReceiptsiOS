@@ -15,5 +15,6 @@
 @property (weak, nonatomic, readonly) UILabel *dateField;
 @property (weak, nonatomic, readonly) NSLayoutConstraint *priceWidthConstraint;
 @property (weak, nonatomic, readonly) UILabel *categoryLabel;
+@property (weak, nonatomic, readonly) UILabel *markerLabel;
 
 @end

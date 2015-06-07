@@ -39,6 +39,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 @property (nonatomic, assign) BOOL showReceiptDate;
 @property (nonatomic, assign) BOOL showReceiptCategory;
 @property (nonatomic, copy) NSString *lastDateSeparator;
+@property (nonatomic, assign) BOOL showAttachmentMarker;
 
 @end
 
@@ -56,6 +57,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
     [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
     [self setShowReceiptCategory:[WBPreferences layoutShowReceiptCategory]];
+    [self setShowAttachmentMarker:[WBPreferences layoutShowReceiptAttachmentMarker]];
 
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
@@ -138,6 +140,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     cell.nameField.text = [receipt name];
     cell.dateField.text = self.showReceiptDate ? [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]] : @"";
     cell.categoryLabel.text = self.showReceiptCategory ? receipt.category : @"";
+    cell.markerLabel.text = self.showAttachmentMarker ? [receipt attachmentMarker] : @"";
 
     [cell.priceWidthConstraint setConstant:_priceWidth];
 }
@@ -295,6 +298,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 - (void)settingsSaved {
     if (self.showReceiptDate == [WBPreferences layoutShowReceiptDate]
             && self.showReceiptCategory == [WBPreferences layoutShowReceiptCategory]
+            && self.showAttachmentMarker == [WBPreferences layoutShowReceiptAttachmentMarker]
             && [self.lastDateSeparator isEqualToString:[WBPreferences dateSeparator]]) {
         return;
     }
@@ -302,6 +306,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self setLastDateSeparator:[WBPreferences dateSeparator]];
     [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
     [self setShowReceiptCategory:[WBPreferences layoutShowReceiptCategory]];
+    [self setShowAttachmentMarker:[WBPreferences layoutShowReceiptAttachmentMarker]];
     [self.tableView reloadData];
 }
 
