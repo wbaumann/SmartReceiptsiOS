@@ -48,7 +48,6 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) InlinedPickerCell *defaultCurrencyPickerCell;
 @property (nonatomic, strong) SettingsSegmentControlCell *dateSeparatorCell;
 @property (nonatomic, strong) SwitchControlCell *costCenterCell;
-@property (nonatomic, strong) SettingsSegmentControlCell *cameraSettingsCell;
 @property (nonatomic, strong) SwitchControlCell *predictReceiptCategoriesCell;
 @property (nonatomic, strong) SwitchControlCell *includeTaxFieldCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultTaxPercentageCell;
@@ -61,6 +60,10 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) SwitchControlCell *showReceiptIDCell;
 @property (nonatomic, strong) SwitchControlCell *usePaymentMethodsCell;
 @property (nonatomic, strong) SettingsButtonCell *customizePaymentMethodsCell;
+
+@property (nonatomic, strong) SettingsSegmentControlCell *cameraSettingsCell;
+@property (nonatomic, strong) SwitchControlCell *cameraImageBWCell;
+@property (nonatomic, strong) SwitchControlCell *cameraImageRotateCell;
 
 @property (nonatomic, strong) SettingsButtonCell *manageCategoriesCell;
 
@@ -168,9 +171,6 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     self.costCenterCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.costCenterCell setTitle:NSLocalizedString(@"Track Cost Center", nil)];
 
-    self.cameraSettingsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSegmentControlCell cellIdentifier]];
-    [self.cameraSettingsCell setTitle:NSLocalizedString(@"Max. Camera Height / Width", nil)];
-
     self.predictReceiptCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.predictReceiptCategoriesCell setTitle:NSLocalizedString(@"Predict Receipt Categories", nil)];
 
@@ -214,7 +214,6 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
                                                                        self.userIdCell,
                                                                        self.defaultCurrencyCell,
                                                                        self.dateSeparatorCell,
-                                                                       self.cameraSettingsCell,
                                                                        self.costCenterCell,
                                                                        self.predictReceiptCategoriesCell,
                                                                        self.includeTaxFieldCell,
@@ -231,6 +230,21 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self addSectionForPresentation:general];
 
     [self addInlinedPickerCell:self.defaultCurrencyPickerCell forCell:self.defaultCurrencyCell];
+
+    self.cameraSettingsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSegmentControlCell cellIdentifier]];
+    [self.cameraSettingsCell setTitle:NSLocalizedString(@"Max. Camera Height / Width", nil)];
+
+    self.cameraImageBWCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.cameraImageBWCell setTitle:NSLocalizedString(@"Convert to Grayscale", nil)];
+
+    self.cameraImageRotateCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.cameraImageRotateCell setTitle:NSLocalizedString(@"Automatically rotate images", nil)];
+
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Camera", nil) cells:@[
+            self.cameraSettingsCell,
+            self.cameraImageBWCell,
+            self.cameraImageRotateCell
+    ]]];
 
     self.manageCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
     [self.manageCategoriesCell setTitle:NSLocalizedString(@"Manage Categories", nil)];
@@ -374,6 +388,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         }
     }
     [self.cameraSettingsCell setValues:presentedCameraValues selected:selectedCameraValueIndex];
+    [self.cameraImageBWCell setSwitchOn:[WBPreferences cameraSaveImagesBlackAndWhite]];
+    [self.cameraImageRotateCell setSwitchOn:[WBPreferences cameraRotateImage]];
 
     [self.includeCSVHeadersCell setSwitchOn:[WBPreferences includeCSVHeaders]];
 
@@ -419,6 +435,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     NSNumber *cam = self.cameraValues[(NSUInteger) [self.cameraSettingsCell selectedSegmentIndex]];
     [WBPreferences setCameraMaxHeightWidth:[cam intValue]];
+    [WBPreferences setCameraSaveImagesBlackAndWhite:self.cameraImageBWCell.isSwitchOn];
+    [WBPreferences setCameraRotateImage:self.cameraImageRotateCell.isSwitchOn];
 
     [WBPreferences setPredictCategories:[self.predictReceiptCategoriesCell isSwitchOn]];
     [WBPreferences setIncludeTaxField:self.includeTaxFieldCell.isSwitchOn];

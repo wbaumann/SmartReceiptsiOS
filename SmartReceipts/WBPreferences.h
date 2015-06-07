@@ -106,6 +106,12 @@
 + (int)cameraMaxHeightWidth;
 + (void)setCameraMaxHeightWidth:(int)cameraMaxHeightWidth;
 
++ (BOOL)cameraSaveImagesBlackAndWhite;
++ (void)setCameraSaveImagesBlackAndWhite:(BOOL)value;
+
++ (BOOL)cameraRotateImage;
++ (void)setCameraRotateImage:(BOOL)value;
+
 + (void)save;
 
 + (float)MIN_FLOAT;
