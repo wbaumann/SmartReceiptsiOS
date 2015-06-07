@@ -103,8 +103,8 @@
 + (BOOL)layoutShowReceiptAttachmentMarker;
 + (void)setLayoutShowReceiptAttachmentMarker:(BOOL)value;
 
-+ (int)cameraMaxHeightWidth;
-+ (void)setCameraMaxHeightWidth:(int)cameraMaxHeightWidth;
++ (NSInteger)cameraMaxHeightWidth;
++ (void)setCameraMaxHeightWidth:(NSInteger)cameraMaxHeightWidth;
 
 + (BOOL)cameraSaveImagesBlackAndWhite;
 + (void)setCameraSaveImagesBlackAndWhite:(BOOL)value;

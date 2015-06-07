@@ -447,10 +447,11 @@ static NSUserDefaults* instance() {
 }
 
 
-+(int) cameraMaxHeightWidth {
-    return (int)[instance() integerForKey:INT_CAMERA_MAX_HEIGHT_WIDTH];
++ (NSInteger)cameraMaxHeightWidth {
+    return [instance() integerForKey:INT_CAMERA_MAX_HEIGHT_WIDTH];
 }
-+(void) setCameraMaxHeightWidth:(int) cameraMaxHeightWidth {
+
++ (void)setCameraMaxHeightWidth:(NSInteger)cameraMaxHeightWidth {
     [instance() setInteger:cameraMaxHeightWidth forKey:INT_CAMERA_MAX_HEIGHT_WIDTH];
 }
 

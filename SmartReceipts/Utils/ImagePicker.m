@@ -82,10 +82,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
 
-    int size = [WBPreferences cameraMaxHeightWidth];
-    if (size > 0) {
-        chosenImage = [WBImageUtils image:chosenImage scaledToFitSize:CGSizeMake(size, size)];
-    }
+    chosenImage = [WBImageUtils processImage:chosenImage];
 
     [picker dismissViewControllerAnimated:YES completion:^{
         self.selectionHandler(chosenImage);

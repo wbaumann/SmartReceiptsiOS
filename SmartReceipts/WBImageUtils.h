@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface WBImageUtils : NSObject
-+ (UIImage *)image:(UIImage*) image scaledToSize:(CGSize)size;
-+ (UIImage *)image:(UIImage*) image scaledToFitSize:(CGSize)size;
 
-+ (UIImage *)image:(UIImage*) image withOrientation:(UIImageOrientation) orientation;
++ (UIImage *)image:(UIImage *)image scaledToSize:(CGSize)size;
++ (UIImage *)image:(UIImage *)image scaledToFitSize:(CGSize)size;
++ (UIImage *)image:(UIImage *)image withOrientation:(UIImageOrientation)orientation;
++ (UIImage *)processImage:(UIImage *)image;
+
 @end
