@@ -1,5 +1,5 @@
 //
-//  WBImagePicker.h
+//  ImagePicker.h
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 22/04/15.
@@ -10,7 +10,7 @@
 
 typedef void (^WBImagePickerResultBlock)(UIImage *image);
 
-@interface WBImagePicker : NSObject
+@interface ImagePicker : NSObject
 
 + (instancetype)sharedInstance;
 - (void)presentPickerOnController:(UIViewController *)controller completion:(WBImagePickerResultBlock)completion;

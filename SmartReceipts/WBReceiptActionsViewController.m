@@ -13,7 +13,7 @@
 #import "WBImageViewController.h"
 
 #import "WBAppDelegate.h"
-#import "WBImagePicker.h"
+#import "ImagePicker.h"
 
 @interface WBReceiptActionsViewController ()
 
@@ -208,7 +208,7 @@
 }
 
 - (void)takePhoto {
-    [[WBImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *image) {
+    [[ImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *image) {
         if (!image) {
             return;
         }

@@ -12,7 +12,7 @@
 #import "WBDateFormatter.h"
 #import "WBFileManager.h"
 #import "WBPreferences.h"
-#import "WBImagePicker.h"
+#import "ImagePicker.h"
 #import "TripDistancesViewController.h"
 #import "WBCustomization.h"
 #import "UIView+LoadHelpers.h"
@@ -274,7 +274,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 }
 
 - (IBAction)actionCamera:(id)sender {
-    [[WBImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *image) {
+    [[ImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *image) {
         if (!image) {
             return;
         }
