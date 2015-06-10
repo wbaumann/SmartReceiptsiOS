@@ -12,7 +12,7 @@
 
 #import "WBImageUtils.h"
 #import "WBFileManager.h"
-#import "WBImagePicker.h"
+#import "ImagePicker.h"
 #import "PendingHUDView.h"
 
 @interface WBImageViewController ()
@@ -97,7 +97,7 @@
 }
 
 - (IBAction)actionCamera:(id)sender {
-    [[WBImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *picked) {
+    [[ImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *picked) {
         if (!picked) {
             return;
         }

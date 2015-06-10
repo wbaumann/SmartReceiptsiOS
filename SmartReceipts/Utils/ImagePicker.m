@@ -1,5 +1,5 @@
 //
-//  WBImagePicker.m
+//  ImagePicker.m
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 22/04/15.
@@ -8,18 +8,18 @@
 
 #import <UIAlertView-Blocks/RIButtonItem.h>
 #import <UIAlertView-Blocks/UIActionSheet+Blocks.h>
-#import "WBImagePicker.h"
+#import "ImagePicker.h"
 #import "Constants.h"
 #import "WBImageUtils.h"
 #import "WBPreferences.h"
 
-@interface WBImagePicker () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface ImagePicker () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, copy) WBImagePickerResultBlock selectionHandler;
 
 @end
 
-@implementation WBImagePicker
+@implementation ImagePicker
 
 + (instancetype)sharedInstance {
     DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
@@ -82,10 +82,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
 
-    int size = [WBPreferences cameraMaxHeightWidth];
-    if (size > 0) {
-        chosenImage = [WBImageUtils image:chosenImage scaledToFitSize:CGSizeMake(size, size)];
-    }
+    chosenImage = [WBImageUtils processImage:chosenImage];
 
     [picker dismissViewControllerAnimated:YES completion:^{
         self.selectionHandler(chosenImage);

@@ -40,6 +40,8 @@ static NSString * const BOOL_DEFAULT_TO_FIRST_TRIP_DATE = @"DefaultToFirstReport
 
 // only for iOS
 static NSString * const INT_CAMERA_MAX_HEIGHT_WIDTH = @"CameraMaxHeightWidth";
+static NSString * const BOOL_CAMERA_BLACK_AND_WHITE = @"SaveBW";
+static NSString * const BOOL_CAMERA_ROTATE_IMAGE = @"Camera_Rotate";
 
 //distance settings
 static NSString *const BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT = @"MileageTotalInReport";
@@ -104,6 +106,8 @@ static NSDictionary *getEntryTypes() {
             BOOL_DEFAULT_TO_FIRST_TRIP_DATE : tBool,
 
             INT_CAMERA_MAX_HEIGHT_WIDTH : tInt,
+            BOOL_CAMERA_BLACK_AND_WHITE : tBool,
+            BOOL_CAMERA_ROTATE_IMAGE : tBool,
 
             BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT: tBool,
             FLOAT_DEFAULT_MILEAGE_RATE: tDouble,
@@ -165,6 +169,8 @@ static NSDictionary *getDefaultValues() {
             BOOL_DEFAULT_TO_FIRST_TRIP_DATE : @NO,
 
             INT_CAMERA_MAX_HEIGHT_WIDTH : @1024,
+            BOOL_CAMERA_BLACK_AND_WHITE : @NO,
+            BOOL_CAMERA_ROTATE_IMAGE : @YES,
 
             BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT: @NO,
             FLOAT_DEFAULT_MILEAGE_RATE: @(MIN_FLOAT),
@@ -441,11 +447,28 @@ static NSUserDefaults* instance() {
 }
 
 
-+(int) cameraMaxHeightWidth {
-    return (int)[instance() integerForKey:INT_CAMERA_MAX_HEIGHT_WIDTH];
++ (NSInteger)cameraMaxHeightWidth {
+    return [instance() integerForKey:INT_CAMERA_MAX_HEIGHT_WIDTH];
 }
-+(void) setCameraMaxHeightWidth:(int) cameraMaxHeightWidth {
+
++ (void)setCameraMaxHeightWidth:(NSInteger)cameraMaxHeightWidth {
     [instance() setInteger:cameraMaxHeightWidth forKey:INT_CAMERA_MAX_HEIGHT_WIDTH];
+}
+
++ (BOOL)cameraSaveImagesBlackAndWhite{
+    return [instance() boolForKey:BOOL_CAMERA_BLACK_AND_WHITE];
+}
+
++ (void)setCameraSaveImagesBlackAndWhite:(BOOL)value{
+    [instance() setBool:value forKey:BOOL_CAMERA_BLACK_AND_WHITE];
+}
+
++ (BOOL)cameraRotateImage {
+    return [instance() boolForKey:BOOL_CAMERA_ROTATE_IMAGE];
+}
+
++ (void)setCameraRotateImage:(BOOL)value{
+    [instance() setBool:value forKey:BOOL_CAMERA_ROTATE_IMAGE];
 }
 
 +(void) save {

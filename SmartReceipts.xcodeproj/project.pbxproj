@@ -139,7 +139,7 @@
 		EA3C96AD1AECC95100A2A5F9 /* TripImagesPDFGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96AC1AECC95100A2A5F9 /* TripImagesPDFGenerator.m */; };
 		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
-		EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */; };
+		EA46678F1AE7EA1700B4E502 /* ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA46678E1AE7EA1600B4E502 /* ImagePicker.m */; };
 		EA4C5CBA1AF2864B0083FDD7 /* TextEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CB81AF2864B0083FDD7 /* TextEntryCell.m */; };
 		EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CBD1AF2866E0083FDD7 /* UIView+LoadHelpers.m */; };
 		EA4C5CC11AF286990083FDD7 /* InputCellsSection.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CC01AF286990083FDD7 /* InputCellsSection.m */; };
@@ -489,8 +489,8 @@
 		EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+WBNumberParse.m"; sourceTree = "<group>"; };
 		EA3CF09C1AE7C45C00B14B73 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		EA3CF09D1AE7C45C00B14B73 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		EA46678D1AE7EA1600B4E502 /* WBImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImagePicker.h; sourceTree = "<group>"; };
-		EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImagePicker.m; sourceTree = "<group>"; };
+		EA46678D1AE7EA1600B4E502 /* ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePicker.h; sourceTree = "<group>"; };
+		EA46678E1AE7EA1600B4E502 /* ImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePicker.m; sourceTree = "<group>"; };
 		EA4C5CB71AF2864B0083FDD7 /* TextEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEntryCell.h; sourceTree = "<group>"; };
 		EA4C5CB81AF2864B0083FDD7 /* TextEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEntryCell.m; sourceTree = "<group>"; };
 		EA4C5CBC1AF2866E0083FDD7 /* UIView+LoadHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LoadHelpers.h"; sourceTree = "<group>"; };
@@ -1150,6 +1150,8 @@
 				EA24EC6C1B1F64F000FCCB27 /* DecimalFormatter.m */,
 				EA07BF421AF3F882004D17F6 /* DecimalInputValidation.h */,
 				EA07BF431AF3F882004D17F6 /* DecimalInputValidation.m */,
+				EA46678D1AE7EA1600B4E502 /* ImagePicker.h */,
+				EA46678E1AE7EA1600B4E502 /* ImagePicker.m */,
 				EA07BF411AF3F84E004D17F6 /* InputValidation.h */,
 				EA888A741AFA3D3F00DF2AE6 /* NumberInputValidation.h */,
 				EA888A751AFA3D3F00DF2AE6 /* NumberInputValidation.m */,
@@ -1157,8 +1159,6 @@
 				EA00D00C1B0629BE00C87678 /* ProperNameInputValidation.m */,
 				EAD15C781B0881C2003BB1F3 /* ReceiptFilesManager.h */,
 				EAD15C791B0881C2003BB1F3 /* ReceiptFilesManager.m */,
-				EA46678D1AE7EA1600B4E502 /* WBImagePicker.h */,
-				EA46678E1AE7EA1600B4E502 /* WBImagePicker.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1911,7 +1911,7 @@
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
 				EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */,
 				EA1D42BD1B03851C00D64D3A /* TitleOnlyCell.m in Sources */,
-				EA46678F1AE7EA1700B4E502 /* WBImagePicker.m in Sources */,
+				EA46678F1AE7EA1700B4E502 /* ImagePicker.m in Sources */,
 				EA1D42C11B038D8F00D64D3A /* EditPaymentMethodViewController.m in Sources */,
 				EA66777C1B06154F004D3993 /* NSString+Helpers.m in Sources */,
 				EA07BF301AF3B472004D17F6 /* UIApplication+DismissKeyboard.m in Sources */,
