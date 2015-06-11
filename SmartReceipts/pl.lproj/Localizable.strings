@@ -326,6 +326,15 @@
 
 "ZTRN" = "ZTRN";
 
+"app.delegate.attach.image.alert.message" = "Nacisnij na istniejący paragon aby dodać do niego Obraz";
+"app.delegate.attach.image.alert.title" = "Dołącz Obrazek";
+"app.delegate.attach.pdf.alert.message" = "Nacisnij na istniejący paragon aby dodać do niego PDF";
+"app.delegate.attach.pdf.alert.title" = "Dołącz PDF";
+"app.delegate.import.alert.message" = "Nadpisać istniejące dane?";
+"app.delegate.import.alert.title" = "Import";
+"app.delegate.import.error.alert.message" = "Nie rozpoznano pliku jako importowalny.";
+"app.delegate.import.success.alert.message" = "Wszystkie pliki zaimportowano z sukcesem.";
+
 "autocomplete.helper.disable.tip.text" = "Jeżeli preferujesz możesz również wyłączyć autouzupełnianie";
 
 "categiry.cell.phone.code" = "ZCEL";
@@ -393,6 +402,7 @@
 "distance.column.price" = "Cena";
 "distance.column.rate" = "Rate";
 
+"distances.controller.title" = "Distances";
 "distances.to.receipt.auto.categpry" = "Distance";
 "distances.to.receipt.auto.name" = "Distance";
 
@@ -420,6 +430,34 @@
 "edit.payment.method.controller.save.error.generic.message" = "Payment method could not be saved";
 "edit.payment.method.controller.save.error.message" = "Payment method name not entered";
 "edit.payment.method.controller.save.error.title" = "Can't save";
+"edit.receipt.category.label" = "Kategoria";
+"edit.receipt.comment.label" = "Komentarz";
+"edit.receipt.comment.placeholder" = "Twój komentarz tutaj";
+"edit.receipt.controller.add.title" = "Nowy Paragon";
+"edit.receipt.controller.edit.title" = "Edytuj Paragon";
+"edit.receipt.currency.label" = "Waluta";
+"edit.receipt.date.label" = "Data";
+"edit.receipt.expensable.label" = "Wliczane w Wydatki";
+"edit.receipt.full.page.label" = "Obraz na całą stronę";
+"edit.receipt.generic.save.error.message" = "Nie można dodać tego paragonu";
+"edit.receipt.name.label" = "Nazwa";
+"edit.receipt.name.missing.alert.message" = "Proszę wprowadzić nazwę";
+"edit.receipt.name.placeholder" = "Nazwa twojego paragonu";
+"edit.receipt.payment.method.label" = "Payment Method";
+"edit.receipt.price.label" = "Cena";
+"edit.receipt.price.placeholder" = "np. 25.00";
+"edit.receipt.tax.label" = "Podatek";
+"edit.receipt.tax.placeholder" = "np. 5.00";
+"edit.trip.comment.label" = "Komentarz";
+"edit.trip.controller.add.title" = "Nowy Raport";
+"edit.trip.controller.edit.title" = "Edytuj Raport";
+"edit.trip.cost.center.label" = "Cost Center";
+"edit.trip.default.currency.label" = "Domyślna Waluta";
+"edit.trip.end.date.label" = "Data Końcowa";
+"edit.trip.generic.save.error.message" = "Nie można zapisać tego raportu";
+"edit.trip.name.label" = "Nazwa";
+"edit.trip.name.missing.alert.message" = "Proszę wprowadzić nazwę";
+"edit.trip.start.date.label" = "Data Startowa";
 
 "generate.report.controller.title" = "Generuj Raport";
 "generate.report.multiple.attached.suffix" = "raportów załączono";
@@ -431,7 +469,10 @@
 "generate.report.option.zip.stamped" = "ZIP - Podpisane JPG";
 "generate.report.unsuccessful.alert.message" = "Nie udało się wygenerować wybranych raportów";
 
+"generic.button.title.cancel" = "Anuluj";
+"generic.button.title.no" = "Nie";
 "generic.button.title.ok" = "OK";
+"generic.button.title.yes" = "Tak";
 "generic.error.alert.title" = "Error";
 
 "image.picker.sheet.cancel.button.title" = "Cancel";
@@ -454,6 +495,7 @@
 "payment.method.corporate.card" = "Corporate Card";
 "payment.method.personal.card" = "Personal Card";
 "payment.method.unspecified" = "Unspecified";
+"payment.methods.controller.title" = "Payment Methods";
 
 "pdf.report.comment.label" = "Report Comment:";
 "pdf.report.const.center.label" = "Cost Center:";
@@ -512,3 +554,64 @@
 "report attached" = "raport załączony";
 
 "reports attached" = "raportów załączono";
+
+"settings.add.distance.price.to.report.label" = "Add Distane Price to Report";
+"settings.assume.price.pre.tax.label" = "Assume Price is Pre-Tax";
+"settings.automatically.rotate.images.label" = "Automatically rotate images";
+"settings.backup.button.label" = "Zrób Kopię Zapasową";
+"settings.backup.section.title" = "Kopia zapasowa";
+"settings.camera.pixels.label" = "Piksele";
+"settings.camera.section.title" = "Camera";
+"settings.camera.value.default.label" = "Domyślne";
+"settings.categories.section.title" = "Kategorie";
+"settings.controller.export.error.message" = "Nie udało się poprawnie wyeksportować danych.";
+"settings.controller.title" = "Ustawienia";
+"settings.convert.to.grayscale.label" = "Convert to Grayscale";
+"settings.csv.configure.columns.label" = "Konfiguruj kolumny CSV";
+"settings.csv.include.header.columns.label" = "Dołącz Kolumy Nagłówkowe";
+"settings.csv.section.title" = "Dostosuj Wyjście CSV";
+"settings.customize.payment.methods.label" = "Customize Payment Methods";
+"settings.date.separator.label" = "Separator Daty";
+"settings.default.currency.label" = "Domyślna Waluta";
+"settings.default.email.bcc.label" = "Default Email BBC Recipient";
+"settings.default.email.bcc.placeholder" = "Separate entries with a comma (,)";
+"settings.default.email.cc.lebel" = "Default Email CC Recipient";
+"settings.default.email.cc.placeholder" = "Separate entries with a comma (,)";
+"settings.default.email.recipient.lebel" = "Default Email To Recipient";
+"settings.default.email.recipient.placeholder" = "Separate entries with a comma (,)";
+"settings.default.email.subject.label" = "Default Email Subject";
+"settings.default.receipt.date.to.start.date.label" = "Domyślna Data Startu Raportu jako Data Paragonu";
+"settings.default.tax.percentage" = "Default Tax Percentage";
+"settings.default.trip.length.label" = "Domyślna długość raportu (Dni)";
+"settings.distance.report.on.daily.distance" = "Report on Daily Distance";
+"settings.distance.section.title" = "Distance";
+"settings.email.section.title" = "Email";
+"settings.enable.autocomplete.suggestions.label" = "Włącz AutoUzupełnianie";
+"settings.enable.payment.methods.label" = "Enable Payment Methods";
+"settings.export.confirmation.alert.message" = "Możesz ponownie zaimportować swoje dane klikając na plik SmartReceipts.SMR, ktory zostanie wygenerowany po kliknięciu poniżej.";
+"settings.export.confirmation.alert.title" = "Eksportować paragony?";
+"settings.export.confirmation.export.button" = "Eksport";
+"settings.gas.rate.label" = "Gas Rate";
+"settings.general.section.title" = "Ogólne";
+"settings.include.distance.table.label" = "Include Distance Table";
+"settings.include.tax.field.label" = "Dodaj Pole Podatku dla Paragonów";
+"settings.layout.include.attachment.marker.label" = "Include Picture/PDF Marker";
+"settings.layout.include.receipt.category.label" = "Include Receipt Category";
+"settings.layout.include.receipt.date.label" = "Include Receipt Date";
+"settings.layout.section.title" = "Layout Customizations";
+"settings.manage.categories.label" = "Zarządzaj Kategoriami";
+"settings.match.comments.to.categories" = "Dopasuj Komentarze do Kategorii";
+"settings.match.name.to.category.label" = "Dopasuj Nazwę do Kategorii";
+"settings.max.camera.resolution.label" = "Max. Wysokość / Szerokość Kamery";
+"settings.min.receipt.price.label" = "Min. Cena do Raportu";
+"settings.only.report.expensable.label" = "Raportuj tylko \"Wliczane w wydatki\"";
+"settings.pdf.configure.columns.label" = "Configure PDF Columns";
+"settings.pdf.print.id.by.photo.label" = "Print ID By Photo";
+"settings.pdf.print.receipt.comment.by.photo.label" = "Print Receipt Comment By Photo";
+"settings.pdf.section.title" = "Dostosuj Wyjście PDF";
+"settings.predict.recept.category.label" = "Predykcja Kategorii Paragonu";
+"settings.show.receipt.id.label" = "Show Receipt ID";
+"settings.track.cost.center.label" = "Track Cost Center";
+"settings.user.id.label" = "ID Użytkownika";
+
+"trips.controller.from.to.date.label.base" = "%@ to %@";

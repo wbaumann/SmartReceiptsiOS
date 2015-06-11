@@ -770,7 +770,6 @@
 		845E33DD18D87CB9006A506A /* views */ = {
 			isa = PBXGroup;
 			children = (
-				84AF861118E8C23A00F15C3A /* cells */,
 				8478B77718D383EF0041CBA3 /* iPad */,
 				8421A1F61907C03B001DF38D /* iPhone */,
 				841BB2FE1908167700D28CBF /* WBAbstractPicker.h */,
@@ -908,13 +907,6 @@
 				84A6C82818F510B6003B876F /* GDataXML */,
 			);
 			path = 3rdparty;
-			sourceTree = "<group>";
-		};
-		84AF861118E8C23A00F15C3A /* cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = cells;
 			sourceTree = "<group>";
 		};
 		84D6719518D336E100B704A4 /* images */ = {

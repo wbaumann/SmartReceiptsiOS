@@ -32,7 +32,7 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.navigationItem setTitle:NSLocalizedString(@"Distances", nil)];
+    [self.navigationItem setTitle:NSLocalizedString(@"distances.controller.title", nil)];
 
     [self setDateFormatter:[[WBDateFormatter alloc] init]];
 

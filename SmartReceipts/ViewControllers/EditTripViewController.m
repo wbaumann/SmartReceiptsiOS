@@ -65,13 +65,13 @@
     [self.tableView registerNib:[InlinedPickerCell viewNib] forCellReuseIdentifier:[InlinedPickerCell cellIdentifier]];
 
     self.nameCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledAutocompleteEntryCell cellIdentifier]];
-    [self.nameCell setTitle:NSLocalizedString(@"Name", nil)];
+    [self.nameCell setTitle:NSLocalizedString(@"edit.trip.name.label", nil)];
     [self.nameCell setAutocompleteHelper:[[WBAutocompleteHelper alloc] initWithAutocompleteField:(HTAutocompleteTextField *) self.nameCell.entryField inView:self.view useReceiptsHints:NO]];
     [self.nameCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
     [self.nameCell setInputValidation:[[ProperNameInputValidation alloc] init]];
 
     self.startDateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
-    [self.startDateCell setTitle:NSLocalizedString(@"Start Date", nil)];
+    [self.startDateCell setTitle:NSLocalizedString(@"edit.trip.start.date.label", nil)];
 
     self.startDatePickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedDatePickerCell cellIdentifier]];
     [self.startDatePickerCell setChangeHandler:^(NSDate *selected) {
@@ -81,7 +81,7 @@
     }];
 
     self.endDateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
-    [self.endDateCell setTitle:NSLocalizedString(@"End Date", nil)];
+    [self.endDateCell setTitle:NSLocalizedString(@"edit.trip.end.date.label", nil)];
 
     self.endDatePickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedDatePickerCell cellIdentifier]];
     [self.endDatePickerCell setChangeHandler:^(NSDate *selected) {
@@ -91,7 +91,7 @@
     }];
 
     self.currencyCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
-    [self.currencyCell setTitle:NSLocalizedString(@"Default Currency", nil)];
+    [self.currencyCell setTitle:NSLocalizedString(@"edit.trip.default.currency.label", nil)];
 
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.currencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
@@ -100,11 +100,11 @@
     }];
 
     self.commentCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
-    [self.commentCell setTitle:NSLocalizedString(@"Comment", nil)];
+    [self.commentCell setTitle:NSLocalizedString(@"edit.trip.comment.label", nil)];
     [self.commentCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
 
     self.costCenterCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
-    [self.costCenterCell setTitle:NSLocalizedString(@"Cost Center", nil)];
+    [self.costCenterCell setTitle:NSLocalizedString(@"edit.trip.cost.center.label", nil)];
     [self.costCenterCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
 
     NSMutableArray *presentedCells = [NSMutableArray array];
@@ -145,7 +145,7 @@
 
     NSString *currency;
     if (_trip) {
-        self.navigationItem.title = NSLocalizedString(@"Edit Trip", nil);
+        self.navigationItem.title = NSLocalizedString(@"edit.trip.controller.edit.title", nil);
         self.nameCell.value = [_trip name];
         _startDate = [_trip startDate];
         _endDate = [_trip endDate];
@@ -155,7 +155,7 @@
         [self.commentCell setValue:self.trip.comment];
         [self.costCenterCell setValue:self.trip.costCenter];
     } else {
-        self.navigationItem.title = NSLocalizedString(@"New Trip", nil);
+        self.navigationItem.title = NSLocalizedString(@"edit.trip.controller.add.title", nil);
         _startDate = [NSDate date];
 
         NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
@@ -181,7 +181,7 @@
     NSString *name = [self.nameCell.value lastPathComponent];
 
     if (![name hasValue]) {
-        [EditTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Please enter a name", nil)];
+        [EditTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"edit.trip.name.missing.alert.message", nil)];
         return;
     }
 
@@ -201,7 +201,7 @@
     } else if ([[Database sharedInstance] updateTrip:self.trip]) {
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
-        [EditTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot save this trip", nil)];
+        [EditTripViewController showAlertWithTitle:nil message:NSLocalizedString(@"edit.trip.generic.save.error.message", nil)];
         return;
     }
     
@@ -213,7 +213,7 @@
 }
 
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
-    [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+    [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil) otherButtonTitles:nil] show];
 }
 
 @end

@@ -106,7 +106,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     [self setContainNextEditSearchInsideSection:YES];
     
-    self.navigationItem.title = NSLocalizedString(@"Settings", nil);
+    self.navigationItem.title = NSLocalizedString(@"settings.controller.title", nil);
 
     [self.tableView registerNib:[SettingsTopTitledTextEntryCell viewNib] forCellReuseIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
     [self.tableView registerNib:[PickerCell viewNib] forCellReuseIdentifier:[PickerCell cellIdentifier]];
@@ -117,25 +117,25 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 
     self.defaultEmailRecipientCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
-    [self.defaultEmailRecipientCell setTitle:NSLocalizedString(@"Default Email To Recipient", nil)];
-    [self.defaultEmailRecipientCell setPlaceholder:NSLocalizedString(@"Separate entries with a comma (,)", nil)];
+    [self.defaultEmailRecipientCell setTitle:NSLocalizedString(@"settings.default.email.recipient.lebel", nil)];
+    [self.defaultEmailRecipientCell setPlaceholder:NSLocalizedString(@"settings.default.email.recipient.placeholder", nil)];
     [self.defaultEmailRecipientCell activateEmailMode];
 
     self.defaultEmailCCCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
-    [self.defaultEmailCCCell setTitle:NSLocalizedString(@"Default Email CC Recipient", nil)];
-    [self.defaultEmailCCCell setPlaceholder:NSLocalizedString(@"Separate entries with a comma (,)", nil)];
+    [self.defaultEmailCCCell setTitle:NSLocalizedString(@"settings.default.email.cc.lebel", nil)];
+    [self.defaultEmailCCCell setPlaceholder:NSLocalizedString(@"settings.default.email.cc.placeholder", nil)];
     [self.defaultEmailCCCell activateEmailMode];
 
     self.defaultEmailBCCCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
-    [self.defaultEmailBCCCell setTitle:NSLocalizedString(@"Default Email BBC Recipient", nil)];
-    [self.defaultEmailBCCCell setPlaceholder:NSLocalizedString(@"Separate entries with a comma (,)", nil)];
+    [self.defaultEmailBCCCell setTitle:NSLocalizedString(@"settings.default.email.bcc.label", nil)];
+    [self.defaultEmailBCCCell setPlaceholder:NSLocalizedString(@"settings.default.email.bcc.placeholder", nil)];
     [self.defaultEmailBCCCell activateEmailMode];
 
     self.defaultEmailSubjectCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
-    [self.defaultEmailSubjectCell setTitle:NSLocalizedString(@"Default Email Subject", nil)];
+    [self.defaultEmailSubjectCell setTitle:NSLocalizedString(@"settings.default.email.subject.label", nil)];
     [self.defaultEmailSubjectCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
 
-    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Email", nil) cells:@[
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.email.section.title", nil) cells:@[
             self.defaultEmailRecipientCell,
             self.defaultEmailCCCell,
             self.defaultEmailBCCCell,
@@ -143,18 +143,18 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     ]]];
 
     self.defaultTripLengthCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
-    [self.defaultTripLengthCell setTitle:NSLocalizedString(@"Default Trip Length (Days)", nil)];
+    [self.defaultTripLengthCell setTitle:NSLocalizedString(@"settings.default.trip.length.label", nil)];
     [self.defaultTripLengthCell activateNumberEntryMode];
 
     self.minReportablePriceCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
-    [self.minReportablePriceCell setTitle:NSLocalizedString(@"Min. Receipt Price to Report", nil)];
+    [self.minReportablePriceCell setTitle:NSLocalizedString(@"settings.min.receipt.price.label", nil)];
     [self.minReportablePriceCell activateDecimalEntryMode];
 
     self.userIdCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
-    [self.userIdCell setTitle:NSLocalizedString(@"User ID", nil)];
+    [self.userIdCell setTitle:NSLocalizedString(@"settings.user.id.label", nil)];
 
     self.defaultCurrencyCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
-    [self.defaultCurrencyCell setTitle:NSLocalizedString(@"Default Currency", nil)];
+    [self.defaultCurrencyCell setTitle:NSLocalizedString(@"settings.default.currency.label", nil)];
 
 
     __weak SettingsViewController *weakSelf = self;
@@ -166,49 +166,49 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     }];
 
     self.dateSeparatorCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSegmentControlCell cellIdentifier]];
-    [self.dateSeparatorCell setTitle:NSLocalizedString(@"Date Separator", nil)];
+    [self.dateSeparatorCell setTitle:NSLocalizedString(@"settings.date.separator.label", nil)];
 
     self.costCenterCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.costCenterCell setTitle:NSLocalizedString(@"Track Cost Center", nil)];
+    [self.costCenterCell setTitle:NSLocalizedString(@"settings.track.cost.center.label", nil)];
 
     self.predictReceiptCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.predictReceiptCategoriesCell setTitle:NSLocalizedString(@"Predict Receipt Categories", nil)];
+    [self.predictReceiptCategoriesCell setTitle:NSLocalizedString(@"settings.predict.recept.category.label", nil)];
 
     self.includeTaxFieldCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.includeTaxFieldCell setTitle:NSLocalizedString(@"Include Tax Field For Receipts", nil)];
+    [self.includeTaxFieldCell setTitle:NSLocalizedString(@"settings.include.tax.field.label", nil)];
 
     self.defaultTaxPercentageCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
-    [self.defaultTaxPercentageCell setTitle:NSLocalizedString(@"Default Tax Percentage", nil)];
+    [self.defaultTaxPercentageCell setTitle:NSLocalizedString(@"settings.default.tax.percentage", nil)];
     [self.defaultTaxPercentageCell activateDecimalEntryMode];
 
     self.enteredPricePreTaxCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.enteredPricePreTaxCell setTitle:NSLocalizedString(@"Assume Price is Pre-Tax", nil)];
+    [self.enteredPricePreTaxCell setTitle:NSLocalizedString(@"settings.assume.price.pre.tax.label", nil)];
 
     self.matchNameToCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.matchNameToCategoriesCell setTitle:NSLocalizedString(@"Match Name to Categories", nil)];
+    [self.matchNameToCategoriesCell setTitle:NSLocalizedString(@"settings.match.name.to.category.label", nil)];
 
     self.matchCommentsToCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.matchCommentsToCategoriesCell setTitle:NSLocalizedString(@"Match Comments to Categories", nil)];
+    [self.matchCommentsToCategoriesCell setTitle:NSLocalizedString(@"settings.match.comments.to.categories", nil)];
 
     self.onlyReportExpenseableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.onlyReportExpenseableCell setTitle:NSLocalizedString(@"Only Report Expensable Receipts", nil)];
+    [self.onlyReportExpenseableCell setTitle:NSLocalizedString(@"settings.only.report.expensable.label", nil)];
 
     self.enableAutocompleteSuggestionsCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.enableAutocompleteSuggestionsCell setTitle:NSLocalizedString(@"Enable AutoComplete Suggestions", nil)];
+    [self.enableAutocompleteSuggestionsCell setTitle:NSLocalizedString(@"settings.enable.autocomplete.suggestions.label", nil)];
 
     self.defaultReceiptDateToReportStartCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.defaultReceiptDateToReportStartCell setTitle:NSLocalizedString(@"Default Receipt Date to Report Start Date", nil)];
+    [self.defaultReceiptDateToReportStartCell setTitle:NSLocalizedString(@"settings.default.receipt.date.to.start.date.label", nil)];
 
     self.showReceiptIDCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.showReceiptIDCell setTitle:NSLocalizedString(@"Show Receipt ID", <#comment#>)];
+    [self.showReceiptIDCell setTitle:NSLocalizedString(@"settings.show.receipt.id.label", nil)];
 
     self.usePaymentMethodsCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.usePaymentMethodsCell setTitle:NSLocalizedString(@"Enable Payment Methods", nil)];
+    [self.usePaymentMethodsCell setTitle:NSLocalizedString(@"settings.enable.payment.methods.label", nil)];
 
     self.customizePaymentMethodsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
-    [self.customizePaymentMethodsCell setTitle:NSLocalizedString(@"Customize Payment Methods", nil)];
+    [self.customizePaymentMethodsCell setTitle:NSLocalizedString(@"settings.customize.payment.methods.label", nil)];
 
-    InputCellsSection *general = [InputCellsSection sectionWithTitle:NSLocalizedString(@"General", nil)
+    InputCellsSection *general = [InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.general.section.title", nil)
                                                                cells:@[self.defaultTripLengthCell,
                                                                        self.minReportablePriceCell,
                                                                        self.userIdCell,
@@ -232,77 +232,77 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self addInlinedPickerCell:self.defaultCurrencyPickerCell forCell:self.defaultCurrencyCell];
 
     self.cameraSettingsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsSegmentControlCell cellIdentifier]];
-    [self.cameraSettingsCell setTitle:NSLocalizedString(@"Max. Camera Height / Width", nil)];
+    [self.cameraSettingsCell setTitle:NSLocalizedString(@"settings.max.camera.resolution.label", nil)];
 
     self.cameraImageBWCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.cameraImageBWCell setTitle:NSLocalizedString(@"Convert to Grayscale", nil)];
+    [self.cameraImageBWCell setTitle:NSLocalizedString(@"settings.convert.to.grayscale.label", nil)];
 
     self.cameraImageRotateCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.cameraImageRotateCell setTitle:NSLocalizedString(@"Automatically rotate images", nil)];
+    [self.cameraImageRotateCell setTitle:NSLocalizedString(@"settings.automatically.rotate.images.label", nil)];
 
-    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Camera", nil) cells:@[
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.camera.section.title", nil) cells:@[
             self.cameraSettingsCell,
             self.cameraImageBWCell,
             self.cameraImageRotateCell
     ]]];
 
     self.manageCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
-    [self.manageCategoriesCell setTitle:NSLocalizedString(@"Manage Categories", nil)];
+    [self.manageCategoriesCell setTitle:NSLocalizedString(@"settings.manage.categories.label", nil)];
 
-    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Categories", nil) cells:@[self.manageCategoriesCell]]];
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.categories.section.title", nil) cells:@[self.manageCategoriesCell]]];
 
     self.includeCSVHeadersCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.includeCSVHeadersCell setTitle:NSLocalizedString(@"Include Header Columns", nil)];
+    [self.includeCSVHeadersCell setTitle:NSLocalizedString(@"settings.csv.include.header.columns.label", nil)];
 
     self.configureCSVColumnsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
-    [self.configureCSVColumnsCell setTitle:NSLocalizedString(@"Configure CSV Columns", nil)];
+    [self.configureCSVColumnsCell setTitle:NSLocalizedString(@"settings.csv.configure.columns.label", nil)];
 
-    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Customize CSV Output", nil) cells:@[self.includeCSVHeadersCell, self.configureCSVColumnsCell]]];
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.csv.section.title", nil) cells:@[self.includeCSVHeadersCell, self.configureCSVColumnsCell]]];
 
     self.printReceiptIDByPhotoCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.printReceiptIDByPhotoCell setTitle:NSLocalizedString(@"Print ID By Photo", nil)];
+    [self.printReceiptIDByPhotoCell setTitle:NSLocalizedString(@"settings.pdf.print.id.by.photo.label", nil)];
 
     self.printReceiptCommentByPhotoCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.printReceiptCommentByPhotoCell setTitle:NSLocalizedString(@"Print Receipt Comment By Photo", nil)];
+    [self.printReceiptCommentByPhotoCell setTitle:NSLocalizedString(@"settings.pdf.print.receipt.comment.by.photo.label", nil)];
 
     self.configurePDFColumnsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
-    [self.configurePDFColumnsCell setTitle:NSLocalizedString(@"Configure PDF Columns", nil)];
+    [self.configurePDFColumnsCell setTitle:NSLocalizedString(@"settings.pdf.configure.columns.label", nil)];
 
-    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Customize PDF Output", nil) cells:@[
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.pdf.section.title", nil) cells:@[
             self.printReceiptIDByPhotoCell,
             self.printReceiptCommentByPhotoCell,
             self.configurePDFColumnsCell]]];
 
     self.addDistancePriceToReportCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.addDistancePriceToReportCell setTitle:NSLocalizedString(@"Add Distane Price to Report", nil)];
+    [self.addDistancePriceToReportCell setTitle:NSLocalizedString(@"settings.add.distance.price.to.report.label", nil)];
 
 
     self.gasRateCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
-    [self.gasRateCell setTitle:NSLocalizedString(@"Gas Rate", nil)];
+    [self.gasRateCell setTitle:NSLocalizedString(@"settings.gas.rate.label", nil)];
     [self.gasRateCell activateDecimalEntryModeWithDecimalPlaces:SmartReceiptsNumberOfDecimalPlacesForGasRate];
 
     self.includeDistanceTableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.includeDistanceTableCell setTitle:NSLocalizedString(@"Include Distance Table", nil)];
+    [self.includeDistanceTableCell setTitle:NSLocalizedString(@"settings.include.distance.table.label", nil)];
 
     self.reportOnDailyDistanceCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.reportOnDailyDistanceCell setTitle:NSLocalizedString(@"Report on Daily Distance", nil)];
+    [self.reportOnDailyDistanceCell setTitle:NSLocalizedString(@"settings.distance.report.on.daily.distance", nil)];
 
-    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Distance", nil)
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.distance.section.title", nil)
                                                                   cells:@[self.addDistancePriceToReportCell,
                                                                           self.gasRateCell,
                                                                           self.includeDistanceTableCell,
                                                                           self.reportOnDailyDistanceCell]]];
 
     self.layoutShowReceiptDateCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.layoutShowReceiptDateCell setTitle:NSLocalizedString(@"Include Receipt Date", nil)];
+    [self.layoutShowReceiptDateCell setTitle:NSLocalizedString(@"settings.layout.include.receipt.date.label", nil)];
 
     self.layoutShowReceiptCategoryCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.layoutShowReceiptCategoryCell setTitle:NSLocalizedString(@"Include Receipt Category", nil)];
+    [self.layoutShowReceiptCategoryCell setTitle:NSLocalizedString(@"settings.layout.include.receipt.category.label", nil)];
 
     self.layoutShowReceiptAttachmentCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.layoutShowReceiptAttachmentCell setTitle:NSLocalizedString(@"Include Picture/PDF Marker", nil)];
+    [self.layoutShowReceiptAttachmentCell setTitle:NSLocalizedString(@"settings.layout.include.attachment.marker.label", nil)];
 
-    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Layout Customizations", nil) cells:@[
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.layout.section.title", nil) cells:@[
             self.layoutShowReceiptDateCell,
             self.layoutShowReceiptCategoryCell,
             self.layoutShowReceiptAttachmentCell
@@ -310,9 +310,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 
     self.backupCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
-    [self.backupCell setTitle:NSLocalizedString(@"Make Backup", nil)];
+    [self.backupCell setTitle:NSLocalizedString(@"settings.backup.button.label", nil)];
 
-    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"Backup", nil) cells:@[self.backupCell]]];
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.backup.section.title", nil) cells:@[self.backupCell]]];
 
     [self.navigationController setToolbarHidden:YES];
 
@@ -378,9 +378,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     for (NSUInteger index = 0; index < self.cameraValues.count; index++) {
         int val = [((NSNumber*) self.cameraValues[index]) intValue];
         if (val == 0) {
-            [presentedCameraValues addObject:NSLocalizedString(@"Default", nil)];
+            [presentedCameraValues addObject:NSLocalizedString(@"settings.camera.value.default.label", nil)];
         } else {
-            [presentedCameraValues addObject:[NSString stringWithFormat:@"%d %@", val, NSLocalizedString(@"Pixels", nil)]];
+            [presentedCameraValues addObject:[NSString stringWithFormat:@"%d %@", val, NSLocalizedString(@"settings.camera.pixels.label", nil)]];
         }
 
         if (val == [WBPreferences cameraMaxHeightWidth]) {
@@ -536,20 +536,20 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
                     [self showMailerForData:exportData];
                 } else {
                     [[[UIAlertView alloc]
-                            initWithTitle:NSLocalizedString(@"Error", nil)
-                                  message:NSLocalizedString(@"Failed to properly export your data.", nil)
+                            initWithTitle:NSLocalizedString(@"generic.error.alert.title", nil)
+                                  message:NSLocalizedString(@"settings.controller.export.error.message", nil)
                                  delegate:nil
-                        cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                        cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil)
                         otherButtonTitles:nil] show];
                 }
             });
         });
     };
 
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Export your receipts?", nil)
-                                                        message:NSLocalizedString(@"You can reimport your data by clicking on the SmartReceipts.SMR file, which is generated by clicking below.", nil)
-                                               cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"Cancel", nil)]
-                                               otherButtonItems:[RIButtonItem itemWithLabel:NSLocalizedString(@"Export", nil) action:exportActionBlock], nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"settings.export.confirmation.alert.title", nil)
+                                                        message:NSLocalizedString(@"settings.export.confirmation.alert.message", nil)
+                                               cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.cancel", nil)]
+                                               otherButtonItems:[RIButtonItem itemWithLabel:NSLocalizedString(@"settings.export.confirmation.export.button", nil) action:exportActionBlock], nil];
 
     [alertView show];
 }

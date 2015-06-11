@@ -88,19 +88,19 @@
     [self.tableView registerNib:[InlinedDatePickerCell viewNib] forCellReuseIdentifier:[InlinedDatePickerCell cellIdentifier]];
 
     self.nameCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledAutocompleteEntryCell cellIdentifier]];
-    [self.nameCell setTitle:NSLocalizedString(@"Name", nil)];
-    [self.nameCell setPlaceholder:NSLocalizedString(@"Name of your receipt", nil)];
+    [self.nameCell setTitle:NSLocalizedString(@"edit.receipt.name.label", nil)];
+    [self.nameCell setPlaceholder:NSLocalizedString(@"edit.receipt.name.placeholder", nil)];
     [self.nameCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
     [self.nameCell setAutocompleteHelper:[[WBAutocompleteHelper alloc] initWithAutocompleteField:(HTAutocompleteTextField *) self.nameCell.entryField inView:self.view useReceiptsHints:YES]];
 
     self.priceCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
-    [self.priceCell setTitle:NSLocalizedString(@"Price", nil)];
-    [self.priceCell setPlaceholder:NSLocalizedString(@"e.g. 25.00", nil)];
+    self.priceCell.title = NSLocalizedString(@"edit.receipt.price.label", nil);
+    [self.priceCell setPlaceholder:NSLocalizedString(@"edit.receipt.price.placeholder", nil)];
     [self.priceCell activateDecimalEntryMode];
 
     self.taxCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
-    [self.taxCell setTitle:NSLocalizedString(@"Tax", nil)];
-    [self.taxCell setPlaceholder:NSLocalizedString(@"e.g. 5.00", nil)];
+    [self.taxCell setTitle:NSLocalizedString(@"edit.receipt.tax.label", nil)];
+    [self.taxCell setPlaceholder:NSLocalizedString(@"edit.receipt.tax.placeholder", nil)];
     [self.taxCell activateDecimalEntryMode];
 
     if ([WBPreferences includeTaxField]) {
@@ -111,7 +111,7 @@
     }
 
     self.currencyCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
-    [self.currencyCell setTitle:NSLocalizedString(@"Currency", nil)];
+    [self.currencyCell setTitle:NSLocalizedString(@"edit.receipt.currency.label", nil)];
 
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.currencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
@@ -120,7 +120,7 @@
     }];
 
     self.dateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
-    [self.dateCell setTitle:NSLocalizedString(@"Date", nil)];
+    self.dateCell.title = NSLocalizedString(@"edit.receipt.date.label", nil);
 
     self.datePickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedDatePickerCell cellIdentifier]];
     [self.datePickerCell setChangeHandler:^(NSDate *selected) {
@@ -130,7 +130,7 @@
     [self.datePickerCell setMinDate:self.trip.startDate maxDate:self.trip.endDate];
 
     self.categoryCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
-    [self.categoryCell setTitle:NSLocalizedString(@"Category", nil)];
+    [self.categoryCell setTitle:NSLocalizedString(@"edit.receipt.category.label", nil)];
 
     self.categoryPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     self.categories = [[Database sharedInstance] listAllCategories];
@@ -141,12 +141,12 @@
     }];
 
     self.commentCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
-    [self.commentCell setTitle:NSLocalizedString(@"Comment", nil)];
-    [self.commentCell setPlaceholder:NSLocalizedString(@"Your comments here", nil)];
+    [self.commentCell setTitle:NSLocalizedString(@"edit.receipt.comment.label", nil)];
+    [self.commentCell setPlaceholder:NSLocalizedString(@"edit.receipt.comment.placeholder", nil)];
     [self.commentCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
 
     self.paymentMethodCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
-    [self.paymentMethodCell setTitle:NSLocalizedString(@"Payment Method", nil)];
+    [self.paymentMethodCell setTitle:NSLocalizedString(@"edit.receipt.payment.method.label", nil)];
 
     self.paymentMethodPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     NSArray *paymentMethods = [[[Database sharedInstance] fetchedAdapterForPaymentMethods] allObjects];
@@ -157,10 +157,10 @@
     }];
 
     self.expensableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.expensableCell setTitle:NSLocalizedString(@"Expensable", nil)];
+    [self.expensableCell setTitle:NSLocalizedString(@"edit.receipt.expensable.label", nil)];
 
     self.fullPageImageCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.fullPageImageCell setTitle:NSLocalizedString(@"Full Page Image", nil)];
+    [self.fullPageImageCell setTitle:NSLocalizedString(@"edit.receipt.full.page.label", nil)];
 
     NSMutableArray *presentedCells = [NSMutableArray array];
     [presentedCells addObject:self.nameCell];
@@ -194,7 +194,7 @@
 
 - (id <Pickable>)defaultPaymentMethodFrom:(NSArray *)methods {
     for (PaymentMethod *method in methods) {
-        if ([NSLocalizedString(@"Unspecified", nil) isEqualToString:method.presentedValue]) {
+        if ([NSLocalizedString(@"payment.method.unspecified", nil) isEqualToString:method.presentedValue]) {
             return method;
         }
     }
@@ -210,7 +210,7 @@
     NSUInteger receiptID;
 
     if (self.receipt) {
-        controllerTitle = NSLocalizedString(@"Edit Receipt", nil);
+        controllerTitle = NSLocalizedString(@"edit.receipt.controller.edit.title", nil);
         receiptID = self.receipt.objectId;
 
         [self.nameCell setValue:[self.receipt name]];
@@ -230,7 +230,7 @@
         }
         _timeZone = [self.receipt timeZone];
     } else {
-        controllerTitle = NSLocalizedString(@"New Receipt", nil);
+        controllerTitle = NSLocalizedString(@"edit.receipt.controller.add.title", nil);
         receiptID = [[Database sharedInstance] nextReceiptID];
 
         currencyCode = [self.trip.defaultCurrency code];
@@ -326,7 +326,7 @@
 - (IBAction)actionDone:(id)sender {
     NSString *name = [[self.nameCell value] lastPathComponent];
     if ([name length] <= 0) {
-        [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Please enter a name", nil)];
+        [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"edit.receipt.name.missing.alert.message", nil)];
         return;
     }
 
@@ -369,7 +369,7 @@
     if ([[Database sharedInstance] saveReceipt:self.receipt]) {
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
-        [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"Cannot add this receipt", nil)];
+        [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"edit.receipt.generic.save.error.message", nil)];
     }
 }
 
@@ -379,7 +379,7 @@
 
 + (void)showAlertWithTitle:(NSString*) title message:(NSString*) message {
     [[[UIAlertView alloc]
-      initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil] show];
+      initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok",nil) otherButtonTitles:nil] show];
 }
 
 @end
