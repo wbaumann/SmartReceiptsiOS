@@ -15,7 +15,7 @@
 @implementation ReceiptColumnExpensable
 
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
-    return [receipt isExpensable] ? NSLocalizedString(@"Yes", nil) : NSLocalizedString(@"No", nil);
+    return [receipt isExpensable] ? NSLocalizedString(@"receipt.column.expenseable.value.yes", nil) : NSLocalizedString(@"receipt.column.expenseable.value.no", nil);
 }
 
 @end

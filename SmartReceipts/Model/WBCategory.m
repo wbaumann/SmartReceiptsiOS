@@ -34,21 +34,21 @@ static NSString *const COLUMN_BREAKDOWN = @"breakdown";
 }
 
 + (NSString *)CATEGORY_NAME_BREAKFAST {
-    return NSLocalizedString(@"Breakfast", nil);
+    return NSLocalizedString(@"category.breakfast.name", nil);
 }
 
 + (NSString *)CATEGORY_NAME_LUNCH {
-    return NSLocalizedString(@"Lunch", nil);
+    return NSLocalizedString(@"category.lunch.name", nil);
 }
 
 + (NSString *)CATEGORY_NAME_DINNER {
-    return NSLocalizedString(@"Dinner", nil);
+    return NSLocalizedString(@"category.dinner.name", nil);
 }
 
 + (NSDictionary *)namesToCodeMapFromCategories:(NSArray *)categories {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     for (WBCategory *category in categories) {
-        [dict setObject:[category code] forKey:[category name]];
+        dict[category.name] = category.code;
     }
     return dict;
 }

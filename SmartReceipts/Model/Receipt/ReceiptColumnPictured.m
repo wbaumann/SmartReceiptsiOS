@@ -16,11 +16,11 @@
 
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
     if ([receipt hasImage]) {
-        return NSLocalizedString(@"Yes", nil);
+        return NSLocalizedString(@"receipt.column.pictured.value.yes", nil);
     } else if ([receipt hasPDF]) {
-        return NSLocalizedString(@"Yes - As PDF", nil);
+        return NSLocalizedString(@"receipt.column.pictured.value.pdf", nil);
     } else {
-        return NSLocalizedString(@"No", nil);
+        return NSLocalizedString(@"receipt.column.pictured.value.no", nil);
     }
 }
 

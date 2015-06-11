@@ -260,9 +260,9 @@ static NSString* checkNoData(NSString* str) {
 
 - (NSString *)attachmentMarker {
     if (self.hasImage) {
-        return @"Image";
+        return NSLocalizedString(@"receipt.attachment.marker.image", nil);
     } else if (self.hasPDF) {
-        return @"PDF";
+        return NSLocalizedString(@"receipt.attachment.marker.pdf", <#comment#>);
     }
 
     return @"";
