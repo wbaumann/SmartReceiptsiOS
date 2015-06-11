@@ -50,9 +50,9 @@
     [super viewDidLoad];
 
     if (self.distance) {
-        [self.navigationItem setTitle:NSLocalizedString(@"Edit distance", nil)];
+        [self.navigationItem setTitle:NSLocalizedString(@"edit.distance.controller.edit.title", nil)];
     } else {
-        [self.navigationItem setTitle:NSLocalizedString(@"Add distance", nil)];
+        [self.navigationItem setTitle:NSLocalizedString(@"edit.distance.controller.add.title", nil)];
     }
 
     __weak EditDistanceViewController *weakSelf = self;
@@ -63,17 +63,17 @@
     [self.tableView registerNib:[InlinedDatePickerCell viewNib] forCellReuseIdentifier:[InlinedDatePickerCell cellIdentifier]];
 
     self.distanceCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
-    [self.distanceCell setTitle:NSLocalizedString(@"Distance", nil)];
+    [self.distanceCell setTitle:NSLocalizedString(@"edit.distance.controller.distance.label", nil)];
     [self.distanceCell activateDecimalEntryMode];
 
     self.rateCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
-    [self.rateCell setTitle:NSLocalizedString(@"Rate", nil)];
+    [self.rateCell setTitle:NSLocalizedString(@"edit.distance.controller.rate.label", nil)];
     [self.rateCell activateDecimalEntryModeWithDecimalPlaces:SmartReceiptsNumberOfDecimalPlacesForGasRate];
 
     NSString *selectedCurrency = [self.trip.defaultCurrency code];
 
     self.currencyCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
-    [self.currencyCell setTitle:NSLocalizedString(@"Currency", nil) value:selectedCurrency];
+    [self.currencyCell setTitle:NSLocalizedString(@"edit.distance.controller.currency.label", nil) value:selectedCurrency];
 
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.currencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
@@ -83,7 +83,7 @@
     }];
 
     self.locationCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
-    [self.locationCell setTitle:NSLocalizedString(@"Location", nil)];
+    [self.locationCell setTitle:NSLocalizedString(@"edit.distance.controller.location.label", nil)];
     [self.locationCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
 
     NSDate *date = self.trip.startDate;
@@ -91,7 +91,7 @@
     self.dateFormatter = [[WBDateFormatter alloc] init];
 
     self.dateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
-    [self.dateCell setTitle:NSLocalizedString(@"Date", nil) value:[self.dateFormatter formattedDate:date inTimeZone:timeZone]];
+    [self.dateCell setTitle:NSLocalizedString(@"edit.distance.controller.date.label", nil) value:[self.dateFormatter formattedDate:date inTimeZone:timeZone]];
 
     self.datePickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedDatePickerCell cellIdentifier]];
     [self.datePickerCell setDate:date];
@@ -101,7 +101,7 @@
     [self.datePickerCell setMinDate:self.trip.startDate maxDate:self.trip.endDate];
 
     self.commentCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
-    [self.commentCell setTitle:NSLocalizedString(@"Comment", nil)];
+    [self.commentCell setTitle:NSLocalizedString(@"edit.distance.controller.comment.label", nil)];
     [self.commentCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
 
     InputCellsSection *section = [InputCellsSection sectionWithCells:@[self.distanceCell, self.rateCell, self.currencyCell, self.locationCell, self.dateCell, self.commentCell]];
@@ -138,9 +138,9 @@
 - (IBAction)saveDistance {
     NSString *issues = [self validateInput];
     if (issues.hasValue) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Can't save distance", nil)
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"edit.distance.controller.validation.error.title", nil)
                                                             message:issues
-                                                   cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"OK", nil)]
+                                                   cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.ok", nil)]
                                                    otherButtonItems:nil];
         [alertView show];
         return;
@@ -168,9 +168,9 @@
     if ([[Database sharedInstance] saveDistance:self.distance]) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Distance not saved", nil)
-                                                            message:NSLocalizedString(@"For some reason distance could not be added", nil)
-                                                   cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"OK", nil)]
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"edit.distance.controller.save.distance.error.title", nil)
+                                                            message:NSLocalizedString(@"edit.distance.controller.save.distance.error.generic.message", nil)
+                                                   cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.ok", nil)]
                                                    otherButtonItems:nil];
         [alertView show];
     }
@@ -179,11 +179,11 @@
 - (NSString *)validateInput {
     NSMutableString *issues = [NSMutableString string];
     if (![[self.distanceCell value] hasValue]) {
-        [issues appendIssue:NSLocalizedString(@"Distance not entered", nil)];
+        [issues appendIssue:NSLocalizedString(@"edit.distance.controller.validation.distance.missing", nil)];
     }
 
     if (![self.rateCell value].hasValue) {
-        [issues appendIssue:NSLocalizedString(@"Rate not entered", nil)];
+        [issues appendIssue:NSLocalizedString(@"edit.distance.controller.validation.rate.missing", nil)];
     }
 
     return [NSString stringWithString:issues];

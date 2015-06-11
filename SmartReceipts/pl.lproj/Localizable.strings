@@ -331,6 +331,8 @@
 "categiry.cell.phone.code" = "ZCEL";
 "categiry.cell.phone.name" = "Tel. Komórkowy";
 
+"categories.controller.title" = "Kategorie";
+
 "category.airfare.code" = "AIRP";
 "category.airfare.name" = "Przelot";
 "category.books.periodicals.code" = "ZBKP";
@@ -378,6 +380,11 @@
 "category.training.fees.code" = "ZTRN";
 "category.training.fees.name" = "Opłaty Szkoleniowe";
 
+"columns.controller.column.prefix" = "Kol.";
+"columns.controller.picker.title" = "Kolumny";
+"columns.controller.title.csv" = "Konfiguracja CSV";
+"columns.controller.title.pdf" = "Konfiguracja PDF";
+
 "distance.column.comment" = "Komentarz";
 "distance.column.currency" = "Waluta";
 "distance.column.date" = "Data";
@@ -391,6 +398,42 @@
 
 "e.g. 25.00" = "np. 25.00";
 
+"edit.category.add.failure.message" = "Nie można dodać tej kategorii";
+"edit.category.edit.failure.message" = "Nie można zedytować tej kategorii";
+"edit.category.validate.missing.name" = "Proszę wprowadzić nazwę";
+"edit.distance.controller.add.title" = "Add distance";
+"edit.distance.controller.comment.label" = "Komentarz";
+"edit.distance.controller.currency.label" = "Waluta";
+"edit.distance.controller.date.label" = "Data";
+"edit.distance.controller.distance.label" = "Distance";
+"edit.distance.controller.edit.title" = "Edit distance";
+"edit.distance.controller.location.label" = "Location";
+"edit.distance.controller.rate.label" = "Rate";
+"edit.distance.controller.save.distance.error.generic.message" = "For some reason distance could not be added";
+"edit.distance.controller.save.distance.error.title" = "Distance not saved";
+"edit.distance.controller.validation.distance.missing" = "Distance not entered";
+"edit.distance.controller.validation.error.title" = "Can't save distance";
+"edit.distance.controller.validation.rate.missing" = "Rate not entered";
+"edit.payment.method.controller.add.title" = "Add Payment Method";
+"edit.payment.method.controller.edit.title" = "Edit Payment Method";
+"edit.payment.method.controller.save.error.exists.message" = "Payment method with given name already exists";
+"edit.payment.method.controller.save.error.generic.message" = "Payment method could not be saved";
+"edit.payment.method.controller.save.error.message" = "Payment method name not entered";
+"edit.payment.method.controller.save.error.title" = "Can't save";
+
+"generate.report.controller.title" = "Generuj Raport";
+"generate.report.multiple.attached.suffix" = "raportów załączono";
+"generate.report.no.options.selected.alert.message" = "Nie wybrano raportów";
+"generate.report.one.attached.suffix" = "raport załączony";
+"generate.report.option.csv" = "Plik CSV";
+"generate.report.option.full.pdf" = "Pełny Raport PDF";
+"generate.report.option.pdf.no.table" = "Raport PDF - Bez Tabeli";
+"generate.report.option.zip.stamped" = "ZIP - Podpisane JPG";
+"generate.report.unsuccessful.alert.message" = "Nie udało się wygenerować wybranych raportów";
+
+"generic.button.title.ok" = "OK";
+"generic.error.alert.title" = "Error";
+
 "image.picker.sheet.cancel.button.title" = "Cancel";
 "image.picker.sheet.choose.existing.button.title" = "Choose Existing";
 "image.picker.sheet.take.photo.button.title" = "Take Photo";
@@ -400,6 +443,11 @@
 "image.stamper.receipt.date" = "Data";
 "image.stamper.receipt.name" = "Nazwa";
 "image.stamper.receipt.price" = "Cena";
+
+"move.copy.receipt.controller.copy.title" = "Kopiuj do";
+"move.copy.receipt.controller.move.title" = "Przenieś do";
+
+"no.trips.empty.message" = "Nie wybrano raportu";
 
 "payment.method.cash" = "Cash";
 "payment.method.check" = "Check";
@@ -418,6 +466,20 @@
 "pdf.report.receipts.total.sans.tax.label" = "Receipts Total (Sans Tax):";
 "pdf.report.tax.total.label" = "Tax Total:";
 
+"receipt.action.attach.image" = "Dołącz Obrazek";
+"receipt.action.attach.pdf" = "Dołącz PDF";
+"receipt.action.copy" = "Kopiuj";
+"receipt.action.move" = "Przenieś";
+"receipt.action.replace.image" = "Zastąp Obraz";
+"receipt.action.replace.image.with.pdf" = "Zastąp Obraz przez PDF";
+"receipt.action.replace.pdf" = "Zastąp PDF";
+"receipt.action.replace.pdf.with.image" = "Zastąp PDF przez Obraz";
+"receipt.action.retake.receipt.image" = "Zrób ponownie Zdjęcie Paragonu";
+"receipt.action.swap.down" = "Przenieś w dół";
+"receipt.action.swap.up" = "Przenieś w górę";
+"receipt.action.take.receipt.image" = "Zrób Zdjęcie Paragonu";
+"receipt.action.view.receipt.image" = "Pokaż Zdjęcie Paragonu";
+"receipt.action.view.receipt.pdf" = "Pokaż PDF Paragonu";
 "receipt.attachment.marker.image" = "Image";
 "receipt.attachment.marker.pdf" = "PDF";
 "receipt.column.blank.column" = "Pusta Kolumna";

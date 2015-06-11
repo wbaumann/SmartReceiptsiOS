@@ -29,9 +29,9 @@
     [super viewDidLoad];
     
     if (self.method) {
-        [self.navigationItem setTitle:NSLocalizedString(@"Edit Payment Method", nil)];
+        [self.navigationItem setTitle:NSLocalizedString(@"edit.payment.method.controller.edit.title", nil)];
     } else {
-        [self.navigationItem setTitle:NSLocalizedString(@"Add Payment Method", nil)];
+        [self.navigationItem setTitle:NSLocalizedString(@"edit.payment.method.controller.add.title", nil)];
     }
 
     [self.tableView registerNib:[EntryOnlyCell viewNib] forCellReuseIdentifier:[EntryOnlyCell cellIdentifier]];
@@ -44,18 +44,18 @@
 - (IBAction)donePressed {
     NSString *entry = [self.entryCell value];
     if (!entry.hasValue) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Can't save", nil)
-                                                            message:NSLocalizedString(@"Payment method name not entered", nil)
-                                                   cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"OK", nil)]
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"edit.payment.method.controller.save.error.title", nil)
+                                                            message:NSLocalizedString(@"edit.payment.method.controller.save.error.message", nil)
+                                                   cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.ok", nil)]
                                                    otherButtonItems:nil];
         [alertView show];
         return;
     }
 
     if ([[Database sharedInstance] hasPaymentMethodWithName:entry]) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Can't save", nil)
-                                                            message:NSLocalizedString(@"Payment method with given name already exists", nil)
-                                                   cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"OK", nil)]
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"edit.payment.method.controller.save.error.title", nil)
+                                                            message:NSLocalizedString(@"edit.payment.method.controller.save.error.exists.message", nil)
+                                                   cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.ok", nil)]
                                                    otherButtonItems:nil];
         [alertView show];
         return;
@@ -72,9 +72,9 @@
     } else if ([[Database sharedInstance] updatePaymentMethod:self.method]) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Method not saved", nil)
-                                                            message:NSLocalizedString(@"Payment method could not be saved", nil)
-                                                   cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"OK", nil)]
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"edit.payment.method.controller.save.error.title", nil)
+                                                            message:NSLocalizedString(@"edit.payment.method.controller.save.error.generic.message", nil)
+                                                   cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.ok", nil)]
                                                    otherButtonItems:nil];
         [alertView show];
     }

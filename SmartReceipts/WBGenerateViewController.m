@@ -42,12 +42,12 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = NSLocalizedString(@"Generate Report", nil);
+    self.navigationItem.title = NSLocalizedString(@"generate.report.controller.title", nil);
     
-    self.labelFullPdfReport.text = NSLocalizedString(@"Full PDF Report", nil);
-    self.labelPdfReport.text = NSLocalizedString(@"PDF Report - No Table", nil);
-    self.labelCsvFile.text = NSLocalizedString(@"CSV File", nil);
-    self.labelZipImages.text = NSLocalizedString(@"ZIP - Stamped JPGs", nil);
+    self.labelFullPdfReport.text = NSLocalizedString(@"generate.report.option.full.pdf", nil);
+    self.labelPdfReport.text = NSLocalizedString(@"generate.report.option.pdf.no.table", nil);
+    self.labelCsvFile.text = NSLocalizedString(@"generate.report.option.csv", nil);
+    self.labelZipImages.text = NSLocalizedString(@"generate.report.option.zip.stamped", nil);
 }
 
 - (void) clearPath:(NSString*) path {
@@ -110,8 +110,8 @@
     }
     
     // sending
-    
-    NSString *suffix = [createdAttachements count] > 1 ? NSLocalizedString(@"reports attached", nil) :NSLocalizedString(@"report attached", nil);
+
+    NSString *suffix = [createdAttachements count] > 1 ? NSLocalizedString(@"generate.report.multiple.attached.suffix", nil) : NSLocalizedString(@"generate.report.one.attached.suffix", nil);
     NSString *messageBody = [NSString stringWithFormat:@"%d %@",
                              (int)[createdAttachements count], suffix];
 
@@ -180,8 +180,8 @@
 - (IBAction)actionDone:(id)sender {
     
     if (!self.fullPdfReportField.on && !self.pdfImagesField.on && !self.csvFileField.on && !self.zipImagesField.on) {
-        [self showAlertWithTitle:NSLocalizedString(@"Error", nil)
-                         message:NSLocalizedString(@"No reports selected", nil)];
+        [self showAlertWithTitle:NSLocalizedString(@"generic.error.alert.title", nil)
+                         message:NSLocalizedString(@"generate.report.no.options.selected.alert.message", nil)];
         return;
     }
 
@@ -207,8 +207,8 @@
                 [[UIApplication sharedApplication] setStatusBarStyle:barStyle];
             }];
         } else {
-            [self showAlertWithTitle:NSLocalizedString(@"Error", nil)
-                             message:NSLocalizedString(@"Couldn't generate selected reports", nil)];
+            [self showAlertWithTitle:NSLocalizedString(@"generic.error.alert.title", nil)
+                             message:NSLocalizedString(@"generate.report.unsuccessful.alert.message", nil)];
         }
 
         [hud hide];
@@ -221,7 +221,7 @@
 
 - (void)showAlertWithTitle:(NSString*) title message:(NSString*) message {
     [[[UIAlertView alloc]
-      initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil] show];
+      initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok",nil) otherButtonTitles:nil] show];
 }
 
 @end
