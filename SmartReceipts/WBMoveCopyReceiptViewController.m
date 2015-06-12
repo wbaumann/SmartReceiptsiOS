@@ -29,7 +29,7 @@
 
     [self setPresentationCellNib:[TitleOnlyCell viewNib]];
 
-    self.navigationItem.title = self.calledForCopy ? NSLocalizedString(@"Copy to", nil) : NSLocalizedString(@"Move to", nil);
+    self.navigationItem.title = self.calledForCopy ? NSLocalizedString(@"move.copy.receipt.controller.copy.title", nil) : NSLocalizedString(@"move.copy.receipt.controller.move.title", nil);
 }
 
 - (FetchedModelAdapter *)createFetchedModelAdapter {

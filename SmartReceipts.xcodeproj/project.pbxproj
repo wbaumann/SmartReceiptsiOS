@@ -25,7 +25,6 @@
 		841BB308190837F100D28CBF /* WBNoTripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BB307190837F000D28CBF /* WBNoTripsViewController.m */; };
 		8421A1F41907AF18001DF38D /* wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8421A1F21907AF18001DF38D /* wheel.png */; };
 		8421A1F51907AF18001DF38D /* wheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8421A1F31907AF18001DF38D /* wheel@2x.png */; };
-		8421A1FD1907E304001DF38D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8421A1FF1907E304001DF38D /* Localizable.strings */; };
 		8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */; };
 		843950A418ED1D2E00A1CF83 /* WBPdfDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 843950A318ED1D2E00A1CF83 /* WBPdfDrawer.m */; };
 		843F61FF18EF3F46001ACBB1 /* WBCustomization.m in Sources */ = {isa = PBXBuildFile; fileRef = 843F61FE18EF3F46001ACBB1 /* WBCustomization.m */; };
@@ -64,7 +63,6 @@
 		84F4F34418CFCCD000F69A35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34318CFCCD000F69A35 /* Foundation.framework */; };
 		84F4F34618CFCCD000F69A35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34518CFCCD000F69A35 /* CoreGraphics.framework */; };
 		84F4F34818CFCCD000F69A35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34718CFCCD000F69A35 /* UIKit.framework */; };
-		84F4F34E18CFCCD000F69A35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F34C18CFCCD000F69A35 /* InfoPlist.strings */; };
 		84F4F35018CFCCD000F69A35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F34F18CFCCD000F69A35 /* main.m */; };
 		84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */; };
 		84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F35518CFCCD000F69A35 /* Images.xcassets */; };
@@ -114,6 +112,10 @@
 		EA1D42C41B03901A00D64D3A /* EntryOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1D42C31B03901A00D64D3A /* EntryOnlyCell.m */; };
 		EA1D42C61B03902C00D64D3A /* EntryOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1D42C51B03902C00D64D3A /* EntryOnlyCell.xib */; };
 		EA1D42C91B03931400D64D3A /* DatabasePaymentMethodsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1D42C81B03931400D64D3A /* DatabasePaymentMethodsTest.m */; };
+		EA1E60D51B2742660048E688 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA1E60C91B2742660048E688 /* InfoPlist.strings */; };
+		EA1E60D61B2742660048E688 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA1E60CB1B2742660048E688 /* Localizable.strings */; };
+		EA1E60D81B2742660048E688 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA1E60D11B2742660048E688 /* InfoPlist.strings */; };
+		EA1E60D91B2742660048E688 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA1E60D31B2742660048E688 /* Localizable.strings */; };
 		EA22679E1B1E035F005761E7 /* ReceiptSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA22679C1B1E035F005761E7 /* ReceiptSummaryCell.m */; };
 		EA22679F1B1E035F005761E7 /* ReceiptSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA22679D1B1E035F005761E7 /* ReceiptSummaryCell.xib */; };
 		EA22FB4D1B1AF1A40060D23D /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA22FB4B1B1AF1A40060D23D /* CategoryCell.m */; };
@@ -190,7 +192,6 @@
 		EA8CEAE51AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CEAE41AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m */; };
 		EA8CEAE71AFCEBE90007B3F5 /* DatabaseTripsSumTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CEAE61AFCEBE90007B3F5 /* DatabaseTripsSumTest.m */; };
 		EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816B1AEA668100BAC943 /* WBCategory.m */; };
-		EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816D1AEA668100BAC943 /* WBColumnNames.m */; };
 		EA8D81761AEA668100BAC943 /* Price.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D816F1AEA668100BAC943 /* Price.m */; };
 		EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81711AEA668100BAC943 /* WBReceipt.m */; };
 		EA8D81781AEA668100BAC943 /* WBTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81731AEA668100BAC943 /* WBTrip.m */; };
@@ -282,8 +283,6 @@
 		4DF2295519296E170008D359 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5371FEA3FE41B7AFF41AFB84 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6FC1BDDC7B500AA1408D37DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		841BB2FB190806F600D28CBF /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		841BB2FC190806F600D28CBF /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		841BB2FE1908167700D28CBF /* WBAbstractPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAbstractPicker.h; sourceTree = "<group>"; };
 		841BB3001908173600D28CBF /* WBAbstractPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAbstractPicker.m; sourceTree = "<group>"; };
 		841BB302190818C400D28CBF /* WBActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBActionSheetPicker.h; sourceTree = "<group>"; };
@@ -292,7 +291,6 @@
 		841BB307190837F000D28CBF /* WBNoTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNoTripsViewController.m; sourceTree = "<group>"; };
 		8421A1F21907AF18001DF38D /* wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheel.png; sourceTree = "<group>"; };
 		8421A1F31907AF18001DF38D /* wheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheel@2x.png"; sourceTree = "<group>"; };
-		8421A1FE1907E304001DF38D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		843950A218ED1D2E00A1CF83 /* WBPdfDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPdfDrawer.h; sourceTree = "<group>"; };
 		843950A318ED1D2E00A1CF83 /* WBPdfDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPdfDrawer.m; sourceTree = "<group>"; };
@@ -360,7 +358,6 @@
 		84F4F34518CFCCD000F69A35 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		84F4F34718CFCCD000F69A35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84F4F34B18CFCCD000F69A35 /* SmartReceipts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartReceipts-Info.plist"; sourceTree = "<group>"; };
-		84F4F34D18CFCCD000F69A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84F4F34F18CFCCD000F69A35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84F4F35118CFCCD000F69A35 /* SmartReceipts-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartReceipts-Prefix.pch"; sourceTree = "<group>"; };
 		84F4F35218CFCCD000F69A35 /* WBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBAppDelegate.h; sourceTree = "<group>"; };
@@ -446,6 +443,10 @@
 		EA1D42C31B03901A00D64D3A /* EntryOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryOnlyCell.m; sourceTree = "<group>"; };
 		EA1D42C51B03902C00D64D3A /* EntryOnlyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryOnlyCell.xib; sourceTree = "<group>"; };
 		EA1D42C81B03931400D64D3A /* DatabasePaymentMethodsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabasePaymentMethodsTest.m; sourceTree = "<group>"; };
+		EA1E60CA1B2742660048E688 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		EA1E60CC1B2742660048E688 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		EA1E60D21B2742660048E688 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = InfoPlist.strings; sourceTree = "<group>"; };
+		EA1E60D41B2742660048E688 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = Localizable.strings; sourceTree = "<group>"; };
 		EA22679B1B1E035F005761E7 /* ReceiptSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptSummaryCell.h; sourceTree = "<group>"; };
 		EA22679C1B1E035F005761E7 /* ReceiptSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptSummaryCell.m; sourceTree = "<group>"; };
 		EA22679D1B1E035F005761E7 /* ReceiptSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiptSummaryCell.xib; sourceTree = "<group>"; };
@@ -567,8 +568,6 @@
 		EA8CEAE61AFCEBE90007B3F5 /* DatabaseTripsSumTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTripsSumTest.m; sourceTree = "<group>"; };
 		EA8D816A1AEA668100BAC943 /* WBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategory.h; sourceTree = "<group>"; };
 		EA8D816B1AEA668100BAC943 /* WBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategory.m; sourceTree = "<group>"; };
-		EA8D816C1AEA668100BAC943 /* WBColumnNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnNames.h; sourceTree = "<group>"; };
-		EA8D816D1AEA668100BAC943 /* WBColumnNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnNames.m; sourceTree = "<group>"; };
 		EA8D816E1AEA668100BAC943 /* Price.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Price.h; sourceTree = "<group>"; };
 		EA8D816F1AEA668100BAC943 /* Price.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Price.m; sourceTree = "<group>"; };
 		EA8D81701AEA668100BAC943 /* WBReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceipt.h; sourceTree = "<group>"; };
@@ -771,7 +770,6 @@
 		845E33DD18D87CB9006A506A /* views */ = {
 			isa = PBXGroup;
 			children = (
-				84AF861118E8C23A00F15C3A /* cells */,
 				8478B77718D383EF0041CBA3 /* iPad */,
 				8421A1F61907C03B001DF38D /* iPhone */,
 				841BB2FE1908167700D28CBF /* WBAbstractPicker.h */,
@@ -911,13 +909,6 @@
 			path = 3rdparty;
 			sourceTree = "<group>";
 		};
-		84AF861118E8C23A00F15C3A /* cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = cells;
-			sourceTree = "<group>";
-		};
 		84D6719518D336E100B704A4 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -1018,7 +1009,6 @@
 				EA3CF09C1AE7C45C00B14B73 /* Constants.h */,
 				EA3CF09D1AE7C45C00B14B73 /* Constants.m */,
 				84F4F35518CFCCD000F69A35 /* Images.xcassets */,
-				8421A1FF1907E304001DF38D /* Localizable.strings */,
 				84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */,
 				8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */,
 				84F4F35218CFCCD000F69A35 /* WBAppDelegate.h */,
@@ -1030,8 +1020,9 @@
 		84F4F34A18CFCCD000F69A35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EA1E60C81B2742660048E688 /* en.lproj */,
+				EA1E60D01B2742660048E688 /* pl.lproj */,
 				84F4F34B18CFCCD000F69A35 /* SmartReceipts-Info.plist */,
-				84F4F34C18CFCCD000F69A35 /* InfoPlist.strings */,
 				84F4F34F18CFCCD000F69A35 /* main.m */,
 				84F4F35118CFCCD000F69A35 /* SmartReceipts-Prefix.pch */,
 			);
@@ -1064,6 +1055,24 @@
 				EA07BF681AF51C61004D17F6 /* FetchedDistancesAdapterTest.m */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		EA1E60C81B2742660048E688 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				EA1E60C91B2742660048E688 /* InfoPlist.strings */,
+				EA1E60CB1B2742660048E688 /* Localizable.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		EA1E60D01B2742660048E688 /* pl.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				EA1E60D11B2742660048E688 /* InfoPlist.strings */,
+				EA1E60D31B2742660048E688 /* Localizable.strings */,
+			);
+			path = pl.lproj;
 			sourceTree = "<group>";
 		};
 		EA259CD21B16069B00ECBD67 /* Backup */ = {
@@ -1305,8 +1314,6 @@
 				EAE319611B10BB5C0032887E /* TaxCalculator.m */,
 				EA8D816A1AEA668100BAC943 /* WBCategory.h */,
 				EA8D816B1AEA668100BAC943 /* WBCategory.m */,
-				EA8D816C1AEA668100BAC943 /* WBColumnNames.h */,
-				EA8D816D1AEA668100BAC943 /* WBColumnNames.m */,
 				EA8D81701AEA668100BAC943 /* WBReceipt.h */,
 				EA8D81711AEA668100BAC943 /* WBReceipt.m */,
 				EA8D81721AEA668100BAC943 /* WBTrip.h */,
@@ -1559,6 +1566,7 @@
 			buildConfigurationList = 84F4F36C18CFCCD000F69A35 /* Build configuration list for PBXNativeTarget "SmartReceipts" */;
 			buildPhases = (
 				E0DEB0FB94C7DB5A57D0C4D4 /* Check Pods Manifest.lock */,
+				EA1E60DA1B2742E40048E688 /* Check localization */,
 				84F4F33C18CFCCD000F69A35 /* Sources */,
 				84F4F33D18CFCCD000F69A35 /* Frameworks */,
 				84F4F33E18CFCCD000F69A35 /* Resources */,
@@ -1645,7 +1653,6 @@
 				EA98B51E1B075057006935AE /* WBCellWithPriceNameDate.xib in Resources */,
 				EA5963FC1AF2A07200935344 /* InlinedPickerCell.xib in Resources */,
 				8421A1F41907AF18001DF38D /* wheel.png in Resources */,
-				8421A1FD1907E304001DF38D /* Localizable.strings in Resources */,
 				84D6719718D3392D00B704A4 /* dropdown.png in Resources */,
 				EA4C5CC61AF287330083FDD7 /* TitledTextEntryCell.xib in Resources */,
 				EA07BF601AF4E801004D17F6 /* DistanceSummaryCell.xib in Resources */,
@@ -1653,15 +1660,17 @@
 				EA1D42BE1B03851C00D64D3A /* TitleOnlyCell.xib in Resources */,
 				841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */,
 				EA0677EF1B04DCEA0058A326 /* TitledAutocompleteEntryCell.xib in Resources */,
-				84F4F34E18CFCCD000F69A35 /* InfoPlist.strings in Resources */,
 				EA71DFCD1AF9FEEC004092C3 /* SwitchControlCell.xib in Resources */,
 				EA888A731AFA38C100DF2AE6 /* SettingsButtonCell.xib in Resources */,
 				EA07BF371AF3B88C004D17F6 /* PickerCell.xib in Resources */,
 				8467EFED18F6F9530076BE6E /* ic_rotate_cw.png in Resources */,
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
+				EA1E60D91B2742660048E688 /* Localizable.strings in Resources */,
+				EA1E60D61B2742660048E688 /* Localizable.strings in Resources */,
 				EA66B2BE1B13809900A57750 /* LaunchView.xib in Resources */,
 				8467EFEC18F6F9530076BE6E /* ic_rotate_ccw.png in Resources */,
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
+				EA1E60D51B2742660048E688 /* InfoPlist.strings in Resources */,
 				EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */,
 				EA22679F1B1E035F005761E7 /* ReceiptSummaryCell.xib in Resources */,
 				841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */,
@@ -1671,6 +1680,7 @@
 				EAE9DB021AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.xib in Resources */,
 				EA5ECA2F1AF9F43F008D2CFB /* SettingsSegmentControlCell.xib in Resources */,
 				EA1D42C61B03902C00D64D3A /* EntryOnlyCell.xib in Resources */,
+				EA1E60D81B2742660048E688 /* InfoPlist.strings in Resources */,
 				8421A1F51907AF18001DF38D /* wheel@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1752,6 +1762,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		EA1E60DA1B2742E40048E688 /* Check localization */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check localization";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ruby scripts/check_localizable.rb SmartReceipts";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1887,7 +1911,6 @@
 				EA3C969B1AEBA93000A2A5F9 /* ReportCSVGenerator.m in Sources */,
 				EA07BF661AF51854004D17F6 /* FetchedModelAdapter.m in Sources */,
 				EA07BF561AF4D129004D17F6 /* DatabaseQueryBuilder.m in Sources */,
-				EA8D81751AEA668100BAC943 /* WBColumnNames.m in Sources */,
 				EA888A761AFA3D3F00DF2AE6 /* NumberInputValidation.m in Sources */,
 				EA98B51C1B075042006935AE /* WBCellWithPriceNameDate.m in Sources */,
 				EAB970121B0790EE005E1D63 /* TripsViewController.m in Sources */,
@@ -1978,22 +2001,36 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8421A1FF1907E304001DF38D /* Localizable.strings */ = {
+		EA1E60C91B2742660048E688 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8421A1FE1907E304001DF38D /* en */,
-				841BB2FC190806F600D28CBF /* pl */,
+				EA1E60CA1B2742660048E688 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EA1E60CB1B2742660048E688 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA1E60CC1B2742660048E688 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		84F4F34C18CFCCD000F69A35 /* InfoPlist.strings */ = {
+		EA1E60D11B2742660048E688 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				84F4F34D18CFCCD000F69A35 /* en */,
-				841BB2FB190806F600D28CBF /* pl */,
+				EA1E60D21B2742660048E688 /* pl */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EA1E60D31B2742660048E688 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA1E60D41B2742660048E688 /* pl */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

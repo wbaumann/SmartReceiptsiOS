@@ -57,25 +57,25 @@
         switch (_imgType) {
             case 1:
                 if ([[WBAppDelegate instance] isFileImage]) {
-                    str = NSLocalizedString(@"Replace Image", nil);
+                    str = NSLocalizedString(@"receipt.action.replace.image", nil);
                 } else {
-                    str = NSLocalizedString(@"Replace Image with PDF", nil);
+                    str = NSLocalizedString(@"receipt.action.replace.image.with.pdf", nil);
                 }
                 break;
                 
             case 2:
                 if ([[WBAppDelegate instance] isFileImage]) {
-                    str = NSLocalizedString(@"Replace PDF with Image", nil);
+                    str = NSLocalizedString(@"receipt.action.replace.pdf.with.image", nil);
                 } else {
-                    str = NSLocalizedString(@"Replace PDF", nil);
+                    str = NSLocalizedString(@"receipt.action.replace.pdf", nil);
                 }
                 break;
                 
             default:
                 if ([[WBAppDelegate instance] isFileImage]) {
-                    str = NSLocalizedString(@"Attach Image", nil);
+                    str = NSLocalizedString(@"receipt.action.attach.image", nil);
                 } else {
-                    str = NSLocalizedString(@"Attach PDF", nil);
+                    str = NSLocalizedString(@"receipt.action.attach.pdf", nil);
                 }
                 break;
         }
@@ -86,27 +86,27 @@
     
     if (_imgType == 1) {
         [cellsIds addObject:@1];
-        [cellsTexts addObject:NSLocalizedString(@"View Receipt Image", nil)];
+        [cellsTexts addObject:NSLocalizedString(@"receipt.action.view.receipt.image", nil)];
     } else if (_imgType == 2) {
         [cellsIds addObject:@1];
-        [cellsTexts addObject:NSLocalizedString(@"View Receipt PDF", nil)];
+        [cellsTexts addObject:NSLocalizedString(@"receipt.action.view.receipt.pdf", nil)];
     }
     
     [cellsIds addObject:@2];
     [cellsTexts addObject:
-     (_imgType > 0 ? NSLocalizedString(@"Retake Receipt Image", nil) : NSLocalizedString(@"Take Receipt Image", nil))];
+     (_imgType > 0 ? NSLocalizedString(@"receipt.action.retake.receipt.image", nil) : NSLocalizedString(@"receipt.action.take.receipt.image", nil))];
     
     [cellsIds addObject:@3];
-    [cellsTexts addObject:NSLocalizedString(@"Move", nil)];
+    [cellsTexts addObject:NSLocalizedString(@"receipt.action.move", nil)];
     
     [cellsIds addObject:@4];
-    [cellsTexts addObject:NSLocalizedString(@"Copy", nil)];
+    [cellsTexts addObject:NSLocalizedString(@"receipt.action.copy", nil)];
     
     [cellsIds addObject:@5];
-    [cellsTexts addObject:NSLocalizedString(@"Swap Up", nil)];
+    [cellsTexts addObject:NSLocalizedString(@"receipt.action.swap.up", nil)];
     
     [cellsIds addObject:@6];
-    [cellsTexts addObject:NSLocalizedString(@"Swap Down", nil)];
+    [cellsTexts addObject:NSLocalizedString(@"receipt.action.swap.down", nil)];
     
     _cellsIds = cellsIds.copy;
     _cellsTexts = cellsTexts.copy;

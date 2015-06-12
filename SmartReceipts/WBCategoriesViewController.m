@@ -39,7 +39,7 @@
 
     [self setPresentationCellNib:[CategoryCell viewNib]];
 
-    self.navigationItem.title = NSLocalizedString(@"Categories", nil);
+    self.navigationItem.title = NSLocalizedString(@"categories.controller.title", nil);
 
     self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], self.editButtonItem];
 }

@@ -93,7 +93,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
     UISwitch *sw = [[UISwitch alloc] initWithFrame:CGRectZero];
     
-    NSString *str = NSLocalizedString(@"You can also disable autocomplete if you'd prefer", nil);
+    NSString *str = NSLocalizedString(@"autocomplete.helper.disable.tip.text", nil);
     
     [label setFont:[UIFont systemFontOfSize:13.0]];
     [label setText:str];

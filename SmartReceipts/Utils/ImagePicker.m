@@ -63,11 +63,11 @@
         [self presentImagePickerWithSource:UIImagePickerControllerSourceTypeCamera onController:controller];
     };
 
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Select image from", nil)
-                                                     cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"Cancel", nil) action:cancelAction]
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"image.picker.sheet.title", nil)
+                                                     cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"image.picker.sheet.cancel.button.title", nil) action:cancelAction]
                                                 destructiveButtonItem:nil
-                                                     otherButtonItems:[RIButtonItem itemWithLabel:NSLocalizedString(@"Choose Existing", nil) action:chooseFromLibraryAction],
-                                                                      [RIButtonItem itemWithLabel:NSLocalizedString(@"Take Photo", nil) action:takeImageAction], nil];
+                                                     otherButtonItems:[RIButtonItem itemWithLabel:NSLocalizedString(@"image.picker.sheet.choose.existing.button.title", nil) action:chooseFromLibraryAction],
+                                                                      [RIButtonItem itemWithLabel:NSLocalizedString(@"image.picker.sheet.take.photo.button.title", nil) action:takeImageAction], nil];
     [actionSheet showInView:controller.view];
 }
 

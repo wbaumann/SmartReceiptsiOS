@@ -21,13 +21,13 @@
 
 + (NSArray *)allColumns {
     return @[
-        [[DistanceLocationColumn alloc] initWithIndex:0 name:NSLocalizedString(@"Location", nil)],
-        [[DistancePriceColumn alloc] initWithIndex:0 name:NSLocalizedString(@"Price", nil)],
-        [[DistanceDistanceColumn alloc] initWithIndex:0 name:NSLocalizedString(@"Distance", nil)],
-        [[DistanceCurrencyColumn alloc] initWithIndex:0 name:NSLocalizedString(@"Currency", nil)],
-        [[DistanceRateColumn alloc] initWithIndex:0 name:NSLocalizedString(@"Rate", nil)],
-        [[DistanceDateColumn alloc] initWithIndex:0 name:NSLocalizedString(@"Date", nil)],
-        [[DistanceCommentColumn alloc] initWithIndex:0 name:NSLocalizedString(@"Comment", nil)],
+        [[DistanceLocationColumn alloc] initWithIndex:0 name:NSLocalizedString(@"distance.column.location", nil)],
+        [[DistancePriceColumn alloc] initWithIndex:0 name:NSLocalizedString(@"distance.column.price", nil)],
+        [[DistanceDistanceColumn alloc] initWithIndex:0 name:NSLocalizedString(@"distance.column.distance", nil)],
+        [[DistanceCurrencyColumn alloc] initWithIndex:0 name:NSLocalizedString(@"distance.column.currency", nil)],
+        [[DistanceRateColumn alloc] initWithIndex:0 name:NSLocalizedString(@"distance.column.rate", nil)],
+        [[DistanceDateColumn alloc] initWithIndex:0 name:NSLocalizedString(@"distance.column.date", nil)],
+        [[DistanceCommentColumn alloc] initWithIndex:0 name:NSLocalizedString(@"distance.column.comment", nil)],
     ];
 }
 

@@ -6,12 +6,9 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <FMDB/FMResultSet.h>
-#import <objc/objc.h>
 #import "ReceiptColumn.h"
 #import "WBReceipt.h"
 #import "Constants.h"
-#import "WBColumnNames.h"
 #import "ReceiptColumnBlank.h"
 #import "ReceiptColumnCategoryCode.h"
 #import "ReceiptColumnCategoryName.h"
@@ -35,33 +32,39 @@
 #import "ReceiptColumnReportComment.h"
 #import "ReceiptColumnReportCostCenter.h"
 
+// Extras have to be filled to be active.
+NSString *const WBColumnNameExtraEdittext1 = @"";
+NSString *const WBColumnNameExtraEdittext2 = @"";
+NSString *const WBColumnNameExtraEdittext3 = @"";
+
+
 static NSDictionary *__receiptColumnNameToClassMapping;
 
 @implementation ReceiptColumn
 
 + (void)initialize {
     __receiptColumnNameToClassMapping = @{
-            WBColumnNameBlank : NSStringFromClass([ReceiptColumnBlank class]),
-            WBColumnNameCategoryCode : NSStringFromClass([ReceiptColumnCategoryCode class]),
-            WBColumnNameCategoryName : NSStringFromClass([ReceiptColumnCategoryName class]),
-            WBColumnNameUserId : NSStringFromClass([ReceiptColumnUserID class]),
-            WBColumnNameReportName : NSStringFromClass([ReceiptColumnReportName class]),
-            WBColumnNameReportStartDate : NSStringFromClass([ReceiptColumnReportStartDate class]),
-            WBColumnNameReportEndDate : NSStringFromClass([ReceiptColumnReportEndDate class]),
-            WBColumnNameImageFileName : NSStringFromClass([ReceiptColumnImageName class]),
-            WBColumnNameImagePath : NSStringFromClass([ReceiptColumnImagePath class]),
-            WBColumnNameComment : NSStringFromClass([ReceiptColumnComment class]),
-            WBColumnNameCurrency : NSStringFromClass([ReceiptColumnCurrency class]),
-            WBColumnNameDate : NSStringFromClass([ReceiptColumnDate class]),
-            WBColumnNameName : NSStringFromClass([ReceiptColumnName class]),
-            WBColumnNamePrice : NSStringFromClass([ReceiptColumnPrice class]),
-            WBColumnNameTax : NSStringFromClass([ReceiptColumnTax class]),
-            WBColumnNamePictured : NSStringFromClass([ReceiptColumnPictured class]),
-            WBColumnNameExpensable : NSStringFromClass([ReceiptColumnExpensable class]),
-            WBColumnNameIndex : NSStringFromClass([ReceiptColumnReceiptIndex class]),
-            WBColumnNamePaymentMethod : NSStringFromClass([ReceiptColumnPaymentMethod class]),
-            WBColumnNameReportComment : NSStringFromClass([ReceiptColumnReportComment class]),
-            WBColumnNameReportCostCenter : NSStringFromClass([ReceiptColumnReportCostCenter class]),
+            NSLocalizedString(@"receipt.column.blank.column", nil) : NSStringFromClass([ReceiptColumnBlank class]),
+            NSLocalizedString(@"receipt.column.category.code", nil) : NSStringFromClass([ReceiptColumnCategoryCode class]),
+            NSLocalizedString(@"receipt.column.category.name", nil) : NSStringFromClass([ReceiptColumnCategoryName class]),
+            NSLocalizedString(@"receipt.column.user.id", nil) : NSStringFromClass([ReceiptColumnUserID class]),
+            NSLocalizedString(@"receipt.column.report.name", nil) : NSStringFromClass([ReceiptColumnReportName class]),
+            NSLocalizedString(@"receipt.column.report.start.date", nil) : NSStringFromClass([ReceiptColumnReportStartDate class]),
+            NSLocalizedString(@"receipt.column.report.end.date", nil) : NSStringFromClass([ReceiptColumnReportEndDate class]),
+            NSLocalizedString(@"receipt.column.image.name", nil) : NSStringFromClass([ReceiptColumnImageName class]),
+            NSLocalizedString(@"receipt.column.image.path", nil) : NSStringFromClass([ReceiptColumnImagePath class]),
+            NSLocalizedString(@"receipt.column.comment", nil) : NSStringFromClass([ReceiptColumnComment class]),
+            NSLocalizedString(@"receipt.column.currency", nil) : NSStringFromClass([ReceiptColumnCurrency class]),
+            NSLocalizedString(@"receipt.column.date", nil) : NSStringFromClass([ReceiptColumnDate class]),
+            NSLocalizedString(@"receipt.column.name", nil) : NSStringFromClass([ReceiptColumnName class]),
+            NSLocalizedString(@"receipt.column.price", nil) : NSStringFromClass([ReceiptColumnPrice class]),
+            NSLocalizedString(@"receipt.column.tax", nil) : NSStringFromClass([ReceiptColumnTax class]),
+            NSLocalizedString(@"receipt.column.pictured", nil) : NSStringFromClass([ReceiptColumnPictured class]),
+            NSLocalizedString(@"receipt.column.expensable", nil) : NSStringFromClass([ReceiptColumnExpensable class]),
+            NSLocalizedString(@"receipt.column.receipt.index", nil) : NSStringFromClass([ReceiptColumnReceiptIndex class]),
+            NSLocalizedString(@"receipt.column.payment.method", nil) : NSStringFromClass([ReceiptColumnPaymentMethod class]),
+            NSLocalizedString(@"receipt.column.report.comment", nil) : NSStringFromClass([ReceiptColumnReportComment class]),
+            NSLocalizedString(@"receipt.column.report.cost.center", nil) : NSStringFromClass([ReceiptColumnReportCostCenter class]),
     };
 }
 
@@ -86,29 +89,7 @@ static NSDictionary *__receiptColumnNameToClassMapping;
 }
 
 + (NSArray *)availableColumnsNames {
-    NSMutableArray *arr = [@[
-            WBColumnNameBlank,
-            WBColumnNameCategoryCode,
-            WBColumnNameCategoryName,
-            WBColumnNameUserId,
-            WBColumnNameReportName,
-            WBColumnNameReportStartDate,
-            WBColumnNameReportEndDate,
-            WBColumnNameImageFileName,
-            WBColumnNameImagePath,
-            WBColumnNameComment,
-            WBColumnNameCurrency,
-            WBColumnNameDate,
-            WBColumnNameName,
-            WBColumnNamePrice,
-            WBColumnNameTax,
-            WBColumnNamePictured,
-            WBColumnNameExpensable,
-            WBColumnNameIndex,
-            WBColumnNamePaymentMethod,
-            WBColumnNameReportComment,
-            WBColumnNameReportCostCenter,
-    ] mutableCopy];
+    NSMutableArray *arr = [__receiptColumnNameToClassMapping keyEnumerator].allObjects.mutableCopy;
 
     [arr sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 

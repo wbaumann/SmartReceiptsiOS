@@ -28,7 +28,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.labelNoReportSelected.text = NSLocalizedString(@"No report selected", nil);
+    self.labelNoReportSelected.text = NSLocalizedString(@"no.trips.empty.message", nil);
 }
 
 - (void)didReceiveMemoryWarning

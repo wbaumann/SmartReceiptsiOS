@@ -28,7 +28,7 @@ NSString *const PushEditPaymentMethodSequeIdentifier = @"PushEditPaymentMethodSe
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.navigationItem setTitle:NSLocalizedString(@"Payment Methods", nil)];
+    [self.navigationItem setTitle:NSLocalizedString(@"payment.methods.controller.title", nil)];
 
     [self setPresentationCellNib:[TitleOnlyCell viewNib]];
 

@@ -24,11 +24,11 @@
 }
 
 - (BOOL)insertDefaultMethods {
-    return [self insertPaymentMethodWithName:NSLocalizedString(@"Cash", nil)]
-            && [self insertPaymentMethodWithName:NSLocalizedString(@"Check", nil)]
-            && [self insertPaymentMethodWithName:NSLocalizedString(@"Personal Card", nil)]
-            && [self insertPaymentMethodWithName:NSLocalizedString(@"Corporate Card", nil)]
-            && [self insertPaymentMethodWithName:NSLocalizedString(@"Unspecified", nil)];
+    return [self insertPaymentMethodWithName:NSLocalizedString(@"payment.method.cash", nil)]
+            && [self insertPaymentMethodWithName:NSLocalizedString(@"payment.method.check", nil)]
+            && [self insertPaymentMethodWithName:NSLocalizedString(@"payment.method.personal.card", nil)]
+            && [self insertPaymentMethodWithName:NSLocalizedString(@"payment.method.corporate.card", nil)]
+            && [self insertPaymentMethodWithName:NSLocalizedString(@"payment.method.unspecified", nil)];
 }
 
 - (BOOL)insertPaymentMethodWithName:(NSString *)methodName {

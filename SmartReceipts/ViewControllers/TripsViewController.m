@@ -109,7 +109,7 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 
     cell.priceField.text = [trip priceWithCurrencyFormatted];
     cell.nameField.text = [trip name];
-    cell.dateField.text = [NSString stringWithFormat:NSLocalizedString(@"%@ to %@", nil),
+    cell.dateField.text = [NSString stringWithFormat:NSLocalizedString(@"trips.controller.from.to.date.label.base", nil),
                                                      [_dateFormatter formattedDate:[trip startDate] inTimeZone:[trip startTimeZone]],
                                                      [_dateFormatter formattedDate:[trip endDate] inTimeZone:[trip endTimeZone]]];
 

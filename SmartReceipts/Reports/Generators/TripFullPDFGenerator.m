@@ -79,43 +79,43 @@
     [self.pdfDrawer drawRowText:self.trip.name];
 
     if (![receiptTotal isEqual:netTotal]) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Receipts Total:", nil), receiptTotal.currencyFormattedPrice]];
+        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.receipts.total.label", nil), receiptTotal.currencyFormattedPrice]];
     }
 
     if ([WBPreferences includeTaxField]) {
         if (pricesPreTax && taxesTotal.hasValue) {
-            [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Tax Total:", nil), taxesTotal.currencyFormattedPrice]];
+            [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.tax.total.label", nil), taxesTotal.currencyFormattedPrice]];
         } else if (![noTaxesTotal isEqual:receiptTotal] && noTaxesTotal.hasValue) {
-            [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Receipts Total (Sans Tax):", nil), noTaxesTotal.currencyFormattedPrice]];
+            [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.receipts.total.sans.tax.label", nil), noTaxesTotal.currencyFormattedPrice]];
         }
     }
 
     if (!reportOnlyExpensable && ![expensableTotal isEqual:receiptTotal]) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Receipts Total (Expenseable):", nil), expensableTotal.currencyFormattedPrice]];
+        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.receipts.total.expensable.label", nil), expensableTotal.currencyFormattedPrice]];
     }
 
     if (distances.count > 0) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Distance Total:", nil), distanceTotal.currencyFormattedPrice]];
+        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.distance.total.label", nil), distanceTotal.currencyFormattedPrice]];
     }
 
-    [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Gross Total:", nil), netTotal.currencyFormattedPrice]];
+    [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.gross.total.label", nil), netTotal.currencyFormattedPrice]];
 
 
-    [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"From: %@ To: %@",
+    [self.pdfDrawer drawRowText:[NSString stringWithFormat:NSLocalizedString(@"pdf.report.from.to.label.base", nil),
                                                            [self.dateFormatter formattedDate:[self.trip startDate] inTimeZone:[self.trip startTimeZone]],
                                                            [self.dateFormatter formattedDate:[self.trip endDate] inTimeZone:[self.trip endTimeZone]]
     ]];
 
     if ([WBPreferences trackCostCenter] && self.trip.costCenter.hasValue) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Cost Center:", nil), self.trip.costCenter]];
+        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.const.center.label", nil), self.trip.costCenter]];
     }
 
     if (self.trip.comment.hasValue) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Report Comment:", nil), self.trip.comment]];
+        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.comment.label", nil), self.trip.comment]];
     }
 
     if (distances.count > 0) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"Distance Traveled: %.2f", [self.database totalDistanceTraveledForTrip:self.trip].floatValue]];
+        [self.pdfDrawer drawRowText:[NSString stringWithFormat:NSLocalizedString(@"pdf.report.distance.traveled.label.base", nil), [self.database totalDistanceTraveledForTrip:self.trip].floatValue]];
     }
 
     [self.pdfDrawer drawGap];

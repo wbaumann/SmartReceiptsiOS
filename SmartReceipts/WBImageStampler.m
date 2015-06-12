@@ -137,14 +137,15 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
     // bottom texts
     
     y = backgroundSize.height - yPad/2 + spacing*2;
-    
+
+
 #define entry(name,value) { drawEntry(xPad / 2, y, name, value, attrs); y += spacing; }
     
-    entry(NSLocalizedString(@"Name", nil), [receipt name]);
-    entry(NSLocalizedString(@"Price", nil), [receipt priceWithCurrencyFormatted]);
-    entry(NSLocalizedString(@"Date", nil), [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]]);
-    entry(NSLocalizedString(@"Category", nil), [receipt category]);
-    entry(NSLocalizedString(@"Comment", nil), [receipt comment]);
+    entry(NSLocalizedString(@"image.stamper.receipt.name", nil), [receipt name]);
+    entry(NSLocalizedString(@"image.stamper.receipt.price", nil), [receipt priceWithCurrencyFormatted]);
+    entry(NSLocalizedString(@"image.stamper.receipt.date", nil), [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]]);
+    entry(NSLocalizedString(@"image.stamper.receipt.category", nil), [receipt category]);
+    entry(NSLocalizedString(@"image.stamper.receipt.comment", nil), [receipt comment]);
     
 #undef entry
     

@@ -36,11 +36,11 @@
     _changed = NO;
 
     self.navigationItem.title = self.forCSV
-            ? NSLocalizedString(@"Configure CSV", nil)
-            : NSLocalizedString(@"Configure PDF", nil);
+            ? NSLocalizedString(@"columns.controller.title.csv", nil)
+            : NSLocalizedString(@"columns.controller.title.pdf", nil);
 
     _dynamicPicker = [[WBDynamicPicker alloc] initWithType:WBDynamicPickerTypePicker withController:self];
-    [_dynamicPicker setTitle:NSLocalizedString(@"Columns", nil)];
+    [_dynamicPicker setTitle:NSLocalizedString(@"columns.controller.picker.title", nil)];
     _dynamicPicker.delegate = self;
 
     self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], self.editButtonItem];
@@ -70,7 +70,7 @@
 
     Column *col = _columns[indexPath.row];
 
-    NSString *colPrefix = NSLocalizedString(@"Col.", @"Column prefix used while ordering");
+    NSString *colPrefix = NSLocalizedString(@"columns.controller.column.prefix", @"Column prefix used while ordering");
 
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %d", colPrefix, (int) (indexPath.row + 1)];
     cell.detailTextLabel.text = [col name];
@@ -89,7 +89,7 @@
         idx2 = _columns.count - 1;
     }
 
-    NSString *colPrefix = NSLocalizedString(@"Col.", @"Column prefix used while ordering");
+    NSString *colPrefix = NSLocalizedString(@"columns.controller.column.prefix", @"Column prefix used while ordering");
 
     for (NSUInteger i = idx1; i <= idx2; ++i) {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
@@ -122,7 +122,7 @@
         return;
     }
 
-    NSString *colPrefix = NSLocalizedString(@"Col.", @"Column prefix used while ordering");
+    NSString *colPrefix = NSLocalizedString(@"columns.controller.column.prefix", @"Column prefix used while ordering");
 
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:idx1 inSection:0]];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %td", colPrefix, (idx2 + 1)];

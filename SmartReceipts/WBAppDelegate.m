@@ -132,16 +132,16 @@ void onUncaughtExcepetion(NSException *exception) {
     self.filePathToAttach = path;
 
     if (self.isFileImage) {
-        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Attach Image", nil)
-                                    message:NSLocalizedString(@"Tap on an existing receipt to add this Image to it", nil)
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"app.delegate.attach.image.alert.title", nil)
+                                    message:NSLocalizedString(@"app.delegate.attach.image.alert.message", nil)
                                    delegate:nil
-                          cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                          cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil)
                           otherButtonTitles:nil] show];
     } else {
-        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Attach PDF", nil)
-                                    message:NSLocalizedString(@"Tap on an existing receipt to add this PDF to it", nil)
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"app.delegate.attach.pdf.alert.title", nil)
+                                    message:NSLocalizedString(@"app.delegate.attach.pdf.alert.message", nil)
                                    delegate:nil
-                          cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                          cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil)
                           otherButtonTitles:nil] show];
     }
 
@@ -149,13 +149,13 @@ void onUncaughtExcepetion(NSException *exception) {
 
 - (void)handleSMR:(NSURL *)url {
 
-    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Import", nil)
-                                message:NSLocalizedString(@"Overwrite Existing Data?", nil)
-                       cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"Cancel", nil) action:^{
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"app.delegate.import.alert.title", nil)
+                                message:NSLocalizedString(@"app.delegate.import.alert.message", nil)
+                       cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.cancel", nil) action:^{
                            [WBFileManager deleteIfExists:[url path]];
                        }]
-                       otherButtonItems:[RIButtonItem itemWithLabel:NSLocalizedString(@"Yes", nil) action:^{ [self importZipFrom:url overwrite:YES]; }],
-                                        [RIButtonItem itemWithLabel:NSLocalizedString(@"No", nil) action:^{ [self importZipFrom:url overwrite:NO]; }], nil] show];
+                       otherButtonItems:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.yes", nil) action:^{ [self importZipFrom:url overwrite:YES]; }],
+                                        [RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.no", nil) action:^{ [self importZipFrom:url overwrite:NO]; }], nil] show];
 }
 
 - (void)importZipFrom:(NSURL *)zipPath overwrite:(BOOL)overwrite {
@@ -174,16 +174,16 @@ void onUncaughtExcepetion(NSException *exception) {
             if (result) {
                 [[[UIAlertView alloc]
                         initWithTitle:nil
-                              message:NSLocalizedString(@"Successfully imported all files.", nil)
+                              message:NSLocalizedString(@"app.delegate.import.success.alert.message", nil)
                              delegate:nil
-                    cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                    cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil)
                     otherButtonTitles:nil] show];
             } else {
                 [[[UIAlertView alloc]
-                        initWithTitle:NSLocalizedString(@"Error", nil)
-                              message:NSLocalizedString(@"Failed to recognize the file as importable.", nil)
+                        initWithTitle:NSLocalizedString(@"generic.error.alert.title", nil)
+                              message:NSLocalizedString(@"app.delegate.import.error.alert.message", nil)
                              delegate:nil
-                    cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                    cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil)
                     otherButtonTitles:nil] show];
             }
         });

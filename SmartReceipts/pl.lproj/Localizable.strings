@@ -1,509 +1,283 @@
-/* 
-  Localizable.strings
-  SmartReceipts
-
-  Created on 23/04/14.
-  Copyright (c) 2014 Will Baumann. All rights reserved.
-*/
-
-/* No comment provided by engineer. */
-"<Category>" = "<Kategoria>";
-
-/* No comment provided by engineer. */
-"Add" = "Dodaj";
-
-/* No comment provided by engineer. */
-"Add distance" = "Dodaj dystans";
-
-/* No comment provided by engineer. */
-"Airfare" = "Przelot";
-
-/* No comment provided by engineer. */
-"AIRP" = "AIRP";
-
-/* No comment provided by engineer. */
-"Attach Image" = "Dołącz Obrazek";
-
-/* No comment provided by engineer. */
-"Attach PDF" = "Dołącz PDF";
-
-/* No comment provided by engineer. */
-"Backup" = "Kopia zapasowa";
-
-/* No comment provided by engineer. */
-"Blank Column" = "Pusta Kolumna";
-
-/* No comment provided by engineer. */
-"Books/Periodicals" = "Książki/Czasopisma";
-
-/* No comment provided by engineer. */
-"Breakfast" = "Śniadanie";
-
-/* No comment provided by engineer. */
-"BRFT" = "BRFT";
-
-/* No comment provided by engineer. */
-"Camera is not available." = "Kamera nie jest dostępna.";
-
-/* No comment provided by engineer. */
-"Cancel" = "Anuluj";
-
-/* No comment provided by engineer. */
-"Cannot add this category" = "Nie można dodać tej kategorii";
-
-/* No comment provided by engineer. */
-"Cannot add this receipt" = "Nie można dodać tego paragonu";
-
-/* No comment provided by engineer. */
-"Cannot add this trip" = "Nie można dodać tego raportu";
-
-/* No comment provided by engineer. */
-"Cannot edit this category" = "Nie można zedytować tej kategorii";
-
-/* No comment provided by engineer. */
-"Cannot save this receipt" = "Nie można zapisać tego paragonu";
-
-/* No comment provided by engineer. */
-"Cannot save this trip" = "Nie można zapisać tego raportu";
-
-/* No comment provided by engineer. */
-"Car Rental" = "Wynajem samochodu";
-
-/* No comment provided by engineer. */
-"Categories" = "Kategorie";
-
-/* No comment provided by engineer. */
-"Category" = "Kategoria";
-
-/* No comment provided by engineer. */
-"Category Code" = "Kod Kategorii";
-
-/* No comment provided by engineer. */
-"Category Name" = "Nazwa Kategorii";
-
-/* No comment provided by engineer. */
-"Cell Phone" = "Tel. Komórkowy";
-
-/* Column prefix used while ordering */
-"Col." = "Kol.";
-
-/* No comment provided by engineer. */
-"Columns" = "Kolumny";
-
-/* No comment provided by engineer. */
-"Comment" = "Komentarz";
-
-/* No comment provided by engineer. */
-"Configure CSV" = "Konfiguracja CSV";
-
-/* No comment provided by engineer. */
-"Configure CSV Columns" = "Konfiguruj kolumny CSV";
-
-/* No comment provided by engineer. */
-"Configure PDF" = "Konfiguracja PDF";
-
-/* No comment provided by engineer. */
-"Configure PDF Columns" = "Konfiguruj kolumny PDF";
-
-/* No comment provided by engineer. */
-"Copy" = "Kopiuj";
-
-/* No comment provided by engineer. */
-"Copy to" = "Kopiuj do";
-
-/* No comment provided by engineer. */
-"Couldn't generate selected reports" = "Nie udało się wygenerować wybranych raportów";
-
-/* No comment provided by engineer. */
-"CSV File" = "Plik CSV";
-
-/* No comment provided by engineer. */
-"Currencies" = "Waluty";
-
-/* No comment provided by engineer. */
-"Currency" = "Waluta";
-
-/* No comment provided by engineer. */
-"Customize CSV Output" = "Dostosuj Wyjście CSV";
-
-/* No comment provided by engineer. */
-"Customize PDF Output" = "Dostosuj Wyjście PDF";
-
-/* No comment provided by engineer. */
-"Date" = "Data";
-
-/* No comment provided by engineer. */
-"Date Separator" = "Separator Daty";
-
-/* No comment provided by engineer. */
-"Default" = "Domyślne";
-
-/* No comment provided by engineer. */
-"Default Currency" = "Domyślna Waluta";
-
-/* No comment provided by engineer. */
-"Default Email Recipient" = "Domyślny Odbiorca Email";
-
-/* No comment provided by engineer. */
-"Default Receipt Date to Report Start Date" = "Domyślna Data Startu Raportu jako Data Paragonu";
-
-/* No comment provided by engineer. */
-"Default Trip Length (Days)" = "Domyślna długość raportu (Dni)";
-
-/* No comment provided by engineer. */
-"DINN" = "DINN";
-
-/* No comment provided by engineer. */
-"Dinner" = "Obiad";
-
-/* No comment provided by engineer. */
-"Dues/Subscriptions" = "Składki/Subskrypcje";
-
-/* No comment provided by engineer. */
-"e.g. 25.00" = "np. 25.00";
-
-/* No comment provided by engineer. */
-"Edit Receipt" = "Edytuj Paragon";
-
-/* No comment provided by engineer. */
-"Edit Trip" = "Edytuj Raport";
-
-/* No comment provided by engineer. */
-"Enable AutoComplete Suggestions" = "Włącz AutoUzupełnianie";
-
-/* No comment provided by engineer. */
-"End Date" = "Data Końcowa";
-
-/* No comment provided by engineer. */
-"ENT" = "ENT";
-
-/* No comment provided by engineer. */
-"Entertainment" = "Rozrywka";
-
-/* No comment provided by engineer. */
-"Error" = "Error";
-
-/* No comment provided by engineer. */
-"Expensable" = "Wliczane w Wydatki";
-
-/* No comment provided by engineer. */
-"Export" = "Eksport";
-
-/* No comment provided by engineer. */
-"Export your receipts?" = "Eksportować paragony?";
-
-/* No comment provided by engineer. */
-"Exporting ..." = "Eksportuję ...";
-
-/* No comment provided by engineer. */
-"Failed to properly export your data." = "Nie udało się poprawnie wyeksportować danych.";
-
-/* No comment provided by engineer. */
-"Failed to recognize the file as importable." = "Nie rozpoznano pliku jako importowalny.";
-
-/* No comment provided by engineer. */
-"Full Page Image" = "Obraz na całą stronę";
-
-/* No comment provided by engineer. */
-"Full PDF Report" = "Pełny Raport PDF";
-
-/* No comment provided by engineer. */
-"GAS" = "GAS";
-
-/* No comment provided by engineer. */
-"Gasoline" = "Benzyna";
-
-/* No comment provided by engineer. */
-"General" = "Ogólne";
-
-/* No comment provided by engineer. */
-"Generate Report" = "Generuj Raport";
-
-/* No comment provided by engineer. */
-"Generating ..." = "Generuję ...";
-
-/* No comment provided by engineer. */
-"GIFT" = "GIFT";
-
-/* No comment provided by engineer. */
-"Gift" = "Prezent";
-
-/* No comment provided by engineer. */
-"Hotel" = "Hotel";
-
-/* No comment provided by engineer. */
-"HTL" = "HTL";
-
-/* No comment provided by engineer. */
-"Image Name" = "Nazwa Obrazu";
-
-/* No comment provided by engineer. */
-"Image Path" = "Scieżka Obrazu";
-
-/* No comment provided by engineer. */
-"Import" = "Import";
-
-/* No comment provided by engineer. */
-"Importing ..." = "Importuję ...";
-
-/* No comment provided by engineer. */
-"Include Header Columns" = "Dołącz Kolumy Nagłówkowe";
-
-/* No comment provided by engineer. */
-"Include Tax Field For Receipts" = "Dodaj Pole Podatku dla Paragonów";
-
-/* No comment provided by engineer. */
-"LAUN" = "LAUN";
-
-/* No comment provided by engineer. */
-"Laundry" = "Pranie";
-
-/* No comment provided by engineer. */
-"LNCH" = "LNCH";
-
-/* No comment provided by engineer. */
-"Lunch" = "Lunch";
-
-/* No comment provided by engineer. */
-"Make Backup" = "Zrób Kopię Zapasową";
-
-/* No comment provided by engineer. */
-"Manage Categories" = "Zarządzaj Kategoriami";
-
-/* No comment provided by engineer. */
-"Match Comments to Categories" = "Dopasuj Komentarze do Kategorii";
-
-/* No comment provided by engineer. */
-"Match Name to Categories" = "Dopasuj Nazwę do Kategorii";
-
-/* No comment provided by engineer. */
-"Max. Camera Height / Width" = "Max. Wysokość / Szerokość Kamery";
-
-/* No comment provided by engineer. */
-"Meals (Justified)" = "Dania";
-
-/* No comment provided by engineer. */
-"Min. Receipt Price to Report" = "Min. Cena do Raportu";
-
-/* No comment provided by engineer. */
-"MISC" = "MISC";
-
-/* No comment provided by engineer. */
-"Move" = "Przenieś";
-
-/* No comment provided by engineer. */
-"Move to" = "Przenieś do";
-
-/* No comment provided by engineer. */
-"Name" = "Nazwa";
-
-/* No comment provided by engineer. */
-"Name of your receipt" = "Nazwa twojego paragonu";
-
-/* No comment provided by engineer. */
-"New Receipt" = "Nowy Paragon";
-
-/* No comment provided by engineer. */
-"New Trip" = "Nowy Raport";
-
-/* No comment provided by engineer. */
-"No" = "Nie";
-
-/* No comment provided by engineer. */
-"No camera" = "Brak kamery";
-
-/* No comment provided by engineer. */
-"No report selected" = "Nie wybrano raportu";
-
-/* No comment provided by engineer. */
-"No reports selected" = "Nie wybrano raportów";
-
-/* No comment provided by engineer. */
-"NUL" = "NUL";
-
-/* No comment provided by engineer. */
-"OK" = "OK";
-
-/* No comment provided by engineer. */
-"Only Report Expensable Receipts" = "Raportuj tylko \"Wliczane w wydatki\"";
-
-/* No comment provided by engineer. */
-"Other" = "Inne";
-
-/* No comment provided by engineer. */
-"Overwrite Existing Data?" = "Nadpisać istniejące dane?";
-
-/* No comment provided by engineer. */
-"PARK" = "PARK";
-
-/* No comment provided by engineer. */
-"Parking/Tolls" = "Parkowanie/Opłaty";
-
-/* No comment provided by engineer. */
-"PDF Report - No Table" = "Raport PDF - Bez Tabeli";
-
-/* No comment provided by engineer. */
-"Pictured" = "Ze zdjęciem";
-
-/* No comment provided by engineer. */
-"Pixels" = "Piksele";
-
-/* No comment provided by engineer. */
-"Please enter a name" = "Proszę wprowadzić nazwę";
-
-/* No comment provided by engineer. */
-"POST" = "POST";
-
-/* No comment provided by engineer. */
-"Postage/Shipping" = "Poczta/Dostawy";
-
-/* No comment provided by engineer. */
-"Predict Receipt Categories" = "Predykcja Kategorii Paragonu";
-
-/* No comment provided by engineer. */
-"Price" = "Cena";
-
-/* No comment provided by engineer. */
-"RCAR" = "RCAR";
-
-/* No comment provided by engineer. */
-"Receipt Index" = "Indeks Paragonu";
-
-/* No comment provided by engineer. */
-"Replace Image" = "Zastąp Obraz";
-
-/* No comment provided by engineer. */
-"Replace Image with PDF" = "Zastąp Obraz przez PDF";
-
-/* No comment provided by engineer. */
-"Replace PDF" = "Zastąp PDF";
-
-/* No comment provided by engineer. */
-"Replace PDF with Image" = "Zastąp PDF przez Obraz";
-
-/* No comment provided by engineer. */
-"report attached" = "raport załączony";
-
-/* No comment provided by engineer. */
-"Report End Date" = "Końcowa Data Raportu";
-
-/* No comment provided by engineer. */
-"Report Name" = "Nazwa Raportu";
-
-/* No comment provided by engineer. */
-"Report Start Date" = "Startowa Data Raportu";
-
-/* No comment provided by engineer. */
-"reports attached" = "raportów załączono";
-
-/* No comment provided by engineer. */
-"Retake Receipt Image" = "Zrób ponownie Zdjęcie Paragonu";
-
-/* No comment provided by engineer. */
-"Settings" = "Ustawienia";
-
-/* No comment provided by engineer. */
-"Smart Receipts" = "Smart Receipts";
-
-/* No comment provided by engineer. */
-"Start Date" = "Data Startowa";
-
-/* No comment provided by engineer. */
-"Stationery/Stations" = "Papeteria/Stanowiska";
-
-/* No comment provided by engineer. */
-"Successfully imported all files." = "Wszystkie pliki zaimportowano z sukcesem.";
-
-/* No comment provided by engineer. */
-"Swap Down" = "Przenieś w dół";
-
-/* No comment provided by engineer. */
-"Swap Up" = "Przenieś w górę";
-
-/* No comment provided by engineer. */
-"Take Receipt Image" = "Zrób Zdjęcie Paragonu";
-
-/* No comment provided by engineer. */
-"Tap on an existing receipt to add this Image to it" = "Nacisnij na istniejący paragon aby dodać do niego Obraz";
-
-/* No comment provided by engineer. */
-"Tap on an existing receipt to add this PDF to it" = "Nacisnij na istniejący paragon aby dodać do niego PDF";
-
-/* No comment provided by engineer. */
-"Tax" = "Podatek";
-
-/* No comment provided by engineer. */
-"TAXI" = "TAXI";
-
-/* No comment provided by engineer. */
-"Taxi/Bus" = "Taxi/Autobus";
-
-/* No comment provided by engineer. */
-"TELE" = "TELE";
-
-/* No comment provided by engineer. */
-"Telephone/Fax" = "Telefon/Fax";
-
-/* No comment provided by engineer. */
-"TIP" = "TIP";
-
-/* No comment provided by engineer. */
-"Tip" = "Napiwek";
-
-/* No comment provided by engineer. */
-"Total" = "Ogółem";
-
-/* No comment provided by engineer. */
-"Train" = "Pociąg";
-
-/* No comment provided by engineer. */
-"Training Fees" = "Opłaty Szkoleniowe";
-
-/* No comment provided by engineer. */
-"TRN" = "TRN";
-
-/* No comment provided by engineer. */
-"User ID" = "ID Użytkownika";
-
-/* No comment provided by engineer. */
-"View Receipt Image" = "Pokaż Zdjęcie Paragonu";
-
-/* No comment provided by engineer. */
-"View Receipt PDF" = "Pokaż PDF Paragonu";
-
-/* No comment provided by engineer. */
-"Yes" = "Tak";
-
-/* No comment provided by engineer. */
-"Yes - As PDF" = "Tak - Jako PDF";
-
-/* No comment provided by engineer. */
-"You can also disable autocomplete if you'd prefer" = "Jeżeli preferujesz możesz również wyłączyć autouzupełnianie";
-
-/* No comment provided by engineer. */
-"You can reimport your data by clicking on the SmartReceipts.SMR file, which is generated by clicking below." = "Możesz ponownie zaimportować swoje dane klikając na plik SmartReceipts.SMR, ktory zostanie wygenerowany po kliknięciu poniżej.";
-
-/* No comment provided by engineer. */
-"Your comments here" = "Twój komentarz tutaj";
-
-/* No comment provided by engineer. */
-"ZBKP" = "ZBKP";
-
-/* No comment provided by engineer. */
-"ZCEL" = "ZCEL";
-
-/* No comment provided by engineer. */
-"ZDUE" = "ZDUE";
-
-/* No comment provided by engineer. */
-"ZIP - Stamped JPGs" = "ZIP - Podpisane JPG";
-
-/* No comment provided by engineer. */
-"ZMEO" = "ZMEO";
-
-/* No comment provided by engineer. */
-"ZSTS" = "ZSTS";
-
-/* No comment provided by engineer. */
-"ZTRN" = "ZTRN";
-
+"app.delegate.attach.image.alert.message" = "Nacisnij na istniejący paragon aby dodać do niego Obraz";
+"app.delegate.attach.image.alert.title" = "Dołącz Obrazek";
+"app.delegate.attach.pdf.alert.message" = "Nacisnij na istniejący paragon aby dodać do niego PDF";
+"app.delegate.attach.pdf.alert.title" = "Dołącz PDF";
+"app.delegate.import.alert.message" = "Nadpisać istniejące dane?";
+"app.delegate.import.alert.title" = "Import";
+"app.delegate.import.error.alert.message" = "Nie rozpoznano pliku jako importowalny.";
+"app.delegate.import.success.alert.message" = "Wszystkie pliki zaimportowano z sukcesem.";
+
+"autocomplete.helper.disable.tip.text" = "Jeżeli preferujesz możesz również wyłączyć autouzupełnianie";
+
+"categiry.cell.phone.code" = "ZCEL";
+"categiry.cell.phone.name" = "Tel. Komórkowy";
+
+"categories.controller.title" = "Kategorie";
+
+"category.airfare.code" = "AIRP";
+"category.airfare.name" = "Przelot";
+"category.books.periodicals.code" = "ZBKP";
+"category.books.periodicals.name" = "Książki/Czasopisma";
+"category.breakfast.code" = "BRFT";
+"category.breakfast.name" = "Śniadanie";
+"category.car.rental.code" = "RCAR";
+"category.car.rental.name" = "Wynajem samochodu";
+"category.dinner.code" = "DINN";
+"category.dinner.name" = "Obiad";
+"category.dues.subscriptions.code" = "ZDUE";
+"category.dues.subscriptions.name" = "Składki/Subskrypcje";
+"category.entertainment.code" = "ENT";
+"category.entertainment.name" = "Rozrywka";
+"category.gasoline.code" = "GAS";
+"category.gasoline.name" = "Benzyna";
+"category.gift.code" = "GIFT";
+"category.gift.name" = "Gift";
+"category.hotel.code" = "HTL";
+"category.hotel.name" = "Hotel";
+"category.laundry.code" = "LAUN";
+"category.laundry.name" = "Pranie";
+"category.lunch.code" = "LNCH";
+"category.lunch.name" = "Lunch";
+"category.meals.justified.code" = "ZMEO";
+"category.meals.justified.name" = "Dania";
+"category.none.code" = "NUL";
+"category.none.name" = "<Kategoria>";
+"category.other.code" = "MISC";
+"category.other.name" = "Inne";
+"category.parking.tolls.code" = "PARK";
+"category.parking.tolls.name" = "Parkowanie/Opłaty";
+"category.postage.shipping.code" = "POST";
+"category.postage.shipping.name" = "Poczta/Dostawy";
+"category.stationery.stations.code" = "ZSTS";
+"category.stationery.stations.name" = "Papeteria/Stanowiska";
+"category.taxi.bus.code" = "TAXI";
+"category.taxi.bus.name" = "Taxi/Autobus";
+"category.telephone.fax.code" = "TELE";
+"category.telephone.fax.name" = "Telefon/Fax";
+"category.tip.code" = "TIP";
+"category.tip.name" = "Napiwek";
+"category.train.code" = "TRN";
+"category.train.name" = "Pociąg";
+"category.training.fees.code" = "ZTRN";
+"category.training.fees.name" = "Opłaty Szkoleniowe";
+
+"columns.controller.column.prefix" = "Kol.";
+"columns.controller.picker.title" = "Kolumny";
+"columns.controller.title.csv" = "Konfiguracja CSV";
+"columns.controller.title.pdf" = "Konfiguracja PDF";
+
+"distance.column.comment" = "Komentarz";
+"distance.column.currency" = "Waluta";
+"distance.column.date" = "Data";
+"distance.column.distance" = "Distance";
+"distance.column.location" = "Location";
+"distance.column.price" = "Cena";
+"distance.column.rate" = "Rate";
+
+"distances.controller.title" = "Distances";
+"distances.to.receipt.auto.categpry" = "Distance";
+"distances.to.receipt.auto.name" = "Distance";
+
+"edit.category.add.failure.message" = "Nie można dodać tej kategorii";
+"edit.category.edit.failure.message" = "Nie można zedytować tej kategorii";
+"edit.category.validate.missing.name" = "Proszę wprowadzić nazwę";
+"edit.distance.controller.add.title" = "Add distance";
+"edit.distance.controller.comment.label" = "Komentarz";
+"edit.distance.controller.currency.label" = "Waluta";
+"edit.distance.controller.date.label" = "Data";
+"edit.distance.controller.distance.label" = "Distance";
+"edit.distance.controller.edit.title" = "Edit distance";
+"edit.distance.controller.location.label" = "Location";
+"edit.distance.controller.rate.label" = "Rate";
+"edit.distance.controller.save.distance.error.generic.message" = "For some reason distance could not be added";
+"edit.distance.controller.save.distance.error.title" = "Distance not saved";
+"edit.distance.controller.validation.distance.missing" = "Distance not entered";
+"edit.distance.controller.validation.error.title" = "Can't save distance";
+"edit.distance.controller.validation.rate.missing" = "Rate not entered";
+"edit.payment.method.controller.add.title" = "Add Payment Method";
+"edit.payment.method.controller.edit.title" = "Edit Payment Method";
+"edit.payment.method.controller.save.error.exists.message" = "Payment method with given name already exists";
+"edit.payment.method.controller.save.error.generic.message" = "Payment method could not be saved";
+"edit.payment.method.controller.save.error.message" = "Payment method name not entered";
+"edit.payment.method.controller.save.error.title" = "Can't save";
+"edit.receipt.category.label" = "Kategoria";
+"edit.receipt.comment.label" = "Komentarz";
+"edit.receipt.comment.placeholder" = "Twój komentarz tutaj";
+"edit.receipt.controller.add.title" = "Nowy Paragon";
+"edit.receipt.controller.edit.title" = "Edytuj Paragon";
+"edit.receipt.currency.label" = "Waluta";
+"edit.receipt.date.label" = "Data";
+"edit.receipt.expensable.label" = "Wliczane w Wydatki";
+"edit.receipt.full.page.label" = "Obraz na całą stronę";
+"edit.receipt.generic.save.error.message" = "Nie można dodać tego paragonu";
+"edit.receipt.name.label" = "Nazwa";
+"edit.receipt.name.missing.alert.message" = "Proszę wprowadzić nazwę";
+"edit.receipt.name.placeholder" = "Nazwa twojego paragonu";
+"edit.receipt.payment.method.label" = "Payment Method";
+"edit.receipt.price.label" = "Cena";
+"edit.receipt.price.placeholder" = "np. 25.00";
+"edit.receipt.tax.label" = "Podatek";
+"edit.receipt.tax.placeholder" = "np. 5.00";
+"edit.trip.comment.label" = "Komentarz";
+"edit.trip.controller.add.title" = "Nowy Raport";
+"edit.trip.controller.edit.title" = "Edytuj Raport";
+"edit.trip.cost.center.label" = "Cost Center";
+"edit.trip.default.currency.label" = "Domyślna Waluta";
+"edit.trip.end.date.label" = "Data Końcowa";
+"edit.trip.generic.save.error.message" = "Nie można zapisać tego raportu";
+"edit.trip.name.label" = "Nazwa";
+"edit.trip.name.missing.alert.message" = "Proszę wprowadzić nazwę";
+"edit.trip.start.date.label" = "Data Startowa";
+
+"generate.report.controller.title" = "Generuj Raport";
+"generate.report.multiple.attached.suffix" = "raportów załączono";
+"generate.report.no.options.selected.alert.message" = "Nie wybrano raportów";
+"generate.report.one.attached.suffix" = "raport załączony";
+"generate.report.option.csv" = "Plik CSV";
+"generate.report.option.full.pdf" = "Pełny Raport PDF";
+"generate.report.option.pdf.no.table" = "Raport PDF - Bez Tabeli";
+"generate.report.option.zip.stamped" = "ZIP - Podpisane JPG";
+"generate.report.unsuccessful.alert.message" = "Nie udało się wygenerować wybranych raportów";
+
+"generic.button.title.cancel" = "Anuluj";
+"generic.button.title.no" = "Nie";
+"generic.button.title.ok" = "OK";
+"generic.button.title.yes" = "Tak";
+"generic.error.alert.title" = "Error";
+
+"image.picker.sheet.cancel.button.title" = "Cancel";
+"image.picker.sheet.choose.existing.button.title" = "Choose Existing";
+"image.picker.sheet.take.photo.button.title" = "Take Photo";
+"image.picker.sheet.title" = "Select image from";
+"image.stamper.receipt.category" = "Kategoria";
+"image.stamper.receipt.comment" = "Komentarz";
+"image.stamper.receipt.date" = "Data";
+"image.stamper.receipt.name" = "Nazwa";
+"image.stamper.receipt.price" = "Cena";
+
+"move.copy.receipt.controller.copy.title" = "Kopiuj do";
+"move.copy.receipt.controller.move.title" = "Przenieś do";
+
+"no.trips.empty.message" = "Nie wybrano raportu";
+
+"payment.method.cash" = "Cash";
+"payment.method.check" = "Check";
+"payment.method.corporate.card" = "Corporate Card";
+"payment.method.personal.card" = "Personal Card";
+"payment.method.unspecified" = "Unspecified";
+"payment.methods.controller.title" = "Payment Methods";
+
+"pdf.report.comment.label" = "Report Comment:";
+"pdf.report.const.center.label" = "Cost Center:";
+"pdf.report.distance.total.label" = "Distance Total:";
+"pdf.report.distance.traveled.label.base" = "Distance Traveled: %.2f";
+"pdf.report.from.to.label.base" = "From: %@ To: %@";
+"pdf.report.gross.total.label" = "Gross Total:";
+"pdf.report.receipts.total.expensable.label" = "Receipts Total (Expenseable):";
+"pdf.report.receipts.total.label" = "Receipts Total:";
+"pdf.report.receipts.total.sans.tax.label" = "Receipts Total (Sans Tax):";
+"pdf.report.tax.total.label" = "Tax Total:";
+
+"receipt.action.attach.image" = "Dołącz Obrazek";
+"receipt.action.attach.pdf" = "Dołącz PDF";
+"receipt.action.copy" = "Kopiuj";
+"receipt.action.move" = "Przenieś";
+"receipt.action.replace.image" = "Zastąp Obraz";
+"receipt.action.replace.image.with.pdf" = "Zastąp Obraz przez PDF";
+"receipt.action.replace.pdf" = "Zastąp PDF";
+"receipt.action.replace.pdf.with.image" = "Zastąp PDF przez Obraz";
+"receipt.action.retake.receipt.image" = "Zrób ponownie Zdjęcie Paragonu";
+"receipt.action.swap.down" = "Przenieś w dół";
+"receipt.action.swap.up" = "Przenieś w górę";
+"receipt.action.take.receipt.image" = "Zrób Zdjęcie Paragonu";
+"receipt.action.view.receipt.image" = "Pokaż Zdjęcie Paragonu";
+"receipt.action.view.receipt.pdf" = "Pokaż PDF Paragonu";
+"receipt.attachment.marker.image" = "Image";
+"receipt.attachment.marker.pdf" = "PDF";
+"receipt.column.blank.column" = "Pusta Kolumna";
+"receipt.column.category.code" = "Kod Kategorii";
+"receipt.column.category.name" = "Nazwa Kategorii";
+"receipt.column.comment" = "Komentarz";
+"receipt.column.currency" = "Waluta";
+"receipt.column.date" = "Data";
+"receipt.column.expensable" = "Wliczane w Wydatki";
+"receipt.column.expenseable.value.no" = "Nie";
+"receipt.column.expenseable.value.yes" = "Tak";
+"receipt.column.image.name" = "Nazwa Obrazu";
+"receipt.column.image.path" = "Scieżka Obrazu";
+"receipt.column.name" = "Nazwa";
+"receipt.column.payment.method" = "Payment Method";
+"receipt.column.pictured" = "Ze zdjęciem";
+"receipt.column.pictured.value.no" = "Nie";
+"receipt.column.pictured.value.pdf" = "Tak - Jako PDF";
+"receipt.column.pictured.value.yes" = "Tak";
+"receipt.column.price" = "Cena";
+"receipt.column.receipt.index" = "Indeks Paragonu";
+"receipt.column.report.comment" = "Report Comment";
+"receipt.column.report.cost.center" = "Report Cost Center";
+"receipt.column.report.end.date" = "Końcowa Data Raportu";
+"receipt.column.report.name" = "Nazwa Raportu";
+"receipt.column.report.start.date" = "Startowa Data Raportu";
+"receipt.column.tax" = "Podatek";
+"receipt.column.user.id" = "ID Użytkownika";
+
+"settings.add.distance.price.to.report.label" = "Add Distane Price to Report";
+"settings.assume.price.pre.tax.label" = "Assume Price is Pre-Tax";
+"settings.automatically.rotate.images.label" = "Automatically rotate images";
+"settings.backup.button.label" = "Zrób Kopię Zapasową";
+"settings.backup.section.title" = "Kopia zapasowa";
+"settings.camera.pixels.label" = "Piksele";
+"settings.camera.section.title" = "Camera";
+"settings.camera.value.default.label" = "Domyślne";
+"settings.categories.section.title" = "Kategorie";
+"settings.controller.export.error.message" = "Nie udało się poprawnie wyeksportować danych.";
+"settings.controller.title" = "Ustawienia";
+"settings.convert.to.grayscale.label" = "Convert to Grayscale";
+"settings.csv.configure.columns.label" = "Konfiguruj kolumny CSV";
+"settings.csv.include.header.columns.label" = "Dołącz Kolumy Nagłówkowe";
+"settings.csv.section.title" = "Dostosuj Wyjście CSV";
+"settings.customize.payment.methods.label" = "Customize Payment Methods";
+"settings.date.separator.label" = "Separator Daty";
+"settings.default.currency.label" = "Domyślna Waluta";
+"settings.default.email.bcc.label" = "Default Email BBC Recipient";
+"settings.default.email.bcc.placeholder" = "Separate entries with a comma (,)";
+"settings.default.email.cc.lebel" = "Default Email CC Recipient";
+"settings.default.email.cc.placeholder" = "Separate entries with a comma (,)";
+"settings.default.email.recipient.lebel" = "Default Email To Recipient";
+"settings.default.email.recipient.placeholder" = "Separate entries with a comma (,)";
+"settings.default.email.subject.label" = "Default Email Subject";
+"settings.default.receipt.date.to.start.date.label" = "Domyślna Data Startu Raportu jako Data Paragonu";
+"settings.default.tax.percentage" = "Default Tax Percentage";
+"settings.default.trip.length.label" = "Domyślna długość raportu (Dni)";
+"settings.distance.report.on.daily.distance" = "Report on Daily Distance";
+"settings.distance.section.title" = "Distance";
+"settings.email.section.title" = "Email";
+"settings.enable.autocomplete.suggestions.label" = "Włącz AutoUzupełnianie";
+"settings.enable.payment.methods.label" = "Enable Payment Methods";
+"settings.export.confirmation.alert.message" = "Możesz ponownie zaimportować swoje dane klikając na plik SmartReceipts.SMR, ktory zostanie wygenerowany po kliknięciu poniżej.";
+"settings.export.confirmation.alert.title" = "Eksportować paragony?";
+"settings.export.confirmation.export.button" = "Eksport";
+"settings.gas.rate.label" = "Gas Rate";
+"settings.general.section.title" = "Ogólne";
+"settings.include.distance.table.label" = "Include Distance Table";
+"settings.include.tax.field.label" = "Dodaj Pole Podatku dla Paragonów";
+"settings.layout.include.attachment.marker.label" = "Include Picture/PDF Marker";
+"settings.layout.include.receipt.category.label" = "Include Receipt Category";
+"settings.layout.include.receipt.date.label" = "Include Receipt Date";
+"settings.layout.section.title" = "Layout Customizations";
+"settings.manage.categories.label" = "Zarządzaj Kategoriami";
+"settings.match.comments.to.categories" = "Dopasuj Komentarze do Kategorii";
+"settings.match.name.to.category.label" = "Dopasuj Nazwę do Kategorii";
+"settings.max.camera.resolution.label" = "Max. Wysokość / Szerokość Kamery";
+"settings.min.receipt.price.label" = "Min. Cena do Raportu";
+"settings.only.report.expensable.label" = "Raportuj tylko \"Wliczane w wydatki\"";
+"settings.pdf.configure.columns.label" = "Configure PDF Columns";
+"settings.pdf.print.id.by.photo.label" = "Print ID By Photo";
+"settings.pdf.print.receipt.comment.by.photo.label" = "Print Receipt Comment By Photo";
+"settings.pdf.section.title" = "Dostosuj Wyjście PDF";
+"settings.predict.recept.category.label" = "Predykcja Kategorii Paragonu";
+"settings.show.receipt.id.label" = "Show Receipt ID";
+"settings.track.cost.center.label" = "Track Cost Center";
+"settings.user.id.label" = "ID Użytkownika";
+
+"trips.controller.from.to.date.label.base" = "%@ to %@";
