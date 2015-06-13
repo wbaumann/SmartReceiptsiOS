@@ -15,6 +15,7 @@
 #import "DataImport.h"
 #import "Constants.h"
 #import "Database+Import.h"
+#import "RateApplication.h"
 
 #import <BugSense-iOS/BugSenseController.h>
 #import <UIAlertView-Blocks/RIButtonItem.h>
@@ -45,12 +46,15 @@
 
     NSSetUncaughtExceptionHandler(&onUncaughtExcepetion);
 
+    [[RateApplication sharedInstance] markAppLaunch];
+
     return YES;
 }
 
 void onUncaughtExcepetion(NSException *exception) {
     NSLog(@"Exception: %@", exception);
     NSLog(@"%@", [NSThread callStackSymbols]);
+    [[RateApplication sharedInstance] markAppCrash];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

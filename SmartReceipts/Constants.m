@@ -16,3 +16,5 @@ NSString *const SmartReceiptsPreferencesExportName = @"shared_prefs/SmartReceipt
 NSString *const SmartReceiptsPreferencesImportedNotification = @"SmartReceiptsPreferencesImportedNotification";
 NSString *const SmartReceiptsDatabaseImportCompleteNotification = @"SmartReceiptsDatabaseImportCompleteNotification";
 NSString *const SmartReceiptsSettingsSavedNotification = @"SmartReceiptsSettingsSavedNotification";
+
+NSString *const SmartReceiptAppStoreId = @"905698613";

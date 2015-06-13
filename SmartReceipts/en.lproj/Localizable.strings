@@ -178,6 +178,12 @@
 "pdf.report.receipts.total.sans.tax.label" = "Receipts Total (Sans Tax):";
 "pdf.report.tax.total.label" = "Tax Total:";
 
+"rate.app.alert.message" = "Please rate the app on AppStore and help spread word about SmartReceipts!";
+"rate.app.alert.negative.button" = "No";
+"rate.app.alert.neutral.button" = "Later";
+"rate.app.alert.positive.button" = "Yes";
+"rate.app.alert.title" = "Rate app";
+
 "receipt.action.attach.image" = "Attach Image";
 "receipt.action.attach.pdf" = "Attach PDF";
 "receipt.action.copy" = "Copy";
