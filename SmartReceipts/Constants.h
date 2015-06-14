@@ -55,3 +55,8 @@ extern NSString *const SmartReceiptsDatabaseImportCompleteNotification;
 extern NSString *const SmartReceiptsSettingsSavedNotification;
 
 static NSUInteger const SmartReceiptsNumberOfDecimalPlacesForGasRate = 3;
+static NSUInteger const SmartReceiptTargetLaunchesForAppRating = 50;
+static NSUInteger const SmartReceiptDelayedLaunchesOnAppRatingLater = 10;
+static NSUInteger const SmartReceiptMinUsageDaysForRatin = 7;
+
+extern NSString *const SmartReceiptAppStoreId;
