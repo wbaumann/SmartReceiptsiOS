@@ -7,758 +7,758 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0CDA061268D5228ED6958D52 /* HTEmailAutocompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FB85932BF193F7E4AF2BEEBE /* HTEmailAutocompleteTextField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		123E365B1A2A6CF42FA8E212 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = D78EBDD455672DB3F679849A /* FMDatabasePool.h */; };
-		13F340092843F466613BD387 /* HTAutocompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FC1242D17C517FEA8740BF /* HTAutocompleteTextField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		145E7F94F792B3AD82149207 /* UIActionSheet+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B9278B23475920ED0C80CA /* UIActionSheet+Blocks.h */; };
-		15C1F1C4A4361BEA50D0E111 /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F29F2AE23989124E6846873 /* CMPopTipView.m */; };
-		15E03FFD75825D1BCBC4B09A /* FileInZipInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D2B44D5D5C5F624F71D039C /* FileInZipInfo.h */; };
-		1EBD09CF4B2E8BBE90550801 /* MRNavigationBarProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F2330E6697974B7A20D3D87 /* MRNavigationBarProgressView.h */; };
-		21395C4A046F33A04AE95119 /* Pods-objective-zip-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AE76E97503F7593A98C12470 /* Pods-objective-zip-dummy.m */; };
-		2565571836A7CB7E14DF2ED3 /* MRStopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 46463F0FD0408A97416C14C5 /* MRStopButton.m */; };
-		283CFA4874BB4AF46E5B7CED /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 681DC5DDA6B0CC4850C9CB9D /* ZipFile.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		2BA07D443E3075D5B11A8B15 /* ZipWriteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBDEC08E4D41C21ABA4E590 /* ZipWriteStream.h */; };
-		2DAE3B35E86D05AFA91838F3 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B82084E29EE02854A094429 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		311464C536936C2A44109AD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B878263F2BDB45A057D84E /* Foundation.framework */; };
-		31CEDCC847BC5AC83604E2A0 /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E53EDD0FD93C1CE8473FFA /* ZipException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		3327A7D9653701C7D11C1B63 /* HTEmailAutocompleteTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EB88BC034B61A5ADDE49BDD /* HTEmailAutocompleteTextField.h */; };
-		33745B82D337AD8B19711B13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B878263F2BDB45A057D84E /* Foundation.framework */; };
-		33F8D28E462FF3247BB1F560 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 989D46F565394FE045F725DE /* RIButtonItem.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		344A03F1DAF9D85D08D4B034 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 7813314F21D7C138261A2740 /* unzip.h */; };
-		35FE70FFB935EB9398DD9369 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69287287AC7049DD43925177 /* CoreGraphics.framework */; };
-		37DBA84923B576C771F2B488 /* MRProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E4C51705F9CADEA6161C7C /* MRProgressOverlayView.m */; };
-		3850873EC74B793B049D285A /* MRCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3423DF1447B21932A42D6CD4 /* MRCircularProgressView.m */; };
-		3B89BFBB2DAD135C7483F9EC /* ARCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = F8B7827A969B1053E00461BD /* ARCHelper.h */; };
-		3BC6203B4D4A6782065DA4FE /* ZipException.h in Headers */ = {isa = PBXBuildFile; fileRef = F68C5E9D860B33E6067AFFCC /* ZipException.h */; };
-		3D83DF80EC486DC682245F43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B878263F2BDB45A057D84E /* Foundation.framework */; };
-		3F31B9270D80EE6199D6FDC8 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 0040666C74251D3ED4D45650 /* FMDatabase.h */; };
-		41925B4251DE2028EB82358B /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = F7266A2ABDBB59E10E257F31 /* FMResultSet.h */; };
-		45D264F902B4F4D4E7479A59 /* MRActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 95A27196ED192C3741E1B7A5 /* MRActivityIndicatorView.h */; };
-		4F2E46804DA1AD7F03486742 /* Pods-CMPopTipView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 676E8B14B3BF7B43A6EC6447 /* Pods-CMPopTipView-dummy.m */; };
-		57505404639CAD3BEFF00D2F /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0E2F92AC2572963D040F54 /* UIActionSheet+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		58B59CF3018DE6109C699806 /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8921D6B9C43A0ED195380DA6 /* MRNavigationBarProgressView.m */; };
-		5B997918EA7914D2B4A1E450 /* FMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B14BC963314527050C43D25 /* FMDB.h */; };
-		5ECBC2757214E8B3794B7881 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 823756A0BE2848B6B4307B24 /* ZipWriteStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		622460680E7E3C43CCB9B204 /* MRProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = A9A2BD013C47451392231DFD /* MRProgress.h */; };
-		6338BE47E1E240B45D2CEF1F /* MRStopButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D2DC29092153F67FCFC35D4 /* MRStopButton.h */; };
-		651EAC93A3F26BE353C2CCBD /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CBB635BF2A98EAC3D59E1E /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		662DD6BCDE6F63F0FD585C44 /* CMPopTipView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0189ADDF28D3D3826E72EB44 /* CMPopTipView.h */; };
-		6D1BB85E0BE6EE0E401695A6 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 08833F2F80A507D884434DBB /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		6FE8ADFB23A3A98A005D2F0B /* HTAutocompleteTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E947B29F7D90FE9963DED9C /* HTAutocompleteTextField.h */; };
-		777DBE58B1FEC0099C8B2E75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B878263F2BDB45A057D84E /* Foundation.framework */; };
-		82D003929F7BDAA295402DAF /* Pods-MRProgress-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3671E24C70BB9B133D8F678D /* Pods-MRProgress-dummy.m */; };
-		871ED0C6F4C89189E1309A19 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 799E38029FE2C40C6658FFE5 /* ioapi.h */; };
-		87FA3DF818B70AC65C2089B7 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B1B85443F9F8E53F414E2D /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		8AC8FE830F95B280EFC52359 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3719F4F5CD291B1B1DA85E14 /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		8D668B360984944062576561 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5711BCF1711ACC2B6A999A98 /* zip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		9312333CFAC99BF8911FE17C /* ZipReadStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 0148D8AD478ED883E4C7F7AE /* ZipReadStream.h */; };
-		93E052358B88CF13192E0ED4 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F902AF5A8BCD361D5302D1D /* Pods-dummy.m */; };
-		94A33D62D426C7D99B6B88BC /* UIAlertView+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F487F1257B4D242B702338A /* UIAlertView+Blocks.h */; };
-		9519542D53E80048456027EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B878263F2BDB45A057D84E /* Foundation.framework */; };
-		96924153AA3A506396CBBBC4 /* MRProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5853267D30AD7A4A42D133D9 /* MRProgressView.m */; };
-		979B5C5B1218AB81F1C0AFD6 /* ZipFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 92ED61DC0F2092899604580B /* ZipFile.h */; };
-		991D83A5C5DBF32BD3ECC9A1 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = F34D172DF77DA1DBD8B934C6 /* zip.h */; };
-		99A79A9CED2B27EDBD9230EB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B7561EF0D98A2CEEFBF8F7 /* UIKit.framework */; };
-		A0E07A6593986DCFD58D9FA6 /* MRProgressOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9705955DA3EFAD6E09E498B0 /* MRProgressOverlayView.h */; };
-		A0EBF021AE08DF2FD1B110C2 /* RIButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A522570584372D9739101AC6 /* RIButtonItem.h */; };
-		A3B71989F46184BD83BFD5D1 /* MRStopableView.h in Headers */ = {isa = PBXBuildFile; fileRef = A5EDF203A6CCA310F47F95EF /* MRStopableView.h */; };
-		A77BC6AA29CD895CE044D1BE /* Pods-HTAutocompleteTextField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFACFC602C29EDC3B2793B4 /* Pods-HTAutocompleteTextField-dummy.m */; };
-		AE6E69444AA1C4970AD4292A /* MRIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = B810FFFBDE2558F35C2A87DF /* MRIconView.h */; };
-		B5E239FAD0DA87FEFDF6B3FE /* UIImage+MRImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 197EC77C5C50AF3B8548B3B4 /* UIImage+MRImageEffects.h */; };
-		BED671B73BA306341064B8AD /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71AAA1BFA9B3FFBF6DE09EC2 /* Accelerate.framework */; };
-		BFC889D1930CE35CDAD95695 /* MRProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 55A30081B40490E929FAF2F8 /* MRProgressView.h */; };
-		C16571093469172709C17C12 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4DF7387413644CBEC13BB3 /* UIAlertView+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		CDD223A3E84DA0ED6E8A7641 /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFE7963A5EE16190E86B439 /* FMDatabaseQueue.h */; };
-		CFC489CCD9B85613BF948BD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B7561EF0D98A2CEEFBF8F7 /* UIKit.framework */; };
-		D10865C3BE215BF4BC12B062 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E74E9EFECCADD5B69D75D55 /* crypt.h */; };
-		D2255390C6FF86C19E244C1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B878263F2BDB45A057D84E /* Foundation.framework */; };
-		D51286F10535FEC6C28512F9 /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB83D279D3EB23F3FEB425C /* UIImage+MRImageEffects.m */; };
-		D74EB2AEB388CE77B6855E2E /* Pods-UIAlertView-Blocks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08588729E14CC8D99AD2E18D /* Pods-UIAlertView-Blocks-dummy.m */; };
-		DA2E241E91D61FD1B1954425 /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C70CB10168C192463736BC1 /* MRActivityIndicatorView.m */; };
-		DAA0C6A4BFDF869DD4CFC349 /* MRBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AF717A4DC254274F2B0D79C /* MRBlurView.h */; };
-		DC05F429CDCE238D12933A4E /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = F13A15369044BFD5D737CB23 /* MRBlurView.m */; };
-		DE0B951FA88ACAD01C000C40 /* MRIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E1D48C4D2AAADD20572910 /* MRIconView.m */; };
-		E6CD923DABA3DCF0C501549B /* MRCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 91EDDB1953D1099C12927172 /* MRCircularProgressView.h */; };
-		EAE66AE2CBE0DB6258947471 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B878263F2BDB45A057D84E /* Foundation.framework */; };
-		EB195139FAF858616E37D32A /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = A2833F318D7E47F0A47047D4 /* ZipReadStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		F0C9E05F65BFEBB8E907F138 /* Pods-FMDB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A584E101F38EF761596C36 /* Pods-FMDB-dummy.m */; };
-		F1B187C0350ECBEC7D720DE5 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 99DAACAE658A8BD2E3727E46 /* unzip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		F394BFDF802489A3494CEDE5 /* MRProgressHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = ACDCFB0BAEE8AFB7A165D3BF /* MRProgressHelper.h */; };
-		F43B7E6E1AE2DA14CECC4729 /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 47880858E663E73CA5D3E5BC /* FMDatabaseAdditions.h */; };
-		F60EEDCB3731CA7C3DFF2D14 /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DFFDB789E8B9D03CF7045E /* FileInZipInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		F6D66E6CD652FEA3EF96B537 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 90A8DEB755A748764906234C /* ioapi.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
-		F9CE6C061DB987D98BA409B2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC760A481370E4D15BABDCC /* QuartzCore.framework */; };
+		0021E0AD346F38F159CD106E /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 49346884789355DE9A3207F7 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0B12DB671E6A6D34670DAFFB /* ARCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CC6AB4260467658C15163AD /* ARCHelper.h */; };
+		0E7D620ABB63179C047E2F2F /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A03E68BD16FDC2D136DDE344 /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0EAE6E311BCD3F4A2002AA76 /* Pods-HTAutocompleteTextField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F243333582D3A5AF14A6626F /* Pods-HTAutocompleteTextField-dummy.m */; };
+		12BA67F467C69BDFA880186B /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 81456D612C68DC86E9D51144 /* crypt.h */; };
+		186DDF74D1A3DC6D53A82C49 /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F3790A6B53177111AA47D5 /* MRNavigationBarProgressView.m */; };
+		1F5C09C9228FBEC30A988576 /* MRProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = BF300693EC7530CE42EDDC26 /* MRProgress.h */; };
+		26D846A35FF6243F60958DF3 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = C185543FF1B90BC3F22F27F9 /* FMDatabase.h */; };
+		27CF2813EDCE9B6E503348F3 /* ZipWriteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = A3F28FFADBF4F5D1408ACF10 /* ZipWriteStream.h */; };
+		2EADC98C8E9E78CA9D130B74 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = B292963DDFEBA9F558B40C0A /* ioapi.h */; };
+		340156CA29542230DE7F91D3 /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 2377EF8AB19A50889C92170E /* FMDatabaseQueue.h */; };
+		365DBE08B88CC8591A91D637 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 778D72120044B37CCA57CA52 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		37154D56525FD4F6FCC74DEF /* MRIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E49448F47058E32681EA828 /* MRIconView.m */; };
+		39DE41414D87922BD83007D0 /* Pods-CMPopTipView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C7E92EF427F909E1A7FEF /* Pods-CMPopTipView-dummy.m */; };
+		3A728316B9E55B851FCD146F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916758FD073CD99623622238 /* Accelerate.framework */; };
+		3AFE0EF61B2D539E69A72B33 /* MRNavigationBarProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = C37B015392952F9AA02BC566 /* MRNavigationBarProgressView.h */; };
+		3B8EC3763284572A84F291FF /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F174C3C04F4016D692819C8 /* UIImage+MRImageEffects.m */; };
+		3C06558C835C63D51F606AC6 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE3B9080EF6FEEE4B8B8506 /* ZipFile.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		407A748BD058A4C73ADB394B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F853626E0535961207E6718 /* Foundation.framework */; };
+		4412838E9EAB050BFCAFCABC /* MRStopableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05131F88B7D1DE08C2F9D6AA /* MRStopableView.h */; };
+		4466818E3FA52D7B7BF71A49 /* UIImage+MRImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 38254942BE806A4ACD96FB40 /* UIImage+MRImageEffects.h */; };
+		4D59F15D8DAF61AC8CF84D38 /* MRIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7823819515950BA437714B92 /* MRIconView.h */; };
+		4F7E839E6C64AD87BA09FC04 /* Pods-MRProgress-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D07484A965852337718D5A9B /* Pods-MRProgress-dummy.m */; };
+		59DAD110A8DC6F9D1CEDE963 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 707F00948711F0852CF8966C /* unzip.h */; };
+		5F1E12BD51ED7EC0214C9E12 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = C89F67DD41A0E761AC087E9F /* FMDatabasePool.h */; };
+		5F78D4117A4D337CA5840C15 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C134119A26A97B490FBE86 /* RIButtonItem.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6309697FAB922A9562192129 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 074B1C6D3F59383B4EF01AA8 /* UIActionSheet+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		672511AC9C8C78134E3D91ED /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EEFFA149A76298A9811034 /* MRBlurView.m */; };
+		67CF477F8F6835A2B82A025A /* CMPopTipView.h in Headers */ = {isa = PBXBuildFile; fileRef = BBE643F6277E12A5748E544F /* CMPopTipView.h */; };
+		69A72321D3C6ACC8E6A439A7 /* MRCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BDDFBD3EB2053A57A667A8 /* MRCircularProgressView.h */; };
+		6AC174AE17A5CD7A52C109EB /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 84CFC5A8815B544E6906E92C /* zip.h */; };
+		6CBED39FA1F2D60A23362D2E /* MRProgressHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = B810FC2B155A0AC8337F3402 /* MRProgressHelper.h */; };
+		6FA5FA5030723775B19B339C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F853626E0535961207E6718 /* Foundation.framework */; };
+		70FA56DDE6FB8907938B7D80 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = BAA99989BCD47F9019FF90D0 /* FMResultSet.h */; };
+		7749F2A6E5C7C7C857BACC44 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A713A1838CCD6421759F9B /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7878A77592F47321EF3323D3 /* HTEmailAutocompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8D56958FB5869EB276E24A /* HTEmailAutocompleteTextField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7CE2B6E1CFEFD1057F657C4D /* ZipFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 99D4C0AF54B46CF8AC073AC7 /* ZipFile.h */; };
+		7E61E2AD00A19C58819A9EEE /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E72F0DF016F898E81F88E47 /* FileInZipInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		80C71CE1BEF0E065FD470CE1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC3C1A4A3EF04B5DCD848A01 /* CoreGraphics.framework */; };
+		82DE2DB67A4C4C6087AB66CA /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5408159711BEDD6498918107 /* Pods-dummy.m */; };
+		847AB84651D086E774E1F164 /* MRProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 769DB316545E0E110AEF102C /* MRProgressView.m */; };
+		8B532A4F8BD17B066003450F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F853626E0535961207E6718 /* Foundation.framework */; };
+		966D81292C98D790E576BA27 /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 797DCA3447B4E00DC7C5020C /* FMDatabaseAdditions.h */; };
+		9A6A9FAE7B2188CFD209A909 /* MRProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 97429074C549B2D654A6F6AE /* MRProgressView.h */; };
+		9A7023EAE7E744B8C2D159BA /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D2BE945364E98574225FC4 /* ZipException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		A25E064B796B999742593A79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F853626E0535961207E6718 /* Foundation.framework */; };
+		AABF8ED8A7CAF37E764C5AF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F853626E0535961207E6718 /* Foundation.framework */; };
+		AB40E3BD73471FB73578A4EA /* MRActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF668F5D4DB3B0CBBE3D42D0 /* MRActivityIndicatorView.h */; };
+		AE463D1D2E913019FE6B9A52 /* MRStopButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BAAD917449DB47C7CEF0466 /* MRStopButton.h */; };
+		B312F8606EC7C28D29140617 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = DE8CC55CB6CA6341ED48C017 /* unzip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		BB33E740269A7F968D30B1AD /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDB5FAFFA5069310A107770 /* MRActivityIndicatorView.m */; };
+		BBE673537BD025334F1756F2 /* HTEmailAutocompleteTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = F284A9FA83314F0D3AA1965B /* HTEmailAutocompleteTextField.h */; };
+		BC5036F2990A3485E047AF02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA5D063BC117A612B08B7BC /* UIKit.framework */; };
+		BDC325A26BA0BABFF647113E /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB424F2F485E34F01F84FD43 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BF8A576A735729BB9858DD67 /* Pods-objective-zip-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D05ACD9B84B18F6BFC5DC7C /* Pods-objective-zip-dummy.m */; };
+		C5A89050B8E06C147258A4EC /* MRBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = F98E1BE78E18FE85063B30CC /* MRBlurView.h */; };
+		CA79FBB9D479FE38F8085E8E /* ZipReadStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F449B2F775EFA607097030A /* ZipReadStream.h */; };
+		CDE368E9C50AD88692FD0B6C /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 2645FB99B3EA3EBEBBFA70E7 /* UIAlertView+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		CDFFD64BAB55AFAD8A16BEF3 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 6085FC5342AA9FB742327BEE /* ioapi.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		CF4C5C175891CF40A0391AE4 /* UIActionSheet+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = D2A3CAD3264028618C738F6E /* UIActionSheet+Blocks.h */; };
+		CF9EDF613B1D137CFEEE714F /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 2776E18AF1CB1F027C100EEF /* ZipWriteStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		DDE8589592C863F8807C3A4F /* HTAutocompleteTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E463CA10CB6F29D15F39DB4 /* HTAutocompleteTextField.h */; };
+		DDFF9EF7391C1246D1B39FE2 /* HTAutocompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5922A7E57C6F8777015A83B4 /* HTAutocompleteTextField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		DE75C1F268296F2F73D03C11 /* Pods-FMDB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ACAA405B9967F477D4B8A /* Pods-FMDB-dummy.m */; };
+		E17B40CF5286BA0E42145E85 /* Pods-UIAlertView-Blocks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8293FB858F3E05322D22461C /* Pods-UIAlertView-Blocks-dummy.m */; };
+		E35E6D5B2E3E9F9291DEF4A0 /* MRProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 623D85122A7B4D0C04042320 /* MRProgressOverlayView.m */; };
+		E3CDF9208A889DF26EE1DF64 /* RIButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 79031A5103DA19A6BB9DBAB7 /* RIButtonItem.h */; };
+		E3DE7058A660557D1FE3ECD2 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F12F22E5E7CA2CEDD30694 /* ZipReadStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
+		E49376B344A95D60CAA354EC /* FMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 717D669E9CBB12DEE1F1D43D /* FMDB.h */; };
+		E9E9E1BB6C4FEDE60FB203B5 /* ZipException.h in Headers */ = {isa = PBXBuildFile; fileRef = 2317CB87F8AD201423AE95D7 /* ZipException.h */; };
+		EAED9E6C09D952D14687968F /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42DF9F0FE75F2BDC4D31F858 /* CMPopTipView.m */; };
+		EDEBFF0895800E82F0913B08 /* UIAlertView+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B2907BC9BBD28CE8D5A00D /* UIAlertView+Blocks.h */; };
+		F0555488A085C9E7CE9F2C16 /* MRStopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCBE455BEF3BADD8A8E6BB3 /* MRStopButton.m */; };
+		F37DCCDB2EFB16D1947970E2 /* MRCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16627DDCF2E667B88A6D3982 /* MRCircularProgressView.m */; };
+		F60A8AF5239751331A2943A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682992D2F8B203A5E25CFEB3 /* QuartzCore.framework */; };
+		F60AE6A296F5AC58D6FD83F4 /* MRProgressOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = A589311228DCF08F51066428 /* MRProgressOverlayView.h */; };
+		F959F5BF8654F909C5139CDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA5D063BC117A612B08B7BC /* UIKit.framework */; };
+		F992E9E8ECBDE0695F01E283 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F853626E0535961207E6718 /* Foundation.framework */; };
+		FAA533ACBCC203A20F9B6A97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F853626E0535961207E6718 /* Foundation.framework */; };
+		FBFEAA7400E56D8DCEC1099D /* FileInZipInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 597D9FF6E89ECB3735D2C754 /* FileInZipInfo.h */; };
+		FDAE7C28BABB0E3144546C83 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = A86916EF50091F4EB870E501 /* zip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-checker -Xanalyzer deadcode"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2E67C57E861209D53EC5C30D /* PBXContainerItemProxy */ = {
+		3DCC8D963BC594284852CC78 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 01E00C030BD9C289D5E537B7 /* Project object */;
+			containerPortal = 8F392AD365E80643E531BD24 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2970776D0CD64E72599BA9A2;
-			remoteInfo = "Pods-objective-zip";
-		};
-		479092956B71C23E0B3009B5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 01E00C030BD9C289D5E537B7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0BB37789A6853D726800C191;
-			remoteInfo = "Pods-HTAutocompleteTextField";
-		};
-		6980C9CACC4D332686E5D79A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 01E00C030BD9C289D5E537B7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 23CB7EDB7C658E2864183814;
+			remoteGlobalIDString = 3DDE21017E5E1FCFE9CD6DFB;
 			remoteInfo = "Pods-FMDB";
 		};
-		85D82A4E2A58BE3CED431307 /* PBXContainerItemProxy */ = {
+		527B5AA14348DFF92EC02398 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 01E00C030BD9C289D5E537B7 /* Project object */;
+			containerPortal = 8F392AD365E80643E531BD24 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 332F03C009D2E7DE9A9E4533;
+			remoteGlobalIDString = F7195236920B20B853837EB4;
 			remoteInfo = "Pods-MRProgress";
 		};
-		A81F2578957A4ADA77AC9389 /* PBXContainerItemProxy */ = {
+		6833E9FB00F8C802E16F78C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 01E00C030BD9C289D5E537B7 /* Project object */;
+			containerPortal = 8F392AD365E80643E531BD24 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A5C64D21529A0F414CD16338;
+			remoteGlobalIDString = 900D00202E2BB27D693E0C19;
+			remoteInfo = "Pods-objective-zip";
+		};
+		68B9EE2B4BFE7200672BAE19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F392AD365E80643E531BD24 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38DE52A4DC02829C2FA88745;
+			remoteInfo = "Pods-CMPopTipView";
+		};
+		C046569A875701E8D3FF9EAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F392AD365E80643E531BD24 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 91B7CD876BFA8E8F7CE6839D;
 			remoteInfo = "Pods-UIAlertView-Blocks";
 		};
-		AA6FF69BE8A79C1F1CFBD087 /* PBXContainerItemProxy */ = {
+		F78FF24E800684D58B41844E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 01E00C030BD9C289D5E537B7 /* Project object */;
+			containerPortal = 8F392AD365E80643E531BD24 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 549872727D3D880DC3693410;
-			remoteInfo = "Pods-CMPopTipView";
+			remoteGlobalIDString = 1E1BFA5083E6DF2EBE010E5D;
+			remoteInfo = "Pods-HTAutocompleteTextField";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0040666C74251D3ED4D45650 /* FMDatabase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = src/fmdb/FMDatabase.h; sourceTree = "<group>"; };
-		0148D8AD478ED883E4C7F7AE /* ZipReadStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipReadStream.h; path = "Objective-Zip/ZipReadStream.h"; sourceTree = "<group>"; };
-		0189ADDF28D3D3826E72EB44 /* CMPopTipView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CMPopTipView.h; path = CMPopTipView/CMPopTipView.h; sourceTree = "<group>"; };
-		036020BA2C31A57C0994DCC2 /* libPods-HTAutocompleteTextField.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HTAutocompleteTextField.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		03756B4D87B0CD9DE580C469 /* libPods-FMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FMDB.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		04EA63C55951CE9375D15C86 /* Pods-UIAlertView-Blocks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UIAlertView-Blocks.xcconfig"; sourceTree = "<group>"; };
-		08588729E14CC8D99AD2E18D /* Pods-UIAlertView-Blocks-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-UIAlertView-Blocks-dummy.m"; sourceTree = "<group>"; };
-		08833F2F80A507D884434DBB /* FMDatabaseQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = src/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
-		0C70CB10168C192463736BC1 /* MRActivityIndicatorView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRActivityIndicatorView.m; path = src/Components/MRActivityIndicatorView.m; sourceTree = "<group>"; };
-		0E503EFBA064070F1EF4E5CF /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		0EB88BC034B61A5ADDE49BDD /* HTEmailAutocompleteTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTEmailAutocompleteTextField.h; path = Classes/HTEmailAutocompleteTextField.h; sourceTree = "<group>"; };
-		18F9CA974F9F0B88AB86007D /* Pods-objective-zip-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-objective-zip-Private.xcconfig"; sourceTree = "<group>"; };
-		197EC77C5C50AF3B8548B3B4 /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MRImageEffects.h"; path = "src/Blur/UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
-		1AF717A4DC254274F2B0D79C /* MRBlurView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRBlurView.h; path = src/Blur/MRBlurView.h; sourceTree = "<group>"; };
-		1B0E2F92AC2572963D040F54 /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
-		1BB83D279D3EB23F3FEB425C /* UIImage+MRImageEffects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MRImageEffects.m"; path = "src/Blur/UIImage+MRImageEffects.m"; sourceTree = "<group>"; };
-		1F487F1257B4D242B702338A /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
-		251CB5EC22BAC7655F1FB04A /* libPods-MRProgress.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MRProgress.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C444EB1AB46ED30D41E1E7D /* libPods-objective-zip.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-objective-zip.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C55977E711BAD1D999A8CDE /* Pods-HTAutocompleteTextField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HTAutocompleteTextField.xcconfig"; sourceTree = "<group>"; };
-		2F77EEEFAD35F8AF6B90B791 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "GoogleMobileAdsSdkiOS-7.2.2/GoogleMobileAds.framework"; sourceTree = "<group>"; };
-		32391FDCA983549C7DFBDC46 /* Pods-MRProgress-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MRProgress-Private.xcconfig"; sourceTree = "<group>"; };
-		3423DF1447B21932A42D6CD4 /* MRCircularProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRCircularProgressView.m; path = src/Components/MRCircularProgressView.m; sourceTree = "<group>"; };
-		3671E24C70BB9B133D8F678D /* Pods-MRProgress-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MRProgress-dummy.m"; sourceTree = "<group>"; };
-		3719F4F5CD291B1B1DA85E14 /* FMDatabasePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = src/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
-		3B82084E29EE02854A094429 /* FMDatabase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = src/fmdb/FMDatabase.m; sourceTree = "<group>"; };
-		3D2B44D5D5C5F624F71D039C /* FileInZipInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FileInZipInfo.h; path = "Objective-Zip/FileInZipInfo.h"; sourceTree = "<group>"; };
-		3D2DC29092153F67FCFC35D4 /* MRStopButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRStopButton.h; path = src/Components/MRStopButton.h; sourceTree = "<group>"; };
-		3E947B29F7D90FE9963DED9C /* HTAutocompleteTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTAutocompleteTextField.h; path = Classes/HTAutocompleteTextField.h; sourceTree = "<group>"; };
-		3FC5BA2B1D5227A77EF79CEC /* Pods-HTAutocompleteTextField-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HTAutocompleteTextField-Private.xcconfig"; sourceTree = "<group>"; };
-		45CBB635BF2A98EAC3D59E1E /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = src/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		46463F0FD0408A97416C14C5 /* MRStopButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRStopButton.m; path = src/Components/MRStopButton.m; sourceTree = "<group>"; };
-		47880858E663E73CA5D3E5BC /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = src/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		4BCB7078B50D20EFC35D01BB /* Pods-objective-zip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-objective-zip.xcconfig"; sourceTree = "<group>"; };
-		4D7112FFDD869A903A2AE3C6 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
-		55A30081B40490E929FAF2F8 /* MRProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRProgressView.h; path = src/Components/MRProgressView.h; sourceTree = "<group>"; };
-		5711BCF1711ACC2B6A999A98 /* zip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = zip.c; path = MiniZip/zip.c; sourceTree = "<group>"; };
-		579F5628D5B95E9A6184DF44 /* Pods-FMDB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FMDB-prefix.pch"; sourceTree = "<group>"; };
-		5853267D30AD7A4A42D133D9 /* MRProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRProgressView.m; path = src/Components/MRProgressView.m; sourceTree = "<group>"; };
-		5F29F2AE23989124E6846873 /* CMPopTipView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CMPopTipView.m; path = CMPopTipView/CMPopTipView.m; sourceTree = "<group>"; };
-		5F54243864D2C3013CA0FC8F /* Pods-objective-zip-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-objective-zip-prefix.pch"; sourceTree = "<group>"; };
-		611FB1FBE772F0FAB22F7440 /* libPods-CMPopTipView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CMPopTipView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		64A584E101F38EF761596C36 /* Pods-FMDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FMDB-dummy.m"; sourceTree = "<group>"; };
-		66491551BFD43AFA63B7DF69 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		66B7561EF0D98A2CEEFBF8F7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		676E8B14B3BF7B43A6EC6447 /* Pods-CMPopTipView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CMPopTipView-dummy.m"; sourceTree = "<group>"; };
-		681DC5DDA6B0CC4850C9CB9D /* ZipFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipFile.m; path = "Objective-Zip/ZipFile.m"; sourceTree = "<group>"; };
-		69287287AC7049DD43925177 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		69D1B0483A3E73BB05D346B7 /* Pods-MRProgress.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MRProgress.xcconfig"; sourceTree = "<group>"; };
-		6CBDEC08E4D41C21ABA4E590 /* ZipWriteStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipWriteStream.h; path = "Objective-Zip/ZipWriteStream.h"; sourceTree = "<group>"; };
-		6F2330E6697974B7A20D3D87 /* MRNavigationBarProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRNavigationBarProgressView.h; path = src/Components/MRNavigationBarProgressView.h; sourceTree = "<group>"; };
-		6FD8FB9917320F827328EB7B /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		71AAA1BFA9B3FFBF6DE09EC2 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
-		7813314F21D7C138261A2740 /* unzip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = MiniZip/unzip.h; sourceTree = "<group>"; };
-		799E38029FE2C40C6658FFE5 /* ioapi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = MiniZip/ioapi.h; sourceTree = "<group>"; };
-		7CD94DEDF34E3F94C7EE345F /* Pods-HTAutocompleteTextField-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HTAutocompleteTextField-prefix.pch"; sourceTree = "<group>"; };
-		80FC1242D17C517FEA8740BF /* HTAutocompleteTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTAutocompleteTextField.m; path = Classes/HTAutocompleteTextField.m; sourceTree = "<group>"; };
-		823756A0BE2848B6B4307B24 /* ZipWriteStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipWriteStream.m; path = "Objective-Zip/ZipWriteStream.m"; sourceTree = "<group>"; };
-		8921D6B9C43A0ED195380DA6 /* MRNavigationBarProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRNavigationBarProgressView.m; path = src/Components/MRNavigationBarProgressView.m; sourceTree = "<group>"; };
-		89EB7492369C9481857E9B0E /* Pods-CMPopTipView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMPopTipView.xcconfig"; sourceTree = "<group>"; };
-		8B14BC963314527050C43D25 /* FMDB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = src/fmdb/FMDB.h; sourceTree = "<group>"; };
-		8BAC90D1F19AA382A2B889E9 /* Pods-FMDB.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FMDB.xcconfig"; sourceTree = "<group>"; };
-		8F902AF5A8BCD361D5302D1D /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		90A8DEB755A748764906234C /* ioapi.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = MiniZip/ioapi.c; sourceTree = "<group>"; };
-		91EDDB1953D1099C12927172 /* MRCircularProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRCircularProgressView.h; path = src/Components/MRCircularProgressView.h; sourceTree = "<group>"; };
-		92ED61DC0F2092899604580B /* ZipFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipFile.h; path = "Objective-Zip/ZipFile.h"; sourceTree = "<group>"; };
-		95A27196ED192C3741E1B7A5 /* MRActivityIndicatorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRActivityIndicatorView.h; path = src/Components/MRActivityIndicatorView.h; sourceTree = "<group>"; };
-		9705955DA3EFAD6E09E498B0 /* MRProgressOverlayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRProgressOverlayView.h; path = src/Components/MRProgressOverlayView.h; sourceTree = "<group>"; };
-		97DFFDB789E8B9D03CF7045E /* FileInZipInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FileInZipInfo.m; path = "Objective-Zip/FileInZipInfo.m"; sourceTree = "<group>"; };
-		989D46F565394FE045F725DE /* RIButtonItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RIButtonItem.m; sourceTree = "<group>"; };
-		99DAACAE658A8BD2E3727E46 /* unzip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = MiniZip/unzip.c; sourceTree = "<group>"; };
-		9E74E9EFECCADD5B69D75D55 /* crypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = MiniZip/crypt.h; sourceTree = "<group>"; };
-		A030AC37549277745EB86F70 /* Pods-MRProgress-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MRProgress-prefix.pch"; sourceTree = "<group>"; };
-		A1B1B85443F9F8E53F414E2D /* FMResultSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = src/fmdb/FMResultSet.m; sourceTree = "<group>"; };
-		A2833F318D7E47F0A47047D4 /* ZipReadStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipReadStream.m; path = "Objective-Zip/ZipReadStream.m"; sourceTree = "<group>"; };
-		A522570584372D9739101AC6 /* RIButtonItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RIButtonItem.h; sourceTree = "<group>"; };
-		A5EDF203A6CCA310F47F95EF /* MRStopableView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRStopableView.h; path = src/Components/MRStopableView.h; sourceTree = "<group>"; };
-		A9A2BD013C47451392231DFD /* MRProgress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRProgress.h; path = src/MRProgress.h; sourceTree = "<group>"; };
-		AC4DF7387413644CBEC13BB3 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
-		ACDCFB0BAEE8AFB7A165D3BF /* MRProgressHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRProgressHelper.h; path = src/Utils/MRProgressHelper.h; sourceTree = "<group>"; };
-		AE76E97503F7593A98C12470 /* Pods-objective-zip-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-objective-zip-dummy.m"; sourceTree = "<group>"; };
-		B0B878263F2BDB45A057D84E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		B6B9278B23475920ED0C80CA /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
-		B6E53EDD0FD93C1CE8473FFA /* ZipException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipException.m; path = "Objective-Zip/ZipException.m"; sourceTree = "<group>"; };
-		B7E4C51705F9CADEA6161C7C /* MRProgressOverlayView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRProgressOverlayView.m; path = src/Components/MRProgressOverlayView.m; sourceTree = "<group>"; };
-		B810FFFBDE2558F35C2A87DF /* MRIconView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRIconView.h; path = src/Components/MRIconView.h; sourceTree = "<group>"; };
-		C0383D9E6432EFD342400985 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		C2D5710C55591A7366F46E4A /* Pods-CMPopTipView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMPopTipView-Private.xcconfig"; sourceTree = "<group>"; };
-		D78EBDD455672DB3F679849A /* FMDatabasePool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = src/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
-		DA72295E151FDDBF6BBDB720 /* Pods-CMPopTipView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CMPopTipView-prefix.pch"; sourceTree = "<group>"; };
-		DBFACFC602C29EDC3B2793B4 /* Pods-HTAutocompleteTextField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HTAutocompleteTextField-dummy.m"; sourceTree = "<group>"; };
-		E131CEE2D167EEF937B68661 /* Pods-UIAlertView-Blocks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-UIAlertView-Blocks-prefix.pch"; sourceTree = "<group>"; };
-		E795D90F93F8A588A664EB7D /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		E9097198BDD9BA4904C8CB7E /* Pods-FMDB-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FMDB-Private.xcconfig"; sourceTree = "<group>"; };
-		EAC760A481370E4D15BABDCC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		EC4AE7D07BFDEE6C80CD51CD /* libPods-UIAlertView-Blocks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UIAlertView-Blocks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDCD5083D2A5520DCC61FEDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		F0E1D48C4D2AAADD20572910 /* MRIconView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRIconView.m; path = src/Components/MRIconView.m; sourceTree = "<group>"; };
-		F13A15369044BFD5D737CB23 /* MRBlurView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRBlurView.m; path = src/Blur/MRBlurView.m; sourceTree = "<group>"; };
-		F1D70DEF02554BAACFE648F0 /* Pods-UIAlertView-Blocks-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UIAlertView-Blocks-Private.xcconfig"; sourceTree = "<group>"; };
-		F34D172DF77DA1DBD8B934C6 /* zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = zip.h; path = MiniZip/zip.h; sourceTree = "<group>"; };
-		F68C5E9D860B33E6067AFFCC /* ZipException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipException.h; path = "Objective-Zip/ZipException.h"; sourceTree = "<group>"; };
-		F7266A2ABDBB59E10E257F31 /* FMResultSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = src/fmdb/FMResultSet.h; sourceTree = "<group>"; };
-		F8B7827A969B1053E00461BD /* ARCHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ARCHelper.h; path = ARCHelper/ARCHelper.h; sourceTree = "<group>"; };
-		FAFE7963A5EE16190E86B439 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = src/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
-		FB85932BF193F7E4AF2BEEBE /* HTEmailAutocompleteTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTEmailAutocompleteTextField.m; path = Classes/HTEmailAutocompleteTextField.m; sourceTree = "<group>"; };
-		FCCAFF976AEAD313C8F8D2ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		05131F88B7D1DE08C2F9D6AA /* MRStopableView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRStopableView.h; path = src/Components/MRStopableView.h; sourceTree = "<group>"; };
+		065E11D7CA0E2C48C988ED17 /* Pods-MRProgress-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MRProgress-Private.xcconfig"; sourceTree = "<group>"; };
+		06F96789FAD147756CAAFC18 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		074B1C6D3F59383B4EF01AA8 /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
+		0A3ACAA405B9967F477D4B8A /* Pods-FMDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FMDB-dummy.m"; sourceTree = "<group>"; };
+		12E9609FDA98B267B3ECE156 /* Pods-HTAutocompleteTextField-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HTAutocompleteTextField-prefix.pch"; sourceTree = "<group>"; };
+		15E928FC30D8CC03D663444A /* Pods-MRProgress.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MRProgress.xcconfig"; sourceTree = "<group>"; };
+		16627DDCF2E667B88A6D3982 /* MRCircularProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRCircularProgressView.m; path = src/Components/MRCircularProgressView.m; sourceTree = "<group>"; };
+		179C76083328905FD7C19E7C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		17D2BE945364E98574225FC4 /* ZipException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipException.m; path = "Objective-Zip/ZipException.m"; sourceTree = "<group>"; };
+		199668BADF07C756B093E592 /* Pods-objective-zip-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-objective-zip-prefix.pch"; sourceTree = "<group>"; };
+		19FC2B262025735E9CB7FE8B /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1A8D56958FB5869EB276E24A /* HTEmailAutocompleteTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTEmailAutocompleteTextField.m; path = Classes/HTEmailAutocompleteTextField.m; sourceTree = "<group>"; };
+		1C5E674A84A6C6D4A916E668 /* Pods-CMPopTipView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMPopTipView-Private.xcconfig"; sourceTree = "<group>"; };
+		1F449B2F775EFA607097030A /* ZipReadStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipReadStream.h; path = "Objective-Zip/ZipReadStream.h"; sourceTree = "<group>"; };
+		2317CB87F8AD201423AE95D7 /* ZipException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipException.h; path = "Objective-Zip/ZipException.h"; sourceTree = "<group>"; };
+		2377EF8AB19A50889C92170E /* FMDatabaseQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = src/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
+		2645FB99B3EA3EBEBBFA70E7 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
+		2776E18AF1CB1F027C100EEF /* ZipWriteStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipWriteStream.m; path = "Objective-Zip/ZipWriteStream.m"; sourceTree = "<group>"; };
+		2B2458232F8AF1B83E21C1B3 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		2D05ACD9B84B18F6BFC5DC7C /* Pods-objective-zip-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-objective-zip-dummy.m"; sourceTree = "<group>"; };
+		2E4114E742B73730048C1318 /* Pods-HTAutocompleteTextField-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HTAutocompleteTextField-Private.xcconfig"; sourceTree = "<group>"; };
+		38254942BE806A4ACD96FB40 /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MRImageEffects.h"; path = "src/Blur/UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
+		3CE3B9080EF6FEEE4B8B8506 /* ZipFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipFile.m; path = "Objective-Zip/ZipFile.m"; sourceTree = "<group>"; };
+		3F174C3C04F4016D692819C8 /* UIImage+MRImageEffects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MRImageEffects.m"; path = "src/Blur/UIImage+MRImageEffects.m"; sourceTree = "<group>"; };
+		40C134119A26A97B490FBE86 /* RIButtonItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RIButtonItem.m; sourceTree = "<group>"; };
+		4182ADE1B53E679674C44DB9 /* Pods-objective-zip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-objective-zip.xcconfig"; sourceTree = "<group>"; };
+		4250CEC36B9DE5C8A4318EC0 /* Pods-HTAutocompleteTextField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HTAutocompleteTextField.xcconfig"; sourceTree = "<group>"; };
+		42DF9F0FE75F2BDC4D31F858 /* CMPopTipView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CMPopTipView.m; path = CMPopTipView/CMPopTipView.m; sourceTree = "<group>"; };
+		43023FE48B9C7FACF8D226BF /* libPods-CMPopTipView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CMPopTipView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49346884789355DE9A3207F7 /* FMDatabase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = src/fmdb/FMDatabase.m; sourceTree = "<group>"; };
+		49BDDFBD3EB2053A57A667A8 /* MRCircularProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRCircularProgressView.h; path = src/Components/MRCircularProgressView.h; sourceTree = "<group>"; };
+		4A8087F6250C35DA7A85F55A /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "GoogleMobileAdsSdkiOS-7.2.2/GoogleMobileAds.framework"; sourceTree = "<group>"; };
+		4BAAD917449DB47C7CEF0466 /* MRStopButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRStopButton.h; path = src/Components/MRStopButton.h; sourceTree = "<group>"; };
+		4DA5D063BC117A612B08B7BC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		4DFFDAAF652F1ABC6A14EC95 /* Pods-FMDB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FMDB-prefix.pch"; sourceTree = "<group>"; };
+		4E463CA10CB6F29D15F39DB4 /* HTAutocompleteTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTAutocompleteTextField.h; path = Classes/HTAutocompleteTextField.h; sourceTree = "<group>"; };
+		502206F4B11BF4576DCC1D8D /* Pods-MRProgress-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MRProgress-prefix.pch"; sourceTree = "<group>"; };
+		5408159711BEDD6498918107 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		55B2907BC9BBD28CE8D5A00D /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		55C4CE2D4E5FF79890EE24ED /* Pods-CMPopTipView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CMPopTipView-prefix.pch"; sourceTree = "<group>"; };
+		5922A7E57C6F8777015A83B4 /* HTAutocompleteTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTAutocompleteTextField.m; path = Classes/HTAutocompleteTextField.m; sourceTree = "<group>"; };
+		597D9FF6E89ECB3735D2C754 /* FileInZipInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FileInZipInfo.h; path = "Objective-Zip/FileInZipInfo.h"; sourceTree = "<group>"; };
+		5CC6AB4260467658C15163AD /* ARCHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ARCHelper.h; path = ARCHelper/ARCHelper.h; sourceTree = "<group>"; };
+		5E49448F47058E32681EA828 /* MRIconView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRIconView.m; path = src/Components/MRIconView.m; sourceTree = "<group>"; };
+		6085FC5342AA9FB742327BEE /* ioapi.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = MiniZip/ioapi.c; sourceTree = "<group>"; };
+		623D85122A7B4D0C04042320 /* MRProgressOverlayView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRProgressOverlayView.m; path = src/Components/MRProgressOverlayView.m; sourceTree = "<group>"; };
+		682992D2F8B203A5E25CFEB3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		6A490F26AF58A89B8123789D /* Pods-objective-zip-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-objective-zip-Private.xcconfig"; sourceTree = "<group>"; };
+		707F00948711F0852CF8966C /* unzip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = MiniZip/unzip.h; sourceTree = "<group>"; };
+		717D669E9CBB12DEE1F1D43D /* FMDB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = src/fmdb/FMDB.h; sourceTree = "<group>"; };
+		769DB316545E0E110AEF102C /* MRProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRProgressView.m; path = src/Components/MRProgressView.m; sourceTree = "<group>"; };
+		778D72120044B37CCA57CA52 /* FMResultSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = src/fmdb/FMResultSet.m; sourceTree = "<group>"; };
+		7823819515950BA437714B92 /* MRIconView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRIconView.h; path = src/Components/MRIconView.h; sourceTree = "<group>"; };
+		79031A5103DA19A6BB9DBAB7 /* RIButtonItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RIButtonItem.h; sourceTree = "<group>"; };
+		797DCA3447B4E00DC7C5020C /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = src/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		7C1D5AAADBDC466523AE967F /* Pods-UIAlertView-Blocks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-UIAlertView-Blocks-prefix.pch"; sourceTree = "<group>"; };
+		7E72F0DF016F898E81F88E47 /* FileInZipInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FileInZipInfo.m; path = "Objective-Zip/FileInZipInfo.m"; sourceTree = "<group>"; };
+		7E99B2DC3BE33812E2E090B4 /* libPods-UIAlertView-Blocks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UIAlertView-Blocks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EBEF741D130F30EE2B0B4FB /* libPods-HTAutocompleteTextField.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HTAutocompleteTextField.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F853626E0535961207E6718 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		81456D612C68DC86E9D51144 /* crypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = MiniZip/crypt.h; sourceTree = "<group>"; };
+		8293FB858F3E05322D22461C /* Pods-UIAlertView-Blocks-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-UIAlertView-Blocks-dummy.m"; sourceTree = "<group>"; };
+		83B4F71C6B1B9272542FCDE5 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		84CFC5A8815B544E6906E92C /* zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = zip.h; path = MiniZip/zip.h; sourceTree = "<group>"; };
+		8EDB5FAFFA5069310A107770 /* MRActivityIndicatorView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRActivityIndicatorView.m; path = src/Components/MRActivityIndicatorView.m; sourceTree = "<group>"; };
+		916758FD073CD99623622238 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
+		91A47092FFCAF525AC0C47BF /* Pods-FMDB-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FMDB-Private.xcconfig"; sourceTree = "<group>"; };
+		97429074C549B2D654A6F6AE /* MRProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRProgressView.h; path = src/Components/MRProgressView.h; sourceTree = "<group>"; };
+		99D4C0AF54B46CF8AC073AC7 /* ZipFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipFile.h; path = "Objective-Zip/ZipFile.h"; sourceTree = "<group>"; };
+		9D73CA0A1A19BBB3B90C944A /* libPods-MRProgress.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MRProgress.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A03E68BD16FDC2D136DDE344 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = src/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
+		A3F28FFADBF4F5D1408ACF10 /* ZipWriteStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipWriteStream.h; path = "Objective-Zip/ZipWriteStream.h"; sourceTree = "<group>"; };
+		A589311228DCF08F51066428 /* MRProgressOverlayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRProgressOverlayView.h; path = src/Components/MRProgressOverlayView.h; sourceTree = "<group>"; };
+		A7D4223087E5D1C01B6DD36F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		A86916EF50091F4EB870E501 /* zip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = zip.c; path = MiniZip/zip.c; sourceTree = "<group>"; };
+		AB424F2F485E34F01F84FD43 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = src/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		B292963DDFEBA9F558B40C0A /* ioapi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = MiniZip/ioapi.h; sourceTree = "<group>"; };
+		B2A713A1838CCD6421759F9B /* FMDatabasePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = src/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
+		B810FC2B155A0AC8337F3402 /* MRProgressHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRProgressHelper.h; path = src/Utils/MRProgressHelper.h; sourceTree = "<group>"; };
+		BAA99989BCD47F9019FF90D0 /* FMResultSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = src/fmdb/FMResultSet.h; sourceTree = "<group>"; };
+		BBE643F6277E12A5748E544F /* CMPopTipView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CMPopTipView.h; path = CMPopTipView/CMPopTipView.h; sourceTree = "<group>"; };
+		BC99119DDC564A9A2510B5D7 /* Pods-CMPopTipView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMPopTipView.xcconfig"; sourceTree = "<group>"; };
+		BE7D6280AE405C1C089276BC /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		BF300693EC7530CE42EDDC26 /* MRProgress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRProgress.h; path = src/MRProgress.h; sourceTree = "<group>"; };
+		C080BD4DE6178B5898309B3F /* Pods-UIAlertView-Blocks-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UIAlertView-Blocks-Private.xcconfig"; sourceTree = "<group>"; };
+		C0F3790A6B53177111AA47D5 /* MRNavigationBarProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRNavigationBarProgressView.m; path = src/Components/MRNavigationBarProgressView.m; sourceTree = "<group>"; };
+		C185543FF1B90BC3F22F27F9 /* FMDatabase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = src/fmdb/FMDatabase.h; sourceTree = "<group>"; };
+		C37B015392952F9AA02BC566 /* MRNavigationBarProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRNavigationBarProgressView.h; path = src/Components/MRNavigationBarProgressView.h; sourceTree = "<group>"; };
+		C89F67DD41A0E761AC087E9F /* FMDatabasePool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = src/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
+		CE3CA2F40AFB861891A62177 /* Pods-FMDB.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FMDB.xcconfig"; sourceTree = "<group>"; };
+		CF1660A63D5D55AAF731FF5A /* Pods-UIAlertView-Blocks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UIAlertView-Blocks.xcconfig"; sourceTree = "<group>"; };
+		D07484A965852337718D5A9B /* Pods-MRProgress-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MRProgress-dummy.m"; sourceTree = "<group>"; };
+		D2A3CAD3264028618C738F6E /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
+		D97C7E92EF427F909E1A7FEF /* Pods-CMPopTipView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CMPopTipView-dummy.m"; sourceTree = "<group>"; };
+		DCCBE455BEF3BADD8A8E6BB3 /* MRStopButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRStopButton.m; path = src/Components/MRStopButton.m; sourceTree = "<group>"; };
+		DDA04189028E3561179CD5D5 /* libPods-objective-zip.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-objective-zip.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE8CC55CB6CA6341ED48C017 /* unzip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = MiniZip/unzip.c; sourceTree = "<group>"; };
+		E7EEFFA149A76298A9811034 /* MRBlurView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MRBlurView.m; path = src/Blur/MRBlurView.m; sourceTree = "<group>"; };
+		EF668F5D4DB3B0CBBE3D42D0 /* MRActivityIndicatorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRActivityIndicatorView.h; path = src/Components/MRActivityIndicatorView.h; sourceTree = "<group>"; };
+		F243333582D3A5AF14A6626F /* Pods-HTAutocompleteTextField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HTAutocompleteTextField-dummy.m"; sourceTree = "<group>"; };
+		F284A9FA83314F0D3AA1965B /* HTEmailAutocompleteTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTEmailAutocompleteTextField.h; path = Classes/HTEmailAutocompleteTextField.h; sourceTree = "<group>"; };
+		F2A87329829E92539887E49A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		F2F12F22E5E7CA2CEDD30694 /* ZipReadStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZipReadStream.m; path = "Objective-Zip/ZipReadStream.m"; sourceTree = "<group>"; };
+		F98E1BE78E18FE85063B30CC /* MRBlurView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRBlurView.h; path = src/Blur/MRBlurView.h; sourceTree = "<group>"; };
+		FC3C1A4A3EF04B5DCD848A01 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		FEBD7D6F818BBC2EF38BC1E6 /* libPods-FMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FMDB.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		14A14EC23F362F73A2D2B2B9 /* Frameworks */ = {
+		008AFD295FC96CBD0C57C2F9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAE66AE2CBE0DB6258947471 /* Foundation.framework in Frameworks */,
-				CFC489CCD9B85613BF948BD4 /* UIKit.framework in Frameworks */,
+				A25E064B796B999742593A79 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4659AB38953C79C1966845B2 /* Frameworks */ = {
+		35B13F99BB41B18E3C4D3A66 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				311464C536936C2A44109AD8 /* Foundation.framework in Frameworks */,
+				8B532A4F8BD17B066003450F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		485DEAA90042C10D86FA8FA8 /* Frameworks */ = {
+		610FE0235536D26EF32E23C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D83DF80EC486DC682245F43 /* Foundation.framework in Frameworks */,
+				AABF8ED8A7CAF37E764C5AF5 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6B95D4C290D1509B359F8C00 /* Frameworks */ = {
+		85C1EACC7518F30E148A9D11 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9519542D53E80048456027EE /* Foundation.framework in Frameworks */,
+				6FA5FA5030723775B19B339C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		81AAE26354DB714CFEBF1A5C /* Frameworks */ = {
+		A7436A950A17A1DB0521B60C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2255390C6FF86C19E244C1D /* Foundation.framework in Frameworks */,
+				FAA533ACBCC203A20F9B6A97 /* Foundation.framework in Frameworks */,
+				F959F5BF8654F909C5139CDB /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A0750A0AD0FE618A3EBFD86E /* Frameworks */ = {
+		F1D9A51A7B9FA9FAE0B04EF1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33745B82D337AD8B19711B13 /* Foundation.framework in Frameworks */,
+				3A728316B9E55B851FCD146F /* Accelerate.framework in Frameworks */,
+				80C71CE1BEF0E065FD470CE1 /* CoreGraphics.framework in Frameworks */,
+				407A748BD058A4C73ADB394B /* Foundation.framework in Frameworks */,
+				F60A8AF5239751331A2943A6 /* QuartzCore.framework in Frameworks */,
+				BC5036F2990A3485E047AF02 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AC8FF76B95897EF2DE9860C7 /* Frameworks */ = {
+		F2DF4236353EFF40086235FC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BED671B73BA306341064B8AD /* Accelerate.framework in Frameworks */,
-				35FE70FFB935EB9398DD9369 /* CoreGraphics.framework in Frameworks */,
-				777DBE58B1FEC0099C8B2E75 /* Foundation.framework in Frameworks */,
-				F9CE6C061DB987D98BA409B2 /* QuartzCore.framework in Frameworks */,
-				99A79A9CED2B27EDBD9230EB /* UIKit.framework in Frameworks */,
+				F992E9E8ECBDE0695F01E283 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		03BB40C1F5614868CE78A73A /* Stopable */ = {
+		027B0CBDFB5D32F7F1FBECFB /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				3D2DC29092153F67FCFC35D4 /* MRStopButton.h */,
-				46463F0FD0408A97416C14C5 /* MRStopButton.m */,
-				A5EDF203A6CCA310F47F95EF /* MRStopableView.h */,
+				7823819515950BA437714B92 /* MRIconView.h */,
+				5E49448F47058E32681EA828 /* MRIconView.m */,
 			);
-			name = Stopable;
+			name = Icons;
 			sourceTree = "<group>";
 		};
-		06775E9940CBB7F5DCDC930F /* ActivityIndicator */ = {
+		0CCD14784E1C90AD91786CC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				95A27196ED192C3741E1B7A5 /* MRActivityIndicatorView.h */,
-				0C70CB10168C192463736BC1 /* MRActivityIndicatorView.m */,
+				4A8087F6250C35DA7A85F55A /* GoogleMobileAds.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0DA4234F953978306374BFEB /* HTAutocompleteTextField */ = {
+			isa = PBXGroup;
+			children = (
+				4E463CA10CB6F29D15F39DB4 /* HTAutocompleteTextField.h */,
+				5922A7E57C6F8777015A83B4 /* HTAutocompleteTextField.m */,
+				F284A9FA83314F0D3AA1965B /* HTEmailAutocompleteTextField.h */,
+				1A8D56958FB5869EB276E24A /* HTEmailAutocompleteTextField.m */,
+				33DA315418DA324A8C40F64A /* Support Files */,
+			);
+			path = HTAutocompleteTextField;
+			sourceTree = "<group>";
+		};
+		126E0946EEB0A4F52510CFE2 /* ActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				EF668F5D4DB3B0CBBE3D42D0 /* MRActivityIndicatorView.h */,
+				8EDB5FAFFA5069310A107770 /* MRActivityIndicatorView.m */,
 			);
 			name = ActivityIndicator;
 			sourceTree = "<group>";
 		};
-		086A230459A09E9B52C4FD37 /* Support Files */ = {
+		175596987BCAEF899355298E /* Overlay */ = {
 			isa = PBXGroup;
 			children = (
-				69D1B0483A3E73BB05D346B7 /* Pods-MRProgress.xcconfig */,
-				32391FDCA983549C7DFBDC46 /* Pods-MRProgress-Private.xcconfig */,
-				3671E24C70BB9B133D8F678D /* Pods-MRProgress-dummy.m */,
-				A030AC37549277745EB86F70 /* Pods-MRProgress-prefix.pch */,
+				A589311228DCF08F51066428 /* MRProgressOverlayView.h */,
+				623D85122A7B4D0C04042320 /* MRProgressOverlayView.m */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-MRProgress";
+			name = Overlay;
 			sourceTree = "<group>";
 		};
-		0B6E9EA7B678DD056F86D0CC /* Google-Mobile-Ads-SDK */ = {
+		2C3672C886FBB282FE6DC0C7 /* CMPopTipView */ = {
 			isa = PBXGroup;
 			children = (
-				6FE18E65DD60B683B62FC8EF /* Frameworks */,
+				BBE643F6277E12A5748E544F /* CMPopTipView.h */,
+				42DF9F0FE75F2BDC4D31F858 /* CMPopTipView.m */,
+				A0E918ED80F521C3B8A0F3AB /* Support Files */,
 			);
-			path = "Google-Mobile-Ads-SDK";
+			path = CMPopTipView;
 			sourceTree = "<group>";
 		};
-		0BF7408E43F3C69862A56EA6 /* Frameworks */ = {
+		3243B04C750383BCDC616DBC /* Blur */ = {
 			isa = PBXGroup;
 			children = (
-				9C88316FC06B1247F0893D8D /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1C0156FBE7DDAA599E7FB4DD /* UIAlertView-Blocks */ = {
-			isa = PBXGroup;
-			children = (
-				A522570584372D9739101AC6 /* RIButtonItem.h */,
-				989D46F565394FE045F725DE /* RIButtonItem.m */,
-				B6B9278B23475920ED0C80CA /* UIActionSheet+Blocks.h */,
-				1B0E2F92AC2572963D040F54 /* UIActionSheet+Blocks.m */,
-				1F487F1257B4D242B702338A /* UIAlertView+Blocks.h */,
-				AC4DF7387413644CBEC13BB3 /* UIAlertView+Blocks.m */,
-				B7D3DB604230BBD7CD61ADE4 /* Support Files */,
-			);
-			path = "UIAlertView-Blocks";
-			sourceTree = "<group>";
-		};
-		291BB0F9B9B7FED47F5B102B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				BE0CC370E114CB1407E34085 /* CMPopTipView */,
-				4FEF6F23EA09DDB73E8C0CA0 /* FMDB */,
-				0B6E9EA7B678DD056F86D0CC /* Google-Mobile-Ads-SDK */,
-				ED78E55D38B2F9236BE55A42 /* HTAutocompleteTextField */,
-				7106818948233EDC20BDA54D /* MRProgress */,
-				1C0156FBE7DDAA599E7FB4DD /* UIAlertView-Blocks */,
-				61E745107943D163D080B42C /* objective-zip */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		337986DE4B7E8C0F45899506 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				89EB7492369C9481857E9B0E /* Pods-CMPopTipView.xcconfig */,
-				C2D5710C55591A7366F46E4A /* Pods-CMPopTipView-Private.xcconfig */,
-				676E8B14B3BF7B43A6EC6447 /* Pods-CMPopTipView-dummy.m */,
-				DA72295E151FDDBF6BBDB720 /* Pods-CMPopTipView-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-CMPopTipView";
-			sourceTree = "<group>";
-		};
-		4FEF6F23EA09DDB73E8C0CA0 /* FMDB */ = {
-			isa = PBXGroup;
-			children = (
-				963F0968E20827DBCE367289 /* Support Files */,
-				B6428997C99A006DECFC71A7 /* common */,
-			);
-			path = FMDB;
-			sourceTree = "<group>";
-		};
-		5AFA2680276700B2D0175543 /* Blur */ = {
-			isa = PBXGroup;
-			children = (
-				1AF717A4DC254274F2B0D79C /* MRBlurView.h */,
-				F13A15369044BFD5D737CB23 /* MRBlurView.m */,
-				197EC77C5C50AF3B8548B3B4 /* UIImage+MRImageEffects.h */,
-				1BB83D279D3EB23F3FEB425C /* UIImage+MRImageEffects.m */,
+				F98E1BE78E18FE85063B30CC /* MRBlurView.h */,
+				E7EEFFA149A76298A9811034 /* MRBlurView.m */,
+				38254942BE806A4ACD96FB40 /* UIImage+MRImageEffects.h */,
+				3F174C3C04F4016D692819C8 /* UIImage+MRImageEffects.m */,
 			);
 			name = Blur;
 			sourceTree = "<group>";
 		};
-		61E745107943D163D080B42C /* objective-zip */ = {
+		33DA315418DA324A8C40F64A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F8B7827A969B1053E00461BD /* ARCHelper.h */,
-				3D2B44D5D5C5F624F71D039C /* FileInZipInfo.h */,
-				97DFFDB789E8B9D03CF7045E /* FileInZipInfo.m */,
-				F68C5E9D860B33E6067AFFCC /* ZipException.h */,
-				B6E53EDD0FD93C1CE8473FFA /* ZipException.m */,
-				92ED61DC0F2092899604580B /* ZipFile.h */,
-				681DC5DDA6B0CC4850C9CB9D /* ZipFile.m */,
-				0148D8AD478ED883E4C7F7AE /* ZipReadStream.h */,
-				A2833F318D7E47F0A47047D4 /* ZipReadStream.m */,
-				6CBDEC08E4D41C21ABA4E590 /* ZipWriteStream.h */,
-				823756A0BE2848B6B4307B24 /* ZipWriteStream.m */,
-				9E74E9EFECCADD5B69D75D55 /* crypt.h */,
-				90A8DEB755A748764906234C /* ioapi.c */,
-				799E38029FE2C40C6658FFE5 /* ioapi.h */,
-				99DAACAE658A8BD2E3727E46 /* unzip.c */,
-				7813314F21D7C138261A2740 /* unzip.h */,
-				5711BCF1711ACC2B6A999A98 /* zip.c */,
-				F34D172DF77DA1DBD8B934C6 /* zip.h */,
-				A91FFE61FCBC5FD3F9C87DA6 /* Support Files */,
-			);
-			path = "objective-zip";
-			sourceTree = "<group>";
-		};
-		632CC155CE67642C4B3AA11E /* Circular */ = {
-			isa = PBXGroup;
-			children = (
-				91EDDB1953D1099C12927172 /* MRCircularProgressView.h */,
-				3423DF1447B21932A42D6CD4 /* MRCircularProgressView.m */,
-			);
-			name = Circular;
-			sourceTree = "<group>";
-		};
-		6FE18E65DD60B683B62FC8EF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2F77EEEFAD35F8AF6B90B791 /* GoogleMobileAds.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7106818948233EDC20BDA54D /* MRProgress */ = {
-			isa = PBXGroup;
-			children = (
-				A9A2BD013C47451392231DFD /* MRProgress.h */,
-				06775E9940CBB7F5DCDC930F /* ActivityIndicator */,
-				5AFA2680276700B2D0175543 /* Blur */,
-				632CC155CE67642C4B3AA11E /* Circular */,
-				A597508776931897A717CD40 /* Helper */,
-				D09E5E4A476B8534FEF8D781 /* Icons */,
-				CA0EF78C01C7B91FE3998AE8 /* NavigationBarProgress */,
-				7C8E9576970C20C8B81F5F32 /* Overlay */,
-				971B72B3DC99E5390450EC30 /* ProgressBaseClass */,
-				03BB40C1F5614868CE78A73A /* Stopable */,
-				086A230459A09E9B52C4FD37 /* Support Files */,
-			);
-			path = MRProgress;
-			sourceTree = "<group>";
-		};
-		78F4131250D2DEF3A931F6AC /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				2C55977E711BAD1D999A8CDE /* Pods-HTAutocompleteTextField.xcconfig */,
-				3FC5BA2B1D5227A77EF79CEC /* Pods-HTAutocompleteTextField-Private.xcconfig */,
-				DBFACFC602C29EDC3B2793B4 /* Pods-HTAutocompleteTextField-dummy.m */,
-				7CD94DEDF34E3F94C7EE345F /* Pods-HTAutocompleteTextField-prefix.pch */,
+				4250CEC36B9DE5C8A4318EC0 /* Pods-HTAutocompleteTextField.xcconfig */,
+				2E4114E742B73730048C1318 /* Pods-HTAutocompleteTextField-Private.xcconfig */,
+				F243333582D3A5AF14A6626F /* Pods-HTAutocompleteTextField-dummy.m */,
+				12E9609FDA98B267B3ECE156 /* Pods-HTAutocompleteTextField-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Pods-HTAutocompleteTextField";
 			sourceTree = "<group>";
 		};
-		7C8E9576970C20C8B81F5F32 /* Overlay */ = {
+		409B047B0911E8D5264CBC0C /* FMDB */ = {
 			isa = PBXGroup;
 			children = (
-				9705955DA3EFAD6E09E498B0 /* MRProgressOverlayView.h */,
-				B7E4C51705F9CADEA6161C7C /* MRProgressOverlayView.m */,
+				C25C782E67BDC0B72EE655DE /* Support Files */,
+				DE404C5F54779E8D40E6E932 /* common */,
 			);
-			name = Overlay;
+			path = FMDB;
 			sourceTree = "<group>";
 		};
-		963F0968E20827DBCE367289 /* Support Files */ = {
+		4A96913242F2AE9099CFD43C /* NavigationBarProgress */ = {
 			isa = PBXGroup;
 			children = (
-				8BAC90D1F19AA382A2B889E9 /* Pods-FMDB.xcconfig */,
-				E9097198BDD9BA4904C8CB7E /* Pods-FMDB-Private.xcconfig */,
-				64A584E101F38EF761596C36 /* Pods-FMDB-dummy.m */,
-				579F5628D5B95E9A6184DF44 /* Pods-FMDB-prefix.pch */,
+				C37B015392952F9AA02BC566 /* MRNavigationBarProgressView.h */,
+				C0F3790A6B53177111AA47D5 /* MRNavigationBarProgressView.m */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-FMDB";
+			name = NavigationBarProgress;
 			sourceTree = "<group>";
 		};
-		971B72B3DC99E5390450EC30 /* ProgressBaseClass */ = {
+		4B2C4AB97180B46DE0691B5B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				55A30081B40490E929FAF2F8 /* MRProgressView.h */,
-				5853267D30AD7A4A42D133D9 /* MRProgressView.m */,
-			);
-			name = ProgressBaseClass;
-			sourceTree = "<group>";
-		};
-		9C88316FC06B1247F0893D8D /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				71AAA1BFA9B3FFBF6DE09EC2 /* Accelerate.framework */,
-				69287287AC7049DD43925177 /* CoreGraphics.framework */,
-				B0B878263F2BDB45A057D84E /* Foundation.framework */,
-				EAC760A481370E4D15BABDCC /* QuartzCore.framework */,
-				66B7561EF0D98A2CEEFBF8F7 /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		A597508776931897A717CD40 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				ACDCFB0BAEE8AFB7A165D3BF /* MRProgressHelper.h */,
+				B810FC2B155A0AC8337F3402 /* MRProgressHelper.h */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
 		};
-		A91FFE61FCBC5FD3F9C87DA6 /* Support Files */ = {
+		5047973E201EDFA1FBF7CBEC /* objective-zip */ = {
 			isa = PBXGroup;
 			children = (
-				4BCB7078B50D20EFC35D01BB /* Pods-objective-zip.xcconfig */,
-				18F9CA974F9F0B88AB86007D /* Pods-objective-zip-Private.xcconfig */,
-				AE76E97503F7593A98C12470 /* Pods-objective-zip-dummy.m */,
-				5F54243864D2C3013CA0FC8F /* Pods-objective-zip-prefix.pch */,
+				5CC6AB4260467658C15163AD /* ARCHelper.h */,
+				597D9FF6E89ECB3735D2C754 /* FileInZipInfo.h */,
+				7E72F0DF016F898E81F88E47 /* FileInZipInfo.m */,
+				2317CB87F8AD201423AE95D7 /* ZipException.h */,
+				17D2BE945364E98574225FC4 /* ZipException.m */,
+				99D4C0AF54B46CF8AC073AC7 /* ZipFile.h */,
+				3CE3B9080EF6FEEE4B8B8506 /* ZipFile.m */,
+				1F449B2F775EFA607097030A /* ZipReadStream.h */,
+				F2F12F22E5E7CA2CEDD30694 /* ZipReadStream.m */,
+				A3F28FFADBF4F5D1408ACF10 /* ZipWriteStream.h */,
+				2776E18AF1CB1F027C100EEF /* ZipWriteStream.m */,
+				81456D612C68DC86E9D51144 /* crypt.h */,
+				6085FC5342AA9FB742327BEE /* ioapi.c */,
+				B292963DDFEBA9F558B40C0A /* ioapi.h */,
+				DE8CC55CB6CA6341ED48C017 /* unzip.c */,
+				707F00948711F0852CF8966C /* unzip.h */,
+				A86916EF50091F4EB870E501 /* zip.c */,
+				84CFC5A8815B544E6906E92C /* zip.h */,
+				A31B0263AF7C21232F8733D4 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-objective-zip";
+			path = "objective-zip";
 			sourceTree = "<group>";
 		};
-		AC7658CEDDD045A2ABD7F2BA /* Pods */ = {
+		53D89D1458E72421DAB383AC /* ProgressBaseClass */ = {
 			isa = PBXGroup;
 			children = (
-				FCCAFF976AEAD313C8F8D2ED /* Pods-acknowledgements.markdown */,
-				0E503EFBA064070F1EF4E5CF /* Pods-acknowledgements.plist */,
-				8F902AF5A8BCD361D5302D1D /* Pods-dummy.m */,
-				4D7112FFDD869A903A2AE3C6 /* Pods-environment.h */,
-				E795D90F93F8A588A664EB7D /* Pods-resources.sh */,
-				C0383D9E6432EFD342400985 /* Pods.debug.xcconfig */,
-				EDCD5083D2A5520DCC61FEDB /* Pods.release.xcconfig */,
+				97429074C549B2D654A6F6AE /* MRProgressView.h */,
+				769DB316545E0E110AEF102C /* MRProgressView.m */,
 			);
-			name = Pods;
-			path = "Target Support Files/Pods";
+			name = ProgressBaseClass;
 			sourceTree = "<group>";
 		};
-		B6428997C99A006DECFC71A7 /* common */ = {
+		595F881C90F1561E61418999 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8B14BC963314527050C43D25 /* FMDB.h */,
-				0040666C74251D3ED4D45650 /* FMDatabase.h */,
-				3B82084E29EE02854A094429 /* FMDatabase.m */,
-				47880858E663E73CA5D3E5BC /* FMDatabaseAdditions.h */,
-				45CBB635BF2A98EAC3D59E1E /* FMDatabaseAdditions.m */,
-				D78EBDD455672DB3F679849A /* FMDatabasePool.h */,
-				3719F4F5CD291B1B1DA85E14 /* FMDatabasePool.m */,
-				FAFE7963A5EE16190E86B439 /* FMDatabaseQueue.h */,
-				08833F2F80A507D884434DBB /* FMDatabaseQueue.m */,
-				F7266A2ABDBB59E10E257F31 /* FMResultSet.h */,
-				A1B1B85443F9F8E53F414E2D /* FMResultSet.m */,
+				179C76083328905FD7C19E7C /* libPods.a */,
+				43023FE48B9C7FACF8D226BF /* libPods-CMPopTipView.a */,
+				FEBD7D6F818BBC2EF38BC1E6 /* libPods-FMDB.a */,
+				7EBEF741D130F30EE2B0B4FB /* libPods-HTAutocompleteTextField.a */,
+				9D73CA0A1A19BBB3B90C944A /* libPods-MRProgress.a */,
+				7E99B2DC3BE33812E2E090B4 /* libPods-UIAlertView-Blocks.a */,
+				DDA04189028E3561179CD5D5 /* libPods-objective-zip.a */,
 			);
-			name = common;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		B7D3DB604230BBD7CD61ADE4 /* Support Files */ = {
+		6030E2D0BCD1CAF3BF871095 /* Circular */ = {
 			isa = PBXGroup;
 			children = (
-				04EA63C55951CE9375D15C86 /* Pods-UIAlertView-Blocks.xcconfig */,
-				F1D70DEF02554BAACFE648F0 /* Pods-UIAlertView-Blocks-Private.xcconfig */,
-				08588729E14CC8D99AD2E18D /* Pods-UIAlertView-Blocks-dummy.m */,
-				E131CEE2D167EEF937B68661 /* Pods-UIAlertView-Blocks-prefix.pch */,
+				49BDDFBD3EB2053A57A667A8 /* MRCircularProgressView.h */,
+				16627DDCF2E667B88A6D3982 /* MRCircularProgressView.m */,
+			);
+			name = Circular;
+			sourceTree = "<group>";
+		};
+		74EC60DA3B5EB54E47B51EF2 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CF1660A63D5D55AAF731FF5A /* Pods-UIAlertView-Blocks.xcconfig */,
+				C080BD4DE6178B5898309B3F /* Pods-UIAlertView-Blocks-Private.xcconfig */,
+				8293FB858F3E05322D22461C /* Pods-UIAlertView-Blocks-dummy.m */,
+				7C1D5AAADBDC466523AE967F /* Pods-UIAlertView-Blocks-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Pods-UIAlertView-Blocks";
 			sourceTree = "<group>";
 		};
-		BDC975B0BC0534903BA400F6 /* Targets Support Files */ = {
+		77C1FDE6EE994DB7D5D5169D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AC7658CEDDD045A2ABD7F2BA /* Pods */,
+				A8D40213A7E0734AD4D24F58 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		83538BCBC49A6860FB9B56A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C3672C886FBB282FE6DC0C7 /* CMPopTipView */,
+				409B047B0911E8D5264CBC0C /* FMDB */,
+				F8ADA8A98DC78D4479E69712 /* Google-Mobile-Ads-SDK */,
+				0DA4234F953978306374BFEB /* HTAutocompleteTextField */,
+				EDCCE2E2FF05935BC8176475 /* MRProgress */,
+				FE7BEA0F4BB2D33E96DEE721 /* UIAlertView-Blocks */,
+				5047973E201EDFA1FBF7CBEC /* objective-zip */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		83FF501446BC75C269FEF89D /* Stopable */ = {
+			isa = PBXGroup;
+			children = (
+				4BAAD917449DB47C7CEF0466 /* MRStopButton.h */,
+				DCCBE455BEF3BADD8A8E6BB3 /* MRStopButton.m */,
+				05131F88B7D1DE08C2F9D6AA /* MRStopableView.h */,
+			);
+			name = Stopable;
+			sourceTree = "<group>";
+		};
+		A0E918ED80F521C3B8A0F3AB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC99119DDC564A9A2510B5D7 /* Pods-CMPopTipView.xcconfig */,
+				1C5E674A84A6C6D4A916E668 /* Pods-CMPopTipView-Private.xcconfig */,
+				D97C7E92EF427F909E1A7FEF /* Pods-CMPopTipView-dummy.m */,
+				55C4CE2D4E5FF79890EE24ED /* Pods-CMPopTipView-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-CMPopTipView";
+			sourceTree = "<group>";
+		};
+		A31B0263AF7C21232F8733D4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4182ADE1B53E679674C44DB9 /* Pods-objective-zip.xcconfig */,
+				6A490F26AF58A89B8123789D /* Pods-objective-zip-Private.xcconfig */,
+				2D05ACD9B84B18F6BFC5DC7C /* Pods-objective-zip-dummy.m */,
+				199668BADF07C756B093E592 /* Pods-objective-zip-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-objective-zip";
+			sourceTree = "<group>";
+		};
+		A8D40213A7E0734AD4D24F58 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				916758FD073CD99623622238 /* Accelerate.framework */,
+				FC3C1A4A3EF04B5DCD848A01 /* CoreGraphics.framework */,
+				7F853626E0535961207E6718 /* Foundation.framework */,
+				682992D2F8B203A5E25CFEB3 /* QuartzCore.framework */,
+				4DA5D063BC117A612B08B7BC /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		BF026055644E5B7A2D40B9ED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				19FC2B262025735E9CB7FE8B /* Pods-acknowledgements.markdown */,
+				2B2458232F8AF1B83E21C1B3 /* Pods-acknowledgements.plist */,
+				5408159711BEDD6498918107 /* Pods-dummy.m */,
+				BE7D6280AE405C1C089276BC /* Pods-environment.h */,
+				06F96789FAD147756CAAFC18 /* Pods-resources.sh */,
+				A7D4223087E5D1C01B6DD36F /* Pods.debug.xcconfig */,
+				F2A87329829E92539887E49A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			path = "Target Support Files/Pods";
+			sourceTree = "<group>";
+		};
+		C25C782E67BDC0B72EE655DE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE3CA2F40AFB861891A62177 /* Pods-FMDB.xcconfig */,
+				91A47092FFCAF525AC0C47BF /* Pods-FMDB-Private.xcconfig */,
+				0A3ACAA405B9967F477D4B8A /* Pods-FMDB-dummy.m */,
+				4DFFDAAF652F1ABC6A14EC95 /* Pods-FMDB-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-FMDB";
+			sourceTree = "<group>";
+		};
+		CEA3819EAE3D57C20A85F1C6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				15E928FC30D8CC03D663444A /* Pods-MRProgress.xcconfig */,
+				065E11D7CA0E2C48C988ED17 /* Pods-MRProgress-Private.xcconfig */,
+				D07484A965852337718D5A9B /* Pods-MRProgress-dummy.m */,
+				502206F4B11BF4576DCC1D8D /* Pods-MRProgress-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-MRProgress";
+			sourceTree = "<group>";
+		};
+		DE404C5F54779E8D40E6E932 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				717D669E9CBB12DEE1F1D43D /* FMDB.h */,
+				C185543FF1B90BC3F22F27F9 /* FMDatabase.h */,
+				49346884789355DE9A3207F7 /* FMDatabase.m */,
+				797DCA3447B4E00DC7C5020C /* FMDatabaseAdditions.h */,
+				AB424F2F485E34F01F84FD43 /* FMDatabaseAdditions.m */,
+				C89F67DD41A0E761AC087E9F /* FMDatabasePool.h */,
+				B2A713A1838CCD6421759F9B /* FMDatabasePool.m */,
+				2377EF8AB19A50889C92170E /* FMDatabaseQueue.h */,
+				A03E68BD16FDC2D136DDE344 /* FMDatabaseQueue.m */,
+				BAA99989BCD47F9019FF90D0 /* FMResultSet.h */,
+				778D72120044B37CCA57CA52 /* FMResultSet.m */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		EDCCE2E2FF05935BC8176475 /* MRProgress */ = {
+			isa = PBXGroup;
+			children = (
+				BF300693EC7530CE42EDDC26 /* MRProgress.h */,
+				126E0946EEB0A4F52510CFE2 /* ActivityIndicator */,
+				3243B04C750383BCDC616DBC /* Blur */,
+				6030E2D0BCD1CAF3BF871095 /* Circular */,
+				4B2C4AB97180B46DE0691B5B /* Helper */,
+				027B0CBDFB5D32F7F1FBECFB /* Icons */,
+				4A96913242F2AE9099CFD43C /* NavigationBarProgress */,
+				175596987BCAEF899355298E /* Overlay */,
+				53D89D1458E72421DAB383AC /* ProgressBaseClass */,
+				83FF501446BC75C269FEF89D /* Stopable */,
+				CEA3819EAE3D57C20A85F1C6 /* Support Files */,
+			);
+			path = MRProgress;
+			sourceTree = "<group>";
+		};
+		F5A0BBF050DAAF6E67377DC4 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF026055644E5B7A2D40B9ED /* Pods */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		BE0CC370E114CB1407E34085 /* CMPopTipView */ = {
+		F8ADA8A98DC78D4479E69712 /* Google-Mobile-Ads-SDK */ = {
 			isa = PBXGroup;
 			children = (
-				0189ADDF28D3D3826E72EB44 /* CMPopTipView.h */,
-				5F29F2AE23989124E6846873 /* CMPopTipView.m */,
-				337986DE4B7E8C0F45899506 /* Support Files */,
+				0CCD14784E1C90AD91786CC3 /* Frameworks */,
 			);
-			path = CMPopTipView;
+			path = "Google-Mobile-Ads-SDK";
 			sourceTree = "<group>";
 		};
-		C0D907A44780A008CDC7A341 /* Products */ = {
+		FE7BEA0F4BB2D33E96DEE721 /* UIAlertView-Blocks */ = {
 			isa = PBXGroup;
 			children = (
-				66491551BFD43AFA63B7DF69 /* libPods.a */,
-				611FB1FBE772F0FAB22F7440 /* libPods-CMPopTipView.a */,
-				03756B4D87B0CD9DE580C469 /* libPods-FMDB.a */,
-				036020BA2C31A57C0994DCC2 /* libPods-HTAutocompleteTextField.a */,
-				251CB5EC22BAC7655F1FB04A /* libPods-MRProgress.a */,
-				EC4AE7D07BFDEE6C80CD51CD /* libPods-UIAlertView-Blocks.a */,
-				2C444EB1AB46ED30D41E1E7D /* libPods-objective-zip.a */,
+				79031A5103DA19A6BB9DBAB7 /* RIButtonItem.h */,
+				40C134119A26A97B490FBE86 /* RIButtonItem.m */,
+				D2A3CAD3264028618C738F6E /* UIActionSheet+Blocks.h */,
+				074B1C6D3F59383B4EF01AA8 /* UIActionSheet+Blocks.m */,
+				55B2907BC9BBD28CE8D5A00D /* UIAlertView+Blocks.h */,
+				2645FB99B3EA3EBEBBFA70E7 /* UIAlertView+Blocks.m */,
+				74EC60DA3B5EB54E47B51EF2 /* Support Files */,
 			);
-			name = Products;
+			path = "UIAlertView-Blocks";
 			sourceTree = "<group>";
 		};
-		CA0EF78C01C7B91FE3998AE8 /* NavigationBarProgress */ = {
+		FF519C50A950B346FC36F924 = {
 			isa = PBXGroup;
 			children = (
-				6F2330E6697974B7A20D3D87 /* MRNavigationBarProgressView.h */,
-				8921D6B9C43A0ED195380DA6 /* MRNavigationBarProgressView.m */,
+				83B4F71C6B1B9272542FCDE5 /* Podfile */,
+				77C1FDE6EE994DB7D5D5169D /* Frameworks */,
+				83538BCBC49A6860FB9B56A0 /* Pods */,
+				595F881C90F1561E61418999 /* Products */,
+				F5A0BBF050DAAF6E67377DC4 /* Targets Support Files */,
 			);
-			name = NavigationBarProgress;
-			sourceTree = "<group>";
-		};
-		D09E5E4A476B8534FEF8D781 /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-				B810FFFBDE2558F35C2A87DF /* MRIconView.h */,
-				F0E1D48C4D2AAADD20572910 /* MRIconView.m */,
-			);
-			name = Icons;
-			sourceTree = "<group>";
-		};
-		D435EDD94E883D74BF37D9AB = {
-			isa = PBXGroup;
-			children = (
-				6FD8FB9917320F827328EB7B /* Podfile */,
-				0BF7408E43F3C69862A56EA6 /* Frameworks */,
-				291BB0F9B9B7FED47F5B102B /* Pods */,
-				C0D907A44780A008CDC7A341 /* Products */,
-				BDC975B0BC0534903BA400F6 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		ED78E55D38B2F9236BE55A42 /* HTAutocompleteTextField */ = {
-			isa = PBXGroup;
-			children = (
-				3E947B29F7D90FE9963DED9C /* HTAutocompleteTextField.h */,
-				80FC1242D17C517FEA8740BF /* HTAutocompleteTextField.m */,
-				0EB88BC034B61A5ADDE49BDD /* HTEmailAutocompleteTextField.h */,
-				FB85932BF193F7E4AF2BEEBE /* HTEmailAutocompleteTextField.m */,
-				78F4131250D2DEF3A931F6AC /* Support Files */,
-			);
-			path = HTAutocompleteTextField;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1F7ACDE027397702163FEAF1 /* Headers */ = {
+		1B68FC661117E02A6F263CBF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B89BFBB2DAD135C7483F9EC /* ARCHelper.h in Headers */,
-				15E03FFD75825D1BCBC4B09A /* FileInZipInfo.h in Headers */,
-				3BC6203B4D4A6782065DA4FE /* ZipException.h in Headers */,
-				979B5C5B1218AB81F1C0AFD6 /* ZipFile.h in Headers */,
-				9312333CFAC99BF8911FE17C /* ZipReadStream.h in Headers */,
-				2BA07D443E3075D5B11A8B15 /* ZipWriteStream.h in Headers */,
-				D10865C3BE215BF4BC12B062 /* crypt.h in Headers */,
-				871ED0C6F4C89189E1309A19 /* ioapi.h in Headers */,
-				344A03F1DAF9D85D08D4B034 /* unzip.h in Headers */,
-				991D83A5C5DBF32BD3ECC9A1 /* zip.h in Headers */,
+				0B12DB671E6A6D34670DAFFB /* ARCHelper.h in Headers */,
+				FBFEAA7400E56D8DCEC1099D /* FileInZipInfo.h in Headers */,
+				E9E9E1BB6C4FEDE60FB203B5 /* ZipException.h in Headers */,
+				7CE2B6E1CFEFD1057F657C4D /* ZipFile.h in Headers */,
+				CA79FBB9D479FE38F8085E8E /* ZipReadStream.h in Headers */,
+				27CF2813EDCE9B6E503348F3 /* ZipWriteStream.h in Headers */,
+				12BA67F467C69BDFA880186B /* crypt.h in Headers */,
+				2EADC98C8E9E78CA9D130B74 /* ioapi.h in Headers */,
+				59DAD110A8DC6F9D1CEDE963 /* unzip.h in Headers */,
+				6AC174AE17A5CD7A52C109EB /* zip.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5C982BF4C0A96BB18011372E /* Headers */ = {
+		246B393308AD605BB186DECE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FE8ADFB23A3A98A005D2F0B /* HTAutocompleteTextField.h in Headers */,
-				3327A7D9653701C7D11C1B63 /* HTEmailAutocompleteTextField.h in Headers */,
+				67CF477F8F6835A2B82A025A /* CMPopTipView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		746B72005D095A1E5D2E3AA2 /* Headers */ = {
+		42904B95A7EDA53BBFFC287D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45D264F902B4F4D4E7479A59 /* MRActivityIndicatorView.h in Headers */,
-				DAA0C6A4BFDF869DD4CFC349 /* MRBlurView.h in Headers */,
-				E6CD923DABA3DCF0C501549B /* MRCircularProgressView.h in Headers */,
-				AE6E69444AA1C4970AD4292A /* MRIconView.h in Headers */,
-				1EBD09CF4B2E8BBE90550801 /* MRNavigationBarProgressView.h in Headers */,
-				622460680E7E3C43CCB9B204 /* MRProgress.h in Headers */,
-				F394BFDF802489A3494CEDE5 /* MRProgressHelper.h in Headers */,
-				A0E07A6593986DCFD58D9FA6 /* MRProgressOverlayView.h in Headers */,
-				BFC889D1930CE35CDAD95695 /* MRProgressView.h in Headers */,
-				6338BE47E1E240B45D2CEF1F /* MRStopButton.h in Headers */,
-				A3B71989F46184BD83BFD5D1 /* MRStopableView.h in Headers */,
-				B5E239FAD0DA87FEFDF6B3FE /* UIImage+MRImageEffects.h in Headers */,
+				E49376B344A95D60CAA354EC /* FMDB.h in Headers */,
+				26D846A35FF6243F60958DF3 /* FMDatabase.h in Headers */,
+				966D81292C98D790E576BA27 /* FMDatabaseAdditions.h in Headers */,
+				5F1E12BD51ED7EC0214C9E12 /* FMDatabasePool.h in Headers */,
+				340156CA29542230DE7F91D3 /* FMDatabaseQueue.h in Headers */,
+				70FA56DDE6FB8907938B7D80 /* FMResultSet.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A9A42CCD5ADB3845C758C8F5 /* Headers */ = {
+		521552D25F8E0814BD63678F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0EBF021AE08DF2FD1B110C2 /* RIButtonItem.h in Headers */,
-				145E7F94F792B3AD82149207 /* UIActionSheet+Blocks.h in Headers */,
-				94A33D62D426C7D99B6B88BC /* UIAlertView+Blocks.h in Headers */,
+				DDE8589592C863F8807C3A4F /* HTAutocompleteTextField.h in Headers */,
+				BBE673537BD025334F1756F2 /* HTEmailAutocompleteTextField.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B4027A1C0BA1C331C9638594 /* Headers */ = {
+		9C5E474DFB13E9FF080CB3F0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B997918EA7914D2B4A1E450 /* FMDB.h in Headers */,
-				3F31B9270D80EE6199D6FDC8 /* FMDatabase.h in Headers */,
-				F43B7E6E1AE2DA14CECC4729 /* FMDatabaseAdditions.h in Headers */,
-				123E365B1A2A6CF42FA8E212 /* FMDatabasePool.h in Headers */,
-				CDD223A3E84DA0ED6E8A7641 /* FMDatabaseQueue.h in Headers */,
-				41925B4251DE2028EB82358B /* FMResultSet.h in Headers */,
+				E3CDF9208A889DF26EE1DF64 /* RIButtonItem.h in Headers */,
+				CF4C5C175891CF40A0391AE4 /* UIActionSheet+Blocks.h in Headers */,
+				EDEBFF0895800E82F0913B08 /* UIAlertView+Blocks.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FC4DC6C11582DD873264CA38 /* Headers */ = {
+		F44D795BFEF4CD71FA0EFDAD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				662DD6BCDE6F63F0FD585C44 /* CMPopTipView.h in Headers */,
+				AB40E3BD73471FB73578A4EA /* MRActivityIndicatorView.h in Headers */,
+				C5A89050B8E06C147258A4EC /* MRBlurView.h in Headers */,
+				69A72321D3C6ACC8E6A439A7 /* MRCircularProgressView.h in Headers */,
+				4D59F15D8DAF61AC8CF84D38 /* MRIconView.h in Headers */,
+				3AFE0EF61B2D539E69A72B33 /* MRNavigationBarProgressView.h in Headers */,
+				1F5C09C9228FBEC30A988576 /* MRProgress.h in Headers */,
+				6CBED39FA1F2D60A23362D2E /* MRProgressHelper.h in Headers */,
+				F60AE6A296F5AC58D6FD83F4 /* MRProgressOverlayView.h in Headers */,
+				9A6A9FAE7B2188CFD209A909 /* MRProgressView.h in Headers */,
+				AE463D1D2E913019FE6B9A52 /* MRStopButton.h in Headers */,
+				4412838E9EAB050BFCAFCABC /* MRStopableView.h in Headers */,
+				4466818E3FA52D7B7BF71A49 /* UIImage+MRImageEffects.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0BB37789A6853D726800C191 /* Pods-HTAutocompleteTextField */ = {
+		1E1BFA5083E6DF2EBE010E5D /* Pods-HTAutocompleteTextField */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C1E268BDDDA56D378C67815C /* Build configuration list for PBXNativeTarget "Pods-HTAutocompleteTextField" */;
+			buildConfigurationList = 39CD889F7FB704D788128E38 /* Build configuration list for PBXNativeTarget "Pods-HTAutocompleteTextField" */;
 			buildPhases = (
-				7EF7DE2A536E62B160E80D32 /* Sources */,
-				6B95D4C290D1509B359F8C00 /* Frameworks */,
-				5C982BF4C0A96BB18011372E /* Headers */,
+				C5172151F279EB4FE44297DE /* Sources */,
+				610FE0235536D26EF32E23C9 /* Frameworks */,
+				521552D25F8E0814BD63678F /* Headers */,
 			);
 			buildRules = (
 			);
@@ -766,67 +766,16 @@
 			);
 			name = "Pods-HTAutocompleteTextField";
 			productName = "Pods-HTAutocompleteTextField";
-			productReference = 036020BA2C31A57C0994DCC2 /* libPods-HTAutocompleteTextField.a */;
+			productReference = 7EBEF741D130F30EE2B0B4FB /* libPods-HTAutocompleteTextField.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		23CB7EDB7C658E2864183814 /* Pods-FMDB */ = {
+		38DE52A4DC02829C2FA88745 /* Pods-CMPopTipView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA7502E3E88B729EEEB61145 /* Build configuration list for PBXNativeTarget "Pods-FMDB" */;
+			buildConfigurationList = C356B376B534ABC710CE9299 /* Build configuration list for PBXNativeTarget "Pods-CMPopTipView" */;
 			buildPhases = (
-				28916EA4C0EED0DA391CBA9D /* Sources */,
-				485DEAA90042C10D86FA8FA8 /* Frameworks */,
-				B4027A1C0BA1C331C9638594 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-FMDB";
-			productName = "Pods-FMDB";
-			productReference = 03756B4D87B0CD9DE580C469 /* libPods-FMDB.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		2970776D0CD64E72599BA9A2 /* Pods-objective-zip */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BCCDDC98F70B06122A3E67CB /* Build configuration list for PBXNativeTarget "Pods-objective-zip" */;
-			buildPhases = (
-				55F968330CD7DA06870DABBC /* Sources */,
-				A0750A0AD0FE618A3EBFD86E /* Frameworks */,
-				1F7ACDE027397702163FEAF1 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-objective-zip";
-			productName = "Pods-objective-zip";
-			productReference = 2C444EB1AB46ED30D41E1E7D /* libPods-objective-zip.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		332F03C009D2E7DE9A9E4533 /* Pods-MRProgress */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 939CE8CBEB2841E375FA97D8 /* Build configuration list for PBXNativeTarget "Pods-MRProgress" */;
-			buildPhases = (
-				3CF08CB8CEF98739A8B4964C /* Sources */,
-				AC8FF76B95897EF2DE9860C7 /* Frameworks */,
-				746B72005D095A1E5D2E3AA2 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-MRProgress";
-			productName = "Pods-MRProgress";
-			productReference = 251CB5EC22BAC7655F1FB04A /* libPods-MRProgress.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		549872727D3D880DC3693410 /* Pods-CMPopTipView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 482BBFDA36402E6B32E407B2 /* Build configuration list for PBXNativeTarget "Pods-CMPopTipView" */;
-			buildPhases = (
-				15D18992A1A7819EBA512BD5 /* Sources */,
-				14A14EC23F362F73A2D2B2B9 /* Frameworks */,
-				FC4DC6C11582DD873264CA38 /* Headers */,
+				57C5C9B4BE8C65135968A8AF /* Sources */,
+				A7436A950A17A1DB0521B60C /* Frameworks */,
+				246B393308AD605BB186DECE /* Headers */,
 			);
 			buildRules = (
 			);
@@ -834,16 +783,50 @@
 			);
 			name = "Pods-CMPopTipView";
 			productName = "Pods-CMPopTipView";
-			productReference = 611FB1FBE772F0FAB22F7440 /* libPods-CMPopTipView.a */;
+			productReference = 43023FE48B9C7FACF8D226BF /* libPods-CMPopTipView.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		A5C64D21529A0F414CD16338 /* Pods-UIAlertView-Blocks */ = {
+		3DDE21017E5E1FCFE9CD6DFB /* Pods-FMDB */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 993EA8DD306157D2766C0156 /* Build configuration list for PBXNativeTarget "Pods-UIAlertView-Blocks" */;
+			buildConfigurationList = F54F2405FB5BDC62B64CAB16 /* Build configuration list for PBXNativeTarget "Pods-FMDB" */;
 			buildPhases = (
-				45CAD658CE9F744040C795FF /* Sources */,
-				81AAE26354DB714CFEBF1A5C /* Frameworks */,
-				A9A42CCD5ADB3845C758C8F5 /* Headers */,
+				55642F846953046FC9F533CD /* Sources */,
+				F2DF4236353EFF40086235FC /* Frameworks */,
+				42904B95A7EDA53BBFFC287D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-FMDB";
+			productName = "Pods-FMDB";
+			productReference = FEBD7D6F818BBC2EF38BC1E6 /* libPods-FMDB.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		900D00202E2BB27D693E0C19 /* Pods-objective-zip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D43F93984A7A196424EA479 /* Build configuration list for PBXNativeTarget "Pods-objective-zip" */;
+			buildPhases = (
+				D5E02623E75D813D1FDB863B /* Sources */,
+				35B13F99BB41B18E3C4D3A66 /* Frameworks */,
+				1B68FC661117E02A6F263CBF /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-objective-zip";
+			productName = "Pods-objective-zip";
+			productReference = DDA04189028E3561179CD5D5 /* libPods-objective-zip.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		91B7CD876BFA8E8F7CE6839D /* Pods-UIAlertView-Blocks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F9F8210AE53385DC0366379 /* Build configuration list for PBXNativeTarget "Pods-UIAlertView-Blocks" */;
+			buildPhases = (
+				3BE88EB26B358DAC8C8D0E32 /* Sources */,
+				008AFD295FC96CBD0C57C2F9 /* Frameworks */,
+				9C5E474DFB13E9FF080CB3F0 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -851,195 +834,212 @@
 			);
 			name = "Pods-UIAlertView-Blocks";
 			productName = "Pods-UIAlertView-Blocks";
-			productReference = EC4AE7D07BFDEE6C80CD51CD /* libPods-UIAlertView-Blocks.a */;
+			productReference = 7E99B2DC3BE33812E2E090B4 /* libPods-UIAlertView-Blocks.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		F3AFEDBFF5CF90C9046647C6 /* Pods */ = {
+		B0AAD7EDBA212E1352E13D85 /* Pods */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F272B8971E9C298AA3EA9EE0 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildConfigurationList = 32590E0AA4042B7EBCBD5C62 /* Build configuration list for PBXNativeTarget "Pods" */;
 			buildPhases = (
-				51E8BDA406AFE6354F8C2DE4 /* Sources */,
-				4659AB38953C79C1966845B2 /* Frameworks */,
+				24C2F327E78AFC38D1E1EC8F /* Sources */,
+				85C1EACC7518F30E148A9D11 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E0E37E431FBBB166DCA95088 /* PBXTargetDependency */,
-				8B6E411AF7FDDB23E3CEFF75 /* PBXTargetDependency */,
-				CD3973C7A890C757A03A0F28 /* PBXTargetDependency */,
-				C1AB3E7190BBF0747236E839 /* PBXTargetDependency */,
-				DA65087E86B812E6E8AAFD3C /* PBXTargetDependency */,
-				41349699B86E99141C765552 /* PBXTargetDependency */,
+				83C1F3E02EAA0367503A1C82 /* PBXTargetDependency */,
+				C12FA19904ADE72BA05C7492 /* PBXTargetDependency */,
+				094DAD3A9611F180477121F0 /* PBXTargetDependency */,
+				4DC27E67C1EF238C9465D5C3 /* PBXTargetDependency */,
+				4FB14D3ECAEC196EA6254257 /* PBXTargetDependency */,
+				4FCCBD56AFCF7B12D90F059F /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
-			productReference = 66491551BFD43AFA63B7DF69 /* libPods.a */;
+			productReference = 179C76083328905FD7C19E7C /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F7195236920B20B853837EB4 /* Pods-MRProgress */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A6D969312AA2C1CC5D96D95 /* Build configuration list for PBXNativeTarget "Pods-MRProgress" */;
+			buildPhases = (
+				34AF0B3BE493522188B8D7F7 /* Sources */,
+				F1D9A51A7B9FA9FAE0B04EF1 /* Frameworks */,
+				F44D795BFEF4CD71FA0EFDAD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-MRProgress";
+			productName = "Pods-MRProgress";
+			productReference = 9D73CA0A1A19BBB3B90C944A /* libPods-MRProgress.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		01E00C030BD9C289D5E537B7 /* Project object */ = {
+		8F392AD365E80643E531BD24 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
 			};
-			buildConfigurationList = 2ADA174F307E4A19515DD19F /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 97085BC02BF210B8705C9CB3 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = D435EDD94E883D74BF37D9AB;
-			productRefGroup = C0D907A44780A008CDC7A341 /* Products */;
+			mainGroup = FF519C50A950B346FC36F924;
+			productRefGroup = 595F881C90F1561E61418999 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F3AFEDBFF5CF90C9046647C6 /* Pods */,
-				549872727D3D880DC3693410 /* Pods-CMPopTipView */,
-				23CB7EDB7C658E2864183814 /* Pods-FMDB */,
-				0BB37789A6853D726800C191 /* Pods-HTAutocompleteTextField */,
-				332F03C009D2E7DE9A9E4533 /* Pods-MRProgress */,
-				A5C64D21529A0F414CD16338 /* Pods-UIAlertView-Blocks */,
-				2970776D0CD64E72599BA9A2 /* Pods-objective-zip */,
+				B0AAD7EDBA212E1352E13D85 /* Pods */,
+				38DE52A4DC02829C2FA88745 /* Pods-CMPopTipView */,
+				3DDE21017E5E1FCFE9CD6DFB /* Pods-FMDB */,
+				1E1BFA5083E6DF2EBE010E5D /* Pods-HTAutocompleteTextField */,
+				F7195236920B20B853837EB4 /* Pods-MRProgress */,
+				91B7CD876BFA8E8F7CE6839D /* Pods-UIAlertView-Blocks */,
+				900D00202E2BB27D693E0C19 /* Pods-objective-zip */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		15D18992A1A7819EBA512BD5 /* Sources */ = {
+		24C2F327E78AFC38D1E1EC8F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15C1F1C4A4361BEA50D0E111 /* CMPopTipView.m in Sources */,
-				4F2E46804DA1AD7F03486742 /* Pods-CMPopTipView-dummy.m in Sources */,
+				82DE2DB67A4C4C6087AB66CA /* Pods-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28916EA4C0EED0DA391CBA9D /* Sources */ = {
+		34AF0B3BE493522188B8D7F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DAE3B35E86D05AFA91838F3 /* FMDatabase.m in Sources */,
-				651EAC93A3F26BE353C2CCBD /* FMDatabaseAdditions.m in Sources */,
-				8AC8FE830F95B280EFC52359 /* FMDatabasePool.m in Sources */,
-				6D1BB85E0BE6EE0E401695A6 /* FMDatabaseQueue.m in Sources */,
-				87FA3DF818B70AC65C2089B7 /* FMResultSet.m in Sources */,
-				F0C9E05F65BFEBB8E907F138 /* Pods-FMDB-dummy.m in Sources */,
+				BB33E740269A7F968D30B1AD /* MRActivityIndicatorView.m in Sources */,
+				672511AC9C8C78134E3D91ED /* MRBlurView.m in Sources */,
+				F37DCCDB2EFB16D1947970E2 /* MRCircularProgressView.m in Sources */,
+				37154D56525FD4F6FCC74DEF /* MRIconView.m in Sources */,
+				186DDF74D1A3DC6D53A82C49 /* MRNavigationBarProgressView.m in Sources */,
+				E35E6D5B2E3E9F9291DEF4A0 /* MRProgressOverlayView.m in Sources */,
+				847AB84651D086E774E1F164 /* MRProgressView.m in Sources */,
+				F0555488A085C9E7CE9F2C16 /* MRStopButton.m in Sources */,
+				4F7E839E6C64AD87BA09FC04 /* Pods-MRProgress-dummy.m in Sources */,
+				3B8EC3763284572A84F291FF /* UIImage+MRImageEffects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3CF08CB8CEF98739A8B4964C /* Sources */ = {
+		3BE88EB26B358DAC8C8D0E32 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA2E241E91D61FD1B1954425 /* MRActivityIndicatorView.m in Sources */,
-				DC05F429CDCE238D12933A4E /* MRBlurView.m in Sources */,
-				3850873EC74B793B049D285A /* MRCircularProgressView.m in Sources */,
-				DE0B951FA88ACAD01C000C40 /* MRIconView.m in Sources */,
-				58B59CF3018DE6109C699806 /* MRNavigationBarProgressView.m in Sources */,
-				37DBA84923B576C771F2B488 /* MRProgressOverlayView.m in Sources */,
-				96924153AA3A506396CBBBC4 /* MRProgressView.m in Sources */,
-				2565571836A7CB7E14DF2ED3 /* MRStopButton.m in Sources */,
-				82D003929F7BDAA295402DAF /* Pods-MRProgress-dummy.m in Sources */,
-				D51286F10535FEC6C28512F9 /* UIImage+MRImageEffects.m in Sources */,
+				E17B40CF5286BA0E42145E85 /* Pods-UIAlertView-Blocks-dummy.m in Sources */,
+				5F78D4117A4D337CA5840C15 /* RIButtonItem.m in Sources */,
+				6309697FAB922A9562192129 /* UIActionSheet+Blocks.m in Sources */,
+				CDE368E9C50AD88692FD0B6C /* UIAlertView+Blocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		45CAD658CE9F744040C795FF /* Sources */ = {
+		55642F846953046FC9F533CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D74EB2AEB388CE77B6855E2E /* Pods-UIAlertView-Blocks-dummy.m in Sources */,
-				33F8D28E462FF3247BB1F560 /* RIButtonItem.m in Sources */,
-				57505404639CAD3BEFF00D2F /* UIActionSheet+Blocks.m in Sources */,
-				C16571093469172709C17C12 /* UIAlertView+Blocks.m in Sources */,
+				0021E0AD346F38F159CD106E /* FMDatabase.m in Sources */,
+				BDC325A26BA0BABFF647113E /* FMDatabaseAdditions.m in Sources */,
+				7749F2A6E5C7C7C857BACC44 /* FMDatabasePool.m in Sources */,
+				0E7D620ABB63179C047E2F2F /* FMDatabaseQueue.m in Sources */,
+				365DBE08B88CC8591A91D637 /* FMResultSet.m in Sources */,
+				DE75C1F268296F2F73D03C11 /* Pods-FMDB-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		51E8BDA406AFE6354F8C2DE4 /* Sources */ = {
+		57C5C9B4BE8C65135968A8AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93E052358B88CF13192E0ED4 /* Pods-dummy.m in Sources */,
+				EAED9E6C09D952D14687968F /* CMPopTipView.m in Sources */,
+				39DE41414D87922BD83007D0 /* Pods-CMPopTipView-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		55F968330CD7DA06870DABBC /* Sources */ = {
+		C5172151F279EB4FE44297DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F60EEDCB3731CA7C3DFF2D14 /* FileInZipInfo.m in Sources */,
-				21395C4A046F33A04AE95119 /* Pods-objective-zip-dummy.m in Sources */,
-				31CEDCC847BC5AC83604E2A0 /* ZipException.m in Sources */,
-				283CFA4874BB4AF46E5B7CED /* ZipFile.m in Sources */,
-				EB195139FAF858616E37D32A /* ZipReadStream.m in Sources */,
-				5ECBC2757214E8B3794B7881 /* ZipWriteStream.m in Sources */,
-				F6D66E6CD652FEA3EF96B537 /* ioapi.c in Sources */,
-				F1B187C0350ECBEC7D720DE5 /* unzip.c in Sources */,
-				8D668B360984944062576561 /* zip.c in Sources */,
+				DDFF9EF7391C1246D1B39FE2 /* HTAutocompleteTextField.m in Sources */,
+				7878A77592F47321EF3323D3 /* HTEmailAutocompleteTextField.m in Sources */,
+				0EAE6E311BCD3F4A2002AA76 /* Pods-HTAutocompleteTextField-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7EF7DE2A536E62B160E80D32 /* Sources */ = {
+		D5E02623E75D813D1FDB863B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13F340092843F466613BD387 /* HTAutocompleteTextField.m in Sources */,
-				0CDA061268D5228ED6958D52 /* HTEmailAutocompleteTextField.m in Sources */,
-				A77BC6AA29CD895CE044D1BE /* Pods-HTAutocompleteTextField-dummy.m in Sources */,
+				7E61E2AD00A19C58819A9EEE /* FileInZipInfo.m in Sources */,
+				BF8A576A735729BB9858DD67 /* Pods-objective-zip-dummy.m in Sources */,
+				9A7023EAE7E744B8C2D159BA /* ZipException.m in Sources */,
+				3C06558C835C63D51F606AC6 /* ZipFile.m in Sources */,
+				E3DE7058A660557D1FE3ECD2 /* ZipReadStream.m in Sources */,
+				CF9EDF613B1D137CFEEE714F /* ZipWriteStream.m in Sources */,
+				CDFFD64BAB55AFAD8A16BEF3 /* ioapi.c in Sources */,
+				B312F8606EC7C28D29140617 /* unzip.c in Sources */,
+				FDAE7C28BABB0E3144546C83 /* zip.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		41349699B86E99141C765552 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-objective-zip";
-			target = 2970776D0CD64E72599BA9A2 /* Pods-objective-zip */;
-			targetProxy = 2E67C57E861209D53EC5C30D /* PBXContainerItemProxy */;
-		};
-		8B6E411AF7FDDB23E3CEFF75 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-FMDB";
-			target = 23CB7EDB7C658E2864183814 /* Pods-FMDB */;
-			targetProxy = 6980C9CACC4D332686E5D79A /* PBXContainerItemProxy */;
-		};
-		C1AB3E7190BBF0747236E839 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-MRProgress";
-			target = 332F03C009D2E7DE9A9E4533 /* Pods-MRProgress */;
-			targetProxy = 85D82A4E2A58BE3CED431307 /* PBXContainerItemProxy */;
-		};
-		CD3973C7A890C757A03A0F28 /* PBXTargetDependency */ = {
+		094DAD3A9611F180477121F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-HTAutocompleteTextField";
-			target = 0BB37789A6853D726800C191 /* Pods-HTAutocompleteTextField */;
-			targetProxy = 479092956B71C23E0B3009B5 /* PBXContainerItemProxy */;
+			target = 1E1BFA5083E6DF2EBE010E5D /* Pods-HTAutocompleteTextField */;
+			targetProxy = F78FF24E800684D58B41844E /* PBXContainerItemProxy */;
 		};
-		DA65087E86B812E6E8AAFD3C /* PBXTargetDependency */ = {
+		4DC27E67C1EF238C9465D5C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-MRProgress";
+			target = F7195236920B20B853837EB4 /* Pods-MRProgress */;
+			targetProxy = 527B5AA14348DFF92EC02398 /* PBXContainerItemProxy */;
+		};
+		4FB14D3ECAEC196EA6254257 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-UIAlertView-Blocks";
-			target = A5C64D21529A0F414CD16338 /* Pods-UIAlertView-Blocks */;
-			targetProxy = A81F2578957A4ADA77AC9389 /* PBXContainerItemProxy */;
+			target = 91B7CD876BFA8E8F7CE6839D /* Pods-UIAlertView-Blocks */;
+			targetProxy = C046569A875701E8D3FF9EAD /* PBXContainerItemProxy */;
 		};
-		E0E37E431FBBB166DCA95088 /* PBXTargetDependency */ = {
+		4FCCBD56AFCF7B12D90F059F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-objective-zip";
+			target = 900D00202E2BB27D693E0C19 /* Pods-objective-zip */;
+			targetProxy = 6833E9FB00F8C802E16F78C7 /* PBXContainerItemProxy */;
+		};
+		83C1F3E02EAA0367503A1C82 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-CMPopTipView";
-			target = 549872727D3D880DC3693410 /* Pods-CMPopTipView */;
-			targetProxy = AA6FF69BE8A79C1F1CFBD087 /* PBXContainerItemProxy */;
+			target = 38DE52A4DC02829C2FA88745 /* Pods-CMPopTipView */;
+			targetProxy = 68B9EE2B4BFE7200672BAE19 /* PBXContainerItemProxy */;
+		};
+		C12FA19904ADE72BA05C7492 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-FMDB";
+			target = 3DDE21017E5E1FCFE9CD6DFB /* Pods-FMDB */;
+			targetProxy = 3DCC8D963BC594284852CC78 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0E0EB4CCD602FCC836ADA0BC /* Debug */ = {
+		0497782557AE308191988424 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32391FDCA983549C7DFBDC46 /* Pods-MRProgress-Private.xcconfig */;
+			baseConfigurationReference = 91A47092FFCAF525AC0C47BF /* Pods-FMDB-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-MRProgress/Pods-MRProgress-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-FMDB/Pods-FMDB-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -1050,25 +1050,25 @@
 			};
 			name = Debug;
 		};
-		1887240C9BFCB2E76C9846D9 /* Release */ = {
+		0EA0DC35C4FB93763E5A4C82 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9097198BDD9BA4904C8CB7E /* Pods-FMDB-Private.xcconfig */;
+			baseConfigurationReference = F2A87329829E92539887E49A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-FMDB/Pods-FMDB-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		231905C9C1A23B2032F2670C /* Debug */ = {
+		170DE8FDFEFCB3B8DC6F4C95 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3FC5BA2B1D5227A77EF79CEC /* Pods-HTAutocompleteTextField-Private.xcconfig */;
+			baseConfigurationReference = 2E4114E742B73730048C1318 /* Pods-HTAutocompleteTextField-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-HTAutocompleteTextField/Pods-HTAutocompleteTextField-prefix.pch";
@@ -1082,9 +1082,155 @@
 			};
 			name = Debug;
 		};
-		2CFF6C13F9A26B84A3B7EDF1 /* Debug */ = {
+		31F3F793182DF71B5BEBF05F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2D5710C55591A7366F46E4A /* Pods-CMPopTipView-Private.xcconfig */;
+			baseConfigurationReference = 1C5E674A84A6C6D4A916E668 /* Pods-CMPopTipView-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-CMPopTipView/Pods-CMPopTipView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		39E6072E087553B37E26BFC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7D4223087E5D1C01B6DD36F /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		516C4F830ABA26BD40C7525F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91A47092FFCAF525AC0C47BF /* Pods-FMDB-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-FMDB/Pods-FMDB-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		62BCF6793A78C83D7117B526 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 065E11D7CA0E2C48C988ED17 /* Pods-MRProgress-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MRProgress/Pods-MRProgress-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		73F583A813ABBFDCFD84234F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7D027DC82759B89E468897BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A490F26AF58A89B8123789D /* Pods-objective-zip-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-objective-zip/Pods-objective-zip-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		8D50EED9F8F003D90B993CD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 065E11D7CA0E2C48C988ED17 /* Pods-MRProgress-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MRProgress/Pods-MRProgress-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		9CEC6198B4F43EC1117B9D20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A490F26AF58A89B8123789D /* Pods-objective-zip-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-objective-zip/Pods-objective-zip-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A1D1D3DB2A324DE8BAEDF4FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C5E674A84A6C6D4A916E668 /* Pods-CMPopTipView-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-CMPopTipView/Pods-CMPopTipView-prefix.pch";
@@ -1098,7 +1244,7 @@
 			};
 			name = Debug;
 		};
-		35D4FF1657E9FE819A68415F /* Debug */ = {
+		A5B19A17726953A6F640B595 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1137,171 +1283,9 @@
 			};
 			name = Debug;
 		};
-		4083183FC008F3EA7DF69F2D /* Debug */ = {
+		BA30EEFE08912BD71B3158C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0383D9E6432EFD342400985 /* Pods.debug.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		44BF3455E74EC282F7845AAB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32391FDCA983549C7DFBDC46 /* Pods-MRProgress-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-MRProgress/Pods-MRProgress-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		5154ABEEE7347AB68509A909 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		5712D8468EE746014FDC5475 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3FC5BA2B1D5227A77EF79CEC /* Pods-HTAutocompleteTextField-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-HTAutocompleteTextField/Pods-HTAutocompleteTextField-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		645D846AE8FD9989BBC8CACD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18F9CA974F9F0B88AB86007D /* Pods-objective-zip-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-objective-zip/Pods-objective-zip-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		686897CE24C77D6132AC2B9A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9097198BDD9BA4904C8CB7E /* Pods-FMDB-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-FMDB/Pods-FMDB-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		7761E1B0BAF4E58B33F91F81 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2D5710C55591A7366F46E4A /* Pods-CMPopTipView-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-CMPopTipView/Pods-CMPopTipView-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		B38732BFBEBC52FAB38E6C3A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18F9CA974F9F0B88AB86007D /* Pods-objective-zip-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-objective-zip/Pods-objective-zip-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		BD03C0DD4FC666FD158AD9BB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EDCD5083D2A5520DCC61FEDB /* Pods.release.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		D20AABB4D4C4DF7EEAA29CAE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1D70DEF02554BAACFE648F0 /* Pods-UIAlertView-Blocks-Private.xcconfig */;
+			baseConfigurationReference = C080BD4DE6178B5898309B3F /* Pods-UIAlertView-Blocks-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-UIAlertView-Blocks/Pods-UIAlertView-Blocks-prefix.pch";
@@ -1315,9 +1299,25 @@
 			};
 			name = Debug;
 		};
-		E06F3D2D8AF97D7BCDF1A524 /* Release */ = {
+		C536C5FE674F83BA05DCCACE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1D70DEF02554BAACFE648F0 /* Pods-UIAlertView-Blocks-Private.xcconfig */;
+			baseConfigurationReference = 2E4114E742B73730048C1318 /* Pods-HTAutocompleteTextField-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-HTAutocompleteTextField/Pods-HTAutocompleteTextField-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		EB70C1FB9453B4840534FD18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C080BD4DE6178B5898309B3F /* Pods-UIAlertView-Blocks-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-UIAlertView-Blocks/Pods-UIAlertView-Blocks-prefix.pch";
@@ -1334,79 +1334,79 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2ADA174F307E4A19515DD19F /* Build configuration list for PBXProject "Pods" */ = {
+		32590E0AA4042B7EBCBD5C62 /* Build configuration list for PBXNativeTarget "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				35D4FF1657E9FE819A68415F /* Debug */,
-				5154ABEEE7347AB68509A909 /* Release */,
+				39E6072E087553B37E26BFC1 /* Debug */,
+				0EA0DC35C4FB93763E5A4C82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		482BBFDA36402E6B32E407B2 /* Build configuration list for PBXNativeTarget "Pods-CMPopTipView" */ = {
+		39CD889F7FB704D788128E38 /* Build configuration list for PBXNativeTarget "Pods-HTAutocompleteTextField" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2CFF6C13F9A26B84A3B7EDF1 /* Debug */,
-				7761E1B0BAF4E58B33F91F81 /* Release */,
+				170DE8FDFEFCB3B8DC6F4C95 /* Debug */,
+				C536C5FE674F83BA05DCCACE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		939CE8CBEB2841E375FA97D8 /* Build configuration list for PBXNativeTarget "Pods-MRProgress" */ = {
+		4A6D969312AA2C1CC5D96D95 /* Build configuration list for PBXNativeTarget "Pods-MRProgress" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0E0EB4CCD602FCC836ADA0BC /* Debug */,
-				44BF3455E74EC282F7845AAB /* Release */,
+				62BCF6793A78C83D7117B526 /* Debug */,
+				8D50EED9F8F003D90B993CD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		993EA8DD306157D2766C0156 /* Build configuration list for PBXNativeTarget "Pods-UIAlertView-Blocks" */ = {
+		6D43F93984A7A196424EA479 /* Build configuration list for PBXNativeTarget "Pods-objective-zip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D20AABB4D4C4DF7EEAA29CAE /* Debug */,
-				E06F3D2D8AF97D7BCDF1A524 /* Release */,
+				9CEC6198B4F43EC1117B9D20 /* Debug */,
+				7D027DC82759B89E468897BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA7502E3E88B729EEEB61145 /* Build configuration list for PBXNativeTarget "Pods-FMDB" */ = {
+		6F9F8210AE53385DC0366379 /* Build configuration list for PBXNativeTarget "Pods-UIAlertView-Blocks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				686897CE24C77D6132AC2B9A /* Debug */,
-				1887240C9BFCB2E76C9846D9 /* Release */,
+				BA30EEFE08912BD71B3158C0 /* Debug */,
+				EB70C1FB9453B4840534FD18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BCCDDC98F70B06122A3E67CB /* Build configuration list for PBXNativeTarget "Pods-objective-zip" */ = {
+		97085BC02BF210B8705C9CB3 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B38732BFBEBC52FAB38E6C3A /* Debug */,
-				645D846AE8FD9989BBC8CACD /* Release */,
+				A5B19A17726953A6F640B595 /* Debug */,
+				73F583A813ABBFDCFD84234F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C1E268BDDDA56D378C67815C /* Build configuration list for PBXNativeTarget "Pods-HTAutocompleteTextField" */ = {
+		C356B376B534ABC710CE9299 /* Build configuration list for PBXNativeTarget "Pods-CMPopTipView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				231905C9C1A23B2032F2670C /* Debug */,
-				5712D8468EE746014FDC5475 /* Release */,
+				A1D1D3DB2A324DE8BAEDF4FC /* Debug */,
+				31F3F793182DF71B5BEBF05F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F272B8971E9C298AA3EA9EE0 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		F54F2405FB5BDC62B64CAB16 /* Build configuration list for PBXNativeTarget "Pods-FMDB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4083183FC008F3EA7DF69F2D /* Debug */,
-				BD03C0DD4FC666FD158AD9BB /* Release */,
+				0497782557AE308191988424 /* Debug */,
+				516C4F830ABA26BD40C7525F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 01E00C030BD9C289D5E537B7 /* Project object */;
+	rootObject = 8F392AD365E80643E531BD24 /* Project object */;
 }
