@@ -59,7 +59,6 @@
 		84AF861018E895CF00F15C3A /* WBDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF860F18E895CF00F15C3A /* WBDateFormatter.m */; };
 		84D6719718D3392D00B704A4 /* dropdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D6719618D3392D00B704A4 /* dropdown.png */; };
 		84D6719B18D34E4900B704A4 /* WBCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6719A18D34E4900B704A4 /* WBCurrency.m */; };
-		84DCAAE318E4B48A00ECAECC /* WBPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DCAAE218E4B48A00ECAECC /* WBPreferences.m */; };
 		84F4F34418CFCCD000F69A35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34318CFCCD000F69A35 /* Foundation.framework */; };
 		84F4F34618CFCCD000F69A35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34518CFCCD000F69A35 /* CoreGraphics.framework */; };
 		84F4F34818CFCCD000F69A35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34718CFCCD000F69A35 /* UIKit.framework */; };
@@ -177,6 +176,8 @@
 		EA69EF301AF0914000276B70 /* PaymentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF2F1AF0914000276B70 /* PaymentMethod.m */; };
 		EA71DFCC1AF9FEEC004092C3 /* SwitchControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA71DFCA1AF9FEEC004092C3 /* SwitchControlCell.m */; };
 		EA71DFCD1AF9FEEC004092C3 /* SwitchControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA71DFCB1AF9FEEC004092C3 /* SwitchControlCell.xib */; };
+		EA7634AA1B3DB34A00AD8737 /* WBPreferencesImportExportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7634A91B3DB34A00AD8737 /* WBPreferencesImportExportTest.m */; };
+		EA7634AD1B3DB61900AD8737 /* WBPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7634AC1B3DB61900AD8737 /* WBPreferences.m */; };
 		EA888A711AFA38AD00DF2AE6 /* SettingsButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A701AFA38AD00DF2AE6 /* SettingsButtonCell.m */; };
 		EA888A731AFA38C100DF2AE6 /* SettingsButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA888A721AFA38C100DF2AE6 /* SettingsButtonCell.xib */; };
 		EA888A761AFA3D3F00DF2AE6 /* NumberInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA888A751AFA3D3F00DF2AE6 /* NumberInputValidation.m */; };
@@ -353,8 +354,6 @@
 		84D6719618D3392D00B704A4 /* dropdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropdown.png; sourceTree = "<group>"; };
 		84D6719918D34E4900B704A4 /* WBCurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCurrency.h; sourceTree = "<group>"; };
 		84D6719A18D34E4900B704A4 /* WBCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCurrency.m; sourceTree = "<group>"; };
-		84DCAAE118E4B48A00ECAECC /* WBPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPreferences.h; sourceTree = "<group>"; };
-		84DCAAE218E4B48A00ECAECC /* WBPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPreferences.m; sourceTree = "<group>"; };
 		84F4F34018CFCCD000F69A35 /* SmartReceipts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartReceipts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F4F34318CFCCD000F69A35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84F4F34518CFCCD000F69A35 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -548,6 +547,9 @@
 		EA71DFC91AF9FEEC004092C3 /* SwitchControlCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchControlCell.h; sourceTree = "<group>"; };
 		EA71DFCA1AF9FEEC004092C3 /* SwitchControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchControlCell.m; sourceTree = "<group>"; };
 		EA71DFCB1AF9FEEC004092C3 /* SwitchControlCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchControlCell.xib; sourceTree = "<group>"; };
+		EA7634A91B3DB34A00AD8737 /* WBPreferencesImportExportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPreferencesImportExportTest.m; sourceTree = "<group>"; };
+		EA7634AB1B3DB61900AD8737 /* WBPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPreferences.h; sourceTree = "<group>"; };
+		EA7634AC1B3DB61900AD8737 /* WBPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPreferences.m; sourceTree = "<group>"; };
 		EA888A6F1AFA38AD00DF2AE6 /* SettingsButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsButtonCell.h; sourceTree = "<group>"; };
 		EA888A701AFA38AD00DF2AE6 /* SettingsButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsButtonCell.m; sourceTree = "<group>"; };
 		EA888A721AFA38C100DF2AE6 /* SettingsButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsButtonCell.xib; sourceTree = "<group>"; };
@@ -849,15 +851,6 @@
 			name = iPad;
 			sourceTree = "<group>";
 		};
-		847EFA5118E6BBF3006BE520 /* persistence */ = {
-			isa = PBXGroup;
-			children = (
-				84DCAAE118E4B48A00ECAECC /* WBPreferences.h */,
-				84DCAAE218E4B48A00ECAECC /* WBPreferences.m */,
-			);
-			name = persistence;
-			sourceTree = "<group>";
-		};
 		848EFA5D18EDC33F00AC01B4 /* reports */ = {
 			isa = PBXGroup;
 			children = (
@@ -1001,7 +994,6 @@
 				84D6719518D336E100B704A4 /* images */,
 				EA8D81691AEA668100BAC943 /* Model */,
 				EAF9ADDF1AECF8BF0000AC84 /* Persistence */,
-				847EFA5118E6BBF3006BE520 /* persistence */,
 				848EFA5D18EDC33F00AC01B4 /* reports */,
 				EA8D81DA1AEA965D00BAC943 /* Reports */,
 				84F4F34A18CFCCD000F69A35 /* Supporting Files */,
@@ -1515,6 +1507,7 @@
 				EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */,
 				EA07BF6A1AF51D5D004D17F6 /* DatabaseTestsHelper.h */,
 				EA07BF6B1AF51D5D004D17F6 /* DatabaseTestsHelper.m */,
+				EA7634A91B3DB34A00AD8737 /* WBPreferencesImportExportTest.m */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -1547,6 +1540,8 @@
 				EA69EF141AEFC81A00276B70 /* Database.m */,
 				EA07BF481AF40066004D17F6 /* DatabaseTableNames.h */,
 				EA07BF491AF40066004D17F6 /* DatabaseTableNames.m */,
+				EA7634AB1B3DB61900AD8737 /* WBPreferences.h */,
+				EA7634AC1B3DB61900AD8737 /* WBPreferences.m */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -1871,6 +1866,7 @@
 				EA5ECA2E1AF9F43F008D2CFB /* SettingsSegmentControlCell.m in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
 				EA4C5CBA1AF2864B0083FDD7 /* TextEntryCell.m in Sources */,
+				EA7634AD1B3DB61900AD8737 /* WBPreferences.m in Sources */,
 				84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */,
 				EAE9DAE81AF8E97100F4FE76 /* DistanceColumn.m in Sources */,
 				EA3C969E1AEBA94200A2A5F9 /* ReportPDFGenerator.m in Sources */,
@@ -1891,7 +1887,6 @@
 				EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */,
 				847EFA5418E6BC93006BE520 /* WBSqlBuilder.m in Sources */,
 				EA19CC7D1B2C950600168AA0 /* RateApplication.m in Sources */,
-				84DCAAE318E4B48A00ECAECC /* WBPreferences.m in Sources */,
 				EA07BF4D1AF400CA004D17F6 /* Database+Distances.m in Sources */,
 				EAE9DAF11AF8EA8300F4FE76 /* DistanceDistanceColumn.m in Sources */,
 				EA4C5CC11AF286990083FDD7 /* InputCellsSection.m in Sources */,
@@ -1988,6 +1983,7 @@
 				EA36DE531B0119150034CC2D /* DatabaseHintsTest.m in Sources */,
 				EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */,
 				EA8ABE441B1A1D6800DBFA29 /* DatabaseCategoriesTest.m in Sources */,
+				EA7634AA1B3DB34A00AD8737 /* WBPreferencesImportExportTest.m in Sources */,
 				EA1D42C91B03931400D64D3A /* DatabasePaymentMethodsTest.m in Sources */,
 				EA90F2921B0CC4DD00FD2DB6 /* DatabaseReceiptsDatesTest.m in Sources */,
 				EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */,
