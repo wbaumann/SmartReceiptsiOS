@@ -63,7 +63,7 @@
     [self setDisableNotifications:NO];
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsDatabaseImportCompleteNotification object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsDatabaseBulkUpdateNotification object:nil];
     });
 
     return YES;

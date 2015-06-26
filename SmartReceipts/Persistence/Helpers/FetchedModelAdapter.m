@@ -33,7 +33,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDeleteObject:) name:DatabaseDidDeleteModelNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateObject:) name:DatabaseDidUpdateModelNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSwapObjects:) name:DatabaseDidSwapModelsNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didImportDatabase) name:SmartReceiptsDatabaseImportCompleteNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didImportDatabase) name:SmartReceiptsDatabaseBulkUpdateNotification object:nil];
     }
     return self;
 }
