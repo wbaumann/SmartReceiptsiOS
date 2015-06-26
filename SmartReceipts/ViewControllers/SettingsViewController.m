@@ -90,6 +90,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 @property (nonatomic, strong) SettingsButtonCell *backupCell;
 
+@property (nonatomic, assign) BOOL hasBeenShown;
+
 @end
 
 @implementation SettingsViewController
@@ -475,7 +477,13 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 {
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:YES];
+
+    if (self.hasBeenShown) {
+        return;
+    }
+
     [self populateValues];
+    [self setHasBeenShown:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
