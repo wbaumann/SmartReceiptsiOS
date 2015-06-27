@@ -51,7 +51,7 @@ extern NSString *const SmartReceiptsExportName;
 extern NSString *const SmartReceiptsDatabaseExportName;
 extern NSString *const SmartReceiptsPreferencesExportName;
 extern NSString *const SmartReceiptsPreferencesImportedNotification;
-extern NSString *const SmartReceiptsDatabaseImportCompleteNotification;
+extern NSString *const SmartReceiptsDatabaseBulkUpdateNotification;
 extern NSString *const SmartReceiptsSettingsSavedNotification;
 
 static NSUInteger const SmartReceiptsNumberOfDecimalPlacesForGasRate = 3;

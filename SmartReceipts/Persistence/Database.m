@@ -12,6 +12,8 @@
 #import "WBFileManager.h"
 #import "DatabaseMigration.h"
 #import "ReceiptFilesManager.h"
+#import "WBPreferences.h"
+#import "Database+Trips.h"
 
 NSString *const DatabaseDidInsertModelNotification = @"DatabaseDidInsertModelNotification";
 NSString *const DatabaseDidDeleteModelNotification = @"DatabaseDidDeleteModelNotification";
@@ -25,6 +27,9 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 @property (nonatomic, strong) ReceiptFilesManager *filesManager;
 @property (nonatomic, assign) BOOL disableFilesManager;
 @property (nonatomic, assign) BOOL disableNotifications;
+
+@property (nonatomic, assign) BOOL lastKnownAddDistancePriceToReportValue;
+@property (nonatomic, assign) BOOL lastKnownOnlyReportExpenseablesValue;
 
 @end
 
@@ -54,6 +59,10 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
     if (self) {
         _pathToDatabase = path;
         _filesManager = [[ReceiptFilesManager alloc] initWithTripsFolder:tripsFolderPath];
+
+        [self markKnownValues];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTripPrices) name:SmartReceiptsSettingsSavedNotification object:nil];
     }
     return self;
 }
@@ -88,6 +97,40 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
     }
 
     return _filesManager;
+}
+
+- (void)refreshTripPrices {
+    if (![self knownPriceRelatedValuesHaveChanged]) {
+        return;
+    }
+
+    [self setDisableNotifications:YES];
+
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        NSArray *trips = [self allTripsUsingDatabase:db];
+        SRLog(@"Update price on %tu trips", trips.count);
+        for (WBTrip *trip in trips) {
+            [self updatePriceOfTrip:trip usingDatabase:db];
+        }
+    }];
+
+    [self setDisableNotifications:NO];
+
+    [self markKnownValues];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsDatabaseBulkUpdateNotification object:nil];
+    });
+}
+
+- (BOOL)knownPriceRelatedValuesHaveChanged {
+    return self.lastKnownAddDistancePriceToReportValue != [WBPreferences isTheDistancePriceBeIncludedInReports]
+            || self.lastKnownOnlyReportExpenseablesValue != [WBPreferences onlyIncludeExpensableReceiptsInReports];
+}
+
+- (void)markKnownValues {
+    self.lastKnownAddDistancePriceToReportValue = [WBPreferences isTheDistancePriceBeIncludedInReports];
+    self.lastKnownOnlyReportExpenseablesValue = [WBPreferences onlyIncludeExpensableReceiptsInReports];
 }
 
 @end
