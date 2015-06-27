@@ -62,6 +62,8 @@ static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_DATE = @"LayoutIncludeReceiptDat
 static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_CATEGORY = @"LayoutIncludeReceiptCategory";
 static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER = @"LayoutIncludeReceiptPicture";
 
+static NSArray *__emailFields;
+
 // there is no 100% guaranteed way to figure entry type so we have to hardcode them
 typedef NS_ENUM(short, EntryType){
     EntryTypeString = 0,
@@ -206,6 +208,13 @@ static NSUserDefaults* instance() {
 }
 
 @implementation WBPreferences
+
++ (void)initialize {
+    [super initialize];
+
+    __emailFields = @[STRING_DEFAULT_EMAIL_TO, STRING_DEFAULT_EMAIL_CC, STRING_DEFAULT_EMAIL_BCC];
+}
+
 
 +(BOOL) predictCategories {
     return [instance() boolForKey:BOOL_PREDICT_CATEGORIES];
@@ -501,6 +510,9 @@ static NSUserDefaults* instance() {
     for (GDataXMLElement *e in [root elementsForName:@"string"]) {
         NSString *name = [[e attributeForName:@"name"] stringValue];
         NSString *value = [e stringValue];
+        if ([__emailFields containsObject:name]) {
+            value = [value stringByReplacingOccurrencesOfString:@";" withString:@","];
+        }
         [defaults setObject:value forKey:name];
     }
     
@@ -543,9 +555,14 @@ static NSUserDefaults* instance() {
         
         GDataXMLElement * el = nil;
         switch (type) {
-            case EntryTypeString:
+            case EntryTypeString: {
+                NSString *value = [defaults stringForKey:key];
+                if ([__emailFields containsObject:key]) {
+                    value = [value stringByReplacingOccurrencesOfString:@"," withString:@";"];
+                }
                 el = [GDataXMLNode elementWithName:@"string"
-                                       stringValue:[defaults stringForKey:key]];
+                                       stringValue:value];
+            }
                 break;
                 
             case EntryTypeBool:

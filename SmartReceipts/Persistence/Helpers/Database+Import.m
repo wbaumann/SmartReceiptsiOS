@@ -32,6 +32,7 @@
 
 - (id)initWithDatabasePath:(NSString *)path tripsFolederPath:(NSString *)tripsFolderPath;
 - (void)setDisableFilesManager:(BOOL)disable;
+
 @property (nonatomic, assign) BOOL disableNotifications;
 
 @end

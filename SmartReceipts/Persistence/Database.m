@@ -35,6 +35,10 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 
 @implementation Database
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 + (instancetype)sharedInstance {
     DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
         return [[self alloc] initSingleton];
