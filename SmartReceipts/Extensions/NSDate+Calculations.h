@@ -12,6 +12,7 @@
 - (NSDate *)dateByAddingDays:(NSInteger)daysToAdd;
 - (BOOL)isOnSameDate:(NSDate *)date;
 - (NSDate *)dateAtBeginningOfDay;
+- (NSDate *)dateAtEndOfDay;
 - (NSTimeInterval)secondsOfDay;
 
 - (NSNumber *)milliseconds;

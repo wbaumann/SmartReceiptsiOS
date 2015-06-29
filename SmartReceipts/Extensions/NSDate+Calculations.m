@@ -60,6 +60,15 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
     return [NSDate dateForUnit:NSCalendarUnitDay beforeDate:self];
 }
 
+- (NSDate *)dateAtEndOfDay {
+    // beginnning of day
+    NSDate *result = [NSDate dateForUnit:NSCalendarUnitDay beforeDate:self];
+    // beginning of next day
+    result = [result dateByAddingDays:1];
+    //end of day
+    return [NSDate dateWithTimeInterval:-1 sinceDate:result];
+}
+
 + (NSDate *)dateForUnit:(NSCalendarUnit)unit beforeDate:(NSDate *)date {
     NSDate *result;
     [[NSDate gregorian] rangeOfUnit:unit

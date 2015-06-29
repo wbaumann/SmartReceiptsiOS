@@ -127,7 +127,10 @@
         [weakSelf.dateCell setValue:[weakSelf.dateFormatter formattedDate:selected inTimeZone:[NSTimeZone localTimeZone]]];
         weakSelf.dateMs = (long long int) (selected.timeIntervalSince1970 * 1000);
     }];
-    [self.datePickerCell setMinDate:self.trip.startDate maxDate:self.trip.endDate];
+
+    if (![WBPreferences allowReceiptEntryOutsideTripBounds]) {
+        [self.datePickerCell setMinDate:self.trip.startDate maxDate:self.trip.endDate];
+    }
 
     self.categoryCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
     [self.categoryCell setTitle:NSLocalizedString(@"edit.receipt.category.label", nil)];
