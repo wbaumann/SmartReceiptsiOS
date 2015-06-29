@@ -16,10 +16,20 @@
 #import "Constants.h"
 #import "Database+Import.h"
 #import "RateApplication.h"
+#import "RMStore.h"
+#import "RMStoreKeychainPersistence.h"
+#import "RMStoreAppReceiptVerificator.h"
 
 #import <BugSense-iOS/BugSenseController.h>
 #import <UIAlertView-Blocks/RIButtonItem.h>
 #import <UIAlertView-Blocks/UIAlertView+Blocks.h>
+
+@interface WBAppDelegate ()
+
+@property (nonatomic, strong) RMStoreAppReceiptVerificator *receiptVerificator;
+@property (nonatomic, strong) RMStoreKeychainPersistence *keychainPersistence;
+
+@end
 
 @implementation WBAppDelegate {
     dispatch_queue_t _queue;
@@ -30,6 +40,13 @@
     _queue = dispatch_queue_create("wb.dataAccess", nil);
 
     [WBCustomization customizeOnAppLoad];
+
+    RMStoreAppReceiptVerificator *verificator = [[RMStoreAppReceiptVerificator alloc] init];
+    [self setReceiptVerificator:verificator];
+    [[RMStore defaultStore] setReceiptVerificator:verificator];
+    RMStoreKeychainPersistence *persistor = [[RMStoreKeychainPersistence alloc] init];
+    [self setKeychainPersistence:persistor];
+    [[RMStore defaultStore] setTransactionPersistor:persistor];
 
     [WBFileManager initTripsDirectory];
     [[Database sharedInstance] open];

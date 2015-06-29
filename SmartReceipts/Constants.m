@@ -18,3 +18,5 @@ NSString *const SmartReceiptsDatabaseBulkUpdateNotification = @"SmartReceiptsDat
 NSString *const SmartReceiptsSettingsSavedNotification = @"SmartReceiptsSettingsSavedNotification";
 
 NSString *const SmartReceiptAppStoreId = @"905698613";
+
+NSString *const SmartReceiptRemoveAdsIAPIdentifier = @"co.smartreceipts.ios.pro";

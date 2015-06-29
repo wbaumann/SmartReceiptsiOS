@@ -60,3 +60,7 @@ static NSUInteger const SmartReceiptDelayedLaunchesOnAppRatingLater = 10;
 static NSUInteger const SmartReceiptMinUsageDaysForRatin = 7;
 
 extern NSString *const SmartReceiptAppStoreId;
+
+extern NSString *const SmartReceiptRemoveAdsIAPIdentifier;
+
+typedef void (^ActionBlock)();
