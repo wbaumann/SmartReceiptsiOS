@@ -38,6 +38,14 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
     return [self timeIntervalSince1970] - [[self dateAtBeginningOfDay] timeIntervalSince1970];
 }
 
+- (BOOL)isBeforeDate:(NSDate *)date {
+    return [[self earlierDate:date] isEqualToDate:self];
+}
+
+- (BOOL)isAfterDate:(NSDate *)date {
+    return [[self laterDate:date] isEqualToDate:self];
+}
+
 - (NSNumber *)milliseconds {
     return @((long long int)([self timeIntervalSince1970] * 1000));
 }

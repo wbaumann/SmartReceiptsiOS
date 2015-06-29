@@ -14,6 +14,8 @@
 - (NSDate *)dateAtBeginningOfDay;
 - (NSDate *)dateAtEndOfDay;
 - (NSTimeInterval)secondsOfDay;
+- (BOOL)isBeforeDate:(NSDate *)date;
+- (BOOL)isAfterDate:(NSDate *)date;
 
 - (NSNumber *)milliseconds;
 + (NSDate *)dateWithMilliseconds:(long long int)milliseconds;
