@@ -101,8 +101,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 @property (nonatomic, assign) BOOL hasBeenShown;
 
-@property (nonatomic, copy) NSString *removeAdsPrice;
 @property (nonatomic, assign) BOOL hadPriceRetrieveError;
+@property (nonatomic, strong) SKProduct *removeAdsProduct;
 
 @end
 
@@ -511,7 +511,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     [self updatePurchaseStatus];
 
-    if (!self.removeAdsPrice.hasValue && !self.hadPriceRetrieveError) {
+    if (!self.removeAdsProduct && !self.hadPriceRetrieveError) {
         [self retrievePurchasePrices];
     }
 
@@ -620,6 +620,10 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [self actionExport];
     } else if (cell == self.customizePaymentMethodsCell) {
         [self performSegueWithIdentifier:PushPaymentMethodsControllerSegueIdentifier sender:nil];
+    } else if (cell == self.resporePurchaseCell) {
+        [self restorePurchases];
+    } else if (cell == self.removeAdsCell && ![[Database sharedInstance] adsRemoved]) {
+        [self makePurchase:self.removeAdsProduct];
     }
 }
 
@@ -628,13 +632,10 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [self.removeAdsCell markPurchased];
     } else if (self.hadPriceRetrieveError) {
         [self.removeAdsCell markErrorWithTapHandler:^{
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"settings.purchase.price.retrieve.error.title", nil)
-                                                                message:NSLocalizedString(@"settings.purchase.price.retrieve.error.message", nil)
-                                                       cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.ok", nil)]
-                                                       otherButtonItems:nil];
-            [alertView show];
+            [self showAlertWithTitle:NSLocalizedString(@"settings.purchase.price.retrieve.error.title", nil)
+                             message:NSLocalizedString(@"settings.purchase.price.retrieve.error.message", nil)];
         }];
-    } else if (![self.removeAdsPrice hasValue]) {
+    } else if (!self.removeAdsProduct) {
         [self.removeAdsCell markSpinning];
     }
 }
@@ -647,9 +648,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
         for (SKProduct *product in products) {
             if ([product.productIdentifier isEqualToString:SmartReceiptRemoveAdsIAPIdentifier]) {
+                [self setRemoveAdsProduct:product];
                 [numberFormatter setLocale:product.priceLocale];
                 NSString *formattedPrice = [numberFormatter stringFromNumber:product.price];
-                [self setRemoveAdsPrice:formattedPrice];
                 [self.removeAdsCell setPriceString:formattedPrice];
             }
         }
@@ -658,5 +659,47 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [self updatePurchaseStatus];
     }];
 }
+
+- (void)restorePurchases {
+    PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
+
+    [[RMStore defaultStore] restoreTransactionsOnSuccess:^(NSArray *transactions) {
+        [hud hide];
+        [self updatePurchaseStatus];
+    } failure:^(NSError *error) {
+        [hud hide];
+
+        if (error.code == SKErrorPaymentCancelled && [error.domain isEqualToString:SKErrorDomain]) {
+            return;
+        }
+
+        [self showAlertWithTitle:NSLocalizedString(@"settings.purchase.restore.error.title", nil)
+                         message:error.localizedDescription];
+    }];
+}
+
+- (void)makePurchase:(SKProduct *)product {
+    PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
+    [[RMStore defaultStore] addPayment:product.productIdentifier success:^(SKPaymentTransaction *transaction) {
+        [hud hide];
+        [self updatePurchaseStatus];
+    } failure:^(SKPaymentTransaction *transaction, NSError *error) {
+        [hud hide];
+        if (error.code == SKErrorPaymentCancelled && [error.domain isEqualToString:SKErrorDomain]) {
+            return;
+        }
+
+        [self showAlertWithTitle:NSLocalizedString(@"settings.purchase.make.purchase.error.title", nil)
+                         message:error.localizedDescription];
+    }];
+}
+
+ - (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
+     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                         message:message
+                                                cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.ok", nil)]
+                                                otherButtonItems:nil];
+     [alertView show];
+ }
 
 @end
