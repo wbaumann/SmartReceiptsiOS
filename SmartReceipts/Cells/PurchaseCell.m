@@ -8,11 +8,11 @@
 
 #import "PurchaseCell.h"
 #import "WBCustomization.h"
-#import "Constants.h"
 
 @interface PurchaseCell ()
 
 @property (nonatomic, copy) ActionBlock errorTapHandler;
+@property (nonatomic, assign) BOOL purchased;
 
 @end
 
@@ -25,11 +25,16 @@
 }
 
 - (void)markPurchased {
+    [self setPurchased:YES];
     [self.detailTextLabel setText:@" "];
     [self setAccessoryType:UITableViewCellAccessoryCheckmark];
 }
 
 - (void)markSpinning {
+    if (self.purchased) {
+        return;
+    }
+
     [self.detailTextLabel setText:@" "];
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     [spinner startAnimating];
@@ -38,6 +43,10 @@
 }
 
 - (void)setPriceString:(NSString *)priceString {
+    if (self.purchased) {
+        return;
+    }
+
     [self setAccessoryView:nil];
     [self setAccessoryType:UITableViewCellAccessoryNone];
     [self.detailTextLabel setText:priceString];
@@ -47,6 +56,10 @@
 }
 
 - (void)markErrorWithTapHandler:(ActionBlock)tapHandler {
+    if (self.purchased) {
+        return;
+    }
+
     [self setErrorTapHandler:tapHandler];
     [self.detailTextLabel setText:@" "];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

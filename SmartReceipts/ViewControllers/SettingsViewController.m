@@ -666,6 +666,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [[RMStore defaultStore] restoreTransactionsOnSuccess:^(NSArray *transactions) {
         [hud hide];
         [self updatePurchaseStatus];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
     } failure:^(NSError *error) {
         [hud hide];
 
@@ -683,6 +684,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [[RMStore defaultStore] addPayment:product.productIdentifier success:^(SKPaymentTransaction *transaction) {
         [hud hide];
         [self updatePurchaseStatus];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
     } failure:^(SKPaymentTransaction *transaction, NSError *error) {
         [hud hide];
         if (error.code == SKErrorPaymentCancelled && [error.domain isEqualToString:SKErrorDomain]) {

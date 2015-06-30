@@ -8,7 +8,10 @@
 
 #import "AdPresentingContainerViewController.h"
 #import "GADConstants.h"
+#import "Constants.h"
+#import "Database.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
+#import "Database+Purchases.h"
 
 @interface AdPresentingContainerViewController () <GADBannerViewDelegate>
 
@@ -19,6 +22,10 @@
 @end
 
 @implementation AdPresentingContainerViewController
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,9 +42,26 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self loadAd];
     });
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkAdsStatus) name:SmartReceiptsAdsRemovedNotification object:nil];
+}
+
+- (void)checkAdsStatus {
+    if (![Database sharedInstance].adsRemoved) {
+        return;
+    }
+
+    SRLog(@"Remove ads");
+    [self adView:self.bannerView didFailToReceiveAdWithError:nil];
+    [self.bannerView setDelegate:nil];
+    [self setBannerView:nil];
 }
 
 - (void)loadAd {
+    if ([Database sharedInstance].adsRemoved) {
+        return;
+    }
+
     GADRequest *request = [GADRequest request];
     [request setTestDevices:@[kGADSimulatorID]];
     [self.bannerView loadRequest:request];
