@@ -107,6 +107,8 @@
 "edit.receipt.controller.edit.title" = "Edytuj Paragon";
 "edit.receipt.currency.label" = "Waluta";
 "edit.receipt.date.label" = "Data";
+"edit.receipt.date.range.warning.message" = "Just a note that receipt date is outside trip start and end date";
+"edit.receipt.date.range.warning.title" = "Receipt date";
 "edit.receipt.expensable.label" = "Wliczane w Wydatki";
 "edit.receipt.full.page.label" = "Obraz na całą stronę";
 "edit.receipt.generic.save.error.message" = "Nie można dodać tego paragonu";
@@ -228,6 +230,7 @@
 "receipt.column.user.id" = "ID Użytkownika";
 
 "settings.add.distance.price.to.report.label" = "Add Distane Price to Report";
+"settings.allow.receipts.outside.trip.bounds.label" = "Allow receipts outside trip start/end";
 "settings.assume.price.pre.tax.label" = "Assume Price is Pre-Tax";
 "settings.automatically.rotate.images.label" = "Automatically rotate images";
 "settings.backup.button.label" = "Zrób Kopię Zapasową";

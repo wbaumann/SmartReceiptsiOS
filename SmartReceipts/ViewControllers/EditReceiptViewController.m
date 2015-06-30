@@ -70,8 +70,7 @@
 
 @implementation EditReceiptViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     [WBCustomization customizeOnViewDidLoad:self];
@@ -115,7 +114,7 @@
 
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.currencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
-    [self.currencyPickerCell setValueChangeHandler:^(id<Pickable> selected) {
+    [self.currencyPickerCell setValueChangeHandler:^(id <Pickable> selected) {
         [weakSelf.currencyCell setValue:selected.presentedValue];
     }];
 
@@ -126,8 +125,21 @@
     [self.datePickerCell setChangeHandler:^(NSDate *selected) {
         [weakSelf.dateCell setValue:[weakSelf.dateFormatter formattedDate:selected inTimeZone:[NSTimeZone localTimeZone]]];
         weakSelf.dateMs = (long long int) (selected.timeIntervalSince1970 * 1000);
+
+        if ([selected isBeforeDate:weakSelf.trip.startDate] || [selected isAfterDate:weakSelf.trip.endDate]) {
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button addTarget:weakSelf action:@selector(dateWarningPressed) forControlEvents:UIControlEventTouchUpInside];
+            [button setImage:[UIImage imageNamed:@"791-warning-toolbar"] forState:UIControlStateNormal];
+            [button sizeToFit];
+            [weakSelf.dateCell setAccessoryView:button];
+        } else {
+            [weakSelf.dateCell setAccessoryView:nil];
+        }
     }];
-    [self.datePickerCell setMinDate:self.trip.startDate maxDate:self.trip.endDate];
+
+    if (![WBPreferences allowReceiptEntryOutsideTripBounds]) {
+        [self.datePickerCell setMinDate:[self.trip.startDate dateAtBeginningOfDay] maxDate:[self.trip.endDate dateAtEndOfDay]];
+    }
 
     self.categoryCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
     [self.categoryCell setTitle:NSLocalizedString(@"edit.receipt.category.label", nil)];
@@ -135,7 +147,7 @@
     self.categoryPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     self.categories = [[Database sharedInstance] listAllCategories];
     [self.categoryPickerCell setAllPickabelValues:self.categories];
-    [self.categoryPickerCell setValueChangeHandler:^(id<Pickable> selected) {
+    [self.categoryPickerCell setValueChangeHandler:^(id <Pickable> selected) {
         [weakSelf.categoryCell setValue:selected.presentedValue];
         [weakSelf checkCategoryMatches];
     }];
@@ -318,7 +330,7 @@
     return self.categories.count > 0 ? [self.categories firstObject] : @"";
 }
 
-- (void)setReceipt:(WBReceipt *)receipt withTrip:(WBTrip*) trip{
+- (void)setReceipt:(WBReceipt *)receipt withTrip:(WBTrip *)trip {
     _receipt = receipt;
     _trip = trip;
 }
@@ -332,7 +344,7 @@
 
     NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.priceCell.value];
     NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.taxCell.value];
-    
+
     if (!self.receipt) {
         self.receipt = [[WBReceipt alloc] init];
         [self.receipt setTrip:self.trip];
@@ -349,7 +361,7 @@
     [self.receipt setComment:self.commentCell.value];
     [self.receipt setExpensable:self.expensableCell.isSwitchOn];
     [self.receipt setFullPage:self.fullPageImageCell.isSwitchOn];
-    [self.receipt setPaymentMethod:(PaymentMethod *)self.paymentMethodCell.pickableValue];
+    [self.receipt setPaymentMethod:(PaymentMethod *) self.paymentMethodCell.pickableValue];
 
     if (self.receipt.objectId == 0) {
         NSString *imageFileName = nil;
@@ -377,9 +389,14 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-+ (void)showAlertWithTitle:(NSString*) title message:(NSString*) message {
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
     [[[UIAlertView alloc]
-      initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok",nil) otherButtonTitles:nil] show];
+            initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil) otherButtonTitles:nil] show];
+}
+
+- (void)dateWarningPressed {
+    [EditReceiptViewController showAlertWithTitle:NSLocalizedString(@"edit.receipt.date.range.warning.title", nil)
+                                          message:NSLocalizedString(@"edit.receipt.date.range.warning.message", nil)];
 }
 
 @end

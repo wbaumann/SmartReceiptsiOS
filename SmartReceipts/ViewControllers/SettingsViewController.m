@@ -42,6 +42,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) NSArray *cameraValues;
 
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultTripLengthCell;
+@property (nonatomic, strong) SwitchControlCell *receiptOutsideTripBoundsCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *minReportablePriceCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *userIdCell;
 @property (nonatomic, strong) PickerCell *defaultCurrencyCell;
@@ -148,6 +149,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.defaultTripLengthCell setTitle:NSLocalizedString(@"settings.default.trip.length.label", nil)];
     [self.defaultTripLengthCell activateNumberEntryMode];
 
+    self.receiptOutsideTripBoundsCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.receiptOutsideTripBoundsCell setTitle:NSLocalizedString(@"settings.allow.receipts.outside.trip.bounds.label", nil)];
+
     self.minReportablePriceCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
     [self.minReportablePriceCell setTitle:NSLocalizedString(@"settings.min.receipt.price.label", nil)];
     [self.minReportablePriceCell activateDecimalEntryMode];
@@ -212,6 +216,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     InputCellsSection *general = [InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.general.section.title", nil)
                                                                cells:@[self.defaultTripLengthCell,
+                                                                       self.receiptOutsideTripBoundsCell,
                                                                        self.minReportablePriceCell,
                                                                        self.userIdCell,
                                                                        self.defaultCurrencyCell,
@@ -328,6 +333,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.defaultEmailSubjectCell setValue:[WBPreferences defaultEmailSubject]];
 
     [self.defaultTripLengthCell setValue:[NSString stringWithFormat:@"%d",[WBPreferences defaultTripDuration]]];
+    [self.receiptOutsideTripBoundsCell setSwitchOn:[WBPreferences allowReceiptEntryOutsideTripBounds]];
 
     double price = [WBPreferences minimumReceiptPriceToIncludeInReports];
     double minPrice = ([WBPreferences MIN_FLOAT]/4.0); // we have to make significant change because it's long float and have little precision
@@ -418,7 +424,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     if ([daysStr length] > 0 && [daysStr length] < 4) {
         [WBPreferences setDefaultTripDuration:[daysStr intValue]];
     }
-    
+
+    [WBPreferences setAllowReceiptEntryOutsideTripBounds:self.receiptOutsideTripBoundsCell.isSwitchOn];
+
     NSString *priceStr = [self.minReportablePriceCell value];
     if ([priceStr length] > 0 && [priceStr length] < 4) {
         [WBPreferences setMinimumReceiptPriceToIncludeInReports:[priceStr floatValue]];

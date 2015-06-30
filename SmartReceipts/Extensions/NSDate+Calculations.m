@@ -38,6 +38,14 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
     return [self timeIntervalSince1970] - [[self dateAtBeginningOfDay] timeIntervalSince1970];
 }
 
+- (BOOL)isBeforeDate:(NSDate *)date {
+    return [[self earlierDate:date] isEqualToDate:self];
+}
+
+- (BOOL)isAfterDate:(NSDate *)date {
+    return [[self laterDate:date] isEqualToDate:self];
+}
+
 - (NSNumber *)milliseconds {
     return @((long long int)([self timeIntervalSince1970] * 1000));
 }
@@ -58,6 +66,15 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
 
 - (NSDate *)dateAtBeginningOfDay {
     return [NSDate dateForUnit:NSCalendarUnitDay beforeDate:self];
+}
+
+- (NSDate *)dateAtEndOfDay {
+    // beginnning of day
+    NSDate *result = [NSDate dateForUnit:NSCalendarUnitDay beforeDate:self];
+    // beginning of next day
+    result = [result dateByAddingDays:1];
+    //end of day
+    return [NSDate dateWithTimeInterval:-1 sinceDate:result];
 }
 
 + (NSDate *)dateForUnit:(NSCalendarUnit)unit beforeDate:(NSDate *)date {

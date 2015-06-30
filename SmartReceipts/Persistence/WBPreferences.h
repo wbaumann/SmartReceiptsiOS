@@ -112,6 +112,9 @@
 + (BOOL)cameraRotateImage;
 + (void)setCameraRotateImage:(BOOL)value;
 
++ (BOOL)allowReceiptEntryOutsideTripBounds;
++ (void)setAllowReceiptEntryOutsideTripBounds:(BOOL)value;
+
 + (void)save;
 
 + (float)MIN_FLOAT;

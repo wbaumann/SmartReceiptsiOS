@@ -107,6 +107,8 @@
 "edit.receipt.controller.edit.title" = "Edit Receipt";
 "edit.receipt.currency.label" = "Currency";
 "edit.receipt.date.label" = "Date";
+"edit.receipt.date.range.warning.message" = "Just a note that receipt date is outside trip start and end date";
+"edit.receipt.date.range.warning.title" = "Receipt date";
 "edit.receipt.expensable.label" = "Expensable";
 "edit.receipt.full.page.label" = "Full Page Image";
 "edit.receipt.generic.save.error.message" = "Cannot add this receipt";
@@ -228,6 +230,7 @@
 "receipt.column.user.id" = "User ID";
 
 "settings.add.distance.price.to.report.label" = "Add Distane Price to Report";
+"settings.allow.receipts.outside.trip.bounds.label" = "Allow receipts outside trip start/end";
 "settings.assume.price.pre.tax.label" = "Assume Price is Pre-Tax";
 "settings.automatically.rotate.images.label" = "Automatically rotate images";
 "settings.backup.button.label" = "Make Backup";

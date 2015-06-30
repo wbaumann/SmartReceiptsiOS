@@ -25,6 +25,7 @@
 #import "StringPickableWrapper.h"
 #import "WBCurrency.h"
 #import "Database+Trips.h"
+#import "NSDate+Calculations.h"
 
 @interface EditTripViewController ()
 
@@ -156,12 +157,12 @@
         [self.costCenterCell setValue:self.trip.costCenter];
     } else {
         self.navigationItem.title = NSLocalizedString(@"edit.trip.controller.add.title", nil);
-        _startDate = [NSDate date];
+        _startDate = [[NSDate date] dateAtBeginningOfDay];
 
         NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
-        dayComponent.day = [WBPreferences defaultTripDuration];
+        dayComponent.day = [WBPreferences defaultTripDuration] - 1;
         NSCalendar *theCalendar = [NSCalendar currentCalendar];
-        _endDate = [theCalendar dateByAddingComponents:dayComponent toDate:_startDate options:0];
+        _endDate = [[theCalendar dateByAddingComponents:dayComponent toDate:_startDate options:0] dateAtEndOfDay];
 
         _startTimeZone = _endTimeZone = [NSTimeZone localTimeZone];
         currency = [WBPreferences defaultCurrency];
