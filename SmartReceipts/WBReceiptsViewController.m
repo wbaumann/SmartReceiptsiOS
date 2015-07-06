@@ -53,6 +53,9 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 {
     [super viewDidLoad];
 
+    //clear when new tip is opened
+    [[WBReceiptsViewController sharedInputCache] setDictionary:@{}];
+
     [WBCustomization customizeOnViewDidLoad:self];
 
     [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
@@ -308,6 +311,12 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self setShowReceiptCategory:[WBPreferences layoutShowReceiptCategory]];
     [self setShowAttachmentMarker:[WBPreferences layoutShowReceiptAttachmentMarker]];
     [self.tableView reloadData];
+}
+
++ (NSMutableDictionary *)sharedInputCache {
+    DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
+        return [NSMutableDictionary dictionary];
+    });
 }
 
 @end

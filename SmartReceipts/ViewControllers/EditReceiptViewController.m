@@ -39,6 +39,9 @@
 #import "Database+Categories.h"
 #import "Constants.h"
 
+NSString *const SREditReceiptDateCacheKey = @"SREditReceiptDateCacheKey";
+NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey";
+
 @interface EditReceiptViewController ()
 
 @property (nonatomic, strong) WBTrip *trip;
@@ -63,7 +66,6 @@
 @property (nonatomic, strong) SwitchControlCell *fullPageImageCell;
 
 @property (nonatomic, strong) NSArray *categories;
-
 @property (nonatomic, strong) TaxCalculator *taxCalculator;
 
 @end
@@ -126,6 +128,8 @@
         [weakSelf.dateCell setValue:[weakSelf.dateFormatter formattedDate:selected inTimeZone:[NSTimeZone localTimeZone]]];
         weakSelf.dateMs = (long long int) (selected.timeIntervalSince1970 * 1000);
 
+        [WBReceiptsViewController sharedInputCache][SREditReceiptDateCacheKey] = selected;
+
         if ([selected isBeforeDate:weakSelf.trip.startDate] || [selected isAfterDate:weakSelf.trip.endDate]) {
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             [button addTarget:weakSelf action:@selector(dateWarningPressed) forControlEvents:UIControlEventTouchUpInside];
@@ -148,6 +152,8 @@
     self.categories = [[Database sharedInstance] listAllCategories];
     [self.categoryPickerCell setAllPickabelValues:self.categories];
     [self.categoryPickerCell setValueChangeHandler:^(id <Pickable> selected) {
+        [WBReceiptsViewController sharedInputCache][SREditReceiptCategoryCacheKey] = selected.presentedValue;
+
         [weakSelf.categoryCell setValue:selected.presentedValue];
         [weakSelf checkCategoryMatches];
     }];
@@ -247,13 +253,21 @@
 
         currencyCode = [self.trip.defaultCurrency code];
 
-        if ([WBPreferences defaultToFirstReportDate]) {
+        NSDate *cachedDate = [WBReceiptsViewController sharedInputCache][SREditReceiptDateCacheKey];
+        if (cachedDate) {
+            _dateMs = [cachedDate timeIntervalSince1970] * 1000;
+        } else if ([WBPreferences defaultToFirstReportDate]) {
             _dateMs = [[_trip startDate] timeIntervalSince1970] * 1000;
         } else {
             _dateMs = [[NSDate date] timeIntervalSince1970] * 1000;
         }
 
-        category = [self categoryWithName:[self proposedCategory]];
+        NSString *cachedCategoryName = [WBReceiptsViewController sharedInputCache][SREditReceiptCategoryCacheKey];
+        if (cachedCategoryName) {
+            category = [self categoryWithName:cachedCategoryName];
+        } else {
+            category = [self categoryWithName:[self proposedCategory]];
+        }
 
         _timeZone = [NSTimeZone localTimeZone];
 

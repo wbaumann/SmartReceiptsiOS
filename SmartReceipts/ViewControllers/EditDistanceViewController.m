@@ -29,6 +29,9 @@
 #import "StringPickableWrapper.h"
 #import "Constants.h"
 #import "DecimalFormatter.h"
+#import "WBReceiptsViewController.h"
+
+NSString *const SREditDistanceDateCacheKey = @"SREditDistanceDateCacheKey";
 
 @interface EditDistanceViewController ()
 
@@ -86,7 +89,10 @@
     [self.locationCell setTitle:NSLocalizedString(@"edit.distance.controller.location.label", nil)];
     [self.locationCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
 
-    NSDate *date = self.trip.startDate;
+    NSDate *date = [WBReceiptsViewController sharedInputCache][SREditDistanceDateCacheKey];
+    if (!date) {
+        date = self.trip.startDate;
+    }
     NSTimeZone *timeZone = self.trip.startTimeZone;
     self.dateFormatter = [[WBDateFormatter alloc] init];
 
@@ -96,6 +102,8 @@
     self.datePickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedDatePickerCell cellIdentifier]];
     [self.datePickerCell setDate:date];
     [self.datePickerCell setChangeHandler:^(NSDate *selected) {
+        [WBReceiptsViewController sharedInputCache][SREditDistanceDateCacheKey] = selected;
+
         [weakSelf.dateCell setValue:[weakSelf.dateFormatter formattedDate:selected inTimeZone:timeZone]];
     }];
     [self.datePickerCell setMinDate:self.trip.startDate maxDate:self.trip.endDate];

@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) WBTrip *trip;
 
++ (NSMutableDictionary *)sharedInputCache;
+
 - (void)swapUpReceipt:(WBReceipt *)receipt;
 - (void)swapDownReceipt:(WBReceipt *)receipt;
 - (BOOL)attachPdfOrImageFile:(NSString *)pdfFile toReceipt:(WBReceipt *)receipt;
