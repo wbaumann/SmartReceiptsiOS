@@ -285,6 +285,13 @@
 "settings.pdf.print.receipt.comment.by.photo.label" = "Print Receipt Comment By Photo";
 "settings.pdf.section.title" = "Dostosuj Wyjście PDF";
 "settings.predict.recept.category.label" = "Predykcja Kategorii Paragonu";
+"settings.purchase.make.purchase.error.title" = "Purchase failed";
+"settings.purchase.price.retrieve.error.message" = "Could not retrieve purchase details. Please try again later.";
+"settings.purchase.price.retrieve.error.title" = "Purchase error";
+"settings.purchase.remove.ads.label" = "Support SmartReceipts";
+"settings.purchase.restore.error.title" = "Restore failed";
+"settings.purchase.restore.label" = "Restore purchase";
+"settings.purchase.section.title" = "Remove ads";
 "settings.show.receipt.id.label" = "Show Receipt ID";
 "settings.track.cost.center.label" = "Track Cost Center";
 "settings.user.id.label" = "ID Użytkownika";

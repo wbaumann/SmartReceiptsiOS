@@ -53,6 +53,7 @@ extern NSString *const SmartReceiptsPreferencesExportName;
 extern NSString *const SmartReceiptsPreferencesImportedNotification;
 extern NSString *const SmartReceiptsDatabaseBulkUpdateNotification;
 extern NSString *const SmartReceiptsSettingsSavedNotification;
+extern NSString *const SmartReceiptsAdsRemovedNotification;
 
 static NSUInteger const SmartReceiptsNumberOfDecimalPlacesForGasRate = 3;
 static NSUInteger const SmartReceiptTargetLaunchesForAppRating = 50;
@@ -60,3 +61,7 @@ static NSUInteger const SmartReceiptDelayedLaunchesOnAppRatingLater = 10;
 static NSUInteger const SmartReceiptMinUsageDaysForRatin = 7;
 
 extern NSString *const SmartReceiptAppStoreId;
+
+extern NSString *const SmartReceiptRemoveAdsIAPIdentifier;
+
+typedef void (^ActionBlock)();

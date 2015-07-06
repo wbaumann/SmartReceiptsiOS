@@ -31,6 +31,11 @@
 #import "DataExport.h"
 #import "WBFileManager.h"
 #import "DecimalFormatter.h"
+#import "PurchaseCell.h"
+#import "Database.h"
+#import "Database+Purchases.h"
+#import "NSString+Validation.h"
+#import "RMStore.h"
 
 static NSString *const PushManageCategoriesSegueIdentifier = @"PushManageCategoriesSegueIdentifier";
 static NSString *const PushConfigurePDFColumnsSegueIdentifier = @"ConfigurePDF";
@@ -40,6 +45,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @interface SettingsViewController () <UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *cameraValues;
+
+@property (nonatomic, strong) PurchaseCell *removeAdsCell;
+@property (nonatomic, strong) SettingsButtonCell *resporePurchaseCell;
 
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultTripLengthCell;
 @property (nonatomic, strong) SwitchControlCell *receiptOutsideTripBoundsCell;
@@ -93,6 +101,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 @property (nonatomic, assign) BOOL hasBeenShown;
 
+@property (nonatomic, assign) BOOL hadPriceRetrieveError;
+@property (nonatomic, strong) SKProduct *removeAdsProduct;
+
 @end
 
 @implementation SettingsViewController
@@ -117,7 +128,19 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.tableView registerNib:[SettingsSegmentControlCell viewNib] forCellReuseIdentifier:[SettingsSegmentControlCell cellIdentifier]];
     [self.tableView registerNib:[SwitchControlCell viewNib] forCellReuseIdentifier:[SwitchControlCell cellIdentifier]];
     [self.tableView registerNib:[SettingsButtonCell viewNib] forCellReuseIdentifier:[SettingsButtonCell cellIdentifier]];
+    [self.tableView registerNib:[PurchaseCell viewNib] forCellReuseIdentifier:[PurchaseCell cellIdentifier]];
 
+
+    self.removeAdsCell = [self.tableView dequeueReusableCellWithIdentifier:[PurchaseCell cellIdentifier]];
+    [self.removeAdsCell.textLabel setText:NSLocalizedString(@"settings.purchase.remove.ads.label", nil)];
+
+    self.resporePurchaseCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
+    [self.resporePurchaseCell setTitle:NSLocalizedString(@"settings.purchase.restore.label", nil)];
+
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.purchase.section.title", nil) cells:@[
+            self.removeAdsCell,
+            self.resporePurchaseCell
+    ]]];
 
     self.defaultEmailRecipientCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
     [self.defaultEmailRecipientCell setTitle:NSLocalizedString(@"settings.default.email.recipient.lebel", nil)];
@@ -486,6 +509,12 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:YES];
 
+    [self updatePurchaseStatus];
+
+    if (!self.removeAdsProduct && !self.hadPriceRetrieveError) {
+        [self retrievePurchasePrices];
+    }
+
     if (self.hasBeenShown) {
         return;
     }
@@ -591,7 +620,88 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [self actionExport];
     } else if (cell == self.customizePaymentMethodsCell) {
         [self performSegueWithIdentifier:PushPaymentMethodsControllerSegueIdentifier sender:nil];
+    } else if (cell == self.resporePurchaseCell) {
+        [self restorePurchases];
+    } else if (cell == self.removeAdsCell && ![[Database sharedInstance] adsRemoved]) {
+        [self makePurchase:self.removeAdsProduct];
     }
 }
+
+- (void)updatePurchaseStatus {
+    if ([[Database sharedInstance] adsRemoved]) {
+        [self.removeAdsCell markPurchased];
+    } else if (self.hadPriceRetrieveError) {
+        [self.removeAdsCell markErrorWithTapHandler:^{
+            [self showAlertWithTitle:NSLocalizedString(@"settings.purchase.price.retrieve.error.title", nil)
+                             message:NSLocalizedString(@"settings.purchase.price.retrieve.error.message", nil)];
+        }];
+    } else if (!self.removeAdsProduct) {
+        [self.removeAdsCell markSpinning];
+    }
+}
+
+- (void)retrievePurchasePrices {
+    [[RMStore defaultStore] requestProducts:[NSSet setWithObject:SmartReceiptRemoveAdsIAPIdentifier] success:^(NSArray *products, NSArray *invalidProductIdentifiers) {
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+        [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+
+        for (SKProduct *product in products) {
+            if ([product.productIdentifier isEqualToString:SmartReceiptRemoveAdsIAPIdentifier]) {
+                [self setRemoveAdsProduct:product];
+                [numberFormatter setLocale:product.priceLocale];
+                NSString *formattedPrice = [numberFormatter stringFromNumber:product.price];
+                [self.removeAdsCell setPriceString:formattedPrice];
+            }
+        }
+    } failure:^(NSError *error) {
+        [self setHadPriceRetrieveError:YES];
+        [self updatePurchaseStatus];
+    }];
+}
+
+- (void)restorePurchases {
+    PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
+
+    [[RMStore defaultStore] restoreTransactionsOnSuccess:^(NSArray *transactions) {
+        [hud hide];
+        [self updatePurchaseStatus];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
+    } failure:^(NSError *error) {
+        [hud hide];
+
+        if (error.code == SKErrorPaymentCancelled && [error.domain isEqualToString:SKErrorDomain]) {
+            return;
+        }
+
+        [self showAlertWithTitle:NSLocalizedString(@"settings.purchase.restore.error.title", nil)
+                         message:error.localizedDescription];
+    }];
+}
+
+- (void)makePurchase:(SKProduct *)product {
+    PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
+    [[RMStore defaultStore] addPayment:product.productIdentifier success:^(SKPaymentTransaction *transaction) {
+        [hud hide];
+        [self updatePurchaseStatus];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
+    } failure:^(SKPaymentTransaction *transaction, NSError *error) {
+        [hud hide];
+        if (error.code == SKErrorPaymentCancelled && [error.domain isEqualToString:SKErrorDomain]) {
+            return;
+        }
+
+        [self showAlertWithTitle:NSLocalizedString(@"settings.purchase.make.purchase.error.title", nil)
+                         message:error.localizedDescription];
+    }];
+}
+
+ - (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
+     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                         message:message
+                                                cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.ok", nil)]
+                                                otherButtonItems:nil];
+     [alertView show];
+ }
 
 @end
