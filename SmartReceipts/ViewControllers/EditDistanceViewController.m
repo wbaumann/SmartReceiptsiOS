@@ -105,8 +105,18 @@ NSString *const SREditDistanceDateCacheKey = @"SREditDistanceDateCacheKey";
         [WBReceiptsViewController sharedInputCache][SREditDistanceDateCacheKey] = selected;
 
         [weakSelf.dateCell setValue:[weakSelf.dateFormatter formattedDate:selected inTimeZone:timeZone]];
+
+        if ([weakSelf.trip dateOutsideTripBounds:selected]) {
+            [weakSelf.dateCell addWarningWithTitle:NSLocalizedString(@"edit.distance.date.range.warning.title", nil)
+                                           message:NSLocalizedString(@"edit.distance.date.range.warning.message", nil)];
+        } else {
+            [weakSelf.dateCell removeWarning];
+        }
     }];
-    [self.datePickerCell setMinDate:self.trip.startDate maxDate:self.trip.endDate];
+
+    if (![WBPreferences allowDataEntryOutsideTripBounds]) {
+        [self.datePickerCell setMinDate:self.trip.startDate maxDate:self.trip.endDate];
+    }
 
     self.commentCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.commentCell setTitle:NSLocalizedString(@"edit.distance.controller.comment.label", nil)];

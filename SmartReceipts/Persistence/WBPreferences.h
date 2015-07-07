@@ -112,8 +112,8 @@
 + (BOOL)cameraRotateImage;
 + (void)setCameraRotateImage:(BOOL)value;
 
-+ (BOOL)allowReceiptEntryOutsideTripBounds;
-+ (void)setAllowReceiptEntryOutsideTripBounds:(BOOL)value;
++ (BOOL)allowDataEntryOutsideTripBounds;
++ (void)setAllowDataEntryOutsideTripBounds:(BOOL)value;
 
 + (void)save;
 

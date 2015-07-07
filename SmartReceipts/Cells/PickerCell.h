@@ -20,5 +20,7 @@
 - (void)setTitle:(NSString *)title value:(NSString *)value;
 - (void)setValue:(NSString *)value;
 - (NSString *)value;
+- (void)removeWarning;
+- (void)addWarningWithTitle:(NSString *)title message:(NSString *)message;
 
 @end

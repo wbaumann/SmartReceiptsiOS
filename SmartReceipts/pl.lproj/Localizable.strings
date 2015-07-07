@@ -94,6 +94,8 @@
 "edit.distance.controller.validation.distance.missing" = "Distance not entered";
 "edit.distance.controller.validation.error.title" = "Can't save distance";
 "edit.distance.controller.validation.rate.missing" = "Rate not entered";
+"edit.distance.date.range.warning.message" = "Just a note that distance date is outside trip start and end date";
+"edit.distance.date.range.warning.title" = "Distance date";
 "edit.payment.method.controller.add.title" = "Add Payment Method";
 "edit.payment.method.controller.edit.title" = "Edit Payment Method";
 "edit.payment.method.controller.save.error.exists.message" = "Payment method with given name already exists";
@@ -230,7 +232,7 @@
 "receipt.column.user.id" = "ID Użytkownika";
 
 "settings.add.distance.price.to.report.label" = "Add Distane Price to Report";
-"settings.allow.receipts.outside.trip.bounds.label" = "Allow receipts outside trip start/end";
+"settings.allow.data.outside.trip.bounds.label" = "Allow data entry outside trip start/end";
 "settings.assume.price.pre.tax.label" = "Assume Price is Pre-Tax";
 "settings.automatically.rotate.images.label" = "Automatically rotate images";
 "settings.backup.button.label" = "Zrób Kopię Zapasową";

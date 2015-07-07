@@ -21,7 +21,7 @@ static NSString * const STRING_DEFAULT_EMAIL_CC = @"EmailCC";
 static NSString * const STRING_DEFAULT_EMAIL_BCC = @"EmailBCC";
 static NSString * const STRING_DEFAULT_EMAIL_SUBJECT = @"EmailSubject";
 static NSString * const INT_DEFAULT_TRIP_DURATION = @"TripDuration";
-static NSString * const BOOL_ALLOW_RECEIPT_OUTSIDE_TRIP_BOUNDS = @"AllowReceiptOutsideTripBounds";
+static NSString * const BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS = @"AllowDataOutsideTripBounds";
 static NSString * const STRING_USERNAME = @"UserName";
 static NSString * const BOOL_PREDICT_CATEGORIES = @"PredictCats";
 static NSString * const BOOL_MATCH_COMMENT_WITH_CATEGORIES = @"MatchCommentCats";
@@ -83,7 +83,7 @@ static NSDictionary *getEntryTypes() {
 
     return @{
             INT_DEFAULT_TRIP_DURATION : tInt,
-            BOOL_ALLOW_RECEIPT_OUTSIDE_TRIP_BOUNDS : tBool,
+            BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS : tBool,
             FLOAT_MIN_RECEIPT_PRICE : tFloat,
 
             STRING_DEFAULT_EMAIL_TO : tString,
@@ -148,7 +148,7 @@ static NSDictionary *getDefaultValues() {
 
     return @{
             INT_DEFAULT_TRIP_DURATION : @3,
-            BOOL_ALLOW_RECEIPT_OUTSIDE_TRIP_BOUNDS : @(NO),
+            BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS : @(NO),
 
             FLOAT_MIN_RECEIPT_PRICE : @(MIN_FLOAT),
             STRING_DEFAULT_EMAIL_TO : @"",
@@ -484,12 +484,12 @@ static NSUserDefaults* instance() {
     [instance() setBool:value forKey:BOOL_CAMERA_ROTATE_IMAGE];
 }
 
-+ (BOOL)allowReceiptEntryOutsideTripBounds{
-    return [instance() boolForKey:BOOL_ALLOW_RECEIPT_OUTSIDE_TRIP_BOUNDS];
++ (BOOL)allowDataEntryOutsideTripBounds {
+    return [instance() boolForKey:BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS];
 }
 
-+ (void)setAllowReceiptEntryOutsideTripBounds:(BOOL)value{
-    [instance() setBool:value forKey:BOOL_ALLOW_RECEIPT_OUTSIDE_TRIP_BOUNDS];
++ (void)setAllowDataEntryOutsideTripBounds:(BOOL)value{
+    [instance() setBool:value forKey:BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS];
 }
 
 +(void) save {
