@@ -98,6 +98,10 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
     return self.price.currencyFormattedPrice;
 }
 
+- (BOOL)dateOutsideTripBounds:(NSDate *)date {
+    return [date isBeforeDate:self.startDate] || [date isAfterDate:self.endDate];
+}
+
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet {
     [self setName:[resultSet stringForColumn:TripsTable.COLUMN_NAME]];
 

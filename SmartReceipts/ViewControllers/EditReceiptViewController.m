@@ -130,18 +130,15 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 
         [WBReceiptsViewController sharedInputCache][SREditReceiptDateCacheKey] = selected;
 
-        if ([selected isBeforeDate:weakSelf.trip.startDate] || [selected isAfterDate:weakSelf.trip.endDate]) {
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button addTarget:weakSelf action:@selector(dateWarningPressed) forControlEvents:UIControlEventTouchUpInside];
-            [button setImage:[UIImage imageNamed:@"791-warning-toolbar"] forState:UIControlStateNormal];
-            [button sizeToFit];
-            [weakSelf.dateCell setAccessoryView:button];
+        if ([weakSelf.trip dateOutsideTripBounds:selected]) {
+            [weakSelf.dateCell addWarningWithTitle:NSLocalizedString(@"edit.receipt.date.range.warning.title", nil)
+                                           message:NSLocalizedString(@"edit.receipt.date.range.warning.message", nil)];
         } else {
-            [weakSelf.dateCell setAccessoryView:nil];
+            [weakSelf.dateCell removeWarning];
         }
     }];
 
-    if (![WBPreferences allowReceiptEntryOutsideTripBounds]) {
+    if (![WBPreferences allowDataEntryOutsideTripBounds]) {
         [self.datePickerCell setMinDate:[self.trip.startDate dateAtBeginningOfDay] maxDate:[self.trip.endDate dateAtEndOfDay]];
     }
 
@@ -406,11 +403,6 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
     [[[UIAlertView alloc]
             initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil) otherButtonTitles:nil] show];
-}
-
-- (void)dateWarningPressed {
-    [EditReceiptViewController showAlertWithTitle:NSLocalizedString(@"edit.receipt.date.range.warning.title", nil)
-                                          message:NSLocalizedString(@"edit.receipt.date.range.warning.message", nil)];
 }
 
 @end

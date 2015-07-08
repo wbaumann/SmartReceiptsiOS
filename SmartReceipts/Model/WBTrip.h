@@ -34,5 +34,6 @@ extern NSString *const MULTI_CURRENCY;
 - (void)setMileage:(float)mileage;
 - (BOOL)createDirectoryIfNotExists;
 - (NSString *)priceWithCurrencyFormatted;
+- (BOOL)dateOutsideTripBounds:(NSDate *)date;
 
 @end
