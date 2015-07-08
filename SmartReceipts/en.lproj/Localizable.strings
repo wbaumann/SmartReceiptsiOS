@@ -288,10 +288,11 @@
 "settings.purchase.make.purchase.error.title" = "Purchase failed";
 "settings.purchase.price.retrieve.error.message" = "Could not retrieve purchase details. Please try again later.";
 "settings.purchase.price.retrieve.error.title" = "Purchase error";
-"settings.purchase.remove.ads.label" = "Support SmartReceipts";
+"settings.purchase.pro.label" = "SmartReceipts Pro subscription";
 "settings.purchase.restore.error.title" = "Restore failed";
 "settings.purchase.restore.label" = "Restore purchase";
-"settings.purchase.section.title" = "Remove ads";
+"settings.purchase.section.title" = "Purchases";
+"settings.purchase.subscription.valid.until.label.base" = "Valid until: %@";
 "settings.show.receipt.id.label" = "Show Receipt ID";
 "settings.track.cost.center.label" = "Track Cost Center";
 "settings.user.id.label" = "User ID";

@@ -47,7 +47,7 @@
 }
 
 - (void)checkAdsStatus {
-    if (![Database sharedInstance].adsRemoved) {
+    if (![Database sharedInstance].hasValidSubscription) {
         return;
     }
 
@@ -58,7 +58,7 @@
 }
 
 - (void)loadAd {
-    if ([Database sharedInstance].adsRemoved) {
+    if ([Database sharedInstance].hasValidSubscription) {
         return;
     }
 

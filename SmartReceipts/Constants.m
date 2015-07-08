@@ -20,4 +20,4 @@ NSString *const SmartReceiptsAdsRemovedNotification = @"SmartReceiptsAdsRemovedN
 
 NSString *const SmartReceiptAppStoreId = @"905698613";
 
-NSString *const SmartReceiptRemoveAdsIAPIdentifier = @"co.smartreceipts.ios.pro";
+NSString *const SmartReceiptSubscriptionIAPIdentifier = @"co.smartreceipts.ios.pro";

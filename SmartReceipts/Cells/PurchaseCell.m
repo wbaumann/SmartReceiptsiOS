@@ -8,9 +8,14 @@
 
 #import "PurchaseCell.h"
 #import "WBCustomization.h"
+#import "WBDateFormatter.h"
+#import "NSDate+Calculations.h"
 
 @interface PurchaseCell ()
 
+@property (nonatomic, strong) IBOutlet UILabel *priceLabel;
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *subtitleLabel;
 @property (nonatomic, copy) ActionBlock errorTapHandler;
 @property (nonatomic, assign) BOOL purchased;
 
@@ -26,7 +31,7 @@
 
 - (void)markPurchased {
     [self setPurchased:YES];
-    [self.detailTextLabel setText:@" "];
+    [self.priceLabel setText:@" "];
     [self setAccessoryType:UITableViewCellAccessoryCheckmark];
 }
 
@@ -35,7 +40,7 @@
         return;
     }
 
-    [self.detailTextLabel setText:@" "];
+    [self.priceLabel setText:@" "];
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     [spinner startAnimating];
     [spinner setColor:[WBCustomization themeColor]];
@@ -49,8 +54,8 @@
 
     [self setAccessoryView:nil];
     [self setAccessoryType:UITableViewCellAccessoryNone];
-    [self.detailTextLabel setText:priceString];
-    [self.detailTextLabel setTextColor:[WBCustomization themeColor]];
+    [self.priceLabel setText:priceString];
+    [self.priceLabel setTextColor:[WBCustomization themeColor]];
     [self setNeedsLayout];
     [self layoutIfNeeded];
 }
@@ -61,7 +66,7 @@
     }
 
     [self setErrorTapHandler:tapHandler];
-    [self.detailTextLabel setText:@" "];
+    [self.priceLabel setText:@" "];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTintColor:[UIColor redColor]];
     [button setImage:[UIImage imageNamed:@"724-info-toolbar"] forState:UIControlStateNormal];
@@ -72,6 +77,25 @@
 
 - (void)errorButtonPressed {
     self.errorTapHandler();
+}
+
+- (void)setTitle:(NSString *)title {
+    [self.titleLabel setText:title];
+}
+
+- (void)setSubscriptionEndDate:(NSDate *)date {
+    if (!date) {
+        [self.subtitleLabel setText:@""];
+        return;
+    }
+
+    NSString *formattedDate = [[[WBDateFormatter alloc] init] formattedDate:date inTimeZone:[NSTimeZone localTimeZone]];
+    [self.subtitleLabel setText:[NSString stringWithFormat:NSLocalizedString(@"settings.purchase.subscription.valid.until.label.base", nil), formattedDate]];
+    if ([date isBeforeDate:[NSDate date]]) {
+        [self.subtitleLabel setTextColor:[UIColor redColor]];
+    } else {
+        [self.subtitleLabel setTextColor:[UIColor blackColor]];
+    }
 }
 
 @end
