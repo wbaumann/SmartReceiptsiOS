@@ -12,5 +12,6 @@
 
 - (NSDate *)subscriptionEndDate;
 - (BOOL)hasValidSubscription;
+- (void)checkReceiptValidity;
 
 @end

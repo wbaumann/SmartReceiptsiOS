@@ -19,6 +19,7 @@
 #import "RMStore.h"
 #import "RMStoreKeychainPersistence.h"
 #import "RMStoreAppReceiptVerificator.h"
+#import "Database+Purchases.h"
 
 #import <BugSense-iOS/BugSenseController.h>
 #import <UIAlertView-Blocks/RIButtonItem.h>
@@ -50,6 +51,8 @@
 
     [WBFileManager initTripsDirectory];
     [[Database sharedInstance] open];
+
+    [[Database sharedInstance] checkReceiptValidity];
 
     NSString *language = [NSLocale preferredLanguages][0];
     SRLog(@"lang: %@", language);
