@@ -15,5 +15,7 @@
 - (void)markSpinning;
 - (void)setPriceString:(NSString *)priceString;
 - (void)markErrorWithTapHandler:(ActionBlock)tapHandler;
+- (void)setTitle:(NSString *)title;
+- (void)setSubscriptionEndDate:(NSDate *)date;
 
 @end

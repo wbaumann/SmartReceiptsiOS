@@ -62,6 +62,6 @@ static NSUInteger const SmartReceiptMinUsageDaysForRatin = 7;
 
 extern NSString *const SmartReceiptAppStoreId;
 
-extern NSString *const SmartReceiptRemoveAdsIAPIdentifier;
+extern NSString *const SmartReceiptSubscriptionIAPIdentifier;
 
 typedef void (^ActionBlock)();

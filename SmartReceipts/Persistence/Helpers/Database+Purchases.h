@@ -10,6 +10,8 @@
 
 @interface Database (Purchases)
 
-- (BOOL)adsRemoved;
+- (NSDate *)subscriptionEndDate;
+- (BOOL)hasValidSubscription;
+- (void)checkReceiptValidity;
 
 @end

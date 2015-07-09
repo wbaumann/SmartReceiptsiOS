@@ -132,7 +132,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 
     self.removeAdsCell = [self.tableView dequeueReusableCellWithIdentifier:[PurchaseCell cellIdentifier]];
-    [self.removeAdsCell.textLabel setText:NSLocalizedString(@"settings.purchase.remove.ads.label", nil)];
+    [self.removeAdsCell setTitle:NSLocalizedString(@"settings.purchase.pro.label", nil)];
 
     self.resporePurchaseCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
     [self.resporePurchaseCell setTitle:NSLocalizedString(@"settings.purchase.restore.label", nil)];
@@ -622,13 +622,14 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [self performSegueWithIdentifier:PushPaymentMethodsControllerSegueIdentifier sender:nil];
     } else if (cell == self.resporePurchaseCell) {
         [self restorePurchases];
-    } else if (cell == self.removeAdsCell && ![[Database sharedInstance] adsRemoved]) {
+    } else if (cell == self.removeAdsCell && ![[Database sharedInstance] hasValidSubscription]) {
         [self makePurchase:self.removeAdsProduct];
     }
 }
 
 - (void)updatePurchaseStatus {
-    if ([[Database sharedInstance] adsRemoved]) {
+    [self.removeAdsCell setSubscriptionEndDate:[[Database sharedInstance] subscriptionEndDate]];
+    if ([[Database sharedInstance] hasValidSubscription]) {
         [self.removeAdsCell markPurchased];
     } else if (self.hadPriceRetrieveError) {
         [self.removeAdsCell markErrorWithTapHandler:^{
@@ -641,13 +642,13 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 }
 
 - (void)retrievePurchasePrices {
-    [[RMStore defaultStore] requestProducts:[NSSet setWithObject:SmartReceiptRemoveAdsIAPIdentifier] success:^(NSArray *products, NSArray *invalidProductIdentifiers) {
+    [[RMStore defaultStore] requestProducts:[NSSet setWithObject:SmartReceiptSubscriptionIAPIdentifier] success:^(NSArray *products, NSArray *invalidProductIdentifiers) {
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
         [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
 
         for (SKProduct *product in products) {
-            if ([product.productIdentifier isEqualToString:SmartReceiptRemoveAdsIAPIdentifier]) {
+            if ([product.productIdentifier isEqualToString:SmartReceiptSubscriptionIAPIdentifier]) {
                 [self setRemoveAdsProduct:product];
                 [numberFormatter setLocale:product.priceLocale];
                 NSString *formattedPrice = [numberFormatter stringFromNumber:product.price];
