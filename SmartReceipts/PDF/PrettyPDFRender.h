@@ -15,5 +15,9 @@
 - (void)setTripName:(NSString *)tripName;
 - (void)appendHeaderRow:(NSString *)row;
 - (void)closeHeader;
+- (void)startTable;
+- (void)appendTableHeaders:(NSArray *)columnNames;
+- (void)appendTableColumns:(NSArray *)rowValues;
+- (void)closeTable;
 
 @end

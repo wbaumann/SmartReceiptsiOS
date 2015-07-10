@@ -121,7 +121,7 @@
 
     [self.pdfRender closeHeader];
 
-    ReportPDFTable *receiptsTable = [[ReportPDFTable alloc] initWithPDFDrawer:self.pdfDrawer columns:[self receiptColumns]];
+    ReportPDFTable *receiptsTable = [[ReportPDFTable alloc] initWithPDFRender:self.pdfRender columns:[self receiptColumns]];
     [receiptsTable setIncludeHeaders:YES];
     if ([WBPreferences printDailyDistanceValues]) {
         NSArray *distanceReceipts = [DistancesToReceiptsConverter convertDistances:distances];
@@ -145,7 +145,7 @@
 
     [self.pdfDrawer drawGap];
 
-    ReportPDFTable *distancesTable = [[ReportPDFTable alloc] initWithPDFDrawer:self.pdfDrawer columns:[self distanceColumns]];
+    ReportPDFTable *distancesTable = [[ReportPDFTable alloc] initWithPDFRender:self.pdfDrawer columns:[self distanceColumns]];
     [distancesTable setIncludeHeaders:YES];
     [distancesTable appendTableWithRows:distances];
 }

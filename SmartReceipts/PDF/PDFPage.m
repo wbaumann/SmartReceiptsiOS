@@ -9,6 +9,7 @@
 #import "PDFPage.h"
 #import "TripReportHeader.h"
 #import "WBCustomization.h"
+#import "PDFReportTable.h"
 
 CGFloat const ElementsSpacing = 16;
 
@@ -33,11 +34,19 @@ CGFloat const ElementsSpacing = 16;
 
 
 - (void)appendHeader:(TripReportHeader *)header {
-    CGRect frame = header.frame;
+    [self appendElement:header];
+}
+
+- (void)appendTable:(PDFReportTable *)table {
+    [self appendElement:table];
+}
+
+- (void)appendElement:(UIView *)element {
+    CGRect frame = element.frame;
     frame.origin.x = (CGRectGetWidth(self.frame) - CGRectGetWidth(frame)) / 2;
     frame.origin.y = self.contentOffset;
-    [header setFrame:frame];
-    [self addSubview:header];
+    [element setFrame:frame];
+    [self addSubview:element];
 
     self.contentOffset += CGRectGetHeight(frame) + ElementsSpacing;
 }

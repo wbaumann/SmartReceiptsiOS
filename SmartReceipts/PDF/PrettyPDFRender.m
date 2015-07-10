@@ -10,12 +10,14 @@
 #import "PDFPage.h"
 #import "UIView+LoadHelpers.h"
 #import "TripReportHeader.h"
+#import "PDFReportTable.h"
 
 @interface PrettyPDFRender ()
 
 @property (nonatomic, strong) NSMutableArray *pages;
 @property (nonatomic, strong) PDFPage *openPage;
 @property (nonatomic, strong) TripReportHeader *header;
+@property (nonatomic, strong) PDFReportTable *openTable;
 
 @end
 
@@ -73,5 +75,23 @@
     return _openPage;
 }
 
+
+- (void)startTable {
+    self.openTable = [PDFReportTable loadInstance];
+    [self.openTable setFrame:CGRectMake(0, 0, CGRectGetWidth(self.header.frame), 100)];
+}
+
+- (void)appendTableHeaders:(NSArray *)columnNames {
+    [self.openTable setColumns:columnNames];
+}
+
+- (void)appendTableColumns:(NSArray *)rowValues {
+    [self.openTable appendValues:rowValues];
+}
+
+- (void)closeTable {
+    [self.openTable buildTable];
+    [self.openPage appendTable:self.openTable];
+}
 
 @end

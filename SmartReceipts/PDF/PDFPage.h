@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class TripReportHeader;
+@class PDFReportTable;
 
 @interface PDFPage : UIView
 
 - (void)appendHeader:(TripReportHeader *)header;
+- (void)appendTable:(PDFReportTable *)table;
 
 @end
