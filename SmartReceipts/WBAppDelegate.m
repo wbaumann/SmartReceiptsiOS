@@ -20,6 +20,7 @@
 #import "RMStoreKeychainPersistence.h"
 #import "RMStoreAppReceiptVerificator.h"
 #import "Database+Purchases.h"
+#import "PrettyPDFRender.h"
 
 #import <BugSense-iOS/BugSenseController.h>
 #import <UIAlertView-Blocks/RIButtonItem.h>

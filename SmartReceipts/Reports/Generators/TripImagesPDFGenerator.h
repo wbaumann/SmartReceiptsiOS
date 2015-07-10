@@ -11,11 +11,13 @@
 
 @class WBPdfDrawer;
 @class WBDateFormatter;
+@class PrettyPDFRender;
 
 @interface TripImagesPDFGenerator : ReportPDFGenerator
 
 @property (nonatomic, strong, readonly) WBPdfDrawer *pdfDrawer;
 @property (nonatomic, strong, readonly) WBDateFormatter *dateFormatter;
+@property (nonatomic, strong, readonly) PrettyPDFRender *pdfRender;
 
 - (void)appendImages;
 

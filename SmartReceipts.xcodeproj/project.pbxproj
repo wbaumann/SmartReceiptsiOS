@@ -126,6 +126,12 @@
 		EA259CD81B1606EC00ECBD67 /* DataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = EA259CD71B1606EC00ECBD67 /* DataImport.m */; };
 		EA259CDB1B16071F00ECBD67 /* DataImportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA259CDA1B16071F00ECBD67 /* DataImportTest.m */; };
 		EA259CDD1B16072D00ECBD67 /* DataExportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA259CDC1B16072D00ECBD67 /* DataExportTest.m */; };
+		EA2B8D7E1B4EF1DA0043A84B /* RenderedPDFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2B8D7D1B4EF1DA0043A84B /* RenderedPDFLabel.m */; };
+		EA2B8D811B4EF2510043A84B /* PrettyPDFRender.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2B8D801B4EF2510043A84B /* PrettyPDFRender.m */; };
+		EA2B8D841B4EF26D0043A84B /* PDFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2B8D831B4EF26D0043A84B /* PDFPage.m */; };
+		EA2B8D881B4EF44B0043A84B /* TripReportHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2B8D871B4EF44B0043A84B /* TripReportHeader.xib */; };
+		EA2B8D8B1B4EF45B0043A84B /* TripReportHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2B8D8A1B4EF45B0043A84B /* TripReportHeader.m */; };
+		EA2B8D8C1B4EF8110043A84B /* PDFPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2B8D851B4EF27D0043A84B /* PDFPage.xib */; };
 		EA2F23011B41BDDD008AF61E /* PurchaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2F22FF1B41BDDD008AF61E /* PurchaseCell.m */; };
 		EA2F23021B41BDDD008AF61E /* PurchaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2F23001B41BDDD008AF61E /* PurchaseCell.xib */; };
 		EA2F23051B41BFD3008AF61E /* Database+Purchases.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2F23041B41BFD3008AF61E /* Database+Purchases.m */; };
@@ -468,6 +474,16 @@
 		EA259CD71B1606EC00ECBD67 /* DataImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataImport.m; sourceTree = "<group>"; };
 		EA259CDA1B16071F00ECBD67 /* DataImportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataImportTest.m; sourceTree = "<group>"; };
 		EA259CDC1B16072D00ECBD67 /* DataExportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataExportTest.m; sourceTree = "<group>"; };
+		EA2B8D7C1B4EF1DA0043A84B /* RenderedPDFLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderedPDFLabel.h; sourceTree = "<group>"; };
+		EA2B8D7D1B4EF1DA0043A84B /* RenderedPDFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderedPDFLabel.m; sourceTree = "<group>"; };
+		EA2B8D7F1B4EF2510043A84B /* PrettyPDFRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyPDFRender.h; sourceTree = "<group>"; };
+		EA2B8D801B4EF2510043A84B /* PrettyPDFRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyPDFRender.m; sourceTree = "<group>"; };
+		EA2B8D821B4EF26D0043A84B /* PDFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFPage.h; sourceTree = "<group>"; };
+		EA2B8D831B4EF26D0043A84B /* PDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFPage.m; sourceTree = "<group>"; };
+		EA2B8D851B4EF27D0043A84B /* PDFPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFPage.xib; sourceTree = "<group>"; };
+		EA2B8D871B4EF44B0043A84B /* TripReportHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripReportHeader.xib; sourceTree = "<group>"; };
+		EA2B8D891B4EF45B0043A84B /* TripReportHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripReportHeader.h; sourceTree = "<group>"; };
+		EA2B8D8A1B4EF45B0043A84B /* TripReportHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripReportHeader.m; sourceTree = "<group>"; };
 		EA2F22FE1B41BDDD008AF61E /* PurchaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseCell.h; sourceTree = "<group>"; };
 		EA2F22FF1B41BDDD008AF61E /* PurchaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseCell.m; sourceTree = "<group>"; };
 		EA2F23001B41BDDD008AF61E /* PurchaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseCell.xib; sourceTree = "<group>"; };
@@ -918,12 +934,14 @@
 				EA3CF0981AE7962C00B14B73 /* Extensions */,
 				84D6719518D336E100B704A4 /* images */,
 				EA8D81691AEA668100BAC943 /* Model */,
+				EA2B8D7B1B4EF1AE0043A84B /* PDF */,
 				EAF9ADDF1AECF8BF0000AC84 /* Persistence */,
 				848EFA5D18EDC33F00AC01B4 /* reports */,
 				EA8D81DA1AEA965D00BAC943 /* Reports */,
 				84F4F34A18CFCCD000F69A35 /* Supporting Files */,
 				84D6719818D34E3200B704A4 /* util */,
 				EA46678C1AE7EA0300B4E502 /* Utils */,
+				BA6655F2D59B9C4DD7D30FDC /* VC */,
 				EAE8F9AF1AF149B300E837E3 /* ViewControllers */,
 				845E33DD18D87CB9006A506A /* views */,
 				EA5963E91AF2955300935344 /* Views */,
@@ -1100,6 +1118,23 @@
 			path = Backup;
 			sourceTree = "<group>";
 		};
+		EA2B8D7B1B4EF1AE0043A84B /* PDF */ = {
+			isa = PBXGroup;
+			children = (
+				EA2B8D891B4EF45B0043A84B /* TripReportHeader.h */,
+				EA2B8D8A1B4EF45B0043A84B /* TripReportHeader.m */,
+				EA2B8D871B4EF44B0043A84B /* TripReportHeader.xib */,
+				EA2B8D821B4EF26D0043A84B /* PDFPage.h */,
+				EA2B8D831B4EF26D0043A84B /* PDFPage.m */,
+				EA2B8D851B4EF27D0043A84B /* PDFPage.xib */,
+				EA2B8D7F1B4EF2510043A84B /* PrettyPDFRender.h */,
+				EA2B8D801B4EF2510043A84B /* PrettyPDFRender.m */,
+				EA2B8D7C1B4EF1DA0043A84B /* RenderedPDFLabel.h */,
+				EA2B8D7D1B4EF1DA0043A84B /* RenderedPDFLabel.m */,
+			);
+			path = PDF;
+			sourceTree = "<group>";
+		};
 		EA3C968B1AEBA29C00A2A5F9 /* Tables */ = {
 			isa = PBXGroup;
 			children = (
@@ -1175,7 +1210,6 @@
 				EA19CC7C1B2C950600168AA0 /* RateApplication.m */,
 				EAD15C781B0881C2003BB1F3 /* ReceiptFilesManager.h */,
 				EAD15C791B0881C2003BB1F3 /* ReceiptFilesManager.m */,
-				BA6655F2D59B9C4DD7D30FDC /* VC */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1692,6 +1726,7 @@
 				EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */,
 				EA22679F1B1E035F005761E7 /* ReceiptSummaryCell.xib in Resources */,
 				841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */,
+				EA2B8D881B4EF44B0043A84B /* TripReportHeader.xib in Resources */,
 				8467EFF018F6FC450076BE6E /* ic_rotate_ccw@2x.png in Resources */,
 				EA07BF351AF3B703004D17F6 /* InlinedDatePickerCell.xib in Resources */,
 				8467EFF118F6FC450076BE6E /* ic_rotate_cw@2x.png in Resources */,
@@ -1700,6 +1735,7 @@
 				EA1D42C61B03902C00D64D3A /* EntryOnlyCell.xib in Resources */,
 				EA1E60D81B2742660048E688 /* InfoPlist.strings in Resources */,
 				8421A1F51907AF18001DF38D /* wheel@2x.png in Resources */,
+				EA2B8D8C1B4EF8110043A84B /* PDFPage.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1812,12 +1848,14 @@
 				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
 				EA8D81A91AEA7C8E00BAC943 /* ReceiptColumnPrice.m in Sources */,
 				EA888A711AFA38AD00DF2AE6 /* SettingsButtonCell.m in Sources */,
+				EA2B8D811B4EF2510043A84B /* PrettyPDFRender.m in Sources */,
 				EA24EC6D1B1F64F000FCCB27 /* DecimalFormatter.m in Sources */,
 				EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */,
 				EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */,
 				EA888A861AFB4FBD00DF2AE6 /* Database+Trips.m in Sources */,
 				4D33F3E219D8965800FE4EC4 /* GADConstants.m in Sources */,
 				EA00D0101B06321A00C87678 /* EditTripViewController.m in Sources */,
+				EA2B8D7E1B4EF1DA0043A84B /* RenderedPDFLabel.m in Sources */,
 				EA8D819A1AEA7C3100BAC943 /* ReceiptColumnImagePath.m in Sources */,
 				EA8D81781AEA668100BAC943 /* WBTrip.m in Sources */,
 				EA8D817C1AEA6AF000BAC943 /* ReceiptColumn.m in Sources */,
@@ -1896,6 +1934,7 @@
 				EA4C5CC11AF286990083FDD7 /* InputCellsSection.m in Sources */,
 				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
+				EA2B8D8B1B4EF45B0043A84B /* TripReportHeader.m in Sources */,
 				EAE9DB011AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m in Sources */,
 				EAE8F9B21AF149DC00E837E3 /* TripDistancesViewController.m in Sources */,
 				EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */,
@@ -1945,6 +1984,7 @@
 				EA1D42C11B038D8F00D64D3A /* EditPaymentMethodViewController.m in Sources */,
 				EA66777C1B06154F004D3993 /* NSString+Helpers.m in Sources */,
 				EA07BF301AF3B472004D17F6 /* UIApplication+DismissKeyboard.m in Sources */,
+				EA2B8D841B4EF26D0043A84B /* PDFPage.m in Sources */,
 				EA69EF301AF0914000276B70 /* PaymentMethod.m in Sources */,
 				BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */,
 				BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */,

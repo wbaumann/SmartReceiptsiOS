@@ -19,11 +19,12 @@
 #import "PricesCollection.h"
 #import "Distance.h"
 #import "Constants.h"
+#import "PrettyPDFRender.h"
 
 @implementation TripFullPDFGenerator
 
 - (BOOL)generateToPath:(NSString *)outputPath {
-    if (![self.pdfDrawer beginDrawingToFile:outputPath]) {
+    if (![self.pdfRender setOutputPath:outputPath]) {
         return NO;
     }
 
@@ -31,7 +32,7 @@
 
     [self appendImages];
 
-    [self.pdfDrawer endDrawing];
+    [self.pdfRender renderPages];
 
     return YES;
 }
@@ -76,49 +77,49 @@
         [distanceTotal addPrice:distance.totalRate];
     }
 
-    [self.pdfDrawer drawRowText:self.trip.name];
+    [self.pdfRender setTripName:self.trip.name];
 
     if (![receiptTotal isEqual:netTotal]) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.receipts.total.label", nil), receiptTotal.currencyFormattedPrice]];
+        [self.pdfRender appendHeaderRow:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.receipts.total.label", nil), receiptTotal.currencyFormattedPrice]];
     }
 
     if ([WBPreferences includeTaxField]) {
         if (pricesPreTax && taxesTotal.hasValue) {
-            [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.tax.total.label", nil), taxesTotal.currencyFormattedPrice]];
+            [self.pdfRender appendHeaderRow:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.tax.total.label", nil), taxesTotal.currencyFormattedPrice]];
         } else if (![noTaxesTotal isEqual:receiptTotal] && noTaxesTotal.hasValue) {
-            [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.receipts.total.sans.tax.label", nil), noTaxesTotal.currencyFormattedPrice]];
+            [self.pdfRender appendHeaderRow:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.receipts.total.sans.tax.label", nil), noTaxesTotal.currencyFormattedPrice]];
         }
     }
 
     if (!reportOnlyExpensable && ![expensableTotal isEqual:receiptTotal]) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.receipts.total.expensable.label", nil), expensableTotal.currencyFormattedPrice]];
+        [self.pdfRender appendHeaderRow:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.receipts.total.expensable.label", nil), expensableTotal.currencyFormattedPrice]];
     }
 
     if (distances.count > 0) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.distance.total.label", nil), distanceTotal.currencyFormattedPrice]];
+        [self.pdfRender appendHeaderRow:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.distance.total.label", nil), distanceTotal.currencyFormattedPrice]];
     }
 
-    [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.gross.total.label", nil), netTotal.currencyFormattedPrice]];
+    [self.pdfRender appendHeaderRow:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.gross.total.label", nil), netTotal.currencyFormattedPrice]];
 
 
-    [self.pdfDrawer drawRowText:[NSString stringWithFormat:NSLocalizedString(@"pdf.report.from.to.label.base", nil),
+    [self.pdfRender appendHeaderRow:[NSString stringWithFormat:NSLocalizedString(@"pdf.report.from.to.label.base", nil),
                                                            [self.dateFormatter formattedDate:[self.trip startDate] inTimeZone:[self.trip startTimeZone]],
                                                            [self.dateFormatter formattedDate:[self.trip endDate] inTimeZone:[self.trip endTimeZone]]
     ]];
 
     if ([WBPreferences trackCostCenter] && self.trip.costCenter.hasValue) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.const.center.label", nil), self.trip.costCenter]];
+        [self.pdfRender appendHeaderRow:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.const.center.label", nil), self.trip.costCenter]];
     }
 
     if (self.trip.comment.hasValue) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.comment.label", nil), self.trip.comment]];
+        [self.pdfRender appendHeaderRow:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.comment.label", nil), self.trip.comment]];
     }
 
     if (distances.count > 0) {
-        [self.pdfDrawer drawRowText:[NSString stringWithFormat:NSLocalizedString(@"pdf.report.distance.traveled.label.base", nil), [self.database totalDistanceTraveledForTrip:self.trip].floatValue]];
+        [self.pdfRender appendHeaderRow:[NSString stringWithFormat:NSLocalizedString(@"pdf.report.distance.traveled.label.base", nil), [self.database totalDistanceTraveledForTrip:self.trip].floatValue]];
     }
 
-    [self.pdfDrawer drawGap];
+    [self.pdfRender closeHeader];
 
     ReportPDFTable *receiptsTable = [[ReportPDFTable alloc] initWithPDFDrawer:self.pdfDrawer columns:[self receiptColumns]];
     [receiptsTable setIncludeHeaders:YES];

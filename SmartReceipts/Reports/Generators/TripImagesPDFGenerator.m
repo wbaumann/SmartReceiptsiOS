@@ -14,11 +14,13 @@
 #import "Database.h"
 #import "WBPreferences.h"
 #import "NSString+Validation.h"
+#import "PrettyPDFRender.h"
 
 @interface TripImagesPDFGenerator ()
 
 @property (nonatomic, strong) WBPdfDrawer *pdfDrawer;
 @property (nonatomic, strong) WBDateFormatter *dateFormatter;
+@property (nonatomic, strong) PrettyPDFRender *pdfRender;
 
 @end
 
@@ -27,8 +29,8 @@
 - (instancetype)initWithTrip:(WBTrip *)trip database:(Database *)database {
     self = [super initWithTrip:trip database:database];
     if (self) {
-        _pdfDrawer = [[WBPdfDrawer alloc] init];
         _dateFormatter = [[WBDateFormatter alloc] init];
+        _pdfRender = [[PrettyPDFRender alloc] init];
     }
 
     return self;
@@ -36,12 +38,17 @@
 
 
 - (BOOL)generateToPath:(NSString *)outputPath {
+    if (![self.pdfRender setOutputPath:outputPath]) {
+        return NO;
+    }
+
     if (![self.pdfDrawer beginDrawingToFile:outputPath]) {
         return NO;
     }
 
     [self appendImages];
 
+    [self.pdfRender renderPages];
     [self.pdfDrawer endDrawing];
 
     return YES;
