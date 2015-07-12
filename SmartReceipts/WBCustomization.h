@@ -12,6 +12,7 @@
 
 + (UIColor *)themeColor;
 + (void)customizeOnAppLoad;
++ (UIColor *)reportPDFStyleColor;
 
 /* Customizes every view controller on load */
 + (void)customizeOnViewDidLoad:(UIViewController *)viewController;
