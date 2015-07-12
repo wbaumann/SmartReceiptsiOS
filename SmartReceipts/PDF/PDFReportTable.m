@@ -16,6 +16,8 @@
 @property (nonatomic, strong) IBOutlet TableContentRow *rowOnePrototype;
 @property (nonatomic, strong) IBOutlet TableContentRow *rowTwoPrototype;
 @property (nonatomic, strong) NSMutableArray *rows;
+@property (nonatomic, assign) NSUInteger rowsAdded;
+@property (nonatomic, assign) NSUInteger rowToStart;
 
 @end
 
@@ -37,7 +39,7 @@
     [self.rows addObject:values];
 }
 
-- (void)buildTable {
+- (BOOL)buildTable:(CGFloat)availableSpace {
     NSMutableArray *columnsWidth = [NSMutableArray arrayWithCapacity:self.columns.count];
     NSMutableArray *titleWidth = [NSMutableArray arrayWithCapacity:self.columns.count];
     for (NSUInteger column = 0; column < self.columns.count; column++) {
@@ -48,15 +50,24 @@
     columnsWidth = [self divideRemainingWidth:columnsWidth titleWidth:titleWidth];
 
     CGFloat yOffset = [self appendRow:self.columns columnWidths:columnsWidth usingPrototype:self.headerRowPrototype yOffset:0];
-    for (NSInteger row = 0; row < self.rows.count; row++) {
+    for (NSUInteger row = self.rowToStart; row < self.rows.count; row++) {
         TableContentRow *prototype;
         if (row % 2 == 0) {
             prototype = self.rowOnePrototype;
         } else {
             prototype = self.rowTwoPrototype;
         }
+
+        CGFloat height = [self maxHeightForRow:self.rows[row] widths:columnsWidth prototype:prototype];
+        if (yOffset + height > availableSpace) {
+            [self setRowsAdded:row];
+            return NO;
+        }
+
         yOffset = [self appendRow:self.rows[row] columnWidths:columnsWidth usingPrototype:prototype yOffset:yOffset];
     }
+
+    return YES;
 }
 
 - (NSMutableArray *)divideRemainingWidth:(NSMutableArray *)columns titleWidth:(NSArray *)titleWidth {

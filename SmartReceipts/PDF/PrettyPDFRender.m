@@ -12,6 +12,13 @@
 #import "TripReportHeader.h"
 #import "PDFReportTable.h"
 
+@interface PDFReportTable (Expose)
+
+@property (nonatomic, strong) NSMutableArray *rows;
+@property (nonatomic, assign) NSUInteger rowToStart;
+
+@end
+
 @interface PrettyPDFRender ()
 
 @property (nonatomic, strong) NSMutableArray *pages;
@@ -33,7 +40,7 @@
 }
 
 - (BOOL)setOutputPath:(NSString *)path {
-    return UIGraphicsBeginPDFContextToFile(path, CGRectMake(0, 0, 595, 842), nil);
+    return UIGraphicsBeginPDFContextToFile(path, self.openPage.bounds, nil);
 }
 
 - (void)setTripName:(NSString *)tripName {
@@ -68,8 +75,7 @@
 
 - (PDFPage *)openPage {
     if (!_openPage) {
-        _openPage = [PDFPage loadInstance];
-        [self.pages addObject:_openPage];
+        [self startNextPage];
     }
 
     return _openPage;
@@ -90,8 +96,26 @@
 }
 
 - (void)closeTable {
-    [self.openTable buildTable];
+    BOOL fullyAdded = [self.openTable buildTable:[self.openPage remainingSpace]];
     [self.openPage appendTable:self.openTable];
+
+    if (fullyAdded) {
+        return;
+    }
+
+    PDFReportTable *partialTable = self.openTable;
+
+    [self startNextPage];
+    [self startTable];
+    [self.openTable setColumns:partialTable.columns];
+    [self.openTable setRows:partialTable.rows];
+    [self.openTable setRowToStart:partialTable.rowsAdded];
+    [self closeTable];
+}
+
+- (void)startNextPage {
+    self.openPage = [PDFPage loadInstance];
+    [self.pages addObject:self.openPage];
 }
 
 @end

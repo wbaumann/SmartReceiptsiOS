@@ -11,8 +11,10 @@
 @interface PDFReportTable : UIView
 
 @property (nonatomic, strong) NSArray *columns;
+@property (nonatomic, assign, readonly) NSUInteger rowsAdded;
 
 - (void)appendValues:(NSArray *)values;
-- (void)buildTable;
+- (BOOL)buildTable:(CGFloat)availableSpace;
+
 
 @end

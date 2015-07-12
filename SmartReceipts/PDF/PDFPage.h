@@ -15,5 +15,6 @@
 
 - (void)appendHeader:(TripReportHeader *)header;
 - (void)appendTable:(PDFReportTable *)table;
+- (CGFloat)remainingSpace;
 
 @end

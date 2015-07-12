@@ -51,4 +51,8 @@ CGFloat const ElementsSpacing = 16;
     self.contentOffset += CGRectGetHeight(frame) + ElementsSpacing;
 }
 
+- (CGFloat)remainingSpace {
+    return self.bottomLine.frame.origin.y - ElementsSpacing - self.contentOffset;
+}
+
 @end
