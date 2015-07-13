@@ -32,6 +32,8 @@
     [self.rowOnePrototype removeFromSuperview];
     [self.rowTwoPrototype removeFromSuperview];
 
+    [self setClipsToBounds:YES];
+
     self.rows = [NSMutableArray array];
 }
 
@@ -65,6 +67,9 @@
         }
 
         yOffset = [self appendRow:self.rows[row] columnWidths:columnsWidth usingPrototype:prototype yOffset:yOffset];
+        CGRect myFrame = self.frame;
+        myFrame.size.height = yOffset;
+        [self setFrame:myFrame];
     }
 
     return YES;
@@ -140,7 +145,7 @@
 - (CGFloat)appendRow:(NSArray *)array columnWidths:(NSArray *)widths usingPrototype:(TableContentRow *)prototype yOffset:(CGFloat)yOffset {
     CGFloat height = [self maxHeightForRow:array widths:widths prototype:prototype];
     CGFloat xOffset = 0;
-    for (NSInteger column = 0; column < array.count; column++) {
+    for (NSUInteger column = 0; column < array.count; column++) {
         NSString *value = array[column];
         TableContentRow *cell = (TableContentRow *) [self duplicate:prototype];
         [cell setValue:value];
@@ -164,7 +169,7 @@
 - (CGFloat)maxHeightForRow:(NSArray *)array widths:(NSArray *)widths prototype:(TableContentRow *)prototype {
     CGFloat max = 0;
 
-    for (NSInteger column = 0; column < array.count; column++) {
+    for (NSUInteger column = 0; column < array.count; column++) {
         NSString *value = array[column];
         CGFloat width = [widths[column] floatValue];
         max = MAX(max, [prototype heightForValue:value usingWidth:width]);

@@ -64,7 +64,7 @@
     NSString *currency = distance.rate.currency.code;
     NSDecimalNumber *totalPrice = [self totalPriceForDistances:distances];
 
-    return [[WBReceipt alloc] initWithId:0
+    WBReceipt *receipt = [[WBReceipt alloc] initWithId:0
                                     name:name
                                 category:category
                            imageFileName:nil
@@ -78,6 +78,9 @@
                           extraEditText1:@""
                           extraEditText2:@""
                           extraEditText3:@""];
+    [receipt setTrip:distance.trip];
+
+    return receipt;
 }
 
 - (NSDecimalNumber *)totalPriceForDistances:(NSArray *)distances {
