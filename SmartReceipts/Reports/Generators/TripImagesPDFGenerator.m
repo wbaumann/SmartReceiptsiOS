@@ -84,7 +84,7 @@
 
             hitFirstNonFullPage = YES;
 
-            [self.pdfDrawer drawImage:img withLabel:[self labelForReceipt:receipt]];
+            [self.pdfRender appendImage:img withLabel:[self labelForReceipt:receipt]];
         }
     }
 

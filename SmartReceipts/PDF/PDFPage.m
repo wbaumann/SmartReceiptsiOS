@@ -10,6 +10,7 @@
 #import "TripReportHeader.h"
 #import "WBCustomization.h"
 #import "PDFReportTable.h"
+#import "PDFImageView.h"
 
 CGFloat const ElementsSpacing = 16;
 
@@ -18,6 +19,7 @@ CGFloat const ElementsSpacing = 16;
 @property (nonatomic, strong) IBOutlet UIView *topLine;
 @property (nonatomic, strong) IBOutlet UIView *bottomLine;
 @property (nonatomic, assign) CGFloat contentOffset;
+@property (nonatomic, assign) NSUInteger imageIndex;
 
 @end
 
@@ -31,7 +33,6 @@ CGFloat const ElementsSpacing = 16;
 
     self.contentOffset = self.topLine.frame.origin.y + CGRectGetHeight(self.topLine.frame) + ElementsSpacing;
 }
-
 
 - (void)appendHeader:(TripReportHeader *)header {
     [self appendElement:header];
@@ -53,6 +54,27 @@ CGFloat const ElementsSpacing = 16;
 
 - (CGFloat)remainingSpace {
     return self.bottomLine.frame.origin.y - ElementsSpacing - self.contentOffset;
+}
+
+- (void)appendImage:(PDFImageView *)imageView {
+    CGPoint origin = CGPointZero;
+    CGFloat topLineBottom = self.topLine.frame.origin.y + CGRectGetHeight(self.topLine.frame);
+    if (self.imageIndex == 0) {
+        origin = CGPointMake(CGRectGetMinX(self.topLine.frame), topLineBottom + ElementsSpacing);
+    } else if (self.imageIndex == 1) {
+        origin = CGPointMake((CGRectGetWidth(self.bounds) + ElementsSpacing) / 2, topLineBottom + ElementsSpacing);
+    } else if (self.imageIndex == 2) {
+        origin = CGPointMake(CGRectGetMinX(self.topLine.frame), (CGRectGetHeight(self.frame) + ElementsSpacing) / 2);
+    } else {
+        origin = CGPointMake((CGRectGetWidth(self.bounds) + ElementsSpacing) / 2, (CGRectGetHeight(self.frame) + ElementsSpacing) / 2);
+    }
+
+    CGRect frame = imageView.frame;
+    frame.origin = origin;
+    [imageView setFrame:frame];
+    [self addSubview:imageView];
+
+    self.imageIndex++;
 }
 
 @end

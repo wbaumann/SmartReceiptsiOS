@@ -11,6 +11,7 @@
 #import "UIView+LoadHelpers.h"
 #import "TripReportHeader.h"
 #import "PDFReportTable.h"
+#import "PDFImageView.h"
 
 NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 
@@ -18,6 +19,12 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 
 @property (nonatomic, strong) NSMutableArray *rows;
 @property (nonatomic, assign) NSUInteger rowToStart;
+
+@end
+
+@interface PDFPage (Expose)
+
+@property (nonatomic, assign) NSUInteger imageIndex;
 
 @end
 
@@ -127,6 +134,19 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 - (void)startNextPage {
     self.openPage = [PDFPage loadInstance];
     [self.pages addObject:self.openPage];
+}
+
+- (void)appendImage:(UIImage *)image withLabel:(NSString *)label {
+    if (self.openPage.imageIndex == 4) {
+        [self startNextPage];
+    }
+
+    PDFImageView *imageView = [PDFImageView loadInstance];
+    [imageView.titleLabel setText:label];
+    [imageView.imageView setImage:image];
+    [imageView fitImageView];
+
+    [self.openPage appendImage:imageView];
 }
 
 @end

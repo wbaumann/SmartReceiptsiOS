@@ -19,5 +19,7 @@
 - (void)appendTableHeaders:(NSArray *)columnNames;
 - (void)appendTableColumns:(NSArray *)rowValues;
 - (void)closeTable;
+- (void)startNextPage;
+- (void)appendImage:(UIImage *)image withLabel:(NSString *)label;
 
 @end

@@ -269,6 +269,8 @@
 		EAE9DB011AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAFF1AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m */; };
 		EAE9DB021AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAE9DB001AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.xib */; };
 		EAED9B221AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m in Sources */ = {isa = PBXBuildFile; fileRef = EAED9B211AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m */; };
+		EAF6FE101B543AA40005E2CE /* PDFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF6FE0F1B543AA40005E2CE /* PDFImageView.m */; };
+		EAF6FE121B543ABB0005E2CE /* PDFImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF6FE111B543ABB0005E2CE /* PDFImageView.xib */; };
 		EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADDD1AECD2D20000AC84 /* ReportGeneratorTest.m */; };
 		EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADE21AECF8E30000AC84 /* DatabaseMigration.m */; };
 		EAF9ADE61AECF8F80000AC84 /* DatabaseCreateAtVersion11.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADE51AECF8F80000AC84 /* DatabaseCreateAtVersion11.m */; };
@@ -719,6 +721,9 @@
 		EAE9DAFF1AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTopTitledTextEntryCell.m; sourceTree = "<group>"; };
 		EAE9DB001AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTopTitledTextEntryCell.xib; sourceTree = "<group>"; };
 		EAED9B211AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseCreateAtVersion11Test.m; sourceTree = "<group>"; };
+		EAF6FE0E1B543AA40005E2CE /* PDFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFImageView.h; sourceTree = "<group>"; };
+		EAF6FE0F1B543AA40005E2CE /* PDFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFImageView.m; sourceTree = "<group>"; };
+		EAF6FE111B543ABB0005E2CE /* PDFImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFImageView.xib; sourceTree = "<group>"; };
 		EAF9ADDD1AECD2D20000AC84 /* ReportGeneratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportGeneratorTest.m; sourceTree = "<group>"; };
 		EAF9ADE11AECF8E30000AC84 /* DatabaseMigration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseMigration.h; sourceTree = "<group>"; };
 		EAF9ADE21AECF8E30000AC84 /* DatabaseMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseMigration.m; sourceTree = "<group>"; };
@@ -1132,16 +1137,19 @@
 		EA2B8D7B1B4EF1AE0043A84B /* PDF */ = {
 			isa = PBXGroup;
 			children = (
+				EAF6FE0E1B543AA40005E2CE /* PDFImageView.h */,
+				EAF6FE0F1B543AA40005E2CE /* PDFImageView.m */,
+				EAF6FE111B543ABB0005E2CE /* PDFImageView.xib */,
 				EA2B8D821B4EF26D0043A84B /* PDFPage.h */,
 				EA2B8D831B4EF26D0043A84B /* PDFPage.m */,
 				EA2B8D851B4EF27D0043A84B /* PDFPage.xib */,
+				EA1309A11B50281A0045FDDE /* PDFReportTable.h */,
+				EA1309A21B50281A0045FDDE /* PDFReportTable.m */,
+				EA1309A41B50282A0045FDDE /* PDFReportTable.xib */,
 				EA2B8D7F1B4EF2510043A84B /* PrettyPDFRender.h */,
 				EA2B8D801B4EF2510043A84B /* PrettyPDFRender.m */,
 				EA2B8D7C1B4EF1DA0043A84B /* RenderedPDFLabel.h */,
 				EA2B8D7D1B4EF1DA0043A84B /* RenderedPDFLabel.m */,
-				EA1309A11B50281A0045FDDE /* PDFReportTable.h */,
-				EA1309A21B50281A0045FDDE /* PDFReportTable.m */,
-				EA1309A41B50282A0045FDDE /* PDFReportTable.xib */,
 				EA13099E1B5027E40045FDDE /* TableContentRow.h */,
 				EA13099F1B5027E40045FDDE /* TableContentRow.m */,
 				EA13099B1B5027D10045FDDE /* TableHeaderRow.h */,
@@ -1738,6 +1746,7 @@
 				EA1E60D91B2742660048E688 /* Localizable.strings in Resources */,
 				EA1E60D61B2742660048E688 /* Localizable.strings in Resources */,
 				EA66B2BE1B13809900A57750 /* LaunchView.xib in Resources */,
+				EAF6FE121B543ABB0005E2CE /* PDFImageView.xib in Resources */,
 				8467EFEC18F6F9530076BE6E /* ic_rotate_ccw.png in Resources */,
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
 				EA1E60D51B2742660048E688 /* InfoPlist.strings in Resources */,
@@ -1984,6 +1993,7 @@
 				EA98B51C1B075042006935AE /* WBCellWithPriceNameDate.m in Sources */,
 				EAB970121B0790EE005E1D63 /* TripsViewController.m in Sources */,
 				EA8D81761AEA668100BAC943 /* Price.m in Sources */,
+				EAF6FE101B543AA40005E2CE /* PDFImageView.m in Sources */,
 				EAF9ADE61AECF8F80000AC84 /* DatabaseCreateAtVersion11.m in Sources */,
 				EA8D818E1AEA7BBC00BAC943 /* ReceiptColumnReportName.m in Sources */,
 				EA3C96981AEBA91400A2A5F9 /* ReportGenerator.m in Sources */,

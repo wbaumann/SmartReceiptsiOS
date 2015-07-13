@@ -10,11 +10,13 @@
 
 @class TripReportHeader;
 @class PDFReportTable;
+@class PDFImageView;
 
 @interface PDFPage : UIView
 
 - (void)appendHeader:(TripReportHeader *)header;
 - (void)appendTable:(PDFReportTable *)table;
+- (void)appendImage:(PDFImageView *)imageView;
 - (CGFloat)remainingSpace;
 
 @end

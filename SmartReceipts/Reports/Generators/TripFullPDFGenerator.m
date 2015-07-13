@@ -30,6 +30,8 @@
 
     [self appendSummaryAndTables];
 
+    [self.pdfRender startNextPage];
+
     [self appendImages];
 
     [self.pdfRender renderPages];
