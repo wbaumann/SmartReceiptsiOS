@@ -12,6 +12,8 @@
 #import "TripReportHeader.h"
 #import "PDFReportTable.h"
 
+NSUInteger const SRMinNumberOfTableRowsForPage = 3;
+
 @interface PDFReportTable (Expose)
 
 @property (nonatomic, strong) NSMutableArray *rows;
@@ -104,6 +106,15 @@
     }
 
     PDFReportTable *partialTable = self.openTable;
+
+    NSUInteger remainder = partialTable.rows.count - partialTable.rowsAdded;
+    if (partialTable.rowToStart == 0 && (partialTable.rowsAdded < SRMinNumberOfTableRowsForPage || remainder < SRMinNumberOfTableRowsForPage)) {
+        [self.openTable removeFromSuperview];
+        [self startNextPage];
+        [self.openTable setRowToStart:partialTable.rowsAdded];
+        [self closeTable];
+        return;
+    }
 
     [self startNextPage];
     [self startTable];

@@ -8,7 +8,6 @@
 
 #import "PDFReportTable.h"
 #import "TableHeaderRow.h"
-#import "Constants.h"
 
 @interface PDFReportTable ()
 
@@ -18,6 +17,7 @@
 @property (nonatomic, strong) NSMutableArray *rows;
 @property (nonatomic, assign) NSUInteger rowsAdded;
 @property (nonatomic, assign) NSUInteger rowToStart;
+@property (nonatomic, assign) BOOL tableHeaderAdded;
 
 @end
 
@@ -51,7 +51,18 @@
 
     columnsWidth = [self divideRemainingWidth:columnsWidth titleWidth:titleWidth];
 
-    CGFloat yOffset = [self appendRow:self.columns columnWidths:columnsWidth usingPrototype:self.headerRowPrototype yOffset:0];
+    CGFloat yOffset = 0;
+    // Don't add header on view where already added
+    // Happens when we decide that not enough rows in page and push all to next page.
+    // In that case original table is reused, just additional rows added
+    if (!self.tableHeaderAdded) {
+        yOffset = [self appendRow:self.columns columnWidths:columnsWidth usingPrototype:self.headerRowPrototype yOffset:0];
+        [self setTableHeaderAdded:YES];
+        [self setFrameHeightTo:yOffset];
+    } else {
+        yOffset = CGRectGetHeight(self.frame);
+    }
+
     for (NSUInteger row = self.rowToStart; row < self.rows.count; row++) {
         TableContentRow *prototype;
         if (row % 2 == 0) {
@@ -67,12 +78,16 @@
         }
 
         yOffset = [self appendRow:self.rows[row] columnWidths:columnsWidth usingPrototype:prototype yOffset:yOffset];
-        CGRect myFrame = self.frame;
-        myFrame.size.height = yOffset;
-        [self setFrame:myFrame];
+        [self setFrameHeightTo:yOffset];
     }
 
     return YES;
+}
+
+- (void)setFrameHeightTo:(CGFloat)height {
+    CGRect myFrame = self.frame;
+    myFrame.size.height = height;
+    [self setFrame:myFrame];
 }
 
 - (NSMutableArray *)divideRemainingWidth:(NSMutableArray *)columns titleWidth:(NSArray *)titleWidth {
