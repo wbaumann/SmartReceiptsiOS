@@ -14,11 +14,13 @@
 #import "Database.h"
 #import "WBPreferences.h"
 #import "NSString+Validation.h"
+#import "PrettyPDFRender.h"
 
 @interface TripImagesPDFGenerator ()
 
 @property (nonatomic, strong) WBPdfDrawer *pdfDrawer;
 @property (nonatomic, strong) WBDateFormatter *dateFormatter;
+@property (nonatomic, strong) PrettyPDFRender *pdfRender;
 
 @end
 
@@ -27,8 +29,8 @@
 - (instancetype)initWithTrip:(WBTrip *)trip database:(Database *)database {
     self = [super initWithTrip:trip database:database];
     if (self) {
-        _pdfDrawer = [[WBPdfDrawer alloc] init];
         _dateFormatter = [[WBDateFormatter alloc] init];
+        _pdfRender = [[PrettyPDFRender alloc] init];
     }
 
     return self;
@@ -36,12 +38,17 @@
 
 
 - (BOOL)generateToPath:(NSString *)outputPath {
+    if (![self.pdfRender setOutputPath:outputPath]) {
+        return NO;
+    }
+
     if (![self.pdfDrawer beginDrawingToFile:outputPath]) {
         return NO;
     }
 
     [self appendImages];
 
+    [self.pdfRender renderPages];
     [self.pdfDrawer endDrawing];
 
     return YES;
@@ -77,7 +84,7 @@
 
             hitFirstNonFullPage = YES;
 
-            [self.pdfDrawer drawImage:img withLabel:[self labelForReceipt:receipt]];
+            [self.pdfRender appendImage:img withLabel:[self labelForReceipt:receipt]];
         }
     }
 
@@ -104,7 +111,7 @@
     if ([receipt hasImage]) {
         UIImage *img = [UIImage imageWithContentsOfFile:[receipt imageFilePathForTrip:receipt.trip]];
         if (img) {
-            [self.pdfDrawer drawFullPageImage:img withLabel:[self labelForReceipt:receipt]];
+            [self.pdfRender appendFullPageImage:img withLabel:[self labelForReceipt:receipt]];
         }
     } else if ([receipt hasPDF]) {
         [self drawFullPagePDFFile:[receipt imageFilePathForTrip:receipt.trip] withLabel:[self labelForReceipt:receipt]];
@@ -123,7 +130,7 @@
     @autoreleasepool {
         for (NSUInteger i = 0; i < CGPDFDocumentGetNumberOfPages(pdf); ++i) {
             CGPDFPageRef page = CGPDFDocumentGetPage(pdf, i + 1);
-            [self.pdfDrawer drawFullPagePDFPage:page withLabel:label];
+            [self.pdfRender appendPDFPage:page withLabel:label];
         }
     }
 

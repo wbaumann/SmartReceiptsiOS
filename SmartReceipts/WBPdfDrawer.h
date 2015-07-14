@@ -10,6 +10,8 @@
 
 @interface WBPdfDrawer : NSObject
 
++ (void)renderPage:(CGPDFPageRef)page inContext:(CGContextRef)context inRectangle:(CGRect)displayRectangle;
+
 - (BOOL) beginDrawingToFile:(NSString*)fileName;
 
 - (void) endDrawing;

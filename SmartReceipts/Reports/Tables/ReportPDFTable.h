@@ -10,9 +10,10 @@
 #import "ReportTable.h"
 
 @class WBPdfDrawer;
+@class PrettyPDFRender;
 
 @interface ReportPDFTable : ReportTable
 
-- (instancetype)initWithPDFDrawer:(WBPdfDrawer *)drawer columns:(NSArray *)columns;
+- (instancetype)initWithPDFRender:(PrettyPDFRender *)drawer columns:(NSArray *)columns;
 
 @end

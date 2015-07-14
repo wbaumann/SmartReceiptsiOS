@@ -9,6 +9,7 @@
 #import "ReportPDFTable.h"
 #import "WBPdfDrawer.h"
 #import "Column.h"
+#import "PrettyPDFRender.h"
 
 static inline NSString *safeString(NSString *str) {
     return str ? str : @"";
@@ -16,27 +17,29 @@ static inline NSString *safeString(NSString *str) {
 
 @interface ReportPDFTable ()
 
-@property (nonatomic, strong) WBPdfDrawer *pdfDrawer;
+@property (nonatomic, strong) PrettyPDFRender *pdfRender;
 
 @end
 
 @implementation ReportPDFTable
 
-- (instancetype)initWithPDFDrawer:(WBPdfDrawer *)drawer columns:(NSArray *)columns {
+- (instancetype)initWithPDFRender:(PrettyPDFRender *)drawer columns:(NSArray *)columns {
     self = [super initWithColumns:columns];
     if (self) {
-        _pdfDrawer = drawer;
+        _pdfRender = drawer;
     }
     return self;
 }
 
 - (void)appendTableWithRows:(NSArray *)rows {
+    [self.pdfRender startTable];
+
     if (self.includeHeaders) {
         NSMutableArray *array = [NSMutableArray array];
         for (Column *column in self.columns) {
             [array addObject:safeString([column name])];
         }
-        [self.pdfDrawer drawRowBorderedTexts:array];
+        [self.pdfRender appendTableHeaders:array];
     }
 
     for (id row in rows) {
@@ -47,9 +50,11 @@ static inline NSString *safeString(NSString *str) {
                 [array addObject:safeString(val)];
             }
 
-            [self.pdfDrawer drawRowBorderedTexts:array];
+            [self.pdfRender appendTableColumns:array];
         }
     }
+
+    [self.pdfRender closeTable];
 }
 
 @end

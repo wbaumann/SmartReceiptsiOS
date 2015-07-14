@@ -21,6 +21,7 @@
 #import "Database.h"
 #import "Database+Receipts.h"
 #import "PendingHUDView.h"
+#import "Constants.h"
 
 @interface WBGenerateViewController () <MFMailComposeViewControllerDelegate>
 
@@ -186,7 +187,8 @@
     }
 
     PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
-    dispatch_async(dispatch_get_main_queue(), ^{
+    //start with a small delay, so that HUD can come up before processing begins
+    SRDelayedExecution(0.5, ^{
         MFMailComposeViewController *mc = nil;
         @try {
             mc = [self preparedComposer];

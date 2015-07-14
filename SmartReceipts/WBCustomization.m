@@ -33,6 +33,10 @@
 
 }
 
++ (UIColor *)reportPDFStyleColor {
+    return [UIColor colorWithRed:(0 / 255.f) green:(122 / 255.f) blue:(255 / 255.f) alpha:1.0];
+}
+
 + (void)customizeOnViewDidLoad:(UIViewController *)viewController {
     UINavigationController *navigationController = viewController.navigationController;
     if (navigationController) {
