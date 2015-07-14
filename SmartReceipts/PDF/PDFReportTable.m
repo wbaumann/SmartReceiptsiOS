@@ -144,7 +144,7 @@
     CGFloat remainder = CGRectGetWidth(self.frame) - columnsWidth;
     CGFloat toAdd = ceilf(remainder / (CGFloat)columns.count);
     NSMutableArray *added = [NSMutableArray arrayWithCapacity:columns.count];
-    for (NSInteger index = 0; index < columns.count; index++) {
+    for (NSUInteger index = 0; index < columns.count; index++) {
         NSNumber *number = columns[index];
         if (toAdd > remainder) {
             toAdd = remainder;

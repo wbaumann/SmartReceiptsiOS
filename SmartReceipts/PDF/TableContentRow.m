@@ -26,7 +26,7 @@
 - (UILabel *)subviewOfType:(Class)typeClass {
     for (UIView *sub in self.subviews) {
         if ([sub isKindOfClass:typeClass]) {
-            return sub;
+            return (UILabel *)sub;
         }
     }
 

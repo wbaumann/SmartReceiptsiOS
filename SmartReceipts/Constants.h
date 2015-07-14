@@ -65,3 +65,5 @@ extern NSString *const SmartReceiptAppStoreId;
 extern NSString *const SmartReceiptSubscriptionIAPIdentifier;
 
 typedef void (^ActionBlock)();
+
+void SRDelayedExecution(NSTimeInterval seconds, ActionBlock action);
