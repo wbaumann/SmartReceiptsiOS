@@ -123,7 +123,7 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
 }
 
 - (BOOL)nameChanged {
-    return [self.name compare:self.originalName options:NSCaseInsensitiveSearch] != NSOrderedSame;
+    return [self.name compare:self.originalName] != NSOrderedSame;
 }
 
 - (BOOL)isEqual:(id)other {
