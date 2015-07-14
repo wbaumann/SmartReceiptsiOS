@@ -145,8 +145,6 @@
         return;
     }
 
-    [self.pdfDrawer drawGap];
-
     ReportPDFTable *distancesTable = [[ReportPDFTable alloc] initWithPDFRender:self.pdfRender columns:[self distanceColumns]];
     [distancesTable setIncludeHeaders:YES];
     [distancesTable appendTableWithRows:distances];
