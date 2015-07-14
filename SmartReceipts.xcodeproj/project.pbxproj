@@ -157,6 +157,9 @@
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
 		EA40DC691B55598A003BF545 /* FullPagePDFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA40DC681B55598A003BF545 /* FullPagePDFImageView.m */; };
 		EA40DC6B1B5559A1003BF545 /* FullPagePDFImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA40DC6A1B5559A1003BF545 /* FullPagePDFImageView.xib */; };
+		EA40DC6E1B555CC9003BF545 /* FullPagePDFPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA40DC6D1B555CC9003BF545 /* FullPagePDFPageView.m */; };
+		EA40DC701B555CFE003BF545 /* FullPagePDFPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA40DC6F1B555CFE003BF545 /* FullPagePDFPageView.xib */; };
+		EA40DC731B555D31003BF545 /* PDFPageRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA40DC721B555D31003BF545 /* PDFPageRenderView.m */; };
 		EA46678F1AE7EA1700B4E502 /* ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA46678E1AE7EA1600B4E502 /* ImagePicker.m */; };
 		EA4C5CBA1AF2864B0083FDD7 /* TextEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CB81AF2864B0083FDD7 /* TextEntryCell.m */; };
 		EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CBD1AF2866E0083FDD7 /* UIView+LoadHelpers.m */; };
@@ -536,6 +539,11 @@
 		EA40DC671B55598A003BF545 /* FullPagePDFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullPagePDFImageView.h; sourceTree = "<group>"; };
 		EA40DC681B55598A003BF545 /* FullPagePDFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullPagePDFImageView.m; sourceTree = "<group>"; };
 		EA40DC6A1B5559A1003BF545 /* FullPagePDFImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullPagePDFImageView.xib; sourceTree = "<group>"; };
+		EA40DC6C1B555CC9003BF545 /* FullPagePDFPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullPagePDFPageView.h; sourceTree = "<group>"; };
+		EA40DC6D1B555CC9003BF545 /* FullPagePDFPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullPagePDFPageView.m; sourceTree = "<group>"; };
+		EA40DC6F1B555CFE003BF545 /* FullPagePDFPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullPagePDFPageView.xib; sourceTree = "<group>"; };
+		EA40DC711B555D31003BF545 /* PDFPageRenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFPageRenderView.h; sourceTree = "<group>"; };
+		EA40DC721B555D31003BF545 /* PDFPageRenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFPageRenderView.m; sourceTree = "<group>"; };
 		EA46678D1AE7EA1600B4E502 /* ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePicker.h; sourceTree = "<group>"; };
 		EA46678E1AE7EA1600B4E502 /* ImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePicker.m; sourceTree = "<group>"; };
 		EA4C5CB71AF2864B0083FDD7 /* TextEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEntryCell.h; sourceTree = "<group>"; };
@@ -1145,12 +1153,17 @@
 				EA40DC671B55598A003BF545 /* FullPagePDFImageView.h */,
 				EA40DC681B55598A003BF545 /* FullPagePDFImageView.m */,
 				EA40DC6A1B5559A1003BF545 /* FullPagePDFImageView.xib */,
+				EA40DC6C1B555CC9003BF545 /* FullPagePDFPageView.h */,
+				EA40DC6D1B555CC9003BF545 /* FullPagePDFPageView.m */,
+				EA40DC6F1B555CFE003BF545 /* FullPagePDFPageView.xib */,
 				EAF6FE0E1B543AA40005E2CE /* PDFImageView.h */,
 				EAF6FE0F1B543AA40005E2CE /* PDFImageView.m */,
 				EAF6FE111B543ABB0005E2CE /* PDFImageView.xib */,
 				EA2B8D821B4EF26D0043A84B /* PDFPage.h */,
 				EA2B8D831B4EF26D0043A84B /* PDFPage.m */,
 				EA2B8D851B4EF27D0043A84B /* PDFPage.xib */,
+				EA40DC711B555D31003BF545 /* PDFPageRenderView.h */,
+				EA40DC721B555D31003BF545 /* PDFPageRenderView.m */,
 				EA1309A11B50281A0045FDDE /* PDFReportTable.h */,
 				EA1309A21B50281A0045FDDE /* PDFReportTable.m */,
 				EA1309A41B50282A0045FDDE /* PDFReportTable.xib */,
@@ -1764,6 +1777,7 @@
 				841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */,
 				EA2B8D881B4EF44B0043A84B /* TripReportHeader.xib in Resources */,
 				8467EFF018F6FC450076BE6E /* ic_rotate_ccw@2x.png in Resources */,
+				EA40DC701B555CFE003BF545 /* FullPagePDFPageView.xib in Resources */,
 				EA07BF351AF3B703004D17F6 /* InlinedDatePickerCell.xib in Resources */,
 				EA1309A51B50282A0045FDDE /* PDFReportTable.xib in Resources */,
 				8467EFF118F6FC450076BE6E /* ic_rotate_cw@2x.png in Resources */,
@@ -1878,6 +1892,7 @@
 				EAF9ADE91AECF9200000AC84 /* DatabaseUpgradeToVersion12.m in Sources */,
 				EA8D81AC1AEA7C9D00BAC943 /* ReceiptColumnTax.m in Sources */,
 				4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */,
+				EA40DC6E1B555CC9003BF545 /* FullPagePDFPageView.m in Sources */,
 				EAE9DAF41AF8EA9600F4FE76 /* DistanceCurrencyColumn.m in Sources */,
 				EA5963FB1AF2A07200935344 /* InlinedPickerCell.m in Sources */,
 				84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */,
@@ -2032,6 +2047,7 @@
 				BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */,
 				BA665CDCF649AB06E5F9B219 /* WBViewController.m in Sources */,
 				BA665F59AEC814347484CE79 /* WBTableViewController.m in Sources */,
+				EA40DC731B555D31003BF545 /* PDFPageRenderView.m in Sources */,
 				BA66533BF5BE6103F7230434 /* WBImageViewController.m in Sources */,
 				BA6654FB0EA730FF8CBC4B93 /* WBImageSegue.m in Sources */,
 				BA66598797EF09DBD750184F /* WBAutocompleteHelper.m in Sources */,

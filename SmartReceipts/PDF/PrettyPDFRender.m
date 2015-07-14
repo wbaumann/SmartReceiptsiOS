@@ -13,6 +13,8 @@
 #import "PDFReportTable.h"
 #import "PDFImageView.h"
 #import "FullPagePDFImageView.h"
+#import "PDFPageRenderView.h"
+#import "FullPagePDFPageView.h"
 
 NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 
@@ -31,8 +33,7 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 
 @interface PrettyPDFRender ()
 
-@property (nonatomic, strong) NSMutableArray *pages;
-@property (nonatomic, strong) PDFPage *openPage;
+@property (nonatomic, strong) PDFPage *writingToPage;
 @property (nonatomic, strong) TripReportHeader *header;
 @property (nonatomic, strong) PDFReportTable *openTable;
 
@@ -43,7 +44,7 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _pages = [NSMutableArray array];
+
     }
 
     return self;
@@ -66,13 +67,14 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 }
 
 - (void)renderPages {
-    for (PDFPage *page in self.pages) {
-        UIGraphicsBeginPDFPage();
-        CGContextRef pdfContext = UIGraphicsGetCurrentContext();
-        [page.layer renderInContext:pdfContext];
-    }
-
+    [self renderPage:self.openPage];
     UIGraphicsEndPDFContext();
+}
+
+- (void)renderPage:(PDFPage *)page {
+    UIGraphicsBeginPDFPage();
+    CGContextRef pdfContext = UIGraphicsGetCurrentContext();
+    [page.layer renderInContext:pdfContext];
 }
 
 - (TripReportHeader *)header {
@@ -84,11 +86,11 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 }
 
 - (PDFPage *)openPage {
-    if (!_openPage) {
+    if (!self.writingToPage) {
         [self startNextPage];
     }
 
-    return _openPage;
+    return self.writingToPage;
 }
 
 
@@ -133,8 +135,11 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 }
 
 - (void)startNextPage {
-    self.openPage = [PDFPage loadInstance];
-    [self.pages addObject:self.openPage];
+    if (self.writingToPage) {
+        [self renderPage:self.writingToPage];
+    }
+
+    self.writingToPage = [PDFPage loadInstance];
 }
 
 - (void)appendImage:(UIImage *)image withLabel:(NSString *)label {
@@ -151,12 +156,28 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 }
 
 - (void)appendFullPageImage:(UIImage *)image withLabel:(NSString *)label {
+    if (![self.openPage isEmpty]) {
+        [self startNextPage];
+    }
+
     FullPagePDFImageView *imageView = [FullPagePDFImageView loadInstance];
     [imageView.titleLabel setText:label];
     [imageView.imageView setImage:image];
     [imageView fitImageView];
 
     [self.openPage appendImage:imageView];
+    [self startNextPage];
+}
+
+- (void)appendPDFPage:(CGPDFPageRef)page withLabel:(NSString *)label {
+    if (![self.openPage isEmpty]) {
+        [self startNextPage];
+    }
+
+    FullPagePDFPageView *pdfPageRenderView = [FullPagePDFPageView loadInstance];
+    [pdfPageRenderView.titleLabel setText:label];
+    [pdfPageRenderView.pageRenderView setPage:page];
+    [self.openPage appendFullPageElement:pdfPageRenderView];
     [self startNextPage];
 }
 

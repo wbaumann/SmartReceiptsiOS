@@ -22,5 +22,6 @@
 - (void)startNextPage;
 - (void)appendImage:(UIImage *)image withLabel:(NSString *)label;
 - (void)appendFullPageImage:(UIImage *)image withLabel:(NSString *)label;
+- (void)appendPDFPage:(CGPDFPageRef)page withLabel:(NSString *)label;
 
 @end

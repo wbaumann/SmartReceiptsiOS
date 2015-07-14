@@ -18,5 +18,7 @@
 - (void)appendTable:(PDFReportTable *)table;
 - (void)appendImage:(PDFImageView *)imageView;
 - (CGFloat)remainingSpace;
+- (BOOL)isEmpty;
+- (void)appendFullPageElement:(UIView *)view;
 
 @end

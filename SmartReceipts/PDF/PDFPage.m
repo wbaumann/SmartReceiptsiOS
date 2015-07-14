@@ -56,6 +56,10 @@ CGFloat const ElementsSpacing = 16;
     return self.bottomLine.frame.origin.y - ElementsSpacing - self.contentOffset;
 }
 
+- (BOOL)isEmpty {
+    return self.contentOffset <= self.topLine.frame.origin.y + CGRectGetHeight(self.topLine.frame) + ElementsSpacing;
+}
+
 - (void)appendImage:(PDFImageView *)imageView {
     CGPoint origin = CGPointZero;
     CGFloat topLineBottom = self.topLine.frame.origin.y + CGRectGetHeight(self.topLine.frame);
@@ -75,6 +79,10 @@ CGFloat const ElementsSpacing = 16;
     [self addSubview:imageView];
 
     self.imageIndex++;
+}
+
+- (void)appendFullPageElement:(UIView *)view {
+    [self appendElement:view];
 }
 
 @end
