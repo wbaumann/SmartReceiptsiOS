@@ -12,6 +12,7 @@
 #import "TripReportHeader.h"
 #import "PDFReportTable.h"
 #import "PDFImageView.h"
+#import "FullPagePDFImageView.h"
 
 NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 
@@ -147,6 +148,16 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
     [imageView fitImageView];
 
     [self.openPage appendImage:imageView];
+}
+
+- (void)appendFullPageImage:(UIImage *)image withLabel:(NSString *)label {
+    FullPagePDFImageView *imageView = [FullPagePDFImageView loadInstance];
+    [imageView.titleLabel setText:label];
+    [imageView.imageView setImage:image];
+    [imageView fitImageView];
+
+    [self.openPage appendImage:imageView];
+    [self startNextPage];
 }
 
 @end

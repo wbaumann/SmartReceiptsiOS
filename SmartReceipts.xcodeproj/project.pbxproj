@@ -155,6 +155,8 @@
 		EA3C96AD1AECC95100A2A5F9 /* TripImagesPDFGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96AC1AECC95100A2A5F9 /* TripImagesPDFGenerator.m */; };
 		EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */; };
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
+		EA40DC691B55598A003BF545 /* FullPagePDFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA40DC681B55598A003BF545 /* FullPagePDFImageView.m */; };
+		EA40DC6B1B5559A1003BF545 /* FullPagePDFImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA40DC6A1B5559A1003BF545 /* FullPagePDFImageView.xib */; };
 		EA46678F1AE7EA1700B4E502 /* ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA46678E1AE7EA1600B4E502 /* ImagePicker.m */; };
 		EA4C5CBA1AF2864B0083FDD7 /* TextEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CB81AF2864B0083FDD7 /* TextEntryCell.m */; };
 		EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CBD1AF2866E0083FDD7 /* UIView+LoadHelpers.m */; };
@@ -531,6 +533,9 @@
 		EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+WBNumberParse.m"; sourceTree = "<group>"; };
 		EA3CF09C1AE7C45C00B14B73 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		EA3CF09D1AE7C45C00B14B73 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		EA40DC671B55598A003BF545 /* FullPagePDFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullPagePDFImageView.h; sourceTree = "<group>"; };
+		EA40DC681B55598A003BF545 /* FullPagePDFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullPagePDFImageView.m; sourceTree = "<group>"; };
+		EA40DC6A1B5559A1003BF545 /* FullPagePDFImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullPagePDFImageView.xib; sourceTree = "<group>"; };
 		EA46678D1AE7EA1600B4E502 /* ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePicker.h; sourceTree = "<group>"; };
 		EA46678E1AE7EA1600B4E502 /* ImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePicker.m; sourceTree = "<group>"; };
 		EA4C5CB71AF2864B0083FDD7 /* TextEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEntryCell.h; sourceTree = "<group>"; };
@@ -1137,6 +1142,9 @@
 		EA2B8D7B1B4EF1AE0043A84B /* PDF */ = {
 			isa = PBXGroup;
 			children = (
+				EA40DC671B55598A003BF545 /* FullPagePDFImageView.h */,
+				EA40DC681B55598A003BF545 /* FullPagePDFImageView.m */,
+				EA40DC6A1B5559A1003BF545 /* FullPagePDFImageView.xib */,
 				EAF6FE0E1B543AA40005E2CE /* PDFImageView.h */,
 				EAF6FE0F1B543AA40005E2CE /* PDFImageView.m */,
 				EAF6FE111B543ABB0005E2CE /* PDFImageView.xib */,
@@ -1744,6 +1752,7 @@
 				8467EFED18F6F9530076BE6E /* ic_rotate_cw.png in Resources */,
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
 				EA1E60D91B2742660048E688 /* Localizable.strings in Resources */,
+				EA40DC6B1B5559A1003BF545 /* FullPagePDFImageView.xib in Resources */,
 				EA1E60D61B2742660048E688 /* Localizable.strings in Resources */,
 				EA66B2BE1B13809900A57750 /* LaunchView.xib in Resources */,
 				EAF6FE121B543ABB0005E2CE /* PDFImageView.xib in Resources */,
@@ -2019,6 +2028,7 @@
 				EA2B8D841B4EF26D0043A84B /* PDFPage.m in Sources */,
 				EA69EF301AF0914000276B70 /* PaymentMethod.m in Sources */,
 				BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */,
+				EA40DC691B55598A003BF545 /* FullPagePDFImageView.m in Sources */,
 				BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */,
 				BA665CDCF649AB06E5F9B219 /* WBViewController.m in Sources */,
 				BA665F59AEC814347484CE79 /* WBTableViewController.m in Sources */,

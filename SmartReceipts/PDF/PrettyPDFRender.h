@@ -21,5 +21,6 @@
 - (void)closeTable;
 - (void)startNextPage;
 - (void)appendImage:(UIImage *)image withLabel:(NSString *)label;
+- (void)appendFullPageImage:(UIImage *)image withLabel:(NSString *)label;
 
 @end

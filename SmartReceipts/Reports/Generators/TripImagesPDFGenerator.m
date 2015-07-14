@@ -111,7 +111,7 @@
     if ([receipt hasImage]) {
         UIImage *img = [UIImage imageWithContentsOfFile:[receipt imageFilePathForTrip:receipt.trip]];
         if (img) {
-            [self.pdfDrawer drawFullPageImage:img withLabel:[self labelForReceipt:receipt]];
+            [self.pdfRender appendFullPageImage:img withLabel:[self labelForReceipt:receipt]];
         }
     } else if ([receipt hasPDF]) {
         [self drawFullPagePDFFile:[receipt imageFilePathForTrip:receipt.trip] withLabel:[self labelForReceipt:receipt]];
