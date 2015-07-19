@@ -273,7 +273,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.camera.section.title", nil) cells:@[
             self.cameraSettingsCell,
             self.cameraImageBWCell,
-            self.cameraImageRotateCell
+            //self.cameraImageRotateCell
     ]]];
 
     self.manageCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
