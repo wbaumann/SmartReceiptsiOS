@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		39E8134E46F1C948F3A688EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC1BDDC7B500AA1408D37DF /* libPods.a */; };
-		4D33F3E219D8965800FE4EC4 /* GADConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33F3E119D8965800FE4EC4 /* GADConstants.m */; };
+		4D380F911B61240C001B43D2 /* GADConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D380F901B61240C001B43D2 /* GADConstants.m */; };
 		4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BB304190818E100D28CBF /* WBActionSheetPicker.m */; };
 		4DF229461928678A0008D359 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF229451928678A0008D359 /* AdSupport.framework */; };
 		4DF22948192867940008D359 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF22947192867940008D359 /* AudioToolbox.framework */; };
@@ -295,7 +295,7 @@
 
 /* Begin PBXFileReference section */
 		4D33F3E019D8964200FE4EC4 /* GADConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADConstants.h; sourceTree = "<group>"; };
-		4D33F3E119D8965800FE4EC4 /* GADConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADConstants.m; sourceTree = "<group>"; };
+		4D380F901B61240C001B43D2 /* GADConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADConstants.m; sourceTree = "<group>"; };
 		4DF229451928678A0008D359 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		4DF22947192867940008D359 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4DF229491928679D0008D359 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -784,8 +784,8 @@
 		4DF22941192867120008D359 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
+				4D380F901B61240C001B43D2 /* GADConstants.m */,
 				4D33F3E019D8964200FE4EC4 /* GADConstants.h */,
-				4D33F3E119D8965800FE4EC4 /* GADConstants.m */,
 			);
 			name = Ads;
 			sourceTree = "<group>";
@@ -1896,6 +1896,7 @@
 				EAE9DAF41AF8EA9600F4FE76 /* DistanceCurrencyColumn.m in Sources */,
 				EA5963FB1AF2A07200935344 /* InlinedPickerCell.m in Sources */,
 				84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */,
+				4D380F911B61240C001B43D2 /* GADConstants.m in Sources */,
 				EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */,
 				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
 				EA8D81A91AEA7C8E00BAC943 /* ReceiptColumnPrice.m in Sources */,
@@ -1906,7 +1907,6 @@
 				EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */,
 				EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */,
 				EA888A861AFB4FBD00DF2AE6 /* Database+Trips.m in Sources */,
-				4D33F3E219D8965800FE4EC4 /* GADConstants.m in Sources */,
 				EA00D0101B06321A00C87678 /* EditTripViewController.m in Sources */,
 				EA2B8D7E1B4EF1DA0043A84B /* RenderedPDFLabel.m in Sources */,
 				EA8D819A1AEA7C3100BAC943 /* ReceiptColumnImagePath.m in Sources */,
