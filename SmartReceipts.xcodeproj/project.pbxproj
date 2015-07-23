@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		39E8134E46F1C948F3A688EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC1BDDC7B500AA1408D37DF /* libPods.a */; };
 		4D380F911B61240C001B43D2 /* GADConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D380F901B61240C001B43D2 /* GADConstants.m */; };
+		4D380F941B6124F3001B43D2 /* launch_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D380F921B6124F3001B43D2 /* launch_image.png */; };
+		4D380F951B6124F3001B43D2 /* launch_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D380F931B6124F3001B43D2 /* launch_image@2x.png */; };
 		4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BB304190818E100D28CBF /* WBActionSheetPicker.m */; };
 		4DF229461928678A0008D359 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF229451928678A0008D359 /* AdSupport.framework */; };
 		4DF22948192867940008D359 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF22947192867940008D359 /* AudioToolbox.framework */; };
@@ -296,6 +298,8 @@
 /* Begin PBXFileReference section */
 		4D33F3E019D8964200FE4EC4 /* GADConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADConstants.h; sourceTree = "<group>"; };
 		4D380F901B61240C001B43D2 /* GADConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADConstants.m; sourceTree = "<group>"; };
+		4D380F921B6124F3001B43D2 /* launch_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_image.png; sourceTree = "<group>"; };
+		4D380F931B6124F3001B43D2 /* launch_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch_image@2x.png"; sourceTree = "<group>"; };
 		4DF229451928678A0008D359 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		4DF22947192867940008D359 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4DF229491928679D0008D359 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -881,6 +885,8 @@
 			isa = PBXGroup;
 			children = (
 				8421A1F21907AF18001DF38D /* wheel.png */,
+				4D380F921B6124F3001B43D2 /* launch_image.png */,
+				4D380F931B6124F3001B43D2 /* launch_image@2x.png */,
 				8421A1F31907AF18001DF38D /* wheel@2x.png */,
 				8467EFEA18F6F9530076BE6E /* ic_rotate_ccw.png */,
 				8467EFEB18F6F9530076BE6E /* ic_rotate_cw.png */,
@@ -1772,6 +1778,7 @@
 				8467EFEC18F6F9530076BE6E /* ic_rotate_ccw.png in Resources */,
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
 				EA1E60D51B2742660048E688 /* InfoPlist.strings in Resources */,
+				4D380F941B6124F3001B43D2 /* launch_image.png in Resources */,
 				EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */,
 				EA22679F1B1E035F005761E7 /* ReceiptSummaryCell.xib in Resources */,
 				841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */,
@@ -1786,6 +1793,7 @@
 				EA1D42C61B03902C00D64D3A /* EntryOnlyCell.xib in Resources */,
 				EA1E60D81B2742660048E688 /* InfoPlist.strings in Resources */,
 				8421A1F51907AF18001DF38D /* wheel@2x.png in Resources */,
+				4D380F951B6124F3001B43D2 /* launch_image@2x.png in Resources */,
 				EA2B8D8C1B4EF8110043A84B /* PDFPage.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
