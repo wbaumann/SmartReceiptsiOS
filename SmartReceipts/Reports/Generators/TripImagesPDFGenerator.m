@@ -8,7 +8,6 @@
 
 #import "TripImagesPDFGenerator.h"
 #import "WBTrip.h"
-#import "WBPdfDrawer.h"
 #import "WBReceipt.h"
 #import "WBDateFormatter.h"
 #import "Database.h"
@@ -18,7 +17,6 @@
 
 @interface TripImagesPDFGenerator ()
 
-@property (nonatomic, strong) WBPdfDrawer *pdfDrawer;
 @property (nonatomic, strong) WBDateFormatter *dateFormatter;
 @property (nonatomic, strong) PrettyPDFRender *pdfRender;
 
@@ -42,14 +40,9 @@
         return NO;
     }
 
-    if (![self.pdfDrawer beginDrawingToFile:outputPath]) {
-        return NO;
-    }
-
     [self appendImages];
 
     [self.pdfRender renderPages];
-    [self.pdfDrawer endDrawing];
 
     return YES;
 }
