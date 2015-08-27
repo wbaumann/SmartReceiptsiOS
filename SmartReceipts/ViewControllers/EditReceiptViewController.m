@@ -98,11 +98,14 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     self.priceCell.title = NSLocalizedString(@"edit.receipt.price.label", nil);
     [self.priceCell setPlaceholder:NSLocalizedString(@"edit.receipt.price.placeholder", nil)];
     [self.priceCell activateDecimalEntryMode];
+    [self.priceCell.entryField setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+    [self.priceCell.entryField setInputAccessoryView:nil];
 
     self.taxCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.taxCell setTitle:NSLocalizedString(@"edit.receipt.tax.label", nil)];
     [self.taxCell setPlaceholder:NSLocalizedString(@"edit.receipt.tax.placeholder", nil)];
     [self.taxCell activateDecimalEntryMode];
+    [self.taxCell addAccessoryViewWithNegativeSwitch];
 
     if ([WBPreferences includeTaxField]) {
         TaxCalculator *calculator = [[TaxCalculator alloc] initWithSourceField:self.priceCell.entryField targetField:self.taxCell.entryField];

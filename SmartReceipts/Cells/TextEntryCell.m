@@ -44,7 +44,7 @@
 
 - (void)addAccessoryView {
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(donePressed)];
-    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     [toolbar setBarStyle:UIBarStyleDefault];
     [toolbar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -60,6 +60,24 @@
 - (void)setValue:(NSString *)value {
     [self.entryField setText:value];
 }
+
+- (void)addAccessoryViewWithNegativeSwitch {
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"+", @"-"]];
+    CGRect segmentFrame = segmentedControl.frame;
+    segmentFrame.size.width = 100;
+    [segmentedControl setFrame:segmentFrame];
+    [segmentedControl setSelectedSegmentIndex:0];
+
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(donePressed)];
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    [toolbar setBarStyle:UIBarStyleDefault];
+    [toolbar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [toolbar setItems:@[[[UIBarButtonItem alloc] initWithCustomView:segmentedControl], spacer, doneButton]];
+
+    [self.entryField setInputAccessoryView:toolbar];
+}
+
 
 - (void)donePressed {
     [self.entryField.delegate textFieldShouldReturn:self.entryField];
