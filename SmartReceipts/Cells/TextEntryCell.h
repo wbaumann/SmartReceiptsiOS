@@ -21,6 +21,5 @@
 - (void)activateNumberEntryMode;
 - (void)activateEmailMode;
 - (void)setValue:(NSString *)value;
-- (void)addAccessoryViewWithNegativeSwitch;
 
 @end
