@@ -1,0 +1,1 @@
+RMSTORE_OTHER_LDFLAGS = -framework "Security" -framework "StoreKit"

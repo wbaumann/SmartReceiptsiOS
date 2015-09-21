@@ -12,7 +12,7 @@
 @implementation WBImageUtils
 
 + (UIImage *)image:(UIImage *)image scaledToSize:(CGSize)size {
-    UIGraphicsBeginImageContextWithOptions(size, NO, 1.0f);
+    UIGraphicsBeginImageContextWithOptions(size, NO, 2.0f);
 
     [image drawInRect:CGRectMake(0.0f, 0.0f, size.width, size.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();

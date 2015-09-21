@@ -14,5 +14,6 @@
 @property (nonatomic, strong, readonly) UIImageView *imageView;
 
 - (void)fitImageView;
+- (void)adjustImageSize;
 
 @end

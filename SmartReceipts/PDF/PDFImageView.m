@@ -7,6 +7,7 @@
 //
 
 #import "PDFImageView.h"
+#import "WBImageUtils.h"
 
 @interface PDFImageView ()
 
@@ -30,6 +31,12 @@
     CGRect imageFrame = self.imageView.frame;
     imageFrame.size.height = height;
     [self.imageView setFrame:imageFrame];
+}
+
+- (void)adjustImageSize {
+    UIImage *image = self.imageView.image;
+    UIImage *scaled = [WBImageUtils image:image scaledToFitSize:self.bounds.size];
+    [self.imageView setImage:scaled];
 }
 
 @end
