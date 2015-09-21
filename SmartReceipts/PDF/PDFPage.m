@@ -78,6 +78,8 @@ CGFloat const ElementsSpacing = 16;
     [imageView setFrame:frame];
     [self addSubview:imageView];
 
+    [imageView adjustImageSize];
+
     self.imageIndex++;
 }
 
