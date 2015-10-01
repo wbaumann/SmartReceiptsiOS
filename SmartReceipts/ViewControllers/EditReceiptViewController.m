@@ -337,8 +337,12 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
             return [WBCategory CATEGORY_NAME_DINNER];
         }
     }
-
-    return self.categories.count > 0 ? [self.categories firstObject] : @"";
+    if (self.categories.count > 0) {
+        WBCategory* firstCategory = [self.categories firstObject];
+        return firstCategory.name;
+    } else {
+        return @"";
+    }
 }
 
 - (void)setReceipt:(WBReceipt *)receipt withTrip:(WBTrip *)trip {
