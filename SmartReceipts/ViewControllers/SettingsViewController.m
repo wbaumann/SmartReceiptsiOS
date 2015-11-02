@@ -137,10 +137,10 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     self.resporePurchaseCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
     [self.resporePurchaseCell setTitle:NSLocalizedString(@"settings.purchase.restore.label", nil)];
 
-    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.purchase.section.title", nil) cells:@[
+    /*[self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.purchase.section.title", nil) cells:@[
             self.removeAdsCell,
             self.resporePurchaseCell
-    ]]];
+    ]]];*/
 
     self.defaultEmailRecipientCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
     [self.defaultEmailRecipientCell setTitle:NSLocalizedString(@"settings.default.email.recipient.lebel", nil)];
