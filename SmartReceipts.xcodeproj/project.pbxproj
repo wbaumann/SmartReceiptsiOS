@@ -1716,7 +1716,7 @@
 				ORGANIZATIONNAME = "Will Baumann";
 				TargetAttributes = {
 					84F4F33F18CFCCD000F69A35 = {
-						DevelopmentTeam = 5T8DRBFCBP;
+						DevelopmentTeam = UX5Z7CLP7J;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -2206,7 +2206,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
-				PROVISIONING_PROFILE = "c3e617f4-4540-4c99-a273-958c6f8f0c38";
+				PROVISIONING_PROFILE = "2fa04acb-8806-4a89-ae3e-f11a7f5d8d11";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
@@ -2247,7 +2247,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-lxml2";
-				PROVISIONING_PROFILE = "c3e617f4-4540-4c99-a273-958c6f8f0c38";
+				PROVISIONING_PROFILE = "2fa04acb-8806-4a89-ae3e-f11a7f5d8d11";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
