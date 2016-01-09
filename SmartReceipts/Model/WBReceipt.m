@@ -11,6 +11,7 @@
 #import "WBTrip.h"
 #import "WBCurrency.h"
 #import "Price.h"
+#import "PaymentMethod.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "DatabaseTableNames.h"
 #import "Constants.h"
@@ -216,7 +217,8 @@ static NSString* checkNoData(NSString* str) {
     NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:ReceiptsTable.COLUMN_TAX]];
     NSString *currencyCode = [resultSet stringForColumn:ReceiptsTable.COLUMN_ISO4217];
 
-    [self setObjectId:(NSUInteger) [resultSet intForColumn:ReceiptsTable.COLUMN_ID]];
+    NSString *receiptIdAsName = [NSString stringWithFormat:@"%@_%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
+    [self setObjectId:(NSUInteger) [resultSet intForColumn:receiptIdAsName]];
     _name = [resultSet stringForColumn:ReceiptsTable.COLUMN_NAME];
     _category = [resultSet stringForColumn:ReceiptsTable.COLUMN_CATEGORY];
     _fileName = [resultSet stringForColumn:ReceiptsTable.COLUMN_PATH];
@@ -230,8 +232,14 @@ static NSString* checkNoData(NSString* str) {
     _extraEditText3 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3];
     _timeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:ReceiptsTable.COLUMN_TIMEZONE]];
     [self setDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE]]];
-    [self setPaymentMethodId:(NSUInteger) [resultSet intForColumn:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID]];
     [self setTripName:[resultSet stringForColumn:ReceiptsTable.COLUMN_PARENT]];
+    
+    NSString *paymentMethodIdAsName = [NSString stringWithFormat:@"%@_%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
+    NSUInteger paymentMethodId = [resultSet intForColumn:paymentMethodIdAsName];
+    NSString *paymentMethodName = [resultSet stringForColumn:PaymentMethodsTable.COLUMN_METHOD];
+    if (paymentMethodName) {
+        [self setPaymentMethod:[[PaymentMethod alloc] initWithId:paymentMethodId method:paymentMethodName]];
+    }
 }
 
 - (BOOL)isEqual:(id)other {

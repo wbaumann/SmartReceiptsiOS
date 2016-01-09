@@ -146,15 +146,7 @@
 
 - (NSArray *)allReceiptsWithQuery:(DatabaseQueryBuilder *)query forTrip:(WBTrip *)trip {
     FetchedModelAdapter *adapter = [self createAdapterUsingQuery:query forModel:[WBReceipt class] associatedModel:trip];
-    //TODO jaanus: maybe can do this better
-    NSArray *paymentMethods = [self allPaymentMethods];
     NSArray *receipts = [adapter allObjects];
-    for (WBReceipt *receipt in receipts) {
-        [receipt setPaymentMethod:[paymentMethods filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-            PaymentMethod *method = evaluatedObject;
-            return method.objectId == receipt.paymentMethodId;
-        }]].firstObject];
-    }
     return receipts;
 }
 
@@ -220,8 +212,16 @@
 }
 
 - (FetchedModelAdapter *)fetchedReceiptsAdapterForTrip:(WBTrip *)trip {
+    NSString *receiptIdFullName = [NSString stringWithFormat:@"%@.%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
+    NSString *receiptIdAsName = [NSString stringWithFormat:@"%@_%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
+    NSString *paymentMethodIdFullName = [NSString stringWithFormat:@"%@.%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
+    NSString *paymentMethodIdAsName = [NSString stringWithFormat:@"%@_%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
+    
     DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
     [select where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    [select select:receiptIdFullName as:receiptIdAsName];
+    [select select:paymentMethodIdFullName as:paymentMethodIdAsName];
+    [select join:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
     [select orderBy:ReceiptsTable.COLUMN_DATE ascending:NO];
     return [self createAdapterUsingQuery:select forModel:[WBReceipt class] associatedModel:trip];
 }

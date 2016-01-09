@@ -22,7 +22,6 @@
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, assign) NSInteger reportIndex;
 @property (nonatomic, strong) PaymentMethod *paymentMethod;
-@property (nonatomic, assign) NSUInteger paymentMethodId;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *tripName;
 @property (nonatomic, copy) NSString *category;

@@ -16,6 +16,15 @@
 
 @implementation PaymentMethod
 
+- (id)initWithId:(NSUInteger) objectId method:(NSString *)method {
+    self = [super init];
+    if (self) {
+        _objectId = objectId;
+        _method = method;
+    }
+    return self;
+}
+
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet {
     [self setObjectId:(NSUInteger) [resultSet intForColumn:PaymentMethodsTable.COLUMN_ID]];
     [self setMethod:[resultSet stringForColumn:PaymentMethodsTable.COLUMN_METHOD]];

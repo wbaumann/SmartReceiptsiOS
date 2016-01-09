@@ -15,4 +15,6 @@
 @property (nonatomic, assign) NSUInteger objectId;
 @property (nonatomic, copy) NSString *method;
 
+- (id)initWithId:(NSUInteger) objectId method:(NSString *)method;
+
 @end

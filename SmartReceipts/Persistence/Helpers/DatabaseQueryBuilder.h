@@ -19,11 +19,13 @@
 + (DatabaseQueryBuilder *)selectAllStatementForTable:(NSString *)tableName;
 + (DatabaseQueryBuilder *)rawQuery:(NSString *)rawQuery;
 
+- (void)select:(NSString *)paramName as:(NSString *)otherParamName;
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue;
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue fallback:(NSObject *)valueFallback;
 - (void)where:(NSString *)paramName value:(NSObject *)paramValue;
 - (void)where:(NSString *)paramName notValue:(NSObject *)paramValue;
 - (void)where:(NSString *)paramName value:(NSObject *)paramValue caseInsensitive:(BOOL)caseInsensitive;
+- (void)join:(NSString *)foreignTableName on:(NSObject *)key equalTo:(NSObject *)foreignKey;
 - (void)orderBy:(NSString *)column ascending:(BOOL)ascending;
 
 - (NSString *)buildStatement;

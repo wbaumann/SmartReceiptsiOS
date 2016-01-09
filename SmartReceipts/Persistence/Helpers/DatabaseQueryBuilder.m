@@ -15,16 +15,18 @@ typedef NS_ENUM(short, StatementType) {
     DeleteStatement = 3,
     SumStatement = 4,
     SelectAllStatement = 5,
-    RqwQuery = 6,
+    RawQuery = 6,
 };
 
 @interface DatabaseQueryBuilder ()
 
 @property (nonatomic, assign) StatementType statement;
 @property (nonatomic, copy) NSString *tableName;
+@property (nonatomic, strong) NSMutableDictionary *as;
 @property (nonatomic, strong) NSMutableArray *params;
 @property (nonatomic, strong) NSMutableArray *values;
 @property (nonatomic, strong) NSMutableDictionary *where;
+@property (nonatomic, strong) NSMutableArray *joins;
 @property (nonatomic, strong) NSDictionary *orderBy;
 @property (nonatomic, strong) NSMutableArray *caseInsensitiveWhereParams;
 @property (nonatomic, copy) NSString *rawQuery;
@@ -38,9 +40,11 @@ typedef NS_ENUM(short, StatementType) {
     if (self) {
         _statement = statementType;
         _tableName = tableName;
+        _as = [NSMutableDictionary dictionary];
         _params = [NSMutableArray array];
         _values = [NSMutableArray array];
         _where = [NSMutableDictionary dictionary];
+        _joins = [NSMutableArray array];
         _caseInsensitiveWhereParams = [NSMutableArray array];
     }
     return self;
@@ -67,6 +71,10 @@ typedef NS_ENUM(short, StatementType) {
     return [[DatabaseQueryBuilder alloc] initStatementForTable:tableName statementType:SelectAllStatement];
 }
 
+- (void)select:(NSString *)paramName as:(NSString *)otherParamName {
+    self.as[paramName] = otherParamName;
+}
+
 - (void)addParam:(NSString *)paramName value:(NSObject *)paramValue {
     if (!paramValue) {
         SRLog(@"Warning: value for %@ not set. Ignoring", paramName);
@@ -77,7 +85,7 @@ typedef NS_ENUM(short, StatementType) {
 }
 
 + (DatabaseQueryBuilder *)rawQuery:(NSString *)rawQuery {
-    DatabaseQueryBuilder *builder = [[DatabaseQueryBuilder alloc] initStatementForTable:@"" statementType:RqwQuery];
+    DatabaseQueryBuilder *builder = [[DatabaseQueryBuilder alloc] initStatementForTable:@"" statementType:RawQuery];
     [builder setRawQuery:rawQuery];
     return builder;
 }
@@ -103,7 +111,7 @@ typedef NS_ENUM(short, StatementType) {
 }
 
 - (NSString *)buildStatement {
-    if (self.statement == RqwQuery) {
+    if (self.statement == RawQuery) {
         return self.rawQuery;
     }
 
@@ -117,7 +125,9 @@ typedef NS_ENUM(short, StatementType) {
     } else if (self.statement == SumStatement) {
         [query appendFormat:@"SELECT SUM(%@) FROM ", self.sumColumn];
     } else if (self.statement == SelectAllStatement) {
-        [query appendString:@"SELECT * FROM "];
+        [query appendString:@"SELECT *"];
+        [self appendSelectAs:query];
+        [query appendString:@" FROM "];
     }
 
     [query appendString:self.tableName];
@@ -129,20 +139,38 @@ typedef NS_ENUM(short, StatementType) {
     } else if (self.statement == UpdateStatement) {
         [self appendUpdateValues:query];
     } else if (self.statement == SumStatement || self.statement == SelectAllStatement) {
+        [self appendJoinClause:query];
         [self appendWhereClause:query];
     }
 
     if (self.orderBy) {
         [self appendOrderBy:query];
     }
-
+    
     return [NSString stringWithString:query];
+}
+
+-(void)appendSelectAs:(NSMutableString *)query {
+    if (self.as.count == 0) {
+        return;
+    }
+    
+    for (NSString* key in self.as) {
+        NSString *value = [self.as objectForKey:key];
+        [query appendFormat:@", %@ AS %@", key, value];
+    }
 }
 
 - (void)appendOrderBy:(NSMutableString *)query {
     NSString *key = self.orderBy.keyEnumerator.allObjects.firstObject;
     BOOL ascending = [self.orderBy[key] boolValue];
     [query appendFormat:@" ORDER BY %@ %@", key, (ascending ? @"ASC" : @"DESC")];
+}
+
+- (void)appendJoinClause:(NSMutableString *)query {
+    for (NSArray *tuple in self.joins) {
+        [query appendFormat:@" JOIN %@ ON %@.%@ = %@.%@", tuple[0], self.tableName, tuple[1], tuple[0], tuple[2]];
+    }
 }
 
 - (void)appendWhereClause:(NSMutableString *)query {
@@ -223,6 +251,19 @@ typedef NS_ENUM(short, StatementType) {
         result[[NSString stringWithFormat:@"w%@", key]] = self.where[whereKey];
     }
     return [NSDictionary dictionaryWithDictionary:result];
+}
+
+- (void)join:(NSString *)foreignTableName on:(NSObject *)key equalTo:(NSObject *)foreignKey {
+    /* 
+     * Our join array will contain a list of "tuples" in the form of array, where:
+     * [0] => tableName
+     * [1] => param
+     * [2] => onTableParam
+     * such that we can treat the statement as
+     * JOIN tuple[0] ON TABLE_NAME.tuple[1] = tuple[0].tuple[2]
+     */
+    NSArray *joinTuple = [NSArray arrayWithObjects:foreignTableName, key, foreignKey, nil];
+    [self.joins addObject:joinTuple];
 }
 
 - (void)orderBy:(NSString *)column ascending:(BOOL)ascending {
