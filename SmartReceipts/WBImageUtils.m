@@ -73,4 +73,9 @@
     return outputImage;
 }
 
++ (UIImage *)compressImage:(UIImage *)image withRatio:(CGFloat) compressionQuality {
+    NSData *imgData= UIImageJPEGRepresentation(image, compressionQuality);
+    return [UIImage imageWithData:imgData];
+}
+
 @end

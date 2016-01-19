@@ -14,5 +14,6 @@
 + (UIImage *)image:(UIImage *)image scaledToFitSize:(CGSize)size;
 + (UIImage *)image:(UIImage *)image withOrientation:(UIImageOrientation)orientation;
 + (UIImage *)processImage:(UIImage *)image;
++ (UIImage *)compressImage:(UIImage *)image withRatio:(CGFloat) compressionQuality;
 
 @end

@@ -18,6 +18,8 @@
 
 @implementation PDFImageView
 
+const CGFloat DEFAULT_COMPRESSION_QUALITY = 0.7;
+
 - (void)fitImageView {
     CGSize imageSize = self.imageView.image.size;
     if (imageSize.height > imageSize.width) {
@@ -36,7 +38,8 @@
 - (void)adjustImageSize {
     UIImage *image = self.imageView.image;
     UIImage *scaled = [WBImageUtils image:image scaledToFitSize:self.bounds.size];
-    [self.imageView setImage:scaled];
+    UIImage *scaledAndCompressed = [WBImageUtils compressImage:scaled withRatio:DEFAULT_COMPRESSION_QUALITY];
+    [self.imageView setImage:scaledAndCompressed];
 }
 
 @end
