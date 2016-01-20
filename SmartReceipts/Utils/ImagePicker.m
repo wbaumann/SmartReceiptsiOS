@@ -83,6 +83,8 @@
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
 
     chosenImage = [WBImageUtils processImage:chosenImage];
+    CGFloat compressionRation = 0.95;
+    chosenImage = [WBImageUtils compressImage:chosenImage withRatio:compressionRation];
 
     [picker dismissViewControllerAnimated:YES completion:^{
         self.selectionHandler(chosenImage);
