@@ -57,7 +57,7 @@ CGFloat const ElementsSpacing = 16;
 }
 
 - (BOOL)isEmpty {
-    return self.contentOffset <= self.topLine.frame.origin.y + CGRectGetHeight(self.topLine.frame) + ElementsSpacing;
+    return (self.contentOffset <= self.topLine.frame.origin.y + CGRectGetHeight(self.topLine.frame) + ElementsSpacing) && self.imageIndex == 0;
 }
 
 - (void)appendImage:(PDFImageView *)imageView {

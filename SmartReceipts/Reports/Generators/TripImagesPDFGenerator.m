@@ -52,38 +52,16 @@
 }
 
 - (void)fillPdfWithImagesUsingReceipts:(NSArray *)receipts {
-    NSMutableArray *awaitingFullPageImages = [NSMutableArray array];
-    BOOL hitFirstNonFullPage = NO;
-
     for (WBReceipt *receipt in receipts) {
         @autoreleasepool {
             if ([receipt isFullPage] || [receipt hasPDFFileName]) {
-                if (!hitFirstNonFullPage) {
                     [self drawFullPageReceipt:receipt];
-                } else {
-                    [awaitingFullPageImages addObject:receipt];
+            } else if ([receipt hasImage]) {
+                UIImage *img = [UIImage imageWithContentsOfFile:[receipt imageFilePathForTrip:receipt.trip]];
+                if (img) {
+                    [self.pdfRender appendImage:img withLabel:[self labelForReceipt:receipt]];
                 }
-                continue;
             }
-
-            if (![receipt hasImage]) {
-                continue;
-            }
-
-            UIImage *img = [UIImage imageWithContentsOfFile:[receipt imageFilePathForTrip:receipt.trip]];
-            if (!img) {
-                continue;
-            }
-
-            hitFirstNonFullPage = YES;
-
-            [self.pdfRender appendImage:img withLabel:[self labelForReceipt:receipt]];
-        }
-    }
-
-    for (WBReceipt *receipt in awaitingFullPageImages) {
-        @autoreleasepool {
-            [self drawFullPageReceipt:receipt];
         }
     }
 }
