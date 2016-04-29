@@ -53,6 +53,9 @@
 - (BOOL)savePaymentMethod:(PaymentMethod *)method {
     DatabaseQueryBuilder *insertStatement = [DatabaseQueryBuilder insertStatementForTable:PaymentMethodsTable.TABLE_NAME];
     [insertStatement addParam:PaymentMethodsTable.COLUMN_METHOD value:method.method];
+    if (method.objectId != 0) {
+        [insertStatement addParam:PaymentMethodsTable.COLUMN_ID value:@(method.objectId)];
+    }
     BOOL result = [self executeQuery:insertStatement];
     if (result) {
         dispatch_async(dispatch_get_main_queue(), ^{

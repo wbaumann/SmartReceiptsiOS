@@ -50,10 +50,12 @@
     [self setDisableFilesManager:YES];
     [self setDisableNotifications:YES];
 
-    [self importCategoriesFrom:imported];
-    [self importPaymentMethodsFrom:imported];
+    [self importCategoriesFrom:imported overwrite:overwrite];
+    
+    // Note: these 3 always overwrite to avoid data inconsistencies
     [self importCSVColumnsFrom:imported];
     [self importPDFColumnsFrom:imported];
+    [self importPaymentMethodsFrom:imported];
     
     NSArray *trips = [imported allTrips];
     for (WBTrip *trip in trips) {
@@ -106,20 +108,28 @@
 }
 
 - (void)importPaymentMethodsFrom:(Database *)database {
-    NSArray *imported = [database allPaymentMethods];
+    // We have to delete all existing ones to avoid "keying" issues due to auto-increment ids
     NSArray *existing = [self allPaymentMethods];
+    for (PaymentMethod *existingMethod in existing) {
+        [self deletePaymentMethod:existingMethod];
+    }
+    
+    NSArray *imported = [database allPaymentMethods];
     for (PaymentMethod *method in imported) {
-        if ([existing containsObject:method]) {
-            continue;
-        }
-
         [self savePaymentMethod:method];
     }
 }
 
-- (void)importCategoriesFrom:(Database *)database {
-    NSArray *imported = [database listAllCategories];
+- (void)importCategoriesFrom:(Database *)database overwrite:(BOOL)overwrite {
+    // Since we don't have a foreign table for categories, we can handle overwrites here
     NSArray *existing = [self listAllCategories];
+    if (overwrite) {
+        for (WBCategory *existingCategory in existing) {
+            [self deleteCategory:existingCategory];
+        }
+    }
+    
+    NSArray *imported = [database listAllCategories];
     for (WBCategory *category in imported) {
         if ([existing containsObject:category]) {
             continue;
