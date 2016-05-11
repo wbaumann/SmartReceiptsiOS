@@ -148,7 +148,7 @@ static NSDictionary *getDefaultValues() {
 
     return @{
             INT_DEFAULT_TRIP_DURATION : @3,
-            BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS : @(NO),
+            BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS : @(YES),
 
             FLOAT_MIN_RECEIPT_PRICE : @(MIN_FLOAT),
             STRING_DEFAULT_EMAIL_TO : @"",
