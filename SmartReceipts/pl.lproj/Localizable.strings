@@ -231,7 +231,7 @@
 "receipt.column.tax" = "Podatek";
 "receipt.column.user.id" = "ID Użytkownika";
 
-"settings.add.distance.price.to.report.label" = "Add Distane Price to Report";
+"settings.add.distance.price.to.report.label" = "Add Distance Price to Report";
 "settings.allow.data.outside.trip.bounds.label" = "Allow data entry outside trip start/end";
 "settings.assume.price.pre.tax.label" = "Assume Price is Pre-Tax";
 "settings.automatically.rotate.images.label" = "Automatically rotate images";
