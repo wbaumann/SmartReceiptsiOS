@@ -1,5 +1,5 @@
 PODS:
-  - CMPopTipView (2.2.0)
+  - CMPopTipView (2.3.0)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
@@ -44,7 +44,7 @@ PODS:
   - UIAlertView-Blocks (1.0)
 
 DEPENDENCIES:
-  - CMPopTipView (~> 2.2.0)
+  - CMPopTipView (~> 2.3.0)
   - FMDB
   - Google-Mobile-Ads-SDK (~> 7.2.2)
   - HTAutocompleteTextField
@@ -56,7 +56,7 @@ DEPENDENCIES:
   - UIAlertView-Blocks (~> 1.0)
 
 SPEC CHECKSUMS:
-  CMPopTipView: a0a88404b9f46a5cfc16ce54bdb1b9bf9acb9aff
+  CMPopTipView: 774e0230b5c73abb3c39051da6d8a383373c4f7f
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   Google-Mobile-Ads-SDK: 9561b27b8dd2ef861ee74b4c1ba77104c4c5414a
   HTAutocompleteTextField: ce809f04875e843e20f214ab973bb496ba7a93b1
@@ -66,6 +66,6 @@ SPEC CHECKSUMS:
   RMStore: 64ba13a9c040e3b7572765d169f77175cd3243e5
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
 
-PODFILE CHECKSUM: 2444bac8ff0cdb695f107f17f89fd85070c3ef5a
+PODFILE CHECKSUM: 090b041fa5611e5e1d1440585818c10e14e4a7c6
 
 COCOAPODS: 1.0.0

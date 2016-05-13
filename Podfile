@@ -3,7 +3,7 @@ platform :ios, '8.0'
 def pods
     pod 'UIAlertView-Blocks', '~> 1.0'
     pod 'objective-zip', '0.8.3', :inhibit_warnings => true
-    pod 'CMPopTipView', '~> 2.2.0'
+    pod 'CMPopTipView', '~> 2.3.0'
     pod 'FMDB'
     pod 'HTAutocompleteTextField'
     pod 'Google-Mobile-Ads-SDK', '~> 7.2.2'
