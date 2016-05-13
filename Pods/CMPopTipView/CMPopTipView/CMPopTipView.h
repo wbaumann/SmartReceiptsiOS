@@ -32,7 +32,7 @@
 			designated view or button.
  
 	A UIView subclass drawn using core graphics. Pops up (optionally animated)
-	a speech bubble-like view on screen, a rounded rectangle with a gradiant
+	a speech bubble-like view on screen, a rounded rectangle with a gradient
 	fill containing a specified text message, drawn with a pointer dynamically
 	positioned to point at the center of the designated button or view.
  
@@ -88,16 +88,16 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum {
+typedef NS_ENUM(NSInteger, PointDirection) {
     PointDirectionAny = 0,
-	PointDirectionUp,
-	PointDirectionDown,
-} PointDirection;
+    PointDirectionUp,
+    PointDirectionDown,
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, CMPopTipAnimation) {
     CMPopTipAnimationSlide = 0,
     CMPopTipAnimationPop
-} CMPopTipAnimation;
+};
 
 
 @protocol CMPopTipViewDelegate;
@@ -131,6 +131,14 @@ typedef enum {
 @property (nonatomic, assign)           CGFloat                 sidePadding;
 @property (nonatomic, assign)           CGFloat                 topMargin;
 @property (nonatomic, assign)           CGFloat                 pointerSize;
+@property (nonatomic, assign)           CGFloat                 bubblePaddingX;
+@property (nonatomic, assign)           CGFloat                 bubblePaddingY;
+
+/**
+ Dismiss along with user interaction if YES. For example, users can scroll down a table view when a tip view is shown. The tip view dismiss when he or she touches down and user interaction continues. Default is NO.
+ @note Make sure `dismissTapAnywhere` is NO.
+ */
+@property (nonatomic, assign)           BOOL                    dismissAlongWithUserInteraction;
 
 /* Contents can be either a message or a UIView */
 - (id)initWithTitle:(NSString *)titleToShow message:(NSString *)messageToShow;
@@ -140,7 +148,7 @@ typedef enum {
 - (void)presentPointingAtView:(UIView *)targetView inView:(UIView *)containerView animated:(BOOL)animated;
 - (void)presentPointingAtBarButtonItem:(UIBarButtonItem *)barButtonItem animated:(BOOL)animated;
 - (void)dismissAnimated:(BOOL)animated;
-- (void)autoDismissAnimated:(BOOL)animated atTimeInterval:(NSTimeInterval)timeInvertal;
+- (void)autoDismissAnimated:(BOOL)animated atTimeInterval:(NSTimeInterval)timeInterval;
 - (PointDirection) getPointDirection;
 
 @end

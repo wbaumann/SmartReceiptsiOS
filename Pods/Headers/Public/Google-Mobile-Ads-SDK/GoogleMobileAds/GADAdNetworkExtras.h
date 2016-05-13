@@ -1,1 +1,1 @@
-../../../../Google-Mobile-Ads-SDK/GoogleMobileAdsSdkiOS-7.2.2/GoogleMobileAds.framework/Versions/A/Headers/GADAdNetworkExtras.h
+../../../../Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAds.framework/Versions/A/Headers/GADAdNetworkExtras.h
