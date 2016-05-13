@@ -13,6 +13,10 @@
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([WBAppDelegate class]));
+        Class delegateClass = NSClassFromString(@"WBTestAppDelegate");
+        if (!delegateClass) {
+            delegateClass = [WBAppDelegate class];
+        }
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass(delegateClass));
     }
 }
