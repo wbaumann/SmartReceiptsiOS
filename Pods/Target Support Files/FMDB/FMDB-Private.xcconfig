@@ -1,6 +1,0 @@
-#include "FMDB.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/FMDB" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CMPopTipView" "${PODS_ROOT}/Headers/Public/FMDB" "${PODS_ROOT}/Headers/Public/Google-Mobile-Ads-SDK" "${PODS_ROOT}/Headers/Public/Google-Mobile-Ads-SDK/GoogleMobileAds" "${PODS_ROOT}/Headers/Public/Google-Mobile-Ads-SDK/GoogleMobileAds/Mediation" "${PODS_ROOT}/Headers/Public/Google-Mobile-Ads-SDK/GoogleMobileAds/Search" "${PODS_ROOT}/Headers/Public/HTAutocompleteTextField" "${PODS_ROOT}/Headers/Public/MRProgress" "${PODS_ROOT}/Headers/Public/OpenSSL" "${PODS_ROOT}/Headers/Public/OpenSSL/openssl" "${PODS_ROOT}/Headers/Public/RMStore" "${PODS_ROOT}/Headers/Public/UIAlertView-Blocks" "${PODS_ROOT}/Headers/Public/objective-zip"
-OTHER_LDFLAGS = ${FMDB_OTHER_LDFLAGS}
-PODS_ROOT = ${SRCROOT}
-SKIP_INSTALL = YES

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		39E8134E46F1C948F3A688EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC1BDDC7B500AA1408D37DF /* libPods.a */; };
+		1E681F8818849AD17CCCDC95 /* libPods-SmartReceiptsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F8F74B7155103B1209E7DB /* libPods-SmartReceiptsTests.a */; };
 		4D380F911B61240C001B43D2 /* GADConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D380F901B61240C001B43D2 /* GADConstants.m */; };
 		4D380F941B6124F3001B43D2 /* launch_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D380F921B6124F3001B43D2 /* launch_image.png */; };
 		4D380F951B6124F3001B43D2 /* launch_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D380F931B6124F3001B43D2 /* launch_image@2x.png */; };
@@ -20,7 +20,6 @@
 		4DF22952192867CC0008D359 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF22951192867CC0008D359 /* SystemConfiguration.framework */; };
 		4DF2295419296DFF0008D359 /* BugSense-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF2295319296DFF0008D359 /* BugSense-iOS.framework */; };
 		4DF2295619296E170008D359 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF2295519296E170008D359 /* libz.dylib */; };
-		510ACBCB0286B2F6B361D945 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC1BDDC7B500AA1408D37DF /* libPods.a */; };
 		841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB2FE1908167700D28CBF /* WBAbstractPicker.h */; };
 		841BB3011908173600D28CBF /* WBAbstractPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BB3001908173600D28CBF /* WBAbstractPicker.m */; };
 		841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB302190818C400D28CBF /* WBActionSheetPicker.h */; };
@@ -70,6 +69,7 @@
 		BA665D77747A4469CAA08CE9 /* WBGenerateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665109C535866B59AD5544 /* WBGenerateViewController.m */; };
 		BA665F06B922055E7D3BED31 /* WBColumnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665C9EEA56CE01EA133B0B /* WBColumnsViewController.m */; };
 		BA665F59AEC814347484CE79 /* WBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */; };
+		E872CB6159529BE7E06010A4 /* libPods-SmartReceipts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E827BA04632316E1EC12D45 /* libPods-SmartReceipts.a */; };
 		EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */; };
 		EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D00C1B0629BE00C87678 /* ProperNameInputValidation.m */; };
 		EA00D0101B06321A00C87678 /* EditTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D00F1B06321A00C87678 /* EditTripViewController.m */; };
@@ -296,6 +296,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03F8F74B7155103B1209E7DB /* libPods-SmartReceiptsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartReceiptsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		174672DE3D4A50AEEE7F4B57 /* Pods-SmartReceiptsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceiptsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests.release.xcconfig"; sourceTree = "<group>"; };
+		495B4DADAB22A37B88E4F4B8 /* Pods-SmartReceipts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceipts.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts.release.xcconfig"; sourceTree = "<group>"; };
 		4D33F3E019D8964200FE4EC4 /* GADConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADConstants.h; sourceTree = "<group>"; };
 		4D380F901B61240C001B43D2 /* GADConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADConstants.m; sourceTree = "<group>"; };
 		4D380F921B6124F3001B43D2 /* launch_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_image.png; sourceTree = "<group>"; };
@@ -308,8 +311,6 @@
 		4DF22951192867CC0008D359 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4DF2295319296DFF0008D359 /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BugSense-iOS.framework"; path = "3rdparty/BugSense/BugSense-iOS.framework"; sourceTree = "<group>"; };
 		4DF2295519296E170008D359 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		5371FEA3FE41B7AFF41AFB84 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		6FC1BDDC7B500AA1408D37DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		841BB2FE1908167700D28CBF /* WBAbstractPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAbstractPicker.h; sourceTree = "<group>"; };
 		841BB3001908173600D28CBF /* WBAbstractPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAbstractPicker.m; sourceTree = "<group>"; };
 		841BB302190818C400D28CBF /* WBActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBActionSheetPicker.h; sourceTree = "<group>"; };
@@ -362,6 +363,8 @@
 		84F4F35518CFCCD000F69A35 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84F4F35C18CFCCD000F69A35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		9E827BA04632316E1EC12D45 /* libPods-SmartReceipts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartReceipts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceiptsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableViewController.m; sourceTree = "<group>"; };
 		BA665109C535866B59AD5544 /* WBGenerateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBGenerateViewController.m; sourceTree = "<group>"; };
 		BA665153398224CB65F67810 /* WBImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageViewController.h; sourceTree = "<group>"; };
@@ -394,7 +397,7 @@
 		BA665EC4135DDF48D5AAB0C7 /* WBCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategoriesViewController.h; sourceTree = "<group>"; };
 		BA665F7B46A87C59698DAF61 /* WBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBViewController.h; sourceTree = "<group>"; };
 		BA665F9DBF1E76E680587BB3 /* WBReceiptActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceiptActionsViewController.h; sourceTree = "<group>"; };
-		D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BD6975428A0492150C7B4926 /* Pods-SmartReceipts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceipts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts.debug.xcconfig"; sourceTree = "<group>"; };
 		EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTestVersion13.m; sourceTree = "<group>"; };
 		EA00D00B1B0629BE00C87678 /* ProperNameInputValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProperNameInputValidation.h; sourceTree = "<group>"; };
 		EA00D00C1B0629BE00C87678 /* ProperNameInputValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProperNameInputValidation.m; sourceTree = "<group>"; };
@@ -770,7 +773,7 @@
 				84ABACFC18DB673B00F8D3EB /* libsqlite3.dylib in Frameworks */,
 				84F4F34818CFCCD000F69A35 /* UIKit.framework in Frameworks */,
 				84F4F34418CFCCD000F69A35 /* Foundation.framework in Frameworks */,
-				510ACBCB0286B2F6B361D945 /* libPods.a in Frameworks */,
+				E872CB6159529BE7E06010A4 /* libPods-SmartReceipts.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,7 +781,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39E8134E46F1C948F3A688EF /* libPods.a in Frameworks */,
+				1E681F8818849AD17CCCDC95 /* libPods-SmartReceiptsTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,15 +795,6 @@
 				4D33F3E019D8964200FE4EC4 /* GADConstants.h */,
 			);
 			name = Ads;
-			sourceTree = "<group>";
-		};
-		7AB70D3C8F1E6FC81F10B74C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */,
-				5371FEA3FE41B7AFF41AFB84 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		8421A1F61907C03B001DF38D /* iPhone */ = {
@@ -924,7 +918,7 @@
 				EA8D81D01AEA956600BAC943 /* SmartReceiptsTests */,
 				84F4F34218CFCCD000F69A35 /* Frameworks */,
 				84F4F34118CFCCD000F69A35 /* Products */,
-				7AB70D3C8F1E6FC81F10B74C /* Pods */,
+				F546EEB06A2F7F5F6FF96E26 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -954,7 +948,8 @@
 				84F4F34518CFCCD000F69A35 /* CoreGraphics.framework */,
 				84F4F34718CFCCD000F69A35 /* UIKit.framework */,
 				84F4F35C18CFCCD000F69A35 /* XCTest.framework */,
-				6FC1BDDC7B500AA1408D37DF /* libPods.a */,
+				9E827BA04632316E1EC12D45 /* libPods-SmartReceipts.a */,
+				03F8F74B7155103B1209E7DB /* libPods-SmartReceiptsTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1662,6 +1657,17 @@
 			path = Migrations;
 			sourceTree = "<group>";
 		};
+		F546EEB06A2F7F5F6FF96E26 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BD6975428A0492150C7B4926 /* Pods-SmartReceipts.debug.xcconfig */,
+				495B4DADAB22A37B88E4F4B8 /* Pods-SmartReceipts.release.xcconfig */,
+				AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */,
+				174672DE3D4A50AEEE7F4B57 /* Pods-SmartReceiptsTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1669,12 +1675,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F4F36C18CFCCD000F69A35 /* Build configuration list for PBXNativeTarget "SmartReceipts" */;
 			buildPhases = (
-				E0DEB0FB94C7DB5A57D0C4D4 /* Check Pods Manifest.lock */,
+				29D842FE25B5B0D44098C01E /* 📦 Check Pods Manifest.lock */,
 				EA1E60DA1B2742E40048E688 /* Check localization */,
 				84F4F33C18CFCCD000F69A35 /* Sources */,
 				84F4F33D18CFCCD000F69A35 /* Frameworks */,
 				84F4F33E18CFCCD000F69A35 /* Resources */,
-				599975B777AB4CAB9B08A26B /* Copy Pods Resources */,
+				19AD5CB03731DB0000DEC605 /* 📦 Embed Pods Frameworks */,
+				23A877E444F92BE69C22FF57 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1689,11 +1696,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA8D81D71AEA956600BAC943 /* Build configuration list for PBXNativeTarget "SmartReceiptsTests" */;
 			buildPhases = (
-				5E138B64458B68FB6A407FA5 /* Check Pods Manifest.lock */,
+				01F96578FE4DF2585F301DD8 /* 📦 Check Pods Manifest.lock */,
 				EA8D81CB1AEA956600BAC943 /* Sources */,
 				EA8D81CC1AEA956600BAC943 /* Frameworks */,
 				EA8D81CD1AEA956600BAC943 /* Resources */,
-				D6F9BDC31D3FE23624CA011B /* Copy Pods Resources */,
+				C20DB16583F6538F38361590 /* 📦 Embed Pods Frameworks */,
+				ECD206E556B2ABEBBBE30763 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1816,29 +1824,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		599975B777AB4CAB9B08A26B /* Copy Pods Resources */ = {
+		01F96578FE4DF2585F301DD8 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5E138B64458B68FB6A407FA5 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1846,34 +1839,64 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		D6F9BDC31D3FE23624CA011B /* Copy Pods Resources */ = {
+		19AD5CB03731DB0000DEC605 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E0DEB0FB94C7DB5A57D0C4D4 /* Check Pods Manifest.lock */ = {
+		23A877E444F92BE69C22FF57 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		29D842FE25B5B0D44098C01E /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C20DB16583F6538F38361590 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EA1E60DA1B2742E40048E688 /* Check localization */ = {
@@ -1889,6 +1912,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "ruby scripts/check_localizable.rb SmartReceipts";
+		};
+		ECD206E556B2ABEBBBE30763 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2204,7 +2242,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
 				PROVISIONING_PROFILE = "2fa04acb-8806-4a89-ae3e-f11a7f5d8d11";
@@ -2246,7 +2284,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-lxml2";
 				PROVISIONING_PROFILE = "2fa04acb-8806-4a89-ae3e-f11a7f5d8d11";
 				SDKROOT = iphoneos;
@@ -2258,7 +2296,7 @@
 		};
 		84F4F36D18CFCCD000F69A35 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = BD6975428A0492150C7B4926 /* Pods-SmartReceipts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2308,7 +2346,7 @@
 		};
 		84F4F36E18CFCCD000F69A35 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5371FEA3FE41B7AFF41AFB84 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 495B4DADAB22A37B88E4F4B8 /* Pods-SmartReceipts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2355,7 +2393,7 @@
 		};
 		EA8D81D81AEA956600BAC943 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D72DF238F6A2BF790BECFD58 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -2386,7 +2424,7 @@
 		};
 		EA8D81D91AEA956600BAC943 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5371FEA3FE41B7AFF41AFB84 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 174672DE3D4A50AEEE7F4B57 /* Pods-SmartReceiptsTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;

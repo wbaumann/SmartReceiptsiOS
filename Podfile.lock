@@ -1,42 +1,40 @@
 PODS:
   - CMPopTipView (2.2.0)
-  - FMDB (2.5):
-    - FMDB/standard (= 2.5)
-  - FMDB/common (2.5)
-  - FMDB/standard (2.5):
-    - FMDB/common
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
   - Google-Mobile-Ads-SDK (7.2.2)
   - HTAutocompleteTextField (1.3.2)
-  - MRProgress (0.8.2):
-    - MRProgress/ActivityIndicator (= 0.8.2)
-    - MRProgress/Blur (= 0.8.2)
-    - MRProgress/Circular (= 0.8.2)
-    - MRProgress/Icons (= 0.8.2)
-    - MRProgress/NavigationBarProgress (= 0.8.2)
-    - MRProgress/Overlay (= 0.8.2)
-  - MRProgress/ActivityIndicator (0.8.2):
+  - MRProgress (0.8.3):
+    - MRProgress/ActivityIndicator (= 0.8.3)
+    - MRProgress/Blur (= 0.8.3)
+    - MRProgress/Circular (= 0.8.3)
+    - MRProgress/Icons (= 0.8.3)
+    - MRProgress/NavigationBarProgress (= 0.8.3)
+    - MRProgress/Overlay (= 0.8.3)
+  - MRProgress/ActivityIndicator (0.8.3):
     - MRProgress/Stopable
-  - MRProgress/Blur (0.8.2):
+  - MRProgress/Blur (0.8.3):
     - MRProgress/Helper
-  - MRProgress/Circular (0.8.2):
+  - MRProgress/Circular (0.8.3):
     - MRProgress/Helper
     - MRProgress/ProgressBaseClass
     - MRProgress/Stopable
-  - MRProgress/Helper (0.8.2)
-  - MRProgress/Icons (0.8.2)
-  - MRProgress/NavigationBarProgress (0.8.2):
+  - MRProgress/Helper (0.8.3)
+  - MRProgress/Icons (0.8.3)
+  - MRProgress/NavigationBarProgress (0.8.3):
     - MRProgress/ProgressBaseClass
-  - MRProgress/Overlay (0.8.2):
+  - MRProgress/Overlay (0.8.3):
     - MRProgress/ActivityIndicator
     - MRProgress/Blur
     - MRProgress/Circular
     - MRProgress/Helper
     - MRProgress/Icons
-  - MRProgress/ProgressBaseClass (0.8.2)
-  - MRProgress/Stopable (0.8.2):
+  - MRProgress/ProgressBaseClass (0.8.3)
+  - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
   - objective-zip (0.8.3)
-  - OpenSSL (1.0.203)
+  - OpenSSL (1.0.208)
   - RMStore/AppReceiptVerificator (0.7.1):
     - OpenSSL (~> 1.0.1)
     - RMStore/Core
@@ -51,7 +49,7 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK (~> 7.2.2)
   - HTAutocompleteTextField
   - MRProgress (~> 0.8.2)
-  - objective-zip
+  - objective-zip (= 0.8.3)
   - RMStore/AppReceiptVerificator
   - RMStore/Core
   - RMStore/KeychainPersistence
@@ -59,13 +57,15 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   CMPopTipView: a0a88404b9f46a5cfc16ce54bdb1b9bf9acb9aff
-  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   Google-Mobile-Ads-SDK: 9561b27b8dd2ef861ee74b4c1ba77104c4c5414a
   HTAutocompleteTextField: ce809f04875e843e20f214ab973bb496ba7a93b1
-  MRProgress: f4cfe862082418e8f542f077772283f425d6c699
+  MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   objective-zip: a27d4b3c060eead4325159e49178e7f0ad5ee808
-  OpenSSL: 65f5de70414ee909cea517ded684d8ef855b02b4
+  OpenSSL: b187269d386b07452f56af273764ea0636dd5da8
   RMStore: 64ba13a9c040e3b7572765d169f77175cd3243e5
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
 
-COCOAPODS: 0.37.1
+PODFILE CHECKSUM: 2444bac8ff0cdb695f107f17f89fd85070c3ef5a
+
+COCOAPODS: 1.0.0
