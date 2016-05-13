@@ -53,6 +53,7 @@
 		84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */; };
 		84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F35518CFCCD000F69A35 /* Images.xcassets */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
+		A71205B41CE5C04D008A193D /* WBTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */; };
 		BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665BE5F2DD7CCFDA2D5F97 /* WBCustomization.m */; };
 		BA66533BF5BE6103F7230434 /* WBImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66548D45A03F16399057F5 /* WBImageViewController.m */; };
 		BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66590C0394B2CE9704CC15 /* WBCategoriesViewController.m */; };
@@ -364,6 +365,8 @@
 		84F4F35C18CFCCD000F69A35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		9E827BA04632316E1EC12D45 /* libPods-SmartReceipts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartReceipts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A71205B21CE5C04D008A193D /* WBTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTestAppDelegate.h; sourceTree = "<group>"; };
+		A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTestAppDelegate.m; sourceTree = "<group>"; };
 		AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceiptsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableViewController.m; sourceTree = "<group>"; };
 		BA665109C535866B59AD5544 /* WBGenerateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBGenerateViewController.m; sourceTree = "<group>"; };
@@ -1491,6 +1494,8 @@
 			isa = PBXGroup;
 			children = (
 				EA8D81D21AEA956600BAC943 /* Info.plist */,
+				A71205B21CE5C04D008A193D /* WBTestAppDelegate.h */,
+				A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2128,6 +2133,7 @@
 				EA36DE551B0121990034CC2D /* DatabaseCurrenciesTest.m in Sources */,
 				EA159E811AFE7CDC00DBB6CF /* NSDate+Calculations.m in Sources */,
 				EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */,
+				A71205B41CE5C04D008A193D /* WBTestAppDelegate.m in Sources */,
 				EA8CEAE51AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m in Sources */,
 				EA888A831AFA601100DF2AE6 /* DatabaseReceiptsSumTest.m in Sources */,
 				EAD15C7D1B0881FE003BB1F3 /* ReceiptFilesManagerTest.m in Sources */,
