@@ -3,7 +3,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - Google-Mobile-Ads-SDK (7.2.2)
+  - Google-Mobile-Ads-SDK (7.8.1)
   - HTAutocompleteTextField (1.3.2)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
@@ -46,7 +46,7 @@ PODS:
 DEPENDENCIES:
   - CMPopTipView (= 2.3.0)
   - FMDB (= 2.6.2)
-  - Google-Mobile-Ads-SDK (~> 7.2.2)
+  - Google-Mobile-Ads-SDK (= 7.8.1)
   - HTAutocompleteTextField (= 1.3.2)
   - MRProgress (= 0.8.3)
   - objective-zip (= 0.8.3)
@@ -58,7 +58,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   CMPopTipView: 774e0230b5c73abb3c39051da6d8a383373c4f7f
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  Google-Mobile-Ads-SDK: 9561b27b8dd2ef861ee74b4c1ba77104c4c5414a
+  Google-Mobile-Ads-SDK: 3c2a6656117989469bfe7645640aa1de024a4c6c
   HTAutocompleteTextField: ce809f04875e843e20f214ab973bb496ba7a93b1
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   objective-zip: a27d4b3c060eead4325159e49178e7f0ad5ee808
@@ -66,6 +66,6 @@ SPEC CHECKSUMS:
   RMStore: 64ba13a9c040e3b7572765d169f77175cd3243e5
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
 
-PODFILE CHECKSUM: 10347875e45461eb25168c817fb6f79b4ae23e8b
+PODFILE CHECKSUM: 068babef726e3654e3e2f269420a5ddd2eddc2f8
 
 COCOAPODS: 1.0.0

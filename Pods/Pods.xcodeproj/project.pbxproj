@@ -277,6 +277,7 @@
 		56BABA6328A599E240898FFA66B25532 /* FMDB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FMDB-prefix.pch"; sourceTree = "<group>"; };
 		575408D258B31FB55C99468C86889E7C /* MRProgress.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MRProgress.xcconfig; sourceTree = "<group>"; };
 		5A01CBA8B2BFD145180938F9DB70469F /* srtp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = srtp.h; path = opensslIncludes/openssl/srtp.h; sourceTree = "<group>"; };
+		5DAD8C73B4EC198F02AAA0758ECA75A3 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
 		5DF34C125EE0D9C99E5986C869D81624 /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MRImageEffects.h"; path = "src/Blur/UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
 		5E10281697AFA17705825E537C009BA0 /* RMStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMStore.m; path = RMStore/RMStore.m; sourceTree = "<group>"; };
 		60BFBC3D636959359975785F31DCF77C /* asn1_mac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = asn1_mac.h; path = opensslIncludes/openssl/asn1_mac.h; sourceTree = "<group>"; };
@@ -326,7 +327,6 @@
 		9FAE87C1C29AAAEF0BC6B1D3E3BD2DAB /* ec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ec.h; path = opensslIncludes/openssl/ec.h; sourceTree = "<group>"; };
 		A034FEAC62FA123274FB3F45BD94DAE0 /* HTAutocompleteTextField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HTAutocompleteTextField-dummy.m"; sourceTree = "<group>"; };
 		A03B4893FC558FA095FC79B485EBBF22 /* MRProgress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MRProgress.h; path = src/MRProgress.h; sourceTree = "<group>"; };
-		A1E3763EBF776FEBCC7F2A84EDE79E7B /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "GoogleMobileAdsSdkiOS-7.2.2/GoogleMobileAds.framework"; sourceTree = "<group>"; };
 		A246163E1AF43A49EAB015D9789B1216 /* evp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = evp.h; path = opensslIncludes/openssl/evp.h; sourceTree = "<group>"; };
 		A2EF569A6CF21938ABC538E1787E18A3 /* stack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = stack.h; path = opensslIncludes/openssl/stack.h; sourceTree = "<group>"; };
 		A3EFACF103C619EB35608E99AAA5BA5B /* rc4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rc4.h; path = opensslIncludes/openssl/rc4.h; sourceTree = "<group>"; };
@@ -520,6 +520,14 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/FMDB";
+			sourceTree = "<group>";
+		};
+		1FF9DF59BB6998BF1F6F3522094D7000 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5DAD8C73B4EC198F02AAA0758ECA75A3 /* GoogleMobileAds.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		23199B8705787CD14827CB7566934237 /* iOS */ = {
@@ -866,17 +874,9 @@
 		A378D093EF04AA81B7A0CEF9C35856A6 /* Google-Mobile-Ads-SDK */ = {
 			isa = PBXGroup;
 			children = (
-				AB68D445A7F84D2EDB1CFBDC146E7FDA /* Frameworks */,
+				1FF9DF59BB6998BF1F6F3522094D7000 /* Frameworks */,
 			);
 			path = "Google-Mobile-Ads-SDK";
-			sourceTree = "<group>";
-		};
-		AB68D445A7F84D2EDB1CFBDC146E7FDA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A1E3763EBF776FEBCC7F2A84EDE79E7B /* GoogleMobileAds.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B042760A90037ED74682E934E094FB33 /* objective-zip */ = {
