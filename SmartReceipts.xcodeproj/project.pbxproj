@@ -54,6 +54,11 @@
 		84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F35518CFCCD000F69A35 /* Images.xcassets */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
 		A71205B41CE5C04D008A193D /* WBTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */; };
+		A79FDC691CEA085400328DBB /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC681CEA085400328DBB /* Analytics.swift */; };
+		A79FDC6C1CEA0A4100328DBB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC6B1CEA0A4100328DBB /* AnalyticsService.swift */; };
+		A79FDC6E1CEA0A5500328DBB /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC6D1CEA0A5500328DBB /* GoogleAnalytics.swift */; };
+		A79FDC711CEA0AB600328DBB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC701CEA0AB600328DBB /* Constants.swift */; };
+		A79FDC731CEA0D7C00328DBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A79FDC721CEA0D7C00328DBB /* GoogleService-Info.plist */; };
 		BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665BE5F2DD7CCFDA2D5F97 /* WBCustomization.m */; };
 		BA66533BF5BE6103F7230434 /* WBImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66548D45A03F16399057F5 /* WBImageViewController.m */; };
 		BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66590C0394B2CE9704CC15 /* WBCategoriesViewController.m */; };
@@ -367,6 +372,12 @@
 		9E827BA04632316E1EC12D45 /* libPods-SmartReceipts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartReceipts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A71205B21CE5C04D008A193D /* WBTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTestAppDelegate.h; sourceTree = "<group>"; };
 		A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTestAppDelegate.m; sourceTree = "<group>"; };
+		A79FDC681CEA085400328DBB /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		A79FDC6A1CEA08D400328DBB /* SmartReceipts-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SmartReceipts-Bridging-Header.h"; sourceTree = "<group>"; };
+		A79FDC6B1CEA0A4100328DBB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		A79FDC6D1CEA0A5500328DBB /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
+		A79FDC701CEA0AB600328DBB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A79FDC721CEA0D7C00328DBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceiptsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableViewController.m; sourceTree = "<group>"; };
 		BA665109C535866B59AD5544 /* WBGenerateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBGenerateViewController.m; sourceTree = "<group>"; };
@@ -961,6 +972,7 @@
 			isa = PBXGroup;
 			children = (
 				4DF22941192867120008D359 /* Ads */,
+				A79FDC671CEA084000328DBB /* Analytics */,
 				EA259CD21B16069B00ECBD67 /* Backup */,
 				EA4DC9931AF1578300CEF1B9 /* Cells */,
 				84A73C3418E74C5C00D35A57 /* collections */,
@@ -980,6 +992,7 @@
 				EA5963E91AF2955300935344 /* Views */,
 				EA3CF09C1AE7C45C00B14B73 /* Constants.h */,
 				EA3CF09D1AE7C45C00B14B73 /* Constants.m */,
+				A79FDC701CEA0AB600328DBB /* Constants.swift */,
 				84F4F35518CFCCD000F69A35 /* Images.xcassets */,
 				84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */,
 				8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */,
@@ -994,11 +1007,23 @@
 			children = (
 				EA1E60C81B2742660048E688 /* en.lproj */,
 				EA1E60D01B2742660048E688 /* pl.lproj */,
+				A79FDC721CEA0D7C00328DBB /* GoogleService-Info.plist */,
+				A79FDC6A1CEA08D400328DBB /* SmartReceipts-Bridging-Header.h */,
 				84F4F34B18CFCCD000F69A35 /* SmartReceipts-Info.plist */,
 				84F4F34F18CFCCD000F69A35 /* main.m */,
 				84F4F35118CFCCD000F69A35 /* SmartReceipts-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A79FDC671CEA084000328DBB /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				A79FDC681CEA085400328DBB /* Analytics.swift */,
+				A79FDC6B1CEA0A4100328DBB /* AnalyticsService.swift */,
+				A79FDC6D1CEA0A5500328DBB /* GoogleAnalytics.swift */,
+			);
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 		BA665244D3A45FAFFE0816AB /* Receipts */ = {
@@ -1808,6 +1833,7 @@
 				8421A1F51907AF18001DF38D /* wheel@2x.png in Resources */,
 				4D380F951B6124F3001B43D2 /* launch_image@2x.png in Resources */,
 				EA2B8D8C1B4EF8110043A84B /* PDFPage.xib in Resources */,
+				A79FDC731CEA0D7C00328DBB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1945,6 +1971,7 @@
 				4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */,
 				EA40DC6E1B555CC9003BF545 /* FullPagePDFPageView.m in Sources */,
 				EAE9DAF41AF8EA9600F4FE76 /* DistanceCurrencyColumn.m in Sources */,
+				A79FDC711CEA0AB600328DBB /* Constants.swift in Sources */,
 				EA5963FB1AF2A07200935344 /* InlinedPickerCell.m in Sources */,
 				84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */,
 				4D380F911B61240C001B43D2 /* GADConstants.m in Sources */,
@@ -1984,6 +2011,7 @@
 				EA07BF501AF4CC19004D17F6 /* Database+Functions.m in Sources */,
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,
 				EA888A7C1AFA5C5900DF2AE6 /* Database+Receipts.m in Sources */,
+				A79FDC691CEA085400328DBB /* Analytics.swift in Sources */,
 				84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */,
 				EA5963EC1AF2957200935344 /* NoCaretTextField.m in Sources */,
 				EA8D81B81AEA7EE200BAC943 /* Column.m in Sources */,
@@ -2013,12 +2041,14 @@
 				EA2F23011B41BDDD008AF61E /* PurchaseCell.m in Sources */,
 				EA5ECA2E1AF9F43F008D2CFB /* SettingsSegmentControlCell.m in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
+				A79FDC6C1CEA0A4100328DBB /* AnalyticsService.swift in Sources */,
 				EA4C5CBA1AF2864B0083FDD7 /* TextEntryCell.m in Sources */,
 				EA7634AD1B3DB61900AD8737 /* WBPreferences.m in Sources */,
 				84F4F35418CFCCD000F69A35 /* WBAppDelegate.m in Sources */,
 				EAE9DAE81AF8E97100F4FE76 /* DistanceColumn.m in Sources */,
 				EA3C969E1AEBA94200A2A5F9 /* ReportPDFGenerator.m in Sources */,
 				EA3C96A71AEBC1A500A2A5F9 /* ReceiptIndexer.m in Sources */,
+				A79FDC6E1CEA0A5500328DBB /* GoogleAnalytics.swift in Sources */,
 				84AA921518EE89E00096013D /* WBImageStampler.m in Sources */,
 				EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */,
 				EA3C96A11AEBA9B200A2A5F9 /* TripFullPDFGenerator.m in Sources */,
