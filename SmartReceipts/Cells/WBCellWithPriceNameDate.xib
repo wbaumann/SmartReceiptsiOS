@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,53 +11,67 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HLE-YR-Vgg" id="2dq-5d-s6c">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="47.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$12.53" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jik-bv-qxh">
-                        <rect key="frame" x="16" y="0.0" width="64" height="47"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LGQ-lD-YQW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$12.53" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jik-bv-qxh">
+                                <rect key="frame" x="16" y="0.0" width="64" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="aeZ-v1-quB"/>
+                                    <constraint firstAttribute="width" constant="64" id="ijd-8U-3Ze"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <color key="textColor" red="0.46666666670000001" green="0.08235294118" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Trip Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="R9K-TL-aOK">
+                                <rect key="frame" x="92" y="2" width="212" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="KRL-fN-eXr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 6. 2013" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cmB-uG-brk">
+                                <rect key="frame" x="92" y="24" width="212" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="e1h-S2-8ac"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="64" id="0BS-Hz-f8O"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="47" id="fYi-D1-qJV"/>
+                            <constraint firstItem="R9K-TL-aOK" firstAttribute="leading" secondItem="jik-bv-qxh" secondAttribute="trailing" constant="12" id="2iu-os-8af"/>
+                            <constraint firstItem="jik-bv-qxh" firstAttribute="top" secondItem="LGQ-lD-YQW" secondAttribute="top" id="8JT-Tx-ReX"/>
+                            <constraint firstAttribute="bottom" secondItem="cmB-uG-brk" secondAttribute="bottom" constant="3" id="HpI-BI-YpX"/>
+                            <constraint firstAttribute="trailing" secondItem="cmB-uG-brk" secondAttribute="trailing" constant="16" id="Rnd-37-vBK"/>
+                            <constraint firstAttribute="bottom" secondItem="jik-bv-qxh" secondAttribute="bottom" id="epT-ob-8w3"/>
+                            <constraint firstItem="jik-bv-qxh" firstAttribute="leading" secondItem="LGQ-lD-YQW" secondAttribute="leading" constant="16" id="hEK-sk-oXO"/>
+                            <constraint firstAttribute="trailing" secondItem="R9K-TL-aOK" secondAttribute="trailing" constant="16" id="qsh-oe-Xq2"/>
+                            <constraint firstItem="R9K-TL-aOK" firstAttribute="top" secondItem="LGQ-lD-YQW" secondAttribute="top" constant="2" id="rSM-D7-a7S"/>
+                            <constraint firstItem="cmB-uG-brk" firstAttribute="leading" secondItem="jik-bv-qxh" secondAttribute="trailing" constant="12" id="xTO-Th-Klb"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" id="xdQ-GX-gAJ"/>
+                            <constraint firstItem="cmB-uG-brk" firstAttribute="top" secondItem="R9K-TL-aOK" secondAttribute="bottom" constant="1" id="y5Y-lp-Cqv"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                        <color key="textColor" red="0.46666666670000001" green="0.08235294118" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9K-TL-aOK">
-                        <rect key="frame" x="92" y="2" width="80" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="Jpi-Gw-CTr"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" id="uGs-gz-8Cy"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 6. 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmB-uG-brk">
-                        <rect key="frame" x="92" y="24" width="110.5" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" id="3c5-kW-gDp"/>
-                            <constraint firstAttribute="height" constant="21" id="lbc-F2-OSK"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="R9K-TL-aOK" firstAttribute="top" secondItem="2dq-5d-s6c" secondAttribute="top" constant="2" id="3nD-UL-egv"/>
-                    <constraint firstItem="jik-bv-qxh" firstAttribute="top" secondItem="2dq-5d-s6c" secondAttribute="top" id="JDK-Gq-RI3"/>
-                    <constraint firstItem="jik-bv-qxh" firstAttribute="leading" secondItem="2dq-5d-s6c" secondAttribute="leading" constant="16" id="TNK-aX-mbv"/>
-                    <constraint firstItem="cmB-uG-brk" firstAttribute="leading" secondItem="jik-bv-qxh" secondAttribute="trailing" constant="12" id="Tre-E4-DOd"/>
-                    <constraint firstAttribute="bottom" secondItem="jik-bv-qxh" secondAttribute="bottom" id="V9m-vI-b18"/>
-                    <constraint firstItem="R9K-TL-aOK" firstAttribute="leading" secondItem="jik-bv-qxh" secondAttribute="trailing" constant="12" id="qdo-vF-EVz"/>
-                    <constraint firstItem="cmB-uG-brk" firstAttribute="top" secondItem="R9K-TL-aOK" secondAttribute="bottom" constant="1" id="yOy-lA-pGX"/>
+                    <constraint firstAttribute="bottom" secondItem="LGQ-lD-YQW" secondAttribute="bottom" priority="999" id="Dgd-bf-Qxe"/>
+                    <constraint firstItem="LGQ-lD-YQW" firstAttribute="leading" secondItem="2dq-5d-s6c" secondAttribute="leading" id="Wbq-cT-8Oz"/>
+                    <constraint firstAttribute="trailing" secondItem="LGQ-lD-YQW" secondAttribute="trailing" id="XSB-g3-U81"/>
+                    <constraint firstItem="LGQ-lD-YQW" firstAttribute="top" secondItem="2dq-5d-s6c" secondAttribute="top" id="Z00-XI-c3g"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dateField" destination="cmB-uG-brk" id="Aq0-3i-ZsI"/>
                 <outlet property="nameField" destination="R9K-TL-aOK" id="lY6-DG-uxB"/>
                 <outlet property="priceField" destination="jik-bv-qxh" id="tPF-g5-NSY"/>
-                <outlet property="priceWidthConstraint" destination="0BS-Hz-f8O" id="zW2-rG-mqi"/>
+                <outlet property="priceWidthConstraint" destination="ijd-8U-3Ze" id="Gv9-Yy-WAg"/>
             </connections>
         </tableViewCell>
     </objects>
