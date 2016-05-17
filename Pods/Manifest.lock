@@ -4,6 +4,22 @@ PODS:
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
   - Google-Mobile-Ads-SDK (7.8.1)
+  - Google/Analytics (2.0.4):
+    - Google/Core
+    - GoogleAnalytics (~> 3.12)
+  - Google/Core (2.0.4):
+    - GoogleInterchangeUtilities (~> 1.0)
+    - GoogleNetworkingUtilities (~> 1.0)
+    - GoogleSymbolUtilities (~> 1.0)
+    - GoogleUtilities (~> 1.1)
+  - GoogleAnalytics (3.14.0)
+  - GoogleInterchangeUtilities (1.2.1):
+    - GoogleSymbolUtilities (~> 1.0)
+  - GoogleNetworkingUtilities (1.2.1):
+    - GoogleSymbolUtilities (~> 1.0)
+  - GoogleSymbolUtilities (1.1.1)
+  - GoogleUtilities (1.3.1):
+    - GoogleSymbolUtilities (~> 1.0)
   - HTAutocompleteTextField (1.3.2)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
@@ -47,6 +63,7 @@ DEPENDENCIES:
   - CMPopTipView (= 2.3.0)
   - FMDB (= 2.6.2)
   - Google-Mobile-Ads-SDK (= 7.8.1)
+  - Google/Analytics
   - HTAutocompleteTextField (= 1.3.2)
   - MRProgress (= 0.8.3)
   - objective-zip (= 0.8.3)
@@ -58,7 +75,13 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   CMPopTipView: 774e0230b5c73abb3c39051da6d8a383373c4f7f
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  Google: d0932824c5b97c96be489aa6f4e8cd6c294d637d
   Google-Mobile-Ads-SDK: 3c2a6656117989469bfe7645640aa1de024a4c6c
+  GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
+  GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
+  GoogleNetworkingUtilities: 3e83269048cfb498dc7ec83ab36813360965c74f
+  GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
+  GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   HTAutocompleteTextField: ce809f04875e843e20f214ab973bb496ba7a93b1
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   objective-zip: a27d4b3c060eead4325159e49178e7f0ad5ee808
@@ -66,6 +89,6 @@ SPEC CHECKSUMS:
   RMStore: 64ba13a9c040e3b7572765d169f77175cd3243e5
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
 
-PODFILE CHECKSUM: 068babef726e3654e3e2f269420a5ddd2eddc2f8
+PODFILE CHECKSUM: 1ee0ee7a20bf1c368c9e97050293644f8f8c8cd2
 
 COCOAPODS: 1.0.0
