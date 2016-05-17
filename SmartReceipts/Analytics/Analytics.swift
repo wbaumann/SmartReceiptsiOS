@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Analytics: NSObject, AnalyticsService {
+class Analytics: AnalyticsService {
     static let sharedInstance = Analytics()
     private var services = [AnalyticsService]()
     

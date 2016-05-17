@@ -70,7 +70,7 @@
 
     [[RateApplication sharedInstance] markAppLaunch];
     
-    [[Analytics sharedInstance] activateGoogleAnalytics];
+    [self enableAnalytics];
 
     return YES;
 }
