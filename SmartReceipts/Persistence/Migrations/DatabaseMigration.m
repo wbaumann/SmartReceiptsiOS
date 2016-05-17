@@ -40,6 +40,7 @@
 }
 
 + (BOOL)runMigrations:(NSArray *)migrations onDatabase:(Database *)database {
+    NSDate *start = [NSDate date];
     NSUInteger currentVersion = [database databaseVersion];
     SRLog(@"Current version: %tu", currentVersion);
 
@@ -59,6 +60,8 @@
         [database setDatabaseVersion:currentVersion];
     }
 
+    SRLog(@"Migration time: %f", [[NSDate date] timeIntervalSinceDate:start]);
+    
     return YES;
 }
 
