@@ -40,7 +40,7 @@
 }
 
 - (void)testReceiptDatesSavedTheOldWayAreReadCorrectly {
-    Database *database = [self createAndOpenUnmigratedDatabaseWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"receipts-dates-test" ofType:@"db"]];
+    Database *database = [self createMigratedDatabaseFromTemplate:@"receipts-dates-test"];
 
     NSArray *receipts = [database allReceipts];
 
