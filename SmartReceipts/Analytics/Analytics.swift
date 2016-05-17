@@ -12,10 +12,6 @@ class Analytics: AnalyticsService {
     static let sharedInstance = Analytics()
     private var services = [AnalyticsService]()
     
-    func activateGoogleAnalytics() {
-        addService(GoogleAnalytics())
-    }
-    
     func addService(service: AnalyticsService) {
         onMainThread() {
             self.services.append(service)
