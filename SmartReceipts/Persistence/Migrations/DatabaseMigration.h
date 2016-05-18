@@ -13,10 +13,10 @@
 
 @interface DatabaseMigration : NSObject
 
-+ (NSArray *)allMigrations;
-+ (BOOL)migrateDatabase:(Database *)database;
++ (NSArray * __nonnull)allMigrations;
++ (BOOL)migrateDatabase:(Database * __nonnull)database;
 
 - (NSUInteger)version;
-- (BOOL)migrate:(Database *)database;
+- (BOOL)migrate:(Database * __nonnull)database;
 
 @end

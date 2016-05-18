@@ -20,5 +20,6 @@
 - (DatabaseTestsHelper *)createAndOpenDatabaseWithPath:(NSString *)path migrated:(BOOL)migrated;
 - (DatabaseTestsHelper *)createTestDatabase;
 - (void)checkDatabasesSame:(NSString *)pathToReferenceDB checked:(NSString *)pathToCheckedDB;
+- (DatabaseTestsHelper *)createMigratedDatabaseFromTemplate:(NSString *)templateName;
 
 @end

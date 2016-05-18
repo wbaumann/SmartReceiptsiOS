@@ -14,6 +14,8 @@
 #import "Database+Import.h"
 #import "Database+Functions.h"
 #import "DatabaseTableNames.h"
+#import "Database+PaymentMethods.h"
+#import "PaymentMethod.h"
 
 @interface Database (TestExpose)
 
@@ -64,24 +66,23 @@
     XCTAssertEqual(1, [self.database countRowsInTable:ReceiptsTable.TABLE_NAME]);
 }
 
-- (void)testCategoriesImport {
-    NSUInteger before = [self.database countRowsInTable:CategoriesTable.TABLE_NAME];
+- (void)testPaymentMethodsReplaceImport {
+    NSArray *before = [self.database allPaymentMethods];
+    XCTAssertEqual(5, before.count);
 
-    //one removed and one added, resulting in one added
     [self performExtrasImport];
 
-    NSUInteger after = [self.database countRowsInTable:CategoriesTable.TABLE_NAME];
-    XCTAssertEqual(before + 1, after);
-}
-
-- (void)testPaymentMethodsImport {
-    NSUInteger before = [self.database countRowsInTable:PaymentMethodsTable.TABLE_NAME];
-
-    //one removed and one added, resulting in one added
-    [self performExtrasImport];
-
-    NSUInteger after = [self.database countRowsInTable:PaymentMethodsTable.TABLE_NAME];
-    XCTAssertEqual(before + 1, after);
+    NSArray *after = [self.database allPaymentMethods];
+    XCTAssertEqual(6, after.count);
+    BOOL foundMother, foundFather;
+    for (PaymentMethod *method in after) {
+        if ([method.method isEqualToString:@"Mother"]) {
+            foundMother = YES;
+        } else if ([method.method isEqualToString:@"Father"]) {
+            foundFather = YES;
+        }
+    }
+    XCTAssertTrue(foundMother && foundFather);
 }
 
 - (void)testCSVColumnsImport {

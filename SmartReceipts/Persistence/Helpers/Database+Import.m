@@ -127,6 +127,8 @@
         for (WBCategory *existingCategory in existing) {
             [self deleteCategory:existingCategory];
         }
+        
+        existing = @[];
     }
     
     NSArray *imported = [database listAllCategories];

@@ -40,7 +40,7 @@
 }
 
 - (void)testReceiptDatesSavedTheOldWayAreReadCorrectly {
-    Database *database = [self createAndOpenUnmigratedDatabaseWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"receipts-dates-test" ofType:@"db"]];
+    Database *database = [self createMigratedDatabaseFromTemplate:@"receipts-dates-test"];
 
     NSArray *receipts = [database allReceipts];
 
@@ -63,7 +63,7 @@
 }
 
 - (void)testReceiptDatesSavedOnAndroidV11 {
-    Database *database = [self createAndOpenUnmigratedDatabaseWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"android-receipts-v11" ofType:@"db"]];
+    Database *database = [self createMigratedDatabaseFromTemplate:@"android-receipts-v11"];
 
     NSArray *receipts = [database allReceipts];
 

@@ -18,7 +18,7 @@
 - (BOOL)savePaymentMethod:(PaymentMethod *)method;
 - (BOOL)updatePaymentMethod:(PaymentMethod *)method;
 - (BOOL)deletePaymentMethod:(PaymentMethod *)method;
-- (NSArray *)allPaymentMethods;
+- (NSArray<PaymentMethod *> *)allPaymentMethods;
 - (PaymentMethod *)paymentMethodById:(NSUInteger)methodId;
 - (BOOL)hasPaymentMethodWithName:(NSString *)name;
 

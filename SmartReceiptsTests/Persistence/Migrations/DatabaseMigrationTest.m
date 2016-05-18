@@ -36,7 +36,7 @@
     BOOL migrationSuccess = [DatabaseMigration migrateDatabase:database];
     XCTAssertTrue(migrationSuccess);
 
-    XCTAssertEqual(13, database.databaseVersion);
+    XCTAssertEqual(14, database.databaseVersion);
 
     //TODO jaanus: check also against reference db at version 13
 }
@@ -53,7 +53,7 @@
     BOOL migrationSuccess = [DatabaseMigration migrateDatabase:database];
     XCTAssertTrue(migrationSuccess);
 
-    XCTAssertEqual(13, database.databaseVersion);
+    XCTAssertEqual(14, database.databaseVersion);
 
     //TODO jaanus: check also against reference db at version 13
 }
