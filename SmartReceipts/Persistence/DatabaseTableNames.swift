@@ -38,3 +38,13 @@ enum ReceiptsTable {
         static let PaymentMethod = "paymentmethod"
     }
 }
+
+enum CategoriesTable {
+    static let Name = "categories"
+    
+    enum Column {
+        static let Name = "name"
+        static let code = "code"
+        static let Breakdown = "breakdown"
+    }
+}

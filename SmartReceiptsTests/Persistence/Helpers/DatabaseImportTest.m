@@ -66,16 +66,6 @@
     XCTAssertEqual(1, [self.database countRowsInTable:ReceiptsTable.TABLE_NAME]);
 }
 
-- (void)testCategoriesImport {
-    NSUInteger before = [self.database countRowsInTable:CategoriesTable.TABLE_NAME];
-
-    //one removed and one added, resulting in one added
-    [self performExtrasImport];
-
-    NSUInteger after = [self.database countRowsInTable:CategoriesTable.TABLE_NAME];
-    XCTAssertEqual(before + 1, after);
-}
-
 - (void)testPaymentMethodsReplaceImport {
     NSArray *before = [self.database allPaymentMethods];
     XCTAssertEqual(5, before.count);

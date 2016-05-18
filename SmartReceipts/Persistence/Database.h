@@ -23,7 +23,9 @@ extern NSString *const DatabaseDidSwapModelsNotification;
 
 + (instancetype)sharedInstance;
 
+- (id)initWithDatabasePath:(NSString *)path tripsFolederPath:(NSString *)tripsFolderPath;
 - (BOOL)open;
+- (BOOL)open:(BOOL)migrateDatabase;
 - (void)close;
 
 @end

@@ -15,7 +15,7 @@
 @interface Database (Categories)
 
 - (BOOL)createCategoriesTable;
-- (NSArray *)listAllCategories;
+- (NSArray<WBCategory *> *)listAllCategories;
 - (BOOL)saveCategory:(WBCategory *)category;
 - (BOOL)updateCategory:(WBCategory *)category;
 - (BOOL)deleteCategory:(WBCategory *)category;
