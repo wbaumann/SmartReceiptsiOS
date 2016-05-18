@@ -54,6 +54,7 @@
 		84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F35518CFCCD000F69A35 /* Images.xcassets */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
 		A71205B41CE5C04D008A193D /* WBTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */; };
+		A744E5141CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744E5131CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift */; };
 		A79FDC691CEA085400328DBB /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC681CEA085400328DBB /* Analytics.swift */; };
 		A79FDC6C1CEA0A4100328DBB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC6B1CEA0A4100328DBB /* AnalyticsService.swift */; };
 		A79FDC6E1CEA0A5500328DBB /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC6D1CEA0A5500328DBB /* GoogleAnalytics.swift */; };
@@ -376,6 +377,8 @@
 		9E827BA04632316E1EC12D45 /* libPods-SmartReceipts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartReceipts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A71205B21CE5C04D008A193D /* WBTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTestAppDelegate.h; sourceTree = "<group>"; };
 		A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTestAppDelegate.m; sourceTree = "<group>"; };
+		A744E5131CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseCategoriesImportTests.swift; sourceTree = "<group>"; };
+		A744E5151CEC45CB00D838C7 /* SmartReceiptsTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SmartReceiptsTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		A79FDC681CEA085400328DBB /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		A79FDC6A1CEA08D400328DBB /* SmartReceipts-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SmartReceipts-Bridging-Header.h"; sourceTree = "<group>"; };
 		A79FDC6B1CEA0A4100328DBB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
@@ -1122,6 +1125,7 @@
 		EA07BF571AF4D6D3004D17F6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A744E5131CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift */,
 				EA8ABE431B1A1D6800DBFA29 /* DatabaseCategoriesTest.m */,
 				EA36DE541B0121990034CC2D /* DatabaseCurrenciesTest.m */,
 				EA8CEAE41AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m */,
@@ -1529,6 +1533,7 @@
 			isa = PBXGroup;
 			children = (
 				EA8D81D21AEA956600BAC943 /* Info.plist */,
+				A744E5151CEC45CB00D838C7 /* SmartReceiptsTests-Bridging-Header.h */,
 				A71205B21CE5C04D008A193D /* WBTestAppDelegate.h */,
 				A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */,
 			);
@@ -1762,6 +1767,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = WB;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Will Baumann";
 				TargetAttributes = {
@@ -2174,6 +2180,7 @@
 				EA07BF691AF51C61004D17F6 /* FetchedDistancesAdapterTest.m in Sources */,
 				EA07BF5B1AF4DA66004D17F6 /* DatabaseDistancesTest.m in Sources */,
 				EA6677741B05F6D3004D3993 /* DatabaseReceiptsPaymentMethodTest.m in Sources */,
+				A744E5141CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift in Sources */,
 				EAE725DA1B022E9100402689 /* TripsToReceiptsConverterTest.m in Sources */,
 				EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */,
 				EA36DE551B0121990034CC2D /* DatabaseCurrenciesTest.m in Sources */,
@@ -2448,6 +2455,7 @@
 			baseConfigurationReference = AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2470,6 +2478,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "co.smartreceipts.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceiptsTests/SmartReceiptsTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartReceipts.app/SmartReceipts";
 			};
 			name = Debug;
@@ -2479,6 +2489,7 @@
 			baseConfigurationReference = 174672DE3D4A50AEEE7F4B57 /* Pods-SmartReceiptsTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -2497,6 +2508,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "co.smartreceipts.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceiptsTests/SmartReceiptsTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartReceipts.app/SmartReceipts";
 			};
 			name = Release;
