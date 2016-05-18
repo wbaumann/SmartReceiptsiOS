@@ -29,4 +29,6 @@ DerivedData
 SmartReceipts/GADConstants.m
 
 .idea
-.DS_Store
+SmartReceipts/GoogleService-Info.plist 
+.DS_store
+

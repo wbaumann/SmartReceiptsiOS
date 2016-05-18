@@ -25,6 +25,7 @@
 #import <BugSense-iOS/BugSenseController.h>
 #import <UIAlertView-Blocks/RIButtonItem.h>
 #import <UIAlertView-Blocks/UIAlertView+Blocks.h>
+#import <SmartReceipts-Swift.h>
 
 @interface WBAppDelegate ()
 
@@ -68,6 +69,8 @@
     NSSetUncaughtExceptionHandler(&onUncaughtExcepetion);
 
     [[RateApplication sharedInstance] markAppLaunch];
+    
+    [self enableAnalytics];
 
     return YES;
 }

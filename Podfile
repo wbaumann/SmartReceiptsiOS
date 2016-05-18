@@ -11,6 +11,7 @@ def pods
     pod 'RMStore/Core', '0.7.1'
     pod 'RMStore/KeychainPersistence', '0.7.1'
     pod 'RMStore/AppReceiptVerificator', '0.7.1'
+    pod 'Google/Analytics'
 end
 
 target 'SmartReceipts' do
