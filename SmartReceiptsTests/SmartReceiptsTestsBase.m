@@ -69,11 +69,12 @@
 - (DatabaseTestsHelper *)createMigratedDatabaseFromTemplate:(NSString *)templateName {
     NSString *inputPath = [[NSBundle bundleForClass:[self class]] pathForResource:templateName ofType:@"db"];
     NSError *copyError = nil;
+    NSLog(@"Copy %@ to %@", inputPath, self.testDBPath);
     [[NSFileManager defaultManager] copyItemAtPath:inputPath toPath:self.testDBPath error:&copyError];
     if (copyError) {
         NSLog(@"Copy failed %@", copyError);
     }
-    DatabaseTestsHelper *db = [[DatabaseTestsHelper alloc] initWithDatabasePath:inputPath tripsFolederPath:self.testTripsPath];
+    DatabaseTestsHelper *db = [[DatabaseTestsHelper alloc] initWithDatabasePath:self.testDBPath tripsFolederPath:self.testTripsPath];
     [db open:YES];
     return db;
 }

@@ -13,6 +13,7 @@
 #import "Database.h"
 #import "DatabaseUpgradeToVersion13.h"
 #import "Database+Functions.h"
+#import "SmartReceipts-Swift.h"
 
 @implementation DatabaseMigration
 
@@ -20,7 +21,8 @@
     return @[
             [[DatabaseCreateAtVersion11 alloc] init],
             [[DatabaseUpgradeToVersion12 alloc] init],
-            [[DatabaseUpgradeToVersion13 alloc] init]
+            [[DatabaseUpgradeToVersion13 alloc] init],
+            [[DatabaseUpgradeToVersion14 alloc] init]
     ];
 }
 
@@ -40,7 +42,7 @@
 }
 
 + (BOOL)runMigrations:(NSArray *)migrations onDatabase:(Database *)database {
-    NSDate *start = [NSDate date];
+    TICK;
     NSUInteger currentVersion = [database databaseVersion];
     SRLog(@"Current version: %tu", currentVersion);
 
@@ -60,7 +62,7 @@
         [database setDatabaseVersion:currentVersion];
     }
 
-    SRLog(@"Migration time: %f", [[NSDate date] timeIntervalSinceDate:start]);
+    TOCK(@"Migration time");
     
     return YES;
 }
