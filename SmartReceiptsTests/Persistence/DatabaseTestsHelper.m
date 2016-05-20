@@ -94,6 +94,7 @@
     params[ReceiptsTable.COLUMN_EXPENSEABLE] = @(YES);
     params[ReceiptsTable.COLUMN_PATH] = [NSString stringWithFormat:@"TheFileOfDoom-%@", [NSDate date].milliseconds];
     params[ReceiptsTable.COLUMN_DATE] = [NSDate date];
+    params[ReceiptsTable.COLUMN_PAYMENT_METHOD_ID] = [self allPaymentMethods].firstObject;
 
     [params addEntriesFromDictionary:modifiedParams];
 
@@ -112,8 +113,17 @@
 }
 
 - (WBReceipt *)receiptWithName:(NSString *)receiptName {
+    NSString *receiptIdFullName = [NSString stringWithFormat:@"%@.%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
+    NSString *receiptIdAsName = [NSString stringWithFormat:@"%@_%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
+    NSString *paymentMethodIdFullName = [NSString stringWithFormat:@"%@.%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
+    NSString *paymentMethodIdAsName = [NSString stringWithFormat:@"%@_%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
+
     DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
     [selectAll where:ReceiptsTable.COLUMN_NAME value:receiptName];
+    [selectAll select:receiptIdFullName as:receiptIdAsName];
+    [selectAll select:paymentMethodIdFullName as:paymentMethodIdAsName];
+    [selectAll join:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
+
     WBReceipt *receipt = (WBReceipt *)[self executeFetchFor:[WBReceipt class] withQuery:selectAll];
     [receipt setTrip:[self tripWithName:receipt.tripName]];
     return receipt;
