@@ -38,6 +38,7 @@
 #import "WBCategory.h"
 #import "Database+Categories.h"
 #import "Constants.h"
+#import "SmartReceipts-Swift.h"
 
 NSString *const SREditReceiptDateCacheKey = @"SREditReceiptDateCacheKey";
 NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey";
@@ -55,6 +56,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 @property (nonatomic, strong) TitledTextEntryCell *taxCell;
 @property (nonatomic, strong) PickerCell *currencyCell;
 @property (nonatomic, strong) InlinedPickerCell *currencyPickerCell;
+@property (nonatomic, strong) TitledTextEntryCell *exchangeRateCell;
 @property (nonatomic, strong) PickerCell *dateCell;
 @property (nonatomic, strong) InlinedDatePickerCell *datePickerCell;
 @property (nonatomic, strong) PickerCell *categoryCell;
@@ -117,8 +119,19 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.currencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
     [self.currencyPickerCell setValueChangeHandler:^(id <Pickable> selected) {
-        [weakSelf.currencyCell setValue:selected.presentedValue];
+        NSString *currency = [selected presentedValue];
+        [weakSelf.currencyCell setValue:currency];
+        
+        BOOL isDifferentFromTripCurrency = ![weakSelf.trip.defaultCurrency.code isEqualToString:currency];
+        if (isDifferentFromTripCurrency) {
+            [weakSelf insert:weakSelf.exchangeRateCell afterCell:weakSelf.currencyCell];
+        } else {
+            [weakSelf remove:weakSelf.exchangeRateCell];
+        }
     }];
+    
+    self.exchangeRateCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
+    [self.exchangeRateCell setTitle:NSLocalizedString(@"edit.receipt.exchange.rate.label", nil)];
 
     self.dateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
     self.dateCell.title = NSLocalizedString(@"edit.receipt.date.label", nil);

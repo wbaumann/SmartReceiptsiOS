@@ -60,6 +60,8 @@
 		A79FDC6E1CEA0A5500328DBB /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC6D1CEA0A5500328DBB /* GoogleAnalytics.swift */; };
 		A79FDC711CEA0AB600328DBB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC701CEA0AB600328DBB /* Constants.swift */; };
 		A79FDC731CEA0D7C00328DBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A79FDC721CEA0D7C00328DBB /* GoogleService-Info.plist */; };
+		A7A720E11CEEFAF700A3B5FF /* InputCellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A720E01CEEFAF700A3B5FF /* InputCellsViewController.swift */; };
+		A7A720E31CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A720E21CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift */; };
 		A7AFB2421CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFB2411CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift */; };
 		A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFB2431CEC1F6800718744 /* PaymentMethod.swift */; };
 		A7AFB2461CEC219100718744 /* DatabaseTableNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFB2451CEC219100718744 /* DatabaseTableNames.swift */; };
@@ -385,6 +387,8 @@
 		A79FDC6D1CEA0A5500328DBB /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
 		A79FDC701CEA0AB600328DBB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A79FDC721CEA0D7C00328DBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A7A720E01CEEFAF700A3B5FF /* InputCellsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCellsViewController.swift; sourceTree = "<group>"; };
+		A7A720E21CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSIndexPath+Extensions.swift"; sourceTree = "<group>"; };
 		A7AFB2411CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion14.swift; sourceTree = "<group>"; };
 		A7AFB2431CEC1F6800718744 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		A7AFB2451CEC219100718744 /* DatabaseTableNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTableNames.swift; sourceTree = "<group>"; };
@@ -1263,6 +1267,7 @@
 				BA66588B7C2114029521A399 /* NSDate+Calculations.m */,
 				EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */,
 				EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */,
+				A7A720E21CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift */,
 				EA07BF381AF3C80C004D17F6 /* NSMutableString+Issues.h */,
 				EA07BF391AF3C80C004D17F6 /* NSMutableString+Issues.m */,
 				EA66777A1B06154F004D3993 /* NSString+Helpers.h */,
@@ -1600,6 +1605,7 @@
 				EA4C5CC01AF286990083FDD7 /* InputCellsSection.m */,
 				EA4DC9941AF1580100CEF1B9 /* InputCellsViewController.h */,
 				EA4DC9951AF1580100CEF1B9 /* InputCellsViewController.m */,
+				A7A720E01CEEFAF700A3B5FF /* InputCellsViewController.swift */,
 				EAB9700D1B078944005E1D63 /* MasterTripsViewController.h */,
 				EAB9700E1B078944005E1D63 /* MasterTripsViewController.m */,
 				EA98B51F1B077A9A006935AE /* NotifyMasterSplitViewController.h */,
@@ -2020,6 +2026,7 @@
 				EAE9DAEE1AF8EA6D00F4FE76 /* DistancePriceColumn.m in Sources */,
 				EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */,
 				EA8D81941AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.m in Sources */,
+				A7A720E31CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift in Sources */,
 				EA98B5211B077A9A006935AE /* NotifyMasterSplitViewController.m in Sources */,
 				EA8D81971AEA7C1E00BAC943 /* ReceiptColumnImageName.m in Sources */,
 				EA07BF4A1AF40066004D17F6 /* DatabaseTableNames.m in Sources */,
@@ -2105,6 +2112,7 @@
 				EA07BF341AF3B703004D17F6 /* InlinedDatePickerCell.m in Sources */,
 				EA2F23051B41BFD3008AF61E /* Database+Purchases.m in Sources */,
 				EA1D42B91B03831700D64D3A /* PaymentMethodsViewController.m in Sources */,
+				A7A720E11CEEFAF700A3B5FF /* InputCellsViewController.swift in Sources */,
 				A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */,
 				EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */,

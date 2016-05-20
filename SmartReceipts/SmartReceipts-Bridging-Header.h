@@ -7,6 +7,9 @@
 #import "DatabaseMigration.h"
 #import "DatabaseTableNames.h"
 
+#import "InputCellsSection.h"
+#import "InputCellsViewController.h"
+
 #import "PaymentMethod.h"
 
 #import "WBAppDelegate.h"

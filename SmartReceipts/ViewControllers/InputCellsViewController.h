@@ -12,10 +12,20 @@
 
 @interface InputCellsViewController : UITableViewController
 
+@property (nonatomic, strong, readonly) NSMutableArray<InputCellsSection *> *__nonnull presentedSections;
 @property (nonatomic, assign) BOOL containNextEditSearchInsideSection;
 
-- (void)addSectionForPresentation:(InputCellsSection *)section;
-- (void)addInlinedPickerCell:(UITableViewCell *)cell forCell:(UITableViewCell *)forCell;
-- (void)tappedCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+- (void)addSectionForPresentation:(InputCellsSection *__nonnull)section;
+- (void)addInlinedPickerCell:(UITableViewCell *__nonnull)cell forCell:(UITableViewCell *__nonnull)forCell;
+- (void)tappedCell:(UITableViewCell * __nonnull)cell atIndexPath:(NSIndexPath *__nonnull)indexPath;
+
+@end
+
+
+@interface InputCellsViewController (ExposeForSwiftExtension)
+
+@property (nonatomic, strong, readonly) NSIndexPath *__nullable presentingPickerForIndexPath;
+
+- (NSIndexPath * __nullable)indexPathForCell:(UITableViewCell * __nonnull)cell;
 
 @end
