@@ -15,7 +15,7 @@ class DatabaseUpgradeToVersion14: DatabaseMigration {
     
     override func migrate(database: Database) -> Bool {
         return addDefaultValueToReceipts(database)
-            && doMigrationsToGetParityWithAndroidDatabase(database)
+            && addExchangeRateToReceipts(database)
     }
     
     private func addDefaultValueToReceipts(database: Database) -> Bool {
@@ -26,8 +26,10 @@ class DatabaseUpgradeToVersion14: DatabaseMigration {
         return database.executeUpdate(updateQuery)
     }
     
-    private func doMigrationsToGetParityWithAndroidDatabase(database: Database) -> Bool {
-        print("Finish migrations implementation")
-        return true
+    private func addExchangeRateToReceipts(database: Database) -> Bool {
+        let alterQuery = "ALTER TABLE \(ReceiptsTable.Name) " +
+                         "ADD \(ReceiptsTable.Column.ExchangeRate) " +
+                         "DECIMAL(10, 10) DEFAULT -1.00"
+        return database.executeUpdate(alterQuery)
     }
 }

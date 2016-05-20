@@ -20,3 +20,9 @@
 - (BOOL)migrate:(Database * __nonnull)database;
 
 @end
+
+@interface DatabaseMigration (ExposeForTests)
+
++ (BOOL)runMigrations:(NSArray<DatabaseMigration *> *__nonnull)migrations onDatabase:(Database *__nonnull)database;
+
+@end

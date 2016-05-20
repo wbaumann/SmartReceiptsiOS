@@ -21,6 +21,7 @@ enum ReceiptsTable {
         static let Category = "category"
         static let Price = "price"
         static let Tax = "tax"
+        static let ExchangeRate = "exchange_rate"
         static let Date = "rcpt_date"
         static let Timezone = "timezone"
         static let Comment = "comment"
