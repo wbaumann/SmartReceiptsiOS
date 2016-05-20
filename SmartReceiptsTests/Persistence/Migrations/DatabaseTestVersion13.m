@@ -9,6 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "SmartReceiptsTestsBase.h"
+#import "DatabaseUpgradeToVersion13.h"
+#import "DatabaseUpgradeToVersion12.h"
+#import "DatabaseCreateAtVersion11.h"
+
+@interface DatabaseMigration (TestsExpose)
+
++ (BOOL)runMigrations:(NSArray *)migrations onDatabase:(Database *)database;
+
+@end
 
 @interface DatabaseTestVersion13 : SmartReceiptsTestsBase
 
@@ -19,7 +28,13 @@
 - (void)setUp {
     [super setUp];
 
-    self.db = [self createAndOpenDatabaseWithPath:self.testDBPath migrated:YES];
+    self.db = [self createAndOpenDatabaseWithPath:self.testDBPath migrated:NO];
+    NSArray *migrations = @[
+            [[DatabaseCreateAtVersion11 alloc] init],
+            [[DatabaseUpgradeToVersion12 alloc] init],
+            [[DatabaseUpgradeToVersion13 alloc] init]
+    ];
+    [DatabaseMigration runMigrations:migrations onDatabase:self.db];
 }
 
 - (void)testDatabasesSame {
