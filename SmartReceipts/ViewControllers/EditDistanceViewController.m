@@ -30,6 +30,7 @@
 #import "Constants.h"
 #import "DecimalFormatter.h"
 #import "WBReceiptsViewController.h"
+#import "SmartReceipts-Swift.h"
 
 NSString *const SREditDistanceDateCacheKey = @"SREditDistanceDateCacheKey";
 

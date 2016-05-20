@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 
 extension InputCellsViewController {
+    func addSectionForPresentation(section: InputCellsSection) {
+        presentedSections.addObject(section)
+        mapReturnKeys(section)
+    }
+    
     func insert(cell: UITableViewCell, afterCell after: UITableViewCell) {
         if let _ = indexPathForCell(cell) {
             return
@@ -29,6 +34,8 @@ extension InputCellsViewController {
         cells.insert(cell, atIndex: insertIndex.row)
         presentedSections.replaceObjectAtIndex(insertIndex.section, withObject: InputCellsSection(title: section.title, cells: cells))
         
+        remapReturnKeys()
+        
         tableView.beginUpdates()
         tableView.insertRowsAtIndexPaths([insertIndex], withRowAnimation: .Automatic)
         tableView.endUpdates()
@@ -47,5 +54,35 @@ extension InputCellsViewController {
         tableView.deleteRowsAtIndexPaths([removeIndex], withRowAnimation: .Automatic)
         presentedSections.replaceObjectAtIndex(removeIndex.section, withObject: InputCellsSection(title: section.title, cells: cells))
         tableView.endUpdates()
+    }
+    
+    private func mapReturnKeys(section: InputCellsSection) -> TextEntryCell? {
+        var lastCell: TextEntryCell?
+        for cell in section.cells {
+            guard let textEntryCell = cell as? TextEntryCell else {
+                continue
+            }
+            
+            textEntryCell.entryField.delegate = self
+            textEntryCell.entryField.returnKeyType = .Next
+            lastCell = textEntryCell
+        }
+        
+        return lastCell
+    }
+    
+    private func remapReturnKeys() {
+        var lastCell: TextEntryCell?
+        for section in presentedSections {
+            if let last = mapReturnKeys(section as! InputCellsSection) {
+                lastCell = last
+            }
+        }
+        
+        guard let last = lastCell else {
+            return
+        }
+        
+        last.entryField.returnKeyType = .Done
     }
 }

@@ -17,7 +17,7 @@
 #import "SwitchControlCell.h"
 #import "UIApplication+DismissKeyboard.h"
 
-@interface InputCellsViewController () <UITextFieldDelegate>
+@interface InputCellsViewController ()
 
 @property (nonatomic, strong) NSMutableArray *presentedSections;
 @property (nonatomic, strong) TextEntryCell *lastEntryCell;
@@ -53,20 +53,6 @@
     InputCellsSection *section = self.presentedSections[indexPath.section];
     UITableViewCell *cell = [section cellAtIndex:indexPath.row];
     return cell;
-}
-
-- (void)addSectionForPresentation:(InputCellsSection *)section {
-    [self.presentedSections addObject:section];
-    for (NSUInteger index = 0; index < section.numberOfCells; index++) {
-        UITableViewCell *cell = [section cellAtIndex:index];
-        if (![cell isKindOfClass:[TextEntryCell class]]) {
-            continue;
-        }
-
-        TextEntryCell *textEntryCell = (TextEntryCell *) cell;
-        [textEntryCell.entryField setDelegate:self];
-        [textEntryCell.entryField setReturnKeyType:UIReturnKeyNext];
-    }
 }
 
 - (void)addInlinedPickerCell:(UITableViewCell *)cell forCell:(UITableViewCell *)forCell {

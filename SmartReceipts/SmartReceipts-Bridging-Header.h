@@ -12,5 +12,7 @@
 
 #import "PaymentMethod.h"
 
+#import "TextEntryCell.h"
+
 #import "WBAppDelegate.h"
 #import "WBCategory.h"

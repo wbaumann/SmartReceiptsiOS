@@ -15,14 +15,13 @@
 @property (nonatomic, strong, readonly) NSMutableArray<InputCellsSection *> *__nonnull presentedSections;
 @property (nonatomic, assign) BOOL containNextEditSearchInsideSection;
 
-- (void)addSectionForPresentation:(InputCellsSection *__nonnull)section;
 - (void)addInlinedPickerCell:(UITableViewCell *__nonnull)cell forCell:(UITableViewCell *__nonnull)forCell;
 - (void)tappedCell:(UITableViewCell * __nonnull)cell atIndexPath:(NSIndexPath *__nonnull)indexPath;
 
 @end
 
 
-@interface InputCellsViewController (ExposeForSwiftExtension)
+@interface InputCellsViewController (ExposeForSwiftExtension) <UITextFieldDelegate>
 
 @property (nonatomic, strong, readonly) NSIndexPath *__nullable presentingPickerForIndexPath;
 
