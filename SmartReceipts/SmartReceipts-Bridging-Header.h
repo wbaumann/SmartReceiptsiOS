@@ -10,6 +10,8 @@
 #import "DatabaseUpgradeToVersion12.h"
 #import "DatabaseUpgradeToVersion13.h"
 
+#import "FMDB.h"
+
 #import "InputCellsSection.h"
 #import "InputCellsViewController.h"
 

@@ -54,6 +54,7 @@
 		84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F35518CFCCD000F69A35 /* Images.xcassets */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
 		A71205B41CE5C04D008A193D /* WBTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */; };
+		A73DBED71CF08694007C6268 /* android-receipts-v14.db in Resources */ = {isa = PBXBuildFile; fileRef = A73DBED61CF08694007C6268 /* android-receipts-v14.db */; };
 		A744E5141CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744E5131CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift */; };
 		A79FDC691CEA085400328DBB /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC681CEA085400328DBB /* Analytics.swift */; };
 		A79FDC6C1CEA0A4100328DBB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC6B1CEA0A4100328DBB /* AnalyticsService.swift */; };
@@ -380,6 +381,7 @@
 		9E827BA04632316E1EC12D45 /* libPods-SmartReceipts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartReceipts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A71205B21CE5C04D008A193D /* WBTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTestAppDelegate.h; sourceTree = "<group>"; };
 		A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTestAppDelegate.m; sourceTree = "<group>"; };
+		A73DBED61CF08694007C6268 /* android-receipts-v14.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "android-receipts-v14.db"; sourceTree = "<group>"; };
 		A744E5131CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseCategoriesImportTests.swift; sourceTree = "<group>"; };
 		A744E5151CEC45CB00D838C7 /* SmartReceiptsTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SmartReceiptsTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		A79FDC681CEA085400328DBB /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
@@ -1423,6 +1425,7 @@
 				EAE23CB41B1757590078F197 /* 2015_05_26_SmartReceipts.smr */,
 				EA159E7C1AFE6F4E00DBB6CF /* android-receipts-v11.db */,
 				EA159E7B1AFE6F4E00DBB6CF /* android-receipts-v13.db */,
+				A73DBED61CF08694007C6268 /* android-receipts-v14.db */,
 				EA8ABE3A1B1A05FA00DBFA29 /* clean.db */,
 				EA8ABE3E1B1A147900DBFA29 /* exrtas-import-test.db */,
 				EA69EF2C1AF0907300276B70 /* receipts_at_v11.db */,
@@ -1870,6 +1873,7 @@
 			files = (
 				EAE23CB51B1757590078F197 /* 2015_05_26_SmartReceipts.smr in Resources */,
 				EA6888D31AFE699A00A910FC /* receipts-dates-test.db in Resources */,
+				A73DBED71CF08694007C6268 /* android-receipts-v14.db in Resources */,
 				EA159E801AFE705000DBB6CF /* android-receipts-v11.db in Resources */,
 				EA69EF2D1AF0907300276B70 /* receipts_at_v11.db in Resources */,
 				EA8ABE3B1B1A05FA00DBFA29 /* clean.db in Resources */,
