@@ -11,5 +11,6 @@
 @interface Database (Import)
 
 - (BOOL)importDataFromBackup:(NSString *)filePath overwrite:(BOOL)overwrite;
+- (BOOL)importDataFromDatabase:(Database *)imported overwrite:(BOOL)overwrite;
 
 @end

@@ -88,7 +88,6 @@
 - (void)insertTestReceipt:(NSDictionary *)modifiedParams {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[ReceiptsTable.COLUMN_NAME] = [NSString stringWithFormat:@"TestReceipt - %@", [NSDate date].milliseconds];
-    params[ReceiptsTable.COLUMN_PARENT] = [self createTestTrip];
     params[ReceiptsTable.COLUMN_PRICE] = [NSDecimalNumber decimalNumberWithString:@"20"];
     params[ReceiptsTable.COLUMN_ISO4217] = @"USD";
     params[ReceiptsTable.COLUMN_EXPENSEABLE] = @(YES);
@@ -97,6 +96,10 @@
     params[ReceiptsTable.COLUMN_PAYMENT_METHOD_ID] = [self allPaymentMethods].firstObject;
 
     [params addEntriesFromDictionary:modifiedParams];
+    
+    if (!params[ReceiptsTable.COLUMN_PARENT]) {
+        params[ReceiptsTable.COLUMN_PARENT] = [self createTestTrip];
+    }
 
     WBReceipt *receipt = [[WBReceipt alloc] init];
     [receipt setName:params[ReceiptsTable.COLUMN_NAME]];

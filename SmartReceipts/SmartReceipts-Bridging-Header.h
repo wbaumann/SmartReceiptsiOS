@@ -3,6 +3,7 @@
 #import "Database+Functions.h"
 #import "Database+Import.h"
 #import "Database+PaymentMethods.h"
+#import "Database+Trips.h"
 #import "Database.h"
 #import "DatabaseCreateAtVersion11.h"
 #import "DatabaseMigration.h"
@@ -21,3 +22,4 @@
 
 #import "WBAppDelegate.h"
 #import "WBCategory.h"
+#import "WBTrip.h"

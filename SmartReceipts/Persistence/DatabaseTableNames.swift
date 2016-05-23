@@ -49,3 +49,24 @@ enum CategoriesTable {
         static let Breakdown = "breakdown"
     }
 }
+
+enum TripsTable {
+    static let Name = "trips"
+        
+    enum Column {
+        static let Name = "name"
+        static let From = "from_date"
+        static let To = "to_date"
+        static let FromTimezone = "from_timezone"
+        static let ToTimezone = "to_timezone"
+        static let Mileage = "miles_new"
+        static let Comment = "trips_comment"
+        static let CostCenter = "trips_cost_center"
+        static let DefaultCurrency = "trips_default_currency"
+        static let Filters = "trips_filters"
+        static let ProcessingStatus = "trip_processing_status"
+        
+        @available(*, unavailable)
+        static let Price = "price"
+    }
+}

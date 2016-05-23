@@ -54,6 +54,7 @@
 		84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F35518CFCCD000F69A35 /* Images.xcassets */; };
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
 		A709D7451CF348EC00897DD9 /* DatabaseQueryAndroidV14Receipts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709D7441CF348EC00897DD9 /* DatabaseQueryAndroidV14Receipts.swift */; };
+		A709D7471CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709D7461CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift */; };
 		A71205B41CE5C04D008A193D /* WBTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */; };
 		A73DBED71CF08694007C6268 /* android-receipts-v14.db in Resources */ = {isa = PBXBuildFile; fileRef = A73DBED61CF08694007C6268 /* android-receipts-v14.db */; };
 		A744E5141CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744E5131CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift */; };
@@ -381,6 +382,7 @@
 		84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		9E827BA04632316E1EC12D45 /* libPods-SmartReceipts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartReceipts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A709D7441CF348EC00897DD9 /* DatabaseQueryAndroidV14Receipts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseQueryAndroidV14Receipts.swift; sourceTree = "<group>"; };
+		A709D7461CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseImportAndroidV14Tests.swift; sourceTree = "<group>"; };
 		A71205B21CE5C04D008A193D /* WBTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTestAppDelegate.h; sourceTree = "<group>"; };
 		A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTestAppDelegate.m; sourceTree = "<group>"; };
 		A73DBED61CF08694007C6268 /* android-receipts-v14.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "android-receipts-v14.db"; sourceTree = "<group>"; };
@@ -1141,6 +1143,7 @@
 				EA8CEAE41AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m */,
 				EA07BF5A1AF4DA66004D17F6 /* DatabaseDistancesTest.m */,
 				EA36DE521B0119150034CC2D /* DatabaseHintsTest.m */,
+				A709D7461CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift */,
 				EA8ABE3C1B1A064A00DBFA29 /* DatabaseImportTest.m */,
 				EA1D42C81B03931400D64D3A /* DatabasePaymentMethodsTest.m */,
 				A709D7441CF348EC00897DD9 /* DatabaseQueryAndroidV14Receipts.swift */,
@@ -2220,6 +2223,7 @@
 				EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */,
 				EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */,
 				EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */,
+				A709D7471CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift in Sources */,
 				EA36DE531B0119150034CC2D /* DatabaseHintsTest.m in Sources */,
 				EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */,
 				EA8ABE441B1A1D6800DBFA29 /* DatabaseCategoriesTest.m in Sources */,
