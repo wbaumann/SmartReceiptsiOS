@@ -122,11 +122,15 @@
     [selectAll where:ReceiptsTable.COLUMN_NAME value:receiptName];
     [selectAll select:receiptIdFullName as:receiptIdAsName];
     [selectAll select:paymentMethodIdFullName as:paymentMethodIdAsName];
-    [selectAll join:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
+    [selectAll leftJoin:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
 
     WBReceipt *receipt = (WBReceipt *)[self executeFetchFor:[WBReceipt class] withQuery:selectAll];
     [receipt setTrip:[self tripWithName:receipt.tripName]];
     return receipt;
+}
+
+- (NSArray<WBReceipt *> *__nonnull)allReceipts {
+    return [self allReceiptsForTrip:nil];
 }
 
 @end

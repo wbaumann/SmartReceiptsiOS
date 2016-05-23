@@ -14,16 +14,7 @@ class DatabaseUpgradeToVersion14: DatabaseMigration {
     }
     
     override func migrate(database: Database) -> Bool {
-        return addDefaultValueToReceipts(database)
-            && addExchangeRateToReceipts(database)
-    }
-    
-    private func addDefaultValueToReceipts(database: Database) -> Bool {
-        let method = PaymentMethod.defaultMethod(database)
-        let updateQuery = "UPDATE \(ReceiptsTable.Name) " +
-                          "SET \(ReceiptsTable.Column.PaymentMethodId) = \(method.objectId) " +
-                          "WHERE \(ReceiptsTable.Column.PaymentMethodId) IS NULL"
-        return database.executeUpdate(updateQuery)
+        return addExchangeRateToReceipts(database)
     }
     
     private func addExchangeRateToReceipts(database: Database) -> Bool {

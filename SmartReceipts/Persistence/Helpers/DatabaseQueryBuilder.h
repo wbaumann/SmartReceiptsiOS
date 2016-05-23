@@ -25,7 +25,7 @@
 - (void)where:(NSString *)paramName value:(NSObject *)paramValue;
 - (void)where:(NSString *)paramName notValue:(NSObject *)paramValue;
 - (void)where:(NSString *)paramName value:(NSObject *)paramValue caseInsensitive:(BOOL)caseInsensitive;
-- (void)join:(NSString *)foreignTableName on:(NSObject *)key equalTo:(NSObject *)foreignKey;
+- (void)leftJoin:(NSString *)foreignTableName on:(NSObject *)key equalTo:(NSObject *)foreignKey;
 - (void)orderBy:(NSString *)column ascending:(BOOL)ascending;
 
 - (NSString *)buildStatement;

@@ -138,28 +138,15 @@
     NSString *paymentMethodIdAsName = [NSString stringWithFormat:@"%@_%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
     
     DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
-    [selectAll where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    if (trip) {
+        [selectAll where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    }
     [selectAll select:receiptIdFullName as:receiptIdAsName];
     [selectAll select:paymentMethodIdFullName as:paymentMethodIdAsName];
-    [selectAll join:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
+    [selectAll leftJoin:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
     [selectAll orderBy:ReceiptsTable.COLUMN_DATE ascending:NO];
     
     return [self allReceiptsWithQuery:selectAll forTrip:trip];
-}
-
-- (NSArray *)allReceipts {
-    NSString *receiptIdFullName = [NSString stringWithFormat:@"%@.%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
-    NSString *receiptIdAsName = [NSString stringWithFormat:@"%@_%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
-    NSString *paymentMethodIdFullName = [NSString stringWithFormat:@"%@.%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
-    NSString *paymentMethodIdAsName = [NSString stringWithFormat:@"%@_%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
-    
-    DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
-    [selectAll select:receiptIdFullName as:receiptIdAsName];
-    [selectAll select:paymentMethodIdFullName as:paymentMethodIdAsName];
-    [selectAll join:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
-    [selectAll orderBy:ReceiptsTable.COLUMN_DATE ascending:YES];
-
-    return [self allReceiptsWithQuery:selectAll forTrip:nil];
 }
 
 - (NSArray *)allReceiptsWithQuery:(DatabaseQueryBuilder *)query forTrip:(WBTrip *)trip {
@@ -239,7 +226,7 @@
     [select where:ReceiptsTable.COLUMN_PARENT value:trip.name];
     [select select:receiptIdFullName as:receiptIdAsName];
     [select select:paymentMethodIdFullName as:paymentMethodIdAsName];
-    [select join:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
+    [select leftJoin:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
     [select orderBy:ReceiptsTable.COLUMN_DATE ascending:NO];
     return [self createAdapterUsingQuery:select forModel:[WBReceipt class] associatedModel:trip];
 }

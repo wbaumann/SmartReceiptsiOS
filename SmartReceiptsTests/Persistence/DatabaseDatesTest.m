@@ -15,12 +15,6 @@
 #import "WBReceipt.h"
 #import "NSDate+Calculations.h"
 
-@interface Database (TestExpose)
-
-- (NSArray *)allReceipts;
-
-@end
-
 @interface DatabaseDatesTest : SmartReceiptsTestsBase
 
 @end
@@ -40,7 +34,7 @@
 }
 
 - (void)testReceiptDatesSavedTheOldWayAreReadCorrectly {
-    Database *database = [self createMigratedDatabaseFromTemplate:@"receipts-dates-test"];
+    DatabaseTestsHelper *database = [self createMigratedDatabaseFromTemplate:@"receipts-dates-test"];
 
     NSArray *receipts = [database allReceipts];
 
@@ -63,7 +57,7 @@
 }
 
 - (void)testReceiptDatesSavedOnAndroidV11 {
-    Database *database = [self createMigratedDatabaseFromTemplate:@"android-receipts-v11"];
+    DatabaseTestsHelper *database = [self createMigratedDatabaseFromTemplate:@"android-receipts-v11"];
 
     NSArray *receipts = [database allReceipts];
 

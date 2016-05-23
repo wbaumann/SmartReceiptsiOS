@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
+#import <XCTest/XCTest.h>
+
 @class FMDatabaseQueue;
 @class Database;
 @class DatabaseTestsHelper;
