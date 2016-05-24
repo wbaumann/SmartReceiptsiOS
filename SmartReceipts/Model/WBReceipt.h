@@ -31,8 +31,6 @@
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, copy) NSString *comment;
 
-+(NSString*) NO_DATA;
-
 - (id)initWithId:(NSUInteger)rid
             name:(NSString *)name
         category:(NSString *)category

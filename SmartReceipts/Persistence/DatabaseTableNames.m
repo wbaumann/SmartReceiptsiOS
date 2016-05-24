@@ -51,7 +51,8 @@ const struct ReceiptsTableStruct ReceiptsTable = {
         .COLUMN_PROCESSING_STATUS = @"receipt_processing_status",
         .COLUMN_EXTRA_EDITTEXT_1 = @"extra_edittext_1",
         .COLUMN_EXTRA_EDITTEXT_2 = @"extra_edittext_2",
-        .COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3"
+        .COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3",
+        .COLUMN_EXCHANGE_RATE = @"exchange_rate"
 };
 
 const struct DistanceTableStruct DistanceTable = {

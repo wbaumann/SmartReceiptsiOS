@@ -36,6 +36,7 @@
 #import "Database+Purchases.h"
 #import "NSString+Validation.h"
 #import "RMStore.h"
+#import "SmartReceipts-Swift.h"
 
 static NSString *const PushManageCategoriesSegueIdentifier = @"PushManageCategoriesSegueIdentifier";
 static NSString *const PushConfigurePDFColumnsSegueIdentifier = @"ConfigurePDF";

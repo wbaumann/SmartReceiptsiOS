@@ -23,6 +23,7 @@
 #import "Database+Notify.h"
 #import "ReceiptFilesManager.h"
 #import "NSDate+Calculations.h"
+#import "Constants.h"
 
 @interface WBReceipt (Expose)
 
@@ -138,28 +139,15 @@
     NSString *paymentMethodIdAsName = [NSString stringWithFormat:@"%@_%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
     
     DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
-    [selectAll where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    if (trip) {
+        [selectAll where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    }
     [selectAll select:receiptIdFullName as:receiptIdAsName];
     [selectAll select:paymentMethodIdFullName as:paymentMethodIdAsName];
-    [selectAll join:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
+    [selectAll leftJoin:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
     [selectAll orderBy:ReceiptsTable.COLUMN_DATE ascending:NO];
     
     return [self allReceiptsWithQuery:selectAll forTrip:trip];
-}
-
-- (NSArray *)allReceipts {
-    NSString *receiptIdFullName = [NSString stringWithFormat:@"%@.%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
-    NSString *receiptIdAsName = [NSString stringWithFormat:@"%@_%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
-    NSString *paymentMethodIdFullName = [NSString stringWithFormat:@"%@.%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
-    NSString *paymentMethodIdAsName = [NSString stringWithFormat:@"%@_%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
-    
-    DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
-    [selectAll select:receiptIdFullName as:receiptIdAsName];
-    [selectAll select:paymentMethodIdFullName as:paymentMethodIdAsName];
-    [selectAll join:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
-    [selectAll orderBy:ReceiptsTable.COLUMN_DATE ascending:YES];
-
-    return [self allReceiptsWithQuery:selectAll forTrip:nil];
 }
 
 - (NSArray *)allReceiptsWithQuery:(DatabaseQueryBuilder *)query forTrip:(WBTrip *)trip {
@@ -193,7 +181,7 @@
 
 + (NSString *)extraInsertValue:(NSString *)extraValue {
     if (!extraValue) {
-        return [WBReceipt NO_DATA];
+        return SRNoData;
     } else {
         if ([extraValue caseInsensitiveCompare:@"null"] == NSOrderedSame) {
             return @"";
@@ -239,7 +227,7 @@
     [select where:ReceiptsTable.COLUMN_PARENT value:trip.name];
     [select select:receiptIdFullName as:receiptIdAsName];
     [select select:paymentMethodIdFullName as:paymentMethodIdAsName];
-    [select join:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
+    [select leftJoin:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
     [select orderBy:ReceiptsTable.COLUMN_DATE ascending:NO];
     return [self createAdapterUsingQuery:select forModel:[WBReceipt class] associatedModel:trip];
 }
@@ -313,7 +301,7 @@
 }
 
 - (void)appendCommonValuesFromReceipt:(WBReceipt *)receipt toQuery:(DatabaseQueryBuilder *)query {
-    [query addParam:ReceiptsTable.COLUMN_PATH value:receipt.imageFileName fallback:[WBReceipt NO_DATA]];
+    [query addParam:ReceiptsTable.COLUMN_PATH value:receipt.imageFileName fallback:SRNoData];
     [query addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];
     [query addParam:ReceiptsTable.COLUMN_NAME value:[receipt.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     [query addParam:ReceiptsTable.COLUMN_CATEGORY value:receipt.category];
@@ -325,6 +313,7 @@
     [query addParam:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE value:@(!receipt.isFullPage)];
     [query addParam:ReceiptsTable.COLUMN_PRICE value:receipt.price.amount];
     [query addParam:ReceiptsTable.COLUMN_TAX value:receipt.tax.amount];
+    [query addParam:ReceiptsTable.COLUMN_EXCHANGE_RATE value:receipt.price.exchangeRate];
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1 value:[Database extraInsertValue:receipt.extraEditText1]];
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2 value:[Database extraInsertValue:receipt.extraEditText2]];
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3 value:[Database extraInsertValue:receipt.extraEditText3]];

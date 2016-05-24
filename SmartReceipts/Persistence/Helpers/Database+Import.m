@@ -47,9 +47,13 @@
     Database *imported = [[Database alloc] initWithDatabasePath:filePath tripsFolederPath:[WBFileManager documentsPath]];
     [imported open];
 
+    return [self importDataFromDatabase:imported overwrite:overwrite];
+}
+
+- (BOOL)importDataFromDatabase:(Database *)imported overwrite:(BOOL)overwrite {
     [self setDisableFilesManager:YES];
     [self setDisableNotifications:YES];
-
+    
     [self importCategoriesFrom:imported overwrite:overwrite];
     
     // Note: these 3 always overwrite to avoid data inconsistencies
@@ -61,14 +65,14 @@
     for (WBTrip *trip in trips) {
         [self importTrip:trip importFrom:imported overwrite:overwrite];
     }
-
+    
     [self setDisableFilesManager:NO];
     [self setDisableNotifications:NO];
-
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsDatabaseBulkUpdateNotification object:nil];
     });
-
+    
     return YES;
 }
 

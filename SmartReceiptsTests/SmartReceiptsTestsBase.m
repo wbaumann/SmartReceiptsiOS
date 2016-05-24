@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <XCTest/XCTest.h>
 #import <FMDB/FMResultSet.h>
 #import "SmartReceiptsTestsBase.h"
 #import "Database.h"

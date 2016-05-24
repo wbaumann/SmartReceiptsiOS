@@ -6,18 +6,19 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface InputCellsSection : NSObject
 
-@property (nonatomic, copy, readonly) NSString *sectionTitle;
+@property (nonatomic, copy, readonly) NSString *__nullable sectionTitle;
+@property (nonatomic, strong, readonly) NSArray<UITableViewCell *> *__nonnull cells;
 
-+ (InputCellsSection *)sectionWithTitle:(NSString *)sectionTitle cells:(NSArray *)cells;
-+ (InputCellsSection *)sectionWithCells:(NSArray *)cells;
++ (InputCellsSection *__nonnull)sectionWithTitle:(NSString *__nullable)sectionTitle cells:(NSArray<UITableViewCell *> *__nonnull)cells;
++ (InputCellsSection *__nonnull)sectionWithCells:(NSArray<UITableViewCell *> *__nonnull)cells;
 
 - (NSUInteger)numberOfCells;
-- (UITableViewCell *)cellAtIndex:(NSUInteger)index;
-- (void)insertCell:(UITableViewCell *)cell atIndex:(NSInteger)index;
+- (UITableViewCell *__nullable)cellAtIndex:(NSUInteger)index;
+- (void)insertCell:(UITableViewCell *__nonnull)cell atIndex:(NSInteger)index;
 - (void)removeCellAtIndex:(NSInteger)row;
 
 @end

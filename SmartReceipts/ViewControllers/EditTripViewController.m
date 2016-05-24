@@ -26,6 +26,7 @@
 #import "WBCurrency.h"
 #import "Database+Trips.h"
 #import "NSDate+Calculations.h"
+#import "SmartReceipts-Swift.h"
 
 @interface EditTripViewController ()
 

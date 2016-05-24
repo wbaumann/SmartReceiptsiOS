@@ -111,6 +111,7 @@
 "edit.receipt.date.label" = "Data";
 "edit.receipt.date.range.warning.message" = "Just a note that receipt date is outside trip start and end date";
 "edit.receipt.date.range.warning.title" = "Receipt date";
+"edit.receipt.exchange.rate.label" = "Exchange Rate";
 "edit.receipt.expensable.label" = "Wliczane w Wydatki";
 "edit.receipt.full.page.label" = "Obraz na całą stronę";
 "edit.receipt.generic.save.error.message" = "Nie można dodać tego paragonu";

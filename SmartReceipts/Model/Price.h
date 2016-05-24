@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong, readonly) NSDecimalNumber *amount;
 @property (nonatomic, strong, readonly) WBCurrency *currency;
+@property (nonatomic, strong) NSDecimalNumber *exchangeRate;
 
 + (Price *)priceWithAmount:(NSDecimalNumber *)amount currencyCode:(NSString *)currencyCode;
 - (NSString *)currencyFormattedPrice;

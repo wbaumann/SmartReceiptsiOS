@@ -16,6 +16,7 @@
 #import "NSString+Validation.h"
 #import "Database.h"
 #import "Database+PaymentMethods.h"
+#import "SmartReceipts-Swift.h"
 
 @interface EditPaymentMethodViewController ()
 

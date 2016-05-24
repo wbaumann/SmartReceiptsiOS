@@ -26,7 +26,7 @@ typedef NS_ENUM(short, StatementType) {
 @property (nonatomic, strong) NSMutableArray *params;
 @property (nonatomic, strong) NSMutableArray *values;
 @property (nonatomic, strong) NSMutableDictionary *where;
-@property (nonatomic, strong) NSMutableArray *joins;
+@property (nonatomic, strong) NSMutableArray *leftJoins;
 @property (nonatomic, strong) NSDictionary *orderBy;
 @property (nonatomic, strong) NSMutableArray *caseInsensitiveWhereParams;
 @property (nonatomic, copy) NSString *rawQuery;
@@ -44,7 +44,7 @@ typedef NS_ENUM(short, StatementType) {
         _params = [NSMutableArray array];
         _values = [NSMutableArray array];
         _where = [NSMutableDictionary dictionary];
-        _joins = [NSMutableArray array];
+        _leftJoins = [NSMutableArray array];
         _caseInsensitiveWhereParams = [NSMutableArray array];
     }
     return self;
@@ -168,8 +168,8 @@ typedef NS_ENUM(short, StatementType) {
 }
 
 - (void)appendJoinClause:(NSMutableString *)query {
-    for (NSArray *tuple in self.joins) {
-        [query appendFormat:@" JOIN %@ ON %@.%@ = %@.%@", tuple[0], self.tableName, tuple[1], tuple[0], tuple[2]];
+    for (NSArray *tuple in self.leftJoins) {
+        [query appendFormat:@" LEFT JOIN %@ ON %@.%@ = %@.%@", tuple[0], self.tableName, tuple[1], tuple[0], tuple[2]];
     }
 }
 
@@ -253,7 +253,7 @@ typedef NS_ENUM(short, StatementType) {
     return [NSDictionary dictionaryWithDictionary:result];
 }
 
-- (void)join:(NSString *)foreignTableName on:(NSObject *)key equalTo:(NSObject *)foreignKey {
+- (void)leftJoin:(NSString *)foreignTableName on:(NSObject *)key equalTo:(NSObject *)foreignKey {
     /* 
      * Our join array will contain a list of "tuples" in the form of array, where:
      * [0] => tableName
@@ -262,8 +262,8 @@ typedef NS_ENUM(short, StatementType) {
      * such that we can treat the statement as
      * JOIN tuple[0] ON TABLE_NAME.tuple[1] = tuple[0].tuple[2]
      */
-    NSArray *joinTuple = [NSArray arrayWithObjects:foreignTableName, key, foreignKey, nil];
-    [self.joins addObject:joinTuple];
+    NSArray *joinTuple = @[foreignTableName, key, foreignKey];
+    [self.leftJoins addObject:joinTuple];
 }
 
 - (void)orderBy:(NSString *)column ascending:(BOOL)ascending {

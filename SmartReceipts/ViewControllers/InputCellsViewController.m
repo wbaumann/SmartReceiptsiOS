@@ -17,7 +17,7 @@
 #import "SwitchControlCell.h"
 #import "UIApplication+DismissKeyboard.h"
 
-@interface InputCellsViewController () <UITextFieldDelegate>
+@interface InputCellsViewController ()
 
 @property (nonatomic, strong) NSMutableArray *presentedSections;
 @property (nonatomic, strong) TextEntryCell *lastEntryCell;
@@ -32,11 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.presentedSections = [NSMutableArray array];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,24 +53,6 @@
     InputCellsSection *section = self.presentedSections[indexPath.section];
     UITableViewCell *cell = [section cellAtIndex:indexPath.row];
     return cell;
-}
-
-- (void)addSectionForPresentation:(InputCellsSection *)section {
-    if (!self.presentedSections) {
-        [self setPresentedSections:[NSMutableArray array]];
-    }
-
-    [self.presentedSections addObject:section];
-    for (NSUInteger index = 0; index < section.numberOfCells; index++) {
-        UITableViewCell *cell = [section cellAtIndex:index];
-        if (![cell isKindOfClass:[TextEntryCell class]]) {
-            continue;
-        }
-
-        TextEntryCell *textEntryCell = (TextEntryCell *) cell;
-        [textEntryCell.entryField setDelegate:self];
-        [textEntryCell.entryField setReturnKeyType:UIReturnKeyNext];
-    }
 }
 
 - (void)addInlinedPickerCell:(UITableViewCell *)cell forCell:(UITableViewCell *)forCell {

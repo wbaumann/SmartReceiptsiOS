@@ -21,6 +21,7 @@ enum ReceiptsTable {
         static let Category = "category"
         static let Price = "price"
         static let Tax = "tax"
+        static let ExchangeRate = "exchange_rate"
         static let Date = "rcpt_date"
         static let Timezone = "timezone"
         static let Comment = "comment"
@@ -46,5 +47,26 @@ enum CategoriesTable {
         static let Name = "name"
         static let code = "code"
         static let Breakdown = "breakdown"
+    }
+}
+
+enum TripsTable {
+    static let Name = "trips"
+        
+    enum Column {
+        static let Name = "name"
+        static let From = "from_date"
+        static let To = "to_date"
+        static let FromTimezone = "from_timezone"
+        static let ToTimezone = "to_timezone"
+        static let Mileage = "miles_new"
+        static let Comment = "trips_comment"
+        static let CostCenter = "trips_cost_center"
+        static let DefaultCurrency = "trips_default_currency"
+        static let Filters = "trips_filters"
+        static let ProcessingStatus = "trip_processing_status"
+        
+        @available(*, unavailable)
+        static let Price = "price"
     }
 }

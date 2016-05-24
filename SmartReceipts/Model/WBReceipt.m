@@ -17,10 +17,8 @@
 #import "Constants.h"
 #import "NSDate+Calculations.h"
 
-static NSString * const NO_DATA = @"null";
-
 static NSString* checkNoData(NSString* str) {
-    if ([NO_DATA caseInsensitiveCompare:str] == NSOrderedSame) {
+    if ([SRNoData caseInsensitiveCompare:str] == NSOrderedSame) {
         return nil;
     }
     return str;
@@ -38,10 +36,6 @@ static NSString* checkNoData(NSString* str) {
     NSString *_name, *_category;
     NSString *_extraEditText1, *_extraEditText2, *_extraEditText3;
     NSTimeZone *_timeZone;
-}
-
-+(NSString*) NO_DATA {
-    return NO_DATA;
 }
 
 - (id)initWithId:(NSUInteger)rid
@@ -215,6 +209,7 @@ static NSString* checkNoData(NSString* str) {
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet {
     NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:ReceiptsTable.COLUMN_PRICE]];
     NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:ReceiptsTable.COLUMN_TAX]];
+    NSDecimalNumber *exchangeRate = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:ReceiptsTable.COLUMN_EXCHANGE_RATE]];
     NSString *currencyCode = [resultSet stringForColumn:ReceiptsTable.COLUMN_ISO4217];
 
     NSString *receiptIdAsName = [NSString stringWithFormat:@"%@_%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
@@ -224,6 +219,7 @@ static NSString* checkNoData(NSString* str) {
     _fileName = [resultSet stringForColumn:ReceiptsTable.COLUMN_PATH];
     _comment = [resultSet stringForColumn:ReceiptsTable.COLUMN_COMMENT];
     _price = [Price priceWithAmount:price currencyCode:currencyCode];
+    _price.exchangeRate = exchangeRate;
     _tax = [Price priceWithAmount:tax currencyCode:currencyCode];
     [self setExpensable:[resultSet boolForColumn:ReceiptsTable.COLUMN_EXPENSEABLE]];
     [self setFullPage:![resultSet boolForColumn:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE]];
