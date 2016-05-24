@@ -22,6 +22,8 @@ NSString *const SmartReceiptAppStoreId = @"905698613";
 
 NSString *const SmartReceiptSubscriptionIAPIdentifier = @"co.smartreceipts.ios.pro.noads";
 
+NSString *const SRNoData = @"null";
+
 void SRDelayedExecution(NSTimeInterval seconds, ActionBlock action) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, seconds * NSEC_PER_SEC), dispatch_get_main_queue(), action);
 }

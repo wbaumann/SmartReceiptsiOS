@@ -23,6 +23,7 @@
 #import "Database+Notify.h"
 #import "ReceiptFilesManager.h"
 #import "NSDate+Calculations.h"
+#import "Constants.h"
 
 @interface WBReceipt (Expose)
 
@@ -180,7 +181,7 @@
 
 + (NSString *)extraInsertValue:(NSString *)extraValue {
     if (!extraValue) {
-        return [WBReceipt NO_DATA];
+        return SRNoData;
     } else {
         if ([extraValue caseInsensitiveCompare:@"null"] == NSOrderedSame) {
             return @"";
@@ -300,7 +301,7 @@
 }
 
 - (void)appendCommonValuesFromReceipt:(WBReceipt *)receipt toQuery:(DatabaseQueryBuilder *)query {
-    [query addParam:ReceiptsTable.COLUMN_PATH value:receipt.imageFileName fallback:[WBReceipt NO_DATA]];
+    [query addParam:ReceiptsTable.COLUMN_PATH value:receipt.imageFileName fallback:SRNoData];
     [query addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];
     [query addParam:ReceiptsTable.COLUMN_NAME value:[receipt.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     [query addParam:ReceiptsTable.COLUMN_CATEGORY value:receipt.category];
@@ -312,6 +313,7 @@
     [query addParam:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE value:@(!receipt.isFullPage)];
     [query addParam:ReceiptsTable.COLUMN_PRICE value:receipt.price.amount];
     [query addParam:ReceiptsTable.COLUMN_TAX value:receipt.tax.amount];
+    [query addParam:ReceiptsTable.COLUMN_EXCHANGE_RATE value:receipt.price.exchangeRate];
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1 value:[Database extraInsertValue:receipt.extraEditText1]];
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2 value:[Database extraInsertValue:receipt.extraEditText2]];
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3 value:[Database extraInsertValue:receipt.extraEditText3]];

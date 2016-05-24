@@ -53,6 +53,7 @@ struct ReceiptsTableStruct {
     __unsafe_unretained NSString *const COLUMN_EXTRA_EDITTEXT_1;
     __unsafe_unretained NSString *const COLUMN_EXTRA_EDITTEXT_2;
     __unsafe_unretained NSString *const COLUMN_EXTRA_EDITTEXT_3;
+    __unsafe_unretained NSString *const COLUMN_EXCHANGE_RATE;
 };
 extern const struct ReceiptsTableStruct ReceiptsTable;
 
