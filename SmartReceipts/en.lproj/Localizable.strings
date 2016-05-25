@@ -227,6 +227,7 @@
 "receipt.column.report.comment" = "Report Comment";
 "receipt.column.report.cost.center" = "Report Cost Center";
 "receipt.column.report.end.date" = "Report End Date";
+"receipt.column.report.exchange.rate" = "Exchange Rate";
 "receipt.column.report.name" = "Report Name";
 "receipt.column.report.start.date" = "Report Start Date";
 "receipt.column.tax" = "Tax";

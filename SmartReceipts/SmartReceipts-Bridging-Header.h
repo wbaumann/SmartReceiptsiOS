@@ -1,4 +1,5 @@
 
+#import "Column.h"
 #import "Constants.h"
 
 #import "Database+Categories.h"
@@ -23,6 +24,8 @@
 
 #import "PaymentMethod.h"
 #import "Price.h"
+
+#import "ReceiptColumn.h"
 
 #import "TextEntryCell.h"
 
