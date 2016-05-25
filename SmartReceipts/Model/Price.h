@@ -12,14 +12,14 @@
 
 @interface Price : NSObject
 
-@property (nonatomic, strong, readonly) NSDecimalNumber *amount;
-@property (nonatomic, strong, readonly) WBCurrency *currency;
-@property (nonatomic, strong) NSDecimalNumber *exchangeRate;
+@property (nonatomic, strong, readonly) NSDecimalNumber *__nonnull amount;
+@property (nonatomic, strong, readonly) WBCurrency *__nonnull currency;
+@property (nonatomic, strong) NSDecimalNumber *__nullable exchangeRate;
 
-+ (Price *)priceWithAmount:(NSDecimalNumber *)amount currencyCode:(NSString *)currencyCode;
-- (NSString *)currencyFormattedPrice;
-+ (Price *)zeroPriceWithCurrencyCode:(NSString *)currencyCode;
-- (NSString *)amountAsString;
-+ (NSString *)amountAsString:(NSDecimalNumber *)amount;
++ (Price *__nonnull)priceWithAmount:(NSDecimalNumber *__nonnull)amount currencyCode:(NSString *__nonnull)currencyCode;
+- (NSString *__nonnull)currencyFormattedPrice;
++ (Price *__nonnull)zeroPriceWithCurrencyCode:(NSString *__nonnull)currencyCode;
+- (NSString *__nonnull)amountAsString;
++ (NSString *__nonnull)amountAsString:(NSDecimalNumber *__nonnull)amount;
 
 @end

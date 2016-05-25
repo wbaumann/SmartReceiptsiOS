@@ -1,4 +1,6 @@
 
+#import "Constants.h"
+
 #import "Database+Categories.h"
 #import "Database+Functions.h"
 #import "Database+Import.h"
@@ -16,6 +18,8 @@
 
 #import "InputCellsSection.h"
 #import "InputCellsViewController.h"
+
+#import "NSDecimalNumber+WBNumberParse.h"
 
 #import "PaymentMethod.h"
 #import "Price.h"

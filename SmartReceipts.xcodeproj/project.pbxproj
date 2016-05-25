@@ -55,6 +55,8 @@
 		84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */; };
 		A709D7451CF348EC00897DD9 /* DatabaseQueryAndroidV14Receipts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709D7441CF348EC00897DD9 /* DatabaseQueryAndroidV14Receipts.swift */; };
 		A709D7471CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709D7461CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift */; };
+		A709D7651CF4A45E00897DD9 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709D7641CF4A45E00897DD9 /* Price.swift */; };
+		A709D7671CF4A58600897DD9 /* NSThread+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709D7661CF4A58600897DD9 /* NSThread+Extensions.swift */; };
 		A71205B41CE5C04D008A193D /* WBTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */; };
 		A73DBED71CF08694007C6268 /* android-receipts-v14.db in Resources */ = {isa = PBXBuildFile; fileRef = A73DBED61CF08694007C6268 /* android-receipts-v14.db */; };
 		A744E5141CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744E5131CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift */; };
@@ -69,6 +71,7 @@
 		A7AFB2421CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFB2411CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift */; };
 		A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFB2431CEC1F6800718744 /* PaymentMethod.swift */; };
 		A7AFB2461CEC219100718744 /* DatabaseTableNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFB2451CEC219100718744 /* DatabaseTableNames.swift */; };
+		A7B6FC5B1CF5DA2100CD53F1 /* PriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B6FC5A1CF5DA2000CD53F1 /* PriceTests.swift */; };
 		A7D080FB1CEAD2FD00B3C551 /* WBAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D080FA1CEAD2FD00B3C551 /* WBAppDelegate.swift */; };
 		BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665BE5F2DD7CCFDA2D5F97 /* WBCustomization.m */; };
 		BA66533BF5BE6103F7230434 /* WBImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66548D45A03F16399057F5 /* WBImageViewController.m */; };
@@ -383,6 +386,8 @@
 		9E827BA04632316E1EC12D45 /* libPods-SmartReceipts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartReceipts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A709D7441CF348EC00897DD9 /* DatabaseQueryAndroidV14Receipts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseQueryAndroidV14Receipts.swift; sourceTree = "<group>"; };
 		A709D7461CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseImportAndroidV14Tests.swift; sourceTree = "<group>"; };
+		A709D7641CF4A45E00897DD9 /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		A709D7661CF4A58600897DD9 /* NSThread+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSThread+Extensions.swift"; sourceTree = "<group>"; };
 		A71205B21CE5C04D008A193D /* WBTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTestAppDelegate.h; sourceTree = "<group>"; };
 		A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTestAppDelegate.m; sourceTree = "<group>"; };
 		A73DBED61CF08694007C6268 /* android-receipts-v14.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "android-receipts-v14.db"; sourceTree = "<group>"; };
@@ -400,6 +405,7 @@
 		A7AFB2411CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion14.swift; sourceTree = "<group>"; };
 		A7AFB2431CEC1F6800718744 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		A7AFB2451CEC219100718744 /* DatabaseTableNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTableNames.swift; sourceTree = "<group>"; };
+		A7B6FC5A1CF5DA2000CD53F1 /* PriceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceTests.swift; sourceTree = "<group>"; };
 		A7D080FA1CEAD2FD00B3C551 /* WBAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBAppDelegate.swift; sourceTree = "<group>"; };
 		AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceiptsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableViewController.m; sourceTree = "<group>"; };
@@ -1306,6 +1312,7 @@
 				EA46678D1AE7EA1600B4E502 /* ImagePicker.h */,
 				EA46678E1AE7EA1600B4E502 /* ImagePicker.m */,
 				EA07BF411AF3F84E004D17F6 /* InputValidation.h */,
+				A709D7661CF4A58600897DD9 /* NSThread+Extensions.swift */,
 				EA888A741AFA3D3F00DF2AE6 /* NumberInputValidation.h */,
 				EA888A751AFA3D3F00DF2AE6 /* NumberInputValidation.m */,
 				EA00D00B1B0629BE00C87678 /* ProperNameInputValidation.h */,
@@ -1459,6 +1466,7 @@
 				EA0677F31B04E5320058A326 /* Pickable.h */,
 				EA8D816E1AEA668100BAC943 /* Price.h */,
 				EA8D816F1AEA668100BAC943 /* Price.m */,
+				A709D7641CF4A45E00897DD9 /* Price.swift */,
 				EA66B2B81B13669100A57750 /* PricesCollection.h */,
 				EA66B2B91B13669100A57750 /* PricesCollection.m */,
 				EA0677F41B04E61A0058A326 /* StringPickableWrapper.h */,
@@ -1593,6 +1601,7 @@
 				EA66B2BB1B136F1800A57750 /* PricesCollectionTest.m */,
 				EAE319631B10BF630032887E /* TaxCalculatorTest.m */,
 				EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */,
+				A7B6FC5A1CF5DA2000CD53F1 /* PriceTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2089,6 +2098,7 @@
 				EA3C969E1AEBA94200A2A5F9 /* ReportPDFGenerator.m in Sources */,
 				EA3C96A71AEBC1A500A2A5F9 /* ReceiptIndexer.m in Sources */,
 				A79FDC6E1CEA0A5500328DBB /* GoogleAnalytics.swift in Sources */,
+				A709D7671CF4A58600897DD9 /* NSThread+Extensions.swift in Sources */,
 				84AA921518EE89E00096013D /* WBImageStampler.m in Sources */,
 				EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */,
 				EA3C96A11AEBA9B200A2A5F9 /* TripFullPDFGenerator.m in Sources */,
@@ -2151,6 +2161,7 @@
 				EA8D818B1AEA7BA400BAC943 /* ReceiptColumnUserID.m in Sources */,
 				EA8EB1071B0A4AAF00780BA3 /* ReceiptColumnReportComment.m in Sources */,
 				A7AFB2421CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift in Sources */,
+				A709D7651CF4A45E00897DD9 /* Price.swift in Sources */,
 				EAD15C7A1B0881C2003BB1F3 /* ReceiptFilesManager.m in Sources */,
 				EA183E0B1B1C9F6C00577B3D /* Database+PDFColumns.m in Sources */,
 				EA8D819D1AEA7C4200BAC943 /* ReceiptColumnComment.m in Sources */,
@@ -2207,6 +2218,7 @@
 				EAE725DA1B022E9100402689 /* TripsToReceiptsConverterTest.m in Sources */,
 				EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */,
 				EA36DE551B0121990034CC2D /* DatabaseCurrenciesTest.m in Sources */,
+				A7B6FC5B1CF5DA2100CD53F1 /* PriceTests.swift in Sources */,
 				EA159E811AFE7CDC00DBB6CF /* NSDate+Calculations.m in Sources */,
 				EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */,
 				A71205B41CE5C04D008A193D /* WBTestAppDelegate.m in Sources */,

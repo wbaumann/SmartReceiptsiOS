@@ -59,4 +59,21 @@
     return _code;
 }
 
+- (BOOL)isEqual:(id)other
+{
+    if (other == self) {
+        return YES;
+    } else if (![other isKindOfClass:[WBCurrency class]]) {
+        return NO;
+    } else {
+        WBCurrency *otherCurrency = other;
+        return [self.code isEqualToString:otherCurrency.code];
+    }
+}
+
+- (NSUInteger)hash
+{
+    return self.code.hash;
+}
+
 @end
