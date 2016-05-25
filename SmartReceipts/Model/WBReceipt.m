@@ -221,6 +221,7 @@ static NSString* checkNoData(NSString* str) {
     _price = [Price priceWithAmount:price currencyCode:currencyCode];
     _price.exchangeRate = exchangeRate;
     _tax = [Price priceWithAmount:tax currencyCode:currencyCode];
+    _tax.exchangeRate = exchangeRate;
     [self setExpensable:[resultSet boolForColumn:ReceiptsTable.COLUMN_EXPENSEABLE]];
     [self setFullPage:![resultSet boolForColumn:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE]];
     _extraEditText1 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1];

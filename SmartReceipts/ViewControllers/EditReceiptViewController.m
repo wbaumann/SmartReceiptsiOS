@@ -375,8 +375,8 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
         return;
     }
 
-    NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.priceCell.value];
-    NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.taxCell.value];
+    NSDecimalNumber *priceAmount = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.priceCell.value];
+    NSDecimalNumber *taxAmount = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.taxCell.value];
     NSDecimalNumber *exchangeRate = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.exchangeRateCell.value];
 
     if (!self.receipt) {
@@ -390,12 +390,14 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     [self.receipt setCategory:self.categoryCell.value];
     [self.receipt setDate:[NSDate dateWithMilliseconds:_dateMs]];
     [self.receipt setTimeZone:_timeZone];
-    Price *priceObject = [Price priceWithAmount:price currencyCode:currencyCode];
-    if (![currencyCode isEqualToString:self.trip.defaultCurrency.code]) {
-        [priceObject setExchangeRate:exchangeRate];
+    Price *price = [Price priceWithAmount:priceAmount currencyCode:currencyCode];
+    Price *tax = [Price priceWithAmount:taxAmount currencyCode:currencyCode];
+    if ([currencyCode isEqualToString:self.trip.defaultCurrency.code]) {
+        [price setExchangeRate:exchangeRate];
+        [tax setExchangeRate:exchangeRate];
     }
-    [self.receipt setPrice:priceObject];
-    [self.receipt setTax:[Price priceWithAmount:tax currencyCode:currencyCode]];
+    [self.receipt setPrice:price];
+    [self.receipt setTax:tax];
     [self.receipt setComment:self.commentCell.value];
     [self.receipt setExpensable:self.expensableCell.isSwitchOn];
     [self.receipt setFullPage:self.fullPageImageCell.isSwitchOn];
