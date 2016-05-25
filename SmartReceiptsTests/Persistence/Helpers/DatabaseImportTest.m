@@ -17,12 +17,6 @@
 #import "Database+PaymentMethods.h"
 #import "PaymentMethod.h"
 
-@interface Database (TestExpose)
-
-- (id)initWithDatabasePath:(NSString *)path tripsFolederPath:(NSString *)tripsFolderPath;
-
-@end
-
 @interface DatabaseImportTest : SmartReceiptsTestsBase
 
 @property (nonatomic, copy) NSString *testBasePath;
@@ -39,7 +33,7 @@
     self.testBasePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"DBImport%@", [NSDate date].milliseconds]];
     [[NSFileManager defaultManager] copyItemAtPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"clean" ofType:@"db"] toPath:self.testBasePath error:nil];
 
-    self.database = [[Database alloc] initWithDatabasePath:self.testBasePath tripsFolederPath:NSTemporaryDirectory()];
+    self.database = [[Database alloc] initWithDatabasePath:self.testBasePath tripsFolderPath:NSTemporaryDirectory()];
     [self.database open];
 }
 

@@ -34,14 +34,14 @@ class DatabaseUpgrade14Tests: XCTestCase {
     }
     
     private func createInMemoryDatabase(migrated: Bool = true, tripsFolder: String = NSTemporaryDirectory()) -> Database {
-        let database = Database(databasePath: ":memory:", tripsFolederPath: tripsFolder)
+        let database = Database(databasePath: ":memory:", tripsFolderPath: tripsFolder)
         database.open(migrated)
         return database
     }
     
     private func unmigratedTemplateDatabaseWithName(name: String) -> Database {
         let path = NSBundle(forClass: DatabaseUpgrade14Tests.self).pathForResource(name, ofType: "db")!
-        let database = Database(databasePath: path, tripsFolederPath: NSTemporaryDirectory())
+        let database = Database(databasePath: path, tripsFolderPath: NSTemporaryDirectory())
         database.open(false)
         return database
     }

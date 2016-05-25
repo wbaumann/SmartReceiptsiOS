@@ -30,7 +30,7 @@
 
 @interface Database(InitExpose)
 
-- (id)initWithDatabasePath:(NSString *)path tripsFolederPath:(NSString *)tripsFolderPath;
+- (id)initWithDatabasePath:(NSString *)path tripsFolderPath:(NSString *)tripsFolderPath;
 - (void)setDisableFilesManager:(BOOL)disable;
 
 @property (nonatomic, assign) BOOL disableNotifications;
@@ -44,7 +44,7 @@
         return NO;
     }
 
-    Database *imported = [[Database alloc] initWithDatabasePath:filePath tripsFolederPath:[WBFileManager documentsPath]];
+    Database *imported = [[Database alloc] initWithDatabasePath:filePath tripsFolderPath:[WBFileManager documentsPath]];
     [imported open];
 
     return [self importDataFromDatabase:imported overwrite:overwrite];
