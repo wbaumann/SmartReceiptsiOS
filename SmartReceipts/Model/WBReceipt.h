@@ -16,6 +16,8 @@
 
 @interface WBReceipt : NSObject <FetchedModel>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @property (nonatomic, assign) NSUInteger objectId;
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, assign) NSInteger reportIndex;
@@ -36,10 +38,10 @@
 - (id)initWithId:(NSUInteger)rid
             name:(NSString *)name
         category:(NSString *)category
-   imageFileName:(NSString *)imageFileName
+   imageFileName:(nullable NSString *)imageFileName
             date:(NSDate *)date
     timeZoneName:(NSString *)timeZoneName
-         comment:(NSString *)comment
+         comment:(nullable NSString *)comment
      priceAmount:(NSDecimalNumber *)price
        taxAmount:(NSDecimalNumber *)tax
         currency:(WBCurrency *)currency
@@ -83,5 +85,7 @@
 
 - (void)setPrice:(NSDecimalNumber *__nonnull)amount currency:(NSString *__nonnull)currency;
 - (void)setTax:(NSDecimalNumber *__nonnull)amount;
+
+NS_ASSUME_NONNULL_END
 
 @end

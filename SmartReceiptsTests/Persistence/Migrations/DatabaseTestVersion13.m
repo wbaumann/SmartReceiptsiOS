@@ -34,7 +34,7 @@
             [[DatabaseUpgradeToVersion12 alloc] init],
             [[DatabaseUpgradeToVersion13 alloc] init]
     ];
-    [DatabaseMigration runMigrations:migrations onDatabase:self.db];
+    [DatabaseMigration runMigrations:migrations onDatabase:(Database *)self.db];
 }
 
 - (void)testDatabasesSame {

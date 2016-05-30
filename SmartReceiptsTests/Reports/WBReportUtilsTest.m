@@ -56,7 +56,7 @@
 }
 
 - (WBReceipt *)createTestReceipt:(BOOL)expensable {
-    return [[WBReceipt alloc] initWithId:1 name:@"" category:@"" imageFileName:@"" date:0 timeZoneName:@"" comment:@"" priceAmount:[NSDecimalNumber decimalNumberWithString:@"10"] taxAmount:[NSDecimalNumber zero] currency:[WBCurrency currencyForCode:@"USD"] isExpensable:expensable isFullPage:NO extraEditText1:@"" extraEditText2:@"" extraEditText3:@""];
+    return [[WBReceipt alloc] initWithId:1 name:@"" category:@"" imageFileName:@"" date:[NSDate date] timeZoneName:@"" comment:@"" priceAmount:[NSDecimalNumber decimalNumberWithString:@"10"] taxAmount:[NSDecimalNumber zero] currency:[WBCurrency currencyForCode:@"USD"] isExpensable:expensable isFullPage:NO extraEditText1:@"" extraEditText2:@"" extraEditText3:@""];
 }
 
 @end

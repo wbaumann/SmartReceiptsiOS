@@ -343,7 +343,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 - (NSString *)proposedCategory {
     NSDate *now = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
+    NSDateComponents *components = [calendar components:NSCalendarUnitHour fromDate:now];
     NSInteger hour = [components hour];
 
     if ([WBPreferences predictCategories]) {
