@@ -10,9 +10,9 @@ import Foundation
 
 private let JustDecimalFormatterKey = "JustDecimalFormatterKey"
 
-extension WBReceipt: Priced, PriceAware {
+extension WBReceipt: Priced {
     func price() -> Price {
-        return createPrice(priceAmount, currency: currency)
+        return Price(amount: priceAmount, currency: currency)
     }
     
     func priceAsString() -> String {
@@ -66,7 +66,7 @@ extension WBReceipt: ExchangedPriced {
         
         let exchangedValue = priceAmount.decimalNumberByMultiplyingBy(rate)
         
-        return createPrice(exchangedValue, currency: targetCurrency)
+        return Price(amount: exchangedValue, currency: targetCurrency)
     }
     
     func exchangedPriceAsString() -> String {
@@ -88,19 +88,27 @@ extension WBReceipt: ExchangedPriced {
 
 extension WBReceipt: Taxed {
     func tax() -> Price? {
-        guard let tax = taxAmount else {
+        guard let tax = taxAmount where tax.compare(NSDecimalNumber.zero()) != .OrderedSame else {
             return nil
         }
         
-        return createPrice(tax, currency: currency)
+        return Price(amount: tax, currency: currency)
     }
     
     func taxAsString() -> String {
-        return ""
+        guard let taxValue = tax() else {
+            return ""
+        }
+        
+        return taxValue.amountAsString()
     }
     
     func formattedTax() -> String {
-        return ""
+        guard let taxValue = tax() else {
+            return ""
+        }
+        
+        return taxValue.currencyFormattedPrice()
     }
 }
 
@@ -116,7 +124,7 @@ extension WBReceipt: ExchangedTaxed {
         
         let exchangedTax = tax.decimalNumberByMultiplyingBy(rate)
         
-        return createPrice(exchangedTax, currency: targetCurrency)
+        return Price(amount: exchangedTax, currency: targetCurrency)
     }
     
     func exchangedTaxAsString() -> String {

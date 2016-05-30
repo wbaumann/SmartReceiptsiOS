@@ -76,7 +76,6 @@
 		A7F05B981CFB49220079F1AD /* WBReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B971CFB49220079F1AD /* WBReceipt.swift */; };
 		A7F05B9A1CFB49590079F1AD /* Priced.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B991CFB49590079F1AD /* Priced.swift */; };
 		A7F05B9E1CFB49BE0079F1AD /* Taxed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */; };
-		A7F05BA01CFB4B0D0079F1AD /* PriceAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B9F1CFB4B0D0079F1AD /* PriceAware.swift */; };
 		A7F05BA21CFC038D0079F1AD /* ReceiptColumnTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BA11CFC038D0079F1AD /* ReceiptColumnTax.swift */; };
 		A7F05BA41CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BA31CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift */; };
 		A7F05BA81CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BA71CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift */; };
@@ -90,6 +89,7 @@
 		A7F05BB81CFC2C9D0079F1AD /* ReceiptColumnNetExchangedPricePlusTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BB71CFC2C9D0079F1AD /* ReceiptColumnNetExchangedPricePlusTax.swift */; };
 		A7F05BBA1CFC2CCD0079F1AD /* NetExchangedPricePlusTaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BB91CFC2CCD0079F1AD /* NetExchangedPricePlusTaxTests.swift */; };
 		A7F05BBC1CFC31520079F1AD /* WBCurrency+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BBB1CFC31520079F1AD /* WBCurrency+Extensions.swift */; };
+		A7F05BC01CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BBF1CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift */; };
 		BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665BE5F2DD7CCFDA2D5F97 /* WBCustomization.m */; };
 		BA66533BF5BE6103F7230434 /* WBImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66548D45A03F16399057F5 /* WBImageViewController.m */; };
 		BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66590C0394B2CE9704CC15 /* WBCategoriesViewController.m */; };
@@ -426,7 +426,6 @@
 		A7F05B971CFB49220079F1AD /* WBReceipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBReceipt.swift; sourceTree = "<group>"; };
 		A7F05B991CFB49590079F1AD /* Priced.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priced.swift; sourceTree = "<group>"; };
 		A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taxed.swift; sourceTree = "<group>"; };
-		A7F05B9F1CFB4B0D0079F1AD /* PriceAware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceAware.swift; sourceTree = "<group>"; };
 		A7F05BA11CFC038D0079F1AD /* ReceiptColumnTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnTax.swift; sourceTree = "<group>"; };
 		A7F05BA31CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnExchangedPrice.swift; sourceTree = "<group>"; };
 		A7F05BA71CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnExchangedPriceTests.swift; sourceTree = "<group>"; };
@@ -440,6 +439,7 @@
 		A7F05BB71CFC2C9D0079F1AD /* ReceiptColumnNetExchangedPricePlusTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnNetExchangedPricePlusTax.swift; sourceTree = "<group>"; };
 		A7F05BB91CFC2CCD0079F1AD /* NetExchangedPricePlusTaxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetExchangedPricePlusTaxTests.swift; sourceTree = "<group>"; };
 		A7F05BBB1CFC31520079F1AD /* WBCurrency+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WBCurrency+Extensions.swift"; sourceTree = "<group>"; };
+		A7F05BBF1CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnTaxTests.swift; sourceTree = "<group>"; };
 		AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceiptsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableViewController.m; sourceTree = "<group>"; };
 		BA665109C535866B59AD5544 /* WBGenerateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBGenerateViewController.m; sourceTree = "<group>"; };
@@ -1090,10 +1090,11 @@
 		A7F05BA61CFC07420079F1AD /* Receipt */ = {
 			isa = PBXGroup;
 			children = (
+				A7F05BB91CFC2CCD0079F1AD /* NetExchangedPricePlusTaxTests.swift */,
 				A7F05BA71CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift */,
 				A7F05BAF1CFC132E0079F1AD /* ReceiptColumnExchangedTaxTests.swift */,
 				A7F05BB51CFC1B5D0079F1AD /* ReceiptColumnExchangeRateTests.swift */,
-				A7F05BB91CFC2CCD0079F1AD /* NetExchangedPricePlusTaxTests.swift */,
+				A7F05BBF1CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift */,
 			);
 			path = Receipt;
 			sourceTree = "<group>";
@@ -1513,7 +1514,6 @@
 				EA0677F31B04E5320058A326 /* Pickable.h */,
 				EA8D816E1AEA668100BAC943 /* Price.h */,
 				EA8D816F1AEA668100BAC943 /* Price.m */,
-				A7F05B9F1CFB4B0D0079F1AD /* PriceAware.swift */,
 				A7F05B991CFB49590079F1AD /* Priced.swift */,
 				EA66B2B81B13669100A57750 /* PricesCollection.h */,
 				EA66B2B91B13669100A57750 /* PricesCollection.m */,
@@ -2225,7 +2225,6 @@
 				EA8D818B1AEA7BA400BAC943 /* ReceiptColumnUserID.m in Sources */,
 				EA8EB1071B0A4AAF00780BA3 /* ReceiptColumnReportComment.m in Sources */,
 				A7AFB2421CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift in Sources */,
-				A7F05BA01CFB4B0D0079F1AD /* PriceAware.swift in Sources */,
 				EAD15C7A1B0881C2003BB1F3 /* ReceiptFilesManager.m in Sources */,
 				EA183E0B1B1C9F6C00577B3D /* Database+PDFColumns.m in Sources */,
 				EA8D819D1AEA7C4200BAC943 /* ReceiptColumnComment.m in Sources */,
@@ -2268,6 +2267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAD15C771B087029003BB1F3 /* DatabaseReceiptsCopyMoveTest.m in Sources */,
+				A7F05BC01CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift in Sources */,
 				EAD3EF851B0E00E000CA1D4D /* DatabaseReceiptsSwapTest.m in Sources */,
 				EA07BF6C1AF51D5D004D17F6 /* DatabaseTestsHelper.m in Sources */,
 				EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */,
