@@ -15,13 +15,6 @@
 #import "Database+Functions.h"
 #import "FMDatabase.h"
 
-@interface Database (TestExpose)
-
-- (id)initWithDatabasePath:(NSString *)path tripsFolederPath:(NSString *)tripsFolderPath;
-- (BOOL)open:(BOOL)migrateDatabase;
-
-@end
-
 @interface SmartReceiptsTestsBase ()
 
 @property (nonatomic, strong) WBPreferencesTestHelper *preferencesHelper;
@@ -73,7 +66,7 @@
     if (copyError) {
         NSLog(@"Copy failed %@", copyError);
     }
-    DatabaseTestsHelper *db = [[DatabaseTestsHelper alloc] initWithDatabasePath:self.testDBPath tripsFolederPath:self.testTripsPath];
+    DatabaseTestsHelper *db = [[DatabaseTestsHelper alloc] initWithDatabasePath:self.testDBPath tripsFolderPath:self.testTripsPath];
     [db open:YES];
     return db;
 }
@@ -83,7 +76,7 @@
 }
 
 - (DatabaseTestsHelper *)createAndOpenDatabaseWithPath:(NSString *)path migrated:(BOOL)migrated {
-    DatabaseTestsHelper *db = [[DatabaseTestsHelper alloc] initWithDatabasePath:path tripsFolederPath:self.testTripsPath];
+    DatabaseTestsHelper *db = [[DatabaseTestsHelper alloc] initWithDatabasePath:path tripsFolderPath:self.testTripsPath];
     [db open:migrated];
     return db;
 }

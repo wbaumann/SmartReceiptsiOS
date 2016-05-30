@@ -121,7 +121,7 @@ static NSString *const SRRateAppRatePressedKey = @"SRRateAppRatePressedKey";
 
     NSDate *date = [self firstLaunchDate];
     NSDate *now = [NSDate date];
-    NSDate *requiredDaysSinceFirstLaunch = [date dateByAddingDays:SmartReceiptMinUsageDaysForRatin];
+    NSDate *requiredDaysSinceFirstLaunch = [date dateByAddingDays:SmartReceiptMinUsageDaysForRating];
 
     return [[requiredDaysSinceFirstLaunch laterDate:now] isOnSameDate:now];
 }

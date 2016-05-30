@@ -22,8 +22,6 @@
 #import "ReceiptColumnCurrency.h"
 #import "ReceiptColumnDate.h"
 #import "ReceiptColumnName.h"
-#import "ReceiptColumnPrice.h"
-#import "ReceiptColumnTax.h"
 #import "ReceiptColumnPictured.h"
 #import "ReceiptColumnExpensable.h"
 #import "ReceiptColumnReceiptIndex.h"
@@ -31,6 +29,7 @@
 #import "ReceiptColumnPaymentMethod.h"
 #import "ReceiptColumnReportComment.h"
 #import "ReceiptColumnReportCostCenter.h"
+#import "SmartReceipts-Swift.h"
 
 // Extras have to be filled to be active.
 NSString *const WBColumnNameExtraEdittext1 = @"";
@@ -65,6 +64,11 @@ static NSDictionary *__receiptColumnNameToClassMapping;
             NSLocalizedString(@"receipt.column.payment.method", nil) : NSStringFromClass([ReceiptColumnPaymentMethod class]),
             NSLocalizedString(@"receipt.column.report.comment", nil) : NSStringFromClass([ReceiptColumnReportComment class]),
             NSLocalizedString(@"receipt.column.report.cost.center", nil) : NSStringFromClass([ReceiptColumnReportCostCenter class]),
+            NSLocalizedString(@"receipt.column.report.exchange.rate", nil) : NSStringFromClass([ReceiptColumnExchangeRate class]),
+            NSLocalizedString(@"receipt.column.report.exchanged.price", nil) : NSStringFromClass([ReceiptColumnExchangedPrice class]),
+            NSLocalizedString(@"receipt.column.report.exchanged.tax", nil) : NSStringFromClass([ReceiptColumnExchangedTax class]),
+            NSLocalizedString(@"receipt.column.report.exchanged.price.plus.tax", nil) : NSStringFromClass([ReceiptColumnNetExchangedPricePlusTax class]),
+            NSLocalizedString(@"receipt.column.receipt.id", nil) : NSStringFromClass([ReceiptColumnReceiptId class]),
     };
 }
 

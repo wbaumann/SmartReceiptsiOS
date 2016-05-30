@@ -61,7 +61,6 @@
     NSDate *date = distance.date;
     NSTimeZone *timeZone = distance.timeZone;
     NSString *category = NSLocalizedString(@"distances.to.receipt.auto.categpry", nil);
-    NSString *currency = distance.rate.currency.code;
     NSDecimalNumber *totalPrice = [self totalPriceForDistances:distances];
 
     WBReceipt *receipt = [[WBReceipt alloc] initWithId:0
@@ -71,8 +70,9 @@
                                     date:date
                             timeZoneName:timeZone.name
                                  comment:nil
-                                   price:[Price priceWithAmount:totalPrice currencyCode:currency]
-                                     tax:[Price zeroPriceWithCurrencyCode:currency]
+                             priceAmount:totalPrice
+                               taxAmount:[NSDecimalNumber zero]
+                                currency:distance.rate.currency
                             isExpensable:YES
                               isFullPage:NO
                           extraEditText1:@""

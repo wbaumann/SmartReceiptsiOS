@@ -27,6 +27,9 @@ static NSString* checkNoData(NSString* str) {
 @interface WBReceipt ()
 
 @property (nonatomic, strong) NSDate *originalDate;
+@property (nonatomic, strong) NSDecimalNumber *priceAmount;
+@property (nonatomic, strong) NSDecimalNumber *taxAmount;
+@property (nonatomic, strong) WBCurrency *currency;
 
 @end
 
@@ -45,8 +48,9 @@ static NSString* checkNoData(NSString* str) {
             date:(NSDate *)date
     timeZoneName:(NSString *)timeZoneName
          comment:(NSString *)comment
-           price:(Price *)price
-             tax:(Price *)tax
+     priceAmount:(NSDecimalNumber *)price
+       taxAmount:(NSDecimalNumber *)tax
+        currency:(WBCurrency *)currency
     isExpensable:(BOOL)isExpensable
       isFullPage:(BOOL)isFullPage
   extraEditText1:(NSString *)extraEditText1
@@ -67,8 +71,9 @@ static NSString* checkNoData(NSString* str) {
         }
 
         _comment = comment;
-        _price = price;
-        _tax = tax;
+        _priceAmount = price;
+        _taxAmount = tax;
+        _currency = currency;
 
         _expensable = isExpensable;
         _fullPage = isFullPage;
@@ -96,27 +101,6 @@ static NSString* checkNoData(NSString* str) {
 
 -(NSString*)category {
     return _category;
-}
-
-- (NSString *)priceAsString {
-    return self.price.amountAsString;
-}
-
-- (NSString *)taxAsString {
-    return self.tax.amountAsString;
-}
-
-- (NSDecimalNumber *)priceAmount {
-    return self.price.amount;
-}
-
-- (NSDecimalNumber *)tax_as_nsdecnum {
-    return self.tax.amount;
-}
-
-//TODO jaanus: check where it's called
-- (WBCurrency *)currency {
-    return self.price.currency;
 }
 
 - (BOOL)dateChanged {
@@ -186,14 +170,6 @@ static NSString* checkNoData(NSString* str) {
     return [self fileHasExtension:@[@"pdf"]];
 }
 
-- (NSString *)priceWithCurrencyFormatted {
-    return self.price.currencyFormattedPrice;
-}
-
-- (NSString *)taxWithCurrencyFormatted {
-    return self.tax.currencyFormattedPrice;
-}
-
 -(BOOL)hasExtraEditText1 {
     return _extraEditText1 != nil;
 }
@@ -218,9 +194,10 @@ static NSString* checkNoData(NSString* str) {
     _category = [resultSet stringForColumn:ReceiptsTable.COLUMN_CATEGORY];
     _fileName = [resultSet stringForColumn:ReceiptsTable.COLUMN_PATH];
     _comment = [resultSet stringForColumn:ReceiptsTable.COLUMN_COMMENT];
-    _price = [Price priceWithAmount:price currencyCode:currencyCode];
-    _price.exchangeRate = exchangeRate;
-    _tax = [Price priceWithAmount:tax currencyCode:currencyCode];
+    _priceAmount = price;
+    _taxAmount = tax;
+    _exchangeRate = exchangeRate;
+    _currency = [WBCurrency currencyForCode:currencyCode];
     [self setExpensable:[resultSet boolForColumn:ReceiptsTable.COLUMN_EXPENSEABLE]];
     [self setFullPage:![resultSet boolForColumn:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE]];
     _extraEditText1 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1];
@@ -270,6 +247,15 @@ static NSString* checkNoData(NSString* str) {
     }
 
     return @"";
+}
+
+- (void)setPrice:(NSDecimalNumber *)amount currency:(NSString *)currency {
+    self.priceAmount = amount;
+    self.currency = [WBCurrency currencyForCode:currency];
+}
+
+- (void)setTax:(NSDecimalNumber *)amount {
+    self.taxAmount = amount;
 }
 
 @end

@@ -104,8 +104,8 @@
     WBReceipt *receipt = [[WBReceipt alloc] init];
     [receipt setName:params[ReceiptsTable.COLUMN_NAME]];
     [receipt setTimeZone:[NSTimeZone localTimeZone]];
-    [receipt setPrice:[Price priceWithAmount:params[ReceiptsTable.COLUMN_PRICE] currencyCode:params[ReceiptsTable.COLUMN_ISO4217]]];
-    [receipt setTax:[Price zeroPriceWithCurrencyCode:@"USD"]];
+    [receipt setPrice:params[ReceiptsTable.COLUMN_PRICE] currency:params[ReceiptsTable.COLUMN_ISO4217]];
+    [receipt setTax:[NSDecimalNumber zero]];
     [receipt setExpensable:[params[ReceiptsTable.COLUMN_EXPENSEABLE] boolValue]];
     [receipt setTrip:params[ReceiptsTable.COLUMN_PARENT]];
     [receipt setPaymentMethod:params[ReceiptsTable.COLUMN_PAYMENT_METHOD_ID]];

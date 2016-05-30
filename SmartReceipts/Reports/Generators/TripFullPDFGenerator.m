@@ -20,6 +20,7 @@
 #import "Distance.h"
 #import "Constants.h"
 #import "PrettyPDFRender.h"
+#import "SmartReceipts-Swift.h"
 
 @implementation TripFullPDFGenerator
 

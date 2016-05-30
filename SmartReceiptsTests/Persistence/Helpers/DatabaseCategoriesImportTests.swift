@@ -19,7 +19,7 @@ class DatabaseCategoriesImportTests: XCTestCase {
 
         pathToImport = copyTemplateDatabase("exrtas-import-test")
         databasePath = copyTemplateDatabase("clean")
-        database = Database(databasePath: databasePath, tripsFolederPath: NSTemporaryDirectory())
+        database = Database(databasePath: databasePath, tripsFolderPath: NSTemporaryDirectory())
         database.open()
     }
     

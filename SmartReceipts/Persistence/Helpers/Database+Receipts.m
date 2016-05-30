@@ -24,6 +24,7 @@
 #import "ReceiptFilesManager.h"
 #import "NSDate+Calculations.h"
 #import "Constants.h"
+#import "SmartReceipts-Swift.h"
 
 @interface WBReceipt (Expose)
 
@@ -313,7 +314,7 @@
     [query addParam:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE value:@(!receipt.isFullPage)];
     [query addParam:ReceiptsTable.COLUMN_PRICE value:receipt.price.amount];
     [query addParam:ReceiptsTable.COLUMN_TAX value:receipt.tax.amount];
-    [query addParam:ReceiptsTable.COLUMN_EXCHANGE_RATE value:receipt.price.exchangeRate];
+    [query addParam:ReceiptsTable.COLUMN_EXCHANGE_RATE value:receipt.exchangeRate];
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1 value:[Database extraInsertValue:receipt.extraEditText1]];
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2 value:[Database extraInsertValue:receipt.extraEditText2]];
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3 value:[Database extraInsertValue:receipt.extraEditText3]];

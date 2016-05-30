@@ -132,7 +132,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     
     self.exchangeRateCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     [self.exchangeRateCell setTitle:NSLocalizedString(@"edit.receipt.exchange.rate.label", nil)];
-    [self.exchangeRateCell activateDecimalEntryMode];
+    [self.exchangeRateCell activateDecimalEntryModeWithDecimalPlaces:SmartReceiptExchangeRateDecimalPlaces];
 
     self.dateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
     self.dateCell.title = NSLocalizedString(@"edit.receipt.date.label", nil);
@@ -198,6 +198,9 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
         [presentedCells addObject:self.taxCell];
     }
     [presentedCells addObject:self.currencyCell];
+    if (self.receipt && ![self.trip.defaultCurrency isEqual:self.receipt.currency]) {
+        [presentedCells addObject:self.exchangeRateCell];
+    }
     [presentedCells addObject:self.dateCell];
     [presentedCells addObject:self.categoryCell];
     [presentedCells addObject:self.commentCell];
@@ -244,6 +247,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 
         [self.nameCell setValue:[self.receipt name]];
         [self.priceCell setValue:[self.receipt priceAsString]];
+        [self.exchangeRateCell setValue:[self.receipt exchangeRateAsString]];
         [self.taxCell setValue:[self.receipt taxAsString]];
         currencyCode = [[self.receipt currency] code];
         _dateMs = [self.receipt date].milliseconds.longLongValue;
@@ -339,7 +343,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 - (NSString *)proposedCategory {
     NSDate *now = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
+    NSDateComponents *components = [calendar components:NSCalendarUnitHour fromDate:now];
     NSInteger hour = [components hour];
 
     if ([WBPreferences predictCategories]) {
@@ -371,8 +375,8 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
         return;
     }
 
-    NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.priceCell.value];
-    NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.taxCell.value];
+    NSDecimalNumber *priceAmount = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.priceCell.value];
+    NSDecimalNumber *taxAmount = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.taxCell.value];
 
     if (!self.receipt) {
         self.receipt = [[WBReceipt alloc] init];
@@ -381,12 +385,18 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 
     NSString *currencyCode = [self.currencyCell value];
 
+    NSDecimalNumber *exchangeRate = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.exchangeRateCell.value];
+    if ([self.trip.defaultCurrency.code isEqualToString:currencyCode]) {
+        exchangeRate = [NSDecimalNumber decimalNumberOrZero:@"-1"];
+    }
+
     [self.receipt setName:name];
     [self.receipt setCategory:self.categoryCell.value];
     [self.receipt setDate:[NSDate dateWithMilliseconds:_dateMs]];
     [self.receipt setTimeZone:_timeZone];
-    [self.receipt setPrice:[Price priceWithAmount:price currencyCode:currencyCode]];
-    [self.receipt setTax:[Price priceWithAmount:tax currencyCode:currencyCode]];
+    [self.receipt setPrice:priceAmount currency:currencyCode];
+    [self.receipt setTax:taxAmount];
+    [self.receipt setExchangeRate:exchangeRate];
     [self.receipt setComment:self.commentCell.value];
     [self.receipt setExpensable:self.expensableCell.isSwitchOn];
     [self.receipt setFullPage:self.fullPageImageCell.isSwitchOn];

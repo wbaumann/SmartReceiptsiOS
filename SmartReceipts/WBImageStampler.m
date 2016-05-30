@@ -15,6 +15,7 @@
 
 #import "ZipFile.h"
 #import "ZipWriteStream.h"
+#import "SmartReceipts-Swift.h"
 
 static const float IMG_SCALE_FACTOR = 2.1f;
 static const float HW_RATIO = 0.75f;
@@ -142,7 +143,7 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
 #define entry(name,value) { drawEntry(xPad / 2, y, name, value, attrs); y += spacing; }
     
     entry(NSLocalizedString(@"image.stamper.receipt.name", nil), [receipt name]);
-    entry(NSLocalizedString(@"image.stamper.receipt.price", nil), [receipt priceWithCurrencyFormatted]);
+    entry(NSLocalizedString(@"image.stamper.receipt.price", nil), [receipt formattedPrice]);
     entry(NSLocalizedString(@"image.stamper.receipt.date", nil), [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]]);
     entry(NSLocalizedString(@"image.stamper.receipt.category", nil), [receipt category]);
     entry(NSLocalizedString(@"image.stamper.receipt.comment", nil), [receipt comment]);

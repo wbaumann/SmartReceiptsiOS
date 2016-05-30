@@ -13,6 +13,8 @@
 @class Distance;
 @class WBReceipt;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ReceiptFilesManager (TestExpose)
 
 - (NSString *)pathForReceiptFile:(WBReceipt *)receipt;
@@ -34,3 +36,5 @@
 - (NSArray<WBReceipt *> *__nonnull)allReceipts;
 
 @end
+
+NS_ASSUME_NONNULL_END

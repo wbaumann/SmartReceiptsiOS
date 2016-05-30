@@ -30,7 +30,7 @@ extern NSString *const DatabaseDidSwapModelsNotification;
 
 @interface Database (ExposeForTests)
 
-- (id)initWithDatabasePath:(NSString *)path tripsFolederPath:(NSString *)tripsFolderPath;
+- (id)initWithDatabasePath:(NSString *)path tripsFolderPath:(NSString *)tripsFolderPath;
 - (BOOL)open:(BOOL)migrateDatabase;
 
 @end

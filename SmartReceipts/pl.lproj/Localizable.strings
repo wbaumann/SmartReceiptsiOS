@@ -223,10 +223,15 @@
 "receipt.column.pictured.value.pdf" = "Tak - Jako PDF";
 "receipt.column.pictured.value.yes" = "Tak";
 "receipt.column.price" = "Cena";
+"receipt.column.receipt.id" = "Receipt ID";
 "receipt.column.receipt.index" = "Indeks Paragonu";
 "receipt.column.report.comment" = "Report Comment";
 "receipt.column.report.cost.center" = "Report Cost Center";
 "receipt.column.report.end.date" = "Końcowa Data Raportu";
+"receipt.column.report.exchange.rate" = "Exchange Rate";
+"receipt.column.report.exchanged.price" = "Price (Exchanged)";
+"receipt.column.report.exchanged.price.plus.tax" = "Price Plus Tax (Exchanged)";
+"receipt.column.report.exchanged.tax" = "Tax (Exchanged)";
 "receipt.column.report.name" = "Nazwa Raportu";
 "receipt.column.report.start.date" = "Startowa Data Raportu";
 "receipt.column.tax" = "Podatek";
