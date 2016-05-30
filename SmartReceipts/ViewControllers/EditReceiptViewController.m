@@ -198,7 +198,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
         [presentedCells addObject:self.taxCell];
     }
     [presentedCells addObject:self.currencyCell];
-    if (![self.trip.defaultCurrency isEqual:self.receipt.currency]) {
+    if (self.receipt && ![self.trip.defaultCurrency isEqual:self.receipt.currency]) {
         [presentedCells addObject:self.exchangeRateCell];
     }
     [presentedCells addObject:self.dateCell];

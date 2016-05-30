@@ -121,7 +121,8 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     CGFloat maxWidth = 0;
 
     for (NSUInteger i = 0; i < [self numberOfItems]; ++i) {
-        NSString *str = [[self objectAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]] priceWithCurrencyFormatted];
+        WBReceipt *receipt = [self objectAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        NSString *str = [receipt formattedPrice];
 
         CGRect bounds = [str boundingRectWithSize:CGSizeMake(1000, 100) options:NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:21]} context:nil];
         maxWidth = MAX(maxWidth, CGRectGetWidth(bounds) + 10);

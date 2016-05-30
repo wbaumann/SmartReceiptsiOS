@@ -31,10 +31,18 @@
 
 
 - (void)addPrice:(Price *)price {
+    if (!price) {
+        return;
+    }
+
     [self addAmount:price.amount withCurrency:price.currency.code];
 }
 
 - (void)subtractPrice:(Price *)price {
+    if (!price) {
+        return;
+    }
+    
     [self addAmount:[price.amount decimalNumberByMultiplyingBy:self.minusOne] withCurrency:price.currency.code];
 }
 
