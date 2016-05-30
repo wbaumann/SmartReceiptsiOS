@@ -12,7 +12,7 @@ protocol Taxed {
     var taxAmount: NSDecimalNumber? { get }
     var currency: WBCurrency { get }
 
-    func tax() -> Price
+    func tax() -> Price?
     func taxAsString() -> String
     func formattedTax() -> String
 }

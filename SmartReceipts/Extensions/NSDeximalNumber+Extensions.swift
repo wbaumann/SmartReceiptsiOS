@@ -9,7 +9,9 @@
 import Foundation
 
 extension NSDecimalNumber {
-    @nonobjc static let MinusOne = NSDecimalNumber(string: "-1")
+    static func minusOne() -> NSDecimalNumber {
+        return NSDecimalNumber(string: "-1")
+    }
     
     func isPositiveAmount() -> Bool {
         return compare(NSDecimalNumber.zero()) == .OrderedDescending

@@ -77,9 +77,9 @@ extension WBReceipt: ExchangedPriced {
 }
 
 extension WBReceipt: Taxed {
-    func tax() -> Price {
+    func tax() -> Price? {
         guard let tax = taxAmount else {
-            return Price.zeroPriceWithCurrencyCode(currency.code())
+            return nil
         }
         
         return createPrice(tax, currency: currency)
@@ -91,5 +91,33 @@ extension WBReceipt: Taxed {
     
     func formattedTax() -> String {
         return ""
+    }
+}
+
+extension WBReceipt: ExchangedTaxed {
+    func exchangedTax() -> Price? {
+        guard let rate = exchangeRate, tax = taxAmount where rate.isPositiveAmount() && tax.isPositiveAmount() else {
+            return nil
+        }
+        
+        let exchangedTax = tax.decimalNumberByMultiplyingBy(rate)
+        
+        return createPrice(exchangedTax, currency: targetCurrency)
+    }
+    
+    func exchangedTaxAsString() -> String {
+        guard let tax = exchangedTax() else {
+            return ""
+        }
+        
+        return tax.amountAsString()
+    }
+    
+    func formattedExchangedTax() -> String {
+        guard let tax = exchangedTax() else {
+            return ""
+        }
+        
+        return tax.currencyFormattedPrice()
     }
 }

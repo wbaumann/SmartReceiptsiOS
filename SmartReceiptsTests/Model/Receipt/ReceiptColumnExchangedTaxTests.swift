@@ -1,5 +1,5 @@
 //
-//  ReceiptColumnExchangedPriceTests.swift
+//  ReceiptColumnExchangedTaxTests.swift
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 30/05/16.
@@ -9,11 +9,11 @@
 import XCTest
 @testable import SmartReceipts
 
-class ReceiptColumnExchangedPriceTests: XCTestCase {
+class ReceiptColumnExchangedTaxTests: XCTestCase {
     private let trip = WBTrip()
     private var receipt: WBReceipt!
-    private let column = ReceiptColumnExchangedPrice()
-    
+    private let column = ReceiptColumnExchangedTax()
+
     override func setUp() {
         super.setUp()
 
@@ -22,9 +22,16 @@ class ReceiptColumnExchangedPriceTests: XCTestCase {
         receipt = WBReceipt()
         receipt.trip = trip
         receipt.setPrice(NSDecimalNumber(string: "12"), currency: "USD")
+        receipt.setTax(NSDecimalNumber(string: "1.2"))
     }
     
-    func testNoExchangeRate() {
+    func testNoTax() {
+        receipt.setTax(.zero())
+        XCTAssertEqual("", column.valueFromReceipt(receipt, forCSV: false))
+        XCTAssertEqual("", column.valueFromReceipt(receipt, forCSV: true))
+    }
+    
+    func testNoExchangerate() {
         receipt.exchangeRate = nil
         XCTAssertEqual("", column.valueFromReceipt(receipt, forCSV: false))
         XCTAssertEqual("", column.valueFromReceipt(receipt, forCSV: true))
@@ -36,13 +43,13 @@ class ReceiptColumnExchangedPriceTests: XCTestCase {
         XCTAssertEqual("", column.valueFromReceipt(receipt, forCSV: true))
     }
     
-    func testExchangedPriceCSV() {
-        receipt.exchangeRate = NSDecimalNumber(string: "0.1")
-        XCTAssertEqual("1.20", column.valueFromReceipt(receipt, forCSV: true))
+    func testExportToCSV() {
+        receipt.exchangeRate = NSDecimalNumber(string: "2")
+        XCTAssertEqual("2.40", column.valueFromReceipt(receipt, forCSV: true))
     }
     
-    func testExchangedPricePDF() {
-        receipt.exchangeRate = NSDecimalNumber(string: "0.1")
-        XCTAssertEqual("€1.20", column.valueFromReceipt(receipt, forCSV: false))
+    func testExportToPDF() {
+        receipt.exchangeRate = NSDecimalNumber(string: "2")
+        XCTAssertEqual("€2.40", column.valueFromReceipt(receipt, forCSV: false))
     }
 }
