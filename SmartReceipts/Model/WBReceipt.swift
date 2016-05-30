@@ -16,11 +16,11 @@ extension WBReceipt: Priced {
     }
     
     func priceAsString() -> String {
-        return ""
+        return price().amountAsString()
     }
     
     func formattedPrice() -> String {
-        return ""
+        return price().currencyFormattedPrice()
     }
 }
 

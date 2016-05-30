@@ -22,7 +22,6 @@
 #import "ReceiptColumnCurrency.h"
 #import "ReceiptColumnDate.h"
 #import "ReceiptColumnName.h"
-#import "ReceiptColumnPrice.h"
 #import "ReceiptColumnPictured.h"
 #import "ReceiptColumnExpensable.h"
 #import "ReceiptColumnReceiptIndex.h"

@@ -90,6 +90,8 @@
 		A7F05BBA1CFC2CCD0079F1AD /* NetExchangedPricePlusTaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BB91CFC2CCD0079F1AD /* NetExchangedPricePlusTaxTests.swift */; };
 		A7F05BBC1CFC31520079F1AD /* WBCurrency+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BBB1CFC31520079F1AD /* WBCurrency+Extensions.swift */; };
 		A7F05BC01CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BBF1CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift */; };
+		A7F05BC21CFC42900079F1AD /* ReceiptColumnPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BC11CFC42900079F1AD /* ReceiptColumnPrice.swift */; };
+		A7F05BC41CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BC31CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift */; };
 		BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665BE5F2DD7CCFDA2D5F97 /* WBCustomization.m */; };
 		BA66533BF5BE6103F7230434 /* WBImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66548D45A03F16399057F5 /* WBImageViewController.m */; };
 		BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66590C0394B2CE9704CC15 /* WBCategoriesViewController.m */; };
@@ -269,7 +271,6 @@
 		EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D819F1AEA7C5A00BAC943 /* ReceiptColumnCurrency.m */; };
 		EA8D81A31AEA7C6B00BAC943 /* ReceiptColumnDate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81A21AEA7C6B00BAC943 /* ReceiptColumnDate.m */; };
 		EA8D81A61AEA7C7D00BAC943 /* ReceiptColumnName.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81A51AEA7C7D00BAC943 /* ReceiptColumnName.m */; };
-		EA8D81A91AEA7C8E00BAC943 /* ReceiptColumnPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81A81AEA7C8E00BAC943 /* ReceiptColumnPrice.m */; };
 		EA8D81AF1AEA7CAD00BAC943 /* ReceiptColumnPictured.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81AE1AEA7CAD00BAC943 /* ReceiptColumnPictured.m */; };
 		EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnExpensable.m */; };
 		EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B41AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m */; };
@@ -440,6 +441,8 @@
 		A7F05BB91CFC2CCD0079F1AD /* NetExchangedPricePlusTaxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetExchangedPricePlusTaxTests.swift; sourceTree = "<group>"; };
 		A7F05BBB1CFC31520079F1AD /* WBCurrency+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WBCurrency+Extensions.swift"; sourceTree = "<group>"; };
 		A7F05BBF1CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnTaxTests.swift; sourceTree = "<group>"; };
+		A7F05BC11CFC42900079F1AD /* ReceiptColumnPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnPrice.swift; sourceTree = "<group>"; };
+		A7F05BC31CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnPriceTests.swift; sourceTree = "<group>"; };
 		AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceiptsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableViewController.m; sourceTree = "<group>"; };
 		BA665109C535866B59AD5544 /* WBGenerateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBGenerateViewController.m; sourceTree = "<group>"; };
@@ -742,8 +745,6 @@
 		EA8D81A21AEA7C6B00BAC943 /* ReceiptColumnDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnDate.m; sourceTree = "<group>"; };
 		EA8D81A41AEA7C7D00BAC943 /* ReceiptColumnName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnName.h; sourceTree = "<group>"; };
 		EA8D81A51AEA7C7D00BAC943 /* ReceiptColumnName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnName.m; sourceTree = "<group>"; };
-		EA8D81A71AEA7C8E00BAC943 /* ReceiptColumnPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnPrice.h; sourceTree = "<group>"; };
-		EA8D81A81AEA7C8E00BAC943 /* ReceiptColumnPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnPrice.m; sourceTree = "<group>"; };
 		EA8D81AD1AEA7CAD00BAC943 /* ReceiptColumnPictured.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnPictured.h; sourceTree = "<group>"; };
 		EA8D81AE1AEA7CAD00BAC943 /* ReceiptColumnPictured.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnPictured.m; sourceTree = "<group>"; };
 		EA8D81B01AEA7CBD00BAC943 /* ReceiptColumnExpensable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnExpensable.h; sourceTree = "<group>"; };
@@ -1094,6 +1095,7 @@
 				A7F05BA71CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift */,
 				A7F05BAF1CFC132E0079F1AD /* ReceiptColumnExchangedTaxTests.swift */,
 				A7F05BB51CFC1B5D0079F1AD /* ReceiptColumnExchangeRateTests.swift */,
+				A7F05BC31CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift */,
 				A7F05BBF1CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift */,
 			);
 			path = Receipt;
@@ -1566,8 +1568,7 @@
 				EA6677781B060FC4004D3993 /* ReceiptColumnPaymentMethod.m */,
 				EA8D81AD1AEA7CAD00BAC943 /* ReceiptColumnPictured.h */,
 				EA8D81AE1AEA7CAD00BAC943 /* ReceiptColumnPictured.m */,
-				EA8D81A71AEA7C8E00BAC943 /* ReceiptColumnPrice.h */,
-				EA8D81A81AEA7C8E00BAC943 /* ReceiptColumnPrice.m */,
+				A7F05BC11CFC42900079F1AD /* ReceiptColumnPrice.swift */,
 				EA8D81B31AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.h */,
 				EA8D81B41AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m */,
 				EA8EB1051B0A4AAF00780BA3 /* ReceiptColumnReportComment.h */,
@@ -2078,7 +2079,6 @@
 				4D380F911B61240C001B43D2 /* GADConstants.m in Sources */,
 				EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */,
 				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
-				EA8D81A91AEA7C8E00BAC943 /* ReceiptColumnPrice.m in Sources */,
 				EA888A711AFA38AD00DF2AE6 /* SettingsButtonCell.m in Sources */,
 				EA1309A31B50281A0045FDDE /* PDFReportTable.m in Sources */,
 				EA2B8D811B4EF2510043A84B /* PrettyPDFRender.m in Sources */,
@@ -2234,6 +2234,7 @@
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
 				EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */,
 				EA1D42BD1B03851C00D64D3A /* TitleOnlyCell.m in Sources */,
+				A7F05BC21CFC42900079F1AD /* ReceiptColumnPrice.swift in Sources */,
 				EA46678F1AE7EA1700B4E502 /* ImagePicker.m in Sources */,
 				EA1D42C11B038D8F00D64D3A /* EditPaymentMethodViewController.m in Sources */,
 				EA66777C1B06154F004D3993 /* NSString+Helpers.m in Sources */,
@@ -2302,6 +2303,7 @@
 				EA888A881AFB4FD600DF2AE6 /* DatabaseTripsTest.m in Sources */,
 				EA259CDD1B16072D00ECBD67 /* DataExportTest.m in Sources */,
 				EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */,
+				A7F05BC41CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift in Sources */,
 				A7F05BBA1CFC2CCD0079F1AD /* NetExchangedPricePlusTaxTests.swift in Sources */,
 				EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */,
 				EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */,
