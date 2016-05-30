@@ -227,6 +227,7 @@
 "receipt.column.report.comment" = "Report Comment";
 "receipt.column.report.cost.center" = "Report Cost Center";
 "receipt.column.report.end.date" = "Końcowa Data Raportu";
+"receipt.column.report.exchangd.price" = "Price (Exchanged)";
 "receipt.column.report.exchange.rate" = "Exchange Rate";
 "receipt.column.report.name" = "Nazwa Raportu";
 "receipt.column.report.start.date" = "Startowa Data Raportu";

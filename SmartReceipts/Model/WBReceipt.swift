@@ -44,6 +44,38 @@ extension WBReceipt: Priced, PriceAware {
     }
 }
 
+extension WBReceipt: ExchangedPriced {
+    func exchangedPrice() -> Price? {
+        guard let rate = exchangeRate where rate.isPositiveAmount() else {
+            return nil
+        }
+        
+        let exchangedValue = priceAmount.decimalNumberByMultiplyingBy(rate)
+        
+        return createPrice(exchangedValue, currency: targetCurrency)
+    }
+    
+    func exchangedPriceAsString() -> String {
+        guard let exchanged = exchangedPrice() else {
+            return ""
+        }
+        
+        return exchanged.amountAsString()
+    }
+    
+    func formattedExchangedPrice() -> String {
+        guard let exchanged = exchangedPrice() else {
+            return ""
+        }
+        
+        return exchanged.currencyFormattedPrice()
+    }
+    
+    var targetCurrency: WBCurrency {
+        return trip.defaultCurrency
+    }
+}
+
 extension WBReceipt: Taxed {
     func tax() -> Price {
         guard let tax = taxAmount else {

@@ -81,7 +81,7 @@
 
 - (NSString *)attachmentMarker;
 
-- (void)setPrice:(NSDecimalNumber *)amount currency:(NSString *)currency;
-- (void)setTax:(NSDecimalNumber *)amount;
+- (void)setPrice:(NSDecimalNumber *__nonnull)amount currency:(NSString *__nonnull)currency;
+- (void)setTax:(NSDecimalNumber *__nonnull)amount;
 
 @end
