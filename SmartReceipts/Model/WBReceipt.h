@@ -17,8 +17,6 @@
 @interface WBReceipt : NSObject <FetchedModel>
 
 @property (nonatomic, assign) NSUInteger objectId;
-@property (nonatomic, strong) Price *price;
-@property (nonatomic, strong) Price *tax;
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, assign) NSInteger reportIndex;
 @property (nonatomic, strong) PaymentMethod *paymentMethod;
@@ -30,6 +28,10 @@
 @property (nonatomic, assign, getter=isFullPage) BOOL fullPage;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, copy) NSString *comment;
+@property (nonatomic, strong, readonly, nonnull) NSDecimalNumber *priceAmount;
+@property (nonatomic, strong, readonly, nullable) NSDecimalNumber * taxAmount;
+@property (nonatomic, strong, nullable) NSDecimalNumber *exchangeRate;
+@property (nonatomic, strong, readonly, nonnull) WBCurrency *currency;
 
 - (id)initWithId:(NSUInteger)rid
             name:(NSString *)name
@@ -38,8 +40,9 @@
             date:(NSDate *)date
     timeZoneName:(NSString *)timeZoneName
          comment:(NSString *)comment
-           price:(Price *)price
-             tax:(Price *)tax
+     priceAmount:(NSDecimalNumber *)price
+       taxAmount:(NSDecimalNumber *)tax
+        currency:(WBCurrency *)currency
     isExpensable:(BOOL)isExpensable
       isFullPage:(BOOL)isFullPage
   extraEditText1:(NSString *)extraEditText1
@@ -52,9 +55,6 @@
 
 -(NSString*)name;
 -(NSString*)category;
-- (NSString *)priceAsString;
-- (NSString *)taxAsString;
-- (NSDecimalNumber *)priceAmount;
 -(WBCurrency*)currency;
 -(BOOL)isExpensable;
 -(BOOL)isFullPage;
@@ -75,13 +75,13 @@
 -(BOOL)hasImageFileName;
 -(BOOL)hasPDFFileName;
 
--(NSString*)priceWithCurrencyFormatted;
--(NSString*)taxWithCurrencyFormatted;
-
 -(BOOL)hasExtraEditText1;
 -(BOOL)hasExtraEditText2;
 -(BOOL)hasExtraEditText3;
 
 - (NSString *)attachmentMarker;
+
+- (void)setPrice:(NSDecimalNumber *)amount currency:(NSString *)currency;
+- (void)setTax:(NSDecimalNumber *)amount;
 
 @end

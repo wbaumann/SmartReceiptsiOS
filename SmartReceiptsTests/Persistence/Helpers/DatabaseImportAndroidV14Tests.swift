@@ -49,9 +49,9 @@ class DatabaseImportAndroidV14Tests: SmartReceiptsTestsBase {
         db.importDataFromDatabase(imported, overwrite: true)
         
         let receiptOne = db.receiptWithName("Test")
-        XCTAssertEqual(NSDecimalNumber(string: "1.0"), receiptOne.price.exchangeRate)
+        XCTAssertEqual(NSDecimalNumber(string: "1.0"), receiptOne.exchangeRate)
         
         let receiptTwo = db.receiptWithName("Exchange")
-        XCTAssertEqual(NSDecimalNumber(string: "1.2"), receiptTwo.price.exchangeRate)
+        XCTAssertEqual(NSDecimalNumber(string: "1.2"), receiptTwo.exchangeRate)
     }
 }

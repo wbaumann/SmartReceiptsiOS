@@ -13,6 +13,7 @@
 #import "WBReportUtils.h"
 #import "Price.h"
 #import "WBPreferencesTestHelper.h"
+#import "WBCurrency.h"
 
 @interface WBReportUtilsTest : XCTestCase
 
@@ -55,7 +56,7 @@
 }
 
 - (WBReceipt *)createTestReceipt:(BOOL)expensable {
-    return [[WBReceipt alloc] initWithId:1 name:@"" category:@"" imageFileName:@"" date:0 timeZoneName:@"" comment:@"" price:[Price priceWithAmount:[NSDecimalNumber decimalNumberWithString:@"10"] currencyCode:@"USD"] tax:nil isExpensable:expensable isFullPage:NO extraEditText1:@"" extraEditText2:@"" extraEditText3:@""];
+    return [[WBReceipt alloc] initWithId:1 name:@"" category:@"" imageFileName:@"" date:0 timeZoneName:@"" comment:@"" priceAmount:[NSDecimalNumber decimalNumberWithString:@"10"] taxAmount:[NSDecimalNumber zero] currency:[WBCurrency currencyForCode:@"USD"] isExpensable:expensable isFullPage:NO extraEditText1:@"" extraEditText2:@"" extraEditText3:@""];
 }
 
 @end

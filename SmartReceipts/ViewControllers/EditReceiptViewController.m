@@ -247,7 +247,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 
         [self.nameCell setValue:[self.receipt name]];
         [self.priceCell setValue:[self.receipt priceAsString]];
-        [self.exchangeRateCell setValue:[self.receipt.price exchangeRateAsString]];
+        [self.exchangeRateCell setValue:[self.receipt exchangeRateAsString]];
         [self.taxCell setValue:[self.receipt taxAsString]];
         currencyCode = [[self.receipt currency] code];
         _dateMs = [self.receipt date].milliseconds.longLongValue;
@@ -377,7 +377,6 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 
     NSDecimalNumber *priceAmount = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.priceCell.value];
     NSDecimalNumber *taxAmount = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.taxCell.value];
-    NSDecimalNumber *exchangeRate = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.exchangeRateCell.value];
 
     if (!self.receipt) {
         self.receipt = [[WBReceipt alloc] init];
@@ -386,18 +385,18 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 
     NSString *currencyCode = [self.currencyCell value];
 
+    NSDecimalNumber *exchangeRate = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.exchangeRateCell.value];
+    if ([self.trip.defaultCurrency.code isEqualToString:currencyCode]) {
+        exchangeRate = [NSDecimalNumber decimalNumberOrZero:@"-1"];
+    }
+
     [self.receipt setName:name];
     [self.receipt setCategory:self.categoryCell.value];
     [self.receipt setDate:[NSDate dateWithMilliseconds:_dateMs]];
     [self.receipt setTimeZone:_timeZone];
-    Price *price = [Price priceWithAmount:priceAmount currencyCode:currencyCode];
-    Price *tax = [Price priceWithAmount:taxAmount currencyCode:currencyCode];
-    if ([currencyCode isEqualToString:self.trip.defaultCurrency.code]) {
-        [price setExchangeRate:exchangeRate];
-        [tax setExchangeRate:exchangeRate];
-    }
-    [self.receipt setPrice:price];
-    [self.receipt setTax:tax];
+    [self.receipt setPrice:priceAmount currency:currencyCode];
+    [self.receipt setTax:taxAmount];
+    [self.receipt setExchangeRate:exchangeRate];
     [self.receipt setComment:self.commentCell.value];
     [self.receipt setExpensable:self.expensableCell.isSwitchOn];
     [self.receipt setFullPage:self.fullPageImageCell.isSwitchOn];

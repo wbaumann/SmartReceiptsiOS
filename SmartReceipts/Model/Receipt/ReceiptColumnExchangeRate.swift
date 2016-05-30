@@ -10,6 +10,6 @@ import Foundation
 
 class ReceiptColumnExchangeRate: ReceiptColumn {
     override func valueFromReceipt(receipt: WBReceipt, forCSV: Bool) -> String {
-        return receipt.price.exchangeRateAsString()
+        return receipt.exchangeRateAsString()
     }
 }

@@ -25,6 +25,13 @@
     return price;
 }
 
++ (Price *)priceWithAmount:(NSDecimalNumber *)amount currency:(WBCurrency *)currency {
+    Price *price = [[Price alloc] init];
+    [price setAmount:amount];
+    [price setCurrency:currency];
+    return price;
+}
+
 + (Price *)zeroPriceWithCurrencyCode:(NSString *)currencyCode {
     return [Price priceWithAmount:[NSDecimalNumber zero] currencyCode:currencyCode];
 }

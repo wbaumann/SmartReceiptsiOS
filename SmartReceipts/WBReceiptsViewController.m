@@ -21,6 +21,7 @@
 #import "Database+Trips.h"
 #import "Constants.h"
 #import "ReceiptSummaryCell.h"
+#import "SmartReceipts-Swift.h"
 
 static NSString *CellIdentifier = @"Cell";
 static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
@@ -139,7 +140,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
     WBReceipt *receipt = object;
 
-    cell.priceField.text = [receipt priceWithCurrencyFormatted];
+    cell.priceField.text = [receipt formattedPrice];
     cell.nameField.text = [receipt name];
     cell.dateField.text = self.showReceiptDate ? [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]] : @"";
     cell.categoryLabel.text = self.showReceiptCategory ? receipt.category : @"";

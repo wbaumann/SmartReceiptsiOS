@@ -8,6 +8,7 @@
 
 #import "ReceiptColumnPrice.h"
 #import "WBReceipt.h"
+#import "SmartReceipts-Swift.h"
 
 @implementation ReceiptColumnPrice
 
@@ -15,7 +16,7 @@
     if (forCSV) {
         return [receipt priceAsString];
     }
-    return [receipt priceWithCurrencyFormatted];
+    return [receipt formattedPrice];
 }
 
 @end

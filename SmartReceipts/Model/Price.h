@@ -14,11 +14,12 @@
 
 @property (nonatomic, strong, readonly) NSDecimalNumber *__nonnull amount;
 @property (nonatomic, strong, readonly) WBCurrency *__nonnull currency;
-@property (nonatomic, strong) NSDecimalNumber *__nullable exchangeRate;
 
 + (Price *__nonnull)priceWithAmount:(NSDecimalNumber *__nonnull)amount currencyCode:(NSString *__nonnull)currencyCode;
-- (NSString *__nonnull)currencyFormattedPrice;
++ (Price *__nonnull)priceWithAmount:(NSDecimalNumber *__nonnull)amount currency:(WBCurrency *__nonnull)currency;
 + (Price *__nonnull)zeroPriceWithCurrencyCode:(NSString *__nonnull)currencyCode;
+
+- (NSString *__nonnull)currencyFormattedPrice;
 - (NSString *__nonnull)amountAsString;
 + (NSString *__nonnull)amountAsString:(NSDecimalNumber *__nonnull)amount;
 
