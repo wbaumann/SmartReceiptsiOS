@@ -223,6 +223,7 @@
 "receipt.column.pictured.value.pdf" = "Tak - Jako PDF";
 "receipt.column.pictured.value.yes" = "Tak";
 "receipt.column.price" = "Cena";
+"receipt.column.receipt.id" = "Receipt ID";
 "receipt.column.receipt.index" = "Indeks Paragonu";
 "receipt.column.report.comment" = "Report Comment";
 "receipt.column.report.cost.center" = "Report Cost Center";

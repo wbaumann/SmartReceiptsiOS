@@ -68,6 +68,7 @@ static NSDictionary *__receiptColumnNameToClassMapping;
             NSLocalizedString(@"receipt.column.report.exchanged.price", nil) : NSStringFromClass([ReceiptColumnExchangedPrice class]),
             NSLocalizedString(@"receipt.column.report.exchanged.tax", nil) : NSStringFromClass([ReceiptColumnExchangedTax class]),
             NSLocalizedString(@"receipt.column.report.exchanged.price.plus.tax", nil) : NSStringFromClass([ReceiptColumnNetExchangedPricePlusTax class]),
+            NSLocalizedString(@"receipt.column.receipt.id", nil) : NSStringFromClass([ReceiptColumnReceiptId class]),
     };
 }
 

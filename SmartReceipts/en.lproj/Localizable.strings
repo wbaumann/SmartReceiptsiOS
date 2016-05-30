@@ -223,6 +223,7 @@
 "receipt.column.pictured.value.pdf" = "Yes - As PDF";
 "receipt.column.pictured.value.yes" = "Yes";
 "receipt.column.price" = "Price";
+"receipt.column.receipt.id" = "Receipt ID";
 "receipt.column.receipt.index" = "Receipt Index";
 "receipt.column.report.comment" = "Report Comment";
 "receipt.column.report.cost.center" = "Report Cost Center";
