@@ -45,4 +45,11 @@ class ReceiptColumnExchangedPriceTests: XCTestCase {
         receipt.exchangeRate = NSDecimalNumber(string: "0.1")
         XCTAssertEqual("€1.20", column.valueFromReceipt(receipt, forCSV: false))
     }
+    
+    func testNoExchangeNeeded() {
+        receipt.setPrice(NSDecimalNumber(string: "1"), currency: "EUR")
+        receipt.exchangeRate = NSDecimalNumber(string: "0.1")
+        XCTAssertEqual("", column.valueFromReceipt(receipt, forCSV: false))
+        XCTAssertEqual("", column.valueFromReceipt(receipt, forCSV: false))
+    }
 }

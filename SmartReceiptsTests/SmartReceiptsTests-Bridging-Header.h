@@ -5,3 +5,5 @@
 #import "DatabaseTestsHelper.h"
 
 #import "SmartReceiptsTestsBase.h"
+
+#import "WBPreferencesTestHelper.h"

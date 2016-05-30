@@ -32,5 +32,6 @@
 #import "WBAppDelegate.h"
 #import "WBCategory.h"
 #import "WBCurrency.h"
+#import "WBPreferences.h"
 #import "WBReceipt.h"
 #import "WBTrip.h"
