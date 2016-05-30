@@ -8,10 +8,7 @@
 
 import Foundation
 
-protocol ExchangedTaxed: Taxed {
-    var exchangeRate: NSDecimalNumber? { get }
-    var targetCurrency: WBCurrency { get }
-    
+protocol ExchangedTaxed: Taxed, Exchanged {    
     func exchangedTax() -> Price?
     func exchangedTaxAsString() -> String
     func formattedExchangedTax() -> String

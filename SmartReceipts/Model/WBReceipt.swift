@@ -22,7 +22,9 @@ extension WBReceipt: Priced, PriceAware {
     func formattedPrice() -> String {
         return ""
     }
+}
 
+extension WBReceipt: Exchanged {
     func exchangeRateAsString() -> String {
         guard let number = exchangeRate where number.compare(NSDecimalNumber.zero()) == .OrderedDescending else {
             return ""

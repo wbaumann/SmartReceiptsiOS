@@ -8,10 +8,7 @@
 
 import Foundation
 
-protocol ExchangedPriced: Priced {
-    var exchangeRate: NSDecimalNumber? { get }
-    var targetCurrency: WBCurrency { get }
-    
+protocol ExchangedPriced: Priced, Exchanged {    
     func exchangedPrice() -> Price?
     func exchangedPriceAsString() -> String
     func formattedExchangedPrice() -> String
