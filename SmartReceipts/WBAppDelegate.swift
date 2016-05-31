@@ -12,4 +12,9 @@ extension WBAppDelegate {
     func enableAnalytics() {
         Analytics.sharedInstance.addService(GoogleAnalytics())
     }
+    
+    func enableLogging() {
+        Log.logLevel = .DEBUG
+        Log.addOutput(ConsoleOutput())
+    }
 }

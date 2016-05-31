@@ -15,6 +15,7 @@
 #import "FetchedModelAdapter.h"
 #import "Database+Trips.h"
 #import "Constants.h"
+#import "SmartReceipts-Swift.h"
 
 NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 
@@ -74,7 +75,7 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 }
 
 - (FetchedModelAdapter *)createFetchedModelAdapter {
-    return [[Database sharedInstance] fetchedAdapterForAllTrips];
+    return [[Database sharedInstance] createUpdatingAdapterForAllTrips];
 }
 
 - (void)updatePricesWidth {

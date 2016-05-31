@@ -66,7 +66,14 @@
 }
 
 - (void)fetchUsingDatabase:(FMDatabase *)database {
-    NSArray *objects = [self performObjectsFetchUsingDatabase:database];
+    NSArray<id<FetchedModel>> *objects = [self performObjectsFetchUsingDatabase:database];
+    
+    if (self.afterFetchHandler) {
+        for (id<FetchedModel> model in objects) {
+            self.afterFetchHandler(model);
+        }
+    }
+    
     [self setModels:objects];
 }
 
@@ -114,6 +121,10 @@
     NSArray *before = [NSArray arrayWithArray:self.models];
     [self fetch];
     NSArray *after = [NSArray arrayWithArray:self.models];
+    
+    if (self.afterFetchHandler) {
+        self.afterFetchHandler((id<FetchedModel>)updated);
+    }
 
     NSUInteger indexBefore = [before indexOfObject:updated];
     NSUInteger indexAfter = [after indexOfObject:updated];
@@ -157,6 +168,10 @@
     if (index == NSNotFound) {
         [self setModels:refreshed];
         return;
+    }
+    
+    if (self.afterFetchHandler) {
+        self.afterFetchHandler(added);
     }
 
     [self.delegate willChangeContent];

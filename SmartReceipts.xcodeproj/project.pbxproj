@@ -93,6 +93,12 @@
 		A7F05BC21CFC42900079F1AD /* ReceiptColumnPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BC11CFC42900079F1AD /* ReceiptColumnPrice.swift */; };
 		A7F05BC41CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BC31CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift */; };
 		A7F05BC61CFC453C0079F1AD /* ReceiptColumnReceiptId.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BC51CFC453C0079F1AD /* ReceiptColumnReceiptId.swift */; };
+		A7F05BCC1CFD4A0F0079F1AD /* TripsFetchedModelAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BCB1CFD4A0F0079F1AD /* TripsFetchedModelAdapter.swift */; };
+		A7F05BCE1CFD4AE30079F1AD /* Database+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BCD1CFD4AE30079F1AD /* Database+Trips.swift */; };
+		A7F05BD11CFD53EA0079F1AD /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD01CFD53EA0079F1AD /* Log.swift */; };
+		A7F05BD31CFD54430079F1AD /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD21CFD54430079F1AD /* Logger.swift */; };
+		A7F05BD51CFD54FE0079F1AD /* LogOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD41CFD54FE0079F1AD /* LogOutput.swift */; };
+		A7F05BD71CFD551A0079F1AD /* ConsoleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD61CFD551A0079F1AD /* ConsoleOutput.swift */; };
 		BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665BE5F2DD7CCFDA2D5F97 /* WBCustomization.m */; };
 		BA66533BF5BE6103F7230434 /* WBImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66548D45A03F16399057F5 /* WBImageViewController.m */; };
 		BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66590C0394B2CE9704CC15 /* WBCategoriesViewController.m */; };
@@ -445,6 +451,12 @@
 		A7F05BC11CFC42900079F1AD /* ReceiptColumnPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnPrice.swift; sourceTree = "<group>"; };
 		A7F05BC31CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnPriceTests.swift; sourceTree = "<group>"; };
 		A7F05BC51CFC453C0079F1AD /* ReceiptColumnReceiptId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnReceiptId.swift; sourceTree = "<group>"; };
+		A7F05BCB1CFD4A0F0079F1AD /* TripsFetchedModelAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsFetchedModelAdapter.swift; sourceTree = "<group>"; };
+		A7F05BCD1CFD4AE30079F1AD /* Database+Trips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+Trips.swift"; sourceTree = "<group>"; };
+		A7F05BD01CFD53EA0079F1AD /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		A7F05BD21CFD54430079F1AD /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		A7F05BD41CFD54FE0079F1AD /* LogOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOutput.swift; sourceTree = "<group>"; };
+		A7F05BD61CFD551A0079F1AD /* ConsoleOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleOutput.swift; sourceTree = "<group>"; };
 		AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceiptsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableViewController.m; sourceTree = "<group>"; };
 		BA665109C535866B59AD5544 /* WBGenerateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBGenerateViewController.m; sourceTree = "<group>"; };
@@ -1041,6 +1053,7 @@
 				84A73C3418E74C5C00D35A57 /* collections */,
 				EA3CF0981AE7962C00B14B73 /* Extensions */,
 				84D6719518D336E100B704A4 /* images */,
+				A7F05BCF1CFD53D90079F1AD /* Log */,
 				EA8D81691AEA668100BAC943 /* Model */,
 				EA2B8D7B1B4EF1AE0043A84B /* PDF */,
 				EAF9ADDF1AECF8BF0000AC84 /* Persistence */,
@@ -1101,6 +1114,17 @@
 				A7F05BBF1CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift */,
 			);
 			path = Receipt;
+			sourceTree = "<group>";
+		};
+		A7F05BCF1CFD53D90079F1AD /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				A7F05BD61CFD551A0079F1AD /* ConsoleOutput.swift */,
+				A7F05BD01CFD53EA0079F1AD /* Log.swift */,
+				A7F05BD21CFD54430079F1AD /* Logger.swift */,
+				A7F05BD41CFD54FE0079F1AD /* LogOutput.swift */,
+			);
+			path = Log;
 			sourceTree = "<group>";
 		};
 		BA665244D3A45FAFFE0816AB /* Receipts */ = {
@@ -1472,11 +1496,13 @@
 				EA888A7B1AFA5C5900DF2AE6 /* Database+Receipts.m */,
 				EA888A841AFB4FBD00DF2AE6 /* Database+Trips.h */,
 				EA888A851AFB4FBD00DF2AE6 /* Database+Trips.m */,
+				A7F05BCD1CFD4AE30079F1AD /* Database+Trips.swift */,
 				EA07BF541AF4D129004D17F6 /* DatabaseQueryBuilder.h */,
 				EA07BF551AF4D129004D17F6 /* DatabaseQueryBuilder.m */,
 				EA07BF641AF51854004D17F6 /* FetchedModelAdapter.h */,
 				EA07BF651AF51854004D17F6 /* FetchedModelAdapter.m */,
 				EA07BF671AF51876004D17F6 /* FetchedModelAdapterDelegate.h */,
+				A7F05BCB1CFD4A0F0079F1AD /* TripsFetchedModelAdapter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2089,6 +2115,7 @@
 				EA24EC6D1B1F64F000FCCB27 /* DecimalFormatter.m in Sources */,
 				A7F05BA41CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift in Sources */,
 				EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */,
+				A7F05BCE1CFD4AE30079F1AD /* Database+Trips.swift in Sources */,
 				EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */,
 				EA888A861AFB4FBD00DF2AE6 /* Database+Trips.m in Sources */,
 				EA00D0101B06321A00C87678 /* EditTripViewController.m in Sources */,
@@ -2136,12 +2163,14 @@
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
 				EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */,
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
+				A7F05BD31CFD54430079F1AD /* Logger.swift in Sources */,
 				EAE319621B10BB5C0032887E /* TaxCalculator.m in Sources */,
 				845E33E018D87CEF006A506A /* WBDynamicPicker.m in Sources */,
 				EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */,
 				EA22FB4D1B1AF1A40060D23D /* CategoryCell.m in Sources */,
 				EA71DFCC1AF9FEEC004092C3 /* SwitchControlCell.m in Sources */,
 				EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */,
+				A7F05BD71CFD551A0079F1AD /* ConsoleOutput.swift in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
 				EA8EB10A1B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m in Sources */,
 				EA22679E1B1E035F005761E7 /* ReceiptSummaryCell.m in Sources */,
@@ -2169,6 +2198,7 @@
 				EA8ABE421B1A1D1700DBFA29 /* Database+Categories.m in Sources */,
 				EA07BF471AF3FD1D004D17F6 /* Distance.m in Sources */,
 				843F620218EF4BB0001ACBB1 /* WBImageUtils.m in Sources */,
+				A7F05BCC1CFD4A0F0079F1AD /* TripsFetchedModelAdapter.swift in Sources */,
 				EA888A791AFA44E300DF2AE6 /* SettingsViewController.m in Sources */,
 				EA13099D1B5027D10045FDDE /* TableHeaderRow.m in Sources */,
 				EAE9DAFD1AF8EAD100F4FE76 /* DistanceCommentColumn.m in Sources */,
@@ -2198,6 +2228,7 @@
 				84D6719B18D34E4900B704A4 /* WBCurrency.m in Sources */,
 				EAB9700F1B078944005E1D63 /* MasterTripsViewController.m in Sources */,
 				EA07BF531AF4CD26004D17F6 /* Database+PaymentMethods.m in Sources */,
+				A7F05BD51CFD54FE0079F1AD /* LogOutput.swift in Sources */,
 				EA07BF341AF3B703004D17F6 /* InlinedDatePickerCell.m in Sources */,
 				EA2F23051B41BFD3008AF61E /* Database+Purchases.m in Sources */,
 				EA1D42B91B03831700D64D3A /* PaymentMethodsViewController.m in Sources */,
@@ -2236,6 +2267,7 @@
 				EA07BF5F1AF4E801004D17F6 /* DistanceSummaryCell.m in Sources */,
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
+				A7F05BD11CFD53EA0079F1AD /* Log.swift in Sources */,
 				EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */,
 				EA1D42BD1B03851C00D64D3A /* TitleOnlyCell.m in Sources */,
 				A7F05BC21CFC42900079F1AD /* ReceiptColumnPrice.swift in Sources */,

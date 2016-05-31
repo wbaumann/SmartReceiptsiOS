@@ -11,12 +11,16 @@
 @protocol FetchedModelAdapterDelegate;
 @class Database;
 @class FMDatabase;
+@protocol FetchedModel;
+
+typedef void (^AfterFetchClosure)(id<FetchedModel> model);
 
 @interface FetchedModelAdapter : NSObject
 
 @property (nonatomic, weak) id<FetchedModelAdapterDelegate> delegate;
 @property (nonatomic, strong) Class modelClass;
 @property (nonatomic, strong) NSObject *associatedModel;
+@property (nonatomic, copy) AfterFetchClosure afterFetchHandler;
 
 - (id)objectAtIndex:(NSInteger)index;
 - (id)initWithDatabase:(Database *)database;

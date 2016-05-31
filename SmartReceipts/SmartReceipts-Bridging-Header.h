@@ -11,10 +11,12 @@
 #import "Database.h"
 #import "DatabaseCreateAtVersion11.h"
 #import "DatabaseMigration.h"
+#import "DatabaseQueryBuilder.h"
 #import "DatabaseTableNames.h"
 #import "DatabaseUpgradeToVersion12.h"
 #import "DatabaseUpgradeToVersion13.h"
 
+#import "FetchedModelAdapter.h"
 #import "FMDB.h"
 
 #import "InputCellsSection.h"
