@@ -101,6 +101,10 @@
 		A7F05BD71CFD551A0079F1AD /* ConsoleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD61CFD551A0079F1AD /* ConsoleOutput.swift */; };
 		A7F05BD91CFD69640079F1AD /* PricesCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD81CFD69640079F1AD /* PricesCollection.swift */; };
 		A7F05BDB1CFD6C520079F1AD /* PricesCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BDA1CFD6C510079F1AD /* PricesCollectionTests.swift */; };
+		A7F05BDF1CFD8FEC0079F1AD /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BDE1CFD8FEC0079F1AD /* Database.swift */; };
+		A7F05BE11CFD95390079F1AD /* FMDatabase+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BE01CFD95390079F1AD /* FMDatabase+Functions.swift */; };
+		A7F05BE31CFD95710079F1AD /* FMDatabase+Receipts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BE21CFD95710079F1AD /* FMDatabase+Receipts.swift */; };
+		A7F05BE51CFD95830079F1AD /* FMDatabase+Distances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BE41CFD95830079F1AD /* FMDatabase+Distances.swift */; };
 		BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665BE5F2DD7CCFDA2D5F97 /* WBCustomization.m */; };
 		BA66533BF5BE6103F7230434 /* WBImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66548D45A03F16399057F5 /* WBImageViewController.m */; };
 		BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66590C0394B2CE9704CC15 /* WBCategoriesViewController.m */; };
@@ -459,6 +463,10 @@
 		A7F05BD61CFD551A0079F1AD /* ConsoleOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleOutput.swift; sourceTree = "<group>"; };
 		A7F05BD81CFD69640079F1AD /* PricesCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricesCollection.swift; sourceTree = "<group>"; };
 		A7F05BDA1CFD6C510079F1AD /* PricesCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricesCollectionTests.swift; sourceTree = "<group>"; };
+		A7F05BDE1CFD8FEC0079F1AD /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		A7F05BE01CFD95390079F1AD /* FMDatabase+Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FMDatabase+Functions.swift"; sourceTree = "<group>"; };
+		A7F05BE21CFD95710079F1AD /* FMDatabase+Receipts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FMDatabase+Receipts.swift"; sourceTree = "<group>"; };
+		A7F05BE41CFD95830079F1AD /* FMDatabase+Distances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FMDatabase+Distances.swift"; sourceTree = "<group>"; };
 		AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceiptsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableViewController.m; sourceTree = "<group>"; };
 		BA665109C535866B59AD5544 /* WBGenerateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBGenerateViewController.m; sourceTree = "<group>"; };
@@ -1501,6 +1509,9 @@
 				EA07BF641AF51854004D17F6 /* FetchedModelAdapter.h */,
 				EA07BF651AF51854004D17F6 /* FetchedModelAdapter.m */,
 				EA07BF671AF51876004D17F6 /* FetchedModelAdapterDelegate.h */,
+				A7F05BE41CFD95830079F1AD /* FMDatabase+Distances.swift */,
+				A7F05BE01CFD95390079F1AD /* FMDatabase+Functions.swift */,
+				A7F05BE21CFD95710079F1AD /* FMDatabase+Receipts.swift */,
 				A7F05BCB1CFD4A0F0079F1AD /* TripsFetchedModelAdapter.swift */,
 			);
 			path = Helpers;
@@ -1788,6 +1799,7 @@
 				EAF9ADE01AECF8BF0000AC84 /* Migrations */,
 				EA69EF131AEFC81A00276B70 /* Database.h */,
 				EA69EF141AEFC81A00276B70 /* Database.m */,
+				A7F05BDE1CFD8FEC0079F1AD /* Database.swift */,
 				EA07BF481AF40066004D17F6 /* DatabaseTableNames.h */,
 				EA07BF491AF40066004D17F6 /* DatabaseTableNames.m */,
 				A7AFB2451CEC219100718744 /* DatabaseTableNames.swift */,
@@ -2094,6 +2106,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7F05BDF1CFD8FEC0079F1AD /* Database.swift in Sources */,
 				EAF9ADE91AECF9200000AC84 /* DatabaseUpgradeToVersion12.m in Sources */,
 				A7F05B9E1CFB49BE0079F1AD /* Taxed.swift in Sources */,
 				4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */,
@@ -2157,6 +2170,7 @@
 				EAE3195F1B10A5EE0032887E /* PendingHUDView.m in Sources */,
 				A7F05BAC1CFC0AB00079F1AD /* ExchangedPriced.swift in Sources */,
 				EA3C96AD1AECC95100A2A5F9 /* TripImagesPDFGenerator.m in Sources */,
+				A7F05BE31CFD95710079F1AD /* FMDatabase+Receipts.swift in Sources */,
 				EA0677ED1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m in Sources */,
 				EA259CD81B1606EC00ECBD67 /* DataImport.m in Sources */,
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
@@ -2182,6 +2196,7 @@
 				EA5ECA2E1AF9F43F008D2CFB /* SettingsSegmentControlCell.m in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
 				A7D080FB1CEAD2FD00B3C551 /* WBAppDelegate.swift in Sources */,
+				A7F05BE51CFD95830079F1AD /* FMDatabase+Distances.swift in Sources */,
 				A79FDC6C1CEA0A4100328DBB /* AnalyticsService.swift in Sources */,
 				EA4C5CBA1AF2864B0083FDD7 /* TextEntryCell.m in Sources */,
 				EA7634AD1B3DB61900AD8737 /* WBPreferences.m in Sources */,
@@ -2216,6 +2231,7 @@
 				EAE9DB011AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m in Sources */,
 				EAE8F9B21AF149DC00E837E3 /* TripDistancesViewController.m in Sources */,
 				A7F05BC61CFC453C0079F1AD /* ReceiptColumnReceiptId.swift in Sources */,
+				A7F05BE11CFD95390079F1AD /* FMDatabase+Functions.swift in Sources */,
 				EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */,
 				A7F05B9A1CFB49590079F1AD /* Priced.swift in Sources */,
 				EA69EF151AEFC81A00276B70 /* Database.m in Sources */,

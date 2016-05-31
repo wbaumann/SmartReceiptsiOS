@@ -3,6 +3,7 @@
 #import "Constants.h"
 
 #import "Database+Categories.h"
+#import "Database+Distances.h"
 #import "Database+Functions.h"
 #import "Database+Import.h"
 #import "Database+PaymentMethods.h"
@@ -15,7 +16,9 @@
 #import "DatabaseTableNames.h"
 #import "DatabaseUpgradeToVersion12.h"
 #import "DatabaseUpgradeToVersion13.h"
+#import "Distance.h"
 
+#import "FetchedModel.h"
 #import "FetchedModelAdapter.h"
 #import "FMDB.h"
 

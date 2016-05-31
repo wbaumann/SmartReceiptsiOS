@@ -17,13 +17,13 @@ extension Database {
         adapter.setQuery(query.buildStatement(), parameters: query.parameters())
         adapter.modelClass = WBTrip.self
         adapter.afterFetchHandler = {
-            [weak adapter] model in
+            [weak adapter] model, database in
             
             guard let trip = model as? WBTrip, adapter = adapter else {
                 return
             }
             
-            adapter.refreshPriceForTrip(trip)
+            adapter.refreshPriceForTrip(trip, inDatabase: database)
         }
         
         adapter.fetch()
