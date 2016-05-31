@@ -56,4 +56,16 @@ class PricesCollection: Price {
         let newTotal = total.decimalNumberByAdding(amount)
         totals[currency] = newTotal
     }
+    
+    override var hash : Int {
+        return currencyFormattedPrice().hash
+    }
+    
+    override func isEqual(object: AnyObject?) -> Bool {
+        if let other = object as? PricesCollection {
+            return currencyFormattedPrice() == other.currencyFormattedPrice()
+        } else {
+            return false
+        }
+    }
 }
