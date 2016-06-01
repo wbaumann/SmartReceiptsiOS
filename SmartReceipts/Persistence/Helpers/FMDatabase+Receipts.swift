@@ -10,8 +10,7 @@ import Foundation
 
 extension FMDatabase {    
     func fetchAllReceiptsForTrip(trip: WBTrip) -> [WBReceipt] {
-        let query = DatabaseQueryBuilder.selectAllStatementForTable(ReceiptsTable.Name)
-        query.`where`(ReceiptsTable.Column.Parent, value: trip.name)
+        let query = WBReceipt.selectAllQueryForTrip(trip)
 
         let injectTripClosure: (WBReceipt) -> () = {
             receipt in

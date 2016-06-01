@@ -86,3 +86,12 @@ enum DistanceTable {
         static let RateCurrency = "rate_currency"
     }
 }
+
+enum PaymentMethodsTable {
+    static let Name = "paymentmethods"
+        
+    enum  Column {
+        static let Id = "id"
+        static let Method = "method"
+    }
+}

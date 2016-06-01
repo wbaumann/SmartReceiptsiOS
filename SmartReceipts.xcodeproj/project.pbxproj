@@ -74,6 +74,7 @@
 		A7B6FC5D1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B6FC5C1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift */; };
 		A7D080FB1CEAD2FD00B3C551 /* WBAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D080FA1CEAD2FD00B3C551 /* WBAppDelegate.swift */; };
 		A7D554CB1CFEB10100169FD2 /* WBReceiptTargetPriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D554CA1CFEB10100169FD2 /* WBReceiptTargetPriceTests.swift */; };
+		A7D554CF1CFF061100169FD2 /* WBReceipt+Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D554CE1CFF061100169FD2 /* WBReceipt+Query.swift */; };
 		A7F05B981CFB49220079F1AD /* WBReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B971CFB49220079F1AD /* WBReceipt.swift */; };
 		A7F05B9A1CFB49590079F1AD /* Priced.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B991CFB49590079F1AD /* Priced.swift */; };
 		A7F05B9E1CFB49BE0079F1AD /* Taxed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */; };
@@ -438,6 +439,7 @@
 		A7B6FC5C1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnExchangeRate.swift; sourceTree = "<group>"; };
 		A7D080FA1CEAD2FD00B3C551 /* WBAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBAppDelegate.swift; sourceTree = "<group>"; };
 		A7D554CA1CFEB10100169FD2 /* WBReceiptTargetPriceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBReceiptTargetPriceTests.swift; sourceTree = "<group>"; };
+		A7D554CE1CFF061100169FD2 /* WBReceipt+Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WBReceipt+Query.swift"; sourceTree = "<group>"; };
 		A7F05B971CFB49220079F1AD /* WBReceipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBReceipt.swift; sourceTree = "<group>"; };
 		A7F05B991CFB49590079F1AD /* Priced.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priced.swift; sourceTree = "<group>"; };
 		A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taxed.swift; sourceTree = "<group>"; };
@@ -1571,6 +1573,7 @@
 				EA8D81701AEA668100BAC943 /* WBReceipt.h */,
 				EA8D81711AEA668100BAC943 /* WBReceipt.m */,
 				A7F05B971CFB49220079F1AD /* WBReceipt.swift */,
+				A7D554CE1CFF061100169FD2 /* WBReceipt+Query.swift */,
 				EA8D81721AEA668100BAC943 /* WBTrip.h */,
 				EA8D81731AEA668100BAC943 /* WBTrip.m */,
 			);
@@ -2235,6 +2238,7 @@
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
 				EA2B8D8B1B4EF45B0043A84B /* TripReportHeader.m in Sources */,
 				EAE9DB011AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m in Sources */,
+				A7D554CF1CFF061100169FD2 /* WBReceipt+Query.swift in Sources */,
 				EAE8F9B21AF149DC00E837E3 /* TripDistancesViewController.m in Sources */,
 				A7F05BC61CFC453C0079F1AD /* ReceiptColumnReceiptId.swift in Sources */,
 				A7F05BE11CFD95390079F1AD /* FMDatabase+Functions.swift in Sources */,
