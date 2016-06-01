@@ -10,6 +10,7 @@
 
 @protocol FetchedModel <NSObject>
 
+- (instancetype)init;
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet;
 - (BOOL)isEqual:(id)other;
 - (NSUInteger)hash;

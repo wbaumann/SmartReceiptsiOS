@@ -11,13 +11,12 @@
 
 @class WBCurrency;
 @class Price;
-
-extern NSString *const MULTI_CURRENCY;
+@class PricesCollection;
 
 @interface WBTrip : NSObject <FetchedModel>
 
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, strong) Price *price;
+@property (nonatomic, strong) PricesCollection *pricesSummary;
 @property (nonatomic, strong) WBCurrency *defaultCurrency;
 @property (nonatomic, strong) NSString *comment;
 @property (nonatomic, strong) NSString *costCenter;
@@ -26,14 +25,12 @@ extern NSString *const MULTI_CURRENCY;
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) NSTimeZone *endTimeZone;
 
-+ (NSString *)MULTI_CURRENCY;
-
 - (NSString *)directoryPath;
 - (NSString *)fileInDirectoryPath:(NSString *)filename;
 - (float)miles;
 - (void)setMileage:(float)mileage;
 - (BOOL)createDirectoryIfNotExists;
-- (NSString *)priceWithCurrencyFormatted;
+- (NSString *)formattedPrice;
 - (BOOL)dateOutsideTripBounds:(NSDate *)date;
 
 @end

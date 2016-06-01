@@ -26,8 +26,6 @@
 - (NSDecimalNumber *)executeDecimalQuery:(DatabaseQueryBuilder *)query;
 - (NSDecimalNumber *)executeDecimalQuery:(DatabaseQueryBuilder *)query usingDatabase:(FMDatabase *)database;
 - (id<FetchedModel>)executeFetchFor:(Class)fetchedClass withQuery:(DatabaseQueryBuilder *)query;
-- (NSString *)selectCurrencyFromTable:(NSString *)tableName currencyColumn:(NSString *)currencyColumn forTrip:(WBTrip *)trip;
-- (NSString *)selectCurrencyFromTable:(NSString *)tableName currencyColumn:(NSString *)currencyColumn forTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (FetchedModelAdapter *)createAdapterUsingQuery:(DatabaseQueryBuilder *)query forModel:(Class)modelClass;
 - (FetchedModelAdapter *)createAdapterUsingQuery:(DatabaseQueryBuilder *)query forModel:(Class)modelClass associatedModel:(NSObject *)model;
 - (double)executeDoubleQuery:(DatabaseQueryBuilder *)query usingDatabase:(FMDatabase *)database;

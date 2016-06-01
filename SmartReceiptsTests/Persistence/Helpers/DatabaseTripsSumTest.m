@@ -18,6 +18,12 @@
 #import "WBPreferences.h"
 #import "Price.h"
 
+@interface Database(Expose)
+
+- (WBTrip *)tripWithName:(NSString *)name;
+
+@end
+
 @interface DatabaseTripsSumTest : SmartReceiptsTestsBase
 
 @property (nonatomic, strong) WBTrip *trip;
@@ -45,35 +51,15 @@
 
 
 - (void)testSumOfTripWithDistances {
-    NSDecimalNumber *sum = [self.db totalPriceForTrip:self.trip];
-    XCTAssertEqualObjects([NSDecimalNumber decimalNumberOrZero:@"66"], sum);
+    WBTrip *trip = [self.db tripWithName:self.trip.name];
+    XCTAssertEqualObjects(@"$66.00", trip.formattedPrice);
 }
 
 - (void)testSumOfTripWithoutDistances {
     [WBPreferences setTheDistancePriceBeIncludedInReports:NO];
 
-    NSDecimalNumber *sum = [self.db totalPriceForTrip:self.trip];
-    XCTAssertEqualObjects([NSDecimalNumber decimalNumberOrZero:@"6"], sum);
-}
-
-- (void)testTripPriceUpdatedOnDistanceEntry {
-    NSDecimalNumber *startPrice = [self.db totalPriceForTrip:self.trip];
-
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"10"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"10"]}];
-
-    WBTrip *fetched = [self.db tripWithName:self.trip.name];
-    NSDecimalNumber *expected = [startPrice decimalNumberByAdding:[NSDecimalNumber decimalNumberOrZero:@"100"]];
-    XCTAssertEqualObjects(expected, fetched.price.amount);
-}
-
-- (void)testTripPriceUpdatedOnReceiptEntry {
-    NSDecimalNumber *startPrice = [self.db totalPriceForTrip:self.trip];
-
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"50"]}];
-
-    WBTrip *fetched = [self.db tripWithName:self.trip.name];
-    NSDecimalNumber *expected = [startPrice decimalNumberByAdding:[NSDecimalNumber decimalNumberOrZero:@"50"]];
-    XCTAssertEqualObjects(expected, fetched.price.amount);
+    WBTrip *trip = [self.db tripWithName:self.trip.name];
+    XCTAssertEqualObjects(@"$6.00", trip.formattedPrice);
 }
 
 @end

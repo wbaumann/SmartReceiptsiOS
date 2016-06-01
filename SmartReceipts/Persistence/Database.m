@@ -108,18 +108,6 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
         return;
     }
 
-    [self setDisableNotifications:YES];
-
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        NSArray *trips = [self allTripsUsingDatabase:db];
-        SRLog(@"Update price on %tu trips", trips.count);
-        for (WBTrip *trip in trips) {
-            [self updatePriceOfTrip:trip usingDatabase:db];
-        }
-    }];
-
-    [self setDisableNotifications:NO];
-
     [self markKnownValues];
 
     dispatch_async(dispatch_get_main_queue(), ^{

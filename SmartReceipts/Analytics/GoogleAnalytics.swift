@@ -17,9 +17,7 @@ class GoogleAnalytics: AnalyticsService {
         
         let gai = GAI.sharedInstance()
         gai.trackUncaughtExceptions = false
-        #if DEBUG
-        gai.logger.logLevel = .Verbose
-        #endif
+        gai.logger.logLevel = .None
     }
     
     func sendEvent(event: Event) {

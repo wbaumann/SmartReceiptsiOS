@@ -70,8 +70,11 @@
 
     [[RateApplication sharedInstance] markAppLaunch];
     
-    [self enableAnalytics];
-
+    [self enableAnalytics];    
+#if DEBUG
+    [self enableLogging];
+#endif
+    
     return YES;
 }
 

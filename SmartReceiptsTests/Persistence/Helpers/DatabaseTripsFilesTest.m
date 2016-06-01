@@ -15,6 +15,12 @@
 #import "DatabaseTableNames.h"
 #import "Database+Trips.h"
 
+@interface Database (Expose)
+
+- (WBTrip *)tripWithName:(NSString *)name;
+
+@end
+
 @interface DatabaseTripsFilesTest : SmartReceiptsTestsBase
 
 @property (nonatomic, strong) WBTrip *testTrip;

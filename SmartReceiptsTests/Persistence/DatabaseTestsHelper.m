@@ -23,9 +23,16 @@
 #import "WBCurrency.h"
 #import "NSDate+Calculations.h"
 
+@interface Database (Expose)
+
+- (WBTrip *)tripWithName:(NSString *)name;
+
+@end
+
 @interface Distance (TestExpose)
 
 - (id)initWithTrip:(WBTrip *)trip distance:(NSDecimalNumber *)distance rate:(Price *)rate location:(NSString *)location date:(NSDate *)date timeZone:(NSTimeZone *)timeZone comment:(NSString *)comment;
+- (WBTrip *)tripWithName:(NSString *)name;
 
 @end
 
@@ -94,6 +101,7 @@
     params[ReceiptsTable.COLUMN_PATH] = [NSString stringWithFormat:@"TheFileOfDoom-%@", [NSDate date].milliseconds];
     params[ReceiptsTable.COLUMN_DATE] = [NSDate date];
     params[ReceiptsTable.COLUMN_PAYMENT_METHOD_ID] = [self allPaymentMethods].firstObject;
+    params[ReceiptsTable.COLUMN_EXCHANGE_RATE] = [NSDecimalNumber decimalNumberWithString:@"-1"];
 
     [params addEntriesFromDictionary:modifiedParams];
     
@@ -111,6 +119,7 @@
     [receipt setPaymentMethod:params[ReceiptsTable.COLUMN_PAYMENT_METHOD_ID]];
     [receipt setImageFileName:params[ReceiptsTable.COLUMN_PATH]];
     [receipt setDate:params[ReceiptsTable.COLUMN_DATE]];
+    [receipt setExchangeRate:params[ReceiptsTable.COLUMN_EXCHANGE_RATE]];
 
     [self saveReceipt:receipt];
 }

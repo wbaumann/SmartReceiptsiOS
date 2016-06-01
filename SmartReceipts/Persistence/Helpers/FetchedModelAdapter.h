@@ -11,12 +11,19 @@
 @protocol FetchedModelAdapterDelegate;
 @class Database;
 @class FMDatabase;
+@protocol FetchedModel;
+
+NS_ASSUME_NONNULL_BEGIN
+
+typedef void (^AfterFetchClosure)(id<FetchedModel> model, FMDatabase *);
 
 @interface FetchedModelAdapter : NSObject
 
 @property (nonatomic, weak) id<FetchedModelAdapterDelegate> delegate;
 @property (nonatomic, strong) Class modelClass;
 @property (nonatomic, strong) NSObject *associatedModel;
+@property (nonatomic, copy) AfterFetchClosure afterFetchHandler;
+@property (nonatomic, strong, readonly) Database *database;
 
 - (id)objectAtIndex:(NSInteger)index;
 - (id)initWithDatabase:(Database *)database;
@@ -27,5 +34,7 @@
 - (void)fetchUsingDatabase:(FMDatabase *)database;
 - (NSArray *)allObjects;
 - (NSUInteger)indexForObject:(id)object;
+
+NS_ASSUME_NONNULL_END
 
 @end

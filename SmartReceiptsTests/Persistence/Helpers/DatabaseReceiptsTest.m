@@ -20,6 +20,12 @@
 #import "Price.h"
 #import "Database+Trips.h"
 
+@interface Database (Expose)
+
+- (WBTrip *)tripWithName:(NSString *)name;
+
+@end
+
 @interface DatabaseReceiptsTest : SmartReceiptsTestsBase
 
 @end
@@ -57,8 +63,8 @@
 
 - (void)testReceiptDeleted {
     NSString *receiptName = @"Unique12345678";
-    NSDecimalNumber *testPrice = [NSDecimalNumber decimalNumberOrZero:@"10"];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : receiptName, ReceiptsTable.COLUMN_PRICE : testPrice}];
+    Price *testPrice = [Price priceWithAmount:[NSDecimalNumber decimalNumberOrZero:@"10"] currencyCode:@"USD"];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : receiptName, ReceiptsTable.COLUMN_PRICE : testPrice.amount}];
 
     WBReceipt *receipt = [self.db receiptWithName:receiptName];
 
@@ -66,7 +72,7 @@
     [self.db.filesManager saveImage:receiptImage forReceipt:receipt];
 
     WBTrip *trip = receipt.trip;
-    XCTAssertEqualObjects(testPrice, trip.price.amount);
+    XCTAssertEqualObjects(testPrice.currencyFormattedPrice, trip.formattedPrice);
 
     NSUInteger countBefore = [self.db countRowsInTable:ReceiptsTable.TABLE_NAME];
     [self.db deleteReceipt:receipt];
@@ -77,7 +83,7 @@
     XCTAssertFalse([self.db.filesManager fileExistsForReceipt:receipt]);
 
     WBTrip *reloaded = [self.db tripWithName:receipt.trip.name];
-    XCTAssertEqualObjects([NSDecimalNumber zero], reloaded.price.amount);
+    XCTAssertEqualObjects([Price zeroPriceWithCurrencyCode:@"USD"].currencyFormattedPrice, reloaded.formattedPrice);
 }
 
 @end

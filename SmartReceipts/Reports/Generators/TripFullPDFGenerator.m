@@ -16,7 +16,6 @@
 #import "WBReceipt.h"
 #import "DistancesToReceiptsConverter.h"
 #import "NSString+Validation.h"
-#import "PricesCollection.h"
 #import "Distance.h"
 #import "Constants.h"
 #import "PrettyPDFRender.h"

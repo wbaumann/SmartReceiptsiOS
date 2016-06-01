@@ -87,7 +87,6 @@
     [query addParam:TripsTable.COLUMN_TO value:trip.endDate.milliseconds];
     [query addParam:TripsTable.COLUMN_FROM_TIMEZONE value:trip.startTimeZone.name];
     [query addParam:TripsTable.COLUMN_TO_TIMEZONE value:trip.endTimeZone.name];
-    [query addParam:TripsTable.COLUMN_PRICE value:trip.price.amount];
     [query addParam:TripsTable.COLUMN_DEFAULT_CURRENCY value:trip.defaultCurrency.code];
     [query addParam:TripsTable.COLUMN_COMMENT value:trip.comment];
     [query addParam:TripsTable.COLUMN_COST_CENTER value:trip.costCenter];
@@ -164,70 +163,6 @@
     }
 
     return result;
-}
-
-- (WBTrip *)tripWithName:(NSString *)tripName {
-    DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:TripsTable.TABLE_NAME];
-    [select where:TripsTable.COLUMN_NAME value:tripName];
-    return (WBTrip *)[self executeFetchFor:[WBTrip class] withQuery:select];
-}
-
-- (Price *)updatePriceOfTrip:(WBTrip *)trip {
-    __block Price *result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self updatePriceOfTrip:trip usingDatabase:db];
-    }];
-
-    return result;
-}
-
-- (Price *)updatePriceOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
-    Price *price = [self tripPrice:trip usingDatabase:database];
-
-    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:TripsTable.TABLE_NAME];
-    [update addParam:TripsTable.COLUMN_PRICE value:price.amount];
-    [update where:TripsTable.COLUMN_NAME value:trip.name];
-
-    [self executeQuery:update usingDatabase:database];
-
-    [self notifyUpdateOfModel:trip];
-
-    return price;
-}
-
-- (Price *)tripPrice:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
-    NSDecimalNumber *total = [self totalPriceForTrip:trip usingDatabase:database];
-    //TODO jaanus: is this needed?
-    NSString *currencyCode = [self aggregateCurrencyCodeForTrip:trip usingDatabase:database];
-
-    return [Price priceWithAmount:total currencyCode:currencyCode];
-}
-
-- (NSString *)aggregateCurrencyCodeForTrip:(WBTrip *)trip {
-    __block NSString *result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self aggregateCurrencyCodeForTrip:trip usingDatabase:db];
-    }];
-
-    return result;
-}
-
-- (NSString *)aggregateCurrencyCodeForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
-    NSString *receiptsCurrency = [self currencyForTripReceipts:trip usingDatabase:database];
-    if ([MULTI_CURRENCY isEqualToString:receiptsCurrency]) {
-        return receiptsCurrency;
-    }
-
-    if (![WBPreferences isTheDistancePriceBeIncludedInReports]) {
-        return receiptsCurrency;
-    }
-
-    NSString *distancesCurrency = [self currencyForTripDistances:trip usingDatabase:database];
-    if ([receiptsCurrency isEqualToString:distancesCurrency]) {
-        return receiptsCurrency;
-    }
-
-    return MULTI_CURRENCY;
 }
 
 @end

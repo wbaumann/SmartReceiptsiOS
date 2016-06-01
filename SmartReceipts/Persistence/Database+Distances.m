@@ -55,7 +55,7 @@
         result = [self updateDistance:distance usingDatabase:database];
     }
 
-    [self triggerPriceUpdateOfTrip:distance.trip usingDatabase:database];
+    [self notifyUpdateOfModel:distance.trip];
     return result ;
 }
 
@@ -92,7 +92,7 @@
     BOOL result = [self executeQuery:delete usingDatabase:database];
     if (result) {
         [self notifyDeleteOfModel:distance];
-        [self triggerPriceUpdateOfTrip:distance.trip usingDatabase:database];
+        [self notifyUpdateOfModel:distance.trip];
     }
     return result;
 }
@@ -134,19 +134,6 @@
     return [self executeDecimalQuery:sumStatement usingDatabase:database];
 }
 
-- (NSString *)currencyForTripDistances:(WBTrip *)trip {
-    __block NSString *result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self currencyForTripDistances:trip usingDatabase:db];
-    }];
-
-    return result;
-}
-
-- (NSString *)currencyForTripDistances:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
-    return [self selectCurrencyFromTable:DistanceTable.TABLE_NAME currencyColumn:DistanceTable.COLUMN_RATE_CURRENCY forTrip:trip usingDatabase:database];
-}
-
 - (NSArray *)allDistancesForTrip:(WBTrip *)trip {
     return [[self fetchedAdapterForDistancesInTrip:trip] allObjects];
 }
@@ -169,14 +156,6 @@
     [sum setSumColumn:DistanceTable.COLUMN_DISTANCE];
     [sum where:DistanceTable.COLUMN_PARENT value:trip.name];
     return [self executeDecimalQuery:sum];
-}
-
-- (void)triggerPriceUpdateOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
-    if (![WBPreferences isTheDistancePriceBeIncludedInReports]) {
-        return;
-    }
-
-    [self updatePriceOfTrip:trip usingDatabase:database];
 }
 
 @end

@@ -15,6 +15,7 @@
 #import "FetchedModelAdapter.h"
 #import "Database+Trips.h"
 #import "Constants.h"
+#import "SmartReceipts-Swift.h"
 
 NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 
@@ -74,7 +75,7 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 }
 
 - (FetchedModelAdapter *)createFetchedModelAdapter {
-    return [[Database sharedInstance] fetchedAdapterForAllTrips];
+    return [[Database sharedInstance] createUpdatingAdapterForAllTrips];
 }
 
 - (void)updatePricesWidth {
@@ -94,7 +95,8 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
     CGFloat maxWidth = 0;
 
     for (NSUInteger i = 0; i < [self numberOfItems]; ++i) {
-        NSString *str = [[self objectAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]] priceWithCurrencyFormatted];
+        WBTrip *trip = [self objectAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        NSString *str = [trip formattedPrice];
         CGRect bounds = [str boundingRectWithSize:CGSizeMake(1000, 100) options:NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:21]} context:nil];
         maxWidth = MAX(maxWidth, CGRectGetWidth(bounds) + 10);
     }
@@ -107,7 +109,7 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 
     WBTrip *trip = object;
 
-    cell.priceField.text = [trip priceWithCurrencyFormatted];
+    cell.priceField.text = [trip formattedPrice];
     cell.nameField.text = [trip name];
     cell.dateField.text = [NSString stringWithFormat:NSLocalizedString(@"trips.controller.from.to.date.label.base", nil),
                                                      [_dateFormatter formattedDate:[trip startDate] inTimeZone:[trip startTimeZone]],

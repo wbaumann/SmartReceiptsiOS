@@ -70,3 +70,28 @@ enum TripsTable {
         static let Price = "price"
     }
 }
+
+enum DistanceTable {
+    static let Name = "distance"
+        
+    enum Column {
+        static let Id = "id"
+        static let Parent = "parent"
+        static let Distance = "distance"
+        static let Location = "location"
+        static let Date = "date"
+        static let Timezone = "timezone"
+        static let Comment = "comment"
+        static let Rate = "rate"
+        static let RateCurrency = "rate_currency"
+    }
+}
+
+enum PaymentMethodsTable {
+    static let Name = "paymentmethods"
+        
+    enum  Column {
+        static let Id = "id"
+        static let Method = "method"
+    }
+}

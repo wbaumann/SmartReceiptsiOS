@@ -84,8 +84,8 @@
 
     BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {
-        [self updatePriceOfTrip:receipt.trip usingDatabase:database];
         [self notifyInsertOfModel:receipt];
+        [self notifyUpdateOfModel:receipt.trip];
     }
     return result;
 }
@@ -100,8 +100,8 @@
     [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
     BOOL result = [self executeQuery:update usingDatabase:database];
     if (result) {
-        [self updatePriceOfTrip:receipt.trip usingDatabase:database];
         [self notifyUpdateOfModel:receipt];
+        [self notifyUpdateOfModel:receipt.trip];
     }
     return result;
 }
@@ -127,27 +127,14 @@
     BOOL result = [self executeQuery:delete usingDatabase:database];
     if (result) {
         [self.filesManager deleteFileForReceipt:receipt];
-        [self updatePriceOfTrip:receipt.trip usingDatabase:database];
         [self notifyDeleteOfModel:receipt];
+        [self notifyUpdateOfModel:receipt.trip];
     }
     return result;
 }
 
 - (NSArray *)allReceiptsForTrip:(WBTrip *)trip {
-    NSString *receiptIdFullName = [NSString stringWithFormat:@"%@.%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
-    NSString *receiptIdAsName = [NSString stringWithFormat:@"%@_%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
-    NSString *paymentMethodIdFullName = [NSString stringWithFormat:@"%@.%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
-    NSString *paymentMethodIdAsName = [NSString stringWithFormat:@"%@_%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
-    
-    DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
-    if (trip) {
-        [selectAll where:ReceiptsTable.COLUMN_PARENT value:trip.name];
-    }
-    [selectAll select:receiptIdFullName as:receiptIdAsName];
-    [selectAll select:paymentMethodIdFullName as:paymentMethodIdAsName];
-    [selectAll leftJoin:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
-    [selectAll orderBy:ReceiptsTable.COLUMN_DATE ascending:NO];
-    
+    DatabaseQueryBuilder *selectAll = [WBReceipt selectAllQueryForTrip:trip];
     return [self allReceiptsWithQuery:selectAll forTrip:trip];
 }
 
@@ -190,19 +177,6 @@
     }
 
     return extraValue;
-}
-
-- (NSString *)currencyForTripReceipts:(WBTrip *)trip {
-    __block NSString *result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self currencyForTripReceipts:trip usingDatabase:db];
-    }];
-
-    return result;
-}
-
-- (NSString *)currencyForTripReceipts:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
-    return [self selectCurrencyFromTable:ReceiptsTable.TABLE_NAME currencyColumn:ReceiptsTable.COLUMN_ISO4217 forTrip:trip usingDatabase:database];
 }
 
 - (BOOL)deleteReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {

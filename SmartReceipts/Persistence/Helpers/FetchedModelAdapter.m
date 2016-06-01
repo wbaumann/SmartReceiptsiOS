@@ -12,6 +12,7 @@
 #import "FetchedModel.h"
 #import "Constants.h"
 #import "FetchedModelAdapterDelegate.h"
+#import "SmartReceipts-Swift.h"
 
 @interface FetchedModelAdapter ()
 
@@ -66,7 +67,14 @@
 }
 
 - (void)fetchUsingDatabase:(FMDatabase *)database {
-    NSArray *objects = [self performObjectsFetchUsingDatabase:database];
+    NSArray<id<FetchedModel>> *objects = [self performObjectsFetchUsingDatabase:database];
+    
+    if (self.afterFetchHandler) {
+        for (id<FetchedModel> model in objects) {
+            self.afterFetchHandler(model, database);
+        }
+    }
+    
     [self setModels:objects];
 }
 
@@ -112,7 +120,15 @@
 
 - (void)refreshContentAndNotifyUpdateChanges:(NSObject *)updated {
     NSArray *before = [NSArray arrayWithArray:self.models];
-    [self fetch];
+    
+    [self.database inDatabase:^(FMDatabase * _Nonnull database) {
+        [self fetchUsingDatabase:database];
+        
+        if (self.afterFetchHandler) {
+            self.afterFetchHandler((id<FetchedModel>)updated, database);
+        }
+    }];
+
     NSArray *after = [NSArray arrayWithArray:self.models];
 
     NSUInteger indexBefore = [before indexOfObject:updated];
@@ -158,6 +174,12 @@
         [self setModels:refreshed];
         return;
     }
+    
+    if (self.afterFetchHandler) {
+        [self.database inDatabase:^(FMDatabase * _Nonnull database) {
+            self.afterFetchHandler(added, database);
+        }];
+    }
 
     [self.delegate willChangeContent];
 
@@ -168,7 +190,15 @@
 }
 
 - (void)refreshContentAndNotifySwapChanges:(NSArray *)swapped {
-    [self fetch];
+    [self.database inDatabase:^(FMDatabase * _Nonnull database) {
+        [self performObjectsFetchUsingDatabase:database];
+        
+        if (self.afterFetchHandler) {
+            for (NSObject<FetchedModel> *model in swapped) {
+                self.afterFetchHandler(model, database);
+            }
+        }
+    }];
 
     [self.delegate willChangeContent];
     for (NSObject<FetchedModel> *model in swapped) {
