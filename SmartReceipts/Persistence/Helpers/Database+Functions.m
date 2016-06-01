@@ -129,37 +129,6 @@
     return result;
 }
 
-- (NSString *)selectCurrencyFromTable:(NSString *)tableName currencyColumn:(NSString *)currencyColumn forTrip:(WBTrip *)trip {
-    __block NSString *result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self selectCurrencyFromTable:tableName currencyColumn:currencyColumn forTrip:trip usingDatabase:db];
-    }];
-
-    return result;
-}
-
-- (NSString *)selectCurrencyFromTable:(NSString *)tableName currencyColumn:(NSString *)currencyColumn forTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)db {
-    NSString *query = [NSString stringWithFormat:@"SELECT COUNT(*), %@ FROM (SELECT COUNT(*), %@ FROM %@ WHERE %@ = ? GROUP BY %@ );", currencyColumn, currencyColumn, tableName, ReceiptsTable.COLUMN_PARENT, currencyColumn];
-
-    NSString *curr = MULTI_CURRENCY;
-
-    FMResultSet *resultSet = [db executeQuery:query, trip.name];
-    if (resultSet) {
-        if ([resultSet next] && [resultSet columnCount] > 0) {
-            int cnt = [resultSet intForColumnIndex:0];
-
-            if (cnt == 1) {
-                curr = [resultSet stringForColumnIndex:1];
-            } else if (cnt == 0) {
-                curr = [WBPreferences defaultCurrency];
-            }
-        }
-        [resultSet close];
-    }
-
-    return curr;
-}
-
 - (FetchedModelAdapter *)createAdapterUsingQuery:(DatabaseQueryBuilder *)query forModel:(Class)modelClass {
     return [self createAdapterUsingQuery:query forModel:modelClass associatedModel:nil];
 }

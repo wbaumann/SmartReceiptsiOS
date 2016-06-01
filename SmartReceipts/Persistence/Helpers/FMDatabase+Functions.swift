@@ -11,6 +11,11 @@ import Foundation
 extension FMDatabase {
     func fetchSingle<T: FetchedModel>(query: DatabaseQueryBuilder, afterFetch: ((T) -> ())? = nil) -> T? {
         let resultSet = executeQuery(query.buildStatement(), withParameterDictionary: query.parameters())
+        
+        defer {
+            resultSet.close()
+        }
+
         if !resultSet.next() {
             return nil
         }
@@ -34,6 +39,8 @@ extension FMDatabase {
             
             results.append(model)
         }
+        
+        resultSet.close()
         
         return results
     }

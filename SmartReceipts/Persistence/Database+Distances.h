@@ -23,8 +23,6 @@
 - (BOOL)deleteDistance:(Distance *)distance;
 - (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip;
 - (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
-- (NSString *)currencyForTripDistances:(WBTrip *)trip;
-- (NSString *)currencyForTripDistances:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (NSArray *)allDistancesForTrip:(WBTrip *)trip;
 - (BOOL)deleteDistancesForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (BOOL)moveDistancesWithParent:(NSString *)previous toParent:(NSString *)next usingDatabase:(FMDatabase *)database;

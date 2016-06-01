@@ -13,8 +13,6 @@
 @class Price;
 @class PricesCollection;
 
-extern NSString *const MULTI_CURRENCY;
-
 @interface WBTrip : NSObject <FetchedModel>
 
 @property (nonatomic, copy) NSString *name;
@@ -26,8 +24,6 @@ extern NSString *const MULTI_CURRENCY;
 @property (nonatomic, strong) NSTimeZone *startTimeZone;
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) NSTimeZone *endTimeZone;
-
-+ (NSString *)MULTI_CURRENCY;
 
 - (NSString *)directoryPath;
 - (NSString *)fileInDirectoryPath:(NSString *)filename;

@@ -18,8 +18,6 @@
 #import "WBPreferences.h"
 #import "SmartReceipts-Swift.h"
 
-NSString *const MULTI_CURRENCY = @"XXXXXX";
-
 @interface WBTrip ()
 
 @property (nonatomic, copy) NSString *originalName;
@@ -28,10 +26,6 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
 
 @implementation WBTrip {
     float _miles;
-}
-
-+ (NSString *)MULTI_CURRENCY {
-    return MULTI_CURRENCY;
 }
 
 - (id)init {

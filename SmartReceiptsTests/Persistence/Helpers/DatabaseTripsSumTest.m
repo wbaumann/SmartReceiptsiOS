@@ -51,37 +51,15 @@
 
 
 - (void)testSumOfTripWithDistances {
-    NSDecimalNumber *sum = [self.db totalPriceForTrip:self.trip];
-    XCTAssertEqualObjects([NSDecimalNumber decimalNumberOrZero:@"66"], sum);
+    WBTrip *trip = [self.db tripWithName:self.trip.name];
+    XCTAssertEqualObjects(@"$66.00", trip.formattedPrice);
 }
 
 - (void)testSumOfTripWithoutDistances {
     [WBPreferences setTheDistancePriceBeIncludedInReports:NO];
 
-    NSDecimalNumber *sum = [self.db totalPriceForTrip:self.trip];
-    XCTAssertEqualObjects([NSDecimalNumber decimalNumberOrZero:@"6"], sum);
-}
-
-- (void)testTripPriceUpdatedOnDistanceEntry {
-    NSDecimalNumber *startPrice = [self.db totalPriceForTrip:self.trip];
-
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"10"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"10"]}];
-
-    WBTrip *fetched = [self.db tripWithName:self.trip.name];
-    NSDecimalNumber *expected = [startPrice decimalNumberByAdding:[NSDecimalNumber decimalNumberOrZero:@"100"]];
-    Price *expectedPrice = [Price priceWithAmount:expected currencyCode:@"USD"];
-    XCTAssertEqualObjects(expectedPrice.currencyFormattedPrice, fetched.formattedPrice);
-}
-
-- (void)testTripPriceUpdatedOnReceiptEntry {
-    NSDecimalNumber *startPrice = [self.db totalPriceForTrip:self.trip];
-
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"50"]}];
-
-    WBTrip *fetched = [self.db tripWithName:self.trip.name];
-    NSDecimalNumber *expected = [startPrice decimalNumberByAdding:[NSDecimalNumber decimalNumberOrZero:@"50"]];
-    Price *expectedPrice = [Price priceWithAmount:expected currencyCode:@"USD"];
-    XCTAssertEqualObjects(expectedPrice.currencyFormattedPrice, fetched.formattedPrice);
+    WBTrip *trip = [self.db tripWithName:self.trip.name];
+    XCTAssertEqualObjects(@"$6.00", trip.formattedPrice);
 }
 
 @end
