@@ -10,7 +10,8 @@ import Foundation
 
 extension FMDatabase {
     func fetchAllDistancesForTrip(trip: WBTrip) -> [Distance] {
-        let query = DatabaseQueryBuilder()
-        return fetch(Distance.self, query: query)
+        let query = DatabaseQueryBuilder.selectAllStatementForTable(DistanceTable.Name)
+        query.`where`(DistanceTable.Column.Parent, value: trip.name)
+        return fetch(query)
     }
 }

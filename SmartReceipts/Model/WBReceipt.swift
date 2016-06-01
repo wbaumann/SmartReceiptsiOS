@@ -10,6 +10,16 @@ import Foundation
 
 private let JustDecimalFormatterKey = "JustDecimalFormatterKey"
 
+extension WBReceipt {
+    func targetPrice() -> Price {
+        if canExchange(), let exchanged = exchangedPrice() {
+            return exchanged
+        }
+        
+        return price()
+    }
+}
+
 extension WBReceipt: Priced {
     func price() -> Price {
         return Price(amount: priceAmount, currency: currency)
@@ -59,6 +69,8 @@ extension WBReceipt: ExchangedPriced {
         if !canExchange() {
             return nil
         }
+        
+        print("ex: \(exchangeRate)")
         
         guard let rate = exchangeRate where rate.isPositiveAmount() else {
             return nil

@@ -73,6 +73,7 @@
 		A7B6FC5B1CF5DA2100CD53F1 /* WBReceiptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B6FC5A1CF5DA2000CD53F1 /* WBReceiptTests.swift */; };
 		A7B6FC5D1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B6FC5C1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift */; };
 		A7D080FB1CEAD2FD00B3C551 /* WBAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D080FA1CEAD2FD00B3C551 /* WBAppDelegate.swift */; };
+		A7D554CB1CFEB10100169FD2 /* WBReceiptTargetPriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D554CA1CFEB10100169FD2 /* WBReceiptTargetPriceTests.swift */; };
 		A7F05B981CFB49220079F1AD /* WBReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B971CFB49220079F1AD /* WBReceipt.swift */; };
 		A7F05B9A1CFB49590079F1AD /* Priced.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B991CFB49590079F1AD /* Priced.swift */; };
 		A7F05B9E1CFB49BE0079F1AD /* Taxed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */; };
@@ -105,6 +106,7 @@
 		A7F05BE11CFD95390079F1AD /* FMDatabase+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BE01CFD95390079F1AD /* FMDatabase+Functions.swift */; };
 		A7F05BE31CFD95710079F1AD /* FMDatabase+Receipts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BE21CFD95710079F1AD /* FMDatabase+Receipts.swift */; };
 		A7F05BE51CFD95830079F1AD /* FMDatabase+Distances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BE41CFD95830079F1AD /* FMDatabase+Distances.swift */; };
+		A7F05BE71CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BE61CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift */; };
 		BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665BE5F2DD7CCFDA2D5F97 /* WBCustomization.m */; };
 		BA66533BF5BE6103F7230434 /* WBImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66548D45A03F16399057F5 /* WBImageViewController.m */; };
 		BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66590C0394B2CE9704CC15 /* WBCategoriesViewController.m */; };
@@ -435,6 +437,7 @@
 		A7B6FC5A1CF5DA2000CD53F1 /* WBReceiptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBReceiptTests.swift; sourceTree = "<group>"; };
 		A7B6FC5C1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnExchangeRate.swift; sourceTree = "<group>"; };
 		A7D080FA1CEAD2FD00B3C551 /* WBAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBAppDelegate.swift; sourceTree = "<group>"; };
+		A7D554CA1CFEB10100169FD2 /* WBReceiptTargetPriceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBReceiptTargetPriceTests.swift; sourceTree = "<group>"; };
 		A7F05B971CFB49220079F1AD /* WBReceipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBReceipt.swift; sourceTree = "<group>"; };
 		A7F05B991CFB49590079F1AD /* Priced.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priced.swift; sourceTree = "<group>"; };
 		A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taxed.swift; sourceTree = "<group>"; };
@@ -467,6 +470,7 @@
 		A7F05BE01CFD95390079F1AD /* FMDatabase+Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FMDatabase+Functions.swift"; sourceTree = "<group>"; };
 		A7F05BE21CFD95710079F1AD /* FMDatabase+Receipts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FMDatabase+Receipts.swift"; sourceTree = "<group>"; };
 		A7F05BE41CFD95830079F1AD /* FMDatabase+Distances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FMDatabase+Distances.swift"; sourceTree = "<group>"; };
+		A7F05BE61CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsFetchedModelAdapterTests.swift; sourceTree = "<group>"; };
 		AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceiptsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableViewController.m; sourceTree = "<group>"; };
 		BA665109C535866B59AD5544 /* WBGenerateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBGenerateViewController.m; sourceTree = "<group>"; };
@@ -1245,6 +1249,7 @@
 				EA5EF0D31AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.h */,
 				EA5EF0D41AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m */,
 				EA07BF681AF51C61004D17F6 /* FetchedDistancesAdapterTest.m */,
+				A7F05BE61CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1694,6 +1699,7 @@
 				A7F05BDA1CFD6C510079F1AD /* PricesCollectionTests.swift */,
 				EAE319631B10BF630032887E /* TaxCalculatorTest.m */,
 				EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */,
+				A7D554CA1CFEB10100169FD2 /* WBReceiptTargetPriceTests.swift */,
 				A7B6FC5A1CF5DA2000CD53F1 /* WBReceiptTests.swift */,
 			);
 			path = Model;
@@ -2320,6 +2326,7 @@
 				EAD15C771B087029003BB1F3 /* DatabaseReceiptsCopyMoveTest.m in Sources */,
 				A7F05BC01CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift in Sources */,
 				EAD3EF851B0E00E000CA1D4D /* DatabaseReceiptsSwapTest.m in Sources */,
+				A7F05BE71CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift in Sources */,
 				EA07BF6C1AF51D5D004D17F6 /* DatabaseTestsHelper.m in Sources */,
 				EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */,
 				EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */,
@@ -2352,6 +2359,7 @@
 				EADBB71F1B0B6CD600F4475F /* DatabaseTripsFilesTest.m in Sources */,
 				A7F05BB01CFC132E0079F1AD /* ReceiptColumnExchangedTaxTests.swift in Sources */,
 				EA888A881AFB4FD600DF2AE6 /* DatabaseTripsTest.m in Sources */,
+				A7D554CB1CFEB10100169FD2 /* WBReceiptTargetPriceTests.swift in Sources */,
 				EA259CDD1B16072D00ECBD67 /* DataExportTest.m in Sources */,
 				EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */,
 				A7F05BC41CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift in Sources */,

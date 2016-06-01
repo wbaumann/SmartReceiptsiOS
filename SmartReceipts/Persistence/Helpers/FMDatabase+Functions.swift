@@ -9,7 +9,19 @@
 import Foundation
 
 extension FMDatabase {
-    func fetch<T: FetchedModel>(type: T.Type, query: DatabaseQueryBuilder) -> [T] {
-        return []
+    func fetch<T: FetchedModel>(query: DatabaseQueryBuilder, inject: ((T) -> ())? = nil) -> [T] {
+        var results = [T]()
+
+        let resultSet = executeQuery(query.buildStatement(), withParameterDictionary: query.parameters())
+        while resultSet.next()  {
+            let model = T()
+            model.loadDataFromResultSet(resultSet)
+            
+            inject?(model)
+            
+            results.append(model)
+        }
+        
+        return results
     }
 }
