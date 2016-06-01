@@ -101,7 +101,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 - (void)updateTitle {
     SRLog(@"updateTitle");
     self.navigationItem.title = [NSString stringWithFormat:@"%@ - %@",
-                                                           [self.trip name], [self.trip priceWithCurrencyFormatted]];
+                                                           [self.trip name], [self.trip formattedPrice]];
 }
 
 - (void)updatePricesWidth {

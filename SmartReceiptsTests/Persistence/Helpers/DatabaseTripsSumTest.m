@@ -18,6 +18,12 @@
 #import "WBPreferences.h"
 #import "Price.h"
 
+@interface Database(Expose)
+
+- (WBTrip *)tripWithName:(NSString *)name;
+
+@end
+
 @interface DatabaseTripsSumTest : SmartReceiptsTestsBase
 
 @property (nonatomic, strong) WBTrip *trip;
@@ -63,7 +69,8 @@
 
     WBTrip *fetched = [self.db tripWithName:self.trip.name];
     NSDecimalNumber *expected = [startPrice decimalNumberByAdding:[NSDecimalNumber decimalNumberOrZero:@"100"]];
-    XCTAssertEqualObjects(expected, fetched.price.amount);
+    Price *expectedPrice = [Price priceWithAmount:expected currencyCode:@"USD"];
+    XCTAssertEqualObjects(expectedPrice.currencyFormattedPrice, fetched.formattedPrice);
 }
 
 - (void)testTripPriceUpdatedOnReceiptEntry {
@@ -73,7 +80,8 @@
 
     WBTrip *fetched = [self.db tripWithName:self.trip.name];
     NSDecimalNumber *expected = [startPrice decimalNumberByAdding:[NSDecimalNumber decimalNumberOrZero:@"50"]];
-    XCTAssertEqualObjects(expected, fetched.price.amount);
+    Price *expectedPrice = [Price priceWithAmount:expected currencyCode:@"USD"];
+    XCTAssertEqualObjects(expectedPrice.currencyFormattedPrice, fetched.formattedPrice);
 }
 
 @end

@@ -87,7 +87,6 @@
     [query addParam:TripsTable.COLUMN_TO value:trip.endDate.milliseconds];
     [query addParam:TripsTable.COLUMN_FROM_TIMEZONE value:trip.startTimeZone.name];
     [query addParam:TripsTable.COLUMN_TO_TIMEZONE value:trip.endTimeZone.name];
-    [query addParam:TripsTable.COLUMN_PRICE value:trip.price.amount];
     [query addParam:TripsTable.COLUMN_DEFAULT_CURRENCY value:trip.defaultCurrency.code];
     [query addParam:TripsTable.COLUMN_COMMENT value:trip.comment];
     [query addParam:TripsTable.COLUMN_COST_CENTER value:trip.costCenter];
@@ -164,12 +163,6 @@
     }
 
     return result;
-}
-
-- (WBTrip *)tripWithName:(NSString *)tripName {
-    DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:TripsTable.TABLE_NAME];
-    [select where:TripsTable.COLUMN_NAME value:tripName];
-    return (WBTrip *)[self executeFetchFor:[WBTrip class] withQuery:select];
 }
 
 - (Price *)updatePriceOfTrip:(WBTrip *)trip {

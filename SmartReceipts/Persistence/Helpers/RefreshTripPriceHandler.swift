@@ -1,14 +1,18 @@
 //
-//  TripsFetchedModelAdapter.swift
+//  RefreshTripPriceHandler.swift
 //  SmartReceipts
 //
-//  Created by Jaanus Siim on 31/05/16.
+//  Created by Jaanus Siim on 01/06/16.
 //  Copyright © 2016 Will Baumann. All rights reserved.
 //
 
 import Foundation
 
-class TripsFetchedModelAdapter: FetchedModelAdapter {
+protocol RefreshTripPriceHandler {
+    func refreshPriceForTrip(trip: WBTrip, inDatabase database: FMDatabase);
+}
+
+extension RefreshTripPriceHandler {
     func refreshPriceForTrip(trip: WBTrip, inDatabase database: FMDatabase) {
         Log.debug("Refresh price on \(trip.name)")
         timeMeasured("Price update") {
@@ -31,7 +35,7 @@ class TripsFetchedModelAdapter: FetchedModelAdapter {
             for distance in distances {
                 collection.addPrice(distance.totalRate())
             }
-            trip.price = collection
+            trip.pricesSummary = collection
         }
     }
 }

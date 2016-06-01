@@ -18,6 +18,12 @@
 #import "Database+Distances.h"
 #import "WBReceipt.h"
 
+@interface Database (Expose)
+
+- (WBTrip *)tripWithName:(NSString *)name;
+
+@end
+
 @interface DatabaseTripsTest : SmartReceiptsTestsBase
 
 @property (nonatomic, strong) WBTrip *trip;

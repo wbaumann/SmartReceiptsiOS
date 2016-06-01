@@ -9,10 +9,9 @@
 import XCTest
 @testable import SmartReceipts
 
-class TripsFetchedModelAdapterTests: SmartReceiptsTestsBase {
+class TripsFetchedModelAdapterTests: SmartReceiptsTestsBase, RefreshTripPriceHandler {
     private var trip: WBTrip!
     private let preferences = WBPreferencesTestHelper()
-    private let adapter = TripsFetchedModelAdapter()
     
     override func setUp() {
         super.setUp()
@@ -39,10 +38,10 @@ class TripsFetchedModelAdapterTests: SmartReceiptsTestsBase {
         db.inDatabase() {
             database in
 
-            self.adapter.refreshPriceForTrip(self.trip, inDatabase: database)
+            self.refreshPriceForTrip(self.trip, inDatabase: database)
         }
         
-        XCTAssertEqual("$15.00", trip.price.currencyFormattedPrice())
+        XCTAssertEqual("$15.00", trip.formattedPrice())
     }
     
     func testAddingMultipleCurrencies() {
@@ -51,10 +50,10 @@ class TripsFetchedModelAdapterTests: SmartReceiptsTestsBase {
         db.inDatabase() {
             database in
             
-            self.adapter.refreshPriceForTrip(self.trip, inDatabase: database)
+            self.refreshPriceForTrip(self.trip, inDatabase: database)
         }
         
-        XCTAssertEqual("$16.20", trip.price.currencyFormattedPrice())
+        XCTAssertEqual("$16.20", trip.formattedPrice())
     }
 
     func testAddingMultipleCurrenciesWithoutExchangeRate() {
@@ -63,10 +62,10 @@ class TripsFetchedModelAdapterTests: SmartReceiptsTestsBase {
         db.inDatabase() {
             database in
             
-            self.adapter.refreshPriceForTrip(self.trip, inDatabase: database)
+            self.refreshPriceForTrip(self.trip, inDatabase: database)
         }
         
-        XCTAssertEqual("€12.00; $15.00", trip.price.currencyFormattedPrice())
+        XCTAssertEqual("€12.00; $15.00", trip.formattedPrice())
     }
 
     func testWithDistances() {
@@ -75,10 +74,10 @@ class TripsFetchedModelAdapterTests: SmartReceiptsTestsBase {
         db.inDatabase() {
             database in
             
-            self.adapter.refreshPriceForTrip(self.trip, inDatabase: database)
+            self.refreshPriceForTrip(self.trip, inDatabase: database)
         }
         
-        XCTAssertEqual("$25.00", trip.price.currencyFormattedPrice())
+        XCTAssertEqual("$25.00", trip.formattedPrice())
     }
     
     private func addReceipt(amount: NSDecimalNumber, currency: String = "USD", exchangeRate: NSDecimalNumber = .zero()) {

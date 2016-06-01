@@ -23,9 +23,16 @@
 #import "WBCurrency.h"
 #import "NSDate+Calculations.h"
 
+@interface Database (Expose)
+
+- (WBTrip *)tripWithName:(NSString *)name;
+
+@end
+
 @interface Distance (TestExpose)
 
 - (id)initWithTrip:(WBTrip *)trip distance:(NSDecimalNumber *)distance rate:(Price *)rate location:(NSString *)location date:(NSDate *)date timeZone:(NSTimeZone *)timeZone comment:(NSString *)comment;
+- (WBTrip *)tripWithName:(NSString *)name;
 
 @end
 

@@ -16,6 +16,7 @@
 #import "WBCurrency.h"
 #import "NSString+Validation.h"
 #import "WBPreferences.h"
+#import "SmartReceipts-Swift.h"
 
 NSString *const MULTI_CURRENCY = @"XXXXXX";
 
@@ -94,8 +95,8 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
     return true;
 }
 
-- (NSString *)priceWithCurrencyFormatted {
-    return self.price.currencyFormattedPrice;
+- (NSString *)formattedPrice {
+    return self.pricesSummary.currencyFormattedPrice;
 }
 
 - (BOOL)dateOutsideTripBounds:(NSDate *)date {
@@ -105,13 +106,11 @@ NSString *const MULTI_CURRENCY = @"XXXXXX";
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet {
     [self setName:[resultSet stringForColumn:TripsTable.COLUMN_NAME]];
 
-    NSDecimalNumber *price = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:TripsTable.COLUMN_PRICE]];
     NSString *currencyCode = [resultSet stringForColumn:TripsTable.COLUMN_DEFAULT_CURRENCY];
     if (!currencyCode.hasValue) {
         currencyCode = [WBPreferences defaultCurrency];
     }
     self.defaultCurrency = [WBCurrency currencyForCode:currencyCode];
-    _price = [Price priceWithAmount:price currencyCode:currencyCode];
     long long int startDateMilliseconds = [resultSet longLongIntForColumn:TripsTable.COLUMN_FROM];
     _startDate = [NSDate dateWithMilliseconds:startDateMilliseconds];
     _startTimeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:TripsTable.COLUMN_FROM_TIMEZONE]];

@@ -22,7 +22,6 @@
 - (NSDecimalNumber *)totalPriceForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (NSArray *)allTrips;
 - (NSArray *)allTripsUsingDatabase:(FMDatabase *)database;
-- (WBTrip *)tripWithName:(NSString *)tripName;
 - (Price *)updatePriceOfTrip:(WBTrip *)trip;
 - (Price *)updatePriceOfTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (Price *)tripPrice:(WBTrip *)trip usingDatabase:(FMDatabase *)database;

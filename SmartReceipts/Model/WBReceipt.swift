@@ -70,8 +70,6 @@ extension WBReceipt: ExchangedPriced {
             return nil
         }
         
-        print("ex: \(exchangeRate)")
-        
         guard let rate = exchangeRate where rate.isPositiveAmount() else {
             return nil
         }
