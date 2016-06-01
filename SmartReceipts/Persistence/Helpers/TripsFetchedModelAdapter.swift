@@ -23,8 +23,13 @@ class TripsFetchedModelAdapter: FetchedModelAdapter {
             }
             
             let collection = PricesCollection()
+            // just so that when no receipts we would not end up with blank price
+            collection.addPrice(Price(amount: .zero(), currency: trip.defaultCurrency))
             for receipt in receipts {
                 collection.addPrice(receipt.targetPrice())
+            }
+            for distance in distances {
+                collection.addPrice(distance.totalRate())
             }
             trip.price = collection
         }
