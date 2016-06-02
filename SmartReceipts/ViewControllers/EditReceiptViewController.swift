@@ -48,10 +48,7 @@ extension EditReceiptViewController: CurrencyExchangeServiceHandler {
     private func configureCell(cell: ExchangeRateCell, forStatus status: ExchangeServiceStatus) {
         switch status {
         case .Success:
-            let button = UIButton(type: .Custom)
-            button.setImage(UIImage(named: "713-refresh-1-toolbar")!, forState: .Normal)
-            button.sizeToFit()
-            button.addTarget(self, action: .refreshPressed, forControlEvents: .TouchUpInside)
+            let button = exchangeRateReloadButton()
             cell.accessoryView = button
         case .RetrieveError:
             let button = UIButton(type: .Custom)
@@ -81,5 +78,13 @@ extension EditReceiptViewController: CurrencyExchangeServiceHandler {
         alert.addAction(retryAction)
         alert.addAction(okAction)
         presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func exchangeRateReloadButton() -> UIButton {
+        let button = UIButton(type: .Custom)
+        button.setImage(UIImage(named: "713-refresh-1-toolbar")!, forState: .Normal)
+        button.sizeToFit()
+        button.addTarget(self, action: .refreshPressed, forControlEvents: .TouchUpInside)
+        return button
     }
 }
