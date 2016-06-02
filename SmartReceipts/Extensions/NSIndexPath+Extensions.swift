@@ -12,4 +12,10 @@ extension NSIndexPath {
     func nextRow() -> NSIndexPath {
         return NSIndexPath(forRow: row + 1, inSection: section)
     }
+    
+    func previousRow() -> NSIndexPath {
+        assert(row > 0)
+        
+        return NSIndexPath(forRow: row - 1, inSection: section)
+    }
 }
