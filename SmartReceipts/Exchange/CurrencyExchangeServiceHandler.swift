@@ -11,18 +11,20 @@ import Foundation
 enum ExchangeServiceStatus {
     case NotEnabled
     case Success
-    case RetriveError
+    case RetrieveError
 }
 
 protocol CurrencyExchangeServiceHandler {
-    func exchangeRate(base: String, target: String, onDate date: NSDate, completion: (ExchangeServiceStatus, NSDecimalNumber?) -> ())
+    func exchangeRate(base: String, target: String, onDate date: NSDate, forceRefresh: Bool, completion: (ExchangeServiceStatus, NSDecimalNumber?) -> ())
 }
 
 extension CurrencyExchangeServiceHandler {
-    func exchangeRate(base: String, target: String, onDate date: NSDate, completion: (ExchangeServiceStatus, NSDecimalNumber?) -> ()) {
+    func exchangeRate(base: String, target: String, onDate date: NSDate, forceRefresh: Bool = false, completion: (ExchangeServiceStatus, NSDecimalNumber?) -> ()) {
         // TODO jaanus: if no subscription return  with NotEnabled
         
-        OpenExchangeRates.sharedInstance.exchangeRate(base, target: target, onDate: date) {
+        let dateToUse = date.earlierDate(NSDate())
+        
+        OpenExchangeRates.sharedInstance.exchangeRate(base, target: target, onDate: dateToUse, forceRefresh: forceRefresh) {
             rate, error in
             
             if let error = error {
@@ -30,7 +32,7 @@ extension CurrencyExchangeServiceHandler {
             }
             
             guard let rate = rate else {
-                completion(.RetriveError, nil)
+                completion(.RetrieveError, nil)
                 return
             }
             

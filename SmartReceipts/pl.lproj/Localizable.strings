@@ -134,6 +134,11 @@
 "edit.trip.name.missing.alert.message" = "Proszę wprowadzić nazwę";
 "edit.trip.start.date.label" = "Data Startowa";
 
+"exchange.rate.retrieve.error.cancel.button" = "Cancel";
+"exchange.rate.retrieve.error.message" = "Could not retrieve exchange rate. Please try reloading or add manually.";
+"exchange.rate.retrieve.error.retry.button" = "Retry";
+"exchange.rate.retrieve.error.title" = "Exchange rate error";
+
 "generate.report.controller.title" = "Generuj Raport";
 "generate.report.multiple.attached.suffix" = "raportów załączono";
 "generate.report.no.options.selected.alert.message" = "Nie wybrano raportów";

@@ -14,16 +14,18 @@ class OpenExchangeRates {
     static let sharedInstance = OpenExchangeRates()
     private var rates = [String: [ExchangeRate]]()
     
-    func exchangeRate(base: String, target: String, onDate date: NSDate, completion: (NSDecimalNumber?, NSError?) -> ()) {
+    func exchangeRate(base: String, target: String, onDate date: NSDate, forceRefresh: Bool, completion: (NSDecimalNumber?, NSError?) -> ()) {
         let dayString = date.dayString()
         let dayCurrencyKey = "\(dayString)-\(base)"
         
         Log.debug("Retrieve \(base) to \(target) on \(dayString)")
         
-        if let dayValues = rates[dayCurrencyKey], rate = dayValues.filter({ $0.currency == target}).first {
+        if !forceRefresh, let dayValues = rates[dayCurrencyKey], rate = dayValues.filter({ $0.currency == target}).first {
             Log.debug("Have cache hit")
             completion(rate.rate, nil)
             return
+        } else if (forceRefresh) {
+            Log.debug("Refresh forced")
         }
         
         Log.debug("Perform remote fetch")
