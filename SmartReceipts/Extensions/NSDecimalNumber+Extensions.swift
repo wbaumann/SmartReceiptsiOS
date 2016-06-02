@@ -1,5 +1,5 @@
 //
-//  NSDeximalNumber+Extensions.swift
+//  NSDecimalNumber+Extensions.swift
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 30/05/16.
@@ -12,7 +12,7 @@ extension NSDecimalNumber {
     static func minusOne() -> NSDecimalNumber {
         return NSDecimalNumber(string: "-1")
     }
-    
+
     func isPositiveAmount() -> Bool {
         return compare(NSDecimalNumber.zero()) == .OrderedDescending
     }

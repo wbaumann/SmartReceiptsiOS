@@ -29,7 +29,7 @@
 }
 
 + (UINib *)viewNib {
-    NSString *expectedNibName = NSStringFromClass([self class]);
+    NSString *expectedNibName = [NSStringFromClass([self class]) stringByReplacingOccurrencesOfString:@"SmartReceipts." withString:@""];
     return [UINib nibWithNibName:expectedNibName bundle:nil];
 }
 

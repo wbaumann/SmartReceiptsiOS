@@ -59,6 +59,15 @@
 		A71205B41CE5C04D008A193D /* WBTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */; };
 		A73DBED71CF08694007C6268 /* android-receipts-v14.db in Resources */ = {isa = PBXBuildFile; fileRef = A73DBED61CF08694007C6268 /* android-receipts-v14.db */; };
 		A744E5141CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744E5131CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift */; };
+		A78214F51CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78214F41CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift */; };
+		A78214F71CFFE60000FD644A /* OpenExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78214F61CFFE60000FD644A /* OpenExchangeRates.swift */; };
+		A78214FB1CFFE86000FD644A /* ExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78214FA1CFFE86000FD644A /* ExchangeRate.swift */; };
+		A78214FD1CFFE8E900FD644A /* NSDate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78214FC1CFFE8E900FD644A /* NSDate+Extensions.swift */; };
+		A78214FF1CFFECB000FD644A /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78214FE1CFFECB000FD644A /* Secrets.swift */; };
+		A78215011CFFF24C00FD644A /* NSNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78215001CFFF24C00FD644A /* NSNumber+Extensions.swift */; };
+		A78215031CFFF39700FD644A /* EditReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78215021CFFF39700FD644A /* EditReceiptViewController.swift */; };
+		A78215051CFFF65F00FD644A /* ExchangeRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78215041CFFF65F00FD644A /* ExchangeRateCell.swift */; };
+		A78215071CFFF66B00FD644A /* ExchangeRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A78215061CFFF66B00FD644A /* ExchangeRateCell.xib */; };
 		A79FDC691CEA085400328DBB /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC681CEA085400328DBB /* Analytics.swift */; };
 		A79FDC6C1CEA0A4100328DBB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC6B1CEA0A4100328DBB /* AnalyticsService.swift */; };
 		A79FDC6E1CEA0A5500328DBB /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC6D1CEA0A5500328DBB /* GoogleAnalytics.swift */; };
@@ -83,7 +92,7 @@
 		A7F05BA21CFC038D0079F1AD /* ReceiptColumnTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BA11CFC038D0079F1AD /* ReceiptColumnTax.swift */; };
 		A7F05BA41CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BA31CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift */; };
 		A7F05BA81CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BA71CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift */; };
-		A7F05BAA1CFC07FD0079F1AD /* NSDeximalNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BA91CFC07FD0079F1AD /* NSDeximalNumber+Extensions.swift */; };
+		A7F05BAA1CFC07FD0079F1AD /* NSDecimalNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BA91CFC07FD0079F1AD /* NSDecimalNumber+Extensions.swift */; };
 		A7F05BAC1CFC0AB00079F1AD /* ExchangedPriced.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BAB1CFC0AB00079F1AD /* ExchangedPriced.swift */; };
 		A7F05BAE1CFC12FA0079F1AD /* ReceiptColumnExchangedTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BAD1CFC12FA0079F1AD /* ReceiptColumnExchangedTax.swift */; };
 		A7F05BB01CFC132E0079F1AD /* ReceiptColumnExchangedTaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BAF1CFC132E0079F1AD /* ReceiptColumnExchangedTaxTests.swift */; };
@@ -423,6 +432,15 @@
 		A73DBED61CF08694007C6268 /* android-receipts-v14.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "android-receipts-v14.db"; sourceTree = "<group>"; };
 		A744E5131CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseCategoriesImportTests.swift; sourceTree = "<group>"; };
 		A744E5151CEC45CB00D838C7 /* SmartReceiptsTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SmartReceiptsTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		A78214F41CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeServiceHandler.swift; sourceTree = "<group>"; };
+		A78214F61CFFE60000FD644A /* OpenExchangeRates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenExchangeRates.swift; sourceTree = "<group>"; };
+		A78214FA1CFFE86000FD644A /* ExchangeRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRate.swift; sourceTree = "<group>"; };
+		A78214FC1CFFE8E900FD644A /* NSDate+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extensions.swift"; sourceTree = "<group>"; };
+		A78214FE1CFFECB000FD644A /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		A78215001CFFF24C00FD644A /* NSNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+Extensions.swift"; sourceTree = "<group>"; };
+		A78215021CFFF39700FD644A /* EditReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReceiptViewController.swift; sourceTree = "<group>"; };
+		A78215041CFFF65F00FD644A /* ExchangeRateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRateCell.swift; sourceTree = "<group>"; };
+		A78215061CFFF66B00FD644A /* ExchangeRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeRateCell.xib; sourceTree = "<group>"; };
 		A79FDC681CEA085400328DBB /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		A79FDC6A1CEA08D400328DBB /* SmartReceipts-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SmartReceipts-Bridging-Header.h"; sourceTree = "<group>"; };
 		A79FDC6B1CEA0A4100328DBB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
@@ -448,7 +466,7 @@
 		A7F05BA11CFC038D0079F1AD /* ReceiptColumnTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnTax.swift; sourceTree = "<group>"; };
 		A7F05BA31CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnExchangedPrice.swift; sourceTree = "<group>"; };
 		A7F05BA71CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnExchangedPriceTests.swift; sourceTree = "<group>"; };
-		A7F05BA91CFC07FD0079F1AD /* NSDeximalNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDeximalNumber+Extensions.swift"; sourceTree = "<group>"; };
+		A7F05BA91CFC07FD0079F1AD /* NSDecimalNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Extensions.swift"; sourceTree = "<group>"; };
 		A7F05BAB1CFC0AB00079F1AD /* ExchangedPriced.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangedPriced.swift; sourceTree = "<group>"; };
 		A7F05BAD1CFC12FA0079F1AD /* ReceiptColumnExchangedTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnExchangedTax.swift; sourceTree = "<group>"; };
 		A7F05BAF1CFC132E0079F1AD /* ReceiptColumnExchangedTaxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnExchangedTaxTests.swift; sourceTree = "<group>"; };
@@ -1064,6 +1082,7 @@
 				EA259CD21B16069B00ECBD67 /* Backup */,
 				EA4DC9931AF1578300CEF1B9 /* Cells */,
 				84A73C3418E74C5C00D35A57 /* collections */,
+				A78214F31CFFE4E900FD644A /* Exchange */,
 				EA3CF0981AE7962C00B14B73 /* Extensions */,
 				84D6719518D336E100B704A4 /* images */,
 				A7F05BCF1CFD53D90079F1AD /* Log */,
@@ -1085,6 +1104,7 @@
 				84F4F35518CFCCD000F69A35 /* Images.xcassets */,
 				84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */,
 				8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */,
+				A78214FE1CFFECB000FD644A /* Secrets.swift */,
 				84F4F35218CFCCD000F69A35 /* WBAppDelegate.h */,
 				84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */,
 				A7D080FA1CEAD2FD00B3C551 /* WBAppDelegate.swift */,
@@ -1104,6 +1124,16 @@
 				84F4F35118CFCCD000F69A35 /* SmartReceipts-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A78214F31CFFE4E900FD644A /* Exchange */ = {
+			isa = PBXGroup;
+			children = (
+				A78214F41CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift */,
+				A78214FA1CFFE86000FD644A /* ExchangeRate.swift */,
+				A78214F61CFFE60000FD644A /* OpenExchangeRates.swift */,
+			);
+			path = Exchange;
 			sourceTree = "<group>";
 		};
 		A79FDC671CEA084000328DBB /* Analytics */ = {
@@ -1365,12 +1395,14 @@
 			children = (
 				BA6656B86F52D1B546848E92 /* NSDate+Calculations.h */,
 				BA66588B7C2114029521A399 /* NSDate+Calculations.m */,
+				A78214FC1CFFE8E900FD644A /* NSDate+Extensions.swift */,
+				A7F05BA91CFC07FD0079F1AD /* NSDecimalNumber+Extensions.swift */,
 				EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */,
 				EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */,
-				A7F05BA91CFC07FD0079F1AD /* NSDeximalNumber+Extensions.swift */,
 				A7A720E21CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift */,
 				EA07BF381AF3C80C004D17F6 /* NSMutableString+Issues.h */,
 				EA07BF391AF3C80C004D17F6 /* NSMutableString+Issues.m */,
+				A78215001CFFF24C00FD644A /* NSNumber+Extensions.swift */,
 				EA66777A1B06154F004D3993 /* NSString+Helpers.h */,
 				EA66777B1B06154F004D3993 /* NSString+Helpers.m */,
 				EA07BF3B1AF3C885004D17F6 /* NSString+Validation.h */,
@@ -1423,6 +1455,8 @@
 				EA1D42C21B03901A00D64D3A /* EntryOnlyCell.h */,
 				EA1D42C31B03901A00D64D3A /* EntryOnlyCell.m */,
 				EA1D42C51B03902C00D64D3A /* EntryOnlyCell.xib */,
+				A78215041CFFF65F00FD644A /* ExchangeRateCell.swift */,
+				A78215061CFFF66B00FD644A /* ExchangeRateCell.xib */,
 				EA07BF311AF3B703004D17F6 /* InlinedDatePickerCell.h */,
 				EA07BF321AF3B703004D17F6 /* InlinedDatePickerCell.m */,
 				EA07BF331AF3B703004D17F6 /* InlinedDatePickerCell.xib */,
@@ -1719,6 +1753,7 @@
 				EA1D42C01B038D8F00D64D3A /* EditPaymentMethodViewController.m */,
 				EA0677F01B04E38F0058A326 /* EditReceiptViewController.h */,
 				EA0677F11B04E38F0058A326 /* EditReceiptViewController.m */,
+				A78215021CFFF39700FD644A /* EditReceiptViewController.swift */,
 				EA00D00E1B06321A00C87678 /* EditTripViewController.h */,
 				EA00D00F1B06321A00C87678 /* EditTripViewController.m */,
 				EA07BF611AF4EC1E004D17F6 /* FetchedCollectionTableViewController.h */,
@@ -1956,6 +1991,7 @@
 				EA07BF371AF3B88C004D17F6 /* PickerCell.xib in Resources */,
 				8467EFED18F6F9530076BE6E /* ic_rotate_cw.png in Resources */,
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
+				A78215071CFFF66B00FD644A /* ExchangeRateCell.xib in Resources */,
 				EA1E60D91B2742660048E688 /* Localizable.strings in Resources */,
 				EA40DC6B1B5559A1003BF545 /* FullPagePDFImageView.xib in Resources */,
 				EA1E60D61B2742660048E688 /* Localizable.strings in Resources */,
@@ -2115,6 +2151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A78214FD1CFFE8E900FD644A /* NSDate+Extensions.swift in Sources */,
 				A7F05BDF1CFD8FEC0079F1AD /* Database.swift in Sources */,
 				EAF9ADE91AECF9200000AC84 /* DatabaseUpgradeToVersion12.m in Sources */,
 				A7F05B9E1CFB49BE0079F1AD /* Taxed.swift in Sources */,
@@ -2132,7 +2169,7 @@
 				EA888A711AFA38AD00DF2AE6 /* SettingsButtonCell.m in Sources */,
 				EA1309A31B50281A0045FDDE /* PDFReportTable.m in Sources */,
 				EA2B8D811B4EF2510043A84B /* PrettyPDFRender.m in Sources */,
-				A7F05BAA1CFC07FD0079F1AD /* NSDeximalNumber+Extensions.swift in Sources */,
+				A7F05BAA1CFC07FD0079F1AD /* NSDecimalNumber+Extensions.swift in Sources */,
 				EA24EC6D1B1F64F000FCCB27 /* DecimalFormatter.m in Sources */,
 				A7F05BA41CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift in Sources */,
 				EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */,
@@ -2151,6 +2188,7 @@
 				A7AFB2461CEC219100718744 /* DatabaseTableNames.swift in Sources */,
 				A7F05BA21CFC038D0079F1AD /* ReceiptColumnTax.swift in Sources */,
 				EA183E051B1C9F4C00577B3D /* Database+Columns.m in Sources */,
+				A78214F51CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift in Sources */,
 				EA1D42C41B03901A00D64D3A /* EntryOnlyCell.m in Sources */,
 				843950A418ED1D2E00A1CF83 /* WBPdfDrawer.m in Sources */,
 				84AF861018E895CF00F15C3A /* WBDateFormatter.m in Sources */,
@@ -2198,9 +2236,11 @@
 				EA22679E1B1E035F005761E7 /* ReceiptSummaryCell.m in Sources */,
 				EA4DC9921AF154E000CEF1B9 /* EditDistanceViewController.m in Sources */,
 				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
+				A78215011CFFF24C00FD644A /* NSNumber+Extensions.swift in Sources */,
 				EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */,
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
 				A7B6FC5D1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift in Sources */,
+				A78215031CFFF39700FD644A /* EditReceiptViewController.swift in Sources */,
 				EA2F23011B41BDDD008AF61E /* PurchaseCell.m in Sources */,
 				EA5ECA2E1AF9F43F008D2CFB /* SettingsSegmentControlCell.m in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
@@ -2216,6 +2256,7 @@
 				A79FDC6E1CEA0A5500328DBB /* GoogleAnalytics.swift in Sources */,
 				A709D7671CF4A58600897DD9 /* NSThread+Extensions.swift in Sources */,
 				84AA921518EE89E00096013D /* WBImageStampler.m in Sources */,
+				A78214F71CFFE60000FD644A /* OpenExchangeRates.swift in Sources */,
 				EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */,
 				EA3C96A11AEBA9B200A2A5F9 /* TripFullPDFGenerator.m in Sources */,
 				EA8ABE421B1A1D1700DBFA29 /* Database+Categories.m in Sources */,
@@ -2242,6 +2283,7 @@
 				A7F05BC61CFC453C0079F1AD /* ReceiptColumnReceiptId.swift in Sources */,
 				A7D554D31CFF118700169FD2 /* RefreshTripPriceHandler.swift in Sources */,
 				A7F05BE11CFD95390079F1AD /* FMDatabase+Functions.swift in Sources */,
+				A78215051CFFF65F00FD644A /* ExchangeRateCell.swift in Sources */,
 				EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */,
 				A7F05B9A1CFB49590079F1AD /* Priced.swift in Sources */,
 				EA69EF151AEFC81A00276B70 /* Database.m in Sources */,
@@ -2268,6 +2310,7 @@
 				EA3C969B1AEBA93000A2A5F9 /* ReportCSVGenerator.m in Sources */,
 				EA07BF661AF51854004D17F6 /* FetchedModelAdapter.m in Sources */,
 				EA07BF561AF4D129004D17F6 /* DatabaseQueryBuilder.m in Sources */,
+				A78214FF1CFFECB000FD644A /* Secrets.swift in Sources */,
 				EA888A761AFA3D3F00DF2AE6 /* NumberInputValidation.m in Sources */,
 				EA98B51C1B075042006935AE /* WBCellWithPriceNameDate.m in Sources */,
 				EAB970121B0790EE005E1D63 /* TripsViewController.m in Sources */,
@@ -2278,6 +2321,7 @@
 				EA8D818E1AEA7BBC00BAC943 /* ReceiptColumnReportName.m in Sources */,
 				EA3C96981AEBA91400A2A5F9 /* ReportGenerator.m in Sources */,
 				A7F05BBC1CFC31520079F1AD /* WBCurrency+Extensions.swift in Sources */,
+				A78214FB1CFFE86000FD644A /* ExchangeRate.swift in Sources */,
 				EAE9DAEB1AF8EA5500F4FE76 /* DistanceLocationColumn.m in Sources */,
 				EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */,
 				EA8D81821AEA7B5800BAC943 /* ReceiptColumnBlank.m in Sources */,

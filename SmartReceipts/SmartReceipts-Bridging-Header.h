@@ -18,6 +18,8 @@
 #import "DatabaseUpgradeToVersion13.h"
 #import "Distance.h"
 
+#import "EditReceiptViewController.h"
+
 #import "FetchedModel.h"
 #import "FetchedModelAdapter.h"
 #import "FMDB.h"
@@ -33,10 +35,12 @@
 #import "ReceiptColumn.h"
 
 #import "TextEntryCell.h"
+#import "TitledTextEntryCell.h"
 
 #import "WBAppDelegate.h"
 #import "WBCategory.h"
 #import "WBCurrency.h"
+#import "WBCustomization.h"
 #import "WBPreferences.h"
 #import "WBReceipt.h"
 #import "WBTrip.h"

@@ -40,14 +40,14 @@ extension WBReceipt: Exchanged {
             return ""
         }
         
-        return exchangeRateFormatter().stringFromNumber(number)!
+        return WBReceipt.exchangeRateFormatter().stringFromNumber(number)!
     }
     
     var targetCurrency: WBCurrency {
         return trip.defaultCurrency
     }
     
-    private func exchangeRateFormatter() -> NSNumberFormatter {
+    class func exchangeRateFormatter() -> NSNumberFormatter {
         if let formatter = NSThread.cachedObject(NSNumberFormatter.self, key: JustDecimalFormatterKey) {
             return formatter
         }

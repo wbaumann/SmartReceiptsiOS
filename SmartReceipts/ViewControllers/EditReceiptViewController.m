@@ -56,7 +56,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 @property (nonatomic, strong) TitledTextEntryCell *taxCell;
 @property (nonatomic, strong) PickerCell *currencyCell;
 @property (nonatomic, strong) InlinedPickerCell *currencyPickerCell;
-@property (nonatomic, strong) TitledTextEntryCell *exchangeRateCell;
+@property (nonatomic, strong) ExchangeRateCell *exchangeRateCell;
 @property (nonatomic, strong) PickerCell *dateCell;
 @property (nonatomic, strong) InlinedDatePickerCell *datePickerCell;
 @property (nonatomic, strong) PickerCell *categoryCell;
@@ -89,6 +89,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     [self.tableView registerNib:[SwitchControlCell viewNib] forCellReuseIdentifier:[SwitchControlCell cellIdentifier]];
     [self.tableView registerNib:[InlinedPickerCell viewNib] forCellReuseIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.tableView registerNib:[InlinedDatePickerCell viewNib] forCellReuseIdentifier:[InlinedDatePickerCell cellIdentifier]];
+    [self.tableView registerNib:[ExchangeRateCell viewNib] forCellReuseIdentifier:[ExchangeRateCell cellIdentifier]];
 
     self.nameCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledAutocompleteEntryCell cellIdentifier]];
     [self.nameCell setTitle:NSLocalizedString(@"edit.receipt.name.label", nil)];
@@ -122,15 +123,17 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
         NSString *currency = [selected presentedValue];
         [weakSelf.currencyCell setValue:currency];
         
-        BOOL isDifferentFromTripCurrency = ![weakSelf.trip.defaultCurrency.code isEqualToString:currency];
+        NSString *tripCurrency = weakSelf.trip.defaultCurrency.code;
+        BOOL isDifferentFromTripCurrency = ![tripCurrency isEqualToString:currency];
         if (isDifferentFromTripCurrency) {
             [weakSelf insert:weakSelf.exchangeRateCell afterCell:weakSelf.currencyCell];
+            [weakSelf triggerExchangeRateUpdate:weakSelf.exchangeRateCell base:tripCurrency target:currency];
         } else {
             [weakSelf remove:weakSelf.exchangeRateCell];
         }
     }];
     
-    self.exchangeRateCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
+    self.exchangeRateCell = [self.tableView dequeueReusableCellWithIdentifier:[ExchangeRateCell cellIdentifier]];
     [self.exchangeRateCell setTitle:NSLocalizedString(@"edit.receipt.exchange.rate.label", nil)];
     [self.exchangeRateCell activateDecimalEntryModeWithDecimalPlaces:SmartReceiptExchangeRateDecimalPlaces];
 
