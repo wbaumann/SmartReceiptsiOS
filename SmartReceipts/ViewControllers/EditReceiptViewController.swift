@@ -9,7 +9,11 @@
 import Foundation
 
 extension EditReceiptViewController: CurrencyExchangeServiceHandler {
-    func triggerExchangeRateUpdate(cell: ExchangeRateCell, base: String, target: String) {
+    func triggerExchangeRateUpdate() {
+        triggerExchangeRateUpdate(exchangeRateCell, base: tripCurrency(), target: receiptCurrency(), onDate: receiptDate())
+    }
+    
+    func triggerExchangeRateUpdate(cell: ExchangeRateCell, base: String, target: String, onDate date: NSDate) {
         Log.debug("Trigger update")
         
         let loading = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
@@ -17,7 +21,7 @@ extension EditReceiptViewController: CurrencyExchangeServiceHandler {
         loading.color = WBCustomization.themeColor()
         cell.accessoryView = loading
         
-        exchangeRate(base, target: target, onDate: NSDate()) {
+        exchangeRate(base, target: target, onDate: date) {
             status, rate in
             
             guard status == .Success else {

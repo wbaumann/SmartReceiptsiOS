@@ -127,7 +127,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
         BOOL isDifferentFromTripCurrency = ![tripCurrency isEqualToString:currency];
         if (isDifferentFromTripCurrency) {
             [weakSelf insert:weakSelf.exchangeRateCell afterCell:weakSelf.currencyCell];
-            [weakSelf triggerExchangeRateUpdate:weakSelf.exchangeRateCell base:tripCurrency target:currency];
+            [weakSelf triggerExchangeRateUpdate];
         } else {
             [weakSelf remove:weakSelf.exchangeRateCell];
         }
@@ -153,6 +153,8 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
         } else {
             [weakSelf.dateCell removeWarning];
         }
+        
+        [weakSelf triggerExchangeRateUpdate];
     }];
 
     if (![WBPreferences allowDataEntryOutsideTripBounds]) {
@@ -434,6 +436,18 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
     [[[UIAlertView alloc]
             initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil) otherButtonTitles:nil] show];
+}
+
+- (NSString *)tripCurrency {
+    return self.trip.defaultCurrency.code;
+}
+
+- (NSString *)receiptCurrency {
+    return self.currencyCell.value;
+}
+
+- (NSDate *)receiptDate {
+    return [NSDate dateWithTimeIntervalSince1970:self.dateMs / 1000.0];
 }
 
 @end
