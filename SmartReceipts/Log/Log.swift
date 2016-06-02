@@ -18,7 +18,11 @@ class Log {
     class func debug<T>(object: T, file: String = #file, function: String = #function, line: Int = #line) {
         Logger.sharedInstance.log(object, file: file, function: function, line: line, level: .DEBUG)
     }
-    
+
+    class func error<T>(object: T, file: String = #file, function: String = #function, line: Int = #line) {
+        Logger.sharedInstance.log(object, file: file, function: function, line: line, level: .ERROR)
+    }
+
     class func addOutput(output: LogOutput) {
         Logger.sharedInstance.addOutput(output)
     }

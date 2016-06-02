@@ -13,6 +13,9 @@
 #import "InputCellsViewController.h"
 
 @class WBReceipt, WBTrip, EditReceiptViewController, WBReceiptsViewController;
+@class ExchangeRateCell;
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface EditReceiptViewController : InputCellsViewController
 
@@ -22,3 +25,16 @@
 - (void)setReceipt:(WBReceipt *)receipt withTrip:(WBTrip *)trip;
 
 @end
+
+
+@interface EditReceiptViewController (ExposeForSwiftExtension)
+
+@property (nonatomic, strong, readonly) ExchangeRateCell *exchangeRateCell;
+
+- (NSString *)tripCurrency;
+- (NSString *)receiptCurrency;
+- (NSDate *)receiptDate;
+
+@end
+
+NS_ASSUME_NONNULL_END

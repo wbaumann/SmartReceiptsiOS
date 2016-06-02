@@ -56,7 +56,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 @property (nonatomic, strong) TitledTextEntryCell *taxCell;
 @property (nonatomic, strong) PickerCell *currencyCell;
 @property (nonatomic, strong) InlinedPickerCell *currencyPickerCell;
-@property (nonatomic, strong) TitledTextEntryCell *exchangeRateCell;
+@property (nonatomic, strong) ExchangeRateCell *exchangeRateCell;
 @property (nonatomic, strong) PickerCell *dateCell;
 @property (nonatomic, strong) InlinedDatePickerCell *datePickerCell;
 @property (nonatomic, strong) PickerCell *categoryCell;
@@ -89,6 +89,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     [self.tableView registerNib:[SwitchControlCell viewNib] forCellReuseIdentifier:[SwitchControlCell cellIdentifier]];
     [self.tableView registerNib:[InlinedPickerCell viewNib] forCellReuseIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.tableView registerNib:[InlinedDatePickerCell viewNib] forCellReuseIdentifier:[InlinedDatePickerCell cellIdentifier]];
+    [self.tableView registerNib:[ExchangeRateCell viewNib] forCellReuseIdentifier:[ExchangeRateCell cellIdentifier]];
 
     self.nameCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledAutocompleteEntryCell cellIdentifier]];
     [self.nameCell setTitle:NSLocalizedString(@"edit.receipt.name.label", nil)];
@@ -122,17 +123,20 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
         NSString *currency = [selected presentedValue];
         [weakSelf.currencyCell setValue:currency];
         
-        BOOL isDifferentFromTripCurrency = ![weakSelf.trip.defaultCurrency.code isEqualToString:currency];
+        NSString *tripCurrency = weakSelf.trip.defaultCurrency.code;
+        BOOL isDifferentFromTripCurrency = ![tripCurrency isEqualToString:currency];
         if (isDifferentFromTripCurrency) {
             [weakSelf insert:weakSelf.exchangeRateCell afterCell:weakSelf.currencyCell];
+            [weakSelf triggerExchangeRateUpdate];
         } else {
             [weakSelf remove:weakSelf.exchangeRateCell];
         }
     }];
     
-    self.exchangeRateCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
+    self.exchangeRateCell = [self.tableView dequeueReusableCellWithIdentifier:[ExchangeRateCell cellIdentifier]];
     [self.exchangeRateCell setTitle:NSLocalizedString(@"edit.receipt.exchange.rate.label", nil)];
     [self.exchangeRateCell activateDecimalEntryModeWithDecimalPlaces:SmartReceiptExchangeRateDecimalPlaces];
+    self.exchangeRateCell.accessoryView = [self exchangeRateReloadButton];
 
     self.dateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
     self.dateCell.title = NSLocalizedString(@"edit.receipt.date.label", nil);
@@ -150,6 +154,8 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
         } else {
             [weakSelf.dateCell removeWarning];
         }
+        
+        [weakSelf triggerExchangeRateUpdate];
     }];
 
     if (![WBPreferences allowDataEntryOutsideTripBounds]) {
@@ -431,6 +437,18 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
     [[[UIAlertView alloc]
             initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil) otherButtonTitles:nil] show];
+}
+
+- (NSString *)tripCurrency {
+    return self.trip.defaultCurrency.code;
+}
+
+- (NSString *)receiptCurrency {
+    return self.currencyCell.value;
+}
+
+- (NSDate *)receiptDate {
+    return [NSDate dateWithTimeIntervalSince1970:self.dateMs / 1000.0];
 }
 
 @end

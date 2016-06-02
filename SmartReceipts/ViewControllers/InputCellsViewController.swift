@@ -25,6 +25,9 @@ extension InputCellsViewController {
         }
         
         var insertIndex = addAfterIndex.nextRow()
+        
+        remapInlinePickers(insertIndex, add: true)
+        
         if let inlinedForIndex = presentingPickerForIndexPath where inlinedForIndex == addAfterIndex {
             insertIndex = insertIndex.nextRow()
         }
@@ -46,6 +49,8 @@ extension InputCellsViewController {
             return
         }
         
+        remapInlinePickers(removeIndex, add: false)
+        
         let section = presentedSections[removeIndex.section]
         var cells = Array(section.cells!)
         cells.removeAtIndex(removeIndex.row)
@@ -54,6 +59,30 @@ extension InputCellsViewController {
         tableView.deleteRowsAtIndexPaths([removeIndex], withRowAnimation: .Automatic)
         presentedSections.replaceObjectAtIndex(removeIndex.section, withObject: InputCellsSection(title: section.title, cells: cells))
         tableView.endUpdates()
+    }
+    
+    private func remapInlinePickers(indexPath: NSIndexPath, add: Bool) {
+        let mapping = inlinedPickers
+        var changed = [NSIndexPath: UITableViewCell]()
+        for (index, cell) in mapping {
+            guard let index = index as? NSIndexPath else {
+                continue
+            }
+            
+            guard index.section == indexPath.section else {
+                continue
+            }
+            
+            guard index.row >= indexPath.row else {
+                continue
+            }
+            
+            inlinedPickers.removeObjectForKey(index)
+            let mapped = add ? index.nextRow() : index.previousRow()
+            changed[mapped] = cell as? UITableViewCell
+        }
+        
+        inlinedPickers.addEntriesFromDictionary(changed)
     }
     
     private func mapReturnKeys(section: InputCellsSection) -> TextEntryCell? {

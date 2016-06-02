@@ -10,13 +10,15 @@
 
 @class InputCellsSection;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface InputCellsViewController : UITableViewController
 
-@property (nonatomic, strong, readonly) NSMutableArray<InputCellsSection *> *__nonnull presentedSections;
+@property (nonatomic, strong, readonly) NSMutableArray<InputCellsSection *> *presentedSections;
 @property (nonatomic, assign) BOOL containNextEditSearchInsideSection;
 
-- (void)addInlinedPickerCell:(UITableViewCell *__nonnull)cell forCell:(UITableViewCell *__nonnull)forCell;
-- (void)tappedCell:(UITableViewCell * __nonnull)cell atIndexPath:(NSIndexPath *__nonnull)indexPath;
+- (void)addInlinedPickerCell:(UITableViewCell *)cell forCell:(UITableViewCell *)forCell;
+- (void)tappedCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -24,7 +26,11 @@
 @interface InputCellsViewController (ExposeForSwiftExtension) <UITextFieldDelegate>
 
 @property (nonatomic, strong, readonly) NSIndexPath *__nullable presentingPickerForIndexPath;
+@property (nonatomic, strong, readonly) NSMutableDictionary *inlinedPickers;
 
-- (NSIndexPath * __nullable)indexPathForCell:(UITableViewCell * __nonnull)cell;
+- (NSIndexPath * __nullable)indexPathForCell:(UITableViewCell *)cell;
+
 
 @end
+
+NS_ASSUME_NONNULL_END
