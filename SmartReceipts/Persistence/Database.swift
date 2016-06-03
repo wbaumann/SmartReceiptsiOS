@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FMDB
 
 extension Database {
     func inDatabase(closure: (FMDatabase) -> ()) {

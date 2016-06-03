@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <UIAlertView-Blocks/RIButtonItem.h>
-#import <UIAlertView-Blocks/UIActionSheet+Blocks.h>
+#import "RIButtonItem.h"
+#import "UIActionSheet+Blocks.h"
 #import "ImagePicker.h"
 #import "Constants.h"
 #import "WBImageUtils.h"

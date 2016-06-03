@@ -11,7 +11,7 @@ import Google
 
 class GoogleAnalytics: AnalyticsService {
     init() {
-        var configureError:NSError?
+        var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
         

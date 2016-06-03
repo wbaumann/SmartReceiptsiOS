@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FMDB
 
 extension FMDatabase: RefreshTripPriceHandler {
     func tripWithName(name: String) -> WBTrip? {

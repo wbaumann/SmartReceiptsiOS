@@ -1,0 +1,6 @@
+framework module objective_zip {
+  umbrella header "objective-zip-umbrella.h"
+
+  export *
+  module * { export * }
+}

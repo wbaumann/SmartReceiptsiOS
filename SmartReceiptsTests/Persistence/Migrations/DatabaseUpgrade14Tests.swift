@@ -7,7 +7,7 @@
 //
 
 import XCTest
-
+import FMDB
 @testable import SmartReceipts
 
 class DatabaseUpgrade14Tests: XCTestCase {

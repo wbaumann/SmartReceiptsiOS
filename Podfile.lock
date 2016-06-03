@@ -50,13 +50,16 @@ PODS:
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
   - objective-zip (0.8.3)
-  - OpenSSL (1.0.208)
-  - RMStore/AppReceiptVerificator (0.7.1):
-    - OpenSSL (~> 1.0.1)
+  - OpenSSL-iOS (1.0.204):
+    - OpenSSL-iOS/Framework (= 1.0.204)
+  - OpenSSL-iOS/Framework (1.0.204)
+  - RMStore/AppReceiptVerificator (0.7.0):
+    - OpenSSL-iOS
     - RMStore/Core
-  - RMStore/Core (0.7.1)
-  - RMStore/KeychainPersistence (0.7.1):
+  - RMStore/Core (0.7.0)
+  - RMStore/KeychainPersistence (0.7.0):
     - RMStore/Core
+  - Tweaks (2.0.0)
   - UIAlertView-Blocks (1.0)
 
 DEPENDENCIES:
@@ -67,10 +70,15 @@ DEPENDENCIES:
   - HTAutocompleteTextField (= 1.3.2)
   - MRProgress (= 0.8.3)
   - objective-zip (= 0.8.3)
-  - RMStore/AppReceiptVerificator (= 0.7.1)
-  - RMStore/Core (= 0.7.1)
-  - RMStore/KeychainPersistence (= 0.7.1)
+  - RMStore/AppReceiptVerificator (from `3rdparty/RMStore`)
+  - RMStore/Core (from `3rdparty/RMStore`)
+  - RMStore/KeychainPersistence (from `3rdparty/RMStore`)
+  - Tweaks (~> 2.0.0)
   - UIAlertView-Blocks (~> 1.0)
+
+EXTERNAL SOURCES:
+  RMStore:
+    :path: 3rdparty/RMStore
 
 SPEC CHECKSUMS:
   CMPopTipView: 774e0230b5c73abb3c39051da6d8a383373c4f7f
@@ -85,10 +93,11 @@ SPEC CHECKSUMS:
   HTAutocompleteTextField: ce809f04875e843e20f214ab973bb496ba7a93b1
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   objective-zip: a27d4b3c060eead4325159e49178e7f0ad5ee808
-  OpenSSL: b187269d386b07452f56af273764ea0636dd5da8
-  RMStore: 64ba13a9c040e3b7572765d169f77175cd3243e5
+  OpenSSL-iOS: 002cabfdfc2df48d63cebd723b90ada86c946316
+  RMStore: 935f3e350c7f2f098047d73ddbd2ee2cd00f8b48
+  Tweaks: 524fa47636cce3bf3a4d9156e980f10ae9480e81
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
 
-PODFILE CHECKSUM: 1ee0ee7a20bf1c368c9e97050293644f8f8c8cd2
+PODFILE CHECKSUM: 24057e39c5c2499d2a414e58fcb4e55e03a52ec1
 
 COCOAPODS: 1.0.0

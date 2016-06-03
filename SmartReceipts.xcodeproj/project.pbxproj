@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E681F8818849AD17CCCDC95 /* libPods-SmartReceiptsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F8F74B7155103B1209E7DB /* libPods-SmartReceiptsTests.a */; };
 		4D380F911B61240C001B43D2 /* GADConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D380F901B61240C001B43D2 /* GADConstants.m */; };
 		4D380F941B6124F3001B43D2 /* launch_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D380F921B6124F3001B43D2 /* launch_image.png */; };
 		4D380F951B6124F3001B43D2 /* launch_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D380F931B6124F3001B43D2 /* launch_image@2x.png */; };
@@ -118,6 +117,7 @@
 		A7F05BE31CFD95710079F1AD /* FMDatabase+Receipts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BE21CFD95710079F1AD /* FMDatabase+Receipts.swift */; };
 		A7F05BE51CFD95830079F1AD /* FMDatabase+Distances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BE41CFD95830079F1AD /* FMDatabase+Distances.swift */; };
 		A7F05BE71CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BE61CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift */; };
+		B375F50D1A177C9782941048 /* Pods_SmartReceiptsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A00E20F6F7D842A0665F496 /* Pods_SmartReceiptsTests.framework */; };
 		BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665BE5F2DD7CCFDA2D5F97 /* WBCustomization.m */; };
 		BA66533BF5BE6103F7230434 /* WBImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66548D45A03F16399057F5 /* WBImageViewController.m */; };
 		BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66590C0394B2CE9704CC15 /* WBCategoriesViewController.m */; };
@@ -134,7 +134,6 @@
 		BA665D77747A4469CAA08CE9 /* WBGenerateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665109C535866B59AD5544 /* WBGenerateViewController.m */; };
 		BA665F06B922055E7D3BED31 /* WBColumnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665C9EEA56CE01EA133B0B /* WBColumnsViewController.m */; };
 		BA665F59AEC814347484CE79 /* WBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */; };
-		E872CB6159529BE7E06010A4 /* libPods-SmartReceipts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E827BA04632316E1EC12D45 /* libPods-SmartReceipts.a */; };
 		EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */; };
 		EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D00C1B0629BE00C87678 /* ProperNameInputValidation.m */; };
 		EA00D0101B06321A00C87678 /* EditTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D00F1B06321A00C87678 /* EditTripViewController.m */; };
@@ -343,6 +342,7 @@
 		EAF9ADE61AECF8F80000AC84 /* DatabaseCreateAtVersion11.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADE51AECF8F80000AC84 /* DatabaseCreateAtVersion11.m */; };
 		EAF9ADE91AECF9200000AC84 /* DatabaseUpgradeToVersion12.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADE81AECF9200000AC84 /* DatabaseUpgradeToVersion12.m */; };
 		EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADEB1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m */; };
+		FC6ADCCA2D4701B4B53E5370 /* Pods_SmartReceipts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B397BE168915C982926C4BC /* Pods_SmartReceipts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -356,8 +356,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03F8F74B7155103B1209E7DB /* libPods-SmartReceiptsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartReceiptsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		174672DE3D4A50AEEE7F4B57 /* Pods-SmartReceiptsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceiptsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests.release.xcconfig"; sourceTree = "<group>"; };
+		3A00E20F6F7D842A0665F496 /* Pods_SmartReceiptsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartReceiptsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		495B4DADAB22A37B88E4F4B8 /* Pods-SmartReceipts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceipts.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts.release.xcconfig"; sourceTree = "<group>"; };
 		4D33F3E019D8964200FE4EC4 /* GADConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADConstants.h; sourceTree = "<group>"; };
 		4D380F901B61240C001B43D2 /* GADConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADConstants.m; sourceTree = "<group>"; };
@@ -371,6 +371,7 @@
 		4DF22951192867CC0008D359 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4DF2295319296DFF0008D359 /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BugSense-iOS.framework"; path = "3rdparty/BugSense/BugSense-iOS.framework"; sourceTree = "<group>"; };
 		4DF2295519296E170008D359 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		7B397BE168915C982926C4BC /* Pods_SmartReceipts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartReceipts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841BB2FE1908167700D28CBF /* WBAbstractPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAbstractPicker.h; sourceTree = "<group>"; };
 		841BB3001908173600D28CBF /* WBAbstractPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAbstractPicker.m; sourceTree = "<group>"; };
 		841BB302190818C400D28CBF /* WBActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBActionSheetPicker.h; sourceTree = "<group>"; };
@@ -423,7 +424,6 @@
 		84F4F35518CFCCD000F69A35 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84F4F35C18CFCCD000F69A35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		9E827BA04632316E1EC12D45 /* libPods-SmartReceipts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartReceipts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A709D7441CF348EC00897DD9 /* DatabaseQueryAndroidV14Receipts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseQueryAndroidV14Receipts.swift; sourceTree = "<group>"; };
 		A709D7461CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseImportAndroidV14Tests.swift; sourceTree = "<group>"; };
 		A709D7661CF4A58600897DD9 /* NSThread+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSThread+Extensions.swift"; sourceTree = "<group>"; };
@@ -893,7 +893,7 @@
 				84ABACFC18DB673B00F8D3EB /* libsqlite3.dylib in Frameworks */,
 				84F4F34818CFCCD000F69A35 /* UIKit.framework in Frameworks */,
 				84F4F34418CFCCD000F69A35 /* Foundation.framework in Frameworks */,
-				E872CB6159529BE7E06010A4 /* libPods-SmartReceipts.a in Frameworks */,
+				FC6ADCCA2D4701B4B53E5370 /* Pods_SmartReceipts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -901,7 +901,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E681F8818849AD17CCCDC95 /* libPods-SmartReceiptsTests.a in Frameworks */,
+				B375F50D1A177C9782941048 /* Pods_SmartReceiptsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1068,8 +1068,8 @@
 				84F4F34518CFCCD000F69A35 /* CoreGraphics.framework */,
 				84F4F34718CFCCD000F69A35 /* UIKit.framework */,
 				84F4F35C18CFCCD000F69A35 /* XCTest.framework */,
-				9E827BA04632316E1EC12D45 /* libPods-SmartReceipts.a */,
-				03F8F74B7155103B1209E7DB /* libPods-SmartReceiptsTests.a */,
+				7B397BE168915C982926C4BC /* Pods_SmartReceipts.framework */,
+				3A00E20F6F7D842A0665F496 /* Pods_SmartReceiptsTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

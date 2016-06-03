@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FMDB
 
 protocol RefreshTripPriceHandler {
     func refreshPriceForTrip(trip: WBTrip, inDatabase database: FMDatabase);

@@ -22,7 +22,8 @@
 
 #import "FetchedModel.h"
 #import "FetchedModelAdapter.h"
-#import "FMDB.h"
+
+#import <Google/Analytics.h>
 
 #import "InputCellsSection.h"
 #import "InputCellsViewController.h"

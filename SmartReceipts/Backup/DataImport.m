@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <objective-zip/ZipReadStream.h>
 #import "DataImport.h"
 #import "ZipFile.h"
+#import "ZipReadStream.h"
 #import "Constants.h"
 #import "FileInZipInfo.h"
 #import "WBFileManager.h"

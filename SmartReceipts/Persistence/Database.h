@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FMDatabaseQueue.h"
+#import "FMDB/FMDatabaseQueue.h"
 
 @class ReceiptFilesManager;
 

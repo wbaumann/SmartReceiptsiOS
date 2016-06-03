@@ -1,0 +1,304 @@
+module OpenSSL {
+    explicit module rc2 {
+        header "openssl/rc2.h"
+    }
+
+    explicit module rc4 {
+        header "openssl/rc4.h"
+    }
+
+    explicit module aes {
+        header "openssl/aes.h"
+    }
+
+    explicit module asn1 {
+        header "openssl/asn1.h"
+    }
+
+    explicit module asn1_mac {
+        header "openssl/asn1_mac.h"
+    }
+
+    explicit module asn1t {
+        header "openssl/asn1t.h"
+    }
+
+    explicit module bio {
+        header "openssl/bio.h"
+    }
+
+    explicit module blowfish {
+        header "openssl/blowfish.h"
+    }
+
+    explicit module bn {
+        header "openssl/bn.h"
+    }
+
+    explicit module buffer {
+        header "openssl/buffer.h"
+    }
+
+    explicit module camellia {
+        header "openssl/camellia.h"
+    }
+
+    explicit module cast {
+        header "openssl/cast.h"
+    }
+
+    explicit module cmac {
+        header "openssl/cmac.h"
+    }
+
+    explicit module cms {
+        header "openssl/cms.h"
+    }
+
+    explicit module comp {
+        header "openssl/comp.h"
+    }
+
+    explicit module conf {
+        header "openssl/conf.h"
+    }
+
+    explicit module conf_api {
+        header "openssl/conf_api.h"
+    }
+
+    explicit module crypto {
+        header "openssl/crypto.h"
+    }
+
+    explicit module des {
+        header "openssl/des.h"
+    }
+
+    explicit module des_old {
+        header "openssl/des_old.h"
+    }
+
+    explicit module dh {
+        header "openssl/dh.h"
+    }
+
+    explicit module dsa {
+        header "openssl/dsa.h"
+    }
+
+    explicit module dso {
+        header "openssl/dso.h"
+    }
+
+    explicit module e_os2 {
+        header "openssl/e_os2.h"
+    }
+
+    explicit module ebcdic {
+        header "openssl/ebcdic.h"
+    }
+
+    explicit module ec {
+        header "openssl/ec.h"
+    }
+
+    explicit module ecdh {
+        header "openssl/ecdh.h"
+    }
+
+    explicit module ecdsa {
+        header "openssl/ecdsa.h"
+    }
+
+    explicit module engine {
+        header "openssl/engine.h"
+    }
+
+    explicit module err {
+        header "openssl/err.h"
+    }
+
+    explicit module evp {
+        header "openssl/evp.h"
+    }
+
+    explicit module hmac {
+        header "openssl/hmac.h"
+    }
+
+    explicit module idea {
+        header "openssl/idea.h"
+    }
+
+    explicit module krb5_asn {
+        header "openssl/krb5_asn.h"
+    }
+
+    explicit module kssl {
+        header "openssl/kssl.h"
+    }
+
+    explicit module lhash {
+        header "openssl/lhash.h"
+    }
+
+    explicit module md4 {
+        header "openssl/md4.h"
+    }
+
+    explicit module md5 {
+        header "openssl/md5.h"
+    }
+
+    explicit module mdc2 {
+        header "openssl/mdc2.h"
+    }
+
+    explicit module modes {
+        header "openssl/modes.h"
+    }
+
+    explicit module obj_mac {
+        header "openssl/obj_mac.h"
+    }
+
+    explicit module objects {
+        header "openssl/objects.h"
+    }
+
+    explicit module ocsp {
+        header "openssl/ocsp.h"
+    }
+
+    explicit module opensslconf {
+        header "openssl/opensslconf.h"
+    }
+
+    explicit module opensslv {
+        header "openssl/opensslv.h"
+    }
+
+    explicit module ossl_typ {
+        header "openssl/ossl_typ.h"
+    }
+
+    explicit module pem {
+        header "openssl/pem.h"
+    }
+
+    explicit module pem2 {
+        header "openssl/pem2.h"
+    }
+
+    explicit module pkcs12 {
+        header "openssl/pkcs12.h"
+    }
+
+    explicit module pkcs7 {
+        header "openssl/pkcs7.h"
+    }
+
+    explicit module pqueue {
+        header "openssl/pqueue.h"
+    }
+
+    explicit module rand {
+        header "openssl/rand.h"
+    }
+
+    explicit module ripemd {
+        header "openssl/ripemd.h"
+    }
+
+    explicit module rsa {
+        header "openssl/rsa.h"
+    }
+
+    explicit module safestack {
+        header "openssl/safestack.h"
+    }
+
+    explicit module seed {
+        header "openssl/seed.h"
+    }
+
+    explicit module sha {
+        header "openssl/sha.h"
+    }
+
+    explicit module srp {
+        header "openssl/srp.h"
+    }
+
+    explicit module srtp {
+        header "openssl/srtp.h"
+    }
+
+    explicit module ssl {
+        header "openssl/ssl.h"
+    }
+
+    explicit module ssl2 {
+        header "openssl/ssl2.h"
+    }
+
+    explicit module ssl23 {
+        header "openssl/ssl23.h"
+    }
+
+    explicit module ssl3 {
+        header "openssl/ssl3.h"
+    }
+
+    explicit module stack {
+        header "openssl/stack.h"
+    }
+
+    explicit module symhacks {
+        header "openssl/symhacks.h"
+    }
+
+    explicit module ts {
+        header "openssl/ts.h"
+    }
+
+    explicit module txt_db {
+        header "openssl/txt_db.h"
+    }
+
+    explicit module ui {
+        header "openssl/ui.h"
+    }
+
+    explicit module ui_compat {
+        header "openssl/ui_compat.h"
+    }
+
+    explicit module whrlpool {
+        header "openssl/whrlpool.h"
+    }
+
+    explicit module x509 {
+        header "openssl/x509.h"
+    }
+
+    explicit module x509_vfy {
+        header "openssl/x509_vfy.h"
+    }
+
+    explicit module x509v3 {
+        header "openssl/x509v3.h"
+    }
+
+    explicit module dtls1 {
+        header "openssl/dtls1.h"
+    }
+
+    explicit module tls1 {
+        header "openssl/tls1.h"
+    }
+
+    link "ssl"
+    link "crypto"
+}

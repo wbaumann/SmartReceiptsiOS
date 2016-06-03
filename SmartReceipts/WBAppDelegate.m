@@ -23,8 +23,8 @@
 #import "PrettyPDFRender.h"
 
 #import <BugSense-iOS/BugSenseController.h>
-#import <UIAlertView-Blocks/RIButtonItem.h>
-#import <UIAlertView-Blocks/UIAlertView+Blocks.h>
+#import "RIButtonItem.h"
+#import "UIAlertView+Blocks.h"
 #import <SmartReceipts-Swift.h>
 
 @interface WBAppDelegate ()

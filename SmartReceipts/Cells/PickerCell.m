@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <UIAlertView-Blocks/UIAlertView+Blocks.h>
+#import "UIAlertView+Blocks.h"
 #import "PickerCell.h"
 #import "Pickable.h"
 #import "WBCustomization.h"
