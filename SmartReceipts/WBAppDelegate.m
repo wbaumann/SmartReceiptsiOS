@@ -25,6 +25,7 @@
 #import <BugSense-iOS/BugSenseController.h>
 #import "RIButtonItem.h"
 #import "UIAlertView+Blocks.h"
+#import "Tweaks/FBTweakShakeWindow.h"
 #import <SmartReceipts-Swift.h>
 
 @interface WBAppDelegate ()
@@ -37,6 +38,20 @@
 @implementation WBAppDelegate {
     dispatch_queue_t _queue;
 }
+
+#if DEBUG
+- (UIWindow *)window {
+    if (!_window) {
+        _window = [[FBTweakShakeWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    }
+    
+    return _window;
+}
+
+- (void)tweakUIDismissed {
+    SRLog(@"tweakUIDismissed");
+}
+#endif
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -70,10 +85,16 @@
 
     [[RateApplication sharedInstance] markAppLaunch];
     
+    [Tweaker preload];
     [self enableAnalytics];    
 #if DEBUG
     [self enableLogging];
 #endif
+    
+#if DEBUG
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tweakUIDismissed) name:FBTweakShakeViewControllerDidDismissNotification object:nil];
+#endif
+
     
     return YES;
 }
