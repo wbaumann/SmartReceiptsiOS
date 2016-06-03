@@ -136,7 +136,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     self.exchangeRateCell = [self.tableView dequeueReusableCellWithIdentifier:[ExchangeRateCell cellIdentifier]];
     [self.exchangeRateCell setTitle:NSLocalizedString(@"edit.receipt.exchange.rate.label", nil)];
     [self.exchangeRateCell activateDecimalEntryModeWithDecimalPlaces:SmartReceiptExchangeRateDecimalPlaces];
-    self.exchangeRateCell.accessoryView = [self exchangeRateReloadButton];
+    self.exchangeRateCell.accessoryView = [self defaultExchangeAccessoryButton];
 
     self.dateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
     self.dateCell.title = NSLocalizedString(@"edit.receipt.date.label", nil);

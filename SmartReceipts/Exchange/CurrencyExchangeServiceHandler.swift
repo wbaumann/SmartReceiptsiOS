@@ -12,15 +12,22 @@ enum ExchangeServiceStatus {
     case NotEnabled
     case Success
     case RetrieveError
+    case UnsupportedCurrency
 }
 
+typealias ExchangeResultClosure = (ExchangeServiceStatus, NSDecimalNumber?) -> ()
+
 protocol CurrencyExchangeServiceHandler {
-    func exchangeRate(base: String, target: String, onDate date: NSDate, forceRefresh: Bool, completion: (ExchangeServiceStatus, NSDecimalNumber?) -> ())
+    func exchangeRate(base: String, target: String, onDate date: NSDate, forceRefresh: Bool, completion: ExchangeResultClosure)
 }
 
 extension CurrencyExchangeServiceHandler {
-    func exchangeRate(base: String, target: String, onDate date: NSDate, forceRefresh: Bool = false, completion: (ExchangeServiceStatus, NSDecimalNumber?) -> ()) {
-        // TODO jaanus: if no subscription return  with NotEnabled
+    func exchangeRate(base: String, target: String, onDate date: NSDate, forceRefresh: Bool = false, completion: ExchangeResultClosure) {
+        if (!Database.sharedInstance().hasValidSubscription()) {
+            Log.debug("No subscription, no exchange")
+            completion(.NotEnabled, nil)
+            return
+        }
         
         let dateToUse = date.earlierDate(NSDate())
         
@@ -33,6 +40,11 @@ extension CurrencyExchangeServiceHandler {
             
             guard let rate = rate else {
                 completion(.RetrieveError, nil)
+                return
+            }
+            
+            if rate.compare(NSDecimalNumber.minusOne()) == .OrderedSame {
+                completion(.UnsupportedCurrency, nil)
                 return
             }
             

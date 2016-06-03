@@ -43,17 +43,19 @@ class OpenExchangeRates {
                 return
             }
             
-            guard let rates = ExchangeRate.loadFromData(data!) else {
+            guard var rates = ExchangeRate.loadFromData(data!) else {
                 completion(nil, nil)
                 return
             }
             
-            self.rates[dayCurrencyKey] = rates
             if let rate = rates.filter({ $0.currency == target }).first {
                 completion(rate.rate, nil)
             } else {
-                completion(nil, nil)
+                // add unsupported currency marker
+                rates.append(ExchangeRate(currency: target, rate: .minusOne()))
+                completion(.minusOne(), nil)
             }
+            self.rates[dayCurrencyKey] = rates
         }
         
         task.resume()
