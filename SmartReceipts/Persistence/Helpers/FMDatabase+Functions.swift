@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FMDB
 
 extension FMDatabase {
     func fetchSingle<T: FetchedModel>(query: DatabaseQueryBuilder, afterFetch: ((T) -> ())? = nil) -> T? {

@@ -1,0 +1,6 @@
+framework module HTAutocompleteTextField {
+  umbrella header "HTAutocompleteTextField-umbrella.h"
+
+  export *
+  module * { export * }
+}

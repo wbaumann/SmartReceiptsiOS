@@ -82,3 +82,24 @@ strip_invalid_archs() {
   fi
 }
 
+
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/CMPopTipView/CMPopTipView.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FMDB/FMDB.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HTAutocompleteTextField/HTAutocompleteTextField.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MRProgress/MRProgress.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RMStore/RMStore.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Tweaks/Tweaks.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/UIAlertView-Blocks/UIAlertView_Blocks.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/objective-zip/objective_zip.framework"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/CMPopTipView/CMPopTipView.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FMDB/FMDB.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HTAutocompleteTextField/HTAutocompleteTextField.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MRProgress/MRProgress.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RMStore/RMStore.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Tweaks/Tweaks.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/UIAlertView-Blocks/UIAlertView_Blocks.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/objective-zip/objective_zip.framework"
+fi

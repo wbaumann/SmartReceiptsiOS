@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <UIAlertView-Blocks/UIAlertView+Blocks.h>
+#import "UIAlertView+Blocks.h"
 #import "EditPaymentMethodViewController.h"
 #import "PaymentMethod.h"
 #import "EntryOnlyCell.h"

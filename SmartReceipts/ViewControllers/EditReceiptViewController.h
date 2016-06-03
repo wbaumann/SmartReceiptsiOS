@@ -9,7 +9,6 @@
 #import "WBTableViewController.h"
 #import "WBDynamicPicker.h"
 
-#import "HTAutocompleteTextField.h"
 #import "InputCellsViewController.h"
 
 @class WBReceipt, WBTrip, EditReceiptViewController, WBReceiptsViewController;

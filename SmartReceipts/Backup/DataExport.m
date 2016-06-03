@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <objective-zip/ZipWriteStream.h>
+#import "ZipWriteStream.h"
 #import "DataExport.h"
 #import "Constants.h"
 #import "ZipFile.h"

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FMDB
 
 extension FMDatabase {    
     func fetchAllReceiptsForTrip(trip: WBTrip) -> [WBReceipt] {

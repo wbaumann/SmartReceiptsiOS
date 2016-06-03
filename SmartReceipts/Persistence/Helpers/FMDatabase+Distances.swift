@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FMDB
 
 extension FMDatabase {
     func fetchAllDistancesForTrip(trip: WBTrip) -> [Distance] {
