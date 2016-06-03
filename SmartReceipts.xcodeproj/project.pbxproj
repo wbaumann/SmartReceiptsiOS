@@ -59,6 +59,7 @@
 		A73DBED71CF08694007C6268 /* android-receipts-v14.db in Resources */ = {isa = PBXBuildFile; fileRef = A73DBED61CF08694007C6268 /* android-receipts-v14.db */; };
 		A744E5141CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744E5131CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift */; };
 		A758CE901D01615900169C7C /* Tweaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758CE8F1D01615900169C7C /* Tweaker.swift */; };
+		A758CE941D01760C00169C7C /* QuickAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758CE931D01760C00169C7C /* QuickAlertPresenter.swift */; };
 		A78214F51CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78214F41CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift */; };
 		A78214F71CFFE60000FD644A /* OpenExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78214F61CFFE60000FD644A /* OpenExchangeRates.swift */; };
 		A78214FB1CFFE86000FD644A /* ExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78214FA1CFFE86000FD644A /* ExchangeRate.swift */; };
@@ -434,6 +435,7 @@
 		A744E5131CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseCategoriesImportTests.swift; sourceTree = "<group>"; };
 		A744E5151CEC45CB00D838C7 /* SmartReceiptsTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SmartReceiptsTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		A758CE8F1D01615900169C7C /* Tweaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweaker.swift; sourceTree = "<group>"; };
+		A758CE931D01760C00169C7C /* QuickAlertPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickAlertPresenter.swift; sourceTree = "<group>"; };
 		A78214F41CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeServiceHandler.swift; sourceTree = "<group>"; };
 		A78214F61CFFE60000FD644A /* OpenExchangeRates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenExchangeRates.swift; sourceTree = "<group>"; };
 		A78214FA1CFFE86000FD644A /* ExchangeRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRate.swift; sourceTree = "<group>"; };
@@ -1772,6 +1774,7 @@
 				EA98B5201B077A9A006935AE /* NotifyMasterSplitViewController.m */,
 				EA1D42B71B03831700D64D3A /* PaymentMethodsViewController.h */,
 				EA1D42B81B03831700D64D3A /* PaymentMethodsViewController.m */,
+				A758CE931D01760C00169C7C /* QuickAlertPresenter.swift */,
 				EA888A771AFA44E300DF2AE6 /* SettingsViewController.h */,
 				EA888A781AFA44E300DF2AE6 /* SettingsViewController.m */,
 				EAE8F9B01AF149DC00E837E3 /* TripDistancesViewController.h */,
@@ -2179,6 +2182,7 @@
 				A7F05BCE1CFD4AE30079F1AD /* Database+Trips.swift in Sources */,
 				EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */,
 				EA888A861AFB4FBD00DF2AE6 /* Database+Trips.m in Sources */,
+				A758CE941D01760C00169C7C /* QuickAlertPresenter.swift in Sources */,
 				EA00D0101B06321A00C87678 /* EditTripViewController.m in Sources */,
 				EA2B8D7E1B4EF1DA0043A84B /* RenderedPDFLabel.m in Sources */,
 				EA8D819A1AEA7C3100BAC943 /* ReceiptColumnImagePath.m in Sources */,

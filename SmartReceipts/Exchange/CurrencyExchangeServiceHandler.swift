@@ -20,7 +20,11 @@ protocol CurrencyExchangeServiceHandler {
 
 extension CurrencyExchangeServiceHandler {
     func exchangeRate(base: String, target: String, onDate date: NSDate, forceRefresh: Bool = false, completion: (ExchangeServiceStatus, NSDecimalNumber?) -> ()) {
-        // TODO jaanus: if no subscription return  with NotEnabled
+        if (!Database.sharedInstance().hasValidSubscription()) {
+            Log.debug("No subscription, no exchange")
+            completion(.NotEnabled, nil)
+            return
+        }
         
         let dateToUse = date.earlierDate(NSDate())
         

@@ -11,12 +11,21 @@
 #import "RMAppReceipt.h"
 #import "NSDate+Calculations.h"
 #import "RMStore.h"
+#import "SmartReceipts-Swift.h"
 
 @implementation Database (Purchases)
 
 - (NSDate *)subscriptionEndDate {
-    RMAppReceiptIAP *receiptForSubscription = [self receiptForSubscription];
-    return receiptForSubscription.subscriptionExpirationDate;
+    if (![Tweaker usePurchaseOverride]) {
+        RMAppReceiptIAP *receiptForSubscription = [self receiptForSubscription];
+        return receiptForSubscription.subscriptionExpirationDate;
+    }
+
+    if ([Tweaker subscriptionOverrideValue]) {
+        return [NSDate distantFuture];
+    }
+    
+    return [NSDate distantPast];
 }
 
 - (BOOL)hasValidSubscription {
