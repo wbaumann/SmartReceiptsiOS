@@ -12,6 +12,7 @@ private extension Selector {
     static let showErrorInfoPressed = #selector(EditReceiptViewController.showErrorInfo)
     static let refreshPressed = #selector(EditReceiptViewController.refreshRate)
     static let subscriptionInfoPressed = #selector(EditReceiptViewController.showSubscriptionInfo)
+    static let unsupportedCurrencyInfoPressed = #selector(EditReceiptViewController.showUnsupportedCurrrencyInfo)
 }
 
 extension EditReceiptViewController: CurrencyExchangeServiceHandler, QuickAlertPresenter {
@@ -51,14 +52,15 @@ extension EditReceiptViewController: CurrencyExchangeServiceHandler, QuickAlertP
         case .Success:
             cell.accessoryView = exchangeRateReloadButton()
         case .RetrieveError:
-            let button = UIButton(type: .Custom)
-            button.setImage(UIImage(named: "791-warning-toolbar")!, forState: .Normal)
-            button.sizeToFit()
+            let button = warnignButton()
             button.addTarget(self, action: .showErrorInfoPressed, forControlEvents: .TouchUpInside)
             cell.accessoryView = button
         case .NotEnabled:
             cell.accessoryView = subscriptionInfoButton()
-            break
+        case .UnsupportedCurrency:
+            let button = warnignButton()
+            button.addTarget(self, action: .unsupportedCurrencyInfoPressed, forControlEvents: .TouchUpInside)
+            cell.accessoryView = button
         }
     }
     
@@ -84,6 +86,10 @@ extension EditReceiptViewController: CurrencyExchangeServiceHandler, QuickAlertP
         presentAlert(NSLocalizedString("exchange.rate.subscription.info.title", comment: ""), message: NSLocalizedString("exchange.rate.subscription.info.message", comment: ""))
     }
     
+    @objc private func showUnsupportedCurrrencyInfo() {
+        presentAlert(NSLocalizedString("exchange.rate.error.unsupported.currency.title", comment: ""), message: NSLocalizedString("exchange.rate.error.unsupported.currency.message", comment: ""))
+    }
+    
     func defaultExchangeAccessoryButton() -> UIButton {
         if Database.sharedInstance().hasValidSubscription() {
             return exchangeRateReloadButton()
@@ -105,6 +111,13 @@ extension EditReceiptViewController: CurrencyExchangeServiceHandler, QuickAlertP
         button.setImage(UIImage(named: "724-info-toolbar")!, forState: .Normal)
         button.sizeToFit()
         button.addTarget(self, action: .subscriptionInfoPressed, forControlEvents: .TouchUpInside)
+        return button
+    }
+    
+    private func warnignButton() -> UIButton {
+        let button = UIButton(type: .Custom)
+        button.setImage(UIImage(named: "791-warning-toolbar")!, forState: .Normal)
+        button.sizeToFit()
         return button
     }
 }

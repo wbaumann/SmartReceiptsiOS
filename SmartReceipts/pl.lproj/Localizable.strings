@@ -134,6 +134,8 @@
 "edit.trip.name.missing.alert.message" = "Proszę wprowadzić nazwę";
 "edit.trip.start.date.label" = "Data Startowa";
 
+"exchange.rate.error.unsupported.currency.message" = "Automatic exchange rate is not available for given currency";
+"exchange.rate.error.unsupported.currency.title" = "Unsupported currency";
 "exchange.rate.retrieve.error.cancel.button" = "Cancel";
 "exchange.rate.retrieve.error.message" = "Could not retrieve exchange rate. Please try reloading or add manually.";
 "exchange.rate.retrieve.error.retry.button" = "Retry";
