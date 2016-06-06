@@ -18,6 +18,14 @@ extension WBReceipt {
         
         return price()
     }
+    
+    func targetTax() -> Price? {
+        if canExchange(), let exchanged = exchangedTax() {
+            return exchanged
+        }
+        
+        return tax()
+    }
 }
 
 extension WBReceipt: Priced {

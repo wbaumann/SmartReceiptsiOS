@@ -57,16 +57,16 @@
             continue;
         }
 
-        [netTotal addPrice:receipt.price];
-        [receiptTotal addPrice:receipt.price];
-        [noTaxesTotal addPrice:receipt.price];
-        [noTaxesTotal subtractPrice:receipt.tax];
-        [taxesTotal addPrice:receipt.tax];
+        [netTotal addPrice:receipt.targetPrice];
+        [receiptTotal addPrice:receipt.targetPrice];
+        [noTaxesTotal addPrice:receipt.targetPrice];
+        [noTaxesTotal subtractPrice:receipt.targetTax];
+        [taxesTotal addPrice:receipt.targetTax];
         if (pricesPreTax) {
-            [netTotal addPrice:receipt.tax];
+            [netTotal addPrice:receipt.targetTax];
         }
         if (receipt.isExpensable) {
-            [expensableTotal addPrice:receipt.price];
+            [expensableTotal addPrice:receipt.targetPrice];
         }
     }
 
