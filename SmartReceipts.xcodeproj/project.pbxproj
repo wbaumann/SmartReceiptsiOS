@@ -915,8 +915,8 @@
 		4DF22941192867120008D359 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				4D380F901B61240C001B43D2 /* GADConstants.m */,
 				4D33F3E019D8964200FE4EC4 /* GADConstants.h */,
+				4D380F901B61240C001B43D2 /* GADConstants.m */,
 			);
 			name = Ads;
 			sourceTree = "<group>";
