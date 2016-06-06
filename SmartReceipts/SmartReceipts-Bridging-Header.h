@@ -32,17 +32,25 @@
 #import "NSDecimalNumber+WBNumberParse.h"
 
 #import "PaymentMethod.h"
+#import "PendingHUDView.h"
 #import "Price.h"
 
 #import "ReceiptColumn.h"
 
 #import "TextEntryCell.h"
 #import "TitledTextEntryCell.h"
+#import "TripCSVGenerator.h"
+#import "TripFullPDFGenerator.h"
+#import "TripImagesPDFGenerator.h"
 
 #import "WBAppDelegate.h"
 #import "WBCategory.h"
 #import "WBCurrency.h"
 #import "WBCustomization.h"
+#import "WBGenerateViewController.h"
+#import "WBImageStampler.h"
 #import "WBPreferences.h"
 #import "WBReceipt.h"
+#import "WBReceiptAndIndex.h"
+#import "WBReportUtils.h"
 #import "WBTrip.h"
