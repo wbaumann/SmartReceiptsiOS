@@ -89,7 +89,11 @@
         return;
     }
 
-    NSString *formattedDate = [[[WBDateFormatter alloc] init] formattedDate:date inTimeZone:[NSTimeZone localTimeZone]];
+    WBDateFormatter *formatter = [[WBDateFormatter alloc] init];
+    if ([[NSCalendar currentCalendar] isDateInToday:date]) {
+        [formatter.formatter setTimeStyle:NSDateFormatterShortStyle];
+    }
+    NSString *formattedDate = [formatter formattedDate:date inTimeZone:[NSTimeZone localTimeZone]];
     [self.subtitleLabel setText:[NSString stringWithFormat:NSLocalizedString(@"settings.purchase.subscription.valid.until.label.base", nil), formattedDate]];
     if ([date isBeforeDate:[NSDate date]]) {
         [self.subtitleLabel setTextColor:[UIColor redColor]];

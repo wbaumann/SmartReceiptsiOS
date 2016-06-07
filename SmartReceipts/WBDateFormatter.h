@@ -14,6 +14,8 @@
 
 @interface WBDateFormatter : NSObject
 
+@property (nonatomic, strong, readonly) NSDateFormatter *formatter;
+
 -(NSString*) formattedDate:(NSDate*) date inTimeZone:(NSTimeZone*) timeZone;
 -(NSString*) formattedDateMs:(long long)dateMs inTimeZone:(NSTimeZone*) timeZone;
 
