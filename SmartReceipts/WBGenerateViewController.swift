@@ -126,6 +126,10 @@ extension WBGenerateViewController {
             Log.debug("Type \(type) - \(success)")
             Log.debug("Returned \(returned?.count)")
             Log.error(error)
+            
+            if success {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
         presentViewController(controller, animated: true, completion: nil)
     }
