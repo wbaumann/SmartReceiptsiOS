@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MRProgressOverlayView.h"
+#import "MRProgress/MRProgressOverlayView.h"
 
 @interface PendingHUDView : MRProgressOverlayView
 

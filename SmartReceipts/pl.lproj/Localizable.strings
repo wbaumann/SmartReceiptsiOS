@@ -151,6 +151,9 @@
 "generate.report.option.full.pdf" = "Pełny Raport PDF";
 "generate.report.option.pdf.no.table" = "Raport PDF - Bez Tabeli";
 "generate.report.option.zip.stamped" = "ZIP - Podpisane JPG";
+"generate.report.share.method.email" = "E-mail";
+"generate.report.share.method.other" = "Other";
+"generate.report.share.method.sheet.title" = "Share by";
 "generate.report.unsuccessful.alert.message" = "Nie udało się wygenerować wybranych raportów";
 
 "generic.button.title.cancel" = "Anuluj";

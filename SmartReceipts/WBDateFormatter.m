@@ -9,10 +9,13 @@
 #import "WBDateFormatter.h"
 #import "WBPreferences.h"
 
+@interface WBDateFormatter ()
+
+@property (nonatomic, strong) NSDateFormatter *formatter;
+
+@end
+
 @implementation WBDateFormatter
-{
-    NSDateFormatter *_formatter;
-}
 
 - (id)init
 {

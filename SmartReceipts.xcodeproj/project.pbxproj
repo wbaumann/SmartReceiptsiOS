@@ -87,6 +87,8 @@
 		A7D554CF1CFF061100169FD2 /* WBReceipt+Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D554CE1CFF061100169FD2 /* WBReceipt+Query.swift */; };
 		A7D554D11CFF0F5000169FD2 /* FMDatabase+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D554D01CFF0F5000169FD2 /* FMDatabase+Trips.swift */; };
 		A7D554D31CFF118700169FD2 /* RefreshTripPriceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D554D21CFF118700169FD2 /* RefreshTripPriceHandler.swift */; };
+		A7D6CDE71D05524200998FEF /* ReportAssetsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D6CDE61D05524200998FEF /* ReportAssetsGenerator.swift */; };
+		A7D6CDE91D05547F00998FEF /* WBGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D6CDE81D05547F00998FEF /* WBGenerateViewController.swift */; };
 		A7F05B981CFB49220079F1AD /* WBReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B971CFB49220079F1AD /* WBReceipt.swift */; };
 		A7F05B9A1CFB49590079F1AD /* Priced.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B991CFB49590079F1AD /* Priced.swift */; };
 		A7F05B9E1CFB49BE0079F1AD /* Taxed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */; };
@@ -464,6 +466,8 @@
 		A7D554CE1CFF061100169FD2 /* WBReceipt+Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WBReceipt+Query.swift"; sourceTree = "<group>"; };
 		A7D554D01CFF0F5000169FD2 /* FMDatabase+Trips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FMDatabase+Trips.swift"; sourceTree = "<group>"; };
 		A7D554D21CFF118700169FD2 /* RefreshTripPriceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTripPriceHandler.swift; sourceTree = "<group>"; };
+		A7D6CDE61D05524200998FEF /* ReportAssetsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportAssetsGenerator.swift; sourceTree = "<group>"; };
+		A7D6CDE81D05547F00998FEF /* WBGenerateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBGenerateViewController.swift; sourceTree = "<group>"; };
 		A7F05B971CFB49220079F1AD /* WBReceipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBReceipt.swift; sourceTree = "<group>"; };
 		A7F05B991CFB49590079F1AD /* Priced.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priced.swift; sourceTree = "<group>"; };
 		A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taxed.swift; sourceTree = "<group>"; };
@@ -1177,18 +1181,19 @@
 		BA665244D3A45FAFFE0816AB /* Receipts */ = {
 			isa = PBXGroup;
 			children = (
-				BA66534E5FD8925DFDE86E5C /* Image */,
 				BA6659ABCA7EC0AA6B2A5115 /* Creators */,
-				BA66565E13BBA7886EDCEE33 /* WBReceiptsViewController.h */,
-				BA6651EEB95E55629DEE91EE /* WBReceiptsViewController.m */,
+				BA66534E5FD8925DFDE86E5C /* Image */,
 				BA665C7D02BFCCBCC8D83E2D /* WBGenerateViewController.h */,
 				BA665109C535866B59AD5544 /* WBGenerateViewController.m */,
-				BA665F9DBF1E76E680587BB3 /* WBReceiptActionsViewController.h */,
-				BA6653628925EC4238313167 /* WBReceiptActionsViewController.m */,
+				A7D6CDE81D05547F00998FEF /* WBGenerateViewController.swift */,
 				BA665243DF18CF56677B3A86 /* WBMoveCopyReceiptViewController.h */,
 				BA6654EA764091CAC85A2FB2 /* WBMoveCopyReceiptViewController.m */,
 				BA665A5E325CF4D2E8806039 /* WBNoTripsViewController.h */,
 				BA665C12773D75AD10BAF758 /* WBNoTripsViewController.m */,
+				BA665F9DBF1E76E680587BB3 /* WBReceiptActionsViewController.h */,
+				BA6653628925EC4238313167 /* WBReceiptActionsViewController.m */,
+				BA66565E13BBA7886EDCEE33 /* WBReceiptsViewController.h */,
+				BA6651EEB95E55629DEE91EE /* WBReceiptsViewController.m */,
 			);
 			name = Receipts;
 			sourceTree = "<group>";
@@ -1442,6 +1447,7 @@
 				EA19CC7C1B2C950600168AA0 /* RateApplication.m */,
 				EAD15C781B0881C2003BB1F3 /* ReceiptFilesManager.h */,
 				EAD15C791B0881C2003BB1F3 /* ReceiptFilesManager.m */,
+				A7D6CDE61D05524200998FEF /* ReportAssetsGenerator.swift */,
 				A758CE8F1D01615900169C7C /* Tweaker.swift */,
 				A7F05BBB1CFC31520079F1AD /* WBCurrency+Extensions.swift */,
 			);
@@ -1943,7 +1949,7 @@
 				ORGANIZATIONNAME = "Will Baumann";
 				TargetAttributes = {
 					84F4F33F18CFCCD000F69A35 = {
-						DevelopmentTeam = UX5Z7CLP7J;
+						DevelopmentTeam = 5T8DRBFCBP;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -2227,6 +2233,7 @@
 				A7F05BE31CFD95710079F1AD /* FMDatabase+Receipts.swift in Sources */,
 				EA0677ED1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m in Sources */,
 				EA259CD81B1606EC00ECBD67 /* DataImport.m in Sources */,
+				A7D6CDE91D05547F00998FEF /* WBGenerateViewController.swift in Sources */,
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
 				EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */,
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
@@ -2344,6 +2351,7 @@
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
 				A7F05BD11CFD53EA0079F1AD /* Log.swift in Sources */,
+				A7D6CDE71D05524200998FEF /* ReportAssetsGenerator.swift in Sources */,
 				EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */,
 				EA1D42BD1B03851C00D64D3A /* TitleOnlyCell.m in Sources */,
 				A7F05BC21CFC42900079F1AD /* ReceiptColumnPrice.swift in Sources */,
@@ -2582,8 +2590,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: William Baumann (BLDB6AFZTL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Baumann (BLDB6AFZTL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -2615,7 +2623,7 @@
 				OTHER_LIBTOOLFLAGS = "$(inherited) $(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = co.smartreceipts.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a600620f-940a-4bd2-be2a-6cc4fc26d54c";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceipts/SmartReceipts-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2632,7 +2640,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Smart Receipts LLC (UX5Z7CLP7J)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Smart Receipts LLC (UX5Z7CLP7J)";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -2663,7 +2671,7 @@
 				OTHER_LIBTOOLFLAGS = "$(inherited) $(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = co.smartreceipts.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2fa04acb-8806-4a89-ae3e-f11a7f5d8d11";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceipts/SmartReceipts-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
