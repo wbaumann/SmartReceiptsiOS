@@ -186,6 +186,7 @@
 
 "pdf.report.comment.label" = "Report Comment:";
 "pdf.report.const.center.label" = "Cost Center:";
+"pdf.report.default.footer.text" = "Report Generated using Smart Receipts for iOS";
 "pdf.report.distance.total.label" = "Distance Total:";
 "pdf.report.distance.traveled.label.base" = "Distance Traveled: %.2f";
 "pdf.report.from.to.label.base" = "From: %@ To: %@";
