@@ -25,7 +25,7 @@
                         <constraint firstAttribute="height" constant="2" id="Fbw-zt-Te4"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CBp-IS-gAc">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CBp-IS-gAc" customClass="RenderedPDFLabel">
                     <rect key="frame" x="32" y="810" width="531" height="12"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="6uK-Qp-EKa"/>
