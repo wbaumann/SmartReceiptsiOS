@@ -1,0 +1,3 @@
+#import "GADConstants.h"
+
+NSString * const AD_UNIT_ID = @"Your unit here";

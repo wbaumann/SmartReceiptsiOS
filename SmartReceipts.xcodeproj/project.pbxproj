@@ -468,6 +468,8 @@
 		A7D554D21CFF118700169FD2 /* RefreshTripPriceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTripPriceHandler.swift; sourceTree = "<group>"; };
 		A7D6CDE61D05524200998FEF /* ReportAssetsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportAssetsGenerator.swift; sourceTree = "<group>"; };
 		A7D6CDE81D05547F00998FEF /* WBGenerateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBGenerateViewController.swift; sourceTree = "<group>"; };
+		A7D6CDF51D07E4D400998FEF /* GADConstants.m.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GADConstants.m.sample; sourceTree = "<group>"; };
+		A7D6CDF71D07E4FE00998FEF /* Secrets.swift.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Secrets.swift.sample; sourceTree = "<group>"; };
 		A7F05B971CFB49220079F1AD /* WBReceipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBReceipt.swift; sourceTree = "<group>"; };
 		A7F05B991CFB49590079F1AD /* Priced.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priced.swift; sourceTree = "<group>"; };
 		A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taxed.swift; sourceTree = "<group>"; };
@@ -921,6 +923,7 @@
 			children = (
 				4D33F3E019D8964200FE4EC4 /* GADConstants.h */,
 				4D380F901B61240C001B43D2 /* GADConstants.m */,
+				A7D6CDF51D07E4D400998FEF /* GADConstants.m.sample */,
 			);
 			name = Ads;
 			sourceTree = "<group>";
@@ -1113,6 +1116,7 @@
 				84F4F37218CFCD4400F69A35 /* MainStoryboard_iPad.storyboard */,
 				8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */,
 				A78214FE1CFFECB000FD644A /* Secrets.swift */,
+				A7D6CDF71D07E4FE00998FEF /* Secrets.swift.sample */,
 				84F4F35218CFCCD000F69A35 /* WBAppDelegate.h */,
 				84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */,
 				A7D080FA1CEAD2FD00B3C551 /* WBAppDelegate.swift */,
