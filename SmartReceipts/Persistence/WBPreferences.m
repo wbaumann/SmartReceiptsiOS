@@ -13,6 +13,8 @@
 
 #import "GDataXMLNode.h"
 #import "Constants.h"
+#import "Database.h"
+#import "Database+Purchases.h"
 
 static const float MIN_FLOAT = -FLT_MAX;
 
@@ -62,6 +64,8 @@ static NSString *const BOOL_PRINT_COMMENT_BY_PHOTO = @"PrintCommentByPhoto";
 static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_DATE = @"LayoutIncludeReceiptDate";
 static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_CATEGORY = @"LayoutIncludeReceiptCategory";
 static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER = @"LayoutIncludeReceiptPicture";
+
+static NSString *const PDF_FOOTER_STRING = @"PdfFooterString";
 
 static NSArray *__emailFields;
 
@@ -132,6 +136,8 @@ static NSDictionary *getEntryTypes() {
             BOOL_LAYOUT_SHOW_RECEIPT_DATE: tBool,
             BOOL_LAYOUT_SHOW_RECEIPT_CATEGORY: tBool,
             BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER: tBool,
+            
+            PDF_FOOTER_STRING: tString,
     };
 }
 
@@ -155,6 +161,7 @@ static NSDictionary *getDefaultValues() {
             STRING_DEFAULT_EMAIL_CC : @"",
             STRING_DEFAULT_EMAIL_BCC : @"",
             STRING_DEFAULT_EMAIL_SUBJECT : NSLocalizedString(@"SmartReceipts - %REPORT_NAME%", nil),
+            PDF_FOOTER_STRING : NSLocalizedString(@"pdf.report.default.footer.text", nil),
 
             BOOL_PREDICT_CATEGORIES : @YES,
             BOOL_USE_NATIVE_CAMERA : @NO,
@@ -299,6 +306,18 @@ static NSUserDefaults* instance() {
 
 + (void)setDefaultEmailSubject:(NSString *)value {
     [instance() setObject:value forKey:STRING_DEFAULT_EMAIL_SUBJECT];
+}
+
++ (NSString *)pdfFooterString {
+    if (![Database sharedInstance].hasValidSubscription) {
+        return NSLocalizedString(@"pdf.report.default.footer.text", nil);
+    }
+    
+    return [instance() objectForKey:PDF_FOOTER_STRING];
+}
+
++ (void)setPDFFooterString:(NSString *)string {
+    [instance() setObject:string forKey:PDF_FOOTER_STRING];
 }
 
 +(NSString*) defaultCurrency {

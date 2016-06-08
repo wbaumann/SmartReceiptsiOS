@@ -11,6 +11,7 @@
 #import "WBCustomization.h"
 #import "PDFReportTable.h"
 #import "PDFImageView.h"
+#import "WBPreferences.h"
 
 CGFloat const ElementsSpacing = 16;
 
@@ -34,7 +35,7 @@ CGFloat const ElementsSpacing = 16;
 
     self.contentOffset = self.topLine.frame.origin.y + CGRectGetHeight(self.topLine.frame) + ElementsSpacing;
     
-    self.footerLabel.text = NSLocalizedString(@"pdf.report.default.footer.text", nil);
+    self.footerLabel.text = [WBPreferences pdfFooterString];
 }
 
 - (void)appendHeader:(TripReportHeader *)header {

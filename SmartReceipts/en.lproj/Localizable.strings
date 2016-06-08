@@ -302,10 +302,12 @@
 "settings.min.receipt.price.label" = "Min. Receipt Price to Report";
 "settings.only.report.expensable.label" = "Only Report Expensable Receipts";
 "settings.pdf.configure.columns.label" = "Configure PDF Columns";
+"settings.pdf.footer.text.label" = "PDF Footer Text";
 "settings.pdf.print.id.by.photo.label" = "Print ID By Photo";
 "settings.pdf.print.receipt.comment.by.photo.label" = "Print Receipt Comment By Photo";
 "settings.pdf.section.title" = "Customize PDF Output";
 "settings.predict.recept.category.label" = "Predict Receipt Categories";
+"settings.pro.section.title" = "SmartReceipts Pro";
 "settings.purchase.make.purchase.error.title" = "Purchase failed";
 "settings.purchase.price.retrieve.error.message" = "Could not retrieve purchase details. Please try again later.";
 "settings.purchase.price.retrieve.error.title" = "Purchase error";
