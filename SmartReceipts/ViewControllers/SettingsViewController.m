@@ -636,6 +636,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [self restorePurchases];
     } else if (cell == self.removeAdsCell && ![[Database sharedInstance] hasValidSubscription]) {
         [self makePurchase:self.removeAdsProduct];
+    } else if (cell == self.pdfFooterCell) {
+        [self showAlertWithTitle:NSLocalizedString(@"settings.pdf.footer.pro.message.title", nil) message:NSLocalizedString(@"settings.pdf.footer.pro.message.body", nil)];
     }
 }
 
@@ -679,6 +681,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [[RMStore defaultStore] restoreTransactionsOnSuccess:^(NSArray *transactions) {
         [hud hide];
         [self updatePurchaseStatus];
+        [self.pdfFooterCell.entryField setEnabled:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
     } failure:^(NSError *error) {
         [hud hide];
@@ -697,6 +700,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [[RMStore defaultStore] addPayment:product.productIdentifier success:^(SKPaymentTransaction *transaction) {
         [hud hide];
         [self updatePurchaseStatus];
+        [self.pdfFooterCell.entryField setEnabled:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
     } failure:^(SKPaymentTransaction *transaction, NSError *error) {
         [hud hide];

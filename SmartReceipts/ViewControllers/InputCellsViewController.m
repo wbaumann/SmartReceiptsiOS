@@ -166,7 +166,7 @@
     }
 
     UITableViewCell *cell = [self cellAtIndexPath:indexPath];
-    if ([cell isKindOfClass:[TextEntryCell class]]) {
+    if ([cell isKindOfClass:[TextEntryCell class]] && ((TextEntryCell *) cell).entryField.isEnabled) {
         TextEntryCell *entryCell = (TextEntryCell *) cell;
         [entryCell.entryField becomeFirstResponder];
     } else if ([cell isKindOfClass:[SwitchControlCell class]]) {

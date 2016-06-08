@@ -302,6 +302,8 @@
 "settings.min.receipt.price.label" = "Min. Cena do Raportu";
 "settings.only.report.expensable.label" = "Raportuj tylko \"Wliczane w wydatki\"";
 "settings.pdf.configure.columns.label" = "Configure PDF Columns";
+"settings.pdf.footer.pro.message.body" = "Purchase SmartReceipts Pro subscription to remove or change this message in report footer";
+"settings.pdf.footer.pro.message.title" = "SmartReceipts Pro";
 "settings.pdf.footer.text.label" = "PDF Footer Text";
 "settings.pdf.print.id.by.photo.label" = "Print ID By Photo";
 "settings.pdf.print.receipt.comment.by.photo.label" = "Print Receipt Comment By Photo";
