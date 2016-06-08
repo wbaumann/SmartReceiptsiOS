@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -25,28 +25,36 @@
                         <constraint firstAttribute="height" constant="2" id="Fbw-zt-Te4"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CBp-IS-gAc" customClass="RenderedPDFLabel">
+                    <rect key="frame" x="32" y="814" width="531" height="12"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="6uK-Qp-EKa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="italicSystem" pointSize="10"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="cCx-Uy-Hn6" secondAttribute="trailing" constant="32" id="0r1-l8-nsr"/>
                 <constraint firstAttribute="trailing" secondItem="57F-MP-bKx" secondAttribute="trailing" constant="32" id="1wL-VO-N8R"/>
                 <constraint firstItem="57F-MP-bKx" firstAttribute="top" secondItem="7cA-AB-JWg" secondAttribute="top" constant="32" id="2I4-n2-mTM"/>
+                <constraint firstItem="CBp-IS-gAc" firstAttribute="top" secondItem="cCx-Uy-Hn6" secondAttribute="bottom" constant="4" id="4eU-vZ-dda"/>
+                <constraint firstItem="CBp-IS-gAc" firstAttribute="leading" secondItem="7cA-AB-JWg" secondAttribute="leading" constant="32" id="7e2-Fk-XS4"/>
+                <constraint firstAttribute="bottom" secondItem="cCx-Uy-Hn6" secondAttribute="bottom" constant="32" id="Wlm-Av-Vci"/>
                 <constraint firstItem="cCx-Uy-Hn6" firstAttribute="leading" secondItem="7cA-AB-JWg" secondAttribute="leading" constant="32" id="bI9-xb-OxC"/>
                 <constraint firstItem="57F-MP-bKx" firstAttribute="leading" secondItem="7cA-AB-JWg" secondAttribute="leading" constant="32" id="d9e-k1-HDt"/>
-                <constraint firstAttribute="bottom" secondItem="cCx-Uy-Hn6" secondAttribute="bottom" constant="32" id="yHa-mX-tZ8"/>
+                <constraint firstAttribute="trailing" secondItem="CBp-IS-gAc" secondAttribute="trailing" constant="32" id="lGt-ge-DUJ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bottomLine" destination="cCx-Uy-Hn6" id="bJs-yU-m1q"/>
+                <outlet property="footerLabel" destination="CBp-IS-gAc" id="r8N-wu-ECq"/>
                 <outlet property="topLine" destination="57F-MP-bKx" id="ijE-NF-uM4"/>
             </connections>
-            <point key="canvasLocation" x="416" y="423"/>
+            <point key="canvasLocation" x="415.5" y="423"/>
         </view>
     </objects>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

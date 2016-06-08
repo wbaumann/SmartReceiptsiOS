@@ -50,6 +50,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) PurchaseCell *removeAdsCell;
 @property (nonatomic, strong) SettingsButtonCell *resporePurchaseCell;
 
+@property (nonatomic, strong) SettingsTopTitledTextEntryCell *pdfFooterCell;
+
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultTripLengthCell;
 @property (nonatomic, strong) SwitchControlCell *receiptOutsideTripBoundsCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *minReportablePriceCell;
@@ -142,6 +144,11 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
             self.removeAdsCell,
             self.resporePurchaseCell
     ]]];
+    
+    self.pdfFooterCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
+    [self.pdfFooterCell setTitle:NSLocalizedString(@"settings.pdf.footer.text.label", nil)];
+    [self.pdfFooterCell.entryField setEnabled:[[Database sharedInstance] hasValidSubscription]];
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.pro.section.title", nil) cells:@[self.pdfFooterCell]]];
 
     self.defaultEmailRecipientCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
     [self.defaultEmailRecipientCell setTitle:NSLocalizedString(@"settings.default.email.recipient.lebel", nil)];
@@ -351,6 +358,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 }
 
 - (void)populateValues {
+    [self.pdfFooterCell setValue:[WBPreferences pdfFooterString]];
+    
     [self.defaultEmailRecipientCell setValue:[WBPreferences defaultEmailRecipient]];
     [self.defaultEmailCCCell setValue:[WBPreferences defaultEmailCC]];
     [self.defaultEmailBCCCell setValue:[WBPreferences defaultEmailBCC]];
@@ -457,6 +466,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     } else if ([priceStr length] == 0) {
         [WBPreferences setMinimumReceiptPriceToIncludeInReports:[WBPreferences MIN_FLOAT]];
     }
+    
+    [WBPreferences setPDFFooterString:self.pdfFooterCell.value];
 
     [WBPreferences setDefaultEmailRecipient:self.defaultEmailRecipientCell.value];
     [WBPreferences setDefaultEmailCC:self.defaultEmailCCCell.value];
@@ -625,6 +636,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [self restorePurchases];
     } else if (cell == self.removeAdsCell && ![[Database sharedInstance] hasValidSubscription]) {
         [self makePurchase:self.removeAdsProduct];
+    } else if (cell == self.pdfFooterCell) {
+        [self showAlertWithTitle:NSLocalizedString(@"settings.pdf.footer.pro.message.title", nil) message:NSLocalizedString(@"settings.pdf.footer.pro.message.body", nil)];
     }
 }
 
@@ -668,6 +681,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [[RMStore defaultStore] restoreTransactionsOnSuccess:^(NSArray *transactions) {
         [hud hide];
         [self updatePurchaseStatus];
+        [self.pdfFooterCell.entryField setEnabled:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
     } failure:^(NSError *error) {
         [hud hide];
@@ -686,6 +700,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [[RMStore defaultStore] addPayment:product.productIdentifier success:^(SKPaymentTransaction *transaction) {
         [hud hide];
         [self updatePurchaseStatus];
+        [self.pdfFooterCell.entryField setEnabled:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
     } failure:^(SKPaymentTransaction *transaction, NSError *error) {
         [hud hide];

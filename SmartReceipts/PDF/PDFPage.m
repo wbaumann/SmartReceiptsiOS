@@ -11,6 +11,7 @@
 #import "WBCustomization.h"
 #import "PDFReportTable.h"
 #import "PDFImageView.h"
+#import "WBPreferences.h"
 
 CGFloat const ElementsSpacing = 16;
 
@@ -20,6 +21,7 @@ CGFloat const ElementsSpacing = 16;
 @property (nonatomic, strong) IBOutlet UIView *bottomLine;
 @property (nonatomic, assign) CGFloat contentOffset;
 @property (nonatomic, assign) NSUInteger imageIndex;
+@property (nonatomic, strong) IBOutlet UILabel *footerLabel;
 
 @end
 
@@ -32,6 +34,8 @@ CGFloat const ElementsSpacing = 16;
     [self.bottomLine setBackgroundColor:[WBCustomization reportPDFStyleColor]];
 
     self.contentOffset = self.topLine.frame.origin.y + CGRectGetHeight(self.topLine.frame) + ElementsSpacing;
+    
+    self.footerLabel.text = [WBPreferences pdfFooterString];
 }
 
 - (void)appendHeader:(TripReportHeader *)header {

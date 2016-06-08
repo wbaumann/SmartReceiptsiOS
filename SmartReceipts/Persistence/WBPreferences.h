@@ -115,6 +115,9 @@
 + (BOOL)allowDataEntryOutsideTripBounds;
 + (void)setAllowDataEntryOutsideTripBounds:(BOOL)value;
 
++ (NSString *)pdfFooterString;
++ (void)setPDFFooterString:(NSString *)string;
+
 + (void)save;
 
 + (float)MIN_FLOAT;
