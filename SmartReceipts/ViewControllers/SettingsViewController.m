@@ -548,36 +548,6 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     }
 }
 
-- (void)showMailerForData:(NSData *)data {
-    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-    mc.mailComposeDelegate = self;
-
-    // forward our navbar tint color to mail composer
-    [mc.navigationBar setTintColor:[UINavigationBar appearance].tintColor];
-
-    [mc setToRecipients:@[[WBPreferences defaultEmailRecipient]]];
-    [mc addAttachmentData:data
-                 mimeType:@"application/octet-stream"
-                 fileName:SmartReceiptsExportName];
-
-    // forward style, mail composer is so dumb and overrides our style
-    UIStatusBarStyle barStyle = [UIApplication sharedApplication].statusBarStyle;
-
-    [self presentViewController:mc animated:YES completion:^{
-        [[UIApplication sharedApplication] setStatusBarStyle:barStyle];
-    }];
-}
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller
-          didFinishWithResult:(MFMailComposeResult)result
-                        error:(NSError *)error {
-    if (error) {
-        NSLog(@"Mail error: %@", [error localizedDescription]);
-    }
-
-    [controller dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (void)actionExport {
     void (^exportActionBlock)() = ^{
         PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
@@ -590,7 +560,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
                 [hud hide];
 
                 if (exportData) {
-                    [self showMailerForData:exportData];
+                    [self shareBackupFile:exportPath fromRect:[self.tableView convertRect:self.backupCell.frame toView:self.view]];
                 } else {
                     [[[UIAlertView alloc]
                             initWithTitle:NSLocalizedString(@"generic.error.alert.title", nil)
