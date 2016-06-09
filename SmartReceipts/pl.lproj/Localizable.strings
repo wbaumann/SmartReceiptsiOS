@@ -140,7 +140,9 @@
 "exchange.rate.retrieve.error.message" = "Could not retrieve exchange rate. Please try reloading or add manually.";
 "exchange.rate.retrieve.error.retry.button" = "Retry";
 "exchange.rate.retrieve.error.title" = "Exchange rate error";
-"exchange.rate.subscription.info.message" = "Tell here all the good things why subscription is great and how to get it";
+"exchange.rate.subcsription.details.button" = "Show Upgrade Options";
+"exchange.rate.subcsription.no.button" = "No Thanks";
+"exchange.rate.subscription.info.message" = "Upgrade to Smart Receipts Plus to process exchange rates automatically";
 "exchange.rate.subscription.info.title" = "Automatic exchange";
 
 "generate.report.controller.title" = "Generuj Raport";
