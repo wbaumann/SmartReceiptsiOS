@@ -33,20 +33,13 @@ extension WBGenerateViewController: QuickAlertPresenter {
                     
                     self.emailFiles(files)
                 }
-                //NSLocalizedString("generate.report.share.method.other", comment: "")
-                let otherAction = UIAlertAction(title: "UIActivityViewController", style: .Default) {
+                let otherAction = UIAlertAction(title: NSLocalizedString("generate.report.share.method.other", comment: ""), style: .Default) {
                     _ in
                     
                     self.shareFiles(files)
                 }
-                let interactionAction = UIAlertAction(title: "UIDocumentInteractionController", style: .Default) {
-                    _ in
-                    
-                    self.presentInteractionController(files)
-                }
                 sheet.addAction(emailAction)
                 sheet.addAction(otherAction)
-                sheet.addAction(interactionAction)
                 sheet.addAction(UIAlertAction(title: NSLocalizedString("generic.button.title.cancel", comment: ""), style: .Cancel, handler: nil))
                 self.presentViewController(sheet, animated: true, completion: nil)
             }
@@ -132,22 +125,5 @@ extension WBGenerateViewController {
             }
         }
         presentViewController(controller, animated: true, completion: nil)
-    }
-}
-
-extension WBGenerateViewController: UIDocumentInteractionControllerDelegate {
-    private func presentInteractionController(files: [String]) {
-        let myFrame = UIApplication.sharedApplication().keyWindow?.rootViewController?.view.convertRect(self.view.bounds, fromView: self.view) ?? self.view.bounds
-        let bottomRect = CGRectMake(myFrame.width / 2, myFrame.height - myFrame.origin.y, 1, 1)
-
-        let controller = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: files.first!))
-        controller.delegate = self
-        controller.presentOptionsMenuFromRect(bottomRect, inView: self.view, animated: true)
-        documentInteractionController = controller
-    }
-    
-    public func documentInteractionController(controller: UIDocumentInteractionController, didEndSendingToApplication application: String?) {
-        Log.debug("application:\(application)")
-        dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -21,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, strong, nullable) ReportAssetsGenerator *generator;
-@property (nonatomic, strong, nullable) UIDocumentInteractionController *documentInteractionController;
 
 @end
 

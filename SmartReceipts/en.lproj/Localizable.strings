@@ -152,7 +152,7 @@
 "generate.report.option.pdf.no.table" = "PDF Report - No Table";
 "generate.report.option.zip.stamped" = "ZIP - Stamped JPGs";
 "generate.report.share.method.email" = "E-mail";
-"generate.report.share.method.other" = "Other";
+"generate.report.share.method.other" = "Other apps";
 "generate.report.share.method.sheet.title" = "Share by";
 "generate.report.unsuccessful.alert.message" = "Couldn't generate selected reports";
 
