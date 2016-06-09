@@ -144,6 +144,8 @@
 "exchange.rate.subscription.info.title" = "Automatic exchange";
 
 "generate.report.controller.title" = "Generate Report";
+"generate.report.email.not.configured.message" = "You must configured the iOS Mail app to use the E-mail option";
+"generate.report.email.not.configured.title" = "Can't send report";
 "generate.report.multiple.attached.suffix" = "reports attached";
 "generate.report.no.options.selected.alert.message" = "No reports selected";
 "generate.report.one.attached.suffix" = "report attached";
