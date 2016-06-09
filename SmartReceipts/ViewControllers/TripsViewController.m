@@ -101,7 +101,9 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
         maxWidth = MAX(maxWidth, CGRectGetWidth(bounds) + 10);
     }
 
-    return MAX(CGRectGetWidth(self.view.bounds) / 6, maxWidth);
+    CGFloat priceLabelSpacing = 16;
+    CGFloat priceToNameSpacing = 12;
+    return MIN((CGRectGetWidth(self.view.bounds) - priceLabelSpacing * 2 - priceToNameSpacing) / 2, maxWidth);
 }
 
 - (void)configureCell:(UITableViewCell *)aCell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {
