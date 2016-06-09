@@ -8,6 +8,8 @@
 
 import Foundation
 
+private let PresentSettingsSegueIdentifier = "PresentSettingsSegue"
+
 private extension Selector {
     static let showErrorInfoPressed = #selector(EditReceiptViewController.showErrorInfo)
     static let refreshPressed = #selector(EditReceiptViewController.refreshRate)
@@ -83,7 +85,13 @@ extension EditReceiptViewController: CurrencyExchangeServiceHandler, QuickAlertP
     }
     
     @objc private func showSubscriptionInfo() {
-        presentAlert(NSLocalizedString("exchange.rate.subscription.info.title", comment: ""), message: NSLocalizedString("exchange.rate.subscription.info.message", comment: ""))
+        let cancelAction = UIAlertAction(title: NSLocalizedString("exchange.rate.subcsription.no.button", comment: ""), style: .Cancel, handler: nil)
+        let detailsAction = UIAlertAction(title: NSLocalizedString("exchange.rate.subcsription.details.button", comment: ""), style: .Default) {
+            _ in
+            
+            self.performSegueWithIdentifier(PresentSettingsSegueIdentifier, sender: nil)
+        }
+        presentAlert(NSLocalizedString("exchange.rate.subscription.info.title", comment: ""), message: NSLocalizedString("exchange.rate.subscription.info.message", comment: ""), actions: [detailsAction, cancelAction])
     }
     
     @objc private func showUnsupportedCurrrencyInfo() {
