@@ -60,6 +60,11 @@ extension WBGenerateViewController: QuickAlertPresenter {
 
 extension WBGenerateViewController: MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
     private func emailFiles(files: [String]) {
+        guard MFMailComposeViewController.canSendMail() else {
+            presentAlert(NSLocalizedString("generate.report.email.not.configured.title", comment: ""), message: NSLocalizedString("generate.report.email.not.configured.message", comment: ""))
+            return
+        }
+        
         let suffix = files.count > 0 ? NSLocalizedString("generate.report.multiple.attached.suffix", comment: "") : NSLocalizedString("generate.report.one.attached.suffix", comment: "")
         let messageBody = "\(files.count) \(suffix)"
         
