@@ -33,20 +33,13 @@ extension WBGenerateViewController: QuickAlertPresenter {
                     
                     self.emailFiles(files)
                 }
-                //NSLocalizedString("generate.report.share.method.other", comment: "")
-                let otherAction = UIAlertAction(title: "UIActivityViewController", style: .Default) {
+                let otherAction = UIAlertAction(title: NSLocalizedString("generate.report.share.method.other", comment: ""), style: .Default) {
                     _ in
                     
                     self.shareFiles(files)
                 }
-                let interactionAction = UIAlertAction(title: "UIDocumentInteractionController", style: .Default) {
-                    _ in
-                    
-                    self.presentInteractionController(files)
-                }
                 sheet.addAction(emailAction)
                 sheet.addAction(otherAction)
-                sheet.addAction(interactionAction)
                 sheet.addAction(UIAlertAction(title: NSLocalizedString("generic.button.title.cancel", comment: ""), style: .Cancel, handler: nil))
                 self.presentViewController(sheet, animated: true, completion: nil)
             }
