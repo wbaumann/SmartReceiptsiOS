@@ -37,6 +37,8 @@
 
 #import "ReceiptColumn.h"
 
+#import "SettingsViewController.h"
+
 #import "TextEntryCell.h"
 #import "TitledTextEntryCell.h"
 #import "TripCSVGenerator.h"

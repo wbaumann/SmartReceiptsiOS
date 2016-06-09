@@ -89,6 +89,7 @@
 		A7D554D31CFF118700169FD2 /* RefreshTripPriceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D554D21CFF118700169FD2 /* RefreshTripPriceHandler.swift */; };
 		A7D6CDE71D05524200998FEF /* ReportAssetsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D6CDE61D05524200998FEF /* ReportAssetsGenerator.swift */; };
 		A7D6CDE91D05547F00998FEF /* WBGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D6CDE81D05547F00998FEF /* WBGenerateViewController.swift */; };
+		A7D6CE041D0925CE00998FEF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D6CE031D0925CE00998FEF /* SettingsViewController.swift */; };
 		A7F05B981CFB49220079F1AD /* WBReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B971CFB49220079F1AD /* WBReceipt.swift */; };
 		A7F05B9A1CFB49590079F1AD /* Priced.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B991CFB49590079F1AD /* Priced.swift */; };
 		A7F05B9E1CFB49BE0079F1AD /* Taxed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */; };
@@ -470,6 +471,7 @@
 		A7D6CDE81D05547F00998FEF /* WBGenerateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBGenerateViewController.swift; sourceTree = "<group>"; };
 		A7D6CDF51D07E4D400998FEF /* GADConstants.m.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GADConstants.m.sample; sourceTree = "<group>"; };
 		A7D6CDF71D07E4FE00998FEF /* Secrets.swift.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Secrets.swift.sample; sourceTree = "<group>"; };
+		A7D6CE031D0925CE00998FEF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A7F05B971CFB49220079F1AD /* WBReceipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBReceipt.swift; sourceTree = "<group>"; };
 		A7F05B991CFB49590079F1AD /* Priced.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priced.swift; sourceTree = "<group>"; };
 		A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taxed.swift; sourceTree = "<group>"; };
@@ -1787,6 +1789,7 @@
 				A758CE931D01760C00169C7C /* QuickAlertPresenter.swift */,
 				EA888A771AFA44E300DF2AE6 /* SettingsViewController.h */,
 				EA888A781AFA44E300DF2AE6 /* SettingsViewController.m */,
+				A7D6CE031D0925CE00998FEF /* SettingsViewController.swift */,
 				EAE8F9B01AF149DC00E837E3 /* TripDistancesViewController.h */,
 				EAE8F9B11AF149DC00E837E3 /* TripDistancesViewController.m */,
 				EAB970101B0790EE005E1D63 /* TripsViewController.h */,
@@ -2289,6 +2292,7 @@
 				EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */,
 				847EFA5418E6BC93006BE520 /* WBSqlBuilder.m in Sources */,
 				EA19CC7D1B2C950600168AA0 /* RateApplication.m in Sources */,
+				A7D6CE041D0925CE00998FEF /* SettingsViewController.swift in Sources */,
 				EA07BF4D1AF400CA004D17F6 /* Database+Distances.m in Sources */,
 				EAE9DAF11AF8EA8300F4FE76 /* DistanceDistanceColumn.m in Sources */,
 				EA4C5CC11AF286990083FDD7 /* InputCellsSection.m in Sources */,
