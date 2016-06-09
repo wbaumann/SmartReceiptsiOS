@@ -127,20 +127,3 @@ extension WBGenerateViewController {
         presentViewController(controller, animated: true, completion: nil)
     }
 }
-
-extension WBGenerateViewController: UIDocumentInteractionControllerDelegate {
-    private func presentInteractionController(files: [String]) {
-        let myFrame = UIApplication.sharedApplication().keyWindow?.rootViewController?.view.convertRect(self.view.bounds, fromView: self.view) ?? self.view.bounds
-        let bottomRect = CGRectMake(myFrame.width / 2, myFrame.height - myFrame.origin.y, 1, 1)
-
-        let controller = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: files.first!))
-        controller.delegate = self
-        controller.presentOptionsMenuFromRect(bottomRect, inView: self.view, animated: true)
-        documentInteractionController = controller
-    }
-    
-    public func documentInteractionController(controller: UIDocumentInteractionController, didEndSendingToApplication application: String?) {
-        Log.debug("application:\(application)")
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-}
