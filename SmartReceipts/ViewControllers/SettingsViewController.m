@@ -651,7 +651,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [[RMStore defaultStore] restoreTransactionsOnSuccess:^(NSArray *transactions) {
         [hud hide];
         [self updatePurchaseStatus];
-        [self.pdfFooterCell.entryField setEnabled:YES];
+        [self.pdfFooterCell.entryField setEnabled:[[Database sharedInstance] hasValidSubscription]];
         [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
     } failure:^(NSError *error) {
         [hud hide];
