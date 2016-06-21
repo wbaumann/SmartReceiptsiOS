@@ -53,6 +53,7 @@
         return;
     }
 
+    SRLog(@"Refresh");
     [[RMStore defaultStore] refreshReceiptOnSuccess:^{
         SRLog(@"refreshReceiptOnSuccess");
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:identifier];
@@ -71,15 +72,32 @@
 
 - (RMAppReceiptIAP *)receiptForSubscription {
     RMAppReceipt *receipt = [RMAppReceipt bundleReceipt];
+    SRLog(@"");
     SRLog(@"receipt:%@", receipt);
+    SRLog(@"%tu IAP-s", receipt.inAppPurchases.count);
+    RMAppReceiptIAP *latest;
     for (RMAppReceiptIAP *receiptIAP in receipt.inAppPurchases) {
-        SRLog(@"receipt:%@", receiptIAP);
-        if ([receiptIAP.productIdentifier isEqualToString:SmartReceiptSubscriptionIAPIdentifier]) {
-            return receiptIAP;
+        SRLog(@"IAP receipt:%@", receiptIAP);
+        SRLog(@"Purchase: %@", receiptIAP.purchaseDate);
+        SRLog(@"Original urchase: %@", receiptIAP.originalPurchaseDate);
+        SRLog(@"Expire: %@", receiptIAP.subscriptionExpirationDate);
+        if (![receiptIAP.productIdentifier isEqualToString:SmartReceiptSubscriptionIAPIdentifier]) {
+            continue;
+        }
+        
+        if (!latest) {
+            latest = receiptIAP;
+            continue;
+        }
+        
+        NSDate *known = latest.subscriptionExpirationDate;
+        NSDate *checked = receiptIAP.subscriptionExpirationDate;
+        if ([checked isAfterDate:known]) {
+            latest = receiptIAP;
         }
     }
 
-    return nil;
+    return latest;
 }
 
 @end
