@@ -1956,7 +1956,7 @@
 				ORGANIZATIONNAME = "Will Baumann";
 				TargetAttributes = {
 					84F4F33F18CFCCD000F69A35 = {
-						DevelopmentTeam = 5T8DRBFCBP;
+						DevelopmentTeam = UX5Z7CLP7J;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
