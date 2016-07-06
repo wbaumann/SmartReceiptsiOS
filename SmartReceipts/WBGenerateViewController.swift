@@ -62,8 +62,10 @@ extension WBGenerateViewController: MFMailComposeViewControllerDelegate, UINavig
         let messageBody = "\(files.count) \(suffix)"
         
         let composer = MFMailComposeViewController()
+        let subjectFormatter = SmartReceiptsFormattableString(fromOriginalText: WBPreferences.defaultEmailSubject())
+        
         composer.mailComposeDelegate = self
-        composer.setSubject(WBPreferences.defaultEmailSubject().stringByReplacingOccurrencesOfString("%REPORT_NAME%", withString: trip.name))
+        composer.setSubject(subjectFormatter.format(trip))
         composer.setMessageBody(messageBody, isHTML: false)
         composer.setToRecipients(split(WBPreferences.defaultEmailRecipient()))
         composer.setCcRecipients(split(WBPreferences.defaultEmailCC()))

@@ -56,3 +56,4 @@
 #import "WBReceiptAndIndex.h"
 #import "WBReportUtils.h"
 #import "WBTrip.h"
+#import "WBDateFormatter.h"
