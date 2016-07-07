@@ -10,8 +10,7 @@
 #import "NSDate+Calculations.h"
 #import "Constants.h"
 #import "DataExport.h"
-#import "ZipFile.h"
-#import "FileInZipInfo.h"
+#import "Objective-Zip.h"
 
 @interface DataExportTest : XCTestCase
 
@@ -63,7 +62,7 @@
 }
 
 - (BOOL)zipAtPath:(NSString *)zipPath containsAllFiles:(NSDictionary *)files {
-    ZipFile *file = [[ZipFile alloc] initWithFileName:zipPath mode:ZipFileModeUnzip];
+    OZZipFile *file = [[OZZipFile alloc] initWithFileName:zipPath mode:OZZipFileModeUnzip];
     NSArray *fileNames = file.listFileInZipInfos;
     if (fileNames.count != files.count) {
         SRLog(@"Have %tu files in zip, expected %tu", fileNames.count, files.count);
@@ -83,7 +82,7 @@
         }
     }
 
-    for (FileInZipInfo *info in fileNames) {
+    for (OZFileInZipInfo *info in fileNames) {
         SRLog(@"File: %@ - %@", info.name, joinedFiles);
         if (![joinedFiles containsObject:info.name]) {
             return NO;
