@@ -1,9 +1,9 @@
 //
-//  FileInZipInfo.m
-//  Objective-Zip v. 0.8.3
+//  OZZipReadStream.h
+//  Objective-Zip v. 1.0.2
 //
-//  Created by Gianluca Bertani on 27/12/09.
-//  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
+//  Created by Gianluca Bertani on 28/12/09.
+//  Copyright 2009-2015 Gianluca Bertani. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
 //  modification, are permitted provided that the following conditions 
@@ -31,38 +31,14 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "FileInZipInfo.h"
+#import <Foundation/Foundation.h>
 
 
-@implementation FileInZipInfo
+/**
+ @brief OZZipReadStream implements a read stream and provides services to
+ read content from a file in the zip file.
+ */
+@interface OZZipReadStream : NSObject
 
-- (id) initWithName:(NSString *)name length:(NSUInteger)length level:(ZipCompressionLevel)level crypted:(BOOL)crypted size:(NSUInteger)size date:(NSDate *)date crc32:(NSUInteger)crc32 {
-	if (self= [super init]) {
-		_name= [name ah_retain];
-		_length= length;
-		_level= level;
-		_crypted= crypted;
-		_size= size;
-		_date= [date ah_retain];
-		_crc32= crc32;
-	}
-	
-	return self;
-}
-
-- (void) dealloc {
-	[_date release];
-	[_name release];
-	
-	[super ah_dealloc];
-}
-
-@synthesize name= _name;
-@synthesize length= _length;
-@synthesize level= _level;
-@synthesize crypted= _crypted;
-@synthesize size= _size;
-@synthesize date= _date;
-@synthesize crc32= _crc32;
 
 @end

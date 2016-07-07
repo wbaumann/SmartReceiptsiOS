@@ -1,9 +1,9 @@
 //
-//  ZipReadStream.m
-//  Objective-Zip v. 0.8.3
+//  OZFileInZipInfo.m
+//  Objective-Zip v. 1.0.2
 //
-//  Created by Gianluca Bertani on 28/12/09.
-//  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
+//  Created by Gianluca Bertani on 27/12/09.
+//  Copyright 2009-2015 Gianluca Bertani. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
 //  modification, are permitted provided that the following conditions 
@@ -31,41 +31,62 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "ZipReadStream.h"
-#import "ZipException.h"
-
-#include "unzip.h"
+#import "OZFileInZipInfo.h"
 
 
-@implementation ZipReadStream
+#pragma mark -
+#pragma mark OZFileInZipInfo extension
+
+@interface OZFileInZipInfo () {
+    
+@private
+    unsigned long long _length;
+    OZZipCompressionLevel _level;
+    BOOL _crypted;
+    unsigned long long _size;
+    NSDate *_date;
+    NSUInteger _crc32;
+    NSString *_name;
+}
 
 
-- (id) initWithUnzFileStruct:(unzFile)unzFile fileNameInZip:(NSString *)fileNameInZip {
+@end
+
+
+#pragma mark -
+#pragma mark OZFileInZipInfo implementation
+
+@implementation OZFileInZipInfo
+
+
+#pragma mark -
+#pragma mark Initialization
+
+- (instancetype) initWithName:(NSString *)name length:(unsigned long long)length level:(OZZipCompressionLevel)level crypted:(BOOL)crypted size:(unsigned long long)size date:(NSDate *)date crc32:(NSUInteger)crc32 {
 	if (self= [super init]) {
-		_unzFile= unzFile;
-		_fileNameInZip= fileNameInZip;
+		_name= name;
+		_length= length;
+		_level= level;
+		_crypted= crypted;
+		_size= size;
+		_date= date;
+		_crc32= crc32;
 	}
 	
 	return self;
 }
 
-- (NSUInteger) readDataWithBuffer:(NSMutableData *)buffer {
-	int err= unzReadCurrentFile(_unzFile, [buffer mutableBytes], [buffer length]);
-	if (err < 0) {
-		NSString *reason= [NSString stringWithFormat:@"Error reading '%@' in the zipfile", _fileNameInZip];
-		@throw [[[ZipException alloc] initWithError:err reason:reason] autorelease];
-	}
-	
-	return err;
-}
 
-- (void) finishedReading {
-	int err= unzCloseCurrentFile(_unzFile);
-	if (err != UNZ_OK) {
-		NSString *reason= [NSString stringWithFormat:@"Error closing '%@' in the zipfile", _fileNameInZip];
-		@throw [[[ZipException alloc] initWithError:err reason:reason] autorelease];
-	}
-}
+#pragma mark -
+#pragma mark Properties
+
+@synthesize name= _name;
+@synthesize length= _length;
+@synthesize level= _level;
+@synthesize crypted= _crypted;
+@synthesize size= _size;
+@synthesize date= _date;
+@synthesize crc32= _crc32;
 
 
 @end

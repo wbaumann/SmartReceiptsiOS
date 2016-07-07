@@ -49,7 +49,7 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
-  - objective-zip (0.8.3)
+  - objective-zip (1.0.2)
   - OpenSSL-iOS (1.0.204):
     - OpenSSL-iOS/Framework (= 1.0.204)
   - OpenSSL-iOS/Framework (1.0.204)
@@ -69,7 +69,7 @@ DEPENDENCIES:
   - Google/Analytics
   - HTAutocompleteTextField (= 1.3.2)
   - MRProgress (= 0.8.3)
-  - objective-zip (= 0.8.3)
+  - objective-zip (= 1.0.2)
   - RMStore/AppReceiptVerificator (from `3rdparty/RMStore`)
   - RMStore/Core (from `3rdparty/RMStore`)
   - RMStore/KeychainPersistence (from `3rdparty/RMStore`)
@@ -92,12 +92,12 @@ SPEC CHECKSUMS:
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   HTAutocompleteTextField: ce809f04875e843e20f214ab973bb496ba7a93b1
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
-  objective-zip: a27d4b3c060eead4325159e49178e7f0ad5ee808
+  objective-zip: b78d235d234546105e118d35ae24a69feba08d44
   OpenSSL-iOS: 002cabfdfc2df48d63cebd723b90ada86c946316
   RMStore: 935f3e350c7f2f098047d73ddbd2ee2cd00f8b48
   Tweaks: 524fa47636cce3bf3a4d9156e980f10ae9480e81
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
 
-PODFILE CHECKSUM: 24057e39c5c2499d2a414e58fcb4e55e03a52ec1
+PODFILE CHECKSUM: a7ae094599fcef77347d7d6766da04cda5a223fe
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.1

@@ -1,9 +1,9 @@
 //
-//  FileInZipInfo.h
-//  Objective-Zip v. 0.8.3
+//  OZFileInZipInfo.h
+//  Objective-Zip v. 1.0.2
 //
 //  Created by Gianluca Bertani on 27/12/09.
-//  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
+//  Copyright 2009-2015 Gianluca Bertani. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
 //  modification, are permitted provided that the following conditions 
@@ -32,30 +32,63 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ZipFile.h"
-#import "ARCHelper.h"
+
+#import "OZZipCompressionLevel.h"
 
 
-@interface FileInZipInfo : NSObject {
-	
-@private
-	NSUInteger _length;
-	ZipCompressionLevel _level;
-	BOOL _crypted;
-	NSUInteger _size;
-	NSDate *_date;
-	NSUInteger _crc32;
-	NSString *_name;
-}
+/**
+ @brief OZFileInZipInfo provides properties to inspect a file contained in
+ the zip file.
+ */
+@interface OZFileInZipInfo : NSObject
 
-- (id) initWithName:(NSString *)name length:(NSUInteger)length level:(ZipCompressionLevel)level crypted:(BOOL)crypted size:(NSUInteger)size date:(NSDate *)date crc32:(NSUInteger)crc32;
 
-@property (nonatomic, readonly) NSString *name;
-@property (nonatomic, readonly) NSUInteger length;
-@property (nonatomic, readonly) ZipCompressionLevel level;
+#pragma mark -
+#pragma mark Properties
+
+/**
+ @brief Name of the file in the zip file.
+ <p>Note: in case the zip file has a directory structure, directory and
+ subdirectory names are prepended to the file name, e.g. 
+ "docs/html/index.html".</p>
+ */
+@property (nonatomic, readonly, nonnull) NSString *name;
+
+/**
+ @brief Length in bytes of the uncompressed file.
+ */
+@property (nonatomic, readonly) unsigned long long length;
+
+/**
+ @brief Compression level of the file. Can be:<ul>
+ <li>OZZipCompressionLevelNone: not compressed (stored as is).
+ <li>OZZipCompressionLevelFastest: minimum compression.
+ <li>OZZipCompressionLevelBest: maximum compression
+ <li>OZZipCompressionLevelDefault: intermediate compression.
+ </ul>
+ */
+@property (nonatomic, readonly) OZZipCompressionLevel level;
+
+/**
+ @brief <code>YES</code> if the file has been encrypted during
+ writing, <code>NO</code> if the file is not encrypted.
+ */
 @property (nonatomic, readonly) BOOL crypted;
-@property (nonatomic, readonly) NSUInteger size;
-@property (nonatomic, readonly) NSDate *date;
+
+/**
+ @brief Length in bytes of the (compressed) file in the zip file.
+ */
+@property (nonatomic, readonly) unsigned long long size;
+
+/**
+ @brief Date/time the of file.
+ */
+@property (nonatomic, readonly, nonnull) NSDate *date;
+
+/**
+ @brief CRC32 of the file.
+ */
 @property (nonatomic, readonly) NSUInteger crc32;
+
 
 @end

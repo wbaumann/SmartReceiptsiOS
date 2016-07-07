@@ -13,8 +13,7 @@
 #import "WBDateFormatter.h"
 #import "WBReportUtils.h"
 
-#import "ZipFile.h"
-#import "ZipWriteStream.h"
+#import "Objective-Zip.h"
 #import "SmartReceipts-Swift.h"
 
 static const float IMG_SCALE_FACTOR = 2.1f;
@@ -40,8 +39,8 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
 
 -(BOOL) zipToFile:(NSString*) outputPath stampedImagesForReceiptsAndIndexes:(NSArray*) receiptsAndIndexes inTrip:(WBTrip*) trip {
     
-    ZipFile *zipFile= [[ZipFile alloc] initWithFileName:outputPath
-                                                   mode:ZipFileModeCreate];
+    OZZipFile *zipFile= [[OZZipFile alloc] initWithFileName:outputPath
+                                                   mode:OZZipFileModeCreate];
     
     for (WBReceiptAndIndex *rwi in receiptsAndIndexes) {
         @autoreleasepool {
@@ -63,8 +62,8 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
             @try {
                 NSString *filename = [NSString stringWithFormat:@"%d_%@.jpg", index, [receipt name]];
                 
-                ZipWriteStream *stream= [zipFile writeFileInZipWithName:filename
-                                                       compressionLevel:ZipCompressionLevelDefault];
+                OZZipWriteStream *stream= [zipFile writeFileInZipWithName:filename
+                                                       compressionLevel:OZZipCompressionLevelDefault];
                 
                 [stream writeData:UIImageJPEGRepresentation(img, 0.85)];
                 [stream finishedWriting];

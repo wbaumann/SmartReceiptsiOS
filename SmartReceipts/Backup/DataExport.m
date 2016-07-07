@@ -6,10 +6,9 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import "ZipWriteStream.h"
 #import "DataExport.h"
+#import "Objective-Zip.h"
 #import "Constants.h"
-#import "ZipFile.h"
 #import "WBPreferences.h"
 
 @interface DataExport ()
@@ -31,7 +30,7 @@
 - (NSString *)execute {
     NSString *zipPath = [self.workDirectory stringByAppendingPathComponent:SmartReceiptsExportName];
 
-    ZipFile *zipFile = [[ZipFile alloc] initWithFileName:zipPath mode:ZipFileModeCreate];
+    OZZipFile *zipFile = [[OZZipFile alloc] initWithFileName:zipPath mode:OZZipFileModeCreate];
     [self appendFileNamed:SmartReceiptsDatabaseName inDirectory:self.workDirectory archiveName:SmartReceiptsDatabaseExportName toZip:zipFile];
     [self appendAllTripFilesToZip:zipFile];
     NSData *preferences = [[WBPreferences xmlString] dataUsingEncoding:NSUTF8StringEncoding];
@@ -41,13 +40,13 @@
     return zipPath;
 }
 
-- (void)appendData:(NSData *)data zipName:(NSString *)zipName toFile:(ZipFile *)zipFile {
-    ZipWriteStream *stream = [zipFile writeFileInZipWithName:zipName compressionLevel:ZipCompressionLevelDefault];
+- (void)appendData:(NSData *)data zipName:(NSString *)zipName toFile:(OZZipFile *)zipFile {
+    OZZipWriteStream *stream = [zipFile writeFileInZipWithName:zipName compressionLevel:OZZipCompressionLevelDefault];
     [stream writeData:data];
     [stream finishedWriting];
 }
 
-- (void)appendAllTripFilesToZip:(ZipFile *)file {
+- (void)appendAllTripFilesToZip:(OZZipFile *)file {
     NSString *tripsFolder = [self.workDirectory stringByAppendingPathComponent:SmartReceiptsTripsDirectoryName];
     NSArray *trips = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:tripsFolder error:nil];
     for (NSString *trip in trips) {
@@ -55,7 +54,7 @@
     }
 }
 
-- (void)appFilesForTrip:(NSString *)trip toZip:(ZipFile *)zip {
+- (void)appFilesForTrip:(NSString *)trip toZip:(OZZipFile *)zip {
     NSString *tripFolder = [[self.workDirectory stringByAppendingPathComponent:SmartReceiptsTripsDirectoryName] stringByAppendingPathComponent:trip];
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:tripFolder error:nil];
     for (NSString *file in files) {
@@ -64,7 +63,7 @@
     }
 }
 
-- (void)appendFileNamed:(NSString *)fileName inDirectory:(NSString *)containingDirectory archiveName:(NSString *)archiveName toZip:(ZipFile *)zipFile {
+- (void)appendFileNamed:(NSString *)fileName inDirectory:(NSString *)containingDirectory archiveName:(NSString *)archiveName toZip:(OZZipFile *)zipFile {
     NSString *filePath = [containingDirectory stringByAppendingPathComponent:fileName];
     NSData *fileData = [NSData dataWithContentsOfFile:filePath];
     [self appendData:fileData zipName:archiveName toFile:zipFile];

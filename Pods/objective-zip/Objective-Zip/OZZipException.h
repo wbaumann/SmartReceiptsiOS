@@ -1,9 +1,9 @@
 //
-//  ZipException.h
-//  Objective-Zip v. 0.8.3
+//  OZZipException.h
+//  Objective-Zip v. 1.0.2
 //
 //  Created by Gianluca Bertani on 25/12/09.
-//  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
+//  Copyright 2009-2015 Gianluca Bertani. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
 //  modification, are permitted provided that the following conditions 
@@ -32,18 +32,32 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ARCHelper.h"
+
+extern const NSInteger OZ_ERROR_NO_SUCH_FILE;
 
 
-@interface ZipException : NSException {
-	
-@private	
-	NSInteger _error;
-}
+/**
+ @brief OZZipException is a custom exception type to quickly discern between
+ error originated during the zip/unzip process or elsewhere.
+ </p>All exceptions thrown by Objective-Zip are of OZZipException type.</p>
+ */
+@interface OZZipException : NSException 
 
-- (id) initWithReason:(NSString *)reason;
-- (id) initWithError:(NSInteger)error reason:(NSString *)reason;
 
+#pragma mark -
+#pragma mark Properties
+
+/**
+ @brief Underlying error code provided by MiniZip/ZLib libraries. May be
+ <code>0</code> if the exception originated in the Objective-Zip layer.
+ <p>Common error codes are:<ul>
+ <li>-1: System error.
+ <li>-103: Bad zip file.
+ <li>-104: Internal error.
+ <li>-105: CRC error.
+ </ul></p>
+ */
 @property (nonatomic, readonly) NSInteger error;
+
 
 @end

@@ -1,9 +1,9 @@
 //
-//  ZipWriteStream.m
-//  Objective-Zip v. 0.8.3
+//  OZZipWriteStream.m
+//  Objective-Zip v. 1.0.2
 //
 //  Created by Gianluca Bertani on 25/12/09.
-//  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
+//  Copyright 2009-2015 Gianluca Bertani. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
 //  modification, are permitted provided that the following conditions 
@@ -31,16 +31,38 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "ZipWriteStream.h"
-#import "ZipException.h"
+#import "OZZipWriteStream.h"
+#import "OZZipWriteStream+Standard.h"
+#import "OZZipWriteStream+NSError.h"
+#import "OZZipWriteStream+Internals.h"
+#import "OZZipException.h"
+#import "OZZipException+Internals.h"
 
-#include "zip.h"
+
+#pragma mark -
+#pragma mark OZZipWriteStream extension
+
+@interface OZZipWriteStream () {
+    NSString *_fileNameInZip;
+    
+@private
+    zipFile _zipFile;
+}
 
 
-@implementation ZipWriteStream
+@end
 
 
-- (id) initWithZipFileStruct:(zipFile)zipFile fileNameInZip:(NSString *)fileNameInZip {
+#pragma mark -
+#pragma mark OZZipWriteStream implementation
+
+@implementation OZZipWriteStream
+
+
+#pragma mark -
+#pragma mark Initialization
+
+- (instancetype) initWithZipFileStruct:(zipFile)zipFile fileNameInZip:(NSString *)fileNameInZip {
 	if (self= [super init]) {
 		_zipFile= zipFile;
 		_fileNameInZip= fileNameInZip;
@@ -49,20 +71,44 @@
 	return self;
 }
 
+
+#pragma mark -
+#pragma mark Writing data
+
 - (void) writeData:(NSData *)data {
-	int err= zipWriteInFileInZip(_zipFile, [data bytes], [data length]);
-	if (err < 0) {
-		NSString *reason= [NSString stringWithFormat:@"Error writing '%@' in the zipfile", _fileNameInZip];
-		@throw [[[ZipException alloc] initWithError:err reason:reason] autorelease];
-	}
+	int err= zipWriteInFileInZip(_zipFile, [data bytes], (uInt) [data length]);
+	if (err < 0)
+		@throw [OZZipException zipExceptionWithError:err reason:@"Error writing '%@' in the zipfile", _fileNameInZip];
 }
 
 - (void) finishedWriting {
 	int err= zipCloseFileInZip(_zipFile);
-	if (err != ZIP_OK) {
-		NSString *reason= [NSString stringWithFormat:@"Error closing '%@' in the zipfile", _fileNameInZip];
-		@throw [[[ZipException alloc] initWithError:err reason:reason] autorelease];
-	}
+	if (err != ZIP_OK)
+		@throw [OZZipException zipExceptionWithError:err reason:@"Error closing '%@' in the zipfile", _fileNameInZip];
+}
+
+
+#pragma mark -
+#pragma mark Writing data (NSError variants)
+
+- (BOOL) writeData:(NSData *)data error:(NSError * __autoreleasing *)error {
+    ERROR_WRAP_BEGIN {
+        
+        [self writeData:data];
+        
+        return YES;
+        
+    } ERROR_WRAP_END_AND_RETURN(error, NO);
+}
+
+- (BOOL) finishedWritingWithError:(NSError * __autoreleasing *)error {
+    ERROR_WRAP_BEGIN {
+        
+        [self finishedWriting];
+        
+        return YES;
+        
+    } ERROR_WRAP_END_AND_RETURN(error, NO);
 }
 
 

@@ -1,9 +1,9 @@
 //
-//  ZipWriteStream.h
-//  Objective-Zip v. 0.8.3
+//  OZZipWriteStream.h
+//  Objective-Zip v. 1.0.2
 //
 //  Created by Gianluca Bertani on 25/12/09.
-//  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
+//  Copyright 2009-2015 Gianluca Bertani. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
 //  modification, are permitted provided that the following conditions 
@@ -32,21 +32,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ARCHelper.h"
-
-#include "zip.h"
 
 
-@interface ZipWriteStream : NSObject {
-	NSString *_fileNameInZip;
+/**
+ @brief OZZipWriteStream implements a write stream and provides services to
+ write content to a new file in the zip file.
+ */
+@interface OZZipWriteStream : NSObject
 
-@private
-	zipFile _zipFile;
-}
-
-- (id) initWithZipFileStruct:(zipFile)zipFile fileNameInZip:(NSString *)fileNameInZip;
-
-- (void) writeData:(NSData *)data;
-- (void) finishedWriting;
 
 @end

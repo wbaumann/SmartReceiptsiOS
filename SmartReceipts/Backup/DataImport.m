@@ -7,10 +7,8 @@
 //
 
 #import "DataImport.h"
-#import "ZipFile.h"
-#import "ZipReadStream.h"
+#import "Objective-Zip.h"
 #import "Constants.h"
-#import "FileInZipInfo.h"
 #import "WBFileManager.h"
 #import "WBPreferences.h"
 
@@ -35,7 +33,7 @@
 - (void)execute {
     [[NSFileManager defaultManager] createDirectoryAtPath:self.outputPath withIntermediateDirectories:YES attributes:nil error:nil];
 
-    ZipFile *zipFile = [[ZipFile alloc] initWithFileName:self.inputPath mode:ZipFileModeUnzip];
+    OZZipFile *zipFile = [[OZZipFile alloc] initWithFileName:self.inputPath mode:OZZipFileModeUnzip];
     [self extractFromZip:zipFile zipName:SmartReceiptsDatabaseExportName toFile:[self.outputPath stringByAppendingPathComponent:SmartReceiptsDatabaseExportName]];
     NSData *preferences = [self extractDataFromZip:zipFile withName:SmartReceiptsPreferencesExportName];
     [WBPreferences setFromXmlString:[[NSString alloc] initWithData:preferences encoding:NSUTF8StringEncoding]];
@@ -43,7 +41,7 @@
     // trips contents
     [zipFile goToFirstFileInZip];
     do {
-        FileInZipInfo *info = [zipFile getCurrentFileInZipInfo];
+        OZFileInZipInfo *info = [zipFile getCurrentFileInZipInfo];
         NSString *name = info.name;
         if ([name isEqualToString:SmartReceiptsDatabaseExportName]) {
             continue;
@@ -64,12 +62,12 @@
         NSString *tripPath = [[self.outputPath stringByAppendingPathComponent:SmartReceiptsTripsDirectoryName] stringByAppendingPathComponent:tripName];
         [[NSFileManager defaultManager] createDirectoryAtPath:tripPath withIntermediateDirectories:YES attributes:nil error:nil];
         NSString *filePath = [tripPath stringByAppendingPathComponent:fileName];
-        ZipReadStream *stream = [zipFile readCurrentFileInZip];
+        OZZipReadStream *stream = [zipFile readCurrentFileInZip];
         [self writeDataFromStream:stream toFile:filePath];
     } while ([zipFile goToNextFileInZip]);
 }
 
-- (NSData *)extractDataFromZip:(ZipFile *)zipFile withName:(NSString *)fileName {
+- (NSData *)extractDataFromZip:(OZZipFile *)zipFile withName:(NSString *)fileName {
     NSString *tempFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"extract"];
     [self extractFromZip:zipFile zipName:fileName toFile:tempFile];
     NSData *data = [NSData dataWithContentsOfFile:tempFile];
@@ -77,7 +75,7 @@
     return data;
 }
 
-- (void)extractFromZip:(ZipFile *)zipFile zipName:(NSString *)zipName toFile:(NSString *)outPath {
+- (void)extractFromZip:(OZZipFile *)zipFile zipName:(NSString *)zipName toFile:(NSString *)outPath {
     SRLog(@"Extract file named: %@", zipName);
     BOOL found = [zipFile locateFileInZip:zipName];
     if (!found) {
@@ -85,11 +83,11 @@
         return;
     }
 
-    ZipReadStream *stream = [zipFile readCurrentFileInZip];
+    OZZipReadStream *stream = [zipFile readCurrentFileInZip];
     [self writeDataFromStream:stream toFile:outPath];
 }
 
-- (void)writeDataFromStream:(ZipReadStream *)stream toFile:(NSString *)file {
+- (void)writeDataFromStream:(OZZipReadStream *)stream toFile:(NSString *)file {
     @autoreleasepool {
         NSMutableData *buffer = [[NSMutableData alloc] initWithLength:(8 * 1024)];
         NSMutableData *resultData = [[NSMutableData alloc] init];

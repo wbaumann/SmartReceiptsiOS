@@ -1,9 +1,9 @@
 //
-//  ZipException.m
-//  Objective-Zip v. 0.8.3
+//  OZZipException.m
+//  Objective-Zip v. 1.0.2
 //
 //  Created by Gianluca Bertani on 25/12/09.
-//  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
+//  Copyright 2009-2015 Gianluca Bertani. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
 //  modification, are permitted provided that the following conditions 
@@ -31,27 +31,80 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "ZipException.h"
+#import "OZZipException.h"
 
 
-@implementation ZipException
+#pragma mark -
+#pragma mark OZZipException extension
 
-- (id) initWithReason:(NSString *)reason {
-	if (self= [super initWithName:@"ZipException" reason:reason userInfo:nil]) {
+@interface OZZipException () {
+    
+@private
+    NSInteger _error;
+}
+
+
+@end
+
+
+#pragma mark -
+#pragma mark OZZipException constants
+
+const NSInteger OZ_ERROR_NO_SUCH_FILE= -9001;
+
+
+#pragma mark -
+#pragma mark OZZipException implementation
+
+@implementation OZZipException
+
+
+#pragma mark -
+#pragma mark Initialization
+
++ (OZZipException *) zipExceptionWithReason:(NSString *)format, ... {
+
+    // Variable arguments formatting
+    va_list arguments;
+    va_start(arguments, format);
+    NSString *reason= [[NSString alloc] initWithFormat:format arguments:arguments];
+    va_end(arguments);
+    
+    return [[OZZipException alloc] initWithReason:reason];
+}
+
++ (OZZipException *) zipExceptionWithError:(NSInteger)error reason:(NSString *)format, ... {
+    
+    // Variable arguments formatting
+    va_list arguments;
+    va_start(arguments, format);
+    NSString *reason= [[NSString alloc] initWithFormat:format arguments:arguments];
+    va_end(arguments);
+    
+    return [[OZZipException alloc] initWithError:error reason:reason];
+}
+
+- (instancetype) initWithReason:(NSString *)reason {
+	if (self= [super initWithName:@"OZZipException" reason:reason userInfo:nil]) {
 		_error= 0;
 	}
 	
 	return self;
 }
 
-- (id) initWithError:(NSInteger)error reason:(NSString *)reason {
-	if (self= [super initWithName:@"ZipException" reason:reason userInfo:nil]) {
+- (instancetype) initWithError:(NSInteger)error reason:(NSString *)reason {
+	if (self= [super initWithName:@"OZZipException" reason:reason userInfo:nil]) {
 		_error= error;
 	}
 	
 	return self;
 }
 
+
+#pragma mark -
+#pragma mark Properties
+
 @synthesize error= _error;
+
 
 @end
