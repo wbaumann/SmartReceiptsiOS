@@ -73,8 +73,8 @@ class NetExchangedPricePlusTaxTests: XCTestCase {
         XCTAssertEqual("$5.50", column.valueFromReceipt(receiptEUR, forCSV: false))
     }
     
-    func testNoConversionNeede() {
-        XCTAssertEqual("", column.valueFromReceipt(receiptUSD, forCSV: true))
-        XCTAssertEqual("", column.valueFromReceipt(receiptUSD, forCSV: false))
+    func testNoConversionNeeded() {
+        XCTAssertEqual("22.00", column.valueFromReceipt(receiptUSD, forCSV: true))
+        XCTAssertEqual("$22.00", column.valueFromReceipt(receiptUSD, forCSV: false))
     }
 }

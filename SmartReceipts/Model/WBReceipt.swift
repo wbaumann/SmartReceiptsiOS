@@ -44,6 +44,10 @@ extension WBReceipt: Priced {
 
 extension WBReceipt: Exchanged {
     func exchangeRateAsString() -> String {
+        if !canExchange() {
+            return WBReceipt.exchangeRateFormatter().stringFromNumber(1)!
+        }
+        
         guard let number = exchangeRate where number.compare(NSDecimalNumber.zero()) == .OrderedDescending else {
             return ""
         }
@@ -75,7 +79,7 @@ extension WBReceipt: Exchanged {
 extension WBReceipt: ExchangedPriced {
     func exchangedPrice() -> Price? {
         if !canExchange() {
-            return nil
+            return price()
         }
         
         guard let rate = exchangeRate where rate.isPositiveAmount() else {
@@ -133,7 +137,7 @@ extension WBReceipt: Taxed {
 extension WBReceipt: ExchangedTaxed {
     func exchangedTax() -> Price? {
         if !canExchange() {
-            return nil
+            return tax()
         }
 
         guard let rate = exchangeRate, tax = taxAmount where rate.isPositiveAmount() && tax.isPositiveAmount() else {
@@ -188,7 +192,7 @@ extension WBReceipt {
 
     func exchangedNetPrice() -> Price? {
         if !canExchange() {
-            return nil
+            return netPrice()
         }
         
         guard let rate = exchangeRate where rate.isPositiveAmount() else {
