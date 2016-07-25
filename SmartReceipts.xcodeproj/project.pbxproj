@@ -11,6 +11,10 @@
 		4D380F911B61240C001B43D2 /* GADConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D380F901B61240C001B43D2 /* GADConstants.m */; };
 		4D380F941B6124F3001B43D2 /* launch_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D380F921B6124F3001B43D2 /* launch_image.png */; };
 		4D380F951B6124F3001B43D2 /* launch_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D380F931B6124F3001B43D2 /* launch_image@2x.png */; };
+		4D3C193F1D46BE5A00FEC539 /* HorizontalPDFPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D3C193C1D46BE5A00FEC539 /* HorizontalPDFPage.xib */; };
+		4D3C19401D46BE5A00FEC539 /* HorizontalPDFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3C193E1D46BE5A00FEC539 /* HorizontalPDFPage.m */; };
+		4D3C19441D46C25A00FEC539 /* HorizontalTripReportHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D3C19411D46C25A00FEC539 /* HorizontalTripReportHeader.xib */; };
+		4D3C19451D46C25A00FEC539 /* HorizontalTripReportHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3C19421D46C25A00FEC539 /* HorizontalTripReportHeader.m */; };
 		4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BB304190818E100D28CBF /* WBActionSheetPicker.m */; };
 		4DF229461928678A0008D359 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF229451928678A0008D359 /* AdSupport.framework */; };
 		4DF22948192867940008D359 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF22947192867940008D359 /* AudioToolbox.framework */; };
@@ -370,6 +374,12 @@
 		4D380F901B61240C001B43D2 /* GADConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADConstants.m; sourceTree = "<group>"; };
 		4D380F921B6124F3001B43D2 /* launch_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_image.png; sourceTree = "<group>"; };
 		4D380F931B6124F3001B43D2 /* launch_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch_image@2x.png"; sourceTree = "<group>"; };
+		4D3C193C1D46BE5A00FEC539 /* HorizontalPDFPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalPDFPage.xib; sourceTree = "<group>"; };
+		4D3C193D1D46BE5A00FEC539 /* HorizontalPDFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalPDFPage.h; sourceTree = "<group>"; };
+		4D3C193E1D46BE5A00FEC539 /* HorizontalPDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalPDFPage.m; sourceTree = "<group>"; };
+		4D3C19411D46C25A00FEC539 /* HorizontalTripReportHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalTripReportHeader.xib; sourceTree = "<group>"; };
+		4D3C19421D46C25A00FEC539 /* HorizontalTripReportHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalTripReportHeader.m; sourceTree = "<group>"; };
+		4D3C19431D46C25A00FEC539 /* HorizontalTripReportHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalTripReportHeader.h; sourceTree = "<group>"; };
 		4DF229451928678A0008D359 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		4DF22947192867940008D359 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4DF229491928679D0008D359 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1343,6 +1353,12 @@
 		EA2B8D7B1B4EF1AE0043A84B /* PDF */ = {
 			isa = PBXGroup;
 			children = (
+				4D3C19411D46C25A00FEC539 /* HorizontalTripReportHeader.xib */,
+				4D3C19421D46C25A00FEC539 /* HorizontalTripReportHeader.m */,
+				4D3C19431D46C25A00FEC539 /* HorizontalTripReportHeader.h */,
+				4D3C193C1D46BE5A00FEC539 /* HorizontalPDFPage.xib */,
+				4D3C193D1D46BE5A00FEC539 /* HorizontalPDFPage.h */,
+				4D3C193E1D46BE5A00FEC539 /* HorizontalPDFPage.m */,
 				EA40DC671B55598A003BF545 /* FullPagePDFImageView.h */,
 				EA40DC681B55598A003BF545 /* FullPagePDFImageView.m */,
 				EA40DC6A1B5559A1003BF545 /* FullPagePDFImageView.xib */,
@@ -1997,6 +2013,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D3C19441D46C25A00FEC539 /* HorizontalTripReportHeader.xib in Resources */,
 				EA98B51E1B075057006935AE /* WBCellWithPriceNameDate.xib in Resources */,
 				EA5963FC1AF2A07200935344 /* InlinedPickerCell.xib in Resources */,
 				8421A1F41907AF18001DF38D /* wheel.png in Resources */,
@@ -2004,6 +2021,7 @@
 				EA2F23021B41BDDD008AF61E /* PurchaseCell.xib in Resources */,
 				EA4C5CC61AF287330083FDD7 /* TitledTextEntryCell.xib in Resources */,
 				EA07BF601AF4E801004D17F6 /* DistanceSummaryCell.xib in Resources */,
+				4D3C193F1D46BE5A00FEC539 /* HorizontalPDFPage.xib in Resources */,
 				84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */,
 				EA1D42BE1B03851C00D64D3A /* TitleOnlyCell.xib in Resources */,
 				841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */,
@@ -2254,6 +2272,7 @@
 				EA22FB4D1B1AF1A40060D23D /* CategoryCell.m in Sources */,
 				EA71DFCC1AF9FEEC004092C3 /* SwitchControlCell.m in Sources */,
 				EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */,
+				4D3C19451D46C25A00FEC539 /* HorizontalTripReportHeader.m in Sources */,
 				A7F05BD71CFD551A0079F1AD /* ConsoleOutput.swift in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
 				EA8EB10A1B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m in Sources */,
@@ -2354,6 +2373,7 @@
 				EA8D818B1AEA7BA400BAC943 /* ReceiptColumnUserID.m in Sources */,
 				EA8EB1071B0A4AAF00780BA3 /* ReceiptColumnReportComment.m in Sources */,
 				A7AFB2421CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift in Sources */,
+				4D3C19401D46BE5A00FEC539 /* HorizontalPDFPage.m in Sources */,
 				EAD15C7A1B0881C2003BB1F3 /* ReceiptFilesManager.m in Sources */,
 				EA183E0B1B1C9F6C00577B3D /* Database+PDFColumns.m in Sources */,
 				EA8D819D1AEA7C4200BAC943 /* ReceiptColumnComment.m in Sources */,

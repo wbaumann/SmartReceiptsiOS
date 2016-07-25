@@ -8,8 +8,10 @@
 
 #import "PrettyPDFRender.h"
 #import "PDFPage.h"
+#import "HorizontalPDFPage.h"
 #import "UIView+LoadHelpers.h"
 #import "TripReportHeader.h"
+#import "HorizontalTripReportHeader.h"
 #import "PDFReportTable.h"
 #import "PDFImageView.h"
 #import "FullPagePDFImageView.h"
@@ -72,14 +74,14 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 }
 
 - (void)renderPage:(PDFPage *)page {
-    UIGraphicsBeginPDFPage();
+    UIGraphicsBeginPDFPageWithInfo(page.bounds, nil);
     CGContextRef pdfContext = UIGraphicsGetCurrentContext();
     [page.layer renderInContext:pdfContext];
 }
 
 - (TripReportHeader *)header {
     if (!_header) {
-        _header = [TripReportHeader loadInstance];
+        _header = [HorizontalTripReportHeader loadInstance];
     }
 
     return _header;
@@ -140,6 +142,14 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
     }
 
     self.writingToPage = [PDFPage loadInstance];
+}
+
+- (void)startNextHorizontalPage {
+    if (self.writingToPage) {
+        [self renderPage:self.writingToPage];
+    }
+    
+    self.writingToPage = [HorizontalPDFPage loadInstance];
 }
 
 - (void)appendImage:(UIImage *)image withLabel:(NSString *)label {

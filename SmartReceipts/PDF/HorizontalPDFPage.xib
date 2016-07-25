@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="7cA-AB-JWg" customClass="PDFPage">
+            <rect key="frame" x="0.0" y="0.0" width="842" height="595"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57F-MP-bKx" userLabel="Top line">
+                    <rect key="frame" x="32" y="32" width="778" height="4"/>
+                    <color key="backgroundColor" red="0.46666666670000001" green="0.08235294118" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="4" id="yes-MM-qNI"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCx-Uy-Hn6" userLabel="Bottom line">
+                    <rect key="frame" x="32" y="561" width="778" height="2"/>
+                    <color key="backgroundColor" red="0.46666666670000001" green="0.08235294118" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="Fbw-zt-Te4"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CBp-IS-gAc" customClass="RenderedPDFLabel">
+                    <rect key="frame" x="32" y="567" width="778" height="12"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="6uK-Qp-EKa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="italicSystem" pointSize="10"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="cCx-Uy-Hn6" secondAttribute="trailing" constant="32" id="0r1-l8-nsr"/>
+                <constraint firstAttribute="trailing" secondItem="57F-MP-bKx" secondAttribute="trailing" constant="32" id="1wL-VO-N8R"/>
+                <constraint firstItem="57F-MP-bKx" firstAttribute="top" secondItem="7cA-AB-JWg" secondAttribute="top" constant="32" id="2I4-n2-mTM"/>
+                <constraint firstItem="CBp-IS-gAc" firstAttribute="top" secondItem="cCx-Uy-Hn6" secondAttribute="bottom" constant="4" id="4eU-vZ-dda"/>
+                <constraint firstItem="CBp-IS-gAc" firstAttribute="leading" secondItem="7cA-AB-JWg" secondAttribute="leading" constant="32" id="7e2-Fk-XS4"/>
+                <constraint firstAttribute="bottom" secondItem="cCx-Uy-Hn6" secondAttribute="bottom" constant="32" id="Wlm-Av-Vci"/>
+                <constraint firstItem="cCx-Uy-Hn6" firstAttribute="leading" secondItem="7cA-AB-JWg" secondAttribute="leading" constant="32" id="bI9-xb-OxC"/>
+                <constraint firstItem="57F-MP-bKx" firstAttribute="leading" secondItem="7cA-AB-JWg" secondAttribute="leading" constant="32" id="d9e-k1-HDt"/>
+                <constraint firstAttribute="trailing" secondItem="CBp-IS-gAc" secondAttribute="trailing" constant="32" id="lGt-ge-DUJ"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bottomLine" destination="cCx-Uy-Hn6" id="bJs-yU-m1q"/>
+                <outlet property="footerLabel" destination="CBp-IS-gAc" id="r8N-wu-ECq"/>
+                <outlet property="topLine" destination="57F-MP-bKx" id="ijE-NF-uM4"/>
+            </connections>
+            <point key="canvasLocation" x="415.5" y="423"/>
+        </view>
+    </objects>
+</document>
