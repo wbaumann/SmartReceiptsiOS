@@ -325,5 +325,6 @@
 "settings.show.receipt.id.label" = "Show Receipt ID";
 "settings.track.cost.center.label" = "Track Cost Center";
 "settings.user.id.label" = "User ID";
+"settings.name.label" = "Full Name";
 
 "trips.controller.from.to.date.label.base" = "%@ to %@";

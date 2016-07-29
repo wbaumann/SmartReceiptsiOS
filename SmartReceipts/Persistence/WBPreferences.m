@@ -25,6 +25,7 @@ static NSString * const STRING_DEFAULT_EMAIL_SUBJECT = @"EmailSubject";
 static NSString * const INT_DEFAULT_TRIP_DURATION = @"TripDuration";
 static NSString * const BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS = @"AllowDataOutsideTripBounds";
 static NSString * const STRING_USERNAME = @"UserName";
+static NSString * const STRING_FULLNAME = @"FullName";
 static NSString * const BOOL_PREDICT_CATEGORIES = @"PredictCats";
 static NSString * const BOOL_MATCH_COMMENT_WITH_CATEGORIES = @"MatchCommentCats";
 static NSString * const BOOL_MATCH_NAME_WITH_CATEGORIES = @"MatchNameCats";
@@ -106,6 +107,7 @@ static NSDictionary *getEntryTypes() {
             BOOL_INCLUDE_TAX_FIELD : tBool,
             BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS : tBool,
             STRING_USERNAME : tString,
+            STRING_FULLNAME : tString,
 
             STRING_CURRENCY : tString,
 
@@ -174,6 +176,7 @@ static NSDictionary *getDefaultValues() {
             BOOL_INCLUDE_TAX_FIELD : @NO,
             BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS : @YES,
             STRING_USERNAME : @"",
+            STRING_FULLNAME : @"",
 
             STRING_CURRENCY : currencyCode,
 
@@ -332,6 +335,13 @@ static NSUserDefaults* instance() {
 }
 +(void) setUserID:(NSString*) userID {
     [instance() setObject:userID forKey:STRING_USERNAME];
+}
+
++(NSString*) fullName {
+    return [instance() stringForKey:STRING_FULLNAME];
+}
++(void) setFullName:(NSString*) fullName {
+    [instance() setObject:fullName forKey:STRING_FULLNAME];
 }
 
 +(int) defaultTripDuration {

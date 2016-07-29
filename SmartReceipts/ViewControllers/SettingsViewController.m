@@ -56,6 +56,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) SwitchControlCell *receiptOutsideTripBoundsCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *minReportablePriceCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *userIdCell;
+@property (nonatomic, strong) SettingsTopTitledTextEntryCell *fullNameCell;
 @property (nonatomic, strong) PickerCell *defaultCurrencyCell;
 @property (nonatomic, strong) InlinedPickerCell *defaultCurrencyPickerCell;
 @property (nonatomic, strong) SettingsSegmentControlCell *dateSeparatorCell;
@@ -189,6 +190,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     self.userIdCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
     [self.userIdCell setTitle:NSLocalizedString(@"settings.user.id.label", nil)];
+    
+    self.fullNameCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsTopTitledTextEntryCell cellIdentifier]];
+    [self.fullNameCell setTitle:NSLocalizedString(@"settings.name.label", nil)];
 
     self.defaultCurrencyCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
     [self.defaultCurrencyCell setTitle:NSLocalizedString(@"settings.default.currency.label", nil)];
@@ -250,6 +254,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
                                                                        self.receiptOutsideTripBoundsCell,
                                                                        self.minReportablePriceCell,
                                                                        self.userIdCell,
+                                                                       self.fullNameCell,
                                                                        self.defaultCurrencyCell,
                                                                        self.dateSeparatorCell,
                                                                        self.costCenterCell,
@@ -378,6 +383,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     }
 
     [self.userIdCell setValue:[WBPreferences userID]];
+    [self.fullNameCell setValue:[WBPreferences fullName]];
     [self.defaultCurrencyCell setValue:[WBPreferences defaultCurrency]];
     [self.defaultCurrencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:[WBPreferences defaultCurrency]]];
     [self.predictReceiptCategoriesCell setSwitchOn:[WBPreferences predictCategories]];
@@ -474,6 +480,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [WBPreferences setDefaultEmailBCC:self.defaultEmailBCCCell.value];
     [WBPreferences setDefaultEmailSubject:self.defaultEmailSubjectCell.value];
     [WBPreferences setUserID:self.userIdCell.value];
+    [WBPreferences setFullName:self.fullNameCell.value];
     [WBPreferences setDefaultCurrency:[self.defaultCurrencyCell value]];
     [WBPreferences setDateSeparator:[self.dateSeparatorCell selectedValue]];
     [WBPreferences setTrackCostCenter:[self.costCenterCell isSwitchOn]];
