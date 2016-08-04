@@ -20,7 +20,7 @@ NSString *const SmartReceiptsAdsRemovedNotification = @"SmartReceiptsAdsRemovedN
 
 NSString *const SmartReceiptAppStoreId = @"905698613";
 
-NSString *const SmartReceiptSubscriptionIAPIdentifier = @"ios_plus_sku";
+NSString *const SmartReceiptSubscriptionIAPIdentifier = @"ios_plus_sku_2";
 
 NSString *const SRNoData = @"null";
 

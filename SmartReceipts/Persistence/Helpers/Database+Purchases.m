@@ -18,7 +18,7 @@
 - (NSDate *)subscriptionEndDate {
     if (![Tweaker usePurchaseOverride]) {
         RMAppReceiptIAP *receiptForSubscription = [self receiptForSubscription];
-        return receiptForSubscription.subscriptionExpirationDate;
+        return [receiptForSubscription.originalPurchaseDate dateByAddingDays:365];
     }
 
     if ([Tweaker subscriptionOverrideValue]) {
@@ -90,8 +90,8 @@
             continue;
         }
         
-        NSDate *known = latest.subscriptionExpirationDate;
-        NSDate *checked = receiptIAP.subscriptionExpirationDate;
+        NSDate *known = latest.originalPurchaseDate;
+        NSDate *checked = receiptIAP.originalPurchaseDate;
         if ([checked isAfterDate:known]) {
             latest = receiptIAP;
         }

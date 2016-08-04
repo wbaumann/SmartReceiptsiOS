@@ -304,6 +304,7 @@
 "settings.match.name.to.category.label" = "Match Name to Categories";
 "settings.max.camera.resolution.label" = "Max. Camera Height / Width";
 "settings.min.receipt.price.label" = "Min. Receipt Price to Report";
+"settings.name.label" = "Full Name";
 "settings.only.report.expensable.label" = "Only Report Expensable Receipts";
 "settings.pdf.configure.columns.label" = "Configure PDF Columns";
 "settings.pdf.footer.pro.message.body" = "Purchase Smart Receipts Plus subscription to remove or change this message in report footer";
@@ -325,6 +326,5 @@
 "settings.show.receipt.id.label" = "Show Receipt ID";
 "settings.track.cost.center.label" = "Track Cost Center";
 "settings.user.id.label" = "User ID";
-"settings.name.label" = "Full Name";
 
 "trips.controller.from.to.date.label.base" = "%@ to %@";
