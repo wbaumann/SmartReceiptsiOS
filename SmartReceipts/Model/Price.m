@@ -48,6 +48,7 @@
         [noCurrencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
         [noCurrencyFormatter setCurrencySymbol:@""];
         [noCurrencyFormatter setGroupingSeparator:@""];
+        noCurrencyFormatter.usesGroupingSeparator = NO;
         [[NSThread currentThread] threadDictionary][noCurrencyKey] = noCurrencyFormatter;
     }
 
