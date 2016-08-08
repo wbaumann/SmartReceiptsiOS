@@ -17,8 +17,9 @@
 
 - (NSDate *)subscriptionEndDate {
     if (![Tweaker usePurchaseOverride]) {
+        // One year in the future will be the expiration
         RMAppReceiptIAP *receiptForSubscription = [self receiptForSubscription];
-        return [receiptForSubscription.originalPurchaseDate dateByAddingDays:365];
+        return [self oneYearFrom:receiptForSubscription.originalPurchaseDate];
     }
 
     if ([Tweaker subscriptionOverrideValue]) {
@@ -98,6 +99,14 @@
     }
 
     return latest;
+}
+
+- (NSDate *)oneYearFrom: (NSDate *)date {
+    NSDate *today = [[NSDate alloc] init];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setYear:1];
+    return [gregorian dateByAddingComponents:offsetComponents toDate:today options:0];
 }
 
 @end

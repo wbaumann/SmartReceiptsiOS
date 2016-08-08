@@ -642,7 +642,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
             if ([product.productIdentifier isEqualToString:SmartReceiptSubscriptionIAPIdentifier]) {
                 [self setRemoveAdsProduct:product];
                 [numberFormatter setLocale:product.priceLocale];
-                NSString *formattedPrice = [numberFormatter stringFromNumber:product.price];
+                NSString *formattedPrice = [NSString stringWithFormat:@"%@/yr", [numberFormatter stringFromNumber:product.price]];
                 [self.removeAdsCell setPriceString:formattedPrice];
             }
         }
