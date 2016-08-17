@@ -81,7 +81,7 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 
 - (TripReportHeader *)header {
     if (!_header) {
-        _header = [HorizontalTripReportHeader loadInstance];
+        _header = [TripReportHeader loadInstance];
     }
 
     return _header;
