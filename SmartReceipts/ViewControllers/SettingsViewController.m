@@ -655,7 +655,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 - (void)restorePurchases {
     PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
 
-    [[RMStore defaultStore] restoreTransactionsOnSuccess:^(NSArray *transactions) {
+    [[RMStore defaultStore] refreshReceiptOnSuccess:^{
         [hud hide];
         [self updatePurchaseStatus];
         [self.pdfFooterCell.entryField setEnabled:[[Database sharedInstance] hasValidSubscription]];
