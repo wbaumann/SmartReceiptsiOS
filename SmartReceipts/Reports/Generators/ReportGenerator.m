@@ -45,7 +45,7 @@
 }
 
 - (NSArray *)receipts {
-    NSArray *receipts = [self.database allReceiptsForTrip:self.trip];
+    NSArray *receipts = [self.database allReceiptsForTrip:self.trip ascending:true];
     return  [ReceiptIndexer indexReceipts:receipts filteredWith:^BOOL(WBReceipt *receipt) {
         return [WBReportUtils filterOutReceipt:receipt];
     }];
@@ -56,7 +56,7 @@
 }
 
 - (NSArray *)distances {
-    FetchedModelAdapter *distances = [self.database fetchedAdapterForDistancesInTrip:self.trip];
+    FetchedModelAdapter *distances = [self.database fetchedAdapterForDistancesInTrip:self.trip ascending:true];
     return [distances allObjects];
 }
 

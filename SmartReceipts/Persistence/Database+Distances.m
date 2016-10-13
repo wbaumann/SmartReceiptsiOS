@@ -71,9 +71,13 @@
 }
 
 - (FetchedModelAdapter *)fetchedAdapterForDistancesInTrip:(WBTrip *)trip {
+    return [self fetchedAdapterForDistancesInTrip:trip ascending:NO];
+}
+
+- (FetchedModelAdapter *)fetchedAdapterForDistancesInTrip:(WBTrip *)trip ascending:(BOOL)isAscending {
     DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:DistanceTable.TABLE_NAME];
     [select where:DistanceTable.COLUMN_PARENT value:trip.name];
-    [select orderBy:DistanceTable.COLUMN_DATE ascending:NO];
+    [select orderBy:DistanceTable.COLUMN_DATE ascending:isAscending];
     return [self createAdapterUsingQuery:select forModel:[Distance class] associatedModel:trip];
 }
 

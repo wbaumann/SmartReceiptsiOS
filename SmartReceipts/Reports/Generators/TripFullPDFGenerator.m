@@ -70,9 +70,7 @@
         }
     }
 
-    NSArray *distances = [self.database allDistancesForTrip:self.trip];
-
-    SRLog(@"Diatances:%@", distances);
+    NSArray *distances = [self distances];
 
     for (Distance *distance in distances) {
         [netTotal addPrice:distance.totalRate];

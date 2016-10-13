@@ -134,7 +134,11 @@
 }
 
 - (NSArray *)allReceiptsForTrip:(WBTrip *)trip {
-    DatabaseQueryBuilder *selectAll = [WBReceipt selectAllQueryForTrip:trip];
+    return [self allReceiptsForTrip:trip ascending:false];
+}
+
+- (NSArray *)allReceiptsForTrip:(WBTrip *)trip ascending:(BOOL)isAscending {
+    DatabaseQueryBuilder *selectAll = [WBReceipt selectAllQueryForTrip:trip isAscending:isAscending];
     return [self allReceiptsWithQuery:selectAll forTrip:trip];
 }
 

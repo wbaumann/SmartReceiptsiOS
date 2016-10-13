@@ -9,7 +9,13 @@
 import Foundation
 
 extension WBReceipt {
+    
+    
     class func selectAllQueryForTrip(trip: WBTrip?) -> DatabaseQueryBuilder {
+        return self.selectAllQueryForTrip(trip, isAscending: false)
+    }
+    
+    class func selectAllQueryForTrip(trip: WBTrip?, isAscending: Bool) -> DatabaseQueryBuilder {
         
         let receiptIdFullName = "\(ReceiptsTable.Name).\(ReceiptsTable.Column.Id)"
         let receiptIdAsName = "\(ReceiptsTable.Name)_\(ReceiptsTable.Column.Id)"
@@ -23,9 +29,9 @@ extension WBReceipt {
         selectAll.select(receiptIdFullName, as: receiptIdAsName)
         selectAll.select(paymentMethodIdFullName, as: paymentMethodIdAsName)
         selectAll.leftJoin(PaymentMethodsTable.Name, on: ReceiptsTable.Column.PaymentMethodId, equalTo: PaymentMethodsTable.Column.Id)
-        selectAll.orderBy(ReceiptsTable.Column.Date, ascending: false)
+    
+        selectAll.orderBy(ReceiptsTable.Column.Date, ascending: isAscending)
         
         return selectAll
-
     }
 }

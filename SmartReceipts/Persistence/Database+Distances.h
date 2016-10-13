@@ -20,6 +20,7 @@
 - (BOOL)saveDistance:(Distance *)distance;
 - (BOOL)saveDistance:(Distance *)distance usingDatabase:(FMDatabase *)database;
 - (FetchedModelAdapter *)fetchedAdapterForDistancesInTrip:(WBTrip *)trip;
+- (FetchedModelAdapter *)fetchedAdapterForDistancesInTrip:(WBTrip *)trip ascending:(BOOL)isAscending;
 - (BOOL)deleteDistance:(Distance *)distance;
 - (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip;
 - (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
