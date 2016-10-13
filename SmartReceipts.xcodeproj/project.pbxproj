@@ -2655,7 +2655,7 @@
 				OTHER_LIBTOOLFLAGS = "$(inherited) $(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = co.smartreceipts.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ed3e7da7-3aaa-443e-95b7-0161589062a8";
+				PROVISIONING_PROFILE = "8187c9e2-d7a6-4b9e-8421-d39b1adfca9e";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceipts/SmartReceipts-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";

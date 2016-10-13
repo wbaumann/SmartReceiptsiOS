@@ -63,7 +63,7 @@
     }
 
     GADRequest *request = [GADRequest request];
-    [request setTestDevices:@[kGADSimulatorID]];
+    [request setTestDevices:@[kGADSimulatorID, @"b5c0a5fccf83835150ed1fac6dd636e6"]];
     [self.bannerView loadRequest:request];
 }
 
