@@ -102,13 +102,8 @@ extension WBGenerateViewController: MFMailComposeViewControllerDelegate, UINavig
             Log.error("Send email error: \(error)")
         }
         
-        switch result {
-        case MFMailComposeResultFailed, MFMailComposeResultCancelled:
-            controller.dismissViewControllerAnimated(true, completion: nil)
-        default:
-            controller.dismissViewControllerAnimated(true) {
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
+        controller.dismissViewControllerAnimated(true) {
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 }

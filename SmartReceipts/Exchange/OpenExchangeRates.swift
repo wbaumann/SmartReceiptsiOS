@@ -20,7 +20,7 @@ class OpenExchangeRates {
         
         Log.debug("Retrieve \(base) to \(target) on \(dayString)")
         
-        if !forceRefresh, let dayValues = rates[dayCurrencyKey], rate = dayValues.filter({ $0.currency == target}).first {
+        if !forceRefresh, let dayValues = rates[dayCurrencyKey], let rate = dayValues.filter({ $0.currency == target}).first {
             Log.debug("Have cache hit")
             completion(rate.rate, nil)
             return
