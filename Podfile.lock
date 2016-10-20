@@ -12,7 +12,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - Google-Mobile-Ads-SDK (7.8.1)
+  - Google-Mobile-Ads-SDK (7.13.0)
   - Google/Analytics (3.0.3):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
@@ -69,7 +69,7 @@ PODS:
 DEPENDENCIES:
   - CMPopTipView (= 2.3.0)
   - FMDB (= 2.6.2)
-  - Google-Mobile-Ads-SDK (= 7.8.1)
+  - Google-Mobile-Ads-SDK (= 7.13.0)
   - Google/Analytics
   - HTAutocompleteTextField (= 1.3.2)
   - MRProgress (= 0.8.3)
@@ -91,7 +91,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
-  Google-Mobile-Ads-SDK: 3c2a6656117989469bfe7645640aa1de024a4c6c
+  Google-Mobile-Ads-SDK: b0cac2909229e8f13fb30e03537cdefbd7be28fa
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
@@ -104,6 +104,6 @@ SPEC CHECKSUMS:
   Tweaks: 524fa47636cce3bf3a4d9156e980f10ae9480e81
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
 
-PODFILE CHECKSUM: a7ae094599fcef77347d7d6766da04cda5a223fe
+PODFILE CHECKSUM: e670f241f79c72f5626c8a93e9061212ecfaf50e
 
 COCOAPODS: 1.1.1
