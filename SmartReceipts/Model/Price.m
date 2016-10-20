@@ -45,10 +45,9 @@
     NSNumberFormatter *noCurrencyFormatter = [[NSThread currentThread] threadDictionary][noCurrencyKey];
     if (!noCurrencyFormatter) {
         noCurrencyFormatter = [[NSNumberFormatter alloc] init];
-        [noCurrencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-        [noCurrencyFormatter setCurrencySymbol:@""];
-        [noCurrencyFormatter setGroupingSeparator:@""];
-        noCurrencyFormatter.usesGroupingSeparator = NO;
+        [noCurrencyFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        [noCurrencyFormatter setMinimumFractionDigits:2];
+        [noCurrencyFormatter setMaximumFractionDigits:2];
         [[NSThread currentThread] threadDictionary][noCurrencyKey] = noCurrencyFormatter;
     }
 
