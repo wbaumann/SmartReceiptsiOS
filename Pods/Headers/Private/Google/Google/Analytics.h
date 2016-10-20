@@ -1,1 +1,1 @@
-../../../../Google/Headers/GGLAnalytics/Public/Analytics.h
+../../../../Google/Headers/Analytics.h

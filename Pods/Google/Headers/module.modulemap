@@ -1,19 +1,7 @@
 module Google {
   export *
-  module AdMob {
-    header "ModuleHeaders/AdMob-Module.h"
-    export *
-  }
   module Analytics {
     header "ModuleHeaders/Analytics-Module.h"
-    export *
-  }
-  module AppInvite {
-    header "ModuleHeaders/AppInvite-Module.h"
-    export *
-  }
-  module CloudMessaging {
-    header "ModuleHeaders/CloudMessaging-Module.h"
     export *
   }
   module Core {

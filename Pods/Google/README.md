@@ -61,26 +61,6 @@ CocoaPods is used to install and manage dependencies in existing Xcode projects.
 
 ### CocoaPods published by Google
 
-Below is a complete list of the Podspecs published by Google.
-
-| CocoaPods published by Google |                                                                                 |
-|-------------------------------|---------------------------------------------------------------------------------|
-| Google APIs for iOS           | [Google](https://cocoapods.org/pods/Google)                                     |
-| App Invites                   | [AppInvites](https://cocoapods.org/pods/AppInvites)                             |
-| Google Analytics              | [GoogleAnalytics](https://cocoapods.org/pods/GoogleAnalytics)                   |
-| Google App Indexing           | [GoogleAppIndexing](https://cocoapods.org/pods/GoogleAppIndexing)               |
-| Google Cloud Messaging        | [GoogleCloudMessaging](https://cocoapods.org/pods/GoogleCloudMessaging)         |
-| Google Conversion Tracking    | [GoogleConversionTracking](https://cocoapods.org/pods/GoogleConversionTracking) |
-| Google Maps                   | [GoogleMaps](https://cocoapods.org/pods/GoogleMaps)                             |
-| Google Mobile Ads             | [GoogleMobileAds](https://cocoapods.org/pods/GoogleMobileAds)                   |
-| Google IDFA Support           | [GoogleIDFASupport](https://cocoapods.org/pods/GoogleIDFASupport)               |
-| Google Places                 | [GoogleMaps](https://cocoapods.org/pods/GoogleMaps)                             |
-| Google Sign In                | [GoogleSignIn](https://cocoapods.org/pods/GoogleSignIn)                         |
-| Google Tag Manager            | [GoogleTagManager](https://cocoapods.org/pods/GoogleTagManager)                 |
-| Instance ID                   | [GGLInstanceID](https://cocoapods.org/pods/GGLInstanceID)                       |
-| Google Cast                   | [google-cast-sdk](https://cocoapods.org/pods/google-cast-sdk)                   |
-| Firebase                      | [Firebase](https://cocoapods.org/pods/Firebase)                                 |
-| Google Play Games Services    | [GooglePlayGames](https://cocoapods.org/pods/GooglePlayGames)                   |
-| GeoFire                       | [GeoFire](https://cocoapods.org/pods/GeoFire)                                   |
-| Google Interactive Media Ads  | [GoogleAds-IMA-iOS-SDK](https://cocoapods.org/pods/GoogleAds-IMA-iOS-SDK)       |
+For a complete list of pods published by Google, please visit
+https://cocoapods.org/?q=author%3Agoogle
 
