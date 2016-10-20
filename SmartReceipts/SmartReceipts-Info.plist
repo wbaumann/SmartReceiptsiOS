@@ -87,9 +87,9 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>${PRODUCT_NAME} cannot take photos unless you give it permission.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>${PRODUCT_NAME} cannot import photos unless you give it permission.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchView</string>
 	<key>UIMainStoryboardFile</key>
