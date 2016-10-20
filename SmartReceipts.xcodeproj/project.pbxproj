@@ -374,6 +374,7 @@
 		4D380F901B61240C001B43D2 /* GADConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADConstants.m; sourceTree = "<group>"; };
 		4D380F921B6124F3001B43D2 /* launch_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_image.png; sourceTree = "<group>"; };
 		4D380F931B6124F3001B43D2 /* launch_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch_image@2x.png"; sourceTree = "<group>"; };
+		4D39888A1DB985D500C394D1 /* SmartReceipts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartReceipts.entitlements; sourceTree = "<group>"; };
 		4D3C193C1D46BE5A00FEC539 /* HorizontalPDFPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalPDFPage.xib; sourceTree = "<group>"; };
 		4D3C193D1D46BE5A00FEC539 /* HorizontalPDFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalPDFPage.h; sourceTree = "<group>"; };
 		4D3C193E1D46BE5A00FEC539 /* HorizontalPDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalPDFPage.m; sourceTree = "<group>"; };
@@ -1102,6 +1103,7 @@
 		84F4F34918CFCCD000F69A35 /* SmartReceipts */ = {
 			isa = PBXGroup;
 			children = (
+				4D39888A1DB985D500C394D1 /* SmartReceipts.entitlements */,
 				4DF22941192867120008D359 /* Ads */,
 				A79FDC671CEA084000328DBB /* Analytics */,
 				EA259CD21B16069B00ECBD67 /* Backup */,
@@ -1980,6 +1982,9 @@
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+							com.apple.Push = {
 								enabled = 0;
 							};
 						};
