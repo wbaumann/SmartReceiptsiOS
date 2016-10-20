@@ -34,10 +34,10 @@
     self.bannerView.adUnitID = AD_UNIT_ID;
     self.bannerView.rootViewController = self;
     [self.bannerView setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin];
+    
+    [self.adContainerHeight setConstant:0];
     [self.adContainerView addSubview:self.bannerView];
     [self.bannerView setDelegate:self];
-
-    [self.adContainerHeight setConstant:0];
 
     dispatch_async(dispatch_get_main_queue(), ^{
         [self loadAd];
