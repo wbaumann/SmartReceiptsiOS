@@ -60,7 +60,7 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
             }
             
             @try {
-                NSString *filename = [NSString stringWithFormat:@"%d_%@.jpg", index, [receipt name]];
+                NSString *filename = [receipt imageFileName];
                 
                 OZZipWriteStream *stream= [zipFile writeFileInZipWithName:filename
                                                        compressionLevel:OZZipCompressionLevelDefault];

@@ -188,7 +188,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
     NSString *ext = [oldFile pathExtension];
 
-    NSString *imageFileName = [NSString stringWithFormat:@"%tux.%@", [receipt receiptId], ext];
+    NSString *imageFileName = [NSString stringWithFormat:@"%tu_%@.%@", [receipt receiptId], [receipt name], ext];
     NSString *newFile = [self.trip fileInDirectoryPath:imageFileName];
 
     if (![WBFileManager forceCopyFrom:oldFile to:newFile]) {
@@ -208,7 +208,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     NSString *imageFileName = nil;
     if (image) {
         //TODO jaanus: this leaves old file in documents folder
-        imageFileName = [NSString stringWithFormat:@"%tux.jpg", [receipt receiptId]];
+        imageFileName = [NSString stringWithFormat:@"%tu_%@.jpg", [receipt receiptId], [receipt name]];
         NSString *path = [self.trip fileInDirectoryPath:imageFileName];
         if (![WBFileManager forceWriteData:UIImageJPEGRepresentation(image, 0.85) to:path]) {
             imageFileName = nil;

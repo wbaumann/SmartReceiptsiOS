@@ -411,9 +411,8 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     if (self.receipt.objectId == 0) {
         NSString *imageFileName = nil;
         if (self.receiptImage) {
-            long long ms = (long long int) ([[NSDate date] timeIntervalSince1970] * 1000LL);
-            //TODO jaanus: maybe can use something else here.
-            imageFileName = [NSString stringWithFormat:@"%lldx%d.jpg", ms, (int) [self.receiptsViewController receiptsCount]];
+            unsigned int nextId = (unsigned int) [[Database sharedInstance] nextReceiptID];
+            imageFileName = [NSString stringWithFormat:@"%tu_%@.jpg", nextId, name];
             NSString *path = [_trip fileInDirectoryPath:imageFileName];
             if (![WBFileManager forceWriteData:UIImageJPEGRepresentation(self.receiptImage, 0.85) to:path]) {
                 imageFileName = nil;
