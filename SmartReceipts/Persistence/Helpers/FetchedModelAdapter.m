@@ -190,14 +190,8 @@
 }
 
 - (void)refreshContentAndNotifySwapChanges:(NSArray *)swapped {
-    [self.database inDatabase:^(FMDatabase * _Nonnull database) {
-        [self performObjectsFetchUsingDatabase:database];
-        
-        if (self.afterFetchHandler) {
-            for (NSObject<FetchedModel> *model in swapped) {
-                self.afterFetchHandler(model, database);
-            }
-        }
+    [self.database.databaseQueue inDatabase:^(FMDatabase *db) {
+        [self fetchUsingDatabase:db];
     }];
 
     [self.delegate willChangeContent];
