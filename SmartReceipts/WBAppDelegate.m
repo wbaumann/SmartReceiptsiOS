@@ -22,6 +22,8 @@
 #import "Database+Purchases.h"
 #import "PrettyPDFRender.h"
 
+#import <SplunkMint/SplunkMint.h>
+
 #import "RIButtonItem.h"
 #import "UIAlertView+Blocks.h"
 #import "Tweaks/FBTweakShakeWindow.h"
@@ -78,7 +80,7 @@
         [self handleOpenURL:url];
     }
 
-    // [BugSenseController sharedControllerWithBugSenseAPIKey:@"c65e0389"];
+    [[Mint sharedInstance] initAndStartSessionWithAPIKey:@"c65e0389"];
 
     NSSetUncaughtExceptionHandler(&onUncaughtExcepetion);
 

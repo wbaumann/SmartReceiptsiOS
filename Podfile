@@ -14,6 +14,7 @@ def pods
     pod 'Google-Mobile-Ads-SDK', '7.13.0'
     pod 'MRProgress', '0.8.3'
     pod 'Google/Analytics'
+    pod 'SplunkMint'
     pod 'RMStore/Core', :path => '3rdparty/RMStore'
     pod 'RMStore/KeychainPersistence', :path => '3rdparty/RMStore'
     pod 'RMStore/AppReceiptVerificator', :path => '3rdparty/RMStore'
