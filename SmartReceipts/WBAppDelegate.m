@@ -22,7 +22,6 @@
 #import "Database+Purchases.h"
 #import "PrettyPDFRender.h"
 
-#import <BugSense-iOS/BugSenseController.h>
 #import "RIButtonItem.h"
 #import "UIAlertView+Blocks.h"
 #import "Tweaks/FBTweakShakeWindow.h"
@@ -79,7 +78,7 @@
         [self handleOpenURL:url];
     }
 
-    [BugSenseController sharedControllerWithBugSenseAPIKey:@"c65e0389"];
+    // [BugSenseController sharedControllerWithBugSenseAPIKey:@"c65e0389"];
 
     NSSetUncaughtExceptionHandler(&onUncaughtExcepetion);
 

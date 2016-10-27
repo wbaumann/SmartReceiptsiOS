@@ -22,7 +22,6 @@
 		4DF2294C192867B00008D359 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF2294B192867B00008D359 /* CoreTelephony.framework */; };
 		4DF2294E192867BA0008D359 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF2294D192867BA0008D359 /* MessageUI.framework */; };
 		4DF22952192867CC0008D359 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF22951192867CC0008D359 /* SystemConfiguration.framework */; };
-		4DF2295419296DFF0008D359 /* BugSense-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF2295319296DFF0008D359 /* BugSense-iOS.framework */; };
 		4DF2295619296E170008D359 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF2295519296E170008D359 /* libz.dylib */; };
 		841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB2FE1908167700D28CBF /* WBAbstractPicker.h */; };
 		841BB3011908173600D28CBF /* WBAbstractPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BB3001908173600D28CBF /* WBAbstractPicker.m */; };
@@ -387,7 +386,6 @@
 		4DF2294B192867B00008D359 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		4DF2294D192867BA0008D359 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		4DF22951192867CC0008D359 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		4DF2295319296DFF0008D359 /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BugSense-iOS.framework"; path = "3rdparty/BugSense/BugSense-iOS.framework"; sourceTree = "<group>"; };
 		4DF2295519296E170008D359 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		7B397BE168915C982926C4BC /* Pods_SmartReceipts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartReceipts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841BB2FE1908167700D28CBF /* WBAbstractPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAbstractPicker.h; sourceTree = "<group>"; };
@@ -906,7 +904,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DF2295619296E170008D359 /* libz.dylib in Frameworks */,
-				4DF2295419296DFF0008D359 /* BugSense-iOS.framework in Frameworks */,
 				4DF22952192867CC0008D359 /* SystemConfiguration.framework in Frameworks */,
 				4DF2294E192867BA0008D359 /* MessageUI.framework in Frameworks */,
 				4DF2294C192867B00008D359 /* CoreTelephony.framework in Frameworks */,
@@ -1081,7 +1078,6 @@
 			isa = PBXGroup;
 			children = (
 				4DF2295519296E170008D359 /* libz.dylib */,
-				4DF2295319296DFF0008D359 /* BugSense-iOS.framework */,
 				4DF22951192867CC0008D359 /* SystemConfiguration.framework */,
 				4DF2294D192867BA0008D359 /* MessageUI.framework */,
 				4DF2294B192867B00008D359 /* CoreTelephony.framework */,
@@ -2638,10 +2634,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UX5Z7CLP7J;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/3rdparty/BugSense",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartReceipts/SmartReceipts-Prefix.pch";
 				INFOPLIST_FILE = "SmartReceipts/SmartReceipts-Info.plist";
@@ -2690,10 +2683,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UX5Z7CLP7J;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/3rdparty/BugSense",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartReceipts/SmartReceipts-Prefix.pch";
 				INFOPLIST_FILE = "SmartReceipts/SmartReceipts-Info.plist";
