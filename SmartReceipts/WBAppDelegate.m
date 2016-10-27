@@ -132,8 +132,16 @@ void onUncaughtExcepetion(NSException *exception) {
     [[Database sharedInstance] close];
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    // Called when app was in background and was restored with url.. For iOS 10+
+    if (url != nil && [url isFileURL]) {
+        [self handleOpenURL:url];
+    }
+    return YES;
+}
+
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    // called when app was in background and was restored with url
+    // called when app was in background and was restored with url.. For older iOS versions
     if (url != nil && [url isFileURL]) {
         [self handleOpenURL:url];
     }
