@@ -48,6 +48,7 @@
         [noCurrencyFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
         [noCurrencyFormatter setMinimumFractionDigits:2];
         [noCurrencyFormatter setMaximumFractionDigits:2];
+        [noCurrencyFormatter setUsesGroupingSeparator:false];
         [[NSThread currentThread] threadDictionary][noCurrencyKey] = noCurrencyFormatter;
     }
 
