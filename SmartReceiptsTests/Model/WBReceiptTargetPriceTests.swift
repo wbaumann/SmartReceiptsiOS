@@ -31,6 +31,13 @@ class WBReceiptTargetPriceTests: XCTestCase {
         XCTAssertEqual("$10.00", result.currencyFormattedPrice())
     }
     
+    func testLargeCurrencies() {
+        receiptUSD.setPrice(NSDecimalNumber(string: "10000"), currency: "USD")
+        let result = receiptUSD.targetPrice()
+        XCTAssertEqual("$10,000.00", result.currencyFormattedPrice())
+        XCTAssertEqual("10000.00", result.amountAsString())
+    }
+    
     func testNoExchangeRate() {
         receiptEUR.exchangeRate = nil
         let result = receiptEUR.targetPrice()
