@@ -15,5 +15,6 @@
 + (BOOL)isNonnegativeMoney:(NSString *)text;
 + (BOOL)isNonnegativeInteger:(NSString *)text;
 + (BOOL)isProperName:(NSString *)name;
++ (NSString *)omitIllegalCharacters:(NSString *)text;
 
 @end

@@ -9,7 +9,7 @@
 #import "WBTextUtils.h"
 
 
-static NSString * const RESERVED_CHARS = @"_|\\?*<\":>+[]/'\n\r\t\0\f";
+static NSString * const RESERVED_CHARS = @"|\\?*<\":>+[]/'\n\r\t\0\f";
 
 static BOOL matchRegex(NSString *expression, NSString *text)
 {
@@ -56,6 +56,17 @@ static BOOL matchRegex(NSString *expression, NSString *text)
 +(BOOL)isProperName:(NSString*) name {
     NSCharacterSet *blockedCharacters = [NSCharacterSet characterSetWithCharactersInString:RESERVED_CHARS];
     return ([name rangeOfCharacterFromSet:blockedCharacters].location == NSNotFound);
+}
+
++ (NSString *)omitIllegalCharacters:(NSString *)text {
+    NSString *result = [text copy];
+    NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:RESERVED_CHARS];
+    NSRange range = [result rangeOfCharacterFromSet:characterSet];
+    while (range.location != NSNotFound) {
+        result = [result stringByReplacingCharactersInRange:range withString:@""];
+        range = [result rangeOfCharacterFromSet:characterSet];
+    }
+    return result;
 }
 
 @end

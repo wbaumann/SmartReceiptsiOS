@@ -12,6 +12,7 @@
 #import "WBCurrency.h"
 #import "WBPreferences.h"
 #import "WBFileManager.h"
+#import "WBTextUtils.h"
 #import "WBAutocompleteHelper.h"
 #import "Price.h"
 #import "NSDecimalNumber+WBNumberParse.h"
@@ -375,7 +376,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 }
 
 - (IBAction)actionDone:(id)sender {
-    NSString *name = [[self.nameCell value] lastPathComponent];
+    NSString *name = [WBTextUtils omitIllegalCharacters:[self.nameCell value]];
     if ([name length] <= 0) {
         [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"edit.receipt.name.missing.alert.message", nil)];
         return;
