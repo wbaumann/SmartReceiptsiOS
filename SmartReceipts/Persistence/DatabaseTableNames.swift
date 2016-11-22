@@ -35,7 +35,7 @@ enum ReceiptsTable {
         static let ExtraEditText3 = "extra_edittext_3"
 
         
-        @available(*, unavailable, message="paymentmethod is deprecated, use paymentMethodKey")
+        @available(*, unavailable, message: "paymentmethod is deprecated, use paymentMethodKey")
         static let PaymentMethod = "paymentmethod"
     }
 }

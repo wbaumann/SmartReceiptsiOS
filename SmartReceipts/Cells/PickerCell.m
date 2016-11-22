@@ -23,6 +23,7 @@
 @implementation PickerCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     [self.valueLabel setTextColor:[WBCustomization themeColor]];
 }
 

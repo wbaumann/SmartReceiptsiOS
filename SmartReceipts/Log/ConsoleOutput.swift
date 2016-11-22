@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class ConsoleOutput: LogOutput {
+open class ConsoleOutput: LogOutput {
     public init() {
         
     }
     
-    public func printMessage(message: String) {
+    open func printMessage(_ message: String) {
         print(message)
     }
 }

@@ -10,20 +10,20 @@ import Foundation
 
 internal class Logger {
     internal static let sharedInstance = Logger()
-    private var outputs = [LogOutput]()
+    fileprivate var outputs = [LogOutput]()
     
-    internal func addOutput(output:LogOutput) {
+    internal func addOutput(_ output:LogOutput) {
         outputs.append(output)
     }
     
-    internal func log<T>(object: T, file: String, function: String, line: Int, level: Log.Level) {
+    internal func log<T>(_ object: T, file: String, function: String, line: Int, level: Log.Level) {
         if level.rawValue < Log.logLevel.rawValue {
             return
         }
         
-        let time = timeFormatter.stringFromDate(NSDate())
+        let time = timeFormatter.string(from: Date())
         let levelString = levelToString(level)
-        let fileURL = NSURL(fileURLWithPath: file, isDirectory: false)
+        let fileURL = URL(fileURLWithPath: file, isDirectory: false)
         let cleanedFile = fileURL.lastPathComponent ?? "-"
         let message = "\(time) - \(levelString) - \(cleanedFile).\(function):\(line) - \(object)"
         
@@ -32,23 +32,23 @@ internal class Logger {
         }
     }
     
-    private func levelToString(level: Log.Level) -> String {
+    fileprivate func levelToString(_ level: Log.Level) -> String {
         switch(level) {
-        case .ERROR:
+        case .error:
             return "E"
-        case .INFO:
+        case .info:
             return "I"
-        case .DEBUG:
+        case .debug:
             return "D"
-        case .VERBOSE:
+        case .verbose:
             return "V"
         default:
             return ""
         }
     }
     
-    private lazy var timeFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
+    fileprivate lazy var timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss.SSS"
         return formatter
     }()

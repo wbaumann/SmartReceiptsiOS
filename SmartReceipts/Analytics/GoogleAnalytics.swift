@@ -11,7 +11,7 @@ import Google
 
 class GoogleAnalytics: AnalyticsService {
     
-    private let gai: GAI
+    fileprivate let gai: GAI
     
     init() {
         var configureError: NSError?
@@ -20,12 +20,14 @@ class GoogleAnalytics: AnalyticsService {
         
         self.gai = GAI.sharedInstance()
         self.gai.trackUncaughtExceptions = false
-        self.gai.logger.logLevel = .Warning
+        self.gai.logger.logLevel = .warning
         
-        self.gai.defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("Overall", action: "AppLaunch", label: nil, value: nil).build()  as [NSObject : AnyObject])
+        let event = GAIDictionaryBuilder.createEvent(withCategory: "Overall", action: "AppLaunch", label: nil, value: nil).build() as NSDictionary as? [AnyHashable: Any] ?? [:]
+        
+        self.gai.defaultTracker.send(event)
     }
     
-    func sendEvent(event: Event) {
+    func sendEvent(_ event: Event) {
         assert(true == false, "We don't support actual events yet");
     }
 }

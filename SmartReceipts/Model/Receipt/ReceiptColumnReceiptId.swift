@@ -9,7 +9,7 @@
 import Foundation
 
 class ReceiptColumnReceiptId: ReceiptColumn {
-    override func valueFromReceipt(receipt: WBReceipt, forCSV: Bool) -> String {
+    override func value(from receipt: WBReceipt, forCSV: Bool) -> String {
         return "\(receipt.receiptId())"
     }
 }

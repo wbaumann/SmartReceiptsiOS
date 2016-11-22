@@ -10,9 +10,9 @@ import XCTest
 @testable import SmartReceipts
 
 class ReceiptColumnExchangeRateTests: XCTestCase {
-    private let trip = WBTrip()
-    private var receipt: WBReceipt!
-    private let column = ReceiptColumnExchangeRate()
+    fileprivate let trip = WBTrip()
+    fileprivate var receipt: WBReceipt!
+    fileprivate let column = ReceiptColumnExchangeRate()
 
     override func setUp() {
         super.setUp()
@@ -24,15 +24,15 @@ class ReceiptColumnExchangeRateTests: XCTestCase {
     
     func testNoExchangeRateForSameCurrency() {
         receipt.setPrice(NSDecimalNumber(string: "12"), currency: "USD")
-        XCTAssertEqual("1", column.valueFromReceipt(receipt, forCSV: false))
-        XCTAssertEqual("1", column.valueFromReceipt(receipt, forCSV: true))
+        XCTAssertEqual("1", column.value(from: receipt, forCSV: false))
+        XCTAssertEqual("1", column.value(from: receipt, forCSV: true))
     }
     
     func testNegativeExchangeRate() {
         receipt.setPrice(NSDecimalNumber(string: "12"), currency: "EUR")
         receipt.exchangeRate = .minusOne()
-        XCTAssertEqual("", column.valueFromReceipt(receipt, forCSV: false))
-        XCTAssertEqual("", column.valueFromReceipt(receipt, forCSV: true))
+        XCTAssertEqual("", column.value(from: receipt, forCSV: false))
+        XCTAssertEqual("", column.value(from: receipt, forCSV: true))
     }
     
     func testProvidedExchangeRateForSameCurrency() {
@@ -40,15 +40,15 @@ class ReceiptColumnExchangeRateTests: XCTestCase {
         receipt.setPrice(NSDecimalNumber(string: "12"), currency: "USD")
         receipt.exchangeRate = NSDecimalNumber(string: "0.123456")
         
-        XCTAssertEqual("1", column.valueFromReceipt(receipt, forCSV: false))
-        XCTAssertEqual("1", column.valueFromReceipt(receipt, forCSV: true))
+        XCTAssertEqual("1", column.value(from: receipt, forCSV: false))
+        XCTAssertEqual("1", column.value(from: receipt, forCSV: true))
     }
     
     func testExchangeRateForDifferentCurrency() {
         receipt.setPrice(NSDecimalNumber(string: "12"), currency: "EUR")
         receipt.exchangeRate = NSDecimalNumber(string: "0.123456")
 
-        XCTAssertEqual("0.123456", column.valueFromReceipt(receipt, forCSV: false))
-        XCTAssertEqual("0.123456", column.valueFromReceipt(receipt, forCSV: true))
+        XCTAssertEqual("0.123456", column.value(from: receipt, forCSV: false))
+        XCTAssertEqual("0.123456", column.value(from: receipt, forCSV: true))
     }
 }

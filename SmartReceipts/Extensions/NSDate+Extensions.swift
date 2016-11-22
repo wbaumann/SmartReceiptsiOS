@@ -10,19 +10,19 @@ import Foundation
 
 private let DateStringFormatterKey = "DateStringFormatterKey-yyyy-MM-dd"
 
-extension NSDate {
+extension Date {
     func dayString() -> String {
-        return formatter().stringFromDate(self)
+        return formatter().string(from: self)
     }
     
-    private func formatter() -> NSDateFormatter {
-        if let formatter = NSThread.cachedObject(NSDateFormatter.self, key: DateStringFormatterKey) {
+    fileprivate func formatter() -> DateFormatter {
+        if let formatter = Thread.cachedObject(DateFormatter.self, key: DateStringFormatterKey) {
             return formatter
         }
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        NSThread.cacheObject(formatter, key: DateStringFormatterKey)
+        Thread.cacheObject(formatter, key: DateStringFormatterKey)
         return formatter
     }
 }

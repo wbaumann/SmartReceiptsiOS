@@ -10,9 +10,9 @@ import XCTest
 @testable import SmartReceipts
 
 class WBReceiptTargetPriceTests: XCTestCase {
-    private let trip = WBTrip()
-    private let receiptEUR = WBReceipt()
-    private let receiptUSD = WBReceipt()
+    fileprivate let trip = WBTrip()
+    fileprivate let receiptEUR = WBReceipt()
+    fileprivate let receiptUSD = WBReceipt()
     
     override func setUp() {
         super.setUp()

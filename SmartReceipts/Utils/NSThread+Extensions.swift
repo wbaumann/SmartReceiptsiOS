@@ -8,12 +8,12 @@
 
 import Foundation
 
-extension NSThread {
-    class func cachedObject<T>(type: T.Type, key: String) -> T? {
-        return NSThread.currentThread().threadDictionary[key] as? T
+extension Thread {
+    class func cachedObject<T>(_ type: T.Type, key: String) -> T? {
+        return Thread.current.threadDictionary[key] as? T
     }
     
-    class func cacheObject(object: AnyObject, key: String) {
-        NSThread.currentThread().threadDictionary[key] = object
+    class func cacheObject(_ object: AnyObject, key: String) {
+        Thread.current.threadDictionary[key] = object
     }
 }

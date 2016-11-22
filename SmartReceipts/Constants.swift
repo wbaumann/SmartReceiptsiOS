@@ -9,17 +9,17 @@
 import Foundation
 import QuartzCore
 
-func onMainThread(closure: () -> ()) {
-    dispatch_async(dispatch_get_main_queue(), closure)
+func onMainThread(_ closure: @escaping () -> ()) {
+    DispatchQueue.main.async(execute: closure)
 }
 
-func timeMeasured(desc: String = "", closure: () -> ()) {
+func timeMeasured(_ desc: String = "", closure: () -> ()) {
     let start = CACurrentMediaTime()
     closure()
     Log.debug(String(format: "%@ - time: %f", desc, CACurrentMediaTime() - start))
 }
 
-func delayedExecution(afterSecons: NSTimeInterval, closure: () -> ()) {
-    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(afterSecons * Double(NSEC_PER_SEC)))
-    dispatch_after(delayTime, dispatch_get_main_queue(), closure)
+func delayedExecution(_ afterSecons: TimeInterval, closure: @escaping () -> ()) {
+    let delayTime = DispatchTime.now() + Double(Int64(afterSecons * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+    DispatchQueue.main.asyncAfter(deadline: delayTime, execute: closure)
 }

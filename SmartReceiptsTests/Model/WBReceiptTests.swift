@@ -10,8 +10,8 @@ import XCTest
 @testable import SmartReceipts
 
 class WBReceiptTests: XCTestCase {
-    private let trip = WBTrip()
-    private var receipt: WBReceipt!
+    fileprivate let trip = WBTrip()
+    fileprivate var receipt: WBReceipt!
     
     override func setUp() {
         super.setUp()
@@ -28,7 +28,7 @@ class WBReceiptTests: XCTestCase {
     
     func testZeroExchangeRateFormatting() {
         receipt.setPrice(NSDecimalNumber(orZero: "10"), currency: "USD")
-        receipt.exchangeRate = NSDecimalNumber.zero()
+        receipt.exchangeRate = NSDecimalNumber.zero
         XCTAssertEqual("", receipt.exchangeRateAsString())
     }
     

@@ -9,21 +9,21 @@
 import Foundation
 
 protocol QuickAlertPresenter {
-    func presentAlert(title: String?, message: String, dismissButton: String)
-    func presentAlert(title: String?, message: String, actions: [UIAlertAction])
+    func presentAlert(_ title: String?, message: String, dismissButton: String)
+    func presentAlert(_ title: String?, message: String, actions: [UIAlertAction])
 }
 
 extension QuickAlertPresenter where Self: UIViewController {
-    func presentAlert(title: String?, message: String, dismissButton: String = NSLocalizedString("generic.button.title.ok", comment: "")) {
-        let dismissAction = UIAlertAction(title: dismissButton, style: .Default, handler: nil)
+    func presentAlert(_ title: String?, message: String, dismissButton: String = NSLocalizedString("generic.button.title.ok", comment: "")) {
+        let dismissAction = UIAlertAction(title: dismissButton, style: .default, handler: nil)
         presentAlert(title, message: message, actions: [dismissAction])
     }
     
-    func presentAlert(title: String?, message: String, actions: [UIAlertAction]) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+    func presentAlert(_ title: String?, message: String, actions: [UIAlertAction]) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         for action in actions {
             alert.addAction(action)
         }
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }

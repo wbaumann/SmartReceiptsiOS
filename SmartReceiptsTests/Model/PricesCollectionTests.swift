@@ -10,7 +10,7 @@ import XCTest
 @testable import SmartReceipts
 
 class PricesCollectionTests: XCTestCase {
-    private var collection: PricesCollection!
+    fileprivate var collection: PricesCollection!
     
     override func setUp() {
         super.setUp()
@@ -46,7 +46,7 @@ class PricesCollectionTests: XCTestCase {
         let expectedEUR = Price(amount: NSDecimalNumber(string: "60"), currencyCode: "EUR")
         let expectedUSD = Price(amount: NSDecimalNumber(string: "40"), currencyCode: "USD")
         
-        let expectedResult = [expectedEUR.currencyFormattedPrice(), expectedUSD.currencyFormattedPrice()].joinWithSeparator("; ")
+        let expectedResult = [expectedEUR.currencyFormattedPrice(), expectedUSD.currencyFormattedPrice()].joined(separator: "; ")
         XCTAssertEqual(expectedResult, collection.currencyFormattedPrice())
     }
 }

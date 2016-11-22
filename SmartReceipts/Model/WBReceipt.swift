@@ -45,33 +45,33 @@ extension WBReceipt: Priced {
 extension WBReceipt: Exchanged {
     func exchangeRateAsString() -> String {
         if !canExchange() {
-            return WBReceipt.exchangeRateFormatter().stringFromNumber(1)!
+            return WBReceipt.exchangeRateFormatter().string(from: 1)!
         }
         
-        guard let number = exchangeRate where number.compare(NSDecimalNumber.zero()) == .OrderedDescending else {
+        guard let number = exchangeRate, number.compare(NSDecimalNumber.zero) == .orderedDescending else {
             return ""
         }
         
-        return WBReceipt.exchangeRateFormatter().stringFromNumber(number)!
+        return WBReceipt.exchangeRateFormatter().string(from: number)!
     }
     
     var targetCurrency: WBCurrency {
         return trip.defaultCurrency
     }
     
-    class func exchangeRateFormatter() -> NSNumberFormatter {
-        if let formatter = NSThread.cachedObject(NSNumberFormatter.self, key: JustDecimalFormatterKey) {
+    class func exchangeRateFormatter() -> NumberFormatter {
+        if let formatter = Thread.cachedObject(NumberFormatter.self, key: JustDecimalFormatterKey) {
             return formatter
         }
         
-        let formatter = NSNumberFormatter()
+        let formatter = NumberFormatter()
         formatter.maximumFractionDigits = SmartReceiptExchangeRateDecimalPlaces
         formatter.minimumIntegerDigits = 1
-        NSThread.cacheObject(formatter, key: JustDecimalFormatterKey)
+        Thread.cacheObject(formatter, key: JustDecimalFormatterKey)
         return formatter
     }
     
-    private func canExchange() -> Bool {
+    fileprivate func canExchange() -> Bool {
         return targetCurrency != currency
     }
 }
@@ -82,11 +82,11 @@ extension WBReceipt: ExchangedPriced {
             return price()
         }
         
-        guard let rate = exchangeRate where rate.isPositiveAmount() else {
+        guard let rate = exchangeRate, rate.isPositiveAmount() else {
             return nil
         }
         
-        let exchangedValue = priceAmount.decimalNumberByMultiplyingBy(rate)
+        let exchangedValue = priceAmount.multiplying(by: rate)
         
         return Price(amount: exchangedValue, currency: targetCurrency)
     }
@@ -110,7 +110,7 @@ extension WBReceipt: ExchangedPriced {
 
 extension WBReceipt: Taxed {
     func tax() -> Price? {
-        guard let tax = taxAmount where tax.compare(NSDecimalNumber.zero()) != .OrderedSame else {
+        guard let tax = taxAmount, tax.compare(NSDecimalNumber.zero) != .orderedSame else {
             return nil
         }
         
@@ -140,11 +140,11 @@ extension WBReceipt: ExchangedTaxed {
             return tax()
         }
 
-        guard let rate = exchangeRate, tax = taxAmount where rate.isPositiveAmount() && tax.isPositiveAmount() else {
+        guard let rate = exchangeRate, let tax = taxAmount, rate.isPositiveAmount() && tax.isPositiveAmount() else {
             return nil
         }
         
-        let exchangedTax = tax.decimalNumberByMultiplyingBy(rate)
+        let exchangedTax = tax.multiplying(by: rate)
         
         return Price(amount: exchangedTax, currency: targetCurrency)
     }
@@ -173,12 +173,12 @@ extension WBReceipt {
         let priceAmount = receiptPrice.amount
         let taxAmount: NSDecimalNumber
         if WBPreferences.enteredPricePreTax() {
-            taxAmount = tax()?.amount ?? .zero()
+            taxAmount = tax()?.amount ?? .zero
         } else {
-            taxAmount = .zero()
+            taxAmount = .zero
         }
         
-        let totalAmount = priceAmount.decimalNumberByAdding(taxAmount)
+        let totalAmount = priceAmount.adding(taxAmount)
         return Price(amount: totalAmount, currency: receiptPrice.currency)
     }
     
@@ -195,12 +195,12 @@ extension WBReceipt {
             return netPrice()
         }
         
-        guard let rate = exchangeRate where rate.isPositiveAmount() else {
+        guard let rate = exchangeRate, rate.isPositiveAmount() else {
             return nil
         }
 
         let net = netPrice()
-        let exchanged = net.amount.decimalNumberByMultiplyingBy(rate)
+        let exchanged = net.amount.multiplying(by: rate)
         return Price(amount: exchanged, currency: targetCurrency)
     }
     

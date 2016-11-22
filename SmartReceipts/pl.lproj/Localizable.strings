@@ -304,6 +304,7 @@
 "settings.match.name.to.category.label" = "Dopasuj Nazwę do Kategorii";
 "settings.max.camera.resolution.label" = "Max. Wysokość / Szerokość Kamery";
 "settings.min.receipt.price.label" = "Min. Cena do Raportu";
+"settings.name.label" = "Pełna nazwa";
 "settings.only.report.expensable.label" = "Raportuj tylko \"Wliczane w wydatki\"";
 "settings.pdf.configure.columns.label" = "Configure PDF Columns";
 "settings.pdf.footer.pro.message.body" = "Purchase Smart Receipts Plus subscription to remove or change this message in report footer";

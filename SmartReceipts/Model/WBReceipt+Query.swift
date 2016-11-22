@@ -11,27 +11,27 @@ import Foundation
 extension WBReceipt {
     
     
-    class func selectAllQueryForTrip(trip: WBTrip?) -> DatabaseQueryBuilder {
+    class func selectAllQueryForTrip(_ trip: WBTrip?) -> DatabaseQueryBuilder {
         return self.selectAllQueryForTrip(trip, isAscending: false)
     }
     
-    class func selectAllQueryForTrip(trip: WBTrip?, isAscending: Bool) -> DatabaseQueryBuilder {
+    class func selectAllQueryForTrip(_ trip: WBTrip?, isAscending: Bool) -> DatabaseQueryBuilder {
         
         let receiptIdFullName = "\(ReceiptsTable.Name).\(ReceiptsTable.Column.Id)"
         let receiptIdAsName = "\(ReceiptsTable.Name)_\(ReceiptsTable.Column.Id)"
         let paymentMethodIdFullName = "\(PaymentMethodsTable.Name).\(PaymentMethodsTable.Column.Id)"
         let paymentMethodIdAsName = "\(PaymentMethodsTable.Name)_\(PaymentMethodsTable.Column.Id)"
         
-        let selectAll = DatabaseQueryBuilder.selectAllStatementForTable(ReceiptsTable.Name)
+        let selectAll = DatabaseQueryBuilder.selectAllStatement(forTable: ReceiptsTable.Name)
         if let trip = trip {
-            selectAll.`where`(ReceiptsTable.Column.Parent, value: trip.name)
+            selectAll?.`where`(ReceiptsTable.Column.Parent, value: trip.name as NSObject!)
         }
-        selectAll.select(receiptIdFullName, as: receiptIdAsName)
-        selectAll.select(paymentMethodIdFullName, as: paymentMethodIdAsName)
-        selectAll.leftJoin(PaymentMethodsTable.Name, on: ReceiptsTable.Column.PaymentMethodId, equalTo: PaymentMethodsTable.Column.Id)
+        selectAll?.select(receiptIdFullName, as: receiptIdAsName)
+        selectAll?.select(paymentMethodIdFullName, as: paymentMethodIdAsName)
+        selectAll?.leftJoin(PaymentMethodsTable.Name, on: ReceiptsTable.Column.PaymentMethodId as NSObject!, equalTo: PaymentMethodsTable.Column.Id as NSObject!)
     
-        selectAll.orderBy(ReceiptsTable.Column.Date, ascending: isAscending)
+        selectAll?.order(by: ReceiptsTable.Column.Date, ascending: isAscending)
         
-        return selectAll
+        return selectAll!
     }
 }

@@ -10,11 +10,11 @@ import Foundation
 import FMDB
 
 extension Database {
-    func inDatabase(closure: (FMDatabase) -> ()) {
+    func inDatabase(_ closure: @escaping (FMDatabase) -> ()) {
         databaseQueue.inDatabase() {
             database in
          
-            closure(database)
+            closure(database!)
         }
     }
 }

@@ -8,14 +8,14 @@
 
 import Foundation
 
-extension NSIndexPath {
-    func nextRow() -> NSIndexPath {
-        return NSIndexPath(forRow: row + 1, inSection: section)
+extension IndexPath {
+    func nextRow() -> IndexPath {
+        return IndexPath(row: row + 1, section: section)
     }
     
-    func previousRow() -> NSIndexPath {
+    func previousRow() -> IndexPath {
         assert(row > 0)
         
-        return NSIndexPath(forRow: row - 1, inSection: section)
+        return IndexPath(row: row - 1, section: section)
     }
 }

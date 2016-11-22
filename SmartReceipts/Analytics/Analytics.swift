@@ -10,15 +10,15 @@ import Foundation
 
 class Analytics: AnalyticsService {
     static let sharedInstance = Analytics()
-    private var services = [AnalyticsService]()
+    fileprivate var services = [AnalyticsService]()
     
-    func addService(service: AnalyticsService) {
+    func addService(_ service: AnalyticsService) {
         onMainThread() {
             self.services.append(service)
         }
     }
     
-    func sendEvent(event: Event) {
+    func sendEvent(_ event: Event) {
         onMainThread() {
             for service in self.services {
                 service.sendEvent(event)

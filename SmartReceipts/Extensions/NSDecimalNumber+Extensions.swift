@@ -14,6 +14,6 @@ extension NSDecimalNumber {
     }
 
     func isPositiveAmount() -> Bool {
-        return compare(NSDecimalNumber.zero()) == .OrderedDescending
+        return compare(NSDecimalNumber.zero) == .orderedDescending
     }
 }

@@ -10,17 +10,17 @@ import Foundation
 import UIKit
 
 extension InputCellsViewController {
-    func addSectionForPresentation(section: InputCellsSection) {
-        presentedSections.addObject(section)
+    func addSectionForPresentation(_ section: InputCellsSection) {
+        presentedSections.add(section)
         mapReturnKeys(section)
     }
     
-    func insert(cell: UITableViewCell, afterCell after: UITableViewCell) {
-        if let _ = indexPathForCell(cell) {
+    func insert(_ cell: UITableViewCell, afterCell after: UITableViewCell) {
+        if let _ = indexPath(for: cell) {
             return
         }
         
-        guard let addAfterIndex = indexPathForCell(after) else {
+        guard let addAfterIndex = indexPath(for: after) else {
             return
         }
         
@@ -28,44 +28,44 @@ extension InputCellsViewController {
         
         remapInlinePickers(insertIndex, add: true)
         
-        if let inlinedForIndex = presentingPickerForIndexPath where inlinedForIndex == addAfterIndex {
+        if let inlinedForIndex = presentingPickerForIndexPath, inlinedForIndex == addAfterIndex {
             insertIndex = insertIndex.nextRow()
         }
         
         let section = presentedSections[insertIndex.section]
-        var cells = Array(section.cells!)
-        cells.insert(cell, atIndex: insertIndex.row)
-        presentedSections.replaceObjectAtIndex(insertIndex.section, withObject: InputCellsSection(title: section.title, cells: cells))
+        var cells = Array((section as AnyObject).cells!)
+        cells.insert(cell, at: insertIndex.row)
+        presentedSections.replaceObject(at: insertIndex.section, with: InputCellsSection(title: (section as AnyObject).title, cells: cells))
         
         remapReturnKeys()
         
         tableView.beginUpdates()
-        tableView.insertRowsAtIndexPaths([insertIndex], withRowAnimation: .Automatic)
+        tableView.insertRows(at: [insertIndex], with: .automatic)
         tableView.endUpdates()
     }
     
-    func remove(cell: UITableViewCell) {
-        guard let removeIndex = indexPathForCell(cell) else {
+    func remove(_ cell: UITableViewCell) {
+        guard let removeIndex = indexPath(for: cell) else {
             return
         }
         
         remapInlinePickers(removeIndex, add: false)
         
         let section = presentedSections[removeIndex.section]
-        var cells = Array(section.cells!)
-        cells.removeAtIndex(removeIndex.row)
+        var cells = Array((section as AnyObject).cells!)
+        cells.remove(at: removeIndex.row)
         
         tableView.beginUpdates()
-        tableView.deleteRowsAtIndexPaths([removeIndex], withRowAnimation: .Automatic)
-        presentedSections.replaceObjectAtIndex(removeIndex.section, withObject: InputCellsSection(title: section.title, cells: cells))
+        tableView.deleteRows(at: [removeIndex], with: .automatic)
+        presentedSections.replaceObject(at: removeIndex.section, with: InputCellsSection(title: (section as AnyObject).title, cells: cells))
         tableView.endUpdates()
     }
     
-    private func remapInlinePickers(indexPath: NSIndexPath, add: Bool) {
+    fileprivate func remapInlinePickers(_ indexPath: IndexPath, add: Bool) {
         let mapping = inlinedPickers
-        var changed = [NSIndexPath: UITableViewCell]()
+        var changed = [IndexPath: UITableViewCell]()
         for (index, cell) in mapping {
-            guard let index = index as? NSIndexPath else {
+            guard let index = index as? IndexPath else {
                 continue
             }
             
@@ -77,15 +77,15 @@ extension InputCellsViewController {
                 continue
             }
             
-            inlinedPickers.removeObjectForKey(index)
+            inlinedPickers.removeObject(forKey: index)
             let mapped = add ? index.nextRow() : index.previousRow()
             changed[mapped] = cell as? UITableViewCell
         }
         
-        inlinedPickers.addEntriesFromDictionary(changed)
+        inlinedPickers.addEntries(from: changed)
     }
     
-    private func mapReturnKeys(section: InputCellsSection) -> TextEntryCell? {
+    fileprivate func mapReturnKeys(_ section: InputCellsSection) -> TextEntryCell? {
         var lastCell: TextEntryCell?
         for cell in section.cells {
             guard let textEntryCell = cell as? TextEntryCell else {
@@ -93,14 +93,14 @@ extension InputCellsViewController {
             }
             
             textEntryCell.entryField.delegate = self
-            textEntryCell.entryField.returnKeyType = .Next
+            textEntryCell.entryField.returnKeyType = .next
             lastCell = textEntryCell
         }
         
         return lastCell
     }
     
-    private func remapReturnKeys() {
+    fileprivate func remapReturnKeys() {
         var lastCell: TextEntryCell?
         for section in presentedSections {
             if let last = mapReturnKeys(section as! InputCellsSection) {
@@ -112,6 +112,6 @@ extension InputCellsViewController {
             return
         }
         
-        last.entryField.returnKeyType = .Done
+        last.entryField.returnKeyType = .done
     }
 }

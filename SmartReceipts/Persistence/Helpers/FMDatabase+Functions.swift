@@ -10,38 +10,38 @@ import Foundation
 import FMDB
 
 extension FMDatabase {
-    func fetchSingle<T: FetchedModel>(query: DatabaseQueryBuilder, afterFetch: ((T) -> ())? = nil) -> T? {
+    func fetchSingle<T: FetchedModel>(_ query: DatabaseQueryBuilder, afterFetch: ((T) -> ())? = nil) -> T? {
         let resultSet = executeQuery(query.buildStatement(), withParameterDictionary: query.parameters())
         
         defer {
-            resultSet.close()
+            resultSet?.close()
         }
 
-        if !resultSet.next() {
+        if !(resultSet?.next())! {
             return nil
         }
         
         let model = T()
-        model.loadDataFromResultSet(resultSet)
-        afterFetch?(model)
+        model?.loadData(from: resultSet)
+        afterFetch?(model!)
         
         return model
     }
     
-    func fetch<T: FetchedModel>(query: DatabaseQueryBuilder, inject: ((T) -> ())? = nil) -> [T] {
+    func fetch<T: FetchedModel>(_ query: DatabaseQueryBuilder, inject: ((T) -> ())? = nil) -> [T] {
         var results = [T]()
 
         let resultSet = executeQuery(query.buildStatement(), withParameterDictionary: query.parameters())
-        while resultSet.next()  {
+        while (resultSet?.next())!  {
             let model = T()
-            model.loadDataFromResultSet(resultSet)
+            model?.loadData(from: resultSet)
             
-            inject?(model)
+            inject?(model!)
             
-            results.append(model)
+            results.append(model!)
         }
         
-        resultSet.close()
+        resultSet?.close()
         
         return results
     }
