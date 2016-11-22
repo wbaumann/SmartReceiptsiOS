@@ -10,9 +10,9 @@ import XCTest
 @testable import SmartReceipts
 
 class DatabaseCategoriesImportTests: XCTestCase {
-    private var pathToImport: String!
-    private var databasePath: String!
-    private var database: Database!
+    fileprivate var pathToImport: String!
+    fileprivate var databasePath: String!
+    fileprivate var database: Database!
     
     override func setUp() {
         super.setUp()
@@ -30,47 +30,47 @@ class DatabaseCategoriesImportTests: XCTestCase {
     }
     
     func testCategoriesImportWithOverwrite() {
-        let countBefore = database.countRowsInTable(CategoriesTable.Name)
+        let countBefore = database.countRows(inTable: CategoriesTable.Name)
         XCTAssertEqual(24, countBefore)
         
-        database.importDataFromBackup(pathToImport, overwrite: true)
+        database.importData(fromBackup: pathToImport, overwrite: true)
         
-        let countAfter = database.countRowsInTable(CategoriesTable.Name)
+        let countAfter = database.countRows(inTable: CategoriesTable.Name)
         XCTAssertEqual(24, countAfter)
         
         let categories = database.listAllCategories()
-        XCTAssertNil(categoryByName("Airfare", categories: categories), "Should have no category named Airfare")
-        XCTAssertNotNil(categoryByName("Cakes", categories: categories), "Should have imported category named Cakes")
+        XCTAssertNil(categoryByName("Airfare", categories: categories!), "Should have no category named Airfare")
+        XCTAssertNotNil(categoryByName("Cakes", categories: categories!), "Should have imported category named Cakes")
     }
     
     func testCategoriesImportWithoutOverwrite() {
-        let countBefore = database.countRowsInTable(CategoriesTable.Name)
+        let countBefore = database.countRows(inTable: CategoriesTable.Name)
         XCTAssertEqual(24, countBefore)
 
-        database.importDataFromBackup(pathToImport, overwrite: false)
+        database.importData(fromBackup: pathToImport, overwrite: false)
         
-        let countAfter = database.countRowsInTable(CategoriesTable.Name)
+        let countAfter = database.countRows(inTable: CategoriesTable.Name)
         XCTAssertEqual(25, countAfter)
         
         let categories = database.listAllCategories()
-        XCTAssertNotNil(categoryByName("Airfare", categories: categories), "Should have previous category named Airfare")
-        XCTAssertNotNil(categoryByName("Cakes", categories: categories), "Should have imported category named Cakes")
+        XCTAssertNotNil(categoryByName("Airfare", categories: categories!), "Should have previous category named Airfare")
+        XCTAssertNotNil(categoryByName("Cakes", categories: categories!), "Should have imported category named Cakes")
     }
     
-    private func categoryByName(name: String, categories: [WBCategory]) -> WBCategory? {
+    fileprivate func categoryByName(_ name: String, categories: [WBCategory]) -> WBCategory? {
         return categories.filter({ $0.name == name }).first
     }
     
-    private func copyTemplateDatabase(name: String) -> String {
-        let templatePath = NSBundle(forClass: DatabaseCategoriesImportTests.self).pathForResource(name, ofType: "db")!
-        let target = NSTemporaryDirectory().stringByAppendingString("database-\(NSUUID().UUIDString).db")
-        try! NSFileManager.defaultManager().copyItemAtPath(templatePath, toPath: target)
+    fileprivate func copyTemplateDatabase(_ name: String) -> String {
+        let templatePath = Bundle(for: DatabaseCategoriesImportTests.self).path(forResource: name, ofType: "db")!
+        let target = NSTemporaryDirectory() + "database-\(UUID().uuidString).db"
+        try! FileManager.default.copyItem(atPath: templatePath, toPath: target)
         return target
     }
     
-    private func removeFiles(paths: [String]) {
+    fileprivate func removeFiles(_ paths: [String]) {
         for path in paths {
-            try! NSFileManager.defaultManager().removeItemAtPath(path)
+            try! FileManager.default.removeItem(atPath: path)
         }
     }
 }

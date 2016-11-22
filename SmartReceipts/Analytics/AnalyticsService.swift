@@ -13,5 +13,5 @@ enum Event {
 }
 
 protocol AnalyticsService {
-    func sendEvent(event: Event)
+    func sendEvent(_ event: Event)
 }

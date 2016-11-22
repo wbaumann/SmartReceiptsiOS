@@ -12,9 +12,9 @@ private let OpenEchangeRatesAPIHistorycalAddress = "https://openexchangerates.or
 
 class OpenExchangeRates {
     static let sharedInstance = OpenExchangeRates()
-    private var rates = [String: [ExchangeRate]]()
+    fileprivate var rates = [String: [ExchangeRate]]()
     
-    func exchangeRate(base: String, target: String, onDate date: NSDate, forceRefresh: Bool, completion: (NSDecimalNumber?, NSError?) -> ()) {
+    func exchangeRate(_ base: String, target: String, onDate date: Date, forceRefresh: Bool, completion: @escaping (NSDecimalNumber?, NSError?) -> ()) {
         let dayString = date.dayString()
         let dayCurrencyKey = "\(dayString)-\(base)"
         
@@ -29,17 +29,17 @@ class OpenExchangeRates {
         }
         
         Log.debug("Perform remote fetch")
-        let requestURL = NSURL(string: "\(OpenEchangeRatesAPIHistorycalAddress)\(dayString).json?base=\(base)&app_id=\(OpenExchangeAppID)")!
+        let requestURL = URL(string: "\(OpenEchangeRatesAPIHistorycalAddress)\(dayString).json?base=\(base)&app_id=\(OpenExchangeAppID)")!
         Log.debug("\(requestURL)")
-        let request = NSURLRequest(URL: requestURL)
+        let request = URLRequest(url: requestURL)
         
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {
             data, response, error in
             
             Log.debug("Request completed")
             
             if let error = error {
-                completion(nil, error)
+                completion(nil, error as NSError?)
                 return
             }
             
@@ -56,7 +56,7 @@ class OpenExchangeRates {
                 completion(.minusOne(), nil)
             }
             self.rates[dayCurrencyKey] = rates
-        }
+        }) 
         
         task.resume()
     }

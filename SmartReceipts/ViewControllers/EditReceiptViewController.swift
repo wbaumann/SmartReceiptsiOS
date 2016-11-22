@@ -22,14 +22,14 @@ extension EditReceiptViewController: CurrencyExchangeServiceHandler, QuickAlertP
         triggerExchangeRateUpdate(false)
     }
     
-    func triggerExchangeRateUpdate(force: Bool) {
+    func triggerExchangeRateUpdate(_ force: Bool) {
         triggerExchangeRateUpdate(exchangeRateCell, base: tripCurrency(), target: receiptCurrency(), onDate: receiptDate(), force: force)
     }
     
-    func triggerExchangeRateUpdate(cell: ExchangeRateCell, base: String, target: String, onDate date: NSDate, force: Bool) {
+    func triggerExchangeRateUpdate(_ cell: ExchangeRateCell, base: String, target: String, onDate date: Date, force: Bool) {
         Log.debug("Trigger update")
         
-        let loading = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        let loading = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         loading.startAnimating()
         loading.color = WBCustomization.themeColor()
         cell.accessoryView = loading
@@ -40,61 +40,61 @@ extension EditReceiptViewController: CurrencyExchangeServiceHandler, QuickAlertP
             onMainThread() {
                 self.configureCell(cell, forStatus: status)
                 
-                guard status == .Success else {
+                guard status == .success else {
                     return
                 }
 
-                cell.entryField.text = WBReceipt.exchangeRateFormatter().stringFromNumber(rate!)
+                cell.entryField.text = WBReceipt.exchangeRateFormatter().string(from: rate!)
             }
         }
     }
     
-    private func configureCell(cell: ExchangeRateCell, forStatus status: ExchangeServiceStatus) {
+    fileprivate func configureCell(_ cell: ExchangeRateCell, forStatus status: ExchangeServiceStatus) {
         switch status {
-        case .Success:
+        case .success:
             cell.accessoryView = exchangeRateReloadButton()
-        case .RetrieveError:
+        case .retrieveError:
             let button = warnignButton()
-            button.addTarget(self, action: .showErrorInfoPressed, forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: .showErrorInfoPressed, for: .touchUpInside)
             cell.accessoryView = button
-        case .NotEnabled:
+        case .notEnabled:
             cell.accessoryView = subscriptionInfoButton()
-        case .UnsupportedCurrency:
+        case .unsupportedCurrency:
             let button = warnignButton()
-            button.addTarget(self, action: .unsupportedCurrencyInfoPressed, forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: .unsupportedCurrencyInfoPressed, for: .touchUpInside)
             cell.accessoryView = button
         }
     }
     
-    @objc private func refreshRate() {
+    @objc fileprivate func refreshRate() {
         triggerExchangeRateUpdate(true)
     }
     
-    @objc private func showErrorInfo() {
-        let retryAction = UIAlertAction(title: NSLocalizedString("exchange.rate.retrieve.error.retry.button", comment: ""), style: .Default) {
+    @objc fileprivate func showErrorInfo() {
+        let retryAction = UIAlertAction(title: NSLocalizedString("exchange.rate.retrieve.error.retry.button", comment: ""), style: .default) {
             action in
             
             self.triggerExchangeRateUpdate(true)
         }
-        let okAction = UIAlertAction(title: NSLocalizedString("exchange.rate.retrieve.error.cancel.button", comment: ""), style: .Cancel, handler: nil)
+        let okAction = UIAlertAction(title: NSLocalizedString("exchange.rate.retrieve.error.cancel.button", comment: ""), style: .cancel, handler: nil)
         
-        let alert = UIAlertController(title: NSLocalizedString("exchange.rate.retrieve.error.title", comment: ""), message: NSLocalizedString("exchange.rate.retrieve.error.message", comment: ""), preferredStyle: .Alert)
+        let alert = UIAlertController(title: NSLocalizedString("exchange.rate.retrieve.error.title", comment: ""), message: NSLocalizedString("exchange.rate.retrieve.error.message", comment: ""), preferredStyle: .alert)
         alert.addAction(retryAction)
         alert.addAction(okAction)
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
-    @objc private func showSubscriptionInfo() {
-        let cancelAction = UIAlertAction(title: NSLocalizedString("exchange.rate.subcsription.no.button", comment: ""), style: .Cancel, handler: nil)
-        let detailsAction = UIAlertAction(title: NSLocalizedString("exchange.rate.subcsription.details.button", comment: ""), style: .Default) {
+    @objc fileprivate func showSubscriptionInfo() {
+        let cancelAction = UIAlertAction(title: NSLocalizedString("exchange.rate.subcsription.no.button", comment: ""), style: .cancel, handler: nil)
+        let detailsAction = UIAlertAction(title: NSLocalizedString("exchange.rate.subcsription.details.button", comment: ""), style: .default) {
             _ in
             
-            self.performSegueWithIdentifier(PresentSettingsSegueIdentifier, sender: nil)
+            self.performSegue(withIdentifier: PresentSettingsSegueIdentifier, sender: nil)
         }
         presentAlert(NSLocalizedString("exchange.rate.subscription.info.title", comment: ""), message: NSLocalizedString("exchange.rate.subscription.info.message", comment: ""), actions: [detailsAction, cancelAction])
     }
     
-    @objc private func showUnsupportedCurrrencyInfo() {
+    @objc fileprivate func showUnsupportedCurrrencyInfo() {
         presentAlert(NSLocalizedString("exchange.rate.error.unsupported.currency.title", comment: ""), message: NSLocalizedString("exchange.rate.error.unsupported.currency.message", comment: ""))
     }
     
@@ -107,24 +107,24 @@ extension EditReceiptViewController: CurrencyExchangeServiceHandler, QuickAlertP
     }
     
     func exchangeRateReloadButton() -> UIButton {
-        let button = UIButton(type: .Custom)
-        button.setImage(UIImage(named: "713-refresh-1-toolbar")!, forState: .Normal)
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "713-refresh-1-toolbar")!, for: UIControlState())
         button.sizeToFit()
-        button.addTarget(self, action: .refreshPressed, forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: .refreshPressed, for: .touchUpInside)
         return button
     }
     
     func subscriptionInfoButton() -> UIButton {
-        let button = UIButton(type: .Custom)
-        button.setImage(UIImage(named: "724-info-toolbar")!, forState: .Normal)
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "724-info-toolbar")!, for: UIControlState())
         button.sizeToFit()
-        button.addTarget(self, action: .subscriptionInfoPressed, forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: .subscriptionInfoPressed, for: .touchUpInside)
         return button
     }
     
-    private func warnignButton() -> UIButton {
-        let button = UIButton(type: .Custom)
-        button.setImage(UIImage(named: "791-warning-toolbar")!, forState: .Normal)
+    fileprivate func warnignButton() -> UIButton {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "791-warning-toolbar")!, for: UIControlState())
         button.sizeToFit()
         return button
     }

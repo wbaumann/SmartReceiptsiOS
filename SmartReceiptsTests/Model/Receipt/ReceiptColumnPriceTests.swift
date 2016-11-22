@@ -10,8 +10,8 @@ import XCTest
 @testable import SmartReceipts
 
 class ReceiptColumnPriceTests: XCTestCase {
-    private let column = ReceiptColumnPrice()
-    private var receipt: WBReceipt!
+    fileprivate let column = ReceiptColumnPrice()
+    fileprivate var receipt: WBReceipt!
     
     override func setUp() {
         super.setUp()
@@ -21,15 +21,15 @@ class ReceiptColumnPriceTests: XCTestCase {
     }
     
     func testCSVExport() {
-        XCTAssertEqual("12.00", column.valueFromReceipt(receipt, forCSV: true))
+        XCTAssertEqual("12.00", column.value(from: receipt, forCSV: true))
     }
     
     func testPDFExport() {
-        XCTAssertEqual("$12.00", column.valueFromReceipt(receipt, forCSV: false))
+        XCTAssertEqual("$12.00", column.value(from: receipt, forCSV: false))
     }
     
     func testOtherCurrency() {
         receipt.setPrice(NSDecimalNumber(string: "8"), currency: "EUR")
-        XCTAssertEqual("€8.00", column.valueFromReceipt(receipt, forCSV: false))
+        XCTAssertEqual("€8.00", column.value(from: receipt, forCSV: false))
     }
 }

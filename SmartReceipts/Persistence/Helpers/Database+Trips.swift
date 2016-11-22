@@ -10,11 +10,11 @@ import Foundation
 
 extension Database: RefreshTripPriceHandler {
     func createUpdatingAdapterForAllTrips() -> FetchedModelAdapter {
-        let query = DatabaseQueryBuilder.selectAllStatementForTable(TripsTable.Name)
-        query.orderBy(TripsTable.Column.To, ascending: false)
+        let query = DatabaseQueryBuilder.selectAllStatement(forTable: TripsTable.Name)
+        query?.order(by: TripsTable.Column.To, ascending: false)
         
         let adapter = FetchedModelAdapter(database: self)
-        adapter.setQuery(query.buildStatement(), parameters: query.parameters())
+        adapter.setQuery((query?.buildStatement())!, parameters: (query?.parameters())!)
         adapter.modelClass = WBTrip.self
         adapter.afterFetchHandler = {
             model, database in
@@ -31,7 +31,7 @@ extension Database: RefreshTripPriceHandler {
         return adapter
     }
     
-    func tripWithName(name: String) -> WBTrip? {
+    func tripWithName(_ name: String) -> WBTrip? {
         var trip: WBTrip?
         inDatabase() {
             database in

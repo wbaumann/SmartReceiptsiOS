@@ -9,12 +9,12 @@
 import Foundation
 
 extension SettingsViewController {
-    func shareBackupFile(path: String, fromRect: CGRect) {
+    func shareBackupFile(_ path: String, fromRect: CGRect) {
         var showRect = fromRect
         showRect.origin.y += view.frame.origin.y - fromRect.height
         
-        let controller = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: path))
-        controller.presentOptionsMenuFromRect(showRect, inView: view, animated: true)
+        let controller = UIDocumentInteractionController(url: URL(fileURLWithPath: path))
+        controller.presentOptionsMenu(from: showRect, in: view, animated: true)
         documentInteractionController = controller
     }
 }

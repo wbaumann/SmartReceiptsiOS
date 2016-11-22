@@ -10,13 +10,16 @@ import Foundation
 import FMDB
 
 extension FMDatabase: RefreshTripPriceHandler {
-    func tripWithName(name: String) -> WBTrip? {
-        let select = DatabaseQueryBuilder.selectAllStatementForTable(TripsTable.Name)
-        select.`where`(TripsTable.Column.Name, value: name)
-        return fetchSingle(select) {
-            trip in
-            
-            self.refreshPriceForTrip(trip, inDatabase: self)
+    func tripWithName(_ name: String) -> WBTrip? {
+        if let select = DatabaseQueryBuilder.selectAllStatement(forTable: TripsTable.Name) {
+            select.`where`(TripsTable.Column.Name, value: name as NSObject!)
+            return fetchSingle(select) {
+                trip in
+                
+                self.refreshPriceForTrip(trip, inDatabase: self)
+            }
+        } else {
+            return nil
         }
     }
 }

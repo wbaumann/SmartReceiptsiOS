@@ -11,7 +11,7 @@ import FMDB
 @testable import SmartReceipts
 
 class DatabaseUpgrade14Tests: XCTestCase {
-    private var testDatabase: Database!
+    fileprivate var testDatabase: Database!
     
     override func setUp() {
         super.setUp()
@@ -25,7 +25,7 @@ class DatabaseUpgrade14Tests: XCTestCase {
             DatabaseUpgradeToVersion14()
         ]
 
-        DatabaseMigration.runMigrations(migrations, onDatabase: testDatabase)
+        DatabaseMigration.run(migrations, on: testDatabase)
     }
     
     func testDatabaseStructureIdenticalToAndroidV14() {
@@ -33,20 +33,20 @@ class DatabaseUpgrade14Tests: XCTestCase {
         checkDatabasesHaveSameStructure(reference, checked: testDatabase)
     }
     
-    private func createInMemoryDatabase(migrated: Bool = true, tripsFolder: String = NSTemporaryDirectory()) -> Database {
+    fileprivate func createInMemoryDatabase(_ migrated: Bool = true, tripsFolder: String = NSTemporaryDirectory()) -> Database {
         let database = Database(databasePath: ":memory:", tripsFolderPath: tripsFolder)
-        database.open(migrated)
-        return database
+        database?.open(migrated)
+        return database!
     }
     
-    private func unmigratedTemplateDatabaseWithName(name: String) -> Database {
-        let path = NSBundle(forClass: DatabaseUpgrade14Tests.self).pathForResource(name, ofType: "db")!
+    fileprivate func unmigratedTemplateDatabaseWithName(_ name: String) -> Database {
+        let path = Bundle(for: DatabaseUpgrade14Tests.self).path(forResource: name, ofType: "db")!
         let database = Database(databasePath: path, tripsFolderPath: NSTemporaryDirectory())
-        database.open(false)
-        return database
+        database?.open(false)
+        return database!
     }
     
-    private func checkDatabasesHaveSameStructure(reference: Database, checked: Database) {
+    fileprivate func checkDatabasesHaveSameStructure(_ reference: Database, checked: Database) {
         XCTAssertEqual(reference.databaseVersion(), checked.databaseVersion())
         
         let tablesInReference = tableNames(reference.databaseQueue)
@@ -67,44 +67,44 @@ class DatabaseUpgrade14Tests: XCTestCase {
     // On iOS side database migrations are created on top of each other. On Android side there are two ways to get to current version - by migration
     // or by creating database from scratsh. This will produces slightly different tables. This dictionary will define columns that are irrelevant for
     // latest DB version and should be excluded from checks.
-    private static let IgnoreTableColumns = [
+    fileprivate static let IgnoreTableColumns = [
         "receipts": ["paymentmethod"],
         "trips": ["price"] // TODO: jaanus - check this one
     ]
     
-    private func columnsInTable(table: String, database: FMDatabaseQueue) -> [String] {
+    fileprivate func columnsInTable(_ table: String, database: FMDatabaseQueue) -> [String] {
         var columns = [String]()
         database.inDatabase() {
             db in
             
             let ignoreColumns = DatabaseUpgrade14Tests.IgnoreTableColumns[table] ?? []
             
-            let resultSet = try! db.executeQuery("PRAGMA table_info('\(table)')", values: [])
-            while resultSet.next() {
-                let column = resultSet.stringForColumnIndex(1)
+            let resultSet = try! db?.executeQuery("PRAGMA table_info('\(table)')", values: [])
+            while (resultSet?.next())! {
+                let column = resultSet?.string(forColumnIndex: 1)
                 
-                if let _ = ignoreColumns.indexOf({ $0 == column }) {
+                if let _ = ignoreColumns.index(where: { $0 == column }) {
                     continue
                 }
                 
-                columns.append(column)
+                columns.append(column!)
             }
         }
         
-        return columns.sort()
+        return columns.sorted()
     }
     
-    private func tableNames(database: FMDatabaseQueue) -> [String] {
+    fileprivate func tableNames(_ database: FMDatabaseQueue) -> [String] {
         var tables = [String]()
         database.inDatabase() {
             db in
             
-            let resultSet: FMResultSet = try! db.executeQuery("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'", values: [])
+            let resultSet: FMResultSet = try! db!.executeQuery("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'", values: [])
             while resultSet.next() {
-                tables.append(resultSet.stringForColumnIndex(0))
+                tables.append(resultSet.string(forColumnIndex: 0))
             }
         }
         
-        return tables.sort()
+        return tables.sorted()
     }
 }

@@ -10,11 +10,11 @@ import XCTest
 @testable import SmartReceipts
 
 class NetExchangedPricePlusTaxTests: XCTestCase {
-    private let trip = WBTrip()
-    private var receiptEUR: WBReceipt!
-    private var receiptUSD: WBReceipt!
-    private let column = ReceiptColumnNetExchangedPricePlusTax()
-    private let preferences = WBPreferencesTestHelper()
+    fileprivate let trip = WBTrip()
+    fileprivate var receiptEUR: WBReceipt!
+    fileprivate var receiptUSD: WBReceipt!
+    fileprivate let column = ReceiptColumnNetExchangedPricePlusTax()
+    fileprivate let preferences = WBPreferencesTestHelper()
 
     override func setUp() {
         super.setUp()
@@ -44,37 +44,37 @@ class NetExchangedPricePlusTaxTests: XCTestCase {
     }
     
     func testNoTax() {
-        receiptEUR.setTax(.zero())
-        XCTAssertEqual("5.00", column.valueFromReceipt(receiptEUR, forCSV: true))
-        XCTAssertEqual("$5.00", column.valueFromReceipt(receiptEUR, forCSV: false))
+        receiptEUR.setTax(.zero)
+        XCTAssertEqual("5.00", column.value(from: receiptEUR, forCSV: true))
+        XCTAssertEqual("$5.00", column.value(from: receiptEUR, forCSV: false))
     }
     
     func testNoExchange() {
         receiptEUR.exchangeRate = nil
-        XCTAssertEqual("", column.valueFromReceipt(receiptEUR, forCSV: true))
-        XCTAssertEqual("", column.valueFromReceipt(receiptEUR, forCSV: false))
+        XCTAssertEqual("", column.value(from: receiptEUR, forCSV: true))
+        XCTAssertEqual("", column.value(from: receiptEUR, forCSV: false))
     }
     
     func testPriceWithTax() {
         WBPreferences.setEnteredPricePreTax(false)
         
-        XCTAssertEqual("5.00", column.valueFromReceipt(receiptEUR, forCSV: true))
+        XCTAssertEqual("5.00", column.value(from: receiptEUR, forCSV: true))
     }
     
     func testPriceWithoutTax() {
-        XCTAssertEqual("5.50", column.valueFromReceipt(receiptEUR, forCSV: true))
+        XCTAssertEqual("5.50", column.value(from: receiptEUR, forCSV: true))
     }
     
     func testCSVFormat() {
-        XCTAssertEqual("5.50", column.valueFromReceipt(receiptEUR, forCSV: true))
+        XCTAssertEqual("5.50", column.value(from: receiptEUR, forCSV: true))
     }
     
     func testPDFFormat() {
-        XCTAssertEqual("$5.50", column.valueFromReceipt(receiptEUR, forCSV: false))
+        XCTAssertEqual("$5.50", column.value(from: receiptEUR, forCSV: false))
     }
     
     func testNoConversionNeeded() {
-        XCTAssertEqual("22.00", column.valueFromReceipt(receiptUSD, forCSV: true))
-        XCTAssertEqual("$22.00", column.valueFromReceipt(receiptUSD, forCSV: false))
+        XCTAssertEqual("22.00", column.value(from: receiptUSD, forCSV: true))
+        XCTAssertEqual("$22.00", column.value(from: receiptUSD, forCSV: false))
     }
 }

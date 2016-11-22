@@ -10,8 +10,8 @@ import XCTest
 @testable import SmartReceipts
 
 class DatabaseImportAndroidV14Tests: SmartReceiptsTestsBase {
-    private var imported: Database!
-    private var referenceTrip: WBTrip!
+    fileprivate var imported: Database!
+    fileprivate var referenceTrip: WBTrip!
     
     override func setUp() {
         super.setUp()
@@ -20,38 +20,38 @@ class DatabaseImportAndroidV14Tests: SmartReceiptsTestsBase {
         db.insertTestReceipt([ReceiptsTable.Column.Parent: referenceTrip])
         db.insertTestTrip([TripsTable.Column.Name: "Cake"])
         
-        imported = createMigratedDatabaseFromTemplate("android-receipts-v14")
+        imported = createMigratedDatabase(fromTemplate: "android-receipts-v14")
     }
     
     func testImportWithOverwrite() {
-        db.importDataFromDatabase(imported, overwrite: true)
+        db.importData(from: imported, overwrite: true)
         
         let tripsAfter = db.allTrips()
         let receiptsAfter = db.allReceipts()
         
-        XCTAssertEqual(2, tripsAfter.count)
+        XCTAssertEqual(2, tripsAfter?.count)
         
         // Old T had 1 receipt, imported T had 2 receipts
         XCTAssertEqual(2, receiptsAfter.count)
     }
     
     func testImportWithoutOverwrite() {
-        db.importDataFromDatabase(imported, overwrite: false)
+        db.importData(from: imported, overwrite: false)
 
         let tripsAfter = db.allTrips()
         let receiptsAfter = db.allReceipts()
     
-        XCTAssertEqual(2, tripsAfter.count)
+        XCTAssertEqual(2, tripsAfter?.count)
         XCTAssertEqual(1, receiptsAfter.count)
     }
     
     func testCheckExchangeRateImported() {
-        db.importDataFromDatabase(imported, overwrite: true)
+        db.importData(from: imported, overwrite: true)
         
-        let receiptOne = db.receiptWithName("Test")
+        let receiptOne = db.receipt(withName: "Test")
         XCTAssertEqual(NSDecimalNumber(string: "1.0"), receiptOne.exchangeRate)
         
-        let receiptTwo = db.receiptWithName("Exchange")
+        let receiptTwo = db.receipt(withName: "Exchange")
         XCTAssertEqual(NSDecimalNumber(string: "1.2"), receiptTwo.exchangeRate)
     }
 }

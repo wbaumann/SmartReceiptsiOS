@@ -14,7 +14,7 @@ extension WBAppDelegate {
     }
     
     func enableLogging() {
-        Log.logLevel = .DEBUG
+        Log.logLevel = .debug
         Log.addOutput(ConsoleOutput())
     }
 }

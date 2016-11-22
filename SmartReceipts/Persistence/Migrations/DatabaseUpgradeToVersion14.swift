@@ -13,11 +13,11 @@ class DatabaseUpgradeToVersion14: DatabaseMigration {
         return 14
     }
     
-    override func migrate(database: Database) -> Bool {
+    override func migrate(_ database: Database) -> Bool {
         return addExchangeRateToReceipts(database)
     }
     
-    private func addExchangeRateToReceipts(database: Database) -> Bool {
+    fileprivate func addExchangeRateToReceipts(_ database: Database) -> Bool {
         let alterQuery = "ALTER TABLE \(ReceiptsTable.Name) " +
                          "ADD \(ReceiptsTable.Column.ExchangeRate) " +
                          "DECIMAL(10, 10) DEFAULT -1.00"

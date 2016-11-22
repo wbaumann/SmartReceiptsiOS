@@ -16,32 +16,32 @@ private struct Generation {
 }
 
 class ReportAssetsGenerator: NSObject {
-    private let trip: WBTrip
-    private var generate: Generation!
+    fileprivate let trip: WBTrip
+    fileprivate var generate: Generation!
     
     init(trip: WBTrip) {
         self.trip = trip
     }
     
-    func setGenerated(fullPDF: Bool, imagesPDF: Bool, csv: Bool, imagesZip: Bool) {
+    func setGenerated(_ fullPDF: Bool, imagesPDF: Bool, csv: Bool, imagesZip: Bool) {
         generate = Generation(fullPDF: fullPDF, imagesPDF: imagesPDF, csv: csv, imagesZip: imagesZip)
     }
     
-    func generate(completion: ([String]?) -> ()) {
+    func generate(_ completion: ([String]?) -> ()) {
         trip.createDirectoryIfNotExists()
         
-        let pdfPath = trip.fileInDirectoryPath("\(trip.name).pdf")
-        let pdfImagesPath = trip.fileInDirectoryPath("\(trip.name)Images.pdf")
-        let csvPath = trip.fileInDirectoryPath("\(trip.name).csv")
-        let zipPath = trip.fileInDirectoryPath("\(trip.name).zip")
+        let pdfPath = trip.file(inDirectoryPath: "\(trip.name).pdf")
+        let pdfImagesPath = trip.file(inDirectoryPath: "\(trip.name)Images.pdf")
+        let csvPath = trip.file(inDirectoryPath: "\(trip.name).csv")
+        let zipPath = trip.file(inDirectoryPath: "\(trip.name).zip")
         
         var files = [String]()
         
         if generate.fullPDF {
-            clearPath(pdfPath)
+            clearPath(pdfPath!)
             let generator = TripFullPDFGenerator(trip: trip, database: Database.sharedInstance())
-            if generator.generateToPath(pdfPath) {
-                files.append(pdfPath)
+            if (generator?.generate(toPath: pdfPath))! {
+                files.append(pdfPath!)
             } else {
                 completion(nil)
                 return
@@ -49,10 +49,10 @@ class ReportAssetsGenerator: NSObject {
         }
         
         if generate.imagesPDF {
-            clearPath(pdfImagesPath)
+            clearPath(pdfImagesPath!)
             let generator = TripImagesPDFGenerator(trip: trip, database: Database.sharedInstance())
-            if generator.generateToPath(pdfImagesPath) {
-                files.append(pdfImagesPath)
+            if (generator?.generate(toPath: pdfImagesPath))! {
+                files.append(pdfImagesPath!)
             } else {
                 completion(nil)
                 return
@@ -60,10 +60,10 @@ class ReportAssetsGenerator: NSObject {
         }
         
         if generate.csv {
-            clearPath(csvPath)
+            clearPath(csvPath!)
             let generator = TripCSVGenerator(trip: trip, database: Database.sharedInstance())
-            if generator.generateToPath(csvPath) {
-                files.append(csvPath)
+            if (generator?.generate(toPath: csvPath))! {
+                files.append(csvPath!)
             } else {
                 completion(nil)
                 return
@@ -71,17 +71,17 @@ class ReportAssetsGenerator: NSObject {
         }
         
         if generate.imagesZip {
-            clearPath(zipPath)
+            clearPath(zipPath!)
             
-            let rai = WBReceiptAndIndex.receiptsAndIndicesFromReceipts(Database.sharedInstance().allReceiptsForTrip(trip), filteredWith: {
+            let rai = WBReceiptAndIndex.receiptsAndIndices(fromReceipts: Database.sharedInstance().allReceipts(for: trip), filteredWith: {
                 receipt in
                 
                 return WBReportUtils.filterOutReceipt(receipt)
             })
             
             let stamper = WBImageStampler()
-            if stamper.zipToFile(zipPath, stampedImagesForReceiptsAndIndexes: rai, inTrip: trip) {
-                files.append(zipPath)
+            if stamper.zip(toFile: zipPath, stampedImagesForReceiptsAndIndexes: rai, in: trip) {
+                files.append(zipPath!)
             } else {
                 completion(nil)
                 return
@@ -91,13 +91,13 @@ class ReportAssetsGenerator: NSObject {
         completion(files)
     }
     
-    private func clearPath(path: String) {
-        if !NSFileManager.defaultManager().fileExistsAtPath(path) {
+    fileprivate func clearPath(_ path: String) {
+        if !FileManager.default.fileExists(atPath: path) {
             return
         }
 
         do {
-            try NSFileManager.defaultManager().removeItemAtPath(path)
+            try FileManager.default.removeItem(atPath: path)
         } catch let error as NSError {
             Log.error("Remove file error \(error)")
         }

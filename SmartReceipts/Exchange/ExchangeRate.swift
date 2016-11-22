@@ -12,7 +12,7 @@ struct ExchangeRate {
     let currency: String
     let rate: NSDecimalNumber
     
-    static func loadFromData(data: NSData) -> [ExchangeRate]? {
+    static func loadFromData(_ data: Data) -> [ExchangeRate]? {
         guard let content = ExchangeRate.content(data) else {
             return nil
         }
@@ -26,7 +26,7 @@ struct ExchangeRate {
             // We are using trip currency as base. Need to calculate reverse rate from receipt currency to trip currency.
             
             let forward = value.decimalNumber()
-            let reverse = NSDecimalNumber.one().decimalNumberByDividingBy(forward)
+            let reverse = NSDecimalNumber.one.dividing(by: forward)
             
             let exchange = ExchangeRate(currency: currency, rate: reverse)
             result.append(exchange)
@@ -35,9 +35,9 @@ struct ExchangeRate {
         return result
     }
     
-    private static func content(data: NSData) -> [String: AnyObject]? {
+    fileprivate static func content(_ data: Data) -> [String: AnyObject]? {
         do {
-            return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject]
+            return try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject]
         } catch let error as NSError {
             Log.debug("JSON parse error \(error)")
             return nil

@@ -11,60 +11,60 @@ import Tweaks
 
 @objc class Tweaker: NSObject {
     class func preload() {
-        Tweaker.usePurchaseOverride()
-        Tweaker.subscriptionOverrideValue()
+        _ = Tweaker.usePurchaseOverride()
+        _ = Tweaker.subscriptionOverrideValue()
     }
     
     class func usePurchaseOverride() -> Bool {
-        return tweakValueForCategory("Subscription", collectionName: "Purchase", name: "Use override", defaultValue: false).boolValue
+        return tweakValueForCategory(categoryName: "Subscription", collectionName: "Purchase", name: "Use override", defaultValue: false) as Bool
     }
     
     class func subscriptionOverrideValue() -> Bool {
         let enabled = "enabled"
-        let values = [
+        let values: [String : String] = [
             enabled: "Subscription on",
             "disabled": "Subscription off"
         ]
         
-        let tweaked = tweakValueForCategory("Subscription", collectionName: "Purchase", name: "Override", defaultValue: NSString(string: enabled), possibleValues: values)
+        let tweaked = tweakValueForCategory(categoryName: "Subscription", collectionName: "Purchase", name: "Override", defaultValue: NSString(string: enabled), possibleValues: values) as String
         
         return enabled == tweaked
     }
     
     private class func collectionWithName(collectionName: String, categoryName: String) -> FBTweakCollection {
-        let store = FBTweakStore.sharedInstance()
+        let store = FBTweakStore.sharedInstance()!
         
-        var category = store.tweakCategoryWithName(categoryName)
+        var category = store.tweakCategory(withName: categoryName)
         if category == nil {
             category = FBTweakCategory(name: categoryName)
             store.addTweakCategory(category)
         }
         
-        var collection = category.tweakCollectionWithName(collectionName)
+        var collection = category?.tweakCollection(withName: collectionName)
         if collection == nil {
             collection = FBTweakCollection(name: collectionName)
-            category.addTweakCollection(collection)
+            category?.addTweakCollection(collection)
         }
-        return collection
+        return collection!
     }
     
-    private class func tweakValueForCategory<T:AnyObject>(categoryName: String, collectionName: String, name: String, defaultValue: T, possibleValues: [String: AnyObject]? = nil) -> T {
+    private class func tweakValueForCategory<T:Any>(categoryName: String, collectionName: String, name: String, defaultValue: T, possibleValues: [String: Any]? = nil) -> T {
         
-        let identifier = categoryName.lowercaseString + "." + collectionName.lowercaseString + "." + name
+        let identifier = categoryName.lowercased() + "." + collectionName.lowercased() + "." + name
         
-        let collection = collectionWithName(collectionName, categoryName: categoryName)
+        let collection = collectionWithName(collectionName: collectionName, categoryName: categoryName)
         
-        var tweak = collection.tweakWithIdentifier(identifier)
+        var tweak = collection.tweak(withIdentifier: identifier)
         if tweak == nil {
             tweak = FBTweak(identifier: identifier)
-            tweak.name = name
-            tweak.defaultValue = defaultValue
+            tweak?.name = name
+            tweak?.defaultValue = defaultValue
             if let possible = possibleValues {
-                tweak.possibleValues = possible
+                tweak?.possibleValues = possible
             }
             collection.addTweak(tweak)
         }
         
-        return (tweak.currentValue ?? tweak.defaultValue) as! T
+        return (tweak?.currentValue ?? defaultValue) as! T
     }
 }

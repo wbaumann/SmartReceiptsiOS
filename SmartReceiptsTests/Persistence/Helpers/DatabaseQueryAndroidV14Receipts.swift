@@ -10,12 +10,12 @@ import XCTest
 @testable import SmartReceipts
 
 class DatabaseQueryAndroidV14Receipts: SmartReceiptsTestsBase {
-    private var database: DatabaseTestsHelper!
+    fileprivate var database: DatabaseTestsHelper!
     
     override func setUp() {
         super.setUp()
 
-        database = createMigratedDatabaseFromTemplate("android-receipts-v14")
+        database = createMigratedDatabase(fromTemplate: "android-receipts-v14")
     }
     
     override func tearDown() {

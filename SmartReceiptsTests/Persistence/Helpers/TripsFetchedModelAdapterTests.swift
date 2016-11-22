@@ -10,8 +10,8 @@ import XCTest
 @testable import SmartReceipts
 
 class TripsFetchedModelAdapterTests: SmartReceiptsTestsBase, RefreshTripPriceHandler {
-    private var trip: WBTrip!
-    private let preferences = WBPreferencesTestHelper()
+    fileprivate var trip: WBTrip!
+    fileprivate let preferences = WBPreferencesTestHelper()
     
     override func setUp() {
         super.setUp()
@@ -80,7 +80,7 @@ class TripsFetchedModelAdapterTests: SmartReceiptsTestsBase, RefreshTripPriceHan
         XCTAssertEqual("$25.00", trip.formattedPrice())
     }
     
-    private func addReceipt(amount: NSDecimalNumber, currency: String = "USD", exchangeRate: NSDecimalNumber = .zero()) {
+    fileprivate func addReceipt(_ amount: NSDecimalNumber, currency: String = "USD", exchangeRate: NSDecimalNumber = .zero) {
         db.insertTestReceipt([ReceiptsTable.Column.Parent: trip, ReceiptsTable.Column.Price: amount, ReceiptsTable.Column.ISO4217: currency, ReceiptsTable.Column.ExchangeRate: exchangeRate])
     }
 }

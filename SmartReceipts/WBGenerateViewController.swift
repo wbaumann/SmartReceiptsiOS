@@ -11,48 +11,48 @@ import MessageUI
 
 extension WBGenerateViewController: QuickAlertPresenter {
     func generate() {
-        let hud = PendingHUDView.showHUDOnView(self.navigationController!.view)
+        let hud = PendingHUDView.showHUD(on: self.navigationController!.view)
         delayedExecution(0.3) {
             self.generator = ReportAssetsGenerator(trip: self.trip)
 
-            self.generator!.setGenerated(self.fullPdfReportField.on, imagesPDF: self.pdfImagesField.on, csv: self.csvFileField.on, imagesZip: self.zipImagesField.on)
+            self.generator!.setGenerated(self.fullPdfReportField.isOn, imagesPDF: self.pdfImagesField.isOn, csv: self.csvFileField.isOn, imagesZip: self.zipImagesField.isOn)
             
             self.generator!.generate() {
                 files in
                 
-                hud.hide()
+                hud?.hide()
                 
                 guard let files = files else {
                     self.presentAlert(NSLocalizedString("generic.error.alert.title", comment: ""), message: NSLocalizedString("generate.report.unsuccessful.alert.message", comment: ""))
                     return
                 }
                 
-                let sheet = UIAlertController(title: nil, message: NSLocalizedString("generate.report.share.method.sheet.title", comment: ""), preferredStyle: .ActionSheet)
-                let emailAction = UIAlertAction(title: NSLocalizedString("generate.report.share.method.email", comment: ""), style: .Default) {
+                let sheet = UIAlertController(title: nil, message: NSLocalizedString("generate.report.share.method.sheet.title", comment: ""), preferredStyle: .actionSheet)
+                let emailAction = UIAlertAction(title: NSLocalizedString("generate.report.share.method.email", comment: ""), style: .default) {
                     _ in
                     
                     self.emailFiles(files)
                 }
-                let otherAction = UIAlertAction(title: NSLocalizedString("generate.report.share.method.other", comment: ""), style: .Default) {
+                let otherAction = UIAlertAction(title: NSLocalizedString("generate.report.share.method.other", comment: ""), style: .default) {
                     _ in
                     
                     self.shareFiles(files)
                 }
                 sheet.addAction(emailAction)
                 sheet.addAction(otherAction)
-                sheet.addAction(UIAlertAction(title: NSLocalizedString("generic.button.title.cancel", comment: ""), style: .Cancel, handler: nil))
-                self.presentViewController(sheet, animated: true, completion: nil)
+                sheet.addAction(UIAlertAction(title: NSLocalizedString("generic.button.title.cancel", comment: ""), style: .cancel, handler: nil))
+                self.present(sheet, animated: true, completion: nil)
             }
         }
     }
     
-    private func split(string: String) -> [String] {
-        return string.componentsSeparatedByString(",")
+    fileprivate func split(_ string: String) -> [String] {
+        return string.components(separatedBy: ",")
     }
 }
 
 extension WBGenerateViewController: MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
-    private func emailFiles(files: [String]) {
+    fileprivate func emailFiles(_ files: [String]) {
         guard MFMailComposeViewController.canSendMail() else {
             presentAlert(NSLocalizedString("generate.report.email.not.configured.title", comment: ""), message: NSLocalizedString("generate.report.email.not.configured.message", comment: ""))
             return
@@ -73,7 +73,7 @@ extension WBGenerateViewController: MFMailComposeViewControllerDelegate, UINavig
 
         for file in files {
             Log.debug("Attach \(file)")
-            guard let data = NSData(contentsOfFile: file) else {
+            guard let data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
                 Log.debug("No data?")
                 continue
             }
@@ -91,28 +91,28 @@ extension WBGenerateViewController: MFMailComposeViewControllerDelegate, UINavig
         }
 
         composer.navigationBar.tintColor = UINavigationBar.appearance().tintColor
-        let barStyle = UIApplication.sharedApplication().statusBarStyle
-        presentViewController(composer, animated: true) {
-            UIApplication.sharedApplication().setStatusBarStyle(barStyle, animated: true)
+        let barStyle = UIApplication.shared.statusBarStyle
+        present(composer, animated: true) {
+            UIApplication.shared.setStatusBarStyle(barStyle, animated: true)
         }
     }
     
-    public func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         if let error = error {
             Log.error("Send email error: \(error)")
         }
         
-        controller.dismissViewControllerAnimated(true) {
-            self.dismissViewControllerAnimated(true, completion: nil)
+        controller.dismiss(animated: true) {
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }
 
 extension WBGenerateViewController {
-    private func shareFiles(files: [String]) {
-        var attached = [NSURL]()
+    fileprivate func shareFiles(_ files: [String]) {
+        var attached = [URL]()
         for file in files {
-            attached.append(NSURL(fileURLWithPath: file))
+            attached.append(URL(fileURLWithPath: file))
         }
         let controller = UIActivityViewController(activityItems: attached, applicationActivities: nil)
         controller.completionWithItemsHandler = {
@@ -123,9 +123,9 @@ extension WBGenerateViewController {
             Log.error(error)
             
             if success {
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
-        presentViewController(controller, animated: true, completion: nil)
+        present(controller, animated: true, completion: nil)
     }
 }

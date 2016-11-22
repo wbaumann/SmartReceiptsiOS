@@ -10,11 +10,11 @@ import Foundation
 import FMDB
 
 protocol RefreshTripPriceHandler {
-    func refreshPriceForTrip(trip: WBTrip, inDatabase database: FMDatabase);
+    func refreshPriceForTrip(_ trip: WBTrip, inDatabase database: FMDatabase);
 }
 
 extension RefreshTripPriceHandler {
-    func refreshPriceForTrip(trip: WBTrip, inDatabase database: FMDatabase) {
+    func refreshPriceForTrip(_ trip: WBTrip, inDatabase database: FMDatabase) {
         Log.debug("Refresh price on \(trip.name)")
         timeMeasured("Price update") {
             //TODO jaanus: maybe lighter query - only price/currency/exchangeRate?
@@ -29,7 +29,7 @@ extension RefreshTripPriceHandler {
             
             let collection = PricesCollection()
             // just so that when no receipts we would not end up with blank price
-            collection.addPrice(Price(amount: .zero(), currency: trip.defaultCurrency))
+            collection.addPrice(Price(amount: .zero, currency: trip.defaultCurrency))
             for receipt in receipts {
                 collection.addPrice(receipt.targetPrice())
             }

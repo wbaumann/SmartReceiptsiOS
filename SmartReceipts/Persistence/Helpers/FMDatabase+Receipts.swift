@@ -10,7 +10,7 @@ import Foundation
 import FMDB
 
 extension FMDatabase {    
-    func fetchAllReceiptsForTrip(trip: WBTrip) -> [WBReceipt] {
+    func fetchAllReceiptsForTrip(_ trip: WBTrip) -> [WBReceipt] {
         let query = WBReceipt.selectAllQueryForTrip(trip)
 
         let injectTripClosure: (WBReceipt) -> () = {

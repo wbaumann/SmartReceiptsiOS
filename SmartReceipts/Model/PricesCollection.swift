@@ -9,9 +9,9 @@
 import Foundation
 
 class PricesCollection: Price {
-    private var totals = [String: NSDecimalNumber]()
+    fileprivate var totals = [String: NSDecimalNumber]()
     
-    func addPrice(price: Price?) {
+    func addPrice(_ price: Price?) {
         guard let  price = price else {
             return
         }
@@ -19,19 +19,19 @@ class PricesCollection: Price {
         add(price.amount, currency: price.currency.code())
     }
     
-    func subtractPrice(price: Price?) {
+    func subtractPrice(_ price: Price?) {
         guard let  price = price else {
             return
         }
         
-        add(price.amount.decimalNumberByMultiplyingBy(.minusOne()), currency: price.currency.code())
+        add(price.amount.multiplying(by: .minusOne()), currency: price.currency.code())
     }
     
     func hasValue() -> Bool {
         let values = totals.values
         
         for amount in values {
-            if amount.compare(NSDecimalNumber.zero()) != .OrderedSame {
+            if amount.compare(NSDecimalNumber.zero) != .orderedSame {
                 return true
             }
         }
@@ -41,19 +41,19 @@ class PricesCollection: Price {
     
     override func currencyFormattedPrice() -> String {
         var formats = [String]()
-        let codes = totals.keys.sort()
+        let codes = totals.keys.sorted()
         for code in codes {
             let amount = totals[code]!
             let price = Price(amount: amount, currencyCode: code)
             formats.append(price.currencyFormattedPrice())
         }
         
-        return formats.joinWithSeparator("; ")
+        return formats.joined(separator: "; ")
     }
     
-    private func add(amount: NSDecimalNumber, currency: String) {
-        let total = totals[currency] ?? NSDecimalNumber.zero()
-        let newTotal = total.decimalNumberByAdding(amount)
+    fileprivate func add(_ amount: NSDecimalNumber, currency: String) {
+        let total = totals[currency] ?? NSDecimalNumber.zero
+        let newTotal = total.adding(amount)
         totals[currency] = newTotal
     }
     
@@ -61,7 +61,7 @@ class PricesCollection: Price {
         return currencyFormattedPrice().hash
     }
     
-    override func isEqual(object: AnyObject?) -> Bool {
+    override func isEqual(_ object: Any?) -> Bool {
         if let other = object as? PricesCollection {
             return currencyFormattedPrice() == other.currencyFormattedPrice()
         } else {

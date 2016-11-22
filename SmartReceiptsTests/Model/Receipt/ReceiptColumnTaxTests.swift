@@ -10,8 +10,8 @@ import XCTest
 @testable import SmartReceipts
 
 class ReceiptColumnTaxTests: XCTestCase {
-    private var receipt: WBReceipt!
-    private let column = ReceiptColumnTax()
+    fileprivate var receipt: WBReceipt!
+    fileprivate let column = ReceiptColumnTax()
     
     override func setUp() {
         super.setUp()
@@ -22,16 +22,16 @@ class ReceiptColumnTaxTests: XCTestCase {
     }
     
     func testNoTax() {
-        receipt.setTax(.zero())
-        XCTAssertEqual("", column.valueFromReceipt(receipt, forCSV: false))
-        XCTAssertEqual("", column.valueFromReceipt(receipt, forCSV: true))
+        receipt.setTax(.zero)
+        XCTAssertEqual("", column.value(from: receipt, forCSV: false))
+        XCTAssertEqual("", column.value(from: receipt, forCSV: true))
     }
     
     func testCSVExport() {
-        XCTAssertEqual("10.00", column.valueFromReceipt(receipt, forCSV: true))
+        XCTAssertEqual("10.00", column.value(from: receipt, forCSV: true))
     }
     
     func testPDFExport() {
-        XCTAssertEqual("$10.00", column.valueFromReceipt(receipt, forCSV: false))
+        XCTAssertEqual("$10.00", column.value(from: receipt, forCSV: false))
     }
 }

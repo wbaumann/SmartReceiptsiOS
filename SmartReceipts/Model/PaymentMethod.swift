@@ -9,14 +9,14 @@
 import Foundation
 
 extension PaymentMethod {
-    class func defaultMethod(database: Database = Database.sharedInstance()) -> PaymentMethod {
+    class func defaultMethod(_ database: Database = Database.sharedInstance()) -> PaymentMethod {
         let allMethods = database.allPaymentMethods()
-        for method in allMethods {
+        for method in allMethods! {
             if method.method == NSLocalizedString("payment.method.unspecified", comment: "") {
                 return method
             }
         }
         
-        return allMethods.first!
+        return allMethods!.first!
     }
 }

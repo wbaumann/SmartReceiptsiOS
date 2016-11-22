@@ -8,28 +8,31 @@
 
 import Foundation
 
-enum ExchangeServiceStatus {
-    case NotEnabled
-    case Success
-    case RetrieveError
-    case UnsupportedCurrency
+public enum ExchangeServiceStatus {
+    case notEnabled
+    case success
+    case retrieveError
+    case unsupportedCurrency
 }
 
-typealias ExchangeResultClosure = (ExchangeServiceStatus, NSDecimalNumber?) -> ()
+public typealias ExchangeResultClosure = (ExchangeServiceStatus, NSDecimalNumber?) -> ()
 
-protocol CurrencyExchangeServiceHandler {
-    func exchangeRate(base: String, target: String, onDate date: NSDate, forceRefresh: Bool, completion: ExchangeResultClosure)
+/// Public protocol with default implementation in public extension.
+public protocol CurrencyExchangeServiceHandler {
+    // Swift 3 issue: this func signature should be hidden
+//    func exchangeRate(_ base: String, target: String, onDate date: Date, forceRefresh: Bool, completion: ExchangeResultClosure)
 }
 
-extension CurrencyExchangeServiceHandler {
-    func exchangeRate(base: String, target: String, onDate date: NSDate, forceRefresh: Bool = false, completion: ExchangeResultClosure) {
+public extension CurrencyExchangeServiceHandler {
+    // For some reason it only works if the function isn't declared as part of the protocol, but is defined in an extension to the protocol.
+    func exchangeRate(_ base: String, target: String, onDate date: Date, forceRefresh: Bool = false, completion: @escaping ExchangeResultClosure) {
         if (!Database.sharedInstance().hasValidSubscription()) {
             Log.debug("No subscription, no exchange")
-            completion(.NotEnabled, nil)
+            completion(.notEnabled, nil)
             return
         }
         
-        let dateToUse = date.earlierDate(NSDate())
+        let dateToUse = (date as NSDate).earlierDate(Date())
         
         OpenExchangeRates.sharedInstance.exchangeRate(base, target: target, onDate: dateToUse, forceRefresh: forceRefresh) {
             rate, error in
@@ -39,16 +42,16 @@ extension CurrencyExchangeServiceHandler {
             }
             
             guard let rate = rate else {
-                completion(.RetrieveError, nil)
+                completion(.retrieveError, nil)
                 return
             }
             
-            if rate.compare(NSDecimalNumber.minusOne()) == .OrderedSame {
-                completion(.UnsupportedCurrency, nil)
+            if rate.compare(NSDecimalNumber.minusOne()) == .orderedSame {
+                completion(.unsupportedCurrency, nil)
                 return
             }
             
-            completion(.Success, rate)
+            completion(.success, rate)
         }
     }
 }
