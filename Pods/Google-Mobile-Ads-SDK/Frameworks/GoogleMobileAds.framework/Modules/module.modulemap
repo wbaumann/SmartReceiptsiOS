@@ -96,4 +96,11 @@ framework module GoogleMobileAds {
   header "GADAdReward.h"
   header "GADRewardBasedVideoAd.h"
   header "GADRewardBasedVideoAdDelegate.h"
+
+  header "Mediation/GADMAdNetworkAdapterProtocol.h"
+  header "Mediation/GADMAdNetworkConnectorProtocol.h"
+  header "Mediation/GADMediationAdRequest.h"
+  header "Mediation/GADMEnums.h"
+  header "Mediation/GADMRewardBasedVideoAdNetworkAdapterProtocol.h"
+  header "Mediation/GADMRewardBasedVideoAdNetworkConnectorProtocol.h"
 }

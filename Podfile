@@ -11,7 +11,7 @@ def pods
     pod 'CMPopTipView', '2.3.0'
     pod 'FMDB', '2.6.2'
     pod 'HTAutocompleteTextField', '1.3.2'
-    pod 'Google-Mobile-Ads-SDK', '7.13.0'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'MRProgress', '0.8.3'
     pod 'Google/Analytics'
     pod 'SplunkMint'
