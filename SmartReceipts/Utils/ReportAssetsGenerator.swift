@@ -30,10 +30,12 @@ class ReportAssetsGenerator: NSObject {
     func generate(_ completion: ([String]?) -> ()) {
         trip.createDirectoryIfNotExists()
         
-        let pdfPath = trip.file(inDirectoryPath: "\(trip.name).pdf")
-        let pdfImagesPath = trip.file(inDirectoryPath: "\(trip.name)Images.pdf")
-        let csvPath = trip.file(inDirectoryPath: "\(trip.name).csv")
-        let zipPath = trip.file(inDirectoryPath: "\(trip.name).zip")
+        
+        let tripName = trip.name ?? "Report" // force unwrapping isn't good practice
+        let pdfPath = trip.file(inDirectoryPath: "\(tripName).pdf")
+        let pdfImagesPath = trip.file(inDirectoryPath: "\(tripName)Images.pdf")
+        let csvPath = trip.file(inDirectoryPath: "\(tripName).csv")
+        let zipPath = trip.file(inDirectoryPath: "\(tripName).zip")
         
         var files = [String]()
         
