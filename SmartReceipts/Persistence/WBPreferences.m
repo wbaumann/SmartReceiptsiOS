@@ -31,7 +31,7 @@ static NSString * const BOOL_MATCH_COMMENT_WITH_CATEGORIES = @"MatchCommentCats"
 static NSString * const BOOL_MATCH_NAME_WITH_CATEGORIES = @"MatchNameCats";
 static NSString * const BOOL_USE_NATIVE_CAMERA = @"UseNativeCamera"; // UNUSED
 static NSString * const BOOL_ACTION_SEND_SHOW_HELP_DIALOG = @"ShowHelpDialog";
-static NSString * const BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS = @"OnlyIncludeExpensable";
+static NSString * const BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS = @"OnlyIncludeReimbursable";
 static NSString * const BOOL_INCLUDE_TAX_FIELD = @"IncludeTaxField";
 static NSString * const BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS = @"EnableAutoCompleteSuggestions";
 static NSString * const STRING_CURRENCY = @"isocurr";
@@ -101,7 +101,7 @@ static NSDictionary *getEntryTypes() {
             BOOL_MATCH_COMMENT_WITH_CATEGORIES : tBool,
 
             BOOL_MATCH_NAME_WITH_CATEGORIES : tBool,
-            BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS : tBool,
+            BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS : tBool,
             BOOL_ACTION_SEND_SHOW_HELP_DIALOG : tBool,
 
             BOOL_INCLUDE_TAX_FIELD : tBool,
@@ -170,7 +170,7 @@ static NSDictionary *getDefaultValues() {
             BOOL_MATCH_COMMENT_WITH_CATEGORIES : @NO,
 
             BOOL_MATCH_NAME_WITH_CATEGORIES : @NO,
-            BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS : @NO,
+            BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS : @NO,
             BOOL_ACTION_SEND_SHOW_HELP_DIALOG : @YES,
 
             BOOL_INCLUDE_TAX_FIELD : @NO,
@@ -251,11 +251,11 @@ static NSUserDefaults* instance() {
     [instance() setBool:matchNameToCategory forKey:BOOL_MATCH_NAME_WITH_CATEGORIES];
 }
 
-+(BOOL) onlyIncludeExpensableReceiptsInReports {
-    return [instance() boolForKey:BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS];
++(BOOL) onlyIncludeReimbursableReceiptsInReports {
+    return [instance() boolForKey:BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS];
 }
-+(void) setOnlyIncludeExpensableReceiptsInReports:(BOOL) onlyIncludeExpensableReceiptsInReports {
-    [instance() setBool:onlyIncludeExpensableReceiptsInReports forKey:BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS];
++(void) setOnlyIncludeReimbursableReceiptsInReports:(BOOL) onlyIncludeReimbursableReceiptsInReports {
+    [instance() setBool:onlyIncludeReimbursableReceiptsInReports forKey:BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS];
 }
 
 +(BOOL) includeTaxField {

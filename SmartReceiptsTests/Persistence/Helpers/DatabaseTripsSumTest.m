@@ -45,7 +45,7 @@
     [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"20"]}];
     [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"30"]}];
 
-    [WBPreferences setOnlyIncludeExpensableReceiptsInReports:NO];
+    [WBPreferences setOnlyIncludeReimbursableReceiptsInReports:NO];
     [WBPreferences setTheDistancePriceBeIncludedInReports:YES];
 }
 

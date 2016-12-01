@@ -19,8 +19,8 @@
 + (BOOL)matchNameToCategory;
 + (void)setMatchNameToCategory:(BOOL)matchNameToCategory;
 
-+ (BOOL)onlyIncludeExpensableReceiptsInReports;
-+ (void)setOnlyIncludeExpensableReceiptsInReports:(BOOL)onlyIncludeExpensableReceiptsInReports;
++ (BOOL)onlyIncludeReimbursableReceiptsInReports;
++ (void)setOnlyIncludeReimbursableReceiptsInReports:(BOOL)onlyIncludeReimbursableReceiptsInReports;
 
 + (BOOL)includeTaxField;
 + (void)setIncludeTaxField:(BOOL)includeTaxField;

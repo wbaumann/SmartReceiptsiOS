@@ -29,7 +29,7 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 @property (nonatomic, assign) BOOL disableNotifications;
 
 @property (nonatomic, assign) BOOL lastKnownAddDistancePriceToReportValue;
-@property (nonatomic, assign) BOOL lastKnownOnlyReportExpenseablesValue;
+@property (nonatomic, assign) BOOL lastKnownOnlyReportReimbursableValue;
 
 @end
 
@@ -117,12 +117,12 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 
 - (BOOL)knownPriceRelatedValuesHaveChanged {
     return self.lastKnownAddDistancePriceToReportValue != [WBPreferences isTheDistancePriceBeIncludedInReports]
-            || self.lastKnownOnlyReportExpenseablesValue != [WBPreferences onlyIncludeExpensableReceiptsInReports];
+            || self.lastKnownOnlyReportReimbursableValue != [WBPreferences onlyIncludeReimbursableReceiptsInReports];
 }
 
 - (void)markKnownValues {
     self.lastKnownAddDistancePriceToReportValue = [WBPreferences isTheDistancePriceBeIncludedInReports];
-    self.lastKnownOnlyReportExpenseablesValue = [WBPreferences onlyIncludeExpensableReceiptsInReports];
+    self.lastKnownOnlyReportReimbursableValue = [WBPreferences onlyIncludeReimbursableReceiptsInReports];
 }
 
 @end

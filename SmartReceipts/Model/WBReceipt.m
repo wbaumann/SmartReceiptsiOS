@@ -51,7 +51,7 @@ static NSString* checkNoData(NSString* str) {
      priceAmount:(NSDecimalNumber *)price
        taxAmount:(NSDecimalNumber *)tax
         currency:(WBCurrency *)currency
-    isExpensable:(BOOL)isExpensable
+  isReimbursable:(BOOL)isReimbursable
       isFullPage:(BOOL)isFullPage
   extraEditText1:(NSString *)extraEditText1
   extraEditText2:(NSString *)extraEditText2
@@ -75,7 +75,7 @@ static NSString* checkNoData(NSString* str) {
         _taxAmount = tax;
         _currency = currency;
 
-        _expensable = isExpensable;
+        _reimbursable = isReimbursable;
         _fullPage = isFullPage;
         _extraEditText1 = checkNoData(extraEditText1);
         _extraEditText2 = checkNoData(extraEditText2);
@@ -198,7 +198,7 @@ static NSString* checkNoData(NSString* str) {
     _taxAmount = tax;
     _exchangeRate = exchangeRate;
     _currency = [WBCurrency currencyForCode:currencyCode];
-    [self setExpensable:[resultSet boolForColumn:ReceiptsTable.COLUMN_EXPENSEABLE]];
+    [self setReimbursable:[resultSet boolForColumn:ReceiptsTable.COLUMN_REIMBURSABLE]];
     [self setFullPage:![resultSet boolForColumn:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE]];
     _extraEditText1 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1];
     _extraEditText2 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2];

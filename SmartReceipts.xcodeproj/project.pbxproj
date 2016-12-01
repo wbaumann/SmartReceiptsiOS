@@ -303,7 +303,7 @@
 		EA8D81A31AEA7C6B00BAC943 /* ReceiptColumnDate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81A21AEA7C6B00BAC943 /* ReceiptColumnDate.m */; };
 		EA8D81A61AEA7C7D00BAC943 /* ReceiptColumnName.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81A51AEA7C7D00BAC943 /* ReceiptColumnName.m */; };
 		EA8D81AF1AEA7CAD00BAC943 /* ReceiptColumnPictured.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81AE1AEA7CAD00BAC943 /* ReceiptColumnPictured.m */; };
-		EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnExpensable.m */; };
+		EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m */; };
 		EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B41AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m */; };
 		EA8D81B81AEA7EE200BAC943 /* Column.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B71AEA7EE200BAC943 /* Column.m */; };
 		EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81BA1AEA861400BAC943 /* ReceiptUnknownColumn.m */; };
@@ -815,8 +815,8 @@
 		EA8D81A51AEA7C7D00BAC943 /* ReceiptColumnName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnName.m; sourceTree = "<group>"; };
 		EA8D81AD1AEA7CAD00BAC943 /* ReceiptColumnPictured.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnPictured.h; sourceTree = "<group>"; };
 		EA8D81AE1AEA7CAD00BAC943 /* ReceiptColumnPictured.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnPictured.m; sourceTree = "<group>"; };
-		EA8D81B01AEA7CBD00BAC943 /* ReceiptColumnExpensable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnExpensable.h; sourceTree = "<group>"; };
-		EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnExpensable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnExpensable.m; sourceTree = "<group>"; };
+		EA8D81B01AEA7CBD00BAC943 /* ReceiptColumnReimbursable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnReimbursable.h; sourceTree = "<group>"; };
+		EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnReimbursable.m; sourceTree = "<group>"; };
 		EA8D81B31AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnReceiptIndex.h; sourceTree = "<group>"; };
 		EA8D81B41AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnReceiptIndex.m; sourceTree = "<group>"; };
 		EA8D81B61AEA7EE200BAC943 /* Column.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Column.h; sourceTree = "<group>"; };
@@ -1668,8 +1668,8 @@
 				A7F05BA31CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift */,
 				A7F05BAD1CFC12FA0079F1AD /* ReceiptColumnExchangedTax.swift */,
 				A7B6FC5C1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift */,
-				EA8D81B01AEA7CBD00BAC943 /* ReceiptColumnExpensable.h */,
-				EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnExpensable.m */,
+				EA8D81B01AEA7CBD00BAC943 /* ReceiptColumnReimbursable.h */,
+				EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m */,
 				EA8D81951AEA7C1E00BAC943 /* ReceiptColumnImageName.h */,
 				EA8D81961AEA7C1E00BAC943 /* ReceiptColumnImageName.m */,
 				EA8D81981AEA7C3100BAC943 /* ReceiptColumnImagePath.h */,
@@ -2352,7 +2352,7 @@
 				A7A720E11CEEFAF700A3B5FF /* InputCellsViewController.swift in Sources */,
 				A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */,
 				EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */,
-				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */,
+				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */,
 				EAD3EF8B1B0E154300CA1D4D /* AdPresentingContainerViewController.m in Sources */,
 				EA0677F61B04E61A0058A326 /* StringPickableWrapper.m in Sources */,
 				EA4DC9961AF1580100CEF1B9 /* InputCellsViewController.m in Sources */,

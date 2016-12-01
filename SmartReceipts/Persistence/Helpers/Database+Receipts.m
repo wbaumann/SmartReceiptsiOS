@@ -49,7 +49,7 @@
             ReceiptsTable.COLUMN_PRICE, @" DECIMAL(10, 2) DEFAULT 0.00, ",
             ReceiptsTable.COLUMN_TAX, @" DECIMAL(10, 2) DEFAULT 0.00, ",
             ReceiptsTable.COLUMN_PAYMENTMETHOD, @" TEXT, ",
-            ReceiptsTable.COLUMN_EXPENSEABLE, @" BOOLEAN DEFAULT 1, ",
+            ReceiptsTable.COLUMN_REIMBURSABLE, @" BOOLEAN DEFAULT 1, ",
             ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE, @" BOOLEAN DEFAULT 1, ",
             ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1, @" TEXT, ",
             ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2, @" TEXT, ",
@@ -149,24 +149,24 @@
 }
 
 - (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
-    return [self sumOfReceiptsForTrip:trip onlyExpenseableReceipts:[WBPreferences onlyIncludeExpensableReceiptsInReports] usingDatabase:database];
+    return [self sumOfReceiptsForTrip:trip onlyReimbursableReceipts:[WBPreferences onlyIncludeReimbursableReceiptsInReports] usingDatabase:database];
 }
 
-- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip onlyExpenseableReceipts:(BOOL)onlyExpenseable {
+- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip onlyReimbursableReceipts:(BOOL)onlyReimbursable {
     __block NSDecimalNumber *result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self sumOfReceiptsForTrip:trip onlyExpenseableReceipts:onlyExpenseable usingDatabase:db];
+        result = [self sumOfReceiptsForTrip:trip onlyReimbursableReceipts:onlyReimbursable usingDatabase:db];
     }];
 
     return result;
 }
 
-- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip onlyExpenseableReceipts:(BOOL)onlyExpenseable usingDatabase:(FMDatabase *)database {
+- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip onlyReimbursableReceipts:(BOOL)onlyReimbursable usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *sumStatement = [DatabaseQueryBuilder sumStatementForTable:ReceiptsTable.TABLE_NAME];
     [sumStatement setSumColumn:ReceiptsTable.COLUMN_PRICE];
     [sumStatement where:ReceiptsTable.COLUMN_PARENT value:trip.name];
-    if (onlyExpenseable) {
-        [sumStatement where:ReceiptsTable.COLUMN_EXPENSEABLE value:@(YES)];
+    if (onlyReimbursable) {
+        [sumStatement where:ReceiptsTable.COLUMN_REIMBURSABLE value:@(YES)];
     }
     return [self executeDecimalQuery:sumStatement usingDatabase:database];
 }
@@ -287,7 +287,7 @@
     [query addParam:ReceiptsTable.COLUMN_COMMENT value:receipt.comment];
     [query addParam:ReceiptsTable.COLUMN_DATE value:receipt.date.milliseconds];
     [query addParam:ReceiptsTable.COLUMN_TIMEZONE value:receipt.timeZone.name];
-    [query addParam:ReceiptsTable.COLUMN_EXPENSEABLE value:@(receipt.isExpensable)];
+    [query addParam:ReceiptsTable.COLUMN_REIMBURSABLE value:@(receipt.isReimbursable)];
     [query addParam:ReceiptsTable.COLUMN_ISO4217 value:receipt.price.currency.code];
     [query addParam:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE value:@(!receipt.isFullPage)];
     [query addParam:ReceiptsTable.COLUMN_PRICE value:receipt.price.amount];

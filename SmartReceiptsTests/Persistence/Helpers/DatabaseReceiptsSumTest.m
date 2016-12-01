@@ -17,7 +17,7 @@
 
 @interface Database (TestExpose)
 
-- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip onlyExpenseableReceipts:(BOOL)onlyExpenseable;
+- (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip onlyReimbursableReceipts:(BOOL)onlyReimbursable;
 
 @end
 
@@ -38,18 +38,18 @@
 - (void)testSumReceipts {
     [self createTestReceipts];
 
-    NSDecimalNumber *sumOfReceipts = [self.db sumOfReceiptsForTrip:self.trip onlyExpenseableReceipts:NO];
+    NSDecimalNumber *sumOfReceipts = [self.db sumOfReceiptsForTrip:self.trip onlyReimbursableReceipts:NO];
     NSDecimalNumber *expected = [NSDecimalNumber decimalNumberWithString:@"37"];
     XCTAssertEqualObjects(expected, sumOfReceipts);
 }
 
-- (void)testSumWithNonExpenseableExcluded {
+- (void)testSumWithNonReimbursableExcluded {
     [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip,
             ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"200"],
-            ReceiptsTable.COLUMN_EXPENSEABLE : @(NO)}];
+            ReceiptsTable.COLUMN_REIMBURSABLE : @(NO)}];
     [self createTestReceipts];
 
-    NSDecimalNumber *sumOfReceipts = [self.db sumOfReceiptsForTrip:self.trip onlyExpenseableReceipts:YES];
+    NSDecimalNumber *sumOfReceipts = [self.db sumOfReceiptsForTrip:self.trip onlyReimbursableReceipts:YES];
     NSDecimalNumber *expected = [NSDecimalNumber decimalNumberWithString:@"37"];
     XCTAssertEqualObjects(expected, sumOfReceipts);
 }

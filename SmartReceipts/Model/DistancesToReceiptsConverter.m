@@ -73,7 +73,7 @@
                              priceAmount:totalPrice
                                taxAmount:[NSDecimalNumber zero]
                                 currency:distance.rate.currency
-                            isExpensable:YES
+                          isReimbursable:YES
                               isFullPage:NO
                           extraEditText1:@""
                           extraEditText2:@""

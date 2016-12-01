@@ -23,7 +23,7 @@
 #import "ReceiptColumnDate.h"
 #import "ReceiptColumnName.h"
 #import "ReceiptColumnPictured.h"
-#import "ReceiptColumnExpensable.h"
+#import "ReceiptColumnReimbursable.h"
 #import "ReceiptColumnReceiptIndex.h"
 #import "ReceiptUnknownColumn.h"
 #import "ReceiptColumnPaymentMethod.h"
@@ -59,7 +59,7 @@ static NSDictionary *__receiptColumnNameToClassMapping;
             NSLocalizedString(@"receipt.column.price", nil) : NSStringFromClass([ReceiptColumnPrice class]),
             NSLocalizedString(@"receipt.column.tax", nil) : NSStringFromClass([ReceiptColumnTax class]),
             NSLocalizedString(@"receipt.column.pictured", nil) : NSStringFromClass([ReceiptColumnPictured class]),
-            NSLocalizedString(@"receipt.column.expensable", nil) : NSStringFromClass([ReceiptColumnExpensable class]),
+            NSLocalizedString(@"receipt.column.reimbursable", nil) : NSStringFromClass([ReceiptColumnReimbursable class]),
             NSLocalizedString(@"receipt.column.receipt.index", nil) : NSStringFromClass([ReceiptColumnReceiptIndex class]),
             NSLocalizedString(@"receipt.column.payment.method", nil) : NSStringFromClass([ReceiptColumnPaymentMethod class]),
             NSLocalizedString(@"receipt.column.report.comment", nil) : NSStringFromClass([ReceiptColumnReportComment class]),
@@ -82,7 +82,14 @@ static NSDictionary *__receiptColumnNameToClassMapping;
 }
 
 + (ReceiptColumn *)columnWithIndex:(NSInteger)index name:(NSString *)columnName {
+    // for compability.
+    // legacy string, expensable was renamed to reimbursable
+    if ([columnName isEqualToString:NSLocalizedString(@"receipt.column.expensable.legacy", nil)]) {
+        columnName = NSLocalizedString(@"receipt.column.reimbursable", nil);
+    }
+    
     NSString *columnClassName = __receiptColumnNameToClassMapping[columnName];
+    
     if (!columnClassName) {
         columnClassName = NSStringFromClass([ReceiptUnknownColumn class]);
     }

@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *tripName;
 @property (nonatomic, copy) NSString *category;
 @property (nonatomic, strong) NSTimeZone *timeZone;
-@property (nonatomic, assign, getter=isExpensable) BOOL expensable;
+@property (nonatomic, assign, getter=isReimbursable) BOOL reimbursable;
 @property (nonatomic, assign, getter=isFullPage) BOOL fullPage;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, copy) NSString *comment;
@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
      priceAmount:(NSDecimalNumber *)price
        taxAmount:(NSDecimalNumber *)tax
         currency:(WBCurrency *)currency
-    isExpensable:(BOOL)isExpensable
+  isReimbursable:(BOOL)isReimbursable
       isFullPage:(BOOL)isFullPage
   extraEditText1:(NSString *)extraEditText1
   extraEditText2:(NSString *)extraEditText2
@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSString*)name;
 -(NSString*)category;
 -(WBCurrency*)currency;
--(BOOL)isExpensable;
+-(BOOL)isReimbursable;
 -(BOOL)isFullPage;
 -(NSString*)extraEditText1;
 -(NSString*)extraEditText2;

@@ -42,7 +42,7 @@
 - (void)appendSummaryAndTables {
     PricesCollection *netTotal = [[PricesCollection alloc] init];
     PricesCollection *receiptTotal = [[PricesCollection alloc] init];
-    PricesCollection *expensableTotal = [[PricesCollection alloc] init];
+    PricesCollection *reimbursableTotal = [[PricesCollection alloc] init];
     PricesCollection *noTaxesTotal = [[PricesCollection alloc] init];
     PricesCollection *taxesTotal = [[PricesCollection alloc] init];
     PricesCollection *distanceTotal = [[PricesCollection alloc] init];
@@ -50,10 +50,10 @@
     NSArray *receipts = [self receipts];
 
     BOOL pricesPreTax = [WBPreferences enteredPricePreTax];
-    BOOL reportOnlyExpensable = [WBPreferences onlyIncludeExpensableReceiptsInReports];
+    BOOL reportOnlyReimbursable = [WBPreferences onlyIncludeReimbursableReceiptsInReports];
 
     for (WBReceipt *receipt in receipts) {
-        if (reportOnlyExpensable && !receipt.isExpensable) {
+        if (reportOnlyReimbursable && !receipt.isReimbursable) {
             continue;
         }
 
@@ -65,8 +65,8 @@
         if (pricesPreTax) {
             [netTotal addPrice:receipt.targetTax];
         }
-        if (receipt.isExpensable) {
-            [expensableTotal addPrice:receipt.targetPrice];
+        if (receipt.isReimbursable) {
+            [reimbursableTotal addPrice:receipt.targetPrice];
         }
     }
 
@@ -91,8 +91,8 @@
         }
     }
 
-    if (!reportOnlyExpensable && ![expensableTotal isEqual:receiptTotal]) {
-        [self.pdfRender appendHeaderRow:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.receipts.total.expensable.label", nil), expensableTotal.currencyFormattedPrice]];
+    if (!reportOnlyReimbursable && ![reimbursableTotal isEqual:receiptTotal]) {
+        [self.pdfRender appendHeaderRow:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"pdf.report.receipts.total.reimbursable.label", nil), reimbursableTotal.currencyFormattedPrice]];
     }
 
     if (distances.count > 0) {

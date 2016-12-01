@@ -109,7 +109,7 @@
             [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.price", nil)],
             [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.date", nil)],
             [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.category.name", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.expensable", nil)],
+            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.reimbursable", nil)],
             [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.pictured", nil)]
     ];
 

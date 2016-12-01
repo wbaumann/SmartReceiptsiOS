@@ -112,7 +112,6 @@
 "edit.receipt.date.range.warning.message" = "Just a note that receipt date is outside trip start and end date";
 "edit.receipt.date.range.warning.title" = "Receipt date";
 "edit.receipt.exchange.rate.label" = "Exchange Rate";
-"edit.receipt.expensable.label" = "Expensable";
 "edit.receipt.full.page.label" = "Full Page Image";
 "edit.receipt.generic.save.error.message" = "Cannot add this receipt";
 "edit.receipt.name.label" = "Name";
@@ -121,6 +120,7 @@
 "edit.receipt.payment.method.label" = "Payment Method";
 "edit.receipt.price.label" = "Price";
 "edit.receipt.price.placeholder" = "e.g. 25.00";
+"edit.receipt.reimbursable.label" = "Reimbursable";
 "edit.receipt.tax.label" = "Tax";
 "edit.receipt.tax.placeholder" = "e.g. 5.00";
 "edit.trip.comment.label" = "Comment";
@@ -195,8 +195,8 @@
 "pdf.report.distance.traveled.label.base" = "Distance Traveled: %.2f";
 "pdf.report.from.to.label.base" = "From: %@ To: %@";
 "pdf.report.gross.total.label" = "Gross Total:";
-"pdf.report.receipts.total.expensable.label" = "Receipts Total (Expenseable):";
 "pdf.report.receipts.total.label" = "Receipts Total:";
+"pdf.report.receipts.total.reimbursable.label" = "Receipts Total (Reimbursable):";
 "pdf.report.receipts.total.sans.tax.label" = "Receipts Total (Sans Tax):";
 "pdf.report.tax.total.label" = "Tax Total:";
 
@@ -228,9 +228,7 @@
 "receipt.column.comment" = "Comment";
 "receipt.column.currency" = "Currency";
 "receipt.column.date" = "Date";
-"receipt.column.expensable" = "Expensable";
-"receipt.column.expenseable.value.no" = "No";
-"receipt.column.expenseable.value.yes" = "Yes";
+"receipt.column.expensable.legacy" = "Expensable"; // legacy string: expensable was renamed to reimbursable
 "receipt.column.image.name" = "Image Name";
 "receipt.column.image.path" = "Image Path";
 "receipt.column.name" = "Name";
@@ -242,6 +240,9 @@
 "receipt.column.price" = "Price";
 "receipt.column.receipt.id" = "Receipt ID";
 "receipt.column.receipt.index" = "Receipt Index";
+"receipt.column.reimbursable" = "Reimbursable";
+"receipt.column.reimbursable.value.no" = "No";
+"receipt.column.reimbursable.value.yes" = "Yes";
 "receipt.column.report.comment" = "Report Comment";
 "receipt.column.report.cost.center" = "Report Cost Center";
 "receipt.column.report.end.date" = "Report End Date";
@@ -305,7 +306,7 @@
 "settings.max.camera.resolution.label" = "Max. Camera Height / Width";
 "settings.min.receipt.price.label" = "Min. Receipt Price to Report";
 "settings.name.label" = "Full Name";
-"settings.only.report.expensable.label" = "Only Report Expensable Receipts";
+"settings.only.report.reimbursable.label" = "Only Report Reimbursable Receipts";
 "settings.pdf.configure.columns.label" = "Configure PDF Columns";
 "settings.pdf.footer.pro.message.body" = "Purchase Smart Receipts Plus subscription to remove or change this message in report footer";
 "settings.pdf.footer.pro.message.title" = "Smart Receipts Plus";
