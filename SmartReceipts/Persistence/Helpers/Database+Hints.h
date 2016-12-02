@@ -10,7 +10,8 @@
 
 @interface Database (Hints)
 
-- (NSString *)hintForTripBasedOnEntry:(NSString *)entry;
-- (NSString *)hintForReceiptBasedOnEntry:(NSString *)entry;
+/// Returns NSArray of NSString
+- (NSArray *)hintForTripBasedOnEntry:(NSString *)entry;
+- (NSArray *)hintForReceiptBasedOnEntry:(NSString *)entry;
 
 @end

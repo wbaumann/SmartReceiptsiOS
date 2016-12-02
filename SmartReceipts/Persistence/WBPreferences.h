@@ -19,17 +19,14 @@
 + (BOOL)matchNameToCategory;
 + (void)setMatchNameToCategory:(BOOL)matchNameToCategory;
 
-+ (BOOL)onlyIncludeExpensableReceiptsInReports;
-+ (void)setOnlyIncludeExpensableReceiptsInReports:(BOOL)onlyIncludeExpensableReceiptsInReports;
++ (BOOL)onlyIncludeReimbursableReceiptsInReports;
++ (void)setOnlyIncludeReimbursableReceiptsInReports:(BOOL)onlyIncludeReimbursableReceiptsInReports;
 
 + (BOOL)includeTaxField;
 + (void)setIncludeTaxField:(BOOL)includeTaxField;
 
 + (NSString *)dateSeparator;
 + (void)setDateSeparator:(NSString *)dateSeparator;
-
-+ (BOOL)enableAutoCompleteSuggestions;
-+ (void)setEnableAutoCompleteSuggestions:(BOOL)enableAutoCompleteSuggestions;
 
 + (NSString *)defaultEmailRecipient;
 + (void)setDefaultEmailRecipient:(NSString *)defaultEmailReceipient;

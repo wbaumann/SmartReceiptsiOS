@@ -123,6 +123,13 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    UITableViewCell *cell = [textField superviewOfType:[UITableViewCell class]];
+    
+    if ([cell isKindOfClass:[TitledAutocompleteEntryCell class]]) {
+        TitledAutocompleteEntryCell *autocompleteEntryCell = (TitledAutocompleteEntryCell *) cell;
+        [autocompleteEntryCell.autocompleteHelper textField:textField shouldChangeCharactersInRange:range replacementString:string];
+    }
+    
     NSString *validate = [textField.text stringByReplacingCharactersInRange:range withString:string];
 
     if (!self.activeFieldInputValidation) {

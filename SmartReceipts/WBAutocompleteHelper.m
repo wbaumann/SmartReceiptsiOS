@@ -7,122 +7,109 @@
 //
 
 #import "WBAutocompleteHelper.h"
-
 #import "WBPreferences.h"
 #import "Database+Hints.h"
+#import "SuggestionView.h"
+
+@interface WBAutocompleteHelper () <SuggestionViewDelegate>
+
+@property (weak, nonatomic) UITextField *field;
+@property (strong, nonatomic) SuggestionView *suggestionView; // appears above keyboard
+@property (assign, nonatomic) BOOL forReceipts;
+
+@end
 
 @implementation WBAutocompleteHelper
-{
-    CMPopTipView *_popTipView;
-    
-    BOOL _didAutocomplete;
-    BOOL _forReceipts;
-    
-    __weak UIView *_view;
-    __weak HTAutocompleteTextField *_field;
-}
 
-- (id)initWithAutocompleteField:(HTAutocompleteTextField*) field inView:(UIView*) view useReceiptsHints:(BOOL) forReceipts
+#pragma mark - Initialization
+
+- (id)initWithAutocompleteField:(UITextField *)field useReceiptsHints:(BOOL)forReceipts
 {
     self = [super init];
     if (self) {
         _field = field;
-        _view = view;
         _forReceipts = forReceipts;
         
-        _didAutocomplete = false;
+        _suggestionView = [SuggestionView new];
+        _suggestionView.maxSuggestionCount = 3;
+        _suggestionView.delegate = self;
         
-        if([WBPreferences enableAutoCompleteSuggestions]) {
-            field.autocompleteDataSource = self;
-            field.autoCompleteTextFieldDelegate = self;
-        }
+        self.field.inputAccessoryView = nil;
+        [self.field setInputAccessoryView:nil];
+        self.field.autocorrectionType = UITextAutocorrectionTypeNo;
+        [self.field reloadInputViews];
     }
     return self;
 }
 
--(NSString *)textField:(HTAutocompleteTextField *)textField completionForPrefix:(NSString *)prefix ignoreCase:(BOOL)ignoreCase {
-    if (_didAutocomplete || ![WBPreferences enableAutoCompleteSuggestions]) {
-        return @"";
-    }
-
-    Database *database = [Database sharedInstance];
-    NSString *hint = _forReceipts ? [database hintForReceiptBasedOnEntry:prefix] : [database hintForTripBasedOnEntry:prefix];
-    if (!hint) {
-        return @"";
-    }
-
-    if ([prefix length] >= [hint length]) {
-        return @"";
-    }
-
-    return [hint substringFromIndex:[prefix length]];
-}
-
--(void)autoCompleteTextFieldDidAutoComplete:(HTAutocompleteTextField *)autoCompleteField{
-    _didAutocomplete = YES;
-}
+#pragma mark - Public methods
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (_didAutocomplete && textField == _field) {
-        [self showPopTipViewIfNotShown];
+    if (textField == _field) {
+        [self showSuggestionView];
     }
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
     if (textField == _field) {
-        [self hidePopTipView];
+        [self removeSuggestionView];
     }
 }
 
-- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView {
-    [self hidePopTipView];
-}
-
-- (void) hidePopTipView {
-    [_popTipView dismissAnimated:YES];
-    _popTipView = nil;
-}
-
-- (void) showPopTipViewIfNotShown {
-    if (_popTipView || ![WBPreferences enableAutoCompleteSuggestions]) {
-        // we don't show them again when disabled
-        return;
+- (void)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (textField == _field) {
+        // generate hints
+        NSString *resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        NSLog(@"%@", resultString);
+        NSArray *hints = [self getHintsForPrefix:resultString];
+        
+        // show suggestions
+        _suggestionView.suggestions = hints;
+        // reloads _suggestionView:
+        [self removeSuggestionView];
+        [self showSuggestionView];
     }
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-    UISwitch *sw = [[UISwitch alloc] initWithFrame:CGRectZero];
-    
-    NSString *str = NSLocalizedString(@"autocomplete.helper.disable.tip.text", nil);
-    
-    [label setFont:[UIFont systemFontOfSize:13.0]];
-    [label setText:str];
-    [label sizeToFit];
-    
-    CGRect r = label.frame;
-    CGFloat h = MAX(r.size.height, sw.frame.size.height);
-    r = CGRectMake(sw.frame.size.width + 10, 0, r.size.width, h);
-    [label setFrame:r];
-    
-    [view addSubview:sw];
-    [view addSubview:label];
-    
-    sw.on = YES;
-    [sw addTarget:self action:@selector(autocompletionSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    [view setFrame:CGRectMake(0, 0, r.origin.x + r.size.width, h)];
-    
-    _popTipView = [[CMPopTipView alloc] initWithCustomView:view];
-    _popTipView.backgroundColor = [UIColor whiteColor];
-    _popTipView.borderColor = [UIColor lightGrayColor];
-    [_popTipView presentPointingAtView:_field inView:_view animated:YES];
 }
 
-- (void) autocompletionSwitchChanged:(id)sender{
-    if([sender isOn] == false){
-        [WBPreferences setEnableAutoCompleteSuggestions:NO];
-        [self hidePopTipView];
+#pragma mark - SuggestionView stuff
+
+- (void)showSuggestionView {
+    if (self.suggestionView.suggestions.count > 0) {
+        self.field.inputAccessoryView = self.suggestionView;
+        self.field.autocorrectionType = UITextAutocorrectionTypeNo;
+        [self.field reloadInputViews];
     }
+}
+
+- (void)removeSuggestionView {
+    self.field.inputAccessoryView = nil;
+    [self.field setInputAccessoryView:nil];
+    self.field.autocorrectionType = UITextAutocorrectionTypeNo;
+    [self.field reloadInputViews];
+    
+    if ([self.field isFirstResponder]) {
+        [self.field resignFirstResponder];
+        // enables native OS autocompletion
+        self.field.autocorrectionType = UITextAutocorrectionTypeYes;
+        [self.field reloadInputViews];
+        [self.field becomeFirstResponder];
+    }
+}
+
+#pragma mark SuggestionViewDelegate
+
+- (void)suggestionSelected:(NSString *)suggestion {
+    self.field.text = suggestion;
+    [self removeSuggestionView];
+}
+
+#pragma mark - Hints from DB
+
+/// Returns @[NSString] or empty array @[] if no suggestions
+- (NSArray *)getHintsForPrefix:(NSString *)prefix {
+    Database *database = [Database sharedInstance];
+    NSArray *hints = _forReceipts ? [database hintForReceiptBasedOnEntry:prefix] : [database hintForTripBasedOnEntry:prefix];
+    return hints;
 }
 
 @end

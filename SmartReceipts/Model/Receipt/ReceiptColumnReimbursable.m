@@ -1,5 +1,5 @@
 //
-//  ReceiptColumnExpensable.m
+//  ReceiptColumnReimbursable
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 24/04/15.
@@ -8,14 +8,14 @@
 
 #import <objc/NSObjCRuntime.h>
 #import <objc/objc.h>
-#import "ReceiptColumnExpensable.h"
+#import "ReceiptColumnReimbursable.h"
 #import "WBReceipt.h"
 #import "WBTrip.h"
 
-@implementation ReceiptColumnExpensable
+@implementation ReceiptColumnReimbursable
 
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
-    return [receipt isExpensable] ? NSLocalizedString(@"receipt.column.expenseable.value.yes", nil) : NSLocalizedString(@"receipt.column.expenseable.value.no", nil);
+    return [receipt isReimbursable] ? NSLocalizedString(@"receipt.column.reimbursable.value.yes", nil) : NSLocalizedString(@"receipt.column.reimbursable.value.no", nil);
 }
 
 @end

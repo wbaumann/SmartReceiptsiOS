@@ -26,25 +26,25 @@
 - (void)setUp {
     self.preferencesHelper = [[WBPreferencesTestHelper alloc] init];
     [self.preferencesHelper createPreferencesBackup];
-    [WBPreferences setOnlyIncludeExpensableReceiptsInReports:YES];
+    [WBPreferences setOnlyIncludeReimbursableReceiptsInReports:YES];
 }
 
 - (void)tearDown {
     [self.preferencesHelper restorePreferencesBackup];
 }
 
-- (void)testFiltersOutNonExpensableWhenSettingToIncludeOnlyExpensable {
+- (void)testFiltersOutNonReimbursableWhenSettingToIncludeOnlyReimbursable {
     WBReceipt *receipt = [self createTestReceipt:NO];
     XCTAssertTrue([WBReportUtils filterOutReceipt:receipt]);
 }
 
-- (void)testDoesNotFilterExpensableWhenSettingToIncludeOnlyExpensable {
+- (void)testDoesNotFilterReimbursableWhenSettingToIncludeOnlyReimbursable {
     WBReceipt *receipt = [self createTestReceipt:YES];
     XCTAssertFalse([WBReportUtils filterOutReceipt:receipt]);
 }
 
-- (void)testDoesNotFilterNonExpensableWhenSettingToIncludeOnlyExpensableIsOff {
-    [WBPreferences setOnlyIncludeExpensableReceiptsInReports:NO];
+- (void)testDoesNotFilterNonReimbursableWhenSettingToIncludeOnlyReimbursableIsOff {
+    [WBPreferences setOnlyIncludeReimbursableReceiptsInReports:NO];
     WBReceipt *receipt = [self createTestReceipt:NO];
     XCTAssertFalse([WBReportUtils filterOutReceipt:receipt]);
 }
@@ -55,8 +55,8 @@
     XCTAssertTrue([WBReportUtils filterOutReceipt:receipt]);
 }
 
-- (WBReceipt *)createTestReceipt:(BOOL)expensable {
-    return [[WBReceipt alloc] initWithId:1 name:@"" category:@"" imageFileName:@"" date:[NSDate date] timeZoneName:@"" comment:@"" priceAmount:[NSDecimalNumber decimalNumberWithString:@"10"] taxAmount:[NSDecimalNumber zero] currency:[WBCurrency currencyForCode:@"USD"] isExpensable:expensable isFullPage:NO extraEditText1:@"" extraEditText2:@"" extraEditText3:@""];
+- (WBReceipt *)createTestReceipt:(BOOL)reimbursable {
+    return [[WBReceipt alloc] initWithId:1 name:@"" category:@"" imageFileName:@"" date:[NSDate date] timeZoneName:@"" comment:@"" priceAmount:[NSDecimalNumber decimalNumberWithString:@"10"] taxAmount:[NSDecimalNumber zero] currency:[WBCurrency currencyForCode:@"USD"] isReimbursable:reimbursable isFullPage:NO extraEditText1:@"" extraEditText2:@"" extraEditText3:@""];
 }
 
 @end

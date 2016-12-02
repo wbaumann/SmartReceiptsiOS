@@ -97,7 +97,7 @@
     params[ReceiptsTable.COLUMN_NAME] = [NSString stringWithFormat:@"TestReceipt - %@", [NSDate date].milliseconds];
     params[ReceiptsTable.COLUMN_PRICE] = [NSDecimalNumber decimalNumberWithString:@"20"];
     params[ReceiptsTable.COLUMN_ISO4217] = @"USD";
-    params[ReceiptsTable.COLUMN_EXPENSEABLE] = @(YES);
+    params[ReceiptsTable.COLUMN_REIMBURSABLE] = @(YES);
     params[ReceiptsTable.COLUMN_PATH] = [NSString stringWithFormat:@"TheFileOfDoom-%@", [NSDate date].milliseconds];
     params[ReceiptsTable.COLUMN_DATE] = [NSDate date];
     params[ReceiptsTable.COLUMN_PAYMENT_METHOD_ID] = [self allPaymentMethods].firstObject;
@@ -114,7 +114,7 @@
     [receipt setTimeZone:[NSTimeZone localTimeZone]];
     [receipt setPrice:params[ReceiptsTable.COLUMN_PRICE] currency:params[ReceiptsTable.COLUMN_ISO4217]];
     [receipt setTax:[NSDecimalNumber zero]];
-    [receipt setExpensable:[params[ReceiptsTable.COLUMN_EXPENSEABLE] boolValue]];
+    [receipt setReimbursable:[params[ReceiptsTable.COLUMN_REIMBURSABLE] boolValue]];
     [receipt setTrip:params[ReceiptsTable.COLUMN_PARENT]];
     [receipt setPaymentMethod:params[ReceiptsTable.COLUMN_PAYMENT_METHOD_ID]];
     [receipt setImageFileName:params[ReceiptsTable.COLUMN_PATH]];

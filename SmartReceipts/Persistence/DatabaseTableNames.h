@@ -45,7 +45,7 @@ struct ReceiptsTableStruct {
     __unsafe_unretained NSString *const COLUMN_DATE;
     __unsafe_unretained NSString *const COLUMN_TIMEZONE;
     __unsafe_unretained NSString *const COLUMN_COMMENT;
-    __unsafe_unretained NSString *const COLUMN_EXPENSEABLE;
+    __unsafe_unretained NSString *const COLUMN_REIMBURSABLE;
     __unsafe_unretained NSString *const COLUMN_ISO4217;
     __unsafe_unretained NSString *const COLUMN_PAYMENT_METHOD_ID;
     __unsafe_unretained NSString *const COLUMN_NOTFULLPAGEIMAGE;

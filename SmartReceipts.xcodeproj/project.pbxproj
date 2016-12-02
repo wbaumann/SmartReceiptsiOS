@@ -23,6 +23,7 @@
 		4DF2294E192867BA0008D359 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF2294D192867BA0008D359 /* MessageUI.framework */; };
 		4DF22952192867CC0008D359 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF22951192867CC0008D359 /* SystemConfiguration.framework */; };
 		4DF2295619296E170008D359 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF2295519296E170008D359 /* libz.dylib */; };
+		57C9EBF21DF1BB6E001B3731 /* SuggestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C9EBF11DF1BB6E001B3731 /* SuggestionView.m */; };
 		841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB2FE1908167700D28CBF /* WBAbstractPicker.h */; };
 		841BB3011908173600D28CBF /* WBAbstractPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BB3001908173600D28CBF /* WBAbstractPicker.m */; };
 		841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB302190818C400D28CBF /* WBActionSheetPicker.h */; };
@@ -303,7 +304,7 @@
 		EA8D81A31AEA7C6B00BAC943 /* ReceiptColumnDate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81A21AEA7C6B00BAC943 /* ReceiptColumnDate.m */; };
 		EA8D81A61AEA7C7D00BAC943 /* ReceiptColumnName.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81A51AEA7C7D00BAC943 /* ReceiptColumnName.m */; };
 		EA8D81AF1AEA7CAD00BAC943 /* ReceiptColumnPictured.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81AE1AEA7CAD00BAC943 /* ReceiptColumnPictured.m */; };
-		EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnExpensable.m */; };
+		EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m */; };
 		EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B41AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m */; };
 		EA8D81B81AEA7EE200BAC943 /* Column.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81B71AEA7EE200BAC943 /* Column.m */; };
 		EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81BA1AEA861400BAC943 /* ReceiptUnknownColumn.m */; };
@@ -387,6 +388,8 @@
 		4DF2294D192867BA0008D359 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		4DF22951192867CC0008D359 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4DF2295519296E170008D359 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		57C9EBF01DF1BB6E001B3731 /* SuggestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionView.h; sourceTree = "<group>"; };
+		57C9EBF11DF1BB6E001B3731 /* SuggestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionView.m; sourceTree = "<group>"; };
 		7B397BE168915C982926C4BC /* Pods_SmartReceipts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartReceipts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841BB2FE1908167700D28CBF /* WBAbstractPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAbstractPicker.h; sourceTree = "<group>"; };
 		841BB3001908173600D28CBF /* WBAbstractPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAbstractPicker.m; sourceTree = "<group>"; };
@@ -815,8 +818,8 @@
 		EA8D81A51AEA7C7D00BAC943 /* ReceiptColumnName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnName.m; sourceTree = "<group>"; };
 		EA8D81AD1AEA7CAD00BAC943 /* ReceiptColumnPictured.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnPictured.h; sourceTree = "<group>"; };
 		EA8D81AE1AEA7CAD00BAC943 /* ReceiptColumnPictured.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnPictured.m; sourceTree = "<group>"; };
-		EA8D81B01AEA7CBD00BAC943 /* ReceiptColumnExpensable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnExpensable.h; sourceTree = "<group>"; };
-		EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnExpensable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnExpensable.m; sourceTree = "<group>"; };
+		EA8D81B01AEA7CBD00BAC943 /* ReceiptColumnReimbursable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnReimbursable.h; sourceTree = "<group>"; };
+		EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnReimbursable.m; sourceTree = "<group>"; };
 		EA8D81B31AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnReceiptIndex.h; sourceTree = "<group>"; };
 		EA8D81B41AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnReceiptIndex.m; sourceTree = "<group>"; };
 		EA8D81B61AEA7EE200BAC943 /* Column.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Column.h; sourceTree = "<group>"; };
@@ -1254,6 +1257,8 @@
 			children = (
 				BA6658C6E9922C04CCF04745 /* WBAutocompleteHelper.h */,
 				BA66568C566BD25FE4AFAE3C /* WBAutocompleteHelper.m */,
+				57C9EBF01DF1BB6E001B3731 /* SuggestionView.h */,
+				57C9EBF11DF1BB6E001B3731 /* SuggestionView.m */,
 			);
 			name = Creators;
 			sourceTree = "<group>";
@@ -1668,8 +1673,8 @@
 				A7F05BA31CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift */,
 				A7F05BAD1CFC12FA0079F1AD /* ReceiptColumnExchangedTax.swift */,
 				A7B6FC5C1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift */,
-				EA8D81B01AEA7CBD00BAC943 /* ReceiptColumnExpensable.h */,
-				EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnExpensable.m */,
+				EA8D81B01AEA7CBD00BAC943 /* ReceiptColumnReimbursable.h */,
+				EA8D81B11AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m */,
 				EA8D81951AEA7C1E00BAC943 /* ReceiptColumnImageName.h */,
 				EA8D81961AEA7C1E00BAC943 /* ReceiptColumnImageName.m */,
 				EA8D81981AEA7C3100BAC943 /* ReceiptColumnImagePath.h */,
@@ -2339,6 +2344,7 @@
 				EA69EF151AEFC81A00276B70 /* Database.m in Sources */,
 				841BB3011908173600D28CBF /* WBAbstractPicker.m in Sources */,
 				EA4C5CC51AF287330083FDD7 /* TitledTextEntryCell.m in Sources */,
+				57C9EBF21DF1BB6E001B3731 /* SuggestionView.m in Sources */,
 				EA183E081B1C9F5D00577B3D /* Database+CSVColumns.m in Sources */,
 				EA1309A01B5027E40045FDDE /* TableContentRow.m in Sources */,
 				845E33E318D8A12C006A506A /* WBTextUtils.m in Sources */,
@@ -2352,7 +2358,7 @@
 				A7A720E11CEEFAF700A3B5FF /* InputCellsViewController.swift in Sources */,
 				A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */,
 				EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */,
-				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnExpensable.m in Sources */,
+				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */,
 				EAD3EF8B1B0E154300CA1D4D /* AdPresentingContainerViewController.m in Sources */,
 				EA0677F61B04E61A0058A326 /* StringPickableWrapper.m in Sources */,
 				EA4DC9961AF1580100CEF1B9 /* InputCellsViewController.m in Sources */,

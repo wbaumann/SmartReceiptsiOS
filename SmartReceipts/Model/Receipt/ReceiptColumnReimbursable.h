@@ -1,5 +1,5 @@
 //
-//  ReceiptColumnExpensable.h
+//  ReceiptColumnReimbursable
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 24/04/15.
@@ -8,6 +8,6 @@
 
 #import "ReceiptColumn.h"
 
-@interface ReceiptColumnExpensable : ReceiptColumn
+@interface ReceiptColumnReimbursable : ReceiptColumn
 
 @end

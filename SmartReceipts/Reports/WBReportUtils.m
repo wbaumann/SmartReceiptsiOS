@@ -12,7 +12,7 @@
 @implementation WBReportUtils
 
 + (BOOL)filterOutReceipt:(WBReceipt *)receipt {
-    if ([WBPreferences onlyIncludeExpensableReceiptsInReports] && ![receipt isExpensable]) {
+    if ([WBPreferences onlyIncludeReimbursableReceiptsInReports] && ![receipt isReimbursable]) {
         return YES;
     }
     else if ([[receipt priceAmount] compare:[[NSDecimalNumber alloc] initWithFloat:[WBPreferences minimumReceiptPriceToIncludeInReports]]] == NSOrderedAscending) {

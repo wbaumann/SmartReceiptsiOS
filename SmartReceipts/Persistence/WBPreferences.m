@@ -31,9 +31,8 @@ static NSString * const BOOL_MATCH_COMMENT_WITH_CATEGORIES = @"MatchCommentCats"
 static NSString * const BOOL_MATCH_NAME_WITH_CATEGORIES = @"MatchNameCats";
 static NSString * const BOOL_USE_NATIVE_CAMERA = @"UseNativeCamera"; // UNUSED
 static NSString * const BOOL_ACTION_SEND_SHOW_HELP_DIALOG = @"ShowHelpDialog";
-static NSString * const BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS = @"OnlyIncludeExpensable";
+static NSString * const BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS = @"OnlyIncludeReimbursable";
 static NSString * const BOOL_INCLUDE_TAX_FIELD = @"IncludeTaxField";
-static NSString * const BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS = @"EnableAutoCompleteSuggestions";
 static NSString * const STRING_CURRENCY = @"isocurr";
 static NSString * const STRING_DATE_SEPARATOR = @"dateseparator";
 static NSString * const FLOAT_MIN_RECEIPT_PRICE = @"MinReceiptPrice";
@@ -101,11 +100,10 @@ static NSDictionary *getEntryTypes() {
             BOOL_MATCH_COMMENT_WITH_CATEGORIES : tBool,
 
             BOOL_MATCH_NAME_WITH_CATEGORIES : tBool,
-            BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS : tBool,
+            BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS : tBool,
             BOOL_ACTION_SEND_SHOW_HELP_DIALOG : tBool,
 
             BOOL_INCLUDE_TAX_FIELD : tBool,
-            BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS : tBool,
             STRING_USERNAME : tString,
             STRING_FULLNAME : tString,
 
@@ -170,11 +168,10 @@ static NSDictionary *getDefaultValues() {
             BOOL_MATCH_COMMENT_WITH_CATEGORIES : @NO,
 
             BOOL_MATCH_NAME_WITH_CATEGORIES : @NO,
-            BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS : @NO,
+            BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS : @NO,
             BOOL_ACTION_SEND_SHOW_HELP_DIALOG : @YES,
 
             BOOL_INCLUDE_TAX_FIELD : @NO,
-            BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS : @YES,
             STRING_USERNAME : @"",
             STRING_FULLNAME : @"",
 
@@ -251,11 +248,11 @@ static NSUserDefaults* instance() {
     [instance() setBool:matchNameToCategory forKey:BOOL_MATCH_NAME_WITH_CATEGORIES];
 }
 
-+(BOOL) onlyIncludeExpensableReceiptsInReports {
-    return [instance() boolForKey:BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS];
++(BOOL) onlyIncludeReimbursableReceiptsInReports {
+    return [instance() boolForKey:BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS];
 }
-+(void) setOnlyIncludeExpensableReceiptsInReports:(BOOL) onlyIncludeExpensableReceiptsInReports {
-    [instance() setBool:onlyIncludeExpensableReceiptsInReports forKey:BOOL_ONLY_INCLUDE_EXPENSABLE_ITEMS];
++(void) setOnlyIncludeReimbursableReceiptsInReports:(BOOL) onlyIncludeReimbursableReceiptsInReports {
+    [instance() setBool:onlyIncludeReimbursableReceiptsInReports forKey:BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS];
 }
 
 +(BOOL) includeTaxField {
@@ -270,13 +267,6 @@ static NSUserDefaults* instance() {
 }
 +(void) setDateSeparator:(NSString*) dateSeparator {
     [instance() setObject:dateSeparator forKey:STRING_DATE_SEPARATOR];
-}
-
-+(BOOL) enableAutoCompleteSuggestions {
-    return [instance() boolForKey:BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS];
-}
-+(void) setEnableAutoCompleteSuggestions:(BOOL) enableAutoCompleteSuggestions {
-    [instance() setBool:enableAutoCompleteSuggestions forKey:BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS];
 }
 
 + (NSString *)defaultEmailRecipient {

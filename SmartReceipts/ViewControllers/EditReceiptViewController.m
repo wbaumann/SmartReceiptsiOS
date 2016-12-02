@@ -65,7 +65,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 @property (nonatomic, strong) TitledTextEntryCell *commentCell;
 @property (nonatomic, strong) PickerCell *paymentMethodCell;
 @property (nonatomic, strong) InlinedPickerCell *paymentMethodPickerCell;
-@property (nonatomic, strong) SwitchControlCell *expensableCell;
+@property (nonatomic, strong) SwitchControlCell *reimbursableCell;
 @property (nonatomic, strong) SwitchControlCell *fullPageImageCell;
 
 @property (nonatomic, strong) NSArray *categories;
@@ -96,7 +96,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     [self.nameCell setTitle:NSLocalizedString(@"edit.receipt.name.label", nil)];
     [self.nameCell setPlaceholder:NSLocalizedString(@"edit.receipt.name.placeholder", nil)];
     [self.nameCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
-    [self.nameCell setAutocompleteHelper:[[WBAutocompleteHelper alloc] initWithAutocompleteField:(HTAutocompleteTextField *) self.nameCell.entryField inView:self.view useReceiptsHints:YES]];
+    [self.nameCell setAutocompleteHelper:[[WBAutocompleteHelper alloc] initWithAutocompleteField:self.nameCell.entryField useReceiptsHints:YES]];
 
     self.priceCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     self.priceCell.title = NSLocalizedString(@"edit.receipt.price.label", nil);
@@ -192,8 +192,8 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
         [weakSelf.paymentMethodCell setPickableValue:selected];
     }];
 
-    self.expensableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.expensableCell setTitle:NSLocalizedString(@"edit.receipt.expensable.label", nil)];
+    self.reimbursableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.reimbursableCell setTitle:NSLocalizedString(@"edit.receipt.reimbursable.label", nil)];
 
     self.fullPageImageCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.fullPageImageCell setTitle:NSLocalizedString(@"edit.receipt.full.page.label", nil)];
@@ -214,7 +214,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     if ([WBPreferences usePaymentMethods]) {
         [presentedCells addObject:self.paymentMethodCell];
     }
-    [presentedCells addObject:self.expensableCell];
+    [presentedCells addObject:self.reimbursableCell];
     [presentedCells addObject:self.fullPageImageCell];
 
     [self addSectionForPresentation:[InputCellsSection sectionWithCells:presentedCells]];
@@ -260,7 +260,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
         _dateMs = [self.receipt date].milliseconds.longLongValue;
         category = [self categoryWithName:[self.receipt category]];
         [self.commentCell setValue:[self.receipt comment]];
-        [self.expensableCell setSwitchOn:[self.receipt isExpensable]];
+        [self.reimbursableCell setSwitchOn:[self.receipt isReimbursable]];
         [self.fullPageImageCell setSwitchOn:[self.receipt isFullPage]];
         if (self.receipt.paymentMethod) {
             [self.paymentMethodCell setPickableValue:self.receipt.paymentMethod];
@@ -293,7 +293,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 
         _timeZone = [NSTimeZone localTimeZone];
 
-        [self.expensableCell setSwitchOn:YES];
+        [self.reimbursableCell setSwitchOn:YES];
         [self.fullPageImageCell setSwitchOn:NO];
         [self.paymentMethodCell setPickableValue:self.paymentMethodPickerCell.selectedValue];
     }
@@ -405,7 +405,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     [self.receipt setTax:taxAmount];
     [self.receipt setExchangeRate:exchangeRate];
     [self.receipt setComment:self.commentCell.value];
-    [self.receipt setExpensable:self.expensableCell.isSwitchOn];
+    [self.receipt setReimbursable:self.reimbursableCell.isSwitchOn];
     [self.receipt setFullPage:self.fullPageImageCell.isSwitchOn];
     [self.receipt setPaymentMethod:(PaymentMethod *) self.paymentMethodCell.pickableValue];
 

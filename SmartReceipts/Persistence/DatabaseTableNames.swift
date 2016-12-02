@@ -25,7 +25,7 @@ enum ReceiptsTable {
         static let Date = "rcpt_date"
         static let Timezone = "timezone"
         static let Comment = "comment"
-        static let Expenseable = "expenseable"
+        static let Reimbursable = "reimbursable"
         static let ISO4217 = "isocode"
         static let PaymentMethodId = "paymentMethodKey"
         static let NotFullPageImage = "fullpageimage"
