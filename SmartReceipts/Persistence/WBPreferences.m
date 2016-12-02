@@ -33,7 +33,6 @@ static NSString * const BOOL_USE_NATIVE_CAMERA = @"UseNativeCamera"; // UNUSED
 static NSString * const BOOL_ACTION_SEND_SHOW_HELP_DIALOG = @"ShowHelpDialog";
 static NSString * const BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS = @"OnlyIncludeReimbursable";
 static NSString * const BOOL_INCLUDE_TAX_FIELD = @"IncludeTaxField";
-static NSString * const BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS = @"EnableAutoCompleteSuggestions";
 static NSString * const STRING_CURRENCY = @"isocurr";
 static NSString * const STRING_DATE_SEPARATOR = @"dateseparator";
 static NSString * const FLOAT_MIN_RECEIPT_PRICE = @"MinReceiptPrice";
@@ -105,7 +104,6 @@ static NSDictionary *getEntryTypes() {
             BOOL_ACTION_SEND_SHOW_HELP_DIALOG : tBool,
 
             BOOL_INCLUDE_TAX_FIELD : tBool,
-            BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS : tBool,
             STRING_USERNAME : tString,
             STRING_FULLNAME : tString,
 
@@ -174,7 +172,6 @@ static NSDictionary *getDefaultValues() {
             BOOL_ACTION_SEND_SHOW_HELP_DIALOG : @YES,
 
             BOOL_INCLUDE_TAX_FIELD : @NO,
-            BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS : @YES,
             STRING_USERNAME : @"",
             STRING_FULLNAME : @"",
 
@@ -270,13 +267,6 @@ static NSUserDefaults* instance() {
 }
 +(void) setDateSeparator:(NSString*) dateSeparator {
     [instance() setObject:dateSeparator forKey:STRING_DATE_SEPARATOR];
-}
-
-+(BOOL) enableAutoCompleteSuggestions {
-    return [instance() boolForKey:BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS];
-}
-+(void) setEnableAutoCompleteSuggestions:(BOOL) enableAutoCompleteSuggestions {
-    [instance() setBool:enableAutoCompleteSuggestions forKey:BOOL_ENABLE_AUTOCOMPLETE_SUGGESTIONS];
 }
 
 + (NSString *)defaultEmailRecipient {

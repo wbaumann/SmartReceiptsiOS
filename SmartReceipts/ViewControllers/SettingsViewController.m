@@ -68,7 +68,6 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) SwitchControlCell *matchNameToCategoriesCell;
 @property (nonatomic, strong) SwitchControlCell *matchCommentsToCategoriesCell;
 @property (nonatomic, strong) SwitchControlCell *onlyReportReimbursableCell;
-@property (nonatomic, strong) SwitchControlCell *enableAutocompleteSuggestionsCell;
 @property (nonatomic, strong) SwitchControlCell *defaultReceiptDateToReportStartCell;
 @property (nonatomic, strong) SwitchControlCell *showReceiptIDCell;
 @property (nonatomic, strong) SwitchControlCell *usePaymentMethodsCell;
@@ -234,9 +233,6 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     self.onlyReportReimbursableCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.onlyReportReimbursableCell setTitle:NSLocalizedString(@"settings.only.report.reimbursable.label", nil)];
 
-    self.enableAutocompleteSuggestionsCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
-    [self.enableAutocompleteSuggestionsCell setTitle:NSLocalizedString(@"settings.enable.autocomplete.suggestions.label", nil)];
-
     self.defaultReceiptDateToReportStartCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.defaultReceiptDateToReportStartCell setTitle:NSLocalizedString(@"settings.default.receipt.date.to.start.date.label", nil)];
 
@@ -265,7 +261,6 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
                                                                        self.matchNameToCategoriesCell,
                                                                        self.matchCommentsToCategoriesCell,
                                                                        self.onlyReportReimbursableCell,
-                                                                       self.enableAutocompleteSuggestionsCell,
                                                                        self.defaultReceiptDateToReportStartCell,
                                                                        self.showReceiptIDCell,
                                                                        self.usePaymentMethodsCell,
@@ -399,7 +394,6 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.matchNameToCategoriesCell setSwitchOn:[WBPreferences matchNameToCategory]];
     [self.matchCommentsToCategoriesCell setSwitchOn:[WBPreferences matchCommentToCategory]];
     [self.onlyReportReimbursableCell setSwitchOn:[WBPreferences onlyIncludeReimbursableReceiptsInReports]];
-    [self.enableAutocompleteSuggestionsCell setSwitchOn:[WBPreferences enableAutoCompleteSuggestions]];
     [self.defaultReceiptDateToReportStartCell setSwitchOn:[WBPreferences defaultToFirstReportDate]];
     [self.showReceiptIDCell setSwitchOn:[WBPreferences showReceiptID]];
     [self.usePaymentMethodsCell setSwitchOn:[WBPreferences usePaymentMethods]];
@@ -499,7 +493,6 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [WBPreferences setMatchNameToCategory:self.matchNameToCategoriesCell.isSwitchOn];
     [WBPreferences setMatchCommentToCategory:self.matchCommentsToCategoriesCell.isSwitchOn];
     [WBPreferences setOnlyIncludeReimbursableReceiptsInReports:self.onlyReportReimbursableCell.isSwitchOn];
-    [WBPreferences setEnableAutoCompleteSuggestions:self.enableAutocompleteSuggestionsCell.isSwitchOn];
     [WBPreferences setDefaultToFirstReportDate:self.defaultReceiptDateToReportStartCell.isSwitchOn];
     [WBPreferences setShowReceiptID:self.showReceiptIDCell.isSwitchOn];
     [WBPreferences setUsePaymentMethods:self.usePaymentMethodsCell.isSwitchOn];

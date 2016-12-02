@@ -13,27 +13,27 @@
 
 @implementation Database (Hints)
 
-- (NSString *)hintForTripBasedOnEntry:(NSString *)entry {
+- (NSArray *)hintForTripBasedOnEntry:(NSString *)entry {
     return [self hintFromTable:TripsTable.TABLE_NAME column:TripsTable.COLUMN_NAME baseOnEntry:entry];
 }
 
-- (NSString *)hintForReceiptBasedOnEntry:(NSString *)entry {
+- (NSArray *)hintForReceiptBasedOnEntry:(NSString *)entry {
     return [self hintFromTable:ReceiptsTable.TABLE_NAME column:ReceiptsTable.COLUMN_NAME baseOnEntry:entry];
 }
 
-- (NSString *)hintFromTable:(NSString *)tableName column:(NSString *)columnName baseOnEntry:(NSString *)entry {
+- (NSArray *)hintFromTable:(NSString *)tableName column:(NSString *)columnName baseOnEntry:(NSString *)entry {
     NSString *q = [NSString stringWithFormat:@"SELECT DISTINCT TRIM(%@) AS _id FROM %@ WHERE %@ LIKE ? ORDER BY %@", columnName, tableName, columnName, columnName];
 
     NSString *like = [NSString stringWithFormat:@"%@%%", entry];
 
-    __block NSString *hint = nil;
+    __block NSMutableArray *hints = [NSMutableArray new];
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         FMResultSet *result = [db executeQuery:q, like];
-        if ([result next]) {
-            hint = [result stringForColumn:@"_id"];
+        while ([result next]) {
+            [hints addObject:[result stringForColumn:@"_id"]];
         }
     }];
-    return hint;
+    return [NSArray arrayWithArray:hints];
 }
 
 @end

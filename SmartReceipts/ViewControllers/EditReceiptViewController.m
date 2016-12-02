@@ -96,7 +96,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     [self.nameCell setTitle:NSLocalizedString(@"edit.receipt.name.label", nil)];
     [self.nameCell setPlaceholder:NSLocalizedString(@"edit.receipt.name.placeholder", nil)];
     [self.nameCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
-    [self.nameCell setAutocompleteHelper:[[WBAutocompleteHelper alloc] initWithAutocompleteField:(HTAutocompleteTextField *) self.nameCell.entryField inView:self.view useReceiptsHints:YES]];
+    [self.nameCell setAutocompleteHelper:[[WBAutocompleteHelper alloc] initWithAutocompleteField:self.nameCell.entryField useReceiptsHints:YES]];
 
     self.priceCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     self.priceCell.title = NSLocalizedString(@"edit.receipt.price.label", nil);

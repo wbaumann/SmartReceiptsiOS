@@ -8,14 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-#import "HTAutocompleteTextField.h"
-#import "CMPopTipView.h"
+@interface WBAutocompleteHelper : NSObject
 
-@interface WBAutocompleteHelper : NSObject<CMPopTipViewDelegate,HTAutocompleteDataSource,HTAutocompleteTextFieldDelegate>
-
-- (id)initWithAutocompleteField:(HTAutocompleteTextField*) field inView:(UIView*) view useReceiptsHints:(BOOL) forReceipts;
+- (id)initWithAutocompleteField:(UITextField*)field useReceiptsHints:(BOOL) forReceipts;
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField;
 -(void)textFieldDidEndEditing:(UITextField *)textField;
+-(void)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 
 @end

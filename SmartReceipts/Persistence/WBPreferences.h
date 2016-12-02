@@ -28,9 +28,6 @@
 + (NSString *)dateSeparator;
 + (void)setDateSeparator:(NSString *)dateSeparator;
 
-+ (BOOL)enableAutoCompleteSuggestions;
-+ (void)setEnableAutoCompleteSuggestions:(BOOL)enableAutoCompleteSuggestions;
-
 + (NSString *)defaultEmailRecipient;
 + (void)setDefaultEmailRecipient:(NSString *)defaultEmailReceipient;
 

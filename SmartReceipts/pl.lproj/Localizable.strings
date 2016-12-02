@@ -7,8 +7,6 @@
 "app.delegate.import.error.alert.message" = "Nie rozpoznano pliku jako importowalny.";
 "app.delegate.import.success.alert.message" = "Wszystkie pliki zaimportowano z sukcesem.";
 
-"autocomplete.helper.disable.tip.text" = "Jeżeli preferujesz możesz również wyłączyć autouzupełnianie";
-
 "categiry.cell.phone.code" = "ZCEL";
 "categiry.cell.phone.name" = "Tel. Komórkowy";
 
@@ -287,7 +285,6 @@
 "settings.distance.report.on.daily.distance" = "Report on Daily Distance";
 "settings.distance.section.title" = "Distance";
 "settings.email.section.title" = "Email";
-"settings.enable.autocomplete.suggestions.label" = "Włącz AutoUzupełnianie";
 "settings.enable.payment.methods.label" = "Enable Payment Methods";
 "settings.export.confirmation.alert.message" = "Możesz ponownie zaimportować swoje dane klikając na plik SmartReceipts.SMR, ktory zostanie wygenerowany po kliknięciu poniżej.";
 "settings.export.confirmation.alert.title" = "Eksportować paragony?";
