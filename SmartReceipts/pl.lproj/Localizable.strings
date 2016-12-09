@@ -289,6 +289,12 @@
 "settings.export.confirmation.alert.message" = "Możesz ponownie zaimportować swoje dane klikając na plik SmartReceipts.SMR, ktory zostanie wygenerowany po kliknięciu poniżej.";
 "settings.export.confirmation.alert.title" = "Eksportować paragony?";
 "settings.export.confirmation.export.button" = "Eksport";
+"settings.feedback.email.error" = "Can't send E-mail";
+"settings.feedback.email.not.configured.message" = "You must configured the iOS Mail app to use the E-mail option";
+"settings.feedback.section.label" = "Sprzężenie zwrotne";
+"settings.feedback.sendBugReport.label" = "Wyślij raport o błędach";
+"settings.feedback.sendFeedback.label" = "Wyślij opinię";
+"settings.feedback.sendLove.label" = "Oceń app";
 "settings.gas.rate.label" = "Gas Rate";
 "settings.general.section.title" = "Ogólne";
 "settings.include.distance.table.label" = "Include Distance Table";

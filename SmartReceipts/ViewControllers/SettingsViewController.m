@@ -37,6 +37,8 @@
 #import "NSString+Validation.h"
 #import "RMStore.h"
 #import "SmartReceipts-Swift.h"
+#import "UIDevice+DeviceInfo.h"
+#import "UIApplication+AppVersion.h"
 
 static NSString *const PushManageCategoriesSegueIdentifier = @"PushManageCategoriesSegueIdentifier";
 static NSString *const PushConfigurePDFColumnsSegueIdentifier = @"ConfigurePDF";
@@ -101,6 +103,10 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) SwitchControlCell *layoutShowReceiptAttachmentCell;
 
 @property (nonatomic, strong) SettingsButtonCell *backupCell;
+
+@property (nonatomic, strong) SettingsButtonCell *sendLoveCell;
+@property (nonatomic, strong) SettingsButtonCell *sendFeedbackCell;
+@property (nonatomic, strong) SettingsButtonCell *sendBugReportCell;
 
 @property (nonatomic, assign) BOOL hasBeenShown;
 
@@ -351,6 +357,23 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.backupCell setTitle:NSLocalizedString(@"settings.backup.button.label", nil)];
 
     [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.backup.section.title", nil) cells:@[self.backupCell]]];
+    
+    // Feedback settings:
+    self.sendLoveCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
+    [self.sendLoveCell setTitle:NSLocalizedString(@"settings.feedback.sendLove.label", nil)];
+    
+    self.sendFeedbackCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
+    [self.sendFeedbackCell setTitle:NSLocalizedString(@"settings.feedback.sendFeedback.label", nil)];
+    
+    self.sendBugReportCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
+    [self.sendBugReportCell setTitle:NSLocalizedString(@"settings.feedback.sendBugReport.label", nil)];
+    
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.feedback.section.label", nil) cells: @[
+                                                                                                                                            self.sendLoveCell,
+                                                                                                                                            self.sendFeedbackCell,
+                                                                                                                                            self.sendBugReportCell
+                                                                                                                                            ]]];
+    
 
     [self.navigationController setToolbarHidden:YES];
 
@@ -608,6 +631,12 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [self makePurchase:self.removeAdsProduct];
     } else if (cell == self.pdfFooterCell) {
         [self showAlertWithTitle:NSLocalizedString(@"settings.pdf.footer.pro.message.title", nil) message:NSLocalizedString(@"settings.pdf.footer.pro.message.body", nil)];
+    } else if (cell == self.sendLoveCell) {
+        [self sendLove];
+    } else if (cell == self.sendFeedbackCell) {
+        [self emailFeedbackWithBugReport:NO];
+    } else if (cell == self.sendBugReportCell) {
+        [self emailFeedbackWithBugReport:YES];
     }
 }
 
@@ -690,5 +719,56 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
                                                 otherButtonItems:nil];
      [alertView show];
  }
+
+#pragma mark - Feedback section actions
+
+- (void)sendLove {
+    NSURL *reviewURL = [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", SmartReceiptAppStoreId]];
+    if ([[UIApplication sharedApplication] canOpenURL:reviewURL]) {
+        [[UIApplication sharedApplication] openURL:reviewURL];
+    }
+}
+
+#pragma mark - MFMailComposeViewController, MFMailComposeViewControllerDelegate
+
+- (void)emailFeedbackWithBugReport:(BOOL)isBugReportEmail {
+    // Checking the availability of mail services
+    if (![MFMailComposeViewController canSendMail]) {
+        NSLog(@"Mail services are not available.");
+        [self showAlertWithTitle:NSLocalizedString(@"settings.feedback.email.error", nil) message:NSLocalizedString(@"settings.feedback.email.not.configured.message", nil)];
+        return;
+    }
+    
+    NSString *subject = FeedbackEmailSubject;
+    NSMutableString *messageBody = [NSMutableString new];
+    if (isBugReportEmail) {
+        // another subject
+        subject = FeedbackBugreportEmailSubject;
+        // attach device info
+        [messageBody appendString:@"\n\n\nDebug info:\n"];
+        [messageBody appendString:[[UIApplication sharedApplication] appVersionInfoString]];
+        [messageBody appendFormat:@"Plus: %@\n", [[Database sharedInstance] hasValidSubscription] ? @"true" : @"false"];
+        [messageBody appendString:[[UIDevice currentDevice] deviceInfoString]];
+    }
+    
+    MFMailComposeViewController* composeVC = [[MFMailComposeViewController alloc] init];
+    composeVC.mailComposeDelegate = self;
+    // Configure the fields of the interface.
+    [composeVC setToRecipients:@[FeedbackEmailAddress]];
+    [composeVC setSubject:subject];
+    [composeVC setMessageBody:messageBody isHTML:NO];
+    
+    // Present the view controller modally.
+    [self presentViewController:composeVC animated:YES completion:nil];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    // Check the result or perform other tasks.
+    if (result == MFMailComposeResultFailed) {
+        // todo: ERR alert
+        [self showAlertWithTitle:NSLocalizedString(@"settings.feedback.email.error", nil) message:error.localizedDescription];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end
