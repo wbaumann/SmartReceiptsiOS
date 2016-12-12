@@ -67,6 +67,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) SwitchControlCell *includeTaxFieldCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultTaxPercentageCell;
 @property (nonatomic, strong) SwitchControlCell *enteredPricePreTaxCell;
+@property (nonatomic, strong) SwitchControlCell *assumeFullPageCell;
 @property (nonatomic, strong) SwitchControlCell *matchNameToCategoriesCell;
 @property (nonatomic, strong) SwitchControlCell *matchCommentsToCategoriesCell;
 @property (nonatomic, strong) SwitchControlCell *onlyReportReimbursableCell;
@@ -229,6 +230,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     self.enteredPricePreTaxCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.enteredPricePreTaxCell setTitle:NSLocalizedString(@"settings.assume.price.pre.tax.label", nil)];
+    
+    self.assumeFullPageCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.assumeFullPageCell setTitle:NSLocalizedString(@"settings.receipt.assume.full.page.image.label", nil)];
 
     self.matchNameToCategoriesCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.matchNameToCategoriesCell setTitle:NSLocalizedString(@"settings.match.name.to.category.label", nil)];
@@ -264,6 +268,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
                                                                        self.includeTaxFieldCell,
                                                                        self.defaultTaxPercentageCell,
                                                                        self.enteredPricePreTaxCell,
+                                                                       self.assumeFullPageCell,
                                                                        self.matchNameToCategoriesCell,
                                                                        self.matchCommentsToCategoriesCell,
                                                                        self.onlyReportReimbursableCell,
@@ -414,6 +419,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [self.defaultTaxPercentageCell setValue:[taxPercentage descriptionWithLocale:[NSLocale currentLocale]]];
     }
     [self.enteredPricePreTaxCell setSwitchOn:[WBPreferences enteredPricePreTax]];
+    [self.assumeFullPageCell setSwitchOn:[WBPreferences assumeFullPage]];
     [self.matchNameToCategoriesCell setSwitchOn:[WBPreferences matchNameToCategory]];
     [self.matchCommentsToCategoriesCell setSwitchOn:[WBPreferences matchCommentToCategory]];
     [self.onlyReportReimbursableCell setSwitchOn:[WBPreferences onlyIncludeReimbursableReceiptsInReports]];
@@ -513,6 +519,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     NSDecimalNumber *taxNumber = [NSDecimalNumber decimalNumberOrZero:tax];
     [WBPreferences setDefaultTaxPercentage:taxNumber.floatValue];
     [WBPreferences setEnteredPricePreTax:self.enteredPricePreTaxCell.isSwitchOn];
+    [WBPreferences setAssumeFullPage:self.assumeFullPageCell.isSwitchOn];
     [WBPreferences setMatchNameToCategory:self.matchNameToCategoriesCell.isSwitchOn];
     [WBPreferences setMatchCommentToCategory:self.matchCommentsToCategoriesCell.isSwitchOn];
     [WBPreferences setOnlyIncludeReimbursableReceiptsInReports:self.onlyReportReimbursableCell.isSwitchOn];

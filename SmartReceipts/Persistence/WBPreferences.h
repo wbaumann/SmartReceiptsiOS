@@ -125,4 +125,7 @@
 + (void)setFromXmlString:(NSString *)xmlString;
 + (NSString *)xmlString;
 
++ (BOOL)assumeFullPage;
++ (void)setAssumeFullPage:(BOOL)value;
+
 @end

@@ -327,6 +327,7 @@
 "settings.purchase.restore.label" = "Restore purchase";
 "settings.purchase.section.title" = "Purchases";
 "settings.purchase.subscription.valid.until.label.base" = "Valid until: %@";
+"settings.receipt.assume.full.page.image.label" = "Assume Full Page Receipt Image";
 "settings.show.receipt.id.label" = "Show Receipt ID";
 "settings.track.cost.center.label" = "Track Cost Center";
 "settings.user.id.label" = "User ID";

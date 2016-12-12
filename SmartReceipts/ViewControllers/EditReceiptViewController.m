@@ -294,7 +294,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
         _timeZone = [NSTimeZone localTimeZone];
 
         [self.reimbursableCell setSwitchOn:YES];
-        [self.fullPageImageCell setSwitchOn:NO];
+        [self.fullPageImageCell setSwitchOn:[WBPreferences assumeFullPage]];
         [self.paymentMethodCell setPickableValue:self.paymentMethodPickerCell.selectedValue];
     }
 
