@@ -11,6 +11,12 @@
 
 @implementation UIDevice (DeviceInfo)
 
+/**
+ The dictionary "deviceNamesByCode" was taken here: http://stackoverflow.com/a/20062141/4049469
+
+ @return 
+    Device name string (e.g. iPhone 7 Plus. Or at least codename, for instance, "codename iPhone9,4")
+ */
 - (NSString*) deviceName
 {
     struct utsname systemInfo;
@@ -73,22 +79,10 @@
     NSString* deviceName = [deviceNamesByCode objectForKey:code];
     
     if (!deviceName) {
-        // Not found on database. At least guess main device type from string contents:
-        
-        if ([code rangeOfString:@"iPod"].location != NSNotFound) {
-            deviceName = @"iPod Touch";
-        }
-        else if([code rangeOfString:@"iPad"].location != NSNotFound) {
-            deviceName = @"iPad";
-        }
-        else if([code rangeOfString:@"iPhone"].location != NSNotFound){
-            deviceName = @"iPhone";
-        }
-        else {
-            deviceName = @"Unknown";
-        }
+        // Not found on database. At least get device code name. It may be helpful when a new iPhone will be released
+        deviceName = [NSString stringWithFormat:@"codename %@", code];
     }
-    
+
     return deviceName;
 }
 
