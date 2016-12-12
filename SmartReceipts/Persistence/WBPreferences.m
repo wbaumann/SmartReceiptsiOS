@@ -58,6 +58,7 @@ static NSString *const BOOL_TRACK_COST_CENTER = @"trackcostcenter";
 
 static NSString *const FLOAT_DEFAULT_TAX_PERCENTAGE = @"TaxPercentage";
 static NSString *const BOOL_ENTERED_PRICE_PRE_TAX = @"PreTax";
+static NSString *const BOOL_ASSUME_FULL_PAGE = @"AssumeFullPage";
 static NSString *const BOOL_SHOW_RECEIPT_ID = @"ShowReceiptID";
 static NSString *const BOOL_PHOTO_PRINT_ID_INSTEAD_OF_INDEX = @"PrintByIDPhotoKey";
 static NSString *const BOOL_PRINT_COMMENT_BY_PHOTO = @"PrintCommentByPhoto";
@@ -128,6 +129,7 @@ static NSDictionary *getEntryTypes() {
 
             FLOAT_DEFAULT_TAX_PERCENTAGE: tFloat,
             BOOL_ENTERED_PRICE_PRE_TAX: tBool,
+            BOOL_ASSUME_FULL_PAGE: tBool,
 
             BOOL_SHOW_RECEIPT_ID: tBool,
 
@@ -193,6 +195,7 @@ static NSDictionary *getDefaultValues() {
             BOOL_TRACK_COST_CENTER : @NO,
 
             BOOL_ENTERED_PRICE_PRE_TAX: @YES,
+            BOOL_ASSUME_FULL_PAGE: @NO,
 
             BOOL_SHOW_RECEIPT_ID: @NO,
 
@@ -634,6 +637,14 @@ static NSUserDefaults* instance() {
     
     GDataXMLDocument *document = [[GDataXMLDocument alloc] initWithRootElement:root];
     return [[NSString alloc] initWithData:document.XMLData encoding:NSUTF8StringEncoding];
+}
+
++ (BOOL)assumeFullPage {
+    return [instance() boolForKey:BOOL_ASSUME_FULL_PAGE];
+}
+
++ (void)setAssumeFullPage:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_ASSUME_FULL_PAGE];
 }
 
 @end

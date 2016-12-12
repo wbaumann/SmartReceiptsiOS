@@ -71,3 +71,9 @@ extern NSString *const SRNoData;
 typedef void (^ActionBlock)();
 
 void SRDelayedExecution(NSTimeInterval seconds, ActionBlock action);
+
+#pragma mark - Feedback constants
+
+extern NSString *const FeedbackEmailAddress;
+extern NSString *const FeedbackEmailSubject;
+extern NSString *const FeedbackBugreportEmailSubject;
