@@ -68,6 +68,8 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
                 [stream writeData:UIImageJPEGRepresentation(img, 0.85)];
                 [stream finishedWriting];
             } @catch (NSException* e) {
+                ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithException:e];
+                [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
                 return NO;
             }
         }
@@ -76,6 +78,8 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
     @try {
         [zipFile close];
     } @catch (NSException* e) {
+        ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithException:e];
+        [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
         return NO;
     }
     

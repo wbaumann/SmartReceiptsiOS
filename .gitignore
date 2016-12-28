@@ -32,3 +32,4 @@ SmartReceipts/GADConstants.m
 SmartReceipts/GoogleService-Info.plist 
 .DS_store
 SmartReceipts/Secrets.swift
+SmartReceipts/ServiceAccount.json

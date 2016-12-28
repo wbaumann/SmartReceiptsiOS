@@ -34,6 +34,8 @@ public extension CurrencyExchangeServiceHandler {
         
         let dateToUse = (date as NSDate).earlierDate(Date())
         
+        AnalyticsManager.sharedManager.record(event: Event.Receipts.RequestExchangeRate)
+        
         OpenExchangeRates.sharedInstance.exchangeRate(base, target: target, onDate: dateToUse, forceRefresh: forceRefresh) {
             rate, error in
             
@@ -42,15 +44,18 @@ public extension CurrencyExchangeServiceHandler {
             }
             
             guard let rate = rate else {
+                AnalyticsManager.sharedManager.record(event: Event.Receipts.RequestExchangeRateFailed)
                 completion(.retrieveError, nil)
                 return
             }
             
             if rate.compare(NSDecimalNumber.minusOne()) == .orderedSame {
+                AnalyticsManager.sharedManager.record(event: Event.Receipts.RequestExchangeRateFailedWithNull)
                 completion(.unsupportedCurrency, nil)
                 return
             }
             
+            AnalyticsManager.sharedManager.record(event: Event.Receipts.RequestExchangeRateSuccess)
             completion(.success, rate)
         }
     }

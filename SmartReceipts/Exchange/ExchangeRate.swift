@@ -39,6 +39,8 @@ struct ExchangeRate {
         do {
             return try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject]
         } catch let error as NSError {
+            let errorEvent = ErrorEvent(error: error)
+            AnalyticsManager.sharedManager.record(event: errorEvent)
             Log.debug("JSON parse error \(error)")
             return nil
         }

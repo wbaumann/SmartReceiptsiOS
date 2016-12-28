@@ -49,6 +49,8 @@
     self.labelPdfReport.text = NSLocalizedString(@"generate.report.option.pdf.no.table", nil);
     self.labelCsvFile.text = NSLocalizedString(@"generate.report.option.csv", nil);
     self.labelZipImages.text = NSLocalizedString(@"generate.report.option.zip.stamped", nil);
+    
+    [self trackConfigureReportevent];
 }
 
 - (NSArray *)splitValueFrom:(NSString *)joined {

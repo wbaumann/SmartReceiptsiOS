@@ -14,6 +14,7 @@
 #import "WBFileManager.h"
 #import "ImagePicker.h"
 #import "PendingHUDView.h"
+#import "SmartReceipts-Swift.h"
 
 @interface WBImageViewController ()
 {
@@ -89,14 +90,17 @@
 }
 
 - (IBAction)actionRotateCcw:(id)sender {
+    [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptImageViewRotateCcw]];
     [self rotateToOrientation:UIImageOrientationLeft];
 }
 
 - (IBAction)actionRotateCw:(id)sender {
+    [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptImageViewRotateCw]];
     [self rotateToOrientation:UIImageOrientationRight];
 }
 
 - (IBAction)actionCamera:(id)sender {
+    [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptImageViewRetakePhoto]];
     [[ImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *picked) {
         if (!picked) {
             return;

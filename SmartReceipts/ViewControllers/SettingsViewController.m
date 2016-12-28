@@ -563,6 +563,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     [self populateValues];
     [self setHasBeenShown:YES];
+    
+    [self analyticsSettingsOverflow];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -579,6 +581,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 }
 
 - (void)actionExport {
+    // record analytics event:
+    [self analyticsBackupOverflow];
+    
     void (^exportActionBlock)() = ^{
         PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -676,6 +681,11 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
             }
         }
     } failure:^(NSError *error) {
+        ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithError:error
+                                                              file:NSStringFromClass([self class])
+                                                          function:NSStringFromSelector(_cmd)
+                                                              line:__LINE__];
+        [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
         [self setHadPriceRetrieveError:YES];
         [self updatePurchaseStatus];
     }];
@@ -691,9 +701,17 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
     } failure:^(NSError *error) {
         [hud hide];
-
+        
         if (error.code == SKErrorPaymentCancelled && [error.domain isEqualToString:SKErrorDomain]) {
+            // was cancelled by the user
             return;
+        } else {
+            // Unknown error:
+            ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithError:error
+                                                                  file:NSStringFromClass([self class])
+                                                              function:NSStringFromSelector(_cmd)
+                                                                  line:__LINE__];
+            [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
         }
 
         [self showAlertWithTitle:NSLocalizedString(@"settings.purchase.restore.error.title", nil)
@@ -702,17 +720,32 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 }
 
 - (void)makePurchase:(SKProduct *)product {
+    // record analytics event:
+    [self analyticsSmartReceiptsPlusOverflow];
+    
     PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
     [[RMStore defaultStore] addPayment:product.productIdentifier success:^(SKPaymentTransaction *transaction) {
         [hud hide];
+        [self analyticsPurchaseSuccessWithProductID:transaction.payment.productIdentifier];
         [self updatePurchaseStatus];
         [self.pdfFooterCell.entryField setEnabled:[[Database sharedInstance] hasValidSubscription]];
         [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
     } failure:^(SKPaymentTransaction *transaction, NSError *error) {
         [hud hide];
+        
         if (error.code == SKErrorPaymentCancelled && [error.domain isEqualToString:SKErrorDomain]) {
+            // Payment was cancelled by the user
             return;
+        } else {
+            // Unknown error:
+            ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithError:error
+                                                                  file:NSStringFromClass([self class])
+                                                              function:NSStringFromSelector(_cmd)
+                                                                  line:__LINE__];
+            [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
         }
+        
+        [self analyticsPurchaseFailedWithProductID:transaction.payment.productIdentifier];
 
         [self showAlertWithTitle:NSLocalizedString(@"settings.purchase.make.purchase.error.title", nil)
                          message:error.localizedDescription];

@@ -11,6 +11,9 @@ import MessageUI
 
 extension WBGenerateViewController: QuickAlertPresenter {
     func generate() {
+        
+        self.trackGeneratorEvents()
+        
         let hud = PendingHUDView.showHUD(on: self.navigationController!.view)
         delayedExecution(0.3) {
             self.generator = ReportAssetsGenerator(trip: self.trip)
@@ -127,5 +130,29 @@ extension WBGenerateViewController {
             }
         }
         present(controller, animated: true, completion: nil)
+    }
+}
+
+// MARK: - Analytics
+
+extension WBGenerateViewController {
+    
+    func trackConfigureReportevent() {
+        AnalyticsManager.sharedManager.record(event: Event.Informational.ConfigureReport)
+    }
+    
+    func trackGeneratorEvents() {
+        if fullPdfReportField.isOn {
+            AnalyticsManager.sharedManager.record(event: Event.Generate.FullPdfReport)
+        }
+        if pdfImagesField.isOn {
+            AnalyticsManager.sharedManager.record(event: Event.Generate.ImagesPdfReport)
+        }
+        if csvFileField.isOn {
+            AnalyticsManager.sharedManager.record(event: Event.Generate.CsvReport)
+        }
+        if zipImagesField.isOn {
+            AnalyticsManager.sharedManager.record(event: Event.Generate.StampedZipReport)
+        }
     }
 }

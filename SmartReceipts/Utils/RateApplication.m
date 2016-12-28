@@ -10,6 +10,7 @@
 #import "RateApplication.h"
 #import "Constants.h"
 #import "NSDate+Calculations.h"
+#import "SmartReceipts-Swift.h"
 
 static NSString *const SRRateAppCrashMarkerKey = @"SRRateAppCrashMarkerKey";
 static NSString *const SRRateAppAppLaunchCountKey = @"SRRateAppAppLaunchCountKey";
@@ -74,9 +75,12 @@ static NSString *const SRRateAppRatePressedKey = @"SRRateAppRatePressedKey";
 - (void)showAlertDialog {
     RIButtonItem *negativeItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"rate.app.alert.negative.button", nil) action:^{
         [self markNoPressed];
+        [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedNever]];
     }];
     RIButtonItem *positiveItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"rate.app.alert.positive.button", nil) action:^{
         [self markRatePressed];
+        
+        [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedRate]];
 
         NSString *templateReviewURL = @"itms-apps://itunes.apple.com/app/idAPP_ID";
         NSString *reviewURL = [templateReviewURL stringByReplacingOccurrencesOfString:@"APP_ID" withString:SmartReceiptAppStoreId];
@@ -84,11 +88,14 @@ static NSString *const SRRateAppRatePressedKey = @"SRRateAppRatePressedKey";
     }];
     RIButtonItem *neutralItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"rate.app.alert.neutral.button", nil) action:^{
         [self rateLater];
+        [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedLater]];
     }];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"rate.app.alert.title", nil)
                                                         message:NSLocalizedString(@"rate.app.alert.message", nil)
                                                cancelButtonItem:negativeItem otherButtonItems:positiveItem, neutralItem, nil];
     [alertView show];
+    
+    [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsRatingPromptShown]];
 }
 
 - (void)markAppCrash {

@@ -15,6 +15,8 @@
 #import "WBAppDelegate.h"
 #import "ImagePicker.h"
 
+#import "SmartReceipts-Swift.h"
+
 @interface WBReceiptActionsViewController ()
 
 @property UIDocumentInteractionController *documentInteractionController;
@@ -159,6 +161,8 @@
     switch (index) {
         case 0:
             // attach / replace pdf or image
+            [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsImportPictureReceipt]];
+            
             [self.receiptsViewController attachPdfOrImageFile:[self filePathToAttach] toReceipt:self.receipt];
             [[WBAppDelegate instance] freeFilePathToAttach];
             [self dismissViewControllerAnimated:YES completion:nil];
@@ -168,8 +172,11 @@
             // view receipt image
             
             if (_imgType == 1) { // image
+                
+                [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptMenuViewImage]];
                 [self performSegueWithIdentifier: @"Image" sender: self];
             } else { // pdf
+                [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptMenuViewPdf]];
                 [self dismissViewControllerAnimated:YES completion:^{
                     [self showDocumentImage];
                 }];
@@ -179,23 +186,28 @@
         }
         case 2: {
             // take / replace receipt image
+            [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptMenuRetakePhoto]];
             [self takePhoto];
             break;
         }
         case 3:
+            [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptMenuMoveCopy]];
             [self performSegueWithIdentifier: @"Move" sender: self];
             break;
             
         case 4:
+            [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptMenuMoveCopy]];
             [self performSegueWithIdentifier: @"Copy" sender: self];
             break;
             
         case 5:
+            [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptMenuSwapUp]];
             [self.receiptsViewController swapUpReceipt:self.receipt];
             [self dismissViewControllerAnimated:YES completion:nil];
             break;
             
         case 6:
+            [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptMenuSwapDown]];
             [self.receiptsViewController swapDownReceipt:self.receipt];
             [self dismissViewControllerAnimated:YES completion:nil];
             break;

@@ -46,6 +46,8 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
 @implementation WBReceiptsViewController
 
+#pragma mark - VC lifecycle
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -80,6 +82,8 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUpdated:) name:DatabaseDidUpdateModelNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsSaved) name:SmartReceiptsSettingsSavedNotification object:nil];
 }
+
+#pragma mark -
 
 - (void)tripUpdated:(NSNotification *)notification {
     WBTrip *trip = notification.object;
@@ -156,6 +160,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 }
 
 - (void)deleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+    [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptMenuDelete]];
     [[Database sharedInstance] deleteReceipt:object];
 }
 
@@ -239,18 +244,31 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"ReceiptActions"]) {
+        // view receipt
         WBReceiptActionsViewController *vc = (WBReceiptActionsViewController *) [[segue destinationViewController] topViewController];
         vc.receiptsViewController = self;
         vc.receipt = self.tapped;
     } else if ([[segue identifier] isEqualToString:@"ReceiptCreator"]) {
+        // Edit or create receipt
         EditReceiptViewController *vc = (EditReceiptViewController *) [[segue destinationViewController] topViewController];
 
         vc.receiptsViewController = self;
 
         WBReceipt *receipt = nil;
         if (self.tapped) {
+            // Edit receipt action
+            [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptMenuEdit]];
             receipt = self.tapped;
         } else {
+            
+            if (_imageForCreatorSegue) {
+                // image exists, so user is trying AddPictureReceipt
+                [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsAddPictureReceipt]];
+            } else {
+                // no image, means user creates a text receipt
+                [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsAddPictureReceipt]];
+            }
+            
             [vc setReceiptImage:_imageForCreatorSegue];
             receipt = _receiptForCretorSegue;
             _imageForCreatorSegue = nil;

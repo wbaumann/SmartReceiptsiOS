@@ -1,18 +1,25 @@
 PODS:
-  - CMPopTipView (2.3.0)
-  - FirebaseAnalytics (3.4.4):
+  - FirebaseAnalytics (3.6.0):
     - FirebaseCore (~> 3.4)
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleSymbolUtilities (~> 1.1)
-  - FirebaseCore (3.4.3):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (3.4.6):
     - GoogleInterchangeUtilities (~> 1.2)
-    - GoogleUtilities (~> 1.2)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCrash (1.1.4):
+    - FirebaseAnalytics (~> 3.5)
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleSymbolUtilities (~> 1.1)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseInstanceID (1.0.8)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - Google-Mobile-Ads-SDK (7.15.0)
+  - Google-Mobile-Ads-SDK (7.16.0)
   - Google/Analytics (3.0.3):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
@@ -22,9 +29,11 @@ PODS:
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleSymbolUtilities (1.1.2)
-  - GoogleUtilities (1.3.2):
-    - GoogleSymbolUtilities (~> 1.1)
-  - HTAutocompleteTextField (1.3.2)
+  - GoogleToolboxForMac/Defines (2.1.0)
+  - GoogleToolboxForMac/Logger (2.1.0):
+    - GoogleToolboxForMac/Defines (= 2.1.0)
+  - GoogleToolboxForMac/NSData+zlib (2.1.0):
+    - GoogleToolboxForMac/Defines (= 2.1.0)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -68,11 +77,11 @@ PODS:
   - UIAlertView-Blocks (1.0)
 
 DEPENDENCIES:
-  - CMPopTipView (= 2.3.0)
+  - FirebaseAnalytics (~> 3.6)
+  - FirebaseCrash (~> 1.1)
   - FMDB (= 2.6.2)
   - Google-Mobile-Ads-SDK
   - Google/Analytics
-  - HTAutocompleteTextField (= 1.3.2)
   - MRProgress (= 0.8.3)
   - objective-zip (= 1.0.2)
   - RMStore/AppReceiptVerificator (from `3rdparty/RMStore`)
@@ -87,18 +96,17 @@ EXTERNAL SOURCES:
     :path: 3rdparty/RMStore
 
 SPEC CHECKSUMS:
-  CMPopTipView: 774e0230b5c73abb3c39051da6d8a383373c4f7f
-  FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
-  FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
+  FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
+  FirebaseCore: 03da1cb32615569bbc2830a22f9ad753d9a02ef5
+  FirebaseCrash: 34f0349908ec87945a5ae96c402e7201a3f3aede
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
-  Google-Mobile-Ads-SDK: 75d41dfcf06f7666ab211573d212768b0f766c5d
+  Google-Mobile-Ads-SDK: 92dff0e9ce1cfdfe640d9d80ab86d5e4371e478f
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
-  GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
-  HTAutocompleteTextField: ce809f04875e843e20f214ab973bb496ba7a93b1
+  GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   objective-zip: b78d235d234546105e118d35ae24a69feba08d44
   OpenSSL-iOS: 002cabfdfc2df48d63cebd723b90ada86c946316
@@ -107,6 +115,6 @@ SPEC CHECKSUMS:
   Tweaks: 524fa47636cce3bf3a4d9156e980f10ae9480e81
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
 
-PODFILE CHECKSUM: 2cc98d52e8f7ead29a6d945ad79abc7a67e47f3c
+PODFILE CHECKSUM: 435be9d19d719c6ad16768682d00badc40a5b637
 
 COCOAPODS: 1.1.1

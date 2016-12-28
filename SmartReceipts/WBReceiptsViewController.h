@@ -10,7 +10,6 @@
 #import "EditReceiptViewController.h"
 #import "FetchedCollectionTableViewController.h"
 
-
 @interface WBReceiptsViewController : FetchedCollectionTableViewController
 
 @property (nonatomic, strong) WBTrip *trip;
