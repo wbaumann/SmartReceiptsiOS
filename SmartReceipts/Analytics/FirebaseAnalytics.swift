@@ -14,7 +14,11 @@ import FirebaseCrash
 class FirebaseAnalytics: AnalyticsServiceProtocol {
     
     init() {
-        FIRApp.configure()
+        // Configure Firebase
+        // May conflict with Google services, here is a solution:
+        if FIRApp.defaultApp() == nil {
+            FIRApp.configure()
+        }
     }
     
     func record(event: Event) {
