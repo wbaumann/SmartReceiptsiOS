@@ -166,8 +166,13 @@ NSString *const SREditDistanceDateCacheKey = @"SREditDistanceDateCacheKey";
     }
 
     if (!self.distance) {
+        // We're inserting a new one
+        [[AnalyticsManager sharedManager] recordWithEvent:[Event distancePersistNewDistance]];
         self.distance = [[Distance alloc] init];
         [self.distance setTrip:self.trip];
+    } else {
+        // We're updating
+        [[AnalyticsManager sharedManager] recordWithEvent:[Event distancePersistUpdateDistance]];
     }
 
     NSDecimalNumber *distance = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.distanceCell.value];

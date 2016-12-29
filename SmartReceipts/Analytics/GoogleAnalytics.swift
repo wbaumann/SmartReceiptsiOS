@@ -9,25 +9,41 @@
 import Foundation
 import Google
 
-class GoogleAnalytics: AnalyticsService {
+/// GA implementation adopted to our custom Analytics service
+class GoogleAnalytics: AnalyticsServiceProtocol {
     
-    fileprivate let gai: GAI
+    private var gai: GAI?
     
     init() {
-        var configureError: NSError?
+        // Configure tracker from GoogleService-Info.plist.
+        var configureError:NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
-        self.gai = GAI.sharedInstance()
-        self.gai.trackUncaughtExceptions = false
-        self.gai.logger.logLevel = .warning
-        
-        let event = GAIDictionaryBuilder.createEvent(withCategory: "Overall", action: "AppLaunch", label: nil, value: nil).build() as NSDictionary as? [AnyHashable: Any] ?? [:]
-        
-        self.gai.defaultTracker.send(event)
+        // Optional: configure GAI options.
+        gai = GAI.sharedInstance()
+        gai?.trackUncaughtExceptions = false
+        gai?.logger.logLevel = GAILogLevel.warning
     }
     
-    func sendEvent(_ event: Event) {
-        assert(true == false, "We don't support actual events yet");
+    func record(event: Event) {
+        var gaiEvent: NSMutableDictionary
+        let datapointLabelString = event.datapointsToFormattedString()
+        
+        if event is ErrorEvent {
+            if (event as! ErrorEvent).isException {
+                // Track as exception
+                gaiEvent = GAIDictionaryBuilder.createException(withDescription: datapointLabelString, withFatal: 0).build()
+            } else {
+                // Track as Error
+                gaiEvent = GAIDictionaryBuilder.createEvent(withCategory: event.category.rawValue, action: event.name, label: datapointLabelString, value: nil).build()
+            }
+        } else {
+            // A regular event
+            gaiEvent = GAIDictionaryBuilder.createEvent(withCategory: event.category.rawValue, action: event.name, label: datapointLabelString, value: nil).build()
+        }
+        
+        gai?.defaultTracker.send(gaiEvent as NSDictionary as? [AnyHashable: Any] ?? [:])
     }
+    
 }

@@ -10,6 +10,7 @@
 #import "WBReceipt.h"
 #import "WBTrip.h"
 #import "Constants.h"
+#import <SmartReceipts-Swift.h>
 
 @interface ReceiptFilesManager ()
 
@@ -33,6 +34,11 @@
     NSError *writeError = nil;
     [imageData writeToFile:path options:NSDataWritingAtomic error:&writeError];
     if (writeError) {
+        ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithError:writeError
+                                                              file:NSStringFromClass([self class])
+                                                          function:NSStringFromSelector(_cmd)
+                                                              line:__LINE__];
+        [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
         SRLog(@"Save image to %@ failed. Error:%@", path, writeError);
         return NO;
     }
@@ -52,6 +58,11 @@
     NSError *copyError = nil;
     [[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:destinationPath error:&copyError];
     if (copyError) {
+        ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithError:copyError
+                                                              file:NSStringFromClass([self class])
+                                                          function:NSStringFromSelector(_cmd)
+                                                              line:__LINE__];
+        [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
         SRLog(@"Copy from %@ to %@ failed. Error:%@", sourcePath, destinationPath, copyError);
         return NO;
     }
@@ -72,6 +83,11 @@
     SRLog(@"Move %@ to %@", sourcePath, destinationPath);
     [[NSFileManager defaultManager] moveItemAtPath:sourcePath toPath:destinationPath error:&moveError];
     if (moveError) {
+        ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithError:moveError
+                                                              file:NSStringFromClass([self class])
+                                                          function:NSStringFromSelector(_cmd)
+                                                              line:__LINE__];
+        [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
         SRLog(@"Move from %@ to %@ failed. Error:%@", sourcePath, destinationPath, moveError);
         return NO;
     }
@@ -88,6 +104,11 @@
     NSError *deleteError = nil;
     [[NSFileManager defaultManager] removeItemAtPath:path error:&deleteError];
     if (deleteError) {
+        ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithError:deleteError
+                                                              file:NSStringFromClass([self class])
+                                                          function:NSStringFromSelector(_cmd)
+                                                              line:__LINE__];
+        [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
         SRLog(@"Failet to delete file:%@", deleteError);
         return NO;
     }
@@ -125,6 +146,11 @@
     NSError *createFolderError = nil;
     [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:&createFolderError];
     if (createFolderError) {
+        ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithError:createFolderError
+                                                              file:NSStringFromClass([self class])
+                                                          function:NSStringFromSelector(_cmd)
+                                                              line:__LINE__];
+        [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
         SRLog(@"ensureContainingFolderExists:%@", createFolderError);
     }
 }
@@ -134,6 +160,11 @@
     NSError *deleteError = nil;
     [[NSFileManager defaultManager] removeItemAtPath:path error:&deleteError];
     if (deleteError) {
+        ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithError:deleteError
+                                                              file:NSStringFromClass([self class])
+                                                          function:NSStringFromSelector(_cmd)
+                                                              line:__LINE__];
+        [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
         SRLog(@"deleteFolderForTrip failed:%@", deleteError);
     }
 }
@@ -144,6 +175,11 @@
     NSError *moveError = nil;
     [[NSFileManager defaultManager] moveItemAtPath:originalPath toPath:destinationPath error:&moveError];
     if (moveError) {
+        ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithError:moveError
+                                                              file:NSStringFromClass([self class])
+                                                          function:NSStringFromSelector(_cmd)
+                                                              line:__LINE__];
+        [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
         SRLog(@"renameFolderForTrip error:%@", moveError);
     }
 }

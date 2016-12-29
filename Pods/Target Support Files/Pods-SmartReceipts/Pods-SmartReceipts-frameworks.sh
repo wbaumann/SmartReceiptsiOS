@@ -84,9 +84,8 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/CMPopTipView/CMPopTipView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FMDB/FMDB.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/HTAutocompleteTextField/HTAutocompleteTextField.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MRProgress/MRProgress.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RMStore/RMStore.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Tweaks/Tweaks.framework"
@@ -94,9 +93,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/objective-zip/objective_zip.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/CMPopTipView/CMPopTipView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FMDB/FMDB.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/HTAutocompleteTextField/HTAutocompleteTextField.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MRProgress/MRProgress.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RMStore/RMStore.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Tweaks/Tweaks.framework"

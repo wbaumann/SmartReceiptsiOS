@@ -188,7 +188,12 @@
     }
 
     if (!self.trip) {
+        // We're inserting a new Trip
+        [[AnalyticsManager sharedManager] recordWithEvent:[Event reportsPersistNewReport]];
         self.trip = [[WBTrip alloc] init];
+    } else {
+        // We're updating the current Trip
+        [[AnalyticsManager sharedManager] recordWithEvent:[Event reportsPersistUpdateReport]];
     }
 
     [self.trip setName:name];

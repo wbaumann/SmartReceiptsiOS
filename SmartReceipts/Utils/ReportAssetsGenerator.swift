@@ -101,6 +101,8 @@ class ReportAssetsGenerator: NSObject {
         do {
             try FileManager.default.removeItem(atPath: path)
         } catch let error as NSError {
+            let errorEvent = ErrorEvent(error: error)
+            AnalyticsManager.sharedManager.record(event: errorEvent)
             Log.error("Remove file error \(error)")
         }
     }

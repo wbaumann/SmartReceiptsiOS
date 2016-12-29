@@ -17,4 +17,39 @@ extension SettingsViewController {
         controller.presentOptionsMenu(from: showRect, in: view, animated: true)
         documentInteractionController = controller
     }
+    
+    // MARK: - Analytics methods:
+    
+    // MARK: navigation
+    
+    func analyticsSettingsOverflow() {
+        AnalyticsManager.sharedManager.record(event: Event.Navigation.SettingsOverflow)
+    }
+    
+    func analyticsBackupOverflow() {
+        AnalyticsManager.sharedManager.record(event: Event.Navigation.BackupOverflow)
+    }
+    
+    func analyticsSmartReceiptsPlusOverflow() {
+        AnalyticsManager.sharedManager.record(event: Event.Navigation.SmartReceiptsPlusOverflow)
+    }
+    
+    // MARK: IAP
+    
+    func analyticsPurchaseSuccess(productID: String) {
+        let anEvent =  Event.Purchases.PurchaseSuccess
+        anEvent.dataPoints.append(DataPoint(name: "sku", value: productID))
+        AnalyticsManager.sharedManager.record(event: anEvent)
+    }
+    
+    func analyticsPurchaseFailed(productID: String) {
+        let anEvent =  Event.Purchases.PurchaseSuccess
+        anEvent.dataPoints.append(DataPoint(name: "sku", value: productID))
+        AnalyticsManager.sharedManager.record(event: anEvent)
+    }
+    
+    func analyticsShowPurchaseIntent() {
+        AnalyticsManager.sharedManager.record(event: Event.Purchases.ShowPurchaseIntent)
+    }
+    
 }

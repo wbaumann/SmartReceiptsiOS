@@ -95,7 +95,6 @@
 #if DEBUG
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tweakUIDismissed) name:FBTweakShakeViewControllerDidDismissNotification object:nil];
 #endif
-
     
     return YES;
 }

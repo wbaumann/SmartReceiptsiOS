@@ -386,8 +386,13 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     NSDecimalNumber *taxAmount = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.taxCell.value];
 
     if (!self.receipt) {
+        // create new receipt
+        [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsPersistNewReceipt]];
         self.receipt = [[WBReceipt alloc] init];
         [self.receipt setTrip:self.trip];
+    } else {
+        // update existing receipt
+        [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsPersistUpdateReceipt]];
     }
 
     NSString *currencyCode = [self.currencyCell value];
