@@ -60,7 +60,7 @@
     if (textField == _field) {
         // generate hints
         NSString *resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        NSLog(@"%@", resultString);
+        
         NSArray *hints = [self getHintsForPrefix:resultString];
         
         // show suggestions

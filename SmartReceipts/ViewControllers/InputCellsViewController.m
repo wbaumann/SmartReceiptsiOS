@@ -57,7 +57,7 @@
 
 - (void)addInlinedPickerCell:(UITableViewCell *)cell forCell:(UITableViewCell *)forCell {
     NSIndexPath *indexPath = [self indexPathForCell:forCell];
-    SRAssert(indexPath);
+    WBAssertLoggable(indexPath);
 
     if (!self.inlinedPickers) {
         [self setInlinedPickers:[NSMutableDictionary dictionary]];
@@ -185,7 +185,7 @@
 }
 
 - (void)tappedCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    SRLog(@"tappedCell:atIndexPath:%@", indexPath);
+    LOGGER_DEBUG(@"tappedCell:atIndexPath:%@", indexPath);
 }
 
 - (UITableViewCell *)cellAtIndexPath:(NSIndexPath *)indexPath {

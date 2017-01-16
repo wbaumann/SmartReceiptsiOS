@@ -103,7 +103,7 @@ class ReportAssetsGenerator: NSObject {
         } catch let error as NSError {
             let errorEvent = ErrorEvent(error: error)
             AnalyticsManager.sharedManager.record(event: errorEvent)
-            Log.error("Remove file error \(error)")
+            Logger.error("Remove file error \(error)")
         }
     }
 }

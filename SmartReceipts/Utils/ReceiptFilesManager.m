@@ -39,7 +39,7 @@
                                                           function:NSStringFromSelector(_cmd)
                                                               line:__LINE__];
         [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
-        SRLog(@"Save image to %@ failed. Error:%@", path, writeError);
+        LOGGER_ERROR(@"Save image to %@ failed. Error:%@", path, writeError);
         return NO;
     }
 
@@ -47,7 +47,7 @@
 }
 
 - (BOOL)copyFileForReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip {
-    SRLog(@"copyFileForReceipt:%@", receipt);
+    LOGGER_DEBUG(@"copyFileForReceipt:%@", receipt);
     if (![self fileExistsForReceipt:receipt]) {
         return YES;
     }
@@ -63,7 +63,7 @@
                                                           function:NSStringFromSelector(_cmd)
                                                               line:__LINE__];
         [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
-        SRLog(@"Copy from %@ to %@ failed. Error:%@", sourcePath, destinationPath, copyError);
+        LOGGER_ERROR(@"Copy from %@ to %@ failed. Error:%@", sourcePath, destinationPath, copyError);
         return NO;
     }
 
@@ -71,7 +71,7 @@
 }
 
 - (BOOL)moveFileForReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip {
-    SRLog(@"moveFileForReceipt:%@", receipt);
+    LOGGER_DEBUG(@"moveFileForReceipt:%@", receipt);
     if (![self fileExistsForReceipt:receipt]) {
         return YES;
     }
@@ -80,7 +80,7 @@
     NSString *destinationPath = [self pathForReceiptFile:receipt withTrip:trip];
     [self ensureContainingFolderExists:destinationPath];
     NSError *moveError = nil;
-    SRLog(@"Move %@ to %@", sourcePath, destinationPath);
+    LOGGER_DEBUG(@"Move %@ to %@", sourcePath, destinationPath);
     [[NSFileManager defaultManager] moveItemAtPath:sourcePath toPath:destinationPath error:&moveError];
     if (moveError) {
         ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithError:moveError
@@ -88,7 +88,7 @@
                                                           function:NSStringFromSelector(_cmd)
                                                               line:__LINE__];
         [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
-        SRLog(@"Move from %@ to %@ failed. Error:%@", sourcePath, destinationPath, moveError);
+        LOGGER_ERROR(@"Move from %@ to %@ failed. Error:%@", sourcePath, destinationPath, moveError);
         return NO;
     }
 
@@ -99,7 +99,7 @@
     if (![self fileExistsForReceipt:receipt]) {
         return YES;
     }
-
+    
     NSString *path = [self pathForReceiptFile:receipt];
     NSError *deleteError = nil;
     [[NSFileManager defaultManager] removeItemAtPath:path error:&deleteError];
@@ -109,7 +109,7 @@
                                                           function:NSStringFromSelector(_cmd)
                                                               line:__LINE__];
         [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
-        SRLog(@"Failet to delete file:%@", deleteError);
+        LOGGER_ERROR(@"Failet to delete file:%@", deleteError);
         return NO;
     }
 
@@ -140,9 +140,9 @@
 }
 
 - (void)ensureContainingFolderExists:(NSString *)filePath {
-    SRLog(@"Ensure folder for path:%@", filePath);
+    LOGGER_DEBUG(@"Ensure folder for path:%@", filePath);
     NSString *folderPath = [filePath substringToIndex:filePath.length - [filePath lastPathComponent].length];
-    SRLog(@"Folder path:%@", folderPath);
+    LOGGER_DEBUG(@"Folder path:%@", folderPath);
     NSError *createFolderError = nil;
     [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:&createFolderError];
     if (createFolderError) {
@@ -151,7 +151,7 @@
                                                           function:NSStringFromSelector(_cmd)
                                                               line:__LINE__];
         [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
-        SRLog(@"ensureContainingFolderExists:%@", createFolderError);
+        LOGGER_ERROR(@"ensureContainingFolderExists:%@", createFolderError);
     }
 }
 
@@ -165,7 +165,7 @@
                                                           function:NSStringFromSelector(_cmd)
                                                               line:__LINE__];
         [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
-        SRLog(@"deleteFolderForTrip failed:%@", deleteError);
+        LOGGER_ERROR(@"deleteFolderForTrip failed:%@", deleteError);
     }
 }
 
@@ -180,7 +180,7 @@
                                                           function:NSStringFromSelector(_cmd)
                                                               line:__LINE__];
         [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
-        SRLog(@"renameFolderForTrip error:%@", moveError);
+        LOGGER_ERROR(@"renameFolderForTrip error:%@", moveError);
     }
 }
 

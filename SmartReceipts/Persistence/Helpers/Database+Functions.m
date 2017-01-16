@@ -20,7 +20,7 @@
 @implementation Database (Functions)
 
 - (BOOL)executeUpdate:(NSString *)sqlStatement {
-    SRLog(@"executeUpdate(%@)", sqlStatement);
+    LOGGER_DEBUG(@"executeUpdate(%@)", sqlStatement);
 
     __block BOOL result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
@@ -51,9 +51,9 @@
     __block NSUInteger result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         NSString *countQuery = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@", tableName];
-        SRLog(@"Execute query:'%@'", countQuery);
+        LOGGER_DEBUG(@"Execute query:'%@'", countQuery);
         result = (NSUInteger) [db intForQuery:countQuery];
-        SRLog(@"Result:%tu", result);
+        LOGGER_DEBUG(@"Result:%tu", result);
     }];
     return result;
 }
@@ -70,8 +70,8 @@
     NSString *statement = [query buildStatement];
     NSDictionary *parameters = [query parameters];
 
-    SRLog(@"Execute update: '%@'", statement);
-    SRLog(@"With parameters: %@", parameters);
+    LOGGER_DEBUG(@"Execute update: '%@'", statement);
+    LOGGER_DEBUG(@"With parameters: %@", parameters);
 
     return [database executeUpdate:statement withParameterDictionary:parameters];
 }
@@ -89,8 +89,8 @@
     NSString *statement = [query buildStatement];
     NSDictionary *parameters = [query parameters];
 
-    SRLog(@"Execute query: '%@'", statement);
-    SRLog(@"With parameters: %@", parameters);
+    LOGGER_DEBUG(@"Execute query: '%@'", statement);
+    LOGGER_DEBUG(@"With parameters: %@", parameters);
 
     NSDecimalNumber *result = [NSDecimalNumber zero];
     FMResultSet *resultSet = [db executeQuery:statement withParameterDictionary:parameters];
@@ -105,13 +105,13 @@
 }
 
 - (id <FetchedModel>)executeFetchFor:(Class)fetchedClass withQuery:(DatabaseQueryBuilder *)query {
-    SRLog(@"executeFetchFor: %@", NSStringFromClass(fetchedClass));
+    LOGGER_DEBUG(@"executeFetchFor: %@", NSStringFromClass(fetchedClass));
 
     NSString *statement = query.buildStatement;
     NSDictionary *parameters = query.parameters;
 
-    SRLog(@"Query: '%@'", statement);
-    SRLog(@"Parameters: %@", parameters);
+    LOGGER_DEBUG(@"Query: '%@'", statement);
+    LOGGER_DEBUG(@"Parameters: %@", parameters);
     __block id <FetchedModel> result = nil;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         FMResultSet *resultSet = [db executeQuery:statement withParameterDictionary:parameters];
@@ -146,8 +146,8 @@
     NSString *statement = [query buildStatement];
     NSDictionary *parameters = [query parameters];
 
-    SRLog(@"Execute query: '%@'", statement);
-    SRLog(@"With parameters: %@", parameters);
+    LOGGER_DEBUG(@"Execute query: '%@'", statement);
+    LOGGER_DEBUG(@"With parameters: %@", parameters);
 
     TICK;
 
@@ -158,8 +158,8 @@
         result = [resultSet doubleForColumnIndex:0];
         [resultSet close];
     }
-
-    TOCK(@"Seconds query time");
+    
+    LOGGER_DEBUG(@"Seconds query time %@", TOCK);
 
     return result;
 }

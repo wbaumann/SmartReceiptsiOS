@@ -75,9 +75,9 @@ extension WBGenerateViewController: MFMailComposeViewControllerDelegate, UINavig
         composer.setBccRecipients(split(WBPreferences.defaultEmailBCC()))
 
         for file in files {
-            Log.debug("Attach \(file)")
+            Logger.debug("Attach \(file)")
             guard let data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
-                Log.debug("No data?")
+                Logger.debug("No data?")
                 continue
             }
             
@@ -102,7 +102,7 @@ extension WBGenerateViewController: MFMailComposeViewControllerDelegate, UINavig
     
     public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         if let error = error {
-            Log.error("Send email error: \(error)")
+            Logger.error("Send email error: \(error)")
         }
         
         controller.dismiss(animated: true) {
@@ -121,9 +121,9 @@ extension WBGenerateViewController {
         controller.completionWithItemsHandler = {
             type, success, returned, error in
             
-            Log.debug("Type \(type) - \(success)")
-            Log.debug("Returned \(returned?.count)")
-            Log.error(error)
+            Logger.debug("Type \(type) - \(success)")
+            Logger.debug("Returned \(returned?.count)")
+            Logger.error(error.debugDescription)
             
             if success {
                 self.dismiss(animated: true, completion: nil)

@@ -10,17 +10,12 @@ import Foundation
 
 class AnalyticsLogger: AnalyticsServiceProtocol {
     
-    // TODO: integrate cocoalumberjack
-    
-    init() {
-        // initial configuration
-    }
-    
     func record(event: Event) {
         // format: "Logging Event: {} with datapoints: {}" event.name, datapoints
         let datapointLabelString = event.datapointsToFormattedString()
         let logString = "Logging Event: {\(event.name)} with datapoints: \(datapointLabelString))"
-        Log.debug(logString)
+        
+        Logger.verbose(logString)
     }
 }
 

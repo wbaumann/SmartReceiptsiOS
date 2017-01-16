@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "DataExport.h"
 #import "Objective-Zip.h"
+#import "LoggerMacros-ObjC.h"
 
 @interface DataExportTest : XCTestCase
 
@@ -65,7 +66,7 @@
     OZZipFile *file = [[OZZipFile alloc] initWithFileName:zipPath mode:OZZipFileModeUnzip];
     NSArray *fileNames = file.listFileInZipInfos;
     if (fileNames.count != files.count) {
-        SRLog(@"Have %tu files in zip, expected %tu", fileNames.count, files.count);
+        LOGGER_WARNING(@"Have %tu files in zip, expected %tu", fileNames.count, files.count);
         return NO;
     }
 
@@ -83,13 +84,13 @@
     }
 
     for (OZFileInZipInfo *info in fileNames) {
-        SRLog(@"File: %@ - %@", info.name, joinedFiles);
+        LOGGER_DEBUG(@"File: %@ - %@", info.name, joinedFiles);
         if (![joinedFiles containsObject:info.name]) {
             return NO;
         }
 
         if (info.size == 0) {
-            SRLog(@"Size of %@ is zero", info.name);
+            LOGGER_DEBUG(@"Size of %@ is zero", info.name);
             return NO;
         }
 
@@ -97,7 +98,7 @@
     }
 
     if (joinedFiles.count != 0) {
-        SRLog(@"Did not see following files in zip %@", joinedFiles);
+        LOGGER_DEBUG(@"Did not see following files in zip %@", joinedFiles);
         return NO;
     }
 

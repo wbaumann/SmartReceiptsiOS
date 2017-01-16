@@ -18,25 +18,25 @@ class OpenExchangeRates {
         let dayString = date.dayString()
         let dayCurrencyKey = "\(dayString)-\(base)"
         
-        Log.debug("Retrieve \(base) to \(target) on \(dayString)")
+        Logger.debug("Retrieve \(base) to \(target) on \(dayString)")
         
         if !forceRefresh, let dayValues = rates[dayCurrencyKey], let rate = dayValues.filter({ $0.currency == target}).first {
-            Log.debug("Have cache hit")
+            Logger.debug("Have cache hit")
             completion(rate.rate, nil)
             return
         } else if (forceRefresh) {
-            Log.debug("Refresh forced")
+            Logger.debug("Refresh forced")
         }
         
-        Log.debug("Perform remote fetch")
+        Logger.debug("Perform remote fetch")
         let requestURL = URL(string: "\(OpenEchangeRatesAPIHistorycalAddress)\(dayString).json?base=\(base)&app_id=\(OpenExchangeAppID)")!
-        Log.debug("\(requestURL)")
+        Logger.debug("\(requestURL)")
         let request = URLRequest(url: requestURL)
         
         let task = URLSession.shared.dataTask(with: request, completionHandler: {
             data, response, error in
             
-            Log.debug("Request completed")
+            Logger.debug("Request completed")
             
             if let error = error {
                 completion(nil, error as NSError?)

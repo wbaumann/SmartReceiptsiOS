@@ -64,7 +64,7 @@
         return;
     }
     
-    SRLog(@"Remove ads");
+    LOGGER_DEBUG(@"Remove ads");
     [UIView animateWithDuration:0.3 animations:^{
         [self.adContainerHeight setConstant:0];
         [self.view layoutIfNeeded];

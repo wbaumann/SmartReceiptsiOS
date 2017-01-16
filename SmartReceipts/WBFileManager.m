@@ -41,7 +41,7 @@
                                                        error:&error]){
         return true;
     } else {
-        NSLog(@"Couldn't create directory: %@", [error localizedDescription]);
+        LOGGER_ERROR(@"Couldn't create directory: %@", [error localizedDescription]);
         return false;
     }
 }
@@ -59,7 +59,7 @@
                                       withIntermediateDirectories:YES
                                                        attributes:nil
                                                             error:&error]){
-            NSLog(@"Couldn't create directory: %@", [error localizedDescription]);
+            LOGGER_ERROR(@"Couldn't create directory: %@", [error localizedDescription]);
         }
     }
 }
@@ -78,7 +78,7 @@
     [WBFileManager prepareDirForForceFile:newFile];
     
     if (![data writeToFile:newFile atomically:YES]) {
-        NSLog(@"Failed to write data to file");
+        LOGGER_ERROR(@"Failed to write data to file");
         return false;
     }
     
@@ -89,7 +89,7 @@
     [WBFileManager prepareDirForForceFile:newFile];
     
     if(![[NSFileManager defaultManager] copyItemAtPath:oldFile toPath:newFile error:nil]){
-        NSLog(@"Failed to copy file");
+        LOGGER_ERROR(@"Failed to copy file");
         return false;
     }
     

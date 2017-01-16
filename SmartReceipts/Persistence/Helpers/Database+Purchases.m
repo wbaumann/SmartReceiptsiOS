@@ -35,38 +35,38 @@
 
 - (BOOL)hasValidSubscription {
     NSDate *endDate = [self subscriptionEndDate];
-    SRLog(@"subscription end date:%@", endDate);
+    LOGGER_INFO(@"subscription end date:%@", endDate);
     return endDate != nil && [[NSDate date] isBeforeDate:endDate];
 }
 
 - (void)checkReceiptValidity {
-    SRLog(@"checkReceiptValidity");
+    LOGGER_DEBUG(@"checkReceiptValidity");
     if ([self hasValidSubscription]) {
-        SRLog(@"Have valid subscription");
+        LOGGER_INFO(@"Have valid subscription");
         return;
     }
 
     RMAppReceiptIAP *receiptIAP = [self receiptForSubscription];
     if (!receiptIAP) {
-        SRLog(@"No receipt");
+        LOGGER_DEBUG(@"No receipt");
         return;
     }
 
     NSString *identifier = receiptIAP.transactionIdentifier;
     if ([self haveRefreshedSubscriptionReceipt:receiptIAP]) {
-        SRLog(@"Already attempted refresh of this receipt");
+        LOGGER_DEBUG(@"Already attempted refresh of this receipt");
         return;
     }
 
-    SRLog(@"Refresh");
+    LOGGER_DEBUG(@"Refresh");
     [[RMStore defaultStore] refreshReceiptOnSuccess:^{
-        SRLog(@"refreshReceiptOnSuccess");
+        LOGGER_DEBUG(@"refreshReceiptOnSuccess");
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:identifier];
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
         });
     } failure:^(NSError *error) {
-        SRLog(@"refreshReceipFailure:%@", error);
+        LOGGER_ERROR(@"refreshReceipFailure:%@", error);
     }];
 }
 
@@ -77,15 +77,15 @@
 
 - (RMAppReceiptIAP *)receiptForSubscription {
     RMAppReceipt *receipt = [RMAppReceipt bundleReceipt];
-    SRLog(@"");
-    SRLog(@"receipt:%@", receipt);
-    SRLog(@"%tu IAP-s", receipt.inAppPurchases.count);
+    LOGGER_DEBUG(@"");
+    LOGGER_DEBUG(@"receipt:%@", receipt);
+    LOGGER_DEBUG(@"%tu IAP-s", receipt.inAppPurchases.count);
     RMAppReceiptIAP *latest;
     for (RMAppReceiptIAP *receiptIAP in receipt.inAppPurchases) {
-        SRLog(@"IAP receipt:%@", receiptIAP);
-        SRLog(@"Purchase: %@", receiptIAP.purchaseDate);
-        SRLog(@"Original urchase: %@", receiptIAP.originalPurchaseDate);
-        SRLog(@"Expire: %@", receiptIAP.subscriptionExpirationDate);
+        LOGGER_DEBUG(@"IAP receipt:%@", receiptIAP);
+        LOGGER_DEBUG(@"Purchase: %@", receiptIAP.purchaseDate);
+        LOGGER_DEBUG(@"Original urchase: %@", receiptIAP.originalPurchaseDate);
+        LOGGER_DEBUG(@"Expire: %@", receiptIAP.subscriptionExpirationDate);
         if (![receiptIAP.productIdentifier isEqualToString:SmartReceiptSubscriptionIAPIdentifier]) {
             continue;
         }

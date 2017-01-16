@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4D004BB71D272836004DBB19 /* SmartReceiptsFormattableString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D004BB61D272836004DBB19 /* SmartReceiptsFormattableString.swift */; };
-		4D095A651E14BDA50040D359 /* ServiceAccount.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D095A641E14BDA50040D359 /* ServiceAccount.json */; };
 		4D380F911B61240C001B43D2 /* GADConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D380F901B61240C001B43D2 /* GADConstants.m */; };
 		4D380F941B6124F3001B43D2 /* launch_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D380F921B6124F3001B43D2 /* launch_image.png */; };
 		4D380F951B6124F3001B43D2 /* launch_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D380F931B6124F3001B43D2 /* launch_image@2x.png */; };
@@ -34,6 +33,9 @@
 		57580D1F1DFAB6AB0090C488 /* UIApplication+AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 57580D1E1DFAB6AB0090C488 /* UIApplication+AppVersion.m */; };
 		57691F001E10613500F78859 /* RateApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 57691EFF1E10613500F78859 /* RateApplication.m */; };
 		5785A4EF1E09DA0100C3CA0C /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785A4EE1E09DA0100C3CA0C /* AnalyticsLogger.swift */; };
+		57C0EED11E2AE972001B4758 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0EED01E2AE972001B4758 /* CustomLogFormatter.swift */; };
+		57C0EED31E2D38B0001B4758 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD21CFD54430079F1AD /* Logger.swift */; };
+		57C0EED41E2D38B3001B4758 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0EED01E2AE972001B4758 /* CustomLogFormatter.swift */; };
 		57C125191E12DAEF008551AC /* ServiceAccount.json in Resources */ = {isa = PBXBuildFile; fileRef = 57C125181E12DAEF008551AC /* ServiceAccount.json */; };
 		57C9EBF21DF1BB6E001B3731 /* SuggestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C9EBF11DF1BB6E001B3731 /* SuggestionView.m */; };
 		57EEBDC41E093C8F00974E53 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EEBDC31E093C8F00974E53 /* String+Extensions.swift */; };
@@ -127,10 +129,7 @@
 		A7F05BC41CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BC31CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift */; };
 		A7F05BC61CFC453C0079F1AD /* ReceiptColumnReceiptId.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BC51CFC453C0079F1AD /* ReceiptColumnReceiptId.swift */; };
 		A7F05BCE1CFD4AE30079F1AD /* Database+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BCD1CFD4AE30079F1AD /* Database+Trips.swift */; };
-		A7F05BD11CFD53EA0079F1AD /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD01CFD53EA0079F1AD /* Log.swift */; };
 		A7F05BD31CFD54430079F1AD /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD21CFD54430079F1AD /* Logger.swift */; };
-		A7F05BD51CFD54FE0079F1AD /* LogOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD41CFD54FE0079F1AD /* LogOutput.swift */; };
-		A7F05BD71CFD551A0079F1AD /* ConsoleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD61CFD551A0079F1AD /* ConsoleOutput.swift */; };
 		A7F05BD91CFD69640079F1AD /* PricesCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD81CFD69640079F1AD /* PricesCollection.swift */; };
 		A7F05BDB1CFD6C520079F1AD /* PricesCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BDA1CFD6C510079F1AD /* PricesCollectionTests.swift */; };
 		A7F05BDF1CFD8FEC0079F1AD /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BDE1CFD8FEC0079F1AD /* Database.swift */; };
@@ -412,6 +411,8 @@
 		57691EFE1E10613500F78859 /* RateApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateApplication.h; sourceTree = "<group>"; };
 		57691EFF1E10613500F78859 /* RateApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateApplication.m; sourceTree = "<group>"; };
 		5785A4EE1E09DA0100C3CA0C /* AnalyticsLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsLogger.swift; sourceTree = "<group>"; };
+		57C0EED01E2AE972001B4758 /* CustomLogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLogFormatter.swift; sourceTree = "<group>"; };
+		57C0EED21E2D2D3E001B4758 /* LoggerMacros-ObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LoggerMacros-ObjC.h"; sourceTree = "<group>"; };
 		57C125181E12DAEF008551AC /* ServiceAccount.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ServiceAccount.json; sourceTree = "<group>"; };
 		57C9EBF01DF1BB6E001B3731 /* SuggestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionView.h; sourceTree = "<group>"; };
 		57C9EBF11DF1BB6E001B3731 /* SuggestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionView.m; sourceTree = "<group>"; };
@@ -531,10 +532,7 @@
 		A7F05BC31CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnPriceTests.swift; sourceTree = "<group>"; };
 		A7F05BC51CFC453C0079F1AD /* ReceiptColumnReceiptId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnReceiptId.swift; sourceTree = "<group>"; };
 		A7F05BCD1CFD4AE30079F1AD /* Database+Trips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+Trips.swift"; sourceTree = "<group>"; };
-		A7F05BD01CFD53EA0079F1AD /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A7F05BD21CFD54430079F1AD /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		A7F05BD41CFD54FE0079F1AD /* LogOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOutput.swift; sourceTree = "<group>"; };
-		A7F05BD61CFD551A0079F1AD /* ConsoleOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleOutput.swift; sourceTree = "<group>"; };
 		A7F05BD81CFD69640079F1AD /* PricesCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricesCollection.swift; sourceTree = "<group>"; };
 		A7F05BDA1CFD6C510079F1AD /* PricesCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricesCollectionTests.swift; sourceTree = "<group>"; };
 		A7F05BDE1CFD8FEC0079F1AD /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -1226,10 +1224,9 @@
 		A7F05BCF1CFD53D90079F1AD /* Log */ = {
 			isa = PBXGroup;
 			children = (
-				A7F05BD61CFD551A0079F1AD /* ConsoleOutput.swift */,
-				A7F05BD01CFD53EA0079F1AD /* Log.swift */,
+				57C0EED21E2D2D3E001B4758 /* LoggerMacros-ObjC.h */,
 				A7F05BD21CFD54430079F1AD /* Logger.swift */,
-				A7F05BD41CFD54FE0079F1AD /* LogOutput.swift */,
+				57C0EED01E2AE972001B4758 /* CustomLogFormatter.swift */,
 			);
 			path = Log;
 			sourceTree = "<group>";
@@ -2021,9 +2018,9 @@
 				ORGANIZATIONNAME = "Will Baumann";
 				TargetAttributes = {
 					84F4F33F18CFCCD000F69A35 = {
-						DevelopmentTeam = UX5Z7CLP7J;
+						DevelopmentTeam = WPW5M885N8;
 						LastSwiftMigration = 0810;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -2083,7 +2080,6 @@
 				EA0677EF1B04DCEA0058A326 /* TitledAutocompleteEntryCell.xib in Resources */,
 				EA71DFCD1AF9FEEC004092C3 /* SwitchControlCell.xib in Resources */,
 				EA888A731AFA38C100DF2AE6 /* SettingsButtonCell.xib in Resources */,
-				4D095A651E14BDA50040D359 /* ServiceAccount.json in Resources */,
 				EA07BF371AF3B88C004D17F6 /* PickerCell.xib in Resources */,
 				8467EFED18F6F9530076BE6E /* ic_rotate_cw.png in Resources */,
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
@@ -2287,6 +2283,7 @@
 				EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */,
 				A7F05BCE1CFD4AE30079F1AD /* Database+Trips.swift in Sources */,
 				EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */,
+				57C0EED11E2AE972001B4758 /* CustomLogFormatter.swift in Sources */,
 				EA888A861AFB4FBD00DF2AE6 /* Database+Trips.m in Sources */,
 				A758CE941D01760C00169C7C /* QuickAlertPresenter.swift in Sources */,
 				EA00D0101B06321A00C87678 /* EditTripViewController.m in Sources */,
@@ -2346,7 +2343,6 @@
 				EA71DFCC1AF9FEEC004092C3 /* SwitchControlCell.m in Sources */,
 				EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */,
 				4D3C19451D46C25A00FEC539 /* HorizontalTripReportHeader.m in Sources */,
-				A7F05BD71CFD551A0079F1AD /* ConsoleOutput.swift in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
 				EA8EB10A1B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m in Sources */,
 				EA22679E1B1E035F005761E7 /* ReceiptSummaryCell.m in Sources */,
@@ -2414,7 +2410,6 @@
 				EAB9700F1B078944005E1D63 /* MasterTripsViewController.m in Sources */,
 				EA07BF531AF4CD26004D17F6 /* Database+PaymentMethods.m in Sources */,
 				570515A31E02EB5500BB8FE4 /* Event+Categories.swift in Sources */,
-				A7F05BD51CFD54FE0079F1AD /* LogOutput.swift in Sources */,
 				EA07BF341AF3B703004D17F6 /* InlinedDatePickerCell.m in Sources */,
 				EA2F23051B41BFD3008AF61E /* Database+Purchases.m in Sources */,
 				EA1D42B91B03831700D64D3A /* PaymentMethodsViewController.m in Sources */,
@@ -2460,7 +2455,6 @@
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
 				570515A11E02EB2E00BB8FE4 /* Event.swift in Sources */,
-				A7F05BD11CFD53EA0079F1AD /* Log.swift in Sources */,
 				A7D6CDE71D05524200998FEF /* ReportAssetsGenerator.swift in Sources */,
 				EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */,
 				EA1D42BD1B03851C00D64D3A /* TitleOnlyCell.m in Sources */,
@@ -2538,6 +2532,7 @@
 				EA259CDD1B16072D00ECBD67 /* DataExportTest.m in Sources */,
 				EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */,
 				A7F05BC41CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift in Sources */,
+				57C0EED31E2D38B0001B4758 /* Logger.swift in Sources */,
 				A7F05BBA1CFC2CCD0079F1AD /* NetExchangedPricePlusTaxTests.swift in Sources */,
 				EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */,
 				EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */,
@@ -2546,6 +2541,7 @@
 				EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */,
 				EA8ABE441B1A1D6800DBFA29 /* DatabaseCategoriesTest.m in Sources */,
 				EA7634AA1B3DB34A00AD8737 /* WBPreferencesImportExportTest.m in Sources */,
+				57C0EED41E2D38B3001B4758 /* CustomLogFormatter.swift in Sources */,
 				EA1D42C91B03931400D64D3A /* DatabasePaymentMethodsTest.m in Sources */,
 				EA90F2921B0CC4DD00FD2DB6 /* DatabaseReceiptsDatesTest.m in Sources */,
 				EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */,
@@ -2645,6 +2641,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
+				OTHER_SWIFT_FLAGS = "";
 				PROVISIONING_PROFILE = "e4fc7d77-3f77-4d36-8a1f-43afe97cc65c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2705,7 +2702,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = UX5Z7CLP7J;
+				DEVELOPMENT_TEAM = WPW5M885N8;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2730,10 +2727,11 @@
 					"$(inherited)",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) $(OTHER_LDFLAGS)";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = co.smartreceipts.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8187c9e2-d7a6-4b9e-8421-d39b1adfca9e";
-				PROVISIONING_PROFILE_SPECIFIER = "Smart Receipts - Debug";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceipts/SmartReceipts-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2752,9 +2750,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application: Smart Receipts LLC (UX5Z7CLP7J)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = UX5Z7CLP7J;
+				DEVELOPMENT_TEAM = WPW5M885N8;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2778,10 +2776,11 @@
 					"$(inherited)",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) $(OTHER_LDFLAGS)";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = co.smartreceipts.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4fc7d77-3f77-4d36-8a1f-43afe97cc65c";
-				PROVISIONING_PROFILE_SPECIFIER = "Smart Receipts - Distribution";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceipts/SmartReceipts-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2813,6 +2812,26 @@
 					"$(inherited)",
 				);
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Google/Headers",
+					"${PODS_ROOT}/OpenSSL-iOS/openssl/**",
+					"$(SDKROOT)/usr/include/libz",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCrash\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/Google\"",
+					"\"${PODS_ROOT}/Headers/Public/Google-Mobile-Ads-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleInterchangeUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/OpenSSL-iOS\"",
+					"\"${PODS_ROOT}/Headers/Public/SplunkMint\"",
+					"\"$(CONFIGURATION_TEMP_DIR)/$(PROJECT_NAME).build/DerivedSources\"",
+				);
 				INFOPLIST_FILE = SmartReceiptsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2847,6 +2866,26 @@
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Google/Headers",
+					"${PODS_ROOT}/OpenSSL-iOS/openssl/**",
+					"$(SDKROOT)/usr/include/libz",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCrash\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/Google\"",
+					"\"${PODS_ROOT}/Headers/Public/Google-Mobile-Ads-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleInterchangeUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/OpenSSL-iOS\"",
+					"\"${PODS_ROOT}/Headers/Public/SplunkMint\"",
+					"\"$(CONFIGURATION_TEMP_DIR)/$(PROJECT_NAME).build/DerivedSources\"",
+				);
 				INFOPLIST_FILE = SmartReceiptsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

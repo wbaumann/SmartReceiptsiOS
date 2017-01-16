@@ -58,11 +58,11 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object {
-    SRLog(@"configureCell:atIndexPath:%@", indexPath);
+    LOGGER_DEBUG(@"configureCell:atIndexPath:%@", indexPath);
 }
 
 - (void)contentChanged {
-    SRLog(@"contentChanged");
+    LOGGER_DEBUG(@"contentChanged");
 }
 
 - (void)fetchObjects {
@@ -93,12 +93,12 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 }
 
 - (void)willChangeContent {
-    SRLog(@"willChangeContent");
+    LOGGER_DEBUG(@"willChangeContent");
     [self.tableView beginUpdates];
 }
 
 - (void)didInsertObject:(id)object atIndex:(NSUInteger)index {
-    SRLog(@"didInsertObject:atIndex:%tu", index);
+    LOGGER_DEBUG(@"didInsertObject:atIndex:%tu", index);
     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
@@ -116,7 +116,7 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 }
 
 - (void)didChangeContent {
-    SRLog(@"didChangeContent");
+    LOGGER_DEBUG(@"didChangeContent");
     [self.tableView endUpdates];
     [self contentChanged];
 }
@@ -138,7 +138,7 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 }
 
 - (void)deleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
-    SRLog(@"deleteObject:atIndexPath:%@", indexPath);
+    LOGGER_DEBUG(@"deleteObject:atIndexPath:%@", indexPath);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -149,7 +149,7 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 }
 
 - (void)tappedObject:(id)tapped atIndexPath:(NSIndexPath *)indexPath {
-    SRLog(@"tappedObject:atIndexPath:%@", indexPath);
+    LOGGER_DEBUG(@"tappedObject:atIndexPath:%@", indexPath);
 }
 
 - (NSUInteger)indexOfObject:(id)object {

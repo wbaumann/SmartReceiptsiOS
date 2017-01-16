@@ -150,9 +150,11 @@ static NSDictionary *getDefaultValues() {
     currencyCode = [currency code];
 
     NSString *dateSeparator = [[[WBDateFormatter alloc] init] separatorForCurrentLocale];
-
-    NSLog(@"default currency: %@", currencyCode);
-    NSLog(@"default date separator: %@", dateSeparator);
+    
+    // This macro is not supported here
+    //LOGGER_DEBUG
+    [Logger debug:[NSString stringWithFormat:@"default currency: %@", currencyCode] file:[NSString stringWithUTF8String:__FILE__] function:@"" line:0];
+    [Logger debug:[NSString stringWithFormat:@"default date separator: %@", dateSeparator] file:[NSString stringWithUTF8String:__FILE__] function:@"" line:0];
 
     return @{
             INT_DEFAULT_TRIP_DURATION : @3,

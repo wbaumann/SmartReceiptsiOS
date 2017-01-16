@@ -52,7 +52,7 @@
     if (self.isMovingFromParentViewController || self.isBeingDismissed) {
         if (_changed) {
             Database *database = [Database sharedInstance];
-            NSLog(@"Saving columns. Result: %d", (self.forCSV ? [database replaceAllCSVColumnsWith:_columns] : [database replaceAllPDFColumnsWith:_columns]));
+            LOGGER_INFO(@"Saving columns. Result: %d", (self.forCSV ? [database replaceAllCSVColumnsWith:_columns] : [database replaceAllPDFColumnsWith:_columns]));
             _changed = NO;
         }
     }

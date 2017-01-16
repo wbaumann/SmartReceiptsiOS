@@ -21,7 +21,7 @@
     NSError *writeError = nil;
     BOOL writeSuccess = [content writeToFile:outputPath atomically:YES encoding:NSUTF8StringEncoding error:&writeError];
     if (writeError) {
-        NSLog(@"CSV write error:%@", writeError);
+        LOGGER_ERROR(@"CSV write error:%@", writeError);
     }
 
     return writeSuccess;

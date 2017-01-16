@@ -49,7 +49,7 @@
 }
 
 - (BOOL)insertDefaultCategoriesIntoDatabase:(Database *)database {
-    SRLog(@"Insert default categories");
+    LOGGER_DEBUG(@"Insert default categories");
 
     // categories are localized because they are custom and red from db anyway
     NSArray *cats = @[
@@ -100,7 +100,7 @@
 
 
     if (![database replaceAllCSVColumnsWith:csvColumns]) {
-        SRLog(@"Error while inserting CSV columns");
+        LOGGER_WARNING(@"Error while inserting CSV columns");
         return NO;
     }
 

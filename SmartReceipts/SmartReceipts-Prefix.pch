@@ -13,4 +13,5 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "LoggerMacros-ObjC.h" // Import logger's macros automatically
 #endif
