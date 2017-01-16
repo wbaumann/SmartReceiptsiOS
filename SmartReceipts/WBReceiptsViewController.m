@@ -87,7 +87,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
 - (void)tripUpdated:(NSNotification *)notification {
     WBTrip *trip = notification.object;
-    SRLog(@"updatTrip:%@", trip);
+    LOGGER_DEBUG(@"updatTrip:%@", trip);
 
     if (![self.trip isEqual:trip]) {
         return;;
@@ -103,7 +103,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 }
 
 - (void)updateTitle {
-    SRLog(@"updateTitle");
+    LOGGER_DEBUG(@"updateTitle");
     self.navigationItem.title = [NSString stringWithFormat:@"%@ - %@",
                                                            [self.trip name], [self.trip formattedPrice]];
 }
@@ -169,7 +169,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     WBReceipt *rec2 = [self objectAtIndexPath:[NSIndexPath indexPathForRow:idx2 inSection:0]];
 
     if (![[Database sharedInstance] swapReceipt:rec1 withReceipt:rec2]) {
-        SRLog(@"Error: cannot swap");
+        LOGGER_WARNING(@"Error: cannot swap");
     }
 }
 
@@ -197,12 +197,12 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     NSString *newFile = [self.trip fileInDirectoryPath:imageFileName];
 
     if (![WBFileManager forceCopyFrom:oldFile to:newFile]) {
-        NSLog(@"Couldn't copy");
+        LOGGER_ERROR(@"Couldn't force copy from %@ to %@", oldFile, newFile);
         return NO;
     }
 
     if (![[Database sharedInstance] updateReceipt:receipt changeFileNameTo:imageFileName]) {
-        SRLog(@"Error: cannot update image file");
+        LOGGER_ERROR(@"Error: cannot update image file %@ for receipt %@", imageFileName, receipt.name);
         return NO;
     }
 
@@ -225,7 +225,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     }
 
     if (![[Database sharedInstance] updateReceipt:receipt changeFileNameTo:imageFileName]) {
-        SRLog(@"Error: cannot update image file");
+        LOGGER_ERROR(@"Error: cannot update image file");
         return NO;
     }
     return YES;

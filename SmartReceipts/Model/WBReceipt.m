@@ -140,7 +140,7 @@ static NSString* checkNoData(NSString* str) {
 }
 
 - (BOOL)hasFileForTrip:(WBTrip *)trip {
-    SRAssert(trip);
+    WBAssertLoggable(trip);
     return _fileName && ([[NSFileManager defaultManager] fileExistsAtPath:[self imageFilePathForTrip:trip]]);
 }
 

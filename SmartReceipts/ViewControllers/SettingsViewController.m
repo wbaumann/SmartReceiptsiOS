@@ -39,6 +39,7 @@
 #import "SmartReceipts-Swift.h"
 #import "UIDevice+DeviceInfo.h"
 #import "UIApplication+AppVersion.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
 
 static NSString *const PushManageCategoriesSegueIdentifier = @"PushManageCategoriesSegueIdentifier";
 static NSString *const PushConfigurePDFColumnsSegueIdentifier = @"ConfigurePDF";
@@ -595,8 +596,10 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
                 [hud hide];
 
                 if (exportData) {
+                    LOGGER_INFO(@"actionExport");
                     [self shareBackupFile:exportPath fromRect:[self.tableView convertRect:self.backupCell.frame toView:self.view]];
                 } else {
+                    LOGGER_ERROR(@"Failed to properly export data");
                     [[[UIAlertView alloc]
                             initWithTitle:NSLocalizedString(@"generic.error.alert.title", nil)
                                   message:NSLocalizedString(@"settings.controller.export.error.message", nil)
@@ -774,13 +777,19 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 - (void)emailFeedbackWithBugReport:(BOOL)isBugReportEmail {
     // Checking the availability of mail services
     if (![MFMailComposeViewController canSendMail]) {
-        NSLog(@"Mail services are not available.");
+        LOGGER_WARNING(@"Mail services are not available.");
         [self showAlertWithTitle:NSLocalizedString(@"settings.feedback.email.error", nil) message:NSLocalizedString(@"settings.feedback.email.not.configured.message", nil)];
         return;
     }
     
+    MFMailComposeViewController *composeVC = [[MFMailComposeViewController alloc] init];
+    composeVC.mailComposeDelegate = self;
+    
+    // Configure the fields of the interface.
     NSString *subject = FeedbackEmailSubject;
     NSMutableString *messageBody = [NSMutableString new];
+    
+    // Additional setup for Bug report:
     if (isBugReportEmail) {
         // another subject
         subject = FeedbackBugreportEmailSubject;
@@ -789,11 +798,18 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [messageBody appendString:[[UIApplication sharedApplication] appVersionInfoString]];
         [messageBody appendFormat:@"Plus: %@\n", [[Database sharedInstance] hasValidSubscription] ? @"true" : @"false"];
         [messageBody appendString:[[UIDevice currentDevice] deviceInfoString]];
+        
+#warning TODO: ??? Attach log files as ZIP
+        // Attach log files
+        NSArray *logFiles = [Logger logFiles];
+        for (DDLogFileInfo *file in logFiles) {
+            NSData *data = [NSData dataWithContentsOfFile:file.filePath];
+            if (data != nil) {
+                [composeVC addAttachmentData:data mimeType:@"text/plain" fileName:file.fileName];
+            }
+        }
     }
     
-    MFMailComposeViewController* composeVC = [[MFMailComposeViewController alloc] init];
-    composeVC.mailComposeDelegate = self;
-    // Configure the fields of the interface.
     [composeVC setToRecipients:@[FeedbackEmailAddress]];
     [composeVC setSubject:subject];
     [composeVC setMessageBody:messageBody isHTML:NO];
@@ -805,7 +821,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     // Check the result or perform other tasks.
     if (result == MFMailComposeResultFailed) {
-        // todo: ERR alert
+        LOGGER_WARNING(@"MFMailComposeResultFailed: %@", error.localizedDescription);
         [self showAlertWithTitle:NSLocalizedString(@"settings.feedback.email.error", nil) message:error.localizedDescription];
     }
     [self dismissViewControllerAnimated:YES completion:nil];

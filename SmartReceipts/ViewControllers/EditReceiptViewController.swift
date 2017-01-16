@@ -27,7 +27,7 @@ extension EditReceiptViewController: CurrencyExchangeServiceHandler, QuickAlertP
     }
     
     func triggerExchangeRateUpdate(_ cell: ExchangeRateCell, base: String, target: String, onDate date: Date, force: Bool) {
-        Log.debug("Trigger update")
+        Logger.debug("Trigger update")
         
         let loading = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         loading.startAnimating()

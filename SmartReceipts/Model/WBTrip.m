@@ -82,7 +82,7 @@
                                                             error:&error]) {
             return true;
         } else {
-            NSLog(@"Couldn't create trip directory: %@", [error localizedDescription]);
+            LOGGER_ERROR(@"Couldn't create trip directory: %@", [error localizedDescription]);
             return false;
         }
     }

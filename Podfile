@@ -18,6 +18,7 @@ def pods
     pod 'Google-Mobile-Ads-SDK'
     pod 'SplunkMint' # Usage, performance and crash monitoring for your iOS apps
     pod 'Tweaks', '~> 2.0.0' # configurable values. Tweaks is an easy way to fine-tune an iOS app.
+    pod 'CocoaLumberjack/Swift' # Logging framework
     
     # Purchases
     pod 'RMStore/Core', :path => '3rdparty/RMStore'

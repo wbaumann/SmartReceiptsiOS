@@ -16,7 +16,7 @@ func onMainThread(_ closure: @escaping () -> ()) {
 func timeMeasured(_ desc: String = "", closure: () -> ()) {
     let start = CACurrentMediaTime()
     closure()
-    Log.debug(String(format: "%@ - time: %f", desc, CACurrentMediaTime() - start))
+    Logger.debug(String(format: "%@ - time: %f", desc, CACurrentMediaTime() - start))
 }
 
 func delayedExecution(_ afterSecons: TimeInterval, closure: @escaping () -> ()) {

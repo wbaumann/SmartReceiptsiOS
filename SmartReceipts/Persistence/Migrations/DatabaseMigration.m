@@ -44,25 +44,25 @@
 + (BOOL)runMigrations:(NSArray *)migrations onDatabase:(Database *)database {
     TICK;
     NSUInteger currentVersion = [database databaseVersion];
-    SRLog(@"Current version: %tu", currentVersion);
+    LOGGER_INFO(@"Current version: %tu", currentVersion);
 
     for (DatabaseMigration *migration in migrations) {
         if (currentVersion >= migration.version) {
-            SRLog(@"DB at version %tu, will skip migration to %tu", currentVersion, migration.version);
+            LOGGER_INFO(@"DB at version %tu, will skip migration to %tu", currentVersion, migration.version);
             continue;
         }
 
-        SRLog(@"Migrate to version %tu", migration.version);
+        LOGGER_INFO(@"Migrate to version %tu", migration.version);
         if (![migration migrate:database]) {
-            SRLog(@"Failed on migration %tu", migration.version);
+            LOGGER_ERROR(@"Failed on migration %tu", migration.version);
             return NO;
         }
 
         currentVersion = migration.version;
         [database setDatabaseVersion:currentVersion];
     }
-
-    TOCK(@"Migration time");
+    
+    LOGGER_DEBUG(@"Migration time %@", TOCK);
     
     return YES;
 }

@@ -315,7 +315,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     [self.currencyCell setValue:currencyCode];
     [self.currencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:currencyCode]];
 
-    SRLog(@"Category:%@", category);
+    LOGGER_DEBUG(@"Category:%@", category);
 
     [self.categoryCell setPickableValue:category];
     [self.categoryPickerCell setSelectedValue:category];

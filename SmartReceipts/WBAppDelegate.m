@@ -50,12 +50,15 @@
 }
 
 - (void)tweakUIDismissed {
-    SRLog(@"tweakUIDismissed");
+    LOGGER_DEBUG(@"tweakUIDismissed");
 }
 #endif
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [self enableAnalytics];
+    
     _queue = dispatch_queue_create("wb.dataAccess", nil);
 
     [WBCustomization customizeOnAppLoad];
@@ -73,7 +76,7 @@
     [[Database sharedInstance] checkReceiptValidity];
 
     NSString *language = [NSLocale preferredLanguages][0];
-    SRLog(@"lang: %@", language);
+    LOGGER_INFO(@"lang: %@", language);
 
     NSURL *url = (NSURL *) [launchOptions valueForKey:UIApplicationLaunchOptionsURLKey];
     if (url != nil && [url isFileURL]) {
@@ -87,22 +90,25 @@
     [[RateApplication sharedInstance] markAppLaunch];
     
     [Tweaker preload];
-    [self enableAnalytics];    
-#if DEBUG
-    [self enableLogging];
-#endif
     
 #if DEBUG
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tweakUIDismissed) name:FBTweakShakeViewControllerDidDismissNotification object:nil];
 #endif
     
+    LOGGER_VERBOSE(@"Application launched");
+    
     return YES;
 }
 
 void onUncaughtExcepetion(NSException *exception) {
-    NSLog(@"Exception: %@", exception);
-    NSLog(@"%@", [NSThread callStackSymbols]);
     [[RateApplication sharedInstance] markAppCrash];
+    
+    // Log exception
+    NSMutableString *message = [NSMutableString new];
+    [message appendString:exception.description];
+    [message appendString:@"\n"];
+    [message appendString:exception.callStackSymbols.description];
+    [Logger error:message file:@"UncaughtExcepetion" function:@"onUncaughtExcepetion" line:0];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -166,18 +172,18 @@ void onUncaughtExcepetion(NSException *exception) {
 - (void)handleOpenURL:(NSURL *)url {
 
     if ([WBAppDelegate isStringIgnoreCase:url.pathExtension inArray:@[@"png", @"jpg", @"jpeg"]]) {
-        NSLog(@"Launched for image");
+        LOGGER_INFO(@"Launched for image");
         self.isFileImage = YES;
         [self handlePdfOrImage:url];
     } else if ([url.pathExtension caseInsensitiveCompare:@"pdf"] == NSOrderedSame) {
-        NSLog(@"Launched for pdf");
+        LOGGER_INFO(@"Launched for pdf");
         self.isFileImage = NO;
         [self handlePdfOrImage:url];
     } else if ([url.pathExtension caseInsensitiveCompare:@"smr"] == NSOrderedSame) {
-        NSLog(@"Launched for smr");
+        LOGGER_INFO(@"Launched for smr");
         [self handleSMR:url];
     } else {
-        NSLog(@"Loaded with unknown file");
+        LOGGER_INFO(@"Loaded with unknown file");
     }
 
 }

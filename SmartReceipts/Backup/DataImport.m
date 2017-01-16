@@ -58,7 +58,7 @@
         NSString *tripName = components[0];
         NSString *fileName = components[1];
 
-        SRLog(@"Extract file for trip:%@", tripName);
+        LOGGER_INFO(@"Extract file for trip:%@", tripName);
         NSString *tripPath = [[self.outputPath stringByAppendingPathComponent:SmartReceiptsTripsDirectoryName] stringByAppendingPathComponent:tripName];
         [[NSFileManager defaultManager] createDirectoryAtPath:tripPath withIntermediateDirectories:YES attributes:nil error:nil];
         NSString *filePath = [tripPath stringByAppendingPathComponent:fileName];
@@ -76,10 +76,10 @@
 }
 
 - (void)extractFromZip:(OZZipFile *)zipFile zipName:(NSString *)zipName toFile:(NSString *)outPath {
-    SRLog(@"Extract file named: %@", zipName);
+    LOGGER_DEBUG(@"Extract file named: %@", zipName);
     BOOL found = [zipFile locateFileInZip:zipName];
     if (!found) {
-        SRLog(@"File with name %@ not in zip", zipName);
+        LOGGER_WARNING(@"File with name %@ not in zip", zipName);
         return;
     }
 
@@ -97,9 +97,9 @@
         }
         [stream finishedReading];
 
-        SRLog(@"File size %tu", resultData.length);
+        LOGGER_DEBUG(@"File size %tu", resultData.length);
         [WBFileManager forceWriteData:resultData to:file];
-        SRLog(@"Written to %@", file);
+        LOGGER_DEBUG(@"Written to %@", file);
     }
 }
 
