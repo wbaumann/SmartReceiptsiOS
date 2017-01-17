@@ -154,6 +154,10 @@ void onUncaughtExcepetion(NSException *exception) {
     return YES;
 }
 
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    LOGGER_WARNING(@"applicationDidReceiveMemoryWarning");
+}
+
 #pragma mark - custom methods
 
 + (WBAppDelegate *)instance {
