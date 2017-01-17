@@ -21,15 +21,21 @@
 @implementation Database (PDFColumns)
 
 - (BOOL)createPDFColumnsTable {
-    return [self createColumnsTableWithName:PDFTable.TABLE_NAME];
+    BOOL result = [self createColumnsTableWithName:PDFTable.TABLE_NAME];
+    LOGGER_DEBUG(@"createPDFColumnsTable: %@, success=%d", PDFTable.TABLE_NAME, result);
+    return result;
 }
 
 - (NSArray *)allPDFColumns {
-    return [self fetchAllColumnsFromTable:PDFTable.TABLE_NAME];
+    NSArray *result = [self fetchAllColumnsFromTable:PDFTable.TABLE_NAME];
+    LOGGER_DEBUG(@"allPDFColumns: %@", result.description);
+    return result;
 }
 
 - (BOOL)replaceAllPDFColumnsWith:(NSArray *)columns {
-    return [self replaceAllColumnsInTable:PDFTable.TABLE_NAME columns:columns];
+    BOOL result = [self replaceAllColumnsInTable:PDFTable.TABLE_NAME columns:columns];
+    LOGGER_DEBUG(@"replaceAllPDFColumnsWith: %@, success=%d", columns.description, result);
+    return result;
 }
 
 @end

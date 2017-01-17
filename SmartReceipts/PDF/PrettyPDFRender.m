@@ -182,8 +182,15 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 - (void)appendPDFPage:(CGPDFPageRef)page withLabel:(NSString *)label {
     if (![self.openPage isEmpty]) {
         [self startNextPage];
+    } else {
+        LOGGER_WARNING(@"appendPDFPage: self.openPage isEmpty");
     }
-
+    
+    CGRect cropBox = CGPDFPageGetBoxRect(page, kCGPDFCropBox);
+    if (CGRectIsEmpty(cropBox) || CGRectEqualToRect(cropBox, CGRectNull) || CGRectEqualToRect(cropBox, CGRectZero)) {
+        LOGGER_ERROR(@"appendPDFPage:withLabel: - page has invalid kCGPDFCropBox, label = %@", label);
+    }
+    
     FullPagePDFPageView *pdfPageRenderView = [FullPagePDFPageView loadInstance];
     [pdfPageRenderView.titleLabel setText:label];
     [pdfPageRenderView.pageRenderView setPage:page];

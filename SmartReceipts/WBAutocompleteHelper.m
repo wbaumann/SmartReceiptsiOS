@@ -35,7 +35,6 @@
         _suggestionView.delegate = self;
         
         self.field.inputAccessoryView = nil;
-        [self.field setInputAccessoryView:nil];
         self.field.autocorrectionType = UITextAutocorrectionTypeNo;
         [self.field reloadInputViews];
     }
@@ -57,18 +56,20 @@
 }
 
 - (void)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if (textField == _field) {
-        // generate hints
-        NSString *resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        
-        NSArray *hints = [self getHintsForPrefix:resultString];
-        
-        // show suggestions
-        _suggestionView.suggestions = hints;
-        // reloads _suggestionView:
-        [self removeSuggestionView];
-        [self showSuggestionView];
+    if (textField != _field) {
+        return;
     }
+    
+    // generate hints
+    NSString *resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    NSArray *hints = [self getHintsForPrefix:resultString];
+    
+    // show suggestions
+    _suggestionView.suggestions = hints;
+    // reloads _suggestionView:
+    [self removeSuggestionView];
+    [self showSuggestionView];
 }
 
 #pragma mark - SuggestionView stuff
@@ -82,14 +83,19 @@
 }
 
 - (void)removeSuggestionView {
+    // Prevent calling this multiple times
+    if (![self.field.inputAccessoryView isEqual:self.suggestionView]) {
+        return;
+    }
+    
     self.field.inputAccessoryView = nil;
-    [self.field setInputAccessoryView:nil];
     self.field.autocorrectionType = UITextAutocorrectionTypeNo;
     [self.field reloadInputViews];
     
     if ([self.field isFirstResponder]) {
         [self.field resignFirstResponder];
         // enables native OS autocompletion
+        self.field.inputAccessoryView = nil;
         self.field.autocorrectionType = UITextAutocorrectionTypeYes;
         [self.field reloadInputViews];
         [self.field becomeFirstResponder];
@@ -99,7 +105,7 @@
 #pragma mark SuggestionViewDelegate
 
 - (void)suggestionSelected:(NSString *)suggestion {
-    self.field.text = suggestion;
+    self.field.text = [NSString stringWithFormat:@"%@ ", suggestion];
     [self removeSuggestionView];
 }
 

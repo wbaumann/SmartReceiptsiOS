@@ -40,6 +40,9 @@ const CGFloat DEFAULT_COMPRESSION_QUALITY = 0.7;
     UIImage *scaled = [WBImageUtils image:image scaledToFitSize:self.bounds.size];
     UIImage *scaledAndCompressed = [WBImageUtils compressImage:scaled withRatio:DEFAULT_COMPRESSION_QUALITY];
     [self.imageView setImage:scaledAndCompressed];
+    if (!scaledAndCompressed.hasContent) {
+        LOGGER_ERROR(@"Actually no image content! Label:%@", _titleLabel.text);
+    }
 }
 
 @end

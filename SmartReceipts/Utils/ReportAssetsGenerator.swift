@@ -25,6 +25,7 @@ class ReportAssetsGenerator: NSObject {
     
     func setGenerated(_ fullPDF: Bool, imagesPDF: Bool, csv: Bool, imagesZip: Bool) {
         generate = Generation(fullPDF: fullPDF, imagesPDF: imagesPDF, csv: csv, imagesZip: imagesZip)
+        Logger.info("setGenerated: \(generate)")
     }
     
     func generate(_ completion: ([String]?) -> ()) {
@@ -40,6 +41,7 @@ class ReportAssetsGenerator: NSObject {
         var files = [String]()
         
         if generate.fullPDF {
+            Logger.info("generate.fullPDF")
             clearPath(pdfPath!)
             let generator = TripFullPDFGenerator(trip: trip, database: Database.sharedInstance())
             if (generator?.generate(toPath: pdfPath))! {
@@ -51,6 +53,7 @@ class ReportAssetsGenerator: NSObject {
         }
         
         if generate.imagesPDF {
+            Logger.info("generate.imagesPDF")
             clearPath(pdfImagesPath!)
             let generator = TripImagesPDFGenerator(trip: trip, database: Database.sharedInstance())
             if (generator?.generate(toPath: pdfImagesPath))! {
@@ -62,6 +65,7 @@ class ReportAssetsGenerator: NSObject {
         }
         
         if generate.csv {
+            Logger.info("generate.csv")
             clearPath(csvPath!)
             let generator = TripCSVGenerator(trip: trip, database: Database.sharedInstance())
             if (generator?.generate(toPath: csvPath))! {
@@ -73,6 +77,8 @@ class ReportAssetsGenerator: NSObject {
         }
         
         if generate.imagesZip {
+            Logger.info("generate.imagesZip")
+            
             clearPath(zipPath!)
             
             let rai = WBReceiptAndIndex.receiptsAndIndices(fromReceipts: Database.sharedInstance().allReceipts(for: trip), filteredWith: {
