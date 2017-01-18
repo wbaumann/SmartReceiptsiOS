@@ -222,6 +222,11 @@ static WBImageCell createCell(CGRect rect, int labelHeight) {
         [self moveToNextPage];
     }
     
+    CGRect cropBox = CGPDFPageGetBoxRect(page, kCGPDFCropBox);
+    if (CGRectIsEmpty(cropBox) || CGRectEqualToRect(cropBox, CGRectNull) || CGRectEqualToRect(cropBox, CGRectZero)) {
+        LOGGER_ERROR(@"drawFullPagePDFPage:withLabel: - page has invalid kCGPDFCropBox, label = %@", text);
+    }
+    
     [text drawInRect:_fullPageCell.labelRect withAttributes:_attributesForLabels];
     [WBPdfDrawer renderPage:page inContext:UIGraphicsGetCurrentContext() inRectangle:_fullPageCell.imageRect];
     _takenY = _pageRect.size.height + 1;
@@ -234,6 +239,9 @@ static WBImageCell createCell(CGRect rect, int labelHeight) {
 #pragma mark - helpers
 
 - (void) drawImageCell:(WBImageCell) cell withImage:(UIImage*) image withLabel:(NSString*) text {
+    if (!image.hasContent) {
+        LOGGER_ERROR(@"drawImageCell: withImage %@ withLabel %@", image, text);
+    }
     [text drawInRect:cell.labelRect withAttributes:_attributesForLabels];
     [self drawImageWithAspectFit:image inRect:cell.imageRect];
 }
@@ -348,6 +356,10 @@ static WBImageCell createCell(CGRect rect, int labelHeight) {
 	
 	CGRect cropBox = CGPDFPageGetBoxRect(page, kCGPDFCropBox);
 	int rotate = CGPDFPageGetRotationAngle(page);
+    
+    if (CGRectIsEmpty(cropBox) || CGRectEqualToRect(cropBox, CGRectNull) || CGRectEqualToRect(cropBox, CGRectZero)) {
+        LOGGER_ERROR(@"renderPage:inContext:iatPoint:withZoom: - page has invalid kCGPDFCropBox");
+    }
 	
 	CGContextSaveGState(context);
 	
@@ -398,12 +410,18 @@ static WBImageCell createCell(CGRect rect, int labelHeight) {
 }
 
 + (void) renderPage: (CGPDFPageRef) page inContext: (CGContextRef) context inRectangle: (CGRect) displayRectangle {
+    
     if ((displayRectangle.size.width == 0) || (displayRectangle.size.height == 0)) {
+        LOGGER_WARNING(@"renderPage:inContext:inRectangle: - displayRectangle is 0x0");
         return;
     }
     
     CGRect cropBox = CGPDFPageGetBoxRect(page, kCGPDFCropBox);
 	int pageRotation = CGPDFPageGetRotationAngle(page);
+    
+    if (CGRectIsEmpty(cropBox) || CGRectEqualToRect(cropBox, CGRectNull) || CGRectEqualToRect(cropBox, CGRectZero)) {
+        LOGGER_ERROR(@"renderPage:inContext:inRectangle: - page has invalid kCGPDFCropBox");
+    }
 	
 	CGSize pageVisibleSize = CGSizeMake(cropBox.size.width, cropBox.size.height);
 	if ((pageRotation == 90) || (pageRotation == 270) ||(pageRotation == -90)) {

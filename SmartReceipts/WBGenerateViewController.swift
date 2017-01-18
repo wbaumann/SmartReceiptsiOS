@@ -22,11 +22,12 @@ extension WBGenerateViewController: QuickAlertPresenter {
             
             self.generator!.generate() {
                 files in
-                
+
                 hud?.hide()
                 
                 guard let files = files else {
                     self.presentAlert(NSLocalizedString("generic.error.alert.title", comment: ""), message: NSLocalizedString("generate.report.unsuccessful.alert.message", comment: ""))
+                    Logger.warning("ReportAssetsGenerator.generate() no files: \(NSLocalizedString("generate.report.unsuccessful.alert.message", comment: ""))")
                     return
                 }
                 
@@ -75,9 +76,9 @@ extension WBGenerateViewController: MFMailComposeViewControllerDelegate, UINavig
         composer.setBccRecipients(split(WBPreferences.defaultEmailBCC()))
 
         for file in files {
-            Logger.debug("Attach \(file)")
+            Logger.debug("func emailFiles: Attach \(file)")
             guard let data = try? Data(contentsOf: URL(fileURLWithPath: file)) else {
-                Logger.debug("No data?")
+                Logger.warning("func emailFiles: No data?")
                 continue
             }
             

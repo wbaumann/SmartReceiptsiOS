@@ -37,6 +37,7 @@
 
 - (BOOL)generateToPath:(NSString *)outputPath {
     if (![self.pdfRender setOutputPath:outputPath]) {
+        LOGGER_WARNING(@"generateToPath returned false. Path %@", outputPath);
         return NO;
     }
 
@@ -60,6 +61,8 @@
                 UIImage *img = [UIImage imageWithContentsOfFile:[receipt imageFilePathForTrip:receipt.trip]];
                 if (img) {
                     [self.pdfRender appendImage:img withLabel:[self labelForReceipt:receipt]];
+                } else {
+                    LOGGER_WARNING(@"Receipt-%@ hasImage=TRUE, but no image", receipt.name);
                 }
             }
         }
@@ -83,9 +86,13 @@
         UIImage *img = [UIImage imageWithContentsOfFile:[receipt imageFilePathForTrip:receipt.trip]];
         if (img) {
             [self.pdfRender appendFullPageImage:img withLabel:[self labelForReceipt:receipt]];
+        } else {
+            LOGGER_WARNING(@"drawFullPageReceipt: Receipt-%@ hasImage=TRUE, but no image", receipt.name);
         }
     } else if ([receipt hasPDF]) {
         [self drawFullPagePDFFile:[receipt imageFilePathForTrip:receipt.trip] withLabel:[self labelForReceipt:receipt]];
+    } else {
+        LOGGER_WARNING(@"drawFullPageReceipt: Receipt-%@ hasImage && hasPDF = FLASE", receipt.name);
     }
 
 }
@@ -95,6 +102,7 @@
     CGPDFDocumentRef pdf = CGPDFDocumentCreateWithURL((CFURLRef) url);
 
     if (pdf == nil) {
+        LOGGER_ERROR(@"drawFullPagePDFFile: pdf is nil, for path:%@", filePath);
         return;
     }
 

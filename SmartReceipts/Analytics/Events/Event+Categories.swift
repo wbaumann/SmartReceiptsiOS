@@ -45,12 +45,8 @@ public extension Event {
     struct Purchases {
         static let PurchaseSuccess = Event(category: Category.Purchases, name: "PurchaseSuccess")
         static let PurchaseFailed = Event(category: Category.Purchases, name: "PurchaseFailed")
-        // TODO: Assumption: add these events
-//        static let PurchaseCancelled = Event(category: Category.Purchases, name: "PurchaseCancelled")
-//        static let RestorePurchaseSuccess = Event(category: Category.Purchases, name: "RestorePurchaseSuccess")
-//        static let RestorePurchaseFailed = Event(category: Category.Purchases, name: "RestorePurchaseFailed")
         static let ShowPurchaseIntent = Event(category: Category.Purchases, name: "ShowPurchaseIntent") // means that in-app purchase popup presented
-        // AdUpsell not implemented for iOS verion:
+        // TODO: AdUpsell not implemented for iOS verion:
 //        static let AdUpsellShown = Event(category: Category.Purchases, name: "AdUpsellShown")
 //        static let AdUpsellShownOnFailure = Event(category: Category.Purchases, name: "AdUpsellShownOnFailure")
 //        static let AdUpsellTapped = Event(category: Category.Purchases, name: "AdUpsellTapped")

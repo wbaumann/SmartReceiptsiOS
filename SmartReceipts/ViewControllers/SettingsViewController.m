@@ -799,7 +799,6 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [messageBody appendFormat:@"Plus: %@\n", [[Database sharedInstance] hasValidSubscription] ? @"true" : @"false"];
         [messageBody appendString:[[UIDevice currentDevice] deviceInfoString]];
         
-#warning TODO: ??? Attach log files as ZIP
         // Attach log files
         NSArray *logFiles = [Logger logFiles];
         for (DDLogFileInfo *file in logFiles) {

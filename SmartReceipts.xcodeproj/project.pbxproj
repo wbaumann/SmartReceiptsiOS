@@ -33,6 +33,7 @@
 		57580D1F1DFAB6AB0090C488 /* UIApplication+AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 57580D1E1DFAB6AB0090C488 /* UIApplication+AppVersion.m */; };
 		57691F001E10613500F78859 /* RateApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 57691EFF1E10613500F78859 /* RateApplication.m */; };
 		5785A4EF1E09DA0100C3CA0C /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785A4EE1E09DA0100C3CA0C /* AnalyticsLogger.swift */; };
+		579DDFB21E2E4223004937F7 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579DDFB11E2E4223004937F7 /* UIImage+Extensions.swift */; };
 		57C0EED11E2AE972001B4758 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0EED01E2AE972001B4758 /* CustomLogFormatter.swift */; };
 		57C0EED31E2D38B0001B4758 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD21CFD54430079F1AD /* Logger.swift */; };
 		57C0EED41E2D38B3001B4758 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0EED01E2AE972001B4758 /* CustomLogFormatter.swift */; };
@@ -411,6 +412,7 @@
 		57691EFE1E10613500F78859 /* RateApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateApplication.h; sourceTree = "<group>"; };
 		57691EFF1E10613500F78859 /* RateApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateApplication.m; sourceTree = "<group>"; };
 		5785A4EE1E09DA0100C3CA0C /* AnalyticsLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsLogger.swift; sourceTree = "<group>"; };
+		579DDFB11E2E4223004937F7 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		57C0EED01E2AE972001B4758 /* CustomLogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLogFormatter.swift; sourceTree = "<group>"; };
 		57C0EED21E2D2D3E001B4758 /* LoggerMacros-ObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LoggerMacros-ObjC.h"; sourceTree = "<group>"; };
 		57C125181E12DAEF008551AC /* ServiceAccount.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ServiceAccount.json; sourceTree = "<group>"; };
@@ -1444,10 +1446,10 @@
 		EA3C96951AEBA90300A2A5F9 /* Generators */ = {
 			isa = PBXGroup;
 			children = (
-				EA3C96991AEBA93000A2A5F9 /* ReportCSVGenerator.h */,
-				EA3C969A1AEBA93000A2A5F9 /* ReportCSVGenerator.m */,
 				EA3C96961AEBA91400A2A5F9 /* ReportGenerator.h */,
 				EA3C96971AEBA91400A2A5F9 /* ReportGenerator.m */,
+				EA3C96991AEBA93000A2A5F9 /* ReportCSVGenerator.h */,
+				EA3C969A1AEBA93000A2A5F9 /* ReportCSVGenerator.m */,
 				EA3C969C1AEBA94200A2A5F9 /* ReportPDFGenerator.h */,
 				EA3C969D1AEBA94200A2A5F9 /* ReportPDFGenerator.m */,
 				EA3C96A21AEBAB0200A2A5F9 /* TripCSVGenerator.h */,
@@ -1490,6 +1492,7 @@
 				57580D1B1DFAB58B0090C488 /* UIDevice+DeviceInfo.m */,
 				57580D1D1DFAB6AB0090C488 /* UIApplication+AppVersion.h */,
 				57580D1E1DFAB6AB0090C488 /* UIApplication+AppVersion.m */,
+				579DDFB11E2E4223004937F7 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2434,6 +2437,7 @@
 				EAF9ADE61AECF8F80000AC84 /* DatabaseCreateAtVersion11.m in Sources */,
 				EA8D818E1AEA7BBC00BAC943 /* ReceiptColumnReportName.m in Sources */,
 				EA3C96981AEBA91400A2A5F9 /* ReportGenerator.m in Sources */,
+				579DDFB21E2E4223004937F7 /* UIImage+Extensions.swift in Sources */,
 				A7F05BBC1CFC31520079F1AD /* WBCurrency+Extensions.swift in Sources */,
 				57691F001E10613500F78859 /* RateApplication.m in Sources */,
 				A78214FB1CFFE86000FD644A /* ExchangeRate.swift in Sources */,

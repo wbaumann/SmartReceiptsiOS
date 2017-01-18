@@ -6,6 +6,8 @@
 //  Copyright © 2016 sadf. All rights reserved.
 //
 
+#pragma mark - Solution based on this post http://stackoverflow.com/questions/28889368/possible-to-programmatically-feed-the-ios-predictive-keyboard-context-source-tex
+
 #import <UIKit/UIKit.h>
 
 @protocol SuggestionViewDelegate <NSObject>

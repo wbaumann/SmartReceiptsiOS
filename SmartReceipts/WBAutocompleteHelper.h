@@ -14,6 +14,7 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField;
 -(void)textFieldDidEndEditing:(UITextField *)textField;
+/// Forces autocompletion routine, this method should be called in 'textField:shouldChangeCharactersInRange:replacementString:'
 -(void)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 
 @end

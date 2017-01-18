@@ -23,7 +23,7 @@ final class Logger: NSObject {
     // MARK: -
     
     /// Initial setup, call it if you want to enable logger
-    override init() {
+    private override init() {
         // Default level:
         // Variables are setted in Project Build Settings, “Swift Compiler – Custom Flags” section, “Other Swift Flags”
         // “-DDEBUG” to the Debug section
