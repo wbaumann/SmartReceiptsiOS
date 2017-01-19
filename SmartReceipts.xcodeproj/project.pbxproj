@@ -2021,7 +2021,7 @@
 				ORGANIZATIONNAME = "Will Baumann";
 				TargetAttributes = {
 					84F4F33F18CFCCD000F69A35 = {
-						DevelopmentTeam = WPW5M885N8;
+						DevelopmentTeam = UX5Z7CLP7J;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2706,7 +2706,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = WPW5M885N8;
+				DEVELOPMENT_TEAM = UX5Z7CLP7J;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2756,7 +2756,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Smart Receipts LLC (UX5Z7CLP7J)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = WPW5M885N8;
+				DEVELOPMENT_TEAM = UX5Z7CLP7J;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
