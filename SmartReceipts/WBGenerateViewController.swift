@@ -124,7 +124,9 @@ extension WBGenerateViewController {
             
             Logger.debug("Type \(type) - \(success)")
             Logger.debug("Returned \(returned?.count)")
-            Logger.error(error.debugDescription)
+            if let error = error {
+                Logger.error(error.localizedDescription)
+            }
             
             if success {
                 self.dismiss(animated: true, completion: nil)

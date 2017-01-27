@@ -16,7 +16,35 @@
 @implementation PDFPageRenderView
 
 - (void)drawRect:(CGRect)rect {
-    [WBPdfDrawer renderPage:self.page inContext:UIGraphicsGetCurrentContext() inRectangle:self.bounds];
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    LOGGER_DEBUG(@"UIGraphicsGetCurrentContext(): %@", context);
+    
+    if ([UIGraphicsImageRenderer class]) {
+        LOGGER_INFO(@"UIGraphicsImageRenderer available");
+        
+        UIGraphicsImageRendererFormat *format = [UIGraphicsImageRendererFormat defaultFormat];
+        [format setPrefersExtendedRange:NO]; // disable rendering extended colors
+        
+        UIGraphicsImageRenderer *renderer = [[UIGraphicsImageRenderer alloc] initWithBounds:rect format:format];
+        
+        // generate UIImage from current pdf page
+        UIImage *pdfImg = [renderer imageWithActions:^(UIGraphicsImageRendererContext * _Nonnull rendererContext) {
+            LOGGER_DEBUG(@"UIGraphicsImageRendererContext: %@", rendererContext);
+            [WBPdfDrawer renderPage:self.page inContext:rendererContext.CGContext inRectangle:self.bounds];
+        }];
+        
+        // Draw image
+        [pdfImg drawInRect:rect];
+        
+        if (pdfImg == nil) {
+            LOGGER_ERROR(@"UIGraphicsImageRenderer, imageWithActions(block) -> NULL result");
+        }
+        
+    } else {
+        // Legacy version
+        [WBPdfDrawer renderPage:self.page inContext:context inRectangle:self.bounds];
+    }
 }
 
 @end
