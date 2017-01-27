@@ -35,7 +35,6 @@
 
 - (BOOL)hasValidSubscription {
     NSDate *endDate = [self subscriptionEndDate];
-    LOGGER_INFO(@"subscription end date:%@", endDate);
     return endDate != nil && [[NSDate date] isBeforeDate:endDate];
 }
 
