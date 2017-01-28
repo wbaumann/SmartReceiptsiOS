@@ -18,7 +18,7 @@
 - (void)drawRect:(CGRect)rect {
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    LOGGER_DEBUG(@"UIGraphicsGetCurrentContext(): %@", context);
+    LOGGER_INFO(@"UIGraphicsGetCurrentContext(): %@", context);
     
     if ([UIGraphicsImageRenderer class]) {
         LOGGER_INFO(@"UIGraphicsImageRenderer available");
@@ -30,12 +30,18 @@
         
         // generate UIImage from current pdf page
         UIImage *pdfImg = [renderer imageWithActions:^(UIGraphicsImageRendererContext * _Nonnull rendererContext) {
-            LOGGER_DEBUG(@"UIGraphicsImageRendererContext: %@", rendererContext);
+            LOGGER_INFO(@"UIGraphicsImageRendererContext: %@", rendererContext);
             [WBPdfDrawer renderPage:self.page inContext:rendererContext.CGContext inRectangle:self.bounds];
         }];
         
         // Draw image
-        [pdfImg drawInRect:rect];
+//        [pdfImg drawInRect:rect];
+#warning bad practice:
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        imageView.clipsToBounds = YES;
+        imageView.image = pdfImg;
+        [self addSubview:imageView];
         
         if (pdfImg == nil) {
             LOGGER_ERROR(@"UIGraphicsImageRenderer, imageWithActions(block) -> NULL result");
