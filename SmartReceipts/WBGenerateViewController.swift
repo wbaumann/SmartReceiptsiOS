@@ -97,7 +97,7 @@ extension WBGenerateViewController: MFMailComposeViewControllerDelegate, UINavig
         composer.navigationBar.tintColor = UINavigationBar.appearance().tintColor
         let barStyle = UIApplication.shared.statusBarStyle
         present(composer, animated: true) {
-            UIApplication.shared.setStatusBarStyle(barStyle, animated: true)
+            UIApplication.shared.setStatusBarStyle(barStyle, animated: false)
         }
     }
     

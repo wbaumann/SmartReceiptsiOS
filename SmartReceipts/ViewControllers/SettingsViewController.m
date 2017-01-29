@@ -812,9 +812,12 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [composeVC setToRecipients:@[FeedbackEmailAddress]];
     [composeVC setSubject:subject];
     [composeVC setMessageBody:messageBody isHTML:NO];
+    composeVC.navigationBar.tintColor = [UINavigationBar appearance].tintColor;
     
-    // Present the view controller modally.
-    [self presentViewController:composeVC animated:YES completion:nil];
+    UIStatusBarStyle style = [UIApplication sharedApplication].statusBarStyle;
+    [self presentViewController:composeVC animated:YES completion:^{
+        [[UIApplication sharedApplication] setStatusBarStyle:style animated:NO];
+    }];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
