@@ -12,4 +12,8 @@
 
 @property (nonatomic, strong, nullable) UIDocumentInteractionController *documentInteractionController;
 
+// YES if settingsVC was called from WBGenerateVC
+// default is nil, not a garbage (means 'NO')
+@property (nonatomic, assign) BOOL wasPresentedFromGeneratorVC;
+
 @end

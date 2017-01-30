@@ -119,6 +119,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 @implementation SettingsViewController
 
+#pragma mark - VC Lifecycle
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -566,6 +568,11 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self setHasBeenShown:YES];
     
     [self analyticsSettingsOverflow];
+    
+    if (_wasPresentedFromGeneratorVC) {
+        NSIndexPath *outputSection = [NSIndexPath indexPathForRow:0 inSection:6];
+        [self.tableView scrollToRowAtIndexPath:outputSection atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -573,6 +580,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [super viewWillDisappear:animated];
     [self.navigationController setToolbarHidden:NO animated:YES];
 }
+
+#pragma mark -
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] hasPrefix:@"Configure"]) {
@@ -625,7 +634,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsSettingsSavedNotification object:nil];
     });
-
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
