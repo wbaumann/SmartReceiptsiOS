@@ -9,6 +9,7 @@
 import Foundation
 
 extension SettingsViewController {
+    
     func shareBackupFile(_ path: String, fromRect: CGRect) {
         var showRect = fromRect
         showRect.origin.y += view.frame.origin.y - fromRect.height

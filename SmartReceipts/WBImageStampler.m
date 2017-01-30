@@ -45,7 +45,7 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
     for (WBReceiptAndIndex *rwi in receiptsAndIndexes) {
         @autoreleasepool {
             WBReceipt *receipt = [rwi receipt];
-            int index = [rwi index];
+            //int index = [rwi index];
             
             if (![receipt hasImage]) {
                 continue;

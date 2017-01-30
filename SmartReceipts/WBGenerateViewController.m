@@ -23,6 +23,7 @@
 #import "PendingHUDView.h"
 #import "Constants.h"
 #import "SmartReceipts-Swift.h"
+#import "SettingsViewController.h"
 
 @interface WBGenerateViewController () <MFMailComposeViewControllerDelegate>
 
@@ -75,6 +76,39 @@
 - (void)showAlertWithTitle:(NSString*) title message:(NSString*) message {
     [[[UIAlertView alloc]
       initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok",nil) otherButtonTitles:nil] show];
+}
+
+#pragma mark - UITableView
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath == [NSIndexPath indexPathForRow:0 inSection:0]) {
+        // customizing tooltip tapped:
+        [[AnalyticsManager sharedManager] recordWithEvent:[Event informationalConfigureReport]];
+        
+        UIStoryboard *currentStoryBoard = self.storyboard;
+        UINavigationController *settingsOverflow = [currentStoryBoard instantiateViewControllerWithIdentifier:@"SettingsOverflow"];
+        if (settingsOverflow == nil) {
+            LOGGER_WARNING(@"customizing tooltip tapped: SettingsOverflow is Nil");
+            return;
+        }
+        
+        // find Settings VC and set true for wasPresentedFromGeneratorVC
+        SettingsViewController *settingsVC = settingsOverflow.viewControllers.firstObject;
+        if (settingsVC) {
+            LOGGER_INFO(@"customizing tooltip tapped: wasPresentedFromGeneratorVC = YES");
+            settingsVC.wasPresentedFromGeneratorVC = YES;
+        }
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            settingsOverflow.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        }
+        
+        [settingsOverflow setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        [self presentViewController:settingsOverflow animated:YES completion:nil];
+    }
 }
 
 @end

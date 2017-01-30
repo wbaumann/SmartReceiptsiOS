@@ -15,6 +15,10 @@ def pods
     pod 'UIAlertView-Blocks', '~> 1.0'
     
     # Utilites
+    pod 'Firebase', '~> 3.11'
+    pod 'FirebaseAnalytics', '~> 3.6'
+    pod 'FirebaseCrash', '~> 1.1'
+    pod 'Google/Analytics'
     pod 'Google-Mobile-Ads-SDK'
     pod 'SplunkMint' # Usage, performance and crash monitoring for your iOS apps
     pod 'Tweaks', '~> 2.0.0' # configurable values. Tweaks is an easy way to fine-tune an iOS app.
@@ -24,11 +28,6 @@ def pods
     pod 'RMStore/Core', :path => '3rdparty/RMStore'
     pod 'RMStore/KeychainPersistence', :path => '3rdparty/RMStore'
     pod 'RMStore/AppReceiptVerificator', :path => '3rdparty/RMStore'
-    
-    # Analytics
-    pod 'Google/Analytics'
-    pod 'FirebaseAnalytics', '~> 3.6'
-    pod 'FirebaseCrash', '~> 1.1'
     
 end
 

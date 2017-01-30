@@ -17,7 +17,6 @@ class DDLogCustomFormatter: NSObject, DDLogFormatter {
     
     func format(message logMessage: DDLogMessage!) -> String! {
         // Configure logback to format the logs as follows: [ISO8601Z DateTime] <Class Name> VERBOSE/DEBUG/INFO/WARN/ERROR: Log Message
-        // TODO: assume: use function name too
         return NSString(format: "[%@] <%@> %@: %@", logMessage.timestamp.iso8601, logMessage.fileName, logMessage.flag.toString(), logMessage.message) as String
     }
 }
