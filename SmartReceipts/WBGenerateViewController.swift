@@ -31,7 +31,7 @@ extension WBGenerateViewController: QuickAlertPresenter {
                     return
                 }
                 
-                let sheet = UIAlertController(title: nil, message: NSLocalizedString("generate.report.share.method.sheet.title", comment: ""), preferredStyle: .actionSheet)
+                let sheet = UIAlertController(title: nil, message: NSLocalizedString("generate.report.share.method.sheet.title", comment: ""), preferredStyle: .alert)
                 let emailAction = UIAlertAction(title: NSLocalizedString("generate.report.share.method.email", comment: ""), style: .default) {
                     _ in
                     
@@ -118,8 +118,8 @@ extension WBGenerateViewController {
         for file in files {
             attached.append(URL(fileURLWithPath: file))
         }
-        let controller = UIActivityViewController(activityItems: attached, applicationActivities: nil)
-        controller.completionWithItemsHandler = {
+        let shareViewController = UIActivityViewController(activityItems: attached, applicationActivities: nil)
+        shareViewController.completionWithItemsHandler = {
             type, success, returned, error in
             
             Logger.debug("Type \(type) - \(success)")
@@ -132,7 +132,15 @@ extension WBGenerateViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         }
-        present(controller, animated: true, completion: nil)
+        
+        // For iPad
+        if let popover = shareViewController.popoverPresentationController {
+            popover.permittedArrowDirections = .up
+            popover.sourceView = self.tableView
+            popover.sourceRect = navigationController?.navigationBar.frame ?? self.view.frame
+        }
+        
+        present(shareViewController, animated: true, completion: nil)
     }
 }
 
