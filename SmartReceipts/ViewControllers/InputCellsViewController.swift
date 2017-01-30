@@ -12,7 +12,7 @@ import UIKit
 extension InputCellsViewController {
     func addSectionForPresentation(_ section: InputCellsSection) {
         presentedSections.add(section)
-        mapReturnKeys(section)
+        _ = mapReturnKeys(section)
     }
     
     func insert(_ cell: UITableViewCell, afterCell after: UITableViewCell) {

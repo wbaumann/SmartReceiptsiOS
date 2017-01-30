@@ -29,6 +29,8 @@
 #import "Tweaks/FBTweakShakeWindow.h"
 #import <SmartReceipts-Swift.h>
 
+#import <FirebaseCore/FirebaseCore.h>
+
 @interface WBAppDelegate ()
 
 @property (nonatomic, strong) RMStoreAppReceiptVerificator *receiptVerificator;
@@ -56,6 +58,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [FIRApp configure];
     
     [self enableAnalytics];
     

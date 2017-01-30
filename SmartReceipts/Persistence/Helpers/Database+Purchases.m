@@ -105,7 +105,7 @@
 }
 
 - (NSDate *)oneYearFrom: (NSDate *)date {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
     [offsetComponents setYear:1];
     return [gregorian dateByAddingComponents:offsetComponents toDate:date options:0];

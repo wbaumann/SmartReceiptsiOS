@@ -20,6 +20,7 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     LOGGER_INFO(@"UIGraphicsGetCurrentContext(): %@", context);
     
+    // The problem is that we can't use default CGContext for drawing a pdf on iPhone 7 and newer with iOS10 (extended color devices)
     if ([UIGraphicsImageRenderer class]) {
         LOGGER_INFO(@"UIGraphicsImageRenderer available");
         
@@ -35,8 +36,16 @@
         }];
         
         // Draw image
-//        [pdfImg drawInRect:rect];
-#warning bad practice:
+        // This method renders within the current context:
+        // [pdfImg drawInRect:rect]
+        // so here is another way:
+        
+        // Clear subviews (just in case, to be sure that pdf wouldn't be rendered twice)
+        for (UIView *subview in self.subviews) {
+            [subview removeFromSuperview];
+        }
+        
+        // add already rendered PDF file as image
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.clipsToBounds = YES;
