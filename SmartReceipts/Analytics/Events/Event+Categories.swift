@@ -18,9 +18,10 @@ extension Event {
         case Distance = "Distance"
         case Generate = "Generate"
         case Ratings = "Ratings"
+        case Informational = "Informational"
         case OnError = "OnError"
         
-        static let allValues = [Purchases, Navigation, Reports, Receipts, Distance, Generate, Ratings, OnError]
+        static let allValues = [Purchases, Navigation, Reports, Receipts, Distance, Generate, Ratings, Informational, OnError]
     }
 }
 
@@ -117,7 +118,7 @@ public extension Event {
     }
     
     struct Informational {
-        static let ConfigureReport = Event(category: Category.Reports, name: "ConfigureReport")
+        static let ConfigureReport = Event(category: Category.Reports, name: "ConfigureReports")
     }
 }
 
@@ -167,6 +168,9 @@ public extension Event {
     // MARK: - Event.Reports (EditTripViewController)
     class func reportsPersistNewReport() -> Event {return Event.Reports.PersistNewReport}
     class func reportsPersistUpdateReport() -> Event {return Event.Reports.PersistUpdateReport}
+    
+    // MARK: - Event.Informational (WBGenerateViewController)
+    class func informationalConfigureReport() -> Event {return Event.Informational.ConfigureReport}
     
 }
 
