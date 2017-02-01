@@ -10,6 +10,7 @@
 #import "WBPreferences.h"
 #import "Database+Hints.h"
 #import "SuggestionView.h"
+#import "NSString+Extensions.h"
 
 @interface WBAutocompleteHelper () <SuggestionViewDelegate>
 
@@ -29,23 +30,30 @@
     if (self) {
         _field = field;
         _forReceipts = forReceipts;
-        
-        _suggestionView = [SuggestionView new];
-        _suggestionView.maxSuggestionCount = 3;
-        _suggestionView.delegate = self;
-        
         self.field.inputAccessoryView = nil;
-        self.field.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.field.autocorrectionType = UITextAutocorrectionTypeYes;
         [self.field reloadInputViews];
     }
     return self;
+}
+
+- (SuggestionView *)suggestionView {
+    if (_suggestionView) {
+        return _suggestionView;
+    } else {
+        _suggestionView = [SuggestionView new];
+        _suggestionView.maxSuggestionCount = 3;
+        _suggestionView.delegate = self;
+        return _suggestionView;
+    }
 }
 
 #pragma mark - Public methods
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField == _field) {
-        [self showSuggestionView];
+        [self.field reloadInputViews];
+//        [self showSuggestionView];
     }
 }
 
@@ -59,15 +67,16 @@
     if (textField != _field) {
         return;
     }
+    if (![textField.text rangeExists:range]) {
+        return;
+    }
     
     // generate hints
     NSString *resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    
     NSArray *hints = [self getHintsForPrefix:resultString];
+    self.suggestionView.suggestions = hints;
     
-    // show suggestions
-    _suggestionView.suggestions = hints;
-    // reloads _suggestionView:
+    // reloads suggestionView:
     [self removeSuggestionView];
     [self showSuggestionView];
 }
@@ -76,9 +85,16 @@
 
 - (void)showSuggestionView {
     if (self.suggestionView.suggestions.count > 0) {
-        self.field.inputAccessoryView = self.suggestionView;
-        self.field.autocorrectionType = UITextAutocorrectionTypeNo;
-        [self.field reloadInputViews];
+
+        if ([self.field isFirstResponder]) {
+            [self.field resignFirstResponder];
+            
+            self.field.inputAccessoryView = self.suggestionView;
+            self.field.autocorrectionType = UITextAutocorrectionTypeNo;
+            [self.field reloadInputViews];
+            
+            [self.field becomeFirstResponder];
+        }
     }
 }
 
@@ -89,15 +105,16 @@
     }
     
     self.field.inputAccessoryView = nil;
-    self.field.autocorrectionType = UITextAutocorrectionTypeNo;
-    [self.field reloadInputViews];
     
+    // enables native OS autocompletion
     if ([self.field isFirstResponder]) {
         [self.field resignFirstResponder];
-        // enables native OS autocompletion
+        
+        _suggestionView = nil;
         self.field.inputAccessoryView = nil;
         self.field.autocorrectionType = UITextAutocorrectionTypeYes;
         [self.field reloadInputViews];
+        
         [self.field becomeFirstResponder];
     }
 }

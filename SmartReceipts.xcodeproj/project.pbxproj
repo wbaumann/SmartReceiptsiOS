@@ -29,6 +29,7 @@
 		570515A51E02EFA500BB8FE4 /* ErrorEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570515A41E02EFA500BB8FE4 /* ErrorEvent.swift */; };
 		570515A71E04AA7D00BB8FE4 /* FirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570515A61E04AA7D00BB8FE4 /* FirebaseAnalytics.swift */; };
 		5726E5431E00423900F2141C /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726E5421E00423900F2141C /* AnalyticsManager.swift */; };
+		572E0A7A1E42446600A7307A /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 572E0A791E42446600A7307A /* NSString+Extensions.m */; };
 		57580D1C1DFAB58B0090C488 /* UIDevice+DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 57580D1B1DFAB58B0090C488 /* UIDevice+DeviceInfo.m */; };
 		57580D1F1DFAB6AB0090C488 /* UIApplication+AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 57580D1E1DFAB6AB0090C488 /* UIApplication+AppVersion.m */; };
 		57691F001E10613500F78859 /* RateApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 57691EFF1E10613500F78859 /* RateApplication.m */; };
@@ -405,6 +406,8 @@
 		570515A41E02EFA500BB8FE4 /* ErrorEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorEvent.swift; sourceTree = "<group>"; };
 		570515A61E04AA7D00BB8FE4 /* FirebaseAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAnalytics.swift; sourceTree = "<group>"; };
 		5726E5421E00423900F2141C /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
+		572E0A781E42446600A7307A /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = "<group>"; };
+		572E0A791E42446600A7307A /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = "<group>"; };
 		57580D1A1DFAB58B0090C488 /* UIDevice+DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceInfo.h"; sourceTree = "<group>"; };
 		57580D1B1DFAB58B0090C488 /* UIDevice+DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceInfo.m"; sourceTree = "<group>"; };
 		57580D1D1DFAB6AB0090C488 /* UIApplication+AppVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+AppVersion.h"; sourceTree = "<group>"; };
@@ -1520,6 +1523,8 @@
 				A758CE8F1D01615900169C7C /* Tweaker.swift */,
 				A7F05BBB1CFC31520079F1AD /* WBCurrency+Extensions.swift */,
 				4D004BB61D272836004DBB19 /* SmartReceiptsFormattableString.swift */,
+				572E0A781E42446600A7307A /* NSString+Extensions.h */,
+				572E0A791E42446600A7307A /* NSString+Extensions.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2485,6 +2490,7 @@
 				EA2B8D841B4EF26D0043A84B /* PDFPage.m in Sources */,
 				EA69EF301AF0914000276B70 /* PaymentMethod.m in Sources */,
 				BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */,
+				572E0A7A1E42446600A7307A /* NSString+Extensions.m in Sources */,
 				EA40DC691B55598A003BF545 /* FullPagePDFImageView.m in Sources */,
 				BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */,
 				A7F05BB41CFC1A5D0079F1AD /* Exchanged.swift in Sources */,
