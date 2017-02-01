@@ -649,10 +649,6 @@ third-party archives.
    limitations under the License.
 
 
-## SplunkMint
-
-See https://mint.splunk.com/termsofuse
-
 ## Tweaks
 
 BSD License
