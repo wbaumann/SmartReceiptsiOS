@@ -758,16 +758,6 @@ third-party archives.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>See https://mint.splunk.com/termsofuse</string>
-			<key>License</key>
-			<string>Commercial</string>
-			<key>Title</key>
-			<string>SplunkMint</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
 			<string>BSD License
 
 For Tweaks software

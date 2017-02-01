@@ -84,7 +84,6 @@ PODS:
   - RMStore/Core (0.7.0)
   - RMStore/KeychainPersistence (0.7.0):
     - RMStore/Core
-  - SplunkMint (5.1.0)
   - Tweaks (2.0.0)
   - UIAlertView-Blocks (1.0)
 
@@ -101,7 +100,6 @@ DEPENDENCIES:
   - RMStore/AppReceiptVerificator (from `3rdparty/RMStore`)
   - RMStore/Core (from `3rdparty/RMStore`)
   - RMStore/KeychainPersistence (from `3rdparty/RMStore`)
-  - SplunkMint
   - Tweaks (~> 2.0.0)
   - UIAlertView-Blocks (~> 1.0)
 
@@ -127,10 +125,9 @@ SPEC CHECKSUMS:
   objective-zip: b78d235d234546105e118d35ae24a69feba08d44
   OpenSSL-iOS: 002cabfdfc2df48d63cebd723b90ada86c946316
   RMStore: 935f3e350c7f2f098047d73ddbd2ee2cd00f8b48
-  SplunkMint: 80997bf71d04cccf567de5dd33cbd72f21f39bc4
   Tweaks: 524fa47636cce3bf3a4d9156e980f10ae9480e81
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
 
-PODFILE CHECKSUM: f97995e86c48aa20dab81f67d25fe9e60765f0ee
+PODFILE CHECKSUM: e9f773701f0553229a51bfed323d070c602afd78
 
 COCOAPODS: 1.1.1

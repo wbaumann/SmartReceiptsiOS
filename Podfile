@@ -20,7 +20,6 @@ def pods
     pod 'FirebaseCrash', '~> 1.1'
     pod 'Google/Analytics'
     pod 'Google-Mobile-Ads-SDK'
-    pod 'SplunkMint' # Usage, performance and crash monitoring for your iOS apps
     pod 'Tweaks', '~> 2.0.0' # configurable values. Tweaks is an easy way to fine-tune an iOS app.
     pod 'CocoaLumberjack/Swift' # Logging framework
     
