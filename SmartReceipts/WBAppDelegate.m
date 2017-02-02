@@ -22,8 +22,6 @@
 #import "Database+Purchases.h"
 #import "PrettyPDFRender.h"
 
-#import <SplunkMint/SplunkMint.h>
-
 #import "RIButtonItem.h"
 #import "UIAlertView+Blocks.h"
 #import "Tweaks/FBTweakShakeWindow.h"
@@ -86,8 +84,6 @@
     if (url != nil && [url isFileURL]) {
         [self handleOpenURL:url];
     }
-
-    [[Mint sharedInstance] initAndStartSessionWithAPIKey:@"c65e0389"];
 
     NSSetUncaughtExceptionHandler(&onUncaughtExcepetion);
 

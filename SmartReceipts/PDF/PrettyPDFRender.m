@@ -182,8 +182,6 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 - (void)appendPDFPage:(CGPDFPageRef)page withLabel:(NSString *)label {
     if (![self.openPage isEmpty]) {
         [self startNextPage];
-    } else {
-        LOGGER_WARNING(@"appendPDFPage: self.openPage isEmpty");
     }
     
     CGRect cropBox = CGPDFPageGetBoxRect(page, kCGPDFCropBox);

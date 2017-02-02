@@ -1,6 +1,0 @@
-framework module SplunkMint {
-    umbrella header "SplunkMint.h"
-    
-    export *
-    module * { export * }
-}

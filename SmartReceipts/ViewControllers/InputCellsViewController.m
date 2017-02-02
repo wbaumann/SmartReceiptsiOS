@@ -16,6 +16,7 @@
 #import "TitledAutocompleteEntryCell.h"
 #import "SwitchControlCell.h"
 #import "UIApplication+DismissKeyboard.h"
+#import "NSString+Extensions.h"
 
 @interface InputCellsViewController ()
 
@@ -123,6 +124,7 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
     UITableViewCell *cell = [textField superviewOfType:[UITableViewCell class]];
     
     if ([cell isKindOfClass:[TitledAutocompleteEntryCell class]]) {
@@ -130,6 +132,9 @@
         [autocompleteEntryCell.autocompleteHelper textField:textField shouldChangeCharactersInRange:range replacementString:string];
     }
     
+    if (![textField.text rangeExists:range]) {
+        return YES;
+    }
     NSString *validate = [textField.text stringByReplacingCharactersInRange:range withString:string];
 
     if (!self.activeFieldInputValidation) {
