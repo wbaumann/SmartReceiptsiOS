@@ -17,6 +17,8 @@
 
 - (void)drawRect:(CGRect)rect {
     
+    self.backgroundColor = [UIColor whiteColor];
+    
     CGContextRef context = UIGraphicsGetCurrentContext();
     LOGGER_INFO(@"UIGraphicsGetCurrentContext(): %@", context);
     
@@ -49,7 +51,9 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.clipsToBounds = YES;
+        imageView.backgroundColor = [UIColor whiteColor];
         imageView.image = pdfImg;
+        
         [self addSubview:imageView];
         
         if (pdfImg == nil) {
