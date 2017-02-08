@@ -28,6 +28,7 @@
 #import <SmartReceipts-Swift.h>
 
 #import <FirebaseCore/FirebaseCore.h>
+#import <FirebaseCrash/FirebaseCrash.h>
 
 @interface WBAppDelegate ()
 
@@ -109,6 +110,12 @@ void onUncaughtExcepetion(NSException *exception) {
     [message appendString:@"\n"];
     [message appendString:exception.callStackSymbols.description];
     [Logger error:message file:@"UncaughtExcepetion" function:@"onUncaughtExcepetion" line:0];
+    
+    FIRCrashLog(@"%@", message);
+    
+    // record analytics event too
+    ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithException:exception];
+    [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
