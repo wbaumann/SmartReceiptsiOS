@@ -52,7 +52,8 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField == _field) {
-        [self.field reloadInputViews];
+        // not needed anymore
+//        [self.field reloadInputViews];
 //        [self showSuggestionView];
     }
 }
