@@ -31,8 +31,12 @@
 }
 
 - (void)execute {
-    [[NSFileManager defaultManager] createDirectoryAtPath:self.outputPath withIntermediateDirectories:YES attributes:nil error:nil];
-
+    NSError *error;
+    BOOL result = [[NSFileManager defaultManager] createDirectoryAtPath:self.outputPath withIntermediateDirectories:YES attributes:nil error:&error];
+    if ((result == NO) || error != nil) {
+        LOGGER_ERROR(@"execute(), error creating directory at path: %@, error: %@", self.outputPath, error.description);
+    }
+    
     OZZipFile *zipFile = [[OZZipFile alloc] initWithFileName:self.inputPath mode:OZZipFileModeUnzip];
     [self extractFromZip:zipFile zipName:SmartReceiptsDatabaseExportName toFile:[self.outputPath stringByAppendingPathComponent:SmartReceiptsDatabaseExportName]];
     NSData *preferences = [self extractDataFromZip:zipFile withName:SmartReceiptsPreferencesExportName];

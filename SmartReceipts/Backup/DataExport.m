@@ -48,7 +48,12 @@
 
 - (void)appendAllTripFilesToZip:(OZZipFile *)file {
     NSString *tripsFolder = [self.workDirectory stringByAppendingPathComponent:SmartReceiptsTripsDirectoryName];
-    NSArray *trips = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:tripsFolder error:nil];
+    NSError *error;
+    NSArray *trips = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:tripsFolder error:&error];
+    if (error) {
+        LOGGER_ERROR(@"appendAllTripFilesToZip error: %@", error.description);
+    }
+    
     for (NSString *trip in trips) {
         [self appFilesForTrip:trip toZip:file];
     }
@@ -56,7 +61,12 @@
 
 - (void)appFilesForTrip:(NSString *)trip toZip:(OZZipFile *)zip {
     NSString *tripFolder = [[self.workDirectory stringByAppendingPathComponent:SmartReceiptsTripsDirectoryName] stringByAppendingPathComponent:trip];
-    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:tripFolder error:nil];
+    NSError *error;
+    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:tripFolder error:&error];
+    if (error) {
+        LOGGER_ERROR(@"appFilesForTrip:toZip: error: %@", error.description);
+    }
+    
     for (NSString *file in files) {
         NSString *zipName = [trip stringByAppendingPathComponent:file];
         [self appendFileNamed:file inDirectory:tripFolder archiveName:zipName toZip:zip];

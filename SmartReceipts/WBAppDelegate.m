@@ -255,6 +255,7 @@ void onUncaughtExcepetion(NSException *exception) {
                              delegate:nil
                     cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil)
                     otherButtonTitles:nil] show];
+                LOGGER_INFO(@"app.delegate.import.success");
             } else {
                 [[[UIAlertView alloc]
                         initWithTitle:NSLocalizedString(@"generic.error.alert.title", nil)
@@ -262,6 +263,7 @@ void onUncaughtExcepetion(NSException *exception) {
                              delegate:nil
                     cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil)
                     otherButtonTitles:nil] show];
+                LOGGER_ERROR(@"app.delegate.import.error");
             }
         });
     });
