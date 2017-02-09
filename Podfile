@@ -8,7 +8,7 @@ def pods
     
     # File storage
     pod 'FMDB', '2.6.2' # SQLite wrapper
-    pod 'objective-zip', '1.0.2', :inhibit_warnings => true
+    pod 'objective-zip', '1.0.3'
     
     # UI
     pod 'MRProgress', '0.8.3'
