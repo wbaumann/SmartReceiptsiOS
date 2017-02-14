@@ -96,7 +96,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tweakUIDismissed) name:FBTweakShakeViewControllerDidDismissNotification object:nil];
 #endif
     
-    LOGGER_VERBOSE(@"Application launched");
+    LOGGER_INFO(@"Application didFinishLaunchingWithOptions: %@", launchOptions);
     
     return YES;
 }

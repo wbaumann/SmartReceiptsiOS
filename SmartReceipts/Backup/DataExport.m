@@ -30,7 +30,9 @@
 - (NSString *)execute {
     NSString *zipPath = [self.workDirectory stringByAppendingPathComponent:SmartReceiptsExportName];
 
+    LOGGER_INFO(@"execute at path: %@", zipPath);
     OZZipFile *zipFile = [[OZZipFile alloc] initWithFileName:zipPath mode:OZZipFileModeCreate];
+    LOGGER_INFO(@"zipFile legacy32BitMode: %@", zipFile.legacy32BitMode ? @"YES" : @"NO");
     [self appendFileNamed:SmartReceiptsDatabaseName inDirectory:self.workDirectory archiveName:SmartReceiptsDatabaseExportName toZip:zipFile];
     [self appendAllTripFilesToZip:zipFile];
     NSData *preferences = [[WBPreferences xmlString] dataUsingEncoding:NSUTF8StringEncoding];
@@ -41,6 +43,7 @@
 }
 
 - (void)appendData:(NSData *)data zipName:(NSString *)zipName toFile:(OZZipFile *)zipFile {
+    LOGGER_INFO(@"appendData: size %li, zipName: %@, toFile %@", data.length, zipName, zipFile);
     OZZipWriteStream *stream = [zipFile writeFileInZipWithName:zipName compressionLevel:OZZipCompressionLevelDefault];
     [stream writeData:data];
     [stream finishedWriting];

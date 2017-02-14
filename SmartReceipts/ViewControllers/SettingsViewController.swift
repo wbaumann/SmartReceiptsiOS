@@ -10,15 +10,23 @@ import Foundation
 
 extension SettingsViewController {
     
+    // MARK: - UIDocumentInteractionController
+    
     func shareBackupFile(_ path: String, fromRect: CGRect) {
         var showRect = fromRect
         showRect.origin.y += view.frame.origin.y - fromRect.height
         
-        let controller = UIDocumentInteractionController(url: URL(fileURLWithPath: path))
+        let fileUrl = URL(fileURLWithPath: path)
+        Logger.info("shareBackupFile via UIDocumentInteractionController with url: \(fileUrl)")
+        let controller = UIDocumentInteractionController(url: fileUrl)
+        Logger.info("UIDocumentInteractionController UTI: \(controller.uti)")
         controller.presentOptionsMenu(from: showRect, in: view, animated: true)
         documentInteractionController = controller
     }
-    
+}
+
+extension SettingsViewController {
+
     // MARK: - Analytics methods:
     
     // MARK: navigation
