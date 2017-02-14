@@ -13,6 +13,7 @@
 
 +(NSString*) documentsPath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    LOGGER_INFO(@"documentsPaths: %@", paths);
     return [paths objectAtIndex:0];
 }
 
