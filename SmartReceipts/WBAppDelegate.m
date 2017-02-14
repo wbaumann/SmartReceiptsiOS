@@ -239,16 +239,28 @@ void onUncaughtExcepetion(NSException *exception) {
     PendingHUDView *hud = [PendingHUDView showHUDOnView:self.window.rootViewController.view];
     dispatch_async([[WBAppDelegate instance] dataQueue], ^{
         DataImport *dataImport = [[DataImport alloc] initWithInputFile:zipPath.path output:[WBFileManager documentsPath]];
-        [dataImport execute];
-
-        // delete imported zip
-        [WBFileManager deleteIfExists:[zipPath path]];
-        BOOL result = [[Database sharedInstance] importDataFromBackup:[WBFileManager pathInDocuments:SmartReceiptsDatabaseExportName] overwrite:overwrite];
+        
+        BOOL success = YES; // true by default
+        
+        @try {
+            [dataImport execute];
+        } @catch (NSException *exception) {
+            success = NO;
+            LOGGER_ERROR(@"importZip error: %@", [exception reason]);
+            ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithException:exception];
+            [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
+        }
+        
+        if (success) {
+            // delete imported zip and import data to DB
+            [WBFileManager deleteIfExists:[zipPath path]];
+            success = [[Database sharedInstance] importDataFromBackup:[WBFileManager pathInDocuments:SmartReceiptsDatabaseExportName] overwrite:overwrite];
+        }
 
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hide];
 
-            if (result) {
+            if (success) {
                 [[[UIAlertView alloc]
                         initWithTitle:nil
                               message:NSLocalizedString(@"app.delegate.import.success.alert.message", nil)
