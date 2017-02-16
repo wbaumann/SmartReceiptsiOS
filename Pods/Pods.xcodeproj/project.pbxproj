@@ -7,125 +7,123 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08213BE70D0058A45621C77E512E9127 /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = F64D2C9DB85DC1E62DF403F2DC75351D /* zutil.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		01852082E4601E8BEA76C153A92F4F50 /* deflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 58C6C51A80983BC3117352AB45E062DF /* deflate.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		08B506FB381C67E3C881B5665BA1A105 /* zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = D2C52BDAF03C2C0C4EF0200E828ADDA1 /* zlib.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		0A8F50DDBAC74971E65D66D5AC094827 /* FBTweakInline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A05C568A79B715C55AAFBCE96AA9A0C /* FBTweakInline.m */; };
 		0B87AEED887108FF3FDA89B00E048E1B /* MRCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA5B0DD71C8690633D299CEBA78BA20 /* MRCircularProgressView.m */; };
-		0BE78104C487E274BCE803420C85853B /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 94017C56D5402E0E6BD9536AD6C41E58 /* ioapi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D619A711F71058C9238B17E9AF48AFC /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DBCAC6AE9154C662DCAD1A5182F70C /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		103B96C5A43B46F661390BE245885B0E /* FBTweakViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 321C0BAABC27F1C9F6451F2A6AE51B53 /* FBTweakViewController.m */; };
-		113A9CF0999F9F74B57A0B382D81E861 /* inftrees.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F18E325D8706B7B379B94C789A3D7A8 /* inftrees.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1369B2D3C729B05E9E47D85EEE396756 /* OZZipFile+NSError.h in Headers */ = {isa = PBXBuildFile; fileRef = 59D1611E3CE5090A9BAEC208E7DDBC16 /* OZZipFile+NSError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		141DCDE250D8D16C2E9359E7FC21A202 /* RMStoreAppReceiptVerificator.h in Headers */ = {isa = PBXBuildFile; fileRef = FD1A1961F83CFCC97BF94C8C3EA34AD5 /* RMStoreAppReceiptVerificator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16B57656A2799B4A3826E6B8159AB289 /* DDDispatchQueueLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F6C863953290DCFF3BCCDB585CD2C2 /* DDDispatchQueueLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		183A0D8AF38E0EE20E47F1FEF9B37327 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = C622DA23B6A4AB60E841AA934DBDEE08 /* FMResultSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		186BA0CD5A5BE33169FC1F5896C7FF6B /* OZZipReadStream+Internals.h in Headers */ = {isa = PBXBuildFile; fileRef = A038EE475714A9B0BD47FB2807FC6427 /* OZZipReadStream+Internals.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		19A44C55B25612B9721A27E7C49E03CF /* MRIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0548615C81B4C9EB437E1B48BB83BB74 /* MRIconView.m */; };
-		1D5DAD15962C7D7243E6B5DC7F4DB747 /* OZFileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFDD8AE187054C5E794166207A30E9 /* OZFileInZipInfo.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		19C95C1CD92CBEB0FB4938F18BE160AF /* crc32.h in Headers */ = {isa = PBXBuildFile; fileRef = 357DB0EEDF6BDBF66CFC7201DB39ABF6 /* crc32.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1A61E09AF80820D0ADE00CA77F8F958C /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 84213748591FECA2AD809E0C1DBE52E0 /* zip.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1AD1763F7D3C1B15BA7F839594B7719A /* OZZipException+Internals.h in Headers */ = {isa = PBXBuildFile; fileRef = 6772EA67E5B527B9B47D4BA87DC98ECE /* OZZipException+Internals.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1DD3BC73E10A4859842FC27E2F31237D /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = 144CFE7BA280F1510955BC7056E0CFE8 /* uncompr.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		2174B8757AF07AB52A80B819003A3A0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C25992504FA557B5D405DD9E3D8C894 /* Foundation.framework */; };
 		220699DEC119CAB5C7718EE20443AB6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C25992504FA557B5D405DD9E3D8C894 /* Foundation.framework */; };
 		23E718FD226F4160750DC767E2F55C31 /* OZFileInZipInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 33AC75A4DA082630AA1A4F0DF6340E81 /* OZFileInZipInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		24A8CBD7E995F5721A78424E92D8EBF1 /* CocoaLumberjack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C20FCC27227CD663271128676E2844A /* CocoaLumberjack-dummy.m */; };
-		25A47227B7BE3B9AF485EBBF2509F3F8 /* gzguts.h in Headers */ = {isa = PBXBuildFile; fileRef = 0256073713A6E90B60C006D71FAC1B07 /* gzguts.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		266D582EA84732E7D49E7AF5F7B8CEA7 /* crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = 01834136687929C3C0F8333226461CD3 /* crc32.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		28BFEF0F25609E5CF6D310771B92CD24 /* MRStopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F3B71E2DAAF7AB96D2D9FA7AC4308C /* MRStopButton.m */; };
 		295F91C90AABA5312DAEE5FD597792D3 /* Tweaks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDC4D238877AD014ACB7E539654F2F0 /* Tweaks-dummy.m */; };
 		296C87002227C548A271990B8447072A /* _FBTweakCategoryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9240BC62903510EE96D25DC1FE4C6B88 /* _FBTweakCategoryViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2B24E2BCF8F1241CA6606425669B0E0B /* inftrees.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F18E325D8706B7B379B94C789A3D7A8 /* inftrees.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2B760213EE78830957A29FF2AEC63E40 /* MRProgress-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D447F5A0D81E8DF8463FAC4C301D903 /* MRProgress-dummy.m */; };
-		2CB8BA8F734FB78ABAB291CE5A4FC36D /* crc32.h in Headers */ = {isa = PBXBuildFile; fileRef = 357DB0EEDF6BDBF66CFC7201DB39ABF6 /* crc32.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CD6B675881D7CB7E71237F95B2140BC /* FBTweakCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = F11BA874A847C674C7CFD2931CFE7CDA /* FBTweakCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DF115C42911497DB7C12B6B5D5B3C0A /* CocoaLumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B6C603DB275D3843E0D086872D49232 /* CocoaLumberjack.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2E74C2CE178F2D704ACF459B78E42A61 /* adler32.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D66E4C4292F516394DD6EE8B99A8452 /* adler32.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		2F3B8655B3125065A19AB15A9FCDC7FE /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 044BB5A170FD4E5C05A2DE1CA4A76A4B /* unzip.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		305153E7ED6AC45B4005CBB3597C90B0 /* GoogleToolboxForMac-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 81B6F202F9A18FD623E3332C2473715A /* GoogleToolboxForMac-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3084B72EA21046D2E806C9661E8FF54E /* MRCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = C8DFD872ECDD1A66616480E5C54DC82E /* MRCircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34701C0B3E988C6EB7EEB1C87F7F9DF0 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B51360CB269A9BF9F0977A147D27490 /* UIAlertView+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		34C4196C6555C1DA45F6DFD6ECD7AA52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C25992504FA557B5D405DD9E3D8C894 /* Foundation.framework */; };
-		361177A7726B64A7AF7FCE57F0F36C4B /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = 8F27A12CACC027890AC456B9250F645A /* trees.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3681BF56EC6FC4B8CE7D5C9721AAE1E2 /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBAAD3D99B79C2E51803E30373C6D74 /* CocoaLumberjack.swift */; };
 		36A07750A24AE783E14A2BE0583F8AF9 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4FA441368164F702D6241CE9A7C2C9 /* MessageUI.framework */; };
 		37C4C6D5D83DD4903FFA176CF9ECA0ED /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB8AD0A437DC7EBE75A7ACED14D6549 /* UIActionSheet+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3806B87A16D7F837B450FA5AD991F92D /* deflate.h in Headers */ = {isa = PBXBuildFile; fileRef = B00458FC3C55ABFF750B23C265FC9134 /* deflate.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3B269A35DB33C767494461A8E4D1D431 /* OZZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F3658F4CE99C01567D3AB073D2E288 /* OZZipWriteStream.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		3BDA432A507243983C8E67C7C16BEF3F /* OZZipReadStream.h in Headers */ = {isa = PBXBuildFile; fileRef = B8DFC20A9F1BF43E47EF6CBA8A6299B2 /* OZZipReadStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3BE547DE95D45C4883B993210AA15C25 /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = 69FDE8C423B958B1056DB64915C0ABA8 /* compress.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		3C109FC5EBB66504A3473676F01F9940 /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D5F7DDF7CD7D74751EBDFC0D45F7E5 /* DDASLLogCapture.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		3EBC959BF38C92BF90CF180EAB8CDD01 /* FBTweak.h in Headers */ = {isa = PBXBuildFile; fileRef = D95EADDE19ABBD5F91CC4E35E20A8DD8 /* FBTweak.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3ECC23FFAE400A6B2658AAF2990D83BE /* FMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 99A3565EEF2BD15D62E76E3661471386 /* FMDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F61BE79D4B46C119C136EDE960CE78C /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 02106D1EB15C61A4A980FA024258B3B2 /* FMDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FE4A8DA6BB302B296B74F9A44D15AC7 /* objective-zip-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 92846A715284742733EFDB5697F61E54 /* objective-zip-dummy.m */; };
 		43355CB87F9DA010D28F83A68CB0208C /* FBTweakCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 181AE9338634E7416A8DC11893277F95 /* FBTweakCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		441E9F23190B6B11AEA47DF0DF8DCE3D /* OZZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F83BF603941B81578C794072D2299C /* OZZipException.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		437B2281BB110333164B8495FAC3D6B7 /* adler32.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D66E4C4292F516394DD6EE8B99A8452 /* adler32.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		4444B414C3340D93A9FD00FA7004CA8E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C25992504FA557B5D405DD9E3D8C894 /* Foundation.framework */; };
 		452CB88A4DF80DD8634EE4D5F4DE19D4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9008DE3A526A20AAFD91B864DBDBD58 /* QuartzCore.framework */; };
 		454E1EB4F7B62721B59982B1E983DCFA /* MRProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 306CAC6E01A45EDF35D2538EE41EC682 /* MRProgressOverlayView.m */; };
+		481B3B149551A140547ACC733FF192D2 /* trees.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D75B5578655F529B7FDFCE2DFE569B5 /* trees.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		486E937D72E9AB4AC5FCF0FFF5B780AA /* _FBTweakTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28675A0EE917510D8D3DE87137E42E78 /* _FBTweakTableViewCell.m */; };
-		490D4F0E91E98D967A3F6BE2FE291ED5 /* deflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 58C6C51A80983BC3117352AB45E062DF /* deflate.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		497345A00D4FA768765F4DC530BF1B99 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 159153483507A30838029BA4B48928B3 /* DDFileLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		499A8CF96448C388F2C2CF38654F816C /* FBTweakShakeWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = CE9C32E3310956AECA381A2977CFBAAC /* FBTweakShakeWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AA5F8B7EFEF5E91587E3507CC623F0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C25992504FA557B5D405DD9E3D8C894 /* Foundation.framework */; };
 		4DE97BB359DA14D11E9D0300D0199968 /* DDLogMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = BFB20BEDE195484F021D668C6ECDBCC5 /* DDLogMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		50D2975AED13D7449ABF89C4C1434FB5 /* gzwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EBDA1F8868C47423E41662A186A1C84 /* gzwrite.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		511D33661B3CB8A77E13E235A9D8D822 /* OZZipFile+Standard.h in Headers */ = {isa = PBXBuildFile; fileRef = FAAC41626B92FEF5C9C73269FEE016D0 /* OZZipFile+Standard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52A5E8263E7C91DDAB94F66A5364369B /* MRProgressOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C15DA5E471B1C67307B371CB05421CF /* MRProgressOverlayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55735E49C797907FFE5B69ABC4D71EB8 /* OZZipReadStream+NSError.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A023574340F985981A8CD508323F9F4 /* OZZipReadStream+NSError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		55C8AEB9F6FE218BDEED35C2C7D57A5A /* trees.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D75B5578655F529B7FDFCE2DFE569B5 /* trees.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		575AD073AC4BCF713D49CB330908B539 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 858C8952DD83B9ABE105C1524F935196 /* DDContextFilterLogFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		584E770EAEFAA608647B379FBEA69673 /* zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = D2C52BDAF03C2C0C4EF0200E828ADDA1 /* zlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58E4FA33241C6DD745B001495FF139A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C25992504FA557B5D405DD9E3D8C894 /* Foundation.framework */; };
 		59DF58A59777118EB4280BA39871171B /* DDASLLogCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B7712B686ADC434F3D389963A6C02A3 /* DDASLLogCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BAB3D551333B417F5F3086ADE74FA0B /* FBTweakInlineInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD89290C8EAD7148DC21B85DF90F877 /* FBTweakInlineInternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DE1EABAC3B67A90E3E157E596A9B135 /* _FBTweakArrayViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B64A3226126DD096C4E726B89671C68F /* _FBTweakArrayViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F7F40B822116B9DABC6B73B8EBE338B /* MRBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 442DF97C69D218612B626B5FAC4B1ADD /* MRBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5FAB840F8F16D28DBAC2162E861F8F19 /* OZZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8868472E83254FC549578396ABD400 /* OZZipFile.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6039197DBB9285B61112F2148A5CFFD5 /* RMStore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CEB0BE3DB82766F4DA496087F4C81857 /* RMStore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		607557014AFB02C1B1E9679AF6FC7BEF /* _FBTweakDictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F098A1C218EBFB65749068AEABD577AB /* _FBTweakDictionaryViewController.m */; };
 		635B36C5E1F4E71EF15379BC29CE8E66 /* UIAlertView-Blocks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3248E7E7EDDED83FCBC55E25614B0E25 /* UIAlertView-Blocks-dummy.m */; };
 		642A218BFC624EC42DE4483ABA16D0B6 /* RMStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 067BE2B31CFF72E7AEC72AAB7CF8E86B /* RMStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		650623A0B062672D61764CC9E4A2BBB6 /* OZZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D07B2ABC3D10B69A32C52E484428285 /* OZZipReadStream.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		6694BF94D5D418ED3CEB045E44DE2210 /* gzwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EBDA1F8868C47423E41662A186A1C84 /* gzwrite.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		66B7329387D44C99620C854697AF988C /* _FBTweakBindObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5DF89983A4A5CA506E27691EE060B3 /* _FBTweakBindObserver.m */; };
+		68662E20967A6F8D10C9BD3A790080AF /* gzguts.h in Headers */ = {isa = PBXBuildFile; fileRef = 0256073713A6E90B60C006D71FAC1B07 /* gzguts.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		69DCF72B6D420D08ACD227CD8CFD1FE8 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7CF058AE48D3EF86CC41E3280B6709 /* DDASLLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		6B16F2C0A009D9F92551B7E60AC8FEAE /* inflate.h in Headers */ = {isa = PBXBuildFile; fileRef = 335B91C79CEF6305C86D227CEC13359D /* inflate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6B2DA31F38F439037F57803FD55C18CB /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 658404D0314A0ADF79701E2198E3B77D /* zip.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		6BC3A0134BA95406C38A54178C7FABC0 /* OZFileInZipInfo+Internals.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D91EF9A78217B456914A2BC681B26D /* OZFileInZipInfo+Internals.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6C63E2BEBE2BC08BD46F6A91D0A08143 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 133E72387189359D880B90193C874A68 /* FMDatabasePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F0C7BDE3489D7A288335CAB079E1A94 /* RMStoreAppReceiptVerificator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E91DF4972C84A605487696BA2A4CB63 /* RMStoreAppReceiptVerificator.m */; };
 		70E06A302563C3CABD70814EC5FA4EA1 /* RIButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 21402296FB2B0F9768FE700CF6CFCE08 /* RIButtonItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		74695802583BDB0C0818AC1B97F63815 /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5576A36F797EC2A67D0C4B388BBC9878 /* FMDatabaseAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7545EB8BDEF75E415AC19C0563101FB4 /* inftrees.c in Sources */ = {isa = PBXBuildFile; fileRef = 7FD19D8E51B18914568D6F6AE54A8BCF /* inftrees.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		75C2EC4E91C632BA530B5B1E60DC4AEE /* MRNavigationBarProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5081049B42A6A4A90FE4F2558281D5D /* MRNavigationBarProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75D6573E7DA819DA5D1E72E489785B15 /* OZZipFileMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A08C6071A0017F39DF1A56DA6D7B5FA /* OZZipFileMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76FC2F9E6367F2B418217858AAABC3C9 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 9BD91C0DBDBECF23BF214B529BC21D44 /* ioapi.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		780536169939A6FD9E4AC271FCF5DD75 /* GoogleToolboxForMac-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7337CBD032FFBE4E51E6E927854B6634 /* GoogleToolboxForMac-dummy.m */; };
 		788907A105CE1BC948CBF1DC3F0099CD /* MRProgressHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C359F2B5EA948583DE787800EBA3262 /* MRProgressHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78A80E08F2DEBF0DF88F04923161BE6A /* GTMLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E7D7A3791E00C419ABA6E65E23BCA4F /* GTMLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		798541F597EE7C7F6F618F8E86840195 /* _FBTweakCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4BC3F484F034D4791714FFCD18FA72 /* _FBTweakCategoryViewController.m */; };
 		79C4D179A1CCCA160E101D57B4A6D0C8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDDF4FEBB71DD8C81121D86CA7761CC8 /* Accelerate.framework */; };
 		79D1D6627A49303D61248DDF25771683 /* Objective-Zip+NSError.h in Headers */ = {isa = PBXBuildFile; fileRef = 749272803ABF6ED88CF012E8D8BDB39D /* Objective-Zip+NSError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79F1B137EC6239A50BEB39E8BFC8A949 /* OZZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D07B2ABC3D10B69A32C52E484428285 /* OZZipReadStream.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		7BB85363DFF8358BE62F9A8EDC5D0AF0 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E48F42D587EC849F7C389EE151C6BDA9 /* GTMDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C5786E8AC2639ACC74DB1D0A0F1C70B /* infback.c in Sources */ = {isa = PBXBuildFile; fileRef = 83A526D0BB47C71AB18C33425349E220 /* infback.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7C818AE74E830311E61FF1A7E42D0713 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1EC53B681DBA10A37EAAA568317DD8 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		7CFF3D11D2A80054659CB09F8D17A1A1 /* MRProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = C8FD7031075DAF4796AE177328BB4989 /* MRProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E0E442DC7850E100F176FB5E986F23D /* zconf.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C17234C3116F15AEB6506C8A085EF0 /* zconf.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7EF5651577C3C196592643A7FE3F9489 /* gzclose.c in Sources */ = {isa = PBXBuildFile; fileRef = A7731419F0BC2262894E014B655F7D61 /* gzclose.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		7DA1397E767A8BF60F3F2FAD7E5C0B8D /* OZZipReadStream+Internals.h in Headers */ = {isa = PBXBuildFile; fileRef = A038EE475714A9B0BD47FB2807FC6427 /* OZZipReadStream+Internals.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		7FC167A3BC453252ACAB9A36F3F68453 /* OZZipException.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BE8B2960E6030A36F55147F77445A9A /* OZZipException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FE6EA1D26E8794C72CBFEF35D44B0FA /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = F64D2C9DB85DC1E62DF403F2DC75351D /* zutil.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		8030C8084073CB1C722287F09DC9B9DD /* objective-zip-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B4A0C86316F1B474975D0C70D372F34 /* objective-zip-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		811BF3A1EDF9B595901E2FC404641EE7 /* MRProgress-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F885F252872B71AA7AA83E6B9BE59156 /* MRProgress-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		81694B31763640FB3743C90CF3547673 /* MRStopableView.h in Headers */ = {isa = PBXBuildFile; fileRef = C25D06ED05C53EF71BA507A2DFE93A0A /* MRStopableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		81B0CABA7381ED63FD45E89DA41ED76D /* DDLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 20797BF0899C2A4EA04847158BB5614E /* DDLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8309B5122488F1841E38DB891DE20097 /* inffast.c in Sources */ = {isa = PBXBuildFile; fileRef = 92E75DA8D2B861C8FE500BD6154C7591 /* inffast.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		83BC947C81CD6B24E1F1B4423A032DE5 /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 278BF10BFDFD35F41567BE2039141BA3 /* MRNavigationBarProgressView.m */; };
-		86E277E86A482DD8C3C9E74A5816032E /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = 69FDE8C423B958B1056DB64915C0ABA8 /* compress.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		841D2210C34C79CDDAADA369FE70798D /* inffixed.h in Headers */ = {isa = PBXBuildFile; fileRef = 401AB0875D448EB89E0734D15D16D139 /* inffixed.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		87191D138491DA4150C0164323E26AA8 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A6D1A650DBCA682F97DBCE78A23F72 /* DDTTYLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		88C6E684BA1F94291C29A6C563C3D274 /* inffast.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B8FFD86A3FD4585FFD3AFF2772E265 /* inffast.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		89A9FEABEA76DE93A894567DB2D3F49F /* GTMNSData+zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = BD190957002FF6ECC13A1A04008511C9 /* GTMNSData+zlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		89CE4E0D4BEDD88C4B05A9D54526CE7E /* MRIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = B227D821B0209359534F70B9E78F80FB /* MRIconView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		89EEAC5C9350EAACBC1CF5812C51B3AB /* inflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 23B92CC29688073E06D7EF36DF721625 /* inflate.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8A1A805C556B3EE8E98F2B5BD156F0FF /* Objective-Zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 621A8B75E6AA08197AD6F46576B2ECCE /* Objective-Zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AF5FEE0CD92DAE7DD22835387EB444F /* OZZipWriteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DFAFB07A80F80E905261CE71A00CE0C /* OZZipWriteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C0409EF077A1DE29AF3FB63497DE9C6 /* DDASLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = F06A7D41757869A8CA90EB928BAAB6A7 /* DDASLLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D321070111318D7A885BAF7131B1AE6 /* FBTweakViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 13EEE463FF2EAF37AA84B43DCD19EE92 /* FBTweakViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8DE4AFB4AF4E3E4DE8AD11B46B81FA0A /* OZFileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFFDD8AE187054C5E794166207A30E9 /* OZFileInZipInfo.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		8FA527C52227F5EBEC2C28EF0CD2867E /* OZZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F83BF603941B81578C794072D2299C /* OZZipException.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		9007BF215E5610048760FC0EDDD6A790 /* RMAppReceipt.h in Headers */ = {isa = PBXBuildFile; fileRef = 4278C92FEF1DCCCE49884F5FD6C9B21C /* RMAppReceipt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		938ECC5095D4868435B984A961CE09EF /* OZZipWriteStream+Internals.h in Headers */ = {isa = PBXBuildFile; fileRef = 558866F367C9E7DB188EB92DBBF545B4 /* OZZipWriteStream+Internals.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		929ABAF90BEEB591719C1326A8598946 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 94017C56D5402E0E6BD9536AD6C41E58 /* ioapi.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		93ADC9D09157772448F0E96CB7FFB13A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19AF31DF768A2BF316AB10AB01C2C512 /* Security.framework */; };
 		943B0163B26B4481082A5D2F1084D1E2 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 249ECB6CA7E121E425CB8259BB1AD86E /* RIButtonItem.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		946E63947963B4CE5655DDE7173304D8 /* _FBTweakCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C702704508DE2D56A30785303782FE2D /* _FBTweakCollectionViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		95167CA6D4FE6CFA3762703F17002FC6 /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4F29BC7EA469116C5CE797788419BE /* UIImage+MRImageEffects.m */; };
+		9736434780B8B75BD5C48F1BEE7A6899 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 044BB5A170FD4E5C05A2DE1CA4A76A4B /* unzip.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		98907D3D9D355C68896DB4A756616979 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E95EE409F6773A8FECC85995E288669 /* CoreGraphics.framework */; };
 		98F27DDD9615136B215A839B9CF7E4AB /* Pods-SmartReceiptsTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 09BBB2E1CAE2732AB583CF1A053B643E /* Pods-SmartReceiptsTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9947CFC030533F2097681349D138772C /* gzclose.c in Sources */ = {isa = PBXBuildFile; fileRef = A7731419F0BC2262894E014B655F7D61 /* gzclose.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		9C16BC44544ECC931017937DDA4CBFE6 /* RMStore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C7276C3A95C38E92B88480CDF11109 /* RMStore-dummy.m */; };
 		9C3741BB541BC7B135D2FAD2B2FFD486 /* _FBTweakCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4084036F7FF735B2E94FD0E5E925D599 /* _FBTweakCollectionViewController.m */; };
 		9D5336ABFA11C88ADA8FC3BED47C43CE /* FBTweakCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0FB5BD786163D3E091F1B944A9A3FB /* FBTweakCategory.m */; };
@@ -138,21 +136,19 @@
 		A3C8626AC35DC46D1291E4B38362F4FB /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9244FEA5223954F484CAE470DEDB61E5 /* MRActivityIndicatorView.m */; };
 		A41B5EF1D629843FADEB571B52057C56 /* OZZipCompressionLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A9C749A51509A38D345656F5EBC4920 /* OZZipCompressionLevel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A41BC74D888C44BD65753918B8F04863 /* DDLegacyMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 74B89B5B2133446E184F3182D05BD869 /* DDLegacyMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A4358A065F47C9D1F5F2DE9C6C5B9F60 /* crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = 01834136687929C3C0F8333226461CD3 /* crc32.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		A69938080AFA7351DDC4E09956713806 /* Pods-SmartReceipts-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 16F1BB6BC0C4688AF0EFF3285A0F68D6 /* Pods-SmartReceipts-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A719A3900E04A3EF0004488A9AA87A28 /* UIActionSheet+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F5E896C514D6FF9C99505519D28EB47 /* UIActionSheet+Blocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A84A4738F8B3405FDC234EF10F959468 /* zutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F472A8D364435CB84EACD6A67F5F5FB /* zutil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A8C5CE02CDDC45F90712DC881ECAE9C1 /* OZZipFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D3A6FFCE99738AF11CCF463F539B565 /* OZZipFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA3A0019B1ABA1713774A2810FB66957 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A521436713317817BBF601E2CAEDF266 /* DDAbstractDatabaseLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		ACB07C3B8F30377B1F1516AEEA689096 /* gzlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F94706CE852A7AE867FB281847073DBB /* gzlib.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		AAEE325EAB4CBDECD0A93BBF952A4D65 /* gzread.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A5817C99E1856E72CD9D6B88475A788 /* gzread.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		ACED2F80C811B887E86D8BE58C0E9D4E /* _FBTweakTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 48E8276B084B083549920A31E41044EF /* _FBTweakTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD01D434D8D120A3767270766AD30797 /* FMDB-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7342FFAAF5ECF9AC67FB8A31BAF1E6D5 /* FMDB-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ADECDCF7AE77B4C74CA24AC813E2232F /* DDAssertMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 1988C57AFEE1C6A61B70E60DDFDD0058 /* DDAssertMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ADF5F7DD11408E9EA5477E73EA30E007 /* Pods-SmartReceipts-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230D19738A0891DEC4C255F6EDD8DFC /* Pods-SmartReceipts-dummy.m */; };
 		AE6FD0037FC8550811A1D8C9A0D77604 /* Pods-SmartReceiptsTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AA420D05C441D50CD62A245CE6FF9451 /* Pods-SmartReceiptsTests-dummy.m */; };
-		AF13049006456B44251B8AC0303698FB /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 84213748591FECA2AD809E0C1DBE52E0 /* zip.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		B0A879582F57A3B69A74565FC0D2BAEC /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CEB0C03F502E743CE98213AC63BACDF /* crypt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B20C01D3560C3CFE738BD02336BECB71 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 658404D0314A0ADF79701E2198E3B77D /* zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5FBD1177A1EF9B832B0E464B89D33E1 /* DDContextFilterLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = D8C775C2F698C1C091F85A9FBB83E5FE /* DDContextFilterLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B7944166DFE18F769E6B9148BE30822E /* zutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F472A8D364435CB84EACD6A67F5F5FB /* zutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA88E88A631D6BD023521B7206CE6C25 /* FMDB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B0F76B9CE95A146A208F4BA41E240 /* FMDB-dummy.m */; };
 		BADDA60B734A2B4F7B8EF1D1A76D77EA /* FBTweakCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 72219585F4A49B1A9A0BA5A45FD9C42B /* FBTweakCollection.m */; };
 		BC64AF5AF488489E9FB1FF7D27873062 /* FBTweakStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D70E5DF993D7E5ED0343C25E8FBADDC /* FBTweakStore.m */; };
@@ -160,41 +156,44 @@
 		BD9F0543F7B4F444CA4A0948C0F03070 /* MRProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1211DFBE475EA810FF4473F3E09559 /* MRProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BDC0281540324E5A27D70A10BD529254 /* UIImage+MRImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 7418275D0A9C65B13FF2F9B55CCC10E0 /* UIImage+MRImageEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C400F0D6E2A6A8CFC163B26B65295FD2 /* OZZipWriteStream+Standard.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B9B9E85D7CD799428D4827261E856F /* OZZipWriteStream+Standard.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C634A5134E119472C25223D857FFB537 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A5341D132C18547B1CA4D96A8798FC /* unzip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C4DDC49889FCE25D9D941D7FE538EB27 /* OZZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8868472E83254FC549578396ABD400 /* OZZipFile.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C6AA90E589989F67837BE67ED6C67EC5 /* inflate.h in Headers */ = {isa = PBXBuildFile; fileRef = 335B91C79CEF6305C86D227CEC13359D /* inflate.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C6DCFB2C9CCADBFB5F18DCA18B6B6841 /* FBTweakInline.h in Headers */ = {isa = PBXBuildFile; fileRef = 775BE56400627945CF44AFB79B03255B /* FBTweakInline.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C6F8963734849BD8440B5AF1EB8CE3BA /* DDFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 74D907612CFA9BE972346726E91CB7DE /* DDFileLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8DD0FF00E922AA89737F9095D3A3B23 /* inffast.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B8FFD86A3FD4585FFD3AFF2772E265 /* inffast.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C8FC0929A42C36174794FE1ADFD620E3 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 279431FDE7597EEBC50D3E07B7A0C980 /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		C956A09AD1537050E6EFF3E74D0C0FCC /* FBTweakShakeWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C39C172D14A1490D0EB74ED820BDBB /* FBTweakShakeWindow.m */; };
+		CB482C3B00C18DE855BD4549C36F0B55 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 9BD91C0DBDBECF23BF214B529BC21D44 /* ioapi.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		CBBEE10EA89DB5FA616C283527EB9091 /* DDLog+LOGV.h in Headers */ = {isa = PBXBuildFile; fileRef = 615AF8D2FBDCD459F5DD4855A546126F /* DDLog+LOGV.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC3B56D261D397B7392F05EEC625EFA6 /* OZZipWriteStream+NSError.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AF3D2AA1F44B85CC692B9C4EE99C064 /* OZZipWriteStream+NSError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD3C1E8D1BAFF179B13FDDDD6118D146 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5370BD14ACEFCFBD9675401ADED9A2C1 /* MRBlurView.m */; };
-		CDAABAACC4F676E245ABCCF5E51C075F /* gzread.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A5817C99E1856E72CD9D6B88475A788 /* gzread.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D0293C04FF3580ED017F2AC11AE7EEF9 /* UIAlertView-Blocks-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BCDA68FE6B77A8A287089AA569CA1AB /* UIAlertView-Blocks-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D206A1E58160DE494308B69D49AFA22E /* OZZipException+Internals.h in Headers */ = {isa = PBXBuildFile; fileRef = 6772EA67E5B527B9B47D4BA87DC98ECE /* OZZipException+Internals.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3FFE6098A28AFBA002FA842CBB5440C /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 642B776361E063BB2CC682259443E9C9 /* DDLog.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		D41148DFB774BC9E793C077AAB68F268 /* FBTweakEnabled.h in Headers */ = {isa = PBXBuildFile; fileRef = B8E68AF59BB4BD1D518DCC5124677F34 /* FBTweakEnabled.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D585A679265C67B2D7D3B2E47BC1C338 /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = DE4E8D034B92E3B137A166B0B10B51EE /* GTMNSData+zlib.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		D65B4ED871FDEDDE30CFA3DAD640B3E4 /* OZZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F3658F4CE99C01567D3AB073D2E288 /* OZZipWriteStream.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D8EA7994F1FF14734B7F0663A3260175 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE5AAC0A22465FFF7FBBF4EEB86958C /* DDMultiFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		DCD365030A81690D04ABAA68B027DF7A /* inffixed.h in Headers */ = {isa = PBXBuildFile; fileRef = 401AB0875D448EB89E0734D15D16D139 /* inffixed.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF0832DC64E3149313E9FDDB4644D62B /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A5341D132C18547B1CA4D96A8798FC /* unzip.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E04C5255B894895A316C7F2EAE1431D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C25992504FA557B5D405DD9E3D8C894 /* Foundation.framework */; };
-		E1D04454FB6A483E98DD7DD6565321E3 /* inftrees.c in Sources */ = {isa = PBXBuildFile; fileRef = 7FD19D8E51B18914568D6F6AE54A8BCF /* inftrees.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E1D0D0378405FE99FE2D5FE733B0403E /* inffast.c in Sources */ = {isa = PBXBuildFile; fileRef = 92E75DA8D2B861C8FE500BD6154C7591 /* inffast.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		E1EA933530FBC2B44D06A4428AAEF6A4 /* FBTweakStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 054BBE004641E895C8EA082AC31CB118 /* FBTweakStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E24DAFB5F2C4A2EDFACB03C1547BA13C /* gzlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F94706CE852A7AE867FB281847073DBB /* gzlib.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		E330886E0E7C450E9669C4BD025D9ABD /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 9372B21ADB2867F1FEB41B35C962C693 /* FMDatabaseQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E3D96E03E9B963025EF7D4A2CCD3BF6B /* DDMultiFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9538466928FD131D46E299B0C962B8 /* DDMultiFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E47BA512DC875F73C7419DBA373E64D1 /* OZZipReadStream+Standard.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F4B5FFF8FA3ED61BABC83EF6AC9C28D /* OZZipReadStream+Standard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E68F64A75CFDE997CF6B34D1D18330A0 /* infback.c in Sources */ = {isa = PBXBuildFile; fileRef = 83A526D0BB47C71AB18C33425349E220 /* infback.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E6C36C718FB5B8831B3709B7C40B1C55 /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = 8F27A12CACC027890AC456B9250F645A /* trees.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E6CC3E3FE09ADA61F28F95A99F460B78 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CEB0C03F502E743CE98213AC63BACDF /* crypt.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E7E9B6B90FBB3618CDE84C184B1F88D4 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7C3D62B336B98A410E4DD9B0EC3E4D /* DDDispatchQueueLogFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		EA2BC3076C3EA0F19B9EBF57367B2D13 /* RMStoreKeychainPersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = 305527C923B176E39F2106265364EEB4 /* RMStoreKeychainPersistence.m */; };
-		EA65F383F819B6CE9530A5D6DB6E48BD /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = 144CFE7BA280F1510955BC7056E0CFE8 /* uncompr.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		EC043E81FD742581A4E75BC9EFCEDB2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C25992504FA557B5D405DD9E3D8C894 /* Foundation.framework */; };
 		EC2B205B45229FC3FC70F2C9CD962E1F /* RMAppReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5B97E28B2876D1C260FD2F4F877BC4 /* RMAppReceipt.m */; };
-		EC82F1866F02FF48F77C2A0D7F849EB5 /* OZFileInZipInfo+Internals.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D91EF9A78217B456914A2BC681B26D /* OZFileInZipInfo+Internals.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ECDEAA66796F794F77EC1CEAB86EFC8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C25992504FA557B5D405DD9E3D8C894 /* Foundation.framework */; };
 		EE442E93E5BBC6AB805C3E1B2D3482CA /* MRActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 73682B61E0F67E53C3BE5EB0221F5516 /* MRActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EEEBCE686B22BC07A6008B00FD72EAC8 /* deflate.h in Headers */ = {isa = PBXBuildFile; fileRef = B00458FC3C55ABFF750B23C265FC9134 /* deflate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F0062A0D1BD5D56ED254B194BB3B7EB4 /* MRProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 380BE8A9F2B1E4D73A07BABA1ABD6CCE /* MRProgressView.m */; };
 		F0895B2A83F948153E1E5EA38A230B66 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4ACA4B3E1B5A9EBC0BFCFEF7CACA30 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		F08F15E8A27871521EE080F31855D940 /* RMStoreKeychainPersistence.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B05EC1CDD7AA9BB6B56894272A0B059 /* RMStoreKeychainPersistence.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F09CCE085CC9D276B77A2A7A177CCDB0 /* OZZipWriteStream+Internals.h in Headers */ = {isa = PBXBuildFile; fileRef = 558866F367C9E7DB188EB92DBBF545B4 /* OZZipWriteStream+Internals.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F0B5619FDC65DA5CC2C8CDC1A669AB68 /* inflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 23B92CC29688073E06D7EF36DF721625 /* inflate.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		F1A0DC76B2DE262906C6F414CE9FBA3C /* _FBTweakDictionaryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 73DBAB0FB16258838456A55E3F03F442 /* _FBTweakDictionaryViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F1C9AF3F66F06E8039963A181364B5A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C25992504FA557B5D405DD9E3D8C894 /* Foundation.framework */; };
 		F28AE3C6627CF1D9466E21BE69131824 /* RMStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A81EFADA5F6E4F81E7AEB983CE966859 /* RMStore.m */; };
@@ -202,6 +201,7 @@
 		F77833E1486ED4D2BA99B2AA2BF6FDC1 /* FBTweak.m in Sources */ = {isa = PBXBuildFile; fileRef = FC41D18427042D37FD71CF7107FC0082 /* FBTweak.m */; };
 		F7E77B119AAEB65A210FF660812D43DF /* GTMLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2251C60AB756D7EFA10C26C48987EEA3 /* GTMLogger.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FAFFFD48FC2ADFFAD6C7B18239517920 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA657EB710F8EE8343DFF4B2BF14B0B /* UIKit.framework */; };
+		FB06D69776A0224533633DA0E8BDAE93 /* zconf.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C17234C3116F15AEB6506C8A085EF0 /* zconf.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FC2FFA40FDAE4A5990FCED76D2370DA9 /* Tweaks-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C20E200FAFD5187AA8B9961DB4C8A876 /* Tweaks-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD449C1D3558B8AA5B091CE506333BF7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3292BFEFFABCD41FCD601BC672D1F494 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
@@ -1782,41 +1782,41 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CB8BA8F734FB78ABAB291CE5A4FC36D /* crc32.h in Headers */,
-				B0A879582F57A3B69A74565FC0D2BAEC /* crypt.h in Headers */,
-				EEEBCE686B22BC07A6008B00FD72EAC8 /* deflate.h in Headers */,
-				25A47227B7BE3B9AF485EBBF2509F3F8 /* gzguts.h in Headers */,
-				88C6E684BA1F94291C29A6C563C3D274 /* inffast.h in Headers */,
-				DCD365030A81690D04ABAA68B027DF7A /* inffixed.h in Headers */,
-				6B16F2C0A009D9F92551B7E60AC8FEAE /* inflate.h in Headers */,
-				113A9CF0999F9F74B57A0B382D81E861 /* inftrees.h in Headers */,
-				0BE78104C487E274BCE803420C85853B /* ioapi.h in Headers */,
+				19C95C1CD92CBEB0FB4938F18BE160AF /* crc32.h in Headers */,
+				E6CC3E3FE09ADA61F28F95A99F460B78 /* crypt.h in Headers */,
+				3806B87A16D7F837B450FA5AD991F92D /* deflate.h in Headers */,
+				68662E20967A6F8D10C9BD3A790080AF /* gzguts.h in Headers */,
+				C8DD0FF00E922AA89737F9095D3A3B23 /* inffast.h in Headers */,
+				841D2210C34C79CDDAADA369FE70798D /* inffixed.h in Headers */,
+				C6AA90E589989F67837BE67ED6C67EC5 /* inflate.h in Headers */,
+				2B24E2BCF8F1241CA6606425669B0E0B /* inftrees.h in Headers */,
+				929ABAF90BEEB591719C1326A8598946 /* ioapi.h in Headers */,
 				79D1D6627A49303D61248DDF25771683 /* Objective-Zip+NSError.h in Headers */,
 				8030C8084073CB1C722287F09DC9B9DD /* objective-zip-umbrella.h in Headers */,
 				8A1A805C556B3EE8E98F2B5BD156F0FF /* Objective-Zip.h in Headers */,
-				EC82F1866F02FF48F77C2A0D7F849EB5 /* OZFileInZipInfo+Internals.h in Headers */,
+				6BC3A0134BA95406C38A54178C7FABC0 /* OZFileInZipInfo+Internals.h in Headers */,
 				23E718FD226F4160750DC767E2F55C31 /* OZFileInZipInfo.h in Headers */,
 				A41B5EF1D629843FADEB571B52057C56 /* OZZipCompressionLevel.h in Headers */,
-				D206A1E58160DE494308B69D49AFA22E /* OZZipException+Internals.h in Headers */,
+				1AD1763F7D3C1B15BA7F839594B7719A /* OZZipException+Internals.h in Headers */,
 				7FC167A3BC453252ACAB9A36F3F68453 /* OZZipException.h in Headers */,
 				1369B2D3C729B05E9E47D85EEE396756 /* OZZipFile+NSError.h in Headers */,
 				511D33661B3CB8A77E13E235A9D8D822 /* OZZipFile+Standard.h in Headers */,
 				A8C5CE02CDDC45F90712DC881ECAE9C1 /* OZZipFile.h in Headers */,
 				75D6573E7DA819DA5D1E72E489785B15 /* OZZipFileMode.h in Headers */,
-				186BA0CD5A5BE33169FC1F5896C7FF6B /* OZZipReadStream+Internals.h in Headers */,
+				7DA1397E767A8BF60F3F2FAD7E5C0B8D /* OZZipReadStream+Internals.h in Headers */,
 				55735E49C797907FFE5B69ABC4D71EB8 /* OZZipReadStream+NSError.h in Headers */,
 				E47BA512DC875F73C7419DBA373E64D1 /* OZZipReadStream+Standard.h in Headers */,
 				3BDA432A507243983C8E67C7C16BEF3F /* OZZipReadStream.h in Headers */,
-				938ECC5095D4868435B984A961CE09EF /* OZZipWriteStream+Internals.h in Headers */,
+				F09CCE085CC9D276B77A2A7A177CCDB0 /* OZZipWriteStream+Internals.h in Headers */,
 				CC3B56D261D397B7392F05EEC625EFA6 /* OZZipWriteStream+NSError.h in Headers */,
 				C400F0D6E2A6A8CFC163B26B65295FD2 /* OZZipWriteStream+Standard.h in Headers */,
 				8AF5FEE0CD92DAE7DD22835387EB444F /* OZZipWriteStream.h in Headers */,
-				55C8AEB9F6FE218BDEED35C2C7D57A5A /* trees.h in Headers */,
-				C634A5134E119472C25223D857FFB537 /* unzip.h in Headers */,
-				7E0E442DC7850E100F176FB5E986F23D /* zconf.h in Headers */,
-				B20C01D3560C3CFE738BD02336BECB71 /* zip.h in Headers */,
-				584E770EAEFAA608647B379FBEA69673 /* zlib.h in Headers */,
-				B7944166DFE18F769E6B9148BE30822E /* zutil.h in Headers */,
+				481B3B149551A140547ACC733FF192D2 /* trees.h in Headers */,
+				DF0832DC64E3149313E9FDDB4644D62B /* unzip.h in Headers */,
+				FB06D69776A0224533633DA0E8BDAE93 /* zconf.h in Headers */,
+				6B2DA31F38F439037F57803FD55C18CB /* zip.h in Headers */,
+				08B506FB381C67E3C881B5665BA1A105 /* zlib.h in Headers */,
+				A84A4738F8B3405FDC234EF10F959468 /* zutil.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2142,30 +2142,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E74C2CE178F2D704ACF459B78E42A61 /* adler32.c in Sources */,
-				86E277E86A482DD8C3C9E74A5816032E /* compress.c in Sources */,
-				266D582EA84732E7D49E7AF5F7B8CEA7 /* crc32.c in Sources */,
-				490D4F0E91E98D967A3F6BE2FE291ED5 /* deflate.c in Sources */,
-				7EF5651577C3C196592643A7FE3F9489 /* gzclose.c in Sources */,
-				ACB07C3B8F30377B1F1516AEEA689096 /* gzlib.c in Sources */,
-				CDAABAACC4F676E245ABCCF5E51C075F /* gzread.c in Sources */,
-				6694BF94D5D418ED3CEB045E44DE2210 /* gzwrite.c in Sources */,
-				7C5786E8AC2639ACC74DB1D0A0F1C70B /* infback.c in Sources */,
-				8309B5122488F1841E38DB891DE20097 /* inffast.c in Sources */,
-				89EEAC5C9350EAACBC1CF5812C51B3AB /* inflate.c in Sources */,
-				E1D04454FB6A483E98DD7DD6565321E3 /* inftrees.c in Sources */,
-				76FC2F9E6367F2B418217858AAABC3C9 /* ioapi.c in Sources */,
+				437B2281BB110333164B8495FAC3D6B7 /* adler32.c in Sources */,
+				3BE547DE95D45C4883B993210AA15C25 /* compress.c in Sources */,
+				A4358A065F47C9D1F5F2DE9C6C5B9F60 /* crc32.c in Sources */,
+				01852082E4601E8BEA76C153A92F4F50 /* deflate.c in Sources */,
+				9947CFC030533F2097681349D138772C /* gzclose.c in Sources */,
+				E24DAFB5F2C4A2EDFACB03C1547BA13C /* gzlib.c in Sources */,
+				AAEE325EAB4CBDECD0A93BBF952A4D65 /* gzread.c in Sources */,
+				50D2975AED13D7449ABF89C4C1434FB5 /* gzwrite.c in Sources */,
+				E68F64A75CFDE997CF6B34D1D18330A0 /* infback.c in Sources */,
+				E1D0D0378405FE99FE2D5FE733B0403E /* inffast.c in Sources */,
+				F0B5619FDC65DA5CC2C8CDC1A669AB68 /* inflate.c in Sources */,
+				7545EB8BDEF75E415AC19C0563101FB4 /* inftrees.c in Sources */,
+				CB482C3B00C18DE855BD4549C36F0B55 /* ioapi.c in Sources */,
 				3FE4A8DA6BB302B296B74F9A44D15AC7 /* objective-zip-dummy.m in Sources */,
-				1D5DAD15962C7D7243E6B5DC7F4DB747 /* OZFileInZipInfo.m in Sources */,
-				441E9F23190B6B11AEA47DF0DF8DCE3D /* OZZipException.m in Sources */,
-				5FAB840F8F16D28DBAC2162E861F8F19 /* OZZipFile.m in Sources */,
-				650623A0B062672D61764CC9E4A2BBB6 /* OZZipReadStream.m in Sources */,
-				D65B4ED871FDEDDE30CFA3DAD640B3E4 /* OZZipWriteStream.m in Sources */,
-				361177A7726B64A7AF7FCE57F0F36C4B /* trees.c in Sources */,
-				EA65F383F819B6CE9530A5D6DB6E48BD /* uncompr.c in Sources */,
-				2F3B8655B3125065A19AB15A9FCDC7FE /* unzip.c in Sources */,
-				AF13049006456B44251B8AC0303698FB /* zip.c in Sources */,
-				08213BE70D0058A45621C77E512E9127 /* zutil.c in Sources */,
+				8DE4AFB4AF4E3E4DE8AD11B46B81FA0A /* OZFileInZipInfo.m in Sources */,
+				8FA527C52227F5EBEC2C28EF0CD2867E /* OZZipException.m in Sources */,
+				C4DDC49889FCE25D9D941D7FE538EB27 /* OZZipFile.m in Sources */,
+				79F1B137EC6239A50BEB39E8BFC8A949 /* OZZipReadStream.m in Sources */,
+				3B269A35DB33C767494461A8E4D1D431 /* OZZipWriteStream.m in Sources */,
+				E6C36C718FB5B8831B3709B7C40B1C55 /* trees.c in Sources */,
+				1DD3BC73E10A4859842FC27E2F31237D /* uncompr.c in Sources */,
+				9736434780B8B75BD5C48F1BEE7A6899 /* unzip.c in Sources */,
+				1A61E09AF80820D0ADE00CA77F8F958C /* zip.c in Sources */,
+				7FE6EA1D26E8794C72CBFEF35D44B0FA /* zutil.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

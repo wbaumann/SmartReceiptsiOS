@@ -74,7 +74,7 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
-  - objective-zip (1.0.2)
+  - objective-zip (1.0.3)
   - OpenSSL-iOS (1.0.204):
     - OpenSSL-iOS/Framework (= 1.0.204)
   - OpenSSL-iOS/Framework (1.0.204)
@@ -96,7 +96,7 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - Google/Analytics
   - MRProgress (= 0.8.3)
-  - objective-zip (= 1.0.2)
+  - objective-zip (= 1.0.3)
   - RMStore/AppReceiptVerificator (from `3rdparty/RMStore`)
   - RMStore/Core (from `3rdparty/RMStore`)
   - RMStore/KeychainPersistence (from `3rdparty/RMStore`)
@@ -122,12 +122,12 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
-  objective-zip: b78d235d234546105e118d35ae24a69feba08d44
+  objective-zip: 2f4eba2ed4a06ed74c7e6e4e7b80e6cacf212217
   OpenSSL-iOS: 002cabfdfc2df48d63cebd723b90ada86c946316
   RMStore: 935f3e350c7f2f098047d73ddbd2ee2cd00f8b48
   Tweaks: 524fa47636cce3bf3a4d9156e980f10ae9480e81
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
 
-PODFILE CHECKSUM: e9f773701f0553229a51bfed323d070c602afd78
+PODFILE CHECKSUM: 44b4a5b5bf5cfe331676c90592d830e15e811ee1
 
 COCOAPODS: 1.1.1

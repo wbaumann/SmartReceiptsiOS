@@ -1,6 +1,6 @@
 //
 //  OZZipFile+NSError.h
-//  Objective-Zip v. 1.0.2
+//  Objective-Zip v. 1.0.3
 //
 //  Created by Gianluca Bertani on 09/09/15.
 //  Copyright 2009-2015 Gianluca Bertani. All rights reserved.
@@ -231,7 +231,7 @@ static const NSInteger OZLocateFileResultFound= 1;
  @throws OZZipException If the zip file has been opened with a mode other than
  Unzip.
  */
-- (NSInteger) __attribute__((swift_error(zero_result))) locateFileInZip:(nonnull NSString *)fileNameInZip error:(NSError * __autoreleasing __nullable * __nullable)error;
+- (NSInteger) __attribute__((swift_error(nonnull_error))) locateFileInZip:(nonnull NSString *)fileNameInZip error:(NSError * __autoreleasing __nullable * __nullable)error;
 
 /**
  @brief Returns the number of files contained in the zip file.
@@ -242,7 +242,7 @@ static const NSInteger OZLocateFileResultFound= 1;
  @throws OZZipException If the zip file has been opened with a mode other
  than Unzip.
  */
-- (NSUInteger) __attribute__((swift_error(zero_result))) numFilesInZipWithError:(NSError * __autoreleasing __nullable * __nullable)error;
+- (NSUInteger) __attribute__((swift_error(nonnull_error))) numFilesInZipWithError:(NSError * __autoreleasing __nullable * __nullable)error;
 
 /**
  @brief Returns a list of OZFileInZipInfo with the information on all the files

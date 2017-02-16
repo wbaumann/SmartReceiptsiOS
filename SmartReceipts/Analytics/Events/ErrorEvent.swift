@@ -10,10 +10,13 @@ import Foundation
 
 /// Default string keys for ErrorEvent class
 fileprivate struct Constants {
+    
     static let ErrorEventName = "Error"                     // error name
     static let ErrorEventDebugInfoDatapoint = "DebugInfo"   // datapoint key for error's debug info
+    
     static let ExceptionEventName = "Exception"             // exception name
     static let ExceptionTraceDatapointName = "trace"        // datapoint key
+    static let ExceptionDescriptionDatapointName = "description" // datapoint key
 }
 
 /// Class for registering errors
@@ -46,9 +49,10 @@ class ErrorEvent: Event {
     /// - Parameter error: NSException object
     init(exception: NSException) {
         isException = true
-        // create DataPoint with Exception name and exception stack trace
-        let exceptionDataPoint = DataPoint(name: Constants.ExceptionTraceDatapointName, value: exception.callStackSymbols)
+        // create DataPoint with Exception name and exception stack trace        
+        let exceptionDescription = DataPoint(name: Constants.ExceptionDescriptionDatapointName, value: exception.description)
+        let callStackSymbols = DataPoint(name: Constants.ExceptionTraceDatapointName, value: exception.callStackSymbols.description)
         // initialize as OnError event
-        super.init(category: Category.OnError, name: Constants.ExceptionEventName, dataPoints: exceptionDataPoint)
+        super.init(category: Category.OnError, name: Constants.ExceptionEventName, dataPoints: exceptionDescription, callStackSymbols)
     }
 }

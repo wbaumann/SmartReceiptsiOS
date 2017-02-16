@@ -266,7 +266,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
                 [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsAddPictureReceipt]];
             } else {
                 // no image, means user creates a text receipt
-                [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsAddPictureReceipt]];
+                [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsAddTextReceipt]];
             }
             
             [vc setReceiptImage:_imageForCreatorSegue];

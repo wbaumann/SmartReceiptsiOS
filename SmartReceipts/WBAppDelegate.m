@@ -28,6 +28,7 @@
 #import <SmartReceipts-Swift.h>
 
 #import <FirebaseCore/FirebaseCore.h>
+#import <FirebaseCrash/FirebaseCrash.h>
 
 @interface WBAppDelegate ()
 
@@ -95,7 +96,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tweakUIDismissed) name:FBTweakShakeViewControllerDidDismissNotification object:nil];
 #endif
     
-    LOGGER_VERBOSE(@"Application launched");
+    LOGGER_INFO(@"Application didFinishLaunchingWithOptions: %@", launchOptions);
     
     return YES;
 }
@@ -109,6 +110,12 @@ void onUncaughtExcepetion(NSException *exception) {
     [message appendString:@"\n"];
     [message appendString:exception.callStackSymbols.description];
     [Logger error:message file:@"UncaughtExcepetion" function:@"onUncaughtExcepetion" line:0];
+    
+    FIRCrashLog(@"%@", message);
+    
+    // record analytics event too
+    ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithException:exception];
+    [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -232,22 +239,35 @@ void onUncaughtExcepetion(NSException *exception) {
     PendingHUDView *hud = [PendingHUDView showHUDOnView:self.window.rootViewController.view];
     dispatch_async([[WBAppDelegate instance] dataQueue], ^{
         DataImport *dataImport = [[DataImport alloc] initWithInputFile:zipPath.path output:[WBFileManager documentsPath]];
-        [dataImport execute];
-
-        // delete imported zip
-        [WBFileManager deleteIfExists:[zipPath path]];
-        BOOL result = [[Database sharedInstance] importDataFromBackup:[WBFileManager pathInDocuments:SmartReceiptsDatabaseExportName] overwrite:overwrite];
+        
+        BOOL success = YES; // true by default
+        
+        @try {
+            [dataImport execute];
+        } @catch (NSException *exception) {
+            success = NO;
+            LOGGER_ERROR(@"importZip error: %@", [exception reason]);
+            ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithException:exception];
+            [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
+        }
+        
+        if (success) {
+            // delete imported zip and import data to DB
+            [WBFileManager deleteIfExists:[zipPath path]];
+            success = [[Database sharedInstance] importDataFromBackup:[WBFileManager pathInDocuments:SmartReceiptsDatabaseExportName] overwrite:overwrite];
+        }
 
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hide];
 
-            if (result) {
+            if (success) {
                 [[[UIAlertView alloc]
                         initWithTitle:nil
                               message:NSLocalizedString(@"app.delegate.import.success.alert.message", nil)
                              delegate:nil
                     cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil)
                     otherButtonTitles:nil] show];
+                LOGGER_INFO(@"app.delegate.import.success");
             } else {
                 [[[UIAlertView alloc]
                         initWithTitle:NSLocalizedString(@"generic.error.alert.title", nil)
@@ -255,6 +275,7 @@ void onUncaughtExcepetion(NSException *exception) {
                              delegate:nil
                     cancelButtonTitle:NSLocalizedString(@"generic.button.title.ok", nil)
                     otherButtonTitles:nil] show];
+                LOGGER_ERROR(@"app.delegate.import.error");
             }
         });
     });
