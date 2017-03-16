@@ -399,13 +399,12 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.defaultTripLengthCell setValue:[NSString stringWithFormat:@"%d",[WBPreferences defaultTripDuration]]];
     [self.receiptOutsideTripBoundsCell setSwitchOn:[WBPreferences allowDataEntryOutsideTripBounds]];
 
-    double price = [WBPreferences minimumReceiptPriceToIncludeInReports];
-    double minPrice = ([WBPreferences MIN_FLOAT]/4.0); // we have to make significant change because it's long float and have little precision
-    if (price < minPrice) {
+    float minimumPrice = [WBPreferences minimumReceiptPriceToIncludeInReports];
+    if (minimumPrice <= 0) {
+        // If "minimumPrice" is less than or equal to 0, it means means "INCLUDE_ALL" and will be blanked out in the field
         [self.minReportablePriceCell setValue:@""];
     } else {
-        long long priceLong = roundl(price);
-        [self.minReportablePriceCell setValue:[NSString stringWithFormat:@"%lld", priceLong]];
+        [self.minReportablePriceCell setValue:[NSString stringWithFormat:@"%d", (int) minimumPrice]];
     }
 
     [self.userIdCell setValue:[WBPreferences userID]];
@@ -493,9 +492,12 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [WBPreferences setAllowDataEntryOutsideTripBounds:self.receiptOutsideTripBoundsCell.isSwitchOn];
 
     NSString *priceStr = [self.minReportablePriceCell value];
-    if ([priceStr length] > 0 && [priceStr length] < 4) {
-        [WBPreferences setMinimumReceiptPriceToIncludeInReports:[priceStr floatValue]];
-    } else if ([priceStr length] == 0) {
+    if (priceStr.length > 0) {
+        // parse string for float number and remember
+        float minPriceToReport = priceStr.floatValue;
+        [WBPreferences setMinimumReceiptPriceToIncludeInReports:minPriceToReport];
+    } else {
+        // empty field, persist MIN_FLOAT
         [WBPreferences setMinimumReceiptPriceToIncludeInReports:[WBPreferences MIN_FLOAT]];
     }
     
