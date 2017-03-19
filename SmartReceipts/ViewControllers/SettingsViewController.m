@@ -55,6 +55,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *pdfFooterCell;
 
+@property (nonatomic, strong) SwitchControlCell *enableAutocompleteCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultTripLengthCell;
 @property (nonatomic, strong) SwitchControlCell *receiptOutsideTripBoundsCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *minReportablePriceCell;
@@ -190,6 +191,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.defaultTripLengthCell setTitle:NSLocalizedString(@"settings.default.trip.length.label", nil)];
     [self.defaultTripLengthCell activateNumberEntryMode];
 
+    self.enableAutocompleteCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.enableAutocompleteCell setTitle:NSLocalizedString(@"settings.enable.autocomplete.label", nil)];
+    
     self.receiptOutsideTripBoundsCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.receiptOutsideTripBoundsCell setTitle:NSLocalizedString(@"settings.allow.data.outside.trip.bounds.label", nil)];
 
@@ -259,7 +263,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.customizePaymentMethodsCell setTitle:NSLocalizedString(@"settings.customize.payment.methods.label", nil)];
 
     InputCellsSection *general = [InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.general.section.title", nil)
-                                                               cells:@[self.defaultTripLengthCell,
+                                                               cells:@[self.enableAutocompleteCell,
+                                                                       self.defaultTripLengthCell,
                                                                        self.receiptOutsideTripBoundsCell,
                                                                        self.minReportablePriceCell,
                                                                        self.userIdCell,
@@ -396,6 +401,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.defaultEmailBCCCell setValue:[WBPreferences defaultEmailBCC]];
     [self.defaultEmailSubjectCell setValue:[WBPreferences defaultEmailSubject]];
 
+    [self.enableAutocompleteCell setSwitchOn:[WBPreferences isAutocompleteEnabled]];
     [self.defaultTripLengthCell setValue:[NSString stringWithFormat:@"%d",[WBPreferences defaultTripDuration]]];
     [self.receiptOutsideTripBoundsCell setSwitchOn:[WBPreferences allowDataEntryOutsideTripBounds]];
 
@@ -489,6 +495,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [WBPreferences setDefaultTripDuration:[daysStr intValue]];
     }
 
+    [WBPreferences setAutocompleteEnabled:self.enableAutocompleteCell.isSwitchOn];
     [WBPreferences setAllowDataEntryOutsideTripBounds:self.receiptOutsideTripBoundsCell.isSwitchOn];
 
     NSString *priceStr = [self.minReportablePriceCell value];

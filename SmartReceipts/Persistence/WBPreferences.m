@@ -24,6 +24,7 @@ static NSString * const STRING_DEFAULT_EMAIL_BCC = @"EmailBCC";
 static NSString * const STRING_DEFAULT_EMAIL_SUBJECT = @"EmailSubject";
 static NSString * const INT_DEFAULT_TRIP_DURATION = @"TripDuration";
 static NSString * const BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS = @"AllowDataOutsideTripBounds";
+static NSString * const BOOL_AUTOCOMPLETE_ENABLED = @"IsAutocompleteEnabled";
 static NSString * const STRING_USERNAME = @"UserName";
 static NSString * const STRING_FULLNAME = @"FullName";
 static NSString * const BOOL_PREDICT_CATEGORIES = @"PredictCats";
@@ -88,6 +89,7 @@ static NSDictionary *getEntryTypes() {
 
     return @{
             INT_DEFAULT_TRIP_DURATION : tInt,
+            BOOL_AUTOCOMPLETE_ENABLED : tBool,
             BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS : tBool,
             FLOAT_MIN_RECEIPT_PRICE : tFloat,
 
@@ -158,6 +160,7 @@ static NSDictionary *getDefaultValues() {
 
     return @{
             INT_DEFAULT_TRIP_DURATION : @3,
+            BOOL_AUTOCOMPLETE_ENABLED : @(YES),
             BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS : @(YES),
 
             FLOAT_MIN_RECEIPT_PRICE : @(MIN_FLOAT),
@@ -506,6 +509,14 @@ static NSUserDefaults* instance() {
 
 + (void)setCameraRotateImage:(BOOL)value{
     [instance() setBool:value forKey:BOOL_CAMERA_ROTATE_IMAGE];
+}
+
++ (BOOL)isAutocompleteEnabled {
+    return [instance() boolForKey:BOOL_AUTOCOMPLETE_ENABLED];
+}
+
++ (void)setAutocompleteEnabled:(BOOL)value{
+    [instance() setBool:value forKey:BOOL_AUTOCOMPLETE_ENABLED];
 }
 
 + (BOOL)allowDataEntryOutsideTripBounds {
