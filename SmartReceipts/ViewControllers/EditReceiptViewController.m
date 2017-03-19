@@ -96,7 +96,9 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     [self.nameCell setTitle:NSLocalizedString(@"edit.receipt.name.label", nil)];
     [self.nameCell setPlaceholder:NSLocalizedString(@"edit.receipt.name.placeholder", nil)];
     [self.nameCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
-    [self.nameCell setAutocompleteHelper:[[WBAutocompleteHelper alloc] initWithAutocompleteField:self.nameCell.entryField useReceiptsHints:YES]];
+    if ([WBPreferences isAutocompleteEnabled]) {
+        [self.nameCell setAutocompleteHelper:[[WBAutocompleteHelper alloc] initWithAutocompleteField:self.nameCell.entryField useReceiptsHints:YES]];
+    }
 
     self.priceCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledTextEntryCell cellIdentifier]];
     self.priceCell.title = NSLocalizedString(@"edit.receipt.price.label", nil);
@@ -376,11 +378,16 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 }
 
 - (IBAction)actionDone:(id)sender {
-    NSString *name = [WBTextUtils omitIllegalCharacters:[self.nameCell value]];
-    if ([name length] <= 0) {
-        [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"edit.receipt.name.missing.alert.message", nil)];
+    NSString *name = [self.nameCell value];
+    
+    // check for invalid characters
+    if (![WBTextUtils isProperName:name]) {
+        [EditReceiptViewController showAlertWithTitle:nil message:NSLocalizedString(@"edit.receipt.name.invalid.alert.message", nil)];
         return;
     }
+    
+    // ommiting  illegal chars defined in WBTextUtils
+    name = [WBTextUtils omitIllegalCharacters:name];
 
     NSDecimalNumber *priceAmount = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.priceCell.value];
     NSDecimalNumber *taxAmount = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.taxCell.value];

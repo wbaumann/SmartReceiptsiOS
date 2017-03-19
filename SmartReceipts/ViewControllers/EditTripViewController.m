@@ -68,7 +68,9 @@
 
     self.nameCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledAutocompleteEntryCell cellIdentifier]];
     [self.nameCell setTitle:NSLocalizedString(@"edit.trip.name.label", nil)];
-    [self.nameCell setAutocompleteHelper:[[WBAutocompleteHelper alloc] initWithAutocompleteField:self.nameCell.entryField useReceiptsHints:NO]];
+    if ([WBPreferences isAutocompleteEnabled]) {
+        [self.nameCell setAutocompleteHelper:[[WBAutocompleteHelper alloc] initWithAutocompleteField:self.nameCell.entryField useReceiptsHints:NO]];
+    }
     [self.nameCell.entryField setAutocapitalizationType:UITextAutocapitalizationTypeSentences];
     [self.nameCell setInputValidation:[[ProperNameInputValidation alloc] init]];
 
