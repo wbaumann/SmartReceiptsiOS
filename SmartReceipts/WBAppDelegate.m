@@ -81,11 +81,6 @@
     NSString *language = [NSLocale preferredLanguages][0];
     LOGGER_INFO(@"lang: %@", language);
 
-    NSURL *url = (NSURL *) [launchOptions valueForKey:UIApplicationLaunchOptionsURLKey];
-    if (url != nil && [url isFileURL]) {
-        [self handleOpenURL:url];
-    }
-
     NSSetUncaughtExceptionHandler(&onUncaughtExcepetion);
 
     [[RateApplication sharedInstance] markAppLaunch];
@@ -145,17 +140,19 @@ void onUncaughtExcepetion(NSException *exception) {
     [[Database sharedInstance] close];
 }
 
+#pragma mark openURL delegate methods:
+
+/// For iOS 9+
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    // Called when app was in background and was restored with url.. For iOS 10+
-    if (url != nil && [url isFileURL]) {
+    if ([url isFileURL]) {
         [self handleOpenURL:url];
     }
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    // called when app was in background and was restored with url.. For older iOS versions
-    if (url != nil && [url isFileURL]) {
+/// For iOS 8 compability
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    if ([url isFileURL]) {
         [self handleOpenURL:url];
     }
     return YES;
@@ -181,7 +178,7 @@ void onUncaughtExcepetion(NSException *exception) {
 }
 
 - (void)handleOpenURL:(NSURL *)url {
-
+    
     if ([WBAppDelegate isStringIgnoreCase:url.pathExtension inArray:@[@"png", @"jpg", @"jpeg"]]) {
         LOGGER_INFO(@"Launched for image");
         self.isFileImage = YES;
@@ -225,7 +222,7 @@ void onUncaughtExcepetion(NSException *exception) {
 }
 
 - (void)handleSMR:(NSURL *)url {
-
+    
     [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"app.delegate.import.alert.title", nil)
                                 message:NSLocalizedString(@"app.delegate.import.alert.message", nil)
                        cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.cancel", nil) action:^{
