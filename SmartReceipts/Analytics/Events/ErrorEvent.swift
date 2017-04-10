@@ -55,4 +55,13 @@ class ErrorEvent: Event {
         // initialize as OnError event
         super.init(category: Category.OnError, name: Constants.ExceptionEventName, dataPoints: exceptionDescription, callStackSymbols)
     }
+    
+    /// Creates ErrorEvent objects from given String object
+    ///
+    /// - Parameter message: provide your own description of the error
+    init(message: String) {
+        isException = false
+        let dataPoint = DataPoint(name: Constants.ErrorEventDebugInfoDatapoint, value: message)
+        super.init(category: Category.OnError, name: Constants.ErrorEventName, dataPoints: dataPoint)
+    }
 }

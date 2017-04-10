@@ -30,11 +30,16 @@
 		570515A71E04AA7D00BB8FE4 /* FirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570515A61E04AA7D00BB8FE4 /* FirebaseAnalytics.swift */; };
 		5726E5431E00423900F2141C /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726E5421E00423900F2141C /* AnalyticsManager.swift */; };
 		572E0A7A1E42446600A7307A /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 572E0A791E42446600A7307A /* NSString+Extensions.m */; };
+		5757D6101E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5757D60F1E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift */; };
+		5757D6131E929ECA000F65F9 /* Database+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5757D6121E929ECA000F65F9 /* Database+Sync.swift */; };
+		5757D6141E929ECA000F65F9 /* Database+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5757D6121E929ECA000F65F9 /* Database+Sync.swift */; };
 		57580D1C1DFAB58B0090C488 /* UIDevice+DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 57580D1B1DFAB58B0090C488 /* UIDevice+DeviceInfo.m */; };
 		57580D1F1DFAB6AB0090C488 /* UIApplication+AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 57580D1E1DFAB6AB0090C488 /* UIApplication+AppVersion.m */; };
 		57691F001E10613500F78859 /* RateApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 57691EFF1E10613500F78859 /* RateApplication.m */; };
 		5785A4EF1E09DA0100C3CA0C /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785A4EE1E09DA0100C3CA0C /* AnalyticsLogger.swift */; };
 		579DDFB21E2E4223004937F7 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579DDFB11E2E4223004937F7 /* UIImage+Extensions.swift */; };
+		57A8058D1E9672C000E68049 /* DatabaseUpgrade15Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A8058C1E9672C000E68049 /* DatabaseUpgrade15Tests.swift */; };
+		57A8058F1E9799AC00E68049 /* android-receipts-v15.db in Resources */ = {isa = PBXBuildFile; fileRef = 57A8058E1E9799AC00E68049 /* android-receipts-v15.db */; };
 		57C0EED11E2AE972001B4758 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0EED01E2AE972001B4758 /* CustomLogFormatter.swift */; };
 		57C0EED31E2D38B0001B4758 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BD21CFD54430079F1AD /* Logger.swift */; };
 		57C0EED41E2D38B3001B4758 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0EED01E2AE972001B4758 /* CustomLogFormatter.swift */; };
@@ -408,6 +413,8 @@
 		5726E5421E00423900F2141C /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		572E0A781E42446600A7307A /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = "<group>"; };
 		572E0A791E42446600A7307A /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = "<group>"; };
+		5757D60F1E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion15.swift; sourceTree = "<group>"; };
+		5757D6121E929ECA000F65F9 /* Database+Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+Sync.swift"; sourceTree = "<group>"; };
 		57580D1A1DFAB58B0090C488 /* UIDevice+DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceInfo.h"; sourceTree = "<group>"; };
 		57580D1B1DFAB58B0090C488 /* UIDevice+DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceInfo.m"; sourceTree = "<group>"; };
 		57580D1D1DFAB6AB0090C488 /* UIApplication+AppVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+AppVersion.h"; sourceTree = "<group>"; };
@@ -416,6 +423,8 @@
 		57691EFF1E10613500F78859 /* RateApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateApplication.m; sourceTree = "<group>"; };
 		5785A4EE1E09DA0100C3CA0C /* AnalyticsLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsLogger.swift; sourceTree = "<group>"; };
 		579DDFB11E2E4223004937F7 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		57A8058C1E9672C000E68049 /* DatabaseUpgrade15Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgrade15Tests.swift; sourceTree = "<group>"; };
+		57A8058E1E9799AC00E68049 /* android-receipts-v15.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = "android-receipts-v15.db"; path = "SmartReceiptsTests/Persistence/TestData/android-receipts-v15.db"; sourceTree = "<group>"; };
 		57C0EED01E2AE972001B4758 /* CustomLogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLogFormatter.swift; sourceTree = "<group>"; };
 		57C0EED21E2D2D3E001B4758 /* LoggerMacros-ObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LoggerMacros-ObjC.h"; sourceTree = "<group>"; };
 		57C125181E12DAEF008551AC /* ServiceAccount.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ServiceAccount.json; sourceTree = "<group>"; };
@@ -1095,6 +1104,7 @@
 		84F4F33718CFCCD000F69A35 = {
 			isa = PBXGroup;
 			children = (
+				57A8058E1E9799AC00E68049 /* android-receipts-v15.db */,
 				84AA921618EEAE590096013D /* 3rdparty */,
 				84F4F34918CFCCD000F69A35 /* SmartReceipts */,
 				EA8D81D01AEA956600BAC943 /* SmartReceiptsTests */,
@@ -1907,11 +1917,12 @@
 		EAED9B1D1AEE9F8C00BB8773 /* Migrations */ = {
 			isa = PBXGroup;
 			children = (
-				EAED9B211AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m */,
 				EA69EF231AEFEDCC00276B70 /* DatabaseMigrationTest.m */,
+				EAED9B211AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m */,
+				EA69EF291AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m */,
 				EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */,
 				A7A720E41CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift */,
-				EA69EF291AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m */,
+				57A8058C1E9672C000E68049 /* DatabaseUpgrade15Tests.swift */,
 			);
 			path = Migrations;
 			sourceTree = "<group>";
@@ -1932,6 +1943,7 @@
 				EA69EF131AEFC81A00276B70 /* Database.h */,
 				EA69EF141AEFC81A00276B70 /* Database.m */,
 				A7F05BDE1CFD8FEC0079F1AD /* Database.swift */,
+				5757D6121E929ECA000F65F9 /* Database+Sync.swift */,
 				EA07BF481AF40066004D17F6 /* DatabaseTableNames.h */,
 				EA07BF491AF40066004D17F6 /* DatabaseTableNames.m */,
 				A7AFB2451CEC219100718744 /* DatabaseTableNames.swift */,
@@ -1953,6 +1965,7 @@
 				EAF9ADEA1AECF9300000AC84 /* DatabaseUpgradeToVersion13.h */,
 				EAF9ADEB1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m */,
 				A7AFB2411CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift */,
+				5757D60F1E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift */,
 			);
 			path = Migrations;
 			sourceTree = "<group>";
@@ -2134,6 +2147,7 @@
 				EA8ABE3B1B1A05FA00DBFA29 /* clean.db in Resources */,
 				EA8ABE3F1B1A147900DBFA29 /* exrtas-import-test.db in Resources */,
 				EA159E7F1AFE704D00DBB6CF /* android-receipts-v13.db in Resources */,
+				57A8058F1E9799AC00E68049 /* android-receipts-v15.db in Resources */,
 				EAD15C7F1B088612003BB1F3 /* sample-receipt.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2318,6 +2332,7 @@
 				EA8D81A31AEA7C6B00BAC943 /* ReceiptColumnDate.m in Sources */,
 				EA8D81851AEA7B7500BAC943 /* ReceiptColumnCategoryCode.m in Sources */,
 				EA0677F21B04E38F0058A326 /* EditReceiptViewController.m in Sources */,
+				5757D6101E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift in Sources */,
 				A7AFB2461CEC219100718744 /* DatabaseTableNames.swift in Sources */,
 				A7F05BA21CFC038D0079F1AD /* ReceiptColumnTax.swift in Sources */,
 				EA183E051B1C9F4C00577B3D /* Database+Columns.m in Sources */,
@@ -2376,6 +2391,7 @@
 				EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */,
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
 				A7B6FC5D1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift in Sources */,
+				5757D6131E929ECA000F65F9 /* Database+Sync.swift in Sources */,
 				A78215031CFFF39700FD644A /* EditReceiptViewController.swift in Sources */,
 				EA2F23011B41BDDD008AF61E /* PurchaseCell.m in Sources */,
 				EA5ECA2E1AF9F43F008D2CFB /* SettingsSegmentControlCell.m in Sources */,
@@ -2563,6 +2579,7 @@
 				EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */,
 				A709D7471CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift in Sources */,
 				EA36DE531B0119150034CC2D /* DatabaseHintsTest.m in Sources */,
+				5757D6141E929ECA000F65F9 /* Database+Sync.swift in Sources */,
 				EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */,
 				EA8ABE441B1A1D6800DBFA29 /* DatabaseCategoriesTest.m in Sources */,
 				EA7634AA1B3DB34A00AD8737 /* WBPreferencesImportExportTest.m in Sources */,
@@ -2573,6 +2590,7 @@
 				EA259CDB1B16071F00ECBD67 /* DataImportTest.m in Sources */,
 				EA07BF591AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m in Sources */,
 				EA888A811AFA5D1D00DF2AE6 /* WBPreferencesTestHelper.m in Sources */,
+				57A8058D1E9672C000E68049 /* DatabaseUpgrade15Tests.swift in Sources */,
 				EAE319641B10BF630032887E /* TaxCalculatorTest.m in Sources */,
 				BA665979E02A79C4610624F3 /* SmartReceiptsTestsBase.m in Sources */,
 			);
