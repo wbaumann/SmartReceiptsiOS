@@ -77,6 +77,9 @@
     [[Database sharedInstance] open];
 
     [[Database sharedInstance] checkReceiptValidity];
+    
+    // update recently used currencies list on app launch
+    [[RecentCurrenciesCache shared] update];
 
     NSString *language = [NSLocale preferredLanguages][0];
     LOGGER_INFO(@"lang: %@", language);

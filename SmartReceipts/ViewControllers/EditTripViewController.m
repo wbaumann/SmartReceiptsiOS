@@ -98,7 +98,8 @@
     [self.currencyCell setTitle:NSLocalizedString(@"edit.trip.default.currency.label", nil)];
 
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
-    [self.currencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
+    NSArray *cachedCurrencyCodes = [[RecentCurrenciesCache shared] cachedCurrencyCodes];
+    [self.currencyPickerCell setAllValues:[cachedCurrencyCodes arrayByAddingObjectsFromArray:[WBCurrency allCurrencyCodes]]];
     [self.currencyPickerCell setValueChangeHandler:^(id<Pickable> selected) {
         [weakSelf.currencyCell setValue:selected.presentedValue];
     }];

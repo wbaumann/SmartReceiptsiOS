@@ -8,10 +8,13 @@
 
 #import "WBCurrency.h"
 
+@interface WBCurrency ()
+
+@property (readwrite, nonatomic, copy) NSString *code;
+
+@end
+
 @implementation WBCurrency
-{
-    NSString* _code;
-}
 
 +(NSArray*) iso4217CurrencyCodes {
     return @[
@@ -34,33 +37,15 @@
     return [[WBCurrency alloc] initWithCode:currencyCode];
 }
 
-// We don't want that cos it's too costly.
-//+(NSString *) currencySymbolByCurrecyCode:(NSString *)code {
-//    NSArray *locales = [NSLocale availableLocaleIdentifiers];
-//    for (NSString *currentLocale in locales) {
-//        NSLocale *currentLoc = [[NSLocale alloc] initWithLocaleIdentifier:currentLocale];
-//        if([[currentLoc objectForKey:NSLocaleCurrencyCode] isEqualToString:code]) {
-//            return [currentLoc objectForKey:NSLocaleCurrencySymbol];
-//        }
-//    }
-//    return nil;
-//}
-
-- (id)initWithCode:(NSString*)currencyCode
-{
+- (id)initWithCode:(NSString*)currencyCode {
     self = [super init];
     if (self) {
-        _code = currencyCode;
+        self.code = currencyCode;
     }
     return self;
 }
 
-- (NSString*) code {
-    return _code;
-}
-
-- (BOOL)isEqual:(id)other
-{
+- (BOOL)isEqual:(id)other {
     if (other == self) {
         return YES;
     } else if (![other isKindOfClass:[WBCurrency class]]) {
@@ -71,9 +56,23 @@
     }
 }
 
-- (NSUInteger)hash
-{
+- (NSUInteger)hash {
     return self.code.hash;
+}
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.code forKey:@"code"];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        self.code = [aDecoder decodeObjectForKey:@"code"];
+    }
+    
+    return self;
 }
 
 @end

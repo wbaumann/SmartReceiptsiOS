@@ -16,7 +16,7 @@ class PricesCollection: Price {
             return
         }
         
-        add(price.amount, currency: price.currency.code())
+        add(price.amount, currency: price.currency.code)
     }
     
     func subtractPrice(_ price: Price?) {
@@ -24,7 +24,7 @@ class PricesCollection: Price {
             return
         }
         
-        add(price.amount.multiplying(by: .minusOne()), currency: price.currency.code())
+        add(price.amount.multiplying(by: .minusOne()), currency: price.currency.code)
     }
     
     func hasValue() -> Bool {
