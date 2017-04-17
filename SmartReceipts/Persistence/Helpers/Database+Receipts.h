@@ -8,6 +8,7 @@
 
 #import <objc/objc.h>
 #import "Database.h"
+#import "WBCurrency.h"
 
 @class WBReceipt;
 @class WBTrip;
@@ -32,5 +33,13 @@
 - (BOOL)moveReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
 - (BOOL)swapReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo;
 - (NSUInteger)nextReceiptID;
+
+/**
+ Recent currencies
+ Returns most recently used currencies, ordered
+
+ @return Array of WBCurrency objects
+ */
+- (NSArray<WBCurrency *> *)recentCurrencies;
 
 @end

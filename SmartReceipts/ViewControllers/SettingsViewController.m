@@ -214,7 +214,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     __weak SettingsViewController *weakSelf = self;
 
     self.defaultCurrencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
-    [self.defaultCurrencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
+    NSArray *cachedCurrencyCodes = [[RecentCurrenciesCache shared] cachedCurrencyCodes];
+    [self.defaultCurrencyPickerCell setAllValues:[cachedCurrencyCodes arrayByAddingObjectsFromArray:[WBCurrency allCurrencyCodes]]];
     [self.defaultCurrencyPickerCell setValueChangeHandler:^(id<Pickable> selected) {
         [weakSelf.defaultCurrencyCell setValue:selected.presentedValue];
     }];

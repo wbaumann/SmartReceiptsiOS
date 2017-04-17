@@ -121,7 +121,8 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     [self.currencyCell setTitle:NSLocalizedString(@"edit.receipt.currency.label", nil)];
 
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
-    [self.currencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
+    NSArray *cachedCurrencyCodes = [[RecentCurrenciesCache shared] cachedCurrencyCodes];
+    [self.currencyPickerCell setAllValues:[cachedCurrencyCodes arrayByAddingObjectsFromArray:[WBCurrency allCurrencyCodes]]];
     [self.currencyPickerCell setValueChangeHandler:^(id <Pickable> selected) {
         NSString *currency = [selected presentedValue];
         [weakSelf.currencyCell setValue:currency];
