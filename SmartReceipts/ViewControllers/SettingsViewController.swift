@@ -33,9 +33,6 @@ extension SettingsViewController {
     
     func analyticsSettingsOverflow() {
         AnalyticsManager.sharedManager.record(event: Event.Navigation.SettingsOverflow)
-        
-        // FIXME: remove
-        print("RecentCurrenciesCache \(RecentCurrenciesCache.shared.cachedCurrencies)")
     }
     
     func analyticsBackupOverflow() {
