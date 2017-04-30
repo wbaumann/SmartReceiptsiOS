@@ -96,8 +96,17 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 
     for (NSUInteger i = 0; i < [self numberOfItems]; ++i) {
         WBTrip *trip = [self objectAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        NSString *str = [trip formattedPrice];
-        CGRect bounds = [str boundingRectWithSize:CGSizeMake(1000, 100) options:NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:21]} context:nil];
+        NSString *formattedPrice = [trip formattedPrice];
+        
+        // Victor:
+        // In some cases WBTrip.pricesSummary becomes nil (say, when we removed any trip in this VC), actually it has been re-initialized without refresing 'pricesSummary'
+        // lines below solving the problem without breaking something else (as I afraid to do so)
+        if (formattedPrice == nil) {
+            [[Database sharedInstance] refreshPriceForTrip:trip];
+            formattedPrice = [trip formattedPrice];
+        }
+        
+        CGRect bounds = [formattedPrice boundingRectWithSize:CGSizeMake(1000, 100) options:NSStringDrawingUsesDeviceMetrics attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:21]} context:nil];
         maxWidth = MAX(maxWidth, CGRectGetWidth(bounds) + 10);
     }
 
