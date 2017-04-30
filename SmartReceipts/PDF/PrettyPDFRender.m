@@ -69,7 +69,13 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 }
 
 - (void)renderPages {
-    [self renderPage:self.openPage];
+    // Sometimes there are no content on page. We don't render empty pages as it causes an extra page appearing
+    if (![self.openPage isEmpty]) {
+        [self renderPage:self.openPage];
+    } else {
+        LOGGER_WARNING(@"prevented rendering of the empty pdf page");
+    }
+    
     UIGraphicsEndPDFContext();
 }
 
