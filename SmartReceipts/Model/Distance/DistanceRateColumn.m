@@ -14,7 +14,7 @@
 
 - (NSString *)valueFromDistance:(Distance *)distance forCSV:(BOOL)forCSV {
     Price *price = distance.rate;
-    return (forCSV ? price.amountAsString : price.currencyFormattedPrice);
+    return (forCSV ? price.mileageRateAmountAsString : price.mileageRateCurrencyFormattedPrice);
 }
 
 @end

@@ -145,7 +145,7 @@ NSString *const SREditDistanceDateCacheKey = @"SREditDistanceDateCacheKey";
     }
 
     [self.distanceCell setValue:[self.distance.distance descriptionWithLocale:[NSLocale currentLocale]]];
-    [self.rateCell setValue:[self.distance.rate amountAsString]];
+    [self.rateCell setValue:[self.distance.rate mileageRateAmountAsString]];
     NSString *currency = self.distance.rate.currency.code;
     [self.currencyCell setValue:currency];
     [self.currencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:currency]];
