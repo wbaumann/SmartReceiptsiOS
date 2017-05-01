@@ -20,7 +20,10 @@
 + (Price *__nonnull)zeroPriceWithCurrencyCode:(NSString *__nonnull)currencyCode;
 
 - (NSString *__nonnull)currencyFormattedPrice;
+- (NSString *__nonnull)mileageRateCurrencyFormattedPrice; // 3 digits precision, for mileage rate calculations
 - (NSString *__nonnull)amountAsString;
-+ (NSString *__nonnull)amountAsString:(NSDecimalNumber *__nonnull)amount;
+- (NSString *__nonnull)mileageRateAmountAsString; // 3 digits precision, for mileage rate calculations
+
++ (NSString *__nonnull)amountAsString:(NSDecimalNumber *__nonnull)amount; // looks like this one is used only for ui (calculate label's width)
 
 @end

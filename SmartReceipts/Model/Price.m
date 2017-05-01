@@ -55,8 +55,34 @@
     return [[noCurrencyFormatter stringFromNumber:amount] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
+
+- (NSString *)mileageRateAmountAsString {
+    return [Price mileageRateAmountAsString:self.amount];
+}
+
++ (NSString *)mileageRateAmountAsString:(NSDecimalNumber *)amount {
+    static NSString const *noCurrencyRateKey = @"noCurrencyRateFormatter";
+    NSNumberFormatter *noCurrencyRateFormatter = [[NSThread currentThread] threadDictionary][noCurrencyRateKey];
+    if (!noCurrencyRateFormatter) {
+        noCurrencyRateFormatter = [[NSNumberFormatter alloc] init];
+        [noCurrencyRateFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        [noCurrencyRateFormatter setMinimumFractionDigits:2];
+        [noCurrencyRateFormatter setMaximumFractionDigits:3];
+        [noCurrencyRateFormatter setUsesGroupingSeparator:false];
+        [[NSThread currentThread] threadDictionary][noCurrencyRateKey] = noCurrencyRateFormatter;
+    }
+    
+    return [[noCurrencyRateFormatter stringFromNumber:amount] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
 - (NSString *)currencyFormattedPrice {
     return [self formattedMoneyString:self.amount];
+}
+
+- (NSString *)mileageRateCurrencyFormattedPrice {
+    NSString *amount = [Price mileageRateAmountAsString:self.amount];
+    NSString *currencySymbol = [[NSLocale currentLocale] displayNameForKey:NSLocaleCurrencySymbol value:self.currency.code];
+    return [NSString stringWithFormat:@"%@%@", currencySymbol, amount];
 }
 
 - (NSString *)formattedMoneyString:(NSDecimalNumber *)moneyAmount {
@@ -68,6 +94,8 @@
     if (!formatter) {
         formatter = [[NSNumberFormatter alloc] init];
         [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        [formatter setMinimumFractionDigits:2];
+        [formatter setMaximumFractionDigits:2];
         [formatter setCurrencyCode:code];
         [[NSThread currentThread] threadDictionary][code] = formatter;
     }
