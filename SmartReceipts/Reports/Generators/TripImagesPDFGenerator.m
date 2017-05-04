@@ -105,9 +105,14 @@
         LOGGER_ERROR(@"drawFullPagePDFFile: pdf is nil, for path:%@", filePath);
         return;
     }
+    
+    size_t numberOfPages = CGPDFDocumentGetNumberOfPages(pdf);
+    if (numberOfPages > 10) {
+        LOGGER_WARNING(@"Too many pages (%zu) for %@", numberOfPages, label);
+    }
 
     @autoreleasepool {
-        for (NSUInteger i = 0; i < CGPDFDocumentGetNumberOfPages(pdf); ++i) {
+        for (NSUInteger i = 0; i < numberOfPages; ++i) {
             CGPDFPageRef page = CGPDFDocumentGetPage(pdf, i + 1);
             [self.pdfRender appendPDFPage:page withLabel:label];
         }
