@@ -428,7 +428,7 @@
 		5785A4EE1E09DA0100C3CA0C /* AnalyticsLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsLogger.swift; sourceTree = "<group>"; };
 		579DDFB11E2E4223004937F7 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		57A8058C1E9672C000E68049 /* DatabaseUpgrade15Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgrade15Tests.swift; sourceTree = "<group>"; };
-		57A8058E1E9799AC00E68049 /* android-receipts-v15.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = "android-receipts-v15.db"; path = "SmartReceiptsTests/Persistence/TestData/android-receipts-v15.db"; sourceTree = "<group>"; };
+		57A8058E1E9799AC00E68049 /* android-receipts-v15.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "android-receipts-v15.db"; sourceTree = "<group>"; };
 		57C0EED01E2AE972001B4758 /* CustomLogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLogFormatter.swift; sourceTree = "<group>"; };
 		57C0EED21E2D2D3E001B4758 /* LoggerMacros-ObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LoggerMacros-ObjC.h"; sourceTree = "<group>"; };
 		57C125181E12DAEF008551AC /* ServiceAccount.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ServiceAccount.json; sourceTree = "<group>"; };
@@ -1110,7 +1110,6 @@
 		84F4F33718CFCCD000F69A35 = {
 			isa = PBXGroup;
 			children = (
-				57A8058E1E9799AC00E68049 /* android-receipts-v15.db */,
 				84AA921618EEAE590096013D /* 3rdparty */,
 				84F4F34918CFCCD000F69A35 /* SmartReceipts */,
 				EA8D81D01AEA956600BAC943 /* SmartReceiptsTests */,
@@ -1663,6 +1662,7 @@
 		EA69EF2B1AF0907300276B70 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				57A8058E1E9799AC00E68049 /* android-receipts-v15.db */,
 				EAE23CB41B1757590078F197 /* 2015_05_26_SmartReceipts.smr */,
 				EA159E7C1AFE6F4E00DBB6CF /* android-receipts-v11.db */,
 				EA159E7B1AFE6F4E00DBB6CF /* android-receipts-v13.db */,
