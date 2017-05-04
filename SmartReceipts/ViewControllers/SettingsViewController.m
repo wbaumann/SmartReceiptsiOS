@@ -606,18 +606,17 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     
     void (^exportActionBlock)() = ^{
         PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
+        TICK;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             DataExport *export = [[DataExport alloc] initWithWorkDirectory:[WBFileManager documentsPath]];
             NSString *exportPath = [export execute];
-            NSData *exportData = [NSData dataWithContentsOfFile:exportPath];
-            
-            LOGGER_INFO(@"actionExport - exportPath: %@", exportPath);
-            LOGGER_INFO(@"actionExport - exportData_size: %li", exportData.length);
+            BOOL isFileExists = [[NSFileManager defaultManager] fileExistsAtPath:exportPath];
+            LOGGER_INFO(@"actionExport finished: time %@, exportPath: %@", TOCK, exportPath);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hide];
-
-                if (exportData) {
+                
+                if (isFileExists) {
                     [self shareBackupFile:exportPath fromRect:[self.tableView convertRect:self.backupCell.frame toView:self.view]];
                 } else {
                     LOGGER_ERROR(@"Failed to properly export data");
