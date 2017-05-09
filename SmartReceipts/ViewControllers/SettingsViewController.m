@@ -669,9 +669,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     } else if (cell == self.sendLoveCell) {
         [self sendLove];
     } else if (cell == self.sendFeedbackCell) {
-        [self emailFeedbackWithBugReport:NO];
+        [self emailFeedbackWithSubject:FeedbackEmailSubject];
     } else if (cell == self.sendBugReportCell) {
-        [self emailFeedbackWithBugReport:YES];
+        [self emailFeedbackWithSubject:FeedbackBugreportEmailSubject];
     }
 }
 
@@ -794,7 +794,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 #pragma mark - MFMailComposeViewController, MFMailComposeViewControllerDelegate
 
-- (void)emailFeedbackWithBugReport:(BOOL)isBugReportEmail {
+- (void)emailFeedbackWithSubject:(NSString *)subject {
     // Checking the availability of mail services
     if (![MFMailComposeViewController canSendMail]) {
         LOGGER_WARNING(@"Mail services are not available.");
@@ -806,26 +806,19 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     composeVC.mailComposeDelegate = self;
     
     // Configure the fields of the interface.
-    NSString *subject = FeedbackEmailSubject;
     NSMutableString *messageBody = [NSMutableString new];
+    // attach device info metadata
+    [messageBody appendString:@"\n\n\nDebug info:\n"];
+    [messageBody appendString:[[UIApplication sharedApplication] appVersionInfoString]];
+    [messageBody appendFormat:@"Plus: %@\n", [[Database sharedInstance] hasValidSubscription] ? @"true" : @"false"];
+    [messageBody appendString:[[UIDevice currentDevice] deviceInfoString]];
     
-    // Additional setup for Bug report:
-    if (isBugReportEmail) {
-        // another subject
-        subject = FeedbackBugreportEmailSubject;
-        // attach device info
-        [messageBody appendString:@"\n\n\nDebug info:\n"];
-        [messageBody appendString:[[UIApplication sharedApplication] appVersionInfoString]];
-        [messageBody appendFormat:@"Plus: %@\n", [[Database sharedInstance] hasValidSubscription] ? @"true" : @"false"];
-        [messageBody appendString:[[UIDevice currentDevice] deviceInfoString]];
-        
-        // Attach log files
-        NSArray *logFiles = [Logger logFiles];
-        for (DDLogFileInfo *file in logFiles) {
-            NSData *data = [NSData dataWithContentsOfFile:file.filePath];
-            if (data != nil) {
-                [composeVC addAttachmentData:data mimeType:@"text/plain" fileName:file.fileName];
-            }
+    // Attach log files
+    NSArray *logFiles = [Logger logFiles];
+    for (DDLogFileInfo *file in logFiles) {
+        NSData *data = [NSData dataWithContentsOfFile:file.filePath];
+        if (data != nil) {
+            [composeVC addAttachmentData:data mimeType:@"text/plain" fileName:file.fileName];
         }
     }
     
