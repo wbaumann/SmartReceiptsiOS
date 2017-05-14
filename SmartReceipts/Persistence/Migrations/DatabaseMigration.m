@@ -19,10 +19,11 @@
 
 + (NSArray *)allMigrations {
     return @[
-            [[DatabaseCreateAtVersion11 alloc] init],
-            [[DatabaseUpgradeToVersion12 alloc] init],
-            [[DatabaseUpgradeToVersion13 alloc] init],
-            [[DatabaseUpgradeToVersion14 alloc] init]
+            [DatabaseCreateAtVersion11 new],
+            [DatabaseUpgradeToVersion12 new],
+            [DatabaseUpgradeToVersion13 new],
+            [DatabaseUpgradeToVersion14 new],
+            [DatabaseUpgradeToVersion15 new]
     ];
 }
 

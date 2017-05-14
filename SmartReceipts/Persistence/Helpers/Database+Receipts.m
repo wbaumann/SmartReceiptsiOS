@@ -318,4 +318,26 @@
     return [self executeDoubleQuery:selectSeconds usingDatabase:database];
 }
 
+- (NSArray<WBCurrency *> *)recentCurrencies {
+    NSString *rawQuery = [NSString stringWithFormat:@"SELECT %@, COUNT(*) FROM %@ GROUP BY %@ ORDER BY COUNT(*) DESC;",
+                          ReceiptsTable.COLUMN_ISO4217,
+                          ReceiptsTable.TABLE_NAME,
+                          ReceiptsTable.COLUMN_ISO4217];
+    NSMutableArray *currencies = [NSMutableArray new];
+    
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet *resultSet = [db executeQuery:rawQuery];
+        
+        while ([resultSet next]) {
+            NSString *code = [resultSet stringForColumn:ReceiptsTable.COLUMN_ISO4217];
+            WBCurrency *currency = [WBCurrency currencyForCode:code];
+            
+            if (currency != nil) {
+                [currencies addObject:currency];
+            }
+        }
+    }];
+    return currencies;
+}
+
 @end

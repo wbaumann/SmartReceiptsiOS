@@ -112,6 +112,9 @@
 + (BOOL)cameraRotateImage;
 + (void)setCameraRotateImage:(BOOL)value;
 
++ (BOOL)isAutocompleteEnabled;
++ (void)setAutocompleteEnabled:(BOOL)value;
+
 + (BOOL)allowDataEntryOutsideTripBounds;
 + (void)setAllowDataEntryOutsideTripBounds:(BOOL)value;
 

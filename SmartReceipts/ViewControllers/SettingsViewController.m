@@ -55,6 +55,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *pdfFooterCell;
 
+@property (nonatomic, strong) SwitchControlCell *enableAutocompleteCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultTripLengthCell;
 @property (nonatomic, strong) SwitchControlCell *receiptOutsideTripBoundsCell;
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *minReportablePriceCell;
@@ -190,6 +191,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.defaultTripLengthCell setTitle:NSLocalizedString(@"settings.default.trip.length.label", nil)];
     [self.defaultTripLengthCell activateNumberEntryMode];
 
+    self.enableAutocompleteCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.enableAutocompleteCell setTitle:NSLocalizedString(@"settings.enable.autocomplete.label", nil)];
+    
     self.receiptOutsideTripBoundsCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.receiptOutsideTripBoundsCell setTitle:NSLocalizedString(@"settings.allow.data.outside.trip.bounds.label", nil)];
 
@@ -210,7 +214,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     __weak SettingsViewController *weakSelf = self;
 
     self.defaultCurrencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
-    [self.defaultCurrencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
+    NSArray *cachedCurrencyCodes = [[RecentCurrenciesCache shared] cachedCurrencyCodes];
+    [self.defaultCurrencyPickerCell setAllValues:[cachedCurrencyCodes arrayByAddingObjectsFromArray:[WBCurrency allCurrencyCodes]]];
     [self.defaultCurrencyPickerCell setValueChangeHandler:^(id<Pickable> selected) {
         [weakSelf.defaultCurrencyCell setValue:selected.presentedValue];
     }];
@@ -259,7 +264,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.customizePaymentMethodsCell setTitle:NSLocalizedString(@"settings.customize.payment.methods.label", nil)];
 
     InputCellsSection *general = [InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.general.section.title", nil)
-                                                               cells:@[self.defaultTripLengthCell,
+                                                               cells:@[self.enableAutocompleteCell,
+                                                                       self.defaultTripLengthCell,
                                                                        self.receiptOutsideTripBoundsCell,
                                                                        self.minReportablePriceCell,
                                                                        self.userIdCell,
@@ -396,16 +402,16 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self.defaultEmailBCCCell setValue:[WBPreferences defaultEmailBCC]];
     [self.defaultEmailSubjectCell setValue:[WBPreferences defaultEmailSubject]];
 
+    [self.enableAutocompleteCell setSwitchOn:[WBPreferences isAutocompleteEnabled]];
     [self.defaultTripLengthCell setValue:[NSString stringWithFormat:@"%d",[WBPreferences defaultTripDuration]]];
     [self.receiptOutsideTripBoundsCell setSwitchOn:[WBPreferences allowDataEntryOutsideTripBounds]];
 
-    double price = [WBPreferences minimumReceiptPriceToIncludeInReports];
-    double minPrice = ([WBPreferences MIN_FLOAT]/4.0); // we have to make significant change because it's long float and have little precision
-    if (price < minPrice) {
+    float minimumPrice = [WBPreferences minimumReceiptPriceToIncludeInReports];
+    if (minimumPrice <= 0) {
+        // If "minimumPrice" is less than or equal to 0, it means means "INCLUDE_ALL" and will be blanked out in the field
         [self.minReportablePriceCell setValue:@""];
     } else {
-        long long priceLong = roundl(price);
-        [self.minReportablePriceCell setValue:[NSString stringWithFormat:@"%lld", priceLong]];
+        [self.minReportablePriceCell setValue:[NSString stringWithFormat:@"%d", (int) minimumPrice]];
     }
 
     [self.userIdCell setValue:[WBPreferences userID]];
@@ -490,12 +496,16 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [WBPreferences setDefaultTripDuration:[daysStr intValue]];
     }
 
+    [WBPreferences setAutocompleteEnabled:self.enableAutocompleteCell.isSwitchOn];
     [WBPreferences setAllowDataEntryOutsideTripBounds:self.receiptOutsideTripBoundsCell.isSwitchOn];
 
     NSString *priceStr = [self.minReportablePriceCell value];
-    if ([priceStr length] > 0 && [priceStr length] < 4) {
-        [WBPreferences setMinimumReceiptPriceToIncludeInReports:[priceStr floatValue]];
-    } else if ([priceStr length] == 0) {
+    if (priceStr.length > 0) {
+        // parse string for float number and remember
+        float minPriceToReport = priceStr.floatValue;
+        [WBPreferences setMinimumReceiptPriceToIncludeInReports:minPriceToReport];
+    } else {
+        // empty field, persist MIN_FLOAT
         [WBPreferences setMinimumReceiptPriceToIncludeInReports:[WBPreferences MIN_FLOAT]];
     }
     
@@ -596,18 +606,17 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     
     void (^exportActionBlock)() = ^{
         PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController.view];
+        TICK;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             DataExport *export = [[DataExport alloc] initWithWorkDirectory:[WBFileManager documentsPath]];
             NSString *exportPath = [export execute];
-            NSData *exportData = [NSData dataWithContentsOfFile:exportPath];
-            
-            LOGGER_INFO(@"actionExport - exportPath: %@", exportPath);
-            LOGGER_INFO(@"actionExport - exportData_size: %li", exportData.length);
+            BOOL isFileExists = [[NSFileManager defaultManager] fileExistsAtPath:exportPath];
+            LOGGER_INFO(@"actionExport finished: time %@, exportPath: %@", TOCK, exportPath);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hide];
-
-                if (exportData) {
+                
+                if (isFileExists) {
                     [self shareBackupFile:exportPath fromRect:[self.tableView convertRect:self.backupCell.frame toView:self.view]];
                 } else {
                     LOGGER_ERROR(@"Failed to properly export data");

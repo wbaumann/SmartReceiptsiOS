@@ -80,7 +80,8 @@ NSString *const SREditDistanceDateCacheKey = @"SREditDistanceDateCacheKey";
     [self.currencyCell setTitle:NSLocalizedString(@"edit.distance.controller.currency.label", nil) value:selectedCurrency];
 
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
-    [self.currencyPickerCell setAllValues:[WBCurrency allCurrencyCodes]];
+    NSArray *cachedCurrencyCodes = [[RecentCurrenciesCache shared] cachedCurrencyCodes];
+    [self.currencyPickerCell setAllValues:[cachedCurrencyCodes arrayByAddingObjectsFromArray:[WBCurrency allCurrencyCodes]]];
     [self.currencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:selectedCurrency]];
     [self.currencyPickerCell setValueChangeHandler:^(id<Pickable> selected) {
         [weakSelf.currencyCell setValue:selected.presentedValue];
@@ -144,7 +145,7 @@ NSString *const SREditDistanceDateCacheKey = @"SREditDistanceDateCacheKey";
     }
 
     [self.distanceCell setValue:[self.distance.distance descriptionWithLocale:[NSLocale currentLocale]]];
-    [self.rateCell setValue:[self.distance.rate amountAsString]];
+    [self.rateCell setValue:[self.distance.rate mileageRateAmountAsString]];
     NSString *currency = self.distance.rate.currency.code;
     [self.currencyCell setValue:currency];
     [self.currencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:currency]];

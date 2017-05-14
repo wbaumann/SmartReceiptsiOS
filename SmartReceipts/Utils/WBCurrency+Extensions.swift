@@ -9,5 +9,5 @@
 import Foundation
 
 func == (lhs: WBCurrency, rhs: WBCurrency) -> Bool {
-    return lhs.code() == rhs.code()
+    return lhs.code == rhs.code
 }

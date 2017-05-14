@@ -41,4 +41,10 @@ extension Database: RefreshTripPriceHandler {
         
         return trip
     }
+    
+    func refreshPriceForTrip(_ trip: WBTrip) {
+        inDatabase { (db) in
+            self.refreshPriceForTrip(trip, inDatabase: db)
+        }
+    }
 }

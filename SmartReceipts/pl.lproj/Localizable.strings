@@ -112,8 +112,8 @@
 "edit.receipt.exchange.rate.label" = "Exchange Rate";
 "edit.receipt.full.page.label" = "Obraz na całą stronę";
 "edit.receipt.generic.save.error.message" = "Nie można dodać tego paragonu";
+"edit.receipt.name.invalid.alert.message" = "Proszę wpisać prawidłowe imię";
 "edit.receipt.name.label" = "Nazwa";
-"edit.receipt.name.missing.alert.message" = "Proszę wprowadzić nazwę";
 "edit.receipt.name.placeholder" = "Nazwa twojego paragonu";
 "edit.receipt.payment.method.label" = "Payment Method";
 "edit.receipt.price.label" = "Cena";
@@ -285,6 +285,7 @@
 "settings.distance.report.on.daily.distance" = "Report on Daily Distance";
 "settings.distance.section.title" = "Distance";
 "settings.email.section.title" = "Email";
+"settings.enable.autocomplete.label" = "Enable autocomplete suggestions";
 "settings.enable.payment.methods.label" = "Enable Payment Methods";
 "settings.export.confirmation.alert.message" = "Możesz ponownie zaimportować swoje dane klikając na plik SmartReceipts.SMR, ktory zostanie wygenerowany po kliknięciu poniżej.";
 "settings.export.confirmation.alert.title" = "Eksportować paragony?";

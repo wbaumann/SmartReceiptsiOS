@@ -8,14 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WBCurrency : NSObject
+@interface WBCurrency: NSObject <NSCoding>
 
-+(NSArray*) iso4217CurrencyCodes;
-+(NSArray*) nonIso4217CurrencyCodes;
-+(NSArray*) allCurrencyCodes;
+@property (readonly, nonatomic, copy) NSString *code;
 
-+(WBCurrency*) currencyForCode:(NSString*) currencyCode;
-
--(NSString*) code;
++ (NSArray *)iso4217CurrencyCodes;
++ (NSArray *)nonIso4217CurrencyCodes;
++ (NSArray *)allCurrencyCodes;
++ (WBCurrency *)currencyForCode:(NSString*) currencyCode;
 
 @end
