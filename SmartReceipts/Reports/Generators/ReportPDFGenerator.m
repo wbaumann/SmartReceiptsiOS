@@ -13,7 +13,7 @@
 @implementation ReportPDFGenerator
 
 - (NSArray *)receiptColumns {
-    return [[Database sharedInstance] allPDFColumns];
+    return [self.database allPDFColumns];
 }
 
 @end
