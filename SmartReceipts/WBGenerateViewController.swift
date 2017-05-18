@@ -10,27 +10,21 @@ import Foundation
 import MessageUI
 
 extension WBGenerateViewController: QuickAlertPresenter {
+    
+    // MARK: Generate report files
+    
     func generate() {
-        
         self.trackGeneratorEvents()
         
         let hud = PendingHUDView.showHUD(on: self.navigationController!.view)
         delayedExecution(0.3) {
             self.generator = ReportAssetsGenerator(trip: self.trip)
-
             self.generator!.setGenerated(self.fullPdfReportField.isOn, imagesPDF: self.pdfImagesField.isOn, csv: self.csvFileField.isOn, imagesZip: self.zipImagesField.isOn)
             
-            self.generator!.generate() {
-                files in
-
+            self.generator!.generate(onSuccessHandler: { (files) in
                 hud?.hide()
                 
-                guard let files = files else {
-                    self.presentAlert(NSLocalizedString("generic.error.alert.title", comment: ""), message: NSLocalizedString("generate.report.unsuccessful.alert.message", comment: ""))
-                    Logger.warning("ReportAssetsGenerator.generate() no files: \(NSLocalizedString("generate.report.unsuccessful.alert.message", comment: ""))")
-                    return
-                }
-                
+                // Creating the alert dialog:
                 let sheet = UIAlertController(title: nil, message: NSLocalizedString("generate.report.share.method.sheet.title", comment: ""), preferredStyle: .alert)
                 let emailAction = UIAlertAction(title: NSLocalizedString("generate.report.share.method.email", comment: ""), style: .default) {
                     _ in
@@ -46,7 +40,45 @@ extension WBGenerateViewController: QuickAlertPresenter {
                 sheet.addAction(otherAction)
                 sheet.addAction(UIAlertAction(title: NSLocalizedString("generic.button.title.cancel", comment: ""), style: .cancel, handler: nil))
                 self.present(sheet, animated: true, completion: nil)
-            }
+                
+            }, onErrorHandler: { (error) in
+                hud?.hide()
+                
+                Logger.warning("ReportAssetsGenerator.generate() onError: \(error)")
+                
+                // Creating the error alert:
+                let errorAlert = UIAlertController(title: NSLocalizedString("generate.report.unsuccessful.alert.message", comment: ""), message: "", preferredStyle: .alert)
+                
+                switch error {
+                case .fullPdfFailed:
+                    errorAlert.message = NSLocalizedString("generate.report.option.full.pdf", comment: "")
+                case .fullPdfTooManyColumns:
+                    // FIXME: !
+                    errorAlert.title = NSLocalizedString("generate.report.unsuccessful.alert.pdf.columns.title", comment: "")
+                    if WBPreferences.printReceiptTableLandscape() {
+                        errorAlert.message = NSLocalizedString("generate.report.unsuccessful.alert.pdf.columns.message", comment: "")
+                    } else {
+                        errorAlert.message = NSLocalizedString("generate.report.unsuccessful.alert.pdf.columns.message.tryportrait", comment: "")
+                    }
+                    
+                    let openSettingsAction = UIAlertAction(title: NSLocalizedString("generate.report.unsuccessful.alert.pdf.columns.gotosettings", comment: ""), style: .default) {
+                        _ in
+                        self.openSettingsAtSection()
+                    }
+                    errorAlert.addAction(openSettingsAction)
+                    // generate.report.unsuccessful.alert.pdf.columns.gotosettings
+                    
+                case .imagesPdf:
+                    errorAlert.message = NSLocalizedString("generate.report.option.pdf.no.table", comment: "")
+                case .csvFailed:
+                    errorAlert.message = NSLocalizedString("generate.report.option.csv", comment: "")
+                case .zipImagesFailed:
+                    errorAlert.message = NSLocalizedString("generate.report.option.zip.stamped", comment: "")
+                }
+                
+                errorAlert.addAction(UIAlertAction(title: NSLocalizedString("generic.button.title.ok", comment: ""), style: .default, handler: nil))
+                self.present(errorAlert, animated: true, completion: nil)
+            })
         }
     }
     
@@ -113,6 +145,7 @@ extension WBGenerateViewController: MFMailComposeViewControllerDelegate, UINavig
 }
 
 extension WBGenerateViewController {
+    
     fileprivate func shareFiles(_ files: [String]) {
         var attached = [URL]()
         for file in files {

@@ -94,6 +94,9 @@
 + (BOOL)printCommentByPhoto;
 + (void)setPrintCommentByPhoto:(BOOL)value;
 
++ (BOOL)printReceiptTableLandscape;
++ (void)setPrintReceiptTableLandscape:(BOOL)value;
+
 + (BOOL)layoutShowReceiptDate;
 + (void)setLayoutShowReceiptDate:(BOOL)value;
 

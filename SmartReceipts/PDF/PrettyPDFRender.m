@@ -8,10 +8,8 @@
 
 #import "PrettyPDFRender.h"
 #import "PDFPage.h"
-#import "HorizontalPDFPage.h"
 #import "UIView+LoadHelpers.h"
 #import "TripReportHeader.h"
-#import "HorizontalTripReportHeader.h"
 #import "PDFReportTable.h"
 #import "PDFImageView.h"
 #import "FullPagePDFImageView.h"
@@ -68,7 +66,8 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
     [self.openPage appendHeader:self.header];
 }
 
-- (void)renderPages {
+- (BOOL)renderPages {
+    
     // Sometimes there are no content on page. We don't render empty pages as it causes an extra page appearing
     if (![self.openPage isEmpty]) {
         [self renderPage:self.openPage];
@@ -77,6 +76,12 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
     }
     
     UIGraphicsEndPDFContext();
+    
+    if (self.tableHasTooManyColumns) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (void)renderPage:(PDFPage *)page {
@@ -116,15 +121,18 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 }
 
 - (void)closeTable {
-    BOOL fullyAdded = [self.openTable buildTable:[self.openPage remainingSpace]];
+    BOOL fullyAddedTable = [self.openTable buildTable:[self.openPage remainingSpace]];
     [self.openPage appendTable:self.openTable];
-
-    if (fullyAdded) {
+    
+    if (self.openTable.hasTooManyColumnsToFitWidth) {
+        _tableHasTooManyColumns = YES;
+    }
+    
+    if (fullyAddedTable) {
         return;
     }
 
     PDFReportTable *partialTable = self.openTable;
-
     NSUInteger remainder = partialTable.rows.count - partialTable.rowsAdded;
     if (partialTable.rowToStart == 0 && (partialTable.rowsAdded < SRMinNumberOfTableRowsForPage || remainder < SRMinNumberOfTableRowsForPage)) {
         [self.openTable removeFromSuperview];
@@ -147,18 +155,21 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
         [self renderPage:self.writingToPage];
     }
 
-    self.writingToPage = [PDFPage loadInstance];
-}
-
-- (void)startNextHorizontalPage {
-    if (self.writingToPage) {
-        [self renderPage:self.writingToPage];
-    }
+    PDFPage *newPage = [PDFPage loadInstance];
     
-    self.writingToPage = [HorizontalPDFPage loadInstance];
+    if (self.landscapePreferred) {
+        newPage.frame = kPDFPageA4Landscape;
+    } else {
+        newPage.frame = kPDFPageA4Portrait;
+    }
+    [newPage layoutIfNeeded];
+    
+    self.writingToPage = newPage;
 }
 
 - (void)appendImage:(UIImage *)image withLabel:(NSString *)label {
+    
+    
     if (self.openPage.imageIndex == 4) {
         [self startNextPage];
     }

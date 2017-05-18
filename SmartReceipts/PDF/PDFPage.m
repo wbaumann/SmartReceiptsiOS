@@ -12,6 +12,7 @@
 #import "PDFReportTable.h"
 #import "PDFImageView.h"
 #import "WBPreferences.h"
+#import "UIView+LoadHelpers.h"
 
 CGFloat const ElementsSpacing = 16;
 
@@ -27,6 +28,8 @@ CGFloat const ElementsSpacing = 16;
 
 @implementation PDFPage
 
+#pragma mark - Initialization
+
 - (void)awakeFromNib {
     [super awakeFromNib];
 
@@ -38,7 +41,14 @@ CGFloat const ElementsSpacing = 16;
     self.footerLabel.text = [WBPreferences pdfFooterString];
 }
 
+#pragma mark -
+
 - (void)appendHeader:(TripReportHeader *)header {
+    CGRect newFrame = header.frame;
+    // make table width equal to the content width:
+    newFrame.size.width = self.topLine.frame.size.width;
+    header.frame = newFrame;
+    [header layoutIfNeeded];
     [self appendElement:header];
 }
 
