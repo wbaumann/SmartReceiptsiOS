@@ -20,11 +20,13 @@
 
     NSError *writeError = nil;
     BOOL writeSuccess = [content writeToFile:outputPath atomically:YES encoding:NSUTF8StringEncoding error:&writeError];
-    if (writeError) {
+    
+    if (writeSuccess) {
+        return YES;
+    } else {
         LOGGER_ERROR(@"CSV write error:%@", writeError);
+        return NO;
     }
-
-    return writeSuccess;
 }
 
 - (void)appendReceiptsTable:(NSMutableString *)content {

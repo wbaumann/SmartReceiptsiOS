@@ -11,10 +11,6 @@
 		4D380F911B61240C001B43D2 /* GADConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D380F901B61240C001B43D2 /* GADConstants.m */; };
 		4D380F941B6124F3001B43D2 /* launch_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D380F921B6124F3001B43D2 /* launch_image.png */; };
 		4D380F951B6124F3001B43D2 /* launch_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D380F931B6124F3001B43D2 /* launch_image@2x.png */; };
-		4D3C193F1D46BE5A00FEC539 /* HorizontalPDFPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D3C193C1D46BE5A00FEC539 /* HorizontalPDFPage.xib */; };
-		4D3C19401D46BE5A00FEC539 /* HorizontalPDFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3C193E1D46BE5A00FEC539 /* HorizontalPDFPage.m */; };
-		4D3C19441D46C25A00FEC539 /* HorizontalTripReportHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D3C19411D46C25A00FEC539 /* HorizontalTripReportHeader.xib */; };
-		4D3C19451D46C25A00FEC539 /* HorizontalTripReportHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3C19421D46C25A00FEC539 /* HorizontalTripReportHeader.m */; };
 		4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BB304190818E100D28CBF /* WBActionSheetPicker.m */; };
 		4DF229461928678A0008D359 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF229451928678A0008D359 /* AdSupport.framework */; };
 		4DF22948192867940008D359 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF22947192867940008D359 /* AudioToolbox.framework */; };
@@ -37,6 +33,7 @@
 		5757D6141E929ECA000F65F9 /* Database+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5757D6121E929ECA000F65F9 /* Database+Sync.swift */; };
 		57580D1C1DFAB58B0090C488 /* UIDevice+DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 57580D1B1DFAB58B0090C488 /* UIDevice+DeviceInfo.m */; };
 		57580D1F1DFAB6AB0090C488 /* UIApplication+AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 57580D1E1DFAB6AB0090C488 /* UIApplication+AppVersion.m */; };
+		5762EA841ECDC2600032411A /* TripFullPDFGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5762EA831ECDC2600032411A /* TripFullPDFGeneratorTest.swift */; };
 		57691F001E10613500F78859 /* RateApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 57691EFF1E10613500F78859 /* RateApplication.m */; };
 		5785A4EF1E09DA0100C3CA0C /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785A4EE1E09DA0100C3CA0C /* AnalyticsLogger.swift */; };
 		579DDFB21E2E4223004937F7 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579DDFB11E2E4223004937F7 /* UIImage+Extensions.swift */; };
@@ -395,12 +392,6 @@
 		4D380F921B6124F3001B43D2 /* launch_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_image.png; sourceTree = "<group>"; };
 		4D380F931B6124F3001B43D2 /* launch_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch_image@2x.png"; sourceTree = "<group>"; };
 		4D39888A1DB985D500C394D1 /* SmartReceipts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartReceipts.entitlements; sourceTree = "<group>"; };
-		4D3C193C1D46BE5A00FEC539 /* HorizontalPDFPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalPDFPage.xib; sourceTree = "<group>"; };
-		4D3C193D1D46BE5A00FEC539 /* HorizontalPDFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalPDFPage.h; sourceTree = "<group>"; };
-		4D3C193E1D46BE5A00FEC539 /* HorizontalPDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalPDFPage.m; sourceTree = "<group>"; };
-		4D3C19411D46C25A00FEC539 /* HorizontalTripReportHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalTripReportHeader.xib; sourceTree = "<group>"; };
-		4D3C19421D46C25A00FEC539 /* HorizontalTripReportHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalTripReportHeader.m; sourceTree = "<group>"; };
-		4D3C19431D46C25A00FEC539 /* HorizontalTripReportHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalTripReportHeader.h; sourceTree = "<group>"; };
 		4DF229451928678A0008D359 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		4DF22947192867940008D359 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4DF229491928679D0008D359 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -423,6 +414,7 @@
 		57580D1B1DFAB58B0090C488 /* UIDevice+DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceInfo.m"; sourceTree = "<group>"; };
 		57580D1D1DFAB6AB0090C488 /* UIApplication+AppVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+AppVersion.h"; sourceTree = "<group>"; };
 		57580D1E1DFAB6AB0090C488 /* UIApplication+AppVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+AppVersion.m"; sourceTree = "<group>"; };
+		5762EA831ECDC2600032411A /* TripFullPDFGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripFullPDFGeneratorTest.swift; sourceTree = "<group>"; };
 		57691EFE1E10613500F78859 /* RateApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateApplication.h; sourceTree = "<group>"; };
 		57691EFF1E10613500F78859 /* RateApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateApplication.m; sourceTree = "<group>"; };
 		5785A4EE1E09DA0100C3CA0C /* AnalyticsLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsLogger.swift; sourceTree = "<group>"; };
@@ -1410,40 +1402,34 @@
 		EA2B8D7B1B4EF1AE0043A84B /* PDF */ = {
 			isa = PBXGroup;
 			children = (
-				4D3C19411D46C25A00FEC539 /* HorizontalTripReportHeader.xib */,
-				4D3C19421D46C25A00FEC539 /* HorizontalTripReportHeader.m */,
-				4D3C19431D46C25A00FEC539 /* HorizontalTripReportHeader.h */,
-				4D3C193C1D46BE5A00FEC539 /* HorizontalPDFPage.xib */,
-				4D3C193D1D46BE5A00FEC539 /* HorizontalPDFPage.h */,
-				4D3C193E1D46BE5A00FEC539 /* HorizontalPDFPage.m */,
-				EA40DC671B55598A003BF545 /* FullPagePDFImageView.h */,
-				EA40DC681B55598A003BF545 /* FullPagePDFImageView.m */,
-				EA40DC6A1B5559A1003BF545 /* FullPagePDFImageView.xib */,
+				EA2B8D7F1B4EF2510043A84B /* PrettyPDFRender.h */,
+				EA2B8D801B4EF2510043A84B /* PrettyPDFRender.m */,
+				EA40DC711B555D31003BF545 /* PDFPageRenderView.h */,
+				EA40DC721B555D31003BF545 /* PDFPageRenderView.m */,
+				EA2B8D821B4EF26D0043A84B /* PDFPage.h */,
+				EA2B8D831B4EF26D0043A84B /* PDFPage.m */,
+				EA2B8D851B4EF27D0043A84B /* PDFPage.xib */,
 				EA40DC6C1B555CC9003BF545 /* FullPagePDFPageView.h */,
 				EA40DC6D1B555CC9003BF545 /* FullPagePDFPageView.m */,
 				EA40DC6F1B555CFE003BF545 /* FullPagePDFPageView.xib */,
 				EAF6FE0E1B543AA40005E2CE /* PDFImageView.h */,
 				EAF6FE0F1B543AA40005E2CE /* PDFImageView.m */,
 				EAF6FE111B543ABB0005E2CE /* PDFImageView.xib */,
-				EA2B8D821B4EF26D0043A84B /* PDFPage.h */,
-				EA2B8D831B4EF26D0043A84B /* PDFPage.m */,
-				EA2B8D851B4EF27D0043A84B /* PDFPage.xib */,
-				EA40DC711B555D31003BF545 /* PDFPageRenderView.h */,
-				EA40DC721B555D31003BF545 /* PDFPageRenderView.m */,
+				EA2B8D891B4EF45B0043A84B /* TripReportHeader.h */,
+				EA2B8D8A1B4EF45B0043A84B /* TripReportHeader.m */,
+				EA2B8D871B4EF44B0043A84B /* TripReportHeader.xib */,
 				EA1309A11B50281A0045FDDE /* PDFReportTable.h */,
 				EA1309A21B50281A0045FDDE /* PDFReportTable.m */,
 				EA1309A41B50282A0045FDDE /* PDFReportTable.xib */,
-				EA2B8D7F1B4EF2510043A84B /* PrettyPDFRender.h */,
-				EA2B8D801B4EF2510043A84B /* PrettyPDFRender.m */,
+				EA40DC671B55598A003BF545 /* FullPagePDFImageView.h */,
+				EA40DC681B55598A003BF545 /* FullPagePDFImageView.m */,
+				EA40DC6A1B5559A1003BF545 /* FullPagePDFImageView.xib */,
 				EA2B8D7C1B4EF1DA0043A84B /* RenderedPDFLabel.h */,
 				EA2B8D7D1B4EF1DA0043A84B /* RenderedPDFLabel.m */,
 				EA13099E1B5027E40045FDDE /* TableContentRow.h */,
 				EA13099F1B5027E40045FDDE /* TableContentRow.m */,
 				EA13099B1B5027D10045FDDE /* TableHeaderRow.h */,
 				EA13099C1B5027D10045FDDE /* TableHeaderRow.m */,
-				EA2B8D891B4EF45B0043A84B /* TripReportHeader.h */,
-				EA2B8D8A1B4EF45B0043A84B /* TripReportHeader.m */,
-				EA2B8D871B4EF44B0043A84B /* TripReportHeader.xib */,
 			);
 			path = PDF;
 			sourceTree = "<group>";
@@ -1938,6 +1924,7 @@
 			isa = PBXGroup;
 			children = (
 				EAF9ADDD1AECD2D20000AC84 /* ReportGeneratorTest.m */,
+				5762EA831ECDC2600032411A /* TripFullPDFGeneratorTest.swift */,
 			);
 			path = Generators;
 			sourceTree = "<group>";
@@ -2093,7 +2080,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D3C19441D46C25A00FEC539 /* HorizontalTripReportHeader.xib in Resources */,
 				EA98B51E1B075057006935AE /* WBCellWithPriceNameDate.xib in Resources */,
 				EA5963FC1AF2A07200935344 /* InlinedPickerCell.xib in Resources */,
 				57C125191E12DAEF008551AC /* ServiceAccount.json in Resources */,
@@ -2102,7 +2088,6 @@
 				EA2F23021B41BDDD008AF61E /* PurchaseCell.xib in Resources */,
 				EA4C5CC61AF287330083FDD7 /* TitledTextEntryCell.xib in Resources */,
 				EA07BF601AF4E801004D17F6 /* DistanceSummaryCell.xib in Resources */,
-				4D3C193F1D46BE5A00FEC539 /* HorizontalPDFPage.xib in Resources */,
 				84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */,
 				EA1D42BE1B03851C00D64D3A /* TitleOnlyCell.xib in Resources */,
 				841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */,
@@ -2388,7 +2373,6 @@
 				5785A4EF1E09DA0100C3CA0C /* AnalyticsLogger.swift in Sources */,
 				EA71DFCC1AF9FEEC004092C3 /* SwitchControlCell.m in Sources */,
 				EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */,
-				4D3C19451D46C25A00FEC539 /* HorizontalTripReportHeader.m in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
 				EA8EB10A1B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m in Sources */,
 				EA22679E1B1E035F005761E7 /* ReceiptSummaryCell.m in Sources */,
@@ -2493,7 +2477,6 @@
 				EA8D818B1AEA7BA400BAC943 /* ReceiptColumnUserID.m in Sources */,
 				EA8EB1071B0A4AAF00780BA3 /* ReceiptColumnReportComment.m in Sources */,
 				A7AFB2421CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift in Sources */,
-				4D3C19401D46BE5A00FEC539 /* HorizontalPDFPage.m in Sources */,
 				EAD15C7A1B0881C2003BB1F3 /* ReceiptFilesManager.m in Sources */,
 				EA183E0B1B1C9F6C00577B3D /* Database+PDFColumns.m in Sources */,
 				EA8D819D1AEA7C4200BAC943 /* ReceiptColumnComment.m in Sources */,
@@ -2562,6 +2545,7 @@
 				EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */,
 				A7F05BB61CFC1B5D0079F1AD /* ReceiptColumnExchangeRateTests.swift in Sources */,
 				A7B6FC5B1CF5DA2100CD53F1 /* WBReceiptTests.swift in Sources */,
+				5762EA841ECDC2600032411A /* TripFullPDFGeneratorTest.swift in Sources */,
 				A7F05BDB1CFD6C520079F1AD /* PricesCollectionTests.swift in Sources */,
 				EA159E811AFE7CDC00DBB6CF /* NSDate+Calculations.m in Sources */,
 				EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */,
@@ -2794,7 +2778,7 @@
 					"$(inherited)",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) $(OTHER_LDFLAGS)";
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = co.smartreceipts.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8187c9e2-d7a6-4b9e-8421-d39b1adfca9e";

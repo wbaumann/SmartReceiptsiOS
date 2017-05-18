@@ -16,6 +16,16 @@ private struct Generation {
 }
 
 class ReportAssetsGenerator: NSObject {
+    
+    // Generator's error representation
+    enum GeneratorError {
+        case fullPdfFailed          // error in general
+        case fullPdfTooManyColumns  // can't place all PDF columns
+        case imagesPdf
+        case csvFailed
+        case zipImagesFailed
+    }
+    
     fileprivate let trip: WBTrip
     fileprivate var generate: Generation!
     
@@ -28,26 +38,38 @@ class ReportAssetsGenerator: NSObject {
         Logger.info("setGenerated: \(generate)")
     }
     
-    func generate(_ completion: ([String]?) -> ()) {
+    /// Generate reports
+    ///
+    /// - Parameter completion: [String] - array of resulting files (paths), GeneratorError - optional error
+    func generate(onSuccessHandler: ([String]) -> (), onErrorHandler: (GeneratorError) -> ()) {
+        var files = [String]()
+        let db = Database.sharedInstance()
+        
         trip.createDirectoryIfNotExists()
         
-        
-        let tripName = trip.name ?? "Report" // force unwrapping isn't good practice
+        let tripName = trip.name ?? "Report"
         let pdfPath = trip.file(inDirectoryPath: "\(tripName).pdf")
         let pdfImagesPath = trip.file(inDirectoryPath: "\(tripName)Images.pdf")
         let csvPath = trip.file(inDirectoryPath: "\(tripName).csv")
         let zipPath = trip.file(inDirectoryPath: "\(tripName).zip")
         
-        var files = [String]()
-        
         if generate.fullPDF {
             Logger.info("generate.fullPDF")
             clearPath(pdfPath!)
-            let generator = TripFullPDFGenerator(trip: trip, database: Database.sharedInstance())
-            if (generator?.generate(toPath: pdfPath))! {
+            guard let generator = TripFullPDFGenerator(trip: trip, database: db) else {
+                onErrorHandler(.fullPdfFailed)
+                return
+            }
+            
+            if generator.generate(toPath: pdfPath) {
                 files.append(pdfPath!)
             } else {
-                completion(nil)
+                if generator.pdfRender.tableHasTooManyColumns {
+                    onErrorHandler(.fullPdfTooManyColumns)
+                } else {
+                    onErrorHandler(.fullPdfFailed)
+                }
+            
                 return
             }
         }
@@ -55,11 +77,14 @@ class ReportAssetsGenerator: NSObject {
         if generate.imagesPDF {
             Logger.info("generate.imagesPDF")
             clearPath(pdfImagesPath!)
-            let generator = TripImagesPDFGenerator(trip: trip, database: Database.sharedInstance())
-            if (generator?.generate(toPath: pdfImagesPath))! {
+            guard let generator = TripImagesPDFGenerator(trip: trip, database:db) else {
+                onErrorHandler(.imagesPdf)
+                return
+            }
+            if generator.generate(toPath: pdfImagesPath) {
                 files.append(pdfImagesPath!)
             } else {
-                completion(nil)
+                onErrorHandler(.imagesPdf)
                 return
             }
         }
@@ -67,23 +92,24 @@ class ReportAssetsGenerator: NSObject {
         if generate.csv {
             Logger.info("generate.csv")
             clearPath(csvPath!)
-            let generator = TripCSVGenerator(trip: trip, database: Database.sharedInstance())
-            if (generator?.generate(toPath: csvPath))! {
+            guard let generator = TripCSVGenerator(trip: trip, database: db) else {
+                onErrorHandler(.csvFailed)
+                return
+            }
+            
+            if generator.generate(toPath: csvPath) {
                 files.append(csvPath!)
             } else {
-                completion(nil)
+                onErrorHandler(.csvFailed)
                 return
             }
         }
         
         if generate.imagesZip {
             Logger.info("generate.imagesZip")
-            
             clearPath(zipPath!)
             
-            let rai = WBReceiptAndIndex.receiptsAndIndices(fromReceipts: Database.sharedInstance().allReceipts(for: trip), filteredWith: {
-                receipt in
-                
+            let rai = WBReceiptAndIndex.receiptsAndIndices(fromReceipts: db?.allReceipts(for: trip), filteredWith: {  receipt in
                 return WBReportUtils.filterOutReceipt(receipt)
             })
             
@@ -91,12 +117,12 @@ class ReportAssetsGenerator: NSObject {
             if stamper.zip(toFile: zipPath, stampedImagesForReceiptsAndIndexes: rai, in: trip) {
                 files.append(zipPath!)
             } else {
-                completion(nil)
+                onErrorHandler(.zipImagesFailed)
                 return
             }
         }
 
-        completion(files)
+        onSuccessHandler(files)
     }
     
     fileprivate func clearPath(_ path: String) {

@@ -89,6 +89,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 @property (nonatomic, strong) SwitchControlCell *printReceiptIDByPhotoCell;
 @property (nonatomic, strong) SwitchControlCell *printReceiptCommentByPhotoCell;
+@property (nonatomic, strong) SwitchControlCell *printReceiptsTableLandscapeCell;
 @property (nonatomic, strong) SettingsButtonCell *configurePDFColumnsCell;
 
 @property (nonatomic, strong) SettingsTopTitledTextEntryCell *defaultEmailRecipientCell;
@@ -322,6 +323,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     self.printReceiptCommentByPhotoCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
     [self.printReceiptCommentByPhotoCell setTitle:NSLocalizedString(@"settings.pdf.print.receipt.comment.by.photo.label", nil)];
+    
+    self.printReceiptsTableLandscapeCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
+    [self.printReceiptsTableLandscapeCell setTitle:NSLocalizedString(@"settings.pdf.print.receipt.table.landscape.label", nil)];
 
     self.configurePDFColumnsCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
     [self.configurePDFColumnsCell setTitle:NSLocalizedString(@"settings.pdf.configure.columns.label", nil)];
@@ -329,6 +333,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.pdf.section.title", nil) cells:@[
             self.printReceiptIDByPhotoCell,
             self.printReceiptCommentByPhotoCell,
+            self.printReceiptsTableLandscapeCell,
             self.configurePDFColumnsCell]]];
 
     self.addDistancePriceToReportCell = [self.tableView dequeueReusableCellWithIdentifier:[SwitchControlCell cellIdentifier]];
@@ -474,6 +479,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     [self.printReceiptIDByPhotoCell setSwitchOn:[WBPreferences printReceiptIDByPhoto]];
     [self.printReceiptCommentByPhotoCell setSwitchOn:[WBPreferences printCommentByPhoto]];
+    [self.printReceiptsTableLandscapeCell setSwitchOn:[WBPreferences printReceiptTableLandscape]];
 
     [self.addDistancePriceToReportCell setSwitchOn:[WBPreferences isTheDistancePriceBeIncludedInReports]];
     double defaultValue = [WBPreferences distanceRateDefaultValue];
@@ -544,6 +550,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     [WBPreferences setPrintReceiptIDByPhoto:self.printReceiptIDByPhotoCell.isSwitchOn];
     [WBPreferences setPrintCommentByPhoto:self.printReceiptCommentByPhotoCell.isSwitchOn];
+    [WBPreferences setPrintReceiptTableLandscape:self.printReceiptsTableLandscapeCell.isSwitchOn];
 
     [WBPreferences setTheDistancePriceBeIncludedInReports:self.addDistancePriceToReportCell.isSwitchOn];
     NSString *gasRate = [self.gasRateCell value];
@@ -669,9 +676,9 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     } else if (cell == self.sendLoveCell) {
         [self sendLove];
     } else if (cell == self.sendFeedbackCell) {
-        [self emailFeedbackWithBugReport:NO];
+        [self emailFeedbackWithSubject:FeedbackEmailSubject];
     } else if (cell == self.sendBugReportCell) {
-        [self emailFeedbackWithBugReport:YES];
+        [self emailFeedbackWithSubject:FeedbackBugreportEmailSubject];
     }
 }
 
@@ -794,7 +801,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
 #pragma mark - MFMailComposeViewController, MFMailComposeViewControllerDelegate
 
-- (void)emailFeedbackWithBugReport:(BOOL)isBugReportEmail {
+- (void)emailFeedbackWithSubject:(NSString *)subject {
     // Checking the availability of mail services
     if (![MFMailComposeViewController canSendMail]) {
         LOGGER_WARNING(@"Mail services are not available.");
@@ -806,26 +813,19 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     composeVC.mailComposeDelegate = self;
     
     // Configure the fields of the interface.
-    NSString *subject = FeedbackEmailSubject;
     NSMutableString *messageBody = [NSMutableString new];
+    // attach device info metadata
+    [messageBody appendString:@"\n\n\nDebug info:\n"];
+    [messageBody appendString:[[UIApplication sharedApplication] appVersionInfoString]];
+    [messageBody appendFormat:@"Plus: %@\n", [[Database sharedInstance] hasValidSubscription] ? @"true" : @"false"];
+    [messageBody appendString:[[UIDevice currentDevice] deviceInfoString]];
     
-    // Additional setup for Bug report:
-    if (isBugReportEmail) {
-        // another subject
-        subject = FeedbackBugreportEmailSubject;
-        // attach device info
-        [messageBody appendString:@"\n\n\nDebug info:\n"];
-        [messageBody appendString:[[UIApplication sharedApplication] appVersionInfoString]];
-        [messageBody appendFormat:@"Plus: %@\n", [[Database sharedInstance] hasValidSubscription] ? @"true" : @"false"];
-        [messageBody appendString:[[UIDevice currentDevice] deviceInfoString]];
-        
-        // Attach log files
-        NSArray *logFiles = [Logger logFiles];
-        for (DDLogFileInfo *file in logFiles) {
-            NSData *data = [NSData dataWithContentsOfFile:file.filePath];
-            if (data != nil) {
-                [composeVC addAttachmentData:data mimeType:@"text/plain" fileName:file.fileName];
-            }
+    // Attach log files
+    NSArray *logFiles = [Logger logFiles];
+    for (DDLogFileInfo *file in logFiles) {
+        NSData *data = [NSData dataWithContentsOfFile:file.filePath];
+        if (data != nil) {
+            [composeVC addAttachmentData:data mimeType:@"text/plain" fileName:file.fileName];
         }
     }
     

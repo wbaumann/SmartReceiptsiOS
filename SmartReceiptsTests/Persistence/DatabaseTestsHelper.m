@@ -22,6 +22,7 @@
 #import "DatabaseQueryBuilder.h"
 #import "WBCurrency.h"
 #import "NSDate+Calculations.h"
+#import "Database+PDFColumns.h"
 
 @interface Database (Expose)
 
@@ -143,6 +144,14 @@
 
 - (NSArray<WBReceipt *> *__nonnull)allReceipts {
     return [self allReceiptsForTrip:nil];
+}
+
+- (NSArray<ReceiptColumn *> *__nonnull)getPdfColumns {
+    return [self allPDFColumns];
+}
+
+- (BOOL)setPdfColumns:(NSArray<ReceiptColumn *> *__nonnull)columns {
+    return [self replaceAllPDFColumnsWith:columns];
 }
 
 @end

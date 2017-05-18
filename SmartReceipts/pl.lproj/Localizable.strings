@@ -157,6 +157,10 @@
 "generate.report.share.method.other" = "Other apps";
 "generate.report.share.method.sheet.title" = "Share by";
 "generate.report.unsuccessful.alert.message" = "Nie udało się wygenerować wybranych raportów";
+"generate.report.unsuccessful.alert.pdf.columns.gotosettings" = "Go to settings";
+"generate.report.unsuccessful.alert.pdf.columns.message" = "There is not enough space to fit all the columns in the report. Please try limiting the number of PDF columns in Settings";
+"generate.report.unsuccessful.alert.pdf.columns.message.tryportrait" = "There is not enough space to fit all the columns in the report. Please try limiting the number of PDF columns in Settings or use 'Print receipts table in landscape mode' option";
+"generate.report.unsuccessful.alert.pdf.columns.title" = "Too many columns";
 
 "generic.button.title.cancel" = "Anuluj";
 "generic.button.title.no" = "Nie";
@@ -317,6 +321,7 @@
 "settings.pdf.footer.text.label" = "PDF Footer Text";
 "settings.pdf.print.id.by.photo.label" = "Print ID By Photo";
 "settings.pdf.print.receipt.comment.by.photo.label" = "Print Receipt Comment By Photo";
+"settings.pdf.print.receipt.table.landscape.label" = "Print receipts table in landscape mode";
 "settings.pdf.section.title" = "Dostosuj Wyjście PDF";
 "settings.predict.recept.category.label" = "Predykcja Kategorii Paragonu";
 "settings.pro.section.title" = "Smart Receipts Plus";

@@ -13,7 +13,7 @@
 @implementation ReportCSVGenerator
 
 - (NSArray *)receiptColumns {
-    return [[Database sharedInstance] allCSVColumns];
+    return [self.database allCSVColumns];
 }
 
 @end

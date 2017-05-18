@@ -8,10 +8,10 @@
 
 #import "ReportGenerator.h"
 #import "ReportPDFGenerator.h"
+#import "PrettyPDFRender.h"
 
 @class WBPdfDrawer;
 @class WBDateFormatter;
-@class PrettyPDFRender;
 
 @interface TripImagesPDFGenerator : ReportPDFGenerator
 
