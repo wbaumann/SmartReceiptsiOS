@@ -33,6 +33,7 @@
 		5757D6141E929ECA000F65F9 /* Database+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5757D6121E929ECA000F65F9 /* Database+Sync.swift */; };
 		57580D1C1DFAB58B0090C488 /* UIDevice+DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 57580D1B1DFAB58B0090C488 /* UIDevice+DeviceInfo.m */; };
 		57580D1F1DFAB6AB0090C488 /* UIApplication+AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 57580D1E1DFAB6AB0090C488 /* UIApplication+AppVersion.m */; };
+		5762EA841ECDC2600032411A /* TripFullPDFGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5762EA831ECDC2600032411A /* TripFullPDFGeneratorTest.swift */; };
 		57691F001E10613500F78859 /* RateApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 57691EFF1E10613500F78859 /* RateApplication.m */; };
 		5785A4EF1E09DA0100C3CA0C /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785A4EE1E09DA0100C3CA0C /* AnalyticsLogger.swift */; };
 		579DDFB21E2E4223004937F7 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579DDFB11E2E4223004937F7 /* UIImage+Extensions.swift */; };
@@ -413,6 +414,7 @@
 		57580D1B1DFAB58B0090C488 /* UIDevice+DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceInfo.m"; sourceTree = "<group>"; };
 		57580D1D1DFAB6AB0090C488 /* UIApplication+AppVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+AppVersion.h"; sourceTree = "<group>"; };
 		57580D1E1DFAB6AB0090C488 /* UIApplication+AppVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+AppVersion.m"; sourceTree = "<group>"; };
+		5762EA831ECDC2600032411A /* TripFullPDFGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripFullPDFGeneratorTest.swift; sourceTree = "<group>"; };
 		57691EFE1E10613500F78859 /* RateApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateApplication.h; sourceTree = "<group>"; };
 		57691EFF1E10613500F78859 /* RateApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateApplication.m; sourceTree = "<group>"; };
 		5785A4EE1E09DA0100C3CA0C /* AnalyticsLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsLogger.swift; sourceTree = "<group>"; };
@@ -1922,6 +1924,7 @@
 			isa = PBXGroup;
 			children = (
 				EAF9ADDD1AECD2D20000AC84 /* ReportGeneratorTest.m */,
+				5762EA831ECDC2600032411A /* TripFullPDFGeneratorTest.swift */,
 			);
 			path = Generators;
 			sourceTree = "<group>";
@@ -2542,6 +2545,7 @@
 				EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */,
 				A7F05BB61CFC1B5D0079F1AD /* ReceiptColumnExchangeRateTests.swift in Sources */,
 				A7B6FC5B1CF5DA2100CD53F1 /* WBReceiptTests.swift in Sources */,
+				5762EA841ECDC2600032411A /* TripFullPDFGeneratorTest.swift in Sources */,
 				A7F05BDB1CFD6C520079F1AD /* PricesCollectionTests.swift in Sources */,
 				EA159E811AFE7CDC00DBB6CF /* NSDate+Calculations.m in Sources */,
 				EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */,

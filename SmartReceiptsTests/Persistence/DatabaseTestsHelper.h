@@ -8,6 +8,7 @@
 
 #import "Database.h"
 #import "ReceiptFilesManager.h"
+#import "ReceiptColumn.h"
 
 @class WBTrip;
 @class Distance;
@@ -34,6 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)insertTestPaymentMethod:(NSString *__nonnull)name;
 - (WBReceipt *__nonnull)receiptWithName:(NSString *__nonnull)receiptName;
 - (NSArray<WBReceipt *> *__nonnull)allReceipts;
+
+- (NSArray<ReceiptColumn *> *__nonnull)getPdfColumns;
+- (BOOL)setPdfColumns:(NSArray<ReceiptColumn *> *__nonnull)columns;
 
 @end
 

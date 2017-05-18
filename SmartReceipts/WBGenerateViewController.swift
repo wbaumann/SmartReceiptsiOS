@@ -53,7 +53,6 @@ extension WBGenerateViewController: QuickAlertPresenter {
                 case .fullPdfFailed:
                     errorAlert.message = NSLocalizedString("generate.report.option.full.pdf", comment: "")
                 case .fullPdfTooManyColumns:
-                    // FIXME: !
                     errorAlert.title = NSLocalizedString("generate.report.unsuccessful.alert.pdf.columns.title", comment: "")
                     if WBPreferences.printReceiptTableLandscape() {
                         errorAlert.message = NSLocalizedString("generate.report.unsuccessful.alert.pdf.columns.message", comment: "")
