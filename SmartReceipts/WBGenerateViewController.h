@@ -31,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) UISwitch *csvFileField;
 @property (nonatomic, readonly) UISwitch *zipImagesField;
 
+/// Opens Settings screen at 'configure generator output' section
+- (void)openSettingsAtSection;
+
 @end
 
 NS_ASSUME_NONNULL_END

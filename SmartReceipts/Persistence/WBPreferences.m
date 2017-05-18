@@ -63,6 +63,7 @@ static NSString *const BOOL_ASSUME_FULL_PAGE = @"AssumeFullPage";
 static NSString *const BOOL_SHOW_RECEIPT_ID = @"ShowReceiptID";
 static NSString *const BOOL_PHOTO_PRINT_ID_INSTEAD_OF_INDEX = @"PrintByIDPhotoKey";
 static NSString *const BOOL_PRINT_COMMENT_BY_PHOTO = @"PrintCommentByPhoto";
+static NSString *const BOOL_PRINT_RECEIPT_TABLE_LANDSCAPE = @"ReceiptsTableLandscape";
 static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_DATE = @"LayoutIncludeReceiptDate";
 static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_CATEGORY = @"LayoutIncludeReceiptCategory";
 static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER = @"LayoutIncludeReceiptPicture";
@@ -137,6 +138,7 @@ static NSDictionary *getEntryTypes() {
 
             BOOL_PHOTO_PRINT_ID_INSTEAD_OF_INDEX: tBool,
             BOOL_PRINT_COMMENT_BY_PHOTO: tBool,
+            BOOL_PRINT_RECEIPT_TABLE_LANDSCAPE: tBool,
             BOOL_LAYOUT_SHOW_RECEIPT_DATE: tBool,
             BOOL_LAYOUT_SHOW_RECEIPT_CATEGORY: tBool,
             BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER: tBool,
@@ -206,6 +208,7 @@ static NSDictionary *getDefaultValues() {
 
             BOOL_PHOTO_PRINT_ID_INSTEAD_OF_INDEX: @NO,
             BOOL_PRINT_COMMENT_BY_PHOTO: @NO,
+            BOOL_PRINT_RECEIPT_TABLE_LANDSCAPE: @NO,
             BOOL_LAYOUT_SHOW_RECEIPT_DATE: @YES,
             BOOL_LAYOUT_SHOW_RECEIPT_CATEGORY: @NO,
             BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER: @NO,
@@ -460,6 +463,14 @@ static NSUserDefaults* instance() {
 
 + (void)setPrintCommentByPhoto:(BOOL)value {
     [instance() setBool:value forKey:BOOL_PRINT_COMMENT_BY_PHOTO];
+}
+
++ (BOOL)printReceiptTableLandscape {
+    return [instance() boolForKey:BOOL_PRINT_RECEIPT_TABLE_LANDSCAPE];
+}
+
++ (void)setPrintReceiptTableLandscape:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_PRINT_RECEIPT_TABLE_LANDSCAPE];
 }
 
 + (BOOL)layoutShowReceiptDate {

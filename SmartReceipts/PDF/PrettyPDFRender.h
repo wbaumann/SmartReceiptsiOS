@@ -10,8 +10,28 @@
 
 @interface PrettyPDFRender : NSObject
 
+/**
+ 'true' whenever there is no enough space (width) to place all columns within page
+ */
+@property (nonatomic, assign, readonly) BOOL tableHasTooManyColumns;
+
+@property (nonatomic, assign) BOOL landscapePreferred;
+
+/**
+ Creates a PDF-based graphics context that targets a file at the specified path
+
+ @param path the specified path
+ @return 'true' if context created successfully
+ */
 - (BOOL)setOutputPath:(NSString *)path;
-- (void)renderPages;
+
+/**
+ Renders all previously added pages and closes PDF-based graphics context
+
+ @return 'true' on success
+ */
+- (BOOL)renderPages;
+
 - (void)setTripName:(NSString *)tripName;
 - (void)appendHeaderRow:(NSString *)row;
 - (void)closeHeader;
@@ -20,7 +40,6 @@
 - (void)appendTableColumns:(NSArray *)rowValues;
 - (void)closeTable;
 - (void)startNextPage;
-- (void)startNextHorizontalPage;
 - (void)appendImage:(UIImage *)image withLabel:(NSString *)label;
 - (void)appendFullPageImage:(UIImage *)image withLabel:(NSString *)label;
 - (void)appendPDFPage:(CGPDFPageRef)page withLabel:(NSString *)label;

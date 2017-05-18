@@ -24,19 +24,22 @@
 @implementation TripFullPDFGenerator
 
 - (BOOL)generateToPath:(NSString *)outputPath {
+    // render tables in landscape orientation if needed
+    self.pdfRender.landscapePreferred = [WBPreferences printReceiptTableLandscape];
+    
     if (![self.pdfRender setOutputPath:outputPath]) {
-        return NO;
+        return NO; // error
     }
-
+    
     [self appendSummaryAndTables];
-
+    
+    // always render fullPageElements and images in protrait orientation
+    self.pdfRender.landscapePreferred = NO;
     [self.pdfRender startNextPage];
-
     [self appendImages];
 
-    [self.pdfRender renderPages];
-
-    return YES;
+    BOOL success = [self.pdfRender renderPages];
+    return success;
 }
 
 - (void)appendSummaryAndTables {

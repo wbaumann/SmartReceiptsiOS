@@ -42,10 +42,8 @@
     }
 
     [self appendImages];
-
-    [self.pdfRender renderPages];
-
-    return YES;
+    BOOL result = [self.pdfRender renderPages];
+    return result;
 }
 
 - (void)appendImages {

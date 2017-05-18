@@ -9,6 +9,8 @@
 #import "PDFReportTable.h"
 #import "TableHeaderRow.h"
 
+#define MINIMUM_COLUMN_WIDTH 24.0f
+
 @interface PDFReportTable ()
 
 @property (nonatomic, strong) IBOutlet TableHeaderRow *headerRowPrototype;
@@ -18,10 +20,13 @@
 @property (nonatomic, assign) NSUInteger rowsAdded;
 @property (nonatomic, assign) NSUInteger rowToStart;
 @property (nonatomic, assign) BOOL tableHeaderAdded;
+@property (nonatomic, assign, readwrite) BOOL hasTooManyColumnsToFitWidth;
 
 @end
 
 @implementation PDFReportTable
+
+#pragma mark - Initialization
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -37,6 +42,8 @@
     self.rows = [NSMutableArray array];
 }
 
+#pragma mark - Public
+
 - (void)appendValues:(NSArray *)values {
     [self.rows addObject:values];
 }
@@ -44,13 +51,14 @@
 - (BOOL)buildTable:(CGFloat)availableSpace {
     NSMutableArray *columnsWidth = [NSMutableArray arrayWithCapacity:self.columns.count];
     NSMutableArray *titleWidth = [NSMutableArray arrayWithCapacity:self.columns.count];
+    
     for (NSUInteger column = 0; column < self.columns.count; column++) {
         [columnsWidth addObject:@([self maxWidthOfColumn:column])];
         [titleWidth addObject:@(ceilf([self.headerRowPrototype widthForValue:self.columns[column]]))];
     }
 
     columnsWidth = [self divideRemainingWidth:columnsWidth titleWidth:titleWidth];
-
+    
     CGFloat yOffset = 0;
     // Don't add header on view where already added
     // Happens when we decide that not enough rows in page and push all to next page.
@@ -70,7 +78,7 @@
         } else {
             prototype = self.rowTwoPrototype;
         }
-
+        
         CGFloat height = [self maxHeightForRow:self.rows[row] widths:columnsWidth prototype:prototype];
         if (yOffset + height > availableSpace) {
             [self setRowsAdded:row];
@@ -80,9 +88,11 @@
         yOffset = [self appendRow:self.rows[row] columnWidths:columnsWidth usingPrototype:prototype yOffset:yOffset];
         [self setFrameHeightTo:yOffset];
     }
-
+    
     return YES;
 }
+
+#pragma mark - Private methods
 
 - (void)setFrameHeightTo:(CGFloat)height {
     CGRect myFrame = self.frame;
@@ -128,7 +138,16 @@
         NSNumber *columnWidth = columns[index];
         CGFloat percent = columnWidth.floatValue / totalWidthOfModified.floatValue;
         NSNumber *titleWidth = titleWidths[index];
-        [modifiedColumns addObject:@(titleWidth.floatValue + floorf(spaceToDivide * percent))];
+        float squeezedTitleWidth = titleWidth.floatValue + floorf(spaceToDivide * percent);
+        
+        // check if all the columns can be placed within the table (if there enough available width)
+        if (squeezedTitleWidth < MINIMUM_COLUMN_WIDTH) {
+            // user able to ignore this warning and continue rendering pages if needed
+            LOGGER_WARNING(@"Too many table columns to fit this page");
+            self.hasTooManyColumnsToFitWidth = YES;
+        }
+        
+        [modifiedColumns addObject:@(squeezedTitleWidth)];
     }
 
     return modifiedColumns;
@@ -137,7 +156,8 @@
 - (BOOL)canSqueezeColumn:(NSString *)title {
     return [NSLocalizedString(@"receipt.column.comment", nil) isEqualToString:title]
             || [NSLocalizedString(@"receipt.column.name", nil) isEqualToString:title]
-            || [NSLocalizedString(@"receipt.column.report.comment", nil) isEqualToString:title];
+            || [NSLocalizedString(@"receipt.column.report.comment", nil) isEqualToString:title]
+            || [NSLocalizedString(@"receipt.column.blank.column", nil) isEqualToString:title];
 }
 
 - (NSMutableArray *)divideRemainingEqually:(NSMutableArray *)columns columnsWidth:(CGFloat)columnsWidth {
