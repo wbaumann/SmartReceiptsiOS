@@ -38,20 +38,27 @@ final class Logger: NSObject {
         let formatter = DDLogCustomFormatter()
         
         // Loggers:
-        let ttyLogger = DDTTYLogger.sharedInstance() // TTY = Xcode console
-        let aslLogger = DDASLLogger.sharedInstance() // ASL = Apple System Logs
-        ttyLogger?.logFormatter = formatter
-        aslLogger?.logFormatter = formatter
-        DDLog.add(ttyLogger, with: defaultDebugLevel)
-        DDLog.add(aslLogger, with: defaultDebugLevel)
+        // TTY = Xcode console
+        if let ttyLogger = DDTTYLogger.sharedInstance {
+            ttyLogger.logFormatter = formatter
+            DDLog.add(ttyLogger, with: defaultDebugLevel)
+        }
+        
+        // ASL = Apple System Logs
+        if let aslLogger = DDASLLogger.sharedInstance {
+            aslLogger.logFormatter = formatter
+            DDLog.add(aslLogger, with: defaultDebugLevel)
+        }
         
         // Persistent log file that saves up to 1MB of logs to disk, which can be attached as part of the support email.
-        fileLogger?.logFormatter = formatter
-        fileLogger?.rollingFrequency = 0 // no limits
-        fileLogger?.maximumFileSize = UInt64(1024 * 1024 * 1) // 1 MB
-        fileLogger?.logFileManager.maximumNumberOfLogFiles = 0
-        fileLogger?.logFileManager.logFilesDiskQuota = UInt64(1024 * 1024 * 2) // quota is 2 MB max
-        DDLog.add(fileLogger, with: defaultDebugLevel)
+        if let fileLogger = fileLogger {
+            fileLogger.logFormatter = formatter
+            fileLogger.rollingFrequency = 0 // no limits
+            fileLogger.maximumFileSize = UInt64(1024 * 1024 * 1) // 1 MB
+            fileLogger.logFileManager.maximumNumberOfLogFiles = 0
+            fileLogger.logFileManager.logFilesDiskQuota = UInt64(1024 * 1024 * 2) // quota is 2 MB max
+            DDLog.add(fileLogger, with: defaultDebugLevel)
+        }
     }
     
     /// Log files

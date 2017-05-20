@@ -31,12 +31,12 @@ outside of an Xcode build.
 Here is an example Run Script Phase you can add to your project
 to invoke this script:
 
-    "\${PODS_ROOT}/FirebaseCrashReporting/upload-sym" \\
+    "\${PODS_ROOT}/FirebaseCrash/upload-sym" \\
         "\${HOME}/Library/Developer/My Project-1fad0d0767b42e.json"
 
 To avoid stopping the build should the upload fail,
 
-    "\${PODS_ROOT}/FirebaseCrashReporting/upload-sym" -w \\
+    "\${PODS_ROOT}/FirebaseCrash/upload-sym" -w \\
         "\${HOME}/Library/Developer/My Project-1fad0d0767b42e.json"
     exit 0 # claim success no matter what
 
@@ -251,7 +251,11 @@ for ARCH in ${ARCHS?:}; do
         fi
     fi
 
-    "${FCR_DUMP_SYMS}" -a "${ARCH}" -g "${DSYM_BUNDLE}" "${EXECUTABLE}" >"${SCRATCH}" 2> >(sed -e 's/^/warning: dump_syms: /' | grep -v 'failed to demangle' >&2)
+    if ((VERBOSE >= 2)); then
+        "${FCR_DUMP_SYMS}" -a "${ARCH}" -g "${DSYM_BUNDLE}" "${EXECUTABLE}" >"${SCRATCH}" 2> >(sed -e 's/^/warning: dump_syms: /' | grep -v 'failed to demangle' >&2)
+    else
+        "${FCR_DUMP_SYMS}" -a "${ARCH}" -g "${DSYM_BUNDLE}" "${EXECUTABLE}" >"${SCRATCH}" 2>/dev/null
+    fi
 
     STATUS=$?
     if ((STATUS)); then
