@@ -22,7 +22,7 @@ cool mobile services, check out [Firebase] (https://firebase.google.com).
     then select "Run Script".  Fill the resulting build step with:
 
     ```
-    "${PODS_ROOT}"/FirebaseCrash/upload-sym.sh
+    "${PODS_ROOT}"/FirebaseCrash/upload-sym
     ```
 
 ## Testing Integration
