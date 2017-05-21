@@ -43,9 +43,15 @@ The free and plus versions versions are identical, except the plus version offer
 
 ## Install 
 
-```
-TODO: Add Install Instructions
-```
+The Smart Receipts code is currently managed via XCode Groups as opposed to folders, so things are a bit messy. We intend to fix this in the near future so that both are aligned.
+
+To install, clone or pull down this project. Please note that it will **NOT** work out of the box, so you will need to add the following files to ensure it will compile:
+
+* `SmartReceipts/GoogleService-Info.plist`. This needs to be added to both the free and plus favors at the root level in order for Firebase to function. Please [refer to the Firebase documentation](https://firebase.google.com/) for more details.
+* `SmartReceipts/GADConstants.m`. This is required to display AdMob advertisments. Replace this with an empty string to prevent ads from loading successfully.
+* `SmartReceipts/Secrets.swift`. This is used for low usage "secret" keys that are secret enough that I do not wish to place them in GitHub but are not so secret that they need to be removed from the compiled IPA entirely.
+
+Once these files are included, you should be able to successfully compile, build, unit test, and run the app!
 
 ## Contribute
 
