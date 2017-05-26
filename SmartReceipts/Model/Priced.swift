@@ -10,7 +10,7 @@ import Foundation
 
 protocol Priced {
     var priceAmount: NSDecimalNumber { get }
-    var currency: WBCurrency { get }
+    var currency: Currency { get }
     
     func price() -> Price
     func priceAsString() -> String

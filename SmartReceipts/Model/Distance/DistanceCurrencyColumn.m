@@ -9,7 +9,6 @@
 #import "DistanceCurrencyColumn.h"
 #import "Distance.h"
 #import "Price.h"
-#import "WBCurrency.h"
 
 @implementation DistanceCurrencyColumn
 

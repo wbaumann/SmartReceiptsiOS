@@ -9,7 +9,6 @@
 #import "EditReceiptViewController.h"
 #import "WBReceiptsViewController.h"
 #import "WBDateFormatter.h"
-#import "WBCurrency.h"
 #import "WBPreferences.h"
 #import "WBFileManager.h"
 #import "WBTextUtils.h"
@@ -122,7 +121,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     NSArray *cachedCurrencyCodes = [[RecentCurrenciesCache shared] cachedCurrencyCodes];
-    [self.currencyPickerCell setAllValues:[cachedCurrencyCodes arrayByAddingObjectsFromArray:[WBCurrency allCurrencyCodes]]];
+    [self.currencyPickerCell setAllValues:[cachedCurrencyCodes arrayByAddingObjectsFromArray:[Currency allCurrencyCodes]]];
     [self.currencyPickerCell setValueChangeHandler:^(id <Pickable> selected) {
         NSString *currency = [selected presentedValue];
         [weakSelf.currencyCell setValue:currency];

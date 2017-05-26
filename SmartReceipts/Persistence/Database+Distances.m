@@ -14,12 +14,12 @@
 #import "DatabaseQueryBuilder.h"
 #import "WBTrip.h"
 #import "Price.h"
-#import "WBCurrency.h"
 #import "FetchedModelAdapter.h"
 #import "Database+Trips.h"
 #import "NSDate+Calculations.h"
 #import "Database+Notify.h"
 #import "WBPreferences.h"
+#import <SmartReceipts-Swift.h>
 
 @implementation Database (Distances)
 

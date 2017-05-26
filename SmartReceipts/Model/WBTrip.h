@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FetchedModel.h"
 
-@class WBCurrency;
+@class Currency;
 @class Price;
 @class PricesCollection;
 
@@ -17,7 +17,7 @@
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) PricesCollection *pricesSummary;
-@property (nonatomic, strong) WBCurrency *defaultCurrency;
+@property (nonatomic, strong) Currency *defaultCurrency;
 @property (nonatomic, strong) NSString *comment;
 @property (nonatomic, strong) NSString *costCenter;
 @property (nonatomic, strong) NSDate *startDate;

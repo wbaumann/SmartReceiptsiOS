@@ -20,9 +20,9 @@
 #import "Database+PaymentMethods.h"
 #import "Database+Functions.h"
 #import "DatabaseQueryBuilder.h"
-#import "WBCurrency.h"
 #import "NSDate+Calculations.h"
 #import "Database+PDFColumns.h"
+#import <SmartReceipts-Swift.h>
 
 @interface Database (Expose)
 
@@ -55,7 +55,7 @@
     [trip setName:params[TripsTable.COLUMN_NAME]];
     [trip setStartDate:params[TripsTable.COLUMN_FROM]];
     [trip setEndDate:params[TripsTable.COLUMN_TO]];
-    [trip setDefaultCurrency:[WBCurrency currencyForCode:params[TripsTable.COLUMN_DEFAULT_CURRENCY]]];
+    [trip setDefaultCurrency:[Currency currencyForCode:params[TripsTable.COLUMN_DEFAULT_CURRENCY]]];
     [trip setComment:params[TripsTable.COLUMN_COMMENT]];
     [trip setCostCenter:params[TripsTable.COLUMN_COST_CENTER]];
 

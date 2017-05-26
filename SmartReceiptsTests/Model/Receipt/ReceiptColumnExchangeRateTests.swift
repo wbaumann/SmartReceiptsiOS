@@ -17,7 +17,7 @@ class ReceiptColumnExchangeRateTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        trip.defaultCurrency = WBCurrency(forCode: "USD")
+        trip.defaultCurrency = Currency.currency(forCode: "USD")
         receipt = WBReceipt()
         receipt.trip = trip
     }

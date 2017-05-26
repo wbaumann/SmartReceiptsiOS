@@ -20,11 +20,11 @@ class RecentCurrenciesCache: NSObject {
     }
     
     /// Recent currencies
-    private(set) var cachedCurrencies: [WBCurrency] {
+    private(set) var cachedCurrencies: [Currency] {
         get {
-            var cached: [WBCurrency]?
+            var cached: [Currency]?
             if let unarchivedData = cache.object(forKey: currenciesKey) {
-                cached = NSKeyedUnarchiver.unarchiveObject(with: unarchivedData as Data) as? Array<WBCurrency>
+                cached = NSKeyedUnarchiver.unarchiveObject(with: unarchivedData as Data) as? Array<Currency>
             }
             return cached ?? []
         }
@@ -51,7 +51,7 @@ class RecentCurrenciesCache: NSObject {
         DispatchQueue.global(qos: .default).async {
             let fetched = Database.sharedInstance().recentCurrencies()
             DispatchQueue.main.async {
-                self.cachedCurrencies = fetched ?? []
+                self.cachedCurrencies = fetched ?? [Currency]()
             }
         }
     }

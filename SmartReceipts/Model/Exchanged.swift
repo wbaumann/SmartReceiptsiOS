@@ -10,7 +10,7 @@ import Foundation
 
 protocol Exchanged {
     var exchangeRate: NSDecimalNumber? { get }
-    var targetCurrency: WBCurrency { get }
+    var targetCurrency: Currency { get }
     
     func exchangeRateAsString() -> String
 }

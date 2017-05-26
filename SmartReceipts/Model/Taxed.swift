@@ -10,7 +10,7 @@ import Foundation
 
 protocol Taxed {
     var taxAmount: NSDecimalNumber? { get }
-    var currency: WBCurrency { get }
+    var currency: Currency { get }
 
     func tax() -> Price?
     func taxAsString() -> String

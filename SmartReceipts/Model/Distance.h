@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FetchedModel.h"
 
-@class WBCurrency;
+@class Currency;
 @class Price;
 @class WBTrip;
 @class FMResultSet;

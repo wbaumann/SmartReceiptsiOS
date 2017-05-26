@@ -8,12 +8,12 @@
 
 #import <objc/objc.h>
 #import "Database.h"
-#import "WBCurrency.h"
 
 @class WBReceipt;
 @class WBTrip;
 @class FMDatabase;
 @class FetchedModelAdapter;
+@class Currency;
 
 @interface Database (Receipts)
 
@@ -38,8 +38,8 @@
  Recent currencies
  Returns most recently used currencies, ordered
 
- @return Array of WBCurrency objects
+ @return Array of Currency objects
  */
-- (NSArray<WBCurrency *> *)recentCurrencies;
+- (NSArray<Currency *> *)recentCurrencies;
 
 @end
