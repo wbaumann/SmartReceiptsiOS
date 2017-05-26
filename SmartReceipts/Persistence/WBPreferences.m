@@ -8,7 +8,6 @@
 
 #import "WBPreferences.h"
 
-#import "WBCurrency.h"
 #import "WBDateFormatter.h"
 
 #import "GDataXMLNode.h"
@@ -148,9 +147,9 @@ static NSDictionary *getEntryTypes() {
 }
 
 static NSDictionary *getDefaultValues() {
-    // we do it this way because wbcurrency will filter out invalid currency code
+    // we do it this way because Currency will filter out invalid currency code
     NSString *currencyCode = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
-    WBCurrency *currency = [WBCurrency currencyForCode:currencyCode];
+    Currency *currency = [Currency currencyForCode:currencyCode];
     currencyCode = [currency code];
 
     NSString *dateSeparator = [[[WBDateFormatter alloc] init] separatorForCurrentLocale];

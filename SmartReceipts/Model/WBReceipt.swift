@@ -29,6 +29,7 @@ extension WBReceipt {
 }
 
 extension WBReceipt: Priced {
+    
     func price() -> Price {
         return Price(amount: priceAmount, currency: currency)
     }
@@ -55,7 +56,7 @@ extension WBReceipt: Exchanged {
         return WBReceipt.exchangeRateFormatter().string(from: number)!
     }
     
-    var targetCurrency: WBCurrency {
+    var targetCurrency: Currency {
         return trip.defaultCurrency
     }
     

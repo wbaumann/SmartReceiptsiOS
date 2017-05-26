@@ -21,7 +21,7 @@ class NetExchangedPricePlusTaxTests: XCTestCase {
 
         preferences.createPreferencesBackup()
         
-        trip.defaultCurrency = WBCurrency(forCode: "USD")
+        trip.defaultCurrency = Currency.currency(forCode: "USD")
         
         receiptEUR = WBReceipt()
         receiptEUR.trip = trip

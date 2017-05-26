@@ -1,5 +1,5 @@
 //
-//  WBCurrency+Extensions.swift
+//  Currency+Extensions.swift
 //  SmartReceipts
 //
 //  Created by Jaanus Siim on 30/05/16.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-func == (lhs: WBCurrency, rhs: WBCurrency) -> Bool {
+func == (lhs: Currency, rhs: Currency) -> Bool {
     return lhs.code == rhs.code
 }

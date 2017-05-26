@@ -10,7 +10,6 @@
 #import <objc/objc.h>
 #import "ReceiptColumnCurrency.h"
 #import "WBReceipt.h"
-#import "WBCurrency.h"
 
 @implementation ReceiptColumnCurrency
 

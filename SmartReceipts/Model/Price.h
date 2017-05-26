@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@class WBCurrency;
+@class Currency;
 
 @interface Price : NSObject
 
 @property (nonatomic, strong, readonly) NSDecimalNumber *__nonnull amount;
-@property (nonatomic, strong, readonly) WBCurrency *__nonnull currency;
+@property (nonatomic, strong, readonly) Currency *__nonnull currency;
 
 + (Price *__nonnull)priceWithAmount:(NSDecimalNumber *__nonnull)amount currencyCode:(NSString *__nonnull)currencyCode;
-+ (Price *__nonnull)priceWithAmount:(NSDecimalNumber *__nonnull)amount currency:(WBCurrency *__nonnull)currency;
++ (Price *__nonnull)priceWithAmount:(NSDecimalNumber *__nonnull)amount currency:(Currency *__nonnull)currency;
 + (Price *__nonnull)zeroPriceWithCurrencyCode:(NSString *__nonnull)currencyCode;
 
 - (NSString *__nonnull)currencyFormattedPrice;

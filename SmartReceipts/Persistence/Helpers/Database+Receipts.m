@@ -13,7 +13,6 @@
 #import "WBReceipt.h"
 #import "DatabaseQueryBuilder.h"
 #import "WBTrip.h"
-#import "WBCurrency.h"
 #import "Price.h"
 #import "FetchedModelAdapter.h"
 #import "WBPreferences.h"
@@ -318,7 +317,7 @@
     return [self executeDoubleQuery:selectSeconds usingDatabase:database];
 }
 
-- (NSArray<WBCurrency *> *)recentCurrencies {
+- (NSArray<Currency *> *)recentCurrencies {
     NSString *rawQuery = [NSString stringWithFormat:@"SELECT %@, COUNT(*) FROM %@ GROUP BY %@ ORDER BY COUNT(*) DESC;",
                           ReceiptsTable.COLUMN_ISO4217,
                           ReceiptsTable.TABLE_NAME,
@@ -330,7 +329,7 @@
         
         while ([resultSet next]) {
             NSString *code = [resultSet stringForColumn:ReceiptsTable.COLUMN_ISO4217];
-            WBCurrency *currency = [WBCurrency currencyForCode:code];
+            Currency *currency = [Currency currencyForCode:code];
             
             if (currency != nil) {
                 [currencies addObject:currency];

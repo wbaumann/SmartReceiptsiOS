@@ -12,7 +12,6 @@
 #import "FMResultSet.h"
 #import "DatabaseTableNames.h"
 #import "NSDecimalNumber+WBNumberParse.h"
-#import "WBCurrency.h"
 #import "NSDate+Calculations.h"
 
 @interface Distance ()

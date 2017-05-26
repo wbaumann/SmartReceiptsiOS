@@ -9,7 +9,6 @@
 #import <FMDB/FMResultSet.h>
 #import "WBReceipt.h"
 #import "WBTrip.h"
-#import "WBCurrency.h"
 #import "Price.h"
 #import "PaymentMethod.h"
 #import "NSDecimalNumber+WBNumberParse.h"
@@ -29,7 +28,7 @@ static NSString* checkNoData(NSString* str) {
 @property (nonatomic, strong) NSDate *originalDate;
 @property (nonatomic, strong) NSDecimalNumber *priceAmount;
 @property (nonatomic, strong) NSDecimalNumber *taxAmount;
-@property (nonatomic, strong) WBCurrency *currency;
+@property (nonatomic, strong) Currency *currency;
 
 @end
 
@@ -50,7 +49,7 @@ static NSString* checkNoData(NSString* str) {
          comment:(NSString *)comment
      priceAmount:(NSDecimalNumber *)price
        taxAmount:(NSDecimalNumber *)tax
-        currency:(WBCurrency *)currency
+        currency:(Currency *)currency
   isReimbursable:(BOOL)isReimbursable
       isFullPage:(BOOL)isFullPage
   extraEditText1:(NSString *)extraEditText1
@@ -197,7 +196,7 @@ static NSString* checkNoData(NSString* str) {
     _priceAmount = price;
     _taxAmount = tax;
     _exchangeRate = exchangeRate;
-    _currency = [WBCurrency currencyForCode:currencyCode];
+    _currency = [Currency currencyForCode:currencyCode];
     [self setReimbursable:[resultSet boolForColumn:ReceiptsTable.COLUMN_REIMBURSABLE]];
     [self setFullPage:![resultSet boolForColumn:ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE]];
     _extraEditText1 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1];
@@ -251,7 +250,7 @@ static NSString* checkNoData(NSString* str) {
 
 - (void)setPrice:(NSDecimalNumber *)amount currency:(NSString *)currency {
     self.priceAmount = amount;
-    self.currency = [WBCurrency currencyForCode:currency];
+    self.currency = [Currency currencyForCode:currency];
 }
 
 - (void)setTax:(NSDecimalNumber *)amount {

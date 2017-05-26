@@ -13,10 +13,10 @@
 #import "Database+Trips.h"
 #import "WBTrip.h"
 #import "NSDate+Calculations.h"
-#import "WBCurrency.h"
 #import "Database+Receipts.h"
 #import "Database+Distances.h"
 #import "WBReceipt.h"
+#import <SmartReceipts-Swift.h>
 
 @interface Database (Expose)
 

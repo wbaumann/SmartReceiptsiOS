@@ -13,7 +13,6 @@
 #import "DatabaseTableNames.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "NSDate+Calculations.h"
-#import "WBCurrency.h"
 #import "NSString+Validation.h"
 #import "WBPreferences.h"
 #import "SmartReceipts-Swift.h"
@@ -104,7 +103,7 @@
     if (!currencyCode.hasValue) {
         currencyCode = [WBPreferences defaultCurrency];
     }
-    self.defaultCurrency = [WBCurrency currencyForCode:currencyCode];
+    self.defaultCurrency = [Currency currencyForCode:currencyCode];
     long long int startDateMilliseconds = [resultSet longLongIntForColumn:TripsTable.COLUMN_FROM];
     _startDate = [NSDate dateWithMilliseconds:startDateMilliseconds];
     _startTimeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:TripsTable.COLUMN_FROM_TIMEZONE]];

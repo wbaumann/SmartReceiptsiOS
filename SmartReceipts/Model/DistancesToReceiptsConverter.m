@@ -10,7 +10,6 @@
 #import "WBReceipt.h"
 #import "Distance.h"
 #import "Price.h"
-#import "WBCurrency.h"
 
 @interface DistancesToReceiptsConverter ()
 

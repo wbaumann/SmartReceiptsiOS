@@ -7,7 +7,6 @@
 //
 
 #import "SettingsViewController.h"
-#import "WBCurrency.h"
 #import "WBColumnsViewController.h"
 
 #import "WBPreferences.h"
@@ -216,7 +215,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 
     self.defaultCurrencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     NSArray *cachedCurrencyCodes = [[RecentCurrenciesCache shared] cachedCurrencyCodes];
-    [self.defaultCurrencyPickerCell setAllValues:[cachedCurrencyCodes arrayByAddingObjectsFromArray:[WBCurrency allCurrencyCodes]]];
+    [self.defaultCurrencyPickerCell setAllValues:[cachedCurrencyCodes arrayByAddingObjectsFromArray:[Currency allCurrencyCodes]]];
     [self.defaultCurrencyPickerCell setValueChangeHandler:^(id<Pickable> selected) {
         [weakSelf.defaultCurrencyCell setValue:selected.presentedValue];
     }];

@@ -17,7 +17,6 @@
 #import "PickerCell.h"
 #import "WBTrip.h"
 #import "Price.h"
-#import "WBCurrency.h"
 #import "WBPreferences.h"
 #import "WBDateFormatter.h"
 #import "NSString+Validation.h"
@@ -81,7 +80,7 @@ NSString *const SREditDistanceDateCacheKey = @"SREditDistanceDateCacheKey";
 
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     NSArray *cachedCurrencyCodes = [[RecentCurrenciesCache shared] cachedCurrencyCodes];
-    [self.currencyPickerCell setAllValues:[cachedCurrencyCodes arrayByAddingObjectsFromArray:[WBCurrency allCurrencyCodes]]];
+    [self.currencyPickerCell setAllValues:[cachedCurrencyCodes arrayByAddingObjectsFromArray:[Currency allCurrencyCodes]]];
     [self.currencyPickerCell setSelectedValue:[StringPickableWrapper wrapValue:selectedCurrency]];
     [self.currencyPickerCell setValueChangeHandler:^(id<Pickable> selected) {
         [weakSelf.currencyCell setValue:selected.presentedValue];

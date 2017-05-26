@@ -17,7 +17,7 @@ class WBReceiptTargetPriceTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        trip.defaultCurrency = WBCurrency(forCode: "USD")
+        trip.defaultCurrency = Currency.currency(forCode: "USD")
         receiptEUR.trip = trip
         receiptEUR.setPrice(NSDecimalNumber(string: "12"), currency: "EUR")
         receiptEUR.exchangeRate = NSDecimalNumber(string: "0.1")

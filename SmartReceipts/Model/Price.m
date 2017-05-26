@@ -7,12 +7,11 @@
 //
 
 #import "Price.h"
-#import "WBCurrency.h"
 
 @interface Price ()
 
 @property (nonatomic, strong) NSDecimalNumber *amount;
-@property (nonatomic, strong) WBCurrency *currency;
+@property (nonatomic, strong) Currency *currency;
 
 @end
 
@@ -21,11 +20,11 @@
 + (Price *)priceWithAmount:(NSDecimalNumber *)amount currencyCode:(NSString *)currencyCode {
     Price *price = [[Price alloc] init];
     [price setAmount:amount];
-    [price setCurrency:[WBCurrency currencyForCode:currencyCode]];
+    [price setCurrency:[Currency currencyForCode:currencyCode]];
     return price;
 }
 
-+ (Price *)priceWithAmount:(NSDecimalNumber *)amount currency:(WBCurrency *)currency {
++ (Price *)priceWithAmount:(NSDecimalNumber *)amount currency:(Currency *)currency {
     Price *price = [[Price alloc] init];
     [price setAmount:amount];
     [price setCurrency:currency];

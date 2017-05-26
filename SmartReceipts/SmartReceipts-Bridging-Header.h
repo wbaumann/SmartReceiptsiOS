@@ -47,7 +47,6 @@
 
 #import "WBAppDelegate.h"
 #import "WBCategory.h"
-#import "WBCurrency.h"
 #import "WBCustomization.h"
 #import "WBGenerateViewController.h"
 #import "WBImageStampler.h"

@@ -23,7 +23,6 @@
 #import "InlinedDatePickerCell.h"
 #import "Pickable.h"
 #import "StringPickableWrapper.h"
-#import "WBCurrency.h"
 #import "Database+Trips.h"
 #import "NSDate+Calculations.h"
 #import "SmartReceipts-Swift.h"
@@ -99,7 +98,7 @@
 
     self.currencyPickerCell = [self.tableView dequeueReusableCellWithIdentifier:[InlinedPickerCell cellIdentifier]];
     NSArray *cachedCurrencyCodes = [[RecentCurrenciesCache shared] cachedCurrencyCodes];
-    [self.currencyPickerCell setAllValues:[cachedCurrencyCodes arrayByAddingObjectsFromArray:[WBCurrency allCurrencyCodes]]];
+    [self.currencyPickerCell setAllValues:[cachedCurrencyCodes arrayByAddingObjectsFromArray:[Currency allCurrencyCodes]]];
     [self.currencyPickerCell setValueChangeHandler:^(id<Pickable> selected) {
         [weakSelf.currencyCell setValue:selected.presentedValue];
     }];
@@ -202,7 +201,7 @@
     [self.trip setName:name];
     [self.trip setStartDate:self.startDate];
     [self.trip setEndDate:self.endDate];
-    [self.trip setDefaultCurrency:[WBCurrency currencyForCode:self.currencyCell.value]];
+    [self.trip setDefaultCurrency:[Currency currencyForCode:self.currencyCell.value]];
     [self.trip setComment:self.commentCell.value];
     [self.trip setCostCenter:self.costCenterCell.value];
 

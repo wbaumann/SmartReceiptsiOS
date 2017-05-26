@@ -10,7 +10,7 @@
 #import <objc/objc.h>
 #import "FetchedModel.h"
 
-@class WBTrip, WBCurrency;
+@class WBTrip, Currency;
 @class Price;
 @class PaymentMethod;
 
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly, nonnull) NSDecimalNumber *priceAmount;
 @property (nonatomic, strong, readonly, nullable) NSDecimalNumber * taxAmount;
 @property (nonatomic, strong, nullable) NSDecimalNumber *exchangeRate;
-@property (nonatomic, strong, readonly, nonnull) WBCurrency *currency;
+@property (nonatomic, strong, readonly, nonnull) Currency *currency;
 
 - (id)initWithId:(NSUInteger)rid
             name:(NSString *)name
@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
          comment:(nullable NSString *)comment
      priceAmount:(NSDecimalNumber *)price
        taxAmount:(NSDecimalNumber *)tax
-        currency:(WBCurrency *)currency
+        currency:(Currency *)currency
   isReimbursable:(BOOL)isReimbursable
       isFullPage:(BOOL)isFullPage
   extraEditText1:(NSString *)extraEditText1
@@ -57,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSString*)name;
 -(NSString*)category;
--(WBCurrency*)currency;
+-(Currency*)currency;
 -(BOOL)isReimbursable;
 -(BOOL)isFullPage;
 -(NSString*)extraEditText1;
