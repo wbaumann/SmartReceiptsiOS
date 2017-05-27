@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <objc/objc.h>
 #import "FetchedModel.h"
 
 @class WBTrip, Currency;

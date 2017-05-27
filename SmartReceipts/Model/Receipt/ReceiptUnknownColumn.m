@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <objc/NSObjCRuntime.h>
-#import <objc/objc.h>
 #import "ReceiptUnknownColumn.h"
 #import "WBReceipt.h"
 #import "WBTrip.h"
