@@ -75,7 +75,7 @@ static NSString *escapedCSV(NSString* csv) {
 - (void)appendTableHeader {
     NSMutableArray *array = [NSMutableArray array];
     for (Column *column in self.columns) {
-        [array addObject:escapedCSV([column name])];
+        [array addObject:escapedCSV([column header])];
     }
     [self.content appendString:[array componentsJoinedByString:@","]];
     [self.content appendString:@"\n"];

@@ -41,4 +41,8 @@
     return nil;
 }
 
+- (NSString *)header {
+    return self.name;
+}
+
 @end
