@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import <objc/objc.h>
 #import "Database.h"
 
 @class WBReceipt;
