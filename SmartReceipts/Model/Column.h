@@ -14,6 +14,7 @@
 
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, strong, readonly) WBDateFormatter *dateFormatter;
+@property (nonatomic, readonly) NSString *header;
 
 - (instancetype)initWithIndex:(NSInteger)index name:(NSString *)name;
 

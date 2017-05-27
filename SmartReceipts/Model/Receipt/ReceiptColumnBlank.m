@@ -17,4 +17,8 @@
     return @"";
 }
 
+- (NSString *)header {
+    return @"";
+}
+
 @end
