@@ -70,6 +70,10 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
     [self updateEditButton];
 }
 
+- (NSString *)placeholderTitle {
+    return NSLocalizedString(@"fetched.placeholder.trips.title", nil);
+}
+
 - (void)updateEditButton {
     self.editButtonItem.enabled = [self numberOfItems] > 0;
 }

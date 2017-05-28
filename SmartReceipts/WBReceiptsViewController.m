@@ -83,6 +83,10 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsSaved) name:SmartReceiptsSettingsSavedNotification object:nil];
 }
 
+- (NSString *)placeholderTitle {
+    return NSLocalizedString(@"fetched.placeholder.receipts.title", nil);
+}
+
 #pragma mark -
 
 - (void)tripUpdated:(NSNotification *)notification {

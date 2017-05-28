@@ -17,6 +17,7 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 @interface FetchedCollectionTableViewController ()
 
 @property (nonatomic, strong) FetchedModelAdapter *presentedObjects;
+@property (nonatomic, strong) FetchedPlaceholderView *placeholderView;
 
 @end
 
@@ -24,7 +25,7 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [self.tableView setEstimatedRowHeight:40];
     [self.tableView setRowHeight:UITableViewAutomaticDimension];
 }
@@ -36,10 +37,25 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     if (!self.presentedObjects) {
         [self fetchObjects];
     }
+    [self checkNeedsPlaceholder];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self checkNeedsPlaceholder];
+}
+
+- (void)setPresentedObjects:(FetchedModelAdapter *)presentedObjects {
+    _presentedObjects = presentedObjects;
+    [self checkNeedsPlaceholder];
+}
+
+- (void)checkNeedsPlaceholder {
+    self.presentedObjects.allObjects.count > 0 ? [self hidePlaceholder] : [self showPlaceholder];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -67,13 +83,14 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 
 - (void)fetchObjects {
     PendingHUDView *hud = [PendingHUDView showHUDOnView:self.navigationController ? self.navigationController.view : self.view];
+    __weak typeof(self) wSelf = self;
     dispatch_async([[WBAppDelegate instance] dataQueue], ^{
-        FetchedModelAdapter *objects = [self createFetchedModelAdapter];
-        [objects setDelegate:self];
+        FetchedModelAdapter *objects = [wSelf createFetchedModelAdapter];
+        [objects setDelegate:wSelf];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self setPresentedObjects:objects];
-            [self.tableView reloadData];
-            [self contentChanged];
+            [wSelf setPresentedObjects:objects];
+            [wSelf.tableView reloadData];
+            [wSelf contentChanged];
             [hud hide];
         });
     });
@@ -90,6 +107,22 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 
 - (NSUInteger)numberOfItems {
     return self.presentedObjects.numberOfObjects;
+}
+
+- (void)showPlaceholder {
+    LOGGER_DEBUG(@"showPlacehoder");
+    [self.placeholderView removeFromSuperview];
+    if (self.placeholderTitle) {
+        self.placeholderView = [[FetchedPlaceholderView alloc] initWithFrame:self.tableView.frame
+                                                        title:self.placeholderTitle];
+        [self.view.superview addSubview:self.placeholderView];
+    }
+}
+
+- (void)hidePlaceholder {
+    LOGGER_DEBUG(@"hidePlacehoder");
+    [self.placeholderView removeFromSuperview];
+    self.placeholderView = nil;
 }
 
 - (void)willChangeContent {
@@ -119,6 +152,7 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
     LOGGER_DEBUG(@"didChangeContent");
     [self.tableView endUpdates];
     [self contentChanged];
+    [self checkNeedsPlaceholder];
 }
 
 - (void)reloadData {
@@ -143,7 +177,7 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     id tapped = [self objectAtIndexPath:indexPath];
     [self tappedObject:tapped atIndexPath:indexPath];
 }

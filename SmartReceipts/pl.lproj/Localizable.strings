@@ -145,6 +145,10 @@
 "exchange.rate.subscription.info.message" = "Upgrade to Smart Receipts Plus to process exchange rates automatically";
 "exchange.rate.subscription.info.title" = "Automatic exchange";
 
+"fetched.placeholder.distances.title" = "You don't seem to have any distance tracked yet. Try clicking the \"+\" (plus) button up top to get started.";
+"fetched.placeholder.receipts.title" = "You don't seem to have any receipts yet. Try tapping the Camera or Text button button below to get started and add your first receipt...";
+"fetched.placeholder.trips.title" = "You don't seem to have any reports defined at the moment. Try clicking the \"+\" (plus) button to get started.\n\nSmart Receipts lets you create Expense reports, track receipts within each, and quickly generate PDF & CSV reports for your receipt totals. It's quick and easy! Also, be sure to check out the menu to customize the categories, reports, and other settings to best suit for your needs.";
+
 "generate.report.controller.title" = "Generuj Raport";
 "generate.report.email.not.configured.message" = "You must configured the iOS Mail app to use the E-mail option";
 "generate.report.email.not.configured.title" = "Can't send report";
