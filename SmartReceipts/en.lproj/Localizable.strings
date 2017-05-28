@@ -257,6 +257,8 @@
 "receipt.column.tax" = "Tax";
 "receipt.column.user.id" = "User ID";
 
+"settings.about.privacy.label" = "Privacy Policy";
+"settings.about.section.label" = "About";
 "settings.add.distance.price.to.report.label" = "Add Distance Price to Report";
 "settings.allow.data.outside.trip.bounds.label" = "Allow data entry outside report start/end";
 "settings.assume.price.pre.tax.label" = "Assume Price is Pre-Tax";
