@@ -13,6 +13,8 @@
 
 @interface FetchedCollectionTableViewController : UITableViewController <FetchedModelAdapterDelegate>
 
+@property (nonatomic, readonly) NSString *placeholderTitle;
+
 - (void)setPresentationCellNib:(UINib *)nib;
 - (FetchedModelAdapter *)createFetchedModelAdapter;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object;

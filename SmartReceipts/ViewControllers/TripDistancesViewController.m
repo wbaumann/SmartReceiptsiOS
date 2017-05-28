@@ -64,6 +64,10 @@ static NSString *const PushDistanceAddViewControllerSegue = @"PushDistanceAddVie
     }
 }
 
+- (NSString *)placeholderTitle {
+    return NSLocalizedString(@"fetched.placeholder.distances.title", nil);
+}
+
 - (IBAction)done {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
