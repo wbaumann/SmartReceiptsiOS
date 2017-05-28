@@ -10,6 +10,7 @@
 #import "ReportCSVTable.h"
 #import "WBPreferences.h"
 #import "NSMutableString+Extensions.h"
+#import "DistancesToReceiptsConverter.h"
 
 @implementation TripCSVGenerator
 
@@ -37,8 +38,19 @@
 - (void)appendReceiptsTable:(NSMutableString *)content {
     ReportCSVTable *receiptsTable = [[ReportCSVTable alloc] initWithContent:content columns:[self receiptColumns]];
     [receiptsTable setIncludeHeaders:[WBPreferences includeCSVHeaders]];
+    
+    NSArray *receipts = [self receipts];
+    if ([WBPreferences printDailyDistanceValues]) {
+        NSArray *distanceReceipts = [DistancesToReceiptsConverter convertDistances:[self distances]];
+        receipts = [receipts arrayByAddingObjectsFromArray:distanceReceipts];
+        receipts = [receipts sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            WBReceipt *one = obj1;
+            WBReceipt *two = obj2;
+            return [two.date compare:one.date];
+        }];
+    }
 
-    [receiptsTable appendTableWithRows:[self receipts]];
+    [receiptsTable appendTableWithRows:receipts];
 }
 
 - (void)appendDistancesTable:(NSMutableString *)content {
@@ -55,7 +67,6 @@
 
     ReportCSVTable *receiptsTable = [[ReportCSVTable alloc] initWithContent:content columns:[self distanceColumns]];
     [receiptsTable setIncludeHeaders:[WBPreferences includeCSVHeaders]];
-
     [receiptsTable appendTableWithRows:distances];
 }
 

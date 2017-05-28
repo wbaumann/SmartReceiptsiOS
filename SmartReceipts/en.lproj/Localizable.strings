@@ -22,6 +22,8 @@
 "category.car.rental.name" = "Car Rental";
 "category.dinner.code" = "DINN";
 "category.dinner.name" = "Dinner";
+"category.distance.code" = "DIST";
+"category.distance.name" = "Distance";
 "category.dues.subscriptions.code" = "ZDUE";
 "category.dues.subscriptions.name" = "Dues/Subscriptions";
 "category.entertainment.code" = "ENT";
