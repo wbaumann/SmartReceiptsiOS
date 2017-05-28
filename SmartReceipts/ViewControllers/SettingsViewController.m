@@ -111,6 +111,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 @property (nonatomic, strong) SettingsButtonCell *sendFeedbackCell;
 @property (nonatomic, strong) SettingsButtonCell *sendBugReportCell;
 
+@property (nonatomic, strong) SettingsButtonCell *privacyPolicyCell;
+
 @property (nonatomic, assign) BOOL hasBeenShown;
 
 @property (nonatomic, assign) BOOL hadPriceRetrieveError;
@@ -386,12 +388,16 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     self.sendBugReportCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
     [self.sendBugReportCell setTitle:NSLocalizedString(@"settings.feedback.sendBugReport.label", nil)];
     
-    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.feedback.section.label", nil) cells: @[
-                                                                                                                                            self.sendLoveCell,
-                                                                                                                                            self.sendFeedbackCell,
-                                                                                                                                            self.sendBugReportCell
-                                                                                                                                            ]]];
+    [self addSectionForPresentation:
+     [InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.feedback.section.label", nil)
+                                   cells: @[ self.sendLoveCell, self.sendFeedbackCell, self.sendBugReportCell ]]];
     
+    // About settings:
+    self.privacyPolicyCell = [self.tableView dequeueReusableCellWithIdentifier:[SettingsButtonCell cellIdentifier]];
+    [self.privacyPolicyCell setTitle:NSLocalizedString(@"settings.about.privacy.label", nil)];
+    
+    [self addSectionForPresentation:[InputCellsSection sectionWithTitle:NSLocalizedString(@"settings.about.section.label", nil)
+                                                                  cells:@[self.privacyPolicyCell]]];
 
     [self.navigationController setToolbarHidden:YES];
 
@@ -678,6 +684,8 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
         [self emailFeedbackWithSubject:FeedbackEmailSubject];
     } else if (cell == self.sendBugReportCell) {
         [self emailFeedbackWithSubject:FeedbackBugreportEmailSubject];
+    } else if (cell == self.privacyPolicyCell) {
+        [self openPrivacyPolicy];
     }
 }
 
@@ -795,6 +803,15 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
     NSURL *reviewURL = [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", SmartReceiptAppStoreId]];
     if ([[UIApplication sharedApplication] canOpenURL:reviewURL]) {
         [[UIApplication sharedApplication] openURL:reviewURL];
+    }
+}
+
+#pragma mark - About section actions
+
+- (void)openPrivacyPolicy {
+    NSURL *privacyPolicyURL = [NSURL URLWithString:@"https://www.smartreceipts.co/privacy"];
+    if ([[UIApplication sharedApplication] canOpenURL:privacyPolicyURL]) {
+        [[UIApplication sharedApplication] openURL:privacyPolicyURL];
     }
 }
 
