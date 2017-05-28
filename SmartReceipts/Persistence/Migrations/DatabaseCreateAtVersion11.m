@@ -77,6 +77,7 @@
             NSLocalizedString(@"category.meals.justified.name", nil), NSLocalizedString(@"category.meals.justified.code", nil), //
             NSLocalizedString(@"category.stationery.stations.name", nil), NSLocalizedString(@"category.stationery.stations.code", nil), //
             NSLocalizedString(@"category.training.fees.name", nil), NSLocalizedString(@"category.training.fees.code", nil), //
+            NSLocalizedString(@"category.distance.name", nil), NSLocalizedString(@"category.distance.code", nil), //
     ];
 
     for (NSUInteger i = 0; i < cats.count - 1; i += 2) {

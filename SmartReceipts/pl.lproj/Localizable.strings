@@ -22,6 +22,8 @@
 "category.car.rental.name" = "Wynajem samochodu";
 "category.dinner.code" = "DINN";
 "category.dinner.name" = "Obiad";
+"category.distance.code" = "DIST";
+"category.distance.name" = "Dystans";
 "category.dues.subscriptions.code" = "ZDUE";
 "category.dues.subscriptions.name" = "Składki/Subskrypcje";
 "category.entertainment.code" = "ENT";
@@ -73,8 +75,8 @@
 "distance.column.rate" = "Rate";
 
 "distances.controller.title" = "Distances";
-"distances.to.receipt.auto.categpry" = "Distance";
-"distances.to.receipt.auto.name" = "Distance";
+"distances.to.receipt.auto.categpry" = "Dystans";
+"distances.to.receipt.auto.name" = "Dystans";
 
 "edit.category.add.failure.message" = "Nie można dodać tej kategorii";
 "edit.category.edit.failure.message" = "Nie można zedytować tej kategorii";
