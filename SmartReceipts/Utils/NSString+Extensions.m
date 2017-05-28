@@ -14,4 +14,8 @@
     return range.location != NSNotFound && range.location + range.length <= self.length;
 }
 
++ (NSString *)stringWithByteOrderMark {
+    return @"\357\273\277";
+}
+
 @end
