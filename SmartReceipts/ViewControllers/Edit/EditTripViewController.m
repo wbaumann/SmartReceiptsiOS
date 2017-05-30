@@ -7,7 +7,6 @@
 //
 
 #import "EditTripViewController.h"
-#import "WBDateFormatter.h"
 #import "WBTrip.h"
 #import "WBPreferences.h"
 #import "WBAutocompleteHelper.h"

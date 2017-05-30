@@ -350,6 +350,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 - (NSString *)dailyTotal {
     NSArray <WBReceipt *> *receipts = [self allObjects];
     PricesCollection *priceCollection = [PricesCollection new];
+    [priceCollection addPrice:[Price zeroPriceWithCurrencyCode:[WBPreferences defaultCurrency]]];
     
     if ([WBPreferences printDailyDistanceValues]) {
         receipts = [receipts arrayByAddingObjectsFromArray:[self distanceReceipts]];

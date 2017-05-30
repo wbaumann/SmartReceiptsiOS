@@ -19,7 +19,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="125" height="667"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="1o8-Hr-TLd">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_image" translatesAutoresizingMaskIntoConstraints="NO" id="1o8-Hr-TLd">
                     <rect key="frame" x="125" y="0.0" width="125" height="667"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lM0-Ml-4AA">
@@ -46,6 +46,6 @@
         </view>
     </objects>
     <resources>
-        <image name="launch_image.png" width="512" height="512"/>
+        <image name="launch_image" width="512" height="512"/>
     </resources>
 </document>

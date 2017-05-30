@@ -11,7 +11,7 @@
 
 @interface WBDateFormatter ()
 
-@property (nonatomic, strong) NSDateFormatter *formatter;
+@property (nonatomic, strong) NSDateFormatter *_formatter;
 
 @end
 
