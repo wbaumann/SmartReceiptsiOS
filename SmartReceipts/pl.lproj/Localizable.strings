@@ -346,4 +346,6 @@
 "settings.track.cost.center.label" = "Track Cost Center";
 "settings.user.id.label" = "ID Użytkownika";
 
+"trips.controller.daily.total" = "Dzienna Suma: %@";
 "trips.controller.from.to.date.label.base" = "%@ to %@";
+"trips.controller.next.id.subtitle" = "Następny ID: %@";

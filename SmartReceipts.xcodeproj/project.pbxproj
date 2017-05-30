@@ -51,6 +51,7 @@
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
 		713D355C1EDB683200D8563D /* FetchedPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D355B1EDB683200D8563D /* FetchedPlaceholderView.swift */; };
 		71CD20C91ED764DA006C4EE6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD20C81ED764DA006C4EE6 /* Currency.swift */; };
+		71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */; };
 		841BB2FF1908167700D28CBF /* WBAbstractPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB2FE1908167700D28CBF /* WBAbstractPicker.h */; };
 		841BB3011908173600D28CBF /* WBAbstractPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BB3001908173600D28CBF /* WBAbstractPicker.m */; };
 		841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB302190818C400D28CBF /* WBActionSheetPicker.h */; };
@@ -438,6 +439,7 @@
 		713D35541EDA54A700D8563D /* TripCSVGenerator+Testable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TripCSVGenerator+Testable.h"; sourceTree = "<group>"; };
 		713D355B1EDB683200D8563D /* FetchedPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedPlaceholderView.swift; sourceTree = "<group>"; };
 		71CD20C81ED764DA006C4EE6 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Currency.swift; path = ../Currency.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBar.swift"; sourceTree = "<group>"; };
 		7B397BE168915C982926C4BC /* Pods_SmartReceipts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartReceipts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841BB2FE1908167700D28CBF /* WBAbstractPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAbstractPicker.h; sourceTree = "<group>"; };
 		841BB3001908173600D28CBF /* WBAbstractPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAbstractPicker.m; sourceTree = "<group>"; };
@@ -1226,10 +1228,10 @@
 				EA2B8D7B1B4EF1AE0043A84B /* PDF */,
 				EAF9ADDF1AECF8BF0000AC84 /* Persistence */,
 				EA8D81DA1AEA965D00BAC943 /* Reports */,
-				84F4F34A18CFCCD000F69A35 /* Supporting Files */,
 				EA46678C1AE7EA0300B4E502 /* Utils */,
 				EAE8F9AF1AF149B300E837E3 /* View Controllers */,
 				845E33DD18D87CB9006A506A /* Views */,
+				84F4F34A18CFCCD000F69A35 /* Supporting Files */,
 				EA3CF09C1AE7C45C00B14B73 /* Constants.h */,
 				EA3CF09D1AE7C45C00B14B73 /* Constants.m */,
 				A79FDC701CEA0AB600328DBB /* Constants.swift */,
@@ -1561,6 +1563,7 @@
 				572E0A791E42446600A7307A /* NSString+Extensions.m */,
 				713D354E1EDA4AEB00D8563D /* NSMutableString+Extensions.h */,
 				713D354F1EDA4AEB00D8563D /* NSMutableString+Extensions.m */,
+				71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2566,6 +2569,7 @@
 				BA6659EA9A31ADDC9CD10970 /* WBMoveCopyReceiptViewController.m in Sources */,
 				BA66575369EE00A19F841E42 /* WBNoTripsViewController.m in Sources */,
 				BA665F06B922055E7D3BED31 /* WBColumnsViewController.m in Sources */,
+				71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */,
 				BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */,
 				BA665929E9C98CC6D3604390 /* WBNewCategoryViewController.m in Sources */,
 			);

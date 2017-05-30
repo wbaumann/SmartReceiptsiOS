@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="mCg-Ej-Ova">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="mCg-Ej-Ova">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -60,7 +60,7 @@
             <objects>
                 <navigationController toolbarHidden="NO" id="urd-hN-qYP" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translucent="NO" id="Z4Z-LT-5kw">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Z4Z-LT-5kw">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -206,7 +206,7 @@
         <scene sceneID="1PQ-uK-jZ0">
             <objects>
                 <navigationController id="4uL-r9-cZ2" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9It-eF-CsA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9It-eF-CsA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -259,7 +259,7 @@
         <scene sceneID="vFZ-GA-8Fq">
             <objects>
                 <navigationController definesPresentationContext="YES" id="0ME-sr-yBW" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V4p-r9-h5M">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V4p-r9-h5M">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -279,7 +279,7 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="Q2x-Wk-02W"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="WW4-mM-8dS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="WW4-mM-8dS">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -388,7 +388,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="dZT-P6-71W" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="8lM-Aw-p9V">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="8lM-Aw-p9V">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -469,7 +469,7 @@
         <scene sceneID="zjB-06-zDJ">
             <objects>
                 <navigationController definesPresentationContext="YES" id="6vM-UQ-Xtm" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l5Z-F5-VCo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="l5Z-F5-VCo">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -836,7 +836,7 @@
                         <viewControllerLayoutGuide type="top" id="2E1-Ln-fJs"/>
                         <viewControllerLayoutGuide type="bottom" id="aAS-BJ-eO6"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yBR-Fa-dD3">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="yBR-Fa-dD3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -920,7 +920,7 @@
         <scene sceneID="Bja-UG-oUO">
             <objects>
                 <navigationController definesPresentationContext="YES" id="sT3-qa-plb" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nc6-vo-jXk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nc6-vo-jXk">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1033,7 +1033,7 @@
         <scene sceneID="eFW-CK-kDo">
             <objects>
                 <navigationController definesPresentationContext="YES" id="AwS-pP-SMl" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4my-vy-jW6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4my-vy-jW6">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

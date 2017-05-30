@@ -21,7 +21,7 @@ class TripCSVGeneratorTest: SmartReceiptsTestsBase {
     }
     
     func testGenerateSuccess() {
-        let result = generator.generate(toPath: NSTemporaryDirectory().appending("temp.pdf"))
+        let result = generator.generate(toPath: NSTemporaryDirectory().appending("temp.csv"))
         XCTAssertTrue(result)
     }
     
