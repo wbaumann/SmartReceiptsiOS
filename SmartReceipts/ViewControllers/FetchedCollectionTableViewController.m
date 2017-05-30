@@ -190,4 +190,8 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
     return [self.presentedObjects indexForObject:object];
 }
 
+- (NSArray *)allObjects {
+    return self.presentedObjects.allObjects;
+}
+
 @end

@@ -24,5 +24,6 @@
 - (void)deleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath;
 - (void)tappedObject:(id)tapped atIndexPath:(NSIndexPath *)indexPath;
 - (NSUInteger)indexOfObject:(id)object;
+- (NSArray *)allObjects;
 
 @end
