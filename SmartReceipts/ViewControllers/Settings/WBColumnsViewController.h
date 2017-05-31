@@ -6,10 +6,9 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBViewController.h"
 #import "WBDynamicPicker.h"
 
-@interface WBColumnsViewController : WBViewController<WBDynamicPickerDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface WBColumnsViewController : UIViewController <WBDynamicPickerDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property BOOL forCSV;
 @property (weak, nonatomic) IBOutlet UITableView *columnsTableView;

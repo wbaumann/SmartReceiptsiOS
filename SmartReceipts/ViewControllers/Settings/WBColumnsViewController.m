@@ -44,6 +44,8 @@
     _dynamicPicker.delegate = self;
 
     self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], self.editButtonItem];
+    
+    [Customization customizeOnViewDidLoad:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

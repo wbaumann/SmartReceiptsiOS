@@ -10,7 +10,6 @@
 
 #import "WBFileManager.h"
 
-#import "WBCustomization.h"
 #import "PendingHUDView.h"
 #import "DataImport.h"
 #import "Constants.h"
@@ -64,7 +63,7 @@
     
     _queue = dispatch_queue_create("wb.dataAccess", nil);
 
-    [WBCustomization customizeOnAppLoad];
+    [Customization customizeOnAppLoad];
 
     RMStoreAppReceiptVerificator *verificator = [[RMStoreAppReceiptVerificator alloc] init];
     [self setReceiptVerificator:verificator];

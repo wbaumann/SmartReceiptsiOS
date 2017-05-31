@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBTableViewController.h"
-
 #import <MessageUI/MessageUI.h>
 
 #import "WBReceipt.h"
@@ -17,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class ReportAssetsGenerator;
 
-@interface WBGenerateViewController : WBTableViewController
+@interface WBGenerateViewController: UITableViewController
 
 @property (nonatomic, strong) WBTrip *trip;
 @property (nonatomic, strong, nullable) ReportAssetsGenerator *generator;

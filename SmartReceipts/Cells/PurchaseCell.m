@@ -7,7 +7,6 @@
 //
 
 #import "PurchaseCell.h"
-#import "WBCustomization.h"
 #import "WBDateFormatter.h"
 #import "NSDate+Calculations.h"
 
@@ -26,7 +25,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    [self setTintColor:[WBCustomization themeColor]];
+    [self setTintColor:[Customization themeColor]];
 }
 
 - (void)markPurchased {
@@ -43,7 +42,7 @@
     [self.priceLabel setText:@" "];
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     [spinner startAnimating];
-    [spinner setColor:[WBCustomization themeColor]];
+    [spinner setColor:[Customization themeColor]];
     [self setAccessoryView:spinner];
 }
 
@@ -55,7 +54,7 @@
     [self setAccessoryView:nil];
     [self setAccessoryType:UITableViewCellAccessoryNone];
     [self.priceLabel setText:priceString];
-    [self.priceLabel setTextColor:[WBCustomization themeColor]];
+    [self.priceLabel setTextColor:[Customization themeColor]];
     [self setNeedsLayout];
     [self layoutIfNeeded];
 }

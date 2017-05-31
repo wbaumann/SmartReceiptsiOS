@@ -10,7 +10,6 @@
 #import "WBCellWithPriceNameDate.h"
 #import "WBDateFormatter.h"
 #import "WBPreferences.h"
-#import "WBCustomization.h"
 #import "UIView+LoadHelpers.h"
 #import "FetchedModelAdapter.h"
 #import "Database+Trips.h"
@@ -38,7 +37,7 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [WBCustomization customizeOnViewDidLoad:self];
+    [Customization customizeOnViewDidLoad:self];
 
     [self setPresentationCellNib:[WBCellWithPriceNameDate viewNib]];
 

@@ -6,9 +6,7 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBViewController.h"
-
-@interface WBNoTripsViewController : WBViewController
+@interface WBNoTripsViewController: UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *labelNoReportSelected;
 
 @end

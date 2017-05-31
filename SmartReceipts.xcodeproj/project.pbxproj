@@ -57,6 +57,7 @@
 		719310421EDDC2810065B5AD /* WBTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193103C1EDDC2810065B5AD /* WBTextUtils.m */; };
 		719310471EDDC3120065B5AD /* WBImageStampler.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310441EDDC3120065B5AD /* WBImageStampler.m */; };
 		719310481EDDC3120065B5AD /* WBPdfDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310461EDDC3120065B5AD /* WBPdfDrawer.m */; };
+		71AEDDCD1EDF6A2300BAC0DD /* Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDCC1EDF6A2300BAC0DD /* Customization.swift */; };
 		71CD20C91ED764DA006C4EE6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD20C81ED764DA006C4EE6 /* Currency.swift */; };
 		71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */; };
 		71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */; };
@@ -140,7 +141,6 @@
 		A7F05BE51CFD95830079F1AD /* FMDatabase+Distances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BE41CFD95830079F1AD /* FMDatabase+Distances.swift */; };
 		A7F05BE71CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BE61CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift */; };
 		B375F50D1A177C9782941048 /* Pods_SmartReceiptsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A00E20F6F7D842A0665F496 /* Pods_SmartReceiptsTests.framework */; };
-		BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665BE5F2DD7CCFDA2D5F97 /* WBCustomization.m */; };
 		BA66533BF5BE6103F7230434 /* WBImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66548D45A03F16399057F5 /* WBImageViewController.m */; };
 		BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66590C0394B2CE9704CC15 /* WBCategoriesViewController.m */; };
 		BA6654A32D71826EBC7D9B8F /* WBReceiptActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6653628925EC4238313167 /* WBReceiptActionsViewController.m */; };
@@ -151,11 +151,9 @@
 		BA665979E02A79C4610624F3 /* SmartReceiptsTestsBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665A5EFF5EE0F233A6FC66 /* SmartReceiptsTestsBase.m */; };
 		BA66598797EF09DBD750184F /* WBAutocompleteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66568C566BD25FE4AFAE3C /* WBAutocompleteHelper.m */; };
 		BA6659EA9A31ADDC9CD10970 /* WBMoveCopyReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6654EA764091CAC85A2FB2 /* WBMoveCopyReceiptViewController.m */; };
-		BA665CDCF649AB06E5F9B219 /* WBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66574982AFBD6E553F9856 /* WBViewController.m */; };
 		BA665CE0E265BAAFE063CF3A /* WBReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6651EEB95E55629DEE91EE /* WBReceiptsViewController.m */; };
 		BA665D77747A4469CAA08CE9 /* WBGenerateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665109C535866B59AD5544 /* WBGenerateViewController.m */; };
 		BA665F06B922055E7D3BED31 /* WBColumnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665C9EEA56CE01EA133B0B /* WBColumnsViewController.m */; };
-		BA665F59AEC814347484CE79 /* WBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */; };
 		EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */; };
 		EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D00C1B0629BE00C87678 /* ProperNameInputValidation.m */; };
 		EA00D0101B06321A00C87678 /* EditTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D00F1B06321A00C87678 /* EditTripViewController.m */; };
@@ -428,7 +426,7 @@
 		719310291EDDB9960065B5AD /* WBDynamicPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBDynamicPicker.h; path = Views/WBDynamicPicker.h; sourceTree = "<group>"; };
 		7193102A1EDDB9960065B5AD /* WBDynamicPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBDynamicPicker.m; path = Views/WBDynamicPicker.m; sourceTree = "<group>"; };
 		7193102D1EDDBE060065B5AD /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		7193102E1EDDBE060065B5AD /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		7193102E1EDDBE060065B5AD /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SettingsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7193102F1EDDBE060065B5AD /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentCurrenciesCache.swift; sourceTree = "<group>"; };
 		719310351EDDC2810065B5AD /* WBFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBFileManager.h; sourceTree = "<group>"; };
@@ -443,6 +441,7 @@
 		719310441EDDC3120065B5AD /* WBImageStampler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageStampler.m; sourceTree = "<group>"; };
 		719310451EDDC3120065B5AD /* WBPdfDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPdfDrawer.h; sourceTree = "<group>"; };
 		719310461EDDC3120065B5AD /* WBPdfDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPdfDrawer.m; sourceTree = "<group>"; };
+		71AEDDCC1EDF6A2300BAC0DD /* Customization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customization.swift; sourceTree = "<group>"; };
 		71CD20C81ED764DA006C4EE6 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Currency.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		71D59CDA1EDDC993008991B7 /* WBDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDateFormatter.h; sourceTree = "<group>"; };
 		71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDateFormatter.m; sourceTree = "<group>"; };
@@ -543,37 +542,31 @@
 		A7F05BE41CFD95830079F1AD /* FMDatabase+Distances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FMDatabase+Distances.swift"; sourceTree = "<group>"; };
 		A7F05BE61CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsFetchedModelAdapterTests.swift; sourceTree = "<group>"; };
 		AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceiptsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests.debug.xcconfig"; sourceTree = "<group>"; };
-		BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableViewController.m; sourceTree = "<group>"; };
 		BA665109C535866B59AD5544 /* WBGenerateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBGenerateViewController.m; sourceTree = "<group>"; };
 		BA665153398224CB65F67810 /* WBImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageViewController.h; sourceTree = "<group>"; };
-		BA6651EEB95E55629DEE91EE /* WBReceiptsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReceiptsViewController.m; sourceTree = "<group>"; };
+		BA6651EEB95E55629DEE91EE /* WBReceiptsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WBReceiptsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BA665243DF18CF56677B3A86 /* WBMoveCopyReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMoveCopyReceiptViewController.h; sourceTree = "<group>"; };
 		BA6653628925EC4238313167 /* WBReceiptActionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReceiptActionsViewController.m; sourceTree = "<group>"; };
 		BA6654541DA40CB7B83FA76C /* SmartReceiptsTestsBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartReceiptsTestsBase.h; sourceTree = "<group>"; };
 		BA66548D45A03F16399057F5 /* WBImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageViewController.m; sourceTree = "<group>"; };
-		BA6654EA764091CAC85A2FB2 /* WBMoveCopyReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMoveCopyReceiptViewController.m; sourceTree = "<group>"; };
+		BA6654EA764091CAC85A2FB2 /* WBMoveCopyReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WBMoveCopyReceiptViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BA6655CF73C2805E425E534B /* WBNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBNewCategoryViewController.h; sourceTree = "<group>"; };
 		BA66565E13BBA7886EDCEE33 /* WBReceiptsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceiptsViewController.h; sourceTree = "<group>"; };
 		BA66568C566BD25FE4AFAE3C /* WBAutocompleteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAutocompleteHelper.m; sourceTree = "<group>"; };
 		BA6656B86F52D1B546848E92 /* NSDate+Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calculations.h"; sourceTree = "<group>"; };
-		BA66574982AFBD6E553F9856 /* WBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBViewController.m; sourceTree = "<group>"; };
-		BA66585A68E3E3324FB30B79 /* WBCustomization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCustomization.h; sourceTree = "<group>"; };
 		BA66588B7C2114029521A399 /* NSDate+Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calculations.m"; sourceTree = "<group>"; };
 		BA6658C6E9922C04CCF04745 /* WBAutocompleteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAutocompleteHelper.h; sourceTree = "<group>"; };
-		BA66590C0394B2CE9704CC15 /* WBCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCategoriesViewController.m; sourceTree = "<group>"; };
-		BA665934F658C9E4731A32A6 /* WBTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTableViewController.h; sourceTree = "<group>"; };
+		BA66590C0394B2CE9704CC15 /* WBCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WBCategoriesViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BA665A326028D20117B5E054 /* WBColumnsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnsViewController.h; sourceTree = "<group>"; };
 		BA665A5E325CF4D2E8806039 /* WBNoTripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBNoTripsViewController.h; sourceTree = "<group>"; };
 		BA665A5EFF5EE0F233A6FC66 /* SmartReceiptsTestsBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartReceiptsTestsBase.m; sourceTree = "<group>"; };
 		BA665BAC0D1C9F6A64F54953 /* WBNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNewCategoryViewController.m; sourceTree = "<group>"; };
-		BA665BE5F2DD7CCFDA2D5F97 /* WBCustomization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCustomization.m; sourceTree = "<group>"; };
 		BA665C12773D75AD10BAF758 /* WBNoTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNoTripsViewController.m; sourceTree = "<group>"; };
 		BA665C2F6D5238C64F840985 /* WBImageSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageSegue.h; sourceTree = "<group>"; };
 		BA665C7D02BFCCBCC8D83E2D /* WBGenerateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBGenerateViewController.h; sourceTree = "<group>"; };
 		BA665C9EEA56CE01EA133B0B /* WBColumnsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnsViewController.m; sourceTree = "<group>"; };
 		BA665DB04425306990A9255C /* WBImageSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageSegue.m; sourceTree = "<group>"; };
 		BA665EC4135DDF48D5AAB0C7 /* WBCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategoriesViewController.h; sourceTree = "<group>"; };
-		BA665F7B46A87C59698DAF61 /* WBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBViewController.h; sourceTree = "<group>"; };
 		BA665F9DBF1E76E680587BB3 /* WBReceiptActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceiptActionsViewController.h; sourceTree = "<group>"; };
 		BD6975428A0492150C7B4926 /* Pods-SmartReceipts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceipts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts.debug.xcconfig"; sourceTree = "<group>"; };
 		EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTestVersion13.m; sourceTree = "<group>"; };
@@ -680,13 +673,13 @@
 		EA2B8D7F1B4EF2510043A84B /* PrettyPDFRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyPDFRender.h; sourceTree = "<group>"; };
 		EA2B8D801B4EF2510043A84B /* PrettyPDFRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyPDFRender.m; sourceTree = "<group>"; };
 		EA2B8D821B4EF26D0043A84B /* PDFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFPage.h; sourceTree = "<group>"; };
-		EA2B8D831B4EF26D0043A84B /* PDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFPage.m; sourceTree = "<group>"; };
+		EA2B8D831B4EF26D0043A84B /* PDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PDFPage.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EA2B8D851B4EF27D0043A84B /* PDFPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFPage.xib; sourceTree = "<group>"; };
 		EA2B8D871B4EF44B0043A84B /* TripReportHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripReportHeader.xib; sourceTree = "<group>"; };
 		EA2B8D891B4EF45B0043A84B /* TripReportHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripReportHeader.h; sourceTree = "<group>"; };
 		EA2B8D8A1B4EF45B0043A84B /* TripReportHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripReportHeader.m; sourceTree = "<group>"; };
 		EA2F22FE1B41BDDD008AF61E /* PurchaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseCell.h; sourceTree = "<group>"; };
-		EA2F22FF1B41BDDD008AF61E /* PurchaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseCell.m; sourceTree = "<group>"; };
+		EA2F22FF1B41BDDD008AF61E /* PurchaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PurchaseCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EA2F23001B41BDDD008AF61E /* PurchaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseCell.xib; sourceTree = "<group>"; };
 		EA2F23031B41BFD3008AF61E /* Database+Purchases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Database+Purchases.h"; sourceTree = "<group>"; };
 		EA2F23041B41BFD3008AF61E /* Database+Purchases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Database+Purchases.m"; sourceTree = "<group>"; };
@@ -744,7 +737,7 @@
 		EA4DC9941AF1580100CEF1B9 /* InputCellsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCellsViewController.h; sourceTree = "<group>"; };
 		EA4DC9951AF1580100CEF1B9 /* InputCellsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCellsViewController.m; sourceTree = "<group>"; };
 		EA5963E11AF2912900935344 /* PickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCell.h; sourceTree = "<group>"; };
-		EA5963E21AF2912900935344 /* PickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerCell.m; sourceTree = "<group>"; };
+		EA5963E21AF2912900935344 /* PickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PickerCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EA5963EA1AF2957200935344 /* NoCaretTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoCaretTextField.h; path = Views/NoCaretTextField.h; sourceTree = "<group>"; };
 		EA5963EB1AF2957200935344 /* NoCaretTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoCaretTextField.m; path = Views/NoCaretTextField.m; sourceTree = "<group>"; };
 		EA5963F21AF29B1A00935344 /* UIView+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Search.h"; sourceTree = "<group>"; };
@@ -863,7 +856,7 @@
 		EAB9700D1B078944005E1D63 /* MasterTripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterTripsViewController.h; sourceTree = "<group>"; };
 		EAB9700E1B078944005E1D63 /* MasterTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterTripsViewController.m; sourceTree = "<group>"; };
 		EAB970101B0790EE005E1D63 /* TripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripsViewController.h; sourceTree = "<group>"; };
-		EAB970111B0790EE005E1D63 /* TripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsViewController.m; sourceTree = "<group>"; };
+		EAB970111B0790EE005E1D63 /* TripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TripsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EAD15C4F1B07C3A1003BB1F3 /* Database+Notify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Database+Notify.h"; sourceTree = "<group>"; };
 		EAD15C501B07C3A1003BB1F3 /* Database+Notify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Database+Notify.m"; sourceTree = "<group>"; };
 		EAD15C761B087029003BB1F3 /* DatabaseReceiptsCopyMoveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseReceiptsCopyMoveTest.m; sourceTree = "<group>"; };
@@ -1348,8 +1341,7 @@
 		BA665E0F45BB2381E10517B2 /* Customization */ = {
 			isa = PBXGroup;
 			children = (
-				BA66585A68E3E3324FB30B79 /* WBCustomization.h */,
-				BA665BE5F2DD7CCFDA2D5F97 /* WBCustomization.m */,
+				71AEDDCC1EDF6A2300BAC0DD /* Customization.swift */,
 			);
 			path = Customization;
 			sourceTree = "<group>";
@@ -1358,10 +1350,6 @@
 			isa = PBXGroup;
 			children = (
 				BA665E0F45BB2381E10517B2 /* Customization */,
-				BA665F7B46A87C59698DAF61 /* WBViewController.h */,
-				BA66574982AFBD6E553F9856 /* WBViewController.m */,
-				BA665934F658C9E4731A32A6 /* WBTableViewController.h */,
-				BA6650990C0B0B8DA1FCC8DF /* WBTableViewController.m */,
 			);
 			path = Abstract;
 			sourceTree = "<group>";
@@ -2461,6 +2449,7 @@
 				A7A720E11CEEFAF700A3B5FF /* InputCellsViewController.swift in Sources */,
 				A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */,
 				EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */,
+				71AEDDCD1EDF6A2300BAC0DD /* Customization.swift in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */,
 				EAD3EF8B1B0E154300CA1D4D /* AdPresentingContainerViewController.m in Sources */,
 				EA0677F61B04E61A0058A326 /* StringPickableWrapper.m in Sources */,
@@ -2515,12 +2504,9 @@
 				BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */,
 				572E0A7A1E42446600A7307A /* NSString+Extensions.m in Sources */,
 				EA40DC691B55598A003BF545 /* FullPagePDFImageView.m in Sources */,
-				BA6652B9BB021D0C7B8A429E /* WBCustomization.m in Sources */,
 				A7F05BB41CFC1A5D0079F1AD /* Exchanged.swift in Sources */,
-				BA665CDCF649AB06E5F9B219 /* WBViewController.m in Sources */,
 				A758CE901D01615900169C7C /* Tweaker.swift in Sources */,
 				719310481EDDC3120065B5AD /* WBPdfDrawer.m in Sources */,
-				BA665F59AEC814347484CE79 /* WBTableViewController.m in Sources */,
 				EA40DC731B555D31003BF545 /* PDFPageRenderView.m in Sources */,
 				BA66533BF5BE6103F7230434 /* WBImageViewController.m in Sources */,
 				570515A71E04AA7D00BB8FE4 /* FirebaseAnalytics.swift in Sources */,

@@ -6,15 +6,13 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBTableViewController.h"
-
 #import "WBReceiptsViewController.h"
 
 #import "WBReceipt.h"
 
 #import <QuickLook/QuickLook.h>
 
-@interface WBReceiptActionsViewController : WBTableViewController <UIDocumentInteractionControllerDelegate>
+@interface WBReceiptActionsViewController : UITableViewController <UIDocumentInteractionControllerDelegate>
 
 @property (nonatomic, weak) WBReceiptsViewController *receiptsViewController;
 @property (nonatomic, strong) WBReceipt *receipt;

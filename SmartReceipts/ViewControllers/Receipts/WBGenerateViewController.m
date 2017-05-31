@@ -52,6 +52,8 @@
     self.labelZipImages.text = NSLocalizedString(@"generate.report.option.zip.stamped", nil);
     
     [self trackConfigureReportevent];
+    
+    [Customization customizeOnViewDidLoad:self];
 }
 
 - (NSArray *)splitValueFrom:(NSString *)joined {

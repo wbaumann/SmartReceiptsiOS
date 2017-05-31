@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBTableViewController.h"
 #import "WBDynamicPicker.h"
 
 #import "InputCellsViewController.h"

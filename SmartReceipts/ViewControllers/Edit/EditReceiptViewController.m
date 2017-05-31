@@ -14,7 +14,6 @@
 #import "WBAutocompleteHelper.h"
 #import "Price.h"
 #import "NSDecimalNumber+WBNumberParse.h"
-#import "WBCustomization.h"
 #import "TitledTextEntryCell.h"
 #import "UIView+LoadHelpers.h"
 #import "UITableViewCell+Identifier.h"
@@ -76,7 +75,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [WBCustomization customizeOnViewDidLoad:self];
+    [Customization customizeOnViewDidLoad:self];
 
     __weak EditReceiptViewController *weakSelf = self;
 
