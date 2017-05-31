@@ -111,6 +111,7 @@ PODS:
     - RxSwift (~> 3.4)
   - Tweaks (2.0.0)
   - UIAlertView-Blocks (1.0)
+  - Viperit (0.5.0)
 
 DEPENDENCIES:
   - CocoaLumberjack/Swift (~> 3.2.0)
@@ -133,6 +134,7 @@ DEPENDENCIES:
   - RxTest (~> 3.0)
   - Tweaks (~> 2.0.0)
   - UIAlertView-Blocks (~> 1.0)
+  - Viperit (~> 0.5.0)
 
 EXTERNAL SOURCES:
   RMStore:
@@ -165,7 +167,8 @@ SPEC CHECKSUMS:
   RxTest: a6fd6e4069face7c6488f96f6c42296b3e44db48
   Tweaks: 524fa47636cce3bf3a4d9156e980f10ae9480e81
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
+  Viperit: e0781a6ddc78de3a1fab2820eb7cfedb9457eb82
 
-PODFILE CHECKSUM: 555cb5be09a5aeda94395b4e97a8a858c0d19b8f
+PODFILE CHECKSUM: d8ef9d917b44765e63bb60e5270914c135ad2d21
 
 COCOAPODS: 1.2.1

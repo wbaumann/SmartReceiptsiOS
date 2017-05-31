@@ -32,6 +32,9 @@ def pods
     pod 'RMStore/KeychainPersistence', :path => '3rdparty/RMStore'
     pod 'RMStore/AppReceiptVerificator', :path => '3rdparty/RMStore'
     
+    # Architecture
+    pod 'Viperit', '~> 0.5.0'
+    
 end
 
 target 'SmartReceipts' do
