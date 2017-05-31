@@ -38,6 +38,7 @@
     self.navigationItem.title = [self.receipt name];
     
     [self createCellsTextsAndIndices];
+    [Customization customizeOnViewDidLoad:self];
 }
 
 -(void)createCellsTextsAndIndices {

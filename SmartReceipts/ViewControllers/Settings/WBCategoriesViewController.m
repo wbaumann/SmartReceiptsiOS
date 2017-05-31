@@ -7,7 +7,6 @@
 //
 
 #import "WBCategoriesViewController.h"
-#import "WBCustomization.h"
 #import "WBNewCategoryViewController.h"
 #import "CategoryCell.h"
 #import "UIView+LoadHelpers.h"
@@ -35,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [WBCustomization customizeOnViewDidLoad:self];
+    [Customization customizeOnViewDidLoad:self];
 
     [self setPresentationCellNib:[CategoryCell viewNib]];
 

@@ -6,11 +6,10 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBViewController.h"
 
 #import "WBReceiptsViewController.h"
 
-@interface WBImageViewController : WBViewController<UIScrollViewDelegate>
+@interface WBImageViewController : UIViewController <UIScrollViewDelegate>
 
 @property (strong) NSString *path;
 @property (strong) NSString *name;

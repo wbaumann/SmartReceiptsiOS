@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBTableViewController.h"
-
 #import "WBReceiptActionsViewController.h"
 #import "WBReceiptsViewController.h"
 #import "TripsViewController.h"

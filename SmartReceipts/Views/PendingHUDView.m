@@ -7,7 +7,6 @@
 //
 
 #import "PendingHUDView.h"
-#import "WBCustomization.h"
 
 #if DEBUG
 static BOOL isRunningTests(void) {
@@ -31,7 +30,7 @@ static BOOL isRunningTests(void) {
         [view addSubview:overlayView];
     }
     [overlayView show:YES];
-    [overlayView setTintColor:[WBCustomization themeColor]];
+    [overlayView setTintColor:[Customization themeColor]];
     return overlayView;
 }
 

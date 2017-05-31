@@ -9,7 +9,6 @@
 #import "UIAlertView+Blocks.h"
 #import "PickerCell.h"
 #import "Pickable.h"
-#import "WBCustomization.h"
 
 @interface PickerCell ()
 
@@ -24,7 +23,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self.valueLabel setTextColor:[WBCustomization themeColor]];
+    [self.valueLabel setTextColor:[Customization themeColor]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

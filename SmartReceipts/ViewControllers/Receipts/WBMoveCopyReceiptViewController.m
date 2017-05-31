@@ -8,7 +8,6 @@
 
 #import "WBMoveCopyReceiptViewController.h"
 
-#import "WBCustomization.h"
 #import "TitleOnlyCell.h"
 #import "UIView+LoadHelpers.h"
 #import "FetchedModelAdapter.h"
@@ -25,7 +24,7 @@
 {
     [super viewDidLoad];
 
-    [WBCustomization customizeOnViewDidLoad:self];
+    [Customization customizeOnViewDidLoad:self];
 
     [self setPresentationCellNib:[TitleOnlyCell viewNib]];
 

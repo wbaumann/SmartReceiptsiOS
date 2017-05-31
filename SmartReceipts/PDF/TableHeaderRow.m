@@ -7,7 +7,6 @@
 //
 
 #import "TableHeaderRow.h"
-#import "WBCustomization.h"
 
 @interface TableHeaderRow ()
 
@@ -21,7 +20,7 @@ IB_DESIGNABLE
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    UIColor *styleColor = [WBCustomization reportPDFStyleColor];
+    UIColor *styleColor = [Customization reportPDFStyleColor];
     [self.contentLabel setTextColor:styleColor];
     [self setBackgroundColor:[styleColor colorWithAlphaComponent:0.2]];
     [self.bottomSeparatorView setBackgroundColor:styleColor];

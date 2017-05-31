@@ -11,7 +11,6 @@
 
 #import "WBPreferences.h"
 #import "WBDateFormatter.h"
-#import "WBCustomization.h"
 #import "SettingsTopTitledTextEntryCell.h"
 #import "UIView+LoadHelpers.h"
 #import "UITableViewCell+Identifier.h"
@@ -132,7 +131,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 {
     [super viewDidLoad];
 
-    [WBCustomization customizeOnViewDidLoad:self];
+    [Customization customizeOnViewDidLoad:self];
 
     [self setContainNextEditSearchInsideSection:YES];
     

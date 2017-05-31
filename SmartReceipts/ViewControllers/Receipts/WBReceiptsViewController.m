@@ -14,7 +14,6 @@
 #import "WBPreferences.h"
 #import "ImagePicker.h"
 #import "TripDistancesViewController.h"
-#import "WBCustomization.h"
 #import "UIView+LoadHelpers.h"
 #import "FetchedModelAdapter.h"
 #import "Database+Receipts.h"
@@ -60,7 +59,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     //clear when new tip is opened
     [[WBReceiptsViewController sharedInputCache] setDictionary:@{}];
 
-    [WBCustomization customizeOnViewDidLoad:self];
+    [Customization customizeOnViewDidLoad:self];
 
     [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
     [self setShowReceiptCategory:[WBPreferences layoutShowReceiptCategory]];

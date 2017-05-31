@@ -8,7 +8,6 @@
 
 #import "PDFPage.h"
 #import "TripReportHeader.h"
-#import "WBCustomization.h"
 #import "PDFReportTable.h"
 #import "PDFImageView.h"
 #import "WBPreferences.h"
@@ -33,8 +32,8 @@ CGFloat const ElementsSpacing = 16;
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    [self.topLine setBackgroundColor:[WBCustomization reportPDFStyleColor]];
-    [self.bottomLine setBackgroundColor:[WBCustomization reportPDFStyleColor]];
+    [self.topLine setBackgroundColor:[Customization reportPDFStyleColor]];
+    [self.bottomLine setBackgroundColor:[Customization reportPDFStyleColor]];
 
     self.contentOffset = self.topLine.frame.origin.y + CGRectGetHeight(self.topLine.frame) + ElementsSpacing;
     

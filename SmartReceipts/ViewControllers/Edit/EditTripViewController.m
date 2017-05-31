@@ -10,7 +10,6 @@
 #import "WBTrip.h"
 #import "WBPreferences.h"
 #import "WBAutocompleteHelper.h"
-#import "WBCustomization.h"
 #import "TitledAutocompleteEntryCell.h"
 #import "UIView+LoadHelpers.h"
 #import "UITableViewCell+Identifier.h"
@@ -54,7 +53,7 @@
 {
     [super viewDidLoad];
 
-    [WBCustomization customizeOnViewDidLoad:self];
+    [Customization customizeOnViewDidLoad:self];
 
     __weak EditTripViewController *weakSelf = self;
 
