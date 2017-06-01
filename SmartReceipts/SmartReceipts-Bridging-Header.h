@@ -30,6 +30,8 @@
 #import "InputCellsViewController.h"
 
 #import "NSDecimalNumber+WBNumberParse.h"
+#import "UIView+LoadHelpers.h"
+#import "UIApplication+DismissKeyboard.h"
 
 #import "PaymentMethod.h"
 #import "PendingHUDView.h"
@@ -38,9 +40,16 @@
 #import "ReceiptColumn.h"
 
 #import "SettingsViewController.h"
+#import "WBReceiptsViewController.h"
+#import "EditDistanceViewController.h"
 
+#import "DistanceSummaryCell.h"
 #import "TextEntryCell.h"
 #import "TitledTextEntryCell.h"
+#import "InputCellsSection.h"
+#import "TitledAutocompleteEntryCell.h"
+#import "SwitchControlCell.h"
+
 #import "TripCSVGenerator.h"
 #import "TripFullPDFGenerator.h"
 #import "TripImagesPDFGenerator.h"
@@ -55,3 +64,7 @@
 #import "WBReportUtils.h"
 #import "WBTrip.h"
 #import "WBDateFormatter.h"
+#import "WBAutocompleteHelper.h"
+
+#import "InputValidation.h"
+

@@ -71,7 +71,7 @@
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </toolbar>
                     <connections>
-                        <segue destination="Rop-yq-bsL" kind="relationship" relationship="rootViewController" id="IMY-U2-LvY"/>
+                        <segue destination="Nma-45-wRv" kind="relationship" relationship="rootViewController" id="OuK-bZ-SER"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ncr-85-d38" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -79,95 +79,116 @@
             <point key="canvasLocation" x="211" y="-624"/>
         </scene>
         <!--Smart Receipts-->
-        <scene sceneID="bcd-J7-h7B">
+        <scene sceneID="g2M-36-qnd">
             <objects>
-                <viewController id="Rop-yq-bsL" customClass="TripsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bTd-kR-eyz">
-                        <rect key="frame" x="0.0" y="64" width="375" height="479"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="Rop-yq-bsL" id="37R-y5-I2p"/>
-                            <outlet property="delegate" destination="Rop-yq-bsL" id="7s8-cX-bFk"/>
-                        </connections>
-                    </tableView>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                <viewController id="Nma-45-wRv" customClass="TripsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SUN-S9-NAN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Djt-i9-qYX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CWj-oB-Agn">
+                        <rect key="frame" x="0.0" y="64" width="375" height="523"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bTd-kR-eyz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="479"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bTd-kR-eyz" firstAttribute="leading" secondItem="CWj-oB-Agn" secondAttribute="leading" id="0i9-0K-AkS"/>
+                            <constraint firstItem="bTd-kR-eyz" firstAttribute="top" secondItem="SUN-S9-NAN" secondAttribute="bottom" id="8Tz-kh-Ck5"/>
+                            <constraint firstItem="Djt-i9-qYX" firstAttribute="top" secondItem="bTd-kR-eyz" secondAttribute="bottom" id="LAD-nf-FpY"/>
+                            <constraint firstAttribute="trailing" secondItem="bTd-kR-eyz" secondAttribute="trailing" id="PR6-gi-x6M"/>
+                        </constraints>
+                    </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="aLQ-cZ-ktz"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Smart Receipts" id="h83-xO-owi">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="vjI-bA-K0l">
+                    <navigationItem key="navigationItem" title="Smart Receipts" id="p6W-uC-7nR">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="4Zh-MY-ojl">
                             <connections>
-                                <segue destination="bqm-6y-Q1d" kind="modal" identifier="Settings" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="Jgh-gp-I9a"/>
+                                <segue destination="bqm-6y-Q1d" kind="push" id="URg-iu-0gb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2SY-dl-byW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YPe-P8-a5F">
                             <connections>
-                                <action selector="actionAdd:" destination="Rop-yq-bsL" id="sm1-jN-ozP"/>
+                                <action selector="actionAdd:" destination="Nma-45-wRv" id="vqq-tC-W02"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="settingsButton" destination="vjI-bA-K0l" id="SaS-6M-zEv"/>
-                        <outlet property="view" destination="bTd-kR-eyz" id="Ljl-Jz-ION"/>
-                        <segue destination="dZT-P6-71W" kind="modal" identifier="TripCreator" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="HN5-tU-TgG"/>
-                        <segue destination="igX-mn-JI3" kind="push" identifier="NoTrip" id="O4U-mM-XW1"/>
-                        <segue destination="XIL-BS-K8W" kind="push" identifier="TripDetails" id="fyT-ra-KvB"/>
+                        <outlet property="tableView" destination="bTd-kR-eyz" id="Yii-yq-AGH"/>
+                        <segue destination="igX-mn-JI3" kind="push" identifier="NoTrip" id="H67-27-in3"/>
+                        <segue destination="dZT-P6-71W" kind="modal" identifier="TripCreator" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="Dsc-Bp-eYS"/>
+                        <segue destination="oXP-B8-ZGa" kind="push" identifier="TripDetails" id="zZk-3t-7xw"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lya-T9-UdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iCE-cQ-DLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="-624"/>
+            <point key="canvasLocation" x="776" y="-625"/>
         </scene>
-        <!--Report Name - $20.00-->
-        <scene sceneID="8CL-aI-Rmf">
+        <!--Receipt-->
+        <scene sceneID="bRO-tF-3nn">
             <objects>
-                <tableViewController id="XIL-BS-K8W" customClass="WBReceiptsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="J8g-r8-o4p">
-                        <rect key="frame" x="0.0" y="64" width="375" height="479"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="XIL-BS-K8W" id="UcB-wk-Aam"/>
-                            <outlet property="delegate" destination="XIL-BS-K8W" id="7f3-jv-dzH"/>
-                        </connections>
-                    </tableView>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                <viewController id="oXP-B8-ZGa" customClass="WBReceiptsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="miF-7U-AjF"/>
+                        <viewControllerLayoutGuide type="bottom" id="IrJ-lk-bVJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F59-FV-u9l">
+                        <rect key="frame" x="0.0" y="64" width="375" height="523"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="J8g-r8-o4p">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="523"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="J8g-r8-o4p" firstAttribute="leading" secondItem="F59-FV-u9l" secondAttribute="leading" id="5j3-42-HA7"/>
+                            <constraint firstItem="J8g-r8-o4p" firstAttribute="top" secondItem="F59-FV-u9l" secondAttribute="top" id="EhY-g3-ohQ"/>
+                            <constraint firstAttribute="bottom" secondItem="J8g-r8-o4p" secondAttribute="bottom" id="a3V-b6-Wh6"/>
+                            <constraint firstAttribute="trailing" secondItem="J8g-r8-o4p" secondAttribute="trailing" id="lTC-3f-4Ze"/>
+                        </constraints>
+                    </view>
                     <toolbarItems>
                         <barButtonItem systemItem="camera" id="qou-W8-Ppm">
                             <connections>
-                                <action selector="actionCamera:" destination="XIL-BS-K8W" id="1PY-Eu-syj"/>
+                                <action selector="actionCamera:" destination="oXP-B8-ZGa" id="9is-Ci-iM5"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="5bR-1p-shn"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="A25-iQ-VRl"/>
                         <barButtonItem systemItem="compose" id="Cvs-HD-q5r">
                             <connections>
                                 <segue destination="0ME-sr-yBW" kind="modal" identifier="ReceiptCreator" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="Whf-rU-JR6"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="A25-iQ-VRl"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="6Sf-ey-9E4"/>
                         <barButtonItem image="wheel" id="5LZ-9J-JcM">
                             <connections>
-                                <segue destination="4uL-r9-cZ2" kind="modal" identifier="PresentTripDistancesSegue" id="5Km-y5-ncR"/>
+                                <action selector="onDistancesTap:" destination="oXP-B8-ZGa" id="4Se-cR-LxL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="6Sf-ey-9E4"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="5bR-1p-shn"/>
                         <barButtonItem systemItem="action" id="2RB-vL-hqq">
                             <connections>
                                 <segue destination="sT3-qa-plb" kind="modal" identifier="GenerateReport" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="fPh-nn-Wkr"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Report Name - $20.00" id="nsr-l6-Lmx"/>
+                    <navigationItem key="navigationItem" title="Receipt" id="mQT-Uh-PeB"/>
                     <connections>
-                        <outlet property="view" destination="J8g-r8-o4p" id="gMK-fe-xau"/>
-                        <segue destination="AwS-pP-SMl" kind="modal" identifier="ReceiptActions" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="FF7-A9-hDe"/>
+                        <outlet property="tableView" destination="J8g-r8-o4p" id="wEx-LM-Mz8"/>
+                        <segue destination="AwS-pP-SMl" kind="modal" identifier="ReceiptActions" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="lsB-dZ-iAD"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aFT-qn-acT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vxp-z6-FED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2445" y="-65"/>
+            <point key="canvasLocation" x="2377" y="-66"/>
         </scene>
         <!--Distances-->
         <scene sceneID="r3O-ll-UTO">
@@ -200,7 +221,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Stl-Er-C9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2834" y="1267"/>
+            <point key="canvasLocation" x="2699" y="1164"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1PQ-uK-jZ0">
@@ -216,7 +237,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ab-23-pHW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2410" y="856"/>
+            <point key="canvasLocation" x="2206" y="950"/>
         </scene>
         <!--New Receipt-->
         <scene sceneID="wvb-zr-7OQ">
@@ -284,7 +305,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="57k-UP-sUP">
-                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="543" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -302,7 +323,7 @@
             <objects>
                 <tableViewController id="Npz-x6-pwj" customClass="SettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="2DY-tD-Bcc">
-                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="479"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections/>
@@ -335,7 +356,7 @@
             <objects>
                 <tableViewController id="ZPX-hr-elc" customClass="PaymentMethodsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="prS-Qu-7uu">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="523"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
@@ -360,7 +381,7 @@
             <objects>
                 <tableViewController id="vNg-YF-QYK" customClass="EditPaymentMethodViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="lZR-CL-CEq">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="523"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
@@ -439,7 +460,7 @@
             <objects>
                 <viewController id="zRm-IZ-bzQ" customClass="WBCategoriesViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lm1-z9-2ag">
-                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="479"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
@@ -589,11 +610,11 @@
                         <viewControllerLayoutGuide type="bottom" id="5dj-6S-sse"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eAC-MV-07V">
-                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="479"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qOq-nc-Hl3">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="479"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="ZE0-rJ-7xB" detailTextLabel="bpi-nE-1vW" style="IBUITableViewCellStyleValue2" id="cZo-V3-Cfe">
@@ -1058,7 +1079,7 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lLZ-TT-ZcS"/>
+        <segue reference="URg-iu-0gb"/>
         <segue reference="Pu5-7V-Vh4"/>
         <segue reference="Cfe-cU-FgY"/>
     </inferredMetricsTieBreakers>
