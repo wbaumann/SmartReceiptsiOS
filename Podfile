@@ -13,6 +13,7 @@ def pods
     # UI
     pod 'MRProgress', '0.8.3'
     pod 'UIAlertView-Blocks', '~> 1.0'
+    pod 'Eureka', '~> 3.0.0'
     
     # Utilites
     pod 'RxSwift',    '~> 3.0'

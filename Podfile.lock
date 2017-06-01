@@ -2,6 +2,7 @@ PODS:
   - CocoaLumberjack/Default (3.2.0)
   - CocoaLumberjack/Swift (3.2.0):
     - CocoaLumberjack/Default
+  - Eureka (3.0.0)
   - Firebase (3.17.0):
     - Firebase/Core (= 3.17.0)
   - Firebase/Core (3.17.0):
@@ -115,6 +116,7 @@ PODS:
 
 DEPENDENCIES:
   - CocoaLumberjack/Swift (~> 3.2.0)
+  - Eureka (~> 3.0.0)
   - Firebase (~> 3.11)
   - FirebaseAnalytics (~> 3.6)
   - FirebaseCrash (~> 1.1)
@@ -142,6 +144,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 9b4aed7073d242f29cc2f62068d995faf67f703a
+  Eureka: f36fd440c3ebb7bfea0a4fbe6f16a05f1cb35906
   Firebase: 4b66b5b59c43edac745b87f0c87e42cdd0279c13
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
@@ -169,6 +172,6 @@ SPEC CHECKSUMS:
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
   Viperit: e0781a6ddc78de3a1fab2820eb7cfedb9457eb82
 
-PODFILE CHECKSUM: d8ef9d917b44765e63bb60e5270914c135ad2d21
+PODFILE CHECKSUM: b0658c966d07fc230d3fa83f791480c5806b6919
 
 COCOAPODS: 1.2.1
