@@ -31,7 +31,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ncr-85-d38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="402" y="-632"/>
+            <point key="canvasLocation" x="-136" y="-632"/>
         </scene>
         <!--Smart Receipts-->
         <scene sceneID="bcd-J7-h7B">
@@ -65,7 +65,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="settingsButton" destination="vjI-bA-K0l" id="SaS-6M-zEv"/>
-                        <outlet property="view" destination="p4Y-j8-Y6U" id="geV-z7-bhj"/>
+                        <outlet property="tableView" destination="p4Y-j8-Y6U" id="cFo-MA-IXc"/>
                         <segue destination="4XN-YK-YCV" kind="replace" identifier="TripDetails" splitViewControllerTargetIndex="1" id="dER-xx-mm6"/>
                         <segue destination="dZT-P6-71W" kind="modal" identifier="TripCreator" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="HN5-tU-TgG"/>
                         <segue destination="igX-mn-JI3" kind="replace" identifier="NoTrip" splitViewControllerTargetIndex="1" id="rCO-kH-PiZ"/>
@@ -73,56 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lya-T9-UdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="929" y="-632"/>
-        </scene>
-        <!--Report Name - $20.00-->
-        <scene sceneID="8CL-aI-Rmf">
-            <objects>
-                <tableViewController id="XIL-BS-K8W" customClass="WBReceiptsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="J8g-r8-o4p">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="XIL-BS-K8W" id="H4y-de-EnB"/>
-                            <outlet property="delegate" destination="XIL-BS-K8W" id="K98-pW-ctT"/>
-                        </connections>
-                    </tableView>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <toolbarItems>
-                        <barButtonItem systemItem="camera" id="qou-W8-Ppm">
-                            <connections>
-                                <action selector="actionCamera:" destination="XIL-BS-K8W" id="1PY-Eu-syj"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="5bR-1p-shn"/>
-                        <barButtonItem systemItem="compose" id="Cvs-HD-q5r">
-                            <connections>
-                                <segue destination="0ME-sr-yBW" kind="modal" identifier="ReceiptCreator" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="Whf-rU-JR6"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="A25-iQ-VRl"/>
-                        <barButtonItem image="wheel" id="5LZ-9J-JcM">
-                            <connections>
-                                <segue destination="qxL-dM-7MZ" kind="modal" identifier="PresentTripDistancesSegue" modalPresentationStyle="formSheet" modalTransitionStyle="crossDissolve" id="LyW-wA-Xfq"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="6Sf-ey-9E4"/>
-                        <barButtonItem systemItem="action" id="2RB-vL-hqq">
-                            <connections>
-                                <segue destination="sT3-qa-plb" kind="modal" identifier="GenerateReport" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="fPh-nn-Wkr"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Report Name - $20.00" id="nsr-l6-Lmx"/>
-                    <connections>
-                        <outlet property="view" destination="J8g-r8-o4p" id="d65-y6-jLw"/>
-                        <segue destination="AwS-pP-SMl" kind="modal" identifier="ReceiptActions" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="FF7-A9-hDe"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aFT-qn-acT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2445" y="-65"/>
+            <point key="canvasLocation" x="708" y="-632"/>
         </scene>
         <!--New Receipt-->
         <scene sceneID="wvb-zr-7OQ">
@@ -211,6 +162,66 @@
             </objects>
             <point key="canvasLocation" x="4284" y="-1154"/>
         </scene>
+        <!--Report Name - $20.00-->
+        <scene sceneID="bly-Y2-PiM">
+            <objects>
+                <viewController id="lFQ-78-K7G" customClass="WBReceiptsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fTB-H7-RCo"/>
+                        <viewControllerLayoutGuide type="bottom" id="lSd-te-zmU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="H1d-i0-4Pq">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jl5-Gf-FBY">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jl5-Gf-FBY" firstAttribute="leading" secondItem="H1d-i0-4Pq" secondAttribute="leading" id="Bnk-4k-adx"/>
+                            <constraint firstItem="lSd-te-zmU" firstAttribute="top" secondItem="Jl5-Gf-FBY" secondAttribute="bottom" id="IrB-3q-Pwj"/>
+                            <constraint firstItem="Jl5-Gf-FBY" firstAttribute="top" secondItem="H1d-i0-4Pq" secondAttribute="top" id="OaF-Nj-dWJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Jl5-Gf-FBY" secondAttribute="trailing" id="cG6-Iv-wal"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="camera" id="qou-W8-Ppm">
+                            <connections>
+                                <action selector="actionCamera:" destination="lFQ-78-K7G" id="rIE-3q-fxT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="5bR-1p-shn"/>
+                        <barButtonItem systemItem="compose" id="Cvs-HD-q5r">
+                            <connections>
+                                <segue destination="0ME-sr-yBW" kind="modal" identifier="ReceiptCreator" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="Whf-rU-JR6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="A25-iQ-VRl"/>
+                        <barButtonItem image="wheel" id="5LZ-9J-JcM">
+                            <connections>
+                                <action selector="onDistancesTap:" destination="lFQ-78-K7G" id="Ejv-Tf-JN2"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="6Sf-ey-9E4"/>
+                        <barButtonItem systemItem="action" id="2RB-vL-hqq">
+                            <connections>
+                                <segue destination="sT3-qa-plb" kind="modal" identifier="GenerateReport" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="fPh-nn-Wkr"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Report Name - $20.00" id="hWU-29-hAl"/>
+                    <connections>
+                        <outlet property="tableView" destination="Jl5-Gf-FBY" id="Fz1-NR-838"/>
+                        <segue destination="AwS-pP-SMl" kind="modal" identifier="ReceiptActions" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="Gp4-OV-DM0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FD6-uR-KVQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2664" y="176"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="vFZ-GA-8Fq">
             <objects>
@@ -245,12 +256,12 @@
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </toolbar>
                     <connections>
-                        <segue destination="XIL-BS-K8W" kind="relationship" relationship="rootViewController" id="AAk-MT-Ysm"/>
+                        <segue destination="lFQ-78-K7G" kind="relationship" relationship="rootViewController" id="UQD-mL-nQW"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ack-rS-nfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1469" y="-65"/>
+            <point key="canvasLocation" x="1727" y="66"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cgL-K0-93l">
@@ -641,7 +652,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EvR-eT-mSJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-834" y="-65"/>
+            <point key="canvasLocation" x="-1048" y="-26"/>
         </scene>
         <!--Generate Report-->
         <scene sceneID="tKv-95-xzI">
@@ -870,7 +881,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcS-54-ovf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5115" y="2774"/>
+            <point key="canvasLocation" x="3813" y="3022"/>
         </scene>
         <!--No Trips View Controller-->
         <scene sceneID="hMi-2a-hlS">
@@ -907,46 +918,12 @@
             </objects>
             <point key="canvasLocation" x="211" y="-2423"/>
         </scene>
-        <!--Distances-->
-        <scene sceneID="6gh-cH-qy3">
-            <objects>
-                <tableViewController id="yRQ-ct-dta" customClass="TripDistancesViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0BR-Un-5hy">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="yRQ-ct-dta" id="be2-x4-pdZ"/>
-                            <outlet property="delegate" destination="yRQ-ct-dta" id="RFn-yo-sAn"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Distances" id="CL1-J5-bJd">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="cLi-ag-fhf">
-                            <connections>
-                                <action selector="done" destination="yRQ-ct-dta" id="IU8-4M-xSi"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8UK-xX-lMc">
-                            <connections>
-                                <segue destination="yTB-BU-tva" kind="push" identifier="PushDistanceAddViewControllerSegue" id="LyS-sb-cMl"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="view" destination="0BR-Un-5hy" id="cr1-H8-6Kj"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gay-kZ-PPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2550" y="1973"/>
-        </scene>
         <!--Edit Distance View Controller-->
         <scene sceneID="ocf-8K-caK">
             <objects>
                 <tableViewController id="yTB-BU-tva" customClass="EditDistanceViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Tem-0j-BUg">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <connections>
@@ -964,23 +941,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z9R-VT-Ef4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2688" y="2863"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="EBh-0z-aIg">
-            <objects>
-                <navigationController id="qxL-dM-7MZ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="tuG-9N-UGf">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="yRQ-ct-dta" kind="relationship" relationship="rootViewController" id="4hJ-dc-t5S"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qgf-dj-TCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1769" y="1044"/>
+            <point key="canvasLocation" x="1727" y="2774"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bja-UG-oUO">
@@ -997,7 +958,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KGL-Jx-3KW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3461" y="895"/>
+            <point key="canvasLocation" x="3552" y="1044"/>
         </scene>
         <!--Receipt Name-->
         <scene sceneID="Ds0-Ae-MO8">
@@ -1049,7 +1010,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQu-SO-q0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4261" y="1839"/>
+            <point key="canvasLocation" x="2664" y="2341"/>
         </scene>
         <!--Move Copy Receipt View Controller-->
         <scene sceneID="qmV-PA-NnO">
@@ -1068,7 +1029,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XwQ-Ws-yw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5115" y="1839"/>
+            <point key="canvasLocation" x="3813" y="2029"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eFW-CK-kDo">
@@ -1085,7 +1046,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G76-fy-sZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3461" y="1839"/>
+            <point key="canvasLocation" x="2664" y="1500"/>
         </scene>
     </scenes>
     <resources>
@@ -1099,9 +1060,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dER-xx-mm6"/>
         <segue reference="Jgh-gp-I9a"/>
-        <segue reference="Pu5-7V-Vh4"/>
+        <segue reference="dER-xx-mm6"/>
         <segue reference="DxA-Mq-uge"/>
+        <segue reference="RDj-Cs-14b"/>
     </inferredMetricsTieBreakers>
 </document>

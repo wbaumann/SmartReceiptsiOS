@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "FetchedModelAdapterDelegate.h"
 
+
 @class FetchedModelAdapter;
 
-@interface FetchedCollectionTableViewController : UITableViewController <FetchedModelAdapterDelegate>
+@interface FetchedCollectionTableViewController : UIViewController <FetchedModelAdapterDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, readonly) NSString *placeholderTitle;
+@property (nonatomic) IBOutlet UITableView *tableView;
 
 - (void)setPresentationCellNib:(UINib *)nib;
 - (FetchedModelAdapter *)createFetchedModelAdapter;

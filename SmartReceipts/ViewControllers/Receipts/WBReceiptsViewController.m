@@ -301,18 +301,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     [self.tableView setEditing:editing animated:animated];
 }
 
-- (IBAction)actionCamera:(id)sender {
-    [[ImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *image) {
-        if (!image) {
-            return;
-        }
-
-        _imageForCreatorSegue = image;
-        _receiptForCretorSegue = nil;
-        [self performSegueWithIdentifier:@"ReceiptCreator" sender:self];
-    }];
-}
-
 - (FetchedModelAdapter *)createFetchedModelAdapter {
     // This is needed on iPad. When ap is launched, then storyboard pushes unconfigured view.
     // This is replaced right after by configured one
@@ -343,6 +331,25 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
         return [NSMutableDictionary dictionary];
     });
 }
+
+#pragma mark - Actions
+    
+- (IBAction)actionCamera:(id)sender {
+    [[ImagePicker sharedInstance] presentPickerOnController:self completion:^(UIImage *image) {
+        if (!image) {
+            return;
+        }
+        
+        _imageForCreatorSegue = image;
+        _receiptForCretorSegue = nil;
+        [self performSegueWithIdentifier:@"ReceiptCreator" sender:self];
+    }];
+}
+    
+- (IBAction)onDistancesTap:(id)sender {
+    [self openDistances];
+}
+
 
 #pragma mark - Private
 

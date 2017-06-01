@@ -28,6 +28,9 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
     
     [self.tableView setEstimatedRowHeight:40];
     [self.tableView setRowHeight:UITableViewAutomaticDimension];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
 
 - (void)didReceiveMemoryWarning {
