@@ -77,4 +77,16 @@
     return description;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+    Distance *copy = [[Distance alloc] initWithTrip:self.trip
+                                           distance:self.distance
+                                               rate:self.rate
+                                           location:self.location
+                                               date:self.date
+                                           timeZone:self.timeZone
+                                            comment:self.comment];
+    copy.objectId = self.objectId;
+    return copy;
+}
+
 @end

@@ -109,7 +109,7 @@
                     <navigationItem key="navigationItem" title="Smart Receipts" id="p6W-uC-7nR">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="4Zh-MY-ojl">
                             <connections>
-                                <segue destination="bqm-6y-Q1d" kind="push" id="URg-iu-0gb"/>
+                                <segue destination="bqm-6y-Q1d" kind="modal" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="B4B-Zv-xZv"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YPe-P8-a5F">
@@ -120,6 +120,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="settingsButton" destination="4Zh-MY-ojl" id="EHT-DL-3jg"/>
                         <outlet property="tableView" destination="bTd-kR-eyz" id="Yii-yq-AGH"/>
                         <segue destination="igX-mn-JI3" kind="push" identifier="NoTrip" id="H67-27-in3"/>
                         <segue destination="dZT-P6-71W" kind="modal" identifier="TripCreator" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="Dsc-Bp-eYS"/>
@@ -305,7 +306,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="57k-UP-sUP">
-                        <rect key="frame" x="0.0" y="543" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -323,7 +324,7 @@
             <objects>
                 <tableViewController id="Npz-x6-pwj" customClass="SettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="2DY-tD-Bcc">
-                        <rect key="frame" x="0.0" y="64" width="375" height="479"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections/>
@@ -356,7 +357,7 @@
             <objects>
                 <tableViewController id="ZPX-hr-elc" customClass="PaymentMethodsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="prS-Qu-7uu">
-                        <rect key="frame" x="0.0" y="64" width="375" height="523"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
@@ -381,7 +382,7 @@
             <objects>
                 <tableViewController id="vNg-YF-QYK" customClass="EditPaymentMethodViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="lZR-CL-CEq">
-                        <rect key="frame" x="0.0" y="64" width="375" height="523"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
@@ -460,7 +461,7 @@
             <objects>
                 <viewController id="zRm-IZ-bzQ" customClass="WBCategoriesViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lm1-z9-2ag">
-                        <rect key="frame" x="0.0" y="64" width="375" height="479"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
@@ -610,11 +611,11 @@
                         <viewControllerLayoutGuide type="bottom" id="5dj-6S-sse"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eAC-MV-07V">
-                        <rect key="frame" x="0.0" y="64" width="375" height="479"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qOq-nc-Hl3">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="479"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="ZE0-rJ-7xB" detailTextLabel="bpi-nE-1vW" style="IBUITableViewCellStyleValue2" id="cZo-V3-Cfe">
@@ -1079,8 +1080,8 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="URg-iu-0gb"/>
-        <segue reference="Pu5-7V-Vh4"/>
+        <segue reference="B4B-Zv-xZv"/>
         <segue reference="Cfe-cU-FgY"/>
+        <segue reference="Pu5-7V-Vh4"/>
     </inferredMetricsTieBreakers>
 </document>

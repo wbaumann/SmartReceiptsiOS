@@ -10,5 +10,6 @@ import Foundation
 import Viperit
 
 final class EditDistanceDisplayData: DisplayData {
-
+    var trip: WBTrip?
+    var distance: Distance?
 }

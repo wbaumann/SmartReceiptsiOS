@@ -113,17 +113,14 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 }
 
 - (void)showPlaceholder {
-    LOGGER_DEBUG(@"showPlacehoder");
     [self.placeholderView removeFromSuperview];
     if (self.placeholderTitle) {
-        self.placeholderView = [[FetchedPlaceholderView alloc] initWithFrame:self.tableView.frame
-                                                        title:self.placeholderTitle];
-        [self.view.superview addSubview:self.placeholderView];
+        self.placeholderView = [[FetchedPlaceholderView alloc] initWithFrame:self.tableView.frame title:self.placeholderTitle];
+        [self.view addSubview:self.placeholderView];
     }
 }
 
 - (void)hidePlaceholder {
-    LOGGER_DEBUG(@"hidePlacehoder");
     [self.placeholderView removeFromSuperview];
     self.placeholderView = nil;
 }

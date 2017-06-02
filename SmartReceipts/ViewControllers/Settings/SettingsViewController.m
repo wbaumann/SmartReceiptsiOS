@@ -28,7 +28,6 @@
 #import "Constants.h"
 #import "DataExport.h"
 #import "WBFileManager.h"
-#import "DecimalFormatter.h"
 #import "PurchaseCell.h"
 #import "Database.h"
 #import "Database+Purchases.h"

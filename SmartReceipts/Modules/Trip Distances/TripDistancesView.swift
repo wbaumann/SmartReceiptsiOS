@@ -8,39 +8,44 @@
 
 import UIKit
 import Viperit
+import RxSwift
+import RxCocoa
 
 fileprivate let PushDistanceAddViewControllerSegue = "PushDistanceAddViewControllerSegue"
 
 //MARK: - Public Interface Protocol
 protocol TripDistancesViewInterface {
-    
+    func setup(trip: WBTrip)
 }
 
 //MARK: TripDistances View
 class TripDistancesView: FetchedCollectionViewControllerSwift {
     
-    let dateFormatter = WBDateFormatter()
+    let dateFormatter = DateFormatter()
     var maxRateWidth: CGFloat = 0
-    var tapped: Distance?
+    
+    @IBOutlet private var addButtonItem: UIBarButtonItem?
+    @IBOutlet private var doneButtonItem: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = LocalizedString("distances.controller.title")
         setPresentationCellNib(DistanceSummaryCell.viewNib())
+        configureUIActions()
     }
     
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {
-        return Database.sharedInstance().fetchedAdapterForDistances(in: trip)
+        return presenter.fetchedModelAdapter(for: trip!)
     }
     
     override func delete(object: Any!, at indexPath: IndexPath) {
         if let distance = object as? Distance {
-            Database.sharedInstance().delete(distance)
+            presenter.delete(distance: distance)
         }
     }
     
     override func tappedObject(_ tapped: Any, indexPath: IndexPath) {
-        performSegue(withIdentifier: PushDistanceAddViewControllerSegue, sender: nil)
+        showEditDistance(with: (trip, tapped as? Distance))
     }
     
     func findMaxRateWidth() -> CGFloat {
@@ -73,37 +78,40 @@ class TripDistancesView: FetchedCollectionViewControllerSwift {
     override func configureCell(_ cell: UITableViewCell, indexPath: IndexPath, object: Any) {
         if let summaryCell = cell as? DistanceSummaryCell {
             if let distance = object as? Distance {
+                dateFormatter.configure(timeZone: distance.timeZone)
                 summaryCell.distanceLabel.text = Price.amount(asString: distance.distance)
                 summaryCell.destinationLabel.text = distance.location;
                 summaryCell.totalLabel.text = distance.totalRate().mileageRateCurrencyFormattedPrice()
-                summaryCell.dateLabel.text = dateFormatter.formattedDate(distance.date, in: distance.timeZone)
+                summaryCell.dateLabel.text = dateFormatter.string(from: distance.date)
                 summaryCell.setPriceLabelWidth(maxRateWidth)
             }
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (PushDistanceAddViewControllerSegue == segue.identifier) {
-            let editViewController = segue.destination as? EditDistanceViewController
-            editViewController?.trip = trip
-            editViewController?.distance = tapped
-            tapped = nil
-        }
-    
-    }
-    
     //MARK: Actions
-    @IBAction func onDoneTap() {
-        dismiss(animated: true, completion: nil)
+    private func configureUIActions() {
+        _ = doneButtonItem?.rx.tap.subscribe(onNext: { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        })
+        
+        _ = addButtonItem?.rx.tap.subscribe(onNext: { [weak self] in
+            self?.showEditDistance(with: (self?.trip, nil as Distance?))
+        })
+        
     }
     
-    @IBAction func onAddTap() {
-        
+    //MARK: Private
+    private func showEditDistance(with data: Any?) {
+        presenter.presentEditDistance(with: data)
     }
 }
 
 //MARK: - Public interface
 extension TripDistancesView: TripDistancesViewInterface {
+    
+    func setup(trip: WBTrip) {
+        self.trip = trip
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
@@ -115,7 +123,3 @@ private extension TripDistancesView {
         return _displayData as! TripDistancesDisplayData
     }
 }
-        
-
-            
-

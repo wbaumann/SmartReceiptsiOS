@@ -43,6 +43,8 @@
 		57C9EBF21DF1BB6E001B3731 /* SuggestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C9EBF11DF1BB6E001B3731 /* SuggestionView.m */; };
 		57EEBDC41E093C8F00974E53 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EEBDC31E093C8F00974E53 /* String+Extensions.swift */; };
 		711ACF601ED8C7FF003B89A0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD20C81ED764DA006C4EE6 /* Currency.swift */; };
+		711E40541EE0D4ED00C043CF /* EditDistanceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */; };
+		711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */; };
 		713D35501EDA4AEB00D8563D /* NSMutableString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 713D354F1EDA4AEB00D8563D /* NSMutableString+Extensions.m */; };
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
 		716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716F34471EE040E100D0017A /* EditDistance.storyboard */; };
@@ -52,6 +54,7 @@
 		716F34511EE040E100D0017A /* EditDistanceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F344B1EE040E100D0017A /* EditDistanceRouter.swift */; };
 		716F34521EE040E100D0017A /* EditDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F344C1EE040E100D0017A /* EditDistanceView.swift */; };
 		716F34541EE041FF00D0017A /* InputCellsViewControllerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F34531EE041FF00D0017A /* InputCellsViewControllerSwift.swift */; };
+		7191F0E81EE20EBA0082DA47 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191F0E71EE20EBA0082DA47 /* DateFormatter+Extensions.swift */; };
 		719310261EDDB7CF0065B5AD /* FetchedPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310251EDDB7CF0065B5AD /* FetchedPlaceholderView.swift */; };
 		7193102B1EDDB9960065B5AD /* WBAbstractPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310281EDDB9960065B5AD /* WBAbstractPicker.m */; };
 		7193102C1EDDB9960065B5AD /* WBDynamicPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193102A1EDDB9960065B5AD /* WBDynamicPicker.m */; };
@@ -133,7 +136,7 @@
 		A7F05BA21CFC038D0079F1AD /* ReceiptColumnTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BA11CFC038D0079F1AD /* ReceiptColumnTax.swift */; };
 		A7F05BA41CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BA31CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift */; };
 		A7F05BA81CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BA71CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift */; };
-		A7F05BAA1CFC07FD0079F1AD /* NSDecimalNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BA91CFC07FD0079F1AD /* NSDecimalNumber+Extensions.swift */; };
+		A7F05BAA1CFC07FD0079F1AD /* NumberFormatter+Extansions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BA91CFC07FD0079F1AD /* NumberFormatter+Extansions.swift */; };
 		A7F05BAC1CFC0AB00079F1AD /* ExchangedPriced.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BAB1CFC0AB00079F1AD /* ExchangedPriced.swift */; };
 		A7F05BAE1CFC12FA0079F1AD /* ReceiptColumnExchangedTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BAD1CFC12FA0079F1AD /* ReceiptColumnExchangedTax.swift */; };
 		A7F05BB01CFC132E0079F1AD /* ReceiptColumnExchangedTaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05BAF1CFC132E0079F1AD /* ReceiptColumnExchangedTaxTests.swift */; };
@@ -226,7 +229,6 @@
 		EA22679F1B1E035F005761E7 /* ReceiptSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA22679D1B1E035F005761E7 /* ReceiptSummaryCell.xib */; };
 		EA22FB4D1B1AF1A40060D23D /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA22FB4B1B1AF1A40060D23D /* CategoryCell.m */; };
 		EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA22FB4C1B1AF1A40060D23D /* CategoryCell.xib */; };
-		EA24EC6D1B1F64F000FCCB27 /* DecimalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA24EC6C1B1F64F000FCCB27 /* DecimalFormatter.m */; };
 		EA259CD51B1606DC00ECBD67 /* DataExport.m in Sources */ = {isa = PBXBuildFile; fileRef = EA259CD41B1606DC00ECBD67 /* DataExport.m */; };
 		EA259CD81B1606EC00ECBD67 /* DataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = EA259CD71B1606EC00ECBD67 /* DataImport.m */; };
 		EA259CDB1B16071F00ECBD67 /* DataImportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA259CDA1B16071F00ECBD67 /* DataImportTest.m */; };
@@ -432,6 +434,8 @@
 		57C9EBF01DF1BB6E001B3731 /* SuggestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionView.h; sourceTree = "<group>"; };
 		57C9EBF11DF1BB6E001B3731 /* SuggestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionView.m; sourceTree = "<group>"; };
 		57EEBDC31E093C8F00974E53 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceFormView.swift; sourceTree = "<group>"; };
+		711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Extensions.swift"; sourceTree = "<group>"; };
 		713D354E1EDA4AEB00D8563D /* NSMutableString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Extensions.h"; sourceTree = "<group>"; };
 		713D354F1EDA4AEB00D8563D /* NSMutableString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Extensions.m"; sourceTree = "<group>"; };
 		713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCSVGeneratorTest.swift; sourceTree = "<group>"; };
@@ -443,6 +447,7 @@
 		716F344B1EE040E100D0017A /* EditDistanceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceRouter.swift; sourceTree = "<group>"; };
 		716F344C1EE040E100D0017A /* EditDistanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceView.swift; sourceTree = "<group>"; };
 		716F34531EE041FF00D0017A /* InputCellsViewControllerSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCellsViewControllerSwift.swift; sourceTree = "<group>"; };
+		7191F0E71EE20EBA0082DA47 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		719310251EDDB7CF0065B5AD /* FetchedPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchedPlaceholderView.swift; path = Views/FetchedPlaceholderView.swift; sourceTree = "<group>"; };
 		719310271EDDB9960065B5AD /* WBAbstractPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBAbstractPicker.h; path = Views/WBAbstractPicker.h; sourceTree = "<group>"; };
 		719310281EDDB9960065B5AD /* WBAbstractPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBAbstractPicker.m; path = Views/WBAbstractPicker.m; sourceTree = "<group>"; };
@@ -550,7 +555,7 @@
 		A7F05BA11CFC038D0079F1AD /* ReceiptColumnTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnTax.swift; sourceTree = "<group>"; };
 		A7F05BA31CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnExchangedPrice.swift; sourceTree = "<group>"; };
 		A7F05BA71CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ReceiptColumnExchangedPriceTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		A7F05BA91CFC07FD0079F1AD /* NSDecimalNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Extensions.swift"; sourceTree = "<group>"; };
+		A7F05BA91CFC07FD0079F1AD /* NumberFormatter+Extansions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extansions.swift"; sourceTree = "<group>"; };
 		A7F05BAB1CFC0AB00079F1AD /* ExchangedPriced.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangedPriced.swift; sourceTree = "<group>"; };
 		A7F05BAD1CFC12FA0079F1AD /* ReceiptColumnExchangedTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptColumnExchangedTax.swift; sourceTree = "<group>"; };
 		A7F05BAF1CFC132E0079F1AD /* ReceiptColumnExchangedTaxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ReceiptColumnExchangedTaxTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -692,8 +697,6 @@
 		EA22FB4A1B1AF1A40060D23D /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		EA22FB4B1B1AF1A40060D23D /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		EA22FB4C1B1AF1A40060D23D /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
-		EA24EC6B1B1F64F000FCCB27 /* DecimalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecimalFormatter.h; sourceTree = "<group>"; };
-		EA24EC6C1B1F64F000FCCB27 /* DecimalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecimalFormatter.m; sourceTree = "<group>"; };
 		EA259CD31B1606DC00ECBD67 /* DataExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataExport.h; sourceTree = "<group>"; };
 		EA259CD41B1606DC00ECBD67 /* DataExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataExport.m; sourceTree = "<group>"; };
 		EA259CD61B1606EC00ECBD67 /* DataImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataImport.h; sourceTree = "<group>"; };
@@ -1095,6 +1098,7 @@
 				716F344A1EE040E100D0017A /* EditDistancePresenter.swift */,
 				716F344B1EE040E100D0017A /* EditDistanceRouter.swift */,
 				716F344C1EE040E100D0017A /* EditDistanceView.swift */,
+				711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */,
 			);
 			path = "Edit Distance";
 			sourceTree = "<group>";
@@ -1568,9 +1572,10 @@
 				BA6656B86F52D1B546848E92 /* NSDate+Calculations.h */,
 				BA66588B7C2114029521A399 /* NSDate+Calculations.m */,
 				A78214FC1CFFE8E900FD644A /* NSDate+Extensions.swift */,
-				A7F05BA91CFC07FD0079F1AD /* NSDecimalNumber+Extensions.swift */,
 				EA3CF0991AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.h */,
 				EA3CF09A1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m */,
+				A7F05BA91CFC07FD0079F1AD /* NumberFormatter+Extansions.swift */,
+				711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */,
 				A7A720E21CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift */,
 				EA07BF381AF3C80C004D17F6 /* NSMutableString+Issues.h */,
 				EA07BF391AF3C80C004D17F6 /* NSMutableString+Issues.m */,
@@ -1599,6 +1604,7 @@
 				713D354E1EDA4AEB00D8563D /* NSMutableString+Extensions.h */,
 				713D354F1EDA4AEB00D8563D /* NSMutableString+Extensions.m */,
 				71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */,
+				7191F0E71EE20EBA0082DA47 /* DateFormatter+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1606,8 +1612,6 @@
 		EA46678C1AE7EA0300B4E502 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				EA24EC6B1B1F64F000FCCB27 /* DecimalFormatter.h */,
-				EA24EC6C1B1F64F000FCCB27 /* DecimalFormatter.m */,
 				EA07BF421AF3F882004D17F6 /* DecimalInputValidation.h */,
 				EA07BF431AF3F882004D17F6 /* DecimalInputValidation.m */,
 				EA46678D1AE7EA1600B4E502 /* ImagePicker.h */,
@@ -2387,8 +2391,7 @@
 				EA888A711AFA38AD00DF2AE6 /* SettingsButtonCell.m in Sources */,
 				EA1309A31B50281A0045FDDE /* PDFReportTable.m in Sources */,
 				EA2B8D811B4EF2510043A84B /* PrettyPDFRender.m in Sources */,
-				A7F05BAA1CFC07FD0079F1AD /* NSDecimalNumber+Extensions.swift in Sources */,
-				EA24EC6D1B1F64F000FCCB27 /* DecimalFormatter.m in Sources */,
+				A7F05BAA1CFC07FD0079F1AD /* NumberFormatter+Extansions.swift in Sources */,
 				A7F05BA41CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift in Sources */,
 				EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */,
 				A7F05BCE1CFD4AE30079F1AD /* Database+Trips.swift in Sources */,
@@ -2457,6 +2460,7 @@
 				EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */,
 				EA22FB4D1B1AF1A40060D23D /* CategoryCell.m in Sources */,
 				719310411EDDC2810065B5AD /* WBSqlBuilder.m in Sources */,
+				7191F0E81EE20EBA0082DA47 /* DateFormatter+Extensions.swift in Sources */,
 				5785A4EF1E09DA0100C3CA0C /* AnalyticsLogger.swift in Sources */,
 				EA71DFCC1AF9FEEC004092C3 /* SwitchControlCell.m in Sources */,
 				EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */,
@@ -2521,6 +2525,7 @@
 				EA69EF151AEFC81A00276B70 /* Database.m in Sources */,
 				EA4C5CC51AF287330083FDD7 /* TitledTextEntryCell.m in Sources */,
 				57C9EBF21DF1BB6E001B3731 /* SuggestionView.m in Sources */,
+				711E40541EE0D4ED00C043CF /* EditDistanceFormView.swift in Sources */,
 				EA183E081B1C9F5D00577B3D /* Database+CSVColumns.m in Sources */,
 				EA1309A01B5027E40045FDDE /* TableContentRow.m in Sources */,
 				EAB9700F1B078944005E1D63 /* MasterTripsViewController.m in Sources */,
@@ -2610,6 +2615,7 @@
 				BA665F06B922055E7D3BED31 /* WBColumnsViewController.m in Sources */,
 				71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */,
 				BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */,
+				711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */,
 				BA665929E9C98CC6D3604390 /* WBNewCategoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

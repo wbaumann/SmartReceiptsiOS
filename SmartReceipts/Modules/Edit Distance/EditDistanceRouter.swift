@@ -10,6 +10,9 @@ import Foundation
 import Viperit
 
 final class EditDistanceRouter: Router {
+    func close() {
+        _view.navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

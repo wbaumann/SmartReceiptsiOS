@@ -14,7 +14,7 @@
 @class WBTrip;
 @class FMResultSet;
 
-@interface Distance : NSObject <FetchedModel>
+@interface Distance : NSObject <NSCopying, FetchedModel>
 
 @property (nonatomic, assign, readonly) NSUInteger objectId;
 @property (nonatomic, strong) WBTrip *trip;
