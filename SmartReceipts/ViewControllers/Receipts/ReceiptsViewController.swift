@@ -9,9 +9,9 @@
 import Viperit
 
 extension WBReceiptsViewController {
-    // Distances Module temporary opens from extension before WBReceiptsViewController Swift migration
-    func openDistances() {
+    // Distances Module temporary opens from extension before WBReceiptsViewController Swift 
+    func openDistances(for trip: WBTrip) {
         let module = Module.build(AppModules.tripDistances)
-        module.router.show(from: self, embedInNavController: true, setupData: nil)
+        module.router.show(from: self, embedInNavController: true, setupData: trip)
     }
 }

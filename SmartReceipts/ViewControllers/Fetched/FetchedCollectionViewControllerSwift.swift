@@ -90,6 +90,7 @@ class FetchedCollectionViewControllerSwift: UserInterface, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let tapped = objectAtIndexPath(indexPath)
         tappedObject(tapped!, indexPath: indexPath)
     }
@@ -113,17 +114,15 @@ class FetchedCollectionViewControllerSwift: UserInterface, UITableViewDelegate, 
     //MARK: Placeholder
     
     func hidePlaceholder() {
-        Logger.debug("hidePlaceholder")
         placeholderView?.removeFromSuperview()
         placeholderView = nil
     }
     
     func showPlaceholder() {
-        Logger.debug("showPlacehoder")
         placeholderView?.removeFromSuperview()
         if (!placeholderTitle.isEmpty) {
             placeholderView = FetchedPlaceholderView(frame: tableView.frame, title: placeholderTitle)
-            view.superview?.addSubview(placeholderView!)
+            view.addSubview(placeholderView!)
         }
     }
     

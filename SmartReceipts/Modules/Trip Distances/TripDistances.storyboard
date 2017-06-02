@@ -35,19 +35,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Distances" id="Wai-L9-J2C">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="DLs-Hb-JaW">
-                            <connections>
-                                <action selector="onDoneTap" destination="xqD-av-Raz" id="qYE-3n-3xy"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Vwb-cK-RHN">
-                            <connections>
-                                <action selector="onAddTap" destination="xqD-av-Raz" id="wyk-jy-o2u"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="DLs-Hb-JaW"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Vwb-cK-RHN"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="addButtonItem" destination="Vwb-cK-RHN" id="d8K-Vc-ckg"/>
+                        <outlet property="doneButtonItem" destination="DLs-Hb-JaW" id="mpe-q4-ZCE"/>
                         <outlet property="tableView" destination="Ng6-2X-I4o" id="P6k-WE-n9W"/>
                     </connections>
                 </viewController>

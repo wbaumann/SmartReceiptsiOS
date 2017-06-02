@@ -10,6 +10,16 @@ import Foundation
 import Viperit
 
 final class EditDistanceInteractor: Interactor {
+    func save(distance: Distance, asNewDistance: Bool) {
+        if (asNewDistance) {
+            AnalyticsManager.sharedManager.record(event: Event.distancePersistNewDistance())
+        } else {
+            AnalyticsManager.sharedManager.record(event: Event.distancePersistUpdateDistance())
+        }
+        if Database.sharedInstance().save(distance) {
+            presenter.close()
+        }
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

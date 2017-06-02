@@ -10,6 +10,19 @@ import Foundation
 import Viperit
 
 final class EditDistancePresenter: Presenter {
+    override func setupView(data: Any) {
+        if let inputData = data as? (trip: WBTrip, distance: Distance?) {
+            view.setup(trip: inputData.trip, distance: inputData.distance)
+        }
+    }
+    
+    func save(distance: Distance, asNewDistance: Bool) {
+        interactor.save(distance: distance, asNewDistance: asNewDistance)
+    }
+    
+    func close() {
+        router.close()
+    }
 }
 
 

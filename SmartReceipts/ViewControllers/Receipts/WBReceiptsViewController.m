@@ -347,7 +347,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 }
     
 - (IBAction)onDistancesTap:(id)sender {
-    [self openDistances];
+    [self openDistancesFor:self.trip];
 }
 
 

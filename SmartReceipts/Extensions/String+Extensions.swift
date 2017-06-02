@@ -53,3 +53,12 @@ extension String {
         return string
     }
 }
+
+extension String {
+    mutating func appendIssue(_ issue: String) {
+        if !self.isEmpty {
+            self = self.appending("\n")
+        }
+        self = self.appending("• \(issue)")
+    }
+}
