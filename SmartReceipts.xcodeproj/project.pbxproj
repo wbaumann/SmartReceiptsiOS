@@ -269,7 +269,6 @@
 		EA4C5CC51AF287330083FDD7 /* TitledTextEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CC31AF287330083FDD7 /* TitledTextEntryCell.m */; };
 		EA4C5CC61AF287330083FDD7 /* TitledTextEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4C5CC41AF287330083FDD7 /* TitledTextEntryCell.xib */; };
 		EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CC81AF288570083FDD7 /* UITableViewCell+Identifier.m */; };
-		EA4DC9921AF154E000CEF1B9 /* EditDistanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DC9911AF154E000CEF1B9 /* EditDistanceViewController.m */; };
 		EA4DC9961AF1580100CEF1B9 /* InputCellsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DC9951AF1580100CEF1B9 /* InputCellsViewController.m */; };
 		EA5963E31AF2912900935344 /* PickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963E21AF2912900935344 /* PickerCell.m */; };
 		EA5963EC1AF2957200935344 /* NoCaretTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963EB1AF2957200935344 /* NoCaretTextField.m */; };
@@ -359,7 +358,6 @@
 		EAE319641B10BF630032887E /* TaxCalculatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE319631B10BF630032887E /* TaxCalculatorTest.m */; };
 		EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */; };
 		EAE725DA1B022E9100402689 /* TripsToReceiptsConverterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */; };
-		EAE8F9B21AF149DC00E837E3 /* TripDistancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE8F9B11AF149DC00E837E3 /* TripDistancesViewController.m */; };
 		EAE9DAE81AF8E97100F4FE76 /* DistanceColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAE71AF8E97100F4FE76 /* DistanceColumn.m */; };
 		EAE9DAEB1AF8EA5500F4FE76 /* DistanceLocationColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAEA1AF8EA5500F4FE76 /* DistanceLocationColumn.m */; };
 		EAE9DAEE1AF8EA6D00F4FE76 /* DistancePriceColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAED1AF8EA6D00F4FE76 /* DistancePriceColumn.m */; };
@@ -767,8 +765,6 @@
 		EA4C5CC41AF287330083FDD7 /* TitledTextEntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitledTextEntryCell.xib; sourceTree = "<group>"; };
 		EA4C5CC71AF288570083FDD7 /* UITableViewCell+Identifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Identifier.h"; sourceTree = "<group>"; };
 		EA4C5CC81AF288570083FDD7 /* UITableViewCell+Identifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Identifier.m"; sourceTree = "<group>"; };
-		EA4DC9901AF154E000CEF1B9 /* EditDistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditDistanceViewController.h; sourceTree = "<group>"; };
-		EA4DC9911AF154E000CEF1B9 /* EditDistanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EditDistanceViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EA4DC9941AF1580100CEF1B9 /* InputCellsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCellsViewController.h; sourceTree = "<group>"; };
 		EA4DC9951AF1580100CEF1B9 /* InputCellsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCellsViewController.m; sourceTree = "<group>"; };
 		EA5963E11AF2912900935344 /* PickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCell.h; sourceTree = "<group>"; };
@@ -913,8 +909,6 @@
 		EAE725D51B022E3F00402689 /* DistancesToReceiptsConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancesToReceiptsConverter.h; sourceTree = "<group>"; };
 		EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancesToReceiptsConverter.m; sourceTree = "<group>"; };
 		EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsToReceiptsConverterTest.m; sourceTree = "<group>"; };
-		EAE8F9B01AF149DC00E837E3 /* TripDistancesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripDistancesViewController.h; sourceTree = "<group>"; };
-		EAE8F9B11AF149DC00E837E3 /* TripDistancesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripDistancesViewController.m; sourceTree = "<group>"; };
 		EAE9DAE61AF8E97100F4FE76 /* DistanceColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceColumn.h; sourceTree = "<group>"; };
 		EAE9DAE71AF8E97100F4FE76 /* DistanceColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceColumn.m; sourceTree = "<group>"; };
 		EAE9DAE91AF8EA5500F4FE76 /* DistanceLocationColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceLocationColumn.h; sourceTree = "<group>"; };
@@ -1007,8 +1001,6 @@
 			children = (
 				EAB9700D1B078944005E1D63 /* MasterTripsViewController.h */,
 				EAB9700E1B078944005E1D63 /* MasterTripsViewController.m */,
-				EAE8F9B01AF149DC00E837E3 /* TripDistancesViewController.h */,
-				EAE8F9B11AF149DC00E837E3 /* TripDistancesViewController.m */,
 				EAB970101B0790EE005E1D63 /* TripsViewController.h */,
 				EAB970111B0790EE005E1D63 /* TripsViewController.m */,
 			);
@@ -1018,8 +1010,6 @@
 		713D35441EDA333D00D8563D /* Edit */ = {
 			isa = PBXGroup;
 			children = (
-				EA4DC9901AF154E000CEF1B9 /* EditDistanceViewController.h */,
-				EA4DC9911AF154E000CEF1B9 /* EditDistanceViewController.m */,
 				EA1D42BF1B038D8F00D64D3A /* EditPaymentMethodViewController.h */,
 				EA1D42C01B038D8F00D64D3A /* EditPaymentMethodViewController.m */,
 				EA0677F01B04E38F0058A326 /* EditReceiptViewController.h */,
@@ -2467,7 +2457,6 @@
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
 				EA8EB10A1B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m in Sources */,
 				EA22679E1B1E035F005761E7 /* ReceiptSummaryCell.m in Sources */,
-				EA4DC9921AF154E000CEF1B9 /* EditDistanceViewController.m in Sources */,
 				5705159B1E02B58500BB8FE4 /* DataPoint.swift in Sources */,
 				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
 				A78215011CFFF24C00FD644A /* NSNumber+Extensions.swift in Sources */,
@@ -2511,7 +2500,6 @@
 				EA2B8D8B1B4EF45B0043A84B /* TripReportHeader.m in Sources */,
 				EAE9DB011AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m in Sources */,
 				A7D554CF1CFF061100169FD2 /* WBReceipt+Query.swift in Sources */,
-				EAE8F9B21AF149DC00E837E3 /* TripDistancesViewController.m in Sources */,
 				57580D1C1DFAB58B0090C488 /* UIDevice+DeviceInfo.m in Sources */,
 				A7F05BC61CFC453C0079F1AD /* ReceiptColumnReceiptId.swift in Sources */,
 				713D35501EDA4AEB00D8563D /* NSMutableString+Extensions.m in Sources */,
