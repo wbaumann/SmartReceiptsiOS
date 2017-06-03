@@ -41,7 +41,6 @@
 
 #import "SettingsViewController.h"
 #import "WBReceiptsViewController.h"
-#import "EditDistanceViewController.h"
 
 #import "DistanceSummaryCell.h"
 #import "TextEntryCell.h"

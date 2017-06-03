@@ -13,7 +13,6 @@
 #import "WBFileManager.h"
 #import "WBPreferences.h"
 #import "ImagePicker.h"
-#import "TripDistancesViewController.h"
 #import "UIView+LoadHelpers.h"
 #import "FetchedModelAdapter.h"
 #import "Database+Receipts.h"
@@ -287,9 +286,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     else if ([[segue identifier] isEqualToString:@"GenerateReport"]) {
         WBGenerateViewController *vc = (WBGenerateViewController *) [[segue destinationViewController] topViewController];
         [vc setTrip:self.trip];
-    } else if ([PresentTripDistancesSegue isEqualToString:segue.identifier]) {
-        TripDistancesViewController *controller = (TripDistancesViewController *) [[segue destinationViewController] topViewController];
-        [controller setTrip:self.trip];
     }
 
     [self setTapped:nil];
