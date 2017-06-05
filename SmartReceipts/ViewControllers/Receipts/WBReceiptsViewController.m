@@ -58,7 +58,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     //clear when new tip is opened
     [[WBReceiptsViewController sharedInputCache] setDictionary:@{}];
 
-    [Customization customizeOnViewDidLoad:self];
+    [AppTheme customizeOnViewDidLoad:self];
 
     [self setShowReceiptDate:[WBPreferences layoutShowReceiptDate]];
     [self setShowReceiptCategory:[WBPreferences layoutShowReceiptCategory]];

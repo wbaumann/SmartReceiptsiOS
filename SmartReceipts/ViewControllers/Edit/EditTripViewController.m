@@ -53,7 +53,7 @@
 {
     [super viewDidLoad];
 
-    [Customization customizeOnViewDidLoad:self];
+    [AppTheme customizeOnViewDidLoad:self];
 
     __weak EditTripViewController *weakSelf = self;
 

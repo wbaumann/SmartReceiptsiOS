@@ -23,7 +23,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self.valueLabel setTextColor:[Customization themeColor]];
+    [self.valueLabel setTextColor:[AppTheme themeColor]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

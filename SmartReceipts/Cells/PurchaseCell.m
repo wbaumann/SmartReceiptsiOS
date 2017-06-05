@@ -25,7 +25,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    [self setTintColor:[Customization themeColor]];
+    [self setTintColor:[AppTheme themeColor]];
 }
 
 - (void)markPurchased {
@@ -42,7 +42,7 @@
     [self.priceLabel setText:@" "];
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     [spinner startAnimating];
-    [spinner setColor:[Customization themeColor]];
+    [spinner setColor:[AppTheme themeColor]];
     [self setAccessoryView:spinner];
 }
 
@@ -54,7 +54,7 @@
     [self setAccessoryView:nil];
     [self setAccessoryType:UITableViewCellAccessoryNone];
     [self.priceLabel setText:priceString];
-    [self.priceLabel setTextColor:[Customization themeColor]];
+    [self.priceLabel setTextColor:[AppTheme themeColor]];
     [self setNeedsLayout];
     [self layoutIfNeeded];
 }

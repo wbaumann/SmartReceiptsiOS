@@ -24,7 +24,7 @@
 {
     [super viewDidLoad];
 
-    [Customization customizeOnViewDidLoad:self];
+    [AppTheme customizeOnViewDidLoad:self];
 
     [self setPresentationCellNib:[TitleOnlyCell viewNib]];
 

@@ -55,6 +55,9 @@
 		716F34511EE040E100D0017A /* EditDistanceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F344B1EE040E100D0017A /* EditDistanceRouter.swift */; };
 		716F34521EE040E100D0017A /* EditDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F344C1EE040E100D0017A /* EditDistanceView.swift */; };
 		716F34541EE041FF00D0017A /* InputCellsViewControllerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F34531EE041FF00D0017A /* InputCellsViewControllerSwift.swift */; };
+		717F596E1EE5C6A100C240D8 /* TripDistancesModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F596D1EE5C6A100C240D8 /* TripDistancesModuleTest.swift */; };
+		717F596F1EE5C73200C240D8 /* AppModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDE61EDF823D00BAC0DD /* AppModules.swift */; };
+		717F59851EE5F17E00C240D8 /* EditDistanceModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F59841EE5F17E00C240D8 /* EditDistanceModuleTest.swift */; };
 		7191F0E81EE20EBA0082DA47 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191F0E71EE20EBA0082DA47 /* DateFormatter+Extensions.swift */; };
 		719310261EDDB7CF0065B5AD /* FetchedPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310251EDDB7CF0065B5AD /* FetchedPlaceholderView.swift */; };
 		7193102B1EDDB9960065B5AD /* WBAbstractPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310281EDDB9960065B5AD /* WBAbstractPicker.m */; };
@@ -68,7 +71,7 @@
 		719310421EDDC2810065B5AD /* WBTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193103C1EDDC2810065B5AD /* WBTextUtils.m */; };
 		719310471EDDC3120065B5AD /* WBImageStampler.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310441EDDC3120065B5AD /* WBImageStampler.m */; };
 		719310481EDDC3120065B5AD /* WBPdfDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310461EDDC3120065B5AD /* WBPdfDrawer.m */; };
-		71AEDDCD1EDF6A2300BAC0DD /* Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDCC1EDF6A2300BAC0DD /* Customization.swift */; };
+		71AEDDCD1EDF6A2300BAC0DD /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */; };
 		71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71AEDDD61EDF7FF400BAC0DD /* TripDistances.storyboard */; };
 		71AEDDDE1EDF7FF400BAC0DD /* TripDistancesDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDD71EDF7FF400BAC0DD /* TripDistancesDisplayData.swift */; };
 		71AEDDDF1EDF7FF400BAC0DD /* TripDistancesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDD81EDF7FF400BAC0DD /* TripDistancesInteractor.swift */; };
@@ -446,6 +449,8 @@
 		716F344B1EE040E100D0017A /* EditDistanceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceRouter.swift; sourceTree = "<group>"; };
 		716F344C1EE040E100D0017A /* EditDistanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceView.swift; sourceTree = "<group>"; };
 		716F34531EE041FF00D0017A /* InputCellsViewControllerSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCellsViewControllerSwift.swift; sourceTree = "<group>"; };
+		717F596D1EE5C6A100C240D8 /* TripDistancesModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDistancesModuleTest.swift; sourceTree = "<group>"; };
+		717F59841EE5F17E00C240D8 /* EditDistanceModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceModuleTest.swift; sourceTree = "<group>"; };
 		7191F0E71EE20EBA0082DA47 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		719310251EDDB7CF0065B5AD /* FetchedPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchedPlaceholderView.swift; path = Views/FetchedPlaceholderView.swift; sourceTree = "<group>"; };
 		719310271EDDB9960065B5AD /* WBAbstractPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBAbstractPicker.h; path = Views/WBAbstractPicker.h; sourceTree = "<group>"; };
@@ -468,7 +473,7 @@
 		719310441EDDC3120065B5AD /* WBImageStampler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageStampler.m; sourceTree = "<group>"; };
 		719310451EDDC3120065B5AD /* WBPdfDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPdfDrawer.h; sourceTree = "<group>"; };
 		719310461EDDC3120065B5AD /* WBPdfDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPdfDrawer.m; sourceTree = "<group>"; };
-		71AEDDCC1EDF6A2300BAC0DD /* Customization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customization.swift; sourceTree = "<group>"; };
+		71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppTheme.swift; path = ../ViewControllers/Abstract/Customization/AppTheme.swift; sourceTree = "<group>"; };
 		71AEDDD61EDF7FF400BAC0DD /* TripDistances.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TripDistances.storyboard; sourceTree = "<group>"; };
 		71AEDDD71EDF7FF400BAC0DD /* TripDistancesDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDistancesDisplayData.swift; sourceTree = "<group>"; };
 		71AEDDD81EDF7FF400BAC0DD /* TripDistancesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDistancesInteractor.swift; sourceTree = "<group>"; };
@@ -1091,6 +1096,31 @@
 			path = "Edit Distance";
 			sourceTree = "<group>";
 		};
+		717F596A1EE5C0EF00C240D8 /* Modules Tests */ = {
+			isa = PBXGroup;
+			children = (
+				717F596B1EE5C13100C240D8 /* Trip Distances */,
+				717F596C1EE5C14300C240D8 /* Edit Distance */,
+			);
+			path = "Modules Tests";
+			sourceTree = "<group>";
+		};
+		717F596B1EE5C13100C240D8 /* Trip Distances */ = {
+			isa = PBXGroup;
+			children = (
+				717F596D1EE5C6A100C240D8 /* TripDistancesModuleTest.swift */,
+			);
+			path = "Trip Distances";
+			sourceTree = "<group>";
+		};
+		717F596C1EE5C14300C240D8 /* Edit Distance */ = {
+			isa = PBXGroup;
+			children = (
+				717F59841EE5F17E00C240D8 /* EditDistanceModuleTest.swift */,
+			);
+			path = "Edit Distance";
+			sourceTree = "<group>";
+		};
 		719310231EDDB60E0065B5AD /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -1402,22 +1432,6 @@
 			path = Creators;
 			sourceTree = "<group>";
 		};
-		BA665E0F45BB2381E10517B2 /* Customization */ = {
-			isa = PBXGroup;
-			children = (
-				71AEDDCC1EDF6A2300BAC0DD /* Customization.swift */,
-			);
-			path = Customization;
-			sourceTree = "<group>";
-		};
-		BA665E1F32359D42EC15630C /* Abstract */ = {
-			isa = PBXGroup;
-			children = (
-				BA665E0F45BB2381E10517B2 /* Customization */,
-			);
-			path = Abstract;
-			sourceTree = "<group>";
-		};
 		EA07BF571AF4D6D3004D17F6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1600,6 +1614,7 @@
 		EA46678C1AE7EA0300B4E502 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */,
 				EA07BF421AF3F882004D17F6 /* DecimalInputValidation.h */,
 				EA07BF431AF3F882004D17F6 /* DecimalInputValidation.m */,
 				EA46678D1AE7EA1600B4E502 /* ImagePicker.h */,
@@ -1855,6 +1870,7 @@
 				713D35531EDA540000D8563D /* Testable */,
 				EA259CD91B16071200ECBD67 /* Backup */,
 				EAE725D81B022E8600402689 /* Model */,
+				717F596A1EE5C0EF00C240D8 /* Modules Tests */,
 				EAED9B1C1AEE9F8C00BB8773 /* Persistence */,
 				EA8D81DE1AEA96A700BAC943 /* Reports */,
 				EA8D81D11AEA956600BAC943 /* Supporting Files */,
@@ -1930,7 +1946,6 @@
 		EAE8F9AF1AF149B300E837E3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BA665E1F32359D42EC15630C /* Abstract */,
 				713D35451EDA334300D8563D /* Ad */,
 				713D35441EDA333D00D8563D /* Edit */,
 				713D35461EDA33BB00D8563D /* Input */,
@@ -2525,7 +2540,7 @@
 				71AEDDE21EDF7FF400BAC0DD /* TripDistancesView.swift in Sources */,
 				A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */,
 				EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */,
-				71AEDDCD1EDF6A2300BAC0DD /* Customization.swift in Sources */,
+				71AEDDCD1EDF6A2300BAC0DD /* AppTheme.swift in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */,
 				EA0677F61B04E61A0058A326 /* StringPickableWrapper.m in Sources */,
 				EA4DC9961AF1580100CEF1B9 /* InputCellsViewController.m in Sources */,
@@ -2617,6 +2632,7 @@
 				EA07BF6C1AF51D5D004D17F6 /* DatabaseTestsHelper.m in Sources */,
 				EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */,
 				EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */,
+				717F596F1EE5C73200C240D8 /* AppModules.swift in Sources */,
 				EA8CEAE71AFCEBE90007B3F5 /* DatabaseTripsSumTest.m in Sources */,
 				A709D7451CF348EC00897DD9 /* DatabaseQueryAndroidV14Receipts.swift in Sources */,
 				A7A720E51CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift in Sources */,
@@ -2669,6 +2685,8 @@
 				EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */,
 				EA259CDB1B16071F00ECBD67 /* DataImportTest.m in Sources */,
 				EA07BF591AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m in Sources */,
+				717F59851EE5F17E00C240D8 /* EditDistanceModuleTest.swift in Sources */,
+				717F596E1EE5C6A100C240D8 /* TripDistancesModuleTest.swift in Sources */,
 				EA888A811AFA5D1D00DF2AE6 /* WBPreferencesTestHelper.m in Sources */,
 				57A8058D1E9672C000E68049 /* DatabaseUpgrade15Tests.swift in Sources */,
 				EAE319641B10BF630032887E /* TaxCalculatorTest.m in Sources */,

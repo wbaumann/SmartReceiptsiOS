@@ -44,7 +44,7 @@
     self.scrollView.maximumZoomScale = 6.0;
     self.scrollView.minimumZoomScale = 1;
     
-    [Customization customizeOnViewDidLoad:self];
+    [AppTheme customizeOnViewDidLoad:self];
 }
 
 -(void)viewDidAppear:(BOOL)animated {

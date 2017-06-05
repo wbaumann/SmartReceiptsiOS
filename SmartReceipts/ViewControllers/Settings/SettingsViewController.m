@@ -130,7 +130,7 @@ static NSString *const PushPaymentMethodsControllerSegueIdentifier = @"PushPayme
 {
     [super viewDidLoad];
 
-    [Customization customizeOnViewDidLoad:self];
+    [AppTheme customizeOnViewDidLoad:self];
 
     [self setContainNextEditSearchInsideSection:YES];
     

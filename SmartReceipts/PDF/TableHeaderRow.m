@@ -20,7 +20,7 @@ IB_DESIGNABLE
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    UIColor *styleColor = [Customization reportPDFStyleColor];
+    UIColor *styleColor = [AppTheme reportPDFStyleColor];
     [self.contentLabel setTextColor:styleColor];
     [self setBackgroundColor:[styleColor colorWithAlphaComponent:0.2]];
     [self.bottomSeparatorView setBackgroundColor:styleColor];

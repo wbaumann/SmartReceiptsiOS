@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DatabaseTestsHelper : Database
 
 - (WBTrip *__nonnull)createTestTrip;
-- (void)insertTestDistance:(NSDictionary *__nonnull)modifiedParams;
+- (Distance *)insertTestDistance:(NSDictionary *__nonnull)modifiedParams;
 - (void)insertTestReceipt:(NSDictionary *__nonnull)modifiedParams;
 - (WBTrip *__nonnull)insertTestTrip:(NSDictionary *__nonnull)modifiedParams;
 - (void)insertTestPaymentMethod:(NSString *__nonnull)name;

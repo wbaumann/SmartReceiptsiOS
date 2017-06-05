@@ -1,5 +1,5 @@
 //
-//  Customization.swift
+//  AppTheme.swift
 //  SmartReceipts
 //
 //  Created by Bogdan Evsenev on 01/06/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Customization: NSObject {
+class AppTheme: NSObject {
     static let themeColor = #colorLiteral(red: 0.5803921569, green: 0, blue: 0.8274509804, alpha: 1)
     static let reportPDFStyleColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
     
@@ -21,7 +21,7 @@ class Customization: NSObject {
     
     /* Customizes every view controller on load */
     class func customizeOnViewDidLoad(_ viewController: UIViewController) {
-        if let navController = viewController.navigationController {
+        if let _ = viewController.navigationController {
             // configure navigation bar here, to do some more fancy things
         }
         

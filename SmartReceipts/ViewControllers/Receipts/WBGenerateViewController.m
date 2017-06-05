@@ -53,7 +53,7 @@
     
     [self trackConfigureReportevent];
     
-    [Customization customizeOnViewDidLoad:self];
+    [AppTheme customizeOnViewDidLoad:self];
 }
 
 - (NSArray *)splitValueFrom:(NSString *)joined {

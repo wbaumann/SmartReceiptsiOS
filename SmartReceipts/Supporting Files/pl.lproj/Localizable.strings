@@ -7,6 +7,8 @@
 "app.delegate.import.error.alert.message" = "Nie rozpoznano pliku jako importowalny.";
 "app.delegate.import.success.alert.message" = "Wszystkie pliki zaimportowano z sukcesem.";
 
+"app.text.bullet.character" = "•";
+
 "categiry.cell.phone.code" = "ZCEL";
 "categiry.cell.phone.name" = "Tel. Komórkowy";
 
@@ -315,7 +317,7 @@
 "settings.layout.include.attachment.marker.label" = "Include Picture/PDF Marker";
 "settings.layout.include.receipt.category.label" = "Include Receipt Category";
 "settings.layout.include.receipt.date.label" = "Include Receipt Date";
-"settings.layout.section.title" = "Layout Customizations";
+"settings.layout.section.title" = "Layout AppThemes";
 "settings.manage.categories.label" = "Zarządzaj Kategoriami";
 "settings.match.comments.to.categories" = "Dopasuj Komentarze do Kategorii";
 "settings.match.name.to.category.label" = "Dopasuj Nazwę do Kategorii";

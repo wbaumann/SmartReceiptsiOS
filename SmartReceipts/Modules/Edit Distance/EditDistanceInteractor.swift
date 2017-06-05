@@ -10,14 +10,29 @@ import Foundation
 import Viperit
 
 final class EditDistanceInteractor: Interactor {
+    private var database: Database!
+    
+    required init() {
+        database = Database.sharedInstance()
+    }
+    
+    init(database: Database) {
+        self.database = database
+    }
+
+    
     func save(distance: Distance, asNewDistance: Bool) {
         if (asNewDistance) {
             AnalyticsManager.sharedManager.record(event: Event.distancePersistNewDistance())
         } else {
             AnalyticsManager.sharedManager.record(event: Event.distancePersistUpdateDistance())
         }
-        if Database.sharedInstance().save(distance) {
+        
+        if database.save(distance) {
+            Logger.debug("Distance has been \(asNewDistance ? "updated" : "added")")
             presenter.close()
+        } else {
+            Logger.debug("Distance can't be \(asNewDistance ? "updated" : "added")")
         }
     }
 }

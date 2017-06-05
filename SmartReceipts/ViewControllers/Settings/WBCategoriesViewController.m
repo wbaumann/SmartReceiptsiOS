@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [Customization customizeOnViewDidLoad:self];
+    [AppTheme customizeOnViewDidLoad:self];
 
     [self setPresentationCellNib:[CategoryCell viewNib]];
 

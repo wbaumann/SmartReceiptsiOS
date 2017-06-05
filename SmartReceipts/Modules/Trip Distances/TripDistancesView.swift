@@ -21,8 +21,10 @@ protocol TripDistancesViewInterface {
 //MARK: TripDistances View
 class TripDistancesView: FetchedCollectionViewControllerSwift {
     
-    let dateFormatter = DateFormatter()
-    var maxRateWidth: CGFloat = 0
+    private let dateFormatter = DateFormatter()
+    private var maxRateWidth: CGFloat = 0
+    
+    private let disposeBag = DisposeBag()
     
     @IBOutlet private var addButtonItem: UIBarButtonItem?
     @IBOutlet private var doneButtonItem: UIBarButtonItem?
@@ -92,11 +94,11 @@ class TripDistancesView: FetchedCollectionViewControllerSwift {
     private func configureUIActions() {
         _ = doneButtonItem?.rx.tap.subscribe(onNext: { [weak self] in
             self?.dismiss(animated: true, completion: nil)
-        })
+        }).disposed(by: disposeBag)
         
         _ = addButtonItem?.rx.tap.subscribe(onNext: { [weak self] in
             self?.showEditDistance(with: (self?.trip, nil as Distance?))
-        })
+        }).disposed(by: disposeBag)
         
     }
     
