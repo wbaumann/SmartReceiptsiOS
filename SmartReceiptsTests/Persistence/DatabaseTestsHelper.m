@@ -70,7 +70,7 @@
     [self savePaymentMethod:method];
 }
 
-- (void)insertTestDistance:(NSDictionary *)modifiedParams {
+- (Distance *)insertTestDistance:(NSDictionary *)modifiedParams {
     NSMutableDictionary *defaultParams = [NSMutableDictionary dictionary];
     defaultParams[DistanceTable.COLUMN_LOCATION] = @"Test location";
     defaultParams[DistanceTable.COLUMN_PARENT] = [self createTestTrip];
@@ -91,6 +91,7 @@
                                                timeZone:[NSTimeZone defaultTimeZone]
                                                 comment:@"Comment"];
     [self saveDistance:distance];
+    return distance;
 }
 
 - (void)insertTestReceipt:(NSDictionary *)modifiedParams {

@@ -31,7 +31,7 @@ extension EditReceiptViewController: CurrencyExchangeServiceHandler, QuickAlertP
         
         let loading = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         loading.startAnimating()
-        loading.color = Customization.themeColor
+        loading.color = AppTheme.themeColor
         cell.accessoryView = loading
         
         exchangeRate(base, target: target, onDate: date, forceRefresh: force) {

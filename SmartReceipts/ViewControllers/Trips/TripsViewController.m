@@ -37,7 +37,7 @@ NSString *const PresentTripDetailsSegueIdentifier = @"TripDetails";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [Customization customizeOnViewDidLoad:self];
+    [AppTheme customizeOnViewDidLoad:self];
 
     [self setPresentationCellNib:[WBCellWithPriceNameDate viewNib]];
 

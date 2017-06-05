@@ -59,6 +59,6 @@ extension String {
         if !self.isEmpty {
             self = self.appending("\n")
         }
-        self = self.appending("• \(issue)")
+        self = self.appending("\(LocalizedString("app.text.bullet.character")) \(issue)")
     }
 }

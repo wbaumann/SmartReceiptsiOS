@@ -55,7 +55,7 @@
 #endif
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    // Override point for AppTheme after application launch.
     
     [FIRApp configure];
     
@@ -63,7 +63,7 @@
     
     _queue = dispatch_queue_create("wb.dataAccess", nil);
 
-    [Customization customizeOnAppLoad];
+    [AppTheme customizeOnAppLoad];
 
     RMStoreAppReceiptVerificator *verificator = [[RMStoreAppReceiptVerificator alloc] init];
     [self setReceiptVerificator:verificator];

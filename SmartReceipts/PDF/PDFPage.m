@@ -32,8 +32,8 @@ CGFloat const ElementsSpacing = 16;
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    [self.topLine setBackgroundColor:[Customization reportPDFStyleColor]];
-    [self.bottomLine setBackgroundColor:[Customization reportPDFStyleColor]];
+    [self.topLine setBackgroundColor:[AppTheme reportPDFStyleColor]];
+    [self.bottomLine setBackgroundColor:[AppTheme reportPDFStyleColor]];
 
     self.contentOffset = self.topLine.frame.origin.y + CGRectGetHeight(self.topLine.frame) + ElementsSpacing;
     

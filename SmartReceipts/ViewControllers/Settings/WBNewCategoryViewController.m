@@ -28,7 +28,7 @@
         self.nameTextField.text = [self.category name];
         self.codeTextField.text = [self.category code];
     }
-    [Customization customizeOnViewDidLoad:self];
+    [AppTheme customizeOnViewDidLoad:self];
 }
 
 - (IBAction)actionDone:(id)sender {
