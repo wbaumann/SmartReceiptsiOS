@@ -596,7 +596,7 @@
         <!--Ad Presenting Container View Controller-->
         <scene sceneID="0Uh-fY-MVm">
             <objects>
-                <viewController id="zEU-Xc-4u1" customClass="AdPresentingContainerViewController" sceneMemberID="viewController">
+                <viewController id="zEU-Xc-4u1" customClass="AdPresentingContainerViewController" customModule="SmartReceipts" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YER-L6-9Ch"/>
                         <viewControllerLayoutGuide type="bottom" id="jai-dX-lod"/>

@@ -12,7 +12,7 @@
         <!--Ad Presenting Container View Controller-->
         <scene sceneID="le1-hI-394">
             <objects>
-                <viewController id="mCg-Ej-Ova" customClass="AdPresentingContainerViewController" sceneMemberID="viewController">
+                <viewController id="mCg-Ej-Ova" customClass="AdPresentingContainerViewController" customModule="SmartReceipts" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w2f-lq-ANc"/>
                         <viewControllerLayoutGuide type="bottom" id="vjH-F8-SGe"/>

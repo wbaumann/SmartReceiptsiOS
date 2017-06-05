@@ -1,6 +1,7 @@
 
 #import "Column.h"
 #import "Constants.h"
+#import "GADConstants.h"
 
 #import "Database+Categories.h"
 #import "Database+Distances.h"
