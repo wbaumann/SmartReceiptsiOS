@@ -317,7 +317,7 @@
 "settings.layout.include.attachment.marker.label" = "Include Picture/PDF Marker";
 "settings.layout.include.receipt.category.label" = "Include Receipt Category";
 "settings.layout.include.receipt.date.label" = "Include Receipt Date";
-"settings.layout.section.title" = "Layout AppThemes";
+"settings.layout.section.title" = "Layout Customization";
 "settings.manage.categories.label" = "Manage Categories";
 "settings.match.comments.to.categories" = "Match Comments to Categories";
 "settings.match.name.to.category.label" = "Match Name to Categories";
