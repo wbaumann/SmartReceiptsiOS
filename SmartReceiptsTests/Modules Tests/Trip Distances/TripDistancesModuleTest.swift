@@ -6,39 +6,58 @@
 //  Copyright © 2017 Will Baumann. All rights reserved.
 //
 
-@testable
-import SmartReceipts
+@testable import Cuckoo
 
 import XCTest
 import Viperit
 
 
-class TripDistancesModuleTest: SmartReceiptsTestsBase {
+class TripDistancesModuleTest: XCTestCase {
     
-    private var presenter: TripDistancesPresenter?
-    private var interactor: TripDistancesInteractor?
+    var presenter: MockTripDistancesPresenter!
+    var interactor: MockTripDistancesInteractor!
+    
+    var hasDistance = true
     
     override func setUp() {
         super.setUp()
         var module = Module.build(AppModules.tripDistances)
-        module.injectMock(interactor: TripDistancesInteractor(database: db))
+        module.injectMock(presenter: MockTripDistancesPresenter())
+        module.injectMock(interactor: MockTripDistancesInteractor())
         
-        presenter = module.presenter as? TripDistancesPresenter
-        interactor = module.interactor as? TripDistancesInteractor
+        presenter = module.presenter as! MockTripDistancesPresenter
+        interactor = module.interactor as! MockTripDistancesInteractor
+        confugureStubs()
+    }
+    
+    func confugureStubs() {
+        stub(presenter) { mock in
+            mock.delete(distance: Distance()).then({ distance in
+                self.hasDistance = false
+            })
+        }
+        
+        stub(interactor) { mock in
+            mock.delete(distance: Distance()).then({ distance in
+                self.hasDistance = false
+            })
+        }
     }
     
     override func tearDown() {
         super.tearDown()
-    }
-    
-    func testPresenterDeleteDistance() {
-        let distance = db.insertTestDistance([AnyHashable: Any]())
-        presenter?.delete(distance: distance)
+        hasDistance = true
     }
     
     func testInteractorDeleteDistance() {
-        let distance = db.insertTestDistance([AnyHashable: Any]())
-        interactor?.delete(distance: distance)
-        
+        interactor.delete(distance: Distance())
+        verify(interactor).delete(distance: Distance())
+        XCTAssertFalse(hasDistance)
+    }
+    
+    func testPresenterDeleteDistance() {
+        presenter.delete(distance: Distance())
+        verify(presenter).delete(distance: Distance())
+        XCTAssertFalse(hasDistance)
     }
 }

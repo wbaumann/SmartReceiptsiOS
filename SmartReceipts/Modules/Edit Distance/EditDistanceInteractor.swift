@@ -9,7 +9,7 @@
 import Foundation
 import Viperit
 
-final class EditDistanceInteractor: Interactor {
+class EditDistanceInteractor: Interactor {
     private var database: Database!
     
     required init() {

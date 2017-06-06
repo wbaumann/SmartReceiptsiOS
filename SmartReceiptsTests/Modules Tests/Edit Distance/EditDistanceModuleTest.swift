@@ -6,65 +6,88 @@
 //  Copyright © 2017 Will Baumann. All rights reserved.
 //
 
-@testable
-import SmartReceipts
+@testable import Cuckoo
 
 import Viperit
 import XCTest
 
-class TestEditDistanceRouter: EditDistanceRouter {
-    var isClosed = false
+class EditDistanceModuleTest: XCTestCase {
     
-    override func close() {
-        isClosed = true
-    }
-}
-
-class EditDistanceModuleTest: SmartReceiptsTestsBase {
+    private var presenter: MockEditDistancePresenter!
+    private var interactor: MockEditDistanceInteractor!
+    private var router: MockEditDistanceRouter!
     
-    private var presenter: EditDistancePresenter?
-    private var interactor: EditDistanceInteractor?
-    private var router: TestEditDistanceRouter?
+    var distnaceSaved = false
     
     override func setUp() {
         super.setUp()
         var module = Module.build(AppModules.editDistance)
-        module.injectMock(interactor: EditDistanceInteractor(database: db))
+        module.injectMock(presenter: MockEditDistancePresenter())
+        module.injectMock(interactor: MockEditDistanceInteractor())
+        module.injectMock(router: MockEditDistanceRouter())
         
-        router = TestEditDistanceRouter()
-        module.injectMock(router: router!)
+        presenter = module.presenter as? MockEditDistancePresenter
+        interactor = module.interactor as? MockEditDistanceInteractor
+        router = module.router as? MockEditDistanceRouter
+        configureStubs()
+    }
+    
+    func configureStubs() {
+        stub(presenter) { mock in
+            mock.close().thenDoNothing()
+        }
         
-        presenter = module.presenter as? EditDistancePresenter
-        interactor = module.interactor as? EditDistanceInteractor
+        stub(router) { mock in
+            mock.close().thenDoNothing()
+        }
+        
+        stub(interactor) { mock in
+            mock.save(distance: Distance(), asNewDistance: true).then({ (distance, update) in
+                self.distnaceSaved = true
+            })
+        }
+        
+        stub(presenter) { mock in
+            mock.save(distance: Distance(), asNewDistance: true).then({ (distance, update) in
+                self.distnaceSaved = true
+            })
+        }
     }
     
     override func tearDown() {
         super.tearDown()
+        distnaceSaved = false
     }
     
-    func testPresenterSaveDistance() {
-        
-    // Check with incorrect distance
-        interactor?.save(distance: Distance(), asNewDistance: false)
-        XCTAssertEqual(false, router?.isClosed)
-        
-    // Check with correct distance
-        let distance = db.insertTestDistance([AnyHashable : Any]())
-        presenter?.save(distance: distance, asNewDistance: false)
-        XCTAssertEqual(true, router?.isClosed)
-        router?.isClosed = false
+    func testRouterClose() {
+        router.close()
+        verify(router).close()
+    }
+    
+    func testPresenterClose() {
+        presenter.close()
+        verify(presenter).close()
     }
     
     func testInteractorSaveDistance() {
-        
-    // Check with incorrect distance
-        interactor?.save(distance: Distance(), asNewDistance: false)
-        XCTAssertEqual(false, router?.isClosed)
-        
-    // Check with correct distance
-        let distance = db.insertTestDistance([AnyHashable : Any]())
-        interactor?.save(distance: distance, asNewDistance: false)
-        XCTAssertEqual(true, router?.isClosed)
-        router?.isClosed = false
+        interactor.save(distance: Distance(), asNewDistance: true)
+        verify(interactor).save(distance: Distance(), asNewDistance: true)
+        XCTAssertTrue(distnaceSaved)
+    }
+    
+    func testPresenterSaveDistance() {
+        presenter.save(distance: Distance(), asNewDistance: true)
+        verify(presenter).save(distance: Distance(), asNewDistance: true)
+        XCTAssertTrue(distnaceSaved)
+    }
+}
+
+extension Distance: Matchable {
+    public var matcher: ParameterMatcher<Distance> {
+        get {
+            return ParameterMatcher(matchesFunction: { distance -> Bool in
+                return self.objectId == distance.objectId
+            })
+        }
     }
 }

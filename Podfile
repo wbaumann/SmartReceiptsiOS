@@ -46,6 +46,7 @@ target 'SmartReceiptsTests' do
     pods
     pod 'RxBlocking', '~> 3.0'
     pod 'RxTest',     '~> 3.0'
+    pod 'Cuckoo',     '~> 0.9.2'
 
 end
 
