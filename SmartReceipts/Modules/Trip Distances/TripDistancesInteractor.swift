@@ -9,7 +9,7 @@
 import Foundation
 import Viperit
 
-final class TripDistancesInteractor: Interactor {
+class TripDistancesInteractor: Interactor {
     private var database: Database!
     
     required init() {

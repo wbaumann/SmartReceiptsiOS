@@ -9,7 +9,7 @@
 import Foundation
 import Viperit
 
-final class EditDistancePresenter: Presenter {
+class EditDistancePresenter: Presenter {
     override func setupView(data: Any) {
         if let inputData = data as? (trip: WBTrip, distance: Distance?) {
             view.setup(trip: inputData.trip, distance: inputData.distance)

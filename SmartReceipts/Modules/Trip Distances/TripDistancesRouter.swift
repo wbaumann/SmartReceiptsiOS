@@ -9,7 +9,7 @@
 import Foundation
 import Viperit
 
-final class TripDistancesRouter: Router {
+class TripDistancesRouter: Router {
     func showEditDistance(with data: Any?) {
         let module = Module.build(AppModules.editDistance)
         module.router.show(from: _view, embedInNavController: false, setupData: data)

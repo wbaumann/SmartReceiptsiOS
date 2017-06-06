@@ -9,7 +9,7 @@
 import Foundation
 import Viperit
 
-final class TripDistancesPresenter: Presenter {
+class TripDistancesPresenter: Presenter {
     
     func fetchedModelAdapter(for trip: WBTrip) -> FetchedModelAdapter {
         return interactor.fetchedModelAdapter(for: trip)
