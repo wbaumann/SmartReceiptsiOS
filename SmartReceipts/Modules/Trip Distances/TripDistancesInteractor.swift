@@ -28,7 +28,7 @@ class TripDistancesInteractor: Interactor {
         if database.delete(distance) {
             Logger.debug("Distance deleted")
         } else {
-            Logger.debug("Distance can't be deleted")
+            Logger.error("Distance can't be deleted")
         }
     }
 }

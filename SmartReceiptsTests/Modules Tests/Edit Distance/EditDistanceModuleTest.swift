@@ -17,7 +17,7 @@ class EditDistanceModuleTest: XCTestCase {
     private var interactor: MockEditDistanceInteractor!
     private var router: MockEditDistanceRouter!
     
-    var distnaceSaved = false
+    var distanceSaved = false
     
     override func setUp() {
         super.setUp()
@@ -43,20 +43,20 @@ class EditDistanceModuleTest: XCTestCase {
         
         stub(interactor) { mock in
             mock.save(distance: Distance(), asNewDistance: true).then({ (distance, update) in
-                self.distnaceSaved = true
+                self.distanceSaved = true
             })
         }
         
         stub(presenter) { mock in
             mock.save(distance: Distance(), asNewDistance: true).then({ (distance, update) in
-                self.distnaceSaved = true
+                self.distanceSaved = true
             })
         }
     }
     
     override func tearDown() {
         super.tearDown()
-        distnaceSaved = false
+        distanceSaved = false
     }
     
     func testRouterClose() {
@@ -72,13 +72,13 @@ class EditDistanceModuleTest: XCTestCase {
     func testInteractorSaveDistance() {
         interactor.save(distance: Distance(), asNewDistance: true)
         verify(interactor).save(distance: Distance(), asNewDistance: true)
-        XCTAssertTrue(distnaceSaved)
+        XCTAssertTrue(distanceSaved)
     }
     
     func testPresenterSaveDistance() {
         presenter.save(distance: Distance(), asNewDistance: true)
         verify(presenter).save(distance: Distance(), asNewDistance: true)
-        XCTAssertTrue(distnaceSaved)
+        XCTAssertTrue(distanceSaved)
     }
 }
 
