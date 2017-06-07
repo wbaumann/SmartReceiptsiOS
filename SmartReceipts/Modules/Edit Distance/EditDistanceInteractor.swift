@@ -32,7 +32,7 @@ class EditDistanceInteractor: Interactor {
             Logger.debug("Distance has been \(asNewDistance ? "updated" : "added")")
             presenter.close()
         } else {
-            Logger.debug("Distance can't be \(asNewDistance ? "updated" : "added")")
+            Logger.error("Distance can't be \(asNewDistance ? "updated" : "added")")
         }
     }
 }
