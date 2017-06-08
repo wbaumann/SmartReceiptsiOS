@@ -8,7 +8,6 @@
 
 #import "WBReceiptsViewController.h"
 #import "WBReceiptActionsViewController.h"
-#import "WBGenerateViewController.h"
 #import "WBDateFormatter.h"
 #import "WBFileManager.h"
 #import "WBPreferences.h"

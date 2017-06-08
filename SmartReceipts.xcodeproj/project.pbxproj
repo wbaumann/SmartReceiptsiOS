@@ -139,7 +139,6 @@
 		A7D554D11CFF0F5000169FD2 /* FMDatabase+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D554D01CFF0F5000169FD2 /* FMDatabase+Trips.swift */; };
 		A7D554D31CFF118700169FD2 /* RefreshTripPriceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D554D21CFF118700169FD2 /* RefreshTripPriceHandler.swift */; };
 		A7D6CDE71D05524200998FEF /* ReportAssetsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D6CDE61D05524200998FEF /* ReportAssetsGenerator.swift */; };
-		A7D6CDE91D05547F00998FEF /* WBGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D6CDE81D05547F00998FEF /* WBGenerateViewController.swift */; };
 		A7F05B981CFB49220079F1AD /* WBReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B971CFB49220079F1AD /* WBReceipt.swift */; };
 		A7F05B9A1CFB49590079F1AD /* Priced.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B991CFB49590079F1AD /* Priced.swift */; };
 		A7F05B9E1CFB49BE0079F1AD /* Taxed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */; };
@@ -181,7 +180,6 @@
 		BA66598797EF09DBD750184F /* WBAutocompleteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66568C566BD25FE4AFAE3C /* WBAutocompleteHelper.m */; };
 		BA6659EA9A31ADDC9CD10970 /* WBMoveCopyReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6654EA764091CAC85A2FB2 /* WBMoveCopyReceiptViewController.m */; };
 		BA665CE0E265BAAFE063CF3A /* WBReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6651EEB95E55629DEE91EE /* WBReceiptsViewController.m */; };
-		BA665D77747A4469CAA08CE9 /* WBGenerateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665109C535866B59AD5544 /* WBGenerateViewController.m */; };
 		BA665F06B922055E7D3BED31 /* WBColumnsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665C9EEA56CE01EA133B0B /* WBColumnsViewController.m */; };
 		EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */; };
 		EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D00C1B0629BE00C87678 /* ProperNameInputValidation.m */; };
@@ -565,7 +563,6 @@
 		A7D554D01CFF0F5000169FD2 /* FMDatabase+Trips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FMDatabase+Trips.swift"; sourceTree = "<group>"; };
 		A7D554D21CFF118700169FD2 /* RefreshTripPriceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTripPriceHandler.swift; sourceTree = "<group>"; };
 		A7D6CDE61D05524200998FEF /* ReportAssetsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportAssetsGenerator.swift; sourceTree = "<group>"; };
-		A7D6CDE81D05547F00998FEF /* WBGenerateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBGenerateViewController.swift; sourceTree = "<group>"; };
 		A7D6CDF51D07E4D400998FEF /* GADConstants.m.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GADConstants.m.sample; sourceTree = "<group>"; };
 		A7D6CDF71D07E4FE00998FEF /* Secrets.swift.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Secrets.swift.sample; sourceTree = "<group>"; };
 		A7F05B971CFB49220079F1AD /* WBReceipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WBReceipt.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -598,7 +595,6 @@
 		A7F05BE41CFD95830079F1AD /* FMDatabase+Distances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FMDatabase+Distances.swift"; sourceTree = "<group>"; };
 		A7F05BE61CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsFetchedModelAdapterTests.swift; sourceTree = "<group>"; };
 		AB32CC01AB8A3C117C66A4EE /* Pods-SmartReceiptsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceiptsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests.debug.xcconfig"; sourceTree = "<group>"; };
-		BA665109C535866B59AD5544 /* WBGenerateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBGenerateViewController.m; sourceTree = "<group>"; };
 		BA665153398224CB65F67810 /* WBImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageViewController.h; sourceTree = "<group>"; };
 		BA6651EEB95E55629DEE91EE /* WBReceiptsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WBReceiptsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BA665243DF18CF56677B3A86 /* WBMoveCopyReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMoveCopyReceiptViewController.h; sourceTree = "<group>"; };
@@ -619,7 +615,6 @@
 		BA665BAC0D1C9F6A64F54953 /* WBNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNewCategoryViewController.m; sourceTree = "<group>"; };
 		BA665C12773D75AD10BAF758 /* WBNoTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNoTripsViewController.m; sourceTree = "<group>"; };
 		BA665C2F6D5238C64F840985 /* WBImageSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageSegue.h; sourceTree = "<group>"; };
-		BA665C7D02BFCCBCC8D83E2D /* WBGenerateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBGenerateViewController.h; sourceTree = "<group>"; };
 		BA665C9EEA56CE01EA133B0B /* WBColumnsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnsViewController.m; sourceTree = "<group>"; };
 		BA665DB04425306990A9255C /* WBImageSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageSegue.m; sourceTree = "<group>"; };
 		BA665EC4135DDF48D5AAB0C7 /* WBCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategoriesViewController.h; sourceTree = "<group>"; };
@@ -1417,9 +1412,6 @@
 			children = (
 				BA6659ABCA7EC0AA6B2A5115 /* Creators */,
 				BA66534E5FD8925DFDE86E5C /* Image */,
-				BA665C7D02BFCCBCC8D83E2D /* WBGenerateViewController.h */,
-				BA665109C535866B59AD5544 /* WBGenerateViewController.m */,
-				A7D6CDE81D05547F00998FEF /* WBGenerateViewController.swift */,
 				BA665243DF18CF56677B3A86 /* WBMoveCopyReceiptViewController.h */,
 				BA6654EA764091CAC85A2FB2 /* WBMoveCopyReceiptViewController.m */,
 				BA665A5E325CF4D2E8806039 /* WBNoTripsViewController.h */,
@@ -2521,7 +2513,6 @@
 				EA0677ED1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m in Sources */,
 				7190D4501EE88CC40081CB22 /* GenerateReportDisplayData.swift in Sources */,
 				EA259CD81B1606EC00ECBD67 /* DataImport.m in Sources */,
-				A7D6CDE91D05547F00998FEF /* WBGenerateViewController.swift in Sources */,
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
 				EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */,
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
@@ -2677,7 +2668,6 @@
 				BA6654FB0EA730FF8CBC4B93 /* WBImageSegue.m in Sources */,
 				BA66598797EF09DBD750184F /* WBAutocompleteHelper.m in Sources */,
 				BA665CE0E265BAAFE063CF3A /* WBReceiptsViewController.m in Sources */,
-				BA665D77747A4469CAA08CE9 /* WBGenerateViewController.m in Sources */,
 				BA6654A32D71826EBC7D9B8F /* WBReceiptActionsViewController.m in Sources */,
 				BA6659EA9A31ADDC9CD10970 /* WBMoveCopyReceiptViewController.m in Sources */,
 				BA66575369EE00A19F841E42 /* WBNoTripsViewController.m in Sources */,
