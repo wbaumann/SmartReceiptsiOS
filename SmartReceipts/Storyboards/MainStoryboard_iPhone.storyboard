@@ -177,7 +177,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="5bR-1p-shn"/>
                         <barButtonItem systemItem="action" id="2RB-vL-hqq">
                             <connections>
-                                <segue destination="sT3-qa-plb" kind="modal" identifier="GenerateReport" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="fPh-nn-Wkr"/>
+                                <action selector="onGenerateReportTap:" destination="oXP-B8-ZGa" id="bSP-3f-GZv"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -848,7 +848,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jFG-RL-ykG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4261" y="895"/>
+            <point key="canvasLocation" x="4012" y="768"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="kR1-Pp-ZAo">
@@ -953,7 +953,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KGL-Jx-3KW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3461" y="895"/>
+            <point key="canvasLocation" x="3513" y="768"/>
         </scene>
         <!--Receipt Name-->
         <scene sceneID="Ds0-Ae-MO8">

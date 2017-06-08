@@ -47,6 +47,7 @@
 		711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */; };
 		713D35501EDA4AEB00D8563D /* NSMutableString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 713D354F1EDA4AEB00D8563D /* NSMutableString+Extensions.m */; };
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
+		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
 		7161DB511EE4907700399C9C /* AdPresentingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */; };
 		716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716F34471EE040E100D0017A /* EditDistance.storyboard */; };
 		716F344E1EE040E100D0017A /* EditDistanceDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F34481EE040E100D0017A /* EditDistanceDisplayData.swift */; };
@@ -56,6 +57,13 @@
 		716F34521EE040E100D0017A /* EditDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F344C1EE040E100D0017A /* EditDistanceView.swift */; };
 		716F34541EE041FF00D0017A /* InputCellsViewControllerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F34531EE041FF00D0017A /* InputCellsViewControllerSwift.swift */; };
 		717F596F1EE5C73200C240D8 /* AppModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDE61EDF823D00BAC0DD /* AppModules.swift */; };
+		7190D44F1EE88CC40081CB22 /* GenerateReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7190D4491EE88CC40081CB22 /* GenerateReport.storyboard */; };
+		7190D4501EE88CC40081CB22 /* GenerateReportDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7190D44A1EE88CC40081CB22 /* GenerateReportDisplayData.swift */; };
+		7190D4511EE88CC40081CB22 /* GenerateReportInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7190D44B1EE88CC40081CB22 /* GenerateReportInteractor.swift */; };
+		7190D4521EE88CC40081CB22 /* GenerateReportPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7190D44C1EE88CC40081CB22 /* GenerateReportPresenter.swift */; };
+		7190D4531EE88CC40081CB22 /* GenerateReportRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7190D44D1EE88CC40081CB22 /* GenerateReportRouter.swift */; };
+		7190D4541EE88CC40081CB22 /* GenerateReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7190D44E1EE88CC40081CB22 /* GenerateReportView.swift */; };
+		7190D4561EE893900081CB22 /* GenerateReportFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7190D4551EE893900081CB22 /* GenerateReportFormView.swift */; };
 		7191F0E81EE20EBA0082DA47 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191F0E71EE20EBA0082DA47 /* DateFormatter+Extensions.swift */; };
 		719310261EDDB7CF0065B5AD /* FetchedPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310251EDDB7CF0065B5AD /* FetchedPlaceholderView.swift */; };
 		7193102B1EDDB9960065B5AD /* WBAbstractPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310281EDDB9960065B5AD /* WBAbstractPicker.m */; };
@@ -81,9 +89,6 @@
 		71AEDDEB1EDF918600BAC0DD /* FetchedCollectionViewControllerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDEA1EDF918600BAC0DD /* FetchedCollectionViewControllerSwift.swift */; };
 		71CD20C91ED764DA006C4EE6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD20C81ED764DA006C4EE6 /* Currency.swift */; };
 		71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */; };
-		71E5A2D61EE7338000B8D118 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C413D31EE6F826003CE891 /* GeneratedMocks.swift */; };
-		71E5A2D71EE7338000B8D118 /* TripDistancesModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F596D1EE5C6A100C240D8 /* TripDistancesModuleTest.swift */; };
-		71E5A2D81EE7338000B8D118 /* EditDistanceModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F59841EE5F17E00C240D8 /* EditDistanceModuleTest.swift */; };
 		71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */; };
 		841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB302190818C400D28CBF /* WBActionSheetPicker.h */; };
 		8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */; };
@@ -442,6 +447,7 @@
 		713D354F1EDA4AEB00D8563D /* NSMutableString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Extensions.m"; sourceTree = "<group>"; };
 		713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCSVGeneratorTest.swift; sourceTree = "<group>"; };
 		713D35541EDA54A700D8563D /* TripCSVGenerator+Testable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TripCSVGenerator+Testable.h"; sourceTree = "<group>"; };
+		71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportShareService.swift; sourceTree = "<group>"; };
 		7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdPresentingContainerViewController.swift; sourceTree = "<group>"; };
 		716F34471EE040E100D0017A /* EditDistance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditDistance.storyboard; sourceTree = "<group>"; };
 		716F34481EE040E100D0017A /* EditDistanceDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceDisplayData.swift; sourceTree = "<group>"; };
@@ -452,6 +458,13 @@
 		716F34531EE041FF00D0017A /* InputCellsViewControllerSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCellsViewControllerSwift.swift; sourceTree = "<group>"; };
 		717F596D1EE5C6A100C240D8 /* TripDistancesModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDistancesModuleTest.swift; sourceTree = "<group>"; };
 		717F59841EE5F17E00C240D8 /* EditDistanceModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceModuleTest.swift; sourceTree = "<group>"; };
+		7190D4491EE88CC40081CB22 /* GenerateReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GenerateReport.storyboard; sourceTree = "<group>"; };
+		7190D44A1EE88CC40081CB22 /* GenerateReportDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportDisplayData.swift; sourceTree = "<group>"; };
+		7190D44B1EE88CC40081CB22 /* GenerateReportInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportInteractor.swift; sourceTree = "<group>"; };
+		7190D44C1EE88CC40081CB22 /* GenerateReportPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportPresenter.swift; sourceTree = "<group>"; };
+		7190D44D1EE88CC40081CB22 /* GenerateReportRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportRouter.swift; sourceTree = "<group>"; };
+		7190D44E1EE88CC40081CB22 /* GenerateReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportView.swift; sourceTree = "<group>"; };
+		7190D4551EE893900081CB22 /* GenerateReportFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportFormView.swift; sourceTree = "<group>"; };
 		7191F0E71EE20EBA0082DA47 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		719310251EDDB7CF0065B5AD /* FetchedPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchedPlaceholderView.swift; path = Views/FetchedPlaceholderView.swift; sourceTree = "<group>"; };
 		719310271EDDB9960065B5AD /* WBAbstractPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBAbstractPicker.h; path = Views/WBAbstractPicker.h; sourceTree = "<group>"; };
@@ -1103,6 +1116,7 @@
 			children = (
 				717F596B1EE5C13100C240D8 /* Trip Distances */,
 				717F596C1EE5C14300C240D8 /* Edit Distance */,
+				7190D43B1EE888E10081CB22 /* Generate Report */,
 			);
 			path = "Modules Tests";
 			sourceTree = "<group>";
@@ -1121,6 +1135,28 @@
 				717F59841EE5F17E00C240D8 /* EditDistanceModuleTest.swift */,
 			);
 			path = "Edit Distance";
+			sourceTree = "<group>";
+		};
+		7190D43B1EE888E10081CB22 /* Generate Report */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Generate Report";
+			sourceTree = "<group>";
+		};
+		7190D43C1EE8891F0081CB22 /* Generate Report */ = {
+			isa = PBXGroup;
+			children = (
+				7190D4491EE88CC40081CB22 /* GenerateReport.storyboard */,
+				7190D44A1EE88CC40081CB22 /* GenerateReportDisplayData.swift */,
+				7190D44B1EE88CC40081CB22 /* GenerateReportInteractor.swift */,
+				7190D44C1EE88CC40081CB22 /* GenerateReportPresenter.swift */,
+				7190D44D1EE88CC40081CB22 /* GenerateReportRouter.swift */,
+				7190D44E1EE88CC40081CB22 /* GenerateReportView.swift */,
+				7190D4551EE893900081CB22 /* GenerateReportFormView.swift */,
+				71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */,
+			);
+			path = "Generate Report";
 			sourceTree = "<group>";
 		};
 		719310231EDDB60E0065B5AD /* Constants */ = {
@@ -1148,6 +1184,7 @@
 				71AEDDE61EDF823D00BAC0DD /* AppModules.swift */,
 				71AEDDD51EDF7FB900BAC0DD /* Trip Distances */,
 				716F34461EE040A000D0017A /* Edit Distance */,
+				7190D43C1EE8891F0081CB22 /* Generate Report */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -2205,6 +2242,7 @@
 				EA2B8D881B4EF44B0043A84B /* TripReportHeader.xib in Resources */,
 				EA40DC701B555CFE003BF545 /* FullPagePDFPageView.xib in Resources */,
 				716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */,
+				7190D44F1EE88CC40081CB22 /* GenerateReport.storyboard in Resources */,
 				EA07BF351AF3B703004D17F6 /* InlinedDatePickerCell.xib in Resources */,
 				EA1309A51B50282A0045FDDE /* PDFReportTable.xib in Resources */,
 				EAE9DB021AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.xib in Resources */,
@@ -2335,14 +2373,15 @@
 				"$(SRCROOT)/SmartReceipts/Modules/Edit Distance/EditDistanceRouter.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift",
-				"$(SRCROOT)/SmartReceipts/Modules/Trip Distances/TripDistancesRouter.swift",
+				"$(SRCROOT)/SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift",
+				"$(SRCROOT)/SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift",
 			);
 			name = "Cuckoo Tests";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Define output file. Change \"$PROJECT_DIR/Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/SmartReceiptsTests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"$PROJECT_DIR\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"$PROJECT_DIR/SmartReceipts\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n${PODS_ROOT}/Cuckoo/run generate --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n# ... and so forth\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.";
+			shellScript = "OUTPUT_FILE=\"$PROJECT_DIR/SmartReceiptsTests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n${PODS_ROOT}/Cuckoo/run generate --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\"";
 		};
 		C20DB16583F6538F38361590 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2427,6 +2466,7 @@
 				57C0EED11E2AE972001B4758 /* CustomLogFormatter.swift in Sources */,
 				EA888A861AFB4FBD00DF2AE6 /* Database+Trips.m in Sources */,
 				A758CE941D01760C00169C7C /* QuickAlertPresenter.swift in Sources */,
+				7190D4531EE88CC40081CB22 /* GenerateReportRouter.swift in Sources */,
 				EA00D0101B06321A00C87678 /* EditTripViewController.m in Sources */,
 				EA2B8D7E1B4EF1DA0043A84B /* RenderedPDFLabel.m in Sources */,
 				EA8D819A1AEA7C3100BAC943 /* ReceiptColumnImagePath.m in Sources */,
@@ -2435,6 +2475,8 @@
 				EA8D81A61AEA7C7D00BAC943 /* ReceiptColumnName.m in Sources */,
 				EA8D81A31AEA7C6B00BAC943 /* ReceiptColumnDate.m in Sources */,
 				EA8D81851AEA7B7500BAC943 /* ReceiptColumnCategoryCode.m in Sources */,
+				71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */,
+				7190D4511EE88CC40081CB22 /* GenerateReportInteractor.swift in Sources */,
 				EA0677F21B04E38F0058A326 /* EditReceiptViewController.m in Sources */,
 				5757D6101E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift in Sources */,
 				7193103F1EDDC2810065B5AD /* WBFileManager.m in Sources */,
@@ -2445,6 +2487,7 @@
 				EA1D42C41B03901A00D64D3A /* EntryOnlyCell.m in Sources */,
 				EAE9DAEE1AF8EA6D00F4FE76 /* DistancePriceColumn.m in Sources */,
 				716F34521EE040E100D0017A /* EditDistanceView.swift in Sources */,
+				7190D4521EE88CC40081CB22 /* GenerateReportPresenter.swift in Sources */,
 				EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */,
 				719310421EDDC2810065B5AD /* WBTextUtils.m in Sources */,
 				EA8D81941AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.m in Sources */,
@@ -2476,6 +2519,7 @@
 				EA3C96AD1AECC95100A2A5F9 /* TripImagesPDFGenerator.m in Sources */,
 				A7F05BE31CFD95710079F1AD /* FMDatabase+Receipts.swift in Sources */,
 				EA0677ED1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m in Sources */,
+				7190D4501EE88CC40081CB22 /* GenerateReportDisplayData.swift in Sources */,
 				EA259CD81B1606EC00ECBD67 /* DataImport.m in Sources */,
 				A7D6CDE91D05547F00998FEF /* WBGenerateViewController.swift in Sources */,
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
@@ -2638,8 +2682,10 @@
 				BA6659EA9A31ADDC9CD10970 /* WBMoveCopyReceiptViewController.m in Sources */,
 				BA66575369EE00A19F841E42 /* WBNoTripsViewController.m in Sources */,
 				BA665F06B922055E7D3BED31 /* WBColumnsViewController.m in Sources */,
+				7190D4561EE893900081CB22 /* GenerateReportFormView.swift in Sources */,
 				71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */,
 				BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */,
+				7190D4541EE88CC40081CB22 /* GenerateReportView.swift in Sources */,
 				711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */,
 				BA665929E9C98CC6D3604390 /* WBNewCategoryViewController.m in Sources */,
 			);
@@ -2649,7 +2695,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71E5A2D81EE7338000B8D118 /* EditDistanceModuleTest.swift in Sources */,
 				EAD15C771B087029003BB1F3 /* DatabaseReceiptsCopyMoveTest.m in Sources */,
 				A7F05BC01CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift in Sources */,
 				EAD3EF851B0E00E000CA1D4D /* DatabaseReceiptsSwapTest.m in Sources */,
@@ -2657,10 +2702,8 @@
 				EA07BF6C1AF51D5D004D17F6 /* DatabaseTestsHelper.m in Sources */,
 				EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */,
 				EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */,
-				71E5A2D71EE7338000B8D118 /* TripDistancesModuleTest.swift in Sources */,
 				717F596F1EE5C73200C240D8 /* AppModules.swift in Sources */,
 				EA8CEAE71AFCEBE90007B3F5 /* DatabaseTripsSumTest.m in Sources */,
-				71E5A2D61EE7338000B8D118 /* GeneratedMocks.swift in Sources */,
 				A709D7451CF348EC00897DD9 /* DatabaseQueryAndroidV14Receipts.swift in Sources */,
 				A7A720E51CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift in Sources */,
 				EAED9B221AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m in Sources */,
