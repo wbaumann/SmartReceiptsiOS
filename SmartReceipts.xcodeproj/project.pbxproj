@@ -2367,6 +2367,7 @@
 				"$(SRCROOT)/SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift",
+				"$(SRCROOT)/SmartReceipts/Modules/Generate Report/GenerateReportShareService.swift",
 			);
 			name = "Cuckoo Tests";
 			outputPaths = (
