@@ -17,10 +17,10 @@ final class GenerateReportInteractor: Interactor {
     var generator: ReportAssetsGenerator?
     var shareService: GenerateReportShareService?
     
-    private var fullPdfReport = Variable(false)
-    private var pdfReportWithoutTable = Variable(false)
-    private var csvFile = Variable(false)
-    private var zipStampedJPGs = Variable(false)
+    private var fullPdfReport: Variable         = Variable(false)
+    private var pdfReportWithoutTable: Variable = Variable(false)
+    private var csvFile: Variable               = Variable(false)
+    private var zipStampedJPGs: Variable        = Variable(false)
     
     func configureBinding() {
         presenter.fullPdfReport.bind(to: fullPdfReport).addDisposableTo(disposeBag)
