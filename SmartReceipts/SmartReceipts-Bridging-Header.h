@@ -56,7 +56,6 @@
 
 #import "WBAppDelegate.h"
 #import "WBCategory.h"
-#import "WBGenerateViewController.h"
 #import "WBImageStampler.h"
 #import "WBPreferences.h"
 #import "WBReceipt.h"

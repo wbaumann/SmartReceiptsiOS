@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MessageUI
 
 class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate {
 
