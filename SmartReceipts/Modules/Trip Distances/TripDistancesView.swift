@@ -92,11 +92,11 @@ class TripDistancesView: FetchedCollectionViewControllerSwift {
     
     //MARK: Actions
     private func configureUIActions() {
-        _ = doneButtonItem?.rx.tap.subscribe(onNext: { [weak self] in
+        doneButtonItem?.rx.tap.subscribe(onNext: { [weak self] in
             self?.dismiss(animated: true, completion: nil)
         }).disposed(by: disposeBag)
         
-        _ = addButtonItem?.rx.tap.subscribe(onNext: { [weak self] in
+        addButtonItem?.rx.tap.subscribe(onNext: { [weak self] in
             self?.showEditDistance(with: (self?.trip, nil as Distance?))
         }).disposed(by: disposeBag)
         

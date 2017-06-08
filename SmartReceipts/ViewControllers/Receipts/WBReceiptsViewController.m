@@ -283,10 +283,6 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     else if ([[segue identifier] isEqualToString:@"Settings"]) {
 
     }
-    else if ([[segue identifier] isEqualToString:@"GenerateReport"]) {
-        WBGenerateViewController *vc = (WBGenerateViewController *) [[segue destinationViewController] topViewController];
-        [vc setTrip:self.trip];
-    }
 
     [self setTapped:nil];
 }
@@ -344,6 +340,10 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
     
 - (IBAction)onDistancesTap:(id)sender {
     [self openDistancesFor:self.trip];
+}
+    
+- (IBAction)onGenerateReportTap:(id)sender {
+    [self openGenerateReportFor:self.trip];
 }
 
 

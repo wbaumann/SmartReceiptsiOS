@@ -169,6 +169,7 @@
 "generate.report.unsuccessful.alert.pdf.columns.message" = "There is not enough space to fit all the columns in the report. Please try limiting the number of PDF columns in Settings";
 "generate.report.unsuccessful.alert.pdf.columns.message.tryportrait" = "There is not enough space to fit all the columns in the report. Please try limiting the number of PDF columns in Settings or use 'Print receipts table in landscape mode' option";
 "generate.report.unsuccessful.alert.pdf.columns.title" = "Too many columns";
+"generate.report.button.configure.layout" = "Tap to configure the report layouts";
 
 "generic.button.title.cancel" = "Anuluj";
 "generic.button.title.no" = "Nie";

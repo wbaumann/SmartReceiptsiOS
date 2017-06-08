@@ -27,3 +27,9 @@ func delayedExecution(_ afterSecons: TimeInterval, closure: @escaping () -> ()) 
 func LocalizedString(_ key: String, comment: String = "") -> String {
     return NSLocalizedString(key, comment: comment)
 }
+
+func MainStoryboard() -> UIStoryboard {
+    return UI_USER_INTERFACE_IDIOM() == .pad ?
+        UIStoryboard(name: "MainStoryboard_iPad", bundle: nil) :
+        UIStoryboard(name: "MainStoryboard_iPhone", bundle: nil)
+}

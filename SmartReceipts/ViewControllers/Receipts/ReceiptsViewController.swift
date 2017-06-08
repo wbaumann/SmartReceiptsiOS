@@ -14,4 +14,10 @@ extension WBReceiptsViewController {
         let module = Module.build(AppModules.tripDistances)
         module.router.show(from: self, embedInNavController: true, setupData: trip)
     }
+    
+    // Generate Report Module temporary opens from extension before WBReceiptsViewController Swift
+    func openGenerateReport(for trip: WBTrip) {
+        let module = Module.build(AppModules.generateReport)
+        module.router.show(from: self, embedInNavController: true, setupData: trip)
+    }
 }
