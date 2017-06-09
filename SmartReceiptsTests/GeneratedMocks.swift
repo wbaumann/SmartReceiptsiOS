@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift at 2017-06-08 20:10:05 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift at 2017-06-09 21:39:51 +0000
 
 //
 //  GenerateReportPresenter.swift
@@ -318,7 +318,7 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift at 2017-06-08 20:10:05 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift at 2017-06-09 21:39:51 +0000
 
 //
 //  TripDistancesInteractor.swift
@@ -448,7 +448,7 @@ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift at 2017-06-08 20:10:05 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift at 2017-06-09 21:39:51 +0000
 
 //
 //  TripDistancesPresenter.swift
@@ -632,7 +632,7 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift at 2017-06-08 20:10:05 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift at 2017-06-09 21:39:51 +0000
 
 //
 //  GenerateReportInteractor.swift
@@ -903,7 +903,7 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportShareService.swift at 2017-06-08 20:10:05 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportShareService.swift at 2017-06-09 21:39:51 +0000
 
 //
 //  GenerateReportShareService.swift
@@ -1060,7 +1060,7 @@ class MockGenerateReportShareService: GenerateReportShareService, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistancePresenter.swift at 2017-06-08 20:10:05 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistancePresenter.swift at 2017-06-09 21:39:51 +0000
 
 //
 //  EditDistancePresenter.swift
@@ -1217,7 +1217,7 @@ class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceRouter.swift at 2017-06-08 20:10:05 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceRouter.swift at 2017-06-09 21:39:51 +0000
 
 //
 //  EditDistanceRouter.swift
@@ -1320,7 +1320,7 @@ class MockEditDistanceRouter: EditDistanceRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceInteractor.swift at 2017-06-08 20:10:05 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceInteractor.swift at 2017-06-09 21:39:51 +0000
 
 //
 //  EditDistanceInteractor.swift
@@ -1415,6 +1415,217 @@ class MockEditDistanceInteractor: EditDistanceInteractor, Cuckoo.Mock {
 
     
      override func save(distance: Distance, asNewDistance: Bool)  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+}
+
+
+
+
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportRouter.swift at 2017-06-09 21:39:51 +0000
+
+//
+//  GenerateReportRouter.swift
+//  SmartReceipts
+//
+//  Created by Bogdan Evsenev on 07/06/2017.
+//  Copyright © 2017 Will Baumann. All rights reserved.
+//
+
+import Cuckoo
+@testable import SmartReceipts
+
+import Foundation
+import Viperit
+
+class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.Mock {
+    typealias MocksType = GenerateReportRouter
+    typealias Stubbing = __StubbingProxy_GenerateReportRouter
+    typealias Verification = __VerificationProxy_GenerateReportRouter
+    let cuckoo_manager = Cuckoo.MockManager()
+
+    private var observed: GenerateReportRouter?
+
+    func spy(on victim: GenerateReportRouter) -> Self {
+        observed = victim
+        return self
+    }
+
+    
+
+    
+
+    
+     override func close()  {
+        
+        return cuckoo_manager.call("close()",
+            parameters: (),
+            original: observed.map { o in
+                return { () in
+                    o.close()
+                }
+            })
+        
+    }
+    
+     override func openAlert(title: String, message: String)  {
+        
+        return cuckoo_manager.call("openAlert(title: String, message: String)",
+            parameters: (title, message),
+            original: observed.map { o in
+                return { (title: String, message: String) in
+                    o.openAlert(title: title, message: message)
+                }
+            })
+        
+    }
+    
+     override func openSheet(title: String?, message: String?, actions: [UIAlertAction])  {
+        
+        return cuckoo_manager.call("openSheet(title: String?, message: String?, actions: [UIAlertAction])",
+            parameters: (title, message, actions),
+            original: observed.map { o in
+                return { (title: String?, message: String?, actions: [UIAlertAction]) in
+                    o.openSheet(title: title, message: message, actions: actions)
+                }
+            })
+        
+    }
+    
+     override func openSettings()  {
+        
+        return cuckoo_manager.call("openSettings()",
+            parameters: (),
+            original: observed.map { o in
+                return { () in
+                    o.openSettings()
+                }
+            })
+        
+    }
+    
+     override func open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)  {
+        
+        return cuckoo_manager.call("open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)",
+            parameters: (vc, animated, isPopover, completion),
+            original: observed.map { o in
+                return { (vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?) in
+                    o.open(vc: vc, animated: animated, isPopover: isPopover, completion: completion)
+                }
+            })
+        
+    }
+    
+
+    struct __StubbingProxy_GenerateReportRouter: Cuckoo.StubbingProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+
+        init(manager: Cuckoo.MockManager) {
+            self.cuckoo_manager = manager
+        }
+        
+        
+        func close() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("close()", parameterMatchers: matchers))
+        }
+        
+        func openAlert<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(title: M1, message: M2) -> Cuckoo.StubNoReturnFunction<(String, String)> where M1.MatchedType == String, M2.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(String, String)>] = [wrap(matchable: title) { $0.0 }, wrap(matchable: message) { $0.1 }]
+            return .init(stub: cuckoo_manager.createStub("openAlert(title: String, message: String)", parameterMatchers: matchers))
+        }
+        
+        func openSheet<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable>(title: M1, message: M2, actions: M3) -> Cuckoo.StubNoReturnFunction<(String?, String?, [UIAlertAction])> where M1.MatchedType == String?, M2.MatchedType == String?, M3.MatchedType == [UIAlertAction] {
+            let matchers: [Cuckoo.ParameterMatcher<(String?, String?, [UIAlertAction])>] = [wrap(matchable: title) { $0.0 }, wrap(matchable: message) { $0.1 }, wrap(matchable: actions) { $0.2 }]
+            return .init(stub: cuckoo_manager.createStub("openSheet(title: String?, message: String?, actions: [UIAlertAction])", parameterMatchers: matchers))
+        }
+        
+        func openSettings() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("openSettings()", parameterMatchers: matchers))
+        }
+        
+        func open<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable, M4: Cuckoo.Matchable>(vc: M1, animated: M2, isPopover: M3, completion: M4) -> Cuckoo.StubNoReturnFunction<(UIViewController, Bool, Bool, (() -> Void)?)> where M1.MatchedType == UIViewController, M2.MatchedType == Bool, M3.MatchedType == Bool, M4.MatchedType == (() -> Void)? {
+            let matchers: [Cuckoo.ParameterMatcher<(UIViewController, Bool, Bool, (() -> Void)?)>] = [wrap(matchable: vc) { $0.0 }, wrap(matchable: animated) { $0.1 }, wrap(matchable: isPopover) { $0.2 }, wrap(matchable: completion) { $0.3 }]
+            return .init(stub: cuckoo_manager.createStub("open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)", parameterMatchers: matchers))
+        }
+        
+    }
+
+
+    struct __VerificationProxy_GenerateReportRouter: Cuckoo.VerificationProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+        private let callMatcher: Cuckoo.CallMatcher
+        private let sourceLocation: Cuckoo.SourceLocation
+
+        init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+            self.cuckoo_manager = manager
+            self.callMatcher = callMatcher
+            self.sourceLocation = sourceLocation
+        }
+
+        
+
+        
+        @discardableResult
+        func close() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func openAlert<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(title: M1, message: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == String, M2.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(String, String)>] = [wrap(matchable: title) { $0.0 }, wrap(matchable: message) { $0.1 }]
+            return cuckoo_manager.verify("openAlert(title: String, message: String)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func openSheet<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable>(title: M1, message: M2, actions: M3) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == String?, M2.MatchedType == String?, M3.MatchedType == [UIAlertAction] {
+            let matchers: [Cuckoo.ParameterMatcher<(String?, String?, [UIAlertAction])>] = [wrap(matchable: title) { $0.0 }, wrap(matchable: message) { $0.1 }, wrap(matchable: actions) { $0.2 }]
+            return cuckoo_manager.verify("openSheet(title: String?, message: String?, actions: [UIAlertAction])", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func openSettings() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("openSettings()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func open<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable, M4: Cuckoo.Matchable>(vc: M1, animated: M2, isPopover: M3, completion: M4) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == UIViewController, M2.MatchedType == Bool, M3.MatchedType == Bool, M4.MatchedType == (() -> Void)? {
+            let matchers: [Cuckoo.ParameterMatcher<(UIViewController, Bool, Bool, (() -> Void)?)>] = [wrap(matchable: vc) { $0.0 }, wrap(matchable: animated) { $0.1 }, wrap(matchable: isPopover) { $0.2 }, wrap(matchable: completion) { $0.3 }]
+            return cuckoo_manager.verify("open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+    }
+
+
+}
+
+ class GenerateReportRouterStub: GenerateReportRouter {
+    
+
+    
+
+    
+     override func close()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func openAlert(title: String, message: String)  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func openSheet(title: String?, message: String?, actions: [UIAlertAction])  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func openSettings()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
