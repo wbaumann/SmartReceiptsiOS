@@ -9,7 +9,7 @@
 import Foundation
 import Viperit
 
-final class GenerateReportRouter: Router {
+class GenerateReportRouter: Router {
     func close() {
         _view.dismiss(animated: true, completion: nil)
     }

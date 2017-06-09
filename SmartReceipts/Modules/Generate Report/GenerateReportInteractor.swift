@@ -11,7 +11,7 @@ import Viperit
 import RxSwift
 import RxCocoa
 
-final class GenerateReportInteractor: Interactor {
+class GenerateReportInteractor: Interactor {
     private let disposeBag = DisposeBag()
     
     var generator: ReportAssetsGenerator?

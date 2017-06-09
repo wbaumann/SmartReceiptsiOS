@@ -10,7 +10,7 @@ import Foundation
 import Viperit
 import RxSwift
 
-final class GenerateReportPresenter: Presenter {
+class GenerateReportPresenter: Presenter {
     
     let fullPdfReport = BehaviorSubject<Bool>(value: false)
     let pdfReportWithoutTable = BehaviorSubject<Bool>(value: false)
