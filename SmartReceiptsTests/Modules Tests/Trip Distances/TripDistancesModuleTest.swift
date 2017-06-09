@@ -7,10 +7,10 @@
 //
 
 @testable import Cuckoo
+@testable import SmartReceipts
 
 import XCTest
 import Viperit
-
 
 class TripDistancesModuleTest: XCTestCase {
     
@@ -21,22 +21,26 @@ class TripDistancesModuleTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        
+        let p = TripDistancesPresenter()
+        let i = TripDistancesInteractor()
+        
         var module = Module.build(AppModules.tripDistances)
-        module.injectMock(presenter: MockTripDistancesPresenter())
-        module.injectMock(interactor: MockTripDistancesInteractor())
+        
+        module.injectMock(presenter: MockTripDistancesPresenter().spy(on: p))
+        module.injectMock(interactor: MockTripDistancesInteractor().spy(on: i))
         
         presenter = module.presenter as! MockTripDistancesPresenter
         interactor = module.interactor as! MockTripDistancesInteractor
-        confugureStubs()
+        
+        // Connect Mock & Real
+        p._interactor = interactor
+        i._presenter = presenter
+        
+        configureStubs()
     }
     
-    func confugureStubs() {
-        stub(presenter) { mock in
-            mock.delete(distance: Distance()).then({ distance in
-                self.hasDistance = false
-            })
-        }
-        
+    func configureStubs() {
         stub(interactor) { mock in
             mock.delete(distance: Distance()).then({ distance in
                 self.hasDistance = false
@@ -49,15 +53,8 @@ class TripDistancesModuleTest: XCTestCase {
         hasDistance = true
     }
     
-    func testInteractorDeleteDistance() {
-        interactor.delete(distance: Distance())
-        verify(interactor).delete(distance: Distance())
-        XCTAssertFalse(hasDistance)
-    }
-    
-    func testPresenterDeleteDistance() {
+    func testPresenterToInteractor() {
         presenter.delete(distance: Distance())
-        verify(presenter).delete(distance: Distance())
         XCTAssertFalse(hasDistance)
     }
 }

@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift at 2017-06-09 21:39:51 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift at 2017-06-09 22:12:42 +0000
 
 //
 //  GenerateReportPresenter.swift
@@ -318,7 +318,7 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift at 2017-06-09 21:39:51 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift at 2017-06-09 22:12:42 +0000
 
 //
 //  TripDistancesInteractor.swift
@@ -448,7 +448,7 @@ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift at 2017-06-09 21:39:51 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift at 2017-06-09 22:12:42 +0000
 
 //
 //  TripDistancesPresenter.swift
@@ -632,7 +632,7 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift at 2017-06-09 21:39:51 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift at 2017-06-09 22:12:42 +0000
 
 //
 //  GenerateReportInteractor.swift
@@ -903,164 +903,7 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportShareService.swift at 2017-06-09 21:39:51 +0000
-
-//
-//  GenerateReportShareService.swift
-//  SmartReceipts
-//
-//  Created by Bogdan Evsenev on 08/06/2017.
-//  Copyright © 2017 Will Baumann. All rights reserved.
-//
-
-import Cuckoo
-@testable import SmartReceipts
-
-import Foundation
-import MessageUI
-
-class MockGenerateReportShareService: GenerateReportShareService, Cuckoo.Mock {
-    typealias MocksType = GenerateReportShareService
-    typealias Stubbing = __StubbingProxy_GenerateReportShareService
-    typealias Verification = __VerificationProxy_GenerateReportShareService
-    let cuckoo_manager = Cuckoo.MockManager()
-
-    private var observed: GenerateReportShareService?
-
-    func spy(on victim: GenerateReportShareService) -> Self {
-        observed = victim
-        return self
-    }
-
-    
-
-    
-
-    
-     override func emailFiles(_ files: [String])  {
-        
-        return cuckoo_manager.call("emailFiles(_: [String])",
-            parameters: (files),
-            original: observed.map { o in
-                return { (files: [String]) in
-                    o.emailFiles(files)
-                }
-            })
-        
-    }
-    
-     override func shareFiles(_ files: [String])  {
-        
-        return cuckoo_manager.call("shareFiles(_: [String])",
-            parameters: (files),
-            original: observed.map { o in
-                return { (files: [String]) in
-                    o.shareFiles(files)
-                }
-            })
-        
-    }
-    
-    public override func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)  {
-        
-        return cuckoo_manager.call("mailComposeController(_: MFMailComposeViewController, didFinishWith: MFMailComposeResult, error: Error?)",
-            parameters: (controller, result, error),
-            original: observed.map { o in
-                return { (controller: MFMailComposeViewController, result: MFMailComposeResult, error: Error?) in
-                    o.mailComposeController(controller, didFinishWith: result, error: error)
-                }
-            })
-        
-    }
-    
-
-    struct __StubbingProxy_GenerateReportShareService: Cuckoo.StubbingProxy {
-        private let cuckoo_manager: Cuckoo.MockManager
-
-        init(manager: Cuckoo.MockManager) {
-            self.cuckoo_manager = manager
-        }
-        
-        
-        func emailFiles<M1: Cuckoo.Matchable>(_ files: M1) -> Cuckoo.StubNoReturnFunction<([String])> where M1.MatchedType == [String] {
-            let matchers: [Cuckoo.ParameterMatcher<([String])>] = [wrap(matchable: files) { $0 }]
-            return .init(stub: cuckoo_manager.createStub("emailFiles(_: [String])", parameterMatchers: matchers))
-        }
-        
-        func shareFiles<M1: Cuckoo.Matchable>(_ files: M1) -> Cuckoo.StubNoReturnFunction<([String])> where M1.MatchedType == [String] {
-            let matchers: [Cuckoo.ParameterMatcher<([String])>] = [wrap(matchable: files) { $0 }]
-            return .init(stub: cuckoo_manager.createStub("shareFiles(_: [String])", parameterMatchers: matchers))
-        }
-        
-        func mailComposeController<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable>(_ controller: M1, didFinishWith result: M2, error: M3) -> Cuckoo.StubNoReturnFunction<(MFMailComposeViewController, MFMailComposeResult, Error?)> where M1.MatchedType == MFMailComposeViewController, M2.MatchedType == MFMailComposeResult, M3.MatchedType == Error? {
-            let matchers: [Cuckoo.ParameterMatcher<(MFMailComposeViewController, MFMailComposeResult, Error?)>] = [wrap(matchable: controller) { $0.0 }, wrap(matchable: result) { $0.1 }, wrap(matchable: error) { $0.2 }]
-            return .init(stub: cuckoo_manager.createStub("mailComposeController(_: MFMailComposeViewController, didFinishWith: MFMailComposeResult, error: Error?)", parameterMatchers: matchers))
-        }
-        
-    }
-
-
-    struct __VerificationProxy_GenerateReportShareService: Cuckoo.VerificationProxy {
-        private let cuckoo_manager: Cuckoo.MockManager
-        private let callMatcher: Cuckoo.CallMatcher
-        private let sourceLocation: Cuckoo.SourceLocation
-
-        init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
-            self.cuckoo_manager = manager
-            self.callMatcher = callMatcher
-            self.sourceLocation = sourceLocation
-        }
-
-        
-
-        
-        @discardableResult
-        func emailFiles<M1: Cuckoo.Matchable>(_ files: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == [String] {
-            let matchers: [Cuckoo.ParameterMatcher<([String])>] = [wrap(matchable: files) { $0 }]
-            return cuckoo_manager.verify("emailFiles(_: [String])", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-        }
-        
-        @discardableResult
-        func shareFiles<M1: Cuckoo.Matchable>(_ files: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == [String] {
-            let matchers: [Cuckoo.ParameterMatcher<([String])>] = [wrap(matchable: files) { $0 }]
-            return cuckoo_manager.verify("shareFiles(_: [String])", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-        }
-        
-        @discardableResult
-        func mailComposeController<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable>(_ controller: M1, didFinishWith result: M2, error: M3) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == MFMailComposeViewController, M2.MatchedType == MFMailComposeResult, M3.MatchedType == Error? {
-            let matchers: [Cuckoo.ParameterMatcher<(MFMailComposeViewController, MFMailComposeResult, Error?)>] = [wrap(matchable: controller) { $0.0 }, wrap(matchable: result) { $0.1 }, wrap(matchable: error) { $0.2 }]
-            return cuckoo_manager.verify("mailComposeController(_: MFMailComposeViewController, didFinishWith: MFMailComposeResult, error: Error?)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-        }
-        
-    }
-
-
-}
-
- class GenerateReportShareServiceStub: GenerateReportShareService {
-    
-
-    
-
-    
-     override func emailFiles(_ files: [String])  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-     override func shareFiles(_ files: [String])  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-    public override func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-}
-
-
-
-
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistancePresenter.swift at 2017-06-09 21:39:51 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistancePresenter.swift at 2017-06-09 22:12:42 +0000
 
 //
 //  EditDistancePresenter.swift
@@ -1217,7 +1060,7 @@ class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceRouter.swift at 2017-06-09 21:39:51 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceRouter.swift at 2017-06-09 22:12:42 +0000
 
 //
 //  EditDistanceRouter.swift
@@ -1320,7 +1163,7 @@ class MockEditDistanceRouter: EditDistanceRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceInteractor.swift at 2017-06-09 21:39:51 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceInteractor.swift at 2017-06-09 22:12:42 +0000
 
 //
 //  EditDistanceInteractor.swift
@@ -1423,7 +1266,7 @@ class MockEditDistanceInteractor: EditDistanceInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportRouter.swift at 2017-06-09 21:39:51 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportRouter.swift at 2017-06-09 22:12:42 +0000
 
 //
 //  GenerateReportRouter.swift
