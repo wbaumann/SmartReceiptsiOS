@@ -7,6 +7,7 @@
 //
 
 @testable import Cuckoo
+@testable import SmartReceipts
 
 import Viperit
 import XCTest
@@ -21,33 +22,35 @@ class EditDistanceModuleTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        var module = Module.build(AppModules.editDistance)
-        module.injectMock(presenter: MockEditDistancePresenter())
-        module.injectMock(interactor: MockEditDistanceInteractor())
-        module.injectMock(router: MockEditDistanceRouter())
         
-        presenter = module.presenter as? MockEditDistancePresenter
-        interactor = module.interactor as? MockEditDistanceInteractor
-        router = module.router as? MockEditDistanceRouter
+        let p = EditDistancePresenter()
+        let i = EditDistanceInteractor()
+        let r = EditDistanceRouter()
+        
+        var module = Module.build(AppModules.editDistance)
+        module.injectMock(presenter: MockEditDistancePresenter().spy(on: p))
+        module.injectMock(interactor: MockEditDistanceInteractor().spy(on: i))
+        module.injectMock(router: MockEditDistanceRouter().spy(on: r))
+        
+        presenter = module.presenter as! MockEditDistancePresenter
+        interactor = module.interactor as! MockEditDistanceInteractor
+        router = module.router as! MockEditDistanceRouter
+        
+        // Connect Mock & Real
+        p._router = router
+        p._interactor = interactor
+        i._presenter = presenter
+        r._presenter = presenter
+        
         configureStubs()
     }
     
     func configureStubs() {
-        stub(presenter) { mock in
-            mock.close().thenDoNothing()
-        }
-        
         stub(router) { mock in
             mock.close().thenDoNothing()
         }
         
         stub(interactor) { mock in
-            mock.save(distance: Distance(), asNewDistance: true).then({ (distance, update) in
-                self.distanceSaved = true
-            })
-        }
-        
-        stub(presenter) { mock in
             mock.save(distance: Distance(), asNewDistance: true).then({ (distance, update) in
                 self.distanceSaved = true
             })
@@ -59,26 +62,14 @@ class EditDistanceModuleTest: XCTestCase {
         distanceSaved = false
     }
     
-    func testRouterClose() {
-        router.close()
-        verify(router).close()
-    }
-    
-    func testPresenterClose() {
-        presenter.close()
-        verify(presenter).close()
-    }
-    
-    func testInteractorSaveDistance() {
-        interactor.save(distance: Distance(), asNewDistance: true)
-        verify(interactor).save(distance: Distance(), asNewDistance: true)
-        XCTAssertTrue(distanceSaved)
-    }
-    
-    func testPresenterSaveDistance() {
+    func testPresenterToInteractor() {
         presenter.save(distance: Distance(), asNewDistance: true)
-        verify(presenter).save(distance: Distance(), asNewDistance: true)
         XCTAssertTrue(distanceSaved)
+    }
+    
+    func testPresenterToRouter() {
+        presenter.close()
+        verify(router).close()
     }
 }
 
