@@ -742,31 +742,6 @@
             </objects>
             <point key="canvasLocation" x="211" y="-2423"/>
         </scene>
-        <!--Edit Distance View Controller-->
-        <scene sceneID="ocf-8K-caK">
-            <objects>
-                <tableViewController id="yTB-BU-tva" customClass="EditDistanceViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Tem-0j-BUg">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="yTB-BU-tva" id="sKI-dF-KVQ"/>
-                            <outlet property="delegate" destination="yTB-BU-tva" id="00n-FE-FV1"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="bsZ-vz-r4U">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gro-Uc-HKa">
-                            <connections>
-                                <action selector="saveDistance" destination="yTB-BU-tva" id="U0v-BM-WhL"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z9R-VT-Ef4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1727" y="2774"/>
-        </scene>
         <!--Receipt Name-->
         <scene sceneID="Ds0-Ae-MO8">
             <objects>
@@ -867,9 +842,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Jgh-gp-I9a"/>
+        <segue reference="xNj-kK-je2"/>
         <segue reference="dER-xx-mm6"/>
-        <segue reference="DxA-Mq-uge"/>
         <segue reference="RDj-Cs-14b"/>
+        <segue reference="DxA-Mq-uge"/>
     </inferredMetricsTieBreakers>
 </document>
