@@ -46,6 +46,12 @@
     [self.rate setFirstLaunchDate:[[NSDate date] dateByAddingDays:-8]];
 }
 
+- (void)tearDown {
+    [super tearDown];
+    
+    [self.rate reset];
+}
+
 - (void)testOnAppCrashRatingNotShown {
     XCTAssertTrue(self.rate.shouldShowRateDialog);
     [self.rate markAppCrash];

@@ -38,7 +38,7 @@ extern NSString *const SmartReceiptsSettingsSavedNotification;
 extern NSString *const SmartReceiptsAdsRemovedNotification;
 
 static NSUInteger const SmartReceiptsNumberOfDecimalPlacesForGasRate = 3;
-static NSUInteger const SmartReceiptTargetLaunchesForAppRating = 50;
+static NSUInteger const SmartReceiptTargetLaunchesForAppRating = 15;
 static NSUInteger const SmartReceiptDelayedLaunchesOnAppRatingLater = 10;
 static NSUInteger const SmartReceiptMinUsageDaysForRating = 7;
 
