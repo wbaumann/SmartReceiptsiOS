@@ -553,7 +553,7 @@
 		A79FDC6A1CEA08D400328DBB /* SmartReceipts-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SmartReceipts-Bridging-Header.h"; path = "../SmartReceipts-Bridging-Header.h"; sourceTree = "<group>"; };
 		A79FDC6D1CEA0A5500328DBB /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
 		A79FDC701CEA0AB600328DBB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A79FDC721CEA0D7C00328DBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A79FDC721CEA0D7C00328DBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7A720E01CEEFAF700A3B5FF /* InputCellsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCellsViewController.swift; sourceTree = "<group>"; };
 		A7A720E21CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSIndexPath+Extensions.swift"; sourceTree = "<group>"; };
 		A7A720E41CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgrade14Tests.swift; sourceTree = "<group>"; };
