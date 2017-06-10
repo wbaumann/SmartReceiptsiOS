@@ -11,7 +11,6 @@
 #import "WBFileManager.h"
 
 #import "PendingHUDView.h"
-#import "DataImport.h"
 #import "Constants.h"
 #import "Database+Import.h"
 #import "RateApplication.h"

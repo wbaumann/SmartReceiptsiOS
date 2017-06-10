@@ -64,6 +64,7 @@
 #import "WBTrip.h"
 #import "WBDateFormatter.h"
 #import "WBAutocompleteHelper.h"
+#import "WBFileManager.h"
 
 #import "InputValidation.h"
 
