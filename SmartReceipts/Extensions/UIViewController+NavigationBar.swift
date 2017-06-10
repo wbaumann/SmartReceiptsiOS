@@ -6,12 +6,14 @@
 //  Copyright © 2017 Will Baumann. All rights reserved.
 //
 
+private let BACK_BUTTON_OFFSET: CGFloat = 72
+
 extension UIViewController {
     
     func setTitle(_ title: String, subtitle: String, color: UIColor = UIColor.white) {
         let width: CGFloat = 100
         let height: CGFloat = 18
-        let x: CGFloat = UIScreen.main.bounds.width/2 - width/2
+        let x: CGFloat = view.bounds.width/2 - width/2
         let titleView = UIView(frame: CGRect(x: x, y: 0, width: width, height: 44))
         
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 4, width: width, height: height))
@@ -35,18 +37,19 @@ extension UIViewController {
     }
     
     fileprivate func resizeLabels(_ labels: [UILabel]) {
-        var maxWidth: CGFloat = 0
+        var width: CGFloat = 0
         
-        // Calculate MAX width
+        // Calculate available width
         for label in labels {
             label.sizeToFit()
-            maxWidth = max(maxWidth, label.bounds.width)
+            width = max(width, label.bounds.width)
         }
+        width = min(width, view.bounds.width - BACK_BUTTON_OFFSET * 2)
         
         // Resize all labels to MAX width
         for label in labels {
             label.bounds = CGRect(x: label.bounds.origin.x, y: label.bounds.origin.y,
-                                  width: maxWidth, height: label.bounds.height)
+                                  width: width, height: label.bounds.height)
         }
     }
     
@@ -59,5 +62,4 @@ extension UIViewController {
             label.center = CGPoint(x: view.bounds.width/2, y: label.center.y)
         }
     }
-
 }
