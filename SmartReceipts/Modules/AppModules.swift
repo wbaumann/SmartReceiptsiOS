@@ -12,4 +12,5 @@ enum AppModules: String, ViperitModule {
     case tripDistances
     case editDistance
     case generateReport
+    case trips
 }

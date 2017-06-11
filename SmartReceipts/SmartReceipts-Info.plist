@@ -94,8 +94,6 @@
 	<string>${PRODUCT_NAME} cannot import photos unless you give it permission.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchView</string>
-	<key>UIMainStoryboardFile</key>
-	<string>MainStoryboard_iPhone</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>MainStoryboard_iPad</string>
 	<key>UIRequiredDeviceCapabilities</key>
