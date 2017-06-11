@@ -42,6 +42,7 @@
 
 #import "SettingsViewController.h"
 #import "WBReceiptsViewController.h"
+#import "EditTripViewController.h"
 
 #import "DistanceSummaryCell.h"
 #import "TextEntryCell.h"
@@ -49,6 +50,7 @@
 #import "InputCellsSection.h"
 #import "TitledAutocompleteEntryCell.h"
 #import "SwitchControlCell.h"
+#import "WBCellWithPriceNameDate.h"
 
 #import "TripCSVGenerator.h"
 #import "TripFullPDFGenerator.h"

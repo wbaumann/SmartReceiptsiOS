@@ -842,9 +842,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xNj-kK-je2"/>
+        <segue reference="Jgh-gp-I9a"/>
         <segue reference="dER-xx-mm6"/>
-        <segue reference="RDj-Cs-14b"/>
         <segue reference="DxA-Mq-uge"/>
+        <segue reference="RDj-Cs-14b"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -94,6 +94,8 @@
     
     LOGGER_INFO(@"Application didFinishLaunchingWithOptions: %@", launchOptions);
     
+    [self showTrips];
+    
     return YES;
 }
 

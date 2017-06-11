@@ -96,6 +96,13 @@
 		71AEDDEB1EDF918600BAC0DD /* FetchedCollectionViewControllerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDEA1EDF918600BAC0DD /* FetchedCollectionViewControllerSwift.swift */; };
 		71CD20C91ED764DA006C4EE6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD20C81ED764DA006C4EE6 /* Currency.swift */; };
 		71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */; };
+		71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E2B5751EEDD516001D02F1 /* Trips.storyboard */; };
+		71E2B57D1EEDD516001D02F1 /* TripsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5761EEDD516001D02F1 /* TripsDisplayData.swift */; };
+		71E2B57E1EEDD516001D02F1 /* TripsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5771EEDD516001D02F1 /* TripsInteractor.swift */; };
+		71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */; };
+		71E2B5801EEDD516001D02F1 /* TripsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5791EEDD516001D02F1 /* TripsRouter.swift */; };
+		71E2B5811EEDD516001D02F1 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B57A1EEDD516001D02F1 /* TripsView.swift */; };
+		71E2B5851EEDE7F7001D02F1 /* NoTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5841EEDE7F7001D02F1 /* NoTripsViewController.swift */; };
 		71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */; };
 		841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB302190818C400D28CBF /* WBActionSheetPicker.h */; };
 		8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */; };
@@ -180,7 +187,6 @@
 		BA6654A32D71826EBC7D9B8F /* WBReceiptActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6653628925EC4238313167 /* WBReceiptActionsViewController.m */; };
 		BA6654FB0EA730FF8CBC4B93 /* WBImageSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665DB04425306990A9255C /* WBImageSegue.m */; };
 		BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66588B7C2114029521A399 /* NSDate+Calculations.m */; };
-		BA66575369EE00A19F841E42 /* WBNoTripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665C12773D75AD10BAF758 /* WBNoTripsViewController.m */; };
 		BA665929E9C98CC6D3604390 /* WBNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665BAC0D1C9F6A64F54953 /* WBNewCategoryViewController.m */; };
 		BA665979E02A79C4610624F3 /* SmartReceiptsTestsBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665A5EFF5EE0F233A6FC66 /* SmartReceiptsTestsBase.m */; };
 		BA66598797EF09DBD750184F /* WBAutocompleteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66568C566BD25FE4AFAE3C /* WBAutocompleteHelper.m */; };
@@ -506,6 +512,13 @@
 		71CD20C81ED764DA006C4EE6 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Currency.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		71D59CDA1EDDC993008991B7 /* WBDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDateFormatter.h; sourceTree = "<group>"; };
 		71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDateFormatter.m; sourceTree = "<group>"; };
+		71E2B5751EEDD516001D02F1 /* Trips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trips.storyboard; sourceTree = "<group>"; };
+		71E2B5761EEDD516001D02F1 /* TripsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsDisplayData.swift; sourceTree = "<group>"; };
+		71E2B5771EEDD516001D02F1 /* TripsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsInteractor.swift; sourceTree = "<group>"; };
+		71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsPresenter.swift; sourceTree = "<group>"; };
+		71E2B5791EEDD516001D02F1 /* TripsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsRouter.swift; sourceTree = "<group>"; };
+		71E2B57A1EEDD516001D02F1 /* TripsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
+		71E2B5841EEDE7F7001D02F1 /* NoTripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTripsViewController.swift; sourceTree = "<group>"; };
 		71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBar.swift"; sourceTree = "<group>"; };
 		7B397BE168915C982926C4BC /* Pods_SmartReceipts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartReceipts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841BB302190818C400D28CBF /* WBActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBActionSheetPicker.h; sourceTree = "<group>"; };
@@ -617,10 +630,8 @@
 		BA6658C6E9922C04CCF04745 /* WBAutocompleteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAutocompleteHelper.h; sourceTree = "<group>"; };
 		BA66590C0394B2CE9704CC15 /* WBCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WBCategoriesViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BA665A326028D20117B5E054 /* WBColumnsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnsViewController.h; sourceTree = "<group>"; };
-		BA665A5E325CF4D2E8806039 /* WBNoTripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBNoTripsViewController.h; sourceTree = "<group>"; };
 		BA665A5EFF5EE0F233A6FC66 /* SmartReceiptsTestsBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartReceiptsTestsBase.m; sourceTree = "<group>"; };
 		BA665BAC0D1C9F6A64F54953 /* WBNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNewCategoryViewController.m; sourceTree = "<group>"; };
-		BA665C12773D75AD10BAF758 /* WBNoTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNoTripsViewController.m; sourceTree = "<group>"; };
 		BA665C2F6D5238C64F840985 /* WBImageSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageSegue.h; sourceTree = "<group>"; };
 		BA665C9EEA56CE01EA133B0B /* WBColumnsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnsViewController.m; sourceTree = "<group>"; };
 		BA665DB04425306990A9255C /* WBImageSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageSegue.m; sourceTree = "<group>"; };
@@ -1016,6 +1027,7 @@
 		713D35431EDA32EA00D8563D /* Trips */ = {
 			isa = PBXGroup;
 			children = (
+				71E2B5841EEDE7F7001D02F1 /* NoTripsViewController.swift */,
 				EAB9700D1B078944005E1D63 /* MasterTripsViewController.h */,
 				EAB9700E1B078944005E1D63 /* MasterTripsViewController.m */,
 				EAB970101B0790EE005E1D63 /* TripsViewController.h */,
@@ -1184,6 +1196,7 @@
 				71AEDDD51EDF7FB900BAC0DD /* Trip Distances */,
 				716F34461EE040A000D0017A /* Edit Distance */,
 				7190D43C1EE8891F0081CB22 /* Generate Report */,
+				71DDC2C21EEDBEAA00CFFDBC /* Trips */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1199,6 +1212,19 @@
 				71AEDDDB1EDF7FF400BAC0DD /* TripDistancesView.swift */,
 			);
 			path = "Trip Distances";
+			sourceTree = "<group>";
+		};
+		71DDC2C21EEDBEAA00CFFDBC /* Trips */ = {
+			isa = PBXGroup;
+			children = (
+				71E2B5751EEDD516001D02F1 /* Trips.storyboard */,
+				71E2B5761EEDD516001D02F1 /* TripsDisplayData.swift */,
+				71E2B5771EEDD516001D02F1 /* TripsInteractor.swift */,
+				71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */,
+				71E2B5791EEDD516001D02F1 /* TripsRouter.swift */,
+				71E2B57A1EEDD516001D02F1 /* TripsView.swift */,
+			);
+			path = Trips;
 			sourceTree = "<group>";
 		};
 		8421A1F61907C03B001DF38D /* iPhone */ = {
@@ -1418,8 +1444,6 @@
 				BA66534E5FD8925DFDE86E5C /* Image */,
 				BA665243DF18CF56677B3A86 /* WBMoveCopyReceiptViewController.h */,
 				BA6654EA764091CAC85A2FB2 /* WBMoveCopyReceiptViewController.m */,
-				BA665A5E325CF4D2E8806039 /* WBNoTripsViewController.h */,
-				BA665C12773D75AD10BAF758 /* WBNoTripsViewController.m */,
 				BA665F9DBF1E76E680587BB3 /* WBReceiptActionsViewController.h */,
 				BA6653628925EC4238313167 /* WBReceiptActionsViewController.m */,
 				BA66565E13BBA7886EDCEE33 /* WBReceiptsViewController.h */,
@@ -2225,6 +2249,7 @@
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
 				A78215071CFFF66B00FD644A /* ExchangeRateCell.xib in Resources */,
 				EA1E60D91B2742660048E688 /* Localizable.strings in Resources */,
+				71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */,
 				EA40DC6B1B5559A1003BF545 /* FullPagePDFImageView.xib in Resources */,
 				EA1E60D61B2742660048E688 /* Localizable.strings in Resources */,
 				EA66B2BE1B13809900A57750 /* LaunchView.xib in Resources */,
@@ -2541,6 +2566,7 @@
 				5757D6131E929ECA000F65F9 /* Database+Sync.swift in Sources */,
 				A78215031CFFF39700FD644A /* EditReceiptViewController.swift in Sources */,
 				71AEDDDE1EDF7FF400BAC0DD /* TripDistancesDisplayData.swift in Sources */,
+				71E2B5811EEDD516001D02F1 /* TripsView.swift in Sources */,
 				EA2F23011B41BDDD008AF61E /* PurchaseCell.m in Sources */,
 				EA5ECA2E1AF9F43F008D2CFB /* SettingsSegmentControlCell.m in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
@@ -2605,6 +2631,7 @@
 				71AEDDCD1EDF6A2300BAC0DD /* AppTheme.swift in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */,
 				EA0677F61B04E61A0058A326 /* StringPickableWrapper.m in Sources */,
+				71E2B57D1EEDD516001D02F1 /* TripsDisplayData.swift in Sources */,
 				EA4DC9961AF1580100CEF1B9 /* InputCellsViewController.m in Sources */,
 				EA07BF631AF4EC1E004D17F6 /* FetchedCollectionTableViewController.m in Sources */,
 				716F34511EE040E100D0017A /* EditDistanceRouter.swift in Sources */,
@@ -2627,6 +2654,7 @@
 				57691F001E10613500F78859 /* RateApplication.m in Sources */,
 				A78214FB1CFFE86000FD644A /* ExchangeRate.swift in Sources */,
 				57EEBDC41E093C8F00974E53 /* String+Extensions.swift in Sources */,
+				71E2B57E1EEDD516001D02F1 /* TripsInteractor.swift in Sources */,
 				EAE9DAEB1AF8EA5500F4FE76 /* DistanceLocationColumn.m in Sources */,
 				EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */,
 				EA8D81821AEA7B5800BAC943 /* ReceiptColumnBlank.m in Sources */,
@@ -2638,6 +2666,7 @@
 				EA183E0B1B1C9F6C00577B3D /* Database+PDFColumns.m in Sources */,
 				71CD20C91ED764DA006C4EE6 /* Currency.swift in Sources */,
 				EA8D819D1AEA7C4200BAC943 /* ReceiptColumnComment.m in Sources */,
+				71E2B5851EEDE7F7001D02F1 /* NoTripsViewController.swift in Sources */,
 				EA5963E31AF2912900935344 /* PickerCell.m in Sources */,
 				EA07BF5F1AF4E801004D17F6 /* DistanceSummaryCell.m in Sources */,
 				A7D554D11CFF0F5000169FD2 /* FMDatabase+Trips.swift in Sources */,
@@ -2673,14 +2702,15 @@
 				BA665CE0E265BAAFE063CF3A /* WBReceiptsViewController.m in Sources */,
 				BA6654A32D71826EBC7D9B8F /* WBReceiptActionsViewController.m in Sources */,
 				BA6659EA9A31ADDC9CD10970 /* WBMoveCopyReceiptViewController.m in Sources */,
-				BA66575369EE00A19F841E42 /* WBNoTripsViewController.m in Sources */,
 				BA665F06B922055E7D3BED31 /* WBColumnsViewController.m in Sources */,
 				7190D4561EE893900081CB22 /* GenerateReportFormView.swift in Sources */,
 				71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */,
 				BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */,
+				71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */,
 				7190D4541EE88CC40081CB22 /* GenerateReportView.swift in Sources */,
 				711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */,
 				BA665929E9C98CC6D3604390 /* WBNewCategoryViewController.m in Sources */,
+				71E2B5801EEDD516001D02F1 /* TripsRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
