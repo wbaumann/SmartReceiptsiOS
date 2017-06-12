@@ -104,6 +104,7 @@
 		71E2B5811EEDD516001D02F1 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B57A1EEDD516001D02F1 /* TripsView.swift */; };
 		71E2B5851EEDE7F7001D02F1 /* NoTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5841EEDE7F7001D02F1 /* NoTripsViewController.swift */; };
 		71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */; };
+		71F4682A1EEED923009F6CE7 /* NotifyMasterSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F468291EEED923009F6CE7 /* NotifyMasterSplitViewController.swift */; };
 		841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB302190818C400D28CBF /* WBActionSheetPicker.h */; };
 		8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */; };
 		8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478B77918D385160041CBA3 /* WBPopoverPicker.m */; };
@@ -358,7 +359,6 @@
 		EA90F2921B0CC4DD00FD2DB6 /* DatabaseReceiptsDatesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA90F2911B0CC4DD00FD2DB6 /* DatabaseReceiptsDatesTest.m */; };
 		EA98B51C1B075042006935AE /* WBCellWithPriceNameDate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA98B51B1B075042006935AE /* WBCellWithPriceNameDate.m */; };
 		EA98B51E1B075057006935AE /* WBCellWithPriceNameDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA98B51D1B075057006935AE /* WBCellWithPriceNameDate.xib */; };
-		EA98B5211B077A9A006935AE /* NotifyMasterSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA98B5201B077A9A006935AE /* NotifyMasterSplitViewController.m */; };
 		EAB9700F1B078944005E1D63 /* MasterTripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB9700E1B078944005E1D63 /* MasterTripsViewController.m */; };
 		EAB970121B0790EE005E1D63 /* TripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB970111B0790EE005E1D63 /* TripsViewController.m */; };
 		EAD15C511B07C3A1003BB1F3 /* Database+Notify.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD15C501B07C3A1003BB1F3 /* Database+Notify.m */; };
@@ -520,6 +520,7 @@
 		71E2B57A1EEDD516001D02F1 /* TripsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
 		71E2B5841EEDE7F7001D02F1 /* NoTripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTripsViewController.swift; sourceTree = "<group>"; };
 		71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBar.swift"; sourceTree = "<group>"; };
+		71F468291EEED923009F6CE7 /* NotifyMasterSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifyMasterSplitViewController.swift; sourceTree = "<group>"; };
 		7B397BE168915C982926C4BC /* Pods_SmartReceipts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartReceipts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841BB302190818C400D28CBF /* WBActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBActionSheetPicker.h; sourceTree = "<group>"; };
 		841BB304190818E100D28CBF /* WBActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBActionSheetPicker.m; sourceTree = "<group>"; };
@@ -912,8 +913,6 @@
 		EA98B51A1B075042006935AE /* WBCellWithPriceNameDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCellWithPriceNameDate.h; sourceTree = "<group>"; };
 		EA98B51B1B075042006935AE /* WBCellWithPriceNameDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCellWithPriceNameDate.m; sourceTree = "<group>"; };
 		EA98B51D1B075057006935AE /* WBCellWithPriceNameDate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBCellWithPriceNameDate.xib; sourceTree = "<group>"; };
-		EA98B51F1B077A9A006935AE /* NotifyMasterSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyMasterSplitViewController.h; sourceTree = "<group>"; };
-		EA98B5201B077A9A006935AE /* NotifyMasterSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyMasterSplitViewController.m; sourceTree = "<group>"; };
 		EAB9700D1B078944005E1D63 /* MasterTripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterTripsViewController.h; sourceTree = "<group>"; };
 		EAB9700E1B078944005E1D63 /* MasterTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterTripsViewController.m; sourceTree = "<group>"; };
 		EAB970101B0790EE005E1D63 /* TripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripsViewController.h; sourceTree = "<group>"; };
@@ -1084,8 +1083,7 @@
 		713D35481EDA341700D8563D /* Notify */ = {
 			isa = PBXGroup;
 			children = (
-				EA98B51F1B077A9A006935AE /* NotifyMasterSplitViewController.h */,
-				EA98B5201B077A9A006935AE /* NotifyMasterSplitViewController.m */,
+				71F468291EEED923009F6CE7 /* NotifyMasterSplitViewController.swift */,
 			);
 			path = Notify;
 			sourceTree = "<group>";
@@ -2513,7 +2511,6 @@
 				719310421EDDC2810065B5AD /* WBTextUtils.m in Sources */,
 				EA8D81941AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.m in Sources */,
 				A7A720E31CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift in Sources */,
-				EA98B5211B077A9A006935AE /* NotifyMasterSplitViewController.m in Sources */,
 				EA8D81971AEA7C1E00BAC943 /* ReceiptColumnImageName.m in Sources */,
 				EA07BF4A1AF40066004D17F6 /* DatabaseTableNames.m in Sources */,
 				EA5963F41AF29B1A00935344 /* UIView+Search.m in Sources */,
@@ -2710,6 +2707,7 @@
 				7190D4541EE88CC40081CB22 /* GenerateReportView.swift in Sources */,
 				711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */,
 				BA665929E9C98CC6D3604390 /* WBNewCategoryViewController.m in Sources */,
+				71F4682A1EEED923009F6CE7 /* NotifyMasterSplitViewController.swift in Sources */,
 				71E2B5801EEDD516001D02F1 /* TripsRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
