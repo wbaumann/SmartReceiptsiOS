@@ -27,6 +27,10 @@ class Currency: NSObject, NSCoding {
         return result
     }
     
+    class func allCurrencyCodesWithCached() -> [String] {
+        return RecentCurrenciesCache.shared.cachedCurrencyCodes + Currency.allCurrencyCodes()
+    }
+    
     /**
      Returns a list of all ISO 4127 currencies
      - returns: Array<String> containing all ISO 4217 Currencies

@@ -14,11 +14,6 @@ class GenerateReportRouter: Router {
         _view.dismiss(animated: true, completion: nil)
     }
     
-    func openAlert(title: String, message: String) {
-        UIAlertView(title: title, message: message, delegate: nil,
-                    cancelButtonTitle: LocalizedString("generic.button.title.ok")).show()
-    }
-    
     func openSheet(title: String?, message: String?, actions: [UIAlertAction]) {
         let sheet = UIAlertController(title: nil, message: LocalizedString("generate.report.share.method.sheet.title"), preferredStyle: .alert)
         for action in actions {

@@ -19,15 +19,16 @@ protocol EditDistanceViewInterface {
 //MARK: EditDistance View
 final class EditDistanceView: UserInterface {
     
-    private var formView: EditDistanceFormView?
+    private var formView: EditDistanceFormView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         formView = EditDistanceFormView(trip: displayData.trip!, distance: displayData.distance)
         
-        addChildViewController(formView!)
-        view.addSubview(formView!.view)
+        addChildViewController(formView)
+        formView.view.frame = view.bounds
+        view.addSubview(formView.view)
         setupInitialState()
     }
     
@@ -43,7 +44,7 @@ final class EditDistanceView: UserInterface {
     
     //MARK: Actions
     @IBAction private func onSaveTap() {
-        let errorsDescription = formView!.validate()
+        let errorsDescription = formView.validate()
         if errorsDescription.isEmpty {
             let distance = formView!.changedDistance!
             presenter.save(distance: distance, asNewDistance: displayData.distance == nil)

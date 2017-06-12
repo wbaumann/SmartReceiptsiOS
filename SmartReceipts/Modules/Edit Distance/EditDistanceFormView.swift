@@ -15,7 +15,7 @@ fileprivate let RATE_ROW_TAG      = "rateTag"
 
 class EditDistanceFormView: FormViewController {
     
-    var distance: Distance?
+    private var distance: Distance?
     private(set) var changedDistance: Distance?
     
     required init(trip: WBTrip, distance: Distance?) {
@@ -76,7 +76,7 @@ class EditDistanceFormView: FormViewController {
         
         <<< PickerInlineRow<String>() { row in
             row.title = LocalizedString("edit.distance.controller.currency.label")
-            row.options = RecentCurrenciesCache.shared.cachedCurrencyCodes + Currency.allCurrencyCodes()
+            row.options = Currency.allCurrencyCodesWithCached()
             row.value = changedDistance?.rate.currency.code
         }.onChange({ [weak self] row in
             let amount = self?.changedDistance?.rate?.amount ?? NSDecimalNumber(value: 0)
