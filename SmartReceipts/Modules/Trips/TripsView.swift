@@ -125,10 +125,10 @@ final class TripsView: FetchedCollectionViewControllerSwift {
        self.tapped = tapped as! WBTrip
         if isEditing {
             //TODO: SHOW TRIP CREATOR
-            self.performSegue(withIdentifier: "TripCreator", sender: self)
+            let r = Module.build(AppModules.editTrip).router
+            r.show(from: self, embedInNavController: true, setupData: self.tapped)
         } else {
-            //TODO: SHOW TRIP DETAILS
-            self.performSegue(withIdentifier: "TripDetails", sender: self)
+            openDetails(trip: self.tapped)
         }
     }
     
@@ -157,12 +157,19 @@ final class TripsView: FetchedCollectionViewControllerSwift {
     override func didInsert(_ object: Any!, at index: UInt) {
         super.didInsert(object, at: index)
         tapped = object as! WBTrip
-        performSegue(withIdentifier: "TripDetails", sender: nil)
+        openDetails(trip: tapped)
+    }
+    
+    func openDetails(trip: WBTrip) {
+        let vc = MainStoryboard().instantiateViewController(withIdentifier: "Receipts")
+        let receiptsVC = vc as! WBReceiptsViewController
+        receiptsVC.trip = trip
+        navigationController?.pushViewController(receiptsVC, animated: true)
     }
     
     @IBAction private func onAddTap() {
         isEditing = false
-        performSegue(withIdentifier: "TripCreator", sender: nil)
+        Module.build(AppModules.editTrip).router.show(from: self, embedInNavController: true)
     }
     
     @IBAction private func onSettingsTap() {
