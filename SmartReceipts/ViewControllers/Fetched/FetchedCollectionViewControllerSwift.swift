@@ -35,6 +35,14 @@ class FetchedCollectionViewControllerSwift: UserInterface, UITableViewDelegate, 
         tableView.dataSource = self
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.placeholderView?.frame = self.view.bounds
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }

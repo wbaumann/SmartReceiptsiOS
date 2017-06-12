@@ -14,9 +14,17 @@
 
 @implementation NotifyMasterSplitViewController
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
+    }
+    return self;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
     [[self.viewControllers firstObject] viewWillAppear:animated];
 }
 
