@@ -12,7 +12,7 @@
         <!--Ad Presenting Container View Controller-->
         <scene sceneID="le1-hI-394">
             <objects>
-                <viewController id="mCg-Ej-Ova" customClass="AdPresentingContainerViewController" customModule="SmartReceipts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="adContainer" id="mCg-Ej-Ova" customClass="AdPresentingContainerViewController" customModule="SmartReceipts" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w2f-lq-ANc"/>
                         <viewControllerLayoutGuide type="bottom" id="vjH-F8-SGe"/>
@@ -48,17 +48,18 @@
                     </view>
                     <connections>
                         <outlet property="adContainerHeight" destination="sL9-0F-qzG" id="Z8I-fT-EKf"/>
+                        <outlet property="container" destination="jX2-Gd-oKN" id="cU4-A2-qjy"/>
                         <outlet property="nativeExpressAdView" destination="UnM-Cp-Iev" id="rY3-tE-nvN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84i-19-N5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-443" y="-628"/>
+            <point key="canvasLocation" x="-443.5" y="-628.5"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Ad Navigation Entry Point-->
         <scene sceneID="hcW-gV-HKV">
             <objects>
-                <navigationController toolbarHidden="NO" id="urd-hN-qYP" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="urd-hN-qYP" customClass="AdNavigationEntryPoint" customModule="SmartReceipts" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Z4Z-LT-5kw">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -70,13 +71,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </toolbar>
-                    <connections>
-                        <segue destination="Nma-45-wRv" kind="relationship" relationship="rootViewController" id="Gik-Tg-jSD"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ncr-85-d38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="183" y="-627"/>
+            <point key="canvasLocation" x="78" y="-629"/>
         </scene>
         <!--Smart Receipts-->
         <scene sceneID="g2M-36-qnd">
@@ -87,11 +85,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Djt-i9-qYX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CWj-oB-Agn">
-                        <rect key="frame" x="0.0" y="64" width="375" height="523"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bTd-kR-eyz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="479"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
@@ -140,11 +138,11 @@
                         <viewControllerLayoutGuide type="bottom" id="IrJ-lk-bVJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="F59-FV-u9l">
-                        <rect key="frame" x="0.0" y="64" width="375" height="523"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="J8g-r8-o4p">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="523"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
@@ -688,11 +686,11 @@
                         <viewControllerLayoutGuide type="bottom" id="8jS-sk-aeG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XwT-zH-fDR">
-                        <rect key="frame" x="0.0" y="64" width="375" height="523"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No report selected" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="nVI-LT-ZeQ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="479"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>

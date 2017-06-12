@@ -7,12 +7,14 @@
 //
 
 import GoogleMobileAds
+import Viperit
 
 fileprivate let BANNER_HEIGHT: CGFloat = 80
 
 class AdPresentingContainerViewController: UIViewController {
     @IBOutlet fileprivate var adContainerHeight: NSLayoutConstraint?
     @IBOutlet fileprivate var nativeExpressAdView: GADNativeExpressAdView?
+    @IBOutlet var container: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,5 +80,12 @@ extension AdPresentingContainerViewController: GADNativeExpressAdViewDelegate {
         }) { _ in
             nativeExpressAdView.adSize = self.getAdSize()
         }
+    }
+}
+
+class AdNavigationEntryPoint: UINavigationController {
+    override func viewDidLoad() {
+        let module = Module.build(AppModules.trips)
+        show(module.view, sender: nil)
     }
 }

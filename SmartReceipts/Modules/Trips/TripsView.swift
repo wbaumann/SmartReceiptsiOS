@@ -27,6 +27,10 @@ final class TripsView: FetchedCollectionViewControllerSwift {
         super.viewDidLoad()
         AppTheme.customizeOnViewDidLoad(self)
         setPresentationCellNib(WBCellWithPriceNameDate.viewNib())
+        
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        self.toolbarItems = [space, editButtonItem]
+        
         NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved),
                         name: NSNotification.Name.SmartReceiptsSettingsSaved, object: nil)
         lastDateSeparator = WBPreferences.dateSeparator()
@@ -43,7 +47,6 @@ final class TripsView: FetchedCollectionViewControllerSwift {
         lastDateSeparator = WBPreferences.dateSeparator()
         tableView.reloadData()
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -164,7 +167,7 @@ final class TripsView: FetchedCollectionViewControllerSwift {
     
     @IBAction private func onSettingsTap() {
         let settingsVC = MainStoryboard().instantiateViewController(withIdentifier: "SettingsOverflow")
-        settingsVC.modalTransitionStyle = .crossDissolve
+        settingsVC.modalTransitionStyle = .coverVertical
         settingsVC.modalPresentationStyle = .formSheet
         present(settingsVC, animated: true, completion: nil)
     }
