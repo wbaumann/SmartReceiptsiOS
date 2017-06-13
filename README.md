@@ -43,9 +43,13 @@ The free and plus versions versions are identical, except the plus version offer
 
 ## Install 
 
-The Smart Receipts code is currently managed via XCode Groups as opposed to folders, so things are a bit messy. We intend to fix this in the near future so that both are aligned.
+To install, clone or pull down this project. Once you the code on your machine, be sure to install [cocoapods](https://cocoapods.org/) and then run the following command:
 
-To install, clone or pull down this project. Please note that it will **NOT** work out of the box, so you will need to add the following files to ensure it will compile:
+```
+pod install
+```
+
+Please note that it will **NOT** work out of the box, so you will need to add the following files to ensure it will compile:
 
 * `SmartReceipts/GoogleService-Info.plist`. This needs to be added to both the free and plus favors at the root level in order for Firebase to function. Please [refer to the Firebase documentation](https://firebase.google.com/) for more details.
 * `SmartReceipts/Service Account.json`. This is is used for Firebase crash reporting.
