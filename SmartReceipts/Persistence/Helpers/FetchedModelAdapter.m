@@ -120,7 +120,6 @@
 
 - (void)refreshContentAndNotifyUpdateChanges:(NSObject *)updated {
     NSArray *before = [NSArray arrayWithArray:self.models];
-    
     [self.database inDatabase:^(FMDatabase * _Nonnull database) {
         [self fetchUsingDatabase:database];
         
@@ -133,6 +132,12 @@
 
     NSUInteger indexBefore = [before indexOfObject:updated];
     NSUInteger indexAfter = [after indexOfObject:updated];
+    
+    if (indexAfter == NSNotFound || indexBefore == NSNotFound) {
+        [self.delegate reloadData];
+        return;
+    }
+    
     [self.delegate willChangeContent];
     if (indexBefore == indexAfter) {
         [self.delegate didUpdateObject:updated atIndex:indexBefore];

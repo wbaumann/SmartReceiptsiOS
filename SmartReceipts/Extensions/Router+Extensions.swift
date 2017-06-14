@@ -13,4 +13,20 @@ extension Router {
         UIAlertView(title: title, message: message, delegate: nil,
                     cancelButtonTitle: LocalizedString("generic.button.title.ok")).show()
     }
+    
+    func showIPadForm(from: UIViewController, animated: Bool = true, setupData: Any? = nil, needNavigationController: Bool = false) {
+        var forShow: UIViewController! = _view
+        if let data = setupData {
+            _view._presenter.setupView(data: data)
+        }
+
+        if needNavigationController {
+            forShow = UINavigationController(rootViewController: _view)
+        }
+        
+        forShow.modalTransitionStyle = .coverVertical
+        forShow.modalPresentationStyle = .formSheet
+        
+        from.present(forShow, animated: animated, completion: nil)
+    }
 }
