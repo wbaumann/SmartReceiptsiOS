@@ -37,7 +37,9 @@ final class EditTripView: UserInterface {
     }
     
     private func setupInitialState() {
-        navigationItem.title = LocalizedString("edit.trip.controller.edit.title")
+        navigationItem.title = self.displayData.trip == nil ?
+            LocalizedString("edit.trip.controller.add.title") :
+            LocalizedString("edit.trip.controller.edit.title")
     }
     
     private func configureUIActions() {
