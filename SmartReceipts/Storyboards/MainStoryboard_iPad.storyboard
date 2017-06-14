@@ -170,7 +170,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jl5-Gf-FBY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jl5-Gf-FBY">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -239,7 +239,7 @@
         <!--Navigation Controller-->
         <scene sceneID="k3M-PE-VXa">
             <objects>
-                <navigationController definesPresentationContext="YES" toolbarHidden="NO" id="4XN-YK-YCV" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ReceiptsNav" definesPresentationContext="YES" toolbarHidden="NO" id="4XN-YK-YCV" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3Pn-fD-qg1">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>

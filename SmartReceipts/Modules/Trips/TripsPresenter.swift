@@ -19,6 +19,9 @@ class TripsPresenter: Presenter {
     private let disposeBag = DisposeBag()
     
     override func viewHasLoaded() {
+        
+        executeFor(iPhone: {}, iPad: { router.openNoTrips() })
+        
         view.addButton.rx.tap.subscribe(onNext: {
             self.router.openAddTrip()
         }).disposed(by: disposeBag)
