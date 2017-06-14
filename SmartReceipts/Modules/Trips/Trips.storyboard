@@ -52,6 +52,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="_addButton" destination="uHg-gM-0Za" id="f1r-a9-eLZ"/>
+                        <outlet property="_settingsButton" destination="goQ-v7-tzc" id="Jb9-6B-EKm"/>
                         <outlet property="tableView" destination="oiC-Hc-lug" id="se3-kH-BfB"/>
                     </connections>
                 </viewController>

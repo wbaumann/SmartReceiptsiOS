@@ -8,8 +8,46 @@
 
 import Foundation
 import Viperit
+import RxSwift
 
 class TripsPresenter: Presenter {
+    
+    let tripDetailsSubject = PublishSubject<WBTrip>()
+    let tripEditSubject = PublishSubject<WBTrip>()
+    let tripDeleteSubject = PublishSubject<WBTrip>()
+    
+    private let disposeBag = DisposeBag()
+    
+    override func viewHasLoaded() {
+        view.addButton.rx.tap.subscribe(onNext: {
+            self.router.openAddTrip()
+        }).disposed(by: disposeBag)
+        
+        view.settingsButton.rx.tap.subscribe(onNext: {
+            self.router.openSettings()
+        }).disposed(by: disposeBag)
+        
+        tripDetailsSubject.subscribe(onNext: { trip in
+            self.router.openDetails(trip: trip)
+        }).disposed(by: disposeBag)
+        
+        tripEditSubject.subscribe(onNext: { trip in
+            self.router.openEdit(trip: trip)
+        }).disposed(by: disposeBag)
+        
+    }
+    
+    func presentSettings() {
+        router.openSettings()
+    }
+    
+    func presentAddTrip() {
+        router.openAddTrip()
+    }
+    
+    func fetchedModelAdapter() -> FetchedModelAdapter? {
+        return interactor.fetchedModelAdapter()
+    }
 }
 
 

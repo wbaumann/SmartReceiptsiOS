@@ -8,19 +8,22 @@
 
 import UIKit
 import Viperit
+import RxSwift
 
 //MARK: - Public Interface Protocol
 protocol TripsViewInterface {
-    
+    var settingsButton: UIBarButtonItem { get }
+    var addButton: UIBarButtonItem { get }
 }
 
 //MARK: Trips View
 final class TripsView: FetchedCollectionViewControllerSwift {
     
-    var tapped: WBTrip!
+    @IBOutlet fileprivate weak var _settingsButton: UIBarButtonItem!
+    @IBOutlet fileprivate weak var _addButton: UIBarButtonItem!
+    
     private var priceWidth: CGFloat = 0
     private let dateFormatter = WBDateFormatter()
-    private(set) var lastShowTrip: WBTrip?
     private var lastDateSeparator: String!
     
     override func viewDidLoad() {
@@ -62,7 +65,7 @@ final class TripsView: FetchedCollectionViewControllerSwift {
     }
 
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {
-        return Database.sharedInstance().createUpdatingAdapterForAllTrips()
+        return presenter.fetchedModelAdapter()
     }
     
     private func updatePricesWidth() {
@@ -104,7 +107,6 @@ final class TripsView: FetchedCollectionViewControllerSwift {
         return min((view.bounds.width - priceLabelSpacing * 2 - priceToNameSpacing)/2, maxWidth)
     }
     
-    
     override func configureCell(_ cell: UITableViewCell, indexPath: IndexPath, object: Any) {
         let pCell = cell as! WBCellWithPriceNameDate
         let trip = object as! WBTrip
@@ -118,35 +120,17 @@ final class TripsView: FetchedCollectionViewControllerSwift {
     }
     
     override func delete(object: Any!, at indexPath: IndexPath) {
-        Database.sharedInstance().delete(object as! WBTrip)
+        presenter.tripDeleteSubject.onNext(object as! WBTrip)
     }
     
     override func tappedObject(_ tapped: Any, indexPath: IndexPath) {
-       self.tapped = tapped as! WBTrip
-        if isEditing {
-            //TODO: SHOW TRIP CREATOR
-            let r = Module.build(AppModules.editTrip).router
-            r.show(from: self, embedInNavController: true, setupData: self.tapped)
-        } else {
-            openDetails(trip: self.tapped)
-        }
+        let trip = tapped as! WBTrip
+        isEditing ? presenter.tripEditSubject.onNext(trip) : presenter.tripDetailsSubject.onNext(trip)
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: animated)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "TripDetails" {
-            let vc = segue.destination as! WBReceiptsViewController
-            vc.trip = tapped
-            lastShowTrip = tapped
-        } else if segue.identifier == "TripCreator" {
-            let vc = segue.destination as! EditTripViewController
-            vc.trip = tapped
-        }
-        tapped = nil
     }
     
     override func contentChanged() {
@@ -156,29 +140,8 @@ final class TripsView: FetchedCollectionViewControllerSwift {
     
     override func didInsert(_ object: Any!, at index: UInt) {
         super.didInsert(object, at: index)
-        tapped = object as! WBTrip
-        openDetails(trip: tapped)
+        presenter.tripDetailsSubject.onNext(object as! WBTrip)
     }
-    
-    func openDetails(trip: WBTrip) {
-        let vc = MainStoryboard().instantiateViewController(withIdentifier: "Receipts")
-        let receiptsVC = vc as! WBReceiptsViewController
-        receiptsVC.trip = trip
-        navigationController?.pushViewController(receiptsVC, animated: true)
-    }
-    
-    @IBAction private func onAddTap() {
-        isEditing = false
-        Module.build(AppModules.editTrip).router.show(from: self, embedInNavController: true)
-    }
-    
-    @IBAction private func onSettingsTap() {
-        let settingsVC = MainStoryboard().instantiateViewController(withIdentifier: "SettingsOverflow")
-        settingsVC.modalTransitionStyle = .coverVertical
-        settingsVC.modalPresentationStyle = .formSheet
-        present(settingsVC, animated: true, completion: nil)
-    }
-    
 }
 
 extension TripsView: UISplitViewControllerDelegate {
@@ -187,7 +150,8 @@ extension TripsView: UISplitViewControllerDelegate {
 
 //MARK: - Public interface
 extension TripsView: TripsViewInterface {
-    
+    var settingsButton: UIBarButtonItem { get { return _settingsButton } }
+    var addButton: UIBarButtonItem { get { return _addButton } }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
