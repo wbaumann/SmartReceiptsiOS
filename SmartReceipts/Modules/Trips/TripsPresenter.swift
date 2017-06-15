@@ -19,7 +19,7 @@ class TripsPresenter: Presenter {
     private let disposeBag = DisposeBag()
     
     override func viewHasLoaded() {
-        
+        interactor.configureSubscribers()
         executeFor(iPhone: {}, iPad: { router.openNoTrips() })
         
         view.addButton.rx.tap.subscribe(onNext: {
