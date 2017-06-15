@@ -131,6 +131,9 @@ final class TripsView: FetchedCollectionViewControllerSwift {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: animated)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+            self.reloadData()
+        }
     }
     
     override func contentChanged() {
