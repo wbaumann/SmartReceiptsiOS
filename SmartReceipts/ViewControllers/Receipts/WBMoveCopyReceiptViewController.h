@@ -8,7 +8,6 @@
 
 #import "WBReceiptActionsViewController.h"
 #import "WBReceiptsViewController.h"
-#import "TripsViewController.h"
 
 @interface WBMoveCopyReceiptViewController : FetchedCollectionTableViewController
 
