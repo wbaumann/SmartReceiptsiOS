@@ -7,11 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "DataImport.h"
 #import "NSDate+Calculations.h"
 #import "WBPreferencesTestHelper.h"
 #import "SmartReceiptsTestsBase.h"
 #import "Constants.h"
+#include <SmartReceipts-Swift.h>
 
 NSString *const ImportTestFileName = @"2015_05_26_SmartReceipts.smr";
 
