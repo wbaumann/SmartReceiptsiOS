@@ -42,16 +42,18 @@
 		57C125191E12DAEF008551AC /* ServiceAccount.json in Resources */ = {isa = PBXBuildFile; fileRef = 57C125181E12DAEF008551AC /* ServiceAccount.json */; };
 		57C9EBF21DF1BB6E001B3731 /* SuggestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C9EBF11DF1BB6E001B3731 /* SuggestionView.m */; };
 		57EEBDC41E093C8F00974E53 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EEBDC31E093C8F00974E53 /* String+Extensions.swift */; };
-		7104CA831EEB118D00F987BC /* GenerateReportModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A141EE9EA0B00287E48 /* GenerateReportModuleTest.swift */; };
-		7104CA881EEB522200F987BC /* TripDistancesModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F596D1EE5C6A100C240D8 /* TripDistancesModuleTest.swift */; };
-		711ACF601ED8C7FF003B89A0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD20C81ED764DA006C4EE6 /* Currency.swift */; };
 		711E40541EE0D4ED00C043CF /* EditDistanceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */; };
 		711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */; };
+		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
+		713360401EF310400076D319 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C413D31EE6F826003CE891 /* GeneratedMocks.swift */; };
+		713360461EF310C90076D319 /* EditDistanceModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360411EF310C90076D319 /* EditDistanceModuleTest.swift */; };
+		713360471EF310C90076D319 /* EditTripModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360421EF310C90076D319 /* EditTripModuleTest.swift */; };
+		713360481EF310C90076D319 /* GenerateReportModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360431EF310C90076D319 /* GenerateReportModuleTest.swift */; };
+		713360491EF310C90076D319 /* TripDistancesModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360441EF310C90076D319 /* TripDistancesModuleTest.swift */; };
+		7133604A1EF310C90076D319 /* TripsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360451EF310C90076D319 /* TripsModuleTest.swift */; };
 		713D35501EDA4AEB00D8563D /* NSMutableString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 713D354F1EDA4AEB00D8563D /* NSMutableString+Extensions.m */; };
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
-		71548A161EE9EB0400287E48 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C413D31EE6F826003CE891 /* GeneratedMocks.swift */; };
-		71548A181EE9EB0D00287E48 /* EditDistanceModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F59841EE5F17E00C240D8 /* EditDistanceModuleTest.swift */; };
 		7161DB511EE4907700399C9C /* AdPresentingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */; };
 		716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716F34471EE040E100D0017A /* EditDistance.storyboard */; };
 		716F344E1EE040E100D0017A /* EditDistanceDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F34481EE040E100D0017A /* EditDistanceDisplayData.swift */; };
@@ -74,7 +76,6 @@
 		7193102C1EDDB9960065B5AD /* WBDynamicPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193102A1EDDB9960065B5AD /* WBDynamicPicker.m */; };
 		719310301EDDBE060065B5AD /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193102E1EDDBE060065B5AD /* SettingsViewController.m */; };
 		719310311EDDBE060065B5AD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193102F1EDDBE060065B5AD /* SettingsViewController.swift */; };
-		7193103D1EDDC2810065B5AD /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
 		7193103F1EDDC2810065B5AD /* WBFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310361EDDC2810065B5AD /* WBFileManager.m */; };
 		719310401EDDC2810065B5AD /* WBImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310381EDDC2810065B5AD /* WBImageUtils.m */; };
 		719310411EDDC2810065B5AD /* WBSqlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193103A1EDDC2810065B5AD /* WBSqlBuilder.m */; };
@@ -455,12 +456,16 @@
 		57EEBDC31E093C8F00974E53 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceFormView.swift; sourceTree = "<group>"; };
 		711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Extensions.swift"; sourceTree = "<group>"; };
+		713360411EF310C90076D319 /* EditDistanceModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceModuleTest.swift; sourceTree = "<group>"; };
+		713360421EF310C90076D319 /* EditTripModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTripModuleTest.swift; sourceTree = "<group>"; };
+		713360431EF310C90076D319 /* GenerateReportModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportModuleTest.swift; sourceTree = "<group>"; };
+		713360441EF310C90076D319 /* TripDistancesModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDistancesModuleTest.swift; sourceTree = "<group>"; };
+		713360451EF310C90076D319 /* TripsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsModuleTest.swift; sourceTree = "<group>"; };
 		713D354E1EDA4AEB00D8563D /* NSMutableString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Extensions.h"; sourceTree = "<group>"; };
 		713D354F1EDA4AEB00D8563D /* NSMutableString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Extensions.m"; sourceTree = "<group>"; };
 		713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCSVGeneratorTest.swift; sourceTree = "<group>"; };
 		713D35541EDA54A700D8563D /* TripCSVGenerator+Testable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TripCSVGenerator+Testable.h"; sourceTree = "<group>"; };
 		71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportShareService.swift; sourceTree = "<group>"; };
-		71548A141EE9EA0B00287E48 /* GenerateReportModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportModuleTest.swift; sourceTree = "<group>"; };
 		7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdPresentingContainerViewController.swift; sourceTree = "<group>"; };
 		716F34471EE040E100D0017A /* EditDistance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditDistance.storyboard; sourceTree = "<group>"; };
 		716F34481EE040E100D0017A /* EditDistanceDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceDisplayData.swift; sourceTree = "<group>"; };
@@ -469,8 +474,6 @@
 		716F344B1EE040E100D0017A /* EditDistanceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceRouter.swift; sourceTree = "<group>"; };
 		716F344C1EE040E100D0017A /* EditDistanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceView.swift; sourceTree = "<group>"; };
 		716F34531EE041FF00D0017A /* InputCellsViewControllerSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCellsViewControllerSwift.swift; sourceTree = "<group>"; };
-		717F596D1EE5C6A100C240D8 /* TripDistancesModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDistancesModuleTest.swift; sourceTree = "<group>"; };
-		717F59841EE5F17E00C240D8 /* EditDistanceModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceModuleTest.swift; sourceTree = "<group>"; };
 		7190D4491EE88CC40081CB22 /* GenerateReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GenerateReport.storyboard; sourceTree = "<group>"; };
 		7190D44A1EE88CC40081CB22 /* GenerateReportDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportDisplayData.swift; sourceTree = "<group>"; };
 		7190D44B1EE88CC40081CB22 /* GenerateReportInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportInteractor.swift; sourceTree = "<group>"; };
@@ -1113,35 +1116,13 @@
 		717F596A1EE5C0EF00C240D8 /* Modules Tests */ = {
 			isa = PBXGroup;
 			children = (
-				717F596B1EE5C13100C240D8 /* Trip Distances */,
-				717F596C1EE5C14300C240D8 /* Edit Distance */,
-				7190D43B1EE888E10081CB22 /* Generate Report */,
+				713360431EF310C90076D319 /* GenerateReportModuleTest.swift */,
+				713360441EF310C90076D319 /* TripDistancesModuleTest.swift */,
+				713360411EF310C90076D319 /* EditDistanceModuleTest.swift */,
+				713360451EF310C90076D319 /* TripsModuleTest.swift */,
+				713360421EF310C90076D319 /* EditTripModuleTest.swift */,
 			);
 			path = "Modules Tests";
-			sourceTree = "<group>";
-		};
-		717F596B1EE5C13100C240D8 /* Trip Distances */ = {
-			isa = PBXGroup;
-			children = (
-				717F596D1EE5C6A100C240D8 /* TripDistancesModuleTest.swift */,
-			);
-			path = "Trip Distances";
-			sourceTree = "<group>";
-		};
-		717F596C1EE5C14300C240D8 /* Edit Distance */ = {
-			isa = PBXGroup;
-			children = (
-				717F59841EE5F17E00C240D8 /* EditDistanceModuleTest.swift */,
-			);
-			path = "Edit Distance";
-			sourceTree = "<group>";
-		};
-		7190D43B1EE888E10081CB22 /* Generate Report */ = {
-			isa = PBXGroup;
-			children = (
-				71548A141EE9EA0B00287E48 /* GenerateReportModuleTest.swift */,
-			);
-			path = "Generate Report";
 			sourceTree = "<group>";
 		};
 		7190D43C1EE8891F0081CB22 /* Generate Report */ = {
@@ -2400,6 +2381,12 @@
 				"$(SRCROOT)/SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/Generate Report/GenerateReportRouter.swift",
+				"$(SRCROOT)/SmartReceipts/Modules/Edit Trip/EditTripInteractor.swift",
+				"$(SRCROOT)/SmartReceipts/Modules/Edit Trip/EditTripPresenter.swift",
+				"$(SRCROOT)/SmartReceipts/Modules/Edit Trip/EditTripRouter.swift",
+				"$(SRCROOT)/SmartReceipts/Modules/Trips/TripsInteractor.swift",
+				"$(SRCROOT)/SmartReceipts/Modules/Trips/TripsPresenter.swift",
+				"$(SRCROOT)/SmartReceipts/Modules/Trips/TripsRouter.swift",
 			);
 			name = "Cuckoo Tests";
 			outputPaths = (
@@ -2525,11 +2512,11 @@
 				71F468371EEEDB03009F6CE7 /* EditTripView.swift in Sources */,
 				EA07BF441AF3F882004D17F6 /* DecimalInputValidation.m in Sources */,
 				EAD15C511B07C3A1003BB1F3 /* Database+Notify.m in Sources */,
-				7193103D1EDDC2810065B5AD /* RecentCurrenciesCache.swift in Sources */,
 				570515A51E02EFA500BB8FE4 /* ErrorEvent.swift in Sources */,
 				EA07BF501AF4CC19004D17F6 /* Database+Functions.m in Sources */,
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,
 				71AEDDDF1EDF7FF400BAC0DD /* TripDistancesInteractor.swift in Sources */,
+				7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */,
 				EA888A7C1AFA5C5900DF2AE6 /* Database+Receipts.m in Sources */,
 				719310261EDDB7CF0065B5AD /* FetchedPlaceholderView.swift in Sources */,
 				A7F05BB21CFC15760079F1AD /* ExchangedTaxed.swift in Sources */,
@@ -2729,7 +2716,7 @@
 				EAD15C771B087029003BB1F3 /* DatabaseReceiptsCopyMoveTest.m in Sources */,
 				A7F05BC01CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift in Sources */,
 				EAD3EF851B0E00E000CA1D4D /* DatabaseReceiptsSwapTest.m in Sources */,
-				7104CA881EEB522200F987BC /* TripDistancesModuleTest.swift in Sources */,
+				713360491EF310C90076D319 /* TripDistancesModuleTest.swift in Sources */,
 				A7F05BE71CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift in Sources */,
 				EA07BF6C1AF51D5D004D17F6 /* DatabaseTestsHelper.m in Sources */,
 				EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */,
@@ -2744,11 +2731,11 @@
 				EA07BF5B1AF4DA66004D17F6 /* DatabaseDistancesTest.m in Sources */,
 				EA6677741B05F6D3004D3993 /* DatabaseReceiptsPaymentMethodTest.m in Sources */,
 				A744E5141CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift in Sources */,
+				713360481EF310C90076D319 /* GenerateReportModuleTest.swift in Sources */,
 				EAE725DA1B022E9100402689 /* TripsToReceiptsConverterTest.m in Sources */,
 				EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */,
 				A7F05BB61CFC1B5D0079F1AD /* ReceiptColumnExchangeRateTests.swift in Sources */,
 				A7B6FC5B1CF5DA2100CD53F1 /* WBReceiptTests.swift in Sources */,
-				7104CA831EEB118D00F987BC /* GenerateReportModuleTest.swift in Sources */,
 				5762EA841ECDC2600032411A /* TripFullPDFGeneratorTest.swift in Sources */,
 				A7F05BDB1CFD6C520079F1AD /* PricesCollectionTests.swift in Sources */,
 				EA159E811AFE7CDC00DBB6CF /* NSDate+Calculations.m in Sources */,
@@ -2756,16 +2743,18 @@
 				A71205B41CE5C04D008A193D /* WBTestAppDelegate.m in Sources */,
 				EA8CEAE51AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m in Sources */,
 				EA888A831AFA601100DF2AE6 /* DatabaseReceiptsSumTest.m in Sources */,
+				713360461EF310C90076D319 /* EditDistanceModuleTest.swift in Sources */,
 				A7F05BA81CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift in Sources */,
+				7133604A1EF310C90076D319 /* TripsModuleTest.swift in Sources */,
 				EAD15C7D1B0881FE003BB1F3 /* ReceiptFilesManagerTest.m in Sources */,
 				EA19CC7F1B2C961D00168AA0 /* RateApplicationTest.m in Sources */,
 				EA5EF0D61AF7E9C9009FA608 /* DatabaseTableNames.m in Sources */,
 				EA8ABE3D1B1A064A00DBFA29 /* DatabaseImportTest.m in Sources */,
+				713360471EF310C90076D319 /* EditTripModuleTest.swift in Sources */,
 				EA6677761B05FD8A004D3993 /* DatabaseReceiptsTest.m in Sources */,
 				572045CB1E9FB97700080FB8 /* RecentCurrenciesCacheTests.swift in Sources */,
 				EADBB71F1B0B6CD600F4475F /* DatabaseTripsFilesTest.m in Sources */,
 				A7F05BB01CFC132E0079F1AD /* ReceiptColumnExchangedTaxTests.swift in Sources */,
-				71548A181EE9EB0D00287E48 /* EditDistanceModuleTest.swift in Sources */,
 				713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */,
 				EA888A881AFB4FD600DF2AE6 /* DatabaseTripsTest.m in Sources */,
 				A7D554CB1CFEB10100169FD2 /* WBReceiptTargetPriceTests.swift in Sources */,
@@ -2783,13 +2772,12 @@
 				EA8ABE441B1A1D6800DBFA29 /* DatabaseCategoriesTest.m in Sources */,
 				EA7634AA1B3DB34A00AD8737 /* WBPreferencesImportExportTest.m in Sources */,
 				57C0EED41E2D38B3001B4758 /* CustomLogFormatter.swift in Sources */,
-				71548A161EE9EB0400287E48 /* GeneratedMocks.swift in Sources */,
 				EA1D42C91B03931400D64D3A /* DatabasePaymentMethodsTest.m in Sources */,
 				EA90F2921B0CC4DD00FD2DB6 /* DatabaseReceiptsDatesTest.m in Sources */,
-				711ACF601ED8C7FF003B89A0 /* Currency.swift in Sources */,
 				EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */,
 				EA259CDB1B16071F00ECBD67 /* DataImportTest.m in Sources */,
 				EA07BF591AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m in Sources */,
+				713360401EF310400076D319 /* GeneratedMocks.swift in Sources */,
 				EA888A811AFA5D1D00DF2AE6 /* WBPreferencesTestHelper.m in Sources */,
 				57A8058D1E9672C000E68049 /* DatabaseUpgrade15Tests.swift in Sources */,
 				EAE319641B10BF630032887E /* TaxCalculatorTest.m in Sources */,
