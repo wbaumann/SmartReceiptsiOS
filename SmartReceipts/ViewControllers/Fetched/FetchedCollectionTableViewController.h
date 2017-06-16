@@ -14,8 +14,8 @@
 
 @interface FetchedCollectionTableViewController : UIViewController <FetchedModelAdapterDelegate, UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, readonly) NSString *placeholderTitle;
-@property (nonatomic) IBOutlet UITableView *tableView;
 
 - (void)setPresentationCellNib:(UINib *)nib;
 - (FetchedModelAdapter *)createFetchedModelAdapter;

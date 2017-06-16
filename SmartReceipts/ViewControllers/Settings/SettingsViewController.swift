@@ -19,7 +19,7 @@ extension SettingsViewController {
         let fileUrl = URL(fileURLWithPath: path)
         Logger.info("shareBackupFile via UIDocumentInteractionController with url: \(fileUrl)")
         let controller = UIDocumentInteractionController(url: fileUrl)
-        Logger.info("UIDocumentInteractionController UTI: \(controller.uti)")
+        Logger.info("UIDocumentInteractionController UTI: \(controller.uti!)")
         controller.presentOptionsMenu(from: showRect, in: view, animated: true)
         documentInteractionController = controller
     }
