@@ -278,4 +278,12 @@ class Currency: NSObject, NSCoding {
         aCoder.encode(code, forKey: "code")
     }
     
+    override func isEqual(_ object: Any?) -> Bool {
+        if let otherCurrency = object as? Currency {
+            return self.code == otherCurrency.code
+        } else {
+            return false
+        }
+    }
+    
 }
