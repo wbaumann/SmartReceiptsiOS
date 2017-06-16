@@ -7,7 +7,6 @@
 //
 
 #import "DistanceDateColumn.h"
-#import "Distance.h"
 #import "WBDateFormatter.h"
 
 @implementation DistanceDateColumn

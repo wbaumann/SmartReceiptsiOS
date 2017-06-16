@@ -7,7 +7,6 @@
 //
 
 #import "DistanceLocationColumn.h"
-#import "Distance.h"
 
 @implementation DistanceLocationColumn
 

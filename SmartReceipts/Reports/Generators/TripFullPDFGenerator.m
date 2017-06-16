@@ -16,7 +16,6 @@
 #import "WBReceipt.h"
 #import "DistancesToReceiptsConverter.h"
 #import "NSString+Validation.h"
-#import "Distance.h"
 #import "Constants.h"
 #import "PrettyPDFRender.h"
 #import "SmartReceipts-Swift.h"

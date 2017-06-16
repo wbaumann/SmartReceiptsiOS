@@ -7,7 +7,6 @@
 //
 
 #import "DistanceCommentColumn.h"
-#import "Distance.h"
 
 @implementation DistanceCommentColumn
 

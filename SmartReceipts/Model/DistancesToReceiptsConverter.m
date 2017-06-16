@@ -8,7 +8,6 @@
 
 #import "DistancesToReceiptsConverter.h"
 #import "WBReceipt.h"
-#import "Distance.h"
 #import "Price.h"
 
 @interface DistancesToReceiptsConverter ()

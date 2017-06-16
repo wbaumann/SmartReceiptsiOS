@@ -8,7 +8,6 @@
 
 #import "DatabaseTestsHelper.h"
 #import "WBTrip.h"
-#import "Distance.h"
 #import "Price.h"
 #import "Database+Distances.h"
 #import "Database+Trips.h"

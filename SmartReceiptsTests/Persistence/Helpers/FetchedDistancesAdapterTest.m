@@ -13,7 +13,6 @@
 #import "WBTrip.h"
 #import "DatabaseTestsHelper.h"
 #import "Database+Distances.h"
-#import "Distance.h"
 #import "FetchedModelAdapterDelegate.h"
 #import "FetchAdapterDelegateCheckHelper.h"
 #import "DatabaseTableNames.h"

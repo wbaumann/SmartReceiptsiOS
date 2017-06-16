@@ -7,7 +7,6 @@
 //
 
 #import "DistanceColumn.h"
-#import "Distance.h"
 #import "Constants.h"
 #import "DistanceLocationColumn.h"
 #import "DistancePriceColumn.h"
