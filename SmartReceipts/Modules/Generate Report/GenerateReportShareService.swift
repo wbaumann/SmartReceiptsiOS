@@ -75,8 +75,8 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
         shareViewController.completionWithItemsHandler = {
             type, success, returned, error in
             
-            Logger.debug("Type \(type) - \(success)")
-            Logger.debug("Returned \(returned?.count)")
+            Logger.debug("Type \(type.debugDescription) - \(success.description)")
+            Logger.debug("Returned \(returned?.count ?? 0)")
             if let error = error {
                 Logger.error(error.localizedDescription)
             }
