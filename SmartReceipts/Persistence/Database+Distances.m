@@ -9,7 +9,6 @@
 #import <FMDB/FMDatabase.h>
 #import "Database+Distances.h"
 #import "DatabaseTableNames.h"
-#import "Distance.h"
 #import "Database+Functions.h"
 #import "DatabaseQueryBuilder.h"
 #import "WBTrip.h"

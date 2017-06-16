@@ -18,7 +18,6 @@
 #import "DatabaseTableNames.h"
 #import "DatabaseUpgradeToVersion12.h"
 #import "DatabaseUpgradeToVersion13.h"
-#import "Distance.h"
 
 #import "EditReceiptViewController.h"
 

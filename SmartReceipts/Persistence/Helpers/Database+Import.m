@@ -13,7 +13,6 @@
 #import "Database+Receipts.h"
 #import "WBReceipt.h"
 #import "Database+Distances.h"
-#import "Distance.h"
 #import "Constants.h"
 #import "Database+PaymentMethods.h"
 #import "PaymentMethod.h"

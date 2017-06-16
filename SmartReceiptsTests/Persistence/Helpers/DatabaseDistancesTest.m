@@ -11,7 +11,6 @@
 #import "SmartReceiptsTestsBase.h"
 #import "Database+Functions.h"
 #import "DatabaseTableNames.h"
-#import "Distance.h"
 #import "WBTrip.h"
 #import "DatabaseTestsHelper.h"
 #import "Database+Distances.h"

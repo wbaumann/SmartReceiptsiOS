@@ -13,6 +13,6 @@
 - (instancetype)init;
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet;
 - (BOOL)isEqual:(id)other;
-- (NSUInteger)hash;
+- (NSUInteger)modelHash;
 
 @end

@@ -96,6 +96,8 @@
 		71AEDDE71EDF823D00BAC0DD /* AppModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDE61EDF823D00BAC0DD /* AppModules.swift */; };
 		71AEDDEB1EDF918600BAC0DD /* FetchedCollectionViewControllerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDEA1EDF918600BAC0DD /* FetchedCollectionViewControllerSwift.swift */; };
 		71B488C21EF42AF7008872E2 /* NoTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B488C11EF42AF7008872E2 /* NoTripsViewController.swift */; };
+		71B488C41EF47B1C008872E2 /* ObservableTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B488C31EF47B1C008872E2 /* ObservableTrips.swift */; };
+		71B488C71EF49209008872E2 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B488C51EF48706008872E2 /* Distance.swift */; };
 		71CD20C91ED764DA006C4EE6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD20C81ED764DA006C4EE6 /* Currency.swift */; };
 		71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */; };
 		71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E2B5751EEDD516001D02F1 /* Trips.storyboard */; };
@@ -120,7 +122,6 @@
 		84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A5834D18EDF897003A464D /* WBReceiptAndIndex.m */; };
 		84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A6C82A18F510B6003B876F /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84A6C82D18F510E5003B876F /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A6C82C18F510E5003B876F /* libxml2.dylib */; };
-		84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A73C3618E74C9900D35A57 /* WBObservableTrips.m */; };
 		84ABACFC18DB673B00F8D3EB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84ABACFB18DB673B00F8D3EB /* libsqlite3.dylib */; };
 		84F4F34418CFCCD000F69A35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34318CFCCD000F69A35 /* Foundation.framework */; };
 		84F4F34618CFCCD000F69A35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F4F34518CFCCD000F69A35 /* CoreGraphics.framework */; };
@@ -216,7 +217,6 @@
 		EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF391AF3C80C004D17F6 /* NSMutableString+Issues.m */; };
 		EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF3C1AF3C885004D17F6 /* NSString+Validation.m */; };
 		EA07BF441AF3F882004D17F6 /* DecimalInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF431AF3F882004D17F6 /* DecimalInputValidation.m */; };
-		EA07BF471AF3FD1D004D17F6 /* Distance.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF461AF3FD1D004D17F6 /* Distance.m */; };
 		EA07BF4A1AF40066004D17F6 /* DatabaseTableNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF491AF40066004D17F6 /* DatabaseTableNames.m */; };
 		EA07BF4D1AF400CA004D17F6 /* Database+Distances.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF4C1AF400CA004D17F6 /* Database+Distances.m */; };
 		EA07BF501AF4CC19004D17F6 /* Database+Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF4F1AF4CC19004D17F6 /* Database+Functions.m */; };
@@ -517,6 +517,8 @@
 		71AEDDE61EDF823D00BAC0DD /* AppModules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModules.swift; sourceTree = "<group>"; };
 		71AEDDEA1EDF918600BAC0DD /* FetchedCollectionViewControllerSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedCollectionViewControllerSwift.swift; sourceTree = "<group>"; };
 		71B488C11EF42AF7008872E2 /* NoTripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTripsViewController.swift; sourceTree = "<group>"; };
+		71B488C31EF47B1C008872E2 /* ObservableTrips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTrips.swift; sourceTree = "<group>"; };
+		71B488C51EF48706008872E2 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		71C413D31EE6F826003CE891 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		71CD20C81ED764DA006C4EE6 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Currency.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		71D59CDA1EDDC993008991B7 /* WBDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDateFormatter.h; sourceTree = "<group>"; };
@@ -548,8 +550,6 @@
 		84A6C82918F510B6003B876F /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
 		84A6C82A18F510B6003B876F /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 		84A6C82C18F510E5003B876F /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		84A73C3518E74C9900D35A57 /* WBObservableTrips.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBObservableTrips.h; sourceTree = "<group>"; };
-		84A73C3618E74C9900D35A57 /* WBObservableTrips.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBObservableTrips.m; sourceTree = "<group>"; };
 		84ABACFB18DB673B00F8D3EB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		84F4F34018CFCCD000F69A35 /* SmartReceipts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartReceipts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F4F34318CFCCD000F69A35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -679,8 +679,6 @@
 		EA07BF411AF3F84E004D17F6 /* InputValidation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputValidation.h; sourceTree = "<group>"; };
 		EA07BF421AF3F882004D17F6 /* DecimalInputValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecimalInputValidation.h; sourceTree = "<group>"; };
 		EA07BF431AF3F882004D17F6 /* DecimalInputValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecimalInputValidation.m; sourceTree = "<group>"; };
-		EA07BF451AF3FD1D004D17F6 /* Distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Distance.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		EA07BF461AF3FD1D004D17F6 /* Distance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Distance.m; sourceTree = "<group>"; };
 		EA07BF481AF40066004D17F6 /* DatabaseTableNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseTableNames.h; sourceTree = "<group>"; };
 		EA07BF491AF40066004D17F6 /* DatabaseTableNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTableNames.m; sourceTree = "<group>"; };
 		EA07BF4B1AF400CA004D17F6 /* Database+Distances.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Database+Distances.h"; path = "../Database+Distances.h"; sourceTree = "<group>"; };
@@ -1275,8 +1273,7 @@
 		84A73C3418E74C5C00D35A57 /* Collections */ = {
 			isa = PBXGroup;
 			children = (
-				84A73C3518E74C9900D35A57 /* WBObservableTrips.h */,
-				84A73C3618E74C9900D35A57 /* WBObservableTrips.m */,
+				71B488C31EF47B1C008872E2 /* ObservableTrips.swift */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -1821,8 +1818,6 @@
 				EA8D81791AEA674100BAC943 /* Receipt */,
 				EA8D81B61AEA7EE200BAC943 /* Column.h */,
 				EA8D81B71AEA7EE200BAC943 /* Column.m */,
-				EA07BF451AF3FD1D004D17F6 /* Distance.h */,
-				EA07BF461AF3FD1D004D17F6 /* Distance.m */,
 				EAE725D51B022E3F00402689 /* DistancesToReceiptsConverter.h */,
 				EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */,
 				A7F05BB31CFC1A5D0079F1AD /* Exchanged.swift */,
@@ -1850,6 +1845,7 @@
 				A7D554CE1CFF061100169FD2 /* WBReceipt+Query.swift */,
 				EA8D81721AEA668100BAC943 /* WBTrip.h */,
 				EA8D81731AEA668100BAC943 /* WBTrip.m */,
+				71B488C51EF48706008872E2 /* Distance.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2458,6 +2454,7 @@
 				4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */,
 				EA40DC6E1B555CC9003BF545 /* FullPagePDFPageView.m in Sources */,
 				EAE9DAF41AF8EA9600F4FE76 /* DistanceCurrencyColumn.m in Sources */,
+				71B488C71EF49209008872E2 /* Distance.swift in Sources */,
 				57580D1F1DFAB6AB0090C488 /* UIApplication+AppVersion.m in Sources */,
 				716F34541EE041FF00D0017A /* InputCellsViewControllerSwift.swift in Sources */,
 				A79FDC711CEA0AB600328DBB /* Constants.swift in Sources */,
@@ -2465,7 +2462,6 @@
 				A7F05B981CFB49220079F1AD /* WBReceipt.swift in Sources */,
 				A7F05BD91CFD69640079F1AD /* PricesCollection.swift in Sources */,
 				719310401EDDC2810065B5AD /* WBImageUtils.m in Sources */,
-				84A73C3718E74C9900D35A57 /* WBObservableTrips.m in Sources */,
 				4D380F911B61240C001B43D2 /* GADConstants.m in Sources */,
 				5726E5431E00423900F2141C /* AnalyticsManager.swift in Sources */,
 				EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */,
@@ -2520,6 +2516,7 @@
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,
 				71AEDDDF1EDF7FF400BAC0DD /* TripDistancesInteractor.swift in Sources */,
 				7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */,
+				71B488C41EF47B1C008872E2 /* ObservableTrips.swift in Sources */,
 				EA888A7C1AFA5C5900DF2AE6 /* Database+Receipts.m in Sources */,
 				719310261EDDB7CF0065B5AD /* FetchedPlaceholderView.swift in Sources */,
 				A7F05BB21CFC15760079F1AD /* ExchangedTaxed.swift in Sources */,
@@ -2583,7 +2580,6 @@
 				EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */,
 				EA3C96A11AEBA9B200A2A5F9 /* TripFullPDFGenerator.m in Sources */,
 				EA8ABE421B1A1D1700DBFA29 /* Database+Categories.m in Sources */,
-				EA07BF471AF3FD1D004D17F6 /* Distance.m in Sources */,
 				EA13099D1B5027D10045FDDE /* TableHeaderRow.m in Sources */,
 				EAE9DAFD1AF8EAD100F4FE76 /* DistanceCommentColumn.m in Sources */,
 				EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */,
