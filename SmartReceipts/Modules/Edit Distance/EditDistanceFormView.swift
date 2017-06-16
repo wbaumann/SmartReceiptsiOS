@@ -33,7 +33,7 @@ class EditDistanceFormView: FormViewController {
             self.changedDistance?.date = date ?? trip.startDate
             self.changedDistance?.timeZone = trip.startTimeZone
             
-            let amount = NSDecimalNumber(value: 0)
+            let amount = NSDecimalNumber(value: WBPreferences.distanceRateDefaultValue())
             let currency = trip.defaultCurrency.code!
             self.changedDistance?.rate = Price(amount: amount, currencyCode: currency)
         }
@@ -63,7 +63,9 @@ class EditDistanceFormView: FormViewController {
         
         <<< DecimalRow(RATE_ROW_TAG) { row in
             row.title = LocalizedString("edit.distance.controller.rate.label")
-            row.value = distance?.rate.amount.doubleValue
+            if changedDistance?.rate.amount.intValue != 0 {
+                row.value = changedDistance?.rate.amount.doubleValue
+            }
             row.add(rule: RuleRequired())
             row.setupDecimalFormat()
         }.onChange({ [weak self] row in
