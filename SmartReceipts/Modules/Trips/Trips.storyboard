@@ -43,7 +43,7 @@
                                 <action selector="onSettingsTap" destination="xqD-av-Raz" id="ZBf-mp-xdB"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uHg-gM-0Za">
+                        <barButtonItem key="rightBarButtonItem" image="plus" id="uHg-gM-0Za">
                             <connections>
                                 <action selector="onAddTap" destination="xqD-av-Raz" id="4tg-rN-ofq"/>
                             </connections>
@@ -98,6 +98,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus" width="16" height="16"/>
         <image name="settings" width="24" height="24"/>
     </resources>
 </document>

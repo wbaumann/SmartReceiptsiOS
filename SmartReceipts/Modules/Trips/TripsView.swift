@@ -37,6 +37,7 @@ final class TripsView: FetchedCollectionViewControllerSwift {
         NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved),
                         name: NSNotification.Name.SmartReceiptsSettingsSaved, object: nil)
         lastDateSeparator = WBPreferences.dateSeparator()
+        editButtonItem.image = #imageLiteral(resourceName: "edit-2")
     }
     
     deinit {

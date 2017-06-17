@@ -61,7 +61,7 @@
             <objects>
                 <navigationController toolbarHidden="NO" id="urd-hN-qYP" customClass="AdNavigationEntryPoint" customModule="SmartReceipts" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translucent="NO" id="Z4Z-LT-5kw">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Z4Z-LT-5kw">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -105,12 +105,12 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="aLQ-cZ-ktz"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Smart Receipts" id="p6W-uC-7nR">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="4Zh-MY-ojl">
+                        <barButtonItem key="leftBarButtonItem" image="settings" id="4Zh-MY-ojl">
                             <connections>
                                 <segue destination="bqm-6y-Q1d" kind="modal" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="B4B-Zv-xZv"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YPe-P8-a5F">
+                        <barButtonItem key="rightBarButtonItem" image="plus" id="YPe-P8-a5F">
                             <connections>
                                 <action selector="actionAdd:" destination="Nma-45-wRv" id="vqq-tC-W02"/>
                             </connections>
@@ -155,25 +155,25 @@
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem systemItem="camera" id="qou-W8-Ppm">
+                        <barButtonItem image="camera" id="qou-W8-Ppm">
                             <connections>
                                 <action selector="actionCamera:" destination="oXP-B8-ZGa" id="9is-Ci-iM5"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="A25-iQ-VRl"/>
-                        <barButtonItem systemItem="compose" id="Cvs-HD-q5r">
+                        <barButtonItem image="edit" id="Cvs-HD-q5r">
                             <connections>
                                 <segue destination="0ME-sr-yBW" kind="modal" identifier="ReceiptCreator" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="Whf-rU-JR6"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="6Sf-ey-9E4"/>
-                        <barButtonItem image="wheel" id="5LZ-9J-JcM">
+                        <barButtonItem image="navigation" id="5LZ-9J-JcM">
                             <connections>
                                 <action selector="onDistancesTap:" destination="oXP-B8-ZGa" id="4Se-cR-LxL"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="5bR-1p-shn"/>
-                        <barButtonItem systemItem="action" id="2RB-vL-hqq">
+                        <barButtonItem image="share-2" id="2RB-vL-hqq">
                             <connections>
                                 <action selector="onGenerateReportTap:" destination="oXP-B8-ZGa" id="bSP-3f-GZv"/>
                             </connections>
@@ -230,7 +230,7 @@
         <scene sceneID="vFZ-GA-8Fq">
             <objects>
                 <navigationController definesPresentationContext="YES" id="0ME-sr-yBW" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V4p-r9-h5M">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V4p-r9-h5M">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -250,7 +250,7 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="Q2x-Wk-02W"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="WW4-mM-8dS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="WW4-mM-8dS">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -315,7 +315,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="MyA-2E-EtP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="B1I-8r-aVB">
+                        <barButtonItem key="rightBarButtonItem" image="plus" id="B1I-8r-aVB">
                             <connections>
                                 <segue destination="vNg-YF-QYK" kind="push" identifier="PushEditPaymentMethodSequeIdentifier" id="vMl-b7-jhk"/>
                             </connections>
@@ -359,7 +359,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="dZT-P6-71W" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="8lM-Aw-p9V">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="8lM-Aw-p9V">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -421,7 +421,7 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Categories" id="JvA-tS-sXT">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="1rq-99-Shx">
+                        <barButtonItem key="rightBarButtonItem" image="plus" id="1rq-99-Shx">
                             <connections>
                                 <segue destination="6vM-UQ-Xtm" kind="modal" identifier="CategoryCreator" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="awc-fc-G4e"/>
                             </connections>
@@ -440,7 +440,7 @@
         <scene sceneID="zjB-06-zDJ">
             <objects>
                 <navigationController definesPresentationContext="YES" id="6vM-UQ-Xtm" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l5Z-F5-VCo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="l5Z-F5-VCo">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -609,7 +609,7 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Configure" id="FLb-9u-j9e">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Vdy-da-Ro3">
+                        <barButtonItem key="rightBarButtonItem" image="plus" id="Vdy-da-Ro3">
                             <connections>
                                 <action selector="actionAdd:" destination="qpT-VU-o50" id="mMN-rx-pcm"/>
                             </connections>
@@ -632,7 +632,7 @@
                         <viewControllerLayoutGuide type="top" id="2E1-Ln-fJs"/>
                         <viewControllerLayoutGuide type="bottom" id="aAS-BJ-eO6"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yBR-Fa-dD3">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="yBR-Fa-dD3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -650,19 +650,19 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems>
-                        <barButtonItem image="ic_rotate_ccw" id="C2g-lA-nHP">
+                        <barButtonItem image="rotate-ccw" id="C2g-lA-nHP">
                             <connections>
                                 <action selector="actionRotateCcw:" destination="BhX-dn-AI5" id="wNv-6L-OhT"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Wpg-0c-6UM"/>
-                        <barButtonItem systemItem="camera" id="10W-je-qPH">
+                        <barButtonItem image="camera" id="10W-je-qPH">
                             <connections>
                                 <action selector="actionCamera:" destination="BhX-dn-AI5" id="kWz-ib-Hfy"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="VXb-BR-gFr"/>
-                        <barButtonItem image="ic_rotate_cw" id="YjR-sO-mk9">
+                        <barButtonItem image="rotate-cw" id="YjR-sO-mk9">
                             <connections>
                                 <action selector="actionRotateCw:" destination="BhX-dn-AI5" id="f8y-hg-2Z4"/>
                             </connections>
@@ -787,7 +787,7 @@
         <scene sceneID="eFW-CK-kDo">
             <objects>
                 <navigationController definesPresentationContext="YES" id="AwS-pP-SMl" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4my-vy-jW6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4my-vy-jW6">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -802,9 +802,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_rotate_ccw" width="22" height="22"/>
-        <image name="ic_rotate_cw" width="22" height="22"/>
-        <image name="wheel" width="22" height="22"/>
+        <image name="camera" width="24" height="20"/>
+        <image name="edit" width="22" height="22"/>
+        <image name="navigation" width="21" height="21"/>
+        <image name="plus" width="16" height="16"/>
+        <image name="rotate-ccw" width="22" height="20"/>
+        <image name="rotate-cw" width="22" height="20"/>
+        <image name="settings" width="24" height="24"/>
+        <image name="share-2" width="20" height="22"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="lightContent"/>
