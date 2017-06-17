@@ -15,11 +15,13 @@ class EditTripFormView: FormViewController {
     
     let errorSubject = PublishSubject<String>()
     let tripSubject = PublishSubject<WBTrip>()
+    private var isNewTrip: Bool!
     
     private var trip: WBTrip?
     
     required init(trip: WBTrip?) {
         super.init(nibName: nil, bundle: nil)
+        isNewTrip = trip == nil
         self.trip = trip
         if trip == nil {
             self.trip = WBTrip()
@@ -51,6 +53,9 @@ class EditTripFormView: FormViewController {
             self?.trip?.name = row.value ?? ""
         }).cellSetup({ cell, _ in
             cell.configureCell()
+            if self.isNewTrip {
+                _ = cell.textField.becomeFirstResponder()
+            }
         })
         
         <<< DateInlineRow() { row in
