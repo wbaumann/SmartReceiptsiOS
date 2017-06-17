@@ -63,7 +63,7 @@ class EditDistanceFormView: FormViewController {
         
         <<< DecimalRow(RATE_ROW_TAG) { row in
             row.title = LocalizedString("edit.distance.controller.rate.label")
-            if changedDistance?.rate.amount.intValue != 0 {
+            if changedDistance?.rate.amount.decimalValue != 0 {
                 row.value = changedDistance?.rate.amount.doubleValue
             }
             row.add(rule: RuleRequired())
