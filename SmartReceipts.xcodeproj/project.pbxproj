@@ -82,6 +82,7 @@
 		719310421EDDC2810065B5AD /* WBTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193103C1EDDC2810065B5AD /* WBTextUtils.m */; };
 		719310471EDDC3120065B5AD /* WBImageStampler.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310441EDDC3120065B5AD /* WBImageStampler.m */; };
 		719310481EDDC3120065B5AD /* WBPdfDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310461EDDC3120065B5AD /* WBPdfDrawer.m */; };
+		719B1FC61EF5E2150049BD71 /* TaxCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */; };
 		71A30F2C1EEC9F05001BA608 /* DataExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A30F2B1EEC9F05001BA608 /* DataExport.swift */; };
 		71A30F2F1EECB746001BA608 /* DataImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A30F2D1EECAA34001BA608 /* DataImport.swift */; };
 		71A30F301EECB750001BA608 /* WBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */; };
@@ -377,7 +378,6 @@
 		EADBB71F1B0B6CD600F4475F /* DatabaseTripsFilesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EADBB71E1B0B6CD600F4475F /* DatabaseTripsFilesTest.m */; };
 		EAE23CB51B1757590078F197 /* 2015_05_26_SmartReceipts.smr in Resources */ = {isa = PBXBuildFile; fileRef = EAE23CB41B1757590078F197 /* 2015_05_26_SmartReceipts.smr */; };
 		EAE3195F1B10A5EE0032887E /* PendingHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE3195E1B10A5EE0032887E /* PendingHUDView.m */; };
-		EAE319621B10BB5C0032887E /* TaxCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE319611B10BB5C0032887E /* TaxCalculator.m */; };
 		EAE319641B10BF630032887E /* TaxCalculatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE319631B10BF630032887E /* TaxCalculatorTest.m */; };
 		EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */; };
 		EAE725DA1B022E9100402689 /* TripsToReceiptsConverterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */; };
@@ -504,6 +504,7 @@
 		719310441EDDC3120065B5AD /* WBImageStampler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageStampler.m; sourceTree = "<group>"; };
 		719310451EDDC3120065B5AD /* WBPdfDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPdfDrawer.h; sourceTree = "<group>"; };
 		719310461EDDC3120065B5AD /* WBPdfDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPdfDrawer.m; sourceTree = "<group>"; };
+		719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxCalculator.swift; sourceTree = "<group>"; };
 		71A30F2B1EEC9F05001BA608 /* DataExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExport.swift; sourceTree = "<group>"; };
 		71A30F2D1EECAA34001BA608 /* DataImport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImport.swift; sourceTree = "<group>"; };
 		71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppTheme.swift; path = ../ViewControllers/Abstract/Customization/AppTheme.swift; sourceTree = "<group>"; };
@@ -938,8 +939,6 @@
 		EAE23CB41B1757590078F197 /* 2015_05_26_SmartReceipts.smr */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2015_05_26_SmartReceipts.smr; sourceTree = "<group>"; };
 		EAE3195D1B10A5EE0032887E /* PendingHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PendingHUDView.h; path = Views/PendingHUDView.h; sourceTree = "<group>"; };
 		EAE3195E1B10A5EE0032887E /* PendingHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PendingHUDView.m; path = Views/PendingHUDView.m; sourceTree = "<group>"; };
-		EAE319601B10BB5C0032887E /* TaxCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxCalculator.h; sourceTree = "<group>"; };
-		EAE319611B10BB5C0032887E /* TaxCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxCalculator.m; sourceTree = "<group>"; };
 		EAE319631B10BF630032887E /* TaxCalculatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxCalculatorTest.m; sourceTree = "<group>"; };
 		EAE725D51B022E3F00402689 /* DistancesToReceiptsConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancesToReceiptsConverter.h; sourceTree = "<group>"; };
 		EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancesToReceiptsConverter.m; sourceTree = "<group>"; };
@@ -1834,8 +1833,6 @@
 				A7F05BD81CFD69640079F1AD /* PricesCollection.swift */,
 				EA0677F41B04E61A0058A326 /* StringPickableWrapper.h */,
 				EA0677F51B04E61A0058A326 /* StringPickableWrapper.m */,
-				EAE319601B10BB5C0032887E /* TaxCalculator.h */,
-				EAE319611B10BB5C0032887E /* TaxCalculator.m */,
 				A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */,
 				EA8D816A1AEA668100BAC943 /* WBCategory.h */,
 				EA8D816B1AEA668100BAC943 /* WBCategory.m */,
@@ -1846,6 +1843,7 @@
 				EA8D81721AEA668100BAC943 /* WBTrip.h */,
 				EA8D81731AEA668100BAC943 /* WBTrip.m */,
 				71B488C51EF48706008872E2 /* Distance.swift */,
+				719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2539,7 +2537,6 @@
 				EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */,
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
 				A7F05BD31CFD54430079F1AD /* Logger.swift in Sources */,
-				EAE319621B10BB5C0032887E /* TaxCalculator.m in Sources */,
 				71AEDDE51EDF815300BAC0DD /* ReceiptsViewController.swift in Sources */,
 				EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */,
 				EA22FB4D1B1AF1A40060D23D /* CategoryCell.m in Sources */,
@@ -2584,6 +2581,7 @@
 				EAE9DAFD1AF8EAD100F4FE76 /* DistanceCommentColumn.m in Sources */,
 				EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */,
 				EA8D81AF1AEA7CAD00BAC943 /* ReceiptColumnPictured.m in Sources */,
+				719B1FC61EF5E2150049BD71 /* TaxCalculator.swift in Sources */,
 				EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */,
 				EA07BF4D1AF400CA004D17F6 /* Database+Distances.m in Sources */,
 				719310471EDDC3120065B5AD /* WBImageStampler.m in Sources */,

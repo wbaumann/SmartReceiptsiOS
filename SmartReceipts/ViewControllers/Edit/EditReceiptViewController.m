@@ -30,7 +30,6 @@
 #import "PaymentMethod.h"
 #import "Database+Receipts.h"
 #import "NSDate+Calculations.h"
-#import "TaxCalculator.h"
 #import "WBTrip.h"
 #import "WBReceipt.h"
 #import "WBCategory.h"
@@ -108,7 +107,9 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     [self.taxCell activateDecimalEntryMode];
 
     if ([WBPreferences includeTaxField]) {
-        TaxCalculator *calculator = [[TaxCalculator alloc] initWithSourceField:self.priceCell.entryField targetField:self.taxCell.entryField];
+        
+        TaxCalculator *calculator = [[TaxCalculator alloc] initWithPriceField:self.priceCell.entryField
+                                                                     taxField:self.taxCell.entryField];
         [calculator setPriceIsPreTax:[WBPreferences enteredPricePreTax]];
         [calculator setTaxPercentage:[NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%f", [WBPreferences defaultTaxPercentage]]]];
         [self setTaxCalculator:calculator];
