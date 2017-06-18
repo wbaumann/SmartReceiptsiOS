@@ -12,7 +12,6 @@
 #import "FetchedModelAdapter.h"
 #import "Database.h"
 #import "Database+PaymentMethods.h"
-#import "PaymentMethod.h"
 #import "EditPaymentMethodViewController.h"
 
 NSString *const PushEditPaymentMethodSequeIdentifier = @"PushEditPaymentMethodSequeIdentifier";

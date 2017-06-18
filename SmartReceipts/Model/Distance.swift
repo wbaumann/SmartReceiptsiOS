@@ -36,7 +36,7 @@ class Distance: NSObject, NSCopying, FetchedModel {
         super.init()
     }
     
-    override var hash: Int { get { return objId! } }
+    override var hash: Int { get { return NSNumber(value: objId!).hash } }
     
     func totalRate() -> Price {
         let totalValue = distance.multiplying(by: rate.amount)
@@ -52,10 +52,6 @@ class Distance: NSObject, NSCopying, FetchedModel {
         } else {
             return false
         }
-    }
-    
-    func modelHash() -> UInt {
-        return UInt(objId!)
     }
     
     override var description: String {

@@ -8,7 +8,6 @@
 
 #import "ReceiptColumnPaymentMethod.h"
 #import "WBReceipt.h"
-#import "PaymentMethod.h"
 
 @implementation ReceiptColumnPaymentMethod
 

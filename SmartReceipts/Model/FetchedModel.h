@@ -12,7 +12,5 @@
 
 - (instancetype)init;
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet;
-- (BOOL)isEqual:(id)other;
-- (NSUInteger)modelHash;
 
 @end

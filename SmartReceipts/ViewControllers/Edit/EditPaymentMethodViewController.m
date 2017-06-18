@@ -8,7 +8,6 @@
 
 #import "UIAlertView+Blocks.h"
 #import "EditPaymentMethodViewController.h"
-#import "PaymentMethod.h"
 #import "EntryOnlyCell.h"
 #import "UIView+LoadHelpers.h"
 #import "UITableViewCell+Identifier.h"

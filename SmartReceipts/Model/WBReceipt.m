@@ -10,7 +10,6 @@
 #import "WBReceipt.h"
 #import "WBTrip.h"
 #import "Price.h"
-#import "PaymentMethod.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "DatabaseTableNames.h"
 #import "Constants.h"
@@ -210,7 +209,7 @@ static NSString* checkNoData(NSString* str) {
     NSUInteger paymentMethodId = [resultSet intForColumn:paymentMethodIdAsName];
     NSString *paymentMethodName = [resultSet stringForColumn:PaymentMethodsTable.COLUMN_METHOD];
     if (paymentMethodName) {
-        [self setPaymentMethod:[[PaymentMethod alloc] initWithId:paymentMethodId method:paymentMethodName]];
+        [self setPaymentMethod:[[PaymentMethod alloc] initWithObjectId:paymentMethodId method:paymentMethodName]];
     }
 }
 

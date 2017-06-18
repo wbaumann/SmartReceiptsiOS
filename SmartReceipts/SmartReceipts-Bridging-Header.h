@@ -1,5 +1,4 @@
 
-#import "Column.h"
 #import "Constants.h"
 #import "GADConstants.h"
 
@@ -34,7 +33,6 @@
 #import "UIApplication+DismissKeyboard.h"
 #import "NSDate+Calculations.h"
 
-#import "PaymentMethod.h"
 #import "PendingHUDView.h"
 #import "Price.h"
 

@@ -27,7 +27,6 @@
 #import "FetchedModelAdapter.h"
 #import "Pickable.h"
 #import "StringPickableWrapper.h"
-#import "PaymentMethod.h"
 #import "Database+Receipts.h"
 #import "NSDate+Calculations.h"
 #import "WBTrip.h"
