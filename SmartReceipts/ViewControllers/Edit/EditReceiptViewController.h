@@ -12,12 +12,13 @@
 
 @class WBReceipt, WBTrip, EditReceiptViewController, WBReceiptsViewController;
 @class ExchangeRateCell;
+@class ReceiptsView;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EditReceiptViewController : InputCellsViewController
 
-@property (weak, nonatomic) WBReceiptsViewController *receiptsViewController;
+@property (weak, nonatomic) ReceiptsView *receiptsViewController;
 @property (nonatomic, strong) UIImage *receiptImage;
 
 - (void)setReceipt:(WBReceipt *)receipt withTrip:(WBTrip *)trip;

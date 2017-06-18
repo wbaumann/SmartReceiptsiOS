@@ -10,6 +10,11 @@ import Foundation
 import Viperit
 
 class ReceiptsPresenter: Presenter {
+    
+    override func setupView(data: Any) {
+        view.setup(trip: data as! WBTrip)
+    }
+    
 }
 
 

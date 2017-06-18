@@ -226,7 +226,7 @@
             return;
         }
 
-        [self.receiptsViewController updateReceipt:self.receipt image:image];
+        [self.receiptsViewController updateWithReceipt:self.receipt image:image];
         [self createCellsTextsAndIndices];
     }];
 }

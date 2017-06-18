@@ -32,6 +32,7 @@
 #import "UIView+LoadHelpers.h"
 #import "UIApplication+DismissKeyboard.h"
 #import "NSDate+Calculations.h"
+#import "WBReceiptActionsViewController.h"
 
 #import "PendingHUDView.h"
 #import "Price.h"
@@ -48,6 +49,7 @@
 #import "TitledAutocompleteEntryCell.h"
 #import "SwitchControlCell.h"
 #import "WBCellWithPriceNameDate.h"
+#import "ReceiptSummaryCell.h"
 
 #import "TripCSVGenerator.h"
 #import "TripFullPDFGenerator.h"
@@ -64,6 +66,7 @@
 #import "WBDateFormatter.h"
 #import "WBAutocompleteHelper.h"
 #import "WBFileManager.h"
+#import "DistancesToReceiptsConverter.h"
 
 #import "InputValidation.h"
 

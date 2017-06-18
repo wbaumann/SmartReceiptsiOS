@@ -29,14 +29,12 @@ class TripsRouter: Router {
     }
     
     func openDetails(trip: WBTrip) {
-        let vc = MainStoryboard().instantiateViewController(withIdentifier: "Receipts")
-        let receiptsVC = vc as! WBReceiptsViewController
-        receiptsVC.trip = trip
-        
-        executeFor(iPhone: {
-            _view.navigationController?.pushViewController(receiptsVC, animated: true)
+        let module = Module.build(AppModules.receipts)
+        module.presenter.setupView(data: trip)
+        executeFor(iPhone: { 
+            module.router.show(from: _view)
         }, iPad: {
-            let nav = UINavigationController(rootViewController: receiptsVC)
+            let nav = UINavigationController(rootViewController: module.view)
             nav.isToolbarHidden = false
             _view.splitViewController?.show(nav, sender: nil)
         })

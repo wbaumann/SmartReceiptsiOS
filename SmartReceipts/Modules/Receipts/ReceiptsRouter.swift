@@ -10,6 +10,25 @@ import Foundation
 import Viperit
 
 class ReceiptsRouter: Router {
+    
+    func openDistances(for trip: WBTrip) {
+        let module = Module.build(AppModules.tripDistances)
+        executeFor(iPhone: {
+            module.router.show(from: _view, embedInNavController: true, setupData: trip)
+        }, iPad: {
+            module.router.showIPadForm(from: _view, setupData: trip, needNavigationController: true)
+        })
+        
+    }
+    
+    func openGenerateReport(for trip: WBTrip) {
+        let module = Module.build(AppModules.generateReport)
+        executeFor(iPhone: {
+            module.router.show(from: _view, embedInNavController: true, setupData: trip)
+        }, iPad: {
+            module.router.showIPadForm(from: _view, setupData: trip, needNavigationController: true)
+        })
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
