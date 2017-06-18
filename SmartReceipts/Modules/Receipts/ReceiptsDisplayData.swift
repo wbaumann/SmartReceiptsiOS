@@ -10,5 +10,4 @@ import Foundation
 import Viperit
 
 class ReceiptsDisplayData: DisplayData {
-
 }

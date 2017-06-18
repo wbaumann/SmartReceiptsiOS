@@ -1,26 +1,64 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <scene sceneID="htw-l1-ahc">
+        <!--Receipt-->
+        <scene sceneID="Hcb-An-pyJ">
             <objects>
-                <viewController storyboardIdentifier="ReceiptsView" id="xqD-av-Raz" customClass="ReceiptsView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReceiptsView" id="Qa4-Z6-BZ0" customClass="ReceiptsView" customModule="SmartReceipts" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EcR-ye-kTk"/>
-                        <viewControllerLayoutGuide type="bottom" id="vb6-4r-Epx"/>
+                        <viewControllerLayoutGuide type="top" id="Rs7-o6-Jay"/>
+                        <viewControllerLayoutGuide type="bottom" id="QBa-Za-JRy"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kgt-o0-aP8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="VJQ-k0-sYw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6BE-GL-qpy">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="6BE-GL-qpy" secondAttribute="bottom" id="0js-5P-9Vh"/>
+                            <constraint firstItem="6BE-GL-qpy" firstAttribute="leading" secondItem="VJQ-k0-sYw" secondAttribute="leading" id="Fnj-PD-LDa"/>
+                            <constraint firstAttribute="trailing" secondItem="6BE-GL-qpy" secondAttribute="trailing" id="GCG-Sy-cU8"/>
+                            <constraint firstItem="6BE-GL-qpy" firstAttribute="top" secondItem="VJQ-k0-sYw" secondAttribute="top" id="lip-qJ-SUz"/>
+                        </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem image="camera" id="pGQ-bf-LBW"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="e00-EG-Fxi"/>
+                        <barButtonItem image="edit" id="jlb-wq-GRj"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="8Qc-0s-adt"/>
+                        <barButtonItem image="navigation" id="07w-dA-iUa"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="oZg-VI-BNA"/>
+                        <barButtonItem image="share-2" id="HIx-vc-pXP"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Receipt" id="1Gm-KC-RTy"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="6BE-GL-qpy" id="oNU-sn-0AV"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nXm-AG-NXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oP4-AY-OOu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="295" y="356"/>
+            <point key="canvasLocation" x="1904" y="-88"/>
         </scene>
     </scenes>
-    <scenes/>
+    <resources>
+        <image name="camera" width="24" height="20"/>
+        <image name="edit" width="22" height="22"/>
+        <image name="navigation" width="21" height="21"/>
+        <image name="share-2" width="20" height="22"/>
+    </resources>
 </document>

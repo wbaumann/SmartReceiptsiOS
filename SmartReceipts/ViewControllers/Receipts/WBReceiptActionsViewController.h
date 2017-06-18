@@ -12,9 +12,11 @@
 
 #import <QuickLook/QuickLook.h>
 
+@class ReceiptsView;
+
 @interface WBReceiptActionsViewController : UITableViewController <UIDocumentInteractionControllerDelegate>
 
-@property (nonatomic, weak) WBReceiptsViewController *receiptsViewController;
+@property (nonatomic, weak) ReceiptsView *receiptsViewController;
 @property (nonatomic, strong) WBReceipt *receipt;
 
 - (IBAction)actionDone:(id)sender;
