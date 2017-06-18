@@ -15,7 +15,6 @@
 #import "Database+Distances.h"
 #import "Constants.h"
 #import "Database+PaymentMethods.h"
-#import "PaymentMethod.h"
 #import "Database+Categories.h"
 #import "WBCategory.h"
 #import "Database+PDFColumns.h"

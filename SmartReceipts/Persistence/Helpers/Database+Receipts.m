@@ -18,7 +18,6 @@
 #import "WBPreferences.h"
 #import "Database+Trips.h"
 #import "Database+PaymentMethods.h"
-#import "PaymentMethod.h"
 #import "Database+Notify.h"
 #import "ReceiptFilesManager.h"
 #import "NSDate+Calculations.h"

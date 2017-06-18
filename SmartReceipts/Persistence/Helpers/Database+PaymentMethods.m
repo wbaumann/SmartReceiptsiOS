@@ -12,7 +12,6 @@
 #import "FetchedModelAdapter.h"
 #import "Database+Functions.h"
 #import "DatabaseQueryBuilder.h"
-#import "PaymentMethod.h"
 #import "NSString+Helpers.h"
 
 @implementation Database (PaymentMethods)
