@@ -84,6 +84,24 @@
 		719310481EDDC3120065B5AD /* WBPdfDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310461EDDC3120065B5AD /* WBPdfDrawer.m */; };
 		719B1FC61EF5E2150049BD71 /* TaxCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */; };
 		719B1FD21EF5FEBE0049BD71 /* Column.m in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FD01EF5FEBE0049BD71 /* Column.m */; };
+		719B1FDC1EF603190049BD71 /* Receipts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 719B1FD61EF603190049BD71 /* Receipts.storyboard */; };
+		719B1FDD1EF603190049BD71 /* ReceiptsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FD71EF603190049BD71 /* ReceiptsDisplayData.swift */; };
+		719B1FDE1EF603190049BD71 /* ReceiptsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FD81EF603190049BD71 /* ReceiptsInteractor.swift */; };
+		719B1FDF1EF603190049BD71 /* ReceiptsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FD91EF603190049BD71 /* ReceiptsPresenter.swift */; };
+		719B1FE01EF603190049BD71 /* ReceiptsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FDA1EF603190049BD71 /* ReceiptsRouter.swift */; };
+		719B1FE11EF603190049BD71 /* ReceiptsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FDB1EF603190049BD71 /* ReceiptsView.swift */; };
+		719B1FE81EF6032D0049BD71 /* EditReceipt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 719B1FE21EF6032D0049BD71 /* EditReceipt.storyboard */; };
+		719B1FE91EF6032D0049BD71 /* EditReceiptDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FE31EF6032D0049BD71 /* EditReceiptDisplayData.swift */; };
+		719B1FEA1EF6032D0049BD71 /* EditReceiptInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FE41EF6032D0049BD71 /* EditReceiptInteractor.swift */; };
+		719B1FEB1EF6032D0049BD71 /* EditReceiptPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FE51EF6032D0049BD71 /* EditReceiptPresenter.swift */; };
+		719B1FEC1EF6032D0049BD71 /* EditReceiptRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FE61EF6032D0049BD71 /* EditReceiptRouter.swift */; };
+		719B1FED1EF6032D0049BD71 /* EditReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FE71EF6032D0049BD71 /* EditReceiptView.swift */; };
+		719B1FF41EF6033A0049BD71 /* ReceiptActions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 719B1FEE1EF6033A0049BD71 /* ReceiptActions.storyboard */; };
+		719B1FF51EF6033A0049BD71 /* ReceiptActionsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FEF1EF6033A0049BD71 /* ReceiptActionsDisplayData.swift */; };
+		719B1FF61EF6033A0049BD71 /* ReceiptActionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FF01EF6033A0049BD71 /* ReceiptActionsInteractor.swift */; };
+		719B1FF71EF6033A0049BD71 /* ReceiptActionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FF11EF6033A0049BD71 /* ReceiptActionsPresenter.swift */; };
+		719B1FF81EF6033A0049BD71 /* ReceiptActionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FF21EF6033A0049BD71 /* ReceiptActionsRouter.swift */; };
+		719B1FF91EF6033A0049BD71 /* ReceiptActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FF31EF6033A0049BD71 /* ReceiptActionsView.swift */; };
 		71A30F2C1EEC9F05001BA608 /* DataExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A30F2B1EEC9F05001BA608 /* DataExport.swift */; };
 		71A30F2F1EECB746001BA608 /* DataImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A30F2D1EECAA34001BA608 /* DataImport.swift */; };
 		71A30F301EECB750001BA608 /* WBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */; };
@@ -506,6 +524,24 @@
 		719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxCalculator.swift; sourceTree = "<group>"; };
 		719B1FD01EF5FEBE0049BD71 /* Column.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Column.m; sourceTree = "<group>"; };
 		719B1FD11EF5FEBE0049BD71 /* Column.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Column.h; sourceTree = "<group>"; };
+		719B1FD61EF603190049BD71 /* Receipts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Receipts.storyboard; sourceTree = "<group>"; };
+		719B1FD71EF603190049BD71 /* ReceiptsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptsDisplayData.swift; sourceTree = "<group>"; };
+		719B1FD81EF603190049BD71 /* ReceiptsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptsInteractor.swift; sourceTree = "<group>"; };
+		719B1FD91EF603190049BD71 /* ReceiptsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptsPresenter.swift; sourceTree = "<group>"; };
+		719B1FDA1EF603190049BD71 /* ReceiptsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptsRouter.swift; sourceTree = "<group>"; };
+		719B1FDB1EF603190049BD71 /* ReceiptsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptsView.swift; sourceTree = "<group>"; };
+		719B1FE21EF6032D0049BD71 /* EditReceipt.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditReceipt.storyboard; sourceTree = "<group>"; };
+		719B1FE31EF6032D0049BD71 /* EditReceiptDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReceiptDisplayData.swift; sourceTree = "<group>"; };
+		719B1FE41EF6032D0049BD71 /* EditReceiptInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReceiptInteractor.swift; sourceTree = "<group>"; };
+		719B1FE51EF6032D0049BD71 /* EditReceiptPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReceiptPresenter.swift; sourceTree = "<group>"; };
+		719B1FE61EF6032D0049BD71 /* EditReceiptRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReceiptRouter.swift; sourceTree = "<group>"; };
+		719B1FE71EF6032D0049BD71 /* EditReceiptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReceiptView.swift; sourceTree = "<group>"; };
+		719B1FEE1EF6033A0049BD71 /* ReceiptActions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReceiptActions.storyboard; sourceTree = "<group>"; };
+		719B1FEF1EF6033A0049BD71 /* ReceiptActionsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsDisplayData.swift; sourceTree = "<group>"; };
+		719B1FF01EF6033A0049BD71 /* ReceiptActionsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsInteractor.swift; sourceTree = "<group>"; };
+		719B1FF11EF6033A0049BD71 /* ReceiptActionsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsPresenter.swift; sourceTree = "<group>"; };
+		719B1FF21EF6033A0049BD71 /* ReceiptActionsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsRouter.swift; sourceTree = "<group>"; };
+		719B1FF31EF6033A0049BD71 /* ReceiptActionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsView.swift; sourceTree = "<group>"; };
 		71A30F2B1EEC9F05001BA608 /* DataExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExport.swift; sourceTree = "<group>"; };
 		71A30F2D1EECAA34001BA608 /* DataImport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImport.swift; sourceTree = "<group>"; };
 		71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppTheme.swift; path = ../ViewControllers/Abstract/Customization/AppTheme.swift; sourceTree = "<group>"; };
@@ -1155,6 +1191,45 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		719B1FD31EF602C60049BD71 /* Edit Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				719B1FE21EF6032D0049BD71 /* EditReceipt.storyboard */,
+				719B1FE31EF6032D0049BD71 /* EditReceiptDisplayData.swift */,
+				719B1FE41EF6032D0049BD71 /* EditReceiptInteractor.swift */,
+				719B1FE51EF6032D0049BD71 /* EditReceiptPresenter.swift */,
+				719B1FE61EF6032D0049BD71 /* EditReceiptRouter.swift */,
+				719B1FE71EF6032D0049BD71 /* EditReceiptView.swift */,
+			);
+			path = "Edit Receipt";
+			sourceTree = "<group>";
+		};
+		719B1FD41EF602C60049BD71 /* Receipt Actions */ = {
+			isa = PBXGroup;
+			children = (
+				719B1FEE1EF6033A0049BD71 /* ReceiptActions.storyboard */,
+				719B1FEF1EF6033A0049BD71 /* ReceiptActionsDisplayData.swift */,
+				719B1FF01EF6033A0049BD71 /* ReceiptActionsInteractor.swift */,
+				719B1FF11EF6033A0049BD71 /* ReceiptActionsPresenter.swift */,
+				719B1FF21EF6033A0049BD71 /* ReceiptActionsRouter.swift */,
+				719B1FF31EF6033A0049BD71 /* ReceiptActionsView.swift */,
+			);
+			path = "Receipt Actions";
+			sourceTree = "<group>";
+		};
+		719B1FD51EF602C60049BD71 /* Receipts */ = {
+			isa = PBXGroup;
+			children = (
+				719B1FD61EF603190049BD71 /* Receipts.storyboard */,
+				719B1FD71EF603190049BD71 /* ReceiptsDisplayData.swift */,
+				719B1FD81EF603190049BD71 /* ReceiptsInteractor.swift */,
+				719B1FD91EF603190049BD71 /* ReceiptsPresenter.swift */,
+				719B1FDA1EF603190049BD71 /* ReceiptsRouter.swift */,
+				719B1FDB1EF603190049BD71 /* ReceiptsView.swift */,
+			);
+			path = Receipts;
+			sourceTree = "<group>";
+		};
 		71AEDDD41EDF7F3300BAC0DD /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -1164,6 +1239,9 @@
 				7190D43C1EE8891F0081CB22 /* Generate Report */,
 				71DDC2C21EEDBEAA00CFFDBC /* Trips */,
 				71F4682B1EEEDAF2009F6CE7 /* Edit Trip */,
+				719B1FD51EF602C60049BD71 /* Receipts */,
+				719B1FD31EF602C60049BD71 /* Edit Receipt */,
+				719B1FD41EF602C60049BD71 /* Receipt Actions */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -2216,8 +2294,10 @@
 				EA4C5CC61AF287330083FDD7 /* TitledTextEntryCell.xib in Resources */,
 				EA07BF601AF4E801004D17F6 /* DistanceSummaryCell.xib in Resources */,
 				84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */,
+				719B1FF41EF6033A0049BD71 /* ReceiptActions.storyboard in Resources */,
 				EA1D42BE1B03851C00D64D3A /* TitleOnlyCell.xib in Resources */,
 				841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */,
+				719B1FDC1EF603190049BD71 /* Receipts.storyboard in Resources */,
 				EA0677EF1B04DCEA0058A326 /* TitledAutocompleteEntryCell.xib in Resources */,
 				71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */,
 				EA71DFCD1AF9FEEC004092C3 /* SwitchControlCell.xib in Resources */,
@@ -2229,6 +2309,7 @@
 				71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */,
 				EA40DC6B1B5559A1003BF545 /* FullPagePDFImageView.xib in Resources */,
 				EA1E60D61B2742660048E688 /* Localizable.strings in Resources */,
+				719B1FE81EF6032D0049BD71 /* EditReceipt.storyboard in Resources */,
 				EA66B2BE1B13809900A57750 /* LaunchView.xib in Resources */,
 				EAF6FE121B543ABB0005E2CE /* PDFImageView.xib in Resources */,
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
@@ -2457,6 +2538,7 @@
 				719310401EDDC2810065B5AD /* WBImageUtils.m in Sources */,
 				4D380F911B61240C001B43D2 /* GADConstants.m in Sources */,
 				5726E5431E00423900F2141C /* AnalyticsManager.swift in Sources */,
+				719B1FE11EF603190049BD71 /* ReceiptsView.swift in Sources */,
 				EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */,
 				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
 				EA888A711AFA38AD00DF2AE6 /* SettingsButtonCell.m in Sources */,
@@ -2467,13 +2549,16 @@
 				EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */,
 				A7F05BCE1CFD4AE30079F1AD /* Database+Trips.swift in Sources */,
 				716F34501EE040E100D0017A /* EditDistancePresenter.swift in Sources */,
+				719B1FDD1EF603190049BD71 /* ReceiptsDisplayData.swift in Sources */,
 				EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */,
 				57C0EED11E2AE972001B4758 /* CustomLogFormatter.swift in Sources */,
 				71F468391EEEF2AE009F6CE7 /* EditTripFormView.swift in Sources */,
+				719B1FEA1EF6032D0049BD71 /* EditReceiptInteractor.swift in Sources */,
 				EA888A861AFB4FBD00DF2AE6 /* Database+Trips.m in Sources */,
 				A758CE941D01760C00169C7C /* QuickAlertPresenter.swift in Sources */,
 				7190D4531EE88CC40081CB22 /* GenerateReportRouter.swift in Sources */,
 				EA2B8D7E1B4EF1DA0043A84B /* RenderedPDFLabel.m in Sources */,
+				719B1FF81EF6033A0049BD71 /* ReceiptActionsRouter.swift in Sources */,
 				EA8D819A1AEA7C3100BAC943 /* ReceiptColumnImagePath.m in Sources */,
 				EA8D81781AEA668100BAC943 /* WBTrip.m in Sources */,
 				EA8D817C1AEA6AF000BAC943 /* ReceiptColumn.m in Sources */,
@@ -2488,6 +2573,7 @@
 				A7AFB2461CEC219100718744 /* DatabaseTableNames.swift in Sources */,
 				A7F05BA21CFC038D0079F1AD /* ReceiptColumnTax.swift in Sources */,
 				EA183E051B1C9F4C00577B3D /* Database+Columns.m in Sources */,
+				719B1FED1EF6032D0049BD71 /* EditReceiptView.swift in Sources */,
 				A78214F51CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift in Sources */,
 				EA1D42C41B03901A00D64D3A /* EntryOnlyCell.m in Sources */,
 				EAE9DAEE1AF8EA6D00F4FE76 /* DistancePriceColumn.m in Sources */,
@@ -2500,6 +2586,7 @@
 				A7A720E31CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift in Sources */,
 				EA8D81971AEA7C1E00BAC943 /* ReceiptColumnImageName.m in Sources */,
 				EA07BF4A1AF40066004D17F6 /* DatabaseTableNames.m in Sources */,
+				719B1FE01EF603190049BD71 /* ReceiptsRouter.swift in Sources */,
 				EA5963F41AF29B1A00935344 /* UIView+Search.m in Sources */,
 				71F468371EEEDB03009F6CE7 /* EditTripView.swift in Sources */,
 				EA07BF441AF3F882004D17F6 /* DecimalInputValidation.m in Sources */,
@@ -2508,6 +2595,7 @@
 				EA07BF501AF4CC19004D17F6 /* Database+Functions.m in Sources */,
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,
 				71AEDDDF1EDF7FF400BAC0DD /* TripDistancesInteractor.swift in Sources */,
+				719B1FE91EF6032D0049BD71 /* EditReceiptDisplayData.swift in Sources */,
 				7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */,
 				71B488C41EF47B1C008872E2 /* ObservableTrips.swift in Sources */,
 				EA888A7C1AFA5C5900DF2AE6 /* Database+Receipts.m in Sources */,
@@ -2525,6 +2613,7 @@
 				719310311EDDBE060065B5AD /* SettingsViewController.swift in Sources */,
 				719B1FD21EF5FEBE0049BD71 /* Column.m in Sources */,
 				EA3C96AD1AECC95100A2A5F9 /* TripImagesPDFGenerator.m in Sources */,
+				719B1FF51EF6033A0049BD71 /* ReceiptActionsDisplayData.swift in Sources */,
 				A7F05BE31CFD95710079F1AD /* FMDatabase+Receipts.swift in Sources */,
 				EA0677ED1B04DCDA0058A326 /* TitledAutocompleteEntryCell.m in Sources */,
 				7190D4501EE88CC40081CB22 /* GenerateReportDisplayData.swift in Sources */,
@@ -2544,12 +2633,14 @@
 				EA8EB10A1B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m in Sources */,
 				EA22679E1B1E035F005761E7 /* ReceiptSummaryCell.m in Sources */,
 				5705159B1E02B58500BB8FE4 /* DataPoint.swift in Sources */,
+				719B1FF61EF6033A0049BD71 /* ReceiptActionsInteractor.swift in Sources */,
 				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
 				A78215011CFFF24C00FD644A /* NSNumber+Extensions.swift in Sources */,
 				EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */,
 				71F4683B1EEF2E55009F6CE7 /* Router+Extensions.swift in Sources */,
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
 				A7B6FC5D1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift in Sources */,
+				719B1FEC1EF6032D0049BD71 /* EditReceiptRouter.swift in Sources */,
 				5757D6131E929ECA000F65F9 /* Database+Sync.swift in Sources */,
 				A78215031CFFF39700FD644A /* EditReceiptViewController.swift in Sources */,
 				71AEDDDE1EDF7FF400BAC0DD /* TripDistancesDisplayData.swift in Sources */,
@@ -2563,6 +2654,7 @@
 				71F468351EEEDB03009F6CE7 /* EditTripPresenter.swift in Sources */,
 				EA7634AD1B3DB61900AD8737 /* WBPreferences.m in Sources */,
 				EAE9DAE81AF8E97100F4FE76 /* DistanceColumn.m in Sources */,
+				719B1FF71EF6033A0049BD71 /* ReceiptActionsPresenter.swift in Sources */,
 				EA3C969E1AEBA94200A2A5F9 /* ReportPDFGenerator.m in Sources */,
 				EA3C96A71AEBC1A500A2A5F9 /* ReceiptIndexer.m in Sources */,
 				A79FDC6E1CEA0A5500328DBB /* GoogleAnalytics.swift in Sources */,
@@ -2578,14 +2670,18 @@
 				EA8D81AF1AEA7CAD00BAC943 /* ReceiptColumnPictured.m in Sources */,
 				719B1FC61EF5E2150049BD71 /* TaxCalculator.swift in Sources */,
 				EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */,
+				719B1FDE1EF603190049BD71 /* ReceiptsInteractor.swift in Sources */,
 				EA07BF4D1AF400CA004D17F6 /* Database+Distances.m in Sources */,
 				719310471EDDC3120065B5AD /* WBImageStampler.m in Sources */,
 				EAE9DAF11AF8EA8300F4FE76 /* DistanceDistanceColumn.m in Sources */,
 				719310301EDDBE060065B5AD /* SettingsViewController.m in Sources */,
 				EA4C5CC11AF286990083FDD7 /* InputCellsSection.m in Sources */,
+				719B1FEB1EF6032D0049BD71 /* EditReceiptPresenter.swift in Sources */,
 				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
 				71F468331EEEDB03009F6CE7 /* EditTripDisplayData.swift in Sources */,
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
+				719B1FF91EF6033A0049BD71 /* ReceiptActionsView.swift in Sources */,
+				719B1FDF1EF603190049BD71 /* ReceiptsPresenter.swift in Sources */,
 				EA2B8D8B1B4EF45B0043A84B /* TripReportHeader.m in Sources */,
 				EAE9DB011AF9038800F4FE76 /* SettingsTopTitledTextEntryCell.m in Sources */,
 				A7D554CF1CFF061100169FD2 /* WBReceipt+Query.swift in Sources */,
