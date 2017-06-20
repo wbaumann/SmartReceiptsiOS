@@ -48,7 +48,7 @@ class TripsRouter: Router {
     private func openEditTrip(_ trip: WBTrip?) {
         executeFor(iPhone: {
             Module.build(AppModules.editTrip).router.show(from: _view,
-                                                          embedInNavController: true, setupData: trip)
+                                                embedInNavController: true, setupData: trip)
         }, iPad: {
             Module.build(AppModules.editTrip).router.showIPadForm(from: _view, setupData: trip, needNavigationController: true)
         })

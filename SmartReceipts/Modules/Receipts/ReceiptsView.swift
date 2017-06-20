@@ -12,12 +12,21 @@ import Viperit
 //MARK: - Public Interface Protocol
 protocol ReceiptsViewInterface {
     func setup(trip: WBTrip)
+    var createReceiptButton: UIBarButtonItem { get }
+    var createPhotoReceiptButton: UIBarButtonItem { get }
+    var distancesButton: UIBarButtonItem { get }
+    var generateReportButton: UIBarButtonItem { get }
 }
 
 //MARK: ReceiptsView Class
 final class ReceiptsView: FetchedCollectionViewControllerSwift {
     
     static var sharedInputCache = [Date]()
+    
+    @IBOutlet weak var distanceButton: UIBarButtonItem!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var createButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     private static let CellIdentifier = "Cell"
     private static let PresentTripDistancesSegue = "PresentTripDistancesSegue"
@@ -59,19 +68,20 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
     }
     
     func tripUpdated(_ notification: Notification) {
-        let trip = notification.object as! WBTrip
-        Logger.debug("Updated Trip: \(trip.description)")
+        if let trip = notification.object as? WBTrip {
+            Logger.debug("Updated Trip: \(trip.description)")
         
-        if self.trip != trip { return }
+            if self.trip != trip { return }
         
-        //TODO jaanus: check posting already altered object
-        self.trip = Database.sharedInstance().tripWithName(self.trip!.name)
-        self.updateTitle()
+            //TODO jaanus: check posting already altered object
+            self.trip = Database.sharedInstance().tripWithName(self.trip!.name)
+            self.updateTitle()
+        }
     }
     
     private func updateTitle() {
         Logger.debug("Update Title")
-        let title = ("\(trip!.formattedPrice()) - \(trip!.name)")
+        let title = ("\(trip!.formattedPrice()!) - \(trip!.name!)")
         let subtitle = WBPreferences.showReceiptID() ? nextID() : dailyTotal();
         setTitle(title, subtitle: subtitle, color: UIColor.white)
     }
@@ -225,9 +235,9 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
     override func tappedObject(_ tapped: Any, indexPath: IndexPath) {
         self.tapped = tapped as! WBReceipt
         if tableView.isEditing {
-            performSegue(withIdentifier: "ReceiptsCreator", sender: nil)
+            presenter.editReceiptSubject.onNext(self.tapped)
         } else {
-            performSegue(withIdentifier: "ReceiptActions", sender: nil)
+            presenter.receiptActionsSubject.onNext(self.tapped)
         }
     }
     
@@ -291,6 +301,11 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
 
 //MARK: - Public interface
 extension ReceiptsView: ReceiptsViewInterface {
+    var createReceiptButton: UIBarButtonItem { get { return createButton } }
+    var createPhotoReceiptButton: UIBarButtonItem { get { return cameraButton } }
+    var distancesButton: UIBarButtonItem { get { return distanceButton } }
+    var generateReportButton: UIBarButtonItem { get { return shareButton } }
+    
     func setup(trip: WBTrip) {
         self.trip = trip
     }

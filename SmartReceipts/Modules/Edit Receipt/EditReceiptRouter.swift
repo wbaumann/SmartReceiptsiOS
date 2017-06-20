@@ -10,6 +10,9 @@ import Foundation
 import Viperit
 
 class EditReceiptRouter: Router {
+    func close(){
+        _view.dismiss(animated: true, completion: nil)
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

@@ -11,22 +11,49 @@ import Viperit
 
 class ReceiptsRouter: Router {
     
-    func openDistances(for trip: WBTrip) {
+    var moduleTrip: WBTrip! = nil
+    
+    func openDistances() {
         let module = Module.build(AppModules.tripDistances)
         executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: true, setupData: trip)
+            module.router.show(from: _view, embedInNavController: true, setupData: moduleTrip)
         }, iPad: {
-            module.router.showIPadForm(from: _view, setupData: trip, needNavigationController: true)
+            module.router.showIPadForm(from: _view, setupData: moduleTrip, needNavigationController: true)
         })
-        
     }
     
-    func openGenerateReport(for trip: WBTrip) {
+    func openGenerateReport() {
         let module = Module.build(AppModules.generateReport)
         executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: true, setupData: trip)
+            module.router.show(from: _view, embedInNavController: true, setupData: moduleTrip)
         }, iPad: {
-            module.router.showIPadForm(from: _view, setupData: trip, needNavigationController: true)
+            module.router.showIPadForm(from: _view, setupData: moduleTrip, needNavigationController: true)
+        })
+    }
+    
+    func openCreateReceipt() {
+        openEditModuleWith(receipt: nil, image: nil)
+    }
+    
+    func openCreatePhotoReceipt() {
+    
+    }
+    
+    func openActions(receipt: WBReceipt) {
+    
+    }
+    
+    func openEdit(receipt: WBReceipt, image: UIImage? = nil) {
+        openEditModuleWith(receipt: receipt, image: image)
+    }
+    
+    private func openEditModuleWith(receipt: WBReceipt?, image: UIImage?) {
+        let module = Module.build(AppModules.editReceipt)
+        let data = (trip: moduleTrip, receipt: receipt, image: image)
+        executeFor(iPhone: {
+            module.router.show(from: _view, embedInNavController: true, setupData: data)
+        }, iPad: {
+            module.router.showIPadForm(from: _view, setupData: data, needNavigationController: true)
         })
     }
 }

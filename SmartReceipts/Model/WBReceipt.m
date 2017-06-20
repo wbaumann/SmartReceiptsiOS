@@ -256,4 +256,22 @@ static NSString* checkNoData(NSString* str) {
     self.taxAmount = amount;
 }
 
+- (id)copy {
+    return [[WBReceipt alloc] initWithId:self.objectId
+                                    name:self.name
+                                category:self.category
+                           imageFileName:self.imageFileName
+                                    date:self.date
+                            timeZoneName:self.timeZone.name
+                                 comment:self.comment
+                             priceAmount:self.priceAmount
+                               taxAmount:self.taxAmount
+                                currency:self.currency
+                          isReimbursable:self.isReimbursable
+                              isFullPage:self.isFullPage
+                          extraEditText1:self.extraEditText1
+                          extraEditText2:self.extraEditText2
+                          extraEditText3:self.extraEditText3];
+}
+
 @end

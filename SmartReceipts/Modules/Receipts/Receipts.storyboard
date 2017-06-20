@@ -47,6 +47,10 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cameraButton" destination="pGQ-bf-LBW" id="65s-Vx-Ia9"/>
+                        <outlet property="createButton" destination="jlb-wq-GRj" id="QYS-SY-Xxa"/>
+                        <outlet property="distanceButton" destination="07w-dA-iUa" id="70N-f7-PLo"/>
+                        <outlet property="shareButton" destination="HIx-vc-pXP" id="2xp-6g-jrb"/>
                         <outlet property="tableView" destination="6BE-GL-qpy" id="oNU-sn-0AV"/>
                     </connections>
                 </viewController>
