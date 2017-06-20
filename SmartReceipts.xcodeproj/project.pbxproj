@@ -102,6 +102,7 @@
 		719B1FF71EF6033A0049BD71 /* ReceiptActionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FF11EF6033A0049BD71 /* ReceiptActionsPresenter.swift */; };
 		719B1FF81EF6033A0049BD71 /* ReceiptActionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FF21EF6033A0049BD71 /* ReceiptActionsRouter.swift */; };
 		719B1FF91EF6033A0049BD71 /* ReceiptActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FF31EF6033A0049BD71 /* ReceiptActionsView.swift */; };
+		719B1FFB1EF717000049BD71 /* EditReceiptFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FFA1EF717000049BD71 /* EditReceiptFormView.swift */; };
 		71A30F2C1EEC9F05001BA608 /* DataExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A30F2B1EEC9F05001BA608 /* DataExport.swift */; };
 		71A30F2F1EECB746001BA608 /* DataImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A30F2D1EECAA34001BA608 /* DataImport.swift */; };
 		71A30F301EECB750001BA608 /* WBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */; };
@@ -542,6 +543,7 @@
 		719B1FF11EF6033A0049BD71 /* ReceiptActionsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsPresenter.swift; sourceTree = "<group>"; };
 		719B1FF21EF6033A0049BD71 /* ReceiptActionsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsRouter.swift; sourceTree = "<group>"; };
 		719B1FF31EF6033A0049BD71 /* ReceiptActionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsView.swift; sourceTree = "<group>"; };
+		719B1FFA1EF717000049BD71 /* EditReceiptFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReceiptFormView.swift; sourceTree = "<group>"; };
 		71A30F2B1EEC9F05001BA608 /* DataExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExport.swift; sourceTree = "<group>"; };
 		71A30F2D1EECAA34001BA608 /* DataImport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImport.swift; sourceTree = "<group>"; };
 		71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppTheme.swift; path = ../ViewControllers/Abstract/Customization/AppTheme.swift; sourceTree = "<group>"; };
@@ -1200,6 +1202,7 @@
 				719B1FE51EF6032D0049BD71 /* EditReceiptPresenter.swift */,
 				719B1FE61EF6032D0049BD71 /* EditReceiptRouter.swift */,
 				719B1FE71EF6032D0049BD71 /* EditReceiptView.swift */,
+				719B1FFA1EF717000049BD71 /* EditReceiptFormView.swift */,
 			);
 			path = "Edit Receipt";
 			sourceTree = "<group>";
@@ -2552,6 +2555,7 @@
 				719B1FDD1EF603190049BD71 /* ReceiptsDisplayData.swift in Sources */,
 				EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */,
 				57C0EED11E2AE972001B4758 /* CustomLogFormatter.swift in Sources */,
+				719B1FFB1EF717000049BD71 /* EditReceiptFormView.swift in Sources */,
 				71F468391EEEF2AE009F6CE7 /* EditTripFormView.swift in Sources */,
 				719B1FEA1EF6032D0049BD71 /* EditReceiptInteractor.swift in Sources */,
 				EA888A861AFB4FBD00DF2AE6 /* Database+Trips.m in Sources */,

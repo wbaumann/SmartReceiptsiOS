@@ -36,6 +36,8 @@ class PaymentMethod: NSObject, FetchedModel, Pickable {
         }
     }
     
+    override var description: String { get { return self.method } }
+    
     override var hash: Int { get { return NSNumber(value: objectId).hash } }
     
     func presentedValue() -> String! {

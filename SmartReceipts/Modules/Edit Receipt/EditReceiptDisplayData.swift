@@ -10,5 +10,6 @@ import Foundation
 import Viperit
 
 class EditReceiptDisplayData: DisplayData {
-
+    var receipt: WBReceipt?
+    var trip: WBTrip!
 }

@@ -67,6 +67,7 @@
 #import "WBAutocompleteHelper.h"
 #import "WBFileManager.h"
 #import "DistancesToReceiptsConverter.h"
+#import "WBTextUtils.h"
 
 #import "InputValidation.h"
 
