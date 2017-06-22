@@ -37,3 +37,9 @@ func MainStoryboard() -> UIStoryboard {
 func executeFor(iPhone: ()->(), iPad: ()->()) {
     UI_USER_INTERFACE_IDIOM() == .pad ? iPad() : iPhone()
 }
+
+enum ReceiptAttachmentType {
+    case image
+    case pdf
+    case none
+}

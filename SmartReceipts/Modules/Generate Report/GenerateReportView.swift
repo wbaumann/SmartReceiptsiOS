@@ -22,7 +22,7 @@ final class GenerateReportView: UserInterface {
     @IBOutlet weak var doneButton: UIBarButtonItem!
     var hud: PendingHUDView?
     
-    let settingsTapObservable = PublishSubject<Any?>()
+    let settingsTapObservable = PublishSubject<Void>()
     
     private let disposeBag = DisposeBag()
     

@@ -40,7 +40,13 @@ class ReceiptsRouter: Router {
     }
     
     func openActions(receipt: WBReceipt) {
-    
+        let module = Module.build(AppModules.receiptActions)
+        let data: Any? = nil
+        executeFor(iPhone: {
+            module.router.show(from: _view, embedInNavController: true, setupData: data)
+        }, iPad: {
+            module.router.showIPadForm(from: _view, setupData: data, needNavigationController: true)
+        })
     }
     
     func openEdit(receipt: WBReceipt, image: UIImage? = nil) {
