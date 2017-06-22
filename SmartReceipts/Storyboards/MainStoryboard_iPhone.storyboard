@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="mCg-Ej-Ova">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="mCg-Ej-Ova">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -321,6 +321,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="prS-Qu-7uu" id="pVa-xi-D0U"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jxy-Ny-9nH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -429,6 +432,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="tableView" destination="lm1-z9-2ag" id="fDq-aR-i1k"/>
                         <outlet property="view" destination="lm1-z9-2ag" id="5Uw-bB-7Cp"/>
                     </connections>
                 </viewController>
@@ -778,6 +782,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="J7i-zK-gEO"/>
+                    <connections>
+                        <outlet property="tableView" destination="s5n-cn-t1f" id="Vtl-y4-cSl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XwQ-Ws-yw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

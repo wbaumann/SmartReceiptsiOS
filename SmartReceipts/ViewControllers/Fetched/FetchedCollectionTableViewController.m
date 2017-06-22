@@ -26,6 +26,8 @@ NSString *const FetchedCollectionTableViewControllerCellIdentifier = @"FetchedCo
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSAssert(self.tableView != nil, @"You must connect tableView outlets");
+    
     [self.tableView setEstimatedRowHeight:40];
     [self.tableView setRowHeight:UITableViewAutomaticDimension];
     
