@@ -23,31 +23,43 @@ class ReceiptsPresenter: Presenter {
     override func setupView(data: Any) {
         let trip = data as! WBTrip
         view.setup(trip: trip)
+        view.setup(fetchedModelAdapter: interactor.fetchedAdapter(for: trip))
         router.moduleTrip = trip
         
-        view.createReceiptButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.router.openCreateReceipt()
+        view.createReceiptButton.rx.tap.subscribe(onNext: { [unowned self] in
+            self.router.openCreateReceipt()
         }).disposed(by: disposeBag)
         
-        view.createPhotoReceiptButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.router.openCreatePhotoReceipt()
+        view.createPhotoReceiptButton.rx.tap.subscribe(onNext: { [unowned self] in
+            self.router.openCreatePhotoReceipt()
         }).disposed(by: disposeBag)
         
-        view.distancesButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.router.openDistances()
+        view.distancesButton.rx.tap.subscribe(onNext: { [unowned self] in
+            self.router.openDistances()
         }).disposed(by: disposeBag)
         
-        view.generateReportButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.router.openGenerateReport()
+        view.generateReportButton.rx.tap.subscribe(onNext: { [unowned self] in
+            self.router.openGenerateReport()
         }).disposed(by: disposeBag)
         
         
-        editReceiptSubject.subscribe(onNext: { [weak self] receipt in
-            self?.router.openEdit(receipt: receipt)
+        editReceiptSubject.subscribe(onNext: { [unowned self] receipt in
+            self.router.openEdit(receipt: receipt)
         }).disposed(by: disposeBag)
         
-        receiptActionsSubject.subscribe(onNext: { [weak self] receipt in
-            self?.router.openActions(receipt: receipt)
+        receiptActionsSubject.subscribe(onNext: { [unowned self] receipt in
+            let actionsPresenter = self.router.openActions(receipt: receipt)
+            
+            actionsPresenter.swapUpTap.subscribe(onNext: {
+                Logger.debug("swapUpTap")
+                self.interactor.swapUpReceipt(receipt)
+            }).disposed(by: self.disposeBag)
+            
+            actionsPresenter.swapDownTap.subscribe(onNext: {
+                Logger.debug("swapDownTap")
+                self.interactor.swapDownReceipt(receipt)
+            }).disposed(by: self.disposeBag)
+            
         }).disposed(by: disposeBag)
     }
 }

@@ -10,4 +10,5 @@ import Foundation
 import Viperit
 
 class ReceiptsDisplayData: DisplayData {
+    weak var fetchedModelAdapter: FetchedModelAdapter!
 }

@@ -60,12 +60,12 @@ class ReceiptActionsPresenter: Presenter {
             self.router.openCopy(receipt: self.receipt)
         }).disposed(by: disposeBag)
         
-        swapUpTap.subscribe(onNext: {
-            NSLog("swapUpTap")
+        swapUpTap.subscribe(onNext: { [unowned self] in
+            self.router.close()
         }).disposed(by: disposeBag)
         
-        swapDownTap.subscribe(onNext: {
-            NSLog("swapDownTap")
+        swapDownTap.subscribe(onNext: { [unowned self] in
+            self.router.close()
         }).disposed(by: disposeBag)
     }
     
