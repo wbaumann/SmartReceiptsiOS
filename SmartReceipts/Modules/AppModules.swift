@@ -17,4 +17,5 @@ enum AppModules: String, ViperitModule {
     case receipts
     case editReceipt
     case receiptActions
+    case receiptMoveCopy
 }
