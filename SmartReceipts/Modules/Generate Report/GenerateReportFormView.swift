@@ -16,7 +16,7 @@ class GenerateReportFormView: FormViewController {
     private weak var pdfReportWithoutTable: BehaviorSubject<Bool>!
     private weak var csvFile: BehaviorSubject<Bool>!
     private weak var zipStampedJPGs: BehaviorSubject<Bool>!
-    weak var settingsTapObservable: PublishSubject<Any?>?
+    weak var settingsTapObservable: PublishSubject<Void>?
     
     init(fullPdf: BehaviorSubject<Bool>, pdfNoTable: BehaviorSubject<Bool>,
          csvFile: BehaviorSubject<Bool>, zipStamped: BehaviorSubject<Bool>) {
@@ -42,7 +42,7 @@ class GenerateReportFormView: FormViewController {
         }.cellSetup({ cell, _ in
             cell.tintColor = AppTheme.themeColor
         }).onCellSelection({ [weak self] _,_ in
-            self?.settingsTapObservable?.onNext(nil)
+            self?.settingsTapObservable?.onNext()
         })
         
         
