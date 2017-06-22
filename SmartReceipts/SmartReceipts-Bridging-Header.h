@@ -50,6 +50,7 @@
 #import "SwitchControlCell.h"
 #import "WBCellWithPriceNameDate.h"
 #import "ReceiptSummaryCell.h"
+#import "TitleOnlyCell.h"
 
 #import "TripCSVGenerator.h"
 #import "TripFullPDFGenerator.h"

@@ -12,6 +12,8 @@ import RxSwift
 
 class ReceiptActionsPresenter: Presenter {
     
+    private var receipt: WBReceipt!
+    
     let handleAttachTap = PublishSubject<Void>()
     let takeImageTap = PublishSubject<Void>()
     let retakeImageTap = PublishSubject<Void>()
@@ -23,11 +25,15 @@ class ReceiptActionsPresenter: Presenter {
     
     let disposeBag = DisposeBag()
     
+    override func setupView(data: Any) {
+        receipt = data as! WBReceipt
+    }
+    
     override func viewHasLoaded() {
         super.viewHasLoaded()
         
-        view.doneButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.router.close()
+        view.doneButton.rx.tap.subscribe(onNext: { [unowned self] in
+            self.router.close()
         }).disposed(by: disposeBag)
         
         handleAttachTap.subscribe(onNext: {
@@ -46,12 +52,12 @@ class ReceiptActionsPresenter: Presenter {
             NSLog("viewImageTap")
         }).disposed(by: disposeBag)
         
-        moveTap.subscribe(onNext: {
-            NSLog("moveTap")
+        moveTap.subscribe(onNext: { [unowned self] in
+            self.router.openMove(receipt: self.receipt)
         }).disposed(by: disposeBag)
         
-        copyTap.subscribe(onNext: {
-            NSLog("copyTap")
+        copyTap.subscribe(onNext: { [unowned self] in
+            self.router.openCopy(receipt: self.receipt)
         }).disposed(by: disposeBag)
         
         swapUpTap.subscribe(onNext: {

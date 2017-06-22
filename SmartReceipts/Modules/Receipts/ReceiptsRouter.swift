@@ -41,11 +41,10 @@ class ReceiptsRouter: Router {
     
     func openActions(receipt: WBReceipt) {
         let module = Module.build(AppModules.receiptActions)
-        let data: Any? = nil
         executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: true, setupData: data)
+            module.router.show(from: _view, embedInNavController: true, setupData: receipt)
         }, iPad: {
-            module.router.showIPadForm(from: _view, setupData: data, needNavigationController: true)
+            module.router.showIPadForm(from: _view, setupData: receipt, needNavigationController: true)
         })
     }
     

@@ -15,6 +15,24 @@ class ReceiptActionsRouter: Router {
         _view.dismiss(animated: true, completion: nil)
     }
     
+    func openMove(receipt: WBReceipt) {
+        openMoveCopy(receipt: receipt, copyOrMove: false)
+    }
+    
+    func openCopy(receipt: WBReceipt) {
+        openMoveCopy(receipt: receipt, copyOrMove: true)
+    }
+    
+    private func openMoveCopy(receipt: WBReceipt, copyOrMove: Bool) {
+        let module = Module.build(AppModules.receiptMoveCopy)
+        module.presenter.setupView(data: (receipt, copyOrMove))
+        executeFor(iPhone: {
+            module.router.show(from: _view, embedInNavController: false)
+        }, iPad: {
+            showIPadForm(from: _view)
+        })
+    }
+    
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
