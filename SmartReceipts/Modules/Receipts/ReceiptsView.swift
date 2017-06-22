@@ -12,6 +12,7 @@ import Viperit
 //MARK: - Public Interface Protocol
 protocol ReceiptsViewInterface {
     func setup(trip: WBTrip)
+    func setup(fetchedModelAdapter: FetchedModelAdapter)
     var createReceiptButton: UIBarButtonItem { get }
     var createPhotoReceiptButton: UIBarButtonItem { get }
     var distancesButton: UIBarButtonItem { get }
@@ -277,10 +278,7 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
     }
     
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {
-        // This is needed on iPad. When ap is launched, then storyboard pushes unconfigured view.
-        // This is replaced right after by configured one
-        if (trip == nil) { return nil }
-        return Database.sharedInstance().fetchedReceiptsAdapter(for: trip!)
+        return displayData.fetchedModelAdapter
     }
     
     func settingsSaved() {
@@ -308,6 +306,10 @@ extension ReceiptsView: ReceiptsViewInterface {
     
     func setup(trip: WBTrip) {
         self.trip = trip
+    }
+    
+    func setup(fetchedModelAdapter: FetchedModelAdapter) {
+        displayData.fetchedModelAdapter = fetchedModelAdapter
     }
 }
 
