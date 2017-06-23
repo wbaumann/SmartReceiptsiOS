@@ -60,6 +60,13 @@ class ReceiptsPresenter: Presenter {
                 self.interactor.swapDownReceipt(receipt)
             }).disposed(by: self.disposeBag)
             
+            actionsPresenter.viewImageTap
+             .delay(0, scheduler: MainScheduler.instance)
+             .subscribe(onNext:{
+                Logger.debug("viewImageTap")
+                self.router.openImageViewer(for: receipt)
+            }).disposed(by: self.disposeBag)
+            
         }).disposed(by: disposeBag)
     }
 }

@@ -11,7 +11,8 @@ import Viperit
 
 //MARK: - Public Interface Protocol
 protocol ReceiptActionsViewInterface {
-    var doneButton: UIBarButtonItem {get}
+    var doneButton: UIBarButtonItem { get }
+    func setup(receipt: WBReceipt)
 }
 
 //MARK: ReceiptActionsView Class
@@ -24,8 +25,9 @@ final class ReceiptActionsView: UserInterface {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        formView = ReceiptActionsFormView(attachmentType: .none)
+        navigationItem.title = displayData.receipt.name
         
+        formView = ReceiptActionsFormView(attachmentType: displayData.receipt.attachemntType)
         formView.handleAttachTap = presenter.handleAttachTap
         formView.takeImageTap = presenter.takeImageTap
         formView.retakeImageTap = presenter.retakeImageTap
@@ -45,6 +47,9 @@ final class ReceiptActionsView: UserInterface {
 extension ReceiptActionsView: ReceiptActionsViewInterface {
     var doneButton: UIBarButtonItem { get{ return doneButtonItem } }
     
+    func setup(receipt: WBReceipt) {
+        displayData.receipt = receipt
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
