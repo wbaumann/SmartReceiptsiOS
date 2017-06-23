@@ -167,30 +167,6 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
         AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuDelete())
         Database.sharedInstance().delete(object as! WBReceipt)
     }
-
-    private func swapReceipt(idx1: Int, idx2: Int) {
-        let rec1 = objectAtIndexPath(IndexPath(row: idx1, section: 0)) as! WBReceipt
-        let rec2 = objectAtIndexPath(IndexPath(row: idx2, section: 0)) as! WBReceipt
-        if (!Database.sharedInstance().swapReceipt(rec1, with: rec2)) {
-            Logger.warning("Error: Cannot Swap")
-        }
-    }
-    
-    func swapUpReceipt(_ receipt: WBReceipt) {
-        let idx = Int(indexOfObject(receipt)!)
-        if idx == 0 || idx == NSNotFound {
-            return
-        }
-        swapReceipt(idx1: idx, idx2: idx - 1)
-    }
-    
-    func swapDownReceipt(_ receipt: WBReceipt) {
-        let idx = Int(indexOfObject(receipt)!)
-        if idx >= numberOfItems() - 1 || idx == NSNotFound {
-            return
-        }
-        swapReceipt(idx1: idx, idx2: idx + 1)
-    }
     
     func attachPdfOrImageFile(_ pdfFile: String, toReceipt: WBReceipt) -> Bool {
         let ext = (pdfFile as NSString).pathExtension

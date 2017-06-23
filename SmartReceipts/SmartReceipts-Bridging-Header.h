@@ -69,6 +69,8 @@
 #import "WBFileManager.h"
 #import "DistancesToReceiptsConverter.h"
 #import "WBTextUtils.h"
+#import "ImagePicker.h"
+#import "WBImageUtils.h"
 
 #import "InputValidation.h"
 

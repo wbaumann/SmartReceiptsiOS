@@ -27,6 +27,7 @@ class ReceiptActionsPresenter: Presenter {
     
     override func setupView(data: Any) {
         receipt = data as! WBReceipt
+        view.setup(receipt: receipt)
     }
     
     override func viewHasLoaded() {
@@ -36,8 +37,10 @@ class ReceiptActionsPresenter: Presenter {
             self.router.close()
         }).disposed(by: disposeBag)
         
-        handleAttachTap.subscribe(onNext: {
+        handleAttachTap.subscribe(onNext: { [unowned self] in
             NSLog("handleAttachTap")
+            _ = self.interactor.attachAppInputFile(to: self.receipt)
+            self.router.close()
         }).disposed(by: disposeBag)
         
         takeImageTap.subscribe(onNext: {
@@ -50,6 +53,7 @@ class ReceiptActionsPresenter: Presenter {
         
         viewImageTap.subscribe(onNext: {
             NSLog("viewImageTap")
+            self.router.close()
         }).disposed(by: disposeBag)
         
         moveTap.subscribe(onNext: { [unowned self] in
@@ -61,10 +65,12 @@ class ReceiptActionsPresenter: Presenter {
         }).disposed(by: disposeBag)
         
         swapUpTap.subscribe(onNext: { [unowned self] in
+            AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuSwapUp())
             self.router.close()
         }).disposed(by: disposeBag)
         
         swapDownTap.subscribe(onNext: { [unowned self] in
+            AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuSwapDown())
             self.router.close()
         }).disposed(by: disposeBag)
     }

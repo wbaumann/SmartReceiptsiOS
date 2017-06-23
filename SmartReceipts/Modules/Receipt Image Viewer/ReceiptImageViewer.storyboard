@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Receipt Image Viewer View-->
+        <scene sceneID="fHN-3y-edC">
+            <objects>
+                <viewController storyboardIdentifier="ReceiptImageViewerView" id="ISV-Wr-2q7" customClass="ReceiptImageViewerView" customModule="SmartReceipts" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ciJ-vO-coY"/>
+                        <viewControllerLayoutGuide type="bottom" id="J0c-cW-Doh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="PuV-l3-mkI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="6" translatesAutoresizingMaskIntoConstraints="NO" id="Zeh-0n-Kcp">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ISV-Wr-2q7" id="crv-Qx-1uO"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="J0c-cW-Doh" firstAttribute="top" secondItem="Zeh-0n-Kcp" secondAttribute="bottom" id="7RY-wU-pw0"/>
+                            <constraint firstItem="Zeh-0n-Kcp" firstAttribute="leading" secondItem="PuV-l3-mkI" secondAttribute="leading" id="Gba-Qp-QZ3"/>
+                            <constraint firstItem="Zeh-0n-Kcp" firstAttribute="top" secondItem="ciJ-vO-coY" secondAttribute="bottom" id="WRM-rA-YQF"/>
+                            <constraint firstAttribute="trailing" secondItem="Zeh-0n-Kcp" secondAttribute="trailing" id="w3g-H0-U5e"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <toolbarItems>
+                        <barButtonItem image="rotate-ccw" id="7bY-cj-R4m"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="I2j-Qd-uYV"/>
+                        <barButtonItem image="camera" id="7Ks-oY-D64"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Elb-cO-XEq"/>
+                        <barButtonItem image="rotate-cw" id="WcX-CF-QNy"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cameraButton" destination="7Ks-oY-D64" id="OmM-UE-LAM"/>
+                        <outlet property="rotateLeftButton" destination="7bY-cj-R4m" id="e8w-rP-8hB"/>
+                        <outlet property="rotateRightButton" destination="WcX-CF-QNy" id="gX8-nf-MJD"/>
+                        <outlet property="scrollView" destination="Zeh-0n-Kcp" id="fiV-hl-dLS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BzB-ct-Z7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2510" y="2213"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camera" width="24" height="20"/>
+        <image name="rotate-ccw" width="22" height="20"/>
+        <image name="rotate-cw" width="22" height="20"/>
+    </resources>
+</document>

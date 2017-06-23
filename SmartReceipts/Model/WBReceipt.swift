@@ -26,6 +26,18 @@ extension WBReceipt {
         
         return tax()
     }
+    
+    var attachemntType: ReceiptAttachmentType {
+        get {
+            if hasPDF() {
+                return .pdf
+            } else if hasImage() {
+                return .image
+            } else {
+                return .none
+            }
+        }
+    }
 }
 
 extension WBReceipt: Priced {

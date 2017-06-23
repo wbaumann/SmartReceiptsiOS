@@ -22,6 +22,16 @@ class ReceiptsRouter: Router {
         })
     }
     
+    func openImageViewer(for receipt: WBReceipt) {
+        let module = Module.build(AppModules.receiptImageViewer)
+        module.presenter.setupView(data: receipt)
+        executeFor(iPhone: {
+            module.router.show(from: _view, embedInNavController: false)
+        }, iPad: {
+            showIPadForm(from: _view)
+        })
+    }
+    
     func openGenerateReport() {
         let module = Module.build(AppModules.generateReport)
         executeFor(iPhone: {

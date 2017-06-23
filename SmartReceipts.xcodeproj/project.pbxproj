@@ -123,6 +123,13 @@
 		71AEDDE51EDF815300BAC0DD /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDE41EDF815300BAC0DD /* ReceiptsViewController.swift */; };
 		71AEDDE71EDF823D00BAC0DD /* AppModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDE61EDF823D00BAC0DD /* AppModules.swift */; };
 		71AEDDEB1EDF918600BAC0DD /* FetchedCollectionViewControllerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDEA1EDF918600BAC0DD /* FetchedCollectionViewControllerSwift.swift */; };
+		71AF49DF1EFDA4810022B2E2 /* ReceiptImageViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71AF49D91EFDA4810022B2E2 /* ReceiptImageViewer.storyboard */; };
+		71AF49E01EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF49DA1EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift */; };
+		71AF49E11EFDA4810022B2E2 /* ReceiptImageViewerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF49DB1EFDA4810022B2E2 /* ReceiptImageViewerInteractor.swift */; };
+		71AF49E21EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF49DC1EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift */; };
+		71AF49E31EFDA4810022B2E2 /* ReceiptImageViewerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF49DD1EFDA4810022B2E2 /* ReceiptImageViewerRouter.swift */; };
+		71AF49E71EFDBF850022B2E2 /* ImagePicker+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF49E61EFDBF850022B2E2 /* ImagePicker+Extensions.swift */; };
+		71AF49E81EFDCC010022B2E2 /* ReceiptImageViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF49DE1EFDA4810022B2E2 /* ReceiptImageViewerView.swift */; };
 		71B488C21EF42AF7008872E2 /* NoTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B488C11EF42AF7008872E2 /* NoTripsViewController.swift */; };
 		71B488C41EF47B1C008872E2 /* ObservableTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B488C31EF47B1C008872E2 /* ObservableTrips.swift */; };
 		71B488C71EF49209008872E2 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B488C51EF48706008872E2 /* Distance.swift */; };
@@ -570,6 +577,13 @@
 		71AEDDE41EDF815300BAC0DD /* ReceiptsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
 		71AEDDE61EDF823D00BAC0DD /* AppModules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModules.swift; sourceTree = "<group>"; };
 		71AEDDEA1EDF918600BAC0DD /* FetchedCollectionViewControllerSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedCollectionViewControllerSwift.swift; sourceTree = "<group>"; };
+		71AF49D91EFDA4810022B2E2 /* ReceiptImageViewer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReceiptImageViewer.storyboard; sourceTree = "<group>"; };
+		71AF49DA1EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptImageViewerDisplayData.swift; sourceTree = "<group>"; };
+		71AF49DB1EFDA4810022B2E2 /* ReceiptImageViewerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptImageViewerInteractor.swift; sourceTree = "<group>"; };
+		71AF49DC1EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptImageViewerPresenter.swift; sourceTree = "<group>"; };
+		71AF49DD1EFDA4810022B2E2 /* ReceiptImageViewerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptImageViewerRouter.swift; sourceTree = "<group>"; };
+		71AF49DE1EFDA4810022B2E2 /* ReceiptImageViewerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptImageViewerView.swift; sourceTree = "<group>"; };
+		71AF49E61EFDBF850022B2E2 /* ImagePicker+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImagePicker+Extensions.swift"; sourceTree = "<group>"; };
 		71B488C11EF42AF7008872E2 /* NoTripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTripsViewController.swift; sourceTree = "<group>"; };
 		71B488C31EF47B1C008872E2 /* ObservableTrips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTrips.swift; sourceTree = "<group>"; };
 		71B488C51EF48706008872E2 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
@@ -1173,7 +1187,7 @@
 			path = "Modules Tests";
 			sourceTree = "<group>";
 		};
-		7185AEEE1EFC1CB80038ED2A /* ReceiptMoveCopy */ = {
+		7185AEEE1EFC1CB80038ED2A /* Receipt Move Copy */ = {
 			isa = PBXGroup;
 			children = (
 				7185AEEF1EFC1CC90038ED2A /* ReceiptMoveCopy.storyboard */,
@@ -1183,7 +1197,7 @@
 				7185AEF31EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift */,
 				7185AEF41EFC1CC90038ED2A /* ReceiptMoveCopyView.swift */,
 			);
-			path = ReceiptMoveCopy;
+			path = "Receipt Move Copy";
 			sourceTree = "<group>";
 		};
 		7190D43C1EE8891F0081CB22 /* Generate Report */ = {
@@ -1273,7 +1287,8 @@
 				719B1FD51EF602C60049BD71 /* Receipts */,
 				719B1FD31EF602C60049BD71 /* Edit Receipt */,
 				719B1FD41EF602C60049BD71 /* Receipt Actions */,
-				7185AEEE1EFC1CB80038ED2A /* ReceiptMoveCopy */,
+				7185AEEE1EFC1CB80038ED2A /* Receipt Move Copy */,
+				71AF49D81EFDA4710022B2E2 /* Receipt Image Viewer */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1289,6 +1304,19 @@
 				71AEDDDB1EDF7FF400BAC0DD /* TripDistancesView.swift */,
 			);
 			path = "Trip Distances";
+			sourceTree = "<group>";
+		};
+		71AF49D81EFDA4710022B2E2 /* Receipt Image Viewer */ = {
+			isa = PBXGroup;
+			children = (
+				71AF49D91EFDA4810022B2E2 /* ReceiptImageViewer.storyboard */,
+				71AF49DA1EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift */,
+				71AF49DB1EFDA4810022B2E2 /* ReceiptImageViewerInteractor.swift */,
+				71AF49DC1EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift */,
+				71AF49DD1EFDA4810022B2E2 /* ReceiptImageViewerRouter.swift */,
+				71AF49DE1EFDA4810022B2E2 /* ReceiptImageViewerView.swift */,
+			);
+			path = "Receipt Image Viewer";
 			sourceTree = "<group>";
 		};
 		71DDC2C21EEDBEAA00CFFDBC /* Trips */ = {
@@ -1768,6 +1796,7 @@
 				EA07BF431AF3F882004D17F6 /* DecimalInputValidation.m */,
 				EA46678D1AE7EA1600B4E502 /* ImagePicker.h */,
 				EA46678E1AE7EA1600B4E502 /* ImagePicker.m */,
+				71AF49E61EFDBF850022B2E2 /* ImagePicker+Extensions.swift */,
 				EA07BF411AF3F84E004D17F6 /* InputValidation.h */,
 				EA888A741AFA3D3F00DF2AE6 /* NumberInputValidation.h */,
 				EA888A751AFA3D3F00DF2AE6 /* NumberInputValidation.m */,
@@ -2336,6 +2365,7 @@
 				EA71DFCD1AF9FEEC004092C3 /* SwitchControlCell.xib in Resources */,
 				EA888A731AFA38C100DF2AE6 /* SettingsButtonCell.xib in Resources */,
 				EA07BF371AF3B88C004D17F6 /* PickerCell.xib in Resources */,
+				71AF49DF1EFDA4810022B2E2 /* ReceiptImageViewer.storyboard in Resources */,
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
 				A78215071CFFF66B00FD644A /* ExchangeRateCell.xib in Resources */,
 				EA1E60D91B2742660048E688 /* Localizable.strings in Resources */,
@@ -2633,6 +2663,7 @@
 				719B1FE91EF6032D0049BD71 /* EditReceiptDisplayData.swift in Sources */,
 				7185AEF91EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift in Sources */,
 				7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */,
+				71AF49E11EFDA4810022B2E2 /* ReceiptImageViewerInteractor.swift in Sources */,
 				71B488C41EF47B1C008872E2 /* ObservableTrips.swift in Sources */,
 				EA888A7C1AFA5C5900DF2AE6 /* Database+Receipts.m in Sources */,
 				719310261EDDB7CF0065B5AD /* FetchedPlaceholderView.swift in Sources */,
@@ -2744,6 +2775,7 @@
 				570515A31E02EB5500BB8FE4 /* Event+Categories.swift in Sources */,
 				EA07BF341AF3B703004D17F6 /* InlinedDatePickerCell.m in Sources */,
 				EA2F23051B41BFD3008AF61E /* Database+Purchases.m in Sources */,
+				71AF49E31EFDA4810022B2E2 /* ReceiptImageViewerRouter.swift in Sources */,
 				EA1D42B91B03831700D64D3A /* PaymentMethodsViewController.m in Sources */,
 				A7A720E11CEEFAF700A3B5FF /* InputCellsViewController.swift in Sources */,
 				716F344F1EE040E100D0017A /* EditDistanceInteractor.swift in Sources */,
@@ -2791,6 +2823,9 @@
 				EA5963E31AF2912900935344 /* PickerCell.m in Sources */,
 				EA07BF5F1AF4E801004D17F6 /* DistanceSummaryCell.m in Sources */,
 				A7D554D11CFF0F5000169FD2 /* FMDatabase+Trips.swift in Sources */,
+				71AF49E21EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift in Sources */,
+				71AF49E71EFDBF850022B2E2 /* ImagePicker+Extensions.swift in Sources */,
+				71AF49E81EFDCC010022B2E2 /* ReceiptImageViewerView.swift in Sources */,
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
 				71AEDDE71EDF823D00BAC0DD /* AppModules.swift in Sources */,
@@ -2818,6 +2853,7 @@
 				712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */,
 				A7F05BB81CFC2C9D0079F1AD /* ReceiptColumnNetExchangedPricePlusTax.swift in Sources */,
 				7193102B1EDDB9960065B5AD /* WBAbstractPicker.m in Sources */,
+				71AF49E01EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift in Sources */,
 				BA6654FB0EA730FF8CBC4B93 /* WBImageSegue.m in Sources */,
 				BA66598797EF09DBD750184F /* WBAutocompleteHelper.m in Sources */,
 				BA665CE0E265BAAFE063CF3A /* WBReceiptsViewController.m in Sources */,

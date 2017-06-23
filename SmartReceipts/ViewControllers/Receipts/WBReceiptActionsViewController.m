@@ -203,13 +203,11 @@
             
         case 5:
             [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptMenuSwapUp]];
-            [self.receiptsViewController swapUpReceipt:self.receipt];
             [self dismissViewControllerAnimated:YES completion:nil];
             break;
             
         case 6:
             [[AnalyticsManager sharedManager] recordWithEvent:[Event receiptsReceiptMenuSwapDown]];
-            [self.receiptsViewController swapDownReceipt:self.receipt];
             [self dismissViewControllerAnimated:YES completion:nil];
             break;
             
