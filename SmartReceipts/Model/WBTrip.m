@@ -134,6 +134,21 @@
     return [self.name hash];
 }
 
+- (id)copy {
+    WBTrip *copy = [WBTrip new];
+    copy.name = self.name;
+    copy.originalName = self.originalName;
+    copy.startDate = self.startDate;
+    copy.startTimeZone = self.startTimeZone;
+    copy.endDate = self.endDate;
+    copy.endTimeZone = self.endTimeZone;
+    copy.defaultCurrency = self.defaultCurrency;
+    copy.costCenter = self.costCenter;
+    copy.pricesSummary = self.pricesSummary;
+    copy.comment = self.comment;
+    return copy;
+}
+
 @end
 
 

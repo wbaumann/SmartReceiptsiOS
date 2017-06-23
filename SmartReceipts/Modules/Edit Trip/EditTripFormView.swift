@@ -22,7 +22,7 @@ class EditTripFormView: FormViewController {
     required init(trip: WBTrip?) {
         super.init(nibName: nil, bundle: nil)
         isNewTrip = trip == nil
-        self.trip = trip
+        self.trip = trip?.copy() as? WBTrip
         if trip == nil {
             self.trip = WBTrip()
             self.trip?.startDate = NSDate().atBeginningOfDay()
@@ -95,16 +95,15 @@ class EditTripFormView: FormViewController {
             cell.configureCell()
         })
         
-        if WBPreferences.trackCostCenter() {
-            form.allSections.first! <<< TextRow() { row in
-                row.title = LocalizedString("edit.trip.cost.center.label")
-                row.value = trip?.costCenter ?? ""
-            }.onChange({ [weak self] row in
-                self?.trip?.costCenter = row.value ?? ""
-            }).cellSetup({ cell, _ in
-                cell.configureCell()
-            })
-        }
+        <<< TextRow() { row in
+            row.title = LocalizedString("edit.trip.cost.center.label")
+            row.value = trip?.costCenter ?? ""
+            row.hidden = Condition(booleanLiteral: !WBPreferences.trackCostCenter())
+        }.onChange({ [weak self] row in
+            self?.trip?.costCenter = row.value ?? ""
+        }).cellSetup({ cell, _ in
+            cell.configureCell()
+        })
     }
     
     func done() {
