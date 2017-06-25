@@ -13,6 +13,7 @@ import Viperit
 protocol ReceiptActionsViewInterface {
     var doneButton: UIBarButtonItem { get }
     func setup(receipt: WBReceipt)
+    func updateForm()
 }
 
 //MARK: ReceiptActionsView Class
@@ -30,7 +31,6 @@ final class ReceiptActionsView: UserInterface {
         formView = ReceiptActionsFormView(attachmentType: displayData.receipt.attachemntType)
         formView.handleAttachTap = presenter.handleAttachTap
         formView.takeImageTap = presenter.takeImageTap
-        formView.retakeImageTap = presenter.retakeImageTap
         formView.viewImageTap = presenter.viewImageTap
         formView.moveTap = presenter.moveTap
         formView.copyTap = presenter.copyTap
@@ -49,6 +49,11 @@ extension ReceiptActionsView: ReceiptActionsViewInterface {
     
     func setup(receipt: WBReceipt) {
         displayData.receipt = receipt
+    }
+    
+    func updateForm() {
+        formView.attachmentType = displayData.receipt.attachemntType
+        formView.update()
     }
 }
 

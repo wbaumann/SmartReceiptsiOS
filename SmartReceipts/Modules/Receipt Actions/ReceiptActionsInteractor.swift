@@ -17,6 +17,20 @@ class ReceiptActionsInteractor: Interactor {
         return result
     }
     
+    func attachImage(_ image: UIImage, to receipt: WBReceipt) -> Bool {
+        let imageFileName = String(format: "%tu_%@.jpg", receipt.receiptId(), receipt.name)
+        let path = receipt.trip.file(inDirectoryPath: imageFileName)
+        if !WBFileManager.forceWrite(UIImageJPEGRepresentation(image, 0.85), to: path!) {
+            return false
+        }
+        
+        if !Database.sharedInstance().update(receipt, changeFileNameTo: imageFileName) {
+            Logger.error("Error: cannot update image file")
+            return false
+        }
+        return true
+    }
+    
     private func processAttachFile(to receipt: WBReceipt) -> Bool {
         let file = WBAppDelegate.instance().filePathToAttach!
         let ext = (file as NSString).pathExtension
@@ -35,7 +49,6 @@ class ReceiptActionsInteractor: Interactor {
         }
         return true
     }
-    
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

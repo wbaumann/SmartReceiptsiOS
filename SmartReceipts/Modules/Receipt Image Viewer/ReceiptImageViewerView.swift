@@ -46,10 +46,9 @@ final class ReceiptImageViewerView: UserInterface {
         }).addDisposableTo(disposeBag)
         
         cameraButton.rx.tap.subscribe(onNext: { [unowned self] in
-            ImagePicker.sharedInstance().rx_openOn(self)
+            _ = ImagePicker.sharedInstance().rx_openOn(self)
                 .filter({ $0 != nil })
                 .bind(to: self.presenter.image)
-                .addDisposableTo(self.disposeBag)
         }).addDisposableTo(disposeBag)
         
         rotateRightButton.rx.tap.subscribe(onNext: { [unowned self] in
