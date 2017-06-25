@@ -38,7 +38,6 @@ class ReceiptActionsPresenter: Presenter {
         }).disposed(by: disposeBag)
         
         handleAttachTap.subscribe(onNext: { [unowned self] in
-            NSLog("handleAttachTap")
             AnalyticsManager.sharedManager.record(event: Event.receiptsImportPictureReceipt())
             _ = self.interactor.attachAppInputFile(to: self.receipt)
             self.router.close()
@@ -46,14 +45,15 @@ class ReceiptActionsPresenter: Presenter {
         
         takeImageTap.subscribe(onNext: {
             self.takeImage()
-            NSLog("takeImageTap")
             AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuRetakePhoto())
         }).disposed(by: disposeBag)
         
         viewImageTap.subscribe(onNext: { [unowned self] in
-            self.receipt.attachemntType == .image ?
-                AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewImage()) :
+            if self.receipt.attachemntType == .image {
+                AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewImage())
+            } else if self.receipt.attachemntType == .pdf {
                 AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewPdf())
+            }
             self.router.close()
         }).disposed(by: disposeBag)
         

@@ -12,6 +12,7 @@ import Viperit
 class ReceiptsRouter: Router {
     
     var moduleTrip: WBTrip! = nil
+    private var documentViewController: UIDocumentInteractionController!
     
     func openDistances() {
         let module = Module.build(AppModules.tripDistances)
@@ -30,6 +31,14 @@ class ReceiptsRouter: Router {
         }, iPad: {
             showIPadForm(from: _view)
         })
+    }
+    
+    func openPDFViewer(for receipt: WBReceipt) {
+        let url = URL(fileURLWithPath: receipt.imageFilePath(for: receipt.trip))
+        documentViewController = UIDocumentInteractionController(url: url)
+        documentViewController.name = receipt.name
+        documentViewController.delegate = _view as? UIDocumentInteractionControllerDelegate
+        documentViewController.presentPreview(animated: true)
     }
     
     func openGenerateReport() {
@@ -72,6 +81,7 @@ class ReceiptsRouter: Router {
             module.router.showIPadForm(from: _view, setupData: data, needNavigationController: true)
         })
     }
+    
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
