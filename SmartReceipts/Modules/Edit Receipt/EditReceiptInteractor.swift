@@ -16,28 +16,17 @@ class EditReceiptInteractor: Interactor {
     let disposeBag = DisposeBag()
     
     func configureSubscribers() {
-        presenter.addReceiptSubject.subscribe(onNext: { [weak self] receipt in
+        presenter.addReceiptSubject.subscribe(onNext: { [unowned self] receipt in
             Logger.debug("Added Receipt: \(receipt.name)")
             AnalyticsManager.sharedManager.record(event: Event.receiptsPersistNewReceipt())
-            self?.save(receipt: receipt)
+            self.saveImage(to: receipt)
+            self.save(receipt: receipt)
         }).disposed(by: disposeBag)
         
-        presenter.updateReceiptSubject.subscribe(onNext: { [weak self] receipt in
+        presenter.updateReceiptSubject.subscribe(onNext: { [unowned self] receipt in
             Logger.debug("Updated Receipt: \(receipt.name)")
             AnalyticsManager.sharedManager.record(event: Event.receiptsPersistUpdateReceipt())
-            
-            if let img = self?.receiptImage {
-                var imgFileName = ""
-                let nextId = Database.sharedInstance().nextReceiptID()
-                imgFileName = String(format: "%tu_%@.jpg", nextId, receipt.name)
-                let path = receipt.trip.file(inDirectoryPath: imgFileName)
-                if !WBFileManager.forceWrite(UIImageJPEGRepresentation(img, 0.85), to: path) {
-                    imgFileName = ""
-                } else {
-                    receipt.setImageFileName(imgFileName)
-                }
-            }
-            self?.save(receipt: receipt)
+            self.save(receipt: receipt)
         }).disposed(by: disposeBag)
     }
     
@@ -46,6 +35,20 @@ class EditReceiptInteractor: Interactor {
             presenter.present(errorDescription: LocalizedString("edit.receipt.generic.save.error.message"))
         } else {
             presenter.close()
+        }
+    }
+    
+    private func saveImage(to receipt: WBReceipt) {
+        if let img = receiptImage {
+            var imgFileName = ""
+            let nextId = Database.sharedInstance().nextReceiptID()
+            imgFileName = String(format: "%tu_%@.jpg", nextId, receipt.name)
+            let path = receipt.trip.file(inDirectoryPath: imgFileName)
+            if !WBFileManager.forceWrite(UIImageJPEGRepresentation(img, 0.85), to: path) {
+                imgFileName = ""
+            } else {
+                receipt.setImageFileName(imgFileName)
+            }
         }
     }
 }

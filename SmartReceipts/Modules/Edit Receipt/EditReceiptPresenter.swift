@@ -22,6 +22,7 @@ class EditReceiptPresenter: Presenter {
     override func setupView(data: Any) {
         let inputData = data as! (trip: WBTrip, receipt: WBReceipt?, image: UIImage?)
         view.setup(trip: inputData.trip, receipt: inputData.receipt)
+        interactor.receiptImage = inputData.image
     }
     
     func close() {
