@@ -8,11 +8,13 @@
 
 import Foundation
 import Viperit
+import RxSwift
 
 class ReceiptsRouter: Router {
     
     var moduleTrip: WBTrip! = nil
     private var documentViewController: UIDocumentInteractionController!
+    private let disposeBag = DisposeBag()
     
     func openDistances() {
         let module = Module.build(AppModules.tripDistances)
@@ -55,7 +57,11 @@ class ReceiptsRouter: Router {
     }
     
     func openCreatePhotoReceipt() {
-    
+        ImagePicker.sharedInstance().rx_openOn(_view)
+            .filter({ $0 != nil })
+            .subscribe(onNext: { [unowned self] in
+            self.openEditModuleWith(receipt: nil, image: $0)
+        }).disposed(by: disposeBag)
     }
     
     func openActions(receipt: WBReceipt) -> ReceiptActionsPresenter {
