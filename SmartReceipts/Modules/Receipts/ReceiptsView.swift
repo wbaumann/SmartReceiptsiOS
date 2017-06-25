@@ -273,6 +273,12 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
     }
 }
 
+extension ReceiptsView: UIDocumentInteractionControllerDelegate {
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return navigationController ?? self
+    }
+}
+
 //MARK: - Public interface
 extension ReceiptsView: ReceiptsViewInterface {
     var createReceiptButton: UIBarButtonItem { get { return createButton } }

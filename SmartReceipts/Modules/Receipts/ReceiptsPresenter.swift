@@ -51,20 +51,19 @@ class ReceiptsPresenter: Presenter {
             let actionsPresenter = self.router.openActions(receipt: receipt)
             
             actionsPresenter.swapUpTap.subscribe(onNext: {
-                Logger.debug("swapUpTap")
                 self.interactor.swapUpReceipt(receipt)
             }).disposed(by: self.disposeBag)
             
             actionsPresenter.swapDownTap.subscribe(onNext: {
-                Logger.debug("swapDownTap")
                 self.interactor.swapDownReceipt(receipt)
             }).disposed(by: self.disposeBag)
             
             actionsPresenter.viewImageTap
              .delay(0, scheduler: MainScheduler.instance)
              .subscribe(onNext:{
-                Logger.debug("viewImageTap")
-                self.router.openImageViewer(for: receipt)
+                receipt.attachemntType == .image ?
+                    self.router.openImageViewer(for: receipt) :
+                    self.router.openPDFViewer(for: receipt)
             }).disposed(by: self.disposeBag)
             
         }).disposed(by: disposeBag)
