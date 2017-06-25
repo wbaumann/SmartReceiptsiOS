@@ -39,28 +39,31 @@ class ReceiptActionsPresenter: Presenter {
         
         handleAttachTap.subscribe(onNext: { [unowned self] in
             NSLog("handleAttachTap")
+            AnalyticsManager.sharedManager.record(event: Event.receiptsImportPictureReceipt())
             _ = self.interactor.attachAppInputFile(to: self.receipt)
             self.router.close()
         }).disposed(by: disposeBag)
         
         takeImageTap.subscribe(onNext: {
+            self.takeImage()
             NSLog("takeImageTap")
+            AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuRetakePhoto())
         }).disposed(by: disposeBag)
         
-        retakeImageTap.subscribe(onNext: {
-            NSLog("retakeImageTap")
-        }).disposed(by: disposeBag)
-        
-        viewImageTap.subscribe(onNext: {
-            NSLog("viewImageTap")
+        viewImageTap.subscribe(onNext: { [unowned self] in
+            self.receipt.attachemntType == .image ?
+                AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewImage()) :
+                AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewPdf())
             self.router.close()
         }).disposed(by: disposeBag)
         
         moveTap.subscribe(onNext: { [unowned self] in
+            AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuMoveCopy())
             self.router.openMove(receipt: self.receipt)
         }).disposed(by: disposeBag)
         
         copyTap.subscribe(onNext: { [unowned self] in
+            AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuMoveCopy())
             self.router.openCopy(receipt: self.receipt)
         }).disposed(by: disposeBag)
         
@@ -75,6 +78,15 @@ class ReceiptActionsPresenter: Presenter {
         }).disposed(by: disposeBag)
     }
     
+    private func takeImage() {
+        ImagePicker.sharedInstance().rx_openOn(self.view as! UIViewController)
+            .filter({ $0 != nil})
+            .subscribe(onNext: { [unowned self] image in
+                if self.interactor.attachImage(image!, to: self.receipt) {
+                    self.view.updateForm()
+                }
+        }).disposed(by: disposeBag)
+    }
 }
 
 

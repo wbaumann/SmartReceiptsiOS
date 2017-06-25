@@ -13,9 +13,10 @@ import RxSwift
 
 class ReceiptActionsFormView: FormViewController {
     
+    private let TAKE_IMAGE_ROW = "TakeImageRow"
+    
     weak var handleAttachTap: PublishSubject<Void>!
     weak var takeImageTap: PublishSubject<Void>!
-    weak var retakeImageTap: PublishSubject<Void>!
     weak var viewImageTap: PublishSubject<Void>!
     weak var moveTap: PublishSubject<Void>!
     weak var copyTap: PublishSubject<Void>!
@@ -33,26 +34,41 @@ class ReceiptActionsFormView: FormViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         form
         +++ Section()
         <<< buttonRow(title: handleAttachTitle(), bindSubject: handleAttachTap,
-                     hidden: WBAppDelegate.instance().filePathToAttach == nil)
+                  condition: Condition.function([], { _ in
+                    WBAppDelegate.instance().filePathToAttach == nil
+                  }))
+        
         <<< buttonRow(title: viewButtonTitle(), bindSubject: viewImageTap,
-                     hidden: attachmentType == .none)
-        <<< buttonRow(title: attachmentType == .none ? LocalizedString("receipt.action.take.receipt.image") :
-            LocalizedString("receipt.action.retake.receipt.image"),
-                bindSubject: attachmentType == .none ? takeImageTap : retakeImageTap)
-
-            
+                  condition: Condition.function([], { _ in
+                    self.attachmentType == .none
+                  }))
+        
+        <<< buttonRow(tag: TAKE_IMAGE_ROW, title: takeImageTitle(), bindSubject: takeImageTap)
         <<< buttonRow(title: LocalizedString("receipt.action.move"), bindSubject: moveTap)
         <<< buttonRow(title: LocalizedString("receipt.action.copy"), bindSubject: copyTap)
         <<< buttonRow(title: LocalizedString("receipt.action.swap.up"), bindSubject: swapUpTap)
         <<< buttonRow(title: LocalizedString("receipt.action.swap.down"), bindSubject: swapDownTap)
         
+    }
+    
+    func update() {
+        form.allRows.forEach { $0.evaluateHidden() }
+        
+        let takeImageRow = form.rowBy(tag: TAKE_IMAGE_ROW)
+        takeImageRow?.title = takeImageTitle()
+        takeImageRow?.reload()
+    }
+    
+    private func takeImageTitle() -> String {
+        return attachmentType == .none ?
+            LocalizedString("receipt.action.take.receipt.image") :
+            LocalizedString("receipt.action.retake.receipt.image")
     }
     
     private func viewButtonTitle() -> String {
@@ -88,12 +104,11 @@ class ReceiptActionsFormView: FormViewController {
     }
 }
 
-
-fileprivate func buttonRow(title: String, bindSubject: PublishSubject<Void>, hidden: Bool = false) -> ButtonRow {
+fileprivate func buttonRow(tag: String? = nil, title: String, bindSubject: PublishSubject<Void>, condition: Condition? = nil) -> ButtonRow {
     return
-        ButtonRow() { row in
+        ButtonRow(tag) { row in
             row.title = title
-            row.hidden = Condition(booleanLiteral: hidden)
+            row.hidden = condition
         }.onCellSelection({ _, _ in
             bindSubject.onNext()
         }).cellUpdate({ cell, row in
