@@ -17,12 +17,12 @@ class Distance: NSObject, NSCopying, FetchedModel {
     var location: String!
     var date: Date!
     var timeZone: TimeZone!
-    var comment: String!
+    var comment: String?
     
     var objectId: Int { get { return objId} }
     
     required init(trip: WBTrip, distance: NSDecimalNumber, rate: Price,
-                  location: String, date: Date, timeZone: TimeZone, comment: String) {
+                  location: String, date: Date, timeZone: TimeZone, comment: String?) {
         self.trip = trip
         self.distance = distance
         self.rate = rate
@@ -65,7 +65,7 @@ class Distance: NSObject, NSCopying, FetchedModel {
         
     func copy(with zone: NSZone? = nil) -> Any {
         let copy = Distance(trip: trip, distance: distance, rate: rate,
-                            location: location, date: date, timeZone: timeZone, comment: comment)
+                        location: location, date: date, timeZone: timeZone, comment: comment)
         copy.objId = objId
         return copy
     }
