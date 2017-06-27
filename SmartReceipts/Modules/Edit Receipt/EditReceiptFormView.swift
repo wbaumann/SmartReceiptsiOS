@@ -8,6 +8,7 @@
 
 import Eureka
 import RxSwift
+import RxCocoa
 
 class EditReceiptFormView: FormViewController {
     
@@ -17,8 +18,10 @@ class EditReceiptFormView: FormViewController {
     let receiptSubject = PublishSubject<WBReceipt>()
     let errorSubject = PublishSubject<String>()
     
-    var receipt: WBReceipt!
-    var trip: WBTrip!
+    private var receipt: WBReceipt!
+    private var trip: WBTrip!
+    private var taxCalculator: TaxCalculator?
+    private let disposeBag = DisposeBag()
     
     init(trip: WBTrip, receipt: WBReceipt?) {
         super.init(nibName: nil, bundle: nil)
@@ -32,6 +35,7 @@ class EditReceiptFormView: FormViewController {
         } else {
             self.receipt = receipt!.copy() as! WBReceipt
         }
+        taxCalculator = WBPreferences.includeTaxField() ? TaxCalculator() : nil
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,8 +51,8 @@ class EditReceiptFormView: FormViewController {
             row.title = LocalizedString("edit.receipt.name.label")
             row.placeholder = LocalizedString("edit.receipt.name.placeholder")
             row.value = receipt.name
-        }.onChange({ [weak self] row in
-            self?.receipt.name = row.value ?? ""
+        }.onChange({ [unowned self] row in
+            self.receipt.name = row.value ?? ""
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
@@ -58,11 +62,13 @@ class EditReceiptFormView: FormViewController {
             row.placeholder = LocalizedString("edit.receipt.price.placeholder")
             row.value = receipt.price().amount.doubleValue != 0 ?
                 receipt.price().amount.doubleValue : nil
-        }.onChange({ [weak self] row in
-            if self == nil { return }
+        }.onChange({ [unowned self] row in
             if let dec = row.value {
                 let amount = NSDecimalNumber(value: dec)
-                self?.receipt.setPrice(amount, currency: self!.receipt.currency.code)
+                self.receipt.setPrice(amount, currency: self.receipt.currency.code)
+                self.taxCalculator?.priceSubject.onNext(Decimal(dec))
+            } else {
+                self.taxCalculator?.priceSubject.onNext(nil)
             }
         }).cellSetup({ cell, _ in
             cell.configureCell()
@@ -72,8 +78,16 @@ class EditReceiptFormView: FormViewController {
             row.hidden = Condition.init(booleanLiteral: !WBPreferences.includeTaxField())
             row.title = LocalizedString("edit.receipt.tax.label")
             row.placeholder = LocalizedString("edit.receipt.tax.placeholder")
-        }.onChange({ [weak self] row in
-            self?.receipt.setTax(NSDecimalNumber(value: row.value ?? 0))
+            row.value = receipt.tax()?.amount.doubleValue
+            if let calculator = taxCalculator {
+                calculator.taxSubject.subscribe(onNext: {
+                    row.value = Double(string: $0)
+                    row.updateCell()
+                }).disposed(by: disposeBag)
+            }
+            
+        }.onChange({ [unowned self] row in
+            self.receipt.setTax(NSDecimalNumber(value: row.value ?? 0))
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
@@ -82,9 +96,9 @@ class EditReceiptFormView: FormViewController {
             row.title = LocalizedString("edit.trip.default.currency.label")
             row.options = Currency.allCurrencyCodesWithCached()
             row.value = receipt.currency.code
-        }.onChange({ [weak self] row in
+        }.onChange({ [unowned self] row in
             if let code = row.value {
-                self?.receipt.setPrice(self!.receipt.priceAmount, currency: code)
+                self.receipt.setPrice(self.receipt.priceAmount, currency: code)
             }
         }).cellSetup({ cell, _ in
             cell.configureCell()
@@ -99,8 +113,8 @@ class EditReceiptFormView: FormViewController {
                     return false
                 }
             })
-        }.onChange({ [weak self] row in
-            self?.receipt.exchangeRate = NSDecimalNumber(value: row.value ?? 0)
+        }.onChange({ [unowned self] row in
+            self.receipt.exchangeRate = NSDecimalNumber(value: row.value ?? 0)
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
@@ -108,8 +122,8 @@ class EditReceiptFormView: FormViewController {
         <<< DateInlineRow() { row in
             row.title = LocalizedString("edit.receipt.date.label")
             row.value = receipt.date
-        }.onChange({ [weak self] row in
-            self?.receipt.date = row.value ?? Date()
+        }.onChange({ [unowned self] row in
+            self.receipt.date = row.value ?? Date()
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
@@ -118,8 +132,8 @@ class EditReceiptFormView: FormViewController {
             row.title = LocalizedString("edit.receipt.category.label")
             row.options = allCategories()
             row.value = receipt.category
-        }.onChange({ [weak self] row in
-            self?.receipt.category = row.value!
+        }.onChange({ [unowned self] row in
+            self.receipt.category = row.value!
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
@@ -128,8 +142,8 @@ class EditReceiptFormView: FormViewController {
             row.title = LocalizedString("edit.receipt.comment.label")
             row.placeholder = LocalizedString("edit.receipt.comment.placeholder")
             row.value = receipt.comment
-        }.onChange({ [weak self] row in
-            self?.receipt.comment = row.value ?? ""
+        }.onChange({ [unowned self] row in
+            self.receipt.comment = row.value ?? ""
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
@@ -138,8 +152,8 @@ class EditReceiptFormView: FormViewController {
             row.title = LocalizedString("edit.receipt.payment.method.label")
             row.options = Database.sharedInstance().fetchedAdapterForPaymentMethods().allObjects() as! [PaymentMethod]
             row.hidden = Condition.init(booleanLiteral: !WBPreferences.usePaymentMethods())
-        }.onChange({ [weak self] row in
-            self?.receipt.paymentMethod = row.value!
+        }.onChange({ [unowned self] row in
+            self.receipt.paymentMethod = row.value!
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
@@ -147,8 +161,8 @@ class EditReceiptFormView: FormViewController {
         <<< CheckRow() { row in
             row.title = LocalizedString("edit.receipt.reimbursable.label")
             row.value = receipt.isReimbursable
-        }.onChange({ [weak self] row in
-            self?.receipt.isReimbursable = row.value!
+        }.onChange({ [unowned self] row in
+            self.receipt.isReimbursable = row.value!
         }).cellSetup({ cell, _ in
             cell.configureCell()
             cell.tintColor = AppTheme.themeColor
@@ -157,8 +171,8 @@ class EditReceiptFormView: FormViewController {
         <<< CheckRow() { row in
             row.title = LocalizedString("edit.receipt.full.page.label")
             row.value = receipt.isFullPage
-        }.onChange({ [weak self] row in
-            self?.receipt.isFullPage = row.value!
+        }.onChange({ [unowned self] row in
+            self.receipt.isFullPage = row.value!
         }).cellSetup({ cell, _ in
             cell.configureCell()
             cell.tintColor = AppTheme.themeColor
@@ -186,8 +200,8 @@ class EditReceiptFormView: FormViewController {
 
 fileprivate extension BaseCell {
     fileprivate func configureCell() {
-        textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        textLabel?.font = AppTheme.boldFont
         detailTextLabel?.textColor = AppTheme.themeColor
-        detailTextLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        detailTextLabel?.font = AppTheme.boldFont
     }
 }

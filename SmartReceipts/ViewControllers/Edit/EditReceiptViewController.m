@@ -106,12 +106,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     [self.taxCell activateDecimalEntryMode];
 
     if ([WBPreferences includeTaxField]) {
-        
-        TaxCalculator *calculator = [[TaxCalculator alloc] initWithPriceField:self.priceCell.entryField
-                                                                     taxField:self.taxCell.entryField];
-        [calculator setPriceIsPreTax:[WBPreferences enteredPricePreTax]];
-        [calculator setTaxPercentage:[NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%f", [WBPreferences defaultTaxPercentage]]]];
-        [self setTaxCalculator:calculator];
+        assert("TAX CALCULATOR");
     }
 
     self.currencyCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
