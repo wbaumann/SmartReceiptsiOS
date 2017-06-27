@@ -15,7 +15,7 @@ class GenerateReportRouter: Router {
     }
     
     func openSheet(title: String?, message: String?, actions: [UIAlertAction]) {
-        let sheet = UIAlertController(title: nil, message: LocalizedString("generate.report.share.method.sheet.title"), preferredStyle: .alert)
+        let sheet = UIAlertController(title: title, message: message, preferredStyle: .alert)
         for action in actions {
             sheet.addAction(action)
         }
