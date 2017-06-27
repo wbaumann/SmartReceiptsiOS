@@ -15,8 +15,11 @@ class EditTripFormView: FormViewController {
     
     let errorSubject = PublishSubject<String>()
     let tripSubject = PublishSubject<WBTrip>()
-    private var isNewTrip: Bool!
     
+    private let START_DATE_TAG = "startDateTag"
+    private let END_DATE_TAG = "endDateTag"
+    
+    private var isNewTrip: Bool!
     private var trip: WBTrip?
     
     required init(trip: WBTrip?) {
@@ -49,8 +52,8 @@ class EditTripFormView: FormViewController {
             row.title = LocalizedString("edit.trip.name.label")
             row.value = trip?.name
             row.add(rule: RuleRequired())
-        }.onChange({ [weak self] row in
-            self?.trip?.name = row.value ?? ""
+        }.onChange({ [unowned self] row in
+            self.trip?.name = row.value ?? ""
         }).cellSetup({ cell, _ in
             cell.configureCell()
             if self.isNewTrip {
@@ -58,20 +61,24 @@ class EditTripFormView: FormViewController {
             }
         })
         
-        <<< DateInlineRow() { row in
+        <<< DateInlineRow(START_DATE_TAG) { row in
             row.title = LocalizedString("edit.trip.start.date.label")
             row.value = trip?.startDate
-        }.onChange({ [weak self] row in
-            self?.trip?.startDate = row.value!
+        }.onChange({ [unowned self] row in
+            self.trip?.startDate = row.value!
+            let endDateRow = self.form.rowBy(tag: self.END_DATE_TAG) as! DateInlineRow
+            endDateRow.minimumDate = row.value
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
         
-        <<< DateInlineRow() { row in
+        <<< DateInlineRow(END_DATE_TAG) { row in
             row.title = LocalizedString("edit.trip.end.date.label")
             row.value = trip?.endDate
-        }.onChange({ [weak self] row in
-            self?.trip?.endDate = row.value!
+        }.onChange({ [unowned self] row in
+            self.trip?.endDate = row.value!
+            let startDateRow = self.form.rowBy(tag: self.START_DATE_TAG) as! DateInlineRow
+            startDateRow.maximumDate = row.value
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
@@ -80,8 +87,8 @@ class EditTripFormView: FormViewController {
             row.title = LocalizedString("edit.trip.default.currency.label")
             row.options = Currency.allCurrencyCodesWithCached()
             row.value = trip?.defaultCurrency.code ?? WBPreferences.defaultCurrency()
-        }.onChange({ [weak self] row in
-            self?.trip?.defaultCurrency = Currency.currency(forCode: row.value ?? WBPreferences.defaultCurrency()!)
+        }.onChange({ [unowned self] row in
+            self.trip?.defaultCurrency = Currency.currency(forCode: row.value ?? WBPreferences.defaultCurrency()!)
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
@@ -89,8 +96,8 @@ class EditTripFormView: FormViewController {
         <<< TextRow() { row in
             row.title = LocalizedString("edit.trip.comment.label")
             row.value = trip?.comment ?? ""
-        }.onChange({ [weak self] row in
-            self?.trip?.comment = row.value ?? ""
+        }.onChange({ [unowned self] row in
+            self.trip?.comment = row.value ?? ""
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
@@ -99,11 +106,16 @@ class EditTripFormView: FormViewController {
             row.title = LocalizedString("edit.trip.cost.center.label")
             row.value = trip?.costCenter ?? ""
             row.hidden = Condition(booleanLiteral: !WBPreferences.trackCostCenter())
-        }.onChange({ [weak self] row in
-            self?.trip?.costCenter = row.value ?? ""
+        }.onChange({ [unowned self] row in
+            self.trip?.costCenter = row.value ?? ""
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
+        
+        let endDateRow = self.form.rowBy(tag: self.END_DATE_TAG) as! DateInlineRow
+        let startDateRow = self.form.rowBy(tag: self.START_DATE_TAG) as! DateInlineRow
+        endDateRow.minimumDate = startDateRow.value
+        startDateRow.maximumDate = endDateRow.value
     }
     
     func done() {
