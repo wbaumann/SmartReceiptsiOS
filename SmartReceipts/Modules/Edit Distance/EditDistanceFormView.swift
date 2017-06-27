@@ -142,12 +142,12 @@ class EditDistanceFormView: FormViewController {
 
 fileprivate extension BaseCell {
     fileprivate func makeBoldTitle() {
-        textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        textLabel?.font = AppTheme.boldFont
     }
     
     fileprivate func makeHighlitedValue() {
         detailTextLabel?.textColor = AppTheme.themeColor
-        detailTextLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        detailTextLabel?.font = AppTheme.boldFont
     }
 }
 

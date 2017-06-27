@@ -6,35 +6,38 @@
 //  Copyright © 2017 Will Baumann. All rights reserved.
 //
 
-class TaxCalculator: NSObject {
+import RxSwift
 
-    var priceIsPreTax = false
-    var taxPercentage = NSDecimalNumber(decimal: 0)
+class TaxCalculator: NSObject {
     
-    private var priceField: UITextField!
-    private var taxField: UITextField!
-    private var taxFormatter: NumberFormatter!
+    let priceSubject = PublishSubject<Decimal?>()
+    let taxSubject = PublishSubject<String>()
+    
+    private let disposeBag = DisposeBag()
+    private var taxFormatter = NumberFormatter()
+    private var priceIsPreTax = false
+    private var taxPercentage = NSDecimalNumber(decimal: 0)
     
     fileprivate static let HUNDRED = NSDecimalNumber(decimal: 100)
     
-    init(priceField: UITextField, taxField: UITextField) {
+    override init() {
         super.init()
-        self.priceField = priceField
-        self.taxField = taxField
-        
-        priceField.addTarget(self, action: #selector(priceChanged), for: .editingChanged)
-        
-        taxFormatter = NumberFormatter()
         taxFormatter.numberStyle = .currency
         taxFormatter.currencySymbol = ""
         taxFormatter.currencyGroupingSeparator = ""
-    }
-    
-    func priceChanged() {
-        let priceString = priceField.text
-        let price = NSDecimalNumber(orZeroUsingCurrentLocale: priceString)
-        let tax = TaxCalculator.taxWithPrice(price!, taxPercentage: taxPercentage, preTax: priceIsPreTax)
-        taxField.text = taxFormatter.string(from: tax)
+        priceIsPreTax = WBPreferences.enteredPricePreTax()
+        taxPercentage = NSDecimalNumber(string: "\(WBPreferences.defaultTaxPercentage())")
+        
+        priceSubject.subscribe(onNext: { [unowned self] value in
+            if let val = value {
+                let price = NSDecimalNumber(decimal: val)
+                let tax = TaxCalculator.taxWithPrice(price, taxPercentage: self.taxPercentage,
+                                                               preTax: self.priceIsPreTax)
+                self.taxSubject.onNext(self.taxFormatter.string(from: tax)!)
+            } else {
+                self.taxSubject.onNext("")
+            }
+        }).disposed(by: disposeBag)
     }
     
     class func taxWithPrice(_ price: NSDecimalNumber, taxPercentage: NSDecimalNumber, preTax: Bool = false) -> NSDecimalNumber {

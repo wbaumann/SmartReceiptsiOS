@@ -38,17 +38,20 @@ class ReceiptActionsPresenter: Presenter {
         }).disposed(by: disposeBag)
         
         handleAttachTap.subscribe(onNext: { [unowned self] in
+            Logger.info("Attach File Tap")
             AnalyticsManager.sharedManager.record(event: Event.receiptsImportPictureReceipt())
             _ = self.interactor.attachAppInputFile(to: self.receipt)
             self.router.close()
         }).disposed(by: disposeBag)
         
         takeImageTap.subscribe(onNext: {
+            Logger.info("Take Image Tap")
             self.takeImage()
             AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuRetakePhoto())
         }).disposed(by: disposeBag)
         
         viewImageTap.subscribe(onNext: { [unowned self] in
+            Logger.info("View Image Tap")
             if self.receipt.attachemntType == .image {
                 AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewImage())
             } else if self.receipt.attachemntType == .pdf {
@@ -58,21 +61,25 @@ class ReceiptActionsPresenter: Presenter {
         }).disposed(by: disposeBag)
         
         moveTap.subscribe(onNext: { [unowned self] in
+            Logger.info("Move Receipt Tap")
             AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuMoveCopy())
             self.router.openMove(receipt: self.receipt)
         }).disposed(by: disposeBag)
         
         copyTap.subscribe(onNext: { [unowned self] in
+            Logger.info("Copy Receipt Tap")
             AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuMoveCopy())
             self.router.openCopy(receipt: self.receipt)
         }).disposed(by: disposeBag)
         
         swapUpTap.subscribe(onNext: { [unowned self] in
+            Logger.info("SwapUp Receipt Tap")
             AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuSwapUp())
             self.router.close()
         }).disposed(by: disposeBag)
         
         swapDownTap.subscribe(onNext: { [unowned self] in
+            Logger.info("SwapDown Receipt Tap")
             AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuSwapDown())
             self.router.close()
         }).disposed(by: disposeBag)

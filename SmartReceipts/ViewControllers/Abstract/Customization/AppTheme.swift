@@ -11,6 +11,7 @@ import Foundation
 class AppTheme: NSObject {
     static let themeColor = #colorLiteral(red: 0.5803921569, green: 0, blue: 0.8274509804, alpha: 1)
     static let reportPDFStyleColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+    static let boldFont = UIFont.boldSystemFont(ofSize: 17)
     
     class func customizeOnAppLoad() {
         UINavigationBar.appearance().tintColor = UIColor.white
