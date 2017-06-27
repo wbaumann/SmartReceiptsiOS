@@ -27,6 +27,7 @@ final class EditReceiptView: UserInterface {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureTitle()
         formView = EditReceiptFormView(trip: displayData.trip, receipt: displayData.receipt)
         addChildViewController(formView)
         view.addSubview(formView.view)
@@ -54,6 +55,18 @@ final class EditReceiptView: UserInterface {
         formView.errorSubject.subscribe(onNext: { errorDescription in
             self.presenter.present(errorDescription: errorDescription)
         }).addDisposableTo(disposeBag)
+    }
+    
+    private func configureTitle() {
+        var id: UInt!
+        if displayData.receipt == nil {
+            id = Database.sharedInstance().nextReceiptID()
+            title = LocalizedString("edit.receipt.controller.add.title")
+        } else {
+            id = displayData.receipt!.objectId
+            title = LocalizedString("edit.receipt.controller.edit.title")
+        }
+        title = WBPreferences.showReceiptID() ? title! + " - \(id!)" : ""
     }
     
 }
