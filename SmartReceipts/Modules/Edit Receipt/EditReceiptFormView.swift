@@ -28,10 +28,10 @@ class EditReceiptFormView: FormViewController {
         self.trip = trip
         if receipt == nil {
             self.receipt = WBReceipt()
-            self.receipt.setPrice(NSDecimalNumber(decimal: 0), currency: trip.defaultCurrency.code)
+            self.receipt.setPrice(NSDecimalNumber.zero, currency: trip.defaultCurrency.code)
             self.receipt.date = Date()
             self.receipt.category = allCategories().first!
-            self.receipt.exchangeRate = NSDecimalNumber(value: -1)
+            self.receipt.exchangeRate = NSDecimalNumber.zero
             self.receipt.isReimbursable = true
             self.receipt.isFullPage = WBPreferences.assumeFullPage()
         } else {
@@ -115,6 +115,7 @@ class EditReceiptFormView: FormViewController {
                     return false
                 }
             })
+            row.value = receipt.exchangeRate?.doubleValue
         }.onChange({ [unowned self] row in
             self.receipt.exchangeRate = NSDecimalNumber(value: row.value ?? 0)
         }).cellSetup({ cell, _ in
