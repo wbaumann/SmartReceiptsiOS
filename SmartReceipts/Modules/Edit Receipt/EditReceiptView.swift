@@ -66,7 +66,7 @@ final class EditReceiptView: UserInterface {
             id = displayData.receipt!.objectId
             title = LocalizedString("edit.receipt.controller.edit.title")
         }
-        title = WBPreferences.showReceiptID() ? title! + " - \(id!)" : ""
+        title = WBPreferences.showReceiptID() ? title! + " - \(id!)" : title
     }
     
 }
