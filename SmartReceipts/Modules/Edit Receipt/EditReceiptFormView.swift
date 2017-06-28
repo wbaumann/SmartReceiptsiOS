@@ -32,6 +32,8 @@ class EditReceiptFormView: FormViewController {
             self.receipt.date = Date()
             self.receipt.category = allCategories().first!
             self.receipt.exchangeRate = NSDecimalNumber(value: -1)
+            self.receipt.isReimbursable = true
+            self.receipt.isFullPage = WBPreferences.assumeFullPage()
         } else {
             self.receipt = receipt!.copy() as! WBReceipt
         }
