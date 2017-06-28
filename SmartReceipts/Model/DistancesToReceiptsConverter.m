@@ -70,6 +70,7 @@
                                  comment:nil
                              priceAmount:totalPrice
                                taxAmount:[NSDecimalNumber zero]
+                            exchangeRate:[NSDecimalNumber zero]
                                 currency:distance.rate.currency
                           isReimbursable:YES
                               isFullPage:NO

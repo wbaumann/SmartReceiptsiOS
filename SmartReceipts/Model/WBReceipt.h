@@ -43,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
          comment:(nullable NSString *)comment
      priceAmount:(NSDecimalNumber *)price
        taxAmount:(NSDecimalNumber *)tax
+    exchangeRate:(NSDecimalNumber *)exchangeRate
         currency:(Currency *)currency
   isReimbursable:(BOOL)isReimbursable
       isFullPage:(BOOL)isFullPage

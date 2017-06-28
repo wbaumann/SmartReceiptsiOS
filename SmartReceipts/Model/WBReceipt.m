@@ -48,6 +48,7 @@ static NSString* checkNoData(NSString* str) {
          comment:(NSString *)comment
      priceAmount:(NSDecimalNumber *)price
        taxAmount:(NSDecimalNumber *)tax
+    exchangeRate:(NSDecimalNumber *)exchangeRate
         currency:(Currency *)currency
   isReimbursable:(BOOL)isReimbursable
       isFullPage:(BOOL)isFullPage
@@ -72,6 +73,7 @@ static NSString* checkNoData(NSString* str) {
         _priceAmount = price;
         _taxAmount = tax;
         _currency = currency;
+        _exchangeRate = exchangeRate;
 
         _reimbursable = isReimbursable;
         _fullPage = isFullPage;
@@ -266,12 +268,16 @@ static NSString* checkNoData(NSString* str) {
                                  comment:self.comment
                              priceAmount:self.priceAmount
                                taxAmount:self.taxAmount
+                            exchangeRate:self.exchangeRate
                                 currency:self.currency
                           isReimbursable:self.isReimbursable
                               isFullPage:self.isFullPage
                           extraEditText1:self.extraEditText1
                           extraEditText2:self.extraEditText2
                           extraEditText3:self.extraEditText3];
+    
+    
+    
 }
 
 @end
