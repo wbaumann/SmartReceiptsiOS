@@ -42,6 +42,8 @@
 		57C125191E12DAEF008551AC /* ServiceAccount.json in Resources */ = {isa = PBXBuildFile; fileRef = 57C125181E12DAEF008551AC /* ServiceAccount.json */; };
 		57C9EBF21DF1BB6E001B3731 /* SuggestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C9EBF11DF1BB6E001B3731 /* SuggestionView.m */; };
 		57EEBDC41E093C8F00974E53 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EEBDC31E093C8F00974E53 /* String+Extensions.swift */; };
+		71097CA51F04350300223B72 /* DistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71097CA41F04350300223B72 /* DistanceTests.swift */; };
+		71097CA71F04410100223B72 /* TaxCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71097CA61F04410100223B72 /* TaxCalculatorTests.swift */; };
 		711E40541EE0D4ED00C043CF /* EditDistanceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */; };
 		711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */; };
 		712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */; };
@@ -54,6 +56,7 @@
 		7133604A1EF310C90076D319 /* TripsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360451EF310C90076D319 /* TripsModuleTest.swift */; };
 		713D35501EDA4AEB00D8563D /* NSMutableString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 713D354F1EDA4AEB00D8563D /* NSMutableString+Extensions.m */; };
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
+		714901BC1F05632200772B6F /* PaymentMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901BB1F05632200772B6F /* PaymentMethodTests.swift */; };
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
 		7161DB511EE4907700399C9C /* AdPresentingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */; };
 		716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716F34471EE040E100D0017A /* EditDistance.storyboard */; };
@@ -410,7 +413,6 @@
 		EADBB71F1B0B6CD600F4475F /* DatabaseTripsFilesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EADBB71E1B0B6CD600F4475F /* DatabaseTripsFilesTest.m */; };
 		EAE23CB51B1757590078F197 /* 2015_05_26_SmartReceipts.smr in Resources */ = {isa = PBXBuildFile; fileRef = EAE23CB41B1757590078F197 /* 2015_05_26_SmartReceipts.smr */; };
 		EAE3195F1B10A5EE0032887E /* PendingHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE3195E1B10A5EE0032887E /* PendingHUDView.m */; };
-		EAE319641B10BF630032887E /* TaxCalculatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE319631B10BF630032887E /* TaxCalculatorTest.m */; };
 		EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */; };
 		EAE725DA1B022E9100402689 /* TripsToReceiptsConverterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */; };
 		EAE9DAE81AF8E97100F4FE76 /* DistanceColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAE71AF8E97100F4FE76 /* DistanceColumn.m */; };
@@ -487,6 +489,8 @@
 		57C9EBF01DF1BB6E001B3731 /* SuggestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionView.h; sourceTree = "<group>"; };
 		57C9EBF11DF1BB6E001B3731 /* SuggestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionView.m; sourceTree = "<group>"; };
 		57EEBDC31E093C8F00974E53 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		71097CA41F04350300223B72 /* DistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceTests.swift; sourceTree = "<group>"; };
+		71097CA61F04410100223B72 /* TaxCalculatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxCalculatorTests.swift; sourceTree = "<group>"; };
 		711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceFormView.swift; sourceTree = "<group>"; };
 		711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Extensions.swift"; sourceTree = "<group>"; };
 		712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsFormView.swift; sourceTree = "<group>"; };
@@ -499,6 +503,7 @@
 		713D354F1EDA4AEB00D8563D /* NSMutableString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Extensions.m"; sourceTree = "<group>"; };
 		713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCSVGeneratorTest.swift; sourceTree = "<group>"; };
 		713D35541EDA54A700D8563D /* TripCSVGenerator+Testable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TripCSVGenerator+Testable.h"; sourceTree = "<group>"; };
+		714901BB1F05632200772B6F /* PaymentMethodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTests.swift; sourceTree = "<group>"; };
 		71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportShareService.swift; sourceTree = "<group>"; };
 		7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdPresentingContainerViewController.swift; sourceTree = "<group>"; };
 		716F34471EE040E100D0017A /* EditDistance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditDistance.storyboard; sourceTree = "<group>"; };
@@ -1002,7 +1007,6 @@
 		EAE23CB41B1757590078F197 /* 2015_05_26_SmartReceipts.smr */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2015_05_26_SmartReceipts.smr; sourceTree = "<group>"; };
 		EAE3195D1B10A5EE0032887E /* PendingHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PendingHUDView.h; path = Views/PendingHUDView.h; sourceTree = "<group>"; };
 		EAE3195E1B10A5EE0032887E /* PendingHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PendingHUDView.m; path = Views/PendingHUDView.m; sourceTree = "<group>"; };
-		EAE319631B10BF630032887E /* TaxCalculatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxCalculatorTest.m; sourceTree = "<group>"; };
 		EAE725D51B022E3F00402689 /* DistancesToReceiptsConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancesToReceiptsConverter.h; sourceTree = "<group>"; };
 		EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancesToReceiptsConverter.m; sourceTree = "<group>"; };
 		EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsToReceiptsConverterTest.m; sourceTree = "<group>"; };
@@ -2110,10 +2114,12 @@
 			children = (
 				A7F05BA61CFC07420079F1AD /* Receipt */,
 				A7F05BDA1CFD6C510079F1AD /* PricesCollectionTests.swift */,
-				EAE319631B10BF630032887E /* TaxCalculatorTest.m */,
 				EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */,
 				A7D554CA1CFEB10100169FD2 /* WBReceiptTargetPriceTests.swift */,
 				A7B6FC5A1CF5DA2000CD53F1 /* WBReceiptTests.swift */,
+				71097CA41F04350300223B72 /* DistanceTests.swift */,
+				71097CA61F04410100223B72 /* TaxCalculatorTests.swift */,
+				714901BB1F05632200772B6F /* PaymentMethodTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2910,6 +2916,7 @@
 				713360461EF310C90076D319 /* EditDistanceModuleTest.swift in Sources */,
 				A7F05BA81CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift in Sources */,
 				7133604A1EF310C90076D319 /* TripsModuleTest.swift in Sources */,
+				714901BC1F05632200772B6F /* PaymentMethodTests.swift in Sources */,
 				EAD15C7D1B0881FE003BB1F3 /* ReceiptFilesManagerTest.m in Sources */,
 				EA19CC7F1B2C961D00168AA0 /* RateApplicationTest.m in Sources */,
 				EA5EF0D61AF7E9C9009FA608 /* DatabaseTableNames.m in Sources */,
@@ -2932,6 +2939,7 @@
 				A709D7471CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift in Sources */,
 				EA36DE531B0119150034CC2D /* DatabaseHintsTest.m in Sources */,
 				5757D6141E929ECA000F65F9 /* Database+Sync.swift in Sources */,
+				71097CA71F04410100223B72 /* TaxCalculatorTests.swift in Sources */,
 				EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */,
 				EA8ABE441B1A1D6800DBFA29 /* DatabaseCategoriesTest.m in Sources */,
 				EA7634AA1B3DB34A00AD8737 /* WBPreferencesImportExportTest.m in Sources */,
@@ -2943,8 +2951,8 @@
 				EA07BF591AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m in Sources */,
 				713360401EF310400076D319 /* GeneratedMocks.swift in Sources */,
 				EA888A811AFA5D1D00DF2AE6 /* WBPreferencesTestHelper.m in Sources */,
+				71097CA51F04350300223B72 /* DistanceTests.swift in Sources */,
 				57A8058D1E9672C000E68049 /* DatabaseUpgrade15Tests.swift in Sources */,
-				EAE319641B10BF630032887E /* TaxCalculatorTest.m in Sources */,
 				BA665979E02A79C4610624F3 /* SmartReceiptsTestsBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

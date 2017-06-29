@@ -15,7 +15,6 @@
 #import "DatabaseTableNames.h"
 #import "Database+Receipts.h"
 #import "NSString+Validation.h"
-#import "PaymentMethod.h"
 #import "Database+PaymentMethods.h"
 #import "Database+Functions.h"
 #import "DatabaseQueryBuilder.h"

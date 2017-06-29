@@ -16,6 +16,7 @@
 #import "FetchedModelAdapterDelegate.h"
 #import "FetchAdapterDelegateCheckHelper.h"
 #import "DatabaseTableNames.h"
+#import <SmartReceipts-Swift.h>
 
 @interface FetchedModelAdapter (TestExpose)
 
