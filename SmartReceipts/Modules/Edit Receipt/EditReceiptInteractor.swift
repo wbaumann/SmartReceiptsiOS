@@ -34,6 +34,7 @@ class EditReceiptInteractor: Interactor {
         if !Database.sharedInstance().save(receipt) {
             presenter.present(errorDescription: LocalizedString("edit.receipt.generic.save.error.message"))
         } else {
+            validateDate(in: receipt)
             presenter.close()
         }
     }
@@ -50,6 +51,19 @@ class EditReceiptInteractor: Interactor {
                 receipt.setImageFileName(imgFileName)
             }
         }
+    }
+    
+    private func validateDate(in receipt: WBReceipt) {
+        Observable<Void>.just()
+            .filter({receipt.date > receipt.trip.endDate || receipt.date < receipt.trip.startDate})
+            .subscribe(onNext: {
+                let message = LocalizedString("edit.distance.date.range.warning.message")
+                _ = UIAlertView.rx_show(message: message, cancelButtonTitle: "OK")
+                    .delay(3, scheduler: MainScheduler.instance)
+                    .subscribe(onNext: { alert in
+                        alert.dismiss(withClickedButtonIndex: 0, animated: true)
+                    })
+        }).disposed(by: disposeBag)
     }
 }
 
