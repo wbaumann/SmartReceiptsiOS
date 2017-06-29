@@ -80,7 +80,7 @@ class TripDistancesView: FetchedCollectionViewControllerSwift {
     override func configureCell(_ cell: UITableViewCell, indexPath: IndexPath, object: Any) {
         if let summaryCell = cell as? DistanceSummaryCell {
             if let distance = object as? Distance {
-                dateFormatter.configure(timeZone: distance.timeZone)
+                dateFormatter.configure(timeZone: distance.timeZone!)
                 summaryCell.distanceLabel.text = Price.amount(asString: distance.distance)
                 summaryCell.destinationLabel.text = distance.location;
                 summaryCell.totalLabel.text = distance.totalRate().mileageRateCurrencyFormattedPrice()

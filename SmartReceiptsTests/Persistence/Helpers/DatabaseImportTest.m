@@ -15,7 +15,7 @@
 #import "Database+Functions.h"
 #import "DatabaseTableNames.h"
 #import "Database+PaymentMethods.h"
-#import "PaymentMethod.h"
+#import <SmartReceipts-Swift.h>
 
 @interface DatabaseImportTest : SmartReceiptsTestsBase
 

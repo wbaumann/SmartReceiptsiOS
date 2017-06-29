@@ -11,7 +11,6 @@
 #import "SmartReceiptsTestsBase.h"
 #import "Database+PaymentMethods.h"
 #import "DatabaseTestsHelper.h"
-#import "PaymentMethod.h"
 #import "DatabaseTableNames.h"
 #import "WBReceipt.h"
 

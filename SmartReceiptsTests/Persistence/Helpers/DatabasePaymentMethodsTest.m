@@ -14,7 +14,7 @@
 #import "DatabaseTestsHelper.h"
 #import "Database+PaymentMethods.h"
 #import "FetchedModelAdapter.h"
-#import "PaymentMethod.h"
+#import <SmartReceipts-Swift.h>
 
 @interface Database (TestExpose)
 

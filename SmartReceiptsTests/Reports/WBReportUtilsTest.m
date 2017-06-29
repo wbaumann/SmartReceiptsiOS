@@ -56,7 +56,7 @@
 }
 
 - (WBReceipt *)createTestReceipt:(BOOL)reimbursable {
-    return [[WBReceipt alloc] initWithId:1 name:@"" category:@"" imageFileName:@"" date:[NSDate date] timeZoneName:@"" comment:@"" priceAmount:[NSDecimalNumber decimalNumberWithString:@"10"] taxAmount:[NSDecimalNumber zero] currency:[Currency currencyForCode:@"USD"] isReimbursable:reimbursable isFullPage:NO extraEditText1:@"" extraEditText2:@"" extraEditText3:@""];
+    return [[WBReceipt alloc] initWithId:1 name:@"" category:@"" imageFileName:@"" date:[NSDate date] timeZoneName:@"" comment:@"" priceAmount:[NSDecimalNumber decimalNumberWithString:@"10"] taxAmount:[NSDecimalNumber zero] exchangeRate:[NSDecimalNumber zero] currency:[Currency currencyForCode:@"USD"] isReimbursable:reimbursable isFullPage:NO extraEditText1:@"" extraEditText2:@"" extraEditText3:@""];
 }
 
 @end

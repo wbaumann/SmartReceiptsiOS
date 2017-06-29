@@ -10,7 +10,7 @@ import Foundation
 import FMDB
 
 class Distance: NSObject, NSCopying, FetchedModel {
-    private var objId: Int!
+    private var objId = 0
     var trip: WBTrip!
     var distance: NSDecimalNumber!
     var rate: Price!
@@ -36,7 +36,7 @@ class Distance: NSObject, NSCopying, FetchedModel {
         super.init()
     }
     
-    override var hash: Int { get { return NSNumber(value: objId!).hash } }
+    override var hash: Int { get { return NSNumber(value: objId).hash } }
     
     func totalRate() -> Price {
         let totalValue = distance.multiplying(by: rate.amount)
@@ -45,7 +45,7 @@ class Distance: NSObject, NSCopying, FetchedModel {
     
     override func isEqual(_ object: Any?) -> Bool {
         if let other = object as? Distance {
-            if other == self {
+            if other === self {
                 return true
             }
             return objId == other.objId
@@ -57,7 +57,7 @@ class Distance: NSObject, NSCopying, FetchedModel {
     override var description: String {
         get {
             var description = "<\(NSStringFromClass(Distance.self))"
-            description += "id: \(self.objId!)"
+            description += "id: \(self.objId)"
             description += ">"
             return description
         }
@@ -79,7 +79,8 @@ class Distance: NSObject, NSCopying, FetchedModel {
         location = resultSet.string(forColumn: DistanceTable.Column.Location)
         let dateMilliseconds = resultSet.unsignedLongLongInt(forColumn: DistanceTable.Column.Date)
         date = NSDate(milliseconds: Int64(dateMilliseconds))! as Date
-        timeZone = NSTimeZone(name: resultSet.string(forColumn: DistanceTable.Column.Timezone))! as TimeZone
+        let tzName = resultSet.string(forColumn: DistanceTable.Column.Timezone)
+        timeZone = tzName != nil ? NSTimeZone(name: tzName!)! as TimeZone : TimeZone.current
         comment = resultSet.string(forColumn: DistanceTable.Column.Comment)
     }
 
