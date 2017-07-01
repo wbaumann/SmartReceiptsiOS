@@ -10,6 +10,14 @@ import Foundation
 import Viperit
 
 class EditReceiptRouter: Router {
+    
+    func openSettings() {
+        let settingsVC = MainStoryboard().instantiateViewController(withIdentifier: "SettingsOverflow")
+        settingsVC.modalTransitionStyle = .coverVertical
+        settingsVC.modalPresentationStyle = .formSheet
+        _view.present(settingsVC, animated: true, completion: nil)
+    }
+    
     func close(){
         _view.dismiss(animated: true, completion: nil)
     }

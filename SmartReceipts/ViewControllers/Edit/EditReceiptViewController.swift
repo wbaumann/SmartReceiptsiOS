@@ -43,8 +43,6 @@ extension EditReceiptViewController: CurrencyExchangeServiceHandler, QuickAlertP
                 guard status == .success else {
                     return
                 }
-
-                cell.entryField.text = WBReceipt.exchangeRateFormatter().string(from: rate!)
             }
         }
     }

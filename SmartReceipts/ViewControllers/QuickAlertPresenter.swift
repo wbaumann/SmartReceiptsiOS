@@ -8,9 +8,10 @@
 
 import Foundation
 
-protocol QuickAlertPresenter {
+protocol QuickAlertPresenter: class {
     func presentAlert(_ title: String?, message: String, dismissButton: String)
     func presentAlert(_ title: String?, message: String, actions: [UIAlertAction])
+    func present(alert: UIAlertController, animanted: Bool, completion: (() -> Void)?)
 }
 
 extension QuickAlertPresenter where Self: UIViewController {
@@ -26,4 +27,9 @@ extension QuickAlertPresenter where Self: UIViewController {
         }
         present(alert, animated: true, completion: nil)
     }
+    
+    func present(alert: UIAlertController, animanted: Bool, completion: (() -> Void)?) {
+        present(alert, animated: animanted, completion: completion)
+    }
+    
 }
