@@ -58,7 +58,10 @@
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
 		714901BC1F05632200772B6F /* PaymentMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901BB1F05632200772B6F /* PaymentMethodTests.swift */; };
 		714901BE1F058BBB00772B6F /* UIAlertView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901BD1F058BBB00772B6F /* UIAlertView+Rx.swift */; };
+		714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901C01F0598B900772B6F /* CurrencyExchangeService.swift */; };
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
+		7159BA0A1F06F9B6004EABAA /* ExchangeRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7159BA091F06F9B6004EABAA /* ExchangeRateCell.swift */; };
+		7159BA0C1F06FB96004EABAA /* ExchangeRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */; };
 		7161DB511EE4907700399C9C /* AdPresentingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */; };
 		716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716F34471EE040E100D0017A /* EditDistance.storyboard */; };
 		716F344E1EE040E100D0017A /* EditDistanceDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F34481EE040E100D0017A /* EditDistanceDisplayData.swift */; };
@@ -183,8 +186,6 @@
 		A78214FF1CFFECB000FD644A /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78214FE1CFFECB000FD644A /* Secrets.swift */; };
 		A78215011CFFF24C00FD644A /* NSNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78215001CFFF24C00FD644A /* NSNumber+Extensions.swift */; };
 		A78215031CFFF39700FD644A /* EditReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78215021CFFF39700FD644A /* EditReceiptViewController.swift */; };
-		A78215051CFFF65F00FD644A /* ExchangeRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78215041CFFF65F00FD644A /* ExchangeRateCell.swift */; };
-		A78215071CFFF66B00FD644A /* ExchangeRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A78215061CFFF66B00FD644A /* ExchangeRateCell.xib */; };
 		A79FDC6E1CEA0A5500328DBB /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC6D1CEA0A5500328DBB /* GoogleAnalytics.swift */; };
 		A79FDC711CEA0AB600328DBB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC701CEA0AB600328DBB /* Constants.swift */; };
 		A79FDC731CEA0D7C00328DBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A79FDC721CEA0D7C00328DBB /* GoogleService-Info.plist */; };
@@ -234,8 +235,6 @@
 		B375F50D1A177C9782941048 /* Pods_SmartReceiptsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A00E20F6F7D842A0665F496 /* Pods_SmartReceiptsTests.framework */; };
 		BA66533BF5BE6103F7230434 /* WBImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66548D45A03F16399057F5 /* WBImageViewController.m */; };
 		BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66590C0394B2CE9704CC15 /* WBCategoriesViewController.m */; };
-		BA6654A32D71826EBC7D9B8F /* WBReceiptActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6653628925EC4238313167 /* WBReceiptActionsViewController.m */; };
-		BA6654FB0EA730FF8CBC4B93 /* WBImageSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665DB04425306990A9255C /* WBImageSegue.m */; };
 		BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66588B7C2114029521A399 /* NSDate+Calculations.m */; };
 		BA665929E9C98CC6D3604390 /* WBNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665BAC0D1C9F6A64F54953 /* WBNewCategoryViewController.m */; };
 		BA665979E02A79C4610624F3 /* SmartReceiptsTestsBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665A5EFF5EE0F233A6FC66 /* SmartReceiptsTestsBase.m */; };
@@ -506,7 +505,10 @@
 		713D35541EDA54A700D8563D /* TripCSVGenerator+Testable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TripCSVGenerator+Testable.h"; sourceTree = "<group>"; };
 		714901BB1F05632200772B6F /* PaymentMethodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTests.swift; sourceTree = "<group>"; };
 		714901BD1F058BBB00772B6F /* UIAlertView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertView+Rx.swift"; sourceTree = "<group>"; };
+		714901C01F0598B900772B6F /* CurrencyExchangeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeService.swift; sourceTree = "<group>"; };
 		71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportShareService.swift; sourceTree = "<group>"; };
+		7159BA091F06F9B6004EABAA /* ExchangeRateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRateCell.swift; sourceTree = "<group>"; };
+		7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeRateCell.xib; sourceTree = "<group>"; };
 		7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdPresentingContainerViewController.swift; sourceTree = "<group>"; };
 		716F34471EE040E100D0017A /* EditDistance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditDistance.storyboard; sourceTree = "<group>"; };
 		716F34481EE040E100D0017A /* EditDistanceDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceDisplayData.swift; sourceTree = "<group>"; };
@@ -655,8 +657,6 @@
 		A78214FE1CFFECB000FD644A /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		A78215001CFFF24C00FD644A /* NSNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+Extensions.swift"; sourceTree = "<group>"; };
 		A78215021CFFF39700FD644A /* EditReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReceiptViewController.swift; sourceTree = "<group>"; };
-		A78215041CFFF65F00FD644A /* ExchangeRateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRateCell.swift; sourceTree = "<group>"; };
-		A78215061CFFF66B00FD644A /* ExchangeRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeRateCell.xib; sourceTree = "<group>"; };
 		A79FDC6A1CEA08D400328DBB /* SmartReceipts-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SmartReceipts-Bridging-Header.h"; path = "../SmartReceipts-Bridging-Header.h"; sourceTree = "<group>"; };
 		A79FDC6D1CEA0A5500328DBB /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
 		A79FDC701CEA0AB600328DBB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -710,7 +710,6 @@
 		BA665153398224CB65F67810 /* WBImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageViewController.h; sourceTree = "<group>"; };
 		BA6651EEB95E55629DEE91EE /* WBReceiptsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WBReceiptsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BA665243DF18CF56677B3A86 /* WBMoveCopyReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMoveCopyReceiptViewController.h; sourceTree = "<group>"; };
-		BA6653628925EC4238313167 /* WBReceiptActionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReceiptActionsViewController.m; sourceTree = "<group>"; };
 		BA6654541DA40CB7B83FA76C /* SmartReceiptsTestsBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartReceiptsTestsBase.h; sourceTree = "<group>"; };
 		BA66548D45A03F16399057F5 /* WBImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageViewController.m; sourceTree = "<group>"; };
 		BA6654EA764091CAC85A2FB2 /* WBMoveCopyReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WBMoveCopyReceiptViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -724,11 +723,8 @@
 		BA665A326028D20117B5E054 /* WBColumnsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBColumnsViewController.h; sourceTree = "<group>"; };
 		BA665A5EFF5EE0F233A6FC66 /* SmartReceiptsTestsBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartReceiptsTestsBase.m; sourceTree = "<group>"; };
 		BA665BAC0D1C9F6A64F54953 /* WBNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNewCategoryViewController.m; sourceTree = "<group>"; };
-		BA665C2F6D5238C64F840985 /* WBImageSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageSegue.h; sourceTree = "<group>"; };
 		BA665C9EEA56CE01EA133B0B /* WBColumnsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBColumnsViewController.m; sourceTree = "<group>"; };
-		BA665DB04425306990A9255C /* WBImageSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageSegue.m; sourceTree = "<group>"; };
 		BA665EC4135DDF48D5AAB0C7 /* WBCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCategoriesViewController.h; sourceTree = "<group>"; };
-		BA665F9DBF1E76E680587BB3 /* WBReceiptActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceiptActionsViewController.h; sourceTree = "<group>"; };
 		BD6975428A0492150C7B4926 /* Pods-SmartReceipts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceipts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts.debug.xcconfig"; sourceTree = "<group>"; };
 		EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTestVersion13.m; sourceTree = "<group>"; };
 		EA00D00B1B0629BE00C87678 /* ProperNameInputValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProperNameInputValidation.h; sourceTree = "<group>"; };
@@ -1167,6 +1163,23 @@
 			path = Testable;
 			sourceTree = "<group>";
 		};
+		714901BF1F0598A300772B6F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				714901C01F0598B900772B6F /* CurrencyExchangeService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7159BA061F06F692004EABAA /* Eureka Custom */ = {
+			isa = PBXGroup;
+			children = (
+				7159BA091F06F9B6004EABAA /* ExchangeRateCell.swift */,
+				7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */,
+			);
+			path = "Eureka Custom";
+			sourceTree = "<group>";
+		};
 		716F34461EE040A000D0017A /* Edit Distance */ = {
 			isa = PBXGroup;
 			children = (
@@ -1476,6 +1489,7 @@
 				A79FDC671CEA084000328DBB /* Analytics */,
 				EA259CD21B16069B00ECBD67 /* Backup */,
 				EA4DC9931AF1578300CEF1B9 /* Cells */,
+				7159BA061F06F692004EABAA /* Eureka Custom */,
 				84A73C3418E74C5C00D35A57 /* Collections */,
 				719310231EDDB60E0065B5AD /* Constants */,
 				A78214F31CFFE4E900FD644A /* Exchange */,
@@ -1483,6 +1497,7 @@
 				A7F05BCF1CFD53D90079F1AD /* Log */,
 				EA8D81691AEA668100BAC943 /* Model */,
 				71AEDDD41EDF7F3300BAC0DD /* Modules */,
+				714901BF1F0598A300772B6F /* Services */,
 				EA2B8D7B1B4EF1AE0043A84B /* PDF */,
 				EAF9ADDF1AECF8BF0000AC84 /* Persistence */,
 				EA8D81DA1AEA965D00BAC943 /* Reports */,
@@ -1569,8 +1584,6 @@
 				BA66534E5FD8925DFDE86E5C /* Image */,
 				BA665243DF18CF56677B3A86 /* WBMoveCopyReceiptViewController.h */,
 				BA6654EA764091CAC85A2FB2 /* WBMoveCopyReceiptViewController.m */,
-				BA665F9DBF1E76E680587BB3 /* WBReceiptActionsViewController.h */,
-				BA6653628925EC4238313167 /* WBReceiptActionsViewController.m */,
 				BA66565E13BBA7886EDCEE33 /* WBReceiptsViewController.h */,
 				BA6651EEB95E55629DEE91EE /* WBReceiptsViewController.m */,
 				71AEDDE41EDF815300BAC0DD /* ReceiptsViewController.swift */,
@@ -1583,8 +1596,6 @@
 			children = (
 				BA665153398224CB65F67810 /* WBImageViewController.h */,
 				BA66548D45A03F16399057F5 /* WBImageViewController.m */,
-				BA665C2F6D5238C64F840985 /* WBImageSegue.h */,
-				BA665DB04425306990A9255C /* WBImageSegue.m */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -1845,8 +1856,6 @@
 				EA1D42C21B03901A00D64D3A /* EntryOnlyCell.h */,
 				EA1D42C31B03901A00D64D3A /* EntryOnlyCell.m */,
 				EA1D42C51B03902C00D64D3A /* EntryOnlyCell.xib */,
-				A78215041CFFF65F00FD644A /* ExchangeRateCell.swift */,
-				A78215061CFFF66B00FD644A /* ExchangeRateCell.xib */,
 				EA07BF311AF3B703004D17F6 /* InlinedDatePickerCell.h */,
 				EA07BF321AF3B703004D17F6 /* InlinedDatePickerCell.m */,
 				EA07BF331AF3B703004D17F6 /* InlinedDatePickerCell.xib */,
@@ -2313,7 +2322,7 @@
 					84F4F33F18CFCCD000F69A35 = {
 						DevelopmentTeam = UX5Z7CLP7J;
 						LastSwiftMigration = 0810;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -2373,10 +2382,10 @@
 				71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */,
 				EA71DFCD1AF9FEEC004092C3 /* SwitchControlCell.xib in Resources */,
 				EA888A731AFA38C100DF2AE6 /* SettingsButtonCell.xib in Resources */,
+				7159BA0C1F06FB96004EABAA /* ExchangeRateCell.xib in Resources */,
 				EA07BF371AF3B88C004D17F6 /* PickerCell.xib in Resources */,
 				71AF49DF1EFDA4810022B2E2 /* ReceiptImageViewer.storyboard in Resources */,
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
-				A78215071CFFF66B00FD644A /* ExchangeRateCell.xib in Resources */,
 				EA1E60D91B2742660048E688 /* Localizable.strings in Resources */,
 				71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */,
 				EA40DC6B1B5559A1003BF545 /* FullPagePDFImageView.xib in Resources */,
@@ -2591,6 +2600,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7159BA0A1F06F9B6004EABAA /* ExchangeRateCell.swift in Sources */,
 				A78214FD1CFFE8E900FD644A /* NSDate+Extensions.swift in Sources */,
 				A7F05BDF1CFD8FEC0079F1AD /* Database.swift in Sources */,
 				EAF9ADE91AECF9200000AC84 /* DatabaseUpgradeToVersion12.m in Sources */,
@@ -2769,7 +2779,6 @@
 				A7D554D31CFF118700169FD2 /* RefreshTripPriceHandler.swift in Sources */,
 				71AEDDE11EDF7FF400BAC0DD /* TripDistancesRouter.swift in Sources */,
 				A7F05BE11CFD95390079F1AD /* FMDatabase+Functions.swift in Sources */,
-				A78215051CFFF65F00FD644A /* ExchangeRateCell.swift in Sources */,
 				EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */,
 				A7F05B9A1CFB49590079F1AD /* Priced.swift in Sources */,
 				71AEDDEB1EDF918600BAC0DD /* FetchedCollectionViewControllerSwift.swift in Sources */,
@@ -2840,6 +2849,7 @@
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
 				71AEDDE71EDF823D00BAC0DD /* AppModules.swift in Sources */,
 				71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */,
+				714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */,
 				570515A11E02EB2E00BB8FE4 /* Event.swift in Sources */,
 				A7D6CDE71D05524200998FEF /* ReportAssetsGenerator.swift in Sources */,
 				EA3C96A41AEBAB0200A2A5F9 /* TripCSVGenerator.m in Sources */,
@@ -2864,10 +2874,8 @@
 				A7F05BB81CFC2C9D0079F1AD /* ReceiptColumnNetExchangedPricePlusTax.swift in Sources */,
 				7193102B1EDDB9960065B5AD /* WBAbstractPicker.m in Sources */,
 				71AF49E01EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift in Sources */,
-				BA6654FB0EA730FF8CBC4B93 /* WBImageSegue.m in Sources */,
 				BA66598797EF09DBD750184F /* WBAutocompleteHelper.m in Sources */,
 				BA665CE0E265BAAFE063CF3A /* WBReceiptsViewController.m in Sources */,
-				BA6654A32D71826EBC7D9B8F /* WBReceiptActionsViewController.m in Sources */,
 				7185AEF71EFC1CC90038ED2A /* ReceiptMoveCopyInteractor.swift in Sources */,
 				BA6659EA9A31ADDC9CD10970 /* WBMoveCopyReceiptViewController.m in Sources */,
 				BA665F06B922055E7D3BED31 /* WBColumnsViewController.m in Sources */,
@@ -3126,7 +3134,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = UX5Z7CLP7J;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3154,8 +3162,8 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = co.smartreceipts.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8187c9e2-d7a6-4b9e-8421-d39b1adfca9e";
-				PROVISIONING_PROFILE_SPECIFIER = "Smart Receipts - Debug";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceipts/SmartReceipts-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3174,9 +3182,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application: Smart Receipts LLC (UX5Z7CLP7J)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = UX5Z7CLP7J;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3203,8 +3211,8 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = co.smartreceipts.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4fc7d77-3f77-4d36-8a1f-43afe97cc65c";
-				PROVISIONING_PROFILE_SPECIFIER = "Smart Receipts - Distribution";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceipts/SmartReceipts-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";

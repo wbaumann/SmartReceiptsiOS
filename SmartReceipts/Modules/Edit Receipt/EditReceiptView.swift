@@ -29,6 +29,7 @@ final class EditReceiptView: UserInterface {
         
         configureTitle()
         formView = EditReceiptFormView(trip: displayData.trip, receipt: displayData.receipt)
+        formView.settingsTap = presenter.settingsTap
         addChildViewController(formView)
         view.addSubview(formView.view)
         configureUIActions()

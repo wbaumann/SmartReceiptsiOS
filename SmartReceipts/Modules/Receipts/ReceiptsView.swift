@@ -30,7 +30,6 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
     private static let CellIdentifier = "Cell"
-    private static let PresentTripDistancesSegue = "PresentTripDistancesSegue"
     
     private var _imageForCreatorSegue: UIImage!
     private var _receiptForCreatorSegue: WBReceipt!
@@ -168,47 +167,6 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
         Database.sharedInstance().delete(object as! WBReceipt)
     }
     
-    func attachPdfOrImageFile(_ pdfFile: String, toReceipt: WBReceipt) -> Bool {
-        let ext = (pdfFile as NSString).pathExtension
-        
-        let imageFileName = String(format: "%tu_%@.%@", toReceipt.receiptId(), toReceipt.name, ext)
-        let newFile = trip?.file(inDirectoryPath: imageFileName)
-        
-        if !WBFileManager.forceCopy(from: pdfFile, to: newFile) {
-            Logger.error("Couldn't force copy from \(pdfFile) to \(newFile!)")
-            return false
-        }
-        
-        if !Database.sharedInstance().update(toReceipt, changeFileNameTo: imageFileName) {
-            Logger.error("Error: cannot update image file \(imageFileName) for receipt \(toReceipt.name)")
-            return false
-        }
-        return true
-    }
-    
-    func update(receipt: WBReceipt, image: UIImage?) -> Bool {
-        var imageFileName = ""
-        if image != nil {
-            imageFileName = String(format: "%tu_%@.jpg", receipt.receiptId(), receipt.name)
-            let path = trip!.file(inDirectoryPath: imageFileName)
-            if !WBFileManager.forceWrite(UIImageJPEGRepresentation(image!, 0.85), to: path!) {
-                imageFileName = ""
-            }
-            
-            if imageFileName.isEmpty {
-                return false
-            }
-            
-            if !Database.sharedInstance().update(receipt, changeFileNameTo: imageFileName) {
-                Logger.error("Error: cannot update image file")
-                return false
-            }
-            return true
-        } else {
-            return false
-        }
-    }
-    
     override func tappedObject(_ tapped: Any, indexPath: IndexPath) {
         self.tapped = tapped as! WBReceipt
         if tableView.isEditing {
@@ -216,36 +174,6 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
         } else {
             presenter.receiptActionsSubject.onNext(self.tapped)
         }
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "ReceiptActions") {
-            let vc = segue.destination as! WBReceiptActionsViewController
-            vc.receiptsViewController = self
-            vc.receipt = tapped
-        } else if segue.identifier == "ReceiptCreator" {
-            
-            let vc = segue.destination as! EditReceiptViewController
-            vc.receiptsViewController = self
-            var receipt: WBReceipt!
-            if self.tapped != nil {
-                receipt = tapped
-                AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuEdit())
-            } else {
-                if _imageForCreatorSegue != nil {
-                    AnalyticsManager.sharedManager.record(event: Event.receiptsAddPictureReceipt())
-                    vc.receiptImage = _imageForCreatorSegue!
-                } else {
-                    AnalyticsManager.sharedManager.record(event: Event.receiptsAddTextReceipt())
-                }
-                receipt = _receiptForCreatorSegue
-                _receiptForCreatorSegue = nil
-                _imageForCreatorSegue = nil
-            }
-            vc.setReceipt(receipt, with: trip!)
-        }
-        tapped = nil
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {

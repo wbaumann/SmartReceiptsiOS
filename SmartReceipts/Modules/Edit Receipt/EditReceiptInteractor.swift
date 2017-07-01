@@ -57,8 +57,10 @@ class EditReceiptInteractor: Interactor {
         Observable<Void>.just()
             .filter({receipt.date > receipt.trip.endDate || receipt.date < receipt.trip.startDate})
             .subscribe(onNext: {
-                let message = LocalizedString("edit.distance.date.range.warning.message")
-                _ = UIAlertView.rx_show(message: message, cancelButtonTitle: "OK")
+                let title = LocalizedString("edit.receipt.date.range.warning.title")
+                let message = LocalizedString("edit.receipt.date.range.warning.message")
+                let okTitle = LocalizedString("generic.button.title.ok")
+                _ = UIAlertView.rx_show(title: title, message: message, cancelButtonTitle: okTitle)
                     .delay(3, scheduler: MainScheduler.instance)
                     .subscribe(onNext: { alert in
                         alert.dismiss(withClickedButtonIndex: 0, animated: true)

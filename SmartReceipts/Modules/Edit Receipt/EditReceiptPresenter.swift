@@ -14,9 +14,15 @@ class EditReceiptPresenter: Presenter {
     
     let addReceiptSubject = PublishSubject<WBReceipt>()
     let updateReceiptSubject = PublishSubject<WBReceipt>()
+    let settingsTap = PublishSubject<Void>()
+    
+    private let bag = DisposeBag()
     
     override func viewHasLoaded() {
         interactor.configureSubscribers()
+        settingsTap.subscribe(onNext: { [unowned self] in
+            self.router.openSettings()
+        }).disposed(by: bag)
     }
     
     override func setupView(data: Any) {

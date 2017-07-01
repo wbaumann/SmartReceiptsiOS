@@ -7,7 +7,6 @@
 //
 
 #import "WBReceiptsViewController.h"
-#import "WBReceiptActionsViewController.h"
 #import "WBDateFormatter.h"
 #import "WBFileManager.h"
 #import "WBPreferences.h"
@@ -246,12 +245,7 @@ static NSString *const PresentTripDistancesSegue = @"PresentTripDistancesSegue";
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"ReceiptActions"]) {
-        // view receipt
-        WBReceiptActionsViewController *vc = (WBReceiptActionsViewController *) [[segue destinationViewController] topViewController];
-        vc.receiptsViewController = self;
-        vc.receipt = self.tapped;
-    } else if ([[segue identifier] isEqualToString:@"ReceiptCreator"]) {
+    if ([[segue identifier] isEqualToString:@"ReceiptCreator"]) {
         // Edit or create receipt
         EditReceiptViewController *vc = (EditReceiptViewController *) [[segue destinationViewController] topViewController];
 

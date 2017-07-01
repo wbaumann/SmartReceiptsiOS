@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Will Baumann. All rights reserved.
 //
 
-#import "WBReceiptActionsViewController.h"
 #import "WBReceiptsViewController.h"
 
 @interface WBMoveCopyReceiptViewController : FetchedCollectionTableViewController

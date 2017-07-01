@@ -52,7 +52,6 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 @property (nonatomic, strong) TitledTextEntryCell *taxCell;
 @property (nonatomic, strong) PickerCell *currencyCell;
 @property (nonatomic, strong) InlinedPickerCell *currencyPickerCell;
-@property (nonatomic, strong) ExchangeRateCell *exchangeRateCell;
 @property (nonatomic, strong) PickerCell *dateCell;
 @property (nonatomic, strong) InlinedDatePickerCell *datePickerCell;
 @property (nonatomic, strong) PickerCell *categoryCell;
@@ -85,7 +84,6 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
     [self.tableView registerNib:[SwitchControlCell viewNib] forCellReuseIdentifier:[SwitchControlCell cellIdentifier]];
     [self.tableView registerNib:[InlinedPickerCell viewNib] forCellReuseIdentifier:[InlinedPickerCell cellIdentifier]];
     [self.tableView registerNib:[InlinedDatePickerCell viewNib] forCellReuseIdentifier:[InlinedDatePickerCell cellIdentifier]];
-    [self.tableView registerNib:[ExchangeRateCell viewNib] forCellReuseIdentifier:[ExchangeRateCell cellIdentifier]];
 
     self.nameCell = [self.tableView dequeueReusableCellWithIdentifier:[TitledAutocompleteEntryCell cellIdentifier]];
     [self.nameCell setTitle:NSLocalizedString(@"edit.receipt.name.label", nil)];
@@ -128,11 +126,6 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
             [weakSelf remove:weakSelf.exchangeRateCell];
         }
     }];
-    
-    self.exchangeRateCell = [self.tableView dequeueReusableCellWithIdentifier:[ExchangeRateCell cellIdentifier]];
-    [self.exchangeRateCell setTitle:NSLocalizedString(@"edit.receipt.exchange.rate.label", nil)];
-    [self.exchangeRateCell activateDecimalEntryModeWithDecimalPlaces:SmartReceiptExchangeRateDecimalPlaces];
-    self.exchangeRateCell.accessoryView = [self defaultExchangeAccessoryButton];
 
     self.dateCell = [self.tableView dequeueReusableCellWithIdentifier:[PickerCell cellIdentifier]];
     self.dateCell.title = NSLocalizedString(@"edit.receipt.date.label", nil);
@@ -249,7 +242,6 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 
         [self.nameCell setValue:[self.receipt name]];
         [self.priceCell setValue:[self.receipt priceAsString]];
-        [self.exchangeRateCell setValue:[self.receipt exchangeRateAsString]];
         [self.taxCell setValue:[self.receipt taxAsString]];
         currencyCode = [[self.receipt currency] code];
         _dateMs = [self.receipt date].milliseconds.longLongValue;
@@ -397,7 +389,7 @@ NSString *const SREditReceiptCategoryCacheKey = @"SREditReceiptCategoryCacheKey"
 
     NSString *currencyCode = [self.currencyCell value];
 
-    NSDecimalNumber *exchangeRate = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:self.exchangeRateCell.value];
+    NSDecimalNumber *exchangeRate = [NSDecimalNumber decimalNumberOrZeroUsingCurrentLocale:@"0"];
     if ([self.trip.defaultCurrency.code isEqualToString:currencyCode]) {
         exchangeRate = [NSDecimalNumber decimalNumberOrZero:@"-1"];
     }

@@ -12,6 +12,7 @@ private let DateStringFormatterKey = "DateStringFormatterKey-yyyy-MM-dd"
 
 extension Date {
     func dayString() -> String {
+        
         return formatter().string(from: self)
     }
     
@@ -22,6 +23,7 @@ extension Date {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(identifier: "UTC")
         Thread.cacheObject(formatter, key: DateStringFormatterKey)
         return formatter
     }

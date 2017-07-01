@@ -10,13 +10,15 @@ import Eureka
 import RxSwift
 import RxCocoa
 
-class EditReceiptFormView: FormViewController {
+class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     
     private let CURRENCY_ROW_TAG = "CurrencyRow"
     private let NAME_ROW_TAG = "NameRow"
+    private let EXCHANGE_RATE_TAG = "ExchangeRateRow"
     
     let receiptSubject = PublishSubject<WBReceipt>()
     let errorSubject = PublishSubject<String>()
+    weak var settingsTap: PublishSubject<Void>?
     
     private var receipt: WBReceipt!
     private var trip: WBTrip!
@@ -42,6 +44,14 @@ class EditReceiptFormView: FormViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let exchangeRow = self.form.rowBy(tag: self.EXCHANGE_RATE_TAG) as? ExchangeRateRow {
+            exchangeRow.responseSubject.onNext(ExchangeResponse(value: nil, error: nil))
+            exchangeRow.cell.update()
+        }
     }
 
     override func viewDidLoad() {
@@ -101,12 +111,15 @@ class EditReceiptFormView: FormViewController {
         }.onChange({ [unowned self] row in
             if let code = row.value {
                 self.receipt.setPrice(self.receipt.priceAmount, currency: code)
+                if code != self.trip.defaultCurrency.code {
+                    self.updateExchangeRate()
+                }
             }
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
             
-        <<< DecimalRow() { row in
+        <<< ExchangeRateRow(EXCHANGE_RATE_TAG) { row in
             row.title = LocalizedString("edit.receipt.exchange.rate.label")
             row.hidden = Condition.function([CURRENCY_ROW_TAG], { form -> Bool in
                 if let picker = form.rowBy(tag: self.CURRENCY_ROW_TAG) as? PickerInlineRow<String> {
@@ -116,10 +129,12 @@ class EditReceiptFormView: FormViewController {
                 }
             })
             row.value = receipt.exchangeRate?.doubleValue
+            row.updateTap.subscribe(onNext: { [unowned self] in self.updateExchangeRate() })
+                .disposed(by: self.disposeBag)
         }.onChange({ [unowned self] row in
             self.receipt.exchangeRate = NSDecimalNumber(value: row.value ?? 0)
-        }).cellSetup({ cell, _ in
-            cell.configureCell()
+        }).cellSetup({ [unowned self] cell, row in
+            cell.alertPresenter = self
         })
         
         <<< DateInlineRow() { row in
@@ -189,6 +204,16 @@ class EditReceiptFormView: FormViewController {
         } else {
             receipt.trip = trip
             receiptSubject.onNext(receipt)
+        }
+    }
+    
+    private func updateExchangeRate() {
+        if let exchangeRow = self.form.rowBy(tag: self.EXCHANGE_RATE_TAG) as? ExchangeRateRow {
+            CurrencyExchangeService().exchangeRate(self.trip.defaultCurrency.code,
+                    target: self.receipt.currency.code, onDate: self.receipt.date)
+            .observeOn(MainScheduler.instance)
+            .bind(to: exchangeRow.responseSubject)
+            .disposed(by: disposeBag)
         }
     }
     

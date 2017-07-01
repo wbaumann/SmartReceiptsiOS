@@ -32,7 +32,6 @@
 #import "UIView+LoadHelpers.h"
 #import "UIApplication+DismissKeyboard.h"
 #import "NSDate+Calculations.h"
-#import "WBReceiptActionsViewController.h"
 
 #import "PendingHUDView.h"
 #import "Price.h"
