@@ -23,6 +23,30 @@ class ReceiptsPresenter: Presenter {
     
     override func viewHasLoaded() {
         interactor.configureSubscribers()
+        
+        editReceiptSubject.subscribe(onNext: { [unowned self] receipt in
+            self.router.openEdit(receipt: receipt)
+        }).disposed(by: disposeBag)
+        
+        receiptActionsSubject.subscribe(onNext: { [unowned self] receipt in
+            let actionsPresenter = self.router.openActions(receipt: receipt)
+            
+            actionsPresenter.swapUpTap.subscribe(onNext: {
+                self.interactor.swapUpReceipt(receipt)
+            }).disposed(by: self.disposeBag)
+            
+            actionsPresenter.swapDownTap.subscribe(onNext: {
+                self.interactor.swapDownReceipt(receipt)
+            }).disposed(by: self.disposeBag)
+            
+            actionsPresenter.viewImageTap
+                .subscribe(onNext:{
+                    receipt.attachemntType == .image ?
+                        self.router.openImageViewer(for: receipt) :
+                        self.router.openPDFViewer(for: receipt)
+                }).disposed(by: self.disposeBag)
+            
+        }).disposed(by: disposeBag)
     }
     
     override func setupView(data: Any) {
@@ -48,31 +72,6 @@ class ReceiptsPresenter: Presenter {
             self.router.openGenerateReport()
         }).disposed(by: disposeBag)
         
-        
-        editReceiptSubject.subscribe(onNext: { [unowned self] receipt in
-            self.router.openEdit(receipt: receipt)
-        }).disposed(by: disposeBag)
-        
-        receiptActionsSubject.subscribe(onNext: { [unowned self] receipt in
-            let actionsPresenter = self.router.openActions(receipt: receipt)
-            
-            actionsPresenter.swapUpTap.subscribe(onNext: {
-                self.interactor.swapUpReceipt(receipt)
-            }).disposed(by: self.disposeBag)
-            
-            actionsPresenter.swapDownTap.subscribe(onNext: {
-                self.interactor.swapDownReceipt(receipt)
-            }).disposed(by: self.disposeBag)
-            
-            actionsPresenter.viewImageTap
-             .delay(0, scheduler: MainScheduler.instance)
-             .subscribe(onNext:{
-                receipt.attachemntType == .image ?
-                    self.router.openImageViewer(for: receipt) :
-                    self.router.openPDFViewer(for: receipt)
-            }).disposed(by: self.disposeBag)
-            
-        }).disposed(by: disposeBag)
     }
     
     func distanceReceipts() -> [WBReceipt] {

@@ -26,16 +26,24 @@ class ReceiptsRouter: Router {
     }
     
     func openImageViewer(for receipt: WBReceipt) {
-        let module = Module.build(AppModules.receiptImageViewer)
-        module.router.show(from: _view, embedInNavController: false, setupData: receipt)
+        Observable<Void>.just()
+            .delay(0, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] in
+                let module = Module.build(AppModules.receiptImageViewer)
+                module.router.show(from: self._view, embedInNavController: false, setupData: receipt)
+            }).disposed(by: disposeBag)
     }
     
     func openPDFViewer(for receipt: WBReceipt) {
-        let url = URL(fileURLWithPath: receipt.imageFilePath(for: receipt.trip))
-        documentViewController = UIDocumentInteractionController(url: url)
-        documentViewController.name = receipt.name
-        documentViewController.delegate = _view as? UIDocumentInteractionControllerDelegate
-        documentViewController.presentPreview(animated: true)
+        Observable<Void>.just()
+            .delay(0, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] in
+                let url = URL(fileURLWithPath: receipt.imageFilePath(for: receipt.trip))
+                self.documentViewController = UIDocumentInteractionController(url: url)
+                self.documentViewController.name = receipt.name
+                self.documentViewController.delegate = self._view as? UIDocumentInteractionControllerDelegate
+                self.documentViewController.presentPreview(animated: true)
+            }).disposed(by: disposeBag)
     }
     
     func openGenerateReport() {
