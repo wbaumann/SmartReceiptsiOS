@@ -17,13 +17,19 @@ class ReceiptsPresenter: Presenter {
     let generateReportSubject = PublishSubject<WBTrip>()
     let distancesSubject = PublishSubject<WBTrip>()
     let editReceiptSubject = PublishSubject<WBReceipt>()
+    let receiptDeleteSubject = PublishSubject<WBReceipt>()
     
     let disposeBag = DisposeBag()
+    
+    override func viewHasLoaded() {
+        interactor.configureSubscribers()
+    }
     
     override func setupView(data: Any) {
         let trip = data as! WBTrip
         view.setup(trip: trip)
         view.setup(fetchedModelAdapter: interactor.fetchedAdapter(for: trip))
+        interactor.trip = trip
         router.moduleTrip = trip
         
         view.createReceiptButton.rx.tap.subscribe(onNext: { [unowned self] in
@@ -67,6 +73,14 @@ class ReceiptsPresenter: Presenter {
             }).disposed(by: self.disposeBag)
             
         }).disposed(by: disposeBag)
+    }
+    
+    func distanceReceipts() -> [WBReceipt] {
+        return interactor.distanceReceipts()
+    }
+    
+    func nextID() -> String {
+       return interactor.nextID()
     }
 }
 
