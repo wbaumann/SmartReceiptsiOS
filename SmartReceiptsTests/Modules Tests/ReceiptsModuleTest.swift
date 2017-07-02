@@ -6,30 +6,120 @@
 //  Copyright © 2017 Will Baumann. All rights reserved.
 //
 
+@testable import Cuckoo
+@testable import SmartReceipts
+
+import Viperit
+import RxSwift
+import RxTest
 import XCTest
 
 class ReceiptsModuleTest: XCTestCase {
     
+    var presenter: ReceiptsPresenter!
+    var interactor: MockReceiptsInteractor!
+    var router: MockReceiptsRouter!
+    
+    var trip: WBTrip?
+    let disposeBag = DisposeBag()
+    let actionsPresneter = ReceiptActionsPresenter()
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        let p = ReceiptsPresenter()
+        let i = ReceiptsInteractor()
+        let r = ReceiptsRouter()
+        
+        var module = Module.build(AppModules.receipts)
+        module.injectMock(presenter: p)
+        module.injectMock(interactor: MockReceiptsInteractor().spy(on: i))
+        module.injectMock(router: MockReceiptsRouter().spy(on: r))
+        
+        presenter = module.presenter as! ReceiptsPresenter
+        interactor = module.interactor as! MockReceiptsInteractor
+        router = module.router as! MockReceiptsRouter
+        
+        // Connect Mock & Real
+        p._router = router
+        p._interactor = interactor
+        i._presenter = presenter
+        r._presenter = presenter
+        
+        configureStubs()
+    }
+    
+    func configureStubs() {
+        stub(router) { mock in
+            mock.openCreateReceipt().thenDoNothing()
+            mock.openActions(receipt: WBReceipt()).then({ _ -> ReceiptActionsPresenter in
+                return self.actionsPresneter
+            })
+            mock.openCreatePhotoReceipt().thenDoNothing()
+            mock.openDistances().thenDoNothing()
+            mock.openGenerateReport().thenDoNothing()
+            mock.openPDFViewer(for: WBReceipt()).thenDoNothing()
+            mock.openImageViewer(for: WBReceipt()).thenDoNothing()
+        }
+        
+        stub(interactor) { mock in
+            mock.swapUpReceipt(WBReceipt()).thenDoNothing()
+            mock.swapDownReceipt(WBReceipt()).thenDoNothing()
+            mock.nextID().then({ _ -> String in
+                return "1"
+            })
+            mock.distanceReceipts().then({ _ -> [WBReceipt] in
+                return [WBReceipt]()
+            })
+        
+        }
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testPresenterToRouter() {
+        let receipt = WBReceipt(id: 0,
+                                name: "name",
+                                category: "",
+                                imageFileName: "img.png",
+                                date: Date(),
+                                timeZoneName: "UTC",
+                                comment: nil,
+                                priceAmount: NSDecimalNumber.zero,
+                                taxAmount: NSDecimalNumber.zero,
+                                exchangeRate: NSDecimalNumber.zero,
+                                currency: Currency.currency(forCode: "USD"),
+                                isReimbursable: true, isFullPage: false,
+                                extraEditText1: "", extraEditText2: "", extraEditText3: "")
+        
+        receipt.trip = WBTrip()
+        
+        let path = receipt.trip.file(inDirectoryPath: "img.png")
+        FileManager.default.createFile(atPath: path!, contents: nil, attributes: nil)
+        
+        presenter.viewHasLoaded()
+        presenter.receiptActionsSubject.onNext(receipt)
+        actionsPresneter.viewImageTap.onNext()
+        verify(router).openImageViewer(for: receipt)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testPresenterToInteractor() {
+        _ = presenter.nextID()
+        _ = presenter.distanceReceipts()
+    
+        verify(interactor).distanceReceipts()
+        verify(interactor).nextID()
+        
+        presenter.viewHasLoaded()
+        presenter.receiptActionsSubject.onNext(WBReceipt())
+        
+        actionsPresneter.swapUpTap.onNext()
+        actionsPresneter.swapDownTap.onNext()
+        
+        verify(interactor).swapDownReceipt(WBReceipt())
+        verify(interactor).swapUpReceipt(WBReceipt())
     }
     
 }

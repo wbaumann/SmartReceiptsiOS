@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  GenerateReportPresenter.swift
@@ -318,7 +318,7 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  GenerateReportInteractor.swift
@@ -589,7 +589,7 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptRouter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptRouter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  EditReceiptRouter.swift
@@ -719,7 +719,7 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsRouter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsRouter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  TripsRouter.swift
@@ -930,7 +930,7 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsPresenter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsPresenter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  TripsPresenter.swift
@@ -1115,7 +1115,7 @@ class MockTripsPresenter: TripsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyInteractor.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyInteractor.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  ReceiptMoveCopyInteractor.swift
@@ -1246,7 +1246,7 @@ class MockReceiptMoveCopyInteractor: ReceiptMoveCopyInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportRouter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportRouter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  GenerateReportRouter.swift
@@ -1430,7 +1430,7 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceInteractor.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceInteractor.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  EditDistanceInteractor.swift
@@ -1534,7 +1534,7 @@ class MockEditDistanceInteractor: EditDistanceInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsPresenter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsPresenter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  ReceiptsPresenter.swift
@@ -1570,6 +1570,18 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
     
 
     
+     override func viewHasLoaded()  {
+        
+        return cuckoo_manager.call("viewHasLoaded()",
+            parameters: (),
+            original: observed.map { o in
+                return { () in
+                    o.viewHasLoaded()
+                }
+            })
+        
+    }
+    
      override func setupView(data: Any)  {
         
         return cuckoo_manager.call("setupView(data: Any)",
@@ -1577,6 +1589,30 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
             original: observed.map { o in
                 return { (data: Any) in
                     o.setupView(data: data)
+                }
+            })
+        
+    }
+    
+     override func distanceReceipts()  -> [WBReceipt] {
+        
+        return cuckoo_manager.call("distanceReceipts() -> [WBReceipt]",
+            parameters: (),
+            original: observed.map { o in
+                return { () -> [WBReceipt] in
+                    o.distanceReceipts()
+                }
+            })
+        
+    }
+    
+     override func nextID()  -> String {
+        
+        return cuckoo_manager.call("nextID() -> String",
+            parameters: (),
+            original: observed.map { o in
+                return { () -> String in
+                    o.nextID()
                 }
             })
         
@@ -1591,9 +1627,24 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
         }
         
         
+        func viewHasLoaded() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("viewHasLoaded()", parameterMatchers: matchers))
+        }
+        
         func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.StubNoReturnFunction<(Any)> where M1.MatchedType == Any {
             let matchers: [Cuckoo.ParameterMatcher<(Any)>] = [wrap(matchable: data) { $0 }]
             return .init(stub: cuckoo_manager.createStub("setupView(data: Any)", parameterMatchers: matchers))
+        }
+        
+        func distanceReceipts() -> Cuckoo.StubFunction<(), [WBReceipt]> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("distanceReceipts() -> [WBReceipt]", parameterMatchers: matchers))
+        }
+        
+        func nextID() -> Cuckoo.StubFunction<(), String> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("nextID() -> String", parameterMatchers: matchers))
         }
         
     }
@@ -1614,9 +1665,27 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
 
         
         @discardableResult
+        func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
         func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Any {
             let matchers: [Cuckoo.ParameterMatcher<(Any)>] = [wrap(matchable: data) { $0 }]
             return cuckoo_manager.verify("setupView(data: Any)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func distanceReceipts() -> Cuckoo.__DoNotUse<[WBReceipt]> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("distanceReceipts() -> [WBReceipt]", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func nextID() -> Cuckoo.__DoNotUse<String> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("nextID() -> String", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
     }
@@ -1630,8 +1699,20 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
     
 
     
+     override func viewHasLoaded()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
      override func setupView(data: Any)  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func distanceReceipts()  -> [WBReceipt] {
+        return DefaultValueRegistry.defaultValue(for: [WBReceipt].self)
+    }
+    
+     override func nextID()  -> String {
+        return DefaultValueRegistry.defaultValue(for: String.self)
     }
     
 }
@@ -1639,7 +1720,7 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  TripDistancesInteractor.swift
@@ -1769,7 +1850,7 @@ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripInteractor.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripInteractor.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  EditTripInteractor.swift
@@ -1900,7 +1981,7 @@ class MockEditTripInteractor: EditTripInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsRouter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsRouter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  ReceiptsRouter.swift
@@ -2222,7 +2303,7 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsInteractor.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsInteractor.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  TripsInteractor.swift
@@ -2353,7 +2434,7 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyRouter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyRouter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  ReceiptMoveCopyRouter.swift
@@ -2456,7 +2537,7 @@ class MockReceiptMoveCopyRouter: ReceiptMoveCopyRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceRouter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceRouter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  EditDistanceRouter.swift
@@ -2559,7 +2640,7 @@ class MockEditDistanceRouter: EditDistanceRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistancePresenter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistancePresenter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  EditDistancePresenter.swift
@@ -2716,7 +2797,7 @@ class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsInteractor.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsInteractor.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  ReceiptActionsInteractor.swift
@@ -2846,7 +2927,7 @@ class MockReceiptActionsInteractor: ReceiptActionsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsRouter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsRouter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  ReceiptActionsRouter.swift
@@ -3003,7 +3084,7 @@ class MockReceiptActionsRouter: ReceiptActionsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripRouter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripRouter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  EditTripRouter.swift
@@ -3106,7 +3187,7 @@ class MockEditTripRouter: EditTripRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptInteractor.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptInteractor.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  EditReceiptInteractor.swift
@@ -3239,7 +3320,7 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  TripDistancesPresenter.swift
@@ -3423,7 +3504,7 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripPresenter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripPresenter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  EditTripPresenter.swift
@@ -3608,7 +3689,7 @@ class MockEditTripPresenter: EditTripPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyPresenter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyPresenter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  ReceiptMoveCopyPresenter.swift
@@ -3824,7 +3905,7 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsPresenter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsPresenter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  ReceiptActionsPresenter.swift
@@ -3982,7 +4063,7 @@ class MockReceiptActionsPresenter: ReceiptActionsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptPresenter.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptPresenter.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  EditReceiptPresenter.swift
@@ -4167,7 +4248,7 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsInteractor.swift at 2017-07-02 14:54:39 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsInteractor.swift at 2017-07-02 20:44:07 +0000
 
 //
 //  ReceiptsInteractor.swift
@@ -4181,6 +4262,7 @@ import Cuckoo
 @testable import SmartReceipts
 
 import Foundation
+import RxSwift
 import Viperit
 
 class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
@@ -4209,9 +4291,57 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
         
     }
     
+    // ["name": "trip", "accesibility": "", "@type": "InstanceVariable", "type": "WBTrip!", "isReadOnly": false]
+     override var trip: WBTrip! {
+        get {
+            return cuckoo_manager.getter("trip", original: observed.map { o in return { () -> WBTrip! in o.trip }})
+        }
+        
+        set {
+            cuckoo_manager.setter("trip", value: newValue, original: observed != nil ? { self.observed?.trip = $0 } : nil)
+        }
+        
+    }
+    
 
     
 
+    
+     override func configureSubscribers()  {
+        
+        return cuckoo_manager.call("configureSubscribers()",
+            parameters: (),
+            original: observed.map { o in
+                return { () in
+                    o.configureSubscribers()
+                }
+            })
+        
+    }
+    
+     override func distanceReceipts()  -> [WBReceipt] {
+        
+        return cuckoo_manager.call("distanceReceipts() -> [WBReceipt]",
+            parameters: (),
+            original: observed.map { o in
+                return { () -> [WBReceipt] in
+                    o.distanceReceipts()
+                }
+            })
+        
+    }
+    
+     override func nextID()  -> String {
+        
+        return cuckoo_manager.call("nextID() -> String",
+            parameters: (),
+            original: observed.map { o in
+                return { () -> String in
+                    o.nextID()
+                }
+            })
+        
+    }
     
      override func fetchedAdapter(for trip: WBTrip)  -> FetchedModelAdapter {
         
@@ -4261,6 +4391,25 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
             return .init(manager: cuckoo_manager, name: "fetchedModelAdapter")
         }
         
+        var trip: Cuckoo.ToBeStubbedProperty<WBTrip?> {
+            return .init(manager: cuckoo_manager, name: "trip")
+        }
+        
+        
+        func configureSubscribers() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("configureSubscribers()", parameterMatchers: matchers))
+        }
+        
+        func distanceReceipts() -> Cuckoo.StubFunction<(), [WBReceipt]> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("distanceReceipts() -> [WBReceipt]", parameterMatchers: matchers))
+        }
+        
+        func nextID() -> Cuckoo.StubFunction<(), String> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("nextID() -> String", parameterMatchers: matchers))
+        }
         
         func fetchedAdapter<M1: Cuckoo.Matchable>(for trip: M1) -> Cuckoo.StubFunction<(WBTrip), FetchedModelAdapter> where M1.MatchedType == WBTrip {
             let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
@@ -4296,7 +4445,29 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
             return .init(manager: cuckoo_manager, name: "fetchedModelAdapter", callMatcher: callMatcher, sourceLocation: sourceLocation)
         }
         
+        var trip: Cuckoo.VerifyProperty<WBTrip?> {
+            return .init(manager: cuckoo_manager, name: "trip", callMatcher: callMatcher, sourceLocation: sourceLocation)
+        }
+        
 
+        
+        @discardableResult
+        func configureSubscribers() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("configureSubscribers()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func distanceReceipts() -> Cuckoo.__DoNotUse<[WBReceipt]> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("distanceReceipts() -> [WBReceipt]", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func nextID() -> Cuckoo.__DoNotUse<String> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("nextID() -> String", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
         
         @discardableResult
         func fetchedAdapter<M1: Cuckoo.Matchable>(for trip: M1) -> Cuckoo.__DoNotUse<FetchedModelAdapter> where M1.MatchedType == WBTrip {
@@ -4332,9 +4503,30 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
         
     }
     
+     override var trip: WBTrip! {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (WBTrip!).self)
+        }
+        
+        set { }
+        
+    }
+    
 
     
 
+    
+     override func configureSubscribers()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func distanceReceipts()  -> [WBReceipt] {
+        return DefaultValueRegistry.defaultValue(for: [WBReceipt].self)
+    }
+    
+     override func nextID()  -> String {
+        return DefaultValueRegistry.defaultValue(for: String.self)
+    }
     
      override func fetchedAdapter(for trip: WBTrip)  -> FetchedModelAdapter {
         return DefaultValueRegistry.defaultValue(for: FetchedModelAdapter.self)
