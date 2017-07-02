@@ -88,13 +88,3 @@ class TripsModuleTest: XCTestCase {
         XCTAssertNil(self.trip)
     }
 }
-
-extension WBTrip: Matchable {
-    public var matcher: ParameterMatcher<WBTrip> {
-        get {
-            return ParameterMatcher(matchesFunction: { trip -> Bool in
-                return self.isEqual(trip)
-            })
-        }
-    }
-}

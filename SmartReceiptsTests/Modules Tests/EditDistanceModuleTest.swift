@@ -72,13 +72,3 @@ class EditDistanceModuleTest: XCTestCase {
         verify(router).close()
     }
 }
-
-extension Distance: Matchable {
-    public var matcher: ParameterMatcher<Distance> {
-        get {
-            return ParameterMatcher(matchesFunction: { distance -> Bool in
-                return self.objectId == distance.objectId
-            })
-        }
-    }
-}

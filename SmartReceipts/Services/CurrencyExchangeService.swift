@@ -50,13 +50,17 @@ class CurrencyExchangeService {
     }
 }
 
-struct ExchangeResponse {
+struct ExchangeResponse: Equatable {
     private(set) var value: NSDecimalNumber?
     private(set) var error: CurrencyExchangeError?
     
     init(value: NSDecimalNumber?, error: CurrencyExchangeError?) {
         self.value = value
         self.error = error
+    }
+    
+    public static func ==(lhs: ExchangeResponse, rhs: ExchangeResponse) -> Bool {
+        return lhs.value == rhs.value && lhs.error == rhs.error
     }
 }
 
