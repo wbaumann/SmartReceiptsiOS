@@ -16,7 +16,6 @@ class ReceiptActionsPresenter: Presenter {
     
     let handleAttachTap = PublishSubject<Void>()
     let takeImageTap = PublishSubject<Void>()
-    let retakeImageTap = PublishSubject<Void>()
     let viewImageTap = PublishSubject<Void>()
     let moveTap = PublishSubject<Void>()
     let copyTap = PublishSubject<Void>()
@@ -25,6 +24,14 @@ class ReceiptActionsPresenter: Presenter {
     
     let disposeBag = DisposeBag()
     
+    required init(receipt: WBReceipt? = nil) {
+        self.receipt = receipt
+    }
+    
+    required init() {
+        super.init()
+    }
+    
     override func setupView(data: Any) {
         receipt = data as! WBReceipt
         view.setup(receipt: receipt)
@@ -32,10 +39,14 @@ class ReceiptActionsPresenter: Presenter {
     
     override func viewHasLoaded() {
         super.viewHasLoaded()
-        
         view.doneButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.router.close()
         }).disposed(by: disposeBag)
+        
+        configureSubscribers()
+    }
+    
+    func configureSubscribers() {
         
         handleAttachTap.subscribe(onNext: { [unowned self] in
             Logger.info("Attach File Tap")
