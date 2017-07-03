@@ -29,7 +29,7 @@ class EditDistanceFormView: FormViewController {
             self.changedDistance?.trip = trip
             self.changedDistance?.location = ""
             
-            let date = WBReceiptsViewController.sharedInputCache()[SREditDistanceDateCacheKey] as? Date
+            let date = ReceiptsView.sharedInputCache[SREditDistanceDateCacheKey] as? Date
             self.changedDistance?.date = date ?? trip.startDate
             self.changedDistance?.timeZone = trip.startTimeZone
             
@@ -106,7 +106,7 @@ class EditDistanceFormView: FormViewController {
             row.dateFormatter = formatter
         }.onChange({ [weak self] row in
             self?.changedDistance?.date = row.value
-            WBReceiptsViewController.sharedInputCache()[SREditDistanceDateCacheKey] = row.value
+            ReceiptsView.sharedInputCache[SREditDistanceDateCacheKey] = row.value
         }).cellSetup({ cell, _ in
             cell.makeBoldTitle()
             cell.makeHighlitedValue()
