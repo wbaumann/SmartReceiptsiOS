@@ -18,7 +18,6 @@
 #import "DatabaseUpgradeToVersion12.h"
 #import "DatabaseUpgradeToVersion13.h"
 
-#import "EditReceiptViewController.h"
 
 #import "FetchedModel.h"
 #import "FetchedModelAdapter.h"
@@ -39,7 +38,6 @@
 #import "ReceiptColumn.h"
 
 #import "SettingsViewController.h"
-#import "WBReceiptsViewController.h"
 
 #import "DistanceSummaryCell.h"
 #import "TextEntryCell.h"
@@ -70,6 +68,7 @@
 #import "WBTextUtils.h"
 #import "ImagePicker.h"
 #import "WBImageUtils.h"
+#import "FetchedModelAdapterDelegate.h"
 
 #import "InputValidation.h"
 

@@ -22,7 +22,7 @@ protocol ReceiptsViewInterface {
 //MARK: ReceiptsView Class
 final class ReceiptsView: FetchedCollectionViewControllerSwift {
     
-    static var sharedInputCache = [Date]()
+    static var sharedInputCache = [String: Date]()
     
     @IBOutlet weak var distanceButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -47,7 +47,7 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ReceiptsView.sharedInputCache = [Date]()
+        ReceiptsView.sharedInputCache = [String: Date]()
         AppTheme.customizeOnViewDidLoad(self)
         
         showReceiptDate = WBPreferences.layoutShowReceiptDate()
