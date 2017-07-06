@@ -7,26 +7,32 @@ project 'SmartReceipts.xcodeproj'
 def pods
     
     # File storage
-    pod 'FMDB', '2.6.2' # SQLite wrapper
-    pod 'objective-zip', '1.0.3'
+    pod 'FMDB'
+    pod 'objective-zip'
     
     # UI
-    pod 'MRProgress', '0.8.3'
-    pod 'UIAlertView-Blocks', '~> 1.0'
-    pod 'Eureka', '~> 3.0.0'
+    pod 'MRProgress'
+    pod 'UIAlertView-Blocks'
+    pod 'Eureka'
     
     # Utilites
-    pod 'RxSwift',    '~> 3.0'
-    pod 'RxCocoa',    '~> 3.0'
-    pod 'Firebase', '~> 3.11'
-    pod 'FirebaseAnalytics', '~> 3.6'
-    pod 'FirebaseCrash', '~> 1.1'
-    pod 'GoogleAPIClientForREST/Drive', '~> 1.2.1'
-    pod 'Google/SignIn', '~> 3.0.3'
-    pod 'Google/Analytics', '~> 3.0'
-    pod 'Google-Mobile-Ads-SDK', '~> 7.20'
-    pod 'Tweaks', '~> 2.0.0' # configurable values. Tweaks is an easy way to fine-tune an iOS app.
-    pod 'CocoaLumberjack/Swift', '~> 3.2.0' # Logging framework
+    pod 'RxSwift'
+    pod 'RxCocoa'
+    
+    pod 'Tweaks'
+    pod 'CocoaLumberjack/Swift'
+    
+    # Google
+    pod 'Google/AdMob'
+    pod 'Google/CloudMessaging'
+    pod 'GoogleAPIClientForREST/Drive'
+    pod 'Google/SignIn'
+    pod 'Google/Analytics'
+    
+    # Firebase
+    pod 'Firebase'
+    pod 'FirebaseAnalytics'
+    pod 'FirebaseCrash'
     
     # Purchases
     pod 'RMStore/Core', :path => '3rdparty/RMStore'
@@ -34,7 +40,7 @@ def pods
     pod 'RMStore/AppReceiptVerificator', :path => '3rdparty/RMStore'
     
     # Architecture
-    pod 'Viperit', '~> 0.5.0'
+    pod 'Viperit'
     
 end
 
@@ -44,9 +50,9 @@ end
 
 target 'SmartReceiptsTests' do
     pods
-    pod 'RxBlocking', '~> 3.0'
-    pod 'RxTest',     '~> 3.0'
-    pod 'Cuckoo',     '~> 0.9.2'
+    pod 'RxBlocking'
+    pod 'RxTest'
+    pod 'Cuckoo'
 
 end
 

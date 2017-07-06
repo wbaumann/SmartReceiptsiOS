@@ -14,7 +14,7 @@ extension Database {
         databaseQueue.inDatabase() {
             database in
             
-            closure(database!)
+            closure(database)
         }
     }
 }
