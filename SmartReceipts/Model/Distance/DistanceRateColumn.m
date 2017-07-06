@@ -7,7 +7,7 @@
 //
 
 #import "DistanceRateColumn.h"
-#import "Price.h"
+
 
 @implementation DistanceRateColumn
 

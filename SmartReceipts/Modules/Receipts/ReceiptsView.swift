@@ -98,7 +98,7 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
     private func dailyTotal() -> String {
         var receipts = self.allObjects() as? [WBReceipt] ?? [WBReceipt]()
         let priceCollection = PricesCollection()
-        priceCollection.addPrice(Price.zeroPrice(withCurrencyCode: WBPreferences.defaultCurrency()))
+        priceCollection.addPrice(Price(currencyCode: WBPreferences.defaultCurrency()))
         if WBPreferences.printDailyDistanceValues() {
             receipts = receipts + presenter.distanceReceipts()
         }

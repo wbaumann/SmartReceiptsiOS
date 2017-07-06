@@ -12,7 +12,6 @@
 #import "Database+Functions.h"
 #import "DatabaseQueryBuilder.h"
 #import "WBTrip.h"
-#import "Price.h"
 #import "FetchedModelAdapter.h"
 #import "Database+Trips.h"
 #import "NSDate+Calculations.h"

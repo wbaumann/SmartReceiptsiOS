@@ -18,6 +18,9 @@
 #import "DatabaseUpgradeToVersion12.h"
 #import "DatabaseUpgradeToVersion13.h"
 
+#import "TripReportHeader.h"
+#import "PDFReportTable.h"
+#import "PDFImageView.h"
 
 #import "FetchedModel.h"
 #import "FetchedModelAdapter.h"
@@ -33,7 +36,6 @@
 #import "NSDate+Calculations.h"
 
 #import "PendingHUDView.h"
-#import "Price.h"
 
 #import "ReceiptColumn.h"
 

@@ -17,7 +17,7 @@
 #import "Database+Receipts.h"
 #import "Database+Functions.h"
 #import "NSDecimalNumber+WBNumberParse.h"
-#import "Price.h"
+
 
 @interface Database (Expose)
 

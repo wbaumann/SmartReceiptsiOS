@@ -183,7 +183,7 @@ extension WBReceipt: ExchangedTaxed {
 extension WBReceipt {
     func netPrice() -> Price {
         let receiptPrice = price()
-        let priceAmount = receiptPrice.amount
+        let priceAmount = receiptPrice.amount!
         let taxAmount: NSDecimalNumber
         if WBPreferences.enteredPricePreTax() {
             taxAmount = tax()?.amount ?? .zero

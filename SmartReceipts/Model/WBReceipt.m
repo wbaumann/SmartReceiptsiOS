@@ -9,7 +9,6 @@
 #import <FMDB/FMResultSet.h>
 #import "WBReceipt.h"
 #import "WBTrip.h"
-#import "Price.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "DatabaseTableNames.h"
 #import "Constants.h"
@@ -243,7 +242,7 @@ static NSString* checkNoData(NSString* str) {
     if (self.hasImage) {
         return NSLocalizedString(@"receipt.attachment.marker.image", nil);
     } else if (self.hasPDF) {
-        return NSLocalizedString(@"receipt.attachment.marker.pdf", <#comment#>);
+        return NSLocalizedString(@"receipt.attachment.marker.pdf", nil);
     }
 
     return @"";

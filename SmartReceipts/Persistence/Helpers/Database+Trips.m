@@ -12,7 +12,6 @@
 #import "DatabaseTableNames.h"
 #import "Database+Functions.h"
 #import "DatabaseQueryBuilder.h"
-#import "Price.h"
 #import "Database+Receipts.h"
 #import "WBPreferences.h"
 #import "Database+Distances.h"
