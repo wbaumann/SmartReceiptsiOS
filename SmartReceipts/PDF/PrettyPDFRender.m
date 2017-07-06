@@ -7,7 +7,6 @@
 //
 
 #import "PrettyPDFRender.h"
-#import "PDFPage.h"
 #import "UIView+LoadHelpers.h"
 #import "TripReportHeader.h"
 #import "PDFReportTable.h"
@@ -25,15 +24,9 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
 
 @end
 
-@interface PDFPage (Expose)
-
-@property (nonatomic, assign) NSUInteger imageIndex;
-
-@end
-
 @interface PrettyPDFRender ()
 
-@property (nonatomic, strong) PDFPage *writingToPage;
+@property (nonatomic, strong) PDFPageView *writingToPage;
 @property (nonatomic, strong) TripReportHeader *header;
 @property (nonatomic, strong) PDFReportTable *openTable;
 
@@ -84,7 +77,7 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
     }
 }
 
-- (void)renderPage:(PDFPage *)page {
+- (void)renderPage:(PDFPageView *)page {
     UIGraphicsBeginPDFPageWithInfo(page.bounds, nil);
     CGContextRef pdfContext = UIGraphicsGetCurrentContext();
     [page.layer renderInContext:pdfContext];
@@ -98,7 +91,7 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
     return _header;
 }
 
-- (PDFPage *)openPage {
+- (PDFPageView *)openPage {
     if (!self.writingToPage) {
         [self startNextPage];
     }
@@ -155,12 +148,12 @@ NSUInteger const SRMinNumberOfTableRowsForPage = 3;
         [self renderPage:self.writingToPage];
     }
 
-    PDFPage *newPage = [PDFPage loadInstance];
+    PDFPageView *newPage = [[[NSBundle mainBundle] loadNibNamed:@"PDFPage" owner:nil options:nil] firstObject];
     
     if (self.landscapePreferred) {
-        newPage.frame = kPDFPageA4Landscape;
+        newPage.frame = [PDFPageView pdfPageA4Landscape];
     } else {
-        newPage.frame = kPDFPageA4Portrait;
+        newPage.frame = [PDFPageView pdfPageA4Portrait];
     }
     [newPage layoutIfNeeded];
     

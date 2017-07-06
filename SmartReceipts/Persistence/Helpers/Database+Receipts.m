@@ -13,7 +13,6 @@
 #import "WBReceipt.h"
 #import "DatabaseQueryBuilder.h"
 #import "WBTrip.h"
-#import "Price.h"
 #import "FetchedModelAdapter.h"
 #import "WBPreferences.h"
 #import "Database+Trips.h"

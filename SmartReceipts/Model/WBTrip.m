@@ -9,7 +9,6 @@
 #import <FMDB/FMResultSet.h>
 #import "WBTrip.h"
 #import "WBFileManager.h"
-#import "Price.h"
 #import "DatabaseTableNames.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "NSDate+Calculations.h"

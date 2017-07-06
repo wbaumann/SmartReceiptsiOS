@@ -54,7 +54,7 @@ class TripDistancesView: FetchedCollectionViewControllerSwift {
         var max: CGFloat = 0
         for row in 0..<numberOfItems() {
             if let distance = objectAtIndexPath(IndexPath(row: row, section: 0)) as? Distance {
-                let distanceString = Price.amount(asString: distance.distance)
+                let distanceString = Price.stringFrom(amount: distance.distance)
                 let bounds = distanceString.boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics,
                  attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 21)], context: nil)
                 
@@ -81,7 +81,7 @@ class TripDistancesView: FetchedCollectionViewControllerSwift {
         if let summaryCell = cell as? DistanceSummaryCell {
             if let distance = object as? Distance {
                 dateFormatter.configure(timeZone: distance.timeZone!)
-                summaryCell.distanceLabel.text = Price.amount(asString: distance.distance)
+                summaryCell.distanceLabel.text = Price.stringFrom(amount: distance.distance)
                 summaryCell.destinationLabel.text = distance.location;
                 summaryCell.totalLabel.text = distance.totalRate().mileageRateCurrencyFormattedPrice()
                 summaryCell.dateLabel.text = dateFormatter.string(from: distance.date)

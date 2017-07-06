@@ -11,7 +11,6 @@
 #import "WBPreferences.h"
 #import "WBReceipt.h"
 #import "WBReportUtils.h"
-#import "Price.h"
 #import "WBPreferencesTestHelper.h"
 #import <SmartReceipts-Swift.h>
 
