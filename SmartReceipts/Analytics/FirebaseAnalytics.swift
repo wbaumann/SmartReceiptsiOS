@@ -16,8 +16,8 @@ class FirebaseAnalytics: AnalyticsServiceProtocol {
     init() {
         // Configure Firebase
         // May conflict with Google services, here is a solution:
-        if FIRApp.defaultApp() == nil {
-            FIRApp.configure()
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
         }
     }
     
@@ -31,6 +31,6 @@ class FirebaseAnalytics: AnalyticsServiceProtocol {
         let parameters = dictionaryParameters as NSDictionary as? [String: NSObject] ?? [:]
         
         // Firebase tracks all crashes automatically. For iOS, exceptions will be tracked as an "error" events
-        FIRAnalytics.logEvent(withName: event.name, parameters: parameters)
+        Analytics.logEvent(event.name, parameters: parameters)
     }
 }

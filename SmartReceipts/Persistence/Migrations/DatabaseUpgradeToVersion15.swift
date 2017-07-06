@@ -63,9 +63,9 @@ class DatabaseUpgradeToVersion15: DatabaseMigration {
         
         database.databaseQueue.inDatabase { (db) in
             do {
-                let resultSet = try db?.executeQuery(rawQuery, values: [])
-                while resultSet?.next() ?? false {
-                    if let tableName = resultSet?.string(forColumnIndex: 0) {
+                let resultSet = try db.executeQuery(rawQuery, values: [])
+                while resultSet.next() {
+                    if let tableName = resultSet.string(forColumnIndex: 0) {
                         tableNames.append(tableName)
                     }
                 }
