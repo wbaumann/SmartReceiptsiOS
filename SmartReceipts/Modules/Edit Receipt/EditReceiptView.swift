@@ -59,15 +59,22 @@ final class EditReceiptView: UserInterface {
     }
     
     private func configureTitle() {
-        var id: UInt!
-        if displayData.receipt == nil {
-            id = Database.sharedInstance().nextReceiptID()
-            title = LocalizedString("edit.receipt.controller.add.title")
-        } else {
-            id = displayData.receipt!.objectId
-            title = LocalizedString("edit.receipt.controller.edit.title")
+        // We will add rx for database in future, and it will looks better.
+        DispatchQueue(label: "com.smartreceipts.background").async { [weak self] in
+            var newTitle: String!
+            var id: UInt!
+            if self?.displayData.receipt == nil {
+                id = Database.sharedInstance().nextReceiptID()
+                newTitle = LocalizedString("edit.receipt.controller.add.title")
+            } else {
+                id = self?.displayData.receipt!.objectId
+                newTitle = LocalizedString("edit.receipt.controller.edit.title")
+            }
+            newTitle = WBPreferences.showReceiptID() ? newTitle + " - \(id!)" : newTitle
+            DispatchQueue.main.async { [weak self] in
+                self?.title = newTitle
+            }
         }
-        title = WBPreferences.showReceiptID() ? title! + " - \(id!)" : title
     }
     
 }

@@ -22,7 +22,6 @@ public class ExchangeRateCell: DecimalCell {
     public override func setup() {
         textField = valueField
         titleLabel = label
-        titleLabel?.font = textLabel?.font
         super.setup()
         titleLabel?.font = AppTheme.boldFont
         textField.addTarget(self, action: #selector(ExchangeRateCell.valueChanged), for: .valueChanged)
