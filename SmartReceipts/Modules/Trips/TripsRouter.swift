@@ -14,10 +14,12 @@ class TripsRouter: Router {
     private let moduleStoryboard = UIStoryboard(name: "Trips", bundle: nil)
     
     func openSettings() {
-        let settingsVC = MainStoryboard().instantiateViewController(withIdentifier: "SettingsOverflow")
-        settingsVC.modalTransitionStyle = .coverVertical
-        settingsVC.modalPresentationStyle = .formSheet
-        _view.present(settingsVC, animated: true, completion: nil)
+        let module = AppModules.settings.build()
+        executeFor(iPhone: {
+            module.router.show(from: _view, embedInNavController: true)
+        }, iPad: {
+            module.router.showIPadForm(from: _view, needNavigationController: true)
+        })
     }
     
     func openEdit(trip: WBTrip) {

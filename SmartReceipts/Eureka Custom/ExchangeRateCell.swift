@@ -124,7 +124,7 @@ public class ExchangeRateCell: DecimalCell {
     }
 }
 
-// The custom Row also has the cell: CustomCell and its correspond value
+
 public final class ExchangeRateRow: Row<ExchangeRateCell>, RowType {
     required public init(tag: String?) {
         super.init(tag: tag)

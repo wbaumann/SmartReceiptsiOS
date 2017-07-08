@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Vpb-0h-2dw" customClass="InputTextCell" customModule="SmartReceipts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="100" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3f-iH-RK7">
+                    <rect key="frame" x="16" y="4" width="31" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="dsfsfsf" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="2ln-vQ-u1V">
+                    <rect key="frame" x="16" y="20" width="343" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="MKF-q9-98E"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="j3f-iH-RK7" firstAttribute="leading" secondItem="Vpb-0h-2dw" secondAttribute="leading" constant="16" id="1L8-g4-UCd"/>
+                <constraint firstItem="j3f-iH-RK7" firstAttribute="top" secondItem="Vpb-0h-2dw" secondAttribute="top" constant="4" id="Ccc-Ry-mhA"/>
+                <constraint firstAttribute="trailing" secondItem="2ln-vQ-u1V" secondAttribute="trailing" constant="16" id="ayd-9r-h7f"/>
+                <constraint firstItem="2ln-vQ-u1V" firstAttribute="leading" secondItem="Vpb-0h-2dw" secondAttribute="leading" constant="16" id="eiV-fr-HFO"/>
+                <constraint firstAttribute="bottom" secondItem="2ln-vQ-u1V" secondAttribute="bottom" constant="4" id="pru-s6-uox"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="label" destination="j3f-iH-RK7" id="qvS-al-FvN"/>
+                <outlet property="valueField" destination="2ln-vQ-u1V" id="Q0m-DH-qWs"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="54"/>
+        </view>
+    </objects>
+</document>
