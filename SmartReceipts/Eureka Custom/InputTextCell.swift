@@ -7,13 +7,10 @@
 //
 
 import Eureka
-import RxSwift
 
 public class InputTextCell: TextCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var valueField: UITextField!
-    
-    private let bag = DisposeBag()
     
     public override func setup() {
         textField = valueField

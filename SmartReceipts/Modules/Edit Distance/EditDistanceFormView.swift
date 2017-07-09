@@ -29,7 +29,7 @@ class EditDistanceFormView: FormViewController {
             self.changedDistance?.trip = trip
             self.changedDistance?.location = ""
             
-            let date = ReceiptsView.sharedInputCache[SREditDistanceDateCacheKey] as? Date
+            let date = ReceiptsView.sharedInputCache[SREditDistanceDateCacheKey]
             self.changedDistance?.date = date ?? trip.startDate
             self.changedDistance?.timeZone = trip.startTimeZone
             

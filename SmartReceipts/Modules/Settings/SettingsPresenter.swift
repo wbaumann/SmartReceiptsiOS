@@ -10,8 +10,12 @@ import Foundation
 import Viperit
 import RxSwift
 
+typealias AlertTuple = (title: String?, message: String)
+
 class SettingsPresenter: Presenter {
     
+    let openModuleSubject = PublishSubject<SettingsRoutes>()
+    let alertSubject = PublishSubject<AlertTuple>()
     private let bag = DisposeBag()
     
     override func viewHasLoaded() {
@@ -21,10 +25,16 @@ class SettingsPresenter: Presenter {
             self.router.close()
         }).disposed(by: bag)
         
+        openModuleSubject.subscribe(onNext: { [unowned self] route in
+            self.router.openRoute(route)
+        }).disposed(by: bag)
+        
+        alertSubject.subscribe(onNext: { [unowned self] alert in
+            self.router.openAlert(title: alert.title, message: alert.message)
+        }).addDisposableTo(bag)
+        
     }
-    
 }
-
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
 private extension SettingsPresenter {
