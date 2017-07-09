@@ -297,6 +297,7 @@
 "settings.default.receipt.date.to.start.date.label" = "Default Receipt Date to Report Start Date";
 "settings.default.tax.percentage" = "Default Tax Percentage";
 "settings.default.trip.length.label" = "Default Trip Length (Days)";
+"settings.default.trip.length.placeholder" = "Days";
 "settings.distance.report.on.daily.distance" = "Report on Daily Distance";
 "settings.distance.section.title" = "Distance";
 "settings.email.section.title" = "Email";
@@ -312,6 +313,7 @@
 "settings.feedback.sendFeedback.label" = "Send feedback";
 "settings.feedback.sendLove.label" = "Send love";
 "settings.gas.rate.label" = "Gas Rate";
+"settings.gas.rate.placeholder" = "Rate";
 "settings.general.section.title" = "General";
 "settings.include.distance.table.label" = "Include Distance Table";
 "settings.include.tax.field.label" = "Include Tax Field For Receipts";
@@ -324,6 +326,7 @@
 "settings.match.name.to.category.label" = "Match Name to Categories";
 "settings.max.camera.resolution.label" = "Max. Camera Height / Width";
 "settings.min.receipt.price.label" = "Min. Receipt Price to Report";
+"settings.min.receipt.price.placeholder" = "Price";
 "settings.name.label" = "Full Name";
 "settings.only.report.reimbursable.label" = "Only Report Reimbursable Receipts";
 "settings.pdf.configure.columns.label" = "Configure PDF Columns";

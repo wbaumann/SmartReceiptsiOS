@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="AA7-ir-ytH" customClass="PurchaseButtonCell" customModule="SmartReceipts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="100" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ta9-KL-vsY">
+                    <rect key="frame" x="16" y="12.5" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EsQ-nw-CkU">
+                    <rect key="frame" x="339" y="12" width="20" height="20"/>
+                    <color key="color" red="0.58039215690000001" green="0.0" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNA-r8-CMf">
+                    <rect key="frame" x="317" y="12" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.58039215690000001" green="0.0" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="EsQ-nw-CkU" firstAttribute="centerY" secondItem="AA7-ir-ytH" secondAttribute="centerY" id="5hr-aW-l4P"/>
+                <constraint firstAttribute="trailing" secondItem="EsQ-nw-CkU" secondAttribute="trailing" constant="16" id="Rzk-V1-bad"/>
+                <constraint firstItem="aNA-r8-CMf" firstAttribute="centerY" secondItem="AA7-ir-ytH" secondAttribute="centerY" id="gJn-Q9-vdt"/>
+                <constraint firstItem="ta9-KL-vsY" firstAttribute="centerY" secondItem="AA7-ir-ytH" secondAttribute="centerY" id="ll5-42-S9H"/>
+                <constraint firstItem="ta9-KL-vsY" firstAttribute="leading" secondItem="AA7-ir-ytH" secondAttribute="leading" constant="16" id="mKU-Qx-n7K"/>
+                <constraint firstAttribute="trailing" secondItem="aNA-r8-CMf" secondAttribute="trailing" constant="16" id="noW-ui-HoH"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="activityIndicator" destination="EsQ-nw-CkU" id="Lha-VA-n9c"/>
+                <outlet property="subtitleLabel" destination="aNA-r8-CMf" id="DeA-D2-3gm"/>
+                <outlet property="titleLabel" destination="ta9-KL-vsY" id="cig-qc-NdR"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="54"/>
+        </view>
+    </objects>
+</document>

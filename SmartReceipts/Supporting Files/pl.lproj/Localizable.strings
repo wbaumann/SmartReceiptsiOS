@@ -297,6 +297,7 @@
 "settings.default.receipt.date.to.start.date.label" = "Domyślna Data Startu Raportu jako Data Paragonu";
 "settings.default.tax.percentage" = "Default Tax Percentage";
 "settings.default.trip.length.label" = "Domyślna długość raportu (Dni)";
+"settings.default.trip.length.placeholder" = "Dni";
 "settings.distance.report.on.daily.distance" = "Report on Daily Distance";
 "settings.distance.section.title" = "Distance";
 "settings.email.section.title" = "Email";
@@ -311,7 +312,8 @@
 "settings.feedback.sendBugReport.label" = "Wyślij raport o błędach";
 "settings.feedback.sendFeedback.label" = "Wyślij opinię";
 "settings.feedback.sendLove.label" = "Oceń app";
-"settings.gas.rate.label" = "Gas Rate";
+"settings.gas.rate.label" = "Stawka Gazu";
+"settings.gas.rate.placeholder" = "Stawka";
 "settings.general.section.title" = "Ogólne";
 "settings.include.distance.table.label" = "Include Distance Table";
 "settings.include.tax.field.label" = "Dodaj Pole Podatku dla Paragonów";
@@ -324,6 +326,7 @@
 "settings.match.name.to.category.label" = "Dopasuj Nazwę do Kategorii";
 "settings.max.camera.resolution.label" = "Max. Wysokość / Szerokość Kamery";
 "settings.min.receipt.price.label" = "Min. Cena do Raportu";
+"settings.min.receipt.price.placeholder" = "Cena";
 "settings.name.label" = "Pełna nazwa";
 "settings.only.report.reimbursable.label" = "Raportuj tylko \"Zwrotowe w wydatki\"";
 "settings.pdf.configure.columns.label" = "Configure PDF Columns";

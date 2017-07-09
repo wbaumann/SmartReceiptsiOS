@@ -35,6 +35,9 @@
 #import "UIApplication+DismissKeyboard.h"
 #import "NSDate+Calculations.h"
 
+#import "UIApplication+AppVersion.h"
+#import "UIDevice+DeviceInfo.h"
+
 #import "PendingHUDView.h"
 
 #import "ReceiptColumn.h"

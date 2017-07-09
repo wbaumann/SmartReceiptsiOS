@@ -7,13 +7,10 @@
 //
 
 import Eureka
-import RxSwift
 
 public class CustomSegmentedCell: Cell<Int>, CellType {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
-    private let bag = DisposeBag()
     
     public override func setup() {
         super.setup()

@@ -64,6 +64,9 @@
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
 		7159BA0A1F06F9B6004EABAA /* ExchangeRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7159BA091F06F9B6004EABAA /* ExchangeRateCell.swift */; };
 		7159BA0C1F06FB96004EABAA /* ExchangeRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */; };
+		715B4EBA1F114A1C0021ACD8 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B4EB91F114A1C0021ACD8 /* PurchaseService.swift */; };
+		715B4EBD1F114A9C0021ACD8 /* PurchaseButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B4EBB1F114A9C0021ACD8 /* PurchaseButtonCell.swift */; };
+		715B4EBE1F114A9C0021ACD8 /* PurchaseButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 715B4EBC1F114A9C0021ACD8 /* PurchaseButtonCell.xib */; };
 		7161DB511EE4907700399C9C /* AdPresentingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */; };
 		7167239A1F10540200400BFF /* CustomSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716723981F10540200400BFF /* CustomSegmentedCell.swift */; };
 		7167239B1F10540200400BFF /* CustomSegmentedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 716723991F10540200400BFF /* CustomSegmentedCell.xib */; };
@@ -526,6 +529,9 @@
 		71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportShareService.swift; sourceTree = "<group>"; };
 		7159BA091F06F9B6004EABAA /* ExchangeRateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRateCell.swift; sourceTree = "<group>"; };
 		7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeRateCell.xib; sourceTree = "<group>"; };
+		715B4EB91F114A1C0021ACD8 /* PurchaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
+		715B4EBB1F114A9C0021ACD8 /* PurchaseButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseButtonCell.swift; sourceTree = "<group>"; };
+		715B4EBC1F114A9C0021ACD8 /* PurchaseButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseButtonCell.xib; sourceTree = "<group>"; };
 		7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdPresentingContainerViewController.swift; sourceTree = "<group>"; };
 		716723981F10540200400BFF /* CustomSegmentedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedCell.swift; sourceTree = "<group>"; };
 		716723991F10540200400BFF /* CustomSegmentedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomSegmentedCell.xib; sourceTree = "<group>"; };
@@ -1194,6 +1200,7 @@
 			isa = PBXGroup;
 			children = (
 				714901C01F0598B900772B6F /* CurrencyExchangeService.swift */,
+				715B4EB91F114A1C0021ACD8 /* PurchaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1207,6 +1214,8 @@
 				71CF7A131F1020590004F389 /* InputTextCell.xib */,
 				716723981F10540200400BFF /* CustomSegmentedCell.swift */,
 				716723991F10540200400BFF /* CustomSegmentedCell.xib */,
+				715B4EBB1F114A9C0021ACD8 /* PurchaseButtonCell.swift */,
+				715B4EBC1F114A9C0021ACD8 /* PurchaseButtonCell.xib */,
 			);
 			path = "Eureka Custom";
 			sourceTree = "<group>";
@@ -2393,6 +2402,7 @@
 				719B1FDC1EF603190049BD71 /* Receipts.storyboard in Resources */,
 				EA0677EF1B04DCEA0058A326 /* TitledAutocompleteEntryCell.xib in Resources */,
 				71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */,
+				715B4EBE1F114A9C0021ACD8 /* PurchaseButtonCell.xib in Resources */,
 				EA71DFCD1AF9FEEC004092C3 /* SwitchControlCell.xib in Resources */,
 				71CF7A141F1020590004F389 /* InputTextCell.xib in Resources */,
 				EA888A731AFA38C100DF2AE6 /* SettingsButtonCell.xib in Resources */,
@@ -2690,6 +2700,7 @@
 				719B1FED1EF6032D0049BD71 /* EditReceiptView.swift in Sources */,
 				A78214F51CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift in Sources */,
 				71B8610B1F0A9BE70069E251 /* SuggestionView.m in Sources */,
+				715B4EBD1F114A9C0021ACD8 /* PurchaseButtonCell.swift in Sources */,
 				EA1D42C41B03901A00D64D3A /* EntryOnlyCell.m in Sources */,
 				71B8610E1F0A9D800069E251 /* WBAutocompleteHelper.m in Sources */,
 				EAE9DAEE1AF8EA6D00F4FE76 /* DistancePriceColumn.m in Sources */,
@@ -2912,6 +2923,7 @@
 				7190D4561EE893900081CB22 /* GenerateReportFormView.swift in Sources */,
 				71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */,
 				BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */,
+				715B4EBA1F114A1C0021ACD8 /* PurchaseService.swift in Sources */,
 				71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */,
 				7190D4541EE88CC40081CB22 /* GenerateReportView.swift in Sources */,
 				711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */,
