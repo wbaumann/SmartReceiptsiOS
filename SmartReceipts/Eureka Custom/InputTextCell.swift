@@ -12,9 +12,12 @@ public class InputTextCell: TextCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var valueField: UITextField!
     
+    private var textFieldColor: UIColor!
+    
     public override func setup() {
         textField = valueField
         titleLabel = label
+        textFieldColor = valueField.backgroundColor
         super.setup()
     }
     
@@ -22,6 +25,7 @@ public class InputTextCell: TextCell {
         super.update()
         titleLabel?.text = row.title
         textField?.text = row.value
+        textField.backgroundColor = textField.isUserInteractionEnabled ? textFieldColor : #colorLiteral(red: 0.9637350795, green: 0.9637350795, blue: 0.9637350795, alpha: 1)
     }
     
     private func row() -> InputTextRow {
@@ -31,8 +35,17 @@ public class InputTextCell: TextCell {
 
 
 public final class InputTextRow: Row<InputTextCell>, RowType {
+    
     required public init(tag: String?) {
         super.init(tag: tag)
         cellProvider = CellProvider<InputTextCell>(nibName: "InputTextCell")
+    }
+    
+    var isEnabled: Bool {
+        get { return cell.valueField.isUserInteractionEnabled }
+        set {
+            cell.valueField.isUserInteractionEnabled = newValue
+            updateCell()
+        }
     }
 }
