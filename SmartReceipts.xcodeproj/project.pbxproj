@@ -52,6 +52,7 @@
 		7111ADAC1F0EC4AF00DF77ED /* SettingsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADAB1F0EC4AF00DF77ED /* SettingsFormView.swift */; };
 		711E40541EE0D4ED00C043CF /* EditDistanceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */; };
 		711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */; };
+		7120099D1F12D0DE0049927E /* TickTock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7120099C1F12D0DE0049927E /* TickTock.swift */; };
 		712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */; };
 		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
 		713360401EF310400076D319 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C413D31EE6F826003CE891 /* GeneratedMocks.swift */; };
@@ -64,7 +65,6 @@
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
 		7159BA0A1F06F9B6004EABAA /* ExchangeRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7159BA091F06F9B6004EABAA /* ExchangeRateCell.swift */; };
 		7159BA0C1F06FB96004EABAA /* ExchangeRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */; };
-		715B4EBA1F114A1C0021ACD8 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B4EB91F114A1C0021ACD8 /* PurchaseService.swift */; };
 		715B4EBD1F114A9C0021ACD8 /* PurchaseButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B4EBB1F114A9C0021ACD8 /* PurchaseButtonCell.swift */; };
 		715B4EBE1F114A9C0021ACD8 /* PurchaseButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 715B4EBC1F114A9C0021ACD8 /* PurchaseButtonCell.xib */; };
 		7161DB511EE4907700399C9C /* AdPresentingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */; };
@@ -512,6 +512,7 @@
 		7111ADAB1F0EC4AF00DF77ED /* SettingsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFormView.swift; sourceTree = "<group>"; };
 		711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceFormView.swift; sourceTree = "<group>"; };
 		711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Extensions.swift"; sourceTree = "<group>"; };
+		7120099C1F12D0DE0049927E /* TickTock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickTock.swift; sourceTree = "<group>"; };
 		712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsFormView.swift; sourceTree = "<group>"; };
 		713360411EF310C90076D319 /* EditDistanceModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceModuleTest.swift; sourceTree = "<group>"; };
 		713360421EF310C90076D319 /* EditTripModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTripModuleTest.swift; sourceTree = "<group>"; };
@@ -529,7 +530,6 @@
 		71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportShareService.swift; sourceTree = "<group>"; };
 		7159BA091F06F9B6004EABAA /* ExchangeRateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRateCell.swift; sourceTree = "<group>"; };
 		7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeRateCell.xib; sourceTree = "<group>"; };
-		715B4EB91F114A1C0021ACD8 /* PurchaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
 		715B4EBB1F114A9C0021ACD8 /* PurchaseButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseButtonCell.swift; sourceTree = "<group>"; };
 		715B4EBC1F114A9C0021ACD8 /* PurchaseButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseButtonCell.xib; sourceTree = "<group>"; };
 		7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdPresentingContainerViewController.swift; sourceTree = "<group>"; };
@@ -1200,7 +1200,6 @@
 			isa = PBXGroup;
 			children = (
 				714901C01F0598B900772B6F /* CurrencyExchangeService.swift */,
-				715B4EB91F114A1C0021ACD8 /* PurchaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1862,6 +1861,7 @@
 				7193103C1EDDC2810065B5AD /* WBTextUtils.m */,
 				71D59CDA1EDDC993008991B7 /* WBDateFormatter.h */,
 				71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */,
+				7120099C1F12D0DE0049927E /* TickTock.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2918,12 +2918,12 @@
 				A7F05BB81CFC2C9D0079F1AD /* ReceiptColumnNetExchangedPricePlusTax.swift in Sources */,
 				7193102B1EDDB9960065B5AD /* WBAbstractPicker.m in Sources */,
 				71AF49E01EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift in Sources */,
+				7120099D1F12D0DE0049927E /* TickTock.swift in Sources */,
 				7185AEF71EFC1CC90038ED2A /* ReceiptMoveCopyInteractor.swift in Sources */,
 				BA665F06B922055E7D3BED31 /* WBColumnsViewController.m in Sources */,
 				7190D4561EE893900081CB22 /* GenerateReportFormView.swift in Sources */,
 				71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */,
 				BA6653A162EDAFF5E4E51A78 /* WBCategoriesViewController.m in Sources */,
-				715B4EBA1F114A1C0021ACD8 /* PurchaseService.swift in Sources */,
 				71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */,
 				7190D4541EE88CC40081CB22 /* GenerateReportView.swift in Sources */,
 				711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */,

@@ -9,6 +9,7 @@
 import Foundation
 import Viperit
 import RxSwift
+import StoreKit
 
 typealias AlertTuple = (title: String?, message: String)
 
@@ -32,7 +33,18 @@ class SettingsPresenter: Presenter {
         alertSubject.subscribe(onNext: { [unowned self] alert in
             self.router.openAlert(title: alert.title, message: alert.message)
         }).addDisposableTo(bag)
-        
+    }
+    
+    func retrivePlusSubscriptionPrice() -> Observable<String> {
+        return interactor.retrivePlusSubscriptionPrice()
+    }
+    
+    func restorePurchases() -> Observable<Void> {
+        return interactor.restorePurchases()
+    }
+    
+    func purchaseSubscription() -> Observable<Void> {
+        return interactor.purchaseSubscription()
     }
 }
 

@@ -8,12 +8,19 @@
 
 import Eureka
 import RxSwift
+import StoreKit
 
 class SettingsFormView: FormViewController {
     
     weak var openModuleSubject: PublishSubject<SettingsRoutes>!
     weak var alertSubject: PublishSubject<AlertTuple>!
     weak var settingsView: SettingsView!
+    
+    fileprivate var hadPriceRetrieveError = false
+    fileprivate var purchaseRow: PurchaseButtonRow!
+    fileprivate var footerRow: InputTextRow!
+    fileprivate var removeAdsProduct: SKProduct?
+    fileprivate let bag = DisposeBag()
     
     init(settingsView: SettingsView) {
         super.init(nibName: nil, bundle: nil)
@@ -24,6 +31,24 @@ class SettingsFormView: FormViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if Database.sharedInstance().hasValidSubscription() {
+            setupPurchased()
+        } else {
+            purchaseRow.markSpinning()
+            settingsView.retrivePlusSubscriptionPrice().subscribe(onNext: { [unowned self] price in
+                self.purchaseRow.setPrice(string: price)
+            }, onError: { [unowned self] error in
+                _ = self.purchaseRow.markError().subscribe(onNext: { [unowned self] in
+                    self.alertSubject.onNext((title: LocalizedString("settings.purchase.price.retrieve.error.title"),
+                                            message: LocalizedString("settings.purchase.price.retrieve.error.message")))
+                })
+            }).disposed(by: bag)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,18 +56,54 @@ class SettingsFormView: FormViewController {
         
         form
         +++ Section(LocalizedString("settings.purchase.section.title"))
-        <<< PurchaseButtonRow() { row in
+        <<< PurchaseButtonRow() { [unowned self] row in
             row.title = LocalizedString("settings.purchase.pro.label")
-            row.value = "50110$"
-        }
+            self.purchaseRow = row
+        }.onCellSelection({ [unowned self] _, row in
+            if !row.isPurchased() {
+                self.settingsView.purchaseSubscription().subscribe(onNext: { [unowned self] in
+                    self.setupPurchased()
+                    }, onError: { error in
+                        self.alertSubject.onNext((title: LocalizedString("settings.purchase.make.purchase.error.title"),
+                                                message: error.localizedDescription))
+                }).disposed(by: self.bag)
+            }
+        })
             
         <<< ButtonRow() { row in
             row.title = LocalizedString("settings.purchase.restore.label")
         }.cellUpdate({ cell, row in
             cell.textLabel?.textColor = AppTheme.themeColor
+        }).onCellSelection({ [unowned self] _, _ in
+            let hud = PendingHUDView.showHUD(on: self.navigationController?.view)
+            self.settingsView.restorePurchases().subscribe(onNext: { [unowned self] in
+                self.setupPurchased()
+                hud?.hide()
+            }, onError: { error in
+                hud?.hide()
+                self.alertSubject.onNext((title: LocalizedString("settings.purchase.restore.error.title"),
+                                        message: error.localizedDescription))
+            }).disposed(by: self.bag)
         })
         
         +++ Section(LocalizedString("settings.pro.section.title"))
+        <<< InputTextRow() { [unowned self] row in
+            row.title = LocalizedString("settings.pdf.footer.text.label")
+            row.value = WBPreferences.pdfFooterString()
+            self.footerRow = row
+            row.isEnabled = false
+        }.onChange({ row in
+            WBPreferences.setPDFFooterString(row.value ?? "")
+        }).cellUpdate({ cell, row in
+            cell.textField.font = UIFont.systemFont(ofSize: 12)
+        }).onCellSelection({ [unowned self] _, row in
+            if !row.isEnabled {
+                self.alertSubject.onNext((title: LocalizedString("settings.pdf.footer.pro.message.title"),
+                                        message: LocalizedString("settings.pdf.footer.pro.message.body")))
+            }
+        })
+           
+        +++ Section(LocalizedString("settings.email.section.title"))
         <<< textInput(LocalizedString("settings.default.email.recipient.lebel"),
             value: WBPreferences.defaultEmailRecipient(),
             placeholder: LocalizedString("settings.default.email.recipient.placeholder"))
@@ -303,8 +364,10 @@ class SettingsFormView: FormViewController {
         })
         
         +++ Section(LocalizedString("settings.backup.section.title"))
-        <<< openModuleButton(LocalizedString("settings.backup.button.label"),
-            route: .privacyPolicy)
+        <<< openModuleButton(LocalizedString("settings.backup.button.label"))
+        .onCellSelection({ [unowned self] cell, _ in
+            self.settingsView.showBackup(from: self.tableView.convert(cell.frame, to: self.settingsView.view))
+        })
     
         +++ Section(LocalizedString("settings.feedback.section.label"))
         <<< openModuleButton(LocalizedString("settings.feedback.sendLove.label"),
@@ -331,6 +394,12 @@ class SettingsFormView: FormViewController {
     private func imageOptionFromPreferences() -> Int {
         let options = [512, 1024, 0]
         return options.index(of: WBPreferences.cameraMaxHeightWidth())!
+    }
+    
+    private func setupPurchased() {
+        purchaseRow.setSubscriptionEnd(date: Database.sharedInstance().subscriptionEndDate())
+        purchaseRow.markPurchased()
+        footerRow.isEnabled = true
     }
 }
 
@@ -371,7 +440,7 @@ extension SettingsFormView {
             })
     }
     
-    fileprivate func openModuleButton(_ title: String, onTap: @escaping ()->Void) -> ButtonRow {
+    fileprivate func openModuleButton(_ title: String, onTap: (()->Void)? = nil) -> ButtonRow {
         return ButtonRow() { row in
             row.title = title
             }.cellUpdate({ cell, row in
@@ -380,7 +449,7 @@ extension SettingsFormView {
                 cell.editingAccessoryType = cell.accessoryType
                 cell.textLabel?.textColor = UIColor.black
             }).onCellSelection({ _ in
-                onTap()
+                onTap?()
             })
     }
     
