@@ -295,7 +295,7 @@ class SettingsFormView: FormViewController {
             WBPreferences.setIncludeCSVHeaders(row.value!)
         })
         <<< openModuleButton(LocalizedString("settings.csv.configure.columns.label"),
-            route: .privacyPolicy)
+            route: .columns(isCSV: true))
     
         +++ Section(LocalizedString("settings.pdf.section.title"))
         <<< switchRow(LocalizedString("settings.pdf.print.id.by.photo.label"),
@@ -317,7 +317,7 @@ class SettingsFormView: FormViewController {
         })
 
         <<< openModuleButton(LocalizedString("settings.pdf.configure.columns.label"),
-            route: .privacyPolicy)
+            route: .columns(isCSV: false))
         
         +++ Section(LocalizedString("settings.distance.section.title"))
         <<< switchRow(LocalizedString("settings.add.distance.price.to.report.label"),

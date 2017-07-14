@@ -15,10 +15,12 @@ def pods
     pod 'UIAlertView-Blocks'
     pod 'Eureka'
     
-    # Utilites
+    # Rx
     pod 'RxSwift'
     pod 'RxCocoa'
+    pod 'RxDataSources'
     
+    # Utilites
     pod 'Tweaks'
     pod 'CocoaLumberjack/Swift'
     

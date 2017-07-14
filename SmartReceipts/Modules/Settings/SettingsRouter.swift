@@ -17,6 +17,8 @@ class SettingsRouter: Router {
             openPrivacyPolicy()
         case .sendLove:
             openSendLove()
+        case .columns(let isCSV):
+            openColumns(isCSV: isCSV)
         }
     }
     
@@ -39,6 +41,17 @@ class SettingsRouter: Router {
             }
         }
     }
+    
+    func openColumns(isCSV: Bool) {
+        let module = AppModules.columns.build()
+        module.presenter.setupView(data: isCSV)
+        executeFor(iPhone: {
+            module.router.show(from: _view)
+        }, iPad: {
+            module.router.showIPadForm(from: _view)
+        })
+
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
@@ -51,4 +64,5 @@ private extension SettingsRouter {
 enum SettingsRoutes {
     case sendLove
     case privacyPolicy
+    case columns(isCSV: Bool)
 }
