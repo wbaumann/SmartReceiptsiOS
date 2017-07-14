@@ -11,6 +11,8 @@
 #import "Database+Receipts.h"
 #import "Database+Trips.h"
 #import "Database.h"
+#import "Database+CSVColumns.h"
+#import "Database+PDFColumns.h"
 #import "DatabaseCreateAtVersion11.h"
 #import "DatabaseMigration.h"
 #import "DatabaseQueryBuilder.h"
@@ -21,6 +23,7 @@
 #import "TripReportHeader.h"
 #import "PDFReportTable.h"
 #import "PDFImageView.h"
+#import "WBDynamicPicker.h"
 
 #import "FetchedModel.h"
 #import "FetchedModelAdapter.h"

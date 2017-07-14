@@ -63,6 +63,12 @@
 		714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901C01F0598B900772B6F /* CurrencyExchangeService.swift */; };
 		7152DF1D1F0C24750088EE98 /* PDFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152DF1C1F0C24750088EE98 /* PDFPageView.swift */; };
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
+		71572D851F15EA41001A1301 /* Columns.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71572D7F1F15EA41001A1301 /* Columns.storyboard */; };
+		71572D861F15EA41001A1301 /* ColumnsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71572D801F15EA41001A1301 /* ColumnsDisplayData.swift */; };
+		71572D871F15EA41001A1301 /* ColumnsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71572D811F15EA41001A1301 /* ColumnsInteractor.swift */; };
+		71572D881F15EA41001A1301 /* ColumnsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71572D821F15EA41001A1301 /* ColumnsPresenter.swift */; };
+		71572D891F15EA41001A1301 /* ColumnsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71572D831F15EA41001A1301 /* ColumnsRouter.swift */; };
+		71572D8A1F15EA41001A1301 /* ColumnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71572D841F15EA41001A1301 /* ColumnsView.swift */; };
 		7159BA0A1F06F9B6004EABAA /* ExchangeRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7159BA091F06F9B6004EABAA /* ExchangeRateCell.swift */; };
 		7159BA0C1F06FB96004EABAA /* ExchangeRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */; };
 		715B4EBD1F114A9C0021ACD8 /* PurchaseButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B4EBB1F114A9C0021ACD8 /* PurchaseButtonCell.swift */; };
@@ -528,6 +534,12 @@
 		714901C01F0598B900772B6F /* CurrencyExchangeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeService.swift; sourceTree = "<group>"; };
 		7152DF1C1F0C24750088EE98 /* PDFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageView.swift; sourceTree = "<group>"; };
 		71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportShareService.swift; sourceTree = "<group>"; };
+		71572D7F1F15EA41001A1301 /* Columns.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Columns.storyboard; sourceTree = "<group>"; };
+		71572D801F15EA41001A1301 /* ColumnsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnsDisplayData.swift; sourceTree = "<group>"; };
+		71572D811F15EA41001A1301 /* ColumnsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnsInteractor.swift; sourceTree = "<group>"; };
+		71572D821F15EA41001A1301 /* ColumnsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnsPresenter.swift; sourceTree = "<group>"; };
+		71572D831F15EA41001A1301 /* ColumnsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnsRouter.swift; sourceTree = "<group>"; };
+		71572D841F15EA41001A1301 /* ColumnsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnsView.swift; sourceTree = "<group>"; };
 		7159BA091F06F9B6004EABAA /* ExchangeRateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRateCell.swift; sourceTree = "<group>"; };
 		7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeRateCell.xib; sourceTree = "<group>"; };
 		715B4EBB1F114A9C0021ACD8 /* PurchaseButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseButtonCell.swift; sourceTree = "<group>"; };
@@ -1204,6 +1216,59 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		71572D781F15E906001A1301 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		71572D791F15E906001A1301 /* Columns */ = {
+			isa = PBXGroup;
+			children = (
+				71572D7F1F15EA41001A1301 /* Columns.storyboard */,
+				71572D801F15EA41001A1301 /* ColumnsDisplayData.swift */,
+				71572D811F15EA41001A1301 /* ColumnsInteractor.swift */,
+				71572D821F15EA41001A1301 /* ColumnsPresenter.swift */,
+				71572D831F15EA41001A1301 /* ColumnsRouter.swift */,
+				71572D841F15EA41001A1301 /* ColumnsView.swift */,
+			);
+			path = Columns;
+			sourceTree = "<group>";
+		};
+		71572D7B1F15E906001A1301 /* New Payment Method */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Payment Method";
+			sourceTree = "<group>";
+		};
+		71572D7C1F15E906001A1301 /* Payment Methods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Payment Methods";
+			sourceTree = "<group>";
+		};
+		71572D7D1F15E929001A1301 /* Settings Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				71572D791F15E906001A1301 /* Columns */,
+				71572D7C1F15E906001A1301 /* Payment Methods */,
+				71572D7B1F15E906001A1301 /* New Payment Method */,
+				71572D781F15E906001A1301 /* Categories */,
+				71572D7E1F15E99A001A1301 /* New Category */,
+			);
+			name = "Settings Submodules";
+			sourceTree = "<group>";
+		};
+		71572D7E1F15E99A001A1301 /* New Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Category";
+			sourceTree = "<group>";
+		};
 		7159BA061F06F692004EABAA /* Eureka Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -1360,6 +1425,7 @@
 				7185AEEE1EFC1CB80038ED2A /* Receipt Move Copy */,
 				71AF49D81EFDA4710022B2E2 /* Receipt Image Viewer */,
 				7111AD9E1F0EC37300DF77ED /* Settings */,
+				71572D7D1F15E929001A1301 /* Settings Submodules */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -2416,6 +2482,7 @@
 				EA1E60D61B2742660048E688 /* Localizable.strings in Resources */,
 				7111ADA51F0EC38100DF77ED /* Settings.storyboard in Resources */,
 				719B1FE81EF6032D0049BD71 /* EditReceipt.storyboard in Resources */,
+				71572D851F15EA41001A1301 /* Columns.storyboard in Resources */,
 				7167239B1F10540200400BFF /* CustomSegmentedCell.xib in Resources */,
 				EA66B2BE1B13809900A57750 /* LaunchView.xib in Resources */,
 				EAF6FE121B543ABB0005E2CE /* PDFImageView.xib in Resources */,
@@ -2764,6 +2831,7 @@
 				EA22679E1B1E035F005761E7 /* ReceiptSummaryCell.m in Sources */,
 				5705159B1E02B58500BB8FE4 /* DataPoint.swift in Sources */,
 				7185AEF81EFC1CC90038ED2A /* ReceiptMoveCopyPresenter.swift in Sources */,
+				71572D871F15EA41001A1301 /* ColumnsInteractor.swift in Sources */,
 				719B1FF61EF6033A0049BD71 /* ReceiptActionsInteractor.swift in Sources */,
 				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
 				A78215011CFFF24C00FD644A /* NSNumber+Extensions.swift in Sources */,
@@ -2795,6 +2863,7 @@
 				EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */,
 				EA3C96A11AEBA9B200A2A5F9 /* TripFullPDFGenerator.m in Sources */,
 				EA8ABE421B1A1D1700DBFA29 /* Database+Categories.m in Sources */,
+				71572D881F15EA41001A1301 /* ColumnsPresenter.swift in Sources */,
 				EA13099D1B5027D10045FDDE /* TableHeaderRow.m in Sources */,
 				EAE9DAFD1AF8EAD100F4FE76 /* DistanceCommentColumn.m in Sources */,
 				EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */,
@@ -2823,9 +2892,11 @@
 				7111ADA81F0EC38100DF77ED /* SettingsPresenter.swift in Sources */,
 				71AEDDE11EDF7FF400BAC0DD /* TripDistancesRouter.swift in Sources */,
 				A7F05BE11CFD95390079F1AD /* FMDatabase+Functions.swift in Sources */,
+				71572D8A1F15EA41001A1301 /* ColumnsView.swift in Sources */,
 				EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */,
 				A7F05B9A1CFB49590079F1AD /* Priced.swift in Sources */,
 				71AEDDEB1EDF918600BAC0DD /* FetchedCollectionViewControllerSwift.swift in Sources */,
+				71572D861F15EA41001A1301 /* ColumnsDisplayData.swift in Sources */,
 				7185AEFA1EFC1CC90038ED2A /* ReceiptMoveCopyView.swift in Sources */,
 				EA69EF151AEFC81A00276B70 /* Database.m in Sources */,
 				71F3E3271F0DDBC5008FE932 /* Price.swift in Sources */,
@@ -2875,6 +2946,7 @@
 				71E2B57E1EEDD516001D02F1 /* TripsInteractor.swift in Sources */,
 				EAE9DAEB1AF8EA5500F4FE76 /* DistanceLocationColumn.m in Sources */,
 				EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */,
+				71572D891F15EA41001A1301 /* ColumnsRouter.swift in Sources */,
 				EA8D81821AEA7B5800BAC943 /* ReceiptColumnBlank.m in Sources */,
 				4D004BB71D272836004DBB19 /* SmartReceiptsFormattableString.swift in Sources */,
 				EA8D818B1AEA7BA400BAC943 /* ReceiptColumnUserID.m in Sources */,

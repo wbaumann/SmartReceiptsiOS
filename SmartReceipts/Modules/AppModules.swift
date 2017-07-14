@@ -20,4 +20,5 @@ enum AppModules: String, ViperitModule {
     case receiptMoveCopy
     case receiptImageViewer
     case settings
+    case columns
 }

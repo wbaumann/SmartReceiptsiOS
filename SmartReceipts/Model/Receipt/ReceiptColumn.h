@@ -13,10 +13,8 @@
 @class WBTrip;
 
 @interface ReceiptColumn : Column
-
 + (ReceiptColumn *)columnWithIndex:(NSInteger)index name:(NSString *)columnName;
 + (NSArray *)availableColumnsNames;
-
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV;
 
 @end
