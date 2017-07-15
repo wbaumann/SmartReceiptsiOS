@@ -46,8 +46,6 @@
 
 #import "ReceiptColumn.h"
 
-#import "SettingsViewController.h"
-
 #import "DistanceSummaryCell.h"
 #import "TextEntryCell.h"
 #import "TitledTextEntryCell.h"

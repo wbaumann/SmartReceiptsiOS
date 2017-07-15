@@ -29,4 +29,11 @@ extension Router {
         
         from.present(forShow, animated: animated, completion: nil)
     }
+    
+    func pushTo(controller: UINavigationController, animated: Bool = true, setupData: Any? = nil) {
+        if let data = setupData {
+            _view._presenter.setupView(data: data)
+        }
+        controller.pushViewController(_view, animated: animated)
+    }
 }

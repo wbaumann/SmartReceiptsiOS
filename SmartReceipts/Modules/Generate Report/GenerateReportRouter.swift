@@ -25,19 +25,12 @@ class GenerateReportRouter: Router {
     func openSettings() {
         AnalyticsManager.sharedManager.record(event: Event.informationalConfigureReport())
         
-        let storyboard = MainStoryboard()
-        let settingsOverflow = storyboard.instantiateViewController(withIdentifier: "SettingsOverflow") as! UINavigationController
-        let settingsVC = settingsOverflow.viewControllers.first as? SettingsViewController
-        if (settingsVC != nil) {
-            Logger.debug("goToSettings: wasPresentedFromGeneratorVC = YES")
-            settingsVC!.wasPresentedFromGeneratorVC = true
-        }
-        
-        if (UI_USER_INTERFACE_IDIOM() == .pad) {
-            settingsOverflow.modalPresentationStyle = .overCurrentContext;
-        }
-        settingsOverflow.modalTransitionStyle = .coverVertical
-        _view.present(settingsOverflow, animated: true, completion: nil)
+        let module = AppModules.settings.build()
+        executeFor(iPhone: {
+            module.router.show(from: _view)
+        }, iPad: {
+            module.router.showIPadForm(from: _view)
+        })
     }
     
     func open(vc: UIViewController, animated: Bool = true, isPopover: Bool = false, completion: (() -> Void)? = nil) {
