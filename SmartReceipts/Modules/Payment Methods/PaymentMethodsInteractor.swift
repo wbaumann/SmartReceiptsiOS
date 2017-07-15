@@ -16,7 +16,8 @@ class PaymentMethodsInteractor: Interactor {
     let bag = DisposeBag()
     
     func configureSubscribers() {
-        presenter.paymentMethodAction.subscribe(onNext: { [unowned self] (pm: PaymentMethod, update: Bool) in
+        presenter.paymentMethodAction
+            .subscribe(onNext: { [unowned self] (pm: PaymentMethod, update: Bool) in
             self.save(paymentMethod: pm, update: update)
         }).disposed(by: bag)
         
@@ -30,18 +31,6 @@ class PaymentMethodsInteractor: Interactor {
     }
     
     private func save(paymentMethod: PaymentMethod, update: Bool) {
-        if paymentMethod.method == nil || paymentMethod.method.isEmpty {
-            presenter.presentAlert(title: LocalizedString("edit.payment.method.controller.save.error.title"),
-                                 message: LocalizedString("edit.payment.method.controller.save.error.message"))
-            return
-        }
-        
-        if Database.sharedInstance().hasPaymentMethod(withName: paymentMethod.method) {
-            presenter.presentAlert(title: LocalizedString("edit.payment.method.controller.save.error.title"),
-                                 message: LocalizedString("edit.payment.method.controller.save.error.exists.message"))
-            return
-        }
-        
         let db = Database.sharedInstance()!
         let success = update ? db.update(paymentMethod) : db.save(paymentMethod)
         

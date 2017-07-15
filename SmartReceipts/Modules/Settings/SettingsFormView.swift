@@ -286,7 +286,7 @@ class SettingsFormView: FormViewController {
         
         +++ Section(LocalizedString("settings.categories.section.title"))
         <<< openModuleButton(LocalizedString("settings.manage.categories.label"),
-            route: .privacyPolicy)
+            route: .categories)
         
         +++ Section(LocalizedString("settings.csv.section.title"))
         <<< switchRow(LocalizedString("settings.csv.include.header.columns.label"),
