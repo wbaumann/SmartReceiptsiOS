@@ -19,6 +19,8 @@ class SettingsRouter: Router {
             openSendLove()
         case .columns(let isCSV):
             openColumns(isCSV: isCSV)
+        case .paymentMethods:
+            openPaymentMethods()
         }
     }
     
@@ -50,7 +52,15 @@ class SettingsRouter: Router {
         }, iPad: {
             module.router.showIPadForm(from: _view)
         })
-
+    }
+    
+    func openPaymentMethods() {
+        let module = AppModules.paymentMethods.build()
+        executeFor(iPhone: {
+            module.router.show(from: _view)
+        }, iPad: {
+            module.router.showIPadForm(from: _view)
+        })
     }
 }
 
@@ -65,4 +75,5 @@ enum SettingsRoutes {
     case sendLove
     case privacyPolicy
     case columns(isCSV: Bool)
+    case paymentMethods
 }

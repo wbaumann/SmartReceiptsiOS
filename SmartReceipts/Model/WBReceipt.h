@@ -45,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
        taxAmount:(NSDecimalNumber *)tax
     exchangeRate:(NSDecimalNumber *)exchangeRate
         currency:(Currency *)currency
+   paymentMethod:(PaymentMethod *)paymentMethod
   isReimbursable:(BOOL)isReimbursable
       isFullPage:(BOOL)isFullPage
   extraEditText1:(NSString *)extraEditText1

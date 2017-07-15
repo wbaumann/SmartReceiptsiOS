@@ -71,6 +71,7 @@
                                taxAmount:[NSDecimalNumber zero]
                             exchangeRate:[NSDecimalNumber zero]
                                 currency:distance.rate.currency
+                           paymentMethod:nil
                           isReimbursable:YES
                               isFullPage:NO
                           extraEditText1:@""

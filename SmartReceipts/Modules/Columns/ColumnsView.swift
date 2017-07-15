@@ -50,8 +50,8 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
         dynamicPicker.delegate = self
         
         navigationController?.setToolbarHidden(false, animated: false)
-        navigationController?.toolbar.barTintColor = UIColor.white.withAlphaComponent(1)
-        navigationController?.toolbar.isTranslucent = true
+        navigationController?.toolbar.barTintColor = AppTheme.toolbarTintColor
+        navigationController?.toolbar.isTranslucent = false
         
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolbarItems = [space, self.editButtonItem]
