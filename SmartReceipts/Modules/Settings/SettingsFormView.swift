@@ -95,7 +95,7 @@ class SettingsFormView: FormViewController {
         }.onChange({ row in
             WBPreferences.setPDFFooterString(row.value ?? "")
         }).cellUpdate({ cell, row in
-            cell.textField.font = UIFont.systemFont(ofSize: 12)
+            cell.textField.font = UIFont.systemFont(ofSize: 14)
         }).onCellSelection({ [unowned self] _, row in
             if !row.isEnabled {
                 self.alertSubject.onNext((title: LocalizedString("settings.pdf.footer.pro.message.title"),
@@ -413,7 +413,7 @@ extension SettingsFormView {
             row.value = value
             row.cell.textField.placeholder = placeholder
             }.cellUpdate({ cell, row in
-                cell.textField.font = UIFont.systemFont(ofSize: 12)
+                cell.textField.font = UIFont.systemFont(ofSize: 14)
             })
     }
     
