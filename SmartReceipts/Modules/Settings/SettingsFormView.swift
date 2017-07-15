@@ -377,7 +377,9 @@ class SettingsFormView: FormViewController {
             self.settingsView.sendFeedback(subject: FeedbackEmailSubject)
         })
         <<< openModuleButton(LocalizedString("settings.feedback.sendBugReport.label"),
-            route: .privacyPolicy)
+            onTap: { [unowned self] in
+            self.settingsView.sendFeedback(subject: FeedbackBugreportEmailSubject)
+        })
     
         +++ Section(LocalizedString("settings.about.section.label"))
         <<< openModuleButton(LocalizedString("settings.about.privacy.label"), route: .privacyPolicy)

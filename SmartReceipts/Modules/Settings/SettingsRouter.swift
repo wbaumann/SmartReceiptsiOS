@@ -52,7 +52,7 @@ class SettingsRouter: Router {
         executeFor(iPhone: {
             module.router.show(from: _view)
         }, iPad: {
-            module.router.showIPadForm(from: _view)
+            module.router.pushTo(controller: _view.navigationController!)
         })
     }
     
@@ -61,7 +61,7 @@ class SettingsRouter: Router {
         executeFor(iPhone: {
             module.router.show(from: _view)
         }, iPad: {
-            module.router.showIPadForm(from: _view)
+            module.router.pushTo(controller: _view.navigationController!)
         })
     }
     
@@ -70,7 +70,7 @@ class SettingsRouter: Router {
         executeFor(iPhone: {
             module.router.show(from: _view)
         }, iPad: {
-            module.router.showIPadForm(from: _view)
+            module.router.pushTo(controller: _view.navigationController!)
         })
     }
 }
