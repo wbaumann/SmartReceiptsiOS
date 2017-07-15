@@ -36,6 +36,9 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             self.receipt.exchangeRate = NSDecimalNumber.zero
             self.receipt.isReimbursable = true
             self.receipt.isFullPage = WBPreferences.assumeFullPage()
+            if let pm = Database.sharedInstance().allPaymentMethods().last {
+                self.receipt.paymentMethod = pm
+            }
         } else {
             self.receipt = receipt!.copy() as! WBReceipt
         }
@@ -168,10 +171,13 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             
         <<< PickerInlineRow<PaymentMethod>() { row in
             row.title = LocalizedString("edit.receipt.payment.method.label")
-            row.options = Database.sharedInstance().fetchedAdapterForPaymentMethods().allObjects() as! [PaymentMethod]
+            row.options = Database.sharedInstance().allPaymentMethods()
+            row.value = receipt.paymentMethod
             row.hidden = Condition.init(booleanLiteral: !WBPreferences.usePaymentMethods())
         }.onChange({ [unowned self] row in
-            self.receipt.paymentMethod = row.value!
+            if let val = row.value {
+                self.receipt.paymentMethod = val
+            }
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
@@ -221,6 +227,15 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         var result = [String]()
         for category in Database.sharedInstance().listAllCategories() {
             result.append(category.name)
+        }
+        return result
+    }
+    
+    private func allPaymentMethods() -> [String] {
+        var result = [String]()
+        let methods = Database.sharedInstance().fetchedAdapterForPaymentMethods().allObjects() as! [PaymentMethod]
+        for pm in methods {
+            result.append(pm.method)
         }
         return result
     }

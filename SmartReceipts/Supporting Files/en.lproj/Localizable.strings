@@ -104,6 +104,10 @@
 "edit.payment.method.controller.save.error.generic.message" = "Payment method could not be saved";
 "edit.payment.method.controller.save.error.message" = "Payment method name not entered";
 "edit.payment.method.controller.save.error.title" = "Can't save";
+"edit.payment.method.controller.placeholder" = "Payment Method";
+"edit.payment.method.controller.update" = "Update";
+"edit.payment.method.controller.cancel" = "Cancel";
+"edit.payment.method.controller.add" = "Add";
 "edit.receipt.category.label" = "Category";
 "edit.receipt.comment.label" = "Comment";
 "edit.receipt.comment.placeholder" = "Your comments here";

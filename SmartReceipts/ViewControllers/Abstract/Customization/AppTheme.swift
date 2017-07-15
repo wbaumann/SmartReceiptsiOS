@@ -9,8 +9,13 @@
 import Foundation
 
 class AppTheme: NSObject {
-    static let themeColor = #colorLiteral(red: 0.5803921569, green: 0, blue: 0.8274509804, alpha: 1)
-    static let reportPDFStyleColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+    
+    // Colors
+    static let themeColor           = #colorLiteral(red: 0.5803921569, green: 0, blue: 0.8274509804, alpha: 1)
+    static let reportPDFStyleColor  = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+    static let toolbarTintColor     = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    
+    // Fonts
     static let boldFont = UIFont.boldSystemFont(ofSize: 17)
     
     class func customizeOnAppLoad() {

@@ -49,6 +49,7 @@ static NSString* checkNoData(NSString* str) {
        taxAmount:(NSDecimalNumber *)tax
     exchangeRate:(NSDecimalNumber *)exchangeRate
         currency:(Currency *)currency
+   paymentMethod:(PaymentMethod *)paymentMethod
   isReimbursable:(BOOL)isReimbursable
       isFullPage:(BOOL)isFullPage
   extraEditText1:(NSString *)extraEditText1
@@ -73,6 +74,7 @@ static NSString* checkNoData(NSString* str) {
         _taxAmount = tax;
         _currency = currency;
         _exchangeRate = exchangeRate;
+        _paymentMethod = paymentMethod;
 
         _reimbursable = isReimbursable;
         _fullPage = isFullPage;
@@ -269,6 +271,7 @@ static NSString* checkNoData(NSString* str) {
                                taxAmount:self.taxAmount
                             exchangeRate:self.exchangeRate
                                 currency:self.currency
+                           paymentMethod:self.paymentMethod
                           isReimbursable:self.isReimbursable
                               isFullPage:self.isFullPage
                           extraEditText1:self.extraEditText1

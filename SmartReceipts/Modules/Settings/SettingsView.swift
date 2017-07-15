@@ -38,6 +38,11 @@ final class SettingsView: UserInterface {
         view.addSubview(formView.view)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setToolbarHidden(true, animated: true)
+    }
+    
     func retrivePlusSubscriptionPrice() -> Observable<String> {
         return presenter.retrivePlusSubscriptionPrice()
     }

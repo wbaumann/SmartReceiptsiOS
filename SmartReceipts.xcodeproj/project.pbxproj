@@ -186,6 +186,12 @@
 		71F468371EEEDB03009F6CE7 /* EditTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F468311EEEDB03009F6CE7 /* EditTripView.swift */; };
 		71F468391EEEF2AE009F6CE7 /* EditTripFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F468381EEEF2AE009F6CE7 /* EditTripFormView.swift */; };
 		71F4683B1EEF2E55009F6CE7 /* Router+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4683A1EEF2E55009F6CE7 /* Router+Extensions.swift */; };
+		71FB1D3E1F195D0D00742FF5 /* PaymentMethods.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FB1D381F195D0D00742FF5 /* PaymentMethods.storyboard */; };
+		71FB1D3F1F195D0D00742FF5 /* PaymentMethodsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D391F195D0D00742FF5 /* PaymentMethodsDisplayData.swift */; };
+		71FB1D401F195D0D00742FF5 /* PaymentMethodsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D3A1F195D0D00742FF5 /* PaymentMethodsInteractor.swift */; };
+		71FB1D411F195D0D00742FF5 /* PaymentMethodsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D3B1F195D0D00742FF5 /* PaymentMethodsPresenter.swift */; };
+		71FB1D421F195D0D00742FF5 /* PaymentMethodsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D3C1F195D0D00742FF5 /* PaymentMethodsRouter.swift */; };
+		71FB1D431F195D0D00742FF5 /* PaymentMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D3D1F195D0D00742FF5 /* PaymentMethodsView.swift */; };
 		841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB302190818C400D28CBF /* WBActionSheetPicker.h */; };
 		8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */; };
 		8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478B77918D385160041CBA3 /* WBPopoverPicker.m */; };
@@ -665,6 +671,12 @@
 		71F468311EEEDB03009F6CE7 /* EditTripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTripView.swift; sourceTree = "<group>"; };
 		71F468381EEEF2AE009F6CE7 /* EditTripFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTripFormView.swift; sourceTree = "<group>"; };
 		71F4683A1EEF2E55009F6CE7 /* Router+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Router+Extensions.swift"; sourceTree = "<group>"; };
+		71FB1D381F195D0D00742FF5 /* PaymentMethods.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaymentMethods.storyboard; sourceTree = "<group>"; };
+		71FB1D391F195D0D00742FF5 /* PaymentMethodsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsDisplayData.swift; sourceTree = "<group>"; };
+		71FB1D3A1F195D0D00742FF5 /* PaymentMethodsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsInteractor.swift; sourceTree = "<group>"; };
+		71FB1D3B1F195D0D00742FF5 /* PaymentMethodsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsPresenter.swift; sourceTree = "<group>"; };
+		71FB1D3C1F195D0D00742FF5 /* PaymentMethodsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsRouter.swift; sourceTree = "<group>"; };
+		71FB1D3D1F195D0D00742FF5 /* PaymentMethodsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsView.swift; sourceTree = "<group>"; };
 		7B397BE168915C982926C4BC /* Pods_SmartReceipts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartReceipts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841BB302190818C400D28CBF /* WBActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBActionSheetPicker.h; sourceTree = "<group>"; };
 		841BB304190818E100D28CBF /* WBActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBActionSheetPicker.m; sourceTree = "<group>"; };
@@ -1236,16 +1248,15 @@
 			path = Columns;
 			sourceTree = "<group>";
 		};
-		71572D7B1F15E906001A1301 /* New Payment Method */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Payment Method";
-			sourceTree = "<group>";
-		};
 		71572D7C1F15E906001A1301 /* Payment Methods */ = {
 			isa = PBXGroup;
 			children = (
+				71FB1D381F195D0D00742FF5 /* PaymentMethods.storyboard */,
+				71FB1D391F195D0D00742FF5 /* PaymentMethodsDisplayData.swift */,
+				71FB1D3A1F195D0D00742FF5 /* PaymentMethodsInteractor.swift */,
+				71FB1D3B1F195D0D00742FF5 /* PaymentMethodsPresenter.swift */,
+				71FB1D3C1F195D0D00742FF5 /* PaymentMethodsRouter.swift */,
+				71FB1D3D1F195D0D00742FF5 /* PaymentMethodsView.swift */,
 			);
 			path = "Payment Methods";
 			sourceTree = "<group>";
@@ -1255,7 +1266,6 @@
 			children = (
 				71572D791F15E906001A1301 /* Columns */,
 				71572D7C1F15E906001A1301 /* Payment Methods */,
-				71572D7B1F15E906001A1301 /* New Payment Method */,
 				71572D781F15E906001A1301 /* Categories */,
 				71572D7E1F15E99A001A1301 /* New Category */,
 			);
@@ -1885,8 +1895,8 @@
 				713D354F1EDA4AEB00D8563D /* NSMutableString+Extensions.m */,
 				71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */,
 				7191F0E71EE20EBA0082DA47 /* DateFormatter+Extensions.swift */,
-				71F4683A1EEF2E55009F6CE7 /* Router+Extensions.swift */,
 				714901BD1F058BBB00772B6F /* UIAlertView+Rx.swift */,
+				71F4683A1EEF2E55009F6CE7 /* Router+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2456,6 +2466,7 @@
 			files = (
 				EA98B51E1B075057006935AE /* WBCellWithPriceNameDate.xib in Resources */,
 				EA5963FC1AF2A07200935344 /* InlinedPickerCell.xib in Resources */,
+				71FB1D3E1F195D0D00742FF5 /* PaymentMethods.storyboard in Resources */,
 				57C125191E12DAEF008551AC /* ServiceAccount.json in Resources */,
 				7185AEF51EFC1CC90038ED2A /* ReceiptMoveCopy.storyboard in Resources */,
 				EA2F23021B41BDDD008AF61E /* PurchaseCell.xib in Resources */,
@@ -2735,6 +2746,7 @@
 				EA2B8D811B4EF2510043A84B /* PrettyPDFRender.m in Sources */,
 				A7F05BAA1CFC07FD0079F1AD /* NumberFormatter+Extansions.swift in Sources */,
 				A7F05BA41CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift in Sources */,
+				71FB1D3F1F195D0D00742FF5 /* PaymentMethodsDisplayData.swift in Sources */,
 				EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */,
 				A7F05BCE1CFD4AE30079F1AD /* Database+Trips.swift in Sources */,
 				716F34501EE040E100D0017A /* EditDistancePresenter.swift in Sources */,
@@ -2799,6 +2811,7 @@
 				719310261EDDB7CF0065B5AD /* FetchedPlaceholderView.swift in Sources */,
 				A7F05BB21CFC15760079F1AD /* ExchangedTaxed.swift in Sources */,
 				84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */,
+				71FB1D401F195D0D00742FF5 /* PaymentMethodsInteractor.swift in Sources */,
 				EA5963EC1AF2957200935344 /* NoCaretTextField.m in Sources */,
 				EA10AD2F1B18B22000F2BCBB /* Database+Import.m in Sources */,
 				71F468341EEEDB03009F6CE7 /* EditTripInteractor.swift in Sources */,
@@ -2809,6 +2822,7 @@
 				A7F05BAC1CFC0AB00079F1AD /* ExchangedPriced.swift in Sources */,
 				719310311EDDBE060065B5AD /* SettingsViewController.swift in Sources */,
 				719B1FD21EF5FEBE0049BD71 /* Column.m in Sources */,
+				71FB1D431F195D0D00742FF5 /* PaymentMethodsView.swift in Sources */,
 				EA3C96AD1AECC95100A2A5F9 /* TripImagesPDFGenerator.m in Sources */,
 				719B1FF51EF6033A0049BD71 /* ReceiptActionsDisplayData.swift in Sources */,
 				A7F05BE31CFD95710079F1AD /* FMDatabase+Receipts.swift in Sources */,
@@ -2916,6 +2930,7 @@
 				71A30F2F1EECB746001BA608 /* DataImport.swift in Sources */,
 				71AEDDE21EDF7FF400BAC0DD /* TripDistancesView.swift in Sources */,
 				A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */,
+				71FB1D421F195D0D00742FF5 /* PaymentMethodsRouter.swift in Sources */,
 				EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */,
 				71AEDDCD1EDF6A2300BAC0DD /* AppTheme.swift in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */,
@@ -2945,6 +2960,7 @@
 				57EEBDC41E093C8F00974E53 /* String+Extensions.swift in Sources */,
 				71E2B57E1EEDD516001D02F1 /* TripsInteractor.swift in Sources */,
 				EAE9DAEB1AF8EA5500F4FE76 /* DistanceLocationColumn.m in Sources */,
+				71FB1D411F195D0D00742FF5 /* PaymentMethodsPresenter.swift in Sources */,
 				EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */,
 				71572D891F15EA41001A1301 /* ColumnsRouter.swift in Sources */,
 				EA8D81821AEA7B5800BAC943 /* ReceiptColumnBlank.m in Sources */,

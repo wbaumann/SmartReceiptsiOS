@@ -21,4 +21,5 @@ enum AppModules: String, ViperitModule {
     case receiptImageViewer
     case settings
     case columns
+    case paymentMethods
 }

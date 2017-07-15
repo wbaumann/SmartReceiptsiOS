@@ -268,7 +268,7 @@ class SettingsFormView: FormViewController {
         })
             
         <<< openModuleButton(LocalizedString("settings.customize.payment.methods.label"),
-            route: .privacyPolicy)
+            route: .paymentMethods)
 
         +++ Section(LocalizedString("settings.camera.section.title"))
         <<< segmentedRow(LocalizedString("settings.max.camera.resolution.label"),
