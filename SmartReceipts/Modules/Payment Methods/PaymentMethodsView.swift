@@ -67,10 +67,13 @@ final class PaymentMethodsView: FetchedCollectionViewControllerSwift {
         
             let saveTitle = isEdit ? LocalizedString("edit.payment.method.controller.update") :
                                      LocalizedString("edit.payment.method.controller.add")
-            alert.addAction(UIAlertAction(title: saveTitle, style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: saveTitle, style: .default, handler: { [unowned self] _ in
                 let pm = method ?? PaymentMethod()
-                pm.method = alert.textFields!.first!.text
-                observer.onNext((pm: pm, update: isEdit))
+                let method = alert.textFields!.first!.text
+                if self.validate(method: method) {
+                    pm.method = method
+                    observer.onNext((pm: pm, update: isEdit))
+                }
             }))
                 
             alert.addAction(UIAlertAction(title: LocalizedString("edit.payment.method.controller.cancel"),
@@ -79,6 +82,22 @@ final class PaymentMethodsView: FetchedCollectionViewControllerSwift {
             self.present(alert, animated: true, completion: nil)
             return Disposables.create()
         })
+    }
+    
+    private func validate(method: String?) -> Bool {
+        if method == nil || method!.isEmpty {
+            presenter.presentAlert(title: LocalizedString("edit.payment.method.controller.save.error.title"),
+                                 message: LocalizedString("edit.payment.method.controller.save.error.message"))
+            return false
+        }
+        
+        if Database.sharedInstance().hasPaymentMethod(withName: method!) {
+            presenter.presentAlert(title: LocalizedString("edit.payment.method.controller.save.error.title"),
+                                 message: LocalizedString("edit.payment.method.controller.save.error.exists.message"))
+            return false
+        }
+        
+        return true
     }
 }
 

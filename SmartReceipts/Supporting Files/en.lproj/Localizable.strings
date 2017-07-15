@@ -83,6 +83,12 @@
 "edit.category.add.failure.message" = "Cannot add this category";
 "edit.category.edit.failure.message" = "Cannot edit this category";
 "edit.category.validate.missing.name" = "Please enter a name";
+"edit.category.edit.placeholder.name" = "Name";
+"edit.category.edit.placeholder.code" = "Code";
+"edit.category.edit.button.add" = "Add";
+"edit.category.edit.button.update" = "Update";
+"edit.category.edit.title.edit" = "Edit Category";
+"edit.category.edit.title.new" = "New Category";
 "edit.distance.controller.add.title" = "Add distance";
 "edit.distance.controller.comment.label" = "Comment";
 "edit.distance.controller.currency.label" = "Currency";

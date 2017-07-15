@@ -22,4 +22,5 @@ enum AppModules: String, ViperitModule {
     case settings
     case columns
     case paymentMethods
+    case categories
 }

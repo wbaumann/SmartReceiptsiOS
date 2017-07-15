@@ -24,6 +24,7 @@
 #import "PDFReportTable.h"
 #import "PDFImageView.h"
 #import "WBDynamicPicker.h"
+#import "CategoryCell.h"
 
 #import "FetchedModel.h"
 #import "FetchedModelAdapter.h"

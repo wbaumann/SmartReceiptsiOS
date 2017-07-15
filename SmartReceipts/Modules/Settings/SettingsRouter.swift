@@ -21,6 +21,8 @@ class SettingsRouter: Router {
             openColumns(isCSV: isCSV)
         case .paymentMethods:
             openPaymentMethods()
+        case .categories:
+            openCategories()
         }
     }
     
@@ -62,6 +64,15 @@ class SettingsRouter: Router {
             module.router.showIPadForm(from: _view)
         })
     }
+    
+    func openCategories() {
+        let module = AppModules.categories.build()
+        executeFor(iPhone: {
+            module.router.show(from: _view)
+        }, iPad: {
+            module.router.showIPadForm(from: _view)
+        })
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
@@ -76,4 +87,5 @@ enum SettingsRoutes {
     case privacyPolicy
     case columns(isCSV: Bool)
     case paymentMethods
+    case categories
 }
