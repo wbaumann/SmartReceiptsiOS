@@ -48,3 +48,54 @@ extension Distance: Matchable {
         }
     }
 }
+
+extension PaymentMethod: Matchable {
+    public var matcher: ParameterMatcher<PaymentMethod> {
+        get {
+            return ParameterMatcher(matchesFunction: { method -> Bool in
+                return self == method
+            })
+        }
+    }
+}
+
+extension WBCategory: Matchable {
+    public var matcher: ParameterMatcher<WBCategory> {
+        get {
+            return ParameterMatcher(matchesFunction: { category -> Bool in
+                return self == category
+            })
+        }
+    }
+}
+
+// MARK: Array<Column> : Matchable
+extension Array: Matchable {
+    public var matcher: ParameterMatcher<Array<Column>> {
+        get {
+            return ParameterMatcher(matchesFunction: { columns -> Bool in
+                var matched = false
+                if self.count == columns.count && Element.self == Column.self {
+                    for i in 0..<self.count {
+                        if (self[i] as! Column).matcher.matches(columns[i]) {
+                            continue
+                        }
+                        return false
+                    }
+                    matched = true
+                }
+                return matched
+            })
+        }
+    }
+}
+
+extension Column: Matchable {
+    public var matcher: ParameterMatcher<Column> {
+        get {
+            return ParameterMatcher(matchesFunction: { column -> Bool in
+                return self.name == column.name
+            })
+        }
+    }
+}

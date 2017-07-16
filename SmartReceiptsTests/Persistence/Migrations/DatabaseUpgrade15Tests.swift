@@ -84,9 +84,9 @@ class DatabaseUpgrade15Tests: XCTestCase {
             
             let ignoreColumns = self.ignoredTableColumns[table] ?? []
             
-            let resultSet = try! db?.executeQuery("PRAGMA table_info('\(table)')", values: [])
-            while (resultSet?.next())! {
-                let column = resultSet?.string(forColumnIndex: 1)
+            let resultSet = try! db.executeQuery("PRAGMA table_info('\(table)')", values: [])
+            while (resultSet.next()) {
+                let column = resultSet.string(forColumnIndex: 1)
                 
                 if let _ = ignoreColumns.index(where: { $0 == column }) {
                     continue
@@ -108,7 +108,7 @@ class DatabaseUpgrade15Tests: XCTestCase {
         var tableNames = [String]()
         
         database.databaseQueue.inDatabase { (db) in
-            let resultSet = try! db!.executeQuery(rawQuery, values: [])
+            let resultSet = try! db.executeQuery(rawQuery, values: [])
             while resultSet.next() {
                 if let tableName = resultSet.string(forColumnIndex: 0) {
                     tableNames.append(tableName)

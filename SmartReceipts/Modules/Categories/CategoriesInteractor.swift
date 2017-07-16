@@ -21,18 +21,22 @@ class CategoriesInteractor: Interactor {
         }).disposed(by: bag)
         
         
-        presenter.deleteSubject.subscribe(onNext: { category in
-            Database.sharedInstance().delete(category)
+        presenter.deleteSubject.subscribe(onNext: { [unowned self] category in
+            self.delete(category: category)
         }).disposed(by: bag)
     }
     
-    private func save(category: WBCategory, update: Bool) {
+    func save(category: WBCategory, update: Bool) {
         let db = Database.sharedInstance()!
         let success = update ? db.update(category) : db.save(category)
         
         if !success {
             presenter.presentAlert(title: nil, message: LocalizedString("edit.category.edit.failure.message"))
         }
+    }
+    
+    func delete(category: WBCategory) {
+        Database.sharedInstance().delete(category)
     }
     
     func fetchedModelAdapter() -> FetchedModelAdapter? {

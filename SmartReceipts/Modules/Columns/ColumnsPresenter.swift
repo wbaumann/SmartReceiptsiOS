@@ -12,7 +12,7 @@ import RxSwift
 
 class ColumnsPresenter: Presenter {
     
-    private var isCSV = false
+    private var isCSV: Bool = false
     
     override func setupView(data: Any) {
         isCSV = data as! Bool

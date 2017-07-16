@@ -17,6 +17,7 @@
 #import "Database+Receipts.h"
 #import "Database+Functions.h"
 #import "NSDecimalNumber+WBNumberParse.h"
+#import <SmartReceipts-Swift.h>
 
 
 @interface Database (Expose)
@@ -40,7 +41,8 @@
     [super setUp];
 
     self.sourceTrip = [self.db insertTestTrip:@{TripsTable.COLUMN_NAME: @"Source"}];
-    self.testReceiptPrice = [Price priceWithAmount:[NSDecimalNumber decimalNumberOrZero:@"10"] currencyCode:@"USD"];
+    
+    self.testReceiptPrice = [[Price alloc] initWithAmount:[NSDecimalNumber decimalNumberOrZero:@"10"] currencyCode:@"USD"];
 
     [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: self.sourceTrip, ReceiptsTable.COLUMN_NAME: @"TestReceipt", ReceiptsTable.COLUMN_PRICE: self.testReceiptPrice.amount}];
     self.testReceipt = [self.db receiptWithName:@"TestReceipt"];
@@ -91,7 +93,7 @@
     XCTAssertEqual(1, [self.db allReceiptsForTrip:self.destinationTrip].count);
 
     WBTrip *fetchedSource = [self.db tripWithName:self.sourceTrip.name];
-    XCTAssertEqualObjects([Price zeroPriceWithCurrencyCode:@"USD"].currencyFormattedPrice, fetchedSource.formattedPrice);
+    XCTAssertEqualObjects([[Price alloc] initWithCurrencyCode:@"USD"].currencyFormattedPrice, fetchedSource.formattedPrice);
 
     WBTrip *fetchedDestination = [self.db tripWithName:self.destinationTrip.name];
     XCTAssertEqualObjects(self.testReceiptPrice.currencyFormattedPrice, fetchedDestination.formattedPrice);
