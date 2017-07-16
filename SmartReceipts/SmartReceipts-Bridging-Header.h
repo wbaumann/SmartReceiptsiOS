@@ -31,9 +31,6 @@
 
 #import <Google/Analytics.h>
 
-#import "InputCellsSection.h"
-#import "InputCellsViewController.h"
-
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "UIView+LoadHelpers.h"
 #import "UIApplication+DismissKeyboard.h"
@@ -49,7 +46,6 @@
 #import "DistanceSummaryCell.h"
 #import "TextEntryCell.h"
 #import "TitledTextEntryCell.h"
-#import "InputCellsSection.h"
 #import "TitledAutocompleteEntryCell.h"
 #import "SwitchControlCell.h"
 #import "WBCellWithPriceNameDate.h"

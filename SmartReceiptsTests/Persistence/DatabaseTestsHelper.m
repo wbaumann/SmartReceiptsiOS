@@ -82,7 +82,7 @@
 
     Distance *distance = [[Distance alloc] initWithTrip:params[DistanceTable.COLUMN_PARENT]
                                                distance:params[DistanceTable.COLUMN_DISTANCE]
-                                                   rate:[Price priceWithAmount:params[DistanceTable.COLUMN_RATE] currencyCode:params[DistanceTable.COLUMN_RATE_CURRENCY]]
+                                                   rate:[[Price alloc] initWithAmount:params[DistanceTable.COLUMN_RATE] currencyCode:params[DistanceTable.COLUMN_RATE_CURRENCY]]
                                                location:params[DistanceTable.COLUMN_LOCATION]
                                                    date:params[DistanceTable.COLUMN_DATE]
                                                timeZone:[NSTimeZone defaultTimeZone]

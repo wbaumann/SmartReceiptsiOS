@@ -17,7 +17,7 @@
 #import "Database+Receipts.h"
 #import "Database+PaymentMethods.h"
 #import "NSDecimalNumber+WBNumberParse.h"
-
+#import <SmartReceipts-Swift.h>
 #import "Database+Trips.h"
 
 @interface Database (Expose)
@@ -63,7 +63,7 @@
 
 - (void)testReceiptDeleted {
     NSString *receiptName = @"Unique12345678";
-    Price *testPrice = [Price priceWithAmount:[NSDecimalNumber decimalNumberOrZero:@"10"] currencyCode:@"USD"];
+    Price *testPrice = [[Price alloc] initWithAmount:[NSDecimalNumber decimalNumberOrZero:@"10"] currencyCode:@"USD"];
     [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : receiptName, ReceiptsTable.COLUMN_PRICE : testPrice.amount}];
 
     WBReceipt *receipt = [self.db receiptWithName:receiptName];
@@ -83,7 +83,7 @@
     XCTAssertFalse([self.db.filesManager fileExistsForReceipt:receipt]);
 
     WBTrip *reloaded = [self.db tripWithName:receipt.trip.name];
-    XCTAssertEqualObjects([Price zeroPriceWithCurrencyCode:@"USD"].currencyFormattedPrice, reloaded.formattedPrice);
+    XCTAssertEqualObjects([[Price alloc] initWithCurrencyCode:@"USD"].currencyFormattedPrice, reloaded.formattedPrice);
 }
 
 @end

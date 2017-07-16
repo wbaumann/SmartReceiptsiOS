@@ -21,8 +21,8 @@ class PaymentMethodsInteractor: Interactor {
             self.save(paymentMethod: pm, update: update)
         }).disposed(by: bag)
         
-        presenter.deleteSubject.subscribe(onNext: { method in
-            Database.sharedInstance().delete(method)
+        presenter.deleteSubject.subscribe(onNext: { [unowned self] method in
+            self.delete(paymentMethod: method)
         }).disposed(by: bag)
     }
     
@@ -30,7 +30,7 @@ class PaymentMethodsInteractor: Interactor {
         return Database.sharedInstance().fetchedAdapterForPaymentMethods()
     }
     
-    private func save(paymentMethod: PaymentMethod, update: Bool) {
+    func save(paymentMethod: PaymentMethod, update: Bool) {
         let db = Database.sharedInstance()!
         let success = update ? db.update(paymentMethod) : db.save(paymentMethod)
         
@@ -38,6 +38,10 @@ class PaymentMethodsInteractor: Interactor {
             presenter.presentAlert(title: LocalizedString("edit.payment.method.controller.save.error.title"),
                                  message: LocalizedString("edit.payment.method.controller.save.error.generic.message"))
         }
+    }
+    
+    func delete(paymentMethod: PaymentMethod) {
+        Database.sharedInstance().delete(paymentMethod)
     }
     
 }

@@ -79,9 +79,9 @@ class DatabaseUpgrade14Tests: XCTestCase {
             
             let ignoreColumns = DatabaseUpgrade14Tests.IgnoreTableColumns[table] ?? []
             
-            let resultSet = try! db?.executeQuery("PRAGMA table_info('\(table)')", values: [])
-            while (resultSet?.next())! {
-                let column = resultSet?.string(forColumnIndex: 1)
+            let resultSet = try! db.executeQuery("PRAGMA table_info('\(table)')", values: [])
+            while (resultSet.next()) {
+                let column = resultSet.string(forColumnIndex: 1)
                 
                 if let _ = ignoreColumns.index(where: { $0 == column }) {
                     continue
@@ -99,9 +99,9 @@ class DatabaseUpgrade14Tests: XCTestCase {
         database.inDatabase() {
             db in
             
-            let resultSet: FMResultSet = try! db!.executeQuery("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'", values: [])
+            let resultSet: FMResultSet = try! db.executeQuery("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'", values: [])
             while resultSet.next() {
-                tables.append(resultSet.string(forColumnIndex: 0))
+                tables.append(resultSet.string(forColumnIndex: 0)!)
             }
         }
         

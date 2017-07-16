@@ -91,6 +91,7 @@ class ReceiptsModuleTest: XCTestCase {
                                 taxAmount: NSDecimalNumber.zero,
                                 exchangeRate: NSDecimalNumber.zero,
                                 currency: Currency.currency(forCode: "USD"),
+                                paymentMethod:PaymentMethod(objectId: 0, method: "Card"),
                                 isReimbursable: true, isFullPage: false,
                                 extraEditText1: "", extraEditText2: "", extraEditText3: "")
         
