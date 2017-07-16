@@ -19,7 +19,7 @@ class SettingsInteractor: Interactor {
     func retrivePlusSubscriptionPrice() -> Observable<String> {
         return Observable<String>.create({ observer -> Disposable in
             RMStore.default().requestProducts([SmartReceiptSubscriptionIAPIdentifier],
-                      success: { [unowned self] products, _ in
+                      success: { [weak self] products, _ in
                 let formatter = NumberFormatter()
                 formatter.formatterBehavior = .behavior10_4
                 formatter.numberStyle = .currency
@@ -27,7 +27,7 @@ class SettingsInteractor: Interactor {
                     if product.productIdentifier == SmartReceiptSubscriptionIAPIdentifier {
                         formatter.locale = product.priceLocale
                         let price = "\(formatter.string(from: product.price)!)/yr"
-                        self.plusSubsribtionProduct = product
+                        self?.plusSubsribtionProduct = product
                         observer.onNext(price)
                     }
                 }
@@ -70,8 +70,8 @@ class SettingsInteractor: Interactor {
         
         return Observable<Void>.create({ [unowned self] observer -> Disposable in
             RMStore.default().addPayment(self.plusSubsribtionProduct?.productIdentifier,
-                                      success: { [unowned self] transaction in
-                self.analyticsPurchaseSuccess(productID: transaction!.payment.productIdentifier)
+                                      success: { [weak self] transaction in
+                self?.analyticsPurchaseSuccess(productID: transaction!.payment.productIdentifier)
                 observer.onNext()
                 NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
             }, failure: { [unowned self] tranaction, error in
