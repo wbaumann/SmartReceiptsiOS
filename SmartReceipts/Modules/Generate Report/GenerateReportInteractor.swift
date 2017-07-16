@@ -49,7 +49,10 @@ class GenerateReportInteractor: Interactor {
     }
     
     func generateReport() {
-        if !validateSelection() { return }
+        if !validateSelection() {
+            presenter.hideHudFromView()
+            return
+        }
         
         delayedExecution(0.3) {
             
