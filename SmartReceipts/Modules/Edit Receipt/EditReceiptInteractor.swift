@@ -55,7 +55,8 @@ class EditReceiptInteractor: Interactor {
     
     private func validateDate(in receipt: WBReceipt) {
         Observable<Void>.just()
-            .filter({receipt.date > receipt.trip.endDate || receipt.date < receipt.trip.startDate})
+            .filter({ !WBPreferences.allowDataEntryOutsideTripBounds() })
+            .filter({ receipt.date > receipt.trip.endDate || receipt.date < receipt.trip.startDate })
             .subscribe(onNext: {
                 let title = LocalizedString("edit.receipt.date.range.warning.title")
                 let message = LocalizedString("edit.receipt.date.range.warning.message")
