@@ -21,11 +21,11 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dt-5s-v2P">
-                    <rect key="frame" x="337" y="11" width="22" height="22"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dt-5s-v2P">
+                    <rect key="frame" x="335" y="2" width="40" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="22" id="bIY-XP-ZSQ"/>
-                        <constraint firstAttribute="height" constant="22" id="tI6-l2-3Zf"/>
+                        <constraint firstAttribute="width" constant="40" id="bIY-XP-ZSQ"/>
+                        <constraint firstAttribute="height" constant="40" id="tI6-l2-3Zf"/>
                     </constraints>
                     <color key="tintColor" red="0.58039215690000001" green="0.0" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" image="724-info-toolbar"/>
@@ -34,7 +34,7 @@
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="500" horizontalCompressionResistancePriority="200" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3cc-nH-wsw">
-                    <rect key="frame" x="74" y="14" width="255" height="17"/>
+                    <rect key="frame" x="74" y="14" width="253" height="17"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -46,7 +46,7 @@
                 <constraint firstItem="3cc-nH-wsw" firstAttribute="leading" secondItem="HPK-WQ-2UQ" secondAttribute="trailing" constant="16" id="3kx-hg-OWb"/>
                 <constraint firstItem="HPK-WQ-2UQ" firstAttribute="centerY" secondItem="3cc-nH-wsw" secondAttribute="centerY" id="82i-0N-JDn"/>
                 <constraint firstItem="3cc-nH-wsw" firstAttribute="centerY" secondItem="3dt-5s-v2P" secondAttribute="centerY" id="Fhw-rg-HL0"/>
-                <constraint firstAttribute="trailing" secondItem="3dt-5s-v2P" secondAttribute="trailing" constant="16" id="RAc-cO-Wmn"/>
+                <constraint firstAttribute="trailing" secondItem="3dt-5s-v2P" secondAttribute="trailing" id="RAc-cO-Wmn"/>
                 <constraint firstItem="3dt-5s-v2P" firstAttribute="leading" secondItem="3cc-nH-wsw" secondAttribute="trailing" constant="8" id="fWu-wk-Fls"/>
                 <constraint firstItem="3dt-5s-v2P" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zuK-TN-KrQ"/>
             </constraints>
