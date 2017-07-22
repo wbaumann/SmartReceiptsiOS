@@ -11,6 +11,7 @@
 #import "Database+Hints.h"
 #import "SuggestionView.h"
 #import "NSString+Extensions.h"
+#import <SmartReceipts-Swift.h>
 
 @interface WBAutocompleteHelper () <SuggestionViewDelegate>
 
@@ -22,7 +23,7 @@
 
 @implementation WBAutocompleteHelper
 
-#pragma mark - Initialization
+#pragma mark - Initializatioz
 
 - (id)initWithAutocompleteField:(UITextField *)field useReceiptsHints:(BOOL)forReceipts
 {
@@ -120,7 +121,7 @@
 #pragma mark SuggestionViewDelegate
 
 - (void)suggestionSelected:(NSString *)suggestion {
-    self.field.text = [NSString stringWithFormat:@"%@ ", suggestion];
+    [self.delegate didSelectWithValue:[NSString stringWithFormat:@"%@ ", suggestion]];
     [self removeSuggestionView];
 }
 

@@ -144,6 +144,7 @@
 		71A30F2C1EEC9F05001BA608 /* DataExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A30F2B1EEC9F05001BA608 /* DataExport.swift */; };
 		71A30F2F1EECB746001BA608 /* DataImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A30F2D1EECAA34001BA608 /* DataImport.swift */; };
 		71A30F301EECB750001BA608 /* WBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */; };
+		71AD67721F23FA810033B643 /* PredectiveTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD67711F23FA810033B643 /* PredectiveTextCell.swift */; };
 		71AEDDCD1EDF6A2300BAC0DD /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */; };
 		71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71AEDDD61EDF7FF400BAC0DD /* TripDistances.storyboard */; };
 		71AEDDDE1EDF7FF400BAC0DD /* TripDistancesDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDD71EDF7FF400BAC0DD /* TripDistancesDisplayData.swift */; };
@@ -622,6 +623,7 @@
 		719B1FFA1EF717000049BD71 /* EditReceiptFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReceiptFormView.swift; sourceTree = "<group>"; };
 		71A30F2B1EEC9F05001BA608 /* DataExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExport.swift; sourceTree = "<group>"; };
 		71A30F2D1EECAA34001BA608 /* DataImport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImport.swift; sourceTree = "<group>"; };
+		71AD67711F23FA810033B643 /* PredectiveTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredectiveTextCell.swift; sourceTree = "<group>"; };
 		71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppTheme.swift; path = ../ViewControllers/Abstract/Customization/AppTheme.swift; sourceTree = "<group>"; };
 		71AEDDD61EDF7FF400BAC0DD /* TripDistances.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TripDistances.storyboard; sourceTree = "<group>"; };
 		71AEDDD71EDF7FF400BAC0DD /* TripDistancesDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDistancesDisplayData.swift; sourceTree = "<group>"; };
@@ -1245,6 +1247,7 @@
 				716723991F10540200400BFF /* CustomSegmentedCell.xib */,
 				715B4EBB1F114A9C0021ACD8 /* PurchaseButtonCell.swift */,
 				715B4EBC1F114A9C0021ACD8 /* PurchaseButtonCell.xib */,
+				71AD67711F23FA810033B643 /* PredectiveTextCell.swift */,
 			);
 			path = "Eureka Custom";
 			sourceTree = "<group>";
@@ -2811,6 +2814,7 @@
 				A7F05BE51CFD95830079F1AD /* FMDatabase+Distances.swift in Sources */,
 				EA4C5CBA1AF2864B0083FDD7 /* TextEntryCell.m in Sources */,
 				71F468351EEEDB03009F6CE7 /* EditTripPresenter.swift in Sources */,
+				71AD67721F23FA810033B643 /* PredectiveTextCell.swift in Sources */,
 				EA7634AD1B3DB61900AD8737 /* WBPreferences.m in Sources */,
 				7111ADA61F0EC38100DF77ED /* SettingsDisplayData.swift in Sources */,
 				EAE9DAE81AF8E97100F4FE76 /* DistanceColumn.m in Sources */,

@@ -62,7 +62,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         
         form
         +++ Section()
-        <<< TextRow(NAME_ROW_TAG) { row in
+        <<< PredectiveTextRow(NAME_ROW_TAG) { row in
             row.title = LocalizedString("edit.receipt.name.label")
             row.placeholder = LocalizedString("edit.receipt.name.placeholder")
             row.value = receipt.name
@@ -70,6 +70,9 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             self.receipt.name = row.value ?? ""
         }).cellSetup({ cell, _ in
             cell.configureCell()
+            if WBPreferences.isAutocompleteEnabled() {
+                cell.enableAutocompleteHelper()
+            }
         })
     
         <<< DecimalRow() { row in
@@ -205,7 +208,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     }
     
     func validate() {
-        if !WBTextUtils.isProperName((form.rowBy(tag: NAME_ROW_TAG) as! TextRow).value) {
+        if !WBTextUtils.isProperName((form.rowBy(tag: NAME_ROW_TAG) as! PredectiveTextRow).value) {
             errorSubject.onNext(LocalizedString("edit.receipt.name.invalid.alert.message"))
         } else {
             receipt.trip = trip
