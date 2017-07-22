@@ -32,7 +32,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             self.receipt = WBReceipt()
             self.receipt.setPrice(NSDecimalNumber.zero, currency: trip.defaultCurrency.code)
             self.receipt.date = Date()
-            self.receipt.category = allCategories().first!
+            self.receipt.category = proposedCategory()
             self.receipt.exchangeRate = NSDecimalNumber.zero
             self.receipt.isReimbursable = true
             self.receipt.isFullPage = WBPreferences.assumeFullPage()
@@ -223,7 +223,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         }
     }
     
-    private func allCategories() -> [String] {
+    fileprivate func allCategories() -> [String] {
         var result = [String]()
         for category in Database.sharedInstance().listAllCategories() {
             result.append(category.name)
@@ -246,5 +246,31 @@ fileprivate extension BaseCell {
         textLabel?.font = AppTheme.boldFont
         detailTextLabel?.textColor = AppTheme.themeColor
         detailTextLabel?.font = AppTheme.boldFont
+    }
+}
+
+//MARK: Prepare Cells
+fileprivate extension EditReceiptFormView {
+    fileprivate func proposedCategory() -> String {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour], from: Date())
+        let hour = components.hour!
+        
+        if WBPreferences.predictCategories() {
+            if hour >= 4 && hour < 11 {
+                return WBCategory.category_NAME_BREAKFAST()
+            } else if hour >= 11 && hour < 16 {
+                return WBCategory.category_NAME_LUNCH()
+            } else if hour >= 16 && hour < 23 {
+                return WBCategory.category_NAME_DINNER()
+            }
+        }
+        
+        let categories = allCategories()
+        if !categories.isEmpty {
+            return categories.first!
+        } else {
+            return ""
+        }
     }
 }
