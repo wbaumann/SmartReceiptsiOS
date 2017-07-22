@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol AutocompleteHelperDelegate;
+
 @interface WBAutocompleteHelper : NSObject
+@property (weak, nonatomic) id<AutocompleteHelperDelegate> delegate;
 
 - (id)initWithAutocompleteField:(UITextField*)field useReceiptsHints:(BOOL) forReceipts;
 
