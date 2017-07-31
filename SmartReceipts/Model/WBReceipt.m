@@ -58,7 +58,7 @@ static NSString* checkNoData(NSString* str) {
     self = [super init];
     if (self) {
         _objectId = rid;
-        _name = [name lastPathComponent];
+        _name = name;
         _category = category;
         _fileName = checkNoData([imageFileName lastPathComponent]);
 

@@ -8,8 +8,6 @@
 
 #import "WBAppDelegate.h"
 
-#import "WBFileManager.h"
-
 #import "PendingHUDView.h"
 #import "Constants.h"
 #import "Database+Import.h"
@@ -71,7 +69,7 @@
     [self setKeychainPersistence:persistor];
     [[RMStore defaultStore] setTransactionPersistor:persistor];
 
-    [WBFileManager initTripsDirectory];
+    __unused BOOL hasTripsDir = [NSFileManager initTripsDirectory];
     [[Database sharedInstance] open];
 
     [[Database sharedInstance] checkReceiptValidity];
@@ -174,7 +172,7 @@ void onUncaughtExcepetion(NSException *exception) {
 }
 
 - (void)freeFilePathToAttach {
-    [WBFileManager deleteIfExists:self.filePathToAttach];
+    [NSFileManager deleteIfExistsWithFilepath:self.filePathToAttach];
     self.filePathToAttach = nil;
 }
 
@@ -227,7 +225,7 @@ void onUncaughtExcepetion(NSException *exception) {
     [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"app.delegate.import.alert.title", nil)
                                 message:NSLocalizedString(@"app.delegate.import.alert.message", nil)
                        cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.cancel", nil) action:^{
-                           [WBFileManager deleteIfExists:[url path]];
+                           [NSFileManager deleteIfExistsWithFilepath:[url path]];
                        }]
                        otherButtonItems:[RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.yes", nil) action:^{ [self importZipFrom:url overwrite:YES]; }],
                                         [RIButtonItem itemWithLabel:NSLocalizedString(@"generic.button.title.no", nil) action:^{ [self importZipFrom:url overwrite:NO]; }], nil] show];
@@ -236,7 +234,7 @@ void onUncaughtExcepetion(NSException *exception) {
 - (void)importZipFrom:(NSURL *)zipPath overwrite:(BOOL)overwrite {
     PendingHUDView *hud = [PendingHUDView showHUDOnView:self.window.rootViewController.view];
     dispatch_async([[WBAppDelegate instance] dataQueue], ^{
-        DataImport *dataImport = [[DataImport alloc] initWithInputFile:zipPath.path output:[WBFileManager documentsPath]];
+        DataImport *dataImport = [[DataImport alloc] initWithInputFile:zipPath.path output:[NSFileManager documentsPath]];
         
         BOOL success = YES; // true by default
         
@@ -251,8 +249,9 @@ void onUncaughtExcepetion(NSException *exception) {
         
         if (success) {
             // delete imported zip and import data to DB
-            [WBFileManager deleteIfExists:[zipPath path]];
-            success = [[Database sharedInstance] importDataFromBackup:[WBFileManager pathInDocuments:SmartReceiptsDatabaseExportName] overwrite:overwrite];
+            [NSFileManager deleteIfExistsWithFilepath:[zipPath path]];
+            id backupPath = [NSFileManager pathInDocumentsWithRelativePath:SmartReceiptsDatabaseExportName];
+            success = [[Database sharedInstance] importDataFromBackup:backupPath overwrite:overwrite];
         }
 
         dispatch_async(dispatch_get_main_queue(), ^{

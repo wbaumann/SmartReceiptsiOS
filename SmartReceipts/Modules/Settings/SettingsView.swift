@@ -124,7 +124,7 @@ extension SettingsView {
             let hud = PendingHUDView.showHUD(on: self.navigationController!.view)
             let tick = TickTock.tick()
             DispatchQueue.global().async {
-                let export = DataExport(workDirectory: WBFileManager.documentsPath())
+                let export = DataExport(workDirectory: FileManager.documentsPath)
                 let exportPath = export.execute()
                 let isFileExists = FileManager.default.fileExists(atPath: exportPath)
                 Logger.info("Export finished: time \(tick.tock()), exportPath: \(exportPath)")

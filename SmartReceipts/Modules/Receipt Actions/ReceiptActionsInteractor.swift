@@ -20,7 +20,7 @@ class ReceiptActionsInteractor: Interactor {
     func attachImage(_ image: UIImage, to receipt: WBReceipt) -> Bool {
         let imageFileName = String(format: "%tu_%@.jpg", receipt.receiptId(), receipt.name)
         let path = receipt.trip.file(inDirectoryPath: imageFileName)
-        if !WBFileManager.forceWrite(UIImageJPEGRepresentation(image, 0.85), to: path!) {
+        if !FileManager.forceWrite(data: UIImageJPEGRepresentation(image, 0.85)!, to: path!) {
             return false
         }
         
@@ -38,7 +38,7 @@ class ReceiptActionsInteractor: Interactor {
         let imageFileName = String(format: "%tu_%@.%@", receipt.receiptId(), receipt.name, ext)
         let newFile = receipt.trip.file(inDirectoryPath: imageFileName)
         
-        if !WBFileManager.forceCopy(from: file, to: newFile) {
+        if !FileManager.forceCopy(from: file, to: newFile!) {
             Logger.error("Couldn't force copy from \(file) to \(newFile!)")
             return false
         }

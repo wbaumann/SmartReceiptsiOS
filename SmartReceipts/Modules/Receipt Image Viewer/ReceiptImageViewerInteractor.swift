@@ -28,7 +28,7 @@ class ReceiptImageViewerInteractor: Interactor {
                 UIImagePNGRepresentation(image!) :
                 UIImageJPEGRepresentation(image!, 0.85)
             
-            WBFileManager.forceWrite(data, to: self.imagePath)
+            _ = FileManager.forceWrite(data: data!, to: self.imagePath)
         }).addDisposableTo(disposeBag)
     }
 }
