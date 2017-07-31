@@ -26,7 +26,7 @@ class PDFPageView: UIView {
         bottomLine.backgroundColor = AppTheme.reportPDFStyleColor
         
         contentOffset = topLine.frame.origin.y + topLine.frame.height + ElementsSpacing
-        //footerLabel.text = "asdasasdd" //WBPreferences.pdfFooterString()!
+        footerLabel.text = WBPreferences.pdfFooterString()
     }
     
     func appendHeader(_ header: TripReportHeader) {
