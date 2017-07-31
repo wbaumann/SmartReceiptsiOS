@@ -67,6 +67,10 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
         NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved), name: NSNotification.Name.SmartReceiptsSettingsSaved, object: nil)
     }
     
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        updateTitle()
+    }
+    
     func tripUpdated(_ notification: Notification) {
         if let trip = notification.object as? WBTrip {
             Logger.debug("Updated Trip: \(trip.description)")
@@ -75,7 +79,7 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
         
             //TODO jaanus: check posting already altered object
             self.trip = Database.sharedInstance().tripWithName(self.trip!.name)
-            self.updateTitle()
+            updateTitle()
         }
     }
     
