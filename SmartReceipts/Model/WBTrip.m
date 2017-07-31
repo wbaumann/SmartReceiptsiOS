@@ -8,7 +8,6 @@
 
 #import <FMDB/FMResultSet.h>
 #import "WBTrip.h"
-#import "WBFileManager.h"
 #import "DatabaseTableNames.h"
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "NSDate+Calculations.h"
@@ -41,7 +40,7 @@
 }
 
 - (NSString *)directoryPathUsingName:(NSString *)name {
-    return [[WBFileManager tripsDirectoryPath] stringByAppendingPathComponent:name];
+    return [[NSFileManager tripsDirectoryPath] stringByAppendingPathComponent:name];
 }
 
 - (NSString *)fileInDirectoryPath:(NSString *)filename {

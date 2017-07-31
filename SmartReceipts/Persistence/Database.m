@@ -9,7 +9,6 @@
 #import <FMDB/FMDatabaseQueue.h>
 #import "Database.h"
 #import "Constants.h"
-#import "WBFileManager.h"
 #import "DatabaseMigration.h"
 #import "ReceiptFilesManager.h"
 #import "WBPreferences.h"
@@ -55,7 +54,8 @@ NSString *const DatabaseDidSwapModelsNotification = @"DatabaseDidSwapModelsNotif
 }
 
 - (id)initSingleton {
-    return [self initWithDatabasePath:[WBFileManager pathInDocuments:SmartReceiptsDatabaseName] tripsFolderPath:[WBFileManager tripsDirectoryPath]];
+    return [self initWithDatabasePath:[NSFileManager pathInDocumentsWithRelativePath:SmartReceiptsDatabaseName]
+                      tripsFolderPath:[NSFileManager tripsDirectoryPath]];
 }
 
 - (id)initWithDatabasePath:(NSString *)path tripsFolderPath:(NSString *)tripsFolderPath {

@@ -7,7 +7,6 @@
 //
 
 #import "Database+Import.h"
-#import "WBFileManager.h"
 #import "Database+Trips.h"
 #import "WBTrip.h"
 #import "Database+Receipts.h"
@@ -43,7 +42,7 @@
         return NO;
     }
 
-    Database *imported = [[Database alloc] initWithDatabasePath:filePath tripsFolderPath:[WBFileManager documentsPath]];
+    Database *imported = [[Database alloc] initWithDatabasePath:filePath tripsFolderPath:[NSFileManager documentsPath]];
     [imported open];
 
     return [self importDataFromDatabase:imported overwrite:overwrite];

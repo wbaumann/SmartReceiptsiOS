@@ -208,12 +208,8 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     }
     
     func validate() {
-        if !WBTextUtils.isProperName((form.rowBy(tag: NAME_ROW_TAG) as! PredectiveTextRow).value) {
-            errorSubject.onNext(LocalizedString("edit.receipt.name.invalid.alert.message"))
-        } else {
-            receipt.trip = trip
-            receiptSubject.onNext(receipt)
-        }
+        receipt.trip = trip
+        receiptSubject.onNext(receipt)
     }
     
     private func updateExchangeRate() {

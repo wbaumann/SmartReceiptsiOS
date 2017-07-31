@@ -114,7 +114,6 @@
 		719310261EDDB7CF0065B5AD /* FetchedPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310251EDDB7CF0065B5AD /* FetchedPlaceholderView.swift */; };
 		7193102B1EDDB9960065B5AD /* WBAbstractPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310281EDDB9960065B5AD /* WBAbstractPicker.m */; };
 		7193102C1EDDB9960065B5AD /* WBDynamicPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193102A1EDDB9960065B5AD /* WBDynamicPicker.m */; };
-		7193103F1EDDC2810065B5AD /* WBFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310361EDDC2810065B5AD /* WBFileManager.m */; };
 		719310401EDDC2810065B5AD /* WBImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310381EDDC2810065B5AD /* WBImageUtils.m */; };
 		719310411EDDC2810065B5AD /* WBSqlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193103A1EDDC2810065B5AD /* WBSqlBuilder.m */; };
 		719310421EDDC2810065B5AD /* WBTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193103C1EDDC2810065B5AD /* WBTextUtils.m */; };
@@ -176,6 +175,7 @@
 		71CF7A121F1020440004F389 /* InputTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF7A111F1020440004F389 /* InputTextCell.swift */; };
 		71CF7A141F1020590004F389 /* InputTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CF7A131F1020590004F389 /* InputTextCell.xib */; };
 		71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */; };
+		71E090F31F2F994B00C825A8 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E090F21F2F994B00C825A8 /* FileManager+Extensions.swift */; };
 		71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E2B5751EEDD516001D02F1 /* Trips.storyboard */; };
 		71E2B57D1EEDD516001D02F1 /* TripsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5761EEDD516001D02F1 /* TripsDisplayData.swift */; };
 		71E2B57E1EEDD516001D02F1 /* TripsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5771EEDD516001D02F1 /* TripsInteractor.swift */; };
@@ -587,8 +587,6 @@
 		719310291EDDB9960065B5AD /* WBDynamicPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBDynamicPicker.h; path = Views/WBDynamicPicker.h; sourceTree = "<group>"; };
 		7193102A1EDDB9960065B5AD /* WBDynamicPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBDynamicPicker.m; path = Views/WBDynamicPicker.m; sourceTree = "<group>"; };
 		719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentCurrenciesCache.swift; sourceTree = "<group>"; };
-		719310351EDDC2810065B5AD /* WBFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBFileManager.h; sourceTree = "<group>"; };
-		719310361EDDC2810065B5AD /* WBFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBFileManager.m; sourceTree = "<group>"; };
 		719310371EDDC2810065B5AD /* WBImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageUtils.h; sourceTree = "<group>"; };
 		719310381EDDC2810065B5AD /* WBImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageUtils.m; sourceTree = "<group>"; };
 		719310391EDDC2810065B5AD /* WBSqlBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSqlBuilder.h; sourceTree = "<group>"; };
@@ -660,6 +658,7 @@
 		71CF7A131F1020590004F389 /* InputTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputTextCell.xib; sourceTree = "<group>"; };
 		71D59CDA1EDDC993008991B7 /* WBDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDateFormatter.h; sourceTree = "<group>"; };
 		71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDateFormatter.m; sourceTree = "<group>"; };
+		71E090F21F2F994B00C825A8 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		71E2B5751EEDD516001D02F1 /* Trips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trips.storyboard; sourceTree = "<group>"; };
 		71E2B5761EEDD516001D02F1 /* TripsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsDisplayData.swift; sourceTree = "<group>"; };
 		71E2B5771EEDD516001D02F1 /* TripsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsInteractor.swift; sourceTree = "<group>"; };
@@ -1842,6 +1841,7 @@
 				7191F0E71EE20EBA0082DA47 /* DateFormatter+Extensions.swift */,
 				714901BD1F058BBB00772B6F /* UIAlertView+Rx.swift */,
 				71F4683A1EEF2E55009F6CE7 /* Router+Extensions.swift */,
+				71E090F21F2F994B00C825A8 /* FileManager+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1872,8 +1872,6 @@
 				4D004BB61D272836004DBB19 /* SmartReceiptsFormattableString.swift */,
 				71CD20C81ED764DA006C4EE6 /* Currency.swift */,
 				719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */,
-				719310351EDDC2810065B5AD /* WBFileManager.h */,
-				719310361EDDC2810065B5AD /* WBFileManager.m */,
 				719310371EDDC2810065B5AD /* WBImageUtils.h */,
 				719310381EDDC2810065B5AD /* WBImageUtils.m */,
 				719310391EDDC2810065B5AD /* WBSqlBuilder.h */,
@@ -2722,7 +2720,6 @@
 				71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */,
 				7190D4511EE88CC40081CB22 /* GenerateReportInteractor.swift in Sources */,
 				5757D6101E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift in Sources */,
-				7193103F1EDDC2810065B5AD /* WBFileManager.m in Sources */,
 				A7AFB2461CEC219100718744 /* DatabaseTableNames.swift in Sources */,
 				A7F05BA21CFC038D0079F1AD /* ReceiptColumnTax.swift in Sources */,
 				EA183E051B1C9F4C00577B3D /* Database+Columns.m in Sources */,
@@ -2952,6 +2949,7 @@
 				EA40DC731B555D31003BF545 /* PDFPageRenderView.m in Sources */,
 				570515A71E04AA7D00BB8FE4 /* FirebaseAnalytics.swift in Sources */,
 				712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */,
+				71E090F31F2F994B00C825A8 /* FileManager+Extensions.swift in Sources */,
 				A7F05BB81CFC2C9D0079F1AD /* ReceiptColumnNetExchangedPricePlusTax.swift in Sources */,
 				7193102B1EDDB9960065B5AD /* WBAbstractPicker.m in Sources */,
 				71AF49E01EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift in Sources */,
