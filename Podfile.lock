@@ -159,7 +159,7 @@ DEPENDENCIES:
   - RMStore/KeychainPersistence (from `3rdparty/RMStore`)
   - RxBlocking
   - RxCocoa
-  - RxDataSources (~> 1.0)
+  - RxDataSources
   - RxSwift
   - RxTest
   - Tweaks
@@ -210,6 +210,6 @@ SPEC CHECKSUMS:
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
   Viperit: b45ecfde9f3e577a6afd8f91f4c88edb46e0ca25
 
-PODFILE CHECKSUM: 33a6f9c6150927c33572bad3889cd008493c6811
+PODFILE CHECKSUM: 27b25d67aea5dce46a849c5b758e7ae1439c4922
 
 COCOAPODS: 1.2.1
