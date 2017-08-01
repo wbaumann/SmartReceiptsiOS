@@ -164,7 +164,7 @@ class SettingsFormView: FormViewController {
             placeholder: LocalizedString("settings.min.receipt.price.placeholder"))
         .onChange({ row in
             let value = row.value == nil ? nil : Float(row.value!)
-            WBPreferences.setDefaultTaxPercentage(value ?? -1)
+            WBPreferences.setMinimumReceiptPriceToIncludeInReports(value ?? -1)
         })
             
         <<< textInput(LocalizedString("settings.user.id.label"),
