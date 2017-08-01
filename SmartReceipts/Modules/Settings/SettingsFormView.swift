@@ -158,13 +158,19 @@ class SettingsFormView: FormViewController {
         .onChange({ row in
             WBPreferences.setAllowDataEntryOutsideTripBounds(row.value!)
         })
-        
-        <<< decimalRow(LocalizedString("settings.min.receipt.price.label"),
-            float: WBPreferences.minimumReceiptPriceToIncludeInReports(),
-            placeholder: LocalizedString("settings.min.receipt.price.placeholder"))
-        .onChange({ row in
-            let value = row.value == nil ? nil : Float(row.value!)
-            WBPreferences.setMinimumReceiptPriceToIncludeInReports(value ?? -1)
+            
+        <<< DecimalRow() { row in
+            row.title = LocalizedString("settings.min.receipt.price.label")
+            let value = Int(WBPreferences.minimumReceiptPriceToIncludeInReports())
+            row.value = value == Int.min ? nil : Double(value)
+            row.placeholder = LocalizedString("settings.min.receipt.price.placeholder")
+        }.onChange({ row in
+            let value = row.value == nil ? Float(Int.min) : Float(row.value!)
+            WBPreferences.setMinimumReceiptPriceToIncludeInReports(value)
+        }).cellUpdate({ cell, _ in
+            cell.textField.textColor = AppTheme.themeColor
+        }).cellSetup({ cell, _ in
+            cell.textLabel?.numberOfLines = 3
         })
             
         <<< textInput(LocalizedString("settings.user.id.label"),
@@ -479,7 +485,7 @@ extension SettingsFormView {
         return DecimalRow() { row in
             row.title = title
             let value = Double(float)
-            row.value = value <= 0 ? nil : value
+            row.value = value == 0 ? nil : value
             row.placeholder = placeholder
             }.cellUpdate({ cell, _ in
                 cell.textField.textColor = AppTheme.themeColor
@@ -492,7 +498,7 @@ extension SettingsFormView {
         return DecimalRow() { row in
             row.title = title
             let value = dobule
-            row.value = value <= 0 ? nil : value
+            row.value = value == 0 ? nil : value
             row.placeholder = placeholder
             }.cellUpdate({ cell, _ in
                 cell.textField.textColor = AppTheme.themeColor
