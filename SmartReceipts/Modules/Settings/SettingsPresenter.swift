@@ -23,6 +23,7 @@ class SettingsPresenter: Presenter {
         super.viewHasLoaded()
         
         view.doneButton.rx.tap.subscribe(onNext: { [unowned self] in
+            NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsSettingsSaved, object: nil)
             self.router.close()
         }).disposed(by: bag)
         
