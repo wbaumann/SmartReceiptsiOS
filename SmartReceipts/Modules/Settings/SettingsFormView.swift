@@ -149,6 +149,8 @@ class SettingsFormView: FormViewController {
             }
         }).cellUpdate({ cell, _ in
             cell.textField.textColor = AppTheme.themeColor
+        }).cellSetup({ cell, _ in
+            cell.textLabel?.numberOfLines = 3
         })
         
         <<< switchRow(LocalizedString("settings.allow.data.outside.trip.bounds.label"),
@@ -423,9 +425,7 @@ extension SettingsFormView {
             row.value = value
             }.cellSetup({ cell, row in
                 cell.switchControl.onTintColor = AppTheme.themeColor
-                cell.textLabel?.adjustsFontSizeToFitWidth = true
-            }).cellUpdate({ cell, row in
-                
+                cell.textLabel?.numberOfLines = 3
             })
     }
     
@@ -483,6 +483,8 @@ extension SettingsFormView {
             row.placeholder = placeholder
             }.cellUpdate({ cell, _ in
                 cell.textField.textColor = AppTheme.themeColor
+            }).cellSetup({ cell, _ in
+                cell.textLabel?.numberOfLines = 3
             })
     }
     
@@ -494,6 +496,8 @@ extension SettingsFormView {
             row.placeholder = placeholder
             }.cellUpdate({ cell, _ in
                 cell.textField.textColor = AppTheme.themeColor
+            }).cellSetup({ cell, _ in
+                cell.textLabel?.numberOfLines = 3
             })
     }
 }
