@@ -80,7 +80,7 @@
 
 - (FetchedModelAdapter *)fetchedAdapterForCategories {
     DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:CategoriesTable.TABLE_NAME];
-    [select orderBy:CategoriesTable.COLUMN_NAME ascending:YES];
+    [select caseInsensitiveOrderBy:CategoriesTable.COLUMN_NAME ascending:YES];
     return [self createAdapterUsingQuery:select forModel:[WBCategory class]];
 }
 
