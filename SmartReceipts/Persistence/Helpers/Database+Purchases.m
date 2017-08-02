@@ -76,15 +76,8 @@
 
 - (RMAppReceiptIAP *)receiptForSubscription {
     RMAppReceipt *receipt = [RMAppReceipt bundleReceipt];
-    LOGGER_DEBUG(@"");
-    LOGGER_DEBUG(@"receipt:%@", receipt);
-    LOGGER_DEBUG(@"%tu IAP-s", receipt.inAppPurchases.count);
     RMAppReceiptIAP *latest;
     for (RMAppReceiptIAP *receiptIAP in receipt.inAppPurchases) {
-        LOGGER_DEBUG(@"IAP receipt:%@", receiptIAP);
-        LOGGER_DEBUG(@"Purchase: %@", receiptIAP.purchaseDate);
-        LOGGER_DEBUG(@"Original urchase: %@", receiptIAP.originalPurchaseDate);
-        LOGGER_DEBUG(@"Expire: %@", receiptIAP.subscriptionExpirationDate);
         if (![receiptIAP.productIdentifier isEqualToString:SmartReceiptSubscriptionIAPIdentifier]) {
             continue;
         }
