@@ -30,6 +30,7 @@ typedef NS_ENUM(short, StatementType) {
 @property (nonatomic, strong) NSDictionary *orderBy;
 @property (nonatomic, strong) NSMutableArray *caseInsensitiveWhereParams;
 @property (nonatomic, copy) NSString *rawQuery;
+@property (nonatomic) BOOL caseInsensitiveOrder;
 
 @end
 
@@ -164,7 +165,9 @@ typedef NS_ENUM(short, StatementType) {
 - (void)appendOrderBy:(NSMutableString *)query {
     NSString *key = self.orderBy.keyEnumerator.allObjects.firstObject;
     BOOL ascending = [self.orderBy[key] boolValue];
-    [query appendFormat:@" ORDER BY %@ %@", key, (ascending ? @"ASC" : @"DESC")];
+    [query appendFormat:@" ORDER BY %@",key];
+    [query appendFormat:self.caseInsensitiveOrder ? @" COLLATE NOCASE" : @""];
+    [query appendFormat:@" %@", ascending ? @"ASC" : @"DESC"];
 }
 
 - (void)appendJoinClause:(NSMutableString *)query {
@@ -267,8 +270,17 @@ typedef NS_ENUM(short, StatementType) {
 }
 
 - (void)orderBy:(NSString *)column ascending:(BOOL)ascending {
+    [self orderBy:column ascending:ascending caseInsensitive:NO];
+}
+
+- (void)caseInsensitiveOrderBy:(NSString *)column ascending:(BOOL)ascending {
+    [self orderBy:column ascending:ascending caseInsensitive:YES];
+}
+
+- (void)orderBy:(NSString *)column ascending:(BOOL)ascending caseInsensitive:(BOOL)caseInsensitive {
     WBAssertLoggable(!self.orderBy);
     self.orderBy = @{column : @(ascending)};
+    self.caseInsensitiveOrder = caseInsensitive;
 }
 
 @end
