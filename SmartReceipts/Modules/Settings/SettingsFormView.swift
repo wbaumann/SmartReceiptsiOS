@@ -257,6 +257,12 @@ class SettingsFormView: FormViewController {
             WBPreferences.setOnlyIncludeReimbursableReceiptsInReports(row.value!)
         })
             
+        <<< switchRow(LocalizedString("settings.default.reimbursable.label"),
+            value: WBPreferences.expensableDefault())
+        .onChange({ row in
+            WBPreferences.setExpensableDefault(row.value!)
+        })
+            
         <<< switchRow(LocalizedString("settings.default.receipt.date.to.start.date.label"),
             value: WBPreferences.defaultToFirstReportDate())
         .onChange({ row in

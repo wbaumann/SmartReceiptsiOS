@@ -21,6 +21,9 @@
 
 + (BOOL)onlyIncludeReimbursableReceiptsInReports;
 + (void)setOnlyIncludeReimbursableReceiptsInReports:(BOOL)onlyIncludeReimbursableReceiptsInReports;
+    
++ (BOOL)expensableDefault;
++ (void)setExpensableDefault:(BOOL)expensableDefault;
 
 + (BOOL)includeTaxField;
 + (void)setIncludeTaxField:(BOOL)includeTaxField;

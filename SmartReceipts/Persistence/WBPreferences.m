@@ -32,6 +32,7 @@ static NSString * const BOOL_MATCH_NAME_WITH_CATEGORIES = @"MatchNameCats";
 static NSString * const BOOL_USE_NATIVE_CAMERA = @"UseNativeCamera"; // UNUSED
 static NSString * const BOOL_ACTION_SEND_SHOW_HELP_DIALOG = @"ShowHelpDialog";
 static NSString * const BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS = @"OnlyIncludeReimbursable";
+static NSString * const BOOL_EXPENSABLE_DEFAULT = @"ExpensableDefault";
 static NSString * const BOOL_INCLUDE_TAX_FIELD = @"IncludeTaxField";
 static NSString * const STRING_CURRENCY = @"isocurr";
 static NSString * const STRING_DATE_SEPARATOR = @"dateseparator";
@@ -104,6 +105,7 @@ static NSDictionary *getEntryTypes() {
 
             BOOL_MATCH_NAME_WITH_CATEGORIES : tBool,
             BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS : tBool,
+            BOOL_EXPENSABLE_DEFAULT : tBool,
             BOOL_ACTION_SEND_SHOW_HELP_DIALOG : tBool,
 
             BOOL_INCLUDE_TAX_FIELD : tBool,
@@ -177,6 +179,7 @@ static NSDictionary *getDefaultValues() {
 
             BOOL_MATCH_NAME_WITH_CATEGORIES : @NO,
             BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS : @NO,
+            BOOL_EXPENSABLE_DEFAULT : @YES,
             BOOL_ACTION_SEND_SHOW_HELP_DIALOG : @YES,
 
             BOOL_INCLUDE_TAX_FIELD : @NO,
@@ -237,45 +240,59 @@ static NSUserDefaults* instance() {
 }
 
 
-+(BOOL) predictCategories {
++ (BOOL) predictCategories {
     return [instance() boolForKey:BOOL_PREDICT_CATEGORIES];
 }
-+(void) setPredictCategories:(BOOL) predictCategories {
+
++ (void) setPredictCategories:(BOOL) predictCategories {
     [instance() setBool:predictCategories forKey:BOOL_PREDICT_CATEGORIES];
 }
 
-+(BOOL) matchCommentToCategory {
++ (BOOL) matchCommentToCategory {
     return [instance() boolForKey:BOOL_MATCH_COMMENT_WITH_CATEGORIES];
 }
-+(void) setMatchCommentToCategory:(BOOL) matchCommentToCategory {
+
++ (void) setMatchCommentToCategory:(BOOL) matchCommentToCategory {
     [instance() setBool:matchCommentToCategory forKey:BOOL_MATCH_COMMENT_WITH_CATEGORIES];
 }
 
-+(BOOL) matchNameToCategory {
++ (BOOL) matchNameToCategory {
     return [instance() boolForKey:BOOL_MATCH_NAME_WITH_CATEGORIES];
 }
-+(void) setMatchNameToCategory:(BOOL) matchNameToCategory {
+    
++ (void) setMatchNameToCategory:(BOOL) matchNameToCategory {
     [instance() setBool:matchNameToCategory forKey:BOOL_MATCH_NAME_WITH_CATEGORIES];
 }
 
-+(BOOL) onlyIncludeReimbursableReceiptsInReports {
++ (BOOL) onlyIncludeReimbursableReceiptsInReports {
     return [instance() boolForKey:BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS];
 }
-+(void) setOnlyIncludeReimbursableReceiptsInReports:(BOOL) onlyIncludeReimbursableReceiptsInReports {
+    
++ (void) setOnlyIncludeReimbursableReceiptsInReports:(BOOL) onlyIncludeReimbursableReceiptsInReports {
     [instance() setBool:onlyIncludeReimbursableReceiptsInReports forKey:BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS];
 }
 
-+(BOOL) includeTaxField {
++ (BOOL)expensableDefault {
+    return [instance() boolForKey:BOOL_EXPENSABLE_DEFAULT];
+}
+
++ (void)setExpensableDefault:(BOOL)expensableDefault {
+    [instance() setBool:expensableDefault forKey:BOOL_EXPENSABLE_DEFAULT];
+}
+
++ (BOOL) includeTaxField {
     return [instance() boolForKey:BOOL_INCLUDE_TAX_FIELD];
 }
-+(void) setIncludeTaxField:(BOOL) includeTaxField {
+
++ (void) setIncludeTaxField:(BOOL) includeTaxField {
     [instance() setBool:includeTaxField forKey:BOOL_INCLUDE_TAX_FIELD];
 }
 
-+(NSString*) dateSeparator {
++ (NSString*) dateSeparator {
     return [instance() stringForKey:STRING_DATE_SEPARATOR];
 }
-+(void) setDateSeparator:(NSString*) dateSeparator {
+    
++ (void) setDateSeparator:(NSString*) dateSeparator {
     [instance() setObject:dateSeparator forKey:STRING_DATE_SEPARATOR];
 }
 
@@ -323,56 +340,63 @@ static NSUserDefaults* instance() {
     [instance() setObject:string forKey:PDF_FOOTER_STRING];
 }
 
-+(NSString*) defaultCurrency {
++ (NSString*) defaultCurrency {
     return [instance() stringForKey:STRING_CURRENCY];
 }
-+(void) setDefaultCurrency:(NSString*) defaultCurrency {
+
++ (void) setDefaultCurrency:(NSString*) defaultCurrency {
     [instance() setObject:defaultCurrency forKey:STRING_CURRENCY];
 }
 
-+(NSString*) userID {
++ (NSString*) userID {
     return [instance() stringForKey:STRING_USERNAME];
 }
-+(void) setUserID:(NSString*) userID {
+
++ (void) setUserID:(NSString*) userID {
     [instance() setObject:userID forKey:STRING_USERNAME];
 }
 
-+(NSString*) fullName {
++ (NSString*) fullName {
     return [instance() stringForKey:STRING_FULLNAME];
 }
-+(void) setFullName:(NSString*) fullName {
+
++ (void) setFullName:(NSString*) fullName {
     [instance() setObject:fullName forKey:STRING_FULLNAME];
 }
 
-+(int) defaultTripDuration {
++ (int) defaultTripDuration {
     return (int)[instance() integerForKey:INT_DEFAULT_TRIP_DURATION];
 }
-+(void) setDefaultTripDuration:(int) defaultTripDuration {
+
++ (void) setDefaultTripDuration:(int) defaultTripDuration {
     [instance() setInteger:defaultTripDuration forKey:INT_DEFAULT_TRIP_DURATION];
 }
 
-+(float) minimumReceiptPriceToIncludeInReports {
++ (float) minimumReceiptPriceToIncludeInReports {
     return [instance() floatForKey:FLOAT_MIN_RECEIPT_PRICE];
 }
-+(void) setMinimumReceiptPriceToIncludeInReports:(float) minimumReceiptPriceToIncludeInReports {
+
++ (void) setMinimumReceiptPriceToIncludeInReports:(float) minimumReceiptPriceToIncludeInReports {
     [instance() setFloat:minimumReceiptPriceToIncludeInReports forKey:FLOAT_MIN_RECEIPT_PRICE];
 }
 
-+(float) MIN_FLOAT {
++ (float) MIN_FLOAT {
     return MIN_FLOAT;
 }
 
-+(BOOL) defaultToFirstReportDate {
++ (BOOL) defaultToFirstReportDate {
     return [instance() boolForKey:BOOL_DEFAULT_TO_FIRST_TRIP_DATE];
 }
-+(void) setDefaultToFirstReportDate:(BOOL) defaultToFirstReportDate {
+
++ (void) setDefaultToFirstReportDate:(BOOL) defaultToFirstReportDate {
     [instance() setBool:defaultToFirstReportDate forKey:BOOL_DEFAULT_TO_FIRST_TRIP_DATE];
 }
 
-+(BOOL) includeCSVHeaders {
++ (BOOL) includeCSVHeaders {
     return [instance() boolForKey:BOOL_INCL_CSV_HEADERS];
 }
-+(void) setIncludeCSVHeaders:(BOOL) includeCSVHeaders {
+
++ (void) setIncludeCSVHeaders:(BOOL) includeCSVHeaders {
     [instance() setBool:includeCSVHeaders forKey:BOOL_INCL_CSV_HEADERS];
 }
 
@@ -537,18 +561,18 @@ static NSUserDefaults* instance() {
     [instance() setBool:value forKey:BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS];
 }
 
-+(void) save {
++ (void) save {
     [instance() synchronize];
 }
 
-//+(NSDecimalNumber*) MIN_FLOAT {
+//+ (NSDecimalNumber*) MIN_FLOAT {
 //    return MIN_FLOAT;
 //}
 
 // for import / export
 
 // sometimes shared prefs on android have doubled roots
-+(NSString*) stringWithFixedMultipleXmlRoots:(NSString*) originalXml {
++ (NSString*) stringWithFixedMultipleXmlRoots:(NSString*) originalXml {
     NSRange range = [originalXml rangeOfString:@"</map>"];
     if(range.location != NSNotFound){
         originalXml = [originalXml substringToIndex:(range.location + range.length)];
@@ -556,7 +580,7 @@ static NSUserDefaults* instance() {
     return originalXml;
 }
 
-+(void) setFromXmlString:(NSString*) xmlString {
++ (void) setFromXmlString:(NSString*) xmlString {
     NSUserDefaults *defaults = instance();
     
     xmlString = [WBPreferences stringWithFixedMultipleXmlRoots:xmlString];
@@ -599,7 +623,7 @@ static NSUserDefaults* instance() {
     });
 }
 
-+(NSString*) xmlString {
++ (NSString*) xmlString {
     [WBPreferences save];
     
     NSUserDefaults *defaults = instance();

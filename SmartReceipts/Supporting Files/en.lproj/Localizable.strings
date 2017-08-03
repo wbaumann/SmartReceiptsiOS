@@ -339,6 +339,7 @@
 "settings.min.receipt.price.placeholder" = "Price";
 "settings.name.label" = "Full Name";
 "settings.only.report.reimbursable.label" = "Only Report Reimbursable Receipts";
+"settings.default.reimbursable.label" = "Receipts Default As Reimbursable";
 "settings.pdf.configure.columns.label" = "Configure PDF Columns";
 "settings.pdf.footer.pro.message.body" = "Purchase Smart Receipts Plus subscription to remove or change this message in report footer";
 "settings.pdf.footer.pro.message.title" = "Smart Receipts Plus";
