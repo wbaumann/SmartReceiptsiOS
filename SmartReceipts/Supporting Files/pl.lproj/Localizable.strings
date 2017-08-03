@@ -339,6 +339,7 @@
 "settings.min.receipt.price.placeholder" = "Cena";
 "settings.name.label" = "Pełna nazwa";
 "settings.only.report.reimbursable.label" = "Raportuj tylko \"Zwrotowe w wydatki\"";
+"settings.default.reimbursable.label" = "Domyślnie przyjmuje faktury jako zwrot";
 "settings.pdf.configure.columns.label" = "Configure PDF Columns";
 "settings.pdf.footer.pro.message.body" = "Purchase Smart Receipts Plus subscription to remove or change this message in report footer";
 "settings.pdf.footer.pro.message.title" = "SmartReceipts Plus";
