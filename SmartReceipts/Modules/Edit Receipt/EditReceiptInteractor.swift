@@ -33,6 +33,8 @@ class EditReceiptInteractor: Interactor {
     private func save(receipt: WBReceipt) {
         if !Database.sharedInstance().save(receipt) {
             presenter.present(errorDescription: LocalizedString("edit.receipt.generic.save.error.message"))
+            let action = receipt.objectId == 0 ? "insert" : "update"
+            Logger.error("Can't \(action) receipt: \(receipt.description)")
         } else {
             validateDate(in: receipt)
             presenter.close()

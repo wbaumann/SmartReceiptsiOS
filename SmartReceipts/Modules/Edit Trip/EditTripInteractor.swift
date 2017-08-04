@@ -17,17 +17,24 @@ class EditTripInteractor: Interactor {
     func configureSubscribers() {
         presenter.updateTripSubject.subscribe(onNext: { [weak self] trip in
             Logger.debug("Update Trip: \(trip.name)")
-            Database.sharedInstance().update(trip) ? self?.presenter.close() : self?.onSaveError()
+            self?.save(trip: trip, update: true)
         }).disposed(by: disposeBag)
         
         presenter.addTripSubject.subscribe(onNext: { [weak self] trip in
             Logger.debug("Add Trip: \(trip.name)")
-            Database.sharedInstance().save(trip) ? self?.presenter.close() : self?.onSaveError()
+            self?.save(trip: trip)
         }).disposed(by: disposeBag)
     }
     
-    func onSaveError() {
-        presenter.presentAlert(title: nil, message: LocalizedString("edit.trip.generic.save.error.message"))
+    func save(trip: WBTrip, update: Bool = false) {
+        let success = update ? Database.sharedInstance().update(trip) : Database.sharedInstance().save(trip)
+        if success {
+            self.presenter.close()
+        } else {
+            let action = update ? "update" : "insert"
+            Logger.error("Can't \(action) report: \(trip.description)")
+            presenter.presentAlert(title: nil, message: LocalizedString("edit.trip.generic.save.error.message"))
+        }
     }
 }
 

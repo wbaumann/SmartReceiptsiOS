@@ -116,6 +116,14 @@
     return [self.name compare:self.originalName] != NSOrderedSame;
 }
 
+- (NSString *)description {
+    NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+    [description appendFormat:@"name: %@, ", self.name];
+    [description appendFormat:@"startDate: %@", self.startDate];
+    [description appendString:@">"];
+    return description;
+}
+
 - (BOOL)isEqual:(id)other {
     if (other == self) {
         return YES;
