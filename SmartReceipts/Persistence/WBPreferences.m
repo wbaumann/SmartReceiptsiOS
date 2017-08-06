@@ -197,7 +197,7 @@ static NSDictionary *getDefaultValues() {
             BOOL_CAMERA_ROTATE_IMAGE : @YES,
 
             BOOL_INCLUDE_MILEAGE_TOTAL_IN_REPORT: @NO,
-            FLOAT_DEFAULT_MILEAGE_RATE: @(MIN_FLOAT),
+            FLOAT_DEFAULT_MILEAGE_RATE: @(0),
             BOOL_PRINT_MILEAGE_TABLE: @YES,
             BOOL_DAILY_DISTANCE_REPORT: @NO,
 
