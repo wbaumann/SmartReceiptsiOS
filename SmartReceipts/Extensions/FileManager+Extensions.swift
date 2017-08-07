@@ -68,9 +68,8 @@ extension FileManager {
     }
     
     class func forceWrite(data: Data, to newFile: String) -> Bool {
-        let toPath = WBTextUtils.omitIllegalCharacters(newFile)!
-        FileManager.prepareDirForForceFile(newFile: toPath)
-        if !(data as NSData).write(toFile: toPath, atomically: true) {
+        FileManager.prepareDirForForceFile(newFile: newFile)
+        if !(data as NSData).write(toFile: newFile, atomically: true) {
             Logger.error("Failed to write data to file")
             return false
         }
@@ -78,11 +77,9 @@ extension FileManager {
     }
 
     class func forceCopy(from oldFile: String, to newFile: String) -> Bool {
-        let toPath = WBTextUtils.omitIllegalCharacters(newFile)!
-        let fromPath = WBTextUtils.omitIllegalCharacters(oldFile)!
-        FileManager.prepareDirForForceFile(newFile: toPath)
+        FileManager.prepareDirForForceFile(newFile: newFile)
         do {
-            try FileManager.default.copyItem(atPath: fromPath, toPath: toPath)
+            try FileManager.default.copyItem(atPath: oldFile, toPath: newFile)
             return true
         } catch {
             Logger.error("Failed to write data to file")

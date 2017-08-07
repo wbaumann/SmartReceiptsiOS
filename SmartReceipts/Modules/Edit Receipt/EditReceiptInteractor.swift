@@ -45,7 +45,7 @@ class EditReceiptInteractor: Interactor {
         if let img = receiptImage {
             var imgFileName = ""
             let nextId = Database.sharedInstance().nextReceiptID()
-            imgFileName = String(format: "%tu_%@.jpg", nextId, receipt.name)
+            imgFileName = String(format: "%tu_%@.jpg", nextId, receipt.omittedName)
             let path = receipt.trip.file(inDirectoryPath: imgFileName)
             if !FileManager.forceWrite(data: UIImageJPEGRepresentation(img, 0.85)!, to: path!) {
                 imgFileName = ""
