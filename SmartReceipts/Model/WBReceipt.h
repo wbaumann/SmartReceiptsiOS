@@ -33,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly, nullable) NSDecimalNumber * taxAmount;
 @property (nonatomic, strong, nullable) NSDecimalNumber *exchangeRate;
 @property (nonatomic, strong, readonly, nonnull) Currency *currency;
+@property (nonatomic, readonly) NSString *omittedName;
 
 - (id)initWithId:(NSUInteger)rid
             name:(NSString *)name

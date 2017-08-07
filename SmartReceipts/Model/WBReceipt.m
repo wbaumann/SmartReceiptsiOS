@@ -13,6 +13,7 @@
 #import "DatabaseTableNames.h"
 #import "Constants.h"
 #import "NSDate+Calculations.h"
+#import "WBTextUtils.h"
 
 static NSString* checkNoData(NSString* str) {
     if ([SRNoData caseInsensitiveCompare:str] == NSOrderedSame) {
@@ -91,6 +92,10 @@ static NSString* checkNoData(NSString* str) {
 
 -(NSString*)imageFileName {
     return _fileName;
+}
+
+- (NSString *)omittedName {
+    return [WBTextUtils omitIllegalCharacters:self.name];
 }
 
 -(NSTimeZone*)timeZone {

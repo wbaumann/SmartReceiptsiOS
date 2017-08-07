@@ -18,7 +18,7 @@ class ReceiptActionsInteractor: Interactor {
     }
     
     func attachImage(_ image: UIImage, to receipt: WBReceipt) -> Bool {
-        let imageFileName = String(format: "%tu_%@.jpg", receipt.receiptId(), receipt.name)
+        let imageFileName = String(format: "%tu_%@.jpg", receipt.receiptId(), receipt.omittedName)
         let path = receipt.trip.file(inDirectoryPath: imageFileName)
         if !FileManager.forceWrite(data: UIImageJPEGRepresentation(image, 0.85)!, to: path!) {
             return false
@@ -35,7 +35,7 @@ class ReceiptActionsInteractor: Interactor {
         let file = WBAppDelegate.instance().filePathToAttach!
         let ext = (file as NSString).pathExtension
         
-        let imageFileName = String(format: "%tu_%@.%@", receipt.receiptId(), receipt.name, ext)
+        let imageFileName = String(format: "%tu_%@.%@", receipt.receiptId(), receipt.omittedName, ext)
         let newFile = receipt.trip.file(inDirectoryPath: imageFileName)
         
         if !FileManager.forceCopy(from: file, to: newFile!) {
