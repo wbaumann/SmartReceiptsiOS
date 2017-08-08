@@ -31,7 +31,7 @@ class TripsRouter: Router {
     }
     
     func openDetails(trip: WBTrip) {
-        let module = Module.build(AppModules.receipts)
+        let module = AppModules.receipts.build()
         module.presenter.setupView(data: trip)
         executeFor(iPhone: { 
             module.router.show(from: _view)
@@ -49,10 +49,10 @@ class TripsRouter: Router {
     
     private func openEditTrip(_ trip: WBTrip?) {
         executeFor(iPhone: {
-            Module.build(AppModules.editTrip).router.show(from: _view,
+            AppModules.editTrip.build().router.show(from: _view,
                                                 embedInNavController: true, setupData: trip)
         }, iPad: {
-            Module.build(AppModules.editTrip).router.showIPadForm(from: _view, setupData: trip, needNavigationController: true)
+            AppModules.editTrip.build().router.showIPadForm(from: _view, setupData: trip, needNavigationController: true)
         })
     }
     

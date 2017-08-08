@@ -109,8 +109,8 @@ fileprivate func buttonRow(tag: String? = nil, title: String, bindSubject: Publi
         ButtonRow(tag) { row in
             row.title = title
             row.hidden = condition
-        }.onCellSelection({ _, _ in
-            bindSubject.onNext()
+        }.onCellSelection({ [weak bindSubject] _, _ in
+            bindSubject?.onNext()
         }).cellUpdate({ cell, row in
             cell.textLabel?.textAlignment = .left
         }).cellSetup({ cell, _ in

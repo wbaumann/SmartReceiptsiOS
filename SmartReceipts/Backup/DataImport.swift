@@ -81,7 +81,7 @@ class DataImport: NSObject {
         stream.finishedReading()
         
         Logger.debug("File size \(resultData.length)")
-        FileManager.forceWrite(data: resultData as Data, to: toFile)
+        _ = FileManager.forceWrite(data: resultData as Data, to: toFile)
         Logger.debug("Written to \(toFile)")
     }
     

@@ -11,7 +11,7 @@ import Viperit
 
 class TripDistancesRouter: Router {
     func showEditDistance(with data: Any?) {
-        let module = Module.build(AppModules.editDistance)
+        let module = AppModules.editDistance.build()
         module.router.show(from: _view, embedInNavController: false, setupData: data)
     }
 }

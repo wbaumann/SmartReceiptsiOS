@@ -17,7 +17,7 @@ class ReceiptsRouter: Router {
     private let disposeBag = DisposeBag()
     
     func openDistances() {
-        let module = Module.build(AppModules.tripDistances)
+        let module = AppModules.tripDistances.build()
         executeFor(iPhone: {
             module.router.show(from: _view, embedInNavController: true, setupData: moduleTrip)
         }, iPad: {
@@ -29,7 +29,7 @@ class ReceiptsRouter: Router {
         Observable<Void>.just()
             .delay(0, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [unowned self] in
-                let module = Module.build(AppModules.receiptImageViewer)
+                let module = AppModules.receiptImageViewer.build()
                 module.router.show(from: self._view, embedInNavController: false, setupData: receipt)
             }).disposed(by: disposeBag)
     }
@@ -47,7 +47,7 @@ class ReceiptsRouter: Router {
     }
     
     func openGenerateReport() {
-        let module = Module.build(AppModules.generateReport)
+        let module = AppModules.generateReport.build()
         executeFor(iPhone: {
             module.router.show(from: _view, embedInNavController: true, setupData: moduleTrip)
         }, iPad: {
@@ -68,7 +68,7 @@ class ReceiptsRouter: Router {
     }
     
     func openActions(receipt: WBReceipt) -> ReceiptActionsPresenter {
-        let module = Module.build(AppModules.receiptActions)
+        let module = AppModules.receiptActions.build()
         executeFor(iPhone: {
             module.router.show(from: _view, embedInNavController: true, setupData: receipt)
         }, iPad: {
@@ -82,7 +82,7 @@ class ReceiptsRouter: Router {
     }
     
     private func openEditModuleWith(receipt: WBReceipt?, image: UIImage?) {
-        let module = Module.build(AppModules.editReceipt)
+        let module = AppModules.editReceipt.build()
         let data = (trip: moduleTrip, receipt: receipt, image: image)
         executeFor(iPhone: {
             module.router.show(from: _view, embedInNavController: true, setupData: data)

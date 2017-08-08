@@ -85,7 +85,7 @@ extension AdPresentingContainerViewController: GADNativeExpressAdViewDelegate {
 
 class AdNavigationEntryPoint: UINavigationController {
     override func viewDidLoad() {
-        let module = Module.build(AppModules.trips)
+        let module = AppModules.trips.build()
         show(module.view, sender: nil)
     }
 }
