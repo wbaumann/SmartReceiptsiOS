@@ -73,6 +73,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             self.receipt.name = row.value ?? ""
         }).cellSetup({ cell, _ in
             cell.configureCell()
+            cell.textField.becomeFirstResponder()
             if WBPreferences.isAutocompleteEnabled() {
                 cell.enableAutocompleteHelper()
             }
