@@ -15,6 +15,7 @@ import StoreKit
 //MARK: - Public Interface Protocol
 protocol SettingsViewInterface {
     var doneButton: UIBarButtonItem { get }
+    func setupShowSettingsOption(_ option: ShowSettingsOption?)
 }
 
 //MARK: SettingsView Class
@@ -31,6 +32,7 @@ final class SettingsView: UserInterface {
         navigationItem.title = LocalizedString("settings.controller.title")
         
         formView = SettingsFormView(settingsView: self)
+        formView.showOption = displayData.showSettingsOption
         formView.openModuleSubject = presenter.openModuleSubject
         formView.alertSubject = presenter.alertSubject
         
@@ -59,6 +61,10 @@ final class SettingsView: UserInterface {
 //MARK: - Public interface
 extension SettingsView: SettingsViewInterface {
     var doneButton: UIBarButtonItem { get{ return doneButtonItem } }
+    
+    func setupShowSettingsOption(_ option: ShowSettingsOption?) {
+        displayData.showSettingsOption = option
+    }
 }
 
 //MARK: Email Composer

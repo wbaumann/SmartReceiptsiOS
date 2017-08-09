@@ -10,5 +10,5 @@ import Foundation
 import Viperit
 
 class SettingsDisplayData: DisplayData {
-
+    var showSettingsOption: ShowSettingsOption?
 }
