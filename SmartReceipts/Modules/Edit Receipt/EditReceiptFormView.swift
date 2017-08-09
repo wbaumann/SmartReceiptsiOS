@@ -90,6 +90,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             }
         }).cellSetup({ cell, _ in
             cell.configureCell()
+            cell.textField.keyboardType = .numbersAndPunctuation
         })
             
         <<< DecimalRow() { row in
@@ -103,11 +104,11 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
                     row.updateCell()
                 }).disposed(by: disposeBag)
             }
-            
         }.onChange({ [unowned self] row in
             self.receipt.setTax(NSDecimalNumber(value: row.value ?? 0))
         }).cellSetup({ cell, _ in
             cell.configureCell()
+            cell.textField.keyboardType = .numbersAndPunctuation
         })
         
         <<< PickerInlineRow<String>(CURRENCY_ROW_TAG) { row in
