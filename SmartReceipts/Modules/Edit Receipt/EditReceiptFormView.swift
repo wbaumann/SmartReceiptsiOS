@@ -15,6 +15,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     private let CURRENCY_ROW_TAG = "CurrencyRow"
     private let NAME_ROW_TAG = "NameRow"
     private let EXCHANGE_RATE_TAG = "ExchangeRateRow"
+    private let DEFAULT_TAX_PERCENTAGE: Float = -1.0
     
     let receiptSubject = PublishSubject<WBReceipt>()
     let errorSubject = PublishSubject<String>()
@@ -42,7 +43,9 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         } else {
             self.receipt = receipt!.copy() as! WBReceipt
         }
-        taxCalculator = WBPreferences.includeTaxField() ? TaxCalculator() : nil
+        if WBPreferences.includeTaxField() && WBPreferences.defaultTaxPercentage() != DEFAULT_TAX_PERCENTAGE {
+            taxCalculator = TaxCalculator()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
