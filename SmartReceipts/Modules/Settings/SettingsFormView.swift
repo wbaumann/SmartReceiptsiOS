@@ -22,6 +22,8 @@ class SettingsFormView: FormViewController {
     fileprivate var removeAdsProduct: SKProduct?
     fileprivate let bag = DisposeBag()
     
+    var showOption: ShowSettingsOption?
+    
     init(settingsView: SettingsView) {
         super.init(nibName: nil, bundle: nil)
         self.settingsView = settingsView
@@ -47,6 +49,7 @@ class SettingsFormView: FormViewController {
                 })
             }).disposed(by: bag)
         }
+        applySettingsOption()
     }
     
     override func viewDidLoad() {
@@ -416,6 +419,16 @@ class SettingsFormView: FormViewController {
         purchaseRow.setSubscriptionEnd(date: Database.sharedInstance().subscriptionEndDate())
         purchaseRow.markPurchased()
         footerRow.isEnabled = true
+    }
+    
+    private func applySettingsOption() {
+        if let option = showOption {
+            if option == .openFromGenerateReportModule {
+                DispatchQueue.main.async { [unowned self] in
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 6), at: .top, animated: false)
+                }
+            }
+        }
     }
 }
 

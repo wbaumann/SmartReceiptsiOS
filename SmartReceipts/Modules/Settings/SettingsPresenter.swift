@@ -19,6 +19,10 @@ class SettingsPresenter: Presenter {
     let alertSubject = PublishSubject<AlertTuple>()
     private let bag = DisposeBag()
     
+    override func setupView(data: Any) {
+        view.setupShowSettingsOption(data as? ShowSettingsOption)
+    }
+    
     override func viewHasLoaded() {
         super.viewHasLoaded()
         
@@ -47,6 +51,10 @@ class SettingsPresenter: Presenter {
     func purchaseSubscription() -> Observable<Void> {
         return interactor.purchaseSubscription()
     }
+}
+
+enum ShowSettingsOption {
+    case openFromGenerateReportModule
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

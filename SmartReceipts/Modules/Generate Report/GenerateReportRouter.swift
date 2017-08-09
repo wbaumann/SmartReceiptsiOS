@@ -26,10 +26,11 @@ class GenerateReportRouter: Router {
         AnalyticsManager.sharedManager.record(event: Event.informationalConfigureReport())
         
         let module = AppModules.settings.build()
+        module.presenter.setupView(data: ShowSettingsOption.openFromGenerateReportModule)
         executeFor(iPhone: {
-            module.router.show(from: _view)
+            module.router.show(from: _view, embedInNavController: true)
         }, iPad: {
-            module.router.showIPadForm(from: _view)
+            module.router.showIPadForm(from: _view, needNavigationController: true)
         })
     }
     
