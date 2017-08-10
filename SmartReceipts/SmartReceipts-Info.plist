@@ -94,8 +94,6 @@
 	<string>${PRODUCT_NAME} cannot import photos unless you give it permission.</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Advertisement would like to create a calendar event.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Advertisement would like to store a photo.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Advertisement would like to use bluetooth.</string>
 	<key>UILaunchStoryboardName</key>
