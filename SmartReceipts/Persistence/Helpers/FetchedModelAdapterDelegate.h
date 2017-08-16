@@ -8,13 +8,14 @@
 
 @protocol FetchedModelAdapterDelegate
 
+@optional
 - (void)willChangeContent;
+- (void)didSetModels:(NSArray *)models;
 - (void)didInsertObject:(id)object atIndex:(NSUInteger)index;
 - (void)didDeleteObject:(id)object atIndex:(NSUInteger)index;
 - (void)didUpdateObject:(id)object atIndex:(NSUInteger)index;
 - (void)didMoveObject:(id)object fromIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
 - (void)didChangeContent;
-
 - (void)reloadData;
 
 @end

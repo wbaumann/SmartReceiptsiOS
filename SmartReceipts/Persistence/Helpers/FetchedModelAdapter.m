@@ -39,6 +39,11 @@
     return self;
 }
 
+- (void)setModels:(NSArray *)models {
+    _models = models;
+    [self.delegate didSetModels:models];
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

@@ -20,7 +20,7 @@ protocol ReceiptsViewInterface {
 }
 
 //MARK: ReceiptsView Class
-final class ReceiptsView: FetchedCollectionViewControllerSwift {
+final class ReceiptsView: FetchedTableViewController {
     
     static var sharedInputCache = [String: Date]()
     
@@ -41,7 +41,7 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
     private var lastDateSeparator: String!
     private var showAttachmentMarker = false
     
-    var receiptsCount: Int { get{ return numberOfItems() } }
+    var receiptsCount: Int { get { return itemsCount } }
     override var placeholderTitle: String { get { return LocalizedString("fetched.placeholder.receipts.title") } }
     
     override func viewDidLoad() {
@@ -92,7 +92,7 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
     
     
     private func updateEditButton() {
-        editButtonItem.isEnabled = numberOfItems() > 0
+        editButtonItem.isEnabled = itemsCount > 0
     }
     
     deinit {
@@ -100,7 +100,7 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
     }
     
     private func dailyTotal() -> String {
-        var receipts = self.allObjects() as? [WBReceipt] ?? [WBReceipt]()
+        var receipts = fetchedItems as! [WBReceipt]
         let priceCollection = PricesCollection()
         priceCollection.addPrice(Price(currencyCode: WBPreferences.defaultCurrency()))
         if WBPreferences.printDailyDistanceValues() {
@@ -128,7 +128,7 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
     
     private func computePriceWidth() -> CGFloat {
         var maxWidth: CGFloat = 0
-        for i in 0..<numberOfItems() {
+        for i in 0..<itemsCount {
             let receipt = objectAtIndexPath(IndexPath(row: i, section: 0)) as! WBReceipt
             let str = receipt.formattedPrice()
             let b = (str as NSString).boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics, attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 21)], context: nil)
@@ -138,9 +138,9 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
         return max(view.bounds.width/6, maxWidth)
     }
     
-    override func configureCell(_ cell: UITableViewCell, indexPath: IndexPath, object: Any) {
+    override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
         let cell = cell as! ReceiptSummaryCell
-        let receipt = object as! WBReceipt
+        let receipt = item as! WBReceipt
         
         cell.priceField.text = receipt.formattedPrice()
         cell.nameField.text = receipt.name
@@ -148,9 +148,11 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
         cell.categoryLabel.text = showReceiptCategory ? receipt.category : ""
         cell.markerLabel.text = showAttachmentMarker ? receipt.attachmentMarker() : ""
         cell.priceWidthConstraint.constant = _priceWidth
+        cell.layoutIfNeeded()
     }
 
     override func contentChanged() {
+        super.contentChanged()
         updateEditButton()
         updatePricesWidth()
         updateTitle()
@@ -190,7 +192,6 @@ final class ReceiptsView: FetchedCollectionViewControllerSwift {
         showReceiptDate = WBPreferences.layoutShowReceiptDate()
         showReceiptCategory = WBPreferences.layoutShowReceiptCategory()
         showAttachmentMarker = WBPreferences.layoutShowReceiptAttachmentMarker()
-        tableView.reloadData()
     }
 }
 

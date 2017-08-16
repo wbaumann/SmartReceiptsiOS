@@ -15,7 +15,7 @@ protocol ReceiptMoveCopyViewInterface {
 }
 
 //MARK: ReceiptMoveCopyView Class
-final class ReceiptMoveCopyView: FetchedCollectionViewControllerSwift {
+final class ReceiptMoveCopyView: FetchedTableViewController {
 
     var isCopyOrMove: Bool!
     
@@ -31,10 +31,10 @@ final class ReceiptMoveCopyView: FetchedCollectionViewControllerSwift {
             navigationItem.title = LocalizedString("move.copy.receipt.controller.move.title")
         }
     }
-
-    override func configureCell(_ cell: UITableViewCell, indexPath: IndexPath, object: Any) {
+    
+    override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
         let titleCell = cell as! TitleOnlyCell
-        let trip = object as! WBTrip
+        let trip = item as! WBTrip
         titleCell.setTitle(trip.name)
     }
     
