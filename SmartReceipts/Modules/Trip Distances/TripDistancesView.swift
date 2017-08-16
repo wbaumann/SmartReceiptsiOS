@@ -19,7 +19,7 @@ protocol TripDistancesViewInterface {
 }
 
 //MARK: TripDistances View
-class TripDistancesView: FetchedCollectionViewControllerSwift {
+class TripDistancesView: FetchedTableViewController {
     
     private let dateFormatter = DateFormatter()
     private var maxRateWidth: CGFloat = 0
@@ -39,20 +39,10 @@ class TripDistancesView: FetchedCollectionViewControllerSwift {
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {
         return presenter.fetchedModelAdapter(for: trip!)
     }
-    
-    override func delete(object: Any!, at indexPath: IndexPath) {
-        if let distance = object as? Distance {
-            presenter.delete(distance: distance)
-        }
-    }
-    
-    override func tappedObject(_ tapped: Any, indexPath: IndexPath) {
-        showEditDistance(with: (trip, tapped as? Distance))
-    }
-    
+
     func findMaxRateWidth() -> CGFloat {
         var max: CGFloat = 0
-        for row in 0..<numberOfItems() {
+        for row in 0..<itemsCount {
             if let distance = objectAtIndexPath(IndexPath(row: row, section: 0)) as? Distance {
                 let distanceString = Price.stringFrom(amount: distance.distance)
                 let bounds = distanceString.boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics,
@@ -69,6 +59,7 @@ class TripDistancesView: FetchedCollectionViewControllerSwift {
     }
     
     override func contentChanged() {
+        super.contentChanged()
         maxRateWidth = findMaxRateWidth()
         for cell in tableView.visibleCells {
             if let dsCell = cell as? DistanceSummaryCell {
@@ -77,9 +68,9 @@ class TripDistancesView: FetchedCollectionViewControllerSwift {
         }
     }
     
-    override func configureCell(_ cell: UITableViewCell, indexPath: IndexPath, object: Any) {
+    override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
         if let summaryCell = cell as? DistanceSummaryCell {
-            if let distance = object as? Distance {
+            if let distance = item as? Distance {
                 dateFormatter.configure(timeZone: distance.timeZone!)
                 summaryCell.distanceLabel.text = Price.stringFrom(amount: distance.distance)
                 summaryCell.destinationLabel.text = distance.location;
@@ -88,6 +79,16 @@ class TripDistancesView: FetchedCollectionViewControllerSwift {
                 summaryCell.setPriceLabelWidth(maxRateWidth)
             }
         }
+    }
+    
+    override func delete(object: Any!, at indexPath: IndexPath) {
+        if let distance = object as? Distance {
+            presenter.delete(distance: distance)
+        }
+    }
+    
+    override func tappedObject(_ tapped: Any, indexPath: IndexPath) {
+        showEditDistance(with: (trip, tapped as? Distance))
     }
     
     //MARK: Actions

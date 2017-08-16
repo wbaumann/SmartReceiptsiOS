@@ -15,7 +15,7 @@ protocol CategoriesViewInterface {
 }
 
 //MARK: CategoriesView Class
-final class CategoriesView: FetchedCollectionViewControllerSwift {
+final class CategoriesView: FetchedTableViewController {
     
     @IBOutlet private weak var addItem: UIBarButtonItem!
     
@@ -32,9 +32,9 @@ final class CategoriesView: FetchedCollectionViewControllerSwift {
         }).disposed(by: bag)
     }
     
-    override func configureCell(_ cell: UITableViewCell, indexPath: IndexPath, object: Any) {
+    override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
         let categoryCell = cell as! CategoryCell
-        let category = object as! WBCategory
+        let category = item as! WBCategory
         categoryCell.textLabel?.text = category.name
         categoryCell.detailTextLabel?.text = category.code
     }

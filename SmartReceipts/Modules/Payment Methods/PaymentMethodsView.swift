@@ -15,7 +15,7 @@ protocol PaymentMethodsViewInterface {
 }
 
 //MARK: PaymentMethodsView Class
-final class PaymentMethodsView: FetchedCollectionViewControllerSwift {
+final class PaymentMethodsView: FetchedTableViewController {
     
     @IBOutlet private weak var addItem: UIBarButtonItem!
     
@@ -31,10 +31,10 @@ final class PaymentMethodsView: FetchedCollectionViewControllerSwift {
             _ = self.showEditPaymentMethod().bind(to: self.presenter.paymentMethodAction)
         }).disposed(by: bag)
     }
- 
-    override func configureCell(_ cell: UITableViewCell, indexPath: IndexPath, object: Any) {
+    
+    override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
         let titleCell = cell as! TitleOnlyCell
-        let method = object as! PaymentMethod
+        let method = item as! PaymentMethod
         titleCell.setTitle(method.method)
     }
     

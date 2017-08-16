@@ -17,7 +17,7 @@ protocol TripsViewInterface {
 }
 
 //MARK: Trips View
-final class TripsView: FetchedCollectionViewControllerSwift {
+final class TripsView: FetchedTableViewController {
     
     @IBOutlet fileprivate weak var _settingsButton: UIBarButtonItem!
     @IBOutlet fileprivate weak var _addButton: UIBarButtonItem!
@@ -25,6 +25,7 @@ final class TripsView: FetchedCollectionViewControllerSwift {
     private var priceWidth: CGFloat = 0
     private let dateFormatter = WBDateFormatter()
     private var lastDateSeparator: String!
+    private let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +59,7 @@ final class TripsView: FetchedCollectionViewControllerSwift {
     }
     
     func updateEditButton() {
-        editButtonItem.isEnabled = numberOfItems() > 0
+        editButtonItem.isEnabled = itemsCount > 0
     }
     
     override var placeholderTitle: String {
@@ -83,10 +84,11 @@ final class TripsView: FetchedCollectionViewControllerSwift {
         }
     }
     
+    
     private func computePriceWidth() -> CGFloat {
         var maxWidth: CGFloat = 0
         
-        for i in 0..<numberOfItems() {
+        for i in 0..<itemsCount {
             let trip = objectAtIndexPath(IndexPath(row: i, section: 0)) as! WBTrip
             var formattedPrice = trip.formattedPrice()
             
@@ -108,16 +110,27 @@ final class TripsView: FetchedCollectionViewControllerSwift {
         return min((view.bounds.width - priceLabelSpacing * 2 - priceToNameSpacing)/2, maxWidth)
     }
     
-    override func configureCell(_ cell: UITableViewCell, indexPath: IndexPath, object: Any) {
+    override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
         let pCell = cell as! WBCellWithPriceNameDate
-        let trip = object as! WBTrip
+        let trip = item as! WBTrip
         
         pCell.priceField.text = trip.formattedPrice()
         pCell.nameField.text = trip.name
         pCell.dateField.text = String(format: LocalizedString("trips.controller.from.to.date.label.base"),
-            dateFormatter.formattedDate(trip.startDate, in: trip.startTimeZone),
-            dateFormatter.formattedDate(trip.endDate, in: trip.endTimeZone))
+                                      dateFormatter.formattedDate(trip.startDate, in: trip.startTimeZone),
+                                      dateFormatter.formattedDate(trip.endDate, in: trip.endTimeZone))
         pCell.priceWidthConstraint.constant = priceWidth
+        pCell.layoutIfNeeded()
+    }
+    
+    
+    override func configureSubrcibers(for adapter: FetchedModelAdapter?) {
+        super.configureSubrcibers(for: adapter)
+        guard let fetchedModelAdapter = adapter else { return }
+        
+        fetchedModelAdapter.rx.didInsert.subscribe(onNext: { [unowned self] action in
+            self.presenter.tripDetailsSubject.onNext(action.object as! WBTrip)
+        }).addDisposableTo(bag)
     }
     
     override func delete(object: Any!, at indexPath: IndexPath) {
@@ -133,18 +146,14 @@ final class TripsView: FetchedCollectionViewControllerSwift {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: animated)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
-            self.reloadData()
+            self.tableView.reloadData()
         }
     }
     
     override func contentChanged() {
+        super.contentChanged()
         updatePricesWidth()
         updateEditButton()
-    }
-    
-    override func didInsert(_ object: Any!, at index: UInt) {
-        super.didInsert(object, at: index)
-        presenter.tripDetailsSubject.onNext(object as! WBTrip)
     }
 }
 
