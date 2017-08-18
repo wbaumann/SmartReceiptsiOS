@@ -12,6 +12,7 @@
 
 @property (nonatomic, assign) BOOL willChangeCalled;
 @property (nonatomic, assign) BOOL didChangeCalled;
+@property (nonatomic, assign) BOOL didSetModelsCalled;
 @property (nonatomic, assign) NSUInteger insertIndex;
 @property (nonatomic, assign) NSUInteger deleteIndex;
 @property (nonatomic, assign) NSUInteger updateIndex;
@@ -27,6 +28,10 @@
 
 - (void)willChangeContent {
     [self setWillChangeCalled:YES];
+}
+
+- (void)didSetModels:(NSArray *)models {
+    [self setDidSetModelsCalled:YES];
 }
 
 - (void)didInsertObject:(id)object atIndex:(NSUInteger)index {

@@ -29,7 +29,7 @@ class ReceiptMoveCopyModuleTest: XCTestCase {
         let i = ReceiptMoveCopyInteractor()
         let r = ReceiptMoveCopyRouter()
         
-        var module = Module.build(AppModules.receiptMoveCopy)
+        var module = AppModules.receiptMoveCopy.build()
         module.injectMock(presenter: MockReceiptMoveCopyPresenter().spy(on: p))
         module.injectMock(interactor: MockReceiptMoveCopyInteractor().spy(on: i))
         module.injectMock(router: MockReceiptMoveCopyRouter().spy(on: r))

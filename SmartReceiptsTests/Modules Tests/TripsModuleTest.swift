@@ -30,7 +30,7 @@ class TripsModuleTest: XCTestCase {
         let i = TripsInteractor()
         let r = TripsRouter()
         
-        var module = Module.build(AppModules.trips)
+        var module = AppModules.trips.build()
         module.injectMock(presenter: MockTripsPresenter().spy(on: p))
         module.injectMock(interactor: MockTripsInteractor().spy(on: i))
         module.injectMock(router: MockTripsRouter().spy(on: r))

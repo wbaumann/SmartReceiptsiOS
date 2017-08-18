@@ -13,6 +13,7 @@
 
 @property (nonatomic, assign, readonly) BOOL willChangeCalled;
 @property (nonatomic, assign, readonly) BOOL didChangeCalled;
+@property (nonatomic, assign, readonly) BOOL didSetModelsCalled;
 @property (nonatomic, assign, readonly) NSUInteger insertIndex;
 @property (nonatomic, assign, readonly) NSUInteger deleteIndex;
 @property (nonatomic, assign, readonly) NSUInteger updateIndex;

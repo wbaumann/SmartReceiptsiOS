@@ -25,8 +25,7 @@ class TripDistancesModuleTest: XCTestCase {
         let p = TripDistancesPresenter()
         let i = TripDistancesInteractor()
         
-        var module = Module.build(AppModules.tripDistances)
-        
+        var module = AppModules.tripDistances.build()
         module.injectMock(presenter: MockTripDistancesPresenter().spy(on: p))
         module.injectMock(interactor: MockTripDistancesInteractor().spy(on: i))
         

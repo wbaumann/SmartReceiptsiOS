@@ -31,7 +31,7 @@ class ReceiptsModuleTest: XCTestCase {
         let i = ReceiptsInteractor()
         let r = ReceiptsRouter()
         
-        var module = Module.build(AppModules.receipts)
+        var module = AppModules.receipts.build()
         module.injectMock(presenter: p)
         module.injectMock(interactor: MockReceiptsInteractor().spy(on: i))
         module.injectMock(router: MockReceiptsRouter().spy(on: r))

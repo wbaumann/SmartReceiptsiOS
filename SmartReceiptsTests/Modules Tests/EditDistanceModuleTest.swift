@@ -27,7 +27,7 @@ class EditDistanceModuleTest: XCTestCase {
         let i = EditDistanceInteractor()
         let r = EditDistanceRouter()
         
-        var module = Module.build(AppModules.editDistance)
+        var module = AppModules.editDistance.build()
         module.injectMock(presenter: MockEditDistancePresenter().spy(on: p))
         module.injectMock(interactor: MockEditDistanceInteractor().spy(on: i))
         module.injectMock(router: MockEditDistanceRouter().spy(on: r))

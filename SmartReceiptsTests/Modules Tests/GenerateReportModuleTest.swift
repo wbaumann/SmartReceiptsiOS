@@ -25,7 +25,7 @@ class GenerateReportModuleTest: XCTestCase {
         let i = GenerateReportInteractor()
         let r = GenerateReportRouter()
         
-        var module = Module.build(AppModules.generateReport)
+        var module = AppModules.generateReport.build()
         module.injectMock(presenter: MockGenerateReportPresenter().spy(on: p))
         module.injectMock(interactor: MockGenerateReportInteractor().spy(on: i))
         module.injectMock(router: MockGenerateReportRouter().spy(on: r))

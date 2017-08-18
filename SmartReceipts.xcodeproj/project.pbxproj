@@ -63,6 +63,7 @@
 		7111ADA91F0EC38100DF77ED /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADA31F0EC38100DF77ED /* SettingsRouter.swift */; };
 		7111ADAA1F0EC38100DF77ED /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADA41F0EC38100DF77ED /* SettingsView.swift */; };
 		7111ADAC1F0EC4AF00DF77ED /* SettingsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADAB1F0EC4AF00DF77ED /* SettingsFormView.swift */; };
+		711C1D6B1F45DD5E00F5553F /* FetchedModelAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711C1D6A1F45DD5E00F5553F /* FetchedModelAdapterTests.swift */; };
 		711E40541EE0D4ED00C043CF /* EditDistanceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */; };
 		711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */; };
 		7120099D1F12D0DE0049927E /* TickTock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7120099C1F12D0DE0049927E /* TickTock.swift */; };
@@ -525,6 +526,7 @@
 		7111ADA31F0EC38100DF77ED /* SettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		7111ADA41F0EC38100DF77ED /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7111ADAB1F0EC4AF00DF77ED /* SettingsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFormView.swift; sourceTree = "<group>"; };
+		711C1D6A1F45DD5E00F5553F /* FetchedModelAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedModelAdapterTests.swift; sourceTree = "<group>"; };
 		711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceFormView.swift; sourceTree = "<group>"; };
 		711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Extensions.swift"; sourceTree = "<group>"; };
 		7120099C1F12D0DE0049927E /* TickTock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickTock.swift; sourceTree = "<group>"; };
@@ -684,6 +686,7 @@
 		71FB1D3B1F195D0D00742FF5 /* PaymentMethodsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsPresenter.swift; sourceTree = "<group>"; };
 		71FB1D3C1F195D0D00742FF5 /* PaymentMethodsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsRouter.swift; sourceTree = "<group>"; };
 		71FB1D3D1F195D0D00742FF5 /* PaymentMethodsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsView.swift; sourceTree = "<group>"; };
+		71FE9FE71F46F3DE0043E7B4 /* FetchedModelAdapter+Testable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FetchedModelAdapter+Testable.h"; sourceTree = "<group>"; };
 		7B397BE168915C982926C4BC /* Pods_SmartReceipts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartReceipts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841BB302190818C400D28CBF /* WBActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBActionSheetPicker.h; sourceTree = "<group>"; };
 		841BB304190818E100D28CBF /* WBActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBActionSheetPicker.m; sourceTree = "<group>"; };
@@ -1173,6 +1176,7 @@
 			isa = PBXGroup;
 			children = (
 				713D35541EDA54A700D8563D /* TripCSVGenerator+Testable.h */,
+				71FE9FE71F46F3DE0043E7B4 /* FetchedModelAdapter+Testable.h */,
 			);
 			path = Testable;
 			sourceTree = "<group>";
@@ -1702,6 +1706,7 @@
 				EA5EF0D41AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m */,
 				EA07BF681AF51C61004D17F6 /* FetchedDistancesAdapterTest.m */,
 				A7F05BE61CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift */,
+				711C1D6A1F45DD5E00F5553F /* FetchedModelAdapterTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -3027,6 +3032,7 @@
 				EADBB71F1B0B6CD600F4475F /* DatabaseTripsFilesTest.m in Sources */,
 				A7F05BB01CFC132E0079F1AD /* ReceiptColumnExchangedTaxTests.swift in Sources */,
 				713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */,
+				711C1D6B1F45DD5E00F5553F /* FetchedModelAdapterTests.swift in Sources */,
 				EA888A881AFB4FD600DF2AE6 /* DatabaseTripsTest.m in Sources */,
 				A7D554CB1CFEB10100169FD2 /* WBReceiptTargetPriceTests.swift in Sources */,
 				710B81351F1B61AA000C97C4 /* EditTripModuleTest.swift in Sources */,

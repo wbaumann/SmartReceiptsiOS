@@ -7,4 +7,6 @@
 #import "SmartReceiptsTestsBase.h"
 
 #import "WBPreferencesTestHelper.h"
+
 #import "TripCSVGenerator+Testable.h"
+#import "FetchedModelAdapter+Testable.h"
