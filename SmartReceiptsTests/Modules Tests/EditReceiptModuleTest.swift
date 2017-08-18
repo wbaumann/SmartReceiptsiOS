@@ -29,7 +29,7 @@ class EditReceiptModuleTest: XCTestCase {
         let i = EditReceiptInteractor()
         let r = EditReceiptRouter()
         
-        var module = Module.build(AppModules.editReceipt)
+        var module = AppModules.editReceipt.build()
         module.injectMock(presenter: p)
         module.injectMock(interactor: MockEditReceiptInteractor().spy(on: i))
         module.injectMock(router: MockEditReceiptRouter().spy(on: r))

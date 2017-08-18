@@ -29,7 +29,7 @@ class EditTripModuleTest: XCTestCase {
         let i = EditTripInteractor()
         let r = EditTripRouter()
         
-        var module = Module.build(AppModules.editTrip)
+        var module = AppModules.editTrip.build()
         module.injectMock(presenter: MockEditTripPresenter().spy(on: p))
         module.injectMock(interactor: MockEditTripInteractor().spy(on: i))
         module.injectMock(router: MockEditTripRouter().spy(on: r))
@@ -62,7 +62,6 @@ class EditTripModuleTest: XCTestCase {
                     self.trip = trip
                 }).addDisposableTo(self.disposeBag)
             }
-            mock.onSaveError().thenDoNothing()
         }
     }
     
@@ -86,8 +85,6 @@ class EditTripModuleTest: XCTestCase {
         updated.name = "A"
         presenter.updateTripSubject.onNext(updated)
         XCTAssertEqual(self.trip?.name, "A")
-        
-        verify(interactor, times(0)).onSaveError()
     }
 }
 
