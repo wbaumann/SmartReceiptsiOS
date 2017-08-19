@@ -31,12 +31,21 @@ class TripsRouter: Router {
     }
     
     func openDetails(trip: WBTrip) {
-        let module = AppModules.receipts.build()
-        module.presenter.setupView(data: trip)
-        executeFor(iPhone: { 
-            module.router.show(from: _view)
+//        let module = AppModules.receipts.build()
+//        module.presenter.setupView(data: trip)
+//        executeFor(iPhone: { 
+//            module.router.show(from: _view)
+//        }, iPad: {
+//            let nav = UINavigationController(rootViewController: module.view)
+//            nav.isToolbarHidden = false
+//            _view.splitViewController?.show(nav, sender: nil)
+//        })
+        
+        let tabs = TripTabViewController(trip: trip)
+        executeFor(iPhone: {
+            _view.navigationController?.pushViewController(tabs, animated: true)
         }, iPad: {
-            let nav = UINavigationController(rootViewController: module.view)
+            let nav = UINavigationController(rootViewController: tabs)
             nav.isToolbarHidden = false
             _view.splitViewController?.show(nav, sender: nil)
         })

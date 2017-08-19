@@ -14,10 +14,10 @@ import RxCocoa
 class ReceiptsPresenter: Presenter {
     
     let receiptActionsSubject = PublishSubject<WBReceipt>()
-    let generateReportSubject = PublishSubject<WBTrip>()
-    let distancesSubject = PublishSubject<WBTrip>()
     let editReceiptSubject = PublishSubject<WBReceipt>()
     let receiptDeleteSubject = PublishSubject<WBReceipt>()
+    let createReceiptTextSubject = PublishSubject<Void>()
+    let createReceiptCameraSubject = PublishSubject<Void>()
     
     let disposeBag = DisposeBag()
     
@@ -56,22 +56,13 @@ class ReceiptsPresenter: Presenter {
         interactor.trip = trip
         router.moduleTrip = trip
         
-        view.createReceiptButton.rx.tap.subscribe(onNext: { [unowned self] in
+        createReceiptTextSubject.subscribe(onNext: { [unowned self] in
             self.router.openCreateReceipt()
         }).disposed(by: disposeBag)
         
-        view.createPhotoReceiptButton.rx.tap.subscribe(onNext: { [unowned self] in
+        createReceiptCameraSubject.subscribe(onNext: { [unowned self] in
             self.router.openCreatePhotoReceipt()
         }).disposed(by: disposeBag)
-        
-        view.distancesButton.rx.tap.subscribe(onNext: { [unowned self] in
-            self.router.openDistances()
-        }).disposed(by: disposeBag)
-        
-        view.generateReportButton.rx.tap.subscribe(onNext: { [unowned self] in
-            self.router.openGenerateReport()
-        }).disposed(by: disposeBag)
-        
     }
     
     func distanceReceipts() -> [WBReceipt] {

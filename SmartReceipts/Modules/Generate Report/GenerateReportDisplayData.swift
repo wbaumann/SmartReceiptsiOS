@@ -10,5 +10,5 @@ import Foundation
 import Viperit
 
 final class GenerateReportDisplayData: DisplayData {
-
+    var trip: WBTrip!
 }

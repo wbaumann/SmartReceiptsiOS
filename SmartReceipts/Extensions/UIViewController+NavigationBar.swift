@@ -33,7 +33,7 @@ extension UIViewController {
         titleView.addSubview(titleLabel)
         titleView.addSubview(subtitleLabel)
         
-        self.navigationItem.titleView = titleView
+        navigationItem.titleView = titleView
     }
     
     fileprivate func resizeLabels(_ labels: [UILabel]) {

@@ -8,26 +8,20 @@
 
 import UIKit
 import Viperit
+import Floaty
+import RxSwift
 
 //MARK: - Public Interface Protocol
 protocol ReceiptsViewInterface {
     func setup(trip: WBTrip)
     func setup(fetchedModelAdapter: FetchedModelAdapter)
-    var createReceiptButton: UIBarButtonItem { get }
-    var createPhotoReceiptButton: UIBarButtonItem { get }
-    var distancesButton: UIBarButtonItem { get }
-    var generateReportButton: UIBarButtonItem { get }
 }
 
 //MARK: ReceiptsView Class
 final class ReceiptsView: FetchedTableViewController {
     
     static var sharedInputCache = [String: Date]()
-    
-    @IBOutlet weak var distanceButton: UIBarButtonItem!
-    @IBOutlet weak var cameraButton: UIBarButtonItem!
-    @IBOutlet weak var createButton: UIBarButtonItem!
-    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var floatyButton: Floaty!
     
     private static let CELL_ID = "Cell"
     
@@ -40,6 +34,8 @@ final class ReceiptsView: FetchedTableViewController {
     private var showReceiptCategory = false
     private var lastDateSeparator: String!
     private var showAttachmentMarker = false
+    
+    fileprivate let _titleSubtitleSubject = PublishSubject<TitleSubtitle>()
     
     var receiptsCount: Int { get { return itemsCount } }
     override var placeholderTitle: String { get { return LocalizedString("fetched.placeholder.receipts.title") } }
@@ -65,6 +61,18 @@ final class ReceiptsView: FetchedTableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(tripUpdated(_:)), name: NSNotification.Name.DatabaseDidUpdateModel, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved), name: NSNotification.Name.SmartReceiptsSettingsSaved, object: nil)
+        
+        configureFloatyButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTitle()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        floatyButton.close()
     }
     
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -84,10 +92,9 @@ final class ReceiptsView: FetchedTableViewController {
     }
     
     private func updateTitle() {
-        Logger.debug("Update Title")
         let title = ("\(trip!.formattedPrice()!) - \(trip!.name!)")
-        let subtitle = WBPreferences.showReceiptID() ? presenter.nextID() : dailyTotal();
-        setTitle(title, subtitle: subtitle, color: UIColor.white)
+        let subtitle = WBPreferences.showReceiptID() ? presenter.nextID() : dailyTotal()
+        _titleSubtitleSubject.onNext((title: title, subtitle: subtitle))
     }
     
     
@@ -193,6 +200,28 @@ final class ReceiptsView: FetchedTableViewController {
         showReceiptCategory = WBPreferences.layoutShowReceiptCategory()
         showAttachmentMarker = WBPreferences.layoutShowReceiptAttachmentMarker()
     }
+    
+    private func configureFloatyButton() {
+        addFloatyItem("Text", icon: #imageLiteral(resourceName: "file-text"), subject: presenter.createReceiptTextSubject)
+        addFloatyItem("Image", icon: #imageLiteral(resourceName: "camera"), subject: presenter.createReceiptCameraSubject)
+    }
+    
+    private func addFloatyItem(_ title: String?, icon: UIImage, subject: PublishSubject<Void>) {
+        let floatyItem = FloatyItem()
+        floatyItem.title = title
+        floatyItem.buttonColor = AppTheme.primaryDarkColor
+        floatyItem.icon = icon
+        floatyItem.imageSize = floatyItem.icon!.scaledImageSize(0.75)
+        floatyItem.iconImageView.center = floatyItem.center
+        floatyItem.handler = { _ in subject.onNext() }
+        floatyButton.addItem(item: floatyItem)
+    }
+}
+
+extension ReceiptsView: TitleSubtitleProtocol {
+    var titleSubtitleSubject: PublishSubject<(title: String, subtitle: String?)> {
+        return _titleSubtitleSubject
+    }
 }
 
 extension ReceiptsView: UIDocumentInteractionControllerDelegate {
@@ -203,11 +232,6 @@ extension ReceiptsView: UIDocumentInteractionControllerDelegate {
 
 //MARK: - Public interface
 extension ReceiptsView: ReceiptsViewInterface {
-    var createReceiptButton: UIBarButtonItem { get { return createButton } }
-    var createPhotoReceiptButton: UIBarButtonItem { get { return cameraButton } }
-    var distancesButton: UIBarButtonItem { get { return distanceButton } }
-    var generateReportButton: UIBarButtonItem { get { return shareButton } }
-    
     func setup(trip: WBTrip) {
         self.trip = trip
     }

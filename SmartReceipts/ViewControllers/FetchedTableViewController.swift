@@ -104,7 +104,7 @@ class FetchedTableViewController: UserInterface {
         placeholderView?.removeFromSuperview()
         if !placeholderTitle.isEmpty {
             placeholderView = FetchedPlaceholderView(frame: tableView.frame, title: placeholderTitle)
-            view.addSubview(placeholderView!)
+            view.insertSubview(placeholderView!, aboveSubview: tableView)
         }
     }
     

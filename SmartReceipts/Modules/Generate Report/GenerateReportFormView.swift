@@ -40,7 +40,7 @@ class GenerateReportFormView: FormViewController {
         <<< ButtonRow() { row in
             row.title = LocalizedString("generate.report.button.configure.layout")
         }.cellSetup({ cell, _ in
-            cell.tintColor = AppTheme.themeColor
+            cell.tintColor = AppTheme.primaryColor
         }).onCellSelection({ [weak self] _,_ in
             self?.settingsTapObservable?.onNext()
         })
@@ -72,7 +72,7 @@ class GenerateReportFormView: FormViewController {
         return CheckRow() { row in
             row.title = LocalizedString(title)
         }.cellSetup({ cell, _ in
-            cell.tintColor = AppTheme.themeColor
+            cell.tintColor = AppTheme.primaryColor
         })
     }
 }

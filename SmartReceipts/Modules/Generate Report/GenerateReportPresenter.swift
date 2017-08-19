@@ -26,6 +26,7 @@ class GenerateReportPresenter: Presenter {
         if let trip = data as? WBTrip {
             interactor.generator = ReportAssetsGenerator(trip: trip)
             interactor.shareService = GenerateReportShareService(presenter: self, trip: trip)
+            view.setupTrip(trip)
         }
     }
     
@@ -57,7 +58,6 @@ class GenerateReportPresenter: Presenter {
     func hideHudFromView() {
         view.hideHud()
     }
-
 }
 
 

@@ -13,13 +13,14 @@ import RxSwift
 
 //MARK: - Public Interface Protocol
 protocol GenerateReportViewInterface {
+    func setupTrip(_ trip: WBTrip)
     func hideHud()
 }
 
 //MARK: GenerateReport View
 final class GenerateReportView: UserInterface {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIButton!
     var hud: PendingHUDView?
     
     let settingsTapObservable = PublishSubject<Void>()
@@ -27,6 +28,7 @@ final class GenerateReportView: UserInterface {
     private let disposeBag = DisposeBag()
     
     fileprivate var formView: GenerateReportFormView?
+    fileprivate let _titleSubtitleSubject = PublishSubject<TitleSubtitle>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +39,17 @@ final class GenerateReportView: UserInterface {
         formView?.settingsTapObservable = settingsTapObservable
         
         addChildViewController(formView!)
-        view.addSubview(formView!.view)
+        view.insertSubview(formView!.view, belowSubview: shareButton)
         configureUIActions()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTitle()
+    }
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        updateTitle()
     }
     
     private func configureUIActions() {
@@ -46,7 +57,7 @@ final class GenerateReportView: UserInterface {
             self?.presenter.close()
         }).disposed(by: disposeBag)
         
-        doneButton.rx.tap.subscribe(onNext: { [weak self] in
+        shareButton.rx.tap.subscribe(onNext: { [weak self] in
             if let navView = self?.navigationController?.view {
                 self?.hud = PendingHUDView.showHUD(on: navView)
                 self?.presenter.generateReport()
@@ -57,6 +68,16 @@ final class GenerateReportView: UserInterface {
             self?.presenter.presentSettings()
         }.disposed(by: disposeBag)
     }
+    
+    private func updateTitle() {
+        _titleSubtitleSubject.onNext((title: displayData.trip.name, subtitle: displayData.trip.formattedPrice()))
+    }
+}
+
+extension GenerateReportView: TitleSubtitleProtocol {
+    var titleSubtitleSubject: PublishSubject<(title: String, subtitle: String?)> {
+        return _titleSubtitleSubject
+    }
 }
 
 //MARK: - Public interface
@@ -64,6 +85,10 @@ extension GenerateReportView: GenerateReportViewInterface {
     
     func hideHud() {
         hud?.hide()
+    }
+    
+    func setupTrip(_ trip: WBTrip) {
+        displayData.trip = trip
     }
 }
 
