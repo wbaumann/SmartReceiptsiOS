@@ -76,7 +76,7 @@ class SettingsFormView: FormViewController {
         <<< ButtonRow() { row in
             row.title = LocalizedString("settings.purchase.restore.label")
         }.cellUpdate({ cell, row in
-            cell.textLabel?.textColor = AppTheme.themeColor
+            cell.textLabel?.textColor = AppTheme.primaryColor
         }).onCellSelection({ [unowned self] _, _ in
             let hud = PendingHUDView.showHUD(on: self.navigationController?.view)
             self.settingsView.restorePurchases().subscribe(onNext: { [unowned self] in
@@ -151,7 +151,7 @@ class SettingsFormView: FormViewController {
                 WBPreferences.setDefaultTripDuration(Int32(intValue))
             }
         }).cellUpdate({ cell, _ in
-            cell.textField.textColor = AppTheme.themeColor
+            cell.textField.textColor = AppTheme.primaryColor
         }).cellSetup({ cell, _ in
             cell.textLabel?.numberOfLines = 3
         })
@@ -164,14 +164,14 @@ class SettingsFormView: FormViewController {
             
         <<< DecimalRow() { row in
             row.title = LocalizedString("settings.min.receipt.price.label")
-            let value = Int(exactly: WBPreferences.minimumReceiptPriceToIncludeInReports()) ?? Int.min
-            row.value = value == Int.min ? nil : Double(value)
+            let value = WBPreferences.minimumReceiptPriceToIncludeInReports()
+            row.value = value == WBPreferences.min_FLOAT() ? nil : Double(value)
             row.placeholder = LocalizedString("settings.min.receipt.price.placeholder")
         }.onChange({ row in
             let value = row.value == nil ? Float(Int.min) : Float(row.value!)
             WBPreferences.setMinimumReceiptPriceToIncludeInReports(value)
         }).cellUpdate({ cell, _ in
-            cell.textField.textColor = AppTheme.themeColor
+            cell.textField.textColor = AppTheme.primaryColor
         }).cellSetup({ cell, _ in
             cell.textLabel?.numberOfLines = 3
         })
@@ -194,7 +194,7 @@ class SettingsFormView: FormViewController {
         }.onChange({ row in
             WBPreferences.setDefaultCurrency(row.value!)
         }).cellSetup({ cell, _ in
-            cell.detailTextLabel?.textColor = AppTheme.themeColor
+            cell.detailTextLabel?.textColor = AppTheme.primaryColor
         })
             
         <<< segmentedRow(LocalizedString("settings.date.separator.label"),
@@ -449,7 +449,7 @@ extension SettingsFormView {
             row.title = title + "  " //  Fix offset between UILabel and UISwtich
             row.value = value
             }.cellSetup({ cell, row in
-                cell.switchControl.onTintColor = AppTheme.themeColor
+                cell.switchControl.onTintColor = AppTheme.primaryColor
                 cell.textLabel?.numberOfLines = 3
             })
     }
@@ -507,7 +507,7 @@ extension SettingsFormView {
             row.value = value <= 0 ? nil : value
             row.placeholder = placeholder
             }.cellUpdate({ cell, _ in
-                cell.textField.textColor = AppTheme.themeColor
+                cell.textField.textColor = AppTheme.primaryColor
             }).cellSetup({ cell, _ in
                 cell.textLabel?.numberOfLines = 3
             })
@@ -520,7 +520,7 @@ extension SettingsFormView {
             row.value = value <= 0 ? nil : value
             row.placeholder = placeholder
             }.cellUpdate({ cell, _ in
-                cell.textField.textColor = AppTheme.themeColor
+                cell.textField.textColor = AppTheme.primaryColor
             }).cellSetup({ cell, _ in
                 cell.textLabel?.numberOfLines = 3
             })

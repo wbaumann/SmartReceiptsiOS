@@ -26,8 +26,10 @@ class TripDistancesView: FetchedTableViewController {
     
     private let disposeBag = DisposeBag()
     
-    @IBOutlet private var addButtonItem: UIBarButtonItem?
+    @IBOutlet private var addButton: UIButton?
     @IBOutlet private var doneButtonItem: UIBarButtonItem?
+    
+    fileprivate let _titleSubtitleSubject = PublishSubject<TitleSubtitle>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +38,24 @@ class TripDistancesView: FetchedTableViewController {
         configureUIActions()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTitle()
+    }
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        updateTitle()
+    }
+    
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {
         return presenter.fetchedModelAdapter(for: trip!)
     }
 
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: animated)
+    }
+    
     func findMaxRateWidth() -> CGFloat {
         var max: CGFloat = 0
         for row in 0..<itemsCount {
@@ -66,6 +82,7 @@ class TripDistancesView: FetchedTableViewController {
                 dsCell.setPriceLabelWidth(maxRateWidth)
             }
         }
+        updateTitle()
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
@@ -97,7 +114,7 @@ class TripDistancesView: FetchedTableViewController {
             self?.dismiss(animated: true, completion: nil)
         }).disposed(by: disposeBag)
         
-        addButtonItem?.rx.tap.subscribe(onNext: { [weak self] in
+        addButton?.rx.tap.subscribe(onNext: { [weak self] in
             self?.showEditDistance(with: (self?.trip, nil as Distance?))
         }).disposed(by: disposeBag)
         
@@ -106,6 +123,16 @@ class TripDistancesView: FetchedTableViewController {
     //MARK: Private
     private func showEditDistance(with data: Any?) {
         presenter.presentEditDistance(with: data)
+    }
+    
+    private func updateTitle() {
+        _titleSubtitleSubject.onNext((title: trip!.name, subtitle: presenter.totalDistancePrice()))
+    }
+}
+
+extension TripDistancesView: TitleSubtitleProtocol {
+    var titleSubtitleSubject: PublishSubject<(title: String, subtitle: String?)> {
+        return _titleSubtitleSubject
     }
 }
 

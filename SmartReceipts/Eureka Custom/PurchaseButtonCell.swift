@@ -20,7 +20,7 @@ public class PurchaseButtonCell: Cell<String>, CellType {
     public override func setup() {
         super.setup()
         super.selectionStyle = .none
-        tintColor = AppTheme.themeColor
+        tintColor = AppTheme.primaryColor
     }
     
     public override func update() {

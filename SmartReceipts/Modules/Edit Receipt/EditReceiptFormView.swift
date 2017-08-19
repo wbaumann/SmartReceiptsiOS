@@ -197,7 +197,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             self.receipt.isReimbursable = row.value!
         }).cellSetup({ cell, _ in
             cell.configureCell()
-            cell.tintColor = AppTheme.themeColor
+            cell.tintColor = AppTheme.primaryColor
         })
 
         <<< CheckRow() { row in
@@ -207,7 +207,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             self.receipt.isFullPage = row.value!
         }).cellSetup({ cell, _ in
             cell.configureCell()
-            cell.tintColor = AppTheme.themeColor
+            cell.tintColor = AppTheme.primaryColor
         })
         
     }
@@ -248,7 +248,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
 fileprivate extension BaseCell {
     fileprivate func configureCell() {
         textLabel?.font = AppTheme.boldFont
-        detailTextLabel?.textColor = AppTheme.themeColor
+        detailTextLabel?.textColor = AppTheme.primaryColor
         detailTextLabel?.font = AppTheme.boldFont
     }
 }

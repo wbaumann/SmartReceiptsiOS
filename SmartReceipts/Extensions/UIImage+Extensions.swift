@@ -17,4 +17,8 @@ extension UIImage {
     public var hasContent: Bool {
         return cgImage != nil || ciImage != nil
     }
+    
+    func scaledImageSize(_ scale: CGFloat) -> CGSize {
+        return CGSize(width: size.width * scale, height: size.height * scale)
+    }
 }

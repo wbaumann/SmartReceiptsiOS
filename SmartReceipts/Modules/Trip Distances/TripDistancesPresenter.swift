@@ -23,9 +23,14 @@ class TripDistancesPresenter: Presenter {
         router.showEditDistance(with: data)
     }
     
+    func totalDistancePrice() -> String {
+        return interactor.totalDistancePrice()
+    }
+    
     override func setupView(data: Any) {
         if let trip = data as? WBTrip {
             view.setup(trip: trip)
+            interactor.trip = trip
         }
     }
 }

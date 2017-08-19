@@ -11,7 +11,10 @@ import Foundation
 class AppTheme: NSObject {
     
     // Colors
-    static let themeColor           = #colorLiteral(red: 0.5803921569, green: 0, blue: 0.8274509804, alpha: 1)
+    static let primaryColor         = #colorLiteral(red: 0.4784313725, green: 0.1176470588, blue: 0.631372549, alpha: 1)
+    static let primaryDarkColor     = #colorLiteral(red: 0.4117647059, green: 0.1019607843, blue: 0.6, alpha: 1)
+    static let accentColor          = #colorLiteral(red: 0.4078431373, green: 0.937254902, blue: 0.6784313725, alpha: 1)
+    static let cellColor            = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     static let reportPDFStyleColor  = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
     static let toolbarTintColor     = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     
@@ -20,9 +23,9 @@ class AppTheme: NSObject {
     
     class func customizeOnAppLoad() {
         UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().barTintColor = themeColor
+        UINavigationBar.appearance().barTintColor = primaryColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        UIToolbar.appearance().tintColor = themeColor
+        UIToolbar.appearance().tintColor = primaryDarkColor
     }
     
     /* Customizes every view controller on load */
@@ -32,7 +35,7 @@ class AppTheme: NSObject {
         }
         
         // changes color of active elements like buttons and segments, unfortunately alertview cannot be costumized
-        UIApplication.shared.keyWindow?.tintColor = themeColor
+        UIApplication.shared.keyWindow?.tintColor = primaryColor
         
         // chanes status bar color, however iOS built-in controllers (for example mail composer) may override it
         UIApplication.shared.isStatusBarHidden = false

@@ -146,7 +146,7 @@ fileprivate extension BaseCell {
     }
     
     fileprivate func makeHighlitedValue() {
-        detailTextLabel?.textColor = AppTheme.themeColor
+        detailTextLabel?.textColor = AppTheme.primaryColor
         detailTextLabel?.font = AppTheme.boldFont
     }
 }

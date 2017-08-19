@@ -24,6 +24,8 @@ class AdPresentingContainerViewController: UIViewController {
         nativeExpressAdView?.rootViewController = self
         nativeExpressAdView?.adUnitID = AD_UNIT_ID
         nativeExpressAdView?.delegate = self
+        nativeExpressAdView?.backgroundColor = AppTheme.primaryColor
+        nativeExpressAdView?.tintColor = AppTheme.accentColor
         
         DispatchQueue.main.async {
             self.loadAd()

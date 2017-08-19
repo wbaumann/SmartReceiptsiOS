@@ -14,6 +14,8 @@ def pods
     pod 'MRProgress'
     pod 'UIAlertView-Blocks'
     pod 'Eureka'
+    pod 'XLPagerTabStrip'
+    pod 'Floaty'
     
     # Rx
     pod 'RxSwift'

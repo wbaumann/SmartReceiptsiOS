@@ -13,14 +13,14 @@ import RxSwift
 //MARK: - Public Interface Protocol
 protocol TripsViewInterface {
     var settingsButton: UIBarButtonItem { get }
-    var addButton: UIBarButtonItem { get }
+    var addButton: UIButton { get }
 }
 
 //MARK: Trips View
 final class TripsView: FetchedTableViewController {
     
     @IBOutlet fileprivate weak var _settingsButton: UIBarButtonItem!
-    @IBOutlet fileprivate weak var _addButton: UIBarButtonItem!
+    @IBOutlet fileprivate weak var _addButton: UIButton!
     
     private var priceWidth: CGFloat = 0
     private let dateFormatter = WBDateFormatter()
@@ -31,14 +31,10 @@ final class TripsView: FetchedTableViewController {
         super.viewDidLoad()
         AppTheme.customizeOnViewDidLoad(self)
         setPresentationCellNib(WBCellWithPriceNameDate.viewNib())
-        
-        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        self.toolbarItems = [space, editButtonItem]
-        
+        navigationController?.setToolbarHidden(true, animated: false)
         NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved),
                         name: NSNotification.Name.SmartReceiptsSettingsSaved, object: nil)
         lastDateSeparator = WBPreferences.dateSeparator()
-        editButtonItem.image = #imageLiteral(resourceName: "edit-2")
     }
     
     deinit {
@@ -164,7 +160,7 @@ extension TripsView: UISplitViewControllerDelegate {
 //MARK: - Public interface
 extension TripsView: TripsViewInterface {
     var settingsButton: UIBarButtonItem { get { return _settingsButton } }
-    var addButton: UIBarButtonItem { get { return _addButton } }
+    var addButton: UIButton { get { return _addButton } }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

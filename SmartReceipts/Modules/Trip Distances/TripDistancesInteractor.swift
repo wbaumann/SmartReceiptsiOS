@@ -11,6 +11,7 @@ import Viperit
 
 class TripDistancesInteractor: Interactor {
     private var database: Database!
+    var trip: WBTrip!
     
     required init() {
         database = Database.sharedInstance()
@@ -22,6 +23,22 @@ class TripDistancesInteractor: Interactor {
     
     func fetchedModelAdapter(for trip: WBTrip) -> FetchedModelAdapter {
         return database.fetchedAdapterForDistances(in: trip)
+    }
+    
+    func totalDistancePrice() -> String {
+        let priceCollection = PricesCollection()
+        priceCollection.addPrice(Price(currencyCode: WBPreferences.defaultCurrency()))
+        
+        let distances = Database.sharedInstance().fetchedAdapterForDistances(in: trip, ascending: true)
+        let distanceReceipts = DistancesToReceiptsConverter.convertDistances(distances!.allObjects()) as! [WBReceipt]
+        
+        for receipt in distanceReceipts {
+            if Calendar.current.isDateInToday(receipt.date) {
+                let price = receipt.exchangedPrice() ?? receipt.price()
+                priceCollection.addPrice(price)
+            }
+        }
+        return String(format: LocalizedString("trips.controller.distance.total"), priceCollection.currencyFormattedPrice())
     }
     
     func delete(distance: Distance) {

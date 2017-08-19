@@ -19,6 +19,7 @@ class FetchedPlaceholderView: UIView {
         placeholderLabel = UILabel(frame: CGRect.zero)
         placeholderLabel.numberOfLines = 0
         placeholderLabel.font = UIFont.systemFont(ofSize: 15)
+        placeholderLabel.textColor = UIColor.black
         setTitle(title)
         
         addSubview(placeholderLabel)

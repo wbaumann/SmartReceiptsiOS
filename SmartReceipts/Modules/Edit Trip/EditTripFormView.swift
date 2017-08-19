@@ -133,7 +133,7 @@ class EditTripFormView: FormViewController {
 fileprivate extension BaseCell {
     fileprivate func configureCell() {
         textLabel?.font = AppTheme.boldFont
-        detailTextLabel?.textColor = AppTheme.themeColor
+        detailTextLabel?.textColor = AppTheme.primaryColor
         detailTextLabel?.font = AppTheme.boldFont
     }
 }

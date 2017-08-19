@@ -23,6 +23,7 @@ PODS:
     - Protobuf (~> 3.1)
   - FirebaseInstanceID (2.0.0):
     - FirebaseCore (~> 4.0)
+  - Floaty (3.0.0)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
@@ -138,6 +139,7 @@ PODS:
   - Tweaks (2.0.0)
   - UIAlertView-Blocks (1.0)
   - Viperit (0.7.0)
+  - XLPagerTabStrip (7.0.0)
 
 DEPENDENCIES:
   - CocoaLumberjack/Swift
@@ -146,6 +148,7 @@ DEPENDENCIES:
   - Firebase
   - FirebaseAnalytics
   - FirebaseCrash
+  - Floaty
   - FMDB
   - Google/AdMob
   - Google/Analytics
@@ -165,6 +168,7 @@ DEPENDENCIES:
   - Tweaks
   - UIAlertView-Blocks
   - Viperit
+  - XLPagerTabStrip
 
 EXTERNAL SOURCES:
   RMStore:
@@ -179,6 +183,7 @@ SPEC CHECKSUMS:
   FirebaseCore: c709067051de07bdaffdc4e735cd7299a23c463a
   FirebaseCrash: 600ec2cbd8e10c3064a42de2c6ee7687bd02a076
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
+  Floaty: d1be5d323094f0de422bb615452d00ba26ac74dd
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   GGLInstanceID: 4a317044f744281b82cd03015f379899f277cad3
   Google: d536877ec602555b755cc28ce6fed104825c693c
@@ -209,7 +214,8 @@ SPEC CHECKSUMS:
   Tweaks: 524fa47636cce3bf3a4d9156e980f10ae9480e81
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
   Viperit: b45ecfde9f3e577a6afd8f91f4c88edb46e0ca25
+  XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
 
-PODFILE CHECKSUM: 27b25d67aea5dce46a849c5b758e7ae1439c4922
+PODFILE CHECKSUM: 3b28652f6aff92d353d219799823343f47012d66
 
 COCOAPODS: 1.2.1

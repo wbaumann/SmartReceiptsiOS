@@ -44,10 +44,6 @@
 #import "ReceiptColumn.h"
 
 #import "DistanceSummaryCell.h"
-#import "TextEntryCell.h"
-#import "TitledTextEntryCell.h"
-#import "TitledAutocompleteEntryCell.h"
-#import "SwitchControlCell.h"
 #import "WBCellWithPriceNameDate.h"
 #import "ReceiptSummaryCell.h"
 #import "TitleOnlyCell.h"

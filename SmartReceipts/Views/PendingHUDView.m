@@ -30,7 +30,7 @@ static BOOL isRunningTests(void) {
         [view addSubview:overlayView];
     }
     [overlayView show:YES];
-    [overlayView setTintColor:[AppTheme themeColor]];
+    [overlayView setTintColor:[AppTheme primaryColor]];
     return overlayView;
 }
 

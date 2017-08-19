@@ -364,5 +364,10 @@
 "settings.user.id.label" = "ID Użytkownika";
 
 "trips.controller.daily.total" = "Dzienna Suma: %@";
+"trips.controller.distance.total" = "Dystans Suma: %@";
 "trips.controller.from.to.date.label.base" = "%@ to %@";
 "trips.controller.next.id.subtitle" = "Następny ID: %@";
+
+"trip.tab.receipts.title" = "RECEIPTS";
+"trip.tab.distances.title" = "DYSTANS";
+"trip.tab.reports.title" = "REPORTS";
