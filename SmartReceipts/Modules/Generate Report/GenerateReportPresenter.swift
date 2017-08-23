@@ -24,9 +24,7 @@ class GenerateReportPresenter: Presenter {
     
     override func setupView(data: Any) {
         if let trip = data as? WBTrip {
-            interactor.generator = ReportAssetsGenerator(trip: trip)
-            interactor.shareService = GenerateReportShareService(presenter: self, trip: trip)
-            view.setupTrip(trip)
+            interactor.configure(with: trip)
         }
     }
     
@@ -57,6 +55,16 @@ class GenerateReportPresenter: Presenter {
     
     func hideHudFromView() {
         view.hideHud()
+    }
+}
+
+extension GenerateReportPresenter: TitleSubtitleProtocol {
+    var titleSubtitle: TitleSubtitle {
+        return interactor.titleSubtitle
+    }
+    
+    var contentChangedSubject: PublishSubject<Void>? {
+        return nil
     }
 }
 

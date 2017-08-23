@@ -275,6 +275,8 @@
 "receipt.column.report.start.date" = "Report Start Date";
 "receipt.column.tax" = "Tax";
 "receipt.column.user.id" = "User ID";
+"receipt.floaty.item.text.only" = "Text-Only";
+"receipt.floaty.item.image" = "Image";
 
 "settings.about.privacy.label" = "Privacy Policy";
 "settings.about.section.label" = "About";

@@ -13,7 +13,6 @@ import RxSwift
 
 //MARK: - Public Interface Protocol
 protocol GenerateReportViewInterface {
-    func setupTrip(_ trip: WBTrip)
     func hideHud()
 }
 
@@ -28,7 +27,6 @@ final class GenerateReportView: UserInterface {
     private let disposeBag = DisposeBag()
     
     fileprivate var formView: GenerateReportFormView?
-    fileprivate let _titleSubtitleSubject = PublishSubject<TitleSubtitle>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,15 +39,6 @@ final class GenerateReportView: UserInterface {
         addChildViewController(formView!)
         view.insertSubview(formView!.view, belowSubview: shareButton)
         configureUIActions()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        updateTitle()
-    }
-    
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        updateTitle()
     }
     
     private func configureUIActions() {
@@ -68,16 +57,6 @@ final class GenerateReportView: UserInterface {
             self?.presenter.presentSettings()
         }.disposed(by: disposeBag)
     }
-    
-    private func updateTitle() {
-        _titleSubtitleSubject.onNext((title: displayData.trip.name, subtitle: displayData.trip.formattedPrice()))
-    }
-}
-
-extension GenerateReportView: TitleSubtitleProtocol {
-    var titleSubtitleSubject: PublishSubject<(title: String, subtitle: String?)> {
-        return _titleSubtitleSubject
-    }
 }
 
 //MARK: - Public interface
@@ -85,10 +64,6 @@ extension GenerateReportView: GenerateReportViewInterface {
     
     func hideHud() {
         hud?.hide()
-    }
-    
-    func setupTrip(_ trip: WBTrip) {
-        displayData.trip = trip
     }
 }
 

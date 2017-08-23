@@ -12,15 +12,26 @@ import RxSwift
 import RxCocoa
 
 class GenerateReportInteractor: Interactor {
-    private let disposeBag = DisposeBag()
-    
     var generator: ReportAssetsGenerator?
     var shareService: GenerateReportShareService?
+    var trip: WBTrip!
     
     private var fullPdfReport: Variable         = Variable(false)
     private var pdfReportWithoutTable: Variable = Variable(false)
     private var csvFile: Variable               = Variable(false)
     private var zipStampedJPGs: Variable        = Variable(false)
+    
+    private let disposeBag = DisposeBag()
+    
+    var titleSubtitle: TitleSubtitle {
+        return (trip.name, trip.formattedPrice())
+    }
+    
+    func configure(with trip: WBTrip) {
+        self.trip = trip
+        generator = ReportAssetsGenerator(trip: trip)
+        shareService = GenerateReportShareService(presenter: presenter, trip: trip)
+    }
     
     func configureBinding() {
         presenter.fullPdfReport.bind(to: fullPdfReport).addDisposableTo(disposeBag)
@@ -126,7 +137,6 @@ class GenerateReportInteractor: Interactor {
         }
         return true
     }
-    
     
 }
 

@@ -35,8 +35,6 @@ final class ReceiptsView: FetchedTableViewController {
     private var lastDateSeparator: String!
     private var showAttachmentMarker = false
     
-    fileprivate let _titleSubtitleSubject = PublishSubject<TitleSubtitle>()
-    
     var receiptsCount: Int { get { return itemsCount } }
     override var placeholderTitle: String { get { return LocalizedString("fetched.placeholder.receipts.title") } }
     
@@ -53,30 +51,20 @@ final class ReceiptsView: FetchedTableViewController {
         navigationItem.rightBarButtonItem = editButtonItem
         
         setPresentationCellNib(ReceiptSummaryCell.viewNib())
-        
         updateEditButton()
-        updateTitle()
         
         lastDateSeparator = WBPreferences.dateSeparator()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(tripUpdated(_:)), name: NSNotification.Name.DatabaseDidUpdateModel, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved), name: NSNotification.Name.SmartReceiptsSettingsSaved, object: nil)
-        
         configureFloatyButton()
+        subscribe()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateTitle()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         floatyButton.close()
-    }
-    
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        updateTitle()
     }
     
     func tripUpdated(_ notification: Notification) {
@@ -87,62 +75,8 @@ final class ReceiptsView: FetchedTableViewController {
         
             //TODO jaanus: check posting already altered object
             self.trip = Database.sharedInstance().tripWithName(self.trip!.name)
-            updateTitle()
+            presenter.contentChanged.onNext()
         }
-    }
-    
-    private func updateTitle() {
-        let title = ("\(trip!.formattedPrice()!) - \(trip!.name!)")
-        let subtitle = WBPreferences.showReceiptID() ? presenter.nextID() : dailyTotal()
-        _titleSubtitleSubject.onNext((title: title, subtitle: subtitle))
-    }
-    
-    
-    private func updateEditButton() {
-        editButtonItem.isEnabled = itemsCount > 0
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    private func dailyTotal() -> String {
-        var receipts = fetchedItems as! [WBReceipt]
-        let priceCollection = PricesCollection()
-        priceCollection.addPrice(Price(currencyCode: WBPreferences.defaultCurrency()))
-        if WBPreferences.printDailyDistanceValues() {
-            receipts = receipts + presenter.distanceReceipts()
-        }
-        for receipt in receipts {
-            if Calendar.current.isDateInToday(receipt.date) {
-                let price = receipt.exchangedPrice() ?? receipt.price()
-                priceCollection.addPrice(price)
-            }
-        }
-        return String(format: LocalizedString("trips.controller.daily.total"), priceCollection.currencyFormattedPrice())
-    }
-    
-    private func updatePricesWidth() {
-        let w = computePriceWidth()
-        if w == _priceWidth { return }
-        
-        _priceWidth = w
-        for cell in tableView.visibleCells as! [ReceiptSummaryCell] {
-            cell.priceWidthConstraint.constant = w
-            cell.layoutIfNeeded()
-        }
-    }
-    
-    private func computePriceWidth() -> CGFloat {
-        var maxWidth: CGFloat = 0
-        for i in 0..<itemsCount {
-            let receipt = objectAtIndexPath(IndexPath(row: i, section: 0)) as! WBReceipt
-            let str = receipt.formattedPrice()
-            let b = (str as NSString).boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics, attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 21)], context: nil)
-            maxWidth = max(maxWidth, b.width + 10)
-        }
-        maxWidth = min(maxWidth, view.bounds.width/2)
-        return max(view.bounds.width/6, maxWidth)
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
@@ -162,7 +96,7 @@ final class ReceiptsView: FetchedTableViewController {
         super.contentChanged()
         updateEditButton()
         updatePricesWidth()
-        updateTitle()
+        presenter.contentChanged.onNext()
     }
     
     override func delete(object: Any!, at indexPath: IndexPath) {
@@ -201,9 +135,11 @@ final class ReceiptsView: FetchedTableViewController {
         showAttachmentMarker = WBPreferences.layoutShowReceiptAttachmentMarker()
     }
     
+    //MARK: Private
+    
     private func configureFloatyButton() {
-        addFloatyItem("Text", icon: #imageLiteral(resourceName: "file-text"), subject: presenter.createReceiptTextSubject)
-        addFloatyItem("Image", icon: #imageLiteral(resourceName: "camera"), subject: presenter.createReceiptCameraSubject)
+        addFloatyItem(LocalizedString("receipt.floaty.item.text.only"), icon: #imageLiteral(resourceName: "file-text"), subject: presenter.createReceiptTextSubject)
+        addFloatyItem(LocalizedString("receipt.floaty.item.image"), icon: #imageLiteral(resourceName: "camera"), subject: presenter.createReceiptCameraSubject)
     }
     
     private func addFloatyItem(_ title: String?, icon: UIImage, subject: PublishSubject<Void>) {
@@ -216,12 +152,43 @@ final class ReceiptsView: FetchedTableViewController {
         floatyItem.handler = { _ in subject.onNext() }
         floatyButton.addItem(item: floatyItem)
     }
-}
-
-extension ReceiptsView: TitleSubtitleProtocol {
-    var titleSubtitleSubject: PublishSubject<(title: String, subtitle: String?)> {
-        return _titleSubtitleSubject
+    
+    private func subscribe() {
+        NotificationCenter.default.addObserver(self, selector: #selector(tripUpdated(_:)), name: NSNotification.Name.DatabaseDidUpdateModel, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved), name: NSNotification.Name.SmartReceiptsSettingsSaved, object: nil)
     }
+    
+    private func updateEditButton() {
+        editButtonItem.isEnabled = itemsCount > 0
+    }
+    
+    private func updatePricesWidth() {
+        let w = computePriceWidth()
+        if w == _priceWidth { return }
+        
+        _priceWidth = w
+        for cell in tableView.visibleCells as! [ReceiptSummaryCell] {
+            cell.priceWidthConstraint.constant = w
+            cell.layoutIfNeeded()
+        }
+    }
+    
+    private func computePriceWidth() -> CGFloat {
+        var maxWidth: CGFloat = 0
+        for i in 0..<itemsCount {
+            let receipt = objectAtIndexPath(IndexPath(row: i, section: 0)) as! WBReceipt
+            let str = receipt.formattedPrice()
+            let b = (str as NSString).boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics, attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 21)], context: nil)
+            maxWidth = max(maxWidth, b.width + 10)
+        }
+        maxWidth = min(maxWidth, view.bounds.width/2)
+        return max(view.bounds.width/6, maxWidth)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
 }
 
 extension ReceiptsView: UIDocumentInteractionControllerDelegate {
