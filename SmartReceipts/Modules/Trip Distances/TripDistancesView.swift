@@ -11,8 +11,6 @@ import Viperit
 import RxSwift
 import RxCocoa
 
-fileprivate let PushDistanceAddViewControllerSegue = "PushDistanceAddViewControllerSegue"
-
 //MARK: - Public Interface Protocol
 protocol TripDistancesViewInterface {
     func setup(trip: WBTrip)
@@ -29,22 +27,11 @@ class TripDistancesView: FetchedTableViewController {
     @IBOutlet private var addButton: UIButton?
     @IBOutlet private var doneButtonItem: UIBarButtonItem?
     
-    fileprivate let _titleSubtitleSubject = PublishSubject<TitleSubtitle>()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = LocalizedString("distances.controller.title")
         setPresentationCellNib(DistanceSummaryCell.viewNib())
         configureUIActions()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        updateTitle()
-    }
-    
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        updateTitle()
     }
     
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {
@@ -82,7 +69,7 @@ class TripDistancesView: FetchedTableViewController {
                 dsCell.setPriceLabelWidth(maxRateWidth)
             }
         }
-        updateTitle()
+        presenter.contentChanged.onNext()
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
@@ -123,16 +110,6 @@ class TripDistancesView: FetchedTableViewController {
     //MARK: Private
     private func showEditDistance(with data: Any?) {
         presenter.presentEditDistance(with: data)
-    }
-    
-    private func updateTitle() {
-        _titleSubtitleSubject.onNext((title: trip!.name, subtitle: presenter.totalDistancePrice()))
-    }
-}
-
-extension TripDistancesView: TitleSubtitleProtocol {
-    var titleSubtitleSubject: PublishSubject<(title: String, subtitle: String?)> {
-        return _titleSubtitleSubject
     }
 }
 

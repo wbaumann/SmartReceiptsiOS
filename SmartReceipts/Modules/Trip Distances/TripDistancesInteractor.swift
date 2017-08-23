@@ -33,10 +33,8 @@ class TripDistancesInteractor: Interactor {
         let distanceReceipts = DistancesToReceiptsConverter.convertDistances(distances!.allObjects()) as! [WBReceipt]
         
         for receipt in distanceReceipts {
-            if Calendar.current.isDateInToday(receipt.date) {
-                let price = receipt.exchangedPrice() ?? receipt.price()
-                priceCollection.addPrice(price)
-            }
+            let price = receipt.exchangedPrice() ?? receipt.price()
+            priceCollection.addPrice(price)
         }
         return String(format: LocalizedString("trips.controller.distance.total"), priceCollection.currencyFormattedPrice())
     }

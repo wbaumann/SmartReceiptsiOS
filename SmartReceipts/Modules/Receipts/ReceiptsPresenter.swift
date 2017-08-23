@@ -18,6 +18,7 @@ class ReceiptsPresenter: Presenter {
     let receiptDeleteSubject = PublishSubject<WBReceipt>()
     let createReceiptTextSubject = PublishSubject<Void>()
     let createReceiptCameraSubject = PublishSubject<Void>()
+    let contentChanged = PublishSubject<Void>()
     
     let disposeBag = DisposeBag()
     
@@ -64,13 +65,15 @@ class ReceiptsPresenter: Presenter {
             self.router.openCreatePhotoReceipt()
         }).disposed(by: disposeBag)
     }
-    
-    func distanceReceipts() -> [WBReceipt] {
-        return interactor.distanceReceipts()
+}
+
+extension ReceiptsPresenter: TitleSubtitleProtocol {
+    var titleSubtitle: TitleSubtitle {
+        return interactor.titleSubtitle()
     }
     
-    func nextID() -> String {
-       return interactor.nextID()
+    var contentChangedSubject: PublishSubject<Void>? {
+        return contentChanged
     }
 }
 

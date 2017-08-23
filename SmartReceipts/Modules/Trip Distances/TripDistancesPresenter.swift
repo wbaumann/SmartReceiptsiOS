@@ -8,8 +8,11 @@
 
 import Foundation
 import Viperit
+import RxSwift
 
 class TripDistancesPresenter: Presenter {
+    
+    let contentChanged = PublishSubject<Void>()
     
     func fetchedModelAdapter(for trip: WBTrip) -> FetchedModelAdapter {
         return interactor.fetchedModelAdapter(for: trip)
@@ -35,6 +38,15 @@ class TripDistancesPresenter: Presenter {
     }
 }
 
+extension TripDistancesPresenter: TitleSubtitleProtocol {
+    var titleSubtitle: TitleSubtitle {
+        return (interactor.trip.name, interactor.totalDistancePrice())
+    }
+    
+    var contentChangedSubject: PublishSubject<Void>? {
+        return contentChanged
+    }
+}
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
 private extension TripDistancesPresenter {

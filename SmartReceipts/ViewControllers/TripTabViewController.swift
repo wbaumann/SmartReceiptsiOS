@@ -14,6 +14,7 @@ import Viperit
 class TripTabViewController: ButtonBarPagerTabStripViewController {
     var trip: WBTrip!
     
+    private var titleSubtitleProtocols: [TitleSubtitleProtocol?]!
     private let bag = DisposeBag()
     
     required init(trip: WBTrip) {
@@ -55,22 +56,14 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateForIndex(currentIndex)
+    }
+    
     func updateEditing() {
         let currentViewController = viewControllers[currentIndex]
         currentViewController.setEditing(!currentViewController.isEditing, animated: true)
-    }
-    
-    //MARK: Private 
-    private func subscribeToSubUI(_ ui: UserInterface) {
-        guard let titledUI = ui as? TitleSubtitleProtocol else { return }
-        titledUI.titleSubtitleSubject.subscribe(onNext: { [unowned self] change in
-            if let subtitle = change.subtitle {
-                self.setTitle(change.title, subtitle: subtitle)
-            } else {
-                self.navigationItem.titleView = nil
-                self.navigationItem.title = change.title
-            }
-        }).addDisposableTo(bag)
     }
     
     //MARK: Pager Tab DataSource
@@ -84,20 +77,43 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         generateModule.presenter.setupView(data: trip)
         
         let views = [receiptsModule.view, distancesModule.view, generateModule.view]
-        for subUI in views {
-            subscribeToSubUI(subUI)
+        titleSubtitleProtocols = [receiptsModule.presenter as? TitleSubtitleProtocol,
+                                 distancesModule.presenter as? TitleSubtitleProtocol,
+                                  generateModule.presenter as? TitleSubtitleProtocol]
+        for tsp in titleSubtitleProtocols {
+            tsp?.contentChangedSubject?.subscribe(onNext: { [unowned self] in
+                self.updateForIndex(self.currentIndex)
+            }).disposed(by: bag)
         }
-
         return views
     }
     
     override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int, withProgressPercentage progressPercentage: CGFloat, indexWasChanged: Bool) {
+        super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex, withProgressPercentage: progressPercentage, indexWasChanged: indexWasChanged)
         if toIndex == 2 {
             //Empty item for center align Title/Subtitle in Generate Report Module
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         } else {
             let editItem = UIBarButtonItem(image: #imageLiteral(resourceName: "edit-2"), style: .plain, target: self, action: #selector(updateEditing))
             navigationItem.rightBarButtonItem = editItem
+        }
+        
+        if 0..<viewControllers.count ~= toIndex && progressPercentage == 1.0 {
+            updateForIndex(toIndex)
+        }
+    }
+    
+    //MARK: Private
+    private func updateForIndex(_ index: Int) {
+        update(titleSubtitle: titleSubtitleProtocols[index]?.titleSubtitle ?? ("", nil))
+    }
+    
+    private func update(titleSubtitle: TitleSubtitle) {
+        if let subtitle = titleSubtitle.subtitle {
+            setTitle(titleSubtitle.title, subtitle: subtitle)
+        } else {
+            navigationItem.titleView = nil
+            navigationItem.title = titleSubtitle.title
         }
     }
 }
@@ -122,5 +138,6 @@ extension GenerateReportView: IndicatorInfoProvider {
 
 typealias TitleSubtitle = (title: String, subtitle: String?)
 protocol TitleSubtitleProtocol {
-    var titleSubtitleSubject: PublishSubject<TitleSubtitle> { get }
+    var titleSubtitle: TitleSubtitle { get }
+    var contentChangedSubject: PublishSubject<Void>? { get }
 }
