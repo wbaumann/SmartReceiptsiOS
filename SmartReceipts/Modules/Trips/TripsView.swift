@@ -21,6 +21,7 @@ final class TripsView: FetchedTableViewController {
     
     @IBOutlet fileprivate weak var _settingsButton: UIBarButtonItem!
     @IBOutlet fileprivate weak var _addButton: UIButton!
+    @IBOutlet fileprivate weak var editItem: UIBarButtonItem!
     
     private var priceWidth: CGFloat = 0
     private let dateFormatter = WBDateFormatter()
@@ -35,6 +36,10 @@ final class TripsView: FetchedTableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved),
                         name: NSNotification.Name.SmartReceiptsSettingsSaved, object: nil)
         lastDateSeparator = WBPreferences.dateSeparator()
+        
+        editItem.rx.tap.subscribe(onNext: { [unowned self] in
+            self.setEditing(!self.isEditing, animated: true)
+        }).disposed(by: bag)
     }
     
     deinit {
@@ -47,15 +52,6 @@ final class TripsView: FetchedTableViewController {
         }
         lastDateSeparator = WBPreferences.dateSeparator()
         tableView.reloadData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        updateEditButton()
-    }
-    
-    func updateEditButton() {
-        editButtonItem.isEnabled = itemsCount > 0
     }
     
     override var placeholderTitle: String {
@@ -149,7 +145,6 @@ final class TripsView: FetchedTableViewController {
     override func contentChanged() {
         super.contentChanged()
         updatePricesWidth()
-        updateEditButton()
     }
 }
 

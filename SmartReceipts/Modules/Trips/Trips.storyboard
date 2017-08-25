@@ -57,6 +57,7 @@
                     <connections>
                         <outlet property="_addButton" destination="fws-IG-QsY" id="dPq-M0-5E5"/>
                         <outlet property="_settingsButton" destination="goQ-v7-tzc" id="Jb9-6B-EKm"/>
+                        <outlet property="editItem" destination="S5m-dq-klV" id="dry-PJ-BGS"/>
                         <outlet property="tableView" destination="oiC-Hc-lug" id="se3-kH-BfB"/>
                     </connections>
                 </viewController>
