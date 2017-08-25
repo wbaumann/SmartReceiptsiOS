@@ -21,14 +21,15 @@ final class EditReceiptView: UserInterface {
     @IBOutlet private weak var cancelButton: UIBarButtonItem!
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     
-    private var formView: EditReceiptFormView!
+    private weak var formView: EditReceiptFormView!
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureTitle()
-        formView = EditReceiptFormView(trip: displayData.trip, receipt: displayData.receipt)
+        let formView = EditReceiptFormView(trip: displayData.trip, receipt: displayData.receipt)
+        self.formView = formView
         formView.settingsTap = presenter.settingsTap
         addChildViewController(formView)
         view.addSubview(formView.view)
@@ -37,23 +38,23 @@ final class EditReceiptView: UserInterface {
     }
     
     private func configureUIActions() {
-        cancelButton.rx.tap.subscribe(onNext: {
+        cancelButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.presenter.close()
         }).disposed(by: disposeBag)
         
-        doneButton.rx.tap.subscribe(onNext: {
+        doneButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.formView.validate()
         }).disposed(by: disposeBag)
     }
     
     private func configureSubscribers() {
-        formView.receiptSubject.subscribe(onNext: { receipt in
+        formView.receiptSubject.subscribe(onNext: { [unowned self] receipt in
             self.displayData.receipt == nil ?
                 self.presenter.addReceiptSubject.onNext(receipt) :
                 self.presenter.updateReceiptSubject.onNext(receipt)
         }).addDisposableTo(disposeBag)
         
-        formView.errorSubject.subscribe(onNext: { errorDescription in
+        formView.errorSubject.subscribe(onNext: { [unowned self] errorDescription in
             self.presenter.present(errorDescription: errorDescription)
         }).addDisposableTo(disposeBag)
     }
