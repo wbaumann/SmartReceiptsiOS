@@ -45,7 +45,7 @@ class ReceiptActionsFormView: FormViewController {
                   }))
         
         <<< buttonRow(title: viewButtonTitle(), bindSubject: viewImageTap,
-                  condition: Condition.function([], { _ in
+                  condition: Condition.function([], { [unowned self] _ in
                     self.attachmentType == .none
                   }))
         
