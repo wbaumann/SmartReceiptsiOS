@@ -98,7 +98,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         })
             
         <<< DecimalRow() { row in
-            row.hidden = Condition.init(booleanLiteral: !WBPreferences.includeTaxField())
+            row.hidden = Condition(booleanLiteral: !WBPreferences.includeTaxField())
             row.title = LocalizedString("edit.receipt.tax.label")
             row.placeholder = LocalizedString("edit.receipt.tax.placeholder")
             row.value = receipt.tax()?.amount.doubleValue
@@ -132,7 +132,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             
         <<< ExchangeRateRow(EXCHANGE_RATE_TAG) { row in
             row.title = LocalizedString("edit.receipt.exchange.rate.label")
-            row.hidden = Condition.function([CURRENCY_ROW_TAG], { form -> Bool in
+            row.hidden = Condition.function([CURRENCY_ROW_TAG], { [unowned self] form -> Bool in
                 if let picker = form.rowBy(tag: self.CURRENCY_ROW_TAG) as? PickerInlineRow<String> {
                     return picker.value == self.trip.defaultCurrency.code
                 } else {
