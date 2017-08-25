@@ -27,7 +27,6 @@ final class ReceiptImageViewerView: UserInterface {
     @IBOutlet private weak var rotateRightButton: UIBarButtonItem!
     fileprivate var imageView: UIImageView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,6 +57,16 @@ final class ReceiptImageViewerView: UserInterface {
         }).addDisposableTo(disposeBag)
         
         AppTheme.customizeOnViewDidLoad(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setToolbarHidden(false, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setToolbarHidden(true, animated: false)
     }
     
     override func viewDidLayoutSubviews() {
