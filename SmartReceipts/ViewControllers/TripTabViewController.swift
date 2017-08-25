@@ -27,13 +27,7 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         AppTheme.customizeOnViewDidLoad(self)
-        
-        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        self.toolbarItems = [space, editButtonItem]
-        editButtonItem.image = #imageLiteral(resourceName: "edit-2")
         
         settings.style.buttonBarBackgroundColor = AppTheme.primaryColor
         settings.style.buttonBarItemBackgroundColor = AppTheme.primaryColor
@@ -42,6 +36,7 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         settings.style.selectedBarHeight = 4
         settings.style.buttonBarLeftContentInset = 16
         settings.style.buttonBarRightContentInset = 16
+        settings.style.buttonBarItemsShouldFillAvailiableWidth = true
         
         let buttonFont = UIFont.boldSystemFont(ofSize: 12)
         
@@ -54,6 +49,7 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
             newCell?.label.font = buttonFont
         }
         super.viewDidLoad()
+        view.layoutSubviews()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -61,6 +61,11 @@ class FetchedTableViewController: UserInterface {
         }
     }
     
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: animated)
+    }
+    
     private func configureTable() {
         tableView.dataSource = dataSource
         

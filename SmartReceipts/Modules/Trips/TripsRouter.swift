@@ -36,7 +36,7 @@ class TripsRouter: Router {
             _view.navigationController?.pushViewController(tabs, animated: true)
         }, iPad: {
             let nav = UINavigationController(rootViewController: tabs)
-            nav.isToolbarHidden = false
+            nav.navigationBar.isTranslucent = false
             _view.splitViewController?.show(nav, sender: nil)
         })
     }
@@ -48,13 +48,11 @@ class TripsRouter: Router {
     
     private func openEditTrip(_ trip: WBTrip?) {
         executeFor(iPhone: {
-            AppModules.editTrip.build().router.show(from: _view,
-                                                embedInNavController: true, setupData: trip)
+            AppModules.editTrip.build().router.show(from: _view, embedInNavController: true, setupData: trip)
         }, iPad: {
             AppModules.editTrip.build().router.showIPadForm(from: _view, setupData: trip, needNavigationController: true)
         })
     }
-    
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

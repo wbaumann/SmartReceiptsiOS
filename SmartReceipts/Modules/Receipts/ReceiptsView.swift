@@ -48,10 +48,7 @@ final class ReceiptsView: FetchedTableViewController {
         showReceiptCategory = WBPreferences.layoutShowReceiptCategory()
         showAttachmentMarker = WBPreferences.layoutShowReceiptAttachmentMarker()
         
-        navigationItem.rightBarButtonItem = editButtonItem
-        
         setPresentationCellNib(ReceiptSummaryCell.viewNib())
-        updateEditButton()
         
         lastDateSeparator = WBPreferences.dateSeparator()
         configureFloatyButton()
@@ -94,7 +91,6 @@ final class ReceiptsView: FetchedTableViewController {
 
     override func contentChanged() {
         super.contentChanged()
-        updateEditButton()
         updatePricesWidth()
         presenter.contentChanged.onNext()
     }
@@ -110,11 +106,6 @@ final class ReceiptsView: FetchedTableViewController {
         } else {
             presenter.receiptActionsSubject.onNext(self.tapped)
         }
-    }
-    
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        tableView.setEditing(editing, animated: animated)
     }
     
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {
@@ -156,10 +147,6 @@ final class ReceiptsView: FetchedTableViewController {
     private func subscribe() {
         NotificationCenter.default.addObserver(self, selector: #selector(tripUpdated(_:)), name: NSNotification.Name.DatabaseDidUpdateModel, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved), name: NSNotification.Name.SmartReceiptsSettingsSaved, object: nil)
-    }
-    
-    private func updateEditButton() {
-        editButtonItem.isEnabled = itemsCount > 0
     }
     
     private func updatePricesWidth() {

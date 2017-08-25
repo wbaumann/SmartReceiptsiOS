@@ -177,6 +177,7 @@
 		71CF7A121F1020440004F389 /* InputTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF7A111F1020440004F389 /* InputTextCell.swift */; };
 		71CF7A141F1020590004F389 /* InputTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CF7A131F1020590004F389 /* InputTextCell.xib */; };
 		71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */; };
+		71DF3A801F509512000CD1D6 /* NotifyMasterSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF3A7F1F509512000CD1D6 /* NotifyMasterSplitViewController.swift */; };
 		71E090F31F2F994B00C825A8 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E090F21F2F994B00C825A8 /* FileManager+Extensions.swift */; };
 		71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E2B5751EEDD516001D02F1 /* Trips.storyboard */; };
 		71E2B57D1EEDD516001D02F1 /* TripsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5761EEDD516001D02F1 /* TripsDisplayData.swift */; };
@@ -186,7 +187,6 @@
 		71E2B5811EEDD516001D02F1 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B57A1EEDD516001D02F1 /* TripsView.swift */; };
 		71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */; };
 		71F3E3271F0DDBC5008FE932 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B8610F1F0AD3080069E251 /* Price.swift */; };
-		71F4682A1EEED923009F6CE7 /* NotifyMasterSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F468291EEED923009F6CE7 /* NotifyMasterSplitViewController.swift */; };
 		71F468321EEEDB03009F6CE7 /* EditTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F4682C1EEEDB03009F6CE7 /* EditTrip.storyboard */; };
 		71F468331EEEDB03009F6CE7 /* EditTripDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4682D1EEEDB03009F6CE7 /* EditTripDisplayData.swift */; };
 		71F468341EEEDB03009F6CE7 /* EditTripInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4682E1EEEDB03009F6CE7 /* EditTripInteractor.swift */; };
@@ -642,6 +642,7 @@
 		71CF7A131F1020590004F389 /* InputTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputTextCell.xib; sourceTree = "<group>"; };
 		71D59CDA1EDDC993008991B7 /* WBDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDateFormatter.h; sourceTree = "<group>"; };
 		71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDateFormatter.m; sourceTree = "<group>"; };
+		71DF3A7F1F509512000CD1D6 /* NotifyMasterSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifyMasterSplitViewController.swift; sourceTree = "<group>"; };
 		71E090F21F2F994B00C825A8 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		71E2B5751EEDD516001D02F1 /* Trips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trips.storyboard; sourceTree = "<group>"; };
 		71E2B5761EEDD516001D02F1 /* TripsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsDisplayData.swift; sourceTree = "<group>"; };
@@ -650,7 +651,6 @@
 		71E2B5791EEDD516001D02F1 /* TripsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsRouter.swift; sourceTree = "<group>"; };
 		71E2B57A1EEDD516001D02F1 /* TripsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
 		71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBar.swift"; sourceTree = "<group>"; };
-		71F468291EEED923009F6CE7 /* NotifyMasterSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifyMasterSplitViewController.swift; sourceTree = "<group>"; };
 		71F4682C1EEEDB03009F6CE7 /* EditTrip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditTrip.storyboard; sourceTree = "<group>"; };
 		71F4682D1EEEDB03009F6CE7 /* EditTripDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTripDisplayData.swift; sourceTree = "<group>"; };
 		71F4682E1EEEDB03009F6CE7 /* EditTripInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTripInteractor.swift; sourceTree = "<group>"; };
@@ -1100,16 +1100,9 @@
 			isa = PBXGroup;
 			children = (
 				7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */,
+				71DF3A7F1F509512000CD1D6 /* NotifyMasterSplitViewController.swift */,
 			);
 			path = Ad;
-			sourceTree = "<group>";
-		};
-		713D35481EDA341700D8563D /* Notify */ = {
-			isa = PBXGroup;
-			children = (
-				71F468291EEED923009F6CE7 /* NotifyMasterSplitViewController.swift */,
-			);
-			path = Notify;
 			sourceTree = "<group>";
 		};
 		713D35531EDA540000D8563D /* Testable */ = {
@@ -2102,7 +2095,6 @@
 			isa = PBXGroup;
 			children = (
 				713D35451EDA334300D8563D /* Ad */,
-				713D35481EDA341700D8563D /* Notify */,
 				71FE9FF31F477F620043E7B4 /* FetchedTableViewController.swift */,
 				A758CE931D01760C00169C7C /* QuickAlertPresenter.swift */,
 				71FE9FEF1F4778000043E7B4 /* TripTabViewController.swift */,
@@ -2593,6 +2585,7 @@
 				A79FDC711CEA0AB600328DBB /* Constants.swift in Sources */,
 				A7F05B981CFB49220079F1AD /* WBReceipt.swift in Sources */,
 				A7F05BD91CFD69640079F1AD /* PricesCollection.swift in Sources */,
+				71DF3A801F509512000CD1D6 /* NotifyMasterSplitViewController.swift in Sources */,
 				719310401EDDC2810065B5AD /* WBImageUtils.m in Sources */,
 				4D380F911B61240C001B43D2 /* GADConstants.m in Sources */,
 				5726E5431E00423900F2141C /* AnalyticsManager.swift in Sources */,
@@ -2863,7 +2856,6 @@
 				71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */,
 				7190D4541EE88CC40081CB22 /* GenerateReportView.swift in Sources */,
 				711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */,
-				71F4682A1EEED923009F6CE7 /* NotifyMasterSplitViewController.swift in Sources */,
 				71E2B5801EEDD516001D02F1 /* TripsRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
