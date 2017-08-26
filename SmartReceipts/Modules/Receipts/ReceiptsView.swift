@@ -55,12 +55,8 @@ final class ReceiptsView: FetchedTableViewController {
         subscribe()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+        super.viewWillDisappear(animated)
         floatyButton.close()
     }
     

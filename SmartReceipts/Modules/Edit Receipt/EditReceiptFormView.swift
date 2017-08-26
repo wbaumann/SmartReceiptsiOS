@@ -15,12 +15,12 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     private let CURRENCY_ROW_TAG = "CurrencyRow"
     private let NAME_ROW_TAG = "NameRow"
     private let EXCHANGE_RATE_TAG = "ExchangeRateRow"
-    private let DEFAULT_TAX_PERCENTAGE: Float = -1.0
     
     let receiptSubject = PublishSubject<WBReceipt>()
     let errorSubject = PublishSubject<String>()
     weak var settingsTap: PublishSubject<Void>?
     
+    private var isNewReceipt = false
     private var receipt: WBReceipt!
     private var trip: WBTrip!
     private var taxCalculator: TaxCalculator?
@@ -29,7 +29,8 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     init(trip: WBTrip, receipt: WBReceipt?) {
         super.init(nibName: nil, bundle: nil)
         self.trip = trip
-        if receipt == nil {
+        isNewReceipt = receipt == nil
+        if isNewReceipt {
             self.receipt = WBReceipt()
             self.receipt.setPrice(NSDecimalNumber.zero, currency: trip.defaultCurrency.code)
             self.receipt.date = Date()
@@ -43,7 +44,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         } else {
             self.receipt = receipt!.copy() as! WBReceipt
         }
-        if WBPreferences.includeTaxField() && WBPreferences.defaultTaxPercentage() != DEFAULT_TAX_PERCENTAGE {
+        if WBPreferences.includeTaxField() && WBPreferences.defaultTaxPercentage() != 0 {
             taxCalculator = TaxCalculator()
         }
     }
@@ -97,16 +98,16 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             cell.textField.keyboardType = .numbersAndPunctuation
         })
             
-        <<< DecimalRow() { row in
+        <<< DecimalRow() { [unowned self] row in
             row.hidden = Condition(booleanLiteral: !WBPreferences.includeTaxField())
             row.title = LocalizedString("edit.receipt.tax.label")
             row.placeholder = LocalizedString("edit.receipt.tax.placeholder")
-            row.value = receipt.tax()?.amount.doubleValue
-            if let calculator = taxCalculator {
+            row.value = self.isNewReceipt ? nil : self.receipt.taxAmount?.doubleValue
+            if let calculator = self.taxCalculator {
                 calculator.taxSubject.subscribe(onNext: {
                     row.value = Double(string: $0)
                     row.updateCell()
-                }).disposed(by: disposeBag)
+                }).disposed(by: self.disposeBag)
             }
         }.onChange({ [unowned self] row in
             self.receipt.setTax(NSDecimalNumber(value: row.value ?? 0))

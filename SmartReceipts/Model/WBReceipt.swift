@@ -123,11 +123,7 @@ extension WBReceipt: ExchangedPriced {
 
 extension WBReceipt: Taxed {
     func tax() -> Price? {
-        guard let tax = taxAmount, tax.compare(NSDecimalNumber.zero) != .orderedSame else {
-            return nil
-        }
-        
-        return Price(amount: tax, currency: currency)
+        return Price(amount: taxAmount ?? 0, currency: currency)
     }
     
     func taxAsString() -> String {
