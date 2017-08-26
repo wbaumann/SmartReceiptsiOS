@@ -51,7 +51,7 @@
 "category.postage.shipping.code" = "POST";
 "category.postage.shipping.name" = "Postage/Shipping";
 "category.stationery.stations.code" = "ZSTS";
-"category.stationery.stations.name" = "Stationery/Stations";
+"category.stationery.stations.name" = "Stations";
 "category.taxi.bus.code" = "TAXI";
 "category.taxi.bus.name" = "Taxi/Bus";
 "category.telephone.fax.code" = "TELE";
