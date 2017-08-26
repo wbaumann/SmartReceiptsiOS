@@ -227,7 +227,7 @@ class SettingsFormView: FormViewController {
             placeholder: "%")
         .onChange({ row in
             let value = row.value == nil ? nil : Float(row.value!)
-            WBPreferences.setDefaultTaxPercentage(value ?? -1)
+            WBPreferences.setDefaultTaxPercentage(value ?? 0)
         })
             
         <<< switchRow(LocalizedString("settings.assume.price.pre.tax.label"),
