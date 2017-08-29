@@ -373,3 +373,5 @@
 "trip.tab.receipts.title" = "RECEIPTS";
 "trip.tab.distances.title" = "DYSTANS";
 "trip.tab.reports.title" = "REPORTS";
+
+"tooltip.receipts.generate.advice" = "Use the 'Generate' tab to create your reports";

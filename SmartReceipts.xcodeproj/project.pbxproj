@@ -121,6 +121,7 @@
 		719310471EDDC3120065B5AD /* WBImageStampler.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310441EDDC3120065B5AD /* WBImageStampler.m */; };
 		719310481EDDC3120065B5AD /* WBPdfDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310461EDDC3120065B5AD /* WBPdfDrawer.m */; };
 		7194CAB81F3CBED00010552A /* FetchedModelAdapter+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194CAB71F3CBED00010552A /* FetchedModelAdapter+Rx.swift */; };
+		7197F2CB1F52F6A000C2AC1F /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197F2CA1F52F6A000C2AC1F /* TooltipView.swift */; };
 		719B1FC61EF5E2150049BD71 /* TaxCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */; };
 		719B1FD21EF5FEBE0049BD71 /* Column.m in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FD01EF5FEBE0049BD71 /* Column.m */; };
 		719B1FDC1EF603190049BD71 /* Receipts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 719B1FD61EF603190049BD71 /* Receipts.storyboard */; };
@@ -185,6 +186,7 @@
 		71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */; };
 		71E2B5801EEDD516001D02F1 /* TripsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5791EEDD516001D02F1 /* TripsRouter.swift */; };
 		71E2B5811EEDD516001D02F1 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B57A1EEDD516001D02F1 /* TripsView.swift */; };
+		71EFE1E61F55E04000591C8C /* TooltipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EFE1E51F55E04000591C8C /* TooltipService.swift */; };
 		71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */; };
 		71F3E3271F0DDBC5008FE932 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B8610F1F0AD3080069E251 /* Price.swift */; };
 		71F468321EEEDB03009F6CE7 /* EditTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F4682C1EEEDB03009F6CE7 /* EditTrip.storyboard */; };
@@ -581,6 +583,7 @@
 		719310451EDDC3120065B5AD /* WBPdfDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPdfDrawer.h; sourceTree = "<group>"; };
 		719310461EDDC3120065B5AD /* WBPdfDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPdfDrawer.m; sourceTree = "<group>"; };
 		7194CAB71F3CBED00010552A /* FetchedModelAdapter+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FetchedModelAdapter+Rx.swift"; sourceTree = "<group>"; };
+		7197F2CA1F52F6A000C2AC1F /* TooltipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TooltipView.swift; path = Views/TooltipView.swift; sourceTree = "<group>"; };
 		719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxCalculator.swift; sourceTree = "<group>"; };
 		719B1FD01EF5FEBE0049BD71 /* Column.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Column.m; sourceTree = "<group>"; };
 		719B1FD11EF5FEBE0049BD71 /* Column.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Column.h; sourceTree = "<group>"; };
@@ -650,6 +653,7 @@
 		71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsPresenter.swift; sourceTree = "<group>"; };
 		71E2B5791EEDD516001D02F1 /* TripsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsRouter.swift; sourceTree = "<group>"; };
 		71E2B57A1EEDD516001D02F1 /* TripsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
+		71EFE1E51F55E04000591C8C /* TooltipService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TooltipService.swift; sourceTree = "<group>"; };
 		71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBar.swift"; sourceTree = "<group>"; };
 		71F4682C1EEEDB03009F6CE7 /* EditTrip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditTrip.storyboard; sourceTree = "<group>"; };
 		71F4682D1EEEDB03009F6CE7 /* EditTripDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTripDisplayData.swift; sourceTree = "<group>"; };
@@ -1118,6 +1122,7 @@
 			isa = PBXGroup;
 			children = (
 				714901C01F0598B900772B6F /* CurrencyExchangeService.swift */,
+				71EFE1E51F55E04000591C8C /* TooltipService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1426,6 +1431,7 @@
 				71B861091F0A9BE70069E251 /* SuggestionView.h */,
 				71B8610A1F0A9BE70069E251 /* SuggestionView.m */,
 				71FE9FFA1F48CC5F0043E7B4 /* CircleButton.swift */,
+				7197F2CA1F52F6A000C2AC1F /* TooltipView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2632,6 +2638,7 @@
 				715B4EBD1F114A9C0021ACD8 /* PurchaseButtonCell.swift in Sources */,
 				71B8610E1F0A9D800069E251 /* WBAutocompleteHelper.m in Sources */,
 				EAE9DAEE1AF8EA6D00F4FE76 /* DistancePriceColumn.m in Sources */,
+				7197F2CB1F52F6A000C2AC1F /* TooltipView.swift in Sources */,
 				716F34521EE040E100D0017A /* EditDistanceView.swift in Sources */,
 				7190D4521EE88CC40081CB22 /* GenerateReportPresenter.swift in Sources */,
 				EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */,
@@ -2807,6 +2814,7 @@
 				EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */,
 				71572D891F15EA41001A1301 /* ColumnsRouter.swift in Sources */,
 				EA8D81821AEA7B5800BAC943 /* ReceiptColumnBlank.m in Sources */,
+				71EFE1E61F55E04000591C8C /* TooltipService.swift in Sources */,
 				4D004BB71D272836004DBB19 /* SmartReceiptsFormattableString.swift in Sources */,
 				EA8D818B1AEA7BA400BAC943 /* ReceiptColumnUserID.m in Sources */,
 				EA8EB1071B0A4AAF00780BA3 /* ReceiptColumnReportComment.m in Sources */,
@@ -3119,6 +3127,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartReceipts/SmartReceipts-Prefix.pch";
 				INFOPLIST_FILE = "SmartReceipts/SmartReceipts-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
@@ -3169,6 +3178,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartReceipts/SmartReceipts-Prefix.pch";
 				INFOPLIST_FILE = "SmartReceipts/SmartReceipts-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_CFLAGS = (
