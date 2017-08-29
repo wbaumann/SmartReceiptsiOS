@@ -76,11 +76,13 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         titleSubtitleProtocols = [receiptsModule.presenter as? TitleSubtitleProtocol,
                                  distancesModule.presenter as? TitleSubtitleProtocol,
                                   generateModule.presenter as? TitleSubtitleProtocol]
+        
         for tsp in titleSubtitleProtocols {
             tsp?.contentChangedSubject?.subscribe(onNext: { [unowned self] in
                 self.updateForIndex(self.currentIndex)
             }).disposed(by: bag)
         }
+        
         return views
     }
     
@@ -110,6 +112,16 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         } else {
             navigationItem.titleView = nil
             navigationItem.title = titleSubtitle.title
+        }
+    }
+    
+    private func showTooltip(on ui: UserInterface, text: String) -> TooltipView? {
+        if let tooltipApplicable = ui as? TooltipApplicable {
+            ui.loadViewIfNeeded()
+            return TooltipView.showOn(view: tooltipApplicable.viewForTooltip(), text: text)
+        } else {
+            Logger.error("UI should confirm 'TooltipApplicable' protocol!")
+            return nil
         }
     }
 }

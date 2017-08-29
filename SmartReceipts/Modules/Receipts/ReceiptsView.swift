@@ -174,6 +174,14 @@ final class ReceiptsView: FetchedTableViewController {
 
 }
 
+//MARK: TooltipApplicable
+extension ReceiptsView: TooltipApplicable {
+    func viewForTooltip() -> UIView {
+        return tableView
+    }
+}
+
+//MARK: UIDocumentInteractionControllerDelegate
 extension ReceiptsView: UIDocumentInteractionControllerDelegate {
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
         return navigationController ?? self
