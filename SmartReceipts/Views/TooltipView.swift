@@ -10,36 +10,23 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-private let TAP_ZONE: CGFloat = 44
-
 class TooltipView: UIView {
     
-    fileprivate weak var tableView: UITableView?
+    static let HEIGHT: CGFloat = 44
+    
+    fileprivate weak var scrollView: UIScrollView?
     fileprivate var textButton: UIButton!
     fileprivate var closeButton: UIButton!
     
     private var isAnimating = false
+    private var offset = CGPoint.zero
     private let bag = DisposeBag()
     
-    static func showOn(view: UIView, text: String) -> TooltipView {
-        if let tableView = view as? UITableView {
-            return showOn(tableView: tableView, text: text)
-        } else {
-            let tooltip = showTooltip(view: view, text: text)
-            return tooltip
-        }
-    }
-    
-    static func showOn(tableView: UITableView, text: String) -> TooltipView {
-        let tooltip = showTooltip(view: tableView.superview!, text: text)
-        tableView.contentInset = UIEdgeInsets(top: TAP_ZONE, left: 0, bottom: 0, right: 0)
-        tooltip.tableView = tableView
-        return tooltip
-    }
-    
-    private static func showTooltip(view: UIView, text: String) -> TooltipView {
-        let frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: TAP_ZONE)
+    static func showOn(view: UIView, text: String, offset: CGPoint = CGPoint.zero, screenWidth: Bool = false) -> TooltipView {
+        let width = screenWidth ? UIScreen.main.bounds.width : view.bounds.width
+        let frame = CGRect(x: offset.x, y: offset.y, width: width, height: HEIGHT)
         let tooltip = TooltipView(frame: frame)
+        tooltip.offset = offset
         tooltip.textButton.setTitle(text, for: .normal)
         tooltip.textButton.titleLabel?.sizeToFit()
         view.addSubview(tooltip)
@@ -93,19 +80,18 @@ class TooltipView: UIView {
         }).disposed(by: bag)
     }
     
-    private func close() {
+    func close() {
         isAnimating = true
         UIView.animate(withDuration: 0.3, animations: {
             self.alpha = 0
-            self.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: 0)
-            self.tableView?.contentInset = UIEdgeInsets.zero
+            self.frame = CGRect(x: self.offset.x, y: self.offset.y, width: self.bounds.width, height: 0)
         }, completion: { _ in
             self.removeFromSuperview()
         })
     }
     
     func didRotateScreen() {
-        self.frame = CGRect(x: 0, y: 0, width: superview!.bounds.width, height: TAP_ZONE)
+        self.frame = CGRect(x: self.offset.x, y: self.offset.y, width: superview!.bounds.width, height: TooltipView.HEIGHT)
         let frames = calculateFrames()
         textButton.frame = frames.textButtonFrame
         closeButton.frame = frames.closeButtonFrame
@@ -113,8 +99,9 @@ class TooltipView: UIView {
 
     private func calculateFrames() -> (textButtonFrame: CGRect, closeButtonFrame: CGRect) {
         let margin: CGFloat = 8
-        let closeButtonFrame = CGRect(x: bounds.width - TAP_ZONE - margin, y: 0, width: TAP_ZONE, height: TAP_ZONE)
-        let textButtonFrame = CGRect(x: margin * 2, y: 0, width: closeButtonFrame.origin.x - margin * 3, height: TAP_ZONE)
+        let closeButtonFrame = CGRect(x: bounds.width - TooltipView.HEIGHT - margin, y: 0,
+                                  width: TooltipView.HEIGHT, height: TooltipView.HEIGHT)
+        let textButtonFrame = CGRect(x: margin * 2, y: 0, width: closeButtonFrame.origin.x - margin * 3, height: TooltipView.HEIGHT)
         return (textButtonFrame, closeButtonFrame)
     }
 }

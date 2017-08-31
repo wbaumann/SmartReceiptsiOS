@@ -7,19 +7,59 @@
 //
 
 import Foundation
+import RxSwift
 
 class TooltipService {
+    
+    fileprivate let MOVE_TO_GENERATE_DISMISSED = "move.to.generate.dismissed"
+    fileprivate let REPORT_GENERATED = "move.to.generate.dismissed"
+    
+    private init() {}
+    static let shared = TooltipService()
+    
     func tooltipText(for module: AppModules) -> String? {
-        var tooltipText: String?
+        
         switch module {
-        case .receipts: tooltipText = receiptsTooltiptText()
+        case .receipts: return receiptsTooltiptText()
         default: break
         }
+        
         Logger.error("No tooltip text for module '\(module.rawValue)'")
-        return tooltipText
+        return nil
     }
     
     private func receiptsTooltiptText() -> String? {
-        return LocalizedString("tooltip.receipts.generate.advice")
+        return moveToGenerateTrigger() ? LocalizedString("tooltip.receipts.generate.advice") : nil
+    }
+}
+
+//MARK: Triggers
+extension TooltipService {
+    
+    // Mark
+    func markMoveToGenerateDismiss() {
+        mark(key: MOVE_TO_GENERATE_DISMISSED)
+    }
+    
+    func markReportGenerated() {
+        mark(key: REPORT_GENERATED)
+    }
+    
+    // Get
+    func moveToGenerateTrigger() -> Bool {
+        let trips = Database.sharedInstance().allTrips() as! [WBTrip]
+        let justOneTrip = trips.count == 1
+        let hasReceipts = Database.sharedInstance().allReceipts(for: trips.first).count > 0
+        
+        return !marked(key: MOVE_TO_GENERATE_DISMISSED) && !marked(key: REPORT_GENERATED) && justOneTrip && hasReceipts
+    }
+    
+    // Private
+    private func mark(key: String) {
+        UserDefaults.standard.set(true, forKey: key)
+    }
+    
+    private func marked(key: String) -> Bool {
+        return UserDefaults.standard.bool(forKey: key)
     }
 }
