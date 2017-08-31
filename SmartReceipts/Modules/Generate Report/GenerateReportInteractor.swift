@@ -71,6 +71,7 @@ class GenerateReportInteractor: Interactor {
                                           csv: self.csvFile.value, imagesZip: self.zipStampedJPGs.value)
             
             self.generator!.generate(onSuccessHandler: { (files) in
+                TooltipService.shared.markReportGenerated()
                 self.presenter.hideHudFromView()
                 
                 var actions = [UIAlertAction]()

@@ -12,9 +12,11 @@ import RxSwift
 import Viperit
 
 class TripTabViewController: ButtonBarPagerTabStripViewController {
+    
     var trip: WBTrip!
     
     private var titleSubtitleProtocols: [TitleSubtitleProtocol?]!
+    private var reportTooltip: TooltipView?
     private let bag = DisposeBag()
     
     required init(trip: WBTrip) {
@@ -55,6 +57,7 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateForIndex(currentIndex)
+        updateGenerateTooltip()
     }
     
     func updateEditing() {
@@ -98,6 +101,7 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         
         if 0..<viewControllers.count ~= toIndex && progressPercentage == 1.0 {
             updateForIndex(toIndex)
+            updateGenerateTooltip()
         }
     }
     
@@ -115,13 +119,44 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         }
     }
     
-    private func showTooltip(on ui: UserInterface, text: String) -> TooltipView? {
-        if let tooltipApplicable = ui as? TooltipApplicable {
-            ui.loadViewIfNeeded()
-            return TooltipView.showOn(view: tooltipApplicable.viewForTooltip(), text: text)
-        } else {
-            Logger.error("UI should confirm 'TooltipApplicable' protocol!")
-            return nil
+    private func updateGenerateTooltip() {
+        let currentIsGenerate = viewControllers.count-1 == currentIndex
+        
+        func onGenerateTooltipClose() {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.applyInsetsForTooltip(UIEdgeInsets.zero)
+                self.reportTooltip = nil
+            })
+        }
+        
+        if let text = TooltipService.shared.tooltipText(for: .receipts), reportTooltip == nil, !currentIsGenerate {
+            applyInsetsForTooltip(UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0))
+            let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
+            reportTooltip = TooltipView.showOn(view: containerView.superview!, text: text, offset: offset, screenWidth: true)
+            reportTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
+                TooltipService.shared.markMoveToGenerateDismiss()
+                self.moveToViewController(at: self.viewControllers.count-1)
+                self.reportTooltip = nil
+            }).disposed(by: self.bag)
+            
+            reportTooltip?.rx.close.subscribe(onNext: {
+                TooltipService.shared.markMoveToGenerateDismiss()
+                onGenerateTooltipClose()
+            }).disposed(by: self.bag)
+        }
+        
+        if reportTooltip != nil && currentIsGenerate {
+            reportTooltip!.close()
+            onGenerateTooltipClose()
+        }
+    }
+    
+    private func applyInsetsForTooltip(_ inset: UIEdgeInsets) {
+        for vc in viewControllers {
+            if let ftvc = vc as? FetchedTableViewController {
+                ftvc.loadViewIfNeeded()
+                ftvc.tableView.contentInset = inset
+            }
         }
     }
 }
