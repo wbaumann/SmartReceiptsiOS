@@ -83,6 +83,7 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         for tsp in titleSubtitleProtocols {
             tsp?.contentChangedSubject?.subscribe(onNext: { [unowned self] in
                 self.updateForIndex(self.currentIndex)
+                self.updateGenerateTooltip()
             }).disposed(by: bag)
         }
         
@@ -132,7 +133,11 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         if let text = TooltipService.shared.tooltipText(for: .receipts), reportTooltip == nil, !currentIsGenerate {
             applyInsetsForTooltip(UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0))
             let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
-            reportTooltip = TooltipView.showOn(view: containerView.superview!, text: text, offset: offset, screenWidth: true)
+            
+            var screenWidth = false
+            executeFor(iPhone: { screenWidth = true }, iPad: { screenWidth = false })
+            reportTooltip = TooltipView.showOn(view: containerView.superview!, text: text, offset: offset, screenWidth: screenWidth)
+            
             reportTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
                 TooltipService.shared.markMoveToGenerateDismiss()
                 self.moveToViewController(at: self.viewControllers.count-1)

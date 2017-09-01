@@ -14,8 +14,19 @@ class TooltipService {
     fileprivate let MOVE_TO_GENERATE_DISMISSED = "move.to.generate.dismissed"
     fileprivate let REPORT_GENERATED = "move.to.generate.dismissed"
     
-    private init() {}
+    fileprivate var database: Database!
+    
+    private init() {
+        database = Database.sharedInstance()
+    }
+    
     static let shared = TooltipService()
+    
+    static func service(for db: Database) -> TooltipService {
+        let service = TooltipService()
+        service.database = db
+        return service
+    }
     
     func tooltipText(for module: AppModules) -> String? {
         
@@ -47,9 +58,9 @@ extension TooltipService {
     
     // Get
     func moveToGenerateTrigger() -> Bool {
-        let trips = Database.sharedInstance().allTrips() as! [WBTrip]
+        let trips = database.allTrips() as! [WBTrip]
         let justOneTrip = trips.count == 1
-        let hasReceipts = Database.sharedInstance().allReceipts(for: trips.first).count > 0
+        let hasReceipts = database.allReceipts(for: trips.first).count > 0
         
         return !marked(key: MOVE_TO_GENERATE_DISMISSED) && !marked(key: REPORT_GENERATED) && justOneTrip && hasReceipts
     }
