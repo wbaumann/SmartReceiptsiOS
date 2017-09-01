@@ -20,15 +20,16 @@ class TooltipView: UIView {
     
     private var isAnimating = false
     private var offset = CGPoint.zero
+    private var widthFromScreen = false
     private let bag = DisposeBag()
     
     static func showOn(view: UIView, text: String, offset: CGPoint = CGPoint.zero, screenWidth: Bool = false) -> TooltipView {
         let width = screenWidth ? UIScreen.main.bounds.width : view.bounds.width
         let frame = CGRect(x: offset.x, y: offset.y, width: width, height: HEIGHT)
         let tooltip = TooltipView(frame: frame)
+        tooltip.widthFromScreen = screenWidth
         tooltip.offset = offset
         tooltip.textButton.setTitle(text, for: .normal)
-        tooltip.textButton.titleLabel?.sizeToFit()
         view.addSubview(tooltip)
         return tooltip
     }
@@ -60,6 +61,7 @@ class TooltipView: UIView {
         let frames = calculateFrames()
         
         textButton = UIButton(frame: frames.textButtonFrame)
+        textButton.titleLabel?.adjustsFontSizeToFitWidth = true
         textButton.contentHorizontalAlignment = .left
         textButton.titleLabel?.font = font
         
@@ -91,7 +93,8 @@ class TooltipView: UIView {
     }
     
     func didRotateScreen() {
-        self.frame = CGRect(x: self.offset.x, y: self.offset.y, width: superview!.bounds.width, height: TooltipView.HEIGHT)
+        let width = widthFromScreen ? UIScreen.main.bounds.width : superview!.bounds.width
+        self.frame = CGRect(x: self.offset.x, y: self.offset.y, width: width, height: TooltipView.HEIGHT)
         let frames = calculateFrames()
         textButton.frame = frames.textButtonFrame
         closeButton.frame = frames.closeButtonFrame

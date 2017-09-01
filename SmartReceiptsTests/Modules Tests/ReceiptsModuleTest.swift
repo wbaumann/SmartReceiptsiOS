@@ -65,12 +65,8 @@ class ReceiptsModuleTest: XCTestCase {
         stub(interactor) { mock in
             mock.swapUpReceipt(WBReceipt()).thenDoNothing()
             mock.swapDownReceipt(WBReceipt()).thenDoNothing()
-            mock.nextID().then({ _ -> String in
-                return "1"
-            })
-            mock.distanceReceipts().then({ _ -> [WBReceipt] in
-                return [WBReceipt]()
-            })
+            mock.distanceReceipts().then({ [WBReceipt]() })
+            mock.titleSubtitle().then({ ("title", "subtitle") })
         
         }
     }
@@ -107,11 +103,9 @@ class ReceiptsModuleTest: XCTestCase {
     }
     
     func testPresenterToInteractor() {
-        _ = presenter.nextID()
-        _ = presenter.distanceReceipts()
-    
-        verify(interactor).distanceReceipts()
-        verify(interactor).nextID()
+        let ts = presenter.titleSubtitle
+        XCTAssertTrue(ts.title == "title")
+        XCTAssertTrue(ts.subtitle == "subtitle")
         
         presenter.viewHasLoaded()
         presenter.receiptActionsSubject.onNext(WBReceipt())
@@ -121,6 +115,7 @@ class ReceiptsModuleTest: XCTestCase {
         
         verify(interactor).swapDownReceipt(WBReceipt())
         verify(interactor).swapUpReceipt(WBReceipt())
+        verify(interactor).titleSubtitle()
     }
     
 }
