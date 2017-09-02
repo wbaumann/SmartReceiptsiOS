@@ -59,10 +59,15 @@ extension TooltipService {
     // Get
     func moveToGenerateTrigger() -> Bool {
         let trips = database.allTrips() as! [WBTrip]
-        let justOneTrip = trips.count == 1
-        let hasReceipts = database.allReceipts(for: trips.first).count > 0
+        let hasTrips = trips.count > 0
         
-        return !marked(key: MOVE_TO_GENERATE_DISMISSED) && !marked(key: REPORT_GENERATED) && justOneTrip && hasReceipts
+        var hasReceipts = false
+        for trip in trips {
+            hasReceipts = database.allReceipts(for: trip).count > 0
+            if hasReceipts { break }
+        }
+        
+        return !marked(key: MOVE_TO_GENERATE_DISMISSED) && !marked(key: REPORT_GENERATED) && hasTrips && hasReceipts
     }
     
     // Private
