@@ -45,7 +45,9 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         } else {
             self.receipt = receipt!.copy() as! WBReceipt
         }
-        if WBPreferences.includeTaxField() && WBPreferences.defaultTaxPercentage() != 0 {
+        
+        // Check conditions for automatic tax calculator
+        if WBPreferences.includeTaxField() && WBPreferences.defaultTaxPercentage() != 0 && !WBPreferences.enteredPricePreTax() {
             taxCalculator = TaxCalculator()
         }
     }
