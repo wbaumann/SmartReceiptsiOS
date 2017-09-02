@@ -15,6 +15,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     private let CURRENCY_ROW_TAG = "CurrencyRow"
     private let NAME_ROW_TAG = "NameRow"
     private let EXCHANGE_RATE_TAG = "ExchangeRateRow"
+    private let COMMENT_ROW_TAG = "CommentRow"
     
     let receiptSubject = PublishSubject<WBReceipt>()
     let errorSubject = PublishSubject<String>()
@@ -164,11 +165,12 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             row.value = receipt.category
         }.onChange({ [unowned self] row in
             self.receipt.category = row.value!
+            self.matchCategory(value: row.value)
         }).cellSetup({ cell, _ in
             cell.configureCell()
         })
         
-        <<< TextRow() { row in
+        <<< TextRow(COMMENT_ROW_TAG) { row in
             row.title = LocalizedString("edit.receipt.comment.label")
             row.placeholder = LocalizedString("edit.receipt.comment.placeholder")
             row.value = receipt.comment
@@ -216,6 +218,21 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     func validate() {
         receipt.trip = trip
         receiptSubject.onNext(receipt)
+    }
+    
+    private func setValue(cellTag: String, value: Any?) {
+        form.rowBy(tag: cellTag)?.baseValue = value
+        form.rowBy(tag: cellTag)?.updateCell()
+    }
+    
+    private func matchCategory(value: String?) {
+        if WBPreferences.matchNameToCategory() {
+            setValue(cellTag: NAME_ROW_TAG, value: value)
+        }
+        
+        if WBPreferences.matchCommentToCategory() {
+            setValue(cellTag: COMMENT_ROW_TAG, value: value)
+        }
     }
     
     private func updateExchangeRate() {
