@@ -213,6 +213,9 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             cell.tintColor = AppTheme.primaryColor
         })
         
+        if isNewReceipt {
+            matchCategory(value: receipt.category)
+        }
     }
     
     func validate() {
