@@ -27,27 +27,32 @@ class TooltipServiceTests: SmartReceiptsTestsBase {
     func testServiceWorkflow() {
         resetUserDefaults()
         
-        XCTAssertFalse(tooltipService.moveToGenerateTrigger())
-        
         let trip = db.createTestTrip()
         db.save(trip)
-        XCTAssertFalse(tooltipService.moveToGenerateTrigger())
+        
+        func checkTrigger() -> Bool {
+            return tooltipService.moveToGenerateTrigger(for: trip)
+        }
+        
+        XCTAssertFalse(checkTrigger())
         
         addReceipt(NSDecimalNumber(decimal: 10.5), trip: trip)
-        XCTAssertTrue(tooltipService.moveToGenerateTrigger())
+        XCTAssertTrue(checkTrigger())
         addReceipt(NSDecimalNumber(decimal: 2.5), trip: trip)
-        XCTAssertTrue(tooltipService.moveToGenerateTrigger())
+        XCTAssertTrue(checkTrigger())
         
         let trip2 = db.createTestTrip()
         db.save(trip2)
-        XCTAssertTrue(tooltipService.moveToGenerateTrigger())
-        db.delete(trip2)
-        XCTAssertTrue(tooltipService.moveToGenerateTrigger())
-        XCTAssertNotNil(tooltipService.tooltipText(for: .receipts))
+        XCTAssertFalse(tooltipService.moveToGenerateTrigger(for: trip2))
+        addReceipt(NSDecimalNumber(decimal: 2.5), trip: trip2)
+        XCTAssertTrue(tooltipService.moveToGenerateTrigger(for: trip2))
+        
+        XCTAssertTrue(checkTrigger())
+        XCTAssertNotNil(tooltipService.generateTooltip(for: trip))
         
         tooltipService.markMoveToGenerateDismiss()
-        XCTAssertFalse(tooltipService.moveToGenerateTrigger())
-        XCTAssertNil(tooltipService.tooltipText(for: .receipts))
+        XCTAssertFalse(checkTrigger())
+        XCTAssertNil(tooltipService.generateTooltip(for: trip))
     }
     
     func testMarkGeneratedReport() {
@@ -55,10 +60,11 @@ class TooltipServiceTests: SmartReceiptsTestsBase {
         
         let trip = db.createTestTrip()
         db.save(trip)
+        
         addReceipt(NSDecimalNumber(decimal: 10.5), trip: trip)
-        XCTAssertTrue(tooltipService.moveToGenerateTrigger())
+        XCTAssertTrue(tooltipService.moveToGenerateTrigger(for: trip))
         tooltipService.markReportGenerated()
-        XCTAssertFalse(tooltipService.moveToGenerateTrigger())
+        XCTAssertFalse(tooltipService.moveToGenerateTrigger(for: trip))
     }
     
     private func addReceipt(_ amount: NSDecimalNumber, currency: String = "USD", exchangeRate: NSDecimalNumber = .zero, trip: WBTrip) {
