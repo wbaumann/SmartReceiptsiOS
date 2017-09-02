@@ -334,8 +334,8 @@
 "settings.layout.include.receipt.date.label" = "Include Receipt Date";
 "settings.layout.section.title" = "Layout Customization";
 "settings.manage.categories.label" = "Manage Categories";
-"settings.match.comments.to.categories" = "Match Comments to Categories";
-"settings.match.name.to.category.label" = "Match Name to Categories";
+"settings.match.comments.to.categories" = "Match Comments to Category";
+"settings.match.name.to.category.label" = "Match Name to Category";
 "settings.max.camera.resolution.label" = "Max. Camera Height / Width";
 "settings.min.receipt.price.label" = "Min. Receipt Price to Report";
 "settings.min.receipt.price.placeholder" = "Price";
