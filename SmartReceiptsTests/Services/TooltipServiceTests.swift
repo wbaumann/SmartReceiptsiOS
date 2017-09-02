@@ -40,7 +40,7 @@ class TooltipServiceTests: SmartReceiptsTestsBase {
         
         let trip2 = db.createTestTrip()
         db.save(trip2)
-        XCTAssertFalse(tooltipService.moveToGenerateTrigger())
+        XCTAssertTrue(tooltipService.moveToGenerateTrigger())
         db.delete(trip2)
         XCTAssertTrue(tooltipService.moveToGenerateTrigger())
         XCTAssertNotNil(tooltipService.tooltipText(for: .receipts))
