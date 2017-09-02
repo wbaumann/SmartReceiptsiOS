@@ -130,7 +130,14 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
             })
         }
         
-        if let text = TooltipService.shared.tooltipText(for: .receipts), reportTooltip == nil, !currentIsGenerate {
+        // Close tooltip if conditions are not met
+        if !TooltipService.shared.moveToGenerateTrigger(for: trip) {
+            reportTooltip?.close()
+            onGenerateTooltipClose()
+        }
+        
+        // Create tooltip if needed
+        if let text = TooltipService.shared.generateTooltip(for: trip), reportTooltip == nil, !currentIsGenerate {
             applyInsetsForTooltip(UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0))
             let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
             
@@ -150,8 +157,9 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
             }).disposed(by: self.bag)
         }
         
-        if reportTooltip != nil && currentIsGenerate {
-            reportTooltip!.close()
+        // Close tooltip on Generate page
+        if currentIsGenerate {
+            reportTooltip?.close()
             onGenerateTooltipClose()
         }
     }

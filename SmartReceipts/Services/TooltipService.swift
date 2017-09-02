@@ -31,7 +31,6 @@ class TooltipService {
     func tooltipText(for module: AppModules) -> String? {
         
         switch module {
-        case .receipts: return receiptsTooltiptText()
         default: break
         }
         
@@ -39,8 +38,12 @@ class TooltipService {
         return nil
     }
     
-    private func receiptsTooltiptText() -> String? {
-        return moveToGenerateTrigger() ? LocalizedString("tooltip.receipts.generate.advice") : nil
+    func generateTooltip(for trip: WBTrip) -> String? {
+        if moveToGenerateTrigger(for: trip) {
+            return LocalizedString("tooltip.receipts.generate.advice")
+        }
+        Logger.error("No tooltip for trip: \(trip)")
+        return nil
     }
 }
 
@@ -57,17 +60,9 @@ extension TooltipService {
     }
     
     // Get
-    func moveToGenerateTrigger() -> Bool {
-        let trips = database.allTrips() as! [WBTrip]
-        let hasTrips = trips.count > 0
-        
-        var hasReceipts = false
-        for trip in trips {
-            hasReceipts = database.allReceipts(for: trip).count > 0
-            if hasReceipts { break }
-        }
-        
-        return !marked(key: MOVE_TO_GENERATE_DISMISSED) && !marked(key: REPORT_GENERATED) && hasTrips && hasReceipts
+    func moveToGenerateTrigger(for trip: WBTrip) -> Bool {
+        let hasReceipts = database.allReceipts(for: trip).count > 0
+        return !marked(key: MOVE_TO_GENERATE_DISMISSED) && !marked(key: REPORT_GENERATED) && hasReceipts
     }
     
     // Private
