@@ -148,6 +148,7 @@
 		71A30F2F1EECB746001BA608 /* DataImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A30F2D1EECAA34001BA608 /* DataImport.swift */; };
 		71A30F301EECB750001BA608 /* WBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */; };
 		71AC501F1F41DD3F00549BAA /* TableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC501E1F41DD3F00549BAA /* TableViewDataSourceProxy.swift */; };
+		71ACA7BA1F5B5A830024903E /* FeatureFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7B91F5B5A830024903E /* FeatureFlags.swift */; };
 		71AD67721F23FA810033B643 /* PredectiveTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD67711F23FA810033B643 /* PredectiveTextCell.swift */; };
 		71AEDDCD1EDF6A2300BAC0DD /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */; };
 		71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71AEDDD61EDF7FF400BAC0DD /* TripDistances.storyboard */; };
@@ -611,6 +612,7 @@
 		71A30F2B1EEC9F05001BA608 /* DataExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExport.swift; sourceTree = "<group>"; };
 		71A30F2D1EECAA34001BA608 /* DataImport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImport.swift; sourceTree = "<group>"; };
 		71AC501E1F41DD3F00549BAA /* TableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSourceProxy.swift; sourceTree = "<group>"; };
+		71ACA7B91F5B5A830024903E /* FeatureFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlags.swift; sourceTree = "<group>"; };
 		71AD67711F23FA810033B643 /* PredectiveTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredectiveTextCell.swift; sourceTree = "<group>"; };
 		71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppTheme.swift; path = ../ViewControllers/Abstract/Customization/AppTheme.swift; sourceTree = "<group>"; };
 		71AEDDD61EDF7FF400BAC0DD /* TripDistances.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TripDistances.storyboard; sourceTree = "<group>"; };
@@ -1837,6 +1839,7 @@
 				71D59CDA1EDDC993008991B7 /* WBDateFormatter.h */,
 				71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */,
 				7120099C1F12D0DE0049927E /* TickTock.swift */,
+				71ACA7B91F5B5A830024903E /* FeatureFlags.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2808,6 +2811,7 @@
 				579DDFB21E2E4223004937F7 /* UIImage+Extensions.swift in Sources */,
 				A7F05BBC1CFC31520079F1AD /* WBCurrency+Extensions.swift in Sources */,
 				57691F001E10613500F78859 /* RateApplication.m in Sources */,
+				71ACA7BA1F5B5A830024903E /* FeatureFlags.swift in Sources */,
 				A78214FB1CFFE86000FD644A /* ExchangeRate.swift in Sources */,
 				7194CAB81F3CBED00010552A /* FetchedModelAdapter+Rx.swift in Sources */,
 				57EEBDC41E093C8F00974E53 /* String+Extensions.swift in Sources */,
