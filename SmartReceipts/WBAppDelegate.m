@@ -20,7 +20,6 @@
 
 #import "RIButtonItem.h"
 #import "UIAlertView+Blocks.h"
-#import "Tweaks/FBTweakShakeWindow.h"
 #import <SmartReceipts-Swift.h>
 
 #import <FirebaseCore/FirebaseCore.h>
@@ -36,20 +35,6 @@
 @implementation WBAppDelegate {
     dispatch_queue_t _queue;
 }
-
-#if DEBUG
-- (UIWindow *)window {
-    if (!_window) {
-        _window = [[FBTweakShakeWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    }
-    
-    return _window;
-}
-
-- (void)tweakUIDismissed {
-    LOGGER_DEBUG(@"tweakUIDismissed");
-}
-#endif
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for AppTheme after application launch.
@@ -83,12 +68,6 @@
     NSSetUncaughtExceptionHandler(&onUncaughtExcepetion);
 
     [[RateApplication sharedInstance] markAppLaunch];
-    
-    [Tweaker preload];
-    
-#if DEBUG
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tweakUIDismissed) name:FBTweakShakeViewControllerDidDismissNotification object:nil];
-#endif
     
     [self logPurchases];
     

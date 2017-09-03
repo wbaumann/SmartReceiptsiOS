@@ -25,6 +25,9 @@
                         <barButtonItem key="leftBarButtonItem" image="close_button" id="WY2-Az-QtK"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="closeButton" destination="WY2-Az-QtK" id="BD6-kS-GYS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nXm-AG-NXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

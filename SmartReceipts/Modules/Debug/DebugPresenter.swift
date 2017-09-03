@@ -17,6 +17,10 @@ class DebugPresenter: Presenter {
         view.loginTap
             .bind(to: router.loginTapSubscriber)
             .disposed(by: bag)
+        
+        view.subscriptionChange
+            .bind(to: interactor.debugSubscription)
+            .disposed(by: bag)
     }
     
 }

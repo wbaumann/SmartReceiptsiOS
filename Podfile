@@ -23,7 +23,6 @@ def pods
     pod 'RxDataSources'
     
     # Utilites
-    pod 'Tweaks'
     pod 'CocoaLumberjack/Swift'
     
     # Google
