@@ -149,6 +149,13 @@
 		71A30F301EECB750001BA608 /* WBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4F35318CFCCD000F69A35 /* WBAppDelegate.m */; };
 		71AC501F1F41DD3F00549BAA /* TableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC501E1F41DD3F00549BAA /* TableViewDataSourceProxy.swift */; };
 		71ACA7BA1F5B5A830024903E /* FeatureFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7B91F5B5A830024903E /* FeatureFlags.swift */; };
+		71ACA7C41F5B69C90024903E /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71ACA7BE1F5B69C90024903E /* Debug.storyboard */; };
+		71ACA7C51F5B69C90024903E /* DebugDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7BF1F5B69C90024903E /* DebugDisplayData.swift */; };
+		71ACA7C61F5B69C90024903E /* DebugInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7C01F5B69C90024903E /* DebugInteractor.swift */; };
+		71ACA7C71F5B69C90024903E /* DebugPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7C11F5B69C90024903E /* DebugPresenter.swift */; };
+		71ACA7C81F5B69C90024903E /* DebugRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7C21F5B69C90024903E /* DebugRouter.swift */; };
+		71ACA7C91F5B69C90024903E /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7C31F5B69C90024903E /* DebugView.swift */; };
+		71ACA7CC1F5B6A360024903E /* DebugFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7CB1F5B6A360024903E /* DebugFormView.swift */; };
 		71AD67721F23FA810033B643 /* PredectiveTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD67711F23FA810033B643 /* PredectiveTextCell.swift */; };
 		71AEDDCD1EDF6A2300BAC0DD /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */; };
 		71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71AEDDD61EDF7FF400BAC0DD /* TripDistances.storyboard */; };
@@ -613,6 +620,13 @@
 		71A30F2D1EECAA34001BA608 /* DataImport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImport.swift; sourceTree = "<group>"; };
 		71AC501E1F41DD3F00549BAA /* TableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		71ACA7B91F5B5A830024903E /* FeatureFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlags.swift; sourceTree = "<group>"; };
+		71ACA7BE1F5B69C90024903E /* Debug.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
+		71ACA7BF1F5B69C90024903E /* DebugDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugDisplayData.swift; sourceTree = "<group>"; };
+		71ACA7C01F5B69C90024903E /* DebugInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugInteractor.swift; sourceTree = "<group>"; };
+		71ACA7C11F5B69C90024903E /* DebugPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugPresenter.swift; sourceTree = "<group>"; };
+		71ACA7C21F5B69C90024903E /* DebugRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugRouter.swift; sourceTree = "<group>"; };
+		71ACA7C31F5B69C90024903E /* DebugView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
+		71ACA7CB1F5B6A360024903E /* DebugFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugFormView.swift; sourceTree = "<group>"; };
 		71AD67711F23FA810033B643 /* PredectiveTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredectiveTextCell.swift; sourceTree = "<group>"; };
 		71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppTheme.swift; path = ../ViewControllers/Abstract/Customization/AppTheme.swift; sourceTree = "<group>"; };
 		71AEDDD61EDF7FF400BAC0DD /* TripDistances.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TripDistances.storyboard; sourceTree = "<group>"; };
@@ -1334,6 +1348,20 @@
 			path = Rx;
 			sourceTree = "<group>";
 		};
+		71ACA7BD1F5B69B50024903E /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				71ACA7BE1F5B69C90024903E /* Debug.storyboard */,
+				71ACA7BF1F5B69C90024903E /* DebugDisplayData.swift */,
+				71ACA7C01F5B69C90024903E /* DebugInteractor.swift */,
+				71ACA7C11F5B69C90024903E /* DebugPresenter.swift */,
+				71ACA7C21F5B69C90024903E /* DebugRouter.swift */,
+				71ACA7C31F5B69C90024903E /* DebugView.swift */,
+				71ACA7CB1F5B6A360024903E /* DebugFormView.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
 		71AEDDD41EDF7F3300BAC0DD /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -1350,6 +1378,7 @@
 				71AF49D81EFDA4710022B2E2 /* Receipt Image Viewer */,
 				7111AD9E1F0EC37300DF77ED /* Settings */,
 				71572D7D1F15E929001A1301 /* Settings Submodules */,
+				71ACA7BD1F5B69B50024903E /* Debug */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -2341,6 +2370,7 @@
 				71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */,
 				715B4EBE1F114A9C0021ACD8 /* PurchaseButtonCell.xib in Resources */,
 				71CF7A141F1020590004F389 /* InputTextCell.xib in Resources */,
+				71ACA7C41F5B69C90024903E /* Debug.storyboard in Resources */,
 				7159BA0C1F06FB96004EABAA /* ExchangeRateCell.xib in Resources */,
 				71AF49DF1EFDA4810022B2E2 /* ReceiptImageViewer.storyboard in Resources */,
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
@@ -2665,6 +2695,7 @@
 				EA07BF501AF4CC19004D17F6 /* Database+Functions.m in Sources */,
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,
 				71AEDDDF1EDF7FF400BAC0DD /* TripDistancesInteractor.swift in Sources */,
+				71ACA7C91F5B69C90024903E /* DebugView.swift in Sources */,
 				719B1FE91EF6032D0049BD71 /* EditReceiptDisplayData.swift in Sources */,
 				7185AEF91EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift in Sources */,
 				7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */,
@@ -2696,6 +2727,7 @@
 				EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */,
 				EA22FB4D1B1AF1A40060D23D /* CategoryCell.m in Sources */,
 				719310411EDDC2810065B5AD /* WBSqlBuilder.m in Sources */,
+				71ACA7C61F5B69C90024903E /* DebugInteractor.swift in Sources */,
 				7191F0E81EE20EBA0082DA47 /* DateFormatter+Extensions.swift in Sources */,
 				714901BE1F058BBB00772B6F /* UIAlertView+Rx.swift in Sources */,
 				5785A4EF1E09DA0100C3CA0C /* AnalyticsLogger.swift in Sources */,
@@ -2709,6 +2741,7 @@
 				71572D871F15EA41001A1301 /* ColumnsInteractor.swift in Sources */,
 				719B1FF61EF6033A0049BD71 /* ReceiptActionsInteractor.swift in Sources */,
 				EA8D81771AEA668100BAC943 /* WBReceipt.m in Sources */,
+				71ACA7C81F5B69C90024903E /* DebugRouter.swift in Sources */,
 				A78215011CFFF24C00FD644A /* NSNumber+Extensions.swift in Sources */,
 				EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */,
 				71F4683B1EEF2E55009F6CE7 /* Router+Extensions.swift in Sources */,
@@ -2758,6 +2791,7 @@
 				A7D554CF1CFF061100169FD2 /* WBReceipt+Query.swift in Sources */,
 				57580D1C1DFAB58B0090C488 /* UIDevice+DeviceInfo.m in Sources */,
 				A7F05BC61CFC453C0079F1AD /* ReceiptColumnReceiptId.swift in Sources */,
+				71ACA7C71F5B69C90024903E /* DebugPresenter.swift in Sources */,
 				713D35501EDA4AEB00D8563D /* NSMutableString+Extensions.m in Sources */,
 				A7D554D31CFF118700169FD2 /* RefreshTripPriceHandler.swift in Sources */,
 				7111ADA81F0EC38100DF77ED /* SettingsPresenter.swift in Sources */,
@@ -2841,6 +2875,7 @@
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
 				71AEDDE71EDF823D00BAC0DD /* AppModules.swift in Sources */,
 				71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */,
+				71ACA7C51F5B69C90024903E /* DebugDisplayData.swift in Sources */,
 				714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */,
 				570515A11E02EB2E00BB8FE4 /* Event.swift in Sources */,
 				A7D6CDE71D05524200998FEF /* ReportAssetsGenerator.swift in Sources */,
@@ -2859,6 +2894,7 @@
 				719310481EDDC3120065B5AD /* WBPdfDrawer.m in Sources */,
 				EA40DC731B555D31003BF545 /* PDFPageRenderView.m in Sources */,
 				570515A71E04AA7D00BB8FE4 /* FirebaseAnalytics.swift in Sources */,
+				71ACA7CC1F5B6A360024903E /* DebugFormView.swift in Sources */,
 				712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */,
 				71E090F31F2F994B00C825A8 /* FileManager+Extensions.swift in Sources */,
 				A7F05BB81CFC2C9D0079F1AD /* ReceiptColumnNetExchangedPricePlusTax.swift in Sources */,

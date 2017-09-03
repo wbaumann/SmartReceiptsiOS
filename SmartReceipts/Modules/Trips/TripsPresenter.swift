@@ -30,6 +30,10 @@ class TripsPresenter: Presenter {
             self.router.openSettings()
         }).disposed(by: disposeBag)
         
+        view.debugButton.rx.tap.subscribe(onNext: {
+            self.router.openDebug()
+        }).disposed(by: disposeBag)
+        
         tripDetailsSubject.subscribe(onNext: { trip in
             self.router.openDetails(trip: trip)
         }).disposed(by: disposeBag)

@@ -22,6 +22,15 @@ class TripsRouter: Router {
         })
     }
     
+    func openDebug() {
+        let module = AppModules.debug.build()
+        executeFor(iPhone: {
+            module.router.show(from: _view, embedInNavController: true)
+        }, iPad: {
+            module.router.showIPadForm(from: _view, needNavigationController: true)
+        })
+    }
+    
     func openEdit(trip: WBTrip) {
         openEditTrip(trip)
     }
