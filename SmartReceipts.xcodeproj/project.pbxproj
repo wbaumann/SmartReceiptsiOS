@@ -156,6 +156,7 @@
 		71ACA7C81F5B69C90024903E /* DebugRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7C21F5B69C90024903E /* DebugRouter.swift */; };
 		71ACA7C91F5B69C90024903E /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7C31F5B69C90024903E /* DebugView.swift */; };
 		71ACA7CC1F5B6A360024903E /* DebugFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7CB1F5B6A360024903E /* DebugFormView.swift */; };
+		71ACA7CE1F5C58290024903E /* DebugStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7CD1F5C58290024903E /* DebugStates.swift */; };
 		71AD67721F23FA810033B643 /* PredectiveTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD67711F23FA810033B643 /* PredectiveTextCell.swift */; };
 		71AEDDCD1EDF6A2300BAC0DD /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */; };
 		71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71AEDDD61EDF7FF400BAC0DD /* TripDistances.storyboard */; };
@@ -237,7 +238,6 @@
 		A71205B41CE5C04D008A193D /* WBTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A71205B31CE5C04D008A193D /* WBTestAppDelegate.m */; };
 		A73DBED71CF08694007C6268 /* android-receipts-v14.db in Resources */ = {isa = PBXBuildFile; fileRef = A73DBED61CF08694007C6268 /* android-receipts-v14.db */; };
 		A744E5141CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744E5131CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift */; };
-		A758CE901D01615900169C7C /* Tweaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758CE8F1D01615900169C7C /* Tweaker.swift */; };
 		A758CE941D01760C00169C7C /* QuickAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A758CE931D01760C00169C7C /* QuickAlertPresenter.swift */; };
 		A78214F51CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78214F41CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift */; };
 		A78214F71CFFE60000FD644A /* OpenExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78214F61CFFE60000FD644A /* OpenExchangeRates.swift */; };
@@ -627,6 +627,7 @@
 		71ACA7C21F5B69C90024903E /* DebugRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugRouter.swift; sourceTree = "<group>"; };
 		71ACA7C31F5B69C90024903E /* DebugView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		71ACA7CB1F5B6A360024903E /* DebugFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugFormView.swift; sourceTree = "<group>"; };
+		71ACA7CD1F5C58290024903E /* DebugStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugStates.swift; sourceTree = "<group>"; };
 		71AD67711F23FA810033B643 /* PredectiveTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredectiveTextCell.swift; sourceTree = "<group>"; };
 		71AEDDCC1EDF6A2300BAC0DD /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppTheme.swift; path = ../ViewControllers/Abstract/Customization/AppTheme.swift; sourceTree = "<group>"; };
 		71AEDDD61EDF7FF400BAC0DD /* TripDistances.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TripDistances.storyboard; sourceTree = "<group>"; };
@@ -727,7 +728,6 @@
 		A73DBED61CF08694007C6268 /* android-receipts-v14.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "android-receipts-v14.db"; sourceTree = "<group>"; };
 		A744E5131CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseCategoriesImportTests.swift; sourceTree = "<group>"; };
 		A744E5151CEC45CB00D838C7 /* SmartReceiptsTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SmartReceiptsTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		A758CE8F1D01615900169C7C /* Tweaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweaker.swift; sourceTree = "<group>"; };
 		A758CE931D01760C00169C7C /* QuickAlertPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickAlertPresenter.swift; sourceTree = "<group>"; };
 		A78214F41CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeServiceHandler.swift; sourceTree = "<group>"; };
 		A78214F61CFFE60000FD644A /* OpenExchangeRates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenExchangeRates.swift; sourceTree = "<group>"; };
@@ -1854,7 +1854,6 @@
 				EAD15C781B0881C2003BB1F3 /* ReceiptFilesManager.h */,
 				EAD15C791B0881C2003BB1F3 /* ReceiptFilesManager.m */,
 				A7D6CDE61D05524200998FEF /* ReportAssetsGenerator.swift */,
-				A758CE8F1D01615900169C7C /* Tweaker.swift */,
 				A7F05BBB1CFC31520079F1AD /* WBCurrency+Extensions.swift */,
 				4D004BB61D272836004DBB19 /* SmartReceiptsFormattableString.swift */,
 				71CD20C81ED764DA006C4EE6 /* Currency.swift */,
@@ -1869,6 +1868,7 @@
 				71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */,
 				7120099C1F12D0DE0049927E /* TickTock.swift */,
 				71ACA7B91F5B5A830024903E /* FeatureFlags.swift */,
+				71ACA7CD1F5C58290024903E /* DebugStates.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2721,6 +2721,7 @@
 				A7F05BE31CFD95710079F1AD /* FMDatabase+Receipts.swift in Sources */,
 				7190D4501EE88CC40081CB22 /* GenerateReportDisplayData.swift in Sources */,
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
+				71ACA7CE1F5C58290024903E /* DebugStates.swift in Sources */,
 				EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */,
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
 				A7F05BD31CFD54430079F1AD /* Logger.swift in Sources */,
@@ -2890,7 +2891,6 @@
 				EA40DC691B55598A003BF545 /* FullPagePDFImageView.m in Sources */,
 				71AEDDE01EDF7FF400BAC0DD /* TripDistancesPresenter.swift in Sources */,
 				A7F05BB41CFC1A5D0079F1AD /* Exchanged.swift in Sources */,
-				A758CE901D01615900169C7C /* Tweaker.swift in Sources */,
 				719310481EDDC3120065B5AD /* WBPdfDrawer.m in Sources */,
 				EA40DC731B555D31003BF545 /* PDFPageRenderView.m in Sources */,
 				570515A71E04AA7D00BB8FE4 /* FirebaseAnalytics.swift in Sources */,

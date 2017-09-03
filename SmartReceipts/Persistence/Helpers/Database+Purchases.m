@@ -16,7 +16,9 @@
 @implementation Database (Purchases)
 
 - (NSDate *)subscriptionEndDate {
-    if (![Tweaker usePurchaseOverride]) {
+    if ([DebugStates subscription]) {
+        return [NSDate distantFuture];
+    } else {
         // One year in the future will be the expiration
         RMAppReceiptIAP *receiptForSubscription = [self receiptForSubscription];
         if (receiptForSubscription) {
@@ -25,12 +27,7 @@
             return nil;
         }
     }
-
-    if ([Tweaker subscriptionOverrideValue]) {
-        return [NSDate distantFuture];
-    }
-    
-    return [NSDate distantPast];
+//    return [NSDate distantPast];
 }
 
 - (BOOL)hasValidSubscription {

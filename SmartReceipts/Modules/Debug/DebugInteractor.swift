@@ -8,8 +8,14 @@
 
 import Foundation
 import Viperit
+import RxSwift
 
 class DebugInteractor: Interactor {
+    var debugSubscription: AnyObserver<Bool> {
+        return AnyObserver<Bool>(eventHandler: { event in
+            DebugStates.setSubscription(event.element!)
+        })
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

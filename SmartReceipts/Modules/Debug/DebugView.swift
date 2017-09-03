@@ -14,11 +14,12 @@ import RxCocoa
 //MARK: - Public Interface Protocol
 protocol DebugViewInterface {
     var loginTap: Observable<Void> { get }
+    var subscriptionChange: Observable<Bool> { get }
 }
 
 //MARK: DebugView Class
 final class DebugView: UserInterface {
-    
+    @IBOutlet weak var closeButton: UIBarButtonItem!
     
     fileprivate var formView: DebugFormView?
     private let bag = DisposeBag()
@@ -35,7 +36,9 @@ final class DebugView: UserInterface {
     }
     
     private func configureUIActions() {
-        
+        closeButton.rx.tap.subscribe(onNext: { [unowned self] in
+            self.dismiss(animated: true, completion: nil)
+        }).disposed(by: bag)
     }
     
     
@@ -45,6 +48,7 @@ final class DebugView: UserInterface {
 //MARK: - Public interface
 extension DebugView: DebugViewInterface {
     var loginTap: Observable<Void> { return formView!.rx.loginTap }
+    var subscriptionChange: Observable<Bool> { return formView!.rx.subscriptionChange }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
