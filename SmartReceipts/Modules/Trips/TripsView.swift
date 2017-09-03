@@ -14,12 +14,14 @@ import RxSwift
 protocol TripsViewInterface {
     var settingsButton: UIBarButtonItem { get }
     var addButton: UIButton { get }
+    var debugButton: UIBarButtonItem { get }
 }
 
 //MARK: Trips View
 final class TripsView: FetchedTableViewController {
     
     @IBOutlet fileprivate weak var _settingsButton: UIBarButtonItem!
+    @IBOutlet fileprivate weak var _debugButton: UIBarButtonItem!
     @IBOutlet fileprivate weak var _addButton: UIButton!
     @IBOutlet fileprivate weak var editItem: UIBarButtonItem!
     
@@ -40,6 +42,13 @@ final class TripsView: FetchedTableViewController {
         editItem.rx.tap.subscribe(onNext: { [unowned self] in
             self.setEditing(!self.isEditing, animated: true)
         }).disposed(by: bag)
+        
+        #if DEBUG
+            _debugButton.title = "DEBUG"
+        #else
+            _debugButton.title = ""
+            _debugButton.isEnabled = false
+        #endif
     }
     
     deinit {
@@ -155,6 +164,7 @@ extension TripsView: UISplitViewControllerDelegate {
 //MARK: - Public interface
 extension TripsView: TripsViewInterface {
     var settingsButton: UIBarButtonItem { get { return _settingsButton } }
+    var debugButton: UIBarButtonItem { get { return _debugButton } }
     var addButton: UIButton { get { return _addButton } }
 }
 
