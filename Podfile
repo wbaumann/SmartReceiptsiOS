@@ -21,9 +21,12 @@ def pods
     pod 'RxSwift'
     pod 'RxCocoa'
     pod 'RxDataSources'
+    pod 'RxAlamofire'
     
     # Utilites
     pod 'CocoaLumberjack/Swift'
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
     
     # Google
     pod 'Google/AdMob'

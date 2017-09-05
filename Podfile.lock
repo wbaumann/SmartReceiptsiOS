@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.5.0)
   - CocoaLumberjack/Default (3.2.0)
   - CocoaLumberjack/Swift (3.2.0):
     - CocoaLumberjack/Default
@@ -126,6 +127,11 @@ PODS:
   - RMStore/Core (0.7.0)
   - RMStore/KeychainPersistence (0.7.0):
     - RMStore/Core
+  - RxAlamofire (3.0.3):
+    - RxAlamofire/Core (= 3.0.3)
+  - RxAlamofire/Core (3.0.3):
+    - Alamofire (~> 4.0)
+    - RxSwift (~> 3.0)
   - RxBlocking (3.5.0):
     - RxSwift (~> 3.4)
   - RxCocoa (3.5.0):
@@ -136,11 +142,13 @@ PODS:
   - RxSwift (3.5.0)
   - RxTest (3.5.0):
     - RxSwift (~> 3.4)
+  - SwiftyJSON (3.1.4)
   - UIAlertView-Blocks (1.0)
   - Viperit (0.7.0)
   - XLPagerTabStrip (7.0.0)
 
 DEPENDENCIES:
+  - Alamofire
   - CocoaLumberjack/Swift
   - Cuckoo
   - Eureka
@@ -159,11 +167,13 @@ DEPENDENCIES:
   - RMStore/AppReceiptVerificator (from `3rdparty/RMStore`)
   - RMStore/Core (from `3rdparty/RMStore`)
   - RMStore/KeychainPersistence (from `3rdparty/RMStore`)
+  - RxAlamofire
   - RxBlocking
   - RxCocoa
   - RxDataSources
   - RxSwift
   - RxTest
+  - SwiftyJSON
   - UIAlertView-Blocks
   - Viperit
   - XLPagerTabStrip
@@ -173,6 +183,7 @@ EXTERNAL SOURCES:
     :path: 3rdparty/RMStore
 
 SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   CocoaLumberjack: 9b4aed7073d242f29cc2f62068d995faf67f703a
   Cuckoo: 66c84083a91164744f96817d3ed61c183021f754
   Eureka: f36fd440c3ebb7bfea0a4fbe6f16a05f1cb35906
@@ -204,15 +215,17 @@ SPEC CHECKSUMS:
   OpenSSL-iOS: 002cabfdfc2df48d63cebd723b90ada86c946316
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   RMStore: 935f3e350c7f2f098047d73ddbd2ee2cd00f8b48
+  RxAlamofire: 5eb39188c4917ad98127c0ecb4878a61b7517003
   RxBlocking: 471315e18b87c5ed4b9d0c69a57dfdbca5c01af1
   RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
   RxDataSources: b3389acc5fe2eefb8fcd81a2b76a876ad08bc82a
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
   RxTest: 1763765fd0e2282b0eb44c9050effdd7fe7156d4
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
   Viperit: b45ecfde9f3e577a6afd8f91f4c88edb46e0ca25
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
 
-PODFILE CHECKSUM: 7779a935ac18c426a41fde7017b909d37e04d846
+PODFILE CHECKSUM: fa1719fa7516d53a7e64d674445a02a80f04fc39
 
 COCOAPODS: 1.2.1
