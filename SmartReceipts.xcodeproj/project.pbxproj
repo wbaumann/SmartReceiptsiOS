@@ -41,6 +41,8 @@
 		57C0EED41E2D38B3001B4758 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0EED01E2AE972001B4758 /* CustomLogFormatter.swift */; };
 		57C125191E12DAEF008551AC /* ServiceAccount.json in Resources */ = {isa = PBXBuildFile; fileRef = 57C125181E12DAEF008551AC /* ServiceAccount.json */; };
 		57EEBDC41E093C8F00974E53 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EEBDC31E093C8F00974E53 /* String+Extensions.swift */; };
+		7100F7761F5EF20300D4B4D9 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7100F7751F5EF20300D4B4D9 /* AuthService.swift */; };
+		7100F7781F5F08C600D4B4D9 /* NetworkingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7100F7771F5F08C600D4B4D9 /* NetworkingUtils.swift */; };
 		71097CA51F04350300223B72 /* DistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71097CA41F04350300223B72 /* DistanceTests.swift */; };
 		71097CA71F04410100223B72 /* TaxCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71097CA61F04410100223B72 /* TaxCalculatorTests.swift */; };
 		710B813A1F1B61AC000C97C4 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C413D31EE6F826003CE891 /* GeneratedMocks.swift */; };
@@ -505,6 +507,8 @@
 		57C0EED21E2D2D3E001B4758 /* LoggerMacros-ObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LoggerMacros-ObjC.h"; sourceTree = "<group>"; };
 		57C125181E12DAEF008551AC /* ServiceAccount.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ServiceAccount.json; path = ../ServiceAccount.json; sourceTree = "<group>"; };
 		57EEBDC31E093C8F00974E53 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		7100F7751F5EF20300D4B4D9 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		7100F7771F5F08C600D4B4D9 /* NetworkingUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingUtils.swift; sourceTree = "<group>"; };
 		71097CA41F04350300223B72 /* DistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceTests.swift; sourceTree = "<group>"; };
 		71097CA61F04410100223B72 /* TaxCalculatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxCalculatorTests.swift; sourceTree = "<group>"; };
 		710B813B1F1B6FFD000C97C4 /* ColumnsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnsModuleTest.swift; sourceTree = "<group>"; };
@@ -1141,6 +1145,7 @@
 			children = (
 				714901C01F0598B900772B6F /* CurrencyExchangeService.swift */,
 				71EFE1E51F55E04000591C8C /* TooltipService.swift */,
+				7100F7751F5EF20300D4B4D9 /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1869,6 +1874,7 @@
 				7120099C1F12D0DE0049927E /* TickTock.swift */,
 				71ACA7B91F5B5A830024903E /* FeatureFlags.swift */,
 				71ACA7CD1F5C58290024903E /* DebugStates.swift */,
+				7100F7771F5F08C600D4B4D9 /* NetworkingUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2750,6 +2756,7 @@
 				A7B6FC5D1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift in Sources */,
 				719B1FEC1EF6032D0049BD71 /* EditReceiptRouter.swift in Sources */,
 				5757D6131E929ECA000F65F9 /* Database+Sync.swift in Sources */,
+				7100F7761F5EF20300D4B4D9 /* AuthService.swift in Sources */,
 				71AEDDDE1EDF7FF400BAC0DD /* TripDistancesDisplayData.swift in Sources */,
 				71E2B5811EEDD516001D02F1 /* TripsView.swift in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
@@ -2785,6 +2792,7 @@
 				719B1FEB1EF6032D0049BD71 /* EditReceiptPresenter.swift in Sources */,
 				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
 				71F468331EEEDB03009F6CE7 /* EditTripDisplayData.swift in Sources */,
+				7100F7781F5F08C600D4B4D9 /* NetworkingUtils.swift in Sources */,
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
 				719B1FF91EF6033A0049BD71 /* ReceiptActionsView.swift in Sources */,
 				719B1FDF1EF603190049BD71 /* ReceiptsPresenter.swift in Sources */,
