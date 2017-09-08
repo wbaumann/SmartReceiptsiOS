@@ -15,8 +15,14 @@ fileprivate let ACCOUNT_ALREADY_EXISTS_CODE = 420
 fileprivate let INVALID_CREDENTIALS_CODE = 401
 
 class AuthInteractor: Interactor {
-    private let authService = AuthService()
+    private var authService: AuthService = AuthService()
     private let bag = DisposeBag()
+    
+    init(authService: AuthService) {
+        self.authService = authService
+    }
+    
+    required init() {}
     
     var login: AnyObserver<Credentials> {
         return AnyObserver<Credentials>(eventHandler: { [unowned self] event in

@@ -99,3 +99,14 @@ extension Column: Matchable {
         }
     }
 }
+
+extension Credentials: Matchable {
+    public var matcher: ParameterMatcher<Credentials> {
+        get {
+            return ParameterMatcher(matchesFunction: { credentials -> Bool in
+                return credentials.email == self.email && credentials.password == self.password
+            })
+        }
+    }
+   
+}
