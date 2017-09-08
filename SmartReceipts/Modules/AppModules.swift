@@ -9,6 +9,7 @@
 import Viperit
 
 enum AppModules: String, ViperitModule {
+    case auth
     case tripDistances
     case editDistance
     case generateReport

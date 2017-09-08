@@ -11,39 +11,87 @@ import RxAlamofire
 import Alamofire
 import SwiftyJSON
 
+typealias Credentials = (email: String, password: String)
+
+fileprivate let JSON_TOKEN_KEY = "token"
+fileprivate let AUTH_TOKEN_KEY = "auth.token"
+fileprivate let AUTH_EMAIL_KEY = "auth.email"
+
 class AuthService {
-    let jsonHeader = ["Content-Type":"application/json"]
+    private let jsonHeader = ["Content-Type":"application/json"]
+    private let tokenVar = Variable<String>("")
     
-    func login(email: String, password: String) -> Observable<String> {
+    static private let isLoggedInVar = Variable<Bool?>(nil)
+    
+    static var isLoggedIn: Observable<Bool> {
+        return isLoggedInVar
+            .asObservable()
+            .map({ value -> Bool in
+                if value == nil {
+                    let defaults = UserDefaults.standard
+                    defaults.synchronize()
+                    return defaults.hasObject(forKey: AUTH_TOKEN_KEY) && defaults.hasObject(forKey: AUTH_EMAIL_KEY)
+                } else {
+                    return value!
+                }
+            })
+    }
+    
+    init() {
+        tokenVar.value = UserDefaults.standard.string(forKey: AUTH_TOKEN_KEY) ?? ""
+    }
+    
+    var token: Observable<String> {
+        return tokenVar.asObservable().filter({ !$0.isEmpty })
+    }
+    
+    func login(credentials: Credentials) -> Observable<String> {
         let params = ["login_params" : [
                 "type": "login",
-                "email" : email,
-                "password": password
+                "email" : credentials.email,
+                "password": credentials.password
                 ]
             ]
         
         return RxAlamofire.json(.post, endpoint("users/log_in"),
             parameters: params, encoding: JSONEncoding.default, headers: jsonHeader)
             .map({ object -> String in
-                let json = object as! JSON
-                return json["token"].stringValue
+                let json = JSON(object)
+                return json[JSON_TOKEN_KEY].stringValue
+            }).do(onNext: { [weak self] token in
+                self?.save(token: token, email: credentials.email)
             })
     }
     
-    func signup(email: String, password: String) -> Observable<String> {
+    func signup(credentials: Credentials) -> Observable<String> {
         let params = ["signup_params" : [
                 "type": "signup",
-                "email" : email,
-                "password": password
+                "email" : credentials.email,
+                "password": credentials.password
                 ]
             ]
         
         return RxAlamofire.json(.post, endpoint("users/sign_up"),
             parameters: params, encoding: JSONEncoding.default, headers: jsonHeader)
             .map({ object -> String in
-                let json = object as! JSON
-                return json["token"].stringValue
+                let json = JSON(object)
+                return json[JSON_TOKEN_KEY].stringValue
+            }).do(onNext: { [weak self] token in
+                self?.save(token: token, email: credentials.email)
             })
+    }
+    
+    private func save(token: String, email: String) {
+        AuthService.isLoggedInVar.value = true
+        tokenVar.value = token
+        UserDefaults.standard.set(token, forKey: AUTH_TOKEN_KEY)
+        UserDefaults.standard.set(email, forKey: AUTH_EMAIL_KEY)
+    }
+    
+    private func clear() {
+        AuthService.isLoggedInVar.value = false
+        UserDefaults.standard.removeObject(forKey: AUTH_TOKEN_KEY)
+        UserDefaults.standard.removeObject(forKey: AUTH_EMAIL_KEY)
     }
 }
 
