@@ -11,7 +11,9 @@ import RxAlamofire
 import Alamofire
 import SwiftyJSON
 
-typealias Credentials = (email: String, password: String)
+//typealias Credentials = ()
+
+
 
 fileprivate let JSON_TOKEN_KEY = "token"
 fileprivate let AUTH_TOKEN_KEY = "auth.token"
@@ -92,6 +94,16 @@ class AuthService {
         AuthService.isLoggedInVar.value = false
         UserDefaults.standard.removeObject(forKey: AUTH_TOKEN_KEY)
         UserDefaults.standard.removeObject(forKey: AUTH_EMAIL_KEY)
+    }
+}
+
+struct Credentials {
+    var email: String!
+    var password: String!
+    
+    init(_ email: String, _ password: String) {
+        self.email = email
+        self.password = password
     }
 }
 

@@ -81,7 +81,7 @@ final class AuthView: UserInterface {
     }
     
     private func credentials() -> Credentials {
-       return (self.emailField.text!, self.passwordField.text!)
+       return Credentials(self.emailField.text!, self.passwordField.text!)
     }
     
     private func emailValidator() -> Observable<Bool> {
