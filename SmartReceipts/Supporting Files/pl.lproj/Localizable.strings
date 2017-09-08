@@ -375,3 +375,10 @@
 "trip.tab.reports.title" = "REPORTS";
 
 "tooltip.receipts.generate.advice" = "Use the 'Generate' tab to create your reports";
+
+"login.fields.hint.email" = "Please enter a valid address:";
+"login.fields.hint.password" = "Passwords must be at least 8 characters:";
+"login.fields.hint.valid" = "Tap below to log in or sign up:";
+"login.error.login.failed" = "Incorrect Username or Password";
+"login.error.signup.failed" = "This Email Already Exists - Try Logging In";
+"login.error.title" = "Error";

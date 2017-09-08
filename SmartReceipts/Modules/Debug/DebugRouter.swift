@@ -13,8 +13,13 @@ import RxSwift
 class DebugRouter: Router {
     
     var loginTapSubscriber: AnyObserver<Void> {
-        return AnyObserver<Void>(eventHandler: { _ in
-            Logger.debug("Login tap!")
+        return AnyObserver<Void>(eventHandler: { [unowned self] event in
+            switch event {
+            case .next:
+                let module = AppModules.auth.build()
+                module.router.show(from: self._view)
+            default: break
+            }
         })
     }
     
