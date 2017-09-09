@@ -19,7 +19,10 @@ class Distance: NSObject, NSCopying, FetchedModel {
     var timeZone: TimeZone!
     var comment: String?
     
-    var objectId: Int { get { return objId} }
+    var objectId: Int {
+        get { return objId }
+        set { objId = newValue }
+    }
     
     required init(trip: WBTrip, distance: NSDecimalNumber, rate: Price,
                   location: String, date: Date, timeZone: TimeZone, comment: String?) {
