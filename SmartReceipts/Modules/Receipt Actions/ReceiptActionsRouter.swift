@@ -24,13 +24,9 @@ class ReceiptActionsRouter: Router {
     }
     
     private func openMoveCopy(receipt: WBReceipt, copyOrMove: Bool) {
+        let data = (receipt, copyOrMove)
         let module = AppModules.receiptMoveCopy.build()
-        module.presenter.setupView(data: (receipt, copyOrMove))
-        executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: false)
-        }, iPad: {
-            showIPadForm(from: _view)
-        })
+        module.router.show(from: _view, embedInNavController: false, setupData: data)
     }
     
 }
