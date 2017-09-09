@@ -38,10 +38,10 @@ class Price: NSObject {
     }
     
     func mileageRateCurrencyFormattedPrice() -> String {
+        let locale = Locale.current as NSLocale
         let amount = Price.mileageRateStringFrom(amount: self.amount)
-        let currencySymbol = (Locale.current as NSLocale)
-            .displayName(forKey: NSLocale.Key.currencySymbol, value: currency.code)
-        return "\(currencySymbol!)\(amount)"
+        let currencySymbol = locale.displayName(forKey: NSLocale.Key.currencySymbol, value: currency.code) ?? ""
+        return "\(currencySymbol)\(amount)"
     }
     
     func amountAsString() -> String {
