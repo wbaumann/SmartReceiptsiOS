@@ -382,3 +382,5 @@
 "login.error.login.failed" = "Incorrect Username or Password";
 "login.error.signup.failed" = "This Email Already Exists - Try Logging In";
 "login.error.title" = "Error";
+"login.success.login.toast" = "Login Success";
+"login.success.signup.toast" = "Signup Success";

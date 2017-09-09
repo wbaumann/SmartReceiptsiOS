@@ -9,6 +9,7 @@
 import Foundation
 import Viperit
 import RxSwift
+import Toaster
 
 class AuthPresenter: Presenter {
     
@@ -30,6 +31,7 @@ class AuthPresenter: Presenter {
             switch event {
             case .next(let token):
                 Logger.debug("Success login: \(token)")
+                Toast.show(LocalizedString("login.success.login.toast"))
             default: break
             }
         })
@@ -41,6 +43,7 @@ class AuthPresenter: Presenter {
             switch event {
             case .next(let token):
                 Logger.debug("Success signup: \(token)")
+                Toast.show(LocalizedString("login.success.signup.toast"))
             default: break
             }
         })
