@@ -16,6 +16,7 @@ def pods
     pod 'Eureka'
     pod 'XLPagerTabStrip'
     pod 'Floaty'
+    pod 'Toaster'
     
     # Rx
     pod 'RxSwift'

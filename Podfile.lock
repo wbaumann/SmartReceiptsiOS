@@ -143,6 +143,7 @@ PODS:
   - RxTest (3.5.0):
     - RxSwift (~> 3.4)
   - SwiftyJSON (3.1.4)
+  - Toaster (2.0.4)
   - UIAlertView-Blocks (1.0)
   - Viperit (0.7.0)
   - XLPagerTabStrip (7.0.0)
@@ -174,6 +175,7 @@ DEPENDENCIES:
   - RxSwift
   - RxTest
   - SwiftyJSON
+  - Toaster
   - UIAlertView-Blocks
   - Viperit
   - XLPagerTabStrip
@@ -222,10 +224,11 @@ SPEC CHECKSUMS:
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
   RxTest: 1763765fd0e2282b0eb44c9050effdd7fe7156d4
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Toaster: f13031c636ef065281bc11857be9a16c7659e04f
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
   Viperit: b45ecfde9f3e577a6afd8f91f4c88edb46e0ca25
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
 
-PODFILE CHECKSUM: fa1719fa7516d53a7e64d674445a02a80f04fc39
+PODFILE CHECKSUM: 65522052d666fefcf1543681c9e86f1679ca00a1
 
 COCOAPODS: 1.2.1
