@@ -10,6 +10,7 @@ import Foundation
 import Viperit
 import RxSwift
 import Alamofire
+import Toaster
 
 fileprivate let ACCOUNT_ALREADY_EXISTS_CODE = 420
 fileprivate let INVALID_CREDENTIALS_CODE = 401
@@ -61,6 +62,22 @@ class AuthInteractor: Interactor {
             }
         })
     }
+    
+    var logout: AnyObserver<Void> {
+        return AnyObserver<Void>(eventHandler: { [unowned self] event in
+            switch event {
+            case .next:
+                self.authService.logout()
+                    .catchError({ error -> Observable<Void> in
+                        self.presenter.errorHandler.onNext(error.localizedDescription)
+                        return Observable.just()
+                    }).bind(to: self.presenter.successLogout)
+                    .disposed(by: self.bag)
+            default: break
+            }
+        })
+    }
+    
     
 }
 

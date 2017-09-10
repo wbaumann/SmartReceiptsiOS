@@ -384,3 +384,4 @@
 "login.error.title" = "Error";
 "login.success.login.toast" = "Login Success";
 "login.success.signup.toast" = "Signup Success";
+"login.success.logout.toast" = "Logout Success";
