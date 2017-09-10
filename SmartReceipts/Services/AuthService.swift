@@ -11,10 +11,6 @@ import RxAlamofire
 import Alamofire
 import SwiftyJSON
 
-//typealias Credentials = ()
-
-
-
 fileprivate let JSON_TOKEN_KEY = "token"
 fileprivate let AUTH_TOKEN_KEY = "auth.token"
 fileprivate let AUTH_EMAIL_KEY = "auth.email"
@@ -23,23 +19,17 @@ class AuthService {
     private let jsonHeader = ["Content-Type":"application/json"]
     private let tokenVar = Variable<String>("")
     
-    static private let isLoggedInVar = Variable<Bool?>(nil)
+    static private let isLoggedInVar = Variable<Bool>(checkLoggedIn())
     
     static var isLoggedIn: Observable<Bool> {
-        return isLoggedInVar
-            .asObservable()
-            .map({ value -> Bool in
-                if value == nil {
-                    let defaults = UserDefaults.standard
-                    defaults.synchronize()
-                    let result = defaults.hasObject(forKey: AUTH_TOKEN_KEY) &&
-                                 defaults.hasObject(forKey: AUTH_EMAIL_KEY)
-                    AuthService.isLoggedInVar.value = result
-                    return result
-                } else {
-                    return value!
-                }
-            })
+        return isLoggedInVar.asObservable()
+    }
+    
+    private static func checkLoggedIn() -> Bool {
+        let defaults = UserDefaults.standard
+        defaults.synchronize()
+        return defaults.hasObject(forKey: AUTH_TOKEN_KEY) &&
+               defaults.hasObject(forKey: AUTH_EMAIL_KEY)
     }
     
     init() {
@@ -87,7 +77,7 @@ class AuthService {
     }
     
     func logout() -> Observable<Void> {
-        if AuthService.isLoggedInVar.value == nil || !AuthService.isLoggedInVar.value! {
+        if !AuthService.isLoggedInVar.value {
             return Observable<Void>.error(NSError(domain: "You are not logged in", code: 9000, userInfo: nil))
         }
         let params = [ "auth_params[token]": tokenVar.value,

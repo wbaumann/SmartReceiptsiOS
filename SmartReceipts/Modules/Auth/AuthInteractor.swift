@@ -31,11 +31,12 @@ class AuthInteractor: Interactor {
             case .next(let credentials):
                 self.authService.login(credentials: credentials)
                     .catchError({ error -> Observable<String> in
-                        let afError = error as! AFError
-                        let errorText = afError.responseCode == INVALID_CREDENTIALS_CODE ?
-                            LocalizedString("login.error.login.failed") : error.localizedDescription
-                        self.presenter.errorHandler.onNext(errorText)
-                        return Observable.just("")
+                        if let afError = error as? AFError, afError.responseCode == INVALID_CREDENTIALS_CODE {
+                            self.presenter.errorHandler.onNext(LocalizedString("login.error.login.failed"))
+                        } else {
+                            self.presenter.errorHandler.onNext(error.localizedDescription)
+                        }
+                        return Observable.never()
                     }).filter({ $0 != ""})
                     .bind(to: self.presenter.successLogin)
                     .disposed(by: self.bag)
@@ -50,11 +51,12 @@ class AuthInteractor: Interactor {
             case .next(let credentials):
                 self.authService.signup(credentials: credentials)
                     .catchError({ error -> Observable<String> in
-                        let afError = error as! AFError
-                        let errorText = afError.responseCode == ACCOUNT_ALREADY_EXISTS_CODE ?
-                            LocalizedString("login.error.signup.failed") : error.localizedDescription
-                        self.presenter.errorHandler.onNext(errorText)
-                        return Observable.just("")
+                        if let afError = error as? AFError, afError.responseCode == ACCOUNT_ALREADY_EXISTS_CODE {
+                            self.presenter.errorHandler.onNext(LocalizedString("login.error.signup.failed"))
+                        } else {
+                            self.presenter.errorHandler.onNext(error.localizedDescription)
+                        }
+                        return Observable.never()
                     }).filter({ $0 != ""})
                     .bind(to: self.presenter.successSignup)
                     .disposed(by: self.bag)
@@ -70,7 +72,7 @@ class AuthInteractor: Interactor {
                 self.authService.logout()
                     .catchError({ error -> Observable<Void> in
                         self.presenter.errorHandler.onNext(error.localizedDescription)
-                        return Observable.just()
+                        return Observable.never()
                     }).bind(to: self.presenter.successLogout)
                     .disposed(by: self.bag)
             default: break
