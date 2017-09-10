@@ -73,4 +73,12 @@ class AuthServiceTests: XCTestCase {
         XCTAssertEqual(token, savedToken)
         XCTAssertEqual(loggedCheck, loggedInObserver.events)
     }
+    
+    func testLogout() {
+        _ = try? authService.login(credentials: Credentials("aaaa@aaaa.aaa", "12345678"))
+            .toBlocking(timeout: 3)
+            .first()
+        let call = try? authService.logout().toBlocking(timeout: 3).first()
+        XCTAssertTrue(call != nil)
+    }
 }

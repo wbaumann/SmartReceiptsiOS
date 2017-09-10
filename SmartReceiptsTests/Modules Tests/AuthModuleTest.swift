@@ -65,10 +65,22 @@ class AuthModuleTest: XCTestCase {
             })
         }
         
+        func resultVoidObserver() -> AnyObserver<Void> {
+            return AnyObserver<Void>(eventHandler: { event in
+                switch event {
+                case .next:
+                    self.result = "Success"
+                default: break
+                }
+                
+            })
+        }
+        
         stub(presenter) { mock in
             mock.successLogin.get.thenReturn(resultObserver())
             mock.successSignup.get.thenReturn(resultObserver())
             mock.errorHandler.get.thenReturn(resultObserver())
+            mock.successLogout.get.thenReturn(resultVoidObserver())
         }
     }
     
@@ -101,7 +113,7 @@ class AuthModuleTest: XCTestCase {
         Observable.just(credentials())
             .bind(to: interactor.login)
             .disposed(by: bag)
-        XCTAssertNotEqual("", result)
+        XCTAssertFalse(result.isEmpty)
     }
     
     func testExistEmailError() {
@@ -112,7 +124,24 @@ class AuthModuleTest: XCTestCase {
         Observable.just(credentials())
             .bind(to: interactor.signup)
             .disposed(by: bag)
-        XCTAssertNotEqual("", result)
+        XCTAssertFalse(result.isEmpty)
+    }
+    
+    func testLogoutSuccess() {
+        stub(authService) { mock in
+            mock.logout().thenReturn(Observable.just())
+        }
+        interactor.logout.onNext()
+        XCTAssertEqual("Success", result)
+    }
+    
+    func testLogoutError() {
+        stub(authService) { mock in
+            let error = AFError.responseValidationFailed(reason: .unacceptableStatusCode(code: 400))
+            mock.logout().thenReturn(Observable.error(error))
+        }
+        interactor.logout.onNext()
+        XCTAssertFalse(result.isEmpty)
     }
     
     private func credentials() -> Credentials { return Credentials("","") }

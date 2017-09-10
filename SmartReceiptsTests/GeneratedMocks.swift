@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  GenerateReportPresenter.swift
@@ -318,7 +318,7 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  GenerateReportInteractor.swift
@@ -668,7 +668,7 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthInteractor.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthInteractor.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  AuthInteractor.swift
@@ -684,6 +684,7 @@ import Cuckoo
 import Alamofire
 import Foundation
 import RxSwift
+import Toaster
 import Viperit
 
 class MockAuthInteractor: AuthInteractor, Cuckoo.Mock {
@@ -716,6 +717,14 @@ class MockAuthInteractor: AuthInteractor, Cuckoo.Mock {
         
     }
     
+    // ["name": "logout", "accesibility": "", "@type": "InstanceVariable", "type": "AnyObserver<Void>", "isReadOnly": true]
+     override var logout: AnyObserver<Void> {
+        get {
+            return cuckoo_manager.getter("logout", original: observed.map { o in return { () -> AnyObserver<Void> in o.logout }})
+        }
+        
+    }
+    
 
     
 
@@ -734,6 +743,10 @@ class MockAuthInteractor: AuthInteractor, Cuckoo.Mock {
         
         var signup: Cuckoo.ToBeStubbedReadOnlyProperty<AnyObserver<Credentials>> {
             return .init(manager: cuckoo_manager, name: "signup")
+        }
+        
+        var logout: Cuckoo.ToBeStubbedReadOnlyProperty<AnyObserver<Void>> {
+            return .init(manager: cuckoo_manager, name: "logout")
         }
         
         
@@ -760,6 +773,10 @@ class MockAuthInteractor: AuthInteractor, Cuckoo.Mock {
             return .init(manager: cuckoo_manager, name: "signup", callMatcher: callMatcher, sourceLocation: sourceLocation)
         }
         
+        var logout: Cuckoo.VerifyReadOnlyProperty<AnyObserver<Void>> {
+            return .init(manager: cuckoo_manager, name: "logout", callMatcher: callMatcher, sourceLocation: sourceLocation)
+        }
+        
 
         
     }
@@ -783,6 +800,13 @@ class MockAuthInteractor: AuthInteractor, Cuckoo.Mock {
         
     }
     
+     override var logout: AnyObserver<Void> {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (AnyObserver<Void>).self)
+        }
+        
+    }
+    
 
     
 
@@ -792,7 +816,7 @@ class MockAuthInteractor: AuthInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthRouter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthRouter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  AuthRouter.swift
@@ -868,7 +892,7 @@ class MockAuthRouter: AuthRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesPresenter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesPresenter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  CategoriesPresenter.swift
@@ -1026,7 +1050,7 @@ class MockCategoriesPresenter: CategoriesPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptRouter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptRouter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  EditReceiptRouter.swift
@@ -1156,7 +1180,7 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsRouter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsRouter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  TripsRouter.swift
@@ -1394,7 +1418,7 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsPresenter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsPresenter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  TripsPresenter.swift
@@ -1579,7 +1603,7 @@ class MockTripsPresenter: TripsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyInteractor.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyInteractor.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  ReceiptMoveCopyInteractor.swift
@@ -1710,7 +1734,7 @@ class MockReceiptMoveCopyInteractor: ReceiptMoveCopyInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportRouter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportRouter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  GenerateReportRouter.swift
@@ -1894,7 +1918,7 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceInteractor.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceInteractor.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  EditDistanceInteractor.swift
@@ -1909,6 +1933,7 @@ import Cuckoo
 
 import Foundation
 import RxSwift
+import Toaster
 import Viperit
 
 class MockEditDistanceInteractor: EditDistanceInteractor, Cuckoo.Mock {
@@ -1998,7 +2023,7 @@ class MockEditDistanceInteractor: EditDistanceInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsPresenter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsPresenter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  ReceiptsPresenter.swift
@@ -2130,7 +2155,7 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsPresenter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsPresenter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  ColumnsPresenter.swift
@@ -2261,7 +2286,7 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  TripDistancesInteractor.swift
@@ -2447,7 +2472,7 @@ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripInteractor.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripInteractor.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  EditTripInteractor.swift
@@ -2578,7 +2603,7 @@ class MockEditTripInteractor: EditTripInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsRouter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsRouter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  ReceiptsRouter.swift
@@ -2900,7 +2925,7 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsInteractor.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsInteractor.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  TripsInteractor.swift
@@ -3031,7 +3056,7 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesInteractor.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesInteractor.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  CategoriesInteractor.swift
@@ -3216,7 +3241,7 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyRouter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyRouter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  ReceiptMoveCopyRouter.swift
@@ -3319,7 +3344,7 @@ class MockReceiptMoveCopyRouter: ReceiptMoveCopyRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceRouter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceRouter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  EditDistanceRouter.swift
@@ -3422,7 +3447,7 @@ class MockEditDistanceRouter: EditDistanceRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthPresenter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthPresenter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  AuthPresenter.swift
@@ -3437,6 +3462,7 @@ import Cuckoo
 
 import Foundation
 import RxSwift
+import Toaster
 import Viperit
 
 class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
@@ -3465,6 +3491,14 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
      override var successSignup: AnyObserver<String> {
         get {
             return cuckoo_manager.getter("successSignup", original: observed.map { o in return { () -> AnyObserver<String> in o.successSignup }})
+        }
+        
+    }
+    
+    // ["name": "successLogout", "accesibility": "", "@type": "InstanceVariable", "type": "AnyObserver<Void>", "isReadOnly": true]
+     override var successLogout: AnyObserver<Void> {
+        get {
+            return cuckoo_manager.getter("successLogout", original: observed.map { o in return { () -> AnyObserver<Void> in o.successLogout }})
         }
         
     }
@@ -3509,6 +3543,10 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
             return .init(manager: cuckoo_manager, name: "successSignup")
         }
         
+        var successLogout: Cuckoo.ToBeStubbedReadOnlyProperty<AnyObserver<Void>> {
+            return .init(manager: cuckoo_manager, name: "successLogout")
+        }
+        
         var errorHandler: Cuckoo.ToBeStubbedReadOnlyProperty<AnyObserver<String>> {
             return .init(manager: cuckoo_manager, name: "errorHandler")
         }
@@ -3540,6 +3578,10 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
         
         var successSignup: Cuckoo.VerifyReadOnlyProperty<AnyObserver<String>> {
             return .init(manager: cuckoo_manager, name: "successSignup", callMatcher: callMatcher, sourceLocation: sourceLocation)
+        }
+        
+        var successLogout: Cuckoo.VerifyReadOnlyProperty<AnyObserver<Void>> {
+            return .init(manager: cuckoo_manager, name: "successLogout", callMatcher: callMatcher, sourceLocation: sourceLocation)
         }
         
         var errorHandler: Cuckoo.VerifyReadOnlyProperty<AnyObserver<String>> {
@@ -3575,6 +3617,13 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
         
     }
     
+     override var successLogout: AnyObserver<Void> {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (AnyObserver<Void>).self)
+        }
+        
+    }
+    
      override var errorHandler: AnyObserver<String> {
         get {
             return DefaultValueRegistry.defaultValue(for: (AnyObserver<String>).self)
@@ -3595,7 +3644,7 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsPresenter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsPresenter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  PaymentMethodsPresenter.swift
@@ -3753,7 +3802,7 @@ class MockPaymentMethodsPresenter: PaymentMethodsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsRouter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsRouter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  PaymentMethodsRouter.swift
@@ -3829,7 +3878,7 @@ class MockPaymentMethodsRouter: PaymentMethodsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistancePresenter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistancePresenter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  EditDistancePresenter.swift
@@ -3986,7 +4035,7 @@ class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsInteractor.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsInteractor.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  ReceiptActionsInteractor.swift
@@ -4116,7 +4165,7 @@ class MockReceiptActionsInteractor: ReceiptActionsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsRouter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsRouter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  ReceiptActionsRouter.swift
@@ -4273,7 +4322,7 @@ class MockReceiptActionsRouter: ReceiptActionsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripRouter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripRouter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  EditTripRouter.swift
@@ -4376,7 +4425,7 @@ class MockEditTripRouter: EditTripRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptInteractor.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptInteractor.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  EditReceiptInteractor.swift
@@ -4391,6 +4440,7 @@ import Cuckoo
 
 import Foundation
 import RxSwift
+import Toaster
 import Viperit
 
 class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
@@ -4509,7 +4559,7 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Services/AuthService.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Services/AuthService.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  AuthService.swift
@@ -4577,6 +4627,18 @@ class MockAuthService: AuthService, Cuckoo.Mock {
         
     }
     
+     override func logout()  -> Observable<Void> {
+        
+        return cuckoo_manager.call("logout() -> Observable<Void>",
+            parameters: (),
+            original: observed.map { o in
+                return { () -> Observable<Void> in
+                    o.logout()
+                }
+            })
+        
+    }
+    
 
     struct __StubbingProxy_AuthService: Cuckoo.StubbingProxy {
         private let cuckoo_manager: Cuckoo.MockManager
@@ -4598,6 +4660,11 @@ class MockAuthService: AuthService, Cuckoo.Mock {
         func signup<M1: Cuckoo.Matchable>(credentials: M1) -> Cuckoo.StubFunction<(Credentials), Observable<String>> where M1.MatchedType == Credentials {
             let matchers: [Cuckoo.ParameterMatcher<(Credentials)>] = [wrap(matchable: credentials) { $0 }]
             return .init(stub: cuckoo_manager.createStub("signup(credentials: Credentials) -> Observable<String>", parameterMatchers: matchers))
+        }
+        
+        func logout() -> Cuckoo.StubFunction<(), Observable<Void>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("logout() -> Observable<Void>", parameterMatchers: matchers))
         }
         
     }
@@ -4633,6 +4700,12 @@ class MockAuthService: AuthService, Cuckoo.Mock {
             return cuckoo_manager.verify("signup(credentials: Credentials) -> Observable<String>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
+        @discardableResult
+        func logout() -> Cuckoo.__DoNotUse<Observable<Void>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("logout() -> Observable<Void>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
     }
 
 
@@ -4659,12 +4732,16 @@ class MockAuthService: AuthService, Cuckoo.Mock {
         return DefaultValueRegistry.defaultValue(for: Observable<String>.self)
     }
     
+     override func logout()  -> Observable<Void> {
+        return DefaultValueRegistry.defaultValue(for: Observable<Void>.self)
+    }
+    
 }
 
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsInteractor.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsInteractor.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  PaymentMethodsInteractor.swift
@@ -4849,7 +4926,7 @@ class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsRouter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsRouter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  ColumnsRouter.swift
@@ -4925,7 +5002,7 @@ class MockColumnsRouter: ColumnsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  TripDistancesPresenter.swift
@@ -5137,7 +5214,7 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripPresenter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripPresenter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  EditTripPresenter.swift
@@ -5322,7 +5399,7 @@ class MockEditTripPresenter: EditTripPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyPresenter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyPresenter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  ReceiptMoveCopyPresenter.swift
@@ -5538,7 +5615,7 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsPresenter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsPresenter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  ReceiptActionsPresenter.swift
@@ -5696,7 +5773,7 @@ class MockReceiptActionsPresenter: ReceiptActionsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesRouter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesRouter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  CategoriesRouter.swift
@@ -5772,7 +5849,7 @@ class MockCategoriesRouter: CategoriesRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsInteractor.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsInteractor.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  ColumnsInteractor.swift
@@ -5903,7 +5980,7 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptPresenter.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptPresenter.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  EditReceiptPresenter.swift
@@ -6088,7 +6165,7 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsInteractor.swift at 2017-09-08 21:11:18 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsInteractor.swift at 2017-09-10 19:19:32 +0000
 
 //
 //  ReceiptsInteractor.swift
