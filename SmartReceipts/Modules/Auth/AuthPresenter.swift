@@ -23,30 +23,22 @@ class AuthPresenter: Presenter {
         view.signup
             .bind(to: interactor.signup)
             .disposed(by: bag)
+        
+        view.logoutTap
+            .bind(to: interactor.logout)
+            .disposed(by: bag)
     }
     
     var successLogin: AnyObserver<String> {
-        return AnyObserver<String>(eventHandler: { [weak self] event in
-            self?.view.requestComplete.onNext()
-            switch event {
-            case .next(let token):
-                Logger.debug("Success login: \(token)")
-                Toast.show(LocalizedString("login.success.login.toast"))
-            default: break
-            }
-        })
+        return view.successLoginHandler
     }
     
     var successSignup: AnyObserver<String> {
-        return AnyObserver<String>(eventHandler: { [weak self] event in
-            self?.view.requestComplete.onNext()
-            switch event {
-            case .next(let token):
-                Logger.debug("Success signup: \(token)")
-                Toast.show(LocalizedString("login.success.signup.toast"))
-            default: break
-            }
-        })
+        return view.successSignupHandler
+    }
+    
+    var successLogout: AnyObserver<Void> {
+        return view.successLogoutHandler
     }
     
     var errorHandler: AnyObserver<String> {

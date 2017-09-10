@@ -10,6 +10,7 @@ import UIKit
 import Viperit
 import RxSwift
 import RxCocoa
+import Toaster
 
 fileprivate let MINIMUM_EMAIL_LENGTH = 6
 fileprivate let MINIMUM_PASSWORD_LENGTH = 8
@@ -21,13 +22,17 @@ protocol AuthViewInterface {
     var login: Observable<Credentials> { get }
     var signup: Observable<Credentials> { get }
     var errorHandler: AnyObserver<String> { get }
-    var requestComplete: AnyObserver<Void> { get }
+    var successLoginHandler: AnyObserver<String> { get }
+    var successSignupHandler: AnyObserver<String> { get }
+    var successLogoutHandler: AnyObserver<Void> { get }
+    var logoutTap: Observable<Void> { get }
 }
 
 //MARK: AuthView Class
 final class AuthView: UserInterface {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var hintLabel: UILabel!
@@ -46,6 +51,10 @@ final class AuthView: UserInterface {
     }
     
     private func configureRx() {
+        AuthService.isLoggedIn.subscribe(onNext: { [unowned self] loggedIn in
+            self.logoutButton.isEnabled = loggedIn
+        }).disposed(by: bag)
+        
         Observable.combineLatest(emailValidator(), passwordValidator(), resultSelector: {
                 isVaildEmail, isValidPassword -> ValidationResult in
             if !isVaildEmail {
@@ -61,7 +70,7 @@ final class AuthView: UserInterface {
             self.hintLabel.text = result.text
         }).disposed(by: bag)
         
-        Observable.of(loginButton.rx.tap, signupButton.rx.tap)
+        Observable.of(loginButton.rx.tap, signupButton.rx.tap, logoutButton.rx.tap)
             .merge()
             .subscribe(onNext: { [unowned self] _ in
                 self.hud = PendingHUDView.showHUD(on: self.view)
@@ -110,7 +119,7 @@ extension AuthView: AuthViewInterface {
     
     var errorHandler: AnyObserver<String> {
         return AnyObserver<String>(eventHandler: { [weak self] event in
-            self?.requestComplete.onNext()
+            self?.hud?.hide(true)
             switch event {
             case .next(let errorMessage):
                 let alert = UIAlertController(title: LocalizedString("login.error.title"), message: errorMessage, preferredStyle: .alert)
@@ -122,10 +131,41 @@ extension AuthView: AuthViewInterface {
         })
     }
     
-    var requestComplete: AnyObserver<Void> {
-        return AnyObserver(eventHandler: { [unowned self] event in
-            self.hud?.hide(true)
+    var successLoginHandler: AnyObserver<String> {
+        return AnyObserver<String>(eventHandler: { [weak self] event in
+            self?.hud?.hide(true)
+            switch event {
+            case .next:
+                Toast.show(LocalizedString("login.success.login.toast"))
+            default: break
+            }
         })
+    }
+    
+    var successSignupHandler: AnyObserver<String> {
+        return AnyObserver<String>(eventHandler: { [weak self] event in
+            self?.hud?.hide(true)
+            switch event {
+            case .next:
+                Toast.show(LocalizedString("login.success.signup.toast"))
+            default: break
+            }
+        })
+    }
+    
+    var successLogoutHandler: AnyObserver<Void> {
+        return AnyObserver<Void>(eventHandler: { [weak self] event in
+            self?.hud?.hide(true)
+            switch event {
+            case .next:
+                Toast.show(LocalizedString("login.success.logout.toast"))
+            default: break
+            }
+        })
+    }
+    
+    var logoutTap: Observable<Void> {
+        return logoutButton.rx.tap.asObservable()
     }
 }
 

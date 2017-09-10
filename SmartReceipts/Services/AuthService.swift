@@ -32,7 +32,10 @@ class AuthService {
                 if value == nil {
                     let defaults = UserDefaults.standard
                     defaults.synchronize()
-                    return defaults.hasObject(forKey: AUTH_TOKEN_KEY) && defaults.hasObject(forKey: AUTH_EMAIL_KEY)
+                    let result = defaults.hasObject(forKey: AUTH_TOKEN_KEY) &&
+                                 defaults.hasObject(forKey: AUTH_EMAIL_KEY)
+                    AuthService.isLoggedInVar.value = result
+                    return result
                 } else {
                     return value!
                 }
@@ -83,7 +86,22 @@ class AuthService {
             })
     }
     
+    func logout() -> Observable<Void> {
+        if AuthService.isLoggedInVar.value == nil || !AuthService.isLoggedInVar.value! {
+            return Observable<Void>.error(NSError(domain: "You are not logged in", code: 9000, userInfo: nil))
+        }
+        let params = [ "auth_params[token]": tokenVar.value,
+                       "auth_params[email]": UserDefaults.standard.string(forKey: AUTH_EMAIL_KEY)!]
+        return RxAlamofire.json(.delete, endpoint("users/log_out"),
+            parameters: params, encoding: URLEncoding.default, headers: nil)
+            .map({ _ in  })
+            .do(onNext: {
+                self.clear()
+            })
+    }
+    
     private func save(token: String, email: String) {
+        Logger.debug("Authorized - Token: \(token) Email: \(email)")
         AuthService.isLoggedInVar.value = true
         tokenVar.value = token
         UserDefaults.standard.set(token, forKey: AUTH_TOKEN_KEY)
