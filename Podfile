@@ -5,6 +5,8 @@ use_frameworks!
 project 'SmartReceipts.xcodeproj'
 
 def pods
+    #AWS
+    pod 'AWSCognito'
     
     # File storage
     pod 'FMDB'
