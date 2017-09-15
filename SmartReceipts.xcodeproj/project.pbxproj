@@ -96,6 +96,7 @@
 		71652EAE1F646758002C8228 /* Toast+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71652EAD1F646758002C8228 /* Toast+Extensions.swift */; };
 		7167239A1F10540200400BFF /* CustomSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716723981F10540200400BFF /* CustomSegmentedCell.swift */; };
 		7167239B1F10540200400BFF /* CustomSegmentedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 716723991F10540200400BFF /* CustomSegmentedCell.xib */; };
+		716C04221F685467007F9CD2 /* CognitoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C04211F685467007F9CD2 /* CognitoService.swift */; };
 		716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716F34471EE040E100D0017A /* EditDistance.storyboard */; };
 		716F344E1EE040E100D0017A /* EditDistanceDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F34481EE040E100D0017A /* EditDistanceDisplayData.swift */; };
 		716F344F1EE040E100D0017A /* EditDistanceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F34491EE040E100D0017A /* EditDistanceInteractor.swift */; };
@@ -568,6 +569,7 @@
 		71652EAD1F646758002C8228 /* Toast+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Toast+Extensions.swift"; sourceTree = "<group>"; };
 		716723981F10540200400BFF /* CustomSegmentedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedCell.swift; sourceTree = "<group>"; };
 		716723991F10540200400BFF /* CustomSegmentedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomSegmentedCell.xib; sourceTree = "<group>"; };
+		716C04211F685467007F9CD2 /* CognitoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CognitoService.swift; sourceTree = "<group>"; };
 		716F34471EE040E100D0017A /* EditDistance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditDistance.storyboard; sourceTree = "<group>"; };
 		716F34481EE040E100D0017A /* EditDistanceDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceDisplayData.swift; sourceTree = "<group>"; };
 		716F34491EE040E100D0017A /* EditDistanceInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceInteractor.swift; sourceTree = "<group>"; };
@@ -1166,6 +1168,7 @@
 				714901C01F0598B900772B6F /* CurrencyExchangeService.swift */,
 				71EFE1E51F55E04000591C8C /* TooltipService.swift */,
 				7100F7751F5EF20300D4B4D9 /* AuthService.swift */,
+				716C04211F685467007F9CD2 /* CognitoService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2870,6 +2873,7 @@
 				570515A31E02EB5500BB8FE4 /* Event+Categories.swift in Sources */,
 				EA2F23051B41BFD3008AF61E /* Database+Purchases.m in Sources */,
 				71AF49E31EFDA4810022B2E2 /* ReceiptImageViewerRouter.swift in Sources */,
+				716C04221F685467007F9CD2 /* CognitoService.swift in Sources */,
 				716F344F1EE040E100D0017A /* EditDistanceInteractor.swift in Sources */,
 				71A30F2F1EECB746001BA608 /* DataImport.swift in Sources */,
 				71AEDDE21EDF7FF400BAC0DD /* TripDistancesView.swift in Sources */,
