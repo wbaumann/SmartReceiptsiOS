@@ -17,7 +17,7 @@ fileprivate let AUTH_EMAIL_KEY = "auth.email"
 
 class AuthService {
     private let jsonHeader = ["Content-Type":"application/json"]
-    private let tokenVar = Variable<String>("")
+    private static let tokenVar = Variable<String>(UserDefaults.standard.string(forKey: AUTH_TOKEN_KEY) ?? "")
     
     static private let isLoggedInVar = Variable<Bool>(checkLoggedIn())
     
@@ -32,12 +32,8 @@ class AuthService {
                defaults.hasObject(forKey: AUTH_EMAIL_KEY)
     }
     
-    init() {
-        tokenVar.value = UserDefaults.standard.string(forKey: AUTH_TOKEN_KEY) ?? ""
-    }
-    
     var token: Observable<String> {
-        return tokenVar.asObservable().filter({ !$0.isEmpty })
+        return AuthService.tokenVar.asObservable().filter({ !$0.isEmpty })
     }
     
     func login(credentials: Credentials) -> Observable<String> {
@@ -80,7 +76,7 @@ class AuthService {
         if !AuthService.isLoggedInVar.value {
             return Observable<Void>.error(NSError(domain: "You are not logged in", code: 9000, userInfo: nil))
         }
-        let params = [ "auth_params[token]": tokenVar.value,
+        let params = [ "auth_params[token]": AuthService.tokenVar.value,
                        "auth_params[email]": UserDefaults.standard.string(forKey: AUTH_EMAIL_KEY)!]
         return RxAlamofire.json(.delete, endpoint("users/log_out"),
             parameters: params, encoding: URLEncoding.default, headers: nil)
@@ -93,7 +89,7 @@ class AuthService {
     private func save(token: String, email: String) {
         Logger.debug("Authorized - Token: \(token) Email: \(email)")
         AuthService.isLoggedInVar.value = true
-        tokenVar.value = token
+        AuthService.tokenVar.value = token
         UserDefaults.standard.set(token, forKey: AUTH_TOKEN_KEY)
         UserDefaults.standard.set(email, forKey: AUTH_EMAIL_KEY)
     }
