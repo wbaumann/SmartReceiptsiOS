@@ -188,7 +188,7 @@ extension TripDistancesView: IndicatorInfoProvider {
 
 extension GenerateReportView: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: LocalizedString("trip.tab.reports.title"))
+        return IndicatorInfo(title: LocalizedString("trip.tab.generate.title"))
     }
 }
 
