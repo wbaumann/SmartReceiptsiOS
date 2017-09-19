@@ -16,6 +16,7 @@ class TaxCalculator: NSObject {
     private let disposeBag = DisposeBag()
     private var priceIsPreTax = false
     private var taxPercentage = NSDecimalNumber(decimal: 0)
+    private let formatter = NumberFormatter()
     
     fileprivate static let HUNDRED = NSDecimalNumber(decimal: 100)
     
@@ -23,12 +24,13 @@ class TaxCalculator: NSObject {
         super.init()
         priceIsPreTax = WBPreferences.enteredPricePreTax()
         taxPercentage = NSDecimalNumber(string: "\(WBPreferences.defaultTaxPercentage())")
+        formatter.maximumFractionDigits = 2
         
         priceSubject.subscribe(onNext: { [unowned self] value in
             if let val = value {
                 let price = NSDecimalNumber(decimal: val)
                 let tax = TaxCalculator.taxWithPrice(price, taxPercentage: self.taxPercentage, preTax: self.priceIsPreTax)
-                self.taxSubject.onNext(tax.stringValue)
+                self.taxSubject.onNext(self.formatter.string(from: tax)!)
             } else {
                 self.taxSubject.onNext("")
             }
