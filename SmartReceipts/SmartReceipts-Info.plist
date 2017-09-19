@@ -64,11 +64,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.7.900</string>
+	<string>1.8.1000</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>900</string>
+	<string>1000</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -88,14 +88,14 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Advertisement would like to use bluetooth.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Advertisement would like to create a calendar event.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>${PRODUCT_NAME} cannot take photos unless you give it permission.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>${PRODUCT_NAME} cannot import photos unless you give it permission.</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Advertisement would like to create a calendar event.</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Advertisement would like to use bluetooth.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchView</string>
 	<key>UIMainStoryboardFile</key>
