@@ -51,13 +51,13 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
             newCell?.label.font = buttonFont
         }
         super.viewDidLoad()
-        view.layoutSubviews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateForIndex(currentIndex)
         updateGenerateTooltip()
+        
     }
     
     func updateEditing() {

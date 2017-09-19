@@ -57,7 +57,6 @@ final class ReceiptsView: FetchedTableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        floatyButton.close()
     }
     
     func tripUpdated(_ notification: Notification) {
@@ -127,6 +126,7 @@ final class ReceiptsView: FetchedTableViewController {
     private func configureFloatyButton() {
         addFloatyItem(LocalizedString("receipt.floaty.item.text.only"), icon: #imageLiteral(resourceName: "file-text"), subject: presenter.createReceiptTextSubject)
         addFloatyItem(LocalizedString("receipt.floaty.item.image"), icon: #imageLiteral(resourceName: "camera"), subject: presenter.createReceiptCameraSubject)
+        floatyButton.sticky = true
     }
     
     private func addFloatyItem(_ title: String?, icon: UIImage, subject: PublishSubject<Void>) {
