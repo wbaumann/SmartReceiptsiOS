@@ -30,9 +30,5 @@ class CognitoService: AWSCognitoCredentialsProviderHelper {
         self.identityId = tokenVar.value
         return AWSTask(result: NSString(string: tokenVar.value))
     }
-    
-    override func logins() -> AWSTask<NSDictionary> {
-        <#code#>
-    }
 }
 
