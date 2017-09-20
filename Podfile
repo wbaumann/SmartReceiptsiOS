@@ -13,7 +13,7 @@ def pods
     # UI
     pod 'MRProgress'
     pod 'UIAlertView-Blocks'
-    pod 'Eureka'
+    pod 'Eureka', :git => 'https://github.com/xmartlabs/Eureka.git', :branch => 'Xcode9-Swift3_2'
     pod 'XLPagerTabStrip'
     pod 'Floaty'
     pod 'Toaster'

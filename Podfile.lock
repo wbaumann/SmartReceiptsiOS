@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.5.0)
-  - CocoaLumberjack/Default (3.2.0)
-  - CocoaLumberjack/Swift (3.2.0):
+  - CocoaLumberjack/Default (3.2.1)
+  - CocoaLumberjack/Swift (3.2.1):
     - CocoaLumberjack/Default
   - Cuckoo (0.9.2)
   - Eureka (3.0.0)
@@ -152,7 +152,7 @@ DEPENDENCIES:
   - Alamofire
   - CocoaLumberjack/Swift
   - Cuckoo
-  - Eureka
+  - Eureka (from `https://github.com/xmartlabs/Eureka.git`, branch `Xcode9-Swift3_2`)
   - Firebase
   - FirebaseAnalytics
   - FirebaseCrash
@@ -181,14 +181,22 @@ DEPENDENCIES:
   - XLPagerTabStrip
 
 EXTERNAL SOURCES:
+  Eureka:
+    :branch: Xcode9-Swift3_2
+    :git: https://github.com/xmartlabs/Eureka.git
   RMStore:
     :path: 3rdparty/RMStore
 
+CHECKOUT OPTIONS:
+  Eureka:
+    :commit: 170433bedb6db4228da60eb6c866156b6b29e666
+    :git: https://github.com/xmartlabs/Eureka.git
+
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  CocoaLumberjack: 9b4aed7073d242f29cc2f62068d995faf67f703a
+  CocoaLumberjack: 2800c03334042fe80589423c8d80e582dcaec482
   Cuckoo: 66c84083a91164744f96817d3ed61c183021f754
-  Eureka: f36fd440c3ebb7bfea0a4fbe6f16a05f1cb35906
+  Eureka: 5b9418d7bfdc21ca977d69d124a6409f3e9af2c7
   Firebase: 9e33fdfbca37cab635c693883caa90a4475b842b
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseCore: c709067051de07bdaffdc4e735cd7299a23c463a
@@ -229,6 +237,6 @@ SPEC CHECKSUMS:
   Viperit: b45ecfde9f3e577a6afd8f91f4c88edb46e0ca25
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
 
-PODFILE CHECKSUM: 65522052d666fefcf1543681c9e86f1679ca00a1
+PODFILE CHECKSUM: ec43e3d926b526c5ef02dea7194b8af216b19928
 
 COCOAPODS: 1.2.1
