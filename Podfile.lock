@@ -6,7 +6,7 @@ PODS:
   - CocoaLumberjack/Default (3.2.0)
   - CocoaLumberjack/Swift (3.2.0):
     - CocoaLumberjack/Default
-  - Cuckoo (0.9.2)
+  - Cuckoo (0.9.3)
   - Eureka (3.0.0)
   - Firebase (4.0.3):
     - Firebase/Core (= 4.0.3)
@@ -155,7 +155,7 @@ DEPENDENCIES:
   - Alamofire
   - AWSCognito
   - CocoaLumberjack/Swift
-  - Cuckoo
+  - Cuckoo (from `https://github.com/kaosdg/Cuckoo.git`, branch `swift-4.0`)
   - Eureka
   - Firebase
   - FirebaseAnalytics
@@ -185,15 +185,23 @@ DEPENDENCIES:
   - XLPagerTabStrip
 
 EXTERNAL SOURCES:
+  Cuckoo:
+    :branch: swift-4.0
+    :git: https://github.com/kaosdg/Cuckoo.git
   RMStore:
     :path: 3rdparty/RMStore
+
+CHECKOUT OPTIONS:
+  Cuckoo:
+    :commit: 024627b489e1ea6a3139609309b612a61a1fd4a0
+    :git: https://github.com/kaosdg/Cuckoo.git
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AWSCognito: 8eb74039f4dc5f2d929999c4f531eeb4bd83e6cb
   AWSCore: cf101c44d2cc5da32abc27d5529cddc63c010415
   CocoaLumberjack: 9b4aed7073d242f29cc2f62068d995faf67f703a
-  Cuckoo: 66c84083a91164744f96817d3ed61c183021f754
+  Cuckoo: 0e443cae3d90aa35f7556b9e2abad1d61b0bfdf3
   Eureka: f36fd440c3ebb7bfea0a4fbe6f16a05f1cb35906
   Firebase: 9e33fdfbca37cab635c693883caa90a4475b842b
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
@@ -235,6 +243,6 @@ SPEC CHECKSUMS:
   Viperit: b45ecfde9f3e577a6afd8f91f4c88edb46e0ca25
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
 
-PODFILE CHECKSUM: cd55b23aac3220e2e32dfe777039ac10a392e8ce
+PODFILE CHECKSUM: bcbd4d2fdd6debe684aff7f66fc257091a1f5dcd
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

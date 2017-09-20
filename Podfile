@@ -61,7 +61,7 @@ target 'SmartReceiptsTests' do
     pods
     pod 'RxBlocking'
     pod 'RxTest'
-    pod 'Cuckoo'
+    pod 'Cuckoo', :git => 'https://github.com/kaosdg/Cuckoo.git', :branch => 'swift-4.0'
 
 end
 
