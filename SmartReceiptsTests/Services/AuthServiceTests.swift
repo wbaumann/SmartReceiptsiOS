@@ -37,17 +37,19 @@ class AuthServiceTests: XCTestCase {
         
         scheduler.start()
         
-        _ = AuthService.isLoggedIn.bind(to: loggedInObserver)
+        _ = AuthService.loggedInObservable.bind(to: loggedInObserver)
         
-        let token = try! authService.login(credentials: Credentials("aaaa@aaaa.aaa", "12345678"))
+        let token = try! authService.login(credentials: Credentials("aaa@aaa.aaa", "12345678"))
             .toBlocking(timeout: 3)
             .first()!
         
-        let savedToken = try! authService.token.toBlocking().first()!
+        let savedToken = try! authService.tokenObservable.toBlocking().first()!
         
         XCTAssertFalse(token.isEmpty)
         XCTAssertEqual(token, savedToken)
         XCTAssertEqual(loggedCheck, loggedInObserver.events)
+        XCTAssertTrue(AuthService.isLoggedIn)
+        XCTAssertEqual(token, authService.token)
     }
     
     func testSignUp() {
@@ -61,21 +63,23 @@ class AuthServiceTests: XCTestCase {
         
         scheduler.start()
         
-        _ = AuthService.isLoggedIn.bind(to: loggedInObserver)
+        _ = AuthService.loggedInObservable.bind(to: loggedInObserver)
         
-        let token = try! authService.signup(credentials: Credentials("aaaa@aaaa.aaa", "12345678"))
+        let token = try! authService.signup(credentials: Credentials("1aaa@aaa.aaa", "12345678"))
             .toBlocking(timeout: 3)
             .first()!
         
-        let savedToken = try! authService.token.toBlocking().first()!
+        let savedToken = try! authService.tokenObservable.toBlocking().first()!
         
         XCTAssertFalse(token.isEmpty)
         XCTAssertEqual(token, savedToken)
         XCTAssertEqual(loggedCheck, loggedInObserver.events)
+        XCTAssertTrue(AuthService.isLoggedIn)
+        XCTAssertEqual(token, authService.token)
     }
     
     func testLogout() {
-        _ = try? authService.login(credentials: Credentials("aaaa@aaaa.aaa", "12345678"))
+        _ = try? authService.login(credentials: Credentials("aaa@aaa.aaa", "12345678"))
             .toBlocking(timeout: 3)
             .first()
         let call = try? authService.logout().toBlocking(timeout: 3).first()

@@ -21,8 +21,12 @@ class AuthService {
     
     static private let isLoggedInVar = Variable<Bool>(checkLoggedIn())
     
-    static var isLoggedIn: Observable<Bool> {
+    static var loggedInObservable: Observable<Bool> {
         return isLoggedInVar.asObservable()
+    }
+    
+    static var isLoggedIn: Bool {
+        return isLoggedInVar.value
     }
     
     private static func checkLoggedIn() -> Bool {
@@ -32,8 +36,16 @@ class AuthService {
                defaults.hasObject(forKey: AUTH_EMAIL_KEY)
     }
     
-    var token: Observable<String> {
+    var tokenObservable: Observable<String> {
         return AuthService.tokenVar.asObservable().filter({ !$0.isEmpty })
+    }
+    
+    var token: String {
+        let value = AuthService.tokenVar.value
+        if value.isEmpty {
+            Logger.warning("Token is Empty")
+        }
+        return value
     }
     
     func login(credentials: Credentials) -> Observable<String> {
@@ -73,7 +85,7 @@ class AuthService {
     }
     
     func logout() -> Observable<Void> {
-        if !AuthService.isLoggedInVar.value {
+        if !AuthService.isLoggedIn {
             return Observable<Void>.error(NSError(domain: "You are not logged in", code: 9000, userInfo: nil))
         }
         let params = [ "auth_params[token]": AuthService.tokenVar.value,
