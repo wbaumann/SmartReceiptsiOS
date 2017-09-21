@@ -7,5 +7,6 @@
 //
 
 func endpoint(_ method: String) -> String {
-    return "https://www.smartreceipts.co/api/\(method)"
+    let prefix = FeatureFlags.useProdEndpoints.isEnabled ? "www" : "beta"
+    return "https://\(prefix).smartreceipts.co/api/\(method)"
 }

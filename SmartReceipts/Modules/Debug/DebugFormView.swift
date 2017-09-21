@@ -33,6 +33,14 @@ class DebugFormView: FormViewController {
         }.onChange({ [unowned self] row in
             self.subscriptionSubject.onNext(row.value!)
         })
+            
+        <<< SwitchRow() { row in
+            row.title = "Use Production endpoints"
+            row.value = FeatureFlags.useProdEndpoints.isEnabled
+        }.onChange({ row in
+            FeatureFlags.useProdEndpoints = Feature(row.value!)
+        })
+        
     }
     
 }
