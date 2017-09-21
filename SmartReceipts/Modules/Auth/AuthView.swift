@@ -51,9 +51,10 @@ final class AuthView: UserInterface {
     }
     
     private func configureRx() {
-        AuthService.isLoggedIn.subscribe(onNext: { [unowned self] loggedIn in
-            self.logoutButton.isEnabled = loggedIn
-        }).disposed(by: bag)
+        AuthService.loggedInObservable
+            .subscribe(onNext: { [unowned self] loggedIn in
+                self.logoutButton.isEnabled = loggedIn
+            }).disposed(by: bag)
         
         Observable.combineLatest(emailValidator(), passwordValidator(), resultSelector: {
                 isVaildEmail, isValidPassword -> ValidationResult in

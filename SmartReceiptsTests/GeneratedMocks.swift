@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift at 2017-09-21 17:27:15 +0000
 
 //
 //  GenerateReportPresenter.swift
@@ -35,12 +35,12 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
     
      override func viewHasLoaded()  {
         
-            return  cuckoo_manager.call("viewHasLoaded()",
+            return cuckoo_manager.call("viewHasLoaded()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.viewHasLoaded()
+                         o.viewHasLoaded()
                     }
                 })
         
@@ -48,12 +48,12 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
     
      override func setupView(data: Any)  {
         
-            return  cuckoo_manager.call("setupView(data: Any)",
+            return cuckoo_manager.call("setupView(data: Any)",
                 parameters: (data),
                 original: observed.map { o in
                     return { (args) in
                         let (data) = args
-                          o.setupView(data: data)
+                         o.setupView(data: data)
                     }
                 })
         
@@ -61,12 +61,12 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
     
      override func close()  {
         
-            return  cuckoo_manager.call("close()",
+            return cuckoo_manager.call("close()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.close()
+                         o.close()
                     }
                 })
         
@@ -74,12 +74,12 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
     
      override func generateReport()  {
         
-            return  cuckoo_manager.call("generateReport()",
+            return cuckoo_manager.call("generateReport()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.generateReport()
+                         o.generateReport()
                     }
                 })
         
@@ -87,12 +87,12 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
     
      override func presentAlert(title: String, message: String)  {
         
-            return  cuckoo_manager.call("presentAlert(title: String, message: String)",
+            return cuckoo_manager.call("presentAlert(title: String, message: String)",
                 parameters: (title, message),
                 original: observed.map { o in
                     return { (args) in
                         let (title, message) = args
-                          o.presentAlert(title: title, message: message)
+                         o.presentAlert(title: title, message: message)
                     }
                 })
         
@@ -100,12 +100,12 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
     
      override func presentSheet(title: String?, message: String?, actions: [UIAlertAction])  {
         
-            return  cuckoo_manager.call("presentSheet(title: String?, message: String?, actions: [UIAlertAction])",
+            return cuckoo_manager.call("presentSheet(title: String?, message: String?, actions: [UIAlertAction])",
                 parameters: (title, message, actions),
                 original: observed.map { o in
                     return { (args) in
                         let (title, message, actions) = args
-                          o.presentSheet(title: title, message: message, actions: actions)
+                         o.presentSheet(title: title, message: message, actions: actions)
                     }
                 })
         
@@ -113,12 +113,12 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
     
      override func present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)  {
         
-            return  cuckoo_manager.call("present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)",
+            return cuckoo_manager.call("present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)",
                 parameters: (vc, animated, isPopover, completion),
                 original: observed.map { o in
                     return { (args) in
                         let (vc, animated, isPopover, completion) = args
-                          o.present(vc: vc, animated: animated, isPopover: isPopover, completion: completion)
+                         o.present(vc: vc, animated: animated, isPopover: isPopover, completion: completion)
                     }
                 })
         
@@ -126,12 +126,12 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
     
      override func presentSettings()  {
         
-            return  cuckoo_manager.call("presentSettings()",
+            return cuckoo_manager.call("presentSettings()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.presentSettings()
+                         o.presentSettings()
                     }
                 })
         
@@ -139,12 +139,12 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
     
      override func hideHudFromView()  {
         
-            return  cuckoo_manager.call("hideHudFromView()",
+            return cuckoo_manager.call("hideHudFromView()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.hideHudFromView()
+                         o.hideHudFromView()
                     }
                 })
         
@@ -327,7 +327,7 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift at 2017-09-21 17:27:15 +0000
 
 //
 //  GenerateReportInteractor.swift
@@ -409,12 +409,12 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.Mock {
     
      override func configure(with trip: WBTrip)  {
         
-            return  cuckoo_manager.call("configure(with: WBTrip)",
+            return cuckoo_manager.call("configure(with: WBTrip)",
                 parameters: (trip),
                 original: observed.map { o in
                     return { (args) in
                         let (trip) = args
-                          o.configure(with: trip)
+                         o.configure(with: trip)
                     }
                 })
         
@@ -422,12 +422,12 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.Mock {
     
      override func configureBinding()  {
         
-            return  cuckoo_manager.call("configureBinding()",
+            return cuckoo_manager.call("configureBinding()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.configureBinding()
+                         o.configureBinding()
                     }
                 })
         
@@ -435,12 +435,12 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.Mock {
     
      override func trackConfigureReportEvent()  {
         
-            return  cuckoo_manager.call("trackConfigureReportEvent()",
+            return cuckoo_manager.call("trackConfigureReportEvent()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.trackConfigureReportEvent()
+                         o.trackConfigureReportEvent()
                     }
                 })
         
@@ -448,12 +448,12 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.Mock {
     
      override func trackGeneratorEvents()  {
         
-            return  cuckoo_manager.call("trackGeneratorEvents()",
+            return cuckoo_manager.call("trackGeneratorEvents()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.trackGeneratorEvents()
+                         o.trackGeneratorEvents()
                     }
                 })
         
@@ -461,12 +461,12 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.Mock {
     
      override func generateReport()  {
         
-            return  cuckoo_manager.call("generateReport()",
+            return cuckoo_manager.call("generateReport()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.generateReport()
+                         o.generateReport()
                     }
                 })
         
@@ -474,12 +474,12 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.Mock {
     
      override func validateSelection()  -> Bool {
         
-            return  cuckoo_manager.call("validateSelection() -> Bool",
+            return cuckoo_manager.call("validateSelection() -> Bool",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) -> Bool in
                         let () = args
-                        return  o.validateSelection()
+                        return o.validateSelection()
                     }
                 })
         
@@ -683,7 +683,7 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthInteractor.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthInteractor.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  AuthInteractor.swift
@@ -831,7 +831,7 @@ class MockAuthInteractor: AuthInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthRouter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthRouter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  AuthRouter.swift
@@ -907,7 +907,7 @@ class MockAuthRouter: AuthRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesPresenter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesPresenter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  CategoriesPresenter.swift
@@ -944,12 +944,12 @@ class MockCategoriesPresenter: CategoriesPresenter, Cuckoo.Mock {
     
      override func viewHasLoaded()  {
         
-            return  cuckoo_manager.call("viewHasLoaded()",
+            return cuckoo_manager.call("viewHasLoaded()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.viewHasLoaded()
+                         o.viewHasLoaded()
                     }
                 })
         
@@ -957,12 +957,12 @@ class MockCategoriesPresenter: CategoriesPresenter, Cuckoo.Mock {
     
      override func presentAlert(title: String?, message: String)  {
         
-            return  cuckoo_manager.call("presentAlert(title: String?, message: String)",
+            return cuckoo_manager.call("presentAlert(title: String?, message: String)",
                 parameters: (title, message),
                 original: observed.map { o in
                     return { (args) in
                         let (title, message) = args
-                          o.presentAlert(title: title, message: message)
+                         o.presentAlert(title: title, message: message)
                     }
                 })
         
@@ -970,12 +970,12 @@ class MockCategoriesPresenter: CategoriesPresenter, Cuckoo.Mock {
     
      override func fetchedModelAdapter()  -> FetchedModelAdapter? {
         
-            return  cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
+            return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) -> FetchedModelAdapter? in
                         let () = args
-                        return  o.fetchedModelAdapter()
+                        return o.fetchedModelAdapter()
                     }
                 })
         
@@ -1068,7 +1068,7 @@ class MockCategoriesPresenter: CategoriesPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptRouter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptRouter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  EditReceiptRouter.swift
@@ -1104,12 +1104,12 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
     
      override func openSettings()  {
         
-            return  cuckoo_manager.call("openSettings()",
+            return cuckoo_manager.call("openSettings()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.openSettings()
+                         o.openSettings()
                     }
                 })
         
@@ -1117,12 +1117,12 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
     
      override func close()  {
         
-            return  cuckoo_manager.call("close()",
+            return cuckoo_manager.call("close()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.close()
+                         o.close()
                     }
                 })
         
@@ -1200,7 +1200,7 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsRouter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsRouter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  TripsRouter.swift
@@ -1236,12 +1236,12 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
     
      override func openSettings()  {
         
-            return  cuckoo_manager.call("openSettings()",
+            return cuckoo_manager.call("openSettings()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.openSettings()
+                         o.openSettings()
                     }
                 })
         
@@ -1249,12 +1249,12 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
     
      override func openDebug()  {
         
-            return  cuckoo_manager.call("openDebug()",
+            return cuckoo_manager.call("openDebug()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.openDebug()
+                         o.openDebug()
                     }
                 })
         
@@ -1262,12 +1262,12 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
     
      override func openEdit(trip: WBTrip)  {
         
-            return  cuckoo_manager.call("openEdit(trip: WBTrip)",
+            return cuckoo_manager.call("openEdit(trip: WBTrip)",
                 parameters: (trip),
                 original: observed.map { o in
                     return { (args) in
                         let (trip) = args
-                          o.openEdit(trip: trip)
+                         o.openEdit(trip: trip)
                     }
                 })
         
@@ -1275,12 +1275,12 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
     
      override func openAddTrip()  {
         
-            return  cuckoo_manager.call("openAddTrip()",
+            return cuckoo_manager.call("openAddTrip()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.openAddTrip()
+                         o.openAddTrip()
                     }
                 })
         
@@ -1288,12 +1288,12 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
     
      override func openDetails(trip: WBTrip)  {
         
-            return  cuckoo_manager.call("openDetails(trip: WBTrip)",
+            return cuckoo_manager.call("openDetails(trip: WBTrip)",
                 parameters: (trip),
                 original: observed.map { o in
                     return { (args) in
                         let (trip) = args
-                          o.openDetails(trip: trip)
+                         o.openDetails(trip: trip)
                     }
                 })
         
@@ -1301,12 +1301,12 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
     
      override func openNoTrips()  {
         
-            return  cuckoo_manager.call("openNoTrips()",
+            return cuckoo_manager.call("openNoTrips()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.openNoTrips()
+                         o.openNoTrips()
                     }
                 })
         
@@ -1444,7 +1444,7 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsPresenter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsPresenter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  TripsPresenter.swift
@@ -1481,12 +1481,12 @@ class MockTripsPresenter: TripsPresenter, Cuckoo.Mock {
     
      override func viewHasLoaded()  {
         
-            return  cuckoo_manager.call("viewHasLoaded()",
+            return cuckoo_manager.call("viewHasLoaded()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.viewHasLoaded()
+                         o.viewHasLoaded()
                     }
                 })
         
@@ -1494,12 +1494,12 @@ class MockTripsPresenter: TripsPresenter, Cuckoo.Mock {
     
      override func presentSettings()  {
         
-            return  cuckoo_manager.call("presentSettings()",
+            return cuckoo_manager.call("presentSettings()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.presentSettings()
+                         o.presentSettings()
                     }
                 })
         
@@ -1507,12 +1507,12 @@ class MockTripsPresenter: TripsPresenter, Cuckoo.Mock {
     
      override func presentAddTrip()  {
         
-            return  cuckoo_manager.call("presentAddTrip()",
+            return cuckoo_manager.call("presentAddTrip()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.presentAddTrip()
+                         o.presentAddTrip()
                     }
                 })
         
@@ -1520,12 +1520,12 @@ class MockTripsPresenter: TripsPresenter, Cuckoo.Mock {
     
      override func fetchedModelAdapter()  -> FetchedModelAdapter? {
         
-            return  cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
+            return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) -> FetchedModelAdapter? in
                         let () = args
-                        return  o.fetchedModelAdapter()
+                        return o.fetchedModelAdapter()
                     }
                 })
         
@@ -1633,7 +1633,7 @@ class MockTripsPresenter: TripsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyInteractor.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyInteractor.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  ReceiptMoveCopyInteractor.swift
@@ -1670,12 +1670,12 @@ class MockReceiptMoveCopyInteractor: ReceiptMoveCopyInteractor, Cuckoo.Mock {
     
      override func configureSubscribers()  {
         
-            return  cuckoo_manager.call("configureSubscribers()",
+            return cuckoo_manager.call("configureSubscribers()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.configureSubscribers()
+                         o.configureSubscribers()
                     }
                 })
         
@@ -1683,12 +1683,12 @@ class MockReceiptMoveCopyInteractor: ReceiptMoveCopyInteractor, Cuckoo.Mock {
     
      override func fetchedModelAdapter(for receipt: WBReceipt)  -> FetchedModelAdapter {
         
-            return  cuckoo_manager.call("fetchedModelAdapter(for: WBReceipt) -> FetchedModelAdapter",
+            return cuckoo_manager.call("fetchedModelAdapter(for: WBReceipt) -> FetchedModelAdapter",
                 parameters: (receipt),
                 original: observed.map { o in
                     return { (args) -> FetchedModelAdapter in
                         let (receipt) = args
-                        return  o.fetchedModelAdapter(for: receipt)
+                        return o.fetchedModelAdapter(for: receipt)
                     }
                 })
         
@@ -1766,7 +1766,7 @@ class MockReceiptMoveCopyInteractor: ReceiptMoveCopyInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportRouter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportRouter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  GenerateReportRouter.swift
@@ -1802,12 +1802,12 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.Mock {
     
      override func close()  {
         
-            return  cuckoo_manager.call("close()",
+            return cuckoo_manager.call("close()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.close()
+                         o.close()
                     }
                 })
         
@@ -1815,12 +1815,12 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.Mock {
     
      override func openSheet(title: String?, message: String?, actions: [UIAlertAction])  {
         
-            return  cuckoo_manager.call("openSheet(title: String?, message: String?, actions: [UIAlertAction])",
+            return cuckoo_manager.call("openSheet(title: String?, message: String?, actions: [UIAlertAction])",
                 parameters: (title, message, actions),
                 original: observed.map { o in
                     return { (args) in
                         let (title, message, actions) = args
-                          o.openSheet(title: title, message: message, actions: actions)
+                         o.openSheet(title: title, message: message, actions: actions)
                     }
                 })
         
@@ -1828,12 +1828,12 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.Mock {
     
      override func openSettings()  {
         
-            return  cuckoo_manager.call("openSettings()",
+            return cuckoo_manager.call("openSettings()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.openSettings()
+                         o.openSettings()
                     }
                 })
         
@@ -1841,12 +1841,12 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.Mock {
     
      override func open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)  {
         
-            return  cuckoo_manager.call("open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)",
+            return cuckoo_manager.call("open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)",
                 parameters: (vc, animated, isPopover, completion),
                 original: observed.map { o in
                     return { (args) in
                         let (vc, animated, isPopover, completion) = args
-                          o.open(vc: vc, animated: animated, isPopover: isPopover, completion: completion)
+                         o.open(vc: vc, animated: animated, isPopover: isPopover, completion: completion)
                     }
                 })
         
@@ -1954,7 +1954,7 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceInteractor.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceInteractor.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  EditDistanceInteractor.swift
@@ -1992,12 +1992,12 @@ class MockEditDistanceInteractor: EditDistanceInteractor, Cuckoo.Mock {
     
      override func save(distance: Distance, asNewDistance: Bool)  {
         
-            return  cuckoo_manager.call("save(distance: Distance, asNewDistance: Bool)",
+            return cuckoo_manager.call("save(distance: Distance, asNewDistance: Bool)",
                 parameters: (distance, asNewDistance),
                 original: observed.map { o in
                     return { (args) in
                         let (distance, asNewDistance) = args
-                          o.save(distance: distance, asNewDistance: asNewDistance)
+                         o.save(distance: distance, asNewDistance: asNewDistance)
                     }
                 })
         
@@ -2060,7 +2060,7 @@ class MockEditDistanceInteractor: EditDistanceInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsPresenter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsPresenter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  ReceiptsPresenter.swift
@@ -2098,12 +2098,12 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
     
      override func viewHasLoaded()  {
         
-            return  cuckoo_manager.call("viewHasLoaded()",
+            return cuckoo_manager.call("viewHasLoaded()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.viewHasLoaded()
+                         o.viewHasLoaded()
                     }
                 })
         
@@ -2111,12 +2111,12 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
     
      override func setupView(data: Any)  {
         
-            return  cuckoo_manager.call("setupView(data: Any)",
+            return cuckoo_manager.call("setupView(data: Any)",
                 parameters: (data),
                 original: observed.map { o in
                     return { (args) in
                         let (data) = args
-                          o.setupView(data: data)
+                         o.setupView(data: data)
                     }
                 })
         
@@ -2194,7 +2194,7 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsPresenter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsPresenter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  ColumnsPresenter.swift
@@ -2231,12 +2231,12 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.Mock {
     
      override func setupView(data: Any)  {
         
-            return  cuckoo_manager.call("setupView(data: Any)",
+            return cuckoo_manager.call("setupView(data: Any)",
                 parameters: (data),
                 original: observed.map { o in
                     return { (args) in
                         let (data) = args
-                          o.setupView(data: data)
+                         o.setupView(data: data)
                     }
                 })
         
@@ -2244,12 +2244,12 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.Mock {
     
      override func viewIsAboutToDisappear()  {
         
-            return  cuckoo_manager.call("viewIsAboutToDisappear()",
+            return cuckoo_manager.call("viewIsAboutToDisappear()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.viewIsAboutToDisappear()
+                         o.viewIsAboutToDisappear()
                     }
                 })
         
@@ -2327,7 +2327,7 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  TripDistancesInteractor.swift
@@ -2375,12 +2375,12 @@ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.Mock {
     
      override func fetchedModelAdapter(for trip: WBTrip)  -> FetchedModelAdapter {
         
-            return  cuckoo_manager.call("fetchedModelAdapter(for: WBTrip) -> FetchedModelAdapter",
+            return cuckoo_manager.call("fetchedModelAdapter(for: WBTrip) -> FetchedModelAdapter",
                 parameters: (trip),
                 original: observed.map { o in
                     return { (args) -> FetchedModelAdapter in
                         let (trip) = args
-                        return  o.fetchedModelAdapter(for: trip)
+                        return o.fetchedModelAdapter(for: trip)
                     }
                 })
         
@@ -2388,12 +2388,12 @@ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.Mock {
     
      override func totalDistancePrice()  -> String {
         
-            return  cuckoo_manager.call("totalDistancePrice() -> String",
+            return cuckoo_manager.call("totalDistancePrice() -> String",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) -> String in
                         let () = args
-                        return  o.totalDistancePrice()
+                        return o.totalDistancePrice()
                     }
                 })
         
@@ -2401,12 +2401,12 @@ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.Mock {
     
      override func delete(distance: Distance)  {
         
-            return  cuckoo_manager.call("delete(distance: Distance)",
+            return cuckoo_manager.call("delete(distance: Distance)",
                 parameters: (distance),
                 original: observed.map { o in
                     return { (args) in
                         let (distance) = args
-                          o.delete(distance: distance)
+                         o.delete(distance: distance)
                     }
                 })
         
@@ -2516,7 +2516,7 @@ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripInteractor.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripInteractor.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  EditTripInteractor.swift
@@ -2553,12 +2553,12 @@ class MockEditTripInteractor: EditTripInteractor, Cuckoo.Mock {
     
      override func configureSubscribers()  {
         
-            return  cuckoo_manager.call("configureSubscribers()",
+            return cuckoo_manager.call("configureSubscribers()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.configureSubscribers()
+                         o.configureSubscribers()
                     }
                 })
         
@@ -2566,12 +2566,12 @@ class MockEditTripInteractor: EditTripInteractor, Cuckoo.Mock {
     
      override func save(trip: WBTrip, update: Bool)  {
         
-            return  cuckoo_manager.call("save(trip: WBTrip, update: Bool)",
+            return cuckoo_manager.call("save(trip: WBTrip, update: Bool)",
                 parameters: (trip, update),
                 original: observed.map { o in
                     return { (args) in
                         let (trip, update) = args
-                          o.save(trip: trip, update: update)
+                         o.save(trip: trip, update: update)
                     }
                 })
         
@@ -2649,7 +2649,7 @@ class MockEditTripInteractor: EditTripInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsRouter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsRouter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  ReceiptsRouter.swift
@@ -2698,12 +2698,12 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
     
      override func openDistances()  {
         
-            return  cuckoo_manager.call("openDistances()",
+            return cuckoo_manager.call("openDistances()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.openDistances()
+                         o.openDistances()
                     }
                 })
         
@@ -2711,12 +2711,12 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
     
      override func openImageViewer(for receipt: WBReceipt)  {
         
-            return  cuckoo_manager.call("openImageViewer(for: WBReceipt)",
+            return cuckoo_manager.call("openImageViewer(for: WBReceipt)",
                 parameters: (receipt),
                 original: observed.map { o in
                     return { (args) in
                         let (receipt) = args
-                          o.openImageViewer(for: receipt)
+                         o.openImageViewer(for: receipt)
                     }
                 })
         
@@ -2724,12 +2724,12 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
     
      override func openPDFViewer(for receipt: WBReceipt)  {
         
-            return  cuckoo_manager.call("openPDFViewer(for: WBReceipt)",
+            return cuckoo_manager.call("openPDFViewer(for: WBReceipt)",
                 parameters: (receipt),
                 original: observed.map { o in
                     return { (args) in
                         let (receipt) = args
-                          o.openPDFViewer(for: receipt)
+                         o.openPDFViewer(for: receipt)
                     }
                 })
         
@@ -2737,12 +2737,12 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
     
      override func openGenerateReport()  {
         
-            return  cuckoo_manager.call("openGenerateReport()",
+            return cuckoo_manager.call("openGenerateReport()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.openGenerateReport()
+                         o.openGenerateReport()
                     }
                 })
         
@@ -2750,12 +2750,12 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
     
      override func openCreateReceipt()  {
         
-            return  cuckoo_manager.call("openCreateReceipt()",
+            return cuckoo_manager.call("openCreateReceipt()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.openCreateReceipt()
+                         o.openCreateReceipt()
                     }
                 })
         
@@ -2763,12 +2763,12 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
     
      override func openCreatePhotoReceipt()  {
         
-            return  cuckoo_manager.call("openCreatePhotoReceipt()",
+            return cuckoo_manager.call("openCreatePhotoReceipt()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.openCreatePhotoReceipt()
+                         o.openCreatePhotoReceipt()
                     }
                 })
         
@@ -2776,12 +2776,12 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
     
      override func openActions(receipt: WBReceipt)  -> ReceiptActionsPresenter {
         
-            return  cuckoo_manager.call("openActions(receipt: WBReceipt) -> ReceiptActionsPresenter",
+            return cuckoo_manager.call("openActions(receipt: WBReceipt) -> ReceiptActionsPresenter",
                 parameters: (receipt),
                 original: observed.map { o in
                     return { (args) -> ReceiptActionsPresenter in
                         let (receipt) = args
-                        return  o.openActions(receipt: receipt)
+                        return o.openActions(receipt: receipt)
                     }
                 })
         
@@ -2789,12 +2789,12 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
     
      override func openEdit(receipt: WBReceipt, image: UIImage?)  {
         
-            return  cuckoo_manager.call("openEdit(receipt: WBReceipt, image: UIImage?)",
+            return cuckoo_manager.call("openEdit(receipt: WBReceipt, image: UIImage?)",
                 parameters: (receipt, image),
                 original: observed.map { o in
                     return { (args) in
                         let (receipt, image) = args
-                          o.openEdit(receipt: receipt, image: image)
+                         o.openEdit(receipt: receipt, image: image)
                     }
                 })
         
@@ -2979,7 +2979,7 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsInteractor.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsInteractor.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  TripsInteractor.swift
@@ -3016,12 +3016,12 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.Mock {
     
      override func configureSubscribers()  {
         
-            return  cuckoo_manager.call("configureSubscribers()",
+            return cuckoo_manager.call("configureSubscribers()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.configureSubscribers()
+                         o.configureSubscribers()
                     }
                 })
         
@@ -3029,12 +3029,12 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.Mock {
     
      override func fetchedModelAdapter()  -> FetchedModelAdapter? {
         
-            return  cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
+            return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) -> FetchedModelAdapter? in
                         let () = args
-                        return  o.fetchedModelAdapter()
+                        return o.fetchedModelAdapter()
                     }
                 })
         
@@ -3112,7 +3112,7 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesInteractor.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesInteractor.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  CategoriesInteractor.swift
@@ -3149,12 +3149,12 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.Mock {
     
      override func configureSubscribers()  {
         
-            return  cuckoo_manager.call("configureSubscribers()",
+            return cuckoo_manager.call("configureSubscribers()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.configureSubscribers()
+                         o.configureSubscribers()
                     }
                 })
         
@@ -3162,12 +3162,12 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.Mock {
     
      override func save(category: WBCategory, update: Bool)  {
         
-            return  cuckoo_manager.call("save(category: WBCategory, update: Bool)",
+            return cuckoo_manager.call("save(category: WBCategory, update: Bool)",
                 parameters: (category, update),
                 original: observed.map { o in
                     return { (args) in
                         let (category, update) = args
-                          o.save(category: category, update: update)
+                         o.save(category: category, update: update)
                     }
                 })
         
@@ -3175,12 +3175,12 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.Mock {
     
      override func delete(category: WBCategory)  {
         
-            return  cuckoo_manager.call("delete(category: WBCategory)",
+            return cuckoo_manager.call("delete(category: WBCategory)",
                 parameters: (category),
                 original: observed.map { o in
                     return { (args) in
                         let (category) = args
-                          o.delete(category: category)
+                         o.delete(category: category)
                     }
                 })
         
@@ -3188,12 +3188,12 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.Mock {
     
      override func fetchedModelAdapter()  -> FetchedModelAdapter? {
         
-            return  cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
+            return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) -> FetchedModelAdapter? in
                         let () = args
-                        return  o.fetchedModelAdapter()
+                        return o.fetchedModelAdapter()
                     }
                 })
         
@@ -3301,7 +3301,7 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyRouter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyRouter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  ReceiptMoveCopyRouter.swift
@@ -3337,12 +3337,12 @@ class MockReceiptMoveCopyRouter: ReceiptMoveCopyRouter, Cuckoo.Mock {
     
      override func close()  {
         
-            return  cuckoo_manager.call("close()",
+            return cuckoo_manager.call("close()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.close()
+                         o.close()
                     }
                 })
         
@@ -3405,7 +3405,7 @@ class MockReceiptMoveCopyRouter: ReceiptMoveCopyRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceRouter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceRouter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  EditDistanceRouter.swift
@@ -3441,12 +3441,12 @@ class MockEditDistanceRouter: EditDistanceRouter, Cuckoo.Mock {
     
      override func close()  {
         
-            return  cuckoo_manager.call("close()",
+            return cuckoo_manager.call("close()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.close()
+                         o.close()
                     }
                 })
         
@@ -3509,7 +3509,7 @@ class MockEditDistanceRouter: EditDistanceRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthPresenter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthPresenter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  AuthPresenter.swift
@@ -3579,12 +3579,12 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
     
      override func viewHasLoaded()  {
         
-            return  cuckoo_manager.call("viewHasLoaded()",
+            return cuckoo_manager.call("viewHasLoaded()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.viewHasLoaded()
+                         o.viewHasLoaded()
                     }
                 })
         
@@ -3707,7 +3707,7 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsPresenter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsPresenter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  PaymentMethodsPresenter.swift
@@ -3744,12 +3744,12 @@ class MockPaymentMethodsPresenter: PaymentMethodsPresenter, Cuckoo.Mock {
     
      override func viewHasLoaded()  {
         
-            return  cuckoo_manager.call("viewHasLoaded()",
+            return cuckoo_manager.call("viewHasLoaded()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.viewHasLoaded()
+                         o.viewHasLoaded()
                     }
                 })
         
@@ -3757,12 +3757,12 @@ class MockPaymentMethodsPresenter: PaymentMethodsPresenter, Cuckoo.Mock {
     
      override func presentAlert(title: String?, message: String)  {
         
-            return  cuckoo_manager.call("presentAlert(title: String?, message: String)",
+            return cuckoo_manager.call("presentAlert(title: String?, message: String)",
                 parameters: (title, message),
                 original: observed.map { o in
                     return { (args) in
                         let (title, message) = args
-                          o.presentAlert(title: title, message: message)
+                         o.presentAlert(title: title, message: message)
                     }
                 })
         
@@ -3770,12 +3770,12 @@ class MockPaymentMethodsPresenter: PaymentMethodsPresenter, Cuckoo.Mock {
     
      override func fetchedModelAdapter()  -> FetchedModelAdapter? {
         
-            return  cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
+            return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) -> FetchedModelAdapter? in
                         let () = args
-                        return  o.fetchedModelAdapter()
+                        return o.fetchedModelAdapter()
                     }
                 })
         
@@ -3868,7 +3868,7 @@ class MockPaymentMethodsPresenter: PaymentMethodsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsRouter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsRouter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  PaymentMethodsRouter.swift
@@ -3944,7 +3944,7 @@ class MockPaymentMethodsRouter: PaymentMethodsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistancePresenter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistancePresenter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  EditDistancePresenter.swift
@@ -3980,12 +3980,12 @@ class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.Mock {
     
      override func setupView(data: Any)  {
         
-            return  cuckoo_manager.call("setupView(data: Any)",
+            return cuckoo_manager.call("setupView(data: Any)",
                 parameters: (data),
                 original: observed.map { o in
                     return { (args) in
                         let (data) = args
-                          o.setupView(data: data)
+                         o.setupView(data: data)
                     }
                 })
         
@@ -3993,12 +3993,12 @@ class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.Mock {
     
      override func save(distance: Distance, asNewDistance: Bool)  {
         
-            return  cuckoo_manager.call("save(distance: Distance, asNewDistance: Bool)",
+            return cuckoo_manager.call("save(distance: Distance, asNewDistance: Bool)",
                 parameters: (distance, asNewDistance),
                 original: observed.map { o in
                     return { (args) in
                         let (distance, asNewDistance) = args
-                          o.save(distance: distance, asNewDistance: asNewDistance)
+                         o.save(distance: distance, asNewDistance: asNewDistance)
                     }
                 })
         
@@ -4006,12 +4006,12 @@ class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.Mock {
     
      override func close()  {
         
-            return  cuckoo_manager.call("close()",
+            return cuckoo_manager.call("close()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.close()
+                         o.close()
                     }
                 })
         
@@ -4104,7 +4104,7 @@ class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsInteractor.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsInteractor.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  ReceiptActionsInteractor.swift
@@ -4140,12 +4140,12 @@ class MockReceiptActionsInteractor: ReceiptActionsInteractor, Cuckoo.Mock {
     
      override func attachAppInputFile(to receipt: WBReceipt)  -> Bool {
         
-            return  cuckoo_manager.call("attachAppInputFile(to: WBReceipt) -> Bool",
+            return cuckoo_manager.call("attachAppInputFile(to: WBReceipt) -> Bool",
                 parameters: (receipt),
                 original: observed.map { o in
                     return { (args) -> Bool in
                         let (receipt) = args
-                        return  o.attachAppInputFile(to: receipt)
+                        return o.attachAppInputFile(to: receipt)
                     }
                 })
         
@@ -4153,12 +4153,12 @@ class MockReceiptActionsInteractor: ReceiptActionsInteractor, Cuckoo.Mock {
     
      override func attachImage(_ image: UIImage, to receipt: WBReceipt)  -> Bool {
         
-            return  cuckoo_manager.call("attachImage(_: UIImage, to: WBReceipt) -> Bool",
+            return cuckoo_manager.call("attachImage(_: UIImage, to: WBReceipt) -> Bool",
                 parameters: (image, receipt),
                 original: observed.map { o in
                     return { (args) -> Bool in
                         let (image, receipt) = args
-                        return  o.attachImage(image, to: receipt)
+                        return o.attachImage(image, to: receipt)
                     }
                 })
         
@@ -4236,7 +4236,7 @@ class MockReceiptActionsInteractor: ReceiptActionsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsRouter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsRouter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  ReceiptActionsRouter.swift
@@ -4272,12 +4272,12 @@ class MockReceiptActionsRouter: ReceiptActionsRouter, Cuckoo.Mock {
     
      override func close()  {
         
-            return  cuckoo_manager.call("close()",
+            return cuckoo_manager.call("close()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.close()
+                         o.close()
                     }
                 })
         
@@ -4285,12 +4285,12 @@ class MockReceiptActionsRouter: ReceiptActionsRouter, Cuckoo.Mock {
     
      override func openMove(receipt: WBReceipt)  {
         
-            return  cuckoo_manager.call("openMove(receipt: WBReceipt)",
+            return cuckoo_manager.call("openMove(receipt: WBReceipt)",
                 parameters: (receipt),
                 original: observed.map { o in
                     return { (args) in
                         let (receipt) = args
-                          o.openMove(receipt: receipt)
+                         o.openMove(receipt: receipt)
                     }
                 })
         
@@ -4298,12 +4298,12 @@ class MockReceiptActionsRouter: ReceiptActionsRouter, Cuckoo.Mock {
     
      override func openCopy(receipt: WBReceipt)  {
         
-            return  cuckoo_manager.call("openCopy(receipt: WBReceipt)",
+            return cuckoo_manager.call("openCopy(receipt: WBReceipt)",
                 parameters: (receipt),
                 original: observed.map { o in
                     return { (args) in
                         let (receipt) = args
-                          o.openCopy(receipt: receipt)
+                         o.openCopy(receipt: receipt)
                     }
                 })
         
@@ -4396,7 +4396,7 @@ class MockReceiptActionsRouter: ReceiptActionsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripRouter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripRouter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  EditTripRouter.swift
@@ -4432,12 +4432,12 @@ class MockEditTripRouter: EditTripRouter, Cuckoo.Mock {
     
      override func close()  {
         
-            return  cuckoo_manager.call("close()",
+            return cuckoo_manager.call("close()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.close()
+                         o.close()
                     }
                 })
         
@@ -4500,7 +4500,7 @@ class MockEditTripRouter: EditTripRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptInteractor.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptInteractor.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  EditReceiptInteractor.swift
@@ -4550,12 +4550,12 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
     
      override func configureSubscribers()  {
         
-            return  cuckoo_manager.call("configureSubscribers()",
+            return cuckoo_manager.call("configureSubscribers()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.configureSubscribers()
+                         o.configureSubscribers()
                     }
                 })
         
@@ -4635,7 +4635,7 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Services/AuthService.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Services/AuthService.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  AuthService.swift
@@ -4667,10 +4667,18 @@ class MockAuthService: AuthService, Cuckoo.Mock {
     }
 
     
-    // ["name": "token", "accesibility": "", "@type": "InstanceVariable", "type": "Observable<String>", "isReadOnly": true]
-     override var token: Observable<String> {
+    // ["name": "tokenObservable", "accesibility": "", "@type": "InstanceVariable", "type": "Observable<String>", "isReadOnly": true]
+     override var tokenObservable: Observable<String> {
         get {
-            return cuckoo_manager.getter("token", original: observed.map { o in return { () -> Observable<String> in o.token }})
+            return cuckoo_manager.getter("tokenObservable", original: observed.map { o in return { () -> Observable<String> in o.tokenObservable }})
+        }
+        
+    }
+    
+    // ["name": "token", "accesibility": "", "@type": "InstanceVariable", "type": "String", "isReadOnly": true]
+     override var token: String {
+        get {
+            return cuckoo_manager.getter("token", original: observed.map { o in return { () -> String in o.token }})
         }
         
     }
@@ -4681,12 +4689,12 @@ class MockAuthService: AuthService, Cuckoo.Mock {
     
      override func login(credentials: Credentials)  -> Observable<String> {
         
-            return  cuckoo_manager.call("login(credentials: Credentials) -> Observable<String>",
+            return cuckoo_manager.call("login(credentials: Credentials) -> Observable<String>",
                 parameters: (credentials),
                 original: observed.map { o in
                     return { (args) -> Observable<String> in
                         let (credentials) = args
-                        return  o.login(credentials: credentials)
+                        return o.login(credentials: credentials)
                     }
                 })
         
@@ -4694,12 +4702,12 @@ class MockAuthService: AuthService, Cuckoo.Mock {
     
      override func signup(credentials: Credentials)  -> Observable<String> {
         
-            return  cuckoo_manager.call("signup(credentials: Credentials) -> Observable<String>",
+            return cuckoo_manager.call("signup(credentials: Credentials) -> Observable<String>",
                 parameters: (credentials),
                 original: observed.map { o in
                     return { (args) -> Observable<String> in
                         let (credentials) = args
-                        return  o.signup(credentials: credentials)
+                        return o.signup(credentials: credentials)
                     }
                 })
         
@@ -4707,12 +4715,12 @@ class MockAuthService: AuthService, Cuckoo.Mock {
     
      override func logout()  -> Observable<Void> {
         
-            return  cuckoo_manager.call("logout() -> Observable<Void>",
+            return cuckoo_manager.call("logout() -> Observable<Void>",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) -> Observable<Void> in
                         let () = args
-                        return  o.logout()
+                        return o.logout()
                     }
                 })
         
@@ -4726,7 +4734,11 @@ class MockAuthService: AuthService, Cuckoo.Mock {
             self.cuckoo_manager = manager
         }
         
-        var token: Cuckoo.ToBeStubbedReadOnlyProperty<Observable<String>> {
+        var tokenObservable: Cuckoo.ToBeStubbedReadOnlyProperty<Observable<String>> {
+            return .init(manager: cuckoo_manager, name: "tokenObservable")
+        }
+        
+        var token: Cuckoo.ToBeStubbedReadOnlyProperty<String> {
             return .init(manager: cuckoo_manager, name: "token")
         }
         
@@ -4761,7 +4773,11 @@ class MockAuthService: AuthService, Cuckoo.Mock {
         }
 
         
-        var token: Cuckoo.VerifyReadOnlyProperty<Observable<String>> {
+        var tokenObservable: Cuckoo.VerifyReadOnlyProperty<Observable<String>> {
+            return .init(manager: cuckoo_manager, name: "tokenObservable", callMatcher: callMatcher, sourceLocation: sourceLocation)
+        }
+        
+        var token: Cuckoo.VerifyReadOnlyProperty<String> {
             return .init(manager: cuckoo_manager, name: "token", callMatcher: callMatcher, sourceLocation: sourceLocation)
         }
         
@@ -4792,9 +4808,16 @@ class MockAuthService: AuthService, Cuckoo.Mock {
 
  class AuthServiceStub: AuthService {
     
-     override var token: Observable<String> {
+     override var tokenObservable: Observable<String> {
         get {
             return DefaultValueRegistry.defaultValue(for: (Observable<String>).self)
+        }
+        
+    }
+    
+     override var token: String {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (String).self)
         }
         
     }
@@ -4820,7 +4843,7 @@ class MockAuthService: AuthService, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsInteractor.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsInteractor.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  PaymentMethodsInteractor.swift
@@ -4857,12 +4880,12 @@ class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.Mock {
     
      override func configureSubscribers()  {
         
-            return  cuckoo_manager.call("configureSubscribers()",
+            return cuckoo_manager.call("configureSubscribers()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.configureSubscribers()
+                         o.configureSubscribers()
                     }
                 })
         
@@ -4870,12 +4893,12 @@ class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.Mock {
     
      override func fetchedModelAdapter()  -> FetchedModelAdapter? {
         
-            return  cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
+            return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) -> FetchedModelAdapter? in
                         let () = args
-                        return  o.fetchedModelAdapter()
+                        return o.fetchedModelAdapter()
                     }
                 })
         
@@ -4883,12 +4906,12 @@ class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.Mock {
     
      override func save(paymentMethod: PaymentMethod, update: Bool)  {
         
-            return  cuckoo_manager.call("save(paymentMethod: PaymentMethod, update: Bool)",
+            return cuckoo_manager.call("save(paymentMethod: PaymentMethod, update: Bool)",
                 parameters: (paymentMethod, update),
                 original: observed.map { o in
                     return { (args) in
                         let (paymentMethod, update) = args
-                          o.save(paymentMethod: paymentMethod, update: update)
+                         o.save(paymentMethod: paymentMethod, update: update)
                     }
                 })
         
@@ -4896,12 +4919,12 @@ class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.Mock {
     
      override func delete(paymentMethod: PaymentMethod)  {
         
-            return  cuckoo_manager.call("delete(paymentMethod: PaymentMethod)",
+            return cuckoo_manager.call("delete(paymentMethod: PaymentMethod)",
                 parameters: (paymentMethod),
                 original: observed.map { o in
                     return { (args) in
                         let (paymentMethod) = args
-                          o.delete(paymentMethod: paymentMethod)
+                         o.delete(paymentMethod: paymentMethod)
                     }
                 })
         
@@ -5009,7 +5032,7 @@ class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsRouter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsRouter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  ColumnsRouter.swift
@@ -5085,7 +5108,7 @@ class MockColumnsRouter: ColumnsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  TripDistancesPresenter.swift
@@ -5122,12 +5145,12 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.Mock {
     
      override func fetchedModelAdapter(for trip: WBTrip)  -> FetchedModelAdapter {
         
-            return  cuckoo_manager.call("fetchedModelAdapter(for: WBTrip) -> FetchedModelAdapter",
+            return cuckoo_manager.call("fetchedModelAdapter(for: WBTrip) -> FetchedModelAdapter",
                 parameters: (trip),
                 original: observed.map { o in
                     return { (args) -> FetchedModelAdapter in
                         let (trip) = args
-                        return  o.fetchedModelAdapter(for: trip)
+                        return o.fetchedModelAdapter(for: trip)
                     }
                 })
         
@@ -5135,12 +5158,12 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.Mock {
     
      override func delete(distance: Distance)  {
         
-            return  cuckoo_manager.call("delete(distance: Distance)",
+            return cuckoo_manager.call("delete(distance: Distance)",
                 parameters: (distance),
                 original: observed.map { o in
                     return { (args) in
                         let (distance) = args
-                          o.delete(distance: distance)
+                         o.delete(distance: distance)
                     }
                 })
         
@@ -5148,12 +5171,12 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.Mock {
     
      override func presentEditDistance(with data: Any?)  {
         
-            return  cuckoo_manager.call("presentEditDistance(with: Any?)",
+            return cuckoo_manager.call("presentEditDistance(with: Any?)",
                 parameters: (data),
                 original: observed.map { o in
                     return { (args) in
                         let (data) = args
-                          o.presentEditDistance(with: data)
+                         o.presentEditDistance(with: data)
                     }
                 })
         
@@ -5161,12 +5184,12 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.Mock {
     
      override func totalDistancePrice()  -> String {
         
-            return  cuckoo_manager.call("totalDistancePrice() -> String",
+            return cuckoo_manager.call("totalDistancePrice() -> String",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) -> String in
                         let () = args
-                        return  o.totalDistancePrice()
+                        return o.totalDistancePrice()
                     }
                 })
         
@@ -5174,12 +5197,12 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.Mock {
     
      override func setupView(data: Any)  {
         
-            return  cuckoo_manager.call("setupView(data: Any)",
+            return cuckoo_manager.call("setupView(data: Any)",
                 parameters: (data),
                 original: observed.map { o in
                     return { (args) in
                         let (data) = args
-                          o.setupView(data: data)
+                         o.setupView(data: data)
                     }
                 })
         
@@ -5302,7 +5325,7 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripPresenter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripPresenter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  EditTripPresenter.swift
@@ -5339,12 +5362,12 @@ class MockEditTripPresenter: EditTripPresenter, Cuckoo.Mock {
     
      override func viewHasLoaded()  {
         
-            return  cuckoo_manager.call("viewHasLoaded()",
+            return cuckoo_manager.call("viewHasLoaded()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.viewHasLoaded()
+                         o.viewHasLoaded()
                     }
                 })
         
@@ -5352,12 +5375,12 @@ class MockEditTripPresenter: EditTripPresenter, Cuckoo.Mock {
     
      override func setupView(data: Any)  {
         
-            return  cuckoo_manager.call("setupView(data: Any)",
+            return cuckoo_manager.call("setupView(data: Any)",
                 parameters: (data),
                 original: observed.map { o in
                     return { (args) in
                         let (data) = args
-                          o.setupView(data: data)
+                         o.setupView(data: data)
                     }
                 })
         
@@ -5365,12 +5388,12 @@ class MockEditTripPresenter: EditTripPresenter, Cuckoo.Mock {
     
      override func close()  {
         
-            return  cuckoo_manager.call("close()",
+            return cuckoo_manager.call("close()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.close()
+                         o.close()
                     }
                 })
         
@@ -5378,12 +5401,12 @@ class MockEditTripPresenter: EditTripPresenter, Cuckoo.Mock {
     
      override func presentAlert(title: String?, message: String)  {
         
-            return  cuckoo_manager.call("presentAlert(title: String?, message: String)",
+            return cuckoo_manager.call("presentAlert(title: String?, message: String)",
                 parameters: (title, message),
                 original: observed.map { o in
                     return { (args) in
                         let (title, message) = args
-                          o.presentAlert(title: title, message: message)
+                         o.presentAlert(title: title, message: message)
                     }
                 })
         
@@ -5491,7 +5514,7 @@ class MockEditTripPresenter: EditTripPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyPresenter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyPresenter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  ReceiptMoveCopyPresenter.swift
@@ -5552,12 +5575,12 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.Mock {
     
      override func viewHasLoaded()  {
         
-            return  cuckoo_manager.call("viewHasLoaded()",
+            return cuckoo_manager.call("viewHasLoaded()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.viewHasLoaded()
+                         o.viewHasLoaded()
                     }
                 })
         
@@ -5565,12 +5588,12 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.Mock {
     
      override func setupView(data: Any)  {
         
-            return  cuckoo_manager.call("setupView(data: Any)",
+            return cuckoo_manager.call("setupView(data: Any)",
                 parameters: (data),
                 original: observed.map { o in
                     return { (args) in
                         let (data) = args
-                          o.setupView(data: data)
+                         o.setupView(data: data)
                     }
                 })
         
@@ -5578,12 +5601,12 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.Mock {
     
      override func close()  {
         
-            return  cuckoo_manager.call("close()",
+            return cuckoo_manager.call("close()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.close()
+                         o.close()
                     }
                 })
         
@@ -5710,7 +5733,7 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsPresenter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsPresenter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  ReceiptActionsPresenter.swift
@@ -5747,12 +5770,12 @@ class MockReceiptActionsPresenter: ReceiptActionsPresenter, Cuckoo.Mock {
     
      override func setupView(data: Any)  {
         
-            return  cuckoo_manager.call("setupView(data: Any)",
+            return cuckoo_manager.call("setupView(data: Any)",
                 parameters: (data),
                 original: observed.map { o in
                     return { (args) in
                         let (data) = args
-                          o.setupView(data: data)
+                         o.setupView(data: data)
                     }
                 })
         
@@ -5760,12 +5783,12 @@ class MockReceiptActionsPresenter: ReceiptActionsPresenter, Cuckoo.Mock {
     
      override func viewHasLoaded()  {
         
-            return  cuckoo_manager.call("viewHasLoaded()",
+            return cuckoo_manager.call("viewHasLoaded()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.viewHasLoaded()
+                         o.viewHasLoaded()
                     }
                 })
         
@@ -5773,12 +5796,12 @@ class MockReceiptActionsPresenter: ReceiptActionsPresenter, Cuckoo.Mock {
     
      override func configureSubscribers()  {
         
-            return  cuckoo_manager.call("configureSubscribers()",
+            return cuckoo_manager.call("configureSubscribers()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.configureSubscribers()
+                         o.configureSubscribers()
                     }
                 })
         
@@ -5871,7 +5894,7 @@ class MockReceiptActionsPresenter: ReceiptActionsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesRouter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesRouter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  CategoriesRouter.swift
@@ -5947,7 +5970,7 @@ class MockCategoriesRouter: CategoriesRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsInteractor.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsInteractor.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  ColumnsInteractor.swift
@@ -5984,12 +6007,12 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.Mock {
     
      override func columns(forCSV: Bool)  -> Observable<[Column]> {
         
-            return  cuckoo_manager.call("columns(forCSV: Bool) -> Observable<[Column]>",
+            return cuckoo_manager.call("columns(forCSV: Bool) -> Observable<[Column]>",
                 parameters: (forCSV),
                 original: observed.map { o in
                     return { (args) -> Observable<[Column]> in
                         let (forCSV) = args
-                        return  o.columns(forCSV: forCSV)
+                        return o.columns(forCSV: forCSV)
                     }
                 })
         
@@ -5997,12 +6020,12 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.Mock {
     
      override func update(columns: [Column], forCSV: Bool)  {
         
-            return  cuckoo_manager.call("update(columns: [Column], forCSV: Bool)",
+            return cuckoo_manager.call("update(columns: [Column], forCSV: Bool)",
                 parameters: (columns, forCSV),
                 original: observed.map { o in
                     return { (args) in
                         let (columns, forCSV) = args
-                          o.update(columns: columns, forCSV: forCSV)
+                         o.update(columns: columns, forCSV: forCSV)
                     }
                 })
         
@@ -6080,7 +6103,7 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptPresenter.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptPresenter.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  EditReceiptPresenter.swift
@@ -6117,12 +6140,12 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
     
      override func viewHasLoaded()  {
         
-            return  cuckoo_manager.call("viewHasLoaded()",
+            return cuckoo_manager.call("viewHasLoaded()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.viewHasLoaded()
+                         o.viewHasLoaded()
                     }
                 })
         
@@ -6130,12 +6153,12 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
     
      override func setupView(data: Any)  {
         
-            return  cuckoo_manager.call("setupView(data: Any)",
+            return cuckoo_manager.call("setupView(data: Any)",
                 parameters: (data),
                 original: observed.map { o in
                     return { (args) in
                         let (data) = args
-                          o.setupView(data: data)
+                         o.setupView(data: data)
                     }
                 })
         
@@ -6143,12 +6166,12 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
     
      override func close()  {
         
-            return  cuckoo_manager.call("close()",
+            return cuckoo_manager.call("close()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.close()
+                         o.close()
                     }
                 })
         
@@ -6156,12 +6179,12 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
     
      override func present(errorDescription: String)  {
         
-            return  cuckoo_manager.call("present(errorDescription: String)",
+            return cuckoo_manager.call("present(errorDescription: String)",
                 parameters: (errorDescription),
                 original: observed.map { o in
                     return { (args) in
                         let (errorDescription) = args
-                          o.present(errorDescription: errorDescription)
+                         o.present(errorDescription: errorDescription)
                     }
                 })
         
@@ -6269,7 +6292,7 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsInteractor.swift at 2017-09-20 14:56:46 +0000
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsInteractor.swift at 2017-09-21 17:27:16 +0000
 
 //
 //  ReceiptsInteractor.swift
@@ -6330,12 +6353,12 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
     
      override func configureSubscribers()  {
         
-            return  cuckoo_manager.call("configureSubscribers()",
+            return cuckoo_manager.call("configureSubscribers()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                          o.configureSubscribers()
+                         o.configureSubscribers()
                     }
                 })
         
@@ -6343,12 +6366,12 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
     
      override func distanceReceipts()  -> [WBReceipt] {
         
-            return  cuckoo_manager.call("distanceReceipts() -> [WBReceipt]",
+            return cuckoo_manager.call("distanceReceipts() -> [WBReceipt]",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) -> [WBReceipt] in
                         let () = args
-                        return  o.distanceReceipts()
+                        return o.distanceReceipts()
                     }
                 })
         
@@ -6356,12 +6379,12 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
     
      override func fetchedAdapter(for trip: WBTrip)  -> FetchedModelAdapter {
         
-            return  cuckoo_manager.call("fetchedAdapter(for: WBTrip) -> FetchedModelAdapter",
+            return cuckoo_manager.call("fetchedAdapter(for: WBTrip) -> FetchedModelAdapter",
                 parameters: (trip),
                 original: observed.map { o in
                     return { (args) -> FetchedModelAdapter in
                         let (trip) = args
-                        return  o.fetchedAdapter(for: trip)
+                        return o.fetchedAdapter(for: trip)
                     }
                 })
         
@@ -6369,12 +6392,12 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
     
      override func swapUpReceipt(_ receipt: WBReceipt)  {
         
-            return  cuckoo_manager.call("swapUpReceipt(_: WBReceipt)",
+            return cuckoo_manager.call("swapUpReceipt(_: WBReceipt)",
                 parameters: (receipt),
                 original: observed.map { o in
                     return { (args) in
                         let (receipt) = args
-                          o.swapUpReceipt(receipt)
+                         o.swapUpReceipt(receipt)
                     }
                 })
         
@@ -6382,12 +6405,12 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
     
      override func swapDownReceipt(_ receipt: WBReceipt)  {
         
-            return  cuckoo_manager.call("swapDownReceipt(_: WBReceipt)",
+            return cuckoo_manager.call("swapDownReceipt(_: WBReceipt)",
                 parameters: (receipt),
                 original: observed.map { o in
                     return { (args) in
                         let (receipt) = args
-                          o.swapDownReceipt(receipt)
+                         o.swapDownReceipt(receipt)
                     }
                 })
         
@@ -6395,12 +6418,12 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
     
      override func titleSubtitle()  -> TitleSubtitle {
         
-            return  cuckoo_manager.call("titleSubtitle() -> TitleSubtitle",
+            return cuckoo_manager.call("titleSubtitle() -> TitleSubtitle",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) -> TitleSubtitle in
                         let () = args
-                        return  o.titleSubtitle()
+                        return o.titleSubtitle()
                     }
                 })
         

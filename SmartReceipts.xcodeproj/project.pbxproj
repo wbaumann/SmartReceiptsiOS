@@ -47,6 +47,20 @@
 		71097CA71F04410100223B72 /* TaxCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71097CA61F04410100223B72 /* TaxCalculatorTests.swift */; };
 		7109B00F1F61C35F0043AE04 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109B00E1F61C35F0043AE04 /* UserDefaults+Extensions.swift */; };
 		710B813A1F1B61AC000C97C4 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C413D31EE6F826003CE891 /* GeneratedMocks.swift */; };
+		710DCE981F742D3F00C08C43 /* AuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D4C751F626B3C00F29C4C /* AuthServiceTests.swift */; };
+		710DCE991F742D4200C08C43 /* GenerateReportModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360431EF310C90076D319 /* GenerateReportModuleTest.swift */; };
+		710DCE9A1F742D4200C08C43 /* TripDistancesModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360441EF310C90076D319 /* TripDistancesModuleTest.swift */; };
+		710DCE9B1F742D4200C08C43 /* EditDistanceModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360411EF310C90076D319 /* EditDistanceModuleTest.swift */; };
+		710DCE9C1F742D4200C08C43 /* TripsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360451EF310C90076D319 /* TripsModuleTest.swift */; };
+		710DCE9D1F742D4200C08C43 /* EditTripModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360421EF310C90076D319 /* EditTripModuleTest.swift */; };
+		710DCE9E1F742D4200C08C43 /* ReceiptActionsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDD01F08663100EAA320 /* ReceiptActionsModuleTest.swift */; };
+		710DCE9F1F742D4200C08C43 /* ReceiptMoveCopyModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDD41F08F9D100EAA320 /* ReceiptMoveCopyModuleTest.swift */; };
+		710DCEA01F742D4200C08C43 /* ReceiptsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDD61F092B4200EAA320 /* ReceiptsModuleTest.swift */; };
+		710DCEA11F742D4200C08C43 /* EditReceiptModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDD81F092B5400EAA320 /* EditReceiptModuleTest.swift */; };
+		710DCEA21F742D4200C08C43 /* ColumnsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B813B1F1B6FFD000C97C4 /* ColumnsModuleTest.swift */; };
+		710DCEA31F742D4200C08C43 /* PaymentMethodsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B813F1F1B708F000C97C4 /* PaymentMethodsModuleTest.swift */; };
+		710DCEA41F742D4200C08C43 /* CategoriesModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B813D1F1B7074000C97C4 /* CategoriesModuleTest.swift */; };
+		710DCEA51F742D4200C08C43 /* AuthModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D4C771F62AA0700F29C4C /* AuthModuleTest.swift */; };
 		7111ADA51F0EC38100DF77ED /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7111AD9F1F0EC38100DF77ED /* Settings.storyboard */; };
 		7111ADA61F0EC38100DF77ED /* SettingsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADA01F0EC38100DF77ED /* SettingsDisplayData.swift */; };
 		7111ADA71F0EC38100DF77ED /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADA11F0EC38100DF77ED /* SettingsInteractor.swift */; };
@@ -63,20 +77,6 @@
 		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
 		713D35501EDA4AEB00D8563D /* NSMutableString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 713D354F1EDA4AEB00D8563D /* NSMutableString+Extensions.m */; };
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
-		713D4C761F626B3C00F29C4C /* AuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D4C751F626B3C00F29C4C /* AuthServiceTests.swift */; };
-		713D4C7D1F632E2F00F29C4C /* GenerateReportModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360431EF310C90076D319 /* GenerateReportModuleTest.swift */; };
-		713D4C7E1F632E2F00F29C4C /* TripDistancesModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360441EF310C90076D319 /* TripDistancesModuleTest.swift */; };
-		713D4C7F1F632E2F00F29C4C /* EditDistanceModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360411EF310C90076D319 /* EditDistanceModuleTest.swift */; };
-		713D4C801F632E2F00F29C4C /* TripsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360451EF310C90076D319 /* TripsModuleTest.swift */; };
-		713D4C811F632E2F00F29C4C /* EditTripModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360421EF310C90076D319 /* EditTripModuleTest.swift */; };
-		713D4C821F632E2F00F29C4C /* ReceiptActionsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDD01F08663100EAA320 /* ReceiptActionsModuleTest.swift */; };
-		713D4C831F632E2F00F29C4C /* ReceiptMoveCopyModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDD41F08F9D100EAA320 /* ReceiptMoveCopyModuleTest.swift */; };
-		713D4C841F632E2F00F29C4C /* ReceiptsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDD61F092B4200EAA320 /* ReceiptsModuleTest.swift */; };
-		713D4C851F632E2F00F29C4C /* EditReceiptModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDD81F092B5400EAA320 /* EditReceiptModuleTest.swift */; };
-		713D4C861F632E2F00F29C4C /* ColumnsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B813B1F1B6FFD000C97C4 /* ColumnsModuleTest.swift */; };
-		713D4C871F632E2F00F29C4C /* PaymentMethodsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B813F1F1B708F000C97C4 /* PaymentMethodsModuleTest.swift */; };
-		713D4C881F632E2F00F29C4C /* CategoriesModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B813D1F1B7074000C97C4 /* CategoriesModuleTest.swift */; };
-		713D4C891F632E2F00F29C4C /* AuthModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D4C771F62AA0700F29C4C /* AuthModuleTest.swift */; };
 		714901BC1F05632200772B6F /* PaymentMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901BB1F05632200772B6F /* PaymentMethodTests.swift */; };
 		714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901C01F0598B900772B6F /* CurrencyExchangeService.swift */; };
 		7152DF1D1F0C24750088EE98 /* PDFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152DF1C1F0C24750088EE98 /* PDFPageView.swift */; };
@@ -3092,15 +3092,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				710B813A1F1B61AC000C97C4 /* GeneratedMocks.swift in Sources */,
-				713D4C881F632E2F00F29C4C /* CategoriesModuleTest.swift in Sources */,
+				710DCEA41F742D4200C08C43 /* CategoriesModuleTest.swift in Sources */,
 				EAD15C771B087029003BB1F3 /* DatabaseReceiptsCopyMoveTest.m in Sources */,
 				A7F05BC01CFC3FD40079F1AD /* ReceiptColumnTaxTests.swift in Sources */,
 				EAD3EF851B0E00E000CA1D4D /* DatabaseReceiptsSwapTest.m in Sources */,
 				7182CDCF1F085E9B00EAA320 /* CurrencyExchangeServiceTests.swift in Sources */,
-				713D4C761F626B3C00F29C4C /* AuthServiceTests.swift in Sources */,
-				713D4C841F632E2F00F29C4C /* ReceiptsModuleTest.swift in Sources */,
-				713D4C7F1F632E2F00F29C4C /* EditDistanceModuleTest.swift in Sources */,
 				A7F05BE71CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift in Sources */,
+				710DCEA01F742D4200C08C43 /* ReceiptsModuleTest.swift in Sources */,
+				710DCE9B1F742D4200C08C43 /* EditDistanceModuleTest.swift in Sources */,
 				EA07BF6C1AF51D5D004D17F6 /* DatabaseTestsHelper.m in Sources */,
 				EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */,
 				EA8D81E11AEA96C800BAC943 /* WBReportUtils.m in Sources */,
@@ -3118,18 +3117,19 @@
 				7182CDD31F08F37200EAA320 /* MatchableExtensions.swift in Sources */,
 				EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */,
 				A7F05BB61CFC1B5D0079F1AD /* ReceiptColumnExchangeRateTests.swift in Sources */,
-				713D4C891F632E2F00F29C4C /* AuthModuleTest.swift in Sources */,
 				A7B6FC5B1CF5DA2100CD53F1 /* WBReceiptTests.swift in Sources */,
-				713D4C871F632E2F00F29C4C /* PaymentMethodsModuleTest.swift in Sources */,
-				713D4C831F632E2F00F29C4C /* ReceiptMoveCopyModuleTest.swift in Sources */,
+				710DCEA51F742D4200C08C43 /* AuthModuleTest.swift in Sources */,
 				5762EA841ECDC2600032411A /* TripFullPDFGeneratorTest.swift in Sources */,
+				710DCEA31F742D4200C08C43 /* PaymentMethodsModuleTest.swift in Sources */,
+				710DCE9F1F742D4200C08C43 /* ReceiptMoveCopyModuleTest.swift in Sources */,
 				A7F05BDB1CFD6C520079F1AD /* PricesCollectionTests.swift in Sources */,
 				EA159E811AFE7CDC00DBB6CF /* NSDate+Calculations.m in Sources */,
-				713D4C861F632E2F00F29C4C /* ColumnsModuleTest.swift in Sources */,
 				EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */,
+				710DCEA21F742D4200C08C43 /* ColumnsModuleTest.swift in Sources */,
 				A71205B41CE5C04D008A193D /* WBTestAppDelegate.m in Sources */,
-				713D4C7D1F632E2F00F29C4C /* GenerateReportModuleTest.swift in Sources */,
 				EA8CEAE51AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m in Sources */,
+				710DCE991F742D4200C08C43 /* GenerateReportModuleTest.swift in Sources */,
+				710DCE981F742D3F00C08C43 /* AuthServiceTests.swift in Sources */,
 				EA888A831AFA601100DF2AE6 /* DatabaseReceiptsSumTest.m in Sources */,
 				A7F05BA81CFC07580079F1AD /* ReceiptColumnExchangedPriceTests.swift in Sources */,
 				714901BC1F05632200772B6F /* PaymentMethodTests.swift in Sources */,
@@ -3139,7 +3139,7 @@
 				EA8ABE3D1B1A064A00DBFA29 /* DatabaseImportTest.m in Sources */,
 				EA6677761B05FD8A004D3993 /* DatabaseReceiptsTest.m in Sources */,
 				572045CB1E9FB97700080FB8 /* RecentCurrenciesCacheTests.swift in Sources */,
-				713D4C811F632E2F00F29C4C /* EditTripModuleTest.swift in Sources */,
+				710DCE9D1F742D4200C08C43 /* EditTripModuleTest.swift in Sources */,
 				EADBB71F1B0B6CD600F4475F /* DatabaseTripsFilesTest.m in Sources */,
 				A7F05BB01CFC132E0079F1AD /* ReceiptColumnExchangedTaxTests.swift in Sources */,
 				713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */,
@@ -3155,17 +3155,17 @@
 				EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */,
 				EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */,
 				A709D7471CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift in Sources */,
-				713D4C821F632E2F00F29C4C /* ReceiptActionsModuleTest.swift in Sources */,
+				710DCE9E1F742D4200C08C43 /* ReceiptActionsModuleTest.swift in Sources */,
 				EA36DE531B0119150034CC2D /* DatabaseHintsTest.m in Sources */,
-				713D4C851F632E2F00F29C4C /* EditReceiptModuleTest.swift in Sources */,
+				710DCEA11F742D4200C08C43 /* EditReceiptModuleTest.swift in Sources */,
 				5757D6141E929ECA000F65F9 /* Database+Sync.swift in Sources */,
 				71097CA71F04410100223B72 /* TaxCalculatorTests.swift in Sources */,
-				713D4C7E1F632E2F00F29C4C /* TripDistancesModuleTest.swift in Sources */,
+				710DCE9A1F742D4200C08C43 /* TripDistancesModuleTest.swift in Sources */,
 				EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */,
 				EA8ABE441B1A1D6800DBFA29 /* DatabaseCategoriesTest.m in Sources */,
 				EA7634AA1B3DB34A00AD8737 /* WBPreferencesImportExportTest.m in Sources */,
 				57C0EED41E2D38B3001B4758 /* CustomLogFormatter.swift in Sources */,
-				713D4C801F632E2F00F29C4C /* TripsModuleTest.swift in Sources */,
+				710DCE9C1F742D4200C08C43 /* TripsModuleTest.swift in Sources */,
 				EA1D42C91B03931400D64D3A /* DatabasePaymentMethodsTest.m in Sources */,
 				EA90F2921B0CC4DD00FD2DB6 /* DatabaseReceiptsDatesTest.m in Sources */,
 				EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */,
