@@ -1,10 +1,10 @@
 PODS:
   - Alamofire (4.5.0)
-  - AWSCognito (2.5.8):
-    - AWSCore (= 2.5.8)
-  - AWSCore (2.5.8)
-  - CocoaLumberjack/Default (3.2.0)
-  - CocoaLumberjack/Swift (3.2.0):
+  - AWSCognito (2.6.1):
+    - AWSCore (= 2.6.1)
+  - AWSCore (2.6.1)
+  - CocoaLumberjack/Default (3.2.1)
+  - CocoaLumberjack/Swift (3.2.1):
     - CocoaLumberjack/Default
   - Cuckoo (0.9.3)
   - Eureka (3.0.0)
@@ -156,7 +156,7 @@ DEPENDENCIES:
   - AWSCognito
   - CocoaLumberjack/Swift
   - Cuckoo (from `https://github.com/kaosdg/Cuckoo.git`, branch `swift-4.0`)
-  - Eureka
+  - Eureka (from `https://github.com/xmartlabs/Eureka.git`, branch `Xcode9-Swift3_2`)
   - Firebase
   - FirebaseAnalytics
   - FirebaseCrash
@@ -188,6 +188,9 @@ EXTERNAL SOURCES:
   Cuckoo:
     :branch: swift-4.0
     :git: https://github.com/kaosdg/Cuckoo.git
+  Eureka:
+    :branch: Xcode9-Swift3_2
+    :git: https://github.com/xmartlabs/Eureka.git
   RMStore:
     :path: 3rdparty/RMStore
 
@@ -195,14 +198,17 @@ CHECKOUT OPTIONS:
   Cuckoo:
     :commit: 024627b489e1ea6a3139609309b612a61a1fd4a0
     :git: https://github.com/kaosdg/Cuckoo.git
+  Eureka:
+    :commit: 170433bedb6db4228da60eb6c866156b6b29e666
+    :git: https://github.com/xmartlabs/Eureka.git
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  AWSCognito: 8eb74039f4dc5f2d929999c4f531eeb4bd83e6cb
-  AWSCore: cf101c44d2cc5da32abc27d5529cddc63c010415
-  CocoaLumberjack: 9b4aed7073d242f29cc2f62068d995faf67f703a
+  AWSCognito: 9aad635e11de0febf026e8a8acbbd345b2016801
+  AWSCore: e7d37fa0715def975acf1b0d75556576780088b8
+  CocoaLumberjack: 2800c03334042fe80589423c8d80e582dcaec482
   Cuckoo: 0e443cae3d90aa35f7556b9e2abad1d61b0bfdf3
-  Eureka: f36fd440c3ebb7bfea0a4fbe6f16a05f1cb35906
+  Eureka: 5b9418d7bfdc21ca977d69d124a6409f3e9af2c7
   Firebase: 9e33fdfbca37cab635c693883caa90a4475b842b
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseCore: c709067051de07bdaffdc4e735cd7299a23c463a
@@ -243,6 +249,6 @@ SPEC CHECKSUMS:
   Viperit: b45ecfde9f3e577a6afd8f91f4c88edb46e0ca25
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
 
-PODFILE CHECKSUM: bcbd4d2fdd6debe684aff7f66fc257091a1f5dcd
+PODFILE CHECKSUM: 4667f3a79321c5a19a640e7962e73cf26f365fe0
 
 COCOAPODS: 1.3.1
