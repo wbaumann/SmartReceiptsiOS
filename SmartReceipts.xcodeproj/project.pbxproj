@@ -61,6 +61,7 @@
 		710DCEA31F742D4200C08C43 /* PaymentMethodsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B813F1F1B708F000C97C4 /* PaymentMethodsModuleTest.swift */; };
 		710DCEA41F742D4200C08C43 /* CategoriesModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B813D1F1B7074000C97C4 /* CategoriesModuleTest.swift */; };
 		710DCEA51F742D4200C08C43 /* AuthModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D4C771F62AA0700F29C4C /* AuthModuleTest.swift */; };
+		710DCEA71F7444C000C08C43 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710DCEA61F7444C000C08C43 /* User.swift */; };
 		7111ADA51F0EC38100DF77ED /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7111AD9F1F0EC38100DF77ED /* Settings.storyboard */; };
 		7111ADA61F0EC38100DF77ED /* SettingsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADA01F0EC38100DF77ED /* SettingsDisplayData.swift */; };
 		7111ADA71F0EC38100DF77ED /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADA11F0EC38100DF77ED /* SettingsInteractor.swift */; };
@@ -526,6 +527,7 @@
 		710B813B1F1B6FFD000C97C4 /* ColumnsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnsModuleTest.swift; sourceTree = "<group>"; };
 		710B813D1F1B7074000C97C4 /* CategoriesModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesModuleTest.swift; sourceTree = "<group>"; };
 		710B813F1F1B708F000C97C4 /* PaymentMethodsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsModuleTest.swift; sourceTree = "<group>"; };
+		710DCEA61F7444C000C08C43 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7111AD9F1F0EC38100DF77ED /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		7111ADA01F0EC38100DF77ED /* SettingsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDisplayData.swift; sourceTree = "<group>"; };
 		7111ADA11F0EC38100DF77ED /* SettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
@@ -2035,6 +2037,7 @@
 				71B488C51EF48706008872E2 /* Distance.swift */,
 				719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */,
 				71B8610F1F0AD3080069E251 /* Price.swift */,
+				710DCEA61F7444C000C08C43 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2853,6 +2856,7 @@
 				A7A720E31CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift in Sources */,
 				EA8D81971AEA7C1E00BAC943 /* ReceiptColumnImageName.m in Sources */,
 				71AC501F1F41DD3F00549BAA /* TableViewDataSourceProxy.swift in Sources */,
+				710DCEA71F7444C000C08C43 /* User.swift in Sources */,
 				EA07BF4A1AF40066004D17F6 /* DatabaseTableNames.m in Sources */,
 				719B1FE01EF603190049BD71 /* ReceiptsRouter.swift in Sources */,
 				EA5963F41AF29B1A00935344 /* UIView+Search.m in Sources */,
