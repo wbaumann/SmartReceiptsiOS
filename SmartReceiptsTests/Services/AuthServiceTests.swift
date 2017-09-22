@@ -65,7 +65,7 @@ class AuthServiceTests: XCTestCase {
         
         _ = AuthService.loggedInObservable.bind(to: loggedInObserver)
         
-        let token = try! authService.signup(credentials: Credentials("1aaa@aaa.aaa", "12345678"))
+        let token = try! authService.signup(credentials: Credentials("3aaa@aaa.aaa", "12345678"))
             .toBlocking(timeout: 3)
             .first()!
         
@@ -78,11 +78,28 @@ class AuthServiceTests: XCTestCase {
         XCTAssertEqual(token, authService.token)
     }
     
+    func testUser() {
+        _ = try? authService.login(credentials: Credentials("aaa@aaa.aaa", "12345678"))
+            .toBlocking(timeout: 3)
+            .first()
+        
+        let user = try! authService.getUser()
+            .toBlocking(timeout: 3)
+            .first()
+        
+        XCTAssertNotNil(user)
+        XCTAssertFalse(user!.cognitoToken.isEmpty)
+    }
+    
     func testLogout() {
         _ = try? authService.login(credentials: Credentials("aaa@aaa.aaa", "12345678"))
             .toBlocking(timeout: 3)
             .first()
-        let call = try? authService.logout().toBlocking(timeout: 3).first()
+        
+        let call = try? authService.logout()
+            .toBlocking(timeout: 3)
+            .first()
+        
         XCTAssertTrue(call != nil)
     }
 }
