@@ -7,6 +7,7 @@ project 'SmartReceipts.xcodeproj'
 def pods
     #AWS
     pod 'AWSCognito'
+    pod 'AWSS3'
     
     # File storage
     pod 'FMDB'
