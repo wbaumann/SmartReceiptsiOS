@@ -73,6 +73,7 @@
 		711E40541EE0D4ED00C043CF /* EditDistanceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */; };
 		711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */; };
 		7120099D1F12D0DE0049927E /* TickTock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7120099C1F12D0DE0049927E /* TickTock.swift */; };
+		7122778C1F756EA300090878 /* S3Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7122778B1F756EA300090878 /* S3Service.swift */; };
 		712BB2661F611DDE00F0380F /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712BB2651F611DDE00F0380F /* Error+Extensions.swift */; };
 		712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */; };
 		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
@@ -260,7 +261,7 @@
 		A78214FF1CFFECB000FD644A /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78214FE1CFFECB000FD644A /* Secrets.swift */; };
 		A78215011CFFF24C00FD644A /* NSNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78215001CFFF24C00FD644A /* NSNumber+Extensions.swift */; };
 		A79FDC6E1CEA0A5500328DBB /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC6D1CEA0A5500328DBB /* GoogleAnalytics.swift */; };
-		A79FDC711CEA0AB600328DBB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC701CEA0AB600328DBB /* Constants.swift */; };
+		A79FDC711CEA0AB600328DBB /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79FDC701CEA0AB600328DBB /* Global.swift */; };
 		A79FDC731CEA0D7C00328DBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A79FDC721CEA0D7C00328DBB /* GoogleService-Info.plist */; };
 		A7A720E31CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A720E21CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift */; };
 		A7A720E51CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A720E41CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift */; };
@@ -539,6 +540,7 @@
 		711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceFormView.swift; sourceTree = "<group>"; };
 		711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Extensions.swift"; sourceTree = "<group>"; };
 		7120099C1F12D0DE0049927E /* TickTock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickTock.swift; sourceTree = "<group>"; };
+		7122778B1F756EA300090878 /* S3Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Service.swift; sourceTree = "<group>"; };
 		712BB2651F611DDE00F0380F /* Error+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
 		712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsFormView.swift; sourceTree = "<group>"; };
 		713360411EF310C90076D319 /* EditDistanceModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceModuleTest.swift; sourceTree = "<group>"; };
@@ -765,7 +767,7 @@
 		A78215001CFFF24C00FD644A /* NSNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+Extensions.swift"; sourceTree = "<group>"; };
 		A79FDC6A1CEA08D400328DBB /* SmartReceipts-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SmartReceipts-Bridging-Header.h"; path = "../SmartReceipts-Bridging-Header.h"; sourceTree = "<group>"; };
 		A79FDC6D1CEA0A5500328DBB /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
-		A79FDC701CEA0AB600328DBB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A79FDC701CEA0AB600328DBB /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		A79FDC721CEA0D7C00328DBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7A720E21CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSIndexPath+Extensions.swift"; sourceTree = "<group>"; };
 		A7A720E41CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgrade14Tests.swift; sourceTree = "<group>"; };
@@ -1171,6 +1173,7 @@
 				71EFE1E51F55E04000591C8C /* TooltipService.swift */,
 				7100F7751F5EF20300D4B4D9 /* AuthService.swift */,
 				716C04211F685467007F9CD2 /* CognitoService.swift */,
+				7122778B1F756EA300090878 /* S3Service.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1330,7 +1333,7 @@
 			children = (
 				EA3CF09C1AE7C45C00B14B73 /* Constants.h */,
 				EA3CF09D1AE7C45C00B14B73 /* Constants.m */,
-				A79FDC701CEA0AB600328DBB /* Constants.swift */,
+				A79FDC701CEA0AB600328DBB /* Global.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -2501,6 +2504,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
@@ -2527,6 +2531,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognito.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
@@ -2681,6 +2686,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
@@ -2710,6 +2716,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognito.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
@@ -2793,7 +2800,7 @@
 				71B488C71EF49209008872E2 /* Distance.swift in Sources */,
 				57580D1F1DFAB6AB0090C488 /* UIApplication+AppVersion.m in Sources */,
 				7185AEF61EFC1CC90038ED2A /* ReceiptMoveCopyDisplayData.swift in Sources */,
-				A79FDC711CEA0AB600328DBB /* Constants.swift in Sources */,
+				A79FDC711CEA0AB600328DBB /* Global.swift in Sources */,
 				A7F05B981CFB49220079F1AD /* WBReceipt.swift in Sources */,
 				A7F05BD91CFD69640079F1AD /* PricesCollection.swift in Sources */,
 				71DF3A801F509512000CD1D6 /* NotifyMasterSplitViewController.swift in Sources */,
@@ -3068,6 +3075,7 @@
 				BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */,
 				572E0A7A1E42446600A7307A /* NSString+Extensions.m in Sources */,
 				EA40DC691B55598A003BF545 /* FullPagePDFImageView.m in Sources */,
+				7122778C1F756EA300090878 /* S3Service.swift in Sources */,
 				71AEDDE01EDF7FF400BAC0DD /* TripDistancesPresenter.swift in Sources */,
 				A7F05BB41CFC1A5D0079F1AD /* Exchanged.swift in Sources */,
 				719310481EDDC3120065B5AD /* WBPdfDrawer.m in Sources */,
