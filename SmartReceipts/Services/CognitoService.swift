@@ -10,7 +10,7 @@ import AWSCore
 import RxSwift
 
 class CognitoService: AWSCognitoCredentialsProviderHelper {
-    private let identityIdVar = Variable<String>("")
+    private let userVar = Variable<User?>(nil)
     private let authService = AuthService()
     private let bag = DisposeBag()
     
@@ -22,23 +22,13 @@ class CognitoService: AWSCognitoCredentialsProviderHelper {
         credentialsProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityProvider:self)
         let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider:credentialsProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
-        
+    
         AuthService.loggedInObservable
             .filter({ $0 })
-            .subscribe(onNext: { [unowned self] _ in
-                self.logins().continueOnSuccessWith { task -> Any? in
-                    if task.error != nil {
-                        Logger.error(task.error!.localizedDescription)
-                    } else if let id = task.result?[self.identityProviderName] as? String {
-                        self.identityIdVar.value = id
-                    }
-                    return nil
-                }
-            }).disposed(by: bag)
-    }
-    
-    var identityIdObservable: Observable<String> {
-        return identityIdVar.asObservable().filter({ !$0.isEmpty })
+            .flatMap({ [unowned self] _ in
+                return self.authService.getUser()
+            }).bind(to: userVar)
+            .disposed(by: bag)
     }
     
     override var identityProviderName: String {
@@ -46,9 +36,9 @@ class CognitoService: AWSCognitoCredentialsProviderHelper {
     }
     
     override func token() -> AWSTask<NSString> {
-        if AuthService.isLoggedIn {
-            identityId = authService.token
-            return AWSTask(result: NSString(string: authService.token))
+        if let user = userVar.value, AuthService.isLoggedIn {
+            identityId = user.identityId
+            return AWSTask(result: NSString(string: user.cognitoToken))
         } else {
             return AWSTask(result:nil)
         }
@@ -64,6 +54,9 @@ class CognitoService: AWSCognitoCredentialsProviderHelper {
     
     override func clear() {
         super.clear()
+        authService.getUser()
+            .bind(to: userVar)
+            .disposed(by: bag)
     }
 }
 

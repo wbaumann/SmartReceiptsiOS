@@ -98,6 +98,17 @@ class AuthService {
             })
     }
     
+    func getUser() -> Observable<User> {
+        let params = [ "auth_params[token]": AuthService.tokenVar.value,
+                       "auth_params[email]": UserDefaults.standard.string(forKey: AUTH_EMAIL_KEY)!]
+        return RxAlamofire.json(.get, endpoint("users/me"),
+            parameters: params, encoding: URLEncoding.default, headers: nil)
+            .map({ response -> User in
+                let json = JSON(response)
+                return User(json)
+            })
+    }
+    
     private func save(token: String, email: String) {
         Logger.debug("Authorized - Token: \(token) Email: \(email)")
         AuthService.isLoggedInVar.value = true
