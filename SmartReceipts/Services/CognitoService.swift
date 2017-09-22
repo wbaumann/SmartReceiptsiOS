@@ -14,25 +14,19 @@ class CognitoService: AWSCognitoCredentialsProviderHelper {
     private let authService = AuthService()
     private let bag = DisposeBag()
     
-    var credentialsProvider: AWSCognitoCredentialsProvider!
-    
     override init() {
         super.init(regionType: .USEast1, identityPoolId: "us-east-1:cdcc971a-b67f-4bc0-9a12-291b5d416518", useEnhancedFlow: true, identityProviderManager: nil)
-        
-        credentialsProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityProvider:self)
-        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider:credentialsProvider)
-        AWSServiceManager.default().defaultServiceConfiguration = configuration
     
         AuthService.loggedInObservable
             .filter({ $0 })
             .flatMap({ [unowned self] _ in
-                return self.authService.getUser()
+                return self.authService.getUser().catchErrorJustReturn(nil)
             }).bind(to: userVar)
             .disposed(by: bag)
     }
     
     override var identityProviderName: String {
-        return "login.smartreceipts.co"
+        return "cognito-identity.amazonaws.com"
     }
     
     override func token() -> AWSTask<NSString> {
