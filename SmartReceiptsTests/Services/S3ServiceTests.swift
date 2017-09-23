@@ -11,7 +11,7 @@ import XCTest
 import RxSwift
 import RxBlocking
 
-let TIME_OUT: RxTimeInterval = 5
+fileprivate let TIME_OUT: RxTimeInterval = 5
 
 class S3ServiceTests: XCTestCase {
     let downloadURL = URL(string: "https://s3.amazonaws.com/smartreceipts/Drive/icon_drive.png")!
