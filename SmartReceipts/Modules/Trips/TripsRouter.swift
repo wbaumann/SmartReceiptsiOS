@@ -45,7 +45,6 @@ class TripsRouter: Router {
             _view.navigationController?.pushViewController(tabs, animated: true)
         }, iPad: {
             let nav = UINavigationController(rootViewController: tabs)
-            nav.navigationBar.isTranslucent = false
             _view.splitViewController?.show(nav, sender: nil)
         })
     }

@@ -24,6 +24,7 @@ class AppTheme: NSObject {
     class func customizeOnAppLoad() {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = primaryColor
+        UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         UIToolbar.appearance().tintColor = primaryDarkColor
     }
