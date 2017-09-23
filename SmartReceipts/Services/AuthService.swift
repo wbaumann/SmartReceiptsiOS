@@ -103,7 +103,7 @@ class AuthService {
                        "auth_params[email]": UserDefaults.standard.string(forKey: AUTH_EMAIL_KEY)!]
         return RxAlamofire.json(.get, endpoint("users/me"),
             parameters: params, encoding: URLEncoding.default, headers: nil)
-            .map({ response -> User in
+            .map({ response -> User? in
                 let json = JSON(response)
                 return User(json)
             })
