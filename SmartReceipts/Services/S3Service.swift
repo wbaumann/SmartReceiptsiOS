@@ -62,7 +62,7 @@ class S3Service {
         }
     }
     
-    func downloadImage(_ url: URL) -> Observable<UIImage> {
+    func downloadImage(_ url: URL, folder: String = FOLDER) -> Observable<UIImage> {
         return Observable<UIImage>.create { [weak self] observer -> Disposable in
             if let sSelf = self {
                 let downloadingFileURL = URL(fileURLWithPath: NSTemporaryDirectory())
@@ -70,7 +70,7 @@ class S3Service {
                 
                 let downloadRequest = AWSS3TransferManagerDownloadRequest()
                 downloadRequest!.bucket = BUCKET
-                downloadRequest!.key = FOLDER + url.lastPathComponent
+                downloadRequest!.key = folder + url.lastPathComponent
                 downloadRequest!.downloadingFileURL = downloadingFileURL
                 
                 sSelf.transferManager.download(downloadRequest!)
