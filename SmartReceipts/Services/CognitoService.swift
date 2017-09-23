@@ -32,7 +32,7 @@ class CognitoService: AWSCognitoCredentialsProviderHelper {
     override func token() -> AWSTask<NSString> {
         if let user = userVar.value, AuthService.isLoggedIn {
             identityId = user.identityId
-            return AWSTask(result: NSString(string: user.cognitoToken))
+            return AWSTask(result: NSString(string: user.cognitoToken!))
         } else {
             return AWSTask(result:nil)
         }

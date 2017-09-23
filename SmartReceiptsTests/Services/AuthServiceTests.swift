@@ -87,8 +87,8 @@ class AuthServiceTests: XCTestCase {
             .toBlocking(timeout: 3)
             .first()
         
-        XCTAssertNotNil(user)
-        XCTAssertFalse(user!.cognitoToken.isEmpty)
+        XCTAssertNotNil(user!)
+        XCTAssertFalse(user!!.cognitoToken.isEmpty)
     }
     
     func testLogout() {
