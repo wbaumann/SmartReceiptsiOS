@@ -26,7 +26,7 @@ class S3Service {
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         transferManager = AWSS3TransferManager.default()
         
-        AuthService.loggedInObservable
+        AuthService.shared.loggedInObservable
             .filter({ !$0 })
             .subscribe(onNext: { [weak self] _ in
                 self?.credentialsProvider.clearCredentials()

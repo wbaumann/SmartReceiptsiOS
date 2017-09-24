@@ -16,12 +16,12 @@ fileprivate let TIME_OUT: RxTimeInterval = 5
 class S3ServiceTests: XCTestCase {
     let downloadURL = URL(string: "https://s3.amazonaws.com/smartreceipts/Drive/icon_drive.png")!
     let service = S3Service()
-    let authSerivce = AuthService()
+    let authSerivce = AuthService.shared
     let bag = DisposeBag()
     
     override func setUp() {
         super.setUp()
-        _ = try? authSerivce.login(credentials: Credentials("aaa@aaa.aaa", "12345678"))
+        _ = try? authSerivce.login(credentials: TEST_CREDENTIALS)
             .toBlocking(timeout: TIME_OUT)
             .single()
     }

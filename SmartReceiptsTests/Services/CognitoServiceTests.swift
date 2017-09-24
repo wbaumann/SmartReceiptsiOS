@@ -15,12 +15,12 @@ fileprivate let TIME_OUT: RxTimeInterval = 5
 
 class CognitoServiceTests: XCTestCase {
     let service = CognitoService()
-    let authSerivce = AuthService()
+    let authSerivce = AuthService.shared
     let bag = DisposeBag()
     
     override func setUp() {
         super.setUp()
-        _ = try? authSerivce.login(credentials: Credentials("aaa@aaa.aaa", "12345678"))
+        _ = try? authSerivce.login(credentials: TEST_CREDENTIALS)
             .toBlocking(timeout: TIME_OUT)
             .single()
     }
