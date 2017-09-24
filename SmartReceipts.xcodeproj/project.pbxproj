@@ -65,6 +65,8 @@
 		712A84E31F77EED100D988E7 /* AuthModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D4C771F62AA0700F29C4C /* AuthModuleTest.swift */; };
 		712A84E51F78363C00D988E7 /* RxSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A84E41F78363C00D988E7 /* RxSwift+Extensions.swift */; };
 		712A84E61F78372100D988E7 /* RxSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A84E41F78363C00D988E7 /* RxSwift+Extensions.swift */; };
+		712A84E81F783BF300D988E7 /* APIAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A84E71F783BF300D988E7 /* APIAdapter.swift */; };
+		712A84EA1F783E9300D988E7 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A84E91F783E9300D988E7 /* Dictionary+Extensions.swift */; };
 		712BB2661F611DDE00F0380F /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712BB2651F611DDE00F0380F /* Error+Extensions.swift */; };
 		712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */; };
 		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
@@ -548,6 +550,8 @@
 		7122778D1F76F1CB00090878 /* S3ServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3ServiceTests.swift; sourceTree = "<group>"; };
 		712277A11F770ED300090878 /* CognitoServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitoServiceTests.swift; sourceTree = "<group>"; };
 		712A84E41F78363C00D988E7 /* RxSwift+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+Extensions.swift"; sourceTree = "<group>"; };
+		712A84E71F783BF300D988E7 /* APIAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAdapter.swift; sourceTree = "<group>"; };
+		712A84E91F783E9300D988E7 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
 		712BB2651F611DDE00F0380F /* Error+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
 		712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsFormView.swift; sourceTree = "<group>"; };
 		713360411EF310C90076D319 /* EditDistanceModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceModuleTest.swift; sourceTree = "<group>"; };
@@ -1181,6 +1185,7 @@
 				7100F7751F5EF20300D4B4D9 /* AuthService.swift */,
 				716C04211F685467007F9CD2 /* CognitoService.swift */,
 				7122778B1F756EA300090878 /* S3Service.swift */,
+				712A84E71F783BF300D988E7 /* APIAdapter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1890,6 +1895,7 @@
 				7109B00E1F61C35F0043AE04 /* UserDefaults+Extensions.swift */,
 				71652EAD1F646758002C8228 /* Toast+Extensions.swift */,
 				712A84E41F78363C00D988E7 /* RxSwift+Extensions.swift */,
+				712A84E91F783E9300D988E7 /* Dictionary+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2819,6 +2825,7 @@
 				712BB2661F611DDE00F0380F /* Error+Extensions.swift in Sources */,
 				719B1FE11EF603190049BD71 /* ReceiptsView.swift in Sources */,
 				EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */,
+				712A84EA1F783E9300D988E7 /* Dictionary+Extensions.swift in Sources */,
 				7111ADA71F0EC38100DF77ED /* SettingsInteractor.swift in Sources */,
 				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
 				EA1309A31B50281A0045FDDE /* PDFReportTable.m in Sources */,
@@ -3019,6 +3026,7 @@
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */,
 				EA0677F61B04E61A0058A326 /* StringPickableWrapper.m in Sources */,
 				71E2B57D1EEDD516001D02F1 /* TripsDisplayData.swift in Sources */,
+				712A84E81F783BF300D988E7 /* APIAdapter.swift in Sources */,
 				7111ADAC1F0EC4AF00DF77ED /* SettingsFormView.swift in Sources */,
 				7111ADAA1F0EC38100DF77ED /* SettingsView.swift in Sources */,
 				716F34511EE040E100D0017A /* EditDistanceRouter.swift in Sources */,
