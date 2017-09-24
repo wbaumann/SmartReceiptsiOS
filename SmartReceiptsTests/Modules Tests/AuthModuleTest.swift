@@ -16,14 +16,16 @@ import XCTest
 import RxBlocking
 import Alamofire
 
+fileprivate let TIME_OUT: TimeInterval = 5
+
 class AuthModuleTest: XCTestCase {
         
     var presenter: MockAuthPresenter!
     var interactor: MockAuthInteractor!
     var router: MockAuthRouter!
-    var authService = MockAuthService().spy(on: AuthService())
     
     var result = ""
+    var expectation: XCTestExpectation!
     
     let bag = DisposeBag()
     
@@ -31,7 +33,7 @@ class AuthModuleTest: XCTestCase {
         super.setUp()
         
         let p = AuthPresenter()
-        let i = AuthInteractor(authService: authService)
+        let i = AuthInteractor()
         let r = AuthRouter()
         
         var module = AppModules.auth.build()
@@ -51,28 +53,21 @@ class AuthModuleTest: XCTestCase {
         
         configureStubs()
         result = ""
+        expectation = expectation(description: "Request waiting")
     }
     
     private func configureStubs() {
         func resultObserver() -> AnyObserver<String> {
-            return AnyObserver<String>(eventHandler: { event in
-                switch event {
-                case .next(let element):
-                    self.result = element
-                default: break
-                }
-                
+            return AnyObserver<String>(onNext: { element in
+                self.result = element
+                self.expectation.fulfill()
             })
         }
         
         func resultVoidObserver() -> AnyObserver<Void> {
-            return AnyObserver<Void>(eventHandler: { event in
-                switch event {
-                case .next:
-                    self.result = "Success"
-                default: break
-                }
-                
+            return AnyObserver<Void>(onNext: {
+                self.result = "ok"
+                self.expectation.fulfill()
             })
         }
         
@@ -88,62 +83,56 @@ class AuthModuleTest: XCTestCase {
         super.tearDown()
     }
     
-    func testSuccessRequests() {
-        stub(authService) { mock in
-            mock.login(credentials: self.credentials()).thenReturn(Observable.just("successLogin"))
-            mock.signup(credentials: self.credentials()).thenReturn(Observable.just("successSignup"))
-        }
+    func testSuccessLogin() {
+        Observable.just(TEST_CREDENTIALS)
+            .bind(to: self.interactor.login)
+            .disposed(by: self.bag)
         
-        Observable.just(credentials())
-            .bind(to: interactor.login)
-            .disposed(by: bag)
-        XCTAssertEqual("successLogin", result)
+        wait(for: [expectation], timeout: TIME_OUT)
+        XCTAssertFalse(result.isEmpty)
+    }
+    
+    func testSuccessSignup() {
+        Observable.just(Credentials("aaa1@aaa.aa", TEST_PASSWORD))
+            .bind(to: self.interactor.signup)
+            .disposed(by: self.bag)
         
-        Observable.just(credentials())
-            .bind(to: interactor.signup)
-            .disposed(by: bag)
-        XCTAssertEqual("successSignup", result)
+        wait(for: [expectation], timeout: TIME_OUT)
+        XCTAssertFalse(result.isEmpty)
     }
     
     func testInvalidCredentialsError() {
-        stub(authService) { mock in
-            let error = AFError.responseValidationFailed(reason: .unacceptableStatusCode(code: 401))
-            mock.login(credentials: self.credentials()).thenReturn(Observable.error(error))
-        }
-        Observable.just(credentials())
+        let invalidCredentials = Credentials(TEST_EMAIL,"12121212")
+        Observable.just(invalidCredentials)
             .bind(to: interactor.login)
             .disposed(by: bag)
+        
+        wait(for: [expectation], timeout: TIME_OUT)
         XCTAssertFalse(result.isEmpty)
     }
     
     func testExistEmailError() {
-        stub(authService) { mock in
-            let error = AFError.responseValidationFailed(reason: .unacceptableStatusCode(code: 420))
-            mock.signup(credentials: self.credentials()).thenReturn(Observable.error(error))
-        }
-        Observable.just(credentials())
+        Observable.just(TEST_CREDENTIALS)
             .bind(to: interactor.signup)
             .disposed(by: bag)
+        
+        wait(for: [expectation], timeout: TIME_OUT)
         XCTAssertFalse(result.isEmpty)
     }
     
     func testLogoutSuccess() {
-        stub(authService) { mock in
-            mock.logout().thenReturn(Observable.just())
-        }
+        _ = try? AuthService.shared.login(credentials: TEST_CREDENTIALS).toBlocking(timeout: 10).single()
         interactor.logout.onNext()
-        XCTAssertEqual("Success", result)
+        wait(for: [expectation], timeout: TIME_OUT)
+        XCTAssertEqual("ok", result)
     }
     
     func testLogoutError() {
-        stub(authService) { mock in
-            let error = AFError.responseValidationFailed(reason: .unacceptableStatusCode(code: 400))
-            mock.logout().thenReturn(Observable.error(error))
-        }
+        _ = try? AuthService.shared.logout().toBlocking(timeout: 10).single()
         interactor.logout.onNext()
+        wait(for: [expectation], timeout: TIME_OUT)
         XCTAssertFalse(result.isEmpty)
     }
     
-    private func credentials() -> Credentials { return Credentials("","") }
     
 }

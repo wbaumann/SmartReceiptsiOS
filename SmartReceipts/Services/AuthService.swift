@@ -17,31 +17,34 @@ fileprivate let AUTH_EMAIL_KEY = "auth.email"
 
 class AuthService {
     private let jsonHeader = ["Content-Type":"application/json"]
-    private static let tokenVar = Variable<String>(UserDefaults.standard.string(forKey: AUTH_TOKEN_KEY) ?? "")
+    private let tokenVar = Variable<String>(UserDefaults.standard.string(forKey: AUTH_TOKEN_KEY) ?? "")
     
-    static private let isLoggedInVar = Variable<Bool>(checkLoggedIn())
+    private let isLoggedInVar: Variable<Bool>!
     
-    static var loggedInObservable: Observable<Bool> {
+    private init() {
+        let defaults = UserDefaults.standard
+        defaults.synchronize()
+        let loggedIn = defaults.hasObject(forKey: AUTH_TOKEN_KEY) &&
+                       defaults.hasObject(forKey: AUTH_EMAIL_KEY)
+        isLoggedInVar = Variable<Bool>(loggedIn)
+    }
+    
+    static let shared = AuthService()
+    
+    var loggedInObservable: Observable<Bool> {
         return isLoggedInVar.asObservable()
     }
     
-    static var isLoggedIn: Bool {
+    var isLoggedIn: Bool {
         return isLoggedInVar.value
     }
     
-    private static func checkLoggedIn() -> Bool {
-        let defaults = UserDefaults.standard
-        defaults.synchronize()
-        return defaults.hasObject(forKey: AUTH_TOKEN_KEY) &&
-               defaults.hasObject(forKey: AUTH_EMAIL_KEY)
-    }
-    
     var tokenObservable: Observable<String> {
-        return AuthService.tokenVar.asObservable().filter({ !$0.isEmpty })
+        return tokenVar.asObservable().filter({ !$0.isEmpty })
     }
     
     var token: String {
-        let value = AuthService.tokenVar.value
+        let value = tokenVar.value
         if value.isEmpty {
             Logger.warning("Token is Empty")
         }
@@ -85,10 +88,10 @@ class AuthService {
     }
     
     func logout() -> Observable<Void> {
-        if !AuthService.isLoggedIn {
+        if !isLoggedIn {
             return Observable<Void>.error(NSError(domain: "You are not logged in", code: 9000, userInfo: nil))
         }
-        let params = [ "auth_params[token]": AuthService.tokenVar.value,
+        let params = [ "auth_params[token]": tokenVar.value,
                        "auth_params[email]": UserDefaults.standard.string(forKey: AUTH_EMAIL_KEY)!]
         return RxAlamofire.json(.delete, endpoint("users/log_out"),
             parameters: params, encoding: URLEncoding.default, headers: nil)
@@ -99,7 +102,7 @@ class AuthService {
     }
     
     func getUser() -> Observable<User?> {
-        let params = [ "auth_params[token]": AuthService.tokenVar.value,
+        let params = [ "auth_params[token]": tokenVar.value,
                        "auth_params[email]": UserDefaults.standard.string(forKey: AUTH_EMAIL_KEY)!]
         return RxAlamofire.json(.get, endpoint("users/me"),
             parameters: params, encoding: URLEncoding.default, headers: nil)
@@ -111,16 +114,16 @@ class AuthService {
     
     private func save(token: String, email: String) {
         Logger.debug("Authorized - Token: \(token) Email: \(email)")
-        AuthService.tokenVar.value = token
+        tokenVar.value = token
         UserDefaults.standard.set(token, forKey: AUTH_TOKEN_KEY)
         UserDefaults.standard.set(email, forKey: AUTH_EMAIL_KEY)
-        AuthService.isLoggedInVar.value = true
+        isLoggedInVar.value = true
     }
     
     private func clear() {
         UserDefaults.standard.removeObject(forKey: AUTH_TOKEN_KEY)
         UserDefaults.standard.removeObject(forKey: AUTH_EMAIL_KEY)
-        AuthService.isLoggedInVar.value = false
+        isLoggedInVar.value = false
     }
 }
 

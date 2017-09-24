@@ -12,9 +12,13 @@ import RxSwift
 import RxTest
 import RxBlocking
 
+let TEST_EMAIL = "aaa@aaa.aaa"
+let TEST_PASSWORD = "12345678"
+let TEST_CREDENTIALS = Credentials(TEST_EMAIL, TEST_PASSWORD)
+
 class AuthServiceTests: XCTestCase {
     
-    let authService = AuthService()
+    let authService = AuthService.shared
     
     override func setUp() {
         super.setUp()
@@ -37,9 +41,9 @@ class AuthServiceTests: XCTestCase {
         
         scheduler.start()
         
-        _ = AuthService.loggedInObservable.bind(to: loggedInObserver)
+        _ = authService.loggedInObservable.bind(to: loggedInObserver)
         
-        let token = try! authService.login(credentials: Credentials("aaa@aaa.aaa", "12345678"))
+        let token = try! authService.login(credentials: TEST_CREDENTIALS)
             .toBlocking(timeout: 3)
             .first()!
         
@@ -48,7 +52,7 @@ class AuthServiceTests: XCTestCase {
         XCTAssertFalse(token.isEmpty)
         XCTAssertEqual(token, savedToken)
         XCTAssertEqual(loggedCheck, loggedInObserver.events)
-        XCTAssertTrue(AuthService.isLoggedIn)
+        XCTAssertTrue(authService.isLoggedIn)
         XCTAssertEqual(token, authService.token)
     }
     
@@ -63,9 +67,9 @@ class AuthServiceTests: XCTestCase {
         
         scheduler.start()
         
-        _ = AuthService.loggedInObservable.bind(to: loggedInObserver)
+        _ = authService.loggedInObservable.bind(to: loggedInObserver)
         
-        let token = try! authService.signup(credentials: Credentials("3aaa@aaa.aaa", "12345678"))
+        let token = try! authService.signup(credentials: Credentials("5aaa@aaa.aaa", TEST_PASSWORD))
             .toBlocking(timeout: 3)
             .first()!
         
@@ -74,12 +78,12 @@ class AuthServiceTests: XCTestCase {
         XCTAssertFalse(token.isEmpty)
         XCTAssertEqual(token, savedToken)
         XCTAssertEqual(loggedCheck, loggedInObserver.events)
-        XCTAssertTrue(AuthService.isLoggedIn)
+        XCTAssertTrue(authService.isLoggedIn)
         XCTAssertEqual(token, authService.token)
     }
     
     func testUser() {
-        _ = try? authService.login(credentials: Credentials("aaa@aaa.aaa", "12345678"))
+        _ = try? authService.login(credentials: TEST_CREDENTIALS)
             .toBlocking(timeout: 3)
             .first()
         
@@ -92,7 +96,7 @@ class AuthServiceTests: XCTestCase {
     }
     
     func testLogout() {
-        _ = try? authService.login(credentials: Credentials("aaa@aaa.aaa", "12345678"))
+        _ = try? authService.login(credentials: TEST_CREDENTIALS)
             .toBlocking(timeout: 3)
             .first()
         

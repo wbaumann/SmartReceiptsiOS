@@ -51,7 +51,7 @@ final class AuthView: UserInterface {
     }
     
     private func configureRx() {
-        AuthService.loggedInObservable
+        AuthService.shared.loggedInObservable
             .subscribe(onNext: { [unowned self] loggedIn in
                 self.logoutButton.isEnabled = loggedIn
             }).disposed(by: bag)
