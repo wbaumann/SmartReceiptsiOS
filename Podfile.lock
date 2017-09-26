@@ -15,6 +15,9 @@ PODS:
   - Firebase/Core (4.0.3):
     - FirebaseAnalytics (= 4.0.2)
     - FirebaseCore (= 4.0.3)
+  - Firebase/Messaging (4.0.3):
+    - Firebase/Core
+    - FirebaseMessaging (= 2.0.0)
   - FirebaseAnalytics (4.0.2):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -29,57 +32,33 @@ PODS:
     - Protobuf (~> 3.1)
   - FirebaseInstanceID (2.0.0):
     - FirebaseCore (~> 4.0)
+  - FirebaseMessaging (2.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
   - Floaty (3.0.0)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
-  - GGLInstanceID (1.2.1)
   - Google/AdMob (2.0.4):
     - Google/Core
     - GoogleMobileAds (~> 7.3)
   - Google/Analytics (2.0.4):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
-  - Google/CloudMessaging (2.0.4):
-    - GGLInstanceID (~> 1.0)
-    - Google/Core
-    - GoogleCloudMessaging (~> 1.0)
   - Google/Core (2.0.4):
     - GoogleInterchangeUtilities (~> 1.0)
     - GoogleNetworkingUtilities (~> 1.0)
     - GoogleSymbolUtilities (~> 1.0)
     - GoogleUtilities (~> 1.1)
-  - Google/SignIn (2.0.4):
-    - Google/Core
-    - GoogleSignIn (~> 3.0)
   - GoogleAnalytics (3.17.0)
-  - GoogleAPIClientForREST/Core (1.3.0):
-    - GTMSessionFetcher (>= 1.1.7)
-  - GoogleAPIClientForREST/Drive (1.3.0):
-    - GoogleAPIClientForREST/Core
-    - GTMSessionFetcher (>= 1.1.7)
-  - GoogleAppUtilities (1.1.2):
-    - GoogleSymbolUtilities (~> 1.1)
-  - GoogleAuthUtilities (2.0.2):
-    - GoogleNetworkingUtilities (~> 1.2)
-    - GoogleSymbolUtilities (~> 1.1)
-  - GoogleCloudMessaging (1.2.0):
-    - GoogleInterchangeUtilities (~> 1.0)
-    - GoogleIPhoneUtilities (~> 1.0)
-    - GoogleSymbolUtilities (~> 1.0)
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
-  - GoogleIPhoneUtilities (1.2.1):
-    - GoogleSymbolUtilities (~> 1.0)
-    - GoogleUtilities (~> 1.0)
   - GoogleMobileAds (7.8.0)
   - GoogleNetworkingUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
-  - GoogleSignIn (3.0.0):
-    - GoogleAppUtilities (~> 1.0)
-    - GoogleAuthUtilities (~> 2.0)
-    - GoogleNetworkingUtilities (~> 1.0)
-    - GoogleUtilities (~> 1.0)
   - GoogleSymbolUtilities (1.1.2)
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/Logger (2.1.1):
@@ -88,11 +67,6 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
-  - GTMSessionFetcher (1.1.10):
-    - GTMSessionFetcher/Full (= 1.1.10)
-  - GTMSessionFetcher/Core (1.1.10)
-  - GTMSessionFetcher/Full (1.1.10):
-    - GTMSessionFetcher/Core (= 1.1.10)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -161,15 +135,14 @@ DEPENDENCIES:
   - Cuckoo (from `https://github.com/kaosdg/Cuckoo.git`, branch `swift-4.0`)
   - Eureka (from `https://github.com/xmartlabs/Eureka.git`, branch `Xcode9-Swift3_2`)
   - Firebase
+  - Firebase/Core
+  - Firebase/Messaging
   - FirebaseAnalytics
   - FirebaseCrash
   - Floaty
   - FMDB
   - Google/AdMob
   - Google/Analytics
-  - Google/CloudMessaging
-  - Google/SignIn
-  - GoogleAPIClientForREST/Drive
   - MRProgress
   - objective-zip
   - RMStore/AppReceiptVerificator (from `3rdparty/RMStore`)
@@ -218,24 +191,17 @@ SPEC CHECKSUMS:
   FirebaseCore: c709067051de07bdaffdc4e735cd7299a23c463a
   FirebaseCrash: 600ec2cbd8e10c3064a42de2c6ee7687bd02a076
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
+  FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
   Floaty: d1be5d323094f0de422bb615452d00ba26ac74dd
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
-  GGLInstanceID: 4a317044f744281b82cd03015f379899f277cad3
   Google: d536877ec602555b755cc28ce6fed104825c693c
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
-  GoogleAPIClientForREST: bf724227a6ad1459aab09b73800aad9184a0f64c
-  GoogleAppUtilities: a8a552aa74f6597f805e45b5a3962766c3134973
-  GoogleAuthUtilities: ccad2e0a9284699973ff57c0dd24c3893657fda4
-  GoogleCloudMessaging: f37ea14dd0f41d4d889c10b5559dd35bbfd9ac26
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
-  GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
   GoogleMobileAds: c79931d6eef16b1e4c35d331cf23c47e0dd490d2
   GoogleNetworkingUtilities: 3edd3a8161347494f2da60ea0deddc8a472d94cb
-  GoogleSignIn: 3d571172b8603be39dcb1705d8217146bb76fe62
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
-  GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   objective-zip: 41b1408cebffceb6b9d15ad691506707e390d359
   OpenSSL-iOS: 002cabfdfc2df48d63cebd723b90ada86c946316
@@ -253,6 +219,6 @@ SPEC CHECKSUMS:
   Viperit: b45ecfde9f3e577a6afd8f91f4c88edb46e0ca25
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
 
-PODFILE CHECKSUM: 72fd2d93188d11a02dd255f4a75720845eb4fd88
+PODFILE CHECKSUM: 4615cc040e9d4142349bb5bc34df3a43e9fc55a3
 
 COCOAPODS: 1.3.1

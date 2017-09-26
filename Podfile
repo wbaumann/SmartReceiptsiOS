@@ -34,15 +34,14 @@ def pods
     
     # Google
     pod 'Google/AdMob'
-    pod 'Google/CloudMessaging'
-    pod 'GoogleAPIClientForREST/Drive'
-    pod 'Google/SignIn'
     pod 'Google/Analytics'
     
     # Firebase
     pod 'Firebase'
     pod 'FirebaseAnalytics'
     pod 'FirebaseCrash'
+    pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
     
     # Purchases
     pod 'RMStore/Core', :path => '3rdparty/RMStore'
