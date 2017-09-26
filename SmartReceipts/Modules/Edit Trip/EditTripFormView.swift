@@ -64,6 +64,7 @@ class EditTripFormView: FormViewController {
         <<< DateInlineRow(START_DATE_TAG) { row in
             row.title = LocalizedString("edit.trip.start.date.label")
             row.value = trip?.startDate
+            row.dateFormatter?.timeZone = trip?.startTimeZone
         }.onChange({ [unowned self] row in
             self.trip?.startDate = row.value!
             let endDateRow = self.form.rowBy(tag: self.END_DATE_TAG) as! DateInlineRow
@@ -75,6 +76,7 @@ class EditTripFormView: FormViewController {
         <<< DateInlineRow(END_DATE_TAG) { row in
             row.title = LocalizedString("edit.trip.end.date.label")
             row.value = trip?.endDate
+            row.dateFormatter?.timeZone = trip?.endTimeZone
         }.onChange({ [unowned self] row in
             self.trip?.endDate = row.value!
             let startDateRow = self.form.rowBy(tag: self.START_DATE_TAG) as! DateInlineRow

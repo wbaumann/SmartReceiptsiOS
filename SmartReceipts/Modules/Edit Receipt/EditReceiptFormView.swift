@@ -155,6 +155,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         <<< DateInlineRow() { row in
             row.title = LocalizedString("edit.receipt.date.label")
             row.value = receipt.date
+            row.dateFormatter?.timeZone = receipt.timeZone
         }.onChange({ [unowned self] row in
             self.receipt.date = row.value ?? Date()
         }).cellSetup({ cell, _ in
