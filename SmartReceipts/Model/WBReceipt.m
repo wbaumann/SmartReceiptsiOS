@@ -102,7 +102,7 @@ static NSString* checkNoData(NSString* str) {
     if (_timeZone) {
         return _timeZone;
     }
-    return [NSTimeZone localTimeZone];
+    return [NSTimeZone systemTimeZone];
 }
 
 -(NSString*)category {
