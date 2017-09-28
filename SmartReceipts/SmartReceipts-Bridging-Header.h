@@ -52,7 +52,6 @@
 #import "TripFullPDFGenerator.h"
 #import "TripImagesPDFGenerator.h"
 
-#import "WBAppDelegate.h"
 #import "WBCategory.h"
 #import "WBImageStampler.h"
 #import "WBPreferences.h"
@@ -67,6 +66,7 @@
 #import "ImagePicker.h"
 #import "WBImageUtils.h"
 #import "FetchedModelAdapterDelegate.h"
+#import "RateApplication.h"
 
 #import "InputValidation.h"
 

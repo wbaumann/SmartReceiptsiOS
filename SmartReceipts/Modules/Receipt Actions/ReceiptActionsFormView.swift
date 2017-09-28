@@ -41,7 +41,7 @@ class ReceiptActionsFormView: FormViewController {
         +++ Section()
         <<< buttonRow(title: handleAttachTitle(), bindSubject: handleAttachTap,
                   condition: Condition.function([], { _ in
-                    WBAppDelegate.instance().filePathToAttach == nil
+                    AppDelegate.instance.filePathToAttach == nil
                   }))
         
         <<< buttonRow(title: viewButtonTitle(), bindSubject: viewImageTap,
@@ -82,7 +82,7 @@ class ReceiptActionsFormView: FormViewController {
     }
     
     private func handleAttachTitle() -> String {
-        let isFileImage = WBAppDelegate.instance().isFileImage
+        let isFileImage = AppDelegate.instance.isFileImage
         var btnTitle = ""
         switch attachmentType {
         case .image:

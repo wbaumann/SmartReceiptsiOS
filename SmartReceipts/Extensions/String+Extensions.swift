@@ -61,4 +61,13 @@ extension String {
         }
         self = self.appending("\(LocalizedString("app.text.bullet.character")) \(issue)")
     }
+    
+    func isStringIgnoreCaseIn(array: [String]) -> Bool {
+        for string in array {
+            if string.caseInsensitiveCompare(self) == .orderedSame {
+                return true
+            }
+        }
+        return false
+    }
 }

@@ -18,7 +18,7 @@ class ReceiptImageViewerInteractor: Interactor {
     func configureSubscribers() {
         presenter.image.asObservable()
             .filter({ $0 != nil })
-            .observeOn(ConcurrentDispatchQueueScheduler(queue: WBAppDelegate.instance().dataQueue()))
+            .observeOn(ConcurrentDispatchQueueScheduler(queue: AppDelegate.instance.dataQueue))
             .subscribe(onNext: { [unowned self] image in
             
             let isPNG = ((self.imagePath as NSString).pathExtension as NSString)

@@ -8,14 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "WBAppDelegate.h"
-
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
         Class delegateClass = NSClassFromString(@"WBTestAppDelegate");
         if (!delegateClass) {
-            delegateClass = [WBAppDelegate class];
+            delegateClass = [AppDelegate class];
         }
         return UIApplicationMain(argc, argv, nil, NSStringFromClass(delegateClass));
     }
