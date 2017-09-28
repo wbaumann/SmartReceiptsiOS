@@ -39,7 +39,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             self.receipt.exchangeRate = NSDecimalNumber.zero
             self.receipt.isReimbursable = WBPreferences.expensableDefault()
             self.receipt.isFullPage = WBPreferences.assumeFullPage()
-            self.receipt.timeZone = TimeZone.current
+            self.receipt.timeZone = NSTimeZone.system
             if let pm = Database.sharedInstance().allPaymentMethods().last {
                 self.receipt.paymentMethod = pm
             }
