@@ -118,7 +118,7 @@ class FetchedTableViewController: UserInterface {
     func fetchObjects() {
         let hud = PendingHUDView.showHUD(on: navigationController?.view ?? view)
         
-        WBAppDelegate.instance().dataQueue().async { [weak self] in
+        AppDelegate.instance.dataQueue.async { [weak self] in
             let fmd = self?.createFetchedModelAdapter()
             DispatchQueue.main.async {
                 self?.configureSubrcibers(for: fmd)
