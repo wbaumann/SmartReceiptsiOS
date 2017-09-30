@@ -10,6 +10,7 @@ import UIKit
 import Viperit
 import RxSwift
 import RxCocoa
+import Toaster
 
 //MARK: - Public Interface Protocol
 protocol DebugViewInterface {
@@ -32,6 +33,12 @@ final class DebugView: UserInterface {
         view.addSubview(formView!.view)
         configureUIActions()
         
+        // Handle Push Notifications and show on Debug Screen
+        PushNotificationService.shared.rx.notificationJSON
+            .subscribe(onNext: { json in
+                Toast(text: json.description).show()
+            }).disposed(by: bag)
+        
         super.viewDidLoad()
     }
     
@@ -40,8 +47,6 @@ final class DebugView: UserInterface {
             self.dismiss(animated: true, completion: nil)
         }).disposed(by: bag)
     }
-    
-    
     
 }
 

@@ -19,4 +19,11 @@ class APIAdapter {
         adaptedParameters.update(other: authParams)
         return RxAlamofire.json(method, url, parameters: adaptedParameters, encoding: encoding, headers: headers)
     }
+    
+    class func jsonBody(_ method: Alamofire.HTTPMethod, _ url: URLConvertible, parameters: [String: Any]? = nil,
+        encoding: ParameterEncoding = JSONEncoding.default, headers: [String: String]? = nil) -> Observable<Any> {
+        var adaptedUrl = try! url.asURL().absoluteString + "?auth_params[token]=" + AuthService.shared.token
+        adaptedUrl += "&auth_params[email]=" + AuthService.shared.email
+        return RxAlamofire.json(method, adaptedUrl, parameters: parameters, encoding: encoding, headers: headers)
+    }
 }
