@@ -117,6 +117,12 @@ class AuthService {
             })
     }
     
+    func saveDevice(token: String) -> Observable<Void> {
+        let params = ["user" : [ "registration_ids": [token] ] ]
+        return APIAdapter.jsonBody(.patch, endpoint("users/me"), parameters: params, headers: JSON_HEADERS)
+            .map({ _ in  })
+    }
+    
     private func save(token: String, email: String) {
         Logger.debug("Authorized - Token: \(token) Email: \(email)")
         tokenVar.value = token
