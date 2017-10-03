@@ -30,7 +30,9 @@ class DebugFormView: FormViewController {
         }.onCellSelection({ [unowned self] _ in
             self.loginSubject.onNext()
         })
+        
             
+        +++ Section("Helpers")
         <<< ButtonRow() { row in
             row.title = "Login: aaa@aaa.aaa"
         }.onCellSelection({ [unowned self] _ in
