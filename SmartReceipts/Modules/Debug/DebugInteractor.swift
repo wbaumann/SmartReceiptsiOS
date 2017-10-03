@@ -9,11 +9,22 @@
 import Foundation
 import Viperit
 import RxSwift
+import Toaster
 
 class DebugInteractor: Interactor {
+    private let bag = DisposeBag()
     var debugSubscription: AnyObserver<Bool> {
-        return AnyObserver<Bool>(eventHandler: { event in
-            DebugStates.setSubscription(event.element!)
+        return AnyObserver<Bool>(onNext: { value in
+            DebugStates.setSubscription(value)
+        })
+    }
+    
+    var loginTest: AnyObserver<Void> {
+        return AnyObserver<Void>(onNext: { [unowned self] in
+            AuthService.shared.login(credentials: Credentials("aaa@aaa.aaa", "12345678"))
+                .subscribe(onNext: { _ in
+                    Toast(text: "Logged In: aaa@aaa.aaa").show()
+                }).disposed(by: self.bag)
         })
     }
 }
