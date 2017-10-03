@@ -21,6 +21,10 @@ class DebugPresenter: Presenter {
         view.subscriptionChange
             .bind(to: interactor.debugSubscription)
             .disposed(by: bag)
+        
+        view.testLoginTap
+            .bind(to: interactor.loginTest)
+            .disposed(by: bag)
     }
     
 }

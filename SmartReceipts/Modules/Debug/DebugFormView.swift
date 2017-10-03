@@ -15,6 +15,7 @@ import Toaster
 class DebugFormView: FormViewController {
     
     fileprivate let loginSubject = PublishSubject<Void>()
+    fileprivate let testLoginSubject = PublishSubject<Void>()
     fileprivate let subscriptionSubject = PublishSubject<Bool>()
     private let s3Service = S3Service()
     private let bag = DisposeBag()
@@ -28,6 +29,12 @@ class DebugFormView: FormViewController {
             row.title = "Auth Module"
         }.onCellSelection({ [unowned self] _ in
             self.loginSubject.onNext()
+        })
+            
+        <<< ButtonRow() { row in
+            row.title = "Login: aaa@aaa.aaa"
+        }.onCellSelection({ [unowned self] _ in
+            self.testLoginSubject.onNext()
         })
         
             
@@ -72,4 +79,5 @@ class DebugFormView: FormViewController {
 extension Reactive where Base: DebugFormView  {
     var loginTap: Observable<Void> { return base.loginSubject }
     var subscriptionChange: Observable<Bool> { return base.subscriptionSubject }
+    var testLoginTap: Observable<Void> { return base.testLoginSubject }
 }
