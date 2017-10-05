@@ -1,5 +1,4 @@
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportPresenter.swift
 //
 //  GenerateReportPresenter.swift
 //  SmartReceipts
@@ -327,8 +326,7 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportInteractor.swift
 //
 //  GenerateReportInteractor.swift
 //  SmartReceipts
@@ -683,8 +681,7 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthInteractor.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthInteractor.swift
 //
 //  AuthInteractor.swift
 //  SmartReceipts
@@ -831,8 +828,7 @@ class MockAuthInteractor: AuthInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthRouter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthRouter.swift
 //
 //  AuthRouter.swift
 //  SmartReceipts
@@ -907,8 +903,7 @@ class MockAuthRouter: AuthRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesPresenter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesPresenter.swift
 //
 //  CategoriesPresenter.swift
 //  SmartReceipts
@@ -1068,8 +1063,7 @@ class MockCategoriesPresenter: CategoriesPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptRouter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptRouter.swift
 //
 //  EditReceiptRouter.swift
 //  SmartReceipts
@@ -1200,8 +1194,7 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsRouter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsRouter.swift
 //
 //  TripsRouter.swift
 //  SmartReceipts
@@ -1444,8 +1437,7 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsPresenter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsPresenter.swift
 //
 //  TripsPresenter.swift
 //  SmartReceipts
@@ -1633,8 +1625,7 @@ class MockTripsPresenter: TripsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyInteractor.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyInteractor.swift
 //
 //  ReceiptMoveCopyInteractor.swift
 //  SmartReceipts
@@ -1766,8 +1757,7 @@ class MockReceiptMoveCopyInteractor: ReceiptMoveCopyInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportRouter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Generate Report/GenerateReportRouter.swift
 //
 //  GenerateReportRouter.swift
 //  SmartReceipts
@@ -1954,8 +1944,7 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceInteractor.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceInteractor.swift
 //
 //  EditDistanceInteractor.swift
 //  SmartReceipts
@@ -2060,8 +2049,7 @@ class MockEditDistanceInteractor: EditDistanceInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsPresenter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsPresenter.swift
 //
 //  ReceiptsPresenter.swift
 //  SmartReceipts
@@ -2194,8 +2182,7 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsPresenter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsPresenter.swift
 //
 //  ColumnsPresenter.swift
 //  SmartReceipts
@@ -2327,8 +2314,7 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift
 //
 //  TripDistancesInteractor.swift
 //  SmartReceipts
@@ -2516,8 +2502,7 @@ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripInteractor.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripInteractor.swift
 //
 //  EditTripInteractor.swift
 //  SmartReceipts
@@ -2649,8 +2634,7 @@ class MockEditTripInteractor: EditTripInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsRouter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsRouter.swift
 //
 //  ReceiptsRouter.swift
 //  SmartReceipts
@@ -2979,8 +2963,7 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsInteractor.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trips/TripsInteractor.swift
 //
 //  TripsInteractor.swift
 //  SmartReceipts
@@ -3112,8 +3095,7 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesInteractor.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesInteractor.swift
 //
 //  CategoriesInteractor.swift
 //  SmartReceipts
@@ -3301,8 +3283,7 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyRouter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyRouter.swift
 //
 //  ReceiptMoveCopyRouter.swift
 //  SmartReceipts
@@ -3405,8 +3386,7 @@ class MockReceiptMoveCopyRouter: ReceiptMoveCopyRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceRouter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistanceRouter.swift
 //
 //  EditDistanceRouter.swift
 //  SmartReceipts
@@ -3509,8 +3489,7 @@ class MockEditDistanceRouter: EditDistanceRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthPresenter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Auth/AuthPresenter.swift
 //
 //  AuthPresenter.swift
 //  SmartReceipts
@@ -3707,8 +3686,7 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsPresenter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsPresenter.swift
 //
 //  PaymentMethodsPresenter.swift
 //  SmartReceipts
@@ -3868,8 +3846,7 @@ class MockPaymentMethodsPresenter: PaymentMethodsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsRouter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsRouter.swift
 //
 //  PaymentMethodsRouter.swift
 //  SmartReceipts
@@ -3944,8 +3921,7 @@ class MockPaymentMethodsRouter: PaymentMethodsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistancePresenter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistancePresenter.swift
 //
 //  EditDistancePresenter.swift
 //  SmartReceipts
@@ -4104,8 +4080,7 @@ class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsInteractor.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsInteractor.swift
 //
 //  ReceiptActionsInteractor.swift
 //  SmartReceipts
@@ -4236,8 +4211,7 @@ class MockReceiptActionsInteractor: ReceiptActionsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsRouter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsRouter.swift
 //
 //  ReceiptActionsRouter.swift
 //  SmartReceipts
@@ -4396,8 +4370,7 @@ class MockReceiptActionsRouter: ReceiptActionsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripRouter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripRouter.swift
 //
 //  EditTripRouter.swift
 //  SmartReceipts
@@ -4500,8 +4473,7 @@ class MockEditTripRouter: EditTripRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptInteractor.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptInteractor.swift
 //
 //  EditReceiptInteractor.swift
 //  SmartReceipts
@@ -4635,8 +4607,7 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsInteractor.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Payment Methods/PaymentMethodsInteractor.swift
 //
 //  PaymentMethodsInteractor.swift
 //  SmartReceipts
@@ -4824,8 +4795,7 @@ class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsRouter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsRouter.swift
 //
 //  ColumnsRouter.swift
 //  SmartReceipts
@@ -4900,8 +4870,7 @@ class MockColumnsRouter: ColumnsRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift
 //
 //  TripDistancesPresenter.swift
 //  SmartReceipts
@@ -5117,8 +5086,7 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripPresenter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Trip/EditTripPresenter.swift
 //
 //  EditTripPresenter.swift
 //  SmartReceipts
@@ -5306,8 +5274,7 @@ class MockEditTripPresenter: EditTripPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyPresenter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Move Copy/ReceiptMoveCopyPresenter.swift
 //
 //  ReceiptMoveCopyPresenter.swift
 //  SmartReceipts
@@ -5525,8 +5492,7 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsPresenter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsPresenter.swift
 //
 //  ReceiptActionsPresenter.swift
 //  SmartReceipts
@@ -5686,8 +5652,7 @@ class MockReceiptActionsPresenter: ReceiptActionsPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesRouter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Categories/CategoriesRouter.swift
 //
 //  CategoriesRouter.swift
 //  SmartReceipts
@@ -5762,8 +5727,7 @@ class MockCategoriesRouter: CategoriesRouter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsInteractor.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Columns/ColumnsInteractor.swift
 //
 //  ColumnsInteractor.swift
 //  SmartReceipts
@@ -5895,8 +5859,7 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptPresenter.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Receipt/EditReceiptPresenter.swift
 //
 //  EditReceiptPresenter.swift
 //  SmartReceipts
@@ -6084,8 +6047,7 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
 
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsInteractor.swift at 2017-10-01 19:15:37 +0000
-
+// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipts/ReceiptsInteractor.swift
 //
 //  ReceiptsInteractor.swift
 //  SmartReceipts
