@@ -32,14 +32,6 @@ class DebugFormView: FormViewController {
         })
         
             
-        +++ Section("Helpers")
-        <<< ButtonRow() { row in
-            row.title = "Login: aaa@aaa.aaa"
-        }.onCellSelection({ [unowned self] _ in
-            self.testLoginSubject.onNext()
-        })
-        
-            
         +++ Section("Flags")
         <<< SwitchRow() { row in
             row.title = "Subscription"
