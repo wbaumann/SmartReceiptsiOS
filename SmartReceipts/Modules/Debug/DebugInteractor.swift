@@ -18,15 +18,6 @@ class DebugInteractor: Interactor {
             DebugStates.setSubscription(value)
         })
     }
-    
-    var loginTest: AnyObserver<Void> {
-        return AnyObserver<Void>(onNext: { [unowned self] in
-            AuthService.shared.login(credentials: Credentials("aaa@aaa.aaa", "12345678"))
-                .subscribe(onNext: { _ in
-                    Toast(text: "Logged In: aaa@aaa.aaa").show()
-                }).disposed(by: self.bag)
-        })
-    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
