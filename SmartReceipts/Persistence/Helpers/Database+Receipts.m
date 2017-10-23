@@ -105,8 +105,7 @@
 
 - (NSDate *)dateWithSecondsModifiedForTrip:(WBTrip *)trip basedOnDate:(NSDate *)date usingDatabase:(FMDatabase *)database {
     // Do some second magic for insert order. This should give always unique receipt time
-    NSTimeInterval intervalToAdd = [self maxSecondForReceiptsInTrip:trip onDate:date usingDatabase:database] + 1;
-    return [date dateByAddingTimeInterval:intervalToAdd];
+    return [date dateByAddingTimeInterval:1];
 }
 
 - (BOOL)deleteReceipt:(WBReceipt *)receipt {
