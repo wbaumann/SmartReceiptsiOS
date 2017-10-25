@@ -57,6 +57,7 @@
 		7111ADA91F0EC38100DF77ED /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADA31F0EC38100DF77ED /* SettingsRouter.swift */; };
 		7111ADAA1F0EC38100DF77ED /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADA41F0EC38100DF77ED /* SettingsView.swift */; };
 		7111ADAC1F0EC4AF00DF77ED /* SettingsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADAB1F0EC4AF00DF77ED /* SettingsFormView.swift */; };
+		711B072F1FA11E6C000ED7E5 /* ScansPurchaseTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711B072E1FA11E6C000ED7E5 /* ScansPurchaseTrackerTests.swift */; };
 		711C1D6B1F45DD5E00F5553F /* FetchedModelAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711C1D6A1F45DD5E00F5553F /* FetchedModelAdapterTests.swift */; };
 		711E40541EE0D4ED00C043CF /* EditDistanceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */; };
 		711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */; };
@@ -550,6 +551,7 @@
 		7111ADA31F0EC38100DF77ED /* SettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		7111ADA41F0EC38100DF77ED /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7111ADAB1F0EC4AF00DF77ED /* SettingsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFormView.swift; sourceTree = "<group>"; };
+		711B072E1FA11E6C000ED7E5 /* ScansPurchaseTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScansPurchaseTrackerTests.swift; sourceTree = "<group>"; };
 		711C1D6A1F45DD5E00F5553F /* FetchedModelAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedModelAdapterTests.swift; sourceTree = "<group>"; };
 		711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceFormView.swift; sourceTree = "<group>"; };
 		711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Extensions.swift"; sourceTree = "<group>"; };
@@ -1313,6 +1315,7 @@
 				7122778D1F76F1CB00090878 /* S3ServiceTests.swift */,
 				712277A11F770ED300090878 /* CognitoServiceTests.swift */,
 				71BC45541F9FC9B4003A5BD5 /* LocalScansTrackerTests.swift */,
+				711B072E1FA11E6C000ED7E5 /* ScansPurchaseTrackerTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -3156,6 +3159,7 @@
 				7141289B1F77E1410056B9CC /* TooltipServiceTests.swift in Sources */,
 				EA07BF691AF51C61004D17F6 /* FetchedDistancesAdapterTest.m in Sources */,
 				EA07BF5B1AF4DA66004D17F6 /* DatabaseDistancesTest.m in Sources */,
+				711B072F1FA11E6C000ED7E5 /* ScansPurchaseTrackerTests.swift in Sources */,
 				EA6677741B05F6D3004D3993 /* DatabaseReceiptsPaymentMethodTest.m in Sources */,
 				A744E5141CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift in Sources */,
 				EAE725DA1B022E9100402689 /* TripsToReceiptsConverterTest.m in Sources */,
