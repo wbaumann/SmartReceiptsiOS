@@ -55,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RateApplication.sharedInstance().markAppLaunch()
         logPurchases()
         PushNotificationService.shared.initialize()
+        ScansPurchaseTracker.shared.initialize()
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

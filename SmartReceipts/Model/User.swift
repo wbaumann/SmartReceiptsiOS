@@ -13,6 +13,7 @@ class User {
     var id: String?
     var identityId: String?
     var email: String?
+    var scansAvailable: Int = 0
     
     init?(_ json: JSON) {
         let user = json["user"]
@@ -20,6 +21,7 @@ class User {
         id = user["id"].string
         identityId = user["identity_id"].string
         email = user["email"].string
+        scansAvailable = user["recognitions_available"].intValue
         
         if identityId == nil || cognitoToken == nil {
             return nil

@@ -70,22 +70,31 @@ class PurchaseService {
 extension PurchaseService {
     func sendConfirm(transaction: SKPaymentTransaction) {
         if AuthService.shared.isLoggedIn {
-            guard let receiptURL = Bundle.main.appStoreReceiptURL else { return }
-            guard let receipt = try? Data(contentsOf: receiptURL) else { return }
-            let receiptString = receipt.base64EncodedString()
-            Logger.debug("RECEIPT: \(receiptString)")
-            let params = ["encoded_receipt": receiptString,
-                          "pay_service" : "Apple Store",
-                          "goal" : "Recognition"]
-            
-            APIAdapter.jsonBody(.post, endpoint("mobile_app_purchases"), parameters: params)
-                .subscribe(onNext: { response in
-                    let jsonRespose = JSON(response)
-                    Logger.debug(jsonRespose.description)
-                }, onError: { error in
-                    Logger.error(error.localizedDescription)
-                }).disposed(by: bag)
+            sendReceipt()
         }
+    }
+    
+    func sendReceipt() {
+        guard let receiptURL = Bundle.main.appStoreReceiptURL else { return }
+        guard let receipt = try? Data(contentsOf: receiptURL) else { return }
+        let receiptString = receipt.base64EncodedString()
+        Logger.debug("RECEIPT: \(receiptString)")
+        let params = ["encoded_receipt": receiptString,
+                      "pay_service" : "Apple Store",
+                      "goal" : "Recognition"]
+        
+        APIAdapter.jsonBody(.post, endpoint("mobile_app_purchases"), parameters: params)
+            .retry(3)
+            .do(onNext: { _ in
+                ScansPurchaseTracker.shared.fetchAndPersistAvailableRecognitions()
+                    .subscribe()
+                    .disposed(by: self.bag)
+            }).subscribe(onNext: { response in
+                let jsonRespose = JSON(response)
+                Logger.debug(jsonRespose.description)
+            }, onError: { error in
+                Logger.error(error.localizedDescription)
+            }).disposed(by: bag)
     }
 }
 
