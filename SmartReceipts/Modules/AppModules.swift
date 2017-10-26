@@ -25,4 +25,5 @@ enum AppModules: String, ViperitModule {
     case paymentMethods
     case categories
     case debug
+    case oCRConfiguration
 }

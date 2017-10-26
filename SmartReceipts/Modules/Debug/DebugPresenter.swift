@@ -18,6 +18,10 @@ class DebugPresenter: Presenter {
             .bind(to: router.loginTapSubscriber)
             .disposed(by: bag)
         
+        view.ocrConfigTap
+            .bind(to: router.ocrConfigTapSubscriber)
+            .disposed(by: bag)
+        
         view.subscriptionChange
             .bind(to: interactor.debugSubscription)
             .disposed(by: bag)

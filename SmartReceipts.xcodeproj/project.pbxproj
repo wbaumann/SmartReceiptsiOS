@@ -223,6 +223,12 @@
 		71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */; };
 		71E2B5801EEDD516001D02F1 /* TripsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5791EEDD516001D02F1 /* TripsRouter.swift */; };
 		71E2B5811EEDD516001D02F1 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B57A1EEDD516001D02F1 /* TripsView.swift */; };
+		71E8F3F51FA12452005BD447 /* OCRConfiguration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E8F3EF1FA12452005BD447 /* OCRConfiguration.storyboard */; };
+		71E8F3F61FA12452005BD447 /* OCRConfigurationDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E8F3F01FA12452005BD447 /* OCRConfigurationDisplayData.swift */; };
+		71E8F3F71FA12452005BD447 /* OCRConfigurationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E8F3F11FA12452005BD447 /* OCRConfigurationPresenter.swift */; };
+		71E8F3F81FA12452005BD447 /* OCRConfigurationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E8F3F21FA12452005BD447 /* OCRConfigurationRouter.swift */; };
+		71E8F3F91FA12452005BD447 /* OCRConfigurationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E8F3F31FA12452005BD447 /* OCRConfigurationInteractor.swift */; };
+		71E8F3FA1FA12452005BD447 /* OCRConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E8F3F41FA12452005BD447 /* OCRConfigurationView.swift */; };
 		71EFE1E61F55E04000591C8C /* TooltipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EFE1E51F55E04000591C8C /* TooltipService.swift */; };
 		71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */; };
 		71F3E3271F0DDBC5008FE932 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B8610F1F0AD3080069E251 /* Price.swift */; };
@@ -727,6 +733,12 @@
 		71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsPresenter.swift; sourceTree = "<group>"; };
 		71E2B5791EEDD516001D02F1 /* TripsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsRouter.swift; sourceTree = "<group>"; };
 		71E2B57A1EEDD516001D02F1 /* TripsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
+		71E8F3EF1FA12452005BD447 /* OCRConfiguration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OCRConfiguration.storyboard; sourceTree = "<group>"; };
+		71E8F3F01FA12452005BD447 /* OCRConfigurationDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRConfigurationDisplayData.swift; sourceTree = "<group>"; };
+		71E8F3F11FA12452005BD447 /* OCRConfigurationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRConfigurationPresenter.swift; sourceTree = "<group>"; };
+		71E8F3F21FA12452005BD447 /* OCRConfigurationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRConfigurationRouter.swift; sourceTree = "<group>"; };
+		71E8F3F31FA12452005BD447 /* OCRConfigurationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRConfigurationInteractor.swift; sourceTree = "<group>"; };
+		71E8F3F41FA12452005BD447 /* OCRConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRConfigurationView.swift; sourceTree = "<group>"; };
 		71EFE1E51F55E04000591C8C /* TooltipService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TooltipService.swift; sourceTree = "<group>"; };
 		71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBar.swift"; sourceTree = "<group>"; };
 		71F4682C1EEEDB03009F6CE7 /* EditTrip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditTrip.storyboard; sourceTree = "<group>"; };
@@ -1463,6 +1475,7 @@
 				7111AD9E1F0EC37300DF77ED /* Settings */,
 				71572D7D1F15E929001A1301 /* Settings Submodules */,
 				71ACA7BD1F5B69B50024903E /* Debug */,
+				71E8F3EE1FA12423005BD447 /* OCR Configuration */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1505,6 +1518,19 @@
 				71B488C11EF42AF7008872E2 /* NoTripsViewController.swift */,
 			);
 			path = Trips;
+			sourceTree = "<group>";
+		};
+		71E8F3EE1FA12423005BD447 /* OCR Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				71E8F3EF1FA12452005BD447 /* OCRConfiguration.storyboard */,
+				71E8F3F01FA12452005BD447 /* OCRConfigurationDisplayData.swift */,
+				71E8F3F11FA12452005BD447 /* OCRConfigurationPresenter.swift */,
+				71E8F3F21FA12452005BD447 /* OCRConfigurationRouter.swift */,
+				71E8F3F31FA12452005BD447 /* OCRConfigurationInteractor.swift */,
+				71E8F3F41FA12452005BD447 /* OCRConfigurationView.swift */,
+			);
+			path = "OCR Configuration";
 			sourceTree = "<group>";
 		};
 		71F4682B1EEEDAF2009F6CE7 /* Edit Trip */ = {
@@ -2483,6 +2509,7 @@
 				EA22679F1B1E035F005761E7 /* ReceiptSummaryCell.xib in Resources */,
 				EA2B8D881B4EF44B0043A84B /* TripReportHeader.xib in Resources */,
 				EA40DC701B555CFE003BF545 /* FullPagePDFPageView.xib in Resources */,
+				71E8F3F51FA12452005BD447 /* OCRConfiguration.storyboard in Resources */,
 				716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */,
 				7190D44F1EE88CC40081CB22 /* GenerateReport.storyboard in Resources */,
 				EA1309A51B50282A0045FDDE /* PDFReportTable.xib in Resources */,
@@ -2835,6 +2862,7 @@
 				71DF3A801F509512000CD1D6 /* NotifyMasterSplitViewController.swift in Sources */,
 				719310401EDDC2810065B5AD /* WBImageUtils.m in Sources */,
 				4D380F911B61240C001B43D2 /* GADConstants.m in Sources */,
+				71E8F3FA1FA12452005BD447 /* OCRConfigurationView.swift in Sources */,
 				5726E5431E00423900F2141C /* AnalyticsManager.swift in Sources */,
 				712BB2661F611DDE00F0380F /* Error+Extensions.swift in Sources */,
 				719B1FE11EF603190049BD71 /* ReceiptsView.swift in Sources */,
@@ -2852,6 +2880,7 @@
 				A7F05BCE1CFD4AE30079F1AD /* Database+Trips.swift in Sources */,
 				716F34501EE040E100D0017A /* EditDistancePresenter.swift in Sources */,
 				719B1FDD1EF603190049BD71 /* ReceiptsDisplayData.swift in Sources */,
+				71E8F3F91FA12452005BD447 /* OCRConfigurationInteractor.swift in Sources */,
 				EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */,
 				57C0EED11E2AE972001B4758 /* CustomLogFormatter.swift in Sources */,
 				719B1FFB1EF717000049BD71 /* EditReceiptFormView.swift in Sources */,
@@ -2870,6 +2899,7 @@
 				EA8D81A61AEA7C7D00BAC943 /* ReceiptColumnName.m in Sources */,
 				71CF7A121F1020440004F389 /* InputTextCell.swift in Sources */,
 				EA8D81A31AEA7C6B00BAC943 /* ReceiptColumnDate.m in Sources */,
+				71E8F3F61FA12452005BD447 /* OCRConfigurationDisplayData.swift in Sources */,
 				EA8D81851AEA7B7500BAC943 /* ReceiptColumnCategoryCode.m in Sources */,
 				71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */,
 				7190D4511EE88CC40081CB22 /* GenerateReportInteractor.swift in Sources */,
@@ -2973,6 +3003,7 @@
 				EA7634AD1B3DB61900AD8737 /* WBPreferences.m in Sources */,
 				7111ADA61F0EC38100DF77ED /* SettingsDisplayData.swift in Sources */,
 				EAE9DAE81AF8E97100F4FE76 /* DistanceColumn.m in Sources */,
+				71E8F3F71FA12452005BD447 /* OCRConfigurationPresenter.swift in Sources */,
 				719B1FF71EF6033A0049BD71 /* ReceiptActionsPresenter.swift in Sources */,
 				7109B00F1F61C35F0043AE04 /* UserDefaults+Extensions.swift in Sources */,
 				EA3C969E1AEBA94200A2A5F9 /* ReportPDFGenerator.m in Sources */,
@@ -3121,6 +3152,7 @@
 				71E090F31F2F994B00C825A8 /* FileManager+Extensions.swift in Sources */,
 				A7F05BB81CFC2C9D0079F1AD /* ReceiptColumnNetExchangedPricePlusTax.swift in Sources */,
 				7193102B1EDDB9960065B5AD /* WBAbstractPicker.m in Sources */,
+				71E8F3F81FA12452005BD447 /* OCRConfigurationRouter.swift in Sources */,
 				71AF49E01EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift in Sources */,
 				7120099D1F12D0DE0049927E /* TickTock.swift in Sources */,
 				7185AEF71EFC1CC90038ED2A /* ReceiptMoveCopyInteractor.swift in Sources */,
