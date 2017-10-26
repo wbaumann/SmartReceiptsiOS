@@ -13,13 +13,16 @@ import RxSwift
 class DebugRouter: Router {
     
     var loginTapSubscriber: AnyObserver<Void> {
-        return AnyObserver<Void>(eventHandler: { [unowned self] event in
-            switch event {
-            case .next:
-                let module = AppModules.auth.build()
-                module.router.show(from: self._view)
-            default: break
-            }
+        return AnyObserver<Void>(onNext: {
+            let module = AppModules.auth.build()
+            module.router.show(from: self._view)
+        })
+    }
+    
+    var ocrConfigTapSubscriber: AnyObserver<Void> {
+        return AnyObserver<Void>(onNext: {
+            let module = AppModules.oCRConfiguration.build()
+            module.router.show(from: self._view)
         })
     }
     

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Configuration View-->
+        <scene sceneID="htw-l1-ahc">
+            <objects>
+                <viewController storyboardIdentifier="OCRConfigurationView" id="xqD-av-Raz" customClass="OCRConfigurationView" customModule="SmartReceipts" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EcR-ye-kTk"/>
+                        <viewControllerLayoutGuide type="bottom" id="vb6-4r-Epx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kgt-o0-aP8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="DsM-DP-W9a">
+                                <rect key="frame" x="16" y="16" width="288" height="300"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Automatic Scans (OCR):">
+                                        <attributes>
+                                            <font key="NSFont" size="17" name="HelveticaNeue-Medium"/>
+                                            <font key="NSOriginalFont" size="17" name="SFMono-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content"> 
+Smart Receipts has integrated with Taggun to provide automatic scanning (ie OCR) services, which can extract receipt metadata like the price, tax, date, and merchant name from your photos. 
+We use a combination of Google Vision and Machine Learning to quickly (often in 5 seconds or less) deliver results, which will become increasingly accurate over time. Since these services have a per-usage charge, we will charge for each receipt scan below. 
+To try OCR, all new users get 2 free scans!</string>
+                                        <attributes>
+                                            <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWS-Y4-5rW">
+                                <rect key="frame" x="16" y="418" width="288" height="2"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="CHw-iZ-pYy"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VOh-Oz-HgK">
+                                <rect key="frame" x="16" y="436" width="288" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="BZ8-cK-mRz"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Button  ">
+                                            <attributes>
+                                                <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="5$">
+                                            <attributes>
+                                                <font key="NSFont" size="12" name=".AppleSystemUIFont"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWI-ts-bbK">
+                                <rect key="frame" x="16" y="502" width="288" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="zmi-iP-yvb"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fiU-GS-v6G">
+                                <rect key="frame" x="255" y="371" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="wrV-yQ-ITF"/>
+                                </constraints>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Automatic Scans (OCR)?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UeZ-JJ-ae2">
+                                <rect key="frame" x="16" y="339.5" width="231" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow us to save images to improve accuracy?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZN-uE-hLr">
+                                <rect key="frame" x="16" y="370.5" width="231" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPC-h5-rj6">
+                                <rect key="frame" x="255" y="332" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="s9G-Iq-MOx"/>
+                                </constraints>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iPC-h5-rj6" secondAttribute="trailing" constant="16" id="34b-aW-rPV"/>
+                            <constraint firstItem="VOh-Oz-HgK" firstAttribute="top" secondItem="TWS-Y4-5rW" secondAttribute="bottom" constant="16" id="4c2-sf-loZ"/>
+                            <constraint firstItem="UeZ-JJ-ae2" firstAttribute="leading" secondItem="kgt-o0-aP8" secondAttribute="leading" constant="16" id="5Qa-wv-eis"/>
+                            <constraint firstAttribute="trailing" secondItem="DsM-DP-W9a" secondAttribute="trailing" constant="16" id="6Yx-o0-pa6"/>
+                            <constraint firstItem="yZN-uE-hLr" firstAttribute="centerY" secondItem="fiU-GS-v6G" secondAttribute="centerY" id="8B9-d4-3KT"/>
+                            <constraint firstItem="VOh-Oz-HgK" firstAttribute="leading" secondItem="kgt-o0-aP8" secondAttribute="leading" constant="16" id="BNl-bb-GNv"/>
+                            <constraint firstItem="dWI-ts-bbK" firstAttribute="leading" secondItem="kgt-o0-aP8" secondAttribute="leading" constant="16" id="BkL-1l-G8E"/>
+                            <constraint firstItem="vb6-4r-Epx" firstAttribute="top" secondItem="dWI-ts-bbK" secondAttribute="bottom" constant="16" id="CmL-dd-Wal"/>
+                            <constraint firstAttribute="trailing" secondItem="VOh-Oz-HgK" secondAttribute="trailing" constant="16" id="DEB-TV-bVK"/>
+                            <constraint firstItem="UeZ-JJ-ae2" firstAttribute="centerY" secondItem="iPC-h5-rj6" secondAttribute="centerY" id="OA3-wz-3hD"/>
+                            <constraint firstItem="fiU-GS-v6G" firstAttribute="top" secondItem="iPC-h5-rj6" secondAttribute="bottom" constant="8" id="RWr-TO-aLi"/>
+                            <constraint firstItem="DsM-DP-W9a" firstAttribute="leading" secondItem="kgt-o0-aP8" secondAttribute="leading" constant="16" id="S9L-oE-USD"/>
+                            <constraint firstItem="dWI-ts-bbK" firstAttribute="top" secondItem="VOh-Oz-HgK" secondAttribute="bottom" constant="16" id="YWq-L4-2uD"/>
+                            <constraint firstItem="iPC-h5-rj6" firstAttribute="leading" secondItem="UeZ-JJ-ae2" secondAttribute="trailing" constant="8" id="ZI4-My-zm4"/>
+                            <constraint firstAttribute="trailing" secondItem="TWS-Y4-5rW" secondAttribute="trailing" constant="16" id="ZWI-PI-UdN"/>
+                            <constraint firstItem="DsM-DP-W9a" firstAttribute="top" secondItem="kgt-o0-aP8" secondAttribute="top" constant="16" id="bjY-Cv-gGl"/>
+                            <constraint firstAttribute="trailing" secondItem="fiU-GS-v6G" secondAttribute="trailing" constant="16" id="ewm-0C-WWV"/>
+                            <constraint firstItem="TWS-Y4-5rW" firstAttribute="leading" secondItem="kgt-o0-aP8" secondAttribute="leading" constant="16" id="gDb-zQ-IDZ"/>
+                            <constraint firstAttribute="trailing" secondItem="dWI-ts-bbK" secondAttribute="trailing" constant="16" id="izF-Pk-OYh"/>
+                            <constraint firstItem="fiU-GS-v6G" firstAttribute="leading" secondItem="yZN-uE-hLr" secondAttribute="trailing" constant="8" id="ji5-aJ-rRw"/>
+                            <constraint firstItem="TWS-Y4-5rW" firstAttribute="top" secondItem="fiU-GS-v6G" secondAttribute="bottom" constant="16" id="qjj-CI-We5"/>
+                            <constraint firstItem="iPC-h5-rj6" firstAttribute="top" secondItem="DsM-DP-W9a" secondAttribute="bottom" constant="16" id="sNg-BN-Tq1"/>
+                            <constraint firstItem="yZN-uE-hLr" firstAttribute="leading" secondItem="kgt-o0-aP8" secondAttribute="leading" constant="16" id="xJL-xj-wzA"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nXm-AG-NXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292.5" y="353.75"/>
+        </scene>
+    </scenes>
+</document>
