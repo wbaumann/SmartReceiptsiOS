@@ -35,6 +35,7 @@ extension RMStore {
         return Observable<SKPaymentTransaction>.create({ observer -> Disposable in
             RMStore.default().addPayment(identifier, success: { transaction in
                 observer.onNext(transaction!)
+                observer.onCompleted()
             }, failure: { transaction, error in
                 observer.onError(error!)
             })
