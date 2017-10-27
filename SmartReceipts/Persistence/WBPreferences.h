@@ -136,5 +136,12 @@
 
 + (BOOL)assumeFullPage;
 + (void)setAssumeFullPage:(BOOL)value;
+    
+// Automatic Scan Settigns
++ (BOOL)automaticScansEnabled;
++ (void)setAutomaticScansEnabled:(BOOL)value;
+    
++ (BOOL)allowSaveImageForAccuracy;
++ (void)setAllowSaveImageForAccuracy:(BOOL)value;
 
 @end

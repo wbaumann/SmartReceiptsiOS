@@ -70,6 +70,10 @@ static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER = @"LayoutIncl
 
 static NSString *const PDF_FOOTER_STRING = @"PdfFooterString";
 
+//Automatic Scan Settigns
+static NSString *const BOOL_AUTO_SCANS_ENABLED = @"AutoScansEnabled";
+static NSString *const BOOL_ALLOW_SAVE_IMAGES_FOR_ACCURACY = @"AllowSaveImagesForAccuracy";
+
 static NSArray *__emailFields;
 
 // there is no 100% guaranteed way to figure entry type so we have to hardcode them
@@ -145,6 +149,8 @@ static NSDictionary *getEntryTypes() {
             BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER: tBool,
             
             PDF_FOOTER_STRING: tString,
+            BOOL_AUTO_SCANS_ENABLED: tBool,
+            BOOL_ALLOW_SAVE_IMAGES_FOR_ACCURACY: tBool
     };
 }
 
@@ -214,6 +220,9 @@ static NSDictionary *getDefaultValues() {
             BOOL_LAYOUT_SHOW_RECEIPT_DATE: @YES,
             BOOL_LAYOUT_SHOW_RECEIPT_CATEGORY: @NO,
             BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER: @NO,
+            
+            BOOL_AUTO_SCANS_ENABLED: @YES,
+            BOOL_ALLOW_SAVE_IMAGES_FOR_ACCURACY: @YES,
     };
 }
 
@@ -692,6 +701,23 @@ static NSUserDefaults* instance() {
 
 + (void)setAssumeFullPage:(BOOL)value {
     [instance() setBool:value forKey:BOOL_ASSUME_FULL_PAGE];
+}
+    
+//MARK: Automatic Scan Settigns
++ (BOOL)automaticScansEnabled {
+    return [instance() boolForKey:BOOL_AUTO_SCANS_ENABLED];
+}
+    
++ (void)setAutomaticScansEnabled:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_AUTO_SCANS_ENABLED];
+}
+    
++ (BOOL)allowSaveImageForAccuracy {
+    return [instance() boolForKey:BOOL_ALLOW_SAVE_IMAGES_FOR_ACCURACY];
+}
+    
++ (void)setAllowSaveImageForAccuracy:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_ALLOW_SAVE_IMAGES_FOR_ACCURACY];
 }
 
 @end

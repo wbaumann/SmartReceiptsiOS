@@ -202,6 +202,8 @@ To try OCR, all new users get 2 free scans!</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="allowSaveImages" destination="fiU-GS-v6G" id="9EI-93-jaL"/>
+                        <outlet property="autoScans" destination="iPC-h5-rj6" id="gt9-AQ-0JS"/>
                         <outlet property="autoScansLabel" destination="UeZ-JJ-ae2" id="BgG-5H-vZZ"/>
                         <outlet property="availablePurchases" destination="W3R-w3-8Zl" id="GNk-eG-ljN"/>
                         <outlet property="descriptionLabel" destination="DsM-DP-W9a" id="2FG-ET-fPf"/>

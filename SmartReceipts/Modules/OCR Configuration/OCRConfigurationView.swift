@@ -9,6 +9,7 @@
 import UIKit
 import Viperit
 import RxSwift
+import RxCocoa
 
 //MARK: - Public Interface Protocol
 protocol OCRConfigurationViewInterface {
@@ -29,15 +30,22 @@ final class OCRConfigurationView: UserInterface {
     @IBOutlet fileprivate weak var scans10button: ScansPurchaseButton!
     @IBOutlet fileprivate weak var scans50button: ScansPurchaseButton!
     
+    @IBOutlet fileprivate weak var autoScans: UISwitch!
+    @IBOutlet fileprivate weak var allowSaveImages: UISwitch!
+    
     private let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         localizeLabels()
-        configureRx()
-        
+    
         scans10button.setScans(count: 10)
         scans50button.setScans(count: 50)
+        
+        autoScans.isOn = WBPreferences.automaticScansEnabled()
+        allowSaveImages.isOn = WBPreferences.allowSaveImageForAccuracy()
+        
+        configureRx()
     }
     
     private func configureRx() {
@@ -46,6 +54,14 @@ final class OCRConfigurationView: UserInterface {
             .subscribe(onNext: { [weak self] in
                 self?.setTitle($0, subtitle: AuthService.shared.email)
             }).disposed(by: bag)
+        
+        autoScans.rx.isOn
+            .subscribe(onNext:{ WBPreferences.setAutomaticScansEnabled($0) })
+            .disposed(by: bag)
+        
+        allowSaveImages.rx.isOn
+            .subscribe(onNext:{ WBPreferences.setAllowSaveImageForAccuracy($0) })
+            .disposed(by: bag)
     }
     
     private func localizeLabels() {
