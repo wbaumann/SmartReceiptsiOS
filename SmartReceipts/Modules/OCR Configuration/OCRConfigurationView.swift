@@ -29,21 +29,23 @@ final class OCRConfigurationView: UserInterface {
     @IBOutlet fileprivate weak var scans10button: ScansPurchaseButton!
     @IBOutlet fileprivate weak var scans50button: ScansPurchaseButton!
     
+    private let bag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         localizeLabels()
         configureRx()
-        
-        let count = LocalScansTracker.shared.scansCount
-        let title = "\(LocalizedString("ocr.configuration.module.scans.remaining")) \(count)"
-        setTitle(title, subtitle: AuthService.shared.email)
         
         scans10button.setScans(count: 10)
         scans50button.setScans(count: 50)
     }
     
     private func configureRx() {
-        
+        ScansPurchaseTracker.shared.rx.remainingScans
+            .map { "\(LocalizedString("ocr.configuration.module.scans.remaining")) \($0)" }
+            .subscribe(onNext: { [weak self] in
+                self?.setTitle($0, subtitle: AuthService.shared.email)
+            }).disposed(by: bag)
     }
     
     private func localizeLabels() {

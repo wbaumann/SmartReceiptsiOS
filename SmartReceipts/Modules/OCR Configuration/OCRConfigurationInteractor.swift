@@ -10,12 +10,22 @@ import Foundation
 import Viperit
 import RxSwift
 import StoreKit
+import Toaster
 
 class OCRConfigurationInteractor: Interactor {
-    let purchaseService = PurchaseService()
+    private let bag = DisposeBag()
+    private let purchaseService = PurchaseService()
     
     func requestProducts() -> Observable<SKProduct> {
         return purchaseService.requestProducts()
+    }
+    
+    func purchase(product: String) {
+        purchaseService.purchase(prodcutID: product)
+            .subscribe(onNext: { _ in
+                let text = LocalizedString("ocr.configuration.module.toast.success.purchase")
+                Toast.show(text)
+            }).disposed(by: bag)
     }
 }
 

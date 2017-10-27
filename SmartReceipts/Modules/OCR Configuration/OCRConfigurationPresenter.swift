@@ -27,7 +27,15 @@ class OCRConfigurationPresenter: Presenter {
                     price.bind(to: sSelf.view.OCR50Price).disposed(by: bag) : ()
             }).disposed(by: bag)
         
+        view.buy10ocr
+            .subscribe(onNext: { [unowned self] in
+                self.interactor.purchase(product: PRODUCT_OCR_10)
+            }).disposed(by: bag)
         
+        view.buy50ocr
+            .subscribe(onNext: { [unowned self] in
+                self.interactor.purchase(product: PRODUCT_OCR_50)
+            }).disposed(by: bag)
     }
 }
 
