@@ -8,8 +8,15 @@
 
 import Foundation
 import Viperit
+import RxSwift
+import StoreKit
 
 class OCRConfigurationInteractor: Interactor {
+    let purchaseService = PurchaseService()
+    
+    func requestProducts() -> Observable<SKProduct> {
+        return purchaseService.requestProducts()
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,45 +18,45 @@
                         <viewControllerLayoutGuide type="bottom" id="vb6-4r-Epx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kgt-o0-aP8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="DsM-DP-W9a">
-                                <rect key="frame" x="16" y="65" width="382" height="382"/>
-                                <mutableString key="text">Smart Receipts has integrated with Taggun to provide automatic scanning (ie OCR) services, which can extract receipt metadata like the price, tax, date, and merchant name from your photos. 
+                                <rect key="frame" x="16" y="65" width="288" height="126"/>
+                                <string key="text">Smart Receipts has integrated with Taggun to provide automatic scanning (ie OCR) services, which can extract receipt metadata like the price, tax, date, and merchant name from your photos. 
 We use a combination of Google Vision and Machine Learning to quickly (often in 5 seconds or less) deliver results, which will become increasingly accurate over time. Since these services have a per-usage charge, we will charge for each receipt scan below. 
-To try OCR, all new users get 2 free scans!</mutableString>
+To try OCR, all new users get 2 free scans!</string>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWS-Y4-5rW">
-                                <rect key="frame" x="16" y="548" width="382" height="1"/>
+                                <rect key="frame" x="16" y="292" width="288" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="CHw-iZ-pYy"/>
                                 </constraints>
                             </view>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fiU-GS-v6G">
-                                <rect key="frame" x="349" y="502" width="51" height="31"/>
+                                <rect key="frame" x="255" y="246" width="51" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="49" id="wrV-yQ-ITF"/>
                                 </constraints>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Automatic Scans (OCR)?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UeZ-JJ-ae2">
-                                <rect key="frame" x="16" y="470.66666666666669" width="325" height="17"/>
+                                <rect key="frame" x="16" y="214.5" width="231" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow us to save images to improve accuracy?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZN-uE-hLr">
-                                <rect key="frame" x="16" y="509.66666666666674" width="325" height="17"/>
+                                <rect key="frame" x="16" y="245.5" width="231" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPC-h5-rj6">
-                                <rect key="frame" x="349" y="463" width="51" height="31"/>
+                                <rect key="frame" x="255" y="207" width="51" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="49" id="s9G-Iq-MOx"/>
                                 </constraints>
@@ -70,32 +70,37 @@ To try OCR, all new users get 2 free scans!</mutableString>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hPU-Tl-lP1" customClass="UIButton">
-                                <rect key="frame" x="16" y="662" width="382" height="44"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hPU-Tl-lP1" customClass="ScansPurchaseButton" customModule="SmartReceipts" customModuleProvider="target">
+                                <rect key="frame" x="16" y="406" width="288" height="44"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" ambiguous="YES" text="50 OCR Scans (Smart Receipts)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="7nh-q5-K3f">
-                                        <rect key="frame" x="0.0" y="0.0" width="225.5" height="19.666666666666668"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" text="50 OCR Scans (Smart Receipts)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="7nh-q5-K3f">
+                                        <rect key="frame" x="0.0" y="0.0" width="267.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase 10 Automatic Scans of Receipts (OCR)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="uMb-V1-qm7">
-                                        <rect key="frame" x="0.0" y="23.666666666666629" width="292.66666666666669" height="16"/>
+                                        <rect key="frame" x="0.0" y="23.5" width="292.5" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$5.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSP-9p-HyL">
-                                        <rect key="frame" x="241.5" y="0.0" width="46.5" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSP-9p-HyL">
+                                        <rect key="frame" x="283.5" y="0.0" width="4.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="W4b-0W-FzY">
+                                        <rect key="frame" x="252" y="0.0" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="MSP-9p-HyL" firstAttribute="top" secondItem="hPU-Tl-lP1" secondAttribute="top" id="9Ka-xn-91h"/>
+                                    <constraint firstItem="W4b-0W-FzY" firstAttribute="top" secondItem="hPU-Tl-lP1" secondAttribute="top" id="KrN-6Q-eG1"/>
                                     <constraint firstAttribute="height" constant="44" id="OWh-Lc-v87"/>
+                                    <constraint firstAttribute="trailing" secondItem="W4b-0W-FzY" secondAttribute="trailing" constant="16" id="UmH-cG-i0X"/>
                                     <constraint firstItem="uMb-V1-qm7" firstAttribute="top" secondItem="7nh-q5-K3f" secondAttribute="bottom" constant="4" id="XUx-wW-7Vi"/>
                                     <constraint firstItem="7nh-q5-K3f" firstAttribute="leading" secondItem="hPU-Tl-lP1" secondAttribute="leading" id="csr-HV-5Wb"/>
                                     <constraint firstItem="uMb-V1-qm7" firstAttribute="leading" secondItem="hPU-Tl-lP1" secondAttribute="leading" id="gJq-Zl-Ibg"/>
@@ -103,43 +108,60 @@ To try OCR, all new users get 2 free scans!</mutableString>
                                     <constraint firstAttribute="trailing" secondItem="MSP-9p-HyL" secondAttribute="trailing" id="vcO-Gj-XaN"/>
                                     <constraint firstItem="7nh-q5-K3f" firstAttribute="top" secondItem="hPU-Tl-lP1" secondAttribute="top" id="vvS-aV-hfi"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="W4b-0W-FzY" id="n98-pY-SKe"/>
+                                    <outlet property="price" destination="MSP-9p-HyL" id="BqP-sc-qGW"/>
+                                    <outlet property="subtitle" destination="uMb-V1-qm7" id="WdD-Dt-bYU"/>
+                                    <outlet property="title" destination="7nh-q5-K3f" id="aBV-xF-jsc"/>
+                                </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtY-fd-ihd" customClass="UIButton">
-                                <rect key="frame" x="16" y="602" width="382" height="44"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtY-fd-ihd" customClass="ScansPurchaseButton" customModule="SmartReceipts" customModuleProvider="target">
+                                <rect key="frame" x="16" y="346" width="288" height="44"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" ambiguous="YES" text="10 OCR Scans (Smart Receipts)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="mHP-ll-eR5">
-                                        <rect key="frame" x="0.0" y="0.0" width="225.5" height="19.666666666666668"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" text="10 OCR Scans (Smart Receipts)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="mHP-ll-eR5">
+                                        <rect key="frame" x="0.0" y="0.0" width="267" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase 10 Automatic Scans of Receipts (OCR)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="RzA-w2-rpF">
-                                        <rect key="frame" x="0.0" y="23.666666666666629" width="292.66666666666669" height="16"/>
+                                        <rect key="frame" x="0.0" y="23.5" width="292.5" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$5.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05w-QL-U6t">
-                                        <rect key="frame" x="241.5" y="0.0" width="46.5" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05w-QL-U6t">
+                                        <rect key="frame" x="283" y="0.0" width="5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="h9K-55-XN3">
+                                        <rect key="frame" x="252" y="0.0" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="RzA-w2-rpF" firstAttribute="leading" secondItem="XtY-fd-ihd" secondAttribute="leading" id="JW8-gO-Thq"/>
                                     <constraint firstAttribute="trailing" secondItem="05w-QL-U6t" secondAttribute="trailing" id="SYY-ks-x4U"/>
+                                    <constraint firstItem="05w-QL-U6t" firstAttribute="leading" secondItem="mHP-ll-eR5" secondAttribute="trailing" constant="16" id="UTp-Go-ig7"/>
                                     <constraint firstItem="05w-QL-U6t" firstAttribute="top" secondItem="XtY-fd-ihd" secondAttribute="top" id="bPg-cV-2kH"/>
                                     <constraint firstItem="RzA-w2-rpF" firstAttribute="top" secondItem="mHP-ll-eR5" secondAttribute="bottom" constant="4" id="dwB-nC-vgJ"/>
                                     <constraint firstAttribute="height" constant="44" id="j21-Lr-Fee"/>
+                                    <constraint firstItem="h9K-55-XN3" firstAttribute="top" secondItem="XtY-fd-ihd" secondAttribute="top" id="kw5-Or-1Ij"/>
                                     <constraint firstItem="mHP-ll-eR5" firstAttribute="top" secondItem="XtY-fd-ihd" secondAttribute="top" id="n6W-gt-a7T"/>
                                     <constraint firstItem="mHP-ll-eR5" firstAttribute="leading" secondItem="XtY-fd-ihd" secondAttribute="leading" id="ngz-A5-QsP"/>
-                                    <constraint firstItem="05w-QL-U6t" firstAttribute="leading" secondItem="mHP-ll-eR5" secondAttribute="trailing" constant="16" id="yfF-Qo-Zlb"/>
+                                    <constraint firstAttribute="trailing" secondItem="h9K-55-XN3" secondAttribute="trailing" constant="16" id="wxZ-2f-ubp"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="h9K-55-XN3" id="SgN-p9-7Uc"/>
+                                    <outlet property="price" destination="05w-QL-U6t" id="d36-wS-ji6"/>
+                                    <outlet property="subtitle" destination="RzA-w2-rpF" id="N7I-QF-0eq"/>
+                                    <outlet property="title" destination="mHP-ll-eR5" id="50u-zG-RDn"/>
+                                </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Purchases - Tap to Buy:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3R-w3-8Zl">
-                                <rect key="frame" x="16" y="565" width="260" height="21"/>
+                                <rect key="frame" x="16" y="309" width="260" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="jHJ-Ls-b26"/>
                                 </constraints>
@@ -183,15 +205,9 @@ To try OCR, all new users get 2 free scans!</mutableString>
                         <outlet property="autoScansLabel" destination="UeZ-JJ-ae2" id="BgG-5H-vZZ"/>
                         <outlet property="availablePurchases" destination="W3R-w3-8Zl" id="GNk-eG-ljN"/>
                         <outlet property="descriptionLabel" destination="DsM-DP-W9a" id="2FG-ET-fPf"/>
-                        <outlet property="ocr10button" destination="XtY-fd-ihd" id="6am-0k-a22"/>
-                        <outlet property="ocr10price" destination="05w-QL-U6t" id="d7f-N9-Z8l"/>
-                        <outlet property="ocr10purchaseDescription" destination="RzA-w2-rpF" id="Np1-VL-lc3"/>
-                        <outlet property="ocr10purchaseLabel" destination="mHP-ll-eR5" id="YFJ-nn-ifm"/>
-                        <outlet property="ocr50button" destination="hPU-Tl-lP1" id="utc-1a-vep"/>
-                        <outlet property="ocr50price" destination="MSP-9p-HyL" id="TXm-5L-vs1"/>
-                        <outlet property="ocr50purchaseDescription" destination="uMb-V1-qm7" id="6v0-8m-6C8"/>
-                        <outlet property="ocr50purchaseLabel" destination="7nh-q5-K3f" id="b2l-t4-8Gi"/>
                         <outlet property="saveImagesLabel" destination="yZN-uE-hLr" id="CNA-Lp-ucG"/>
+                        <outlet property="scans10button" destination="XtY-fd-ihd" id="r94-5J-j7z"/>
+                        <outlet property="scans50button" destination="hPU-Tl-lP1" id="Xmh-fF-cQk"/>
                         <outlet property="titleLabel" destination="RM4-RV-lqQ" id="qij-zq-gXE"/>
                     </connections>
                 </viewController>
