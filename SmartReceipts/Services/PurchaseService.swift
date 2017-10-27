@@ -91,10 +91,11 @@ extension PurchaseService {
         
         APIAdapter.jsonBody(.post, endpoint("mobile_app_purchases"), parameters: params)
             .retry(3)
-            .do(onNext: { _ in
+            .flatMap({ response -> Observable<Any> in
                 ScansPurchaseTracker.shared.fetchAndPersistAvailableRecognitions()
                     .subscribe()
                     .disposed(by: self.bag)
+                return Observable.just(response)
             }).subscribe(onNext: { response in
                 let jsonRespose = JSON(response)
                 Logger.debug(jsonRespose.description)
