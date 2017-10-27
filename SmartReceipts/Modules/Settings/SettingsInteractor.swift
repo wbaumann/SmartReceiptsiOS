@@ -16,14 +16,8 @@ class SettingsInteractor: Interactor {
     private let purchaseService = PurchaseService()
     
     func retrivePlusSubscriptionPrice() -> Observable<String> {
-        return purchaseService.requestProducts()
-            .filter({ $0.productIdentifier == PRODUCT_PLUS })
-            .map({ product -> String in
-                let formatter = NumberFormatter()
-                formatter.numberStyle = .currency
-                formatter.locale = product.priceLocale
-                return "\(formatter.string(from: product.price)!)/yr"
-            })
+        return purchaseService.price(productID: PRODUCT_PLUS)
+            .map({ "\($0)/yr" })
     }
     
     func restorePurchases() -> Observable<Void> {

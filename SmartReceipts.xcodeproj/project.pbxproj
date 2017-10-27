@@ -75,6 +75,7 @@
 		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
 		713D35501EDA4AEB00D8563D /* NSMutableString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 713D354F1EDA4AEB00D8563D /* NSMutableString+Extensions.m */; };
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
+		714029CC1FA3A43500DED2E8 /* ScansPurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714029CB1FA3A43500DED2E8 /* ScansPurchaseButton.swift */; };
 		7141288C1F77E1410056B9CC /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C413D31EE6F826003CE891 /* GeneratedMocks.swift */; };
 		7141288D1F77E1410056B9CC /* GenerateReportModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360431EF310C90076D319 /* GenerateReportModuleTest.swift */; };
 		7141288E1F77E1410056B9CC /* TripDistancesModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360441EF310C90076D319 /* TripDistancesModuleTest.swift */; };
@@ -581,6 +582,7 @@
 		713D35541EDA54A700D8563D /* TripCSVGenerator+Testable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TripCSVGenerator+Testable.h"; sourceTree = "<group>"; };
 		713D4C751F626B3C00F29C4C /* AuthServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceTests.swift; sourceTree = "<group>"; };
 		713D4C771F62AA0700F29C4C /* AuthModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthModuleTest.swift; sourceTree = "<group>"; };
+		714029CB1FA3A43500DED2E8 /* ScansPurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScansPurchaseButton.swift; path = Views/ScansPurchaseButton.swift; sourceTree = "<group>"; };
 		714901BB1F05632200772B6F /* PaymentMethodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTests.swift; sourceTree = "<group>"; };
 		714901C01F0598B900772B6F /* CurrencyExchangeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeService.swift; sourceTree = "<group>"; };
 		7152DF1C1F0C24750088EE98 /* PDFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageView.swift; sourceTree = "<group>"; };
@@ -1576,6 +1578,7 @@
 				71B8610A1F0A9BE70069E251 /* SuggestionView.m */,
 				71FE9FFA1F48CC5F0043E7B4 /* CircleButton.swift */,
 				7197F2CA1F52F6A000C2AC1F /* TooltipView.swift */,
+				714029CB1FA3A43500DED2E8 /* ScansPurchaseButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2964,6 +2967,7 @@
 				7190D4501EE88CC40081CB22 /* GenerateReportDisplayData.swift in Sources */,
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
 				71ACA7CE1F5C58290024903E /* DebugStates.swift in Sources */,
+				714029CC1FA3A43500DED2E8 /* ScansPurchaseButton.swift in Sources */,
 				EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */,
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
 				A7F05BD31CFD54430079F1AD /* Logger.swift in Sources */,

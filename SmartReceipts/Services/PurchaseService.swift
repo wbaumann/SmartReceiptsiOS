@@ -52,6 +52,12 @@ class PurchaseService {
             })
     }
     
+    func price(productID: String) -> Observable<String> {
+        return requestProducts()
+            .filter({ $0.productIdentifier == productID })
+            .map({ $0.localizedPrice })
+    }
+    
     private func handleError(_ error: Error) {
         let responseError = error as NSError
         if responseError.code == SKError.paymentCancelled.rawValue && responseError.domain == SKErrorDomain {
@@ -111,5 +117,14 @@ extension PurchaseService {
         let anEvent =  Event.Purchases.PurchaseFailed
         anEvent.dataPoints.append(DataPoint(name: "sku", value: productID))
         AnalyticsManager.sharedManager.record(event: anEvent)
+    }
+}
+
+extension SKProduct {
+    var localizedPrice: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = self.priceLocale
+        return formatter.string(from: self.price)!
     }
 }
