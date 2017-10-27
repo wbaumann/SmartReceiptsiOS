@@ -385,3 +385,14 @@
 "login.success.login.toast" = "Login Success";
 "login.success.signup.toast" = "Signup Success";
 "login.success.logout.toast" = "Logout Success";
+
+"ocr.configuration.module.title" = "Automatic Scans (OCR):";
+"ocr.configuration.module.description" = "Smart Receipts has integrated with Taggun to provide automatic scanning (ie OCR) services, which can extract receipt metadata like the price, tax, date, and merchant name from your photos.\n\nWe use a combination of Google Vision and Machine Learning to quickly (often in 5 seconds or less) deliver results, which will become increasingly accurate over time. Since these services have a per-usage charge, we will charge for each receipt scan below.\n\nTo try OCR, all new users get 2 free scans!";
+"ocr.configuration.module.avilable.purchases.label" = "Available Purchases - Tap to Buy:";
+"ocr.configuration.module.automatic.scans.label" = "Enable Automatic Scans (OCR)?";
+"ocr.configuration.module.save.images.label" = "Allow us to save images to improve accuracy?";
+"ocr.configuration.module.10.title" = "10 OCR Scans (Smart Receipts)";
+"ocr.configuration.module.10.description" = "Purchase 10 Automatic Scans of Receipts (OCR)";
+"ocr.configuration.module.50.title" = "50 OCR Scans (Smart Receipts)";
+"ocr.configuration.module.50.description" = "Purchase 10 Automatic Scans of Receipts (OCR)";
+"ocr.configuration.module.scans.remaining" = "OCR Scans Remaining:";
