@@ -18,13 +18,12 @@ class OCRConfigurationPresenter: Presenter {
         interactor.requestProducts()
             .subscribe(onNext: { [weak self] product in
                 guard let sSelf = self else { return }
-                let bag = sSelf.bag
                 let price = Observable<String>.just(product.localizedPrice)
-                product.productIdentifier == PRODUCT_OCR_10 ?
-                    price.bind(to: sSelf.view.OCR10Price).disposed(by: bag) : ()
-                
-                product.productIdentifier == PRODUCT_OCR_50 ?
-                    price.bind(to: sSelf.view.OCR50Price).disposed(by: bag) : ()
+                if product.productIdentifier == PRODUCT_OCR_10 {
+                    _ = price.bind(to: sSelf.view.OCR10Price)
+                } else if product.productIdentifier == PRODUCT_OCR_50 {
+                    _ = price.bind(to: sSelf.view.OCR50Price)
+                }
             }).disposed(by: bag)
         
         view.buy10ocr

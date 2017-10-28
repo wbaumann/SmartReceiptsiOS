@@ -22,12 +22,12 @@ class ScansPurchaseButton: UIButton {
         
         rx.controlEvent(.touchDown)
             .subscribe(onNext: { [unowned self] in
-                self.backgroundColor  = #colorLiteral(red: 0.3334693832, green: 0.08451540429, blue: 0.4416083583, alpha: 1)
+                self.backgroundColor  = AppTheme.buttonStyle1PressedColor
             }).disposed(by: bag)
     
         rx.controlEvent([.touchUpInside, .touchUpOutside])
             .subscribe(onNext: { [unowned self] in
-                self.backgroundColor  = #colorLiteral(red: 0.537254902, green: 0.137254902, blue: 0.7137254902, alpha: 1)
+                self.backgroundColor  = AppTheme.buttonStyle1NormalColor
             }).disposed(by: bag)
     }
     
