@@ -2314,6 +2314,223 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.Mock {
 
 
 
+// MARK: - Mocks generated from file: SmartReceipts/Services/PurchaseService.swift
+//
+//  PurchaseService.swift
+//  SmartReceiptsTests
+//
+//  Created by Bogdan Evsenev on 02/10/2017.
+//  Copyright © 2017 Will Baumann. All rights reserved.
+//
+
+import Cuckoo
+@testable import SmartReceipts
+
+import RMStore
+import RxSwift
+import StoreKit
+import SwiftyJSON
+
+class MockPurchaseService: PurchaseService, Cuckoo.Mock {
+    typealias MocksType = PurchaseService
+    typealias Stubbing = __StubbingProxy_PurchaseService
+    typealias Verification = __VerificationProxy_PurchaseService
+    let cuckoo_manager = Cuckoo.MockManager()
+
+    private var observed: PurchaseService?
+
+    func spy(on victim: PurchaseService) -> Self {
+        observed = victim
+        return self
+    }
+
+    
+
+    
+
+    
+     override func requestProducts()  -> Observable<SKProduct> {
+        
+            return cuckoo_manager.call("requestProducts() -> Observable<SKProduct>",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> Observable<SKProduct> in
+                        let () = args
+                        return o.requestProducts()
+                    }
+                })
+        
+    }
+    
+     override func restorePurchases()  -> Observable<Void> {
+        
+            return cuckoo_manager.call("restorePurchases() -> Observable<Void>",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> Observable<Void> in
+                        let () = args
+                        return o.restorePurchases()
+                    }
+                })
+        
+    }
+    
+     override func purchaseSubscription()  -> Observable<SKPaymentTransaction> {
+        
+            return cuckoo_manager.call("purchaseSubscription() -> Observable<SKPaymentTransaction>",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> Observable<SKPaymentTransaction> in
+                        let () = args
+                        return o.purchaseSubscription()
+                    }
+                })
+        
+    }
+    
+     override func purchase(prodcutID: String)  -> Observable<SKPaymentTransaction> {
+        
+            return cuckoo_manager.call("purchase(prodcutID: String) -> Observable<SKPaymentTransaction>",
+                parameters: (prodcutID),
+                original: observed.map { o in
+                    return { (args) -> Observable<SKPaymentTransaction> in
+                        let (prodcutID) = args
+                        return o.purchase(prodcutID: prodcutID)
+                    }
+                })
+        
+    }
+    
+     override func price(productID: String)  -> Observable<String> {
+        
+            return cuckoo_manager.call("price(productID: String) -> Observable<String>",
+                parameters: (productID),
+                original: observed.map { o in
+                    return { (args) -> Observable<String> in
+                        let (productID) = args
+                        return o.price(productID: productID)
+                    }
+                })
+        
+    }
+    
+
+    struct __StubbingProxy_PurchaseService: Cuckoo.StubbingProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+
+        init(manager: Cuckoo.MockManager) {
+            self.cuckoo_manager = manager
+        }
+        
+        
+        func requestProducts() -> Cuckoo.StubFunction<(), Observable<SKProduct>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("requestProducts() -> Observable<SKProduct>", parameterMatchers: matchers))
+        }
+        
+        func restorePurchases() -> Cuckoo.StubFunction<(), Observable<Void>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("restorePurchases() -> Observable<Void>", parameterMatchers: matchers))
+        }
+        
+        func purchaseSubscription() -> Cuckoo.StubFunction<(), Observable<SKPaymentTransaction>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("purchaseSubscription() -> Observable<SKPaymentTransaction>", parameterMatchers: matchers))
+        }
+        
+        func purchase<M1: Cuckoo.Matchable>(prodcutID: M1) -> Cuckoo.StubFunction<(String), Observable<SKPaymentTransaction>> where M1.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: prodcutID) { $0 }]
+            return .init(stub: cuckoo_manager.createStub("purchase(prodcutID: String) -> Observable<SKPaymentTransaction>", parameterMatchers: matchers))
+        }
+        
+        func price<M1: Cuckoo.Matchable>(productID: M1) -> Cuckoo.StubFunction<(String), Observable<String>> where M1.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: productID) { $0 }]
+            return .init(stub: cuckoo_manager.createStub("price(productID: String) -> Observable<String>", parameterMatchers: matchers))
+        }
+        
+    }
+
+
+    struct __VerificationProxy_PurchaseService: Cuckoo.VerificationProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+        private let callMatcher: Cuckoo.CallMatcher
+        private let sourceLocation: Cuckoo.SourceLocation
+
+        init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+            self.cuckoo_manager = manager
+            self.callMatcher = callMatcher
+            self.sourceLocation = sourceLocation
+        }
+
+        
+
+        
+        @discardableResult
+        func requestProducts() -> Cuckoo.__DoNotUse<Observable<SKProduct>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("requestProducts() -> Observable<SKProduct>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func restorePurchases() -> Cuckoo.__DoNotUse<Observable<Void>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("restorePurchases() -> Observable<Void>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func purchaseSubscription() -> Cuckoo.__DoNotUse<Observable<SKPaymentTransaction>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("purchaseSubscription() -> Observable<SKPaymentTransaction>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func purchase<M1: Cuckoo.Matchable>(prodcutID: M1) -> Cuckoo.__DoNotUse<Observable<SKPaymentTransaction>> where M1.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: prodcutID) { $0 }]
+            return cuckoo_manager.verify("purchase(prodcutID: String) -> Observable<SKPaymentTransaction>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func price<M1: Cuckoo.Matchable>(productID: M1) -> Cuckoo.__DoNotUse<Observable<String>> where M1.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: productID) { $0 }]
+            return cuckoo_manager.verify("price(productID: String) -> Observable<String>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+    }
+
+
+}
+
+ class PurchaseServiceStub: PurchaseService {
+    
+
+    
+
+    
+     override func requestProducts()  -> Observable<SKProduct> {
+        return DefaultValueRegistry.defaultValue(for: Observable<SKProduct>.self)
+    }
+    
+     override func restorePurchases()  -> Observable<Void> {
+        return DefaultValueRegistry.defaultValue(for: Observable<Void>.self)
+    }
+    
+     override func purchaseSubscription()  -> Observable<SKPaymentTransaction> {
+        return DefaultValueRegistry.defaultValue(for: Observable<SKPaymentTransaction>.self)
+    }
+    
+     override func purchase(prodcutID: String)  -> Observable<SKPaymentTransaction> {
+        return DefaultValueRegistry.defaultValue(for: Observable<SKPaymentTransaction>.self)
+    }
+    
+     override func price(productID: String)  -> Observable<String> {
+        return DefaultValueRegistry.defaultValue(for: Observable<String>.self)
+    }
+    
+}
+
+
+
+
 // MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesInteractor.swift
 //
 //  TripDistancesInteractor.swift
@@ -3921,6 +4138,111 @@ class MockPaymentMethodsRouter: PaymentMethodsRouter, Cuckoo.Mock {
 
 
 
+// MARK: - Mocks generated from file: SmartReceipts/Modules/OCR Configuration/OCRConfigurationPresenter.swift
+//
+//  OCRConfigurationPresenter.swift
+//  SmartReceipts
+//
+//  Created by Bogdan Evsenev on 25/10/2017.
+//Copyright © 2017 Will Baumann. All rights reserved.
+//
+
+import Cuckoo
+@testable import SmartReceipts
+
+import Foundation
+import RxSwift
+import StoreKit
+import Viperit
+
+class MockOCRConfigurationPresenter: OCRConfigurationPresenter, Cuckoo.Mock {
+    typealias MocksType = OCRConfigurationPresenter
+    typealias Stubbing = __StubbingProxy_OCRConfigurationPresenter
+    typealias Verification = __VerificationProxy_OCRConfigurationPresenter
+    let cuckoo_manager = Cuckoo.MockManager()
+
+    private var observed: OCRConfigurationPresenter?
+
+    func spy(on victim: OCRConfigurationPresenter) -> Self {
+        observed = victim
+        return self
+    }
+
+    
+
+    
+
+    
+     override func viewHasLoaded()  {
+        
+            return cuckoo_manager.call("viewHasLoaded()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.viewHasLoaded()
+                    }
+                })
+        
+    }
+    
+
+    struct __StubbingProxy_OCRConfigurationPresenter: Cuckoo.StubbingProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+
+        init(manager: Cuckoo.MockManager) {
+            self.cuckoo_manager = manager
+        }
+        
+        
+        func viewHasLoaded() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("viewHasLoaded()", parameterMatchers: matchers))
+        }
+        
+    }
+
+
+    struct __VerificationProxy_OCRConfigurationPresenter: Cuckoo.VerificationProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+        private let callMatcher: Cuckoo.CallMatcher
+        private let sourceLocation: Cuckoo.SourceLocation
+
+        init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+            self.cuckoo_manager = manager
+            self.callMatcher = callMatcher
+            self.sourceLocation = sourceLocation
+        }
+
+        
+
+        
+        @discardableResult
+        func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+    }
+
+
+}
+
+ class OCRConfigurationPresenterStub: OCRConfigurationPresenter {
+    
+
+    
+
+    
+     override func viewHasLoaded()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+}
+
+
+
+
 // MARK: - Mocks generated from file: SmartReceipts/Modules/Edit Distance/EditDistancePresenter.swift
 //
 //  EditDistancePresenter.swift
@@ -4870,6 +5192,81 @@ class MockColumnsRouter: ColumnsRouter, Cuckoo.Mock {
 
 
 
+// MARK: - Mocks generated from file: SmartReceipts/Modules/OCR Configuration/OCRConfigurationRouter.swift
+//
+//  OCRConfigurationRouter.swift
+//  SmartReceipts
+//
+//  Created by Bogdan Evsenev on 25/10/2017.
+//Copyright © 2017 Will Baumann. All rights reserved.
+//
+
+import Cuckoo
+@testable import SmartReceipts
+
+import Foundation
+import Viperit
+
+class MockOCRConfigurationRouter: OCRConfigurationRouter, Cuckoo.Mock {
+    typealias MocksType = OCRConfigurationRouter
+    typealias Stubbing = __StubbingProxy_OCRConfigurationRouter
+    typealias Verification = __VerificationProxy_OCRConfigurationRouter
+    let cuckoo_manager = Cuckoo.MockManager()
+
+    private var observed: OCRConfigurationRouter?
+
+    func spy(on victim: OCRConfigurationRouter) -> Self {
+        observed = victim
+        return self
+    }
+
+    
+
+    
+
+    
+
+    struct __StubbingProxy_OCRConfigurationRouter: Cuckoo.StubbingProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+
+        init(manager: Cuckoo.MockManager) {
+            self.cuckoo_manager = manager
+        }
+        
+        
+    }
+
+
+    struct __VerificationProxy_OCRConfigurationRouter: Cuckoo.VerificationProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+        private let callMatcher: Cuckoo.CallMatcher
+        private let sourceLocation: Cuckoo.SourceLocation
+
+        init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+            self.cuckoo_manager = manager
+            self.callMatcher = callMatcher
+            self.sourceLocation = sourceLocation
+        }
+
+        
+
+        
+    }
+
+
+}
+
+ class OCRConfigurationRouterStub: OCRConfigurationRouter {
+    
+
+    
+
+    
+}
+
+
+
+
 // MARK: - Mocks generated from file: SmartReceipts/Modules/Trip Distances/TripDistancesPresenter.swift
 //
 //  TripDistancesPresenter.swift
@@ -5721,6 +6118,140 @@ class MockCategoriesRouter: CategoriesRouter, Cuckoo.Mock {
 
     
 
+    
+}
+
+
+
+
+// MARK: - Mocks generated from file: SmartReceipts/Modules/OCR Configuration/OCRConfigurationInteractor.swift
+//
+//  OCRConfigurationInteractor.swift
+//  SmartReceipts
+//
+//  Created by Bogdan Evsenev on 25/10/2017.
+//Copyright © 2017 Will Baumann. All rights reserved.
+//
+
+import Cuckoo
+@testable import SmartReceipts
+
+import Foundation
+import RxSwift
+import StoreKit
+import Toaster
+import Viperit
+
+class MockOCRConfigurationInteractor: OCRConfigurationInteractor, Cuckoo.Mock {
+    typealias MocksType = OCRConfigurationInteractor
+    typealias Stubbing = __StubbingProxy_OCRConfigurationInteractor
+    typealias Verification = __VerificationProxy_OCRConfigurationInteractor
+    let cuckoo_manager = Cuckoo.MockManager()
+
+    private var observed: OCRConfigurationInteractor?
+
+    func spy(on victim: OCRConfigurationInteractor) -> Self {
+        observed = victim
+        return self
+    }
+
+    
+
+    
+
+    
+     override func requestProducts()  -> Observable<SKProduct> {
+        
+            return cuckoo_manager.call("requestProducts() -> Observable<SKProduct>",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> Observable<SKProduct> in
+                        let () = args
+                        return o.requestProducts()
+                    }
+                })
+        
+    }
+    
+     override func purchase(product: String)  {
+        
+            return cuckoo_manager.call("purchase(product: String)",
+                parameters: (product),
+                original: observed.map { o in
+                    return { (args) in
+                        let (product) = args
+                         o.purchase(product: product)
+                    }
+                })
+        
+    }
+    
+
+    struct __StubbingProxy_OCRConfigurationInteractor: Cuckoo.StubbingProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+
+        init(manager: Cuckoo.MockManager) {
+            self.cuckoo_manager = manager
+        }
+        
+        
+        func requestProducts() -> Cuckoo.StubFunction<(), Observable<SKProduct>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("requestProducts() -> Observable<SKProduct>", parameterMatchers: matchers))
+        }
+        
+        func purchase<M1: Cuckoo.Matchable>(product: M1) -> Cuckoo.StubNoReturnFunction<(String)> where M1.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: product) { $0 }]
+            return .init(stub: cuckoo_manager.createStub("purchase(product: String)", parameterMatchers: matchers))
+        }
+        
+    }
+
+
+    struct __VerificationProxy_OCRConfigurationInteractor: Cuckoo.VerificationProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+        private let callMatcher: Cuckoo.CallMatcher
+        private let sourceLocation: Cuckoo.SourceLocation
+
+        init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+            self.cuckoo_manager = manager
+            self.callMatcher = callMatcher
+            self.sourceLocation = sourceLocation
+        }
+
+        
+
+        
+        @discardableResult
+        func requestProducts() -> Cuckoo.__DoNotUse<Observable<SKProduct>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("requestProducts() -> Observable<SKProduct>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func purchase<M1: Cuckoo.Matchable>(product: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: product) { $0 }]
+            return cuckoo_manager.verify("purchase(product: String)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+    }
+
+
+}
+
+ class OCRConfigurationInteractorStub: OCRConfigurationInteractor {
+    
+
+    
+
+    
+     override func requestProducts()  -> Observable<SKProduct> {
+        return DefaultValueRegistry.defaultValue(for: Observable<SKProduct>.self)
+    }
+    
+     override func purchase(product: String)  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
     
 }
 

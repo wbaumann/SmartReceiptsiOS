@@ -91,6 +91,7 @@
 		714128981F77E1410056B9CC /* CategoriesModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B813D1F1B7074000C97C4 /* CategoriesModuleTest.swift */; };
 		7141289A1F77E1410056B9CC /* CurrencyExchangeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDCE1F085E9B00EAA320 /* CurrencyExchangeServiceTests.swift */; };
 		7141289B1F77E1410056B9CC /* TooltipServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715936CF1F59E7FF00BD6F52 /* TooltipServiceTests.swift */; };
+		714142861FA4944B00517BE7 /* OCRConfigurationModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714142851FA4944B00517BE7 /* OCRConfigurationModuleTest.swift */; };
 		714901BC1F05632200772B6F /* PaymentMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901BB1F05632200772B6F /* PaymentMethodTests.swift */; };
 		714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901C01F0598B900772B6F /* CurrencyExchangeService.swift */; };
 		7152DF1D1F0C24750088EE98 /* PDFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152DF1C1F0C24750088EE98 /* PDFPageView.swift */; };
@@ -583,6 +584,7 @@
 		713D4C751F626B3C00F29C4C /* AuthServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceTests.swift; sourceTree = "<group>"; };
 		713D4C771F62AA0700F29C4C /* AuthModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthModuleTest.swift; sourceTree = "<group>"; };
 		714029CB1FA3A43500DED2E8 /* ScansPurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScansPurchaseButton.swift; path = Views/ScansPurchaseButton.swift; sourceTree = "<group>"; };
+		714142851FA4944B00517BE7 /* OCRConfigurationModuleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRConfigurationModuleTest.swift; sourceTree = "<group>"; };
 		714901BB1F05632200772B6F /* PaymentMethodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTests.swift; sourceTree = "<group>"; };
 		714901C01F0598B900772B6F /* CurrencyExchangeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeService.swift; sourceTree = "<group>"; };
 		7152DF1C1F0C24750088EE98 /* PDFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageView.swift; sourceTree = "<group>"; };
@@ -1316,6 +1318,7 @@
 				710B813F1F1B708F000C97C4 /* PaymentMethodsModuleTest.swift */,
 				710B813D1F1B7074000C97C4 /* CategoriesModuleTest.swift */,
 				713D4C771F62AA0700F29C4C /* AuthModuleTest.swift */,
+				714142851FA4944B00517BE7 /* OCRConfigurationModuleTest.swift */,
 			);
 			path = "Modules Tests";
 			sourceTree = "<group>";
@@ -2732,6 +2735,10 @@
 				"$(SRCROOT)/SmartReceipts/Modules/Auth/AuthInteractor.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/Auth/AuthPresenter.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/Auth/AuthRouter.swift",
+				"$(SRCROOT)/SmartReceipts/Services/PurchaseService.swift",
+				"$(SRCROOT)/SmartReceipts/Modules/OCR Configuration/OCRConfigurationInteractor.swift",
+				"$(SRCROOT)/SmartReceipts/Modules/OCR Configuration/OCRConfigurationPresenter.swift",
+				"$(SRCROOT)/SmartReceipts/Modules/OCR Configuration/OCRConfigurationRouter.swift",
 			);
 			name = "Cuckoo Tests";
 			outputPaths = (
@@ -3197,6 +3204,7 @@
 				EA07BF5B1AF4DA66004D17F6 /* DatabaseDistancesTest.m in Sources */,
 				711B072F1FA11E6C000ED7E5 /* ScansPurchaseTrackerTests.swift in Sources */,
 				EA6677741B05F6D3004D3993 /* DatabaseReceiptsPaymentMethodTest.m in Sources */,
+				714142861FA4944B00517BE7 /* OCRConfigurationModuleTest.swift in Sources */,
 				A744E5141CEC45A700D838C7 /* DatabaseCategoriesImportTests.swift in Sources */,
 				EAE725DA1B022E9100402689 /* TripsToReceiptsConverterTest.m in Sources */,
 				7141288D1F77E1410056B9CC /* GenerateReportModuleTest.swift in Sources */,
