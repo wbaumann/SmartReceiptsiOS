@@ -74,39 +74,40 @@ To try OCR, all new users get 2 free scans!</string>
                                 <rect key="frame" x="16" y="406" width="288" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" text="50 OCR Scans (Smart Receipts)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="7nh-q5-K3f">
-                                        <rect key="frame" x="0.0" y="0.0" width="267.5" height="19.5"/>
+                                        <rect key="frame" x="8" y="3" width="251.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase 10 Automatic Scans of Receipts (OCR)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="uMb-V1-qm7">
-                                        <rect key="frame" x="0.0" y="23.5" width="292.5" height="16"/>
+                                        <rect key="frame" x="8" y="25.5" width="272" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSP-9p-HyL">
-                                        <rect key="frame" x="283.5" y="0.0" width="4.5" height="21"/>
+                                        <rect key="frame" x="275.5" y="0.0" width="4.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="W4b-0W-FzY">
-                                        <rect key="frame" x="252" y="0.0" width="20" height="20"/>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="W4b-0W-FzY">
+                                        <rect key="frame" x="252" y="3" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.53725490196078429" green="0.13725490196078433" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="uMb-V1-qm7" firstAttribute="leading" secondItem="hPU-Tl-lP1" secondAttribute="leading" constant="8" id="3Kp-yh-dIo"/>
                                     <constraint firstItem="MSP-9p-HyL" firstAttribute="top" secondItem="hPU-Tl-lP1" secondAttribute="top" id="9Ka-xn-91h"/>
-                                    <constraint firstItem="W4b-0W-FzY" firstAttribute="top" secondItem="hPU-Tl-lP1" secondAttribute="top" id="KrN-6Q-eG1"/>
+                                    <constraint firstItem="W4b-0W-FzY" firstAttribute="top" secondItem="hPU-Tl-lP1" secondAttribute="top" constant="3" id="KrN-6Q-eG1"/>
                                     <constraint firstAttribute="height" constant="44" id="OWh-Lc-v87"/>
+                                    <constraint firstItem="7nh-q5-K3f" firstAttribute="leading" secondItem="hPU-Tl-lP1" secondAttribute="leading" constant="8" id="Rad-40-JRj"/>
                                     <constraint firstAttribute="trailing" secondItem="W4b-0W-FzY" secondAttribute="trailing" constant="16" id="UmH-cG-i0X"/>
-                                    <constraint firstItem="uMb-V1-qm7" firstAttribute="top" secondItem="7nh-q5-K3f" secondAttribute="bottom" constant="4" id="XUx-wW-7Vi"/>
-                                    <constraint firstItem="7nh-q5-K3f" firstAttribute="leading" secondItem="hPU-Tl-lP1" secondAttribute="leading" id="csr-HV-5Wb"/>
-                                    <constraint firstItem="uMb-V1-qm7" firstAttribute="leading" secondItem="hPU-Tl-lP1" secondAttribute="leading" id="gJq-Zl-Ibg"/>
+                                    <constraint firstItem="uMb-V1-qm7" firstAttribute="top" secondItem="7nh-q5-K3f" secondAttribute="bottom" constant="3" id="XUx-wW-7Vi"/>
+                                    <constraint firstAttribute="trailing" secondItem="uMb-V1-qm7" secondAttribute="trailing" constant="8" id="boa-wA-KMG"/>
                                     <constraint firstItem="MSP-9p-HyL" firstAttribute="leading" secondItem="7nh-q5-K3f" secondAttribute="trailing" constant="16" id="jSi-Ub-oJH"/>
-                                    <constraint firstAttribute="trailing" secondItem="MSP-9p-HyL" secondAttribute="trailing" id="vcO-Gj-XaN"/>
-                                    <constraint firstItem="7nh-q5-K3f" firstAttribute="top" secondItem="hPU-Tl-lP1" secondAttribute="top" id="vvS-aV-hfi"/>
+                                    <constraint firstAttribute="trailing" secondItem="MSP-9p-HyL" secondAttribute="trailing" constant="8" id="vcO-Gj-XaN"/>
+                                    <constraint firstItem="7nh-q5-K3f" firstAttribute="top" secondItem="hPU-Tl-lP1" secondAttribute="top" constant="3" id="vvS-aV-hfi"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="activityIndicator" destination="W4b-0W-FzY" id="n98-pY-SKe"/>
@@ -119,38 +120,39 @@ To try OCR, all new users get 2 free scans!</string>
                                 <rect key="frame" x="16" y="346" width="288" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" text="10 OCR Scans (Smart Receipts)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="mHP-ll-eR5">
-                                        <rect key="frame" x="0.0" y="0.0" width="267" height="19.5"/>
+                                        <rect key="frame" x="8" y="3" width="251" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase 10 Automatic Scans of Receipts (OCR)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="RzA-w2-rpF">
-                                        <rect key="frame" x="0.0" y="23.5" width="292.5" height="16"/>
+                                        <rect key="frame" x="8" y="25.5" width="272" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05w-QL-U6t">
-                                        <rect key="frame" x="283" y="0.0" width="5" height="21"/>
+                                        <rect key="frame" x="275" y="0.0" width="5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="h9K-55-XN3">
-                                        <rect key="frame" x="252" y="0.0" width="20" height="20"/>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="h9K-55-XN3">
+                                        <rect key="frame" x="252" y="3" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.53725490196078429" green="0.13725490196078433" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="RzA-w2-rpF" firstAttribute="leading" secondItem="XtY-fd-ihd" secondAttribute="leading" id="JW8-gO-Thq"/>
-                                    <constraint firstAttribute="trailing" secondItem="05w-QL-U6t" secondAttribute="trailing" id="SYY-ks-x4U"/>
+                                    <constraint firstAttribute="trailing" secondItem="RzA-w2-rpF" secondAttribute="trailing" constant="8" id="5Pn-pI-WOr"/>
+                                    <constraint firstAttribute="trailing" secondItem="05w-QL-U6t" secondAttribute="trailing" constant="8" id="SYY-ks-x4U"/>
                                     <constraint firstItem="05w-QL-U6t" firstAttribute="leading" secondItem="mHP-ll-eR5" secondAttribute="trailing" constant="16" id="UTp-Go-ig7"/>
+                                    <constraint firstItem="mHP-ll-eR5" firstAttribute="leading" secondItem="XtY-fd-ihd" secondAttribute="leading" constant="8" id="Y62-KU-PXH"/>
                                     <constraint firstItem="05w-QL-U6t" firstAttribute="top" secondItem="XtY-fd-ihd" secondAttribute="top" id="bPg-cV-2kH"/>
-                                    <constraint firstItem="RzA-w2-rpF" firstAttribute="top" secondItem="mHP-ll-eR5" secondAttribute="bottom" constant="4" id="dwB-nC-vgJ"/>
+                                    <constraint firstItem="RzA-w2-rpF" firstAttribute="top" secondItem="mHP-ll-eR5" secondAttribute="bottom" constant="3" id="dwB-nC-vgJ"/>
                                     <constraint firstAttribute="height" constant="44" id="j21-Lr-Fee"/>
-                                    <constraint firstItem="h9K-55-XN3" firstAttribute="top" secondItem="XtY-fd-ihd" secondAttribute="top" id="kw5-Or-1Ij"/>
-                                    <constraint firstItem="mHP-ll-eR5" firstAttribute="top" secondItem="XtY-fd-ihd" secondAttribute="top" id="n6W-gt-a7T"/>
-                                    <constraint firstItem="mHP-ll-eR5" firstAttribute="leading" secondItem="XtY-fd-ihd" secondAttribute="leading" id="ngz-A5-QsP"/>
+                                    <constraint firstItem="RzA-w2-rpF" firstAttribute="leading" secondItem="XtY-fd-ihd" secondAttribute="leading" constant="8" id="jbj-vR-R4b"/>
+                                    <constraint firstItem="h9K-55-XN3" firstAttribute="top" secondItem="XtY-fd-ihd" secondAttribute="top" constant="3" id="kw5-Or-1Ij"/>
+                                    <constraint firstItem="mHP-ll-eR5" firstAttribute="top" secondItem="XtY-fd-ihd" secondAttribute="top" constant="3" id="n6W-gt-a7T"/>
                                     <constraint firstAttribute="trailing" secondItem="h9K-55-XN3" secondAttribute="trailing" constant="16" id="wxZ-2f-ubp"/>
                                 </constraints>
                                 <connections>
