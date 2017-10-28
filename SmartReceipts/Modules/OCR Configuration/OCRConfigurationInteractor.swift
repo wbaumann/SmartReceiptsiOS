@@ -14,7 +14,16 @@ import Toaster
 
 class OCRConfigurationInteractor: Interactor {
     private let bag = DisposeBag()
-    private let purchaseService = PurchaseService()
+    private var purchaseService: PurchaseService!
+    
+    required init() {
+        purchaseService = PurchaseService()
+    }
+    
+    init(purchaseService: PurchaseService) {
+        super.init()
+        self.purchaseService = purchaseService
+    }
     
     func requestProducts() -> Observable<SKProduct> {
         return purchaseService.requestProducts()
