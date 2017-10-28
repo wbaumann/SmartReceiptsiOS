@@ -21,7 +21,7 @@ class DebugRouter: Router {
     
     var ocrConfigTapSubscriber: AnyObserver<Void> {
         return AnyObserver<Void>(onNext: {
-            let module = AppModules.oCRConfiguration.build()
+            let module = AppModules.OCRConfiguration.build()
             module.router.show(from: self._view)
         })
     }
