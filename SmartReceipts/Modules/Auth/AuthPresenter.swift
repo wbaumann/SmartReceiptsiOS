@@ -11,9 +11,14 @@ import Viperit
 import RxSwift
 import Toaster
 
+protocol AuthModuleInterface {
+    var successAuth: Observable<Void> { get }
+    func close()
+}
+
 class AuthPresenter: Presenter {
-    
     let bag = DisposeBag()
+    let successAuthSubject = PublishSubject<Void>()
     
     override func viewHasLoaded() {
         view.login
@@ -44,7 +49,14 @@ class AuthPresenter: Presenter {
     var errorHandler: AnyObserver<String> {
         return view.errorHandler
     }
+}
+
+extension AuthPresenter: AuthModuleInterface {
+    var successAuth: Observable<Void> { return successAuthSubject.asObservable() }
     
+    func close() {
+        router.close()
+    }
 }
 
 

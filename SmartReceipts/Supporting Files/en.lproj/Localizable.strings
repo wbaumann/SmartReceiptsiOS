@@ -395,3 +395,6 @@
 "ocr.configuration.module.purchase.subtitle" = "Purchase %d Automatic Scans of Receipts (OCR)";
 "ocr.configuration.module.scans.remaining" = "OCR Scans Remaining:";
 "ocr.configuration.module.toast.success.purchase" = "Successfully completed the purchase";
+
+"menu.item.settings" = "Settings";
+"menu.item.auto.scans" = "Automatic Scans (OCR)";

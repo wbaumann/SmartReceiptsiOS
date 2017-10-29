@@ -16,31 +16,54 @@ class TripsPresenter: Presenter {
     let tripEditSubject = PublishSubject<WBTrip>()
     let tripDeleteSubject = PublishSubject<WBTrip>()
     
-    private let disposeBag = DisposeBag()
+    private let bag = DisposeBag()
     
     override func viewHasLoaded() {
         interactor.configureSubscribers()
         executeFor(iPhone: {}, iPad: { router.openNoTrips() })
         
-        view.addButton.rx.tap.subscribe(onNext: {
-            self.router.openAddTrip()
-        }).disposed(by: disposeBag)
+        view.addButton.rx.tap
+            .subscribe(onNext: {
+                self.router.openAddTrip()
+            }).disposed(by: bag)
         
-        view.settingsButton.rx.tap.subscribe(onNext: {
-            self.router.openSettings()
-        }).disposed(by: disposeBag)
+        view.settingsTap
+            .subscribe(onNext: {
+                self.router.openSettings()
+            }).disposed(by: bag)
         
-        view.debugButton.rx.tap.subscribe(onNext: {
-            self.router.openDebug()
-        }).disposed(by: disposeBag)
+        view.autoScansTap
+            .filter({ AuthService.shared.isLoggedIn })
+            .subscribe(onNext: {
+                self.router.openAutoScans()
+            }).disposed(by: bag)
         
-        tripDetailsSubject.subscribe(onNext: { trip in
-            self.router.openDetails(trip: trip)
-        }).disposed(by: disposeBag)
+        view.autoScansTap
+            .filter({ !AuthService.shared.isLoggedIn })
+            .subscribe(onNext: {
+                let authModule = self.router.openAuth()
+                _ = authModule.successAuth
+                    .map({ authModule.close() })
+                    .delay(0.6, scheduler: MainScheduler.instance)
+                    .subscribe(onNext: { [unowned self] in
+                        self.router.openAutoScans()
+                    })
+            }).disposed(by: bag)
         
-        tripEditSubject.subscribe(onNext: { trip in
-            self.router.openEdit(trip: trip)
-        }).disposed(by: disposeBag)
+        view.debugButton.rx.tap
+            .subscribe(onNext: {
+                self.router.openDebug()
+            }).disposed(by: bag)
+        
+        tripDetailsSubject
+            .subscribe(onNext: { trip in
+                self.router.openDetails(trip: trip)
+            }).disposed(by: bag)
+        
+        tripEditSubject
+            .subscribe(onNext: { trip in
+                self.router.openEdit(trip: trip)
+            }).disposed(by: bag)
         
     }
     

@@ -10,6 +10,9 @@ import Foundation
 import Viperit
 
 class AuthRouter: Router {
+    func close() {
+        _view.dismiss(animated: true, completion: nil)
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

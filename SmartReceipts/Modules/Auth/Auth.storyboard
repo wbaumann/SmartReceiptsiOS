@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -106,10 +106,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Auth" id="4zc-WG-Uvj">
+                        <barButtonItem key="leftBarButtonItem" image="close_button" style="done" id="dic-ck-gWU"/>
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="lHq-tY-SfL"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="closeButton" destination="dic-ck-gWU" id="mck-nI-Pgs"/>
                         <outlet property="emailField" destination="NP6-NC-50M" id="h1n-24-a37"/>
                         <outlet property="hintLabel" destination="7cT-mQ-IIN" id="qgn-BM-htY"/>
                         <outlet property="loginButton" destination="qf0-1Z-bxP" id="Mzu-Nj-Vfg"/>
@@ -123,4 +125,7 @@
             <point key="canvasLocation" x="294.375" y="355.98591549295776"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="close_button" width="14" height="14"/>
+    </resources>
 </document>

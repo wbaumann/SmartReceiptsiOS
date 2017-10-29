@@ -1,5 +1,5 @@
 //
-//  Router+Extensions.swift
+//  Viperit+Extensions.swift
 //  SmartReceipts
 //
 //  Created by Bogdan Evsenev on 12/06/2017.
@@ -7,6 +7,13 @@
 //
 
 import Viperit
+import RxSwift
+
+extension Module {
+    func interface<T>(_ type: T.Type) -> T {
+        return self.presenter as! T
+    }
+}
 
 extension Router {
     func openAlert(title: String?, message: String) {

@@ -33,6 +33,7 @@ final class AuthView: UserInterface {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
+    @IBOutlet weak var closeButton: UIBarButtonItem!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var hintLabel: UILabel!
@@ -88,6 +89,11 @@ final class AuthView: UserInterface {
                 return self.credentials()
             }).bind(to: signupSubject)
             .disposed(by: bag)
+        
+        closeButton.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                self.dismiss(animated: true, completion: nil)
+            }).disposed(by: bag)
     }
     
     private func credentials() -> Credentials {

@@ -33,7 +33,10 @@ class AuthInteractor: Interactor {
                         }
                         return Observable.never()
                     }).filter({ $0 != ""})
-                    .bind(to: self.presenter.successLogin)
+                    .map({ [weak self] in
+                        self?.presenter.successAuthSubject.onNext()
+                        return $0
+                    }).bind(to: self.presenter.successLogin)
                     .disposed(by: self.bag)
             default: break
             }
@@ -53,7 +56,10 @@ class AuthInteractor: Interactor {
                         }
                         return Observable.never()
                     }).filter({ $0 != ""})
-                    .bind(to: self.presenter.successSignup)
+                    .map({ [weak self] in
+                        self?.presenter.successAuthSubject.onNext()
+                        return $0
+                    }).bind(to: self.presenter.successSignup)
                     .disposed(by: self.bag)
             default: break
             }

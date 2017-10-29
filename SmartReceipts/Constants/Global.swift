@@ -8,6 +8,8 @@
 
 import Foundation
 
+let TOUCH_AREA: CGFloat = 44
+
 func onMainThread(_ closure: @escaping () -> ()) {
     DispatchQueue.main.async(execute: closure)
 }
@@ -35,6 +37,10 @@ func MainStoryboard() -> UIStoryboard {
 
 func executeFor(iPhone: ()->(), iPad: ()->()) {
     UI_USER_INTERFACE_IDIOM() == .pad ? iPad() : iPhone()
+}
+
+func screenScaled(_ value: CGFloat) -> CGFloat {
+    return value * ((1.0/667.0) * UIScreen.main.bounds.height)
 }
 
 enum ReceiptAttachmentType {
