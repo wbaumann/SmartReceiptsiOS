@@ -15,20 +15,23 @@ class TripsRouter: Router {
     
     func openSettings() {
         let module = AppModules.settings.build()
-        executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: true)
-        }, iPad: {
-            module.router.showIPadForm(from: _view, needNavigationController: true)
-        })
+        openModal(module: module)
     }
     
     func openDebug() {
         let module = AppModules.debug.build()
-        executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: true)
-        }, iPad: {
-            module.router.showIPadForm(from: _view, needNavigationController: true)
-        })
+        openModal(module: module)
+    }
+    
+    func openAuth() -> AuthModuleInterface {
+        let module = AppModules.auth.build()
+        openModal(module: module)
+        return module.interface(AuthModuleInterface.self)
+    }
+    
+    func openAutoScans() {
+        let module = AppModules.OCRConfiguration.build()
+        openModal(module: module)
     }
     
     func openEdit(trip: WBTrip) {
@@ -59,6 +62,14 @@ class TripsRouter: Router {
             AppModules.editTrip.build().router.show(from: _view, embedInNavController: true, setupData: trip)
         }, iPad: {
             AppModules.editTrip.build().router.showIPadForm(from: _view, setupData: trip, needNavigationController: true)
+        })
+    }
+    
+    private func openModal(module: Module) {
+        executeFor(iPhone: {
+            module.router.show(from: _view, embedInNavController: true)
+        }, iPad: {
+            module.router.showIPadForm(from: _view, needNavigationController: true)
         })
     }
 }

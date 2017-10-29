@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,7 +50,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="46E-Wz-wqR"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Smart Receipts" id="jh3-7q-ixi">
-                        <barButtonItem key="leftBarButtonItem" image="settings" id="goQ-v7-tzc"/>
+                        <barButtonItem key="leftBarButtonItem" image="more-horizontal" id="goQ-v7-tzc"/>
                         <rightBarButtonItems>
                             <barButtonItem image="edit-2" id="S5m-dq-klV"/>
                             <barButtonItem title="Debug" id="Rd2-XL-xZo"/>
@@ -61,8 +61,8 @@
                     <connections>
                         <outlet property="_addButton" destination="fws-IG-QsY" id="dPq-M0-5E5"/>
                         <outlet property="_debugButton" destination="Rd2-XL-xZo" id="1Pz-Se-a99"/>
-                        <outlet property="_settingsButton" destination="goQ-v7-tzc" id="Jb9-6B-EKm"/>
                         <outlet property="editItem" destination="S5m-dq-klV" id="dry-PJ-BGS"/>
+                        <outlet property="menuButton" destination="goQ-v7-tzc" id="oUZ-Rp-LHH"/>
                         <outlet property="tableView" destination="oiC-Hc-lug" id="se3-kH-BfB"/>
                     </connections>
                 </viewController>
@@ -108,7 +108,7 @@
     </scenes>
     <resources>
         <image name="edit-2" width="20" height="20"/>
-        <image name="settings" width="24" height="24"/>
+        <image name="more-horizontal" width="22" height="6"/>
         <image name="white_plus" width="16" height="16"/>
     </resources>
 </document>

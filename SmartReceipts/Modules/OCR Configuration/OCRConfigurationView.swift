@@ -27,6 +27,7 @@ final class OCRConfigurationView: UserInterface {
     @IBOutlet private weak var autoScansLabel: UILabel!
     @IBOutlet private weak var saveImagesLabel: UILabel!
     @IBOutlet private weak var availablePurchases: UILabel!
+    @IBOutlet private weak var closeButton: UIBarButtonItem!
     @IBOutlet fileprivate weak var scans10button: ScansPurchaseButton!
     @IBOutlet fileprivate weak var scans50button: ScansPurchaseButton!
     
@@ -62,6 +63,11 @@ final class OCRConfigurationView: UserInterface {
         allowSaveImages.rx.isOn
             .subscribe(onNext:{ WBPreferences.setAllowSaveImageForAccuracy($0) })
             .disposed(by: bag)
+        
+        closeButton.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                self.dismiss(animated: true, completion: nil)
+            }).disposed(by: bag)
     }
     
     private func localizeLabels() {

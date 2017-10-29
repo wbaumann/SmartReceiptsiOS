@@ -20,6 +20,7 @@ def pods
     pod 'XLPagerTabStrip'
     pod 'Floaty'
     pod 'Toaster'
+    pod 'MKDropdownMenu'
     
     # Rx
     pod 'RxSwift'

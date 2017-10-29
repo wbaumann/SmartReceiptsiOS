@@ -9,10 +9,12 @@
 import UIKit
 import Viperit
 import RxSwift
+import MKDropdownMenu
 
 //MARK: - Public Interface Protocol
 protocol TripsViewInterface {
-    var settingsButton: UIBarButtonItem { get }
+    var settingsTap: Observable<Void> { get }
+    var autoScansTap: Observable<Void> { get }
     var addButton: UIButton { get }
     var debugButton: UIBarButtonItem { get }
 }
@@ -20,7 +22,7 @@ protocol TripsViewInterface {
 //MARK: Trips View
 final class TripsView: FetchedTableViewController {
     
-    @IBOutlet fileprivate weak var _settingsButton: UIBarButtonItem!
+    @IBOutlet fileprivate weak var menuButton: UIBarButtonItem!
     @IBOutlet fileprivate weak var _debugButton: UIBarButtonItem!
     @IBOutlet fileprivate weak var _addButton: UIButton!
     @IBOutlet fileprivate weak var editItem: UIBarButtonItem!
@@ -53,6 +55,28 @@ final class TripsView: FetchedTableViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureMenu()
+    }
+    
+    private func configureMenu() {
+        let menuIcon = #imageLiteral(resourceName: "more-horizontal")
+        let menu = MKDropdownMenu(frame: CGRect(x: 0, y: 0, width: 30, height: TOUCH_AREA))
+        let menuWidth: CGFloat = 230
+        menuButton.customView = menu
+        
+        menu.tintColor = .white
+        menu.delegate = displayData.menuDisplayData
+        menu.dataSource = displayData.menuDisplayData
+        menu.disclosureIndicatorImage = menuIcon
+        menu.disclosureIndicatorSelectionRotation = 0
+        menu.dropdownBouncesScroll = false
+        menu.useFullScreenWidth = true
+        menu.fullScreenInsetLeft = 8
+        menu.fullScreenInsetRight = UIScreen.main.bounds.width - menuWidth
     }
     
     func settingsSaved() {
@@ -163,9 +187,10 @@ extension TripsView: UISplitViewControllerDelegate {
 
 //MARK: - Public interface
 extension TripsView: TripsViewInterface {
-    var settingsButton: UIBarButtonItem { get { return _settingsButton } }
-    var debugButton: UIBarButtonItem { get { return _debugButton } }
-    var addButton: UIButton { get { return _addButton } }
+    var settingsTap: Observable<Void> { return  displayData.settingsTap }
+    var autoScansTap: Observable<Void> { return  displayData.autoScansTap }
+    var debugButton: UIBarButtonItem { return _debugButton }
+    var addButton: UIButton { return _addButton }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

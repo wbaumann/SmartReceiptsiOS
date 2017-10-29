@@ -67,6 +67,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
+  - MKDropdownMenu (1.4)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -143,6 +144,7 @@ DEPENDENCIES:
   - FMDB
   - Google/AdMob
   - Google/Analytics
+  - MKDropdownMenu
   - MRProgress
   - objective-zip
   - RMStore/AppReceiptVerificator (from `3rdparty/RMStore`)
@@ -202,6 +204,7 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
+  MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   objective-zip: 41b1408cebffceb6b9d15ad691506707e390d359
   OpenSSL-iOS: 002cabfdfc2df48d63cebd723b90ada86c946316
@@ -219,6 +222,6 @@ SPEC CHECKSUMS:
   Viperit: b45ecfde9f3e577a6afd8f91f4c88edb46e0ca25
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
 
-PODFILE CHECKSUM: 4615cc040e9d4142349bb5bc34df3a43e9fc55a3
+PODFILE CHECKSUM: 9b106b923b2343336e6641f67c7791b7bd511ff0
 
 COCOAPODS: 1.3.1
