@@ -12,7 +12,6 @@ extension FileManager {
     
     class var documentsPath: String {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        Logger.info("documentPaths: \(paths)")
         return paths.first!
     }
     
