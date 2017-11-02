@@ -33,6 +33,14 @@ class S3Service {
             }).disposed(by: bag)
     }
     
+    func upload(image: UIImage) -> Observable<URL> {
+        if let imageURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("temp.jpg") {
+            try? UIImagePNGRepresentation(image)?.write(to: imageURL)
+            return upload(file: imageURL)
+        }
+        return Observable.error(NSError(domain: "temp.image.url.error", code: 1, userInfo: nil))
+    }
+    
     func upload(file url: URL) -> Observable<URL> {
         return Observable<URL>.create { [weak self] observer -> Disposable in
             if let sSelf = self {

@@ -217,6 +217,8 @@
 		71CF7A121F1020440004F389 /* InputTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF7A111F1020440004F389 /* InputTextCell.swift */; };
 		71CF7A141F1020590004F389 /* InputTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CF7A131F1020590004F389 /* InputTextCell.xib */; };
 		71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */; };
+		71D7D43E1FAA062300437CA9 /* ScanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7D43D1FAA062300437CA9 /* ScanService.swift */; };
+		71D7D4401FAA079800437CA9 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7D43F1FAA079800437CA9 /* Scan.swift */; };
 		71DF3A801F509512000CD1D6 /* NotifyMasterSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF3A7F1F509512000CD1D6 /* NotifyMasterSplitViewController.swift */; };
 		71E090F31F2F994B00C825A8 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E090F21F2F994B00C825A8 /* FileManager+Extensions.swift */; };
 		71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E2B5751EEDD516001D02F1 /* Trips.storyboard */; };
@@ -729,6 +731,8 @@
 		71CF7A131F1020590004F389 /* InputTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputTextCell.xib; sourceTree = "<group>"; };
 		71D59CDA1EDDC993008991B7 /* WBDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDateFormatter.h; sourceTree = "<group>"; };
 		71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDateFormatter.m; sourceTree = "<group>"; };
+		71D7D43D1FAA062300437CA9 /* ScanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanService.swift; sourceTree = "<group>"; };
+		71D7D43F1FAA079800437CA9 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		71DF3A7F1F509512000CD1D6 /* NotifyMasterSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifyMasterSplitViewController.swift; sourceTree = "<group>"; };
 		71E090F21F2F994B00C825A8 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		71E2B5751EEDD516001D02F1 /* Trips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trips.storyboard; sourceTree = "<group>"; };
@@ -1219,6 +1223,7 @@
 				710A33DB1F827E2500D10344 /* PurchaseService.swift */,
 				71BC45501F9FB38C003A5BD5 /* LocalScansTracker.swift */,
 				71BC45521F9FB3A9003A5BD5 /* ScansPurchaseTracker.swift */,
+				71D7D43D1FAA062300437CA9 /* ScanService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2108,6 +2113,7 @@
 				719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */,
 				71B8610F1F0AD3080069E251 /* Price.swift */,
 				710DCEA61F7444C000C08C43 /* User.swift */,
+				71D7D43F1FAA079800437CA9 /* Scan.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2931,6 +2937,7 @@
 				716F34521EE040E100D0017A /* EditDistanceView.swift in Sources */,
 				7190D4521EE88CC40081CB22 /* GenerateReportPresenter.swift in Sources */,
 				EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */,
+				71D7D4401FAA079800437CA9 /* Scan.swift in Sources */,
 				7152DF1D1F0C24750088EE98 /* PDFPageView.swift in Sources */,
 				719310421EDDC2810065B5AD /* WBTextUtils.m in Sources */,
 				71F468361EEEDB03009F6CE7 /* EditTripRouter.swift in Sources */,
@@ -3165,6 +3172,7 @@
 				71ACA7CC1F5B6A360024903E /* DebugFormView.swift in Sources */,
 				712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */,
 				71E090F31F2F994B00C825A8 /* FileManager+Extensions.swift in Sources */,
+				71D7D43E1FAA062300437CA9 /* ScanService.swift in Sources */,
 				A7F05BB81CFC2C9D0079F1AD /* ReceiptColumnNetExchangedPricePlusTax.swift in Sources */,
 				7193102B1EDDB9960065B5AD /* WBAbstractPicker.m in Sources */,
 				71E8F3F81FA12452005BD447 /* OCRConfigurationRouter.swift in Sources */,
