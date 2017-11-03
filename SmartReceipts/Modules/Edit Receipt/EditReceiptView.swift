@@ -13,6 +13,7 @@ import RxSwift
 //MARK: - Public Interface Protocol
 protocol EditReceiptViewInterface {
     func setup(trip: WBTrip, receipt: WBReceipt?)
+    func setup(scan: Scan)
 }
 
 //MARK: EditReceiptView Class
@@ -30,9 +31,11 @@ final class EditReceiptView: UserInterface {
         configureTitle()
         let formView = EditReceiptFormView(trip: displayData.trip, receipt: displayData.receipt)
         self.formView = formView
+        formView.apply(scan: displayData.scan)
         formView.settingsTap = presenter.settingsTap
         addChildViewController(formView)
         view.addSubview(formView.view)
+        
         configureUIActions()
         configureSubscribers()
     }
@@ -85,6 +88,10 @@ extension EditReceiptView: EditReceiptViewInterface {
     func setup(trip: WBTrip, receipt: WBReceipt?) {
         displayData.trip = trip
         displayData.receipt = receipt
+    }
+    
+    func setup(scan: Scan) {
+        displayData.scan = scan
     }
 }
 

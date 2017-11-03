@@ -14,7 +14,7 @@ class ReceiptsRouter: Router {
     
     var moduleTrip: WBTrip! = nil
     private var documentViewController: UIDocumentInteractionController!
-    private let disposeBag = DisposeBag()
+    private let bag = DisposeBag()
     
     func openDistances() {
         let module = AppModules.tripDistances.build()
@@ -31,7 +31,7 @@ class ReceiptsRouter: Router {
             .subscribe(onNext: { [unowned self] in
                 let module = AppModules.receiptImageViewer.build()
                 module.router.show(from: self._view, embedInNavController: false, setupData: receipt)
-            }).disposed(by: disposeBag)
+            }).disposed(by: bag)
     }
     
     func openPDFViewer(for receipt: WBReceipt) {
@@ -43,7 +43,7 @@ class ReceiptsRouter: Router {
                 self.documentViewController.name = receipt.name
                 self.documentViewController.delegate = self._view as? UIDocumentInteractionControllerDelegate
                 self.documentViewController.presentPreview(animated: true)
-            }).disposed(by: disposeBag)
+            }).disposed(by: bag)
     }
     
     func openGenerateReport() {
@@ -62,9 +62,12 @@ class ReceiptsRouter: Router {
     func openCreatePhotoReceipt() {
         ImagePicker.sharedInstance().rx_openOn(_view)
             .filter({ $0 != nil })
-            .subscribe(onNext: { [unowned self] in
-            self.openEditModuleWith(receipt: nil, image: $0)
-        }).disposed(by: disposeBag)
+            .map({ $0! })
+            .flatMap({ [unowned self] img -> Observable<Scan> in
+                return self.presenter.scanService.scan(image: img)
+            }).subscribe(onNext: { [unowned self] scan in
+                self.openEditModule(with: scan)
+            }).disposed(by: bag)
     }
     
     func openActions(receipt: WBReceipt) -> ReceiptActionsPresenter {
@@ -84,6 +87,16 @@ class ReceiptsRouter: Router {
     private func openEditModuleWith(receipt: WBReceipt?, image: UIImage?) {
         let module = AppModules.editReceipt.build()
         let data = (trip: moduleTrip, receipt: receipt, image: image)
+        executeFor(iPhone: {
+            module.router.show(from: _view, embedInNavController: true, setupData: data)
+        }, iPad: {
+            module.router.showIPadForm(from: _view, setupData: data, needNavigationController: true)
+        })
+    }
+    
+    private func openEditModule(with scan: Scan) {
+        let module = AppModules.editReceipt.build()
+        let data = (trip: moduleTrip, scan: scan)
         executeFor(iPhone: {
             module.router.show(from: _view, embedInNavController: true, setupData: data)
         }, iPad: {
