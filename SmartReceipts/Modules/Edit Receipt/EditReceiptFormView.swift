@@ -107,6 +107,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             row.title = LocalizedString("edit.receipt.tax.label")
             row.placeholder = LocalizedString("edit.receipt.tax.placeholder")
             row.value = self.isNewReceipt ? nil : self.receipt.taxAmount?.doubleValue
+            
             if let calculator = self.taxCalculator {
                 calculator.taxSubject.subscribe(onNext: {
                     row.value = Double(string: $0)
@@ -219,6 +220,17 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         
         if isNewReceipt {
             matchCategory(value: receipt.category)
+        }
+    }
+    
+    func apply(scan: Scan?) {
+        guard let gScan = scan else { return }
+        receipt.name = gScan.merchant ?? ""
+        if let tax = gScan.taxAmount {
+            receipt.setTax(NSDecimalNumber(value: tax))
+        }
+        if let amount = gScan.totalAmount {
+            receipt.setPrice(NSDecimalNumber(value: amount), currency: trip.defaultCurrency.code)
         }
     }
     

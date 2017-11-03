@@ -14,6 +14,7 @@ class ReceiptsInteractor: Interactor {
     
     var fetchedModelAdapter: FetchedModelAdapter!
     var trip: WBTrip!
+    var scanService = ScanService()
     
     private let bag = DisposeBag()
     

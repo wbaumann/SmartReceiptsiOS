@@ -20,34 +20,36 @@ class ReceiptsPresenter: Presenter {
     let createReceiptCameraSubject = PublishSubject<Void>()
     let contentChanged = PublishSubject<Void>()
     
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
+    
+    var scanService: ScanService { return interactor.scanService }
     
     override func viewHasLoaded() {
         interactor.configureSubscribers()
         
         editReceiptSubject.subscribe(onNext: { [unowned self] receipt in
             self.router.openEdit(receipt: receipt)
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         receiptActionsSubject.subscribe(onNext: { [unowned self] receipt in
             let actionsPresenter = self.router.openActions(receipt: receipt)
             
             actionsPresenter.swapUpTap.subscribe(onNext: {
                 self.interactor.swapUpReceipt(receipt)
-            }).disposed(by: self.disposeBag)
+            }).disposed(by: self.bag)
             
             actionsPresenter.swapDownTap.subscribe(onNext: {
                 self.interactor.swapDownReceipt(receipt)
-            }).disposed(by: self.disposeBag)
+            }).disposed(by: self.bag)
             
             actionsPresenter.viewImageTap
                 .subscribe(onNext:{
                     receipt.attachemntType == .image ?
                         self.router.openImageViewer(for: receipt) :
                         self.router.openPDFViewer(for: receipt)
-                }).disposed(by: self.disposeBag)
+                }).disposed(by: self.bag)
             
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
     }
     
     override func setupView(data: Any) {
@@ -59,11 +61,11 @@ class ReceiptsPresenter: Presenter {
         
         createReceiptTextSubject.subscribe(onNext: { [unowned self] in
             self.router.openCreateReceipt()
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         createReceiptCameraSubject.subscribe(onNext: { [unowned self] in
             self.router.openCreatePhotoReceipt()
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
     }
 }
 

@@ -24,12 +24,14 @@ class ScanService {
                     return PushNotificationService.shared.rx.notificationJSON
                         .timeout(PUSH_TIMEOUT, scheduler: MainScheduler.instance)
                         .catchError({ _ -> Observable<JSON> in
-                            return Observable<JSON>.just(JSON(dictionaryLiteral: ("id", id)))
-                        }).map({ $0["id"].stringValue })
+                            return Observable<JSON>.just(JSON())
+                        }).map({
+                            return $0.dictionaryValue["recognition"]?["id"].string ?? id
+                        })
                 }).flatMap({ id -> Observable<Scan> in
                     APIAdapter.json(.get, endpoint("recognitions/\(id)"))
                         .map({ JSON($0) })
-                        .map({ Scan(json: $0) })
+                        .map({ Scan(json: $0, image: image) })
                         .do(onNext: { _ in ScansPurchaseTracker.shared.decrementRemainingScans() })
                 })
         } else {
@@ -37,7 +39,7 @@ class ScanService {
             let isLoggedIn = "isLoggedIn = \(AuthService.shared.isLoggedIn)"
             let hasAvailableScans = "hasAvailableScans = \(ScansPurchaseTracker.shared.hasAvailableScans)"
             Logger.debug("Ignoring ocr scan of as: \(isFeatureEnabled), \(isLoggedIn), \(hasAvailableScans).")
-            return Observable.just(Scan())
+            return Observable.just(Scan(image: image))
         }
     }
     

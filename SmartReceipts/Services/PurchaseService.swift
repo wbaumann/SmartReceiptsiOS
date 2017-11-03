@@ -84,7 +84,6 @@ extension PurchaseService {
         guard let receiptURL = Bundle.main.appStoreReceiptURL else { return }
         guard let receipt = try? Data(contentsOf: receiptURL) else { return }
         let receiptString = receipt.base64EncodedString()
-        Logger.debug("RECEIPT: \(receiptString)")
         let params = ["encoded_receipt": receiptString,
                       "pay_service" : "Apple Store",
                       "goal" : "Recognition"]
