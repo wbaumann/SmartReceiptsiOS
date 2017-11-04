@@ -78,12 +78,12 @@ class SettingsFormView: FormViewController {
         }.cellUpdate({ cell, row in
             cell.textLabel?.textColor = AppTheme.primaryColor
         }).onCellSelection({ [unowned self] _, _ in
-            let hud = PendingHUDView.showHUD(on: self.navigationController?.view)
+            let hud = PendingHUDView.show(on: self.navigationController!.view)
             self.settingsView.restorePurchases().subscribe(onNext: { [unowned self] in
                 self.setupPurchased()
-                hud?.hide()
+                hud.hide()
             }, onError: { error in
-                hud?.hide()
+                hud.hide()
                 self.alertSubject.onNext((title: LocalizedString("settings.purchase.restore.error.title"),
                                         message: error.localizedDescription))
             }).disposed(by: self.bag)

@@ -50,8 +50,9 @@ class S3Service {
                 uploadRequest?.key = key
                 uploadRequest?.body = url
                 
+                sSelf.transferManager.cancelAll()
                 sSelf.transferManager.upload(uploadRequest!)
-                    .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+                    .continueWith(executor: AWSExecutor.mainThread(), block: { (task: AWSTask<AnyObject>) -> Any? in
                     if let error = task.error  {
                         printError(error, operation: "Upload")
                         observer.onError(error)

@@ -48,7 +48,7 @@ final class GenerateReportView: UserInterface {
         
         shareButton.rx.tap.subscribe(onNext: { [weak self] in
             if let navView = self?.navigationController?.view {
-                self?.hud = PendingHUDView.showHUD(on: navView)
+                self?.hud = PendingHUDView.show(on: navView)
                 self?.presenter.generateReport()
             }
         }).disposed(by: disposeBag)

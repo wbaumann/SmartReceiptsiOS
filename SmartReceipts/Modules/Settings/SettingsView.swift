@@ -127,7 +127,7 @@ extension SettingsView {
         AnalyticsManager.sharedManager.record(event: Event.Navigation.BackupOverflow)
         
         let exportAction: (UIAlertAction) -> Void = { [unowned self] action in
-            let hud = PendingHUDView.showHUD(on: self.navigationController!.view)
+            let hud = PendingHUDView.show(on: self.navigationController!.view)
             let tick = TickTock.tick()
             DispatchQueue.global().async {
                 let export = DataExport(workDirectory: FileManager.documentsPath)
@@ -136,7 +136,7 @@ extension SettingsView {
                 Logger.info("Export finished: time \(tick.tock()), exportPath: \(exportPath)")
                 
                 DispatchQueue.main.async {
-                    hud?.hide()
+                    hud.hide()
                     if isFileExists {
                         var showRect = from
                         showRect.origin.y += self.view.frame.origin.y

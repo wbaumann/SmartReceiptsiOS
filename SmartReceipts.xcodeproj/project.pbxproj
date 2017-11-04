@@ -61,6 +61,7 @@
 		711C1D6B1F45DD5E00F5553F /* FetchedModelAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711C1D6A1F45DD5E00F5553F /* FetchedModelAdapterTests.swift */; };
 		711E40541EE0D4ED00C043CF /* EditDistanceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */; };
 		711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */; };
+		711E9B131FADBAAB002E9AC6 /* PendingHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E9B121FADBAAB002E9AC6 /* PendingHUDView.swift */; };
 		7120099D1F12D0DE0049927E /* TickTock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7120099C1F12D0DE0049927E /* TickTock.swift */; };
 		7122778C1F756EA300090878 /* S3Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7122778B1F756EA300090878 /* S3Service.swift */; };
 		712A84DE1F77E58B00D988E7 /* AuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D4C751F626B3C00F29C4C /* AuthServiceTests.swift */; };
@@ -469,7 +470,6 @@
 		EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD3EF861B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m */; };
 		EADBB71F1B0B6CD600F4475F /* DatabaseTripsFilesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EADBB71E1B0B6CD600F4475F /* DatabaseTripsFilesTest.m */; };
 		EAE23CB51B1757590078F197 /* 2015_05_26_SmartReceipts.smr in Resources */ = {isa = PBXBuildFile; fileRef = EAE23CB41B1757590078F197 /* 2015_05_26_SmartReceipts.smr */; };
-		EAE3195F1B10A5EE0032887E /* PendingHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE3195E1B10A5EE0032887E /* PendingHUDView.m */; };
 		EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */; };
 		EAE725DA1B022E9100402689 /* TripsToReceiptsConverterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */; };
 		EAE9DAE81AF8E97100F4FE76 /* DistanceColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAE71AF8E97100F4FE76 /* DistanceColumn.m */; };
@@ -565,6 +565,7 @@
 		711C1D6A1F45DD5E00F5553F /* FetchedModelAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedModelAdapterTests.swift; sourceTree = "<group>"; };
 		711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceFormView.swift; sourceTree = "<group>"; };
 		711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Extensions.swift"; sourceTree = "<group>"; };
+		711E9B121FADBAAB002E9AC6 /* PendingHUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingHUDView.swift; path = Views/PendingHUDView.swift; sourceTree = "<group>"; };
 		7120099C1F12D0DE0049927E /* TickTock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickTock.swift; sourceTree = "<group>"; };
 		7122778B1F756EA300090878 /* S3Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Service.swift; sourceTree = "<group>"; };
 		7122778D1F76F1CB00090878 /* S3ServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3ServiceTests.swift; sourceTree = "<group>"; };
@@ -1088,8 +1089,6 @@
 		EAD3EF861B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseReceiptEditTest.m; sourceTree = "<group>"; };
 		EADBB71E1B0B6CD600F4475F /* DatabaseTripsFilesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTripsFilesTest.m; sourceTree = "<group>"; };
 		EAE23CB41B1757590078F197 /* 2015_05_26_SmartReceipts.smr */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2015_05_26_SmartReceipts.smr; sourceTree = "<group>"; };
-		EAE3195D1B10A5EE0032887E /* PendingHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PendingHUDView.h; path = Views/PendingHUDView.h; sourceTree = "<group>"; };
-		EAE3195E1B10A5EE0032887E /* PendingHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PendingHUDView.m; path = Views/PendingHUDView.m; sourceTree = "<group>"; };
 		EAE725D51B022E3F00402689 /* DistancesToReceiptsConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancesToReceiptsConverter.h; sourceTree = "<group>"; };
 		EAE725D61B022E3F00402689 /* DistancesToReceiptsConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancesToReceiptsConverter.m; sourceTree = "<group>"; };
 		EAE725D91B022E9100402689 /* TripsToReceiptsConverterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsToReceiptsConverterTest.m; sourceTree = "<group>"; };
@@ -1575,8 +1574,6 @@
 				EA66B2BD1B13809900A57750 /* LaunchView.xib */,
 				EA5963EA1AF2957200935344 /* NoCaretTextField.h */,
 				EA5963EB1AF2957200935344 /* NoCaretTextField.m */,
-				EAE3195D1B10A5EE0032887E /* PendingHUDView.h */,
-				EAE3195E1B10A5EE0032887E /* PendingHUDView.m */,
 				719310251EDDB7CF0065B5AD /* FetchedPlaceholderView.swift */,
 				719310271EDDB9960065B5AD /* WBAbstractPicker.h */,
 				719310281EDDB9960065B5AD /* WBAbstractPicker.m */,
@@ -1587,6 +1584,7 @@
 				71FE9FFA1F48CC5F0043E7B4 /* CircleButton.swift */,
 				7197F2CA1F52F6A000C2AC1F /* TooltipView.swift */,
 				714029CB1FA3A43500DED2E8 /* ScansPurchaseButton.swift */,
+				711E9B121FADBAAB002E9AC6 /* PendingHUDView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2974,7 +2972,6 @@
 				71F468341EEEDB03009F6CE7 /* EditTripInteractor.swift in Sources */,
 				8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */,
 				EA6677791B060FC4004D3993 /* ReceiptColumnPaymentMethod.m in Sources */,
-				EAE3195F1B10A5EE0032887E /* PendingHUDView.m in Sources */,
 				716F344E1EE040E100D0017A /* EditDistanceDisplayData.swift in Sources */,
 				A7F05BAC1CFC0AB00079F1AD /* ExchangedPriced.swift in Sources */,
 				719B1FD21EF5FEBE0049BD71 /* Column.m in Sources */,
@@ -2986,6 +2983,7 @@
 				84F4F35018CFCCD000F69A35 /* main.m in Sources */,
 				71ACA7CE1F5C58290024903E /* DebugStates.swift in Sources */,
 				714029CC1FA3A43500DED2E8 /* ScansPurchaseButton.swift in Sources */,
+				711E9B131FADBAAB002E9AC6 /* PendingHUDView.swift in Sources */,
 				EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */,
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
 				A7F05BD31CFD54430079F1AD /* Logger.swift in Sources */,

@@ -39,8 +39,6 @@
 #import "UIApplication+AppVersion.h"
 #import "UIDevice+DeviceInfo.h"
 
-#import "PendingHUDView.h"
-
 #import "ReceiptColumn.h"
 
 #import "DistanceSummaryCell.h"
