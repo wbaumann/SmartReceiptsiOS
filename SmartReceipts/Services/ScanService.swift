@@ -27,6 +27,7 @@ class ScanService {
             PushNotificationService.shared.updateToken()
             statusSubject.onNext(.uploading)
             return s3Service.upload(image: image)
+                .do(onSubscribed: { AnalyticsManager.sharedManager.record(event: Event.ocrRequestStarted()) })
                 .flatMap({ [weak self] url -> Observable<String> in
                     if self != nil {
                         self?.statusSubject.onNext(.scanning)
@@ -38,6 +39,8 @@ class ScanService {
                 }).flatMap({ id -> Observable<String> in
                     return PushNotificationService.shared.rx.notificationJSON
                         .timeout(PUSH_TIMEOUT, scheduler: MainScheduler.instance)
+                        .do(onNext: { _ in AnalyticsManager.sharedManager.record(event: Event.ocrPushMessageReceived()) })
+                        .do(onError: { _ in AnalyticsManager.sharedManager.record(event: Event.ocrPushMessageTimeOut()) })
                         .catchError({ _ -> Observable<JSON> in
                             return Observable<JSON>.just(JSON())
                         }).map({
@@ -47,11 +50,15 @@ class ScanService {
                     self?.statusSubject.onNext(.fetching)
                     return APIAdapter.json(.get, endpoint("recognitions/\(id)"))
                         .timeout(NETWORK_TIMEOUT, scheduler: MainScheduler.instance)
-                        .catchErrorJustReturn(Scan(image: image))
+                        .do(onError: { error in
+                            AnalyticsManager.sharedManager.record(event: Event.ocrRequestFailed())
+                            AnalyticsManager.sharedManager.record(event: ErrorEvent(error: error))
+                        }).catchErrorJustReturn(Scan(image: image))
                         .map({ JSON($0) })
                         .map({ Scan(json: $0, image: image) })
                         .do(onNext: { [weak self] _ in
                             self?.statusSubject.onNext(.completed)
+                            AnalyticsManager.sharedManager.record(event: Event.ocrRequestSucceeded())
                             ScansPurchaseTracker.shared.decrementRemainingScans()
                         })
                 }).catchErrorJustReturn(Scan(image: image))
