@@ -20,8 +20,9 @@ extension Event {
         case Ratings = "Ratings"
         case Informational = "Informational"
         case OnError = "OnError"
+        case OCR = "OCR"
         
-        static let allValues = [Purchases, Navigation, Reports, Receipts, Distance, Generate, Ratings, Informational, OnError]
+        static let allValues = [Purchases, Navigation, Reports, Receipts, Distance, Generate, Ratings, Informational, OnError, OCR]
     }
 }
 
@@ -120,6 +121,21 @@ public extension Event {
     struct Informational {
         static let ConfigureReport = Event(category: Category.Reports, name: "ConfigureReports")
     }
+    
+    struct OCR {
+        static let InfoTooltipShown = Event(category: Category.OCR, name: "OcrInfoTooltipShown");
+        static let InfoTooltipOpen = Event(category: Category.OCR, name: "OcrInfoTooltipOpen");
+        static let InfoTooltipDismiss = Event(category: Category.OCR, name: "OcrInfoTooltipDismiss");
+        static let ViewConfigurationPage = Event(category: Category.OCR, name: "OcrViewConfigurationPage");
+        static let PurchaseClicked = Event(category: Category.OCR, name: "OcrPurchaseClicked");
+        static let IsEnabledToggled = Event(category: Category.OCR, name: "OcrIsEnabledToggled");
+        static let IncognitoModeToggled = Event(category: Category.OCR, name: "OcrIncognitoModeToggled");
+        static let RequestStarted = Event(category: Category.OCR, name: "OcrRequestStarted");
+        static let PushMessageReceived = Event(category: Category.OCR, name: "OcrPushMessageReceived");
+        static let PushMessageTimeOut = Event(category: Category.OCR, name: "OcrPushMessageTimeOut");
+        static let RequestSucceeded = Event(category: Category.OCR, name: "OcrRequestSucceeded");
+        static let RequestFailed = Event(category: Category.OCR, name: "OcrRequestFailed");
+    }
 }
 
 
@@ -171,6 +187,13 @@ public extension Event {
     
     // MARK: - Event.Informational (WBGenerateViewController)
     class func informationalConfigureReport() -> Event {return Event.Informational.ConfigureReport}
+    
+    // MARK: - Event.OCR (ScanService)
+    class func ocrRequestStarted() -> Event {return Event.OCR.RequestStarted}
+    class func ocrPushMessageReceived() -> Event {return Event.OCR.PushMessageReceived}
+    class func ocrPushMessageTimeOut() -> Event {return Event.OCR.PushMessageTimeOut}
+    class func ocrRequestSucceeded() -> Event {return Event.OCR.RequestSucceeded}
+    class func ocrRequestFailed() -> Event {return Event.OCR.RequestFailed}
     
 }
 
