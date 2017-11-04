@@ -60,12 +60,20 @@ class ReceiptsRouter: Router {
     }
     
     func openCreatePhotoReceipt() {
+        var hud: PendingHUDView?
         ImagePicker.sharedInstance().rx_openOn(_view)
             .filter({ $0 != nil })
             .map({ $0! })
             .flatMap({ [unowned self] img -> Observable<Scan> in
+                hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
+                _ = self.presenter.scanService.status
+                    .subscribe(onNext: { status in
+                        hud?.titleLabelText = status.localizedText
+                        hud?.setIcon(status.icon)
+                    })
                 return self.presenter.scanService.scan(image: img)
             }).subscribe(onNext: { [unowned self] scan in
+                hud?.hide()
                 self.openEditModule(with: scan)
             }).disposed(by: bag)
     }

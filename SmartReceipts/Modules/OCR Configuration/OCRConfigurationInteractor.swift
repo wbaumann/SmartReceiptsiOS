@@ -30,14 +30,14 @@ class OCRConfigurationInteractor: Interactor {
     }
     
     func purchase(product: String) {
-        let hud = PendingHUDView.showHUD(on: presenter._view.view)
+        let hud = PendingHUDView.show(on: presenter._view.view)
         purchaseService.purchase(prodcutID: product)
             .subscribe(onNext: { _ in
-                hud?.hide()
+                hud.hide()
                 let text = LocalizedString("ocr.configuration.module.toast.success.purchase")
                 Toast.show(text)
             }, onError: { _ in
-                hud?.hide()
+                hud.hide()
             }).disposed(by: bag)
     }
 }

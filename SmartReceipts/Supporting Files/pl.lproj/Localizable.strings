@@ -398,3 +398,7 @@
 
 "menu.item.settings" = "Settings";
 "menu.item.auto.scans" = "Automatic Scans (OCR)";
+
+"scan.status.uploading" = "Uploading...";
+"scan.status.scanning" = "Scanning...";
+"scan.status.fetching" = "Fetching...";

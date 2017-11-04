@@ -116,7 +116,7 @@ class FetchedTableViewController: UserInterface {
     //MARK: Data
     
     func fetchObjects() {
-        let hud = PendingHUDView.showHUD(on: navigationController?.view ?? view)
+        let hud = PendingHUDView.show(on: navigationController?.view ?? view)
         
         AppDelegate.instance.dataQueue.async { [weak self] in
             let fmd = self?.createFetchedModelAdapter()
@@ -127,7 +127,7 @@ class FetchedTableViewController: UserInterface {
                 self?.tableView.reloadData()
                 self?.checkNeedsPlaceholder()
                 self?.contentChanged()
-                hud?.hide()
+                hud.hide()
             }
         }
     }

@@ -138,7 +138,7 @@ fileprivate extension AppDelegate {
     }
     
     func importZip(from: URL, overwrite: Bool) {
-        let hud = PendingHUDView.showHUD(on: window!.rootViewController!.view)
+        let hud = PendingHUDView.show(on: window!.rootViewController!.view)
         dataQueue.async {
             let dataImport = DataImport(inputFile: from.path, output: FileManager.documentsPath)
             var success = true
@@ -151,7 +151,7 @@ fileprivate extension AppDelegate {
             }
             
             DispatchQueue.main.async {
-                hud?.hide()
+                hud.hide()
                 if success {
                     UIAlertView(title: nil, message: LocalizedString("app.delegate.import.success.alert.message"),
                                 delegate: nil,
