@@ -22,8 +22,9 @@ class ScanService {
     }
     
     func scan(image: UIImage) -> Observable<Scan> {
-        if (WBPreferences.automaticScansEnabled() && FeatureFlags.ocrSupport.isEnabled &&
-            AuthService.shared.isLoggedIn && ScansPurchaseTracker.shared.hasAvailableScans) {
+        if WBPreferences.automaticScansEnabled() && FeatureFlags.ocrSupport.isEnabled &&
+            AuthService.shared.isLoggedIn && ScansPurchaseTracker.shared.hasAvailableScans {
+            PushNotificationService.shared.updateToken()
             statusSubject.onNext(.uploading)
             return s3Service.upload(image: image)
                 .flatMap({ [weak self] url -> Observable<String> in

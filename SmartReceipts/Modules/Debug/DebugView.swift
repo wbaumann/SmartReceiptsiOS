@@ -47,6 +47,12 @@ final class DebugView: UserInterface {
         closeButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.dismiss(animated: true, completion: nil)
         }).disposed(by: bag)
+        
+        formView?.rx.scanTap
+            .flatMap({ [unowned self] in
+                self.presenter.scan()
+            }).bind(to: formView!.scanObserver)
+            .disposed(by: bag)
     }
     
 }
