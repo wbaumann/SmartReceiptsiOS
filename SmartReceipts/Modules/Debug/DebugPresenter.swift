@@ -27,6 +27,10 @@ class DebugPresenter: Presenter {
             .disposed(by: bag)
     }
     
+    func scan() -> Observable<Scan> {
+        return interactor.scan()
+    }
+    
 }
 
 

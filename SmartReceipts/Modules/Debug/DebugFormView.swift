@@ -12,12 +12,15 @@ import RxSwift
 import RxCocoa
 import Toaster
 
+fileprivate let SCAN_ROW = "ScanRow"
+
 class DebugFormView: FormViewController {
     
     fileprivate let loginSubject = PublishSubject<Void>()
     fileprivate let ocrConfigSubject = PublishSubject<Void>()
     fileprivate let testLoginSubject = PublishSubject<Void>()
     fileprivate let subscriptionSubject = PublishSubject<Bool>()
+    fileprivate let scanSubject = PublishSubject<Void>()
     private let s3Service = S3Service()
     private let bag = DisposeBag()
 
@@ -73,6 +76,25 @@ class DebugFormView: FormViewController {
         }).cellSetup({ cell, row in
             cell.tintColor = AppTheme.primaryColor
         })
+        
+        +++ Section("Scan")
+        <<< ButtonRow() { row in
+            row.title = "Test Scan"
+        }.onCellSelection({ [unowned self] cell, row in
+            self.scanSubject.onNext()
+        })
+            
+        <<< ScanRow(SCAN_ROW)
+        
+    }
+    
+    var scanObserver: AnyObserver<Scan> {
+        return AnyObserver<Scan>(onNext: { [weak self] scan in
+            if self == nil { return }
+            let scanRow = self!.form.rowBy(tag: SCAN_ROW) as! ScanRow
+            scanRow.value = scan
+            scanRow.updateCell()
+        })
     }
     
 }
@@ -82,4 +104,5 @@ extension Reactive where Base: DebugFormView  {
     var ocrConfiurationTap: Observable<Void> { return base.ocrConfigSubject }
     var subscriptionChange: Observable<Bool> { return base.subscriptionSubject }
     var testLoginTap: Observable<Void> { return base.testLoginSubject }
+    var scanTap: Observable<Void> { return base.scanSubject }
 }

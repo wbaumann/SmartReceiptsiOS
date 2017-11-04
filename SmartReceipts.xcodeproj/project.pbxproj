@@ -97,6 +97,8 @@
 		714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901C01F0598B900772B6F /* CurrencyExchangeService.swift */; };
 		7152DF1D1F0C24750088EE98 /* PDFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152DF1C1F0C24750088EE98 /* PDFPageView.swift */; };
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
+		7156066E1FAE67CF00E09760 /* ScanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7156066D1FAE67CF00E09760 /* ScanCell.xib */; };
+		715606701FAE67DE00E09760 /* ScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156066F1FAE67DE00E09760 /* ScanCell.swift */; };
 		71572D851F15EA41001A1301 /* Columns.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71572D7F1F15EA41001A1301 /* Columns.storyboard */; };
 		71572D861F15EA41001A1301 /* ColumnsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71572D801F15EA41001A1301 /* ColumnsDisplayData.swift */; };
 		71572D871F15EA41001A1301 /* ColumnsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71572D811F15EA41001A1301 /* ColumnsInteractor.swift */; };
@@ -592,6 +594,8 @@
 		714901C01F0598B900772B6F /* CurrencyExchangeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeService.swift; sourceTree = "<group>"; };
 		7152DF1C1F0C24750088EE98 /* PDFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageView.swift; sourceTree = "<group>"; };
 		71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportShareService.swift; sourceTree = "<group>"; };
+		7156066D1FAE67CF00E09760 /* ScanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanCell.xib; sourceTree = "<group>"; };
+		7156066F1FAE67DE00E09760 /* ScanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCell.swift; sourceTree = "<group>"; };
 		71572D7F1F15EA41001A1301 /* Columns.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Columns.storyboard; sourceTree = "<group>"; };
 		71572D801F15EA41001A1301 /* ColumnsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnsDisplayData.swift; sourceTree = "<group>"; };
 		71572D811F15EA41001A1301 /* ColumnsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnsInteractor.swift; sourceTree = "<group>"; };
@@ -1288,6 +1292,8 @@
 				715B4EBB1F114A9C0021ACD8 /* PurchaseButtonCell.swift */,
 				715B4EBC1F114A9C0021ACD8 /* PurchaseButtonCell.xib */,
 				71AD67711F23FA810033B643 /* PredectiveTextCell.swift */,
+				7156066F1FAE67DE00E09760 /* ScanCell.swift */,
+				7156066D1FAE67CF00E09760 /* ScanCell.xib */,
 			);
 			path = "Eureka Custom";
 			sourceTree = "<group>";
@@ -2494,6 +2500,7 @@
 				84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */,
 				719B1FF41EF6033A0049BD71 /* ReceiptActions.storyboard in Resources */,
 				841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */,
+				7156066E1FAE67CF00E09760 /* ScanCell.xib in Resources */,
 				719B1FDC1EF603190049BD71 /* Receipts.storyboard in Resources */,
 				71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */,
 				715B4EBE1F114A9C0021ACD8 /* PurchaseButtonCell.xib in Resources */,
@@ -3144,6 +3151,7 @@
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
 				71AEDDE71EDF823D00BAC0DD /* AppModules.swift in Sources */,
+				715606701FAE67DE00E09760 /* ScanCell.swift in Sources */,
 				71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */,
 				71ACA7C51F5B69C90024903E /* DebugDisplayData.swift in Sources */,
 				714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */,

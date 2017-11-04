@@ -19,6 +19,8 @@ class PushNotificationService: NSObject {
     override init() {}
     static let shared = PushNotificationService()
     
+    var token: String? { return Messaging.messaging().fcmToken }
+    
     func initialize() {
         Messaging.messaging().delegate = self
         
@@ -35,6 +37,12 @@ class PushNotificationService: NSObject {
                     self.saveDevice(token: token)
                 }
             }).disposed(by: bag)
+    }
+    
+    func updateToken() {
+        if let token = self.token {
+            saveDevice(token: token)
+        }
     }
     
     fileprivate func saveDevice(token: String) {

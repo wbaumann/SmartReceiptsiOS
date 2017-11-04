@@ -32,6 +32,16 @@ class Scan {
     }
 }
 
+extension Scan: Equatable {
+    static func ==(lhs: Scan, rhs: Scan) -> Bool {
+        if lhs === rhs { return true }
+        return lhs.merchant == lhs.merchant && lhs.totalAmount == rhs.totalAmount &&
+               lhs.taxAmount == lhs.taxAmount && lhs.date == rhs.date
+    }
+    
+    
+}
+
 fileprivate extension JSON {
     var data: JSON {
         return self["data"]
