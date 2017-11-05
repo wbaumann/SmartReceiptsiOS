@@ -23,10 +23,11 @@ class ScanCell: Cell<Scan>, CellType {
     public override func update() {
         super.update()
         if let scan = row().value {
-            title.text = scan.merchant
+            let notRecognized = "(Not recognized)"
+            title.text = scan.merchant ?? notRecognized
             totalAmount.text = NSDecimalNumber(value: scan.totalAmount ?? 0).stringValue
             taxAmount.text = NSDecimalNumber(value: scan.taxAmount ?? 0).stringValue
-            date.text = scan.date?.description
+            date.text = scan.date?.description ?? notRecognized
         }
     }
     
