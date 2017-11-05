@@ -405,7 +405,6 @@
 		EA46678F1AE7EA1700B4E502 /* ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA46678E1AE7EA1600B4E502 /* ImagePicker.m */; };
 		EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CBD1AF2866E0083FDD7 /* UIView+LoadHelpers.m */; };
 		EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CC81AF288570083FDD7 /* UITableViewCell+Identifier.m */; };
-		EA5963EC1AF2957200935344 /* NoCaretTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963EB1AF2957200935344 /* NoCaretTextField.m */; };
 		EA5963F41AF29B1A00935344 /* UIView+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963F31AF29B1A00935344 /* UIView+Search.m */; };
 		EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5EF0D41AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m */; };
 		EA5EF0D61AF7E9C9009FA608 /* DatabaseTableNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF491AF40066004D17F6 /* DatabaseTableNames.m */; };
@@ -987,8 +986,6 @@
 		EA4C5CBD1AF2866E0083FDD7 /* UIView+LoadHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LoadHelpers.m"; sourceTree = "<group>"; };
 		EA4C5CC71AF288570083FDD7 /* UITableViewCell+Identifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Identifier.h"; sourceTree = "<group>"; };
 		EA4C5CC81AF288570083FDD7 /* UITableViewCell+Identifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Identifier.m"; sourceTree = "<group>"; };
-		EA5963EA1AF2957200935344 /* NoCaretTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoCaretTextField.h; path = Views/NoCaretTextField.h; sourceTree = "<group>"; };
-		EA5963EB1AF2957200935344 /* NoCaretTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoCaretTextField.m; path = Views/NoCaretTextField.m; sourceTree = "<group>"; };
 		EA5963F21AF29B1A00935344 /* UIView+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Search.h"; sourceTree = "<group>"; };
 		EA5963F31AF29B1A00935344 /* UIView+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Search.m"; sourceTree = "<group>"; };
 		EA5EF0D31AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchAdapterDelegateCheckHelper.h; sourceTree = "<group>"; };
@@ -1578,8 +1575,6 @@
 				8478B77718D383EF0041CBA3 /* iPad */,
 				8421A1F61907C03B001DF38D /* iPhone */,
 				EA66B2BD1B13809900A57750 /* LaunchView.xib */,
-				EA5963EA1AF2957200935344 /* NoCaretTextField.h */,
-				EA5963EB1AF2957200935344 /* NoCaretTextField.m */,
 				719310251EDDB7CF0065B5AD /* FetchedPlaceholderView.swift */,
 				719310271EDDB9960065B5AD /* WBAbstractPicker.h */,
 				719310281EDDB9960065B5AD /* WBAbstractPicker.m */,
@@ -2974,7 +2969,6 @@
 				A7F05BB21CFC15760079F1AD /* ExchangedTaxed.swift in Sources */,
 				84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */,
 				71FB1D401F195D0D00742FF5 /* PaymentMethodsInteractor.swift in Sources */,
-				EA5963EC1AF2957200935344 /* NoCaretTextField.m in Sources */,
 				EA10AD2F1B18B22000F2BCBB /* Database+Import.m in Sources */,
 				71F468341EEEDB03009F6CE7 /* EditTripInteractor.swift in Sources */,
 				8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */,
