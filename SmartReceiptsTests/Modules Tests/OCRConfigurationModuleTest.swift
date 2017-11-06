@@ -32,7 +32,7 @@ class OCRConfigurationModuleTest: XCTestCase {
         let i = OCRConfigurationInteractor(purchaseService: purchaseService)
         let r = OCRConfigurationRouter()
         
-        var module = AppModules.oCRConfiguration.build()
+        var module = AppModules.OCRConfiguration.build()
         module.injectMock(presenter: MockOCRConfigurationPresenter().spy(on: p))
         module.injectMock(interactor: MockOCRConfigurationInteractor().spy(on: i))
         module.injectMock(router: MockOCRConfigurationRouter().spy(on: r))

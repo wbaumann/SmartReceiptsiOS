@@ -35,7 +35,7 @@ final class DebugView: UserInterface {
         configureUIActions()
         
         // Handle Push Notifications and show on Debug Screen
-        PushNotificationService.shared.rx.notificationJSON
+        PushNotificationService.shared.notificationJSON
             .subscribe(onNext: { json in
                 Toast(text: json.description).show()
             }).disposed(by: bag)

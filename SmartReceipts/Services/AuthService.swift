@@ -17,7 +17,11 @@ fileprivate let AUTH_EMAIL_KEY = "auth.email"
 
 let JSON_HEADERS = ["Content-Type":"application/json"]
 
-class AuthService {
+protocol AuthServiceInterface {
+    var isLoggedIn: Bool { get }
+}
+
+class AuthService: AuthServiceInterface {
     private let tokenVar = Variable<String>(UserDefaults.standard.string(forKey: AUTH_TOKEN_KEY) ?? "")
     private let emailVar = Variable<String>(UserDefaults.standard.string(forKey: AUTH_EMAIL_KEY) ?? "")
     

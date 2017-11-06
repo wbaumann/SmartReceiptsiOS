@@ -15,11 +15,12 @@ import SwiftyJSON
 class PushNotificationService: NSObject {
     fileprivate let notificationSubject = PublishSubject<JSON>()
     let bag = DisposeBag()
-    
-    override init() {}
     static let shared = PushNotificationService()
     
     var token: String? { return Messaging.messaging().fcmToken }
+    var notificationJSON: Observable<JSON> { return notificationSubject.asObservable() }
+    
+    override init() {}
     
     func initialize() {
         Messaging.messaging().delegate = self
@@ -69,11 +70,5 @@ extension PushNotificationService: UNUserNotificationCenterDelegate, MessagingDe
         if AuthService.shared.isLoggedIn {
             saveDevice(token: fcmToken)
         }
-    }
-}
-
-extension Reactive where Base: PushNotificationService {
-    var notificationJSON: Observable<JSON> {
-        return base.notificationSubject.asObservable()
     }
 }

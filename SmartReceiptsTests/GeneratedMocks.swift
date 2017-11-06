@@ -861,6 +861,19 @@ class MockAuthRouter: AuthRouter, Cuckoo.Mock {
     
 
     
+     override func close()  {
+        
+            return cuckoo_manager.call("close()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.close()
+                    }
+                })
+        
+    }
+    
 
     struct __StubbingProxy_AuthRouter: Cuckoo.StubbingProxy {
         private let cuckoo_manager: Cuckoo.MockManager
@@ -869,6 +882,11 @@ class MockAuthRouter: AuthRouter, Cuckoo.Mock {
             self.cuckoo_manager = manager
         }
         
+        
+        func close() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("close()", parameterMatchers: matchers))
+        }
         
     }
 
@@ -887,6 +905,12 @@ class MockAuthRouter: AuthRouter, Cuckoo.Mock {
         
 
         
+        @discardableResult
+        func close() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
     }
 
 
@@ -897,6 +921,10 @@ class MockAuthRouter: AuthRouter, Cuckoo.Mock {
 
     
 
+    
+     override func close()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
     
 }
 
@@ -1253,6 +1281,32 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
         
     }
     
+     override func openAuth()  -> AuthModuleInterface {
+        
+            return cuckoo_manager.call("openAuth() -> AuthModuleInterface",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> AuthModuleInterface in
+                        let () = args
+                        return o.openAuth()
+                    }
+                })
+        
+    }
+    
+     override func openAutoScans()  {
+        
+            return cuckoo_manager.call("openAutoScans()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.openAutoScans()
+                    }
+                })
+        
+    }
+    
      override func openEdit(trip: WBTrip)  {
         
             return cuckoo_manager.call("openEdit(trip: WBTrip)",
@@ -1324,6 +1378,16 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
             return .init(stub: cuckoo_manager.createStub("openDebug()", parameterMatchers: matchers))
         }
         
+        func openAuth() -> Cuckoo.StubFunction<(), AuthModuleInterface> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("openAuth() -> AuthModuleInterface", parameterMatchers: matchers))
+        }
+        
+        func openAutoScans() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("openAutoScans()", parameterMatchers: matchers))
+        }
+        
         func openEdit<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.StubNoReturnFunction<(WBTrip)> where M1.MatchedType == WBTrip {
             let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
             return .init(stub: cuckoo_manager.createStub("openEdit(trip: WBTrip)", parameterMatchers: matchers))
@@ -1374,6 +1438,18 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
         }
         
         @discardableResult
+        func openAuth() -> Cuckoo.__DoNotUse<AuthModuleInterface> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("openAuth() -> AuthModuleInterface", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func openAutoScans() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("openAutoScans()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
         func openEdit<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBTrip {
             let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
             return cuckoo_manager.verify("openEdit(trip: WBTrip)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
@@ -1413,6 +1489,14 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
     }
     
      override func openDebug()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func openAuth()  -> AuthModuleInterface {
+        return DefaultValueRegistry.defaultValue(for: AuthModuleInterface.self)
+    }
+    
+     override func openAutoScans()  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
@@ -2080,6 +2164,14 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
     }
 
     
+    // ["name": "scanService", "accesibility": "", "@type": "InstanceVariable", "type": "ScanService", "isReadOnly": true]
+     override var scanService: ScanService {
+        get {
+            return cuckoo_manager.getter("scanService", original: observed.map { o in return { () -> ScanService in o.scanService }})
+        }
+        
+    }
+    
 
     
 
@@ -2118,6 +2210,10 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
             self.cuckoo_manager = manager
         }
         
+        var scanService: Cuckoo.ToBeStubbedReadOnlyProperty<ScanService> {
+            return .init(manager: cuckoo_manager, name: "scanService")
+        }
+        
         
         func viewHasLoaded() -> Cuckoo.StubNoReturnFunction<()> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
@@ -2144,6 +2240,10 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
         }
 
         
+        var scanService: Cuckoo.VerifyReadOnlyProperty<ScanService> {
+            return .init(manager: cuckoo_manager, name: "scanService", callMatcher: callMatcher, sourceLocation: sourceLocation)
+        }
+        
 
         
         @discardableResult
@@ -2164,6 +2264,13 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
 }
 
  class ReceiptsPresenterStub: ReceiptsPresenter {
+    
+     override var scanService: ScanService {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (ScanService).self)
+        }
+        
+    }
     
 
     
@@ -3723,6 +3830,116 @@ import RxSwift
 import Toaster
 import Viperit
 
+class MockAuthModuleInterface: AuthModuleInterface, Cuckoo.Mock {
+    typealias MocksType = AuthModuleInterface
+    typealias Stubbing = __StubbingProxy_AuthModuleInterface
+    typealias Verification = __VerificationProxy_AuthModuleInterface
+    let cuckoo_manager = Cuckoo.MockManager()
+
+    private var observed: AuthModuleInterface?
+
+    func spy(on victim: AuthModuleInterface) -> Self {
+        observed = victim
+        return self
+    }
+
+    
+    // ["name": "successAuth", "accesibility": "", "@type": "InstanceVariable", "type": "Observable<Void>", "isReadOnly": true]
+     var successAuth: Observable<Void> {
+        get {
+            return cuckoo_manager.getter("successAuth", original: observed.map { o in return { () -> Observable<Void> in o.successAuth }})
+        }
+        
+    }
+    
+
+    
+
+    
+     func close()  {
+        
+            return cuckoo_manager.call("close()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.close()
+                    }
+                })
+        
+    }
+    
+
+    struct __StubbingProxy_AuthModuleInterface: Cuckoo.StubbingProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+
+        init(manager: Cuckoo.MockManager) {
+            self.cuckoo_manager = manager
+        }
+        
+        var successAuth: Cuckoo.ToBeStubbedReadOnlyProperty<Observable<Void>> {
+            return .init(manager: cuckoo_manager, name: "successAuth")
+        }
+        
+        
+        func close() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("close()", parameterMatchers: matchers))
+        }
+        
+    }
+
+
+    struct __VerificationProxy_AuthModuleInterface: Cuckoo.VerificationProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+        private let callMatcher: Cuckoo.CallMatcher
+        private let sourceLocation: Cuckoo.SourceLocation
+
+        init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+            self.cuckoo_manager = manager
+            self.callMatcher = callMatcher
+            self.sourceLocation = sourceLocation
+        }
+
+        
+        var successAuth: Cuckoo.VerifyReadOnlyProperty<Observable<Void>> {
+            return .init(manager: cuckoo_manager, name: "successAuth", callMatcher: callMatcher, sourceLocation: sourceLocation)
+        }
+        
+
+        
+        @discardableResult
+        func close() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+    }
+
+
+}
+
+ class AuthModuleInterfaceStub: AuthModuleInterface {
+    
+     var successAuth: Observable<Void> {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (Observable<Void>).self)
+        }
+        
+    }
+    
+
+    
+
+    
+     func close()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+}
+
+
+
 class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
     typealias MocksType = AuthPresenter
     typealias Stubbing = __StubbingProxy_AuthPresenter
@@ -4236,6 +4453,137 @@ class MockOCRConfigurationPresenter: OCRConfigurationPresenter, Cuckoo.Mock {
     
      override func viewHasLoaded()  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+}
+
+
+
+
+// MARK: - Mocks generated from file: SmartReceipts/Services/APIs/RecognitionAPI.swift
+//
+//  RecognitionAPI.swift
+//  SmartReceipts
+//
+//  Created by Bogdan Evsenev on 05/11/2017.
+//  Copyright © 2017 Will Baumann. All rights reserved.
+//
+
+import Cuckoo
+@testable import SmartReceipts
+
+import RxSwift
+import SwiftyJSON
+
+class MockRecognitionAPI: RecognitionAPI, Cuckoo.Mock {
+    typealias MocksType = RecognitionAPI
+    typealias Stubbing = __StubbingProxy_RecognitionAPI
+    typealias Verification = __VerificationProxy_RecognitionAPI
+    let cuckoo_manager = Cuckoo.MockManager()
+
+    private var observed: RecognitionAPI?
+
+    func spy(on victim: RecognitionAPI) -> Self {
+        observed = victim
+        return self
+    }
+
+    
+
+    
+
+    
+     override func getRecognition(_ id: String)  -> Observable<JSON> {
+        
+            return cuckoo_manager.call("getRecognition(_: String) -> Observable<JSON>",
+                parameters: (id),
+                original: observed.map { o in
+                    return { (args) -> Observable<JSON> in
+                        let (id) = args
+                        return o.getRecognition(id)
+                    }
+                })
+        
+    }
+    
+     override func recognize(url: URL, incognito: Bool)  -> Observable<String> {
+        
+            return cuckoo_manager.call("recognize(url: URL, incognito: Bool) -> Observable<String>",
+                parameters: (url, incognito),
+                original: observed.map { o in
+                    return { (args) -> Observable<String> in
+                        let (url, incognito) = args
+                        return o.recognize(url: url, incognito: incognito)
+                    }
+                })
+        
+    }
+    
+
+    struct __StubbingProxy_RecognitionAPI: Cuckoo.StubbingProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+
+        init(manager: Cuckoo.MockManager) {
+            self.cuckoo_manager = manager
+        }
+        
+        
+        func getRecognition<M1: Cuckoo.Matchable>(_ id: M1) -> Cuckoo.StubFunction<(String), Observable<JSON>> where M1.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: id) { $0 }]
+            return .init(stub: cuckoo_manager.createStub("getRecognition(_: String) -> Observable<JSON>", parameterMatchers: matchers))
+        }
+        
+        func recognize<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(url: M1, incognito: M2) -> Cuckoo.StubFunction<(URL, Bool), Observable<String>> where M1.MatchedType == URL, M2.MatchedType == Bool {
+            let matchers: [Cuckoo.ParameterMatcher<(URL, Bool)>] = [wrap(matchable: url) { $0.0 }, wrap(matchable: incognito) { $0.1 }]
+            return .init(stub: cuckoo_manager.createStub("recognize(url: URL, incognito: Bool) -> Observable<String>", parameterMatchers: matchers))
+        }
+        
+    }
+
+
+    struct __VerificationProxy_RecognitionAPI: Cuckoo.VerificationProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+        private let callMatcher: Cuckoo.CallMatcher
+        private let sourceLocation: Cuckoo.SourceLocation
+
+        init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+            self.cuckoo_manager = manager
+            self.callMatcher = callMatcher
+            self.sourceLocation = sourceLocation
+        }
+
+        
+
+        
+        @discardableResult
+        func getRecognition<M1: Cuckoo.Matchable>(_ id: M1) -> Cuckoo.__DoNotUse<Observable<JSON>> where M1.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: id) { $0 }]
+            return cuckoo_manager.verify("getRecognition(_: String) -> Observable<JSON>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func recognize<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(url: M1, incognito: M2) -> Cuckoo.__DoNotUse<Observable<String>> where M1.MatchedType == URL, M2.MatchedType == Bool {
+            let matchers: [Cuckoo.ParameterMatcher<(URL, Bool)>] = [wrap(matchable: url) { $0.0 }, wrap(matchable: incognito) { $0.1 }]
+            return cuckoo_manager.verify("recognize(url: URL, incognito: Bool) -> Observable<String>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+    }
+
+
+}
+
+ class RecognitionAPIStub: RecognitionAPI {
+    
+
+    
+
+    
+     override func getRecognition(_ id: String)  -> Observable<JSON> {
+        return DefaultValueRegistry.defaultValue(for: Observable<JSON>.self)
+    }
+    
+     override func recognize(url: URL, incognito: Bool)  -> Observable<String> {
+        return DefaultValueRegistry.defaultValue(for: Observable<String>.self)
     }
     
 }
@@ -5110,6 +5458,166 @@ class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.Mock {
     
      override func delete(paymentMethod: PaymentMethod)  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+}
+
+
+
+
+// MARK: - Mocks generated from file: SmartReceipts/Services/S3Service.swift
+//
+//  S3Service.swift
+//  SmartReceipts
+//
+//  Created by Bogdan Evsenev on 22/09/2017.
+//  Copyright © 2017 Will Baumann. All rights reserved.
+//
+
+import Cuckoo
+@testable import SmartReceipts
+
+import AWSS3
+import Foundation
+import RxSwift
+
+class MockS3Service: S3Service, Cuckoo.Mock {
+    typealias MocksType = S3Service
+    typealias Stubbing = __StubbingProxy_S3Service
+    typealias Verification = __VerificationProxy_S3Service
+    let cuckoo_manager = Cuckoo.MockManager()
+
+    private var observed: S3Service?
+
+    func spy(on victim: S3Service) -> Self {
+        observed = victim
+        return self
+    }
+
+    
+
+    
+
+    
+     override func upload(image: UIImage)  -> Observable<URL> {
+        
+            return cuckoo_manager.call("upload(image: UIImage) -> Observable<URL>",
+                parameters: (image),
+                original: observed.map { o in
+                    return { (args) -> Observable<URL> in
+                        let (image) = args
+                        return o.upload(image: image)
+                    }
+                })
+        
+    }
+    
+     override func upload(file url: URL)  -> Observable<URL> {
+        
+            return cuckoo_manager.call("upload(file: URL) -> Observable<URL>",
+                parameters: (url),
+                original: observed.map { o in
+                    return { (args) -> Observable<URL> in
+                        let (url) = args
+                        return o.upload(file: url)
+                    }
+                })
+        
+    }
+    
+     override func downloadImage(_ url: URL, folder: String)  -> Observable<UIImage> {
+        
+            return cuckoo_manager.call("downloadImage(_: URL, folder: String) -> Observable<UIImage>",
+                parameters: (url, folder),
+                original: observed.map { o in
+                    return { (args) -> Observable<UIImage> in
+                        let (url, folder) = args
+                        return o.downloadImage(url, folder: folder)
+                    }
+                })
+        
+    }
+    
+
+    struct __StubbingProxy_S3Service: Cuckoo.StubbingProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+
+        init(manager: Cuckoo.MockManager) {
+            self.cuckoo_manager = manager
+        }
+        
+        
+        func upload<M1: Cuckoo.Matchable>(image: M1) -> Cuckoo.StubFunction<(UIImage), Observable<URL>> where M1.MatchedType == UIImage {
+            let matchers: [Cuckoo.ParameterMatcher<(UIImage)>] = [wrap(matchable: image) { $0 }]
+            return .init(stub: cuckoo_manager.createStub("upload(image: UIImage) -> Observable<URL>", parameterMatchers: matchers))
+        }
+        
+        func upload<M1: Cuckoo.Matchable>(file url: M1) -> Cuckoo.StubFunction<(URL), Observable<URL>> where M1.MatchedType == URL {
+            let matchers: [Cuckoo.ParameterMatcher<(URL)>] = [wrap(matchable: url) { $0 }]
+            return .init(stub: cuckoo_manager.createStub("upload(file: URL) -> Observable<URL>", parameterMatchers: matchers))
+        }
+        
+        func downloadImage<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ url: M1, folder: M2) -> Cuckoo.StubFunction<(URL, String), Observable<UIImage>> where M1.MatchedType == URL, M2.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(URL, String)>] = [wrap(matchable: url) { $0.0 }, wrap(matchable: folder) { $0.1 }]
+            return .init(stub: cuckoo_manager.createStub("downloadImage(_: URL, folder: String) -> Observable<UIImage>", parameterMatchers: matchers))
+        }
+        
+    }
+
+
+    struct __VerificationProxy_S3Service: Cuckoo.VerificationProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+        private let callMatcher: Cuckoo.CallMatcher
+        private let sourceLocation: Cuckoo.SourceLocation
+
+        init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+            self.cuckoo_manager = manager
+            self.callMatcher = callMatcher
+            self.sourceLocation = sourceLocation
+        }
+
+        
+
+        
+        @discardableResult
+        func upload<M1: Cuckoo.Matchable>(image: M1) -> Cuckoo.__DoNotUse<Observable<URL>> where M1.MatchedType == UIImage {
+            let matchers: [Cuckoo.ParameterMatcher<(UIImage)>] = [wrap(matchable: image) { $0 }]
+            return cuckoo_manager.verify("upload(image: UIImage) -> Observable<URL>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func upload<M1: Cuckoo.Matchable>(file url: M1) -> Cuckoo.__DoNotUse<Observable<URL>> where M1.MatchedType == URL {
+            let matchers: [Cuckoo.ParameterMatcher<(URL)>] = [wrap(matchable: url) { $0 }]
+            return cuckoo_manager.verify("upload(file: URL) -> Observable<URL>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func downloadImage<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ url: M1, folder: M2) -> Cuckoo.__DoNotUse<Observable<UIImage>> where M1.MatchedType == URL, M2.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(URL, String)>] = [wrap(matchable: url) { $0.0 }, wrap(matchable: folder) { $0.1 }]
+            return cuckoo_manager.verify("downloadImage(_: URL, folder: String) -> Observable<UIImage>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+    }
+
+
+}
+
+ class S3ServiceStub: S3Service {
+    
+
+    
+
+    
+     override func upload(image: UIImage)  -> Observable<URL> {
+        return DefaultValueRegistry.defaultValue(for: Observable<URL>.self)
+    }
+    
+     override func upload(file url: URL)  -> Observable<URL> {
+        return DefaultValueRegistry.defaultValue(for: Observable<URL>.self)
+    }
+    
+     override func downloadImage(_ url: URL, folder: String)  -> Observable<UIImage> {
+        return DefaultValueRegistry.defaultValue(for: Observable<UIImage>.self)
     }
     
 }
@@ -6632,6 +7140,18 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
         
     }
     
+    // ["name": "scanService", "accesibility": "", "@type": "InstanceVariable", "type": "ScanService!", "isReadOnly": false]
+     override var scanService: ScanService! {
+        get {
+            return cuckoo_manager.getter("scanService", original: observed.map { o in return { () -> ScanService! in o.scanService }})
+        }
+        
+        set {
+            cuckoo_manager.setter("scanService", value: newValue, original: observed != nil ? { self.observed?.scanService = $0 } : nil)
+        }
+        
+    }
+    
 
     
 
@@ -6730,6 +7250,10 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
             return .init(manager: cuckoo_manager, name: "trip")
         }
         
+        var scanService: Cuckoo.ToBeStubbedProperty<ScanService?> {
+            return .init(manager: cuckoo_manager, name: "scanService")
+        }
+        
         
         func configureSubscribers() -> Cuckoo.StubNoReturnFunction<()> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
@@ -6782,6 +7306,10 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
         
         var trip: Cuckoo.VerifyProperty<WBTrip?> {
             return .init(manager: cuckoo_manager, name: "trip", callMatcher: callMatcher, sourceLocation: sourceLocation)
+        }
+        
+        var scanService: Cuckoo.VerifyProperty<ScanService?> {
+            return .init(manager: cuckoo_manager, name: "scanService", callMatcher: callMatcher, sourceLocation: sourceLocation)
         }
         
 
@@ -6841,6 +7369,15 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.Mock {
      override var trip: WBTrip! {
         get {
             return DefaultValueRegistry.defaultValue(for: (WBTrip!).self)
+        }
+        
+        set { }
+        
+    }
+    
+     override var scanService: ScanService! {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (ScanService!).self)
         }
         
         set { }

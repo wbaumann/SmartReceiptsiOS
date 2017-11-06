@@ -50,6 +50,11 @@ class PendingHUDView: MRProgressOverlayView {
         layoutImage()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutImage()
+    }
+    
     private func layoutImage(for view: UIView? = nil) {
         if let layoutView = view ?? superview {
         let y = layoutView.bounds.height/2 + titleLabel.bounds.height/2
