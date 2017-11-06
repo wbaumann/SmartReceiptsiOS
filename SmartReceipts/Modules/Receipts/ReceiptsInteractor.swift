@@ -11,12 +11,15 @@ import Viperit
 import RxSwift
 
 class ReceiptsInteractor: Interactor {
-    
     var fetchedModelAdapter: FetchedModelAdapter!
     var trip: WBTrip!
-    var scanService = ScanService()
+    var scanService: ScanService!
     
     private let bag = DisposeBag()
+    
+    required init() {
+        scanService = ScanService()
+    }
     
     func configureSubscribers() {
         presenter.receiptDeleteSubject.subscribe( onNext: { receipt in

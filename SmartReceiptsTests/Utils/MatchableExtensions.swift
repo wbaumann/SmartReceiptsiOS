@@ -23,7 +23,7 @@ extension UIImage: Matchable {
     public var matcher: ParameterMatcher<UIImage> {
         get {
             return ParameterMatcher(matchesFunction: { image -> Bool in
-                return self.isEqual(image)
+                return true
             })
         }
     }
@@ -108,5 +108,14 @@ extension Credentials: Matchable {
             })
         }
     }
-   
+}
+
+extension URL: Matchable {
+    public var matcher: ParameterMatcher<URL> {
+        get {
+            return ParameterMatcher(matchesFunction: { url -> Bool in
+                return self == url
+            })
+        }
+    }
 }

@@ -1,0 +1,38 @@
+{
+    "recognition" : {
+        "status" : "Complete",
+        "id" : "1852794902",
+        "data" : {
+            "amount" : 12.59,
+            "recognition_data" : {
+                "merchantAddress" : {
+                    "confidenceLevel" : 0
+                },
+                "merchantTypes" : {
+                    "confidenceLevel" : 0
+                },
+                "totalAmount" : {
+                    "confidenceLevel" : 0.90000000000000002,
+                    "data" : 12.59
+                },
+                "date" : {
+                    "confidenceLevel" : 0.40000000000000002,
+                    "data" : "2013-04-07T12:00:00.000Z"
+                },
+                "confidenceLevel" : 0.66082671957671957,
+                "merchantName" : {
+                    "confidenceLevel" : 0.34999999999999998,
+                    "data" : "Ying Thai Kitchen"
+                },
+                "taxAmount" : {
+                    "confidenceLevel" : 0.016534391534391537,
+                    "data" : 1.0900000000000001
+                }
+            },
+            "tax" : 1.0900000000000001,
+            "date" : "2013-04-07T12:00:00.000Z"
+        },
+        "s3_path" : "ocr\/81736680-76A8-4387-9AEF-2F8FA99F652B_temp.jpg",
+        "created_at" : 1509914989
+    }
+}
