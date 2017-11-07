@@ -66,11 +66,7 @@ class ReceiptsRouter: Router {
             .map({ $0! })
             .flatMap({ [unowned self] img -> Observable<Scan> in
                 hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
-                _ = self.presenter.scanService.status
-                    .subscribe(onNext: { status in
-                        hud?.titleLabelText = status.localizedText
-                        hud?.setIcon(status.icon)
-                    })
+                hud?.observe(status: self.presenter.scanService.status)
                 return self.presenter.scanService.scan(image: img)
             }).subscribe(onNext: { [unowned self] scan in
                 hud?.hide()
