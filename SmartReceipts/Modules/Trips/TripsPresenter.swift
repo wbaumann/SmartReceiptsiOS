@@ -9,6 +9,7 @@
 import Foundation
 import Viperit
 import RxSwift
+import UserNotifications
 
 class TripsPresenter: Presenter {
     
@@ -45,7 +46,13 @@ class TripsPresenter: Presenter {
                 _ = authModule.successAuth
                     .map({ authModule.close() })
                     .delay(0.6, scheduler: MainScheduler.instance)
-                    .subscribe(onNext: { [unowned self] in
+                    .flatMap({ _ -> Observable<UNAuthorizationStatus> in
+                        PushNotificationService.shared.authorizationStatus()
+                    }).flatMap({ status -> Observable<Void> in
+                        let text = LocalizedString("push.request.alert.text")
+                        return status == .notDetermined ? UIAlertController.showInfo(text: text) : Observable<Void>.just()
+                    }).subscribe(onNext: { [unowned self] in
+                        _ = PushNotificationService.shared.requestAuthorization().subscribe()
                         self.router.openAutoScans()
                     })
             }).disposed(by: bag)

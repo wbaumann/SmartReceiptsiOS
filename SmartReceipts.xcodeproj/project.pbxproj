@@ -212,6 +212,7 @@
 		71B488C21EF42AF7008872E2 /* NoTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B488C11EF42AF7008872E2 /* NoTripsViewController.swift */; };
 		71B488C41EF47B1C008872E2 /* ObservableTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B488C31EF47B1C008872E2 /* ObservableTrips.swift */; };
 		71B488C71EF49209008872E2 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B488C51EF48706008872E2 /* Distance.swift */; };
+		71B5C5371FB1550F00FA0AB9 /* UIAlert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5C5361FB1550F00FA0AB9 /* UIAlert+Extensions.swift */; };
 		71B8610B1F0A9BE70069E251 /* SuggestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B8610A1F0A9BE70069E251 /* SuggestionView.m */; };
 		71B8610E1F0A9D800069E251 /* WBAutocompleteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B8610D1F0A9D800069E251 /* WBAutocompleteHelper.m */; };
 		71BC45511F9FB38C003A5BD5 /* LocalScansTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC45501F9FB38C003A5BD5 /* LocalScansTracker.swift */; };
@@ -727,6 +728,7 @@
 		71B488C11EF42AF7008872E2 /* NoTripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTripsViewController.swift; sourceTree = "<group>"; };
 		71B488C31EF47B1C008872E2 /* ObservableTrips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTrips.swift; sourceTree = "<group>"; };
 		71B488C51EF48706008872E2 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
+		71B5C5361FB1550F00FA0AB9 /* UIAlert+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Extensions.swift"; sourceTree = "<group>"; };
 		71B861091F0A9BE70069E251 /* SuggestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuggestionView.h; path = Views/SuggestionView.h; sourceTree = "<group>"; };
 		71B8610A1F0A9BE70069E251 /* SuggestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuggestionView.m; path = Views/SuggestionView.m; sourceTree = "<group>"; };
 		71B8610C1F0A9D800069E251 /* WBAutocompleteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBAutocompleteHelper.h; path = ../Reports/WBAutocompleteHelper.h; sourceTree = "<group>"; };
@@ -1983,6 +1985,7 @@
 				7109B00E1F61C35F0043AE04 /* UserDefaults+Extensions.swift */,
 				71652EAD1F646758002C8228 /* Toast+Extensions.swift */,
 				712A84E91F783E9300D988E7 /* Dictionary+Extensions.swift */,
+				71B5C5361FB1550F00FA0AB9 /* UIAlert+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3182,6 +3185,7 @@
 				71AF49E81EFDCC010022B2E2 /* ReceiptImageViewerView.swift in Sources */,
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
+				71B5C5371FB1550F00FA0AB9 /* UIAlert+Extensions.swift in Sources */,
 				71AEDDE71EDF823D00BAC0DD /* AppModules.swift in Sources */,
 				715606701FAE67DE00E09760 /* ScanCell.swift in Sources */,
 				71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */,
