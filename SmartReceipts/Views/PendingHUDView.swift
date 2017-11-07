@@ -7,9 +7,10 @@
 //
 
 import MRProgress
-
+import RxSwift
 
 class PendingHUDView: MRProgressOverlayView {
+    fileprivate let bag = DisposeBag()
     private var imageView: UIImageView?
     
     class func show(on view: UIView, text: String = "", icon: UIImage? = nil) -> PendingHUDView {
@@ -71,6 +72,16 @@ class PendingHUDView: MRProgressOverlayView {
     
     func hide() {
         dismiss(true)
+    }
+}
+
+// Status Observer
+extension PendingHUDView {
+    func observe(status: Observable<ScanStatus>) {
+        status.subscribe(onNext: { [unowned self] status in
+            self.titleLabelText = status.localizedText
+            self.setIcon(status.icon)
+        }).disposed(by: bag)
     }
 }
 

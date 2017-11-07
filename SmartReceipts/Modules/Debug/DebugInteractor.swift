@@ -28,11 +28,7 @@ class DebugInteractor: Interactor {
             .map({ $0! })
             .flatMap({ [unowned self] img -> Observable<Scan> in
                 hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
-                _ = self.scanService.status
-                    .subscribe(onNext: { status in
-                        hud?.titleLabelText = status.localizedText
-                        hud?.setIcon(status.icon)
-                    })
+                hud?.observe(status: self.scanService.status)
                 return self.scanService.scan(image: img)
             }).do(onNext: { scan in
                 hud?.hide()
