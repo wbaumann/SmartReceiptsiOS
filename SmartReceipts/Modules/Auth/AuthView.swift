@@ -14,6 +14,7 @@ import Toaster
 
 fileprivate let MINIMUM_EMAIL_LENGTH = 6
 fileprivate let MINIMUM_PASSWORD_LENGTH = 8
+fileprivate let BUTTON_CORNER_RADIUS: CGFloat = 5
 
 fileprivate typealias ValidationResult = (text: String, valid: Bool)
 
@@ -49,6 +50,8 @@ final class AuthView: UserInterface {
         super.viewDidLoad()
         configureRx()
         emailField.becomeFirstResponder()
+        loginButton.layer.cornerRadius = BUTTON_CORNER_RADIUS
+        signupButton.layer.cornerRadius = BUTTON_CORNER_RADIUS
     }
     
     private func configureRx() {

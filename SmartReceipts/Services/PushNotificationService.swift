@@ -28,16 +28,39 @@ class PushNotificationService: NSObject {
         AuthService.shared.loggedInObservable
             .filter({ $0 })
             .subscribe(onNext: { _ in
-                UNUserNotificationCenter.current().delegate = self
-                UNUserNotificationCenter.current()
-                    .requestAuthorization( options: [.badge], completionHandler: {_, _ in })
-                UIApplication.shared.registerForRemoteNotifications()
-                
                 if let token = Messaging.messaging().fcmToken {
                     Logger.debug("FCM Token: \(token)")
                     self.saveDevice(token: token)
                 }
             }).disposed(by: bag)
+
+    }
+    
+    func requestAuthorization() -> Observable<Void> {
+        return Observable<Void>.create({ observer -> Disposable in
+            UNUserNotificationCenter.current().delegate = self
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge]) { _ in
+                observer.onNext()
+                observer.onCompleted()
+            }
+            UIApplication.shared.registerForRemoteNotifications()
+            return Disposables.create()
+        })
+    }
+    
+    func authorizationStatus() -> Observable<UNAuthorizationStatus> {
+        return notificationSettings()
+            .map({ $0.authorizationStatus })
+    }
+    
+    func notificationSettings() -> Observable<UNNotificationSettings> {
+        return Observable<UNNotificationSettings>.create({ observer -> Disposable in
+            UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { settings in
+                observer.onNext(settings)
+                observer.onCompleted()
+            })
+            return Disposables.create()
+        })
     }
     
     func updateToken() {
