@@ -260,6 +260,7 @@
 		71FB1D411F195D0D00742FF5 /* PaymentMethodsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D3B1F195D0D00742FF5 /* PaymentMethodsPresenter.swift */; };
 		71FB1D421F195D0D00742FF5 /* PaymentMethodsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D3C1F195D0D00742FF5 /* PaymentMethodsRouter.swift */; };
 		71FB1D431F195D0D00742FF5 /* PaymentMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D3D1F195D0D00742FF5 /* PaymentMethodsView.swift */; };
+		71FC42821FB36257009F0B18 /* ScanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FC42811FB36257009F0B18 /* ScanTests.swift */; };
 		71FE9FF11F4778000043E7B4 /* TripTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9FEF1F4778000043E7B4 /* TripTabViewController.swift */; };
 		71FE9FF21F4778000043E7B4 /* TripTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71FE9FF01F4778000043E7B4 /* TripTabViewController.xib */; };
 		71FE9FF41F477F620043E7B4 /* FetchedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9FF31F477F620043E7B4 /* FetchedTableViewController.swift */; };
@@ -781,6 +782,7 @@
 		71FB1D3B1F195D0D00742FF5 /* PaymentMethodsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsPresenter.swift; sourceTree = "<group>"; };
 		71FB1D3C1F195D0D00742FF5 /* PaymentMethodsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsRouter.swift; sourceTree = "<group>"; };
 		71FB1D3D1F195D0D00742FF5 /* PaymentMethodsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsView.swift; sourceTree = "<group>"; };
+		71FC42811FB36257009F0B18 /* ScanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanTests.swift; sourceTree = "<group>"; };
 		71FE9FE71F46F3DE0043E7B4 /* FetchedModelAdapter+Testable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FetchedModelAdapter+Testable.h"; sourceTree = "<group>"; };
 		71FE9FEF1F4778000043E7B4 /* TripTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTabViewController.swift; sourceTree = "<group>"; };
 		71FE9FF01F4778000043E7B4 /* TripTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripTabViewController.xib; sourceTree = "<group>"; };
@@ -2290,6 +2292,7 @@
 				71097CA41F04350300223B72 /* DistanceTests.swift */,
 				71097CA61F04410100223B72 /* TaxCalculatorTests.swift */,
 				714901BB1F05632200772B6F /* PaymentMethodTests.swift */,
+				71FC42811FB36257009F0B18 /* ScanTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3308,6 +3311,7 @@
 				A709D7471CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift in Sources */,
 				EA36DE531B0119150034CC2D /* DatabaseHintsTest.m in Sources */,
 				5757D6141E929ECA000F65F9 /* Database+Sync.swift in Sources */,
+				71FC42821FB36257009F0B18 /* ScanTests.swift in Sources */,
 				71097CA71F04410100223B72 /* TaxCalculatorTests.swift in Sources */,
 				715606861FAFA43200E09760 /* CategoriesModuleTest.swift in Sources */,
 				EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */,
