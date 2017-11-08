@@ -108,9 +108,8 @@ class AuthService: AuthServiceInterface {
         
         return APIAdapter.json(.delete, endpoint("users/log_out"), headers: nil)
             .map({ _ in  })
-            .do(onNext: {
-                self.clear()
-            })
+            .do(onNext: { self.clear() })
+            .do(onError: { _ in self.clear() })
     }
     
     func getUser() -> Observable<User?> {
