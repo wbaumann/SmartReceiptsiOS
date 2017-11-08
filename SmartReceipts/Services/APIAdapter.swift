@@ -10,6 +10,8 @@ import Alamofire
 import RxAlamofire
 import RxSwift
 
+fileprivate let TOKEN_ERROR_CODE = 401
+
 class APIAdapter {
     class func json(_ method: Alamofire.HTTPMethod, _ url: URLConvertible, parameters: [String: Any]? = nil,
      encoding: ParameterEncoding = URLEncoding.default, headers: [String: String]? = nil) -> Observable<Any> {
@@ -18,6 +20,11 @@ class APIAdapter {
                            "auth_params[email]": AuthService.shared.email]
         adaptedParameters.update(other: authParams)
         return RxAlamofire.json(method, url, parameters: adaptedParameters, encoding: encoding, headers: headers)
+            .do(onError: { error in
+                if let code = (error as? AFError)?.responseCode, code == TOKEN_ERROR_CODE {
+                    _ = AuthService.shared.logout().subscribe()
+                }
+            })
     }
     
     class func jsonBody(_ method: Alamofire.HTTPMethod, _ url: URLConvertible, parameters: [String: Any]? = nil,
@@ -25,5 +32,10 @@ class APIAdapter {
         var adaptedUrl = try! url.asURL().absoluteString + "?auth_params[token]=" + AuthService.shared.token
         adaptedUrl += "&auth_params[email]=" + AuthService.shared.email
         return RxAlamofire.json(method, adaptedUrl, parameters: parameters, encoding: encoding, headers: headers)
+            .do(onError: { error in
+                if let code = (error as? AFError)?.responseCode, code == TOKEN_ERROR_CODE {
+                    _ = AuthService.shared.logout().subscribe()
+                }
+            })
     }
 }
