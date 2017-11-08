@@ -1535,6 +1535,7 @@ import Cuckoo
 
 import Foundation
 import RxSwift
+import UserNotifications
 import Viperit
 
 class MockTripsPresenter: TripsPresenter, Cuckoo.Mock {
