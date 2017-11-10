@@ -22,6 +22,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     weak var settingsTap: PublishSubject<Void>?
     
     private var isNewReceipt = false
+    private var hasScan = false
     private var receipt: WBReceipt!
     private var trip: WBTrip!
     private var taxCalculator: TaxCalculator?
@@ -106,7 +107,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             row.hidden = Condition(booleanLiteral: !WBPreferences.includeTaxField())
             row.title = LocalizedString("edit.receipt.tax.label")
             row.placeholder = LocalizedString("edit.receipt.tax.placeholder")
-            row.value = self.isNewReceipt ? nil : self.receipt.taxAmount?.doubleValue
+            row.value = self.isNewReceipt && !self.hasScan ? nil : self.receipt.taxAmount?.doubleValue
             
             if let calculator = self.taxCalculator {
                 calculator.taxSubject.subscribe(onNext: {
@@ -225,12 +226,20 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     
     func apply(scan: Scan?) {
         guard let gScan = scan else { return }
+        hasScan = true
         receipt.name = gScan.merchant ?? ""
-        if let tax = gScan.taxAmount {
-            receipt.setTax(NSDecimalNumber(value: tax))
-        }
+        receipt.date = gScan.date ?? Date()
+        
         if let amount = gScan.totalAmount {
             receipt.setPrice(NSDecimalNumber(value: amount), currency: trip.defaultCurrency.code)
+        }
+        
+        if let tax = gScan.taxAmount, WBPreferences.includeTaxField()  {
+            if let amount = gScan.totalAmount, WBPreferences.enteredPricePreTax() {
+                receipt.setTax(NSDecimalNumber(value: amount - tax))
+            } else {
+                receipt.setTax(NSDecimalNumber(value: tax))
+            }
         }
     }
     
