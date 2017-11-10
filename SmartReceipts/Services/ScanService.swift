@@ -18,19 +18,28 @@ class ScanService {
     private var recognitionAPI: RecognitionAPI!
     private var pushNotificationService: PushNotificationService!
     private var authService: AuthServiceInterface!
+    private var scansPurchaseTracker: ScansPurchaseTracker!
     fileprivate let statusSubject = PublishSubject<ScanStatus>()
     
-    init(s3Service: S3Service, recognitionAPI: RecognitionAPI,
-         pushService: PushNotificationService, authService: AuthServiceInterface) {
+    init(s3Service: S3Service,
+         recognitionAPI: RecognitionAPI,
+         pushService: PushNotificationService,
+         authService: AuthServiceInterface,
+         scansPurchaseTracker: ScansPurchaseTracker)
+    {
         self.s3Service = s3Service
         self.recognitionAPI = recognitionAPI
         self.pushNotificationService = pushService
         self.authService = authService
+        self.scansPurchaseTracker = scansPurchaseTracker
     }
     
     convenience init(){
-        self.init(s3Service: S3Service(), recognitionAPI: RecognitionAPI(),
-                  pushService: PushNotificationService.shared, authService: AuthService.shared)
+        self.init(s3Service: S3Service(),
+                  recognitionAPI: RecognitionAPI(),
+                  pushService: PushNotificationService.shared,
+                  authService: AuthService.shared,
+                  scansPurchaseTracker: ScansPurchaseTracker.shared)
     }
     
     var status: Observable<ScanStatus> {
@@ -39,8 +48,8 @@ class ScanService {
     
     func scan(image: UIImage) -> Observable<Scan> {
         if WBPreferences.automaticScansEnabled() && FeatureFlags.ocrSupport.isEnabled &&
-            authService.isLoggedIn && ScansPurchaseTracker.shared.hasAvailableScans {
-            PushNotificationService.shared.updateToken()
+            authService.isLoggedIn && scansPurchaseTracker.hasAvailableScans {
+            pushNotificationService.updateToken()
             statusSubject.onNext(.uploading)
             return s3Service.upload(image: image)
                 .do(onSubscribed: { AnalyticsManager.sharedManager.record(event: Event.ocrRequestStarted()) })

@@ -20,6 +20,7 @@ class ScanServiceTests: XCTestCase {
     let pushService = PushNotificationServiceTestable()
     var scanService: ScanService!
     var authService = AuthServiceTestable()
+    var scansPurchaseTracker = ScansPurchaseTracker.shared
     
     let notificationVar = Variable(JSON())
     let mockID = "1"
@@ -28,8 +29,11 @@ class ScanServiceTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        scanService = ScanService(s3Service: s3ServiceMock, recognitionAPI: recognitionAPIMock,
-                                  pushService: pushService, authService: authService)
+        scanService = ScanService(s3Service: s3ServiceMock,
+                                  recognitionAPI: recognitionAPIMock,
+                                  pushService: pushService,
+                                  authService: authService,
+                                  scansPurchaseTracker: scansPurchaseTracker)
         pushService.notificationObservable = notificationVar.asObservable()
         authService.isLoggedInValue = true
         configureStubs()
