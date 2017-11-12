@@ -15,11 +15,11 @@ fileprivate let MIN_SCANS_TOOLTIP = 5
 
 class EditReceiptInteractor: Interactor {
     private let bag = DisposeBag()
-    private var authService: AuthService!
+    private var authService: AuthServiceInterface!
     private var scansPurchaseTracker: ScansPurchaseTracker!
     private var tooltipService: TooltipService!
     
-    required init(authService: AuthService,
+    required init(authService: AuthServiceInterface,
                   scansPurchaseTracker: ScansPurchaseTracker,
                   tooltipService: TooltipService)
     {
@@ -60,13 +60,11 @@ class EditReceiptInteractor: Interactor {
             presenter.tooltipClose
                 .subscribe(onNext: { [unowned self] in
                     self.tooltipService.markConfigureOCRDismissed()
-                })
+                }).disposed(by: bag)
             return LocalizedString("ocr.informational.tooltip.configure.text")
         }
         return nil
     }
-    
-    
     
     private func save(receipt: WBReceipt) {
         if !Database.sharedInstance().save(receipt) {
