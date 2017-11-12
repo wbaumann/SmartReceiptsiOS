@@ -1150,6 +1150,32 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
         
     }
     
+     override func openAuth()  -> AuthModuleInterface {
+        
+            return cuckoo_manager.call("openAuth() -> AuthModuleInterface",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> AuthModuleInterface in
+                        let () = args
+                        return o.openAuth()
+                    }
+                })
+        
+    }
+    
+     override func openAutoScans()  {
+        
+            return cuckoo_manager.call("openAutoScans()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.openAutoScans()
+                    }
+                })
+        
+    }
+    
 
     struct __StubbingProxy_EditReceiptRouter: Cuckoo.StubbingProxy {
         private let cuckoo_manager: Cuckoo.MockManager
@@ -1167,6 +1193,16 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
         func close() -> Cuckoo.StubNoReturnFunction<()> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return .init(stub: cuckoo_manager.createStub("close()", parameterMatchers: matchers))
+        }
+        
+        func openAuth() -> Cuckoo.StubFunction<(), AuthModuleInterface> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("openAuth() -> AuthModuleInterface", parameterMatchers: matchers))
+        }
+        
+        func openAutoScans() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("openAutoScans()", parameterMatchers: matchers))
         }
         
     }
@@ -1198,6 +1234,18 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
             return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
+        @discardableResult
+        func openAuth() -> Cuckoo.__DoNotUse<AuthModuleInterface> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("openAuth() -> AuthModuleInterface", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func openAutoScans() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("openAutoScans()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
     }
 
 
@@ -1214,6 +1262,14 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
     }
     
      override func close()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func openAuth()  -> AuthModuleInterface {
+        return DefaultValueRegistry.defaultValue(for: AuthModuleInterface.self)
+    }
+    
+     override func openAutoScans()  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
@@ -5204,6 +5260,19 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
         
     }
     
+     override func tooltipText()  -> String? {
+        
+            return cuckoo_manager.call("tooltipText() -> String?",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> String? in
+                        let () = args
+                        return o.tooltipText()
+                    }
+                })
+        
+    }
+    
 
     struct __StubbingProxy_EditReceiptInteractor: Cuckoo.StubbingProxy {
         private let cuckoo_manager: Cuckoo.MockManager
@@ -5220,6 +5289,11 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
         func configureSubscribers() -> Cuckoo.StubNoReturnFunction<()> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return .init(stub: cuckoo_manager.createStub("configureSubscribers()", parameterMatchers: matchers))
+        }
+        
+        func tooltipText() -> Cuckoo.StubFunction<(), Optional<String>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("tooltipText() -> String?", parameterMatchers: matchers))
         }
         
     }
@@ -5249,6 +5323,12 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
             return cuckoo_manager.verify("configureSubscribers()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
+        @discardableResult
+        func tooltipText() -> Cuckoo.__DoNotUse<Optional<String>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("tooltipText() -> String?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
     }
 
 
@@ -5271,6 +5351,10 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
     
      override func configureSubscribers()  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func tooltipText()  -> String? {
+        return DefaultValueRegistry.defaultValue(for: Optional<String>.self)
     }
     
 }
@@ -6913,6 +6997,7 @@ import Cuckoo
 
 import Foundation
 import RxSwift
+import UserNotifications
 import Viperit
 
 class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
@@ -6985,6 +7070,19 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
         
     }
     
+     override func tooltipText()  -> String? {
+        
+            return cuckoo_manager.call("tooltipText() -> String?",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> String? in
+                        let () = args
+                        return o.tooltipText()
+                    }
+                })
+        
+    }
+    
 
     struct __StubbingProxy_EditReceiptPresenter: Cuckoo.StubbingProxy {
         private let cuckoo_manager: Cuckoo.MockManager
@@ -7012,6 +7110,11 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
         func present<M1: Cuckoo.Matchable>(errorDescription: M1) -> Cuckoo.StubNoReturnFunction<(String)> where M1.MatchedType == String {
             let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: errorDescription) { $0 }]
             return .init(stub: cuckoo_manager.createStub("present(errorDescription: String)", parameterMatchers: matchers))
+        }
+        
+        func tooltipText() -> Cuckoo.StubFunction<(), Optional<String>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("tooltipText() -> String?", parameterMatchers: matchers))
         }
         
     }
@@ -7055,6 +7158,12 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
             return cuckoo_manager.verify("present(errorDescription: String)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
+        @discardableResult
+        func tooltipText() -> Cuckoo.__DoNotUse<Optional<String>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("tooltipText() -> String?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
     }
 
 
@@ -7080,6 +7189,10 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
     
      override func present(errorDescription: String)  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func tooltipText()  -> String? {
+        return DefaultValueRegistry.defaultValue(for: Optional<String>.self)
     }
     
 }

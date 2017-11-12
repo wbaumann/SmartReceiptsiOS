@@ -19,6 +19,10 @@ class EditReceiptModuleTest: XCTestCase {
     var interactor: MockEditReceiptInteractor!
     var router: MockEditReceiptRouter!
     
+    var authService = AuthServiceTestable()
+    var scansPurchaseTracker = ScansPurchaseTracker.shared
+    var tooltipService = TooltipService.shared
+    
     var trip: WBTrip?
     let disposeBag = DisposeBag()
     
@@ -26,8 +30,10 @@ class EditReceiptModuleTest: XCTestCase {
         super.setUp()
         
         let p = EditReceiptPresenter()
-        let i = EditReceiptInteractor()
         let r = EditReceiptRouter()
+        let i = EditReceiptInteractor(authService: authService,
+                                      scansPurchaseTracker: scansPurchaseTracker,
+                                      tooltipService: tooltipService)
         
         var module = AppModules.editReceipt.build()
         module.injectMock(presenter: p)
@@ -45,6 +51,9 @@ class EditReceiptModuleTest: XCTestCase {
         r._presenter = presenter
         
         configureStubs()
+        
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        UserDefaults.standard.synchronize()
     }
     
     func configureStubs() {
@@ -62,6 +71,15 @@ class EditReceiptModuleTest: XCTestCase {
         super.tearDown()
     }
     
+    private func tooltipTextConfigure() -> String {
+        return LocalizedString("ocr.informational.tooltip.configure.text")
+    }
+    
+    private func tooltipTextScansCount() -> String {
+        let format = LocalizedString("ocr.informational.tooltip.limited.scans.text")
+        return String.localizedStringWithFormat(format, scansPurchaseTracker.remainingScans)
+    }
+    
     func testPresenterToRouter() {
         presenter.viewHasLoaded()
         presenter.settingsTap.onNext()
@@ -72,8 +90,38 @@ class EditReceiptModuleTest: XCTestCase {
     }
     
     func testPresenterToInteractor() {
-        presenter.viewHasLoaded()
+        stub(interactor) { mock in
+            mock.tooltipText().thenReturn("Hello")
+        }
         
+        presenter.viewHasLoaded()
+        let text = presenter.tooltipText()
+        XCTAssertEqual(text, "Hello")
+        
+        verify(interactor).tooltipText()
         verify(interactor).configureSubscribers()
+    }
+    
+    func testTooltipConfigureText() {
+        authService.isLoggedInValue = true
+        XCTAssertNotEqual(interactor.tooltipText(), tooltipTextConfigure())
+        
+        authService.isLoggedInValue = false
+        XCTAssertEqual(interactor.tooltipText(), tooltipTextConfigure())
+        
+        tooltipService.markConfigureOCRDismissed()
+        XCTAssertNil(interactor.tooltipText())
+        XCTAssertNotEqual(interactor.tooltipText(), tooltipTextConfigure())
+    }
+    
+    func testTooltipScansCountText() {
+        authService.isLoggedInValue = true
+        LocalScansTracker.shared.scansCount = 10
+        XCTAssertNil(interactor.tooltipText())
+        XCTAssertNotEqual(interactor.tooltipText(), tooltipTextScansCount())
+        
+        LocalScansTracker.shared.scansCount = 4
+        XCTAssertNotNil(interactor.tooltipText())
+        XCTAssertEqual(interactor.tooltipText(), tooltipTextScansCount())
     }
 }
