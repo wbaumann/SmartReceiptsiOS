@@ -64,14 +64,6 @@ class TripsRouter: Router {
             AppModules.editTrip.build().router.showIPadForm(from: _view, setupData: trip, needNavigationController: true)
         })
     }
-    
-    private func openModal(module: Module) {
-        executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: true)
-        }, iPad: {
-            module.router.showIPadForm(from: _view, needNavigationController: true)
-        })
-    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

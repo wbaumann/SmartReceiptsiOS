@@ -13,6 +13,7 @@ class TooltipService {
     
     fileprivate let MOVE_TO_GENERATE_DISMISSED = "move.to.generate.dismissed"
     fileprivate let REPORT_GENERATED = "move.to.generate.dismissed"
+    fileprivate let CONFIGURE_OCR = "ocr.configure.dismissed"
     
     fileprivate var database: Database!
     
@@ -59,10 +60,18 @@ extension TooltipService {
         mark(key: REPORT_GENERATED)
     }
     
+    func markConfigureOCRDismissed() {
+        mark(key: CONFIGURE_OCR)
+    }
+    
     // Get
     func moveToGenerateTrigger(for trip: WBTrip) -> Bool {
         let hasReceipts = database.allReceipts(for: trip).count > 0
         return !marked(key: MOVE_TO_GENERATE_DISMISSED) && !marked(key: REPORT_GENERATED) && hasReceipts
+    }
+    
+    func configureOCRDismissed() -> Bool {
+        return marked(key: CONFIGURE_OCR)
     }
     
     // Private

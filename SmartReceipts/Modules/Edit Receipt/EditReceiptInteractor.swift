@@ -11,7 +11,28 @@ import Viperit
 import RxSwift
 import Toaster
 
+fileprivate let MIN_SCANS_TOOLTIP = 5
+
 class EditReceiptInteractor: Interactor {
+    private let bag = DisposeBag()
+    private var authService: AuthService!
+    private var scansPurchaseTracker: ScansPurchaseTracker!
+    private var tooltipService: TooltipService!
+    
+    required init(authService: AuthService,
+                  scansPurchaseTracker: ScansPurchaseTracker,
+                  tooltipService: TooltipService)
+    {
+        self.authService = authService
+        self.scansPurchaseTracker = scansPurchaseTracker
+        self.tooltipService = tooltipService
+    }
+    
+    convenience required init() {
+        self.init(authService: AuthService.shared,
+                  scansPurchaseTracker: ScansPurchaseTracker.shared,
+                  tooltipService: TooltipService.shared)
+    }
     
     var receiptImage: UIImage?
     let disposeBag = DisposeBag()
@@ -30,6 +51,22 @@ class EditReceiptInteractor: Interactor {
             self.save(receipt: receipt)
         }).disposed(by: disposeBag)
     }
+    
+    func tooltipText() -> String? {
+        if authService.isLoggedIn && scansPurchaseTracker.remainingScans < MIN_SCANS_TOOLTIP {
+            let format = LocalizedString("ocr.informational.tooltip.limited.scans.text")
+            return String.localizedStringWithFormat(format, scansPurchaseTracker.remainingScans)
+        } else if !authService.isLoggedIn && !tooltipService.configureOCRDismissed() {
+            presenter.tooltipClose
+                .subscribe(onNext: { [unowned self] in
+                    self.tooltipService.markConfigureOCRDismissed()
+                })
+            return LocalizedString("ocr.informational.tooltip.configure.text")
+        }
+        return nil
+    }
+    
+    
     
     private func save(receipt: WBReceipt) {
         if !Database.sharedInstance().save(receipt) {

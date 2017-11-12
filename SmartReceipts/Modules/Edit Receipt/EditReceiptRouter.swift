@@ -21,6 +21,17 @@ class EditReceiptRouter: Router {
     func close(){
         _view.dismiss(animated: true, completion: nil)
     }
+    
+    func openAuth() -> AuthModuleInterface {
+        let module = AppModules.auth.build()
+        openModal(module: module)
+        return module.interface(AuthModuleInterface.self)
+    }
+    
+    func openAutoScans() {
+        let module = AppModules.OCRConfiguration.build()
+        openModal(module: module)
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

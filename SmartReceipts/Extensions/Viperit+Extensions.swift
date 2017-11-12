@@ -43,4 +43,12 @@ extension Router {
         }
         controller.pushViewController(_view, animated: animated)
     }
+    
+    func openModal(module: Module) {
+        executeFor(iPhone: {
+            module.router.show(from: _view, embedInNavController: true)
+        }, iPad: {
+            module.router.showIPadForm(from: _view, needNavigationController: true)
+        })
+    }
 }

@@ -9,12 +9,17 @@
 import Foundation
 import Viperit
 import RxSwift
+import UserNotifications
+
+fileprivate let ANIMATIONS_DURATION: RxTimeInterval = 0.6
 
 class EditReceiptPresenter: Presenter {
     
     let addReceiptSubject = PublishSubject<WBReceipt>()
     let updateReceiptSubject = PublishSubject<WBReceipt>()
     let settingsTap = PublishSubject<Void>()
+    let tooltipClose = PublishSubject<Void>()
+    let tooltipTap = PublishSubject<Void>()
     
     private let bag = DisposeBag()
     
@@ -22,6 +27,22 @@ class EditReceiptPresenter: Presenter {
         interactor.configureSubscribers()
         settingsTap.subscribe(onNext: { [unowned self] in
             self.router.openSettings()
+        }).disposed(by: bag)
+        
+        tooltipTap.subscribe(onNext: {
+            let authModule = self.router.openAuth()
+            _ = authModule.successAuth
+                .map({ authModule.close() })
+                .delay(ANIMATIONS_DURATION, scheduler: MainScheduler.instance)
+                .flatMap({ _ -> Observable<UNAuthorizationStatus> in
+                    PushNotificationService.shared.authorizationStatus()
+                }).flatMap({ status -> Observable<Void> in
+                    let text = LocalizedString("push.request.alert.text")
+                    return status == .notDetermined ? UIAlertController.showInfo(text: text) : Observable<Void>.just()
+                }).subscribe(onNext: { [unowned self] in
+                    _ = PushNotificationService.shared.requestAuthorization().subscribe()
+                    self.router.openAutoScans()
+                })
         }).disposed(by: bag)
     }
     
@@ -43,6 +64,10 @@ class EditReceiptPresenter: Presenter {
     
     func present(errorDescription: String) {
         router.openAlert(title: nil, message: errorDescription)
+    }
+    
+    func tooltipText() -> String? {
+        return interactor.tooltipText()
     }
 }
 

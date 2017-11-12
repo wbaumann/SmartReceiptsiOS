@@ -92,12 +92,16 @@ class TooltipView: UIView {
         })
     }
     
-    func didRotateScreen() {
+    func updateFrame() {
         let width = widthFromScreen ? UIScreen.main.bounds.width : superview!.bounds.width
         self.frame = CGRect(x: self.offset.x, y: self.offset.y, width: width, height: TooltipView.HEIGHT)
         let frames = calculateFrames()
         textButton.frame = frames.textButtonFrame
         closeButton.frame = frames.closeButtonFrame
+    }
+    
+    func didRotateScreen() {
+        updateFrame()
     }
 
     private func calculateFrames() -> (textButtonFrame: CGRect, closeButtonFrame: CGRect) {
