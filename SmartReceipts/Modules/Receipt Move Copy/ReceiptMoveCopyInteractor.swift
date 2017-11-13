@@ -26,7 +26,9 @@ class ReceiptMoveCopyInteractor: Interactor {
     }
     
     func fetchedModelAdapter(for receipt: WBReceipt) -> FetchedModelAdapter {
-        return Database.sharedInstance().fetchedAdapter(forAllTripsExcluding: receipt.trip)
+        return presenter.isCopyOrMove ?
+            Database.sharedInstance().fetchedAdapterForAllTrips() :
+            Database.sharedInstance().fetchedAdapter(forAllTripsExcluding: receipt.trip)
     }
     
 }
