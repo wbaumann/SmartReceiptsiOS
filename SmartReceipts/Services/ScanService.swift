@@ -51,7 +51,7 @@ class ScanService {
             authService.isLoggedIn && scansPurchaseTracker.hasAvailableScans {
             pushNotificationService.updateToken()
             statusSubject.onNext(.uploading)
-            return s3Service.upload(image: image)
+            return s3Service.upload(image: WBImageUtils.processImage(image))
                 .do(onSubscribed: { AnalyticsManager.sharedManager.record(event: Event.ocrRequestStarted()) })
                 .flatMap({ [weak self] url -> Observable<String> in
                     guard let api = self?.recognitionAPI else {
