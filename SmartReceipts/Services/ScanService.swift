@@ -53,7 +53,9 @@ class ScanService {
             statusSubject.onNext(.uploading)
             return s3Service.upload(image: WBImageUtils.processImage(image))
                 .do(onSubscribed: { AnalyticsManager.sharedManager.record(event: Event.ocrRequestStarted()) })
-                .flatMap({ [weak self] url -> Observable<String> in
+                .do(onError: { _ in
+                    _ = AuthService.shared.getUser() .subscribe(onNext: { CognitoService().saveCognitoData(user: $0) })
+                }).flatMap({ [weak self] url -> Observable<String> in
                     guard let api = self?.recognitionAPI else {
                         self?.statusSubject.onNext(.completed)
                         return Observable<String>.never()
