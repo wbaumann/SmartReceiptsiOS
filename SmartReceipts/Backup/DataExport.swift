@@ -17,7 +17,7 @@ class DataExport: NSObject {
     }
     
     func execute() -> String {
-        let zipPath = (workDirectory as NSString).appendingPathComponent(SmartReceiptsExportName)
+        let zipPath = (workDirectory as NSString).appendingPathComponent(backupName)
         Logger.debug("Execute at path: \(zipPath)")
 
         let zipFile = OZZipFile(fileName: zipPath, mode: .create)
@@ -74,5 +74,11 @@ class DataExport: NSObject {
             let zipName = (trip as NSString).appendingPathComponent(file)
             appendFile(named: file, inDirectory: tripFolder, archiveName: zipName, toZip: zip)
         }
+    }
+    
+    var backupName:  String {
+        let df = DateFormatter()
+        df.dateFormat = "YYYY_MM_dd_"
+        return df.string(from: Date()) + SmartReceiptsExportName
     }
 }
