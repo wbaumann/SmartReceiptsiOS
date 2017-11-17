@@ -48,7 +48,7 @@
 }
 
 - (void)setName:(NSString *)name {
-    _name = [[name lastPathComponent] mutableCopy];
+    _name = [WBTextUtils omitIllegalCharacters:name];
 
     if (self.originalName.hasValue) {
         return;
