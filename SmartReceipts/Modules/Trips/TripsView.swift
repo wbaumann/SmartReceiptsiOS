@@ -37,8 +37,12 @@ final class TripsView: FetchedTableViewController {
         AppTheme.customizeOnViewDidLoad(self)
         setPresentationCellNib(WBCellWithPriceNameDate.viewNib())
         navigationController?.setToolbarHidden(true, animated: false)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved),
                         name: NSNotification.Name.SmartReceiptsSettingsSaved, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchObjects),
+                        name: NSNotification.Name.SmartReceiptsImport, object: nil)
+        
         lastDateSeparator = WBPreferences.dateSeparator()
         
         editItem.rx.tap.subscribe(onNext: { [unowned self] in
