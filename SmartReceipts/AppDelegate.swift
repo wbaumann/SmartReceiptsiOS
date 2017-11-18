@@ -12,6 +12,7 @@ import RMStore
 import Firebase
 import UIAlertView_Blocks
 
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     fileprivate(set) var filePathToAttach: String?
@@ -166,6 +167,7 @@ fileprivate extension AppDelegate {
                 }
             }
             dataImport.execute()
+            NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsImport, object: nil)
         }
     }
 }

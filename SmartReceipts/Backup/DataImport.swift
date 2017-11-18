@@ -25,7 +25,7 @@ class DataImport: NSObject {
         } catch {
             Logger.error("execute(), error creating directory at path: \(outputPath), error: \(error.localizedDescription)")
         }
-        let zipFile = OZZipFile(fileName: inputPath, mode: .unzip)
+        guard let zipFile = OZZipFile.create(withFileName: inputPath, mode: .unzip) else { return }
         let toFile = (outputPath as NSString).appendingPathComponent(SmartReceiptsDatabaseExportName)
         extractFrom(zip: zipFile, zipName: SmartReceiptsDatabaseExportName, toFile: toFile)
         let preferences = extractDataFrom(zipFile: zipFile, fileName: SmartReceiptsPreferencesExportName)
