@@ -11,6 +11,7 @@ import Viperit
 import RMStore
 import Firebase
 import UIAlertView_Blocks
+import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate(set) var filePathToAttach: String?
     fileprivate(set) var isFileImage: Bool = false
     static private(set) var instance: AppDelegate!
+    fileprivate var dataImport: DataImport!
+    
     let dataQueue = DispatchQueue(label: "wb.dataAccess")
     
     private var receiptVerification = RMStoreAppReceiptVerificator()
@@ -139,35 +142,24 @@ fileprivate extension AppDelegate {
     }
     
     func importZip(from: URL, overwrite: Bool) {
-        let hud = PendingHUDView.show(on: window!.rootViewController!.view)
+        let viewController = window!.rootViewController!
+        let hud = PendingHUDView.show(on: viewController.view)
         dataQueue.async {
-            let dataImport = DataImport(inputFile: from.path, output: FileManager.documentsPath)
-            var success = true
-            
-            if success {
-                // delete imported zip and import data to DB
-                FileManager.deleteIfExists(filepath: from.path)
-                let backupPath = FileManager.pathInDocuments(relativePath: SmartReceiptsDatabaseExportName)
-                success = Database.sharedInstance().importData(fromBackup: backupPath, overwrite: overwrite)
-            }
-            
-            DispatchQueue.main.async {
-                hud.hide()
-                if success {
-                    UIAlertView(title: nil, message: LocalizedString("app.delegate.import.success.alert.message"),
-                                delegate: nil,
-                                cancelButtonTitle: LocalizedString("generic.button.title.ok")).show()
-                    Logger.error("app.delegate.import.success")
-                } else {
-                    UIAlertView(title: LocalizedString("generic.error.alert.title"),
-                                message: LocalizedString("app.delegate.import.error.alert.message"),
-                                delegate: nil,
-                                cancelButtonTitle: LocalizedString("generic.button.title.ok")).show()
+            self.dataImport = DataImport(inputFile: from.path, output: FileManager.documentsPath)
+            self.dataImport.execute(overwrite: overwrite)
+                .subscribeOn(MainScheduler.instance)
+                .subscribe(onNext: {
+                    hud.hide()
+                    NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsImport, object: nil)
+                    let text = LocalizedString("app.delegate.import.success.alert.message")
+                    _ = UIAlertController.showInfo(text: text, on: viewController).subscribe()
+                    Logger.debug("app.delegate.import.success")
+                }, onError: { _ in
+                    hud.hide()
+                    let text = LocalizedString("app.delegate.import.error.alert.message")
+                    _ = UIAlertController.showInfo(text: text, on: viewController).subscribe()
                     Logger.error("app.delegate.import.error")
-                }
-            }
-            dataImport.execute()
-            NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsImport, object: nil)
+                })
         }
     }
 }

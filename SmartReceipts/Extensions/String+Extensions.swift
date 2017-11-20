@@ -8,9 +8,20 @@
 
 import Foundation
 
+
 extension String {
     
+    var asNSString: NSString {
+        return (self as NSString)
+    }
     
+    var asFileURL: URL {
+        return URL(fileURLWithPath: self)
+    }
+    
+}
+
+extension String {
     /// Truncates String to given langth
     ///
     /// - Parameter length: Result string will be limited to the given number of characters.

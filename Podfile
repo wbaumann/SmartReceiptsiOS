@@ -12,6 +12,7 @@ def pods
     # File storage
     pod 'FMDB'
     pod 'objective-zip'
+    pod 'Zip'
     
     # UI
     pod 'MRProgress'
