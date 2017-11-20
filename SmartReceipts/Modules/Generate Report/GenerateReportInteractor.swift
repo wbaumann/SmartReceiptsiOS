@@ -87,7 +87,10 @@ class GenerateReportInteractor: Interactor {
                 
                 actions.append(emailAction)
                 actions.append(otherAction)
-                actions.append(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
+                actions.append(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: {
+                    _ in
+                    for file in files { FileManager.deleteIfExists(filepath: file) }
+                }))
                 
                 self.presenter.presentSheet(title: nil, message: message, actions: actions)
                 

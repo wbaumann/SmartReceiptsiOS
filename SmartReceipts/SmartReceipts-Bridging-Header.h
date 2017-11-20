@@ -65,7 +65,6 @@
 #import "WBImageUtils.h"
 #import "FetchedModelAdapterDelegate.h"
 #import "RateApplication.h"
-#import "OZZipFile+WBZipFile.h"
 
 #import "InputValidation.h"
 

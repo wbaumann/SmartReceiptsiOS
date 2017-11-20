@@ -96,7 +96,6 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
-  - objective-zip (1.0.5)
   - OpenSSL-iOS (1.0.204):
     - OpenSSL-iOS/Framework (= 1.0.204)
   - OpenSSL-iOS/Framework (1.0.204)
@@ -147,7 +146,6 @@ DEPENDENCIES:
   - Google/Analytics
   - MKDropdownMenu
   - MRProgress
-  - objective-zip
   - RMStore/AppReceiptVerificator (from `3rdparty/RMStore`)
   - RMStore/Core (from `3rdparty/RMStore`)
   - RMStore/KeychainPersistence (from `3rdparty/RMStore`)
@@ -208,7 +206,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
-  objective-zip: 41b1408cebffceb6b9d15ad691506707e390d359
   OpenSSL-iOS: 002cabfdfc2df48d63cebd723b90ada86c946316
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   RMStore: 935f3e350c7f2f098047d73ddbd2ee2cd00f8b48
@@ -225,6 +222,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
   Zip: 115a122433829a1bbf33f5575fa84047438dcc12
 
-PODFILE CHECKSUM: 3abb8450e6442d44507365633b5788a13cd8046b
+PODFILE CHECKSUM: e2fdd92885be5877bff65c92fccdac40c112ef1c
 
 COCOAPODS: 1.3.1

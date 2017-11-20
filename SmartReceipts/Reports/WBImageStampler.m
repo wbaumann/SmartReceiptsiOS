@@ -13,7 +13,6 @@
 #import "WBDateFormatter.h"
 #import "WBReportUtils.h"
 
-#import "Objective-Zip.h"
 #import "SmartReceipts-Swift.h"
 
 static const float IMG_SCALE_FACTOR = 2.1f;
@@ -37,11 +36,9 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
     [[NSString stringWithFormat:@"%@: %@", name, value] drawAtPoint:CGPointMake(x, y) withAttributes:attrs];
 }
 
--(BOOL) zipToFile:(NSString*) outputPath stampedImagesForReceiptsAndIndexes:(NSArray*) receiptsAndIndexes inTrip:(WBTrip*) trip {
-    
-    OZZipFile *zipFile= [[OZZipFile alloc] initWithFileName:outputPath
-                                                   mode:OZZipFileModeCreate];
-    
+- (BOOL)zipToFile:(NSString *)outputPath stampedImagesForReceiptsAndIndexes:(NSArray *)receiptsAndIndexes inTrip:(WBTrip *)trip {
+    NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSMutableArray<NSURL *> *urls = [NSMutableArray new];
     for (WBReceiptAndIndex *rwi in receiptsAndIndexes) {
         @autoreleasepool {
             WBReceipt *receipt = [rwi receipt];
@@ -51,22 +48,17 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
                 continue;
             }
             
-            UIImage *img = [self
-                            stampedImage:[UIImage imageWithContentsOfFile:[receipt imageFilePathForTrip:trip]]
-                            forReceipt:receipt
-                            inTrip:trip];
+            UIImage *img = [self stampedImage:[UIImage imageWithContentsOfFile:[receipt imageFilePathForTrip:trip]]
+                                   forReceipt:receipt inTrip:trip];
             if (!img) {
                 continue;
             }
             
             @try {
                 NSString *filename = [receipt imageFileName];
-                
-                OZZipWriteStream *stream= [zipFile writeFileInZipWithName:filename
-                                                       compressionLevel:OZZipCompressionLevelDefault];
-                
-                [stream writeData:UIImageJPEGRepresentation(img, 0.85)];
-                [stream finishedWriting];
+                NSURL *url = [NSURL fileURLWithPath:[docsPath stringByAppendingPathComponent:filename]];
+                [UIImageJPEGRepresentation(img, 0.85) writeToURL:url atomically:YES];
+                [urls addObject:url];
             } @catch (NSException* e) {
                 ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithException:e];
                 [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
@@ -75,15 +67,22 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
         }
     }
     
-    @try {
-        [zipFile close];
-    } @catch (NSException* e) {
-        ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithException:e];
+    NSError *error;
+    [DataExport zipFiles:urls to:outputPath error:&error];
+    [self removeFiles:urls];
+    if (error) {
+        ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithError:error file:NSStringFromClass(self.class) function:@"zipToFile" line:71];
         [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
+        [self removeFiles:urls];
         return NO;
     }
-    
     return YES;
+}
+
+- (void)removeFiles:(NSMutableArray<NSURL *> *)urls {
+    for (NSURL *url in urls) {
+        [[NSFileManager defaultManager] removeItemAtURL:url error:nil];
+    }
 }
 
 -(UIImage*) stampedImage:(UIImage*) foreground forReceipt:(WBReceipt*) receipt inTrip:(WBTrip*) trip {
