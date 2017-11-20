@@ -6,7 +6,6 @@
 //  Copyright © 2017 Will Baumann. All rights reserved.
 //
 
-import objective_zip
 import Zip
 import RxSwift
 

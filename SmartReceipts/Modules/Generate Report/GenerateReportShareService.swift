@@ -24,6 +24,7 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
         guard MFMailComposeViewController.canSendMail() else {
             self.presenter.presentAlert(title: LocalizedString("generate.report.email.not.configured.title"),
                                         message: LocalizedString("generate.report.email.not.configured.message"))
+            remove(files: files)
             return
         }
         
@@ -59,6 +60,8 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
             composer.addAttachmentData(data, mimeType: mimeType, fileName: NSString(string: file).lastPathComponent)
         }
         
+        remove(files: files)
+        
         composer.navigationBar.tintColor = UINavigationBar.appearance().tintColor
         let barStyle = UIApplication.shared.statusBarStyle
         presenter.present(vc: composer, animated: true) {
@@ -72,7 +75,7 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
             attached.append(URL(fileURLWithPath: file))
         }
         let shareViewController = UIActivityViewController(activityItems: attached, applicationActivities: nil)
-        shareViewController.completionWithItemsHandler = {
+        shareViewController.completionWithItemsHandler = { [weak self]
             type, success, returned, error in
             
             Logger.debug("Type \(type.debugDescription) - \(success.description)")
@@ -82,8 +85,9 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
             }
             
             if success {
-                self.presenter.close()
+                self?.presenter.close()
             }
+            self?.remove(files: files)
         }
         presenter.present(vc: shareViewController, animated: true, isPopover: true, completion: nil)
     }
@@ -100,5 +104,9 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
     
     fileprivate func split(_ string: String) -> [String] {
         return string.components(separatedBy: ",")
+    }
+    
+    private func remove(files: [String]) {
+        for file in files { FileManager.deleteIfExists(filepath: file) }
     }
 }

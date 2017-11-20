@@ -68,4 +68,8 @@ class DataExport: NSObject {
         df.dateFormat = "YYYY_MM_dd_"
         return df.string(from: Date()) + SmartReceiptsExportName
     }
+    
+    class func zipFiles(_ urls: [URL], to: String) throws {
+        try Zip.zipFiles(paths: urls, zipFilePath: to.asFileURL, password: nil, progress: nil)
+    }
 }

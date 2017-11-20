@@ -225,7 +225,6 @@
 		71C014251F1AB14A005472B3 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0141F1F1AB14A005472B3 /* CategoriesPresenter.swift */; };
 		71C014261F1AB14A005472B3 /* CategoriesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C014201F1AB14A005472B3 /* CategoriesRouter.swift */; };
 		71C014271F1AB14A005472B3 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C014211F1AB14A005472B3 /* CategoriesView.swift */; };
-		71CAFE4B1FC0CC94002A6B03 /* OZZipFile+WBZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CAFE4A1FC0CC94002A6B03 /* OZZipFile+WBZipFile.m */; };
 		71CD20C91ED764DA006C4EE6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD20C81ED764DA006C4EE6 /* Currency.swift */; };
 		71CF7A121F1020440004F389 /* InputTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF7A111F1020440004F389 /* InputTextCell.swift */; };
 		71CF7A141F1020590004F389 /* InputTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CF7A131F1020590004F389 /* InputTextCell.xib */; };
@@ -749,8 +748,6 @@
 		71C014201F1AB14A005472B3 /* CategoriesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesRouter.swift; sourceTree = "<group>"; };
 		71C014211F1AB14A005472B3 /* CategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		71C413D31EE6F826003CE891 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
-		71CAFE491FC0CC94002A6B03 /* OZZipFile+WBZipFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OZZipFile+WBZipFile.h"; sourceTree = "<group>"; };
-		71CAFE4A1FC0CC94002A6B03 /* OZZipFile+WBZipFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "OZZipFile+WBZipFile.m"; sourceTree = "<group>"; };
 		71CD20C81ED764DA006C4EE6 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Currency.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		71CF7A111F1020440004F389 /* InputTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextCell.swift; sourceTree = "<group>"; };
 		71CF7A131F1020590004F389 /* InputTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputTextCell.xib; sourceTree = "<group>"; };
@@ -1979,8 +1976,6 @@
 				57580D1B1DFAB58B0090C488 /* UIDevice+DeviceInfo.m */,
 				57580D1D1DFAB6AB0090C488 /* UIApplication+AppVersion.h */,
 				57580D1E1DFAB6AB0090C488 /* UIApplication+AppVersion.m */,
-				71CAFE491FC0CC94002A6B03 /* OZZipFile+WBZipFile.h */,
-				71CAFE4A1FC0CC94002A6B03 /* OZZipFile+WBZipFile.m */,
 				579DDFB11E2E4223004937F7 /* UIImage+Extensions.swift */,
 				A709D7661CF4A58600897DD9 /* NSThread+Extensions.swift */,
 				572E0A781E42446600A7307A /* NSString+Extensions.h */,
@@ -2653,7 +2648,6 @@
 				"${BUILT_PRODUCTS_DIR}/Viperit/Viperit.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
-				"${BUILT_PRODUCTS_DIR}/objective-zip/objective_zip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -2680,7 +2674,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Viperit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/objective_zip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2840,7 +2833,6 @@
 				"${BUILT_PRODUCTS_DIR}/Viperit/Viperit.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
-				"${BUILT_PRODUCTS_DIR}/objective-zip/objective_zip.framework",
 				"${BUILT_PRODUCTS_DIR}/Cuckoo/Cuckoo.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
@@ -2870,7 +2862,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Viperit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/objective_zip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cuckoo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
@@ -3067,7 +3058,6 @@
 				EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */,
 				71F4683B1EEF2E55009F6CE7 /* Viperit+Extensions.swift in Sources */,
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
-				71CAFE4B1FC0CC94002A6B03 /* OZZipFile+WBZipFile.m in Sources */,
 				A7B6FC5D1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift in Sources */,
 				719B1FEC1EF6032D0049BD71 /* EditReceiptRouter.swift in Sources */,
 				5757D6131E929ECA000F65F9 /* Database+Sync.swift in Sources */,
