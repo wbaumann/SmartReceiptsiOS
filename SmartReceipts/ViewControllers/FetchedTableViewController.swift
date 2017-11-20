@@ -16,7 +16,7 @@ class FetchedTableViewController: UserInterface {
     @IBOutlet var tableView: UITableView!
     
     private let FETCHED_COLLECTION_CELL_ID = "FetchedCollectionTableViewControllerCellIdentifier"
-    private let bag = DisposeBag()
+    private var bag = DisposeBag()
     private var fetchedModelAdapter: FetchedModelAdapter?
     private var dataSource: TableViewDataSourceProxy!
     
@@ -121,6 +121,7 @@ class FetchedTableViewController: UserInterface {
         AppDelegate.instance.dataQueue.async { [weak self] in
             let fmd = self?.createFetchedModelAdapter()
             DispatchQueue.main.async {
+                self?.bag = DisposeBag()
                 self?.configureSubrcibers(for: fmd)
                 self?.fetchedModelAdapter = fmd
                 self?.configureTable()

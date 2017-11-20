@@ -127,6 +127,7 @@ PODS:
   - UIAlertView-Blocks (1.0)
   - Viperit (0.7.0)
   - XLPagerTabStrip (7.0.0)
+  - Zip (1.0.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -161,6 +162,7 @@ DEPENDENCIES:
   - UIAlertView-Blocks
   - Viperit
   - XLPagerTabStrip
+  - Zip
 
 EXTERNAL SOURCES:
   Cuckoo:
@@ -221,7 +223,8 @@ SPEC CHECKSUMS:
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
   Viperit: b45ecfde9f3e577a6afd8f91f4c88edb46e0ca25
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
+  Zip: 115a122433829a1bbf33f5575fa84047438dcc12
 
-PODFILE CHECKSUM: 9b106b923b2343336e6641f67c7791b7bd511ff0
+PODFILE CHECKSUM: 3abb8450e6442d44507365633b5788a13cd8046b
 
 COCOAPODS: 1.3.1
