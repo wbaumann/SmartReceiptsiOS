@@ -38,9 +38,8 @@ def pods
     pod 'Google/Analytics'
     
     # Firebase
-    pod 'Firebase'
-    pod 'FirebaseAnalytics'
-    pod 'FirebaseCrash'
+    pod 'Firebase/Analytics'
+    pod 'Firebase/Crash'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     
