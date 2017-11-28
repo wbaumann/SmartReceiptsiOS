@@ -39,7 +39,6 @@ class DataExport: NSObject {
         files.append(prefExportURL)
         
         do {
-            
             try Zip.zipFiles(paths: files, zipFilePath: zipPath.asFileURL, password: nil, progress: nil)
             try FileManager.default.removeItem(at: dbExportPath.asFileURL)
             try FileManager.default.removeItem(at: prefExportURL)
@@ -55,6 +54,7 @@ class DataExport: NSObject {
         do {
             let trips = try FileManager.default.contentsOfDirectory(atPath: tripsFolder)
             for trip in trips {
+                if trip.contains(".SMR") { continue }
                 files.append(tripsFolder.asNSString.appendingPathComponent(trip).asFileURL)
             }
         } catch {
