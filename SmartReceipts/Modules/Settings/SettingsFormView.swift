@@ -165,10 +165,10 @@ class SettingsFormView: FormViewController {
         <<< DecimalRow() { row in
             row.title = LocalizedString("settings.min.receipt.price.label")
             let value = WBPreferences.minimumReceiptPriceToIncludeInReports()
-            row.value = value == WBPreferences.min_FLOAT() ? nil : Double(value)
+            row.value = value == WBPreferences.min_FLOAT() || value == Float(Int32.min) ? nil : Double(value)
             row.placeholder = LocalizedString("settings.min.receipt.price.placeholder")
         }.onChange({ row in
-            let value = row.value == nil ? Float(Int.min) : Float(row.value!)
+            let value = row.value == nil ? WBPreferences.min_FLOAT() : Float(row.value!)
             WBPreferences.setMinimumReceiptPriceToIncludeInReports(value)
         }).cellUpdate({ cell, _ in
             cell.textField.textColor = AppTheme.primaryColor
