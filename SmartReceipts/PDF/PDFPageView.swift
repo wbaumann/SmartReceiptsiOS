@@ -26,6 +26,7 @@ class PDFPageView: UIView {
         bottomLine.backgroundColor = AppTheme.reportPDFStyleColor
         
         contentOffset = topLine.frame.origin.y + topLine.frame.height + ElementsSpacing
+        footerLabel.font = PDFFontStyle.footer.font
         footerLabel.text = WBPreferences.pdfFooterString()
     }
     
