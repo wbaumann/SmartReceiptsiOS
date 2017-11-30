@@ -45,3 +45,42 @@ class AppTheme: NSObject {
         UIApplication.shared.statusBarStyle = .lightContent
     }
 }
+
+enum PDFFontStyle {
+    case title
+    case `default`
+    case defaultBold
+    case tableHeader
+    case small
+    case footer
+    
+    var fontSize: CGFloat {
+        let titleSize: CGFloat = 13
+        let defaultSize: CGFloat = 11
+        let smallSize: CGFloat = 9
+        
+        switch self {
+        case .title:
+            return titleSize
+        case .default, .defaultBold, .tableHeader:
+            return defaultSize
+        case .small, .footer:
+            return smallSize
+        }
+    }
+    
+    var font: UIFont {
+        switch self {
+        case .title:
+            return UIFont.boldSystemFont(ofSize: fontSize)
+        case .default:
+            return UIFont.systemFont(ofSize: fontSize)
+        case .defaultBold, .tableHeader:
+            return UIFont.boldSystemFont(ofSize: fontSize)
+        case .small:
+            return UIFont.systemFont(ofSize: fontSize)
+        case .footer:
+            return UIFont.italicSystemFont(ofSize: fontSize)
+        }
+    }
+}
