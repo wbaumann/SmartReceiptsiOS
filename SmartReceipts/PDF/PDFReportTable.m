@@ -40,6 +40,8 @@
     [self setClipsToBounds:YES];
 
     self.rows = [NSMutableArray array];
+    
+    [self.headerRowPrototype.contentLabel setFont:[UIFont boldSystemFontOfSize:11]];
 }
 
 #pragma mark - Public

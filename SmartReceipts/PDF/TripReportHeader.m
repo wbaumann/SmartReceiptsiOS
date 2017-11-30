@@ -22,7 +22,7 @@ CGFloat const HeaderRowsSpacing = 8;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-
+    [self.tripNameLabel setFont:[UIFont boldSystemFontOfSize:13]];
     [self.rowPrototype removeFromSuperview];
 }
 
@@ -34,7 +34,7 @@ CGFloat const HeaderRowsSpacing = 8;
 - (void)appendRow:(NSString *)row {
     UILabel *label = [[UILabel alloc] initWithFrame:self.rowPrototype.bounds];
     [label setNumberOfLines:0];
-    [label setFont:self.rowPrototype.font];
+    [label setFont:[UIFont systemFontOfSize:11]];
     [label setText:row];
     [self addSubview:label];
     [self adjustLabelHeightToFitAndPosition:label];

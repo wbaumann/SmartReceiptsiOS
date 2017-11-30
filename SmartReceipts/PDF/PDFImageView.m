@@ -20,6 +20,11 @@
 
 const CGFloat DEFAULT_COMPRESSION_QUALITY = 0.7;
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self.titleLabel setFont:[UIFont boldSystemFontOfSize:9]];
+}
+
 - (void)fitImageView {
     CGSize imageSize = self.imageView.image.size;
     if (imageSize.height > imageSize.width) {
