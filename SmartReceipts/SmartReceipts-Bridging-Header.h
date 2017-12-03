@@ -20,9 +20,6 @@
 #import "DatabaseUpgradeToVersion12.h"
 #import "DatabaseUpgradeToVersion13.h"
 
-#import "TripReportHeader.h"
-#import "PDFReportTable.h"
-#import "PDFImageView.h"
 #import "WBDynamicPicker.h"
 #import "CategoryCell.h"
 
@@ -65,6 +62,7 @@
 #import "WBImageUtils.h"
 #import "FetchedModelAdapterDelegate.h"
 #import "RateApplication.h"
+#import "WBPdfDrawer.h"
 
 #import "InputValidation.h"
 

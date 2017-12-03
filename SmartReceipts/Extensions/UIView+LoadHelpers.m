@@ -8,6 +8,8 @@
 
 #import "UIView+LoadHelpers.h"
 
+static NSString *const kModulePrefix = @"SmartReceipts.";
+
 @implementation UIView (LoadHelpers)
 
 + (instancetype)loadInstance {
@@ -17,7 +19,8 @@
 
 + (UIView *)loadViewFromXib:(NSString *)xibName {
     UIView *result = nil;
-    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:xibName owner:nil options:nil];
+    NSString *xib = [xibName stringByReplacingOccurrencesOfString:kModulePrefix withString:@""];
+    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:xib owner:nil options:nil];
     for (id currentObject in topLevelObjects) {
         if ([currentObject isKindOfClass:[UIView class]]) {
             result = (UIView *) currentObject;
@@ -29,7 +32,7 @@
 }
 
 + (UINib *)viewNib {
-    NSString *expectedNibName = [NSStringFromClass([self class]) stringByReplacingOccurrencesOfString:@"SmartReceipts." withString:@""];
+    NSString *expectedNibName = [NSStringFromClass([self class]) stringByReplacingOccurrencesOfString:kModulePrefix withString:@""];
     return [UINib nibWithNibName:expectedNibName bundle:nil];
 }
 

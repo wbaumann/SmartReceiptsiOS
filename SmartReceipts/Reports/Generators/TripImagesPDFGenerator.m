@@ -13,7 +13,7 @@
 #import "Database.h"
 #import "WBPreferences.h"
 #import "NSString+Validation.h"
-#import "PrettyPDFRender.h"
+#import <SmartReceipts-Swift.h>
 
 @interface TripImagesPDFGenerator ()
 
@@ -36,7 +36,7 @@
 
 
 - (BOOL)generateToPath:(NSString *)outputPath {
-    if (![self.pdfRender setOutputPath:outputPath]) {
+    if (![self.pdfRender setOutputWithPath:outputPath]) {
         LOGGER_WARNING(@"generateToPath returned false. Path %@", outputPath);
         return NO;
     }
@@ -58,7 +58,7 @@
             } else if ([receipt hasImage]) {
                 UIImage *img = [UIImage imageWithContentsOfFile:[receipt imageFilePathForTrip:receipt.trip]];
                 if (img) {
-                    [self.pdfRender appendImage:img withLabel:[self labelForReceipt:receipt]];
+                    [self.pdfRender appendWithImage:img label:[self labelForReceipt:receipt]];
                 } else {
                     LOGGER_WARNING(@"Receipt-%@ hasImage=TRUE, but no image", receipt.name);
                 }
@@ -83,7 +83,7 @@
     if ([receipt hasImage]) {
         UIImage *img = [UIImage imageWithContentsOfFile:[receipt imageFilePathForTrip:receipt.trip]];
         if (img) {
-            [self.pdfRender appendFullPageImage:img withLabel:[self labelForReceipt:receipt]];
+            [self.pdfRender appendFullPageWithImage:img label:[self labelForReceipt:receipt]];
         } else {
             LOGGER_WARNING(@"drawFullPageReceipt: Receipt-%@ hasImage=TRUE, but no image", receipt.name);
         }
@@ -112,7 +112,7 @@
     @autoreleasepool {
         for (NSUInteger i = 0; i < numberOfPages; ++i) {
             CGPDFPageRef page = CGPDFDocumentGetPage(pdf, i + 1);
-            [self.pdfRender appendPDFPage:page withLabel:label];
+            [self.pdfRender appendPDFWithPage:page label:label];
         }
     }
 

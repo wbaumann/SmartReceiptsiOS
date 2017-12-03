@@ -9,7 +9,6 @@
 #import "ReportPDFTable.h"
 #import "WBPdfDrawer.h"
 #import "Column.h"
-#import "PrettyPDFRender.h"
 
 static inline NSString *safeString(NSString *str) {
     return str ? str : @"";
@@ -39,7 +38,7 @@ static inline NSString *safeString(NSString *str) {
         for (Column *column in self.columns) {
             [array addObject:safeString(column.header)];
         }
-        [self.pdfRender appendTableHeaders:array];
+        [self.pdfRender appendTableWithHeaders:array];
     }
 
     for (id row in rows) {
@@ -50,7 +49,7 @@ static inline NSString *safeString(NSString *str) {
                 [array addObject:safeString(val)];
             }
 
-            [self.pdfRender appendTableColumns:array];
+            [self.pdfRender appendTableWithColumns:array];
         }
     }
 
