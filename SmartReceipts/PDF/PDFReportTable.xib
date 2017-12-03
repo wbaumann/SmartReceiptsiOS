@@ -17,15 +17,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="ycV-uO-PiK" customClass="PDFReportTable">
+        <view contentMode="scaleToFill" id="ycV-uO-PiK" customClass="PDFReportTable" customModule="SmartReceipts" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="FxE-BQ-LFs" userLabel="Header" customClass="TableHeaderRow">
+                <view contentMode="scaleToFill" id="FxE-BQ-LFs" userLabel="Header" customClass="TableHeaderRow" customModule="SmartReceipts" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gDQ-0M-XA4" customClass="RenderedPDFLabel">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gDQ-0M-XA4" customClass="RenderedPDFLabel" customModule="SmartReceipts" customModuleProvider="target">
                             <rect key="frame" x="4" y="7" width="312" height="19"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
@@ -44,11 +44,11 @@
                         <outlet property="contentLabel" destination="gDQ-0M-XA4" id="EFQ-FA-3Dk"/>
                     </connections>
                 </view>
-                <view contentMode="scaleToFill" id="RLo-XG-Tdm" userLabel="Row one" customClass="TableContentRow">
+                <view contentMode="scaleToFill" id="RLo-XG-Tdm" userLabel="Row one" customClass="TableContentRow" customModule="SmartReceipts" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="50" width="320" height="24"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DRI-ap-zIO" customClass="RenderedPDFLabel">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DRI-ap-zIO" customClass="RenderedPDFLabel" customModule="SmartReceipts" customModuleProvider="target">
                             <rect key="frame" x="4" y="4" width="312" height="16"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
@@ -61,11 +61,11 @@
                         <outlet property="contentLabel" destination="DRI-ap-zIO" id="dtJ-9F-s3c"/>
                     </connections>
                 </view>
-                <view contentMode="scaleToFill" id="TR0-LI-ZeV" userLabel="Row two" customClass="TableContentRow">
+                <view contentMode="scaleToFill" id="TR0-LI-ZeV" userLabel="Row two" customClass="TableContentRow" customModule="SmartReceipts" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="97" width="320" height="24"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s10-ke-GEJ" customClass="RenderedPDFLabel">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s10-ke-GEJ" customClass="RenderedPDFLabel" customModule="SmartReceipts" customModuleProvider="target">
                             <rect key="frame" x="4" y="4" width="312" height="16"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>

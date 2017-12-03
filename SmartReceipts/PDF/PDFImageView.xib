@@ -16,7 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="Fmi-k2-Ih2" customClass="PDFImageView">
+        <view contentMode="scaleToFill" id="Fmi-k2-Ih2" customClass="PDFImageView" customModule="SmartReceipts" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="257" height="366"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
