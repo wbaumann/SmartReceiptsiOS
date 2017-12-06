@@ -43,10 +43,6 @@
 #import "ReceiptSummaryCell.h"
 #import "TitleOnlyCell.h"
 
-#import "TripCSVGenerator.h"
-#import "TripFullPDFGenerator.h"
-#import "TripImagesPDFGenerator.h"
-
 #import "WBCategory.h"
 #import "WBImageStampler.h"
 #import "WBPreferences.h"
@@ -63,6 +59,9 @@
 #import "FetchedModelAdapterDelegate.h"
 #import "RateApplication.h"
 #import "WBPdfDrawer.h"
+#import "DistanceColumn.h"
+#import "ReportCSVTable.h"
+#import "ReportPDFTable.h"
 
 #import "InputValidation.h"
 

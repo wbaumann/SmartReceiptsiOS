@@ -12,5 +12,4 @@
 
 /// Chacks if it's safe to use range on string
 - (BOOL)rangeExists:(NSRange)range;
-+ (NSString *)stringWithByteOrderMark;
 @end
