@@ -56,12 +56,9 @@ class ReportAssetsGenerator: NSObject {
         if generate.fullPDF {
             Logger.info("generate.fullPDF")
             clearPath(pdfPath!)
-            guard let generator = TripFullPDFGenerator(trip: trip, database: db) else {
-                onErrorHandler(.fullPdfFailed)
-                return
-            }
+            let generator = TripFullPDFGenerator(trip: trip, database: db!)
             
-            if generator.generate(toPath: pdfPath) {
+            if generator.generateTo(path: pdfPath!) {
                 files.append(pdfPath!)
             } else {
                 if generator.pdfRender.tableHasTooManyColumns {
@@ -77,11 +74,8 @@ class ReportAssetsGenerator: NSObject {
         if generate.imagesPDF {
             Logger.info("generate.imagesPDF")
             clearPath(pdfImagesPath!)
-            guard let generator = TripImagesPDFGenerator(trip: trip, database:db) else {
-                onErrorHandler(.imagesPdf)
-                return
-            }
-            if generator.generate(toPath: pdfImagesPath) {
+            let generator = TripImagesPDFGenerator(trip: trip, database: db!)
+            if generator.generateTo(path: pdfImagesPath!) {
                 files.append(pdfImagesPath!)
             } else {
                 onErrorHandler(.imagesPdf)
@@ -92,12 +86,8 @@ class ReportAssetsGenerator: NSObject {
         if generate.csv {
             Logger.info("generate.csv")
             clearPath(csvPath!)
-            guard let generator = TripCSVGenerator(trip: trip, database: db) else {
-                onErrorHandler(.csvFailed)
-                return
-            }
-            
-            if generator.generate(toPath: csvPath) {
+            let generator = TripCSVGenerator(trip: trip, database: db!)
+            if generator.generateTo(path: csvPath!) {
                 files.append(csvPath!)
             } else {
                 onErrorHandler(.csvFailed)
