@@ -55,8 +55,8 @@ class PrettyPDFRender: NSObject {
         openPage.appendHeader(header)
     }
     
-    func appendHeader(row: String) {
-        header.appendRow(row)
+    func appendHeader(row: String, style: PDFFontStyle = .default) {
+        header.appendRow(row, style: style)
     }
     
     func renderPages() -> Bool {
@@ -113,7 +113,7 @@ class PrettyPDFRender: NSObject {
         startTable()
         openTable.columns = partialTable.columns
         openTable.rows = partialTable.rows
-        openTable .rowToStart = partialTable.rowsAdded
+        openTable.rowToStart = partialTable.rowsAdded
         closeTable()
     }
     

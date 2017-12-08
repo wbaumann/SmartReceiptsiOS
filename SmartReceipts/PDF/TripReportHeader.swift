@@ -26,10 +26,10 @@ class TripReportHeader: UIView {
         adjustLabelHeightToFitAndPosition(label: tripNameLabel)
     }
     
-    func appendRow(_ row: String) {
+    func appendRow(_ row: String, style: PDFFontStyle = .default) {
         let label = UILabel(frame: rowPrototype.bounds)
         label.numberOfLines = 0
-        label.font = PDFFontStyle.default.font
+        label.font = style.font
         label.text = row
         addSubview(label)
         adjustLabelHeightToFitAndPosition(label: label)

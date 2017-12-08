@@ -216,10 +216,12 @@
 "pdf.report.distance.traveled.label.base" = "Distance Traveled: %.2f";
 "pdf.report.from.to.label.base" = "From: %@ To: %@";
 "pdf.report.gross.total.label" = "Gross Total:";
+"pdf.report.grand.total.label" = "Grand Total:";
+"pdf.report.grand.reimbursable.total.label" = "Grand Total (Reimbursable):";
 "pdf.report.receipts.total.label" = "Receipts Total:";
 "pdf.report.receipts.total.reimbursable.label" = "Receipts Total (Reimbursable):";
-"pdf.report.receipts.total.sans.tax.label" = "Receipts Total (Sans Tax):";
-"pdf.report.tax.total.label" = "Tax Total:";
+"pdf.report.receipts.total.sans.tax.label" = "Receipts Total (without Tax):";
+"pdf.report.tax.total.label" = "Receipts Tax Total:";
 
 "rate.app.alert.message" = "Please rate the app on AppStore and help spread word about SmartReceipts!";
 "rate.app.alert.negative.button" = "No";
