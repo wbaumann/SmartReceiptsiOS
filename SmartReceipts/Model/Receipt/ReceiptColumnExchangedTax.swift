@@ -14,6 +14,6 @@ class ReceiptColumnExchangedTax: ReceiptColumn {
             return receipt.exchangedTaxAsString()
         }
         
-        return receipt.formattedExchangedTax()
+        return receipt.exchangedTaxAsString()
     }
 }

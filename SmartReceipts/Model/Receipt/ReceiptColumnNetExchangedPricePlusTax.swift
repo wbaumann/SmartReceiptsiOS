@@ -14,6 +14,6 @@ class ReceiptColumnNetExchangedPricePlusTax: ReceiptColumn {
             return receipt.exchangedNetPriceAsString()
         }
         
-        return receipt.formattedExchangedNetPrice()
+        return receipt.exchangedNetPriceAsString()
     }
 }

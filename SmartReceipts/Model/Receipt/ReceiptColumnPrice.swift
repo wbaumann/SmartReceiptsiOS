@@ -14,6 +14,6 @@ class ReceiptColumnPrice: ReceiptColumn {
             return receipt.priceAsString()
         }
         
-        return receipt.formattedPrice()
+        return receipt.priceAsString()
     }
 }
