@@ -24,12 +24,14 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
     }
     
     private func appenSummaryAndTables() {
-        let netTotal = PricesCollection()
+        let grossTotal = PricesCollection()
         let receiptTotal = PricesCollection()
         let reimbursableTotal = PricesCollection()
         let noTaxesTotal = PricesCollection()
         let taxesTotal = PricesCollection()
         let distanceTotal = PricesCollection()
+        let grandTotal = PricesCollection()
+        let grandTotalReimbursable = PricesCollection()
         
         let pricesPreTax = WBPreferences.enteredPricePreTax()
         let reportOnlyReimbursable = WBPreferences.onlyIncludeReimbursableReceiptsInReports()
@@ -40,14 +42,13 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
             if reportOnlyReimbursable && !receipt.isReimbursable {
                 continue
             }
-            netTotal.addPrice(receipt.targetPrice())
+            grossTotal.addPrice(receipt.targetPrice())
             receiptTotal.addPrice(receipt.targetPrice())
             noTaxesTotal.addPrice(receipt.targetPrice())
-            noTaxesTotal.subtractPrice(receipt.targetPrice())
-            taxesTotal.addPrice(receipt.targetPrice())
-            if pricesPreTax {
-                netTotal.addPrice(receipt.targetPrice())
-            }
+            noTaxesTotal.subtractPrice(receipt.targetTax())
+            taxesTotal.addPrice(receipt.targetTax())
+            grossTotal.addPrice(receipt.targetTax())
+            grandTotal.addPrice(receipt.targetPrice())
             if receipt.isReimbursable {
                 reimbursableTotal.addPrice(receipt.targetPrice())
             }
@@ -56,36 +57,11 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         let dists = distances()
         
         for distance in dists {
-            netTotal.addPrice(distance.totalRate())
+            grandTotal.addPrice(distance.totalRate())
             distanceTotal.addPrice(distance.totalRate())
         }
         
         pdfRender.setTripName(trip: trip.name)
-        
-        // Short Code for Get: currencyFormattedPrice()
-        func fp(_ p: PricesCollection) -> String { return p.currencyFormattedPrice() }
-        
-        if !receiptTotal.isEqual(netTotal) {
-            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.label")) \(fp(receiptTotal))")
-        }
-        
-        if WBPreferences.includeTaxField() {
-            if pricesPreTax && taxesTotal.hasValue() {
-                pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.tax.total.label")) \(fp(taxesTotal))")
-            } else if !noTaxesTotal.isEqual(receiptTotal) && noTaxesTotal.hasValue() {
-                pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.sans.tax.label")) \(fp(noTaxesTotal))")
-            }
-        }
-        
-        if !reportOnlyReimbursable && !reimbursableTotal.isEqual(receiptTotal) {
-            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.reimbursable.label")) \(fp(reimbursableTotal))")
-        }
-        
-        if dists.count > 0 {
-            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.distance.total.label")) \(fp(distanceTotal))")
-        }
-        
-        pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.gross.total.label")) \(fp(netTotal))")
         
         let startDate = dateFormatter.formattedDate(trip.startDate, in: trip.startTimeZone)!
         let endDate = dateFormatter.formattedDate(trip.endDate, in: trip.endTimeZone)!
@@ -99,9 +75,28 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
             pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.comment.label")) \(trip.comment)")
         }
         
+        // Short Code for Get: currencyFormattedPrice()
+        func fp(_ p: PricesCollection) -> String { return p.currencyFormattedPrice() }
+        
+        if !WBPreferences.includeTaxField() && recs.count > 0 && !taxesTotal.hasValue() {
+            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.label")) \(fp(receiptTotal))")
+        }
+        
+        if WBPreferences.includeTaxField() && taxesTotal.hasValue() {
+            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.label")) \(fp(receiptTotal))")
+            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.tax.total.label")) \(fp(taxesTotal))")
+            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.sans.tax.label")) \(fp(noTaxesTotal))")
+        }
+        
         if dists.count > 0 {
-            let totalTraveled = database.totalDistanceTraveled(for: trip).floatValue
-            pdfRender.appendHeader(row: String(format: LocalizedString("pdf.report.distance.traveled.label.base"), totalTraveled))
+            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.distance.total.label")) \(fp(distanceTotal))")
+        }
+        
+        pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.grand.total.label")) \(fp(grandTotal))", style: .defaultBold)
+        
+        if !reportOnlyReimbursable && reimbursableTotal.hasValue() {
+            let row = "\(LocalizedString("pdf.report.grand.reimbursable.total.label")) \(fp(reimbursableTotal))"
+            pdfRender.appendHeader(row: row, style: .defaultBold)
         }
         
         pdfRender.closeHeader()
