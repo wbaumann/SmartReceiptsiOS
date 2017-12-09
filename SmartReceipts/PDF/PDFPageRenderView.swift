@@ -15,6 +15,7 @@ class PDFPageRenderView: UIView {
         backgroundColor = UIColor.white
         
         let format = UIGraphicsImageRendererFormat.default()
+        // The problem is that we can't use default CGContext for drawing a pdf on iPhone 7 and newer with iOS10 (extended color devices)
         format.prefersExtendedRange = false
         
         let renderer = UIGraphicsImageRenderer(bounds: rect, format: format)
