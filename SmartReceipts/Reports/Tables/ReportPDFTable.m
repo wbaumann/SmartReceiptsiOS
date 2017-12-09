@@ -36,7 +36,8 @@ static inline NSString *safeString(NSString *str) {
     if (self.includeHeaders) {
         NSMutableArray *array = [NSMutableArray array];
         for (Column *column in self.columns) {
-            [array addObject:safeString(column.header)];
+            NSString *header = [column.header stringByReplacingOccurrencesOfString:@" " withString:@"\n"];
+            [array addObject:safeString(header)];
         }
         [self.pdfRender appendTableWithHeaders:array];
     }

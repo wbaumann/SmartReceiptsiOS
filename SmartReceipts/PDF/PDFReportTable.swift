@@ -173,8 +173,9 @@ class PDFReportTable: UIView {
             }
         }
         let totalWidthOfNotModified = sum(array: objectcsAt(indexes: indexesNotToModify, in: columns))
-        let totalWidthOfModified = sum(array: objectcsAt(indexes: indexesToModify, in: columns))
         let modifiedTitleWidths = sum(array: objectcsAt(indexes: indexesToModify, in: titleWidths))
+        let sumModifiedColumns = sum(array: objectcsAt(indexes: indexesToModify, in: columns))
+        let totalWidthOfModified = sumModifiedColumns == 0 ? 1 : sumModifiedColumns
         
         let spaceToDivide = frame.width - totalWidthOfNotModified - modifiedTitleWidths
         
@@ -212,7 +213,7 @@ class PDFReportTable: UIView {
     private func objectcsAt(indexes: NSMutableIndexSet, in array: [CGFloat]) -> [CGFloat] {
         var result = [CGFloat]()
         indexes.forEach { index in
-            if index >= array.count {
+            if index < array.count {
                 result.append(array[index])
             }
         }
