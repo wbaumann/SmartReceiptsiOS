@@ -117,10 +117,13 @@ public class ExchangeRateCell: DecimalCell {
     }
     
     private func openSettings() {
-        let settingsVC = MainStoryboard().instantiateViewController(withIdentifier: "SettingsOverflow")
-        settingsVC.modalTransitionStyle = .coverVertical
-        settingsVC.modalPresentationStyle = .formSheet
-        (alertPresenter as? UIViewController)?.present(settingsVC, animated: true, completion: nil)
+        let openFrom = alertPresenter as! UIViewController
+        let module = AppModules.settings.build()
+        executeFor(iPhone: {
+            module.router.show(from: openFrom, embedInNavController: true)
+        }, iPad: {
+            module.router.showIPadForm(from: openFrom, needNavigationController: true)
+        })
     }
 }
 
