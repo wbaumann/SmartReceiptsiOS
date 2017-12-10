@@ -71,15 +71,16 @@ class FetchedTableViewController: UserInterface {
         
         tableView.rx.itemSelected
             .subscribe(onNext: { [unowned self] indexPath in
-            self.tableView.deselectRow(at: indexPath, animated: true)
-            let tapped = self.objectAtIndexPath(indexPath)
-            self.tappedObject(tapped!, indexPath: indexPath)
-        }).disposed(by: bag)
+                self.tableView.deselectRow(at: indexPath, animated: true)
+                let tapped = self.objectAtIndexPath(indexPath)
+                self.tappedObject(tapped!, indexPath: indexPath)
+            }).disposed(by: bag)
         
-        tableView.rx.itemDeleted.subscribe(onNext: { [unowned self] indexPath in
-            let model = self.objectAtIndexPath(indexPath)
-            self.delete(object: model!, at: indexPath)
-        }).disposed(by: bag)
+        tableView.rx.itemDeleted
+            .subscribe(onNext: { [unowned self] indexPath in
+                let model = self.objectAtIndexPath(indexPath)
+                self.delete(object: model!, at: indexPath)
+            }).disposed(by: bag)
     }
     
     func setPresentationCellNib(_ nib: UINib) {
@@ -153,7 +154,7 @@ class FetchedTableViewController: UserInterface {
             .disposed(by: bag)
         
         fetchedModelAdapter.rx.didChangeContent
-            .map({ [weak self] in self?.contentChanged() })
+            .do(onNext: { [weak self] in self?.contentChanged() })
             .bind(to: dataSource.didChangeContent)
             .disposed(by: bag)
         
