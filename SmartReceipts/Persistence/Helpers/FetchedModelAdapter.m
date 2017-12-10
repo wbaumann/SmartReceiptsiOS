@@ -163,9 +163,9 @@
     id removed = [previousObjects lastObject];
     NSUInteger index = [previousObjectsForIndex indexOfObject:removed];
     [self.delegate willChangeContent];
-    [self.delegate didDeleteObject:removed atIndex:index];
 
     [self setModels:refreshed];
+    [self.delegate didDeleteObject:removed atIndex:index];
 
     [self.delegate didChangeContent];
 }
@@ -193,8 +193,8 @@
 
     [self.delegate willChangeContent];
 
-    [self.delegate didInsertObject:added atIndex:index];
     [self setModels:refreshed];
+    [self.delegate didInsertObject:added atIndex:index];
 
     [self.delegate didChangeContent];
 }
