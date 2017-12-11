@@ -19,10 +19,6 @@ extension String {
         return URL(fileURLWithPath: self)
     }
     
-    static var byteOrderMarked: String {
-        return "\\357\\273\\277"
-    }
-    
 }
 
 extension String {

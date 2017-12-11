@@ -218,7 +218,7 @@
 "pdf.report.gross.total.label" = "Gross Total:";
 "pdf.report.grand.total.label" = "Grand Total:";
 "pdf.report.grand.reimbursable.total.label" = "Grand Total (Reimbursable):";
-"pdf.report.receipts.total.label" = "Receipts Total:";
+"pdf.report.receipts.total.label" = "Receipts Total (with Tax):";
 "pdf.report.receipts.total.reimbursable.label" = "Receipts Total (Zwrotowi):";
 "pdf.report.receipts.total.sans.tax.label" = "Receipts Total (without Tax):";
 "pdf.report.tax.total.label" = "Receipts Tax Total:";

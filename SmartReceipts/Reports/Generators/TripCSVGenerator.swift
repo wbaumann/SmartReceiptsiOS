@@ -19,9 +19,9 @@ class TripCSVGenerator: ReportCSVGenerator {
     }
     
     private func generateContent() -> String {
-        let content = NSMutableString(string: String.byteOrderMarked)
+        let content = NSMutableString()
         appendReceiptsTable(content)
-        appendReceiptsTable(content)
+        appendDistancesTable(content)
         return content as String
     }
     
