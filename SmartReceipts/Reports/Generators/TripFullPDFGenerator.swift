@@ -14,7 +14,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         pdfRender.landscapePreferred = WBPreferences.printReceiptTableLandscape()
         
         if !pdfRender.setOutput(path: path) { return false }
-        appenSummaryAndTables()
+        appendSummaryAndTables()
 
         // always render fullPageElements and images in protrait orientation
         pdfRender.landscapePreferred = false
@@ -23,8 +23,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         return pdfRender.renderPages()
     }
     
-    private func appenSummaryAndTables() {
-        let grossTotal = PricesCollection()
+    private func appendSummaryAndTables() {
         let receiptTotal = PricesCollection()
         let reimbursableTotal = PricesCollection()
         let noTaxesTotal = PricesCollection()
@@ -42,15 +41,23 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
             if reportOnlyReimbursable && !receipt.isReimbursable {
                 continue
             }
-            grossTotal.addPrice(receipt.targetPrice())
-            receiptTotal.addPrice(receipt.targetPrice())
-            noTaxesTotal.addPrice(receipt.targetPrice())
-            noTaxesTotal.subtractPrice(receipt.targetTax())
-            taxesTotal.addPrice(receipt.targetTax())
-            grossTotal.addPrice(receipt.targetTax())
-            grandTotal.addPrice(receipt.targetPrice())
+            let price = receipt.targetPrice()
+            let tax = receipt.targetTax()
+            
+            receiptTotal.addPrice(price)
+            taxesTotal.addPrice(tax)
+            noTaxesTotal.addPrice(price)
+            grandTotal.addPrice(price)
+            
+            if WBPreferences.enteredPricePreTax() {
+                grandTotal.addPrice(tax)
+                receiptTotal.addPrice(tax)
+            } else {
+                noTaxesTotal.subtractPrice(tax)
+            }
+            
             if receipt.isReimbursable {
-                reimbursableTotal.addPrice(receipt.targetPrice())
+                reimbursableTotal.addPrice(price)
             }
         }
         
@@ -83,9 +90,9 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         }
         
         if WBPreferences.includeTaxField() && taxesTotal.hasValue() {
-            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.label")) \(fp(receiptTotal))")
-            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.tax.total.label")) \(fp(taxesTotal))")
             pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.sans.tax.label")) \(fp(noTaxesTotal))")
+            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.tax.total.label")) \(fp(taxesTotal))")
+            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.label")) \(fp(receiptTotal))")
         }
         
         if dists.count > 0 {

@@ -8,6 +8,6 @@
 
 class ReportCSVGenerator: ReportGenerator {
     override func receiptColumns() -> [ReceiptColumn] {
-        return database.allCSVColumns as! [ReceiptColumn]
+        return database.allCSVColumns() as! [ReceiptColumn]
     }
 }
