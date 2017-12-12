@@ -10,7 +10,7 @@ import Foundation
 
 class TripCSVGenerator: ReportCSVGenerator {
     override func generateTo(path: String) -> Bool {
-        do { try generateContent().write(toFile: path, atomically: true, encoding: .utf8) }
+        do { try generateContent().write(to: path.asFileURL) }
         catch {
             Logger.error("CSV write error: \(error.localizedDescription)")
            return false
@@ -18,11 +18,11 @@ class TripCSVGenerator: ReportCSVGenerator {
         return true
     }
     
-    private func generateContent() -> String {
+    private func generateContent() -> Data {
         let content = NSMutableString()
         appendReceiptsTable(content)
         appendDistancesTable(content)
-        return content as String
+        return (content as String).byteOrderMarked
     }
     
     private func appendReceiptsTable(_ content: NSMutableString) {
