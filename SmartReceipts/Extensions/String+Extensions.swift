@@ -19,6 +19,11 @@ extension String {
         return URL(fileURLWithPath: self)
     }
     
+    var byteOrderMarked: Data {
+        var result = self.data(using: .utf8)!
+        result.insert(contentsOf: [0xEF, 0xBB, 0xBF], at: 0)
+        return result
+    }
 }
 
 extension String {
