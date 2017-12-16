@@ -49,12 +49,8 @@ final class TripsView: FetchedTableViewController {
             self.setEditing(!self.isEditing, animated: true)
         }).disposed(by: bag)
         
-        #if DEBUG
-            _debugButton.title = "DEBUG"
-        #else
-            _debugButton.title = ""
-            _debugButton.isEnabled = false
-        #endif
+        configureDebug()
+        configureMenu()
     }
     
     deinit {
@@ -63,13 +59,22 @@ final class TripsView: FetchedTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureMenu()
         title = AppTheme.appTitle
+        view.layoutIfNeeded()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         title = String()
+    }
+    
+    private func configureDebug() {
+        #if DEBUG
+            _debugButton.title = "DEBUG"
+        #else
+            _debugButton.title = ""
+            _debugButton.isEnabled = false
+        #endif
     }
     
     private func configureMenu() {
