@@ -64,6 +64,12 @@ final class TripsView: FetchedTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureMenu()
+        title = AppTheme.appTitle
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        title = String()
     }
     
     private func configureMenu() {
