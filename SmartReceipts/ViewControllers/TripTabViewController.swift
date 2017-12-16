@@ -12,12 +12,13 @@ import RxSwift
 import Viperit
 
 class TripTabViewController: ButtonBarPagerTabStripViewController {
-    
-    var trip: WBTrip!
+    @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
     private var titleSubtitleProtocols: [TitleSubtitleProtocol?]!
     private var reportTooltip: TooltipView?
     private let bag = DisposeBag()
+    
+    var trip: WBTrip!
     
     required init(trip: WBTrip) {
         super.init(nibName: "TripTabViewController", bundle: nil)
@@ -57,7 +58,6 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         super.viewWillAppear(animated)
         updateForIndex(currentIndex)
         updateGenerateTooltip()
-        
     }
     
     func updateEditing() {
@@ -149,12 +149,12 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
                 TooltipService.shared.markMoveToGenerateDismiss()
                 self.moveToViewController(at: self.viewControllers.count-1)
                 self.reportTooltip = nil
-            }).disposed(by: self.bag)
+            }).disposed(by: bag)
             
             reportTooltip?.rx.close.subscribe(onNext: {
                 TooltipService.shared.markMoveToGenerateDismiss()
                 onGenerateTooltipClose()
-            }).disposed(by: self.bag)
+            }).disposed(by: bag)
         }
         
         // Close tooltip on Generate page

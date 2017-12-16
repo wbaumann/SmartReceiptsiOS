@@ -49,6 +49,7 @@
 		710A33DE1F82802100D10344 /* RMStore+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710A33DD1F82802100D10344 /* RMStore+Rx.swift */; };
 		710A33DF1F8282D100D10344 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710A33DB1F827E2500D10344 /* PurchaseService.swift */; };
 		710A33E11F82CCCE00D10344 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710A33E01F82CCCE00D10344 /* StoreKit.framework */; };
+		710D98A21FE573540088B9BA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D98A11FE573540088B9BA /* UIView+Extensions.swift */; };
 		710DCEA71F7444C000C08C43 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710DCEA61F7444C000C08C43 /* User.swift */; };
 		7111ADA51F0EC38100DF77ED /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7111AD9F1F0EC38100DF77ED /* Settings.storyboard */; };
 		7111ADA61F0EC38100DF77ED /* SettingsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADA01F0EC38100DF77ED /* SettingsDisplayData.swift */; };
@@ -561,6 +562,7 @@
 		710B813B1F1B6FFD000C97C4 /* ColumnsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnsModuleTest.swift; sourceTree = "<group>"; };
 		710B813D1F1B7074000C97C4 /* CategoriesModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesModuleTest.swift; sourceTree = "<group>"; };
 		710B813F1F1B708F000C97C4 /* PaymentMethodsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsModuleTest.swift; sourceTree = "<group>"; };
+		710D98A11FE573540088B9BA /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		710DCEA61F7444C000C08C43 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7111AD9F1F0EC38100DF77ED /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		7111ADA01F0EC38100DF77ED /* SettingsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDisplayData.swift; sourceTree = "<group>"; };
@@ -1950,6 +1952,7 @@
 				71652EAD1F646758002C8228 /* Toast+Extensions.swift */,
 				712A84E91F783E9300D988E7 /* Dictionary+Extensions.swift */,
 				71B5C5361FB1550F00FA0AB9 /* UIAlert+Extensions.swift */,
+				710D98A11FE573540088B9BA /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3125,6 +3128,7 @@
 				A7F05BBC1CFC31520079F1AD /* WBCurrency+Extensions.swift in Sources */,
 				57691F001E10613500F78859 /* RateApplication.m in Sources */,
 				71ACA7BA1F5B5A830024903E /* FeatureFlags.swift in Sources */,
+				710D98A21FE573540088B9BA /* UIView+Extensions.swift in Sources */,
 				A78214FB1CFFE86000FD644A /* ExchangeRate.swift in Sources */,
 				7194CAB81F3CBED00010552A /* FetchedModelAdapter+Rx.swift in Sources */,
 				57EEBDC41E093C8F00974E53 /* String+Extensions.swift in Sources */,
