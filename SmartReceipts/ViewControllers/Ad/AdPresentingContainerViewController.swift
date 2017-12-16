@@ -8,39 +8,37 @@
 
 import GoogleMobileAds
 import Viperit
+import RxSwift
 
 fileprivate let BANNER_HEIGHT: CGFloat = 80
 
 class AdPresentingContainerViewController: UIViewController {
-    @IBOutlet fileprivate var adContainerHeight: NSLayoutConstraint?
-    @IBOutlet fileprivate var nativeExpressAdView: GADNativeExpressAdView?
+    @IBOutlet fileprivate var adContainerHeight: NSLayoutConstraint!
+    @IBOutlet fileprivate var nativeExpressAdView: GADNativeExpressAdView!
     @IBOutlet var container: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        nativeExpressAdView.rootViewController = self
+        nativeExpressAdView.adUnitID = AD_UNIT_ID
+        nativeExpressAdView.delegate = self
+        nativeExpressAdView.tintColor = AppTheme.accentColor
         
-        adContainerHeight?.constant = 0
+        checkAdsStatus()
+        loadAd()
         
-        nativeExpressAdView?.rootViewController = self
-        nativeExpressAdView?.adUnitID = AD_UNIT_ID
-        nativeExpressAdView?.delegate = self
-        nativeExpressAdView?.backgroundColor = AppTheme.primaryColor
-        nativeExpressAdView?.tintColor = AppTheme.accentColor
-        
-        DispatchQueue.main.async {
-            self.loadAd()
-        }
-        NotificationCenter.default.addObserver(self, selector: #selector(loadAd),
+        NotificationCenter.default.addObserver(self, selector: #selector(checkAdsStatus),
                     name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
     }
     
     
-    @objc private func loadAd() {
+     private func loadAd() {
         if !Database.sharedInstance().hasValidSubscription() {
             let request = GADRequest()
             request.testDevices = [kGADSimulatorID, "b5c0a5fccf83835150ed1fac6dd636e6"]
-            nativeExpressAdView?.adSize = getAdSize()
-            nativeExpressAdView?.load(request)
+            nativeExpressAdView.adSize = getAdSize()
+            nativeExpressAdView.load(request)
         }
     }
     
@@ -49,15 +47,12 @@ class AdPresentingContainerViewController: UIViewController {
         return GADAdSizeFromCGSize(adSize)
     }
     
-    private func checkAdsStatus() {
+    @objc private func checkAdsStatus() {
         if Database.sharedInstance().hasValidSubscription() {
             Logger.debug("Remove ads")
-
-            UIView.animate(withDuration: 0.3, animations: { 
-                self.adContainerHeight?.constant = 0
-                self.view.layoutSubviews()
-            })
-            
+            adContainerHeight.constant = 0
+            view.layoutSubviewsAnimated()
+            nativeExpressAdView.delegate = nil
             nativeExpressAdView = nil
         }
     }
@@ -68,20 +63,16 @@ class AdPresentingContainerViewController: UIViewController {
 }
 
 extension AdPresentingContainerViewController: GADNativeExpressAdViewDelegate {
+    
     func nativeExpressAdViewDidReceiveAd(_ nativeExpressAdView: GADNativeExpressAdView) {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.adContainerHeight?.constant = BANNER_HEIGHT
-            self.view.layoutSubviews()
-        })
+        adContainerHeight.constant = BANNER_HEIGHT
+        view.layoutSubviewsAnimated()
     }
     
     func nativeExpressAdView(_ nativeExpressAdView: GADNativeExpressAdView, didFailToReceiveAdWithError error: GADRequestError) {
-        UIView.animate(withDuration: 0.3, animations: { 
-            self.adContainerHeight?.constant = 0
-            self.view.layoutSubviews()
-        }) { _ in
-            nativeExpressAdView.adSize = self.getAdSize()
-        }
+        adContainerHeight.constant = 0
+        view.layoutSubviewsAnimated()
+        nativeExpressAdView.adSize = getAdSize()
     }
 }
 

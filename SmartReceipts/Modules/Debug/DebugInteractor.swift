@@ -18,6 +18,10 @@ class DebugInteractor: Interactor {
     var debugSubscription: AnyObserver<Bool> {
         return AnyObserver<Bool>(onNext: { value in
             DebugStates.setSubscription(value)
+            if value {
+                let name = NSNotification.Name.SmartReceiptsAdsRemoved
+                NotificationCenter.default.post(name: name, object: nil)
+            }
         })
     }
     
