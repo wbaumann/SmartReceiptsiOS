@@ -50,7 +50,6 @@ final class TripsView: FetchedTableViewController {
         }).disposed(by: bag)
         
         configureDebug()
-        configureMenu()
     }
     
     deinit {
@@ -60,6 +59,7 @@ final class TripsView: FetchedTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = AppTheme.appTitle
+        configureMenu()
         view.layoutIfNeeded()
     }
     
