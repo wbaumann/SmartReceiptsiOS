@@ -29,7 +29,7 @@ class FetchedPlaceholderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setTitle(_ title: String) {
+    private func setTitle(_ title: String?) {
         placeholderLabel.text = title
         let sizeBefore = CGSize(width: bounds.width - MARGIN * 2, height: 0)
         let size = placeholderLabel.sizeThatFits(sizeBefore)
@@ -38,6 +38,6 @@ class FetchedPlaceholderView: UIView {
     }
     
     override func layoutSubviews() {
-        placeholderLabel.center = CGPoint(x: bounds.width/2, y: bounds.height/2)
+        setTitle(placeholderLabel.text)
     }
 }
