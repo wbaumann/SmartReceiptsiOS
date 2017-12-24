@@ -16,4 +16,12 @@
     return (forCSV ? price.amountAsString : price.currencyFormattedPrice);
 }
 
+- (NSString *)valueForFooter:(NSArray *)rows forCSV:(BOOL)forCSV {
+    PricesCollection *collection = [PricesCollection new];
+    for (Distance *distance in rows) {
+        [collection addPrice:distance.totalRate];
+    }
+    return [collection currencyFormattedPrice];
+}
+
 @end

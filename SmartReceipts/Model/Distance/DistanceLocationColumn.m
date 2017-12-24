@@ -14,4 +14,8 @@
     return distance.location;
 }
 
+- (NSString *)valueForFooter:(NSArray *)rows forCSV:(BOOL)forCSV {
+    return NSLocalizedString(@"pdf.report.distance.total.label", nil);
+}
+
 @end

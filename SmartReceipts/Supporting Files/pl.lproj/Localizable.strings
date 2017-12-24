@@ -222,6 +222,7 @@
 "pdf.report.receipts.total.reimbursable.label" = "Receipts Total (Zwrotowi):";
 "pdf.report.receipts.total.sans.tax.label" = "Receipts Total (without Tax):";
 "pdf.report.tax.total.label" = "Receipts Tax Total:";
+"pdf.report.distance.total.label" = "Total";
 
 "rate.app.alert.message" = "Please rate the app on AppStore and help spread word about SmartReceipts!";
 "rate.app.alert.negative.button" = "No";
