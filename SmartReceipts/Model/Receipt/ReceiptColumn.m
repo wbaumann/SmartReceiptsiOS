@@ -81,6 +81,10 @@ static NSDictionary *__receiptColumnNameToClassMapping;
     return nil;
 }
 
+- (NSString *)valueForFooter:(NSArray *)rows forCSV:(BOOL)forCSV {
+    return @"";
+}
+
 + (ReceiptColumn *)columnWithIndex:(NSInteger)index name:(NSString *)columnName {
     // for compability.
     // legacy string, expensable was renamed to reimbursable

@@ -16,4 +16,12 @@ class ReceiptColumnExchangedTax: ReceiptColumn {
         
         return receipt.exchangedTaxAsString()
     }
+    
+    override func value(forFooter rows: [Any]!, forCSV: Bool) -> String! {
+        var total = NSDecimalNumber.zero
+        for rec in rows as! [WBReceipt] {
+            total = total.adding(rec.exchangedTax()!.amount)
+        }
+        return Price.stringFrom(amount: total)
+    }
 }

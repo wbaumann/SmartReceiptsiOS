@@ -16,4 +16,13 @@ class ReceiptColumnNetExchangedPricePlusTax: ReceiptColumn {
         
         return receipt.exchangedNetPriceAsString()
     }
+    
+    override func value(forFooter rows: [Any]!, forCSV: Bool) -> String! {
+        var total = NSDecimalNumber.zero
+        for rec in rows as! [WBReceipt] {
+            total = total.adding(rec.exchangedPrice()!.amount)
+            total = total.adding(rec.exchangedTax()!.amount)
+        }
+        return Price.stringFrom(amount: total)
+    }
 }

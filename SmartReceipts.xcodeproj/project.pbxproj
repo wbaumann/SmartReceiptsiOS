@@ -274,6 +274,7 @@
 		71F468371EEEDB03009F6CE7 /* EditTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F468311EEEDB03009F6CE7 /* EditTripView.swift */; };
 		71F468391EEEF2AE009F6CE7 /* EditTripFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F468381EEEF2AE009F6CE7 /* EditTripFormView.swift */; };
 		71F4683B1EEF2E55009F6CE7 /* Viperit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4683A1EEF2E55009F6CE7 /* Viperit+Extensions.swift */; };
+		71F73E381FEAD02D0049F108 /* TableFooterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F73E371FEAD02D0049F108 /* TableFooterRow.swift */; };
 		71FB1D3E1F195D0D00742FF5 /* PaymentMethods.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FB1D381F195D0D00742FF5 /* PaymentMethods.storyboard */; };
 		71FB1D3F1F195D0D00742FF5 /* PaymentMethodsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D391F195D0D00742FF5 /* PaymentMethodsDisplayData.swift */; };
 		71FB1D401F195D0D00742FF5 /* PaymentMethodsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D3A1F195D0D00742FF5 /* PaymentMethodsInteractor.swift */; };
@@ -795,6 +796,7 @@
 		71F468311EEEDB03009F6CE7 /* EditTripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTripView.swift; sourceTree = "<group>"; };
 		71F468381EEEF2AE009F6CE7 /* EditTripFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTripFormView.swift; sourceTree = "<group>"; };
 		71F4683A1EEF2E55009F6CE7 /* Viperit+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Viperit+Extensions.swift"; sourceTree = "<group>"; };
+		71F73E371FEAD02D0049F108 /* TableFooterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableFooterRow.swift; sourceTree = "<group>"; };
 		71FB1D381F195D0D00742FF5 /* PaymentMethods.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaymentMethods.storyboard; sourceTree = "<group>"; };
 		71FB1D391F195D0D00742FF5 /* PaymentMethodsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsDisplayData.swift; sourceTree = "<group>"; };
 		71FB1D3A1F195D0D00742FF5 /* PaymentMethodsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsInteractor.swift; sourceTree = "<group>"; };
@@ -1878,6 +1880,7 @@
 				716138BC1FD1BB4B00C73FB9 /* RenderedPDFLabel.swift */,
 				716138B81FD1ABDA00C73FB9 /* TableContentRow.swift */,
 				716138BA1FD1ABE900C73FB9 /* TableHeaderRow.swift */,
+				71F73E371FEAD02D0049F108 /* TableFooterRow.swift */,
 			);
 			path = PDF;
 			sourceTree = "<group>";
@@ -2936,6 +2939,7 @@
 				5757D6101E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift in Sources */,
 				A7AFB2461CEC219100718744 /* DatabaseTableNames.swift in Sources */,
 				A7F05BA21CFC038D0079F1AD /* ReceiptColumnTax.swift in Sources */,
+				71F73E381FEAD02D0049F108 /* TableFooterRow.swift in Sources */,
 				EA183E051B1C9F4C00577B3D /* Database+Columns.m in Sources */,
 				719B1FED1EF6032D0049BD71 /* EditReceiptView.swift in Sources */,
 				A78214F51CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift in Sources */,

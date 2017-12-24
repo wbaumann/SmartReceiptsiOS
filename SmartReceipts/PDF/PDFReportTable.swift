@@ -14,8 +14,11 @@ class PDFReportTable: UIView {
     @IBOutlet var headerRowPrototype: TableHeaderRow!
     @IBOutlet var rowOnePrototype: TableContentRow!
     @IBOutlet var rowTwoPrototype: TableContentRow!
+    @IBOutlet var footerRowPrototype: TableFooterRow!
+    
     var rows = [[String]]()
     var columns = [String]()
+    var footers = [String]()
     var rowsAdded: Int = 0
     var rowToStart: Int = 0
     var tableHeaderAdded = false
@@ -27,6 +30,7 @@ class PDFReportTable: UIView {
         headerRowPrototype.removeFromSuperview()
         rowOnePrototype.removeFromSuperview()
         rowTwoPrototype.removeFromSuperview()
+        footerRowPrototype.removeFromSuperview()
         
         clipsToBounds = true
         headerRowPrototype.contentLabel?.font = PDFFontStyle.defaultBold.font
@@ -75,14 +79,14 @@ class PDFReportTable: UIView {
         // In that case original table is reused, just additional rows added
         
         if !tableHeaderAdded {
-            yOffset = appendRow(row: self.columns, coloumnsWidths: columnsWidth, usingPrototype: self.headerRowPrototype, yOffset: yOffset)
+            yOffset = appendRow(row: columns, coloumnsWidths: columnsWidth, usingPrototype: headerRowPrototype, yOffset: yOffset)
             tableHeaderAdded = true
             setFrameHeight(to: frame.height)
         } else {
             yOffset = frame.height
         }
         
-        for row in rowToStart..<self.rows.count {
+        for row in rowToStart..<rows.count {
             var prototype: TableContentRow!
             if row % 2 == 0 {
                 prototype = rowOnePrototype
@@ -96,8 +100,9 @@ class PDFReportTable: UIView {
                 return false
             }
             yOffset = appendRow(row: rows[row], coloumnsWidths: columnsWidth, usingPrototype: prototype, yOffset: yOffset)
-            setFrameHeight(to: yOffset)
         }
+        yOffset = appendRow(row: footers, coloumnsWidths: columnsWidth, usingPrototype: footerRowPrototype, yOffset: yOffset)
+        setFrameHeight(to: yOffset)
         return true
     }
     
