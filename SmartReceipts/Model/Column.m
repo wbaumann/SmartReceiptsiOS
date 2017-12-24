@@ -41,6 +41,11 @@
     return nil;
 }
 
+- (NSString *)valueForFooter:(NSArray *)rows forCSV:(BOOL)forCSV {
+    ABSTRACT_METHOD
+    return nil;
+}
+
 - (NSString *)header {
     return self.name;
 }

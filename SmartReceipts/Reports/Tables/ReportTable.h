@@ -11,6 +11,7 @@
 @interface ReportTable : NSObject
 
 @property (nonatomic, assign) BOOL includeHeaders;
+@property (nonatomic, assign) BOOL includeFooters;
 @property (nonatomic, strong, readonly) NSArray *columns;
 
 - (instancetype)initWithColumns:(NSArray *)columns;

@@ -110,6 +110,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
     
         let receiptsTable = ReportPDFTable(pdfRender: pdfRender, columns: receiptColumns())!
         receiptsTable.includeHeaders = true
+        receiptsTable.includeFooters = true
         if WBPreferences.printDailyDistanceValues() {
             let dReceipts = DistancesToReceiptsConverter.convertDistances(distances()) as! [WBReceipt]
             recs.append(contentsOf: dReceipts)

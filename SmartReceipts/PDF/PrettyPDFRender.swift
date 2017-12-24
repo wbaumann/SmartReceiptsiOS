@@ -89,6 +89,10 @@ class PrettyPDFRender: NSObject {
         openTable.append(values: columns)
     }
     
+    func appendTable(footers: [String]) {
+        openTable.footers = footers
+    }
+    
     func closeTable() {
         let fullyAddedTable = openTable.buildTable(availableSpace: openPage.remainingSpace())
         openPage.appendTable(openTable)
