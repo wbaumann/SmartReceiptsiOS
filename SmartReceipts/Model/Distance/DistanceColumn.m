@@ -39,4 +39,8 @@
     return nil;
 }
 
+- (NSString *)valueForFooter:(NSArray *)rows forCSV:(BOOL)forCSV {
+    return @"";
+}
+
 @end

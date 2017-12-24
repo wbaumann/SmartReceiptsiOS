@@ -14,4 +14,12 @@
     return [distance.distance descriptionWithLocale:[NSLocale currentLocale]];
 }
 
+- (NSString *)valueForFooter:(NSArray *)rows forCSV:(BOOL)forCSV {
+    NSDecimalNumber *total = [NSDecimalNumber zero];
+    for (Distance *distance in rows) {
+        total = [total decimalNumberByAdding:distance.distance];
+    }
+    return [total descriptionWithLocale:[NSLocale currentLocale]];
+}
+
 @end

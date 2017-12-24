@@ -14,4 +14,8 @@
     return distance.rate.currency.code;
 }
 
+- (NSString *)valueForFooter:(NSArray *)rows forCSV:(BOOL)forCSV {
+    return [rows.firstObject trip].defaultCurrency.code;
+}
+
 @end

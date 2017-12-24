@@ -121,6 +121,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         if !WBPreferences.printDistanceTable() || dists.isEmpty { return }
         let distancesTable = ReportPDFTable(pdfRender: pdfRender, columns: distanceColumns())!
         distancesTable.includeHeaders = true
+        distancesTable.includeFooters = true
         distancesTable.append(withRows: dists)
     }
 }
