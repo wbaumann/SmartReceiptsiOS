@@ -277,6 +277,8 @@
 "receipt.column.report.name" = "Nazwa Raportu";
 "receipt.column.report.start.date" = "Startowa Data Raportu";
 "receipt.column.tax" = "Podatek";
+"receipt.column.report.price.minus.tax" = "Cena Minus Tax";
+"receipt.column.report.price.exchanged.minus.tax" = "Cena Minus Tax (Exchanged)";
 "receipt.column.user.id" = "ID Użytkownika";
 "receipt.floaty.item.text.only" = "Text-Only";
 "receipt.floaty.item.image" = "Image";

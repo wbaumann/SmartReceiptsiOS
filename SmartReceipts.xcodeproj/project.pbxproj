@@ -78,6 +78,8 @@
 		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
 		714029CC1FA3A43500DED2E8 /* ScansPurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714029CB1FA3A43500DED2E8 /* ScansPurchaseButton.swift */; };
+		714042061FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714042051FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift */; };
+		714042081FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714042071FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift */; };
 		7141288C1F77E1410056B9CC /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C413D31EE6F826003CE891 /* GeneratedMocks.swift */; };
 		714901BC1F05632200772B6F /* PaymentMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901BB1F05632200772B6F /* PaymentMethodTests.swift */; };
 		714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901C01F0598B900772B6F /* CurrencyExchangeService.swift */; };
@@ -602,6 +604,8 @@
 		713D4C751F626B3C00F29C4C /* AuthServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceTests.swift; sourceTree = "<group>"; };
 		713D4C771F62AA0700F29C4C /* AuthModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthModuleTest.swift; sourceTree = "<group>"; };
 		714029CB1FA3A43500DED2E8 /* ScansPurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScansPurchaseButton.swift; path = Views/ScansPurchaseButton.swift; sourceTree = "<group>"; };
+		714042051FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptColumnPriceMinusTax.swift; sourceTree = "<group>"; };
+		714042071FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptColumnExchangedPriceMinusTax.swift; sourceTree = "<group>"; };
 		714142851FA4944B00517BE7 /* OCRConfigurationModuleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRConfigurationModuleTest.swift; sourceTree = "<group>"; };
 		714901BB1F05632200772B6F /* PaymentMethodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTests.swift; sourceTree = "<group>"; };
 		714901C01F0598B900772B6F /* CurrencyExchangeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeService.swift; sourceTree = "<group>"; };
@@ -2174,6 +2178,8 @@
 				EA8D818A1AEA7BA400BAC943 /* ReceiptColumnUserID.m */,
 				EA8D81B91AEA861400BAC943 /* ReceiptUnknownColumn.h */,
 				EA8D81BA1AEA861400BAC943 /* ReceiptUnknownColumn.m */,
+				714042051FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift */,
+				714042071FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift */,
 			);
 			path = Receipt;
 			sourceTree = "<group>";
@@ -3096,6 +3102,7 @@
 				EA07BF531AF4CD26004D17F6 /* Database+PaymentMethods.m in Sources */,
 				716138C11FD1BD0500C73FB9 /* PDFImageView.swift in Sources */,
 				570515A31E02EB5500BB8FE4 /* Event+Categories.swift in Sources */,
+				714042081FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift in Sources */,
 				EA2F23051B41BFD3008AF61E /* Database+Purchases.m in Sources */,
 				716138C91FD1E6E600C73FB9 /* PDFReportTable.swift in Sources */,
 				71AF49E31EFDA4810022B2E2 /* ReceiptImageViewerRouter.swift in Sources */,
@@ -3172,6 +3179,7 @@
 				A7D6CDE71D05524200998FEF /* ReportAssetsGenerator.swift in Sources */,
 				7190B9161F60427200F6CE7F /* AuthPresenter.swift in Sources */,
 				A7F05BC21CFC42900079F1AD /* ReceiptColumnPrice.swift in Sources */,
+				714042061FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift in Sources */,
 				7111ADA91F0EC38100DF77ED /* SettingsRouter.swift in Sources */,
 				EA46678F1AE7EA1700B4E502 /* ImagePicker.m in Sources */,
 				EA66777C1B06154F004D3993 /* NSString+Helpers.m in Sources */,

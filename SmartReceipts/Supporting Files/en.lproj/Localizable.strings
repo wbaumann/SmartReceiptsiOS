@@ -276,6 +276,8 @@
 "receipt.column.report.exchanged.tax" = "Tax (Exchanged)";
 "receipt.column.report.name" = "Report Name";
 "receipt.column.report.start.date" = "Report Start Date";
+"receipt.column.report.price.minus.tax" = "Price Minus Tax";
+"receipt.column.report.price.exchanged.minus.tax" = "Price Minus Tax (Exchanged)";
 "receipt.column.tax" = "Tax";
 "receipt.column.user.id" = "User ID";
 "receipt.floaty.item.text.only" = "Text-Only";

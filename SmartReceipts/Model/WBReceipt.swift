@@ -228,5 +228,13 @@ extension WBReceipt {
         
         return net.currencyFormattedPrice()
     }
+    
+    func amountMinusTax() -> NSDecimalNumber {
+        if WBPreferences.enteredPricePreTax() {
+            return price().amount
+        } else {
+            return exchangedPrice()!.amount.subtracting(exchangedTax()!.amount)
+        }
+    }
 
 }
