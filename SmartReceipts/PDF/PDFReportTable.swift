@@ -124,6 +124,7 @@ class PDFReportTable: UIView {
             let value = row[column]
             maxWidth = max(maxWidth, rowOnePrototype.widthFor(value: value))
         }
+        maxWidth = max(maxWidth, footerRowPrototype.widthFor(value: footers[column]))
         return CGFloat(ceilf(Float(maxWidth)))
     }
     
@@ -193,7 +194,7 @@ class PDFReportTable: UIView {
             let columnWidth = columns[i]
             let percent = columnWidth/totalWidthOfModified
             let titleWidth = titleWidths[i]
-            let squeezedTitleWidth = titleWidth - CGFloat(floorf(Float(spaceToDivide * percent)))
+            let squeezedTitleWidth = titleWidth + CGFloat(floorf(Float(spaceToDivide * percent)))
             
             // check if all the columns can be placed within the table (if there enough available width)
             if squeezedTitleWidth < MINIMUM_COLUMN_WIDTH {
