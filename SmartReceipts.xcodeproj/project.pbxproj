@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4D004BB71D272836004DBB19 /* SmartReceiptsFormattableString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D004BB61D272836004DBB19 /* SmartReceiptsFormattableString.swift */; };
 		4D380F911B61240C001B43D2 /* GADConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D380F901B61240C001B43D2 /* GADConstants.m */; };
-		4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BB304190818E100D28CBF /* WBActionSheetPicker.m */; };
 		4DF229461928678A0008D359 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF229451928678A0008D359 /* AdSupport.framework */; };
 		4DF22948192867940008D359 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF22947192867940008D359 /* AudioToolbox.framework */; };
 		4DF2294A1928679D0008D359 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF229491928679D0008D359 /* AVFoundation.framework */; };
@@ -65,7 +64,6 @@
 		711E81D11FD45EE300708056 /* ReceiptIndexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E81D01FD45EE300708056 /* ReceiptIndexer.swift */; };
 		711E81D31FD4670B00708056 /* ReportCSVGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E81D21FD4670B00708056 /* ReportCSVGenerator.swift */; };
 		711E81D51FD4695B00708056 /* TripCSVGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E81D41FD4695B00708056 /* TripCSVGenerator.swift */; };
-		711E9B131FADBAAB002E9AC6 /* PendingHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E9B121FADBAAB002E9AC6 /* PendingHUDView.swift */; };
 		7120099D1F12D0DE0049927E /* TickTock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7120099C1F12D0DE0049927E /* TickTock.swift */; };
 		7122778C1F756EA300090878 /* S3Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7122778B1F756EA300090878 /* S3Service.swift */; };
 		712A84E51F78363C00D988E7 /* RxSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A84E41F78363C00D988E7 /* RxSwift+Extensions.swift */; };
@@ -77,9 +75,19 @@
 		712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */; };
 		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
-		714029CC1FA3A43500DED2E8 /* ScansPurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714029CB1FA3A43500DED2E8 /* ScansPurchaseButton.swift */; };
 		714042061FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714042051FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift */; };
 		714042081FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714042071FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift */; };
+		714104DF1FF43D7700C334C5 /* WBAbstractPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 714104CE1FF43D7700C334C5 /* WBAbstractPicker.m */; };
+		714104E01FF43D7700C334C5 /* FetchedPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714104CF1FF43D7700C334C5 /* FetchedPlaceholderView.swift */; };
+		714104E11FF43D7700C334C5 /* PendingHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714104D21FF43D7700C334C5 /* PendingHUDView.swift */; };
+		714104E21FF43D7700C334C5 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 714104D41FF43D7700C334C5 /* LaunchView.xib */; };
+		714104E31FF43D7700C334C5 /* WBActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 714104D71FF43D7700C334C5 /* WBActionSheetPicker.m */; };
+		714104E41FF43D7700C334C5 /* ScansPurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714104D81FF43D7700C334C5 /* ScansPurchaseButton.swift */; };
+		714104E51FF43D7700C334C5 /* WBPopoverPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 714104DB1FF43D7700C334C5 /* WBPopoverPicker.m */; };
+		714104E61FF43D7700C334C5 /* SuggestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714104DC1FF43D7700C334C5 /* SuggestionView.m */; };
+		714104E71FF43D7700C334C5 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714104DD1FF43D7700C334C5 /* TooltipView.swift */; };
+		714104E81FF43D7700C334C5 /* WBDynamicPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 714104DE1FF43D7700C334C5 /* WBDynamicPicker.m */; };
+		714104EA1FF43F1500C334C5 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714104E91FF43F1500C334C5 /* CircleButton.swift */; };
 		7141288C1F77E1410056B9CC /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C413D31EE6F826003CE891 /* GeneratedMocks.swift */; };
 		714901BC1F05632200772B6F /* PaymentMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901BB1F05632200772B6F /* PaymentMethodTests.swift */; };
 		714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901C01F0598B900772B6F /* CurrencyExchangeService.swift */; };
@@ -171,16 +179,12 @@
 		7190D4541EE88CC40081CB22 /* GenerateReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7190D44E1EE88CC40081CB22 /* GenerateReportView.swift */; };
 		7190D4561EE893900081CB22 /* GenerateReportFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7190D4551EE893900081CB22 /* GenerateReportFormView.swift */; };
 		7191F0E81EE20EBA0082DA47 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191F0E71EE20EBA0082DA47 /* DateFormatter+Extensions.swift */; };
-		719310261EDDB7CF0065B5AD /* FetchedPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310251EDDB7CF0065B5AD /* FetchedPlaceholderView.swift */; };
-		7193102B1EDDB9960065B5AD /* WBAbstractPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310281EDDB9960065B5AD /* WBAbstractPicker.m */; };
-		7193102C1EDDB9960065B5AD /* WBDynamicPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193102A1EDDB9960065B5AD /* WBDynamicPicker.m */; };
 		719310401EDDC2810065B5AD /* WBImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310381EDDC2810065B5AD /* WBImageUtils.m */; };
 		719310411EDDC2810065B5AD /* WBSqlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193103A1EDDC2810065B5AD /* WBSqlBuilder.m */; };
 		719310421EDDC2810065B5AD /* WBTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193103C1EDDC2810065B5AD /* WBTextUtils.m */; };
 		719310471EDDC3120065B5AD /* WBImageStampler.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310441EDDC3120065B5AD /* WBImageStampler.m */; };
 		719310481EDDC3120065B5AD /* WBPdfDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310461EDDC3120065B5AD /* WBPdfDrawer.m */; };
 		7194CAB81F3CBED00010552A /* FetchedModelAdapter+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194CAB71F3CBED00010552A /* FetchedModelAdapter+Rx.swift */; };
-		7197F2CB1F52F6A000C2AC1F /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197F2CA1F52F6A000C2AC1F /* TooltipView.swift */; };
 		719B1FC61EF5E2150049BD71 /* TaxCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */; };
 		719B1FD21EF5FEBE0049BD71 /* Column.m in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FD01EF5FEBE0049BD71 /* Column.m */; };
 		719B1FDC1EF603190049BD71 /* Receipts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 719B1FD61EF603190049BD71 /* Receipts.storyboard */; };
@@ -234,7 +238,6 @@
 		71B488C41EF47B1C008872E2 /* ObservableTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B488C31EF47B1C008872E2 /* ObservableTrips.swift */; };
 		71B488C71EF49209008872E2 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B488C51EF48706008872E2 /* Distance.swift */; };
 		71B5C5371FB1550F00FA0AB9 /* UIAlert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5C5361FB1550F00FA0AB9 /* UIAlert+Extensions.swift */; };
-		71B8610B1F0A9BE70069E251 /* SuggestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B8610A1F0A9BE70069E251 /* SuggestionView.m */; };
 		71B8610E1F0A9D800069E251 /* WBAutocompleteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B8610D1F0A9D800069E251 /* WBAutocompleteHelper.m */; };
 		71BC45511F9FB38C003A5BD5 /* LocalScansTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC45501F9FB38C003A5BD5 /* LocalScansTracker.swift */; };
 		71BC45531F9FB3A9003A5BD5 /* ScansPurchaseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC45521F9FB3A9003A5BD5 /* ScansPurchaseTracker.swift */; };
@@ -289,10 +292,7 @@
 		71FE9FF41F477F620043E7B4 /* FetchedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9FF31F477F620043E7B4 /* FetchedTableViewController.swift */; };
 		71FE9FF81F4787710043E7B4 /* TitleOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9FF61F4787710043E7B4 /* TitleOnlyCell.m */; };
 		71FE9FF91F4787710043E7B4 /* TitleOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71FE9FF71F4787710043E7B4 /* TitleOnlyCell.xib */; };
-		71FE9FFB1F48CC5F0043E7B4 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9FFA1F48CC5F0043E7B4 /* CircleButton.swift */; };
-		841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */ = {isa = PBXBuildFile; fileRef = 841BB302190818C400D28CBF /* WBActionSheetPicker.h */; };
 		8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */; };
-		8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478B77918D385160041CBA3 /* WBPopoverPicker.m */; };
 		84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A5834D18EDF897003A464D /* WBReceiptAndIndex.m */; };
 		84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A6C82A18F510B6003B876F /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84A6C82D18F510E5003B876F /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A6C82C18F510E5003B876F /* libxml2.dylib */; };
@@ -424,7 +424,6 @@
 		EA6677761B05FD8A004D3993 /* DatabaseReceiptsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6677751B05FD8A004D3993 /* DatabaseReceiptsTest.m */; };
 		EA6677791B060FC4004D3993 /* ReceiptColumnPaymentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6677781B060FC4004D3993 /* ReceiptColumnPaymentMethod.m */; };
 		EA66777C1B06154F004D3993 /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = EA66777B1B06154F004D3993 /* NSString+Helpers.m */; };
-		EA66B2BE1B13809900A57750 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA66B2BD1B13809900A57750 /* LaunchView.xib */; };
 		EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */; };
 		EA6888D31AFE699A00A910FC /* receipts-dates-test.db in Resources */ = {isa = PBXBuildFile; fileRef = EA6888D21AFE699A00A910FC /* receipts-dates-test.db */; };
 		EA69EF151AEFC81A00276B70 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF141AEFC81A00276B70 /* Database.m */; };
@@ -582,7 +581,6 @@
 		711E81D01FD45EE300708056 /* ReceiptIndexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptIndexer.swift; sourceTree = "<group>"; };
 		711E81D21FD4670B00708056 /* ReportCSVGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCSVGenerator.swift; sourceTree = "<group>"; };
 		711E81D41FD4695B00708056 /* TripCSVGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCSVGenerator.swift; sourceTree = "<group>"; };
-		711E9B121FADBAAB002E9AC6 /* PendingHUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingHUDView.swift; path = Views/PendingHUDView.swift; sourceTree = "<group>"; };
 		7120099C1F12D0DE0049927E /* TickTock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickTock.swift; sourceTree = "<group>"; };
 		7122778B1F756EA300090878 /* S3Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Service.swift; sourceTree = "<group>"; };
 		7122778D1F76F1CB00090878 /* S3ServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3ServiceTests.swift; sourceTree = "<group>"; };
@@ -603,9 +601,24 @@
 		713D35541EDA54A700D8563D /* TripCSVGenerator+Testable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TripCSVGenerator+Testable.h"; sourceTree = "<group>"; };
 		713D4C751F626B3C00F29C4C /* AuthServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceTests.swift; sourceTree = "<group>"; };
 		713D4C771F62AA0700F29C4C /* AuthModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthModuleTest.swift; sourceTree = "<group>"; };
-		714029CB1FA3A43500DED2E8 /* ScansPurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScansPurchaseButton.swift; path = Views/ScansPurchaseButton.swift; sourceTree = "<group>"; };
 		714042051FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptColumnPriceMinusTax.swift; sourceTree = "<group>"; };
 		714042071FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptColumnExchangedPriceMinusTax.swift; sourceTree = "<group>"; };
+		714104CE1FF43D7700C334C5 /* WBAbstractPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAbstractPicker.m; sourceTree = "<group>"; };
+		714104CF1FF43D7700C334C5 /* FetchedPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedPlaceholderView.swift; sourceTree = "<group>"; };
+		714104D01FF43D7700C334C5 /* WBDynamicPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDynamicPicker.h; sourceTree = "<group>"; };
+		714104D11FF43D7700C334C5 /* SuggestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionView.h; sourceTree = "<group>"; };
+		714104D21FF43D7700C334C5 /* PendingHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingHUDView.swift; sourceTree = "<group>"; };
+		714104D31FF43D7700C334C5 /* WBAbstractPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAbstractPicker.h; sourceTree = "<group>"; };
+		714104D41FF43D7700C334C5 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
+		714104D61FF43D7700C334C5 /* WBActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBActionSheetPicker.h; sourceTree = "<group>"; };
+		714104D71FF43D7700C334C5 /* WBActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBActionSheetPicker.m; sourceTree = "<group>"; };
+		714104D81FF43D7700C334C5 /* ScansPurchaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScansPurchaseButton.swift; sourceTree = "<group>"; };
+		714104DA1FF43D7700C334C5 /* WBPopoverPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPopoverPicker.h; sourceTree = "<group>"; };
+		714104DB1FF43D7700C334C5 /* WBPopoverPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPopoverPicker.m; sourceTree = "<group>"; };
+		714104DC1FF43D7700C334C5 /* SuggestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionView.m; sourceTree = "<group>"; };
+		714104DD1FF43D7700C334C5 /* TooltipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
+		714104DE1FF43D7700C334C5 /* WBDynamicPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDynamicPicker.m; sourceTree = "<group>"; };
+		714104E91FF43F1500C334C5 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleButton.swift; path = SmartReceipts/Views/CircleButton.swift; sourceTree = SOURCE_ROOT; };
 		714142851FA4944B00517BE7 /* OCRConfigurationModuleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRConfigurationModuleTest.swift; sourceTree = "<group>"; };
 		714901BB1F05632200772B6F /* PaymentMethodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTests.swift; sourceTree = "<group>"; };
 		714901C01F0598B900772B6F /* CurrencyExchangeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeService.swift; sourceTree = "<group>"; };
@@ -681,11 +694,6 @@
 		7190D44E1EE88CC40081CB22 /* GenerateReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportView.swift; sourceTree = "<group>"; };
 		7190D4551EE893900081CB22 /* GenerateReportFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportFormView.swift; sourceTree = "<group>"; };
 		7191F0E71EE20EBA0082DA47 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
-		719310251EDDB7CF0065B5AD /* FetchedPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchedPlaceholderView.swift; path = Views/FetchedPlaceholderView.swift; sourceTree = "<group>"; };
-		719310271EDDB9960065B5AD /* WBAbstractPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBAbstractPicker.h; path = Views/WBAbstractPicker.h; sourceTree = "<group>"; };
-		719310281EDDB9960065B5AD /* WBAbstractPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBAbstractPicker.m; path = Views/WBAbstractPicker.m; sourceTree = "<group>"; };
-		719310291EDDB9960065B5AD /* WBDynamicPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBDynamicPicker.h; path = Views/WBDynamicPicker.h; sourceTree = "<group>"; };
-		7193102A1EDDB9960065B5AD /* WBDynamicPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBDynamicPicker.m; path = Views/WBDynamicPicker.m; sourceTree = "<group>"; };
 		719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentCurrenciesCache.swift; sourceTree = "<group>"; };
 		719310371EDDC2810065B5AD /* WBImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageUtils.h; sourceTree = "<group>"; };
 		719310381EDDC2810065B5AD /* WBImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageUtils.m; sourceTree = "<group>"; };
@@ -698,7 +706,6 @@
 		719310451EDDC3120065B5AD /* WBPdfDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPdfDrawer.h; sourceTree = "<group>"; };
 		719310461EDDC3120065B5AD /* WBPdfDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPdfDrawer.m; sourceTree = "<group>"; };
 		7194CAB71F3CBED00010552A /* FetchedModelAdapter+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FetchedModelAdapter+Rx.swift"; sourceTree = "<group>"; };
-		7197F2CA1F52F6A000C2AC1F /* TooltipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TooltipView.swift; path = Views/TooltipView.swift; sourceTree = "<group>"; };
 		719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxCalculator.swift; sourceTree = "<group>"; };
 		719B1FD01EF5FEBE0049BD71 /* Column.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Column.m; sourceTree = "<group>"; };
 		719B1FD11EF5FEBE0049BD71 /* Column.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Column.h; sourceTree = "<group>"; };
@@ -753,8 +760,6 @@
 		71B488C31EF47B1C008872E2 /* ObservableTrips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTrips.swift; sourceTree = "<group>"; };
 		71B488C51EF48706008872E2 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		71B5C5361FB1550F00FA0AB9 /* UIAlert+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Extensions.swift"; sourceTree = "<group>"; };
-		71B861091F0A9BE70069E251 /* SuggestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuggestionView.h; path = Views/SuggestionView.h; sourceTree = "<group>"; };
-		71B8610A1F0A9BE70069E251 /* SuggestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuggestionView.m; path = Views/SuggestionView.m; sourceTree = "<group>"; };
 		71B8610C1F0A9D800069E251 /* WBAutocompleteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBAutocompleteHelper.h; path = ../Reports/WBAutocompleteHelper.h; sourceTree = "<group>"; };
 		71B8610D1F0A9D800069E251 /* WBAutocompleteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBAutocompleteHelper.m; path = ../Reports/WBAutocompleteHelper.m; sourceTree = "<group>"; };
 		71B8610F1F0AD3080069E251 /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
@@ -815,13 +820,8 @@
 		71FE9FF51F4787710043E7B4 /* TitleOnlyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleOnlyCell.h; sourceTree = "<group>"; };
 		71FE9FF61F4787710043E7B4 /* TitleOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleOnlyCell.m; sourceTree = "<group>"; };
 		71FE9FF71F4787710043E7B4 /* TitleOnlyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleOnlyCell.xib; sourceTree = "<group>"; };
-		71FE9FFA1F48CC5F0043E7B4 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		7B397BE168915C982926C4BC /* Pods_SmartReceipts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartReceipts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		841BB302190818C400D28CBF /* WBActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBActionSheetPicker.h; sourceTree = "<group>"; };
-		841BB304190818E100D28CBF /* WBActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBActionSheetPicker.m; sourceTree = "<group>"; };
 		8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		8478B77818D385160041CBA3 /* WBPopoverPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPopoverPicker.h; sourceTree = "<group>"; };
-		8478B77918D385160041CBA3 /* WBPopoverPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPopoverPicker.m; sourceTree = "<group>"; };
 		84A5834C18EDF897003A464D /* WBReceiptAndIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceiptAndIndex.h; sourceTree = "<group>"; };
 		84A5834D18EDF897003A464D /* WBReceiptAndIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBReceiptAndIndex.m; sourceTree = "<group>"; };
 		84A6C82918F510B6003B876F /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
@@ -1002,7 +1002,6 @@
 		EA6677781B060FC4004D3993 /* ReceiptColumnPaymentMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnPaymentMethod.m; sourceTree = "<group>"; };
 		EA66777A1B06154F004D3993 /* NSString+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helpers.h"; sourceTree = "<group>"; };
 		EA66777B1B06154F004D3993 /* NSString+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helpers.m"; sourceTree = "<group>"; };
-		EA66B2BD1B13809900A57750 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchView.xib; path = Views/LaunchView.xib; sourceTree = "<group>"; };
 		EA6888D01AFE696900A910FC /* DatabaseDatesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseDatesTest.m; sourceTree = "<group>"; };
 		EA6888D21AFE699A00A910FC /* receipts-dates-test.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "receipts-dates-test.db"; sourceTree = "<group>"; };
 		EA69EF131AEFC81A00276B70 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
@@ -1214,6 +1213,45 @@
 				715606921FB06D3400E09760 /* AuthServiceTestable.swift */,
 			);
 			path = Testable;
+			sourceTree = "<group>";
+		};
+		714104CD1FF43D7700C334C5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				714104D51FF43D7700C334C5 /* iPhone */,
+				714104D91FF43D7700C334C5 /* iPad */,
+				714104E91FF43F1500C334C5 /* CircleButton.swift */,
+				714104CF1FF43D7700C334C5 /* FetchedPlaceholderView.swift */,
+				714104D21FF43D7700C334C5 /* PendingHUDView.swift */,
+				714104D81FF43D7700C334C5 /* ScansPurchaseButton.swift */,
+				714104DD1FF43D7700C334C5 /* TooltipView.swift */,
+				714104D31FF43D7700C334C5 /* WBAbstractPicker.h */,
+				714104CE1FF43D7700C334C5 /* WBAbstractPicker.m */,
+				714104D01FF43D7700C334C5 /* WBDynamicPicker.h */,
+				714104DE1FF43D7700C334C5 /* WBDynamicPicker.m */,
+				714104D11FF43D7700C334C5 /* SuggestionView.h */,
+				714104DC1FF43D7700C334C5 /* SuggestionView.m */,
+				714104D41FF43D7700C334C5 /* LaunchView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		714104D51FF43D7700C334C5 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				714104D61FF43D7700C334C5 /* WBActionSheetPicker.h */,
+				714104D71FF43D7700C334C5 /* WBActionSheetPicker.m */,
+			);
+			path = iPhone;
+			sourceTree = "<group>";
+		};
+		714104D91FF43D7700C334C5 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				714104DA1FF43D7700C334C5 /* WBPopoverPicker.h */,
+				714104DB1FF43D7700C334C5 /* WBPopoverPicker.m */,
+			);
+			path = iPad;
 			sourceTree = "<group>";
 		};
 		714901BF1F0598A300772B6F /* Services */ = {
@@ -1583,47 +1621,6 @@
 			path = "Edit Trip";
 			sourceTree = "<group>";
 		};
-		8421A1F61907C03B001DF38D /* iPhone */ = {
-			isa = PBXGroup;
-			children = (
-				841BB302190818C400D28CBF /* WBActionSheetPicker.h */,
-				841BB304190818E100D28CBF /* WBActionSheetPicker.m */,
-			);
-			name = iPhone;
-			path = Views/iPhone;
-			sourceTree = "<group>";
-		};
-		845E33DD18D87CB9006A506A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				8478B77718D383EF0041CBA3 /* iPad */,
-				8421A1F61907C03B001DF38D /* iPhone */,
-				EA66B2BD1B13809900A57750 /* LaunchView.xib */,
-				719310251EDDB7CF0065B5AD /* FetchedPlaceholderView.swift */,
-				719310271EDDB9960065B5AD /* WBAbstractPicker.h */,
-				719310281EDDB9960065B5AD /* WBAbstractPicker.m */,
-				719310291EDDB9960065B5AD /* WBDynamicPicker.h */,
-				7193102A1EDDB9960065B5AD /* WBDynamicPicker.m */,
-				71B861091F0A9BE70069E251 /* SuggestionView.h */,
-				71B8610A1F0A9BE70069E251 /* SuggestionView.m */,
-				71FE9FFA1F48CC5F0043E7B4 /* CircleButton.swift */,
-				7197F2CA1F52F6A000C2AC1F /* TooltipView.swift */,
-				714029CB1FA3A43500DED2E8 /* ScansPurchaseButton.swift */,
-				711E9B121FADBAAB002E9AC6 /* PendingHUDView.swift */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		8478B77718D383EF0041CBA3 /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-				8478B77818D385160041CBA3 /* WBPopoverPicker.h */,
-				8478B77918D385160041CBA3 /* WBPopoverPicker.m */,
-			);
-			name = iPad;
-			path = Views/iPad;
-			sourceTree = "<group>";
-		};
 		84A5834F18EDFBA9003A464D /* Items */ = {
 			isa = PBXGroup;
 			children = (
@@ -1723,7 +1720,7 @@
 				EA8D81DA1AEA965D00BAC943 /* Reports */,
 				EA46678C1AE7EA0300B4E502 /* Utils */,
 				EAE8F9AF1AF149B300E837E3 /* View Controllers */,
-				845E33DD18D87CB9006A506A /* Views */,
+				714104CD1FF43D7700C334C5 /* Views */,
 				71AC501D1F41DD0A00549BAA /* Rx */,
 				719310241EDDB6170065B5AD /* Storyboards */,
 				84F4F34A18CFCCD000F69A35 /* Supporting Files */,
@@ -2507,7 +2504,6 @@
 				EA07BF601AF4E801004D17F6 /* DistanceSummaryCell.xib in Resources */,
 				84F4F37318CFCD4400F69A35 /* MainStoryboard_iPad.storyboard in Resources */,
 				719B1FF41EF6033A0049BD71 /* ReceiptActions.storyboard in Resources */,
-				841BB303190818C400D28CBF /* WBActionSheetPicker.h in Resources */,
 				7156066E1FAE67CF00E09760 /* ScanCell.xib in Resources */,
 				719B1FDC1EF603190049BD71 /* Receipts.storyboard in Resources */,
 				71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */,
@@ -2527,11 +2523,11 @@
 				719B1FE81EF6032D0049BD71 /* EditReceipt.storyboard in Resources */,
 				71572D851F15EA41001A1301 /* Columns.storyboard in Resources */,
 				7167239B1F10540200400BFF /* CustomSegmentedCell.xib in Resources */,
-				EA66B2BE1B13809900A57750 /* LaunchView.xib in Resources */,
 				EAF6FE121B543ABB0005E2CE /* PDFImageView.xib in Resources */,
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
 				EA1E60D51B2742660048E688 /* InfoPlist.strings in Resources */,
 				EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */,
+				714104E21FF43D7700C334C5 /* LaunchView.xib in Resources */,
 				EA22679F1B1E035F005761E7 /* ReceiptSummaryCell.xib in Resources */,
 				EA2B8D881B4EF44B0043A84B /* TripReportHeader.xib in Resources */,
 				EA40DC701B555CFE003BF545 /* FullPagePDFPageView.xib in Resources */,
@@ -2889,12 +2885,11 @@
 				A78214FD1CFFE8E900FD644A /* NSDate+Extensions.swift in Sources */,
 				A7F05BDF1CFD8FEC0079F1AD /* Database.swift in Sources */,
 				EAF9ADE91AECF9200000AC84 /* DatabaseUpgradeToVersion12.m in Sources */,
-				7193102C1EDDB9960065B5AD /* WBDynamicPicker.m in Sources */,
 				71A30F2C1EEC9F05001BA608 /* DataExport.swift in Sources */,
 				A7F05B9E1CFB49BE0079F1AD /* Taxed.swift in Sources */,
-				4D9425961983F64000EA2A2C /* WBActionSheetPicker.m in Sources */,
 				EAE9DAF41AF8EA9600F4FE76 /* DistanceCurrencyColumn.m in Sources */,
 				71B488C71EF49209008872E2 /* Distance.swift in Sources */,
+				714104E11FF43D7700C334C5 /* PendingHUDView.swift in Sources */,
 				57580D1F1DFAB6AB0090C488 /* UIApplication+AppVersion.m in Sources */,
 				7185AEF61EFC1CC90038ED2A /* ReceiptMoveCopyDisplayData.swift in Sources */,
 				A79FDC711CEA0AB600328DBB /* Global.swift in Sources */,
@@ -2936,6 +2931,7 @@
 				7190B9141F60427200F6CE7F /* AuthDisplayData.swift in Sources */,
 				EA8D817C1AEA6AF000BAC943 /* ReceiptColumn.m in Sources */,
 				EA8D81A61AEA7C7D00BAC943 /* ReceiptColumnName.m in Sources */,
+				714104E81FF43D7700C334C5 /* WBDynamicPicker.m in Sources */,
 				71CF7A121F1020440004F389 /* InputTextCell.swift in Sources */,
 				EA8D81A31AEA7C6B00BAC943 /* ReceiptColumnDate.m in Sources */,
 				71E8F3F61FA12452005BD447 /* OCRConfigurationDisplayData.swift in Sources */,
@@ -2949,12 +2945,10 @@
 				EA183E051B1C9F4C00577B3D /* Database+Columns.m in Sources */,
 				719B1FED1EF6032D0049BD71 /* EditReceiptView.swift in Sources */,
 				A78214F51CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift in Sources */,
-				71B8610B1F0A9BE70069E251 /* SuggestionView.m in Sources */,
 				715B4EBD1F114A9C0021ACD8 /* PurchaseButtonCell.swift in Sources */,
 				71B8610E1F0A9D800069E251 /* WBAutocompleteHelper.m in Sources */,
 				71F172371FD3D9C100876E9D /* PrettyPDFRender.swift in Sources */,
 				EAE9DAEE1AF8EA6D00F4FE76 /* DistancePriceColumn.m in Sources */,
-				7197F2CB1F52F6A000C2AC1F /* TooltipView.swift in Sources */,
 				716F34521EE040E100D0017A /* EditDistanceView.swift in Sources */,
 				7190D4521EE88CC40081CB22 /* GenerateReportPresenter.swift in Sources */,
 				EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */,
@@ -2988,13 +2982,11 @@
 				710A33DF1F8282D100D10344 /* PurchaseService.swift in Sources */,
 				71B488C41EF47B1C008872E2 /* ObservableTrips.swift in Sources */,
 				EA888A7C1AFA5C5900DF2AE6 /* Database+Receipts.m in Sources */,
-				719310261EDDB7CF0065B5AD /* FetchedPlaceholderView.swift in Sources */,
 				A7F05BB21CFC15760079F1AD /* ExchangedTaxed.swift in Sources */,
 				84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */,
 				71FB1D401F195D0D00742FF5 /* PaymentMethodsInteractor.swift in Sources */,
 				EA10AD2F1B18B22000F2BCBB /* Database+Import.m in Sources */,
 				71F468341EEEDB03009F6CE7 /* EditTripInteractor.swift in Sources */,
-				8478B77A18D385160041CBA3 /* WBPopoverPicker.m in Sources */,
 				EA6677791B060FC4004D3993 /* ReceiptColumnPaymentMethod.m in Sources */,
 				716F344E1EE040E100D0017A /* EditDistanceDisplayData.swift in Sources */,
 				A7F05BAC1CFC0AB00079F1AD /* ExchangedPriced.swift in Sources */,
@@ -3004,8 +2996,6 @@
 				A7F05BE31CFD95710079F1AD /* FMDatabase+Receipts.swift in Sources */,
 				7190D4501EE88CC40081CB22 /* GenerateReportDisplayData.swift in Sources */,
 				71ACA7CE1F5C58290024903E /* DebugStates.swift in Sources */,
-				714029CC1FA3A43500DED2E8 /* ScansPurchaseButton.swift in Sources */,
-				711E9B131FADBAAB002E9AC6 /* PendingHUDView.swift in Sources */,
 				EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */,
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
 				A7F05BD31CFD54430079F1AD /* Logger.swift in Sources */,
@@ -3043,6 +3033,7 @@
 				71E2B5811EEDD516001D02F1 /* TripsView.swift in Sources */,
 				EA8D81881AEA7B8C00BAC943 /* ReceiptColumnCategoryName.m in Sources */,
 				A7D080FB1CEAD2FD00B3C551 /* AppDelegate.swift in Sources */,
+				714104E41FF43D7700C334C5 /* ScansPurchaseButton.swift in Sources */,
 				A7F05BE51CFD95830079F1AD /* FMDatabase+Distances.swift in Sources */,
 				716138BD1FD1BB4B00C73FB9 /* RenderedPDFLabel.swift in Sources */,
 				71F468351EEEDB03009F6CE7 /* EditTripPresenter.swift in Sources */,
@@ -3056,6 +3047,7 @@
 				A79FDC6E1CEA0A5500328DBB /* GoogleAnalytics.swift in Sources */,
 				A709D7671CF4A58600897DD9 /* NSThread+Extensions.swift in Sources */,
 				A78214F71CFFE60000FD644A /* OpenExchangeRates.swift in Sources */,
+				714104E31FF43D7700C334C5 /* WBActionSheetPicker.m in Sources */,
 				EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */,
 				EA8ABE421B1A1D1700DBFA29 /* Database+Categories.m in Sources */,
 				71572D881F15EA41001A1301 /* ColumnsPresenter.swift in Sources */,
@@ -3072,6 +3064,7 @@
 				71C014251F1AB14A005472B3 /* CategoriesPresenter.swift in Sources */,
 				719B1FEB1EF6032D0049BD71 /* EditReceiptPresenter.swift in Sources */,
 				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
+				714104E71FF43D7700C334C5 /* TooltipView.swift in Sources */,
 				71F468331EEEDB03009F6CE7 /* EditTripDisplayData.swift in Sources */,
 				7100F7781F5F08C600D4B4D9 /* NetworkingUtils.swift in Sources */,
 				7190B9171F60427200F6CE7F /* AuthRouter.swift in Sources */,
@@ -3099,6 +3092,7 @@
 				711E40541EE0D4ED00C043CF /* EditDistanceFormView.swift in Sources */,
 				EA183E081B1C9F5D00577B3D /* Database+CSVColumns.m in Sources */,
 				71B488C21EF42AF7008872E2 /* NoTripsViewController.swift in Sources */,
+				714104EA1FF43F1500C334C5 /* CircleButton.swift in Sources */,
 				EA07BF531AF4CD26004D17F6 /* Database+PaymentMethods.m in Sources */,
 				716138C11FD1BD0500C73FB9 /* PDFImageView.swift in Sources */,
 				570515A31E02EB5500BB8FE4 /* Event+Categories.swift in Sources */,
@@ -3130,7 +3124,6 @@
 				EA888A761AFA3D3F00DF2AE6 /* NumberInputValidation.m in Sources */,
 				EA98B51C1B075042006935AE /* WBCellWithPriceNameDate.m in Sources */,
 				A7F05BAE1CFC12FA0079F1AD /* ReceiptColumnExchangedTax.swift in Sources */,
-				71FE9FFB1F48CC5F0043E7B4 /* CircleButton.swift in Sources */,
 				7161DB511EE4907700399C9C /* AdPresentingContainerViewController.swift in Sources */,
 				71C014261F1AB14A005472B3 /* CategoriesRouter.swift in Sources */,
 				EAF9ADE61AECF8F80000AC84 /* DatabaseCreateAtVersion11.m in Sources */,
@@ -3144,6 +3137,7 @@
 				7194CAB81F3CBED00010552A /* FetchedModelAdapter+Rx.swift in Sources */,
 				57EEBDC41E093C8F00974E53 /* String+Extensions.swift in Sources */,
 				71E2B57E1EEDD516001D02F1 /* TripsInteractor.swift in Sources */,
+				714104DF1FF43D7700C334C5 /* WBAbstractPicker.m in Sources */,
 				EAE9DAEB1AF8EA5500F4FE76 /* DistanceLocationColumn.m in Sources */,
 				71FB1D411F195D0D00742FF5 /* PaymentMethodsPresenter.swift in Sources */,
 				EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */,
@@ -3165,6 +3159,7 @@
 				71AF49E21EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift in Sources */,
 				71AF49E71EFDBF850022B2E2 /* ImagePicker+Extensions.swift in Sources */,
 				71C014241F1AB14A005472B3 /* CategoriesInteractor.swift in Sources */,
+				714104E61FF43D7700C334C5 /* SuggestionView.m in Sources */,
 				71AF49E81EFDCC010022B2E2 /* ReceiptImageViewerView.swift in Sources */,
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
@@ -3189,6 +3184,7 @@
 				718D2DF11F7D459B00A69B6E /* PushNotificationService.swift in Sources */,
 				71762E7C1FD4716200AC1388 /* TripFullPDFGenerator.swift in Sources */,
 				710A33DE1F82802100D10344 /* RMStore+Rx.swift in Sources */,
+				714104E01FF43D7700C334C5 /* FetchedPlaceholderView.swift in Sources */,
 				7122778C1F756EA300090878 /* S3Service.swift in Sources */,
 				71AEDDE01EDF7FF400BAC0DD /* TripDistancesPresenter.swift in Sources */,
 				A7F05BB41CFC1A5D0079F1AD /* Exchanged.swift in Sources */,
@@ -3199,7 +3195,6 @@
 				71E090F31F2F994B00C825A8 /* FileManager+Extensions.swift in Sources */,
 				71D7D43E1FAA062300437CA9 /* ScanService.swift in Sources */,
 				A7F05BB81CFC2C9D0079F1AD /* ReceiptColumnNetExchangedPricePlusTax.swift in Sources */,
-				7193102B1EDDB9960065B5AD /* WBAbstractPicker.m in Sources */,
 				71E8F3F81FA12452005BD447 /* OCRConfigurationRouter.swift in Sources */,
 				71AF49E01EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift in Sources */,
 				7120099D1F12D0DE0049927E /* TickTock.swift in Sources */,
@@ -3208,6 +3203,7 @@
 				71652EAE1F646758002C8228 /* Toast+Extensions.swift in Sources */,
 				7190D4561EE893900081CB22 /* GenerateReportFormView.swift in Sources */,
 				71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */,
+				714104E51FF43D7700C334C5 /* WBPopoverPicker.m in Sources */,
 				71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */,
 				7190D4541EE88CC40081CB22 /* GenerateReportView.swift in Sources */,
 				712A84E51F78363C00D988E7 /* RxSwift+Extensions.swift in Sources */,
