@@ -47,7 +47,19 @@
 }
 
 - (NSString *)header {
-    return self.name;
+    NSInteger index = [self.name componentsSeparatedByString:@" "].count > 2 ? 0 : 1;
+    NSString *result = self.name;
+    for (NSUInteger i = 0; i < result.length; i++) {
+        if ([self.name characterAtIndex:i] == ' ') {
+            if (++index % 2 == 0) {
+                NSRange range = NSMakeRange(i, 1);
+                result = [result stringByReplacingCharactersInRange:range withString:@"\n"];
+            }
+        }
+    }
+    return result;
 }
+
+
 
 @end

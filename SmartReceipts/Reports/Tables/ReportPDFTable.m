@@ -58,8 +58,7 @@ static inline NSString *safeString(NSString *str) {
 - (NSArray *)headers {
     NSMutableArray *headers = [NSMutableArray array];
     for (Column *column in self.columns) {
-        NSString *val = [column.header stringByReplacingOccurrencesOfString:@" " withString:@"\n"];
-        [headers addObject:safeString(val)];
+        [headers addObject:safeString(column.header)];
     }
     return headers;
 }
