@@ -48,8 +48,8 @@
 }
 
 - (void)setName:(NSString *)name {
-    _name = [WBTextUtils omitIllegalCharacters:name];
-
+    _name = name;
+    
     if (self.originalName.hasValue) {
         return;
     }
