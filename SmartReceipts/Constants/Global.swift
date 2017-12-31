@@ -8,9 +8,10 @@
 
 import Foundation
 
+let MIGRATION_VERSION = 1
 let TOUCH_AREA: CGFloat = 44
 
-func onMainThread(_ closure: @escaping () -> ()) {
+func onMainThread(_ closure: @escaping VoidBlock) {
     DispatchQueue.main.async(execute: closure)
 }
 
