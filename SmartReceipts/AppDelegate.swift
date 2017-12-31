@@ -60,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logPurchases()
         PushNotificationService.shared.initialize()
         ScansPurchaseTracker.shared.initialize()
+        MigrationService().migrate()
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

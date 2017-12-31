@@ -27,6 +27,7 @@ class EditTripInteractor: Interactor {
     }
     
     func save(trip: WBTrip, update: Bool = false) {
+        trip.name = WBTextUtils.omitIllegalCharacters(trip.name)
         let success = update ? Database.sharedInstance().update(trip) : Database.sharedInstance().save(trip)
         if success {
             self.presenter.close()

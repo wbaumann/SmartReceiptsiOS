@@ -261,6 +261,8 @@
 		71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */; };
 		71E2B5801EEDD516001D02F1 /* TripsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5791EEDD516001D02F1 /* TripsRouter.swift */; };
 		71E2B5811EEDD516001D02F1 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B57A1EEDD516001D02F1 /* TripsView.swift */; };
+		71E7303D1FF7E53000471287 /* MigrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E7303C1FF7E53000471287 /* MigrationService.swift */; };
+		71E7303F1FF7E9C100471287 /* BlockTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E7303E1FF7E9C100471287 /* BlockTypes.swift */; };
 		71E8F3F51FA12452005BD447 /* OCRConfiguration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E8F3EF1FA12452005BD447 /* OCRConfiguration.storyboard */; };
 		71E8F3F61FA12452005BD447 /* OCRConfigurationDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E8F3F01FA12452005BD447 /* OCRConfigurationDisplayData.swift */; };
 		71E8F3F71FA12452005BD447 /* OCRConfigurationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E8F3F11FA12452005BD447 /* OCRConfigurationPresenter.swift */; };
@@ -788,6 +790,8 @@
 		71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsPresenter.swift; sourceTree = "<group>"; };
 		71E2B5791EEDD516001D02F1 /* TripsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsRouter.swift; sourceTree = "<group>"; };
 		71E2B57A1EEDD516001D02F1 /* TripsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
+		71E7303C1FF7E53000471287 /* MigrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationService.swift; sourceTree = "<group>"; };
+		71E7303E1FF7E9C100471287 /* BlockTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTypes.swift; sourceTree = "<group>"; };
 		71E8F3EF1FA12452005BD447 /* OCRConfiguration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OCRConfiguration.storyboard; sourceTree = "<group>"; };
 		71E8F3F01FA12452005BD447 /* OCRConfigurationDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRConfigurationDisplayData.swift; sourceTree = "<group>"; };
 		71E8F3F11FA12452005BD447 /* OCRConfigurationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRConfigurationPresenter.swift; sourceTree = "<group>"; };
@@ -1269,6 +1273,7 @@
 				71BC45501F9FB38C003A5BD5 /* LocalScansTracker.swift */,
 				71BC45521F9FB3A9003A5BD5 /* ScansPurchaseTracker.swift */,
 				71D7D43D1FAA062300437CA9 /* ScanService.swift */,
+				71E7303C1FF7E53000471287 /* MigrationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1453,6 +1458,7 @@
 				EA3CF09C1AE7C45C00B14B73 /* Constants.h */,
 				EA3CF09D1AE7C45C00B14B73 /* Constants.m */,
 				A79FDC701CEA0AB600328DBB /* Global.swift */,
+				71E7303E1FF7E9C100471287 /* BlockTypes.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1613,8 +1619,8 @@
 				71F4682C1EEEDB03009F6CE7 /* EditTrip.storyboard */,
 				71F4682D1EEEDB03009F6CE7 /* EditTripDisplayData.swift */,
 				71F4682E1EEEDB03009F6CE7 /* EditTripInteractor.swift */,
-				71F4682F1EEEDB03009F6CE7 /* EditTripPresenter.swift */,
 				71F468301EEEDB03009F6CE7 /* EditTripRouter.swift */,
+				71F4682F1EEEDB03009F6CE7 /* EditTripPresenter.swift */,
 				71F468311EEEDB03009F6CE7 /* EditTripView.swift */,
 				71F468381EEEF2AE009F6CE7 /* EditTripFormView.swift */,
 			);
@@ -2954,6 +2960,7 @@
 				EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */,
 				71D7D4401FAA079800437CA9 /* Scan.swift in Sources */,
 				7152DF1D1F0C24750088EE98 /* PDFPageView.swift in Sources */,
+				71E7303F1FF7E9C100471287 /* BlockTypes.swift in Sources */,
 				719310421EDDC2810065B5AD /* WBTextUtils.m in Sources */,
 				71F468361EEEDB03009F6CE7 /* EditTripRouter.swift in Sources */,
 				EA8D81941AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.m in Sources */,
@@ -2990,6 +2997,7 @@
 				EA6677791B060FC4004D3993 /* ReceiptColumnPaymentMethod.m in Sources */,
 				716F344E1EE040E100D0017A /* EditDistanceDisplayData.swift in Sources */,
 				A7F05BAC1CFC0AB00079F1AD /* ExchangedPriced.swift in Sources */,
+				71E7303D1FF7E53000471287 /* MigrationService.swift in Sources */,
 				719B1FD21EF5FEBE0049BD71 /* Column.m in Sources */,
 				71FB1D431F195D0D00742FF5 /* PaymentMethodsView.swift in Sources */,
 				719B1FF51EF6033A0049BD71 /* ReceiptActionsDisplayData.swift in Sources */,
