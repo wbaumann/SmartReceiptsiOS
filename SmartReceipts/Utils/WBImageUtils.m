@@ -43,9 +43,12 @@
 }
 
 + (UIImage *)processImage:(UIImage *)image {
+    NSInteger defaultSize = 1024;
     NSInteger size = [WBPreferences cameraMaxHeightWidth];
     if (size > 0) {
         image = [self image:image scaledToFitSize:CGSizeMake(size, size)];
+    } else {
+        image = [self image:image scaledToFitSize:CGSizeMake(defaultSize, defaultSize)];
     }
 
     if ([WBPreferences cameraSaveImagesBlackAndWhite]) {
