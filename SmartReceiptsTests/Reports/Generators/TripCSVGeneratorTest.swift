@@ -21,18 +21,18 @@ class TripCSVGeneratorTest: SmartReceiptsTestsBase {
     }
     
     func testGenerateSuccess() {
-        let result = generator.generate(toPath: NSTemporaryDirectory().appending("temp.csv"))
+        let result = generator.generateTo(path: NSTemporaryDirectory().appending("temp.csv"))
         XCTAssertTrue(result)
     }
     
     func testHasGeneratedContent() {
-        let result = generator.generateContent()!
+        let result = generator.testableGenerateContent()
         XCTAssertFalse(result.isEmpty)
     }
     
     func testHasByteOrederMark() {
         let bytesCount = 3
-        let data: NSData = generator.generateContent().data(using: .utf8)! as NSData
+        let data: NSData = generator.testableGenerateContent() as NSData
         var bytes = [UInt8](repeating: 0, count: bytesCount)
         data.getBytes(&bytes, length: bytesCount)
         
@@ -42,5 +42,10 @@ class TripCSVGeneratorTest: SmartReceiptsTestsBase {
         
         XCTAssertTrue(check)
     }
-    
+}
+
+extension TripCSVGenerator {
+    func testableGenerateContent() -> Data {
+        return self.perform(Selector(("generateContent"))).takeRetainedValue() as! Data
+    }
 }

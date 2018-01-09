@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "WBTrip.h"
-#import "ReportGenerator.h"
 #import "SmartReceiptsTestsBase.h"
 #import "DatabaseTestsHelper.h"
 #import "DatabaseTableNames.h"
 #import "WBReceipt.h"
+#import <SmartReceipts-Swift.h>
 
 @interface ReportGeneratorTest : SmartReceiptsTestsBase
 

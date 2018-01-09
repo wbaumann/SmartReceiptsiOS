@@ -37,7 +37,7 @@ class TripFullPDFGeneratorTest: SmartReceiptsTestsBase {
         WBPreferences.setPrintReceiptTableLandscape(false)
         XCTAssertTrue(db.setPdfColumns(defaultColumns))
         
-        let result = generator.generate(toPath: NSTemporaryDirectory().appending("temp.pdf"))
+        let result = generator.generateTo(path: NSTemporaryDirectory().appending("temp.pdf"))
         XCTAssertTrue(result)
     }
     
@@ -45,7 +45,7 @@ class TripFullPDFGeneratorTest: SmartReceiptsTestsBase {
         WBPreferences.setPrintReceiptTableLandscape(false)
         XCTAssertTrue(db.setPdfColumns(defaultColumns + defaultColumns))
         
-        let result = generator.generate(toPath: NSTemporaryDirectory().appending("temp.pdf"))
+        let result = generator.generateTo(path: NSTemporaryDirectory().appending("temp.pdf"))
         XCTAssertFalse(result, "should fail here")
         XCTAssertTrue(generator.pdfRender.tableHasTooManyColumns)
     }
@@ -54,7 +54,7 @@ class TripFullPDFGeneratorTest: SmartReceiptsTestsBase {
         WBPreferences.setPrintReceiptTableLandscape(true)
         XCTAssertTrue(db.setPdfColumns(defaultColumns + defaultColumns))
         
-        let result = generator.generate(toPath: NSTemporaryDirectory().appending("temp.pdf"))
+        let result = generator.generateTo(path: NSTemporaryDirectory().appending("temp.pdf"))
         XCTAssertTrue(result)
     }
     
@@ -62,7 +62,7 @@ class TripFullPDFGeneratorTest: SmartReceiptsTestsBase {
         WBPreferences.setPrintReceiptTableLandscape(true)
         XCTAssertTrue(db.setPdfColumns(defaultColumns + defaultColumns + defaultColumns))
         
-        let result = generator.generate(toPath: NSTemporaryDirectory().appending("temp.pdf"))
+        let result = generator.generateTo(path: NSTemporaryDirectory().appending("temp.pdf"))
         XCTAssertFalse(result, "should fail here")
         XCTAssertTrue(generator.pdfRender.tableHasTooManyColumns)
     }
