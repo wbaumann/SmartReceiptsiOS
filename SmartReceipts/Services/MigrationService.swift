@@ -13,6 +13,8 @@ fileprivate let migrationKey = "migration_version_key"
 
 class MigrationService {
     
+    // MARK: - Public Interface
+    
     func migrate() {
         
         //MARK: Migration 0 -> 1
@@ -29,7 +31,9 @@ class MigrationService {
         }
     }
     
-    private func migrateIlligalTripNames() {
+    // MARK: - Private Interface
+    
+    func migrateIlligalTripNames() {
         for trip in Database.sharedInstance().allTrips() as! [WBTrip] {
             trip.name = WBTextUtils.omitIllegalCharacters(trip.name)
             Database.sharedInstance().update(trip)
