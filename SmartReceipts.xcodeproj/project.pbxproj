@@ -229,6 +229,8 @@
 		71AEDDE11EDF7FF400BAC0DD /* TripDistancesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDDA1EDF7FF400BAC0DD /* TripDistancesRouter.swift */; };
 		71AEDDE21EDF7FF400BAC0DD /* TripDistancesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDDB1EDF7FF400BAC0DD /* TripDistancesView.swift */; };
 		71AEDDE71EDF823D00BAC0DD /* AppModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDE61EDF823D00BAC0DD /* AppModules.swift */; };
+		71AF0EAC2007BE7A00AA4C37 /* DescribedSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF0EAB2007BE7A00AA4C37 /* DescribedSwitchCell.swift */; };
+		71AF0EAE2007BE8D00AA4C37 /* DescribedSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71AF0EAD2007BE8D00AA4C37 /* DescribedSwitchCell.xib */; };
 		71AF49DF1EFDA4810022B2E2 /* ReceiptImageViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71AF49D91EFDA4810022B2E2 /* ReceiptImageViewer.storyboard */; };
 		71AF49E01EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF49DA1EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift */; };
 		71AF49E11EFDA4810022B2E2 /* ReceiptImageViewerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF49DB1EFDA4810022B2E2 /* ReceiptImageViewerInteractor.swift */; };
@@ -754,6 +756,8 @@
 		71AEDDDA1EDF7FF400BAC0DD /* TripDistancesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDistancesRouter.swift; sourceTree = "<group>"; };
 		71AEDDDB1EDF7FF400BAC0DD /* TripDistancesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDistancesView.swift; sourceTree = "<group>"; };
 		71AEDDE61EDF823D00BAC0DD /* AppModules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModules.swift; sourceTree = "<group>"; };
+		71AF0EAB2007BE7A00AA4C37 /* DescribedSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribedSwitchCell.swift; sourceTree = "<group>"; };
+		71AF0EAD2007BE8D00AA4C37 /* DescribedSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescribedSwitchCell.xib; sourceTree = "<group>"; };
 		71AF49D91EFDA4810022B2E2 /* ReceiptImageViewer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReceiptImageViewer.storyboard; sourceTree = "<group>"; };
 		71AF49DA1EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptImageViewerDisplayData.swift; sourceTree = "<group>"; };
 		71AF49DB1EFDA4810022B2E2 /* ReceiptImageViewerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptImageViewerInteractor.swift; sourceTree = "<group>"; };
@@ -1360,6 +1364,8 @@
 				71AD67711F23FA810033B643 /* PredectiveTextCell.swift */,
 				7156066F1FAE67DE00E09760 /* ScanCell.swift */,
 				7156066D1FAE67CF00E09760 /* ScanCell.xib */,
+				71AF0EAB2007BE7A00AA4C37 /* DescribedSwitchCell.swift */,
+				71AF0EAD2007BE8D00AA4C37 /* DescribedSwitchCell.xib */,
 			);
 			path = "Eureka Custom";
 			sourceTree = "<group>";
@@ -2548,6 +2554,7 @@
 				71C014221F1AB14A005472B3 /* Categories.storyboard in Resources */,
 				71F468321EEEDB03009F6CE7 /* EditTrip.storyboard in Resources */,
 				EA1E60D81B2742660048E688 /* InfoPlist.strings in Resources */,
+				71AF0EAE2007BE8D00AA4C37 /* DescribedSwitchCell.xib in Resources */,
 				71FE9FF91F4787710043E7B4 /* TitleOnlyCell.xib in Resources */,
 				EA2B8D8C1B4EF8110043A84B /* PDFPage.xib in Resources */,
 				712D7E071FB793F900DE83EB /* Localizable.stringsdict in Resources */,
@@ -3119,6 +3126,7 @@
 				A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */,
 				71FE9FF81F4787710043E7B4 /* TitleOnlyCell.m in Sources */,
 				71FB1D421F195D0D00742FF5 /* PaymentMethodsRouter.swift in Sources */,
+				71AF0EAC2007BE7A00AA4C37 /* DescribedSwitchCell.swift in Sources */,
 				EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */,
 				71AEDDCD1EDF6A2300BAC0DD /* AppTheme.swift in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */,
