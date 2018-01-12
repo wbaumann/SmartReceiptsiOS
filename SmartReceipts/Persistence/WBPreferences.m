@@ -68,7 +68,11 @@ static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_DATE = @"LayoutIncludeReceiptDat
 static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_CATEGORY = @"LayoutIncludeReceiptCategory";
 static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER = @"LayoutIncludeReceiptPicture";
 
+// Pro Settings
 static NSString *const PDF_FOOTER_STRING = @"PdfFooterString";
+static NSString *const BOOL_INCLUDE_CATEGORICAL_SUMMATION = @"IncludeCategoricalSummation";
+static NSString *const BOOL_SEPARATE_PAYMANTS_BY_CATEGORY = @"SeparateByCategory";
+static NSString *const BOOL_OMIT_DEFAULT_PDF_TABLE = @"OmitDefaultPDFTable";
 
 //Automatic Scan Settigns
 static NSString *const BOOL_AUTO_SCANS_ENABLED = @"AutoScansEnabled";
@@ -149,6 +153,10 @@ static NSDictionary *getEntryTypes() {
             BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER: tBool,
             
             PDF_FOOTER_STRING: tString,
+            BOOL_INCLUDE_CATEGORICAL_SUMMATION: tBool,
+            BOOL_SEPARATE_PAYMANTS_BY_CATEGORY: tBool,
+            BOOL_OMIT_DEFAULT_PDF_TABLE: tBool,
+            
             BOOL_AUTO_SCANS_ENABLED: tBool,
             BOOL_ALLOW_SAVE_IMAGES_FOR_ACCURACY: tBool
     };
@@ -178,6 +186,9 @@ static NSDictionary *getDefaultValues() {
             STRING_DEFAULT_EMAIL_BCC : @"",
             STRING_DEFAULT_EMAIL_SUBJECT : NSLocalizedString(@"SmartReceipts - %REPORT_NAME%", nil),
             PDF_FOOTER_STRING : NSLocalizedString(@"pdf.report.default.footer.text", nil),
+            BOOL_INCLUDE_CATEGORICAL_SUMMATION : @NO,
+            BOOL_SEPARATE_PAYMANTS_BY_CATEGORY : @NO,
+            BOOL_OMIT_DEFAULT_PDF_TABLE : @NO,
 
             BOOL_PREDICT_CATEGORIES : @YES,
             BOOL_USE_NATIVE_CAMERA : @NO,
@@ -348,6 +359,31 @@ static NSUserDefaults* instance() {
 + (void)setPDFFooterString:(NSString *)string {
     [instance() setObject:string forKey:PDF_FOOTER_STRING];
 }
+
++ (BOOL)separatePaymantsByCategory {
+    return [instance() boolForKey:BOOL_SEPARATE_PAYMANTS_BY_CATEGORY];
+}
+
++ (void)setSeparatePaymantsByCategory:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_SEPARATE_PAYMANTS_BY_CATEGORY];
+}
+
++ (BOOL)includeCategoricalSummation {
+    return [instance() boolForKey:BOOL_INCLUDE_CATEGORICAL_SUMMATION];
+}
+
++ (void)setIncludeCategoricalSummation:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_INCLUDE_CATEGORICAL_SUMMATION];
+}
+
++ (BOOL)omitDefaultPdfTable {
+    return [instance() boolForKey:BOOL_OMIT_DEFAULT_PDF_TABLE];
+}
+
++ (void)setOmitDefaultPdfTable:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_OMIT_DEFAULT_PDF_TABLE];
+}
+
 
 + (NSString*) defaultCurrency {
     return [instance() stringForKey:STRING_CURRENCY];

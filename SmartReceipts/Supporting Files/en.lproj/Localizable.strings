@@ -357,6 +357,13 @@
 "settings.pdf.section.title" = "Customize PDF Output";
 "settings.predict.recept.category.label" = "Predict Receipt Categories";
 "settings.pro.section.title" = "Smart Receipts Plus";
+"settings.pro.categorical.summation.title" = "Include Categorical Summation In Reports";
+"settings.pro.categorical.summation.description.off" = "PDF/CSV Reports don't include table with summation by category";
+"settings.pro.categorical.summation.description.on" = "PDF/CSV Reports include table with summation by category";
+"settings.pro.payments.by.category.title" = "Separate Payments by Category";
+"settings.pro.payments.by.category.description.off" = "PDF/CSV Reports don't include separate table for different categories";
+"settings.pro.payments.by.category.description.on" = "PDF/CSV Reports include separate table for different categories";
+"settings.pro.omit.default.pdf.table.title" = "Omit Default PDF Table";
 "settings.purchase.make.purchase.error.title" = "Purchase failed";
 "settings.purchase.price.retrieve.error.message" = "Could not retrieve purchase details. Please try again later.";
 "settings.purchase.price.retrieve.error.title" = "Purchase error";
