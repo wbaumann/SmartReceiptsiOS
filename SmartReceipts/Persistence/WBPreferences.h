@@ -127,6 +127,15 @@
 + (NSString *)pdfFooterString;
 + (void)setPDFFooterString:(NSString *)string;
 
++ (BOOL)includeCategoricalSummation;
++ (void)setIncludeCategoricalSummation:(BOOL)value;
+
++ (BOOL)separatePaymantsByCategory;
++ (void)setSeparatePaymantsByCategory:(BOOL)value;
+
++ (BOOL)omitDefaultPdfTable;
++ (void)setOmitDefaultPdfTable:(BOOL)value;
+
 + (void)save;
 
 + (float)MIN_FLOAT;

@@ -56,6 +56,7 @@ class SettingsFormView: FormViewController {
         super.viewDidLoad()
         
         tableView.separatorColor = UIColor.clear
+        let hasValidSubscription = Database.sharedInstance().hasValidSubscription()
         
         form
         +++ Section(LocalizedString("settings.purchase.section.title"))
@@ -94,7 +95,7 @@ class SettingsFormView: FormViewController {
             row.title = LocalizedString("settings.pdf.footer.text.label")
             row.value = WBPreferences.pdfFooterString()
             self.footerRow = row
-            row.isEnabled = false
+            row.isEnabled = hasValidSubscription
         }.onChange({ row in
             WBPreferences.setPDFFooterString(row.value ?? "")
         }).cellUpdate({ cell, row in
@@ -105,6 +106,50 @@ class SettingsFormView: FormViewController {
                                         message: LocalizedString("settings.pdf.footer.pro.message.body")))
             }
         })
+        
+        <<< DescribedSwitchRow() { row in
+            row.title = LocalizedString("settings.pro.payments.by.category.title")
+            row.value = WBPreferences.separatePaymantsByCategory()
+            row.subtitle = row.value! ?
+                LocalizedString("settings.pro.payments.by.category.description.on") :
+                LocalizedString("settings.pro.payments.by.category.description.off")
+        }.onChange({ row in
+            WBPreferences.setSeparatePaymantsByCategory(row.value!)
+            row.subtitle = row.value! ?
+                LocalizedString("settings.pro.payments.by.category.description.on") :
+                LocalizedString("settings.pro.payments.by.category.description.off")
+            row.updateCell()
+        }).cellSetup({ cell, _ in
+            cell.isUserInteractionEnabled = hasValidSubscription
+        })
+        
+        <<< DescribedSwitchRow() { row in
+            row.title = LocalizedString("settings.pro.categorical.summation.title")
+            row.value = WBPreferences.includeCategoricalSummation()
+            row.subtitle = row.value! ?
+                LocalizedString("settings.pro.categorical.summation.description.on") :
+                LocalizedString("settings.pro.categorical.summation.description.off")
+        }.onChange({ row in
+            WBPreferences.setIncludeCategoricalSummation(row.value!)
+            row.subtitle = row.value! ?
+                LocalizedString("settings.pro.categorical.summation.description.on") :
+                LocalizedString("settings.pro.categorical.summation.description.off")
+            row.updateCell()
+        }).cellSetup({ cell, _ in
+            cell.isUserInteractionEnabled = hasValidSubscription
+        })
+            
+        <<< DescribedSwitchRow() { row in
+            row.title = LocalizedString("settings.pro.omit.default.pdf.table.title")
+            row.value = WBPreferences.omitDefaultPdfTable()
+            row.subtitle = nil
+        }.onChange({ row in
+            WBPreferences.setOmitDefaultPdfTable(row.value!)
+            row.updateCell()
+        }).cellSetup({ cell, _ in
+            cell.isUserInteractionEnabled = hasValidSubscription
+        })
+        
            
         +++ Section(LocalizedString("settings.email.section.title"))
         <<< textInput(LocalizedString("settings.default.email.recipient.lebel"),
