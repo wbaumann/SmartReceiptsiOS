@@ -27,18 +27,33 @@ class ReportGenerator: NSObject {
         return []
     }
     
-    func receipts() -> [WBReceipt] {
-        let receipts = database.allReceipts(for: trip, ascending: true) as! [WBReceipt]
-        return ReceiptIndexer.indexReceipts(receipts, filter: { WBReportUtils.filterOutReceipt($0) })
+    func categoryColumns() -> [CategoryColumn] {
+        return CategoryColumn.allColumns()
     }
     
     func distanceColumns() -> [DistanceColumn] {
         return DistanceColumn.allColumns() as! [DistanceColumn]
     }
     
+    func receipts() -> [WBReceipt] {
+        let receipts = database.allReceipts(for: trip, ascending: true) as! [WBReceipt]
+        return ReceiptIndexer.indexReceipts(receipts, filter: { WBReportUtils.filterOutReceipt($0) })
+    }
+    
     func distances() -> [Distance] {
         let distances = database.fetchedAdapterForDistances(in: trip, ascending: true)
         return distances?.allObjects() as! [Distance]
+    }
+    
+    func receiptsByCategories() -> [String: [WBReceipt]] {
+        var result = [String: [WBReceipt]]()
+        for receipt in receipts() {
+            if result[receipt.category] == nil {
+                result[receipt.category] = [WBReceipt]()
+            }
+            result[receipt.category]?.append(receipt)
+        }
+        return result
     }
 }
 

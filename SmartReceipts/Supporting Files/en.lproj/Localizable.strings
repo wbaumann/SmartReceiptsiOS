@@ -76,6 +76,12 @@
 "distance.column.price" = "Price";
 "distance.column.rate" = "Rate";
 
+"category.column.category" = "Category";
+"category.column.category.code" = "Category Code";
+"category.column.currency" = "Currency";
+"category.column.price" = "Price";
+"category.column.tax" = "Tax";
+
 "distances.controller.title" = "Distances";
 "distances.to.receipt.auto.categpry" = "Distance";
 "distances.to.receipt.auto.name" = "Distance";
