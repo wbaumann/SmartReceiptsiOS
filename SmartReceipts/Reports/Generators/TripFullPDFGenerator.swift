@@ -108,6 +108,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         
         pdfRender.closeHeader()
     
+    // Receipts Table
         let receiptsTable = ReportPDFTable(pdfRender: pdfRender, columns: receiptColumns())!
         receiptsTable.includeHeaders = true
         receiptsTable.includeFooters = true
@@ -118,11 +119,22 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         }
         receiptsTable.append(withRows: recs)
         
-        if !WBPreferences.printDistanceTable() || dists.isEmpty { return }
-        let distancesTable = ReportPDFTable(pdfRender: pdfRender, columns: distanceColumns())!
-        distancesTable.includeHeaders = true
-        distancesTable.includeFooters = true
-        distancesTable.append(withRows: dists)
+    // Distances Table
+        if WBPreferences.printDistanceTable() && !dists.isEmpty {
+            let distancesTable = ReportPDFTable(pdfRender: pdfRender, columns: distanceColumns())!
+            distancesTable.includeHeaders = true
+            distancesTable.includeFooters = true
+            distancesTable.append(withRows: dists)
+        }
+        
+    // Categorical Summation Table
+        if WBPreferences.includeCategoricalSummation() {
+            let categoricalTable = ReportPDFTable(pdfRender: pdfRender, columns: categoryColumns())!
+            categoricalTable.includeHeaders = true
+            categoricalTable.includeFooters = false
+            categoricalTable.append(withRows: Array(receiptsByCategories().values))
+        }
+    
     }
 }
 

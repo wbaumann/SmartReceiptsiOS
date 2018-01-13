@@ -124,7 +124,9 @@ class PDFReportTable: UIView {
             let value = row[column]
             maxWidth = max(maxWidth, rowOnePrototype.widthFor(value: value))
         }
-        maxWidth = max(maxWidth, footerRowPrototype.widthFor(value: footers[column]))
+        if !footers.isEmpty {
+            maxWidth = max(maxWidth, footerRowPrototype.widthFor(value: footers[column]))
+        }
         return CGFloat(ceilf(Float(maxWidth)))
     }
     
