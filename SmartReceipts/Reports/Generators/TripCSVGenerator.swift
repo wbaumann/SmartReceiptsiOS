@@ -22,6 +22,9 @@ class TripCSVGenerator: ReportCSVGenerator {
         let content = NSMutableString()
         appendReceiptsTable(content)
         appendDistancesTable(content)
+        if WBPreferences.includeCategoricalSummation() {
+            appendCategoricalSummationTable(content)
+        }
         return (content as String).byteOrderMarked
     }
     
@@ -38,11 +41,19 @@ class TripCSVGenerator: ReportCSVGenerator {
         receiptTable.append(withRows: recs)
     }
     
+    private func appendCategoricalSummationTable(_ content: NSMutableString) {
+        content.append("\n \n")
+        let receiptTable = ReportCSVTable(content: content, columns: categoryColumns())!
+        receiptTable.includeHeaders = WBPreferences.includeCSVHeaders()
+        let receipts = receiptsByCategories()
+        receiptTable.append(withRows: Array(receipts.values))
+    }
+    
     private func appendDistancesTable(_ content: NSMutableString) {
         if !WBPreferences.printDistanceTable() { return }
         let dists = distances()
         if dists.isEmpty { return }
-        content.append("\n\n")
+        content.append("\n \n")
         let receiptTable = ReportCSVTable(content: content, columns: distanceColumns())!
         receiptTable.includeHeaders = WBPreferences.includeCSVHeaders()
         receiptTable.append(withRows: dists)
