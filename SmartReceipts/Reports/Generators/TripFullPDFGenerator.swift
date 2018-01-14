@@ -107,6 +107,8 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         }
         
         pdfRender.closeHeader()
+        
+    //Render Tables
     
         if !WBPreferences.omitDefaultPdfTable() {
             appendReportsTable()

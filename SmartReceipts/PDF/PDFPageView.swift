@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 fileprivate let ElementsSpacing: CGFloat = 16
 
 class PDFPageView: UIView {
@@ -29,6 +27,8 @@ class PDFPageView: UIView {
         footerLabel.font = PDFFontStyle.footer.font
         footerLabel.text = WBPreferences.pdfFooterString()
     }
+    
+    var contentWidth: CGFloat { return topLine.bounds.width }
     
     func appendHeader(_ header: TripReportHeader) {
         var newFrame = header.frame
