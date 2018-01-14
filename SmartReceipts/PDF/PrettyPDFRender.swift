@@ -158,5 +158,16 @@ class PrettyPDFRender: NSObject {
         openPage.appendFullPageElement(pdfPageRenderView)
         startNextPage()
     }
+    
+    func append(title: String, alignment: NSTextAlignment = .left) {
+        let label = UILabel(frame: CGRect.zero)
+        label.textAlignment = alignment
+        label.font = PDFFontStyle.defaultBold.font
+        label.textColor = AppTheme.reportPDFStyleColor
+        label.text = title
+        label.sizeToFit()
+        label.frame.size.width = openPage.contentWidth
+        openPage.appendFullPageElement(label)
+    }
 }
 
