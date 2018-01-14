@@ -35,7 +35,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         let pricesPreTax = WBPreferences.enteredPricePreTax()
         let reportOnlyReimbursable = WBPreferences.onlyIncludeReimbursableReceiptsInReports()
         
-        var recs = receipts()
+        let recs = receipts()
         
         for receipt in recs {
             if reportOnlyReimbursable && !receipt.isReimbursable {
@@ -108,33 +108,47 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         
         pdfRender.closeHeader()
     
-    // Receipts Table
+        if !WBPreferences.omitDefaultPdfTable() {
+            appendReportsTable()
+        }
+        
+        if WBPreferences.printDistanceTable() && !dists.isEmpty {
+            appendDistancesTable()
+        }
+        
+        if WBPreferences.includeCategoricalSummation() {
+            appendCategoricalSummationTable()
+        }
+        
+    }
+    
+    private func appendReportsTable() {
+        var rows = receipts()
         let receiptsTable = ReportPDFTable(pdfRender: pdfRender, columns: receiptColumns())!
         receiptsTable.includeHeaders = true
         receiptsTable.includeFooters = true
         if WBPreferences.printDailyDistanceValues() {
             let dReceipts = DistancesToReceiptsConverter.convertDistances(distances()) as! [WBReceipt]
-            recs.append(contentsOf: dReceipts)
-            recs.sort(by: { $1.date.compare($0.date) == .orderedAscending })
+            rows.append(contentsOf: dReceipts)
+            rows.sort(by: { $1.date.compare($0.date) == .orderedAscending })
         }
-        receiptsTable.append(withRows: recs)
-        
-    // Distances Table
-        if WBPreferences.printDistanceTable() && !dists.isEmpty {
-            let distancesTable = ReportPDFTable(pdfRender: pdfRender, columns: distanceColumns())!
-            distancesTable.includeHeaders = true
-            distancesTable.includeFooters = true
-            distancesTable.append(withRows: dists)
-        }
-        
-    // Categorical Summation Table
-        if WBPreferences.includeCategoricalSummation() {
-            let categoricalTable = ReportPDFTable(pdfRender: pdfRender, columns: categoryColumns())!
-            categoricalTable.includeHeaders = true
-            categoricalTable.includeFooters = false
-            categoricalTable.append(withRows: Array(receiptsByCategories().values))
-        }
-    
+        receiptsTable.append(withRows: rows)
     }
+    
+    private func appendDistancesTable() {
+        let distancesTable = ReportPDFTable(pdfRender: pdfRender, columns: distanceColumns())!
+        distancesTable.includeHeaders = true
+        distancesTable.includeFooters = true
+        distancesTable.append(withRows: distances())
+    }
+    
+    private func appendCategoricalSummationTable() {
+        let categoricalTable = ReportPDFTable(pdfRender: pdfRender, columns: categoryColumns())!
+        categoricalTable.includeHeaders = true
+        categoricalTable.includeFooters = false
+        categoricalTable.append(withRows: Array(receiptsByCategories().values))
+    }
+    
+    
 }
 
