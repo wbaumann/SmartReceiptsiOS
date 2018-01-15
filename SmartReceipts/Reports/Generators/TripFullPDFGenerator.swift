@@ -108,20 +108,34 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         
         pdfRender.closeHeader()
         
-    //Render Tables
-    
+        
+        //MARK: Render Tables
+        
         if !WBPreferences.omitDefaultPdfTable() {
             appendReportsTable()
         }
-        
+
         if WBPreferences.printDistanceTable() && !dists.isEmpty {
             appendDistancesTable()
         }
-        
+
         if WBPreferences.includeCategoricalSummation() {
             appendCategoricalSummationTable()
         }
         
+        if true {//WBPreferences.separatePaymantsByCategory() {
+            appendSeparatedByCategoryTable()
+        }
+        
+    }
+    
+    private func appendSeparatedByCategoryTable() {
+        for (category, receipts) in receiptsByCategories() {
+            let receiptsTable = ReportPDFTable(title: category, pdfRender: pdfRender, columns: receiptColumns())!
+            receiptsTable.includeHeaders = true
+            receiptsTable.includeFooters = true
+            receiptsTable.append(withRows: receipts)
+        }
     }
     
     private func appendReportsTable() {

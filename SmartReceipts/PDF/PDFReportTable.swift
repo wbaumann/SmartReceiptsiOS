@@ -16,6 +16,7 @@ class PDFReportTable: UIView {
     @IBOutlet var rowTwoPrototype: TableContentRow!
     @IBOutlet var footerRowPrototype: TableFooterRow!
     
+    var title: String?
     var rows = [[String]]()
     var columns = [String]()
     var footers = [String]()
@@ -55,10 +56,21 @@ class PDFReportTable: UIView {
             cellFrame.size.width = width
             cellFrame.size.height = height
             cell?.frame = cellFrame
-            self.addSubview(cell!)
+            addSubview(cell!)
             xOffset += width
         }
         return yOffset + height
+    }
+    
+    func setTable(title: String, yOffset: CGFloat) -> CGFloat {
+        let label = UILabel(frame: CGRect.zero)
+        label.frame.origin.y = yOffset
+        label.font = PDFFontStyle.defaultBold.font
+        label.textColor = AppTheme.reportPDFStyleColor
+        label.text = title
+        label.sizeToFit()
+        addSubview(label)
+        return yOffset + label.bounds.height
     }
     
     func buildTable(availableSpace: CGFloat) -> Bool {
@@ -73,10 +85,15 @@ class PDFReportTable: UIView {
         
         columnsWidth = divideRemainingWidth(columns: columnsWidth, titleWidth: titleWidth)
         
-        var yOffset: CGFloat = 0
+        var yOffset: CGFloat = 10
         // Don't add header on view where already added
         // Happens when we decide that not enough rows in page and push all to next page.
         // In that case original table is reused, just additional rows added
+        
+        if let tableTitle = title {
+            yOffset = setTable(title: tableTitle, yOffset: yOffset) + 8
+            title = nil
+        }
         
         if !tableHeaderAdded {
             yOffset = appendRow(row: columns, coloumnsWidths: columnsWidth, usingPrototype: headerRowPrototype, yOffset: yOffset)

@@ -53,6 +53,13 @@ class ReportGenerator: NSObject {
             }
             result[receipt.category]?.append(receipt)
         }
+        
+        if WBPreferences.printDailyDistanceValues() {
+            let dReceipts = DistancesToReceiptsConverter.convertDistances(distances()) as! [WBReceipt]
+            guard let firstReceipt = dReceipts.first else { return result }
+            result[firstReceipt.category] = dReceipts
+        }
+        
         return result
     }
 }

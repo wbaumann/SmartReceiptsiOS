@@ -17,10 +17,19 @@ static inline NSString *safeString(NSString *str) {
 @interface ReportPDFTable ()
 
 @property (nonatomic, strong) PrettyPDFRender *pdfRender;
+@property (nonatomic) NSString *title;
 
 @end
 
 @implementation ReportPDFTable
+
+- (instancetype)initWithTitle:(NSString *)title PDFRender:(PrettyPDFRender *)drawer columns:(NSArray *)columns {
+    self = [self initWithPDFRender:drawer columns:columns];
+    if (self) {
+        _title = title;
+    }
+    return self;
+}
 
 - (instancetype)initWithPDFRender:(PrettyPDFRender *)drawer columns:(NSArray *)columns {
     self = [super initWithColumns:columns];
@@ -51,7 +60,7 @@ static inline NSString *safeString(NSString *str) {
             [self.pdfRender appendTableWithColumns:array];
         }
     }
-    
+    self.pdfRender.openTable.title = self.title;
     [self.pdfRender closeTable];
 }
 

@@ -14,6 +14,7 @@
 
 @interface ReportPDFTable : ReportTable
 
+- (instancetype)initWithTitle:(NSString *)title PDFRender:(PrettyPDFRender *)drawer columns:(NSArray *)columns;
 - (instancetype)initWithPDFRender:(PrettyPDFRender *)drawer columns:(NSArray *)columns;
 
 @end
