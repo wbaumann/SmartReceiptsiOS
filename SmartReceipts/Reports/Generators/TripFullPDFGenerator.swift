@@ -123,7 +123,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
             appendCategoricalSummationTable()
         }
         
-        if true {//WBPreferences.separatePaymantsByCategory() {
+        if WBPreferences.separatePaymantsByCategory() {
             appendSeparatedByCategoryTable()
         }
         

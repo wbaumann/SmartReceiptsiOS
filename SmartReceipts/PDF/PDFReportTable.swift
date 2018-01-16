@@ -114,6 +114,7 @@ class PDFReportTable: UIView {
             let height = maxHeightForRow(array: rows[row], widths: columnsWidth, prototype: prototype)
             if yOffset + height > availableSpace {
                 rowsAdded = row
+                setFrameHeight(to: yOffset)
                 return false
             }
             yOffset = appendRow(row: rows[row], coloumnsWidths: columnsWidth, usingPrototype: prototype, yOffset: yOffset)
