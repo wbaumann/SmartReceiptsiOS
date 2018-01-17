@@ -8,6 +8,8 @@
 
 import Foundation
 
+fileprivate let TABLE_SPACING = "\n \n"
+
 class TripCSVGenerator: ReportCSVGenerator {
     override func generateTo(path: String) -> Bool {
         do { try generateContent().write(to: path.asFileURL) }
@@ -46,7 +48,7 @@ class TripCSVGenerator: ReportCSVGenerator {
     }
     
     private func appendCategoricalSummationTable(_ content: NSMutableString) {
-        content.append("\n \n")
+        content.append(TABLE_SPACING)
         let receiptTable = ReportCSVTable(content: content, columns: categoryColumns())!
         receiptTable.includeHeaders = WBPreferences.includeCSVHeaders()
         let receipts = receiptsByCategories()
@@ -58,7 +60,7 @@ class TripCSVGenerator: ReportCSVGenerator {
         for (category, receipts) in categoryReceipts {
             let receiptTable = ReportCSVTable(content: content, columns: receiptColumns())!
             receiptTable.includeHeaders = WBPreferences.includeCSVHeaders()
-            content.append("\n \n")
+            content.append(TABLE_SPACING)
             content.append(category + "\n")
             receiptTable.append(withRows: receipts)
         }
@@ -68,7 +70,7 @@ class TripCSVGenerator: ReportCSVGenerator {
         if !WBPreferences.printDistanceTable() { return }
         let dists = distances()
         if dists.isEmpty { return }
-        content.append("\n \n")
+        content.append(TABLE_SPACING)
         let receiptTable = ReportCSVTable(content: content, columns: distanceColumns())!
         receiptTable.includeHeaders = WBPreferences.includeCSVHeaders()
         receiptTable.append(withRows: dists)

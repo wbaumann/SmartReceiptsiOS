@@ -9,6 +9,7 @@
 import Foundation
 
 fileprivate let MINIMUM_COLUMN_WIDTH: CGFloat = 24
+fileprivate let TABLE_SPACING: CGFloat = 10
 
 class PDFReportTable: UIView {
     @IBOutlet var headerRowPrototype: TableHeaderRow!
@@ -85,13 +86,13 @@ class PDFReportTable: UIView {
         
         columnsWidth = divideRemainingWidth(columns: columnsWidth, titleWidth: titleWidth)
         
-        var yOffset: CGFloat = 10
+        var yOffset: CGFloat = TABLE_SPACING
         // Don't add header on view where already added
         // Happens when we decide that not enough rows in page and push all to next page.
         // In that case original table is reused, just additional rows added
         
         if let tableTitle = title {
-            yOffset = setTable(title: tableTitle, yOffset: yOffset) + 8
+            yOffset = setTable(title: tableTitle, yOffset: yOffset) + UI_MARGIN_8
             title = nil
         }
         

@@ -110,14 +110,10 @@ class SettingsFormView: FormViewController {
         <<< DescribedSwitchRow() { row in
             row.title = LocalizedString("settings.pro.payments.by.category.title")
             row.value = WBPreferences.separatePaymantsByCategory()
-            row.subtitle = row.value! ?
-                LocalizedString("settings.pro.payments.by.category.description.on") :
-                LocalizedString("settings.pro.payments.by.category.description.off")
+            row.onSubtitle = LocalizedString("settings.pro.payments.by.category.description.on")
+            row.offSubtitle = LocalizedString("settings.pro.payments.by.category.description.off")
         }.onChange({ row in
             WBPreferences.setSeparatePaymantsByCategory(row.value!)
-            row.subtitle = row.value! ?
-                LocalizedString("settings.pro.payments.by.category.description.on") :
-                LocalizedString("settings.pro.payments.by.category.description.off")
             row.updateCell()
         }).cellSetup({ cell, _ in
             cell.isUserInteractionEnabled = hasValidSubscription
@@ -126,14 +122,10 @@ class SettingsFormView: FormViewController {
         <<< DescribedSwitchRow() { row in
             row.title = LocalizedString("settings.pro.categorical.summation.title")
             row.value = WBPreferences.includeCategoricalSummation()
-            row.subtitle = row.value! ?
-                LocalizedString("settings.pro.categorical.summation.description.on") :
-                LocalizedString("settings.pro.categorical.summation.description.off")
+            row.onSubtitle = LocalizedString("settings.pro.categorical.summation.description.on")
+            row.offSubtitle = LocalizedString("settings.pro.categorical.summation.description.off")
         }.onChange({ row in
             WBPreferences.setIncludeCategoricalSummation(row.value!)
-            row.subtitle = row.value! ?
-                LocalizedString("settings.pro.categorical.summation.description.on") :
-                LocalizedString("settings.pro.categorical.summation.description.off")
             row.updateCell()
         }).cellSetup({ cell, _ in
             cell.isUserInteractionEnabled = hasValidSubscription
@@ -142,7 +134,6 @@ class SettingsFormView: FormViewController {
         <<< DescribedSwitchRow() { row in
             row.title = LocalizedString("settings.pro.omit.default.pdf.table.title")
             row.value = WBPreferences.omitDefaultPdfTable()
-            row.subtitle = nil
         }.onChange({ row in
             WBPreferences.setOmitDefaultPdfTable(row.value!)
             row.updateCell()
