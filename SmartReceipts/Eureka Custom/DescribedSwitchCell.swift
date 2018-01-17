@@ -16,6 +16,8 @@ class DescribedSwitchCell: Cell<Bool>, CellType {
     
     public override func setup() {
         super.setup()
+        title.text = nil
+        subtitle.text = nil
         
         selectionStyle = .none
         switcher.onTintColor = AppTheme.primaryColor
@@ -25,7 +27,8 @@ class DescribedSwitchCell: Cell<Bool>, CellType {
         title.sizeToFit()
         subtitle.sizeToFit()
         
-        let cellHeight = title.bounds.height + subtitle.bounds.height + 24
+        let margins = UI_MARGIN_8 + UI_MARGIN_16 * 2
+        let cellHeight = title.bounds.height + subtitle.bounds.height + margins
         height = { cellHeight }
     }
     
@@ -42,8 +45,11 @@ class DescribedSwitchCell: Cell<Bool>, CellType {
     public override func update() {
         super.update()
         title.text = row().title
-        subtitle.text = row().subtitle
-        if let rowValue = row().value { switcher.isOn = rowValue }
+        guard let rowValue = row().value else { return }
+        switcher.isOn = rowValue
+        if let text = rowValue ? row().onSubtitle : row().offSubtitle {
+            subtitle.text = text
+        }
     }
     
     func switchAction() {
@@ -57,7 +63,8 @@ class DescribedSwitchCell: Cell<Bool>, CellType {
 
 
 final class DescribedSwitchRow: Row<DescribedSwitchCell>, RowType {
-    var subtitle: String?
+    var onSubtitle: String?
+    var offSubtitle: String?
     
     required public init(tag: String?) {
         super.init(tag: tag)

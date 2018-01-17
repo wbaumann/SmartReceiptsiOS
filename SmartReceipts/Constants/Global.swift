@@ -11,6 +11,9 @@ import Foundation
 let MIGRATION_VERSION = 1
 let TOUCH_AREA: CGFloat = 44
 
+let UI_MARGIN_8: CGFloat = 8
+let UI_MARGIN_16: CGFloat = 16
+
 func onMainThread(_ closure: @escaping VoidBlock) {
     DispatchQueue.main.async(execute: closure)
 }
