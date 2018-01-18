@@ -2,7 +2,7 @@
 
 > A Better Receipt Scanner
 
-![SmartReceipts](SmartReceipts/Images.xcassets/AppIcon.appiconset/iPhone@3x.png)
+![SmartReceipts](SmartReceipts/Images.xcassets/AppIcon.appiconset/icon180.png)
 
 Turn your phone into a receipt scanner and expense report generator with Smart Receipts! With Smart Receipts, you can track your receipts and easily generate beautiful PDF and CSV reports.
  
@@ -13,7 +13,7 @@ Download Smart Receipts on the Apple AppStore:
 The free and plus versions versions are identical, except the plus version offers the following enhancements:
 
 - The plus version has no ads
-- The plus version automatically processes exchange rate conversions (with the newest version)
+- The plus version automatically processes exchange rate conversions 
 - The plus version allows you to edit/customize the pdf footer 
     
 ## Table of Contents
@@ -37,7 +37,7 @@ The free and plus versions versions are identical, except the plus version offer
 - [X] Generate PDF, CSV, & ZIP reports
 - [X] Fully customizable report output
 - [ ] Automatic backup support via Google Drive
-- [ ] OCR support for receipt scans
+- [X] OCR support for receipt scans
 - [ ] Graphical breakdowns of spending per category
 - [ ] Cross-organization setting standardization
 
