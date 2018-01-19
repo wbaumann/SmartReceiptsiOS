@@ -19,6 +19,7 @@ class ScansPurchaseTracker: NSObject {
     private override init() {}
     
     func initialize() {
+        purchaseService.cacheProducts()
         AuthService.shared.loggedInObservable
             .filter({ $0 })
             .flatMap({ _ -> Observable<Int> in

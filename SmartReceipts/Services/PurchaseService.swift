@@ -18,6 +18,13 @@ let PRODUCT_PLUS = "ios_plus_sku_2"
 class PurchaseService {
     private var plusSubsribtionProduct: SKProduct?
     fileprivate let bag = DisposeBag()
+    static fileprivate var cachedProducts = [SKProduct]()
+    
+    func cacheProducts() {
+        requestProducts().toArray().subscribe(onNext: { products in
+            PurchaseService.cachedProducts = products
+        }).disposed(by: bag)
+    }
     
     func requestProducts() -> Observable<SKProduct> {
         let ids: Set = [PRODUCT_PLUS, PRODUCT_OCR_10, PRODUCT_OCR_50]
@@ -43,12 +50,15 @@ class PurchaseService {
     }
     
     func purchase(prodcutID: String) -> Observable<SKPaymentTransaction> {
-        return RMStore.default().addPayment(product: prodcutID)
+        return (isCachedProduct(id: prodcutID) ? Observable<Void>.just() : requestProducts().toArray().map({ _ in }))
+            .flatMap({ _ in
+                RMStore.default().addPayment(product: prodcutID)
             .do(onNext: { [weak self] transaction in
                 PurchaseService.analyticsPurchaseSuccess(productID: prodcutID)
                 self?.sendConfirm(transaction: transaction)
-            }, onError: { _ in
-                PurchaseService.analyticsPurchaseFailed(productID: prodcutID)
+                }, onError: { _ in
+                    PurchaseService.analyticsPurchaseFailed(productID: prodcutID)
+                })
             })
     }
     
@@ -68,6 +78,13 @@ class PurchaseService {
             let errorEvent = ErrorEvent(error: responseError)
             AnalyticsManager.sharedManager.record(event: errorEvent)
         }
+    }
+    
+    private func isCachedProduct(id: String) -> Bool {
+        for product in PurchaseService.cachedProducts {
+            if product.productIdentifier == id { return true }
+        }
+        return false
     }
 }
 
