@@ -27,11 +27,29 @@
                                     <segue destination="urd-hN-qYP" kind="embed" id="TWZ-S1-HOg"/>
                                 </connections>
                             </containerView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UnM-Cp-Iev" userLabel="AdContainerView" customClass="GADNativeExpressAdView">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UnM-Cp-Iev" userLabel="AdContainerView">
                                 <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nH5-K1-Fcb" customClass="UpsellBannerAdView" customModule="SmartReceipts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u4m-BG-Mic" customClass="GADBannerView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="autoloadEnabled" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="nH5-K1-Fcb" secondAttribute="bottom" id="I03-qh-GV6"/>
+                                    <constraint firstAttribute="trailing" secondItem="nH5-K1-Fcb" secondAttribute="trailing" id="UB6-pY-dAK"/>
+                                    <constraint firstItem="nH5-K1-Fcb" firstAttribute="top" secondItem="UnM-Cp-Iev" secondAttribute="top" id="ixv-9J-QfI"/>
                                     <constraint firstAttribute="height" constant="80" id="sL9-0F-qzG"/>
+                                    <constraint firstItem="nH5-K1-Fcb" firstAttribute="leading" secondItem="UnM-Cp-Iev" secondAttribute="leading" id="uhL-Db-0Vm"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -48,8 +66,9 @@
                     </view>
                     <connections>
                         <outlet property="adContainerHeight" destination="sL9-0F-qzG" id="Z8I-fT-EKf"/>
+                        <outlet property="bannerView" destination="u4m-BG-Mic" id="hYc-Yf-cKd"/>
                         <outlet property="container" destination="jX2-Gd-oKN" id="cU4-A2-qjy"/>
-                        <outlet property="nativeExpressAdView" destination="UnM-Cp-Iev" id="rY3-tE-nvN"/>
+                        <outlet property="upsellBannerView" destination="nH5-K1-Fcb" id="02o-Qi-kl1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84i-19-N5I" userLabel="First Responder" sceneMemberID="firstResponder"/>

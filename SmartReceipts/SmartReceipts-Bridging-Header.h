@@ -26,8 +26,6 @@
 #import "FetchedModel.h"
 #import "FetchedModelAdapter.h"
 
-#import <Google/Analytics.h>
-
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "UIView+LoadHelpers.h"
 #import "UIApplication+DismissKeyboard.h"
