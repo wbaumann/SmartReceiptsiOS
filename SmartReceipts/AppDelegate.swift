@@ -167,7 +167,6 @@ fileprivate extension AppDelegate {
 
 extension AppDelegate {
     func enableAnalytics() {
-        AnalyticsManager.sharedManager.register(newService: GoogleAnalytics())
         AnalyticsManager.sharedManager.register(newService: FirebaseAnalytics())
         AnalyticsManager.sharedManager.register(newService: AnalyticsLogger())
     }

@@ -33,15 +33,12 @@ def pods
     pod 'Alamofire'
     pod 'SwiftyJSON'
     
-    # Google
-    pod 'Google/AdMob'
-    pod 'Google/Analytics'
-    
     # Firebase
     pod 'Firebase/Analytics'
     pod 'Firebase/Crash'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
+    pod 'Firebase/AdMob'
     
     # Purchases
     pod 'RMStore/Core', :path => '3rdparty/RMStore'
