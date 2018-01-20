@@ -14,5 +14,6 @@ typedef void (^WBImagePickerResultBlock)(UIImage *image);
 
 + (instancetype)sharedInstance;
 - (void)presentPickerOnController:(UIViewController *)controller completion:(WBImagePickerResultBlock)completion;
+- (void)presentCameraOnController:(UIViewController *)controller completion:(WBImagePickerResultBlock)completion;
 
 @end

@@ -18,6 +18,7 @@ class ReceiptsPresenter: Presenter {
     let receiptDeleteSubject = PublishSubject<WBReceipt>()
     let createReceiptTextSubject = PublishSubject<Void>()
     let createReceiptCameraSubject = PublishSubject<Void>()
+    let importReceiptFileSubject = PublishSubject<Void>()
     let contentChanged = PublishSubject<Void>()
     
     let bag = DisposeBag()
@@ -65,6 +66,10 @@ class ReceiptsPresenter: Presenter {
         
         createReceiptCameraSubject.subscribe(onNext: { [unowned self] in
             self.router.openCreatePhotoReceipt()
+        }).disposed(by: bag)
+        
+        importReceiptFileSubject.subscribe(onNext: { [unowned self] in
+            self.router.openImportReceiptFile()
         }).disposed(by: bag)
     }
 }

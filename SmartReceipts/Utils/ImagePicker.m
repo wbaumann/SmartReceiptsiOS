@@ -71,6 +71,11 @@
     [actionSheet showInView:controller.view];
 }
 
+- (void)presentCameraOnController:(UIViewController *)controller completion:(WBImagePickerResultBlock)completion {
+    [self setSelectionHandler:completion];
+    [self presentImagePickerWithSource:UIImagePickerControllerSourceTypeCamera onController:controller];
+}
+
 - (void)presentImagePickerWithSource:(UIImagePickerControllerSourceType)source onController:(UIViewController *)controller {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
