@@ -11,7 +11,6 @@ import Viperit
 import RxSwift
 
 class ReceiptsRouter: Router {
-    
     var moduleTrip: WBTrip! = nil
     private var documentViewController: UIDocumentInteractionController!
     private let bag = DisposeBag()
@@ -61,7 +60,7 @@ class ReceiptsRouter: Router {
     
     func openCreatePhotoReceipt() {
         var hud: PendingHUDView?
-        ImagePicker.sharedInstance().rx_openOn(_view)
+        ImagePicker.sharedInstance().rx_openCamera(on: _view)
             .filter({ $0 != nil })
             .map({ $0! })
             .flatMap({ [unowned self] img -> Observable<Scan> in
@@ -72,6 +71,23 @@ class ReceiptsRouter: Router {
                 hud?.hide()
                 self.openEditModule(with: scan)
             }).disposed(by: bag)
+    }
+    
+    func openImportReceiptFile() {
+        var hud: PendingHUDView?
+        if #available(iOS 11.0, *) {
+            ReceiptFilePicker.sharedInstance.openFilePicker(on: _view)
+                .subscribe(onNext: { doc in
+                    guard let img = doc.image else { return }
+                    hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
+                    hud?.observe(status: self.presenter.scanService.status)
+                    _ = self.presenter.scanService.scan(image: img).subscribe(onNext: { [unowned self] scan in
+                        hud?.hide()
+                        self.openEditModule(with: scan)
+                    })
+                    
+                }).disposed(by: bag)
+        }
     }
     
     func openActions(receipt: WBReceipt) -> ReceiptActionsPresenter {

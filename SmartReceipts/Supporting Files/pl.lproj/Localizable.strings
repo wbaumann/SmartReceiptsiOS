@@ -288,8 +288,13 @@
 "receipt.column.report.price.minus.tax" = "Cena Minus Tax";
 "receipt.column.report.price.exchanged.minus.tax" = "Cena Minus Tax (Exchanged)";
 "receipt.column.user.id" = "ID Użytkownika";
-"receipt.floaty.item.text.only" = "Text-Only";
-"receipt.floaty.item.image" = "Image";
+"receipt_floaty_item_text_only" = "Text-Only";
+"receipt_floaty_item_picture" = "Picture";
+"receipt_floaty_item_import" = "Import";
+
+"receipt_import_action_sheet_title" = "Import from:";
+"receipt_import_action_files" = "Files";
+"receipt_import_action_camera_roll" = "Camera Roll";
 
 "settings.about.privacy.label" = "Polityka prywatności";
 "settings.about.section.label" = "Prawny";
