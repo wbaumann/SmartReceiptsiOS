@@ -27,6 +27,7 @@ class ReceiptFilePicker: NSObject {
             let title = LocalizedString("receipt_import_action_sheet_title")
             let actionFilesTitle = LocalizedString("receipt_import_action_files")
             let actionCameraRollTitle = LocalizedString("receipt_import_action_camera_roll")
+            let cancelActionTitle = LocalizedString("receipt_import_action_cancel")
             
             let actionSheet = UIAlertController(title: nil, message: title, preferredStyle: .actionSheet)
             
@@ -42,6 +43,7 @@ class ReceiptFilePicker: NSObject {
                 self.openPicker(on: viewController)
             }))
             
+            actionSheet.addAction(UIAlertAction(title: cancelActionTitle, style: .destructive, handler: nil))
             
             viewController.present(actionSheet, animated: true, completion: nil)
             

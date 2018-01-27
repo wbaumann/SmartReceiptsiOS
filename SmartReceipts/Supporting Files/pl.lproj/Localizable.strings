@@ -295,6 +295,7 @@
 "receipt_import_action_sheet_title" = "Import from:";
 "receipt_import_action_files" = "Files";
 "receipt_import_action_camera_roll" = "Camera Roll";
+"receipt_import_action_cancel" = "Cancel";
 
 "settings.about.privacy.label" = "Polityka prywatności";
 "settings.about.section.label" = "Prawny";
