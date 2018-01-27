@@ -14,6 +14,7 @@ class ReceiptsRouter: Router {
     var moduleTrip: WBTrip! = nil
     private var documentViewController: UIDocumentInteractionController!
     private let bag = DisposeBag()
+    private var subscription: Disposable?
     
     func openDistances() {
         let module = AppModules.tripDistances.build()
@@ -60,7 +61,7 @@ class ReceiptsRouter: Router {
     
     func openCreatePhotoReceipt() {
         var hud: PendingHUDView?
-        ImagePicker.sharedInstance().rx_openCamera(on: _view)
+        self.subscription = ImagePicker.sharedInstance().rx_openCamera(on: _view)
             .filter({ $0 != nil })
             .map({ $0! })
             .flatMap({ [unowned self] img -> Observable<Scan> in
@@ -70,22 +71,21 @@ class ReceiptsRouter: Router {
             }).subscribe(onNext: { [unowned self] scan in
                 hud?.hide()
                 self.openEditModule(with: scan)
-            }).disposed(by: bag)
+            })
     }
     
     func openImportReceiptFile() {
         var hud: PendingHUDView?
         if #available(iOS 11.0, *) {
             ReceiptFilePicker.sharedInstance.openFilePicker(on: _view)
-                .subscribe(onNext: { doc in
-                    guard let img = doc.image else { return }
+                .subscribe(onNext: { [unowned self] doc in
                     hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
                     hud?.observe(status: self.presenter.scanService.status)
-                    _ = self.presenter.scanService.scan(image: img).subscribe(onNext: { [unowned self] scan in
-                        hud?.hide()
-                        self.openEditModule(with: scan)
-                    })
-                    
+                    self.subscription = self.presenter.scanService.scan(document: doc)
+                        .subscribe(onNext: { [unowned self] scan in
+                            hud?.hide()
+                            self.openEditModule(with: scan)
+                        })
                 }).disposed(by: bag)
         }
     }
@@ -105,6 +105,9 @@ class ReceiptsRouter: Router {
     }
     
     private func openEditModuleWith(receipt: WBReceipt?, image: UIImage?) {
+        subscription?.dispose()
+        subscription = nil
+        
         let module = AppModules.editReceipt.build()
         let data = (trip: moduleTrip, receipt: receipt, image: image)
         executeFor(iPhone: {

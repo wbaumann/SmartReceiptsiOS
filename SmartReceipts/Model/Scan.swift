@@ -12,19 +12,37 @@ import SwiftyJSON
 fileprivate let MINIMUM_DATE_CONFIDENCE: Float = 0.4
 
 class Scan {
-    private(set) var image: UIImage!
     private(set) var merchant: String?
     private(set) var taxAmount: Double?
     private(set) var totalAmount: Double?
     private(set) var date: Date?
+    private(set) var filepath: URL!
     
     init(image: UIImage) {
-        self.image = image
+        self.filepath = cache(image: image)
     }
     
-    init(json: JSON, image: UIImage) {
-        self.image = image
-        
+    init(filepath: URL) {
+        self.filepath = filepath
+    }
+    
+    convenience init(json: JSON, filepath: URL) {
+        self.init(filepath: filepath)
+        parseJSON(json)
+    }
+    
+    convenience init(json: JSON, image: UIImage) {
+        self.init(image: image)
+        parseJSON(json)
+    }
+    
+    private func cache(image: UIImage) -> URL {
+        let imgData = UIImageJPEGRepresentation(image, 0.85)!
+        try? imgData.write(to: ReceiptDocument.imgTempURL)
+        return ReceiptDocument.imgTempURL
+    }
+    
+    private func parseJSON(_ json: JSON) {
         let recognition = json["recognition"].data["recognition_data"]
         self.merchant = recognition["merchantName"].data.string
         self.totalAmount = recognition["totalAmount"].data.double

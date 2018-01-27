@@ -29,7 +29,7 @@ class EditReceiptPresenter: Presenter {
             self.router.openSettings()
         }).disposed(by: bag)
         
-        tooltipTap.subscribe(onNext: {
+        tooltipTap.subscribe(onNext: { [unowned self] in
             let authModule = self.router.openAuth()
             _ = authModule.successAuth
                 .map({ authModule.close() })
@@ -47,15 +47,10 @@ class EditReceiptPresenter: Presenter {
     }
     
     override func setupView(data: Any) {
-        if let inputData = data as? (trip: WBTrip, receipt: WBReceipt?, image: UIImage?) {
-            view.setup(trip: inputData.trip, receipt: inputData.receipt)
-            interactor.receiptImage = inputData.image
-        } else {
-            let scanData = data as! (trip: WBTrip, scan: Scan)
-            view.setup(trip: scanData.trip, receipt: nil)
-            view.setup(scan: scanData.scan)
-            interactor.receiptImage = scanData.scan.image
-        }
+        let scanData = data as! (trip: WBTrip, scan: Scan)
+        view.setup(trip: scanData.trip, receipt: nil)
+        view.setup(scan: scanData.scan)
+        interactor.receiptFilePath = scanData.scan.filepath
     }
     
     func close() {

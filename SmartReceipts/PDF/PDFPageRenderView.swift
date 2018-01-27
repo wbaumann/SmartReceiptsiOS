@@ -22,7 +22,7 @@ class PDFPageRenderView: UIView {
         
         // Generate UIImage from current PDF page
         let pdfImage = renderer.image { rendererContext in
-            WBPdfDrawer.renderPage(page, in: rendererContext as! CGContext, inRectangle: bounds)
+            WBPdfDrawer.renderPage(page, in: rendererContext.cgContext, inRectangle: bounds)
         }
         
         // Draw image
