@@ -47,10 +47,13 @@ class EditReceiptPresenter: Presenter {
     }
     
     override func setupView(data: Any) {
-        let scanData = data as! (trip: WBTrip, scan: Scan)
-        view.setup(trip: scanData.trip, receipt: nil)
-        view.setup(scan: scanData.scan)
-        interactor.receiptFilePath = scanData.scan.filepath
+        if let inputData = data as? (trip: WBTrip, receipt: WBReceipt?) {
+            view.setup(trip: inputData.trip, receipt: inputData.receipt)
+        } else if let scanData = data as? (trip: WBTrip, scan: Scan) {
+            view.setup(trip: scanData.trip, receipt: nil)
+            view.setup(scan: scanData.scan)
+            interactor.receiptFilePath = scanData.scan.filepath
+        }
     }
     
     func close() {
