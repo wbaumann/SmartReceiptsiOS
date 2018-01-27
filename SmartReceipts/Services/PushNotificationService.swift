@@ -24,6 +24,7 @@ class PushNotificationService: NSObject {
     
     func initialize() {
         Messaging.messaging().delegate = self
+        UNUserNotificationCenter.current().delegate = self
         
         AuthService.shared.loggedInObservable
             .filter({ $0 })
@@ -38,7 +39,6 @@ class PushNotificationService: NSObject {
     
     func requestAuthorization() -> Observable<Void> {
         return Observable<Void>.create({ observer -> Disposable in
-            UNUserNotificationCenter.current().delegate = self
             UNUserNotificationCenter.current().requestAuthorization(options: [.badge]) { _ in
                 observer.onNext()
                 observer.onCompleted()

@@ -52,8 +52,7 @@ class ReceiptFilePicker: NSObject {
         return pickSubject!.asObservable()
     }
     
-    private func openPicker(on viewController: UIViewController){
-        UINavigationBar.appearance().barTintColor = AppTheme.primaryColor
+    private func openPicker(on viewController: UIViewController) {
         viewController.present(openedViewController!, animated: true, completion: nil)
     }
     
@@ -65,7 +64,6 @@ class ReceiptFilePicker: NSObject {
     }
     
     fileprivate func close(completion: VoidBlock? = nil) {
-        UINavigationBar.appearance().barTintColor = .white
         openedViewController?.dismiss(animated: true, completion: completion)
     }
 }
@@ -86,59 +84,50 @@ extension ReceiptFilePicker: UIDocumentBrowserViewControllerDelegate {
 extension ReceiptFilePicker: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let img = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-        var resultImage = WBImageUtils.compressImage(img, withRatio: 0.95)
-        resultImage = WBImageUtils.processImage(resultImage)
+        let resultImage = WBImageUtils.compressImage(img, withRatio: 0.95)
         
         close(completion: {
-            let imgData = UIImageJPEGRepresentation(resultImage!, 1)!
-            try? imgData.write(to: ReceiptDocument.imgTempURL)
-            let doc = ReceiptDocument(fileURL: ReceiptDocument.imgTempURL)
-            try? doc.load(fromContents: imgData, ofType: JPEG_TYPE)
+            ReceiptDocument.makeDocumentFrom(image: resultImage!).open()
         })
     }
 }
 
 
 class ReceiptDocument: UIDocument {
-    var image: UIImage?
-    var rawData: Data?
-    var localURL: URL?
+    private(set) var rawData: Data?
+    private(set) var localURL: URL?
+    private(set) var isPDF = false
     
     static let PDF_TEMP_NAME = "pdf_temp.pdf"
-    static let IMG_TEMP_NAME = "img_temp.pdf"
+    static let IMG_TEMP_NAME = "img_temp.jpg"
     
     static var pdfTempURL: URL { return NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(PDF_TEMP_NAME)! }
     static var imgTempURL: URL { return NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(IMG_TEMP_NAME)! }
     
-    
     override func load(fromContents contents: Any, ofType typeName: String?) throws {
         guard let data = contents as? Data, let fileType = typeName else { return }
+        forceLoad(data: data, fileType: fileType)
+        ReceiptFilePicker.sharedInstance.pickSubject?.onNext(self)
+    }
+    
+    fileprivate func forceLoad(data: Data, fileType: String) {
         rawData = data
         
         if fileType == PNG_TYPE || fileType == JPEG_TYPE {
-            image = UIImage(data: data)
+            isPDF = false
             localURL = ReceiptDocument.imgTempURL
         } else if fileType == PDF_TYPE {
-            let imageDataProvider = CGDataProvider(data: data as CFData)!
-            let doc = CGPDFDocument(imageDataProvider)
-            let pdfPage = doc?.page(at: 1)
-            var pageRect: CGRect = pdfPage!.getBoxRect(.mediaBox)
-            pageRect.size = CGSize(width:pageRect.size.width, height:pageRect.size.height)
-
-            UIGraphicsBeginImageContext(pageRect.size)
-            let context:CGContext = UIGraphicsGetCurrentContext()!
-            context.saveGState()
-            context.translateBy(x: 0.0, y: pageRect.size.height)
-            context.scaleBy(x: 1.0, y: -1.0)
-            context.concatenate(pdfPage!.getDrawingTransform(.mediaBox, rect: pageRect, rotate: 0, preserveAspectRatio: true))
-            context.drawPDFPage(pdfPage!)
-            context.restoreGState()
-            image = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
+            isPDF = true
             localURL = ReceiptDocument.pdfTempURL
-            try? data.write(to: ReceiptDocument.pdfTempURL)
         }
-        
-        ReceiptFilePicker.sharedInstance.pickSubject?.onNext(self)
+        try? data.write(to: localURL!)
+    }
+    
+    class func makeDocumentFrom(image: UIImage) -> ReceiptDocument {
+        let img = WBImageUtils.processImage(image)!
+        let imgData = UIImageJPEGRepresentation(img, 1)!
+        let doc = ReceiptDocument(fileURL: ReceiptDocument.imgTempURL)
+        doc.forceLoad(data: imgData, fileType: JPEG_TYPE)
+        return doc
     }
 }

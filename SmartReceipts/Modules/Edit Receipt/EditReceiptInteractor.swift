@@ -18,6 +18,8 @@ class EditReceiptInteractor: Interactor {
     private var authService: AuthServiceInterface!
     private var scansPurchaseTracker: ScansPurchaseTracker!
     private var tooltipService: TooltipService!
+    var receiptFilePath: URL?
+    let disposeBag = DisposeBag()
     
     required init(authService: AuthServiceInterface,
                   scansPurchaseTracker: ScansPurchaseTracker,
@@ -34,8 +36,6 @@ class EditReceiptInteractor: Interactor {
                   tooltipService: TooltipService.shared)
     }
     
-    var receiptImage: UIImage?
-    let disposeBag = DisposeBag()
     
     func configureSubscribers() {
         presenter.addReceiptSubject.subscribe(onNext: { [unowned self] receipt in
@@ -78,12 +78,12 @@ class EditReceiptInteractor: Interactor {
     }
     
     private func saveImage(to receipt: WBReceipt) {
-        if let img = receiptImage {
+        if let url = receiptFilePath, let fileData = try? Data.init(contentsOf: url) {
             var imgFileName = ""
             let nextId = Database.sharedInstance().nextReceiptID()
-            imgFileName = String(format: "%tu_%@.jpg", nextId, receipt.omittedName)
+            imgFileName = String(format: "%tu_%@.%@", nextId, receipt.omittedName, url.pathExtension)
             let path = receipt.trip.file(inDirectoryPath: imgFileName)
-            if !FileManager.forceWrite(data: UIImageJPEGRepresentation(img, 0.85)!, to: path!) {
+            if !FileManager.forceWrite(data: fileData, to: path!) {
                 imgFileName = ""
             } else {
                 receipt.setImageFileName(imgFileName)

@@ -43,21 +43,21 @@ final class EditTripView: UserInterface {
     }
     
     private func configureUIActions() {
-        cancelButton.rx.tap.subscribe(onNext: {
+        cancelButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.presenter.close()
         }).disposed(by: disposeBag)
         
-        doneButton.rx.tap.subscribe(onNext: {
+        doneButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.formView.done()
         }).disposed(by: disposeBag)
     }
     
     private func configureSubscribes() {
-        formView.errorSubject.subscribe(onNext: { errorDescripton in
+        formView.errorSubject.subscribe(onNext: { [unowned self] errorDescripton in
             self.presenter.presentAlert(title: nil, message: errorDescripton)
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
-        formView.tripSubject.subscribe(onNext: { trip in
+        formView.tripSubject.subscribe(onNext: { [unowned self] trip in
             self.displayData.trip == nil ?
                 self.presenter.addTripSubject.onNext(trip) :
                 self.presenter.updateTripSubject.onNext(trip)

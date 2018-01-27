@@ -147,7 +147,7 @@ fileprivate extension AppDelegate {
         let hud = PendingHUDView.show(on: viewController.view)
         dataQueue.async {
             self.dataImport = DataImport(inputFile: from.path, output: FileManager.documentsPath)
-            self.dataImport.execute(overwrite: overwrite)
+            _ = self.dataImport.execute(overwrite: overwrite)
                 .subscribeOn(MainScheduler.instance)
                 .subscribe(onNext: {
                     hud.hide()
