@@ -37,9 +37,9 @@ class ReceiptFilePicker: NSObject {
             }))
             
             actionSheet.addAction(UIAlertAction(title: actionFilesTitle, style: .default, handler: { _ in
-                let bvc = UIDocumentBrowserViewController(forOpeningFilesWithContentTypes: self.allowedTypes)
-                bvc.delegate = self
-                self.openedViewController = bvc
+                let fvc = FilesViewController(forOpeningFilesWithContentTypes: self.allowedTypes)
+                fvc.delegate = self
+                self.openedViewController = fvc
                 self.openPicker(on: viewController)
             }))
             
@@ -70,16 +70,14 @@ class ReceiptFilePicker: NSObject {
     }
 }
 
-
-
 extension ReceiptFilePicker: UIDocumentBrowserViewControllerDelegate {
     @available(iOS 11.0, *)
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL]) {
-        let url = documentURLs.first!
-        
-        close(completion: {
-            ReceiptDocument(fileURL: url).open()
-        })
+        if let url = documentURLs.first {
+            close(completion: { ReceiptDocument(fileURL: url).open() })
+        } else {
+            close()
+        }
     }
 }
 
@@ -88,9 +86,7 @@ extension ReceiptFilePicker: UIImagePickerControllerDelegate, UINavigationContro
         guard let img = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         let resultImage = WBImageUtils.compressImage(img, withRatio: 0.95)
         
-        close(completion: {
-            ReceiptDocument.makeDocumentFrom(image: resultImage!).open()
-        })
+        close(completion: { ReceiptDocument.makeDocumentFrom(image: resultImage!).open() })
     }
 }
 

@@ -56,7 +56,7 @@ class ReceiptsRouter: Router {
     }
     
     func openCreateReceipt() {
-        openEditModuleWith(receipt: nil, image: nil)
+        openEditModuleWith(receipt: nil)
     }
     
     func openCreatePhotoReceipt() {
@@ -100,16 +100,16 @@ class ReceiptsRouter: Router {
         return module.presenter as! ReceiptActionsPresenter
     }
     
-    func openEdit(receipt: WBReceipt, image: UIImage? = nil) {
-        openEditModuleWith(receipt: receipt, image: image)
+    func openEdit(receipt: WBReceipt) {
+        openEditModuleWith(receipt: receipt)
     }
     
-    private func openEditModuleWith(receipt: WBReceipt?, image: UIImage?) {
+    private func openEditModuleWith(receipt: WBReceipt?) {
         subscription?.dispose()
         subscription = nil
         
         let module = AppModules.editReceipt.build()
-        let data = (trip: moduleTrip, receipt: receipt, image: image)
+        let data = (trip: moduleTrip, receipt: receipt)
         executeFor(iPhone: {
             module.router.show(from: _view, embedInNavController: true, setupData: data)
         }, iPad: {
