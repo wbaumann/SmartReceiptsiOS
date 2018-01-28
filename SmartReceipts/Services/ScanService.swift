@@ -51,13 +51,15 @@ class ScanService {
         return scan(document: doc)
     }
     
-    func checkScanAvailable(receiptDocument: ReceiptDocument) -> Observable<Scan>? {
+    func scan(document: ReceiptDocument) -> Observable<Scan> {
+        guard let url = document.localURL else { return Observable<Scan>.just(Scan(image: UIImage())) }
+        
         if WBPreferences.automaticScansEnabled() && FeatureFlags.ocrSupport.isEnabled &&
             authService.isLoggedIn && scansPurchaseTracker.hasAvailableScans {
             pushNotificationService.updateToken()
             statusSubject.onNext(.uploading)
-        
-            return nil
+            
+            return scanFrom(uploading: s3Service.upload(file: url), document: document)
         } else {
             let isFeatureEnabled = "isFeatureEnabled = \(FeatureFlags.ocrSupport.isEnabled)"
             let isLoggedIn = "isLoggedIn = \(AuthService.shared.isLoggedIn)"
@@ -66,19 +68,7 @@ class ScanService {
             Logger.debug("Ignoring OCR: \(isFeatureEnabled), \(isLoggedIn), \(hasAvailableScans), \(authScansEabled).")
             statusSubject.onNext(.completed)
             
-            
-            return Observable.just(Scan(filepath: receiptDocument.localURL!))
-        }
-    }
-    
-    func scan(document: ReceiptDocument) -> Observable<Scan> {
-        if let url = document.localURL {
-            guard let scanCheck = checkScanAvailable(receiptDocument: document) else {
-                return scanFrom(uploading: s3Service.upload(file: url), document: document)
-            }
-            return scanCheck
-        } else {
-            return Observable<Scan>.just(Scan(image: UIImage()))
+            return Observable.just(Scan(filepath: document.localURL!))
         }
     }
     
