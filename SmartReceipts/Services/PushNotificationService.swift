@@ -45,7 +45,7 @@ class PushNotificationService: NSObject {
             }
             UIApplication.shared.registerForRemoteNotifications()
             return Disposables.create()
-        })
+        }).subscribeOn(MainScheduler.instance)
     }
     
     func authorizationStatus() -> Observable<UNAuthorizationStatus> {
