@@ -30,8 +30,6 @@ final class ReceiptImageViewerView: UserInterface {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIBarButtonItem.appearance().tintColor = AppTheme.primaryDarkColor
-        
         navigationItem.title = displayData.receipt.name
         
         imageView = UIImageView(frame: self.scrollView.bounds)
@@ -69,7 +67,6 @@ final class ReceiptImageViewerView: UserInterface {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setToolbarHidden(true, animated: false)
-        UIBarButtonItem.appearance().tintColor = .white
     }
     
     override func viewDidLayoutSubviews() {

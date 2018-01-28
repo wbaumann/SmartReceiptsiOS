@@ -76,18 +76,16 @@ class ReceiptsRouter: Router {
     
     func openImportReceiptFile() {
         var hud: PendingHUDView?
-        if #available(iOS 11.0, *) {
-            ReceiptFilePicker.sharedInstance.openFilePicker(on: _view)
-                .subscribe(onNext: { [unowned self] doc in
-                    hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
-                    hud?.observe(status: self.presenter.scanService.status)
-                    self.subscription = self.presenter.scanService.scan(document: doc)
-                        .subscribe(onNext: { [unowned self] scan in
-                            hud?.hide()
-                            self.openEditModule(with: scan)
-                        })
-                }).disposed(by: bag)
-        }
+        ReceiptFilePicker.sharedInstance.openFilePicker(on: _view)
+            .subscribe(onNext: { [unowned self] doc in
+                hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
+                hud?.observe(status: self.presenter.scanService.status)
+                self.subscription = self.presenter.scanService.scan(document: doc)
+                    .subscribe(onNext: { [unowned self] scan in
+                        hud?.hide()
+                        self.openEditModule(with: scan)
+                    })
+            }).disposed(by: bag)
     }
     
     func openActions(receipt: WBReceipt) -> ReceiptActionsPresenter {
