@@ -2513,6 +2513,19 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
     
 
     
+     override func cacheProducts()  {
+        
+            return cuckoo_manager.call("cacheProducts()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.cacheProducts()
+                    }
+                })
+        
+    }
+    
      override func requestProducts()  -> Observable<SKProduct> {
         
             return cuckoo_manager.call("requestProducts() -> Observable<SKProduct>",
@@ -2587,6 +2600,11 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         }
         
         
+        func cacheProducts() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("cacheProducts()", parameterMatchers: matchers))
+        }
+        
         func requestProducts() -> Cuckoo.StubFunction<(), Observable<SKProduct>> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return .init(stub: cuckoo_manager.createStub("requestProducts() -> Observable<SKProduct>", parameterMatchers: matchers))
@@ -2630,6 +2648,12 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
 
         
         @discardableResult
+        func cacheProducts() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("cacheProducts()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
         func requestProducts() -> Cuckoo.__DoNotUse<Observable<SKProduct>> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return cuckoo_manager.verify("requestProducts() -> Observable<SKProduct>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
@@ -2669,6 +2693,10 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
 
     
 
+    
+     override func cacheProducts()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
     
      override func requestProducts()  -> Observable<SKProduct> {
         return DefaultValueRegistry.defaultValue(for: Observable<SKProduct>.self)
@@ -3139,6 +3167,19 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
         
     }
     
+     override func openImportReceiptFile()  {
+        
+            return cuckoo_manager.call("openImportReceiptFile()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.openImportReceiptFile()
+                    }
+                })
+        
+    }
+    
      override func openActions(receipt: WBReceipt)  -> ReceiptActionsPresenter {
         
             return cuckoo_manager.call("openActions(receipt: WBReceipt) -> ReceiptActionsPresenter",
@@ -3152,14 +3193,14 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
         
     }
     
-     override func openEdit(receipt: WBReceipt, image: UIImage?)  {
+     override func openEdit(receipt: WBReceipt)  {
         
-            return cuckoo_manager.call("openEdit(receipt: WBReceipt, image: UIImage?)",
-                parameters: (receipt, image),
+            return cuckoo_manager.call("openEdit(receipt: WBReceipt)",
+                parameters: (receipt),
                 original: observed.map { o in
                     return { (args) in
-                        let (receipt, image) = args
-                         o.openEdit(receipt: receipt, image: image)
+                        let (receipt) = args
+                         o.openEdit(receipt: receipt)
                     }
                 })
         
@@ -3208,14 +3249,19 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
             return .init(stub: cuckoo_manager.createStub("openCreatePhotoReceipt()", parameterMatchers: matchers))
         }
         
+        func openImportReceiptFile() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("openImportReceiptFile()", parameterMatchers: matchers))
+        }
+        
         func openActions<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.StubFunction<(WBReceipt), ReceiptActionsPresenter> where M1.MatchedType == WBReceipt {
             let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
             return .init(stub: cuckoo_manager.createStub("openActions(receipt: WBReceipt) -> ReceiptActionsPresenter", parameterMatchers: matchers))
         }
         
-        func openEdit<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(receipt: M1, image: M2) -> Cuckoo.StubNoReturnFunction<(WBReceipt, UIImage?)> where M1.MatchedType == WBReceipt, M2.MatchedType == UIImage? {
-            let matchers: [Cuckoo.ParameterMatcher<(WBReceipt, UIImage?)>] = [wrap(matchable: receipt) { $0.0 }, wrap(matchable: image) { $0.1 }]
-            return .init(stub: cuckoo_manager.createStub("openEdit(receipt: WBReceipt, image: UIImage?)", parameterMatchers: matchers))
+        func openEdit<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.StubNoReturnFunction<(WBReceipt)> where M1.MatchedType == WBReceipt {
+            let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
+            return .init(stub: cuckoo_manager.createStub("openEdit(receipt: WBReceipt)", parameterMatchers: matchers))
         }
         
     }
@@ -3276,15 +3322,21 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
         }
         
         @discardableResult
+        func openImportReceiptFile() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("openImportReceiptFile()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
         func openActions<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<ReceiptActionsPresenter> where M1.MatchedType == WBReceipt {
             let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
             return cuckoo_manager.verify("openActions(receipt: WBReceipt) -> ReceiptActionsPresenter", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
         @discardableResult
-        func openEdit<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(receipt: M1, image: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBReceipt, M2.MatchedType == UIImage? {
-            let matchers: [Cuckoo.ParameterMatcher<(WBReceipt, UIImage?)>] = [wrap(matchable: receipt) { $0.0 }, wrap(matchable: image) { $0.1 }]
-            return cuckoo_manager.verify("openEdit(receipt: WBReceipt, image: UIImage?)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        func openEdit<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBReceipt {
+            let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
+            return cuckoo_manager.verify("openEdit(receipt: WBReceipt)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
     }
@@ -3331,11 +3383,15 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.Mock {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
+     override func openImportReceiptFile()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
      override func openActions(receipt: WBReceipt)  -> ReceiptActionsPresenter {
         return DefaultValueRegistry.defaultValue(for: ReceiptActionsPresenter.self)
     }
     
-     override func openEdit(receipt: WBReceipt, image: UIImage?)  {
+     override func openEdit(receipt: WBReceipt)  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
@@ -5231,14 +5287,14 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
     }
 
     
-    // ["name": "receiptImage", "accesibility": "", "@type": "InstanceVariable", "type": "UIImage?", "isReadOnly": false]
-     override var receiptImage: UIImage? {
+    // ["name": "receiptFilePath", "accesibility": "", "@type": "InstanceVariable", "type": "URL?", "isReadOnly": false]
+     override var receiptFilePath: URL? {
         get {
-            return cuckoo_manager.getter("receiptImage", original: observed.map { o in return { () -> UIImage? in o.receiptImage }})
+            return cuckoo_manager.getter("receiptFilePath", original: observed.map { o in return { () -> URL? in o.receiptFilePath }})
         }
         
         set {
-            cuckoo_manager.setter("receiptImage", value: newValue, original: observed != nil ? { self.observed?.receiptImage = $0 } : nil)
+            cuckoo_manager.setter("receiptFilePath", value: newValue, original: observed != nil ? { self.observed?.receiptFilePath = $0 } : nil)
         }
         
     }
@@ -5281,8 +5337,8 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
             self.cuckoo_manager = manager
         }
         
-        var receiptImage: Cuckoo.ToBeStubbedProperty<UIImage?> {
-            return .init(manager: cuckoo_manager, name: "receiptImage")
+        var receiptFilePath: Cuckoo.ToBeStubbedProperty<URL?> {
+            return .init(manager: cuckoo_manager, name: "receiptFilePath")
         }
         
         
@@ -5311,8 +5367,8 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
         }
 
         
-        var receiptImage: Cuckoo.VerifyProperty<UIImage?> {
-            return .init(manager: cuckoo_manager, name: "receiptImage", callMatcher: callMatcher, sourceLocation: sourceLocation)
+        var receiptFilePath: Cuckoo.VerifyProperty<URL?> {
+            return .init(manager: cuckoo_manager, name: "receiptFilePath", callMatcher: callMatcher, sourceLocation: sourceLocation)
         }
         
 
@@ -5336,9 +5392,9 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.Mock {
 
  class EditReceiptInteractorStub: EditReceiptInteractor {
     
-     override var receiptImage: UIImage? {
+     override var receiptFilePath: URL? {
         get {
-            return DefaultValueRegistry.defaultValue(for: (UIImage?).self)
+            return DefaultValueRegistry.defaultValue(for: (URL?).self)
         }
         
         set { }
