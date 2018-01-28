@@ -20,7 +20,7 @@ class ReceiptActionsInteractor: Interactor {
     func attachImage(_ image: UIImage, to receipt: WBReceipt) -> Bool {
         let imageFileName = String(format: "%tu_%@.jpg", receipt.receiptId(), receipt.omittedName)
         let path = receipt.trip.file(inDirectoryPath: imageFileName)
-        if !FileManager.forceWrite(data: UIImageJPEGRepresentation(image, 0.85)!, to: path!) {
+        if !FileManager.forceWrite(data: UIImageJPEGRepresentation(image, kImageCompression)!, to: path!) {
             return false
         }
         

@@ -10,6 +10,7 @@
 #import "WBReceipt.h"
 #import "WBTrip.h"
 #import "Constants.h"
+#import "WBImageUtils.h"
 #import <SmartReceipts-Swift.h>
 
 @interface ReceiptFilesManager ()
@@ -28,7 +29,7 @@
 }
 
 - (BOOL)saveImage:(UIImage *)image forReceipt:(WBReceipt *)receipt {
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.85);
+    NSData *imageData = UIImageJPEGRepresentation(image, kImageCompression);
     NSString *path = [self pathForReceiptFile:receipt];
     [self ensureContainingFolderExists:path];
     NSError *writeError = nil;

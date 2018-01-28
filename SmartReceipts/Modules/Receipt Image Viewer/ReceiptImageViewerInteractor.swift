@@ -26,7 +26,7 @@ class ReceiptImageViewerInteractor: Interactor {
             
             let data = isPNG ?
                 UIImagePNGRepresentation(image!) :
-                UIImageJPEGRepresentation(image!, 0.85)
+                UIImageJPEGRepresentation(image!, kImageCompression)
             
             _ = FileManager.forceWrite(data: data!, to: self.imagePath)
         }).addDisposableTo(disposeBag)
