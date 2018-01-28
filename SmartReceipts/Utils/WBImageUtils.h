@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+static const CGFloat kImageCompression = 0.85f;
+
 @interface WBImageUtils : NSObject
 
 + (UIImage *)image:(UIImage *)image scaledToSize:(CGSize)size;

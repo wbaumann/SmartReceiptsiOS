@@ -12,6 +12,7 @@
 
 #import "WBDateFormatter.h"
 #import "WBReportUtils.h"
+#import "WBImageUtils.h"
 
 #import "SmartReceipts-Swift.h"
 
@@ -57,7 +58,7 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
             @try {
                 NSString *filename = [receipt imageFileName];
                 NSURL *url = [NSURL fileURLWithPath:[docsPath stringByAppendingPathComponent:filename]];
-                [UIImageJPEGRepresentation(img, 0.85) writeToURL:url atomically:YES];
+                [UIImageJPEGRepresentation(img, kImageCompression) writeToURL:url atomically:YES];
                 [urls addObject:url];
             } @catch (NSException* e) {
                 ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithException:e];
