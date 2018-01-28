@@ -57,7 +57,7 @@ class PendingHUDView: MRProgressOverlayView {
     }
     
     private func layoutImage(for view: UIView? = nil) {
-        if let layoutView = view ?? superview {
+        if let layoutView = view ?? imageView?.superview {
         let y = layoutView.bounds.height/2 + titleLabel.bounds.height/2
             imageView?.center = CGPoint(x: layoutView.bounds.width/2, y: y)
         }
@@ -67,7 +67,7 @@ class PendingHUDView: MRProgressOverlayView {
         imageView = UIImageView(image: icon)
         imageView?.tintColor = AppTheme.primaryColor
         imageView?.contentMode = .scaleAspectFill
-        addSubview(imageView!)
+        titleLabel.superview?.addSubview(imageView!)
     }
     
     func hide() {
