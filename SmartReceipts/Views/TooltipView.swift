@@ -84,7 +84,7 @@ class TooltipView: UIView {
     
     func close() {
         isAnimating = true
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: DEFAULT_ANIMATION_DURATION, animations: {
             self.alpha = 0
             self.frame = CGRect(x: self.offset.x, y: self.offset.y, width: self.bounds.width, height: 0)
         }, completion: { _ in

@@ -185,7 +185,7 @@ final class TripsView: FetchedTableViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: animated)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DEFAULT_ANIMATION_DURATION) {
             self.tableView.reloadData()
         }
     }

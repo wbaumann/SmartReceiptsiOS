@@ -124,7 +124,7 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         let currentIsGenerate = viewControllers.count-1 == currentIndex
         
         func onGenerateTooltipClose() {
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: DEFAULT_ANIMATION_DURATION, animations: {
                 self.applyInsetsForTooltip(UIEdgeInsets.zero)
                 self.reportTooltip = nil
             })

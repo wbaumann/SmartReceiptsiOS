@@ -14,6 +14,9 @@ let TOUCH_AREA: CGFloat = 44
 let UI_MARGIN_8: CGFloat = 8
 let UI_MARGIN_16: CGFloat = 16
 
+let DEFAULT_ANIMATION_DURATION = 0.3
+let VIEW_CONTROLLER_TRANSITION_DELAY = 0.6
+
 func onMainThread(_ closure: @escaping VoidBlock) {
     DispatchQueue.main.async(execute: closure)
 }

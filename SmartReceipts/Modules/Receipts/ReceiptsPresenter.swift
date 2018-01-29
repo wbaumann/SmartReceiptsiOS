@@ -35,6 +35,12 @@ class ReceiptsPresenter: Presenter {
         receiptActionsSubject.subscribe(onNext: { [unowned self] receipt in
             let actionsPresenter = self.router.openActions(receipt: receipt)
             
+            actionsPresenter.editReceiptTap
+                .delay(VIEW_CONTROLLER_TRANSITION_DELAY, scheduler: MainScheduler.instance)
+                .subscribe(onNext: {
+                    self.router.openEdit(receipt: receipt)
+                }).disposed(by: self.bag)
+            
             actionsPresenter.swapUpTap.subscribe(onNext: {
                 self.interactor.swapUpReceipt(receipt)
             }).disposed(by: self.bag)
@@ -43,12 +49,11 @@ class ReceiptsPresenter: Presenter {
                 self.interactor.swapDownReceipt(receipt)
             }).disposed(by: self.bag)
             
-            actionsPresenter.viewImageTap
-                .subscribe(onNext:{
-                    receipt.attachemntType == .image ?
-                        self.router.openImageViewer(for: receipt) :
-                        self.router.openPDFViewer(for: receipt)
-                }).disposed(by: self.bag)
+            actionsPresenter.viewImageTap.subscribe(onNext:{
+                receipt.attachemntType == .image ?
+                    self.router.openImageViewer(for: receipt) :
+                    self.router.openPDFViewer(for: receipt)
+            }).disposed(by: self.bag)
             
         }).disposed(by: bag)
     }

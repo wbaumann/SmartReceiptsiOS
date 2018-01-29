@@ -65,7 +65,7 @@ class GenerateReportInteractor: Interactor {
             return
         }
         
-        delayedExecution(0.3) {
+        delayedExecution(DEFAULT_ANIMATION_DURATION) {
             
             self.generator?.setGenerated(self.fullPdfReport.value, imagesPDF: self.pdfReportWithoutTable.value,
                                           csv: self.csvFile.value, imagesZip: self.zipStampedJPGs.value)

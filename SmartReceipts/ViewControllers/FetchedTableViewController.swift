@@ -41,7 +41,7 @@ class FetchedTableViewController: UserInterface {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         placeholderView?.frame = view.bounds
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: DEFAULT_ANIMATION_DURATION) {
             self.view.layoutIfNeeded()
         }
     }

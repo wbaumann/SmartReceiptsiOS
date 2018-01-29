@@ -45,7 +45,7 @@ class TripsPresenter: Presenter {
                 let authModule = self.router.openAuth()
                 _ = authModule.successAuth
                     .map({ authModule.close() })
-                    .delay(0.6, scheduler: MainScheduler.instance)
+                    .delay(VIEW_CONTROLLER_TRANSITION_DELAY, scheduler: MainScheduler.instance)
                     .flatMap({ _ -> Observable<UNAuthorizationStatus> in
                         PushNotificationService.shared.authorizationStatus()
                     }).flatMap({ status -> Observable<Void> in

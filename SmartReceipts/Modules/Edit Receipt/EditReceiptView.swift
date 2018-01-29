@@ -111,7 +111,7 @@ final class EditReceiptView: UserInterface {
     }
     
     private func onTooltipClose() {
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: DEFAULT_ANIMATION_DURATION, animations: {
             self.formView.tableView.contentInset = UIEdgeInsets.zero
         })
     }
