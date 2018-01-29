@@ -153,6 +153,7 @@
 "edit.trip.name.label" = "Name";
 "edit.trip.name.missing.alert.message" = "Please enter a name";
 "edit.trip.start.date.label" = "Start Date";
+"edit_trip_error_trip_exists" = "An expense report with that name already exists";
 
 "exchange.rate.error.unsupported.currency.message" = "Automatic exchange rate is not available for given currency";
 "exchange.rate.error.unsupported.currency.title" = "Unsupported currency";
