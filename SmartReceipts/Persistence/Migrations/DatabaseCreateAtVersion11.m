@@ -92,11 +92,14 @@
 
 - (BOOL)insertDefaultReceiptColumnsIntoDatabase:(Database *)database {
     NSArray *csvColumns = @[
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.category.code", nil)],
+            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.date", nil)],
             [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.name", nil)],
             [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.price", nil)],
             [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.currency", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.date", nil)]
+            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.category.name", nil)],
+            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.category.code", nil)],
+            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.comment", nil)],
+            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.reimbursable", nil)]
     ];
 
 
@@ -106,12 +109,12 @@
     }
 
     NSArray *pdfColumns = @[
+            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.date", nil)],
             [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.name", nil)],
             [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.price", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.date", nil)],
+            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.currency", nil)],
             [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.category.name", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.reimbursable", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.pictured", nil)]
+            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.reimbursable", nil)]
     ];
 
     return [database replaceAllPDFColumnsWith:pdfColumns];
