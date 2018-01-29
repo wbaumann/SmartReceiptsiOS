@@ -15,6 +15,7 @@ class ReceiptActionsFormView: FormViewController {
     
     private let TAKE_IMAGE_ROW = "TakeImageRow"
     
+    weak var editReceiptTap: PublishSubject<Void>!
     weak var handleAttachTap: PublishSubject<Void>!
     weak var takeImageTap: PublishSubject<Void>!
     weak var viewImageTap: PublishSubject<Void>!
@@ -39,6 +40,8 @@ class ReceiptActionsFormView: FormViewController {
         
         form
         +++ Section()
+        <<< buttonRow(title: LocalizedString("receipt_action_edit_receipt"), bindSubject: editReceiptTap)
+            
         <<< buttonRow(title: handleAttachTitle(), bindSubject: handleAttachTap,
                   condition: Condition.function([], { _ in
                     AppDelegate.instance.filePathToAttach == nil

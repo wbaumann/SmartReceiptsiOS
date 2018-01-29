@@ -9,11 +9,11 @@
 import Foundation
 
 extension UIView {
-    func layoutIfNeededAnimated(duration: TimeInterval = 0.3) {
+    func layoutIfNeededAnimated(duration: TimeInterval = DEFAULT_ANIMATION_DURATION) {
         UIView.animate(withDuration: duration, animations: { self.layoutIfNeeded() })
     }
     
-    func layoutSubviewsAnimated(duration: TimeInterval = 0.3) {
+    func layoutSubviewsAnimated(duration: TimeInterval = DEFAULT_ANIMATION_DURATION) {
         UIView.animate(withDuration: duration, animations: { self.layoutSubviews() })
     }
 }

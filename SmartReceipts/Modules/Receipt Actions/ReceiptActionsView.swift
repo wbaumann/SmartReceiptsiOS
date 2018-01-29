@@ -29,6 +29,8 @@ final class ReceiptActionsView: UserInterface {
         navigationItem.title = displayData.receipt.name
         
         formView = ReceiptActionsFormView(attachmentType: displayData.receipt.attachemntType)
+        
+        formView.editReceiptTap = presenter.editReceiptTap
         formView.handleAttachTap = presenter.handleAttachTap
         formView.takeImageTap = presenter.takeImageTap
         formView.viewImageTap = presenter.viewImageTap

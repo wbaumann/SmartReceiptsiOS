@@ -238,6 +238,7 @@
 "rate.app.alert.positive.button" = "Yes";
 "rate.app.alert.title" = "Rate app";
 
+"receipt_action_edit_receipt" = "Edit Receipt";
 "receipt.action.attach.image" = "Dołącz Obrazek";
 "receipt.action.attach.pdf" = "Dołącz PDF";
 "receipt.action.copy" = "Kopiuj";

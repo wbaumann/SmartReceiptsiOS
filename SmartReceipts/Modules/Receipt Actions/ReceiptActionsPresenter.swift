@@ -14,6 +14,7 @@ class ReceiptActionsPresenter: Presenter {
     
     private var receipt: WBReceipt!
     
+    let editReceiptTap = PublishSubject<Void>()
     let handleAttachTap = PublishSubject<Void>()
     let takeImageTap = PublishSubject<Void>()
     let viewImageTap = PublishSubject<Void>()
@@ -22,7 +23,7 @@ class ReceiptActionsPresenter: Presenter {
     let swapUpTap = PublishSubject<Void>()
     let swapDownTap = PublishSubject<Void>()
     
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
     
     required init(receipt: WBReceipt? = nil) {
         self.receipt = receipt
@@ -41,25 +42,31 @@ class ReceiptActionsPresenter: Presenter {
         super.viewHasLoaded()
         view.doneButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.router.close()
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         configureSubscribers()
     }
     
     func configureSubscribers() {
         
+        editReceiptTap.subscribe(onNext: { [unowned self] in
+            Logger.info("Edit Receipt Tap")
+            AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuEdit())
+            self.router.close()
+        }).disposed(by: bag)
+        
         handleAttachTap.subscribe(onNext: { [unowned self] in
             Logger.info("Attach File Tap")
             AnalyticsManager.sharedManager.record(event: Event.receiptsImportPictureReceipt())
             _ = self.interactor.attachAppInputFile(to: self.receipt)
             self.router.close()
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         takeImageTap.subscribe(onNext: {
             Logger.info("Take Image Tap")
             self.takeImage()
             AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuRetakePhoto())
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         viewImageTap.subscribe(onNext: { [unowned self] in
             Logger.info("View Image Tap")
@@ -69,31 +76,31 @@ class ReceiptActionsPresenter: Presenter {
                 AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewPdf())
             }
             self.router.close()
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         moveTap.subscribe(onNext: { [unowned self] in
             Logger.info("Move Receipt Tap")
             AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuMoveCopy())
             self.router.openMove(receipt: self.receipt)
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         copyTap.subscribe(onNext: { [unowned self] in
             Logger.info("Copy Receipt Tap")
             AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuMoveCopy())
             self.router.openCopy(receipt: self.receipt)
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         swapUpTap.subscribe(onNext: { [unowned self] in
             Logger.info("SwapUp Receipt Tap")
             AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuSwapUp())
             self.router.close()
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         swapDownTap.subscribe(onNext: { [unowned self] in
             Logger.info("SwapDown Receipt Tap")
             AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuSwapDown())
             self.router.close()
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
     }
     
     private func takeImage() {
@@ -103,7 +110,7 @@ class ReceiptActionsPresenter: Presenter {
                 if self.interactor.attachImage(image!, to: self.receipt) {
                     self.view.updateForm()
                 }
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
     }
 }
 
