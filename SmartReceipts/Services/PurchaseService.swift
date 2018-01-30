@@ -53,9 +53,9 @@ class PurchaseService {
         return (isCachedProduct(id: prodcutID) ? Observable<Void>.just() : requestProducts().toArray().map({ _ in }))
             .flatMap({ _ in
                 RMStore.default().addPayment(product: prodcutID)
-            .do(onNext: { [weak self] transaction in
+            .do(onNext: { [weak self] _ in
                 PurchaseService.analyticsPurchaseSuccess(productID: prodcutID)
-                self?.sendConfirm(transaction: transaction)
+                self?.sendReceipt()
                 }, onError: { _ in
                     PurchaseService.analyticsPurchaseFailed(productID: prodcutID)
                 })
@@ -91,13 +91,10 @@ class PurchaseService {
 
 // MARK: Purchase and API
 extension PurchaseService {
-    func sendConfirm(transaction: SKPaymentTransaction) {
-        if AuthService.shared.isLoggedIn {
-            sendReceipt()
-        }
-    }
-    
+
     func sendReceipt() {
+        if !AuthService.shared.isLoggedIn { return }
+        
         guard let receiptURL = Bundle.main.appStoreReceiptURL else { return }
         guard let receipt = try? Data(contentsOf: receiptURL) else { return }
         let receiptString = receipt.base64EncodedString()
