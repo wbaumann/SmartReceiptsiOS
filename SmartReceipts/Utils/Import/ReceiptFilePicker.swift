@@ -45,6 +45,13 @@ class ReceiptFilePicker: NSObject {
             
             actionSheet.addAction(UIAlertAction(title: cancelActionTitle, style: .destructive, handler: nil))
             
+            if let popoverController = actionSheet.popoverPresentationController {
+                let sourceView = viewController.view!
+                popoverController.sourceView = sourceView
+                popoverController.sourceRect = CGRect(x: sourceView.bounds.midX, y: sourceView.bounds.midY, width: 0, height: 0)
+                popoverController.permittedArrowDirections = []
+            }
+            
             viewController.present(actionSheet, animated: true, completion: nil)
             
         } else {
