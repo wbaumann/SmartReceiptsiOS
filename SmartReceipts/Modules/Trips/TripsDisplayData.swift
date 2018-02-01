@@ -29,6 +29,15 @@ final class TripsDisplayData: DisplayData {
         menuDisplayData = TripsMenuDisplayData(items: items)
     }
     
+    func makeActions() -> [UIAlertAction] {
+        let settingsAction = UIAlertAction(title: LocalizedString("menu.item.settings"),
+            style: .default, handler: { _ in self.settingsSubject.onNext() })
+        
+        let ocrSettingsAction = UIAlertAction(title: LocalizedString("menu.item.auto.scans"),
+            style: .default, handler: { _ in self.autoScansSubject.onNext() })
+        return [settingsAction, ocrSettingsAction]
+    }
+    
 }
 
 // MENU
