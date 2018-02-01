@@ -120,6 +120,8 @@
 		71652EAE1F646758002C8228 /* Toast+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71652EAD1F646758002C8228 /* Toast+Extensions.swift */; };
 		7167239A1F10540200400BFF /* CustomSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716723981F10540200400BFF /* CustomSegmentedCell.swift */; };
 		7167239B1F10540200400BFF /* CustomSegmentedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 716723991F10540200400BFF /* CustomSegmentedCell.xib */; };
+		71695E6C2023AEE000F1A7C9 /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71695E6A2023AEE000F1A7C9 /* SharedLocalizable.strings */; };
+		71695E6F2023AF2000F1A7C9 /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71695E6D2023AF2000F1A7C9 /* SharedLocalizable.strings */; };
 		716C04221F685467007F9CD2 /* CognitoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C04211F685467007F9CD2 /* CognitoService.swift */; };
 		716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716F34471EE040E100D0017A /* EditDistance.storyboard */; };
 		716F344E1EE040E100D0017A /* EditDistanceDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F34481EE040E100D0017A /* EditDistanceDisplayData.swift */; };
@@ -666,6 +668,8 @@
 		71652EAD1F646758002C8228 /* Toast+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Toast+Extensions.swift"; sourceTree = "<group>"; };
 		716723981F10540200400BFF /* CustomSegmentedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedCell.swift; sourceTree = "<group>"; };
 		716723991F10540200400BFF /* CustomSegmentedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomSegmentedCell.xib; sourceTree = "<group>"; };
+		71695E6B2023AEE000F1A7C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = SharedLocalizable.strings; sourceTree = "<group>"; };
+		71695E6E2023AF2000F1A7C9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = SharedLocalizable.strings; sourceTree = "<group>"; };
 		716C04211F685467007F9CD2 /* CognitoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CognitoService.swift; sourceTree = "<group>"; };
 		716F34471EE040E100D0017A /* EditDistance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditDistance.storyboard; sourceTree = "<group>"; };
 		716F34481EE040E100D0017A /* EditDistanceDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceDisplayData.swift; sourceTree = "<group>"; };
@@ -1871,6 +1875,7 @@
 				EA1E60C91B2742660048E688 /* InfoPlist.strings */,
 				EA1E60CB1B2742660048E688 /* Localizable.strings */,
 				712D7E021FB793E500DE83EB /* Localizable.stringsdict */,
+				71695E6A2023AEE000F1A7C9 /* SharedLocalizable.strings */,
 			);
 			path = en.lproj;
 			sourceTree = "<group>";
@@ -1881,6 +1886,7 @@
 				EA1E60D11B2742660048E688 /* InfoPlist.strings */,
 				EA1E60D31B2742660048E688 /* Localizable.strings */,
 				712D7E051FB793F900DE83EB /* Localizable.stringsdict */,
+				71695E6D2023AF2000F1A7C9 /* SharedLocalizable.strings */,
 			);
 			path = pl.lproj;
 			sourceTree = "<group>";
@@ -2555,6 +2561,7 @@
 				71AF49DF1EFDA4810022B2E2 /* ReceiptImageViewer.storyboard in Resources */,
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
 				EA1E60D91B2742660048E688 /* Localizable.strings in Resources */,
+				71695E6F2023AF2000F1A7C9 /* SharedLocalizable.strings in Resources */,
 				71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */,
 				EA40DC6B1B5559A1003BF545 /* FullPagePDFImageView.xib in Resources */,
 				EA1E60D61B2742660048E688 /* Localizable.strings in Resources */,
@@ -2566,6 +2573,7 @@
 				7167239B1F10540200400BFF /* CustomSegmentedCell.xib in Resources */,
 				EAF6FE121B543ABB0005E2CE /* PDFImageView.xib in Resources */,
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
+				71695E6C2023AEE000F1A7C9 /* SharedLocalizable.strings in Resources */,
 				EA1E60D51B2742660048E688 /* InfoPlist.strings in Resources */,
 				EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */,
 				714104E21FF43D7700C334C5 /* LaunchView.xib in Resources */,
@@ -3387,6 +3395,22 @@
 				712D7E061FB793F900DE83EB /* pl */,
 			);
 			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
+		71695E6A2023AEE000F1A7C9 /* SharedLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71695E6B2023AEE000F1A7C9 /* en */,
+			);
+			name = SharedLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		71695E6D2023AF2000F1A7C9 /* SharedLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71695E6E2023AF2000F1A7C9 /* pl */,
+			);
+			name = SharedLocalizable.strings;
 			sourceTree = "<group>";
 		};
 		EA1E60C91B2742660048E688 /* InfoPlist.strings */ = {

@@ -33,7 +33,11 @@ func delayedExecution(_ afterSecons: TimeInterval, closure: @escaping () -> ()) 
 }
 
 func LocalizedString(_ key: String, comment: String = "") -> String {
-    return NSLocalizedString(key, comment: comment)
+    var result = NSLocalizedString(key, tableName: nil, comment: comment)
+    if result == key {
+        result = NSLocalizedString(key, tableName: "SharedLocalizable", comment: comment)
+    }
+    return result
 }
 
 func MainStoryboard() -> UIStoryboard {
