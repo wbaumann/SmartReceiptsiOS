@@ -59,7 +59,10 @@ final class TripsView: FetchedTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = AppTheme.appTitle
+        
+        // Commented, until fix it https://github.com/maxkonovalov/MKDropdownMenu/issues/43
         //configureMenu()
+        
         view.layoutIfNeeded()
     }
     
