@@ -59,7 +59,7 @@ final class TripsView: FetchedTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = AppTheme.appTitle
-        configureMenu()
+        //configureMenu()
         view.layoutIfNeeded()
     }
     
@@ -94,6 +94,24 @@ final class TripsView: FetchedTableViewController {
         menu.fullScreenInsetRight = UIScreen.main.bounds.width - menuWidth
     }
     
+    @IBAction private func menuTap() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        for action in displayData.makeActions() {
+            actionSheet.addAction(action)
+        }
+        
+        if let popoverController = actionSheet.popoverPresentationController {
+            let arrowMargin = UI_MARGIN_16 + 20
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: arrowMargin, y: -UI_MARGIN_16, width: 0, height: 0)
+            popoverController.permittedArrowDirections = .up
+        } else {
+            actionSheet.addAction(UIAlertAction(title: LocalizedString("general_title_cancel"), style: .cancel, handler: nil))
+        }
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
     func settingsSaved() {
         if lastDateSeparator == WBPreferences.dateSeparator() {
             return
@@ -123,7 +141,6 @@ final class TripsView: FetchedTableViewController {
             }
         }
     }
-    
     
     private func computePriceWidth() -> CGFloat {
         var maxWidth: CGFloat = 0

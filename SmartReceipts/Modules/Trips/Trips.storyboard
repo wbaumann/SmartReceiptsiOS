@@ -50,7 +50,11 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="46E-Wz-wqR"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Smart Receipts" id="jh3-7q-ixi">
-                        <barButtonItem key="leftBarButtonItem" image="more-horizontal" id="goQ-v7-tzc"/>
+                        <barButtonItem key="leftBarButtonItem" image="more-horizontal" id="goQ-v7-tzc">
+                            <connections>
+                                <action selector="menuTap" destination="xqD-av-Raz" id="brA-OT-VCD"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="edit-2" id="S5m-dq-klV"/>
                             <barButtonItem title="Debug" id="Rd2-XL-xZo"/>
