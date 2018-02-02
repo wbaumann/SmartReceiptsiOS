@@ -86,29 +86,40 @@ class PurchaseService {
         }
         return false
     }
+    
+    func appStoreReceipt() -> String? {
+        guard let receiptURL = Bundle.main.appStoreReceiptURL else { return nil }
+        guard let receipt = try? Data(contentsOf: receiptURL) else { return nil }
+        return receipt.base64EncodedString()
+    }
+    
+    func isReceiptSent(_ receipt: String) -> Bool {
+        return UserDefaults.standard.bool(forKey: receipt)
+    }
 }
 
 
 // MARK: Purchase and API
 extension PurchaseService {
-
+    
     func sendReceipt() {
         if !AuthService.shared.isLoggedIn { return }
-        
-        guard let receiptURL = Bundle.main.appStoreReceiptURL else { return }
-        guard let receipt = try? Data(contentsOf: receiptURL) else { return }
-        let receiptString = receipt.base64EncodedString()
-        let params = ["encoded_receipt": receiptString,
-                      "pay_service" : "Apple Store",
-                      "goal" : "Recognition"]
+        guard let receiptString = appStoreReceipt() else { return }
+        if isReceiptSent(receiptString) { return }
+    
+        let params = ["encoded_receipt" : receiptString,
+                      "pay_service"     : "Apple Store",
+                      "goal"            : "Recognition"]
         
         APIAdapter.jsonBody(.post, endpoint("mobile_app_purchases"), parameters: params)
             .retry(3)
             .flatMap({ response -> Observable<Any> in
-                ScansPurchaseTracker.shared.fetchAndPersistAvailableRecognitions()
-                    .subscribe()
-                    .disposed(by: self.bag)
-                return Observable.just(response)
+                return ScansPurchaseTracker.shared.fetchAndPersistAvailableRecognitions()
+                    .map({ _ -> Any in return response })
+            }).do(onNext: { _ in
+                UserDefaults.standard.set(true, forKey: receiptString)
+            }).do(onError: { _ in
+                UserDefaults.standard.set(false, forKey: receiptString)
             }).subscribe(onNext: { response in
                 let jsonRespose = JSON(response)
                 Logger.debug(jsonRespose.description)
