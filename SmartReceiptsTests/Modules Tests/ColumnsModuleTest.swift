@@ -49,8 +49,10 @@ class ColumnsModuleTest: XCTestCase {
     func configureStubs() {
         
         stub(interactor) { mock in
-            mock.columns(forCSV: true).thenCallRealImplementation()
             mock.update(columns: [Column](), forCSV: true).thenDoNothing()
+            mock.columns(forCSV: true).then({ value -> Observable<[Column]> in
+                return Observable.just([Column]())
+            })
         }
     }
     

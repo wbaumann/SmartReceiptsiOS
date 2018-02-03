@@ -25,6 +25,8 @@ class TaxCalculator: NSObject {
         priceIsPreTax = WBPreferences.enteredPricePreTax()
         taxPercentage = NSDecimalNumber(string: "\(WBPreferences.defaultTaxPercentage())")
         formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+        formatter.minimumIntegerDigits = 1
         
         priceSubject.subscribe(onNext: { [unowned self] value in
             if let val = value {

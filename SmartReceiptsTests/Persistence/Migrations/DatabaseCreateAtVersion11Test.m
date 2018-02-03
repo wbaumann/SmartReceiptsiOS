@@ -45,11 +45,11 @@
 }
 
 - (void)testDefaultValuesAddedForCategories {
-    XCTAssertEqual(24, [self.db countRowsInTable:CategoriesTable.TABLE_NAME], @"Default categories not entered");
+    XCTAssertEqual(25, [self.db countRowsInTable:CategoriesTable.TABLE_NAME], @"Default categories not entered");
 }
 
 - (void)testDefaultValuesAddedForCSVColumns {
-    XCTAssertEqual(5, [self.db countRowsInTable:CSVTable.TABLE_NAME], @"Default CSV columns not entered");
+    XCTAssertEqual(8, [self.db countRowsInTable:CSVTable.TABLE_NAME], @"Default CSV columns not entered");
 }
 
 - (void)testDefaultValuesAddedForPDFColumns {
