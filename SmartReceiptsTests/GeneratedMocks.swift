@@ -2591,6 +2591,45 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         
     }
     
+     override func appStoreReceipt()  -> String? {
+        
+            return cuckoo_manager.call("appStoreReceipt() -> String?",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> String? in
+                        let () = args
+                        return o.appStoreReceipt()
+                    }
+                })
+        
+    }
+    
+     override func isReceiptSent(_ receipt: String)  -> Bool {
+        
+            return cuckoo_manager.call("isReceiptSent(_: String) -> Bool",
+                parameters: (receipt),
+                original: observed.map { o in
+                    return { (args) -> Bool in
+                        let (receipt) = args
+                        return o.isReceiptSent(receipt)
+                    }
+                })
+        
+    }
+    
+     override func sendReceipt()  {
+        
+            return cuckoo_manager.call("sendReceipt()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.sendReceipt()
+                    }
+                })
+        
+    }
+    
 
     struct __StubbingProxy_PurchaseService: Cuckoo.StubbingProxy {
         private let cuckoo_manager: Cuckoo.MockManager
@@ -2628,6 +2667,21 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         func price<M1: Cuckoo.Matchable>(productID: M1) -> Cuckoo.StubFunction<(String), Observable<String>> where M1.MatchedType == String {
             let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: productID) { $0 }]
             return .init(stub: cuckoo_manager.createStub("price(productID: String) -> Observable<String>", parameterMatchers: matchers))
+        }
+        
+        func appStoreReceipt() -> Cuckoo.StubFunction<(), Optional<String>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("appStoreReceipt() -> String?", parameterMatchers: matchers))
+        }
+        
+        func isReceiptSent<M1: Cuckoo.Matchable>(_ receipt: M1) -> Cuckoo.StubFunction<(String), Bool> where M1.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: receipt) { $0 }]
+            return .init(stub: cuckoo_manager.createStub("isReceiptSent(_: String) -> Bool", parameterMatchers: matchers))
+        }
+        
+        func sendReceipt() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("sendReceipt()", parameterMatchers: matchers))
         }
         
     }
@@ -2683,6 +2737,24 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
             return cuckoo_manager.verify("price(productID: String) -> Observable<String>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
+        @discardableResult
+        func appStoreReceipt() -> Cuckoo.__DoNotUse<Optional<String>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("appStoreReceipt() -> String?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func isReceiptSent<M1: Cuckoo.Matchable>(_ receipt: M1) -> Cuckoo.__DoNotUse<Bool> where M1.MatchedType == String {
+            let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: receipt) { $0 }]
+            return cuckoo_manager.verify("isReceiptSent(_: String) -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func sendReceipt() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("sendReceipt()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
     }
 
 
@@ -2716,6 +2788,18 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
     
      override func price(productID: String)  -> Observable<String> {
         return DefaultValueRegistry.defaultValue(for: Observable<String>.self)
+    }
+    
+     override func appStoreReceipt()  -> String? {
+        return DefaultValueRegistry.defaultValue(for: Optional<String>.self)
+    }
+    
+     override func isReceiptSent(_ receipt: String)  -> Bool {
+        return DefaultValueRegistry.defaultValue(for: Bool.self)
+    }
+    
+     override func sendReceipt()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
 }
