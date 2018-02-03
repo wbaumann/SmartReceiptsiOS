@@ -243,6 +243,7 @@
 		71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */; };
 		71E2B5801EEDD516001D02F1 /* TripsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5791EEDD516001D02F1 /* TripsRouter.swift */; };
 		71E2B5811EEDD516001D02F1 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B57A1EEDD516001D02F1 /* TripsView.swift */; };
+		71E6299E20259D630049668B /* PurchaseServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E6299D20259D630049668B /* PurchaseServiceTest.swift */; };
 		71E6E20D201E721E00463B0D /* OCRConfigurationModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E6E20C201E721E00463B0D /* OCRConfigurationModuleTest.swift */; };
 		71E6E20E201E722500463B0D /* GenerateReportModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360431EF310C90076D319 /* GenerateReportModuleTest.swift */; };
 		71E6E20F201E722500463B0D /* TripDistancesModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360441EF310C90076D319 /* TripDistancesModuleTest.swift */; };
@@ -807,6 +808,7 @@
 		71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsPresenter.swift; sourceTree = "<group>"; };
 		71E2B5791EEDD516001D02F1 /* TripsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsRouter.swift; sourceTree = "<group>"; };
 		71E2B57A1EEDD516001D02F1 /* TripsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
+		71E6299D20259D630049668B /* PurchaseServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseServiceTest.swift; sourceTree = "<group>"; };
 		71E6E20C201E721E00463B0D /* OCRConfigurationModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRConfigurationModuleTest.swift; sourceTree = "<group>"; };
 		71E7303C1FF7E53000471287 /* MigrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationService.swift; sourceTree = "<group>"; };
 		71E7303E1FF7E9C100471287 /* BlockTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTypes.swift; sourceTree = "<group>"; };
@@ -1447,6 +1449,7 @@
 				711B072E1FA11E6C000ED7E5 /* ScansPurchaseTrackerTests.swift */,
 				715606891FAFA53B00E09760 /* ScanServiceTests.swift */,
 				714AFCC420053A45000176E9 /* MigrationServiceTest.swift */,
+				71E6299D20259D630049668B /* PurchaseServiceTest.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -3336,6 +3339,7 @@
 				EA888A881AFB4FD600DF2AE6 /* DatabaseTripsTest.m in Sources */,
 				EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */,
 				A7F05BC41CFC42DA0079F1AD /* ReceiptColumnPriceTests.swift in Sources */,
+				71E6299E20259D630049668B /* PurchaseServiceTest.swift in Sources */,
 				57C0EED31E2D38B0001B4758 /* Logger.swift in Sources */,
 				715606931FB06D3400E09760 /* AuthServiceTestable.swift in Sources */,
 				A7F05BBA1CFC2CCD0079F1AD /* NetExchangedPricePlusTaxTests.swift in Sources */,

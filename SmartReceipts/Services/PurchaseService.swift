@@ -96,11 +96,8 @@ class PurchaseService {
     func isReceiptSent(_ receipt: String) -> Bool {
         return UserDefaults.standard.bool(forKey: receipt)
     }
-}
-
-
-// MARK: Purchase and API
-extension PurchaseService {
+    
+    // MARK: Purchase and API
     
     func sendReceipt() {
         if !AuthService.shared.isLoggedIn { return }
