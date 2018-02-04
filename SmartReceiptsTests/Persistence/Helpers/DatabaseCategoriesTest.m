@@ -60,7 +60,7 @@
 
 - (void)testListAll {
     NSArray *categories = [self.db listAllCategories];
-    XCTAssertEqual(24, categories.count);
+    XCTAssertEqual(25, categories.count);
 }
 
 @end

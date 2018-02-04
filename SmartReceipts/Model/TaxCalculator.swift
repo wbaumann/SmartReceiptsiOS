@@ -12,17 +12,17 @@ class TaxCalculator: NSObject {
     
     let priceSubject = PublishSubject<Decimal?>()
     let taxSubject = PublishSubject<String>()
+    var taxPercentage = NSDecimalNumber(decimal: 0)
     
     private let disposeBag = DisposeBag()
     private var priceIsPreTax = false
-    private var taxPercentage = NSDecimalNumber(decimal: 0)
     private let formatter = NumberFormatter()
     
     fileprivate static let HUNDRED = NSDecimalNumber(decimal: 100)
     
-    override init() {
+    init(preTax: Bool) {
         super.init()
-        priceIsPreTax = WBPreferences.enteredPricePreTax()
+        priceIsPreTax = preTax
         taxPercentage = NSDecimalNumber(string: "\(WBPreferences.defaultTaxPercentage())")
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2

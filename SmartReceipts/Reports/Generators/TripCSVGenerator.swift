@@ -20,7 +20,7 @@ class TripCSVGenerator: ReportCSVGenerator {
         return true
     }
     
-    private func generateContent() -> Data {
+    @objc private func generateContent() -> Data {
         let content = NSMutableString()
         appendReceiptsTable(content)
         appendDistancesTable(content)

@@ -25,11 +25,11 @@ class ReceiptColumnPriceTests: XCTestCase {
     }
     
     func testPDFExport() {
-        XCTAssertEqual("$12.00", column.value(from: receipt, forCSV: false))
+        XCTAssertEqual("12.00", column.value(from: receipt, forCSV: false))
     }
     
     func testOtherCurrency() {
         receipt.setPrice(NSDecimalNumber(string: "8"), currency: "EUR")
-        XCTAssertEqual("€8.00", column.value(from: receipt, forCSV: false))
+        XCTAssertEqual("8.00", column.value(from: receipt, forCSV: false))
     }
 }
