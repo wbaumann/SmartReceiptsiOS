@@ -23,8 +23,8 @@ class ReceiptColumnTaxTests: XCTestCase {
     
     func testNoTax() {
         receipt.setTax(.zero)
-        XCTAssertEqual("", column.value(from: receipt, forCSV: false))
-        XCTAssertEqual("", column.value(from: receipt, forCSV: true))
+        XCTAssertEqual("0.00", column.value(from: receipt, forCSV: false))
+        XCTAssertEqual("0.00", column.value(from: receipt, forCSV: true))
     }
     
     func testCSVExport() {
@@ -32,6 +32,6 @@ class ReceiptColumnTaxTests: XCTestCase {
     }
     
     func testPDFExport() {
-        XCTAssertEqual("$10.00", column.value(from: receipt, forCSV: false))
+        XCTAssertEqual("10.00", column.value(from: receipt, forCSV: false))
     }
 }

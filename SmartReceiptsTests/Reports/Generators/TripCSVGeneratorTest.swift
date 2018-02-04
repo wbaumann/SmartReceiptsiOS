@@ -17,6 +17,8 @@ class TripCSVGeneratorTest: SmartReceiptsTestsBase {
     override func setUp() {
         super.setUp()
         testTrip = db.insertTestTrip([AnyHashable : Any]())
+        db.insertTestReceipt(["name" : "One"])
+        db.move(db.receipt(withName: "One"), to: testTrip)
         generator = TripCSVGenerator(trip: testTrip, database: self.db)
     }
     
@@ -46,6 +48,6 @@ class TripCSVGeneratorTest: SmartReceiptsTestsBase {
 
 extension TripCSVGenerator {
     func testableGenerateContent() -> Data {
-        return self.perform(Selector(("generateContent"))).takeRetainedValue() as! Data
+        return self.perform(Selector("generateContent")).takeUnretainedValue() as! Data
     }
 }
