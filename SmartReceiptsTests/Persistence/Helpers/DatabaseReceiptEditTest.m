@@ -39,12 +39,13 @@
 }
 
 - (void)testReceiptMoveToAnotherDate {
-    [self.testReceipt setDate:[NSDate date]];
+    NSDate *date = [NSDate date];
+    [self.testReceipt setDate:date];
 
     [self.db saveReceipt:self.testReceipt];
 
     WBReceipt *fetched = [self.db receiptWithName:self.testReceipt.name];
-    XCTAssertEqual(4, fetched.date.secondsOfDay);
+    XCTAssertTrue([[[date dateByAddingTimeInterval:1] description] isEqualToString:fetched.date.description]);
 }
 
 @end

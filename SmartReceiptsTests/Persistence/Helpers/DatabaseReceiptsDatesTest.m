@@ -42,13 +42,15 @@
 }
 
 - (void)testMaxSecondsYesterday {
-    NSTimeInterval maxSeconds = [self.db maxSecondForReceiptsInTrip:self.testTrip onDate:[[NSDate date] dateByAddingDays:-1]];
-    XCTAssertEqualWithAccuracy(2, maxSeconds, 0.1);
+    NSDate *date = [NSDate date];
+    NSTimeInterval maxSeconds = [self.db maxSecondForReceiptsInTrip:self.testTrip onDate:[date dateByAddingDays:-1]];
+    XCTAssertEqualWithAccuracy(date.secondsOfDay, maxSeconds, 1);
 }
 
 - (void)testMaxSecondsToday {
-    NSTimeInterval maxSeconds = [self.db maxSecondForReceiptsInTrip:self.testTrip onDate:[NSDate date]];
-    XCTAssertEqualWithAccuracy(3, maxSeconds, 0.1);
+    NSDate *date = [NSDate date];
+    NSTimeInterval maxSeconds = [self.db maxSecondForReceiptsInTrip:self.testTrip onDate:date];
+    XCTAssertEqualWithAccuracy(date.secondsOfDay, maxSeconds, 1);
 }
 
 @end
