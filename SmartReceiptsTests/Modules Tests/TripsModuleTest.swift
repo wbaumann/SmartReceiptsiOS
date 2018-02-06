@@ -70,18 +70,18 @@ class TripsModuleTest: XCTestCase {
     }
     
     func testPresenterToRouter() {
-        presenter.viewHasLoaded()
+        presenter._view.loadView()
         
         presenter.presentAddTrip()
         verify(router).openAddTrip()
         
         presenter.presentSettings()
         verify(router).openSettings()
-    
     }
     
     func testPresenterToInteractor() {
-        presenter.viewHasLoaded()
+        presenter._view.loadView()
+        
         verify(interactor).configureSubscribers()
         
         presenter.tripDeleteSubject.onNext(self.trip!)

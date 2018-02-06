@@ -16,10 +16,10 @@ class LocalScansTrackerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        LocalScansTracker.shared.scansCount = 0
     }
     
     override func tearDown() {
-        LocalScansTracker.shared.scansCount = 0
         super.tearDown()
     }
     

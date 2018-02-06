@@ -24,11 +24,17 @@ class ScanServiceTests: XCTestCase {
     
     let notificationVar = Variable(JSON())
     let mockID = "1"
-    let mockURL = URL(fileURLWithPath: "")
+    var mockURL: URL!
+    let mockImage = #imageLiteral(resourceName: "launch_image")
+    var receiptDocument: ReceiptDocument!
     
     
     override func setUp() {
         super.setUp()
+        receiptDocument = ReceiptDocument.makeDocumentFrom(image: mockImage)
+        mockURL = receiptDocument.localURL
+        
+        LocalScansTracker.shared.scansCount = 10
         scanService = ScanService(s3Service: s3ServiceMock,
                                   recognitionAPI: recognitionAPIMock,
                                   pushService: pushService,
@@ -50,7 +56,7 @@ class ScanServiceTests: XCTestCase {
         
         stub(s3ServiceMock) { mock in
             mock.upload(file: mockURL).thenReturn(Observable<URL>.just(mockURL))
-            mock.upload(image: UIImage()).thenReturn(Observable<URL>.just(mockURL))
+            mock.upload(image: mockImage).thenReturn(Observable<URL>.just(mockURL))
         }
     }
     
@@ -59,10 +65,10 @@ class ScanServiceTests: XCTestCase {
     }
 
     func testScanSuccess() {
-        let emptyScan = Scan(image: UIImage())
-        let scan = try! scanService.scan(image: UIImage()).toBlocking().first()!
+        let emptyScan = Scan(image: mockImage)
+        let scan = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         
-        verify(s3ServiceMock).upload(image: UIImage())
+        verify(s3ServiceMock).upload(file: mockURL)
         verify(recognitionAPIMock).recognize(url: mockURL, incognito: false)
         verify(recognitionAPIMock).getRecognition(mockID)
         
@@ -70,12 +76,12 @@ class ScanServiceTests: XCTestCase {
     }
     
     func testHasAvailableScans() {
-        let emptyScan = Scan(image: UIImage())
-        let scan1 = try! scanService.scan(image: UIImage()).toBlocking().first()!
+        let emptyScan = Scan(image: mockImage)
+        let scan1 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         LocalScansTracker.shared.scansCount = 0
-        let scan2 = try! scanService.scan(image: UIImage()).toBlocking().first()!
+        let scan2 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         LocalScansTracker.shared.scansCount = 10
-        let scan3 = try! scanService.scan(image: UIImage()).toBlocking().first()!
+        let scan3 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         
         XCTAssertNotNil(scan1.merchant)
         XCTAssertNotEqual(emptyScan, scan1)
@@ -85,12 +91,12 @@ class ScanServiceTests: XCTestCase {
     }
     
     func testAutoScansFlag() {
-        let emptyScan = Scan(image: UIImage())
-        let scan1 = try! scanService.scan(image: UIImage()).toBlocking().first()!
+        let emptyScan = Scan(image: mockImage)
+        let scan1 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         WBPreferences.setAutomaticScansEnabled(false)
-        let scan2 = try! scanService.scan(image: UIImage()).toBlocking().first()!
+        let scan2 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         WBPreferences.setAutomaticScansEnabled(true)
-        let scan3 = try! scanService.scan(image: UIImage()).toBlocking().first()!
+        let scan3 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         
         XCTAssertNotNil(scan1.merchant)
         XCTAssertNotEqual(emptyScan, scan1)
@@ -100,12 +106,12 @@ class ScanServiceTests: XCTestCase {
     }
     
     func testAuthLogin() {
-        let emptyScan = Scan(image: UIImage())
-        let scan1 = try! scanService.scan(image: UIImage()).toBlocking().first()!
+        let emptyScan = Scan(image: #imageLiteral(resourceName: "launch_image"))
+        let scan1 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         authService.isLoggedInValue = false
-        let scan2 = try! scanService.scan(image: UIImage()).toBlocking().first()!
+        let scan2 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         authService.isLoggedInValue = true
-        let scan3 = try! scanService.scan(image: UIImage()).toBlocking().first()!
+        let scan3 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         
         XCTAssertNotNil(scan1.merchant)
         XCTAssertNotEqual(emptyScan, scan1)
@@ -128,9 +134,9 @@ class ScanServiceTests: XCTestCase {
         scheduler.start()
         scanService.status.bind(to: statusObserver).disposed(by: bag)
         
-        _ = try! scanService.scan(image: UIImage()).toBlocking().first()!
+        _ = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         authService.isLoggedInValue = false
-        _ = try! scanService.scan(image: UIImage()).toBlocking().first()!
+        _ = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         
         XCTAssertEqual(statusObserver.events, statusCheck)
     }

@@ -22,7 +22,7 @@ class ScanTests: XCTestCase {
     
     func testValidJSONParse() {
         let json = JSON.loadFrom(filename: "Scan", type: "json")
-        let scan = Scan(json: json, image: UIImage())
+        let scan = Scan(json: json, image: #imageLiteral(resourceName: "launch_image"))
         
         XCTAssertNotNil(scan.merchant)
         XCTAssertNotNil(scan.taxAmount)
@@ -31,7 +31,7 @@ class ScanTests: XCTestCase {
     }
     
     func testInvalidJSONParse() {
-        let scan = Scan(json: JSON(), image: UIImage())
+        let scan = Scan(json: JSON(), image: #imageLiteral(resourceName: "launch_image"))
         
         XCTAssertNil(scan.merchant)
         XCTAssertNil(scan.taxAmount)
@@ -42,7 +42,7 @@ class ScanTests: XCTestCase {
     func testPartlyValidJSONParse() {
         var json = JSON.loadFrom(filename: "Scan", type: "json")
         json["recognition"]["data"].dictionaryObject?.removeValue(forKey: "recognition_data")
-        let scan = Scan(json: json, image: UIImage())
+        let scan = Scan(json: json, image: #imageLiteral(resourceName: "launch_image"))
         
         XCTAssertNil(scan.merchant)
         XCTAssertNil(scan.taxAmount)
@@ -54,7 +54,7 @@ class ScanTests: XCTestCase {
         var json = JSON.loadFrom(filename: "Scan", type: "json")
         json["recognition"]["data"]["recognition_data"].dictionaryObject?.removeValue(forKey: "taxAmount")
         json["recognition"]["data"]["recognition_data"].dictionaryObject?.removeValue(forKey: "date")
-        let scan = Scan(json: json, image: UIImage())
+        let scan = Scan(json: json, image: #imageLiteral(resourceName: "launch_image"))
         
         XCTAssertNotNil(scan.merchant)
         XCTAssertNil(scan.taxAmount)

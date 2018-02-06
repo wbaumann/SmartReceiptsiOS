@@ -56,10 +56,10 @@ class ReceiptsModuleTest: XCTestCase {
                 return self.actionsPresneter
             })
             mock.openCreatePhotoReceipt().thenDoNothing()
-            mock.openDistances().thenDoNothing()
-            mock.openGenerateReport().thenDoNothing()
             mock.openPDFViewer(for: WBReceipt()).thenDoNothing()
             mock.openImageViewer(for: WBReceipt()).thenDoNothing()
+            mock.openImportReceiptFile().thenDoNothing()
+            
         }
         
         stub(interactor) { mock in
@@ -76,30 +76,15 @@ class ReceiptsModuleTest: XCTestCase {
     }
     
     func testPresenterToRouter() {
-        let receipt = WBReceipt(id: 0,
-                                name: "name",
-                                category: "",
-                                imageFileName: "img.png",
-                                date: Date(),
-                                timeZoneName: "UTC",
-                                comment: nil,
-                                priceAmount: NSDecimalNumber.zero,
-                                taxAmount: NSDecimalNumber.zero,
-                                exchangeRate: NSDecimalNumber.zero,
-                                currency: Currency.currency(forCode: "USD"),
-                                paymentMethod:PaymentMethod(objectId: 0, method: "Card"),
-                                isReimbursable: true, isFullPage: false,
-                                extraEditText1: "", extraEditText2: "", extraEditText3: "")
+        presenter.setupView(data: WBTrip())
         
-        receipt.trip = WBTrip()
+        presenter.createReceiptCameraSubject.onNext()
+        presenter.importReceiptFileSubject.onNext()
+        presenter.createReceiptTextSubject.onNext()
         
-        let path = receipt.trip.file(inDirectoryPath: "img.png")
-        FileManager.default.createFile(atPath: path!, contents: nil, attributes: nil)
-        
-        presenter.viewHasLoaded()
-        presenter.receiptActionsSubject.onNext(receipt)
-        actionsPresneter.viewImageTap.onNext()
-        verify(router).openImageViewer(for: receipt)
+        verify(router).openCreatePhotoReceipt()
+        verify(router).openImportReceiptFile()
+        verify(router).openCreateReceipt()
     }
     
     func testPresenterToInteractor() {

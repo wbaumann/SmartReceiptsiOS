@@ -50,13 +50,13 @@ class ReceiptColumnExchangedTaxTests: XCTestCase {
     
     func testExportToPDF() {
         receipt.exchangeRate = NSDecimalNumber(string: "2")
-        XCTAssertEqual("€2.40", column.value(from: receipt, forCSV: false))
+        XCTAssertEqual("2.40", column.value(from: receipt, forCSV: false))
     }
     
     func testNoExchangeNeeded() {
         receipt.setPrice(NSDecimalNumber(string: "100"), currency: "EUR")
 
-        XCTAssertEqual("€1.20", column.value(from: receipt, forCSV: false))
+        XCTAssertEqual("1.20", column.value(from: receipt, forCSV: false))
         XCTAssertEqual("1.20", column.value(from: receipt, forCSV: true))
     }
 }

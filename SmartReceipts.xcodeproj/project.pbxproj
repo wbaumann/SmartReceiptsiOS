@@ -21,7 +21,6 @@
 		570515A31E02EB5500BB8FE4 /* Event+Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570515A21E02EB5500BB8FE4 /* Event+Categories.swift */; };
 		570515A51E02EFA500BB8FE4 /* ErrorEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570515A41E02EFA500BB8FE4 /* ErrorEvent.swift */; };
 		570515A71E04AA7D00BB8FE4 /* FirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570515A61E04AA7D00BB8FE4 /* FirebaseAnalytics.swift */; };
-		572045CB1E9FB97700080FB8 /* RecentCurrenciesCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572045CA1E9FB97700080FB8 /* RecentCurrenciesCacheTests.swift */; };
 		5726E5431E00423900F2141C /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726E5421E00423900F2141C /* AnalyticsManager.swift */; };
 		572E0A7A1E42446600A7307A /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 572E0A791E42446600A7307A /* NSString+Extensions.m */; };
 		5757D6101E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5757D60F1E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift */; };
@@ -3329,7 +3328,6 @@
 				EA8ABE3D1B1A064A00DBFA29 /* DatabaseImportTest.m in Sources */,
 				71E6E216201E722500463B0D /* EditReceiptModuleTest.swift in Sources */,
 				EA6677761B05FD8A004D3993 /* DatabaseReceiptsTest.m in Sources */,
-				572045CB1E9FB97700080FB8 /* RecentCurrenciesCacheTests.swift in Sources */,
 				EADBB71F1B0B6CD600F4475F /* DatabaseTripsFilesTest.m in Sources */,
 				71E6E20E201E722500463B0D /* GenerateReportModuleTest.swift in Sources */,
 				71E6E218201E722500463B0D /* PaymentMethodsModuleTest.swift in Sources */,

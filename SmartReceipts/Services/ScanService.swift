@@ -52,7 +52,7 @@ class ScanService {
     }
     
     func scan(document: ReceiptDocument) -> Observable<Scan> {
-        guard let url = document.localURL else { return Observable<Scan>.just(Scan(image: UIImage())) }
+        guard let url = document.localURL else { return Observable<Scan>.just(Scan(filepath: document.localURL!)) }
         
         if WBPreferences.automaticScansEnabled() && FeatureFlags.ocrSupport.isEnabled &&
             authService.isLoggedIn && scansPurchaseTracker.hasAvailableScans {
