@@ -81,6 +81,7 @@ class TripsModuleTest: XCTestCase {
     
     func testPresenterToInteractor() {
         presenter._view.loadView()
+        presenter.viewHasLoaded()
         
         verify(interactor).configureSubscribers()
         
