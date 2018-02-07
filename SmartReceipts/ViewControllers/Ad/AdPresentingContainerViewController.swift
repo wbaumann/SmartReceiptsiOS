@@ -11,7 +11,7 @@ import Viperit
 import RxSwift
 import Darwin
 
-fileprivate let BANNER_HEIGHT: CGFloat = 80
+fileprivate let BANNER_HEIGHT: CGFloat = 50
 
 class AdPresentingContainerViewController: UIViewController {
     @IBOutlet fileprivate var adContainerHeight: NSLayoutConstraint!
