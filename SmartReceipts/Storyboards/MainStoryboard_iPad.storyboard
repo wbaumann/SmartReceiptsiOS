@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="F6c-eX-ofx">
-                        <rect key="frame" x="0.0" y="890" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="930" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -42,20 +42,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DND-L1-jlQ">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="934"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="974"/>
                                 <connections>
                                     <segue destination="YkJ-tY-f5f" kind="embed" id="ufl-OI-yFg"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJl-WX-H17" userLabel="Ad view">
-                                <rect key="frame" x="0.0" y="934" width="768" height="90"/>
+                                <rect key="frame" x="0.0" y="974" width="768" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z75-YQ-go7" customClass="UpsellBannerAdView" customModule="SmartReceipts" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpF-4h-wy8" customClass="GADBannerView">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="autoloadEnabled" value="NO"/>
@@ -65,7 +65,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="z75-YQ-go7" firstAttribute="top" secondItem="GJl-WX-H17" secondAttribute="top" id="2C1-Mg-O0O"/>
-                                    <constraint firstAttribute="height" constant="90" id="67f-lR-Q6j"/>
+                                    <constraint firstAttribute="height" constant="50" id="67f-lR-Q6j"/>
                                     <constraint firstItem="z75-YQ-go7" firstAttribute="leading" secondItem="GJl-WX-H17" secondAttribute="leading" id="A3l-e2-6KB"/>
                                     <constraint firstAttribute="trailing" secondItem="fpF-4h-wy8" secondAttribute="trailing" id="STY-Z9-5be"/>
                                     <constraint firstAttribute="bottom" secondItem="z75-YQ-go7" secondAttribute="bottom" id="UpE-cw-AuN"/>

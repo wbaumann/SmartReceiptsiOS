@@ -22,16 +22,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jX2-Gd-oKN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <connections>
                                     <segue destination="urd-hN-qYP" kind="embed" id="TWZ-S1-HOg"/>
                                 </connections>
                             </containerView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UnM-Cp-Iev" userLabel="AdContainerView">
-                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nH5-K1-Fcb" customClass="UpsellBannerAdView" customModule="SmartReceipts" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u4m-BG-Mic" customClass="GADBannerView">
@@ -48,7 +48,7 @@
                                     <constraint firstAttribute="bottom" secondItem="nH5-K1-Fcb" secondAttribute="bottom" id="I03-qh-GV6"/>
                                     <constraint firstAttribute="trailing" secondItem="nH5-K1-Fcb" secondAttribute="trailing" id="UB6-pY-dAK"/>
                                     <constraint firstItem="nH5-K1-Fcb" firstAttribute="top" secondItem="UnM-Cp-Iev" secondAttribute="top" id="ixv-9J-QfI"/>
-                                    <constraint firstAttribute="height" constant="80" id="sL9-0F-qzG"/>
+                                    <constraint firstAttribute="height" constant="50" id="sL9-0F-qzG"/>
                                     <constraint firstItem="nH5-K1-Fcb" firstAttribute="leading" secondItem="UnM-Cp-Iev" secondAttribute="leading" id="uhL-Db-0Vm"/>
                                 </constraints>
                             </view>
@@ -85,7 +85,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="F6c-eX-ofx">
-                        <rect key="frame" x="0.0" y="543" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="573" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
