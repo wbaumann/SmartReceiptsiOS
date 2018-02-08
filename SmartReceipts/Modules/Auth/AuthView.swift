@@ -106,7 +106,7 @@ final class AuthView: UserInterface {
     private func emailValidator() -> Observable<Bool> {
         return emailField.rx.text
             .map({ email -> Bool in
-                if email != nil && email!.characters.count >= MINIMUM_EMAIL_LENGTH {
+                if email != nil && email!.count >= MINIMUM_EMAIL_LENGTH {
                     return email!.contains("@") && email!.contains(".")
                 }
                 return false
@@ -116,7 +116,7 @@ final class AuthView: UserInterface {
     private func passwordValidator() -> Observable<Bool> {
         return passwordField.rx.text
             .map({ password -> Bool in
-                return password != nil && password!.characters.count >= MINIMUM_PASSWORD_LENGTH
+                return password != nil && password!.count >= MINIMUM_PASSWORD_LENGTH
             })
     }
     
