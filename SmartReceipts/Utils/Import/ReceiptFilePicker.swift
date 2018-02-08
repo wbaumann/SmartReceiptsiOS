@@ -17,7 +17,7 @@ class ReceiptFilePicker: NSObject {
     fileprivate var pickSubject: PublishSubject<ReceiptDocument>?
     fileprivate var openedViewController: UIViewController?
     
-    private let allowedTypes = [JPEG_TYPE, PNG_TYPE, PDF_TYPE]
+    private let allowedTypes = [JPEG_TYPE, PNG_TYPE] //, PDF_TYPE]  //Temporarily disabled pdf imports from the "Files" screen for `Issue 5`
     
     private override init() {}
     
