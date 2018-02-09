@@ -26,7 +26,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     private var receipt: WBReceipt!
     private var trip: WBTrip!
     private var taxCalculator: TaxCalculator?
-    private let disposeBag = DisposeBag()
+    private let bag = DisposeBag()
     
     init(trip: WBTrip, receipt: WBReceipt?) {
         super.init(nibName: nil, bundle: nil)
@@ -60,7 +60,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let exchangeRow = self.form.rowBy(tag: self.EXCHANGE_RATE_TAG) as? ExchangeRateRow {
+        if let exchangeRow = form.rowBy(tag: EXCHANGE_RATE_TAG) as? ExchangeRateRow {
             exchangeRow.responseSubject.onNext(ExchangeResponse(value: nil, error: nil))
             exchangeRow.cell.update()
         }
@@ -113,7 +113,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
                 calculator.taxSubject.subscribe(onNext: {
                     row.value = Double(string: $0)
                     row.updateCell()
-                }).disposed(by: self.disposeBag)
+                }).disposed(by: self.bag)
             }
         }.onChange({ [unowned self] row in
             self.receipt.setTax(NSDecimalNumber(value: row.value ?? 0))
@@ -148,7 +148,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             })
             row.value = receipt.exchangeRate?.doubleValue
             row.updateTap.subscribe(onNext: { [unowned self] in self.updateExchangeRate() })
-                .disposed(by: self.disposeBag)
+                .disposed(by: self.bag)
         }.onChange({ [unowned self] row in
             self.receipt.exchangeRate = NSDecimalNumber(value: row.value ?? 0)
         }).cellSetup({ [unowned self] cell, row in
@@ -264,12 +264,12 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     }
     
     private func updateExchangeRate() {
-        if let exchangeRow = self.form.rowBy(tag: self.EXCHANGE_RATE_TAG) as? ExchangeRateRow {
-            CurrencyExchangeService().exchangeRate(self.trip.defaultCurrency.code,
-                    target: self.receipt.currency.code, onDate: self.receipt.date)
-            .observeOn(MainScheduler.instance)
-            .bind(to: exchangeRow.responseSubject)
-            .disposed(by: disposeBag)
+        if let exchangeRow = form.rowBy(tag: EXCHANGE_RATE_TAG) as? ExchangeRateRow {
+            CurrencyExchangeService()
+                .exchangeRate(trip.defaultCurrency.code, target: receipt.currency.code, onDate: receipt.date)
+                .observeOn(MainScheduler.instance)
+                .bind(to: exchangeRow.responseSubject)
+                .disposed(by: bag)
         }
     }
     
@@ -306,21 +306,26 @@ fileprivate extension EditReceiptFormView {
         let components = calendar.dateComponents([.hour], from: Date())
         let hour = components.hour!
         
+        let categories = allCategories()
+        if categories.isEmpty {
+            return ""
+        }
+        
         if WBPreferences.predictCategories() {
+            var predictedCategory = String()
             if hour >= 4 && hour < 11 {
-                return WBCategory.category_NAME_BREAKFAST()
+                predictedCategory = WBCategory.category_NAME_BREAKFAST()
             } else if hour >= 11 && hour < 16 {
-                return WBCategory.category_NAME_LUNCH()
+                predictedCategory = WBCategory.category_NAME_LUNCH()
             } else if hour >= 16 && hour < 23 {
-                return WBCategory.category_NAME_DINNER()
+                predictedCategory = WBCategory.category_NAME_DINNER()
+            }
+            
+            if categories.contains(predictedCategory) {
+                return predictedCategory
             }
         }
         
-        let categories = allCategories()
-        if !categories.isEmpty {
-            return categories.first!
-        } else {
-            return ""
-        }
+        return categories.first!
     }
 }
