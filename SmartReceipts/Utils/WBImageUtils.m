@@ -77,8 +77,16 @@
 }
 
 + (UIImage *)compressImage:(UIImage *)image withRatio:(CGFloat) compressionQuality {
-    NSData *imgData= UIImageJPEGRepresentation(image, compressionQuality);
+    NSData *imgData = UIImageJPEGRepresentation(image, compressionQuality);
     return [UIImage imageWithData:imgData];
+}
+
++ (UIImage *)withoutScreenScaleImage:(UIImage *)image {
+    CGFloat width = image.size.width/UIScreen.mainScreen.scale;
+    CGFloat height = image.size.height/UIScreen.mainScreen.scale;
+    CGSize size = CGSizeMake(width, height);
+    
+    return [WBImageUtils image:image scaledToSize:size];
 }
 
 @end

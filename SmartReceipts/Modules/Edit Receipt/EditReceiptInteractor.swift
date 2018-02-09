@@ -78,7 +78,7 @@ class EditReceiptInteractor: Interactor {
     }
     
     private func saveImage(to receipt: WBReceipt) {
-        if let url = receiptFilePath, let fileData = try? Data.init(contentsOf: url) {
+        if let url = receiptFilePath, let fileData = try? Data(contentsOf: url) {
             var imgFileName = ""
             let nextId = Database.sharedInstance().nextReceiptID()
             imgFileName = String(format: "%tu_%@.%@", nextId, receipt.omittedName, url.pathExtension)

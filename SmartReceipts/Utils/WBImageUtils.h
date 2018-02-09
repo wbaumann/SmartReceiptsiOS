@@ -17,5 +17,5 @@ static const CGFloat kImageCompression = 0.85f;
 + (UIImage *)image:(UIImage *)image withOrientation:(UIImageOrientation)orientation;
 + (UIImage *)processImage:(UIImage *)image;
 + (UIImage *)compressImage:(UIImage *)image withRatio:(CGFloat) compressionQuality;
-
++ (UIImage *)withoutScreenScaleImage:(UIImage *)image;
 @end
