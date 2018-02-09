@@ -81,7 +81,16 @@ extension ReceiptFilePicker: UIDocumentBrowserViewControllerDelegate {
     @available(iOS 11.0, *)
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL]) {
         if let url = documentURLs.first {
-            close(completion: { ReceiptDocument(fileURL: url).open() })
+            close(completion: {
+                var document = ReceiptDocument(fileURL: url)
+                if let fileType = document.fileType, fileType == PNG_TYPE || fileType == JPEG_TYPE {
+                    let img = UIImage(data: try! Data(contentsOf: url))!
+                    let compressedImage = WBImageUtils.compressImage(img, withRatio: kImageCompression)
+                    let compressedURL = ReceiptDocument.makeDocumentFrom(image: compressedImage!).localURL!
+                    document = ReceiptDocument(fileURL: compressedURL)
+                }
+                return document.open()
+            })
         } else {
             close()
         }
@@ -91,7 +100,7 @@ extension ReceiptFilePicker: UIDocumentBrowserViewControllerDelegate {
 extension ReceiptFilePicker: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let img = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-        let resultImage = WBImageUtils.compressImage(img, withRatio: 0.95)
+        let resultImage = WBImageUtils.compressImage(img, withRatio: kImageCompression)
         
         close(completion: { ReceiptDocument.makeDocumentFrom(image: resultImage!).open() })
     }
@@ -130,7 +139,8 @@ class ReceiptDocument: UIDocument {
     
     class func makeDocumentFrom(image: UIImage) -> ReceiptDocument {
         let img = WBImageUtils.processImage(image)!
-        let imgData = UIImageJPEGRepresentation(img, 1)!
+        let imgWithoutScale = WBImageUtils.withoutScreenScale(img)!
+        let imgData = UIImageJPEGRepresentation(imgWithoutScale, 1)!
         let doc = ReceiptDocument(fileURL: ReceiptDocument.imgTempURL)
         doc.forceLoad(data: imgData, fileType: JPEG_TYPE)
         return doc
