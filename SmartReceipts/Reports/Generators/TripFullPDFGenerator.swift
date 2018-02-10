@@ -34,6 +34,8 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         
         let pricesPreTax = WBPreferences.enteredPricePreTax()
         let reportOnlyReimbursable = WBPreferences.onlyIncludeReimbursableReceiptsInReports()
+    
+        var hasNonReimbursable = false
         
         let recs = receipts()
         
@@ -58,6 +60,8 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
             
             if receipt.isReimbursable {
                 reimbursableTotal.addPrice(price)
+            } else {
+                hasNonReimbursable = true
             }
         }
         
@@ -85,14 +89,13 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         // Short Code for Get: currencyFormattedPrice()
         func fp(_ p: PricesCollection) -> String { return p.currencyFormattedPrice() }
         
-        if !WBPreferences.includeTaxField() && recs.count > 0 && !taxesTotal.hasValue() {
-            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.label")) \(fp(receiptTotal))")
-        }
         
-        if WBPreferences.includeTaxField() && taxesTotal.hasValue() {
+        if !WBPreferences.includeTaxField() && recs.count > 0 || !taxesTotal.hasValue() {
+            pdfRender.appendHeader(row: "\(LocalizedString("pdf_report_receipts_total_label")) \(fp(receiptTotal))")
+        } else if WBPreferences.includeTaxField() && taxesTotal.hasValue() {
+            pdfRender.appendHeader(row: "\(LocalizedString("pdf_report_receipts_total_with_tax_label")) \(fp(receiptTotal))")
             pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.sans.tax.label")) \(fp(noTaxesTotal))")
             pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.tax.total.label")) \(fp(taxesTotal))")
-            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.label")) \(fp(receiptTotal))")
         }
         
         if dists.count > 0 {
@@ -101,7 +104,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         
         pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.grand.total.label")) \(fp(grandTotal))", style: .defaultBold)
         
-        if !reportOnlyReimbursable && reimbursableTotal.hasValue() {
+        if !reportOnlyReimbursable && hasNonReimbursable {
             let row = "\(LocalizedString("pdf.report.grand.reimbursable.total.label")) \(fp(reimbursableTotal))"
             pdfRender.appendHeader(row: row, style: .defaultBold)
         }
