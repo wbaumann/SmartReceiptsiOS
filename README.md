@@ -58,6 +58,12 @@ Please note that it will **NOT** work out of the box, so you will need to add th
 
 Once these files are included, you should be able to successfully compile, build, unit test, and run the app!
 
+## Donate
+If you like our project, please consider donating:
+
+* **BTC:** [3MGikseSB69cGjUkJs4Cqg93s5s8tv38tK](bitcoin:3MGikseSB69cGjUkJs4Cqg93s5s8tv38tK)
+* **ETH:** [0xd5F9Da6a4F9c93B12588D89c7F702a0f7d92303D](https://etherscan.io/address/0xd5F9Da6a4F9c93B12588D89c7F702a0f7d92303D)
+
 ## Contribute
 
 Contributions are always welcome! Please [open an issue](https://github.com/wbaumann/SmartReceiptsiOS/issues/new) to report a bug or file a feature request to get started.  
