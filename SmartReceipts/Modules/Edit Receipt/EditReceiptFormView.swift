@@ -20,6 +20,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     let receiptSubject = PublishSubject<WBReceipt>()
     let errorSubject = PublishSubject<String>()
     weak var settingsTap: PublishSubject<Void>?
+    var needFirstResponder = true
     
     private var isNewReceipt = false
     private var hasScan = false
@@ -77,9 +78,11 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             row.value = receipt.name
         }.onChange({ [unowned self] row in
             self.receipt.name = row.value ?? ""
-        }).cellSetup({ cell, _ in
+        }).cellSetup({ [unowned self] cell, _ in
             cell.configureCell()
-            cell.textField.becomeFirstResponder()
+            if self.needFirstResponder {
+                cell.textField.becomeFirstResponder()
+            }
             if WBPreferences.isAutocompleteEnabled() {
                 cell.enableAutocompleteHelper()
             }
@@ -246,6 +249,12 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     func validate() {
         receipt.trip = trip
         receiptSubject.onNext(receipt)
+    }
+    
+    func makeNameFirstResponder() {
+        if let nameRow = form.rowBy(tag: NAME_ROW_TAG) as? PredectiveTextRow {
+            nameRow.cell.textField.becomeFirstResponder()
+        }
     }
     
     private func setValue(cellTag: String, value: Any?) {

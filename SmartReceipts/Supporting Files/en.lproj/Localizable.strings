@@ -431,3 +431,7 @@
 "scan.status.uploading" = "Uploading...";
 "scan.status.scanning" = "Scanning...";
 "scan.status.fetching" = "Fetching...";
+
+"preview_receipt_action_remove" = "Remove";
+"preview_receipt_action_show_attachment" = "Show Attachment";
+

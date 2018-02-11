@@ -53,6 +53,8 @@ final class ReceiptsView: FetchedTableViewController {
         lastDateSeparator = WBPreferences.dateSeparator()
         configureFloatyButton()
         subscribe()
+        
+        registerForPreviewing(with: self, sourceView: tableView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -174,7 +176,6 @@ final class ReceiptsView: FetchedTableViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-
 }
 
 //MARK: TooltipApplicable
@@ -189,6 +190,28 @@ extension ReceiptsView: UIDocumentInteractionControllerDelegate {
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
         return navigationController ?? self
     }
+}
+
+//MARK: UIViewControllerPreviewingDelegate
+extension ReceiptsView: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        present(UINavigationController(rootViewController: viewControllerToCommit), animated: true, completion: nil)
+        viewControllerToCommit.interface(EditReceiptModuleInterface.self)?.makeNameFirstResponder()
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let indexPath = tableView.indexPathForRow(at: location) else { return nil}
+        let receipt = objectAtIndexPath(indexPath) as! WBReceipt
+        
+        let module = AppModules.editReceipt.build()
+        let data = (trip: trip!, receipt: receipt)
+        module.presenter.setupView(data: data)
+        module.interface(EditReceiptModuleInterface.self).disableFirstResponder()
+        
+        return module.view
+    }
+    
 }
 
 //MARK: - Public interface

@@ -13,4 +13,5 @@ class EditReceiptDisplayData: DisplayData {
     var receipt: WBReceipt?
     var trip: WBTrip!
     var scan: Scan?
+    var needFirstResponder = true
 }
