@@ -13,6 +13,11 @@ import UserNotifications
 
 fileprivate let ANIMATIONS_DURATION: RxTimeInterval = 0.6
 
+protocol EditReceiptModuleInterface {
+    func disableFirstResponder()
+    func makeNameFirstResponder()
+}
+
 class EditReceiptPresenter: Presenter {
     
     let addReceiptSubject = PublishSubject<WBReceipt>()
@@ -66,6 +71,18 @@ class EditReceiptPresenter: Presenter {
     
     func tooltipText() -> String? {
         return interactor.tooltipText()
+    }
+}
+
+// MARK: EditReceiptModuleInterface
+
+extension EditReceiptPresenter: EditReceiptModuleInterface {
+    func disableFirstResponder() {
+        view.disableFirstResponeder()
+    }
+    
+    func makeNameFirstResponder() {
+        view.makeNameFirstResponder()
     }
 }
 

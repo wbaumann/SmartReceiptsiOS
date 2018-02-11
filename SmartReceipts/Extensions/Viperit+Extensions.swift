@@ -11,7 +11,7 @@ import RxSwift
 
 extension Module {
     func interface<T>(_ type: T.Type) -> T {
-        return self.presenter as! T
+        return presenter as! T
     }
 }
 
@@ -52,3 +52,14 @@ extension Router {
         })
     }
 }
+
+extension UIViewController {
+    func interface<T>(_ type: T.Type) -> T? {
+        if let presenter = (self as? UserInterface)?._presenter {
+            return presenter as? T
+        }
+        return nil
+    }
+}
+
+

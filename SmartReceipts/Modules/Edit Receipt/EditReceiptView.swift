@@ -14,6 +14,9 @@ import RxSwift
 protocol EditReceiptViewInterface {
     func setup(trip: WBTrip, receipt: WBReceipt?)
     func setup(scan: Scan)
+    
+    func disableFirstResponeder()
+    func makeNameFirstResponder()
 }
 
 //MARK: EditReceiptView Class
@@ -22,7 +25,7 @@ final class EditReceiptView: UserInterface {
     @IBOutlet private weak var cancelButton: UIBarButtonItem!
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     
-    private weak var formView: EditReceiptFormView!
+    fileprivate weak var formView: EditReceiptFormView!
     private weak var tooltip: TooltipView?
     private let bag = DisposeBag()
     
@@ -34,6 +37,7 @@ final class EditReceiptView: UserInterface {
         self.formView = formView
         formView.apply(scan: displayData.scan)
         formView.settingsTap = presenter.settingsTap
+        formView.needFirstResponder = displayData.needFirstResponder
         addChildViewController(formView)
         view.addSubview(formView.view)
         
@@ -116,10 +120,32 @@ final class EditReceiptView: UserInterface {
         })
     }
     
+    override var previewActionItems: [UIPreviewActionItem] {
+        let removeActionTitle = LocalizedString("preview_receipt_action_remove")
+        let remove = UIPreviewAction(title: removeActionTitle, style: .destructive) { _, _ in
+            
+        }
+        
+        if let receipt = displayData.receipt, receipt.attachemntType != .none {
+            let viewActionTitle = LocalizedString("preview_receipt_action_show_attachment")
+            let viewAttachment = UIPreviewAction(title: viewActionTitle, style: .default) { _, _ in
+                
+            }
+            
+            return [viewAttachment, remove]
+        }
+        
+        return [remove]
+    }
+    
 }
 
 //MARK: - Public interface
 extension EditReceiptView: EditReceiptViewInterface {
+    func makeNameFirstResponder() {
+        formView.makeNameFirstResponder()
+    }
+    
     func setup(trip: WBTrip, receipt: WBReceipt?) {
         displayData.trip = trip
         displayData.receipt = receipt
@@ -127,6 +153,10 @@ extension EditReceiptView: EditReceiptViewInterface {
     
     func setup(scan: Scan) {
         displayData.scan = scan
+    }
+
+    func disableFirstResponeder() {
+        displayData.needFirstResponder = false
     }
 }
 
