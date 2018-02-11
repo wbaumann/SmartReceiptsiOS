@@ -20,8 +20,4 @@
     return [self.dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]];
 }
 
-- (NSString *)valueForFooter:(NSArray *)rows forCSV:(BOOL)forCSV {
-    return [self valueFromReceipt:rows.firstObject forCSV:forCSV];
-}
-
 @end
