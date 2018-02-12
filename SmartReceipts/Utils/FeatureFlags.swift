@@ -11,12 +11,7 @@ import Foundation
 class FeatureFlags {
     static let loginSupport = Feature(true)
     static let ocrSupport   = Feature(true)
-    
-    #if DEBUG
-        static var useProdEndpoints = Feature(false)
-    #else
-        static var useProdEndpoints = Feature(true)
-    #endif
+    static var useProdEndpoints = Feature(true)
 }
 
 class Feature {
