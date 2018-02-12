@@ -15,6 +15,9 @@ protocol EditReceiptViewInterface {
     func setup(trip: WBTrip, receipt: WBReceipt?)
     func setup(scan: Scan)
     
+    var removeAction: Observable<WBReceipt> { get }
+    var showAttachmentAction: Observable<WBReceipt> { get }
+    
     func disableFirstResponeder()
     func makeNameFirstResponder()
 }
@@ -28,6 +31,9 @@ final class EditReceiptView: UserInterface {
     fileprivate weak var formView: EditReceiptFormView!
     private weak var tooltip: TooltipView?
     private let bag = DisposeBag()
+    
+    fileprivate let previewRemoveAction = PublishSubject<WBReceipt>()
+    fileprivate let previewShowAttachmentAction = PublishSubject<WBReceipt>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,13 +129,13 @@ final class EditReceiptView: UserInterface {
     override var previewActionItems: [UIPreviewActionItem] {
         let removeActionTitle = LocalizedString("preview_receipt_action_remove")
         let remove = UIPreviewAction(title: removeActionTitle, style: .destructive) { _, _ in
-            
+            self.previewRemoveAction.onNext(self.displayData.receipt!)
         }
         
         if let receipt = displayData.receipt, receipt.attachemntType != .none {
             let viewActionTitle = LocalizedString("preview_receipt_action_show_attachment")
             let viewAttachment = UIPreviewAction(title: viewActionTitle, style: .default) { _, _ in
-                
+                self.previewShowAttachmentAction.onNext(self.displayData.receipt!)
             }
             
             return [viewAttachment, remove]
@@ -158,6 +164,10 @@ extension EditReceiptView: EditReceiptViewInterface {
     func disableFirstResponeder() {
         displayData.needFirstResponder = false
     }
+    
+    var removeAction: Observable<WBReceipt> { return previewRemoveAction.asObservable() }
+    
+    var showAttachmentAction: Observable<WBReceipt> { return previewShowAttachmentAction.asObservable() }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

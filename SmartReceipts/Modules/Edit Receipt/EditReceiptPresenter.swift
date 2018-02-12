@@ -14,6 +14,9 @@ import UserNotifications
 fileprivate let ANIMATIONS_DURATION: RxTimeInterval = 0.6
 
 protocol EditReceiptModuleInterface {
+    var removeAction: Observable<WBReceipt> { get }
+    var showAttachmentAction: Observable<WBReceipt> { get }
+    
     func disableFirstResponder()
     func makeNameFirstResponder()
 }
@@ -84,6 +87,10 @@ extension EditReceiptPresenter: EditReceiptModuleInterface {
     func makeNameFirstResponder() {
         view.makeNameFirstResponder()
     }
+    
+    var removeAction: Observable<WBReceipt> { return view.removeAction }
+    
+    var showAttachmentAction: Observable<WBReceipt> { return view.showAttachmentAction }
 }
 
 

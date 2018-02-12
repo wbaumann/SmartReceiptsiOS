@@ -20,6 +20,7 @@ class ReceiptsPresenter: Presenter {
     let createReceiptCameraSubject = PublishSubject<Void>()
     let importReceiptFileSubject = PublishSubject<Void>()
     let contentChanged = PublishSubject<Void>()
+    let viewReceiptAttachmentTap = PublishSubject<Void>()
     
     let bag = DisposeBag()
     
@@ -50,9 +51,7 @@ class ReceiptsPresenter: Presenter {
             }).disposed(by: self.bag)
             
             actionsPresenter.viewImageTap.subscribe(onNext:{
-                receipt.attachemntType == .image ?
-                    self.router.openImageViewer(for: receipt) :
-                    self.router.openPDFViewer(for: receipt)
+                self.presentAttachment(for: receipt)
             }).disposed(by: self.bag)
             
         }).disposed(by: bag)
@@ -76,6 +75,10 @@ class ReceiptsPresenter: Presenter {
         importReceiptFileSubject.subscribe(onNext: { [unowned self] in
             self.router.openImportReceiptFile()
         }).disposed(by: bag)
+    }
+    
+    func presentAttachment(for receipt: WBReceipt) {
+        receipt.attachemntType == .image ? router.openImageViewer(for: receipt) : router.openPDFViewer(for: receipt)
     }
 }
 
