@@ -34,6 +34,7 @@ final class ReceiptsView: FetchedTableViewController {
     private var showReceiptCategory = false
     private var lastDateSeparator: String!
     private var showAttachmentMarker = false
+    fileprivate let bag = DisposeBag()
     
     var receiptsCount: Int { get { return itemsCount } }
     override var placeholderTitle: String { get { return LocalizedString("fetched.placeholder.receipts.title") } }
@@ -207,7 +208,18 @@ extension ReceiptsView: UIViewControllerPreviewingDelegate {
         let module = AppModules.editReceipt.build()
         let data = (trip: trip!, receipt: receipt)
         module.presenter.setupView(data: data)
-        module.interface(EditReceiptModuleInterface.self).disableFirstResponder()
+        
+        let previewInterface = module.interface(EditReceiptModuleInterface.self)
+        previewInterface.disableFirstResponder()
+        
+        previewInterface.removeAction
+            .bind(to: presenter.receiptDeleteSubject)
+            .disposed(by: bag)
+        
+        previewInterface
+            .showAttachmentAction.subscribe(onNext: { [unowned self] receipt in
+                self.presenter.presentAttachment(for: receipt)
+            }).disposed(by: bag)
         
         return module.view
     }
