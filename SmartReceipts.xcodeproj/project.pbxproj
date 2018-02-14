@@ -122,6 +122,12 @@
 		71695E6C2023AEE000F1A7C9 /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71695E6A2023AEE000F1A7C9 /* SharedLocalizable.strings */; };
 		71695E6F2023AF2000F1A7C9 /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71695E6D2023AF2000F1A7C9 /* SharedLocalizable.strings */; };
 		716C04221F685467007F9CD2 /* CognitoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C04211F685467007F9CD2 /* CognitoService.swift */; };
+		716F07DD2034AFDF00166D63 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716F07D72034AFDF00166D63 /* Backup.storyboard */; };
+		716F07DE2034AFDF00166D63 /* BackupDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F07D82034AFDF00166D63 /* BackupDisplayData.swift */; };
+		716F07DF2034AFDF00166D63 /* BackupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F07D92034AFDF00166D63 /* BackupPresenter.swift */; };
+		716F07E02034AFDF00166D63 /* BackupRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F07DA2034AFDF00166D63 /* BackupRouter.swift */; };
+		716F07E12034AFDF00166D63 /* BackupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F07DB2034AFDF00166D63 /* BackupInteractor.swift */; };
+		716F07E22034AFDF00166D63 /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F07DC2034AFDF00166D63 /* BackupView.swift */; };
 		716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716F34471EE040E100D0017A /* EditDistance.storyboard */; };
 		716F344E1EE040E100D0017A /* EditDistanceDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F34481EE040E100D0017A /* EditDistanceDisplayData.swift */; };
 		716F344F1EE040E100D0017A /* EditDistanceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F34491EE040E100D0017A /* EditDistanceInteractor.swift */; };
@@ -671,6 +677,12 @@
 		71695E6B2023AEE000F1A7C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = SharedLocalizable.strings; sourceTree = "<group>"; };
 		71695E6E2023AF2000F1A7C9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = SharedLocalizable.strings; sourceTree = "<group>"; };
 		716C04211F685467007F9CD2 /* CognitoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CognitoService.swift; sourceTree = "<group>"; };
+		716F07D72034AFDF00166D63 /* Backup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Backup.storyboard; sourceTree = "<group>"; };
+		716F07D82034AFDF00166D63 /* BackupDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupDisplayData.swift; sourceTree = "<group>"; };
+		716F07D92034AFDF00166D63 /* BackupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupPresenter.swift; sourceTree = "<group>"; };
+		716F07DA2034AFDF00166D63 /* BackupRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupRouter.swift; sourceTree = "<group>"; };
+		716F07DB2034AFDF00166D63 /* BackupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupInteractor.swift; sourceTree = "<group>"; };
+		716F07DC2034AFDF00166D63 /* BackupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
 		716F34471EE040E100D0017A /* EditDistance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditDistance.storyboard; sourceTree = "<group>"; };
 		716F34481EE040E100D0017A /* EditDistanceDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceDisplayData.swift; sourceTree = "<group>"; };
 		716F34491EE040E100D0017A /* EditDistanceInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceInteractor.swift; sourceTree = "<group>"; };
@@ -1281,6 +1293,7 @@
 			isa = PBXGroup;
 			children = (
 				715606711FAF9BCC00E09760 /* APIs */,
+				EA259CD21B16069B00ECBD67 /* Zip */,
 				714901C01F0598B900772B6F /* CurrencyExchangeService.swift */,
 				71EFE1E51F55E04000591C8C /* TooltipService.swift */,
 				7100F7751F5EF20300D4B4D9 /* AuthService.swift */,
@@ -1380,6 +1393,19 @@
 				71AF0EAD2007BE8D00AA4C37 /* DescribedSwitchCell.xib */,
 			);
 			path = "Eureka Custom";
+			sourceTree = "<group>";
+		};
+		716F07D62034AFB400166D63 /* Backup */ = {
+			isa = PBXGroup;
+			children = (
+				716F07D72034AFDF00166D63 /* Backup.storyboard */,
+				716F07D82034AFDF00166D63 /* BackupDisplayData.swift */,
+				716F07D92034AFDF00166D63 /* BackupPresenter.swift */,
+				716F07DA2034AFDF00166D63 /* BackupRouter.swift */,
+				716F07DB2034AFDF00166D63 /* BackupInteractor.swift */,
+				716F07DC2034AFDF00166D63 /* BackupView.swift */,
+			);
+			path = Backup;
 			sourceTree = "<group>";
 		};
 		716F34461EE040A000D0017A /* Edit Distance */ = {
@@ -1598,6 +1624,7 @@
 				71572D7D1F15E929001A1301 /* Settings Submodules */,
 				71ACA7BD1F5B69B50024903E /* Debug */,
 				71E8F3EE1FA12423005BD447 /* OCR Configuration */,
+				716F07D62034AFB400166D63 /* Backup */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1752,7 +1779,6 @@
 			children = (
 				4DF22941192867120008D359 /* Ads */,
 				A79FDC671CEA084000328DBB /* Analytics */,
-				EA259CD21B16069B00ECBD67 /* Backup */,
 				EA4DC9931AF1578300CEF1B9 /* Cells */,
 				7159BA061F06F692004EABAA /* Eureka Custom */,
 				84A73C3418E74C5C00D35A57 /* Collections */,
@@ -1893,13 +1919,13 @@
 			path = pl.lproj;
 			sourceTree = "<group>";
 		};
-		EA259CD21B16069B00ECBD67 /* Backup */ = {
+		EA259CD21B16069B00ECBD67 /* Zip */ = {
 			isa = PBXGroup;
 			children = (
 				71A30F2B1EEC9F05001BA608 /* DataExport.swift */,
 				71A30F2D1EECAA34001BA608 /* DataImport.swift */,
 			);
-			path = Backup;
+			path = Zip;
 			sourceTree = "<group>";
 		};
 		EA259CD91B16071200ECBD67 /* Backup */ = {
@@ -2547,6 +2573,7 @@
 			files = (
 				EA98B51E1B075057006935AE /* WBCellWithPriceNameDate.xib in Resources */,
 				7190B9131F60427200F6CE7F /* Auth.storyboard in Resources */,
+				716F07DD2034AFDF00166D63 /* Backup.storyboard in Resources */,
 				71FB1D3E1F195D0D00742FF5 /* PaymentMethods.storyboard in Resources */,
 				57C125191E12DAEF008551AC /* ServiceAccount.json in Resources */,
 				7185AEF51EFC1CC90038ED2A /* ReceiptMoveCopy.storyboard in Resources */,
@@ -3025,6 +3052,7 @@
 				570515A51E02EFA500BB8FE4 /* ErrorEvent.swift in Sources */,
 				EA07BF501AF4CC19004D17F6 /* Database+Functions.m in Sources */,
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,
+				716F07DE2034AFDF00166D63 /* BackupDisplayData.swift in Sources */,
 				71AEDDDF1EDF7FF400BAC0DD /* TripDistancesInteractor.swift in Sources */,
 				71ACA7C91F5B69C90024903E /* DebugView.swift in Sources */,
 				719B1FE91EF6032D0049BD71 /* EditReceiptDisplayData.swift in Sources */,
@@ -3098,6 +3126,7 @@
 				EAE9DAE81AF8E97100F4FE76 /* DistanceColumn.m in Sources */,
 				71E8F3F71FA12452005BD447 /* OCRConfigurationPresenter.swift in Sources */,
 				719B1FF71EF6033A0049BD71 /* ReceiptActionsPresenter.swift in Sources */,
+				716F07E02034AFDF00166D63 /* BackupRouter.swift in Sources */,
 				7109B00F1F61C35F0043AE04 /* UserDefaults+Extensions.swift in Sources */,
 				A709D7671CF4A58600897DD9 /* NSThread+Extensions.swift in Sources */,
 				A78214F71CFFE60000FD644A /* OpenExchangeRates.swift in Sources */,
@@ -3124,6 +3153,7 @@
 				7190B9171F60427200F6CE7F /* AuthRouter.swift in Sources */,
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
 				719B1FF91EF6033A0049BD71 /* ReceiptActionsView.swift in Sources */,
+				716F07E22034AFDF00166D63 /* BackupView.swift in Sources */,
 				719B1FDF1EF603190049BD71 /* ReceiptsPresenter.swift in Sources */,
 				A7D554CF1CFF061100169FD2 /* WBReceipt+Query.swift in Sources */,
 				57580D1C1DFAB58B0090C488 /* UIDevice+DeviceInfo.m in Sources */,
@@ -3133,6 +3163,7 @@
 				7111ADA81F0EC38100DF77ED /* SettingsPresenter.swift in Sources */,
 				71AEDDE11EDF7FF400BAC0DD /* TripDistancesRouter.swift in Sources */,
 				A7F05BE11CFD95390079F1AD /* FMDatabase+Functions.swift in Sources */,
+				716F07E12034AFDF00166D63 /* BackupInteractor.swift in Sources */,
 				71572D8A1F15EA41001A1301 /* ColumnsView.swift in Sources */,
 				EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */,
 				A7F05B9A1CFB49590079F1AD /* Priced.swift in Sources */,
@@ -3218,6 +3249,7 @@
 				714104E61FF43D7700C334C5 /* SuggestionView.m in Sources */,
 				71AF49E81EFDCC010022B2E2 /* ReceiptImageViewerView.swift in Sources */,
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
+				716F07DF2034AFDF00166D63 /* BackupPresenter.swift in Sources */,
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
 				71B5C5371FB1550F00FA0AB9 /* UIAlert+Extensions.swift in Sources */,
 				71AEDDE71EDF823D00BAC0DD /* AppModules.swift in Sources */,
