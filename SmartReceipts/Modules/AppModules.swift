@@ -26,4 +26,5 @@ enum AppModules: String, ViperitModule {
     case categories
     case debug
     case OCRConfiguration
+    case backup
 }

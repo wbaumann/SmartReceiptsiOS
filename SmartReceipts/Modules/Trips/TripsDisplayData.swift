@@ -16,15 +16,19 @@ fileprivate typealias MenuItem = (title: String, subject: PublishSubject<Void>)
 final class TripsDisplayData: DisplayData {
     private let settingsSubject = PublishSubject<Void>()
     private let autoScansSubject = PublishSubject<Void>()
+    private let backupSubject = PublishSubject<Void>()
+    
     private(set) var menuDisplayData: TripsMenuDisplayData!
     
     var settingsTap: Observable<Void> { return settingsSubject.asObservable() }
     var autoScansTap: Observable<Void> { return autoScansSubject.asObservable() }
+    var backupTap: Observable<Void> { return backupSubject.asObservable() }
     
     required init() {
         let items: [MenuItem]  = [
             (LocalizedString("menu.item.settings"), settingsSubject),
-            (LocalizedString("menu.item.auto.scans"), autoScansSubject)
+            (LocalizedString("menu.item.auto.scans"), autoScansSubject),
+            (LocalizedString("menu_item_backup"), backupSubject)
         ]
         menuDisplayData = TripsMenuDisplayData(items: items)
     }
@@ -35,7 +39,11 @@ final class TripsDisplayData: DisplayData {
         
         let ocrSettingsAction = UIAlertAction(title: LocalizedString("menu.item.auto.scans"),
             style: .default, handler: { _ in self.autoScansSubject.onNext() })
-        return [settingsAction, ocrSettingsAction]
+        
+        let backupAction = UIAlertAction(title: LocalizedString("menu_item_backup"),
+            style: .default, handler: { _ in self.backupSubject.onNext() })
+        
+        return [settingsAction, ocrSettingsAction, backupAction]
     }
     
 }
