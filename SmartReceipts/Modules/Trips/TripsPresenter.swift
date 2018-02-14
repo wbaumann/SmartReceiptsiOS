@@ -57,6 +57,11 @@ class TripsPresenter: Presenter {
                     })
             }).disposed(by: bag)
         
+        view.backupTap
+            .subscribe(onNext: {
+                self.router.openBackup()
+            }).disposed(by: bag)
+        
         view.debugButton.rx.tap
             .subscribe(onNext: {
                 self.router.openDebug()

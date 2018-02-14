@@ -427,6 +427,8 @@
 
 "menu.item.settings" = "Settings";
 "menu.item.auto.scans" = "Automatic Scans (OCR)";
+"menu_item_backup" = "Backups";
+
 "push.request.alert.text" = "Smart Receipts uses silent Push Notifications (ie invisible ones) to complete OCR processing in the background and more rapidly present results. Enabling push notifications will allow us to perform scans more quickly.";
 "scan.status.uploading" = "Uploading...";
 "scan.status.scanning" = "Scanning...";

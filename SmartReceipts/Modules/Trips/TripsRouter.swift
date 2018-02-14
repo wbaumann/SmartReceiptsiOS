@@ -18,6 +18,11 @@ class TripsRouter: Router {
         openModal(module: module)
     }
     
+    func openBackup() {
+        let module = AppModules.backup.build()
+        openModal(module: module)
+    }
+    
     func openDebug() {
         let module = AppModules.debug.build()
         openModal(module: module)
