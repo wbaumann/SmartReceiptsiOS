@@ -22,7 +22,6 @@ protocol SettingsViewInterface {
 final class SettingsView: UserInterface {
     
     @IBOutlet fileprivate weak var doneButtonItem: UIBarButtonItem!
-    fileprivate var documentInteractionController: UIDocumentInteractionController!
     
     private var formView: SettingsFormView!
     private let bag = DisposeBag()
@@ -118,52 +117,6 @@ extension SettingsView: MFMailComposeViewControllerDelegate {
                                          message: error!.localizedDescription))
         }
         dismiss(animated: true, completion: nil)
-    }
-}
-
-//MARK: Backup Files
-extension SettingsView {
-    func showBackup(from: CGRect) {
-        AnalyticsManager.sharedManager.record(event: Event.Navigation.BackupOverflow)
-        
-        let exportAction: (UIAlertAction) -> Void = { [unowned self] action in
-            let hud = PendingHUDView.show(on: self.navigationController!.view)
-            let tick = TickTock.tick()
-            DispatchQueue.global().async {
-                let export = DataExport(workDirectory: FileManager.documentsPath)
-                let exportPath = export.execute()
-                let isFileExists = FileManager.default.fileExists(atPath: exportPath)
-                Logger.info("Export finished: time \(tick.tock()), exportPath: \(exportPath)")
-                
-                DispatchQueue.main.async {
-                    hud.hide()
-                    if isFileExists {
-                        var showRect = from
-                        showRect.origin.y += self.view.frame.origin.y
-                        
-                        let fileUrl = URL(fileURLWithPath: exportPath)
-                        Logger.info("shareBackupFile via UIDocumentInteractionController with url: \(fileUrl)")
-                        let controller = UIDocumentInteractionController(url: fileUrl)
-                        Logger.info("UIDocumentInteractionController UTI: \(controller.uti!)")
-                        controller.presentOptionsMenu(from: showRect, in: self.view, animated: true)
-                        self.documentInteractionController = controller
-                    } else {
-                        Logger.error("Failed to properly export data")
-                        self.presenter.alertSubject
-                            .onNext((title: LocalizedString("generic.error.alert.title"),
-                                   message: LocalizedString("settings.controller.export.error.message")))
-                    }
-                }
-            }
-        }
-        
-        let sheet = UIAlertController(title: LocalizedString("settings.export.confirmation.alert.title"),
-                                    message: LocalizedString("settings.export.confirmation.alert.message"),
-                             preferredStyle: .alert)
-        sheet.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
-        sheet.addAction(UIAlertAction(title: LocalizedString("settings.export.confirmation.export.button"),
-                                      style: .default, handler: exportAction))
-        present(sheet, animated: true, completion: nil)
     }
 }
 

@@ -415,12 +415,7 @@ class SettingsFormView: FormViewController {
         .onChange({ row in
             WBPreferences.setLayoutShowReceiptAttachmentMarker(row.value!)
         })
-        
-        +++ Section(LocalizedString("settings.backup.section.title"))
-        <<< openModuleButton(LocalizedString("settings.backup.button.label"))
-        .onCellSelection({ [unowned self] cell, _ in
-            self.settingsView.showBackup(from: self.tableView.convert(cell.frame, to: self.settingsView.view))
-        })
+            
     
         +++ Section(LocalizedString("settings.feedback.section.label"))
         <<< openModuleButton(LocalizedString("settings.feedback.sendLove.label"),
