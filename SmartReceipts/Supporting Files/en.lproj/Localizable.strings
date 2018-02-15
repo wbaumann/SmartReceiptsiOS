@@ -437,3 +437,9 @@
 "preview_receipt_action_remove" = "Remove";
 "preview_receipt_action_show_attachment" = "Show Attachment";
 
+"backups_view_title" = "Backups";
+"backups_view_manual_title" = "Manual backups:";
+"backups_view_manual_description" = "Back up your data to keep your receipts safe! You can restore your data by importing the SmartReceipts.SMR backup file, which is generated via the \"Backup\" button below.";
+"backups_view_backup_button" = "Backup";
+"backups_view_import_button" = "Import";
+
