@@ -87,6 +87,8 @@
                         <outlet property="backupButton" destination="RAU-ny-7fG" id="rMo-Zu-bQD"/>
                         <outlet property="closeButton" destination="JDd-no-wrt" id="kTY-6r-c0o"/>
                         <outlet property="importButton" destination="hjP-Dt-4xC" id="ZJb-ym-ofc"/>
+                        <outlet property="manualBackupDesctiption" destination="HaV-jy-JHb" id="RKG-H5-gNQ"/>
+                        <outlet property="manualBackupTitle" destination="3jL-ZW-tf8" id="BL7-uH-JJk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nXm-AG-NXG" userLabel="First Responder" sceneMemberID="firstResponder"/>

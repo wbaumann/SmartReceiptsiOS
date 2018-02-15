@@ -22,6 +22,8 @@ final class BackupView: UserInterface {
     @IBOutlet private weak var closeButton: UIBarButtonItem!
     @IBOutlet private weak var importButton: UIButton!
     @IBOutlet private weak var backupButton: UIButton!
+    @IBOutlet private weak var manualBackupTitle: UILabel!
+    @IBOutlet private weak var manualBackupDesctiption: UILabel!
     
     private let bag = DisposeBag()
     
@@ -29,6 +31,15 @@ final class BackupView: UserInterface {
         super.viewDidLoad()
         configureRx()
         configureLayers()
+        localizeUI()
+    }
+    
+    private func localizeUI() {
+        title = LocalizedString("backups_view_title")
+        manualBackupTitle.text = LocalizedString("backups_view_manual_title")
+        manualBackupDesctiption.text = LocalizedString("backups_view_manual_description")
+        importButton.setTitle(LocalizedString("backups_view_import_button").uppercased(), for: .normal)
+        backupButton.setTitle(LocalizedString("backups_view_backup_button").uppercased(), for: .normal)
     }
     
     private func configureRx() {
