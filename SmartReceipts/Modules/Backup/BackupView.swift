@@ -13,6 +13,7 @@ import RxCocoa
 
 //MARK: - Public Interface Protocol
 protocol BackupViewInterface {
+    var importTap: Observable<Void> { get }
 }
 
 //MARK: BackupView Class
@@ -20,7 +21,7 @@ final class BackupView: UserInterface {
     fileprivate var documentInteractionController: UIDocumentInteractionController!
     
     @IBOutlet private weak var closeButton: UIBarButtonItem!
-    @IBOutlet private weak var importButton: UIButton!
+    @IBOutlet fileprivate weak var importButton: UIButton!
     @IBOutlet private weak var backupButton: UIButton!
     @IBOutlet private weak var manualBackupTitle: UILabel!
     @IBOutlet private weak var manualBackupDesctiption: UILabel!
@@ -64,6 +65,7 @@ final class BackupView: UserInterface {
 
 //MARK: - Public interface
 extension BackupView: BackupViewInterface {
+    var importTap: Observable<Void> { return importButton.rx.tap.asObservable() }
 }
 
 //MARK: Backup Files

@@ -8,8 +8,20 @@
 
 import Foundation
 import Viperit
+import RxSwift
 
 class BackupPresenter: Presenter {
+    private let bag = DisposeBag()
+    
+    override func viewHasLoaded() {
+        super.viewHasLoaded()
+        
+        view.importTap
+            .subscribe(onNext: { [unowned self] in
+                self.router.openBackupImport()
+            }).disposed(by: bag)
+    }
+    
 }
 
 

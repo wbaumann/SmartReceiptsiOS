@@ -8,8 +8,18 @@
 
 import Foundation
 import Viperit
+import RxSwift
 
 class BackupRouter: Router {
+    private let bag = DisposeBag()
+    
+    func openBackupImport() {
+        BackupFilePicker.sharedInstance.openFilePicker(on: self._view)
+            .subscribe(onNext: { smrURL in
+                (UIApplication.shared.delegate as? AppDelegate)?.handleSMR(url: smrURL)
+            }).disposed(by: bag)
+    }
+    
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

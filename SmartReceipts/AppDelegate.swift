@@ -105,7 +105,7 @@ extension AppDelegate {
 }
 
 // MARK: Help Methods
-fileprivate extension AppDelegate {
+extension AppDelegate {
     func handlePDForImage(url: URL) {
         var path = url.path
         path = path.hasSuffix("/") ? path.substring(to: String.Index(path.count-1)) : path
@@ -139,11 +139,11 @@ fileprivate extension AppDelegate {
         alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.no"), style: .default, handler: { _ in
             self.importZip(from: url, overwrite: false)
         }))
-        window?.rootViewController?.present(alert, animated: true, completion: nil)
+        AdNavigationEntryPoint.navigationController?.visibleViewController?.present(alert, animated: true)
     }
     
     func importZip(from: URL, overwrite: Bool) {
-        let viewController = window!.rootViewController!
+        guard let viewController = AdNavigationEntryPoint.navigationController?.visibleViewController else { return }
         let hud = PendingHUDView.show(on: viewController.view)
         dataQueue.async {
             self.dataImport = DataImport(inputFile: from.path, output: FileManager.documentsPath)

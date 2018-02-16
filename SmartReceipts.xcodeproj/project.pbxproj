@@ -228,6 +228,7 @@
 		71B8610E1F0A9D800069E251 /* WBAutocompleteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B8610D1F0A9D800069E251 /* WBAutocompleteHelper.m */; };
 		71BC45511F9FB38C003A5BD5 /* LocalScansTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC45501F9FB38C003A5BD5 /* LocalScansTracker.swift */; };
 		71BC45531F9FB3A9003A5BD5 /* ScansPurchaseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC45521F9FB3A9003A5BD5 /* ScansPurchaseTracker.swift */; };
+		71BF11D62036214200DD7FBE /* BackupFilePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF11D52036214200DD7FBE /* BackupFilePicker.swift */; };
 		71C014221F1AB14A005472B3 /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71C0141C1F1AB14A005472B3 /* Categories.storyboard */; };
 		71C014231F1AB14A005472B3 /* CategoriesDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0141D1F1AB14A005472B3 /* CategoriesDisplayData.swift */; };
 		71C014241F1AB14A005472B3 /* CategoriesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0141E1F1AB14A005472B3 /* CategoriesInteractor.swift */; };
@@ -797,6 +798,7 @@
 		71BC45501F9FB38C003A5BD5 /* LocalScansTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalScansTracker.swift; sourceTree = "<group>"; };
 		71BC45521F9FB3A9003A5BD5 /* ScansPurchaseTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScansPurchaseTracker.swift; sourceTree = "<group>"; };
 		71BC45541F9FC9B4003A5BD5 /* LocalScansTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalScansTrackerTests.swift; sourceTree = "<group>"; };
+		71BF11D52036214200DD7FBE /* BackupFilePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupFilePicker.swift; sourceTree = "<group>"; };
 		71C0141C1F1AB14A005472B3 /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
 		71C0141D1F1AB14A005472B3 /* CategoriesDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesDisplayData.swift; sourceTree = "<group>"; };
 		71C0141E1F1AB14A005472B3 /* CategoriesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesInteractor.swift; sourceTree = "<group>"; };
@@ -1437,6 +1439,7 @@
 				EA46678E1AE7EA1600B4E502 /* ImagePicker.m */,
 				71AF49E61EFDBF850022B2E2 /* ImagePicker+Extensions.swift */,
 				717EE42420139D0600819BDC /* ReceiptFilePicker.swift */,
+				71BF11D52036214200DD7FBE /* BackupFilePicker.swift */,
 			);
 			path = Import;
 			sourceTree = "<group>";
@@ -3225,6 +3228,7 @@
 				71E2B57E1EEDD516001D02F1 /* TripsInteractor.swift in Sources */,
 				714104DF1FF43D7700C334C5 /* WBAbstractPicker.m in Sources */,
 				EAE9DAEB1AF8EA5500F4FE76 /* DistanceLocationColumn.m in Sources */,
+				71BF11D62036214200DD7FBE /* BackupFilePicker.swift in Sources */,
 				71FB1D411F195D0D00742FF5 /* PaymentMethodsPresenter.swift in Sources */,
 				EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */,
 				71572D891F15EA41001A1301 /* ColumnsRouter.swift in Sources */,
