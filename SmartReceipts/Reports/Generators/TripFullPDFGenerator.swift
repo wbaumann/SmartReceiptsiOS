@@ -60,6 +60,9 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
             
             if receipt.isReimbursable {
                 reimbursableTotal.addPrice(price)
+                if WBPreferences.enteredPricePreTax() {
+                    reimbursableTotal.addPrice(tax)
+                }
             } else {
                 hasNonReimbursable = true
             }
@@ -69,6 +72,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         
         for distance in dists {
             grandTotal.addPrice(distance.totalRate())
+            reimbursableTotal.addPrice(distance.totalRate())
             distanceTotal.addPrice(distance.totalRate())
         }
         
@@ -93,9 +97,9 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         if !WBPreferences.includeTaxField() && recs.count > 0 || !taxesTotal.hasValue() {
             pdfRender.appendHeader(row: "\(LocalizedString("pdf_report_receipts_total_label")) \(fp(receiptTotal))")
         } else if WBPreferences.includeTaxField() && taxesTotal.hasValue() {
-            pdfRender.appendHeader(row: "\(LocalizedString("pdf_report_receipts_total_with_tax_label")) \(fp(receiptTotal))")
             pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.sans.tax.label")) \(fp(noTaxesTotal))")
             pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.tax.total.label")) \(fp(taxesTotal))")
+            pdfRender.appendHeader(row: "\(LocalizedString("pdf_report_receipts_total_with_tax_label")) \(fp(receiptTotal))")
         }
         
         if dists.count > 0 {
