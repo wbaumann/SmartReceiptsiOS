@@ -236,10 +236,9 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         
         if let tax = gScan.taxAmount, WBPreferences.includeTaxField()  {
             if let amount = gScan.totalAmount, WBPreferences.enteredPricePreTax() {
-                receipt.setTax(NSDecimalNumber(value: amount - tax))
-            } else {
-                receipt.setTax(NSDecimalNumber(value: tax))
+                receipt.setPrice(NSDecimalNumber(value: amount - tax), currency: trip.defaultCurrency.code)
             }
+            receipt.setTax(NSDecimalNumber(value: tax))
         }
     }
     
