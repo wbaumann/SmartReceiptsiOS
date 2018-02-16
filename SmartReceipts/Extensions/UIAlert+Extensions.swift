@@ -21,7 +21,7 @@ extension UIAlertController {
             return Disposables.create()
         }
         if let vc = on ?? UIApplication.shared.keyWindow?.rootViewController {
-            vc.show(controller, sender: nil)
+            vc.present(controller, animated: true, completion: nil)
         } else { Logger.error("Can't show UIAlertController on nil ViewController") }
         return result
     }
