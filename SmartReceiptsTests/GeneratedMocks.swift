@@ -1324,6 +1324,19 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
         
     }
     
+     override func openBackup()  {
+        
+            return cuckoo_manager.call("openBackup()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.openBackup()
+                    }
+                })
+        
+    }
+    
      override func openDebug()  {
         
             return cuckoo_manager.call("openDebug()",
@@ -1429,6 +1442,11 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
             return .init(stub: cuckoo_manager.createStub("openSettings()", parameterMatchers: matchers))
         }
         
+        func openBackup() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("openBackup()", parameterMatchers: matchers))
+        }
+        
         func openDebug() -> Cuckoo.StubNoReturnFunction<()> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return .init(stub: cuckoo_manager.createStub("openDebug()", parameterMatchers: matchers))
@@ -1488,6 +1506,12 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
         }
         
         @discardableResult
+        func openBackup() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("openBackup()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
         func openDebug() -> Cuckoo.__DoNotUse<Void> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return cuckoo_manager.verify("openDebug()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
@@ -1541,6 +1565,10 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
 
     
      override func openSettings()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func openBackup()  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
@@ -2259,6 +2287,19 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
         
     }
     
+     override func presentAttachment(for receipt: WBReceipt)  {
+        
+            return cuckoo_manager.call("presentAttachment(for: WBReceipt)",
+                parameters: (receipt),
+                original: observed.map { o in
+                    return { (args) in
+                        let (receipt) = args
+                         o.presentAttachment(for: receipt)
+                    }
+                })
+        
+    }
+    
 
     struct __StubbingProxy_ReceiptsPresenter: Cuckoo.StubbingProxy {
         private let cuckoo_manager: Cuckoo.MockManager
@@ -2280,6 +2321,11 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
         func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.StubNoReturnFunction<(Any)> where M1.MatchedType == Any {
             let matchers: [Cuckoo.ParameterMatcher<(Any)>] = [wrap(matchable: data) { $0 }]
             return .init(stub: cuckoo_manager.createStub("setupView(data: Any)", parameterMatchers: matchers))
+        }
+        
+        func presentAttachment<M1: Cuckoo.Matchable>(for receipt: M1) -> Cuckoo.StubNoReturnFunction<(WBReceipt)> where M1.MatchedType == WBReceipt {
+            let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
+            return .init(stub: cuckoo_manager.createStub("presentAttachment(for: WBReceipt)", parameterMatchers: matchers))
         }
         
     }
@@ -2315,6 +2361,12 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
             return cuckoo_manager.verify("setupView(data: Any)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
+        @discardableResult
+        func presentAttachment<M1: Cuckoo.Matchable>(for receipt: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBReceipt {
+            let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
+            return cuckoo_manager.verify("presentAttachment(for: WBReceipt)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
     }
 
 
@@ -2338,6 +2390,10 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.Mock {
     }
     
      override func setupView(data: Any)  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func presentAttachment(for receipt: WBReceipt)  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
@@ -7139,6 +7195,167 @@ import Foundation
 import RxSwift
 import UserNotifications
 import Viperit
+
+class MockEditReceiptModuleInterface: EditReceiptModuleInterface, Cuckoo.Mock {
+    typealias MocksType = EditReceiptModuleInterface
+    typealias Stubbing = __StubbingProxy_EditReceiptModuleInterface
+    typealias Verification = __VerificationProxy_EditReceiptModuleInterface
+    let cuckoo_manager = Cuckoo.MockManager()
+
+    private var observed: EditReceiptModuleInterface?
+
+    func spy(on victim: EditReceiptModuleInterface) -> Self {
+        observed = victim
+        return self
+    }
+
+    
+    // ["name": "removeAction", "accesibility": "", "@type": "InstanceVariable", "type": "Observable<WBReceipt>", "isReadOnly": true]
+     var removeAction: Observable<WBReceipt> {
+        get {
+            return cuckoo_manager.getter("removeAction", original: observed.map { o in return { () -> Observable<WBReceipt> in o.removeAction }})
+        }
+        
+    }
+    
+    // ["name": "showAttachmentAction", "accesibility": "", "@type": "InstanceVariable", "type": "Observable<WBReceipt>", "isReadOnly": true]
+     var showAttachmentAction: Observable<WBReceipt> {
+        get {
+            return cuckoo_manager.getter("showAttachmentAction", original: observed.map { o in return { () -> Observable<WBReceipt> in o.showAttachmentAction }})
+        }
+        
+    }
+    
+
+    
+
+    
+     func disableFirstResponder()  {
+        
+            return cuckoo_manager.call("disableFirstResponder()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.disableFirstResponder()
+                    }
+                })
+        
+    }
+    
+     func makeNameFirstResponder()  {
+        
+            return cuckoo_manager.call("makeNameFirstResponder()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.makeNameFirstResponder()
+                    }
+                })
+        
+    }
+    
+
+    struct __StubbingProxy_EditReceiptModuleInterface: Cuckoo.StubbingProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+
+        init(manager: Cuckoo.MockManager) {
+            self.cuckoo_manager = manager
+        }
+        
+        var removeAction: Cuckoo.ToBeStubbedReadOnlyProperty<Observable<WBReceipt>> {
+            return .init(manager: cuckoo_manager, name: "removeAction")
+        }
+        
+        var showAttachmentAction: Cuckoo.ToBeStubbedReadOnlyProperty<Observable<WBReceipt>> {
+            return .init(manager: cuckoo_manager, name: "showAttachmentAction")
+        }
+        
+        
+        func disableFirstResponder() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("disableFirstResponder()", parameterMatchers: matchers))
+        }
+        
+        func makeNameFirstResponder() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("makeNameFirstResponder()", parameterMatchers: matchers))
+        }
+        
+    }
+
+
+    struct __VerificationProxy_EditReceiptModuleInterface: Cuckoo.VerificationProxy {
+        private let cuckoo_manager: Cuckoo.MockManager
+        private let callMatcher: Cuckoo.CallMatcher
+        private let sourceLocation: Cuckoo.SourceLocation
+
+        init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+            self.cuckoo_manager = manager
+            self.callMatcher = callMatcher
+            self.sourceLocation = sourceLocation
+        }
+
+        
+        var removeAction: Cuckoo.VerifyReadOnlyProperty<Observable<WBReceipt>> {
+            return .init(manager: cuckoo_manager, name: "removeAction", callMatcher: callMatcher, sourceLocation: sourceLocation)
+        }
+        
+        var showAttachmentAction: Cuckoo.VerifyReadOnlyProperty<Observable<WBReceipt>> {
+            return .init(manager: cuckoo_manager, name: "showAttachmentAction", callMatcher: callMatcher, sourceLocation: sourceLocation)
+        }
+        
+
+        
+        @discardableResult
+        func disableFirstResponder() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("disableFirstResponder()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func makeNameFirstResponder() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("makeNameFirstResponder()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+    }
+
+
+}
+
+ class EditReceiptModuleInterfaceStub: EditReceiptModuleInterface {
+    
+     var removeAction: Observable<WBReceipt> {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (Observable<WBReceipt>).self)
+        }
+        
+    }
+    
+     var showAttachmentAction: Observable<WBReceipt> {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (Observable<WBReceipt>).self)
+        }
+        
+    }
+    
+
+    
+
+    
+     func disableFirstResponder()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     func makeNameFirstResponder()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+}
+
+
 
 class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.Mock {
     typealias MocksType = EditReceiptPresenter
