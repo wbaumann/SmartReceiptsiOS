@@ -118,6 +118,7 @@ class PrettyPDFRender: NSObject {
         openTable.columns = partialTable.columns
         openTable.rows = partialTable.rows
         openTable.rowToStart = partialTable.rowsAdded
+        openTable.footers = partialTable.footers
         closeTable()
     }
     
