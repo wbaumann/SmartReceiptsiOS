@@ -82,11 +82,11 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         let endDate = dateFormatter.formattedDate(trip.endDate, in: trip.endTimeZone)!
         pdfRender.appendHeader(row: String(format: LocalizedString("pdf.report.from.to.label.base"), startDate, endDate))
         
-        if WBPreferences.trackCostCenter() && !trip.costCenter.isEmpty {
+        if let costCenter = trip.costCenter, WBPreferences.trackCostCenter() && !trip.costCenter.isEmpty {
             pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.const.center.label")) \(trip.costCenter)")
         }
         
-        if trip.comment != nil && !trip.comment.isEmpty {
+        if let comment = trip.comment, !trip.comment.isEmpty {
             pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.comment.label")) \(trip.comment)")
         }
         
