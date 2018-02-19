@@ -168,7 +168,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             cell.configureCell()
         })
         
-        <<< PickerInlineRow<String>() { row in
+        <<< InlinePickerButtonRow() { row in
             row.title = LocalizedString("edit.receipt.category.label")
             row.options = allCategories()
             row.value = receipt.category
