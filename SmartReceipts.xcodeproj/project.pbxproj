@@ -138,6 +138,9 @@
 		71762E7A1FD4713000AC1388 /* TripImagesPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71762E791FD4713000AC1388 /* TripImagesPDFGenerator.swift */; };
 		71762E7C1FD4716200AC1388 /* TripFullPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71762E7B1FD4716200AC1388 /* TripFullPDFGenerator.swift */; };
 		717865EB200A8738004684A6 /* CategoryColumns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717865EA200A8737004684A6 /* CategoryColumns.swift */; };
+		717DDB95203B5503000486C3 /* PickerButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717DDB93203B5503000486C3 /* PickerButtonCell.xib */; };
+		717DDB96203B5503000486C3 /* InlinePickerButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717DDB94203B5503000486C3 /* InlinePickerButtonCell.xib */; };
+		717DDB98203B59A7000486C3 /* PickerButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DDB97203B59A7000486C3 /* PickerButtonCell.swift */; };
 		717EE42520139D0600819BDC /* ReceiptFilePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EE42420139D0600819BDC /* ReceiptFilePicker.swift */; };
 		717F596F1EE5C73200C240D8 /* AppModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDE61EDF823D00BAC0DD /* AppModules.swift */; };
 		7182CDD31F08F37200EAA320 /* MatchableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDD21F08F37200EAA320 /* MatchableExtensions.swift */; };
@@ -293,6 +296,7 @@
 		71E8F3FA1FA12452005BD447 /* OCRConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E8F3F41FA12452005BD447 /* OCRConfigurationView.swift */; };
 		71EFE1E61F55E04000591C8C /* TooltipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EFE1E51F55E04000591C8C /* TooltipService.swift */; };
 		71F172371FD3D9C100876E9D /* PrettyPDFRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F172361FD3D9C100876E9D /* PrettyPDFRender.swift */; };
+		71F2B1CA2039EC5100581E65 /* InlinePickerButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3F4D72038985E00117E90 /* InlinePickerButtonCell.swift */; };
 		71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3CFC01EDC856C00B04015 /* UIViewController+NavigationBar.swift */; };
 		71F3E3271F0DDBC5008FE932 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B8610F1F0AD3080069E251 /* Price.swift */; };
 		71F468321EEEDB03009F6CE7 /* EditTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F4682C1EEEDB03009F6CE7 /* EditTrip.storyboard */; };
@@ -694,6 +698,9 @@
 		71762E791FD4713000AC1388 /* TripImagesPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripImagesPDFGenerator.swift; sourceTree = "<group>"; };
 		71762E7B1FD4716200AC1388 /* TripFullPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripFullPDFGenerator.swift; sourceTree = "<group>"; };
 		717865EA200A8737004684A6 /* CategoryColumns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColumns.swift; sourceTree = "<group>"; };
+		717DDB93203B5503000486C3 /* PickerButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerButtonCell.xib; sourceTree = "<group>"; };
+		717DDB94203B5503000486C3 /* InlinePickerButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InlinePickerButtonCell.xib; sourceTree = "<group>"; };
+		717DDB97203B59A7000486C3 /* PickerButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerButtonCell.swift; sourceTree = "<group>"; };
 		717EE42420139D0600819BDC /* ReceiptFilePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptFilePicker.swift; sourceTree = "<group>"; };
 		7182CDCE1F085E9B00EAA320 /* CurrencyExchangeServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeServiceTests.swift; sourceTree = "<group>"; };
 		7182CDD01F08663100EAA320 /* ReceiptActionsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsModuleTest.swift; sourceTree = "<group>"; };
@@ -760,6 +767,7 @@
 		719B7E16201C98F7005F59A9 /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		71A30F2B1EEC9F05001BA608 /* DataExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExport.swift; sourceTree = "<group>"; };
 		71A30F2D1EECAA34001BA608 /* DataImport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImport.swift; sourceTree = "<group>"; };
+		71A3F4D72038985E00117E90 /* InlinePickerButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InlinePickerButtonCell.swift; sourceTree = "<group>"; };
 		71AC501E1F41DD3F00549BAA /* TableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		71ACA7B91F5B5A830024903E /* FeatureFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlags.swift; sourceTree = "<group>"; };
 		71ACA7BE1F5B69C90024903E /* Debug.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
@@ -1393,6 +1401,7 @@
 				7156066D1FAE67CF00E09760 /* ScanCell.xib */,
 				71AF0EAB2007BE7A00AA4C37 /* DescribedSwitchCell.swift */,
 				71AF0EAD2007BE8D00AA4C37 /* DescribedSwitchCell.xib */,
+				717DDB92203B4E4A000486C3 /* PickerButtonCell */,
 			);
 			path = "Eureka Custom";
 			sourceTree = "<group>";
@@ -1430,6 +1439,17 @@
 				717865EA200A8737004684A6 /* CategoryColumns.swift */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		717DDB92203B4E4A000486C3 /* PickerButtonCell */ = {
+			isa = PBXGroup;
+			children = (
+				71A3F4D72038985E00117E90 /* InlinePickerButtonCell.swift */,
+				717DDB94203B5503000486C3 /* InlinePickerButtonCell.xib */,
+				717DDB97203B59A7000486C3 /* PickerButtonCell.swift */,
+				717DDB93203B5503000486C3 /* PickerButtonCell.xib */,
+			);
+			path = PickerButtonCell;
 			sourceTree = "<group>";
 		};
 		717EE427201518C300819BDC /* Import */ = {
@@ -2574,6 +2594,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				717DDB96203B5503000486C3 /* InlinePickerButtonCell.xib in Resources */,
 				EA98B51E1B075057006935AE /* WBCellWithPriceNameDate.xib in Resources */,
 				7190B9131F60427200F6CE7F /* Auth.storyboard in Resources */,
 				716F07DD2034AFDF00166D63 /* Backup.storyboard in Resources */,
@@ -2603,6 +2624,7 @@
 				719B1FE81EF6032D0049BD71 /* EditReceipt.storyboard in Resources */,
 				71572D851F15EA41001A1301 /* Columns.storyboard in Resources */,
 				7167239B1F10540200400BFF /* CustomSegmentedCell.xib in Resources */,
+				717DDB95203B5503000486C3 /* PickerButtonCell.xib in Resources */,
 				EAF6FE121B543ABB0005E2CE /* PDFImageView.xib in Resources */,
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
 				71695E6C2023AEE000F1A7C9 /* SharedLocalizable.strings in Resources */,
@@ -3218,6 +3240,7 @@
 				EAF9ADE61AECF8F80000AC84 /* DatabaseCreateAtVersion11.m in Sources */,
 				EA8D818E1AEA7BBC00BAC943 /* ReceiptColumnReportName.m in Sources */,
 				579DDFB21E2E4223004937F7 /* UIImage+Extensions.swift in Sources */,
+				717DDB98203B59A7000486C3 /* PickerButtonCell.swift in Sources */,
 				A7F05BBC1CFC31520079F1AD /* WBCurrency+Extensions.swift in Sources */,
 				57691F001E10613500F78859 /* RateApplication.m in Sources */,
 				71ACA7BA1F5B5A830024903E /* FeatureFlags.swift in Sources */,
@@ -3245,6 +3268,7 @@
 				EA8D819D1AEA7C4200BAC943 /* ReceiptColumnComment.m in Sources */,
 				71C014271F1AB14A005472B3 /* CategoriesView.swift in Sources */,
 				EA07BF5F1AF4E801004D17F6 /* DistanceSummaryCell.m in Sources */,
+				71F2B1CA2039EC5100581E65 /* InlinePickerButtonCell.swift in Sources */,
 				A7D554D11CFF0F5000169FD2 /* FMDatabase+Trips.swift in Sources */,
 				71AF49E21EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift in Sources */,
 				71859DCE2010F97B00156B40 /* UpsellBannerAdView.swift in Sources */,
