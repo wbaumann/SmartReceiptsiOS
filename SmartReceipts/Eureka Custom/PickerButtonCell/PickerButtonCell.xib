@@ -22,6 +22,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="gfi-ns-qTl"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                     <state key="normal" title="Button">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>

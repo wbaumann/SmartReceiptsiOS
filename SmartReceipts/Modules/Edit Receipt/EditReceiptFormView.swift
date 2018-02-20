@@ -172,6 +172,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             row.title = LocalizedString("edit.receipt.category.label")
             row.options = allCategories()
             row.value = receipt.category
+            row.buttonTitle = LocalizedString("edit_receipt_manage_categories_button").uppercased()
         }.onChange({ [unowned self] row in
             self.receipt.category = row.value!
             self.matchCategory(value: row.value)
@@ -189,14 +190,15 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             cell.configureCell()
         })
             
-        <<< PickerInlineRow<PaymentMethod>() { row in
+        <<< InlinePickerButtonRow() { row in
             row.title = LocalizedString("edit.receipt.payment.method.label")
-            row.options = Database.sharedInstance().allPaymentMethods()
-            row.value = receipt.paymentMethod
-            row.hidden = Condition.init(booleanLiteral: !WBPreferences.usePaymentMethods())
+            //row.options = Database.sharedInstance().allPaymentMethods()
+            //row.value = receipt.paymentMethod
+            //row.hidden = Condition.init(booleanLiteral: !WBPreferences.usePaymentMethods())
+            row.buttonTitle = LocalizedString("edit_receipt_manage_payment_button").uppercased()
         }.onChange({ [unowned self] row in
             if let val = row.value {
-                self.receipt.paymentMethod = val
+                //self.receipt.paymentMethod = val
             }
         }).cellSetup({ cell, _ in
             cell.configureCell()

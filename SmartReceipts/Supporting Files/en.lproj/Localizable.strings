@@ -122,6 +122,7 @@
 "edit.payment.method.controller.update" = "Update";
 "edit.payment.method.controller.cancel" = "Cancel";
 "edit.payment.method.controller.add" = "Add";
+"edit_receipt_manage_categories_button" = "Manage Categories";
 "edit.receipt.category.label" = "Category";
 "edit.receipt.comment.label" = "Comment";
 "edit.receipt.comment.placeholder" = "Your comments here";
@@ -138,6 +139,7 @@
 "edit.receipt.name.label" = "Name";
 "edit.receipt.name.placeholder" = "Name of your receipt";
 "edit.receipt.payment.method.label" = "Payment Method";
+"edit_receipt_manage_payment_button" = "Manage Payment Methods";
 "edit.receipt.price.label" = "Price";
 "edit.receipt.price.placeholder" = "e.g. 25.00";
 "edit.receipt.reimbursable.label" = "Reimbursable";
