@@ -23,6 +23,8 @@ final class InlinePickerButtonCell : Cell<String>, CellType {
     
     override func update() {
         super.update()
+        titleLabel.text = row.title
+        valueLabel.text = row.value
     }
     
     override func setup() {
@@ -39,11 +41,19 @@ class _InlinePickerButtonRow: Row<InlinePickerButtonCell> {
     
     required init(tag: String?) {
         super.init(tag: tag)
-        displayValueFor = nil
+        displayValueFor = { [unowned self] value in
+            self.cell.valueLabel.text = value
+            self.value = value
+            return value
+        }
     }
 }
 
 final class InlinePickerButtonRow: _InlinePickerButtonRow, RowType, InlineRowType {
+    
+    var buttonTitle: String? {
+        didSet { inlineRow?.buttonTitle = buttonTitle }
+    }
     
     override var value: String? {
         didSet { inlineRow?.value = value }
@@ -56,6 +66,8 @@ final class InlinePickerButtonRow: _InlinePickerButtonRow, RowType, InlineRowTyp
     func setupInlineRow(_ inlineRow: PickerButtonRow) {
         inlineRow.options = options
         inlineRow.value = value
+        inlineRow.buttonTitle = buttonTitle
+        inlineRow.displayValueFor = displayValueFor
     }
     
     typealias InlineRow = PickerButtonRow

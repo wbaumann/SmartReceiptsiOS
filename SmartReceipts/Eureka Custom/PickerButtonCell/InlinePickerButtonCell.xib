@@ -16,14 +16,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIZ-bp-fCV">
-                    <rect key="frame" x="16" y="11.5" width="41" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="700" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIZ-bp-fCV">
+                    <rect key="frame" x="16" y="12" width="35.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-Yg-cRq">
-                    <rect key="frame" x="326" y="11.5" width="33" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-Yg-cRq">
+                    <rect key="frame" x="67.5" y="11.5" width="291.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                     <color key="textColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -35,14 +35,15 @@
                 <constraint firstItem="7Rf-Yg-cRq" firstAttribute="centerY" secondItem="eIZ-bp-fCV" secondAttribute="centerY" id="7JI-g3-Zkk"/>
                 <constraint firstItem="eIZ-bp-fCV" firstAttribute="leading" secondItem="ylS-QC-G8c" secondAttribute="leading" constant="16" id="9Xn-ca-nyT"/>
                 <constraint firstItem="ylS-QC-G8c" firstAttribute="trailing" secondItem="7Rf-Yg-cRq" secondAttribute="trailing" constant="16" id="CFS-Yl-n2J"/>
+                <constraint firstItem="7Rf-Yg-cRq" firstAttribute="leading" secondItem="eIZ-bp-fCV" secondAttribute="trailing" constant="16" id="Ecx-EB-ePZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="ylS-QC-G8c"/>
             <connections>
-                <outlet property="titleLabel" destination="7Rf-Yg-cRq" id="dbL-G3-vEd"/>
+                <outlet property="titleLabel" destination="eIZ-bp-fCV" id="Ddf-dw-Bne"/>
                 <outlet property="valueLabel" destination="7Rf-Yg-cRq" id="Q6J-Rl-9rN"/>
             </connections>
-            <point key="canvasLocation" x="26.5" y="155.5"/>
+            <point key="canvasLocation" x="26.5" y="155"/>
         </view>
     </objects>
 </document>

@@ -32,15 +32,12 @@ final class PickerButtonCell : Cell<String>, CellType {
     override func setup() {
         super.setup()
         selectionStyle = .none
+        displayData.row = row()
         pickerView.delegate = displayData
         pickerView.dataSource = displayData
         pickerView.showsSelectionIndicator = true
         button.layer.cornerRadius = BUTTON_CORNER_RADIUS
         height = { 180 }
-    }
-    
-    override func didSelect() {
-        
     }
     
     func row() -> PickerButtonRow {
@@ -60,11 +57,14 @@ class _PickerButtonRow: Row<PickerButtonCell> {
     
     required init(tag: String?) {
         super.init(tag: tag)
-        displayValueFor = nil
     }
 }
 
 final class PickerButtonRow: _PickerButtonRow, RowType {
+    var buttonTitle: String? {
+        get { return cell.button.title(for: .normal) }
+        set { cell.button.setTitle(newValue, for: .normal) }
+    }
     
     override var value: String? {
         get { return options[cell.pickerView.selectedRow(inComponent: 0)] }
@@ -90,6 +90,7 @@ final class PickerButtonRow: _PickerButtonRow, RowType {
 
 fileprivate class PickerDisplayData: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     var options = [String]()
+    weak var row: PickerButtonRow?
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -101,5 +102,9 @@ fileprivate class PickerDisplayData: NSObject, UIPickerViewDelegate, UIPickerVie
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return options[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        _ = self.row?.displayValueFor?(options[row])
     }
 }
