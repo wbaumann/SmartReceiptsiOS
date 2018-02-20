@@ -44,10 +44,18 @@ class _InlinePickerButtonRow: Row<InlinePickerButtonCell> {
 }
 
 final class InlinePickerButtonRow: _InlinePickerButtonRow, RowType, InlineRowType {
-    var options = [String]()
+    
+    override var value: String? {
+        didSet { inlineRow?.value = value }
+    }
+    
+    var options = [String]() {
+        didSet { inlineRow?.options = options }
+    }
     
     func setupInlineRow(_ inlineRow: PickerButtonRow) {
-        
+        inlineRow.options = options
+        inlineRow.value = value
     }
     
     typealias InlineRow = PickerButtonRow
