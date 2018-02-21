@@ -20,6 +20,8 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     let receiptSubject = PublishSubject<WBReceipt>()
     let errorSubject = PublishSubject<String>()
     weak var settingsTap: PublishSubject<Void>?
+    weak var manageCategoryTap: Observable<Void>?
+    weak var managePaymentMethodsTap: Observable<Void>?
     var needFirstResponder = true
     
     private var isNewReceipt = false
@@ -168,16 +170,15 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             cell.configureCell()
         })
         
-        <<< InlinePickerButtonRow() { row in
+        <<< InlinePickerButtonRow() { [unowned self] row in
             row.title = LocalizedString("edit.receipt.category.label")
             row.options = allCategories()
             row.value = receipt.category
             row.buttonTitle = LocalizedString("edit_receipt_manage_categories_button").uppercased()
+            self.manageCategoryTap = row.buttonTap
         }.onChange({ [unowned self] row in
             self.receipt.category = row.value!
             self.matchCategory(value: row.value)
-        }).cellSetup({ cell, _ in
-            cell.configureCell()
         })
         
         <<< TextRow(COMMENT_ROW_TAG) { row in
@@ -190,18 +191,17 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             cell.configureCell()
         })
             
-        <<< InlinePickerButtonRow() { row in
+        <<< InlinePickerButtonRow() { [unowned self] row in
             row.title = LocalizedString("edit.receipt.payment.method.label")
             row.options = Database.sharedInstance().allPaymentMethodsAsStrings()
             row.value = receipt.paymentMethod.method
             row.hidden = Condition.init(booleanLiteral: !WBPreferences.usePaymentMethods())
             row.buttonTitle = LocalizedString("edit_receipt_manage_payment_button").uppercased()
+            self.managePaymentMethodsTap = row.buttonTap
         }.onChange({ [unowned self] row in
             if let name = row.value {
                 self.receipt.paymentMethod = Database.sharedInstance().paymentMethod(byName: name)
             }
-        }).cellSetup({ cell, _ in
-            cell.configureCell()
         })
             
         <<< CheckRow() { row in

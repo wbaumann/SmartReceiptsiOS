@@ -80,6 +80,14 @@ final class EditReceiptView: UserInterface {
         formView.errorSubject.subscribe(onNext: { [unowned self] errorDescription in
             self.presenter.present(errorDescription: errorDescription)
         }).addDisposableTo(bag)
+        
+        formView.manageCategoryTap?.subscribe(onNext: {
+            print("manageCategoryTap")
+        }).disposed(by: bag)
+        
+        formView.managePaymentMethodsTap?.subscribe(onNext: {
+            print("managePaymentMethodsTap")
+        }).disposed(by: bag)
     }
     
     private func configureTitle() {
