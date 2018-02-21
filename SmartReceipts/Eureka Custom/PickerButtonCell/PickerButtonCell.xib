@@ -6,51 +6,50 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="00B-m4-hWf" customClass="PickerButtonCell" customModule="SmartReceipts" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fAo-b3-0NQ" customClass="PickerButtonCell" customModule="SmartReceipts" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ck-V7-PGW">
-                    <rect key="frame" x="16" y="140" width="343" height="36"/>
-                    <color key="backgroundColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="36" id="gfi-ns-qTl"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                    <state key="normal" title="Button">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="buttonTap" destination="00B-m4-hWf" eventType="touchUpInside" id="r4E-GU-Un8"/>
-                    </connections>
-                </button>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmM-Ep-9Qc">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
-                </pickerView>
-            </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="hmM-Ep-9Qc" firstAttribute="leading" secondItem="00B-m4-hWf" secondAttribute="leading" id="CeX-aR-5ZO"/>
-                <constraint firstAttribute="trailing" secondItem="hmM-Ep-9Qc" secondAttribute="trailing" id="JZc-MM-c4P"/>
-                <constraint firstAttribute="bottom" secondItem="2ck-V7-PGW" secondAttribute="bottom" constant="4" id="c44-xM-XKS"/>
-                <constraint firstItem="2ck-V7-PGW" firstAttribute="top" secondItem="hmM-Ep-9Qc" secondAttribute="bottom" id="k3A-9i-Qbn"/>
-                <constraint firstItem="hmM-Ep-9Qc" firstAttribute="top" secondItem="00B-m4-hWf" secondAttribute="top" id="pq5-89-VDQ"/>
-                <constraint firstAttribute="trailing" secondItem="2ck-V7-PGW" secondAttribute="trailing" constant="16" id="tuQ-eI-GAW"/>
-                <constraint firstItem="2ck-V7-PGW" firstAttribute="leading" secondItem="00B-m4-hWf" secondAttribute="leading" constant="16" id="wl3-jE-wXH"/>
-            </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="4cv-EE-5VD"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fAo-b3-0NQ" id="nnN-Wx-zEL">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="179.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmM-Ep-9Qc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
+                    </pickerView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ck-V7-PGW">
+                        <rect key="frame" x="16" y="139.5" width="343" height="36"/>
+                        <color key="backgroundColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="gfi-ns-qTl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <state key="normal" title="Button">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="buttonTap" destination="fAo-b3-0NQ" eventType="touchUpInside" id="hg0-2N-jxk"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="2ck-V7-PGW" firstAttribute="leading" secondItem="nnN-Wx-zEL" secondAttribute="leading" constant="16" id="WTb-5P-Afe"/>
+                    <constraint firstAttribute="trailing" secondItem="2ck-V7-PGW" secondAttribute="trailing" constant="16" id="cdG-gY-Jk4"/>
+                    <constraint firstAttribute="trailing" secondItem="hmM-Ep-9Qc" secondAttribute="trailing" id="f3e-Ow-YHX"/>
+                    <constraint firstItem="2ck-V7-PGW" firstAttribute="top" secondItem="hmM-Ep-9Qc" secondAttribute="bottom" id="nW5-1M-kYc"/>
+                    <constraint firstItem="hmM-Ep-9Qc" firstAttribute="top" secondItem="nnN-Wx-zEL" secondAttribute="top" id="uTj-ze-U2U"/>
+                    <constraint firstItem="hmM-Ep-9Qc" firstAttribute="leading" secondItem="nnN-Wx-zEL" secondAttribute="leading" id="y8h-SZ-1fR"/>
+                    <constraint firstAttribute="bottom" secondItem="2ck-V7-PGW" secondAttribute="bottom" constant="4" id="zms-Ad-r6I"/>
+                </constraints>
+            </tableViewCellContentView>
             <connections>
-                <outlet property="button" destination="2ck-V7-PGW" id="0di-Gt-on4"/>
-                <outlet property="pickerView" destination="hmM-Ep-9Qc" id="Fhg-BK-KLK"/>
+                <outlet property="button" destination="2ck-V7-PGW" id="7N4-ok-cKD"/>
+                <outlet property="pickerView" destination="hmM-Ep-9Qc" id="t7O-XI-PsF"/>
             </connections>
-            <point key="canvasLocation" x="26.5" y="136"/>
-        </view>
+        </tableViewCell>
     </objects>
 </document>
