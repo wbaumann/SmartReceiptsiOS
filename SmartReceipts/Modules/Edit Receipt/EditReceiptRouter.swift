@@ -32,6 +32,24 @@ class EditReceiptRouter: Router {
         let module = AppModules.OCRConfiguration.build()
         openModal(module: module)
     }
+    
+    func openPaymentMethods() {
+        let module = AppModules.paymentMethods.build()
+        executeFor(iPhone: {
+            module.router.show(from: _view)
+        }, iPad: {
+            module.router.pushTo(controller: _view.navigationController!)
+        })
+    }
+    
+    func openCategories() {
+        let module = AppModules.categories.build()
+        executeFor(iPhone: {
+            module.router.show(from: _view)
+        }, iPad: {
+            module.router.pushTo(controller: _view.navigationController!)
+        })
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

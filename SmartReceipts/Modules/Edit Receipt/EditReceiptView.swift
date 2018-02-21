@@ -17,6 +17,8 @@ protocol EditReceiptViewInterface {
     
     var removeAction: Observable<WBReceipt> { get }
     var showAttachmentAction: Observable<WBReceipt> { get }
+    var manageCategoriesTap: Observable<Void>? { get }
+    var managePaymentMethodsTap: Observable<Void>? { get }
     
     func disableFirstResponeder()
     func makeNameFirstResponder()
@@ -36,8 +38,6 @@ final class EditReceiptView: UserInterface {
     fileprivate let previewShowAttachmentAction = PublishSubject<WBReceipt>()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         configureTitle()
         let formView = EditReceiptFormView(trip: displayData.trip, receipt: displayData.receipt)
         self.formView = formView
@@ -50,6 +50,8 @@ final class EditReceiptView: UserInterface {
         configureUIActions()
         configureSubscribers()
         configureTooltip()
+        
+        super.viewDidLoad()
     }
     
     override func viewWillLayoutSubviews() {
@@ -80,14 +82,6 @@ final class EditReceiptView: UserInterface {
         formView.errorSubject.subscribe(onNext: { [unowned self] errorDescription in
             self.presenter.present(errorDescription: errorDescription)
         }).addDisposableTo(bag)
-        
-        formView.manageCategoryTap?.subscribe(onNext: {
-            print("manageCategoryTap")
-        }).disposed(by: bag)
-        
-        formView.managePaymentMethodsTap?.subscribe(onNext: {
-            print("managePaymentMethodsTap")
-        }).disposed(by: bag)
     }
     
     private func configureTitle() {
@@ -173,9 +167,21 @@ extension EditReceiptView: EditReceiptViewInterface {
         displayData.needFirstResponder = false
     }
     
-    var removeAction: Observable<WBReceipt> { return previewRemoveAction.asObservable() }
+    var removeAction: Observable<WBReceipt> {
+        return previewRemoveAction.asObservable()
+    }
     
-    var showAttachmentAction: Observable<WBReceipt> { return previewShowAttachmentAction.asObservable() }
+    var showAttachmentAction: Observable<WBReceipt> {
+        return previewShowAttachmentAction.asObservable()
+    }
+    
+    var manageCategoriesTap: Observable<Void>? {
+        return formView.manageCategoriesTap
+    }
+    
+    var managePaymentMethodsTap: Observable<Void>? {
+        return formView.managePaymentMethodsTap
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
