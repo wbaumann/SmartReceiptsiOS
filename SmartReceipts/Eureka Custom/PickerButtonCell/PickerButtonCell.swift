@@ -8,13 +8,15 @@
 
 import UIKit
 import Eureka
+import RxSwift
 
 fileprivate let BUTTON_CORNER_RADIUS: CGFloat = 5
 
 final class PickerButtonCell : Cell<String>, CellType {
     @IBOutlet fileprivate var pickerView: UIPickerView!
-    @IBOutlet fileprivate var button: UIButton!
+    @IBOutlet var button: UIButton!
     
+    private let bag = DisposeBag()
     fileprivate let displayData = PickerDisplayData()
     
     required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -43,10 +45,6 @@ final class PickerButtonCell : Cell<String>, CellType {
     func row() -> PickerButtonRow {
         return row as! PickerButtonRow
     }
-    
-    @IBAction func buttonTap() {
-        (row as? InlinePickerButtonRow)?.toggleInlineRow()
-    }
 }
 
 class _PickerButtonRow: Row<PickerButtonCell> {
@@ -61,6 +59,11 @@ class _PickerButtonRow: Row<PickerButtonCell> {
 }
 
 final class PickerButtonRow: _PickerButtonRow, RowType {
+    
+    var buttonTap: Observable<Void>? {
+        return cell.button.rx.tap.asObservable()
+    }
+    
     var buttonTitle: String? {
         get { return cell.button.title(for: .normal) }
         set { cell.button.setTitle(newValue, for: .normal) }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import RxSwift
 
 final class InlinePickerButtonCell : Cell<String>, CellType {
     @IBOutlet fileprivate var titleLabel: UILabel!
@@ -30,6 +31,9 @@ final class InlinePickerButtonCell : Cell<String>, CellType {
     override func setup() {
         super.setup()
         selectionStyle = .default
+        titleLabel?.font = AppTheme.boldFont
+        valueLabel?.font = AppTheme.boldFont
+        valueLabel?.textColor = AppTheme.primaryColor
     }
 }
 
@@ -50,6 +54,12 @@ class _InlinePickerButtonRow: Row<InlinePickerButtonCell> {
 }
 
 final class InlinePickerButtonRow: _InlinePickerButtonRow, RowType, InlineRowType {
+    private let bag = DisposeBag()
+    private let tapSubject = PublishSubject<Void>()
+    
+    var buttonTap: Observable<Void> {
+        return tapSubject.asObservable()
+    }
     
     var buttonTitle: String? {
         didSet { inlineRow?.buttonTitle = buttonTitle }
@@ -68,6 +78,10 @@ final class InlinePickerButtonRow: _InlinePickerButtonRow, RowType, InlineRowTyp
         inlineRow.value = value
         inlineRow.buttonTitle = buttonTitle
         inlineRow.displayValueFor = displayValueFor
+        inlineRow.buttonTap?
+            .bind(onNext: { [unowned self] in
+                self.tapSubject.onNext()
+            }).disposed(by: bag)
     }
     
     typealias InlineRow = PickerButtonRow

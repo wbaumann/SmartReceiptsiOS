@@ -31,9 +31,6 @@
                         <state key="normal" title="Button">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
-                        <connections>
-                            <action selector="buttonTap" destination="fAo-b3-0NQ" eventType="touchUpInside" id="hg0-2N-jxk"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>
