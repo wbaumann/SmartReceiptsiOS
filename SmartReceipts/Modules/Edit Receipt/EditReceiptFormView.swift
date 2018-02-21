@@ -192,13 +192,13 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             
         <<< InlinePickerButtonRow() { row in
             row.title = LocalizedString("edit.receipt.payment.method.label")
-            //row.options = Database.sharedInstance().allPaymentMethods()
-            //row.value = receipt.paymentMethod
-            //row.hidden = Condition.init(booleanLiteral: !WBPreferences.usePaymentMethods())
+            row.options = Database.sharedInstance().allPaymentMethodsAsStrings()
+            row.value = receipt.paymentMethod.method
+            row.hidden = Condition.init(booleanLiteral: !WBPreferences.usePaymentMethods())
             row.buttonTitle = LocalizedString("edit_receipt_manage_payment_button").uppercased()
         }.onChange({ [unowned self] row in
-            if let val = row.value {
-                //self.receipt.paymentMethod = val
+            if let name = row.value {
+                self.receipt.paymentMethod = Database.sharedInstance().paymentMethod(byName: name)
             }
         }).cellSetup({ cell, _ in
             cell.configureCell()
