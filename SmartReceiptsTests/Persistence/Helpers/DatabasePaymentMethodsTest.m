@@ -45,7 +45,7 @@
     NSUInteger countAfter = [self.db countRowsInTable:PaymentMethodsTable.TABLE_NAME];
     XCTAssertEqual(countBefore, countAfter);
 
-    PaymentMethod *loaded = [self.db methodById:method.objectId];
+    PaymentMethod *loaded = [self.db paymentMethodById:method.objectId];
     XCTAssertNotNil(loaded);
     XCTAssertEqualObjects(@"ALTERED NAME", loaded.method);
 }

@@ -107,10 +107,19 @@
     return method != nil;
 }
 
-- (PaymentMethod *)methodById:(NSUInteger)methodId {
-    DatabaseQueryBuilder *fetch = [DatabaseQueryBuilder selectAllStatementForTable:PaymentMethodsTable.TABLE_NAME];
-    [fetch where:PaymentMethodsTable.COLUMN_ID value:@(methodId)];
-    return (PaymentMethod *)[self executeFetchFor:[PaymentMethod class] withQuery:fetch];
+- (PaymentMethod *)paymentMethodByName:(NSString *)name {
+    DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:PaymentMethodsTable.TABLE_NAME];
+    [selectAll where:PaymentMethodsTable.COLUMN_METHOD value:name];
+    return (PaymentMethod *)[self executeFetchFor:[PaymentMethod class] withQuery:selectAll];
+}
+
+- (NSArray<NSString *> *)allPaymentMethodsAsStrings {
+    NSArray<PaymentMethod *> *allPaymentMethods = [self allPaymentMethods];
+    NSMutableArray *result = [NSMutableArray new];
+    for (PaymentMethod *pm in allPaymentMethods) {
+        [result addObject:pm.presentedValue];
+    }
+    return [result copy];
 }
 
 @end
