@@ -84,6 +84,9 @@ public extension Event {
 
         static let PersistNewReceipt = Event(category: Category.Receipts, name: "PersistNewReceipt")
         static let PersistUpdateReceipt = Event(category: Category.Receipts, name: "PersistUpdateReceipt")
+        static let ManageCategoriesTap = Event(category: Category.Receipts, name: "ManageCategoriesTap")
+        static let ManagePaymentMethodsTap = Event(category: Category.Receipts, name: "ManagePaymentMethodsTap")
+        
         // FIXME: On iOS we have different exchangeRate request results:
         /*
          public enum ExchangeServiceStatus {
@@ -170,6 +173,8 @@ public extension Event {
     // MARK: Event.Receipts - Edit receipt (EditReceiptViewController)
     class func receiptsPersistNewReceipt() -> Event {return Event.Receipts.PersistNewReceipt}
     class func receiptsPersistUpdateReceipt() -> Event {return Event.Receipts.PersistUpdateReceipt}
+    class func receiptsManageCategoriesTap() -> Event {return Event.Receipts.ManageCategoriesTap}
+    class func receiptsManagePaymentMethodsTap() -> Event {return Event.Receipts.ManagePaymentMethodsTap}
     
     // MARK: - Event.Ratings (RateApplication)
     class func ratingsRatingPromptShown() -> Event {return Event.Ratings.RatingPromptShown}

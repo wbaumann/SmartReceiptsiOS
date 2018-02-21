@@ -69,19 +69,20 @@ final class PickerButtonRow: _PickerButtonRow, RowType {
         set { cell.button.setTitle(newValue, for: .normal) }
     }
     
-    override var value: String? {
-        get { return options[cell.pickerView.selectedRow(inComponent: 0)] }
-        set {
-            if newValue != nil, let index = options.index(of: newValue!)  {
-                cell.pickerView.selectRow(index, inComponent: 0, animated: false)
-            }
-        }
-    }
-    
     var options = [String]() {
         didSet {
             cell.displayData.options = options
             cell.pickerView.reloadAllComponents()
+            
+            if value != nil, let index = options.index(of: value!)  {
+                cell.pickerView.selectRow(index, inComponent: 0, animated: false)
+            } else {
+                let index = cell.pickerView.selectedRow(inComponent: 0)
+                if options.count > index  {
+                    value = options[index]
+                    _ = displayValueFor?(value)
+                }
+            }
         }
     }
     

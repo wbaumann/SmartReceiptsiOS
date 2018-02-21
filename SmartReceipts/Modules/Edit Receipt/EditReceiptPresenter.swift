@@ -33,6 +33,23 @@ class EditReceiptPresenter: Presenter {
     
     override func viewHasLoaded() {
         interactor.configureSubscribers()
+        
+        settingsTap.subscribe(onNext: { [unowned self] in
+            self.router.openSettings()
+        }).disposed(by: bag)
+        
+        view.managePaymentMethodsTap?
+            .subscribe(onNext: { [unowned self] in
+                AnalyticsManager.sharedManager.record(event: Event.receiptsManagePaymentMethodsTap())
+                self.router.openPaymentMethods()
+            }).disposed(by: bag)
+        
+        view.manageCategoriesTap?
+            .subscribe(onNext: { [unowned self] in
+                AnalyticsManager.sharedManager.record(event: Event.receiptsManageCategoriesTap())
+                self.router.openCategories()
+            }).disposed(by: bag)
+        
         settingsTap.subscribe(onNext: { [unowned self] in
             self.router.openSettings()
         }).disposed(by: bag)

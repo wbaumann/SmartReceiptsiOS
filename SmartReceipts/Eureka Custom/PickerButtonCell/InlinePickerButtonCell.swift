@@ -61,12 +61,12 @@ final class InlinePickerButtonRow: _InlinePickerButtonRow, RowType, InlineRowTyp
         return tapSubject.asObservable()
     }
     
-    var buttonTitle: String? {
-        didSet { inlineRow?.buttonTitle = buttonTitle }
+    override var value: String? {
+        didSet { cell.valueLabel.text = value }
     }
     
-    override var value: String? {
-        didSet { inlineRow?.value = value }
+    var buttonTitle: String? {
+        didSet { inlineRow?.buttonTitle = buttonTitle }
     }
     
     var options = [String]() {
@@ -74,10 +74,9 @@ final class InlinePickerButtonRow: _InlinePickerButtonRow, RowType, InlineRowTyp
     }
     
     func setupInlineRow(_ inlineRow: PickerButtonRow) {
-        inlineRow.options = options
-        inlineRow.value = value
-        inlineRow.buttonTitle = buttonTitle
         inlineRow.displayValueFor = displayValueFor
+        inlineRow.options = options
+        inlineRow.buttonTitle = buttonTitle
         inlineRow.buttonTap?
             .bind(onNext: { [unowned self] in
                 self.tapSubject.onNext()

@@ -263,6 +263,13 @@ static NSString* checkNoData(NSString* str) {
     self.taxAmount = amount;
 }
 
+- (PaymentMethod *)paymentMethod {
+    if (!_paymentMethod) {
+        _paymentMethod = [[PaymentMethod alloc] initWithObjectId:0 method:@""];
+    }
+    return _paymentMethod;
+}
+
 - (id)copy {
     return [[WBReceipt alloc] initWithId:self.objectId
                                     name:self.name

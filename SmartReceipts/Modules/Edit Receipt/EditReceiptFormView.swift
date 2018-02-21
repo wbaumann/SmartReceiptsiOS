@@ -16,11 +16,13 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     private let NAME_ROW_TAG = "NameRow"
     private let EXCHANGE_RATE_TAG = "ExchangeRateRow"
     private let COMMENT_ROW_TAG = "CommentRow"
+    private let PAYMENT_METHODS_ROW_TAG = "PaymentMethodsRow"
+    private let CATEGORIES_ROW_TAG = "CategoriesRow"
     
     let receiptSubject = PublishSubject<WBReceipt>()
     let errorSubject = PublishSubject<String>()
     weak var settingsTap: PublishSubject<Void>?
-    weak var manageCategoryTap: Observable<Void>?
+    weak var manageCategoriesTap: Observable<Void>?
     weak var managePaymentMethodsTap: Observable<Void>?
     var needFirstResponder = true
     
@@ -66,6 +68,14 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         if let exchangeRow = form.rowBy(tag: EXCHANGE_RATE_TAG) as? ExchangeRateRow {
             exchangeRow.responseSubject.onNext(ExchangeResponse(value: nil, error: nil))
             exchangeRow.cell.update()
+        }
+        
+        if let paymentMethodsRow = form.rowBy(tag: PAYMENT_METHODS_ROW_TAG) as? InlinePickerButtonRow {
+            paymentMethodsRow.options = Database.sharedInstance().allPaymentMethodsAsStrings()
+        }
+        
+        if let categoriesRow = form.rowBy(tag: CATEGORIES_ROW_TAG) as? InlinePickerButtonRow {
+            categoriesRow.options = allCategories()
         }
     }
 
@@ -170,12 +180,12 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             cell.configureCell()
         })
         
-        <<< InlinePickerButtonRow() { [unowned self] row in
+        <<< InlinePickerButtonRow(CATEGORIES_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("edit.receipt.category.label")
             row.options = allCategories()
             row.value = receipt.category
             row.buttonTitle = LocalizedString("edit_receipt_manage_categories_button").uppercased()
-            self.manageCategoryTap = row.buttonTap
+            self.manageCategoriesTap = row.buttonTap
         }.onChange({ [unowned self] row in
             self.receipt.category = row.value!
             self.matchCategory(value: row.value)
@@ -191,7 +201,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             cell.configureCell()
         })
             
-        <<< InlinePickerButtonRow() { [unowned self] row in
+        <<< InlinePickerButtonRow(PAYMENT_METHODS_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("edit.receipt.payment.method.label")
             row.options = Database.sharedInstance().allPaymentMethodsAsStrings()
             row.value = receipt.paymentMethod.method
@@ -199,8 +209,8 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             row.buttonTitle = LocalizedString("edit_receipt_manage_payment_button").uppercased()
             self.managePaymentMethodsTap = row.buttonTap
         }.onChange({ [unowned self] row in
-            if let name = row.value {
-                self.receipt.paymentMethod = Database.sharedInstance().paymentMethod(byName: name)
+            if let name = row.value, let pm = Database.sharedInstance().paymentMethod(byName: name) {
+                self.receipt.paymentMethod = pm
             }
         })
             
@@ -287,15 +297,6 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         var result = [String]()
         for category in Database.sharedInstance().listAllCategories() {
             result.append(category.name)
-        }
-        return result
-    }
-    
-    private func allPaymentMethods() -> [String] {
-        var result = [String]()
-        let methods = Database.sharedInstance().fetchedAdapterForPaymentMethods().allObjects() as! [PaymentMethod]
-        for pm in methods {
-            result.append(pm.method)
         }
         return result
     }
