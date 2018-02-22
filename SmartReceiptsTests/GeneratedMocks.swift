@@ -1176,6 +1176,32 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
         
     }
     
+     override func openPaymentMethods()  {
+        
+            return cuckoo_manager.call("openPaymentMethods()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.openPaymentMethods()
+                    }
+                })
+        
+    }
+    
+     override func openCategories()  {
+        
+            return cuckoo_manager.call("openCategories()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.openCategories()
+                    }
+                })
+        
+    }
+    
 
     struct __StubbingProxy_EditReceiptRouter: Cuckoo.StubbingProxy {
         private let cuckoo_manager: Cuckoo.MockManager
@@ -1203,6 +1229,16 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
         func openAutoScans() -> Cuckoo.StubNoReturnFunction<()> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return .init(stub: cuckoo_manager.createStub("openAutoScans()", parameterMatchers: matchers))
+        }
+        
+        func openPaymentMethods() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("openPaymentMethods()", parameterMatchers: matchers))
+        }
+        
+        func openCategories() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("openCategories()", parameterMatchers: matchers))
         }
         
     }
@@ -1246,6 +1282,18 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
             return cuckoo_manager.verify("openAutoScans()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
+        @discardableResult
+        func openPaymentMethods() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("openPaymentMethods()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func openCategories() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("openCategories()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
     }
 
 
@@ -1270,6 +1318,14 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.Mock {
     }
     
      override func openAutoScans()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func openPaymentMethods()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func openCategories()  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     

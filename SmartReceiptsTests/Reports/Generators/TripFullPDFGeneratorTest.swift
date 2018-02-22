@@ -33,6 +33,24 @@ class TripFullPDFGeneratorTest: SmartReceiptsTestsBase {
         XCTAssertTrue(defaultColumns.count == 6, "6 columns are created initially")
     }
     
+    func testNilCostCenterSuccess() {
+        generator.trip.costCenter = nil
+        XCTAssertTrue(db.setPdfColumns(defaultColumns))
+        
+        XCTAssertNil(generator.trip.costCenter)
+        let result = generator.generateTo(path: NSTemporaryDirectory().appending("temp.pdf"))
+        XCTAssertTrue(result)
+    }
+    
+    func testNilCommentSuccess() {
+        generator.trip.comment = nil
+        XCTAssertTrue(db.setPdfColumns(defaultColumns))
+        
+        XCTAssertNil(generator.trip.comment)
+        let result = generator.generateTo(path: NSTemporaryDirectory().appending("temp.pdf"))
+        XCTAssertTrue(result)
+    }
+    
     func testPdfPortraitSuccess() {
         WBPreferences.setPrintReceiptTableLandscape(false)
         XCTAssertTrue(db.setPdfColumns(defaultColumns))
