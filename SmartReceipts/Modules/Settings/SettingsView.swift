@@ -87,7 +87,8 @@ extension SettingsView: MFMailComposeViewControllerDelegate {
         messageBody += "\n\n\nDebug info:\n"
         messageBody += UIApplication.shared.appVersionInfoString()
         messageBody += "Plus: \(Database.sharedInstance().hasValidSubscription() ? "true" : "false")\n"
-        messageBody += UIDevice.current.deviceInfoString()
+        messageBody += "\(UIDevice.current.deviceInfoString()!)\n"
+        messageBody += "Locale: \(Locale.current.identifier)"
         
         // Attach log files
         let logFiles = Logger.logFiles()

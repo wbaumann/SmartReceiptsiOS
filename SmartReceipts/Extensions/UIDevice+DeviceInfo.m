@@ -17,7 +17,7 @@
  @return 
     Device name string (e.g. iPhone 7 Plus. Or at least codename, for instance, "codename iPhone9,4")
  */
-- (NSString*) deviceName
+- (NSString*)deviceName
 {
     struct utsname systemInfo;
     
@@ -63,6 +63,12 @@
                               @"iPhone9,3" :@"iPhone 7",          //
                               @"iPhone9,2" :@"iPhone 7 Plus",     //
                               @"iPhone9,4" :@"iPhone 7 Plus",     //
+                              @"iPhone10,1": @"iPhone 8",         // CDMA
+                              @"iPhone10,4": @"iPhone 8",         // GSM
+                              @"iPhone10,2": @"iPhone 8 Plus",    // CDMA
+                              @"iPhone10,5": @"iPhone 8 Plus",    // GSM
+                              @"iPhone10,3": @"iPhone X",         // CDMA
+                              @"iPhone10,6": @"iPhone X",         // GSM
                               
                               @"iPad4,1"   :@"iPad Air",          // 5th Generation iPad (iPad Air) - Wifi
                               @"iPad4,2"   :@"iPad Air",          // 5th Generation iPad (iPad Air) - Cellular
