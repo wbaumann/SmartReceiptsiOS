@@ -37,7 +37,7 @@ class TripImagesPDFGenerator: ReportPDFGenerator {
                 drawFullPage(receipt: receipt)
             } else if receipt.hasImage() {
                 if let img = UIImage(contentsOfFile: receipt.imageFilePath(for: receipt.trip)) {
-                    pdfRender.append(image: img, label: labelForReceipt(receipt))
+                    appendToRender(image: img, label: labelForReceipt(receipt))
                 } else {
                     Logger.warning("fillPdfWithImagesUsing: Receipt-\(receipt.name) hasImage=TRUE, but no image")
                 }
@@ -60,7 +60,7 @@ class TripImagesPDFGenerator: ReportPDFGenerator {
     private func drawFullPage(receipt: WBReceipt) {
         if receipt.hasImage() {
             if let image = UIImage(contentsOfFile: receipt.imageFilePath(for: receipt.trip)) {
-                pdfRender.append(image: image, label: labelForReceipt(receipt))
+                appendToRender(image: image, label: labelForReceipt(receipt))
             } else {
                 Logger.warning("drawFullPageReceipt: Receipt-\(receipt.name) hasImage=TRUE, but no image")
             }
@@ -70,6 +70,15 @@ class TripImagesPDFGenerator: ReportPDFGenerator {
             Logger.warning("drawFullPageReceipt: Receipt-\(receipt.name) hasImage && hasPDF = FLASE")
         }
     }
+    
+    func appendToRender(image: UIImage, label: String) {
+        if WBPreferences.assumeFullPage() {
+            pdfRender.appendFullPage(image: image, label: label)
+        } else {
+            pdfRender.append(image: image, label: label)
+        }
+    }
+    
     private func drawFullPagePDFFile(path: String, label: String) {
         let url = URL(fileURLWithPath: path)
         guard let pdf = CGPDFDocument(url as CFURL) else {
