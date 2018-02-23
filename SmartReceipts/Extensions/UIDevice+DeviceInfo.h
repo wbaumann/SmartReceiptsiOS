@@ -10,7 +10,7 @@
 
 @interface UIDevice (DeviceInfo)
 
-- (NSString *) deviceName;
-- (NSString *) deviceInfoString;
+- (NSString *)deviceName;
+- (NSString *)deviceInfoString;
 
 @end
