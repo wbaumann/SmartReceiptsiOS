@@ -27,11 +27,13 @@ class OCRConfigurationPresenter: Presenter {
             }).disposed(by: bag)
         
         view.buy10ocr
+            .do(onNext: { Logger.debug("But 10 OCR Tap") })
             .subscribe(onNext: { [unowned self] in
                 self.interactor.purchase(product: PRODUCT_OCR_10)
             }).disposed(by: bag)
         
         view.buy50ocr
+            .do(onNext: { Logger.debug("But 50 OCR Tap") })
             .subscribe(onNext: { [unowned self] in
                 self.interactor.purchase(product: PRODUCT_OCR_50)
             }).disposed(by: bag)
