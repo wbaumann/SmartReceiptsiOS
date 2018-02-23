@@ -12,6 +12,8 @@ class AppTheme: NSObject {
     
     static let appTitle = "Smart Receipts"
     
+    static let buttonCornerRadius: CGFloat = 5
+    
     // Colors
     static let primaryColor               = #colorLiteral(red: 0.4784313725, green: 0.1176470588, blue: 0.631372549, alpha: 1)
     static let primaryDarkColor           = #colorLiteral(red: 0.4117647059, green: 0.1019607843, blue: 0.6, alpha: 1)
