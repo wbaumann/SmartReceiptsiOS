@@ -21,7 +21,10 @@ class PurchaseService {
     static fileprivate var cachedProducts = [SKProduct]()
     
     func cacheProducts() {
-        requestProducts().toArray().subscribe(onNext: { products in
+        requestProducts().toArray()
+        .do(onNext: { products in
+            Logger.debug("Available purchases: \(products)")
+        }).subscribe(onNext: { products in
             PurchaseService.cachedProducts = products
         }).disposed(by: bag)
     }
@@ -38,6 +41,7 @@ class PurchaseService {
     func restorePurchases() -> Observable<Void> {
         return RMStore.default().restorePurchases()
             .do(onNext: {
+                Logger.debug("Successful restore purchases")
                 NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
             }, onError: handleError(_:))
     }
@@ -45,6 +49,7 @@ class PurchaseService {
     func purchaseSubscription() -> Observable<SKPaymentTransaction> {
         return purchase(prodcutID: PRODUCT_PLUS)
             .do(onNext: { _ in
+                Logger.debug("Successful restore PLUS Subscription")
                 NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
             }, onError: handleError(_:))
     }
@@ -54,12 +59,14 @@ class PurchaseService {
             .flatMap({ _ in
                 RMStore.default().addPayment(product: prodcutID)
             .do(onNext: { [weak self] _ in
+                Logger.debug("Successful purchase: \(prodcutID)")
                 PurchaseService.analyticsPurchaseSuccess(productID: prodcutID)
                 self?.sendReceipt()
-                }, onError: { _ in
-                    PurchaseService.analyticsPurchaseFailed(productID: prodcutID)
-                })
+            }, onError: { _ in
+                Logger.error("Failed purchase: \(prodcutID)")
+                PurchaseService.analyticsPurchaseFailed(productID: prodcutID)
             })
+        })
     }
     
     func price(productID: String) -> Observable<String> {
@@ -71,10 +78,10 @@ class PurchaseService {
     private func handleError(_ error: Error) {
         let responseError = error as NSError
         if responseError.code == SKError.paymentCancelled.rawValue && responseError.domain == SKErrorDomain {
-            Logger.warning("Cancelled by User")
+            Logger.error("Cancelled by User")
             return
         } else {
-            Logger.warning("Unknown error")
+            Logger.error("Unknown error: \(error.localizedDescription)")
             let errorEvent = ErrorEvent(error: responseError)
             AnalyticsManager.sharedManager.record(event: errorEvent)
         }
@@ -100,9 +107,15 @@ class PurchaseService {
     // MARK: Purchase and API
     
     func sendReceipt() {
-        if !AuthService.shared.isLoggedIn { return }
+        if !AuthService.shared.isLoggedIn {
+            Logger.warning("Can't send receipt: User are not logged in!")
+            return
+        }
         guard let receiptString = appStoreReceipt() else { return }
-        if isReceiptSent(receiptString) { return }
+        if isReceiptSent(receiptString) {
+            Logger.warning("Can't send receipt: Receipt is sent before")
+            return
+        }
     
         let params = ["encoded_receipt" : receiptString,
                       "pay_service"     : "Apple Store",
@@ -110,13 +123,15 @@ class PurchaseService {
         
         APIAdapter.jsonBody(.post, endpoint("mobile_app_purchases"), parameters: params)
             .retry(3)
-            .flatMap({ response -> Observable<Any> in
-                return ScansPurchaseTracker.shared.fetchAndPersistAvailableRecognitions()
-                    .map({ _ -> Any in return response })
-            }).do(onNext: { _ in
+            .do(onNext: { _ in
                 UserDefaults.standard.set(true, forKey: receiptString)
+                Logger.debug("Cached receipt: \(receiptString)")
             }).do(onError: { _ in
                 UserDefaults.standard.set(false, forKey: receiptString)
+                Logger.error("Can't cache receipt: \(receiptString)")
+            }).flatMap({ response -> Observable<Any> in
+                return ScansPurchaseTracker.shared.fetchAndPersistAvailableRecognitions()
+                    .map({ _ -> Any in return response })
             }).subscribe(onNext: { response in
                 let jsonRespose = JSON(response)
                 Logger.debug(jsonRespose.description)

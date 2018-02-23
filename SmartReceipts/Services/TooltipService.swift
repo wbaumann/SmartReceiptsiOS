@@ -43,7 +43,6 @@ class TooltipService {
         if moveToGenerateTrigger(for: trip) {
             return LocalizedString("tooltip.receipts.generate.advice")
         }
-        Logger.error("No tooltip for trip: \(trip)")
         return nil
     }
 }
