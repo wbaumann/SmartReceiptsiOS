@@ -39,14 +39,16 @@ class EditReceiptPresenter: Presenter {
         }).disposed(by: bag)
         
         view.managePaymentMethodsTap?
-            .subscribe(onNext: { [unowned self] in
+            .do(onNext:{
                 AnalyticsManager.sharedManager.record(event: Event.receiptsManagePaymentMethodsTap())
+            }).subscribe(onNext: { [unowned self] in
                 self.router.openPaymentMethods()
             }).disposed(by: bag)
         
         view.manageCategoriesTap?
-            .subscribe(onNext: { [unowned self] in
+            .do(onNext:{
                 AnalyticsManager.sharedManager.record(event: Event.receiptsManageCategoriesTap())
+            }).subscribe(onNext: { [unowned self] in
                 self.router.openCategories()
             }).disposed(by: bag)
         

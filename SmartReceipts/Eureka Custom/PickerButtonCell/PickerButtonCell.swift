@@ -10,8 +10,6 @@ import UIKit
 import Eureka
 import RxSwift
 
-fileprivate let BUTTON_CORNER_RADIUS: CGFloat = 5
-
 final class PickerButtonCell : Cell<String>, CellType {
     @IBOutlet fileprivate var pickerView: UIPickerView!
     @IBOutlet var button: UIButton!
@@ -38,7 +36,7 @@ final class PickerButtonCell : Cell<String>, CellType {
         pickerView.delegate = displayData
         pickerView.dataSource = displayData
         pickerView.showsSelectionIndicator = true
-        button.layer.cornerRadius = BUTTON_CORNER_RADIUS
+        button.layer.cornerRadius = AppTheme.buttonCornerRadius
         height = { 180 }
     }
     
