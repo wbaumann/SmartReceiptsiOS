@@ -27,7 +27,7 @@ class DescribedSwitchCell: Cell<Bool>, CellType {
         title.sizeToFit()
         subtitle.sizeToFit()
         
-        let margins = UI_MARGIN_8 + UI_MARGIN_16 * 2
+        let margins = UI_MARGIN_16 * 2
         let cellHeight = title.bounds.height + subtitle.bounds.height + margins
         height = { cellHeight }
     }
@@ -47,18 +47,24 @@ class DescribedSwitchCell: Cell<Bool>, CellType {
         title.text = row().title
         guard let rowValue = row().value else { return }
         switcher.isOn = rowValue
-        if let text = rowValue ? row().onSubtitle : row().offSubtitle {
-            subtitle.text = text
-        }
+        updateSubtitle()
     }
     
     func switchAction() {
         row.value = switcher.isOn
+        updateSubtitle()
+    }
+    
+    private func updateSubtitle() {
+        if let text = switcher.isOn ? row().onSubtitle : row().offSubtitle {
+            subtitle.text = text
+        }
     }
     
     private func row() -> DescribedSwitchRow {
         return (row as! DescribedSwitchRow)
     }
+    
 }
 
 

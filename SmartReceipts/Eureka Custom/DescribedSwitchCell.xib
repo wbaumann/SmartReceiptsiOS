@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="200" verticalCompressionResistancePriority="300" text="Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8a-yc-0SY">
-                    <rect key="frame" x="16" y="8" width="286" height="22.5"/>
+                    <rect key="frame" x="16" y="8" width="286" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -34,7 +34,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="MHJ-Ri-4Ux" firstAttribute="top" secondItem="y8a-yc-0SY" secondAttribute="bottom" constant="8" id="ADi-Av-Kc3"/>
+                <constraint firstItem="MHJ-Ri-4Ux" firstAttribute="top" secondItem="y8a-yc-0SY" secondAttribute="bottom" id="ADi-Av-Kc3"/>
                 <constraint firstItem="MHJ-Ri-4Ux" firstAttribute="trailing" secondItem="y8a-yc-0SY" secondAttribute="trailing" id="KKi-ez-Cax"/>
                 <constraint firstAttribute="trailing" secondItem="eFY-jp-Xx7" secondAttribute="trailing" constant="16" id="OEX-vT-ThD"/>
                 <constraint firstAttribute="bottom" secondItem="MHJ-Ri-4Ux" secondAttribute="bottom" constant="8" id="QcY-G7-ywm"/>

@@ -87,6 +87,8 @@
 		714104EA1FF43F1500C334C5 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714104E91FF43F1500C334C5 /* CircleButton.swift */; };
 		714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901C01F0598B900772B6F /* CurrencyExchangeService.swift */; };
 		714A9A731FCD9A27000A025B /* BackupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A9A721FCD9A27000A025B /* BackupTests.swift */; };
+		714AC77B2041C63B003656DB /* DescribedButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 714AC77A2041C63B003656DB /* DescribedButtonCell.xib */; };
+		714AC77D2041C693003656DB /* DescribedButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AC77C2041C693003656DB /* DescribedButtonCell.swift */; };
 		714AFCC3200539F6000176E9 /* MigrationServiceTestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AFCC2200539F6000176E9 /* MigrationServiceTestable.swift */; };
 		7152DF1D1F0C24750088EE98 /* PDFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152DF1C1F0C24750088EE98 /* PDFPageView.swift */; };
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
@@ -643,6 +645,8 @@
 		714901BB1F05632200772B6F /* PaymentMethodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTests.swift; sourceTree = "<group>"; };
 		714901C01F0598B900772B6F /* CurrencyExchangeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeService.swift; sourceTree = "<group>"; };
 		714A9A721FCD9A27000A025B /* BackupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupTests.swift; sourceTree = "<group>"; };
+		714AC77A2041C63B003656DB /* DescribedButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescribedButtonCell.xib; sourceTree = "<group>"; };
+		714AC77C2041C693003656DB /* DescribedButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribedButtonCell.swift; sourceTree = "<group>"; };
 		714AFCC2200539F6000176E9 /* MigrationServiceTestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationServiceTestable.swift; sourceTree = "<group>"; };
 		714AFCC420053A45000176E9 /* MigrationServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationServiceTest.swift; sourceTree = "<group>"; };
 		7152DF1C1F0C24750088EE98 /* PDFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageView.swift; sourceTree = "<group>"; };
@@ -1401,6 +1405,8 @@
 				7156066D1FAE67CF00E09760 /* ScanCell.xib */,
 				71AF0EAB2007BE7A00AA4C37 /* DescribedSwitchCell.swift */,
 				71AF0EAD2007BE8D00AA4C37 /* DescribedSwitchCell.xib */,
+				714AC77C2041C693003656DB /* DescribedButtonCell.swift */,
+				714AC77A2041C63B003656DB /* DescribedButtonCell.xib */,
 				717DDB92203B4E4A000486C3 /* PickerButtonCell */,
 			);
 			path = "Eureka Custom";
@@ -2613,6 +2619,7 @@
 				7159BA0C1F06FB96004EABAA /* ExchangeRateCell.xib in Resources */,
 				71AF49DF1EFDA4810022B2E2 /* ReceiptImageViewer.storyboard in Resources */,
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
+				714AC77B2041C63B003656DB /* DescribedButtonCell.xib in Resources */,
 				EA1E60D91B2742660048E688 /* Localizable.strings in Resources */,
 				71695E6F2023AF2000F1A7C9 /* SharedLocalizable.strings in Resources */,
 				71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */,
@@ -3212,6 +3219,7 @@
 				71AF49E31EFDA4810022B2E2 /* ReceiptImageViewerRouter.swift in Sources */,
 				716C04221F685467007F9CD2 /* CognitoService.swift in Sources */,
 				716F344F1EE040E100D0017A /* EditDistanceInteractor.swift in Sources */,
+				714AC77D2041C693003656DB /* DescribedButtonCell.swift in Sources */,
 				71A30F2F1EECB746001BA608 /* DataImport.swift in Sources */,
 				71AEDDE21EDF7FF400BAC0DD /* TripDistancesView.swift in Sources */,
 				A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */,
