@@ -11,13 +11,13 @@ import Foundation
 class TripFullPDFGenerator: TripImagesPDFGenerator {
     override func generateTo(path: String) -> Bool {
         // render tables in landscape orientation if needed
-        pdfRender.landscapePreferred = WBPreferences.printReceiptTableLandscape()
+        pdfRender.portraitPreferred = !WBPreferences.printReceiptTableLandscape()
         
         if !pdfRender.setOutput(path: path) { return false }
         appendSummaryAndTables()
 
         // always render fullPageElements and images in protrait orientation
-        pdfRender.landscapePreferred = false
+        pdfRender.portraitPreferred = true
         pdfRender.startNextPage()
         appendImages()
         return pdfRender.renderPages()
