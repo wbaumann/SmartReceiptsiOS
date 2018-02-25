@@ -12,7 +12,7 @@ fileprivate let MinNumberOfTableRowsForPage = 3
 
 class PrettyPDFRender: NSObject {
     private(set) var tableHasTooManyColumns = false
-    var landscapePreferred = false
+    var portraitPreferred = true
     var rows = [[String]]()
     var rowToStart = 0
     var writingToPage: PDFPageView!
@@ -46,7 +46,8 @@ class PrettyPDFRender: NSObject {
             self.renderPage(writingToPage)
         }
         let newPage = Bundle.main.loadNibNamed("PDFPage", owner: nil, options: nil)?.first as? PDFPageView
-        newPage?.frame = landscapePreferred ? PDFPageView.pdfPageA4Landscape() : PDFPageView.pdfPageA4Portrait()
+        let pageSize = WBPreferences.prefferedPDFSize().size(portrait: portraitPreferred)
+        newPage?.frame = CGRect(origin: CGPoint.zero, size: pageSize)
         newPage?.layoutIfNeeded()
         writingToPage = newPage
     }
@@ -71,7 +72,7 @@ class PrettyPDFRender: NSObject {
     }
     
     func renderPage(_ page: PDFPageView) {
-        UIGraphicsBeginPDFPageWithInfo(page.bounds, nil);
+        UIGraphicsBeginPDFPageWithInfo(page.bounds, nil)
         let context = UIGraphicsGetCurrentContext()
         page.layer.render(in: context!)
     }

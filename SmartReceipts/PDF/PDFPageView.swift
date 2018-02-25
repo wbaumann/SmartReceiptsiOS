@@ -87,13 +87,5 @@ class PDFPageView: UIView {
         contentOffset! += frame.height + ElementsSpacing
     }
     
-    static func pdfPageA4Portrait() -> CGRect {
-        return CGRect(x: 0, y: 0, width: 595, height: 842)
-    }
-    
-    static func pdfPageA4Landscape() -> CGRect {
-        return CGRect(x: 0, y: 0, width: 842, height: 595)
-    }
-    
 }
 

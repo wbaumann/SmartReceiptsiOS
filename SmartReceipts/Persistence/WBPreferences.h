@@ -100,6 +100,9 @@
 + (BOOL)printReceiptTableLandscape;
 + (void)setPrintReceiptTableLandscape:(BOOL)value;
 
++ (NSInteger)preferedRawPDFSize;
++ (void)setPreferedRawPDFSize:(NSInteger)preferedRawPDFSize;
+
 + (BOOL)layoutShowReceiptDate;
 + (void)setLayoutShowReceiptDate:(BOOL)value;
 

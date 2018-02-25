@@ -397,6 +397,8 @@
 "settings_pdf_print_receipt_comment_by_photo_summaryOff" = "Hide the Receipt comment above PDF photos";
 "settings.pdf.print.receipt.table.landscape.label" = "Print receipts table in landscape mode";
 "settings.pdf.section.title" = "Dostosuj Wyjście PDF";
+"settings_pdf_page_size" = "PDF Page Size:";
+"settings_pdf_page_size_letter" = "Letter";
 "settings.predict.recept.category.label" = "Predykcja Kategorii Paragonu";
 "settings_receipt_predict_categories_summary" = "Auto-fill category based on prior data";
 "settings.pro.section.title" = "Smart Receipts Plus";

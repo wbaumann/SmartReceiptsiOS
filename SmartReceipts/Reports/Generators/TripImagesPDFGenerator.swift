@@ -60,7 +60,7 @@ class TripImagesPDFGenerator: ReportPDFGenerator {
     private func drawFullPage(receipt: WBReceipt) {
         if receipt.hasImage() {
             if let image = UIImage(contentsOfFile: receipt.imageFilePath(for: receipt.trip)) {
-                appendToRender(image: image, label: labelForReceipt(receipt))
+                pdfRender.appendFullPage(image: image, label: labelForReceipt(receipt))
             } else {
                 Logger.warning("drawFullPageReceipt: Receipt-\(receipt.name) hasImage=TRUE, but no image")
             }

@@ -408,6 +408,12 @@ class SettingsFormView: FormViewController {
         .onChange({ row in
             WBPreferences.setPrintReceiptTableLandscape(row.value!)
         })
+            
+        <<< segmentedRow(LocalizedString("settings_pdf_page_size"),
+            options: pdfFormats(), selected: WBPreferences.preferedRawPDFSize())
+        .onChange({ row in
+            WBPreferences.setPreferedRawPDFSize(row.value!)
+        })
 
         <<< openModuleButton(LocalizedString("settings.pdf.configure.columns.label"),
             route: .columns(isCSV: false))
@@ -497,6 +503,10 @@ class SettingsFormView: FormViewController {
         let option2 = "1024 "+pixelsString
         let option3 = LocalizedString("settings.camera.value.default.label")
         return [option1, option2, option3]
+    }
+    
+    private func pdfFormats() -> [String] {
+        return ["A4", LocalizedString("settings_pdf_page_size_letter")]
     }
     
     private func imageOptionFromPreferences() -> Int {

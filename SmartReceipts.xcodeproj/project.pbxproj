@@ -89,6 +89,7 @@
 		714A9A731FCD9A27000A025B /* BackupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A9A721FCD9A27000A025B /* BackupTests.swift */; };
 		714AC77B2041C63B003656DB /* DescribedButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 714AC77A2041C63B003656DB /* DescribedButtonCell.xib */; };
 		714AC77D2041C693003656DB /* DescribedButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AC77C2041C693003656DB /* DescribedButtonCell.swift */; };
+		714AC77F2042E84F003656DB /* WBPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AC77E2042E84F003656DB /* WBPreferences.swift */; };
 		714AFCC3200539F6000176E9 /* MigrationServiceTestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AFCC2200539F6000176E9 /* MigrationServiceTestable.swift */; };
 		7152DF1D1F0C24750088EE98 /* PDFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152DF1C1F0C24750088EE98 /* PDFPageView.swift */; };
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
@@ -647,6 +648,7 @@
 		714A9A721FCD9A27000A025B /* BackupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupTests.swift; sourceTree = "<group>"; };
 		714AC77A2041C63B003656DB /* DescribedButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescribedButtonCell.xib; sourceTree = "<group>"; };
 		714AC77C2041C693003656DB /* DescribedButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribedButtonCell.swift; sourceTree = "<group>"; };
+		714AC77E2042E84F003656DB /* WBPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBPreferences.swift; sourceTree = "<group>"; };
 		714AFCC2200539F6000176E9 /* MigrationServiceTestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationServiceTestable.swift; sourceTree = "<group>"; };
 		714AFCC420053A45000176E9 /* MigrationServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationServiceTest.swift; sourceTree = "<group>"; };
 		7152DF1C1F0C24750088EE98 /* PDFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageView.swift; sourceTree = "<group>"; };
@@ -2459,6 +2461,7 @@
 				A7AFB2451CEC219100718744 /* DatabaseTableNames.swift */,
 				EA7634AB1B3DB61900AD8737 /* WBPreferences.h */,
 				EA7634AC1B3DB61900AD8737 /* WBPreferences.m */,
+				714AC77E2042E84F003656DB /* WBPreferences.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -3081,6 +3084,7 @@
 				7190B9151F60427200F6CE7F /* AuthInteractor.swift in Sources */,
 				EA07BF441AF3F882004D17F6 /* DecimalInputValidation.m in Sources */,
 				EAD15C511B07C3A1003BB1F3 /* Database+Notify.m in Sources */,
+				714AC77F2042E84F003656DB /* WBPreferences.swift in Sources */,
 				570515A51E02EFA500BB8FE4 /* ErrorEvent.swift in Sources */,
 				EA07BF501AF4CC19004D17F6 /* Database+Functions.m in Sources */,
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,
