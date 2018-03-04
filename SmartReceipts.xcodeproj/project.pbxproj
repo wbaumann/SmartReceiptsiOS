@@ -311,6 +311,7 @@
 		71F468391EEEF2AE009F6CE7 /* EditTripFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F468381EEEF2AE009F6CE7 /* EditTripFormView.swift */; };
 		71F4683B1EEF2E55009F6CE7 /* Viperit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4683A1EEF2E55009F6CE7 /* Viperit+Extensions.swift */; };
 		71F73E381FEAD02D0049F108 /* TableFooterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F73E371FEAD02D0049F108 /* TableFooterRow.swift */; };
+		71F98AE1204737CB007AF935 /* DataValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F98AE0204737CB007AF935 /* DataValidationService.swift */; };
 		71FB1D3E1F195D0D00742FF5 /* PaymentMethods.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FB1D381F195D0D00742FF5 /* PaymentMethods.storyboard */; };
 		71FB1D3F1F195D0D00742FF5 /* PaymentMethodsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D391F195D0D00742FF5 /* PaymentMethodsDisplayData.swift */; };
 		71FB1D401F195D0D00742FF5 /* PaymentMethodsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D3A1F195D0D00742FF5 /* PaymentMethodsInteractor.swift */; };
@@ -857,6 +858,7 @@
 		71F468381EEEF2AE009F6CE7 /* EditTripFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTripFormView.swift; sourceTree = "<group>"; };
 		71F4683A1EEF2E55009F6CE7 /* Viperit+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Viperit+Extensions.swift"; sourceTree = "<group>"; };
 		71F73E371FEAD02D0049F108 /* TableFooterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableFooterRow.swift; sourceTree = "<group>"; };
+		71F98AE0204737CB007AF935 /* DataValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidationService.swift; sourceTree = "<group>"; };
 		71FB1D381F195D0D00742FF5 /* PaymentMethods.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaymentMethods.storyboard; sourceTree = "<group>"; };
 		71FB1D391F195D0D00742FF5 /* PaymentMethodsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsDisplayData.swift; sourceTree = "<group>"; };
 		71FB1D3A1F195D0D00742FF5 /* PaymentMethodsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsInteractor.swift; sourceTree = "<group>"; };
@@ -1322,6 +1324,7 @@
 				71BC45521F9FB3A9003A5BD5 /* ScansPurchaseTracker.swift */,
 				71D7D43D1FAA062300437CA9 /* ScanService.swift */,
 				71E7303C1FF7E53000471287 /* MigrationService.swift */,
+				71F98AE0204737CB007AF935 /* DataValidationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -3315,6 +3318,7 @@
 				71762E7C1FD4716200AC1388 /* TripFullPDFGenerator.swift in Sources */,
 				710A33DE1F82802100D10344 /* RMStore+Rx.swift in Sources */,
 				714104E01FF43D7700C334C5 /* FetchedPlaceholderView.swift in Sources */,
+				71F98AE1204737CB007AF935 /* DataValidationService.swift in Sources */,
 				7122778C1F756EA300090878 /* S3Service.swift in Sources */,
 				71AEDDE01EDF7FF400BAC0DD /* TripDistancesPresenter.swift in Sources */,
 				A7F05BB41CFC1A5D0079F1AD /* Exchanged.swift in Sources */,

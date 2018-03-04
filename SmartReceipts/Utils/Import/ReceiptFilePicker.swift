@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import Toaster
 
 fileprivate let JPEG_TYPE = "public.jpeg"
 fileprivate let PNG_TYPE = "public.png"
@@ -17,7 +18,7 @@ class ReceiptFilePicker: NSObject {
     fileprivate var pickSubject: PublishSubject<ReceiptDocument>?
     fileprivate var openedViewController: UIViewController?
     
-    private let allowedTypes = [JPEG_TYPE, PNG_TYPE] //, PDF_TYPE]  //Temporarily disabled pdf imports from the "Files" screen for `Issue 5`
+    private let allowedTypes = [JPEG_TYPE, PNG_TYPE, PDF_TYPE]  //Temporarily disabled pdf imports from the "Files" screen for `Issue 5`
     
     private override init() {}
     
@@ -83,17 +84,35 @@ extension ReceiptFilePicker: UIDocumentBrowserViewControllerDelegate {
         if let url = documentURLs.first {
             close(completion: {
                 var document = ReceiptDocument(fileURL: url)
-                if let fileType = document.fileType, fileType == PNG_TYPE || fileType == JPEG_TYPE {
-                    let img = UIImage(data: try! Data(contentsOf: url))!
-                    let compressedImage = WBImageUtils.compressImage(img, withRatio: kImageCompression)
-                    let compressedURL = ReceiptDocument.makeDocumentFrom(image: compressedImage!).localURL!
-                    document = ReceiptDocument(fileURL: compressedURL)
+                guard let fileType = document.fileType else { return }
+                if fileType == PNG_TYPE || fileType == JPEG_TYPE {
+                    if let data = try? Data(contentsOf: url), DataValidationService().isValidImage(data: data) {
+                        let img = UIImage(data: data)
+                        let compressedImage = WBImageUtils.compressImage(img, withRatio: kImageCompression)
+                        let compressedURL = ReceiptDocument.makeDocumentFrom(image: compressedImage!).localURL!
+                        document = ReceiptDocument(fileURL: compressedURL)
+                    } else {
+                        self.emitImportError()
+                        return
+                    }
+                } else if fileType == PDF_TYPE {
+                    if let data = try? Data(contentsOf: url), !DataValidationService().isValidPDF(data: data) {
+                        self.emitImportError()
+                        return
+                    }
                 }
+                
                 return document.open()
             })
         } else {
             close()
         }
+    }
+    
+    private func emitImportError() {
+        let errorInfo = [NSLocalizedDescriptionKey : LocalizedString("receipt_file_picker_cant_import_error")]
+        let error = NSError(domain: NSPOSIXErrorDomain, code: Int(EINVAL), userInfo: errorInfo)
+        ReceiptFilePicker.sharedInstance.pickSubject?.onError(error)
     }
 }
 

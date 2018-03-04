@@ -475,3 +475,5 @@
 "backups_view_manual_description" = "Back up your data to keep your receipts safe! You can restore your data by importing the SmartReceipts.SMR backup file, which is generated via the \"Backup\" button below.";
 "backups_view_backup_button" = "Backup";
 "backups_view_import_button" = "Import";
+
+"receipt_file_picker_cant_import_error" = "Can't import selected file";

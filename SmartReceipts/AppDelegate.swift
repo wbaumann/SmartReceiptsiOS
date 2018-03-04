@@ -75,12 +75,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if url.isFileURL {
             if url.pathExtension.isStringIgnoreCaseIn(array: ["png", "jpg", "jpeg"]) {
                 Logger.info("Launched for image")
-                isFileImage = true
-                handlePDForImage(url: url)
+                if DataValidationService().isValidImage(url: url) {
+                    isFileImage = true
+                    handlePDForImage(url: url)
+                } else {
+                    Logger.error("Invalid Image for import")
+                }
             } else if url.pathExtension.caseInsensitiveCompare("pdf") == .orderedSame {
                 Logger.info("Launched for pdf")
-                isFileImage = false
-                handlePDForImage(url: url)
+                if DataValidationService().isValidPDF(url: url) {
+                    isFileImage = false
+                    handlePDForImage(url: url)
+                } else {
+                    Logger.error("Invalid PDF for import")
+                }
             } else if url.pathExtension.caseInsensitiveCompare("smr") == .orderedSame {
                 Logger.info("Launched for smr")
                 handleSMR(url: url)
