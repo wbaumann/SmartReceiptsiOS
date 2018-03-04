@@ -77,7 +77,9 @@ class ReceiptsRouter: Router {
     func openImportReceiptFile() {
         var hud: PendingHUDView?
         ReceiptFilePicker.sharedInstance.openFilePicker(on: _view)
-            .subscribe(onNext: { [unowned self] doc in
+            .do(onError: { [unowned self] error in
+                self.openAlert(title: nil, message: error.localizedDescription)
+            }).subscribe(onNext: { [unowned self] doc in
                 hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
                 hud?.observe(status: self.presenter.scanService.status)
                 self.subscription = self.presenter.scanService.scan(document: doc)
@@ -85,6 +87,8 @@ class ReceiptsRouter: Router {
                         hud?.hide()
                         self.openEditModule(with: scan)
                     })
+            }, onError: { [unowned self] _ in
+                self.openEditModuleWith(receipt: nil)
             }).disposed(by: bag)
     }
     
