@@ -27,19 +27,27 @@ class TableViewDataSourceProxy: NSObject, UITableViewDataSource {
     private var cellID: String!
     private var configureCell: ConfigureCellClosure?
     
+    private var isUpdating = false
+    
     init(_ tableView: UITableView, cellID: String, configureCell: ConfigureCellClosure?) {
         super.init()
         self.cellID = cellID
         self.configureCell = configureCell
         self.tableView = tableView
         
-        willChangeContent.subscribe(onNext: { [unowned self] in
-            self.tableView.beginUpdates()
-        }).disposed(by: bag)
+        willChangeContent
+            .filter({ [unowned self] in !self.isUpdating })
+            .subscribe(onNext: { [unowned self] in
+                self.tableView.beginUpdates()
+                self.isUpdating = true
+            }).disposed(by: bag)
         
-        didChangeContent.subscribe(onNext: { [unowned self] in
-            self.tableView.endUpdates()
-        }).disposed(by: bag)
+        didChangeContent
+            .filter({ [unowned self] in self.isUpdating })
+            .subscribe(onNext: { [unowned self] in
+                self.tableView.endUpdates()
+                self.isUpdating = false
+            }).disposed(by: bag)
         
         didInsert.subscribe(onNext: { [unowned self] action in
             self.tableView.insertRows(at: [IndexPath(row: action.index, section: 0)], with: .top)
@@ -59,7 +67,7 @@ class TableViewDataSourceProxy: NSObject, UITableViewDataSource {
         }).disposed(by: bag)
         
         reloadData.subscribe(onNext: { [unowned self] in
-            self.tableView.reloadData()
+            self.isUpdating ? self.tableView.endUpdates() : self.tableView.reloadData()
         }).disposed(by: bag)
     }
     
