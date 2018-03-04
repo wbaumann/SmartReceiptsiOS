@@ -34,9 +34,12 @@ class AdPresentingContainerViewController: UIViewController {
         
         checkAdsStatus()
         
-        upsellBannerView.bannerTap.subscribe(onNext: { [unowned self] in
-            _ = self.purchaseService.purchaseSubscription().subscribe()
-        }).disposed(by: bag)
+        upsellBannerView.bannerTap
+            .do(onNext: {
+                AnalyticsManager.sharedManager.record(event: Event.Purchases.AdUpsellTapped)
+            }).subscribe(onNext: { [unowned self] in
+                _ = self.purchaseService.purchaseSubscription().subscribe()
+            }).disposed(by: bag)
         
         NotificationCenter.default.addObserver(self, selector: #selector(checkAdsStatus),
                     name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
@@ -71,6 +74,8 @@ class AdPresentingContainerViewController: UIViewController {
             // Show UpsellBannerAdView randomly (1/100 times)
             upsellBannerView.isHidden = false
             bannerView?.isHidden = true
+            
+            AnalyticsManager.sharedManager.record(event: Event.Purchases.AdUpsellShown)
         } else {
             loadAd()
         }
@@ -93,6 +98,8 @@ extension AdPresentingContainerViewController: GADBannerViewDelegate {
     func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
         bannerView.isHidden = true
         upsellBannerView.isHidden = false
+        
+        AnalyticsManager.sharedManager.record(event: Event.Purchases.AdUpsellShownOnFailure)
     }
 }
 
