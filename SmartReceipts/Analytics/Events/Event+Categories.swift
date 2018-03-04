@@ -48,15 +48,15 @@ public extension Event {
         static let PurchaseSuccess = Event(category: Category.Purchases, name: "PurchaseSuccess")
         static let PurchaseFailed = Event(category: Category.Purchases, name: "PurchaseFailed")
         static let ShowPurchaseIntent = Event(category: Category.Purchases, name: "ShowPurchaseIntent") // means that in-app purchase popup presented
-        // TODO: AdUpsell not implemented for iOS verion:
-//        static let AdUpsellShown = Event(category: Category.Purchases, name: "AdUpsellShown")
-//        static let AdUpsellShownOnFailure = Event(category: Category.Purchases, name: "AdUpsellShownOnFailure")
-//        static let AdUpsellTapped = Event(category: Category.Purchases, name: "AdUpsellTapped")
+        static let AdUpsellShown = Event(category: Category.Purchases, name: "AdUpsellShown")
+        static let AdUpsellShownOnFailure = Event(category: Category.Purchases, name: "AdUpsellShownOnFailure")
+        static let AdUpsellTapped = Event(category: Category.Purchases, name: "AdUpsellTapped")
     }
     
     struct Navigation {
         static let SettingsOverflow = Event(category: Category.Navigation, name: "SettingsOverflow")
         static let BackupOverflow = Event(category: Category.Navigation, name: "BackupOverflow") // tracks backup action
+        static let OcrConfiguration = Event(category: Category.Navigation, name: "OcrConfiguration")
         static let SmartReceiptsPlusOverflow = Event(category: Category.Navigation, name: "SmartReceiptsPlusOverflow") // means that in-app purchase popup presented
     }
     

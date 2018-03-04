@@ -35,6 +35,7 @@ class TripsRouter: Router {
     }
     
     func openAutoScans() {
+        AnalyticsManager.sharedManager.record(event: Event.Navigation.OcrConfiguration)
         let module = AppModules.OCRConfiguration.build()
         openModal(module: module)
     }
