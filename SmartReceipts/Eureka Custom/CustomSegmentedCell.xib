@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,6 +38,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="j3f-iH-RK7" firstAttribute="leading" secondItem="Vpb-0h-2dw" secondAttribute="leading" constant="16" id="1L8-g4-UCd"/>
+                <constraint firstItem="KgU-FJ-5sN" firstAttribute="width" relation="lessThanOrEqual" secondItem="Vpb-0h-2dw" secondAttribute="width" constant="-32" id="3Xo-w4-Ghi"/>
                 <constraint firstAttribute="bottom" secondItem="KgU-FJ-5sN" secondAttribute="bottom" constant="4" id="94g-QX-EZs"/>
                 <constraint firstItem="j3f-iH-RK7" firstAttribute="top" secondItem="Vpb-0h-2dw" secondAttribute="top" constant="4" id="Ccc-Ry-mhA"/>
                 <constraint firstItem="KgU-FJ-5sN" firstAttribute="leading" secondItem="Vpb-0h-2dw" secondAttribute="leading" constant="16" id="arE-cP-K59"/>
