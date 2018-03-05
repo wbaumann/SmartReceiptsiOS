@@ -10,6 +10,8 @@ import Eureka
 import RxSwift
 import StoreKit
 
+fileprivate let IMAGE_OPTIONS = [512, 1024, 2048, 0]
+
 class SettingsFormView: FormViewController {
     
     weak var openModuleSubject: PublishSubject<SettingsRoutes>!
@@ -357,8 +359,7 @@ class SettingsFormView: FormViewController {
         <<< segmentedRow(LocalizedString("settings.max.camera.resolution.label"),
             options: imageOptions(), selected: imageOptionFromPreferences())
         .onChange({ row in
-            let options = [512, 1024, 0]
-            WBPreferences.setCameraMaxHeightWidth(options[row.value!])
+            WBPreferences.setCameraMaxHeightWidth(IMAGE_OPTIONS[row.value!])
         })
         
         <<< DescribedSwitchRow() { row in
@@ -501,8 +502,9 @@ class SettingsFormView: FormViewController {
         let pixelsString = LocalizedString("settings.camera.pixels.label")
         let option1 = "512 "+pixelsString
         let option2 = "1024 "+pixelsString
-        let option3 = LocalizedString("settings.camera.value.default.label")
-        return [option1, option2, option3]
+        let option3 = "2048 "+pixelsString
+        let option4 = LocalizedString("settings.camera.value.default.label")
+        return [option1, option2, option3, option4]
     }
     
     private func pdfFormats() -> [String] {
@@ -510,8 +512,7 @@ class SettingsFormView: FormViewController {
     }
     
     private func imageOptionFromPreferences() -> Int {
-        let options = [512, 1024, 0]
-        return options.index(of: WBPreferences.cameraMaxHeightWidth())!
+        return IMAGE_OPTIONS.index(of: WBPreferences.cameraMaxHeightWidth())!
     }
     
     private func setupPurchased() {
