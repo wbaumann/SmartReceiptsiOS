@@ -17,8 +17,8 @@ class ReceiptColumnNetExchangedPricePlusTax: ReceiptColumn {
         var total = NSDecimalNumber.zero
         for rec in rows as! [WBReceipt] {
             total = total.adding(rec.exchangedPrice()!.amount)
-            if WBPreferences.enteredPricePreTax() {
-                total = total.adding(rec.exchangedTax()!.amount)
+            if WBPreferences.enteredPricePreTax(), let tax = rec.exchangedTax()  {
+                total = total.adding(tax.amount)
             }
         }
         return Price.stringFrom(amount: total)
