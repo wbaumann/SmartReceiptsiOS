@@ -59,6 +59,7 @@ class EditDistanceFormView: FormViewController {
             self?.changedDistance?.distance = row.value == nil ? nil : NSDecimalNumber(value: row.value!)
         }).cellSetup({ cell, _ in
             cell.makeBoldTitle()
+            cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         })
         
         <<< DecimalRow(RATE_ROW_TAG) { row in
@@ -74,6 +75,7 @@ class EditDistanceFormView: FormViewController {
             self?.changedDistance?.rate = Price(amount: rate ?? 0, currencyCode: currency!)
         }).cellSetup({ cell, _ in
             cell.makeBoldTitle()
+            cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         })
         
         <<< PickerInlineRow<String>() { row in

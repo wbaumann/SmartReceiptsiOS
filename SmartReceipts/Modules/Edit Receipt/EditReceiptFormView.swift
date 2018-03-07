@@ -115,7 +115,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             }
         }).cellSetup({ cell, _ in
             cell.configureCell()
-            cell.textField.keyboardType = .numbersAndPunctuation
+            cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         })
             
         <<< DecimalRow() { [unowned self] row in
@@ -134,7 +134,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             self.receipt.setTax(NSDecimalNumber(value: row.value ?? 0))
         }).cellSetup({ cell, _ in
             cell.configureCell()
-            cell.textField.keyboardType = .numbersAndPunctuation
+            cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         })
         
         <<< PickerInlineRow<String>(CURRENCY_ROW_TAG) { row in

@@ -119,6 +119,8 @@
 		716138C71FD1E29300C73FB9 /* TripReportHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716138C61FD1E29300C73FB9 /* TripReportHeader.swift */; };
 		716138C91FD1E6E600C73FB9 /* PDFReportTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716138C81FD1E6E600C73FB9 /* PDFReportTable.swift */; };
 		7161DB511EE4907700399C9C /* AdPresentingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */; };
+		71628C21204EF8330032EEB7 /* NumberKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71628C20204EF8320032EEB7 /* NumberKeyboard.swift */; };
+		71628C23204EFB7F0032EEB7 /* NumberKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71628C22204EFB7F0032EEB7 /* NumberKeyboard.xib */; };
 		71652EAE1F646758002C8228 /* Toast+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71652EAD1F646758002C8228 /* Toast+Extensions.swift */; };
 		7167239A1F10540200400BFF /* CustomSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716723981F10540200400BFF /* CustomSegmentedCell.swift */; };
 		7167239B1F10540200400BFF /* CustomSegmentedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 716723991F10540200400BFF /* CustomSegmentedCell.xib */; };
@@ -683,6 +685,8 @@
 		716138C61FD1E29300C73FB9 /* TripReportHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripReportHeader.swift; sourceTree = "<group>"; };
 		716138C81FD1E6E600C73FB9 /* PDFReportTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReportTable.swift; sourceTree = "<group>"; };
 		7161DB501EE4907700399C9C /* AdPresentingContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdPresentingContainerViewController.swift; sourceTree = "<group>"; };
+		71628C20204EF8320032EEB7 /* NumberKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberKeyboard.swift; sourceTree = "<group>"; };
+		71628C22204EFB7F0032EEB7 /* NumberKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumberKeyboard.xib; sourceTree = "<group>"; };
 		71652EAD1F646758002C8228 /* Toast+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Toast+Extensions.swift"; sourceTree = "<group>"; };
 		716723981F10540200400BFF /* CustomSegmentedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedCell.swift; sourceTree = "<group>"; };
 		716723991F10540200400BFF /* CustomSegmentedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomSegmentedCell.xib; sourceTree = "<group>"; };
@@ -1285,6 +1289,8 @@
 				714104D11FF43D7700C334C5 /* SuggestionView.h */,
 				714104DC1FF43D7700C334C5 /* SuggestionView.m */,
 				714104D41FF43D7700C334C5 /* LaunchView.xib */,
+				71628C20204EF8320032EEB7 /* NumberKeyboard.swift */,
+				71628C22204EFB7F0032EEB7 /* NumberKeyboard.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2651,6 +2657,7 @@
 				716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */,
 				7190D44F1EE88CC40081CB22 /* GenerateReport.storyboard in Resources */,
 				EA1309A51B50282A0045FDDE /* PDFReportTable.xib in Resources */,
+				71628C23204EFB7F0032EEB7 /* NumberKeyboard.xib in Resources */,
 				71C014221F1AB14A005472B3 /* Categories.storyboard in Resources */,
 				71F468321EEEDB03009F6CE7 /* EditTrip.storyboard in Resources */,
 				EA1E60D81B2742660048E688 /* InfoPlist.strings in Resources */,
@@ -3293,6 +3300,7 @@
 				71AF49E81EFDCC010022B2E2 /* ReceiptImageViewerView.swift in Sources */,
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				716F07DF2034AFDF00166D63 /* BackupPresenter.swift in Sources */,
+				71628C21204EF8330032EEB7 /* NumberKeyboard.swift in Sources */,
 				EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */,
 				71B5C5371FB1550F00FA0AB9 /* UIAlert+Extensions.swift in Sources */,
 				71AEDDE71EDF823D00BAC0DD /* AppModules.swift in Sources */,

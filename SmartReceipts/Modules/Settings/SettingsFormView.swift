@@ -212,6 +212,7 @@ class SettingsFormView: FormViewController {
             cell.textField.textColor = AppTheme.primaryColor
         }).cellSetup({ cell, _ in
             cell.textLabel?.numberOfLines = 3
+            cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         })
             
         <<< textInput(LocalizedString("settings.user.id.label"),

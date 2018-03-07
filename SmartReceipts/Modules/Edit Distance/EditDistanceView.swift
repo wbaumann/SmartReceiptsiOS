@@ -38,8 +38,6 @@ final class EditDistanceView: UserInterface {
         navigationItem.title = isEdit ?
             LocalizedString("edit.distance.controller.edit.title") :
             LocalizedString("edit.distance.controller.add.title")
-        
-        
     }
     
     //MARK: Actions

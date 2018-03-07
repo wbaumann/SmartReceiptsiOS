@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NumberKeyboard" customModule="SmartReceipts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="290"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DLY-Pn-wap">
+                    <rect key="frame" x="8" y="8" width="359" height="274"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4ej-1O-W8O">
+                            <rect key="frame" x="0.0" y="0.0" width="359" height="62.666666666666664"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBc-tf-58g">
+                                    <rect key="frame" x="0.0" y="0.0" width="114.33333333333333" height="62.666666666666664"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="1">
+                                        <color key="titleColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="charTapWithButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Job-al-aFr"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUV-Hn-gki">
+                                    <rect key="frame" x="122.33333333333334" y="0.0" width="114.33333333333334" height="62.666666666666664"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="2">
+                                        <color key="titleColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="charTapWithButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="0Jp-Y6-qIX"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ByT-hu-EZM">
+                                    <rect key="frame" x="244.66666666666666" y="0.0" width="114.33333333333334" height="62.666666666666664"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="3">
+                                        <color key="titleColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="charTapWithButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="zx6-nl-zZR"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hEz-Jd-G9f">
+                            <rect key="frame" x="0.0" y="70.666666666666671" width="359" height="62.333333333333329"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQ3-DM-rd4">
+                                    <rect key="frame" x="0.0" y="0.0" width="114.33333333333333" height="62.333333333333336"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="4">
+                                        <color key="titleColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="charTapWithButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="ly0-Y0-GbN"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyd-tS-4cs">
+                                    <rect key="frame" x="122.33333333333334" y="0.0" width="114.33333333333334" height="62.333333333333336"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="5">
+                                        <color key="titleColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="charTapWithButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="8hc-CS-O6V"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNO-4X-FXq">
+                                    <rect key="frame" x="244.66666666666666" y="0.0" width="114.33333333333334" height="62.333333333333336"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="6">
+                                        <color key="titleColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="charTapWithButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="1Fy-uo-j0V"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xu5-tc-0Jd">
+                            <rect key="frame" x="0.0" y="141" width="359" height="62.666666666666657"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4HU-4K-Red">
+                                    <rect key="frame" x="0.0" y="0.0" width="114.33333333333333" height="62.666666666666664"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="7">
+                                        <color key="titleColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="charTapWithButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Z5G-si-96M"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EDs-CA-fwA">
+                                    <rect key="frame" x="122.33333333333334" y="0.0" width="114.33333333333334" height="62.666666666666664"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="8">
+                                        <color key="titleColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="charTapWithButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="eFQ-4S-ifp"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbf-qM-ITQ">
+                                    <rect key="frame" x="244.66666666666666" y="0.0" width="114.33333333333334" height="62.666666666666664"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="9">
+                                        <color key="titleColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="charTapWithButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="W05-3C-zqk"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <viewLayoutGuide key="safeArea" id="JVG-wi-E4g"/>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ezB-HA-eSZ">
+                            <rect key="frame" x="0.0" y="211.66666666666666" width="359" height="62.333333333333343"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYx-jk-NNg">
+                                    <rect key="frame" x="0.0" y="0.0" width="114.33333333333333" height="62.333333333333336"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="528-JQ-NgX">
+                                            <rect key="frame" x="0.0" y="0.0" width="114.33333333333333" height="62.333333333333336"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymr-he-het">
+                                                    <rect key="frame" x="0.0" y="0.0" width="53.333333333333336" height="62.333333333333336"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title=".">
+                                                        <color key="titleColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="charTapWithButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="AAx-k7-1yr"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGD-YL-SGp">
+                                                    <rect key="frame" x="61.333333333333329" y="0.0" width="53" height="62.333333333333336"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="29"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="-">
+                                                        <color key="titleColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="charTapWithButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="rjy-5E-Ca5"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="528-JQ-NgX" secondAttribute="trailing" id="Ihn-g9-IjG"/>
+                                        <constraint firstItem="528-JQ-NgX" firstAttribute="top" secondItem="fYx-jk-NNg" secondAttribute="top" id="aaf-3u-28P"/>
+                                        <constraint firstAttribute="bottom" secondItem="528-JQ-NgX" secondAttribute="bottom" id="hOT-lG-sJR"/>
+                                        <constraint firstItem="528-JQ-NgX" firstAttribute="leading" secondItem="fYx-jk-NNg" secondAttribute="leading" id="i49-Bg-XzR"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0c-j2-din">
+                                    <rect key="frame" x="122.33333333333334" y="0.0" width="114.33333333333334" height="62.333333333333336"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="charTapWithButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="eF7-mG-NgJ"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxM-Uj-NH3">
+                                    <rect key="frame" x="244.66666666666666" y="0.0" width="114.33333333333334" height="62.333333333333336"/>
+                                    <color key="tintColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" image="delete">
+                                        <color key="titleColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="removeTap" destination="iN0-l3-epB" eventType="touchUpInside" id="d4E-5B-OOX"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <viewLayoutGuide key="safeArea" id="SOk-8u-hfa"/>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="398" id="lmU-3g-9SY"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DLY-Pn-wap" secondAttribute="trailing" priority="700" constant="8" id="ILJ-3F-LdR"/>
+                <constraint firstItem="DLY-Pn-wap" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TjY-aw-AGL"/>
+                <constraint firstItem="DLY-Pn-wap" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="gcJ-QE-tTE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="DLY-Pn-wap" secondAttribute="bottom" constant="8" id="kO4-Dr-6Xw"/>
+                <constraint firstItem="DLY-Pn-wap" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="700" constant="8" id="nms-mR-SoY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="decimalSeparator" destination="ymr-he-het" id="F1D-bR-tum"/>
+                <outletCollection property="roundedViews" destination="dBc-tf-58g" collectionClass="NSMutableArray" id="m1V-4L-U2v"/>
+                <outletCollection property="roundedViews" destination="kUV-Hn-gki" collectionClass="NSMutableArray" id="aGH-cY-HED"/>
+                <outletCollection property="roundedViews" destination="ByT-hu-EZM" collectionClass="NSMutableArray" id="PvO-f2-OEc"/>
+                <outletCollection property="roundedViews" destination="MNO-4X-FXq" collectionClass="NSMutableArray" id="FtA-L9-NQU"/>
+                <outletCollection property="roundedViews" destination="gyd-tS-4cs" collectionClass="NSMutableArray" id="vcW-81-lfr"/>
+                <outletCollection property="roundedViews" destination="pQ3-DM-rd4" collectionClass="NSMutableArray" id="0a6-mi-BBo"/>
+                <outletCollection property="roundedViews" destination="fbf-qM-ITQ" collectionClass="NSMutableArray" id="twM-IO-Z2H"/>
+                <outletCollection property="roundedViews" destination="fxM-Uj-NH3" collectionClass="NSMutableArray" id="WYb-g6-sGX"/>
+                <outletCollection property="roundedViews" destination="X0c-j2-din" collectionClass="NSMutableArray" id="15A-XW-ATT"/>
+                <outletCollection property="roundedViews" destination="EDs-CA-fwA" collectionClass="NSMutableArray" id="ccm-u5-lyq"/>
+                <outletCollection property="roundedViews" destination="4HU-4K-Red" collectionClass="NSMutableArray" id="I6C-aa-kPe"/>
+                <outletCollection property="roundedViews" destination="FGD-YL-SGp" collectionClass="NSMutableArray" id="6qU-Dt-iqS"/>
+                <outletCollection property="roundedViews" destination="ymr-he-het" collectionClass="NSMutableArray" id="RVj-xp-y8F"/>
+            </connections>
+            <point key="canvasLocation" x="41" y="-12"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="delete" width="24" height="18"/>
+    </resources>
+</document>
