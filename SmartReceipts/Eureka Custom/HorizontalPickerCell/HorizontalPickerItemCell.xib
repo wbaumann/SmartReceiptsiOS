@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uuN-cm-TQb" customClass="HorizontalPickerItemCell" customModule="SmartReceipts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="198" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="198" height="56"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVN-6w-jO5">
+                        <rect key="frame" x="8" y="8" width="182" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fc3-CN-9rh">
+                                <rect key="frame" x="46" y="10" width="90.5" height="21"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Label ">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Label">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.47843137254901957" green="0.11764705882352941" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fc3-CN-9rh" firstAttribute="centerX" secondItem="OVN-6w-jO5" secondAttribute="centerX" id="CGo-Mg-yjW"/>
+                            <constraint firstItem="fc3-CN-9rh" firstAttribute="centerY" secondItem="OVN-6w-jO5" secondAttribute="centerY" id="c0h-oE-OVB"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="OVN-6w-jO5" firstAttribute="leading" secondItem="uuN-cm-TQb" secondAttribute="leading" constant="8" id="EEd-HY-6ma"/>
+                <constraint firstAttribute="bottom" secondItem="OVN-6w-jO5" secondAttribute="bottom" constant="8" id="Xyq-9c-fOo"/>
+                <constraint firstItem="OVN-6w-jO5" firstAttribute="top" secondItem="uuN-cm-TQb" secondAttribute="top" constant="8" id="r8l-vq-Cu7"/>
+                <constraint firstAttribute="trailing" secondItem="OVN-6w-jO5" secondAttribute="trailing" constant="8" id="zBo-Uv-GR4"/>
+            </constraints>
+            <size key="customSize" width="198" height="50"/>
+            <connections>
+                <outlet property="containerView" destination="OVN-6w-jO5" id="tOy-ST-EvL"/>
+                <outlet property="label" destination="fc3-CN-9rh" id="FIj-nd-RJd"/>
+            </connections>
+            <point key="canvasLocation" x="387" y="54"/>
+        </collectionViewCell>
+    </objects>
+</document>

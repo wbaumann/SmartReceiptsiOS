@@ -91,6 +91,10 @@
 		714AC77D2041C693003656DB /* DescribedButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AC77C2041C693003656DB /* DescribedButtonCell.swift */; };
 		714AC77F2042E84F003656DB /* WBPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AC77E2042E84F003656DB /* WBPreferences.swift */; };
 		714AFCC3200539F6000176E9 /* MigrationServiceTestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AFCC2200539F6000176E9 /* MigrationServiceTestable.swift */; };
+		714DE89E2051C82E0066EA6F /* HorizontalPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714DE89D2051C82E0066EA6F /* HorizontalPickerCell.swift */; };
+		714DE8A02051C83F0066EA6F /* HorizontalPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 714DE89F2051C83F0066EA6F /* HorizontalPickerCell.xib */; };
+		714DE8A3205319FF0066EA6F /* HorizontalPickerItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714DE8A2205319FF0066EA6F /* HorizontalPickerItemCell.swift */; };
+		714DE8A520531A090066EA6F /* HorizontalPickerItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 714DE8A420531A090066EA6F /* HorizontalPickerItemCell.xib */; };
 		7152DF1D1F0C24750088EE98 /* PDFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152DF1C1F0C24750088EE98 /* PDFPageView.swift */; };
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
 		7156066E1FAE67CF00E09760 /* ScanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7156066D1FAE67CF00E09760 /* ScanCell.xib */; };
@@ -654,6 +658,10 @@
 		714AC77E2042E84F003656DB /* WBPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBPreferences.swift; sourceTree = "<group>"; };
 		714AFCC2200539F6000176E9 /* MigrationServiceTestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationServiceTestable.swift; sourceTree = "<group>"; };
 		714AFCC420053A45000176E9 /* MigrationServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationServiceTest.swift; sourceTree = "<group>"; };
+		714DE89D2051C82E0066EA6F /* HorizontalPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPickerCell.swift; sourceTree = "<group>"; };
+		714DE89F2051C83F0066EA6F /* HorizontalPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalPickerCell.xib; sourceTree = "<group>"; };
+		714DE8A2205319FF0066EA6F /* HorizontalPickerItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPickerItemCell.swift; sourceTree = "<group>"; };
+		714DE8A420531A090066EA6F /* HorizontalPickerItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalPickerItemCell.xib; sourceTree = "<group>"; };
 		7152DF1C1F0C24750088EE98 /* PDFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageView.swift; sourceTree = "<group>"; };
 		71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportShareService.swift; sourceTree = "<group>"; };
 		7156066D1FAE67CF00E09760 /* ScanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanCell.xib; sourceTree = "<group>"; };
@@ -1335,6 +1343,17 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		714DE8A12051CD770066EA6F /* HorizontalPickerCell */ = {
+			isa = PBXGroup;
+			children = (
+				714DE89D2051C82E0066EA6F /* HorizontalPickerCell.swift */,
+				714DE89F2051C83F0066EA6F /* HorizontalPickerCell.xib */,
+				714DE8A2205319FF0066EA6F /* HorizontalPickerItemCell.swift */,
+				714DE8A420531A090066EA6F /* HorizontalPickerItemCell.xib */,
+			);
+			path = HorizontalPickerCell;
+			sourceTree = "<group>";
+		};
 		715606711FAF9BCC00E09760 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1403,6 +1422,8 @@
 		7159BA061F06F692004EABAA /* Eureka Custom */ = {
 			isa = PBXGroup;
 			children = (
+				714DE8A12051CD770066EA6F /* HorizontalPickerCell */,
+				717DDB92203B4E4A000486C3 /* PickerButtonCell */,
 				7159BA091F06F9B6004EABAA /* ExchangeRateCell.swift */,
 				7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */,
 				71CF7A111F1020440004F389 /* InputTextCell.swift */,
@@ -1418,7 +1439,6 @@
 				71AF0EAD2007BE8D00AA4C37 /* DescribedSwitchCell.xib */,
 				714AC77C2041C693003656DB /* DescribedButtonCell.swift */,
 				714AC77A2041C63B003656DB /* DescribedButtonCell.xib */,
-				717DDB92203B4E4A000486C3 /* PickerButtonCell */,
 			);
 			path = "Eureka Custom";
 			sourceTree = "<group>";
@@ -2616,6 +2636,7 @@
 				EA98B51E1B075057006935AE /* WBCellWithPriceNameDate.xib in Resources */,
 				7190B9131F60427200F6CE7F /* Auth.storyboard in Resources */,
 				716F07DD2034AFDF00166D63 /* Backup.storyboard in Resources */,
+				714DE8A520531A090066EA6F /* HorizontalPickerItemCell.xib in Resources */,
 				71FB1D3E1F195D0D00742FF5 /* PaymentMethods.storyboard in Resources */,
 				57C125191E12DAEF008551AC /* ServiceAccount.json in Resources */,
 				7185AEF51EFC1CC90038ED2A /* ReceiptMoveCopy.storyboard in Resources */,
@@ -2658,6 +2679,7 @@
 				7190D44F1EE88CC40081CB22 /* GenerateReport.storyboard in Resources */,
 				EA1309A51B50282A0045FDDE /* PDFReportTable.xib in Resources */,
 				71628C23204EFB7F0032EEB7 /* NumberKeyboard.xib in Resources */,
+				714DE8A02051C83F0066EA6F /* HorizontalPickerCell.xib in Resources */,
 				71C014221F1AB14A005472B3 /* Categories.storyboard in Resources */,
 				71F468321EEEDB03009F6CE7 /* EditTrip.storyboard in Resources */,
 				EA1E60D81B2742660048E688 /* InfoPlist.strings in Resources */,
@@ -3153,6 +3175,7 @@
 				71F4683B1EEF2E55009F6CE7 /* Viperit+Extensions.swift in Sources */,
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
 				A7B6FC5D1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift in Sources */,
+				714DE89E2051C82E0066EA6F /* HorizontalPickerCell.swift in Sources */,
 				719B1FEC1EF6032D0049BD71 /* EditReceiptRouter.swift in Sources */,
 				711E81D51FD4695B00708056 /* TripCSVGenerator.swift in Sources */,
 				5757D6131E929ECA000F65F9 /* Database+Sync.swift in Sources */,
@@ -3188,6 +3211,7 @@
 				EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */,
 				719B1FDE1EF603190049BD71 /* ReceiptsInteractor.swift in Sources */,
 				EA07BF4D1AF400CA004D17F6 /* Database+Distances.m in Sources */,
+				714DE8A3205319FF0066EA6F /* HorizontalPickerItemCell.swift in Sources */,
 				719310471EDDC3120065B5AD /* WBImageStampler.m in Sources */,
 				EAE9DAF11AF8EA8300F4FE76 /* DistanceDistanceColumn.m in Sources */,
 				71C014251F1AB14A005472B3 /* CategoriesPresenter.swift in Sources */,

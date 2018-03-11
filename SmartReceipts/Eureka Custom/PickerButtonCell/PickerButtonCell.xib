@@ -47,6 +47,7 @@
                 <outlet property="button" destination="2ck-V7-PGW" id="7N4-ok-cKD"/>
                 <outlet property="pickerView" destination="hmM-Ep-9Qc" id="t7O-XI-PsF"/>
             </connections>
+            <point key="canvasLocation" x="33.5" y="54"/>
         </tableViewCell>
     </objects>
 </document>

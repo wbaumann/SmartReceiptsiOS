@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mWK-fq-10k" customClass="HorizontalPickerCell" customModule="SmartReceipts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="439" height="56"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mWK-fq-10k" id="afO-35-ZHM">
+                <rect key="frame" x="0.0" y="0.0" width="439" height="55.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="KQK-1d-lwq">
+                        <rect key="frame" x="0.0" y="0.0" width="439" height="55.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ehe-iA-E9d">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KQK-1d-lwq" firstAttribute="top" secondItem="afO-35-ZHM" secondAttribute="top" id="4ga-G7-iPd"/>
+                    <constraint firstAttribute="bottom" secondItem="KQK-1d-lwq" secondAttribute="bottom" id="C7Z-8s-zNE"/>
+                    <constraint firstItem="KQK-1d-lwq" firstAttribute="leading" secondItem="afO-35-ZHM" secondAttribute="leading" id="Nyc-ut-hp6"/>
+                    <constraint firstAttribute="trailing" secondItem="KQK-1d-lwq" secondAttribute="trailing" id="gno-yg-xtd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="collectionView" destination="KQK-1d-lwq" id="Ilz-ZO-Z0R"/>
+            </connections>
+            <point key="canvasLocation" x="-220.5" y="64"/>
+        </tableViewCell>
+    </objects>
+</document>
