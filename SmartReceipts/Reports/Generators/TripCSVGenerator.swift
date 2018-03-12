@@ -22,11 +22,18 @@ class TripCSVGenerator: ReportCSVGenerator {
     
     @objc private func generateContent() -> Data {
         let content = NSMutableString()
-        appendReceiptsTable(content)
+        
+        if !WBPreferences.omitDefaultPdfTable() {
+            appendReceiptsTable(content)
+            content.append(TABLE_SPACING)
+        }
+        
         appendDistancesTable(content)
+        
         if WBPreferences.includeCategoricalSummation() {
             appendCategoricalSummationTable(content)
         }
+        
         if WBPreferences.separatePaymantsByCategory() {
             appendSeparatedByCategoryTable(content)
         }
@@ -70,7 +77,6 @@ class TripCSVGenerator: ReportCSVGenerator {
         if !WBPreferences.printDistanceTable() { return }
         let dists = distances()
         if dists.isEmpty { return }
-        content.append(TABLE_SPACING)
         let receiptTable = ReportCSVTable(content: content, columns: distanceColumns())!
         receiptTable.includeHeaders = WBPreferences.includeCSVHeaders()
         receiptTable.append(withRows: dists)
