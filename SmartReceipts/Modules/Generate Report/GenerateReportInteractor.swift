@@ -62,6 +62,9 @@ class GenerateReportInteractor: Interactor {
     
     func generateReport() {
         if needEnableDistance() {
+            Logger.debug("Empty Receipts and disabled Include Distances. Go to Settings")
+            AnalyticsManager.sharedManager.record(event: Event.Generate.NothingToGenerateCSV)
+            
             Toast.show(LocalizedString("generate_report_toast_csv_report_distances"))
             presenter.hideHudFromView()
             presenter.presentEnableDistances()
