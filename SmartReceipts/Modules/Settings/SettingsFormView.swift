@@ -58,7 +58,6 @@ class SettingsFormView: FormViewController {
         super.viewDidLoad()
         
         tableView.separatorColor = UIColor.clear
-        let hasValidSubscription = Database.sharedInstance().hasValidSubscription()
         
         form
         +++ Section(LocalizedString("settings.purchase.section.title"))
@@ -67,8 +66,9 @@ class SettingsFormView: FormViewController {
             self.purchaseRow = row
         }.onCellSelection({ [unowned self] _, row in
             if !row.isPurchased() {
-                self.settingsView.purchaseSubscription().subscribe(onNext: { [unowned self] in
-                    self.setupPurchased()
+                self.settingsView.purchaseSubscription()
+                    .subscribe(onNext: { [unowned self] in
+                        self.setupPurchased()
                     }, onError: { error in
                         self.alertSubject.onNext((title: LocalizedString("settings.purchase.make.purchase.error.title"),
                                                 message: error.localizedDescription))
@@ -97,7 +97,7 @@ class SettingsFormView: FormViewController {
             row.title = LocalizedString("settings.pdf.footer.text.label")
             row.value = WBPreferences.pdfFooterString()
             self.footerRow = row
-            row.isEnabled = hasValidSubscription
+            row.isEnabled = Database.sharedInstance().hasValidSubscription()
         }.onChange({ row in
             WBPreferences.setPDFFooterString(row.value ?? "")
         }).cellUpdate({ cell, row in
@@ -116,8 +116,8 @@ class SettingsFormView: FormViewController {
             row.offSubtitle = LocalizedString("settings.pro.payments.by.category.description.off")
         }.onChange({ row in
             WBPreferences.setSeparatePaymantsByCategory(row.value!)
-        }).cellSetup({ cell, _ in
-            cell.isUserInteractionEnabled = hasValidSubscription
+        }).cellUpdate({ cell, _ in
+            cell.isUserInteractionEnabled = Database.sharedInstance().hasValidSubscription()
         })
         
         <<< DescribedSwitchRow() { row in
@@ -127,8 +127,8 @@ class SettingsFormView: FormViewController {
             row.offSubtitle = LocalizedString("settings.pro.categorical.summation.description.off")
         }.onChange({ row in
             WBPreferences.setIncludeCategoricalSummation(row.value!)
-        }).cellSetup({ cell, _ in
-            cell.isUserInteractionEnabled = hasValidSubscription
+        }).cellUpdate({ cell, _ in
+            cell.isUserInteractionEnabled = Database.sharedInstance().hasValidSubscription()
         })
             
         <<< DescribedSwitchRow() { row in
@@ -136,8 +136,8 @@ class SettingsFormView: FormViewController {
             row.value = WBPreferences.omitDefaultPdfTable()
         }.onChange({ row in
             WBPreferences.setOmitDefaultPdfTable(row.value!)
-        }).cellSetup({ cell, _ in
-            cell.isUserInteractionEnabled = hasValidSubscription
+        }).cellUpdate({ cell, _ in
+            cell.isUserInteractionEnabled = Database.sharedInstance().hasValidSubscription()
         })
         
            
@@ -520,6 +520,7 @@ class SettingsFormView: FormViewController {
         purchaseRow.setSubscriptionEnd(date: Database.sharedInstance().subscriptionEndDate())
         purchaseRow.markPurchased()
         footerRow.isEnabled = true
+        form.allSections[1].reload()
     }
     
     private func applySettingsOption() {
