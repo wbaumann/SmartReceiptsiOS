@@ -22,11 +22,18 @@ class GenerateReportRouter: Router {
         _view.present(sheet, animated: true, completion: nil)
     }
     
-    func openSettings() {
+    func openSettingsOnDisatnce() {
+        openSettings(option: .distanceSection)
+    }
+    
+    func openSettingsOnReportLayout() {
         AnalyticsManager.sharedManager.record(event: Event.informationalConfigureReport())
-        
+        openSettings(option: .reportCSVOutputSection)
+    }
+    
+    func openSettings(option: ShowSettingsOption) {
         let module = AppModules.settings.build()
-        module.presenter.setupView(data: ShowSettingsOption.openFromGenerateReportModule)
+        module.presenter.setupView(data: option)
         executeFor(iPhone: {
             module.router.show(from: _view, embedInNavController: true)
         }, iPad: {

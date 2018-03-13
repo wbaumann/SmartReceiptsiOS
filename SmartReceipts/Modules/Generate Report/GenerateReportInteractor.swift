@@ -10,6 +10,7 @@ import Foundation
 import Viperit
 import RxSwift
 import RxCocoa
+import Toaster
 
 class GenerateReportInteractor: Interactor {
     var generator: ReportAssetsGenerator?
@@ -60,6 +61,13 @@ class GenerateReportInteractor: Interactor {
     }
     
     func generateReport() {
+        if needEnableDistance() {
+            Toast.show(LocalizedString("generate_report_toast_csv_report_distances"))
+            presenter.hideHudFromView()
+            presenter.presentEnableDistances()
+            return
+        }
+        
         if !validateSelection() {
             presenter.hideHudFromView()
             return
@@ -116,7 +124,7 @@ class GenerateReportInteractor: Interactor {
                     
                     let openSettingsAction = UIAlertAction(title: LocalizedString("generate.report.unsuccessful.alert.pdf.columns.gotosettings"),
                                                            style: .default, handler: { _ in
-                        self.presenter.presentSettings()
+                        self.presenter.presentOutputSettings()
                     })
                     actions.append(openSettingsAction)
                     
@@ -140,6 +148,10 @@ class GenerateReportInteractor: Interactor {
             return false
         }
         return true
+    }
+    
+    private func needEnableDistance() -> Bool {
+        return csvFile.value && !WBPreferences.printDistanceTable() && Database.sharedInstance().allReceipts(for: trip).isEmpty
     }
     
 }
