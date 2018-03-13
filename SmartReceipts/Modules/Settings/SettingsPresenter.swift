@@ -54,7 +54,8 @@ class SettingsPresenter: Presenter {
 }
 
 enum ShowSettingsOption {
-    case openFromGenerateReportModule
+    case reportCSVOutputSection
+    case distanceSection
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

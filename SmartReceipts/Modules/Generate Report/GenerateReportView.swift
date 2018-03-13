@@ -54,7 +54,7 @@ final class GenerateReportView: UserInterface {
         }).disposed(by: disposeBag)
         
         settingsTapObservable.subscribe { [weak self] _ in
-            self?.presenter.presentSettings()
+            self?.presenter.presentOutputSettings()
         }.disposed(by: disposeBag)
     }
 }

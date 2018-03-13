@@ -49,12 +49,16 @@ class GenerateReportPresenter: Presenter {
         router.open(vc: vc, animated: animated, isPopover: isPopover, completion: completion)
     }
     
-    func presentSettings() {
-        router.openSettings()
+    func presentOutputSettings() {
+        router.openSettingsOnReportLayout()
     }
     
     func hideHudFromView() {
         view.hideHud()
+    }
+    
+    func presentEnableDistances() {
+        router.openSettingsOnDisatnce()
     }
 }
 

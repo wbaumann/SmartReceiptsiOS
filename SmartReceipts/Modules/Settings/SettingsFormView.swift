@@ -524,9 +524,12 @@ class SettingsFormView: FormViewController {
     
     private func applySettingsOption() {
         if let option = showOption {
-            if option == .openFromGenerateReportModule {
-                DispatchQueue.main.async { [unowned self] in
+            DispatchQueue.main.async { [unowned self] in
+                switch option {
+                case .reportCSVOutputSection:
                     self.tableView.scrollToRow(at: IndexPath(row: 0, section: 6), at: .top, animated: false)
+                case .distanceSection:
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 8), at: .top, animated: false)
                 }
             }
         }
