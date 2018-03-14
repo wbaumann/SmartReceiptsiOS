@@ -12,6 +12,7 @@ import RMStore
 import Firebase
 import UIAlertView_Blocks
 import RxSwift
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,6 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         enableAnalytics()
         AppTheme.customizeOnAppLoad()
+        
+        #if DEBUG
+            Crashlytics.sharedInstance().debugMode = true
+        #endif
     
         RMStore.default().receiptVerificator = receiptVerification
         RMStore.default().transactionPersistor = keychainPersistence
@@ -50,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             message += "\n"
             message += exception.callStackSymbols.description
             Logger.error(message, file: "UncaughtExcepetion", function: "onUncaughtExcepetion", line: 0)
-            FirebaseCrashMessage(message)
+            Crashlytics.sharedInstance().recordCustomExceptionName(exception.name.rawValue, reason: exception.reason, frameArray: [])
             
             let errorEvent = ErrorEvent(exception: exception)
             AnalyticsManager.sharedManager.record(event: errorEvent)
