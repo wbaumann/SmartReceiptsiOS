@@ -10,6 +10,8 @@ import Foundation
 import Viperit
 import RxSwift
 
+fileprivate let LAST_OPENED_TRIP_KEY = "LastOpenedTripKey"
+
 class TripsInteractor: Interactor {
     
     let disposeBag = DisposeBag()
@@ -23,6 +25,18 @@ class TripsInteractor: Interactor {
     
     func fetchedModelAdapter() -> FetchedModelAdapter? {
         return Database.sharedInstance().createUpdatingAdapterForAllTrips()
+    }
+    
+    func markLastOpened(trip: WBTrip) {
+        UserDefaults.standard.set(trip.name, forKey: LAST_OPENED_TRIP_KEY)
+    }
+    
+    var lastOpenedTrip: WBTrip? {
+        guard let tripName = UserDefaults.standard.value(forKey: LAST_OPENED_TRIP_KEY) as? String else { return nil }
+        if let trip = Database.sharedInstance().tripWithName(tripName) {
+            return trip
+        }
+        return nil
     }
 }
 
