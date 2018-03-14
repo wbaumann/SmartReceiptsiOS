@@ -23,6 +23,10 @@ class TripsPresenter: Presenter {
         interactor.configureSubscribers()
         executeFor(iPhone: {}, iPad: { router.openNoTrips() })
         
+        if !Database.sharedInstance().allTrips().isEmpty, let lastTrip = interactor.lastOpenedTrip {
+            router.openDetails(trip: lastTrip)
+        }
+        
         view.addButton.rx.tap
             .subscribe(onNext: {
                 self.router.openAddTrip()
@@ -68,7 +72,9 @@ class TripsPresenter: Presenter {
             }).disposed(by: bag)
         
         tripDetailsSubject
-            .subscribe(onNext: { trip in
+            .do(onNext: { [unowned self] trip in
+                self.interactor.markLastOpened(trip: trip)
+            }).subscribe(onNext: { trip in
                 self.router.openDetails(trip: trip)
             }).disposed(by: bag)
         
