@@ -35,10 +35,13 @@ def pods
     
     # Firebase
     pod 'Firebase/Analytics'
-    pod 'Firebase/Crash'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'Firebase/AdMob'
+    
+    # Google
+    pod 'Fabric'
+    pod 'Crashlytics'
     
     # Purchases
     pod 'RMStore/Core', :path => '3rdparty/RMStore'

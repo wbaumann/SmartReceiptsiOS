@@ -11,6 +11,7 @@ import Eureka
 import RxSwift
 import RxCocoa
 import Toaster
+import Crashlytics
 
 fileprivate let SCAN_ROW = "ScanRow"
 
@@ -86,6 +87,21 @@ class DebugFormView: FormViewController {
             
         <<< ScanRow(SCAN_ROW)
         
+        +++ Section("Crashlytics")
+        <<< SwitchRow() { row in
+            row.title = "Crashlytics 'DEBUG MODE'"
+            row.value = Crashlytics.sharedInstance().debugMode
+        }.onChange({ row in
+            guard let value = row.value else { return }
+            Crashlytics.sharedInstance().debugMode = value
+        })
+            
+        <<< ButtonRow() { row in
+            row.title = "Initiate crash"
+        }.onCellSelection({ _, _ in
+            Crashlytics.sharedInstance().debugMode = false
+            Crashlytics.sharedInstance().crash()
+        })
     }
     
     var scanObserver: AnyObserver<Scan> {

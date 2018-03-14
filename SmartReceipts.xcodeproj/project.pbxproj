@@ -2537,7 +2537,7 @@
 				84F4F33E18CFCCD000F69A35 /* Resources */,
 				19AD5CB03731DB0000DEC605 /* [CP] Embed Pods Frameworks */,
 				23A877E444F92BE69C22FF57 /* [CP] Copy Pods Resources */,
-				57691F051E11430B00F78859 /* [Firebase crash reporter] Run Script */,
+				716D91AA205994F1000D32AF /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -2845,19 +2845,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# more info: http://stackoverflow.com/questions/24183812/swift-warning-equivalent\nTAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
 		};
-		57691F051E11430B00F78859 /* [Firebase crash reporter] Run Script */ = {
+		716D91AA205994F1000D32AF /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[Firebase crash reporter] Run Script";
+			name = Crashlytics;
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\n\n# Reads APP_ID from file. (We are hiding any secret keys)\nGOOGLE_APP_ID=$(/usr/libexec/PlistBuddy -c \"print :GOOGLE_APP_ID\" ${SRCROOT}/SmartReceipts/GoogleService-Info.plist)\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"SmartReceipts/ServiceAccount.json\"\n\necho \"Google Application ID:\" $GOOGLE_APP_ID # for debug";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
 		};
 		71C413D21EE6EE78003CE891 /* Cuckoo Tests */ = {
 			isa = PBXShellScriptBuildPhase;

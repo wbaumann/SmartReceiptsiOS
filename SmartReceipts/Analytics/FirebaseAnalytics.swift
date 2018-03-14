@@ -8,7 +8,6 @@
 
 import Foundation
 import FirebaseAnalytics
-import FirebaseCrash
 
 /// Firebase implementation adopted to our custom Analytics service
 class FirebaseAnalytics: AnalyticsServiceProtocol {
