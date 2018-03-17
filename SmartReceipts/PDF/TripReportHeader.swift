@@ -12,7 +12,9 @@ fileprivate let HeaderRowsSpacing: CGFloat = 8
 
 class TripReportHeader: UIView {
     @IBOutlet var tripNameLabel: UILabel!
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet var rowPrototype: UILabel!
+    
     var yOffset: CGFloat = 0
     
     override func awakeFromNib() {
@@ -27,12 +29,13 @@ class TripReportHeader: UIView {
     }
     
     func appendRow(_ row: String, style: PDFFontStyle = .default) {
-        let label = UILabel(frame: rowPrototype.bounds)
+        let label = makeRowCopy()
+        label.removeConstraints(label.constraints)
         label.numberOfLines = 0
         label.font = style.font
         label.text = row
-        addSubview(label)
         adjustLabelHeightToFitAndPosition(label: label)
+        stackView.addArrangedSubview(label)
     }
     
     private func adjustLabelHeightToFitAndPosition(label: UILabel) {
@@ -50,6 +53,11 @@ class TripReportHeader: UIView {
         var myFrame = frame
         myFrame.size.height = yOffset
         frame = myFrame
+    }
+    
+    private func makeRowCopy() -> UILabel {
+        let data = NSKeyedArchiver.archivedData(withRootObject: rowPrototype)
+        return NSKeyedUnarchiver.unarchiveObject(with: data) as! UILabel
     }
 }
 
