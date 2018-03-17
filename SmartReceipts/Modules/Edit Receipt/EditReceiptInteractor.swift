@@ -48,6 +48,7 @@ class EditReceiptInteractor: Interactor {
         presenter.updateReceiptSubject.subscribe(onNext: { [unowned self] receipt in
             Logger.debug("Updated Receipt: \(receipt.name)")
             AnalyticsManager.sharedManager.record(event: Event.receiptsPersistUpdateReceipt())
+            self.replaceImageIfNeeded(receipt: receipt)
             self.save(receipt: receipt)
         }).disposed(by: disposeBag)
     }
@@ -74,6 +75,22 @@ class EditReceiptInteractor: Interactor {
         } else {
             validateDate(in: receipt)
             presenter.close()
+        }
+    }
+    
+    private func replaceImageIfNeeded(receipt: WBReceipt) {
+        if receipt.hasPDF() || receipt.hasImage() {
+            let currentPath = receipt.imageFilePath(for: receipt.trip)
+            let tripFolder = currentPath.asNSString.deletingLastPathComponent
+            let newFileName = String(format: "%tu_%@.%@", receipt.objectId, receipt.omittedName, currentPath.asNSString.pathExtension)
+            let newPath = "\(tripFolder)/\(newFileName)"
+            receipt.setImageFileName(newFileName)
+            
+            do {
+                try FileManager.default.moveItem(atPath: currentPath, toPath: newPath)
+            } catch let error as NSError {
+                Logger.error(error.localizedDescription)
+            }
         }
     }
     
