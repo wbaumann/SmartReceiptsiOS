@@ -82,8 +82,8 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         let endDate = dateFormatter.formattedDate(trip.endDate, in: trip.endTimeZone)!
         pdfRender.appendHeader(row: String(format: LocalizedString("pdf.report.from.to.label.base"), startDate, endDate))
         
-        if let costCenter = trip.costCenter, WBPreferences.trackCostCenter() && !trip.costCenter.isEmpty {
-            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.const.center.label")) \(trip.costCenter)")
+        if let costCenter = trip.costCenter, WBPreferences.trackCostCenter() && !costCenter.isEmpty {
+            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.const.center.label")) \(costCenter)")
         }
         
         if let comment = trip.comment, !trip.comment.isEmpty {
@@ -95,7 +95,9 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         
         
         if !WBPreferences.includeTaxField() && recs.count > 0 || !taxesTotal.hasValue() {
-            pdfRender.appendHeader(row: "\(LocalizedString("pdf_report_receipts_total_label")) \(fp(receiptTotal))")
+            if grandTotal.amount != receiptTotal.amount {
+                pdfRender.appendHeader(row: "\(LocalizedString("pdf_report_receipts_total_label")) \(fp(receiptTotal))")
+            }
         } else if WBPreferences.includeTaxField() && taxesTotal.hasValue() {
             pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.receipts.total.sans.tax.label")) \(fp(noTaxesTotal))")
             pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.tax.total.label")) \(fp(taxesTotal))")

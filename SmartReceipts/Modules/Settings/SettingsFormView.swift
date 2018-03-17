@@ -248,7 +248,7 @@ class SettingsFormView: FormViewController {
             row.offSubtitle = LocalizedString("settings_track_cost_center_summaryOff")
             row.value = WBPreferences.trackCostCenter()
         }.onChange({ row in
-            WBPreferences.setIncludeCategoricalSummation(row.value!)
+            WBPreferences.setTrackCostCenter(row.value!)
         })
         
         <<< DescribedSwitchRow() { row in
