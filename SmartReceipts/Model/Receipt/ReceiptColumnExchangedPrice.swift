@@ -18,10 +18,25 @@ class ReceiptColumnExchangedPrice: ReceiptColumn {
     }
     
     override func value(forFooter rows: [Any]!, forCSV: Bool) -> String! {
+        let otherCollection = PricesCollection()
         var total = NSDecimalNumber.zero
-        for rec in rows as! [WBReceipt] {
-            total = total.adding(rec.exchangedPrice()!.amount)
+        let receipts = rows as! [WBReceipt]
+        
+        for rec in receipts {
+            if let exchangedPrice = rec.exchangedPrice() {
+                total = total.adding(exchangedPrice.amount)
+            } else {
+                otherCollection.addPrice(rec.price())
+            }
         }
-        return Price.stringFrom(amount: total)
+        
+        if otherCollection.hasValue() {
+            let totalPrice = Price(amount: total, currency: receipts.first!.trip.defaultCurrency)
+            return "\(totalPrice.currencyFormattedPrice()); \(otherCollection.currencyFormattedPrice())"
+        } else {
+            return Price.stringFrom(amount: total)
+        }
+        
+        
     }
 }

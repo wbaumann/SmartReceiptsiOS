@@ -61,6 +61,28 @@ class PricesCollection: Price {
         return currencyFormattedPrice().hash
     }
     
+    override func copy() -> Any {
+        let copy = PricesCollection()
+        for (currency, amount) in totals {
+            copy.add(amount, currency: currency)
+        }
+        return copy
+    }
+    
+    static func + (left: PricesCollection, right: PricesCollection) -> PricesCollection {
+        let newPricesCollection = left.copy() as! PricesCollection
+        for (currency, amount) in right.totals {
+            newPricesCollection.add(amount, currency: currency)
+        }
+        return newPricesCollection
+    }
+    
+    static func += (left: PricesCollection, right: PricesCollection) {
+        for (currency, amount) in right.totals {
+            left.add(amount, currency: currency)
+        }
+    }
+    
     override func isEqual(_ object: Any?) -> Bool {
         if let other = object as? PricesCollection {
             return currencyFormattedPrice() == other.currencyFormattedPrice()
