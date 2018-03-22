@@ -11,14 +11,30 @@ import Foundation
 class ReceiptColumnExchangedPriceMinusTax: ReceiptColumn {
     
     override func value(from receipt: WBReceipt!, forCSV: Bool) -> String! {
-        return Price.stringFrom(amount: receipt.amountMinusTax())
+        if let price = receipt.priceMinusTaxExchanged() {
+            return price.amountAsString()
+        }
+        return LocalizedString("pdf_report_undefined")
     }
     
     override func value(forFooter rows: [Any]!, forCSV: Bool) -> String! {
+        let otherCollection = PricesCollection()
         var total = NSDecimalNumber.zero
-        for receipt in rows as! [WBReceipt] {
-            total = total.adding(receipt.amountMinusTax())
+        let receipts = rows as! [WBReceipt]
+        
+        for rec in receipts {
+            if let exchangedPrice = rec.priceMinusTaxExchanged() {
+                total = total.adding(exchangedPrice.amount)
+            } else {
+                otherCollection.addPrice(rec.priceMinusTax())
+            }
         }
-        return Price.stringFrom(amount: total)
+        
+        if otherCollection.hasValue() {
+            let totalPrice = Price(amount: total, currency: receipts.first!.trip.defaultCurrency)
+            return "\(totalPrice.currencyFormattedPrice()); \(otherCollection.currencyFormattedPrice())"
+        } else {
+            return Price.stringFrom(amount: total)
+        }
     }
 }
