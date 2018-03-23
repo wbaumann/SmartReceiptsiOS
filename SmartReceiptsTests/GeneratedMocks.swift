@@ -123,14 +123,14 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
         
     }
     
-     override func presentSettings()  {
+     override func presentOutputSettings()  {
         
-            return cuckoo_manager.call("presentSettings()",
+            return cuckoo_manager.call("presentOutputSettings()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                         o.presentSettings()
+                         o.presentOutputSettings()
                     }
                 })
         
@@ -144,6 +144,19 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
                     return { (args) in
                         let () = args
                          o.hideHudFromView()
+                    }
+                })
+        
+    }
+    
+     override func presentEnableDistances()  {
+        
+            return cuckoo_manager.call("presentEnableDistances()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.presentEnableDistances()
                     }
                 })
         
@@ -193,14 +206,19 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
             return .init(stub: cuckoo_manager.createStub("present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)", parameterMatchers: matchers))
         }
         
-        func presentSettings() -> Cuckoo.StubNoReturnFunction<()> {
+        func presentOutputSettings() -> Cuckoo.StubNoReturnFunction<()> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-            return .init(stub: cuckoo_manager.createStub("presentSettings()", parameterMatchers: matchers))
+            return .init(stub: cuckoo_manager.createStub("presentOutputSettings()", parameterMatchers: matchers))
         }
         
         func hideHudFromView() -> Cuckoo.StubNoReturnFunction<()> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return .init(stub: cuckoo_manager.createStub("hideHudFromView()", parameterMatchers: matchers))
+        }
+        
+        func presentEnableDistances() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("presentEnableDistances()", parameterMatchers: matchers))
         }
         
     }
@@ -263,15 +281,21 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
         }
         
         @discardableResult
-        func presentSettings() -> Cuckoo.__DoNotUse<Void> {
+        func presentOutputSettings() -> Cuckoo.__DoNotUse<Void> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-            return cuckoo_manager.verify("presentSettings()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+            return cuckoo_manager.verify("presentOutputSettings()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
         @discardableResult
         func hideHudFromView() -> Cuckoo.__DoNotUse<Void> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return cuckoo_manager.verify("hideHudFromView()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func presentEnableDistances() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("presentEnableDistances()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
     }
@@ -313,11 +337,15 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.Mock {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
-     override func presentSettings()  {
+     override func presentOutputSettings()  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
      override func hideHudFromView()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func presentEnableDistances()  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
@@ -341,6 +369,7 @@ import Cuckoo
 import Foundation
 import RxCocoa
 import RxSwift
+import Toaster
 import Viperit
 
 class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.Mock {
@@ -2041,14 +2070,40 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.Mock {
         
     }
     
-     override func openSettings()  {
+     override func openSettingsOnDisatnce()  {
         
-            return cuckoo_manager.call("openSettings()",
+            return cuckoo_manager.call("openSettingsOnDisatnce()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                         o.openSettings()
+                         o.openSettingsOnDisatnce()
+                    }
+                })
+        
+    }
+    
+     override func openSettingsOnReportLayout()  {
+        
+            return cuckoo_manager.call("openSettingsOnReportLayout()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.openSettingsOnReportLayout()
+                    }
+                })
+        
+    }
+    
+     override func openSettings(option: ShowSettingsOption)  {
+        
+            return cuckoo_manager.call("openSettings(option: ShowSettingsOption)",
+                parameters: (option),
+                original: observed.map { o in
+                    return { (args) in
+                        let (option) = args
+                         o.openSettings(option: option)
                     }
                 })
         
@@ -2086,9 +2141,19 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.Mock {
             return .init(stub: cuckoo_manager.createStub("openSheet(title: String?, message: String?, actions: [UIAlertAction])", parameterMatchers: matchers))
         }
         
-        func openSettings() -> Cuckoo.StubNoReturnFunction<()> {
+        func openSettingsOnDisatnce() -> Cuckoo.StubNoReturnFunction<()> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-            return .init(stub: cuckoo_manager.createStub("openSettings()", parameterMatchers: matchers))
+            return .init(stub: cuckoo_manager.createStub("openSettingsOnDisatnce()", parameterMatchers: matchers))
+        }
+        
+        func openSettingsOnReportLayout() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("openSettingsOnReportLayout()", parameterMatchers: matchers))
+        }
+        
+        func openSettings<M1: Cuckoo.Matchable>(option: M1) -> Cuckoo.StubNoReturnFunction<(ShowSettingsOption)> where M1.MatchedType == ShowSettingsOption {
+            let matchers: [Cuckoo.ParameterMatcher<(ShowSettingsOption)>] = [wrap(matchable: option) { $0 }]
+            return .init(stub: cuckoo_manager.createStub("openSettings(option: ShowSettingsOption)", parameterMatchers: matchers))
         }
         
         func open<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable, M4: Cuckoo.Matchable>(vc: M1, animated: M2, isPopover: M3, completion: M4) -> Cuckoo.StubNoReturnFunction<(UIViewController, Bool, Bool, (() -> Void)?)> where M1.MatchedType == UIViewController, M2.MatchedType == Bool, M3.MatchedType == Bool, M4.MatchedType == (() -> Void)? {
@@ -2126,9 +2191,21 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.Mock {
         }
         
         @discardableResult
-        func openSettings() -> Cuckoo.__DoNotUse<Void> {
+        func openSettingsOnDisatnce() -> Cuckoo.__DoNotUse<Void> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-            return cuckoo_manager.verify("openSettings()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+            return cuckoo_manager.verify("openSettingsOnDisatnce()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func openSettingsOnReportLayout() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("openSettingsOnReportLayout()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func openSettings<M1: Cuckoo.Matchable>(option: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == ShowSettingsOption {
+            let matchers: [Cuckoo.ParameterMatcher<(ShowSettingsOption)>] = [wrap(matchable: option) { $0 }]
+            return cuckoo_manager.verify("openSettings(option: ShowSettingsOption)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
         @discardableResult
@@ -2156,7 +2233,15 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.Mock {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
-     override func openSettings()  {
+     override func openSettingsOnDisatnce()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func openSettingsOnReportLayout()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func openSettings(option: ShowSettingsOption)  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
@@ -3626,6 +3711,14 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.Mock {
     }
 
     
+    // ["name": "lastOpenedTrip", "accesibility": "", "@type": "InstanceVariable", "type": "Observable<WBTrip>", "isReadOnly": true]
+     override var lastOpenedTrip: Observable<WBTrip> {
+        get {
+            return cuckoo_manager.getter("lastOpenedTrip", original: observed.map { o in return { () -> Observable<WBTrip> in o.lastOpenedTrip }})
+        }
+        
+    }
+    
 
     
 
@@ -3656,12 +3749,29 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.Mock {
         
     }
     
+     override func markLastOpened(trip: WBTrip)  {
+        
+            return cuckoo_manager.call("markLastOpened(trip: WBTrip)",
+                parameters: (trip),
+                original: observed.map { o in
+                    return { (args) in
+                        let (trip) = args
+                         o.markLastOpened(trip: trip)
+                    }
+                })
+        
+    }
+    
 
     struct __StubbingProxy_TripsInteractor: Cuckoo.StubbingProxy {
         private let cuckoo_manager: Cuckoo.MockManager
 
         init(manager: Cuckoo.MockManager) {
             self.cuckoo_manager = manager
+        }
+        
+        var lastOpenedTrip: Cuckoo.ToBeStubbedReadOnlyProperty<Observable<WBTrip>> {
+            return .init(manager: cuckoo_manager, name: "lastOpenedTrip")
         }
         
         
@@ -3673,6 +3783,11 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.Mock {
         func fetchedModelAdapter() -> Cuckoo.StubFunction<(), Optional<FetchedModelAdapter>> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return .init(stub: cuckoo_manager.createStub("fetchedModelAdapter() -> FetchedModelAdapter?", parameterMatchers: matchers))
+        }
+        
+        func markLastOpened<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.StubNoReturnFunction<(WBTrip)> where M1.MatchedType == WBTrip {
+            let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
+            return .init(stub: cuckoo_manager.createStub("markLastOpened(trip: WBTrip)", parameterMatchers: matchers))
         }
         
     }
@@ -3690,6 +3805,10 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.Mock {
         }
 
         
+        var lastOpenedTrip: Cuckoo.VerifyReadOnlyProperty<Observable<WBTrip>> {
+            return .init(manager: cuckoo_manager, name: "lastOpenedTrip", callMatcher: callMatcher, sourceLocation: sourceLocation)
+        }
+        
 
         
         @discardableResult
@@ -3704,12 +3823,25 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.Mock {
             return cuckoo_manager.verify("fetchedModelAdapter() -> FetchedModelAdapter?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
+        @discardableResult
+        func markLastOpened<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBTrip {
+            let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
+            return cuckoo_manager.verify("markLastOpened(trip: WBTrip)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
     }
 
 
 }
 
  class TripsInteractorStub: TripsInteractor {
+    
+     override var lastOpenedTrip: Observable<WBTrip> {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (Observable<WBTrip>).self)
+        }
+        
+    }
     
 
     
@@ -3721,6 +3853,10 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.Mock {
     
      override func fetchedModelAdapter()  -> FetchedModelAdapter? {
         return DefaultValueRegistry.defaultValue(for: Optional<FetchedModelAdapter>.self)
+    }
+    
+     override func markLastOpened(trip: WBTrip)  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
 }

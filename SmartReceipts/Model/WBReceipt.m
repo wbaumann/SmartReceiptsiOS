@@ -55,7 +55,8 @@ static NSString* checkNoData(NSString* str) {
       isFullPage:(BOOL)isFullPage
   extraEditText1:(NSString *)extraEditText1
   extraEditText2:(NSString *)extraEditText2
-  extraEditText3:(NSString *)extraEditText3 {
+  extraEditText3:(NSString *)extraEditText3
+   customOrderId:(NSInteger)customOrderId {
     self = [super init];
     if (self) {
         _objectId = rid;
@@ -115,6 +116,7 @@ static NSString* checkNoData(NSString* str) {
 
 - (void)setDate:(NSDate *)date {
     _date = date;
+    _customOrderId = date.timeIntervalSince1970;
 
     if (!self.originalDate) {
         [self setOriginalDate:date];
@@ -211,6 +213,7 @@ static NSString* checkNoData(NSString* str) {
     _timeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:ReceiptsTable.COLUMN_TIMEZONE]];
     [self setDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE]]];
     [self setTripName:[resultSet stringForColumn:ReceiptsTable.COLUMN_PARENT]];
+    _customOrderId = [resultSet intForColumn:ReceiptsTable.COLUMN_CUSTOM_ORDER_ID];
     
     NSString *paymentMethodIdAsName = [NSString stringWithFormat:@"%@_%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
     NSUInteger paymentMethodId = [resultSet intForColumn:paymentMethodIdAsName];
@@ -287,7 +290,8 @@ static NSString* checkNoData(NSString* str) {
                               isFullPage:self.isFullPage
                           extraEditText1:self.extraEditText1
                           extraEditText2:self.extraEditText2
-                          extraEditText3:self.extraEditText3];
+                          extraEditText3:self.extraEditText3
+                           customOrderId:self.customOrderId];
     
     
     

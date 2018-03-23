@@ -34,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSDecimalNumber *exchangeRate;
 @property (nonatomic, strong, readonly, nonnull) Currency *currency;
 @property (nonatomic, readonly) NSString *omittedName;
+@property (nonatomic, readonly) NSInteger customOrderId;
 
 - (id)initWithId:(NSUInteger)rid
             name:(NSString *)name
@@ -51,7 +52,8 @@ NS_ASSUME_NONNULL_BEGIN
       isFullPage:(BOOL)isFullPage
   extraEditText1:(NSString *)extraEditText1
   extraEditText2:(NSString *)extraEditText2
-  extraEditText3:(NSString *)extraEditText3;
+  extraEditText3:(NSString *)extraEditText3
+   customOrderId:(NSInteger)customOrderId;
 
 -(NSUInteger)receiptId;
 -(NSString*)imageFileName;

@@ -76,7 +76,8 @@
                               isFullPage:NO
                           extraEditText1:@""
                           extraEditText2:@""
-                          extraEditText3:@""];
+                          extraEditText3:@""
+                          customOrderId:date.timeIntervalSince1970];
     [receipt setTrip:distance.trip];
 
     return receipt;

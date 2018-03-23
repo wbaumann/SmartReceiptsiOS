@@ -52,7 +52,8 @@ const struct ReceiptsTableStruct ReceiptsTable = {
         .COLUMN_EXTRA_EDITTEXT_1 = @"extra_edittext_1",
         .COLUMN_EXTRA_EDITTEXT_2 = @"extra_edittext_2",
         .COLUMN_EXTRA_EDITTEXT_3 = @"extra_edittext_3",
-        .COLUMN_EXCHANGE_RATE = @"exchange_rate"
+        .COLUMN_EXCHANGE_RATE = @"exchange_rate",
+        .COLUMN_CUSTOM_ORDER_ID = @"custom_order_id"
 };
 
 const struct DistanceTableStruct DistanceTable = {
@@ -72,7 +73,8 @@ const struct CategoriesTableStruct CategoriesTable = {
         .TABLE_NAME = @"categories",
         .COLUMN_NAME = @"name",
         .COLUMN_CODE = @"code",
-        .COLUMN_BREAKDOWN = @"breakdown"
+        .COLUMN_BREAKDOWN = @"breakdown",
+        .COLUMN_CUSTOM_ORDER_ID = @"custom_order_id"
 };
 
 const struct CSVTableStruct CSVTable = {

@@ -46,7 +46,8 @@ class GenerateReportModuleTest: XCTestCase {
     func configureStubs() {
         stub(router) { mock in
             mock.close().thenDoNothing()
-            mock.openSettings().thenDoNothing()
+            mock.openSettingsOnDisatnce().thenDoNothing()
+            mock.openSettingsOnReportLayout().thenDoNothing()
         }
         
         stub(interactor) { mock in
@@ -72,8 +73,11 @@ class GenerateReportModuleTest: XCTestCase {
         presenter.close()
         verify(router).close()
         
-        presenter.presentSettings()
-        verify(router).openSettings()
+        presenter.presentOutputSettings()
+        verify(router).openSettingsOnReportLayout()
+        
+        presenter.presentEnableDistances()
+        verify(router).openSettingsOnDisatnce()
     }
     
     func testPresenterRxFlags() {

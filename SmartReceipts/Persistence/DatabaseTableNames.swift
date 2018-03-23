@@ -33,6 +33,7 @@ enum ReceiptsTable {
         static let ExtraEditText1 = "extra_edittext_1"
         static let ExtraEditText2 = "extra_edittext_2"
         static let ExtraEditText3 = "extra_edittext_3"
+        static let CustomOrderId = "custom_order_id"
 
         
         @available(*, unavailable, message: "paymentmethod is deprecated, use paymentMethodKey")
@@ -47,6 +48,7 @@ enum CategoriesTable {
         static let Name = "name"
         static let code = "code"
         static let Breakdown = "breakdown"
+        static let CustomOrderId = "custom_order_id"
     }
 }
 
