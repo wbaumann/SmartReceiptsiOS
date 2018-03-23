@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
         AppDelegate.instance = self
-        FirebaseApp.configure()
         enableAnalytics()
         AppTheme.customizeOnAppLoad()
         

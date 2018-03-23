@@ -28,7 +28,8 @@
             @"CREATE TABLE ", CategoriesTable.TABLE_NAME, @" (",
             CategoriesTable.COLUMN_NAME, @" TEXT PRIMARY KEY, ",
             CategoriesTable.COLUMN_CODE, @" TEXT, ",
-            CategoriesTable.COLUMN_BREAKDOWN, @" BOOLEAN DEFAULT 1", @");"
+            CategoriesTable.COLUMN_BREAKDOWN, @" BOOLEAN DEFAULT 1, ",
+            CategoriesTable.COLUMN_CUSTOM_ORDER_ID, @" INTEGER DEFAULT 0", @");"
     ];
     return [self executeUpdateWithStatementComponents:createCategoriesTable];
 }

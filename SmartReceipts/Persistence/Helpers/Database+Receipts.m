@@ -50,7 +50,8 @@
             ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE, @" BOOLEAN DEFAULT 1, ",
             ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1, @" TEXT, ",
             ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2, @" TEXT, ",
-            ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3, @" TEXT",
+            ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3, @" TEXT, ",
+            ReceiptsTable.COLUMN_CUSTOM_ORDER_ID, @" INTEGER DEFAULT 0",
             @");"];
     return [self executeUpdateWithStatementComponents:createReceiptsTable];
 }
@@ -292,6 +293,7 @@
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1 value:[Database extraInsertValue:receipt.extraEditText1]];
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_2 value:[Database extraInsertValue:receipt.extraEditText2]];
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3 value:[Database extraInsertValue:receipt.extraEditText3]];
+    [query addParam:ReceiptsTable.COLUMN_CUSTOM_ORDER_ID value:@(receipt.customOrderId)];
     [query addParam:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID value:@(receipt.paymentMethod.objectId)];
 }
 

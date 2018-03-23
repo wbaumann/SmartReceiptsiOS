@@ -54,6 +54,7 @@ struct ReceiptsTableStruct {
     __unsafe_unretained NSString *const COLUMN_EXTRA_EDITTEXT_2;
     __unsafe_unretained NSString *const COLUMN_EXTRA_EDITTEXT_3;
     __unsafe_unretained NSString *const COLUMN_EXCHANGE_RATE;
+    __unsafe_unretained NSString *const COLUMN_CUSTOM_ORDER_ID;
 };
 extern const struct ReceiptsTableStruct ReceiptsTable;
 
@@ -76,6 +77,7 @@ struct CategoriesTableStruct {
     __unsafe_unretained NSString *const COLUMN_NAME;
     __unsafe_unretained NSString *const COLUMN_CODE;
     __unsafe_unretained NSString *const COLUMN_BREAKDOWN;
+    __unsafe_unretained NSString *const COLUMN_CUSTOM_ORDER_ID;
 };
 extern const struct CategoriesTableStruct CategoriesTable;
 
