@@ -204,7 +204,7 @@
     [select select:receiptIdFullName as:receiptIdAsName];
     [select select:paymentMethodIdFullName as:paymentMethodIdAsName];
     [select leftJoin:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
-    [select orderBy:ReceiptsTable.COLUMN_DATE ascending:NO];
+    [select orderBy:ReceiptsTable.COLUMN_CUSTOM_ORDER_ID ascending:NO];
     return [self createAdapterUsingQuery:select forModel:[WBReceipt class] associatedModel:trip];
 }
 
@@ -265,13 +265,13 @@
 }
 
 - (BOOL)swapReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo usingDatabase:(FMDatabase *)database {
-    return [self setDateTo:receiptOne.date onReceipt:receiptTwo usingDatabase:database]
-            && [self setDateTo:receiptTwo.date onReceipt:receiptOne usingDatabase:database];
+    return [self setCustomOrderIdTo:receiptOne.customOrderId onReceipt:receiptTwo usingDatabase:database] &&
+           [self setCustomOrderIdTo:receiptTwo.customOrderId onReceipt:receiptOne usingDatabase:database];
 }
 
-- (BOOL)setDateTo:(NSDate *)date onReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
+- (BOOL)setCustomOrderIdTo:(NSInteger)customOrderId onReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
-    [update addParam:ReceiptsTable.COLUMN_DATE value:date.milliseconds];
+    [update addParam:ReceiptsTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
     [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
     return [self executeQuery:update usingDatabase:database];
 }
