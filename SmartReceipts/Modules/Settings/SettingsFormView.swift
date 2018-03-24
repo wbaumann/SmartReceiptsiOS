@@ -520,7 +520,9 @@ class SettingsFormView: FormViewController {
         purchaseRow.setSubscriptionEnd(date: Database.sharedInstance().subscriptionEndDate())
         purchaseRow.markPurchased()
         footerRow.isEnabled = true
-        form.allSections[1].reload()
+        DispatchQueue.main.async { [unowned self] in
+            self.form.allSections[1].reload()
+        }
     }
     
     private func applySettingsOption() {
