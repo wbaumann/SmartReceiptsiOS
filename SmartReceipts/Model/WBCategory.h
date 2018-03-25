@@ -14,8 +14,10 @@
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *code;
+@property (nonatomic, readonly) NSInteger customOrderId;
 
-- (id)initWithName:(NSString*)name code:(NSString*) code;
+- (id)initWithName:(NSString*)name code:(NSString*)code;
+- (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId;
 
 +(NSString*) CATEGORY_NAME_BREAKFAST;
 +(NSString*) CATEGORY_NAME_LUNCH;

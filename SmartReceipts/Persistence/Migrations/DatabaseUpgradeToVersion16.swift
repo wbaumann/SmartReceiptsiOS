@@ -16,20 +16,38 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
     override func migrate(_ database: Database) -> Bool {
         
         return addCustomOrderIdToReceipts(database) &&
-               updateOrderIdWithDate(database)
+               updateReceiptsOrderIdWithDate(database) &&
+               addCustomOrderIdToCategories(database) &&
+               updateCategoriesOrderIdWithDate(database)
     }
     
+    //MARK: - Receipts
+    
     private func addCustomOrderIdToReceipts(_ database: Database) -> Bool {
-        
         let alterQuery = "ALTER TABLE \(ReceiptsTable.Name) " +
                          "ADD \(ReceiptsTable.Column.CustomOrderId) " +
                          "INTEGER DEFAULT 0"
         return database.executeUpdate(alterQuery)
     }
     
-    private func updateOrderIdWithDate(_ database: Database) -> Bool {
+    private func updateReceiptsOrderIdWithDate(_ database: Database) -> Bool {
         let updateQuery = "UPDATE \(ReceiptsTable.Name) " +
                           "SET \(ReceiptsTable.Column.CustomOrderId) = \(ReceiptsTable.Column.Date)"
+        return database.executeUpdate(updateQuery)
+    }
+    
+    //MARK: - Categories
+    
+    private func addCustomOrderIdToCategories(_ database: Database) -> Bool {
+        let alterQuery = "ALTER TABLE \(CategoriesTable.Name) " +
+                         "ADD \(CategoriesTable.Column.CustomOrderId) " +
+                         "INTEGER DEFAULT 0"
+        return database.executeUpdate(alterQuery)
+    }
+    
+    private func updateCategoriesOrderIdWithDate(_ database: Database) -> Bool {
+        let updateQuery = "UPDATE \(CategoriesTable.Name) " +
+                          "SET \(CategoriesTable.Column.CustomOrderId) = ROWID"
         return database.executeUpdate(updateQuery)
     }
 }

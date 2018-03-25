@@ -14,6 +14,7 @@ static NSString *const TABLE_NAME = @"categories";
 static NSString *const COLUMN_NAME = @"name";
 static NSString *const COLUMN_CODE = @"code";
 static NSString *const COLUMN_BREAKDOWN = @"breakdown";
+static NSString *const COLUMN_CUSTOM_ORDER_ID = @"custom_order_id";
 
 @interface WBCategory ()
 
@@ -24,11 +25,16 @@ static NSString *const COLUMN_BREAKDOWN = @"breakdown";
 @implementation WBCategory
 
 - (id)initWithName:(NSString *)name code:(NSString *)code {
+    return [self initWithName:name code:code customOrderId:0];
+}
+    
+- (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId {
     self = [super init];
     if (self) {
         _name = name;
         _originalName = name;
         _code = code;
+        _customOrderId = customOrderId;
     }
     return self;
 }
@@ -54,8 +60,10 @@ static NSString *const COLUMN_BREAKDOWN = @"breakdown";
 }
 
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet {
-    self.code = [resultSet stringForColumn:CategoriesTable.COLUMN_CODE];
-    self.name = [resultSet stringForColumn:CategoriesTable.COLUMN_NAME];
+    _code = [resultSet stringForColumn:CategoriesTable.COLUMN_CODE];
+    _name = [resultSet stringForColumn:CategoriesTable.COLUMN_NAME];
+    _name = [resultSet stringForColumn:CategoriesTable.COLUMN_NAME];
+    _customOrderId = [resultSet intForColumn:CategoriesTable.COLUMN_CUSTOM_ORDER_ID];
 }
 
 - (BOOL)isEqual:(id)other {
