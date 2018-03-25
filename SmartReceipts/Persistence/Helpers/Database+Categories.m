@@ -50,6 +50,7 @@
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:CategoriesTable.TABLE_NAME];
     [insert addParam:CategoriesTable.COLUMN_CODE value:category.code];
     [insert addParam:CategoriesTable.COLUMN_NAME value:category.name];
+    [insert addParam:CategoriesTable.COLUMN_CUSTOM_ORDER_ID value:@(category.customOrderId)];
     BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {
         [self notifyInsertOfModel:category];
@@ -61,6 +62,7 @@
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:CategoriesTable.TABLE_NAME];
     [update addParam:CategoriesTable.COLUMN_CODE value:category.code];
     [update addParam:CategoriesTable.COLUMN_NAME value:category.name];
+    [update addParam:CategoriesTable.COLUMN_CUSTOM_ORDER_ID value:@(category.customOrderId)];
     [update where:CategoriesTable.COLUMN_NAME value:category.originalName];
     BOOL result = [self executeQuery:update];
     if (result) {
@@ -81,7 +83,7 @@
 
 - (FetchedModelAdapter *)fetchedAdapterForCategories {
     DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:CategoriesTable.TABLE_NAME];
-    [select caseInsensitiveOrderBy:CategoriesTable.COLUMN_NAME ascending:YES];
+    [select orderBy:CategoriesTable.COLUMN_CUSTOM_ORDER_ID ascending:YES];
     return [self createAdapterUsingQuery:select forModel:[WBCategory class]];
 }
 
