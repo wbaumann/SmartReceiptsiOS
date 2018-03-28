@@ -29,13 +29,21 @@
     [self postNotificationWithName:DatabaseDidDeleteModelNotification withObject:model];
 }
 
+- (void)notifyReorderOfModels:(NSArray *)models {
+    [self postNotificationWithName:DatabaseDidReorderModelsNotification withObjects:models];
+}
+
 - (void)notifySwapOfModels:(NSArray *)models {
+    [self postNotificationWithName:DatabaseDidSwapModelsNotification withObjects:models];
+}
+
+- (void)postNotificationWithName:(NSString *)notificationName withObjects:(NSArray *)models {
     if (self.disableNotifications) {
         return;
     }
-
+    
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidSwapModelsNotification object:models];
+        [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:models];
     });
 }
 

@@ -71,6 +71,92 @@
     return result;
 }
 
+- (BOOL)swapCategory:(WBCategory *)categoryOne withCategory:(WBCategory *)categoryTwo  {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self swapCategory:categoryOne withCategory:categoryTwo usingDatabase:db];
+    }];
+    
+    if (result) {
+        NSArray *changedModels = [self categoriesBetweenCategoryOne:categoryOne categoryTwo:categoryTwo];
+        [self notifySwapOfModels:changedModels];
+    }
+    
+    return result;
+}
+
+- (BOOL)swapCategory:(WBCategory *)categoryOne withCategory:(WBCategory *)categoryTwo usingDatabase:(FMDatabase *)database {
+    return [self setCustomOrderId:categoryOne.customOrderId forCategory:categoryTwo usingDatabase:database] &&
+           [self setCustomOrderId:categoryTwo.customOrderId forCategory:categoryOne usingDatabase:database];
+}
+
+- (BOOL)setCustomOrderId:(NSInteger)customOrderId forCategory:(WBCategory *)category usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:CategoriesTable.TABLE_NAME];
+    [update addParam:CategoriesTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
+    [update where:CategoriesTable.COLUMN_NAME value:category.name];
+    return [self executeQuery:update usingDatabase:database];
+}
+
+- (BOOL)reorderCategory:(WBCategory *)categoryOne withCategory:(WBCategory *)categoryTwo {
+    if (categoryOne.customOrderId == categoryTwo.customOrderId) {
+        return YES;
+    }
+    
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self reorderCategory:categoryOne withCategory:categoryTwo usingDatabase:db];
+    }];
+    
+    if (result) {
+        NSArray *changedModels = [self categoriesBetweenCategoryOne:categoryOne categoryTwo:categoryTwo];
+        [self notifyReorderOfModels:changedModels];
+    }
+    
+    return result;
+}
+
+- (NSArray *)categoriesBetweenCategoryOne:(WBCategory *)categoryOne categoryTwo:(WBCategory *)categoryTwo {
+    NSInteger minId = MIN(categoryOne.customOrderId, categoryTwo.customOrderId);
+    NSInteger maxId = MAX(categoryOne.customOrderId, categoryTwo.customOrderId);
+    
+    NSArray *components = @[@"SELECT * FROM ", CategoriesTable.TABLE_NAME,
+                            @" WHERE ", CategoriesTable.COLUMN_CUSTOM_ORDER_ID,
+                            @" BETWEEN ", @(minId).stringValue, @" AND ", @(maxId).stringValue,
+                            @" ORDER BY ", CategoriesTable.COLUMN_CUSTOM_ORDER_ID, @" ASC"];
+    NSString *rawQuery = [components componentsJoinedByString:@""];
+    DatabaseQueryBuilder *select = [DatabaseQueryBuilder rawQuery:rawQuery];
+    FetchedModelAdapter *fetched = [self createAdapterUsingQuery:select forModel:[WBCategory class]];
+    return fetched.allObjects;
+}
+
+- (BOOL)reorderCategory:(WBCategory *)categoryOne withCategory:(WBCategory *)categoryTwo usingDatabase:(FMDatabase *)database {
+    BOOL isNewOrderIdGreater = categoryOne.customOrderId < categoryTwo.customOrderId;
+    NSInteger newCustomOrderIdTwo = isNewOrderIdGreater ? categoryTwo.customOrderId - 1 : categoryTwo.customOrderId + 1;
+    
+    BOOL result = [self setCustomOrderId:categoryTwo.customOrderId forCategory:categoryOne usingDatabase:database];
+    
+    if (result) {
+        NSString *operation = isNewOrderIdGreater ? @"-1" : @"+1";
+        
+        NSInteger minId = MIN(categoryOne.customOrderId, newCustomOrderIdTwo);
+        NSInteger maxId = MAX(categoryOne.customOrderId, newCustomOrderIdTwo);
+        
+        NSArray *components = @[
+                @"UPDATE ", CategoriesTable.TABLE_NAME,
+                [NSString stringWithFormat:@" SET %@ = %@%@ ",CategoriesTable.COLUMN_CUSTOM_ORDER_ID, CategoriesTable.COLUMN_CUSTOM_ORDER_ID, operation],
+                @" WHERE ", CategoriesTable.COLUMN_CUSTOM_ORDER_ID,
+                @" BETWEEN ", @(minId).stringValue, @" AND ", @(maxId).stringValue];
+        
+        NSString *query = [components componentsJoinedByString:@""];
+        DatabaseQueryBuilder *update = [DatabaseQueryBuilder rawQuery:query];
+        result &= [self executeQuery:update usingDatabase:database];
+    }
+    
+    result &= [self setCustomOrderId:newCustomOrderIdTwo forCategory:categoryTwo usingDatabase:database];
+    
+    return result;
+}
+
 - (BOOL)deleteCategory:(WBCategory *)category {
     DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:CategoriesTable.TABLE_NAME];
     [delete where:CategoriesTable.COLUMN_NAME value:category.name];
@@ -85,6 +171,17 @@
     DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:CategoriesTable.TABLE_NAME];
     [select orderBy:CategoriesTable.COLUMN_CUSTOM_ORDER_ID ascending:YES];
     return [self createAdapterUsingQuery:select forModel:[WBCategory class]];
+}
+
+- (NSInteger)nextCustomOrderIdForCategory {
+    __block NSInteger result = 0;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        NSArray *components = @[@"SELECT ", CategoriesTable.COLUMN_CUSTOM_ORDER_ID, @" FROM ", CategoriesTable.TABLE_NAME,
+                                @" ORDER BY ", CategoriesTable.COLUMN_CUSTOM_ORDER_ID, @" DESC LIMIT 1"];
+        NSString *query = [components componentsJoinedByString:@""];
+        result = (NSInteger)[db intForQuery:query];
+    }];
+    return result + 1;
 }
 
 @end

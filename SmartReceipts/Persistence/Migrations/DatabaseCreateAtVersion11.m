@@ -82,6 +82,7 @@
 
     for (NSUInteger i = 0; i < cats.count - 1; i += 2) {
         WBCategory *category = [[WBCategory alloc] initWithName:cats[i] code:cats[i + 1]];
+        category.customOrderId = i/2;
         if (![database saveCategory:category]) {
             return NO;
         }

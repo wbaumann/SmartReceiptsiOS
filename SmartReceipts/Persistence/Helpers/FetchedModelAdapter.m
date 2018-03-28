@@ -34,7 +34,9 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDeleteObject:) name:DatabaseDidDeleteModelNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateObject:) name:DatabaseDidUpdateModelNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSwapObjects:) name:DatabaseDidSwapModelsNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReorderObjects:) name:DatabaseDidReorderModelsNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didImportDatabase) name:SmartReceiptsDatabaseBulkUpdateNotification object:nil];
+        
     }
     return self;
 }
@@ -123,6 +125,15 @@
     [self refreshContentAndNotifySwapChanges:models];
 }
 
+- (void)didReorderObjects:(NSNotification *)notification {
+    NSArray *models = [notification object];
+    if (![models.firstObject isKindOfClass:self.modelClass]) {
+        return;
+    }
+    
+    [self refreshContentAndNotifyReorderChanges:models];
+}
+
 - (void)refreshContentAndNotifyUpdateChanges:(NSObject *)updated {
     NSArray *before = [NSArray arrayWithArray:self.models];
     [self.database inDatabase:^(FMDatabase * _Nonnull database) {
@@ -206,6 +217,19 @@
 
     [self.delegate willChangeContent];
     for (NSObject<FetchedModel> *model in swapped) {
+        NSUInteger index = [self indexForObject:model];
+        [self.delegate didUpdateObject:model atIndex:index];
+    }
+    [self.delegate didChangeContent];
+}
+
+- (void)refreshContentAndNotifyReorderChanges:(NSArray *)changed {
+    [self.database.databaseQueue inDatabase:^(FMDatabase *db) {
+        [self fetchUsingDatabase:db];
+    }];
+    
+    [self.delegate willChangeContent];
+    for (NSObject<FetchedModel> *model in changed) {
         NSUInteger index = [self indexForObject:model];
         [self.delegate didUpdateObject:model atIndex:index];
     }
