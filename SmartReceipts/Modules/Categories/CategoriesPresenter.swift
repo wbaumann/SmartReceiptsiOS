@@ -16,6 +16,7 @@ class CategoriesPresenter: Presenter {
     
     let categoryAction = PublishSubject<CategoryAction>()
     let deleteSubject = PublishSubject<WBCategory>()
+    let reorderSubject = PublishSubject<(WBCategory,WBCategory)>()
     
     override func viewHasLoaded() {
         interactor.configureSubscribers()

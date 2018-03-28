@@ -18,7 +18,7 @@ class FetchedTableViewController: UserInterface {
     private let FETCHED_COLLECTION_CELL_ID = "FetchedCollectionTableViewControllerCellIdentifier"
     private var bag = DisposeBag()
     private var fetchedModelAdapter: FetchedModelAdapter?
-    private var dataSource: TableViewDataSourceProxy!
+    private(set) var dataSource: TableViewDataSourceProxy!
     
     private(set) var placeholderTitle = ""
     

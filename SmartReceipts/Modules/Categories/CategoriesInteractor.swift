@@ -20,19 +20,31 @@ class CategoriesInteractor: Interactor {
             self.save(category: category, update: update)
         }).disposed(by: bag)
         
-        
         presenter.deleteSubject.subscribe(onNext: { [unowned self] category in
             self.delete(category: category)
+        }).disposed(by: bag)
+        
+        presenter.reorderSubject.subscribe(onNext: { [unowned self] categoryLeft, categoryRight in
+            self.reorder(categoryLeft: categoryLeft, categoryRight: categoryRight)
         }).disposed(by: bag)
     }
     
     func save(category: WBCategory, update: Bool) {
         let db = Database.sharedInstance()!
+        
+        if !update {
+            category.customOrderId = db.nextCustomOrderIdForCategory()
+        }
+        
         let success = update ? db.update(category) : db.save(category)
         
         if !success {
             presenter.presentAlert(title: nil, message: LocalizedString("edit.category.edit.failure.message"))
         }
+    }
+    
+    func reorder(categoryLeft: WBCategory, categoryRight: WBCategory) {
+        Database.sharedInstance().reorder(categoryLeft, with: categoryRight)
     }
     
     func delete(category: WBCategory) {
@@ -42,7 +54,6 @@ class CategoriesInteractor: Interactor {
     func fetchedModelAdapter() -> FetchedModelAdapter? {
         return Database.sharedInstance().fetchedAdapterForCategories()
     }
-    
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

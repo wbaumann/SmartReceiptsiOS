@@ -23,6 +23,9 @@ class TableViewDataSourceProxy: NSObject, UITableViewDataSource {
     let didMove = PublishSubject<MoveFetchedObjectAction>()
     let reloadData = PublishSubject<Void>()
     
+    var canMoveRow: ((IndexPath) -> Bool)?
+    var moveRow: ((IndexPath, IndexPath) -> Void)?
+    
     private weak var tableView: UITableView!
     private var cellID: String!
     private var configureCell: ConfigureCellClosure?
@@ -79,5 +82,13 @@ class TableViewDataSourceProxy: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.value.count
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return canMoveRow?(indexPath) ?? false
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        moveRow?(sourceIndexPath, destinationIndexPath)
     }
 }

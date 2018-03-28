@@ -30,6 +30,24 @@ final class CategoriesView: FetchedTableViewController {
         addItem.rx.tap.subscribe(onNext: {
             _ = self.showEditCategory().bind(to: self.presenter.categoryAction)
         }).disposed(by: bag)
+        
+        dataSource.canMoveRow = { _ in true }
+        dataSource.moveRow = { [unowned self] from, to in
+            let categoryOne = self.fetchedItems[from.row] as! WBCategory
+            let categoryTwo = self.fetchedItems[to.row] as! WBCategory
+            self.presenter.reorderSubject.onNext((categoryOne, categoryTwo))
+        }
+        
+        navigationController?.setToolbarHidden(false, animated: false)
+        navigationController?.toolbar.barTintColor = AppTheme.toolbarTintColor
+        
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbarItems = [space, self.editButtonItem]
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: animated)
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
@@ -79,6 +97,7 @@ final class CategoriesView: FetchedTableViewController {
                 if self.validate(name: name) {
                     forSave.name = name
                     forSave.code = alert.textFields!.last!.text
+                    forSave.customOrderId = isEdit ? self.fetchedItems.count + 1 : forSave.customOrderId
                     observer.onNext((category: forSave, update: isEdit))
                 }
             }))
