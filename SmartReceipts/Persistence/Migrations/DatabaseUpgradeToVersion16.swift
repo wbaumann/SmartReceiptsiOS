@@ -17,8 +17,10 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
         
         return addCustomOrderIdToReceipts(database) &&
                updateReceiptsOrderIdWithDate(database) &&
+               updateCategoriesPrimaryKey(database) &&
                addCustomOrderIdToCategories(database) &&
                updateCategoriesOrderIdWithDate(database)
+        
     }
     
     //MARK: - Receipts
@@ -37,6 +39,25 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
     }
     
     //MARK: - Categories
+    
+    private func updateCategoriesPrimaryKey(_ database: Database) -> Bool {
+        let fields = "\(CategoriesTable.Column.Code),\(CategoriesTable.Column.Name),\(CategoriesTable.Column.Breakdown), \(Database.SyncColumns.drive_sync_id),\(Database.SyncColumns.drive_is_synced),\(Database.SyncColumns.drive_marked_for_deletion),\(Database.SyncColumns.last_local_modification_time)"
+        let db = Database.sharedInstance()!
+        
+        var result = db.executeUpdate("CREATE TEMPORARY TABLE \(CategoriesTable.Name)_backup (\(fields))")
+        
+        result = result && db.executeUpdate("INSERT INTO \(CategoriesTable.Name)_backup SELECT \(fields) FROM \(CategoriesTable.Name)")
+        
+        result = result && db.executeUpdate("DROP TABLE \(CategoriesTable.Name)")
+        
+        result = result && db.executeUpdate("CREATE TABLE \(CategoriesTable.Name)(\(CategoriesTable.Column.Name) TEXT, \(CategoriesTable.Column.Code) TEXT, \(CategoriesTable.Column.Breakdown) BOOLEAN DEFAULT 1,\(Database.SyncColumns.drive_sync_id) TEXT,\(Database.SyncColumns.drive_is_synced) BOOLEAN DEFAULT 0,\(Database.SyncColumns.drive_marked_for_deletion) BOOLEAN DEFAULT 0,\(Database.SyncColumns.last_local_modification_time) DATE, \(CategoriesTable.Column.Id) INTEGER PRIMARY KEY AUTOINCREMENT)")
+        
+        result = result && db.executeUpdate("INSERT INTO \(CategoriesTable.Name)(\(fields),id) SELECT \(fields),ROWID FROM \(CategoriesTable.Name)_backup")
+        
+        result = result && db.executeUpdate("DROP TABLE \(CategoriesTable.Name)_backup")
+
+        return result
+    }
     
     private func addCustomOrderIdToCategories(_ database: Database) -> Bool {
         let alterQuery = "ALTER TABLE \(CategoriesTable.Name) " +

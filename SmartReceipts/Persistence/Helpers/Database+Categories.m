@@ -26,7 +26,8 @@
 - (BOOL)createCategoriesTable {
     NSArray *createCategoriesTable = @[
             @"CREATE TABLE ", CategoriesTable.TABLE_NAME, @" (",
-            CategoriesTable.COLUMN_NAME, @" TEXT PRIMARY KEY, ",
+            CategoriesTable.COLUMN_ID, @" INTEGER PRIMARY KEY AUTOINCREMENT, ",
+            CategoriesTable.COLUMN_NAME, @" TEXT, ",
             CategoriesTable.COLUMN_CODE, @" TEXT, ",
             CategoriesTable.COLUMN_BREAKDOWN, @" BOOLEAN DEFAULT 1, ",
             CategoriesTable.COLUMN_CUSTOM_ORDER_ID, @" INTEGER DEFAULT 0", @");"
@@ -63,7 +64,7 @@
     [update addParam:CategoriesTable.COLUMN_CODE value:category.code];
     [update addParam:CategoriesTable.COLUMN_NAME value:category.name];
     [update addParam:CategoriesTable.COLUMN_CUSTOM_ORDER_ID value:@(category.customOrderId)];
-    [update where:CategoriesTable.COLUMN_NAME value:category.originalName];
+    [update where:CategoriesTable.COLUMN_ID value:@(category.objectId)];
     BOOL result = [self executeQuery:update];
     if (result) {
         [self notifyUpdateOfModel:category];

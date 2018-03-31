@@ -76,6 +76,10 @@ NSString *const DatabaseDidReorderModelsNotification = @"DatabaseDidReorderModel
     return [self open:YES];
 }
 
+- (FMDatabase *)fmdb {
+    return [FMDatabase databaseWithPath:self.pathToDatabase];
+}
+
 - (BOOL)open:(BOOL)migrateDatabase {
     FMDatabaseQueue *db = [FMDatabaseQueue databaseQueueWithPath:self.pathToDatabase];
 

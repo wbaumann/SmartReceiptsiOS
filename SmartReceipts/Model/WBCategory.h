@@ -12,6 +12,7 @@
 
 @interface WBCategory : NSObject <FetchedModel, Pickable>
 
+@property (nonatomic) NSInteger objectId;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *code;
 @property (nonatomic) NSInteger customOrderId;

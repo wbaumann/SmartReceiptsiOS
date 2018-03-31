@@ -74,6 +74,7 @@ extern const struct DistanceTableStruct DistanceTable;
 
 struct CategoriesTableStruct {
     __unsafe_unretained NSString *const TABLE_NAME;
+    __unsafe_unretained NSString *const COLUMN_ID;
     __unsafe_unretained NSString *const COLUMN_NAME;
     __unsafe_unretained NSString *const COLUMN_CODE;
     __unsafe_unretained NSString *const COLUMN_BREAKDOWN;

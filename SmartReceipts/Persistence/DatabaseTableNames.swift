@@ -46,7 +46,8 @@ enum CategoriesTable {
     
     enum Column {
         static let Name = "name"
-        static let code = "code"
+        static let Id = "id"
+        static let Code = "code"
         static let Breakdown = "breakdown"
         static let CustomOrderId = "custom_order_id"
     }
