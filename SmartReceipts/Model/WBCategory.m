@@ -60,8 +60,8 @@ static NSString *const COLUMN_CUSTOM_ORDER_ID = @"custom_order_id";
 }
 
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet {
+    _objectId = [resultSet intForColumn:CategoriesTable.COLUMN_ID];
     _code = [resultSet stringForColumn:CategoriesTable.COLUMN_CODE];
-    _name = [resultSet stringForColumn:CategoriesTable.COLUMN_NAME];
     _name = [resultSet stringForColumn:CategoriesTable.COLUMN_NAME];
     _customOrderId = [resultSet intForColumn:CategoriesTable.COLUMN_CUSTOM_ORDER_ID];
 }

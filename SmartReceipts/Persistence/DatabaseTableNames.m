@@ -71,6 +71,7 @@ const struct DistanceTableStruct DistanceTable = {
 
 const struct CategoriesTableStruct CategoriesTable = {
         .TABLE_NAME = @"categories",
+        .COLUMN_ID = @"id",
         .COLUMN_NAME = @"name",
         .COLUMN_CODE = @"code",
         .COLUMN_BREAKDOWN = @"breakdown",
