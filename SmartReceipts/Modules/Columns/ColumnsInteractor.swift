@@ -22,10 +22,25 @@ class ColumnsInteractor: Interactor {
         return Observable<[Column]>.just(columns as! [Column])
     }
     
-    func update(columns: [Column], forCSV: Bool) {
+    func addColumn(_ column: Column, isCSV: Bool) {
         let db = Database.sharedInstance()!
-        let result = forCSV ? db.replaceAllCSVColumns(with: columns) : db.replaceAllPDFColumns(with: columns)
-        Logger.info("Saving columns. Result: \(result)")
+        let orderId = isCSV ? db.nextCustomOrderIdForCSVColumn() : db.nextCustomOrderIdForPDFColumn()
+        column.customOrderId = orderId
+        let result = isCSV ? db.addCSVColumn(column) : db.addPDFColumn(column)
+        Logger.info("Add Column '\(column.name)'. Result: \(result)")
+    }
+    
+    func removeColumn(_ column: Column, isCSV: Bool) {
+        let db = Database.sharedInstance()!
+        let result = isCSV ? db.removeCSVColumn(column) : db.removePDFColumn(column)
+        Logger.info("Remove Column '\(column.name)'. Result: \(result)")
+    }
+    
+    func reorder(columnLeft: Column, columnRight: Column, isCSV: Bool) {
+        let db = Database.sharedInstance()!
+        let result = isCSV ? db.reorderCSVColumn(columnLeft, withCSVColumn: columnRight) :
+                             db.reorderPDFColumn(columnLeft, withPDFColumn: columnRight)
+        Logger.info("Reorder columns. Result: \(result)")
     }
     
 }

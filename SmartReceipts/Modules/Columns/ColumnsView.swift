@@ -80,12 +80,21 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
         
         tableView.rx.itemMoved.subscribe(onNext: { [unowned self] (from: IndexPath, to: IndexPath) in
             var newColumns = self.displayData.columns.value
+            
+            let columnOne = newColumns[from.row]
+            let columnTwo = newColumns[to.row]
+            
             let item = newColumns.remove(at: from.row)
             newColumns.insert(item, at: to.row)
+            
             self.displayData.columns.value = newColumns
+            self.presenter.reorderSubject.onNext((columnOne, columnTwo))
+            
         }).disposed(by: bag)
         
         tableView.rx.itemDeleted.subscribe(onNext: { [unowned self] indexPath in
+            let column = self.displayData.columns.value[indexPath.row]
+            self.presenter.removeSubject.onNext(column)
             self.displayData.columns.value.remove(at: indexPath.row)
         }).disposed(by: bag)
     }
@@ -100,9 +109,11 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
     
     func dynamicPicker(_ picker: WBDynamicPicker!, doneWith subject: Any!) {
         let columnName = displayData.columsNames[dynamicPicker.selectedRow()]
-        let column = ReceiptColumn(index: 0, name: columnName)
-        column?.uniqueIdentity = "\(Date())"
-        displayData.columns.value.append(column!)
+        let column = ReceiptColumn(index: 0, name: columnName)!
+        column.objectId = presenter.nextObjectID()
+        column.uniqueIdentity = "\(Date())"
+        displayData.columns.value.append(column)
+        presenter.addSubject.onNext(column)
     }
 }
 

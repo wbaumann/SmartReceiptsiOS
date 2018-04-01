@@ -8,10 +8,17 @@
 
 #import "Database.h"
 
+@class Column;
+
 @interface Database (CSVColumns)
 
 - (BOOL)createCSVColumnsTable;
 - (NSArray *)allCSVColumns;
 - (BOOL)replaceAllCSVColumnsWith:(NSArray *)columns;
+- (BOOL)reorderCSVColumn:(Column *)columnOne withCSVColumn:(Column *)columnTwo;
+- (NSInteger)nextCustomOrderIdForCSVColumn;
+- (BOOL)addCSVColumn:(Column *)column;
+- (BOOL)removeCSVColumn:(Column *)column;
+- (NSInteger)nextCSVColumnObjectID;
 
 @end

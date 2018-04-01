@@ -7,15 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FetchedModel.h"
 
 @class WBDateFormatter;
 
-@interface Column : NSObject
+@interface Column : NSObject <FetchedModel>
 
+@property (nonatomic) NSInteger objectId;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, strong, readonly) WBDateFormatter *dateFormatter;
 @property (nonatomic, readonly) NSString *header;
 @property (nonatomic, strong) NSString *uniqueIdentity;
+@property (nonatomic) NSInteger customOrderId;
 
 - (instancetype)initWithIndex:(NSInteger)index name:(NSString *)name;
 

@@ -11,8 +11,11 @@ import Viperit
 import RxSwift
 
 class ColumnsPresenter: Presenter {
-    
+    private let bag = DisposeBag()
     private var isCSV: Bool = false
+    let reorderSubject = PublishSubject<(Column,Column)>()
+    let addSubject = PublishSubject<(Column)>()
+    let removeSubject = PublishSubject<(Column)>()
     
     override func setupView(data: Any) {
         isCSV = data as! Bool
@@ -22,10 +25,24 @@ class ColumnsPresenter: Presenter {
                                  LocalizedString("columns.controller.title.pdf"))
     }
     
-    override func viewIsAboutToDisappear() {
-        interactor.update(columns: view.columnsVar.value, forCSV: isCSV)
+    override func viewHasLoaded() {
+        reorderSubject.subscribe(onNext: { [unowned self] left, right in
+            self.interactor.reorder(columnLeft: left, columnRight: right, isCSV: self.isCSV)
+        }).disposed(by: bag)
+        
+        addSubject.subscribe(onNext: { [unowned self] column in
+            self.interactor.addColumn(column ,isCSV: self.isCSV)
+        }).disposed(by: bag)
+        
+        removeSubject.subscribe(onNext: { [unowned self] column in
+            self.interactor.removeColumn(column ,isCSV: self.isCSV)
+        }).disposed(by: bag)
     }
     
+    func nextObjectID() -> Int {
+        let db = Database.sharedInstance()!
+        return isCSV ? db.nextCSVColumnObjectID() : db.nextPDFColumnObjectID()
+    }
 }
 
 

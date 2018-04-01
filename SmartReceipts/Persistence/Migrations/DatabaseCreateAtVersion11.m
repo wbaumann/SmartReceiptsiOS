@@ -92,15 +92,16 @@
 }
 
 - (BOOL)insertDefaultReceiptColumnsIntoDatabase:(Database *)database {
+    NSInteger csvIndex = [database nextCustomOrderIdForCSVColumn];
     NSArray *csvColumns = @[
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.date", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.name", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.price", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.currency", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.category.name", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.category.code", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.comment", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.reimbursable", nil)]
+            [ReceiptColumn columnWithIndex:csvIndex name:NSLocalizedString(@"receipt.column.date", nil)],
+            [ReceiptColumn columnWithIndex:csvIndex + 1 name:NSLocalizedString(@"receipt.column.name", nil)],
+            [ReceiptColumn columnWithIndex:csvIndex + 2 name:NSLocalizedString(@"receipt.column.price", nil)],
+            [ReceiptColumn columnWithIndex:csvIndex + 3 name:NSLocalizedString(@"receipt.column.currency", nil)],
+            [ReceiptColumn columnWithIndex:csvIndex + 4 name:NSLocalizedString(@"receipt.column.category.name", nil)],
+            [ReceiptColumn columnWithIndex:csvIndex + 5 name:NSLocalizedString(@"receipt.column.category.code", nil)],
+            [ReceiptColumn columnWithIndex:csvIndex + 6 name:NSLocalizedString(@"receipt.column.comment", nil)],
+            [ReceiptColumn columnWithIndex:csvIndex + 7 name:NSLocalizedString(@"receipt.column.reimbursable", nil)]
     ];
 
 
@@ -109,13 +110,14 @@
         return NO;
     }
 
+    NSInteger pdfIndex = [database nextCustomOrderIdForCSVColumn];
     NSArray *pdfColumns = @[
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.date", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.name", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.price", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.currency", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.category.name", nil)],
-            [ReceiptColumn columnWithIndex:0 name:NSLocalizedString(@"receipt.column.reimbursable", nil)]
+            [ReceiptColumn columnWithIndex:pdfIndex name:NSLocalizedString(@"receipt.column.date", nil)],
+            [ReceiptColumn columnWithIndex:pdfIndex + 1 name:NSLocalizedString(@"receipt.column.name", nil)],
+            [ReceiptColumn columnWithIndex:pdfIndex + 2 name:NSLocalizedString(@"receipt.column.price", nil)],
+            [ReceiptColumn columnWithIndex:pdfIndex + 3 name:NSLocalizedString(@"receipt.column.currency", nil)],
+            [ReceiptColumn columnWithIndex:pdfIndex + 4 name:NSLocalizedString(@"receipt.column.category.name", nil)],
+            [ReceiptColumn columnWithIndex:pdfIndex + 5 name:NSLocalizedString(@"receipt.column.reimbursable", nil)]
     ];
 
     return [database replaceAllPDFColumnsWith:pdfColumns];
