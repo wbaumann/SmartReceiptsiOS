@@ -13,5 +13,9 @@
 - (BOOL)createPDFColumnsTable;
 - (NSArray *)allPDFColumns;
 - (BOOL)replaceAllPDFColumnsWith:(NSArray *)columns;
-
+- (BOOL)reorderPDFColumn:(Column *)columnOne withPDFColumn:(Column *)columnTwo;
+- (NSInteger)nextCustomOrderIdForPDFColumn;
+- (BOOL)addPDFColumn:(Column *)column;
+- (NSInteger)nextPDFColumnObjectID;
+- (BOOL)removePDFColumn:(Column *)column;
 @end

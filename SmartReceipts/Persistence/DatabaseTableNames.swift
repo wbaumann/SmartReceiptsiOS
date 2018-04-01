@@ -98,3 +98,23 @@ enum PaymentMethodsTable {
         static let Method = "method"
     }
 }
+
+enum PDFColumnTable {
+    static let Name = "pdfcolumns"
+    
+    enum  Column {
+        static let Id = "id"
+        static let `Type` = "type"
+        static let CustomOrderId = "custom_order_id"
+    }
+}
+
+enum CSVColumnTable {
+    static let Name = "csvcolumns"
+    
+    enum  Column {
+        static let Id = "id"
+        static let `Type` = "type"
+        static let CustomOrderId = "custom_order_id"
+    }
+}

@@ -16,10 +16,18 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
     override func migrate(_ database: Database) -> Bool {
         
         return addCustomOrderIdToReceipts(database) &&
+            
                updateReceiptsOrderIdWithDate(database) &&
                updateCategoriesPrimaryKey(database) &&
+            
                addCustomOrderIdToCategories(database) &&
-               updateCategoriesOrderIdWithDate(database)
+               updateCategoriesOrderId(database) &&
+        
+               addCustomOrderIdToPDFColumns(database) &&
+               updatePDFColumnsOrderId(database) &&
+        
+               addCustomOrderIdToCSVColumns(database) &&
+               updateCSVColumnsOrderId(database)
         
     }
     
@@ -27,8 +35,7 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
     
     private func addCustomOrderIdToReceipts(_ database: Database) -> Bool {
         let alterQuery = "ALTER TABLE \(ReceiptsTable.Name) " +
-                         "ADD \(ReceiptsTable.Column.CustomOrderId) " +
-                         "INTEGER DEFAULT 0"
+                         "ADD \(ReceiptsTable.Column.CustomOrderId) INTEGER DEFAULT 0"
         return database.executeUpdate(alterQuery)
     }
     
@@ -58,14 +65,41 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
     
     private func addCustomOrderIdToCategories(_ database: Database) -> Bool {
         let alterQuery = "ALTER TABLE \(CategoriesTable.Name) " +
-                         "ADD \(CategoriesTable.Column.CustomOrderId) " +
-                         "INTEGER DEFAULT 0"
+                         "ADD \(CategoriesTable.Column.CustomOrderId) INTEGER DEFAULT 0"
         return database.executeUpdate(alterQuery)
     }
     
-    private func updateCategoriesOrderIdWithDate(_ database: Database) -> Bool {
+    private func updateCategoriesOrderId(_ database: Database) -> Bool {
         let updateQuery = "UPDATE \(CategoriesTable.Name) " +
                           "SET \(CategoriesTable.Column.CustomOrderId) = ROWID"
+        return database.executeUpdate(updateQuery)
+    }
+    
+    //MARK: - PDF Columns
+    
+    private func addCustomOrderIdToPDFColumns(_ database: Database) -> Bool {
+        let alterQuery = "ALTER TABLE \(PDFColumnTable.Name) " +
+            "ADD \(PDFColumnTable.Column.CustomOrderId) INTEGER DEFAULT 0"
+        return database.executeUpdate(alterQuery)
+    }
+    
+    private func updatePDFColumnsOrderId(_ database: Database) -> Bool {
+        let updateQuery = "UPDATE \(PDFColumnTable.Name) " +
+            "SET \(PDFColumnTable.Column.CustomOrderId) = ROWID"
+        return database.executeUpdate(updateQuery)
+    }
+    
+    //MARK: - CSV Columns
+    
+    private func addCustomOrderIdToCSVColumns(_ database: Database) -> Bool {
+        let alterQuery = "ALTER TABLE \(CSVColumnTable.Name) " +
+            "ADD \(CSVColumnTable.Column.CustomOrderId) INTEGER DEFAULT 0"
+        return database.executeUpdate(alterQuery)
+    }
+    
+    private func updateCSVColumnsOrderId(_ database: Database) -> Bool {
+        let updateQuery = "UPDATE \(CSVColumnTable.Name) " +
+            "SET \(CSVColumnTable.Column.CustomOrderId) = ROWID"
         return database.executeUpdate(updateQuery)
     }
 }

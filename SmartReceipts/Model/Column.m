@@ -12,7 +12,6 @@
 
 @interface Column ()
 
-@property (nonatomic, assign) NSInteger index;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) WBDateFormatter *dateFormatter;
 
@@ -23,10 +22,16 @@
 - (instancetype)initWithIndex:(NSInteger)index name:(NSString *)name {
     self = [super init];
     if (self) {
-        _index = index;
+        _customOrderId = index;
         _name = name;
     }
     return self;
+}
+
+- (void)loadDataFromResultSet:(FMResultSet *)resultSet {
+    _objectId = [resultSet intForColumn:CSVTable.COLUMN_ID];
+    _name = [resultSet stringForColumn:CSVTable.COLUMN_TYPE];
+    _customOrderId = [resultSet intForColumn:CSVTable.COLUMN_CUSTOM_ORDER_ID];
 }
 
 - (WBDateFormatter *)dateFormatter {

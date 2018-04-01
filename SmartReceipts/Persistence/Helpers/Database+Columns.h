@@ -10,4 +10,9 @@
 
 @interface Database (Columns)
 
+- (BOOL)reorderColumn:(Column *)columnOne withColumn:(Column *)columnTwo table:(NSString *)table;
+- (NSInteger)nextCustomOrderIdForColumnTable:(NSString *)table;
+- (BOOL)addColumn:(Column *)column table:(NSString *)table;
+- (BOOL)removeColumn:(Column *)column table:(NSString *)table;
+
 @end

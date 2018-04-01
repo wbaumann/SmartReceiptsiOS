@@ -81,11 +81,13 @@ const struct CategoriesTableStruct CategoriesTable = {
 const struct CSVTableStruct CSVTable = {
         .TABLE_NAME = @"csvcolumns",
         .COLUMN_ID = @"id",
-        .COLUMN_TYPE = @"type"
+        .COLUMN_TYPE = @"type",
+        .COLUMN_CUSTOM_ORDER_ID = @"custom_order_id"
 };
 
 const struct PDFTableStruct PDFTable = {
         .TABLE_NAME = @"pdfcolumns",
         .COLUMN_ID = @"id",
-        .COLUMN_TYPE = @"type"
+        .COLUMN_TYPE = @"type",
+        .COLUMN_CUSTOM_ORDER_ID = @"custom_order_id"
 };
