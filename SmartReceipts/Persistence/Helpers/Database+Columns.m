@@ -77,7 +77,7 @@
 
 - (BOOL)setCustomOrderId:(NSInteger)customOrderId forColumn:(Column *)column table:(NSString *)table usingDatabase:(FMDatabase *)db {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:table];
-    [update addParam:CategoriesTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
+    [update addParam:CSVTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
     [update where:CSVTable.COLUMN_ID value:@(column.objectId)];
     return [self executeQuery:update usingDatabase:db];
 }
