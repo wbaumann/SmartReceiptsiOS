@@ -136,8 +136,8 @@ static NSString* checkNoData(NSString* str) {
     return _extraEditText3;
 }
 
--(void)setImageFileName:(NSString*)imageFileName{
-    _fileName = [imageFileName lastPathComponent];
+- (void)setFilename:(NSString *)filename {
+    _fileName = [filename lastPathComponent];
 }
 
 -(NSString*)imageFilePathForTrip:(WBTrip*)trip {

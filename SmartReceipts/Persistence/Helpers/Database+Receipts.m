@@ -214,7 +214,7 @@
     [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
     BOOL result = [self executeQuery:update];
     if (result) {
-        [receipt setImageFileName:fileName];
+        [receipt setFilename:fileName];
         [self notifyUpdateOfModel:receipt];
     }
     return result;
