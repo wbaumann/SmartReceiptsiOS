@@ -94,7 +94,7 @@
 - (BOOL)setCustomOrderId:(NSInteger)customOrderId forCategory:(WBCategory *)category usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:CategoriesTable.TABLE_NAME];
     [update addParam:CategoriesTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
-    [update where:CategoriesTable.COLUMN_NAME value:category.name];
+    [update where:CategoriesTable.COLUMN_ID value:@(category.objectId)];
     return [self executeQuery:update usingDatabase:database];
 }
 
