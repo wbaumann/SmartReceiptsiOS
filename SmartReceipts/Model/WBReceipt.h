@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSString*)extraEditText2;
 -(NSString*)extraEditText3;
 
--(void)setImageFileName:(NSString*)imageFileName;
+-(void)setFilename:(NSString *)filename;
 
 // we don't store trip so we pass it as argument
 

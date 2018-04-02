@@ -84,7 +84,7 @@ class EditReceiptInteractor: Interactor {
             let tripFolder = currentPath.asNSString.deletingLastPathComponent
             let newFileName = String(format: "%tu_%@.%@", receipt.objectId, receipt.omittedName, currentPath.asNSString.pathExtension)
             let newPath = "\(tripFolder)/\(newFileName)"
-            receipt.setImageFileName(newFileName)
+            receipt.setFilename(newFileName)
             
             do {
                 try FileManager.default.moveItem(atPath: currentPath, toPath: newPath)
@@ -103,7 +103,7 @@ class EditReceiptInteractor: Interactor {
             if !FileManager.forceWrite(data: fileData, to: path!) {
                 imgFileName = ""
             } else {
-                receipt.setImageFileName(imgFileName)
+                receipt.setFilename(imgFileName)
             }
         }
     }
