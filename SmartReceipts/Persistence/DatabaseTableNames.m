@@ -38,6 +38,7 @@ const struct ReceiptsTableStruct ReceiptsTable = {
         .COLUMN_NAME = @"name",
         .COLUMN_PARENT = @"parent",
         .COLUMN_CATEGORY = @"category",
+        .COLUMN_CATEGORY_ID = @"categoryKey",
         .COLUMN_PRICE = @"price",
         .COLUMN_TAX = @"tax",
         .COLUMN_PAYMENTMETHOD = @"paymentmethod", // Deprecated

@@ -48,16 +48,16 @@ class ReportGenerator: NSObject {
     func receiptsByCategories() -> [String: [WBReceipt]] {
         var result = [String: [WBReceipt]]()
         for receipt in receipts() {
-            if result[receipt.category] == nil {
-                result[receipt.category] = [WBReceipt]()
+            if result[receipt.category.name] == nil {
+                result[receipt.category.name] = [WBReceipt]()
             }
-            result[receipt.category]?.append(receipt)
+            result[receipt.category.name]?.append(receipt)
         }
         
         if WBPreferences.printDailyDistanceValues() {
             let dReceipts = DistancesToReceiptsConverter.convertDistances(distances()) as! [WBReceipt]
             guard let firstReceipt = dReceipts.first else { return result }
-            result[firstReceipt.category] = dReceipts
+            result[firstReceipt.category.name] = dReceipts
         }
         
         return result

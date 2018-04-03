@@ -34,14 +34,14 @@ static NSString* checkNoData(NSString* str) {
 @implementation WBReceipt
 {
     NSString *_fileName;
-    NSString *_name, *_category;
+    NSString *_name;
     NSString *_extraEditText1, *_extraEditText2, *_extraEditText3;
     NSTimeZone *_timeZone;
 }
 
 - (id)initWithId:(NSUInteger)rid
             name:(NSString *)name
-        category:(NSString *)category
+        category:(WBCategory *)category
    imageFileName:(NSString *)imageFileName
             date:(NSDate *)date
     timeZoneName:(NSString *)timeZoneName
@@ -61,7 +61,7 @@ static NSString* checkNoData(NSString* str) {
     if (self) {
         _objectId = rid;
         _name = name;
-        _category = category;
+        _categoryId = category.objectId;
         _fileName = checkNoData([imageFileName lastPathComponent]);
 
         _date = date;
@@ -106,10 +106,6 @@ static NSString* checkNoData(NSString* str) {
     return [NSTimeZone systemTimeZone];
 }
 
--(NSString*)category {
-    return _category;
-}
-
 - (BOOL)dateChanged {
     return ![self.date isEqualToDate:self.originalDate];
 }
@@ -123,6 +119,13 @@ static NSString* checkNoData(NSString* str) {
     }
 }
 
+- (WBCategory *)category {
+    return [Database.sharedInstance categoryByID:_categoryId];
+}
+
+- (void)setCategory:(WBCategory *)category {
+    _categoryId = category.objectId;
+}
 
 -(NSString*)extraEditText1 {
     return _extraEditText1;
@@ -198,7 +201,6 @@ static NSString* checkNoData(NSString* str) {
     NSString *receiptIdAsName = [NSString stringWithFormat:@"%@_%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
     [self setObjectId:(NSUInteger) [resultSet intForColumn:receiptIdAsName]];
     _name = [resultSet stringForColumn:ReceiptsTable.COLUMN_NAME];
-    _category = [resultSet stringForColumn:ReceiptsTable.COLUMN_CATEGORY];
     _fileName = [resultSet stringForColumn:ReceiptsTable.COLUMN_PATH];
     _comment = [resultSet stringForColumn:ReceiptsTable.COLUMN_COMMENT];
     _priceAmount = price;
@@ -214,6 +216,7 @@ static NSString* checkNoData(NSString* str) {
     [self setDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE]]];
     [self setTripName:[resultSet stringForColumn:ReceiptsTable.COLUMN_PARENT]];
     _customOrderId = [resultSet intForColumn:ReceiptsTable.COLUMN_CUSTOM_ORDER_ID];
+    _categoryId = [resultSet intForColumn:ReceiptsTable.COLUMN_CATEGORY_ID];
     
     NSString *paymentMethodIdAsName = [NSString stringWithFormat:@"%@_%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
     NSUInteger paymentMethodId = [resultSet intForColumn:paymentMethodIdAsName];

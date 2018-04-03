@@ -12,7 +12,7 @@
 @implementation ReceiptColumnCategoryName
 
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
-    return [receipt category];
+    return [receipt.category name];
 }
 
 @end

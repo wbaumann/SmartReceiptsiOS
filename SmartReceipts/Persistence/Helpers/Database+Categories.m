@@ -72,6 +72,24 @@
     return result;
 }
 
+- (WBCategory *)categoryByName:(NSString *)name {
+    for (WBCategory *category in self.listAllCategories) {
+        if ([category.name isEqualToString:name]) {
+            return category;
+        }
+    }
+    return [[WBCategory alloc] initWithName:name code:name.uppercaseString customOrderId:[self nextCustomOrderIdForCategory]];
+}
+
+- (WBCategory *)categoryByID:(NSInteger)categoryId {
+    for (WBCategory *category in self.listAllCategories) {
+        if (category.objectId == categoryId) {
+            return category;
+        }
+    }
+    return nil;
+}
+
 - (BOOL)swapCategory:(WBCategory *)categoryOne withCategory:(WBCategory *)categoryTwo  {
     __block BOOL result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {

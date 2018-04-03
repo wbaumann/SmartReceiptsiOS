@@ -39,6 +39,7 @@ struct ReceiptsTableStruct {
     __unsafe_unretained NSString *const COLUMN_NAME;
     __unsafe_unretained NSString *const COLUMN_PARENT;
     __unsafe_unretained NSString *const COLUMN_CATEGORY;
+    __unsafe_unretained NSString *const COLUMN_CATEGORY_ID;
     __unsafe_unretained NSString *const COLUMN_PRICE;
     __unsafe_unretained NSString *const COLUMN_TAX;
     __unsafe_unretained NSString *const COLUMN_PAYMENTMETHOD; //Deprecated
