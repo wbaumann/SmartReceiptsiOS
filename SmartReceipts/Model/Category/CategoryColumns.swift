@@ -25,7 +25,7 @@ class CategoryColumn: Column {
     
     func valueFrom(receipts: [WBReceipt]) -> String {
         guard let firstReceipt = receipts.first else { return "" }
-        return "\(firstReceipt.category) [\(receipts.count)]"
+        return "\(firstReceipt.category.name) [\(receipts.count)]"
     }
 }
 
@@ -35,7 +35,7 @@ class CategoryCodeCloumn: CategoryColumn {
     override func valueFrom(receipts: [WBReceipt]) -> String {
         guard let firstReceipt = receipts.first else { return "" }
         for category in Database.sharedInstance().listAllCategories() {
-            if category.name == firstReceipt.category { return category.code }
+            if category.name == firstReceipt.category.name { return category.code }
         }
         return ""
     }

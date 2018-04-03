@@ -21,6 +21,8 @@
 - (BOOL)swapCategory:(WBCategory *)categoryOne withCategory:(WBCategory *)categoryTwo;
 - (BOOL)reorderCategory:(WBCategory *)categoryOne withCategory:(WBCategory *)categoryTwo;
 - (BOOL)deleteCategory:(WBCategory *)category;
+- (WBCategory *)categoryByName:(NSString *)name;
+- (WBCategory *)categoryByID:(NSInteger )categoryId;
 - (FetchedModelAdapter *)fetchedAdapterForCategories;
 - (NSInteger)nextCustomOrderIdForCategory;
 

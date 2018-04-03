@@ -45,7 +45,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             self.receipt = WBReceipt()
             self.receipt.setPrice(NSDecimalNumber.zero, currency: trip.defaultCurrency.code)
             self.receipt.date = Date()
-            self.receipt.category = proposedCategory()
+            self.receipt.category =  Database.sharedInstance().category(byName: proposedCategory())
             self.receipt.exchangeRate = NSDecimalNumber.zero
             self.receipt.isReimbursable = WBPreferences.expensableDefault()
             self.receipt.isFullPage = WBPreferences.assumeFullPage()
@@ -202,11 +202,11 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         <<< InlinePickerButtonRow(CATEGORIES_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("edit.receipt.category.label")
             row.options = allCategories()
-            row.value = receipt.category
+            row.value = receipt.category.name
             row.buttonTitle = LocalizedString("edit_receipt_manage_categories_button").uppercased()
             self.manageCategoriesTap = row.buttonTap
         }.onChange({ [unowned self] row in
-            self.receipt.category = row.value!
+            self.receipt.category = Database.sharedInstance().category(byName: row.value!)
             self.matchCategory(value: row.value)
         })
         
@@ -254,7 +254,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         })
         
         if isNewReceipt {
-            matchCategory(value: receipt.category)
+            matchCategory(value: receipt.category.name)
         }
     }
     

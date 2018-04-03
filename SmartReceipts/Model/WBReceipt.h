@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PaymentMethod *paymentMethod;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *tripName;
-@property (nonatomic, copy) NSString *category;
+@property (nonatomic, copy) WBCategory *category;
 @property (nonatomic, strong) NSTimeZone *timeZone;
 @property (nonatomic, assign, getter=isReimbursable) BOOL reimbursable;
 @property (nonatomic, assign, getter=isFullPage) BOOL fullPage;
@@ -35,10 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly, nonnull) Currency *currency;
 @property (nonatomic, readonly) NSString *omittedName;
 @property (nonatomic, readonly) NSInteger customOrderId;
+@property (nonatomic, readonly) NSInteger categoryId;
 
 - (id)initWithId:(NSUInteger)rid
             name:(NSString *)name
-        category:(NSString *)category
+        category:(WBCategory *)category
    imageFileName:(nullable NSString *)imageFileName
             date:(NSDate *)date
     timeZoneName:(NSString *)timeZoneName
@@ -60,7 +61,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSTimeZone*)timeZone;
 
 -(NSString*)name;
--(NSString*)category;
 -(Currency*)currency;
 -(BOOL)isReimbursable;
 -(BOOL)isFullPage;

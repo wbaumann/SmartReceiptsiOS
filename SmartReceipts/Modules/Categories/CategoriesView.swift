@@ -97,7 +97,7 @@ final class CategoriesView: FetchedTableViewController {
                 if self.validate(name: name) {
                     forSave.name = name
                     forSave.code = alert.textFields!.last!.text
-                    forSave.customOrderId = isEdit ? self.fetchedItems.count + 1 : forSave.customOrderId
+                    forSave.customOrderId = isEdit ? forSave.customOrderId : 0
                     observer.onNext((category: forSave, update: isEdit))
                 }
             }))

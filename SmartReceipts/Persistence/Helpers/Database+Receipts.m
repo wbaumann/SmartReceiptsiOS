@@ -38,14 +38,14 @@
             ReceiptsTable.COLUMN_PATH, @" TEXT, ",
             ReceiptsTable.COLUMN_PARENT, @" TEXT REFERENCES ", TripsTable.TABLE_NAME, @" ON DELETE CASCADE, ",
             ReceiptsTable.COLUMN_NAME, @" TEXT DEFAULT \"New Receipt\", ",
-            ReceiptsTable.COLUMN_CATEGORY, @" TEXT, ",
+            ReceiptsTable.COLUMN_CATEGORY_ID, @" INTEGER REFERENCES ", CategoriesTable.TABLE_NAME, @" ON DELETE NO ACTION, ",
             ReceiptsTable.COLUMN_DATE, @" DATE DEFAULT (DATE('now', 'localtime')), ",
             ReceiptsTable.COLUMN_TIMEZONE, @" TEXT, ",
             ReceiptsTable.COLUMN_COMMENT, @" TEXT, ",
             ReceiptsTable.COLUMN_ISO4217, @" TEXT NOT NULL, ",
             ReceiptsTable.COLUMN_PRICE, @" DECIMAL(10, 2) DEFAULT 0.00, ",
             ReceiptsTable.COLUMN_TAX, @" DECIMAL(10, 2) DEFAULT 0.00, ",
-            ReceiptsTable.COLUMN_PAYMENTMETHOD, @" TEXT, ",
+            ReceiptsTable.COLUMN_PAYMENT_METHOD_ID, @" INTEGER REFERENCES ", PaymentMethodsTable.TABLE_NAME, @" ON DELETE NO ACTION, ",
             ReceiptsTable.COLUMN_REIMBURSABLE, @" BOOLEAN DEFAULT 1, ",
             ReceiptsTable.COLUMN_NOTFULLPAGEIMAGE, @" BOOLEAN DEFAULT 1, ",
             ReceiptsTable.COLUMN_EXTRA_EDITTEXT_1, @" TEXT, ",
@@ -280,7 +280,7 @@
     [query addParam:ReceiptsTable.COLUMN_PATH value:receipt.imageFileName fallback:SRNoData];
     [query addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];
     [query addParam:ReceiptsTable.COLUMN_NAME value:[receipt.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-    [query addParam:ReceiptsTable.COLUMN_CATEGORY value:receipt.category];
+    [query addParam:ReceiptsTable.COLUMN_CATEGORY_ID value:@(receipt.categoryId)];
     [query addParam:ReceiptsTable.COLUMN_COMMENT value:receipt.comment];
     [query addParam:ReceiptsTable.COLUMN_DATE value:receipt.date.milliseconds];
     [query addParam:ReceiptsTable.COLUMN_TIMEZONE value:receipt.timeZone.name];

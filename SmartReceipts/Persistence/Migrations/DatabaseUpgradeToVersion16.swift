@@ -14,24 +14,44 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
     }
     
     override func migrate(_ database: Database) -> Bool {
-        
-        return addCustomOrderIdToReceipts(database) &&
+        return  updateCategoriesPrimaryKey(database) &&
+                addCustomOrderIdToCategories(database) &&
+                updateCategoriesOrderId(database) &&
             
-               updateReceiptsOrderIdWithDate(database) &&
-               updateCategoriesPrimaryKey(database) &&
-            
-               addCustomOrderIdToCategories(database) &&
-               updateCategoriesOrderId(database) &&
-        
-               addCustomOrderIdToPDFColumns(database) &&
-               updatePDFColumnsOrderId(database) &&
-        
-               addCustomOrderIdToCSVColumns(database) &&
-               updateCSVColumnsOrderId(database)
-        
+                updateReceiptsCategoryReference(database) &&
+                addCustomOrderIdToReceipts(database) &&
+                updateReceiptsOrderIdWithDate(database) &&
+
+                addCustomOrderIdToPDFColumns(database) &&
+                updatePDFColumnsOrderId(database) &&
+
+                addCustomOrderIdToCSVColumns(database) &&
+updateCSVColumnsOrderId(database)
     }
     
     //MARK: - Receipts
+    
+    private func updateReceiptsCategoryReference(_ db: Database) -> Bool {
+        var result = db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD \(ReceiptsTable.Column.CategoryId) INTEGER REFERENCES \(CategoriesTable.Name) ON DELETE NO ACTION")
+        
+        result = result && db.executeUpdate("UPDATE \(ReceiptsTable.Name) SET \(ReceiptsTable.Column.CategoryId) = (SELECT \(CategoriesTable.Column.Id) FROM \(CategoriesTable.Name) WHERE \(CategoriesTable.Column.Name) = \(ReceiptsTable.Column.Category) LIMIT 1)")
+        
+        result = result && db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) RENAME TO \(ReceiptsTable.Name)_copy")
+        
+        db.createReceiptsTable()
+        
+        result = result && db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD \(Database.SyncColumns.drive_sync_id) TEXT")
+        result = result && db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD \(Database.SyncColumns.drive_is_synced) BOOLEAN DEFAULT 0")
+        result = result && db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD \(Database.SyncColumns.drive_marked_for_deletion) BOOLEAN DEFAULT 0")
+        result = result && db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD \(Database.SyncColumns.last_local_modification_time) DATE")
+        
+        let fieldsToCopy = "\(Database.SyncColumns.drive_sync_id), \(Database.SyncColumns.drive_is_synced), \(Database.SyncColumns.drive_marked_for_deletion), \(Database.SyncColumns.last_local_modification_time), \(ReceiptsTable.Column.CategoryId), \(ReceiptsTable.Column.Id), \(ReceiptsTable.Column.Path), \(ReceiptsTable.Column.Parent), \(ReceiptsTable.Column.Name), \(ReceiptsTable.Column.Date), \(ReceiptsTable.Column.Timezone), \(ReceiptsTable.Column.ISO4217), \(ReceiptsTable.Column.Price), \(ReceiptsTable.Column.Tax), \(ReceiptsTable.Column.PaymentMethodId), \(ReceiptsTable.Column.Reimbursable), \(ReceiptsTable.Column.NotFullPageImage), \(ReceiptsTable.Column.ExtraEditText1), \(ReceiptsTable.Column.ExtraEditText2), \(ReceiptsTable.Column.ExtraEditText3)"
+        
+        result = result && db.executeUpdate("INSERT INTO \(ReceiptsTable.Name) (\(fieldsToCopy)) SELECT \(fieldsToCopy) FROM \(ReceiptsTable.Name)_copy")
+        
+        result = result && db.executeUpdate("DROP TABLE \(ReceiptsTable.Name)_copy")
+        return result
+    }
     
     private func addCustomOrderIdToReceipts(_ database: Database) -> Bool {
         let alterQuery = "ALTER TABLE \(ReceiptsTable.Name) " +
@@ -50,15 +70,13 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
     private func updateCategoriesPrimaryKey(_ database: Database) -> Bool {
         let fields = "\(CategoriesTable.Column.Code),\(CategoriesTable.Column.Name),\(CategoriesTable.Column.Breakdown), \(Database.SyncColumns.drive_sync_id),\(Database.SyncColumns.drive_is_synced),\(Database.SyncColumns.drive_marked_for_deletion),\(Database.SyncColumns.last_local_modification_time)"
         
-        let db = Database.sharedInstance()!
-        
-        var result = db.executeUpdate("CREATE TABLE \(CategoriesTable.Name)_backup(\(CategoriesTable.Column.Name) TEXT, \(CategoriesTable.Column.Code) TEXT, \(CategoriesTable.Column.Breakdown) BOOLEAN DEFAULT 1,\(Database.SyncColumns.drive_sync_id) TEXT,\(Database.SyncColumns.drive_is_synced) BOOLEAN DEFAULT 0,\(Database.SyncColumns.drive_marked_for_deletion) BOOLEAN DEFAULT 0,\(Database.SyncColumns.last_local_modification_time) DATE, \(CategoriesTable.Column.Id) INTEGER PRIMARY KEY AUTOINCREMENT)")
+        var result = database.executeUpdate("CREATE TABLE \(CategoriesTable.Name)_backup(\(CategoriesTable.Column.Name) TEXT, \(CategoriesTable.Column.Code) TEXT, \(CategoriesTable.Column.Breakdown) BOOLEAN DEFAULT 1,\(Database.SyncColumns.drive_sync_id) TEXT,\(Database.SyncColumns.drive_is_synced) BOOLEAN DEFAULT 0,\(Database.SyncColumns.drive_marked_for_deletion) BOOLEAN DEFAULT 0,\(Database.SyncColumns.last_local_modification_time) DATE, \(CategoriesTable.Column.Id) INTEGER PRIMARY KEY AUTOINCREMENT)")
             
-        result = result && db.executeUpdate("INSERT INTO \(CategoriesTable.Name)_backup(\(fields),id) SELECT \(fields),ROWID FROM \(CategoriesTable.Name)")
+        result = result && database.executeUpdate("INSERT INTO \(CategoriesTable.Name)_backup(\(fields),id) SELECT \(fields),ROWID FROM \(CategoriesTable.Name)")
         
-        result = result && db.executeUpdate("DROP TABLE \(CategoriesTable.Name)")
+        result = result && database.executeUpdate("DROP TABLE \(CategoriesTable.Name)")
         
-        result = result && db.executeUpdate("ALTER TABLE \(CategoriesTable.Name)_backup RENAME TO \(CategoriesTable.Name)")
+        result = result && database.executeUpdate("ALTER TABLE \(CategoriesTable.Name)_backup RENAME TO \(CategoriesTable.Name)")
 
         return result
     }
