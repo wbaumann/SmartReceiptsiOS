@@ -88,8 +88,9 @@
     }
     
     __block BOOL result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+    [self.databaseQueue inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollback) {
         result = [self reorderColumn:columnOne withColumn:columnTwo table:table usingDB:db];
+        *rollback = result ? NO : YES;
     }];
     
     return result;
