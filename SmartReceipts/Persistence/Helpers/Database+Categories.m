@@ -103,8 +103,10 @@
     }
     
     __block BOOL result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+    
+    [self.databaseQueue inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollback) {
         result = [self reorderCategory:categoryOne withCategory:categoryTwo usingDatabase:db];
+        *rollback = result ? NO : YES;
     }];
     
     if (result) {
