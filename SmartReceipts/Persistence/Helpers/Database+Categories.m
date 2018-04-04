@@ -90,25 +90,6 @@
     return nil;
 }
 
-- (BOOL)swapCategory:(WBCategory *)categoryOne withCategory:(WBCategory *)categoryTwo  {
-    __block BOOL result;
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self swapCategory:categoryOne withCategory:categoryTwo usingDatabase:db];
-    }];
-    
-    if (result) {
-        NSArray *changedModels = [self categoriesBetweenCategoryOne:categoryOne categoryTwo:categoryTwo];
-        [self notifySwapOfModels:changedModels];
-    }
-    
-    return result;
-}
-
-- (BOOL)swapCategory:(WBCategory *)categoryOne withCategory:(WBCategory *)categoryTwo usingDatabase:(FMDatabase *)database {
-    return [self setCustomOrderId:categoryOne.customOrderId forCategory:categoryTwo usingDatabase:database] &&
-           [self setCustomOrderId:categoryTwo.customOrderId forCategory:categoryOne usingDatabase:database];
-}
-
 - (BOOL)setCustomOrderId:(NSInteger)customOrderId forCategory:(WBCategory *)category usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:CategoriesTable.TABLE_NAME];
     [update addParam:CategoriesTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
