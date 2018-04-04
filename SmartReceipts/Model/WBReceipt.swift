@@ -62,7 +62,7 @@ extension WBReceipt: Exchanged {
         }
         
         guard let number = exchangeRate, number.compare(NSDecimalNumber.zero) == .orderedDescending else {
-            return ""
+            return LocalizedString("pdf_report_undefined")
         }
         
         return WBReceipt.exchangeRateFormatter().string(from: number)!
@@ -106,7 +106,7 @@ extension WBReceipt: ExchangedPriced {
     
     func exchangedPriceAsString() -> String {
         guard let exchanged = exchangedPrice() else {
-            return ""
+            return LocalizedString("pdf_report_undefined")
         }
         
         return exchanged.amountAsString()
@@ -114,7 +114,7 @@ extension WBReceipt: ExchangedPriced {
     
     func formattedExchangedPrice() -> String {
         guard let exchanged = exchangedPrice() else {
-            return ""
+            return LocalizedString("pdf_report_undefined")
         }
         
         return exchanged.currencyFormattedPrice()
@@ -215,7 +215,7 @@ extension WBReceipt {
     
     func exchangedNetPriceAsString() -> String {
         guard let net = exchangedNetPrice() else {
-            return ""
+            return LocalizedString("pdf_report_undefined")
         }
 
         return net.amountAsString()
@@ -229,12 +229,21 @@ extension WBReceipt {
         return net.currencyFormattedPrice()
     }
     
-    func amountMinusTax() -> NSDecimalNumber {
-        if WBPreferences.enteredPricePreTax() {
-            return price().amount
-        } else {
-            return exchangedPrice()!.amount.subtracting(exchangedTax()!.amount)
+    func priceMinusTax() -> Price {
+        guard let tax = tax(), !WBPreferences.enteredPricePreTax() else {
+            return price()
         }
+        return Price(amount: price().amount.subtracting(tax.amount), currency: currency)
+    }
+    
+    func priceMinusTaxExchanged() -> Price? {
+        if let exchangedPrice = exchangedPrice(), let exchangedTax = exchangedTax() {
+            if WBPreferences.enteredPricePreTax() {
+                return Price(amount: exchangedPrice.amount, currency: currency)
+            }
+            return Price(amount: exchangedPrice.amount.subtracting(exchangedTax.amount), currency: currency)
+        }
+        return nil
     }
 
 }

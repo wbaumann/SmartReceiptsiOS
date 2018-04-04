@@ -37,7 +37,7 @@ class TripImagesPDFGenerator: ReportPDFGenerator {
                 drawFullPage(receipt: receipt)
             } else if receipt.hasImage() {
                 if let img = UIImage(contentsOfFile: receipt.imageFilePath(for: receipt.trip)) {
-                    appendToRender(image: img, label: labelForReceipt(receipt))
+                    pdfRender.append(image: img, label: labelForReceipt(receipt))
                 } else {
                     Logger.warning("fillPdfWithImagesUsing: Receipt-\(receipt.name) hasImage=TRUE, but no image")
                 }
@@ -68,14 +68,6 @@ class TripImagesPDFGenerator: ReportPDFGenerator {
             drawFullPagePDFFile(path: receipt.imageFilePath(for: receipt.trip), label: labelForReceipt(receipt))
         } else {
             Logger.warning("drawFullPageReceipt: Receipt-\(receipt.name) hasImage && hasPDF = FLASE")
-        }
-    }
-    
-    func appendToRender(image: UIImage, label: String) {
-        if WBPreferences.assumeFullPage() {
-            pdfRender.appendFullPage(image: image, label: label)
-        } else {
-            pdfRender.append(image: image, label: label)
         }
     }
     

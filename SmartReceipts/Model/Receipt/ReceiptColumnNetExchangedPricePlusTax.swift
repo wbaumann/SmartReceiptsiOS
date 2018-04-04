@@ -14,13 +14,34 @@ class ReceiptColumnNetExchangedPricePlusTax: ReceiptColumn {
     }
     
     override func value(forFooter rows: [Any]!, forCSV: Bool) -> String! {
+        let otherCollection = PricesCollection()
         var total = NSDecimalNumber.zero
-        for rec in rows as! [WBReceipt] {
-            total = total.adding(rec.exchangedPrice()!.amount)
-            if WBPreferences.enteredPricePreTax(), let tax = rec.exchangedTax()  {
-                total = total.adding(tax.amount)
+        let receipts = rows as! [WBReceipt]
+        
+        for rec in receipts {
+            if let exchangedPrice = rec.exchangedPrice() {
+                total = total.adding(exchangedPrice.amount)
+            } else {
+                otherCollection.addPrice(Price(amount: rec.priceAmount, currency: rec.currency))
+            }
+            
+            if WBPreferences.enteredPricePreTax() {
+                if let tax = rec.exchangedTax()  {
+                    total = total.adding(tax.amount)
+                    continue
+                } else {
+                    if let tax = rec.tax() {
+                        otherCollection.addPrice(Price(amount: tax.amount, currency: rec.currency))
+                    }
+                }
             }
         }
-        return Price.stringFrom(amount: total)
+        
+        if otherCollection.hasValue() {
+            let totalPrice = Price(amount: total, currency: receipts.first!.trip.defaultCurrency)
+            return "\(totalPrice.currencyFormattedPrice()); \(otherCollection.currencyFormattedPrice())"
+        } else {
+            return Price.stringFrom(amount: total)
+        }
     }
 }
