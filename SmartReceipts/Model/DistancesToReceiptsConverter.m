@@ -62,7 +62,7 @@
 
     WBReceipt *receipt = [[WBReceipt alloc] initWithId:0
                                     name:name
-                                category:category
+                                category:[Database.sharedInstance categoryByName:category]
                            imageFileName:nil
                                     date:date
                             timeZoneName:timeZone.name

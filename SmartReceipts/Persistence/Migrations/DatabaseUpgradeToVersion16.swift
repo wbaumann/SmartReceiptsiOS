@@ -26,30 +26,72 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
                 updatePDFColumnsOrderId(database) &&
 
                 addCustomOrderIdToCSVColumns(database) &&
-updateCSVColumnsOrderId(database)
+                updateCSVColumnsOrderId(database)
     }
     
     //MARK: - Receipts
     
     private func updateReceiptsCategoryReference(_ db: Database) -> Bool {
-        var result = db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD \(ReceiptsTable.Column.CategoryId) INTEGER REFERENCES \(CategoriesTable.Name) ON DELETE NO ACTION")
+        let createCopy =  ["CREATE TABLE ", ReceiptsTable.Name, "_copy (",
+                           ReceiptsTable.Column.Id, " INTEGER PRIMARY KEY AUTOINCREMENT, ",
+                           ReceiptsTable.Column.Path, " TEXT, ",
+                           ReceiptsTable.Column.Parent, " TEXT REFERENCES ", TripsTable.Name, " ON DELETE CASCADE, ",
+                           ReceiptsTable.Column.Name, " TEXT DEFAULT \"New Receipt\", ",
+                           ReceiptsTable.Column.CategoryId, " INTEGER REFERENCES ", CategoriesTable.Name, " ON DELETE NO ACTION, ",
+                           ReceiptsTable.Column.Date, " DATE DEFAULT (DATE('now', 'localtime')), ",
+                           ReceiptsTable.Column.Timezone, " TEXT, ",
+                           ReceiptsTable.Column.Comment, " TEXT, ",
+                           ReceiptsTable.Column.ISO4217, " TEXT NOT NULL, ",
+                           ReceiptsTable.Column.Price, " DECIMAL(10, 2) DEFAULT 0.00, ",
+                           ReceiptsTable.Column.Tax, " DECIMAL(10, 2) DEFAULT 0.00, ",
+                           ReceiptsTable.Column.ExchangeRate, " DECIMAL(10, 10) DEFAULT 0.00, ",
+                           ReceiptsTable.Column.PaymentMethodId, " INTEGER REFERENCES ", PaymentMethodsTable.Name, " ON DELETE NO ACTION, ",
+                           ReceiptsTable.Column.Reimbursable, " BOOLEAN DEFAULT 1, ",
+                           ReceiptsTable.Column.NotFullPageImage, " BOOLEAN DEFAULT 1, ",
+                           ReceiptsTable.Column.ExtraEditText1, " TEXT, ",
+                           ReceiptsTable.Column.ExtraEditText2, " TEXT, ",
+                           ReceiptsTable.Column.ExtraEditText3, " TEXT, ",
+                           ReceiptsTable.Column.ProcessingStatus, " TEXT, ",
+                           Database.SyncColumns.drive_sync_id, " TEXT, ",
+                           Database.SyncColumns.drive_is_synced, " BOOLEAN DEFAULT 0, ",
+                           Database.SyncColumns.drive_marked_for_deletion, " BOOLEAN DEFAULT 0, ",
+                           Database.SyncColumns.last_local_modification_time, " DATE", ")"].joined()
+        
+        var result = db.executeUpdate(createCopy)
+            
+        result = result && db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD \(ReceiptsTable.Column.CategoryId) INTEGER REFERENCES \(CategoriesTable.Name) ON DELETE NO ACTION")
         
         result = result && db.executeUpdate("UPDATE \(ReceiptsTable.Name) SET \(ReceiptsTable.Column.CategoryId) = (SELECT \(CategoriesTable.Column.Id) FROM \(CategoriesTable.Name) WHERE \(CategoriesTable.Column.Name) = \(ReceiptsTable.Column.Category) LIMIT 1)")
         
-        result = result && db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) RENAME TO \(ReceiptsTable.Name)_copy")
+        let fieldsToCopy = [
+            ReceiptsTable.Column.Id,
+            ReceiptsTable.Column.Parent,
+            ReceiptsTable.Column.Path,
+            ReceiptsTable.Column.Name,
+            ReceiptsTable.Column.CategoryId,
+            ReceiptsTable.Column.Date,
+            ReceiptsTable.Column.Timezone,
+            ReceiptsTable.Column.Comment,
+            ReceiptsTable.Column.ISO4217,
+            ReceiptsTable.Column.Price,
+            ReceiptsTable.Column.Tax,
+            ReceiptsTable.Column.PaymentMethodId,
+            ReceiptsTable.Column.Reimbursable,
+            ReceiptsTable.Column.NotFullPageImage,
+            ReceiptsTable.Column.ExtraEditText1,
+            ReceiptsTable.Column.ExtraEditText2,
+            ReceiptsTable.Column.ExtraEditText3,
+            ReceiptsTable.Column.ExchangeRate,
+            ReceiptsTable.Column.ProcessingStatus,
+            Database.SyncColumns.drive_sync_id,
+            Database.SyncColumns.drive_is_synced,
+            Database.SyncColumns.drive_marked_for_deletion,
+            Database.SyncColumns.last_local_modification_time].joined(separator: ", ")
         
-        db.createReceiptsTable()
+        result = result && db.executeUpdate("INSERT INTO \(ReceiptsTable.Name)_copy (\(fieldsToCopy)) SELECT \(fieldsToCopy) FROM \(ReceiptsTable.Name)")
         
-        result = result && db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD \(Database.SyncColumns.drive_sync_id) TEXT")
-        result = result && db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD \(Database.SyncColumns.drive_is_synced) BOOLEAN DEFAULT 0")
-        result = result && db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD \(Database.SyncColumns.drive_marked_for_deletion) BOOLEAN DEFAULT 0")
-        result = result && db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD \(Database.SyncColumns.last_local_modification_time) DATE")
-        
-        let fieldsToCopy = "\(Database.SyncColumns.drive_sync_id), \(Database.SyncColumns.drive_is_synced), \(Database.SyncColumns.drive_marked_for_deletion), \(Database.SyncColumns.last_local_modification_time), \(ReceiptsTable.Column.CategoryId), \(ReceiptsTable.Column.Id), \(ReceiptsTable.Column.Path), \(ReceiptsTable.Column.Parent), \(ReceiptsTable.Column.Name), \(ReceiptsTable.Column.Date), \(ReceiptsTable.Column.Timezone), \(ReceiptsTable.Column.ISO4217), \(ReceiptsTable.Column.Price), \(ReceiptsTable.Column.Tax), \(ReceiptsTable.Column.PaymentMethodId), \(ReceiptsTable.Column.Reimbursable), \(ReceiptsTable.Column.NotFullPageImage), \(ReceiptsTable.Column.ExtraEditText1), \(ReceiptsTable.Column.ExtraEditText2), \(ReceiptsTable.Column.ExtraEditText3)"
-        
-        result = result && db.executeUpdate("INSERT INTO \(ReceiptsTable.Name) (\(fieldsToCopy)) SELECT \(fieldsToCopy) FROM \(ReceiptsTable.Name)_copy")
-        
-        result = result && db.executeUpdate("DROP TABLE \(ReceiptsTable.Name)_copy")
+        result = result && db.executeUpdate("DROP TABLE \(ReceiptsTable.Name)")
+        result = result && db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name)_copy RENAME TO \(ReceiptsTable.Name)")
         return result
     }
     
