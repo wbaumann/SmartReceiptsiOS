@@ -26,11 +26,9 @@
 - (BOOL)createCategoriesTable {
     NSArray *createCategoriesTable = @[
             @"CREATE TABLE ", CategoriesTable.TABLE_NAME, @" (",
-            CategoriesTable.COLUMN_ID, @" INTEGER PRIMARY KEY AUTOINCREMENT, ",
             CategoriesTable.COLUMN_NAME, @" TEXT, ",
             CategoriesTable.COLUMN_CODE, @" TEXT, ",
-            CategoriesTable.COLUMN_BREAKDOWN, @" BOOLEAN DEFAULT 1, ",
-            CategoriesTable.COLUMN_CUSTOM_ORDER_ID, @" INTEGER DEFAULT 0", @");"
+            CategoriesTable.COLUMN_BREAKDOWN, @" BOOLEAN DEFAULT 1", @");"
     ];
     return [self executeUpdateWithStatementComponents:createCategoriesTable];
 }
@@ -51,7 +49,9 @@
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:CategoriesTable.TABLE_NAME];
     [insert addParam:CategoriesTable.COLUMN_CODE value:category.code];
     [insert addParam:CategoriesTable.COLUMN_NAME value:category.name];
-    [insert addParam:CategoriesTable.COLUMN_CUSTOM_ORDER_ID value:@(category.customOrderId)];
+    if (category.customOrderId >= 0) {
+        [insert addParam:CategoriesTable.COLUMN_CUSTOM_ORDER_ID value:@(category.customOrderId)];
+    }
     BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {
         [self notifyInsertOfModel:category];

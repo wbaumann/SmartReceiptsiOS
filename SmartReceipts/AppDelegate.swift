@@ -41,7 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RMStore.default().transactionPersistor = keychainPersistence
         
         _ = FileManager.initTripsDirectory()
-        Database.sharedInstance().open()
+        
+        if !Database.sharedInstance().open() {
+            NSException(name: NSExceptionName(rawValue: "DBOpenFail"), reason: nil, userInfo: [:]).raise()
+        }
+        
         Database.sharedInstance().checkReceiptValidity()
     
         RecentCurrenciesCache.shared.update()
