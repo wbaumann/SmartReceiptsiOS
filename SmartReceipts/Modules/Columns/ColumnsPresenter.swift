@@ -19,7 +19,7 @@ class ColumnsPresenter: Presenter {
     
     override func setupView(data: Any) {
         isCSV = data as! Bool
-        interactor.columns(forCSV: isCSV).bind(to: view.columnsVar).dispose()
+        updateData()
         
         view.setNavTitle(isCSV ? LocalizedString("columns.controller.title.csv") :
                                  LocalizedString("columns.controller.title.pdf"))
@@ -28,6 +28,7 @@ class ColumnsPresenter: Presenter {
     override func viewHasLoaded() {
         reorderSubject.subscribe(onNext: { [unowned self] left, right in
             self.interactor.reorder(columnLeft: left, columnRight: right, isCSV: self.isCSV)
+            self.updateData()
         }).disposed(by: bag)
         
         addSubject.subscribe(onNext: { [unowned self] column in
@@ -42,6 +43,10 @@ class ColumnsPresenter: Presenter {
     func nextObjectID() -> Int {
         let db = Database.sharedInstance()!
         return isCSV ? db.nextCSVColumnObjectID() : db.nextPDFColumnObjectID()
+    }
+    
+    func updateData() {
+        interactor.columns(forCSV: isCSV).bind(to: view.columnsVar).dispose()
     }
 }
 

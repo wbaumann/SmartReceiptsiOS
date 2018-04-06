@@ -26,7 +26,6 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
     @IBOutlet private weak var addItem: UIBarButtonItem!
     
     private var dynamicPicker: WBDynamicPicker!
-    
     private let bag = DisposeBag()
     
     override func viewDidLoad() {
@@ -35,10 +34,9 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
         let dataSource = RxTableViewSectionedAnimatedDataSource<ColumnSection>()
         configureTable(dataSource: dataSource)
         
-        displayData.columns.asObservable().flatMap { receipts -> Observable<[ColumnSection]> in
-            DispatchQueue.main.async { self.tableView.reloadData() }
+        displayData.columns.asObservable().flatMap({ receipts -> Observable<[ColumnSection]> in
             return Observable<[ColumnSection]>.just([ColumnSection(model: "", items: receipts)])
-        }.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: bag)
+        }).bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: bag)
         
         addItem.rx.tap.subscribe(onNext: { [unowned self] in
             self.dynamicPicker.show(from: self.addItem)
@@ -70,7 +68,8 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
         
         dataSource.configureCell = { (dataSource, table, idxPath, item) in
             let cell = table.dequeueReusableCell(withIdentifier: "Cell", for: idxPath)
-            cell.textLabel?.text = "\(LocalizedString("columns.controller.column.prefix")) \(idxPath.row+1)"
+            let number = idxPath.row + 1
+            cell.textLabel?.text = "\(LocalizedString("columns.controller.column.prefix")) \(number)"
             cell.detailTextLabel?.text = item.name
             return cell
         }
@@ -84,18 +83,14 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
             let columnOne = newColumns[from.row]
             let columnTwo = newColumns[to.row]
             
-            let item = newColumns.remove(at: from.row)
-            newColumns.insert(item, at: to.row)
-            
-            self.displayData.columns.value = newColumns
             self.presenter.reorderSubject.onNext((columnOne, columnTwo))
-            
+            self.presenter.updateData()
         }).disposed(by: bag)
         
         tableView.rx.itemDeleted.subscribe(onNext: { [unowned self] indexPath in
             let column = self.displayData.columns.value[indexPath.row]
             self.presenter.removeSubject.onNext(column)
-            self.displayData.columns.value.remove(at: indexPath.row)
+            self.presenter.updateData()
         }).disposed(by: bag)
     }
     
@@ -109,11 +104,10 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
     
     func dynamicPicker(_ picker: WBDynamicPicker!, doneWith subject: Any!) {
         let columnName = displayData.columsNames[dynamicPicker.selectedRow()]
-        let column = ReceiptColumn(index: 0, name: columnName)!
-        column.objectId = presenter.nextObjectID()
+        let column = ReceiptColumn(index: presenter.nextObjectID(), name: columnName)!
         column.uniqueIdentity = "\(Date())"
-        displayData.columns.value.append(column)
         presenter.addSubject.onNext(column)
+        self.presenter.updateData()
     }
 }
 

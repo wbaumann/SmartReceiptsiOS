@@ -20,7 +20,6 @@
     NSArray *createTable = @[
             @"CREATE TABLE ", tableName, @" (",
             CSVTable.COLUMN_ID, @" INTEGER PRIMARY KEY AUTOINCREMENT, ",
-            CSVTable.COLUMN_CUSTOM_ORDER_ID, @" INTEGER DEFAULT 0, ",
             CSVTable.COLUMN_TYPE, @" TEXT", @");"
     ];
     return [self executeUpdateWithStatementComponents:createTable];
@@ -71,7 +70,9 @@
                customOrderId:(NSInteger)customOrderId usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:tableName];
     [insert addParam:CSVTable.COLUMN_TYPE value:columnName];
-    [insert addParam:CSVTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
+    if (customOrderId >= 0) {
+        [insert addParam:CSVTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
+    }
     return [self executeQuery:insert usingDatabase:database];
 }
 

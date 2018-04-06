@@ -87,6 +87,10 @@ static NSDictionary *__receiptColumnNameToClassMapping;
     return @"";
 }
 
++ (ReceiptColumn *)columnName:(NSString *)columnName {
+    return [ReceiptColumn columnWithIndex:-1 name:columnName];
+}
+
 + (ReceiptColumn *)columnWithIndex:(NSInteger)index name:(NSString *)columnName {
     // for compability.
     // legacy string, expensable was renamed to reimbursable
