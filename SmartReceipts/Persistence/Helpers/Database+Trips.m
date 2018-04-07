@@ -32,6 +32,9 @@
 @implementation Database (Trips)
 
 - (BOOL)createTripsTable {
+    
+    // DON'T UPDATE THIS SCHEME, YOU CAN DO IT JUST THROUGH MIGRATION
+    
     NSArray *createTripsTable = @[
             @"CREATE TABLE ", TripsTable.TABLE_NAME, @" (",
             TripsTable.COLUMN_NAME, @" TEXT PRIMARY KEY, ",

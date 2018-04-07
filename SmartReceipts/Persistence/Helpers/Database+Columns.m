@@ -17,6 +17,9 @@
 @implementation Database (Columns)
 
 - (BOOL)createColumnsTableWithName:(NSString *)tableName {
+    
+    // DON'T UPDATE THIS SCHEME, YOU CAN DO IT JUST THROUGH MIGRATION
+    
     NSArray *createTable = @[
             @"CREATE TABLE ", tableName, @" (",
             CSVTable.COLUMN_ID, @" INTEGER PRIMARY KEY AUTOINCREMENT, ",

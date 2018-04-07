@@ -24,6 +24,9 @@
 @implementation Database (Categories)
 
 - (BOOL)createCategoriesTable {
+    
+    // DON'T UPDATE THIS SCHEME, YOU CAN DO IT JUST THROUGH MIGRATION
+    
     NSArray *createCategoriesTable = @[
             @"CREATE TABLE ", CategoriesTable.TABLE_NAME, @" (",
             CategoriesTable.COLUMN_NAME, @" TEXT, ",
