@@ -10,7 +10,6 @@ import Foundation
 import Viperit
 import StoreKit
 import RxSwift
-import RMStore
 
 class SettingsInteractor: Interactor {
     private let purchaseService = PurchaseService()

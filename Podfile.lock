@@ -11,7 +11,7 @@ PODS:
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
   - Cuckoo (0.9.3)
-  - Eureka (3.0.0)
+  - Eureka (4.1.1)
   - Fabric (1.7.2)
   - Firebase/AdMob (4.8.0):
     - Firebase/Core
@@ -27,10 +27,10 @@ PODS:
   - FirebaseAnalytics (4.0.5):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
   - FirebaseCore (4.0.13):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
   - FirebaseInstanceID (2.0.8):
     - FirebaseCore (~> 4.0)
   - FirebaseMessaging (2.0.8):
@@ -47,7 +47,7 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.3)
   - GoogleToolboxForMac/Logger (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
-  - GoogleToolboxForMac/NSData+zlib (2.1.3):
+  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - MKDropdownMenu (1.4)
   - MRProgress (0.8.3):
@@ -83,16 +83,7 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - OpenSSL-iOS (1.0.204):
-    - OpenSSL-iOS/Framework (= 1.0.204)
-  - OpenSSL-iOS/Framework (1.0.204)
   - Protobuf (3.5.0)
-  - RMStore/AppReceiptVerificator (0.7.0):
-    - OpenSSL-iOS
-    - RMStore/Core
-  - RMStore/Core (0.7.0)
-  - RMStore/KeychainPersistence (0.7.0):
-    - RMStore/Core
   - RxAlamofire (3.0.3):
     - RxAlamofire/Core (= 3.0.3)
   - RxAlamofire/Core (3.0.3):
@@ -109,6 +100,7 @@ PODS:
   - RxTest (3.5.0):
     - RxSwift (~> 3.4)
   - SwiftyJSON (3.1.4)
+  - SwiftyStoreKit (0.13.1)
   - Toaster (2.0.4)
   - UIAlertView-Blocks (1.0)
   - Viperit (0.7.0)
@@ -122,7 +114,7 @@ DEPENDENCIES:
   - CocoaLumberjack/Swift
   - Crashlytics
   - Cuckoo (from `https://github.com/kaosdg/Cuckoo.git`, branch `swift-4.0`)
-  - Eureka (from `https://github.com/xmartlabs/Eureka.git`, branch `Xcode9-Swift3_2`)
+  - Eureka
   - Fabric
   - Firebase/AdMob
   - Firebase/Analytics
@@ -132,9 +124,6 @@ DEPENDENCIES:
   - FMDB
   - MKDropdownMenu
   - MRProgress
-  - RMStore/AppReceiptVerificator (from `3rdparty/RMStore`)
-  - RMStore/Core (from `3rdparty/RMStore`)
-  - RMStore/KeychainPersistence (from `3rdparty/RMStore`)
   - RxAlamofire
   - RxBlocking
   - RxCocoa
@@ -142,29 +131,59 @@ DEPENDENCIES:
   - RxSwift
   - RxTest
   - SwiftyJSON
+  - SwiftyStoreKit
   - Toaster
   - UIAlertView-Blocks
   - Viperit
   - XLPagerTabStrip
   - Zip
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AWSCognito
+    - AWSCore
+    - AWSS3
+    - CocoaLumberjack
+    - Crashlytics
+    - Eureka
+    - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - Floaty
+    - FMDB
+    - Google-Mobile-Ads-SDK
+    - GoogleToolboxForMac
+    - MKDropdownMenu
+    - MRProgress
+    - nanopb
+    - Protobuf
+    - RxAlamofire
+    - RxBlocking
+    - RxCocoa
+    - RxDataSources
+    - RxSwift
+    - RxTest
+    - SwiftyJSON
+    - SwiftyStoreKit
+    - Toaster
+    - UIAlertView-Blocks
+    - Viperit
+    - XLPagerTabStrip
+    - Zip
+
 EXTERNAL SOURCES:
   Cuckoo:
     :branch: swift-4.0
     :git: https://github.com/kaosdg/Cuckoo.git
-  Eureka:
-    :branch: Xcode9-Swift3_2
-    :git: https://github.com/xmartlabs/Eureka.git
-  RMStore:
-    :path: 3rdparty/RMStore
 
 CHECKOUT OPTIONS:
   Cuckoo:
     :commit: 024627b489e1ea6a3139609309b612a61a1fd4a0
     :git: https://github.com/kaosdg/Cuckoo.git
-  Eureka:
-    :commit: 170433bedb6db4228da60eb6c866156b6b29e666
-    :git: https://github.com/xmartlabs/Eureka.git
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
@@ -174,7 +193,7 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 2800c03334042fe80589423c8d80e582dcaec482
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   Cuckoo: 0e443cae3d90aa35f7556b9e2abad1d61b0bfdf3
-  Eureka: 5b9418d7bfdc21ca977d69d124a6409f3e9af2c7
+  Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   Firebase: 710decbbc6d9d48530e9a5dba3209740c3532e05
   FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
@@ -188,9 +207,7 @@ SPEC CHECKSUMS:
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  OpenSSL-iOS: 002cabfdfc2df48d63cebd723b90ada86c946316
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
-  RMStore: 935f3e350c7f2f098047d73ddbd2ee2cd00f8b48
   RxAlamofire: 5eb39188c4917ad98127c0ecb4878a61b7517003
   RxBlocking: 471315e18b87c5ed4b9d0c69a57dfdbca5c01af1
   RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
@@ -198,12 +215,13 @@ SPEC CHECKSUMS:
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
   RxTest: 1763765fd0e2282b0eb44c9050effdd7fe7156d4
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftyStoreKit: c36bb7841dd51a485ce5c38abf9e96fba988741f
   Toaster: f13031c636ef065281bc11857be9a16c7659e04f
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
   Viperit: b45ecfde9f3e577a6afd8f91f4c88edb46e0ca25
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
   Zip: 115a122433829a1bbf33f5575fa84047438dcc12
 
-PODFILE CHECKSUM: fc22b3290881faa07f0d57042bc7545e45aba49c
+PODFILE CHECKSUM: 911e8965d390e09dcc7be054a819dc61d1d3d428
 
-COCOAPODS: 1.4.0.beta.2
+COCOAPODS: 1.5.0
