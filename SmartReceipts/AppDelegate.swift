@@ -8,7 +8,6 @@
 
 import Foundation
 import Viperit
-import RMStore
 import Firebase
 import UIAlertView_Blocks
 import RxSwift
@@ -24,9 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let dataQueue = DispatchQueue(label: "wb.dataAccess")
     
-    private var receiptVerification = RMStoreAppReceiptVerificator()
-    private var keychainPersistence = RMStoreKeychainPersistence()
-    
     func applicationDidFinishLaunching(_ application: UIApplication) {
         AppDelegate.instance = self
         FirebaseApp.configure()
@@ -36,9 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #if DEBUG
             Crashlytics.sharedInstance().debugMode = true
         #endif
-    
-        RMStore.default().receiptVerificator = receiptVerification
-        RMStore.default().transactionPersistor = keychainPersistence
         
         _ = FileManager.initTripsDirectory()
         
@@ -125,7 +118,8 @@ extension AppDelegate {
 extension AppDelegate {
     func handlePDForImage(url: URL) {
         var path = url.path
-        path = path.hasSuffix("/") ? path.substring(to: String.Index(path.count-1)) : path
+        
+        path = path.hasSuffix("/") ? path.substring(to: path.index(before: path.endIndex)) : path
         filePathToAttach = path
         
         if isFileImage {
@@ -189,18 +183,18 @@ extension AppDelegate {
     }
     
     func logPurchases() {
-        guard let receipt = RMAppReceipt.bundle() else { return }
-        Logger.debug("=== Purchases info ===")
-        Logger.debug("Receipt: \(receipt.description)")
-        Logger.debug("\(receipt.inAppPurchases.count) IAP-s")
-        if let iaps = receipt.inAppPurchases as? [RMAppReceiptIAP] {
-            for iap in iaps {
-                Logger.debug("IAP receipt: \(iap.description)")
-                Logger.debug("Purchase: \(iap.purchaseDate)")
-                Logger.debug("Original purchase: \(iap.originalPurchaseDate)")
-                Logger.debug("Expire: \(iap.subscriptionExpirationDate)")
-            }
-        }
-        Logger.debug("======================")
+//        guard let receipt = RMAppReceipt.bundle() else { return }
+//        Logger.debug("=== Purchases info ===")
+//        Logger.debug("Receipt: \(receipt.description)")
+//        Logger.debug("\(receipt.inAppPurchases.count) IAP-s")
+//        if let iaps = receipt.inAppPurchases as? [RMAppReceiptIAP] {
+//            for iap in iaps {
+//                Logger.debug("IAP receipt: \(iap.description)")
+//                Logger.debug("Purchase: \(iap.purchaseDate)")
+//                Logger.debug("Original purchase: \(iap.originalPurchaseDate)")
+//                Logger.debug("Expire: \(iap.subscriptionExpirationDate)")
+//            }
+//        }
+//        Logger.debug("======================")
     }
 }

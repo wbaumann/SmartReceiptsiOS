@@ -2,8 +2,6 @@ platform :ios, '8.0'
 
 use_frameworks!
 
-project 'SmartReceipts.xcodeproj'
-
 def pods
     #AWS
     pod 'AWSCognito'
@@ -16,7 +14,7 @@ def pods
     # UI
     pod 'MRProgress'
     pod 'UIAlertView-Blocks'
-    pod 'Eureka', :git => 'https://github.com/xmartlabs/Eureka.git', :branch => 'Xcode9-Swift3_2'
+    pod 'Eureka'
     pod 'XLPagerTabStrip'
     pod 'Floaty'
     pod 'Toaster'
@@ -44,9 +42,7 @@ def pods
     pod 'Crashlytics'
     
     # Purchases
-    pod 'RMStore/Core', :path => '3rdparty/RMStore'
-    pod 'RMStore/KeychainPersistence', :path => '3rdparty/RMStore'
-    pod 'RMStore/AppReceiptVerificator', :path => '3rdparty/RMStore'
+    pod 'SwiftyStoreKit'
     
     # Architecture
     pod 'Viperit'
@@ -70,7 +66,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      if target.name == 'Zip'
+      if (target.name == 'Zip') || (target.name == 'Eureka')
         config.build_settings['SWIFT_VERSION'] = '4.0'
       end
       config.build_settings['ENABLE_BITCODE'] = 'NO'

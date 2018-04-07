@@ -6,7 +6,6 @@
 //  Copyright © 2017 Will Baumann. All rights reserved.
 //
 
-import RMStore
 import RxSwift
 import StoreKit
 import SwiftyJSON
@@ -31,19 +30,21 @@ class PurchaseService {
     
     func requestProducts() -> Observable<SKProduct> {
         let ids: Set = [PRODUCT_PLUS, PRODUCT_OCR_10, PRODUCT_OCR_50]
-        return RMStore.default().requestProducts(identifiers: ids)
-            .do(onError: { error in
-                let errorEvent = ErrorEvent(error: error)
-                AnalyticsManager.sharedManager.record(event: errorEvent)
-            })
+        return Observable<SKProduct>.never()
+//        return RMStore.default().requestProducts(identifiers: ids)
+//            .do(onError: { error in
+//                let errorEvent = ErrorEvent(error: error)
+//                AnalyticsManager.sharedManager.record(event: errorEvent)
+//            })
     }
     
     func restorePurchases() -> Observable<Void> {
-        return RMStore.default().restorePurchases()
-            .do(onNext: {
-                Logger.debug("Successful restore purchases")
-                NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
-            }, onError: handleError(_:))
+        return Observable<Void>.never()
+//        return RMStore.default().restorePurchases()
+//            .do(onNext: {
+//                Logger.debug("Successful restore purchases")
+//                NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
+//            }, onError: handleError(_:))
     }
     
     func purchaseSubscription() -> Observable<SKPaymentTransaction> {
@@ -55,18 +56,19 @@ class PurchaseService {
     }
     
     func purchase(prodcutID: String) -> Observable<SKPaymentTransaction> {
-        return (isCachedProduct(id: prodcutID) ? Observable<Void>.just() : requestProducts().toArray().map({ _ in }))
-            .flatMap({ _ in
-                RMStore.default().addPayment(product: prodcutID)
-            .do(onNext: { [weak self] _ in
-                Logger.debug("Successful purchase: \(prodcutID)")
-                PurchaseService.analyticsPurchaseSuccess(productID: prodcutID)
-                self?.sendReceipt()
-            }, onError: { _ in
-                Logger.error("Failed purchase: \(prodcutID)")
-                PurchaseService.analyticsPurchaseFailed(productID: prodcutID)
-            })
-        })
+        return Observable<SKPaymentTransaction>.never()
+//        return (isCachedProduct(id: prodcutID) ? Observable<Void>.just(()) : requestProducts().toArray().map({ _ in }))
+//            .flatMap({ _ in
+//                RMStore.default().addPayment(product: prodcutID)
+//            .do(onNext: { [weak self] _ in
+//                Logger.debug("Successful purchase: \(prodcutID)")
+//                PurchaseService.analyticsPurchaseSuccess(productID: prodcutID)
+//                self?.sendReceipt()
+//            }, onError: { _ in
+//                Logger.error("Failed purchase: \(prodcutID)")
+//                PurchaseService.analyticsPurchaseFailed(productID: prodcutID)
+//            })
+//        })
     }
     
     func price(productID: String) -> Observable<String> {

@@ -8,9 +8,7 @@
 
 #import "Database+Purchases.h"
 #import "Constants.h"
-#import "RMAppReceipt.h"
 #import "NSDate+Calculations.h"
-#import "RMStore.h"
 #import "SmartReceipts-Swift.h"
 
 @implementation Database (Purchases)
@@ -20,12 +18,13 @@
         return [NSDate distantFuture];
     } else {
         // One year in the future will be the expiration
-        RMAppReceiptIAP *receiptForSubscription = [self receiptForSubscription];
-        if (receiptForSubscription) {
-            return [self oneYearFrom:receiptForSubscription.originalPurchaseDate];
-        } else {
-            return nil;
-        }
+//        RMAppReceiptIAP *receiptForSubscription = [self receiptForSubscription];
+//        if (receiptForSubscription) {
+//            return [self oneYearFrom:receiptForSubscription.originalPurchaseDate];
+//        } else {
+//            return nil;
+//        }
+        return nil;
     }
 //    return [NSDate distantPast];
 }
@@ -42,59 +41,59 @@
         return;
     }
 
-    RMAppReceiptIAP *receiptIAP = [self receiptForSubscription];
-    if (!receiptIAP) {
+//    RMAppReceiptIAP *receiptIAP = [self receiptForSubscription];
+//    if (!receiptIAP) {
         LOGGER_DEBUG(@"No receipt");
         return;
-    }
+//    }
 
-    NSString *identifier = receiptIAP.transactionIdentifier;
-    if ([self haveRefreshedSubscriptionReceipt:receiptIAP]) {
-        LOGGER_DEBUG(@"Already attempted refresh of this receipt");
-        return;
-    }
-
-    LOGGER_DEBUG(@"Refresh");
-    [[RMStore defaultStore] refreshReceiptOnSuccess:^{
-        LOGGER_DEBUG(@"refreshReceiptOnSuccess");
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:identifier];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
-        });
-    } failure:^(NSError *error) {
-        LOGGER_ERROR(@"refreshReceipFailure:%@", error);
-    }];
+//    NSString *identifier = receiptIAP.transactionIdentifier;
+//    if ([self haveRefreshedSubscriptionReceipt:receiptIAP]) {
+//        LOGGER_DEBUG(@"Already attempted refresh of this receipt");
+//        return;
+//    }
+//
+//    LOGGER_DEBUG(@"Refresh");
+//    [[RMStore defaultStore] refreshReceiptOnSuccess:^{
+//        LOGGER_DEBUG(@"refreshReceiptOnSuccess");
+//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:identifier];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [[NSNotificationCenter defaultCenter] postNotificationName:SmartReceiptsAdsRemovedNotification object:nil];
+//        });
+//    } failure:^(NSError *error) {
+//        LOGGER_ERROR(@"refreshReceipFailure:%@", error);
+//    }];
 }
 
-- (BOOL)haveRefreshedSubscriptionReceipt:(RMAppReceiptIAP *)receipt {
-    NSString *transactionIdentifier = receipt.transactionIdentifier;
-    return [[NSUserDefaults standardUserDefaults] boolForKey:transactionIdentifier];
-}
+//- (BOOL)haveRefreshedSubscriptionReceipt:(RMAppReceiptIAP *)receipt {
+//    NSString *transactionIdentifier = receipt.transactionIdentifier;
+//    return [[NSUserDefaults standardUserDefaults] boolForKey:transactionIdentifier];
+//}
 
-- (RMAppReceiptIAP *)receiptForSubscription {
-    RMAppReceipt *receipt = [RMAppReceipt bundleReceipt];
-    RMAppReceiptIAP *latest;
-    for (RMAppReceiptIAP *receiptIAP in receipt.inAppPurchases) {
-        if (![receiptIAP.productIdentifier isEqualToString:SmartReceiptSubscriptionIAPIdentifier]) {
-            continue;
-        }
-        
-        if (!latest) {
-            latest = receiptIAP;
-            continue;
-        }
-        
-        NSDate *known = latest.originalPurchaseDate;
-        NSDate *checked = receiptIAP.originalPurchaseDate;
-        if ([checked isAfterDate:known]) {
-            latest = receiptIAP;
-        }
-    }
+//- (RMAppReceiptIAP *)receiptForSubscription {
+//    RMAppReceipt *receipt = [RMAppReceipt bundleReceipt];
+//    RMAppReceiptIAP *latest;
+//    for (RMAppReceiptIAP *receiptIAP in receipt.inAppPurchases) {
+//        if (![receiptIAP.productIdentifier isEqualToString:SmartReceiptSubscriptionIAPIdentifier]) {
+//            continue;
+//        }
+//
+//        if (!latest) {
+//            latest = receiptIAP;
+//            continue;
+//        }
+//
+//        NSDate *known = latest.originalPurchaseDate;
+//        NSDate *checked = receiptIAP.originalPurchaseDate;
+//        if ([checked isAfterDate:known]) {
+//            latest = receiptIAP;
+//        }
+//    }
+//
+//    return latest;
+//}
 
-    return latest;
-}
-
-- (NSDate *)oneYearFrom: (NSDate *)date {
+- (NSDate *)oneYearFrom:(NSDate *)date {
     NSCalendar *gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
     [offsetComponents setYear:1];
