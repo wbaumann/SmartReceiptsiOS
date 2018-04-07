@@ -32,6 +32,9 @@
 @implementation Database (Receipts)
 
 - (BOOL)createReceiptsTable {
+    
+    // DON'T UPDATE THIS SCHEME, YOU CAN DO IT JUST THROUGH MIGRATION
+    
     NSArray *createReceiptsTable = @[
             @"CREATE TABLE ", ReceiptsTable.TABLE_NAME, @" (",
             ReceiptsTable.COLUMN_ID, @" INTEGER PRIMARY KEY AUTOINCREMENT, ",

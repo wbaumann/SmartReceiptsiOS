@@ -17,6 +17,9 @@
 @implementation Database (PaymentMethods)
 
 - (BOOL)createPaymentMethodsTable {
+    
+    // DON'T UPDATE THIS SCHEME, YOU CAN DO IT JUST THROUGH MIGRATION
+    
     NSArray *sql = @[@"CREATE TABLE ", PaymentMethodsTable.TABLE_NAME, @" (", PaymentMethodsTable.COLUMN_ID, @" INTEGER PRIMARY KEY AUTOINCREMENT, ", PaymentMethodsTable.COLUMN_METHOD, @" TEXT", @");"];
     return [self executeUpdateWithStatementComponents:sql]
             && [self insertDefaultMethods];

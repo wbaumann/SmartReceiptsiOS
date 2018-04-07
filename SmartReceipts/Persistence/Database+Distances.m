@@ -22,6 +22,9 @@
 @implementation Database (Distances)
 
 - (BOOL)createDistanceTable {
+    
+    // DON'T UPDATE THIS SCHEME, YOU CAN DO IT JUST THROUGH MIGRATION
+    
     NSArray *createDistanceTable =
             @[@"CREATE TABLE ", DistanceTable.TABLE_NAME, @" (", //
                     DistanceTable.COLUMN_ID, @" INTEGER PRIMARY KEY AUTOINCREMENT,", //
