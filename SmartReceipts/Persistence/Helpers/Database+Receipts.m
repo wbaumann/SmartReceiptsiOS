@@ -196,18 +196,8 @@
 }
 
 - (FetchedModelAdapter *)fetchedReceiptsAdapterForTrip:(WBTrip *)trip {
-    NSString *receiptIdFullName = [NSString stringWithFormat:@"%@.%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
-    NSString *receiptIdAsName = [NSString stringWithFormat:@"%@_%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
-    NSString *paymentMethodIdFullName = [NSString stringWithFormat:@"%@.%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
-    NSString *paymentMethodIdAsName = [NSString stringWithFormat:@"%@_%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
-    
-    DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:ReceiptsTable.TABLE_NAME];
-    [select where:ReceiptsTable.COLUMN_PARENT value:trip.name];
-    [select select:receiptIdFullName as:receiptIdAsName];
-    [select select:paymentMethodIdFullName as:paymentMethodIdAsName];
-    [select leftJoin:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
-    [select orderBy:ReceiptsTable.COLUMN_CUSTOM_ORDER_ID ascending:NO];
-    return [self createAdapterUsingQuery:select forModel:[WBReceipt class] associatedModel:trip];
+    DatabaseQueryBuilder *query = [WBReceipt selectAllQueryForTrip:trip];
+    return [self createAdapterUsingQuery:query forModel:[WBReceipt class] associatedModel:trip];
 }
 
 - (BOOL)updateReceipt:(WBReceipt *)receipt changeFileNameTo:(NSString *)fileName {
@@ -282,7 +272,7 @@
     [query addParam:ReceiptsTable.COLUMN_PATH value:receipt.imageFileName fallback:SRNoData];
     [query addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];
     [query addParam:ReceiptsTable.COLUMN_NAME value:[receipt.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-    [query addParam:ReceiptsTable.COLUMN_CATEGORY_ID value:@(receipt.categoryId)];
+    [query addParam:ReceiptsTable.COLUMN_CATEGORY_ID value:@(receipt.category.objectId)];
     [query addParam:ReceiptsTable.COLUMN_COMMENT value:receipt.comment];
     [query addParam:ReceiptsTable.COLUMN_DATE value:receipt.date.milliseconds];
     [query addParam:ReceiptsTable.COLUMN_TIMEZONE value:receipt.timeZone.name];

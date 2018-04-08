@@ -61,9 +61,8 @@ static NSString* checkNoData(NSString* str) {
     if (self) {
         _objectId = rid;
         _name = name;
-        _categoryId = category.objectId;
         _fileName = checkNoData([imageFileName lastPathComponent]);
-
+        _category = category;
         _date = date;
 
         _timeZone = [NSTimeZone timeZoneWithName:timeZoneName];
@@ -117,14 +116,6 @@ static NSString* checkNoData(NSString* str) {
     if (!self.originalDate) {
         [self setOriginalDate:date];
     }
-}
-
-- (WBCategory *)category {
-    return [Database.sharedInstance categoryByID:_categoryId];
-}
-
-- (void)setCategory:(WBCategory *)category {
-    _categoryId = category.objectId;
 }
 
 -(NSString*)extraEditText1 {
@@ -199,8 +190,10 @@ static NSString* checkNoData(NSString* str) {
     NSString *currencyCode = [resultSet stringForColumn:ReceiptsTable.COLUMN_ISO4217];
 
     NSString *receiptIdAsName = [NSString stringWithFormat:@"%@_%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
+    NSString *receiptNameAsName = [NSString stringWithFormat:@"%@_%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_NAME];
+    
     [self setObjectId:(NSUInteger) [resultSet intForColumn:receiptIdAsName]];
-    _name = [resultSet stringForColumn:ReceiptsTable.COLUMN_NAME];
+    _name = [resultSet stringForColumn:receiptNameAsName];
     _fileName = [resultSet stringForColumn:ReceiptsTable.COLUMN_PATH];
     _comment = [resultSet stringForColumn:ReceiptsTable.COLUMN_COMMENT];
     _priceAmount = price;
@@ -216,7 +209,25 @@ static NSString* checkNoData(NSString* str) {
     [self setDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE]]];
     [self setTripName:[resultSet stringForColumn:ReceiptsTable.COLUMN_PARENT]];
     _customOrderId = [resultSet intForColumn:ReceiptsTable.COLUMN_CUSTOM_ORDER_ID];
-    _categoryId = [resultSet intForColumn:ReceiptsTable.COLUMN_CATEGORY_ID];
+    
+    
+    // Category
+    
+    NSString *categories = [NSString stringWithFormat:@"%@_", CategoriesTable.TABLE_NAME];
+    NSString *categoryIdAsName = [categories stringByAppendingString:CategoriesTable.COLUMN_ID];
+    NSString *categoryCodeAsName = [categories stringByAppendingString:CategoriesTable.COLUMN_CODE];
+    NSString *categoryNameAsName = [categories stringByAppendingString:CategoriesTable.COLUMN_NAME];
+    
+    NSString *categoryCode = [resultSet stringForColumn:categoryCodeAsName];
+    NSString *categoryName = [resultSet stringForColumn:categoryNameAsName];
+    NSInteger categoryId = [resultSet intForColumn:categoryIdAsName];
+    
+    if (categoryCode && categoryName) {
+        WBCategory *category = [[WBCategory alloc] initWithName:categoryName code:categoryCode customOrderId:0 objectId:categoryId];
+        _category = category;
+    }
+    
+    // Payment Method
     
     NSString *paymentMethodIdAsName = [NSString stringWithFormat:@"%@_%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
     NSUInteger paymentMethodId = [resultSet intForColumn:paymentMethodIdAsName];

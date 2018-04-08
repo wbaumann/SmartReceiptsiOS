@@ -29,8 +29,13 @@ static NSString *const COLUMN_CUSTOM_ORDER_ID = @"custom_order_id";
 }
     
 - (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId {
+    return [self initWithName:name code:code customOrderId:customOrderId objectId:0];
+}
+
+- (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId objectId:(NSInteger)objectId {
     self = [super init];
     if (self) {
+        _objectId = objectId;
         _name = name;
         _originalName = name;
         _code = code;

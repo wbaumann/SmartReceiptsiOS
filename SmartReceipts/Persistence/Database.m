@@ -81,8 +81,8 @@ NSString *const DatabaseDidReorderModelsNotification = @"DatabaseDidReorderModel
 }
 
 - (BOOL)open:(BOOL)migrateDatabase {
+    NSLog(@"Open DB at: %@", self.pathToDatabase);
     FMDatabaseQueue *db = [FMDatabaseQueue databaseQueueWithPath:self.pathToDatabase];
-
     if (!db) {
         return NO;
     }
