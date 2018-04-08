@@ -19,6 +19,7 @@
 
 - (id)initWithName:(NSString*)name code:(NSString*)code;
 - (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId;
+- (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId objectId:(NSInteger)objectId;
 
 +(NSString*) CATEGORY_NAME_BREAKFAST;
 +(NSString*) CATEGORY_NAME_LUNCH;
