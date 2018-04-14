@@ -60,6 +60,7 @@
 		711E81D11FD45EE300708056 /* ReceiptIndexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E81D01FD45EE300708056 /* ReceiptIndexer.swift */; };
 		711E81D31FD4670B00708056 /* ReportCSVGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E81D21FD4670B00708056 /* ReportCSVGenerator.swift */; };
 		711E81D51FD4695B00708056 /* TripCSVGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E81D41FD4695B00708056 /* TripCSVGenerator.swift */; };
+		711E8271207D57020065D6E0 /* PurchaseService+Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E8270207D57020065D6E0 /* PurchaseService+Subscription.swift */; };
 		7120099D1F12D0DE0049927E /* TickTock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7120099C1F12D0DE0049927E /* TickTock.swift */; };
 		7122778C1F756EA300090878 /* S3Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7122778B1F756EA300090878 /* S3Service.swift */; };
 		712A84E51F78363C00D988E7 /* RxSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A84E41F78363C00D988E7 /* RxSwift+Extensions.swift */; };
@@ -258,6 +259,7 @@
 		71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */; };
 		71E2B5801EEDD516001D02F1 /* TripsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5791EEDD516001D02F1 /* TripsRouter.swift */; };
 		71E2B5811EEDD516001D02F1 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B57A1EEDD516001D02F1 /* TripsView.swift */; };
+		71E3CCE4207E9E8900C7FF2D /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3CCE3207E9E8900C7FF2D /* TimeInterval+Extensions.swift */; };
 		71E6E224201E723600463B0D /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C413D31EE6F826003CE891 /* GeneratedMocks.swift */; };
 		71E7303D1FF7E53000471287 /* MigrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E7303C1FF7E53000471287 /* MigrationService.swift */; };
 		71E7303F1FF7E9C100471287 /* BlockTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E7303E1FF7E9C100471287 /* BlockTypes.swift */; };
@@ -437,7 +439,6 @@
 		EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA22FB4C1B1AF1A40060D23D /* CategoryCell.xib */; };
 		EA2B8D881B4EF44B0043A84B /* TripReportHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2B8D871B4EF44B0043A84B /* TripReportHeader.xib */; };
 		EA2B8D8C1B4EF8110043A84B /* PDFPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2B8D851B4EF27D0043A84B /* PDFPage.xib */; };
-		EA2F23051B41BFD3008AF61E /* Database+Purchases.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2F23041B41BFD3008AF61E /* Database+Purchases.m */; };
 		EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */ = {isa = PBXBuildFile; fileRef = EA36DE501B0118EE0034CC2D /* Database+Hints.m */; };
 		EA36DE531B0119150034CC2D /* DatabaseHintsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA36DE521B0119150034CC2D /* DatabaseHintsTest.m */; };
 		EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3C96891AEA974100A2A5F9 /* WBReportUtilsTest.m */; };
@@ -613,6 +614,7 @@
 		711E81D01FD45EE300708056 /* ReceiptIndexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptIndexer.swift; sourceTree = "<group>"; };
 		711E81D21FD4670B00708056 /* ReportCSVGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCSVGenerator.swift; sourceTree = "<group>"; };
 		711E81D41FD4695B00708056 /* TripCSVGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCSVGenerator.swift; sourceTree = "<group>"; };
+		711E8270207D57020065D6E0 /* PurchaseService+Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PurchaseService+Subscription.swift"; sourceTree = "<group>"; };
 		7120099C1F12D0DE0049927E /* TickTock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickTock.swift; sourceTree = "<group>"; };
 		7122778B1F756EA300090878 /* S3Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Service.swift; sourceTree = "<group>"; };
 		7122778D1F76F1CB00090878 /* S3ServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3ServiceTests.swift; sourceTree = "<group>"; };
@@ -849,6 +851,7 @@
 		71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsPresenter.swift; sourceTree = "<group>"; };
 		71E2B5791EEDD516001D02F1 /* TripsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsRouter.swift; sourceTree = "<group>"; };
 		71E2B57A1EEDD516001D02F1 /* TripsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
+		71E3CCE3207E9E8900C7FF2D /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		71E6299D20259D630049668B /* PurchaseServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseServiceTest.swift; sourceTree = "<group>"; };
 		71E6E20C201E721E00463B0D /* OCRConfigurationModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRConfigurationModuleTest.swift; sourceTree = "<group>"; };
 		71E7303C1FF7E53000471287 /* MigrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationService.swift; sourceTree = "<group>"; };
@@ -1033,8 +1036,6 @@
 		EA22FB4C1B1AF1A40060D23D /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		EA2B8D851B4EF27D0043A84B /* PDFPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFPage.xib; sourceTree = "<group>"; };
 		EA2B8D871B4EF44B0043A84B /* TripReportHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripReportHeader.xib; sourceTree = "<group>"; };
-		EA2F23031B41BFD3008AF61E /* Database+Purchases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Database+Purchases.h"; sourceTree = "<group>"; };
-		EA2F23041B41BFD3008AF61E /* Database+Purchases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Database+Purchases.m"; sourceTree = "<group>"; };
 		EA36DE4F1B0118EE0034CC2D /* Database+Hints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Database+Hints.h"; sourceTree = "<group>"; };
 		EA36DE501B0118EE0034CC2D /* Database+Hints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Database+Hints.m"; sourceTree = "<group>"; };
 		EA36DE521B0119150034CC2D /* DatabaseHintsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseHintsTest.m; sourceTree = "<group>"; };
@@ -1335,6 +1336,7 @@
 				712A84E71F783BF300D988E7 /* APIAdapter.swift */,
 				718D2DF01F7D459B00A69B6E /* PushNotificationService.swift */,
 				710A33DB1F827E2500D10344 /* PurchaseService.swift */,
+				711E8270207D57020065D6E0 /* PurchaseService+Subscription.swift */,
 				71BC45501F9FB38C003A5BD5 /* LocalScansTracker.swift */,
 				71BC45521F9FB3A9003A5BD5 /* ScansPurchaseTracker.swift */,
 				71D7D43D1FAA062300437CA9 /* ScanService.swift */,
@@ -2092,6 +2094,7 @@
 				712A84E91F783E9300D988E7 /* Dictionary+Extensions.swift */,
 				71B5C5361FB1550F00FA0AB9 /* UIAlert+Extensions.swift */,
 				710D98A11FE573540088B9BA /* UIView+Extensions.swift */,
+				71E3CCE3207E9E8900C7FF2D /* TimeInterval+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2180,8 +2183,6 @@
 				EA07BF521AF4CD26004D17F6 /* Database+PaymentMethods.m */,
 				EA183E091B1C9F6C00577B3D /* Database+PDFColumns.h */,
 				EA183E0A1B1C9F6C00577B3D /* Database+PDFColumns.m */,
-				EA2F23031B41BFD3008AF61E /* Database+Purchases.h */,
-				EA2F23041B41BFD3008AF61E /* Database+Purchases.m */,
 				EA888A7A1AFA5C5900DF2AE6 /* Database+Receipts.h */,
 				EA888A7B1AFA5C5900DF2AE6 /* Database+Receipts.m */,
 				EA888A841AFB4FBD00DF2AE6 /* Database+Trips.h */,
@@ -3181,6 +3182,7 @@
 				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
 				714104E71FF43D7700C334C5 /* TooltipView.swift in Sources */,
 				71F468331EEEDB03009F6CE7 /* EditTripDisplayData.swift in Sources */,
+				711E8271207D57020065D6E0 /* PurchaseService+Subscription.swift in Sources */,
 				7100F7781F5F08C600D4B4D9 /* NetworkingUtils.swift in Sources */,
 				7190B9171F60427200F6CE7F /* AuthRouter.swift in Sources */,
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
@@ -3214,7 +3216,6 @@
 				716138C11FD1BD0500C73FB9 /* PDFImageView.swift in Sources */,
 				570515A31E02EB5500BB8FE4 /* Event+Categories.swift in Sources */,
 				714042081FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift in Sources */,
-				EA2F23051B41BFD3008AF61E /* Database+Purchases.m in Sources */,
 				716138C91FD1E6E600C73FB9 /* PDFReportTable.swift in Sources */,
 				71AF49E31EFDA4810022B2E2 /* ReceiptImageViewerRouter.swift in Sources */,
 				716C04221F685467007F9CD2 /* CognitoService.swift in Sources */,
@@ -3285,6 +3286,7 @@
 				71C014241F1AB14A005472B3 /* CategoriesInteractor.swift in Sources */,
 				714104E61FF43D7700C334C5 /* SuggestionView.m in Sources */,
 				71AF49E81EFDCC010022B2E2 /* ReceiptImageViewerView.swift in Sources */,
+				71E3CCE4207E9E8900C7FF2D /* TimeInterval+Extensions.swift in Sources */,
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				716F07DF2034AFDF00166D63 /* BackupPresenter.swift in Sources */,
 				71628C21204EF8330032EEB7 /* NumberKeyboard.swift in Sources */,

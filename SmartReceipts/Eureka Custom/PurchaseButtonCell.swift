@@ -65,6 +65,7 @@ public final class PurchaseButtonRow: Row<PurchaseButtonCell>, RowType{
     }
     
     func markPurchased() {
+        cell.activityIndicator.stopAnimating()
         purchased = true
         cell.priceLabel.text = " "
         cell.accessoryType = .checkmark

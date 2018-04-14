@@ -59,7 +59,7 @@ public class ExchangeRateCell: DecimalCell {
                 button.setImage(#imageLiteral(resourceName: "724-info-toolbar"), for: .normal)
             }
         } else {
-            let img = Database.sharedInstance().hasValidSubscription() ? #imageLiteral(resourceName: "713-refresh-1-toolbar") : #imageLiteral(resourceName: "724-info-toolbar")
+            let img = PurchaseService().hasValidSubscriptionValue() ? #imageLiteral(resourceName: "713-refresh-1-toolbar") : #imageLiteral(resourceName: "724-info-toolbar")
             button.setImage(img, for: .normal)
         }
     }
@@ -75,7 +75,7 @@ public class ExchangeRateCell: DecimalCell {
                 showSubscriptionInfo()
             }
         } else {
-            if Database.sharedInstance().hasValidSubscription() {
+            if PurchaseService().hasValidSubscriptionValue() {
                 row().updateTap.onNext()
             } else {
                 showSubscriptionInfo()

@@ -9,6 +9,7 @@
 import RxSwift
 import StoreKit
 import SwiftyJSON
+import SwiftyStoreKit
 
 let PRODUCT_OCR_10 = "ios_ocr_purchase_10"
 let PRODUCT_OCR_50 = "ios_ocr_purchase_50"
@@ -16,8 +17,8 @@ let PRODUCT_PLUS = "ios_plus_sku_2"
 
 class PurchaseService {
     private var plusSubsribtionProduct: SKProduct?
-    fileprivate let bag = DisposeBag()
     static fileprivate var cachedProducts = [SKProduct]()
+    let bag = DisposeBag()
     
     func cacheProducts() {
         requestProducts().toArray()
@@ -30,45 +31,89 @@ class PurchaseService {
     
     func requestProducts() -> Observable<SKProduct> {
         let ids: Set = [PRODUCT_PLUS, PRODUCT_OCR_10, PRODUCT_OCR_50]
-        return Observable<SKProduct>.never()
-//        return RMStore.default().requestProducts(identifiers: ids)
-//            .do(onError: { error in
-//                let errorEvent = ErrorEvent(error: error)
-//                AnalyticsManager.sharedManager.record(event: errorEvent)
-//            })
+        return Observable<SKProduct>.create({ observer -> Disposable in
+            SwiftyStoreKit.retrieveProductsInfo(ids) { result in
+                for product in result.retrievedProducts {
+                    observer.onNext(product)
+                }
+            }
+            return Disposables.create()
+        }).do(onError: { error in
+            let errorEvent = ErrorEvent(error: error)
+            AnalyticsManager.sharedManager.record(event: errorEvent)
+        })
     }
     
-    func restorePurchases() -> Observable<Void> {
-        return Observable<Void>.never()
-//        return RMStore.default().restorePurchases()
-//            .do(onNext: {
-//                Logger.debug("Successful restore purchases")
-//                NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
-//            }, onError: handleError(_:))
+    func restorePurchases() -> Observable<[Purchase]> {
+        return Observable<[Purchase]>.create({ observable -> Disposable in
+            SwiftyStoreKit.restorePurchases(atomically: true) { results in
+                if !results.restoredPurchases.isEmpty {
+                    Logger.debug("Restore Success: \(results.restoredPurchases)")
+                    observable.onNext(results.restoredPurchases)
+                } else if !results.restoreFailedPurchases.isEmpty {
+                    Logger.debug("Restore Failed: \(results.restoreFailedPurchases)")
+                    observable.onError(results.restoreFailedPurchases.first!.0)
+                } else {
+                    Logger.debug("Nothing to Restore")
+                    observable.onNext([])
+                }
+            }
+            return Disposables.create()
+        })
     }
     
-    func purchaseSubscription() -> Observable<SKPaymentTransaction> {
+    func restoreSubscription() -> Observable<Bool> {
+        return restorePurchases()
+            .map({ purchases -> Bool in
+                return purchases.contains(where: { $0.productId == PRODUCT_PLUS })
+            }).do(onNext: { restored in
+                if restored {
+                    Logger.debug("Successfuly restored Subscription")
+                    NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
+                }
+            })
+    }
+    
+    func purchaseSubscription() -> Observable<PurchaseDetails> {
         return purchase(prodcutID: PRODUCT_PLUS)
-            .do(onNext: { _ in
+            .do(onNext: { [weak self] _ in
+                self?.resetCache()
                 Logger.debug("Successful restore PLUS Subscription")
                 NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
             }, onError: handleError(_:))
     }
     
-    func purchase(prodcutID: String) -> Observable<SKPaymentTransaction> {
-        return Observable<SKPaymentTransaction>.never()
-//        return (isCachedProduct(id: prodcutID) ? Observable<Void>.just(()) : requestProducts().toArray().map({ _ in }))
-//            .flatMap({ _ in
-//                RMStore.default().addPayment(product: prodcutID)
-//            .do(onNext: { [weak self] _ in
-//                Logger.debug("Successful purchase: \(prodcutID)")
-//                PurchaseService.analyticsPurchaseSuccess(productID: prodcutID)
-//                self?.sendReceipt()
-//            }, onError: { _ in
-//                Logger.error("Failed purchase: \(prodcutID)")
-//                PurchaseService.analyticsPurchaseFailed(productID: prodcutID)
-//            })
-//        })
+    func purchase(prodcutID: String) -> Observable<PurchaseDetails> {
+        return Observable<PurchaseDetails>.create({ observer -> Disposable in
+            SwiftyStoreKit.purchaseProduct(prodcutID, atomically: true) { result in
+                switch result {
+                case .success(let purchase):
+                    Logger.debug("Purchase Success: \(purchase.productId)")
+                    observer.onNext(purchase)
+                case .error(let error):
+                    switch error.code {
+                    case .unknown: Logger.error("Unknown error. Please contact support")
+                    case .clientInvalid: Logger.error("Not allowed to make the payment")
+                    case .paymentCancelled: break
+                    case .paymentInvalid: Logger.error("The purchase identifier was invalid")
+                    case .paymentNotAllowed: Logger.error("The device is not allowed to make the payment")
+                    case .storeProductNotAvailable: Logger.error("The product is not available in the current storefront")
+                    case .cloudServicePermissionDenied: Logger.error("Access to cloud service information is not allowed")
+                    case .cloudServiceNetworkConnectionFailed: Logger.error("Could not connect to the network")
+                    case .cloudServiceRevoked: Logger.error("User has revoked permission to use this cloud service")
+                    }
+                    observer.onError(error)
+                }
+            }
+            return Disposables.create()
+        }).do(onNext: { [weak self] _ in
+            Logger.debug("Successful purchase: \(prodcutID)")
+            PurchaseService.analyticsPurchaseSuccess(productID: prodcutID)
+            self?.sendReceipt()
+        }, onError: { _ in
+            Logger.error("Failed purchase: \(prodcutID)")
+            PurchaseService.analyticsPurchaseFailed(productID: prodcutID)
+        })
     }
     
     func price(productID: String) -> Observable<String> {
@@ -96,6 +141,21 @@ class PurchaseService {
         return false
     }
     
+    func completeTransactions() {
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            for purchase in purchases {
+                switch purchase.transaction.transactionState {
+                case .purchased, .restored:
+                    if purchase.productId == PRODUCT_PLUS {
+                        NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
+                    }
+                case .failed, .purchasing, .deferred:
+                    break // do nothing
+                }
+            }
+        }
+    }
+    
     func appStoreReceipt() -> String? {
         guard let receiptURL = Bundle.main.appStoreReceiptURL else { return nil }
         guard let receipt = try? Data(contentsOf: receiptURL) else { return nil }
@@ -104,6 +164,38 @@ class PurchaseService {
     
     func isReceiptSent(_ receipt: String) -> Bool {
         return UserDefaults.standard.bool(forKey: receipt)
+    }
+    
+    func logPurchases() {
+        let service: AppleReceiptValidator.VerifyReceiptURLType = DebugStates.isDebug ? .sandbox : .production
+        let validator = AppleReceiptValidator(service: service, sharedSecret: nil)
+        SwiftyStoreKit.verifyReceipt(using: validator) { [weak self] receiptResult in
+            switch receiptResult {
+            case .success(let receipt):
+                guard let purchaseResult = self?.verifySubscription(receipt: receipt) else { return }
+                Logger.debug("=== Purchases info ===")
+                switch purchaseResult {
+                case .purchased(_, let items):
+                    self?.logReceiptItems(items)
+                case .expired(_, let items):
+                    self?.logReceiptItems(items)
+                case .notPurchased: break
+                }
+                Logger.debug("======================")
+            case .error(let error):
+                Logger.error(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func logReceiptItems(_ items: [ReceiptItem]) {
+        for item in items {
+            Logger.debug("===== Purchase Item: \(item.productId) ====")
+            Logger.debug("Purchase: \(item.purchaseDate)")
+            Logger.debug("Original purchase: \(item.originalPurchaseDate)")
+            guard let expire = item.subscriptionExpirationDate else { continue }
+            Logger.debug("Expire: \(expire)")
+        }
     }
     
     // MARK: Purchase and API

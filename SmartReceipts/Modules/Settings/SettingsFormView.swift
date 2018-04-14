@@ -13,6 +13,7 @@ import StoreKit
 fileprivate let IMAGE_OPTIONS = [512, 1024, 2048, 0]
 
 class SettingsFormView: FormViewController {
+    private var hasValidSubscription = false
     
     weak var openModuleSubject: PublishSubject<SettingsRoutes>!
     weak var alertSubject: PublishSubject<AlertTuple>!
@@ -24,6 +25,7 @@ class SettingsFormView: FormViewController {
     fileprivate var removeAdsProduct: SKProduct?
     fileprivate let bag = DisposeBag()
     
+    var hud: PendingHUDView?
     var showOption: ShowSettingsOption?
     
     init(settingsView: SettingsView) {
@@ -37,20 +39,8 @@ class SettingsFormView: FormViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if Database.sharedInstance().hasValidSubscription() {
-            setupPurchased()
-        } else {
-            purchaseRow.markSpinning()
-            settingsView.retrivePlusSubscriptionPrice().subscribe(onNext: { [unowned self] price in
-                self.purchaseRow.setPrice(string: price)
-            }, onError: { [unowned self] error in
-                _ = self.purchaseRow.markError().subscribe(onNext: { [unowned self] in
-                    self.alertSubject.onNext((title: LocalizedString("settings.purchase.price.retrieve.error.title"),
-                                            message: LocalizedString("settings.purchase.price.retrieve.error.message")))
-                })
-            }).disposed(by: bag)
-        }
+        purchaseRow.markSpinning()
+        checkSubscription()
         applySettingsOption()
     }
     
@@ -67,8 +57,10 @@ class SettingsFormView: FormViewController {
         }.onCellSelection({ [unowned self] _, row in
             if !row.isPurchased() {
                 self.settingsView.purchaseSubscription()
-                    .subscribe(onNext: { [unowned self] in
-                        self.setupPurchased()
+                    .subscribe(onNext: { [weak self] in
+                        guard let safeSelf = self else { return }
+                        safeSelf.hud = PendingHUDView.show(on: safeSelf.navigationController!.view)
+                        safeSelf.checkSubscription()
                     }, onError: { error in
                         self.alertSubject.onNext((title: LocalizedString("settings.purchase.make.purchase.error.title"),
                                                 message: error.localizedDescription))
@@ -82,14 +74,16 @@ class SettingsFormView: FormViewController {
             cell.textLabel?.textColor = AppTheme.primaryColor
         }).onCellSelection({ [unowned self] _, _ in
             let hud = PendingHUDView.show(on: self.navigationController!.view)
-            self.settingsView.restorePurchases().subscribe(onNext: { [unowned self] in
-                self.setupPurchased()
-                hud.hide()
-            }, onError: { error in
-                hud.hide()
-                self.alertSubject.onNext((title: LocalizedString("settings.purchase.restore.error.title"),
+            self.settingsView.restoreSubscription()
+                .do(onNext: { _ in
+                    hud.hide()
+                }).filter({ $0.valid })
+                .subscribe(onNext: { [weak self] validation in
+                    self?.setupPurchased(expireDate: validation.expireTime)
+                }, onError: { error in
+                    self.alertSubject.onNext((title: LocalizedString("settings.purchase.restore.error.title"),
                                         message: error.localizedDescription))
-            }).disposed(by: self.bag)
+                }).disposed(by: self.bag)
         })
         
         +++ Section(LocalizedString("settings.pro.section.title"))
@@ -97,7 +91,7 @@ class SettingsFormView: FormViewController {
             row.title = LocalizedString("settings.pdf.footer.text.label")
             row.value = WBPreferences.pdfFooterString()
             self.footerRow = row
-            row.isEnabled = Database.sharedInstance().hasValidSubscription()
+            row.isEnabled = self.hasValidSubscription
         }.onChange({ row in
             WBPreferences.setPDFFooterString(row.value ?? "")
         }).cellUpdate({ cell, row in
@@ -116,8 +110,8 @@ class SettingsFormView: FormViewController {
             row.offSubtitle = LocalizedString("settings.pro.payments.by.category.description.off")
         }.onChange({ row in
             WBPreferences.setSeparatePaymantsByCategory(row.value!)
-        }).cellUpdate({ cell, _ in
-            cell.isUserInteractionEnabled = Database.sharedInstance().hasValidSubscription()
+        }).cellUpdate({ [unowned self] cell, _ in
+            cell.isUserInteractionEnabled = self.hasValidSubscription
         })
         
         <<< DescribedSwitchRow() { row in
@@ -127,8 +121,8 @@ class SettingsFormView: FormViewController {
             row.offSubtitle = LocalizedString("settings.pro.categorical.summation.description.off")
         }.onChange({ row in
             WBPreferences.setIncludeCategoricalSummation(row.value!)
-        }).cellUpdate({ cell, _ in
-            cell.isUserInteractionEnabled = Database.sharedInstance().hasValidSubscription()
+        }).cellUpdate({ [unowned self] cell, _ in
+            cell.isUserInteractionEnabled = self.hasValidSubscription
         })
             
         <<< DescribedSwitchRow() { row in
@@ -136,8 +130,8 @@ class SettingsFormView: FormViewController {
             row.value = WBPreferences.omitDefaultPdfTable()
         }.onChange({ row in
             WBPreferences.setOmitDefaultPdfTable(row.value!)
-        }).cellUpdate({ cell, _ in
-            cell.isUserInteractionEnabled = Database.sharedInstance().hasValidSubscription()
+        }).cellUpdate({ [unowned self] cell, _ in
+            cell.isUserInteractionEnabled = self.hasValidSubscription
         })
         
            
@@ -516,9 +510,30 @@ class SettingsFormView: FormViewController {
         return IMAGE_OPTIONS.index(of: WBPreferences.cameraMaxHeightWidth())!
     }
     
-    private func setupPurchased() {
-        purchaseRow.setSubscriptionEnd(date: Database.sharedInstance().subscriptionEndDate())
+    private func checkSubscription() {
+        settingsView.subscriptionValidation().subscribe(onNext: { [weak self] validation in
+            self?.hud?.hide()
+            if validation.valid {
+                self?.setupPurchased(expireDate: validation.expireTime)
+            } else {
+                _ = self?.settingsView.retrivePlusSubscriptionPrice().subscribe(onNext: { [weak self] price in
+                    self?.purchaseRow.setPrice(string: price)
+                }, onError: { [weak self] error in
+                    _ = self?.purchaseRow.markError().subscribe(onNext: { [weak self] in
+                        self?.alertSubject.onNext((title: LocalizedString("settings.purchase.price.retrieve.error.title"),
+                                                  message: LocalizedString("settings.purchase.price.retrieve.error.message")))
+                    })
+                })
+            }
+        }, onError: { [weak self] _ in
+            self?.hud?.hide()
+        }).disposed(by: bag)
+    }
+    
+    private func setupPurchased(expireDate: Date?) {
+        hasValidSubscription = true
         purchaseRow.markPurchased()
+        purchaseRow.setSubscriptionEnd(date: expireDate)
         footerRow.isEnabled = true
         DispatchQueue.main.async { [unowned self] in
             self.form.allSections[1].reload()

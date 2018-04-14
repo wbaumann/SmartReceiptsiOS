@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="576"/>
                                 <subviews>
                                     <view contentMode="scaleAspectFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X1N-pM-HX2">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="580"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="627.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="600" verticalCompressionResistancePriority="600" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMI-xq-cpv">
                                                 <rect key="frame" x="16" y="49" width="288" height="251"/>
@@ -202,7 +202,7 @@ To try OCR, all new users get 2 free scans!</string>
                                             <constraint firstItem="VMI-xq-cpv" firstAttribute="leading" secondItem="X1N-pM-HX2" secondAttribute="leading" constant="16" id="nv1-GO-3AJ"/>
                                             <constraint firstItem="hpf-uN-9yQ" firstAttribute="bottom" secondItem="1LH-ps-UJx" secondAttribute="bottom" constant="16" id="ozJ-V8-bXj"/>
                                             <constraint firstAttribute="trailing" secondItem="VMI-xq-cpv" secondAttribute="trailing" constant="16" id="rOj-Bd-DCV"/>
-                                            <constraint firstAttribute="height" secondItem="VMI-xq-cpv" secondAttribute="height" multiplier="580:251" id="tqT-3Y-mkI"/>
+                                            <constraint firstAttribute="height" secondItem="VMI-xq-cpv" secondAttribute="height" multiplier="2.5" id="tqT-3Y-mkI"/>
                                             <constraint firstAttribute="trailing" secondItem="hpf-uN-9yQ" secondAttribute="trailing" constant="16" id="vEL-eG-e9w"/>
                                             <constraint firstItem="VMI-xq-cpv" firstAttribute="top" secondItem="CJG-kY-Toe" secondAttribute="bottom" constant="8" id="ver-gb-2vR"/>
                                         </constraints>
