@@ -14,6 +14,10 @@ extension WBPreferences {
     static func setPrefferedPDFSize(_ pdfSize: PDFPageSize) {
         setPreferedRawPDFSize(pdfSize.rawValue)
     }
+    
+    static func isPDFFooterUnlocked() -> Bool {
+        return PurchaseService().hasValidSubscriptionValue()
+    }
 }
 
 enum PDFPageSize: Int {
@@ -35,5 +39,4 @@ enum PDFPageSize: Int {
         
         return portrait ? CGSize(width: width, height: height) : CGSize(width: height, height: width)
     }
-    
 }

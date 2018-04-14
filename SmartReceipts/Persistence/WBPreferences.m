@@ -13,7 +13,7 @@
 #import "GDataXMLNode.h"
 #import "Constants.h"
 #import "Database.h"
-#import "Database+Purchases.h"
+#import "SmartReceipts-Swift.h"
 
 static const float MIN_FLOAT = -FLT_MAX;
 
@@ -352,7 +352,7 @@ static NSUserDefaults* instance() {
 }
 
 + (NSString *)pdfFooterString {
-    if (![Database sharedInstance].hasValidSubscription) {
+    if (![WBPreferences isPDFFooterUnlocked]) {
         return NSLocalizedString(@"pdf.report.default.footer.text", nil);
     }
     

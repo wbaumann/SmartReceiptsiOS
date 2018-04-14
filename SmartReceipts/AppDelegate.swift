@@ -12,14 +12,19 @@ import Firebase
 import UIAlertView_Blocks
 import RxSwift
 import Crashlytics
+import SwiftyStoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
+    static private(set) var instance: AppDelegate!
+    
+    private let purchaseService = PurchaseService()
+    
     fileprivate(set) var filePathToAttach: String?
     fileprivate(set) var isFileImage: Bool = false
-    static private(set) var instance: AppDelegate!
     fileprivate var dataImport: DataImport!
+    
+    var window: UIWindow?
     
     let dataQueue = DispatchQueue(label: "wb.dataAccess")
     
@@ -39,8 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSException(name: NSExceptionName(rawValue: "DBOpenFail"), reason: nil, userInfo: [:]).raise()
         }
         
-        Database.sharedInstance().checkReceiptValidity()
-    
         RecentCurrenciesCache.shared.update()
         
         Logger.info("Language: \(Locale.preferredLanguages.first!)")
@@ -58,8 +61,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AnalyticsManager.sharedManager.record(event: errorEvent)
         }
         
+        purchaseService.cacheSubscriptionValidation()
+        purchaseService.logPurchases()
+        purchaseService.completeTransactions()
+        
         RateApplication.sharedInstance().markAppLaunch()
-        logPurchases()
         PushNotificationService.shared.initialize()
         ScansPurchaseTracker.shared.initialize()
         MigrationService().migrate()
@@ -180,21 +186,5 @@ extension AppDelegate {
     func enableAnalytics() {
         AnalyticsManager.sharedManager.register(newService: FirebaseAnalytics())
         AnalyticsManager.sharedManager.register(newService: AnalyticsLogger())
-    }
-    
-    func logPurchases() {
-//        guard let receipt = RMAppReceipt.bundle() else { return }
-//        Logger.debug("=== Purchases info ===")
-//        Logger.debug("Receipt: \(receipt.description)")
-//        Logger.debug("\(receipt.inAppPurchases.count) IAP-s")
-//        if let iaps = receipt.inAppPurchases as? [RMAppReceiptIAP] {
-//            for iap in iaps {
-//                Logger.debug("IAP receipt: \(iap.description)")
-//                Logger.debug("Purchase: \(iap.purchaseDate)")
-//                Logger.debug("Original purchase: \(iap.originalPurchaseDate)")
-//                Logger.debug("Expire: \(iap.subscriptionExpirationDate)")
-//            }
-//        }
-//        Logger.debug("======================")
     }
 }

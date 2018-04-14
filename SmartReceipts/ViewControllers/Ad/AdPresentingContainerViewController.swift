@@ -26,6 +26,7 @@ class AdPresentingContainerViewController: UIViewController {
         super.viewDidLoad()
         
         upsellBannerView.isHidden = true
+        adContainerHeight.constant = 0
 
         bannerView?.rootViewController = self
         bannerView?.adUnitID = AD_UNIT_ID
@@ -64,21 +65,27 @@ class AdPresentingContainerViewController: UIViewController {
     }
     
     @objc private func checkAdsStatus() {
-        if Database.sharedInstance().hasValidSubscription() {
-            Logger.debug("Remove Ads")
-            
-            adContainerHeight.constant = 0
-            view.layoutSubviewsAnimated()
-            bannerView?.removeFromSuperview()
-        } else if arc4random() % 100 == 0 {
-            // Show UpsellBannerAdView randomly (1/100 times)
-            upsellBannerView.isHidden = false
-            bannerView?.isHidden = true
-            
-            AnalyticsManager.sharedManager.record(event: Event.Purchases.AdUpsellShown)
-        } else {
-            loadAd()
-        }
+        purchaseService.validateSubscription().subscribe(onNext: { [unowned self] validation in
+            if validation.valid {
+                Logger.debug("Remove Ads")
+                
+                self.adContainerHeight.constant = 0
+                self.view.layoutSubviewsAnimated()
+                self.bannerView?.removeFromSuperview()
+            } else if arc4random() % 100 == 0 {
+                // Show UpsellBannerAdView randomly (1/100 times)
+                self.upsellBannerView.isHidden = false
+                self.bannerView?.isHidden = true
+                self.adContainerHeight.constant = BANNER_HEIGHT
+                self.view.layoutSubviewsAnimated()
+                
+                AnalyticsManager.sharedManager.record(event: Event.Purchases.AdUpsellShown)
+            } else {
+                self.adContainerHeight.constant = BANNER_HEIGHT
+                self.view.layoutSubviewsAnimated()
+                self.loadAd()
+            }
+        }).disposed(by: bag)
     }
     
     deinit {

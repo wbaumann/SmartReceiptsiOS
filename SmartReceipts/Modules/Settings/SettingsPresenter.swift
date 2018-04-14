@@ -44,12 +44,16 @@ class SettingsPresenter: Presenter {
         return interactor.retrivePlusSubscriptionPrice()
     }
     
-    func restorePurchases() -> Observable<Void> {
-        return interactor.restorePurchases()
+    func restoreSubscription() -> Observable<SubscriptionValidation> {
+        return interactor.restoreSubscription()
     }
     
     func purchaseSubscription() -> Observable<Void> {
         return interactor.purchaseSubscription()
+    }
+    
+    func subscriptionValidation() -> Observable<SubscriptionValidation> {
+        return interactor.subscriptionValidation()
     }
 }
 

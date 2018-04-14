@@ -12,7 +12,6 @@ private let DateStringFormatterKey = "DateStringFormatterKey-yyyy-MM-dd"
 
 extension Date {
     func dayString() -> String {
-        
         return formatter().string(from: self)
     }
     
@@ -26,5 +25,12 @@ extension Date {
         formatter.timeZone = TimeZone(identifier: "UTC")
         Thread.cacheObject(formatter, key: DateStringFormatterKey)
         return formatter
+    }
+    
+    func oneYearFromDate() -> Date {
+        let gregorian = NSCalendar.init(calendarIdentifier: .gregorian)!
+        var offsetComponents = DateComponents()
+        offsetComponents.year = 1
+        return gregorian.date(byAdding: offsetComponents, to: self, options: [])!
     }
 }

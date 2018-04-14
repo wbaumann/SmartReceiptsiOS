@@ -19,13 +19,23 @@ class SettingsInteractor: Interactor {
             .map({ "\($0)/yr" })
     }
     
-    func restorePurchases() -> Observable<Void> {
-        return purchaseService.restorePurchases()
+    func restoreSubscription() -> Observable<SubscriptionValidation> {
+        purchaseService.resetCache()
+        return purchaseService.validateSubscription()
+            .do(onNext: { validation in
+                if validation.valid {
+                    NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
+                }
+            })
     }
     
     func purchaseSubscription() -> Observable<Void> {
         AnalyticsManager.sharedManager.record(event: Event.Navigation.SmartReceiptsPlusOverflow)
         return purchaseService.purchaseSubscription().map({ _ -> Void in })
+    }
+    
+    func subscriptionValidation() -> Observable<SubscriptionValidation> {
+        return purchaseService.validateSubscription()
     }
 }
 
