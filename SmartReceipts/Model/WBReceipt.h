@@ -12,6 +12,7 @@
 @class WBTrip, Currency;
 @class Price;
 @class PaymentMethod;
+@class WBCategory;
 
 @interface WBReceipt : NSObject <FetchedModel>
 

@@ -116,7 +116,7 @@
     [receipt setReimbursable:[params[ReceiptsTable.COLUMN_REIMBURSABLE] boolValue]];
     [receipt setTrip:params[ReceiptsTable.COLUMN_PARENT]];
     [receipt setPaymentMethod:params[ReceiptsTable.COLUMN_PAYMENT_METHOD_ID]];
-    [receipt setImageFileName:params[ReceiptsTable.COLUMN_PATH]];
+    [receipt setFilename:params[ReceiptsTable.COLUMN_PATH]];
     [receipt setDate:params[ReceiptsTable.COLUMN_DATE]];
     [receipt setExchangeRate:params[ReceiptsTable.COLUMN_EXCHANGE_RATE]];
 

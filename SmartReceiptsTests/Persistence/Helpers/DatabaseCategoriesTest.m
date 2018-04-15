@@ -31,16 +31,20 @@
 }
 
 - (void)testCategoryUpdate {
+    NSUInteger beforeSave = [self.db countRowsInTable:CategoriesTable.TABLE_NAME];
+    
     WBCategory *category = [[WBCategory alloc] initWithName:@"TestCategory" code:@"TCRY"];
+    category.objectId = [self.db nextCustomOrderIdForCategory];
     [self.db saveCategory:category];
 
-    NSUInteger before = [self.db countRowsInTable:CategoriesTable.TABLE_NAME];
-
+    NSUInteger beforeUpdate = [self.db countRowsInTable:CategoriesTable.TABLE_NAME];
+    XCTAssertNotEqual(beforeSave, beforeUpdate);
+    
     [category setName:@"AlteredName"];
     [self.db updateCategory:category];
 
     NSUInteger after = [self.db countRowsInTable:CategoriesTable.TABLE_NAME];
-    XCTAssertEqual(before, after);
+    XCTAssertEqual(beforeUpdate, after);
 
     NSArray *all = [self.db listAllCategories];
     XCTAssertTrue([all containsObject:category]);

@@ -14,8 +14,9 @@ import RxSwift
 import XCTest
 
 class ColumnsModuleTest: XCTestCase {
+    let bag = DisposeBag()
     
-    var presenter: ColumnsPresenter!
+    var presenter: MockColumnsPresenter!
     var interactor: MockColumnsInteractor!
     var router: MockColumnsRouter!
     
@@ -29,11 +30,11 @@ class ColumnsModuleTest: XCTestCase {
         let r = ColumnsRouter()
         
         var module = AppModules.columns.build()
-        module.injectMock(presenter: p)
+        module.injectMock(presenter: MockColumnsPresenter().spy(on: p))
         module.injectMock(interactor: MockColumnsInteractor().spy(on: i))
         module.injectMock(router: MockColumnsRouter().spy(on: r))
         
-        presenter = module.presenter as! ColumnsPresenter
+        presenter = module.presenter as! MockColumnsPresenter
         interactor = module.interactor as! MockColumnsInteractor
         router = module.router as! MockColumnsRouter
         
@@ -47,12 +48,9 @@ class ColumnsModuleTest: XCTestCase {
     }
     
     func configureStubs() {
-        
         stub(interactor) { mock in
-            mock.update(columns: [Column](), forCSV: true).thenDoNothing()
-            mock.columns(forCSV: true).then({ value -> Observable<[Column]> in
-                return Observable.just([Column]())
-            })
+            mock.addColumn(Column(), isCSV: true).thenDoNothing()
+            mock.removeColumn(Column(), isCSV: true).thenDoNothing()
         }
     }
     
@@ -65,11 +63,12 @@ class ColumnsModuleTest: XCTestCase {
     }
     
     func testPresenterToInteractor() {
-        presenter.setupView(data: true)
-        verify(interactor).columns(forCSV: true)
+        presenter.viewHasLoaded()
+        presenter.addSubject.onNext(Column())
+        presenter.removeSubject.onNext(Column())
         
-        presenter.viewIsAboutToDisappear()
-        verify(interactor).update(columns: [Column](), forCSV: true)
+        verify(interactor).addColumn(Column(), isCSV: true)
+        verify(interactor).removeColumn(Column(), isCSV: true)
     }
     
 }
