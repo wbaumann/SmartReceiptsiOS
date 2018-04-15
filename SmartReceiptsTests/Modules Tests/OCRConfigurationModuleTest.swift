@@ -13,6 +13,7 @@ import Viperit
 import RxSwift
 import RxTest
 import XCTest
+import SwiftyStoreKit
 import StoreKit
 
 class OCRConfigurationModuleTest: XCTestCase {
@@ -58,7 +59,7 @@ class OCRConfigurationModuleTest: XCTestCase {
     private func configureStubs() {
         stub(purchaseService) { mock in
             mock.requestProducts().thenReturn(Observable<SKProduct>.never())
-            mock.purchase(prodcutID: "").thenReturn(Observable<SKPaymentTransaction>.never())
+            mock.purchase(prodcutID: "").thenReturn(Observable<PurchaseDetails>.never())
         }
     }
     

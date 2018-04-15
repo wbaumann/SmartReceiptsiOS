@@ -9,25 +9,33 @@
 @testable import SmartReceipts
 import XCTest
 import Cuckoo
+import RxSwift
 
 class PurchaseServiceTest: XCTestCase {
     
     var purchaseService: MockPurchaseService!
+    var purchaseServiceSuccess = PurchaseServiceCustomMockSuccess()
+    var purchaseServiceFail = PurchaseServiceCustomMockFail()
     
     override func setUp() {
         super.setUp()
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         purchaseService = MockPurchaseService().spy(on: PurchaseService())
-        
-        stub(purchaseService) { mock in
-            mock.appStoreReceipt().then({ "qwerty" })
-        }
+        configureStubs()
     }
     
     func configureStubs() {
+        stub(purchaseService) { mock in
+            mock.appStoreReceipt().then({ "qwerty" })
+            
+            mock.validateSubscription().then({ () -> Observable<SubscriptionValidation> in
+                return Observable<SubscriptionValidation>.just((true, Date()))
+            })
+        }
     }
     
     override func tearDown() {
+        purchaseService.resetCache()
         super.tearDown()
     }
     
@@ -53,6 +61,26 @@ class PurchaseServiceTest: XCTestCase {
         XCTAssertFalse(purchaseService.isReceiptSent(receiptString))
         purchaseService.sendReceipt()
         XCTAssertFalse(purchaseService.isReceiptSent(receiptString))
+    }
+    
+    func testValidSubscription() {
+        XCTAssertFalse(purchaseServiceSuccess.hasValidSubscriptionValue())
+        purchaseServiceSuccess.cacheSubscriptionValidation()
+        XCTAssertTrue(purchaseServiceSuccess.hasValidSubscriptionValue())
+    }
+    
+    func testResetCache() {
+        XCTAssertFalse(purchaseServiceSuccess.hasValidSubscriptionValue())
+        purchaseServiceSuccess.cacheSubscriptionValidation()
+        XCTAssertTrue(purchaseServiceSuccess.hasValidSubscriptionValue())
+        purchaseServiceSuccess.resetCache()
+        XCTAssertFalse(purchaseServiceSuccess.hasValidSubscriptionValue())
+    }
+    
+    func testExpiredSubscription() {
+        XCTAssertFalse(purchaseServiceFail.hasValidSubscriptionValue())
+        purchaseServiceFail.cacheSubscriptionValidation()
+        XCTAssertFalse(purchaseServiceFail.hasValidSubscriptionValue())
     }
     
 }

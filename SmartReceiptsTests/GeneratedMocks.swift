@@ -2590,14 +2590,40 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.Mock {
         
     }
     
-     override func viewIsAboutToDisappear()  {
+     override func viewHasLoaded()  {
         
-            return cuckoo_manager.call("viewIsAboutToDisappear()",
+            return cuckoo_manager.call("viewHasLoaded()",
                 parameters: (),
                 original: observed.map { o in
                     return { (args) in
                         let () = args
-                         o.viewIsAboutToDisappear()
+                         o.viewHasLoaded()
+                    }
+                })
+        
+    }
+    
+     override func nextObjectID()  -> Int {
+        
+            return cuckoo_manager.call("nextObjectID() -> Int",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> Int in
+                        let () = args
+                        return o.nextObjectID()
+                    }
+                })
+        
+    }
+    
+     override func updateData()  {
+        
+            return cuckoo_manager.call("updateData()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.updateData()
                     }
                 })
         
@@ -2617,9 +2643,19 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.Mock {
             return .init(stub: cuckoo_manager.createStub("setupView(data: Any)", parameterMatchers: matchers))
         }
         
-        func viewIsAboutToDisappear() -> Cuckoo.StubNoReturnFunction<()> {
+        func viewHasLoaded() -> Cuckoo.StubNoReturnFunction<()> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-            return .init(stub: cuckoo_manager.createStub("viewIsAboutToDisappear()", parameterMatchers: matchers))
+            return .init(stub: cuckoo_manager.createStub("viewHasLoaded()", parameterMatchers: matchers))
+        }
+        
+        func nextObjectID() -> Cuckoo.StubFunction<(), Int> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("nextObjectID() -> Int", parameterMatchers: matchers))
+        }
+        
+        func updateData() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("updateData()", parameterMatchers: matchers))
         }
         
     }
@@ -2646,9 +2682,21 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.Mock {
         }
         
         @discardableResult
-        func viewIsAboutToDisappear() -> Cuckoo.__DoNotUse<Void> {
+        func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-            return cuckoo_manager.verify("viewIsAboutToDisappear()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+            return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func nextObjectID() -> Cuckoo.__DoNotUse<Int> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("nextObjectID() -> Int", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func updateData() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("updateData()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
     }
@@ -2666,7 +2714,15 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.Mock {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
-     override func viewIsAboutToDisappear()  {
+     override func viewHasLoaded()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func nextObjectID()  -> Int {
+        return DefaultValueRegistry.defaultValue(for: Int.self)
+    }
+    
+     override func updateData()  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
@@ -2687,10 +2743,10 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.Mock {
 import Cuckoo
 @testable import SmartReceipts
 
-import RMStore
 import RxSwift
 import StoreKit
 import SwiftyJSON
+import SwiftyStoreKit
 
 class MockPurchaseService: PurchaseService, Cuckoo.Mock {
     typealias MocksType = PurchaseService
@@ -2736,12 +2792,12 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         
     }
     
-     override func restorePurchases()  -> Observable<Void> {
+     override func restorePurchases()  -> Observable<[Purchase]> {
         
-            return cuckoo_manager.call("restorePurchases() -> Observable<Void>",
+            return cuckoo_manager.call("restorePurchases() -> Observable<[Purchase]>",
                 parameters: (),
                 original: observed.map { o in
-                    return { (args) -> Observable<Void> in
+                    return { (args) -> Observable<[Purchase]> in
                         let () = args
                         return o.restorePurchases()
                     }
@@ -2749,12 +2805,25 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         
     }
     
-     override func purchaseSubscription()  -> Observable<SKPaymentTransaction> {
+     override func restoreSubscription()  -> Observable<Bool> {
         
-            return cuckoo_manager.call("purchaseSubscription() -> Observable<SKPaymentTransaction>",
+            return cuckoo_manager.call("restoreSubscription() -> Observable<Bool>",
                 parameters: (),
                 original: observed.map { o in
-                    return { (args) -> Observable<SKPaymentTransaction> in
+                    return { (args) -> Observable<Bool> in
+                        let () = args
+                        return o.restoreSubscription()
+                    }
+                })
+        
+    }
+    
+     override func purchaseSubscription()  -> Observable<PurchaseDetails> {
+        
+            return cuckoo_manager.call("purchaseSubscription() -> Observable<PurchaseDetails>",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> Observable<PurchaseDetails> in
                         let () = args
                         return o.purchaseSubscription()
                     }
@@ -2762,12 +2831,12 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         
     }
     
-     override func purchase(prodcutID: String)  -> Observable<SKPaymentTransaction> {
+     override func purchase(prodcutID: String)  -> Observable<PurchaseDetails> {
         
-            return cuckoo_manager.call("purchase(prodcutID: String) -> Observable<SKPaymentTransaction>",
+            return cuckoo_manager.call("purchase(prodcutID: String) -> Observable<PurchaseDetails>",
                 parameters: (prodcutID),
                 original: observed.map { o in
-                    return { (args) -> Observable<SKPaymentTransaction> in
+                    return { (args) -> Observable<PurchaseDetails> in
                         let (prodcutID) = args
                         return o.purchase(prodcutID: prodcutID)
                     }
@@ -2783,6 +2852,19 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
                     return { (args) -> Observable<String> in
                         let (productID) = args
                         return o.price(productID: productID)
+                    }
+                })
+        
+    }
+    
+     override func completeTransactions()  {
+        
+            return cuckoo_manager.call("completeTransactions()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.completeTransactions()
                     }
                 })
         
@@ -2814,6 +2896,19 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         
     }
     
+     override func logPurchases()  {
+        
+            return cuckoo_manager.call("logPurchases()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.logPurchases()
+                    }
+                })
+        
+    }
+    
      override func sendReceipt()  {
         
             return cuckoo_manager.call("sendReceipt()",
@@ -2822,6 +2917,97 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
                     return { (args) in
                         let () = args
                          o.sendReceipt()
+                    }
+                })
+        
+    }
+    
+     override func resetCache()  {
+        
+            return cuckoo_manager.call("resetCache()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.resetCache()
+                    }
+                })
+        
+    }
+    
+     override func cacheSubscriptionValidation()  {
+        
+            return cuckoo_manager.call("cacheSubscriptionValidation()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.cacheSubscriptionValidation()
+                    }
+                })
+        
+    }
+    
+     override func hasValidSubscriptionValue()  -> Bool {
+        
+            return cuckoo_manager.call("hasValidSubscriptionValue() -> Bool",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> Bool in
+                        let () = args
+                        return o.hasValidSubscriptionValue()
+                    }
+                })
+        
+    }
+    
+     override func hasValidSubscription()  -> Observable<Bool> {
+        
+            return cuckoo_manager.call("hasValidSubscription() -> Observable<Bool>",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> Observable<Bool> in
+                        let () = args
+                        return o.hasValidSubscription()
+                    }
+                })
+        
+    }
+    
+     override func subscriptionExpirationDate()  -> Observable<Date?> {
+        
+            return cuckoo_manager.call("subscriptionExpirationDate() -> Observable<Date?>",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> Observable<Date?> in
+                        let () = args
+                        return o.subscriptionExpirationDate()
+                    }
+                })
+        
+    }
+    
+     override func validateSubscription()  -> Observable<SubscriptionValidation> {
+        
+            return cuckoo_manager.call("validateSubscription() -> Observable<SubscriptionValidation>",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> Observable<SubscriptionValidation> in
+                        let () = args
+                        return o.validateSubscription()
+                    }
+                })
+        
+    }
+    
+     override func verifySubscription(receipt: ReceiptInfo)  -> VerifySubscriptionResult {
+        
+            return cuckoo_manager.call("verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult",
+                parameters: (receipt),
+                original: observed.map { o in
+                    return { (args) -> VerifySubscriptionResult in
+                        let (receipt) = args
+                        return o.verifySubscription(receipt: receipt)
                     }
                 })
         
@@ -2846,24 +3032,34 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
             return .init(stub: cuckoo_manager.createStub("requestProducts() -> Observable<SKProduct>", parameterMatchers: matchers))
         }
         
-        func restorePurchases() -> Cuckoo.StubFunction<(), Observable<Void>> {
+        func restorePurchases() -> Cuckoo.StubFunction<(), Observable<[Purchase]>> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-            return .init(stub: cuckoo_manager.createStub("restorePurchases() -> Observable<Void>", parameterMatchers: matchers))
+            return .init(stub: cuckoo_manager.createStub("restorePurchases() -> Observable<[Purchase]>", parameterMatchers: matchers))
         }
         
-        func purchaseSubscription() -> Cuckoo.StubFunction<(), Observable<SKPaymentTransaction>> {
+        func restoreSubscription() -> Cuckoo.StubFunction<(), Observable<Bool>> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-            return .init(stub: cuckoo_manager.createStub("purchaseSubscription() -> Observable<SKPaymentTransaction>", parameterMatchers: matchers))
+            return .init(stub: cuckoo_manager.createStub("restoreSubscription() -> Observable<Bool>", parameterMatchers: matchers))
         }
         
-        func purchase<M1: Cuckoo.Matchable>(prodcutID: M1) -> Cuckoo.StubFunction<(String), Observable<SKPaymentTransaction>> where M1.MatchedType == String {
+        func purchaseSubscription() -> Cuckoo.StubFunction<(), Observable<PurchaseDetails>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("purchaseSubscription() -> Observable<PurchaseDetails>", parameterMatchers: matchers))
+        }
+        
+        func purchase<M1: Cuckoo.Matchable>(prodcutID: M1) -> Cuckoo.StubFunction<(String), Observable<PurchaseDetails>> where M1.MatchedType == String {
             let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: prodcutID) { $0 }]
-            return .init(stub: cuckoo_manager.createStub("purchase(prodcutID: String) -> Observable<SKPaymentTransaction>", parameterMatchers: matchers))
+            return .init(stub: cuckoo_manager.createStub("purchase(prodcutID: String) -> Observable<PurchaseDetails>", parameterMatchers: matchers))
         }
         
         func price<M1: Cuckoo.Matchable>(productID: M1) -> Cuckoo.StubFunction<(String), Observable<String>> where M1.MatchedType == String {
             let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: productID) { $0 }]
             return .init(stub: cuckoo_manager.createStub("price(productID: String) -> Observable<String>", parameterMatchers: matchers))
+        }
+        
+        func completeTransactions() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("completeTransactions()", parameterMatchers: matchers))
         }
         
         func appStoreReceipt() -> Cuckoo.StubFunction<(), Optional<String>> {
@@ -2876,9 +3072,49 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
             return .init(stub: cuckoo_manager.createStub("isReceiptSent(_: String) -> Bool", parameterMatchers: matchers))
         }
         
+        func logPurchases() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("logPurchases()", parameterMatchers: matchers))
+        }
+        
         func sendReceipt() -> Cuckoo.StubNoReturnFunction<()> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return .init(stub: cuckoo_manager.createStub("sendReceipt()", parameterMatchers: matchers))
+        }
+        
+        func resetCache() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("resetCache()", parameterMatchers: matchers))
+        }
+        
+        func cacheSubscriptionValidation() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("cacheSubscriptionValidation()", parameterMatchers: matchers))
+        }
+        
+        func hasValidSubscriptionValue() -> Cuckoo.StubFunction<(), Bool> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("hasValidSubscriptionValue() -> Bool", parameterMatchers: matchers))
+        }
+        
+        func hasValidSubscription() -> Cuckoo.StubFunction<(), Observable<Bool>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("hasValidSubscription() -> Observable<Bool>", parameterMatchers: matchers))
+        }
+        
+        func subscriptionExpirationDate() -> Cuckoo.StubFunction<(), Observable<Date?>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("subscriptionExpirationDate() -> Observable<Date?>", parameterMatchers: matchers))
+        }
+        
+        func validateSubscription() -> Cuckoo.StubFunction<(), Observable<SubscriptionValidation>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("validateSubscription() -> Observable<SubscriptionValidation>", parameterMatchers: matchers))
+        }
+        
+        func verifySubscription<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.StubFunction<(ReceiptInfo), VerifySubscriptionResult> where M1.MatchedType == ReceiptInfo {
+            let matchers: [Cuckoo.ParameterMatcher<(ReceiptInfo)>] = [wrap(matchable: receipt) { $0 }]
+            return .init(stub: cuckoo_manager.createStub("verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult", parameterMatchers: matchers))
         }
         
     }
@@ -2911,27 +3147,39 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         }
         
         @discardableResult
-        func restorePurchases() -> Cuckoo.__DoNotUse<Observable<Void>> {
+        func restorePurchases() -> Cuckoo.__DoNotUse<Observable<[Purchase]>> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-            return cuckoo_manager.verify("restorePurchases() -> Observable<Void>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+            return cuckoo_manager.verify("restorePurchases() -> Observable<[Purchase]>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
         @discardableResult
-        func purchaseSubscription() -> Cuckoo.__DoNotUse<Observable<SKPaymentTransaction>> {
+        func restoreSubscription() -> Cuckoo.__DoNotUse<Observable<Bool>> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-            return cuckoo_manager.verify("purchaseSubscription() -> Observable<SKPaymentTransaction>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+            return cuckoo_manager.verify("restoreSubscription() -> Observable<Bool>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
         @discardableResult
-        func purchase<M1: Cuckoo.Matchable>(prodcutID: M1) -> Cuckoo.__DoNotUse<Observable<SKPaymentTransaction>> where M1.MatchedType == String {
+        func purchaseSubscription() -> Cuckoo.__DoNotUse<Observable<PurchaseDetails>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("purchaseSubscription() -> Observable<PurchaseDetails>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func purchase<M1: Cuckoo.Matchable>(prodcutID: M1) -> Cuckoo.__DoNotUse<Observable<PurchaseDetails>> where M1.MatchedType == String {
             let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: prodcutID) { $0 }]
-            return cuckoo_manager.verify("purchase(prodcutID: String) -> Observable<SKPaymentTransaction>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+            return cuckoo_manager.verify("purchase(prodcutID: String) -> Observable<PurchaseDetails>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
         @discardableResult
         func price<M1: Cuckoo.Matchable>(productID: M1) -> Cuckoo.__DoNotUse<Observable<String>> where M1.MatchedType == String {
             let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: productID) { $0 }]
             return cuckoo_manager.verify("price(productID: String) -> Observable<String>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func completeTransactions() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("completeTransactions()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
         @discardableResult
@@ -2947,9 +3195,57 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         }
         
         @discardableResult
+        func logPurchases() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("logPurchases()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
         func sendReceipt() -> Cuckoo.__DoNotUse<Void> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return cuckoo_manager.verify("sendReceipt()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func resetCache() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("resetCache()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func cacheSubscriptionValidation() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("cacheSubscriptionValidation()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func hasValidSubscriptionValue() -> Cuckoo.__DoNotUse<Bool> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("hasValidSubscriptionValue() -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func hasValidSubscription() -> Cuckoo.__DoNotUse<Observable<Bool>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("hasValidSubscription() -> Observable<Bool>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func subscriptionExpirationDate() -> Cuckoo.__DoNotUse<Observable<Date?>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("subscriptionExpirationDate() -> Observable<Date?>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func validateSubscription() -> Cuckoo.__DoNotUse<Observable<SubscriptionValidation>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("validateSubscription() -> Observable<SubscriptionValidation>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func verifySubscription<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<VerifySubscriptionResult> where M1.MatchedType == ReceiptInfo {
+            let matchers: [Cuckoo.ParameterMatcher<(ReceiptInfo)>] = [wrap(matchable: receipt) { $0 }]
+            return cuckoo_manager.verify("verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
     }
@@ -2971,20 +3267,28 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         return DefaultValueRegistry.defaultValue(for: Observable<SKProduct>.self)
     }
     
-     override func restorePurchases()  -> Observable<Void> {
-        return DefaultValueRegistry.defaultValue(for: Observable<Void>.self)
+     override func restorePurchases()  -> Observable<[Purchase]> {
+        return DefaultValueRegistry.defaultValue(for: Observable<[Purchase]>.self)
     }
     
-     override func purchaseSubscription()  -> Observable<SKPaymentTransaction> {
-        return DefaultValueRegistry.defaultValue(for: Observable<SKPaymentTransaction>.self)
+     override func restoreSubscription()  -> Observable<Bool> {
+        return DefaultValueRegistry.defaultValue(for: Observable<Bool>.self)
     }
     
-     override func purchase(prodcutID: String)  -> Observable<SKPaymentTransaction> {
-        return DefaultValueRegistry.defaultValue(for: Observable<SKPaymentTransaction>.self)
+     override func purchaseSubscription()  -> Observable<PurchaseDetails> {
+        return DefaultValueRegistry.defaultValue(for: Observable<PurchaseDetails>.self)
+    }
+    
+     override func purchase(prodcutID: String)  -> Observable<PurchaseDetails> {
+        return DefaultValueRegistry.defaultValue(for: Observable<PurchaseDetails>.self)
     }
     
      override func price(productID: String)  -> Observable<String> {
         return DefaultValueRegistry.defaultValue(for: Observable<String>.self)
+    }
+    
+     override func completeTransactions()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
      override func appStoreReceipt()  -> String? {
@@ -2995,8 +3299,40 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         return DefaultValueRegistry.defaultValue(for: Bool.self)
     }
     
+     override func logPurchases()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
      override func sendReceipt()  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func resetCache()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func cacheSubscriptionValidation()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func hasValidSubscriptionValue()  -> Bool {
+        return DefaultValueRegistry.defaultValue(for: Bool.self)
+    }
+    
+     override func hasValidSubscription()  -> Observable<Bool> {
+        return DefaultValueRegistry.defaultValue(for: Observable<Bool>.self)
+    }
+    
+     override func subscriptionExpirationDate()  -> Observable<Date?> {
+        return DefaultValueRegistry.defaultValue(for: Observable<Date?>.self)
+    }
+    
+     override func validateSubscription()  -> Observable<SubscriptionValidation> {
+        return DefaultValueRegistry.defaultValue(for: Observable<SubscriptionValidation>.self)
+    }
+    
+     override func verifySubscription(receipt: ReceiptInfo)  -> VerifySubscriptionResult {
+        return DefaultValueRegistry.defaultValue(for: VerifySubscriptionResult.self)
     }
     
 }
@@ -3924,6 +4260,19 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.Mock {
         
     }
     
+     override func reorder(categoryLeft: WBCategory, categoryRight: WBCategory)  {
+        
+            return cuckoo_manager.call("reorder(categoryLeft: WBCategory, categoryRight: WBCategory)",
+                parameters: (categoryLeft, categoryRight),
+                original: observed.map { o in
+                    return { (args) in
+                        let (categoryLeft, categoryRight) = args
+                         o.reorder(categoryLeft: categoryLeft, categoryRight: categoryRight)
+                    }
+                })
+        
+    }
+    
      override func delete(category: WBCategory)  {
         
             return cuckoo_manager.call("delete(category: WBCategory)",
@@ -3969,6 +4318,11 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.Mock {
             return .init(stub: cuckoo_manager.createStub("save(category: WBCategory, update: Bool)", parameterMatchers: matchers))
         }
         
+        func reorder<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(categoryLeft: M1, categoryRight: M2) -> Cuckoo.StubNoReturnFunction<(WBCategory, WBCategory)> where M1.MatchedType == WBCategory, M2.MatchedType == WBCategory {
+            let matchers: [Cuckoo.ParameterMatcher<(WBCategory, WBCategory)>] = [wrap(matchable: categoryLeft) { $0.0 }, wrap(matchable: categoryRight) { $0.1 }]
+            return .init(stub: cuckoo_manager.createStub("reorder(categoryLeft: WBCategory, categoryRight: WBCategory)", parameterMatchers: matchers))
+        }
+        
         func delete<M1: Cuckoo.Matchable>(category: M1) -> Cuckoo.StubNoReturnFunction<(WBCategory)> where M1.MatchedType == WBCategory {
             let matchers: [Cuckoo.ParameterMatcher<(WBCategory)>] = [wrap(matchable: category) { $0 }]
             return .init(stub: cuckoo_manager.createStub("delete(category: WBCategory)", parameterMatchers: matchers))
@@ -4009,6 +4363,12 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.Mock {
         }
         
         @discardableResult
+        func reorder<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(categoryLeft: M1, categoryRight: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBCategory, M2.MatchedType == WBCategory {
+            let matchers: [Cuckoo.ParameterMatcher<(WBCategory, WBCategory)>] = [wrap(matchable: categoryLeft) { $0.0 }, wrap(matchable: categoryRight) { $0.1 }]
+            return cuckoo_manager.verify("reorder(categoryLeft: WBCategory, categoryRight: WBCategory)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
         func delete<M1: Cuckoo.Matchable>(category: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBCategory {
             let matchers: [Cuckoo.ParameterMatcher<(WBCategory)>] = [wrap(matchable: category) { $0 }]
             return cuckoo_manager.verify("delete(category: WBCategory)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
@@ -4036,6 +4396,10 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.Mock {
     }
     
      override func save(category: WBCategory, update: Bool)  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func reorder(categoryLeft: WBCategory, categoryRight: WBCategory)  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
@@ -7286,14 +7650,40 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.Mock {
         
     }
     
-     override func update(columns: [Column], forCSV: Bool)  {
+     override func addColumn(_ column: Column, isCSV: Bool)  {
         
-            return cuckoo_manager.call("update(columns: [Column], forCSV: Bool)",
-                parameters: (columns, forCSV),
+            return cuckoo_manager.call("addColumn(_: Column, isCSV: Bool)",
+                parameters: (column, isCSV),
                 original: observed.map { o in
                     return { (args) in
-                        let (columns, forCSV) = args
-                         o.update(columns: columns, forCSV: forCSV)
+                        let (column, isCSV) = args
+                         o.addColumn(column, isCSV: isCSV)
+                    }
+                })
+        
+    }
+    
+     override func removeColumn(_ column: Column, isCSV: Bool)  {
+        
+            return cuckoo_manager.call("removeColumn(_: Column, isCSV: Bool)",
+                parameters: (column, isCSV),
+                original: observed.map { o in
+                    return { (args) in
+                        let (column, isCSV) = args
+                         o.removeColumn(column, isCSV: isCSV)
+                    }
+                })
+        
+    }
+    
+     override func reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)  {
+        
+            return cuckoo_manager.call("reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)",
+                parameters: (columnLeft, columnRight, isCSV),
+                original: observed.map { o in
+                    return { (args) in
+                        let (columnLeft, columnRight, isCSV) = args
+                         o.reorder(columnLeft: columnLeft, columnRight: columnRight, isCSV: isCSV)
                     }
                 })
         
@@ -7313,9 +7703,19 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.Mock {
             return .init(stub: cuckoo_manager.createStub("columns(forCSV: Bool) -> Observable<[Column]>", parameterMatchers: matchers))
         }
         
-        func update<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(columns: M1, forCSV: M2) -> Cuckoo.StubNoReturnFunction<([Column], Bool)> where M1.MatchedType == [Column], M2.MatchedType == Bool {
-            let matchers: [Cuckoo.ParameterMatcher<([Column], Bool)>] = [wrap(matchable: columns) { $0.0 }, wrap(matchable: forCSV) { $0.1 }]
-            return .init(stub: cuckoo_manager.createStub("update(columns: [Column], forCSV: Bool)", parameterMatchers: matchers))
+        func addColumn<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ column: M1, isCSV: M2) -> Cuckoo.StubNoReturnFunction<(Column, Bool)> where M1.MatchedType == Column, M2.MatchedType == Bool {
+            let matchers: [Cuckoo.ParameterMatcher<(Column, Bool)>] = [wrap(matchable: column) { $0.0 }, wrap(matchable: isCSV) { $0.1 }]
+            return .init(stub: cuckoo_manager.createStub("addColumn(_: Column, isCSV: Bool)", parameterMatchers: matchers))
+        }
+        
+        func removeColumn<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ column: M1, isCSV: M2) -> Cuckoo.StubNoReturnFunction<(Column, Bool)> where M1.MatchedType == Column, M2.MatchedType == Bool {
+            let matchers: [Cuckoo.ParameterMatcher<(Column, Bool)>] = [wrap(matchable: column) { $0.0 }, wrap(matchable: isCSV) { $0.1 }]
+            return .init(stub: cuckoo_manager.createStub("removeColumn(_: Column, isCSV: Bool)", parameterMatchers: matchers))
+        }
+        
+        func reorder<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable>(columnLeft: M1, columnRight: M2, isCSV: M3) -> Cuckoo.StubNoReturnFunction<(Column, Column, Bool)> where M1.MatchedType == Column, M2.MatchedType == Column, M3.MatchedType == Bool {
+            let matchers: [Cuckoo.ParameterMatcher<(Column, Column, Bool)>] = [wrap(matchable: columnLeft) { $0.0 }, wrap(matchable: columnRight) { $0.1 }, wrap(matchable: isCSV) { $0.2 }]
+            return .init(stub: cuckoo_manager.createStub("reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)", parameterMatchers: matchers))
         }
         
     }
@@ -7342,9 +7742,21 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.Mock {
         }
         
         @discardableResult
-        func update<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(columns: M1, forCSV: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == [Column], M2.MatchedType == Bool {
-            let matchers: [Cuckoo.ParameterMatcher<([Column], Bool)>] = [wrap(matchable: columns) { $0.0 }, wrap(matchable: forCSV) { $0.1 }]
-            return cuckoo_manager.verify("update(columns: [Column], forCSV: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        func addColumn<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ column: M1, isCSV: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Column, M2.MatchedType == Bool {
+            let matchers: [Cuckoo.ParameterMatcher<(Column, Bool)>] = [wrap(matchable: column) { $0.0 }, wrap(matchable: isCSV) { $0.1 }]
+            return cuckoo_manager.verify("addColumn(_: Column, isCSV: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func removeColumn<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ column: M1, isCSV: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Column, M2.MatchedType == Bool {
+            let matchers: [Cuckoo.ParameterMatcher<(Column, Bool)>] = [wrap(matchable: column) { $0.0 }, wrap(matchable: isCSV) { $0.1 }]
+            return cuckoo_manager.verify("removeColumn(_: Column, isCSV: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func reorder<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable>(columnLeft: M1, columnRight: M2, isCSV: M3) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Column, M2.MatchedType == Column, M3.MatchedType == Bool {
+            let matchers: [Cuckoo.ParameterMatcher<(Column, Column, Bool)>] = [wrap(matchable: columnLeft) { $0.0 }, wrap(matchable: columnRight) { $0.1 }, wrap(matchable: isCSV) { $0.2 }]
+            return cuckoo_manager.verify("reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
     }
@@ -7362,7 +7774,15 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.Mock {
         return DefaultValueRegistry.defaultValue(for: Observable<[Column]>.self)
     }
     
-     override func update(columns: [Column], forCSV: Bool)  {
+     override func addColumn(_ column: Column, isCSV: Bool)  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func removeColumn(_ column: Column, isCSV: Bool)  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     

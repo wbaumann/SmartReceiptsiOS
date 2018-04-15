@@ -76,7 +76,7 @@ class ReceiptsModuleTest: XCTestCase {
     }
     
     func testPresenterToRouter() {
-        presenter.setupView(data: WBTrip())
+//        presenter.setupView(data: WBTrip())
         
         presenter.createReceiptCameraSubject.onNext()
         presenter.importReceiptFileSubject.onNext()
