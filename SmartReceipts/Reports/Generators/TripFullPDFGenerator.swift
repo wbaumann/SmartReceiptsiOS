@@ -87,7 +87,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         }
         
         if let comment = trip.comment, !trip.comment.isEmpty {
-            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.comment.label")) \(trip.comment)")
+            pdfRender.appendHeader(row: "\(LocalizedString("pdf.report.comment.label")) \(trip.comment!)")
         }
         
         // Short Code for Get: currencyFormattedPrice()
