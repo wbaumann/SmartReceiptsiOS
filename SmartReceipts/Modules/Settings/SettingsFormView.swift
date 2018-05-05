@@ -406,9 +406,9 @@ class SettingsFormView: FormViewController {
         })
             
         <<< segmentedRow(LocalizedString("settings_pdf_page_size"),
-            options: pdfFormats(), selected: WBPreferences.preferedRawPDFSize())
+            options: pdfFormats(), selected: pdfFormats().index(of: WBPreferences.prefferedPDFSize().rawValue) ?? 0)
         .onChange({ row in
-            WBPreferences.setPreferedRawPDFSize(row.value!)
+            WBPreferences.setPreferedRawPDFSize(PDFPageSize.pdfPageSizeBy(index: row.value!).rawValue)
         })
 
         <<< openModuleButton(LocalizedString("settings.pdf.configure.columns.label"),

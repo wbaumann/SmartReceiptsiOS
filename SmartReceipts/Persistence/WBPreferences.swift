@@ -8,6 +8,9 @@
 
 extension WBPreferences {
     static func prefferedPDFSize() -> PDFPageSize {
+        if let index = Int(string: preferedRawPDFSize()) {
+            return PDFPageSize.pdfPageSizeBy(index: index)
+        }
         return PDFPageSize(rawValue: preferedRawPDFSize())!
     }
     
@@ -20,9 +23,9 @@ extension WBPreferences {
     }
 }
 
-enum PDFPageSize: Int {
-    case A4 = 0
-    case letter = 1
+enum PDFPageSize: String {
+    case A4 = "A4"
+    case letter = "Letter"
     
     func size(portrait: Bool) -> CGSize {
         var width: CGFloat = 0
@@ -38,5 +41,10 @@ enum PDFPageSize: Int {
         }
         
         return portrait ? CGSize(width: width, height: height) : CGSize(width: height, height: width)
+    }
+    
+    static func pdfPageSizeBy(index: Int) -> PDFPageSize {
+        let sizes: [PDFPageSize] = [.A4, .letter]
+        return sizes[index]
     }
 }
