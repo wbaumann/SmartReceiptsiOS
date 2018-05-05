@@ -12,22 +12,29 @@ import RxCocoa
 typealias FetchedObjectAction = (object: Any, index: Int)
 typealias MoveFetchedObjectAction = (object: Any, from: Int, to: Int)
 
-class FetchedModelAdapterDelegateProxy: DelegateProxy, DelegateProxyType, FetchedModelAdapterDelegate {
-    class func currentDelegateFor(_ object: AnyObject) -> AnyObject? {
-        let fetchedModelAdapter: FetchedModelAdapter = (object as? FetchedModelAdapter)!
-        return fetchedModelAdapter.delegate
+class FetchedModelAdapterDelegateProxy: DelegateProxy<FetchedModelAdapter, FetchedModelAdapterDelegate>, DelegateProxyType, FetchedModelAdapterDelegate {
+    
+    init(parentObject: FetchedModelAdapter) {
+        super.init(parentObject: parentObject, delegateProxy: FetchedModelAdapterDelegateProxy.self)
     }
     
-    class func setCurrentDelegate(_ delegate: AnyObject?, toObject object: AnyObject) {
-        let fetchedModelAdapter = object as! FetchedModelAdapter
-        fetchedModelAdapter.delegate = delegate as? FetchedModelAdapterDelegate
+    class func registerKnownImplementations() {
+        self.register { FetchedModelAdapterDelegateProxy(parentObject: $0) }
+    }
+    
+    class func currentDelegate(for object: FetchedModelAdapter) -> FetchedModelAdapterDelegate? {
+        return object.delegate
+    }
+    
+    class func setCurrentDelegate(_ delegate: FetchedModelAdapterDelegate?, to object: FetchedModelAdapter) {
+        object.delegate = delegate
     }
 }
 
 extension Reactive where Base : FetchedModelAdapter {
     
-    public var delegate: DelegateProxy {
-        return FetchedModelAdapterDelegateProxy.proxyForObject(base)
+    public var delegate: DelegateProxy<FetchedModelAdapter, FetchedModelAdapterDelegate> {
+        return FetchedModelAdapterDelegateProxy.proxy(for: base)
     }
     
     var willChangeContent: Observable<Void> {

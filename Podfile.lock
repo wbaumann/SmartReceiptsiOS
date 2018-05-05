@@ -1,54 +1,55 @@
 PODS:
-  - Alamofire (4.5.0)
-  - AWSCognito (2.6.1):
-    - AWSCore (= 2.6.1)
-  - AWSCore (2.6.1)
-  - AWSS3 (2.6.1):
-    - AWSCore (= 2.6.1)
-  - CocoaLumberjack/Default (3.2.1)
-  - CocoaLumberjack/Swift (3.2.1):
+  - Alamofire (4.7.2)
+  - AWSCognito (2.6.17):
+    - AWSCore (= 2.6.17)
+  - AWSCore (2.6.17)
+  - AWSS3 (2.6.17):
+    - AWSCore (= 2.6.17)
+  - CocoaLumberjack/Default (3.4.2)
+  - CocoaLumberjack/Swift (3.4.2):
     - CocoaLumberjack/Default
-  - Crashlytics (3.9.3):
-    - Fabric (~> 1.7.2)
+  - Crashlytics (3.10.1):
+    - Fabric (~> 1.7.5)
   - Cuckoo (0.9.3)
+  - Differentiator (3.0.2)
   - Eureka (4.1.1)
-  - Fabric (1.7.2)
-  - Firebase/AdMob (4.8.0):
+  - Fabric (1.7.6)
+  - Firebase/AdMob (4.13.0):
     - Firebase/Core
-    - Google-Mobile-Ads-SDK (= 7.27.0)
-  - Firebase/Analytics (4.8.0):
+    - Google-Mobile-Ads-SDK (= 7.30.0)
+  - Firebase/Analytics (4.13.0):
     - Firebase/Core
-  - Firebase/Core (4.8.0):
-    - FirebaseAnalytics (= 4.0.5)
-    - FirebaseCore (= 4.0.13)
-  - Firebase/Messaging (4.8.0):
+  - Firebase/Core (4.13.0):
+    - FirebaseAnalytics (= 4.2.0)
+    - FirebaseCore (= 4.0.20)
+  - Firebase/Messaging (4.13.0):
     - Firebase/Core
-    - FirebaseMessaging (= 2.0.8)
-  - FirebaseAnalytics (4.0.5):
+    - FirebaseMessaging (= 2.2.0)
+  - FirebaseAnalytics (4.2.0):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
-  - FirebaseCore (4.0.13):
+  - FirebaseCore (4.0.20):
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-  - FirebaseInstanceID (2.0.8):
+  - FirebaseInstanceID (2.0.10):
     - FirebaseCore (~> 4.0)
-  - FirebaseMessaging (2.0.8):
-    - FirebaseAnalytics (~> 4.0)
+  - FirebaseMessaging (2.2.0):
+    - FirebaseAnalytics (~> 4.1)
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
-    - Protobuf (~> 3.1)
-  - Floaty (3.0.0)
+    - Protobuf (~> 3.5)
+  - Floaty (4.0.1)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
-  - Google-Mobile-Ads-SDK (7.27.0)
-  - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/Logger (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
-    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - Google-Mobile-Ads-SDK (7.30.0)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
   - MKDropdownMenu (1.4)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
@@ -84,28 +85,29 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.5.0)
-  - RxAlamofire (3.0.3):
-    - RxAlamofire/Core (= 3.0.3)
-  - RxAlamofire/Core (3.0.3):
-    - Alamofire (~> 4.0)
-    - RxSwift (~> 3.0)
-  - RxBlocking (3.5.0):
-    - RxSwift (~> 3.4)
-  - RxCocoa (3.5.0):
-    - RxSwift (~> 3.4)
-  - RxDataSources (1.0.4):
-    - RxCocoa (~> 3.0)
-    - RxSwift (~> 3.0)
-  - RxSwift (3.5.0)
-  - RxTest (3.5.0):
-    - RxSwift (~> 3.4)
-  - SwiftyJSON (3.1.4)
-  - SwiftyStoreKit (0.13.1)
-  - Toaster (2.0.4)
+  - RxAlamofire (4.2.0):
+    - RxAlamofire/Core (= 4.2.0)
+  - RxAlamofire/Core (4.2.0):
+    - Alamofire (~> 4.5)
+    - RxSwift (~> 4)
+  - RxBlocking (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxDataSources (3.0.2):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+  - RxTest (4.1.2):
+    - RxSwift (~> 4.0)
+  - SwiftyJSON (4.1.0)
+  - SwiftyStoreKit (0.13.2)
+  - Toaster (2.1.1)
   - UIAlertView-Blocks (1.0)
-  - Viperit (0.7.0)
-  - XLPagerTabStrip (7.0.0)
-  - Zip (1.0.0)
+  - Viperit (1.1.0)
+  - XLPagerTabStrip (8.0.1)
+  - Zip (1.1.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -146,6 +148,7 @@ SPEC REPOS:
     - AWSS3
     - CocoaLumberjack
     - Crashlytics
+    - Differentiator
     - Eureka
     - Fabric
     - Firebase
@@ -186,42 +189,43 @@ CHECKOUT OPTIONS:
     :git: https://github.com/kaosdg/Cuckoo.git
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  AWSCognito: 9aad635e11de0febf026e8a8acbbd345b2016801
-  AWSCore: e7d37fa0715def975acf1b0d75556576780088b8
-  AWSS3: 2e18ede28199a5530955dc1a65434da43dcc4d2c
-  CocoaLumberjack: 2800c03334042fe80589423c8d80e582dcaec482
-  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  AWSCognito: 2a3da30af7d731cfd1032812a052e65099bbe26a
+  AWSCore: 82fbb01d73a22cfae77ac2f03f6073a123092452
+  AWSS3: 00482eb3363cab1d4c3fd7b0bb7c117ae7264505
+  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   Cuckoo: 0e443cae3d90aa35f7556b9e2abad1d61b0bfdf3
+  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
-  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
-  Firebase: 710decbbc6d9d48530e9a5dba3209740c3532e05
-  FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
-  FirebaseCore: 3c02ec652db3d03fdc8bc6d9154af3e20d64b6f5
-  FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
-  FirebaseMessaging: dfdcd307c2382290a1e297a81d0f18370f5b1bcd
-  Floaty: d1be5d323094f0de422bb615452d00ba26ac74dd
+  Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
+  Firebase: 5ec5e863d269d82d66b4bf56856726f8fb8f0fb3
+  FirebaseAnalytics: 7ef69e76a5142f643aeb47c780e1cdce4e23632e
+  FirebaseCore: 90cb1c53d69b556f112a1bf72b5fcfaad7650790
+  FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
+  FirebaseMessaging: 75cdb862e86c30e0913a2ff307e48d49357c5b73
+  Floaty: 82854e1a5ef4fa208281ebd4da2f3d1e51ba67a6
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
-  Google-Mobile-Ads-SDK: 83f7f890e638ce8f1debd440ea363338c9f6be3b
-  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  Google-Mobile-Ads-SDK: 7404f68120ae8682afeb5af001fbf4aad731c78e
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
-  RxAlamofire: 5eb39188c4917ad98127c0ecb4878a61b7517003
-  RxBlocking: 471315e18b87c5ed4b9d0c69a57dfdbca5c01af1
-  RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
-  RxDataSources: b3389acc5fe2eefb8fcd81a2b76a876ad08bc82a
-  RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
-  RxTest: 1763765fd0e2282b0eb44c9050effdd7fe7156d4
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  SwiftyStoreKit: c36bb7841dd51a485ce5c38abf9e96fba988741f
-  Toaster: f13031c636ef065281bc11857be9a16c7659e04f
+  RxAlamofire: 87a9c588541210cc3e4a1f843ccc3ecf3eb98b31
+  RxBlocking: f6054985901412fc8c02daa84e92d4ba68c61389
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  SwiftyStoreKit: b7563505440a68c9d9fa70bc43d8a97015519409
+  Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
   UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
-  Viperit: b45ecfde9f3e577a6afd8f91f4c88edb46e0ca25
-  XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
-  Zip: 115a122433829a1bbf33f5575fa84047438dcc12
+  Viperit: 276b9f0943edb5436fbff008abd8756004149814
+  XLPagerTabStrip: c908b17cbf42fcd2598ee1adfc49bae25444d88a
+  Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 911e8965d390e09dcc7be054a819dc61d1d3d428
+PODFILE CHECKSUM: 269d3ceaaa67387607fd86dc3285bc39d8d8c227
 
 COCOAPODS: 1.5.0
