@@ -31,8 +31,8 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dataSource = RxTableViewSectionedAnimatedDataSource<ColumnSection>()
-        configureTable(dataSource: dataSource)
+        let dataSource = makeTableDataSource()
+        configureRx()
         
         displayData.columns.asObservable().flatMap({ receipts -> Observable<[ColumnSection]> in
             return Observable<[ColumnSection]>.just([ColumnSection(model: "", items: receipts)])
@@ -61,22 +61,27 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
         tableView.setEditing(editing, animated: animated)
     }
     
-    func configureTable(dataSource: RxTableViewSectionedAnimatedDataSource<ColumnSection>) {
+    func makeTableDataSource() -> RxTableViewSectionedAnimatedDataSource<ColumnSection> {
+        let dataSource = RxTableViewSectionedAnimatedDataSource<ColumnSection>(
+            configureCell: { (dataSource, table, idxPath, item) in
+                let cell = table.dequeueReusableCell(withIdentifier: "Cell", for: idxPath)
+                let number = idxPath.row + 1
+                cell.textLabel?.text = "\(LocalizedString("columns.controller.column.prefix")) \(number)"
+                cell.detailTextLabel?.text = item.name
+                return cell
+        })
+        
         dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .top,
                                                                    reloadAnimation: .fade,
                                                                    deleteAnimation: .left)
         
-        dataSource.configureCell = { (dataSource, table, idxPath, item) in
-            let cell = table.dequeueReusableCell(withIdentifier: "Cell", for: idxPath)
-            let number = idxPath.row + 1
-            cell.textLabel?.text = "\(LocalizedString("columns.controller.column.prefix")) \(number)"
-            cell.detailTextLabel?.text = item.name
-            return cell
-        }
-        
         dataSource.canEditRowAtIndexPath = { _ in return true }
         dataSource.canMoveRowAtIndexPath = { _ in return true }
         
+        return dataSource
+    }
+        
+    func configureRx() {
         tableView.rx.itemMoved.subscribe(onNext: { [unowned self] (from: IndexPath, to: IndexPath) in
             var newColumns = self.displayData.columns.value
             
