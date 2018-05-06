@@ -25,7 +25,7 @@ class CategoryColumn: Column {
     
     func valueFrom(receipts: [WBReceipt]) -> String {
         guard let firstReceipt = receipts.first else { return "" }
-        return "\(firstReceipt.category.name) [\(receipts.count)]"
+        return "\(firstReceipt.category.name ?? "") [\(receipts.count)]"
     }
 }
 
