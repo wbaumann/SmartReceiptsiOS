@@ -40,10 +40,16 @@ class PricesCollection: Price {
     }
     
     override func currencyFormattedPrice() -> String {
+        return currencyFormattedTotalPrice(ignoreEmpty: true)
+    }
+    
+    func currencyFormattedTotalPrice(ignoreEmpty: Bool = true) -> String {
         var formats = [String]()
         let codes = totals.keys.sorted()
         for code in codes {
             let amount = totals[code]!
+            if ignoreEmpty && amount.decimalValue == 0 { continue }
+            
             let price = Price(amount: amount, currencyCode: code)
             formats.append(price.currencyFormattedPrice())
         }
