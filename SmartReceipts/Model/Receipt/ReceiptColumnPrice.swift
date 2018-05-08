@@ -16,7 +16,8 @@ class ReceiptColumnPrice: ReceiptColumn {
     override func value(forFooter rows: [Any]!, forCSV: Bool) -> String! {
         var total = NSDecimalNumber.zero
         for rec in rows as! [WBReceipt] {
-            total = total.adding(rec.price().amount)
+            guard let priceToAdd = rec.exchangedPrice() else { continue }
+            total = total.adding(priceToAdd.amount)
         }
         return Price.stringFrom(amount: total)
     }
