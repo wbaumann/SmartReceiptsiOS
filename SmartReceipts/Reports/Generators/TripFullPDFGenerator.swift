@@ -49,7 +49,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
             receiptTotal.addPrice(price)
             taxesTotal.addPrice(tax)
             noTaxesTotal.addPrice(price)
-            grandTotal.addPrice(price)
+            grandTotal.addPrice(receipt.price())
             
             if WBPreferences.enteredPricePreTax() {
                 grandTotal.addPrice(tax)

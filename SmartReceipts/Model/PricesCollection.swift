@@ -57,6 +57,11 @@ class PricesCollection: Price {
         return formats.joined(separator: "; ")
     }
     
+    func formattedCurrencies() -> String {
+        let codes = totals.keys.sorted()
+        return codes.joined(separator: "; ")
+    }
+    
     fileprivate func add(_ amount: NSDecimalNumber, currency: String) {
         let total = totals[currency] ?? NSDecimalNumber.zero
         let newTotal = total.adding(amount)

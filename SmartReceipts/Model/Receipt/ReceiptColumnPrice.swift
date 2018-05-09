@@ -14,11 +14,10 @@ class ReceiptColumnPrice: ReceiptColumn {
     }
     
     override func value(forFooter rows: [Any]!, forCSV: Bool) -> String! {
-        var total = NSDecimalNumber.zero
+        let total = PricesCollection()
         for rec in rows as! [WBReceipt] {
-            guard let priceToAdd = rec.exchangedPrice() else { continue }
-            total = total.adding(priceToAdd.amount)
+            total.addPrice(rec.price())
         }
-        return Price.stringFrom(amount: total)
+        return total.currencyFormattedPrice()
     }
 }
