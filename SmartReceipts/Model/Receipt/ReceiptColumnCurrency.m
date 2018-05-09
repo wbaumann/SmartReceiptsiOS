@@ -16,7 +16,11 @@
 }
 
 - (NSString *)valueForFooter:(NSArray *)rows forCSV:(BOOL)forCSV {
-    return [rows.firstObject trip].defaultCurrency.code;
+    PricesCollection *total = [PricesCollection new];
+    for (WBReceipt *receipt in rows) {
+        [total addPrice:receipt.price];
+    }
+    return [total formattedCurrencies];
 }
 
 @end
