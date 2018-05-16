@@ -16,45 +16,25 @@ extension WBReceipt {
     }
     
     class func selectAllQueryForTrip(_ trip: WBTrip?, isAscending: Bool) -> DatabaseQueryBuilder {
-        
-        let receiptIdFullName = "\(ReceiptsTable.Name).\(ReceiptsTable.Column.Id)"
-        let receiptIdAsName = "\(ReceiptsTable.Name)_\(ReceiptsTable.Column.Id)"
-        let receiptNameFullName = "\(ReceiptsTable.Name).\(ReceiptsTable.Column.Name)"
-        let receiptNameAsName = "\(ReceiptsTable.Name)_\(ReceiptsTable.Column.Name)"
-        
-        let paymentMethodIdFullName = "\(PaymentMethodsTable.Name).\(PaymentMethodsTable.Column.Id)"
         let paymentMethodIdAsName = "\(PaymentMethodsTable.Name)_\(PaymentMethodsTable.Column.Id)"
-        
-        let categoryIdFullName = "\(CategoriesTable.Name).\(CategoriesTable.Column.Id)"
         let categoryIdAsName = "\(CategoriesTable.Name)_\(CategoriesTable.Column.Id)"
-        let categoryCodeFullName = "\(CategoriesTable.Name).\(CategoriesTable.Column.Code)"
         let categoryCodeAsName = "\(CategoriesTable.Name)_\(CategoriesTable.Column.Code)"
-        let categoryNameFullName = "\(CategoriesTable.Name).\(CategoriesTable.Column.Name)"
         let categoryNameAsName = "\(CategoriesTable.Name)_\(CategoriesTable.Column.Name)"
-        let categoryCustomOrderIdFullName = "\(CategoriesTable.Name).\(CategoriesTable.Column.CustomOrderId)"
         let categoryCustomOrderIdAsName = "\(CategoriesTable.Name)_\(CategoriesTable.Column.CustomOrderId)"
         
+        let ascending = isAscending ? "ASC" : "DESC"
         
-        let selectAll = DatabaseQueryBuilder.selectAllStatement(forTable: ReceiptsTable.Name)
-        if let trip = trip {
-            selectAll?.`where`(ReceiptsTable.Column.Parent, value: trip.name.asNSString)
-        }
-        selectAll?.select(receiptIdFullName, as: receiptIdAsName)
-        selectAll?.select(receiptNameFullName, as: receiptNameAsName)
+        let query = "SELECT * FROM \(ReceiptsTable.Name) AS RCPTS" +
+            " LEFT JOIN (SELECT \(PaymentMethodsTable.Column.Method), \(PaymentMethodsTable.Column.Id) AS \(paymentMethodIdAsName)" +
+            " FROM \(PaymentMethodsTable.Name)) AS PM" +
+            " ON RCPTS.\(ReceiptsTable.Column.PaymentMethodId) = PM.\(paymentMethodIdAsName)" +
+            " LEFT JOIN (SELECT \(CategoriesTable.Column.Name) AS \(categoryNameAsName)," +
+            " \(CategoriesTable.Column.Code) AS \(categoryCodeAsName)," +
+            " \(CategoriesTable.Column.Id) AS \(categoryIdAsName)," +
+            " \(CategoriesTable.Column.CustomOrderId) AS \(categoryCustomOrderIdAsName) FROM \(CategoriesTable.Name)) AS CATS" +
+            " ON RCPTS.\(ReceiptsTable.Column.CategoryId) = CATS.\(categoryIdAsName)" +
+            " WHERE \(ReceiptsTable.Column.Parent) = \"\(trip!.name!)\" ORDER BY \(CategoriesTable.Column.CustomOrderId) \(ascending)"
         
-        selectAll?.select(paymentMethodIdFullName, as: paymentMethodIdAsName)
-        
-        selectAll?.select(categoryIdFullName, as: categoryIdAsName)
-        selectAll?.select(categoryCodeFullName, as: categoryCodeAsName)
-        selectAll?.select(categoryNameFullName, as: categoryNameAsName)
-        selectAll?.select(categoryCustomOrderIdFullName, as: categoryCustomOrderIdAsName)
-
-        
-        selectAll?.leftJoin(PaymentMethodsTable.Name, on: ReceiptsTable.Column.PaymentMethodId.asNSString, equalTo: PaymentMethodsTable.Column.Id.asNSString)
-        selectAll?.leftJoin(CategoriesTable.Name, on: ReceiptsTable.Column.CategoryId.asNSString, equalTo: CategoriesTable.Column.Id.asNSString)
-    
-        selectAll?.order(by: ReceiptsTable.Column.Date, ascending: isAscending)
-        
-        return selectAll!
+        return DatabaseQueryBuilder.rawQuery(query)
     }
 }

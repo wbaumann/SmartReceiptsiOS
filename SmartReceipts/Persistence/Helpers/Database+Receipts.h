@@ -31,6 +31,7 @@
 - (BOOL)copyReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
 - (BOOL)moveReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
 - (BOOL)swapReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo;
+- (BOOL)reorderReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo;
 - (NSUInteger)nextReceiptID;
 
 /**

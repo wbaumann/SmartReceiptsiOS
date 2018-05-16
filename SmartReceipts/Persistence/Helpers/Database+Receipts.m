@@ -23,6 +23,10 @@
 #import "Constants.h"
 #import "SmartReceipts-Swift.h"
 
+static NSInteger const kDaysToOrderFactor = 1000;
+static NSString * const kGreaterCompare = @" > ";
+static NSString * const kGreaterOrEqualCompare = @" >= ";
+
 @interface WBReceipt (Expose)
 
 - (BOOL)dateChanged;
@@ -78,9 +82,9 @@
 - (BOOL)insertReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:ReceiptsTable.TABLE_NAME];
     [self appendCommonValuesFromReceipt:receipt toQuery:insert];
-
-    NSDate *modifiedInsertDate = [self dateWithSecondsModifiedForTrip:receipt.trip basedOnDate:receipt.date usingDatabase:database];
-    [insert addParam:ReceiptsTable.COLUMN_DATE value:modifiedInsertDate.milliseconds];
+    
+    NSInteger customOrderId = [self customOrderIdForDate:receipt.date inTrip:receipt.trip usingDatabase:database];
+    [insert addParam:ReceiptsTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
 
     BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {
@@ -93,10 +97,13 @@
 - (BOOL)updateReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
     [self appendCommonValuesFromReceipt:receipt toQuery:update];
+    
     if (receipt.dateChanged) {
-        NSDate *modifiedInsertDate = [self dateWithSecondsModifiedForTrip:receipt.trip basedOnDate:receipt.date usingDatabase:database];
-        [update addParam:ReceiptsTable.COLUMN_DATE value:modifiedInsertDate.milliseconds];
+        [self updateOrderIdGroupOfReceipt:receipt compare:kGreaterCompare increment:NO usingDatabase:database];
+        NSInteger customOrderId = [self customOrderIdForDate:receipt.date inTrip:receipt.trip usingDatabase:database];
+        [update addParam:ReceiptsTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
     }
+    
     [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
     BOOL result = [self executeQuery:update usingDatabase:database];
     if (result) {
@@ -104,11 +111,6 @@
         [self notifyUpdateOfModel:receipt.trip];
     }
     return result;
-}
-
-- (NSDate *)dateWithSecondsModifiedForTrip:(WBTrip *)trip basedOnDate:(NSDate *)date usingDatabase:(FMDatabase *)database {
-    // Do some second magic for insert order. This should give always unique receipt time
-    return [date dateByAddingTimeInterval:1];
 }
 
 - (BOOL)deleteReceipt:(WBReceipt *)receipt {
@@ -239,6 +241,85 @@
     return result;
 }
 
+- (BOOL)reorderReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo {
+    if (receiptOne.customOrderId == receiptTwo.customOrderId) {
+        return YES;
+    }
+    
+    __block BOOL result;
+    
+    [self.databaseQueue inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollback) {
+        result = [self reorderReceipt:receiptOne withReceipt:receiptTwo usingDatabase:db];
+        *rollback = result ? NO : YES;
+    }];
+    
+    if (result) {
+        NSArray *changedModels = [self allReceiptsForTrip:receiptOne.trip];
+        [self notifyReorderOfModels:changedModels];
+    }
+    
+    return result;
+}
+
+- (BOOL)reorderReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo usingDatabase:(FMDatabase *)database {
+    BOOL isInSameDay = receiptOne.customOrderId/kDaysToOrderFactor == receiptTwo.customOrderId/kDaysToOrderFactor;
+    
+    if (isInSameDay) {
+        BOOL isNewOrderIdGreater = receiptOne.customOrderId < receiptTwo.customOrderId;
+        NSInteger newCustomOrderIdTwo = isNewOrderIdGreater ? receiptTwo.customOrderId - 1 : receiptTwo.customOrderId + 1;
+        
+        BOOL result = [self setCustomOrderId:receiptTwo.customOrderId forReceipt:receiptOne usingDatabase:database];
+        NSString *operation = isNewOrderIdGreater ? @"-1" : @"+1";
+        
+        NSInteger minId = MIN(receiptOne.customOrderId, newCustomOrderIdTwo);
+        NSInteger maxId = MAX(receiptOne.customOrderId, newCustomOrderIdTwo);
+        
+        NSArray *components = @[
+                                @"UPDATE ", ReceiptsTable.TABLE_NAME,
+                                [NSString stringWithFormat:@" SET %@ = %@%@ ",ReceiptsTable.COLUMN_CUSTOM_ORDER_ID, ReceiptsTable.COLUMN_CUSTOM_ORDER_ID, operation],
+                                @" WHERE ", ReceiptsTable.COLUMN_CUSTOM_ORDER_ID,
+                                @" BETWEEN ", @(minId).stringValue, @" AND ", @(maxId).stringValue];
+        
+        NSString *query = [components componentsJoinedByString:@""];
+        DatabaseQueryBuilder *update = [DatabaseQueryBuilder rawQuery:query];
+        result &= [self executeQuery:update usingDatabase:database];
+        result &= [self setCustomOrderId:newCustomOrderIdTwo forReceipt:receiptTwo usingDatabase:database];
+        return result;
+    } else {
+        BOOL isMoveUp = receiptTwo.customOrderId > receiptOne.customOrderId;
+        NSInteger newCustomOrderId = isMoveUp ? receiptTwo.customOrderId + 1 : receiptTwo.customOrderId;
+        NSString *compare = isMoveUp ? kGreaterCompare : kGreaterOrEqualCompare;
+        BOOL result = [self updateOrderIdGroupOfReceipt:receiptTwo compare:compare increment:YES usingDatabase:database];
+        result &= [self updateOrderIdGroupOfReceipt:receiptOne compare:compare increment:NO usingDatabase:database];
+        result &= [self setCustomOrderId:newCustomOrderId forReceipt:receiptOne usingDatabase:database];
+        return result;
+    }
+}
+
+
+- (BOOL)updateOrderIdGroupOfReceipt:(WBReceipt *)receipt compare:(NSString *)compare increment:(BOOL)increment usingDatabase:(FMDatabase *)database {
+    NSString *operation = increment ? @"+1" : @"-1";
+    NSString *like = [NSString stringWithFormat:@"'%lu%%'", receipt.customOrderId/kDaysToOrderFactor];
+    NSString *customOrderId = [NSString stringWithFormat:@"%lu", receipt.customOrderId];
+    
+    NSArray *components = @[
+                            @"UPDATE ", ReceiptsTable.TABLE_NAME,
+                            [NSString stringWithFormat:@" SET %@ = %@%@",ReceiptsTable.COLUMN_CUSTOM_ORDER_ID, ReceiptsTable.COLUMN_CUSTOM_ORDER_ID, operation],
+                            @" WHERE ", @"CAST(", ReceiptsTable.COLUMN_CUSTOM_ORDER_ID,  @" AS TEXT) LIKE ", like,
+                            @" AND ", ReceiptsTable.COLUMN_CUSTOM_ORDER_ID, compare, customOrderId];
+    
+    NSString *query = [components componentsJoinedByString:@""];
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder rawQuery:query];
+    return [self executeQuery:update usingDatabase:database];
+}
+
+- (BOOL)setCustomOrderId:(NSInteger)customOrderId forReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
+    [update addParam:ReceiptsTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
+    [update where:ReceiptsTable.COLUMN_ID value:@(receipt.objectId)];
+    return [self executeQuery:update usingDatabase:database];
+}
+
 - (BOOL)swapReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo {
     __block BOOL result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
@@ -250,6 +331,17 @@
     }
 
     return result;
+}
+
+- (NSInteger)customOrderIdForDate:(NSDate *)date inTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)db {
+    NSInteger days = date.days;
+    NSInteger custromOrderId = days * kDaysToOrderFactor + 1;
+    for (NSDate *tripDate in [self datesInTrip:trip usingDatabase:db]) {
+        if (tripDate.days == days) {
+            custromOrderId++;
+        }
+    }
+    return custromOrderId;
 }
 
 - (NSUInteger)nextReceiptID {
@@ -328,6 +420,18 @@
         }
     }];
     return currencies;
+}
+
+- (NSArray<NSDate *> *)datesInTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)db {
+    NSMutableArray *result = [NSMutableArray new];
+    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ WHERE %@ = '%@'", ReceiptsTable.COLUMN_DATE,
+                       ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_PARENT, trip.name];
+    FMResultSet *resultSet = [db executeQuery:query];
+    while ([resultSet next]) {
+        NSDate *date = [NSDate dateWithMilliseconds:[resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE]];
+        [result addObject:date];
+    }
+    return result;
 }
 
 @end

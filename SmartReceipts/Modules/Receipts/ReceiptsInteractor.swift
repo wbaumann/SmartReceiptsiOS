@@ -47,6 +47,7 @@ class ReceiptsInteractor: Interactor {
     }
     
     func swapDownReceipt(_ receipt: WBReceipt) {
+        
         let idx = Int(fetchedModelAdapter.index(for: receipt))
         if idx >= Int(fetchedModelAdapter.numberOfObjects()) - 1 || idx == NSNotFound {
             return
@@ -84,7 +85,7 @@ class ReceiptsInteractor: Interactor {
         let rec1 = fetchedModelAdapter.object(at: idx1) as! WBReceipt
         let rec2 = fetchedModelAdapter.object(at: idx2) as! WBReceipt
         
-        if (!Database.sharedInstance().swapReceipt(rec1, with: rec2)) {
+        if !Database.sharedInstance().reorder(rec1, with: rec2) {
             Logger.warning("Error: Cannot Swap")
         }
     }

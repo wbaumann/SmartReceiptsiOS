@@ -64,6 +64,7 @@ static NSString* checkNoData(NSString* str) {
         _fileName = checkNoData([imageFileName lastPathComponent]);
         _category = category;
         _date = date;
+        _originalDate = date;
 
         _timeZone = [NSTimeZone timeZoneWithName:timeZoneName];
         if (!_timeZone) {
@@ -82,6 +83,7 @@ static NSString* checkNoData(NSString* str) {
         _extraEditText1 = checkNoData(extraEditText1);
         _extraEditText2 = checkNoData(extraEditText2);
         _extraEditText3 = checkNoData(extraEditText3);
+        _customOrderId = customOrderId;
     }
     return self;
 }
@@ -111,7 +113,6 @@ static NSString* checkNoData(NSString* str) {
 
 - (void)setDate:(NSDate *)date {
     _date = date;
-    _customOrderId = date.timeIntervalSince1970;
 
     if (!self.originalDate) {
         [self setOriginalDate:date];
@@ -188,12 +189,9 @@ static NSString* checkNoData(NSString* str) {
     NSDecimalNumber *tax = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:ReceiptsTable.COLUMN_TAX]];
     NSDecimalNumber *exchangeRate = [NSDecimalNumber decimalNumberOrZero:[resultSet stringForColumn:ReceiptsTable.COLUMN_EXCHANGE_RATE]];
     NSString *currencyCode = [resultSet stringForColumn:ReceiptsTable.COLUMN_ISO4217];
-
-    NSString *receiptIdAsName = [NSString stringWithFormat:@"%@_%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_ID];
-    NSString *receiptNameAsName = [NSString stringWithFormat:@"%@_%@", ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_NAME];
     
-    [self setObjectId:(NSUInteger) [resultSet intForColumn:receiptIdAsName]];
-    _name = [resultSet stringForColumn:receiptNameAsName];
+    [self setObjectId:(NSUInteger) [resultSet intForColumn:ReceiptsTable.COLUMN_ID]];
+    _name = [resultSet stringForColumn:ReceiptsTable.COLUMN_NAME];
     _fileName = [resultSet stringForColumn:ReceiptsTable.COLUMN_PATH];
     _comment = [resultSet stringForColumn:ReceiptsTable.COLUMN_COMMENT];
     _priceAmount = price;
