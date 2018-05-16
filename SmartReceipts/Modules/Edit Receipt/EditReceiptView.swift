@@ -77,11 +77,11 @@ final class EditReceiptView: UserInterface {
             self.displayData.receipt == nil ?
                 self.presenter.addReceiptSubject.onNext(receipt) :
                 self.presenter.updateReceiptSubject.onNext(receipt)
-        }).addDisposableTo(bag)
+        }).disposed(by: bag)
         
         formView.errorSubject.subscribe(onNext: { [unowned self] errorDescription in
             self.presenter.present(errorDescription: errorDescription)
-        }).addDisposableTo(bag)
+        }).disposed(by: bag)
     }
     
     private func configureTitle() {

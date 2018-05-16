@@ -13,6 +13,10 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
     return [self isOnSameDate:[NSDate date]];
 }
 
+- (NSInteger)days {
+    return self.timeIntervalSince1970/(60 * 60 * 24);
+}
+
 - (NSInteger)year {
     NSDateComponents *components = [[NSDate gregorian] components:NSCalendarUnitYear fromDate:self];
     return components.year;

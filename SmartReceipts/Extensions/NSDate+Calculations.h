@@ -8,6 +8,7 @@
 @interface NSDate (Calculations)
 
 - (BOOL)isToday;
+- (NSInteger)days;
 - (NSInteger)year;
 - (NSDate *)dateByAddingDays:(NSInteger)daysToAdd;
 - (BOOL)isOnSameDate:(NSDate *)date;
