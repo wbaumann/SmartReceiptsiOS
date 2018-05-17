@@ -120,15 +120,15 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         }
     }
     
+    private func onGenerateTooltipClose() {
+        UIView.animate(withDuration: DEFAULT_ANIMATION_DURATION, animations: {
+            self.applyInsetsForTooltip(UIEdgeInsets.zero)
+            self.reportTooltip = nil
+        })
+    }
+    
     private func updateGenerateTooltip() {
         let currentIsGenerate = viewControllers.count-1 == currentIndex
-        
-        func onGenerateTooltipClose() {
-            UIView.animate(withDuration: DEFAULT_ANIMATION_DURATION, animations: {
-                self.applyInsetsForTooltip(UIEdgeInsets.zero)
-                self.reportTooltip = nil
-            })
-        }
         
         // Close tooltip if conditions are not met
         if !TooltipService.shared.moveToGenerateTrigger(for: trip) {
@@ -151,9 +151,9 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
                 self.reportTooltip = nil
             }).disposed(by: bag)
             
-            reportTooltip?.rx.close.subscribe(onNext: {
+            reportTooltip?.rx.close.subscribe(onNext: { [unowned self] in
                 TooltipService.shared.markMoveToGenerateDismiss()
-                onGenerateTooltipClose()
+                self.onGenerateTooltipClose()
             }).disposed(by: bag)
         }
         
