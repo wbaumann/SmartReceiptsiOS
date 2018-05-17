@@ -223,8 +223,6 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
         [receipt setTrip:trip];
         result = [self insertReceipt:receipt usingDatabase:db];
         [receipt setTrip:original];
-
-        [self notifyInsertOfModel:receipt];
     }];
     return result;
 }
