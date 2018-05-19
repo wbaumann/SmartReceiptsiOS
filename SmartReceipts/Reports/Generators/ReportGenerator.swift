@@ -48,6 +48,7 @@ class ReportGenerator: NSObject {
     func receiptsByCategories() -> [String: [WBReceipt]] {
         var result = [String: [WBReceipt]]()
         for receipt in receipts() {
+            if receipt.category == nil { continue }
             if result[receipt.category.name] == nil {
                 result[receipt.category.name] = [WBReceipt]()
             }
