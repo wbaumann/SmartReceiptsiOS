@@ -49,7 +49,8 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             self.receipt.exchangeRate = NSDecimalNumber.zero
             self.receipt.isReimbursable = WBPreferences.expensableDefault()
             self.receipt.isFullPage = WBPreferences.assumeFullPage()
-            self.receipt.timeZone = NSTimeZone.system
+            self.receipt.timeZone = TimeZone.current
+            
             if let pm = Database.sharedInstance().allPaymentMethods().last {
                 self.receipt.paymentMethod = pm
             }
@@ -197,6 +198,8 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             self.receipt.date = row.value ?? Date()
         }).cellSetup({ cell, _ in
             cell.configureCell()
+        }).onExpandInlineRow({ _, _, datePickerRow in
+            datePickerRow.cell.datePicker.timeZone = self.receipt.timeZone
         })
         
         <<< InlinePickerButtonRow(CATEGORIES_ROW_TAG) { [unowned self] row in
