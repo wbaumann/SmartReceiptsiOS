@@ -2,7 +2,7 @@
 "app.delegate.attach.image.alert.title" = "Dołącz Obrazek";
 "app.delegate.attach.pdf.alert.message" = "Nacisnij na istniejący paragon aby dodać do niego PDF";
 "app.delegate.attach.pdf.alert.title" = "Dołącz PDF";
-"app.delegate.import.alert.message" = "Nadpisać istniejące dane?";
+"dialog_import_text" = "Nadpisać istniejące dane?";
 "app.delegate.import.alert.title" = "Import";
 "app.delegate.import.error.alert.message" = "Nie rozpoznano pliku jako importowalny.";
 "app.delegate.import.success.alert.message" = "Wszystkie pliki zaimportowano z sukcesem.";
