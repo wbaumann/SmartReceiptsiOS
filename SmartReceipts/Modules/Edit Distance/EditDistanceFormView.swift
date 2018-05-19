@@ -23,19 +23,19 @@ class EditDistanceFormView: FormViewController {
         self.distance = distance
         
         if let initialDistance = distance?.copy() as? Distance {
-            self.changedDistance = initialDistance
+            changedDistance = initialDistance
         } else {
-            self.changedDistance = Distance()
-            self.changedDistance?.trip = trip
-            self.changedDistance?.location = ""
+            changedDistance = Distance()
+            changedDistance?.trip = trip
+            changedDistance?.location = ""
             
             let date = ReceiptsView.sharedInputCache[SREditDistanceDateCacheKey]
-            self.changedDistance?.date = date ?? trip.startDate
-            self.changedDistance?.timeZone = trip.startTimeZone
+            changedDistance?.date = date ?? trip.startDate
+            changedDistance?.timeZone = TimeZone.current
             
             let amount = NSDecimalNumber(value: WBPreferences.distanceRateDefaultValue())
             let currency = trip.defaultCurrency.code!
-            self.changedDistance?.rate = Price(amount: amount, currencyCode: currency)
+            changedDistance?.rate = Price(amount: amount, currencyCode: currency)
         }
         
     }
@@ -100,18 +100,18 @@ class EditDistanceFormView: FormViewController {
             cell.makeBoldTitle()
         })
     
-        <<< DateInlineRow() { row in
+        <<< DateInlineRow() { [] row in
             row.title = LocalizedString("edit.distance.controller.date.label")
             row.value = changedDistance?.date
-            let formatter = DateFormatter()
-            formatter.configure(timeZone: changedDistance!.trip.startTimeZone)
-            row.dateFormatter = formatter
+            row.dateFormatter?.timeZone = changedDistance?.timeZone
         }.onChange({ [weak self] row in
             self?.changedDistance?.date = row.value
             ReceiptsView.sharedInputCache[SREditDistanceDateCacheKey] = row.value
         }).cellSetup({ cell, _ in
             cell.makeBoldTitle()
             cell.makeHighlitedValue()
+        }).onExpandInlineRow({ _, _, datePickerRow in
+            datePickerRow.cell.datePicker.timeZone = self.changedDistance?.timeZone
         })
     
         <<< TextRow() { row in
@@ -159,7 +159,7 @@ fileprivate extension DecimalRow {
         numberFormatter.locale = Locale.current
         numberFormatter.numberStyle = .decimal
         numberFormatter.maximumFractionDigits = 3
-        self.formatter = numberFormatter
+        formatter = numberFormatter
     }
 }
 
