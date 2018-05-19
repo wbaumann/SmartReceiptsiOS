@@ -160,7 +160,7 @@ extension WBReceipt: ExchangedTaxed {
     
     func exchangedTaxAsString() -> String {
         guard let tax = exchangedTax() else {
-            return ""
+            return LocalizedString("pdf_report_undefined")
         }
         
         return tax.amountAsString()
