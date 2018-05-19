@@ -2,7 +2,7 @@
 "app.delegate.attach.image.alert.title" = "Attach Image";
 "app.delegate.attach.pdf.alert.message" = "Tap on an existing receipt to add this PDF to it";
 "app.delegate.attach.pdf.alert.title" = "Attach PDF";
-"app.delegate.import.alert.message" = "Overwrite Existing Data?";
+"dialog_import_text" = "Overwrite All Existing Data?";
 "app.delegate.import.alert.title" = "Import";
 "app.delegate.import.error.alert.message" = "Failed to recognize the file as importable.";
 "app.delegate.import.success.alert.message" = "Successfully imported all files.";

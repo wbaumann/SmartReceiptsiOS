@@ -59,8 +59,15 @@
     [self importPDFColumnsFrom:imported];
     [self importPaymentMethodsFrom:imported];
     
-    NSArray *trips = [imported allTrips];
-    for (WBTrip *trip in trips) {
+    if (overwrite) {
+        NSArray *localTrips = [Database.sharedInstance allTrips];
+        for (WBTrip *trip in localTrips) {
+            [Database.sharedInstance deleteTrip:trip];
+        }
+    }
+    
+    NSArray *importedTrips = [imported allTrips];
+    for (WBTrip *trip in importedTrips) {
         [self importTrip:trip importFrom:imported overwrite:overwrite];
     }
     
@@ -125,6 +132,12 @@
 - (void)importCategoriesFrom:(Database *)database overwrite:(BOOL)overwrite {
     // Since we don't have a foreign table for categories, we can handle overwrites here
     NSArray *existing = [self listAllCategories];
+    NSMutableArray *existingIds = [NSMutableArray new];
+    
+    for (WBCategory *category in existing) {
+        [existingIds addObject:@(category.objectId)];
+    }
+    
     if (overwrite) {
         for (WBCategory *existingCategory in existing) {
             [self deleteCategory:existingCategory];
@@ -134,9 +147,15 @@
     }
     
     NSArray *imported = [database listAllCategories];
+    
     for (WBCategory *category in imported) {
         if ([existing containsObject:category]) {
             continue;
+        }
+        
+        if ([existingIds containsObject:@(category.objectId)]) {
+            category.objectId = 0;
+            category.customOrderId = self.nextCustomOrderIdForCategory;
         }
 
         [self saveCategory:category];

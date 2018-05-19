@@ -143,7 +143,7 @@ extension AppDelegate {
     
     func handleSMR(url: URL) {
         let alert = UIAlertController(title: LocalizedString("app.delegate.import.alert.title"),
-          message: LocalizedString("app.delegate.import.alert.message"), preferredStyle: .alert)
+          message: LocalizedString("dialog_import_text"), preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: { _ in
             FileManager.deleteIfExists(filepath: url.path)
