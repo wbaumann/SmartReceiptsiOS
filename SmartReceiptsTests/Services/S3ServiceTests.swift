@@ -55,12 +55,12 @@ class S3ServiceTests: XCTestCase {
     func upload() -> URL? {
         let imageURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("test_upload.jpg")!
         try? UIImagePNGRepresentation(#imageLiteral(resourceName: "settings"))?.write(to: imageURL)
-        return try? service.upload(file: imageURL).toBlocking(timeout: TIME_OUT).single()!
+        return try? service.upload(file: imageURL).toBlocking(timeout: TIME_OUT).single()
     }
     
     func download() -> UIImage? {
         return try? service.downloadImage(downloadURL, folder: "Drive/")
             .toBlocking(timeout: TIME_OUT)
-            .single()!
+            .single()
     }
 }

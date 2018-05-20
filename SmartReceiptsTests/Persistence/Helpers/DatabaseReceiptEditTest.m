@@ -45,7 +45,7 @@
     [self.db saveReceipt:self.testReceipt];
 
     WBReceipt *fetched = [self.db receiptWithName:self.testReceipt.name];
-    XCTAssertTrue([[[date dateByAddingTimeInterval:1] description] isEqualToString:fetched.date.description]);
+    XCTAssertTrue([[date description] isEqualToString:fetched.date.description]);
 }
 
 @end

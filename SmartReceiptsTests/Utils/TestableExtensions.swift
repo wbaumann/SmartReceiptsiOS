@@ -13,6 +13,6 @@ extension JSON {
         let bundle = Bundle(for: ScanServiceTests.self)
         let path = bundle.path(forResource: filename, ofType: type)
         let jsonData = NSData(contentsOfFile: path!) as Data!
-        return JSON(data: jsonData!)
+        return try! JSON(data: jsonData!)
     }
 }

@@ -26,14 +26,14 @@ class ReceiptColumnExchangedPriceTests: XCTestCase {
     
     func testNoExchangeRate() {
         receipt.exchangeRate = nil
-        XCTAssertEqual("", column.value(from: receipt, forCSV: false))
-        XCTAssertEqual("", column.value(from: receipt, forCSV: true))
+        XCTAssertEqual(UNDEFINED, column.value(from: receipt, forCSV: false))
+        XCTAssertEqual(UNDEFINED, column.value(from: receipt, forCSV: true))
     }
     
     func testNegativeExchangeRate() {
         receipt.exchangeRate = .minusOne()
-        XCTAssertEqual("", column.value(from: receipt, forCSV: false))
-        XCTAssertEqual("", column.value(from: receipt, forCSV: true))
+        XCTAssertEqual(UNDEFINED, column.value(from: receipt, forCSV: false))
+        XCTAssertEqual(UNDEFINED, column.value(from: receipt, forCSV: true))
     }
     
     func testExchangedPriceCSV() {

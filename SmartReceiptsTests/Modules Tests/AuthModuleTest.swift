@@ -16,7 +16,7 @@ import XCTest
 import RxBlocking
 import Alamofire
 
-fileprivate let TIME_OUT: TimeInterval = 5
+fileprivate let TIME_OUT: TimeInterval = 10
 
 class AuthModuleTest: XCTestCase {
         
@@ -28,6 +28,10 @@ class AuthModuleTest: XCTestCase {
     var expectation: XCTestExpectation!
     
     let bag = DisposeBag()
+    
+    
+    var resultObserver: AnyObserver<String>!
+    var resultVoidObserver: AnyObserver<Void>!
     
     override func setUp() {
         super.setUp()
@@ -57,25 +61,21 @@ class AuthModuleTest: XCTestCase {
     }
     
     private func configureStubs() {
-        func resultObserver() -> AnyObserver<String> {
-            return AnyObserver<String>(onNext: { element in
-                self.result = element
-                self.expectation.fulfill()
-            })
-        }
+        resultObserver = AnyObserver<String>(onNext: { element in
+            self.result = element
+            self.expectation.fulfill()
+        })
         
-        func resultVoidObserver() -> AnyObserver<Void> {
-            return AnyObserver<Void>(onNext: {
-                self.result = "ok"
-                self.expectation.fulfill()
-            })
-        }
+        resultVoidObserver =  AnyObserver<Void>(onNext: {
+            self.result = "ok"
+            self.expectation.fulfill()
+        })
         
         stub(presenter) { mock in
-            mock.successLogin.get.thenReturn(resultObserver())
-            mock.successSignup.get.thenReturn(resultObserver())
-            mock.errorHandler.get.thenReturn(resultObserver())
-            mock.successLogout.get.thenReturn(resultVoidObserver())
+            mock.successLogin.get.thenReturn(resultObserver)
+            mock.successSignup.get.thenReturn(resultObserver)
+            mock.errorHandler.get.thenReturn(resultObserver)
+            mock.successLogout.get.thenReturn(resultVoidObserver)
         }
     }
     
@@ -121,7 +121,7 @@ class AuthModuleTest: XCTestCase {
     }
     
     func testLogoutSuccess() {
-        _ = try? AuthService.shared.login(credentials: TEST_CREDENTIALS).toBlocking(timeout: 10).single()
+        _ = try? AuthService.shared.login(credentials: TEST_CREDENTIALS).toBlocking(timeout: TIME_OUT).single()
         interactor.logout.onNext()
         wait(for: [expectation], timeout: TIME_OUT)
         XCTAssertEqual("ok", result)

@@ -24,6 +24,8 @@ extension WBReceipt {
         
         let ascending = isAscending ? "ASC" : "DESC"
         
+        let whereTrip = trip != nil ? " WHERE \(ReceiptsTable.Column.Parent) = \"\(trip!.name!)\"" : ""
+        
         let query = "SELECT * FROM \(ReceiptsTable.Name) AS RCPTS" +
             " LEFT JOIN (SELECT \(PaymentMethodsTable.Column.Method), \(PaymentMethodsTable.Column.Id) AS \(paymentMethodIdAsName)" +
             " FROM \(PaymentMethodsTable.Name)) AS PM" +
@@ -33,7 +35,7 @@ extension WBReceipt {
             " \(CategoriesTable.Column.Id) AS \(categoryIdAsName)," +
             " \(CategoriesTable.Column.CustomOrderId) AS \(categoryCustomOrderIdAsName) FROM \(CategoriesTable.Name)) AS CATS" +
             " ON RCPTS.\(ReceiptsTable.Column.CategoryId) = CATS.\(categoryIdAsName)" +
-            " WHERE \(ReceiptsTable.Column.Parent) = \"\(trip!.name!)\" ORDER BY \(CategoriesTable.Column.CustomOrderId) \(ascending)"
+            whereTrip + " ORDER BY \(CategoriesTable.Column.CustomOrderId) \(ascending)"
         
         return DatabaseQueryBuilder.rawQuery(query)
     }

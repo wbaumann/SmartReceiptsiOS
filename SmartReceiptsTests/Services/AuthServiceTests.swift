@@ -15,7 +15,7 @@ import RxBlocking
 let TEST_EMAIL = "aaa@aaa.aaa"
 let TEST_PASSWORD = "12345678"
 let TEST_CREDENTIALS = Credentials(TEST_EMAIL, TEST_PASSWORD)
-private let TIME_OUT: RxTimeInterval = 5
+private let TIME_OUT: RxTimeInterval = 15
 
 class AuthServiceTests: XCTestCase {
     
@@ -46,9 +46,9 @@ class AuthServiceTests: XCTestCase {
         
         let token = try! authService.login(credentials: TEST_CREDENTIALS)
             .toBlocking(timeout: TIME_OUT)
-            .single()!
+            .single()
         
-        let savedToken = try! authService.tokenObservable.toBlocking().single()!
+        let savedToken = try! authService.tokenObservable.toBlocking().single()
         
         XCTAssertFalse(token.isEmpty)
         XCTAssertEqual(token, savedToken)
@@ -72,9 +72,9 @@ class AuthServiceTests: XCTestCase {
         
         let token = try! authService.signup(credentials: Credentials("6aaa@aaa.aaa", TEST_PASSWORD))
             .toBlocking(timeout: 3)
-            .single()!
+            .single()
         
-        let savedToken = try! authService.tokenObservable.toBlocking().single()!
+        let savedToken = try! authService.tokenObservable.toBlocking().single()
         
         XCTAssertFalse(token.isEmpty)
         XCTAssertEqual(token, savedToken)
@@ -93,8 +93,8 @@ class AuthServiceTests: XCTestCase {
             .single()
         
         XCTAssertNotNil(user!)
-        XCTAssertFalse(user!!.cognitoToken!.isEmpty)
-        XCTAssertFalse(user!!.identityId!.isEmpty)
+        XCTAssertFalse(user!.cognitoToken!.isEmpty)
+        XCTAssertFalse(user!.identityId!.isEmpty)
     }
     
     func testLogout() {

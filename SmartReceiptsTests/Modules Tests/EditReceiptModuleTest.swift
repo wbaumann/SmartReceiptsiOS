@@ -81,7 +81,8 @@ class EditReceiptModuleTest: XCTestCase {
     }
     
     func testPresenterToRouter() {
-        //presenter.viewHasLoaded()
+        presenter.viewHasLoaded()
+        
         presenter.settingsTap.onNext()
         presenter.close()
         
@@ -94,7 +95,7 @@ class EditReceiptModuleTest: XCTestCase {
             mock.tooltipText().thenReturn("Hello")
         }
         
-        //presenter.viewHasLoaded()
+        presenter.viewHasLoaded()
         let text = presenter.tooltipText()
         XCTAssertEqual(text, "Hello")
         

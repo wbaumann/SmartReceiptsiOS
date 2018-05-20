@@ -16,11 +16,13 @@ import XCTest
 class ColumnsModuleTest: XCTestCase {
     let bag = DisposeBag()
     
-    var presenter: MockColumnsPresenter!
+    var presenter: ColumnsPresenter!
     var interactor: MockColumnsInteractor!
     var router: MockColumnsRouter!
     
     let disposeBag = DisposeBag()
+    
+    let testColumn = Column(index: 0, name: "test")!
     
     override func setUp() {
         super.setUp()
@@ -30,11 +32,11 @@ class ColumnsModuleTest: XCTestCase {
         let r = ColumnsRouter()
         
         var module = AppModules.columns.build()
-        module.injectMock(presenter: MockColumnsPresenter().spy(on: p))
+        module.injectMock(presenter: p)
         module.injectMock(interactor: MockColumnsInteractor().spy(on: i))
         module.injectMock(router: MockColumnsRouter().spy(on: r))
         
-        presenter = module.presenter as! MockColumnsPresenter
+        presenter = module.presenter as! ColumnsPresenter
         interactor = module.interactor as! MockColumnsInteractor
         router = module.router as! MockColumnsRouter
         
@@ -49,8 +51,8 @@ class ColumnsModuleTest: XCTestCase {
     
     func configureStubs() {
         stub(interactor) { mock in
-            mock.addColumn(Column(), isCSV: true).thenDoNothing()
-            mock.removeColumn(Column(), isCSV: true).thenDoNothing()
+            mock.addColumn(testColumn, isCSV: false).thenDoNothing()
+            mock.removeColumn(testColumn, isCSV: false).thenDoNothing()
         }
     }
     
@@ -64,11 +66,12 @@ class ColumnsModuleTest: XCTestCase {
     
     func testPresenterToInteractor() {
         presenter.viewHasLoaded()
-        presenter.addSubject.onNext(Column())
-        presenter.removeSubject.onNext(Column())
         
-        verify(interactor).addColumn(Column(), isCSV: true)
-        verify(interactor).removeColumn(Column(), isCSV: true)
+        presenter.addSubject.onNext(testColumn)
+        presenter.removeSubject.onNext(testColumn)
+        
+        verify(interactor).addColumn(testColumn, isCSV: false)
+        verify(interactor).removeColumn(testColumn, isCSV: false)
     }
     
 }

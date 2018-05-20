@@ -176,11 +176,11 @@ extension EditReceiptView: EditReceiptViewInterface {
     }
     
     var manageCategoriesTap: Observable<Void>? {
-        return formView.manageCategoriesTap
+        return formView?.manageCategoriesTap
     }
     
     var managePaymentMethodsTap: Observable<Void>? {
-        return formView.managePaymentMethodsTap
+        return formView?.managePaymentMethodsTap
     }
 }
 

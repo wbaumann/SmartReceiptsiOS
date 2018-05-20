@@ -9,6 +9,8 @@
 import XCTest
 @testable import SmartReceipts
 
+let UNDEFINED = LocalizedString("pdf_report_undefined")
+
 class WBReceiptTests: XCTestCase {
     fileprivate let trip = WBTrip()
     fileprivate var receipt: WBReceipt!
@@ -23,19 +25,19 @@ class WBReceiptTests: XCTestCase {
     
     func testNoExchangeRateFormatting() {
         receipt.setPrice(NSDecimalNumber(orZero: "10"), currency: "USD")
-        XCTAssertEqual("", receipt.exchangeRateAsString())
+        XCTAssertEqual(UNDEFINED, receipt.exchangeRateAsString())
     }
     
     func testZeroExchangeRateFormatting() {
         receipt.setPrice(NSDecimalNumber(orZero: "10"), currency: "USD")
         receipt.exchangeRate = NSDecimalNumber.zero
-        XCTAssertEqual("", receipt.exchangeRateAsString())
+        XCTAssertEqual(UNDEFINED, receipt.exchangeRateAsString())
     }
     
     func testNegativeExchangeRateFormatting() {
         receipt.setPrice(NSDecimalNumber(orZero: "10"), currency: "USD")
         receipt.exchangeRate = NSDecimalNumber(orZero: "-10")
-        XCTAssertEqual("", receipt.exchangeRateAsString())
+        XCTAssertEqual(UNDEFINED, receipt.exchangeRateAsString())
     }
     
     func testExchangeRateFormatting() {

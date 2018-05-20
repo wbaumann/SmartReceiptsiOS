@@ -51,8 +51,8 @@ class NetExchangedPricePlusTaxTests: XCTestCase {
     
     func testNoExchange() {
         receiptEUR.exchangeRate = nil
-        XCTAssertEqual("", column.value(from: receiptEUR, forCSV: true))
-        XCTAssertEqual("", column.value(from: receiptEUR, forCSV: false))
+        XCTAssertEqual(UNDEFINED, column.value(from: receiptEUR, forCSV: true))
+        XCTAssertEqual(UNDEFINED, column.value(from: receiptEUR, forCSV: false))
     }
     
     func testPriceWithTax() {
