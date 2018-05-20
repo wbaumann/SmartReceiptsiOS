@@ -83,7 +83,7 @@
     XCTAssertFalse([self.db.filesManager fileExistsForReceipt:receipt]);
 
     WBTrip *reloaded = [self.db tripWithName:receipt.trip.name];
-    XCTAssertEqualObjects([[Price alloc] initWithCurrencyCode:@"USD"].currencyFormattedPrice, reloaded.formattedPrice);
+    XCTAssertEqualObjects(@"", reloaded.formattedPrice);
 }
 
 @end

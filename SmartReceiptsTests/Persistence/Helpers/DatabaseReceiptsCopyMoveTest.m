@@ -93,7 +93,7 @@
     XCTAssertEqual(1, [self.db allReceiptsForTrip:self.destinationTrip].count);
 
     WBTrip *fetchedSource = [self.db tripWithName:self.sourceTrip.name];
-    XCTAssertEqualObjects([[Price alloc] initWithCurrencyCode:@"USD"].currencyFormattedPrice, fetchedSource.formattedPrice);
+    XCTAssertEqualObjects(@"", fetchedSource.formattedPrice);
 
     WBTrip *fetchedDestination = [self.db tripWithName:self.destinationTrip.name];
     XCTAssertEqualObjects(self.testReceiptPrice.currencyFormattedPrice, fetchedDestination.formattedPrice);

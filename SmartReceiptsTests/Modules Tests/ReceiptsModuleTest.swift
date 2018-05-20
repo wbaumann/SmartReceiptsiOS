@@ -76,7 +76,10 @@ class ReceiptsModuleTest: XCTestCase {
     }
     
     func testPresenterToRouter() {
-//        presenter.setupView(data: WBTrip())
+        let trip = WBTrip()
+        trip.name = "tripName"
+        
+        presenter.setupView(data:trip)
         
         presenter.createReceiptCameraSubject.onNext()
         presenter.importReceiptFileSubject.onNext()

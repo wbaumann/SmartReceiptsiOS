@@ -52,10 +52,6 @@ class EditReceiptPresenter: Presenter {
                 self.router.openCategories()
             }).disposed(by: bag)
         
-        settingsTap.subscribe(onNext: { [unowned self] in
-            self.router.openSettings()
-        }).disposed(by: bag)
-        
         tooltipTap.subscribe(onNext: { [unowned self] in
             let authModule = self.router.openAuth()
             _ = authModule.successAuth

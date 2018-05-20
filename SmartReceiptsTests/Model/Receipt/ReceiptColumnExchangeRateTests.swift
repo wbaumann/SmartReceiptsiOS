@@ -31,8 +31,8 @@ class ReceiptColumnExchangeRateTests: XCTestCase {
     func testNegativeExchangeRate() {
         receipt.setPrice(NSDecimalNumber(string: "12"), currency: "EUR")
         receipt.exchangeRate = .minusOne()
-        XCTAssertEqual("", column.value(from: receipt, forCSV: false))
-        XCTAssertEqual("", column.value(from: receipt, forCSV: true))
+        XCTAssertEqual(UNDEFINED, column.value(from: receipt, forCSV: false))
+        XCTAssertEqual(UNDEFINED, column.value(from: receipt, forCSV: true))
     }
     
     func testProvidedExchangeRateForSameCurrency() {

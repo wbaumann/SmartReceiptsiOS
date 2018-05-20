@@ -11,7 +11,7 @@ import XCTest
 import RxSwift
 import RxBlocking
 
-fileprivate let TIME_OUT: RxTimeInterval = 5
+fileprivate let TIME_OUT: RxTimeInterval = 10
 
 class CognitoServiceTests: XCTestCase {
     let service = CognitoService()
@@ -39,8 +39,8 @@ class CognitoServiceTests: XCTestCase {
         
         XCTAssertNotNil(token)
         XCTAssertNotNil(user)
-        XCTAssertTrue(token!.isEqual(to: user!.cognitoToken!))
-        XCTAssertEqual(identityId, user!.identityId)
+        XCTAssertTrue(token!.isEqual(to: user.cognitoToken!))
+        XCTAssertEqual(identityId, user.identityId)
     }
     
     func testCognitoTokenUnauth() {
