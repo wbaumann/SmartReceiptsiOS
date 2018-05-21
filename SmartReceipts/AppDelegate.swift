@@ -30,13 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
         AppDelegate.instance = self
-        FirebaseApp.configure()
-        enableAnalytics()
-        AppTheme.customizeOnAppLoad()
+        AppMonitorServiceFactory().createAppMonitor().configure()
         
-        #if DEBUG
-            Crashlytics.sharedInstance().debugMode = true
-        #endif
+        enableAnalytics()
+        
+        AppTheme.customizeOnAppLoad()
+        Crashlytics.sharedInstance().debugMode = DebugStates.isDebug
         
         _ = FileManager.initTripsDirectory()
         
