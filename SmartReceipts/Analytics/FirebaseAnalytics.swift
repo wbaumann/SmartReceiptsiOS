@@ -16,7 +16,7 @@ class FirebaseAnalytics: AnalyticsServiceProtocol {
         // Configure Firebase
         // May conflict with Google services, here is a solution:
         if FirebaseApp.app() == nil {
-            FirebaseApp.configure()
+            AppMonitorServiceFactory().createAppMonitor().configure()
         }
     }
     

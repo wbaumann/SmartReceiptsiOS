@@ -157,6 +157,7 @@
 		7185AEF81EFC1CC90038ED2A /* ReceiptMoveCopyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF21EFC1CC90038ED2A /* ReceiptMoveCopyPresenter.swift */; };
 		7185AEF91EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF31EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift */; };
 		7185AEFA1EFC1CC90038ED2A /* ReceiptMoveCopyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF41EFC1CC90038ED2A /* ReceiptMoveCopyView.swift */; };
+		718ADF6520B33823005FEF4F /* AppMonitorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718ADF6420B33823005FEF4F /* AppMonitorService.swift */; };
 		718D2DF11F7D459B00A69B6E /* PushNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D2DF01F7D459B00A69B6E /* PushNotificationService.swift */; };
 		7190B9131F60427200F6CE7F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7190B90D1F60427200F6CE7F /* Auth.storyboard */; };
 		7190B9141F60427200F6CE7F /* AuthDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7190B90E1F60427200F6CE7F /* AuthDisplayData.swift */; };
@@ -734,6 +735,7 @@
 		7185AEF21EFC1CC90038ED2A /* ReceiptMoveCopyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyPresenter.swift; sourceTree = "<group>"; };
 		7185AEF31EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyRouter.swift; sourceTree = "<group>"; };
 		7185AEF41EFC1CC90038ED2A /* ReceiptMoveCopyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyView.swift; sourceTree = "<group>"; };
+		718ADF6420B33823005FEF4F /* AppMonitorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMonitorService.swift; sourceTree = "<group>"; };
 		718D2DF01F7D459B00A69B6E /* PushNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationService.swift; sourceTree = "<group>"; };
 		7190B90D1F60427200F6CE7F /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		7190B90E1F60427200F6CE7F /* AuthDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthDisplayData.swift; sourceTree = "<group>"; };
@@ -1347,6 +1349,7 @@
 				71D7D43D1FAA062300437CA9 /* ScanService.swift */,
 				71E7303C1FF7E53000471287 /* MigrationService.swift */,
 				71F98AE0204737CB007AF935 /* DataValidationService.swift */,
+				718ADF6420B33823005FEF4F /* AppMonitorService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -3024,6 +3027,7 @@
 				719B1FE11EF603190049BD71 /* ReceiptsView.swift in Sources */,
 				EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */,
 				712A84EA1F783E9300D988E7 /* Dictionary+Extensions.swift in Sources */,
+				718ADF6520B33823005FEF4F /* AppMonitorService.swift in Sources */,
 				7111ADA71F0EC38100DF77ED /* SettingsInteractor.swift in Sources */,
 				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
 				71BC45511F9FB38C003A5BD5 /* LocalScansTracker.swift in Sources */,
