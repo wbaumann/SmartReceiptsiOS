@@ -11,8 +11,8 @@ import Foundation
 class DataValidationService {
     
     func isValidPDF(data: Data) -> Bool {
-        let dataProvider = CGDataProvider(data: data as CFData)
-        guard let document = CGPDFDocument(dataProvider!) else { return false }
+        guard let dataProvider = CGDataProvider(data: data as CFData) else { return false }
+        guard let document = CGPDFDocument(dataProvider) else { return false }
         return document.isEncrypted || !document.isUnlocked ? false : true
     }
     
