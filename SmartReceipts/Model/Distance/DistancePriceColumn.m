@@ -21,7 +21,7 @@
     for (Distance *distance in rows) {
         [collection addPrice:distance.totalRate];
     }
-    return [collection currencyFormattedPrice];
+    return [collection currencyFormattedTotalPriceWithIgnoreEmpty:NO];
 }
 
 @end

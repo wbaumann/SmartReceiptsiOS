@@ -191,7 +191,7 @@ final class TripsView: FetchedTableViewController {
         
         fetchedModelAdapter.rx.didInsert.subscribe(onNext: { [unowned self] action in
             self.presenter.tripDetailsSubject.onNext(action.object as! WBTrip)
-        }).addDisposableTo(bag)
+        }).disposed(by: bag)
     }
     
     override func delete(object: Any!, at indexPath: IndexPath) {
