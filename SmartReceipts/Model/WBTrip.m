@@ -87,7 +87,7 @@
 }
 
 - (NSString *)formattedPrice {
-    return self.pricesSummary.currencyFormattedPrice;
+    return [self.pricesSummary currencyFormattedTotalPriceWithIgnoreEmpty:NO];
 }
 
 - (BOOL)dateOutsideTripBounds:(NSDate *)date {
