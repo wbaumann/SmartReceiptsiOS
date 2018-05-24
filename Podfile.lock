@@ -141,7 +141,7 @@ DEPENDENCIES:
   - Zip
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - AWSCognito
     - AWSCore
@@ -226,6 +226,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: c908b17cbf42fcd2598ee1adfc49bae25444d88a
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 269d3ceaaa67387607fd86dc3285bc39d8d8c227
+PODFILE CHECKSUM: b5d9ba04c0ab520129be92d3be0c68306e6b64cb
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.2
