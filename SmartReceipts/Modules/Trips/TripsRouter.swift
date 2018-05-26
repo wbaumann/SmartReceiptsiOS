@@ -18,6 +18,12 @@ class TripsRouter: Router {
         openModal(module: module)
     }
     
+    func openPrivacySettings() {
+        let module = AppModules.settings.build()
+        module.presenter.setupView(data: ShowSettingsOption.privacySection)
+        openModal(module: module)
+    }
+    
     func openBackup() {
         let module = AppModules.backup.build()
         openModal(module: module)

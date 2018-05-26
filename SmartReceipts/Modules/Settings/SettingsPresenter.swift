@@ -37,7 +37,7 @@ class SettingsPresenter: Presenter {
         
         alertSubject.subscribe(onNext: { [unowned self] alert in
             self.router.openAlert(title: alert.title, message: alert.message)
-        }).addDisposableTo(bag)
+        }).disposed(by: bag)
     }
     
     func retrivePlusSubscriptionPrice() -> Observable<String> {
@@ -60,6 +60,7 @@ class SettingsPresenter: Presenter {
 enum ShowSettingsOption {
     case reportCSVOutputSection
     case distanceSection
+    case privacySection
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

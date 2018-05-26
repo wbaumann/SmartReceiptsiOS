@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidFinishLaunching(_ application: UIApplication) {
         AppDelegate.instance = self
         AppMonitorServiceFactory().createAppMonitor().configure()
-        
+    
+        applyPrivacySettings()
         enableAnalytics()
         
         AppTheme.customizeOnAppLoad()
@@ -185,5 +186,10 @@ extension AppDelegate {
     func enableAnalytics() {
         AnalyticsManager.sharedManager.register(newService: FirebaseAnalytics())
         AnalyticsManager.sharedManager.register(newService: AnalyticsLogger())
+    }
+    
+    func applyPrivacySettings() {
+        AnalyticsManager.sharedManager.setAnalyticsSending(allowed: WBPreferences.analyticsEnabled())
+        if WBPreferences.crashTrackingEnabled() { Fabric.with([Crashlytics.self]) }
     }
 }

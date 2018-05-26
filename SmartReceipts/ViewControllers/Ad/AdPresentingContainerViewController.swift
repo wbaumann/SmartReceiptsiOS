@@ -54,6 +54,12 @@ class AdPresentingContainerViewController: UIViewController {
     
     private func loadAd() {
         let request = GADRequest()
+        
+        let extras = GADExtras()
+        let npaParameter = WBPreferences.adPersonalizationEnabled() ? "0" : "1"
+        extras.additionalParameters = ["npa": npaParameter]
+        request.register(extras)
+        
         request.testDevices = [kGADSimulatorID, "b5c0a5fccf83835150ed1fac6dd636e6"]
         bannerView?.adSize = getAdSize()
         bannerView?.load(request)

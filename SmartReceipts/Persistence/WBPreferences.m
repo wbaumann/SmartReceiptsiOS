@@ -79,6 +79,12 @@ static NSString *const BOOL_OMIT_DEFAULT_PDF_TABLE = @"OmitDefaultPDFTable";
 static NSString *const BOOL_AUTO_SCANS_ENABLED = @"AutoScansEnabled";
 static NSString *const BOOL_ALLOW_SAVE_IMAGES_FOR_ACCURACY = @"AllowSaveImagesForAccuracy";
 
+//Privacy
+static NSString *const BOOL_ANALYTICS_ENABLED = @"EnableAnalytics";
+static NSString *const BOOL_CRASH_TRACKING_ENABLED = @"EnableCrashTracking";
+static NSString *const BOOL_AD_PERSONALIZATION_ENABLED = @"EnableAdPersonalization";
+
+
 static NSArray *__emailFields;
 
 // there is no 100% guaranteed way to figure entry type so we have to hardcode them
@@ -160,7 +166,11 @@ static NSDictionary *getEntryTypes() {
             BOOL_OMIT_DEFAULT_PDF_TABLE: tBool,
             
             BOOL_AUTO_SCANS_ENABLED: tBool,
-            BOOL_ALLOW_SAVE_IMAGES_FOR_ACCURACY: tBool
+            BOOL_ALLOW_SAVE_IMAGES_FOR_ACCURACY: tBool,
+            
+            BOOL_ANALYTICS_ENABLED: tBool,
+            BOOL_CRASH_TRACKING_ENABLED: tBool,
+            BOOL_AD_PERSONALIZATION_ENABLED: tBool
     };
 }
 
@@ -237,6 +247,10 @@ static NSDictionary *getDefaultValues() {
             
             BOOL_AUTO_SCANS_ENABLED: @YES,
             BOOL_ALLOW_SAVE_IMAGES_FOR_ACCURACY: @YES,
+            
+            BOOL_ANALYTICS_ENABLED: @YES,
+            BOOL_CRASH_TRACKING_ENABLED: @YES,
+            BOOL_AD_PERSONALIZATION_ENABLED: @NO
     };
 }
 
@@ -615,6 +629,30 @@ static NSUserDefaults* instance() {
 
 + (void)setAllowDataEntryOutsideTripBounds:(BOOL)value{
     [instance() setBool:value forKey:BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS];
+}
+    
++ (BOOL)analyticsEnabled {
+    return [instance() boolForKey:BOOL_ANALYTICS_ENABLED];
+}
+
++ (void)setAnalyticsEnabled:(BOOL)value{
+    [instance() setBool:value forKey:BOOL_ANALYTICS_ENABLED];
+}
+
++ (BOOL)crashTrackingEnabled {
+    return [instance() boolForKey:BOOL_CRASH_TRACKING_ENABLED];
+}
+
++ (void)setCrashTrackingEnabled:(BOOL)value{
+    [instance() setBool:value forKey:BOOL_CRASH_TRACKING_ENABLED];
+}
+
++ (BOOL)adPersonalizationEnabled {
+    return [instance() boolForKey:BOOL_AD_PERSONALIZATION_ENABLED];
+}
+
++ (void)setAdPersonalizationEnabled:(BOOL)value{
+    [instance() setBool:value forKey:BOOL_AD_PERSONALIZATION_ENABLED];
 }
 
 + (void) save {

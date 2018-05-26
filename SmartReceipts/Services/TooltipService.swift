@@ -14,6 +14,8 @@ class TooltipService {
     fileprivate let MOVE_TO_GENERATE_DISMISSED = "move.to.generate.dismissed"
     fileprivate let REPORT_GENERATED = "move.to.generate.dismissed"
     fileprivate let CONFIGURE_OCR = "ocr.configure.dismissed"
+    fileprivate let PRIVACY_OPENED = "privacy.opened"
+    fileprivate let PRIVACY_DISSMISED = "privacy.dissmissed"
     
     fileprivate var database: Database!
     
@@ -32,6 +34,7 @@ class TooltipService {
     func tooltipText(for module: AppModules) -> String? {
         
         switch module {
+        case .trips: return tooltipPrivacy()
         default: break
         }
         
@@ -44,6 +47,10 @@ class TooltipService {
             return LocalizedString("tooltip.receipts.generate.advice")
         }
         return nil
+    }
+    
+    func tooltipPrivacy() -> String? {
+        return privacyTooltipUsed() ? nil : LocalizedString("tooltip_review_privacy")
     }
 }
 
@@ -63,6 +70,14 @@ extension TooltipService {
         mark(key: CONFIGURE_OCR)
     }
     
+    func markPrivacyOpened() {
+        mark(key: PRIVACY_OPENED)
+    }
+    
+    func markPrivacyDismissed() {
+        mark(key: PRIVACY_DISSMISED)
+    }
+    
     // Get
     func moveToGenerateTrigger(for trip: WBTrip) -> Bool {
         let hasReceipts = database.allReceipts(for: trip).count > 0
@@ -71,6 +86,10 @@ extension TooltipService {
     
     func configureOCRDismissed() -> Bool {
         return marked(key: CONFIGURE_OCR)
+    }
+    
+    func privacyTooltipUsed() -> Bool {
+        return marked(key: PRIVACY_OPENED) || marked(key: PRIVACY_DISSMISED)
     }
     
     // Private
