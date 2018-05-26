@@ -155,5 +155,15 @@
     
 + (BOOL)allowSaveImageForAccuracy;
 + (void)setAllowSaveImageForAccuracy:(BOOL)value;
+    
+// Privacy Settings
++ (BOOL)analyticsEnabled;
++ (void)setAnalyticsEnabled:(BOOL)value;
+    
++ (BOOL)crashTrackingEnabled;
++ (void)setCrashTrackingEnabled:(BOOL)value;
+    
++ (BOOL)adPersonalizationEnabled;
++ (void)setAdPersonalizationEnabled:(BOOL)value;
 
 @end

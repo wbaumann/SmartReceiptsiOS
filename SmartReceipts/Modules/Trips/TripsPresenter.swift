@@ -73,6 +73,11 @@ class TripsPresenter: Presenter {
                 self.router.openDebug()
             }).disposed(by: bag)
         
+        view.privacyTap
+            .subscribe(onNext: {
+                self.router.openPrivacySettings()
+            }).disposed(by: bag)
+        
         tripDetailsSubject
             .do(onNext: { [unowned self] trip in
                 self.interactor.markLastOpened(trip: trip)
@@ -84,6 +89,7 @@ class TripsPresenter: Presenter {
             .subscribe(onNext: { trip in
                 self.router.openEdit(trip: trip)
             }).disposed(by: bag)
+        
         
     }
     

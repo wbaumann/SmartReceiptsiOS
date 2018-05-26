@@ -427,6 +427,14 @@
 "settings_track_cost_center_summaryOn" = "Include Cost Center For Reports";
 "settings_track_cost_center_summaryOff" = "Don\'t Include Cost Center For Reports";
 "settings.user.id.label" = "User ID";
+"pref_privacy_header" = "Privacy";
+"pref_about_privacy_policy_title" = "Privacy Policy";
+"pref_privacy_enable_analytics_title" = "Share Analytics";
+"pref_privacy_enable_analytics_summary" = "With Google/Firebase Analytics";
+"pref_privacy_enable_crash_tracking_title" = "Share Crash Information";
+"pref_privacy_enable_crash_tracking_summary" = "With Google Crashlytics";
+"pref_privacy_enable_ad_personalization_title" = "Allow Ad Personalization";
+"pref_privacy_enable_ad_personalization_summary" = "With Google AdMob";
 
 "trips.controller.daily.total" = "Daily Total: %@";
 "trips.controller.distance.total" = "Distance Total: %@";
@@ -438,6 +446,7 @@
 "trip.tab.generate.title" = "GENERATE";
 
 "tooltip.receipts.generate.advice" = "Use the 'Generate' tab to create your reports";
+"tooltip_review_privacy" = "Tap to review your privacy settings";
 
 "login.fields.hint.email" = "Please enter a valid address:";
 "login.fields.hint.password" = "Passwords must be at least 8 characters:";

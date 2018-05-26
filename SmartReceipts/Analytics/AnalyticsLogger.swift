@@ -11,11 +11,15 @@ import Foundation
 class AnalyticsLogger: AnalyticsServiceProtocol {
     
     func record(event: Event) {
-        // format: "Logging Event: {} with datapoints: {}" event.name, datapoints
+        // format: "Logging Event: {} with datapoints: {}" event.nwame, datapoints
         let datapointLabelString = event.datapointsToFormattedString()
         let logString = "Logging Event: {\(event.name)} with datapoints: \(datapointLabelString))"
         
         Logger.verbose(logString)
+    }
+    
+    func setAnalyticsSending(allowed: Bool) {
+        
     }
 }
 

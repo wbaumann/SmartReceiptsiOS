@@ -15,6 +15,7 @@ protocol AnalyticsServiceProtocol: class {
     ///
     /// - Parameter event: the Event to record
     func record(event: Event)
+    func setAnalyticsSending(allowed: Bool)
 }
 
 /// Main class for logging events
@@ -44,6 +45,12 @@ class AnalyticsManager: NSObject {
     func record(event: Event) {
         for aService in analyticsServices {
             aService.record(event: event)
+        }
+    }
+    
+    func setAnalyticsSending(allowed: Bool) {
+        for aService in analyticsServices {
+            aService.setAnalyticsSending(allowed: allowed)
         }
     }
 }

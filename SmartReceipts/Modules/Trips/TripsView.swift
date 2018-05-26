@@ -16,6 +16,7 @@ protocol TripsViewInterface {
     var settingsTap: Observable<Void> { get }
     var autoScansTap: Observable<Void> { get }
     var backupTap: Observable<Void> { get }
+    var privacyTap: Observable<Void> { get }
     var addButton: UIButton { get }
     var debugButton: UIBarButtonItem { get }
 }
@@ -27,6 +28,8 @@ final class TripsView: FetchedTableViewController {
     @IBOutlet fileprivate weak var _debugButton: UIBarButtonItem!
     @IBOutlet fileprivate weak var _addButton: UIButton!
     @IBOutlet fileprivate weak var editItem: UIBarButtonItem!
+    
+    fileprivate let privacySubject = PublishSubject<Void>()
     
     private var priceWidth: CGFloat = 0
     private let dateFormatter = WBDateFormatter()
@@ -50,6 +53,7 @@ final class TripsView: FetchedTableViewController {
             self.setEditing(!self.isEditing, animated: true)
         }).disposed(by: bag)
         
+        configurePrivacyTooltip()
         configureDebug()
     }
     
@@ -96,6 +100,26 @@ final class TripsView: FetchedTableViewController {
         menu.useFullScreenWidth = true
         menu.fullScreenInsetLeft = 8
         menu.fullScreenInsetRight = UIScreen.main.bounds.width - menuWidth
+    }
+    
+    func configurePrivacyTooltip() {
+        guard let tooltip = TooltipService.shared.tooltipText(for: .trips) else { return }
+        let tooltipView = TooltipView.showOn(view: view, text: tooltip)
+        tableView.contentInset = UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0)
+
+        weak var weakTable = tableView
+        tooltipView.rx.tap
+            .do(onNext: {
+                TooltipService.shared.markPrivacyOpened()
+                weakTable?.contentInset = UIEdgeInsets.zero
+            }).bind(to: privacySubject)
+            .disposed(by: bag)
+        
+        tooltipView.rx.close
+            .subscribe(onNext: {
+                TooltipService.shared.markPrivacyDismissed()
+                weakTable?.contentInset = UIEdgeInsets.zero
+            }).disposed(by: bag)
     }
     
     @IBAction private func menuTap() {
@@ -226,6 +250,7 @@ extension TripsView: TripsViewInterface {
     var settingsTap: Observable<Void> { return  displayData.settingsTap }
     var autoScansTap: Observable<Void> { return  displayData.autoScansTap }
     var backupTap: Observable<Void> { return  displayData.backupTap }
+    var privacyTap: Observable<Void> { return privacySubject }
     var debugButton: UIBarButtonItem { return _debugButton }
     var addButton: UIButton { return _addButton }
 }

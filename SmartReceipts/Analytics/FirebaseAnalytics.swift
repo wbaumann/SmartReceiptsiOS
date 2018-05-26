@@ -32,4 +32,8 @@ class FirebaseAnalytics: AnalyticsServiceProtocol {
         // Firebase tracks all crashes automatically. For iOS, exceptions will be tracked as an "error" events
         Analytics.logEvent(event.name, parameters: parameters)
     }
+    
+    func setAnalyticsSending(allowed: Bool) {
+        FirebaseConfiguration.shared.analyticsConfiguration.setAnalyticsCollectionEnabled(allowed)
+    }
 }

@@ -9,6 +9,8 @@
 import Eureka
 import RxSwift
 import StoreKit
+import Crashlytics
+import Fabric
 
 fileprivate let IMAGE_OPTIONS = [512, 1024, 2048, 0]
 
@@ -476,6 +478,38 @@ class SettingsFormView: FormViewController {
             WBPreferences.setLayoutShowReceiptAttachmentMarker(row.value!)
         })
             
+        +++ Section(LocalizedString("pref_privacy_header"))
+        <<< openModuleButton(LocalizedString("pref_about_privacy_policy_title"), route: .privacyPolicy)
+        
+        <<< DescribedSwitchRow() { row in
+            row.title = LocalizedString("pref_privacy_enable_analytics_title")
+            row.onSubtitle = LocalizedString("pref_privacy_enable_analytics_summary")
+            row.offSubtitle = row.onSubtitle
+            row.value = WBPreferences.analyticsEnabled()
+        }.onChange({ row in
+            WBPreferences.setAnalyticsEnabled(row.value!)
+            AnalyticsManager.sharedManager.setAnalyticsSending(allowed: row.value!)
+        })
+            
+        <<< DescribedSwitchRow() { row in
+            row.title = LocalizedString("pref_privacy_enable_crash_tracking_title")
+            row.onSubtitle = LocalizedString("pref_privacy_enable_crash_tracking_summary")
+            row.offSubtitle = row.onSubtitle
+            row.value = WBPreferences.crashTrackingEnabled()
+        }.onChange({ row in
+            WBPreferences.setCrashTrackingEnabled(row.value!)
+            _ = row.value! ? Fabric.with([Crashlytics.self]) : Fabric.with([])
+        })
+            
+        <<< DescribedSwitchRow() { row in
+            row.hidden = Condition(booleanLiteral: hasValidSubscription)
+            row.title = LocalizedString("pref_privacy_enable_ad_personalization_title")
+            row.onSubtitle = LocalizedString("pref_privacy_enable_ad_personalization_summary")
+            row.offSubtitle = row.onSubtitle
+            row.value = WBPreferences.adPersonalizationEnabled()
+        }.onChange({ row in
+            WBPreferences.setAdPersonalizationEnabled(row.value!)
+        })
     
         +++ Section(LocalizedString("settings.feedback.section.label"))
         <<< openModuleButton(LocalizedString("settings.feedback.sendLove.label"),
@@ -488,9 +522,6 @@ class SettingsFormView: FormViewController {
             onTap: { [unowned self] in
             self.settingsView.sendFeedback(subject: FeedbackBugreportEmailSubject)
         })
-    
-        +++ Section(LocalizedString("settings.about.section.label"))
-        <<< openModuleButton(LocalizedString("settings.about.privacy.label"), route: .privacyPolicy)
     }
     
     private func imageOptions() -> [String] {
@@ -548,6 +579,8 @@ class SettingsFormView: FormViewController {
                     self.tableView.scrollToRow(at: IndexPath(row: 0, section: 6), at: .top, animated: false)
                 case .distanceSection:
                     self.tableView.scrollToRow(at: IndexPath(row: 0, section: 8), at: .top, animated: false)
+                case .privacySection:
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 10), at: .top, animated: false)
                 }
             }
         }
