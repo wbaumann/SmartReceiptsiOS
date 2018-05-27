@@ -54,7 +54,8 @@ class TripsPresenter: Presenter {
                     .delay(VIEW_CONTROLLER_TRANSITION_DELAY, scheduler: MainScheduler.instance)
                     .flatMap({ _ -> Observable<UNAuthorizationStatus> in
                         PushNotificationService.shared.authorizationStatus()
-                    }).flatMap({ status -> Observable<Void> in
+                    }).observeOn(MainScheduler.instance)
+                    .flatMap({ status -> Observable<Void> in
                         let text = LocalizedString("push.request.alert.text")
                         return status == .notDetermined ? UIAlertController.showInfo(text: text) : Observable<Void>.just()
                     }).subscribe(onNext: { [unowned self] in
