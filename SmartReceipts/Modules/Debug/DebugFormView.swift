@@ -102,6 +102,13 @@ class DebugFormView: FormViewController {
             Crashlytics.sharedInstance().debugMode = false
             Crashlytics.sharedInstance().crash()
         })
+        
+        <<< ButtonRow() { row in
+            row.title = "Initiate Exception"
+        }.onCellSelection({ _, _ in
+            Crashlytics.sharedInstance().debugMode = false
+            Crashlytics.sharedInstance().throwException()
+        })
     }
     
     var scanObserver: AnyObserver<Scan> {
