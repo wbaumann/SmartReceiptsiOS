@@ -48,18 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Logger.info("Language: \(Locale.preferredLanguages.first!)")
         
-        NSSetUncaughtExceptionHandler { exception in
-            RateApplication.sharedInstance().markAppCrash()
-            
-            var message = exception.description
-            message += "\n"
-            message += exception.callStackSymbols.description
-            Logger.error(message, file: "UncaughtExcepetion", function: "onUncaughtExcepetion", line: 0)
-            Crashlytics.sharedInstance().recordCustomExceptionName(exception.name.rawValue, reason: exception.reason, frameArray: [])
-            
-            let errorEvent = ErrorEvent(exception: exception)
-            AnalyticsManager.sharedManager.record(event: errorEvent)
-        }
+        setupCustomExceptionHandler()
         
         purchaseService.cacheSubscriptionValidation()
         purchaseService.logPurchases()
@@ -178,6 +167,22 @@ extension AppDelegate {
                     _ = UIAlertController.showInfo(text: text, on: viewController).subscribe()
                     Logger.error("app.delegate.import.error")
                 })
+        }
+    }
+    
+    fileprivate func setupCustomExceptionHandler() {
+        // Catches most but not all fatal errors
+        NSSetUncaughtExceptionHandler { exception in
+            RateApplication.sharedInstance().markAppCrash()
+            
+            var message = exception.description
+            message += "\n"
+            message += exception.callStackSymbols.description
+            Logger.error(message, file: "UncaughtExcepetion", function: "onUncaughtExcepetion", line: 0)
+            Crashlytics.sharedInstance().recordCustomExceptionName(exception.name.rawValue, reason: exception.reason, frameArray: [])
+            
+            let errorEvent = ErrorEvent(exception: exception)
+            AnalyticsManager.sharedManager.record(event: errorEvent)
         }
     }
 }
