@@ -18,25 +18,44 @@ class MigrationService {
     func migrate() {
         
         //MARK: Migration 0 -> 1
-        migrate(from: 0, to: 1, {
+        migrate(to: 1, {
             migrateIlligalTripNames()
         })
         
+        migrate(to: 2, {
+            migrateCustomOrderIds()
+        })
+        
+        // Commit Migration Version
+        UserDefaults.standard.set(MIGRATION_VERSION, forKey: migrationKey)
     }
     
-    private func migrate(from: Int, to: Int, _ migrationBlock: MigrationBlock) {
+    private func migrate(to: Int, _ migrationBlock: MigrationBlock) {
         let currentVersion = UserDefaults.standard.integer(forKey: migrationKey)
-        if from == currentVersion && to == MIGRATION_VERSION {
+        if currentVersion < MIGRATION_VERSION && currentVersion < to {
             migrationBlock()
+            
         }
     }
     
     // MARK: - Private Interface
-    
+
     func migrateIlligalTripNames() {
         for trip in Database.sharedInstance().allTrips() as! [WBTrip] {
             trip.name = WBTextUtils.omitIllegalCharacters(trip.name)
             Database.sharedInstance().update(trip)
+        }
+    }
+    
+    func migrateCustomOrderIds() {
+        for trip in Database.sharedInstance().allTrips() as! [WBTrip] {
+            let receipts = Array(Database.sharedInstance().allReceipts(for: trip).reversed()) as! [WBReceipt]
+            if Database.sharedInstance().deleteReceipts(for: trip) {
+                for receipt in receipts {
+                    receipt.objectId = 0
+                    Database.sharedInstance().save(receipt)
+                }
+            }
         }
     }
     

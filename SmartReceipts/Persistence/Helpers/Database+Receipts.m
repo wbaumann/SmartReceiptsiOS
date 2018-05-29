@@ -184,6 +184,14 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
     return extraValue;
 }
 
+- (BOOL)deleteReceiptsForTrip:(WBTrip *)trip {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self deleteReceiptsForTrip:trip usingDatabase:db];
+    }];
+    return result;
+}
+
 - (BOOL)deleteReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:ReceiptsTable.TABLE_NAME];
     [delete where:ReceiptsTable.COLUMN_PARENT value:trip.name];

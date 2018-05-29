@@ -27,8 +27,21 @@ class AppMonitorServiceFactory {
 class FirebaseAppMonitorService: AppMonitorService {
     func configure() {
         FirebaseApp.configure()
+        enableAnalytics()
+        applyPrivacySettings()
+    }
+    
+    private func enableAnalytics() {
+        AnalyticsManager.sharedManager.register(newService: FirebaseAnalytics())
+        AnalyticsManager.sharedManager.register(newService: AnalyticsLogger())
+    }
+    
+    private func applyPrivacySettings() {
+        AnalyticsManager.sharedManager.setAnalyticsSending(allowed: WBPreferences.analyticsEnabled())
+        if WBPreferences.crashTrackingEnabled() { Fabric.with([Crashlytics.self]) }
     }
 }
+
 
 class NoOpAppMonitorService: AppMonitorService {
     func configure() {}

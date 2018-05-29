@@ -21,9 +21,16 @@ class MigrationServiceTest: XCTestCase {
         super.tearDown()
     }
     
-    func testMigratedIlligalTripNames() {
+    func testMigratedOnceIlligalTripNames() {
         migrationService.migrate()
-        XCTAssertTrue(migrationService.migratedIlligalTripNames)
+        migrationService.migrate()
+        XCTAssertEqual(migrationService.migrateIlligalTripNamesCalls, 1)
+    }
+    
+    func testMigratedOnceCustomOrderIds() {
+        migrationService.migrate()
+        migrationService.migrate()
+        XCTAssertEqual(migrationService.migrateCustomOrderIdsCalls, 1)
     }
     
 }
