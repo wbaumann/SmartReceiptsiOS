@@ -8,7 +8,7 @@
 
 import Foundation
 
-let MIGRATION_VERSION = 1
+let MIGRATION_VERSION = 2
 let TOUCH_AREA: CGFloat = 44
 
 let UI_MARGIN_8: CGFloat = 8

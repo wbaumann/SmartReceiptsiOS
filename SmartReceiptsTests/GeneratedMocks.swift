@@ -1409,6 +1409,19 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
         
     }
     
+     override func openPrivacySettings()  {
+        
+            return cuckoo_manager.call("openPrivacySettings()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.openPrivacySettings()
+                    }
+                })
+        
+    }
+    
      override func openBackup()  {
         
             return cuckoo_manager.call("openBackup()",
@@ -1527,6 +1540,11 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
             return .init(stub: cuckoo_manager.createStub("openSettings()", parameterMatchers: matchers))
         }
         
+        func openPrivacySettings() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("openPrivacySettings()", parameterMatchers: matchers))
+        }
+        
         func openBackup() -> Cuckoo.StubNoReturnFunction<()> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return .init(stub: cuckoo_manager.createStub("openBackup()", parameterMatchers: matchers))
@@ -1591,6 +1609,12 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
         }
         
         @discardableResult
+        func openPrivacySettings() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("openPrivacySettings()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
         func openBackup() -> Cuckoo.__DoNotUse<Void> {
             let matchers: [Cuckoo.ParameterMatcher<Void>] = []
             return cuckoo_manager.verify("openBackup()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
@@ -1650,6 +1674,10 @@ class MockTripsRouter: TripsRouter, Cuckoo.Mock {
 
     
      override func openSettings()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func openPrivacySettings()  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     

@@ -10,9 +10,14 @@
 import Foundation
 
 class MigrationServiceTestable: MigrationService {
-    var migratedIlligalTripNames = false
+    var migrateIlligalTripNamesCalls = 0
+    var migrateCustomOrderIdsCalls = 0
     
     override func migrateIlligalTripNames() {
-        migratedIlligalTripNames = true
+        migrateIlligalTripNamesCalls += 1
+    }
+    
+    override func migrateCustomOrderIds() {
+        migrateCustomOrderIdsCalls += 1
     }
 }
