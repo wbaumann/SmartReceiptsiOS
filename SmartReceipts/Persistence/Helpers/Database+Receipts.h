@@ -8,6 +8,8 @@
 
 #import "Database.h"
 
+extern NSInteger const kDaysToOrderFactor;
+
 @class WBReceipt;
 @class WBTrip;
 @class FMDatabase;
@@ -33,6 +35,8 @@
 - (BOOL)moveReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;
 - (BOOL)swapReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo;
 - (BOOL)reorderReceipt:(WBReceipt *)receiptOne withReceipt:(WBReceipt *)receiptTwo;
+- (NSInteger)receiptsCountInOrderIdGroup:(NSInteger)idGroup;
+- (NSInteger)receiptsCountInOrderIdGroup:(NSInteger)idGroup usingDatabase:(FMDatabase *)database;
 - (NSUInteger)nextReceiptID;
 
 /**

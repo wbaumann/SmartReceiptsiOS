@@ -23,7 +23,7 @@
 #import "Constants.h"
 #import "SmartReceipts-Swift.h"
 
-static NSInteger const kDaysToOrderFactor = 1000;
+NSInteger const kDaysToOrderFactor = 1000;
 static NSString * const kGreaterCompare = @" > ";
 static NSString * const kGreaterOrEqualCompare = @" >= ";
 
@@ -300,6 +300,25 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
         result &= [self setCustomOrderId:newCustomOrderId forReceipt:receiptOne usingDatabase:database];
         return result;
     }
+}
+
+- (NSInteger)receiptsCountInOrderIdGroup:(NSInteger)idGroup {
+    __block NSInteger result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self receiptsCountInOrderIdGroup:idGroup usingDatabase:db];
+    }];
+    return result;
+}
+
+- (NSInteger)receiptsCountInOrderIdGroup:(NSInteger)idGroup usingDatabase:(FMDatabase *)database {
+    NSString *like = [NSString stringWithFormat:@"'%lu%%'", idGroup];
+    NSArray *components = @[
+                            @"SELECT COUNT(*) FROM ", ReceiptsTable.TABLE_NAME,
+                            @" WHERE ", @"CAST(", ReceiptsTable.COLUMN_CUSTOM_ORDER_ID,  @" AS TEXT) LIKE ", like];
+    
+    
+    NSString *query = [components componentsJoinedByString:@""];
+    return [database intForQuery:query];
 }
 
 

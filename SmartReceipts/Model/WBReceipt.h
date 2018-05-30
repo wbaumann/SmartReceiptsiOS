@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSDecimalNumber *exchangeRate;
 @property (nonatomic, strong, readonly, nonnull) Currency *currency;
 @property (nonatomic, readonly) NSString *omittedName;
-@property (nonatomic, readonly) NSInteger customOrderId;
+@property (nonatomic) NSInteger customOrderId;
 
 - (id)initWithId:(NSUInteger)rid
             name:(NSString *)name
