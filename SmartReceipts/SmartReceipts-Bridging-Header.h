@@ -19,6 +19,8 @@
 #import "DatabaseUpgradeToVersion12.h"
 #import "DatabaseUpgradeToVersion13.h"
 
+#import "NSDate+Calculations.h"
+
 #import "WBDynamicPicker.h"
 #import "CategoryCell.h"
 

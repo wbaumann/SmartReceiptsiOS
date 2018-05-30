@@ -50,11 +50,12 @@ class MigrationService {
     func migrateCustomOrderIds() {
         for trip in Database.sharedInstance().allTrips() as! [WBTrip] {
             let receipts = Array(Database.sharedInstance().allReceipts(for: trip).reversed()) as! [WBReceipt]
-            if Database.sharedInstance().deleteReceipts(for: trip) {
-                for receipt in receipts {
-                    receipt.objectId = 0
-                    Database.sharedInstance().save(receipt)
-                }
+            for receipt in receipts {
+                let idGroup = (receipt.date as NSDate).days()
+                let receiptsCount = Database.sharedInstance().receiptsCount(inOrderIdGroup: idGroup)
+                let newOrderId = idGroup * kDaysToOrderFactor + receiptsCount + 1
+                receipt.customOrderId = newOrderId
+                Database.sharedInstance().save(receipt)
             }
         }
     }
