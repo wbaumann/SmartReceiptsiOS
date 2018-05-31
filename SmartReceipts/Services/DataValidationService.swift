@@ -13,7 +13,7 @@ class DataValidationService {
     func isValidPDF(data: Data) -> Bool {
         guard let dataProvider = CGDataProvider(data: data as CFData) else { return false }
         guard let document = CGPDFDocument(dataProvider) else { return false }
-        return document.isEncrypted || !document.isUnlocked ? false : true
+        return !document.isUnlocked ? false : true
     }
     
     func isValidPDF(url: URL) -> Bool {
