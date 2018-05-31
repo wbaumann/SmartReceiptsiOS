@@ -312,6 +312,11 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
 
 - (NSInteger)receiptsCountInOrderIdGroup:(NSInteger)idGroup usingDatabase:(FMDatabase *)database {
     NSString *like = [NSString stringWithFormat:@"'%lu%%'", idGroup];
+    
+    
+    // Selects count of receipts where custom_order_id starts with custom order id group (days).
+    // For example, if custom_order_id is 17651001, group id is 17651
+
     NSArray *components = @[
                             @"SELECT COUNT(*) FROM ", ReceiptsTable.TABLE_NAME,
                             @" WHERE ", @"CAST(", ReceiptsTable.COLUMN_CUSTOM_ORDER_ID,  @" AS TEXT) LIKE ", like];
