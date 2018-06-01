@@ -28,8 +28,10 @@ class TableContentRow: UIView {
     }
     
     func widthFor(value: String) -> CGFloat {
+        contentLabel?.lineBreakMode = .byWordWrapping
+        contentLabel?.numberOfLines = 0
         contentLabel?.text = value
-        let size = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 100)
+        let size = CGSize(width: 20, height: CGFloat.greatestFiniteMagnitude)
         let fitSize = contentLabel?.sizeThatFits(size)
         return fitSize!.width + (frame.width - contentLabel!.frame.width)
     }

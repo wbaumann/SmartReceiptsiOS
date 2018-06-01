@@ -50,21 +50,21 @@ class CategoryCurrencyColumn: CategoryColumn {
 
 class CategoryPriceColumn: CategoryColumn {
     override func valueFrom(receipts: [WBReceipt]) -> String {
-        var total = NSDecimalNumber.zero
-        for receipt in receipts {
-            total = total.adding(receipt.price().amount)
+        let total = PricesCollection()
+        for rec in receipts {
+            total.addPrice(rec.price())
         }
-        return Price.stringFrom(amount: total)
+        return total.amountAsString()
     }
 }
 
 class CategoryTaxColumn: CategoryColumn {
     override func valueFrom(receipts: [WBReceipt]) -> String {
-        var total = NSDecimalNumber.zero
-        for receipt in receipts {
-            total = total.adding(receipt.tax()!.amount)
+        let total = PricesCollection()
+        for rec in receipts {
+            total.addPrice(rec.tax())
         }
-        return Price.stringFrom(amount: total)
+        return total.amountAsString()
     }
 }
 
