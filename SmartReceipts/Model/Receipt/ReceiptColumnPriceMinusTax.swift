@@ -26,7 +26,7 @@ class ReceiptColumnPriceMinusTax : ReceiptColumn {
                 collection.subtractPrice(receipt.tax())
             }
         }
-        return collection.currencyFormattedPrice()
+        return collection.amountAsString()
     }
     
 }

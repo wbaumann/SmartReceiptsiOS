@@ -62,6 +62,10 @@ class PricesCollection: Price {
         return codes.joined(separator: "; ")
     }
     
+    func currenciesCount() -> Int {
+        return totals.count
+    }
+    
     fileprivate func add(_ amount: NSDecimalNumber, currency: String) {
         let total = totals[currency] ?? NSDecimalNumber.zero
         let newTotal = total.adding(amount)
@@ -99,6 +103,18 @@ class PricesCollection: Price {
             return currencyFormattedPrice() == other.currencyFormattedPrice()
         } else {
             return false
+        }
+    }
+    
+    override func amountAsString() -> String {
+        if currenciesCount() > 1 {
+            return currencyFormattedTotalPrice()
+        } else {
+            var total = NSDecimalNumber.zero
+            for (_, value) in totals {
+                total = total.adding(value)
+            }
+            return Price.stringFrom(amount: total)
         }
     }
 }

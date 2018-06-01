@@ -18,6 +18,6 @@ class ReceiptColumnPrice: ReceiptColumn {
         for rec in rows as! [WBReceipt] {
             total.addPrice(rec.price())
         }
-        return total.currencyFormattedTotalPrice(ignoreEmpty: false)
+        return forCSV ? total.currencyFormattedTotalPrice(ignoreEmpty: false) : total.amountAsString()
     }
 }

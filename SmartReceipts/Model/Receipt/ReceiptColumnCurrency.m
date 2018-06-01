@@ -20,7 +20,7 @@
     for (WBReceipt *receipt in rows) {
         [total addPrice:receipt.price];
     }
-    return [total formattedCurrencies];
+    return [total currenciesCount] > 1 ? [total formattedCurrencies] : @"";
 }
 
 @end
