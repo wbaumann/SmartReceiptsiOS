@@ -34,10 +34,7 @@ class CategoryColumn: Column {
 class CategoryCodeCloumn: CategoryColumn {
     override func valueFrom(receipts: [WBReceipt]) -> String {
         guard let firstReceipt = receipts.first else { return "" }
-        for category in Database.sharedInstance().listAllCategories() {
-            if category.name == firstReceipt.category.name { return category.code }
-        }
-        return ""
+        return firstReceipt.category.code ?? ""
     }
 }
 
