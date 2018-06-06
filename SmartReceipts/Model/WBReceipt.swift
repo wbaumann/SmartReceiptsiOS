@@ -149,7 +149,7 @@ extension WBReceipt: ExchangedTaxed {
             return tax()
         }
 
-        guard let rate = exchangeRate, let tax = taxAmount, rate.isPositiveAmount() && tax.isPositiveAmount() else {
+        guard let rate = exchangeRate, let tax = taxAmount, rate.isPositiveAmount() else {
             return nil
         }
         
