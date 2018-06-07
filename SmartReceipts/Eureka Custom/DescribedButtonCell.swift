@@ -18,11 +18,15 @@ class DescribedButtonCell: ButtonCellOf<String> {
         textLabel?.isHidden = true
         update()
         
-        title.sizeToFit()
-        subtitle.sizeToFit()
+        let buttonArrowWidth: CGFloat = 51
+        let estimateWidth = UIScreen.main.bounds.width - buttonArrowWidth - UI_MARGIN_16
+        let estimateSize = CGSize(width: estimateWidth, height: CGFloat.greatestFiniteMagnitude)
+        
+        let titleHeight = title.sizeThatFits(estimateSize).height
+        let subtitleHeight = subtitle.sizeThatFits(estimateSize).height
         
         let margins = UI_MARGIN_16
-        let cellHeight = title.bounds.height + subtitle.bounds.height + margins
+        let cellHeight = titleHeight + subtitleHeight + margins
         height = { cellHeight }
     }
     

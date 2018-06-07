@@ -24,11 +24,16 @@ class DescribedSwitchCell: Cell<Bool>, CellType {
         switcher.addTarget(self, action: #selector(DescribedSwitchCell.switchAction), for: .valueChanged)
         
         update()
-        title.sizeToFit()
-        subtitle.sizeToFit()
+        
+        let switchWidth: CGFloat = 51
+        let estimateWidth = UIScreen.main.bounds.width - switchWidth - UI_MARGIN_16 * 2 + UI_MARGIN_8
+        let estimateSize = CGSize(width: estimateWidth, height: CGFloat.greatestFiniteMagnitude)
+        
+        let titleHeight = title.sizeThatFits(estimateSize).height
+        let subtitleHeight = subtitle.sizeThatFits(estimateSize).height
         
         let margins = UI_MARGIN_16 * 2
-        let cellHeight = title.bounds.height + subtitle.bounds.height + margins
+        let cellHeight = titleHeight + subtitleHeight + margins
         height = { cellHeight }
     }
     
