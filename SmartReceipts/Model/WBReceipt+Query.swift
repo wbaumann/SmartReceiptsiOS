@@ -17,6 +17,7 @@ extension WBReceipt {
     
     class func selectAllQueryForTrip(_ trip: WBTrip?, isAscending: Bool) -> DatabaseQueryBuilder {
         let paymentMethodIdAsName = "\(PaymentMethodsTable.Name)_\(PaymentMethodsTable.Column.Id)"
+        let paymentMethodCustomOrderIdName = "\(PaymentMethodsTable.Name)_\(PaymentMethodsTable.Column.CustomOrderId)"
         let categoryIdAsName = "\(CategoriesTable.Name)_\(CategoriesTable.Column.Id)"
         let categoryCodeAsName = "\(CategoriesTable.Name)_\(CategoriesTable.Column.Code)"
         let categoryNameAsName = "\(CategoriesTable.Name)_\(CategoriesTable.Column.Name)"
@@ -27,7 +28,8 @@ extension WBReceipt {
         let whereTrip = trip != nil ? " WHERE \(ReceiptsTable.Column.Parent) = \"\(trip!.name!)\"" : ""
         
         let query = "SELECT * FROM \(ReceiptsTable.Name) AS RCPTS" +
-            " LEFT JOIN (SELECT \(PaymentMethodsTable.Column.Method), \(PaymentMethodsTable.Column.Id) AS \(paymentMethodIdAsName)" +
+            " LEFT JOIN (SELECT \(PaymentMethodsTable.Column.Method), \(PaymentMethodsTable.Column.Id) AS \(paymentMethodIdAsName)," +
+            " \(PaymentMethodsTable.Column.CustomOrderId) AS \(paymentMethodCustomOrderIdName)" +
             " FROM \(PaymentMethodsTable.Name)) AS PM" +
             " ON RCPTS.\(ReceiptsTable.Column.PaymentMethodId) = PM.\(paymentMethodIdAsName)" +
             " LEFT JOIN (SELECT \(CategoriesTable.Column.Name) AS \(categoryNameAsName)," +

@@ -97,6 +97,7 @@ enum PaymentMethodsTable {
     enum  Column {
         static let Id = "id"
         static let Method = "method"
+        static let CustomOrderId = "custom_order_id"
     }
 }
 

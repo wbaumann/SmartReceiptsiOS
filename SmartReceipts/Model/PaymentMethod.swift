@@ -12,11 +12,13 @@ class PaymentMethod: NSObject, FetchedModel, Pickable {
     
     var objectId: UInt = 0
     var method: String!
+    var customOrderId: Int = 0
    
     required init(objectId: UInt, method: String) {
         super.init()
         self.objectId = objectId
         self.method = method
+
     }
     
     override required init() {
@@ -26,6 +28,7 @@ class PaymentMethod: NSObject, FetchedModel, Pickable {
     func loadData(from resultSet: FMResultSet!) {
         objectId = UInt(resultSet.int(forColumn: PaymentMethodsTable.Column.Id))
         method = resultSet.string(forColumn: PaymentMethodsTable.Column.Method)
+        customOrderId = Int(resultSet.int(forColumn: PaymentMethodsTable.Column.CustomOrderId))
     }
     
     override func isEqual(_ object: Any?) -> Bool {

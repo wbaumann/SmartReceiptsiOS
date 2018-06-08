@@ -29,6 +29,7 @@ struct PaymentMethodsTableStruct {
     __unsafe_unretained NSString *const TABLE_NAME;
     __unsafe_unretained NSString *const COLUMN_ID;
     __unsafe_unretained NSString *const COLUMN_METHOD;
+    __unsafe_unretained NSString *const COLUMN_CUSTOM_ORDER_ID;
 };
 extern const struct PaymentMethodsTableStruct PaymentMethodsTable;
 

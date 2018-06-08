@@ -48,7 +48,7 @@
 
 - (FetchedModelAdapter *)fetchedAdapterForPaymentMethods {
     DatabaseQueryBuilder *selectAll = [DatabaseQueryBuilder selectAllStatementForTable:PaymentMethodsTable.TABLE_NAME];
-    [selectAll orderBy:PaymentMethodsTable.COLUMN_METHOD ascending:YES];
+    [selectAll orderBy:PaymentMethodsTable.COLUMN_CUSTOM_ORDER_ID ascending:YES];
     return [self createAdapterUsingQuery:selectAll forModel:[PaymentMethod class]];
 }
 
@@ -123,6 +123,21 @@
         [result addObject:pm.presentedValue];
     }
     return [result copy];
+}
+
+- (BOOL)hasPaymentMethodCustomOrderIdColumn {
+    __block BOOL hasColumn = NO;
+    [self.databaseQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        NSString *query = [NSString stringWithFormat:@"PRAGMA table_info(%@)", PaymentMethodsTable.TABLE_NAME];
+        FMResultSet *result = [db executeQuery:query];
+        while (result.next) {
+            NSString *name = [result stringForColumn:@"name"];
+            if ([name isEqualToString:PaymentMethodsTable.COLUMN_CUSTOM_ORDER_ID]) {
+                hasColumn = YES;
+            }
+        }
+    }];
+    return hasColumn;
 }
 
 @end

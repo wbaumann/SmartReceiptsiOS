@@ -70,6 +70,7 @@
 		712D7E071FB793F900DE83EB /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 712D7E051FB793F900DE83EB /* Localizable.stringsdict */; };
 		712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */; };
 		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
+		7135E08A20C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */; };
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
 		714042061FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714042051FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift */; };
 		714042081FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714042071FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift */; };
@@ -629,6 +630,7 @@
 		713360431EF310C90076D319 /* GenerateReportModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportModuleTest.swift; sourceTree = "<group>"; };
 		713360441EF310C90076D319 /* TripDistancesModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDistancesModuleTest.swift; sourceTree = "<group>"; };
 		713360451EF310C90076D319 /* TripsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsModuleTest.swift; sourceTree = "<group>"; };
+		7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion17.swift; sourceTree = "<group>"; };
 		713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCSVGeneratorTest.swift; sourceTree = "<group>"; };
 		713D4C751F626B3C00F29C4C /* AuthServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceTests.swift; sourceTree = "<group>"; };
 		713D4C771F62AA0700F29C4C /* AuthModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthModuleTest.swift; sourceTree = "<group>"; };
@@ -2519,6 +2521,7 @@
 				A7AFB2411CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift */,
 				5757D60F1E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift */,
 				71DB1469205E954C009B83E7 /* DatabaseUpgradeToVersion16.swift */,
+				7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */,
 			);
 			path = Migrations;
 			sourceTree = "<group>";
@@ -3245,6 +3248,7 @@
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */,
 				EA0677F61B04E61A0058A326 /* StringPickableWrapper.m in Sources */,
 				71E2B57D1EEDD516001D02F1 /* TripsDisplayData.swift in Sources */,
+				7135E08A20C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift in Sources */,
 				712A84E81F783BF300D988E7 /* APIAdapter.swift in Sources */,
 				7111ADAC1F0EC4AF00DF77ED /* SettingsFormView.swift in Sources */,
 				71DB146A205E954C009B83E7 /* DatabaseUpgradeToVersion16.swift in Sources */,

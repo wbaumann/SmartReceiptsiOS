@@ -227,11 +227,15 @@ static NSString* checkNoData(NSString* str) {
     
     // Payment Method
     
-    NSString *paymentMethodIdAsName = [NSString stringWithFormat:@"%@_%@", PaymentMethodsTable.TABLE_NAME, PaymentMethodsTable.COLUMN_ID];
+    NSString *paymentMethods = [NSString stringWithFormat:@"%@_", PaymentMethodsTable.TABLE_NAME];
+    NSString *paymentMethodIdAsName = [paymentMethods stringByAppendingString:PaymentMethodsTable.COLUMN_ID];
+    
     NSUInteger paymentMethodId = [resultSet intForColumn:paymentMethodIdAsName];
     NSString *paymentMethodName = [resultSet stringForColumn:PaymentMethodsTable.COLUMN_METHOD];
+    
     if (paymentMethodName) {
-        [self setPaymentMethod:[[PaymentMethod alloc] initWithObjectId:paymentMethodId method:paymentMethodName]];
+        PaymentMethod *pm =[[PaymentMethod alloc] initWithObjectId:paymentMethodId method:paymentMethodName];
+        [self setPaymentMethod:pm];
     }
 }
 
