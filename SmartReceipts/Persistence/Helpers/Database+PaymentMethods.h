@@ -23,5 +23,6 @@
 - (PaymentMethod *)paymentMethodByName:(NSString *)name;
 - (BOOL)hasPaymentMethodWithName:(NSString *)name;
 - (NSArray<NSString *> *)allPaymentMethodsAsStrings;
+- (BOOL)hasPaymentMethodCustomOrderIdColumn;
 
 @end

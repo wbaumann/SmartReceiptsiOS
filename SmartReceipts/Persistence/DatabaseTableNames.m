@@ -27,7 +27,8 @@ const struct TripsTableStruct TripsTable = {
 const struct PaymentMethodsTableStruct PaymentMethodsTable = {
         .TABLE_NAME = @"paymentmethods",
         .COLUMN_ID = @"id",
-        .COLUMN_METHOD = @"method"
+        .COLUMN_METHOD = @"method",
+        .COLUMN_CUSTOM_ORDER_ID = @"custom_order_id"
 };
 
 
