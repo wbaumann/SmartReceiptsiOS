@@ -164,7 +164,7 @@
 
 - (BOOL)deleteCategory:(WBCategory *)category {
     DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:CategoriesTable.TABLE_NAME];
-    [delete where:CategoriesTable.COLUMN_NAME value:category.name];
+    [delete where:CategoriesTable.COLUMN_ID value:@(category.objectId)];
     BOOL result = [self executeQuery:delete];
     if (result) {
         [self notifyDeleteOfModel:category];

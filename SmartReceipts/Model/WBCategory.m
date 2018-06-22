@@ -81,7 +81,7 @@ static NSString *const COLUMN_CUSTOM_ORDER_ID = @"custom_order_id";
 
     WBCategory *category = other;
 
-    return [self.name isEqualToString:category.name];
+    return [self.name isEqualToString:category.name] && self.objectId == category.objectId;
 }
 
 - (NSUInteger)hash {
