@@ -3659,7 +3659,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UX5Z7CLP7J;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3713,7 +3713,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Smart Receipts LLC (UX5Z7CLP7J)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UX5Z7CLP7J;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
