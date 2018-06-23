@@ -21,7 +21,7 @@ class SettingsInteractor: Interactor {
     
     func restoreSubscription() -> Observable<SubscriptionValidation> {
         purchaseService.resetCache()
-        return purchaseService.validateSubscription()
+        return purchaseService.forceValidateSubscription()
             .do(onNext: { validation in
                 if validation.valid {
                     NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)

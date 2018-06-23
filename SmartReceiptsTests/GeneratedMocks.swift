@@ -3028,6 +3028,19 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         
     }
     
+     override func forceValidateSubscription()  -> Observable<SubscriptionValidation> {
+        
+            return cuckoo_manager.call("forceValidateSubscription() -> Observable<SubscriptionValidation>",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> Observable<SubscriptionValidation> in
+                        let () = args
+                        return o.forceValidateSubscription()
+                    }
+                })
+        
+    }
+    
      override func verifySubscription(receipt: ReceiptInfo)  -> VerifySubscriptionResult {
         
             return cuckoo_manager.call("verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult",
@@ -3036,6 +3049,32 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
                     return { (args) -> VerifySubscriptionResult in
                         let (receipt) = args
                         return o.verifySubscription(receipt: receipt)
+                    }
+                })
+        
+    }
+    
+     override func markAppStoreInteracted()  {
+        
+            return cuckoo_manager.call("markAppStoreInteracted()",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) in
+                        let () = args
+                         o.markAppStoreInteracted()
+                    }
+                })
+        
+    }
+    
+     override func isAppStoreInteracted()  -> Bool {
+        
+            return cuckoo_manager.call("isAppStoreInteracted() -> Bool",
+                parameters: (),
+                original: observed.map { o in
+                    return { (args) -> Bool in
+                        let () = args
+                        return o.isAppStoreInteracted()
                     }
                 })
         
@@ -3140,9 +3179,24 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
             return .init(stub: cuckoo_manager.createStub("validateSubscription() -> Observable<SubscriptionValidation>", parameterMatchers: matchers))
         }
         
+        func forceValidateSubscription() -> Cuckoo.StubFunction<(), Observable<SubscriptionValidation>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("forceValidateSubscription() -> Observable<SubscriptionValidation>", parameterMatchers: matchers))
+        }
+        
         func verifySubscription<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.StubFunction<(ReceiptInfo), VerifySubscriptionResult> where M1.MatchedType == ReceiptInfo {
             let matchers: [Cuckoo.ParameterMatcher<(ReceiptInfo)>] = [wrap(matchable: receipt) { $0 }]
             return .init(stub: cuckoo_manager.createStub("verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult", parameterMatchers: matchers))
+        }
+        
+        func markAppStoreInteracted() -> Cuckoo.StubNoReturnFunction<()> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("markAppStoreInteracted()", parameterMatchers: matchers))
+        }
+        
+        func isAppStoreInteracted() -> Cuckoo.StubFunction<(), Bool> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return .init(stub: cuckoo_manager.createStub("isAppStoreInteracted() -> Bool", parameterMatchers: matchers))
         }
         
     }
@@ -3271,9 +3325,27 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         }
         
         @discardableResult
+        func forceValidateSubscription() -> Cuckoo.__DoNotUse<Observable<SubscriptionValidation>> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("forceValidateSubscription() -> Observable<SubscriptionValidation>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
         func verifySubscription<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<VerifySubscriptionResult> where M1.MatchedType == ReceiptInfo {
             let matchers: [Cuckoo.ParameterMatcher<(ReceiptInfo)>] = [wrap(matchable: receipt) { $0 }]
             return cuckoo_manager.verify("verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func markAppStoreInteracted() -> Cuckoo.__DoNotUse<Void> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("markAppStoreInteracted()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+        }
+        
+        @discardableResult
+        func isAppStoreInteracted() -> Cuckoo.__DoNotUse<Bool> {
+            let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+            return cuckoo_manager.verify("isAppStoreInteracted() -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
         }
         
     }
@@ -3359,8 +3431,20 @@ class MockPurchaseService: PurchaseService, Cuckoo.Mock {
         return DefaultValueRegistry.defaultValue(for: Observable<SubscriptionValidation>.self)
     }
     
+     override func forceValidateSubscription()  -> Observable<SubscriptionValidation> {
+        return DefaultValueRegistry.defaultValue(for: Observable<SubscriptionValidation>.self)
+    }
+    
      override func verifySubscription(receipt: ReceiptInfo)  -> VerifySubscriptionResult {
         return DefaultValueRegistry.defaultValue(for: VerifySubscriptionResult.self)
+    }
+    
+     override func markAppStoreInteracted()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func isAppStoreInteracted()  -> Bool {
+        return DefaultValueRegistry.defaultValue(for: Bool.self)
     }
     
 }
