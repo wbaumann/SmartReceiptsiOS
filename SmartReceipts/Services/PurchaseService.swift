@@ -14,6 +14,7 @@ import SwiftyStoreKit
 let PRODUCT_OCR_10 = "ios_ocr_purchase_10"
 let PRODUCT_OCR_50 = "ios_ocr_purchase_50"
 let PRODUCT_PLUS = "ios_plus_sku_2"
+fileprivate let APPSTORE_INTERACTED = "appstore_interacted"
 
 typealias SubscriptionValidation = (valid: Bool, expireTime: Date?)
 
@@ -64,6 +65,8 @@ class PurchaseService {
                 }
             }
             return Disposables.create()
+        }).do(onNext: { [weak self] _ in
+            self?.markAppStoreInteracted()
         })
     }
     
@@ -71,7 +74,8 @@ class PurchaseService {
         return restorePurchases()
             .map({ purchases -> Bool in
                 return purchases.contains(where: { $0.productId == PRODUCT_PLUS })
-            }).do(onNext: { restored in
+            }).do(onNext: { [weak self] restored in
+                self?.markAppStoreInteracted()
                 if restored {
                     Logger.debug("Successfuly restored Subscription")
                     NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
@@ -82,6 +86,7 @@ class PurchaseService {
     func purchaseSubscription() -> Observable<PurchaseDetails> {
         return purchase(prodcutID: PRODUCT_PLUS)
             .do(onNext: { [weak self] _ in
+                self?.markAppStoreInteracted()
                 self?.resetCache()
                 Logger.debug("Successful restore PLUS Subscription")
                 NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
@@ -147,7 +152,7 @@ class PurchaseService {
     }
     
     func completeTransactions() {
-        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+        SwiftyStoreKit.completeTransactions(atomically: false) { purchases in
             for purchase in purchases {
                 switch purchase.transaction.transactionState {
                 case .purchased, .restored:
@@ -172,6 +177,8 @@ class PurchaseService {
     }
     
     func logPurchases() {
+        if !isAppStoreInteracted() { return }
+        
         let service: AppleReceiptValidator.VerifyReceiptURLType = DebugStates.isDebug ? .sandbox : .production
         let validator = AppleReceiptValidator(service: service, sharedSecret: nil)
         SwiftyStoreKit.verifyReceipt(using: validator) { [weak self] receiptResult in
@@ -274,6 +281,11 @@ class PurchaseService {
     }
     
     func validateSubscription() -> Observable<SubscriptionValidation> {
+        if !isAppStoreInteracted() { return Observable<SubscriptionValidation>.just((false, nil)) }
+        return forceValidateSubscription()
+    }
+    
+    func forceValidateSubscription() -> Observable<SubscriptionValidation> {
         if DebugStates.subscription() {
             return Observable<SubscriptionValidation>.just((true, Date.distantFuture))
         } else if let validation = cachedValidation {
@@ -286,6 +298,7 @@ class PurchaseService {
             SwiftyStoreKit.verifyReceipt(using: validator) { receiptResult in
                 switch receiptResult {
                 case .success(let receipt):
+                    self?.markAppStoreInteracted()
                     guard let purchaseResult = self?.verifySubscription(receipt: receipt) else { return }
                     switch purchaseResult {
                     case .purchased(let expiryDate, _):
@@ -304,11 +317,21 @@ class PurchaseService {
             return Disposables.create()
         }).catchError({ error -> Observable<SubscriptionValidation> in
             return Observable<SubscriptionValidation>.just((false, nil))
-        }).do(onNext: { cachedValidation = $0 })
+        }).do(onNext: { [weak self] in
+            cachedValidation = $0
+        })
     }
     
     func verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult {
         return SwiftyStoreKit.verifySubscription(ofType: .nonRenewing(validDuration: TimeInterval.year), productId: PRODUCT_PLUS, inReceipt: receipt)
+    }
+    
+    func markAppStoreInteracted() {
+        UserDefaults.standard.set(true, forKey: APPSTORE_INTERACTED)
+    }
+    
+    func isAppStoreInteracted() -> Bool {
+        return UserDefaults.standard.bool(forKey: APPSTORE_INTERACTED)
     }
 }
 
