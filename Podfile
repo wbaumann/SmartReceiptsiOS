@@ -42,6 +42,8 @@ def pods
     # Google
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'GoogleAPIClientForREST'
+    pod 'GoogleSignIn'
     
     # Purchases
     pod 'SwiftyStoreKit'
