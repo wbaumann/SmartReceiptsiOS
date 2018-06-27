@@ -261,6 +261,11 @@
 		71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */; };
 		71E2B5801EEDD516001D02F1 /* TripsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5791EEDD516001D02F1 /* TripsRouter.swift */; };
 		71E2B5811EEDD516001D02F1 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B57A1EEDD516001D02F1 /* TripsView.swift */; };
+		71E2E57920DFD79A00BDE501 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2E57820DFD79A00BDE501 /* Syncable.swift */; };
+		71E2E57B20DFD83E00BDE501 /* DefaultSyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2E57A20DFD83E00BDE501 /* DefaultSyncState.swift */; };
+		71E2E57D20DFD88700BDE501 /* SyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2E57C20DFD88700BDE501 /* SyncState.swift */; };
+		71E2E57F20DFD8FB00BDE501 /* SyncProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2E57E20DFD8FB00BDE501 /* SyncProvider.swift */; };
+		71E2E58120E0132B00BDE501 /* GoogleDriveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2E58020E0132B00BDE501 /* GoogleDriveService.swift */; };
 		71E3CCE4207E9E8900C7FF2D /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3CCE3207E9E8900C7FF2D /* TimeInterval+Extensions.swift */; };
 		71E6E224201E723600463B0D /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C413D31EE6F826003CE891 /* GeneratedMocks.swift */; };
 		71E7303D1FF7E53000471287 /* MigrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E7303C1FF7E53000471287 /* MigrationService.swift */; };
@@ -853,6 +858,11 @@
 		71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsPresenter.swift; sourceTree = "<group>"; };
 		71E2B5791EEDD516001D02F1 /* TripsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsRouter.swift; sourceTree = "<group>"; };
 		71E2B57A1EEDD516001D02F1 /* TripsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
+		71E2E57820DFD79A00BDE501 /* Syncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
+		71E2E57A20DFD83E00BDE501 /* DefaultSyncState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSyncState.swift; sourceTree = "<group>"; };
+		71E2E57C20DFD88700BDE501 /* SyncState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncState.swift; sourceTree = "<group>"; };
+		71E2E57E20DFD8FB00BDE501 /* SyncProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncProvider.swift; sourceTree = "<group>"; };
+		71E2E58020E0132B00BDE501 /* GoogleDriveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveService.swift; sourceTree = "<group>"; };
 		71E3CCE3207E9E8900C7FF2D /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		71E6299D20259D630049668B /* PurchaseServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseServiceTest.swift; sourceTree = "<group>"; };
 		71E6E20C201E721E00463B0D /* OCRConfigurationModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRConfigurationModuleTest.swift; sourceTree = "<group>"; };
@@ -1336,6 +1346,7 @@
 		714901BF1F0598A300772B6F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				71E2E57720DFD6A900BDE501 /* Auto Backup */,
 				715606711FAF9BCC00E09760 /* APIs */,
 				EA259CD21B16069B00ECBD67 /* Zip */,
 				714901C01F0598B900772B6F /* CurrencyExchangeService.swift */,
@@ -1739,6 +1750,18 @@
 				71B488C11EF42AF7008872E2 /* NoTripsViewController.swift */,
 			);
 			path = Trips;
+			sourceTree = "<group>";
+		};
+		71E2E57720DFD6A900BDE501 /* Auto Backup */ = {
+			isa = PBXGroup;
+			children = (
+				71E2E57E20DFD8FB00BDE501 /* SyncProvider.swift */,
+				71E2E57820DFD79A00BDE501 /* Syncable.swift */,
+				71E2E57C20DFD88700BDE501 /* SyncState.swift */,
+				71E2E57A20DFD83E00BDE501 /* DefaultSyncState.swift */,
+				71E2E58020E0132B00BDE501 /* GoogleDriveService.swift */,
+			);
+			path = "Auto Backup";
 			sourceTree = "<group>";
 		};
 		71E8F3EE1FA12423005BD447 /* OCR Configuration */ = {
@@ -2756,11 +2779,13 @@
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
@@ -2787,11 +2812,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
@@ -2950,11 +2977,13 @@
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
@@ -2984,11 +3013,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
@@ -3142,6 +3173,7 @@
 				719B1FE01EF603190049BD71 /* ReceiptsRouter.swift in Sources */,
 				EA5963F41AF29B1A00935344 /* UIView+Search.m in Sources */,
 				71F468371EEEDB03009F6CE7 /* EditTripView.swift in Sources */,
+				71E2E57D20DFD88700BDE501 /* SyncState.swift in Sources */,
 				716138C71FD1E29300C73FB9 /* TripReportHeader.swift in Sources */,
 				7190B9151F60427200F6CE7F /* AuthInteractor.swift in Sources */,
 				EA07BF441AF3F882004D17F6 /* DecimalInputValidation.m in Sources */,
@@ -3152,8 +3184,10 @@
 				EA3C96941AEBA51200A2A5F9 /* ReportTable.m in Sources */,
 				716F07DE2034AFDF00166D63 /* BackupDisplayData.swift in Sources */,
 				71AEDDDF1EDF7FF400BAC0DD /* TripDistancesInteractor.swift in Sources */,
+				71E2E57F20DFD8FB00BDE501 /* SyncProvider.swift in Sources */,
 				71ACA7C91F5B69C90024903E /* DebugView.swift in Sources */,
 				719B1FE91EF6032D0049BD71 /* EditReceiptDisplayData.swift in Sources */,
+				71E2E57920DFD79A00BDE501 /* Syncable.swift in Sources */,
 				715606731FAF9BE500E09760 /* RecognitionAPI.swift in Sources */,
 				7185AEF91EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift in Sources */,
 				7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */,
@@ -3232,6 +3266,7 @@
 				714104E31FF43D7700C334C5 /* WBActionSheetPicker.m in Sources */,
 				EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */,
 				EA8ABE421B1A1D1700DBFA29 /* Database+Categories.m in Sources */,
+				71E2E58120E0132B00BDE501 /* GoogleDriveService.swift in Sources */,
 				71572D881F15EA41001A1301 /* ColumnsPresenter.swift in Sources */,
 				EAE9DAFD1AF8EAD100F4FE76 /* DistanceCommentColumn.m in Sources */,
 				EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */,
@@ -3299,6 +3334,7 @@
 				EA0677F61B04E61A0058A326 /* StringPickableWrapper.m in Sources */,
 				71E2B57D1EEDD516001D02F1 /* TripsDisplayData.swift in Sources */,
 				7135E08A20C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift in Sources */,
+				71E2E57B20DFD83E00BDE501 /* DefaultSyncState.swift in Sources */,
 				712A84E81F783BF300D988E7 /* APIAdapter.swift in Sources */,
 				7111ADAC1F0EC4AF00DF77ED /* SettingsFormView.swift in Sources */,
 				71DB146A205E954C009B83E7 /* DatabaseUpgradeToVersion16.swift in Sources */,

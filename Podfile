@@ -42,7 +42,8 @@ def pods
     # Google
     pod 'Fabric'
     pod 'Crashlytics'
-    pod 'GoogleAPIClientForREST'
+    pod 'GTMAppAuth'
+    pod 'GoogleAPIClientForREST/Drive'
     pod 'GoogleSignIn'
     
     # Purchases

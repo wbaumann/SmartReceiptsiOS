@@ -13,6 +13,7 @@ import UIAlertView_Blocks
 import RxSwift
 import Crashlytics
 import SwiftyStoreKit
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -54,6 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RateApplication.sharedInstance().markAppLaunch()
         PushNotificationService.shared.initialize()
         ScansPurchaseTracker.shared.initialize()
+        GoogleDriveService.shared.initialize()
+        
         MigrationService().migrate()
     }
     
@@ -89,6 +92,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 Logger.info("Loaded with unknown file")
             }
+        } else {
+            let sourceApp = options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String
+            let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
+            return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApp, annotation: annotation)
         }
         return true
     }
