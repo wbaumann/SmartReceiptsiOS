@@ -98,6 +98,7 @@
 		7151F9D620E6A2BF00C4E894 /* IdentifierMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151F9D520E6A2BF00C4E894 /* IdentifierMap.swift */; };
 		7151F9D820E6A2E500C4E894 /* MarkedForDeletionMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151F9D720E6A2E500C4E894 /* MarkedForDeletionMap.swift */; };
 		7151F9DB20E6A51200C4E894 /* SyncStatusMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151F9DA20E6A51200C4E894 /* SyncStatusMap.swift */; };
+		7151F9DD20E6B59D00C4E894 /* SyncMapsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151F9DC20E6B59D00C4E894 /* SyncMapsTests.swift */; };
 		7152DF1D1F0C24750088EE98 /* PDFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152DF1C1F0C24750088EE98 /* PDFPageView.swift */; };
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
 		7156066E1FAE67CF00E09760 /* ScanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7156066D1FAE67CF00E09760 /* ScanCell.xib */; };
@@ -676,6 +677,7 @@
 		7151F9D520E6A2BF00C4E894 /* IdentifierMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierMap.swift; sourceTree = "<group>"; };
 		7151F9D720E6A2E500C4E894 /* MarkedForDeletionMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkedForDeletionMap.swift; sourceTree = "<group>"; };
 		7151F9DA20E6A51200C4E894 /* SyncStatusMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStatusMap.swift; sourceTree = "<group>"; };
+		7151F9DC20E6B59D00C4E894 /* SyncMapsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncMapsTests.swift; sourceTree = "<group>"; };
 		7152DF1C1F0C24750088EE98 /* PDFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageView.swift; sourceTree = "<group>"; };
 		71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportShareService.swift; sourceTree = "<group>"; };
 		7156066D1FAE67CF00E09760 /* ScanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanCell.xib; sourceTree = "<group>"; };
@@ -1565,6 +1567,7 @@
 		7182CDCD1F085E4900EAA320 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				7151F9DC20E6B59D00C4E894 /* SyncMapsTests.swift */,
 				7182CDCE1F085E9B00EAA320 /* CurrencyExchangeServiceTests.swift */,
 				715936CF1F59E7FF00BD6F52 /* TooltipServiceTests.swift */,
 				713D4C751F626B3C00F29C4C /* AuthServiceTests.swift */,
@@ -3530,6 +3533,7 @@
 				71F87BC520829CA700CB9637 /* EditTripModuleTest.swift in Sources */,
 				EA888A881AFB4FD600DF2AE6 /* DatabaseTripsTest.m in Sources */,
 				EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */,
+				7151F9DD20E6B59D00C4E894 /* SyncMapsTests.swift in Sources */,
 				71F87BCF20829CAC00CB9637 /* ScanTests.swift in Sources */,
 				71F87BD320829CBA00CB9637 /* S3ServiceTests.swift in Sources */,
 				57C0EED31E2D38B0001B4758 /* Logger.swift in Sources */,
