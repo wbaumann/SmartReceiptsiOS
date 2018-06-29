@@ -9,15 +9,32 @@
 import Foundation
 
 class DefaultSyncState: SyncState {
+    private var identifierMap: IdentifierMap!
+    private var syncStatusMap: SyncStatusMap!
+    private var markedForDeletionMap: MarkedForDeletionMap!
+    private var lastModificationDate: Date?
     
-    var lastLocalModificationTime: Date { return Date() }
+    init(identifierMap: IdentifierMap, syncStatusMap: SyncStatusMap, markedForDeletionMap: MarkedForDeletionMap, lastModificationDate: Date?) {
+        self.identifierMap = identifierMap
+        self.syncStatusMap = syncStatusMap
+        self.markedForDeletionMap = markedForDeletionMap
+        self.lastModificationDate = lastModificationDate
+    }
+    
+    var lastLocalModificationTime: Date {
+        return lastModificationDate ?? Date()
+    }
+    
+    func getSyncId(provider: SyncProvider) -> String? {
+        return identifierMap.syncId(provider: provider)
+    }
     
     func isSynced(syncProvider: SyncProvider) -> Bool {
-        return false
+        return syncStatusMap.isSynced(provider: syncProvider)
     }
     
     func isMarkedForDeletion(syncProvider: SyncProvider) -> Bool {
-        return false
+        return markedForDeletionMap.isMarkedForDeletion(provider: syncProvider)
     }
     
     

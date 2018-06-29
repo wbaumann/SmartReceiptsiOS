@@ -95,6 +95,9 @@
 		714DE8A02051C83F0066EA6F /* HorizontalPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 714DE89F2051C83F0066EA6F /* HorizontalPickerCell.xib */; };
 		714DE8A3205319FF0066EA6F /* HorizontalPickerItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714DE8A2205319FF0066EA6F /* HorizontalPickerItemCell.swift */; };
 		714DE8A520531A090066EA6F /* HorizontalPickerItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 714DE8A420531A090066EA6F /* HorizontalPickerItemCell.xib */; };
+		7151F9D620E6A2BF00C4E894 /* IdentifierMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151F9D520E6A2BF00C4E894 /* IdentifierMap.swift */; };
+		7151F9D820E6A2E500C4E894 /* MarkedForDeletionMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151F9D720E6A2E500C4E894 /* MarkedForDeletionMap.swift */; };
+		7151F9DB20E6A51200C4E894 /* SyncStatusMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151F9DA20E6A51200C4E894 /* SyncStatusMap.swift */; };
 		7152DF1D1F0C24750088EE98 /* PDFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152DF1C1F0C24750088EE98 /* PDFPageView.swift */; };
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
 		7156066E1FAE67CF00E09760 /* ScanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7156066D1FAE67CF00E09760 /* ScanCell.xib */; };
@@ -670,6 +673,9 @@
 		714DE89F2051C83F0066EA6F /* HorizontalPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalPickerCell.xib; sourceTree = "<group>"; };
 		714DE8A2205319FF0066EA6F /* HorizontalPickerItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPickerItemCell.swift; sourceTree = "<group>"; };
 		714DE8A420531A090066EA6F /* HorizontalPickerItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalPickerItemCell.xib; sourceTree = "<group>"; };
+		7151F9D520E6A2BF00C4E894 /* IdentifierMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierMap.swift; sourceTree = "<group>"; };
+		7151F9D720E6A2E500C4E894 /* MarkedForDeletionMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkedForDeletionMap.swift; sourceTree = "<group>"; };
+		7151F9DA20E6A51200C4E894 /* SyncStatusMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStatusMap.swift; sourceTree = "<group>"; };
 		7152DF1C1F0C24750088EE98 /* PDFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageView.swift; sourceTree = "<group>"; };
 		71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportShareService.swift; sourceTree = "<group>"; };
 		7156066D1FAE67CF00E09760 /* ScanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanCell.xib; sourceTree = "<group>"; };
@@ -1378,6 +1384,16 @@
 			path = HorizontalPickerCell;
 			sourceTree = "<group>";
 		};
+		7151F9D920E6A2F000C4E894 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				7151F9D520E6A2BF00C4E894 /* IdentifierMap.swift */,
+				7151F9D720E6A2E500C4E894 /* MarkedForDeletionMap.swift */,
+				7151F9DA20E6A51200C4E894 /* SyncStatusMap.swift */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
 		715606711FAF9BCC00E09760 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1755,6 +1771,7 @@
 		71E2E57720DFD6A900BDE501 /* Auto Backup */ = {
 			isa = PBXGroup;
 			children = (
+				7151F9D920E6A2F000C4E894 /* Maps */,
 				71E2E57E20DFD8FB00BDE501 /* SyncProvider.swift */,
 				71E2E57820DFD79A00BDE501 /* Syncable.swift */,
 				71E2E57C20DFD88700BDE501 /* SyncState.swift */,
@@ -3116,12 +3133,14 @@
 				EA8D81B51AEA7CD200BAC943 /* ReceiptColumnReceiptIndex.m in Sources */,
 				71BC45511F9FB38C003A5BD5 /* LocalScansTracker.swift in Sources */,
 				A7F05BAA1CFC07FD0079F1AD /* NumberFormatter+Extansions.swift in Sources */,
+				7151F9DB20E6A51200C4E894 /* SyncStatusMap.swift in Sources */,
 				A7F05BA41CFC06F20079F1AD /* ReceiptColumnExchangedPrice.swift in Sources */,
 				71FB1D3F1F195D0D00742FF5 /* PaymentMethodsDisplayData.swift in Sources */,
 				EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */,
 				A7F05BCE1CFD4AE30079F1AD /* Database+Trips.swift in Sources */,
 				716F34501EE040E100D0017A /* EditDistancePresenter.swift in Sources */,
 				719B1FDD1EF603190049BD71 /* ReceiptsDisplayData.swift in Sources */,
+				7151F9D620E6A2BF00C4E894 /* IdentifierMap.swift in Sources */,
 				71E8F3F91FA12452005BD447 /* OCRConfigurationInteractor.swift in Sources */,
 				EAE725D71B022E3F00402689 /* DistancesToReceiptsConverter.m in Sources */,
 				57C0EED11E2AE972001B4758 /* CustomLogFormatter.swift in Sources */,
@@ -3422,6 +3441,7 @@
 				71AEDDE01EDF7FF400BAC0DD /* TripDistancesPresenter.swift in Sources */,
 				A7F05BB41CFC1A5D0079F1AD /* Exchanged.swift in Sources */,
 				719310481EDDC3120065B5AD /* WBPdfDrawer.m in Sources */,
+				7151F9D820E6A2E500C4E894 /* MarkedForDeletionMap.swift in Sources */,
 				570515A71E04AA7D00BB8FE4 /* FirebaseAnalytics.swift in Sources */,
 				71ACA7CC1F5B6A360024903E /* DebugFormView.swift in Sources */,
 				712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */,
