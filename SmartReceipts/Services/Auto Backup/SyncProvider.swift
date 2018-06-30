@@ -8,6 +8,19 @@
 
 import Foundation
 
-enum SyncProvider {
+fileprivate let SYNC_PROVIDER_KEY = "sync_provider_key"
+
+enum SyncProvider: Int {
     case none, googleDrive
+    
+    static var current: SyncProvider {
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: SYNC_PROVIDER_KEY)
+        }
+        
+        get {
+            let rawValue = UserDefaults.standard.integer(forKey: SYNC_PROVIDER_KEY)
+            return SyncProvider(rawValue: rawValue)!
+        }
+    }
 }

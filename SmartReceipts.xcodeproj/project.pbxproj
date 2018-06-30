@@ -99,6 +99,9 @@
 		7151F9D820E6A2E500C4E894 /* MarkedForDeletionMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151F9D720E6A2E500C4E894 /* MarkedForDeletionMap.swift */; };
 		7151F9DB20E6A51200C4E894 /* SyncStatusMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151F9DA20E6A51200C4E894 /* SyncStatusMap.swift */; };
 		7151F9DD20E6B59D00C4E894 /* SyncMapsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151F9DC20E6B59D00C4E894 /* SyncMapsTests.swift */; };
+		7151F9DF20E6DE1B00C4E894 /* BackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151F9DE20E6DE1B00C4E894 /* BackupProvider.swift */; };
+		7151F9E120E6DF0D00C4E894 /* RemoteBackupMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151F9E020E6DF0D00C4E894 /* RemoteBackupMetadata.swift */; };
+		7151F9E320E6ECD800C4E894 /* CriticalSyncError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151F9E220E6ECD800C4E894 /* CriticalSyncError.swift */; };
 		7152DF1D1F0C24750088EE98 /* PDFPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152DF1C1F0C24750088EE98 /* PDFPageView.swift */; };
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
 		7156066E1FAE67CF00E09760 /* ScanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7156066D1FAE67CF00E09760 /* ScanCell.xib */; };
@@ -250,6 +253,10 @@
 		71C014251F1AB14A005472B3 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0141F1F1AB14A005472B3 /* CategoriesPresenter.swift */; };
 		71C014261F1AB14A005472B3 /* CategoriesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C014201F1AB14A005472B3 /* CategoriesRouter.swift */; };
 		71C014271F1AB14A005472B3 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C014211F1AB14A005472B3 /* CategoriesView.swift */; };
+		71C2FD0D20E758AA00DF068E /* BackupProvidersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD0C20E758AA00DF068E /* BackupProvidersManager.swift */; };
+		71C2FD0F20E7F48C00DF068E /* BackupProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD0E20E7F48C00DF068E /* BackupProviderFactory.swift */; };
+		71C2FD1220E7F71000DF068E /* NoOpBackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD1120E7F71000DF068E /* NoOpBackupProvider.swift */; };
+		71C2FD1420E7F73500DF068E /* GoogleDriveBackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD1320E7F73500DF068E /* GoogleDriveBackupProvider.swift */; };
 		71CD20C91ED764DA006C4EE6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD20C81ED764DA006C4EE6 /* Currency.swift */; };
 		71CF7A121F1020440004F389 /* InputTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF7A111F1020440004F389 /* InputTextCell.swift */; };
 		71CF7A141F1020590004F389 /* InputTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CF7A131F1020590004F389 /* InputTextCell.xib */; };
@@ -678,6 +685,9 @@
 		7151F9D720E6A2E500C4E894 /* MarkedForDeletionMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkedForDeletionMap.swift; sourceTree = "<group>"; };
 		7151F9DA20E6A51200C4E894 /* SyncStatusMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStatusMap.swift; sourceTree = "<group>"; };
 		7151F9DC20E6B59D00C4E894 /* SyncMapsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncMapsTests.swift; sourceTree = "<group>"; };
+		7151F9DE20E6DE1B00C4E894 /* BackupProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupProvider.swift; sourceTree = "<group>"; };
+		7151F9E020E6DF0D00C4E894 /* RemoteBackupMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteBackupMetadata.swift; sourceTree = "<group>"; };
+		7151F9E220E6ECD800C4E894 /* CriticalSyncError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticalSyncError.swift; sourceTree = "<group>"; };
 		7152DF1C1F0C24750088EE98 /* PDFPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageView.swift; sourceTree = "<group>"; };
 		71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportShareService.swift; sourceTree = "<group>"; };
 		7156066D1FAE67CF00E09760 /* ScanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanCell.xib; sourceTree = "<group>"; };
@@ -849,6 +859,10 @@
 		71C0141F1F1AB14A005472B3 /* CategoriesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
 		71C014201F1AB14A005472B3 /* CategoriesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesRouter.swift; sourceTree = "<group>"; };
 		71C014211F1AB14A005472B3 /* CategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		71C2FD0C20E758AA00DF068E /* BackupProvidersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupProvidersManager.swift; sourceTree = "<group>"; };
+		71C2FD0E20E7F48C00DF068E /* BackupProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupProviderFactory.swift; sourceTree = "<group>"; };
+		71C2FD1120E7F71000DF068E /* NoOpBackupProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoOpBackupProvider.swift; sourceTree = "<group>"; };
+		71C2FD1320E7F73500DF068E /* GoogleDriveBackupProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveBackupProvider.swift; sourceTree = "<group>"; };
 		71C413D31EE6F826003CE891 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		71CD20C81ED764DA006C4EE6 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Currency.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		71CF7A111F1020440004F389 /* InputTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextCell.swift; sourceTree = "<group>"; };
@@ -1757,6 +1771,15 @@
 			path = "Receipt Image Viewer";
 			sourceTree = "<group>";
 		};
+		71C2FD1020E7F6F600DF068E /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				71C2FD1120E7F71000DF068E /* NoOpBackupProvider.swift */,
+				71C2FD1320E7F73500DF068E /* GoogleDriveBackupProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
 		71DDC2C21EEDBEAA00CFFDBC /* Trips */ = {
 			isa = PBXGroup;
 			children = (
@@ -1774,12 +1797,18 @@
 		71E2E57720DFD6A900BDE501 /* Auto Backup */ = {
 			isa = PBXGroup;
 			children = (
+				71C2FD1020E7F6F600DF068E /* Providers */,
 				7151F9D920E6A2F000C4E894 /* Maps */,
 				71E2E57E20DFD8FB00BDE501 /* SyncProvider.swift */,
+				71C2FD0E20E7F48C00DF068E /* BackupProviderFactory.swift */,
 				71E2E57820DFD79A00BDE501 /* Syncable.swift */,
 				71E2E57C20DFD88700BDE501 /* SyncState.swift */,
 				71E2E57A20DFD83E00BDE501 /* DefaultSyncState.swift */,
 				71E2E58020E0132B00BDE501 /* GoogleDriveService.swift */,
+				7151F9DE20E6DE1B00C4E894 /* BackupProvider.swift */,
+				7151F9E220E6ECD800C4E894 /* CriticalSyncError.swift */,
+				7151F9E020E6DF0D00C4E894 /* RemoteBackupMetadata.swift */,
+				71C2FD0C20E758AA00DF068E /* BackupProvidersManager.swift */,
 			);
 			path = "Auto Backup";
 			sourceTree = "<group>";
@@ -3123,6 +3152,7 @@
 				A7F05BD91CFD69640079F1AD /* PricesCollection.swift in Sources */,
 				71DF3A801F509512000CD1D6 /* NotifyMasterSplitViewController.swift in Sources */,
 				719310401EDDC2810065B5AD /* WBImageUtils.m in Sources */,
+				7151F9E120E6DF0D00C4E894 /* RemoteBackupMetadata.swift in Sources */,
 				4D380F911B61240C001B43D2 /* GADConstants.m in Sources */,
 				71E8F3FA1FA12452005BD447 /* OCRConfigurationView.swift in Sources */,
 				5726E5431E00423900F2141C /* AnalyticsManager.swift in Sources */,
@@ -3158,6 +3188,7 @@
 				EA8D819A1AEA7C3100BAC943 /* ReceiptColumnImagePath.m in Sources */,
 				EA8D81781AEA668100BAC943 /* WBTrip.m in Sources */,
 				7190B9141F60427200F6CE7F /* AuthDisplayData.swift in Sources */,
+				71C2FD1220E7F71000DF068E /* NoOpBackupProvider.swift in Sources */,
 				EA8D817C1AEA6AF000BAC943 /* ReceiptColumn.m in Sources */,
 				EA8D81A61AEA7C7D00BAC943 /* ReceiptColumnName.m in Sources */,
 				714104E81FF43D7700C334C5 /* WBDynamicPicker.m in Sources */,
@@ -3182,6 +3213,7 @@
 				7190D4521EE88CC40081CB22 /* GenerateReportPresenter.swift in Sources */,
 				EA3CF09B1AE7964900B14B73 /* NSDecimalNumber+WBNumberParse.m in Sources */,
 				71D7D4401FAA079800437CA9 /* Scan.swift in Sources */,
+				71C2FD1420E7F73500DF068E /* GoogleDriveBackupProvider.swift in Sources */,
 				7152DF1D1F0C24750088EE98 /* PDFPageView.swift in Sources */,
 				71E7303F1FF7E9C100471287 /* BlockTypes.swift in Sources */,
 				719310421EDDC2810065B5AD /* WBTextUtils.m in Sources */,
@@ -3222,6 +3254,7 @@
 				71FB1D401F195D0D00742FF5 /* PaymentMethodsInteractor.swift in Sources */,
 				EA10AD2F1B18B22000F2BCBB /* Database+Import.m in Sources */,
 				71F468341EEEDB03009F6CE7 /* EditTripInteractor.swift in Sources */,
+				71C2FD0F20E7F48C00DF068E /* BackupProviderFactory.swift in Sources */,
 				EA6677791B060FC4004D3993 /* ReceiptColumnPaymentMethod.m in Sources */,
 				716F344E1EE040E100D0017A /* EditDistanceDisplayData.swift in Sources */,
 				A7F05BAC1CFC0AB00079F1AD /* ExchangedPriced.swift in Sources */,
@@ -3258,6 +3291,7 @@
 				A78215011CFFF24C00FD644A /* NSNumber+Extensions.swift in Sources */,
 				EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */,
 				716138BB1FD1ABE900C73FB9 /* TableHeaderRow.swift in Sources */,
+				71C2FD0D20E758AA00DF068E /* BackupProvidersManager.swift in Sources */,
 				71F4683B1EEF2E55009F6CE7 /* Viperit+Extensions.swift in Sources */,
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
 				A7B6FC5D1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift in Sources */,
@@ -3400,6 +3434,7 @@
 				EAD15C7A1B0881C2003BB1F3 /* ReceiptFilesManager.m in Sources */,
 				EA183E0B1B1C9F6C00577B3D /* Database+PDFColumns.m in Sources */,
 				71CD20C91ED764DA006C4EE6 /* Currency.swift in Sources */,
+				7151F9DF20E6DE1B00C4E894 /* BackupProvider.swift in Sources */,
 				EA8D819D1AEA7C4200BAC943 /* ReceiptColumnComment.m in Sources */,
 				71C014271F1AB14A005472B3 /* CategoriesView.swift in Sources */,
 				EA07BF5F1AF4E801004D17F6 /* DistanceSummaryCell.m in Sources */,
@@ -3422,6 +3457,7 @@
 				71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */,
 				71ACA7C51F5B69C90024903E /* DebugDisplayData.swift in Sources */,
 				714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */,
+				7151F9E320E6ECD800C4E894 /* CriticalSyncError.swift in Sources */,
 				570515A11E02EB2E00BB8FE4 /* Event.swift in Sources */,
 				711E81D31FD4670B00708056 /* ReportCSVGenerator.swift in Sources */,
 				A7D6CDE71D05524200998FEF /* ReportAssetsGenerator.swift in Sources */,
