@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 
 class GoogleDriveBackupProvider: BackupProvider {
+    
     var deviceSyncId: String {
         return ""
     }

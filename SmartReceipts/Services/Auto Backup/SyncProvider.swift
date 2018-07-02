@@ -23,4 +23,13 @@ enum SyncProvider: Int {
             return SyncProvider(rawValue: rawValue)!
         }
     }
+    
+    func localizedTitle() -> String {
+        switch self {
+        case .googleDrive:
+            return LocalizedString("auto_backup_source_google_drive")
+        case .none:
+            return LocalizedString("auto_backup_source_none")
+        }
+    }
 }

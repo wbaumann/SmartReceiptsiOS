@@ -35,24 +35,28 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
     }
     
     func signIn(onUI viewController: GIDSignInUIDelegate) -> Observable<Void> {
+        signInSubject = PublishSubject<Void>()
         GIDSignIn.sharedInstance().uiDelegate = viewController
         GIDSignIn.sharedInstance().signIn()
         return signInSubject.asObserver()
     }
     
     func signOut() -> Observable<Void> {
+        signOutSubject = PublishSubject<Void>()
         return signOutSubject.asObserver()
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        gDriveService.authorizer = user.authentication.fetcherAuthorizer()
-        signInSubject = PublishSubject<Void>()
-        error != nil ? signInSubject.onError(error) : signInSubject.onNext()
+        guard let sUser = user else {
+            signInSubject.onError(error)
+            return
+        }
+        gDriveService.authorizer = sUser.authentication.fetcherAuthorizer()
+        signInSubject.onNext()
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         gDriveService.authorizer = nil
-        signOutSubject = PublishSubject<Void>()
         error != nil ? signOutSubject.onError(error) : signOutSubject.onNext()
     }
 

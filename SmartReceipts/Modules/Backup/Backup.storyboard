@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,59 +23,129 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manual backups:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jL-ZW-tf8">
-                                <rect key="frame" x="16" y="80" width="140" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaV-jy-JHb">
-                                <rect key="frame" x="16" y="111" width="343" height="72"/>
-                                <string key="text">Back up your data to keep your receipts safe! You can restore your data by importing the SmartReceipts.SMR backup file, which is generated via the "Backup" button below.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjP-Dt-4xC">
-                                <rect key="frame" x="195.5" y="203" width="110" height="38"/>
-                                <color key="backgroundColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZiJ-Xq-o3m">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hy4-S2-EGd">
+                                        <rect key="frame" x="-0.5" y="0.0" width="375" height="603"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manual backups:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jL-ZW-tf8">
+                                                <rect key="frame" x="24" y="8" width="140" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaV-jy-JHb">
+                                                <rect key="frame" x="24" y="37" width="327" height="72"/>
+                                                <string key="text">Back up your data to keep your receipts safe! You can restore your data by importing the SmartReceipts.SMR backup file, which is generated via the "Backup" button below.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning: Automatic backups are not configured! You may be at risk of losing your data." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-hQ-Fm0">
+                                                <rect key="frame" x="57" y="226" width="294" height="54"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjP-Dt-4xC">
+                                                <rect key="frame" x="197.5" y="125" width="110" height="38"/>
+                                                <color key="backgroundColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="2Pv-vD-4xC"/>
+                                                    <constraint firstAttribute="width" constant="110" id="wnL-e0-Gj9"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="IMPORT" image="download-cloud">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAU-ny-7fG">
+                                                <rect key="frame" x="67.5" y="125" width="110" height="38"/>
+                                                <color key="backgroundColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="110" id="hkm-4p-3S3"/>
+                                                    <constraint firstAttribute="height" constant="38" id="p6V-mb-axn"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="BACKUP" image="upload-cloud">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7R-zn-rLY">
+                                                <rect key="frame" x="8" y="179" width="359" height="2"/>
+                                                <color key="backgroundColor" red="0.48908943970000002" green="0.48908943970000002" blue="0.48908943970000002" alpha="0.21184815950920247" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="qlY-rB-yCG"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automatic Backups [BETA]:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h59-f1-NVn">
+                                                <rect key="frame" x="24" y="197" width="226" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert-triangle" translatesAutoresizingMaskIntoConstraints="NO" id="vXl-th-Sl1">
+                                                <rect key="frame" x="24" y="242" width="23" height="23"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="vXl-th-Sl1" secondAttribute="height" multiplier="1:1" id="3Le-NJ-26M"/>
+                                                    <constraint firstAttribute="width" constant="23" id="ibA-W3-Q6B"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xk-JH-9f5">
+                                                <rect key="frame" x="102" y="292" width="171" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="tintColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="TAP TO CONFIGURE" image="cloud-off"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="3jL-ZW-tf8" firstAttribute="top" secondItem="hy4-S2-EGd" secondAttribute="top" constant="8" id="64h-J2-r1o"/>
+                                            <constraint firstItem="6xk-JH-9f5" firstAttribute="centerX" secondItem="hy4-S2-EGd" secondAttribute="centerX" id="8MD-5o-pjy"/>
+                                            <constraint firstItem="3jL-ZW-tf8" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="leading" constant="24" id="D5R-Dm-qo9"/>
+                                            <constraint firstItem="vXl-th-Sl1" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="leading" constant="24" id="Gvb-Hl-x5x"/>
+                                            <constraint firstItem="h59-f1-NVn" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="leading" constant="24" id="IW4-3Z-5fX"/>
+                                            <constraint firstItem="6xk-JH-9f5" firstAttribute="top" secondItem="YFu-hQ-Fm0" secondAttribute="bottom" constant="12" id="Lqq-kr-LrU"/>
+                                            <constraint firstItem="c7R-zn-rLY" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="leading" constant="8" id="Mkf-x6-gmT"/>
+                                            <constraint firstItem="h59-f1-NVn" firstAttribute="top" secondItem="c7R-zn-rLY" secondAttribute="bottom" constant="16" id="SuM-9B-eOw"/>
+                                            <constraint firstItem="YFu-hQ-Fm0" firstAttribute="leading" secondItem="vXl-th-Sl1" secondAttribute="trailing" constant="10" id="WYC-2M-WOm"/>
+                                            <constraint firstItem="hjP-Dt-4xC" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="centerX" constant="10" id="XtG-yg-TFA"/>
+                                            <constraint firstItem="YFu-hQ-Fm0" firstAttribute="top" secondItem="h59-f1-NVn" secondAttribute="bottom" constant="8" id="ebb-a3-fOY"/>
+                                            <constraint firstItem="c7R-zn-rLY" firstAttribute="top" secondItem="hjP-Dt-4xC" secondAttribute="bottom" constant="16" id="fKo-Jf-hD3"/>
+                                            <constraint firstAttribute="trailing" secondItem="c7R-zn-rLY" secondAttribute="trailing" constant="8" id="jAx-tc-0AD"/>
+                                            <constraint firstItem="RAU-ny-7fG" firstAttribute="trailing" secondItem="hy4-S2-EGd" secondAttribute="centerX" constant="-10" id="nnW-ss-h2x"/>
+                                            <constraint firstItem="hjP-Dt-4xC" firstAttribute="top" secondItem="HaV-jy-JHb" secondAttribute="bottom" constant="16" id="oKp-re-hiF"/>
+                                            <constraint firstAttribute="trailing" secondItem="YFu-hQ-Fm0" secondAttribute="trailing" constant="24" id="pjy-R0-Kg3"/>
+                                            <constraint firstAttribute="trailing" secondItem="HaV-jy-JHb" secondAttribute="trailing" constant="24" id="tDS-HY-tWf"/>
+                                            <constraint firstItem="HaV-jy-JHb" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="leading" constant="24" id="yH5-Gv-PUg"/>
+                                            <constraint firstItem="RAU-ny-7fG" firstAttribute="top" secondItem="HaV-jy-JHb" secondAttribute="bottom" constant="16" id="yO8-D0-sxN"/>
+                                            <constraint firstItem="HaV-jy-JHb" firstAttribute="top" secondItem="3jL-ZW-tf8" secondAttribute="bottom" constant="8" id="yYg-Su-Wxv"/>
+                                            <constraint firstItem="vXl-th-Sl1" firstAttribute="centerY" secondItem="YFu-hQ-Fm0" secondAttribute="centerY" id="yyF-WZ-7E9"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="2Pv-vD-4xC"/>
-                                    <constraint firstAttribute="width" constant="110" id="wnL-e0-Gj9"/>
+                                    <constraint firstAttribute="bottom" secondItem="hy4-S2-EGd" secondAttribute="bottom" id="Api-Dk-Bm1"/>
+                                    <constraint firstItem="hy4-S2-EGd" firstAttribute="top" secondItem="ZiJ-Xq-o3m" secondAttribute="top" id="F01-V2-RmW"/>
+                                    <constraint firstItem="hy4-S2-EGd" firstAttribute="leading" secondItem="ZiJ-Xq-o3m" secondAttribute="leading" id="UbJ-wU-Ojx"/>
+                                    <constraint firstAttribute="trailing" secondItem="hy4-S2-EGd" secondAttribute="trailing" id="eYf-A1-ISE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="IMPORT" image="download-cloud">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAU-ny-7fG">
-                                <rect key="frame" x="69.5" y="203" width="110" height="38"/>
-                                <color key="backgroundColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="hkm-4p-3S3"/>
-                                    <constraint firstAttribute="height" constant="38" id="p6V-mb-axn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="BACKUP" image="upload-cloud">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="3jL-ZW-tf8" firstAttribute="leading" secondItem="kgt-o0-aP8" secondAttribute="leading" constant="16" id="94s-YJ-jcJ"/>
-                            <constraint firstItem="RAU-ny-7fG" firstAttribute="trailing" secondItem="kgt-o0-aP8" secondAttribute="centerX" constant="-8" id="Gvq-ZC-6QJ"/>
-                            <constraint firstItem="hjP-Dt-4xC" firstAttribute="leading" secondItem="kgt-o0-aP8" secondAttribute="centerX" constant="8" id="XYn-zj-XAm"/>
-                            <constraint firstItem="hjP-Dt-4xC" firstAttribute="top" secondItem="HaV-jy-JHb" secondAttribute="bottom" constant="20" id="h3N-BL-6ou"/>
-                            <constraint firstItem="RAU-ny-7fG" firstAttribute="top" secondItem="HaV-jy-JHb" secondAttribute="bottom" constant="20" id="kXR-v7-XzY"/>
-                            <constraint firstItem="HaV-jy-JHb" firstAttribute="leading" secondItem="kgt-o0-aP8" secondAttribute="leading" constant="16" id="uPH-G9-bDS"/>
-                            <constraint firstItem="3jL-ZW-tf8" firstAttribute="top" secondItem="EcR-ye-kTk" secondAttribute="bottom" constant="16" id="xRA-kx-BgI"/>
-                            <constraint firstAttribute="trailing" secondItem="HaV-jy-JHb" secondAttribute="trailing" constant="16" id="yPT-X6-sCr"/>
-                            <constraint firstItem="HaV-jy-JHb" firstAttribute="top" secondItem="3jL-ZW-tf8" secondAttribute="bottom" constant="10" id="zre-4L-RPt"/>
+                            <constraint firstAttribute="trailing" secondItem="ZiJ-Xq-o3m" secondAttribute="trailing" id="IDd-sg-gIP"/>
+                            <constraint firstItem="ZiJ-Xq-o3m" firstAttribute="top" secondItem="EcR-ye-kTk" secondAttribute="bottom" id="Utz-Km-GbS"/>
+                            <constraint firstItem="vb6-4r-Epx" firstAttribute="top" secondItem="ZiJ-Xq-o3m" secondAttribute="bottom" id="ea0-tF-F9e"/>
+                            <constraint firstItem="hy4-S2-EGd" firstAttribute="height" secondItem="ZiJ-Xq-o3m" secondAttribute="height" priority="250" id="hbC-jX-WAZ"/>
+                            <constraint firstItem="ZiJ-Xq-o3m" firstAttribute="leading" secondItem="kgt-o0-aP8" secondAttribute="leading" id="hbo-FD-BnU"/>
+                            <constraint firstItem="hy4-S2-EGd" firstAttribute="width" secondItem="ZiJ-Xq-o3m" secondAttribute="width" id="ps7-PS-dTv"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -84,8 +155,11 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="autoBackupDesctiption" destination="YFu-hQ-Fm0" id="RH8-OX-cEr"/>
+                        <outlet property="autoBackupTitle" destination="h59-f1-NVn" id="EN1-Sd-fOZ"/>
                         <outlet property="backupButton" destination="RAU-ny-7fG" id="rMo-Zu-bQD"/>
                         <outlet property="closeButton" destination="JDd-no-wrt" id="kTY-6r-c0o"/>
+                        <outlet property="configureButton" destination="6xk-JH-9f5" id="U8W-cP-ECF"/>
                         <outlet property="importButton" destination="hjP-Dt-4xC" id="ZJb-ym-ofc"/>
                         <outlet property="manualBackupDesctiption" destination="HaV-jy-JHb" id="RKG-H5-gNQ"/>
                         <outlet property="manualBackupTitle" destination="3jL-ZW-tf8" id="BL7-uH-JJk"/>
@@ -100,7 +174,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="alert-triangle" width="24" height="21"/>
         <image name="close_button" width="14" height="14"/>
+        <image name="cloud-off" width="25" height="24"/>
         <image name="download-cloud" width="24" height="20"/>
         <image name="upload-cloud" width="24" height="20"/>
     </resources>

@@ -26,7 +26,7 @@ class BackupProvidersManager: BackupProvider {
     var lastDatabaseSyncTime: Date { return backupProvider.lastDatabaseSyncTime }
     
     func deinitialize() {
-        backupProvider.deinitialize()
+        
     }
     
     func getRemoteBackups() -> Single<[RemoteBackupMetadata]> {
