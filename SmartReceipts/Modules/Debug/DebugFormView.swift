@@ -12,10 +12,11 @@ import RxSwift
 import RxCocoa
 import Toaster
 import Crashlytics
+import GoogleSignIn
 
 fileprivate let SCAN_ROW = "ScanRow"
 
-class DebugFormView: FormViewController {
+class DebugFormView: FormViewController, GIDSignInUIDelegate {
     
     fileprivate let loginSubject = PublishSubject<Void>()
     fileprivate let ocrConfigSubject = PublishSubject<Void>()
@@ -108,6 +109,25 @@ class DebugFormView: FormViewController {
         }.onCellSelection({ _, _ in
             Crashlytics.sharedInstance().debugMode = false
             Crashlytics.sharedInstance().throwException()
+        })
+        
+        +++ Section("Automatic Backups")
+        <<< ButtonRow() { row in
+            row.title = "Google Drive - Sign In"
+        }.onCellSelection({ [unowned self] _, _ in
+            let hud = PendingHUDView.show(on: self.view)
+            GoogleDriveService.shared.signIn(onUI: self).subscribe(onNext: {
+                hud.hide()
+            }).disposed(by: self.bag)
+        })
+        
+        <<< ButtonRow() { row in
+            row.title = "Google Drive - Sign Out"
+        }.onCellSelection({ [unowned self] _, _ in
+            let hud = PendingHUDView.show(on: self.view)
+            GoogleDriveService.shared.signOut().subscribe(onNext: {
+                hud.hide()
+            }).disposed(by: self.bag)
         })
     }
     

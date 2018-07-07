@@ -9,6 +9,7 @@
 import Foundation
 import Viperit
 import RxSwift
+import GoogleSignIn
 
 class BackupPresenter: Presenter {
     private let bag = DisposeBag()
@@ -20,6 +21,22 @@ class BackupPresenter: Presenter {
             .subscribe(onNext: { [unowned self] in
                 self.router.openBackupImport()
             }).disposed(by: bag)
+    }
+    
+    func hasValidSubscription() -> Bool {
+        return interactor.hasValidSubscription()
+    }
+    
+    func purchaseSubscription() -> Observable<Void> {
+        return interactor.purchaseSubscription()
+    }
+    
+    func signInUIDelegate() -> GIDSignInUIDelegate {
+        return view.signInUIDelegate
+    }
+    
+    func saveCurrent(provider: SyncProvider) {
+        interactor.saveCurrent(provider: provider)
     }
     
 }

@@ -1,5 +1,6 @@
 platform :ios, '8.0'
 
+inhibit_all_warnings!
 use_frameworks!
 
 project 'SmartReceipts.xcodeproj'
@@ -42,6 +43,9 @@ def pods
     # Google
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'GTMAppAuth'
+    pod 'GoogleAPIClientForREST/Drive'
+    pod 'GoogleSignIn'
     
     # Purchases
     pod 'SwiftyStoreKit'

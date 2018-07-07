@@ -3,21 +3,23 @@
 //  SmartReceipts
 //
 //  Created by Bogdan Evsenev on 14/02/2018.
-//Copyright © 2018 Will Baumann. All rights reserved.
+//  Copyright © 2018 Will Baumann. All rights reserved.
 //
 
 import UIKit
 import Viperit
 import RxSwift
 import RxCocoa
+import GoogleSignIn
 
 //MARK: - Public Interface Protocol
-protocol BackupViewInterface {
+protocol BackupViewInterface  {
     var importTap: Observable<Void> { get }
+    var signInUIDelegate: GIDSignInUIDelegate { get }
 }
 
 //MARK: BackupView Class
-final class BackupView: UserInterface {
+final class BackupView: UserInterface, GIDSignInUIDelegate {
     fileprivate var documentInteractionController: UIDocumentInteractionController!
     
     @IBOutlet private weak var closeButton: UIBarButtonItem!
@@ -25,6 +27,9 @@ final class BackupView: UserInterface {
     @IBOutlet private weak var backupButton: UIButton!
     @IBOutlet private weak var manualBackupTitle: UILabel!
     @IBOutlet private weak var manualBackupDesctiption: UILabel!
+    @IBOutlet private weak var configureButton: UIButton!
+    @IBOutlet private weak var autoBackupTitle: UILabel!
+    @IBOutlet private weak var autoBackupDesctiption: UILabel!
     
     private let bag = DisposeBag()
     
@@ -39,8 +44,12 @@ final class BackupView: UserInterface {
         title = LocalizedString("backups_view_title")
         manualBackupTitle.text = LocalizedString("backups_view_manual_title")
         manualBackupDesctiption.text = LocalizedString("backups_view_manual_description")
+        autoBackupTitle.text = LocalizedString("auto_backup_title")
+        autoBackupDesctiption.text = LocalizedString("auto_backup_warning_none")
+        
         importButton.setTitle(LocalizedString("backups_view_import_button").uppercased(), for: .normal)
         backupButton.setTitle(LocalizedString("backups_view_backup_button").uppercased(), for: .normal)
+        configureButton.setTitle(LocalizedString("auto_backup_configure").uppercased(), for: .normal)
     }
     
     private func configureRx() {
@@ -53,6 +62,28 @@ final class BackupView: UserInterface {
             .subscribe(onNext: { [unowned self] in
                 self.showBackup(from: self.backupButton.frame)
             }).disposed(by: bag)
+        
+        configureButton.rx.tap
+            .filter({ [unowned self] in self.presenter.hasValidSubscription() })
+            .subscribe(onNext: { [unowned self] in
+                self.openBackupServiceSelector()
+            }).disposed(by: bag)
+        
+        configureButton.rx.tap
+            .filter({ [unowned self] in !self.presenter.hasValidSubscription() })
+            .flatMap({ [unowned self] in return self.presenter.purchaseSubscription() })
+            .subscribe(onNext: { [unowned self] in
+                self.openBackupServiceSelector()
+            }).disposed(by: bag)
+    }
+    
+    fileprivate func providerSelected(provider: SyncProvider) {
+        presenter.saveCurrent(provider: provider)
+    }
+    
+    private func openBackupServiceSelector() {
+        let selector = makeBackupServiceSelector()
+        present(selector, animated: true, completion: nil)
     }
     
     private func configureLayers() {
@@ -66,6 +97,26 @@ final class BackupView: UserInterface {
 //MARK: - Public interface
 extension BackupView: BackupViewInterface {
     var importTap: Observable<Void> { return importButton.rx.tap.asObservable() }
+    var signInUIDelegate: GIDSignInUIDelegate { return self }
+}
+
+//MARK: AutoBackup Selector
+extension BackupView {
+    fileprivate func makeBackupServiceSelector() -> UIAlertController {
+        
+        func makeProviderAction(syncProvider: SyncProvider) -> UIAlertAction {
+            return UIAlertAction(title: syncProvider.localizedTitle(), style: .default, handler: { [weak self] _ in
+                self?.providerSelected(provider: syncProvider)
+            })
+        }
+        
+        let currentService = "\(LocalizedString("auto_backup_current_service")) - \(SyncProvider.current.localizedTitle())"
+        let alert = UIAlertController(title: currentService, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
+        alert.addAction(makeProviderAction(syncProvider:.googleDrive))
+        alert.addAction(makeProviderAction(syncProvider: .none))
+        return alert
+    }
 }
 
 //MARK: Backup Files
