@@ -120,6 +120,15 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
                 hud.hide()
             }).disposed(by: self.bag)
         })
+        
+        <<< ButtonRow() { row in
+            row.title = "Google Drive - Sign Out"
+        }.onCellSelection({ [unowned self] _, _ in
+            let hud = PendingHUDView.show(on: self.view)
+            GoogleDriveService.shared.signOut().subscribe(onNext: {
+                hud.hide()
+            }).disposed(by: self.bag)
+        })
     }
     
     var scanObserver: AnyObserver<Scan> {
