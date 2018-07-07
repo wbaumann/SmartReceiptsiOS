@@ -11,12 +11,12 @@ import RxSwift
 
 class NoOpBackupProvider: BackupProvider {
     
-    var deviceSyncId: String {
-        return ""
+    var deviceSyncId: String? {
+        return nil
     }
     
     var lastDatabaseSyncTime: Date {
-        return Date()
+        return Date(timeIntervalSince1970: 0)
     }
     
     func deinitialize() {
@@ -35,8 +35,8 @@ class NoOpBackupProvider: BackupProvider {
         return Single<Bool>.just(false)
     }
     
-    func clearCurrentBackupConfiguration() -> Single<Bool> {
-        return Single<Bool>.just(false)
+    func clearCurrentBackupConfiguration() -> Completable {
+        return Completable.empty()
     }
     
     func downloadAllData(remoteBackupMetadata: RemoteBackupMetadata, downloadLocation: URL) -> Single<[URL]> {

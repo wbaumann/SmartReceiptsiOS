@@ -21,7 +21,7 @@ protocol BackupProvider {
     /**
      * @return the sync Identifier for the current device or nil if none is defined
      */
-    var deviceSyncId: String { get }
+    var deviceSyncId: String? { get }
     
     /**
      * @return the Date for the last time our database was synced
@@ -60,7 +60,7 @@ protocol BackupProvider {
      *
      * @return a Single for the delete operation with a success boolean
      */
-    func clearCurrentBackupConfiguration() -> Single<Bool>
+    func clearCurrentBackupConfiguration() -> Completable
     
     /**
      * Downloads an existing backup to a specific location

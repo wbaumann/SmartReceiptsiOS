@@ -21,7 +21,7 @@ class BackupProvidersManager: BackupProvider {
         self.backupProvider = backupProvider
     }
     
-    var deviceSyncId: String { return backupProvider.deviceSyncId }
+    var deviceSyncId: String? { return backupProvider.deviceSyncId }
     
     var lastDatabaseSyncTime: Date { return backupProvider.lastDatabaseSyncTime }
     
@@ -41,7 +41,7 @@ class BackupProvidersManager: BackupProvider {
         return backupProvider.deleteBackup(remoteBackupMetadata: remoteBackupMetadata)
     }
     
-    func clearCurrentBackupConfiguration() -> Single<Bool> {
+    func clearCurrentBackupConfiguration() -> Completable {
         return backupProvider.clearCurrentBackupConfiguration()
     }
     
