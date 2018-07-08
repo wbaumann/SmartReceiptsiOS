@@ -25,17 +25,17 @@ class AuthInteractor: Interactor {
             switch event {
             case .next(let credentials):
                 self.authService.login(credentials: credentials)
-                    .catchError({ error -> Observable<String> in
+                    .catchError({ error -> Observable<LoginResponse> in
                         if let afError = error as? AFError, afError.responseCode == INVALID_CREDENTIALS_CODE {
                             self.presenter.errorHandler.onNext(LocalizedString("login.error.login.failed"))
                         } else {
                             self.presenter.errorHandler.onNext(error.localizedDescription)
                         }
                         return Observable.never()
-                    }).filter({ $0 != ""})
-                    .map({ [weak self] in
+                    }).filter({ $0.token != "" })
+                    .map({ _ in })
+                    .do(onNext: { [weak self] _ in
                         self?.presenter.successAuthSubject.onNext()
-                        return $0
                     }).bind(to: self.presenter.successLogin)
                     .disposed(by: self.bag)
             default: break
@@ -55,10 +55,10 @@ class AuthInteractor: Interactor {
                             self.presenter.errorHandler.onNext(error.localizedDescription)
                         }
                         return Observable.never()
-                    }).filter({ $0 != ""})
-                    .map({ [weak self] in
+                    }).filter({ $0 != "" })
+                    .map({ _ in })
+                    .do(onNext: { [weak self] _ in
                         self?.presenter.successAuthSubject.onNext()
-                        return $0
                     }).bind(to: self.presenter.successSignup)
                     .disposed(by: self.bag)
             default: break

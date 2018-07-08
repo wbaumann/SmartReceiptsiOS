@@ -11,9 +11,11 @@ import RxAlamofire
 import Alamofire
 import SwiftyJSON
 
+fileprivate let JSON_ID_KEY = "id"
 fileprivate let JSON_TOKEN_KEY = "token"
 fileprivate let AUTH_TOKEN_KEY = "auth.token"
 fileprivate let AUTH_EMAIL_KEY = "auth.email"
+fileprivate let AUTH_ID_KEY = "auth.id"
 
 let JSON_HEADERS = ["Content-Type":"application/json"]
 
@@ -24,6 +26,7 @@ protocol AuthServiceInterface {
 class AuthService: AuthServiceInterface {
     private let tokenVar = Variable<String>(UserDefaults.standard.string(forKey: AUTH_TOKEN_KEY) ?? "")
     private let emailVar = Variable<String>(UserDefaults.standard.string(forKey: AUTH_EMAIL_KEY) ?? "")
+    private let idVar = Variable<String>(UserDefaults.standard.string(forKey: AUTH_ID_KEY) ?? "")
     
     private let isLoggedInVar: Variable<Bool>!
     
@@ -65,7 +68,15 @@ class AuthService: AuthServiceInterface {
         return value
     }
     
-    func login(credentials: Credentials) -> Observable<String> {
+    var id: String {
+        let value = idVar.value
+        if value.isEmpty {
+            Logger.warning("ID is Empty")
+        }
+        return value
+    }
+    
+    func login(credentials: Credentials) -> Observable<LoginResponse> {
         let params = ["login_params" : [
                 "type": "login",
                 "email" : credentials.email,
@@ -75,11 +86,13 @@ class AuthService: AuthServiceInterface {
         
         return RxAlamofire.json(.post, endpoint("users/log_in"),
             parameters: params, encoding: JSONEncoding.default, headers: JSON_HEADERS)
-            .map({ object -> String in
+            .map({ object -> LoginResponse in
                 let json = JSON(object)
-                return json[JSON_TOKEN_KEY].stringValue
-            }).do(onNext: { [weak self] token in
-                self?.save(token: token, email: credentials.email)
+                let id = json[JSON_ID_KEY].stringValue
+                let token = json[JSON_TOKEN_KEY].stringValue
+                return LoginResponse(id, token)
+            }).do(onNext: { [weak self] response in
+                self?.save(token: response.token, email: credentials.email, id: response.id)
             })
     }
     
@@ -97,7 +110,7 @@ class AuthService: AuthServiceInterface {
                 let json = JSON(object)
                 return json[JSON_TOKEN_KEY].stringValue
             }).do(onNext: { [weak self] token in
-                self?.save(token: token, email: credentials.email)
+                self?.save(token: token, email: credentials.email, id: nil)
             })
     }
     
@@ -126,20 +139,24 @@ class AuthService: AuthServiceInterface {
             .map({ _ in  })
     }
     
-    private func save(token: String, email: String) {
-        Logger.debug("Authorized - Token: \(token) Email: \(email)")
+    private func save(token: String, email: String, id: String?) {
+        Logger.debug("Authorized - Token: \(token) Email: \(email), ID: \(id ?? "null")")
         tokenVar.value = token
         emailVar.value = email
+        idVar.value = id ?? ""
         UserDefaults.standard.set(token, forKey: AUTH_TOKEN_KEY)
         UserDefaults.standard.set(email, forKey: AUTH_EMAIL_KEY)
+        UserDefaults.standard.set(id, forKey: AUTH_ID_KEY)
         isLoggedInVar.value = true
     }
     
     private func clear() {
         UserDefaults.standard.removeObject(forKey: AUTH_TOKEN_KEY)
         UserDefaults.standard.removeObject(forKey: AUTH_EMAIL_KEY)
+        UserDefaults.standard.removeObject(forKey: AUTH_ID_KEY)
         tokenVar.value = ""
         emailVar.value = ""
+        idVar.value = ""
         isLoggedInVar.value = false
     }
 }
@@ -151,6 +168,16 @@ struct Credentials {
     init(_ email: String, _ password: String) {
         self.email = email
         self.password = password
+    }
+}
+
+struct LoginResponse {
+    var id: String!
+    var token: String!
+    
+    init(_ id: String, _ token: String) {
+        self.id = id
+        self.token = token
     }
 }
 
