@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import "UIAlertView+Blocks.h"
 #import "RateApplication.h"
 #import "Constants.h"
 #import "NSDate+Calculations.h"
@@ -77,28 +76,39 @@ static NSString *const SRRateAppRatePressedKey = @"SRRateAppRatePressedKey";
     if ([NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){10,3,0}]) {
         [SKStoreReviewController requestReview];
     } else {
-        RIButtonItem *negativeItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"rate.app.alert.negative.button", nil) action:^{
-            [self markNoPressed];
-            [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedNever]];
-        }];
-        RIButtonItem *positiveItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"rate.app.alert.positive.button", nil) action:^{
-            [self markRatePressed];
-            
-            [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedRate]];
-
-            NSString *templateReviewURL = @"itms-apps://itunes.apple.com/app/idAPP_ID";
-            NSString *reviewURL = [templateReviewURL stringByReplacingOccurrencesOfString:@"APP_ID" withString:SmartReceiptAppStoreId];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:reviewURL]];
-        }];
-        RIButtonItem *neutralItem = [RIButtonItem itemWithLabel:NSLocalizedString(@"rate.app.alert.neutral.button", nil) action:^{
-            [self rateLater];
-            [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedLater]];
-        }];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"rate.app.alert.title", nil)
-                                                            message:NSLocalizedString(@"rate.app.alert.message", nil)
-                                                   cancelButtonItem:negativeItem otherButtonItems:positiveItem, neutralItem, nil];
-        [alertView show];
+        NSString *title = NSLocalizedString(@"rate.app.alert.title", nil);
+        NSString *message = NSLocalizedString(@"rate.app.alert.message", nil);
+        UIAlertControllerStyle style = UIAlertControllerStyleAlert;
+        UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:style];
         
+        UIAlertAction *postitive = [UIAlertAction actionWithTitle:NSLocalizedString(@"rate.app.alert.positive.button", nil)
+          style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+              [self markRatePressed];
+              [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedRate]];
+
+              NSMutableString *reviewURL = [@"itms-apps://itunes.apple.com/app/id" mutableCopy];
+              [reviewURL appendString:SmartReceiptAppStoreId];
+              [UIApplication.sharedApplication openURL:[NSURL URLWithString:reviewURL] options:@{} completionHandler:nil];
+         }];
+        
+        UIAlertAction *negative = [UIAlertAction actionWithTitle:NSLocalizedString(@"rate.app.alert.negative.button", nil)
+          style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+              [self markNoPressed];
+              [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedNever]];
+          }];
+        
+        UIAlertAction *neutral = [UIAlertAction actionWithTitle:NSLocalizedString(@"rate.app.alert.neutral.button", nil)
+          style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+              [self rateLater];
+              [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedLater]];
+          }];
+        
+        [actionSheet addAction:postitive];
+        [actionSheet addAction:neutral];
+        [actionSheet addAction:negative];
+        
+        [UIApplication.sharedApplication.keyWindow.rootViewController presentViewController:actionSheet animated:YES completion:nil];
+    
         [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsRatingPromptShown]];
     }
 }

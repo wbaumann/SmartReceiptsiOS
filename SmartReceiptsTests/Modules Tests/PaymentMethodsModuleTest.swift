@@ -22,7 +22,7 @@ class PaymentMethodsModuleTest: XCTestCase {
     var interactor: MockPaymentMethodsInteractor!
     var router: MockPaymentMethodsRouter!
     
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
     
     override func setUp() {
         super.setUp()

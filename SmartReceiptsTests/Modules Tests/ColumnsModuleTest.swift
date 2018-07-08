@@ -20,8 +20,6 @@ class ColumnsModuleTest: XCTestCase {
     var interactor: MockColumnsInteractor!
     var router: MockColumnsRouter!
     
-    let disposeBag = DisposeBag()
-    
     let testColumn = Column(index: 0, name: "test")!
     
     override func setUp() {

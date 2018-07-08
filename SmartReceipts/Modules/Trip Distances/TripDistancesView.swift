@@ -22,7 +22,7 @@ class TripDistancesView: FetchedTableViewController {
     private let dateFormatter = DateFormatter()
     private var maxRateWidth: CGFloat = 0
     
-    private let disposeBag = DisposeBag()
+    private let bag = DisposeBag()
     
     @IBOutlet private var addButton: UIButton?
     @IBOutlet private var doneButtonItem: UIBarButtonItem?
@@ -99,11 +99,11 @@ class TripDistancesView: FetchedTableViewController {
     private func configureUIActions() {
         doneButtonItem?.rx.tap.subscribe(onNext: { [weak self] in
             self?.dismiss(animated: true, completion: nil)
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         addButton?.rx.tap.subscribe(onNext: { [weak self] in
             self?.showEditDistance(with: (self?.trip, nil as Distance?))
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
     }
     

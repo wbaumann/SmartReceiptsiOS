@@ -23,7 +23,7 @@ final class EditTripView: UserInterface {
     @IBOutlet weak var doneButton: UIBarButtonItem!
 
     private var formView: EditTripFormView!
-    private let disposeBag = DisposeBag()
+    private let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,23 +45,23 @@ final class EditTripView: UserInterface {
     private func configureUIActions() {
         cancelButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.presenter.close()
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         doneButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.formView.done()
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
     }
     
     private func configureSubscribes() {
         formView.errorSubject.subscribe(onNext: { [unowned self] errorDescripton in
             self.presenter.presentAlert(title: nil, message: errorDescripton)
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         formView.tripSubject.subscribe(onNext: { [unowned self] trip in
             self.displayData.trip == nil ?
                 self.presenter.addTripSubject.onNext(trip) :
                 self.presenter.updateTripSubject.onNext(trip)
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
     }
 }
 

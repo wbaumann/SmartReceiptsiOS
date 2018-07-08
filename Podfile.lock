@@ -132,7 +132,6 @@ PODS:
   - SwiftyJSON (4.1.0)
   - SwiftyStoreKit (0.13.2)
   - Toaster (2.1.1)
-  - UIAlertView-Blocks (1.0)
   - Viperit (1.1.0)
   - XLPagerTabStrip (8.0.1)
   - Zip (1.1.0)
@@ -166,7 +165,6 @@ DEPENDENCIES:
   - SwiftyJSON
   - SwiftyStoreKit
   - Toaster
-  - UIAlertView-Blocks
   - Viperit
   - XLPagerTabStrip
   - Zip
@@ -210,7 +208,6 @@ SPEC REPOS:
     - SwiftyJSON
     - SwiftyStoreKit
     - Toaster
-    - UIAlertView-Blocks
     - Viperit
     - XLPagerTabStrip
     - Zip
@@ -264,11 +261,10 @@ SPEC CHECKSUMS:
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   SwiftyStoreKit: b7563505440a68c9d9fa70bc43d8a97015519409
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
-  UIAlertView-Blocks: 7904744fca618afbd2ec646608924f5e69d5acd1
   Viperit: 276b9f0943edb5436fbff008abd8756004149814
   XLPagerTabStrip: c908b17cbf42fcd2598ee1adfc49bae25444d88a
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: e4c3dd19668dbade5b6794b58c1a37e5ddd7d4c3
+PODFILE CHECKSUM: 8128562d1ea1f7c078dddfe52a18895bd862d4f9
 
 COCOAPODS: 1.5.2

@@ -24,7 +24,7 @@ final class GenerateReportView: UserInterface {
     
     let settingsTapObservable = PublishSubject<Void>()
     
-    private let disposeBag = DisposeBag()
+    private let bag = DisposeBag()
     
     fileprivate var formView: GenerateReportFormView?
     
@@ -44,18 +44,18 @@ final class GenerateReportView: UserInterface {
     private func configureUIActions() {
         cancelButton.rx.tap.subscribe(onNext: { [weak self] in
             self?.presenter.close()
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         shareButton.rx.tap.subscribe(onNext: { [weak self] in
             if let navView = self?.navigationController?.view {
                 self?.hud = PendingHUDView.show(on: navView)
                 self?.presenter.generateReport()
             }
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         settingsTapObservable.subscribe { [weak self] _ in
             self?.presenter.presentOutputSettings()
-        }.disposed(by: disposeBag)
+        }.disposed(by: bag)
     }
 }
 

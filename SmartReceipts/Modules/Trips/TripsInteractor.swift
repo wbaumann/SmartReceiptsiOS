@@ -14,13 +14,13 @@ fileprivate let LAST_OPENED_TRIP_KEY = "LastOpenedTripKey"
 
 class TripsInteractor: Interactor {
     
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
     
     func configureSubscribers() {
         presenter.tripDeleteSubject.subscribe(onNext: { trip in
             Logger.debug("Delete Trip: \(trip.name)")
             Database.sharedInstance().delete(trip)
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: bag)
     }
     
     func fetchedModelAdapter() -> FetchedModelAdapter? {

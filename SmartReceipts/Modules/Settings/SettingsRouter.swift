@@ -33,7 +33,7 @@ class SettingsRouter: Router {
     func openSendLove() {
         if let reviewUrl = URL(string: "itms-apps://itunes.apple.com/app/id\(SmartReceiptAppStoreId)") {
             if UIApplication.shared.canOpenURL(reviewUrl) {
-                UIApplication.shared.openURL(reviewUrl)
+                UIApplication.shared.open(reviewUrl, options: [:], completionHandler: nil)
             }
         }
     }
@@ -41,7 +41,7 @@ class SettingsRouter: Router {
     func openPrivacyPolicy() {
         if let privacyPolicyURL = URL(string: "https://www.smartreceipts.co/privacy") {
             if UIApplication.shared.canOpenURL(privacyPolicyURL) {
-                UIApplication.shared.openURL(privacyPolicyURL)
+                UIApplication.shared.open(privacyPolicyURL, options: [:], completionHandler: nil)
             }
         }
     }

@@ -10,7 +10,6 @@
 
 @implementation WBActionSheetPicker {
     UILabel *titleLabel;
-    // UIActionSheet *actionSheet;
     UIView *actionView;
     UIViewController *_viewController;
     UIView *_rootView;

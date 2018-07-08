@@ -22,7 +22,7 @@ class CategoriesModuleTest: XCTestCase {
     var interactor: MockCategoriesInteractor!
     var router: MockCategoriesRouter!
     
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
     
     override func setUp() {
         super.setUp()

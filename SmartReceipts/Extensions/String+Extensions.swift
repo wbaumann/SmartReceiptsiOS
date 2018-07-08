@@ -36,7 +36,7 @@ extension String {
         if length <= 0 {
             // returns empty string
             return ""
-        } else if length < self.characters.count {
+        } else if length < self.count {
             let endIndex = self.index(self.startIndex, offsetBy: length)
             let truncatedString = self.substring(to: endIndex)
             return truncatedString
@@ -59,7 +59,7 @@ extension String {
     ///For placeholders
     static func randomAlphaNumericString(length: Int = 42) -> String {
         let charactersString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        let charactersArray : [Character] = Array(charactersString.characters)
+        let charactersArray : [Character] = Array(charactersString)
         
         var string = ""
         for _ in 0..<length {

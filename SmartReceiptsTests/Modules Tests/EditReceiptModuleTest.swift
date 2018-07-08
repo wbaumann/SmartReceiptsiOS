@@ -24,7 +24,7 @@ class EditReceiptModuleTest: XCTestCase {
     var tooltipService = TooltipService.shared
     
     var trip: WBTrip?
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
     
     override func setUp() {
         super.setUp()

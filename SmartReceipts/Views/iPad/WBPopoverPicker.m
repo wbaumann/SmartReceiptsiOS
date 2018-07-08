@@ -9,14 +9,15 @@
 #import "WBPopoverPicker.h"
 
 @implementation WBPopoverPicker {
-    UIPopoverController *popoverController;
     UIViewController *viewController;
     UILabel *titleLabel;
+    __weak UIViewController *rootViewController;
 }
 
 - (id)initAsDatePicker:(BOOL) asDatePicker withController:(UIViewController*) vc {
     self = [super init];
     if (self) {
+        rootViewController = vc;
         UIView *rootView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 245)];
         UIToolbar *pickerToolbar = [self createPickerToolbarWithTitle:@""];
         [rootView addSubview:pickerToolbar];
@@ -27,8 +28,6 @@
             self.datePicker = datePicker;
             datePicker.datePickerMode = UIDatePickerModeDate;
             datePicker.date = [NSDate date];
-            
-            // [datePicker addTarget:self action:@selector(onChange:) forControlEvents:UIControlEventValueChanged];
             [rootView addSubview:datePicker];
         } else {
             UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
@@ -40,6 +39,7 @@
         viewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
         viewController.view = rootView;
         viewController.preferredContentSize = viewController.view.frame.size;
+        viewController.modalPresentationStyle = UIModalPresentationPopover;
     }
     return self;
 }
@@ -51,20 +51,17 @@
 - (void)showPickerFromView:(UIView*) view {
     [self removePopoverAnimated:YES];
     [self.pickerView reloadComponent:0];
-    popoverController =[[UIPopoverController alloc] initWithContentViewController:viewController];
-    [popoverController presentPopoverFromRect:view.bounds
-                                       inView:view
-                     permittedArrowDirections:UIPopoverArrowDirectionAny
-                                     animated:YES];
+    
+    viewController.popoverPresentationController.sourceView = view;
+    [rootViewController presentViewController:viewController animated:YES completion:nil];
 }
 
 - (void)showPickerFromBarButtonItem:(UIBarButtonItem*) barButtonItem {
     [self removePopoverAnimated:YES];
     [self.pickerView reloadComponent:0];
-    popoverController =[[UIPopoverController alloc] initWithContentViewController:viewController];
-    [popoverController presentPopoverFromBarButtonItem:barButtonItem
-                              permittedArrowDirections:UIPopoverArrowDirectionAny
-                                              animated:YES];
+    
+    viewController.popoverPresentationController.barButtonItem = barButtonItem;
+    [rootViewController presentViewController:viewController animated:YES completion:nil];
 }
 
 - (UIToolbar *)createPickerToolbarWithTitle:(NSString *)title {
@@ -105,18 +102,17 @@
 }
 
 - (void)actionPickerDone:(id)sender {
-    [popoverController dismissPopoverAnimated:YES];
+    [viewController dismissViewControllerAnimated:YES completion:nil];
     [self.delegate abstractPickerDone:self];
 }
 
 - (void)actionPickerCancel:(id)sender {
-    [popoverController dismissPopoverAnimated:YES];
+    [viewController dismissViewControllerAnimated:YES completion:nil];
     [self.delegate abstractPickerCancel:self];
 }
 
 - (void)removePopoverAnimated:(BOOL) animated {
-    [popoverController dismissPopoverAnimated:YES];
-    popoverController = nil;
+    [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

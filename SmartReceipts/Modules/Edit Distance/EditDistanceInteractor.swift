@@ -13,7 +13,7 @@ import Toaster
 
 class EditDistanceInteractor: Interactor {
     
-    private let disposeBag = DisposeBag()
+    private let bag = DisposeBag()
     private var database: Database!
     
     required init() {
@@ -47,7 +47,7 @@ class EditDistanceInteractor: Interactor {
             .subscribe(onNext: {
                 let message = LocalizedString("edit.distance.date.range.warning.message")
                 Toast.show(message)
-            }).disposed(by: disposeBag)
+            }).disposed(by: bag)
     }
 }
 
