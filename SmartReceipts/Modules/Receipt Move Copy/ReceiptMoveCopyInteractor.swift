@@ -12,7 +12,7 @@ import RxSwift
 
 class ReceiptMoveCopyInteractor: Interactor {
     
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
     
     func configureSubscribers() {
         presenter.tripTapSubject.subscribe(onNext: { [unowned self] trip in
@@ -22,7 +22,7 @@ class ReceiptMoveCopyInteractor: Interactor {
                 Database.sharedInstance().move(self.presenter.receipt, to: trip)
             }
             self.presenter.close()
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
     }
     
     func fetchedModelAdapter(for receipt: WBReceipt) -> FetchedModelAdapter {

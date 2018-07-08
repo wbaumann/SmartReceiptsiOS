@@ -13,7 +13,7 @@ import RxSwift
 class ReceiptImageViewerInteractor: Interactor {
     
     var imagePath: String!
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
     
     func configureSubscribers() {
         presenter.image.asObservable()
@@ -29,7 +29,7 @@ class ReceiptImageViewerInteractor: Interactor {
                 UIImageJPEGRepresentation(image!, kImageCompression)
             
             _ = FileManager.forceWrite(data: data!, to: self.imagePath)
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: bag)
     }
 }
 

@@ -317,9 +317,7 @@ class PurchaseService {
             return Disposables.create()
         }).catchError({ error -> Observable<SubscriptionValidation> in
             return Observable<SubscriptionValidation>.just((false, nil))
-        }).do(onNext: { [weak self] in
-            cachedValidation = $0
-        })
+        }).do(onNext: { cachedValidation = $0 })
     }
     
     func verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult {

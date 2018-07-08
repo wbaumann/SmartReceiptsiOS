@@ -14,7 +14,7 @@ class TaxCalculator: NSObject {
     let taxSubject = PublishSubject<String>()
     var taxPercentage = NSDecimalNumber(decimal: 0)
     
-    private let disposeBag = DisposeBag()
+    private let bag = DisposeBag()
     private var priceIsPreTax = false
     private let formatter = NumberFormatter()
     
@@ -36,7 +36,7 @@ class TaxCalculator: NSObject {
             } else {
                 self.taxSubject.onNext("")
             }
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
     }
     
     class func taxWithPrice(_ price: NSDecimalNumber, taxPercentage: NSDecimalNumber, preTax: Bool = false) -> NSDecimalNumber {

@@ -17,8 +17,9 @@ extension Module {
 
 extension Router {
     func openAlert(title: String?, message: String) {
-        UIAlertView(title: title, message: message, delegate: nil,
-                    cancelButtonTitle: LocalizedString("generic.button.title.ok")).show()
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.ok"), style: .cancel, handler: nil))
+        _view.present(alert, animated: true, completion: nil)
     }
     
     func showIPadForm(from: UIViewController, animated: Bool = true, setupData: Any? = nil, needNavigationController: Bool = false) {

@@ -19,7 +19,7 @@ protocol ReceiptImageViewerViewInterface {
 //MARK: ReceiptImageViewerView Class
 final class ReceiptImageViewerView: UserInterface {
     
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var rotateLeftButton: UIBarButtonItem!
@@ -36,25 +36,25 @@ final class ReceiptImageViewerView: UserInterface {
         scrollView.addSubview(imageView)
         imageView.contentMode = .scaleAspectFit
         
-        presenter.image.asObservable().bind(to: imageView.rx.image).addDisposableTo(disposeBag)
+        presenter.image.asObservable().bind(to: imageView.rx.image).disposed(by: bag)
         
         rotateLeftButton.rx.tap.subscribe(onNext: { [unowned self] in
             if let img = self.presenter.image.value {
                 self.presenter.image.value = WBImageUtils.image(img, with: .left)
             }
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: bag)
         
         cameraButton.rx.tap.subscribe(onNext: { [unowned self] in
             _ = ImagePicker.sharedInstance().rx_openOn(self)
                 .filter({ $0 != nil })
                 .bind(to: self.presenter.image)
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: bag)
         
         rotateRightButton.rx.tap.subscribe(onNext: { [unowned self] in
             if let img = self.presenter.image.value {
                 self.presenter.image.value = WBImageUtils.image(img, with: .right)
             }
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: bag)
         
         AppTheme.customizeOnViewDidLoad(self)
     }

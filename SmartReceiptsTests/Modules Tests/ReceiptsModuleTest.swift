@@ -21,7 +21,7 @@ class ReceiptsModuleTest: XCTestCase {
     var router: MockReceiptsRouter!
     
     var trip: WBTrip?
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
     let actionsPresneter = ReceiptActionsPresenter()
     
     override func setUp() {

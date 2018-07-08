@@ -22,7 +22,7 @@ class GenerateReportInteractor: Interactor {
     private var csvFile: Variable               = Variable(false)
     private var zipStampedJPGs: Variable        = Variable(false)
     
-    private let disposeBag = DisposeBag()
+    private let bag = DisposeBag()
     
     var titleSubtitle: TitleSubtitle {
         return (trip.name, trip.formattedPrice())
@@ -35,10 +35,10 @@ class GenerateReportInteractor: Interactor {
     }
     
     func configureBinding() {
-        presenter.fullPdfReport.bind(to: fullPdfReport).addDisposableTo(disposeBag)
-        presenter.pdfReportWithoutTable.bind(to: pdfReportWithoutTable).addDisposableTo(disposeBag)
-        presenter.csvFile.bind(to: csvFile).addDisposableTo(disposeBag)
-        presenter.zipStampedJPGs.bind(to: zipStampedJPGs).addDisposableTo(disposeBag)
+        presenter.fullPdfReport.bind(to: fullPdfReport).disposed(by: bag)
+        presenter.pdfReportWithoutTable.bind(to: pdfReportWithoutTable).disposed(by: bag)
+        presenter.csvFile.bind(to: csvFile).disposed(by: bag)
+        presenter.zipStampedJPGs.bind(to: zipStampedJPGs).disposed(by: bag)
     }
     
     func trackConfigureReportEvent() {

@@ -20,7 +20,7 @@ class EditTripModuleTest: XCTestCase {
     var router: MockEditTripRouter!
     
     var trip: WBTrip?
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
     
     override func setUp() {
         super.setUp()
@@ -56,11 +56,11 @@ class EditTripModuleTest: XCTestCase {
             mock.configureSubscribers().then {
                 self.presenter.updateTripSubject.subscribe(onNext: { trip in
                     self.trip?.name = trip.name
-                }).addDisposableTo(self.disposeBag)
+                }).disposed(by: self.bag)
                 
                 self.presenter.addTripSubject.subscribe(onNext: { trip in
                     self.trip = trip
-                }).addDisposableTo(self.disposeBag)
+                }).disposed(by: self.bag)
             }
         }
     }

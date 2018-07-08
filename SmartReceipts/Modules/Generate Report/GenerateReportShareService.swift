@@ -65,7 +65,7 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
         composer.navigationBar.tintColor = UINavigationBar.appearance().tintColor
         let barStyle = UIApplication.shared.statusBarStyle
         presenter.present(vc: composer, animated: true) {
-            UIApplication.shared.setStatusBarStyle(barStyle, animated: false)
+            UIApplication.shared.statusBarStyle = barStyle
         }
     }
     

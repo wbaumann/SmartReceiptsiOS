@@ -110,7 +110,7 @@ extension SettingsView: MFMailComposeViewControllerDelegate {
         
         let style = UIApplication.shared.statusBarStyle
         present(composeVC, animated: true) { 
-            UIApplication.shared.setStatusBarStyle(style, animated: false)
+            UIApplication.shared.statusBarStyle = style
         }
     }
     

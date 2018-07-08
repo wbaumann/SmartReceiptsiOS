@@ -21,7 +21,7 @@ class TripsModuleTest: XCTestCase {
     
     var trip: WBTrip? = WBTrip()
     var tripRouted = false
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
     
     override func setUp() {
         super.setUp()
@@ -60,7 +60,7 @@ class TripsModuleTest: XCTestCase {
             mock.configureSubscribers().then {
                 self.presenter.tripDeleteSubject.subscribe(onNext: { trip in
                     self.trip = nil
-                }).addDisposableTo(self.disposeBag)
+                }).disposed(by: self.bag)
             }
         }
     }

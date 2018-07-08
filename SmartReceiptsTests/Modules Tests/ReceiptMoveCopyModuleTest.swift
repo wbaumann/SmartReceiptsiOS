@@ -20,7 +20,7 @@ class ReceiptMoveCopyModuleTest: XCTestCase {
     var router: MockReceiptMoveCopyRouter!
     
     var trip: WBTrip?
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
     
     override func setUp() {
         super.setUp()

@@ -9,7 +9,6 @@
 import Foundation
 import Viperit
 import Firebase
-import UIAlertView_Blocks
 import RxSwift
 import Crashlytics
 import SwiftyStoreKit
@@ -122,15 +121,17 @@ extension AppDelegate {
         filePathToAttach = path
         
         if isFileImage {
-            UIAlertView(title: LocalizedString("app.delegate.attach.image.alert.title"),
-                        message: LocalizedString("app.delegate.attach.image.alert.message"),
-                        delegate: nil,
-                        cancelButtonTitle: LocalizedString("generic.button.title.ok")).show()
+            let alert = UIAlertController(title: LocalizedString("app.delegate.attach.image.alert.title"),
+                message: LocalizedString("app.delegate.attach.image.alert.message"), preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.ok"), style: .cancel, handler: nil))
+            AdNavigationEntryPoint.navigationController?.visibleViewController?.present(alert, animated: true)
         } else {
-            UIAlertView(title: LocalizedString("app.delegate.attach.pdf.alert.title"),
-                        message: LocalizedString("app.delegate.attach.pdf.alert.message"),
-                        delegate: nil,
-                        cancelButtonTitle: LocalizedString("generic.button.title.ok")).show()
+            let alert = UIAlertController(title: LocalizedString("app.delegate.attach.pdf.alert.title"),
+                message: LocalizedString("app.delegate.attach.pdf.alert.message"), preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.ok"), style: .cancel, handler: nil))
+            AdNavigationEntryPoint.navigationController?.visibleViewController?.present(alert, animated: true)
         }
     }
     

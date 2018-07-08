@@ -12,7 +12,7 @@ import FMDB
 extension FMDatabase {
     func fetchAllDistancesForTrip(_ trip: WBTrip) -> [Distance] {
         if let query = DatabaseQueryBuilder.selectAllStatement(forTable: DistanceTable.Name) {
-            query.`where`(DistanceTable.Column.Parent, value: trip.name as NSObject!)
+            query.`where`(DistanceTable.Column.Parent, value: trip.name as NSObject)
             return fetch(query)
         } else {
             return []

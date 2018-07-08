@@ -12,18 +12,18 @@ import RxSwift
 
 class EditTripInteractor: Interactor {
     
-    private let disposeBag = DisposeBag()
+    private let bag = DisposeBag()
     
     func configureSubscribers() {
         presenter.updateTripSubject.subscribe(onNext: { [weak self] trip in
             Logger.debug("Update Trip: \(trip.name)")
             self?.save(trip: trip, update: true)
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         presenter.addTripSubject.subscribe(onNext: { [weak self] trip in
             Logger.debug("Add Trip: \(trip.name)")
             self?.save(trip: trip)
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
     }
     
     func save(trip: WBTrip, update: Bool = false) {

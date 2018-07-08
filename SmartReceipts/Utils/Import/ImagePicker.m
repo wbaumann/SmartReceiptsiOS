@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Will Baumann. All rights reserved.
 //
 
-#import "RIButtonItem.h"
-#import "UIActionSheet+Blocks.h"
 #import "ImagePicker.h"
 #import "Constants.h"
 #import "WBImageUtils.h"
@@ -52,23 +50,31 @@
         [self presentImagePickerWithSource:UIImagePickerControllerSourceTypePhotoLibrary onController:controller];
         return;
     }
-
-    void (^cancelAction)() = ^{
-        [self setSelectionHandler:nil];
-    };
-    void (^chooseFromLibraryAction)() = ^{
-        [self presentImagePickerWithSource:UIImagePickerControllerSourceTypePhotoLibrary onController:controller];
-    };
-    void (^takeImageAction)() = ^{
-        [self presentImagePickerWithSource:UIImagePickerControllerSourceTypeCamera onController:controller];
-    };
-
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"image.picker.sheet.title", nil)
-                                                     cancelButtonItem:[RIButtonItem itemWithLabel:NSLocalizedString(@"image.picker.sheet.cancel.button.title", nil) action:cancelAction]
-                                                destructiveButtonItem:nil
-                                                     otherButtonItems:[RIButtonItem itemWithLabel:NSLocalizedString(@"image.picker.sheet.choose.existing.button.title", nil) action:chooseFromLibraryAction],
-                                                                      [RIButtonItem itemWithLabel:NSLocalizedString(@"image.picker.sheet.take.photo.button.title", nil) action:takeImageAction], nil];
-    [actionSheet showInView:controller.view];
+    
+    NSString *title = NSLocalizedString(@"image.picker.sheet.title", nil);
+    UIAlertControllerStyle style = UIAlertControllerStyleActionSheet;
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:style];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"image.picker.sheet.cancel.button.title", nil)
+        style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+             [self setSelectionHandler:nil];
+        }];
+    
+    UIAlertAction *library = [UIAlertAction actionWithTitle:NSLocalizedString(@"image.picker.sheet.choose.existing.button.title", nil)
+       style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+           [self presentImagePickerWithSource:UIImagePickerControllerSourceTypePhotoLibrary onController:controller];
+       }];
+    
+    UIAlertAction *photo = [UIAlertAction actionWithTitle:NSLocalizedString(@"image.picker.sheet.take.photo.button.title", nil)
+       style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+           [self presentImagePickerWithSource:UIImagePickerControllerSourceTypeCamera onController:controller];
+       }];
+    
+    [actionSheet addAction:photo];
+    [actionSheet addAction:library];
+    [actionSheet addAction:cancel];
+    
+    [controller presentViewController:actionSheet animated:YES completion:nil];
 }
 
 - (void)presentCameraOnController:(UIViewController *)controller completion:(WBImagePickerResultBlock)completion {
