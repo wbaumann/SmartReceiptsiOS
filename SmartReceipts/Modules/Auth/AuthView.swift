@@ -23,8 +23,8 @@ protocol AuthViewInterface {
     var login: Observable<Credentials> { get }
     var signup: Observable<Credentials> { get }
     var errorHandler: AnyObserver<String> { get }
-    var successLoginHandler: AnyObserver<String> { get }
-    var successSignupHandler: AnyObserver<String> { get }
+    var successLoginHandler: AnyObserver<Void> { get }
+    var successSignupHandler: AnyObserver<Void> { get }
     var successLogoutHandler: AnyObserver<Void> { get }
     var logoutTap: Observable<Void> { get }
 }
@@ -141,8 +141,8 @@ extension AuthView: AuthViewInterface {
         })
     }
     
-    var successLoginHandler: AnyObserver<String> {
-        return AnyObserver<String>(eventHandler: { [weak self] event in
+    var successLoginHandler: AnyObserver<Void> {
+        return AnyObserver<Void>(eventHandler: { [weak self] event in
             self?.hud?.hide(true)
             switch event {
             case .next:
@@ -152,8 +152,8 @@ extension AuthView: AuthViewInterface {
         })
     }
     
-    var successSignupHandler: AnyObserver<String> {
-        return AnyObserver<String>(eventHandler: { [weak self] event in
+    var successSignupHandler: AnyObserver<Void> {
+        return AnyObserver<Void>(eventHandler: { [weak self] event in
             self?.hud?.hide(true)
             switch event {
             case .next:

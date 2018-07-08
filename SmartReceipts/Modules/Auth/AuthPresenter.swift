@@ -34,11 +34,11 @@ class AuthPresenter: Presenter {
             .disposed(by: bag)
     }
     
-    var successLogin: AnyObserver<String> {
+    var successLogin: AnyObserver<Void> {
         return view.successLoginHandler
     }
     
-    var successSignup: AnyObserver<String> {
+    var successSignup: AnyObserver<Void> {
         return view.successSignupHandler
     }
     

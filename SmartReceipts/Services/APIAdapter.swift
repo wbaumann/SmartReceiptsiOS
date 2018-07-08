@@ -17,7 +17,7 @@ class APIAdapter {
      encoding: ParameterEncoding = URLEncoding.default, headers: [String: String]? = nil) -> Observable<Any> {
         var adaptedParameters = parameters ?? [String: Any]()
         let authParams = [ "auth_params[token]": AuthService.shared.token,
-                           "auth_params[email]": AuthService.shared.email]
+                           "auth_params[id]": AuthService.shared.id]
         adaptedParameters.update(other: authParams)
         return RxAlamofire.json(method, url, parameters: adaptedParameters, encoding: encoding, headers: headers)
             .do(onError: { error in
@@ -30,7 +30,7 @@ class APIAdapter {
     class func jsonBody(_ method: Alamofire.HTTPMethod, _ url: URLConvertible, parameters: [String: Any]? = nil,
         encoding: ParameterEncoding = JSONEncoding.default, headers: [String: String]? = nil) -> Observable<Any> {
         var adaptedUrl = try! url.asURL().absoluteString + "?auth_params[token]=" + AuthService.shared.token
-        adaptedUrl += "&auth_params[email]=" + AuthService.shared.email
+        adaptedUrl += "&auth_params[id]=" + AuthService.shared.id
         return RxAlamofire.json(method, adaptedUrl, parameters: parameters, encoding: encoding, headers: headers)
             .do(onError: { error in
                 if let code = (error as? AFError)?.responseCode, code == TOKEN_ERROR_CODE {
