@@ -9,6 +9,11 @@
 import Foundation
 
 class FullPagePDFPageView: UIView {
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var pageRenderView: PDFPageRenderView!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var pageRenderView: PDFPageRenderView!
+    
+    func renderPage(page: CGPDFPage, title: String?) {
+        titleLabel.text = title
+        pageRenderView.render(page: page)
+    }
 }

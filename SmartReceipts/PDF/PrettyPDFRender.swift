@@ -155,8 +155,7 @@ class PrettyPDFRender: NSObject {
             Logger.error("CGRectEqualToRect(cropBox, CGRectZero), label = \(label)")
         }
         let pdfPageRenderView = FullPagePDFPageView.loadInstance()!
-        pdfPageRenderView.titleLabel.text = label
-        pdfPageRenderView.pageRenderView.page = page
+        pdfPageRenderView.renderPage(page: page, title: label)
         openPage.appendFullPageElement(pdfPageRenderView)
         startNextPage()
     }

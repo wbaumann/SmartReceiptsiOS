@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "ReportTable.h"
 
-@class WBPdfDrawer;
 @class PrettyPDFRender;
 
 @interface ReportPDFTable : ReportTable

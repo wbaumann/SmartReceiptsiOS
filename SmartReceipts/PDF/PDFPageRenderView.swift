@@ -9,39 +9,25 @@
 import Foundation
 
 class PDFPageRenderView: UIView {
-    var page: CGPDFPage!
     
-    override func draw(_ rect: CGRect) {
-        backgroundColor = UIColor.white
-        
-        let format = UIGraphicsImageRendererFormat.default()
-        // The problem is that we can't use default CGContext for drawing a pdf on iPhone 7 and newer with iOS10 (extended color devices)
-        format.prefersExtendedRange = false
-        
-        let renderer = UIGraphicsImageRenderer(bounds: rect, format: format)
-        
-        // Generate UIImage from current PDF page
-        let pdfImage = renderer.image { rendererContext in
-            WBPdfDrawer.renderPage(page, in: rendererContext.cgContext, inRectangle: bounds)
-        }
-        
-        // Draw image
-        // This method renders within the current context:
-        pdfImage.draw(in: rect)
-        // so here is another way:
-        
-        // Clear subviews (just in case, to be sure that pdf wouldn't be rendered twice)
-        for subview in subviews {
-            subview.removeFromSuperview()
-        }
-        
-        // add already rendered PDF file as image
-        let imageView = UIImageView(frame: rect)
+    func render(page: CGPDFPage) {
+        for subview in subviews { subview.removeFromSuperview() }
+        let imageView = UIImageView(frame: bounds)
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.backgroundColor = UIColor.white
-        imageView.image = pdfImage
-        
+        autoreleasepool {
+            let pageRect = page.getBoxRect(.mediaBox)
+            let renderer = UIGraphicsImageRenderer(size: pageRect.size)
+            let data =  renderer.jpegData(withCompressionQuality: kImageCompression, actions: { cnv in
+                UIColor.white.set()
+                cnv.fill(pageRect)
+                cnv.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
+                cnv.cgContext.scaleBy(x: 1.0, y: -1.0)
+                cnv.cgContext.drawPDFPage(page)
+            })
+            imageView.image = UIImage(data: data)
+        }
         addSubview(imageView)
     }
 }
