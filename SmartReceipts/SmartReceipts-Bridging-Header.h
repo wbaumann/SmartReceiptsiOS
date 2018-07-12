@@ -57,7 +57,6 @@
 #import "WBImageUtils.h"
 #import "FetchedModelAdapterDelegate.h"
 #import "RateApplication.h"
-#import "WBPdfDrawer.h"
 #import "DistanceColumn.h"
 #import "ReportCSVTable.h"
 #import "ReportPDFTable.h"
