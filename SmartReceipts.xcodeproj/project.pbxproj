@@ -178,7 +178,6 @@
 		719310411EDDC2810065B5AD /* WBSqlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193103A1EDDC2810065B5AD /* WBSqlBuilder.m */; };
 		719310421EDDC2810065B5AD /* WBTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193103C1EDDC2810065B5AD /* WBTextUtils.m */; };
 		719310471EDDC3120065B5AD /* WBImageStampler.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310441EDDC3120065B5AD /* WBImageStampler.m */; };
-		719310481EDDC3120065B5AD /* WBPdfDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310461EDDC3120065B5AD /* WBPdfDrawer.m */; };
 		7194CAB81F3CBED00010552A /* FetchedModelAdapter+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194CAB71F3CBED00010552A /* FetchedModelAdapter+Rx.swift */; };
 		719B1FC61EF5E2150049BD71 /* TaxCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */; };
 		719B1FD21EF5FEBE0049BD71 /* Column.m in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FD01EF5FEBE0049BD71 /* Column.m */; };
@@ -762,8 +761,6 @@
 		7193103C1EDDC2810065B5AD /* WBTextUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTextUtils.m; sourceTree = "<group>"; };
 		719310431EDDC3120065B5AD /* WBImageStampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageStampler.h; sourceTree = "<group>"; };
 		719310441EDDC3120065B5AD /* WBImageStampler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageStampler.m; sourceTree = "<group>"; };
-		719310451EDDC3120065B5AD /* WBPdfDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPdfDrawer.h; sourceTree = "<group>"; };
-		719310461EDDC3120065B5AD /* WBPdfDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPdfDrawer.m; sourceTree = "<group>"; };
 		7194CAB71F3CBED00010552A /* FetchedModelAdapter+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FetchedModelAdapter+Rx.swift"; sourceTree = "<group>"; };
 		719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxCalculator.swift; sourceTree = "<group>"; };
 		719B1FD01EF5FEBE0049BD71 /* Column.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Column.m; sourceTree = "<group>"; };
@@ -2371,8 +2368,6 @@
 				EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */,
 				719310431EDDC3120065B5AD /* WBImageStampler.h */,
 				719310441EDDC3120065B5AD /* WBImageStampler.m */,
-				719310451EDDC3120065B5AD /* WBPdfDrawer.h */,
-				719310461EDDC3120065B5AD /* WBPdfDrawer.m */,
 			);
 			path = Reports;
 			sourceTree = "<group>";
@@ -3335,7 +3330,7 @@
 				7122778C1F756EA300090878 /* S3Service.swift in Sources */,
 				71AEDDE01EDF7FF400BAC0DD /* TripDistancesPresenter.swift in Sources */,
 				A7F05BB41CFC1A5D0079F1AD /* Exchanged.swift in Sources */,
-				719310481EDDC3120065B5AD /* WBPdfDrawer.m in Sources */,
+				7151F9D820E6A2E500C4E894 /* MarkedForDeletionMap.swift in Sources */,
 				570515A71E04AA7D00BB8FE4 /* FirebaseAnalytics.swift in Sources */,
 				71ACA7CC1F5B6A360024903E /* DebugFormView.swift in Sources */,
 				712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */,

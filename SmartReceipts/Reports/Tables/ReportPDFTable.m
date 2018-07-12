@@ -7,7 +7,6 @@
 //
 
 #import "ReportPDFTable.h"
-#import "WBPdfDrawer.h"
 #import "Column.h"
 
 static inline NSString *safeString(NSString *str) {
