@@ -18,7 +18,9 @@ class PDFPageRenderView: UIView {
         imageView.backgroundColor = UIColor.white
         autoreleasepool {
             let pageRect = page.getBoxRect(.mediaBox)
-            let renderer = UIGraphicsImageRenderer(size: pageRect.size)
+            let format = UIGraphicsImageRendererFormat.default()
+            format.prefersExtendedRange = false
+            let renderer = UIGraphicsImageRenderer(bounds: pageRect, format: format)
             let data =  renderer.jpegData(withCompressionQuality: kImageCompression, actions: { cnv in
                 UIColor.white.set()
                 cnv.fill(pageRect)
