@@ -7,23 +7,24 @@
 //
 
 import RxSwift
+import RxCocoa
 
 fileprivate let KEY_AVAILABLE_SCANS = "key_int_available_ocr_scans"
 
 class LocalScansTracker: NSObject {
     static let shared = LocalScansTracker()
     
-    fileprivate let availableScans = Variable<Int>(0)
+    fileprivate let availableScans = BehaviorRelay<Int>(value: 0)
     
     private override init() {
-        availableScans.value = UserDefaults.standard.integer(forKey: KEY_AVAILABLE_SCANS)
+        availableScans.accept(UserDefaults.standard.integer(forKey: KEY_AVAILABLE_SCANS))
     }
     
     var scansCount: Int {
         get { return UserDefaults.standard.integer(forKey: KEY_AVAILABLE_SCANS) }
         set {
             UserDefaults.standard.set(newValue, forKey: KEY_AVAILABLE_SCANS)
-            availableScans.value = newValue
+            availableScans.accept(newValue)
         }
     }
 }

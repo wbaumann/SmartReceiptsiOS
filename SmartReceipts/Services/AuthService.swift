@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import RxCocoa
 import RxAlamofire
 import Alamofire
 import SwiftyJSON
@@ -24,18 +25,18 @@ protocol AuthServiceInterface {
 }
 
 class AuthService: AuthServiceInterface {
-    private let tokenVar = Variable<String>(UserDefaults.standard.string(forKey: AUTH_TOKEN_KEY) ?? "")
-    private let emailVar = Variable<String>(UserDefaults.standard.string(forKey: AUTH_EMAIL_KEY) ?? "")
-    private let idVar = Variable<String>(UserDefaults.standard.string(forKey: AUTH_ID_KEY) ?? "")
+    private let tokenVar = BehaviorRelay<String>(value: UserDefaults.standard.string(forKey: AUTH_TOKEN_KEY) ?? "")
+    private let emailVar = BehaviorRelay<String>(value: UserDefaults.standard.string(forKey: AUTH_EMAIL_KEY) ?? "")
+    private let idVar = BehaviorRelay<String>(value: UserDefaults.standard.string(forKey: AUTH_ID_KEY) ?? "")
     
-    private let isLoggedInVar: Variable<Bool>!
+    private let isLoggedInVar: BehaviorRelay<Bool>!
     
     private init() {
         let defaults = UserDefaults.standard
         defaults.synchronize()
         let loggedIn = defaults.hasObject(forKey: AUTH_TOKEN_KEY) &&
                        defaults.hasObject(forKey: AUTH_EMAIL_KEY)
-        isLoggedInVar = Variable<Bool>(loggedIn)
+        isLoggedInVar = BehaviorRelay<Bool>(value: loggedIn)
     }
     
     static let shared = AuthService()
@@ -141,23 +142,23 @@ class AuthService: AuthServiceInterface {
     
     private func save(token: String, email: String, id: String?) {
         Logger.debug("Authorized - Token: \(token) Email: \(email), ID: \(id ?? "null")")
-        tokenVar.value = token
-        emailVar.value = email
-        idVar.value = id ?? ""
+        tokenVar.accept(token)
+        emailVar.accept(email)
+        idVar.accept(id ?? "")
         UserDefaults.standard.set(token, forKey: AUTH_TOKEN_KEY)
         UserDefaults.standard.set(email, forKey: AUTH_EMAIL_KEY)
         UserDefaults.standard.set(id, forKey: AUTH_ID_KEY)
-        isLoggedInVar.value = true
+        isLoggedInVar.accept(true)
     }
     
     private func clear() {
         UserDefaults.standard.removeObject(forKey: AUTH_TOKEN_KEY)
         UserDefaults.standard.removeObject(forKey: AUTH_EMAIL_KEY)
         UserDefaults.standard.removeObject(forKey: AUTH_ID_KEY)
-        tokenVar.value = ""
-        emailVar.value = ""
-        idVar.value = ""
-        isLoggedInVar.value = false
+        tokenVar.accept("")
+        emailVar.accept("")
+        idVar.accept("")
+        isLoggedInVar.accept(false)
     }
 }
 
