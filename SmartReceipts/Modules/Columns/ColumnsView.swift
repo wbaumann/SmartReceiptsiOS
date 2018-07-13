@@ -14,7 +14,7 @@ import RxDataSources
 
 //MARK: - Public Interface Protocol
 protocol ColumnsViewInterface {
-    var columnsVar: Variable<[Column]> { get }
+    var columnsVar: BehaviorRelay<[Column]> { get }
     func setNavTitle(_ title: String)
 }
 
@@ -119,7 +119,7 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
 //MARK: - Public interface
 extension ColumnsView: ColumnsViewInterface {
     
-    var columnsVar: Variable<[Column]> { get { return displayData.columns } }
+    var columnsVar: BehaviorRelay<[Column]> { get { return displayData.columns } }
     
     func setNavTitle(_ title: String) {
         navigationItem.title = title

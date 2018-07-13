@@ -22,7 +22,7 @@ class ScanServiceTests: XCTestCase {
     var authService = AuthServiceTestable()
     var scansPurchaseTracker = ScansPurchaseTracker.shared
     
-    let notificationVar = Variable(JSON())
+    let notificationVar = BehaviorRelay(value: JSON())
     let mockID = "1"
     var mockURL: URL!
     let mockImage = #imageLiteral(resourceName: "launch_image")

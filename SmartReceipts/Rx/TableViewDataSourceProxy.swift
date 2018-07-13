@@ -12,7 +12,7 @@ import RxCocoa
 class TableViewDataSourceProxy: NSObject, UITableViewDataSource {
     typealias ConfigureCellClosure = (_ row: Int, _ cell: UITableViewCell, _ item: Any) -> Void
     
-    let items = Variable<[Any]>([Any]())
+    let items = BehaviorRelay<[Any]>(value: [Any]())
     let bag = DisposeBag()
     
     let willChangeContent = PublishSubject<Void>()

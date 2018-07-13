@@ -9,16 +9,17 @@
 import Foundation
 import Viperit
 import RxSwift
+import RxCocoa
 
 class ReceiptImageViewerPresenter: Presenter {
     
-    let image = Variable<UIImage?>(nil)
+    let image = BehaviorRelay<UIImage?>(value: nil)
     
     override func setupView(data: Any) {
         let receipt = data as! WBReceipt
         view.setup(receipt: receipt)
         let path = receipt.imageFilePath(for: receipt.trip)
-        image.value = UIImage(contentsOfFile: path)
+        image.accept(UIImage(contentsOfFile: path))
         interactor.imagePath = path
         interactor.configureSubscribers()
     }

@@ -9,8 +9,9 @@
 import Foundation
 import Viperit
 import RxSwift
+import RxCocoa
 
 class ColumnsDisplayData: DisplayData {
-    var columns = Variable([Column]())
+    var columns = BehaviorRelay(value: [Column]())
     let columsNames = ReceiptColumn.availableColumnsNames() as! [String]
 }

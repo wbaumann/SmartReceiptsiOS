@@ -17,10 +17,10 @@ class GenerateReportInteractor: Interactor {
     var shareService: GenerateReportShareService?
     var trip: WBTrip!
     
-    private var fullPdfReport: Variable         = Variable(false)
-    private var pdfReportWithoutTable: Variable = Variable(false)
-    private var csvFile: Variable               = Variable(false)
-    private var zipStampedJPGs: Variable        = Variable(false)
+    private var fullPdfReport: BehaviorRelay         = BehaviorRelay(value: false)
+    private var pdfReportWithoutTable: BehaviorRelay = BehaviorRelay(value: false)
+    private var csvFile: BehaviorRelay               = BehaviorRelay(value: false)
+    private var zipStampedJPGs: BehaviorRelay        = BehaviorRelay(value: false)
     
     private let bag = DisposeBag()
     

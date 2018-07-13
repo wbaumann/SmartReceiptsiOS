@@ -40,7 +40,7 @@ final class ReceiptImageViewerView: UserInterface {
         
         rotateLeftButton.rx.tap.subscribe(onNext: { [unowned self] in
             if let img = self.presenter.image.value {
-                self.presenter.image.value = WBImageUtils.image(img, with: .left)
+                self.presenter.image.accept(WBImageUtils.image(img, with: .left))
             }
         }).disposed(by: bag)
         
@@ -52,7 +52,7 @@ final class ReceiptImageViewerView: UserInterface {
         
         rotateRightButton.rx.tap.subscribe(onNext: { [unowned self] in
             if let img = self.presenter.image.value {
-                self.presenter.image.value = WBImageUtils.image(img, with: .right)
+                self.presenter.image.accept(WBImageUtils.image(img, with: .right))
             }
         }).disposed(by: bag)
         
