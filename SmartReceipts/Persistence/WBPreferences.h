@@ -148,6 +148,9 @@
 
 + (BOOL)assumeFullPage;
 + (void)setAssumeFullPage:(BOOL)value;
+
++ (BOOL)autobackupWifiOnly;
++ (void)setAutobackupWifiOnly:(BOOL)value;
     
 // Automatic Scan Settigns
 + (BOOL)automaticScansEnabled;

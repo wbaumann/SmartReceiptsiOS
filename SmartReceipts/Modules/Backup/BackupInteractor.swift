@@ -30,13 +30,28 @@ class BackupInteractor: Interactor {
         backupManager = BackupProvidersManager(syncProvider: provider)
         
         if provider == .googleDrive {
+            weak var hud = PendingHUDView.showFullScreen()
             GoogleDriveService.shared.signIn(onUI: presenter.signInUIDelegate())
-                .subscribe(onNext: {
-                    
-                }, onError: { error in
-                    
+                .subscribe(onNext: { [weak self] in
+                    self?.setup(provider: .googleDrive)
+                    hud?.hide()
+                }, onError: { [weak self] error in
+                    self?.setup(provider: .none)
+                    hud?.hide()
                 }).disposed(by: bag)
+        } else {
+            presenter.updateUI()
         }
+    }
+    
+    func setupUseWifiOnly(enabled: Bool) {
+        WBPreferences.setAutobackupWifiOnly(enabled)
+        
+    }
+    
+    private func setup(provider: SyncProvider) {
+        SyncProvider.current = provider
+        presenter.updateUI()
     }
     
 }
