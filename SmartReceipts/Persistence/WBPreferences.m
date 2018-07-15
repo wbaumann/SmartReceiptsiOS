@@ -84,6 +84,8 @@ static NSString *const BOOL_ANALYTICS_ENABLED = @"EnableAnalytics";
 static NSString *const BOOL_CRASH_TRACKING_ENABLED = @"EnableCrashTracking";
 static NSString *const BOOL_AD_PERSONALIZATION_ENABLED = @"EnableAdPersonalization";
 
+//Autobackup
+static NSString *const BOOL_AUTOBACKUP_WIFI_ONLY = @"AutoBackupWifiOnly";
 
 static NSArray *__emailFields;
 
@@ -168,6 +170,8 @@ static NSDictionary *getEntryTypes() {
             BOOL_AUTO_SCANS_ENABLED: tBool,
             BOOL_ALLOW_SAVE_IMAGES_FOR_ACCURACY: tBool,
             
+            BOOL_AUTOBACKUP_WIFI_ONLY: tBool,
+            
             BOOL_ANALYTICS_ENABLED: tBool,
             BOOL_CRASH_TRACKING_ENABLED: tBool,
             BOOL_AD_PERSONALIZATION_ENABLED: tBool
@@ -244,6 +248,8 @@ static NSDictionary *getDefaultValues() {
             BOOL_LAYOUT_SHOW_RECEIPT_DATE: @YES,
             BOOL_LAYOUT_SHOW_RECEIPT_CATEGORY: @NO,
             BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER: @NO,
+            
+            BOOL_AUTOBACKUP_WIFI_ONLY: @YES,
             
             BOOL_AUTO_SCANS_ENABLED: @YES,
             BOOL_ALLOW_SAVE_IMAGES_FOR_ACCURACY: @YES,
@@ -786,6 +792,14 @@ static NSUserDefaults* instance() {
 
 + (void)setAssumeFullPage:(BOOL)value {
     [instance() setBool:value forKey:BOOL_ASSUME_FULL_PAGE];
+}
+
++ (BOOL)autobackupWifiOnly {
+    return [instance() boolForKey:BOOL_AUTOBACKUP_WIFI_ONLY];
+}
+
++ (void)setAutobackupWifiOnly:(BOOL)value {
+    [instance() setBool:value forKey:BOOL_AUTOBACKUP_WIFI_ONLY];
 }
     
 //MARK: Automatic Scan Settigns

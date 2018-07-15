@@ -24,6 +24,7 @@ class BackupPresenter: Presenter {
     }
     
     func hasValidSubscription() -> Bool {
+        return true
         return interactor.hasValidSubscription()
     }
     
@@ -39,6 +40,13 @@ class BackupPresenter: Presenter {
         interactor.saveCurrent(provider: provider)
     }
     
+    func updateUI() {
+        view.updateUI()
+    }
+    
+    func setupUseWifiOnly(enabled: Bool) {
+        interactor.setupUseWifiOnly(enabled: enabled)
+    }
 }
 
 

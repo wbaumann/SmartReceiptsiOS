@@ -30,26 +30,26 @@
                                         <rect key="frame" x="-0.5" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manual backups:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jL-ZW-tf8">
-                                                <rect key="frame" x="24" y="8" width="140" height="21"/>
+                                                <rect key="frame" x="24" y="8" width="139.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaV-jy-JHb">
-                                                <rect key="frame" x="24" y="37" width="327" height="72"/>
+                                                <rect key="frame" x="24" y="36.5" width="327" height="72"/>
                                                 <string key="text">Back up your data to keep your receipts safe! You can restore your data by importing the SmartReceipts.SMR backup file, which is generated via the "Backup" button below.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning: Automatic backups are not configured! You may be at risk of losing your data." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-hQ-Fm0">
-                                                <rect key="frame" x="57" y="226" width="294" height="54"/>
+                                                <rect key="frame" x="57" y="225" width="294" height="54"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjP-Dt-4xC">
-                                                <rect key="frame" x="197.5" y="125" width="110" height="38"/>
+                                                <rect key="frame" x="197.5" y="124.5" width="110" height="38"/>
                                                 <color key="backgroundColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="2Pv-vD-4xC"/>
@@ -63,7 +63,7 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAU-ny-7fG">
-                                                <rect key="frame" x="67.5" y="125" width="110" height="38"/>
+                                                <rect key="frame" x="67.5" y="124.5" width="110" height="38"/>
                                                 <color key="backgroundColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="110" id="hkm-4p-3S3"/>
@@ -77,45 +77,73 @@
                                                 </state>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7R-zn-rLY">
-                                                <rect key="frame" x="8" y="179" width="359" height="2"/>
+                                                <rect key="frame" x="8" y="178.5" width="359" height="2"/>
                                                 <color key="backgroundColor" red="0.48908943970000002" green="0.48908943970000002" blue="0.48908943970000002" alpha="0.21184815950920247" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="qlY-rB-yCG"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automatic Backups [BETA]:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h59-f1-NVn">
-                                                <rect key="frame" x="24" y="197" width="226" height="21"/>
+                                                <rect key="frame" x="24" y="196.5" width="225.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert-triangle" translatesAutoresizingMaskIntoConstraints="NO" id="vXl-th-Sl1">
-                                                <rect key="frame" x="24" y="242" width="23" height="23"/>
+                                                <rect key="frame" x="24" y="241" width="23" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="vXl-th-Sl1" secondAttribute="height" multiplier="1:1" id="3Le-NJ-26M"/>
                                                     <constraint firstAttribute="width" constant="23" id="ibA-W3-Q6B"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xk-JH-9f5">
-                                                <rect key="frame" x="102" y="292" width="171" height="24"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <color key="tintColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="TAP TO CONFIGURE" image="cloud-off"/>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yBd-9W-Xjt">
+                                                <rect key="frame" x="24" y="289" width="327" height="72"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="07K-ne-LTs">
+                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="40"/>
+                                                        <subviews>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SEW-5L-Ioq">
+                                                                <rect key="frame" x="262" y="4.5" width="51" height="31"/>
+                                                            </switch>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Wi-Fi Only" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBl-WS-G4T">
+                                                                <rect key="frame" x="33" y="11" width="103" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="SEW-5L-Ioq" secondAttribute="trailing" constant="16" id="F6x-1E-sE3"/>
+                                                            <constraint firstItem="gBl-WS-G4T" firstAttribute="centerY" secondItem="07K-ne-LTs" secondAttribute="centerY" id="KB5-mG-FTm"/>
+                                                            <constraint firstAttribute="height" constant="40" id="arE-4b-dvx"/>
+                                                            <constraint firstItem="SEW-5L-Ioq" firstAttribute="centerY" secondItem="07K-ne-LTs" secondAttribute="centerY" id="o5S-sc-zdo"/>
+                                                            <constraint firstItem="gBl-WS-G4T" firstAttribute="leading" secondItem="07K-ne-LTs" secondAttribute="leading" constant="33" id="obG-4P-D8G"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xk-JH-9f5">
+                                                        <rect key="frame" x="0.0" y="48" width="327" height="24"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <color key="tintColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="TAP TO CONFIGURE" image="cloud-off"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="3jL-ZW-tf8" firstAttribute="top" secondItem="hy4-S2-EGd" secondAttribute="top" constant="8" id="64h-J2-r1o"/>
-                                            <constraint firstItem="6xk-JH-9f5" firstAttribute="centerX" secondItem="hy4-S2-EGd" secondAttribute="centerX" id="8MD-5o-pjy"/>
                                             <constraint firstItem="3jL-ZW-tf8" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="leading" constant="24" id="D5R-Dm-qo9"/>
                                             <constraint firstItem="vXl-th-Sl1" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="leading" constant="24" id="Gvb-Hl-x5x"/>
                                             <constraint firstItem="h59-f1-NVn" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="leading" constant="24" id="IW4-3Z-5fX"/>
-                                            <constraint firstItem="6xk-JH-9f5" firstAttribute="top" secondItem="YFu-hQ-Fm0" secondAttribute="bottom" constant="12" id="Lqq-kr-LrU"/>
                                             <constraint firstItem="c7R-zn-rLY" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="leading" constant="8" id="Mkf-x6-gmT"/>
+                                            <constraint firstItem="yBd-9W-Xjt" firstAttribute="leading" secondItem="vXl-th-Sl1" secondAttribute="leading" id="NKW-fe-ZNC"/>
                                             <constraint firstItem="h59-f1-NVn" firstAttribute="top" secondItem="c7R-zn-rLY" secondAttribute="bottom" constant="16" id="SuM-9B-eOw"/>
+                                            <constraint firstItem="yBd-9W-Xjt" firstAttribute="top" secondItem="YFu-hQ-Fm0" secondAttribute="bottom" constant="10" id="Uj8-6G-l2t"/>
                                             <constraint firstItem="YFu-hQ-Fm0" firstAttribute="leading" secondItem="vXl-th-Sl1" secondAttribute="trailing" constant="10" id="WYC-2M-WOm"/>
                                             <constraint firstItem="hjP-Dt-4xC" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="centerX" constant="10" id="XtG-yg-TFA"/>
+                                            <constraint firstItem="yBd-9W-Xjt" firstAttribute="centerX" secondItem="hy4-S2-EGd" secondAttribute="centerX" id="e5r-IY-2ak"/>
                                             <constraint firstItem="YFu-hQ-Fm0" firstAttribute="top" secondItem="h59-f1-NVn" secondAttribute="bottom" constant="8" id="ebb-a3-fOY"/>
                                             <constraint firstItem="c7R-zn-rLY" firstAttribute="top" secondItem="hjP-Dt-4xC" secondAttribute="bottom" constant="16" id="fKo-Jf-hD3"/>
                                             <constraint firstAttribute="trailing" secondItem="c7R-zn-rLY" secondAttribute="trailing" constant="8" id="jAx-tc-0AD"/>
@@ -163,6 +191,9 @@
                         <outlet property="importButton" destination="hjP-Dt-4xC" id="ZJb-ym-ofc"/>
                         <outlet property="manualBackupDesctiption" destination="HaV-jy-JHb" id="RKG-H5-gNQ"/>
                         <outlet property="manualBackupTitle" destination="3jL-ZW-tf8" id="BL7-uH-JJk"/>
+                        <outlet property="wifiLabel" destination="gBl-WS-G4T" id="qdp-dl-3TW"/>
+                        <outlet property="wifiSwitch" destination="SEW-5L-Ioq" id="jA6-Pt-tzd"/>
+                        <outlet property="wifiView" destination="07K-ne-LTs" id="bAi-4y-RSC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nXm-AG-NXG" userLabel="First Responder" sceneMemberID="firstResponder"/>

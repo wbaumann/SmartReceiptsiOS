@@ -492,5 +492,7 @@
 "auto_backup_source_none" = "None";
 "auto_backup_source_google_drive" = "Google Drive";
 "auto_backup_current_service" = "Current Service";
+"auto_backup_warning_drive" = "Warning: Standard charges may apply for automatic backups over a mobile network.";
+"auto_backup_wifi_only" = "Use Wi-Fi Only";
 
 "receipt_file_picker_cant_import_error" = "Can't import selected file";

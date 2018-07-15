@@ -16,6 +16,7 @@ import GoogleSignIn
 protocol BackupViewInterface  {
     var importTap: Observable<Void> { get }
     var signInUIDelegate: GIDSignInUIDelegate { get }
+    func updateUI()
 }
 
 //MARK: BackupView Class
@@ -30,26 +31,44 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     @IBOutlet private weak var configureButton: UIButton!
     @IBOutlet private weak var autoBackupTitle: UILabel!
     @IBOutlet private weak var autoBackupDesctiption: UILabel!
+    @IBOutlet private weak var wifiLabel: UILabel!
+    @IBOutlet private weak var wifiSwitch: UISwitch!
+    @IBOutlet private weak var wifiView: UIView!
     
     private let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        wifiSwitch.isOn = WBPreferences.autobackupWifiOnly()
         configureRx()
         configureLayers()
         localizeUI()
+        updateUI()
     }
     
     private func localizeUI() {
         title = LocalizedString("backups_view_title")
+        
         manualBackupTitle.text = LocalizedString("backups_view_manual_title")
         manualBackupDesctiption.text = LocalizedString("backups_view_manual_description")
-        autoBackupTitle.text = LocalizedString("auto_backup_title")
-        autoBackupDesctiption.text = LocalizedString("auto_backup_warning_none")
-        
         importButton.setTitle(LocalizedString("backups_view_import_button").uppercased(), for: .normal)
         backupButton.setTitle(LocalizedString("backups_view_backup_button").uppercased(), for: .normal)
-        configureButton.setTitle(LocalizedString("auto_backup_configure").uppercased(), for: .normal)
+        
+        autoBackupTitle.text = LocalizedString("auto_backup_title")
+        wifiLabel.text = LocalizedString("auto_backup_wifi_only")
+    }
+    
+    func updateUI() {
+        wifiView.isHidden = !presenter.hasValidSubscription() || SyncProvider.current == .none
+        if SyncProvider.current == .googleDrive && presenter.hasValidSubscription() {
+            autoBackupDesctiption.text = LocalizedString("auto_backup_warning_drive")
+            configureButton.setTitle(SyncProvider.current.localizedTitle().uppercased(), for: .normal)
+            configureButton.setImage(#imageLiteral(resourceName: "cloud-check"), for: .normal)
+        } else {
+            autoBackupDesctiption.text = LocalizedString("auto_backup_warning_none")
+            configureButton.setTitle(LocalizedString("auto_backup_configure").uppercased(), for: .normal)
+            configureButton.setImage(#imageLiteral(resourceName: "cloud-off"), for: .normal)
+        }
     }
     
     private func configureRx() {
@@ -74,6 +93,11 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
             .flatMap({ [unowned self] in return self.presenter.purchaseSubscription() })
             .subscribe(onNext: { [unowned self] in
                 self.openBackupServiceSelector()
+            }).disposed(by: bag)
+        
+        wifiSwitch.rx.isOn
+            .subscribe(onNext: { [unowned self] in
+                self.presenter.setupUseWifiOnly(enabled: $0)
             }).disposed(by: bag)
     }
     
