@@ -11,17 +11,20 @@ import RxSwift
 
 class BackupProvidersManager: BackupProvider {
     
-    let backupProvider: BackupProvider
+    var backupProvider: BackupProvider
     
     init(syncProvider: SyncProvider) {
-        self.backupProvider = BackupProviderFactory().makeBackupProvider(syncProvider: syncProvider)
+        backupProvider = BackupProviderFactory().makeBackupProvider(syncProvider: syncProvider)
     }
     
     init(backupProvider: BackupProvider) {
         self.backupProvider = backupProvider
     }
     
-    var deviceSyncId: String? { return backupProvider.deviceSyncId }
+    var databaseSyncId: String? {
+        get { return backupProvider.databaseSyncId }
+        set { backupProvider.databaseSyncId = newValue }
+    }
     
     var lastDatabaseSyncTime: Date { return backupProvider.lastDatabaseSyncTime }
     

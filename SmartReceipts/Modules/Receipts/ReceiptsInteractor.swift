@@ -87,6 +87,8 @@ class ReceiptsInteractor: Interactor {
         
         if !Database.sharedInstance().reorder(rec1, with: rec2) {
             Logger.warning("Error: Cannot Swap")
+        } else {
+            SyncService.shared.syncDatabase()
         }
     }
     

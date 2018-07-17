@@ -22,7 +22,6 @@ NSString *const DatabaseDidReorderModelsNotification = @"DatabaseDidReorderModel
 
 @interface Database ()
 
-@property (nonatomic, copy) NSString *pathToDatabase;
 @property (nonatomic, strong) FMDatabaseQueue *databaseQueue;
 @property (nonatomic, strong) ReceiptFilesManager *filesManager;
 @property (nonatomic, assign) BOOL disableFilesManager;

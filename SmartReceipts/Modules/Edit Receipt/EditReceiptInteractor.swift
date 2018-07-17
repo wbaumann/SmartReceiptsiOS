@@ -74,6 +74,7 @@ class EditReceiptInteractor: Interactor {
             Logger.error("Can't \(action) receipt: \(receipt.description)")
         } else {
             validateDate(in: receipt)
+            SyncService.shared.syncDatabase()
             presenter.close()
         }
     }

@@ -22,6 +22,7 @@ extern NSString *const DatabaseDidReorderModelsNotification;
 @property (nonatomic, strong, readonly) FMDatabaseQueue *databaseQueue;
 @property (nonatomic, strong, readonly) ReceiptFilesManager *filesManager;
 @property (nonatomic, readonly) FMDatabase *fmdb;
+@property (nonatomic, readonly) NSString *pathToDatabase;
 
 + (instancetype)sharedInstance;
 

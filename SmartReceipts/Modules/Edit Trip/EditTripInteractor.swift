@@ -30,7 +30,8 @@ class EditTripInteractor: Interactor {
         trip.name = WBTextUtils.omitIllegalCharacters(trip.name)
         let success = update ? Database.sharedInstance().update(trip) : Database.sharedInstance().save(trip)
         if success {
-            self.presenter.close()
+            SyncService.shared.syncDatabase()
+            presenter.close()
         } else {
             let action = update ? "update" : "insert"
             Logger.error("Can't \(action) report: \(trip.description)")

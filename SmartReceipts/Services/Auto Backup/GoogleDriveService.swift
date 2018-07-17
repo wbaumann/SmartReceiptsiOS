@@ -83,8 +83,9 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         })
     }
     
-    func updateFile(id: String, file: GTLRDrive_File) -> Single<GTLRDrive_File> {
-        let query = GTLRDriveQuery_FilesUpdate.query(withObject: file, fileId: id, uploadParameters: nil)
+    func updateFile(id: String, file: GTLRDrive_File, data: Data, mimeType: String) -> Single<GTLRDrive_File> {
+        let params = GTLRUploadParameters(data: data, mimeType: mimeType)
+        let query = GTLRDriveQuery_FilesUpdate.query(withObject: file, fileId: id, uploadParameters: params)
         return Single<GTLRDrive_File>.create(subscribe: { [unowned self] single in
             self.gDriveService.executeQuery(query) { (ticket: GTLRServiceTicket, object: Any?, error: Error?) in
                 if let queryError = error {
