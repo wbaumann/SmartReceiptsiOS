@@ -21,7 +21,7 @@ protocol BackupProvider {
     /**
      * @return the sync Identifier for the current device or nil if none is defined
      */
-    var databaseSyncId: String? { get set }
+    var deviceSyncId: String? { get }
     
     /**
      * @return the Date for the last time our database was synced

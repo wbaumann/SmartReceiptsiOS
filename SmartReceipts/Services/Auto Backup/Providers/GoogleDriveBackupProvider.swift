@@ -9,13 +9,10 @@
 import Foundation
 import RxSwift
 
-fileprivate let DB_SYNC_ID_KEY = "google.drive.sync.id.key"
-
 class GoogleDriveBackupProvider: BackupProvider {
     
-    var databaseSyncId: String? {
-        get { return UserDefaults.standard.string(forKey: DB_SYNC_ID_KEY) }
-        set { UserDefaults.standard.set(newValue, forKey: DB_SYNC_ID_KEY) }
+    var deviceSyncId: String? {
+        return nil
     }
     
     var lastDatabaseSyncTime: Date {

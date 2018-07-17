@@ -11,9 +11,8 @@ import RxSwift
 
 class NoOpBackupProvider: BackupProvider {
     
-    var databaseSyncId: String? {
-        get { return nil }
-        set {}
+    var deviceSyncId: String? {
+        return nil
     }
     
     var lastDatabaseSyncTime: Date {
