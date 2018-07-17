@@ -28,12 +28,14 @@ class ColumnsInteractor: Interactor {
         column.customOrderId = orderId
         let result = isCSV ? db.addCSVColumn(column) : db.addPDFColumn(column)
         Logger.info("Add Column '\(column.name)'. Result: \(result)")
+        if result { SyncService.shared.syncDatabase() }
     }
     
     func removeColumn(_ column: Column, isCSV: Bool) {
         let db = Database.sharedInstance()!
         let result = isCSV ? db.removeCSVColumn(column) : db.removePDFColumn(column)
         Logger.info("Remove Column '\(column.name)'. Result: \(result)")
+        if result { SyncService.shared.syncDatabase() }
     }
     
     func reorder(columnLeft: Column, columnRight: Column, isCSV: Bool) {
@@ -41,6 +43,7 @@ class ColumnsInteractor: Interactor {
         let result = isCSV ? db.reorderCSVColumn(columnLeft, withCSVColumn: columnRight) :
                              db.reorderPDFColumn(columnLeft, withPDFColumn: columnRight)
         Logger.info("Reorder columns. Result: \(result)")
+        if result { SyncService.shared.syncDatabase() }
     }
     
 }

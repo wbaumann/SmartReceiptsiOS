@@ -40,15 +40,21 @@ class CategoriesInteractor: Interactor {
         
         if !success {
             presenter.presentAlert(title: nil, message: LocalizedString("edit.category.edit.failure.message"))
+        } else {
+            SyncService.shared.syncDatabase()
         }
     }
     
     func reorder(categoryLeft: WBCategory, categoryRight: WBCategory) {
-        Database.sharedInstance().reorder(categoryLeft, with: categoryRight)
+        if Database.sharedInstance().reorder(categoryLeft, with: categoryRight) {
+            SyncService.shared.syncDatabase()
+        }
     }
     
     func delete(category: WBCategory) {
-        Database.sharedInstance().delete(category)
+        if Database.sharedInstance().delete(category) {
+            SyncService.shared.syncDatabase()
+        }
     }
     
     func fetchedModelAdapter() -> FetchedModelAdapter? {

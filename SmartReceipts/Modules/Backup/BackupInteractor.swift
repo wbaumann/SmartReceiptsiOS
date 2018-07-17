@@ -46,7 +46,6 @@ class BackupInteractor: Interactor {
     
     func setupUseWifiOnly(enabled: Bool) {
         WBPreferences.setAutobackupWifiOnly(enabled)
-        
     }
     
     private func setup(provider: SyncProvider) {
