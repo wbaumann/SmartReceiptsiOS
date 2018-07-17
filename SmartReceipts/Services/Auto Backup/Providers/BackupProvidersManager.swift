@@ -21,9 +21,8 @@ class BackupProvidersManager: BackupProvider {
         self.backupProvider = backupProvider
     }
     
-    var databaseSyncId: String? {
-        get { return backupProvider.databaseSyncId }
-        set { backupProvider.databaseSyncId = newValue }
+    var deviceSyncId: String? {
+        return backupProvider.deviceSyncId
     }
     
     var lastDatabaseSyncTime: Date { return backupProvider.lastDatabaseSyncTime }
