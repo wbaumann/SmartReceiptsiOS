@@ -247,3 +247,17 @@ extension WBReceipt {
     }
 
 }
+
+extension WBReceipt: SyncState {
+    func getSyncId(provider: SyncProvider) -> String? {
+        return provider == .googleDrive ? syncId : nil
+    }
+    
+    func isSynced(syncProvider: SyncProvider) -> Bool {
+        return syncProvider == .googleDrive ? isSynced : false
+    }
+    
+    func isMarkedForDeletion(syncProvider: SyncProvider) -> Bool {
+        return syncProvider == .googleDrive ? isMarkedForDeletion : false
+    }
+}

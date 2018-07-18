@@ -14,7 +14,7 @@
 @class PaymentMethod;
 @class WBCategory;
 
-@interface WBReceipt : NSObject <FetchedModel>
+@interface WBReceipt: NSObject <FetchedModel>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -36,6 +36,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly, nonnull) Currency *currency;
 @property (nonatomic, readonly) NSString *omittedName;
 @property (nonatomic) NSInteger customOrderId;
+
+@property (nonatomic, strong) NSDate *lastLocalModificationTime;
+@property (nonatomic, copy) NSString *syncId;
+@property (nonatomic) BOOL isSynced;
+@property (nonatomic) BOOL isMarkedForDeletion;
 
 - (id)initWithId:(NSUInteger)rid
             name:(NSString *)name

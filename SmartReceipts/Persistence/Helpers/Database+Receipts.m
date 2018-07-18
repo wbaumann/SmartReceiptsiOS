@@ -409,6 +409,11 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
     [query addParam:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3 value:[Database extraInsertValue:receipt.extraEditText3]];
     [query addParam:ReceiptsTable.COLUMN_CUSTOM_ORDER_ID value:@(receipt.customOrderId)];
     [query addParam:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID value:@(receipt.paymentMethod.objectId)];
+    
+    [query addParam:SyncStateColumns.LAST_LOCAL_MODIFICATION_TIME value:receipt.lastLocalModificationTime.milliseconds];
+    [query addParam:SyncStateColumns.DRIVE_SYNC_IS_SYNCED value:@(receipt.isSynced)];
+    [query addParam:SyncStateColumns.DRIVE_MARKED_FOR_DELETION value:@(receipt.isMarkedForDeletion)];
+    [query addParam:SyncStateColumns.DRIVE_SYNC_ID value:receipt.syncId];
 }
 
 - (NSTimeInterval)maxSecondForReceiptsInTrip:(WBTrip *)trip onDate:(NSDate *)date {

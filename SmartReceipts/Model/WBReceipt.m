@@ -14,6 +14,7 @@
 #import "Constants.h"
 #import "NSDate+Calculations.h"
 #import "WBTextUtils.h"
+#import <SmartReceipts-Swift.h>
 
 static NSString* checkNoData(NSString* str) {
     if ([SRNoData caseInsensitiveCompare:str] == NSOrderedSame) {
@@ -234,9 +235,15 @@ static NSString* checkNoData(NSString* str) {
     NSString *paymentMethodName = [resultSet stringForColumn:PaymentMethodsTable.COLUMN_METHOD];
     
     if (paymentMethodName) {
-        PaymentMethod *pm =[[PaymentMethod alloc] initWithObjectId:paymentMethodId method:paymentMethodName];
+        PaymentMethod *pm = [[PaymentMethod alloc] initWithObjectId:paymentMethodId method:paymentMethodName];
         [self setPaymentMethod:pm];
     }
+    
+    long long int time = [resultSet longLongIntForColumn:SyncStateColumns.LAST_LOCAL_MODIFICATION_TIME];
+    _lastLocalModificationTime = [NSDate dateWithMilliseconds:time];
+    _isSynced = [resultSet boolForColumn:SyncStateColumns.DRIVE_SYNC_IS_SYNCED];
+    _isMarkedForDeletion = [resultSet boolForColumn:SyncStateColumns.DRIVE_MARKED_FOR_DELETION];
+    _syncId = [resultSet stringForColumn:SyncStateColumns.DRIVE_SYNC_ID];
 }
 
 - (BOOL)isEqual:(id)other {

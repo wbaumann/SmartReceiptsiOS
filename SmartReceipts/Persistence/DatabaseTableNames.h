@@ -99,3 +99,11 @@ struct PDFTableStruct {
     __unsafe_unretained NSString *const COLUMN_CUSTOM_ORDER_ID;
 };
 extern const struct PDFTableStruct PDFTable;
+
+struct SyncStateColumnsStruct {
+    __unsafe_unretained NSString *const DRIVE_SYNC_ID;
+    __unsafe_unretained NSString *const DRIVE_SYNC_IS_SYNCED;
+    __unsafe_unretained NSString *const DRIVE_MARKED_FOR_DELETION;
+    __unsafe_unretained NSString *const LAST_LOCAL_MODIFICATION_TIME;
+};
+extern const struct SyncStateColumnsStruct SyncStateColumns;
