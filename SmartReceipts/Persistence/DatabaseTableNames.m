@@ -93,3 +93,11 @@ const struct PDFTableStruct PDFTable = {
         .COLUMN_TYPE = @"type",
         .COLUMN_CUSTOM_ORDER_ID = @"custom_order_id"
 };
+
+const struct SyncStateColumnsStruct SyncStateColumns = {
+    .DRIVE_SYNC_ID = @"drive_sync_id",
+    .DRIVE_SYNC_IS_SYNCED = @"drive_is_synced",
+    .DRIVE_MARKED_FOR_DELETION = @"drive_marked_for_deletion",
+    .LAST_LOCAL_MODIFICATION_TIME = @"last_local_modification_time"
+};
+
