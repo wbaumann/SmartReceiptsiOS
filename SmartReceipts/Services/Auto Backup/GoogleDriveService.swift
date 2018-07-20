@@ -34,6 +34,7 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         GIDSignIn.sharedInstance().clientID = GOOGLE_CLIENT_ID
         GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeDrive]
         GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().signInSilently()
     }
     
     func signIn(onUI viewController: GIDSignInUIDelegate) -> Observable<Void> {
@@ -130,10 +131,12 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         })
     }
     
-    func createFolder(name: String, parent: String? = nil) -> Single<GTLRDrive_File> {
+    func createFolder(name: String, parent: String? = nil, json: [AnyHashable : Any]? = nil, description: String? = nil) -> Single<GTLRDrive_File> {
         let folder = GTLRDrive_File()
         folder.name = name
         folder.mimeType = FOLDER_MIME_TYPE
+        folder.descriptionProperty = description
+        folder.appProperties = GTLRDrive_File_AppProperties(json: json)
         if let p = parent { folder.parents = [p] }
         
         let query = GTLRDriveQuery_FilesCreate.query(withObject: folder, uploadParameters: nil)

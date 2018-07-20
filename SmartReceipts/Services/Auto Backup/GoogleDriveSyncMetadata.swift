@@ -11,10 +11,11 @@ import Foundation
 class GoogleDriveSyncMetadata {
     
     private let KEY_DEVICE_IDENTIFIER = "key_device_identifier"
+    private let KEY_FOLDER_IDENTIFIER = "key_folder_identifier"
     private let KEY_DRIVE_DATABASE_IDENTIFIER = "key_drive_database_identifier"
     private let KEY_DRIVE_LAST_SYNC = "key_drive_last_sync"
     
-    func getDeviceIdentifier() -> String {
+    var deviceIdentifier: String {
         if let id = UserDefaults.standard.string(forKey: KEY_DEVICE_IDENTIFIER) {
             return id
         } else {
@@ -24,13 +25,18 @@ class GoogleDriveSyncMetadata {
         }
     }
     
-    func getDatabaseSyncIdentifier() -> String? {
-        return UserDefaults.standard.string(forKey: KEY_DRIVE_DATABASE_IDENTIFIER)
+    var folderIdentifier: String? {
+        get { return UserDefaults.standard.string(forKey: KEY_FOLDER_IDENTIFIER) }
+        set { UserDefaults.standard.set(newValue, forKey: KEY_FOLDER_IDENTIFIER) }
     }
     
-    func setDatabaseSyncIndentifier(_ identifier: String) {
-        UserDefaults.standard.set(identifier, forKey: KEY_DRIVE_DATABASE_IDENTIFIER)
-        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: KEY_DRIVE_LAST_SYNC)
+    var databaseSyncIdentifier: String? {
+        get { return UserDefaults.standard.string(forKey: KEY_DRIVE_DATABASE_IDENTIFIER) }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: KEY_DRIVE_DATABASE_IDENTIFIER)
+            UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: KEY_DRIVE_LAST_SYNC)
+        }
     }
     
     func getLastDatabaseSyncTime() -> Date? {

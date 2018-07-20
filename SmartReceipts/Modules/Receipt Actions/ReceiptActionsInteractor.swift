@@ -27,6 +27,8 @@ class ReceiptActionsInteractor: Interactor {
         if !Database.sharedInstance().update(receipt, changeFileNameTo: imageFileName) {
             Logger.error("Error: cannot update image file")
             return false
+        } else {
+            SyncService.shared.uploadImage(receipt: receipt)
         }
         return true
     }
@@ -46,6 +48,8 @@ class ReceiptActionsInteractor: Interactor {
         if !Database.sharedInstance().update(receipt, changeFileNameTo: imageFileName) {
             Logger.error("Error: cannot update image file \(imageFileName) for receipt \(receipt.name)")
             return false
+        } else {
+            SyncService.shared.uploadImage(receipt: receipt)
         }
         return true
     }

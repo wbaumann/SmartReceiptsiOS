@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol SyncServiceProtocol {
     func syncDatabase()
+    func uploadImage(receipt: WBReceipt)
 }
 
 class SyncService: SyncServiceProtocol {
@@ -27,6 +29,11 @@ class SyncService: SyncServiceProtocol {
         syncService.syncDatabase()
     }
     
+    func uploadImage(receipt: WBReceipt) {
+        updateSyncServiceIfNeeded()
+        return syncService.uploadImage(receipt: receipt)
+    }
+    
     private func updateSyncServiceIfNeeded() {
         if let provider = syncProvider, provider == SyncProvider.current { return }
         switch SyncProvider.current {
@@ -41,4 +48,5 @@ class SyncService: SyncServiceProtocol {
 
 fileprivate class NoOpSyncService: SyncServiceProtocol {
     func syncDatabase() {}
+    func uploadImage(receipt: WBReceipt) {}
 }

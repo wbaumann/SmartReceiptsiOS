@@ -297,27 +297,30 @@ static NSString* checkNoData(NSString* str) {
 }
 
 - (id)copy {
-    return [[WBReceipt alloc] initWithId:self.objectId
-                                    name:self.name
-                                category:self.category
-                           imageFileName:self.imageFileName
-                                    date:self.date
-                            timeZoneName:self.timeZone.name
-                                 comment:self.comment
-                             priceAmount:self.priceAmount
-                               taxAmount:self.taxAmount
-                            exchangeRate:self.exchangeRate
-                                currency:self.currency
-                           paymentMethod:self.paymentMethod
-                          isReimbursable:self.isReimbursable
-                              isFullPage:self.isFullPage
-                          extraEditText1:self.extraEditText1
-                          extraEditText2:self.extraEditText2
-                          extraEditText3:self.extraEditText3
-                           customOrderId:self.customOrderId];
+    WBReceipt *copy = [[WBReceipt alloc] initWithId:self.objectId
+                                               name:self.name
+                                           category:self.category
+                                      imageFileName:self.imageFileName
+                                               date:self.date
+                                       timeZoneName:self.timeZone.name
+                                            comment:self.comment
+                                        priceAmount:self.priceAmount
+                                          taxAmount:self.taxAmount
+                                       exchangeRate:self.exchangeRate
+                                           currency:self.currency
+                                      paymentMethod:self.paymentMethod
+                                     isReimbursable:self.isReimbursable
+                                         isFullPage:self.isFullPage
+                                     extraEditText1:self.extraEditText1
+                                     extraEditText2:self.extraEditText2
+                                     extraEditText3:self.extraEditText3
+                                      customOrderId:self.customOrderId];
     
-    
-    
+    copy.isSynced = _isSynced;
+    copy.lastLocalModificationTime = _lastLocalModificationTime;
+    copy.syncId = _syncId;
+    copy.isMarkedForDeletion = _isMarkedForDeletion;
+    return copy;
 }
 
 @end

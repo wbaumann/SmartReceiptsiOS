@@ -14,12 +14,12 @@ import Toaster
 fileprivate let MIN_SCANS_TOOLTIP = 5
 
 class EditReceiptInteractor: Interactor {
-    private let bag = DisposeBag()
+    private let tooltipBag = DisposeBag()
     private var authService: AuthServiceInterface!
     private var scansPurchaseTracker: ScansPurchaseTracker!
     private var tooltipService: TooltipService!
     var receiptFilePath: URL?
-    let disposeBag = DisposeBag()
+    let bag = DisposeBag()
     
     required init(authService: AuthServiceInterface,
                   scansPurchaseTracker: ScansPurchaseTracker,
@@ -43,14 +43,14 @@ class EditReceiptInteractor: Interactor {
             AnalyticsManager.sharedManager.record(event: Event.receiptsPersistNewReceipt())
             self.saveImage(to: receipt)
             self.save(receipt: receipt)
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
         
         presenter.updateReceiptSubject.subscribe(onNext: { [unowned self] receipt in
             Logger.debug("Updated Receipt: \(receipt.name)")
             AnalyticsManager.sharedManager.record(event: Event.receiptsPersistUpdateReceipt())
             self.replaceImageIfNeeded(receipt: receipt)
             self.save(receipt: receipt)
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
     }
     
     func tooltipText() -> String? {
@@ -61,13 +61,14 @@ class EditReceiptInteractor: Interactor {
             presenter.tooltipClose
                 .subscribe(onNext: { [unowned self] in
                     self.tooltipService.markConfigureOCRDismissed()
-                }).disposed(by: bag)
+                }).disposed(by: tooltipBag)
             return LocalizedString("ocr.informational.tooltip.configure.text")
         }
         return nil
     }
     
     private func save(receipt: WBReceipt) {
+        receipt.lastLocalModificationTime = Date()
         if !Database.sharedInstance().save(receipt) {
             presenter.present(errorDescription: LocalizedString("edit.receipt.generic.save.error.message"))
             let action = receipt.objectId == 0 ? "insert" : "update"
@@ -75,6 +76,7 @@ class EditReceiptInteractor: Interactor {
         } else {
             validateDate(in: receipt)
             SyncService.shared.syncDatabase()
+            if !receipt.isSynced(syncProvider: .current) { syncImage(receipt: receipt) }
             presenter.close()
         }
     }
@@ -109,6 +111,13 @@ class EditReceiptInteractor: Interactor {
         }
     }
     
+    private func syncImage(receipt: WBReceipt) {
+        let objectID = Database.sharedInstance().nextReceiptID() - UInt(1)
+        guard let syncReceipt = Database.sharedInstance().receipt(byObjectID: objectID) else { return }
+        syncReceipt.trip = receipt.trip
+        SyncService.shared.uploadImage(receipt: syncReceipt)
+    }
+    
     private func validateDate(in receipt: WBReceipt) {
         Observable<Void>.just()
             .filter({ !WBPreferences.allowDataEntryOutsideTripBounds() })
@@ -116,7 +125,7 @@ class EditReceiptInteractor: Interactor {
             .subscribe(onNext: {
                 let message = LocalizedString("edit.receipt.date.range.warning.message")
                 Toast.show(message)
-        }).disposed(by: disposeBag)
+        }).disposed(by: bag)
     }
 }
 

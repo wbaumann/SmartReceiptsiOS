@@ -16,6 +16,16 @@ extension WBReceipt {
     }
     
     class func selectAllQueryForTrip(_ trip: WBTrip?, isAscending: Bool) -> DatabaseQueryBuilder {
+        let whereTrip = trip != nil ? " WHERE \(ReceiptsTable.Column.Parent) = \"\(trip!.name!)\"" : ""
+        return selectQuery(condition: whereTrip, isAscending: isAscending)
+    }
+    
+    class func selectByObjectID(_ objectID: UInt) -> DatabaseQueryBuilder {
+        let condition = " WHERE \(ReceiptsTable.Column.Id) = \"\(objectID)\""
+        return selectQuery(condition: condition, isAscending: true)
+    }
+    
+    fileprivate class func selectQuery(condition: String, isAscending: Bool) -> DatabaseQueryBuilder {
         let paymentMethodIdAsName = "\(PaymentMethodsTable.Name)_\(PaymentMethodsTable.Column.Id)"
         let paymentMethodCustomOrderIdName = "\(PaymentMethodsTable.Name)_\(PaymentMethodsTable.Column.CustomOrderId)"
         let categoryIdAsName = "\(CategoriesTable.Name)_\(CategoriesTable.Column.Id)"
@@ -24,8 +34,6 @@ extension WBReceipt {
         let categoryCustomOrderIdAsName = "\(CategoriesTable.Name)_\(CategoriesTable.Column.CustomOrderId)"
         
         let ascending = isAscending ? "ASC" : "DESC"
-        
-        let whereTrip = trip != nil ? " WHERE \(ReceiptsTable.Column.Parent) = \"\(trip!.name!)\"" : ""
         
         let query = "SELECT * FROM \(ReceiptsTable.Name) AS RCPTS" +
             " LEFT JOIN (SELECT \(PaymentMethodsTable.Column.Method), \(PaymentMethodsTable.Column.Id) AS \(paymentMethodIdAsName)," +
@@ -37,7 +45,7 @@ extension WBReceipt {
             " \(CategoriesTable.Column.Id) AS \(categoryIdAsName)," +
             " \(CategoriesTable.Column.CustomOrderId) AS \(categoryCustomOrderIdAsName) FROM \(CategoriesTable.Name)) AS CATS" +
             " ON RCPTS.\(ReceiptsTable.Column.CategoryId) = CATS.\(categoryIdAsName)" +
-            whereTrip + " ORDER BY \(CategoriesTable.Column.CustomOrderId) \(ascending)"
+            condition + " ORDER BY \(CategoriesTable.Column.CustomOrderId) \(ascending)"
         
         return DatabaseQueryBuilder.rawQuery(query)
     }
