@@ -469,4 +469,17 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
     return result;
 }
 
+- (WBReceipt *)receiptByObjectID:(NSUInteger)objectID {
+    __block WBReceipt *result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet *resultSet = [db executeQuery:[WBReceipt selectByObjectID:objectID].buildStatement];
+        if ([resultSet next]) {
+            WBReceipt *receipt = [WBReceipt new];
+            [receipt loadDataFromResultSet:resultSet];
+            result = receipt;
+        }
+    }];
+    return result;
+}
+
 @end
