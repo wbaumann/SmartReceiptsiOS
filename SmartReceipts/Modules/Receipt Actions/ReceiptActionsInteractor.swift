@@ -28,7 +28,7 @@ class ReceiptActionsInteractor: Interactor {
             Logger.error("Error: cannot update image file")
             return false
         } else {
-            SyncService.shared.uploadImage(receipt: receipt)
+            SyncService.shared.uploadFile(receipt: receipt)
         }
         return true
     }
@@ -49,7 +49,7 @@ class ReceiptActionsInteractor: Interactor {
             Logger.error("Error: cannot update image file \(imageFileName) for receipt \(receipt.name)")
             return false
         } else {
-            SyncService.shared.uploadImage(receipt: receipt)
+            SyncService.shared.uploadFile(receipt: receipt)
         }
         return true
     }

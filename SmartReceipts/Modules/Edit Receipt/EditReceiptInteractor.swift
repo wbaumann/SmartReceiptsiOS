@@ -115,7 +115,7 @@ class EditReceiptInteractor: Interactor {
         let objectID = Database.sharedInstance().nextReceiptID() - UInt(1)
         guard let syncReceipt = Database.sharedInstance().receipt(byObjectID: objectID) else { return }
         syncReceipt.trip = receipt.trip
-        SyncService.shared.uploadImage(receipt: syncReceipt)
+        SyncService.shared.uploadFile(receipt: syncReceipt)
     }
     
     private func validateDate(in receipt: WBReceipt) {

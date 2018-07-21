@@ -11,7 +11,7 @@ import RxSwift
 import GoogleAPIClientForREST
 import Toaster
 
-fileprivate let DB_NAME = "database.db"
+fileprivate let DB_NAME = "receipts.db"
 fileprivate let DB_MIME = "application/x-sqlite3"
 fileprivate let DB_PDF_MIME = "application/pdf"
 fileprivate let FOLDER_NAME = "Smart Receipts"
@@ -32,9 +32,7 @@ class GoogleSyncService: SyncServiceProtocol {
             upload = GoogleDriveService.shared.updateFile(id: databaseId, file: file, data: data, mimeType: DB_MIME)
         } else {
             upload = createBackupFolder()
-                .do(onSuccess: { [weak self] file in
-                   self?.syncMetadata.folderIdentifier = file.identifier
-                }).flatMap({ file -> Single<GTLRDrive_File> in
+                .flatMap({ file -> Single<GTLRDrive_File> in
                     return GoogleDriveService.shared.createFile(name: DB_NAME, data: data, mimeType: DB_MIME, parent: file.identifier)
                 })
         }
@@ -49,7 +47,7 @@ class GoogleSyncService: SyncServiceProtocol {
     }
     
     
-    func uploadImage(receipt: WBReceipt) {
+    func uploadFile(receipt: WBReceipt) {
         let name = receipt.imageFileName()
         let mime = receipt.attachemntType == .pdf ? DB_PDF_MIME : "image/\(name.asNSString.pathExtension)"
         let imageFileURL = receipt.imageFilePath(for: receipt.trip).asFileURL
@@ -78,6 +76,9 @@ class GoogleSyncService: SyncServiceProtocol {
     private func createBackupFolder() -> Single<GTLRDrive_File> {
         let json = folderCustomProperties()
         return GoogleDriveService.shared.createFolder(name: FOLDER_NAME, json: json, description: UIDevice.current.name)
+            .do(onSuccess: { [weak self] file in
+                self?.syncMetadata.folderIdentifier = file.identifier
+            })
     }
     
     private func folderCustomProperties() -> [AnyHashable: Any]? {
