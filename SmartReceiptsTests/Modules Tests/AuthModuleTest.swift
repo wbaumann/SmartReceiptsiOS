@@ -72,8 +72,8 @@ class AuthModuleTest: XCTestCase {
         })
         
         stub(presenter) { mock in
-            mock.successLogin.get.thenReturn(resultObserver)
-            mock.successSignup.get.thenReturn(resultObserver)
+            mock.successLogin.get.thenReturn(resultVoidObserver)
+            mock.successSignup.get.thenReturn(resultVoidObserver)
             mock.errorHandler.get.thenReturn(resultObserver)
             mock.successLogout.get.thenReturn(resultVoidObserver)
         }

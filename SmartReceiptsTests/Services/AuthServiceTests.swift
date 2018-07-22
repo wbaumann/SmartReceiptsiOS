@@ -44,17 +44,17 @@ class AuthServiceTests: XCTestCase {
         
         _ = authService.loggedInObservable.bind(to: loggedInObserver)
         
-        let token = try! authService.login(credentials: TEST_CREDENTIALS)
+        let loginResponse = try! authService.login(credentials: TEST_CREDENTIALS)
             .toBlocking(timeout: TIME_OUT)
             .single()
         
         let savedToken = try! authService.tokenObservable.toBlocking().single()
         
-        XCTAssertFalse(token.isEmpty)
-        XCTAssertEqual(token, savedToken)
+        XCTAssertFalse(loginResponse.token.isEmpty)
+        XCTAssertEqual(loginResponse.token, savedToken)
         XCTAssertEqual(loggedCheck, loggedInObserver.events)
         XCTAssertTrue(authService.isLoggedIn)
-        XCTAssertEqual(token, authService.token)
+        XCTAssertEqual(loginResponse.token, authService.token)
     }
     
     func testSignUp() {
