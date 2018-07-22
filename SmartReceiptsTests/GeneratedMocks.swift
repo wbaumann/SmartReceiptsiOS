@@ -4875,18 +4875,18 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
     }
 
     
-    // ["name": "successLogin", "accesibility": "", "@type": "InstanceVariable", "type": "AnyObserver<String>", "isReadOnly": true]
-     override var successLogin: AnyObserver<String> {
+    // ["name": "successLogin", "accesibility": "", "@type": "InstanceVariable", "type": "AnyObserver<Void>", "isReadOnly": true]
+     override var successLogin: AnyObserver<Void> {
         get {
-            return cuckoo_manager.getter("successLogin", original: observed.map { o in return { () -> AnyObserver<String> in o.successLogin }})
+            return cuckoo_manager.getter("successLogin", original: observed.map { o in return { () -> AnyObserver<Void> in o.successLogin }})
         }
         
     }
     
-    // ["name": "successSignup", "accesibility": "", "@type": "InstanceVariable", "type": "AnyObserver<String>", "isReadOnly": true]
-     override var successSignup: AnyObserver<String> {
+    // ["name": "successSignup", "accesibility": "", "@type": "InstanceVariable", "type": "AnyObserver<Void>", "isReadOnly": true]
+     override var successSignup: AnyObserver<Void> {
         get {
-            return cuckoo_manager.getter("successSignup", original: observed.map { o in return { () -> AnyObserver<String> in o.successSignup }})
+            return cuckoo_manager.getter("successSignup", original: observed.map { o in return { () -> AnyObserver<Void> in o.successSignup }})
         }
         
     }
@@ -4932,11 +4932,11 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
             self.cuckoo_manager = manager
         }
         
-        var successLogin: Cuckoo.ToBeStubbedReadOnlyProperty<AnyObserver<String>> {
+        var successLogin: Cuckoo.ToBeStubbedReadOnlyProperty<AnyObserver<Void>> {
             return .init(manager: cuckoo_manager, name: "successLogin")
         }
         
-        var successSignup: Cuckoo.ToBeStubbedReadOnlyProperty<AnyObserver<String>> {
+        var successSignup: Cuckoo.ToBeStubbedReadOnlyProperty<AnyObserver<Void>> {
             return .init(manager: cuckoo_manager, name: "successSignup")
         }
         
@@ -4969,11 +4969,11 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
         }
 
         
-        var successLogin: Cuckoo.VerifyReadOnlyProperty<AnyObserver<String>> {
+        var successLogin: Cuckoo.VerifyReadOnlyProperty<AnyObserver<Void>> {
             return .init(manager: cuckoo_manager, name: "successLogin", callMatcher: callMatcher, sourceLocation: sourceLocation)
         }
         
-        var successSignup: Cuckoo.VerifyReadOnlyProperty<AnyObserver<String>> {
+        var successSignup: Cuckoo.VerifyReadOnlyProperty<AnyObserver<Void>> {
             return .init(manager: cuckoo_manager, name: "successSignup", callMatcher: callMatcher, sourceLocation: sourceLocation)
         }
         
@@ -5000,16 +5000,16 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.Mock {
 
  class AuthPresenterStub: AuthPresenter {
     
-     override var successLogin: AnyObserver<String> {
+     override var successLogin: AnyObserver<Void> {
         get {
-            return DefaultValueRegistry.defaultValue(for: (AnyObserver<String>).self)
+            return DefaultValueRegistry.defaultValue(for: (AnyObserver<Void>).self)
         }
         
     }
     
-     override var successSignup: AnyObserver<String> {
+     override var successSignup: AnyObserver<Void> {
         get {
-            return DefaultValueRegistry.defaultValue(for: (AnyObserver<String>).self)
+            return DefaultValueRegistry.defaultValue(for: (AnyObserver<Void>).self)
         }
         
     }
