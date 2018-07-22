@@ -3,6 +3,6 @@ osx_image: xcode9.4
 xcode_workspace: SmartReceipts.xcworkspace
 xcode_scheme: SmartReceipts
 script:
-- xcodebuild clean build -sdk iphonesimulator -workspace SmartReceipts.xcworkspace -scheme SmartReceipts CODE_SIGNING_REQUIRED=NO
+- xcodebuild clean build -quiet -sdk iphonesimulator -workspace SmartReceipts.xcworkspace -scheme SmartReceipts CODE_SIGNING_REQUIRED=NO
 before_install:
 - openssl aes-256-cbc -K $encrypted_8f779a1b4fcd_key -iv $encrypted_8f779a1b4fcd_iv -in secrets.tar.enc -out secrets.tar -d
