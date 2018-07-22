@@ -20,6 +20,7 @@ extern NSInteger const kDaysToOrderFactor;
 
 - (BOOL)createReceiptsTable;
 - (BOOL)saveReceipt:(WBReceipt *)receipt;
+- (BOOL)insertReceipt:(WBReceipt *)receipt;
 - (BOOL)saveReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database;
 - (BOOL)deleteReceipt:(WBReceipt *)receipt;
 - (BOOL)deleteReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database;

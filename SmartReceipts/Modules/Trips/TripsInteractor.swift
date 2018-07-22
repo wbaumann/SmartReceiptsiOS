@@ -19,9 +19,7 @@ class TripsInteractor: Interactor {
     func configureSubscribers() {
         presenter.tripDeleteSubject.subscribe(onNext: { trip in
             Logger.debug("Delete Trip: \(trip.name)")
-            if Database.sharedInstance().delete(trip) {
-                SyncService.shared.syncDatabase()
-            }
+            Database.sharedInstance().delete(trip)
         }).disposed(by: bag)
     }
     

@@ -37,8 +37,6 @@ class PaymentMethodsInteractor: Interactor {
         if !success {
             presenter.presentAlert(title: LocalizedString("edit.payment.method.controller.save.error.title"),
                                  message: LocalizedString("edit.payment.method.controller.save.error.generic.message"))
-        } else {
-            SyncService.shared.syncDatabase()
         }
     }
     

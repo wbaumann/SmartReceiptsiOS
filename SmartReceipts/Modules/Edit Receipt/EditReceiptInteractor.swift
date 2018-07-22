@@ -75,8 +75,6 @@ class EditReceiptInteractor: Interactor {
             Logger.error("Can't \(action) receipt: \(receipt.description)")
         } else {
             validateDate(in: receipt)
-            SyncService.shared.syncDatabase()
-            if !receipt.isSynced(syncProvider: .current) { syncImage(receipt: receipt) }
             presenter.close()
         }
     }
@@ -109,13 +107,6 @@ class EditReceiptInteractor: Interactor {
                 receipt.setFilename(imgFileName)
             }
         }
-    }
-    
-    private func syncImage(receipt: WBReceipt) {
-        let objectID = Database.sharedInstance().nextReceiptID() - UInt(1)
-        guard let syncReceipt = Database.sharedInstance().receipt(byObjectID: objectID) else { return }
-        syncReceipt.trip = receipt.trip
-        SyncService.shared.uploadFile(receipt: syncReceipt)
     }
     
     private func validateDate(in receipt: WBReceipt) {
