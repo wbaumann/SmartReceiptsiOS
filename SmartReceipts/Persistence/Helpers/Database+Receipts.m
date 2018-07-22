@@ -79,6 +79,15 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
     }
 }
 
+- (BOOL)insertReceipt:(WBReceipt *)receipt {
+    __block BOOL result;
+    [self.databaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self insertReceipt:receipt usingDatabase:db];
+    }];
+    
+    return result;
+}
+
 - (BOOL)insertReceipt:(WBReceipt *)receipt usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:ReceiptsTable.TABLE_NAME];
     [self appendCommonValuesFromReceipt:receipt toQuery:insert];

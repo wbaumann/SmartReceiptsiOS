@@ -14,24 +14,30 @@ protocol SyncServiceProtocol {
     func uploadFile(receipt: WBReceipt)
 }
 
-class SyncService: SyncServiceProtocol {
+class SyncService {
     static let shared = SyncService()
     
-    private var syncService: SyncServiceProtocol!
+    private var syncService: SyncServiceProtocol?
     private var syncProvider: SyncProvider?
     
     private init() {
         updateSyncServiceIfNeeded()
     }
     
-    func syncDatabase() {
-        updateSyncServiceIfNeeded()
-        syncService.syncDatabase()
+    func initialize() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didInsert(_:)), name: .DatabaseDidInsertModel, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didUpdate(_:)), name: .DatabaseDidUpdateModel, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didDelete(_:)), name: .DatabaseDidDeleteModel, object: nil)
     }
     
-    func uploadFile(receipt: WBReceipt) {
+    private func syncDatabase() {
         updateSyncServiceIfNeeded()
-        return syncService.uploadFile(receipt: receipt)
+        syncService?.syncDatabase()
+    }
+    
+    private func uploadFile(receipt: WBReceipt) {
+        updateSyncServiceIfNeeded()
+        syncService?.uploadFile(receipt: receipt)
     }
     
     private func updateSyncServiceIfNeeded() {
@@ -40,13 +46,40 @@ class SyncService: SyncServiceProtocol {
         case .googleDrive:
             syncService = GoogleSyncService()
         case .none:
-            syncService = NoOpSyncService()
+            syncService = nil
         }
         syncProvider = SyncProvider.current
     }
+    
+    // MARK: - DB Handlers
+    
+    @objc private func didInsert(_ notification: Notification) {
+        syncDatabase()
+        guard let receipt = notification.object as? WBReceipt else { return }
+        if !receipt.isSynced(syncProvider: .current) {
+            let objectID = Database.sharedInstance().nextReceiptID() - UInt(1)
+            guard let syncReceipt = Database.sharedInstance().receipt(byObjectID: objectID) else { return }
+            syncReceipt.trip = receipt.trip
+            uploadFile(receipt: syncReceipt)
+        }
+    }
+    
+    @objc private func didUpdate(_ notification: Notification)  {
+        syncDatabase()
+        guard let receipt = notification.object as? WBReceipt else { return }
+        if !receipt.isSynced(syncProvider: .current) { uploadFile(receipt: receipt) }
+    }
+    
+    @objc private func didDelete(_ notification: Notification)  {
+        guard let receipt = notification.object as? WBReceipt else {
+            syncDatabase()
+            return
+        }
+        receipt.isMarkedForDeletion = true
+        DispatchQueue.main.async {
+            Database.sharedInstance().insert(receipt)
+        }
+    }
 }
 
-fileprivate class NoOpSyncService: SyncServiceProtocol {
-    func syncDatabase() {}
-    func uploadFile(receipt: WBReceipt) {}
-}
+

@@ -55,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PushNotificationService.shared.initialize()
         ScansPurchaseTracker.shared.initialize()
         GoogleDriveService.shared.initialize()
+        SyncService.shared.initialize()
         
         MigrationService().migrate()
     }
