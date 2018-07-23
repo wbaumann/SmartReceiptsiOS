@@ -70,6 +70,7 @@
 		712D7E071FB793F900DE83EB /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 712D7E051FB793F900DE83EB /* Localizable.stringsdict */; };
 		712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */; };
 		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
+		7134DACC2106776B006BDCAA /* AppNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7134DACB2106776B006BDCAA /* AppNotificationCenter.swift */; };
 		7135E08A20C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */; };
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
 		714042061FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714042051FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift */; };
@@ -648,6 +649,7 @@
 		713360431EF310C90076D319 /* GenerateReportModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportModuleTest.swift; sourceTree = "<group>"; };
 		713360441EF310C90076D319 /* TripDistancesModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDistancesModuleTest.swift; sourceTree = "<group>"; };
 		713360451EF310C90076D319 /* TripsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsModuleTest.swift; sourceTree = "<group>"; };
+		7134DACB2106776B006BDCAA /* AppNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNotificationCenter.swift; sourceTree = "<group>"; };
 		7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion17.swift; sourceTree = "<group>"; };
 		713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCSVGeneratorTest.swift; sourceTree = "<group>"; };
 		713D4C751F626B3C00F29C4C /* AuthServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceTests.swift; sourceTree = "<group>"; };
@@ -1706,6 +1708,7 @@
 			children = (
 				71AC501E1F41DD3F00549BAA /* TableViewDataSourceProxy.swift */,
 				712A84E41F78363C00D988E7 /* RxSwift+Extensions.swift */,
+				7134DACB2106776B006BDCAA /* AppNotificationCenter.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -3439,6 +3442,7 @@
 				7151F9DF20E6DE1B00C4E894 /* BackupProvider.swift in Sources */,
 				EA8D819D1AEA7C4200BAC943 /* ReceiptColumnComment.m in Sources */,
 				71C014271F1AB14A005472B3 /* CategoriesView.swift in Sources */,
+				7134DACC2106776B006BDCAA /* AppNotificationCenter.swift in Sources */,
 				EA07BF5F1AF4E801004D17F6 /* DistanceSummaryCell.m in Sources */,
 				71F2B1CA2039EC5100581E65 /* InlinePickerButtonCell.swift in Sources */,
 				A7D554D11CFF0F5000169FD2 /* FMDatabase+Trips.swift in Sources */,
