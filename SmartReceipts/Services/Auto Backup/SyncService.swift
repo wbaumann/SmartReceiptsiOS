@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Alamofire
 
 protocol SyncServiceProtocol {
     func syncDatabase()
@@ -17,11 +18,14 @@ protocol SyncServiceProtocol {
 class SyncService {
     static let shared = SyncService()
     
+    private let network = NetworkReachabilityManager()
+    
     private var syncService: SyncServiceProtocol?
     private var syncProvider: SyncProvider?
     
     private init() {
         updateSyncServiceIfNeeded()
+        configureNetworkListener()
     }
     
     func initialize() {
@@ -29,6 +33,8 @@ class SyncService {
         NotificationCenter.default.addObserver(self, selector: #selector(didUpdate(_:)), name: .DatabaseDidUpdateModel, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didDelete(_:)), name: .DatabaseDidDeleteModel, object: nil)
     }
+    
+    // MARK: - Private
     
     private func syncDatabase() {
         updateSyncServiceIfNeeded()
@@ -45,10 +51,28 @@ class SyncService {
         switch SyncProvider.current {
         case .googleDrive:
             syncService = GoogleSyncService()
+            network?.startListening()
         case .none:
             syncService = nil
+            network?.stopListening()
         }
         syncProvider = SyncProvider.current
+    }
+    
+    private func configureNetworkListener() {
+        network?.listener = { status in
+            switch status {
+            case .reachable(.wwan):
+                if !WBPreferences.autobackupWifiOnly() { self.syncReceipts() }
+            case .reachable(.ethernetOrWiFi):
+                self.syncReceipts()
+            default: break
+            }
+        }
+    }
+    
+    private func syncReceipts() {
+        
     }
     
     // MARK: - DB Handlers
