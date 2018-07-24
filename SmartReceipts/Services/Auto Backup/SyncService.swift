@@ -12,12 +12,16 @@ import Alamofire
 
 protocol SyncServiceProtocol {
     func syncDatabase()
+    func syncReceipts()
+    
     func uploadFile(receipt: WBReceipt)
+    func deleteFile(receipt: WBReceipt)
 }
 
 class SyncService {
     static let shared = SyncService()
     
+    private let bag = DisposeBag()
     private let network = NetworkReachabilityManager()
     
     private var syncService: SyncServiceProtocol?
@@ -26,37 +30,31 @@ class SyncService {
     private init() {
         updateSyncServiceIfNeeded()
         configureNetworkListener()
+        configurePreferencesListeners()
     }
     
     func initialize() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didInsert(_:)), name: .DatabaseDidInsertModel, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didUpdate(_:)), name: .DatabaseDidUpdateModel, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didDelete(_:)), name: .DatabaseDidDeleteModel, object: nil)
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(didInsert(_:)), name: .DatabaseDidInsertModel, object: nil)
+        center.addObserver(self, selector: #selector(didUpdate(_:)), name: .DatabaseDidUpdateModel, object: nil)
+        center.addObserver(self, selector: #selector(didDelete(_:)), name: .DatabaseDidDeleteModel, object: nil)
     }
     
-    // MARK: - Private
+    // MARK: - Configurations
     
-    private func syncDatabase() {
-        updateSyncServiceIfNeeded()
-        syncService?.syncDatabase()
-    }
-    
-    private func uploadFile(receipt: WBReceipt) {
-        updateSyncServiceIfNeeded()
-        syncService?.uploadFile(receipt: receipt)
-    }
-    
-    private func updateSyncServiceIfNeeded() {
-        if let provider = syncProvider, provider == SyncProvider.current { return }
-        switch SyncProvider.current {
-        case .googleDrive:
-            syncService = GoogleSyncService()
-            network?.startListening()
-        case .none:
-            syncService = nil
-            network?.stopListening()
-        }
-        syncProvider = SyncProvider.current
+    private func configurePreferencesListeners() {
+        AppNotificationCenter.preferencesWiFiOnly
+            .skipFirst()
+            .subscribe(onNext: { wifiOnly in
+                self.syncReceipts()
+            }).disposed(by: bag)
+        
+        AppNotificationCenter.syncProvider
+            .skipFirst()
+            .subscribe(onNext: { provider in
+                self.updateSyncServiceIfNeeded()
+                self.syncReceipts()
+            }).disposed(by: bag)
     }
     
     private func configureNetworkListener() {
@@ -71,8 +69,37 @@ class SyncService {
         }
     }
     
+    // MARK: - Private
+    
+    private func syncDatabase() {
+        updateSyncServiceIfNeeded()
+        syncService?.syncDatabase()
+    }
+    
     private func syncReceipts() {
         
+    }
+    
+    private func uploadFile(receipt: WBReceipt) {
+        updateSyncServiceIfNeeded()
+        syncService?.uploadFile(receipt: receipt)
+    }
+    
+    private func deleteFile(receipts: WBReceipt) {
+        
+    }
+    
+    private func updateSyncServiceIfNeeded() {
+        if let provider = syncProvider, provider == SyncProvider.current { return }
+        switch SyncProvider.current {
+        case .googleDrive:
+            syncService = GoogleSyncService()
+            network?.startListening()
+        case .none:
+            syncService = nil
+            network?.stopListening()
+        }
+        syncProvider = SyncProvider.current
     }
     
     // MARK: - DB Handlers

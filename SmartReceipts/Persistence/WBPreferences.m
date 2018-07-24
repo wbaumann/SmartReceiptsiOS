@@ -800,6 +800,7 @@ static NSUserDefaults* instance() {
 
 + (void)setAutobackupWifiOnly:(BOOL)value {
     [instance() setBool:value forKey:BOOL_AUTOBACKUP_WIFI_ONLY];
+    [AppNotificationCenter postWifiPreferencesUpdate:value];
 }
     
 //MARK: Automatic Scan Settigns
