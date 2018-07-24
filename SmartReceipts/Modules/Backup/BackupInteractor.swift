@@ -26,9 +26,6 @@ class BackupInteractor: Interactor {
     }
     
     func saveCurrent(provider: SyncProvider) {
-        SyncProvider.current = provider
-        backupManager = BackupProvidersManager(syncProvider: provider)
-        
         if provider == .googleDrive {
             weak var hud = PendingHUDView.showFullScreen()
             GoogleDriveService.shared.signIn(onUI: presenter.signInUIDelegate())
@@ -40,7 +37,7 @@ class BackupInteractor: Interactor {
                     hud?.hide()
                 }).disposed(by: bag)
         } else {
-            presenter.updateUI()
+            setup(provider: provider)
         }
     }
     
@@ -49,6 +46,7 @@ class BackupInteractor: Interactor {
     }
     
     private func setup(provider: SyncProvider) {
+        backupManager = BackupProvidersManager(syncProvider: provider)
         SyncProvider.current = provider
         presenter.updateUI()
     }

@@ -7,15 +7,18 @@
 //
 
 import Foundation
+import RxCocoa
 
 fileprivate let SYNC_PROVIDER_KEY = "sync_provider_key"
 
 enum SyncProvider: Int {
+    
     case none, googleDrive
     
     static var current: SyncProvider {
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: SYNC_PROVIDER_KEY)
+            AppNotificationCenter.postSyncProviderChanged(newValue)
         }
         
         get {
@@ -33,3 +36,4 @@ enum SyncProvider: Int {
         }
     }
 }
+

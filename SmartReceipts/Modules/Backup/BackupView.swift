@@ -96,6 +96,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
             }).disposed(by: bag)
         
         wifiSwitch.rx.isOn
+            .skip(1)
             .subscribe(onNext: { [unowned self] in
                 self.presenter.setupUseWifiOnly(enabled: $0)
             }).disposed(by: bag)

@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import RxCocoa
 
 extension AnyObserver {
     init(onNext: ((E) -> Swift.Void)? = nil, onError: ((Error) -> Swift.Void)? = nil, onCompleted: (() -> Swift.Void)? = nil) {
@@ -20,5 +21,11 @@ extension AnyObserver {
                 onCompleted?()
             }
         }
+    }
+}
+
+extension Observable {
+    func skipFirst() -> Observable<Element> {
+        return skip(1)
     }
 }
