@@ -18,34 +18,46 @@ fileprivate let FOLDER_NAME = "Smart Receipts"
 fileprivate let UDID_PROPERTY = "smart_receipts_id"
 
 class GoogleSyncService: SyncServiceProtocol {
+    
     private let bag = DisposeBag()
     private let syncMetadata = GoogleDriveSyncMetadata()
+    private let syncQueue = DispatchQueue(label: "sync.queue")
     
+    private let dbLock = NSLock()
     func syncDatabase() {
         let dbPath = Database.sharedInstance().pathToDatabase!
         let data = try! Data(contentsOf: URL(fileURLWithPath: dbPath))
         
-        var upload: Single<GTLRDrive_File>!
-        if let databaseId = syncMetadata.databaseSyncIdentifier {
-            let file = GTLRDrive_File()
-            file.name = DB_NAME
-            upload = GoogleDriveService.shared.updateFile(id: databaseId, file: file, data: data, mimeType: DB_MIME)
-        } else {
-            upload = createBackupFolder()
-                .flatMap({ file -> Single<GTLRDrive_File> in
-                    return GoogleDriveService.shared.createFile(name: DB_NAME, data: data, mimeType: DB_MIME, parent: file.identifier)
-                })
+        syncQueue.async {
+            self.dbLock.lock()
+            var upload: Single<GTLRDrive_File>!
+            if let databaseId = self.syncMetadata.databaseSyncIdentifier {
+                let file = GTLRDrive_File()
+                file.name = DB_NAME
+                upload = GoogleDriveService.shared.updateFile(id: databaseId, file: file, data: data, mimeType: DB_MIME)
+            } else {
+                upload = self.createBackupFolder()
+                    .flatMap({ folderId -> Single<GTLRDrive_File> in
+                        return GoogleDriveService.shared.createFile(name: DB_NAME, data: data, mimeType: DB_MIME, parent: folderId)
+                    })
+            }
+            
+            upload.do(onSuccess: { file in
+                self.syncMetadata.databaseSyncIdentifier = file.identifier
+                self.dbLock.unlock()
+            }).do(onError: { _ in
+                self.dbLock.unlock()
+            }).subscribe(onSuccess: { file in
+                Toast(text: "DB Synced").show()
+            }, onError: { error in
+                Toast(text: error.localizedDescription).show()
+            }).disposed(by: self.bag)
         }
-        
-        upload.do(onSuccess: { [weak self] file in
-            self?.syncMetadata.databaseSyncIdentifier = file.identifier
-        }).subscribe(onSuccess: { file in
-            Toast(text: "DB Synced").show()
-        }, onError: { error in
-            Toast(text: error.localizedDescription).show()
-        }).disposed(by: bag)
     }
     
+    func syncReceipts() {
+        
+    }
     
     func uploadFile(receipt: WBReceipt) {
         let name = receipt.imageFileName()
@@ -58,10 +70,8 @@ class GoogleSyncService: SyncServiceProtocol {
             upload = GoogleDriveService.shared.createFile(name: name, data: data, mimeType: mime, parent: folderId)
         } else {
             upload = createBackupFolder()
-                .do(onSuccess: { [weak self] file in
-                    self?.syncMetadata.folderIdentifier = file.identifier
-                }).flatMap({ file -> Single<GTLRDrive_File> in
-                    return GoogleDriveService.shared.createFile(name: name, data: data, mimeType: mime, parent: file.identifier)
+                .flatMap({ folderId -> Single<GTLRDrive_File> in
+                    return GoogleDriveService.shared.createFile(name: name, data: data, mimeType: mime, parent: folderId)
                 })
         }
         
@@ -73,12 +83,42 @@ class GoogleSyncService: SyncServiceProtocol {
         }).disposed(by: bag)
     }
     
-    private func createBackupFolder() -> Single<GTLRDrive_File> {
-        let json = folderCustomProperties()
-        return GoogleDriveService.shared.createFolder(name: FOLDER_NAME, json: json, description: UIDevice.current.name)
-            .do(onSuccess: { [weak self] file in
-                self?.syncMetadata.folderIdentifier = file.identifier
-            })
+    func deleteFile(receipt: WBReceipt) {
+        guard let syncID = receipt.getSyncId(provider: .current), !syncID.isEmpty else { return }
+        GoogleDriveService.shared.deleteFile(id: syncID).subscribe(onSuccess: { d in
+            
+        }, onError: { error in
+            
+        }).disposed(by: bag)
+    }
+    
+    
+    private let folderLock = NSLock()
+    private func createBackupFolder() -> Single<String> {
+        return Single<String>.create(subscribe: { single -> Disposable in
+            self.syncQueue.async {
+                let json = self.folderCustomProperties()
+                self.folderLock.lock()
+                
+                if let folderId = self.syncMetadata.folderIdentifier {
+                    single(.success(folderId))
+                    self.folderLock.unlock()
+                    return
+                }
+                
+                GoogleDriveService.shared
+                    .createFolder(name: FOLDER_NAME, json: json, description: UIDevice.current.name)
+                    .do(onSuccess: { [weak self] file in
+                        self?.syncMetadata.folderIdentifier = file.identifier
+                        self?.folderLock.unlock()
+                        single(.success(file.identifier!))
+                    }).do(onError: { error in
+                        self.folderLock.unlock()
+                        single(.error(error))
+                    }).subscribe().disposed(by: self.bag)
+            }
+            return Disposables.create()
+        })
     }
     
     private func folderCustomProperties() -> [AnyHashable: Any]? {
