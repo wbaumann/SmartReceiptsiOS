@@ -22,7 +22,18 @@ extension WBReceipt {
     
     class func selectByObjectID(_ objectID: UInt) -> DatabaseQueryBuilder {
         let condition = " WHERE \(ReceiptsTable.Column.Id) = \"\(objectID)\""
-        return selectQuery(condition: condition, isAscending: true)
+        return selectQuery(condition: condition, isAscending: false)
+    }
+    
+    class func selectAllUnmarkedForDeletion(_ trip: WBTrip) -> DatabaseQueryBuilder {
+        var condition = " WHERE \(ReceiptsTable.Column.Parent) = \"\(trip.name!)\""
+        condition += " AND \(SyncStateColumns.MarkedForDeletion) = 0"
+        return selectQuery(condition: condition, isAscending: false)
+    }
+    
+    class func selectAllMarkedForDeletion() -> DatabaseQueryBuilder {
+        let condition = " WHERE \(SyncStateColumns.MarkedForDeletion) = 1"
+        return selectQuery(condition: condition, isAscending: false)
     }
     
     fileprivate class func selectQuery(condition: String, isAscending: Bool) -> DatabaseQueryBuilder {

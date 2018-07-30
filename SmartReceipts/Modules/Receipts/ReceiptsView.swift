@@ -70,7 +70,7 @@ final class ReceiptsView: FetchedTableViewController {
         
             //TODO jaanus: check posting already altered object
             self.trip = Database.sharedInstance().tripWithName(self.trip!.name)
-            presenter.contentChanged.onNext()
+            contentChanged()
         }
     }
     
@@ -147,8 +147,8 @@ final class ReceiptsView: FetchedTableViewController {
     }
     
     private func subscribe() {
-        NotificationCenter.default.addObserver(self, selector: #selector(tripUpdated(_:)), name: NSNotification.Name.DatabaseDidUpdateModel, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved), name: NSNotification.Name.SmartReceiptsSettingsSaved, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(tripUpdated(_:)), name: .DatabaseDidUpdateModel, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved), name: .SmartReceiptsSettingsSaved, object: nil)
     }
     
     private func updatePricesWidth() {

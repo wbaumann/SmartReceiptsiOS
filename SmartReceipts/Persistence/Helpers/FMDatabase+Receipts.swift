@@ -21,4 +21,21 @@ extension FMDatabase {
         
         return fetch(query, inject: injectTripClosure)
     }
+    
+    func fetchUnmarkedForDeletionReceiptsForTrip(_ trip: WBTrip) -> [WBReceipt] {
+        let query = WBReceipt.selectAllUnmarkedForDeletion(trip)
+        
+        let injectTripClosure: (WBReceipt) -> () = {
+            receipt in
+            
+            receipt.trip = trip
+        }
+        
+        return fetch(query, inject: injectTripClosure)
+    }
+    
+    func fetchAllMarkedForDeletionReceipts() -> [WBReceipt] {
+        let query = WBReceipt.selectAllMarkedForDeletion()
+        return fetch(query)
+    }
 }

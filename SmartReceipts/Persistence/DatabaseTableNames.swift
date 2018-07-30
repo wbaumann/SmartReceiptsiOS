@@ -120,3 +120,10 @@ enum CSVColumnTable {
         static let CustomOrderId = "custom_order_id"
     }
 }
+
+enum SyncStateColumns {
+    static let Id = "drive_sync_id"
+    static let IsSynced = "drive_is_synced"
+    static let MarkedForDeletion = "drive_marked_for_deletion"
+    static let LastLocalModificationTime = "last_local_modification_time"
+}
