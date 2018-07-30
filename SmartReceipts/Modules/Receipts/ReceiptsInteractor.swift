@@ -24,7 +24,11 @@ class ReceiptsInteractor: Interactor {
     func configureSubscribers() {
         presenter.receiptDeleteSubject.subscribe( onNext: { receipt in
             AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuDelete())
-            Database.sharedInstance().delete(receipt)
+            if SyncProvider.current == .none || receipt.attachemntType == .none {
+                Database.sharedInstance().delete(receipt)
+            } else {
+                SyncService.shared.deleteFile(receipt: receipt)
+            }
         }).disposed(by: bag)
     }
     
@@ -47,7 +51,6 @@ class ReceiptsInteractor: Interactor {
     }
     
     func swapDownReceipt(_ receipt: WBReceipt) {
-        
         let idx = Int(fetchedModelAdapter.index(for: receipt))
         if idx >= Int(fetchedModelAdapter.numberOfObjects()) - 1 || idx == NSNotFound {
             return

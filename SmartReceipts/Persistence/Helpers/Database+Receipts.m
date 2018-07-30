@@ -215,7 +215,7 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
 }
 
 - (FetchedModelAdapter *)fetchedReceiptsAdapterForTrip:(WBTrip *)trip {
-    DatabaseQueryBuilder *query = [WBReceipt selectAllQueryForTrip:trip];
+    DatabaseQueryBuilder *query = [WBReceipt selectAllUnmarkedForDeletion:trip];
     return [self createAdapterUsingQuery:query forModel:[WBReceipt class] associatedModel:trip];
 }
 

@@ -18,7 +18,7 @@ extension RefreshTripPriceHandler {
         Logger.debug("Refresh price on \(trip.name)")
         timeMeasured("Price update") {
             //TODO jaanus: maybe lighter query - only price/currency/exchangeRate?
-            let receipts = database.fetchAllReceiptsForTrip(trip)
+            let receipts = database.fetchUnmarkedForDeletionReceiptsForTrip(trip)
             let distances: [Distance]
             if WBPreferences.isTheDistancePriceBeIncludedInReports() {
                 //lighter query also here?

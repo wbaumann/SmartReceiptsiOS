@@ -37,6 +37,12 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         GIDSignIn.sharedInstance().signInSilently()
     }
     
+    func signInSilently() -> Observable<Void> {
+        signInSubject.dispose()
+        signInSubject = PublishSubject<Void>()
+        return signInSubject.do(onSubscribed: { GIDSignIn.sharedInstance().signInSilently() })
+    }
+    
     func signIn(onUI viewController: GIDSignInUIDelegate) -> Observable<Void> {
         signInSubject.dispose()
         signInSubject = PublishSubject<Void>()
@@ -99,15 +105,25 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         })
     }
     
-    func downloadFile(id: String) -> Single<GTLRDataObject> {
+    func downloadFile(id: String) -> Single<GTLRDrive_File> {
         let query = GTLRDriveQuery_FilesGet.queryForMedia(withFileId: id)
-        return Single<GTLRDataObject>.create(subscribe: { [unowned self] single in
+        return Single<GTLRDrive_File>.create(subscribe: { [unowned self] single in
             self.gDriveService.executeQuery(query) { (ticket: GTLRServiceTicket, object: Any?, error: Error?) in
                 if let queryError = error {
                     single(.error(queryError))
-                } else if let file = object as? GTLRDataObject {
+                } else if let file = object as? GTLRDrive_File {
                     single(.success(file))
                 }
+            }
+            return Disposables.create()
+        })
+    }
+    
+    func deleteFile(id: String) -> Completable {
+        return Completable.create(subscribe: { completable -> Disposable in
+            let query = GTLRDriveQuery_FilesDelete.query(withFileId: id)
+            self.gDriveService.executeQuery(query) { (ticket: GTLRServiceTicket, object: Any?, error: Error?) in
+                error != nil ? completable (.error(error!)) : completable(.completed)
             }
             return Disposables.create()
         })

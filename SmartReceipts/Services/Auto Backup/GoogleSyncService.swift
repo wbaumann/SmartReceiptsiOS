@@ -55,10 +55,6 @@ class GoogleSyncService: SyncServiceProtocol {
         }
     }
     
-    func syncReceipts() {
-        
-    }
-    
     func uploadFile(receipt: WBReceipt) {
         let name = receipt.imageFileName()
         let mime = receipt.attachemntType == .pdf ? DB_PDF_MIME : "image/\(name.asNSString.pathExtension)"
@@ -85,11 +81,14 @@ class GoogleSyncService: SyncServiceProtocol {
     
     func deleteFile(receipt: WBReceipt) {
         guard let syncID = receipt.getSyncId(provider: .current), !syncID.isEmpty else { return }
-        GoogleDriveService.shared.deleteFile(id: syncID).subscribe(onSuccess: { d in
-            
-        }, onError: { error in
-            
-        }).disposed(by: bag)
+        GoogleDriveService.shared.deleteFile(id: syncID)
+            .subscribe(onCompleted: {
+                Database.sharedInstance().delete(receipt)
+            }, onError: { _ in
+                receipt.isMarkedForDeletion = true
+                receipt.isSynced = false
+                Database.sharedInstance().save(receipt)
+            }).disposed(by: bag)
     }
     
     

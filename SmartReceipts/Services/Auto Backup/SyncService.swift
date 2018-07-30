@@ -12,7 +12,6 @@ import Alamofire
 
 protocol SyncServiceProtocol {
     func syncDatabase()
-    func syncReceipts()
     
     func uploadFile(receipt: WBReceipt)
     func deleteFile(receipt: WBReceipt)
@@ -28,9 +27,12 @@ class SyncService {
     private var syncProvider: SyncProvider?
     
     private init() {
-        updateSyncServiceIfNeeded()
-        configureNetworkListener()
-        configurePreferencesListeners()
+        GoogleDriveService.shared.signInSilently()
+            .subscribe({ _ in
+                self.updateSyncServiceIfNeeded()
+                self.configurePreferencesListeners()
+                self.configureNetworkListener()
+            }).disposed(by: bag)
     }
     
     func initialize() {
@@ -72,21 +74,31 @@ class SyncService {
     // MARK: - Private
     
     private func syncDatabase() {
-        updateSyncServiceIfNeeded()
         syncService?.syncDatabase()
     }
     
     private func syncReceipts() {
+        var markedReceipts: [WBReceipt]!
         
+        Database.sharedInstance().databaseQueue.inDatabase {
+            markedReceipts = $0.fetchAllMarkedForDeletionReceipts()
+        }
+        
+        for receipt in markedReceipts {
+            if !receipt.isSynced(syncProvider: .current) {
+                deleteFile(receipt: receipt)
+            } else {
+                Database.sharedInstance().delete(receipt)
+            }
+        }
     }
     
     private func uploadFile(receipt: WBReceipt) {
-        updateSyncServiceIfNeeded()
         syncService?.uploadFile(receipt: receipt)
     }
     
-    private func deleteFile(receipts: WBReceipt) {
-        
+    func deleteFile(receipt: WBReceipt) {
+        syncService?.deleteFile(receipt: receipt)
     }
     
     private func updateSyncServiceIfNeeded() {
@@ -118,18 +130,15 @@ class SyncService {
     @objc private func didUpdate(_ notification: Notification)  {
         syncDatabase()
         guard let receipt = notification.object as? WBReceipt else { return }
-        if !receipt.isSynced(syncProvider: .current) { uploadFile(receipt: receipt) }
+        if !receipt.isSynced(syncProvider: .current) && !receipt.isMarkedForDeletion(syncProvider: .current) {
+            uploadFile(receipt: receipt)
+        } else if !receipt.isSynced(syncProvider: .current) && receipt.isMarkedForDeletion(syncProvider: .current) {
+            deleteFile(receipt: receipt)
+        }
     }
     
     @objc private func didDelete(_ notification: Notification)  {
-        guard let receipt = notification.object as? WBReceipt else {
-            syncDatabase()
-            return
-        }
-        receipt.isMarkedForDeletion = true
-        DispatchQueue.main.async {
-            Database.sharedInstance().insert(receipt)
-        }
+        syncDatabase()
     }
 }
 
