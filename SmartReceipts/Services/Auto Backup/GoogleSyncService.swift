@@ -48,9 +48,9 @@ class GoogleSyncService: SyncServiceProtocol {
             }).do(onError: { _ in
                 self.dbLock.unlock()
             }).subscribe(onSuccess: { file in
-                Toast(text: "DB Synced").show()
+                Logger.debug("DB Synced")
             }, onError: { error in
-                Toast(text: error.localizedDescription).show()
+                Logger.debug("DB Sync Error - \(error.localizedDescription)")
             }).disposed(by: self.bag)
         }
     }
@@ -76,18 +76,26 @@ class GoogleSyncService: SyncServiceProtocol {
             receipt.syncId = file.identifier!
             Database.sharedInstance().save(receipt)
             self.syncDatabase()
+            Logger.debug("Synced file for receipt: \(receipt.name)")
         }).disposed(by: bag)
     }
     
     func deleteFile(receipt: WBReceipt) {
+        receipt.isMarkedForDeletion = true
+        receipt.isSynced = false
+        
+        // We can't call save and delete here.
+        // It's not safe for FetchedTableView, we can't guarantee safe call, because it's async operation.
+        
         guard let syncID = receipt.getSyncId(provider: .current), !syncID.isEmpty else { return }
         GoogleDriveService.shared.deleteFile(id: syncID)
             .subscribe(onCompleted: {
                 Database.sharedInstance().delete(receipt)
-            }, onError: { _ in
-                receipt.isMarkedForDeletion = true
-                receipt.isSynced = false
+                Logger.debug("Delete synced receipt: \(receipt.name)")
+            }, onError: { error in
                 Database.sharedInstance().save(receipt)
+                Logger.error("Delete Receipt file error - \(error.localizedDescription)")
+                Logger.debug("Mark for delete receipt: \(receipt.name)")
             }).disposed(by: bag)
     }
     
@@ -111,9 +119,11 @@ class GoogleSyncService: SyncServiceProtocol {
                         self?.syncMetadata.folderIdentifier = file.identifier
                         self?.folderLock.unlock()
                         single(.success(file.identifier!))
+                        Logger.debug("Created Sync Folder")
                     }).do(onError: { error in
                         self.folderLock.unlock()
                         single(.error(error))
+                        Logger.error("Create Sync Folder Error - \(error.localizedDescription)")
                     }).subscribe().disposed(by: self.bag)
             }
             return Disposables.create()
