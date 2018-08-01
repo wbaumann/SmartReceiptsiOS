@@ -99,6 +99,18 @@ class GoogleSyncService: SyncServiceProtocol {
             }).disposed(by: bag)
     }
     
+    func replaceFile(receipt: WBReceipt) {
+        guard let syncID = receipt.getSyncId(provider: .current), !syncID.isEmpty else { return }
+        GoogleDriveService.shared.deleteFile(id: syncID)
+            .subscribe(onCompleted: {
+                self.uploadFile(receipt: receipt)
+                Logger.debug("Replacing file of receipt: \(receipt.name)")
+            }, onError: { error in
+                Database.sharedInstance().save(receipt)
+                Logger.error("Delete Receipt file error - \(error.localizedDescription)")
+                Logger.debug("Mark for delete receipt: \(receipt.name)")
+            }).disposed(by: bag)
+    }
     
     private let folderLock = NSLock()
     private func createBackupFolder() -> Single<String> {

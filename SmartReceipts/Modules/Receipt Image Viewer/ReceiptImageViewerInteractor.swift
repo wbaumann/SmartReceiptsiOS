@@ -17,18 +17,20 @@ class ReceiptImageViewerInteractor: Interactor {
     
     func configureSubscribers() {
         presenter.image.asObservable()
+            .skipFirst()
             .filter({ $0 != nil })
             .observeOn(ConcurrentDispatchQueueScheduler(queue: AppDelegate.instance.dataQueue))
             .subscribe(onNext: { [unowned self] image in
-            
-            let isPNG = ((self.imagePath as NSString).pathExtension as NSString)
-                .caseInsensitiveCompare("png") == .orderedSame
-            
-            let data = isPNG ?
-                UIImagePNGRepresentation(image!) :
-                UIImageJPEGRepresentation(image!, kImageCompression)
-            
-            _ = FileManager.forceWrite(data: data!, to: self.imagePath)
+                let isPNG = ((self.imagePath as NSString).pathExtension as NSString)
+                    .caseInsensitiveCompare("png") == .orderedSame
+                
+                let data = isPNG ?
+                    UIImagePNGRepresentation(image!) :
+                    UIImageJPEGRepresentation(image!, kImageCompression)
+                
+                _ = FileManager.forceWrite(data: data!, to: self.imagePath)
+                self.presenter.receipt.isSynced = false
+                Database.sharedInstance().save(self.presenter.receipt)
         }).disposed(by: bag)
     }
 }
