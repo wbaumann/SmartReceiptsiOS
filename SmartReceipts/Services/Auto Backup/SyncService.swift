@@ -15,6 +15,7 @@ protocol SyncServiceProtocol {
     
     func uploadFile(receipt: WBReceipt)
     func deleteFile(receipt: WBReceipt)
+    func replaceFile(receipt: WBReceipt)
 }
 
 class SyncService {
@@ -73,10 +74,6 @@ class SyncService {
     
     // MARK: - Private
     
-    private func syncDatabase() {
-        syncService?.syncDatabase()
-    }
-    
     private func syncReceipts() {
         var markedReceipts: [WBReceipt]!
         
@@ -91,10 +88,6 @@ class SyncService {
                 Database.sharedInstance().delete(receipt)
             }
         }
-    }
-    
-    private func uploadFile(receipt: WBReceipt) {
-        syncService?.uploadFile(receipt: receipt)
     }
     
     func deleteFile(receipt: WBReceipt) {
@@ -117,28 +110,29 @@ class SyncService {
     // MARK: - DB Handlers
     
     @objc private func didInsert(_ notification: Notification) {
-        syncDatabase()
+        syncService?.syncDatabase()
         guard let receipt = notification.object as? WBReceipt else { return }
         if !receipt.isSynced(syncProvider: .current) {
             let objectID = Database.sharedInstance().nextReceiptID() - UInt(1)
             guard let syncReceipt = Database.sharedInstance().receipt(byObjectID: objectID) else { return }
             syncReceipt.trip = receipt.trip
-            uploadFile(receipt: syncReceipt)
+            syncService?.uploadFile(receipt: receipt)
         }
     }
     
     @objc private func didUpdate(_ notification: Notification)  {
-        syncDatabase()
+        syncService?.syncDatabase()
         guard let receipt = notification.object as? WBReceipt else { return }
         if !receipt.isSynced(syncProvider: .current) && !receipt.isMarkedForDeletion(syncProvider: .current) {
-            uploadFile(receipt: receipt)
+            let upload = receipt.getSyncId(provider: .current)?.isEmpty ?? true
+            upload ? syncService?.uploadFile(receipt: receipt) : syncService?.replaceFile(receipt: receipt)
         } else if !receipt.isSynced(syncProvider: .current) && receipt.isMarkedForDeletion(syncProvider: .current) {
             deleteFile(receipt: receipt)
         }
     }
     
     @objc private func didDelete(_ notification: Notification)  {
-        syncDatabase()
+        syncService?.syncDatabase()
     }
 }
 

@@ -14,9 +14,10 @@ import RxCocoa
 class ReceiptImageViewerPresenter: Presenter {
     
     let image = BehaviorRelay<UIImage?>(value: nil)
+    var receipt: WBReceipt!
     
     override func setupView(data: Any) {
-        let receipt = data as! WBReceipt
+        receipt = data as! WBReceipt
         view.setup(receipt: receipt)
         let path = receipt.imageFilePath(for: receipt.trip)
         image.accept(UIImage(contentsOfFile: path))

@@ -23,7 +23,7 @@ class ReceiptActionsInteractor: Interactor {
         if !FileManager.forceWrite(data: UIImageJPEGRepresentation(image, kImageCompression)!, to: path!) {
             return false
         }
-        
+        receipt.isSynced = false
         if !Database.sharedInstance().update(receipt, changeFileNameTo: imageFileName) {
             Logger.error("Error: cannot update image file")
             return false
