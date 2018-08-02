@@ -129,11 +129,15 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         })
     }
     
-    func getFolders() -> Single<GTLRDrive_FileList> {
+    func getFolders(name: String? = nil) -> Single<GTLRDrive_FileList> {
         let query = GTLRDriveQuery_FilesList.query()
-        query.q = "mimeType='\(FOLDER_MIME_TYPE)'"
+        var q = "mimeType='\(FOLDER_MIME_TYPE)'"
+        if let folderName = name {
+            q += "and name='\(folderName)'"
+        }
+        query.q = q
         query.spaces = "drive"
-        query.fields = "nextPageToken, files(id, name, properties)"
+        query.fields = "nextPageToken, files(id, name, properties, description, modifiedTime)"
         
         return Single<GTLRDrive_FileList>.create(subscribe: { [unowned self] single in
             self.gDriveService.executeQuery(query) { (ticket: GTLRServiceTicket, object: Any?, error: Error?) in
@@ -152,7 +156,7 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         folder.name = name
         folder.mimeType = FOLDER_MIME_TYPE
         folder.descriptionProperty = description
-        folder.appProperties = GTLRDrive_File_AppProperties(json: json)
+        folder.properties = GTLRDrive_File_Properties(json: json)
         if let p = parent { folder.parents = [p] }
         
         let query = GTLRDriveQuery_FilesCreate.query(withObject: folder, uploadParameters: nil)
