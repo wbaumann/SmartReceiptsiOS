@@ -11,11 +11,12 @@ import RxSwift
 import GoogleAPIClientForREST
 import Toaster
 
+let SYNC_FOLDER_NAME = "Smart Receipts"
+let SYNC_UDID_PROPERTY = "smart_receipts_id"
+
 fileprivate let DB_NAME = "receipts.db"
 fileprivate let DB_MIME = "application/x-sqlite3"
 fileprivate let DB_PDF_MIME = "application/pdf"
-fileprivate let FOLDER_NAME = "Smart Receipts"
-fileprivate let UDID_PROPERTY = "smart_receipts_id"
 
 class GoogleSyncService: SyncServiceProtocol {
     
@@ -126,7 +127,7 @@ class GoogleSyncService: SyncServiceProtocol {
                 }
                 
                 GoogleDriveService.shared
-                    .createFolder(name: FOLDER_NAME, json: json, description: UIDevice.current.name)
+                    .createFolder(name: SYNC_FOLDER_NAME, json: json, description: UIDevice.current.name)
                     .do(onSuccess: { [weak self] file in
                         self?.syncMetadata.folderIdentifier = file.identifier
                         self?.folderLock.unlock()
@@ -144,7 +145,7 @@ class GoogleSyncService: SyncServiceProtocol {
     
     private func folderCustomProperties() -> [AnyHashable: Any]? {
         var properties = [String: String]()
-        properties[UDID_PROPERTY] = syncMetadata.deviceIdentifier
+        properties[SYNC_UDID_PROPERTY] = syncMetadata.deviceIdentifier
         return properties
     }
     

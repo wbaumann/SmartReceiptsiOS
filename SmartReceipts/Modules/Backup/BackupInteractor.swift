@@ -14,11 +14,18 @@ class BackupInteractor: Interactor {
     let bag = DisposeBag()
     
     var backupManager: BackupProvidersManager?
-    
     let purchaseService = PurchaseService()
+    
+    required init() {
+        backupManager = BackupProvidersManager(syncProvider: .current)
+    }
     
     func hasValidSubscription() -> Bool {
         return purchaseService.hasValidSubscriptionValue()
+    }
+    
+    func getBackups() -> Single<[RemoteBackupMetadata]> {
+        return backupManager?.getRemoteBackups() ?? Single<[RemoteBackupMetadata]>.just([])
     }
     
     func purchaseSubscription() -> Observable<Void> {

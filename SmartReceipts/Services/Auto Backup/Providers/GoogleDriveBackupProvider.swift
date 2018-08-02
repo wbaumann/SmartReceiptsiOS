@@ -24,7 +24,15 @@ class GoogleDriveBackupProvider: BackupProvider {
     }
     
     func getRemoteBackups() -> Single<[RemoteBackupMetadata]> {
-        return Single<[RemoteBackupMetadata]>.just([])
+        return GoogleDriveService.shared.getFolders(name: SYNC_FOLDER_NAME)
+            .map({ list -> [RemoteBackupMetadata] in
+                var result = [RemoteBackupMetadata]()
+                guard let files = list.files else { return result }
+                for file in files {
+                    result.append(GoogleDriveBackupMetadata(file: file))
+                }
+                return result
+            })
     }
     
     func restoreBackup(remoteBackupMetadata: RemoteBackupMetadata, overwriteExistingData: Bool) -> Single<Bool> {
