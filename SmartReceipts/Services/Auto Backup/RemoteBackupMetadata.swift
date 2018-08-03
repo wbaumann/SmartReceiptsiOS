@@ -16,7 +16,7 @@ protocol RemoteBackupMetadata {
     var lastModifiedDate: Date { get }
 }
 
-class GoogleDriveBackupMetadata: RemoteBackupMetadata {
+class DefaultRemoteBackupMetadata: RemoteBackupMetadata {
     private var _id: String
     private var _syncDeviceId: String
     private var _syncDeviceName: String

@@ -29,7 +29,7 @@ class GoogleDriveBackupProvider: BackupProvider {
                 var result = [RemoteBackupMetadata]()
                 guard let files = list.files else { return result }
                 for file in files {
-                    result.append(GoogleDriveBackupMetadata(file: file))
+                    result.append(DefaultRemoteBackupMetadata(file: file))
                 }
                 return result
             })
