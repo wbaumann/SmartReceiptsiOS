@@ -74,13 +74,15 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     
     private func configureRx() {
         presenter.getBackups()
-            .subscribe(onSuccess: { [weak self] backups in
+            .subscribe(onSuccess: { [unowned self] backups in
                 if backups.count == 0 { Logger.debug("No backups") }
                 for backup in backups {
                     guard let backupItem = BackupItemView.loadInstance() else { continue }
                     backupItem.setup(backup: backup)
-                    self?.backupsView.addArrangedSubview(backupItem)
-                    Logger.debug(backup.syncDeviceName)
+                    self.backupsView.addArrangedSubview(backupItem)
+                    backupItem.onMenuTap().subscribe(onNext: { [weak self] in
+                        self?.openActions(for: backup, item: backupItem)
+                    }).disposed(by: self.bag)
                 }
             }, onError: { error in
                 Logger.error(error.localizedDescription)
@@ -114,6 +116,18 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
             .subscribe(onNext: { [unowned self] in
                 self.presenter.setupUseWifiOnly(enabled: $0)
             }).disposed(by: bag)
+    }
+    
+    func openActions(for: RemoteBackupMetadata, item: BackupItemView?) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_restore"), style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images"), style: .default, handler: nil))
+        if DebugStates.isDebug {
+            alert.addAction(UIAlertAction(title: "[DEBUG] Download", style: .default, handler: nil))
+        }
+        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_delete"), style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     fileprivate func providerSelected(provider: SyncProvider) {
