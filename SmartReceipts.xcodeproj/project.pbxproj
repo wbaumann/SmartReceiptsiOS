@@ -257,6 +257,8 @@
 		71C2FD0F20E7F48C00DF068E /* BackupProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD0E20E7F48C00DF068E /* BackupProviderFactory.swift */; };
 		71C2FD1220E7F71000DF068E /* NoOpBackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD1120E7F71000DF068E /* NoOpBackupProvider.swift */; };
 		71C2FD1420E7F73500DF068E /* GoogleDriveBackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD1320E7F73500DF068E /* GoogleDriveBackupProvider.swift */; };
+		71CC1B8521143BA0003D7056 /* BackupItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC1B8421143BA0003D7056 /* BackupItemView.swift */; };
+		71CC1B8721143BBC003D7056 /* BackupItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CC1B8621143BBC003D7056 /* BackupItemView.xib */; };
 		71CD20C91ED764DA006C4EE6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD20C81ED764DA006C4EE6 /* Currency.swift */; };
 		71CF7A121F1020440004F389 /* InputTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF7A111F1020440004F389 /* InputTextCell.swift */; };
 		71CF7A141F1020590004F389 /* InputTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CF7A131F1020590004F389 /* InputTextCell.xib */; };
@@ -866,6 +868,8 @@
 		71C2FD1120E7F71000DF068E /* NoOpBackupProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoOpBackupProvider.swift; sourceTree = "<group>"; };
 		71C2FD1320E7F73500DF068E /* GoogleDriveBackupProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveBackupProvider.swift; sourceTree = "<group>"; };
 		71C413D31EE6F826003CE891 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		71CC1B8421143BA0003D7056 /* BackupItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupItemView.swift; sourceTree = "<group>"; };
+		71CC1B8621143BBC003D7056 /* BackupItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackupItemView.xib; sourceTree = "<group>"; };
 		71CD20C81ED764DA006C4EE6 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Currency.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		71CF7A111F1020440004F389 /* InputTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextCell.swift; sourceTree = "<group>"; };
 		71CF7A131F1020590004F389 /* InputTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputTextCell.xib; sourceTree = "<group>"; };
@@ -1507,6 +1511,7 @@
 		716F07D62034AFB400166D63 /* Backup */ = {
 			isa = PBXGroup;
 			children = (
+				71CC1B88211472AA003D7056 /* Item */,
 				716F07D72034AFDF00166D63 /* Backup.storyboard */,
 				716F07D82034AFDF00166D63 /* BackupDisplayData.swift */,
 				716F07D92034AFDF00166D63 /* BackupPresenter.swift */,
@@ -1786,6 +1791,15 @@
 				71C2FD1320E7F73500DF068E /* GoogleDriveBackupProvider.swift */,
 			);
 			path = Providers;
+			sourceTree = "<group>";
+		};
+		71CC1B88211472AA003D7056 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				71CC1B8421143BA0003D7056 /* BackupItemView.swift */,
+				71CC1B8621143BBC003D7056 /* BackupItemView.xib */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 		71DDC2C21EEDBEAA00CFFDBC /* Trips */ = {
@@ -2756,6 +2770,7 @@
 				7111ADA51F0EC38100DF77ED /* Settings.storyboard in Resources */,
 				719B1FE81EF6032D0049BD71 /* EditReceipt.storyboard in Resources */,
 				71572D851F15EA41001A1301 /* Columns.storyboard in Resources */,
+				71CC1B8721143BBC003D7056 /* BackupItemView.xib in Resources */,
 				7167239B1F10540200400BFF /* CustomSegmentedCell.xib in Resources */,
 				717DDB95203B5503000486C3 /* PickerButtonCell.xib in Resources */,
 				EAF6FE121B543ABB0005E2CE /* PDFImageView.xib in Resources */,
@@ -3447,6 +3462,7 @@
 				71F2B1CA2039EC5100581E65 /* InlinePickerButtonCell.swift in Sources */,
 				A7D554D11CFF0F5000169FD2 /* FMDatabase+Trips.swift in Sources */,
 				71AF49E21EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift in Sources */,
+				71CC1B8521143BA0003D7056 /* BackupItemView.swift in Sources */,
 				71859DCE2010F97B00156B40 /* UpsellBannerAdView.swift in Sources */,
 				71AF49E71EFDBF850022B2E2 /* ImagePicker+Extensions.swift in Sources */,
 				71C014241F1AB14A005472B3 /* CategoriesInteractor.swift in Sources */,

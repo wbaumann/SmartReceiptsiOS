@@ -23,6 +23,10 @@ class BackupPresenter: Presenter {
             }).disposed(by: bag)
     }
     
+    func getBackups() -> Single<[RemoteBackupMetadata]> {
+        return interactor.getBackups()
+    }
+    
     func hasValidSubscription() -> Bool {
         return true
         return interactor.hasValidSubscription()
