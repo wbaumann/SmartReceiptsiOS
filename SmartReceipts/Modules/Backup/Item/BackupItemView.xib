@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BackupItemView" customModule="SmartReceipts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="382" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="mJI-nU-sNR">
+                    <rect key="frame" x="8" y="8" width="99" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="iPhone 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8F-uU-21v">
+                            <rect key="frame" x="0.0" y="0.0" width="72" height="21.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Drive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNL-6G-gaO">
+                            <rect key="frame" x="0.0" y="21.5" width="99" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03.01.1992" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Y8-nQ-bMT">
+                            <rect key="frame" x="0.0" y="42.5" width="84" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Ixa-Hd-7wk"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-ac-aCC">
+                    <rect key="frame" x="330" y="18" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="VbR-36-rT6"/>
+                        <constraint firstAttribute="height" constant="44" id="cUl-ez-CEm"/>
+                    </constraints>
+                    <color key="tintColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" image="more-horizontal"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mJI-nU-sNR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="DDk-VQ-l7B"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mJI-nU-sNR" secondAttribute="bottom" constant="8" id="I1b-gK-Ive"/>
+                <constraint firstItem="oZJ-ac-aCC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="XYc-4C-8uC"/>
+                <constraint firstItem="mJI-nU-sNR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="YbN-Qz-lFI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oZJ-ac-aCC" secondAttribute="trailing" constant="8" id="oyl-X2-pDh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="deviceName" destination="g8F-uU-21v" id="ErH-tu-nd3"/>
+                <outlet property="serviceName" destination="oNL-6G-gaO" id="25c-hc-UH0"/>
+                <outlet property="syncDate" destination="2Y8-nQ-bMT" id="6z3-cd-Mjf"/>
+            </connections>
+            <point key="canvasLocation" x="61" y="-164.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="more-horizontal" width="22" height="6"/>
+    </resources>
+</document>

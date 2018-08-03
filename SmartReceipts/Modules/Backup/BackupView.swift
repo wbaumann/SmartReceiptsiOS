@@ -34,6 +34,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     @IBOutlet private weak var wifiLabel: UILabel!
     @IBOutlet private weak var wifiSwitch: UISwitch!
     @IBOutlet private weak var wifiView: UIView!
+    @IBOutlet private weak var backupsView: UIStackView!
     
     private let bag = DisposeBag()
     
@@ -72,6 +73,19 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     }
     
     private func configureRx() {
+        presenter.getBackups()
+            .subscribe(onSuccess: { [weak self] backups in
+                if backups.count == 0 { Logger.debug("No backups") }
+                for backup in backups {
+                    guard let backupItem = BackupItemView.loadInstance() else { continue }
+                    backupItem.setup(backup: backup)
+                    self?.backupsView.addArrangedSubview(backupItem)
+                    Logger.debug(backup.syncDeviceName)
+                }
+            }, onError: { error in
+                Logger.error(error.localizedDescription)
+            }).disposed(by: bag)
+        
         closeButton.rx.tap
             .subscribe(onNext: { [unowned self] in
                 self.dismiss(animated: true, completion: nil)

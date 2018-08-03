@@ -130,9 +130,13 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tdL-t3-ZKr">
+                                                <rect key="frame" x="16" y="377" width="343" height="218"/>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="tdL-t3-ZKr" secondAttribute="bottom" priority="750" constant="8" id="4i8-YZ-J1s"/>
                                             <constraint firstItem="3jL-ZW-tf8" firstAttribute="top" secondItem="hy4-S2-EGd" secondAttribute="top" constant="8" id="64h-J2-r1o"/>
                                             <constraint firstItem="3jL-ZW-tf8" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="leading" constant="24" id="D5R-Dm-qo9"/>
                                             <constraint firstItem="vXl-th-Sl1" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="leading" constant="24" id="Gvb-Hl-x5x"/>
@@ -143,6 +147,7 @@
                                             <constraint firstItem="yBd-9W-Xjt" firstAttribute="top" secondItem="YFu-hQ-Fm0" secondAttribute="bottom" constant="10" id="Uj8-6G-l2t"/>
                                             <constraint firstItem="YFu-hQ-Fm0" firstAttribute="leading" secondItem="vXl-th-Sl1" secondAttribute="trailing" constant="10" id="WYC-2M-WOm"/>
                                             <constraint firstItem="hjP-Dt-4xC" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="centerX" constant="10" id="XtG-yg-TFA"/>
+                                            <constraint firstItem="tdL-t3-ZKr" firstAttribute="top" secondItem="yBd-9W-Xjt" secondAttribute="bottom" constant="16" id="djj-4j-py2"/>
                                             <constraint firstItem="yBd-9W-Xjt" firstAttribute="centerX" secondItem="hy4-S2-EGd" secondAttribute="centerX" id="e5r-IY-2ak"/>
                                             <constraint firstItem="YFu-hQ-Fm0" firstAttribute="top" secondItem="h59-f1-NVn" secondAttribute="bottom" constant="8" id="ebb-a3-fOY"/>
                                             <constraint firstItem="c7R-zn-rLY" firstAttribute="top" secondItem="hjP-Dt-4xC" secondAttribute="bottom" constant="16" id="fKo-Jf-hD3"/>
@@ -150,11 +155,13 @@
                                             <constraint firstItem="RAU-ny-7fG" firstAttribute="trailing" secondItem="hy4-S2-EGd" secondAttribute="centerX" constant="-10" id="nnW-ss-h2x"/>
                                             <constraint firstItem="hjP-Dt-4xC" firstAttribute="top" secondItem="HaV-jy-JHb" secondAttribute="bottom" constant="16" id="oKp-re-hiF"/>
                                             <constraint firstAttribute="trailing" secondItem="YFu-hQ-Fm0" secondAttribute="trailing" constant="24" id="pjy-R0-Kg3"/>
+                                            <constraint firstAttribute="trailing" secondItem="tdL-t3-ZKr" secondAttribute="trailing" constant="16" id="sC0-DP-d8Q"/>
                                             <constraint firstAttribute="trailing" secondItem="HaV-jy-JHb" secondAttribute="trailing" constant="24" id="tDS-HY-tWf"/>
                                             <constraint firstItem="HaV-jy-JHb" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="leading" constant="24" id="yH5-Gv-PUg"/>
                                             <constraint firstItem="RAU-ny-7fG" firstAttribute="top" secondItem="HaV-jy-JHb" secondAttribute="bottom" constant="16" id="yO8-D0-sxN"/>
                                             <constraint firstItem="HaV-jy-JHb" firstAttribute="top" secondItem="3jL-ZW-tf8" secondAttribute="bottom" constant="8" id="yYg-Su-Wxv"/>
                                             <constraint firstItem="vXl-th-Sl1" firstAttribute="centerY" secondItem="YFu-hQ-Fm0" secondAttribute="centerY" id="yyF-WZ-7E9"/>
+                                            <constraint firstItem="tdL-t3-ZKr" firstAttribute="leading" secondItem="hy4-S2-EGd" secondAttribute="leading" constant="16" id="zdp-nP-162"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -186,6 +193,7 @@
                         <outlet property="autoBackupDesctiption" destination="YFu-hQ-Fm0" id="RH8-OX-cEr"/>
                         <outlet property="autoBackupTitle" destination="h59-f1-NVn" id="EN1-Sd-fOZ"/>
                         <outlet property="backupButton" destination="RAU-ny-7fG" id="rMo-Zu-bQD"/>
+                        <outlet property="backupsView" destination="tdL-t3-ZKr" id="Ill-wi-KIJ"/>
                         <outlet property="closeButton" destination="JDd-no-wrt" id="kTY-6r-c0o"/>
                         <outlet property="configureButton" destination="6xk-JH-9f5" id="U8W-cP-ECF"/>
                         <outlet property="importButton" destination="hjP-Dt-4xC" id="ZJb-ym-ofc"/>
