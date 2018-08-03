@@ -64,6 +64,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="deviceName" destination="g8F-uU-21v" id="ErH-tu-nd3"/>
+                <outlet property="menu" destination="oZJ-ac-aCC" id="Xjh-A9-txp"/>
                 <outlet property="serviceName" destination="oNL-6G-gaO" id="25c-hc-UH0"/>
                 <outlet property="syncDate" destination="2Y8-nQ-bMT" id="6z3-cd-Mjf"/>
             </connections>
