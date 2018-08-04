@@ -51,7 +51,7 @@ class GoogleSyncService: SyncServiceProtocol {
             }).subscribe(onSuccess: { file in
                 Logger.debug("DB Synced")
             }, onError: { error in
-                Logger.debug("DB Sync Error - \(error.localizedDescription)")
+                Logger.error("DB Sync Error - \(error.localizedDescription)")
             }).disposed(by: self.bag)
         }
     }
