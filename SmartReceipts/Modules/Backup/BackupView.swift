@@ -118,13 +118,30 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
             }).disposed(by: bag)
     }
     
-    func openActions(for: RemoteBackupMetadata, item: BackupItemView?) {
+    private func openActions(for backup: RemoteBackupMetadata, item: BackupItemView?) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_restore"), style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_restore"), style: .default, handler: { [unowned self] _ in
+            self.openImport(backup: backup)
+        }))
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images"), style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images_debug"), style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_delete"), style: .destructive, handler: nil))
         alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func openImport(backup: RemoteBackupMetadata) {
+        let title = String(format: LocalizedString("import_string_item"), backup.syncDeviceName)
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: LocalizedString("import_string"), style: .default, handler: { _ in
+            
+        }))
+        alert.addAction(UIAlertAction(title: LocalizedString("dialog_import_text"), style: .default, handler: { _ in
+            
+        }))
+        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: { _ in
+            
+        }))
         present(alert, animated: true, completion: nil)
     }
     
