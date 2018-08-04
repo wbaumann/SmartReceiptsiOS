@@ -498,5 +498,6 @@
 "remote_backups_list_item_menu_restore" = "Restore";
 "remote_backups_list_item_menu_delete" = "Delete";
 "remote_backups_list_item_menu_download_images" = "Download to ZIP";
+"remote_backups_list_item_menu_download_images_debug" = "[Debug] Download";
 
 "receipt_file_picker_cant_import_error" = "Can't import selected file";

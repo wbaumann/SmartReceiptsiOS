@@ -122,9 +122,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_restore"), style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images"), style: .default, handler: nil))
-        if DebugStates.isDebug {
-            alert.addAction(UIAlertAction(title: "[DEBUG] Download", style: .default, handler: nil))
-        }
+        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images_debug"), style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_delete"), style: .destructive, handler: nil))
         alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
