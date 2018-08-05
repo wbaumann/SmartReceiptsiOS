@@ -13,6 +13,9 @@ enum SyncErrorType {
     case noRemoteDiskSpace, userRevokedRemoteRights, userDeletedRemoteData
 }
 
+typealias BackupReceiptFile = (filename: String, data: Data)
+typealias BackupFetchResult = (database: Database, files: [BackupReceiptFile])
+
 /**
  * A top level interface to track the core behaviors that are shared by all automatic backup providers
  */
@@ -45,7 +48,7 @@ protocol BackupProvider {
      * @param overwriteExistingData if we should overwrite the existing data
      * @return a Single for the restore operation with a success boolean
      */
-    func restoreBackup(remoteBackupMetadata: RemoteBackupMetadata, overwriteExistingData: Bool) -> Single<Bool>
+    func restoreBackup(remoteBackupMetadata: RemoteBackupMetadata, overwriteExistingData: Bool) -> Completable
     
     /**
      * Deletes an existing backup
@@ -53,7 +56,7 @@ protocol BackupProvider {
      * @param remoteBackupMetadata the metadata to delete
      * @return an {@link Single} for the delete operation with a success boolean
      */
-    func deleteBackup(remoteBackupMetadata: RemoteBackupMetadata) -> Single<Bool>
+    func deleteBackup(remoteBackupMetadata: RemoteBackupMetadata) -> Completable
     
     /**
      * Attempts to clear out the current backup configuration
@@ -66,19 +69,17 @@ protocol BackupProvider {
      * Downloads an existing backup to a specific location
      *
      * @param remoteBackupMetadata the metadata to download
-     * @param downloadLocation the URL location to download it to
      * @return a Single that contains the downloaded images
      */
-    func downloadAllData(remoteBackupMetadata: RemoteBackupMetadata, downloadLocation: URL) -> Single<[URL]>
+    func downloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult>
     
     /**
      * Downloads an existing backup to a specific location in a debug friendly manner
      *
      * @param remoteBackupMetadata the metadata to download
-     * @param downloadLocation the URL location to download it to
      * @return an Single that contains the downloaded images
      */
-    func debugDownloadAllData(remoteBackupMetadata: RemoteBackupMetadata, downloadLocation: URL) -> Single<[URL]>
+    func debugDownloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult>
     
     /**
      * @return an Observable that emits CriticalSyncError instances whenever they occur,

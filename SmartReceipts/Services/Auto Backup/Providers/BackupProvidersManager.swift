@@ -35,11 +35,11 @@ class BackupProvidersManager: BackupProvider {
         return backupProvider.getRemoteBackups()
     }
     
-    func restoreBackup(remoteBackupMetadata: RemoteBackupMetadata, overwriteExistingData: Bool) -> Single<Bool> {
+    func restoreBackup(remoteBackupMetadata: RemoteBackupMetadata, overwriteExistingData: Bool) -> Completable {
         return backupProvider.restoreBackup(remoteBackupMetadata: remoteBackupMetadata, overwriteExistingData: overwriteExistingData)
     }
     
-    func deleteBackup(remoteBackupMetadata: RemoteBackupMetadata) -> Single<Bool> {
+    func deleteBackup(remoteBackupMetadata: RemoteBackupMetadata) -> Completable {
         return backupProvider.deleteBackup(remoteBackupMetadata: remoteBackupMetadata)
     }
     
@@ -47,12 +47,12 @@ class BackupProvidersManager: BackupProvider {
         return backupProvider.clearCurrentBackupConfiguration()
     }
     
-    func downloadAllData(remoteBackupMetadata: RemoteBackupMetadata, downloadLocation: URL) -> Single<[URL]> {
-        return backupProvider.downloadAllData(remoteBackupMetadata:remoteBackupMetadata, downloadLocation: downloadLocation)
+    func downloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult> {
+        return backupProvider.downloadAllData(remoteBackupMetadata:remoteBackupMetadata)
     }
     
-    func debugDownloadAllData(remoteBackupMetadata: RemoteBackupMetadata, downloadLocation: URL) -> Single<[URL]> {
-        return backupProvider.debugDownloadAllData(remoteBackupMetadata:remoteBackupMetadata, downloadLocation: downloadLocation)
+    func debugDownloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult> {
+        return backupProvider.debugDownloadAllData(remoteBackupMetadata:remoteBackupMetadata)
     }
     
     func getCriticalSyncErrorStream() -> Observable<CriticalSyncError> {

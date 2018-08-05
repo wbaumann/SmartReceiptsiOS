@@ -27,6 +27,10 @@ class BackupPresenter: Presenter {
         return interactor.getBackups()
     }
     
+    func importBackup(_ backup: RemoteBackupMetadata, overwrite: Bool) {
+        interactor.importBackup(backup, overwrite: overwrite)
+    }
+    
     func hasValidSubscription() -> Bool {
         return true
         return interactor.hasValidSubscription()

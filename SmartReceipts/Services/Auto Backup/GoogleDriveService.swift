@@ -90,6 +90,24 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         })
     }
     
+    func getFiles(inFolderId: String) -> Single<GTLRDrive_FileList> {
+        let query = GTLRDriveQuery_FilesList.query()
+        query.q = "'\(inFolderId)' in parents"
+        query.spaces = DebugStates.isDebug ? "drive" : "appData"
+        query.fields = "files(name, id, properties)"
+        
+        return Single<GTLRDrive_FileList>.create(subscribe: { [unowned self] single in
+            self.gDriveService.executeQuery(query) { (ticket: GTLRServiceTicket, object: Any?, error: Error?) in
+                if let queryError = error {
+                    single(.error(queryError))
+                } else if let filelist = object as? GTLRDrive_FileList {
+                    single(.success(filelist))
+                }
+            }
+            return Disposables.create()
+        })
+    }
+    
     func updateFile(id: String, file: GTLRDrive_File, data: Data, mimeType: String) -> Single<GTLRDrive_File> {
         let params = GTLRUploadParameters(data: data, mimeType: mimeType)
         let query = GTLRDriveQuery_FilesUpdate.query(withObject: file, fileId: id, uploadParameters: params)
@@ -105,14 +123,14 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         })
     }
     
-    func downloadFile(id: String) -> Single<GTLRDrive_File> {
+    func downloadFile(id: String) -> Single<GTLRDataObject> {
         let query = GTLRDriveQuery_FilesGet.queryForMedia(withFileId: id)
-        return Single<GTLRDrive_File>.create(subscribe: { [unowned self] single in
+        return Single<GTLRDataObject>.create(subscribe: { [unowned self] single in
             self.gDriveService.executeQuery(query) { (ticket: GTLRServiceTicket, object: Any?, error: Error?) in
                 if let queryError = error {
                     single(.error(queryError))
-                } else if let file = object as? GTLRDrive_File {
-                    single(.success(file))
+                } else if let data = object as? GTLRDataObject {
+                    single(.success(data))
                 }
             }
             return Disposables.create()

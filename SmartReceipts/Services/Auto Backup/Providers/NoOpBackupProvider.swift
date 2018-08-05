@@ -27,24 +27,24 @@ class NoOpBackupProvider: BackupProvider {
         return Single<[RemoteBackupMetadata]>.just([])
     }
     
-    func restoreBackup(remoteBackupMetadata: RemoteBackupMetadata, overwriteExistingData: Bool) -> Single<Bool> {
-        return Single<Bool>.just(false)
+    func restoreBackup(remoteBackupMetadata: RemoteBackupMetadata, overwriteExistingData: Bool) -> Completable {
+        return Completable.empty()
     }
     
-    func deleteBackup(remoteBackupMetadata: RemoteBackupMetadata) -> Single<Bool> {
-        return Single<Bool>.just(false)
+    func deleteBackup(remoteBackupMetadata: RemoteBackupMetadata) -> Completable {
+        return Completable.empty()
     }
     
     func clearCurrentBackupConfiguration() -> Completable {
         return Completable.empty()
     }
     
-    func downloadAllData(remoteBackupMetadata: RemoteBackupMetadata, downloadLocation: URL) -> Single<[URL]> {
-        return Single<[URL]>.just([])
+    func downloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult> {
+        return Single<BackupFetchResult>.never()
     }
     
-    func debugDownloadAllData(remoteBackupMetadata: RemoteBackupMetadata, downloadLocation: URL) -> Single<[URL]> {
-        return Single<[URL]>.just([])
+    func debugDownloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult> {
+        return Single<BackupFetchResult>.never()
     }
     
     func getCriticalSyncErrorStream() -> Observable<CriticalSyncError> {
