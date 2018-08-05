@@ -133,15 +133,13 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     private func openImport(backup: RemoteBackupMetadata) {
         let title = String(format: LocalizedString("import_string_item"), backup.syncDeviceName)
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: LocalizedString("import_string"), style: .default, handler: { _ in
-            
+        alert.addAction(UIAlertAction(title: LocalizedString("import_string"), style: .default, handler: { [unowned self] _ in
+            self.presenter.importBackup(backup, overwrite: false)
         }))
         alert.addAction(UIAlertAction(title: LocalizedString("dialog_import_text"), style: .default, handler: { _ in
-            
+            self.presenter.importBackup(backup, overwrite: true)
         }))
-        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: { _ in
-            
-        }))
+        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     

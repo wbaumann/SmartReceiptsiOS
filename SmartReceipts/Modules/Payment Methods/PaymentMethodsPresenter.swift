@@ -20,10 +20,6 @@ class PaymentMethodsPresenter: Presenter {
     override func viewHasLoaded() {
         interactor.configureSubscribers()
     }
- 
-    func presentAlert(title: String?, message: String) {
-        router.openAlert(title: title, message: message)
-    }
     
     func fetchedModelAdapter() -> FetchedModelAdapter? {
         return interactor.fetchedModelAdapter()

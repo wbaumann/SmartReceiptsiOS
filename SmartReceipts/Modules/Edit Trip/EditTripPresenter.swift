@@ -26,10 +26,6 @@ class EditTripPresenter: Presenter {
         router.close()
     }
     
-    func presentAlert(title: String?, message: String) {
-        router.openAlert(title: title, message: message)
-    }
-    
 }
 
 

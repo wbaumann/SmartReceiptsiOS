@@ -15,6 +15,12 @@ extension Module {
     }
 }
 
+extension Presenter {
+    func presentAlert(title: String?, message: String) {
+        _router.openAlert(title: title, message: message)
+    }
+}
+
 extension Router {
     func openAlert(title: String?, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

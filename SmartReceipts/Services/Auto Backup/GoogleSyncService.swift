@@ -13,8 +13,8 @@ import Toaster
 
 let SYNC_FOLDER_NAME = "Smart Receipts"
 let SYNC_UDID_PROPERTY = "smart_receipts_id"
+let SYNC_DB_NAME = "receipts.db"
 
-fileprivate let DB_NAME = "receipts.db"
 fileprivate let DB_MIME = "application/x-sqlite3"
 fileprivate let DB_PDF_MIME = "application/pdf"
 
@@ -34,12 +34,12 @@ class GoogleSyncService: SyncServiceProtocol {
             var upload: Single<GTLRDrive_File>!
             if let databaseId = self.syncMetadata.databaseSyncIdentifier {
                 let file = GTLRDrive_File()
-                file.name = DB_NAME
+                file.name = SYNC_DB_NAME
                 upload = GoogleDriveService.shared.updateFile(id: databaseId, file: file, data: data, mimeType: DB_MIME)
             } else {
                 upload = self.createBackupFolder()
                     .flatMap({ folderId -> Single<GTLRDrive_File> in
-                        return GoogleDriveService.shared.createFile(name: DB_NAME, data: data, mimeType: DB_MIME, parent: folderId)
+                        return GoogleDriveService.shared.createFile(name: SYNC_DB_NAME, data: data, mimeType: DB_MIME, parent: folderId)
                     })
             }
             
