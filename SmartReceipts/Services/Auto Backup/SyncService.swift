@@ -116,7 +116,7 @@ class SyncService {
             let objectID = Database.sharedInstance().nextReceiptID() - UInt(1)
             guard let syncReceipt = Database.sharedInstance().receipt(byObjectID: objectID) else { return }
             syncReceipt.trip = receipt.trip
-            syncService?.uploadFile(receipt: receipt)
+            syncService?.uploadFile(receipt: syncReceipt)
         }
     }
     
