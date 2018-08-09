@@ -10,13 +10,14 @@ import Foundation
 import RxSwift
 
 class GoogleDriveBackupProvider: BackupProvider {
+    let backupMetadata = GoogleDriveSyncMetadata()
     
     var deviceSyncId: String? {
-        return nil
+        return backupMetadata.deviceIdentifier
     }
     
     var lastDatabaseSyncTime: Date {
-        return Date(timeIntervalSince1970: 0)
+        return backupMetadata.getLastDatabaseSyncTime() ?? Date(timeIntervalSince1970: 0)
     }
     
     func deinitialize() {
@@ -50,11 +51,15 @@ class GoogleDriveBackupProvider: BackupProvider {
     }
     
     func deleteBackup(remoteBackupMetadata: RemoteBackupMetadata) -> Completable {
-        return Completable.empty()
+        return GoogleDriveService.shared.deleteFile(id: remoteBackupMetadata.id)
     }
     
     func clearCurrentBackupConfiguration() -> Completable {
-        return Completable.empty()
+        return Completable.create(subscribe: { [weak self] completable -> Disposable in
+            self?.backupMetadata.clear()
+            completable(.completed)
+            return Disposables.create()
+        })
     }
     
     func downloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult> {

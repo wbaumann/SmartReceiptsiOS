@@ -21,6 +21,10 @@ class BackupInteractor: Interactor {
         backupManager = BackupProvidersManager(syncProvider: .current)
     }
     
+    func isCurrentDevice(backup: RemoteBackupMetadata) -> Bool {
+        return backup.syncDeviceId == backupManager.deviceSyncId
+    }
+    
     func hasValidSubscription() -> Bool {
         return purchaseService.hasValidSubscriptionValue()
     }
@@ -49,11 +53,27 @@ class BackupInteractor: Interactor {
                         }
                     }
                 }
+                database.close()
                 hud?.hide()
                 Toast.show(LocalizedString("toast_import_complete"))
             }, onError: { [weak self] error in
                 hud?.hide()
                 self?.presenter.presentAlert(title: nil, message: LocalizedString("IMPORT_ERROR"))
+            }).disposed(by: bag)
+    }
+    
+    func deleteBackup(_ backup: RemoteBackupMetadata) {
+        weak var hud = PendingHUDView.showFullScreen()
+        backupManager.deleteBackup(remoteBackupMetadata: backup)
+            .andThen(backupManager.clearCurrentBackupConfiguration())
+            .subscribe(onCompleted: { [weak self] in
+                Database.sharedInstance().markAllReceiptsSynced(false)
+                self?.presenter.updateBackups()
+                hud?.hide()
+                Toast.show(LocalizedString("dialog_remote_backup_delete_toast_success"))
+            }, onError: { [weak self] error in
+                hud?.hide()
+                self?.presenter.presentAlert(title: nil, message: LocalizedString("dialog_remote_backup_delete_toast_failure"))
             }).disposed(by: bag)
     }
     

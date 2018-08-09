@@ -31,7 +31,16 @@ class BackupPresenter: Presenter {
         interactor.importBackup(backup, overwrite: overwrite)
     }
     
+    func deleteBackup(_ backup: RemoteBackupMetadata) {
+        interactor.deleteBackup(backup)
+    }
+    
+    func isCurrentDevice(backup: RemoteBackupMetadata) -> Bool {
+        return interactor.isCurrentDevice(backup: backup)
+    }
+    
     func hasValidSubscription() -> Bool {
+        // TODO: DEBUG!
         return true
         return interactor.hasValidSubscription()
     }
@@ -50,6 +59,10 @@ class BackupPresenter: Presenter {
     
     func updateUI() {
         view.updateUI()
+    }
+    
+    func updateBackups() {
+        view.updateBackups()
     }
     
     func setupUseWifiOnly(enabled: Bool) {

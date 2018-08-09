@@ -17,6 +17,7 @@ protocol BackupViewInterface  {
     var importTap: Observable<Void> { get }
     var signInUIDelegate: GIDSignInUIDelegate { get }
     func updateUI()
+    func updateBackups()
 }
 
 //MARK: BackupView Class
@@ -31,6 +32,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     @IBOutlet private weak var configureButton: UIButton!
     @IBOutlet private weak var autoBackupTitle: UILabel!
     @IBOutlet private weak var autoBackupDesctiption: UILabel!
+    @IBOutlet private weak var existingBackupsLabel: UILabel!
     @IBOutlet private weak var wifiLabel: UILabel!
     @IBOutlet private weak var wifiSwitch: UISwitch!
     @IBOutlet private weak var wifiView: UIView!
@@ -45,6 +47,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         configureLayers()
         localizeUI()
         updateUI()
+        updateBackups()
     }
     
     private func localizeUI() {
@@ -57,6 +60,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         
         autoBackupTitle.text = LocalizedString("auto_backup_title")
         wifiLabel.text = LocalizedString("auto_backup_wifi_only")
+        existingBackupsLabel.text = LocalizedString("auto_backup_existing")
     }
     
     func updateUI() {
@@ -73,21 +77,6 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     }
     
     private func configureRx() {
-        presenter.getBackups()
-            .subscribe(onSuccess: { [unowned self] backups in
-                if backups.count == 0 { Logger.debug("No backups") }
-                for backup in backups {
-                    guard let backupItem = BackupItemView.loadInstance() else { continue }
-                    backupItem.setup(backup: backup)
-                    self.backupsView.addArrangedSubview(backupItem)
-                    backupItem.onMenuTap().subscribe(onNext: { [weak self] in
-                        self?.openActions(for: backup, item: backupItem)
-                    }).disposed(by: self.bag)
-                }
-            }, onError: { error in
-                Logger.error(error.localizedDescription)
-            }).disposed(by: bag)
-        
         closeButton.rx.tap
             .subscribe(onNext: { [unowned self] in
                 self.dismiss(animated: true, completion: nil)
@@ -118,6 +107,33 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
             }).disposed(by: bag)
     }
     
+    func updateBackups() {
+        for view in backupsView.arrangedSubviews {
+            view.removeFromSuperview()
+        }
+        
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        activityIndicator.color = AppTheme.primaryColor
+        activityIndicator.startAnimating()
+        backupsView.addArrangedSubview(activityIndicator)
+        
+        presenter.getBackups()
+            .subscribe(onSuccess: { [unowned self] backups in
+                activityIndicator.removeFromSuperview()
+                if backups.count == 0 { Logger.debug("No backups") }
+                for backup in backups {
+                    guard let backupItem = BackupItemView.loadInstance() else { continue }
+                    backupItem.setup(backup: backup)
+                    self.backupsView.addArrangedSubview(backupItem)
+                    backupItem.onMenuTap().subscribe(onNext: { [weak self] in
+                        self?.openActions(for: backup, item: backupItem)
+                    }).disposed(by: self.bag)
+                }
+                }, onError: { error in
+                    Logger.error(error.localizedDescription)
+            }).disposed(by: bag)
+    }
+    
     private func openActions(for backup: RemoteBackupMetadata, item: BackupItemView?) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_restore"), style: .default, handler: { [unowned self] _ in
@@ -125,7 +141,9 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         }))
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images"), style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images_debug"), style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_delete"), style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_delete"), style: .destructive, handler: { [unowned self] _ in
+            self.openDelete(backup: backup)
+        }))
         alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
@@ -138,6 +156,20 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         }))
         alert.addAction(UIAlertAction(title: LocalizedString("dialog_import_text"), style: .default, handler: { _ in
             self.presenter.importBackup(backup, overwrite: true)
+        }))
+        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func openDelete(backup: RemoteBackupMetadata) {
+        let title = String(format: LocalizedString("dialog_remote_backup_delete_title"), backup.syncDeviceName)
+        
+        let isCurrent = presenter.isCurrentDevice(backup: backup)
+        let format = isCurrent ? LocalizedString("dialog_remote_backup_delete_message_this_device") : LocalizedString("dialog_remote_backup_delete_message")
+        let message = String(format: format, backup.syncDeviceName)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LocalizedString("dialog_remote_backup_delete_positive"), style: .default, handler: { [unowned self] _ in
+            self.presenter.deleteBackup(backup)
         }))
         alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)

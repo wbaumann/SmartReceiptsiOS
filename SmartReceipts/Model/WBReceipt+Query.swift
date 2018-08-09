@@ -36,6 +36,11 @@ extension WBReceipt {
         return selectQuery(condition: condition, isAscending: false)
     }
     
+    class func selectAllUnsynced() -> DatabaseQueryBuilder {
+        let condition = " WHERE \(SyncStateColumns.IsSynced) = 0"
+        return selectQuery(condition: condition, isAscending: false)
+    }
+    
     fileprivate class func selectQuery(condition: String, isAscending: Bool) -> DatabaseQueryBuilder {
         let paymentMethodIdAsName = "\(PaymentMethodsTable.Name)_\(PaymentMethodsTable.Column.Id)"
         let paymentMethodCustomOrderIdName = "\(PaymentMethodsTable.Name)_\(PaymentMethodsTable.Column.CustomOrderId)"
