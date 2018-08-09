@@ -40,6 +40,7 @@ extern NSInteger const kDaysToOrderFactor;
 - (NSInteger)receiptsCountInOrderIdGroup:(NSInteger)idGroup usingDatabase:(FMDatabase *)database;
 - (NSUInteger)nextReceiptID;
 - (WBReceipt *)receiptByObjectID:(NSUInteger)objectID;
+- (BOOL)markAllReceiptsSynced:(BOOL)synced;
 
 /**
  Recent currencies

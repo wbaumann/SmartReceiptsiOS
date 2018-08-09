@@ -49,5 +49,6 @@ class GoogleDriveSyncMetadata {
         UserDefaults.standard.removeObject(forKey: KEY_DEVICE_IDENTIFIER)
         UserDefaults.standard.removeObject(forKey: KEY_DRIVE_DATABASE_IDENTIFIER)
         UserDefaults.standard.removeObject(forKey: KEY_DRIVE_LAST_SYNC)
+        UserDefaults.standard.removeObject(forKey: KEY_FOLDER_IDENTIFIER)
     }
 }

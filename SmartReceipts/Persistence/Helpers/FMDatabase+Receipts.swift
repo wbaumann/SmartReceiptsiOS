@@ -38,4 +38,9 @@ extension FMDatabase {
         let query = WBReceipt.selectAllMarkedForDeletion()
         return fetch(query)
     }
+    
+    func fetchAllUnsyncedReceipts() -> [WBReceipt] {
+        let query = WBReceipt.selectAllUnsynced()
+        return fetch(query)
+    }
 }

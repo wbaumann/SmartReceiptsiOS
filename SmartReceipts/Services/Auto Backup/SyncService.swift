@@ -76,9 +76,11 @@ class SyncService {
     
     private func syncReceipts() {
         var markedReceipts: [WBReceipt]!
+        var unsyncedReceipts: [WBReceipt]!
         
-        Database.sharedInstance().databaseQueue.inDatabase {
-            markedReceipts = $0.fetchAllMarkedForDeletionReceipts()
+        Database.sharedInstance().databaseQueue.inDatabase { db in
+            markedReceipts = db.fetchAllMarkedForDeletionReceipts()
+            unsyncedReceipts = db.fetchAllUnsyncedReceipts()
         }
         
         for receipt in markedReceipts {
@@ -86,6 +88,14 @@ class SyncService {
                 deleteFile(receipt: receipt)
             } else {
                 Database.sharedInstance().delete(receipt)
+            }
+        }
+        
+        for receipt in unsyncedReceipts {
+            if !receipt.isMarkedForDeletion(syncProvider: .current) {
+                guard let trip = Database.sharedInstance().tripWithName(receipt.tripName) else { continue }
+                receipt.trip = trip
+                syncService?.uploadFile(receipt: receipt)
             }
         }
     }

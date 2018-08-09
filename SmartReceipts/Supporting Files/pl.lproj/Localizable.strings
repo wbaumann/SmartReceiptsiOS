@@ -487,6 +487,7 @@
 "backups_view_backup_button" = "Backup";
 "backups_view_import_button" = "Import";
 "auto_backup_title" = "Automatic Backups [BETA]:";
+"auto_backup_existing" = "Existing Backups:";
 "auto_backup_warning_none" = "Warning: Automatic backups are not configured!\nYou may be at risk of losing your data.";
 "auto_backup_configure" = "Tap to Configure";
 "auto_backup_source_none" = "None";
@@ -499,6 +500,14 @@
 "remote_backups_list_item_menu_delete" = "Delete";
 "remote_backups_list_item_menu_download_images" = "Download to ZIP";
 "remote_backups_list_item_menu_download_images_debug" = "[Debug] Download";
+
+"dialog_remote_backup_delete_title" = "Delete";
+"dialog_remote_backup_delete_message" = "Are you sure you wish to delete your backup from the %s device? This operation cannot be undone.";
+"dialog_remote_backup_delete_message_this_device" = "Are you sure you wish to delete your backup of this device? This operation cannot be undone. Please note that you may wish to turn off automatic backups after this operation completes or all local data may be re-synced.";
+"dialog_remote_backup_delete_positive" = "Delete";
+"dialog_remote_backup_delete_progress" = "Deleting your backup from the %@ device";
+"dialog_remote_backup_delete_toast_success" = "Successfully deleted this backup";
+"dialog_remote_backup_delete_toast_failure" = "Failed to delete this backup";
 
 "import_string" = "Import";
 "import_string_item" = "Import %@";
