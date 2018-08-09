@@ -35,8 +35,9 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     @IBOutlet private weak var existingBackupsLabel: UILabel!
     @IBOutlet private weak var wifiLabel: UILabel!
     @IBOutlet private weak var wifiSwitch: UISwitch!
-    @IBOutlet private weak var wifiView: UIView!
     @IBOutlet private weak var backupsView: UIStackView!
+    
+    @IBOutlet private var confguredStateViews: [UIView]!
     
     private let bag = DisposeBag()
     
@@ -64,7 +65,6 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     }
     
     func updateUI() {
-        wifiView.isHidden = !presenter.hasValidSubscription() || SyncProvider.current == .none
         if SyncProvider.current == .googleDrive && presenter.hasValidSubscription() {
             autoBackupDesctiption.text = LocalizedString("auto_backup_warning_drive")
             configureButton.setTitle(SyncProvider.current.localizedTitle().uppercased(), for: .normal)
@@ -73,6 +73,11 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
             autoBackupDesctiption.text = LocalizedString("auto_backup_warning_none")
             configureButton.setTitle(LocalizedString("auto_backup_configure").uppercased(), for: .normal)
             configureButton.setImage(#imageLiteral(resourceName: "cloud-off"), for: .normal)
+        }
+        
+        let configured = presenter.hasValidSubscription() && SyncProvider.current != .none
+        for view in confguredStateViews {
+            view.isHidden = !configured
         }
     }
     
@@ -120,7 +125,13 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         presenter.getBackups()
             .subscribe(onSuccess: { [unowned self] backups in
                 activityIndicator.removeFromSuperview()
-                if backups.count == 0 { Logger.debug("No backups") }
+                
+                if backups.isEmpty {
+                    let noBackupsLabel = UILabel()
+                    noBackupsLabel.text = LocalizedString("remote_backups_list_no_backups")
+                    self.backupsView.addArrangedSubview(noBackupsLabel)
+                }
+                
                 for backup in backups {
                     guard let backupItem = BackupItemView.loadInstance() else { continue }
                     backupItem.setup(backup: backup, isCurrentDevice: self.presenter.isCurrentDevice(backup: backup))
@@ -129,7 +140,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
                         self?.openActions(for: backup, item: backupItem)
                     }).disposed(by: self.bag)
                 }
-                }, onError: { error in
+            }, onError: { error in
                     Logger.error(error.localizedDescription)
             }).disposed(by: bag)
     }

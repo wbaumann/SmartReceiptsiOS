@@ -220,7 +220,10 @@
                         <outlet property="manualBackupTitle" destination="3jL-ZW-tf8" id="BL7-uH-JJk"/>
                         <outlet property="wifiLabel" destination="gBl-WS-G4T" id="qdp-dl-3TW"/>
                         <outlet property="wifiSwitch" destination="SEW-5L-Ioq" id="jA6-Pt-tzd"/>
-                        <outlet property="wifiView" destination="07K-ne-LTs" id="bAi-4y-RSC"/>
+                        <outletCollection property="confguredStateViews" destination="07K-ne-LTs" collectionClass="NSMutableArray" id="InE-pg-Ims"/>
+                        <outletCollection property="confguredStateViews" destination="tdL-t3-ZKr" collectionClass="NSMutableArray" id="jWk-2I-LVf"/>
+                        <outletCollection property="confguredStateViews" destination="Qnh-XY-uul" collectionClass="NSMutableArray" id="Sh1-M3-1yp"/>
+                        <outletCollection property="confguredStateViews" destination="UeT-yY-29I" collectionClass="NSMutableArray" id="cpn-Vo-005"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nXm-AG-NXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
