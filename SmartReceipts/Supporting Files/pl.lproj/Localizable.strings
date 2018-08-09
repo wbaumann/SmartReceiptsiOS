@@ -500,6 +500,7 @@
 "remote_backups_list_item_menu_delete" = "Delete";
 "remote_backups_list_item_menu_download_images" = "Download to ZIP";
 "remote_backups_list_item_menu_download_images_debug" = "[Debug] Download";
+"remote_backups_list_no_backups" = "You don't have any backups yet";
 
 "dialog_remote_backup_delete_title" = "Delete";
 "dialog_remote_backup_delete_message" = "Are you sure you wish to delete your backup from the %s device? This operation cannot be undone.";

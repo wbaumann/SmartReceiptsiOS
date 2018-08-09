@@ -109,6 +109,7 @@ class BackupInteractor: Interactor {
         backupManager = BackupProvidersManager(syncProvider: provider)
         SyncProvider.current = provider
         presenter.updateUI()
+        presenter.updateBackups()
     }
     
 }
