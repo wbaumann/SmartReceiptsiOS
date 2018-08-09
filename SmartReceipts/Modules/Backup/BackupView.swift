@@ -123,7 +123,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
                 if backups.count == 0 { Logger.debug("No backups") }
                 for backup in backups {
                     guard let backupItem = BackupItemView.loadInstance() else { continue }
-                    backupItem.setup(backup: backup)
+                    backupItem.setup(backup: backup, isCurrentDevice: self.presenter.isCurrentDevice(backup: backup))
                     self.backupsView.addArrangedSubview(backupItem)
                     backupItem.onMenuTap().subscribe(onNext: { [weak self] in
                         self?.openActions(for: backup, item: backupItem)

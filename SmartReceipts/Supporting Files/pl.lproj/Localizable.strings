@@ -508,6 +508,7 @@
 "dialog_remote_backup_delete_progress" = "Deleting your backup from the %@ device";
 "dialog_remote_backup_delete_toast_success" = "Successfully deleted this backup";
 "dialog_remote_backup_delete_toast_failure" = "Failed to delete this backup";
+"existing_remote_backup_current_device" = "%@ (Your Current Backup)";
 
 "import_string" = "Import";
 "import_string_item" = "Import %@";

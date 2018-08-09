@@ -15,8 +15,9 @@ class BackupItemView: UIView {
     @IBOutlet private weak var syncDate: UILabel!
     @IBOutlet private weak var menu: UIButton!
     
-    func setup(backup: RemoteBackupMetadata) {
-        deviceName.text = backup.syncDeviceName
+    func setup(backup: RemoteBackupMetadata, isCurrentDevice: Bool =  false) {
+        let format = isCurrentDevice ? LocalizedString("existing_remote_backup_current_device") : "%@"
+        deviceName.text = String(format: format, backup.syncDeviceName)
         serviceName.text = SyncProvider.current.localizedTitle()
         syncDate.text = WBDateFormatter().formattedDate(backup.lastModifiedDate, in: .current)
     }
