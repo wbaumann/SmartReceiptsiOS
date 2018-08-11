@@ -35,6 +35,10 @@ class BackupPresenter: Presenter {
         interactor.deleteBackup(backup)
     }
     
+    func downloadZip(_ backup: RemoteBackupMetadata) {
+        interactor.downloadZip(backup)
+    }
+    
     func isCurrentDevice(backup: RemoteBackupMetadata) -> Bool {
         return interactor.isCurrentDevice(backup: backup)
     }
@@ -65,9 +69,14 @@ class BackupPresenter: Presenter {
         view.updateBackups()
     }
     
+    func presentOptions(file: URL) {
+        view.showOptions(file: file)
+    }
+    
     func setupUseWifiOnly(enabled: Bool) {
         interactor.setupUseWifiOnly(enabled: enabled)
     }
+    
 }
 
 

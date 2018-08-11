@@ -78,7 +78,7 @@ class GoogleDriveBackupProvider: BackupProvider {
                     }).flatMap({ database -> Observable<BackupFetchResult> in
                         var observables = [Observable<BackupReceiptFile>]()
                         for file in receiptFiles {
-                            if file.name! == SYNC_DB_NAME {  }
+                            if file.name! == SYNC_DB_NAME { continue }
                             observables.append(GoogleDriveService.shared.downloadFile(id: file.identifier!).asObservable()
                                 .map({ $0.data })
                                 .map({ (file.name!, $0) }))

@@ -18,6 +18,7 @@ protocol BackupViewInterface  {
     var signInUIDelegate: GIDSignInUIDelegate { get }
     func updateUI()
     func updateBackups()
+    func showOptions(file: URL)
 }
 
 //MARK: BackupView Class
@@ -89,7 +90,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         
         backupButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-                self.showBackup(from: self.backupButton.frame)
+                self.showBackup()
             }).disposed(by: bag)
         
         configureButton.rx.tap
@@ -150,7 +151,9 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_restore"), style: .default, handler: { [unowned self] _ in
             self.openImport(backup: backup)
         }))
-        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images"), style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images"), style: .default, handler: { [unowned self] _ in
+            self.presenter.downloadZip(backup)
+        }))
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images_debug"), style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_delete"), style: .destructive, handler: { [unowned self] _ in
             self.openDelete(backup: backup)
@@ -230,7 +233,7 @@ extension BackupView {
 
 //MARK: Backup Files
 extension BackupView {
-    func showBackup(from: CGRect) {
+    func showBackup() {
         AnalyticsManager.sharedManager.record(event: Event.Navigation.BackupOverflow)
         
         let exportAction: (UIAlertAction) -> Void = { [unowned self] action in
@@ -245,15 +248,9 @@ extension BackupView {
                 DispatchQueue.main.async {
                     hud.hide()
                     if isFileExists {
-                        var showRect = from
-                        showRect.origin.y += self.view.frame.origin.y
-                        
                         let fileUrl = URL(fileURLWithPath: exportPath)
                         Logger.info("shareBackupFile via UIDocumentInteractionController with url: \(fileUrl)")
-                        let controller = UIDocumentInteractionController(url: fileUrl)
-                        Logger.info("UIDocumentInteractionController UTI: \(controller.uti!)")
-                        controller.presentOptionsMenu(from: showRect, in: self.view, animated: true)
-                        self.documentInteractionController = controller
+                        self.showOptions(file: fileUrl)
                     } else {
                         Logger.error("Failed to properly export data")
                         self.presenter._router.openAlert(title: LocalizedString("generic.error.alert.title"),
@@ -271,6 +268,13 @@ extension BackupView {
                                       style: .default, handler: exportAction))
         present(sheet, animated: true, completion: nil)
     }
+    
+    func showOptions(file: URL) {
+        let controller = UIDocumentInteractionController(url: file)
+        controller.presentOptionsMenu(from: CGRect.zero, in: view, animated: true)
+        self.documentInteractionController = controller
+    }
+    
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

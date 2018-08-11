@@ -29,10 +29,51 @@ class BackupInteractor: Interactor {
         return purchaseService.hasValidSubscriptionValue()
     }
     
+    func downloadZip(_ backup: RemoteBackupMetadata) {
+        weak var hud = PendingHUDView.showFullScreen()
+        backupManager.downloadAllData(remoteBackupMetadata: backup)
+            .map({ result -> URL? in
+                if !result.database.open() { return nil }
+                let tempDirPath = NSTemporaryDirectory()
+                let database = result.database
+                let trips = database.allTrips() as! [WBTrip]
+                
+                var urls = [URL]()
+                urls.append(try! database.pathToDatabase.asURL())
+                
+                for file in result.files {
+                    for trip in trips {
+                        let receipts = database.allReceipts(for: trip) as! [WBReceipt]
+                        if !receipts.filter({ $0.imageFilePath(for: trip).contains(file.filename) }).isEmpty {
+                            let tripPath = tempDirPath.asNSString.appendingPathComponent(trip.name)
+                            _ = FileManager.createDirectiryIfNotExists(path: tripPath)
+                            let receiptPath = tripPath.asNSString.appendingPathComponent(file.filename)
+                            FileManager.default.createFile(atPath: receiptPath, contents: file.data, attributes: nil)
+                            urls.append(tripPath.asFileURL)
+                        }
+                    }
+                }
+                
+                let backupPath = tempDirPath.asNSString.appendingPathComponent("\(backup.syncDeviceName).zip")
+                try? DataExport.zipFiles(urls, to: backupPath)
+                for url in urls { try? FileManager.default.removeItem(at: url) }
+                
+                database.close()
+                return backupPath.asFileURL
+            }).do(onSuccess: { _ in
+                hud?.hide()
+            }).filter({ $0 != nil })
+            .subscribe(onSuccess: { [weak self] url in
+                self?.presenter.presentOptions(file: url!)
+            }, onError: { error in
+                hud?.hide()
+            }).disposed(by: bag)
+    }
+    
     func importBackup(_ backup: RemoteBackupMetadata, overwrite: Bool) {
         weak var hud = PendingHUDView.showFullScreen()
         backupManager?.restoreBackup(remoteBackupMetadata: backup, overwriteExistingData: overwrite)
-            .andThen(self.backupManager.downloadAllData(remoteBackupMetadata: backup))
+            .andThen(backupManager.downloadAllData(remoteBackupMetadata: backup))
             .subscribe(onSuccess: { result in
                 if !result.database.open() { return }
                 let database = result.database
