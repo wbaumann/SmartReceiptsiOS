@@ -65,8 +65,9 @@ class BackupInteractor: Interactor {
             }).filter({ $0 != nil })
             .subscribe(onSuccess: { [weak self] url in
                 self?.presenter.presentOptions(file: url!)
-            }, onError: { error in
+            }, onError: { [weak self] error in
                 hud?.hide()
+                self?.presenter.presentAlert(title: nil, message: LocalizedString("EXPORT_ERROR"))
             }).disposed(by: bag)
     }
     

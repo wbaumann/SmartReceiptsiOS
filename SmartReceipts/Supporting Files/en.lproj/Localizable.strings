@@ -515,6 +515,8 @@
 "dialog_import_text" = "Overwrite Existing Data";
 "progress_import" = "Importing your files";
 "toast_import_complete" = "Successfully imported all files. Please re-launch the app.";
+
 "IMPORT_ERROR" = "Error: Failed to recognize the file as importable";
+"EXPORT_ERROR" = "Error: Failed to properly export your data.";
 
 "receipt_file_picker_cant_import_error" = "Can't import selected file";
