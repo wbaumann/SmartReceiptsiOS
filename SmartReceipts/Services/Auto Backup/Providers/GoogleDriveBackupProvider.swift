@@ -63,6 +63,22 @@ class GoogleDriveBackupProvider: BackupProvider {
     }
     
     func downloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult> {
+        return fetchBackup(remoteBackupMetadata: remoteBackupMetadata, debug: false)
+    }
+    
+    func debugDownloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult> {
+        return fetchBackup(remoteBackupMetadata: remoteBackupMetadata, debug: true)
+    }
+    
+    func getCriticalSyncErrorStream() -> Observable<CriticalSyncError> {
+        return Observable<CriticalSyncError>.empty()
+    }
+    
+    func markErrorResolved(syncErrorType: SyncErrorType) {
+        
+    }
+    
+    private func fetchBackup(remoteBackupMetadata: RemoteBackupMetadata, debug: Bool) -> Single<BackupFetchResult> {
         return GoogleDriveService.shared.getFiles(inFolderId: remoteBackupMetadata.id)
             .flatMap({ fileList -> Single<BackupFetchResult> in
                 guard let dbFile = fileList.files?.filter({ $0.name == SYNC_DB_NAME }).first else { return Single<BackupFetchResult>.never() }
@@ -70,7 +86,8 @@ class GoogleDriveBackupProvider: BackupProvider {
                 return GoogleDriveService.shared.downloadFile(id: dbFile.identifier!).asObservable()
                     .map({ $0.data })
                     .map({ data -> String in
-                        let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(SYNC_DB_NAME)!
+                        let dbName = debug ? "\(dbFile.identifier!)_\(SYNC_DB_NAME)" : SYNC_DB_NAME
+                        let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(dbName)!
                         try? data.write(to: fileURL)
                         return fileURL.absoluteString
                     }).map({ dbPath -> Database in
@@ -81,7 +98,10 @@ class GoogleDriveBackupProvider: BackupProvider {
                             if file.name! == SYNC_DB_NAME { continue }
                             observables.append(GoogleDriveService.shared.downloadFile(id: file.identifier!).asObservable()
                                 .map({ $0.data })
-                                .map({ (file.name!, $0) }))
+                                .map({
+                                    let filename = debug ? "\(file.identifier!)_\(file.name!)" : file.name! 
+                                    return (filename, $0)
+                                }))
                         }
                         
                         return Observable<(BackupReceiptFile)>.merge(observables).toArray()
@@ -90,17 +110,5 @@ class GoogleDriveBackupProvider: BackupProvider {
                             })
                     }).asSingle()
             })
-    }
-    
-    func debugDownloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult> {
-        return Single<BackupFetchResult>.never()
-    }
-    
-    func getCriticalSyncErrorStream() -> Observable<CriticalSyncError> {
-        return Observable<CriticalSyncError>.empty()
-    }
-    
-    func markErrorResolved(syncErrorType: SyncErrorType) {
-        
     }
 }
