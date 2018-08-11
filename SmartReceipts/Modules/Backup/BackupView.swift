@@ -154,7 +154,9 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images"), style: .default, handler: { [unowned self] _ in
             self.presenter.downloadZip(backup)
         }))
-        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images_debug"), style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images_debug"), style: .default, handler: { [unowned self] _ in
+            self.presenter.downloadDebugZip(backup)
+        }))
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_delete"), style: .destructive, handler: { [unowned self] _ in
             self.openDelete(backup: backup)
         }))

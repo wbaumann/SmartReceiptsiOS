@@ -39,6 +39,10 @@ class BackupPresenter: Presenter {
         interactor.downloadZip(backup)
     }
     
+    func downloadDebugZip(_ backup: RemoteBackupMetadata) {
+        interactor.downloadDebugZip(backup)
+    }
+    
     func isCurrentDevice(backup: RemoteBackupMetadata) -> Bool {
         return interactor.isCurrentDevice(backup: backup)
     }

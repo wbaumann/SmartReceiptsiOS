@@ -39,7 +39,6 @@ class BackupInteractor: Interactor {
                 let trips = database.allTrips() as! [WBTrip]
                 
                 var urls = [URL]()
-                urls.append(try! database.pathToDatabase.asURL())
                 
                 for file in result.files {
                     for trip in trips {
@@ -65,7 +64,37 @@ class BackupInteractor: Interactor {
             }).filter({ $0 != nil })
             .subscribe(onSuccess: { [weak self] url in
                 self?.presenter.presentOptions(file: url!)
-            }, onError: { [weak self] error in
+            }, onError: { [weak self] _ in
+                hud?.hide()
+                self?.presenter.presentAlert(title: nil, message: LocalizedString("EXPORT_ERROR"))
+            }).disposed(by: bag)
+    }
+    
+    func downloadDebugZip(_ backup: RemoteBackupMetadata) {
+        weak var hud = PendingHUDView.showFullScreen()
+        backupManager.debugDownloadAllData(remoteBackupMetadata: backup)
+            .map({ result -> URL? in
+                let tempDirPath = NSTemporaryDirectory()
+                var urls = [URL]()
+                urls.append(try! result.database.pathToDatabase.asURL())
+                
+                for file in result.files {
+                    let receiptPath = tempDirPath.asNSString.appendingPathComponent(file.filename)
+                    FileManager.default.createFile(atPath: receiptPath, contents: file.data, attributes: nil)
+                    urls.append(receiptPath.asFileURL)
+                }
+                
+                let backupPath = tempDirPath.asNSString.appendingPathComponent("debug_\(backup.syncDeviceName).zip")
+                try? DataExport.zipFiles(urls, to: backupPath)
+                for url in urls { try? FileManager.default.removeItem(at: url) }
+                
+                return backupPath.asFileURL
+            }).do(onSuccess: { _ in
+                hud?.hide()
+            }).filter({ $0 != nil })
+            .subscribe(onSuccess: { [weak self] url in
+                self?.presenter.presentOptions(file: url!)
+            }, onError: { [weak self] _ in
                 hud?.hide()
                 self?.presenter.presentAlert(title: nil, message: LocalizedString("EXPORT_ERROR"))
             }).disposed(by: bag)
@@ -98,7 +127,7 @@ class BackupInteractor: Interactor {
                 database.close()
                 hud?.hide()
                 Toast.show(LocalizedString("toast_import_complete"))
-            }, onError: { [weak self] error in
+            }, onError: { [weak self] _ in
                 hud?.hide()
                 self?.presenter.presentAlert(title: nil, message: LocalizedString("IMPORT_ERROR"))
             }).disposed(by: bag)
