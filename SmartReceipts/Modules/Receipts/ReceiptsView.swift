@@ -85,6 +85,9 @@ final class ReceiptsView: FetchedTableViewController {
         cell.markerLabel.text = showAttachmentMarker ? receipt.attachmentMarker() : ""
         cell.priceWidthConstraint.constant = _priceWidth
         cell.layoutIfNeeded()
+        
+        let state = ModelSyncState.modelState(modelChangeDate: receipt.lastLocalModificationTime)
+        cell.setState(state)
     }
 
     override func contentChanged() {

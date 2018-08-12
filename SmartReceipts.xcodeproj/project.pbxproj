@@ -278,7 +278,6 @@
 		71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */; };
 		71E2B5801EEDD516001D02F1 /* TripsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B5791EEDD516001D02F1 /* TripsRouter.swift */; };
 		71E2B5811EEDD516001D02F1 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2B57A1EEDD516001D02F1 /* TripsView.swift */; };
-		71E2E57920DFD79A00BDE501 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2E57820DFD79A00BDE501 /* Syncable.swift */; };
 		71E2E57B20DFD83E00BDE501 /* DefaultSyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2E57A20DFD83E00BDE501 /* DefaultSyncState.swift */; };
 		71E2E57D20DFD88700BDE501 /* SyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2E57C20DFD88700BDE501 /* SyncState.swift */; };
 		71E2E57F20DFD8FB00BDE501 /* SyncProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E2E57E20DFD8FB00BDE501 /* SyncProvider.swift */; };
@@ -891,7 +890,6 @@
 		71E2B5781EEDD516001D02F1 /* TripsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsPresenter.swift; sourceTree = "<group>"; };
 		71E2B5791EEDD516001D02F1 /* TripsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsRouter.swift; sourceTree = "<group>"; };
 		71E2B57A1EEDD516001D02F1 /* TripsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
-		71E2E57820DFD79A00BDE501 /* Syncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
 		71E2E57A20DFD83E00BDE501 /* DefaultSyncState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSyncState.swift; sourceTree = "<group>"; };
 		71E2E57C20DFD88700BDE501 /* SyncState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncState.swift; sourceTree = "<group>"; };
 		71E2E57E20DFD8FB00BDE501 /* SyncProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncProvider.swift; sourceTree = "<group>"; };
@@ -1824,7 +1822,6 @@
 				71F6251D20FBE395009B777C /* GoogleSyncService.swift */,
 				71F6251F20FBE39C009B777C /* SyncService.swift */,
 				71C2FD0E20E7F48C00DF068E /* BackupProviderFactory.swift */,
-				71E2E57820DFD79A00BDE501 /* Syncable.swift */,
 				71E2E57C20DFD88700BDE501 /* SyncState.swift */,
 				71E2E57A20DFD83E00BDE501 /* DefaultSyncState.swift */,
 				71E2E58020E0132B00BDE501 /* GoogleDriveService.swift */,
@@ -3256,7 +3253,6 @@
 				71E2E57F20DFD8FB00BDE501 /* SyncProvider.swift in Sources */,
 				71ACA7C91F5B69C90024903E /* DebugView.swift in Sources */,
 				719B1FE91EF6032D0049BD71 /* EditReceiptDisplayData.swift in Sources */,
-				71E2E57920DFD79A00BDE501 /* Syncable.swift in Sources */,
 				715606731FAF9BE500E09760 /* RecognitionAPI.swift in Sources */,
 				7185AEF91EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift in Sources */,
 				7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */,
