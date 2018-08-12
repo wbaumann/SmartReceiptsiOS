@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -49,12 +50,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" horizontalCompressionResistancePriority="1" text="Category cake" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWA-Jn-Qzn">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" horizontalCompressionResistancePriority="1" ambiguous="YES" text="Category cake" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWA-Jn-Qzn">
                                 <rect key="frame" x="0.0" y="46" width="112.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnh-b6-tOk" userLabel="Marker">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnh-b6-tOk" userLabel="Marker">
                                 <rect key="frame" x="181" y="45" width="39" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="KnW-HV-wgm"/>
@@ -62,6 +63,15 @@
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awk-3K-vKh">
+                                <rect key="frame" x="190" y="2" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="awk-3K-vKh" secondAttribute="height" id="HsH-vR-lNQ"/>
+                                    <constraint firstAttribute="width" constant="30" id="XxV-Gz-8Ou"/>
+                                </constraints>
+                                <color key="tintColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="cloud"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -69,11 +79,14 @@
                             <constraint firstItem="z9Q-Cn-vDU" firstAttribute="leading" secondItem="pRi-pw-EYT" secondAttribute="leading" id="Cg5-r6-O0P"/>
                             <constraint firstItem="hnh-b6-tOk" firstAttribute="leading" secondItem="hWA-Jn-Qzn" secondAttribute="trailing" priority="251" constant="8" id="FAy-fE-hMH"/>
                             <constraint firstAttribute="trailing" secondItem="hnh-b6-tOk" secondAttribute="trailing" id="Hrp-8w-ip2"/>
+                            <constraint firstItem="awk-3K-vKh" firstAttribute="top" secondItem="z9Q-Cn-vDU" secondAttribute="top" id="IAA-n9-O6p"/>
                             <constraint firstItem="z9Q-Cn-vDU" firstAttribute="top" secondItem="pRi-pw-EYT" secondAttribute="top" constant="2" id="KtP-E6-7GO"/>
                             <constraint firstAttribute="bottom" secondItem="hnh-b6-tOk" secondAttribute="bottom" constant="2.5" id="WPW-DY-kIo"/>
+                            <constraint firstAttribute="trailing" secondItem="awk-3K-vKh" secondAttribute="trailing" id="d5j-yL-5Ys"/>
                             <constraint firstItem="hWA-Jn-Qzn" firstAttribute="top" secondItem="ENq-TD-C4c" secondAttribute="bottom" constant="1.5" id="gsp-ms-KjA"/>
                             <constraint firstItem="hWA-Jn-Qzn" firstAttribute="leading" secondItem="pRi-pw-EYT" secondAttribute="leading" id="hcx-dx-QaT"/>
                             <constraint firstAttribute="bottom" secondItem="hWA-Jn-Qzn" secondAttribute="bottom" constant="3" id="qLz-IM-X9K"/>
+                            <constraint firstItem="awk-3K-vKh" firstAttribute="width" secondItem="awk-3K-vKh" secondAttribute="height" id="rNH-db-qlr"/>
                             <constraint firstItem="ENq-TD-C4c" firstAttribute="leading" secondItem="pRi-pw-EYT" secondAttribute="leading" id="zwl-jy-Rov"/>
                         </constraints>
                     </view>
@@ -99,4 +112,7 @@
             <point key="canvasLocation" x="445" y="352.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="cloud" width="24" height="18"/>
+    </resources>
 </document>
