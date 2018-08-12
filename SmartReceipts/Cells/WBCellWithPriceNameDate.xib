@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -32,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Trip Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="R9K-TL-aOK">
-                                <rect key="frame" x="92" y="2" width="212" height="21"/>
+                                <rect key="frame" x="92" y="2" width="212" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="KRL-fN-eXr"/>
                                 </constraints>
@@ -40,22 +41,33 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 6. 2013" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cmB-uG-brk">
-                                <rect key="frame" x="92" y="24" width="212" height="21"/>
+                                <rect key="frame" x="92" y="23.5" width="212" height="21.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="e1h-S2-8ac"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcY-jn-lYd">
+                                <rect key="frame" x="282" y="2" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="TEO-Br-x67"/>
+                                    <constraint firstAttribute="width" secondItem="xcY-jn-lYd" secondAttribute="height" id="ieJ-Eq-mUn"/>
+                                </constraints>
+                                <color key="tintColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="cloud"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="R9K-TL-aOK" firstAttribute="leading" secondItem="jik-bv-qxh" secondAttribute="trailing" constant="12" id="2iu-os-8af"/>
                             <constraint firstItem="jik-bv-qxh" firstAttribute="top" secondItem="LGQ-lD-YQW" secondAttribute="top" id="8JT-Tx-ReX"/>
+                            <constraint firstItem="xcY-jn-lYd" firstAttribute="top" secondItem="R9K-TL-aOK" secondAttribute="top" id="CTE-Zs-OUi"/>
                             <constraint firstAttribute="bottom" secondItem="cmB-uG-brk" secondAttribute="bottom" constant="3" id="HpI-BI-YpX"/>
                             <constraint firstAttribute="trailing" secondItem="cmB-uG-brk" secondAttribute="trailing" constant="16" id="Rnd-37-vBK"/>
                             <constraint firstAttribute="bottom" secondItem="jik-bv-qxh" secondAttribute="bottom" id="epT-ob-8w3"/>
                             <constraint firstItem="jik-bv-qxh" firstAttribute="leading" secondItem="LGQ-lD-YQW" secondAttribute="leading" constant="16" id="hEK-sk-oXO"/>
+                            <constraint firstAttribute="trailing" secondItem="xcY-jn-lYd" secondAttribute="trailing" constant="8" id="joX-Lx-8z4"/>
                             <constraint firstAttribute="trailing" secondItem="R9K-TL-aOK" secondAttribute="trailing" constant="16" id="qsh-oe-Xq2"/>
                             <constraint firstItem="R9K-TL-aOK" firstAttribute="top" secondItem="LGQ-lD-YQW" secondAttribute="top" constant="2" id="rSM-D7-a7S"/>
                             <constraint firstItem="cmB-uG-brk" firstAttribute="leading" secondItem="jik-bv-qxh" secondAttribute="trailing" constant="12" id="xTO-Th-Klb"/>
@@ -79,4 +91,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="cloud" width="24" height="18"/>
+    </resources>
 </document>
