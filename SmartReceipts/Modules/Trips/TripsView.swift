@@ -39,7 +39,7 @@ final class TripsView: FetchedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         AppTheme.customizeOnViewDidLoad(self)
-        setPresentationCellNib(WBCellWithPriceNameDate.viewNib())
+        setPresentationCellNib(TripCell.viewNib())
         navigationController?.setToolbarHidden(true, animated: false)
         
         NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved),
@@ -163,7 +163,7 @@ final class TripsView: FetchedTableViewController {
         }
         priceWidth = w
         for cell in tableView.visibleCells {
-            if let pCell = cell as? WBCellWithPriceNameDate {
+            if let pCell = cell as? TripCell {
                 pCell.priceWidthConstraint.constant = w
                 pCell.layoutIfNeeded()
             }
@@ -196,12 +196,12 @@ final class TripsView: FetchedTableViewController {
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
-        let pCell = cell as! WBCellWithPriceNameDate
+        let pCell = cell as! TripCell
         let trip = item as! WBTrip
         
-        pCell.priceField.text = trip.formattedPrice()
-        pCell.nameField.text = trip.name
-        pCell.dateField.text = String(format: LocalizedString("trips.controller.from.to.date.label.base"),
+        pCell.priceLabel.text = trip.formattedPrice()
+        pCell.nameLabel.text = trip.name
+        pCell.dateLabel.text = String(format: LocalizedString("trips.controller.from.to.date.label.base"),
                                       dateFormatter.formattedDate(trip.startDate, in: trip.startTimeZone),
                                       dateFormatter.formattedDate(trip.endDate, in: trip.endTimeZone))
         pCell.priceWidthConstraint.constant = priceWidth

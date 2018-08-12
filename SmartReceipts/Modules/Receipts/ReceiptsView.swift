@@ -49,7 +49,7 @@ final class ReceiptsView: FetchedTableViewController {
         showReceiptCategory = WBPreferences.layoutShowReceiptCategory()
         showAttachmentMarker = WBPreferences.layoutShowReceiptAttachmentMarker()
         
-        setPresentationCellNib(ReceiptSummaryCell.viewNib())
+        setPresentationCellNib(ReceiptCell.viewNib())
         
         lastDateSeparator = WBPreferences.dateSeparator()
         configureFloatyButton()
@@ -75,12 +75,12 @@ final class ReceiptsView: FetchedTableViewController {
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
-        let cell = cell as! ReceiptSummaryCell
+        let cell = cell as! ReceiptCell
         let receipt = item as! WBReceipt
         
-        cell.priceField.text = receipt.formattedPrice()
-        cell.nameField.text = receipt.name
-        cell.dateField.text = showReceiptDate ? dateFormatter.formattedDate(receipt.date, in: receipt.timeZone) : ""
+        cell.priceLabel.text = receipt.formattedPrice()
+        cell.nameLabel.text = receipt.name
+        cell.dateLabel.text = showReceiptDate ? dateFormatter.formattedDate(receipt.date, in: receipt.timeZone) : ""
         cell.categoryLabel.text = showReceiptCategory ? receipt.category.name : ""
         cell.markerLabel.text = showAttachmentMarker ? receipt.attachmentMarker() : ""
         cell.priceWidthConstraint.constant = _priceWidth
@@ -156,7 +156,7 @@ final class ReceiptsView: FetchedTableViewController {
         if w == _priceWidth { return }
         
         _priceWidth = w
-        for cell in tableView.visibleCells as! [ReceiptSummaryCell] {
+        for cell in tableView.visibleCells as! [ReceiptCell] {
             cell.priceWidthConstraint.constant = w
             cell.layoutIfNeeded()
         }

@@ -36,10 +36,6 @@
 #import "UIDevice+DeviceInfo.h"
 
 #import "ReceiptColumn.h"
-
-#import "DistanceSummaryCell.h"
-#import "WBCellWithPriceNameDate.h"
-#import "ReceiptSummaryCell.h"
 #import "TitleOnlyCell.h"
 
 #import "WBCategory.h"

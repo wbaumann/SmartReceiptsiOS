@@ -30,7 +30,7 @@ class TripDistancesView: FetchedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = LocalizedString("distances.controller.title")
-        setPresentationCellNib(DistanceSummaryCell.viewNib())
+        setPresentationCellNib(DistanceCell.viewNib())
         configureUIActions()
     }
     
@@ -65,7 +65,7 @@ class TripDistancesView: FetchedTableViewController {
         super.contentChanged()
         maxRateWidth = findMaxRateWidth()
         for cell in tableView.visibleCells {
-            if let dsCell = cell as? DistanceSummaryCell {
+            if let dsCell = cell as? DistanceCell {
                 dsCell.setPriceLabelWidth(maxRateWidth)
             }
         }
@@ -73,7 +73,7 @@ class TripDistancesView: FetchedTableViewController {
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
-        if let summaryCell = cell as? DistanceSummaryCell {
+        if let summaryCell = cell as? DistanceCell {
             if let distance = item as? Distance {
                 dateFormatter.configure(timeZone: distance.timeZone!)
                 summaryCell.distanceLabel.text = Price.stringFrom(amount: distance.distance)
