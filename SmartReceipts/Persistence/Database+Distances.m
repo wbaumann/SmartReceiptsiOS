@@ -40,6 +40,7 @@
 }
 
 - (BOOL)saveDistance:(Distance *)distance {
+    distance.lastLocalModificationTime = [NSDate new];
     __block BOOL result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         result = [self saveDistance:distance usingDatabase:db];
@@ -121,6 +122,7 @@
     [query addParam:DistanceTable.COLUMN_COMMENT value:distance.comment];
     [query addParam:DistanceTable.COLUMN_RATE_CURRENCY value:distance.rate.currency.code];
     [query addParam:DistanceTable.COLUMN_RATE value:distance.rate.amount];
+    [query addParam:SyncStateColumns.LAST_LOCAL_MODIFICATION_TIME value:distance.lastLocalModificationTime.milliseconds];
 }
 
 - (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip {

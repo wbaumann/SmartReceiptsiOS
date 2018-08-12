@@ -206,6 +206,9 @@ final class TripsView: FetchedTableViewController {
                                       dateFormatter.formattedDate(trip.endDate, in: trip.endTimeZone))
         pCell.priceWidthConstraint.constant = priceWidth
         pCell.layoutIfNeeded()
+        
+        let state = ModelSyncState.modelState(modelChangeDate: trip.lastLocalModificationTime)
+        pCell.setState(state)
     }
     
     

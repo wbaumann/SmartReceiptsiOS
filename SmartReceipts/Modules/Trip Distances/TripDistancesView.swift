@@ -73,14 +73,17 @@ class TripDistancesView: FetchedTableViewController {
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
-        if let summaryCell = cell as? DistanceCell {
+        if let distanceCell = cell as? DistanceCell {
             if let distance = item as? Distance {
                 dateFormatter.configure(timeZone: distance.timeZone!)
-                summaryCell.distanceLabel.text = Price.stringFrom(amount: distance.distance)
-                summaryCell.destinationLabel.text = distance.location;
-                summaryCell.totalLabel.text = distance.totalRate().mileageRateCurrencyFormattedPrice()
-                summaryCell.dateLabel.text = dateFormatter.string(from: distance.date)
-                summaryCell.setPriceLabelWidth(maxRateWidth)
+                distanceCell.distanceLabel.text = Price.stringFrom(amount: distance.distance)
+                distanceCell.destinationLabel.text = distance.location;
+                distanceCell.totalLabel.text = distance.totalRate().mileageRateCurrencyFormattedPrice()
+                distanceCell.dateLabel.text = dateFormatter.string(from: distance.date)
+                distanceCell.setPriceLabelWidth(maxRateWidth)
+                
+                let state = ModelSyncState.modelState(modelChangeDate: distance.lastLocalModificationTime)
+                distanceCell.setState(state)
             }
         }
     }

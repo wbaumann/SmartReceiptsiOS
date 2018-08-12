@@ -51,6 +51,7 @@
 }
 
 - (BOOL)saveTrip:(WBTrip *)trip {
+    trip.lastLocalModificationTime = [NSDate new];
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:TripsTable.TABLE_NAME];
     [self appendParamsFromTrip:trip toQuery:insert];
     BOOL result = [self executeQuery:insert];
@@ -61,6 +62,7 @@
 }
 
 - (BOOL)updateTrip:(WBTrip *)trip {
+    trip.lastLocalModificationTime = [NSDate new];
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:TripsTable.TABLE_NAME];
     [self appendParamsFromTrip:trip toQuery:update];
     [update where:TripsTable.COLUMN_NAME value:trip.originalName];
@@ -91,6 +93,7 @@
     [query addParam:TripsTable.COLUMN_DEFAULT_CURRENCY value:trip.defaultCurrency.code];
     [query addParam:TripsTable.COLUMN_COMMENT value:trip.comment];
     [query addParam:TripsTable.COLUMN_COST_CENTER value:trip.costCenter];
+    [query addParam:SyncStateColumns.LAST_LOCAL_MODIFICATION_TIME value:trip.lastLocalModificationTime.milliseconds];
 }
 
 - (NSDecimalNumber *)totalPriceForTrip:(WBTrip *)trip {

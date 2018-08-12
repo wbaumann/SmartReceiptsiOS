@@ -18,6 +18,7 @@ class Distance: NSObject, NSCopying, FetchedModel {
     var date: Date!
     var timeZone: TimeZone!
     var comment: String?
+    var lastLocalModificationTime: Date!
     
     var objectId: Int {
         get { return objId }
@@ -70,6 +71,7 @@ class Distance: NSObject, NSCopying, FetchedModel {
         let copy = Distance(trip: trip, distance: distance, rate: rate,
                         location: location, date: date, timeZone: timeZone, comment: comment)
         copy.objId = objId
+        copy.lastLocalModificationTime = lastLocalModificationTime
         return copy
     }
     
@@ -85,6 +87,9 @@ class Distance: NSObject, NSCopying, FetchedModel {
         let tzName = resultSet.string(forColumn: DistanceTable.Column.Timezone)
         timeZone = tzName != nil ? NSTimeZone(name: tzName!)! as TimeZone : TimeZone.current
         comment = resultSet.string(forColumn: DistanceTable.Column.Comment)
+        
+        let time = resultSet.longLongInt(forColumn: SyncStateColumns.LastLocalModificationTime)/1000
+        lastLocalModificationTime = Date(timeIntervalSince1970: TimeInterval(time))
     }
 
 }

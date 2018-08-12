@@ -110,6 +110,9 @@
     _endTimeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:TripsTable.COLUMN_TO_TIMEZONE]];
     self.comment = [resultSet stringForColumn:TripsTable.COLUMN_COMMENT];
     self.costCenter = [resultSet stringForColumn:TripsTable.COLUMN_COST_CENTER];
+    
+    long long int time = [resultSet longLongIntForColumn:SyncStateColumns.LAST_LOCAL_MODIFICATION_TIME];
+    _lastLocalModificationTime = [NSDate dateWithMilliseconds:time];
 }
 
 - (BOOL)nameChanged {
@@ -152,6 +155,7 @@
     copy.costCenter = self.costCenter;
     copy.pricesSummary = self.pricesSummary;
     copy.comment = self.comment;
+    copy.lastLocalModificationTime = self.lastLocalModificationTime;
     return copy;
 }
 

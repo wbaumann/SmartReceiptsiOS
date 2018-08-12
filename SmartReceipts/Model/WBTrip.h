@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSTimeZone *startTimeZone;
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) NSTimeZone *endTimeZone;
+@property (nonatomic, strong) NSDate *lastLocalModificationTime;
 
 - (NSString *)directoryPath;
 - (NSString *)fileInDirectoryPath:(NSString *)filename;
