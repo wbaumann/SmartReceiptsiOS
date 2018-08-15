@@ -111,6 +111,11 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
             .subscribe(onNext: { [unowned self] in
                 self.presenter.setupUseWifiOnly(enabled: $0)
             }).disposed(by: bag)
+        
+        AppNotificationCenter.didSyncBackup
+            .subscribe(onNext: { [unowned self] in
+                self.updateBackups()
+            }).disposed(by: bag)
     }
     
     func updateBackups() {

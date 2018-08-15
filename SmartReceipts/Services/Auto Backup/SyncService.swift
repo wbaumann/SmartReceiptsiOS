@@ -56,6 +56,7 @@ class SyncService {
             .skipFirst()
             .subscribe(onNext: { provider in
                 self.updateSyncServiceIfNeeded()
+                self.syncService?.syncDatabase()
                 self.syncReceipts()
             }).disposed(by: bag)
     }
