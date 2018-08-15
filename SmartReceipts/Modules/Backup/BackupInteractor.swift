@@ -104,7 +104,9 @@ class BackupInteractor: Interactor {
         weak var hud = PendingHUDView.showFullScreen()
         backupManager?.restoreBackup(remoteBackupMetadata: backup, overwriteExistingData: overwrite)
             .andThen(backupManager.downloadAllData(remoteBackupMetadata: backup))
-            .subscribe(onSuccess: { result in
+            .flatMap({ result -> Single<BackupFetchResult> in
+                return result.database.open() ? .just(result) : .error(DatabaseError.openFailed)
+            }).subscribe(onSuccess: { result in
                 if !result.database.open() { return }
                 let database = result.database
                 let trips = database.allTrips() as! [WBTrip]

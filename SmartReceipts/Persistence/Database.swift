@@ -18,3 +18,7 @@ extension Database {
         }
     }
 }
+
+enum DatabaseError: Error {
+    case openFailed
+}
