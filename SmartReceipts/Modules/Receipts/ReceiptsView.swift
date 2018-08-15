@@ -55,6 +55,11 @@ final class ReceiptsView: FetchedTableViewController {
         configureFloatyButton()
         subscribe()
         
+        AppNotificationCenter.didSyncBackup
+            .subscribe(onNext: {
+                self.tableView.reloadData()
+            }).disposed(by: bag)
+        
         registerForPreviewing(with: self, sourceView: tableView)
     }
     
@@ -86,7 +91,12 @@ final class ReceiptsView: FetchedTableViewController {
         cell.priceWidthConstraint.constant = _priceWidth
         cell.layoutIfNeeded()
         
-        let state = ModelSyncState.modelState(modelChangeDate: receipt.lastLocalModificationTime)
+        var state: ModelSyncState = .disabled
+        if receipt.attachemntType != .none {
+            state = receipt.isSynced(syncProvider: .current) ? .synced : .notSynced
+        } else {
+            state = .modelState(modelChangeDate: receipt.lastLocalModificationTime)
+        }
         cell.setState(state)
     }
 

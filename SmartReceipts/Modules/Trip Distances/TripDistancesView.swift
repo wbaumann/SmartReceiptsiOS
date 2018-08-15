@@ -32,6 +32,11 @@ class TripDistancesView: FetchedTableViewController {
         navigationItem.title = LocalizedString("distances.controller.title")
         setPresentationCellNib(DistanceCell.viewNib())
         configureUIActions()
+        
+        AppNotificationCenter.didSyncBackup
+            .subscribe(onNext: {
+                self.tableView.reloadData()
+            }).disposed(by: bag)
     }
     
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {

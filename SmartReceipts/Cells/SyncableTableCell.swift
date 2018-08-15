@@ -10,14 +10,14 @@ import UIKit
 
 enum ModelSyncState {
     case synced
-    case syncing
+    case notSynced
     case disabled
     
     func image() -> UIImage {
         switch self {
         case .synced:
             return #imageLiteral(resourceName: "cloud-check")
-        case .syncing:
+        case .notSynced:
             return #imageLiteral(resourceName: "cloud")
         case .disabled:
             return #imageLiteral(resourceName: "cloud-off")
@@ -29,7 +29,7 @@ enum ModelSyncState {
             return .disabled
         } else {
             let remoteSyncDate = BackupProvidersManager(syncProvider: .current).lastDatabaseSyncTime
-            return remoteSyncDate >= modelChangeDate ? .synced : .syncing
+            return remoteSyncDate >= modelChangeDate ? .synced : .notSynced
         }
         
     }
