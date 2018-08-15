@@ -45,6 +45,7 @@ class GoogleSyncService: SyncServiceProtocol {
             
             upload.do(onSuccess: { file in
                 self.syncMetadata.databaseSyncIdentifier = file.identifier
+                AppNotificationCenter.postDidSyncBackup()
                 self.dbLock.unlock()
             }).do(onError: { _ in
                 self.dbLock.unlock()
@@ -72,7 +73,9 @@ class GoogleSyncService: SyncServiceProtocol {
                 })
         }
         
-        upload.subscribe(onSuccess: { [unowned self] file in
+        upload.do(onSuccess: { _ in
+            AppNotificationCenter.postDidSyncBackup()
+        }).subscribe(onSuccess: { [unowned self] file in
             receipt.isSynced = true
             receipt.syncId = file.identifier!
             Database.sharedInstance().save(receipt)
@@ -90,7 +93,9 @@ class GoogleSyncService: SyncServiceProtocol {
         
         guard let syncID = receipt.getSyncId(provider: .current), !syncID.isEmpty else { return }
         GoogleDriveService.shared.deleteFile(id: syncID)
-            .subscribe(onCompleted: {
+            .do(onCompleted: {
+                AppNotificationCenter.postDidSyncBackup()
+            }).subscribe(onCompleted: {
                 Database.sharedInstance().delete(receipt)
                 Logger.debug("Delete synced receipt: \(receipt.name)")
             }, onError: { error in
@@ -103,7 +108,9 @@ class GoogleSyncService: SyncServiceProtocol {
     func replaceFile(receipt: WBReceipt) {
         guard let syncID = receipt.getSyncId(provider: .current), !syncID.isEmpty else { return }
         GoogleDriveService.shared.deleteFile(id: syncID)
-            .subscribe(onCompleted: {
+            .do(onCompleted: {
+                AppNotificationCenter.postDidSyncBackup()
+            }).subscribe(onCompleted: {
                 self.uploadFile(receipt: receipt)
                 Logger.debug("Replacing file of receipt: \(receipt.name)")
             }, onError: { error in

@@ -55,6 +55,11 @@ final class TripsView: FetchedTableViewController {
         
         configurePrivacyTooltip()
         configureDebug()
+        
+        AppNotificationCenter.didSyncBackup
+            .subscribe(onNext: {
+               self.tableView.reloadData()
+            }).disposed(by: bag)
     }
     
     deinit {
