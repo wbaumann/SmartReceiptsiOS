@@ -39,6 +39,14 @@ class NoOpBackupProvider: BackupProvider {
         return Completable.empty()
     }
     
+    func downloadDatabase(remoteBackupMetadata: RemoteBackupMetadata) -> Single<Database> {
+        return Single<Database>.never()
+    }
+    
+    func downloadReceiptFile(syncId: String) -> Single<BackupReceiptFile> {
+        return Single<BackupReceiptFile>.never()
+    }
+    
     func downloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult> {
         return Single<BackupFetchResult>.never()
     }

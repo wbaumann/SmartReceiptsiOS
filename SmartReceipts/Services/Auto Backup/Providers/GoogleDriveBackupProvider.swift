@@ -62,6 +62,27 @@ class GoogleDriveBackupProvider: BackupProvider {
         })
     }
     
+    func downloadDatabase(remoteBackupMetadata: RemoteBackupMetadata) -> Single<Database> {
+        return GoogleDriveService.shared.getFiles(inFolderId: remoteBackupMetadata.id)
+            .flatMap({ fileList -> Single<Database> in
+                guard let dbFile = fileList.files?.filter({ $0.name == SYNC_DB_NAME }).first else { return Single<Database>.never() }
+                return GoogleDriveService.shared.downloadFile(id: dbFile.identifier!)
+                    .map({ $0.data })
+                    .map({ data -> Database in
+                        let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(SYNC_DB_NAME)!
+                        try? data.write(to: fileURL)
+                        return Database(databasePath: fileURL.absoluteString, tripsFolderPath: FileManager.tripsDirectoryPath)!
+                    })
+            })
+    }
+    
+    func downloadReceiptFile(syncId: String) -> Single<BackupReceiptFile> {
+        return GoogleDriveService.shared.downloadFile(id: syncId)
+            .map({ fileData -> BackupReceiptFile in
+                return ("", fileData.data)
+            })
+    }
+    
     func downloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult> {
         return fetchBackup(remoteBackupMetadata: remoteBackupMetadata, debug: false)
     }
@@ -85,13 +106,11 @@ class GoogleDriveBackupProvider: BackupProvider {
                 guard let receiptFiles = fileList.files?.filter({ $0.name != SYNC_DB_NAME }) else { return Single<BackupFetchResult>.never() }
                 return GoogleDriveService.shared.downloadFile(id: dbFile.identifier!).asObservable()
                     .map({ $0.data })
-                    .map({ data -> String in
+                    .map({ data -> Database in
                         let dbName = debug ? "\(dbFile.identifier!)_\(SYNC_DB_NAME)" : SYNC_DB_NAME
                         let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(dbName)!
                         try? data.write(to: fileURL)
-                        return fileURL.absoluteString
-                    }).map({ dbPath -> Database in
-                        return Database(databasePath: dbPath, tripsFolderPath: FileManager.tripsDirectoryPath)!
+                        return Database(databasePath: fileURL.absoluteString, tripsFolderPath: FileManager.tripsDirectoryPath)!
                     }).flatMap({ database -> Observable<BackupFetchResult> in
                         var observables = [Observable<BackupReceiptFile>]()
                         for file in receiptFiles {

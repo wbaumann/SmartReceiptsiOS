@@ -102,31 +102,41 @@ class BackupInteractor: Interactor {
     
     func importBackup(_ backup: RemoteBackupMetadata, overwrite: Bool) {
         weak var hud = PendingHUDView.showFullScreen()
-        backupManager?.restoreBackup(remoteBackupMetadata: backup, overwriteExistingData: overwrite)
-            .andThen(backupManager.downloadAllData(remoteBackupMetadata: backup))
-            .flatMap({ result -> Single<BackupFetchResult> in
-                return result.database.open() ? .just(result) : .error(DatabaseError.openFailed)
-            }).subscribe(onSuccess: { result in
-                if !result.database.open() { return }
-                let database = result.database
+        backupManager.downloadDatabase(remoteBackupMetadata: backup)
+            .map({ database -> [WBReceipt] in
+                let path = NSTemporaryDirectory().asNSString.appendingPathComponent(SYNC_DB_NAME)
+                Database.sharedInstance().importData(fromBackup: path, overwrite: overwrite)
+                if !database.open() { return [] }
                 let trips = database.allTrips() as! [WBTrip]
+                var result = [WBReceipt]()
                 for trip in trips {
                     let receipts = database.allReceipts(for: trip) as! [WBReceipt]
-                    for receipt in receipts {
-                        if !receipt.syncId.isEmpty {
-                            let path = receipt.imageFilePath(for: trip)
-                            let files = result.files
-                            guard let file = files.filter({ path.contains($0.filename) }).first else { continue }
-                            let folder = path.asNSString.deletingLastPathComponent
-                            let fm = FileManager.default
-                            if !fm.fileExists(atPath: folder) {
-                                try? fm.createDirectory(atPath: folder, withIntermediateDirectories: true, attributes: nil)
-                            }
-                            fm.createFile(atPath: path, contents: file.data, attributes: nil)
-                        }
-                    }
+                    result.append(contentsOf: receipts.filter({ !$0.syncId.isEmpty }))
                 }
                 database.close()
+                return result
+            }).map({ receipts -> [Observable<(WBReceipt, BackupReceiptFile)>] in
+                return receipts.map({ [unowned self] receipt in
+                    return self.backupManager.downloadReceiptFile(syncId: receipt.syncId)
+                        .asObservable()
+                        .map({ (receipt, $0) })
+                })
+            }).flatMap({ observables -> Single<Void> in
+                return Observable<(WBReceipt, BackupReceiptFile)>.merge(observables)
+                    .map({ downloaded -> Void in
+                        let receipt = downloaded.0
+                        let file = downloaded.1
+                        
+                        let path = receipt.imageFilePath(for: receipt.trip)
+                        let folder = path.asNSString.deletingLastPathComponent
+                        let fm = FileManager.default
+                        if !fm.fileExists(atPath: folder) {
+                            try? fm.createDirectory(atPath: folder, withIntermediateDirectories: true, attributes: nil)
+                        }
+                        fm.createFile(atPath: path, contents: file.data, attributes: nil)
+                    }).toArray().map({ _ -> Void in }).asSingle()
+            }).asCompletable()
+            .subscribe(onCompleted: {
                 hud?.hide()
                 Toast.show(LocalizedString("toast_import_complete"))
             }, onError: { [weak self] _ in

@@ -65,6 +65,21 @@ protocol BackupProvider {
      */
     func clearCurrentBackupConfiguration() -> Completable
     
+    
+    /**
+     * Downloads a database from backup
+     *
+     * @return a Single with Database from backup
+     */
+    func downloadDatabase(remoteBackupMetadata: RemoteBackupMetadata) -> Single<Database>
+    
+    /**
+     * Downloads a receipt file by sync id
+     *
+     * @return a Single with BackupReceiptFile by sync id
+     */
+    func downloadReceiptFile(syncId: String) -> Single<BackupReceiptFile>
+    
     /**
      * Downloads an existing backup to a specific location
      *
