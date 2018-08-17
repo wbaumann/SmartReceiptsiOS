@@ -47,6 +47,14 @@ class BackupProvidersManager: BackupProvider {
         return backupProvider.clearCurrentBackupConfiguration()
     }
     
+    func downloadDatabase(remoteBackupMetadata: RemoteBackupMetadata) -> Single<Database> {
+        return backupProvider.downloadDatabase(remoteBackupMetadata:remoteBackupMetadata)
+    }
+    
+    func downloadReceiptFile(syncId: String) -> Single<BackupReceiptFile> {
+        return backupProvider.downloadReceiptFile(syncId: syncId)
+    }
+    
     func downloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult> {
         return backupProvider.downloadAllData(remoteBackupMetadata:remoteBackupMetadata)
     }
