@@ -134,7 +134,7 @@ class BackupInteractor: Interactor {
                             try? fm.createDirectory(atPath: folder, withIntermediateDirectories: true, attributes: nil)
                         }
                         fm.createFile(atPath: path, contents: file.data, attributes: nil)
-                    }).toArray().map({ _ -> Void in }).asSingle()
+                    }).toArray().asVoid().asSingle()
             }).asCompletable()
             .subscribe(onCompleted: {
                 hud?.hide()
@@ -165,7 +165,7 @@ class BackupInteractor: Interactor {
     }
     
     func purchaseSubscription() -> Observable<Void> {
-        return purchaseService.purchaseSubscription().map({ _ -> Void in })
+        return purchaseService.purchaseSubscription().asVoid()
     }
     
     func saveCurrent(provider: SyncProvider) {

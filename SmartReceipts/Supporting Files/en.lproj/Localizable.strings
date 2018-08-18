@@ -520,3 +520,6 @@
 "EXPORT_ERROR" = "Error: Failed to properly export your data.";
 
 "receipt_file_picker_cant_import_error" = "Can't import selected file";
+
+"automatic_backups_info_dialog_message" = "Automatic backups are not currently enabled";
+"automatic_backups_info_dialog_positive" = "Tap to Configure";

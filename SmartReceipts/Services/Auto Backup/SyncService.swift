@@ -47,13 +47,11 @@ class SyncService {
     
     private func configurePreferencesListeners() {
         AppNotificationCenter.preferencesWiFiOnly
-            .skipFirst()
             .subscribe(onNext: { wifiOnly in
                 self.syncReceipts()
             }).disposed(by: bag)
         
         AppNotificationCenter.syncProvider
-            .skipFirst()
             .subscribe(onNext: { provider in
                 self.updateSyncServiceIfNeeded()
                 self.syncService?.syncDatabase()

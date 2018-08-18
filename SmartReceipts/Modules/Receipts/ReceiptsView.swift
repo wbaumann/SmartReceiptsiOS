@@ -55,7 +55,9 @@ final class ReceiptsView: FetchedTableViewController {
         configureFloatyButton()
         subscribe()
         
-        AppNotificationCenter.didSyncBackup
+        
+        let notifications = [AppNotificationCenter.syncProvider.asVoid(), AppNotificationCenter.didSyncBackup]
+        Observable<Void>.merge(notifications)
             .subscribe(onNext: {
                 self.tableView.reloadData()
             }).disposed(by: bag)
@@ -93,7 +95,7 @@ final class ReceiptsView: FetchedTableViewController {
         
         var state: ModelSyncState = .disabled
         if receipt.attachemntType != .none {
-            state = receipt.isSynced(syncProvider: .current) ? .synced : .notSynced
+            state = receipt.isSynced(syncProvider: .last) ? .synced : .notSynced
         } else {
             state = .modelState(modelChangeDate: receipt.lastLocalModificationTime)
         }

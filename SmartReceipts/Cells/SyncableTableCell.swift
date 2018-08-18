@@ -7,6 +7,42 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+
+class SyncableTableCell: UITableViewCell {
+    @IBOutlet private weak var syncButton: UIButton!
+    private var bag = DisposeBag()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bag = DisposeBag()
+    }
+    
+    func setState(_ state: ModelSyncState) {
+        syncButton.setImage(state.image(), for: .normal)
+        syncButton.isUserInteractionEnabled = state == .disabled
+        syncButton.rx.tap.subscribe(onNext: { [weak self] in
+            self?.openSyncStateDialog()
+        }).disposed(by: bag)
+    }
+    
+    private func openSyncStateDialog() {
+        let root = UIApplication.shared.keyWindow!.rootViewController
+        let alert = UIAlertController(title: nil, message: LocalizedString("automatic_backups_info_dialog_message"), preferredStyle: .alert)
+        alert.addAction(.init(title: LocalizedString("automatic_backups_info_dialog_positive"), style: .default, handler: { _ in
+            let backupModuleView = AppModules.backup.build().view
+            let navController = UINavigationController(rootViewController: backupModuleView)
+            navController.modalTransitionStyle = .coverVertical
+            navController.modalPresentationStyle = .formSheet
+            root?.present(navController, animated: true, completion: nil)
+        }))
+        alert.addAction(.init(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
+        
+        root?.present(alert, animated: true, completion: nil)
+    }
+}
+
 
 enum ModelSyncState {
     case synced
@@ -25,21 +61,13 @@ enum ModelSyncState {
     }
     
     static func modelState(modelChangeDate: Date) -> ModelSyncState {
-        if SyncProvider.current == .none {
-            return .disabled
+        let remoteSyncDate = BackupProvidersManager(syncProvider: .last).lastDatabaseSyncTime
+        var state = ModelSyncState.notSynced
+        if remoteSyncDate >= modelChangeDate{
+            state = .synced
         } else {
-            let remoteSyncDate = BackupProvidersManager(syncProvider: .current).lastDatabaseSyncTime
-            return remoteSyncDate >= modelChangeDate ? .synced : .notSynced
+            state = SyncProvider.current == .none ? .disabled : .notSynced
         }
-        
+        return state
     }
 }
-
-class SyncableTableCell: UITableViewCell {
-    @IBOutlet private weak var syncButton: UIButton!
-    
-    func setState(_ state: ModelSyncState) {
-        syncButton.setImage(state.image(), for: .normal)
-    }
-}
-

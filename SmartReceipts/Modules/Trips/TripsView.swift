@@ -56,7 +56,8 @@ final class TripsView: FetchedTableViewController {
         configurePrivacyTooltip()
         configureDebug()
         
-        AppNotificationCenter.didSyncBackup
+        let notifications = [AppNotificationCenter.syncProvider.asVoid(), AppNotificationCenter.didSyncBackup]
+        Observable<Void>.merge(notifications)
             .subscribe(onNext: {
                self.tableView.reloadData()
             }).disposed(by: bag)

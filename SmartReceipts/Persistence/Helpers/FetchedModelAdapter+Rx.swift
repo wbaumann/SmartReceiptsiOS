@@ -40,7 +40,7 @@ extension Reactive where Base : FetchedModelAdapter {
     var willChangeContent: Observable<Void> {
         return delegate
             .methodInvoked(#selector(FetchedModelAdapterDelegate.willChangeContent))
-            .map { _ -> Void in }
+            .asVoid()
             .asObservable()
     }
     
@@ -55,7 +55,7 @@ extension Reactive where Base : FetchedModelAdapter {
     var didChangeContent: Observable<Void> {
          return delegate
             .methodInvoked(#selector(FetchedModelAdapterDelegate.didChangeContent))
-            .map { _ -> Void in }
+            .asVoid()
             .asObservable()
     }
     
@@ -94,7 +94,7 @@ extension Reactive where Base : FetchedModelAdapter {
     var reloadData: Observable<Void> {
         return delegate
             .methodInvoked(#selector(FetchedModelAdapterDelegate.reloadData))
-            .map { _ -> Void in }
+            .asVoid()
             .asObservable()
     }
 }
