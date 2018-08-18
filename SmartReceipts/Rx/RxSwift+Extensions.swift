@@ -28,4 +28,8 @@ extension Observable {
     func skipFirst() -> Observable<Element> {
         return skip(1)
     }
+    
+    func asVoid() -> Observable<Void> {
+        return map({ _ -> Void in })
+    }
 }

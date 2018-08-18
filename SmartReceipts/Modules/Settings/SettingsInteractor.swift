@@ -31,7 +31,7 @@ class SettingsInteractor: Interactor {
     
     func purchaseSubscription() -> Observable<Void> {
         AnalyticsManager.sharedManager.record(event: Event.Navigation.SmartReceiptsPlusOverflow)
-        return purchaseService.purchaseSubscription().map({ _ -> Void in })
+        return purchaseService.purchaseSubscription().asVoid()
     }
     
     func subscriptionValidation() -> Observable<SubscriptionValidation> {

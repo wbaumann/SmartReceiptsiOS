@@ -10,6 +10,7 @@ import Foundation
 import RxCocoa
 
 fileprivate let SYNC_PROVIDER_KEY = "sync_provider_key"
+fileprivate let LAST_SYNC_PROVIDER_KEY = "last_sync_provider_key"
 
 enum SyncProvider: Int {
     
@@ -18,11 +19,21 @@ enum SyncProvider: Int {
     static var current: SyncProvider {
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: SYNC_PROVIDER_KEY)
+            if newValue != .none {
+                UserDefaults.standard.set(newValue.rawValue, forKey: LAST_SYNC_PROVIDER_KEY)
+            }
             AppNotificationCenter.postSyncProviderChanged(newValue)
         }
         
         get {
             let rawValue = UserDefaults.standard.integer(forKey: SYNC_PROVIDER_KEY)
+            return SyncProvider(rawValue: rawValue)!
+        }
+    }
+    
+    static var last: SyncProvider {
+        get {
+            let rawValue = UserDefaults.standard.integer(forKey: LAST_SYNC_PROVIDER_KEY)
             return SyncProvider(rawValue: rawValue)!
         }
     }
