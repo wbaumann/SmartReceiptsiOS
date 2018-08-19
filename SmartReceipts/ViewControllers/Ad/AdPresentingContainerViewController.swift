@@ -42,8 +42,7 @@ class AdPresentingContainerViewController: UIViewController {
                 _ = self.purchaseService.purchaseSubscription().subscribe()
             }).disposed(by: bag)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(checkAdsStatus),
-                    name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkAdsStatus), name: .SmartReceiptsAdsRemoved, object: nil)
     }
     
     

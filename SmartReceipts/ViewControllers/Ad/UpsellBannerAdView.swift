@@ -11,7 +11,11 @@ import RxCocoa
 import RxSwift
 
 class UpsellBannerAdView: UIView {
-    private(set) var bannerTap: Observable<Void>!
+    private weak var button: UIButton!
+    
+    var bannerTap: Observable<Void> {
+        return button.rx.tap.asObservable()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,6 +35,7 @@ class UpsellBannerAdView: UIView {
         backgroundColor = AppTheme.primaryColor
         
         let button = UIButton(frame: CGRect.zero)
+        
         addSubview(button)
         
         button.setTitle(LocalizedString("missing_ad_suggest_removal_upsell_ios"), for: .normal)
@@ -45,6 +50,6 @@ class UpsellBannerAdView: UIView {
         button.topAnchor.constraint(equalTo: topAnchor).isActive = true
         button.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        bannerTap = button.rx.tap.asObservable()
+        self.button = button
     }
 }

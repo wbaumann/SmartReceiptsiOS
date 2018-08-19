@@ -42,10 +42,8 @@ final class TripsView: FetchedTableViewController {
         setPresentationCellNib(TripCell.viewNib())
         navigationController?.setToolbarHidden(true, animated: false)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved),
-                        name: NSNotification.Name.SmartReceiptsSettingsSaved, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(fetchObjects),
-                        name: NSNotification.Name.SmartReceiptsImport, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved), name: .SmartReceiptsSettingsSaved, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchObjects), name: .SmartReceiptsImport, object: nil)
         
         lastDateSeparator = WBPreferences.dateSeparator()
         
