@@ -95,8 +95,10 @@
 
     NSArray *receipts = [importFrom allReceiptsForTrip:trip];
     for (WBReceipt *receipt in receipts) {
-        [receipt setObjectId:0];
-        [self saveReceipt:receipt];
+        if (!receipt.isMarkedForDeletion) {
+            [receipt setObjectId:0];
+            [self saveReceipt:receipt];
+        }
     }
 
     NSArray *distances = [importFrom allDistancesForTrip:trip];
