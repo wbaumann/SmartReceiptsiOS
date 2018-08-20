@@ -115,27 +115,28 @@ class BackupInteractor: Interactor {
                 }
                 database.close()
                 return result
-            }).map({ receipts -> [Observable<(WBReceipt, BackupReceiptFile)>] in
-                return receipts.map({ [unowned self] receipt in
+            }).asObservable()
+            .flatMap({ receipts -> Observable<(WBReceipt, BackupReceiptFile)> in
+                return .merge(receipts.map({ [unowned self] receipt in
                     return self.backupManager.downloadReceiptFile(syncId: receipt.syncId)
                         .asObservable()
                         .map({ (receipt, $0) })
-                })
-            }).flatMap({ observables -> Single<Void> in
-                return Observable<(WBReceipt, BackupReceiptFile)>.merge(observables)
-                    .map({ downloaded -> Void in
-                        let receipt = downloaded.0
-                        let file = downloaded.1
-                        
-                        let path = receipt.imageFilePath(for: receipt.trip)
-                        let folder = path.asNSString.deletingLastPathComponent
-                        let fm = FileManager.default
-                        if !fm.fileExists(atPath: folder) {
-                            try? fm.createDirectory(atPath: folder, withIntermediateDirectories: true, attributes: nil)
-                        }
-                        fm.createFile(atPath: path, contents: file.data, attributes: nil)
-                    }).toArray().asVoid().asSingle()
-            }).asCompletable()
+                }))
+            }).map({ downloaded -> Void in
+                let receipt = downloaded.0
+                let file = downloaded.1
+                
+                let path = receipt.imageFilePath(for: receipt.trip)
+                let folder = path.asNSString.deletingLastPathComponent
+                let fm = FileManager.default
+                if !fm.fileExists(atPath: folder) {
+                    try? fm.createDirectory(atPath: folder, withIntermediateDirectories: true, attributes: nil)
+                }
+                fm.createFile(atPath: path, contents: file.data, attributes: nil)
+            }).toArray()
+            .asVoid()
+            .asSingle()
+            .asCompletable()
             .subscribe(onCompleted: {
                 hud?.hide()
                 Toast.show(LocalizedString("toast_import_complete"))
