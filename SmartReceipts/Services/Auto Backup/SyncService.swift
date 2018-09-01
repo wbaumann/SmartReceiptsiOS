@@ -73,6 +73,10 @@ class SyncService {
         }
     }
     
+    func trySyncDatabase() {
+        syncService?.syncDatabase()
+    }
+    
     // MARK: - Private
     
     private func syncReceipts() {
@@ -107,6 +111,13 @@ class SyncService {
     
     func getCriticalSyncErrorStream() -> Observable<SyncError?> {
         return syncErrorsSubject.asObservable()
+    }
+    
+    func markErrorResolved(syncErrorType: SyncError) {
+        guard let currentError = try? syncErrorsSubject.value() else { return }
+        if syncErrorType == currentError {
+            syncErrorsSubject.onNext(nil)
+        }
     }
     
     private func updateSyncServiceIfNeeded() {

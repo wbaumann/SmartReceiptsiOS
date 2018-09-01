@@ -99,7 +99,10 @@ class GoogleDriveBackupProvider: BackupProvider {
     }
     
     func markErrorResolved(syncErrorType: SyncError) {
-        
+        guard let currentError = try? syncErrorsSubject.value() else { return }
+        if syncErrorType == currentError {
+            syncErrorsSubject.onNext(nil)
+        }
     }
     
     // MARK: - Private

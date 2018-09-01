@@ -71,10 +71,15 @@ class BackupProvidersManager: BackupProvider {
         let syncServiceErrors = SyncService.shared.getCriticalSyncErrorStream().filter({ $0 != nil }).map({ $0! })
         let observables = [backupProvider.getCriticalSyncErrorStream(), syncServiceErrors]
         Observable<SyncError>.merge(observables).bind(to: syncErrorsSubject).disposed(by: bag)
-        return syncErrorsSubject.filter({ $0 != nil }).map({ $0! }).asObservable()
+        return syncErrorsSubject.filter({ $0 != nil }).map({ $0! })
     }
     
     func markErrorResolved(syncErrorType: SyncError) {
         backupProvider.markErrorResolved(syncErrorType: syncErrorType)
+        SyncService.shared.markErrorResolved(syncErrorType: syncErrorType)
+        guard let currentError = try? syncErrorsSubject.value() else { return }
+        if syncErrorType == currentError {
+            syncErrorsSubject.onNext(nil)
+        }
     }
 }

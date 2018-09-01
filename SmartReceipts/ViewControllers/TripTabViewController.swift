@@ -68,7 +68,12 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
             if error == .userRevokedRemoteRights {
                 self?.showBackupsScreen()
             } else if error == .userDeletedRemoteData {
-                _ = BackupProvidersManager.shared.clearCurrentBackupConfiguration().subscribe()
+                _ = BackupProvidersManager.shared.clearCurrentBackupConfiguration()
+                    .subscribe(onCompleted: {
+                        SyncService.shared.trySyncDatabase()
+                    })
+            } else if error == .noRemoteDiskSpace {
+                BackupProvidersManager.shared.markErrorResolved(syncErrorType: .noRemoteDiskSpace)
             }
         }).disposed(by: bag)
         
