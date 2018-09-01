@@ -10,6 +10,8 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+let TOOLTIP_INSETS = UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0)
+
 class TooltipView: UIView {
     
     static let HEIGHT: CGFloat = 44
@@ -30,7 +32,14 @@ class TooltipView: UIView {
         tooltip.widthFromScreen = screenWidth
         tooltip.offset = offset
         tooltip.textButton.setTitle(text, for: .normal)
+        
         view.addSubview(tooltip)
+        return tooltip
+    }
+    
+    static func showErrorOn(view: UIView, text: String, offset: CGPoint = CGPoint.zero, screenWidth: Bool = false) -> TooltipView {
+        let tooltip = showOn(view: view, text: text, offset: offset, screenWidth: screenWidth)
+        tooltip.backgroundColor = AppTheme.errorColor
         return tooltip
     }
     
@@ -53,12 +62,13 @@ class TooltipView: UIView {
     }
     
     private func commonInit() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didRotateScreen), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didRotateScreen), name: .UIDeviceOrientationDidChange, object: nil)
     }
     
     private func configureView() {
         let font = UIFont.boldSystemFont(ofSize: 13)
         let frames = calculateFrames()
+        backgroundColor = AppTheme.accentColor
         
         textButton = UIButton(frame: frames.textButtonFrame)
         textButton.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -71,7 +81,6 @@ class TooltipView: UIView {
         
         addSubview(textButton)
         addSubview(closeButton)
-        backgroundColor = AppTheme.accentColor
         
         rx.close.subscribe(onNext: { [unowned self] in
             self.close()

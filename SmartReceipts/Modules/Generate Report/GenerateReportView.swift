@@ -53,9 +53,9 @@ final class GenerateReportView: UserInterface {
             }
         }).disposed(by: bag)
         
-        settingsTapObservable.subscribe { [weak self] _ in
+        settingsTapObservable.subscribe(onNext: { [weak self] _ in
             self?.presenter.presentOutputSettings()
-        }.disposed(by: bag)
+        }).disposed(by: bag)
     }
 }
 
@@ -64,6 +64,12 @@ extension GenerateReportView: GenerateReportViewInterface {
     
     func hideHud() {
         hud?.hide()
+    }
+}
+
+extension GenerateReportView: InsetContent {
+    func apply(inset: UIEdgeInsets) {
+        formView?.tableView.contentInset = inset
     }
 }
 

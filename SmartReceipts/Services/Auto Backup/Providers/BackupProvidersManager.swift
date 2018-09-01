@@ -10,22 +10,26 @@ import Foundation
 import RxSwift
 
 class BackupProvidersManager: BackupProvider {
+    static let shared = BackupProvidersManager()
     
-    var backupProvider: BackupProvider
+    private var bag = DisposeBag()
+    private var backupProvider: BackupProvider
+    private var syncErrorsSubject = BehaviorSubject<SyncError?>(value: nil)
     
-    init(syncProvider: SyncProvider) {
-        backupProvider = BackupProviderFactory().makeBackupProvider(syncProvider: syncProvider)
-    }
-    
-    init(backupProvider: BackupProvider) {
-        self.backupProvider = backupProvider
+    private init() {
+        backupProvider = BackupProviderFactory().makeBackupProvider(syncProvider: .current)
+        AppNotificationCenter.syncProvider.subscribe(onNext: { provider in
+            self.backupProvider = BackupProviderFactory().makeBackupProvider(syncProvider: .current)
+        }).disposed(by: bag)
     }
     
     var deviceSyncId: String? {
         return backupProvider.deviceSyncId
     }
     
-    var lastDatabaseSyncTime: Date { return backupProvider.lastDatabaseSyncTime }
+    var lastDatabaseSyncTime: Date {
+        return backupProvider.lastDatabaseSyncTime
+    }
     
     func deinitialize() {
         
@@ -63,11 +67,14 @@ class BackupProvidersManager: BackupProvider {
         return backupProvider.debugDownloadAllData(remoteBackupMetadata:remoteBackupMetadata)
     }
     
-    func getCriticalSyncErrorStream() -> Observable<CriticalSyncError> {
-        return backupProvider.getCriticalSyncErrorStream()
+    func getCriticalSyncErrorStream() -> Observable<SyncError> {
+        let syncServiceErrors = SyncService.shared.getCriticalSyncErrorStream().filter({ $0 != nil }).map({ $0! })
+        let observables = [backupProvider.getCriticalSyncErrorStream(), syncServiceErrors]
+        Observable<SyncError>.merge(observables).bind(to: syncErrorsSubject).disposed(by: bag)
+        return syncErrorsSubject.filter({ $0 != nil }).map({ $0! }).asObservable()
     }
     
-    func markErrorResolved(syncErrorType: SyncErrorType) {
+    func markErrorResolved(syncErrorType: SyncError) {
         backupProvider.markErrorResolved(syncErrorType: syncErrorType)
     }
 }

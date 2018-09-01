@@ -15,10 +15,9 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
     private var titleSubtitleProtocols: [TitleSubtitleProtocol?]!
-    private var reportTooltip: TooltipView?
     private let bag = DisposeBag()
-    
-    var trip: WBTrip!
+    private var trip: WBTrip!
+    private var tooltipPresenter: TooltipPresenter!
     
     required init(trip: WBTrip) {
         super.init(nibName: "TripTabViewController", bundle: nil)
@@ -35,7 +34,7 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarBackgroundColor = AppTheme.primaryColor
         settings.style.buttonBarItemBackgroundColor = AppTheme.primaryColor
         settings.style.selectedBarBackgroundColor = AppTheme.accentColor
-        settings.style.buttonBarItemFont = UIFont.systemFont(ofSize: 14)
+        settings.style.buttonBarItemFont = .systemFont(ofSize: 14)
         settings.style.selectedBarHeight = 4
         settings.style.buttonBarLeftContentInset = 16
         settings.style.buttonBarRightContentInset = 16
@@ -51,13 +50,36 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
             newCell?.label.textColor = .white
             newCell?.label.font = buttonFont
         }
+        
+        tooltipPresenter = TooltipPresenter(view: containerView.superview!, trip: trip)
+        
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateForIndex(currentIndex)
-        updateGenerateTooltip()
+        
+        tooltipPresenter.updateInsets.subscribe(onNext: { [weak self] insets in
+            self?.applyInsetsForTooltip(insets)
+        }).disposed(by: bag)
+        
+        tooltipPresenter.errorTap.subscribe(onNext: { [weak self] error in
+            if error == .userRevokedRemoteRights {
+                self?.showBackupsScreen()
+            } else if error == .userDeletedRemoteData {
+                _ = BackupProvidersManager.shared.clearCurrentBackupConfiguration().subscribe()
+            }
+        }).disposed(by: bag)
+        
+        tooltipPresenter.generateTap.subscribe(onNext: { [weak self] in
+            self?.moveToViewController(at: 2)
+        }).disposed(by: bag)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tooltipPresenter.presentGenerateIfNeeded()
     }
     
     func updateEditing() {
@@ -83,7 +105,7 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         for tsp in titleSubtitleProtocols {
             tsp?.contentChangedSubject?.subscribe(onNext: { [unowned self] in
                 self.updateForIndex(self.currentIndex)
-                self.updateGenerateTooltip()
+                self.tooltipPresenter.presentGenerateIfNeeded()
             }).disposed(by: bag)
         }
         
@@ -102,11 +124,12 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         
         if 0..<viewControllers.count ~= toIndex && progressPercentage == 1.0 {
             updateForIndex(toIndex)
-            updateGenerateTooltip()
+            tooltipPresenter.presentGenerateIfNeeded()
         }
     }
     
     //MARK: Private
+    
     private func updateForIndex(_ index: Int) {
         update(titleSubtitle: titleSubtitleProtocols[index]?.titleSubtitle ?? ("", nil))
     }
@@ -120,58 +143,30 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         }
     }
     
-    private func onGenerateTooltipClose() {
-        UIView.animate(withDuration: DEFAULT_ANIMATION_DURATION, animations: {
-            self.applyInsetsForTooltip(UIEdgeInsets.zero)
-            self.reportTooltip = nil
-        })
-    }
-    
-    private func updateGenerateTooltip() {
-        let currentIsGenerate = viewControllers.count-1 == currentIndex
-        
-        // Close tooltip if conditions are not met
-        if !TooltipService.shared.moveToGenerateTrigger(for: trip) {
-            reportTooltip?.close()
-            onGenerateTooltipClose()
-        }
-        
-        // Create tooltip if needed
-        if let text = TooltipService.shared.generateTooltip(for: trip), reportTooltip == nil, !currentIsGenerate {
-            applyInsetsForTooltip(UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0))
-            let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
-            
-            var screenWidth = false
-            executeFor(iPhone: { screenWidth = true }, iPad: { screenWidth = false })
-            reportTooltip = TooltipView.showOn(view: containerView.superview!, text: text, offset: offset, screenWidth: screenWidth)
-            
-            reportTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
-                TooltipService.shared.markMoveToGenerateDismiss()
-                self.moveToViewController(at: self.viewControllers.count-1)
-                self.reportTooltip = nil
-            }).disposed(by: bag)
-            
-            reportTooltip?.rx.close.subscribe(onNext: { [unowned self] in
-                TooltipService.shared.markMoveToGenerateDismiss()
-                self.onGenerateTooltipClose()
-            }).disposed(by: bag)
-        }
-        
-        // Close tooltip on Generate page
-        if currentIsGenerate {
-            reportTooltip?.close()
-            onGenerateTooltipClose()
-        }
-    }
-    
     private func applyInsetsForTooltip(_ inset: UIEdgeInsets) {
         for vc in viewControllers {
-            if let ftvc = vc as? FetchedTableViewController {
-                ftvc.loadViewIfNeeded()
-                ftvc.tableView.contentInset = inset
-            }
+            vc.loadViewIfNeeded()
+            (vc as? InsetContent)?.apply(inset: inset)
         }
     }
+    
+    private func showBackupsScreen() {
+        let backupModuleView = AppModules.backup.build().view
+        let navController = UINavigationController(rootViewController: backupModuleView)
+        navController.modalTransitionStyle = .coverVertical
+        navController.modalPresentationStyle = .formSheet
+        present(navController, animated: true, completion: nil)
+    }
+}
+
+extension FetchedTableViewController: InsetContent {
+    func apply(inset: UIEdgeInsets) {
+        tableView.contentInset = inset
+    }
+}
+
+protocol InsetContent {
+    func apply(inset: UIEdgeInsets)
 }
 
 extension ReceiptsView: IndicatorInfoProvider {
@@ -197,3 +192,4 @@ protocol TitleSubtitleProtocol {
     var titleSubtitle: TitleSubtitle { get }
     var contentChangedSubject: PublishSubject<Void>? { get }
 }
+

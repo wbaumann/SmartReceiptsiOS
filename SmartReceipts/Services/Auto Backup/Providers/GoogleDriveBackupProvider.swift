@@ -11,6 +11,7 @@ import RxSwift
 
 class GoogleDriveBackupProvider: BackupProvider {
     let backupMetadata = GoogleDriveSyncMetadata()
+    private var syncErrorsSubject = BehaviorSubject<SyncError?>(value: nil)
     
     var deviceSyncId: String? {
         return backupMetadata.deviceIdentifier
@@ -33,7 +34,7 @@ class GoogleDriveBackupProvider: BackupProvider {
                     result.append(DefaultRemoteBackupMetadata(file: file))
                 }
                 return result
-            })
+            }).do(onError: { [weak self] in self?.handleError($0) })
     }
     
     func restoreBackup(remoteBackupMetadata: RemoteBackupMetadata, overwriteExistingData: Bool) -> Completable {
@@ -48,10 +49,12 @@ class GoogleDriveBackupProvider: BackupProvider {
                         return Database.sharedInstance().importData(fromBackup: fileURL.path, overwrite: overwriteExistingData)
                     })
             }).asCompletable()
+            .do(onError: { [weak self] in self?.handleError($0) })
     }
     
     func deleteBackup(remoteBackupMetadata: RemoteBackupMetadata) -> Completable {
         return GoogleDriveService.shared.deleteFile(id: remoteBackupMetadata.id)
+            .do(onError: { [weak self] in self?.handleError($0) })
     }
     
     func clearCurrentBackupConfiguration() -> Completable {
@@ -73,14 +76,14 @@ class GoogleDriveBackupProvider: BackupProvider {
                         try? data.write(to: fileURL)
                         return Database(databasePath: fileURL.absoluteString, tripsFolderPath: FileManager.tripsDirectoryPath)!
                     })
-            })
+            }).do(onError: { [weak self] in self?.handleError($0) })
     }
     
     func downloadReceiptFile(syncId: String) -> Single<BackupReceiptFile> {
         return GoogleDriveService.shared.downloadFile(id: syncId)
             .map({ fileData -> BackupReceiptFile in
                 return ("", fileData.data)
-            })
+            }).do(onError: { [weak self] in self?.handleError($0) })
     }
     
     func downloadAllData(remoteBackupMetadata: RemoteBackupMetadata) -> Single<BackupFetchResult> {
@@ -91,19 +94,21 @@ class GoogleDriveBackupProvider: BackupProvider {
         return fetchBackup(remoteBackupMetadata: remoteBackupMetadata, debug: true)
     }
     
-    func getCriticalSyncErrorStream() -> Observable<CriticalSyncError> {
-        return Observable<CriticalSyncError>.empty()
+    func getCriticalSyncErrorStream() -> Observable<SyncError> {
+        return syncErrorsSubject.asObservable().filter({ $0 != nil }).map({ $0! }).asObservable()
     }
     
-    func markErrorResolved(syncErrorType: SyncErrorType) {
+    func markErrorResolved(syncErrorType: SyncError) {
         
     }
+    
+    // MARK: - Private
     
     private func fetchBackup(remoteBackupMetadata: RemoteBackupMetadata, debug: Bool) -> Single<BackupFetchResult> {
         return GoogleDriveService.shared.getFiles(inFolderId: remoteBackupMetadata.id)
             .flatMap({ fileList -> Single<BackupFetchResult> in
-                guard let dbFile = fileList.files?.filter({ $0.name == SYNC_DB_NAME }).first else { return Single<BackupFetchResult>.never() }
-                guard let receiptFiles = fileList.files?.filter({ $0.name != SYNC_DB_NAME }) else { return Single<BackupFetchResult>.never() }
+                guard let dbFile = fileList.files?.filter({ $0.name == SYNC_DB_NAME }).first else { return .never() }
+                guard let receiptFiles = fileList.files?.filter({ $0.name != SYNC_DB_NAME }) else { return .never() }
                 return GoogleDriveService.shared.downloadFile(id: dbFile.identifier!).asObservable()
                     .map({ $0.data })
                     .map({ data -> Database in
@@ -128,6 +133,11 @@ class GoogleDriveBackupProvider: BackupProvider {
                                 return BackupFetchResult(database, downloadedFiles)
                             })
                     }).asSingle()
-            })
+            }).do(onError: { [weak self] in self?.handleError($0) })
+    }
+    
+    private func handleError(_ error: Error) {
+        let syncError = SyncError.error(error)
+        syncErrorsSubject.onNext(syncError)
     }
 }

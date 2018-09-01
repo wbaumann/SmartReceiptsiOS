@@ -61,7 +61,7 @@ enum ModelSyncState {
     }
     
     static func modelState(modelChangeDate: Date) -> ModelSyncState {
-        let remoteSyncDate = BackupProvidersManager(syncProvider: .last).lastDatabaseSyncTime
+        let remoteSyncDate = BackupProviderFactory().makeBackupProvider(syncProvider: .last).lastDatabaseSyncTime
         var state = ModelSyncState.notSynced
         if remoteSyncDate >= modelChangeDate{
             state = .synced

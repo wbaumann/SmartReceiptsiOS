@@ -524,3 +524,13 @@
 
 "automatic_backups_info_dialog_message" = "Automatic backups are not currently enabled";
 "automatic_backups_info_dialog_positive" = "Tap to Configure";
+
+"drive_sync_error_no_space" = "No Available Drive Storage Space";
+"drive_sync_error_no_permissions" = "Tap to Restore Drive Permissions";
+"drive_sync_error_lost_data" = "Drive Configuration Error - Tap to Fix";
+"drive_sync_error_unknown" = "Unknown Error";
+"dialog_remote_backup_drive_restore_title" = "Drive Restoration";
+"dialog_remote_backup_drive_restore_message" = "We're having trouble syncing your data. To recover, we'd like to clear your Drive backup and re-sync. If you're seeing this message often, please reach out to us for further support.";
+"dialog_remote_backup_restore_progress" = "Clearing your backup to prepare for re-sync...";
+"dialog_remote_backup_restore_toast_success" = "Successfully cleared the backup. Re-syncing...";
+"dialog_remote_backup_restore_toast_failure" = "Failed to re-sync this backup";
