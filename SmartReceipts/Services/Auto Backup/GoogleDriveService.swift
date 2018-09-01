@@ -67,6 +67,7 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         gDriveService.authorizer = sUser.authentication.fetcherAuthorizer()
         signInSubject.onNext()
         signInSubject.onCompleted()
+        BackupProvidersManager.shared.markErrorResolved(syncErrorType: .userRevokedRemoteRights)
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

@@ -156,6 +156,8 @@ class GoogleSyncService: SyncServiceProtocol {
                     }).subscribe().disposed(by: self.bag)
             }
             return Disposables.create()
+        }).do(onSuccess: { _ in
+            BackupProvidersManager.shared.markErrorResolved(syncErrorType: .userDeletedRemoteData)
         }).do(onError: { [weak self] in self?.handleError($0) })
     }
     
