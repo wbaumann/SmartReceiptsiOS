@@ -14,15 +14,10 @@ import Toaster
 class BackupInteractor: Interactor {
     let bag = DisposeBag()
     
-    var backupManager: BackupProvidersManager!
     let purchaseService = PurchaseService()
     
-    required init() {
-        backupManager = BackupProvidersManager(syncProvider: .current)
-    }
-    
     func isCurrentDevice(backup: RemoteBackupMetadata) -> Bool {
-        return backup.syncDeviceId == backupManager.deviceSyncId
+        return backup.syncDeviceId == BackupProvidersManager.shared.deviceSyncId
     }
     
     func hasValidSubscription() -> Bool {
@@ -31,7 +26,7 @@ class BackupInteractor: Interactor {
     
     func downloadZip(_ backup: RemoteBackupMetadata) {
         weak var hud = PendingHUDView.showFullScreen()
-        backupManager.downloadAllData(remoteBackupMetadata: backup)
+        BackupProvidersManager.shared.downloadAllData(remoteBackupMetadata: backup)
             .map({ result -> URL? in
                 if !result.database.open() { return nil }
                 let tempDirPath = NSTemporaryDirectory()
@@ -72,7 +67,7 @@ class BackupInteractor: Interactor {
     
     func downloadDebugZip(_ backup: RemoteBackupMetadata) {
         weak var hud = PendingHUDView.showFullScreen()
-        backupManager.debugDownloadAllData(remoteBackupMetadata: backup)
+        BackupProvidersManager.shared.debugDownloadAllData(remoteBackupMetadata: backup)
             .map({ result -> URL? in
                 let tempDirPath = NSTemporaryDirectory()
                 var urls = [URL]()
@@ -102,7 +97,7 @@ class BackupInteractor: Interactor {
     
     func importBackup(_ backup: RemoteBackupMetadata, overwrite: Bool) {
         weak var hud = PendingHUDView.showFullScreen()
-        backupManager.downloadDatabase(remoteBackupMetadata: backup)
+        BackupProvidersManager.shared.downloadDatabase(remoteBackupMetadata: backup)
             .map({ database -> [WBReceipt] in
                 let path = NSTemporaryDirectory().asNSString.appendingPathComponent(SYNC_DB_NAME)
                 Database.sharedInstance().importData(fromBackup: path, overwrite: overwrite)
@@ -117,8 +112,8 @@ class BackupInteractor: Interactor {
                 return result
             }).asObservable()
             .flatMap({ receipts -> Observable<(WBReceipt, BackupReceiptFile)> in
-                return .merge(receipts.map({ [unowned self] receipt in
-                    return self.backupManager.downloadReceiptFile(syncId: receipt.syncId)
+                return .merge(receipts.map({ receipt in
+                    return BackupProvidersManager.shared.downloadReceiptFile(syncId: receipt.syncId)
                         .asObservable()
                         .map({ (receipt, $0) })
                 }))
@@ -148,8 +143,8 @@ class BackupInteractor: Interactor {
     
     func deleteBackup(_ backup: RemoteBackupMetadata) {
         weak var hud = PendingHUDView.showFullScreen()
-        backupManager.deleteBackup(remoteBackupMetadata: backup)
-            .andThen(backupManager.clearCurrentBackupConfiguration())
+        BackupProvidersManager.shared.deleteBackup(remoteBackupMetadata: backup)
+            .andThen(BackupProvidersManager.shared.clearCurrentBackupConfiguration())
             .subscribe(onCompleted: { [weak self] in
                 Database.sharedInstance().markAllReceiptsSynced(false)
                 self?.presenter.updateBackups()
@@ -162,7 +157,7 @@ class BackupInteractor: Interactor {
     }
     
     func getBackups() -> Single<[RemoteBackupMetadata]> {
-        return backupManager?.getRemoteBackups() ?? Single<[RemoteBackupMetadata]>.just([])
+        return BackupProvidersManager.shared.getRemoteBackups()
     }
     
     func purchaseSubscription() -> Observable<Void> {
@@ -190,7 +185,6 @@ class BackupInteractor: Interactor {
     }
     
     private func setup(provider: SyncProvider) {
-        backupManager = BackupProvidersManager(syncProvider: provider)
         SyncProvider.current = provider
         presenter.updateUI()
         presenter.updateBackups()

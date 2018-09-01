@@ -9,10 +9,6 @@
 import Foundation
 import RxSwift
 
-enum SyncErrorType {
-    case noRemoteDiskSpace, userRevokedRemoteRights, userDeletedRemoteData
-}
-
 typealias BackupReceiptFile = (filename: String, data: Data)
 typealias BackupFetchResult = (database: Database, files: [BackupReceiptFile])
 
@@ -100,14 +96,14 @@ protocol BackupProvider {
      * @return an Observable that emits CriticalSyncError instances whenever they occur,
      * allowing us to respond as appropriately for these items
      */
-    func getCriticalSyncErrorStream() -> Observable<CriticalSyncError>
+    func getCriticalSyncErrorStream() -> Observable<SyncError>
     
     /**
      * Call this method to mark this particular error as resolve
      *
      * @param syncErrorType the SyncErrorType to mark as resolved
      */
-    func markErrorResolved(syncErrorType: SyncErrorType)
+    func markErrorResolved(syncErrorType: SyncError)
     
     
 }

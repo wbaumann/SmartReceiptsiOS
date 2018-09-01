@@ -55,11 +55,11 @@ class NoOpBackupProvider: BackupProvider {
         return Single<BackupFetchResult>.never()
     }
     
-    func getCriticalSyncErrorStream() -> Observable<CriticalSyncError> {
-        return Observable<CriticalSyncError>.empty()
+    func getCriticalSyncErrorStream() -> Observable<SyncError> {
+        return Observable<SyncError>.empty()
     }
     
-    func markErrorResolved(syncErrorType: SyncErrorType) {
+    func markErrorResolved(syncErrorType: SyncError) {
         
     }
 }

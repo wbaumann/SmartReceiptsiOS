@@ -19,6 +19,8 @@ fileprivate let FOLDER_MIME_TYPE = "application/vnd.google-apps.folder"
 class GoogleDriveService: NSObject, GIDSignInDelegate {
     static let shared = GoogleDriveService()
     
+    private let spaces: String
+    
     private let gDriveService = GTLRDriveService()
     private var signInSubject = PublishSubject<Void>()
     private var signOutSubject = PublishSubject<Void>()
@@ -28,6 +30,7 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
     private override init() {
         gDriveService.shouldFetchNextPages = true
         gDriveService.isRetryEnabled = true
+        spaces = DebugStates.isDebug ? "drive" : "appDataFolder"
     }
     
     func initialize() {
@@ -75,7 +78,7 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
     func findFile(name: String) -> Single<GTLRDrive_File> {
         let query = GTLRDriveQuery_FilesList.query()
         query.q = "name='\(name)'"
-        query.spaces = DebugStates.isDebug ? "drive" : "appData"
+        query.spaces = spaces
         query.fields = "files(name, id, properties)"
         
         return Single<GTLRDrive_File>.create(subscribe: { [unowned self] single in
@@ -93,7 +96,7 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
     func getFiles(inFolderId: String) -> Single<GTLRDrive_FileList> {
         let query = GTLRDriveQuery_FilesList.query()
         query.q = "'\(inFolderId)' in parents"
-        query.spaces = DebugStates.isDebug ? "drive" : "appData"
+        query.spaces = spaces
         query.fields = "files(name, id, properties)"
         
         return Single<GTLRDrive_FileList>.create(subscribe: { [unowned self] single in
@@ -154,7 +157,7 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
             q += "and name='\(folderName)'"
         }
         query.q = q
-        query.spaces = "drive"
+        query.spaces = spaces
         query.fields = "nextPageToken, files(id, name, properties, description, modifiedTime)"
         
         return Single<GTLRDrive_FileList>.create(subscribe: { [unowned self] single in

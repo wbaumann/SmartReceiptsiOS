@@ -16,6 +16,7 @@ protocol SyncServiceProtocol {
     func uploadFile(receipt: WBReceipt)
     func deleteFile(receipt: WBReceipt)
     func replaceFile(receipt: WBReceipt)
+    func getCriticalSyncErrorStream() -> Observable<SyncError?>
 }
 
 class SyncService {
@@ -26,6 +27,7 @@ class SyncService {
     
     private var syncService: SyncServiceProtocol?
     private var syncProvider: SyncProvider?
+    private var syncErrorsSubject = BehaviorSubject<SyncError?>(value: nil)
     
     private init() {
         GoogleDriveService.shared.signInSilently()
@@ -103,6 +105,10 @@ class SyncService {
         syncService?.deleteFile(receipt: receipt)
     }
     
+    func getCriticalSyncErrorStream() -> Observable<SyncError?> {
+        return syncErrorsSubject.asObservable()
+    }
+    
     private func updateSyncServiceIfNeeded() {
         if let provider = syncProvider, provider == SyncProvider.current { return }
         switch SyncProvider.current {
@@ -114,6 +120,7 @@ class SyncService {
             network?.stopListening()
         }
         syncProvider = SyncProvider.current
+        syncService?.getCriticalSyncErrorStream().bind(to: syncErrorsSubject).disposed(by: bag)
     }
     
     // MARK: - DB Handlers

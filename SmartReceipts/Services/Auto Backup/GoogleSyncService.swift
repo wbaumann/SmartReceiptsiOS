@@ -23,6 +23,7 @@ class GoogleSyncService: SyncServiceProtocol {
     private let bag = DisposeBag()
     private let syncMetadata = GoogleDriveSyncMetadata()
     private let syncQueue = DispatchQueue(label: "sync.queue")
+    private var syncErrorsSubject = BehaviorSubject<SyncError?>(value: nil)
     
     private let dbLock = NSLock()
     func syncDatabase() {
@@ -47,7 +48,8 @@ class GoogleSyncService: SyncServiceProtocol {
                 self.syncMetadata.databaseSyncIdentifier = file.identifier
                 AppNotificationCenter.postDidSyncBackup()
                 self.dbLock.unlock()
-            }).do(onError: { _ in
+            }).do(onError: { [weak self] in self?.handleError($0) })
+            .do(onError: { _ in
                 self.dbLock.unlock()
             }).subscribe(onSuccess: { file in
                 Logger.debug("DB Synced")
@@ -75,7 +77,8 @@ class GoogleSyncService: SyncServiceProtocol {
         
         upload.do(onSuccess: { _ in
             AppNotificationCenter.postDidSyncBackup()
-        }).subscribe(onSuccess: { [unowned self] file in
+        }).do(onError: { [weak self] in self?.handleError($0) })
+        .subscribe(onSuccess: { [unowned self] file in
             receipt.isSynced = true
             receipt.syncId = file.identifier!
             Database.sharedInstance().save(receipt)
@@ -93,6 +96,7 @@ class GoogleSyncService: SyncServiceProtocol {
         
         guard let syncID = receipt.getSyncId(provider: .current), !syncID.isEmpty else { return }
         GoogleDriveService.shared.deleteFile(id: syncID)
+            .do(onError: { [weak self] in self?.handleError($0) })
             .do(onCompleted: {
                 AppNotificationCenter.postDidSyncBackup()
             }).subscribe(onCompleted: {
@@ -108,6 +112,7 @@ class GoogleSyncService: SyncServiceProtocol {
     func replaceFile(receipt: WBReceipt) {
         guard let syncID = receipt.getSyncId(provider: .current), !syncID.isEmpty else { return }
         GoogleDriveService.shared.deleteFile(id: syncID)
+            .do(onError: { [weak self] in self?.handleError($0) })
             .do(onCompleted: {
                 AppNotificationCenter.postDidSyncBackup()
             }).subscribe(onCompleted: {
@@ -118,6 +123,10 @@ class GoogleSyncService: SyncServiceProtocol {
                 Logger.error("Delete Receipt file error - \(error.localizedDescription)")
                 Logger.debug("Mark for delete receipt: \(receipt.name)")
             }).disposed(by: bag)
+    }
+    
+    func getCriticalSyncErrorStream() -> Observable<SyncError?> {
+        return syncErrorsSubject.asObservable()
     }
     
     private let folderLock = NSLock()
@@ -147,13 +156,18 @@ class GoogleSyncService: SyncServiceProtocol {
                     }).subscribe().disposed(by: self.bag)
             }
             return Disposables.create()
-        })
+        }).do(onError: { [weak self] in self?.handleError($0) })
     }
     
     private func folderCustomProperties() -> [AnyHashable: Any]? {
         var properties = [String: String]()
         properties[SYNC_UDID_PROPERTY] = syncMetadata.deviceIdentifier
         return properties
+    }
+    
+    private func handleError(_ error: Error) {
+        let syncError = SyncError.error(error)
+        syncErrorsSubject.onNext(syncError)
     }
     
 }
