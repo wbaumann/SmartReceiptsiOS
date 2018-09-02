@@ -70,7 +70,7 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
             } else if error == .userDeletedRemoteData {
                 _ = BackupProvidersManager.shared.clearCurrentBackupConfiguration()
                     .subscribe(onCompleted: {
-                        SyncService.shared.trySyncDatabase()
+                        SyncService.shared.trySyncData()
                     })
             } else if error == .noRemoteDiskSpace {
                 BackupProvidersManager.shared.markErrorResolved(syncErrorType: .noRemoteDiskSpace)

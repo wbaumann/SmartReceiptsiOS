@@ -59,6 +59,7 @@ class GoogleDriveBackupProvider: BackupProvider {
     
     func clearCurrentBackupConfiguration() -> Completable {
         return Completable.create(subscribe: { [weak self] completable -> Disposable in
+            Database.sharedInstance().markAllReceiptsSynced(false)
             self?.backupMetadata.clear()
             completable(.completed)
             return Disposables.create()

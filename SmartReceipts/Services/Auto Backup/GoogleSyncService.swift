@@ -24,6 +24,7 @@ class GoogleSyncService: SyncServiceProtocol {
     private let syncMetadata = GoogleDriveSyncMetadata()
     private let syncQueue = DispatchQueue(label: "sync.queue")
     private var syncErrorsSubject = BehaviorSubject<SyncError?>(value: nil)
+    private var receiptUploadingIds = Set<UInt>()
     
     private let dbLock = NSLock()
     func syncDatabase() {
@@ -60,10 +61,14 @@ class GoogleSyncService: SyncServiceProtocol {
     }
     
     func uploadFile(receipt: WBReceipt) {
+        if receiptUploadingIds.contains(receipt.objectId) { return }
+        
         let name = receipt.imageFileName()
         let mime = receipt.attachemntType == .pdf ? DB_PDF_MIME : "image/\(name.asNSString.pathExtension)"
         let imageFileURL = receipt.imageFilePath(for: receipt.trip).asFileURL
         guard let data = try? Data(contentsOf: imageFileURL) else { return }
+        
+        receiptUploadingIds.insert(receipt.objectId)
         
         var upload: Single<GTLRDrive_File>!
         if let folderId = syncMetadata.folderIdentifier {
@@ -75,14 +80,17 @@ class GoogleSyncService: SyncServiceProtocol {
                 })
         }
         
-        upload.do(onSuccess: { _ in
+        upload.do(onSuccess: { [weak self] _ in
             AppNotificationCenter.postDidSyncBackup()
-        }).do(onError: { [weak self] in self?.handleError($0) })
-        .subscribe(onSuccess: { [unowned self] file in
+            self?.receiptUploadingIds.remove(receipt.objectId)
+        }).do(onError: { [weak self] in
+            self?.receiptUploadingIds.remove(receipt.objectId)
+            self?.handleError($0)
+        }).subscribe(onSuccess: { [weak self] file in
             receipt.isSynced = true
             receipt.syncId = file.identifier!
             Database.sharedInstance().save(receipt)
-            self.syncDatabase()
+            self?.syncDatabase()
             Logger.debug("Synced file for receipt: \(receipt.name)")
         }).disposed(by: bag)
     }
