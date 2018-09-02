@@ -30,7 +30,7 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
     private override init() {
         gDriveService.shouldFetchNextPages = true
         gDriveService.isRetryEnabled = true
-        spaces = DebugStates.isDebug ? "drive" : "appDataFolder"
+        spaces = DebugStates.isDebug && FeatureFlags.googleDriveFolder.isEnabled ? "drive" : "appDataFolder"
     }
     
     func initialize() {

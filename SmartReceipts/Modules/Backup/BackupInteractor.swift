@@ -110,24 +110,28 @@ class BackupInteractor: Interactor {
                 }
                 database.close()
                 return result
-            }).asObservable()
-            .flatMap({ receipts -> Observable<(WBReceipt, BackupReceiptFile)> in
-                return .merge(receipts.map({ receipt in
-                    return BackupProvidersManager.shared.downloadReceiptFile(syncId: receipt.syncId)
-                        .asObservable()
-                        .map({ (receipt, $0) })
-                }))
-            }).map({ downloaded -> Void in
-                let receipt = downloaded.0
-                let file = downloaded.1
-                
-                let path = receipt.imageFilePath(for: receipt.trip)
-                let folder = path.asNSString.deletingLastPathComponent
-                let fm = FileManager.default
-                if !fm.fileExists(atPath: folder) {
-                    try? fm.createDirectory(atPath: folder, withIntermediateDirectories: true, attributes: nil)
-                }
-                fm.createFile(atPath: path, contents: file.data, attributes: nil)
+            }).asObservable().flatMap({ receipts -> Observable<WBReceipt> in
+                return receipts.asObservable()
+            }).flatMap({ receipt -> Observable<(WBReceipt, BackupReceiptFile)> in
+                return BackupProvidersManager.shared.downloadReceiptFile(syncId: receipt.syncId)
+                    .asObservable()
+                    .map({ (receipt, $0) })
+            }).flatMap({ downloaded -> Completable in
+                return .create(subscribe: { completable -> Disposable in
+                    let receipt = downloaded.0
+                    let file = downloaded.1
+                    
+                    let path = receipt.imageFilePath(for: receipt.trip)
+                    let folder = path.asNSString.deletingLastPathComponent
+                    let fm = FileManager.default
+                    if !fm.fileExists(atPath: folder) {
+                        do { try fm.createDirectory(atPath: folder, withIntermediateDirectories: true, attributes: nil) }
+                        catch { completable(.error(error)) }
+                    }
+                    let result = fm.createFile(atPath: path, contents: file.data, attributes: nil)
+                    result ? completable(.completed) : completable(.error(DiskError.createFileError))
+                    return Disposables.create()
+                })
             }).toArray()
             .asVoid()
             .asSingle()

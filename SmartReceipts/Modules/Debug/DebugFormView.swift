@@ -129,6 +129,13 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
                 hud.hide()
             }).disposed(by: self.bag)
         })
+        
+        <<< SwitchRow() { row in
+            row.title = "GoogleDrive(on) / AppFolder(off)"
+            row.value = FeatureFlags.googleDriveFolder.isEnabled
+        }.onChange({ row in
+            FeatureFlags.googleDriveFolder = Feature(row.value!)
+        })
     }
     
     var scanObserver: AnyObserver<Scan> {
