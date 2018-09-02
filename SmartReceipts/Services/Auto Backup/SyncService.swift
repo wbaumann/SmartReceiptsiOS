@@ -73,8 +73,9 @@ class SyncService {
         }
     }
     
-    func trySyncDatabase() {
+    func trySyncData() {
         syncService?.syncDatabase()
+        syncReceipts()
     }
     
     // MARK: - Private
