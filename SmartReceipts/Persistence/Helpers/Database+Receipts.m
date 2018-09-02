@@ -493,7 +493,12 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
 
 - (BOOL)markAllReceiptsSynced:(BOOL)synced {
     __block BOOL result;
-    NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET %@ = %d", ReceiptsTable.TABLE_NAME, SyncStateColumns.DRIVE_SYNC_IS_SYNCED, synced];
+    NSMutableString *query = [NSMutableString stringWithFormat:@"UPDATE %@ SET %@ = %d",
+                              ReceiptsTable.TABLE_NAME, SyncStateColumns.DRIVE_SYNC_IS_SYNCED, synced];
+    if (!synced) {
+        [query appendFormat:@", %@ = ''", SyncStateColumns.DRIVE_SYNC_ID];
+    }
+    
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         result = [db executeUpdate:query];
     }];
