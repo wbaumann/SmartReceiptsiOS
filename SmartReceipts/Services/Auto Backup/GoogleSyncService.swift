@@ -25,39 +25,18 @@ class GoogleSyncService: SyncServiceProtocol {
     private let syncQueue = DispatchQueue(label: "sync.queue")
     private var syncErrorsSubject = BehaviorSubject<SyncError?>(value: nil)
     private var receiptUploadingIds = Set<UInt>()
+    private var syncDatabaseSubject = PublishSubject<Void>()
     
-    private let dbLock = NSLock()
+    init() {
+        syncDatabaseSubject
+            .throttle(1, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                self?.uploadDatabase()
+            }).disposed(by: bag)
+    }
+    
     func syncDatabase() {
-        let dbPath = Database.sharedInstance().pathToDatabase!
-        let data = try! Data(contentsOf: URL(fileURLWithPath: dbPath))
-        
-        syncQueue.async {
-            self.dbLock.lock()
-            var upload: Single<GTLRDrive_File>!
-            if let databaseId = self.syncMetadata.databaseSyncIdentifier {
-                let file = GTLRDrive_File()
-                file.name = SYNC_DB_NAME
-                upload = GoogleDriveService.shared.updateFile(id: databaseId, file: file, data: data, mimeType: DB_MIME)
-            } else {
-                upload = self.createBackupFolder()
-                    .flatMap({ folderId -> Single<GTLRDrive_File> in
-                        return GoogleDriveService.shared.createFile(name: SYNC_DB_NAME, data: data, mimeType: DB_MIME, parent: folderId)
-                    })
-            }
-            
-            upload.do(onSuccess: { file in
-                self.syncMetadata.databaseSyncIdentifier = file.identifier
-                AppNotificationCenter.postDidSyncBackup()
-                self.dbLock.unlock()
-            }).do(onError: { [weak self] in self?.handleError($0) })
-            .do(onError: { _ in
-                self.dbLock.unlock()
-            }).subscribe(onSuccess: { file in
-                Logger.debug("DB Synced")
-            }, onError: { error in
-                Logger.error("DB Sync Error - \(error.localizedDescription)")
-            }).disposed(by: self.bag)
-        }
+        syncDatabaseSubject.onNext()
     }
     
     func uploadFile(receipt: WBReceipt) {
@@ -135,6 +114,42 @@ class GoogleSyncService: SyncServiceProtocol {
     
     func getCriticalSyncErrorStream() -> Observable<SyncError?> {
         return syncErrorsSubject.asObservable()
+    }
+    
+    // MARK: - Private
+    
+    private let dbLock = NSLock()
+    private func uploadDatabase() {
+        let dbPath = Database.sharedInstance().pathToDatabase!
+        let data = try! Data(contentsOf: URL(fileURLWithPath: dbPath))
+        
+        syncQueue.async {
+            self.dbLock.lock()
+            var upload: Single<GTLRDrive_File>!
+            if let databaseId = self.syncMetadata.databaseSyncIdentifier {
+                let file = GTLRDrive_File()
+                file.name = SYNC_DB_NAME
+                upload = GoogleDriveService.shared.updateFile(id: databaseId, file: file, data: data, mimeType: DB_MIME)
+            } else {
+                upload = self.createBackupFolder()
+                    .flatMap({ folderId -> Single<GTLRDrive_File> in
+                        return GoogleDriveService.shared.createFile(name: SYNC_DB_NAME, data: data, mimeType: DB_MIME, parent: folderId)
+                    })
+            }
+            
+            upload.do(onSuccess: { file in
+                self.syncMetadata.databaseSyncIdentifier = file.identifier
+                AppNotificationCenter.postDidSyncBackup()
+                self.dbLock.unlock()
+            }).do(onError: { [weak self] in self?.handleError($0) })
+                .do(onError: { _ in
+                    self.dbLock.unlock()
+                }).subscribe(onSuccess: { file in
+                    Logger.debug("DB Synced")
+                }, onError: { error in
+                    Logger.error("DB Sync Error - \(error.localizedDescription)")
+                }).disposed(by: self.bag)
+        }
     }
     
     private let folderLock = NSLock()
