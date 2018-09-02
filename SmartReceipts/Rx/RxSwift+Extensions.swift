@@ -33,3 +33,15 @@ extension Observable {
         return map({ _ -> Void in })
     }
 }
+
+extension Array {
+    func asObservable() -> Observable<Element> {
+        return .create({ observer -> Disposable in
+            for element in self {
+                observer.onNext(element)
+            }
+            observer.onCompleted()
+            return Disposables.create()
+        })
+    }
+}

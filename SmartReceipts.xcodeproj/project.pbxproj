@@ -87,6 +87,7 @@
 		714104E71FF43D7700C334C5 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714104DD1FF43D7700C334C5 /* TooltipView.swift */; };
 		714104E81FF43D7700C334C5 /* WBDynamicPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 714104DE1FF43D7700C334C5 /* WBDynamicPicker.m */; };
 		714104EA1FF43F1500C334C5 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714104E91FF43F1500C334C5 /* CircleButton.swift */; };
+		71437D6A213BD29600EC8542 /* CustomErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71437D69213BD29600EC8542 /* CustomErrors.swift */; };
 		714788462083CE6500FA5A76 /* PurchaseServiceCustomMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714788452083CE6500FA5A76 /* PurchaseServiceCustomMock.swift */; };
 		714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901C01F0598B900772B6F /* CurrencyExchangeService.swift */; };
 		714A9A731FCD9A27000A025B /* BackupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A9A721FCD9A27000A025B /* BackupTests.swift */; };
@@ -676,6 +677,7 @@
 		714104DD1FF43D7700C334C5 /* TooltipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		714104DE1FF43D7700C334C5 /* WBDynamicPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDynamicPicker.m; sourceTree = "<group>"; };
 		714104E91FF43F1500C334C5 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleButton.swift; path = SmartReceipts/Views/CircleButton.swift; sourceTree = SOURCE_ROOT; };
+		71437D69213BD29600EC8542 /* CustomErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrors.swift; sourceTree = "<group>"; };
 		714788452083CE6500FA5A76 /* PurchaseServiceCustomMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseServiceCustomMock.swift; sourceTree = "<group>"; };
 		714901BB1F05632200772B6F /* PaymentMethodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTests.swift; sourceTree = "<group>"; };
 		714901C01F0598B900772B6F /* CurrencyExchangeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeService.swift; sourceTree = "<group>"; };
@@ -1653,6 +1655,7 @@
 				EA3CF09D1AE7C45C00B14B73 /* Constants.m */,
 				A79FDC701CEA0AB600328DBB /* Global.swift */,
 				71E7303E1FF7E9C100471287 /* BlockTypes.swift */,
+				71437D69213BD29600EC8542 /* CustomErrors.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -3417,6 +3420,7 @@
 				EA07BF661AF51854004D17F6 /* FetchedModelAdapter.m in Sources */,
 				716138C51FD1CA6700C73FB9 /* PDFPageRenderView.swift in Sources */,
 				71FE9FF41F477F620043E7B4 /* FetchedTableViewController.swift in Sources */,
+				71437D6A213BD29600EC8542 /* CustomErrors.swift in Sources */,
 				EA07BF561AF4D129004D17F6 /* DatabaseQueryBuilder.m in Sources */,
 				A78214FF1CFFECB000FD644A /* Secrets.swift in Sources */,
 				EA888A761AFA3D3F00DF2AE6 /* NumberInputValidation.m in Sources */,
