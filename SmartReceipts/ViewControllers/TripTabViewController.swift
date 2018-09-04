@@ -81,7 +81,9 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
             self?.moveToViewController(at: 2)
         }).disposed(by: bag)
         
-        tooltipPresenter.reminderTap.subscribe(onNext: { [weak self] in
+        tooltipPresenter.reminderTap.do(onNext: {
+            AnalyticsManager.sharedManager.record(event: Event.clickedBackupReminderTip())
+        }).subscribe(onNext: { [weak self] in
             self?.showBackupsScreen()
         }).disposed(by: bag)
     }

@@ -123,7 +123,8 @@ public extension Event {
     }
     
     struct Informational {
-        static let ConfigureReport = Event(category: Category.Reports, name: "ConfigureReports")
+        static let ConfigureReport = Event(category: Category.Informational, name: "ConfigureReports")
+        static let ClickedBackupReminderTip = Event(category: Category.Informational, name: "ClickedBackupReminderTip")
     }
     
     struct OCR {
@@ -193,6 +194,7 @@ public extension Event {
     
     // MARK: - Event.Informational (WBGenerateViewController)
     class func informationalConfigureReport() -> Event {return Event.Informational.ConfigureReport}
+    class func clickedBackupReminderTip() -> Event {return Event.Informational.ClickedBackupReminderTip}
     
     // MARK: - Event.OCR (ScanService)
     class func ocrRequestStarted() -> Event {return Event.OCR.RequestStarted}

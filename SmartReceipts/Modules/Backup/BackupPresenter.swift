@@ -48,8 +48,6 @@ class BackupPresenter: Presenter {
     }
     
     func hasValidSubscription() -> Bool {
-        // TODO: DEBUG!
-        return true
         return interactor.hasValidSubscription()
     }
     
