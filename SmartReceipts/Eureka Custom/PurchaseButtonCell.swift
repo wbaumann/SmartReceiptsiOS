@@ -97,7 +97,7 @@ public final class PurchaseButtonRow: Row<PurchaseButtonCell>, RowType{
             cell.activityIndicator.stopAnimating()
             let button = UIButton(type: .custom)
             button.tintColor = UIColor.red
-            button.setImage(#imageLiteral(resourceName: "724-info-toolbar"), for: .normal)
+            button.setImage(#imageLiteral(resourceName: "info"), for: .normal)
             button.sizeToFit()
             cell.accessoryView = button
             return button.rx.tap.asObservable()

@@ -20,25 +20,30 @@ class TooltipView: UIView {
     fileprivate var textButton: UIButton!
     fileprivate var closeButton: UIButton!
     
+    private var image = UIImageView(image: nil)
     private var isAnimating = false
     private var offset = CGPoint.zero
     private var widthFromScreen = false
     private let bag = DisposeBag()
     
-    static func showOn(view: UIView, text: String, offset: CGPoint = CGPoint.zero, screenWidth: Bool = false) -> TooltipView {
+    static func showOn(view: UIView, text: String, image: UIImage? = nil, offset: CGPoint = .zero, screenWidth: Bool = false) -> TooltipView {
         let width = screenWidth ? UIScreen.main.bounds.width : view.bounds.width
         let frame = CGRect(x: offset.x, y: offset.y, width: width, height: HEIGHT)
         let tooltip = TooltipView(frame: frame)
+        tooltip.image.image = image
+        tooltip.image.contentMode = .center
+        tooltip.image.tintColor = .white
         tooltip.widthFromScreen = screenWidth
         tooltip.offset = offset
         tooltip.textButton.setTitle(text, for: .normal)
         
         view.addSubview(tooltip)
+        tooltip.updateFrame()
         return tooltip
     }
     
-    static func showErrorOn(view: UIView, text: String, offset: CGPoint = CGPoint.zero, screenWidth: Bool = false) -> TooltipView {
-        let tooltip = showOn(view: view, text: text, offset: offset, screenWidth: screenWidth)
+    static func showErrorOn(view: UIView, text: String, image: UIImage? = nil, offset: CGPoint = .zero, screenWidth: Bool = false) -> TooltipView {
+        let tooltip = showOn(view: view, text: text, image: image, offset: offset, screenWidth: screenWidth)
         tooltip.backgroundColor = AppTheme.errorColor
         return tooltip
     }
@@ -81,6 +86,7 @@ class TooltipView: UIView {
         
         addSubview(textButton)
         addSubview(closeButton)
+        addSubview(image)
         
         rx.close.subscribe(onNext: { [unowned self] in
             self.close()
@@ -107,18 +113,20 @@ class TooltipView: UIView {
         let frames = calculateFrames()
         textButton.frame = frames.textButtonFrame
         closeButton.frame = frames.closeButtonFrame
+        image.frame = frames.imageFrame
     }
     
     func didRotateScreen() {
         updateFrame()
     }
 
-    private func calculateFrames() -> (textButtonFrame: CGRect, closeButtonFrame: CGRect) {
+    private func calculateFrames() -> (textButtonFrame: CGRect, closeButtonFrame: CGRect, imageFrame: CGRect) {
         let margin: CGFloat = 8
-        let closeButtonFrame = CGRect(x: bounds.width - TooltipView.HEIGHT - margin, y: 0,
-                                  width: TooltipView.HEIGHT, height: TooltipView.HEIGHT)
-        let textButtonFrame = CGRect(x: margin * 2, y: 0, width: closeButtonFrame.origin.x - margin * 3, height: TooltipView.HEIGHT)
-        return (textButtonFrame, closeButtonFrame)
+        let width: CGFloat = image.image == nil ? 0 : TooltipView.HEIGHT - margin*2
+        let closeButtonFrame = CGRect(x: bounds.width - TooltipView.HEIGHT - margin, y: 0, width: TooltipView.HEIGHT, height: TooltipView.HEIGHT)
+        let imageFrame = CGRect(x: margin * 2, y: margin, width: width, height: TooltipView.HEIGHT - margin*2)
+        let textButtonFrame = CGRect(x: imageFrame.maxX + margin, y: 0, width: closeButtonFrame.origin.x - imageFrame.maxX + margin, height: TooltipView.HEIGHT)
+        return (textButtonFrame, closeButtonFrame,imageFrame)
     }
 }
 

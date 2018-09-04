@@ -258,6 +258,7 @@ extension BackupView {
                     if isFileExists {
                         let fileUrl = URL(fileURLWithPath: exportPath)
                         Logger.info("shareBackupFile via UIDocumentInteractionController with url: \(fileUrl)")
+                        TooltipService.shared.markBackup()
                         self.showOptions(file: fileUrl)
                     } else {
                         Logger.error("Failed to properly export data")
