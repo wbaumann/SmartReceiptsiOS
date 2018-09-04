@@ -80,10 +80,15 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         tooltipPresenter.generateTap.subscribe(onNext: { [weak self] in
             self?.moveToViewController(at: 2)
         }).disposed(by: bag)
+        
+        tooltipPresenter.reminderTap.subscribe(onNext: { [weak self] in
+            self?.showBackupsScreen()
+        }).disposed(by: bag)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        tooltipPresenter.presentBackupReminderIfNeeded()
         tooltipPresenter.presentGenerateIfNeeded()
     }
     

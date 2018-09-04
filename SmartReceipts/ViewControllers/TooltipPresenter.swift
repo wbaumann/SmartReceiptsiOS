@@ -16,14 +16,17 @@ class TooltipPresenter {
     
     private var reportTooltip: TooltipView?
     private var syncErrorTooltip: TooltipView?
+    private var reminderTooltip: TooltipView?
     
     private let errorTapSubject = PublishSubject<SyncError>()
     private let generateTapSubject = PublishSubject<Void>()
     private let updateInsetsSubject = PublishSubject<UIEdgeInsets>()
+    private let reminderTapSubject = PublishSubject<Void>()
     
+    var updateInsets: Observable<UIEdgeInsets> { return updateInsetsSubject.asObservable() }
     var errorTap: Observable<SyncError> { return errorTapSubject.asObservable() }
     var generateTap: Observable<Void> { return generateTapSubject.asObservable() }
-    var updateInsets: Observable<UIEdgeInsets> { return updateInsetsSubject.asObservable() }
+    var reminderTap: Observable<Void> { return reminderTapSubject.asObservable() }
     
     init(view: UIView, trip: WBTrip) {
         self.trip = trip
@@ -34,6 +37,10 @@ class TooltipPresenter {
                 self.presentSyncError(syncError)
             }).disposed(by: bag)
         
+        AppNotificationCenter.didSyncBackup
+            .subscribe(onNext: { [unowned self] in
+                self.presentBackupReminderIfNeeded()
+            }).disposed(by: bag)
     }
     
     func presentSyncError(_ syncError: SyncError) {
@@ -61,8 +68,35 @@ class TooltipPresenter {
         }).disposed(by: bag)
     }
     
+    func presentBackupReminderIfNeeded() {
+        reminderTooltip?.removeFromSuperview()
+        reminderTooltip = nil
+        
+        if let text = TooltipService.shared.tooltipBackupReminder(), reportTooltip == nil {
+            updateInsetsSubject.onNext(TOOLTIP_INSETS)
+            let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
+            
+            var screenWidth = false
+            executeFor(iPhone: { screenWidth = true }, iPad: { screenWidth = false })
+            reminderTooltip = TooltipView.showOn(view: view, text: text, image: #imageLiteral(resourceName: "info"), offset: offset, screenWidth: screenWidth)
+            
+            reminderTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
+                TooltipService.shared.markBackupReminderDismissed()
+                self.updateInsetsSubject.onNext(.zero)
+                self.reminderTapSubject.onNext()
+                self.reportTooltip = nil
+            }).disposed(by: bag)
+            
+            reminderTooltip?.rx.close.subscribe(onNext: { [unowned self] in
+                TooltipService.shared.markBackupReminderDismissed()
+                self.updateInsetsSubject.onNext(.zero)
+                self.reportTooltip = nil
+            }).disposed(by: bag)
+        }
+    }
+    
     func presentGenerateIfNeeded() {
-        if !TooltipService.shared.moveToGenerateTrigger(for: trip) || syncErrorTooltip != nil {
+        if !TooltipService.shared.moveToGenerateTrigger(for: trip) || syncErrorTooltip != nil || reminderTooltip != nil {
             return
         }
         

@@ -54,12 +54,12 @@ public class ExchangeRateCell: DecimalCell {
         if error != nil {
             switch error! {
             case .retriveError, .unsupportedCurrency:
-                button.setImage(#imageLiteral(resourceName: "791-warning-toolbar"), for: .normal)
+                button.setImage(#imageLiteral(resourceName: "alert-triangle"), for: .normal)
             case .notEnabled:
-                button.setImage(#imageLiteral(resourceName: "724-info-toolbar"), for: .normal)
+                button.setImage(#imageLiteral(resourceName: "info"), for: .normal)
             }
         } else {
-            let img = PurchaseService().hasValidSubscriptionValue() ? #imageLiteral(resourceName: "713-refresh-1-toolbar") : #imageLiteral(resourceName: "724-info-toolbar")
+            let img = PurchaseService().hasValidSubscriptionValue() ? #imageLiteral(resourceName: "refresh-cw") : #imageLiteral(resourceName: "info")
             button.setImage(img, for: .normal)
         }
     }

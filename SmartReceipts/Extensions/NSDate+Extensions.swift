@@ -28,9 +28,16 @@ extension Date {
     }
     
     func oneYearFromDate() -> Date {
-        let gregorian = NSCalendar.init(calendarIdentifier: .gregorian)!
+        let gregorian = NSCalendar(calendarIdentifier: .gregorian)!
         var offsetComponents = DateComponents()
         offsetComponents.year = 1
         return gregorian.date(byAdding: offsetComponents, to: self, options: [])!
+    }
+    
+    func daysDifference(date: Date) -> Int {
+        let date1 = Calendar.current.startOfDay(for: self)
+        let date2 = Calendar.current.startOfDay(for: date)
+        let components = Calendar.current.dateComponents([.day], from: date1, to: date2)
+        return components.day ?? 0
     }
 }
