@@ -35,13 +35,13 @@ final class TripsDisplayData: DisplayData {
     
     func makeActions() -> [UIAlertAction] {
         let settingsAction = UIAlertAction(title: LocalizedString("menu.item.settings"),
-            style: .default, handler: { _ in self.settingsSubject.onNext() })
+            style: .default, handler: { _ in self.settingsSubject.onNext(()) })
         
         let ocrSettingsAction = UIAlertAction(title: LocalizedString("menu.item.auto.scans"),
-            style: .default, handler: { _ in self.autoScansSubject.onNext() })
+            style: .default, handler: { _ in self.autoScansSubject.onNext(()) })
         
         let backupAction = UIAlertAction(title: LocalizedString("menu_item_backup"),
-            style: .default, handler: { _ in self.backupSubject.onNext() })
+            style: .default, handler: { _ in self.backupSubject.onNext(()) })
         
         return [settingsAction, ocrSettingsAction, backupAction]
     }
@@ -66,13 +66,13 @@ class TripsMenuDisplayData: NSObject, MKDropdownMenuDelegate, MKDropdownMenuData
     
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         return NSAttributedString(string: items[row].title, attributes: [
-            NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium),
-            NSForegroundColorAttributeName: AppTheme.primaryColor
+            .font: UIFont.systemFont(ofSize: 16, weight: .medium),
+            .foregroundColor: AppTheme.primaryColor
         ])
     }
     
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, didSelectRow row: Int, inComponent component: Int) {
-        items[row].subject.onNext()
+        items[row].subject.onNext(())
         dropdownMenu.closeAllComponents(animated: true)
     }
 }

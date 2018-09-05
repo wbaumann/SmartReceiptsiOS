@@ -14,7 +14,7 @@ extension UIAlertController {
         let controller = UIAlertController(title: "", message: text, preferredStyle: .alert)
         let result = Observable<Void>.create { observer -> Disposable in
             let action = UIAlertAction(title: LocalizedString("generic.button.title.ok"), style: .default, handler: { _ in
-                observer.onNext()
+                observer.onNext(())
                 observer.onCompleted()
             })
             controller.addAction(action)

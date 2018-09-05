@@ -57,7 +57,7 @@ class TripsPresenter: Presenter {
                     }).observeOn(MainScheduler.instance)
                     .flatMap({ status -> Observable<Void> in
                         let text = LocalizedString("push.request.alert.text")
-                        return status == .notDetermined ? UIAlertController.showInfo(text: text) : Observable<Void>.just()
+                        return status == .notDetermined ? UIAlertController.showInfo(text: text) : Observable<Void>.just(())
                     }).subscribe(onNext: { [unowned self] in
                         _ = PushNotificationService.shared.requestAuthorization().subscribe()
                         self.router.openAutoScans()

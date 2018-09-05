@@ -327,7 +327,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
                 let percentString = formatter.string(from: NSDecimalNumber(string: "\(percent)")) {
                 let attributedString = NSMutableAttributedString(string: "\(valueString)  \(percentString)%")
                 let range = NSRange(location: 0, length: valueString.count)
-                attributedString.addAttribute(NSFontAttributeName, value: AppTheme.boldFont, range: range)
+                attributedString.addAttribute(.font, value: AppTheme.boldFont, range: range)
                 taxOptions.append(attributedString)
             }
         }

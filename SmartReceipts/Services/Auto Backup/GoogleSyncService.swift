@@ -36,7 +36,7 @@ class GoogleSyncService: SyncServiceProtocol {
     }
     
     func syncDatabase() {
-        syncDatabaseSubject.onNext()
+        syncDatabaseSubject.onNext(())
     }
     
     func uploadFile(receipt: WBReceipt) {

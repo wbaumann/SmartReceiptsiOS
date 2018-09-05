@@ -55,7 +55,7 @@ class DescribedSwitchCell: Cell<Bool>, CellType {
         updateSubtitle()
     }
     
-    func switchAction() {
+    @objc func switchAction() {
         row.value = switcher.isOn
         updateSubtitle()
     }

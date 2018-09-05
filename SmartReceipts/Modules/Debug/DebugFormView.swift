@@ -33,14 +33,14 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
         +++ Section("Modules")
         <<< ButtonRow() { row in
             row.title = "Auth Module"
-        }.onCellSelection({ [unowned self] _ in
-            self.loginSubject.onNext()
+        }.onCellSelection({ [unowned self] _,_  in
+            self.loginSubject.onNext(())
         })
             
         <<< ButtonRow() { row in
             row.title = "OCR Configuration Module"
-        }.onCellSelection({ [unowned self] _ in
-            self.ocrConfigSubject.onNext()
+        }.onCellSelection({ [unowned self] _,_  in
+            self.ocrConfigSubject.onNext(())
         })
         
             
@@ -83,7 +83,7 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
         <<< ButtonRow() { row in
             row.title = "Test Scan"
         }.onCellSelection({ [unowned self] cell, row in
-            self.scanSubject.onNext()
+            self.scanSubject.onNext(())
         })
             
         <<< ScanRow(SCAN_ROW)

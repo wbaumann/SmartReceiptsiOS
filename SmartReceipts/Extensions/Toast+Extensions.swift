@@ -12,7 +12,7 @@ extension Toast {
     class func show(_ text: String) {
         let toast = Toast(text: text)
         toast.duration = 3
-        toast.view.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightMedium)
+        toast.view.font = .systemFont(ofSize: 15, weight: .medium)
         toast.show()
     }
 }

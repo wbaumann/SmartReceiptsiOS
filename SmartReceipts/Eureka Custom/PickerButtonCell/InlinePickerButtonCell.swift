@@ -79,7 +79,7 @@ final class InlinePickerButtonRow: _InlinePickerButtonRow, RowType, InlineRowTyp
         inlineRow.buttonTitle = buttonTitle
         inlineRow.buttonTap?
             .bind(onNext: { [unowned self] in
-                self.tapSubject.onNext()
+                self.tapSubject.onNext(())
             }).disposed(by: bag)
     }
     

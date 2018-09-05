@@ -26,7 +26,7 @@ class ReceiptsRouter: Router {
     }
     
     func openImageViewer(for receipt: WBReceipt) {
-        Observable<Void>.just()
+        Observable<Void>.just(())
             .delay(0, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [unowned self] in
                 let module = AppModules.receiptImageViewer.build()
@@ -35,7 +35,7 @@ class ReceiptsRouter: Router {
     }
     
     func openPDFViewer(for receipt: WBReceipt) {
-        Observable<Void>.just()
+        Observable<Void>.just(())
             .delay(0, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [unowned self] in
                 let url = URL(fileURLWithPath: receipt.imageFilePath(for: receipt.trip))

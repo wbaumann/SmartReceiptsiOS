@@ -46,7 +46,7 @@ class RecentCurrenciesCache: NSObject {
     }
     
     /// Force reload
-    func update() {
+    @objc func update() {
         /// read FMDB queue from global_dispatch queue
         DispatchQueue.global(qos: .default).async {
             let fetched = Database.sharedInstance().recentCurrencies()

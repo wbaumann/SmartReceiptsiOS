@@ -116,7 +116,7 @@ class TooltipView: UIView {
         image.frame = frames.imageFrame
     }
     
-    func didRotateScreen() {
+    @objc func didRotateScreen() {
         updateFrame()
     }
 

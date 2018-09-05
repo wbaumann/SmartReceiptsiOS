@@ -83,7 +83,7 @@ class TooltipPresenter {
             reminderTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
                 TooltipService.shared.markBackupReminderDismissed()
                 self.updateInsetsSubject.onNext(.zero)
-                self.reminderTapSubject.onNext()
+                self.reminderTapSubject.onNext(())
                 self.reportTooltip = nil
             }).disposed(by: bag)
             
@@ -111,7 +111,7 @@ class TooltipPresenter {
             reportTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
                 TooltipService.shared.markMoveToGenerateDismiss()
                 self.updateInsetsSubject.onNext(.zero)
-                self.generateTapSubject.onNext()
+                self.generateTapSubject.onNext(())
                 self.reportTooltip = nil
             }).disposed(by: bag)
             

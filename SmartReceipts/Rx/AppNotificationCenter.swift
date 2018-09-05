@@ -32,6 +32,6 @@ import RxCocoa
     }
     
     class func postDidSyncBackup() {
-        AppNotificationCenter.didSyncBackupSubject.onNext()
+        AppNotificationCenter.didSyncBackupSubject.onNext(())
     }
 }

@@ -42,7 +42,7 @@ class GenerateReportFormView: FormViewController {
         }.cellSetup({ cell, _ in
             cell.tintColor = AppTheme.primaryColor
         }).onCellSelection({ [weak self] _,_ in
-            self?.settingsTapObservable?.onNext()
+            self?.settingsTapObservable?.onNext(())
         })
         
         
