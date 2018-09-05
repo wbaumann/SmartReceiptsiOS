@@ -69,7 +69,7 @@ final class ReceiptsView: FetchedTableViewController {
         super.viewWillDisappear(animated)
     }
     
-    func tripUpdated(_ notification: Notification) {
+    @objc func tripUpdated(_ notification: Notification) {
         if let trip = notification.object as? WBTrip {
             Logger.debug("Updated Trip: \(trip.description)")
         
@@ -105,7 +105,7 @@ final class ReceiptsView: FetchedTableViewController {
     override func contentChanged() {
         super.contentChanged()
         updatePricesWidth()
-        presenter.contentChanged.onNext()
+        presenter.contentChanged.onNext(())
     }
     
     override func delete(object: Any!, at indexPath: IndexPath) {
@@ -125,7 +125,7 @@ final class ReceiptsView: FetchedTableViewController {
         return displayData.fetchedModelAdapter
     }
     
-    func settingsSaved() {
+    @objc func settingsSaved() {
         if showReceiptDate == WBPreferences.layoutShowReceiptDate()
             && showReceiptCategory == WBPreferences.layoutShowReceiptCategory()
             && showAttachmentMarker == WBPreferences.layoutShowReceiptAttachmentMarker()
@@ -157,7 +157,7 @@ final class ReceiptsView: FetchedTableViewController {
         floatyItem.icon = icon
         floatyItem.imageSize = floatyItem.icon!.scaledImageSize(0.75)
         floatyItem.iconImageView.center = floatyItem.center
-        floatyItem.handler = { _ in subject.onNext() }
+        floatyItem.handler = { _ in subject.onNext(()) }
         floatyButton.addItem(item: floatyItem)
     }
     
@@ -182,7 +182,7 @@ final class ReceiptsView: FetchedTableViewController {
         for i in 0..<itemsCount {
             let receipt = objectAtIndexPath(IndexPath(row: i, section: 0)) as! WBReceipt
             let str = receipt.formattedPrice()
-            let b = (str as NSString).boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics, attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 21)], context: nil)
+            let b = (str as NSString).boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 21)], context: nil)
             maxWidth = max(maxWidth, b.width + 10)
         }
         maxWidth = min(maxWidth, view.bounds.width/2)

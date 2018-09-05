@@ -94,7 +94,7 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         tooltipPresenter.presentGenerateIfNeeded()
     }
     
-    func updateEditing() {
+    @objc func updateEditing() {
         let currentViewController = viewControllers[currentIndex]
         currentViewController.setEditing(!currentViewController.isEditing, animated: true)
     }

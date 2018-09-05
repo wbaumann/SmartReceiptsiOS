@@ -48,7 +48,7 @@ class DataImport: NSObject {
                         try? FileManager.default.moveItem(at: itemURL, to: trips.appendingPathComponent(item))
                     })
                     
-                    observer.onNext()
+                    observer.onNext(())
                     observer.onCompleted()
                 } else {
                     observer.onError(NSError(domain: "wb.import.db.error", code: 0, userInfo: nil))

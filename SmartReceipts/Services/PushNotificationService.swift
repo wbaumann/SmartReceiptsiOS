@@ -39,8 +39,8 @@ class PushNotificationService: NSObject {
     
     func requestAuthorization() -> Observable<Void> {
         return Observable<Void>.create({ observer -> Disposable in
-            UNUserNotificationCenter.current().requestAuthorization(options: [.badge]) { _ in
-                observer.onNext()
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge]) { _,_  in
+                observer.onNext(())
                 observer.onCompleted()
             }
             UIApplication.shared.registerForRemoteNotifications()

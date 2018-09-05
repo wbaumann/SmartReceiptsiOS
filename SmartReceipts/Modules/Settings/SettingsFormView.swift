@@ -618,7 +618,7 @@ extension SettingsFormView {
             cell.accessoryType = .disclosureIndicator
             cell.editingAccessoryType = cell.accessoryType
             cell.textLabel?.textColor = UIColor.black
-        }).onCellSelection({ [unowned self] _ in
+        }).onCellSelection({ [unowned self] _,_  in
             self.openModuleSubject.onNext(route)
         })
     }
@@ -632,7 +632,7 @@ extension SettingsFormView {
                 cell.accessoryType = .disclosureIndicator
                 cell.editingAccessoryType = cell.accessoryType
                 cell.textLabel?.textColor = UIColor.black
-            }).onCellSelection({ _ in
+            }).onCellSelection({ _,_  in
                 onTap?()
             })
     }

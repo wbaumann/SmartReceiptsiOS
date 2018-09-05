@@ -42,7 +42,7 @@ class EditDistanceInteractor: Interactor {
     }
     
     private func validateDate(in distance: Distance) {
-        Observable<Void>.just()
+        Observable<Void>.just(())
             .filter({distance.date > distance.trip.endDate || distance.date < distance.trip.startDate})
             .subscribe(onNext: {
                 let message = LocalizedString("edit.distance.date.range.warning.message")

@@ -37,7 +37,7 @@ public class ExchangeRateCell: DecimalCell {
         }).disposed(by: bag)
     }
     
-    func valueChanged(){
+    @objc func valueChanged(){
         row.value = (textField.text != nil || !textField.text!.isEmpty) ?
             NSDecimalNumber(orZeroUsingCurrentLocale: textField.text).doubleValue : nil
         row.updateCell()
@@ -76,7 +76,7 @@ public class ExchangeRateCell: DecimalCell {
             }
         } else {
             if PurchaseService().hasValidSubscriptionValue() {
-                row().updateTap.onNext()
+                row().updateTap.onNext(())
             } else {
                 showSubscriptionInfo()
             }
@@ -90,7 +90,7 @@ public class ExchangeRateCell: DecimalCell {
     private func showErrorInfo() {
         let retryAction = UIAlertAction(title: LocalizedString("exchange.rate.retrieve.error.retry.button"), style: .default) {
             [unowned self] action in
-            self.row().updateTap.onNext()
+            self.row().updateTap.onNext(())
         }
         let okAction = UIAlertAction(title: LocalizedString("exchange.rate.retrieve.error.cancel.button"), style: .cancel, handler: nil)
         

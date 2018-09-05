@@ -29,10 +29,10 @@ class AppTheme: NSObject {
     static let boldFont = UIFont.boldSystemFont(ofSize: 17)
     
     class func customizeOnAppLoad() {
-        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().barTintColor = primaryColor
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor.white]
         UIToolbar.appearance().tintColor = primaryDarkColor
     }
     
@@ -77,15 +77,15 @@ enum PDFFontStyle {
     var font: UIFont {
         switch self {
         case .title:
-            return UIFont.boldSystemFont(ofSize: fontSize)
+            return .boldSystemFont(ofSize: fontSize)
         case .default:
-            return UIFont.systemFont(ofSize: fontSize)
+            return .systemFont(ofSize: fontSize)
         case .defaultBold, .tableHeader:
-            return UIFont.boldSystemFont(ofSize: fontSize)
+            return .boldSystemFont(ofSize: fontSize)
         case .small:
-            return UIFont.systemFont(ofSize: fontSize)
+            return .systemFont(ofSize: fontSize)
         case .footer:
-            return UIFont.italicSystemFont(ofSize: fontSize)
+            return .italicSystemFont(ofSize: fontSize)
         }
     }
 }

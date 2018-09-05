@@ -144,7 +144,7 @@ final class TripsView: FetchedTableViewController {
         present(actionSheet, animated: true, completion: nil)
     }
     
-    func settingsSaved() {
+    @objc func settingsSaved() {
         if lastDateSeparator == WBPreferences.dateSeparator() {
             return
         }
@@ -189,7 +189,7 @@ final class TripsView: FetchedTableViewController {
                 formattedPrice = trip.formattedPrice()
             }
             let b = (formattedPrice! as NSString).boundingRect(with: CGSize(width: 1000, height: 100),
-                options: .usesDeviceMetrics, attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 21)], context: nil)
+                options: .usesDeviceMetrics, attributes: [.font : UIFont.boldSystemFont(ofSize: 21)], context: nil)
             maxWidth = max(maxWidth, b.width + 10)
         }
         

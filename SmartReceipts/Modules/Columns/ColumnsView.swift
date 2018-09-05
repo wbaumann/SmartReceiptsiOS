@@ -75,8 +75,8 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
                                                                    reloadAnimation: .fade,
                                                                    deleteAnimation: .left)
         
-        dataSource.canEditRowAtIndexPath = { _ in return true }
-        dataSource.canMoveRowAtIndexPath = { _ in return true }
+        dataSource.canEditRowAtIndexPath = { _,_  in return true }
+        dataSource.canMoveRowAtIndexPath = { _,_  in return true }
         
         return dataSource
     }

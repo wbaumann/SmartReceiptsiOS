@@ -35,7 +35,7 @@ class AuthInteractor: Interactor {
                     }).filter({ $0.token != "" })
                     .map({ _ in })
                     .do(onNext: { [weak self] _ in
-                        self?.presenter.successAuthSubject.onNext()
+                        self?.presenter.successAuthSubject.onNext(())
                     }).bind(to: self.presenter.successLogin)
                     .disposed(by: self.bag)
             default: break
@@ -58,7 +58,7 @@ class AuthInteractor: Interactor {
                     }).filter({ $0 != "" })
                     .map({ _ in })
                     .do(onNext: { [weak self] _ in
-                        self?.presenter.successAuthSubject.onNext()
+                        self?.presenter.successAuthSubject.onNext(())
                     }).bind(to: self.presenter.successSignup)
                     .disposed(by: self.bag)
             default: break
