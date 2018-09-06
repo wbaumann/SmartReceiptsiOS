@@ -26,23 +26,15 @@ class ReceiptActionsModuleTest: XCTestCase {
         super.setUp()
         
         let p = ReceiptActionsPresenter(receipt: WBReceipt())
-        let i = ReceiptActionsInteractor()
-        let r = ReceiptActionsRouter()
         
         var module = AppModules.receiptActions.build()
         module.injectMock(presenter: p)
-        module.injectMock(interactor: MockReceiptActionsInteractor().spy(on: i))
-        module.injectMock(router: MockReceiptActionsRouter().spy(on: r))
+        module.injectMock(interactor: MockReceiptActionsInteractor().withEnabledSuperclassSpy())
+        module.injectMock(router: MockReceiptActionsRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! ReceiptActionsPresenter
         interactor = module.interactor as! MockReceiptActionsInteractor
         router = module.router as! MockReceiptActionsRouter
-        
-        // Connect Mock & Real
-        p._router = router
-        p._interactor = interactor
-        i._presenter = presenter
-        r._presenter = presenter
         
         configureStubs()
         presenter.configureSubscribers()
@@ -65,12 +57,12 @@ class ReceiptActionsModuleTest: XCTestCase {
     }
     
     func testPresenterToRouter() {
-        presenter.swapUpTap.onNext()
-        presenter.swapDownTap.onNext()
-        presenter.copyTap.onNext()
-        presenter.moveTap.onNext()
-        presenter.handleAttachTap.onNext()
-        presenter.viewImageTap.onNext()
+        presenter.swapUpTap.onNext(())
+        presenter.swapDownTap.onNext(())
+        presenter.copyTap.onNext(())
+        presenter.moveTap.onNext(())
+        presenter.handleAttachTap.onNext(())
+        presenter.viewImageTap.onNext(())
         
         verify(router, times(4)).close()
         verify(router).openCopy(receipt: WBReceipt())
@@ -78,7 +70,7 @@ class ReceiptActionsModuleTest: XCTestCase {
     }
     
     func testPresenterToInteractor() {
-        presenter.handleAttachTap.onNext()
+        presenter.handleAttachTap.onNext(())
         verify(interactor).attachAppInputFile(to: WBReceipt())
     }
 }

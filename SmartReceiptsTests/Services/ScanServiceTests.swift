@@ -16,8 +16,8 @@ import SwiftyJSON
 
 class ScanServiceTests: XCTestCase {
     let bag = DisposeBag()
-    let s3ServiceMock = MockS3Service().spy(on: S3Service())
-    let recognitionAPIMock = MockRecognitionAPI().spy(on: RecognitionAPI())
+    let s3ServiceMock = MockS3Service().withEnabledSuperclassSpy()
+    let recognitionAPIMock = MockRecognitionAPI().withEnabledSuperclassSpy()
     let pushService = PushNotificationServiceTestable()
     var scanService: ScanService!
     var authService = AuthServiceTestable()

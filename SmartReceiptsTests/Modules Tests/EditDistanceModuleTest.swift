@@ -23,24 +23,14 @@ class EditDistanceModuleTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let p = EditDistancePresenter()
-        let i = EditDistanceInteractor()
-        let r = EditDistanceRouter()
-        
         var module = AppModules.editDistance.build()
-        module.injectMock(presenter: MockEditDistancePresenter().spy(on: p))
-        module.injectMock(interactor: MockEditDistanceInteractor().spy(on: i))
-        module.injectMock(router: MockEditDistanceRouter().spy(on: r))
+        module.injectMock(presenter: MockEditDistancePresenter().withEnabledSuperclassSpy())
+        module.injectMock(interactor: MockEditDistanceInteractor().withEnabledSuperclassSpy())
+        module.injectMock(router: MockEditDistanceRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! MockEditDistancePresenter
         interactor = module.interactor as! MockEditDistanceInteractor
         router = module.router as! MockEditDistanceRouter
-        
-        // Connect Mock & Real
-        p._router = router
-        p._interactor = interactor
-        i._presenter = presenter
-        r._presenter = presenter
         
         configureStubs()
     }

@@ -22,19 +22,12 @@ class TripDistancesModuleTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let p = TripDistancesPresenter()
-        let i = TripDistancesInteractor()
-        
         var module = AppModules.tripDistances.build()
-        module.injectMock(presenter: MockTripDistancesPresenter().spy(on: p))
-        module.injectMock(interactor: MockTripDistancesInteractor().spy(on: i))
+        module.injectMock(presenter: MockTripDistancesPresenter().withEnabledSuperclassSpy())
+        module.injectMock(interactor: MockTripDistancesInteractor().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! MockTripDistancesPresenter
         interactor = module.interactor as! MockTripDistancesInteractor
-        
-        // Connect Mock & Real
-        p._interactor = interactor
-        i._presenter = presenter
         
         configureStubs()
     }

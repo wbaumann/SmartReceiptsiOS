@@ -30,25 +30,15 @@ class EditReceiptModuleTest: XCTestCase {
         super.setUp()
         
         let p = EditReceiptPresenter()
-        let r = EditReceiptRouter()
-        let i = EditReceiptInteractor(authService: authService,
-                                      scansPurchaseTracker: scansPurchaseTracker,
-                                      tooltipService: tooltipService)
         
         var module = AppModules.editReceipt.build()
         module.injectMock(presenter: p)
-        module.injectMock(interactor: MockEditReceiptInteractor().spy(on: i))
-        module.injectMock(router: MockEditReceiptRouter().spy(on: r))
+        module.injectMock(interactor: MockEditReceiptInteractor().withEnabledSuperclassSpy())
+        module.injectMock(router: MockEditReceiptRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! EditReceiptPresenter
         interactor = module.interactor as! MockEditReceiptInteractor
         router = module.router as! MockEditReceiptRouter
-        
-        // Connect Mock & Real
-        p._router = router
-        p._interactor = interactor
-        i._presenter = presenter
-        r._presenter = presenter
         
         configureStubs()
         
@@ -83,7 +73,7 @@ class EditReceiptModuleTest: XCTestCase {
     func testPresenterToRouter() {
         presenter.viewHasLoaded()
         
-        presenter.settingsTap.onNext()
+        presenter.settingsTap.onNext(())
         presenter.close()
         
         verify(router).openSettings()

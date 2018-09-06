@@ -26,19 +26,13 @@ class GenerateReportModuleTest: XCTestCase {
         let r = GenerateReportRouter()
         
         var module = AppModules.generateReport.build()
-        module.injectMock(presenter: MockGenerateReportPresenter().spy(on: p))
-        module.injectMock(interactor: MockGenerateReportInteractor().spy(on: i))
-        module.injectMock(router: MockGenerateReportRouter().spy(on: r))
+        module.injectMock(presenter: MockGenerateReportPresenter().withEnabledSuperclassSpy())
+        module.injectMock(interactor: MockGenerateReportInteractor().withEnabledSuperclassSpy())
+        module.injectMock(router: MockGenerateReportRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! MockGenerateReportPresenter
         interactor = module.interactor as! MockGenerateReportInteractor
         router = module.router as! MockGenerateReportRouter
-        
-        // Connect Mock & Real
-        p._router = router
-        p._interactor = interactor
-        i._presenter = presenter
-        r._presenter = presenter
         
         configureStubs()
     }

@@ -27,24 +27,14 @@ class CategoriesModuleTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let p = CategoriesPresenter()
-        let i = CategoriesInteractor()
-        let r = CategoriesRouter()
-        
         var module = AppModules.categories.build()
-        module.injectMock(presenter: MockCategoriesPresenter().spy(on: p))
-        module.injectMock(interactor: MockCategoriesInteractor().spy(on: i))
-        module.injectMock(router: MockCategoriesRouter().spy(on: r))
+        module.injectMock(presenter: MockCategoriesPresenter().withEnabledSuperclassSpy())
+        module.injectMock(interactor: MockCategoriesInteractor().withEnabledSuperclassSpy())
+        module.injectMock(router: MockCategoriesRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! MockCategoriesPresenter
         interactor = module.interactor as! MockCategoriesInteractor
         router = module.router as! MockCategoriesRouter
-        
-        // Connect Mock & Real
-        p._router = router
-        p._interactor = interactor
-        i._presenter = presenter
-        r._presenter = presenter
         
         configureStubs()
     }
