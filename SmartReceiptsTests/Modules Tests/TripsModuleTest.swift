@@ -26,25 +26,14 @@ class TripsModuleTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let p = TripsPresenter()
-        let i = TripsInteractor()
-        let r = TripsRouter()
-        
         var module = AppModules.trips.build()
-        module.injectMock(presenter: MockTripsPresenter().spy(on: p))
-        module.injectMock(interactor: MockTripsInteractor().spy(on: i))
-        module.injectMock(router: MockTripsRouter().spy(on: r))
+        module.injectMock(presenter: MockTripsPresenter().withEnabledSuperclassSpy())
+        module.injectMock(interactor: MockTripsInteractor().withEnabledSuperclassSpy())
+        module.injectMock(router: MockTripsRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! MockTripsPresenter
         interactor = module.interactor as! MockTripsInteractor
         router = module.router as! MockTripsRouter
-        
-        // Connect Mock & Real
-        p._router = router
-        p._interactor = interactor
-        p._view = module.view
-        i._presenter = presenter
-        r._presenter = presenter
         
         configureStubs()
     }

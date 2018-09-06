@@ -22,32 +22,21 @@ class OCRConfigurationModuleTest: XCTestCase {
     var interactor: MockOCRConfigurationInteractor!
     var router: MockOCRConfigurationRouter!
     
-    let purchaseService = MockPurchaseService().spy(on: PurchaseService())
+    let purchaseService = MockPurchaseService().withEnabledSuperclassSpy()
     
     let bag = DisposeBag()
     
     override func setUp() {
         super.setUp()
         
-        let p = OCRConfigurationPresenter()
-        let i = OCRConfigurationInteractor(purchaseService: purchaseService)
-        let r = OCRConfigurationRouter()
-        
         var module = AppModules.OCRConfiguration.build()
-        module.injectMock(presenter: MockOCRConfigurationPresenter().spy(on: p))
-        module.injectMock(interactor: MockOCRConfigurationInteractor().spy(on: i))
-        module.injectMock(router: MockOCRConfigurationRouter().spy(on: r))
+        module.injectMock(presenter: MockOCRConfigurationPresenter().withEnabledSuperclassSpy())
+        module.injectMock(interactor: MockOCRConfigurationInteractor().withEnabledSuperclassSpy())
+        module.injectMock(router: MockOCRConfigurationRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! MockOCRConfigurationPresenter
         interactor = module.interactor as! MockOCRConfigurationInteractor
         router = module.router as! MockOCRConfigurationRouter
-        
-        // Connect Mock & Real
-        p._router = router
-        p._interactor = interactor
-        p._view = module.view
-        i._presenter = presenter
-        r._presenter = presenter
         
         configureStubs()
     }

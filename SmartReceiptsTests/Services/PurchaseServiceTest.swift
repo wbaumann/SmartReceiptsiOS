@@ -20,7 +20,7 @@ class PurchaseServiceTest: XCTestCase {
     override func setUp() {
         super.setUp()
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-        purchaseService = MockPurchaseService().spy(on: PurchaseService())
+        purchaseService = MockPurchaseService().withEnabledSuperclassSpy()
         configureStubs()
     }
     

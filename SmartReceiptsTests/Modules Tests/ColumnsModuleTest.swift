@@ -24,25 +24,14 @@ class ColumnsModuleTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
-        let p = ColumnsPresenter()
-        let i = ColumnsInteractor()
-        let r = ColumnsRouter()
-        
+    
         var module = AppModules.columns.build()
-        module.injectMock(presenter: p)
-        module.injectMock(interactor: MockColumnsInteractor().spy(on: i))
-        module.injectMock(router: MockColumnsRouter().spy(on: r))
+        module.injectMock(interactor: MockColumnsInteractor().withEnabledSuperclassSpy())
+        module.injectMock(router: MockColumnsRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! ColumnsPresenter
         interactor = module.interactor as! MockColumnsInteractor
         router = module.router as! MockColumnsRouter
-        
-        // Connect Mock & Real
-        p._router = router
-        p._interactor = interactor
-        i._presenter = presenter
-        r._presenter = presenter
         
         configureStubs()
     }

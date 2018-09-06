@@ -33,8 +33,8 @@ class ReceiptsModuleTest: XCTestCase {
         
         var module = AppModules.receipts.build()
         module.injectMock(presenter: p)
-        module.injectMock(interactor: MockReceiptsInteractor().spy(on: i))
-        module.injectMock(router: MockReceiptsRouter().spy(on: r))
+        module.injectMock(interactor: MockReceiptsInteractor().withEnabledSuperclassSpy())
+        module.injectMock(router: MockReceiptsRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! ReceiptsPresenter
         interactor = module.interactor as! MockReceiptsInteractor
@@ -81,9 +81,9 @@ class ReceiptsModuleTest: XCTestCase {
         
         presenter.setupView(data:trip)
         
-        presenter.createReceiptCameraSubject.onNext()
-        presenter.importReceiptFileSubject.onNext()
-        presenter.createReceiptTextSubject.onNext()
+        presenter.createReceiptCameraSubject.onNext(())
+        presenter.importReceiptFileSubject.onNext(())
+        presenter.createReceiptTextSubject.onNext(())
         
         verify(router).openCreatePhotoReceipt()
         verify(router).openImportReceiptFile()
@@ -98,8 +98,8 @@ class ReceiptsModuleTest: XCTestCase {
         presenter.viewHasLoaded()
         presenter.receiptActionsSubject.onNext(WBReceipt())
         
-        actionsPresneter.swapUpTap.onNext()
-        actionsPresneter.swapDownTap.onNext()
+        actionsPresneter.swapUpTap.onNext(())
+        actionsPresneter.swapDownTap.onNext(())
         
         verify(interactor).swapDownReceipt(WBReceipt())
         verify(interactor).swapUpReceipt(WBReceipt())

@@ -24,25 +24,14 @@ class EditTripModuleTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
-        let p = EditTripPresenter()
-        let i = EditTripInteractor()
-        let r = EditTripRouter()
-        
         var module = AppModules.editTrip.build()
-        module.injectMock(presenter: MockEditTripPresenter().spy(on: p))
-        module.injectMock(interactor: MockEditTripInteractor().spy(on: i))
-        module.injectMock(router: MockEditTripRouter().spy(on: r))
+        module.injectMock(presenter: MockEditTripPresenter().withEnabledSuperclassSpy())
+        module.injectMock(interactor: MockEditTripInteractor().withEnabledSuperclassSpy())
+        module.injectMock(router: MockEditTripRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! MockEditTripPresenter
         interactor = module.interactor as! MockEditTripInteractor
         router = module.router as! MockEditTripRouter
-        
-        // Connect Mock & Real
-        p._router = router
-        p._interactor = interactor
-        i._presenter = presenter
-        r._presenter = presenter
         
         configureStubs()
     }

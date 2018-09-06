@@ -25,24 +25,14 @@ class ReceiptMoveCopyModuleTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let p = ReceiptMoveCopyPresenter()
-        let i = ReceiptMoveCopyInteractor()
-        let r = ReceiptMoveCopyRouter()
-        
         var module = AppModules.receiptMoveCopy.build()
-        module.injectMock(presenter: MockReceiptMoveCopyPresenter().spy(on: p))
-        module.injectMock(interactor: MockReceiptMoveCopyInteractor().spy(on: i))
-        module.injectMock(router: MockReceiptMoveCopyRouter().spy(on: r))
+        module.injectMock(presenter: MockReceiptMoveCopyPresenter().withEnabledSuperclassSpy())
+        module.injectMock(interactor: MockReceiptMoveCopyInteractor().withEnabledSuperclassSpy())
+        module.injectMock(router: MockReceiptMoveCopyRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! MockReceiptMoveCopyPresenter
         interactor = module.interactor as! MockReceiptMoveCopyInteractor
         router = module.router as! MockReceiptMoveCopyRouter
-        
-        // Connect Mock & Real
-        p._router = router
-        p._interactor = interactor
-        i._presenter = presenter
-        r._presenter = presenter
         
         configureStubs()
     }

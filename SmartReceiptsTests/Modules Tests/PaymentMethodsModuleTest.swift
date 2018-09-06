@@ -27,25 +27,15 @@ class PaymentMethodsModuleTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let p = PaymentMethodsPresenter()
-        let i = PaymentMethodsInteractor()
-        let r = PaymentMethodsRouter()
-        
         var module = AppModules.paymentMethods.build()
         //module.injectMock(presenter: p)
-        module.injectMock(presenter: MockPaymentMethodsPresenter().spy(on: p))
-        module.injectMock(interactor: MockPaymentMethodsInteractor().spy(on: i))
-        module.injectMock(router: MockPaymentMethodsRouter().spy(on: r))
+        module.injectMock(presenter: MockPaymentMethodsPresenter().withEnabledSuperclassSpy())
+        module.injectMock(interactor: MockPaymentMethodsInteractor().withEnabledSuperclassSpy())
+        module.injectMock(router: MockPaymentMethodsRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! MockPaymentMethodsPresenter
         interactor = module.interactor as! MockPaymentMethodsInteractor
         router = module.router as! MockPaymentMethodsRouter
-        
-        // Connect Mock & Real
-        p._router = router
-        p._interactor = interactor
-        i._presenter = presenter
-        r._presenter = presenter
         
         configureStubs()
     }
