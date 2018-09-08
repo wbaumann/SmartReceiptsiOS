@@ -61,18 +61,18 @@ Or watch out [YouTube video series](https://www.youtube.com/watch?v=bd9RcOq0nAE&
 
 ## Install
 
-To install, clone or pull down this project. Once you the code on your machine, be sure to install [cocoapods](https://cocoapods.org/) and then run the following command:
+To install, clone or pull down this project. Once you the code on your machine, be sure to install [cocoapods](https://cocoapods.org/) and then run the following commands:
 
 ```bash
+pod repo update
 pod install
 ```
 
 Please note that it will **NOT** work out of the box, so you will need to add the following files to ensure it will compile:
 
-- `SmartReceipts/GoogleService-Info.plist`. This needs to be added to both the free and plus favors at the root level in order for Firebase to function. Please [refer to the Firebase documentation](https://firebase.google.com/) for more details.
 - `SmartReceipts/Service Account.json`. This is is used for Firebase crash reporting.
 - `SmartReceipts/GADConstants.m`. This is required to display AdMob advertisments. Replace this with an empty string to prevent ads from loading successfully.
-- `SmartReceipts/Secrets.swift`. This is used for low usage "secret" keys that are secret enough that I do not wish to place them in GitHub but are not so secret that they need to be removed from the compiled IPA entirely.
+- `SmartReceipts/Supporting Files/Secrets.swift`. This is used for low usage "secret" keys that are secret enough that I do not wish to place them in GitHub but are not so secret that they need to be removed from the compiled IPA entirely.
 
 Once these files are included, you should be able to successfully compile, build, unit test, and run the app!
 
