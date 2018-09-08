@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 class ReportGenerator: NSObject {
     private(set) var trip: WBTrip!
     private(set) var database: Database!
