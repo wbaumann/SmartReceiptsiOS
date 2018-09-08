@@ -88,7 +88,7 @@ extension PushNotificationService: UNUserNotificationCenterDelegate, MessagingDe
         }
     }
     
-    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+    @nonobjc func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
         Logger.debug("FCM Token updated: \(fcmToken)")
         if AuthService.shared.isLoggedIn {
             saveDevice(token: fcmToken)

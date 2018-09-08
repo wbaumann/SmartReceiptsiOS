@@ -118,7 +118,7 @@ extension AppDelegate {
     func handlePDForImage(url: URL) {
         var path = url.path
         
-        path = path.hasSuffix("/") ? path.substring(to: path.index(before: path.endIndex)) : path
+        path = path.hasSuffix("/") ? String(path[..<path.index(before: path.endIndex)]) : path
         filePathToAttach = path
         
         if isFileImage {

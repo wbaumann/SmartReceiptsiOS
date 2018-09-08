@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PaymentMethod *paymentMethod;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *tripName;
-@property (nonatomic, strong) WBCategory *category;
+@property (nonatomic, strong, nullable) WBCategory *category;
 @property (nonatomic, strong) NSTimeZone *timeZone;
 @property (nonatomic, assign, getter=isReimbursable) BOOL reimbursable;
 @property (nonatomic, assign, getter=isFullPage) BOOL fullPage;

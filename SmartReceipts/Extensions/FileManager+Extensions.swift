@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 extension FileManager {
     
     class var documentsPath: String {

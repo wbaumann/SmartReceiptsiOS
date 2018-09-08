@@ -36,9 +36,9 @@ extension String {
         if length <= 0 {
             // returns empty string
             return ""
-        } else if length < self.count {
-            let endIndex = self.index(self.startIndex, offsetBy: length)
-            let truncatedString = self.substring(to: endIndex)
+        } else if length < count {
+            let endIndex = index(startIndex, offsetBy: length)
+            let truncatedString = String(self[..<endIndex])
             return truncatedString
         } else {
             return self

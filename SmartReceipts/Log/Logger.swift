@@ -15,6 +15,7 @@ import CocoaLumberjack.Swift
 /// * iOS 10 CocoaLumberjack bug - all logs are duplicated, waiting for new release
 /// more info: https://github.com/CocoaLumberjack/CocoaLumberjack/issues/765
 ///
+@objcMembers
 final class Logger: NSObject {
     
     private static let sharedInstance = Logger()

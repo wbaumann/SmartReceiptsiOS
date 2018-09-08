@@ -18,7 +18,7 @@ extension WBPreferences {
         setPreferedRawPDFSize(pdfSize.rawValue)
     }
     
-    static func isPDFFooterUnlocked() -> Bool {
+    @objc static func isPDFFooterUnlocked() -> Bool {
         return PurchaseService().hasValidSubscriptionValue()
     }
 }

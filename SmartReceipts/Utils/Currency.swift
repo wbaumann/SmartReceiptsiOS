@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 class Currency: NSObject, NSCoding {
     
     private(set) var code: String!

@@ -205,7 +205,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         <<< InlinePickerButtonRow(CATEGORIES_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("edit.receipt.category.label")
             row.options = allCategories()
-            row.value = receipt.category.name
+            row.value = receipt.category?.name ?? ""
             row.buttonTitle = LocalizedString("edit_receipt_manage_categories_button").uppercased()
             self.manageCategoriesTap = row.buttonTap
         }.onChange({ [unowned self] row in
@@ -257,7 +257,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         })
         
         if isNewReceipt {
-            matchCategory(value: receipt.category.name)
+            matchCategory(value: receipt.category?.name)
         }
     }
     

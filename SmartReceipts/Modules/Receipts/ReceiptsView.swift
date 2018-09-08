@@ -88,7 +88,7 @@ final class ReceiptsView: FetchedTableViewController {
         cell.priceLabel.text = receipt.formattedPrice()
         cell.nameLabel.text = receipt.name
         cell.dateLabel.text = showReceiptDate ? dateFormatter.formattedDate(receipt.date, in: receipt.timeZone) : ""
-        cell.categoryLabel.text = showReceiptCategory ? receipt.category.name : ""
+        cell.categoryLabel.text = showReceiptCategory ? (receipt.category?.name ?? "") : ""
         cell.markerLabel.text = showAttachmentMarker ? receipt.attachmentMarker() : ""
         cell.priceWidthConstraint.constant = _priceWidth
         cell.layoutIfNeeded()

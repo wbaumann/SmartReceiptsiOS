@@ -8,6 +8,7 @@
 
 import Zip
 
+@objcMembers
 class DataExport: NSObject {
     var workDirectory: String!
     

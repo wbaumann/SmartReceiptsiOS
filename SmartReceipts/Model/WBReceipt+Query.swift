@@ -8,8 +8,8 @@
 
 import Foundation
 
+@objc
 extension WBReceipt {
-    
     
     class func selectAllQueryForTrip(_ trip: WBTrip?) -> DatabaseQueryBuilder {
         return self.selectAllQueryForTrip(trip, isAscending: false)

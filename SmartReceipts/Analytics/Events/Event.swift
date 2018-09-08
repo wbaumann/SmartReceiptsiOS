@@ -9,6 +9,7 @@
 import Foundation
 
 /// Base class for events aka Default Event
+@objcMembers
 public class Event: NSObject {
     
     final let category: Category          // category of the event
