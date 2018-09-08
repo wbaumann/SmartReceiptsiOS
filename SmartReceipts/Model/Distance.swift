@@ -9,6 +9,7 @@
 import Foundation
 import FMDB
 
+@objcMembers
 class Distance: NSObject, NSCopying, FetchedModel {
     private var objId = 0
     var trip: WBTrip!

@@ -11,7 +11,7 @@ import Foundation
 private let JustDecimalFormatterKey = "JustDecimalFormatterKey"
 
 extension WBReceipt {
-    func targetPrice() -> Price {
+    @objc func targetPrice() -> Price {
         if canExchange(), let exchanged = exchangedPrice() {
             return exchanged
         }
@@ -19,7 +19,7 @@ extension WBReceipt {
         return price()
     }
     
-    func targetTax() -> Price? {
+    @objc func targetTax() -> Price? {
         if canExchange(), let exchanged = exchangedTax() {
             return exchanged
         }
@@ -40,6 +40,7 @@ extension WBReceipt {
     }
 }
 
+@objc
 extension WBReceipt: Priced {
     
     func price() -> Price {
@@ -55,6 +56,7 @@ extension WBReceipt: Priced {
     }
 }
 
+@objc
 extension WBReceipt: Exchanged {
     func exchangeRateAsString() -> String {
         if !canExchange() {
@@ -89,6 +91,7 @@ extension WBReceipt: Exchanged {
     }
 }
 
+@objc
 extension WBReceipt: ExchangedPriced {
     func exchangedPrice() -> Price? {
         if !canExchange() {
@@ -121,6 +124,7 @@ extension WBReceipt: ExchangedPriced {
     }
 }
 
+@objc
 extension WBReceipt: Taxed {
     func tax() -> Price? {
         return Price(amount: taxAmount ?? 0, currency: currency)
@@ -143,6 +147,7 @@ extension WBReceipt: Taxed {
     }
 }
 
+@objc
 extension WBReceipt: ExchangedTaxed {
     func exchangedTax() -> Price? {
         if !canExchange() {
@@ -176,6 +181,7 @@ extension WBReceipt: ExchangedTaxed {
 }
 
 // MARK: - totals
+@objc
 extension WBReceipt {
     func netPrice() -> Price {
         let receiptPrice = price()
@@ -247,6 +253,7 @@ extension WBReceipt {
     }
 
 }
+
 
 extension WBReceipt: SyncState {
     func getSyncId(provider: SyncProvider) -> String? {

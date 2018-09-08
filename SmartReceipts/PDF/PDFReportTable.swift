@@ -11,6 +11,7 @@ import Foundation
 fileprivate let MINIMUM_COLUMN_WIDTH: CGFloat = 24
 fileprivate let TABLE_SPACING: CGFloat = 10
 
+@objcMembers
 class PDFReportTable: UIView {
     @IBOutlet var headerRowPrototype: TableHeaderRow!
     @IBOutlet var rowOnePrototype: TableContentRow!

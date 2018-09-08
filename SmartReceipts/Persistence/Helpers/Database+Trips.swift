@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 extension Database: RefreshTripPriceHandler {
     func createUpdatingAdapterForAllTrips() -> FetchedModelAdapter {
         let query = DatabaseQueryBuilder.selectAllStatement(forTable: TripsTable.Name)

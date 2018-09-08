@@ -12,7 +12,7 @@ extension JSON {
     static func loadFrom(filename: String, type: String?) -> JSON {
         let bundle = Bundle(for: ScanServiceTests.self)
         let path = bundle.path(forResource: filename, ofType: type)
-        let jsonData = NSData(contentsOfFile: path!) as Data!
-        return try! JSON(data: jsonData!)
+        let jsonData = NSData(contentsOfFile: path!) as! Data
+        return try! JSON(data: jsonData)
     }
 }

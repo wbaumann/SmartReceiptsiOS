@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 class Price: NSObject {
     private(set) var amount: NSDecimalNumber!
     private(set) var currency: Currency!

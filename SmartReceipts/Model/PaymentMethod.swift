@@ -8,6 +8,7 @@
 
 import FMDB
 
+@objcMembers
 class PaymentMethod: NSObject, FetchedModel, Pickable {
     
     var objectId: UInt = 0

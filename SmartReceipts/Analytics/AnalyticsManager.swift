@@ -19,6 +19,7 @@ protocol AnalyticsServiceProtocol: class {
 }
 
 /// Main class for logging events
+@objcMembers
 class AnalyticsManager: NSObject {
     
     /// Singleton

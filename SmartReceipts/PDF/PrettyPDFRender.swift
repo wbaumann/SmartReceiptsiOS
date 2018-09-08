@@ -10,6 +10,7 @@ import Foundation
 
 fileprivate let MinNumberOfTableRowsForPage = 3
 
+@objcMembers
 class PrettyPDFRender: NSObject {
     private(set) var tableHasTooManyColumns = false
     var portraitPreferred = true

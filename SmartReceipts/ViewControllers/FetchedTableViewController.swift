@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import Viperit
 
+@objcMembers
 class FetchedTableViewController: UserInterface {
     
     @IBOutlet var tableView: UITableView!
