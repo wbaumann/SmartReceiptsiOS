@@ -26,11 +26,11 @@ DerivedData
 #
 Pods/
 
-# Hiding ad constants
-SmartReceipts/GADConstants.m
-
 .idea
-SmartReceipts/GoogleService-Info.plist 
 .DS_store
-SmartReceipts/Supporting Files/Secrets.swift
-SmartReceipts/ServiceAccount.json
+
+# Secrets, API Keys
+#SmartReceipts/Ads/GADConstants.m
+#SmartReceipts/GoogleService-Info.plist 
+#SmartReceipts/Supporting Files/Secrets.swift
+#SmartReceipts/ServiceAccount.json
