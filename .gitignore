@@ -18,6 +18,12 @@ DerivedData
 *.xcuserstate
 *.xcworkspace
 
+# Secrets, API Keys
+SmartReceipts/Ads/GADConstants.m
+SmartReceipts/GoogleService-Info.plist 
+SmartReceipts/Supporting Files/Secrets.swift
+SmartReceipts/ServiceAccount.json
+
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However
@@ -28,9 +34,3 @@ Pods/
 
 .idea
 .DS_store
-
-# Secrets, API Keys
-#SmartReceipts/Ads/GADConstants.m
-#SmartReceipts/GoogleService-Info.plist 
-#SmartReceipts/Supporting Files/Secrets.swift
-#SmartReceipts/ServiceAccount.json
