@@ -10,6 +10,4 @@ notifications:
     on_success: never # default: change
     on_failure: always # default: always
 before_install:
-- openssl aes-256-cbc -K $encrypted_8f779a1b4fcd_key -iv $encrypted_8f779a1b4fcd_iv -in secrets.tar.enc -out secrets.tar -d
-- tar xvf secrets.tar
 - pod repo update
