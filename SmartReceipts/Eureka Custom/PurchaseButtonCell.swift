@@ -19,9 +19,7 @@ public class PurchaseButtonCell: Cell<String>, CellType {
     
     public override func setup() {
         super.setup()
-        super.selectionStyle = .none
-        tintColor = AppTheme.primaryColor
-        
+        selectionStyle = .none
         height = { 48 }
     }
     

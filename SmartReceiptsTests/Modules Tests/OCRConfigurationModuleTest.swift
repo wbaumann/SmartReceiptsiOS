@@ -30,8 +30,9 @@ class OCRConfigurationModuleTest: XCTestCase {
         super.setUp()
         
         var module = AppModules.OCRConfiguration.build()
+        
         module.injectMock(presenter: MockOCRConfigurationPresenter().withEnabledSuperclassSpy())
-        module.injectMock(interactor: MockOCRConfigurationInteractor().withEnabledSuperclassSpy())
+        module.injectMock(interactor: MockOCRConfigurationInteractor(purchaseService: purchaseService).withEnabledSuperclassSpy())
         module.injectMock(router: MockOCRConfigurationRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! MockOCRConfigurationPresenter

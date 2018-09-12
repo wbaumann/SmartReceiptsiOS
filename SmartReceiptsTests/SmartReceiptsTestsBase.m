@@ -15,6 +15,7 @@
 #import "Database+Functions.h"
 #import "FMDatabase.h"
 #import "LoggerMacros-ObjC.h"
+#import "Database+Notify.h"
 
 @interface SmartReceiptsTestsBase ()
 
@@ -78,6 +79,7 @@
 
 - (DatabaseTestsHelper *)createAndOpenDatabaseWithPath:(NSString *)path migrated:(BOOL)migrated {
     DatabaseTestsHelper *db = [[DatabaseTestsHelper alloc] initWithDatabasePath:path tripsFolderPath:self.testTripsPath];
+    [db setNotificationsDisabled:YES];
     [db open:migrated];
     return db;
 }

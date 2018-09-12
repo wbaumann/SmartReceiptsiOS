@@ -17,6 +17,10 @@
 
 @implementation Database (Notify)
 
+- (void)setNotificationsDisabled:(BOOL)disabled {
+    self.disableNotifications = disabled;
+}
+
 - (void)notifyInsertOfModel:(id <FetchedModel>)model {
     [self postNotificationWithName:DatabaseDidInsertModelNotification withObject:model];
 }
