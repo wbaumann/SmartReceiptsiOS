@@ -12,6 +12,7 @@
 
 @interface Database (Notify)
 
+- (void)setNotificationsDisabled:(BOOL)disabled;
 - (void)notifyInsertOfModel:(id<FetchedModel>)model;
 - (void)notifyUpdateOfModel:(id<FetchedModel>)model;
 - (void)notifyDeleteOfModel:(id<FetchedModel>)model;

@@ -31,13 +31,14 @@ class EditReceiptModuleTest: XCTestCase {
         
         let p = EditReceiptPresenter()
         
+        interactor = MockEditReceiptInteractor(authService: authService, scansPurchaseTracker: scansPurchaseTracker, tooltipService: tooltipService).withEnabledSuperclassSpy()
+        
         var module = AppModules.editReceipt.build()
         module.injectMock(presenter: p)
-        module.injectMock(interactor: MockEditReceiptInteractor().withEnabledSuperclassSpy())
+        module.injectMock(interactor: interactor)
         module.injectMock(router: MockEditReceiptRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! EditReceiptPresenter
-        interactor = module.interactor as! MockEditReceiptInteractor
         router = module.router as! MockEditReceiptRouter
         
         configureStubs()
@@ -54,7 +55,9 @@ class EditReceiptModuleTest: XCTestCase {
         
         stub(interactor) { mock in
             mock.configureSubscribers().thenDoNothing()
+            mock.tooltipText().thenCallRealImplementation()
         }
+        
     }
     
     override func tearDown() {
@@ -108,6 +111,7 @@ class EditReceiptModuleTest: XCTestCase {
     func testTooltipScansCountText() {
         authService.isLoggedInValue = true
         LocalScansTracker.shared.scansCount = 10
+        tooltipService.markBackupReminderDismissed()
         XCTAssertNil(interactor.tooltipText())
         XCTAssertNotEqual(interactor.tooltipText(), tooltipTextScansCount())
         

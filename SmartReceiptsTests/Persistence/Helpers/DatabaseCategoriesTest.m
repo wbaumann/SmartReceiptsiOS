@@ -52,8 +52,9 @@
 
 - (void)testCategoryDelete {
     WBCategory *category = [[WBCategory alloc] initWithName:@"TestCategory" code:@"TCRY"];
+    category.objectId = [self.db nextCustomOrderIdForCategory];
     [self.db saveCategory:category];
-
+    
     NSUInteger before = [self.db countRowsInTable:CategoriesTable.TABLE_NAME];
 
     [self.db deleteCategory:category];
