@@ -31,7 +31,7 @@ class TableContentRow: UIView {
         contentLabel?.lineBreakMode = .byWordWrapping
         contentLabel?.numberOfLines = 0
         contentLabel?.text = value
-        let size = CGSize(width: 20, height: CGFloat.greatestFiniteMagnitude)
+        let size = CGSize(width: 0, height: CGFloat.greatestFiniteMagnitude)
         let fitSize = contentLabel?.sizeThatFits(size)
         return fitSize!.width + (frame.width - contentLabel!.frame.width)
     }
