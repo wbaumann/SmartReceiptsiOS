@@ -21,10 +21,6 @@ class GenerateReportModuleTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let p = GenerateReportPresenter()
-        let i = GenerateReportInteractor()
-        let r = GenerateReportRouter()
-        
         var module = AppModules.generateReport.build()
         module.injectMock(presenter: MockGenerateReportPresenter().withEnabledSuperclassSpy())
         module.injectMock(interactor: MockGenerateReportInteractor().withEnabledSuperclassSpy())

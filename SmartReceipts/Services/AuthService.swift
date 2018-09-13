@@ -22,6 +22,17 @@ let JSON_HEADERS = ["Content-Type":"application/json"]
 
 protocol AuthServiceInterface {
     var isLoggedIn: Bool { get }
+    var loggedInObservable: Observable<Bool> { get}
+    var tokenObservable: Observable<String> { get }
+    var token: String { get }
+    var email: String { get }
+    var id: String { get }
+    
+    func login(credentials: Credentials) -> Observable<LoginResponse>
+    func signup(credentials: Credentials) -> Observable<String>
+    func logout() -> Observable<Void>
+    func getUser() -> Observable<User?>
+    func saveDevice(token: String) -> Observable<Void>
 }
 
 class AuthService: AuthServiceInterface {
@@ -163,8 +174,8 @@ class AuthService: AuthServiceInterface {
 }
 
 struct Credentials {
-    var email: String!
-    var password: String!
+    var email: String
+    var password: String
     
     init(_ email: String, _ password: String) {
         self.email = email
@@ -173,8 +184,8 @@ struct Credentials {
 }
 
 struct LoginResponse {
-    var id: String!
-    var token: String!
+    var id: String
+    var token: String
     
     init(_ id: String, _ token: String) {
         self.id = id
