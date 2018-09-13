@@ -6,6 +6,7 @@
 #import "Database+Distances.h"
 #import "Database+Functions.h"
 #import "Database+Import.h"
+#import "Database+Notify.h"
 #import "Database+PaymentMethods.h"
 #import "Database+Receipts.h"
 #import "Database+Trips.h"

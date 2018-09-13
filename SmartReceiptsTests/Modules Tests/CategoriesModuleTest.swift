@@ -27,6 +27,8 @@ class CategoriesModuleTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
+        Database.sharedInstance().setNotificationsDisabled(true)
+        
         var module = AppModules.categories.build()
         module.injectMock(presenter: MockCategoriesPresenter().withEnabledSuperclassSpy())
         module.injectMock(interactor: MockCategoriesInteractor().withEnabledSuperclassSpy())
@@ -35,7 +37,6 @@ class CategoriesModuleTest: XCTestCase {
         presenter = module.presenter as! MockCategoriesPresenter
         interactor = module.interactor as! MockCategoriesInteractor
         router = module.router as! MockCategoriesRouter
-        
         configureStubs()
     }
     

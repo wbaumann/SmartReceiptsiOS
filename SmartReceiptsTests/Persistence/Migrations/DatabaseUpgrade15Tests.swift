@@ -18,6 +18,7 @@ class DatabaseUpgrade15Tests: XCTestCase {
         super.setUp()
         
         testDatabase = createInMemoryDatabase(false)
+        testDatabase.setNotificationsDisabled(true)
         
         let migrations = [
             DatabaseCreateAtVersion11(),
