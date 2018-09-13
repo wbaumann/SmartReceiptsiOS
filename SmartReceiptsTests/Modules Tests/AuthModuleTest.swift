@@ -17,18 +17,19 @@ import RxBlocking
 import Alamofire
 
 fileprivate let TIME_OUT: TimeInterval = 10
+let TEST_CREDENTIALS = Credentials("hello@world.com", "123")
 
 class AuthModuleTest: XCTestCase {
         
     var presenter: MockAuthPresenter!
     var interactor: MockAuthInteractor!
     var router: MockAuthRouter!
+    var authService = AuthServiceTestable()
     
     var result = ""
     var expectation: XCTestExpectation!
     
     let bag = DisposeBag()
-    
     
     var resultObserver: AnyObserver<String>!
     var resultVoidObserver: AnyObserver<Void>!
@@ -36,9 +37,11 @@ class AuthModuleTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
+        authService.negative = false
+        
         var module = AppModules.auth.build()
         module.injectMock(presenter: MockAuthPresenter().withEnabledSuperclassSpy())
-        module.injectMock(interactor: MockAuthInteractor().withEnabledSuperclassSpy())
+        module.injectMock(interactor: MockAuthInteractor(authService: authService).withEnabledSuperclassSpy())
         module.injectMock(router: MockAuthRouter().withEnabledSuperclassSpy())
         
         presenter = module.presenter as! MockAuthPresenter
@@ -77,52 +80,55 @@ class AuthModuleTest: XCTestCase {
         Observable.just(TEST_CREDENTIALS)
             .bind(to: self.interactor.login)
             .disposed(by: self.bag)
-        
+
         wait(for: [expectation], timeout: TIME_OUT)
         XCTAssertFalse(result.isEmpty)
     }
-    
+
     func testSuccessSignup() {
-        Observable.just(Credentials("aaa1@aaa.aa", TEST_PASSWORD))
+        Observable.just(TEST_CREDENTIALS)
             .bind(to: self.interactor.signup)
             .disposed(by: self.bag)
-        
+
         wait(for: [expectation], timeout: TIME_OUT)
         XCTAssertFalse(result.isEmpty)
     }
-    
+
     func testInvalidCredentialsError() {
-        let invalidCredentials = Credentials(TEST_EMAIL,"12121212")
-        Observable.just(invalidCredentials)
+        authService.negative = true
+        
+        Observable.just(TEST_CREDENTIALS)
             .bind(to: interactor.login)
             .disposed(by: bag)
-        
+
         wait(for: [expectation], timeout: TIME_OUT)
         XCTAssertFalse(result.isEmpty)
     }
-    
+
     func testExistEmailError() {
+        authService.negative = true
+        
         Observable.just(TEST_CREDENTIALS)
             .bind(to: interactor.signup)
             .disposed(by: bag)
-        
+
         wait(for: [expectation], timeout: TIME_OUT)
         XCTAssertFalse(result.isEmpty)
     }
-    
+
     func testLogoutSuccess() {
-        _ = try? AuthService.shared.login(credentials: TEST_CREDENTIALS).toBlocking(timeout: TIME_OUT).single()
+        _ = try? authService.login(credentials: TEST_CREDENTIALS).toBlocking(timeout: TIME_OUT).single()
         interactor.logout.onNext(())
         wait(for: [expectation], timeout: TIME_OUT)
         XCTAssertEqual("ok", result)
     }
-    
+
     func testLogoutError() {
-        _ = try? AuthService.shared.logout().toBlocking(timeout: 10).single()
+        authService.negative = true
+        
+        _ = try? authService.logout().toBlocking(timeout: 10).single()
         interactor.logout.onNext(())
         wait(for: [expectation], timeout: TIME_OUT)
         XCTAssertFalse(result.isEmpty)
     }
-    
-    
 }
