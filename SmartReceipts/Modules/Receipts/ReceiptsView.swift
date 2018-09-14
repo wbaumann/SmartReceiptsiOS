@@ -94,10 +94,12 @@ final class ReceiptsView: FetchedTableViewController {
         cell.layoutIfNeeded()
         
         var state: ModelSyncState = .disabled
-        if receipt.attachemntType != .none {
-            state = receipt.isSynced(syncProvider: .last) ? .synced : .notSynced
-        } else {
-            state = .modelState(modelChangeDate: receipt.lastLocalModificationTime)
+        if SyncProvider.current != .none {
+            if receipt.attachemntType != .none {
+                state = receipt.isSynced(syncProvider: .last) ? .synced : .notSynced
+            } else {
+                state = .modelState(modelChangeDate: receipt.lastLocalModificationTime)
+            }
         }
         cell.setState(state)
     }
