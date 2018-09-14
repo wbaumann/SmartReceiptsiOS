@@ -30,7 +30,7 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
     private override init() {
         gDriveService.shouldFetchNextPages = true
         gDriveService.isRetryEnabled = true
-        spaces = !DebugStates.isDebug || FeatureFlags.driveAppDataFolder.isEnabled ? "appDataFolder" : "drive"
+        spaces = FeatureFlags.driveAppDataFolder.isEnabled ? "appDataFolder" : "drive"
     }
     
     func initialize() {
@@ -179,7 +179,7 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         folder.mimeType = FOLDER_MIME_TYPE
         folder.descriptionProperty = description
         folder.properties = GTLRDrive_File_Properties(json: json)
-        folder.parents = !DebugStates.isDebug || FeatureFlags.driveAppDataFolder.isEnabled ? [spaces] : nil
+        folder.parents = FeatureFlags.driveAppDataFolder.isEnabled ? [spaces] : nil
         
         if let p = parent {
             folder.parents == nil ? folder.parents = [p] : folder.parents?.append(p)
