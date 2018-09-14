@@ -30,12 +30,12 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
     private override init() {
         gDriveService.shouldFetchNextPages = true
         gDriveService.isRetryEnabled = true
-        spaces = DebugStates.isDebug && FeatureFlags.googleDriveFolder.isEnabled ? "drive" : "appDataFolder"
+        spaces = !DebugStates.isDebug || FeatureFlags.driveAppDataFolder.isEnabled ? "appDataFolder" : "drive"
     }
     
     func initialize() {
         GIDSignIn.sharedInstance().clientID = GOOGLE_CLIENT_ID
-        GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeDrive]
+        GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeDrive, kGTLRAuthScopeDriveAppdata]
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signInSilently()
     }
@@ -179,7 +179,11 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         folder.mimeType = FOLDER_MIME_TYPE
         folder.descriptionProperty = description
         folder.properties = GTLRDrive_File_Properties(json: json)
-        if let p = parent { folder.parents = [p] }
+        folder.parents = !DebugStates.isDebug || FeatureFlags.driveAppDataFolder.isEnabled ? [spaces] : nil
+        
+        if let p = parent {
+            folder.parents == nil ? folder.parents = [p] : folder.parents?.append(p)
+        }
         
         let query = GTLRDriveQuery_FilesCreate.query(withObject: folder, uploadParameters: nil)
         

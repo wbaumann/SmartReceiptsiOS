@@ -131,10 +131,11 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
         })
         
         <<< SwitchRow() { row in
-            row.title = "GoogleDrive(on) / AppFolder(off)"
-            row.value = FeatureFlags.googleDriveFolder.isEnabled
+            row.title = "Use AppData Folder"
+            row.value = FeatureFlags.driveAppDataFolder.isEnabled
         }.onChange({ row in
-            FeatureFlags.googleDriveFolder = Feature(row.value!)
+            FeatureFlags.driveAppDataFolder = Feature(row.value!)
+            _ = BackupProvidersManager.shared.clearCurrentBackupConfiguration().subscribe()
         })
     }
     

@@ -12,7 +12,7 @@ class FeatureFlags {
     static let loginSupport = Feature(true)
     static let ocrSupport   = Feature(true)
     static var useProdEndpoints = Feature(true)
-    static var googleDriveFolder = Feature(true)
+    static var driveAppDataFolder = Feature(true)
 }
 
 class Feature {
