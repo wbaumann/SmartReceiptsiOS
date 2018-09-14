@@ -74,7 +74,13 @@ Please note that that in order to use this project fully, you will need to repla
 - `SmartReceipts/GADConstants.m`. This is required to display AdMob advertisments. Replace this with an empty string to prevent ads from loading successfully.
 - `SmartReceipts/Supporting Files/Secrets.swift`. This is used for low usage "secret" keys that are secret enough that I do not wish to place them in GitHub but are not so secret that they need to be removed from the compiled IPA entirely.
 
-Once these files are included, you should be able to successfully compile, build, unit test, and run the app!
+It is recommended to run the following commands after cloning this project in order to avoid accidentally pushing changes to these files:
+
+- `git update-index --assume-unchanged SmartReceipts/Ads/GADConstants.m`
+- `git update-index --assume-unchanged SmartReceipts/Supporting Files/Secrets.swift`
+- `git update-index --assume-unchanged SmartReceipts/ServiceAccount.json`
+
+This will prevent git from tracking these changes against your local secrets.
 
 ## Donate
 
