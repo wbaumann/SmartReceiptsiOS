@@ -68,7 +68,7 @@ pod repo update
 pod install
 ```
 
-Please note that it will **NOT** work out of the box, so you will need to add the following files to ensure it will compile:
+Please note that that in order to use this project fully, you will need to replace the following place holder files:
 
 - `SmartReceipts/Service Account.json`. This is is used for Firebase crash reporting.
 - `SmartReceipts/GADConstants.m`. This is required to display AdMob advertisments. Replace this with an empty string to prevent ads from loading successfully.
@@ -91,18 +91,9 @@ Contributions are always welcome! Please [open an issue](https://github.com/wbau
 
 We currently use Travis-CI for our continuous integration in order perform tests against new commits, allowing us to avoid potential regressions. You can monitor the current build status here:
 
-- [https://travis-ci.com/wbaumann/SmartReceiptsLibrary](https://travis-ci.com/wbaumann/SmartReceiptsLibrary)
+- [https://travis-ci.com/wbaumann/SmartReceiptsiOS](https://travis-ci.com/wbaumann/SmartReceiptsiOS)
 
-As we have save a few local API keys (e.g. for ads), we use encrypt a few files in our travis repository. You generate your own encrypted set as follows (note: please install the [Travis CLI client](https://github.com/travis-ci/travis.rb) first):
-
-```bash
-$ travis login --pro
-$ tar cvf secrets.tar SmartReceipts/GADConstants.m SmartReceipts/GoogleService-Info.plist SmartReceipts/Supporting\ Files/Secrets.swift SmartReceipts/ServiceAccount.json
-$ travis encrypt-file secrets.tar --add --pro
-$ rm -f secrets.tar
-```
-
-This should automatically update our `.travis.yml` for the build.
+All repository secrets have been replaced with placeholder files, so Travis should be able to build properly for all requests.
 
 ## License
 
