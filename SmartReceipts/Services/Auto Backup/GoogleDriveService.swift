@@ -27,6 +27,10 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
     
     private let bag = DisposeBag()
     
+    private var authScopes: [String] {
+        return DebugStates.isDebug ? [kGTLRAuthScopeDrive, kGTLRAuthScopeDriveAppdata] : [kGTLRAuthScopeDriveAppdata]
+    }
+    
     private override init() {
         gDriveService.shouldFetchNextPages = true
         gDriveService.isRetryEnabled = true
@@ -34,19 +38,21 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
     }
     
     func initialize() {
+        GIDSignIn.sharedInstance().scopes = authScopes
         GIDSignIn.sharedInstance().clientID = GOOGLE_CLIENT_ID
-        GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeDrive, kGTLRAuthScopeDriveAppdata]
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signInSilently()
     }
     
     func signInSilently() -> Observable<Void> {
+        GIDSignIn.sharedInstance().scopes = authScopes
         signInSubject.dispose()
         signInSubject = PublishSubject<Void>()
         return signInSubject.do(onSubscribed: { GIDSignIn.sharedInstance().signInSilently() })
     }
     
     func signIn(onUI viewController: GIDSignInUIDelegate) -> Observable<Void> {
+        GIDSignIn.sharedInstance().scopes = authScopes
         signInSubject.dispose()
         signInSubject = PublishSubject<Void>()
         GIDSignIn.sharedInstance().uiDelegate = viewController
