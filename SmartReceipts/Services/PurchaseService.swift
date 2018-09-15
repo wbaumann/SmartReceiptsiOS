@@ -264,6 +264,10 @@ class PurchaseService {
     }
     
     func hasValidSubscriptionValue() -> Bool {
+        if DebugStates.isDebug && DebugStates.subscription() {
+            return true
+        }
+        
         guard let cached = cachedValidation else { return false }
         return cached.valid
     }
