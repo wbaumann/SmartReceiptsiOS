@@ -16,8 +16,16 @@
             <rect key="frame" x="0.0" y="0.0" width="382" height="80"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="mJI-nU-sNR">
-                    <rect key="frame" x="8" y="8" width="99" height="64"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOk-KE-Bdo">
+                    <rect key="frame" x="0.0" y="0.0" width="382" height="80"/>
+                    <connections>
+                        <action selector="hightlight" destination="iN0-l3-epB" eventType="touchDown" id="OIh-CK-KC0"/>
+                        <action selector="unhightlight" destination="iN0-l3-epB" eventType="touchUpInside" id="Eg5-Ot-Pfo"/>
+                        <action selector="unhightlight" destination="iN0-l3-epB" eventType="touchUpOutside" id="i7v-q5-G5j"/>
+                    </connections>
+                </button>
+                <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="mJI-nU-sNR">
+                    <rect key="frame" x="8" y="8" width="318" height="64"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="iPhone 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8F-uU-21v">
                             <rect key="frame" x="0.0" y="0.0" width="72" height="21.5"/>
@@ -42,7 +50,7 @@
                         <constraint firstAttribute="height" constant="60" id="Ixa-Hd-7wk"/>
                     </constraints>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-ac-aCC">
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-ac-aCC">
                     <rect key="frame" x="330" y="18" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="VbR-36-rT6"/>
@@ -53,18 +61,24 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="EOk-KE-Bdo" secondAttribute="bottom" id="3Lo-cU-0Tu"/>
                 <constraint firstItem="mJI-nU-sNR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="DDk-VQ-l7B"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mJI-nU-sNR" secondAttribute="bottom" constant="8" id="I1b-gK-Ive"/>
+                <constraint firstItem="EOk-KE-Bdo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="JIr-ce-3em"/>
+                <constraint firstItem="EOk-KE-Bdo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Uk7-LA-W8c"/>
                 <constraint firstItem="oZJ-ac-aCC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="XYc-4C-8uC"/>
                 <constraint firstItem="mJI-nU-sNR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="YbN-Qz-lFI"/>
+                <constraint firstItem="oZJ-ac-aCC" firstAttribute="leading" secondItem="mJI-nU-sNR" secondAttribute="trailing" constant="4" id="leT-by-00P"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oZJ-ac-aCC" secondAttribute="trailing" constant="8" id="oyl-X2-pDh"/>
+                <constraint firstAttribute="trailing" secondItem="EOk-KE-Bdo" secondAttribute="trailing" id="w7c-DH-HTZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="deviceName" destination="g8F-uU-21v" id="ErH-tu-nd3"/>
-                <outlet property="menu" destination="oZJ-ac-aCC" id="Xjh-A9-txp"/>
+                <outlet property="menu" destination="EOk-KE-Bdo" id="nFR-jh-UaF"/>
                 <outlet property="serviceName" destination="oNL-6G-gaO" id="25c-hc-UH0"/>
                 <outlet property="syncDate" destination="2Y8-nQ-bMT" id="6z3-cd-Mjf"/>
             </connections>
