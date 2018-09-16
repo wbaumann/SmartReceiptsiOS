@@ -139,6 +139,7 @@ class BackupInteractor: Interactor {
             .subscribe(onCompleted: {
                 hud?.hide()
                 Toast.show(LocalizedString("toast_import_complete"))
+                SyncService.shared.trySyncData()
             }, onError: { [weak self] _ in
                 hud?.hide()
                 self?.presenter.presentAlert(title: nil, message: LocalizedString("IMPORT_ERROR"))

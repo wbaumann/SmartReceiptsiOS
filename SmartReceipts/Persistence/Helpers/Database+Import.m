@@ -97,6 +97,7 @@
     for (WBReceipt *receipt in receipts) {
         if (!receipt.isMarkedForDeletion) {
             [receipt setObjectId:0];
+            [receipt setIsSynced:false];
             [self saveReceipt:receipt];
         }
     }
