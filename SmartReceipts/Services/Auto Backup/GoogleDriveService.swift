@@ -19,8 +19,6 @@ fileprivate let FOLDER_MIME_TYPE = "application/vnd.google-apps.folder"
 class GoogleDriveService: NSObject, GIDSignInDelegate {
     static let shared = GoogleDriveService()
     
-    private let spaces: String
-    
     private let gDriveService = GTLRDriveService()
     private var signInSubject = PublishSubject<Void>()
     private var signOutSubject = PublishSubject<Void>()
@@ -31,10 +29,13 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         return DebugStates.isDebug ? [kGTLRAuthScopeDrive, kGTLRAuthScopeDriveAppdata] : [kGTLRAuthScopeDriveAppdata]
     }
     
+    private var spaces: String {
+        return FeatureFlags.driveAppDataFolder.isEnabled ? "appDataFolder" : "drive"
+    }
+    
     private override init() {
         gDriveService.shouldFetchNextPages = true
         gDriveService.isRetryEnabled = true
-        spaces = FeatureFlags.driveAppDataFolder.isEnabled ? "appDataFolder" : "drive"
     }
     
     func initialize() {
