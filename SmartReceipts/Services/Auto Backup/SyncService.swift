@@ -38,6 +38,11 @@ class SyncService {
             }).disposed(by: bag)
     }
     
+    private var canUploadReceipts: Bool {
+        guard let net = network else { return false }
+        return !WBPreferences.autobackupWifiOnly() || net.isReachableOnEthernetOrWiFi
+    }
+    
     func initialize() {
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(didInsert(_:)), name: .DatabaseDidInsertModel, object: nil)
@@ -81,6 +86,8 @@ class SyncService {
     // MARK: - Private
     
     private func syncReceipts() {
+        if !canUploadReceipts { return }
+        
         var markedReceipts: [WBReceipt]!
         var unsyncedReceipts: [WBReceipt]!
         
@@ -134,11 +141,13 @@ class SyncService {
         syncProvider = SyncProvider.current
         syncService?.getCriticalSyncErrorStream().bind(to: syncErrorsSubject).disposed(by: bag)
     }
-    
+
     // MARK: - DB Handlers
     
     @objc private func didInsert(_ notification: Notification) {
         syncService?.syncDatabase()
+        if !canUploadReceipts { return }
+        
         guard let receipt = notification.object as? WBReceipt else { return }
         if !receipt.isSynced(syncProvider: .current) {
             let objectID = Database.sharedInstance().nextReceiptID() - UInt(1)
@@ -150,6 +159,8 @@ class SyncService {
     
     @objc private func didUpdate(_ notification: Notification)  {
         syncService?.syncDatabase()
+        if !canUploadReceipts { return }
+        
         guard let receipt = notification.object as? WBReceipt else { return }
         if !receipt.isSynced(syncProvider: .current) && !receipt.isMarkedForDeletion(syncProvider: .current) {
             let upload = receipt.getSyncId(provider: .current)?.isEmpty ?? true
