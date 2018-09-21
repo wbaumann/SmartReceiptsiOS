@@ -1,0 +1,1659 @@
+## @@ ---- DE - German - Pairs With No Key/Value Match ---- @@ ##
+
+EMAIL_DATA_SUBJECT  =>  Smart Receipts - %REPORT_NAME%
+
+pref_pro_pdf_footer_defaultValue  =>  Bericht generiert mit Smart-Receipts für Android
+
+menu_main_usage_guide  =>  Gebrauchsanleitung
+
+pref_output_preferred_language_title  =>  Bevorzugte Berichtssprache
+
+pref_output_pdf_page_size_defaultValue  =>  @string/pref_output_pdf_page_size_a4_entryValue
+
+pref_output_preferred_language_defaultValue  =>  @string/language_en_entry
+
+exchange_rate_key__sample  =>  YOUR_KEY_HERE
+
+original_column_RECEIPTMENU_FIELD_PRICE_en_us_name  =>  Price
+
+original_column_RECEIPTMENU_FIELD_TAX_en_us_name  =>  Tax
+
+original_column_RECEIPTMENU_FIELD_CURRENCY_en_us_name  =>  Currency
+
+original_column_RECEIPTMENU_FIELD_DATE_en_us_name  =>  Date
+
+original_column_RECEIPTMENU_FIELD_CATEGORY_en_us_name  =>  Category
+
+original_column_RECEIPTMENU_FIELD_COMMENT_en_us_name  =>  Comment
+
+original_column_item_blank_en_us_name  =>  Blank Column
+
+original_column_item_category_code_en_us_name  =>  Category Code
+
+original_column_item_category_name_en_us_name  =>  Category Name
+
+original_column_item_user_id_en_us_name  =>  User ID
+
+original_column_item_report_name_en_us_name  =>  Report Name
+
+original_column_item_report_start_date_en_us_name  =>  Report Start Date
+
+original_column_item_report_end_date_en_us_name  =>  Report End Date
+
+original_column_item_report_comment_en_us_name  =>  Report Comment
+
+original_column_item_report_cost_center_en_us_name  =>  Report Cost Center
+
+original_column_item_image_file_name_en_us_name  =>  Image Name
+
+original_column_item_image_path_en_us_name  =>  Image Path
+
+original_column_item_converted_price_exchange_rate_en_us_name  =>  Price (Exchanged)
+
+original_column_item_converted_tax_exchange_rate_en_us_name  =>  Tax (Exchanged)
+
+original_column_item_converted_price_plus_tax_exchange_rate_en_us_name  =>  Price Plus Tax (Exchanged)
+
+original_column_item_exchange_rate_en_us_name  =>  Exchange Rate
+
+original_column_item_pictured_en_us_name  =>  Pictured
+
+original_column_item_reimbursable_en_us_name  =>  Reimbursable
+
+original_column_item_deprecated_expensable_en_us_name  =>  Expensable
+
+original_column_item_index_en_us_name  =>  Receipt Index
+
+original_column_item_id_en_us_name  =>  Receipt ID
+
+original_column_item_payment_method_en_us_name  =>  Payment Method
+
+language_en_entry  =>  en
+
+language_de_entry  =>  de
+
+language_es_entry  =>  es
+
+language_fr_entry  =>  fr
+
+language_pt_entry  =>  pt
+
+language_ru_entry  =>  ru
+
+language_uk_entry  =>  uk
+
+language_iw_entry  =>  iw
+
+pref_output_pdf_page_size_title  =>  Pdf Page Size
+
+pref_output_pdf_page_size_a4_entry  =>  A4
+
+pref_output_pdf_page_size_letter_entry  =>  Letter
+
+remote_backups_list_no_backups  =>  You don't have any backups yet
+
+sr_app_name_plus  =>  Smart Receipts Plus
+
+column_item_deprecated_expensable  =>  Expensable
+
+pref_header_key  =>  HeaderKey
+
+pref_general_header_key  =>  pref_general_category_key
+
+pref_receipt_header_key  =>  pref_receipt_category_key
+
+pref_output_header_key  =>  pref_output_category_key
+
+pref_email_header_key  =>  pref_email_category_key
+
+pref_camera_header_key  =>  pref_camera_category_key
+
+pref_layout_header_key  =>  pref_layout_category_key
+
+pref_distance_header_key  =>  pref_distance_category_key
+
+pref_pro_header_key  =>  pref_pro_category_key
+
+pref_help_header_key  =>  pref_help_category_key
+
+pref_about_header_key  =>  pref_about_category_key
+
+pref_privacy_header_key  =>  pref_privacy_category_key
+
+pref_general_trip_duration_key  =>  TripDuration
+
+pref_general_default_currency_key  =>  isocurr
+
+pref_general_default_date_separator_key  =>  dateseparator
+
+pref_general_track_cost_center_key  =>  trackcostcenter
+
+pref_receipt_customize_categories_key  =>  CustomCategories
+
+pref_receipt_predict_categories_key  =>  PredictCats
+
+pref_receipt_match_name_to_category_key  =>  MatchNameCats
+
+pref_receipt_match_comment_to_category_key  =>  MatchCommentCats
+
+pref_receipt_reimbursable_only_key  =>  OnlyIncludeExpensable
+
+pref_receipt_reimbursable_default_key  =>  ExpensableDefault
+
+pref_receipt_include_tax_field_key  =>  IncludeTaxField
+
+pref_receipt_tax_percent_key  =>  TaxPercentage
+
+pref_receipt_pre_tax_key  =>  PreTax
+
+pref_receipt_enable_autocomplete_key  =>  EnableAutoCompleteSuggestions
+
+pref_receipt_minimum_receipts_price_key  =>  MinReceiptPrice
+
+pref_receipt_default_to_report_start_date_key  =>  DefaultToFirstReportDate
+
+pref_receipt_show_id_key  =>  ShowReceiptID
+
+pref_receipt_full_page_key  =>  UseFullPage
+
+pref_receipt_use_payment_methods_key  =>  UsePaymentMethods
+
+pref_receipt_payment_methods_key  =>  PaymentMethods
+
+pref_output_custom_csv_key  =>  CustomizeCSVOutput
+
+pref_output_custom_pdf_key  =>  CustomizePDFOutput
+
+pref_output_username_key  =>  UserName
+
+pref_output_print_receipt_id_by_photo_key  =>  PrintByIDPhotoKey
+
+pref_output_print_receipt_comment_by_photo_key  =>  PrintCommentByPhoto
+
+pref_output_receipts_landscape_key  =>  ReceiptsTableLandscape
+
+pref_output_pdf_page_size_key  =>  PdfPageSize
+
+pref_output_pdf_page_size_a4_entryValue  =>  A4
+
+pref_output_pdf_page_size_letter_entryValue  =>  Letter
+
+pref_output_preferred_language_key  =>  PreferredReportLanguage
+
+pref_email_default_email_to_key  =>  EmailTo
+
+pref_email_default_email_cc_key  =>  EmailCC
+
+pref_email_default_email_bcc_key  =>  EmailBCC
+
+pref_email_default_email_subject_key  =>  EmailSubject
+
+pref_camera_bw_key  =>  SaveBW
+
+pref_camera_rotate_key  =>  Camera_Rotate
+
+pref_layout_display_date_key  =>  LayoutIncludeReceiptDate
+
+pref_layout_display_category_key  =>  LayoutIncludeReceiptCategory
+
+pref_distance_include_price_in_report_key  =>  MileageTotalInReport
+
+pref_distance_rate_key  =>  MileageRate
+
+pref_distance_print_table_key  =>  MileagePrintTable
+
+pref_distance_print_daily_key  =>  MileageAddToPDF
+
+pref_distance_as_price_key  =>  DistanceAsPrice
+
+pref_pro_pdf_footer_key  =>  PdfFooterString
+
+pref_pro_separate_by_category_key  =>  SeparateByCategory
+
+pref_pro_categorical_summation_key  =>  IncludeCategoricalSummation
+
+pref_pro_omit_default_table_key  =>  OmitDefaultPDFTable
+
+pref_help_send_love_key  =>  SendLove
+
+pref_help_send_feedback_key  =>  SendFeedback
+
+pref_help_support_email_key  =>  SupportEmail
+
+pref_about_version_key  =>  VersionNo
+
+pref_about_about_key  =>  About
+
+pref_about_terms_key  =>  TermsOfUse
+
+pref_about_privacy_policy_key  =>  PrivacyPolicy
+
+pref_privacy_enable_analytics_key  =>  EnableAnalytics
+
+pref_privacy_enable_crash_tracking_key  =>  EnableCrashTracking
+
+pref_privacy_enable_ad_personalization_key  =>  EnableAdPersonalization
+
+pref_no_category_auto_backup_wifi_only_key  =>  AutoBackupWifiOnly
+
+pref_no_category_ocr_incognito_mode_key  =>  OcrIncognitoMode
+
+pref_no_category_ocr_is_enabled_key  =>  OcrIsEnabled
+
+pref_internal_app_version_code  =>  VersionCode
+
+
+## @@ ---- ES - Spanish - Pairs With No Key/Value Match ---- @@ ##
+
+EMAIL_DATA_SUBJECT  =>  Recibos Inteligentes - %REPORT_NAME%
+
+pref_pro_pdf_footer_defaultValue  =>  Informe generado usando Recibos Inteligentes para Android
+
+menu_main_usage_guide  =>  Guía de uso
+
+pref_output_preferred_language_title  =>  Idioma de informe preferido
+
+pref_output_pdf_page_size_defaultValue  =>  @string/pref_output_pdf_page_size_a4_entryValue
+
+pref_output_preferred_language_defaultValue  =>  @string/language_en_entry
+
+exchange_rate_key__sample  =>  YOUR_KEY_HERE
+
+original_column_RECEIPTMENU_FIELD_NAME_en_us_name  =>  Name
+
+original_column_RECEIPTMENU_FIELD_PRICE_en_us_name  =>  Price
+
+original_column_RECEIPTMENU_FIELD_TAX_en_us_name  =>  Tax
+
+original_column_RECEIPTMENU_FIELD_CURRENCY_en_us_name  =>  Currency
+
+original_column_RECEIPTMENU_FIELD_DATE_en_us_name  =>  Date
+
+original_column_RECEIPTMENU_FIELD_CATEGORY_en_us_name  =>  Category
+
+original_column_RECEIPTMENU_FIELD_COMMENT_en_us_name  =>  Comment
+
+original_column_item_blank_en_us_name  =>  Blank Column
+
+original_column_item_category_code_en_us_name  =>  Category Code
+
+original_column_item_category_name_en_us_name  =>  Category Name
+
+original_column_item_user_id_en_us_name  =>  User ID
+
+original_column_item_report_name_en_us_name  =>  Report Name
+
+original_column_item_report_start_date_en_us_name  =>  Report Start Date
+
+original_column_item_report_end_date_en_us_name  =>  Report End Date
+
+original_column_item_report_comment_en_us_name  =>  Report Comment
+
+original_column_item_report_cost_center_en_us_name  =>  Report Cost Center
+
+original_column_item_image_file_name_en_us_name  =>  Image Name
+
+original_column_item_image_path_en_us_name  =>  Image Path
+
+original_column_item_converted_price_exchange_rate_en_us_name  =>  Price (Exchanged)
+
+original_column_item_converted_tax_exchange_rate_en_us_name  =>  Tax (Exchanged)
+
+original_column_item_converted_price_plus_tax_exchange_rate_en_us_name  =>  Price Plus Tax (Exchanged)
+
+original_column_item_exchange_rate_en_us_name  =>  Exchange Rate
+
+original_column_item_pictured_en_us_name  =>  Pictured
+
+original_column_item_reimbursable_en_us_name  =>  Reimbursable
+
+original_column_item_deprecated_expensable_en_us_name  =>  Expensable
+
+original_column_item_index_en_us_name  =>  Receipt Index
+
+original_column_item_id_en_us_name  =>  Receipt ID
+
+original_column_item_payment_method_en_us_name  =>  Payment Method
+
+language_en_entry  =>  en
+
+language_de_entry  =>  de
+
+language_es_entry  =>  es
+
+language_fr_entry  =>  fr
+
+language_pt_entry  =>  pt
+
+language_ru_entry  =>  ru
+
+language_uk_entry  =>  uk
+
+language_iw_entry  =>  iw
+
+pref_output_pdf_page_size_title  =>  Pdf Page Size
+
+pref_output_pdf_page_size_a4_entry  =>  A4
+
+pref_output_pdf_page_size_letter_entry  =>  Letter
+
+remote_backups_list_no_backups  =>  You don't have any backups yet
+
+column_item_deprecated_expensable  =>  Expensable
+
+pref_header_key  =>  HeaderKey
+
+pref_general_header_key  =>  pref_general_category_key
+
+pref_receipt_header_key  =>  pref_receipt_category_key
+
+pref_output_header_key  =>  pref_output_category_key
+
+pref_email_header_key  =>  pref_email_category_key
+
+pref_camera_header_key  =>  pref_camera_category_key
+
+pref_layout_header_key  =>  pref_layout_category_key
+
+pref_distance_header_key  =>  pref_distance_category_key
+
+pref_pro_header_key  =>  pref_pro_category_key
+
+pref_help_header_key  =>  pref_help_category_key
+
+pref_about_header_key  =>  pref_about_category_key
+
+pref_privacy_header_key  =>  pref_privacy_category_key
+
+pref_general_trip_duration_key  =>  TripDuration
+
+pref_general_default_currency_key  =>  isocurr
+
+pref_general_default_date_separator_key  =>  dateseparator
+
+pref_general_track_cost_center_key  =>  trackcostcenter
+
+pref_receipt_customize_categories_key  =>  CustomCategories
+
+pref_receipt_predict_categories_key  =>  PredictCats
+
+pref_receipt_match_name_to_category_key  =>  MatchNameCats
+
+pref_receipt_match_comment_to_category_key  =>  MatchCommentCats
+
+pref_receipt_reimbursable_only_key  =>  OnlyIncludeExpensable
+
+pref_receipt_reimbursable_default_key  =>  ExpensableDefault
+
+pref_receipt_include_tax_field_key  =>  IncludeTaxField
+
+pref_receipt_tax_percent_key  =>  TaxPercentage
+
+pref_receipt_pre_tax_key  =>  PreTax
+
+pref_receipt_enable_autocomplete_key  =>  EnableAutoCompleteSuggestions
+
+pref_receipt_minimum_receipts_price_key  =>  MinReceiptPrice
+
+pref_receipt_default_to_report_start_date_key  =>  DefaultToFirstReportDate
+
+pref_receipt_show_id_key  =>  ShowReceiptID
+
+pref_receipt_full_page_key  =>  UseFullPage
+
+pref_receipt_use_payment_methods_key  =>  UsePaymentMethods
+
+pref_receipt_payment_methods_key  =>  PaymentMethods
+
+pref_output_custom_csv_key  =>  CustomizeCSVOutput
+
+pref_output_custom_pdf_key  =>  CustomizePDFOutput
+
+pref_output_username_key  =>  UserName
+
+pref_output_print_receipt_id_by_photo_key  =>  PrintByIDPhotoKey
+
+pref_output_print_receipt_comment_by_photo_key  =>  PrintCommentByPhoto
+
+pref_output_receipts_landscape_key  =>  ReceiptsTableLandscape
+
+pref_output_pdf_page_size_key  =>  PdfPageSize
+
+pref_output_pdf_page_size_a4_entryValue  =>  A4
+
+pref_output_pdf_page_size_letter_entryValue  =>  Letter
+
+pref_output_preferred_language_key  =>  PreferredReportLanguage
+
+pref_email_default_email_to_key  =>  EmailTo
+
+pref_email_default_email_cc_key  =>  EmailCC
+
+pref_email_default_email_bcc_key  =>  EmailBCC
+
+pref_email_default_email_subject_key  =>  EmailSubject
+
+pref_camera_bw_key  =>  SaveBW
+
+pref_camera_rotate_key  =>  Camera_Rotate
+
+pref_layout_display_date_key  =>  LayoutIncludeReceiptDate
+
+pref_layout_display_category_key  =>  LayoutIncludeReceiptCategory
+
+pref_distance_include_price_in_report_key  =>  MileageTotalInReport
+
+pref_distance_rate_key  =>  MileageRate
+
+pref_distance_print_table_key  =>  MileagePrintTable
+
+pref_distance_print_daily_key  =>  MileageAddToPDF
+
+pref_distance_as_price_key  =>  DistanceAsPrice
+
+pref_pro_pdf_footer_key  =>  PdfFooterString
+
+pref_pro_separate_by_category_key  =>  SeparateByCategory
+
+pref_pro_categorical_summation_key  =>  IncludeCategoricalSummation
+
+pref_pro_omit_default_table_key  =>  OmitDefaultPDFTable
+
+pref_help_send_love_key  =>  SendLove
+
+pref_help_send_feedback_key  =>  SendFeedback
+
+pref_help_support_email_key  =>  SupportEmail
+
+pref_about_version_key  =>  VersionNo
+
+pref_about_about_key  =>  About
+
+pref_about_terms_key  =>  TermsOfUse
+
+pref_about_privacy_policy_key  =>  PrivacyPolicy
+
+pref_privacy_enable_analytics_key  =>  EnableAnalytics
+
+pref_privacy_enable_crash_tracking_key  =>  EnableCrashTracking
+
+pref_privacy_enable_ad_personalization_key  =>  EnableAdPersonalization
+
+pref_no_category_auto_backup_wifi_only_key  =>  AutoBackupWifiOnly
+
+pref_no_category_ocr_incognito_mode_key  =>  OcrIncognitoMode
+
+pref_no_category_ocr_is_enabled_key  =>  OcrIsEnabled
+
+pref_internal_app_version_code  =>  VersionCode
+
+
+## @@ ---- FR - French - Pairs With No Key/Value Match ---- @@ ##
+
+EMAIL_DATA_SUBJECT  =>  Recettes Intelligentes - %REPORT_NAME%
+
+pref_pro_pdf_footer_defaultValue  =>  Rapport généré en utilisant Recettes Intelligentes pour Android
+
+menu_main_usage_guide  =>  Guide d'utilisation
+
+category_price_exchanged_field  =>  Prix (Échangé)
+
+pref_output_preferred_language_title  =>  Langue du rapport préféré
+
+pref_output_pdf_page_size_defaultValue  =>  @string/pref_output_pdf_page_size_a4_entryValue
+
+pref_output_preferred_language_defaultValue  =>  @string/language_en_entry
+
+exchange_rate_key__sample  =>  YOUR_KEY_HERE
+
+original_column_RECEIPTMENU_FIELD_NAME_en_us_name  =>  Name
+
+original_column_RECEIPTMENU_FIELD_PRICE_en_us_name  =>  Price
+
+original_column_RECEIPTMENU_FIELD_TAX_en_us_name  =>  Tax
+
+original_column_RECEIPTMENU_FIELD_CURRENCY_en_us_name  =>  Currency
+
+original_column_RECEIPTMENU_FIELD_CATEGORY_en_us_name  =>  Category
+
+original_column_RECEIPTMENU_FIELD_COMMENT_en_us_name  =>  Comment
+
+original_column_item_blank_en_us_name  =>  Blank Column
+
+original_column_item_category_code_en_us_name  =>  Category Code
+
+original_column_item_category_name_en_us_name  =>  Category Name
+
+original_column_item_user_id_en_us_name  =>  User ID
+
+original_column_item_report_name_en_us_name  =>  Report Name
+
+original_column_item_report_start_date_en_us_name  =>  Report Start Date
+
+original_column_item_report_end_date_en_us_name  =>  Report End Date
+
+original_column_item_report_comment_en_us_name  =>  Report Comment
+
+original_column_item_report_cost_center_en_us_name  =>  Report Cost Center
+
+original_column_item_image_file_name_en_us_name  =>  Image Name
+
+original_column_item_image_path_en_us_name  =>  Image Path
+
+original_column_item_converted_price_exchange_rate_en_us_name  =>  Price (Exchanged)
+
+original_column_item_converted_tax_exchange_rate_en_us_name  =>  Tax (Exchanged)
+
+original_column_item_converted_price_plus_tax_exchange_rate_en_us_name  =>  Price Plus Tax (Exchanged)
+
+original_column_item_exchange_rate_en_us_name  =>  Exchange Rate
+
+original_column_item_pictured_en_us_name  =>  Pictured
+
+original_column_item_reimbursable_en_us_name  =>  Reimbursable
+
+original_column_item_deprecated_expensable_en_us_name  =>  Expensable
+
+original_column_item_index_en_us_name  =>  Receipt Index
+
+original_column_item_id_en_us_name  =>  Receipt ID
+
+original_column_item_payment_method_en_us_name  =>  Payment Method
+
+language_en_entry  =>  en
+
+language_de_entry  =>  de
+
+language_es_entry  =>  es
+
+language_fr_entry  =>  fr
+
+language_pt_entry  =>  pt
+
+language_ru_entry  =>  ru
+
+language_uk_entry  =>  uk
+
+language_iw_entry  =>  iw
+
+pref_output_pdf_page_size_title  =>  Pdf Page Size
+
+pref_output_pdf_page_size_a4_entry  =>  A4
+
+pref_output_pdf_page_size_letter_entry  =>  Letter
+
+remote_backups_list_no_backups  =>  You don't have any backups yet
+
+column_item_deprecated_expensable  =>  Expensable
+
+pref_header_key  =>  HeaderKey
+
+pref_general_header_key  =>  pref_general_category_key
+
+pref_receipt_header_key  =>  pref_receipt_category_key
+
+pref_output_header_key  =>  pref_output_category_key
+
+pref_email_header_key  =>  pref_email_category_key
+
+pref_camera_header_key  =>  pref_camera_category_key
+
+pref_layout_header_key  =>  pref_layout_category_key
+
+pref_distance_header_key  =>  pref_distance_category_key
+
+pref_pro_header_key  =>  pref_pro_category_key
+
+pref_help_header_key  =>  pref_help_category_key
+
+pref_about_header_key  =>  pref_about_category_key
+
+pref_privacy_header_key  =>  pref_privacy_category_key
+
+pref_general_trip_duration_key  =>  TripDuration
+
+pref_general_default_currency_key  =>  isocurr
+
+pref_general_default_date_separator_key  =>  dateseparator
+
+pref_general_track_cost_center_key  =>  trackcostcenter
+
+pref_receipt_customize_categories_key  =>  CustomCategories
+
+pref_receipt_predict_categories_key  =>  PredictCats
+
+pref_receipt_match_name_to_category_key  =>  MatchNameCats
+
+pref_receipt_match_comment_to_category_key  =>  MatchCommentCats
+
+pref_receipt_reimbursable_only_key  =>  OnlyIncludeExpensable
+
+pref_receipt_reimbursable_default_key  =>  ExpensableDefault
+
+pref_receipt_include_tax_field_key  =>  IncludeTaxField
+
+pref_receipt_tax_percent_key  =>  TaxPercentage
+
+pref_receipt_pre_tax_key  =>  PreTax
+
+pref_receipt_enable_autocomplete_key  =>  EnableAutoCompleteSuggestions
+
+pref_receipt_minimum_receipts_price_key  =>  MinReceiptPrice
+
+pref_receipt_default_to_report_start_date_key  =>  DefaultToFirstReportDate
+
+pref_receipt_show_id_key  =>  ShowReceiptID
+
+pref_receipt_full_page_key  =>  UseFullPage
+
+pref_receipt_use_payment_methods_key  =>  UsePaymentMethods
+
+pref_receipt_payment_methods_key  =>  PaymentMethods
+
+pref_output_custom_csv_key  =>  CustomizeCSVOutput
+
+pref_output_custom_pdf_key  =>  CustomizePDFOutput
+
+pref_output_username_key  =>  UserName
+
+pref_output_print_receipt_id_by_photo_key  =>  PrintByIDPhotoKey
+
+pref_output_print_receipt_comment_by_photo_key  =>  PrintCommentByPhoto
+
+pref_output_receipts_landscape_key  =>  ReceiptsTableLandscape
+
+pref_output_pdf_page_size_key  =>  PdfPageSize
+
+pref_output_pdf_page_size_a4_entryValue  =>  A4
+
+pref_output_pdf_page_size_letter_entryValue  =>  Letter
+
+pref_output_preferred_language_key  =>  PreferredReportLanguage
+
+pref_email_default_email_to_key  =>  EmailTo
+
+pref_email_default_email_cc_key  =>  EmailCC
+
+pref_email_default_email_bcc_key  =>  EmailBCC
+
+pref_email_default_email_subject_key  =>  EmailSubject
+
+pref_camera_bw_key  =>  SaveBW
+
+pref_camera_rotate_key  =>  Camera_Rotate
+
+pref_layout_display_date_key  =>  LayoutIncludeReceiptDate
+
+pref_layout_display_category_key  =>  LayoutIncludeReceiptCategory
+
+pref_distance_include_price_in_report_key  =>  MileageTotalInReport
+
+pref_distance_rate_key  =>  MileageRate
+
+pref_distance_print_table_key  =>  MileagePrintTable
+
+pref_distance_print_daily_key  =>  MileageAddToPDF
+
+pref_distance_as_price_key  =>  DistanceAsPrice
+
+pref_pro_pdf_footer_key  =>  PdfFooterString
+
+pref_pro_separate_by_category_key  =>  SeparateByCategory
+
+pref_pro_categorical_summation_key  =>  IncludeCategoricalSummation
+
+pref_pro_omit_default_table_key  =>  OmitDefaultPDFTable
+
+pref_help_send_love_key  =>  SendLove
+
+pref_help_send_feedback_key  =>  SendFeedback
+
+pref_help_support_email_key  =>  SupportEmail
+
+pref_about_version_key  =>  VersionNo
+
+pref_about_about_key  =>  About
+
+pref_about_terms_key  =>  TermsOfUse
+
+pref_about_privacy_policy_key  =>  PrivacyPolicy
+
+pref_privacy_enable_analytics_key  =>  EnableAnalytics
+
+pref_privacy_enable_crash_tracking_key  =>  EnableCrashTracking
+
+pref_privacy_enable_ad_personalization_key  =>  EnableAdPersonalization
+
+pref_no_category_auto_backup_wifi_only_key  =>  AutoBackupWifiOnly
+
+pref_no_category_ocr_incognito_mode_key  =>  OcrIncognitoMode
+
+pref_no_category_ocr_is_enabled_key  =>  OcrIsEnabled
+
+pref_internal_app_version_code  =>  VersionCode
+
+
+## @@ ---- IW - Hebrew (HE) - Pairs With No Key/Value Match ---- @@ ##
+
+EMAIL_DATA_SUBJECT  =>  Smart Receipts - %REPORT_NAME%
+
+pref_pro_pdf_footer_defaultValue  =>  Report Generated using Smart Receipts for Android
+
+menu_main_usage_guide  =>  Usage Guide
+
+pref_output_preferred_language_title  =>  Preferred Report Language
+
+pref_output_pdf_page_size_defaultValue  =>  @string/pref_output_pdf_page_size_a4_entryValue
+
+pref_output_preferred_language_defaultValue  =>  @string/language_en_entry
+
+exchange_rate_key__sample  =>  YOUR_KEY_HERE
+
+original_column_RECEIPTMENU_FIELD_NAME_en_us_name  =>  Name
+
+original_column_RECEIPTMENU_FIELD_PRICE_en_us_name  =>  Price
+
+original_column_RECEIPTMENU_FIELD_TAX_en_us_name  =>  Tax
+
+original_column_RECEIPTMENU_FIELD_CURRENCY_en_us_name  =>  Currency
+
+original_column_RECEIPTMENU_FIELD_DATE_en_us_name  =>  Date
+
+original_column_RECEIPTMENU_FIELD_CATEGORY_en_us_name  =>  Category
+
+original_column_RECEIPTMENU_FIELD_COMMENT_en_us_name  =>  Comment
+
+original_column_item_blank_en_us_name  =>  Blank Column
+
+original_column_item_category_code_en_us_name  =>  Category Code
+
+original_column_item_category_name_en_us_name  =>  Category Name
+
+original_column_item_user_id_en_us_name  =>  User ID
+
+original_column_item_report_name_en_us_name  =>  Report Name
+
+original_column_item_report_start_date_en_us_name  =>  Report Start Date
+
+original_column_item_report_end_date_en_us_name  =>  Report End Date
+
+original_column_item_report_comment_en_us_name  =>  Report Comment
+
+original_column_item_report_cost_center_en_us_name  =>  Report Cost Center
+
+original_column_item_image_file_name_en_us_name  =>  Image Name
+
+original_column_item_image_path_en_us_name  =>  Image Path
+
+original_column_item_converted_price_exchange_rate_en_us_name  =>  Price (Exchanged)
+
+original_column_item_converted_tax_exchange_rate_en_us_name  =>  Tax (Exchanged)
+
+original_column_item_converted_price_plus_tax_exchange_rate_en_us_name  =>  Price Plus Tax (Exchanged)
+
+original_column_item_exchange_rate_en_us_name  =>  Exchange Rate
+
+original_column_item_pictured_en_us_name  =>  Pictured
+
+original_column_item_reimbursable_en_us_name  =>  Reimbursable
+
+original_column_item_index_en_us_name  =>  Receipt Index
+
+original_column_item_id_en_us_name  =>  Receipt ID
+
+original_column_item_payment_method_en_us_name  =>  Payment Method
+
+language_en_entry  =>  en
+
+language_de_entry  =>  de
+
+language_es_entry  =>  es
+
+language_fr_entry  =>  fr
+
+language_pt_entry  =>  pt
+
+language_ru_entry  =>  ru
+
+language_uk_entry  =>  uk
+
+language_iw_entry  =>  iw
+
+pref_output_pdf_page_size_title  =>  Pdf Page Size
+
+remote_backups_list_no_backups  =>  You don't have any backups yet
+
+pref_general_header_key  =>  pref_general_category_key
+
+pref_receipt_header_key  =>  pref_receipt_category_key
+
+pref_email_header_key  =>  pref_email_category_key
+
+pref_layout_header_key  =>  pref_layout_category_key
+
+pref_pro_header_key  =>  pref_pro_category_key
+
+pref_help_header_key  =>  pref_help_category_key
+
+pref_about_header_key  =>  pref_about_category_key
+
+pref_output_preferred_language_key  =>  PreferredReportLanguage
+
+pref_internal_app_version_code  =>  VersionCode
+
+
+## @@ ---- PT - Portugese - Pairs With No Key/Value Match ---- @@ ##
+
+EMAIL_DATA_SUBJECT  =>  Recibos Inteligentes - %REPORT_NAME%
+
+pref_pro_pdf_footer_defaultValue  =>  Relatório gerado usando o Recibos Inteligentes para Android
+
+menu_main_usage_guide  =>  Guia de Uso
+
+pref_output_preferred_language_title  =>  Linguagem de relatório preferida
+
+pref_output_pdf_page_size_defaultValue  =>  @string/pref_output_pdf_page_size_a4_entryValue
+
+pref_output_preferred_language_defaultValue  =>  @string/language_en_entry
+
+exchange_rate_key__sample  =>  YOUR_KEY_HERE
+
+original_column_RECEIPTMENU_FIELD_NAME_en_us_name  =>  Name
+
+original_column_RECEIPTMENU_FIELD_PRICE_en_us_name  =>  Price
+
+original_column_RECEIPTMENU_FIELD_TAX_en_us_name  =>  Tax
+
+original_column_RECEIPTMENU_FIELD_CURRENCY_en_us_name  =>  Currency
+
+original_column_RECEIPTMENU_FIELD_DATE_en_us_name  =>  Date
+
+original_column_RECEIPTMENU_FIELD_CATEGORY_en_us_name  =>  Category
+
+original_column_RECEIPTMENU_FIELD_COMMENT_en_us_name  =>  Comment
+
+original_column_item_blank_en_us_name  =>  Blank Column
+
+original_column_item_category_code_en_us_name  =>  Category Code
+
+original_column_item_category_name_en_us_name  =>  Category Name
+
+original_column_item_user_id_en_us_name  =>  User ID
+
+original_column_item_report_name_en_us_name  =>  Report Name
+
+original_column_item_report_start_date_en_us_name  =>  Report Start Date
+
+original_column_item_report_end_date_en_us_name  =>  Report End Date
+
+original_column_item_report_comment_en_us_name  =>  Report Comment
+
+original_column_item_report_cost_center_en_us_name  =>  Report Cost Center
+
+original_column_item_image_file_name_en_us_name  =>  Image Name
+
+original_column_item_image_path_en_us_name  =>  Image Path
+
+original_column_item_converted_price_exchange_rate_en_us_name  =>  Price (Exchanged)
+
+original_column_item_converted_tax_exchange_rate_en_us_name  =>  Tax (Exchanged)
+
+original_column_item_converted_price_plus_tax_exchange_rate_en_us_name  =>  Price Plus Tax (Exchanged)
+
+original_column_item_exchange_rate_en_us_name  =>  Exchange Rate
+
+original_column_item_pictured_en_us_name  =>  Pictured
+
+original_column_item_reimbursable_en_us_name  =>  Reimbursable
+
+original_column_item_deprecated_expensable_en_us_name  =>  Expensable
+
+original_column_item_index_en_us_name  =>  Receipt Index
+
+original_column_item_id_en_us_name  =>  Receipt ID
+
+original_column_item_payment_method_en_us_name  =>  Payment Method
+
+language_en_entry  =>  en
+
+language_de_entry  =>  de
+
+language_es_entry  =>  es
+
+language_fr_entry  =>  fr
+
+language_pt_entry  =>  pt
+
+language_ru_entry  =>  ru
+
+language_uk_entry  =>  uk
+
+language_iw_entry  =>  iw
+
+pref_output_pdf_page_size_title  =>  Pdf Page Size
+
+pref_output_pdf_page_size_a4_entry  =>  A4
+
+pref_output_pdf_page_size_letter_entry  =>  Letter
+
+remote_backups_list_no_backups  =>  You don't have any backups yet
+
+column_item_deprecated_expensable  =>  Expensable
+
+pref_header_key  =>  HeaderKey
+
+pref_general_header_key  =>  pref_general_category_key
+
+pref_receipt_header_key  =>  pref_receipt_category_key
+
+pref_output_header_key  =>  pref_output_category_key
+
+pref_email_header_key  =>  pref_email_category_key
+
+pref_camera_header_key  =>  pref_camera_category_key
+
+pref_layout_header_key  =>  pref_layout_category_key
+
+pref_distance_header_key  =>  pref_distance_category_key
+
+pref_pro_header_key  =>  pref_pro_category_key
+
+pref_help_header_key  =>  pref_help_category_key
+
+pref_about_header_key  =>  pref_about_category_key
+
+pref_privacy_header_key  =>  pref_privacy_category_key
+
+pref_general_trip_duration_key  =>  TripDuration
+
+pref_general_default_currency_key  =>  isocurr
+
+pref_general_default_date_separator_key  =>  dateseparator
+
+pref_general_track_cost_center_key  =>  trackcostcenter
+
+pref_receipt_customize_categories_key  =>  CustomCategories
+
+pref_receipt_predict_categories_key  =>  PredictCats
+
+pref_receipt_match_name_to_category_key  =>  MatchNameCats
+
+pref_receipt_match_comment_to_category_key  =>  MatchCommentCats
+
+pref_receipt_reimbursable_only_key  =>  OnlyIncludeExpensable
+
+pref_receipt_reimbursable_default_key  =>  ExpensableDefault
+
+pref_receipt_include_tax_field_key  =>  IncludeTaxField
+
+pref_receipt_tax_percent_key  =>  TaxPercentage
+
+pref_receipt_pre_tax_key  =>  PreTax
+
+pref_receipt_enable_autocomplete_key  =>  EnableAutoCompleteSuggestions
+
+pref_receipt_minimum_receipts_price_key  =>  MinReceiptPrice
+
+pref_receipt_default_to_report_start_date_key  =>  DefaultToFirstReportDate
+
+pref_receipt_show_id_key  =>  ShowReceiptID
+
+pref_receipt_full_page_key  =>  UseFullPage
+
+pref_receipt_use_payment_methods_key  =>  UsePaymentMethods
+
+pref_receipt_payment_methods_key  =>  PaymentMethods
+
+pref_output_custom_csv_key  =>  CustomizeCSVOutput
+
+pref_output_custom_pdf_key  =>  CustomizePDFOutput
+
+pref_output_username_key  =>  UserName
+
+pref_output_print_receipt_id_by_photo_key  =>  PrintByIDPhotoKey
+
+pref_output_print_receipt_comment_by_photo_key  =>  PrintCommentByPhoto
+
+pref_output_receipts_landscape_key  =>  ReceiptsTableLandscape
+
+pref_output_pdf_page_size_key  =>  PdfPageSize
+
+pref_output_pdf_page_size_a4_entryValue  =>  A4
+
+pref_output_pdf_page_size_letter_entryValue  =>  Letter
+
+pref_output_preferred_language_key  =>  PreferredReportLanguage
+
+pref_email_default_email_to_key  =>  EmailTo
+
+pref_email_default_email_cc_key  =>  EmailCC
+
+pref_email_default_email_bcc_key  =>  EmailBCC
+
+pref_email_default_email_subject_key  =>  EmailSubject
+
+pref_camera_bw_key  =>  SaveBW
+
+pref_camera_rotate_key  =>  Camera_Rotate
+
+pref_layout_display_date_key  =>  LayoutIncludeReceiptDate
+
+pref_layout_display_category_key  =>  LayoutIncludeReceiptCategory
+
+pref_distance_include_price_in_report_key  =>  MileageTotalInReport
+
+pref_distance_rate_key  =>  MileageRate
+
+pref_distance_print_table_key  =>  MileagePrintTable
+
+pref_distance_print_daily_key  =>  MileageAddToPDF
+
+pref_distance_as_price_key  =>  DistanceAsPrice
+
+pref_pro_pdf_footer_key  =>  PdfFooterString
+
+pref_pro_separate_by_category_key  =>  SeparateByCategory
+
+pref_pro_categorical_summation_key  =>  IncludeCategoricalSummation
+
+pref_pro_omit_default_table_key  =>  OmitDefaultPDFTable
+
+pref_help_send_love_key  =>  SendLove
+
+pref_help_send_feedback_key  =>  SendFeedback
+
+pref_help_support_email_key  =>  SupportEmail
+
+pref_about_version_key  =>  VersionNo
+
+pref_about_about_key  =>  About
+
+pref_about_terms_key  =>  TermsOfUse
+
+pref_about_privacy_policy_key  =>  PrivacyPolicy
+
+pref_privacy_enable_analytics_key  =>  EnableAnalytics
+
+pref_privacy_enable_crash_tracking_key  =>  EnableCrashTracking
+
+pref_privacy_enable_ad_personalization_key  =>  EnableAdPersonalization
+
+pref_no_category_auto_backup_wifi_only_key  =>  AutoBackupWifiOnly
+
+pref_no_category_ocr_incognito_mode_key  =>  OcrIncognitoMode
+
+pref_no_category_ocr_is_enabled_key  =>  OcrIsEnabled
+
+pref_internal_app_version_code  =>  VersionCode
+
+
+## @@ ---- RU - Russian - Pairs With No Key/Value Match ---- @@ ##
+
+EMAIL_DATA_SUBJECT  =>  Смарт Чеки - %REPORT_NAME%
+
+pref_pro_pdf_footer_defaultValue  =>  Отчёт сгенерирован с помощью приложения Смарт Чеки для Андроид
+
+pref_output_pdf_page_size_defaultValue  =>  @string/pref_output_pdf_page_size_a4_entryValue
+
+pref_output_preferred_language_defaultValue  =>  @string/language_en_entry
+
+exchange_rate_key__sample  =>  YOUR_KEY_HERE
+
+original_column_RECEIPTMENU_FIELD_NAME_en_us_name  =>  Name
+
+original_column_RECEIPTMENU_FIELD_PRICE_en_us_name  =>  Price
+
+original_column_RECEIPTMENU_FIELD_TAX_en_us_name  =>  Tax
+
+original_column_RECEIPTMENU_FIELD_CURRENCY_en_us_name  =>  Currency
+
+original_column_RECEIPTMENU_FIELD_DATE_en_us_name  =>  Date
+
+original_column_RECEIPTMENU_FIELD_CATEGORY_en_us_name  =>  Category
+
+original_column_RECEIPTMENU_FIELD_COMMENT_en_us_name  =>  Comment
+
+original_column_item_blank_en_us_name  =>  Blank Column
+
+original_column_item_category_code_en_us_name  =>  Category Code
+
+original_column_item_category_name_en_us_name  =>  Category Name
+
+original_column_item_user_id_en_us_name  =>  User ID
+
+original_column_item_report_name_en_us_name  =>  Report Name
+
+original_column_item_report_start_date_en_us_name  =>  Report Start Date
+
+original_column_item_report_end_date_en_us_name  =>  Report End Date
+
+original_column_item_report_comment_en_us_name  =>  Report Comment
+
+original_column_item_report_cost_center_en_us_name  =>  Report Cost Center
+
+original_column_item_image_file_name_en_us_name  =>  Image Name
+
+original_column_item_image_path_en_us_name  =>  Image Path
+
+original_column_item_converted_price_exchange_rate_en_us_name  =>  Price (Exchanged)
+
+original_column_item_converted_tax_exchange_rate_en_us_name  =>  Tax (Exchanged)
+
+original_column_item_converted_price_plus_tax_exchange_rate_en_us_name  =>  Price Plus Tax (Exchanged)
+
+original_column_item_exchange_rate_en_us_name  =>  Exchange Rate
+
+original_column_item_pictured_en_us_name  =>  Pictured
+
+original_column_item_reimbursable_en_us_name  =>  Reimbursable
+
+original_column_item_deprecated_expensable_en_us_name  =>  Expensable
+
+original_column_item_index_en_us_name  =>  Receipt Index
+
+original_column_item_id_en_us_name  =>  Receipt ID
+
+original_column_item_payment_method_en_us_name  =>  Payment Method
+
+language_en_entry  =>  en
+
+language_de_entry  =>  de
+
+language_es_entry  =>  es
+
+language_fr_entry  =>  fr
+
+language_pt_entry  =>  pt
+
+language_ru_entry  =>  ru
+
+language_uk_entry  =>  uk
+
+language_iw_entry  =>  iw
+
+pref_output_pdf_page_size_title  =>  Pdf Page Size
+
+pref_output_pdf_page_size_a4_entry  =>  A4
+
+pref_output_pdf_page_size_letter_entry  =>  Letter
+
+remote_backups_list_no_backups  =>  You don't have any backups yet
+
+sr_app_name  =>  Smart Receipts
+
+sr_app_name_plus  =>  Smart Receipts Plus
+
+column_item_deprecated_expensable  =>  Expensable
+
+pref_header_key  =>  HeaderKey
+
+pref_general_header_key  =>  pref_general_category_key
+
+pref_receipt_header_key  =>  pref_receipt_category_key
+
+pref_output_header_key  =>  pref_output_category_key
+
+pref_email_header_key  =>  pref_email_category_key
+
+pref_camera_header_key  =>  pref_camera_category_key
+
+pref_layout_header_key  =>  pref_layout_category_key
+
+pref_distance_header_key  =>  pref_distance_category_key
+
+pref_pro_header_key  =>  pref_pro_category_key
+
+pref_help_header_key  =>  pref_help_category_key
+
+pref_about_header_key  =>  pref_about_category_key
+
+pref_privacy_header_key  =>  pref_privacy_category_key
+
+pref_general_trip_duration_key  =>  TripDuration
+
+pref_general_default_currency_key  =>  isocurr
+
+pref_general_default_date_separator_key  =>  dateseparator
+
+pref_general_track_cost_center_key  =>  trackcostcenter
+
+pref_receipt_customize_categories_key  =>  CustomCategories
+
+pref_receipt_predict_categories_key  =>  PredictCats
+
+pref_receipt_match_name_to_category_key  =>  MatchNameCats
+
+pref_receipt_match_comment_to_category_key  =>  MatchCommentCats
+
+pref_receipt_reimbursable_only_key  =>  OnlyIncludeExpensable
+
+pref_receipt_reimbursable_default_key  =>  ExpensableDefault
+
+pref_receipt_include_tax_field_key  =>  IncludeTaxField
+
+pref_receipt_tax_percent_key  =>  TaxPercentage
+
+pref_receipt_pre_tax_key  =>  PreTax
+
+pref_receipt_enable_autocomplete_key  =>  EnableAutoCompleteSuggestions
+
+pref_receipt_minimum_receipts_price_key  =>  MinReceiptPrice
+
+pref_receipt_default_to_report_start_date_key  =>  DefaultToFirstReportDate
+
+pref_receipt_show_id_key  =>  ShowReceiptID
+
+pref_receipt_full_page_key  =>  UseFullPage
+
+pref_receipt_use_payment_methods_key  =>  UsePaymentMethods
+
+pref_receipt_payment_methods_key  =>  PaymentMethods
+
+pref_output_custom_csv_key  =>  CustomizeCSVOutput
+
+pref_output_custom_pdf_key  =>  CustomizePDFOutput
+
+pref_output_username_key  =>  UserName
+
+pref_output_print_receipt_id_by_photo_key  =>  PrintByIDPhotoKey
+
+pref_output_print_receipt_comment_by_photo_key  =>  PrintCommentByPhoto
+
+pref_output_receipts_landscape_key  =>  ReceiptsTableLandscape
+
+pref_output_pdf_page_size_key  =>  PdfPageSize
+
+pref_output_pdf_page_size_a4_entryValue  =>  A4
+
+pref_output_pdf_page_size_letter_entryValue  =>  Letter
+
+pref_output_preferred_language_key  =>  PreferredReportLanguage
+
+pref_email_default_email_to_key  =>  EmailTo
+
+pref_email_default_email_cc_key  =>  EmailCC
+
+pref_email_default_email_bcc_key  =>  EmailBCC
+
+pref_email_default_email_subject_key  =>  EmailSubject
+
+pref_camera_bw_key  =>  SaveBW
+
+pref_camera_rotate_key  =>  Camera_Rotate
+
+pref_layout_display_date_key  =>  LayoutIncludeReceiptDate
+
+pref_layout_display_category_key  =>  LayoutIncludeReceiptCategory
+
+pref_distance_include_price_in_report_key  =>  MileageTotalInReport
+
+pref_distance_rate_key  =>  MileageRate
+
+pref_distance_print_table_key  =>  MileagePrintTable
+
+pref_distance_print_daily_key  =>  MileageAddToPDF
+
+pref_distance_as_price_key  =>  DistanceAsPrice
+
+pref_pro_pdf_footer_key  =>  PdfFooterString
+
+pref_pro_separate_by_category_key  =>  SeparateByCategory
+
+pref_pro_categorical_summation_key  =>  IncludeCategoricalSummation
+
+pref_pro_omit_default_table_key  =>  OmitDefaultPDFTable
+
+pref_help_send_love_key  =>  SendLove
+
+pref_help_send_feedback_key  =>  SendFeedback
+
+pref_help_support_email_key  =>  SupportEmail
+
+pref_about_version_key  =>  VersionNo
+
+pref_about_about_key  =>  About
+
+pref_about_about_dialogMessage  =>  Smart Receipts was created and is maintained by Smart Receipts LLC. It is licensed under GNU Affero General Public License
+
+pref_about_terms_key  =>  TermsOfUse
+
+pref_about_terms_dialogMessage  =>  This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You can view a copy of the GNU Affero General Public License at http://www.gnu.org/licenses/.
+
+pref_about_privacy_policy_key  =>  PrivacyPolicy
+
+pref_privacy_enable_analytics_key  =>  EnableAnalytics
+
+pref_privacy_enable_analytics_title  =>  Share Analytics
+
+pref_privacy_enable_analytics_summary  =>  With Google/Firebase Analytics
+
+pref_privacy_enable_crash_tracking_key  =>  EnableCrashTracking
+
+pref_privacy_enable_crash_tracking_title  =>  Share Crash Information
+
+pref_privacy_enable_crash_tracking_summary  =>  With Google Crashlytics
+
+pref_privacy_enable_ad_personalization_key  =>  EnableAdPersonalization
+
+pref_privacy_enable_ad_personalization_title  =>  Allow Ad Personalization
+
+pref_privacy_enable_ad_personalization_summary  =>  With Google AdMob
+
+pref_no_category_auto_backup_wifi_only_key  =>  AutoBackupWifiOnly
+
+pref_no_category_ocr_incognito_mode_key  =>  OcrIncognitoMode
+
+pref_no_category_ocr_is_enabled_key  =>  OcrIsEnabled
+
+pref_internal_app_version_code  =>  VersionCode
+
+
+## @@ ---- US - US English (American English) - Pairs With No Key/Value Match ---- @@ ##
+
+EMAIL_DATA_SUBJECT  =>  Smart Receipts - %REPORT_NAME%
+
+pref_pro_pdf_footer_defaultValue  =>  Report Generated using Smart Receipts for Android
+
+menu_main_usage_guide  =>  Usage Guide
+
+pref_output_preferred_language_title  =>  Preferred Report Language
+
+pref_output_pdf_page_size_defaultValue  =>  @string/pref_output_pdf_page_size_a4_entryValue
+
+pref_output_preferred_language_defaultValue  =>  @string/language_en_entry
+
+exchange_rate_key__sample  =>  YOUR_KEY_HERE
+
+language_en_entry  =>  en
+
+language_de_entry  =>  de
+
+language_es_entry  =>  es
+
+language_fr_entry  =>  fr
+
+language_pt_entry  =>  pt
+
+language_ru_entry  =>  ru
+
+language_uk_entry  =>  uk
+
+language_iw_entry  =>  iw
+
+pref_output_pdf_page_size_title  =>  Pdf Page Size
+
+remote_backups_list_no_backups  =>  You don't have any backups yet
+
+pref_general_header_key  =>  pref_general_category_key
+
+pref_receipt_header_key  =>  pref_receipt_category_key
+
+pref_email_header_key  =>  pref_email_category_key
+
+pref_layout_header_key  =>  pref_layout_category_key
+
+pref_pro_header_key  =>  pref_pro_category_key
+
+pref_help_header_key  =>  pref_help_category_key
+
+pref_about_header_key  =>  pref_about_category_key
+
+pref_output_preferred_language_key  =>  PreferredReportLanguage
+
+pref_internal_app_version_code  =>  VersionCode
+
+## @@ ---- UK - Ukrainian - Pairs With No Key/Value Match ---- @@ ##
+
+EMAIL_DATA_SUBJECT  =>  Смарт Чеки - %REPORT_NAME%
+
+pref_pro_pdf_footer_defaultValue  =>  Звіт згенерований за допомогою додатку Смарт Чеки для Android
+
+pref_output_pdf_page_size_defaultValue  =>  @string/pref_output_pdf_page_size_a4_entryValue
+
+pref_output_preferred_language_defaultValue  =>  @string/language_en_entry
+
+exchange_rate_key__sample  =>  YOUR_KEY_HERE
+
+original_column_RECEIPTMENU_FIELD_NAME_en_us_name  =>  Name
+
+original_column_RECEIPTMENU_FIELD_PRICE_en_us_name  =>  Price
+
+original_column_RECEIPTMENU_FIELD_TAX_en_us_name  =>  Tax
+
+original_column_RECEIPTMENU_FIELD_CURRENCY_en_us_name  =>  Currency
+
+original_column_RECEIPTMENU_FIELD_DATE_en_us_name  =>  Date
+
+original_column_RECEIPTMENU_FIELD_CATEGORY_en_us_name  =>  Category
+
+original_column_RECEIPTMENU_FIELD_COMMENT_en_us_name  =>  Comment
+
+original_column_item_blank_en_us_name  =>  Blank Column
+
+original_column_item_category_code_en_us_name  =>  Category Code
+
+original_column_item_category_name_en_us_name  =>  Category Name
+
+original_column_item_user_id_en_us_name  =>  User ID
+
+original_column_item_report_name_en_us_name  =>  Report Name
+
+original_column_item_report_start_date_en_us_name  =>  Report Start Date
+
+original_column_item_report_end_date_en_us_name  =>  Report End Date
+
+original_column_item_report_comment_en_us_name  =>  Report Comment
+
+original_column_item_report_cost_center_en_us_name  =>  Report Cost Center
+
+original_column_item_image_file_name_en_us_name  =>  Image Name
+
+original_column_item_image_path_en_us_name  =>  Image Path
+
+original_column_item_converted_price_exchange_rate_en_us_name  =>  Price (Exchanged)
+
+original_column_item_converted_tax_exchange_rate_en_us_name  =>  Tax (Exchanged)
+
+original_column_item_converted_price_plus_tax_exchange_rate_en_us_name  =>  Price Plus Tax (Exchanged)
+
+original_column_item_exchange_rate_en_us_name  =>  Exchange Rate
+
+original_column_item_pictured_en_us_name  =>  Pictured
+
+original_column_item_reimbursable_en_us_name  =>  Reimbursable
+
+original_column_item_deprecated_expensable_en_us_name  =>  Expensable
+
+original_column_item_index_en_us_name  =>  Receipt Index
+
+original_column_item_id_en_us_name  =>  Receipt ID
+
+original_column_item_payment_method_en_us_name  =>  Payment Method
+
+language_en_entry  =>  en
+
+language_de_entry  =>  de
+
+language_es_entry  =>  es
+
+language_fr_entry  =>  fr
+
+language_pt_entry  =>  pt
+
+language_ru_entry  =>  ru
+
+language_uk_entry  =>  uk
+
+language_iw_entry  =>  iw
+
+pref_output_pdf_page_size_title  =>  Pdf Page Size
+
+pref_output_pdf_page_size_a4_entry  =>  A4
+
+pref_output_pdf_page_size_letter_entry  =>  Letter
+
+remote_backups_list_no_backups  =>  You don't have any backups yet
+
+sr_app_name  =>  Smart Receipts
+
+sr_app_name_plus  =>  Smart Receipts Plus
+
+column_item_deprecated_expensable  =>  Expensable
+
+pref_header_key  =>  HeaderKey
+
+pref_general_header_key  =>  pref_general_category_key
+
+pref_receipt_header_key  =>  pref_receipt_category_key
+
+pref_output_header_key  =>  pref_output_category_key
+
+pref_email_header_key  =>  pref_email_category_key
+
+pref_camera_header_key  =>  pref_camera_category_key
+
+pref_layout_header_key  =>  pref_layout_category_key
+
+pref_distance_header_key  =>  pref_distance_category_key
+
+pref_pro_header_key  =>  pref_pro_category_key
+
+pref_help_header_key  =>  pref_help_category_key
+
+pref_about_header_key  =>  pref_about_category_key
+
+pref_privacy_header_key  =>  pref_privacy_category_key
+
+pref_general_trip_duration_key  =>  TripDuration
+
+pref_general_default_currency_key  =>  isocurr
+
+pref_general_default_date_separator_key  =>  dateseparator
+
+pref_general_track_cost_center_key  =>  trackcostcenter
+
+pref_receipt_customize_categories_key  =>  CustomCategories
+
+pref_receipt_predict_categories_key  =>  PredictCats
+
+pref_receipt_match_name_to_category_key  =>  MatchNameCats
+
+pref_receipt_match_comment_to_category_key  =>  MatchCommentCats
+
+pref_receipt_reimbursable_only_key  =>  OnlyIncludeExpensable
+
+pref_receipt_reimbursable_default_key  =>  ExpensableDefault
+
+pref_receipt_include_tax_field_key  =>  IncludeTaxField
+
+pref_receipt_tax_percent_key  =>  TaxPercentage
+
+pref_receipt_pre_tax_key  =>  PreTax
+
+pref_receipt_enable_autocomplete_key  =>  EnableAutoCompleteSuggestions
+
+pref_receipt_minimum_receipts_price_key  =>  MinReceiptPrice
+
+pref_receipt_default_to_report_start_date_key  =>  DefaultToFirstReportDate
+
+pref_receipt_show_id_key  =>  ShowReceiptID
+
+pref_receipt_full_page_key  =>  UseFullPage
+
+pref_receipt_use_payment_methods_key  =>  UsePaymentMethods
+
+pref_receipt_payment_methods_key  =>  PaymentMethods
+
+pref_output_custom_csv_key  =>  CustomizeCSVOutput
+
+pref_output_custom_pdf_key  =>  CustomizePDFOutput
+
+pref_output_username_key  =>  UserName
+
+pref_output_print_receipt_id_by_photo_key  =>  PrintByIDPhotoKey
+
+pref_output_print_receipt_comment_by_photo_key  =>  PrintCommentByPhoto
+
+pref_output_receipts_landscape_key  =>  ReceiptsTableLandscape
+
+pref_output_pdf_page_size_key  =>  PdfPageSize
+
+pref_output_pdf_page_size_a4_entryValue  =>  A4
+
+pref_output_pdf_page_size_letter_entryValue  =>  Letter
+
+pref_output_preferred_language_key  =>  PreferredReportLanguage
+
+pref_email_default_email_to_key  =>  EmailTo
+
+pref_email_default_email_cc_key  =>  EmailCC
+
+pref_email_default_email_bcc_key  =>  EmailBCC
+
+pref_email_default_email_subject_key  =>  EmailSubject
+
+pref_camera_bw_key  =>  SaveBW
+
+pref_camera_rotate_key  =>  Camera_Rotate
+
+pref_layout_display_date_key  =>  LayoutIncludeReceiptDate
+
+pref_layout_display_category_key  =>  LayoutIncludeReceiptCategory
+
+pref_distance_include_price_in_report_key  =>  MileageTotalInReport
+
+pref_distance_rate_key  =>  MileageRate
+
+pref_distance_print_table_key  =>  MileagePrintTable
+
+pref_distance_print_daily_key  =>  MileageAddToPDF
+
+pref_distance_as_price_key  =>  DistanceAsPrice
+
+pref_pro_pdf_footer_key  =>  PdfFooterString
+
+pref_pro_separate_by_category_key  =>  SeparateByCategory
+
+pref_pro_categorical_summation_key  =>  IncludeCategoricalSummation
+
+pref_pro_omit_default_table_key  =>  OmitDefaultPDFTable
+
+pref_help_send_love_key  =>  SendLove
+
+pref_help_send_feedback_key  =>  SendFeedback
+
+pref_help_support_email_key  =>  SupportEmail
+
+pref_about_version_key  =>  VersionNo
+
+pref_about_about_key  =>  About
+
+pref_about_about_dialogMessage  =>  Smart Receipts was created and is maintained by Smart Receipts LLC. It is licensed under GNU Affero General Public License
+
+pref_about_terms_key  =>  TermsOfUse
+
+pref_about_terms_dialogMessage  =>  This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You can view a copy of the GNU Affero General Public License at http://www.gnu.org/licenses/.
+
+pref_about_privacy_policy_key  =>  PrivacyPolicy
+
+pref_privacy_enable_analytics_key  =>  EnableAnalytics
+
+pref_privacy_enable_crash_tracking_key  =>  EnableCrashTracking
+
+pref_privacy_enable_ad_personalization_key  =>  EnableAdPersonalization
+
+pref_no_category_auto_backup_wifi_only_key  =>  AutoBackupWifiOnly
+
+pref_no_category_ocr_incognito_mode_key  =>  OcrIncognitoMode
+
+pref_no_category_ocr_is_enabled_key  =>  OcrIsEnabled
+
+pref_internal_app_version_code  =>  VersionCode
