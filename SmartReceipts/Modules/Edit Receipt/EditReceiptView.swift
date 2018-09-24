@@ -44,7 +44,7 @@ final class EditReceiptView: UserInterface {
         formView.apply(scan: displayData.scan)
         formView.settingsTap = presenter.settingsTap
         formView.needFirstResponder = displayData.needFirstResponder
-        addChildViewController(formView)
+        addChild(formView)
         view.addSubview(formView.view)
         
         configureUIActions()

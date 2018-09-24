@@ -25,8 +25,8 @@ class ReceiptImageViewerInteractor: Interactor {
                     .caseInsensitiveCompare("png") == .orderedSame
                 
                 let data = isPNG ?
-                    UIImagePNGRepresentation(image!) :
-                    UIImageJPEGRepresentation(image!, kImageCompression)
+                    image!.pngData() :
+                    image!.jpegData(compressionQuality: kImageCompression)
                 
                 _ = FileManager.forceWrite(data: data!, to: self.imagePath)
                 self.presenter.receipt.isSynced = false

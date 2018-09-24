@@ -26,7 +26,7 @@ final class EditDistanceView: UserInterface {
         
         formView = EditDistanceFormView(trip: displayData.trip!, distance: displayData.distance)
         
-        addChildViewController(formView)
+        addChild(formView)
         formView.view.frame = view.bounds
         view.addSubview(formView.view)
         setupInitialState()

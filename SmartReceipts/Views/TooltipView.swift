@@ -67,7 +67,7 @@ class TooltipView: UIView {
     }
     
     private func commonInit() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didRotateScreen), name: .UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didRotateScreen), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     private func configureView() {

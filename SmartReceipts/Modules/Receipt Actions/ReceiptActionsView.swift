@@ -39,7 +39,7 @@ final class ReceiptActionsView: UserInterface {
         formView.swapUpTap = presenter.swapUpTap
         formView.swapDownTap = presenter.swapDownTap
         
-        addChildViewController(formView)
+        addChild(formView)
         view.addSubview(formView.view)
     }
     

@@ -31,7 +31,7 @@ class FetchedTableViewController: UserInterface {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         
         dataSource = TableViewDataSourceProxy(tableView, cellID: FETCHED_COLLECTION_CELL_ID, configureCell: {
             [unowned self] row, cell, item in

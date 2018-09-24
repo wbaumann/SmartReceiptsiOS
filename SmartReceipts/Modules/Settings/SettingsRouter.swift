@@ -33,7 +33,7 @@ class SettingsRouter: Router {
     func openSendLove() {
         if let reviewUrl = URL(string: "itms-apps://itunes.apple.com/app/id\(SmartReceiptAppStoreId)") {
             if UIApplication.shared.canOpenURL(reviewUrl) {
-                UIApplication.shared.open(reviewUrl, options: [:], completionHandler: nil)
+                UIApplication.shared.open(reviewUrl, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }
         }
     }
@@ -41,7 +41,7 @@ class SettingsRouter: Router {
     func openPrivacyPolicy() {
         if let privacyPolicyURL = URL(string: "https://www.smartreceipts.co/privacy") {
             if UIApplication.shared.canOpenURL(privacyPolicyURL) {
-                UIApplication.shared.open(privacyPolicyURL, options: [:], completionHandler: nil)
+                UIApplication.shared.open(privacyPolicyURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }
         }
     }
@@ -88,4 +88,9 @@ enum SettingsRoutes {
     case columns(isCSV: Bool)
     case paymentMethods
     case categories
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

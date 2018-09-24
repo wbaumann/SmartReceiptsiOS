@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Database.sharedInstance().close()
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.isFileURL {
             if url.pathExtension.isStringIgnoreCaseIn(array: ["png", "jpg", "jpeg"]) {
                 Logger.info("Launched for image")
@@ -93,8 +93,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 Logger.info("Loaded with unknown file")
             }
         } else {
-            let sourceApp = options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String
-            let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
+            let sourceApp = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String
+            let annotation = options[UIApplication.OpenURLOptionsKey.annotation]
             return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApp, annotation: annotation)
         }
         return true

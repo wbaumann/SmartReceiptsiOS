@@ -184,7 +184,7 @@ final class ReceiptsView: FetchedTableViewController {
         for i in 0..<itemsCount {
             let receipt = objectAtIndexPath(IndexPath(row: i, section: 0)) as! WBReceipt
             let str = receipt.formattedPrice()
-            let b = (str as NSString).boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 21)], context: nil)
+            let b = (str as NSString).boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 21)], context: nil)
             maxWidth = max(maxWidth, b.width + 10)
         }
         maxWidth = min(maxWidth, view.bounds.width/2)

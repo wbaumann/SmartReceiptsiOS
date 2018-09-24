@@ -55,7 +55,7 @@ class TripDistancesView: FetchedTableViewController {
             if let distance = objectAtIndexPath(IndexPath(row: row, section: 0)) as? Distance {
                 let distanceString = Price.stringFrom(amount: distance.distance)
                 let bounds = distanceString.boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics,
-                 attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 21)], context: nil)
+                 attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 21)], context: nil)
                 
                 max = CGFloat.maximum(max, bounds.width + 10)
             }

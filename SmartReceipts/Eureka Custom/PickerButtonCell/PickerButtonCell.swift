@@ -17,7 +17,7 @@ final class PickerButtonCell : Cell<String>, CellType {
     private let bag = DisposeBag()
     fileprivate let displayData = PickerDisplayData()
     
-    required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
