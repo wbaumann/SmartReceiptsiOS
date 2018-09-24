@@ -14,7 +14,7 @@ final class InlinePickerButtonCell : Cell<String>, CellType {
     @IBOutlet fileprivate var titleLabel: UILabel!
     @IBOutlet fileprivate var valueLabel: UILabel!
     
-    required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     

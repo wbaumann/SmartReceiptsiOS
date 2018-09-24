@@ -117,8 +117,11 @@ extension ReceiptFilePicker: UIDocumentBrowserViewControllerDelegate {
 }
 
 extension ReceiptFilePicker: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let img = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+        guard let img = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage else { return }
         let resultImage = WBImageUtils.compressImage(img, withRatio: kImageCompression)
         
         close(completion: { ReceiptDocument.makeDocumentFrom(image: resultImage!).open() })
@@ -159,9 +162,19 @@ class ReceiptDocument: UIDocument {
     class func makeDocumentFrom(image: UIImage) -> ReceiptDocument {
         let img = WBImageUtils.processImage(image)!
         let imgWithoutScale = WBImageUtils.withoutScreenScale(img)!
-        let imgData = UIImageJPEGRepresentation(imgWithoutScale, 1)!
+        let imgData = imgWithoutScale.jpegData(compressionQuality: 1)!
         let doc = ReceiptDocument(fileURL: ReceiptDocument.imgTempURL)
         doc.forceLoad(data: imgData, fileType: JPEG_TYPE)
         return doc
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

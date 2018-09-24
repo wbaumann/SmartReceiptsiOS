@@ -35,7 +35,7 @@ final class SettingsView: UserInterface {
         formView.openModuleSubject = presenter.openModuleSubject
         formView.alertSubject = presenter.alertSubject
         
-        addChildViewController(formView)
+        addChild(formView)
         view.addSubview(formView.view)
     }
     

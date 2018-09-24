@@ -2682,7 +2682,7 @@
 				TargetAttributes = {
 					84F4F33F18CFCCD000F69A35 = {
 						DevelopmentTeam = UX5Z7CLP7J;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -2699,7 +2699,7 @@
 					EA8D81CE1AEA956600BAC943 = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = UX5Z7CLP7J;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Manual;
 						TestTargetID = 84F4F33F18CFCCD000F69A35;
 					};
@@ -3854,8 +3854,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceipts/SmartReceipts-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WARNING_CFLAGS = "";
@@ -3907,8 +3906,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceipts/SmartReceipts-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WARNING_CFLAGS = "";
@@ -3970,7 +3968,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceiptsTests/SmartReceiptsTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartReceipts.app/SmartReceipts";
 			};
 			name = Debug;
@@ -4024,7 +4022,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartReceiptsTests/SmartReceiptsTests-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartReceipts.app/SmartReceipts";
 			};
 			name = Release;

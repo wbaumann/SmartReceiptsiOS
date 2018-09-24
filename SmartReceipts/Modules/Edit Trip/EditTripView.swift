@@ -29,7 +29,7 @@ final class EditTripView: UserInterface {
         super.viewDidLoad()
         
         formView = EditTripFormView(trip: displayData.trip)
-        addChildViewController(formView)
+        addChild(formView)
         view.addSubview(formView.view)
         setupInitialState()
         configureUIActions()

@@ -37,7 +37,7 @@ class Scan {
     }
     
     private func cache(image: UIImage) -> URL {
-        let imgData = UIImageJPEGRepresentation(image, kImageCompression)!
+        let imgData = image.jpegData(compressionQuality: kImageCompression)!
         try? imgData.write(to: ReceiptDocument.imgTempURL)
         return ReceiptDocument.imgTempURL
     }

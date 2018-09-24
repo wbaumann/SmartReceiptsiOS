@@ -36,7 +36,7 @@ final class GenerateReportView: UserInterface {
                                        zipStamped: presenter.zipStampedJPGs)
         formView?.settingsTapObservable = settingsTapObservable
         
-        addChildViewController(formView!)
+        addChild(formView!)
         view.insertSubview(formView!.view, belowSubview: shareButton)
         configureUIActions()
     }

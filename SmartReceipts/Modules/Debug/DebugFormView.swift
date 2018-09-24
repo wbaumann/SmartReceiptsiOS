@@ -65,7 +65,7 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
             row.cell.imageView?.image = #imageLiteral(resourceName: "launch_image")
         }.onCellSelection({ [unowned self] cell, row in
             if let imageURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("TestImage.jpg") {
-                try? UIImagePNGRepresentation(#imageLiteral(resourceName: "launch_image"))?.write(to: imageURL)
+                try? #imageLiteral(resourceName: "launch_image").pngData()?.write(to: imageURL)
                 self.s3Service.upload(file: imageURL)
                     .flatMap({ url -> Observable<UIImage> in
                         return self.s3Service.downloadImage(url)

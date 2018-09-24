@@ -30,7 +30,7 @@ final class DebugView: UserInterface {
         
         formView = DebugFormView()
         
-        addChildViewController(formView!)
+        addChild(formView!)
         view.addSubview(formView!.view)
         configureUIActions()
         

@@ -124,7 +124,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
             view.removeFromSuperview()
         }
         
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
         activityIndicator.color = AppTheme.primaryColor
         activityIndicator.startAnimating()
         backupsView.addArrangedSubview(activityIndicator)

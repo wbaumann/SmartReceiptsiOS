@@ -35,7 +35,7 @@ class S3Service {
     
     func upload(image: UIImage) -> Observable<URL> {
         if let imageURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("temp.jpg") {
-            try? UIImageJPEGRepresentation(image, 1.0)?.write(to: imageURL)
+            try? image.jpegData(compressionQuality: 1.0)?.write(to: imageURL)
             return upload(file: imageURL)
         }
         return Observable.error(NSError(domain: "temp.image.url.error", code: 1, userInfo: nil))
