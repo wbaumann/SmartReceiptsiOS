@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$12.53" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ta-4Y-eDi" userLabel="Price">
-                        <rect key="frame" x="16" y="0.0" width="64" height="68"/>
+                        <rect key="frame" x="16" y="0.0" width="64" height="68.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="64" id="aQ0-BQ-6LJ"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="t66-aH-5DX"/>
@@ -32,8 +31,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRi-pw-EYT" userLabel="Lines">
                         <rect key="frame" x="92" y="0.0" width="220" height="68.5"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9Q-Cn-vDU">
-                                <rect key="frame" x="0.0" y="2" width="84" height="20.5"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Trip Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9Q-Cn-vDU">
+                                <rect key="frame" x="0.0" y="2" width="182" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" id="gOM-FP-NWQ"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="qYo-WY-atP"/>
@@ -41,7 +40,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="March 6. 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENq-TD-C4c">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="March 6. 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENq-TD-C4c">
                                 <rect key="frame" x="0.0" y="24" width="109.5" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="gQg-FK-Mh5"/>
@@ -80,6 +79,7 @@
                             <constraint firstItem="hnh-b6-tOk" firstAttribute="leading" secondItem="hWA-Jn-Qzn" secondAttribute="trailing" priority="251" constant="8" id="FAy-fE-hMH"/>
                             <constraint firstAttribute="trailing" secondItem="hnh-b6-tOk" secondAttribute="trailing" id="Hrp-8w-ip2"/>
                             <constraint firstItem="awk-3K-vKh" firstAttribute="top" secondItem="z9Q-Cn-vDU" secondAttribute="top" id="IAA-n9-O6p"/>
+                            <constraint firstItem="awk-3K-vKh" firstAttribute="leading" secondItem="z9Q-Cn-vDU" secondAttribute="trailing" constant="8" id="KVa-iL-vto"/>
                             <constraint firstItem="z9Q-Cn-vDU" firstAttribute="top" secondItem="pRi-pw-EYT" secondAttribute="top" constant="2" id="KtP-E6-7GO"/>
                             <constraint firstAttribute="bottom" secondItem="hnh-b6-tOk" secondAttribute="bottom" constant="2.5" id="WPW-DY-kIo"/>
                             <constraint firstAttribute="trailing" secondItem="awk-3K-vKh" secondAttribute="trailing" id="d5j-yL-5Ys"/>
