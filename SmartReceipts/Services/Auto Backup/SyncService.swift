@@ -104,11 +104,15 @@ class SyncService {
             }
         }
         
-        for receipt in unsyncedReceipts {
+        for i in 0..<unsyncedReceipts.count {
+            let receipt = unsyncedReceipts[i]
             if !receipt.isMarkedForDeletion(syncProvider: .current) {
                 guard let trip = Database.sharedInstance().tripWithName(receipt.tripName) else { continue }
                 receipt.trip = trip
-                syncService?.uploadFile(receipt: receipt)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(i)) {
+                   self.syncService?.uploadFile(receipt: receipt)
+                }
             }
         }
     }

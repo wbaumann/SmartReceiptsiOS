@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import GoogleAPIClientForREST
 
 class GoogleDriveBackupProvider: BackupProvider {
     let backupMetadata = GoogleDriveSyncMetadata()
@@ -121,21 +122,22 @@ class GoogleDriveBackupProvider: BackupProvider {
                         try? data.write(to: fileURL)
                         return Database(databasePath: fileURL.absoluteString, tripsFolderPath: FileManager.tripsDirectoryPath)!
                     }).flatMap({ database -> Observable<BackupFetchResult> in
-                        var observables = [Observable<BackupReceiptFile>]()
-                        for file in receiptFiles {
-                            if file.name! == SYNC_DB_NAME { continue }
-                            observables.append(GoogleDriveService.shared.downloadFile(id: file.identifier!).asObservable()
-                                .map({ $0.data })
-                                .map({
-                                    let filename = debug ? "\(file.identifier!)_\(file.name!)" : file.name! 
-                                    return (filename, $0)
-                                }))
-                        }
-                        
-                        return Observable<(BackupReceiptFile)>.merge(observables).toArray()
+                        return receiptFiles.asObservable()
+                            .filter({ $0.name != SYNC_DB_NAME })
+                            .delayEach(seconds: 1, scheduler: MainScheduler.instance)
+                            .flatMap({ file -> Observable<(GTLRDrive_File, Data)> in
+                                return GoogleDriveService.shared.downloadFile(id: file.identifier!).asObservable()
+                                    .map({ (file, $0.data) })
+                            })
+                            .map({ downloading -> BackupReceiptFile in
+                                let file = downloading.0
+                                let filename = debug ? "\(file.identifier!)_\(file.name!)" : file.name!
+                                return (filename, downloading.1)
+                            }).toArray()
                             .map({ downloadedFiles -> BackupFetchResult in
                                 return BackupFetchResult(database, downloadedFiles)
                             })
+                        
                     }).asSingle()
             }).do(onError: { [weak self] in self?.handleError($0) })
     }

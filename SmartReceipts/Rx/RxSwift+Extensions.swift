@@ -32,6 +32,10 @@ extension Observable {
     func asVoid() -> Observable<Void> {
         return map({ _ -> Void in })
     }
+    
+    func delayEach(seconds: RxTimeInterval, scheduler: SchedulerType) -> Observable<Element> {
+        return RxSwift.Observable.zip(self, Observable<Int>.interval(seconds, scheduler: scheduler)).map({ $0.0 })
+    }
 }
 
 extension Array {
