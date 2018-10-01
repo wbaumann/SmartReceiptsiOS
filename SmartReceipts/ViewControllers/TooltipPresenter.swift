@@ -33,6 +33,8 @@ class TooltipPresenter {
         self.view = view
         
         BackupProvidersManager.shared.getCriticalSyncErrorStream()
+            .filter({ $0 != .unknownError })
+            .delay(0.1, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [unowned self] syncError in
                 self.presentSyncError(syncError)
             }).disposed(by: bag)
@@ -57,14 +59,14 @@ class TooltipPresenter {
         syncErrorTooltip = TooltipView.showErrorOn(view: view, text: text, offset: offset, screenWidth: screenWidth)
         
         syncErrorTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
-            self.updateInsetsSubject.onNext(.zero)
             self.syncErrorTooltip = nil
             self.errorTapSubject.onNext(syncError)
+            self.updateViewInsets()
         }).disposed(by: bag)
         
         syncErrorTooltip?.rx.close.subscribe(onNext: { [unowned self] in
-            self.updateInsetsSubject.onNext(.zero)
             self.syncErrorTooltip = nil
+            self.updateViewInsets()
         }).disposed(by: bag)
     }
     
@@ -82,15 +84,15 @@ class TooltipPresenter {
             
             reminderTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
                 TooltipService.shared.markBackupReminderDismissed()
-                self.updateInsetsSubject.onNext(.zero)
                 self.reminderTapSubject.onNext(())
-                self.reportTooltip = nil
+                self.reminderTooltip = nil
+                self.updateViewInsets()
             }).disposed(by: bag)
             
             reminderTooltip?.rx.close.subscribe(onNext: { [unowned self] in
                 TooltipService.shared.markBackupReminderDismissed()
-                self.updateInsetsSubject.onNext(.zero)
-                self.reportTooltip = nil
+                self.reminderTooltip = nil
+                self.updateViewInsets()
             }).disposed(by: bag)
         }
     }
@@ -110,16 +112,21 @@ class TooltipPresenter {
             
             reportTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
                 TooltipService.shared.markMoveToGenerateDismiss()
-                self.updateInsetsSubject.onNext(.zero)
                 self.generateTapSubject.onNext(())
                 self.reportTooltip = nil
+                self.updateViewInsets()
             }).disposed(by: bag)
             
             reportTooltip?.rx.close.subscribe(onNext: { [unowned self] in
                 TooltipService.shared.markMoveToGenerateDismiss()
-                self.updateInsetsSubject.onNext(.zero)
                 self.reportTooltip = nil
+                self.updateViewInsets()
             }).disposed(by: bag)
         }
+    }
+    
+    private func updateViewInsets() {
+        let insets: UIEdgeInsets = reportTooltip == nil && reminderTooltip == nil && syncErrorTooltip == nil ? .zero : TOOLTIP_INSETS
+        self.updateInsetsSubject.onNext(insets)
     }
 }

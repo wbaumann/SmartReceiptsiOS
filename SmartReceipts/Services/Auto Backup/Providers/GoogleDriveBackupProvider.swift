@@ -124,7 +124,7 @@ class GoogleDriveBackupProvider: BackupProvider {
                     }).flatMap({ database -> Observable<BackupFetchResult> in
                         return receiptFiles.asObservable()
                             .filter({ $0.name != SYNC_DB_NAME })
-                            .delayEach(seconds: 1, scheduler: MainScheduler.instance)
+                            .delayEach(seconds: 0.2, scheduler: MainScheduler.instance)
                             .flatMap({ file -> Observable<(GTLRDrive_File, Data)> in
                                 return GoogleDriveService.shared.downloadFile(id: file.identifier!).asObservable()
                                     .map({ (file, $0.data) })
