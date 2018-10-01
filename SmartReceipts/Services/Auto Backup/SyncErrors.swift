@@ -39,6 +39,8 @@ enum SyncError: Error {
         case USER_DELETED_REMOTE_DATA_REASON:
             return .userDeletedRemoteData
         default:
+            Logger.error(errorReason)
+            AnalyticsManager.sharedManager.record(event: ErrorEvent(message: errorReason))
             return .unknownError
         }
     }

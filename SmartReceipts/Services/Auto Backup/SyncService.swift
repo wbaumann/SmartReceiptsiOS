@@ -104,17 +104,15 @@ class SyncService {
             }
         }
         
-        for i in 0..<unsyncedReceipts.count {
-            let receipt = unsyncedReceipts[i]
-            if !receipt.isMarkedForDeletion(syncProvider: .current) {
-                guard let trip = Database.sharedInstance().tripWithName(receipt.tripName) else { continue }
-                receipt.trip = trip
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(i)) {
-                   self.syncService?.uploadFile(receipt: receipt)
+        unsyncedReceipts.asObservable()
+            .delayEach(seconds: 0.3, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] receipt in
+                if !receipt.isMarkedForDeletion(syncProvider: .current) {
+                    guard let trip = Database.sharedInstance().tripWithName(receipt.tripName) else { return }
+                    receipt.trip = trip
+                    self.syncService?.uploadFile(receipt: receipt)
                 }
-            }
-        }
+            }).disposed(by: bag)
     }
     
     func deleteFile(receipt: WBReceipt) {
