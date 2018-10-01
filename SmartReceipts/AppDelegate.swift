@@ -162,8 +162,9 @@ extension AppDelegate {
             _ = self.dataImport.execute(overwrite: overwrite)
                 .subscribeOn(MainScheduler.instance)
                 .subscribe(onNext: {
+                    SyncService.shared.trySyncData()
                     hud.hide()
-                    NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsImport, object: nil)
+                    NotificationCenter.default.post(name: .SmartReceiptsImport, object: nil)
                     let text = LocalizedString("app.delegate.import.success.alert.message")
                     _ = UIAlertController.showInfo(text: text, on: viewController).subscribe()
                     Logger.debug("app.delegate.import.success")

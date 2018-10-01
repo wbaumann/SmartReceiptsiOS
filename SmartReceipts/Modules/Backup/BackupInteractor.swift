@@ -10,6 +10,7 @@ import Foundation
 import Viperit
 import RxSwift
 import Toaster
+import Zip
 
 class BackupInteractor: Interactor {
     let bag = DisposeBag()
@@ -32,8 +33,9 @@ class BackupInteractor: Interactor {
                 let tempDirPath = NSTemporaryDirectory()
                 let database = result.database
                 let trips = database.allTrips() as! [WBTrip]
-                
-                var urls = [URL]()
+            
+                var urls = Set<URL>()
+                urls.insert(try! result.database.pathToDatabase.asURL())
                 
                 for file in result.files {
                     for trip in trips {
@@ -43,13 +45,13 @@ class BackupInteractor: Interactor {
                             _ = FileManager.createDirectiryIfNotExists(path: tripPath)
                             let receiptPath = tripPath.asNSString.appendingPathComponent(file.filename)
                             FileManager.default.createFile(atPath: receiptPath, contents: file.data, attributes: nil)
-                            urls.append(tripPath.asFileURL)
+                            urls.insert(tripPath.asFileURL)
                         }
                     }
                 }
                 
                 let backupPath = tempDirPath.asNSString.appendingPathComponent("\(backup.syncDeviceName).zip")
-                try? DataExport.zipFiles(urls, to: backupPath)
+                try? DataExport.zipFiles(Array(urls), to: backupPath)
                 for url in urls { try? FileManager.default.removeItem(at: url) }
                 
                 database.close()
@@ -70,17 +72,17 @@ class BackupInteractor: Interactor {
         BackupProvidersManager.shared.debugDownloadAllData(remoteBackupMetadata: backup)
             .map({ result -> URL? in
                 let tempDirPath = NSTemporaryDirectory()
-                var urls = [URL]()
-                urls.append(try! result.database.pathToDatabase.asURL())
+                var urls = Set<URL>()
+                urls.insert(try! result.database.pathToDatabase.asURL())
                 
                 for file in result.files {
                     let receiptPath = tempDirPath.asNSString.appendingPathComponent(file.filename)
                     FileManager.default.createFile(atPath: receiptPath, contents: file.data, attributes: nil)
-                    urls.append(receiptPath.asFileURL)
+                    urls.insert(receiptPath.asFileURL)
                 }
                 
                 let backupPath = tempDirPath.asNSString.appendingPathComponent("debug_\(backup.syncDeviceName).zip")
-                try? DataExport.zipFiles(urls, to: backupPath)
+                try? DataExport.zipFiles(Array(urls), to: backupPath)
                 for url in urls { try? FileManager.default.removeItem(at: url) }
                 
                 return backupPath.asFileURL
@@ -111,7 +113,7 @@ class BackupInteractor: Interactor {
                 database.close()
                 return result
             }).asObservable().flatMap({ receipts -> Observable<WBReceipt> in
-                return receipts.asObservable()
+                return receipts.asObservable().delayEach(seconds: 1, scheduler: MainScheduler.instance)
             }).flatMap({ receipt -> Observable<(WBReceipt, BackupReceiptFile)> in
                 return BackupProvidersManager.shared.downloadReceiptFile(syncId: receipt.syncId)
                     .asObservable()
