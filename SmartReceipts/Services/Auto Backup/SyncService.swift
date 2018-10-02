@@ -105,7 +105,8 @@ class SyncService {
         }
         
         unsyncedReceipts.asObservable()
-            .delayEach(seconds: 0.3, scheduler: MainScheduler.instance)
+            // Added to avoid Google Drive requests rate
+            .delayEach(seconds: 0.3, scheduler: BackgroundScheduler)
             .subscribe(onNext: { [unowned self] receipt in
                 if !receipt.isMarkedForDeletion(syncProvider: .current) {
                     guard let trip = Database.sharedInstance().tripWithName(receipt.tripName) else { return }
