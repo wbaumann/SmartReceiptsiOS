@@ -2629,6 +2629,7 @@
 			buildConfigurationList = 84F4F36C18CFCCD000F69A35 /* Build configuration list for PBXNativeTarget "SmartReceipts" */;
 			buildPhases = (
 				29D842FE25B5B0D44098C01E /* [CP] Check Pods Manifest.lock */,
+				4D975130216312E8005BDE87 /* Extract Local Secrets */,
 				EA1E60DA1B2742E40048E688 /* Check localization */,
 				84F4F33C18CFCCD000F69A35 /* Sources */,
 				84F4F33D18CFCCD000F69A35 /* Frameworks */,
@@ -2923,6 +2924,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		4D975130216312E8005BDE87 /* Extract Local Secrets */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Extract Local Secrets";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./scripts/secrets_extractor.sh";
 		};
 		57505F951E3E518300686549 /* highlight Swift macro TODO/FIXME as build warnings */ = {
 			isa = PBXShellScriptBuildPhase;
