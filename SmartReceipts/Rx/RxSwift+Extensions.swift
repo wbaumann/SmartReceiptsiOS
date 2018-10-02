@@ -9,6 +9,8 @@
 import RxSwift
 import RxCocoa
 
+let BackgroundScheduler = ConcurrentDispatchQueueScheduler(qos: .default)
+
 extension AnyObserver {
     init(onNext: ((E) -> Swift.Void)? = nil, onError: ((Error) -> Swift.Void)? = nil, onCompleted: (() -> Swift.Void)? = nil) {
         self.init { event in
