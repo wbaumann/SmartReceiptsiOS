@@ -191,6 +191,7 @@
 		716F34501EE040E100D0017A /* EditDistancePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F344A1EE040E100D0017A /* EditDistancePresenter.swift */; };
 		716F34511EE040E100D0017A /* EditDistanceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F344B1EE040E100D0017A /* EditDistanceRouter.swift */; };
 		716F34521EE040E100D0017A /* EditDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F344C1EE040E100D0017A /* EditDistanceView.swift */; };
+		716F7F5E21653882007DC275 /* DatabaseReceiptsDatesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F7F5D21653882007DC275 /* DatabaseReceiptsDatesTest.swift */; };
 		71762E781FD46F4800AC1388 /* ReportPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71762E771FD46F4800AC1388 /* ReportPDFGenerator.swift */; };
 		71762E7A1FD4713000AC1388 /* TripImagesPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71762E791FD4713000AC1388 /* TripImagesPDFGenerator.swift */; };
 		71762E7C1FD4716200AC1388 /* TripFullPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71762E7B1FD4716200AC1388 /* TripFullPDFGenerator.swift */; };
@@ -527,7 +528,6 @@
 		EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D81DC1AEA965D00BAC943 /* WBReportUtils.m */; };
 		EA8EB1071B0A4AAF00780BA3 /* ReceiptColumnReportComment.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8EB1061B0A4AAF00780BA3 /* ReceiptColumnReportComment.m */; };
 		EA8EB10A1B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8EB1091B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m */; };
-		EA90F2921B0CC4DD00FD2DB6 /* DatabaseReceiptsDatesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA90F2911B0CC4DD00FD2DB6 /* DatabaseReceiptsDatesTest.m */; };
 		EA98B51E1B075057006935AE /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA98B51D1B075057006935AE /* TripCell.xib */; };
 		EAD15C511B07C3A1003BB1F3 /* Database+Notify.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD15C501B07C3A1003BB1F3 /* Database+Notify.m */; };
 		EAD15C771B087029003BB1F3 /* DatabaseReceiptsCopyMoveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD15C761B087029003BB1F3 /* DatabaseReceiptsCopyMoveTest.m */; };
@@ -743,6 +743,7 @@
 		716F344A1EE040E100D0017A /* EditDistancePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistancePresenter.swift; sourceTree = "<group>"; };
 		716F344B1EE040E100D0017A /* EditDistanceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceRouter.swift; sourceTree = "<group>"; };
 		716F344C1EE040E100D0017A /* EditDistanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceView.swift; sourceTree = "<group>"; };
+		716F7F5D21653882007DC275 /* DatabaseReceiptsDatesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseReceiptsDatesTest.swift; sourceTree = "<group>"; };
 		71762E771FD46F4800AC1388 /* ReportPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPDFGenerator.swift; sourceTree = "<group>"; };
 		71762E791FD4713000AC1388 /* TripImagesPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripImagesPDFGenerator.swift; sourceTree = "<group>"; };
 		71762E7B1FD4716200AC1388 /* TripFullPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripFullPDFGenerator.swift; sourceTree = "<group>"; };
@@ -1186,7 +1187,6 @@
 		EA8EB1061B0A4AAF00780BA3 /* ReceiptColumnReportComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnReportComment.m; sourceTree = "<group>"; };
 		EA8EB1081B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptColumnReportCostCenter.h; sourceTree = "<group>"; };
 		EA8EB1091B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptColumnReportCostCenter.m; sourceTree = "<group>"; };
-		EA90F2911B0CC4DD00FD2DB6 /* DatabaseReceiptsDatesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseReceiptsDatesTest.m; sourceTree = "<group>"; };
 		EA98B51D1B075057006935AE /* TripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
 		EAD15C4F1B07C3A1003BB1F3 /* Database+Notify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Database+Notify.h"; sourceTree = "<group>"; };
 		EAD15C501B07C3A1003BB1F3 /* Database+Notify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Database+Notify.m"; sourceTree = "<group>"; };
@@ -2039,7 +2039,7 @@
 				EA07BF581AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m */,
 				EAD3EF861B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m */,
 				EAD15C761B087029003BB1F3 /* DatabaseReceiptsCopyMoveTest.m */,
-				EA90F2911B0CC4DD00FD2DB6 /* DatabaseReceiptsDatesTest.m */,
+				716F7F5D21653882007DC275 /* DatabaseReceiptsDatesTest.swift */,
 				EA6677731B05F6D3004D3993 /* DatabaseReceiptsPaymentMethodTest.m */,
 				EA888A821AFA601100DF2AE6 /* DatabaseReceiptsSumTest.m */,
 				EAD3EF841B0E00E000CA1D4D /* DatabaseReceiptsSwapTest.m */,
@@ -3537,6 +3537,7 @@
 				7123481A21418F650038AAE5 /* ReceiptColumnPriceTests.swift in Sources */,
 				EA8CEAE71AFCEBE90007B3F5 /* DatabaseTripsSumTest.m in Sources */,
 				7123483C21418F6D0038AAE5 /* PurchaseServiceTest.swift in Sources */,
+				716F7F5E21653882007DC275 /* DatabaseReceiptsDatesTest.swift in Sources */,
 				7123481B21418F650038AAE5 /* ReceiptColumnTaxTests.swift in Sources */,
 				A709D7451CF348EC00897DD9 /* DatabaseQueryAndroidV14Receipts.swift in Sources */,
 				7123481721418F650038AAE5 /* ReceiptColumnExchangedPriceTests.swift in Sources */,
@@ -3609,7 +3610,6 @@
 				7123481821418F650038AAE5 /* ReceiptColumnExchangedTaxTests.swift in Sources */,
 				EA1D42C91B03931400D64D3A /* DatabasePaymentMethodsTest.m in Sources */,
 				7123483921418F6D0038AAE5 /* ScansPurchaseTrackerTests.swift in Sources */,
-				EA90F2921B0CC4DD00FD2DB6 /* DatabaseReceiptsDatesTest.m in Sources */,
 				EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */,
 				7123481921418F650038AAE5 /* ReceiptColumnExchangeRateTests.swift in Sources */,
 				7123481C21418F650038AAE5 /* PricesCollectionTests.swift in Sources */,

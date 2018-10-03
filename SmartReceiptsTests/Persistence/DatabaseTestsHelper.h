@@ -38,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSArray<ReceiptColumn *> *__nonnull)getPdfColumns;
 - (BOOL)setPdfColumns:(NSArray<ReceiptColumn *> *__nonnull)columns;
+- (NSTimeInterval)maxSecondForReceiptsInTrip:(WBTrip *)trip onDate:(NSDate *)date;
 
 @end
 
