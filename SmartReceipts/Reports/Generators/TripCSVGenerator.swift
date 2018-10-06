@@ -23,10 +23,8 @@ class TripCSVGenerator: ReportCSVGenerator {
     @objc private func generateContent() -> Data {
         let content = NSMutableString()
         
-        if !WBPreferences.omitDefaultPdfTable() {
-            appendReceiptsTable(content)
-            content.append(TABLE_SPACING)
-        }
+        appendReceiptsTable(content)
+        content.append(TABLE_SPACING)
         
         appendDistancesTable(content)
         
