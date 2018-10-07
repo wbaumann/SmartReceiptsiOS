@@ -6,13 +6,8 @@
 
 /********** Uncategorized **********/
 
-"EMAIL_DATA_SUBJECT" = "Smart Receipts - %REPORT_NAME%";
-
-/* ================= Preference Pro ================== */
-"pref_pro_pdf_footer_defaultValue" = "Report Generated using Smart Receipts for Android";
-
 /* =================== App Details ===================== */
-"app_name" = "Smart Receipts";
+"sr_app_name" = "Smart Receipts";
 
 /* ================ Main Menu Options ================== */
 "menu_main_settings" = "הגדרות";
@@ -27,7 +22,7 @@
 
 "menu_main_export" = "גיבוי";
 
-"menu_main_usage_guide" = "Usage Guide";
+"menu_main_usage_guide" = "Руководство по использованию";
 
 /* ================ General Strings ================== */
 "add" = "הוסף";
@@ -87,8 +82,6 @@
 "save" = "שמור";
 
 "send_email" = "…שלח קובץ";
-
-"submit" = "שלח";
 
 "support" = "תמיכה - %@";
 
@@ -165,8 +158,6 @@
 
 "ocr_status_message_fetching_results" = "מביא תוצאות…";
 
-"ocr_configuration_title" = "(OCR) סריקות אוטומטיות";
-
 "ocr_configuration_scans_remaining" = "%d :שנותרו (OCR) סריקות אוטומטיות";
 
 "ocr_configuration_my_account" = "%@";
@@ -186,10 +177,6 @@
 "ocr_configuration_information_line3" = "To try OCR, all new users get 2 free scans! Please remember that OCR is an optional feature and can be disabled at any time.";
 
 /* ================ Categories ================== */
-"category_name" = " :שם";
-
-"category_code" = " :קוד";
-
 "category_null" = "<קטגוריה>";
 
 "category_null_code" = "NUL";
@@ -302,8 +289,6 @@
 "progress_building_reports" = "...בונה דוחות";
 
 /* ============== Start Error Messages ================= */
-"SD_ERROR" = ".תקלה: אנא וודא שכרטיס הזכרון שלך זמין ולא מחובר למחשב שלך";
-
 "SD_WARNING" = "אזהרה: כרטיס הזכרון שלך לא זמין או מחובר למחשב שלך. חלק מהתמונות עלולות להיות בלתי נגישות. מחליף לזכרון פנימי…";
 
 "database_error" = "תקלה: שמירת קבלה נכשלה";
@@ -335,8 +320,6 @@
 "toast_warning_reset_exchange_rate" = "אזהרה: שינוי המטבע יאתחל את כל המטבעות ושערי החליפין";
 
 "toast_error_trip_exists" = "תקלה: דוח בשם הזה קיים כבר";
-
-"toast_error_category_exists" = "תקלה: קטגוריה בשם הזה קיימת כבר";
 
 /* ============== Toast Messages ================= */
 "toast_receipt_copy" = "הקבלה הועתקה בהצלחה";
@@ -423,8 +406,6 @@
 
 /* ================= DIALOG_RECEIPTMENU =================== */
 "DIALOG_RECEIPTMENU_HINT_NAME" = "שם";
-
-"DIALOG_RECEIPTMENU_HINT_PRICE" = "מחיר (למשל 150.00)";
 
 "DIALOG_RECEIPTMENU_HINT_PRICE_SHORT" = "מחיר";
 
@@ -702,13 +683,7 @@
 
 "category_tax_field" = "מס";
 
-"category_currency_field" = "מטבע";
-
 "category_price_exchanged_field" = "מחיר לאחר המרה";
-
-"receipt_dialog_action_edit" = "ערוך קבלה";
-
-"receipt_dialog_action_view" = "הראה קבלה %@";
 
 "receipt_dialog_action_delete" = "מחק קבלה";
 
@@ -977,7 +952,7 @@
 
 "pref_output_receipts_landscape_off" = "טבלת קבלות מודפסת בדף מאונך";
 
-"pref_output_preferred_language_title" = "Preferred Report Language";
+"pref_output_preferred_language_title" = "Предпочтительный язык отчётов";
 
 /* ============== Preference Email ================= */
 "pref_email_default_email_to_title" = "כתובת אימייל ברירת מחדל למשלוח הדוח";
@@ -1075,288 +1050,16 @@
 /* ============== Preference Privacy ================= */
 "pref_about_privacy_policy_title" = "מדיניות פרטיות";
 
-/* ============= Preference General ================= */
-"pref_general_default_currency_defaultValue" = "";
-
-"pref_general_default_date_separator_defaultValue" = "";
-
-/* ============= Preference Output ================= */
-"pref_output_username_defaultValue" = "";
-
-"pref_output_pdf_page_size_defaultValue" = "@string/pref_output_pdf_page_size_a4_entryValue";
-
-"pref_output_preferred_language_defaultValue" = "@string/language_en_entry";
-
-/* ============== Preference Email ================= */
-"pref_email_default_email_to_defaultValue" = "";
-
-"pref_email_default_email_cc_defaultValue" = "";
-
-"pref_email_default_email_bcc_defaultValue" = "";
-
-"exchange_rate_key__sample" = "YOUR_KEY_HERE";
-
-"original_column_RECEIPTMENU_FIELD_NAME_en_us_name" = "Name";
-
-"original_column_RECEIPTMENU_FIELD_PRICE_en_us_name" = "Price";
-
-"original_column_RECEIPTMENU_FIELD_TAX_en_us_name" = "Tax";
-
-"original_column_RECEIPTMENU_FIELD_CURRENCY_en_us_name" = "Currency";
-
-"original_column_RECEIPTMENU_FIELD_DATE_en_us_name" = "Date";
-
-"original_column_RECEIPTMENU_FIELD_CATEGORY_en_us_name" = "Category";
-
-"original_column_RECEIPTMENU_FIELD_COMMENT_en_us_name" = "Comment";
-
-"original_column_item_blank_en_us_name" = "Blank Column";
-
-"original_column_item_category_code_en_us_name" = "Category Code";
-
-"original_column_item_category_name_en_us_name" = "Category Name";
-
-"original_column_item_user_id_en_us_name" = "User ID";
-
-"original_column_item_report_name_en_us_name" = "Report Name";
-
-"original_column_item_report_start_date_en_us_name" = "Report Start Date";
-
-"original_column_item_report_end_date_en_us_name" = "Report End Date";
-
-"original_column_item_report_comment_en_us_name" = "Report Comment";
-
-"original_column_item_report_cost_center_en_us_name" = "Report Cost Center";
-
-"original_column_item_image_file_name_en_us_name" = "Image Name";
-
-"original_column_item_image_path_en_us_name" = "Image Path";
-
-/* **Please note that for _en_us_namef translatable="false" lex purposes, some of these use the legacy names above** */
-"original_column_item_converted_price_exchange_rate_en_us_name" = "Price (Exchanged)";
-
-"original_column_item_converted_tax_exchange_rate_en_us_name" = "Tax (Exchanged)";
-
-"original_column_item_converted_price_plus_tax_exchange_rate_en_us_name" = "Price Plus Tax (Exchanged)";
-
-"original_column_item_exchange_rate_en_us_name" = "Exchange Rate";
-
-"original_column_item_pictured_en_us_name" = "Pictured";
-
-"original_column_item_reimbursable_en_us_name" = "Reimbursable";
-
-"original_column_item_deprecated_expensable_en_us_name" = "Expensable";
-
-"original_column_item_index_en_us_name" = "Receipt Index";
-
-"original_column_item_id_en_us_name" = "Receipt ID";
-
-"original_column_item_payment_method_en_us_name" = "Payment Method";
-
-/* Supported languages */
-"language_en_entry" = "en";
-
-"language_de_entry" = "de";
-
-"language_es_entry" = "es";
-
-"language_fr_entry" = "fr";
-
-"language_pt_entry" = "pt";
-
-"language_ru_entry" = "ru";
-
-"language_uk_entry" = "uk";
-
-"language_iw_entry" = "iw";
-
-"pref_output_pdf_page_size_title" = "Pdf Page Size";
-
-"pref_output_pdf_page_size_a4_entry" = "A4";
-
-"pref_output_pdf_page_size_letter_entry" = "Letter";
-
-"remote_backups_list_no_backups" = "You don't have any backups yet";
-
-/* =================== App Details ===================== */
-"sr_app_name" = "Smart Receipts";
-
-"sr_app_name_plus" = "Smart Receipts Plus";
-
 "column_item_deprecated_expensable" = "Expensable";
-
-/* ============== Preference Headers ================= */
-"pref_header_key" = "HeaderKey";
-
-"pref_general_header_key" = "pref_general_category_key";
-
-"pref_receipt_header_key" = "pref_receipt_category_key";
-
-"pref_output_header_key" = "pref_output_category_key";
-
-"pref_email_header_key" = "pref_email_category_key";
-
-"pref_camera_header_key" = "pref_camera_category_key";
-
-"pref_layout_header_key" = "pref_layout_category_key";
-
-"pref_distance_header_key" = "pref_distance_category_key";
-
-"pref_pro_header_key" = "pref_pro_category_key";
-
-"pref_help_header_key" = "pref_help_category_key";
-
-"pref_about_header_key" = "pref_about_category_key";
-
-"pref_privacy_header_key" = "pref_privacy_category_key";
-
-/* ============== Preference General ================= */
-"pref_general_trip_duration_key" = "TripDuration";
-
-"pref_general_default_currency_key" = "isocurr";
-
-"pref_general_default_date_separator_key" = "dateseparator";
-
-"pref_general_track_cost_center_key" = "trackcostcenter";
-
-/* ============== Preference Receipt ================= */
-"pref_receipt_customize_categories_key" = "CustomCategories";
-
-"pref_receipt_predict_categories_key" = "PredictCats";
-
-"pref_receipt_match_name_to_category_key" = "MatchNameCats";
-
-"pref_receipt_match_comment_to_category_key" = "MatchCommentCats";
-
-"pref_receipt_reimbursable_only_key" = "OnlyIncludeExpensable";
-
-"pref_receipt_reimbursable_default_key" = "ExpensableDefault";
-
-"pref_receipt_include_tax_field_key" = "IncludeTaxField";
-
-"pref_receipt_tax_percent_key" = "TaxPercentage";
-
-"pref_receipt_pre_tax_key" = "PreTax";
-
-"pref_receipt_enable_autocomplete_key" = "EnableAutoCompleteSuggestions";
-
-"pref_receipt_minimum_receipts_price_key" = "MinReceiptPrice";
-
-"pref_receipt_default_to_report_start_date_key" = "DefaultToFirstReportDate";
-
-"pref_receipt_show_id_key" = "ShowReceiptID";
-
-"pref_receipt_full_page_key" = "UseFullPage";
-
-"pref_receipt_use_payment_methods_key" = "UsePaymentMethods";
-
-"pref_receipt_payment_methods_key" = "PaymentMethods";
-
-/* ============= Preference Output ================= */
-"pref_output_custom_csv_key" = "CustomizeCSVOutput";
-
-"pref_output_custom_pdf_key" = "CustomizePDFOutput";
-
-"pref_output_username_key" = "UserName";
-
-"pref_output_print_receipt_id_by_photo_key" = "PrintByIDPhotoKey";
-
-"pref_output_print_receipt_comment_by_photo_key" = "PrintCommentByPhoto";
-
-"pref_output_receipts_landscape_key" = "ReceiptsTableLandscape";
-
-"pref_output_pdf_page_size_key" = "PdfPageSize";
-
-"pref_output_pdf_page_size_a4_entryValue" = "A4";
-
-"pref_output_pdf_page_size_letter_entryValue" = "Letter";
-
-"pref_output_preferred_language_key" = "PreferredReportLanguage";
-
-/* ============== Preference Email ================= */
-"pref_email_default_email_to_key" = "EmailTo";
-
-"pref_email_default_email_cc_key" = "EmailCC";
-
-"pref_email_default_email_bcc_key" = "EmailBCC";
-
-"pref_email_default_email_subject_key" = "EmailSubject";
-
-/* ============= Preference Camera ================= */
-"pref_camera_bw_key" = "SaveBW";
-
-"pref_camera_rotate_key" = "Camera_Rotate";
-
-/* ============= Preference Layout ================= */
-"pref_layout_display_date_key" = "LayoutIncludeReceiptDate";
-
-"pref_layout_display_category_key" = "LayoutIncludeReceiptCategory";
-
-/* ============= Preference Distance ================= */
-"pref_distance_include_price_in_report_key" = "MileageTotalInReport";
-
-"pref_distance_rate_key" = "MileageRate";
-
-"pref_distance_print_table_key" = "MileagePrintTable";
-
-"pref_distance_print_daily_key" = "MileageAddToPDF";
-
-"pref_distance_as_price_key" = "DistanceAsPrice";
-
-/* ================= Preference Plus ================== */
-"pref_pro_pdf_footer_key" = "PdfFooterString";
-
-"pref_pro_separate_by_category_key" = "SeparateByCategory";
-
-"pref_pro_categorical_summation_key" = "IncludeCategoricalSummation";
-
-"pref_pro_omit_default_table_key" = "OmitDefaultPDFTable";
-
-/* ============== Preference Support ================= */
-"pref_help_send_love_key" = "SendLove";
-
-"pref_help_send_feedback_key" = "SendFeedback";
-
-"pref_help_support_email_key" = "SupportEmail";
-
-/* =============== Preference About ================== */
-"pref_about_version_key" = "VersionNo";
-
-"pref_about_about_key" = "About";
-
-"pref_about_about_dialogMessage" = "Smart Receipts was created and is maintained by Smart Receipts LLC. It is licensed under GNU Affero General Public License";
-
-"pref_about_terms_key" = "TermsOfUse";
-
-"pref_about_terms_dialogMessage" = "This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.\n\nYou can view a copy of the GNU Affero General Public License at http://www.gnu.org/licenses/.";
-
-/* ============== Preference Privacy ================= */
-"pref_about_privacy_policy_key" = "PrivacyPolicy";
-
-"pref_privacy_enable_analytics_key" = "EnableAnalytics";
 
 "pref_privacy_enable_analytics_title" = "שתף מידע אנונימי אודות השימוש שלך";
 
 "pref_privacy_enable_analytics_summary" = "Google/Firebase Analytics באמצעות";
 
-"pref_privacy_enable_crash_tracking_key" = "EnableCrashTracking";
-
 "pref_privacy_enable_crash_tracking_title" = "שתף מידע על התרסקות התוכנה";
 
 "pref_privacy_enable_crash_tracking_summary" = "Google Crashlyticsבאמצעות ";
 
-"pref_privacy_enable_ad_personalization_key" = "EnableAdPersonalization";
-
 "pref_privacy_enable_ad_personalization_title" = "אפשר התאמה אישית של פרסומות";
 
 "pref_privacy_enable_ad_personalization_summary" = "Google AdMobעם ";
-
-/* =============== Preference Misc =================== */
-"pref_no_category_auto_backup_wifi_only_key" = "AutoBackupWifiOnly";
-
-"pref_no_category_ocr_incognito_mode_key" = "OcrIncognitoMode";
-
-"pref_no_category_ocr_is_enabled_key" = "OcrIsEnabled";
-
-/* ============== Preference Internal ================= */
-"pref_internal_app_version_code" = "VersionCode";
