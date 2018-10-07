@@ -35,7 +35,7 @@ public class PredectiveTextCell: TextCell, AutocompleteHelperDelegate {
     
     public override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         autocompleteHelper?.textField(textField, shouldChangeCharactersIn: range, replacementString: string)
-        return super.textField(textField, shouldChangeCharactersIn: range, replacementString: string)
+        return true
     }
     
     func didSelect(value: String) {
