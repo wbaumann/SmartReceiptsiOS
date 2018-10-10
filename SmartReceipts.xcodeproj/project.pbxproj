@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		4D004BB71D272836004DBB19 /* SmartReceiptsFormattableString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D004BB61D272836004DBB19 /* SmartReceiptsFormattableString.swift */; };
+		4D29DE84216CEDBA00591F7B /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D29DE67216CEDB900591F7B /* SharedLocalizable.strings */; };
+		4D29DE85216CEDBA00591F7B /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D29DE6A216CEDB900591F7B /* SharedLocalizable.strings */; };
+		4D29DE86216CEDBA00591F7B /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D29DE6D216CEDB900591F7B /* SharedLocalizable.strings */; };
+		4D29DE87216CEDBA00591F7B /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D29DE70216CEDB900591F7B /* SharedLocalizable.strings */; };
+		4D29DE88216CEDBA00591F7B /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D29DE73216CEDB900591F7B /* SharedLocalizable.strings */; };
+		4D29DE89216CEDBA00591F7B /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D29DE76216CEDB900591F7B /* SharedLocalizable.strings */; };
+		4D29DE8A216CEDBA00591F7B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D29DE78216CEDB900591F7B /* Localizable.strings */; };
+		4D29DE8B216CEDBA00591F7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D29DE7A216CEDB900591F7B /* InfoPlist.strings */; };
+		4D29DE8C216CEDBA00591F7B /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 4D29DE7C216CEDB900591F7B /* Localizable.stringsdict */; };
+		4D29DE8D216CEDBA00591F7B /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D29DE7F216CEDBA00591F7B /* SharedLocalizable.strings */; };
+		4D29DE8E216CEDBA00591F7B /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D29DE82216CEDBA00591F7B /* SharedLocalizable.strings */; };
 		4D380F911B61240C001B43D2 /* GADConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D380F901B61240C001B43D2 /* GADConstants.m */; };
 		4DF229461928678A0008D359 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF229451928678A0008D359 /* AdSupport.framework */; };
 		4DF22948192867940008D359 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF22947192867940008D359 /* AudioToolbox.framework */; };
@@ -571,6 +582,17 @@
 		3A00E20F6F7D842A0665F496 /* Pods_SmartReceiptsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartReceiptsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		495B4DADAB22A37B88E4F4B8 /* Pods-SmartReceipts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceipts.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts.release.xcconfig"; sourceTree = "<group>"; };
 		4D004BB61D272836004DBB19 /* SmartReceiptsFormattableString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartReceiptsFormattableString.swift; sourceTree = "<group>"; };
+		4D29DE68216CEDB900591F7B /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = SharedLocalizable.strings; sourceTree = "<group>"; };
+		4D29DE6B216CEDB900591F7B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = SharedLocalizable.strings; sourceTree = "<group>"; };
+		4D29DE6E216CEDB900591F7B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = SharedLocalizable.strings; sourceTree = "<group>"; };
+		4D29DE71216CEDB900591F7B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = SharedLocalizable.strings; sourceTree = "<group>"; };
+		4D29DE74216CEDB900591F7B /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = SharedLocalizable.strings; sourceTree = "<group>"; };
+		4D29DE77216CEDB900591F7B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = SharedLocalizable.strings; sourceTree = "<group>"; };
+		4D29DE79216CEDB900591F7B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = Localizable.strings; sourceTree = "<group>"; };
+		4D29DE7B216CEDB900591F7B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = InfoPlist.strings; sourceTree = "<group>"; };
+		4D29DE7D216CEDB900591F7B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = pl; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		4D29DE80216CEDBA00591F7B /* iw */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = iw; path = SharedLocalizable.strings; sourceTree = "<group>"; };
+		4D29DE83216CEDBA00591F7B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = SharedLocalizable.strings; sourceTree = "<group>"; };
 		4D33F3E019D8964200FE4EC4 /* GADConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADConstants.h; sourceTree = "<group>"; };
 		4D380F901B61240C001B43D2 /* GADConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADConstants.m; sourceTree = "<group>"; };
 		4D39888A1DB985D500C394D1 /* SmartReceipts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartReceipts.entitlements; sourceTree = "<group>"; };
@@ -1264,6 +1286,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D29DE66216CEDB900591F7B /* uk.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				4D29DE67216CEDB900591F7B /* SharedLocalizable.strings */,
+			);
+			path = uk.lproj;
+			sourceTree = "<group>";
+		};
+		4D29DE69216CEDB900591F7B /* ru.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				4D29DE6A216CEDB900591F7B /* SharedLocalizable.strings */,
+			);
+			path = ru.lproj;
+			sourceTree = "<group>";
+		};
+		4D29DE6C216CEDB900591F7B /* de.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				4D29DE6D216CEDB900591F7B /* SharedLocalizable.strings */,
+			);
+			path = de.lproj;
+			sourceTree = "<group>";
+		};
+		4D29DE6F216CEDB900591F7B /* fr.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				4D29DE70216CEDB900591F7B /* SharedLocalizable.strings */,
+			);
+			path = fr.lproj;
+			sourceTree = "<group>";
+		};
+		4D29DE72216CEDB900591F7B /* pt.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				4D29DE73216CEDB900591F7B /* SharedLocalizable.strings */,
+			);
+			path = pt.lproj;
+			sourceTree = "<group>";
+		};
+		4D29DE75216CEDB900591F7B /* pl.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				4D29DE76216CEDB900591F7B /* SharedLocalizable.strings */,
+				4D29DE78216CEDB900591F7B /* Localizable.strings */,
+				4D29DE7A216CEDB900591F7B /* InfoPlist.strings */,
+				4D29DE7C216CEDB900591F7B /* Localizable.stringsdict */,
+			);
+			path = pl.lproj;
+			sourceTree = "<group>";
+		};
+		4D29DE7E216CEDBA00591F7B /* iw.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				4D29DE7F216CEDBA00591F7B /* SharedLocalizable.strings */,
+			);
+			path = iw.lproj;
+			sourceTree = "<group>";
+		};
+		4D29DE81216CEDBA00591F7B /* es.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				4D29DE82216CEDBA00591F7B /* SharedLocalizable.strings */,
+			);
+			path = es.lproj;
+			sourceTree = "<group>";
+		};
 		4DF22941192867120008D359 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
@@ -1967,6 +2056,14 @@
 			isa = PBXGroup;
 			children = (
 				EA1E60C81B2742660048E688 /* en.lproj */,
+				4D29DE6C216CEDB900591F7B /* de.lproj */,
+				4D29DE81216CEDBA00591F7B /* es.lproj */,
+				4D29DE6F216CEDB900591F7B /* fr.lproj */,
+				4D29DE7E216CEDBA00591F7B /* iw.lproj */,
+				4D29DE75216CEDB900591F7B /* pl.lproj */,
+				4D29DE72216CEDB900591F7B /* pt.lproj */,
+				4D29DE69216CEDB900591F7B /* ru.lproj */,
+				4D29DE66216CEDB900591F7B /* uk.lproj */,
 				EA1E60D01B2742660048E688 /* pl.lproj */,
 				A79FDC721CEA0D7C00328DBB /* GoogleService-Info.plist */,
 				57C125181E12DAEF008551AC /* ServiceAccount.json */,
@@ -2714,6 +2811,13 @@
 				en,
 				"pl-PL",
 				pl,
+				uk,
+				ru,
+				de,
+				fr,
+				pt,
+				iw,
+				es,
 			);
 			mainGroup = 84F4F33718CFCCD000F69A35;
 			productRefGroup = 84F4F34118CFCCD000F69A35 /* Products */;
@@ -2737,6 +2841,7 @@
 				716F07DD2034AFDF00166D63 /* Backup.storyboard in Resources */,
 				714DE8A520531A090066EA6F /* HorizontalPickerItemCell.xib in Resources */,
 				71FB1D3E1F195D0D00742FF5 /* PaymentMethods.storyboard in Resources */,
+				4D29DE86216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
 				57C125191E12DAEF008551AC /* ServiceAccount.json in Resources */,
 				7185AEF51EFC1CC90038ED2A /* ReceiptMoveCopy.storyboard in Resources */,
 				EA07BF601AF4E801004D17F6 /* DistanceCell.xib in Resources */,
@@ -2749,16 +2854,21 @@
 				71CF7A141F1020590004F389 /* InputTextCell.xib in Resources */,
 				71ACA7C41F5B69C90024903E /* Debug.storyboard in Resources */,
 				7159BA0C1F06FB96004EABAA /* ExchangeRateCell.xib in Resources */,
+				4D29DE85216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
 				71AF49DF1EFDA4810022B2E2 /* ReceiptImageViewer.storyboard in Resources */,
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
+				4D29DE88216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
+				4D29DE8D216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
 				714AC77B2041C63B003656DB /* DescribedButtonCell.xib in Resources */,
 				EA1E60D91B2742660048E688 /* Localizable.strings in Resources */,
 				71695E6F2023AF2000F1A7C9 /* SharedLocalizable.strings in Resources */,
 				71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */,
 				EA40DC6B1B5559A1003BF545 /* FullPagePDFImageView.xib in Resources */,
 				EA1E60D61B2742660048E688 /* Localizable.strings in Resources */,
+				4D29DE8B216CEDBA00591F7B /* InfoPlist.strings in Resources */,
 				71FE9FF21F4778000043E7B4 /* TripTabViewController.xib in Resources */,
 				712D7E041FB793E600DE83EB /* Localizable.stringsdict in Resources */,
+				4D29DE87216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
 				7111ADA51F0EC38100DF77ED /* Settings.storyboard in Resources */,
 				719B1FE81EF6032D0049BD71 /* EditReceipt.storyboard in Resources */,
 				71572D851F15EA41001A1301 /* Columns.storyboard in Resources */,
@@ -2772,20 +2882,25 @@
 				EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */,
 				714104E21FF43D7700C334C5 /* LaunchView.xib in Resources */,
 				EA22679F1B1E035F005761E7 /* ReceiptCell.xib in Resources */,
+				4D29DE8A216CEDBA00591F7B /* Localizable.strings in Resources */,
+				4D29DE8C216CEDBA00591F7B /* Localizable.stringsdict in Resources */,
 				EA2B8D881B4EF44B0043A84B /* TripReportHeader.xib in Resources */,
 				EA40DC701B555CFE003BF545 /* FullPagePDFPageView.xib in Resources */,
 				71E8F3F51FA12452005BD447 /* OCRConfiguration.storyboard in Resources */,
 				716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */,
 				7190D44F1EE88CC40081CB22 /* GenerateReport.storyboard in Resources */,
+				4D29DE8E216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
 				EA1309A51B50282A0045FDDE /* PDFReportTable.xib in Resources */,
 				71628C23204EFB7F0032EEB7 /* NumberKeyboard.xib in Resources */,
 				714DE8A02051C83F0066EA6F /* HorizontalPickerCell.xib in Resources */,
 				71C014221F1AB14A005472B3 /* Categories.storyboard in Resources */,
+				4D29DE84216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
 				71F468321EEEDB03009F6CE7 /* EditTrip.storyboard in Resources */,
 				EA1E60D81B2742660048E688 /* InfoPlist.strings in Resources */,
 				71AF0EAE2007BE8D00AA4C37 /* DescribedSwitchCell.xib in Resources */,
 				71FE9FF91F4787710043E7B4 /* TitleOnlyCell.xib in Resources */,
 				EA2B8D8C1B4EF8110043A84B /* PDFPage.xib in Resources */,
+				4D29DE89216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
 				712D7E071FB793F900DE83EB /* Localizable.stringsdict in Resources */,
 				A79FDC731CEA0D7C00328DBB /* GoogleService-Info.plist in Resources */,
 			);
@@ -3652,6 +3767,94 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4D29DE67216CEDB900591F7B /* SharedLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D29DE68216CEDB900591F7B /* uk */,
+			);
+			name = SharedLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		4D29DE6A216CEDB900591F7B /* SharedLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D29DE6B216CEDB900591F7B /* ru */,
+			);
+			name = SharedLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		4D29DE6D216CEDB900591F7B /* SharedLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D29DE6E216CEDB900591F7B /* de */,
+			);
+			name = SharedLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		4D29DE70216CEDB900591F7B /* SharedLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D29DE71216CEDB900591F7B /* fr */,
+			);
+			name = SharedLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		4D29DE73216CEDB900591F7B /* SharedLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D29DE74216CEDB900591F7B /* pt */,
+			);
+			name = SharedLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		4D29DE76216CEDB900591F7B /* SharedLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D29DE77216CEDB900591F7B /* pl */,
+			);
+			name = SharedLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		4D29DE78216CEDB900591F7B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D29DE79216CEDB900591F7B /* pl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4D29DE7A216CEDB900591F7B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D29DE7B216CEDB900591F7B /* pl */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4D29DE7C216CEDB900591F7B /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D29DE7D216CEDB900591F7B /* pl */,
+			);
+			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
+		4D29DE7F216CEDBA00591F7B /* SharedLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D29DE80216CEDBA00591F7B /* iw */,
+			);
+			name = SharedLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		4D29DE82216CEDBA00591F7B /* SharedLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D29DE83216CEDBA00591F7B /* es */,
+			);
+			name = SharedLocalizable.strings;
+			sourceTree = "<group>";
+		};
 		712D7E021FB793E500DE83EB /* Localizable.stringsdict */ = {
 			isa = PBXVariantGroup;
 			children = (
