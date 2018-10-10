@@ -2941,7 +2941,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./scripts/secrets_extractor.sh";
+			shellScript = ./scripts/secrets_extractor.sh;
 		};
 		57505F951E3E518300686549 /* highlight Swift macro TODO/FIXME as build warnings */ = {
 			isa = PBXShellScriptBuildPhase;
