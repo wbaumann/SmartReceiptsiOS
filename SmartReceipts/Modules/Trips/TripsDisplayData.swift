@@ -26,21 +26,21 @@ final class TripsDisplayData: DisplayData {
     
     required init() {
         let items: [MenuItem]  = [
-            (LocalizedString("menu.item.settings"), settingsSubject),
-            (LocalizedString("menu.item.auto.scans"), autoScansSubject),
-            (LocalizedString("menu_item_backup"), backupSubject)
+            (LocalizedString("menu_main_settings"), settingsSubject),
+            (LocalizedString("ocr_configuration_title"), autoScansSubject),
+            (LocalizedString("backups"), backupSubject)
         ]
         menuDisplayData = TripsMenuDisplayData(items: items)
     }
     
     func makeActions() -> [UIAlertAction] {
-        let settingsAction = UIAlertAction(title: LocalizedString("menu.item.settings"),
+        let settingsAction = UIAlertAction(title: LocalizedString("menu_main_settings"),
             style: .default, handler: { _ in self.settingsSubject.onNext(()) })
         
-        let ocrSettingsAction = UIAlertAction(title: LocalizedString("menu.item.auto.scans"),
+        let ocrSettingsAction = UIAlertAction(title: LocalizedString("ocr_configuration_title"),
             style: .default, handler: { _ in self.autoScansSubject.onNext(()) })
         
-        let backupAction = UIAlertAction(title: LocalizedString("menu_item_backup"),
+        let backupAction = UIAlertAction(title: LocalizedString("backups"),
             style: .default, handler: { _ in self.backupSubject.onNext(()) })
         
         return [settingsAction, ocrSettingsAction, backupAction]

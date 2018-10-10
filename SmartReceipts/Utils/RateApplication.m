@@ -81,7 +81,7 @@ static NSString *const SRRateAppRatePressedKey = @"SRRateAppRatePressedKey";
         UIAlertControllerStyle style = UIAlertControllerStyleAlert;
         UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:style];
         
-        UIAlertAction *postitive = [UIAlertAction actionWithTitle:NSLocalizedString(@"rate.app.alert.positive.button", nil)
+        UIAlertAction *postitive = [UIAlertAction actionWithTitle:NSLocalizedString(@"yes", nil)
           style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
               [self markRatePressed];
               [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedRate]];
@@ -91,7 +91,7 @@ static NSString *const SRRateAppRatePressedKey = @"SRRateAppRatePressedKey";
               [UIApplication.sharedApplication openURL:[NSURL URLWithString:reviewURL] options:@{} completionHandler:nil];
          }];
         
-        UIAlertAction *negative = [UIAlertAction actionWithTitle:NSLocalizedString(@"rate.app.alert.negative.button", nil)
+        UIAlertAction *negative = [UIAlertAction actionWithTitle:NSLocalizedString(@"no", nil)
           style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
               [self markNoPressed];
               [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedNever]];

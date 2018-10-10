@@ -16,7 +16,7 @@ class FilesViewController: UIDocumentBrowserViewController {
         browserUserInterfaceStyle = .dark
         allowsDocumentCreation = false
         additionalTrailingNavigationBarButtonItems = [
-            UIBarButtonItem(title: LocalizedString("receipt_import_action_cancel"),
+            UIBarButtonItem(title: LocalizedString("DIALOG_CANCEL"),
                             style: .plain, target: self, action: #selector(FilesViewController.close))
         ]
     }

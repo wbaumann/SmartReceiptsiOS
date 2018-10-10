@@ -54,16 +54,16 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     }
     
     private func localizeUI() {
-        title = LocalizedString("backups_view_title")
+        title = LocalizedString("backups")
         
         manualBackupTitle.text = LocalizedString("backups_view_manual_title")
-        manualBackupDesctiption.text = LocalizedString("backups_view_manual_description")
-        importButton.setTitle(LocalizedString("backups_view_import_button").uppercased(), for: .normal)
-        backupButton.setTitle(LocalizedString("backups_view_backup_button").uppercased(), for: .normal)
+        manualBackupDesctiption.text = LocalizedString("manual_backup_description")
+        importButton.setTitle(LocalizedString("manual_backup_import").uppercased(), for: .normal)
+        backupButton.setTitle(LocalizedString("manual_backup_export").uppercased(), for: .normal)
         
         autoBackupTitle.text = LocalizedString("auto_backup_title")
         wifiLabel.text = LocalizedString("auto_backup_wifi_only")
-        existingBackupsLabel.text = LocalizedString("auto_backup_existing")
+        existingBackupsLabel.text = LocalizedString("existing_backups_title")
     }
     
     func updateUI() {
@@ -167,7 +167,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_delete"), style: .destructive, handler: { [unowned self] _ in
             self.openDelete(backup: backup)
         }))
-        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
@@ -180,7 +180,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         alert.addAction(UIAlertAction(title: LocalizedString("dialog_import_text"), style: .default, handler: { _ in
             self.presenter.importBackup(backup, overwrite: true)
         }))
-        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
@@ -194,7 +194,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         alert.addAction(UIAlertAction(title: LocalizedString("dialog_remote_backup_delete_positive"), style: .default, handler: { [unowned self] _ in
             self.presenter.deleteBackup(backup)
         }))
-        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
@@ -233,7 +233,7 @@ extension BackupView {
         
         let currentService = "\(LocalizedString("auto_backup_current_service")) - \(SyncProvider.current.localizedTitle())"
         let alert = UIAlertController(title: currentService, message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
         alert.addAction(makeProviderAction(syncProvider:.googleDrive))
         alert.addAction(makeProviderAction(syncProvider: .none))
         return alert
@@ -270,11 +270,11 @@ extension BackupView {
             }
         }
         
-        let sheet = UIAlertController(title: LocalizedString("settings.export.confirmation.alert.title"),
-                                      message: LocalizedString("settings.export.confirmation.alert.message"),
+        let sheet = UIAlertController(title: LocalizedString("dialog_export_title"),
+                                      message: LocalizedString("dialog_export_text"),
                                       preferredStyle: .alert)
-        sheet.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
-        sheet.addAction(UIAlertAction(title: LocalizedString("settings.export.confirmation.export.button"),
+        sheet.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
+        sheet.addAction(UIAlertAction(title: LocalizedString("dialog_export_positive"),
                                       style: .default, handler: exportAction))
         present(sheet, animated: true, completion: nil)
     }

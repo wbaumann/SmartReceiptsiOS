@@ -71,11 +71,11 @@ final class OCRConfigurationView: UserInterface {
     }
     
     private func localizeLabels() {
-        titleLabel.text = LocalizedString("ocr.configuration.module.title")
+        titleLabel.text = LocalizedString("ocr_configuration_welcome")
         descriptionLabel.text = LocalizedString("ocr.configuration.module.description")
-        availablePurchases.text = LocalizedString("ocr.configuration.module.avilable.purchases.label")
-        autoScansLabel.text = LocalizedString("ocr.configuration.module.automatic.scans.label")
-        saveImagesLabel.text = LocalizedString("ocr.configuration.module.save.images.label")
+        availablePurchases.text = LocalizedString("ocr_configuration_available_purchases")
+        autoScansLabel.text = LocalizedString("ocr_is_enabled")
+        saveImagesLabel.text = LocalizedString("ocr_save_scans_to_improve_results")
     }
 }
 

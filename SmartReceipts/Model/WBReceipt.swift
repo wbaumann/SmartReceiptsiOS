@@ -64,7 +64,7 @@ extension WBReceipt: Exchanged {
         }
         
         guard let number = exchangeRate, number.compare(NSDecimalNumber.zero) == .orderedDescending else {
-            return LocalizedString("pdf_report_undefined")
+            return LocalizedString("undefined")
         }
         
         return WBReceipt.exchangeRateFormatter().string(from: number)!
@@ -109,7 +109,7 @@ extension WBReceipt: ExchangedPriced {
     
     func exchangedPriceAsString() -> String {
         guard let exchanged = exchangedPrice() else {
-            return LocalizedString("pdf_report_undefined")
+            return LocalizedString("undefined")
         }
         
         return exchanged.amountAsString()
@@ -117,7 +117,7 @@ extension WBReceipt: ExchangedPriced {
     
     func formattedExchangedPrice() -> String {
         guard let exchanged = exchangedPrice() else {
-            return LocalizedString("pdf_report_undefined")
+            return LocalizedString("undefined")
         }
         
         return exchanged.currencyFormattedPrice()
@@ -165,7 +165,7 @@ extension WBReceipt: ExchangedTaxed {
     
     func exchangedTaxAsString() -> String {
         guard let tax = exchangedTax() else {
-            return LocalizedString("pdf_report_undefined")
+            return LocalizedString("undefined")
         }
         
         return tax.amountAsString()
@@ -221,7 +221,7 @@ extension WBReceipt {
     
     func exchangedNetPriceAsString() -> String {
         guard let net = exchangedNetPrice() else {
-            return LocalizedString("pdf_report_undefined")
+            return LocalizedString("undefined")
         }
 
         return net.amountAsString()

@@ -14,7 +14,7 @@ class ReceiptColumnExchangedPriceMinusTax: ReceiptColumn {
         if let price = receipt.priceMinusTaxExchanged() {
             return price.amountAsString()
         }
-        return LocalizedString("pdf_report_undefined")
+        return LocalizedString("undefined")
     }
     
     override func value(forFooter rows: [Any]!, forCSV: Bool) -> String! {

@@ -38,7 +38,7 @@ class GenerateReportFormView: FormViewController {
         form
         +++ Section()
         <<< ButtonRow() { row in
-            row.title = LocalizedString("generate.report.button.configure.layout")
+            row.title = LocalizedString("generate_report_tooltip")
         }.cellSetup({ cell, _ in
             cell.tintColor = AppTheme.primaryColor
         }).onCellSelection({ [weak self] _,_ in
@@ -47,17 +47,17 @@ class GenerateReportFormView: FormViewController {
         
         
         +++ Section()
-        <<< checkRow(title: LocalizedString("generate.report.option.full.pdf"))
+        <<< checkRow(title: LocalizedString("DIALOG_EMAIL_CHECKBOX_PDF_FULL"))
         .onChange({ [weak self] row in
             self?.fullPdfReport.onNext(row.value ?? false)
         })
         
-        <<< checkRow(title: LocalizedString("generate.report.option.pdf.no.table"))
+        <<< checkRow(title: LocalizedString("DIALOG_EMAIL_CHECKBOX_PDF_IMAGES"))
         .onChange({ [weak self] row in
             self?.pdfReportWithoutTable?.onNext(row.value ?? false)
         })
     
-        <<< checkRow(title: LocalizedString("generate.report.option.csv"))
+        <<< checkRow(title: LocalizedString("DIALOG_EMAIL_CHECKBOX_CSV"))
         .onChange({ [weak self] row in
             self?.csvFile.onNext(row.value ?? false)
         })

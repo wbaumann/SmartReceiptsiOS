@@ -34,7 +34,7 @@ class OCRConfigurationInteractor: Interactor {
         purchaseService.purchase(prodcutID: product)
             .subscribe(onNext: { _ in
                 hud.hide()
-                let text = LocalizedString("ocr.configuration.module.toast.success.purchase")
+                let text = LocalizedString("purchase_succeeded")
                 Toast.show(text)
             }, onError: { _ in
                 hud.hide()

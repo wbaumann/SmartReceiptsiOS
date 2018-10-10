@@ -24,7 +24,7 @@ final class PaymentMethodsView: FetchedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = LocalizedString("payment.methods.controller.title")
+        title = LocalizedString("payment_methods")
         setPresentationCellNib(TitleOnlyCell.viewNib())
         
         addItem.rx.tap.subscribe(onNext: {
@@ -55,18 +55,18 @@ final class PaymentMethodsView: FetchedTableViewController {
         return Observable<PaymentMethodAction>.create({ [unowned self] observer -> Disposable in
 
             let isEdit = method != nil
-            let title = isEdit ? LocalizedString("edit.payment.method.controller.edit.title") :
-                                 LocalizedString("edit.payment.method.controller.add.title")
+            let title = isEdit ? LocalizedString("payment_method_edit") :
+                                 LocalizedString("payment_method_add")
             
         
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
             alert.addTextField { textField in
-                textField.placeholder = LocalizedString("edit.payment.method.controller.placeholder")
+                textField.placeholder = LocalizedString("payment_method")
                 textField.text = method?.method
             }
         
-            let saveTitle = isEdit ? LocalizedString("edit.payment.method.controller.update") :
-                                     LocalizedString("edit.payment.method.controller.add")
+            let saveTitle = isEdit ? LocalizedString("dialog_mileage_positive_update") :
+                                     LocalizedString("dialog_mileage_positive_create")
             alert.addAction(UIAlertAction(title: saveTitle, style: .default, handler: { [unowned self] _ in
                 let pm = method ?? PaymentMethod()
                 let method = alert.textFields!.first!.text
@@ -76,7 +76,7 @@ final class PaymentMethodsView: FetchedTableViewController {
                 }
             }))
                 
-            alert.addAction(UIAlertAction(title: LocalizedString("edit.payment.method.controller.cancel"),
+            alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"),
                                           style: .default, handler: nil))
             
             self.present(alert, animated: true, completion: nil)

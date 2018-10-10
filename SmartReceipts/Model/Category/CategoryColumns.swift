@@ -11,11 +11,11 @@ import Foundation
 class CategoryColumn: Column {
     class func allColumns() -> [CategoryColumn] {
         return [
-            CategoryColumn(index: 0, name: LocalizedString("category.column.category")),
-            CategoryCodeCloumn(index: 0, name: LocalizedString("category.column.category.code")),
-            CategoryCurrencyColumn(index: 0, name: LocalizedString("category.column.currency")),
-            CategoryPriceColumn(index: 0, name: LocalizedString("category.column.price")),
-            CategoryTaxColumn(index: 0, name: LocalizedString("category.column.tax")),
+            CategoryColumn(index: 0, name: LocalizedString("filter_name_receipt_category")),
+            CategoryCodeCloumn(index: 0, name: LocalizedString("column_item_category_code")),
+            CategoryCurrencyColumn(index: 0, name: LocalizedString("RECEIPTMENU_FIELD_CURRENCY")),
+            CategoryPriceColumn(index: 0, name: LocalizedString("RECEIPTMENU_FIELD_PRICE")),
+            CategoryTaxColumn(index: 0, name: LocalizedString("RECEIPTMENU_FIELD_TAX")),
         ]
     }
     

@@ -145,10 +145,10 @@ final class ReceiptsView: FetchedTableViewController {
     
     private func configureFloatyButton() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            addFloatyItem(LocalizedString("receipt_floaty_item_picture"), icon: #imageLiteral(resourceName: "camera"), subject: presenter.createReceiptCameraSubject)
+            addFloatyItem(LocalizedString("receipt_action_camera"), icon: #imageLiteral(resourceName: "camera"), subject: presenter.createReceiptCameraSubject)
         }
-        addFloatyItem(LocalizedString("receipt_floaty_item_text_only"), icon: #imageLiteral(resourceName: "file-text"), subject: presenter.createReceiptTextSubject)
-        addFloatyItem(LocalizedString("receipt_floaty_item_import"), icon: #imageLiteral(resourceName: "file-plus"), subject: presenter.importReceiptFileSubject)
+        addFloatyItem(LocalizedString("receipt_action_text"), icon: #imageLiteral(resourceName: "file-text"), subject: presenter.createReceiptTextSubject)
+        addFloatyItem(LocalizedString("manual_backup_import"), icon: #imageLiteral(resourceName: "file-plus"), subject: presenter.importReceiptFileSubject)
         floatyButton.sticky = true
     }
     

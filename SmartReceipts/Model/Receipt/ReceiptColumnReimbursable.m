@@ -13,7 +13,7 @@
 @implementation ReceiptColumnReimbursable
 
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
-    return [receipt isReimbursable] ? NSLocalizedString(@"receipt.column.reimbursable.value.yes", nil) : NSLocalizedString(@"receipt.column.reimbursable.value.no", nil);
+    return [receipt isReimbursable] ? NSLocalizedString(@"yes", nil) : NSLocalizedString(@"no", nil);
 }
 
 @end

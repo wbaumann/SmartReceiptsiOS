@@ -98,7 +98,7 @@ class GenerateReportInteractor: Interactor {
                 
                 actions.append(emailAction)
                 actions.append(otherAction)
-                actions.append(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: {
+                actions.append(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: {
                     _ in
                     for file in files { FileManager.deleteIfExists(filepath: file) }
                 }))
@@ -116,25 +116,25 @@ class GenerateReportInteractor: Interactor {
                 
                 switch error {
                 case .fullPdfFailed:
-                    message = LocalizedString("generate.report.option.full.pdf")
+                    message = LocalizedString("DIALOG_EMAIL_CHECKBOX_PDF_FULL")
                 case .fullPdfTooManyColumns:
-                    title = LocalizedString("generate.report.unsuccessful.alert.pdf.columns.title")
+                    title = LocalizedString("report_pdf_error_too_many_columns_title")
                     if WBPreferences.printReceiptTableLandscape() {
                         message = LocalizedString("generate.report.unsuccessful.alert.pdf.columns.message")
                     } else {
                         message = LocalizedString("generate.report.unsuccessful.alert.pdf.columns.message.tryportrait")
                     }
                     
-                    let openSettingsAction = UIAlertAction(title: LocalizedString("generate.report.unsuccessful.alert.pdf.columns.gotosettings"),
+                    let openSettingsAction = UIAlertAction(title: LocalizedString("report_pdf_error_go_to_settings"),
                                                            style: .default, handler: { _ in
                         self.presenter.presentOutputSettings()
                     })
                     actions.append(openSettingsAction)
                     
                 case .imagesPdf:
-                    message = LocalizedString("generate.report.option.pdf.no.table")
+                    message = LocalizedString("DIALOG_EMAIL_CHECKBOX_PDF_IMAGES")
                 case .csvFailed:
-                    message = LocalizedString("generate.report.option.csv")
+                    message = LocalizedString("DIALOG_EMAIL_CHECKBOX_CSV")
                 case .zipImagesFailed:
                     message = LocalizedString("generate.report.option.zip.stamped")
                 }

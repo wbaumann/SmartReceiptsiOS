@@ -40,7 +40,7 @@ class ReceiptActionsFormView: FormViewController {
         
         form
         +++ Section()
-        <<< buttonRow(title: LocalizedString("receipt_action_edit_receipt"), bindSubject: editReceiptTap)
+        <<< buttonRow(title: LocalizedString("receipt_dialog_action_edit"), bindSubject: editReceiptTap)
             
         <<< buttonRow(title: handleAttachTitle(), bindSubject: handleAttachTap,
                   condition: Condition.function([], { _ in
@@ -53,8 +53,8 @@ class ReceiptActionsFormView: FormViewController {
                   }))
         
         <<< buttonRow(tag: TAKE_IMAGE_ROW, title: takeImageTitle(), bindSubject: takeImageTap)
-        <<< buttonRow(title: LocalizedString("receipt.action.move"), bindSubject: moveTap)
-        <<< buttonRow(title: LocalizedString("receipt.action.copy"), bindSubject: copyTap)
+        <<< buttonRow(title: LocalizedString("move"), bindSubject: moveTap)
+        <<< buttonRow(title: LocalizedString("copy"), bindSubject: copyTap)
         <<< buttonRow(title: LocalizedString("receipt.action.swap.up"), bindSubject: swapUpTap)
         <<< buttonRow(title: LocalizedString("receipt.action.swap.down"), bindSubject: swapDownTap)
         

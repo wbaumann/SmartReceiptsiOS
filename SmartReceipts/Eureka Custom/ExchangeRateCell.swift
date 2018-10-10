@@ -92,7 +92,7 @@ public class ExchangeRateCell: DecimalCell {
             [unowned self] action in
             self.row().updateTap.onNext(())
         }
-        let okAction = UIAlertAction(title: LocalizedString("exchange.rate.retrieve.error.cancel.button"), style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil)
         
         let alert = UIAlertController(title: LocalizedString("exchange.rate.retrieve.error.title"), message: LocalizedString("exchange.rate.retrieve.error.message"), preferredStyle: .alert)
         alert.addAction(retryAction)
@@ -101,7 +101,7 @@ public class ExchangeRateCell: DecimalCell {
     }
     
     private func showSubscriptionInfo() {
-        let cancelAction = UIAlertAction(title: LocalizedString("exchange.rate.subcsription.no.button"), style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: LocalizedString("apprating_dialog_negative"), style: .cancel, handler: nil)
         let detailsAction = UIAlertAction(title: LocalizedString("exchange.rate.subcsription.details.button"), style: .default) {
             _ in self.openSettings()
         }

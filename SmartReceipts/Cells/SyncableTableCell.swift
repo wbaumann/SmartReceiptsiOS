@@ -37,7 +37,7 @@ class SyncableTableCell: UITableViewCell {
             navController.modalPresentationStyle = .formSheet
             root?.present(navController, animated: true, completion: nil)
         }))
-        alert.addAction(.init(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: nil))
+        alert.addAction(.init(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
         
         root?.present(alert, animated: true, completion: nil)
     }

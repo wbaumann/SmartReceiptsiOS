@@ -9,7 +9,7 @@
 import XCTest
 @testable import SmartReceipts
 
-let UNDEFINED = LocalizedString("pdf_report_undefined")
+let UNDEFINED = LocalizedString("undefined")
 
 class WBReceiptTests: XCTestCase {
     fileprivate let trip = WBTrip()

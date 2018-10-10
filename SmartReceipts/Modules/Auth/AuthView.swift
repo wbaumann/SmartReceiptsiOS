@@ -65,9 +65,9 @@ final class AuthView: UserInterface {
             if !isVaildEmail {
                 return (LocalizedString("login.fields.hint.email"), false)
             } else if !isValidPassword {
-                return (LocalizedString("login.fields.hint.password"), false)
+                return (LocalizedString("login_fields_hint_password"), false)
             } else {
-                return (LocalizedString("login.fields.hint.valid"), true)
+                return (LocalizedString("login_fields_hint_valid"), true)
             }
         }).subscribe(onNext: { [unowned self] result in
             self.loginButton.isEnabled = result.valid
@@ -146,7 +146,7 @@ extension AuthView: AuthViewInterface {
             self?.hud?.hide(true)
             switch event {
             case .next:
-                Toast.show(LocalizedString("login.success.login.toast"))
+                Toast.show(LocalizedString("login_success_toast"))
             default: break
             }
         })
