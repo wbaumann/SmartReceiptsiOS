@@ -137,18 +137,18 @@ extension AppDelegate {
     }
     
     func handleSMR(url: URL) {
-        let alert = UIAlertController(title: LocalizedString("app.delegate.import.alert.title"),
+        let alert = UIAlertController(title: LocalizedString("manual_backup_import"),
           message: LocalizedString("dialog_import_text"), preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.cancel"), style: .cancel, handler: { _ in
+        alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: { _ in
             FileManager.deleteIfExists(filepath: url.path)
         }))
         
-        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.yes"), style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: LocalizedString("yes"), style: .default, handler: { _ in
             self.importZip(from: url, overwrite: true)
         }))
         
-        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.no"), style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: LocalizedString("no"), style: .default, handler: { _ in
             self.importZip(from: url, overwrite: false)
         }))
         AdNavigationEntryPoint.navigationController?.visibleViewController?.present(alert, animated: true)

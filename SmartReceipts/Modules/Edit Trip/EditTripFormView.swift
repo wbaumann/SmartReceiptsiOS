@@ -49,7 +49,7 @@ class EditTripFormView: FormViewController {
         form
         +++ Section()
         <<< TextRow(NAME_ROW_TAG) { row in
-            row.title = LocalizedString("edit.trip.name.label")
+            row.title = LocalizedString("RECEIPTMENU_FIELD_NAME")
             row.value = trip?.name
             row.add(rule: RuleRequired())
         }.onChange({ [unowned self] row in
@@ -62,7 +62,7 @@ class EditTripFormView: FormViewController {
         })
         
         <<< DateInlineRow(START_DATE_TAG) { row in
-            row.title = LocalizedString("edit.trip.start.date.label")
+            row.title = LocalizedString("DIALOG_TRIPMENU_HINT_START")
             row.value = trip?.startDate
             row.dateFormatter?.timeZone = trip?.startTimeZone
         }.onChange({ [unowned self] row in
@@ -74,7 +74,7 @@ class EditTripFormView: FormViewController {
         })
         
         <<< DateInlineRow(END_DATE_TAG) { row in
-            row.title = LocalizedString("edit.trip.end.date.label")
+            row.title = LocalizedString("DIALOG_TRIPMENU_HINT_END")
             row.value = trip?.endDate
             row.dateFormatter?.timeZone = trip?.endTimeZone
         }.onChange({ [unowned self] row in
@@ -86,7 +86,7 @@ class EditTripFormView: FormViewController {
         })
         
         <<< PickerInlineRow<String>() { row in
-            row.title = LocalizedString("edit.trip.default.currency.label")
+            row.title = LocalizedString("pref_general_default_currency_title")
             row.options = Currency.allCurrencyCodesWithCached()
             row.value = trip?.defaultCurrency.code ?? WBPreferences.defaultCurrency()
         }.onChange({ [unowned self] row in
@@ -96,7 +96,7 @@ class EditTripFormView: FormViewController {
         })
         
         <<< TextRow() { row in
-            row.title = LocalizedString("edit.trip.comment.label")
+            row.title = LocalizedString("RECEIPTMENU_FIELD_COMMENT")
             row.value = trip?.comment ?? ""
         }.onChange({ [unowned self] row in
             self.trip?.comment = row.value ?? ""
@@ -105,7 +105,7 @@ class EditTripFormView: FormViewController {
         })
         
         <<< TextRow() { row in
-            row.title = LocalizedString("edit.trip.cost.center.label")
+            row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_COST_CENTER")
             row.value = trip?.costCenter ?? ""
             row.hidden = Condition(booleanLiteral: !WBPreferences.trackCostCenter())
         }.onChange({ [unowned self] row in

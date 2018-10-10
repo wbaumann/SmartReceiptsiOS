@@ -28,7 +28,7 @@ final class SettingsView: UserInterface {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = LocalizedString("settings.controller.title")
+        navigationItem.title = LocalizedString("menu_main_settings")
         
         formView = SettingsFormView(settingsView: self)
         formView.showOption = displayData.showSettingsOption

@@ -45,15 +45,15 @@ static NSString *const COLUMN_CUSTOM_ORDER_ID = @"custom_order_id";
 }
 
 + (NSString *)CATEGORY_NAME_BREAKFAST {
-    return NSLocalizedString(@"category.breakfast.name", nil);
+    return NSLocalizedString(@"category_breakfast", nil);
 }
 
 + (NSString *)CATEGORY_NAME_LUNCH {
-    return NSLocalizedString(@"category.lunch.name", nil);
+    return NSLocalizedString(@"category_lunch", nil);
 }
 
 + (NSString *)CATEGORY_NAME_DINNER {
-    return NSLocalizedString(@"category.dinner.name", nil);
+    return NSLocalizedString(@"category_dinner", nil);
 }
 
 + (NSDictionary *)namesToCodeMapFromCategories:(NSArray *)categories {

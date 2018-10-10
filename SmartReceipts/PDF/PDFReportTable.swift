@@ -249,10 +249,10 @@ class PDFReportTable: UIView {
     }
     
     private func canSqueezeColumn(title: String) -> Bool {
-        return LocalizedString("receipt.column.comment") == title ||
-            LocalizedString("receipt.column.name") == title ||
-            LocalizedString("receipt.column.report.comment") == title ||
-            LocalizedString("receipt.column.blank.column") == title
+        return LocalizedString("RECEIPTMENU_FIELD_COMMENT") == title ||
+            LocalizedString("RECEIPTMENU_FIELD_NAME") == title ||
+            LocalizedString("column_item_report_comment") == title ||
+            LocalizedString("column_item_blank") == title
     }
     
 }

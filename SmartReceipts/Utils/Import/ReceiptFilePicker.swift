@@ -28,7 +28,7 @@ class ReceiptFilePicker: NSObject {
             let title = LocalizedString("receipt_import_action_sheet_title")
             let actionFilesTitle = LocalizedString("receipt_import_action_files")
             let actionCameraRollTitle = LocalizedString("receipt_import_action_camera_roll")
-            let cancelActionTitle = LocalizedString("receipt_import_action_cancel")
+            let cancelActionTitle = LocalizedString("DIALOG_CANCEL")
             
             let actionSheet = UIAlertController(title: nil, message: title, preferredStyle: .actionSheet)
             

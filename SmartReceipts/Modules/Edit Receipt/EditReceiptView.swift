@@ -91,10 +91,10 @@ final class EditReceiptView: UserInterface {
             var id: UInt!
             if self?.displayData.receipt == nil {
                 id = Database.sharedInstance().nextReceiptID()
-                newTitle = LocalizedString("edit.receipt.controller.add.title")
+                newTitle = LocalizedString("DIALOG_RECEIPTMENU_TITLE_NEW")
             } else {
                 id = self?.displayData.receipt!.objectId
-                newTitle = LocalizedString("edit.receipt.controller.edit.title")
+                newTitle = LocalizedString("receipt_dialog_action_edit")
             }
             newTitle = WBPreferences.showReceiptID() ? newTitle + " - \(id!)" : newTitle
             DispatchQueue.main.async { [weak self] in

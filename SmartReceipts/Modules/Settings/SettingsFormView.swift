@@ -88,9 +88,9 @@ class SettingsFormView: FormViewController {
                 }).disposed(by: self.bag)
         })
         
-        +++ Section(LocalizedString("settings.pro.section.title"))
+        +++ Section(LocalizedString("pref_pro_header"))
         <<< InputTextRow() { [unowned self] row in
-            row.title = LocalizedString("settings.pdf.footer.text.label")
+            row.title = LocalizedString("pref_pro_pdf_footer_title")
             row.value = WBPreferences.pdfFooterString()
             self.footerRow = row
             row.isEnabled = self.hasValidSubscription
@@ -100,13 +100,13 @@ class SettingsFormView: FormViewController {
             cell.textField.font = UIFont.systemFont(ofSize: 14)
         }).onCellSelection({ [unowned self] _, row in
             if !row.isEnabled {
-                self.alertSubject.onNext((title: LocalizedString("settings.pdf.footer.pro.message.title"),
+                self.alertSubject.onNext((title: LocalizedString("pref_pro_header"),
                                         message: LocalizedString("settings.pdf.footer.pro.message.body")))
             }
         })
         
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.pro.payments.by.category.title")
+            row.title = LocalizedString("pref_pro_separate_by_category_title")
             row.value = WBPreferences.separatePaymantsByCategory()
             row.onSubtitle = LocalizedString("settings.pro.payments.by.category.description.on")
             row.offSubtitle = LocalizedString("settings.pro.payments.by.category.description.off")
@@ -128,7 +128,7 @@ class SettingsFormView: FormViewController {
         })
             
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.pro.omit.default.pdf.table.title")
+            row.title = LocalizedString("pref_pro_omit_default_table_title")
             row.value = WBPreferences.omitDefaultPdfTable()
         }.onChange({ row in
             WBPreferences.setOmitDefaultPdfTable(row.value!)
@@ -137,15 +137,15 @@ class SettingsFormView: FormViewController {
         })
         
            
-        +++ Section(LocalizedString("settings.email.section.title"))
-        <<< textInput(LocalizedString("settings.default.email.recipient.lebel"),
+        +++ Section(LocalizedString("pref_email_header"))
+        <<< textInput(LocalizedString("pref_email_default_email_to_title"),
             value: WBPreferences.defaultEmailRecipient(),
             placeholder: LocalizedString("settings.default.email.recipient.placeholder"))
         .onChange({ row in
             WBPreferences.setDefaultEmailRecipient(row.value ?? "")
         })
         
-        <<< textInput(LocalizedString("settings.default.email.cc.lebel"),
+        <<< textInput(LocalizedString("pref_email_default_email_cc_title"),
             value: WBPreferences.defaultEmailCC(),
             placeholder: LocalizedString("settings.default.email.cc.placeholder"))
         .onChange({ row in
@@ -159,16 +159,16 @@ class SettingsFormView: FormViewController {
             WBPreferences.setDefaultEmailBCC(row.value ?? "")
         })
             
-        <<< textInput(LocalizedString("settings.default.email.subject.label"),
+        <<< textInput(LocalizedString("pref_email_default_email_subject_title"),
             value: WBPreferences.defaultEmailSubject())
         .onChange({ row in
             WBPreferences.setDefaultEmailSubject(row.value ?? "")
         })
 
-        +++ Section(LocalizedString("settings.general.section.title"))
+        +++ Section(LocalizedString("pref_general_header"))
         <<< DescribedSwitchRow() { row in
             row.title = LocalizedString("settings.enable.autocomplete.label")
-            row.onSubtitle = LocalizedString("settings_receipt_enable_autocomplete_summary")
+            row.onSubtitle = LocalizedString("pref_receipt_enable_autocomplete_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.isAutocompleteEnabled()
         }.onChange({ row in
@@ -200,7 +200,7 @@ class SettingsFormView: FormViewController {
             row.title = LocalizedString("settings.min.receipt.price.label")
             let value = WBPreferences.minimumReceiptPriceToIncludeInReports()
             row.value = value == WBPreferences.min_FLOAT() || value == Float(Int32.min) ? nil : Double(value)
-            row.placeholder = LocalizedString("settings.min.receipt.price.placeholder")
+            row.placeholder = LocalizedString("RECEIPTMENU_FIELD_PRICE")
         }.onChange({ row in
             let value = row.value == nil ? WBPreferences.min_FLOAT() : Float(row.value!)
             WBPreferences.setMinimumReceiptPriceToIncludeInReports(value)
@@ -211,7 +211,7 @@ class SettingsFormView: FormViewController {
             cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         })
             
-        <<< textInput(LocalizedString("settings.user.id.label"),
+        <<< textInput(LocalizedString("pref_output_username_title"),
             value: WBPreferences.userID())
         .onChange({ row in
             WBPreferences.setUserID(row.value ?? "")
@@ -223,7 +223,7 @@ class SettingsFormView: FormViewController {
         })
 
         <<< PickerInlineRow<String>() { row in
-            row.title = LocalizedString("settings.default.currency.label")
+            row.title = LocalizedString("pref_general_default_currency_title")
             row.options = Currency.allCurrencyCodesWithCached()
             row.value = WBPreferences.defaultCurrency()
         }.onChange({ row in
@@ -239,17 +239,17 @@ class SettingsFormView: FormViewController {
         })
             
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.track.cost.center.label")
-            row.onSubtitle = LocalizedString("settings_track_cost_center_summaryOn")
-            row.offSubtitle = LocalizedString("settings_track_cost_center_summaryOff")
+            row.title = LocalizedString("pref_general_track_cost_center_title")
+            row.onSubtitle = LocalizedString("pref_general_track_cost_center_summaryOn")
+            row.offSubtitle = LocalizedString("pref_general_track_cost_center_summaryOff")
             row.value = WBPreferences.trackCostCenter()
         }.onChange({ row in
             WBPreferences.setTrackCostCenter(row.value!)
         })
         
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.predict.recept.category.label")
-            row.onSubtitle = LocalizedString("settings_receipt_predict_categories_summary")
+            row.title = LocalizedString("pref_receipt_predict_categories_title")
+            row.onSubtitle = LocalizedString("pref_receipt_predict_categories_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.predictCategories()
         }.onChange({ row in
@@ -258,14 +258,14 @@ class SettingsFormView: FormViewController {
             
         <<< DescribedSwitchRow() { row in
             row.title = LocalizedString("settings.include.tax.field.label")
-            row.onSubtitle = LocalizedString("settings_receipt_include_tax_field_summary")
+            row.onSubtitle = LocalizedString("pref_receipt_include_tax_field_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.includeTaxField()
         }.onChange({ row in
             WBPreferences.setIncludeTaxField(row.value!)
         })
             
-        <<< decimalRow(LocalizedString("settings.default.tax.percentage"),
+        <<< decimalRow(LocalizedString("pref_receipt_tax_percent_title"),
             float: WBPreferences.defaultTaxPercentage(),
             placeholder: "%")
         .onChange({ row in
@@ -273,7 +273,7 @@ class SettingsFormView: FormViewController {
             WBPreferences.setDefaultTaxPercentage(value ?? 0)
         })
             
-        <<< switchRow(LocalizedString("settings.assume.price.pre.tax.label"),
+        <<< switchRow(LocalizedString("pref_receipt_pre_tax_title"),
             value: WBPreferences.enteredPricePreTax())
         .onChange({ row in
             WBPreferences.setEnteredPricePreTax(row.value!)
@@ -281,7 +281,7 @@ class SettingsFormView: FormViewController {
         
         <<< DescribedSwitchRow() { row in
             row.title = LocalizedString("settings.receipt.assume.full.page.image.label")
-            row.onSubtitle = LocalizedString("settings_receipt_full_page_summary")
+            row.onSubtitle = LocalizedString("pref_receipt_full_page_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.assumeFullPage()
         }.onChange({ row in
@@ -289,8 +289,8 @@ class SettingsFormView: FormViewController {
         })
         
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.match.name.to.category.label")
-            row.onSubtitle = LocalizedString("settings_receipt_match_name_to_category_summary")
+            row.title = LocalizedString("pref_receipt_match_name_to_category_title")
+            row.onSubtitle = LocalizedString("pref_receipt_match_name_to_category_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.matchNameToCategory()
         }.onChange({ row in
@@ -299,7 +299,7 @@ class SettingsFormView: FormViewController {
         
         <<< DescribedSwitchRow() { row in
             row.title = LocalizedString("settings.match.comments.to.categories")
-            row.onSubtitle = LocalizedString("settings_receipt_match_comment_to_category_summary")
+            row.onSubtitle = LocalizedString("pref_receipt_match_comment_to_category_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.matchCommentToCategory()
         }.onChange({ row in
@@ -308,7 +308,7 @@ class SettingsFormView: FormViewController {
         
         <<< DescribedSwitchRow() { row in
             row.title = LocalizedString("settings.only.report.reimbursable.label")
-            row.onSubtitle = LocalizedString("settings_receipt_reimbursable_only_summary")
+            row.onSubtitle = LocalizedString("pref_receipt_reimbursable_only_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.onlyIncludeReimbursableReceiptsInReports()
         }.onChange({ row in
@@ -316,7 +316,7 @@ class SettingsFormView: FormViewController {
         })
             
             
-        <<< switchRow(LocalizedString("settings.default.reimbursable.label"),
+        <<< switchRow(LocalizedString("pref_receipt_reimbursable_default_title"),
             value: WBPreferences.expensableDefault())
         .onChange({ row in
             WBPreferences.setExpensableDefault(row.value!)
@@ -324,7 +324,7 @@ class SettingsFormView: FormViewController {
         
         <<< DescribedSwitchRow() { row in
             row.title = LocalizedString("settings.default.receipt.date.to.start.date.label")
-            row.onSubtitle = LocalizedString("settings_receipt_default_to_report_start_date_summary")
+            row.onSubtitle = LocalizedString("pref_receipt_default_to_report_start_date_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.defaultToFirstReportDate()
         }.onChange({ row in
@@ -332,8 +332,8 @@ class SettingsFormView: FormViewController {
         })
             
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.show.receipt.id.label")
-            row.onSubtitle = LocalizedString("settings_receipt_show_id_summary")
+            row.title = LocalizedString("pref_receipt_show_id_title")
+            row.onSubtitle = LocalizedString("pref_receipt_show_id_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.showReceiptID()
         }.onChange({ row in
@@ -341,18 +341,18 @@ class SettingsFormView: FormViewController {
         })
             
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.enable.payment.methods.label")
-            row.onSubtitle = LocalizedString("settings_receipt_use_payment_methods_summary")
+            row.title = LocalizedString("pref_receipt_use_payment_methods_title")
+            row.onSubtitle = LocalizedString("pref_receipt_use_payment_methods_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.usePaymentMethods()
         }.onChange({ row in
             WBPreferences.setUsePaymentMethods(row.value!)
         })
             
-        <<< openModuleButton(LocalizedString("settings.customize.payment.methods.label"),
-            subtitle: LocalizedString("settings_receipt_payment_methods_summary"), route: .paymentMethods)
+        <<< openModuleButton(LocalizedString("pref_receipt_payment_methods_title"),
+            subtitle: LocalizedString("pref_receipt_payment_methods_summary"), route: .paymentMethods)
 
-        +++ Section(LocalizedString("settings.camera.section.title"))
+        +++ Section(LocalizedString("pref_camera_header"))
         <<< segmentedRow(LocalizedString("settings.max.camera.resolution.label"),
             options: imageOptions(), selected: imageOptionFromPreferences())
         .onChange({ row in
@@ -360,8 +360,8 @@ class SettingsFormView: FormViewController {
         })
         
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.convert.to.grayscale.label")
-            row.onSubtitle = LocalizedString("settings_camera_bw_summary")
+            row.title = LocalizedString("pref_camera_bw_title")
+            row.onSubtitle = LocalizedString("pref_camera_bw_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.cameraSaveImagesBlackAndWhite()
         }.onChange({ row in
@@ -369,11 +369,11 @@ class SettingsFormView: FormViewController {
         })
             
         
-        +++ Section(LocalizedString("settings.categories.section.title"))
-        <<< openModuleButton(LocalizedString("settings.manage.categories.label"),
-            subtitle: LocalizedString("settings_receipt_customize_categories_summary"), route: .categories)
+        +++ Section(LocalizedString("menu_main_categories"))
+        <<< openModuleButton(LocalizedString("manage_categories"),
+            subtitle: LocalizedString("pref_receipt_customize_categories_summary"), route: .categories)
         
-        +++ Section(LocalizedString("settings.csv.section.title"))
+        +++ Section(LocalizedString("pref_output_custom_csv_title"))
         <<< switchRow(LocalizedString("settings.csv.include.header.columns.label"),
             value: WBPreferences.includeCSVHeaders())
         .onChange({ row in
@@ -382,10 +382,10 @@ class SettingsFormView: FormViewController {
         <<< openModuleButton(LocalizedString("settings.csv.configure.columns.label"),
             route: .columns(isCSV: true))
     
-        +++ Section(LocalizedString("settings.pdf.section.title"))
+        +++ Section(LocalizedString("pref_output_custom_pdf_title"))
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.pdf.print.id.by.photo.label")
-            row.onSubtitle = LocalizedString("settings_output_print_receipt_id_by_photo_summary")
+            row.title = LocalizedString("pref_output_print_receipt_id_by_photo_title")
+            row.onSubtitle = LocalizedString("pref_output_print_receipt_id_by_photo_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.printReceiptIDByPhoto()
         }.onChange({ row in
@@ -393,15 +393,15 @@ class SettingsFormView: FormViewController {
         })
             
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.pdf.print.receipt.comment.by.photo.label")
-            row.onSubtitle = LocalizedString("settings_pdf_print_receipt_comment_by_photo_summaryOn")
-            row.offSubtitle = LocalizedString("settings_pdf_print_receipt_comment_by_photo_summaryOff")
+            row.title = LocalizedString("pref_output_print_receipt_comment_by_photo_title")
+            row.onSubtitle = LocalizedString("pref_output_print_receipt_comment_by_photo_summaryOn")
+            row.offSubtitle = LocalizedString("pref_output_print_receipt_comment_by_photo_summaryOff")
             row.value = WBPreferences.printCommentByPhoto()
         }.onChange({ row in
             WBPreferences.setPrintCommentByPhoto(row.value!)
         })
 
-        <<< switchRow(LocalizedString("settings.pdf.print.receipt.table.landscape.label"),
+        <<< switchRow(LocalizedString("pref_output_receipts_landscape_title"),
             value: WBPreferences.printReceiptTableLandscape())
         .onChange({ row in
             WBPreferences.setPrintReceiptTableLandscape(row.value!)
@@ -416,35 +416,35 @@ class SettingsFormView: FormViewController {
         <<< openModuleButton(LocalizedString("settings.pdf.configure.columns.label"),
             route: .columns(isCSV: false))
         
-        +++ Section(LocalizedString("settings.distance.section.title"))
+        +++ Section(LocalizedString("pref_distance_header"))
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.distance.section.title")
-            row.onSubtitle = LocalizedString("settings_distance_include_price_in_report_summaryOn")
-            row.offSubtitle = LocalizedString("settings_distance_include_price_in_report_summaryOff")
+            row.title = LocalizedString("pref_distance_header")
+            row.onSubtitle = LocalizedString("pref_distance_include_price_in_report_summaryOn")
+            row.offSubtitle = LocalizedString("pref_distance_include_price_in_report_summaryOff")
             row.value = WBPreferences.isTheDistancePriceBeIncludedInReports()
         }.onChange({ row in
             WBPreferences.setTheDistancePriceBeIncludedInReports(row.value!)
         })
             
-        <<< decimalRow(LocalizedString("settings.gas.rate.label"),
+        <<< decimalRow(LocalizedString("pref_distance_rate_title"),
             dobule: WBPreferences.distanceRateDefaultValue(),
-            placeholder: LocalizedString("settings.gas.rate.placeholder"))
+            placeholder: LocalizedString("distance_rate_field"))
         .onChange({ row in
             WBPreferences.setDistanceRateDefaultValue(row.value ?? -1)
         })
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.include.distance.table.label")
-            row.onSubtitle = LocalizedString("settings_distance_print_table_summaryOn")
-            row.offSubtitle = LocalizedString("settings_distance_print_table_summaryOff")
+            row.title = LocalizedString("pref_distance_print_table_title")
+            row.onSubtitle = LocalizedString("pref_distance_print_table_summaryOn")
+            row.offSubtitle = LocalizedString("pref_distance_print_table_summaryOff")
             row.value = WBPreferences.printDistanceTable()
         }.onChange({ row in
             WBPreferences.setPrintDistanceTable(row.value!)
         })
 
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.distance.report.on.daily.distance")
-            row.onSubtitle = LocalizedString("settings_distance_print_daily_summaryOn")
-            row.offSubtitle = LocalizedString("settings_distance_print_daily_summaryOff")
+            row.title = LocalizedString("pref_distance_print_daily_title")
+            row.onSubtitle = LocalizedString("pref_distance_print_daily_summaryOn")
+            row.offSubtitle = LocalizedString("pref_distance_print_daily_summaryOff")
             row.value = WBPreferences.printDailyDistanceValues()
         }.onChange({ row in
             WBPreferences.setPrintDailyDistanceValues(row.value!)
@@ -452,8 +452,8 @@ class SettingsFormView: FormViewController {
         
         +++ Section(LocalizedString("settings.layout.section.title"))
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.layout.include.receipt.date.label")
-            row.onSubtitle = LocalizedString("settings_layout_display_date_summary")
+            row.title = LocalizedString("pref_layout_display_date_title")
+            row.onSubtitle = LocalizedString("pref_layout_display_date_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.layoutShowReceiptDate()
         }.onChange({ row in
@@ -461,8 +461,8 @@ class SettingsFormView: FormViewController {
         })
             
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.layout.include.receipt.category.label")
-            row.onSubtitle = LocalizedString("settings_layout_display_category_summary")
+            row.title = LocalizedString("pref_layout_display_category_title")
+            row.onSubtitle = LocalizedString("pref_layout_display_category_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.layoutShowReceiptCategory()
         }.onChange({ row in
@@ -534,7 +534,7 @@ class SettingsFormView: FormViewController {
     }
     
     private func pdfFormats() -> [String] {
-        return ["A4", LocalizedString("settings_pdf_page_size_letter")]
+        return ["A4", LocalizedString("pref_output_pdf_page_size_letter_entryValue")]
     }
     
     private func imageOptionFromPreferences() -> Int {

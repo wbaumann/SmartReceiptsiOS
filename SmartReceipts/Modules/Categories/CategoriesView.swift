@@ -24,7 +24,7 @@ final class CategoriesView: FetchedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = LocalizedString("categories.controller.title")
+        title = LocalizedString("menu_main_categories")
         setPresentationCellNib(CategoryCell.viewNib())
         
         addItem.rx.tap.subscribe(onNext: {
@@ -74,13 +74,13 @@ final class CategoriesView: FetchedTableViewController {
         return Observable<CategoryAction>.create({ [unowned self] observer -> Disposable in
             
             let isEdit = category != nil
-            let title = isEdit ? LocalizedString("edit.category.edit.title.edit") :
+            let title = isEdit ? LocalizedString("dialog_category_edit") :
                                  LocalizedString("edit.category.edit.title.new")
             
             
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
             alert.addTextField { textField in
-                textField.placeholder = LocalizedString("edit.category.edit.placeholder.name")
+                textField.placeholder = LocalizedString("RECEIPTMENU_FIELD_NAME")
                 textField.text = category?.name
             }
             
@@ -89,8 +89,8 @@ final class CategoriesView: FetchedTableViewController {
                 textField.text = category?.code
             }
             
-            let saveTitle = isEdit ? LocalizedString("edit.category.edit.button.update") :
-                                     LocalizedString("edit.category.edit.button.add")
+            let saveTitle = isEdit ? LocalizedString("dialog_mileage_positive_update") :
+                                     LocalizedString("dialog_mileage_positive_create")
             alert.addAction(UIAlertAction(title: saveTitle, style: .default, handler: { [unowned self] _ in
                 let forSave = category ?? WBCategory()
                 let name = alert.textFields!.first!.text
@@ -102,7 +102,7 @@ final class CategoriesView: FetchedTableViewController {
                 }
             }))
             
-            alert.addAction(UIAlertAction(title: LocalizedString("edit.payment.method.controller.cancel"),
+            alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"),
                                           style: .default, handler: nil))
             
             self.present(alert, animated: true, completion: nil)

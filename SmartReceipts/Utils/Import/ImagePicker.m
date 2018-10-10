@@ -55,7 +55,7 @@
     UIAlertControllerStyle style = UIAlertControllerStyleActionSheet;
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:style];
     
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"image.picker.sheet.cancel.button.title", nil)
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"DIALOG_CANCEL", nil)
         style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
              [self setSelectionHandler:nil];
         }];
