@@ -191,6 +191,8 @@
 		71695E6C2023AEE000F1A7C9 /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71695E6A2023AEE000F1A7C9 /* SharedLocalizable.strings */; };
 		71695E6F2023AF2000F1A7C9 /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71695E6D2023AF2000F1A7C9 /* SharedLocalizable.strings */; };
 		716C04221F685467007F9CD2 /* CognitoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C04211F685467007F9CD2 /* CognitoService.swift */; };
+		716C058E216D12CE00D3E10F /* DatabaseUpgrade19Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C058D216D12CE00D3E10F /* DatabaseUpgrade19Tests.swift */; };
+		716C0590216D17AE00D3E10F /* android-receipts-v19.db in Resources */ = {isa = PBXBuildFile; fileRef = 716C058F216D17AE00D3E10F /* android-receipts-v19.db */; };
 		716F07DD2034AFDF00166D63 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716F07D72034AFDF00166D63 /* Backup.storyboard */; };
 		716F07DE2034AFDF00166D63 /* BackupDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F07D82034AFDF00166D63 /* BackupDisplayData.swift */; };
 		716F07DF2034AFDF00166D63 /* BackupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F07D92034AFDF00166D63 /* BackupPresenter.swift */; };
@@ -220,6 +222,7 @@
 		7185AEF81EFC1CC90038ED2A /* ReceiptMoveCopyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF21EFC1CC90038ED2A /* ReceiptMoveCopyPresenter.swift */; };
 		7185AEF91EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF31EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift */; };
 		7185AEFA1EFC1CC90038ED2A /* ReceiptMoveCopyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF41EFC1CC90038ED2A /* ReceiptMoveCopyView.swift */; };
+		71874293216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71874292216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift */; };
 		718AAC112120382E00290183 /* SyncableTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAC102120382E00290183 /* SyncableTableCell.swift */; };
 		718AAC13212039E000290183 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAC12212039E000290183 /* TripCell.swift */; };
 		718AAC15212039EA00290183 /* ReceiptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAC14212039EA00290183 /* ReceiptCell.swift */; };
@@ -756,6 +759,8 @@
 		71695E6B2023AEE000F1A7C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = SharedLocalizable.strings; sourceTree = "<group>"; };
 		71695E6E2023AF2000F1A7C9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = SharedLocalizable.strings; sourceTree = "<group>"; };
 		716C04211F685467007F9CD2 /* CognitoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CognitoService.swift; sourceTree = "<group>"; };
+		716C058D216D12CE00D3E10F /* DatabaseUpgrade19Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgrade19Tests.swift; sourceTree = "<group>"; };
+		716C058F216D17AE00D3E10F /* android-receipts-v19.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "android-receipts-v19.db"; sourceTree = "<group>"; };
 		716F07D72034AFDF00166D63 /* Backup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Backup.storyboard; sourceTree = "<group>"; };
 		716F07D82034AFDF00166D63 /* BackupDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupDisplayData.swift; sourceTree = "<group>"; };
 		716F07D92034AFDF00166D63 /* BackupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupPresenter.swift; sourceTree = "<group>"; };
@@ -790,6 +795,7 @@
 		7185AEF21EFC1CC90038ED2A /* ReceiptMoveCopyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyPresenter.swift; sourceTree = "<group>"; };
 		7185AEF31EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyRouter.swift; sourceTree = "<group>"; };
 		7185AEF41EFC1CC90038ED2A /* ReceiptMoveCopyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyView.swift; sourceTree = "<group>"; };
+		71874292216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDatabaseUpgradeTests.swift; sourceTree = "<group>"; };
 		718AAC102120382E00290183 /* SyncableTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncableTableCell.swift; sourceTree = "<group>"; };
 		718AAC12212039E000290183 /* TripCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		718AAC14212039EA00290183 /* ReceiptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCell.swift; sourceTree = "<group>"; };
@@ -2411,6 +2417,7 @@
 		EA69EF2B1AF0907300276B70 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				716C058F216D17AE00D3E10F /* android-receipts-v19.db */,
 				57A8058E1E9799AC00E68049 /* android-receipts-v15.db */,
 				EAE23CB41B1757590078F197 /* 2015_05_26_SmartReceipts.smr */,
 				EA159E7C1AFE6F4E00DBB6CF /* android-receipts-v11.db */,
@@ -2666,8 +2673,10 @@
 				EAED9B211AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m */,
 				EA69EF291AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m */,
 				EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */,
+				71874292216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift */,
 				A7A720E41CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift */,
 				57A8058C1E9672C000E68049 /* DatabaseUpgrade15Tests.swift */,
+				716C058D216D12CE00D3E10F /* DatabaseUpgrade19Tests.swift */,
 			);
 			path = Migrations;
 			sourceTree = "<group>";
@@ -2933,6 +2942,7 @@
 				EA8ABE3B1B1A05FA00DBFA29 /* clean.db in Resources */,
 				EA8ABE3F1B1A147900DBFA29 /* exrtas-import-test.db in Resources */,
 				EA159E7F1AFE704D00DBB6CF /* android-receipts-v13.db in Resources */,
+				716C0590216D17AE00D3E10F /* android-receipts-v19.db in Resources */,
 				57A8058F1E9799AC00E68049 /* android-receipts-v15.db in Resources */,
 				EAD15C7F1B088612003BB1F3 /* sample-receipt.jpg in Resources */,
 			);
@@ -3677,6 +3687,7 @@
 			files = (
 				EAD15C771B087029003BB1F3 /* DatabaseReceiptsCopyMoveTest.m in Sources */,
 				714A9A731FCD9A27000A025B /* BackupTests.swift in Sources */,
+				71874293216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift in Sources */,
 				A7F05BE71CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift in Sources */,
 				EA07BF6C1AF51D5D004D17F6 /* DatabaseTestsHelper.m in Sources */,
 				EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */,
@@ -3725,6 +3736,7 @@
 				7123483E21418F7C0038AAE5 /* TestableExtensions.swift in Sources */,
 				7123481621418F650038AAE5 /* NetExchangedPricePlusTaxTests.swift in Sources */,
 				7123483221418F6D0038AAE5 /* SyncMapsTests.swift in Sources */,
+				716C058E216D12CE00D3E10F /* DatabaseUpgrade19Tests.swift in Sources */,
 				EA19CC7F1B2C961D00168AA0 /* RateApplicationTest.m in Sources */,
 				EA5EF0D61AF7E9C9009FA608 /* DatabaseTableNames.m in Sources */,
 				7123481E21418F650038AAE5 /* WBReceiptTargetPriceTests.swift in Sources */,
