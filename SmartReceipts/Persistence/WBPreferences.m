@@ -14,6 +14,7 @@
 #import "Constants.h"
 #import "Database.h"
 #import "SmartReceipts-Swift.h"
+#import "LocalizedString.h"
 
 static const float MIN_FLOAT = -FLT_MAX;
 
@@ -200,8 +201,8 @@ static NSDictionary *getDefaultValues() {
             STRING_DEFAULT_EMAIL_TO : @"",
             STRING_DEFAULT_EMAIL_CC : @"",
             STRING_DEFAULT_EMAIL_BCC : @"",
-            STRING_DEFAULT_EMAIL_SUBJECT : NSLocalizedString(@"SmartReceipts - %REPORT_NAME%", nil),
-            PDF_FOOTER_STRING : NSLocalizedString(@"pdf.report.default.footer.text", nil),
+            STRING_DEFAULT_EMAIL_SUBJECT : LocalizedString(@"SmartReceipts - %REPORT_NAME%", nil),
+            PDF_FOOTER_STRING : LocalizedString(@"pdf.report.default.footer.text", nil),
             BOOL_INCLUDE_CATEGORICAL_SUMMATION : @NO,
             BOOL_SEPARATE_PAYMANTS_BY_CATEGORY : @NO,
             BOOL_OMIT_DEFAULT_PDF_TABLE : @NO,
@@ -373,7 +374,7 @@ static NSUserDefaults* instance() {
 
 + (NSString *)pdfFooterString {
     if (![WBPreferences isPDFFooterUnlocked]) {
-        return NSLocalizedString(@"pdf.report.default.footer.text", nil);
+        return LocalizedString(@"pdf.report.default.footer.text", nil);
     }
     
     return [instance() objectForKey:PDF_FOOTER_STRING];

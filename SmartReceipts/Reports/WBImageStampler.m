@@ -15,6 +15,8 @@
 #import "WBImageUtils.h"
 
 #import "SmartReceipts-Swift.h"
+#import "LocalizedString.h"
+
 
 static const float IMG_SCALE_FACTOR = 2.1f;
 static const float HW_RATIO = 0.75f;
@@ -145,11 +147,11 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
 
 #define entry(name,value) { drawEntry(xPad / 2, y, name, value, attrs); y += spacing; }
     
-    entry(NSLocalizedString(@"RECEIPTMENU_FIELD_NAME", nil), [receipt name]);
-    entry(NSLocalizedString(@"RECEIPTMENU_FIELD_PRICE", nil), [receipt formattedPrice]);
-    entry(NSLocalizedString(@"RECEIPTMENU_FIELD_DATE", nil), [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]]);
-    entry(NSLocalizedString(@"filter_name_receipt_category", nil), [[receipt category] name]);
-    entry(NSLocalizedString(@"RECEIPTMENU_FIELD_COMMENT", nil), [receipt comment]);
+    entry(LocalizedString(@"RECEIPTMENU_FIELD_NAME", nil), [receipt name]);
+    entry(LocalizedString(@"RECEIPTMENU_FIELD_PRICE", nil), [receipt formattedPrice]);
+    entry(LocalizedString(@"RECEIPTMENU_FIELD_DATE", nil), [_dateFormatter formattedDate:[receipt date] inTimeZone:[receipt timeZone]]);
+    entry(LocalizedString(@"filter_name_receipt_category", nil), [[receipt category] name]);
+    entry(LocalizedString(@"RECEIPTMENU_FIELD_COMMENT", nil), [receipt comment]);
     
 #undef entry
     

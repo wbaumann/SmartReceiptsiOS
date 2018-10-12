@@ -30,6 +30,7 @@
 #import "ReceiptColumnReportComment.h"
 #import "ReceiptColumnReportCostCenter.h"
 #import "SmartReceipts-Swift.h"
+#import "LocalizedString.h"
 
 // Extras have to be filled to be active.
 NSString *const WBColumnNameExtraEdittext1 = @"";
@@ -43,34 +44,34 @@ static NSDictionary *__receiptColumnNameToClassMapping;
 
 + (void)initialize {
     __receiptColumnNameToClassMapping = @{
-            NSLocalizedString(@"column_item_blank", nil) : NSStringFromClass([ReceiptColumnBlank class]),
-            NSLocalizedString(@"column_item_category_code", nil) : NSStringFromClass([ReceiptColumnCategoryCode class]),
-            NSLocalizedString(@"column_item_category_name", nil) : NSStringFromClass([ReceiptColumnCategoryName class]),
-            NSLocalizedString(@"pref_output_username_title", nil) : NSStringFromClass([ReceiptColumnUserID class]),
-            NSLocalizedString(@"column_item_report_name", nil) : NSStringFromClass([ReceiptColumnReportName class]),
-            NSLocalizedString(@"column_item_report_start_date", nil) : NSStringFromClass([ReceiptColumnReportStartDate class]),
-            NSLocalizedString(@"column_item_report_end_date", nil) : NSStringFromClass([ReceiptColumnReportEndDate class]),
-            NSLocalizedString(@"column_item_image_file_name", nil) : NSStringFromClass([ReceiptColumnImageName class]),
-            NSLocalizedString(@"column_item_image_path", nil) : NSStringFromClass([ReceiptColumnImagePath class]),
-            NSLocalizedString(@"RECEIPTMENU_FIELD_COMMENT", nil) : NSStringFromClass([ReceiptColumnComment class]),
-            NSLocalizedString(@"RECEIPTMENU_FIELD_CURRENCY", nil) : NSStringFromClass([ReceiptColumnCurrency class]),
-            NSLocalizedString(@"RECEIPTMENU_FIELD_DATE", nil) : NSStringFromClass([ReceiptColumnDate class]),
-            NSLocalizedString(@"RECEIPTMENU_FIELD_NAME", nil) : NSStringFromClass([ReceiptColumnName class]),
-            NSLocalizedString(@"RECEIPTMENU_FIELD_PRICE", nil) : NSStringFromClass([ReceiptColumnPrice class]),
-            NSLocalizedString(@"RECEIPTMENU_FIELD_TAX", nil) : NSStringFromClass([ReceiptColumnTax class]),
-            NSLocalizedString(@"column_item_pictured", nil) : NSStringFromClass([ReceiptColumnPictured class]),
-            NSLocalizedString(@"graphs_label_reimbursable", nil) : NSStringFromClass([ReceiptColumnReimbursable class]),
-            NSLocalizedString(@"column_item_index", nil) : NSStringFromClass([ReceiptColumnReceiptIndex class]),
-            NSLocalizedString(@"payment_method", nil) : NSStringFromClass([ReceiptColumnPaymentMethod class]),
-            NSLocalizedString(@"column_item_report_comment", nil) : NSStringFromClass([ReceiptColumnReportComment class]),
-            NSLocalizedString(@"column_item_report_cost_center", nil) : NSStringFromClass([ReceiptColumnReportCostCenter class]),
-            NSLocalizedString(@"column_item_exchange_rate", nil) : NSStringFromClass([ReceiptColumnExchangeRate class]),
-            NSLocalizedString(@"column_item_converted_price_exchange_rate", nil) : NSStringFromClass([ReceiptColumnExchangedPrice class]),
-            NSLocalizedString(@"column_item_converted_tax_exchange_rate", nil) : NSStringFromClass([ReceiptColumnExchangedTax class]),
-            NSLocalizedString(@"column_item_converted_price_plus_tax_exchange_rate", nil) : NSStringFromClass([ReceiptColumnNetExchangedPricePlusTax class]),
-            NSLocalizedString(@"column_item_id", nil) : NSStringFromClass([ReceiptColumnReceiptId class]),
-            NSLocalizedString(@"column_item_receipt_price_minus_tax", nil) : NSStringFromClass([ReceiptColumnPriceMinusTax class]),
-            NSLocalizedString(@"column_item_converted_price_minus_tax_exchange_rate", nil) : NSStringFromClass([ReceiptColumnExchangedPriceMinusTax class]),
+            LocalizedString(@"column_item_blank", nil) : NSStringFromClass([ReceiptColumnBlank class]),
+            LocalizedString(@"column_item_category_code", nil) : NSStringFromClass([ReceiptColumnCategoryCode class]),
+            LocalizedString(@"column_item_category_name", nil) : NSStringFromClass([ReceiptColumnCategoryName class]),
+            LocalizedString(@"pref_output_username_title", nil) : NSStringFromClass([ReceiptColumnUserID class]),
+            LocalizedString(@"column_item_report_name", nil) : NSStringFromClass([ReceiptColumnReportName class]),
+            LocalizedString(@"column_item_report_start_date", nil) : NSStringFromClass([ReceiptColumnReportStartDate class]),
+            LocalizedString(@"column_item_report_end_date", nil) : NSStringFromClass([ReceiptColumnReportEndDate class]),
+            LocalizedString(@"column_item_image_file_name", nil) : NSStringFromClass([ReceiptColumnImageName class]),
+            LocalizedString(@"column_item_image_path", nil) : NSStringFromClass([ReceiptColumnImagePath class]),
+            LocalizedString(@"RECEIPTMENU_FIELD_COMMENT", nil) : NSStringFromClass([ReceiptColumnComment class]),
+            LocalizedString(@"RECEIPTMENU_FIELD_CURRENCY", nil) : NSStringFromClass([ReceiptColumnCurrency class]),
+            LocalizedString(@"RECEIPTMENU_FIELD_DATE", nil) : NSStringFromClass([ReceiptColumnDate class]),
+            LocalizedString(@"RECEIPTMENU_FIELD_NAME", nil) : NSStringFromClass([ReceiptColumnName class]),
+            LocalizedString(@"RECEIPTMENU_FIELD_PRICE", nil) : NSStringFromClass([ReceiptColumnPrice class]),
+            LocalizedString(@"RECEIPTMENU_FIELD_TAX", nil) : NSStringFromClass([ReceiptColumnTax class]),
+            LocalizedString(@"column_item_pictured", nil) : NSStringFromClass([ReceiptColumnPictured class]),
+            LocalizedString(@"graphs_label_reimbursable", nil) : NSStringFromClass([ReceiptColumnReimbursable class]),
+            LocalizedString(@"column_item_index", nil) : NSStringFromClass([ReceiptColumnReceiptIndex class]),
+            LocalizedString(@"payment_method", nil) : NSStringFromClass([ReceiptColumnPaymentMethod class]),
+            LocalizedString(@"column_item_report_comment", nil) : NSStringFromClass([ReceiptColumnReportComment class]),
+            LocalizedString(@"column_item_report_cost_center", nil) : NSStringFromClass([ReceiptColumnReportCostCenter class]),
+            LocalizedString(@"column_item_exchange_rate", nil) : NSStringFromClass([ReceiptColumnExchangeRate class]),
+            LocalizedString(@"column_item_converted_price_exchange_rate", nil) : NSStringFromClass([ReceiptColumnExchangedPrice class]),
+            LocalizedString(@"column_item_converted_tax_exchange_rate", nil) : NSStringFromClass([ReceiptColumnExchangedTax class]),
+            LocalizedString(@"column_item_converted_price_plus_tax_exchange_rate", nil) : NSStringFromClass([ReceiptColumnNetExchangedPricePlusTax class]),
+            LocalizedString(@"column_item_id", nil) : NSStringFromClass([ReceiptColumnReceiptId class]),
+            LocalizedString(@"column_item_receipt_price_minus_tax", nil) : NSStringFromClass([ReceiptColumnPriceMinusTax class]),
+            LocalizedString(@"column_item_converted_price_minus_tax_exchange_rate", nil) : NSStringFromClass([ReceiptColumnExchangedPriceMinusTax class]),
     };
 }
 
@@ -94,8 +95,8 @@ static NSDictionary *__receiptColumnNameToClassMapping;
 + (ReceiptColumn *)columnWithIndex:(NSInteger)index name:(NSString *)columnName {
     // for compability.
     // legacy string, expensable was renamed to reimbursable
-    if ([columnName isEqualToString:NSLocalizedString(@"column_item_deprecated_expensable", nil)]) {
-        columnName = NSLocalizedString(@"graphs_label_reimbursable", nil);
+    if ([columnName isEqualToString:LocalizedString(@"column_item_deprecated_expensable", nil)]) {
+        columnName = LocalizedString(@"graphs_label_reimbursable", nil);
     }
     
     NSString *columnClassName = __receiptColumnNameToClassMapping[columnName];

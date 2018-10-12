@@ -9,16 +9,17 @@
 #import "ReceiptColumnPictured.h"
 #import "WBReceipt.h"
 #import "WBTrip.h"
+#import "LocalizedString.h"
 
 @implementation ReceiptColumnPictured
 
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
     if ([receipt hasImage]) {
-        return NSLocalizedString(@"yes", nil);
+        return LocalizedString(@"yes", nil);
     } else if ([receipt hasPDF]) {
-        return NSLocalizedString(@"yes_as_pdf", nil);
+        return LocalizedString(@"yes_as_pdf", nil);
     } else {
-        return NSLocalizedString(@"no", nil);
+        return LocalizedString(@"no", nil);
     }
 }
 

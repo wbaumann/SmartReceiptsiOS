@@ -8,11 +8,12 @@
 
 #import "ReceiptColumnPaymentMethod.h"
 #import "WBReceipt.h"
+#import "LocalizedString.h"
 
 @implementation ReceiptColumnPaymentMethod
 
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
-    return receipt.paymentMethod ? receipt.paymentMethod.method : NSLocalizedString(@"payment.method.unspecified", nil);
+    return receipt.paymentMethod ? receipt.paymentMethod.method : LocalizedString(@"payment.method.unspecified", nil);
 }
 
 @end

@@ -9,11 +9,12 @@
 #import "ReceiptColumnReimbursable.h"
 #import "WBReceipt.h"
 #import "WBTrip.h"
+#import "LocalizedString.h"
 
 @implementation ReceiptColumnReimbursable
 
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
-    return [receipt isReimbursable] ? NSLocalizedString(@"yes", nil) : NSLocalizedString(@"no", nil);
+    return [receipt isReimbursable] ? LocalizedString(@"yes", nil) : LocalizedString(@"no", nil);
 }
 
 @end
