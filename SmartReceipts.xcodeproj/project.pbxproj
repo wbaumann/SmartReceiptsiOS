@@ -27,6 +27,7 @@
 		4DF2294E192867BA0008D359 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF2294D192867BA0008D359 /* MessageUI.framework */; };
 		4DF22952192867CC0008D359 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF22951192867CC0008D359 /* SystemConfiguration.framework */; };
 		4DF2295619296E170008D359 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF2295519296E170008D359 /* libz.dylib */; };
+		4DF8C42121710B5000309D65 /* LocalizedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF8C42021710B5000309D65 /* LocalizedString.m */; };
 		5705159B1E02B58500BB8FE4 /* DataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705159A1E02B58500BB8FE4 /* DataPoint.swift */; };
 		570515A11E02EB2E00BB8FE4 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570515A01E02EB2E00BB8FE4 /* Event.swift */; };
 		570515A31E02EB5500BB8FE4 /* Event+Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570515A21E02EB5500BB8FE4 /* Event+Categories.swift */; };
@@ -603,6 +604,8 @@
 		4DF2294D192867BA0008D359 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		4DF22951192867CC0008D359 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4DF2295519296E170008D359 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		4DF8C41F21710B4000309D65 /* LocalizedString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalizedString.h; sourceTree = "<group>"; };
+		4DF8C42021710B5000309D65 /* LocalizedString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalizedString.m; sourceTree = "<group>"; };
 		5705159A1E02B58500BB8FE4 /* DataPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPoint.swift; sourceTree = "<group>"; };
 		570515A01E02EB2E00BB8FE4 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		570515A21E02EB5500BB8FE4 /* Event+Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+Categories.swift"; sourceTree = "<group>"; };
@@ -1363,6 +1366,15 @@
 			path = Ads;
 			sourceTree = "<group>";
 		};
+		4DF8C41E21710B1400309D65 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				4DF8C41F21710B4000309D65 /* LocalizedString.h */,
+				4DF8C42021710B5000309D65 /* LocalizedString.m */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		578CD0601E0025A700223220 /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -2033,6 +2045,7 @@
 				719310231EDDB60E0065B5AD /* Constants */,
 				A78214F31CFFE4E900FD644A /* Exchange */,
 				EA3CF0981AE7962C00B14B73 /* Extensions */,
+				4DF8C41E21710B1400309D65 /* Localization */,
 				A7F05BCF1CFD53D90079F1AD /* Log */,
 				EA8D81691AEA668100BAC943 /* Model */,
 				71AEDDD41EDF7F3300BAC0DD /* Modules */,
@@ -3405,6 +3418,7 @@
 				EA6677791B060FC4004D3993 /* ReceiptColumnPaymentMethod.m in Sources */,
 				716F344E1EE040E100D0017A /* EditDistanceDisplayData.swift in Sources */,
 				A7F05BAC1CFC0AB00079F1AD /* ExchangedPriced.swift in Sources */,
+				4DF8C42121710B5000309D65 /* LocalizedString.m in Sources */,
 				71E7303D1FF7E53000471287 /* MigrationService.swift in Sources */,
 				719B1FD21EF5FEBE0049BD71 /* Column.m in Sources */,
 				71FB1D431F195D0D00742FF5 /* PaymentMethodsView.swift in Sources */,

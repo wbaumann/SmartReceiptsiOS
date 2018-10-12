@@ -13,6 +13,7 @@
 #import "Database+Functions.h"
 #import "DatabaseQueryBuilder.h"
 #import "NSString+Helpers.h"
+#import "LocalizedString.h"
 
 @implementation Database (PaymentMethods)
 
@@ -26,11 +27,11 @@
 }
 
 - (BOOL)insertDefaultMethods {
-    return [self insertPaymentMethodWithName:NSLocalizedString(@"payment_method_default_cash", nil)]
-            && [self insertPaymentMethodWithName:NSLocalizedString(@"payment_method_default_check", nil)]
-            && [self insertPaymentMethodWithName:NSLocalizedString(@"payment_method_default_personal_card", nil)]
-            && [self insertPaymentMethodWithName:NSLocalizedString(@"payment_method_default_corporate_card", nil)]
-            && [self insertPaymentMethodWithName:NSLocalizedString(@"payment.method.unspecified", nil)];
+    return [self insertPaymentMethodWithName:LocalizedString(@"payment_method_default_cash", nil)]
+            && [self insertPaymentMethodWithName:LocalizedString(@"payment_method_default_check", nil)]
+            && [self insertPaymentMethodWithName:LocalizedString(@"payment_method_default_personal_card", nil)]
+            && [self insertPaymentMethodWithName:LocalizedString(@"payment_method_default_corporate_card", nil)]
+            && [self insertPaymentMethodWithName:LocalizedString(@"payment.method.unspecified", nil)];
 }
 
 - (BOOL)insertPaymentMethodWithName:(NSString *)methodName {

@@ -7,6 +7,7 @@
 //
 
 #import "DistanceLocationColumn.h"
+#import "LocalizedString.h"
 
 @implementation DistanceLocationColumn
 
@@ -15,7 +16,7 @@
 }
 
 - (NSString *)valueForFooter:(NSArray *)rows forCSV:(BOOL)forCSV {
-    return NSLocalizedString(@"pdf.report.distance.total.label", nil);
+    return LocalizedString(@"pdf.report.distance.total.label", nil);
 }
 
 @end

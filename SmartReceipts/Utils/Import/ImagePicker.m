@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "WBImageUtils.h"
 #import "WBPreferences.h"
+#import "LocalizedString.h"
 
 @interface ImagePicker () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -51,21 +52,21 @@
         return;
     }
     
-    NSString *title = NSLocalizedString(@"image.picker.sheet.title", nil);
+    NSString *title = LocalizedString(@"image.picker.sheet.title", nil);
     UIAlertControllerStyle style = UIAlertControllerStyleActionSheet;
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:style];
     
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"DIALOG_CANCEL", nil)
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:LocalizedString(@"DIALOG_CANCEL", nil)
         style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
              [self setSelectionHandler:nil];
         }];
     
-    UIAlertAction *library = [UIAlertAction actionWithTitle:NSLocalizedString(@"image.picker.sheet.choose.existing.button.title", nil)
+    UIAlertAction *library = [UIAlertAction actionWithTitle:LocalizedString(@"image.picker.sheet.choose.existing.button.title", nil)
        style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
            [self presentImagePickerWithSource:UIImagePickerControllerSourceTypePhotoLibrary onController:controller];
        }];
     
-    UIAlertAction *photo = [UIAlertAction actionWithTitle:NSLocalizedString(@"image.picker.sheet.take.photo.button.title", nil)
+    UIAlertAction *photo = [UIAlertAction actionWithTitle:LocalizedString(@"image.picker.sheet.take.photo.button.title", nil)
        style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
            [self presentImagePickerWithSource:UIImagePickerControllerSourceTypeCamera onController:controller];
        }];

@@ -9,6 +9,7 @@
 #import <FMDB/FMResultSet.h>
 #import "WBCategory.h"
 #import "DatabaseTableNames.h"
+#import "LocalizedString.h"
 
 static NSString *const TABLE_NAME = @"categories";
 static NSString *const COLUMN_NAME = @"name";
@@ -45,15 +46,15 @@ static NSString *const COLUMN_CUSTOM_ORDER_ID = @"custom_order_id";
 }
 
 + (NSString *)CATEGORY_NAME_BREAKFAST {
-    return NSLocalizedString(@"category_breakfast", nil);
+    return LocalizedString(@"category_breakfast", nil);
 }
 
 + (NSString *)CATEGORY_NAME_LUNCH {
-    return NSLocalizedString(@"category_lunch", nil);
+    return LocalizedString(@"category_lunch", nil);
 }
 
 + (NSString *)CATEGORY_NAME_DINNER {
-    return NSLocalizedString(@"category_dinner", nil);
+    return LocalizedString(@"category_dinner", nil);
 }
 
 + (NSDictionary *)namesToCodeMapFromCategories:(NSArray *)categories {

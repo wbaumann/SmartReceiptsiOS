@@ -11,6 +11,7 @@
 #import "NSDate+Calculations.h"
 #import "SmartReceipts-Swift.h"
 #import <StoreKit/StoreKit.h>
+#import "LocalizedString.h"
 
 static NSString *const SRRateAppCrashMarkerKey = @"SRRateAppCrashMarkerKey";
 static NSString *const SRRateAppAppLaunchCountKey = @"SRRateAppAppLaunchCountKey";
@@ -76,12 +77,12 @@ static NSString *const SRRateAppRatePressedKey = @"SRRateAppRatePressedKey";
     if ([NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){10,3,0}]) {
         [SKStoreReviewController requestReview];
     } else {
-        NSString *title = NSLocalizedString(@"rate.app.alert.title", nil);
-        NSString *message = NSLocalizedString(@"rate.app.alert.message", nil);
+        NSString *title = LocalizedString(@"rate.app.alert.title", nil);
+        NSString *message = LocalizedString(@"rate.app.alert.message", nil);
         UIAlertControllerStyle style = UIAlertControllerStyleAlert;
         UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:style];
         
-        UIAlertAction *postitive = [UIAlertAction actionWithTitle:NSLocalizedString(@"yes", nil)
+        UIAlertAction *postitive = [UIAlertAction actionWithTitle:LocalizedString(@"yes", nil)
           style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
               [self markRatePressed];
               [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedRate]];
@@ -91,13 +92,13 @@ static NSString *const SRRateAppRatePressedKey = @"SRRateAppRatePressedKey";
               [UIApplication.sharedApplication openURL:[NSURL URLWithString:reviewURL] options:@{} completionHandler:nil];
          }];
         
-        UIAlertAction *negative = [UIAlertAction actionWithTitle:NSLocalizedString(@"no", nil)
+        UIAlertAction *negative = [UIAlertAction actionWithTitle:LocalizedString(@"no", nil)
           style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
               [self markNoPressed];
               [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedNever]];
           }];
         
-        UIAlertAction *neutral = [UIAlertAction actionWithTitle:NSLocalizedString(@"rate.app.alert.neutral.button", nil)
+        UIAlertAction *neutral = [UIAlertAction actionWithTitle:LocalizedString(@"rate.app.alert.neutral.button", nil)
           style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
               [self rateLater];
               [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedLater]];

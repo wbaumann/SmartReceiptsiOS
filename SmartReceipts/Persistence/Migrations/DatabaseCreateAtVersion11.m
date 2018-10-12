@@ -17,6 +17,7 @@
 #import "Database+CSVColumns.h"
 #import "Database+PDFColumns.h"
 #import "ReceiptColumn.h"
+#import "LocalizedString.h"
 
 @implementation DatabaseCreateAtVersion11
 
@@ -53,31 +54,31 @@
 
     // categories are localized because they are custom and red from db anyway
     NSArray *cats = @[
-            NSLocalizedString(@"category_null", nil), NSLocalizedString(@"category_null_code", nil), //
-            NSLocalizedString(@"category_airfare", nil), NSLocalizedString(@"category_airfare_code", nil), //
-            NSLocalizedString(@"category_breakfast", nil), NSLocalizedString(@"category_breakfast_code", nil), //
-            NSLocalizedString(@"category_dinner", nil), NSLocalizedString(@"category_dinner_code", nil), //
-            NSLocalizedString(@"category_entertainment", nil), NSLocalizedString(@"category_entertainment_code", nil), //
-            NSLocalizedString(@"category_gasoline", nil), NSLocalizedString(@"category_gasoline_code", nil), //
-            NSLocalizedString(@"category_gift", nil), NSLocalizedString(@"category_gift_code", nil), //
-            NSLocalizedString(@"category_hotel", nil), NSLocalizedString(@"category_hotel_code", nil), //
-            NSLocalizedString(@"category_laundry", nil), NSLocalizedString(@"category_laundry_code", nil), //
-            NSLocalizedString(@"category_lunch", nil), NSLocalizedString(@"category_lunch_code", nil), //
-            NSLocalizedString(@"category_other", nil), NSLocalizedString(@"category_other_code", nil), //
-            NSLocalizedString(@"category_parking_tolls", nil), NSLocalizedString(@"category_parking_tolls_code", nil), //
-            NSLocalizedString(@"category_postage_shipping", nil), NSLocalizedString(@"category_postage_shipping_code", nil), //
-            NSLocalizedString(@"category_car_rental", nil), NSLocalizedString(@"category_car_rental_code", nil), //
-            NSLocalizedString(@"category_taxi_bus", nil), NSLocalizedString(@"category_taxi_bus_code", nil), //
-            NSLocalizedString(@"category_telephone_fax", nil), NSLocalizedString(@"category_telephone_fax_code", nil), //
-            NSLocalizedString(@"category_tip", nil), NSLocalizedString(@"category_tip_code", nil), //
-            NSLocalizedString(@"category_train", nil), NSLocalizedString(@"category_train_code", nil), //
-            NSLocalizedString(@"category_books_periodicals", nil), NSLocalizedString(@"category_books_periodicals_code", nil), //
-            NSLocalizedString(@"category_cell_phone", nil), NSLocalizedString(@"category_cell_phone_code", nil), //
-            NSLocalizedString(@"category_dues_subscriptions", nil), NSLocalizedString(@"category_dues_subscriptions_code", nil), //
-            NSLocalizedString(@"category_meals_justified", nil), NSLocalizedString(@"category_meals_justified_code", nil), //
-            NSLocalizedString(@"category_stationery_stations", nil), NSLocalizedString(@"category_stationery_stations_code", nil), //
-            NSLocalizedString(@"category_training_fees", nil), NSLocalizedString(@"category_training_fees_code", nil), //
-            NSLocalizedString(@"pref_distance_header", nil), NSLocalizedString(@"category.distance.code", nil), //
+            LocalizedString(@"category_null", nil), LocalizedString(@"category_null_code", nil), //
+            LocalizedString(@"category_airfare", nil), LocalizedString(@"category_airfare_code", nil), //
+            LocalizedString(@"category_breakfast", nil), LocalizedString(@"category_breakfast_code", nil), //
+            LocalizedString(@"category_dinner", nil), LocalizedString(@"category_dinner_code", nil), //
+            LocalizedString(@"category_entertainment", nil), LocalizedString(@"category_entertainment_code", nil), //
+            LocalizedString(@"category_gasoline", nil), LocalizedString(@"category_gasoline_code", nil), //
+            LocalizedString(@"category_gift", nil), LocalizedString(@"category_gift_code", nil), //
+            LocalizedString(@"category_hotel", nil), LocalizedString(@"category_hotel_code", nil), //
+            LocalizedString(@"category_laundry", nil), LocalizedString(@"category_laundry_code", nil), //
+            LocalizedString(@"category_lunch", nil), LocalizedString(@"category_lunch_code", nil), //
+            LocalizedString(@"category_other", nil), LocalizedString(@"category_other_code", nil), //
+            LocalizedString(@"category_parking_tolls", nil), LocalizedString(@"category_parking_tolls_code", nil), //
+            LocalizedString(@"category_postage_shipping", nil), LocalizedString(@"category_postage_shipping_code", nil), //
+            LocalizedString(@"category_car_rental", nil), LocalizedString(@"category_car_rental_code", nil), //
+            LocalizedString(@"category_taxi_bus", nil), LocalizedString(@"category_taxi_bus_code", nil), //
+            LocalizedString(@"category_telephone_fax", nil), LocalizedString(@"category_telephone_fax_code", nil), //
+            LocalizedString(@"category_tip", nil), LocalizedString(@"category_tip_code", nil), //
+            LocalizedString(@"category_train", nil), LocalizedString(@"category_train_code", nil), //
+            LocalizedString(@"category_books_periodicals", nil), LocalizedString(@"category_books_periodicals_code", nil), //
+            LocalizedString(@"category_cell_phone", nil), LocalizedString(@"category_cell_phone_code", nil), //
+            LocalizedString(@"category_dues_subscriptions", nil), LocalizedString(@"category_dues_subscriptions_code", nil), //
+            LocalizedString(@"category_meals_justified", nil), LocalizedString(@"category_meals_justified_code", nil), //
+            LocalizedString(@"category_stationery_stations", nil), LocalizedString(@"category_stationery_stations_code", nil), //
+            LocalizedString(@"category_training_fees", nil), LocalizedString(@"category_training_fees_code", nil), //
+            LocalizedString(@"pref_distance_header", nil), LocalizedString(@"category.distance.code", nil), //
     ];
 
     for (NSUInteger i = 0; i < cats.count - 1; i += 2) {
@@ -93,14 +94,14 @@
 
 - (BOOL)insertDefaultReceiptColumnsIntoDatabase:(Database *)database {
     NSArray *csvColumns = @[
-            [ReceiptColumn columnName:NSLocalizedString(@"RECEIPTMENU_FIELD_DATE", nil)],
-            [ReceiptColumn columnName:NSLocalizedString(@"RECEIPTMENU_FIELD_NAME", nil)],
-            [ReceiptColumn columnName:NSLocalizedString(@"RECEIPTMENU_FIELD_PRICE", nil)],
-            [ReceiptColumn columnName:NSLocalizedString(@"RECEIPTMENU_FIELD_CURRENCY", nil)],
-            [ReceiptColumn columnName:NSLocalizedString(@"column_item_category_name", nil)],
-            [ReceiptColumn columnName:NSLocalizedString(@"column_item_category_code", nil)],
-            [ReceiptColumn columnName:NSLocalizedString(@"RECEIPTMENU_FIELD_COMMENT", nil)],
-            [ReceiptColumn columnName:NSLocalizedString(@"graphs_label_reimbursable", nil)]
+            [ReceiptColumn columnName:LocalizedString(@"RECEIPTMENU_FIELD_DATE", nil)],
+            [ReceiptColumn columnName:LocalizedString(@"RECEIPTMENU_FIELD_NAME", nil)],
+            [ReceiptColumn columnName:LocalizedString(@"RECEIPTMENU_FIELD_PRICE", nil)],
+            [ReceiptColumn columnName:LocalizedString(@"RECEIPTMENU_FIELD_CURRENCY", nil)],
+            [ReceiptColumn columnName:LocalizedString(@"column_item_category_name", nil)],
+            [ReceiptColumn columnName:LocalizedString(@"column_item_category_code", nil)],
+            [ReceiptColumn columnName:LocalizedString(@"RECEIPTMENU_FIELD_COMMENT", nil)],
+            [ReceiptColumn columnName:LocalizedString(@"graphs_label_reimbursable", nil)]
     ];
 
 
@@ -110,12 +111,12 @@
     }
 
     NSArray *pdfColumns = @[
-            [ReceiptColumn columnName:NSLocalizedString(@"RECEIPTMENU_FIELD_DATE", nil)],
-            [ReceiptColumn columnName:NSLocalizedString(@"RECEIPTMENU_FIELD_NAME", nil)],
-            [ReceiptColumn columnName:NSLocalizedString(@"RECEIPTMENU_FIELD_PRICE", nil)],
-            [ReceiptColumn columnName:NSLocalizedString(@"RECEIPTMENU_FIELD_CURRENCY", nil)],
-            [ReceiptColumn columnName:NSLocalizedString(@"column_item_category_name", nil)],
-            [ReceiptColumn columnName:NSLocalizedString(@"graphs_label_reimbursable", nil)]
+            [ReceiptColumn columnName:LocalizedString(@"RECEIPTMENU_FIELD_DATE", nil)],
+            [ReceiptColumn columnName:LocalizedString(@"RECEIPTMENU_FIELD_NAME", nil)],
+            [ReceiptColumn columnName:LocalizedString(@"RECEIPTMENU_FIELD_PRICE", nil)],
+            [ReceiptColumn columnName:LocalizedString(@"RECEIPTMENU_FIELD_CURRENCY", nil)],
+            [ReceiptColumn columnName:LocalizedString(@"column_item_category_name", nil)],
+            [ReceiptColumn columnName:LocalizedString(@"graphs_label_reimbursable", nil)]
     ];
 
     return [database replaceAllPDFColumnsWith:pdfColumns];

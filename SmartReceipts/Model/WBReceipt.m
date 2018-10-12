@@ -15,6 +15,7 @@
 #import "NSDate+Calculations.h"
 #import "WBTextUtils.h"
 #import <SmartReceipts-Swift.h>
+#import "LocalizedString.h"
 
 static NSString* checkNoData(NSString* str) {
     if ([SRNoData caseInsensitiveCompare:str] == NSOrderedSame) {
@@ -272,9 +273,9 @@ static NSString* checkNoData(NSString* str) {
 
 - (NSString *)attachmentMarker {
     if (self.hasImage) {
-        return NSLocalizedString(@"image", nil);
+        return LocalizedString(@"image", nil);
     } else if (self.hasPDF) {
-        return NSLocalizedString(@"pdf", nil);
+        return LocalizedString(@"pdf", nil);
     }
 
     return @"";
