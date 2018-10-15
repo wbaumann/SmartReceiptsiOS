@@ -84,14 +84,16 @@ const struct CSVTableStruct CSVTable = {
         .TABLE_NAME = @"csvcolumns",
         .COLUMN_ID = @"id",
         .COLUMN_TYPE = @"type",
-        .COLUMN_CUSTOM_ORDER_ID = @"custom_order_id"
+        .COLUMN_CUSTOM_ORDER_ID = @"custom_order_id",
+        .COLUMN_COLUMN_TYPE = @"column_type"
 };
 
 const struct PDFTableStruct PDFTable = {
         .TABLE_NAME = @"pdfcolumns",
         .COLUMN_ID = @"id",
         .COLUMN_TYPE = @"type",
-        .COLUMN_CUSTOM_ORDER_ID = @"custom_order_id"
+        .COLUMN_CUSTOM_ORDER_ID = @"custom_order_id",
+        .COLUMN_COLUMN_TYPE = @"column_type"
 };
 
 const struct SyncStateColumnsStruct SyncStateColumns = {

@@ -15,12 +15,14 @@
 
 @property (nonatomic) NSInteger objectId;
 @property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, readonly) NSInteger сolumnType;
 @property (nonatomic, strong, readonly) WBDateFormatter *dateFormatter;
 @property (nonatomic, readonly) NSString *header;
 @property (nonatomic, strong) NSString *uniqueIdentity;
 @property (nonatomic) NSInteger customOrderId;
 
-- (instancetype)initWithIndex:(NSInteger)index name:(NSString *)name;
+- (instancetype)initWithIndex:(NSInteger)index type:(NSInteger)type name:(NSString *)name;
+- (instancetype)initWithType:(NSInteger)type name:(NSString *)name;
 
 - (NSString *)valueFromRow:(id)row forCSV:(BOOL)forCSV;
 - (NSString *)valueForFooter:(NSArray *)rows forCSV:(BOOL)forCSV;

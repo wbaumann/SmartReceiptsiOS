@@ -223,6 +223,7 @@
 		7185AEF91EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF31EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift */; };
 		7185AEFA1EFC1CC90038ED2A /* ReceiptMoveCopyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF41EFC1CC90038ED2A /* ReceiptMoveCopyView.swift */; };
 		71874293216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71874292216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift */; };
+		71874295216FCE99005FFDD2 /* DatabaseUpgradeToVersion18.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71874294216FCE98005FFDD2 /* DatabaseUpgradeToVersion18.swift */; };
 		718AAC112120382E00290183 /* SyncableTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAC102120382E00290183 /* SyncableTableCell.swift */; };
 		718AAC13212039E000290183 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAC12212039E000290183 /* TripCell.swift */; };
 		718AAC15212039EA00290183 /* ReceiptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAC14212039EA00290183 /* ReceiptCell.swift */; };
@@ -796,6 +797,7 @@
 		7185AEF31EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyRouter.swift; sourceTree = "<group>"; };
 		7185AEF41EFC1CC90038ED2A /* ReceiptMoveCopyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyView.swift; sourceTree = "<group>"; };
 		71874292216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDatabaseUpgradeTests.swift; sourceTree = "<group>"; };
+		71874294216FCE98005FFDD2 /* DatabaseUpgradeToVersion18.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion18.swift; sourceTree = "<group>"; };
 		718AAC102120382E00290183 /* SyncableTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncableTableCell.swift; sourceTree = "<group>"; };
 		718AAC12212039E000290183 /* TripCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		718AAC14212039EA00290183 /* ReceiptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCell.swift; sourceTree = "<group>"; };
@@ -2725,6 +2727,7 @@
 				5757D60F1E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift */,
 				71DB1469205E954C009B83E7 /* DatabaseUpgradeToVersion16.swift */,
 				7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */,
+				71874294216FCE98005FFDD2 /* DatabaseUpgradeToVersion18.swift */,
 			);
 			path = Migrations;
 			sourceTree = "<group>";
@@ -3583,6 +3586,7 @@
 				EAF9ADE61AECF8F80000AC84 /* DatabaseCreateAtVersion11.m in Sources */,
 				EA8D818E1AEA7BBC00BAC943 /* ReceiptColumnReportName.m in Sources */,
 				579DDFB21E2E4223004937F7 /* UIImage+Extensions.swift in Sources */,
+				71874295216FCE99005FFDD2 /* DatabaseUpgradeToVersion18.swift in Sources */,
 				717DDB98203B59A7000486C3 /* PickerButtonCell.swift in Sources */,
 				A7F05BBC1CFC31520079F1AD /* WBCurrency+Extensions.swift in Sources */,
 				57691F001E10613500F78859 /* RateApplication.m in Sources */,

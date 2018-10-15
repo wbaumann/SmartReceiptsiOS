@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class DatabaseUpgradeToVersion17: DatabaseMigration {
     override func version() -> UInt {
         return 17

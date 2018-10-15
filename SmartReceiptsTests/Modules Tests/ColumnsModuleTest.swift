@@ -20,7 +20,7 @@ class ColumnsModuleTest: XCTestCase {
     var interactor: MockColumnsInteractor!
     var router: MockColumnsRouter!
     
-    let testColumn = Column(index: 0, name: "test")!
+    let testColumn = Column(type: 0, name: "test")!
     
     override func setUp() {
         super.setUp()

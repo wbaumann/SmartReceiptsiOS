@@ -11,6 +11,9 @@
 #define LocalizedString(key, cmt) \
     [LocalizedString from:(key) comment:(cmt)]
 
+#define Localized(key) \
+    [LocalizedString from:(key) comment:(nil)]
+
 @interface LocalizedString : NSObject
 
 // Alters the tradition NSLocalizedString behavior to check that the key is in the

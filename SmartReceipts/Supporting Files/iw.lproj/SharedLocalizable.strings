@@ -1112,6 +1112,10 @@
 
 "original_column_item_blank_en_us_name" = "Blank Column";
 
+"original_column_item_receipt_price_minus_tax_en_us_name" = "Price Minus Tax";
+
+"original_column_item_converted_price_minus_tax_exchange_rate_en_us_name" = "Price Minus Tax (Exchanged)";
+
 "original_column_item_category_code_en_us_name" = "Category Code";
 
 "original_column_item_category_name_en_us_name" = "Category Name";
