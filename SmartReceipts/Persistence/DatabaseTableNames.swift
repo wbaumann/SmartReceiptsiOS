@@ -108,6 +108,7 @@ enum PDFColumnTable {
         static let Id = "id"
         static let `Type` = "type"
         static let CustomOrderId = "custom_order_id"
+        static let ColumnType = "column_type"
     }
 }
 
@@ -118,6 +119,7 @@ enum CSVColumnTable {
         static let Id = "id"
         static let `Type` = "type"
         static let CustomOrderId = "custom_order_id"
+        static let ColumnType = "column_type"
     }
 }
 

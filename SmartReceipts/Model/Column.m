@@ -19,19 +19,25 @@
 
 @implementation Column
 
-- (instancetype)initWithIndex:(NSInteger)index name:(NSString *)name {
+- (instancetype)initWithIndex:(NSInteger)index type:(NSInteger)type name:(NSString *)name {
     self = [super init];
     if (self) {
         _customOrderId = index;
         _name = name;
+        _сolumnType = type;
     }
     return self;
 }
 
+- (instancetype)initWithType:(NSInteger)type name:(NSString *)name {
+    return [self initWithIndex:-1 type:type name:name];
+}
+
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet {
     _objectId = [resultSet intForColumn:CSVTable.COLUMN_ID];
-    _name = [resultSet stringForColumn:CSVTable.COLUMN_TYPE];
     _customOrderId = [resultSet intForColumn:CSVTable.COLUMN_CUSTOM_ORDER_ID];
+    _сolumnType = [resultSet intForColumn:CSVTable.COLUMN_COLUMN_TYPE];
+    _name = [ReceiptColumn columnType:_сolumnType].name;
 }
 
 - (WBDateFormatter *)dateFormatter {

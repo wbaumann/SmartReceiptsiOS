@@ -15,7 +15,9 @@
 @interface ReceiptColumn : Column
 + (ReceiptColumn *)columnWithIndex:(NSInteger)index name:(NSString *)columnName;
 + (ReceiptColumn *)columnName:(NSString *)columnName;
++ (ReceiptColumn *)columnType:(NSInteger)type;
 + (NSArray *)availableColumnsNames;
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV;
+
 
 @end

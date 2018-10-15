@@ -89,6 +89,7 @@ struct CSVTableStruct {
     __unsafe_unretained NSString *const COLUMN_ID;
     __unsafe_unretained NSString *const COLUMN_TYPE;
     __unsafe_unretained NSString *const COLUMN_CUSTOM_ORDER_ID;
+    __unsafe_unretained NSString *const COLUMN_COLUMN_TYPE;
 };
 extern const struct CSVTableStruct CSVTable;
 
@@ -97,6 +98,7 @@ struct PDFTableStruct {
     __unsafe_unretained NSString *const COLUMN_ID;
     __unsafe_unretained NSString *const COLUMN_TYPE;
     __unsafe_unretained NSString *const COLUMN_CUSTOM_ORDER_ID;
+    __unsafe_unretained NSString *const COLUMN_COLUMN_TYPE;
 };
 extern const struct PDFTableStruct PDFTable;
 

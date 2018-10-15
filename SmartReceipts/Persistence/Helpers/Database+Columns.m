@@ -37,7 +37,7 @@
         FMResultSet* resultSet = [database executeQuery:query];
 
         while ([resultSet next]) {
-            ReceiptColumn *col = [ReceiptColumn columnWithIndex:0 name:[resultSet stringForColumn:CSVTable.COLUMN_TYPE]];
+            ReceiptColumn *col = [ReceiptColumn columnType:[resultSet intForColumn:CSVTable.COLUMN_COLUMN_TYPE]];
             [col loadDataFromResultSet:resultSet];
             [loaded addObject:col];
         }

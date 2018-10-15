@@ -21,13 +21,13 @@
 
 + (NSArray *)allColumns {
     return @[
-        [[DistanceLocationColumn alloc] initWithIndex:0 name:LocalizedString(@"distance_location_field", nil)],
-        [[DistancePriceColumn alloc] initWithIndex:0 name:LocalizedString(@"RECEIPTMENU_FIELD_PRICE", nil)],
-        [[DistanceDistanceColumn alloc] initWithIndex:0 name:LocalizedString(@"pref_distance_header", nil)],
-        [[DistanceCurrencyColumn alloc] initWithIndex:0 name:LocalizedString(@"RECEIPTMENU_FIELD_CURRENCY", nil)],
-        [[DistanceRateColumn alloc] initWithIndex:0 name:LocalizedString(@"distance_rate_field", nil)],
-        [[DistanceDateColumn alloc] initWithIndex:0 name:LocalizedString(@"RECEIPTMENU_FIELD_DATE", nil)],
-        [[DistanceCommentColumn alloc] initWithIndex:0 name:LocalizedString(@"RECEIPTMENU_FIELD_COMMENT", nil)],
+        [[DistanceLocationColumn alloc] initWithType:0 name:LocalizedString(@"distance_location_field", nil)],
+        [[DistancePriceColumn alloc] initWithType:1 name:LocalizedString(@"RECEIPTMENU_FIELD_PRICE", nil)],
+        [[DistanceDistanceColumn alloc] initWithType:2 name:LocalizedString(@"pref_distance_header", nil)],
+        [[DistanceCurrencyColumn alloc] initWithType:3 name:LocalizedString(@"RECEIPTMENU_FIELD_CURRENCY", nil)],
+        [[DistanceRateColumn alloc] initWithType:4 name:LocalizedString(@"distance_rate_field", nil)],
+        [[DistanceDateColumn alloc] initWithType:5 name:LocalizedString(@"RECEIPTMENU_FIELD_DATE", nil)],
+        [[DistanceCommentColumn alloc] initWithType:6 name:LocalizedString(@"RECEIPTMENU_FIELD_COMMENT", nil)],
     ];
 }
 
