@@ -103,7 +103,7 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
     }
     
     fileprivate func split(_ string: String) -> [String] {
-        if (string.contains(",")) {
+        if string.contains(",") {
             // For legacy reasons, we allow these to also be separated by a comma (,)
             return string.components(separatedBy: ",")
         } else {
