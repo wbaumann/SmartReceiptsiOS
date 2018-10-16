@@ -37,7 +37,7 @@ final class ReceiptsView: FetchedTableViewController {
     fileprivate let bag = DisposeBag()
     
     var receiptsCount: Int { get { return itemsCount } }
-    override var placeholderTitle: String { get { return LocalizedString("fetched.placeholder.receipts.title") } }
+    override var placeholderTitle: String { get { return LocalizedString("receipt_no_data") } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
