@@ -182,14 +182,6 @@
 "settings.purchase.section.title" = "Purchases";
 "settings.purchase.subscription.valid.until.label.base" = "Valid until: %@";
 "settings.receipt.assume.full.page.image.label" = "Assume Full Page Receipt Image";
-"pref_privacy_header" = "Privacy";
-"pref_about_privacy_policy_title" = "Privacy Policy";
-"pref_privacy_enable_analytics_title" = "Share Analytics";
-"pref_privacy_enable_analytics_summary" = "With Google/Firebase Analytics";
-"pref_privacy_enable_crash_tracking_title" = "Share Crash Information";
-"pref_privacy_enable_crash_tracking_summary" = "With Google Crashlytics";
-"pref_privacy_enable_ad_personalization_title" = "Allow Ad Personalization";
-"pref_privacy_enable_ad_personalization_summary" = "With Google AdMob";
 
 "trips.controller.daily.total" = "Daily Total: %@";
 "trips.controller.distance.total" = "Distance Total: %@";

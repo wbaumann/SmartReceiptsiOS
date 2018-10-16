@@ -61,9 +61,6 @@
 + (BOOL)defaultToFirstReportDate;
 + (void)setDefaultToFirstReportDate:(BOOL)defaultToFirstReportDate;
 
-+ (BOOL)includeCSVHeaders;
-+ (void)setIncludeCSVHeaders:(BOOL)includeCSVHeaders;
-
 + (BOOL)isTheDistancePriceBeIncludedInReports;
 + (void)setTheDistancePriceBeIncludedInReports:(BOOL)value;
 

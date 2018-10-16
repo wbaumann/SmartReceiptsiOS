@@ -41,7 +41,7 @@ class TripCSVGenerator: ReportCSVGenerator {
     
     private func appendReceiptsTable(_ content: NSMutableString) {
         let receiptTable = ReportCSVTable(content: content, columns: receiptColumns())!
-        receiptTable.includeHeaders = WBPreferences.includeCSVHeaders()
+        receiptTable.includeHeaders = true
         
         var recs = receipts()
         if WBPreferences.printDailyDistanceValues() {
@@ -55,7 +55,7 @@ class TripCSVGenerator: ReportCSVGenerator {
     private func appendCategoricalSummationTable(_ content: NSMutableString) {
         content.append(TABLE_SPACING)
         let receiptTable = ReportCSVTable(content: content, columns: categoryColumns())!
-        receiptTable.includeHeaders = WBPreferences.includeCSVHeaders()
+        receiptTable.includeHeaders = true
         let receipts = receiptsByCategories()
         receiptTable.append(withRows: Array(receipts.values))
     }
@@ -64,7 +64,7 @@ class TripCSVGenerator: ReportCSVGenerator {
         let categoryReceipts = receiptsByCategories()
         for (category, receipts) in categoryReceipts {
             let receiptTable = ReportCSVTable(content: content, columns: receiptColumns())!
-            receiptTable.includeHeaders = WBPreferences.includeCSVHeaders()
+            receiptTable.includeHeaders = true
             content.append(TABLE_SPACING)
             content.append(category + "\n")
             receiptTable.append(withRows: receipts)
@@ -76,7 +76,7 @@ class TripCSVGenerator: ReportCSVGenerator {
         let dists = distances()
         if dists.isEmpty { return }
         let receiptTable = ReportCSVTable(content: content, columns: distanceColumns())!
-        receiptTable.includeHeaders = WBPreferences.includeCSVHeaders()
+        receiptTable.includeHeaders = true
         receiptTable.append(withRows: dists)
     }
 }

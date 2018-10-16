@@ -103,7 +103,12 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
     }
     
     fileprivate func split(_ string: String) -> [String] {
-        return string.components(separatedBy: ",")
+        if (string.contains(",")) {
+            // For legacy reasons, we allow these to also be separated by a comma (,)
+            return string.components(separatedBy: ",")
+        } else {
+            return string.components(separatedBy: ";")
+        }
     }
     
     private func remove(files: [String]) {
