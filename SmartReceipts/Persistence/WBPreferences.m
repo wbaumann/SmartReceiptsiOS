@@ -26,7 +26,6 @@ static NSString * const INT_DEFAULT_TRIP_DURATION = @"TripDuration";
 static NSString * const BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS = @"AllowDataOutsideTripBounds";
 static NSString * const BOOL_AUTOCOMPLETE_ENABLED = @"IsAutocompleteEnabled";
 static NSString * const STRING_USERNAME = @"UserName";
-static NSString * const STRING_FULLNAME = @"FullName";
 static NSString * const BOOL_PREDICT_CATEGORIES = @"PredictCats";
 static NSString * const BOOL_MATCH_COMMENT_WITH_CATEGORIES = @"MatchCommentCats";
 static NSString * const BOOL_MATCH_NAME_WITH_CATEGORIES = @"MatchNameCats";
@@ -39,7 +38,6 @@ static NSString * const STRING_CURRENCY = @"isocurr";
 static NSString * const STRING_DATE_SEPARATOR = @"dateseparator";
 static NSString * const FLOAT_MIN_RECEIPT_PRICE = @"MinReceiptPrice";
 // static NSString * const INT_VERSION_CODE = @"VersionCode";
-static NSString * const BOOL_INCL_CSV_HEADERS = @"IncludeCSVHeaders";
 static NSString * const BOOL_DEFAULT_TO_FIRST_TRIP_DATE = @"DefaultToFirstReportDate";
 // static NSString * const STRING_LAST_ACTIVITY_TAG = @"LastActivityTag";
 
@@ -128,11 +126,9 @@ static NSDictionary *getEntryTypes() {
 
             BOOL_INCLUDE_TAX_FIELD : tBool,
             STRING_USERNAME : tString,
-            STRING_FULLNAME : tString,
 
             STRING_CURRENCY : tString,
 
-            BOOL_INCL_CSV_HEADERS : tBool,
             STRING_DATE_SEPARATOR : tString,
             BOOL_DEFAULT_TO_FIRST_TRIP_DATE : tBool,
 
@@ -201,8 +197,8 @@ static NSDictionary *getDefaultValues() {
             STRING_DEFAULT_EMAIL_TO : @"",
             STRING_DEFAULT_EMAIL_CC : @"",
             STRING_DEFAULT_EMAIL_BCC : @"",
-            STRING_DEFAULT_EMAIL_SUBJECT : LocalizedString(@"SmartReceipts - %REPORT_NAME%", nil),
-            PDF_FOOTER_STRING : LocalizedString(@"pdf.report.default.footer.text", nil),
+            STRING_DEFAULT_EMAIL_SUBJECT : LocalizedString(@"EMAIL_DATA_SUBJECT", nil),
+            PDF_FOOTER_STRING : LocalizedString(@"pref_pro_pdf_footer_defaultValue", nil),
             BOOL_INCLUDE_CATEGORICAL_SUMMATION : @NO,
             BOOL_SEPARATE_PAYMANTS_BY_CATEGORY : @NO,
             BOOL_OMIT_DEFAULT_PDF_TABLE : @NO,
@@ -218,11 +214,9 @@ static NSDictionary *getDefaultValues() {
 
             BOOL_INCLUDE_TAX_FIELD : @NO,
             STRING_USERNAME : @"",
-            STRING_FULLNAME : @"",
 
             STRING_CURRENCY : currencyCode,
 
-            BOOL_INCL_CSV_HEADERS : @NO,
             STRING_DATE_SEPARATOR : dateSeparator,
             BOOL_DEFAULT_TO_FIRST_TRIP_DATE : @NO,
 
@@ -374,7 +368,7 @@ static NSUserDefaults* instance() {
 
 + (NSString *)pdfFooterString {
     if (![WBPreferences isPDFFooterUnlocked]) {
-        return LocalizedString(@"pdf.report.default.footer.text", nil);
+        return LocalizedString(@"pref_pro_pdf_footer_defaultValue", nil);
     }
     
     return [instance() objectForKey:PDF_FOOTER_STRING];
@@ -425,14 +419,6 @@ static NSUserDefaults* instance() {
     [instance() setObject:userID forKey:STRING_USERNAME];
 }
 
-+ (NSString*) fullName {
-    return [instance() stringForKey:STRING_FULLNAME];
-}
-
-+ (void) setFullName:(NSString*) fullName {
-    [instance() setObject:fullName forKey:STRING_FULLNAME];
-}
-
 + (int) defaultTripDuration {
     return (int)[instance() integerForKey:INT_DEFAULT_TRIP_DURATION];
 }
@@ -459,14 +445,6 @@ static NSUserDefaults* instance() {
 
 + (void) setDefaultToFirstReportDate:(BOOL) defaultToFirstReportDate {
     [instance() setBool:defaultToFirstReportDate forKey:BOOL_DEFAULT_TO_FIRST_TRIP_DATE];
-}
-
-+ (BOOL) includeCSVHeaders {
-    return [instance() boolForKey:BOOL_INCL_CSV_HEADERS];
-}
-
-+ (void) setIncludeCSVHeaders:(BOOL) includeCSVHeaders {
-    [instance() setBool:includeCSVHeaders forKey:BOOL_INCL_CSV_HEADERS];
 }
 
 + (BOOL)isTheDistancePriceBeIncludedInReports {
