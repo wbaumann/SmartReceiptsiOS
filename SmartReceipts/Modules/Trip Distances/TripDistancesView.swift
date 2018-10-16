@@ -64,7 +64,7 @@ class TripDistancesView: FetchedTableViewController {
     }
     
     override var placeholderTitle: String {
-        get { return LocalizedString("fetched.placeholder.distances.title") }
+        get { return LocalizedString("distance_no_data") }
     }
     
     override func contentChanged() {

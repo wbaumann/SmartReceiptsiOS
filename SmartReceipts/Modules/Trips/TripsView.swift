@@ -153,7 +153,7 @@ final class TripsView: FetchedTableViewController {
     }
     
     override var placeholderTitle: String {
-        get { return LocalizedString("fetched.placeholder.trips.title") }
+        get { return LocalizedString("trip_no_data") }
     }
 
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {

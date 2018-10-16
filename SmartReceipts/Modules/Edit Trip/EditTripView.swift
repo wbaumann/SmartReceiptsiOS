@@ -38,7 +38,7 @@ final class EditTripView: UserInterface {
     
     private func setupInitialState() {
         navigationItem.title = self.displayData.trip == nil ?
-            LocalizedString("edit.trip.controller.add.title") :
+            LocalizedString("DIALOG_TRIPMENU_TITLE_NEW") :
             LocalizedString("DIALOG_TRIPMENU_TITLE_EDIT")
     }
     

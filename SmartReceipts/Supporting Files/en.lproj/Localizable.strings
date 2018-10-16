@@ -201,9 +201,6 @@
 "trip.tab.generate.title" = "GENERATE";
 
 "tooltip.receipts.generate.advice" = "Use the 'Generate' tab to create your reports";
-"tooltip_review_privacy" = "Tap to review your privacy settings";
-"tooltip_no_backups_info_message" = "Reminder: Periodically back up your data";
-"tooltip_backup_info_message" = "%d days since your last backup";
 
 "login.fields.hint.email" = "Please enter a valid address:";
 "login.error.login.failed" = "Incorrect Username or Password";

@@ -38,7 +38,7 @@ class UpsellBannerAdView: UIView {
         
         addSubview(button)
         
-        button.setTitle(LocalizedString("missing_ad_suggest_removal_upsell_ios"), for: .normal)
+        button.setTitle(LocalizedString("missing_ad_suggest_removal_upsell"), for: .normal)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.textColor = .white
         button.titleLabel?.textAlignment = .center

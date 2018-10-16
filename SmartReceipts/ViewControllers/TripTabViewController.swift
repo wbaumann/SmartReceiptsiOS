@@ -183,19 +183,19 @@ protocol InsetContent {
 
 extension ReceiptsView: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: LocalizedString("trip.tab.receipts.title"))
+        return IndicatorInfo(title: LocalizedString("report_info_receipts"))
     }
 }
 
 extension TripDistancesView: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: LocalizedString("trip.tab.distances.title"))
+        return IndicatorInfo(title: LocalizedString("report_info_distance"))
     }
 }
 
 extension GenerateReportView: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: LocalizedString("trip.tab.generate.title"))
+        return IndicatorInfo(title: LocalizedString("report_info_generate"))
     }
 }
 

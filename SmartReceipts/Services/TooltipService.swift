@@ -54,7 +54,7 @@ class TooltipService {
     
     func generateTooltip(for trip: WBTrip) -> String? {
         if moveToGenerateTrigger(for: trip) {
-            return LocalizedString("tooltip.receipts.generate.advice")
+            return LocalizedString("tooltip_generate_info_message")
         }
         return nil
     }
