@@ -19,6 +19,7 @@
 
 - (instancetype)initWithColumns:(NSArray *)columns {
     self = [super init];
+    self.includeHeaders = true;
     if (self) {
         _columns = columns;
     }
