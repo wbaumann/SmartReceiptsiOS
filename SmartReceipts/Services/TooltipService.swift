@@ -19,6 +19,7 @@ class TooltipService {
     fileprivate let PRIVACY_DISSMISED = "privacy.dissmissed"
     fileprivate let REMINDER_DATE = "reminder.date"
     fileprivate let REMINDER_INSERTS = "reminder.inserts"
+    fileprivate let REMINDER_HAS_BACKUP = "reminder.has.backup"
     
     fileprivate let MIN_INSERTS_COUNT = 15
     fileprivate let MIN_DAYS_COUNT = 10
@@ -28,6 +29,10 @@ class TooltipService {
     private init() {
         database = Database.sharedInstance()
         NotificationCenter.default.addObserver(self, selector: #selector(didInsert(_:)), name: .DatabaseDidInsertModel, object: nil)
+        if UserDefaults.standard.double(forKey: REMINDER_DATE) == 0 {
+            UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: REMINDER_DATE)
+        }
+        
         AppNotificationCenter.didSyncBackup.subscribe(onNext: { [weak self] in
             self?.markBackup()
         }).disposed(by: bag)
@@ -60,14 +65,14 @@ class TooltipService {
     }
     
     func tooltipBackupReminder() -> String? {
-        if needRemindByInserts() {
-            let timeInterval = UserDefaults.standard.double(forKey: REMINDER_DATE)
-            if timeInterval == 0 {
-                return LocalizedString("tooltip_no_backups_info_message")
-            } else if needRemindByDays() {
+        if needRemindByInserts() && needRemindByDays() {
+            if UserDefaults.standard.bool(forKey: REMINDER_HAS_BACKUP) {
+                let timeInterval = UserDefaults.standard.double(forKey: REMINDER_DATE)
                 let backupDate = Date(timeIntervalSince1970: timeInterval)
                 let days = Date().daysDifference(date: backupDate)
                 return String(format: LocalizedString("tooltip_backup_info_message"), days)
+            } else {
+                return LocalizedString("tooltip_no_backups_info_message")
             }
         }
         return nil
@@ -108,11 +113,11 @@ extension TooltipService {
     }
     
     func markBackupReminderDismissed() {
-        UserDefaults.standard.set(0, forKey: REMINDER_INSERTS)
+        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: REMINDER_DATE)
     }
     
     func markBackup() {
-        UserDefaults.standard.set(0, forKey: REMINDER_INSERTS)
+        UserDefaults.standard.set(true, forKey: REMINDER_HAS_BACKUP)
         UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: REMINDER_DATE)
     }
     
