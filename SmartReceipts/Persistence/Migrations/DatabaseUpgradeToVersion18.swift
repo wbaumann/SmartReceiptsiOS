@@ -31,7 +31,7 @@ class DatabaseUpgradeToVersion18: DatabaseMigration {
         
         for column in columns {
             let columnType = ReceiptColumn(name: column.name)?.сolumnType ?? 0
-            database.executeUpdate("UPDATE \(table) SET \(COLUMN_TYPE) = \(columnType) WHERE \(DEPRECATED_COLUMN_TYPE_AS_NAME) = '\(column.name!)'")
+            result = result && database.executeUpdate("UPDATE \(table) SET \(COLUMN_TYPE) = \(columnType) WHERE \(DEPRECATED_COLUMN_TYPE_AS_NAME) = '\(column.name!)'")
         }
         
         result = result && database.executeUpdate("ALTER TABLE \(table) RENAME TO \(table)_tmp")
