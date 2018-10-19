@@ -82,6 +82,7 @@ static NSArray<LegacyResolver *> *_resolvers;
             LR(22, @"original_column_item_exchange_rate_en_us_name", @"column_item_exchange_rate", ReceiptColumnExchangeRate.class),
             LR(23, @"original_column_item_pictured_en_us_name", @"column_item_pictured", ReceiptColumnPictured.class),
             LR(24, @"original_column_item_reimbursable_en_us_name", @"column_item_reimbursable", ReceiptColumnReimbursable.class),
+            LR(24, @"original_column_item_deprecated_expensable_en_us_name", @"column_item_reimbursable", ReceiptColumnReimbursable.class),
             LR(25, @"original_column_item_index_en_us_name", @"column_item_index", ReceiptColumnReceiptIndex.class),
             LR(26, @"original_column_item_id_en_us_name", @"column_item_id", ReceiptColumnReceiptId.class),
             LR(27, @"original_column_item_payment_method_en_us_name", @"column_item_payment_method", ReceiptColumnPaymentMethod.class),
@@ -111,6 +112,8 @@ static NSArray<LegacyResolver *> *_resolvers;
             return [resolver column];
         }
     }
+    
+    LOGGER_ERROR(@"Column not found by type: %ld", (long)type);
     return [ReceiptUnknownColumn new];
 }
 
@@ -130,6 +133,7 @@ static NSArray<LegacyResolver *> *_resolvers;
     }
     
     if (!column) {
+        LOGGER_ERROR(@"Column not found by name: %@", columnName);
         column = [ReceiptUnknownColumn new];
     }
     
