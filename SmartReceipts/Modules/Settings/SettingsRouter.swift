@@ -15,8 +15,6 @@ class SettingsRouter: Router {
         switch route {
         case .privacyPolicy:
             openPrivacyPolicy()
-        case .sendLove:
-            openSendLove()
         case .columns(let isCSV):
             openColumns(isCSV: isCSV)
         case .paymentMethods:
@@ -28,14 +26,6 @@ class SettingsRouter: Router {
     
     func close() {
         _view.dismiss(animated: true, completion: nil)
-    }
-    
-    func openSendLove() {
-        if let reviewUrl = URL(string: "itms-apps://itunes.apple.com/app/id\(SmartReceiptAppStoreId)") {
-            if UIApplication.shared.canOpenURL(reviewUrl) {
-                UIApplication.shared.open(reviewUrl, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-            }
-        }
     }
     
     func openPrivacyPolicy() {
@@ -83,7 +73,6 @@ private extension SettingsRouter {
 }
 
 enum SettingsRoutes {
-    case sendLove
     case privacyPolicy
     case columns(isCSV: Bool)
     case paymentMethods
