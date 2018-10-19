@@ -173,6 +173,7 @@
 		7159BA0C1F06FB96004EABAA /* ExchangeRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */; };
 		715B4EBD1F114A9C0021ACD8 /* PurchaseButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B4EBB1F114A9C0021ACD8 /* PurchaseButtonCell.swift */; };
 		715B4EBE1F114A9C0021ACD8 /* PurchaseButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 715B4EBC1F114A9C0021ACD8 /* PurchaseButtonCell.xib */; };
+		715DC024217513E200ED5970 /* DatabaseUpgradeToVersion19.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715DC023217513E200ED5970 /* DatabaseUpgradeToVersion19.swift */; };
 		716138B91FD1ABDA00C73FB9 /* TableContentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716138B81FD1ABDA00C73FB9 /* TableContentRow.swift */; };
 		716138BB1FD1ABE900C73FB9 /* TableHeaderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716138BA1FD1ABE900C73FB9 /* TableHeaderRow.swift */; };
 		716138BD1FD1BB4B00C73FB9 /* RenderedPDFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716138BC1FD1BB4B00C73FB9 /* RenderedPDFLabel.swift */; };
@@ -742,6 +743,7 @@
 		7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeRateCell.xib; sourceTree = "<group>"; };
 		715B4EBB1F114A9C0021ACD8 /* PurchaseButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseButtonCell.swift; sourceTree = "<group>"; };
 		715B4EBC1F114A9C0021ACD8 /* PurchaseButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseButtonCell.xib; sourceTree = "<group>"; };
+		715DC023217513E200ED5970 /* DatabaseUpgradeToVersion19.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion19.swift; sourceTree = "<group>"; };
 		716138B81FD1ABDA00C73FB9 /* TableContentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableContentRow.swift; sourceTree = "<group>"; };
 		716138BA1FD1ABE900C73FB9 /* TableHeaderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderRow.swift; sourceTree = "<group>"; };
 		716138BC1FD1BB4B00C73FB9 /* RenderedPDFLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderedPDFLabel.swift; sourceTree = "<group>"; };
@@ -2728,6 +2730,7 @@
 				71DB1469205E954C009B83E7 /* DatabaseUpgradeToVersion16.swift */,
 				7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */,
 				71874294216FCE98005FFDD2 /* DatabaseUpgradeToVersion18.swift */,
+				715DC023217513E200ED5970 /* DatabaseUpgradeToVersion19.swift */,
 			);
 			path = Migrations;
 			sourceTree = "<group>";
@@ -3587,6 +3590,7 @@
 				EA8D818E1AEA7BBC00BAC943 /* ReceiptColumnReportName.m in Sources */,
 				579DDFB21E2E4223004937F7 /* UIImage+Extensions.swift in Sources */,
 				71874295216FCE99005FFDD2 /* DatabaseUpgradeToVersion18.swift in Sources */,
+				715DC024217513E200ED5970 /* DatabaseUpgradeToVersion19.swift in Sources */,
 				717DDB98203B59A7000486C3 /* PickerButtonCell.swift in Sources */,
 				A7F05BBC1CFC31520079F1AD /* WBCurrency+Extensions.swift in Sources */,
 				57691F001E10613500F78859 /* RateApplication.m in Sources */,

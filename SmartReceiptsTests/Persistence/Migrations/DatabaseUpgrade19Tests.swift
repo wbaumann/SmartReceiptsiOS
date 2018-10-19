@@ -25,7 +25,8 @@ class DatabaseUpgrade19Tests: BaseDatabaseUpgradeTests {
             DatabaseUpgradeToVersion15(),
             DatabaseUpgradeToVersion16(),
             DatabaseUpgradeToVersion17(),
-            DatabaseUpgradeToVersion18()
+            DatabaseUpgradeToVersion18(),
+            DatabaseUpgradeToVersion19()
         ]
     }
     

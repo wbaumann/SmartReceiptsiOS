@@ -27,6 +27,7 @@
             [DatabaseUpgradeToVersion16 new],
             [DatabaseUpgradeToVersion17 new],
             [DatabaseUpgradeToVersion18 new],
+            [DatabaseUpgradeToVersion19 new],
     ];
 }
 
