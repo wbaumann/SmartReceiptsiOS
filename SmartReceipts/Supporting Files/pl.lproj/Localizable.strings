@@ -357,7 +357,6 @@
 "settings.feedback.section.label" = "Sprzężenie zwrotne";
 "settings.feedback.sendBugReport.label" = "Wyślij raport o błędach";
 "settings.feedback.sendFeedback.label" = "Wyślij opinię";
-"settings.feedback.sendLove.label" = "Oceń app";
 "settings.gas.rate.label" = "Stawka Gazu";
 "settings.gas.rate.placeholder" = "Stawka";
 "settings_gas_rate_summaryOn" = "The rate per mi or km travelled";

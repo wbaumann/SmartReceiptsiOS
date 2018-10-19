@@ -512,8 +512,6 @@ class SettingsFormView: FormViewController {
         })
     
         +++ Section(LocalizedString("settings.feedback.section.label"))
-        <<< openModuleButton(LocalizedString("settings.feedback.sendLove.label"),
-            route: .sendLove)
         <<< openModuleButton(LocalizedString("settings.feedback.sendFeedback.label"),
             onTap: { [unowned self] in
             self.settingsView.sendFeedback(subject: FeedbackEmailSubject)

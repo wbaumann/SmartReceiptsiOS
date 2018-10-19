@@ -154,7 +154,6 @@
 "settings.feedback.section.label" = "Feedback";
 "settings.feedback.sendBugReport.label" = "Send bug report";
 "settings.feedback.sendFeedback.label" = "Send feedback";
-"settings.feedback.sendLove.label" = "Send love";
 "settings_gas_rate_summaryOff" = "%@ per mi or km";
 "settings.include.tax.field.label" = "Include Tax Field For Receipts";
 "settings.layout.include.attachment.marker.label" = "Include Picture/PDF Marker";
