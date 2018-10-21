@@ -2,7 +2,7 @@ language: objective-c
 osx_image: xcode10
 xcode_workspace: SmartReceipts.xcworkspace
 xcode_scheme: SmartReceipts
-xcode_destination: platform=iOS Simulator,OS=12.0,name=iPhone X
+xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
 notifications:
   email:
     recipients:
