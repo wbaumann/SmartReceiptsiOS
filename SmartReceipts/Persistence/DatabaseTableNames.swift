@@ -17,8 +17,7 @@ enum ReceiptsTable {
         static let Id = "id"
         static let Path = "path"
         static let Name = "name"
-        static let Parent = "parent"
-        static let Category = "category"
+        static let ParentId = "parentKey"
         static let CategoryId = "categoryKey"
         static let Price = "price"
         static let Tax = "tax"
@@ -39,6 +38,9 @@ enum ReceiptsTable {
         
         @available(*, unavailable, message: "paymentmethod is deprecated, use paymentMethodKey")
         static let PaymentMethod = "paymentmethod"
+        
+        @available(*, unavailable, message: "category is deprecated, use categoryKey")
+        static let Category = "category"
     }
 }
 
@@ -58,6 +60,7 @@ enum TripsTable {
     static let Name = "trips"
         
     enum Column {
+        static let Id = "id"
         static let Name = "name"
         static let From = "from_date"
         static let To = "to_date"
@@ -80,7 +83,7 @@ enum DistanceTable {
         
     enum Column {
         static let Id = "id"
-        static let Parent = "parent"
+        static let ParentId = "parentKey"
         static let Distance = "distance"
         static let Location = "location"
         static let Date = "date"

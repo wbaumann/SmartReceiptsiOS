@@ -19,6 +19,7 @@ class Distance: NSObject, NSCopying, FetchedModel {
     var date: Date!
     var timeZone: TimeZone!
     var comment: String?
+    var parentKey: Int = 0
     var lastLocalModificationTime: Date!
     
     var objectId: Int {
@@ -28,6 +29,7 @@ class Distance: NSObject, NSCopying, FetchedModel {
     
     required init(trip: WBTrip, distance: NSDecimalNumber, rate: Price,
                   location: String, date: Date, timeZone: TimeZone, comment: String?) {
+        self.parentKey = trip.objectId
         self.trip = trip
         self.distance = distance
         self.rate = rate
@@ -73,6 +75,7 @@ class Distance: NSObject, NSCopying, FetchedModel {
                         location: location, date: date, timeZone: timeZone, comment: comment)
         copy.objId = objId
         copy.lastLocalModificationTime = lastLocalModificationTime
+        copy.parentKey = parentKey
         return copy
     }
     
@@ -91,6 +94,7 @@ class Distance: NSObject, NSCopying, FetchedModel {
         
         let time = resultSet.longLongInt(forColumn: SyncStateColumns.LastLocalModificationTime)/1000
         lastLocalModificationTime = Date(timeIntervalSince1970: TimeInterval(time))
+        parentKey = Int(resultSet.int(forColumn: DistanceTable.Column.ParentId))
     }
 
 }

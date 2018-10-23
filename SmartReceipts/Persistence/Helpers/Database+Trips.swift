@@ -17,13 +17,8 @@ extension Database: RefreshTripPriceHandler {
         let adapter = FetchedModelAdapter(database: self)
         adapter.setQuery((query?.buildStatement())!, parameters: (query?.parameters())!)
         adapter.modelClass = WBTrip.self
-        adapter.afterFetchHandler = {
-            model, database in
-            
-            guard let trip = model as? WBTrip else {
-                return
-            }
-            
+        adapter.afterFetchHandler = { model, database in
+            guard let trip = model as? WBTrip else { return }
             self.refreshPriceForTrip(trip, inDatabase: database)
         }
         
@@ -34,18 +29,19 @@ extension Database: RefreshTripPriceHandler {
     
     func tripWithName(_ name: String) -> WBTrip? {
         var trip: WBTrip?
-        inDatabase() {
-            database in
-            
-            trip = database.tripWithName(name)
-        }
-        
+        inDatabase() { trip = $0.tripWithName(name) }
+        return trip
+    }
+    
+    func tripBy(id: Int) -> WBTrip? {
+        var trip: WBTrip?
+        inDatabase() { trip = $0.tripBy(id: id) }
         return trip
     }
     
     func refreshPriceForTrip(_ trip: WBTrip) {
-        inDatabase { (db) in
-            self.refreshPriceForTrip(trip, inDatabase: db)
+        inDatabase {
+            self.refreshPriceForTrip(trip, inDatabase: $0)
         }
     }
 }

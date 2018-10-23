@@ -34,9 +34,9 @@
     [self.db insertTestDistance:@{}];
     [self.db insertTestDistance:@{}];
 
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"10"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"1"]}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"10"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"2"]}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"10"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"3"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"10"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"1"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"10"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"2"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"10"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"3"]}];
 
     NSDecimalNumber *sum = [self.db sumOfDistancesForTrip:self.trip];
     XCTAssertEqualObjects([NSDecimalNumber decimalNumberWithString:@"60"], sum);

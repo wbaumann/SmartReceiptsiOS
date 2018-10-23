@@ -21,7 +21,7 @@ class TripFullPDFGeneratorTest: SmartReceiptsTestsBase {
         testTrip = db.createTestTrip()
         
         for i in 0...5 {
-            db.insertTestReceipt([ReceiptsTable.Column.Parent: testTrip, ReceiptsTable.Column.Name: "TEST Receipt \(i)"])
+            db.insertTestReceipt([ReceiptsTable.Column.ParentId: testTrip, ReceiptsTable.Column.Name: "TEST Receipt \(i)"])
         }
         
         generator = TripFullPDFGenerator(trip: testTrip, database: self.db)
@@ -61,7 +61,8 @@ class TripFullPDFGeneratorTest: SmartReceiptsTestsBase {
     
     func testPdfPortraitFailureTooManyColumns() {
         WBPreferences.setPrintReceiptTableLandscape(false)
-        XCTAssertTrue(db.setPdfColumns(defaultColumns + defaultColumns))
+        let columns = defaultColumns + defaultColumns
+        XCTAssertTrue(db.setPdfColumns(columns))
         
         let result = generator.generateTo(path: NSTemporaryDirectory().appending("temp.pdf"))
         XCTAssertFalse(result, "should fail here")

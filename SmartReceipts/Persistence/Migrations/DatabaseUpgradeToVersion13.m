@@ -21,8 +21,8 @@
 }
 
 - (BOOL)migrate:(Database *)database {
-
-    NSArray *distanceMigrateBase = @[@"INSERT INTO ", DistanceTable.TABLE_NAME, @"(", DistanceTable.COLUMN_PARENT, @", ", DistanceTable.COLUMN_DISTANCE, @", ", DistanceTable.COLUMN_LOCATION, @", ", DistanceTable.COLUMN_DATE, @", ", DistanceTable.COLUMN_TIMEZONE, @", ", DistanceTable.COLUMN_COMMENT, @", ", DistanceTable.COLUMN_RATE_CURRENCY, @")",
+    NSString *parent = @"parent";
+    NSArray *distanceMigrateBase = @[@"INSERT INTO ", DistanceTable.TABLE_NAME, @"(", parent, @", ", DistanceTable.COLUMN_DISTANCE, @", ", DistanceTable.COLUMN_LOCATION, @", ", DistanceTable.COLUMN_DATE, @", ", DistanceTable.COLUMN_TIMEZONE, @", ", DistanceTable.COLUMN_COMMENT, @", ", DistanceTable.COLUMN_RATE_CURRENCY, @")",
             @" SELECT ", TripsTable.COLUMN_NAME, @", ", TripsTable.COLUMN_MILEAGE, @" , \"\" as ", DistanceTable.COLUMN_LOCATION, @", ", TripsTable.COLUMN_FROM, @", ", TripsTable.COLUMN_FROM_TIMEZONE, @" , \"\" as ", DistanceTable.COLUMN_COMMENT, @", "];
 
     NSArray *distanceMigrateNotNullCurrency = [distanceMigrateBase arrayByAddingObjectsFromArray:@[TripsTable.COLUMN_DEFAULT_CURRENCY, @" FROM ", TripsTable.TABLE_NAME, @" WHERE ", TripsTable.COLUMN_DEFAULT_CURRENCY, @" IS NOT NULL AND ", TripsTable.COLUMN_MILEAGE, @" > 0;"]];

@@ -10,6 +10,7 @@
 
 const struct TripsTableStruct TripsTable = {
         .TABLE_NAME = @"trips",
+        .COLUMN_ID = @"id",
         .COLUMN_NAME = @"name",
         .COLUMN_FROM = @"from_date",
         .COLUMN_TO = @"to_date",
@@ -37,7 +38,7 @@ const struct ReceiptsTableStruct ReceiptsTable = {
         .COLUMN_ID = @"id",
         .COLUMN_PATH = @"path",
         .COLUMN_NAME = @"name",
-        .COLUMN_PARENT = @"parent",
+        .COLUMN_PARENT_ID = @"parentKey",
         .COLUMN_CATEGORY = @"category",
         .COLUMN_CATEGORY_ID = @"categoryKey",
         .COLUMN_PRICE = @"price",
@@ -61,7 +62,7 @@ const struct ReceiptsTableStruct ReceiptsTable = {
 const struct DistanceTableStruct DistanceTable = {
         .TABLE_NAME = @"distance",
         .COLUMN_ID = @"id",
-        .COLUMN_PARENT = @"parent",
+        .COLUMN_PARENT_ID = @"parentKey",
         .COLUMN_DISTANCE = @"distance",
         .COLUMN_LOCATION = @"location",
         .COLUMN_DATE = @"date",

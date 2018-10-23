@@ -16,12 +16,12 @@ class DatabaseReceiptsDatesTest: SmartReceiptsTestsBase {
     override func setUp() {
         super.setUp()
         testTrip = db.createTestTrip()
-        db.insertTestReceipt([ReceiptsTable.Column.Parent : self.testTrip, ReceiptsTable.Column.Date : NSDate().addingDays(-1)])
-        db.insertTestReceipt([ReceiptsTable.Column.Parent : self.testTrip, ReceiptsTable.Column.Date : NSDate().addingDays(-1)])
+        db.insertTestReceipt([ReceiptsTable.Column.ParentId : self.testTrip, ReceiptsTable.Column.Date : NSDate().addingDays(-1)])
+        db.insertTestReceipt([ReceiptsTable.Column.ParentId : self.testTrip, ReceiptsTable.Column.Date : NSDate().addingDays(-1)])
         
-        db.insertTestReceipt([ReceiptsTable.Column.Parent : self.testTrip, ReceiptsTable.Column.Date : NSDate()])
-        db.insertTestReceipt([ReceiptsTable.Column.Parent : self.testTrip, ReceiptsTable.Column.Date : NSDate()])
-        db.insertTestReceipt([ReceiptsTable.Column.Parent : self.testTrip, ReceiptsTable.Column.Date : NSDate()])
+        db.insertTestReceipt([ReceiptsTable.Column.ParentId : self.testTrip, ReceiptsTable.Column.Date : NSDate()])
+        db.insertTestReceipt([ReceiptsTable.Column.ParentId : self.testTrip, ReceiptsTable.Column.Date : NSDate()])
+        db.insertTestReceipt([ReceiptsTable.Column.ParentId : self.testTrip, ReceiptsTable.Column.Date : NSDate()])
     }
 
     override func tearDown() {

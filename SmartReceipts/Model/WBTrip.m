@@ -113,6 +113,7 @@
     
     long long int time = [resultSet longLongIntForColumn:SyncStateColumns.LAST_LOCAL_MODIFICATION_TIME];
     _lastLocalModificationTime = [NSDate dateWithMilliseconds:time];
+    _objectId = [resultSet intForColumn:TripsTable.COLUMN_ID];
 }
 
 - (BOOL)nameChanged {
@@ -145,6 +146,7 @@
 
 - (id)copy {
     WBTrip *copy = [WBTrip new];
+    copy.objectId = self.objectId;
     copy.name = self.name;
     copy.originalName = self.originalName;
     copy.startDate = self.startDate;

@@ -49,6 +49,8 @@
 
 - (BOOL)replaceAllColumnsInTable:(NSString *)tableName columns:(NSArray *)columns {
     __block BOOL result;
+    
+    BOOL oldDatabase = [self databaseVersion] < 18;
     [self.databaseQueue inTransaction:^(FMDatabase *database, BOOL *rollback){
         NSString *query = [NSString stringWithFormat:@"DELETE FROM %@", tableName];
         result = [database executeUpdate:query];
@@ -56,9 +58,14 @@
             *rollback = YES;
             return;
         }
-
+        
         for (Column *col in columns) {
-            if (![self insertWithColumnName:[col name] intoTable:tableName customOrderId:col.customOrderId usingDatabase:database]) {
+            // Need to avoid issues with legacy columns replacement
+            BOOL result = oldDatabase ?
+                [self insertWithColumnName:col.name intoTable:tableName customOrderId:col.customOrderId usingDatabase:database] :
+                [self insertWithColumnType:col.сolumnType intoTable:tableName customOrderId:col.customOrderId usingDatabase:database];
+            
+            if (!result) {
                 *rollback = YES;
                 return;
             }
@@ -69,8 +76,16 @@
     return result;
 }
 
-- (BOOL)insertWithColumnName:(NSString *)columnName intoTable:(NSString *)tableName
-               customOrderId:(NSInteger)customOrderId usingDatabase:(FMDatabase *)database {
+- (BOOL)insertWithColumnType:(NSInteger)columnType intoTable:(NSString *)tableName customOrderId:(NSInteger)customOrderId usingDatabase:(FMDatabase *)database {
+    DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:tableName];
+    [insert addParam:CSVTable.COLUMN_COLUMN_TYPE value:@(columnType)];
+    if (customOrderId >= 0) {
+        [insert addParam:CSVTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
+    }
+    return [self executeQuery:insert usingDatabase:database];
+}
+
+- (BOOL)insertWithColumnName:(NSString *)columnName intoTable:(NSString *)tableName customOrderId:(NSInteger)customOrderId usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:tableName];
     [insert addParam:CSVTable.COLUMN_TYPE value:columnName];
     if (customOrderId >= 0) {
@@ -142,7 +157,7 @@
 - (BOOL)addColumn:(Column *)column table:(NSString *)table {
     __block BOOL result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self insertWithColumnName:column.name intoTable:table customOrderId:column.customOrderId usingDatabase:db];
+        result = [self insertWithColumnType:column.сolumnType intoTable:table customOrderId:column.customOrderId usingDatabase:db];
     }];
     return result;
 }

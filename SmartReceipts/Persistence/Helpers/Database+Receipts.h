@@ -29,7 +29,7 @@ extern NSInteger const kDaysToOrderFactor;
 - (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (BOOL)deleteReceiptsForTrip:(WBTrip *)trip;
 - (BOOL)deleteReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
-- (BOOL)moveReceiptsWithParent:(NSString *)previous toParent:(NSString *)next usingDatabase:(FMDatabase *)database;
+- (BOOL)moveReceiptsWithParent:(NSInteger)previous toParent:(NSInteger)next usingDatabase:(FMDatabase *)database;
 - (FetchedModelAdapter *)fetchedReceiptsAdapterForTrip:(WBTrip *)trip;
 - (BOOL)updateReceipt:(WBReceipt *)receipt changeFileNameTo:(NSString *)fileName;
 - (BOOL)copyReceipt:(WBReceipt *)receipt toTrip:(WBTrip *)trip;

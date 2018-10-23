@@ -35,7 +35,7 @@
     [self.db insertTestTrip:@{TripsTable.COLUMN_NAME: @"TestTrip123"}];
     self.testTrip = [self.db tripWithName:@"TestTrip123"];
 
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: self.testTrip, ReceiptsTable.COLUMN_NAME: @"Receipt"}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID: self.testTrip, ReceiptsTable.COLUMN_NAME: @"Receipt"}];
     WBReceipt *receipt = [self.db receiptWithName:@"Receipt"];
 
 

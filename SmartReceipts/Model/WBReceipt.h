@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger reportIndex;
 @property (nonatomic, strong) PaymentMethod *paymentMethod;
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *tripName;
+@property (nonatomic) NSInteger parentKey;
 @property (nonatomic, strong, nullable) WBCategory *category;
 @property (nonatomic, strong) NSTimeZone *timeZone;
 @property (nonatomic, assign, getter=isReimbursable) BOOL reimbursable;

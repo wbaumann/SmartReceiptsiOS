@@ -30,11 +30,11 @@
     [super setUp];
 
     WBTrip *trip = [self.db createTestTrip];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}]; // seconds 1
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}]; // seconds 2
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}]; // seconds 3
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID: trip}]; // seconds 1
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID: trip}]; // seconds 2
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID: trip}]; // seconds 3
 
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip, ReceiptsTable.COLUMN_NAME: @"TEST NAME", ReceiptsTable.COLUMN_DATE: [[NSDate date] dateByAddingDays:-1]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID: trip, ReceiptsTable.COLUMN_NAME: @"TEST NAME", ReceiptsTable.COLUMN_DATE: [[NSDate date] dateByAddingDays:-1]}];
     self.testReceipt = [self.db receiptWithName:@"TEST NAME"];
 }
 

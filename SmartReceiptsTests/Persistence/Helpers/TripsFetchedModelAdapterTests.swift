@@ -21,7 +21,7 @@ class TripsFetchedModelAdapterTests: SmartReceiptsTestsBase, RefreshTripPriceHan
         addReceipt(NSDecimalNumber(string: "5"))
         
         // Distance 10, currency USD
-        db.insertTestDistance([DistanceTable.Column.Parent: trip, DistanceTable.Column.Rate: NSDecimalNumber(string: "1")])
+        db.insertTestDistance([DistanceTable.Column.ParentId: trip, DistanceTable.Column.Rate: NSDecimalNumber(string: "1")])
         
         preferences.createPreferencesBackup()
         
@@ -81,6 +81,6 @@ class TripsFetchedModelAdapterTests: SmartReceiptsTestsBase, RefreshTripPriceHan
     }
     
     fileprivate func addReceipt(_ amount: NSDecimalNumber, currency: String = "USD", exchangeRate: NSDecimalNumber = .zero) {
-        db.insertTestReceipt([ReceiptsTable.Column.Parent: trip, ReceiptsTable.Column.Price: amount, ReceiptsTable.Column.ISO4217: currency, ReceiptsTable.Column.ExchangeRate: exchangeRate])
+        db.insertTestReceipt([ReceiptsTable.Column.ParentId: trip, ReceiptsTable.Column.Price: amount, ReceiptsTable.Column.ISO4217: currency, ReceiptsTable.Column.ExchangeRate: exchangeRate])
     }
 }

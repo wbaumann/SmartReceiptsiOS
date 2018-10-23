@@ -25,7 +25,7 @@
 - (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
 - (NSArray *)allDistancesForTrip:(WBTrip *)trip;
 - (BOOL)deleteDistancesForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database;
-- (BOOL)moveDistancesWithParent:(NSString *)previous toParent:(NSString *)next usingDatabase:(FMDatabase *)database;
+- (BOOL)moveDistancesWithParent:(NSInteger)previous toParent:(NSInteger)next usingDatabase:(FMDatabase *)database;
 - (NSDecimalNumber *)totalDistanceTraveledForTrip:(WBTrip *)trip;
 
 @end
