@@ -8,6 +8,9 @@
 
 import Foundation
 
+fileprivate let PARENT_COLUMN = "parent"
+fileprivate let DEPRECATED_CATEGORY = "category"
+
 class DatabaseUpgradeToVersion16: DatabaseMigration {
     override func version() -> UInt {
         return 16
@@ -35,7 +38,7 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
         let createCopy =  ["CREATE TABLE ", ReceiptsTable.Name, "_copy (",
                            ReceiptsTable.Column.Id, " INTEGER PRIMARY KEY AUTOINCREMENT, ",
                            ReceiptsTable.Column.Path, " TEXT, ",
-                           ReceiptsTable.Column.Parent, " TEXT REFERENCES ", TripsTable.Name, " ON DELETE CASCADE, ",
+                           PARENT_COLUMN, " TEXT REFERENCES ", TripsTable.Name, " ON DELETE CASCADE, ",
                            ReceiptsTable.Column.Name, " TEXT DEFAULT \"New Receipt\", ",
                            ReceiptsTable.Column.CategoryId, " INTEGER REFERENCES ", CategoriesTable.Name, " ON DELETE NO ACTION, ",
                            ReceiptsTable.Column.Date, " DATE DEFAULT (DATE('now', 'localtime')), ",
@@ -61,11 +64,11 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
             
         result = result && db.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD \(ReceiptsTable.Column.CategoryId) INTEGER REFERENCES \(CategoriesTable.Name) ON DELETE NO ACTION")
         
-        result = result && db.executeUpdate("UPDATE \(ReceiptsTable.Name) SET \(ReceiptsTable.Column.CategoryId) = (SELECT \(CategoriesTable.Column.Id) FROM \(CategoriesTable.Name) WHERE \(CategoriesTable.Column.Name) = \(ReceiptsTable.Column.Category) LIMIT 1)")
+        result = result && db.executeUpdate("UPDATE \(ReceiptsTable.Name) SET \(ReceiptsTable.Column.CategoryId) = (SELECT \(CategoriesTable.Column.Id) FROM \(CategoriesTable.Name) WHERE \(CategoriesTable.Column.Name) = \(DEPRECATED_CATEGORY) LIMIT 1)")
         
         let fieldsToCopy = [
             ReceiptsTable.Column.Id,
-            ReceiptsTable.Column.Parent,
+            PARENT_COLUMN,
             ReceiptsTable.Column.Path,
             ReceiptsTable.Column.Name,
             ReceiptsTable.Column.CategoryId,

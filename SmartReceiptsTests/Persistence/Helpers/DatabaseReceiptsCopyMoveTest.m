@@ -44,7 +44,7 @@
     
     self.testReceiptPrice = [[Price alloc] initWithAmount:[NSDecimalNumber decimalNumberOrZero:@"10"] currencyCode:@"USD"];
 
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: self.sourceTrip, ReceiptsTable.COLUMN_NAME: @"TestReceipt", ReceiptsTable.COLUMN_PRICE: self.testReceiptPrice.amount}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID: self.sourceTrip, ReceiptsTable.COLUMN_NAME: @"TestReceipt", ReceiptsTable.COLUMN_PRICE: self.testReceiptPrice.amount}];
     self.testReceipt = [self.db receiptWithName:@"TestReceipt"];
 
     self.destinationTrip = [self.db insertTestTrip:@{TripsTable.COLUMN_NAME: @"Destination"}];

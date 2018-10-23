@@ -22,13 +22,14 @@
 @implementation Database (Distances)
 
 - (BOOL)createDistanceTable {
+    NSString *parent = @"parent";
     
     // DON'T UPDATE THIS SCHEME, YOU CAN DO IT JUST THROUGH MIGRATION
     
     NSArray *createDistanceTable =
             @[@"CREATE TABLE ", DistanceTable.TABLE_NAME, @" (", //
                     DistanceTable.COLUMN_ID, @" INTEGER PRIMARY KEY AUTOINCREMENT,", //
-                    DistanceTable.COLUMN_PARENT, @" TEXT REFERENCES ", TripsTable.COLUMN_NAME, @" ON DELETE CASCADE,", //
+                    parent, @" TEXT REFERENCES ", TripsTable.COLUMN_NAME, @" ON DELETE CASCADE,", //
                     DistanceTable.COLUMN_DISTANCE, @" DECIMAL(10, 2) DEFAULT 0.00,", //
                     DistanceTable.COLUMN_LOCATION, @" TEXT,", //
                     DistanceTable.COLUMN_DATE, @" DATE,", //
@@ -63,7 +64,7 @@
 
 - (BOOL)insertDistance:(Distance *)distance usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:DistanceTable.TABLE_NAME];
-    [insert addParam:DistanceTable.COLUMN_PARENT value:distance.trip.name];
+    [insert addParam:DistanceTable.COLUMN_PARENT_ID value:@(distance.trip.objectId)];
     [self appendCommonValuesFromDistance:distance toQuery:insert];
     BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {
@@ -78,7 +79,7 @@
 
 - (FetchedModelAdapter *)fetchedAdapterForDistancesInTrip:(WBTrip *)trip ascending:(BOOL)isAscending {
     DatabaseQueryBuilder *select = [DatabaseQueryBuilder selectAllStatementForTable:DistanceTable.TABLE_NAME];
-    [select where:DistanceTable.COLUMN_PARENT value:trip.name];
+    [select where:DistanceTable.COLUMN_PARENT_ID value:@(trip.objectId)];
     [select orderBy:DistanceTable.COLUMN_DATE ascending:isAscending];
     return [self createAdapterUsingQuery:select forModel:[Distance class] associatedModel:trip];
 }
@@ -137,7 +138,7 @@
 - (NSDecimalNumber *)sumOfDistancesForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *sumStatement = [DatabaseQueryBuilder sumStatementForTable:DistanceTable.TABLE_NAME];
     [sumStatement setSumColumn:@"distance * rate"];
-    [sumStatement where:DistanceTable.COLUMN_PARENT value:trip.name];
+    [sumStatement where:DistanceTable.COLUMN_PARENT_ID value:@(trip.objectId)];
     return [self executeDecimalQuery:sumStatement usingDatabase:database];
 }
 
@@ -147,21 +148,21 @@
 
 - (BOOL)deleteDistancesForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:DistanceTable.TABLE_NAME];
-    [delete where:DistanceTable.COLUMN_PARENT value:trip.name];
+    [delete where:DistanceTable.COLUMN_PARENT_ID value:@(trip.objectId)];
     return [self executeQuery:delete usingDatabase:database];
 }
 
-- (BOOL)moveDistancesWithParent:(NSString *)previous toParent:(NSString *)next usingDatabase:(FMDatabase *)database {
+- (BOOL)moveDistancesWithParent:(NSInteger)previous toParent:(NSInteger)next usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:DistanceTable.TABLE_NAME];
-    [update addParam:DistanceTable.COLUMN_PARENT value:next];
-    [update where:DistanceTable.COLUMN_PARENT value:previous];
+    [update addParam:DistanceTable.COLUMN_PARENT_ID value:@(next)];
+    [update where:DistanceTable.COLUMN_PARENT_ID value:@(previous)];
     return [self executeQuery:update usingDatabase:database];
 }
 
 - (NSDecimalNumber *)totalDistanceTraveledForTrip:(WBTrip *)trip {
     DatabaseQueryBuilder *sum = [DatabaseQueryBuilder sumStatementForTable:DistanceTable.TABLE_NAME];
     [sum setSumColumn:DistanceTable.COLUMN_DISTANCE];
-    [sum where:DistanceTable.COLUMN_PARENT value:trip.name];
+    [sum where:DistanceTable.COLUMN_PARENT_ID value:@(trip.objectId)];
     return [self executeDecimalQuery:sum];
 }
 

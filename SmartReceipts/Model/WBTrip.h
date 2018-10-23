@@ -15,6 +15,7 @@
 
 @interface WBTrip : NSObject <FetchedModel>
 
+@property (nonatomic) NSInteger objectId;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) PricesCollection *pricesSummary;
 @property (nonatomic, strong) Currency *defaultCurrency;

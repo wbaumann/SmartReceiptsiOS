@@ -26,6 +26,7 @@
 NSInteger const kDaysToOrderFactor = 1000;
 static NSString * const kGreaterCompare = @" > ";
 static NSString * const kGreaterOrEqualCompare = @" >= ";
+static NSString * const kDeprecatedParent = @"parent";
 
 @interface WBReceipt (Expose)
 
@@ -43,7 +44,7 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
             @"CREATE TABLE ", ReceiptsTable.TABLE_NAME, @" (",
             ReceiptsTable.COLUMN_ID, @" INTEGER PRIMARY KEY AUTOINCREMENT, ",
             ReceiptsTable.COLUMN_PATH, @" TEXT, ",
-            ReceiptsTable.COLUMN_PARENT, @" TEXT REFERENCES ", TripsTable.TABLE_NAME, @" ON DELETE CASCADE, ",
+            kDeprecatedParent, @" TEXT REFERENCES ", TripsTable.TABLE_NAME, @" ON DELETE CASCADE, ",
             ReceiptsTable.COLUMN_NAME, @" TEXT DEFAULT \"New Receipt\", ",
             ReceiptsTable.COLUMN_CATEGORY, @" TEXT, ",
             ReceiptsTable.COLUMN_DATE, @" DATE DEFAULT (DATE('now', 'localtime')), ",
@@ -174,7 +175,7 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
 - (NSDecimalNumber *)sumOfReceiptsForTrip:(WBTrip *)trip onlyReimbursableReceipts:(BOOL)onlyReimbursable usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *sumStatement = [DatabaseQueryBuilder sumStatementForTable:ReceiptsTable.TABLE_NAME];
     [sumStatement setSumColumn:ReceiptsTable.COLUMN_PRICE];
-    [sumStatement where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    [sumStatement where:ReceiptsTable.COLUMN_PARENT_ID value:@(trip.objectId)];
     if (onlyReimbursable) {
         [sumStatement where:ReceiptsTable.COLUMN_REIMBURSABLE value:@(YES)];
     }
@@ -203,14 +204,14 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
 
 - (BOOL)deleteReceiptsForTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:ReceiptsTable.TABLE_NAME];
-    [delete where:ReceiptsTable.COLUMN_PARENT value:trip.name];
+    [delete where:ReceiptsTable.COLUMN_PARENT_ID value:@(trip.objectId)];
     return [self executeQuery:delete usingDatabase:database];
 }
 
-- (BOOL)moveReceiptsWithParent:(NSString *)previous toParent:(NSString *)next usingDatabase:(FMDatabase *)database {
+- (BOOL)moveReceiptsWithParent:(NSInteger)previous toParent:(NSInteger)next usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:ReceiptsTable.TABLE_NAME];
-    [update addParam:ReceiptsTable.COLUMN_PARENT value:next];
-    [update where:ReceiptsTable.COLUMN_PARENT value:previous];
+    [update addParam:ReceiptsTable.COLUMN_PARENT_ID value:@(next)];
+    [update where:ReceiptsTable.COLUMN_PARENT_ID value:@(previous)];
     return [self executeQuery:update usingDatabase:database];
 }
 
@@ -401,7 +402,7 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
 
 - (void)appendCommonValuesFromReceipt:(WBReceipt *)receipt toQuery:(DatabaseQueryBuilder *)query {
     [query addParam:ReceiptsTable.COLUMN_PATH value:receipt.imageFileName fallback:SRNoData];
-    [query addParam:ReceiptsTable.COLUMN_PARENT value:receipt.trip.name];
+    [query addParam:ReceiptsTable.COLUMN_PARENT_ID value:@(receipt.trip.objectId)];
     [query addParam:ReceiptsTable.COLUMN_NAME value:[receipt.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     [query addParam:ReceiptsTable.COLUMN_CATEGORY_ID value:@(receipt.category.objectId)];
     [query addParam:ReceiptsTable.COLUMN_COMMENT value:receipt.comment];
@@ -436,11 +437,11 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
 
 - (NSTimeInterval)maxSecondForReceiptsInTrip:(WBTrip *)trip onDate:(NSDate *)date usingDatabase:(FMDatabase *)database {
     NSDate *beginningOfDay = [date dateAtBeginningOfDay];
-    NSString *query = @"SELECT (strftime('%s', rcpt_date / 1000, 'unixepoch') - strftime('%s', :date_start, 'unixepoch')) AS seconds FROM receipts WHERE parent = :parent AND rcpt_date / 1000  >= :date_start AND rcpt_date / 1000 < :date_end ORDER BY rcpt_date DESC LIMIT 1";
+    NSString *query = @"SELECT (strftime('%s', rcpt_date / 1000, 'unixepoch') - strftime('%s', :date_start, 'unixepoch')) AS seconds FROM receipts WHERE parentKey = :parentKey AND rcpt_date / 1000  >= :date_start AND rcpt_date / 1000 < :date_end ORDER BY rcpt_date DESC LIMIT 1";
     DatabaseQueryBuilder *selectSeconds = [DatabaseQueryBuilder rawQuery:query];
     [selectSeconds addParam:@"date_start" value:@(beginningOfDay.timeIntervalSince1970)];
     [selectSeconds addParam:@"date_end" value:@([beginningOfDay dateByAddingDays:1].timeIntervalSince1970)];
-    [selectSeconds addParam:@"parent" value:[trip name]];
+    [selectSeconds addParam:@"parentKey" value:@(trip.objectId)];
     return [self executeDoubleQuery:selectSeconds usingDatabase:database];
 }
 
@@ -468,8 +469,8 @@ static NSString * const kGreaterOrEqualCompare = @" >= ";
 
 - (NSArray<NSDate *> *)datesInTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)db {
     NSMutableArray *result = [NSMutableArray new];
-    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ WHERE %@ = '%@'", ReceiptsTable.COLUMN_DATE,
-                       ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_PARENT, trip.name];
+    NSString *query = [NSString stringWithFormat:@"SELECT %@ FROM %@ WHERE %@ = %lu", ReceiptsTable.COLUMN_DATE,
+                       ReceiptsTable.TABLE_NAME, ReceiptsTable.COLUMN_PARENT_ID, trip.objectId];
     FMResultSet *resultSet = [db executeQuery:query];
     while ([resultSet next]) {
         NSDate *date = [NSDate dateWithMilliseconds:[resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE]];

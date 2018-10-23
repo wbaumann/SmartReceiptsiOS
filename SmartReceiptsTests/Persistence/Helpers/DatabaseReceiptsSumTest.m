@@ -44,7 +44,7 @@
 }
 
 - (void)testSumWithNonReimbursableExcluded {
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip,
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : self.trip,
             ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"200"],
             ReceiptsTable.COLUMN_REIMBURSABLE : @(NO)}];
     [self createTestReceipts];
@@ -55,9 +55,9 @@
 }
 
 - (void)createTestReceipts {
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"10"]}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"15"]}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"12"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"10"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"15"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"12"]}];
     [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"100"]}];
 }
 

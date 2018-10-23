@@ -36,7 +36,7 @@
     BOOL migrationSuccess = [DatabaseMigration migrateDatabase:database];
     XCTAssertTrue(migrationSuccess);
 
-    XCTAssertEqual(17, database.databaseVersion);
+    XCTAssertEqual(19, database.databaseVersion);
 }
 
 - (void)testReferenceDatabaseMigratedFromVersion11ToVersion13 {
@@ -51,7 +51,7 @@
     BOOL migrationSuccess = [DatabaseMigration migrateDatabase:database];
     XCTAssertTrue(migrationSuccess);
 
-    XCTAssertEqual(17, database.databaseVersion);
+    XCTAssertEqual(19, database.databaseVersion);
 }
 
 @end

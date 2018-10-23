@@ -25,7 +25,6 @@
 
 - (void)setUp {
     [super setUp];
-
     self.testTrip = [self.db createTestTrip];
 }
 
@@ -44,9 +43,9 @@
     [self.db insertTestDistance:@{DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberWithString:@"20"]}];
     [self.db insertTestDistance:@{DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberWithString:@"20"]}];
 
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT: self.testTrip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberWithString:@"20"]}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT: self.testTrip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberWithString:@"30"]}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT: self.testTrip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberWithString:@"50"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID: self.testTrip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberWithString:@"20"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID: self.testTrip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberWithString:@"30"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID: self.testTrip, DistanceTable.COLUMN_DISTANCE: [NSDecimalNumber decimalNumberWithString:@"50"]}];
 
     NSDecimalNumber *totalDistance = [self.db totalDistanceTraveledForTrip:self.testTrip];
     XCTAssertEqualObjects([NSDecimalNumber decimalNumberWithString:@"100"], totalDistance);

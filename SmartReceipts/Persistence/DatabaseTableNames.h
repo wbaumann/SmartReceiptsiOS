@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 struct TripsTableStruct {
+    __unsafe_unretained NSString *const COLUMN_ID;
     __unsafe_unretained NSString *const TABLE_NAME;
     __unsafe_unretained NSString *const COLUMN_NAME;
     __unsafe_unretained NSString *const COLUMN_FROM;
@@ -38,7 +39,7 @@ struct ReceiptsTableStruct {
     __unsafe_unretained NSString *const COLUMN_ID;
     __unsafe_unretained NSString *const COLUMN_PATH;
     __unsafe_unretained NSString *const COLUMN_NAME;
-    __unsafe_unretained NSString *const COLUMN_PARENT;
+    __unsafe_unretained NSString *const COLUMN_PARENT_ID;
     __unsafe_unretained NSString *const COLUMN_CATEGORY;
     __unsafe_unretained NSString *const COLUMN_CATEGORY_ID;
     __unsafe_unretained NSString *const COLUMN_PRICE;
@@ -63,7 +64,7 @@ extern const struct ReceiptsTableStruct ReceiptsTable;
 struct DistanceTableStruct {
     __unsafe_unretained NSString *const TABLE_NAME;
     __unsafe_unretained NSString *const COLUMN_ID;
-    __unsafe_unretained NSString *const COLUMN_PARENT;
+    __unsafe_unretained NSString *const COLUMN_PARENT_ID;
     __unsafe_unretained NSString *const COLUMN_DISTANCE;
     __unsafe_unretained NSString *const COLUMN_LOCATION;
     __unsafe_unretained NSString *const COLUMN_DATE;

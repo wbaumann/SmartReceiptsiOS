@@ -36,10 +36,10 @@
 
     self.trip = [self.db insertTestTrip:@{}];
 
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DATE : [NSDate date]}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DATE : [NSDate date]}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingDays:-1]}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingDays:-2]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : self.trip, DistanceTable.COLUMN_DATE : [NSDate date]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : self.trip, DistanceTable.COLUMN_DATE : [NSDate date]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : self.trip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingDays:-1]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : self.trip, DistanceTable.COLUMN_DATE : [[NSDate date] dateByAddingDays:-2]}];
 }
 
 - (void)testThreeReceiptsGenerated {

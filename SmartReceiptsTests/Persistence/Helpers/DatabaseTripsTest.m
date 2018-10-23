@@ -106,15 +106,15 @@
 
 - (void)testOnTripNameReceiptsAndDistancesAreMoved {
     WBTrip *trip = [self.db insertTestTrip:@{}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : trip}];
 
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : trip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : trip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : trip}];
 
     NSUInteger tripsCountBeforeRename = [self.db countRowsInTable:TripsTable.TABLE_NAME];
 
@@ -157,16 +157,16 @@
     [self.db insertTestTrip:@{TripsTable.COLUMN_NAME: tripName}];
 
     WBTrip *trip = [self.db tripWithName:tripName];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT: trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID: trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID: trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID: trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID: trip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID: trip}];
 
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : trip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : trip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : trip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : trip}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : trip}];
 
 
     NSUInteger tripsCountBefore = [self.db countRowsInTable:TripsTable.TABLE_NAME];

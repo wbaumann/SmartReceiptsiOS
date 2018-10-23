@@ -37,11 +37,11 @@
 
     self.testTrip = [self.db createTestTrip];
 
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.testTrip, ReceiptsTable.COLUMN_DATE : [[NSDate date] dateByAddingDays:-2]}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.testTrip, ReceiptsTable.COLUMN_DATE : [[NSDate date] dateByAddingDays:-1]}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : @"TEST 1", ReceiptsTable.COLUMN_PARENT : self.testTrip, ReceiptsTable.COLUMN_DATE : [NSDate date]}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : @"TEST 2", ReceiptsTable.COLUMN_PARENT : self.testTrip, ReceiptsTable.COLUMN_DATE : [NSDate date]}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.testTrip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : self.testTrip, ReceiptsTable.COLUMN_DATE : [[NSDate date] dateByAddingDays:-2]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : self.testTrip, ReceiptsTable.COLUMN_DATE : [[NSDate date] dateByAddingDays:-1]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : @"TEST 1", ReceiptsTable.COLUMN_PARENT_ID : self.testTrip, ReceiptsTable.COLUMN_DATE : [NSDate date]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : @"TEST 2", ReceiptsTable.COLUMN_PARENT_ID : self.testTrip, ReceiptsTable.COLUMN_DATE : [NSDate date]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : self.testTrip}];
 
     self.one = [self.db receiptWithName:@"TEST 1"];
     self.two = [self.db receiptWithName:@"TEST 2"];

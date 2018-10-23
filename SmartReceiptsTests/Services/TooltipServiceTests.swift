@@ -68,7 +68,7 @@ class TooltipServiceTests: SmartReceiptsTestsBase {
     }
     
     private func addReceipt(_ amount: NSDecimalNumber, currency: String = "USD", exchangeRate: NSDecimalNumber = .zero, trip: WBTrip) {
-        db.insertTestReceipt([ReceiptsTable.Column.Parent: trip, ReceiptsTable.Column.Price: amount, ReceiptsTable.Column.ISO4217: currency, ReceiptsTable.Column.ExchangeRate: exchangeRate])
+        db.insertTestReceipt([ReceiptsTable.Column.ParentId: trip, ReceiptsTable.Column.Price: amount, ReceiptsTable.Column.ISO4217: currency, ReceiptsTable.Column.ExchangeRate: exchangeRate])
     }
     
     private func resetUserDefaults() {

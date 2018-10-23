@@ -45,7 +45,7 @@
 }
 
 - (void)createTestReceipt:(NSInteger)marker {
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : [NSString stringWithFormat:@"TEST Receipt %tu", marker], ReceiptsTable.COLUMN_PARENT : self.testTrip}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_NAME : [NSString stringWithFormat:@"TEST Receipt %tu", marker], ReceiptsTable.COLUMN_PARENT_ID : self.testTrip}];
 }
 
 @end

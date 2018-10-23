@@ -16,7 +16,7 @@ extension WBReceipt {
     }
     
     class func selectAllQueryForTrip(_ trip: WBTrip?, isAscending: Bool) -> DatabaseQueryBuilder {
-        let whereTrip = trip != nil ? " WHERE \(ReceiptsTable.Column.Parent) = \"\(trip!.name!)\"" : ""
+        let whereTrip = trip != nil ? " WHERE \(ReceiptsTable.Column.ParentId) = \(trip!.objectId)" : ""
         return selectQuery(condition: whereTrip, isAscending: isAscending)
     }
     
@@ -26,7 +26,7 @@ extension WBReceipt {
     }
     
     class func selectAllUnmarkedForDeletion(_ trip: WBTrip) -> DatabaseQueryBuilder {
-        var condition = " WHERE \(ReceiptsTable.Column.Parent) = \"\(trip.name!)\""
+        var condition = " WHERE \(ReceiptsTable.Column.ParentId) = \(trip.objectId)"
         condition += " AND \(SyncStateColumns.MarkedForDeletion) = 0"
         return selectQuery(condition: condition, isAscending: false)
     }

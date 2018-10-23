@@ -207,9 +207,8 @@ static NSString* checkNoData(NSString* str) {
     _extraEditText3 = [resultSet stringForColumn:ReceiptsTable.COLUMN_EXTRA_EDITTEXT_3];
     _timeZone = [NSTimeZone timeZoneWithName:[resultSet stringForColumn:ReceiptsTable.COLUMN_TIMEZONE]];
     [self setDate:[NSDate dateWithMilliseconds:[resultSet longLongIntForColumn:ReceiptsTable.COLUMN_DATE]]];
-    [self setTripName:[resultSet stringForColumn:ReceiptsTable.COLUMN_PARENT]];
     _customOrderId = [resultSet intForColumn:ReceiptsTable.COLUMN_CUSTOM_ORDER_ID];
-    
+    _parentKey = [resultSet intForColumn:ReceiptsTable.COLUMN_PARENT_ID];
     
     // Category
     
@@ -321,6 +320,7 @@ static NSString* checkNoData(NSString* str) {
     copy.lastLocalModificationTime = _lastLocalModificationTime;
     copy.syncId = _syncId;
     copy.isMarkedForDeletion = _isMarkedForDeletion;
+    copy.parentKey = _parentKey;
     return copy;
 }
 

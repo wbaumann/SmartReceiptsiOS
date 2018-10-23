@@ -13,9 +13,7 @@ extension FMDatabase {
     func fetchAllReceiptsForTrip(_ trip: WBTrip) -> [WBReceipt] {
         let query = WBReceipt.selectAllQueryForTrip(trip)
 
-        let injectTripClosure: (WBReceipt) -> () = {
-            receipt in
-            
+        let injectTripClosure: (WBReceipt) -> () = { receipt in
             receipt.trip = trip
         }
         
@@ -24,10 +22,7 @@ extension FMDatabase {
     
     func fetchUnmarkedForDeletionReceiptsForTrip(_ trip: WBTrip) -> [WBReceipt] {
         let query = WBReceipt.selectAllUnmarkedForDeletion(trip)
-        
-        let injectTripClosure: (WBReceipt) -> () = {
-            receipt in
-            
+        let injectTripClosure: (WBReceipt) -> () = { receipt in
             receipt.trip = trip
         }
         

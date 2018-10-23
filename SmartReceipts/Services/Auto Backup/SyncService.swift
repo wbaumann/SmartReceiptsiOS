@@ -109,7 +109,7 @@ class SyncService {
             .delayEach(seconds: 0.3, scheduler: BackgroundScheduler)
             .subscribe(onNext: { [unowned self] receipt in
                 if !receipt.isMarkedForDeletion(syncProvider: .current) {
-                    guard let trip = Database.sharedInstance().tripWithName(receipt.tripName) else { return }
+                    guard let trip = Database.sharedInstance().tripBy(id: receipt.parentKey) else { return }
                     receipt.trip = trip
                     self.syncService?.uploadFile(receipt: receipt)
                 }

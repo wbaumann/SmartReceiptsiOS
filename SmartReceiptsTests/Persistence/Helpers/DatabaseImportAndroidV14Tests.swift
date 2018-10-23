@@ -16,8 +16,8 @@ class DatabaseImportAndroidV14Tests: SmartReceiptsTestsBase {
     override func setUp() {
         super.setUp()
 
-        referenceTrip = db.insertTestTrip([TripsTable.Column.Name: "T"])
-        db.insertTestReceipt([ReceiptsTable.Column.Parent: referenceTrip])
+        referenceTrip = db.insertTestTrip([TripsTable.Column.Name: "T", TripsTable.Column.Id: 2])
+        db.insertTestReceipt([ReceiptsTable.Column.ParentId: referenceTrip])
         db.insertTestTrip([TripsTable.Column.Name: "Cake"])
         
         imported = createMigratedDatabase(fromTemplate: "android-receipts-v14")

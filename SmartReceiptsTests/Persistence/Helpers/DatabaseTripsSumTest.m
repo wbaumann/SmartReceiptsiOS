@@ -37,13 +37,13 @@
 
     self.trip = [self.db insertTestTrip:@{}];
 
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"1"]}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"2"]}];
-    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"3"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"1"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"2"]}];
+    [self.db insertTestReceipt:@{ReceiptsTable.COLUMN_PARENT_ID : self.trip, ReceiptsTable.COLUMN_PRICE : [NSDecimalNumber decimalNumberOrZero:@"3"]}];
 
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"10"]}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"20"]}];
-    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"30"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"10"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"20"]}];
+    [self.db insertTestDistance:@{DistanceTable.COLUMN_PARENT_ID : self.trip, DistanceTable.COLUMN_DISTANCE : [NSDecimalNumber decimalNumberOrZero:@"1"], DistanceTable.COLUMN_RATE : [NSDecimalNumber decimalNumberOrZero:@"30"]}];
 
     [WBPreferences setOnlyIncludeReimbursableReceiptsInReports:NO];
     [WBPreferences setTheDistancePriceBeIncludedInReports:YES];

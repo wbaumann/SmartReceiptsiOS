@@ -55,6 +55,14 @@
     [trip setDefaultCurrency:[Currency currencyForCode:params[TripsTable.COLUMN_DEFAULT_CURRENCY]]];
     [trip setComment:params[TripsTable.COLUMN_COMMENT]];
     [trip setCostCenter:params[TripsTable.COLUMN_COST_CENTER]];
+    [trip setCostCenter:params[TripsTable.COLUMN_COST_CENTER]];
+    
+    NSInteger objectID = [params[TripsTable.COLUMN_COST_CENTER] intValue];
+    if (objectID == 0) {
+        objectID = [self countRowsInTable:TripsTable.TABLE_NAME] + 1;
+    }
+
+    [trip setObjectId:objectID];
 
     [self saveTrip:trip];
     return trip;
@@ -70,7 +78,7 @@
 - (Distance *)insertTestDistance:(NSDictionary *)modifiedParams {
     NSMutableDictionary *defaultParams = [NSMutableDictionary dictionary];
     defaultParams[DistanceTable.COLUMN_LOCATION] = @"Test location";
-    defaultParams[DistanceTable.COLUMN_PARENT] = [self createTestTrip];
+    defaultParams[DistanceTable.COLUMN_PARENT_ID] = [self createTestTrip];
     defaultParams[DistanceTable.COLUMN_DATE] = [NSDate date];
     defaultParams[DistanceTable.COLUMN_DISTANCE] = [NSDecimalNumber decimalNumberWithString:@"10"];
     defaultParams[DistanceTable.COLUMN_RATE] = [NSDecimalNumber decimalNumberWithString:@"12"];
@@ -80,7 +88,7 @@
 
     NSDictionary *params = [NSDictionary dictionaryWithDictionary:defaultParams];
 
-    Distance *distance = [[Distance alloc] initWithTrip:params[DistanceTable.COLUMN_PARENT]
+    Distance *distance = [[Distance alloc] initWithTrip:params[DistanceTable.COLUMN_PARENT_ID]
                                                distance:params[DistanceTable.COLUMN_DISTANCE]
                                                    rate:[[Price alloc] initWithAmount:params[DistanceTable.COLUMN_RATE] currencyCode:params[DistanceTable.COLUMN_RATE_CURRENCY]]
                                                location:params[DistanceTable.COLUMN_LOCATION]
@@ -104,8 +112,8 @@
 
     [params addEntriesFromDictionary:modifiedParams];
     
-    if (!params[ReceiptsTable.COLUMN_PARENT]) {
-        params[ReceiptsTable.COLUMN_PARENT] = [self createTestTrip];
+    if (!params[ReceiptsTable.COLUMN_PARENT_ID]) {
+        params[ReceiptsTable.COLUMN_PARENT_ID] = [self createTestTrip];
     }
 
     WBReceipt *receipt = [[WBReceipt alloc] init];
@@ -114,7 +122,7 @@
     [receipt setPrice:params[ReceiptsTable.COLUMN_PRICE] currency:params[ReceiptsTable.COLUMN_ISO4217]];
     [receipt setTax:[NSDecimalNumber zero]];
     [receipt setReimbursable:[params[ReceiptsTable.COLUMN_REIMBURSABLE] boolValue]];
-    [receipt setTrip:params[ReceiptsTable.COLUMN_PARENT]];
+    [receipt setTrip:params[ReceiptsTable.COLUMN_PARENT_ID]];
     [receipt setPaymentMethod:params[ReceiptsTable.COLUMN_PAYMENT_METHOD_ID]];
     [receipt setFilename:params[ReceiptsTable.COLUMN_PATH]];
     [receipt setDate:params[ReceiptsTable.COLUMN_DATE]];
@@ -136,7 +144,7 @@
     [selectAll leftJoin:PaymentMethodsTable.TABLE_NAME on:ReceiptsTable.COLUMN_PAYMENT_METHOD_ID equalTo:PaymentMethodsTable.COLUMN_ID];
 
     WBReceipt *receipt = (WBReceipt *)[self executeFetchFor:[WBReceipt class] withQuery:selectAll];
-    [receipt setTrip:[self tripWithName:receipt.tripName]];
+    [receipt setTrip:[self tripById:receipt.parentKey]];
     return receipt;
 }
 
