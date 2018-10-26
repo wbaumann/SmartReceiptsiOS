@@ -65,6 +65,7 @@
 - (BOOL)insertDistance:(Distance *)distance usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:DistanceTable.TABLE_NAME];
     [insert addParam:DistanceTable.COLUMN_PARENT_ID value:@(distance.trip.objectId)];
+    [insert addParam:CommonColumns.ENTITY_UUID value:[[NSUUID UUID] UUIDString]];
     [self appendCommonValuesFromDistance:distance toQuery:insert];
     BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {

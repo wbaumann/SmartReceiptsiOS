@@ -110,3 +110,8 @@ struct SyncStateColumnsStruct {
     __unsafe_unretained NSString *const LAST_LOCAL_MODIFICATION_TIME;
 };
 extern const struct SyncStateColumnsStruct SyncStateColumns;
+
+struct CommonColumnsStruct {
+    __unsafe_unretained NSString *const ENTITY_UUID;
+};
+extern const struct CommonColumnsStruct CommonColumns;

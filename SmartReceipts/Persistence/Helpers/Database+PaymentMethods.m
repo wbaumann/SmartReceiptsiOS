@@ -56,6 +56,7 @@
 - (BOOL)savePaymentMethod:(PaymentMethod *)method {
     DatabaseQueryBuilder *insertStatement = [DatabaseQueryBuilder insertStatementForTable:PaymentMethodsTable.TABLE_NAME];
     [insertStatement addParam:PaymentMethodsTable.COLUMN_METHOD value:method.method];
+    [insertStatement addParam:CommonColumns.ENTITY_UUID value:[[NSUUID UUID] UUIDString]];
     if (method.objectId != 0) {
         [insertStatement addParam:PaymentMethodsTable.COLUMN_ID value:@(method.objectId)];
     }

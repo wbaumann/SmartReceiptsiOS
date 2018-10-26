@@ -8,7 +8,6 @@
 
 import Foundation
 
-fileprivate let COLUMN_UUID = "entity_uuid"
 fileprivate let ROWID = "ROWID"
 fileprivate let DEPRECATED_PARENT = "parent"
 
@@ -36,7 +35,7 @@ class DatabaseUpgradeToVersion19: DatabaseMigration {
     }
     
     private func addUUID(table: String, database: Database) -> Bool {
-        var result = database.executeUpdate("ALTER TABLE \(table) ADD COLUMN \(COLUMN_UUID) TEXT")
+        var result = database.executeUpdate("ALTER TABLE \(table) ADD COLUMN \(CommonColumns.EntityUUID) TEXT")
         
         var rowIds = [Int]()
         let query = "SELECT \(ROWID) FROM \(table)"
@@ -50,7 +49,7 @@ class DatabaseUpgradeToVersion19: DatabaseMigration {
         
         for rowId in rowIds {
             let uuid = UUID().uuidString
-            result = result && database.executeUpdate("UPDATE \(table) SET \(COLUMN_UUID) = '\(uuid)' WHERE \(ROWID) = \(rowId)")
+            result = result && database.executeUpdate("UPDATE \(table) SET \(CommonColumns.EntityUUID) = '\(uuid)' WHERE \(ROWID) = \(rowId)")
         }
         
         return result
