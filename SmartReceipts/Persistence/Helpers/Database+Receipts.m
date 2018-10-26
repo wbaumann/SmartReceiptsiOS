@@ -95,6 +95,7 @@ static NSString * const kDeprecatedParent = @"parent";
     
     NSInteger customOrderId = [self customOrderIdForDate:receipt.date inTrip:receipt.trip usingDatabase:database];
     [insert addParam:ReceiptsTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
+    [insert addParam:CommonColumns.ENTITY_UUID value:[[NSUUID UUID] UUIDString]];
 
     BOOL result = [self executeQuery:insert usingDatabase:database];
     if (result) {

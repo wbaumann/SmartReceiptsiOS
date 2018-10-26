@@ -104,3 +104,7 @@ const struct SyncStateColumnsStruct SyncStateColumns = {
     .LAST_LOCAL_MODIFICATION_TIME = @"last_local_modification_time"
 };
 
+const struct CommonColumnsStruct CommonColumns = {
+    .ENTITY_UUID = @"entity_uuid"
+};
+

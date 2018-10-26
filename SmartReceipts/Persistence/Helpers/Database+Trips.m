@@ -53,6 +53,7 @@
 - (BOOL)saveTrip:(WBTrip *)trip {
     trip.lastLocalModificationTime = [NSDate new];
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:TripsTable.TABLE_NAME];
+    [insert addParam:CommonColumns.ENTITY_UUID value:[[NSUUID UUID] UUIDString]];
     [self appendParamsFromTrip:trip toQuery:insert];
     BOOL result = [self executeQuery:insert];
     if (result) {
@@ -65,14 +66,12 @@
     trip.lastLocalModificationTime = [NSDate new];
     DatabaseQueryBuilder *update = [DatabaseQueryBuilder updateStatementForTable:TripsTable.TABLE_NAME];
     [self appendParamsFromTrip:trip toQuery:update];
-    [update where:TripsTable.COLUMN_NAME value:trip.originalName];
+    [update where:TripsTable.COLUMN_ID value:@(trip.objectId)];
 
     __block BOOL result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         result = [self executeQuery:update usingDatabase:db];
         if (trip.nameChanged) {
-            [self moveReceiptsWithParent:trip.originalName toParent:trip.name usingDatabase:db];
-            [self moveDistancesWithParent:trip.originalName toParent:trip.name usingDatabase:db];
             [self.filesManager renameFolderForTrip:trip originalName:trip.originalName];
         }
     }];
@@ -156,7 +155,7 @@
 
 - (BOOL)deleteTrip:(WBTrip *)trip usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *delete = [DatabaseQueryBuilder deleteStatementForTable:TripsTable.TABLE_NAME];
-    [delete where:TripsTable.COLUMN_NAME value:trip.name];
+    [delete where:TripsTable.COLUMN_ID value:@(trip.objectId)];
     BOOL result = [self executeQuery:delete usingDatabase:database];
     if (result) {
         [self.filesManager deleteFolderForTrip:trip];

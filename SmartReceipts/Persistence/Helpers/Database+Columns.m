@@ -79,6 +79,7 @@
 - (BOOL)insertWithColumnType:(NSInteger)columnType intoTable:(NSString *)tableName customOrderId:(NSInteger)customOrderId usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:tableName];
     [insert addParam:CSVTable.COLUMN_COLUMN_TYPE value:@(columnType)];
+    [insert addParam:CommonColumns.ENTITY_UUID value:[[NSUUID UUID] UUIDString]];
     if (customOrderId >= 0) {
         [insert addParam:CSVTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
     }

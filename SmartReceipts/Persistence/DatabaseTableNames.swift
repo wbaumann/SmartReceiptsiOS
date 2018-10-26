@@ -132,3 +132,7 @@ enum SyncStateColumns {
     static let MarkedForDeletion = "drive_marked_for_deletion"
     static let LastLocalModificationTime = "last_local_modification_time"
 }
+
+enum CommonColumns {
+    static let EntityUUID = "entity_uuid"
+}

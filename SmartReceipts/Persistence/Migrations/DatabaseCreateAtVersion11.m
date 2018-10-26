@@ -82,13 +82,14 @@
     ];
 
     for (NSUInteger i = 0; i < cats.count - 1; i += 2) {
-        WBCategory *category = [[WBCategory alloc] initWithName:cats[i] code:cats[i + 1]];
-        category.customOrderId = -1;
-        if (![database saveCategory:category]) {
+        NSString *name = cats[i];
+        NSString *code = cats[i + 1];
+        NSString *insert = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@) VALUES ('%@', '%@')",
+            CategoriesTable.TABLE_NAME, CategoriesTable.COLUMN_NAME, CategoriesTable.COLUMN_CODE, name, code];
+        if (![database executeUpdate:insert]) {
             return NO;
         }
     }
-
     return YES;
 }
 
