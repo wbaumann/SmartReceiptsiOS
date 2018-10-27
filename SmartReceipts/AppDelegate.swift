@@ -69,26 +69,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        _ = url.startAccessingSecurityScopedResource()
+        defer { url.stopAccessingSecurityScopedResource() }
+        
         if url.isFileURL {
+            let tempURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(url.lastPathComponent)!
+            do { try FileManager.default.copyItem(at: url, to: tempURL) }
+            catch { Logger.error("Can't copy temp file \(tempURL.lastPathComponent)") }
+            
             if url.pathExtension.isStringIgnoreCaseIn(array: ["png", "jpg", "jpeg"]) {
                 Logger.info("Launched for image")
-                if DataValidationService().isValidImage(url: url) {
+                if DataValidationService().isValidImage(url: tempURL) {
                     isFileImage = true
-                    handlePDForImage(url: url)
+                    handlePDForImage(url: tempURL)
                 } else {
                     Logger.error("Invalid Image for import")
                 }
             } else if url.pathExtension.caseInsensitiveCompare("pdf") == .orderedSame {
                 Logger.info("Launched for pdf")
-                if DataValidationService().isValidPDF(url: url) {
+                if DataValidationService().isValidPDF(url: tempURL) {
                     isFileImage = false
-                    handlePDForImage(url: url)
+                    handlePDForImage(url: tempURL)
                 } else {
                     Logger.error("Invalid PDF for import")
                 }
             } else if url.pathExtension.caseInsensitiveCompare("smr") == .orderedSame {
                 Logger.info("Launched for smr")
-                handleSMR(url: url)
+                handleSMR(url: tempURL)
             } else {
                 Logger.info("Loaded with unknown file")
             }
