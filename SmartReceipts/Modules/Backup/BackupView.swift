@@ -95,16 +95,12 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
             }).disposed(by: bag)
         
         configureButton.rx.tap
-            .filter({ [unowned self] in self.presenter.hasValidSubscription() })
             .subscribe(onNext: { [unowned self] in
-                self.openBackupServiceSelector()
-            }).disposed(by: bag)
-        
-        configureButton.rx.tap
-            .filter({ [unowned self] in !self.presenter.hasValidSubscription() })
-            .flatMap({ [unowned self] in return self.presenter.purchaseSubscription() })
-            .subscribe(onNext: { [unowned self] in
-                self.openBackupServiceSelector()
+                if self.presenter.hasValidSubscription() {
+                    self.openBackupServiceSelector()
+                } else {
+                    self.openBackupServiceSelectorAfterPurchase()
+                }
             }).disposed(by: bag)
         
         wifiSwitch.rx.isOn
@@ -205,6 +201,12 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     private func openBackupServiceSelector() {
         let selector = makeBackupServiceSelector()
         present(selector, animated: true, completion: nil)
+    }
+    
+    private func openBackupServiceSelectorAfterPurchase() {
+        presenter.purchaseSubscription().subscribe(onNext: { [weak self] in
+            self?.openBackupServiceSelector()
+        }).disposed(by: bag)
     }
     
     private func configureLayers() {
