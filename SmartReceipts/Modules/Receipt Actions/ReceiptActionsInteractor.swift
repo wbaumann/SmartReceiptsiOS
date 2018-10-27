@@ -32,7 +32,7 @@ class ReceiptActionsInteractor: Interactor {
     }
     
     private func processAttachFile(to receipt: WBReceipt) -> Bool {
-        let file = AppDelegate.instance.filePathToAttach!
+        guard let file = AppDelegate.instance.filePathToAttach else { return false }
         let ext = file.asNSString.pathExtension
         
         let imageFileName = String(format: "%tu_%@.%@", receipt.receiptId(), receipt.omittedName, ext)
