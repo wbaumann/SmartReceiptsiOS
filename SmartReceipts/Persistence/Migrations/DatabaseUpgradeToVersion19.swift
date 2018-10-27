@@ -84,7 +84,7 @@ class DatabaseUpgradeToVersion19: DatabaseMigration {
     }
     
     private func updateDistanceParent(database: Database) -> Bool {
-        var result = database.executeUpdate("ALTER TABLE \(DistanceTable.Name) ADD COLUMN \(DistanceTable.Column.ParentId) INTEGER")
+        var result = database.executeUpdate("ALTER TABLE \(DistanceTable.Name) ADD COLUMN \(DistanceTable.Column.ParentId) INTEGER REFERENCES \(TripsTable.Column.Name) ON DELETE CASCADE")
         
          result = result && database.executeUpdate("UPDATE \(DistanceTable.Name) SET \(ReceiptsTable.Column.ParentId) = (SELECT \(TripsTable.Column.Id) FROM \(TripsTable.Name) WHERE \(TripsTable.Column.Name) = \(DEPRECATED_PARENT) LIMIT 1)")
         
@@ -116,7 +116,7 @@ class DatabaseUpgradeToVersion19: DatabaseMigration {
     }
     
     private func updateReceiptsParent(database: Database) -> Bool {
-        var result = database.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD COLUMN \(ReceiptsTable.Column.ParentId) INTEGER")
+        var result = database.executeUpdate("ALTER TABLE \(ReceiptsTable.Name) ADD COLUMN \(ReceiptsTable.Column.ParentId) INTEGER REFERENCES \(TripsTable.Column.Name) ON DELETE CASCADE")
         
         result = result && database.executeUpdate("UPDATE \(ReceiptsTable.Name) SET \(ReceiptsTable.Column.ParentId) = (SELECT \(TripsTable.Column.Id) FROM \(TripsTable.Name) WHERE \(TripsTable.Column.Name) = \(DEPRECATED_PARENT) LIMIT 1)")
         
