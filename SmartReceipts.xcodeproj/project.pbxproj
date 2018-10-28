@@ -983,7 +983,6 @@
 		A7D554D21CFF118700169FD2 /* RefreshTripPriceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTripPriceHandler.swift; sourceTree = "<group>"; };
 		A7D6CDE61D05524200998FEF /* ReportAssetsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportAssetsGenerator.swift; sourceTree = "<group>"; };
 		A7D6CDF51D07E4D400998FEF /* GADConstants.m.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GADConstants.m.sample; sourceTree = "<group>"; };
-		A7D6CDF71D07E4FE00998FEF /* Secrets.swift.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Secrets.swift.sample; sourceTree = "<group>"; };
 		A7F05B971CFB49220079F1AD /* WBReceipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WBReceipt.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A7F05B991CFB49590079F1AD /* Priced.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Priced.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A7F05B9D1CFB49BE0079F1AD /* Taxed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Taxed.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -1974,7 +1973,6 @@
 				84F4F34B18CFCCD000F69A35 /* SmartReceipts-Info.plist */,
 				84F4F35118CFCCD000F69A35 /* SmartReceipts-Prefix.pch */,
 				A78214FE1CFFECB000FD644A /* Secrets.swift */,
-				A7D6CDF71D07E4FE00998FEF /* Secrets.swift.sample */,
 				4D39888A1DB985D500C394D1 /* SmartReceipts.entitlements */,
 			);
 			path = "Supporting Files";
