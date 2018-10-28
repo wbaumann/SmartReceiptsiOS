@@ -204,9 +204,15 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     }
     
     private func openBackupServiceSelectorAfterPurchase() {
-        presenter.purchaseSubscription().subscribe(onNext: { [weak self] in
-            self?.openBackupServiceSelector()
-        }).disposed(by: bag)
+        let hud = PendingHUDView.showFullScreen()
+        presenter.purchaseSubscription()
+            .do(onNext: { _ in
+                hud.hide()
+            }, onError: { _ in
+                hud.hide()
+            }).subscribe(onNext: { [weak self] in
+                self?.openBackupServiceSelector()
+            }).disposed(by: bag)
     }
     
     private func configureLayers() {
