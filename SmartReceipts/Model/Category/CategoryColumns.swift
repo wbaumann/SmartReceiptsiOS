@@ -11,11 +11,11 @@ import Foundation
 class CategoryColumn: Column {
     class func allColumns() -> [CategoryColumn] {
         return [
-            CategoryColumn(type: 0, name: LocalizedString("filter_name_receipt_category")),
-            CategoryCodeCloumn(type: 1, name: LocalizedString("column_item_category_code")),
+            CategoryNameColumn(type: 0, name: LocalizedString("category_name_field")),
+            CategoryCodeColumn(type: 1, name: LocalizedString("category_code_field")),
             CategoryCurrencyColumn(type: 2, name: LocalizedString("RECEIPTMENU_FIELD_CURRENCY")),
-            CategoryPriceColumn(type: 3, name: LocalizedString("RECEIPTMENU_FIELD_PRICE")),
-            CategoryTaxColumn(type: 4, name: LocalizedString("RECEIPTMENU_FIELD_TAX")),
+            CategoryPriceColumn(type: 3, name: LocalizedString("category_price_field")),
+            CategoryTaxColumn(type: 4, name: LocalizedString("category_tax_field")),
         ]
     }
     
@@ -31,7 +31,14 @@ class CategoryColumn: Column {
 
 //MARK: Categories
 
-class CategoryCodeCloumn: CategoryColumn {
+class CategoryNameColumn: CategoryColumn {
+    override func valueFrom(receipts: [WBReceipt]) -> String {
+        guard let firstReceipt = receipts.first else { return "" }
+        return firstReceipt.category?.name ?? ""
+    }
+}
+
+class CategoryCodeColumn: CategoryColumn {
     override func valueFrom(receipts: [WBReceipt]) -> String {
         guard let firstReceipt = receipts.first else { return "" }
         return firstReceipt.category?.code ?? ""
