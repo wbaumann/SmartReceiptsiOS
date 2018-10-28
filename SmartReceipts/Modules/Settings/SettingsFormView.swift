@@ -58,14 +58,17 @@ class SettingsFormView: FormViewController {
             self.purchaseRow = row
         }.onCellSelection({ [unowned self] _, row in
             if !row.isPurchased() {
+                self.hud = PendingHUDView.showFullScreen()
                 self.settingsView.purchaseSubscription()
-                    .subscribe(onNext: { [weak self] in
+                    .do(onNext: { [weak self] _ in
+                        self?.hud?.hide()
+                    }, onError: { [weak self] _ in
+                        self?.hud?.hide()
+                    }).subscribe(onNext: { [weak self] in
                         guard let safeSelf = self else { return }
-                        safeSelf.hud = PendingHUDView.show(on: safeSelf.navigationController!.view)
                         safeSelf.checkSubscription()
                     }, onError: { error in
-                        self.alertSubject.onNext((title: LocalizedString("settings.purchase.make.purchase.error.title"),
-                                                message: error.localizedDescription))
+                        self.alertSubject.onNext((title: LocalizedString("settings.purchase.make.purchase.error.title"), message: error.localizedDescription))
                 }).disposed(by: self.bag)
             }
         })
@@ -75,16 +78,17 @@ class SettingsFormView: FormViewController {
         }.cellUpdate({ cell, row in
             cell.textLabel?.textColor = AppTheme.primaryColor
         }).onCellSelection({ [unowned self] _, _ in
-            let hud = PendingHUDView.show(on: self.navigationController!.view)
+            self.hud = PendingHUDView.showFullScreen()
             self.settingsView.restoreSubscription()
-                .do(onNext: { _ in
-                    hud.hide()
+                .do(onNext: { [weak self] _ in
+                    self?.hud?.hide()
+                }, onError: { [weak self] _ in
+                        self?.hud?.hide()
                 }).filter({ $0.valid })
                 .subscribe(onNext: { [weak self] validation in
                     self?.setupPurchased(expireDate: validation.expireTime)
                 }, onError: { error in
-                    self.alertSubject.onNext((title: LocalizedString("settings.purchase.restore.error.title"),
-                                        message: error.localizedDescription))
+                    self.alertSubject.onNext((title: LocalizedString("settings.purchase.restore.error.title"), message: error.localizedDescription))
                 }).disposed(by: self.bag)
         })
         
