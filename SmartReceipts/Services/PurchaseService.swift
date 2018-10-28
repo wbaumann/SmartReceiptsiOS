@@ -111,6 +111,7 @@ class PurchaseService {
                     case .cloudServicePermissionDenied: Logger.error("Access to cloud service information is not allowed")
                     case .cloudServiceNetworkConnectionFailed: Logger.error("Could not connect to the network")
                     case .cloudServiceRevoked: Logger.error("User has revoked permission to use this cloud service")
+                    default: Logger.error(error.localizedDescription)
                     }
                     observer.onError(error)
                 }

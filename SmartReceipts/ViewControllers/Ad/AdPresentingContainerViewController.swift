@@ -39,7 +39,12 @@ class AdPresentingContainerViewController: UIViewController {
             .do(onNext: {
                 AnalyticsManager.sharedManager.record(event: Event.Purchases.AdUpsellTapped)
             }).subscribe(onNext: { [unowned self] in
-                _ = self.purchaseService.purchaseSubscription().subscribe()
+                let hud = PendingHUDView.showFullScreen()
+                _ = self.purchaseService.purchaseSubscription().do(onNext: { _ in
+                    hud.hide()
+                }, onError: { _ in
+                    hud.hide()
+                }).subscribe()
             }).disposed(by: bag)
         
         NotificationCenter.default.addObserver(self, selector: #selector(checkAdsStatus), name: .SmartReceiptsAdsRemoved, object: nil)
@@ -73,7 +78,7 @@ class AdPresentingContainerViewController: UIViewController {
         purchaseService.validateSubscription().subscribe(onNext: { [unowned self] validation in
             if validation.valid {
                 Logger.debug("Remove Ads")
-                
+
                 self.adContainerHeight.constant = 0
                 self.view.layoutSubviewsAnimated()
                 self.bannerView?.removeFromSuperview()
