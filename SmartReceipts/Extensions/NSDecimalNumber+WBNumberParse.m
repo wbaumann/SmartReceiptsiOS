@@ -11,8 +11,9 @@
 @implementation NSDecimalNumber (WBNumberParse)
 
 + (NSDecimalNumber *)decimalNumberOrZero:(NSString *)value {
+    NSString *replaced = [value stringByReplacingOccurrencesOfString:@"," withString:@"."];
     if (value.length > 0) {
-        return [NSDecimalNumber decimalNumberWithString:value];
+        return [NSDecimalNumber decimalNumberWithString:replaced];
     } else {
         return [NSDecimalNumber zero];
     }
