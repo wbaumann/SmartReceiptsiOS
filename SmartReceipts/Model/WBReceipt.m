@@ -244,6 +244,7 @@ static NSString* checkNoData(NSString* str) {
     _isSynced = [resultSet boolForColumn:SyncStateColumns.DRIVE_SYNC_IS_SYNCED];
     _isMarkedForDeletion = [resultSet boolForColumn:SyncStateColumns.DRIVE_MARKED_FOR_DELETION];
     _syncId = [resultSet stringForColumn:SyncStateColumns.DRIVE_SYNC_ID];
+    _uuid = [resultSet stringForColumn:CommonColumns.ENTITY_UUID];
 }
 
 - (BOOL)isEqual:(id)other {

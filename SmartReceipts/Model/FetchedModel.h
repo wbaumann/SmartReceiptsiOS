@@ -9,8 +9,9 @@
 @class FMResultSet;
 
 @protocol FetchedModel <NSObject>
-
+@property (nonatomic, readonly) NSString *uuid;
 - (instancetype)init;
 - (void)loadDataFromResultSet:(FMResultSet *)resultSet;
+
 
 @end

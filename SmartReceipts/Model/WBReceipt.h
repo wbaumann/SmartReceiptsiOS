@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly, nonnull) Currency *currency;
 @property (nonatomic, readonly) NSString *omittedName;
 @property (nonatomic) NSInteger customOrderId;
+@property (nonatomic, readonly) NSString *uuid;
 
 @property (nonatomic, strong) NSDate *lastLocalModificationTime;
 @property (nonatomic, copy) NSString *syncId;

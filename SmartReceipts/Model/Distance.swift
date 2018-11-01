@@ -21,6 +21,7 @@ class Distance: NSObject, NSCopying, FetchedModel {
     var comment: String?
     var parentKey: Int = 0
     var lastLocalModificationTime: Date!
+    var uuid: String! = ""
     
     var objectId: Int {
         get { return objId }
@@ -95,6 +96,7 @@ class Distance: NSObject, NSCopying, FetchedModel {
         let time = resultSet.longLongInt(forColumn: SyncStateColumns.LastLocalModificationTime)/1000
         lastLocalModificationTime = Date(timeIntervalSince1970: TimeInterval(time))
         parentKey = Int(resultSet.int(forColumn: DistanceTable.Column.ParentId))
+        uuid = resultSet.string(forColumn: CommonColumns.EntityUUID)
     }
 
 }

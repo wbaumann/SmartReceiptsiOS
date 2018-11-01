@@ -114,6 +114,7 @@
     long long int time = [resultSet longLongIntForColumn:SyncStateColumns.LAST_LOCAL_MODIFICATION_TIME];
     _lastLocalModificationTime = [NSDate dateWithMilliseconds:time];
     _objectId = [resultSet intForColumn:TripsTable.COLUMN_ID];
+    _uuid = [resultSet stringForColumn:CommonColumns.ENTITY_UUID];
 }
 
 - (BOOL)nameChanged {

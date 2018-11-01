@@ -16,6 +16,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *code;
 @property (nonatomic) NSInteger customOrderId;
+@property (nonatomic, readonly) NSString *uuid;
 
 - (id)initWithName:(NSString*)name code:(NSString*)code;
 - (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId;
