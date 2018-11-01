@@ -26,6 +26,8 @@
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) NSTimeZone *endTimeZone;
 @property (nonatomic, strong) NSDate *lastLocalModificationTime;
+@property (nonatomic, readonly) NSString *uuid;
+
 
 - (NSString *)directoryPath;
 - (NSString *)fileInDirectoryPath:(NSString *)filename;

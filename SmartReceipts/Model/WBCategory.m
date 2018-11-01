@@ -70,6 +70,7 @@ static NSString *const COLUMN_CUSTOM_ORDER_ID = @"custom_order_id";
     _code = [resultSet stringForColumn:CategoriesTable.COLUMN_CODE];
     _name = [resultSet stringForColumn:CategoriesTable.COLUMN_NAME];
     _customOrderId = [resultSet intForColumn:CategoriesTable.COLUMN_CUSTOM_ORDER_ID];
+    _uuid = [resultSet stringForColumn:CommonColumns.ENTITY_UUID];
 }
 
 - (BOOL)isEqual:(id)other {

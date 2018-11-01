@@ -38,6 +38,7 @@
     _customOrderId = [resultSet intForColumn:CSVTable.COLUMN_CUSTOM_ORDER_ID];
     _сolumnType = [resultSet intForColumn:CSVTable.COLUMN_COLUMN_TYPE];
     _name = [ReceiptColumn columnType:_сolumnType].name;
+    _uuid = [resultSet stringForColumn:CommonColumns.ENTITY_UUID];
 }
 
 - (WBDateFormatter *)dateFormatter {
