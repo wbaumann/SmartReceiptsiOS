@@ -74,6 +74,8 @@
 		711E81D31FD4670B00708056 /* ReportCSVGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E81D21FD4670B00708056 /* ReportCSVGenerator.swift */; };
 		711E81D51FD4695B00708056 /* TripCSVGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E81D41FD4695B00708056 /* TripCSVGenerator.swift */; };
 		7120099D1F12D0DE0049927E /* TickTock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7120099C1F12D0DE0049927E /* TickTock.swift */; };
+		71217E70218769AD004C2C42 /* BaseDatabaseUpgradeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71874292216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift */; };
+		71217E7321876A2D004C2C42 /* DatabaseMigration15to19Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71217E6E218764C5004C2C42 /* DatabaseMigration15to19Tests.swift */; };
 		7122778C1F756EA300090878 /* S3Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7122778B1F756EA300090878 /* S3Service.swift */; };
 		7123481321418F610038AAE5 /* PushNotificationServiceTestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156068B1FAFA99100E09760 /* PushNotificationServiceTestable.swift */; };
 		7123481421418F610038AAE5 /* AuthServiceTestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715606921FB06D3400E09760 /* AuthServiceTestable.swift */; };
@@ -223,7 +225,6 @@
 		7185AEF81EFC1CC90038ED2A /* ReceiptMoveCopyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF21EFC1CC90038ED2A /* ReceiptMoveCopyPresenter.swift */; };
 		7185AEF91EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF31EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift */; };
 		7185AEFA1EFC1CC90038ED2A /* ReceiptMoveCopyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF41EFC1CC90038ED2A /* ReceiptMoveCopyView.swift */; };
-		71874293216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71874292216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift */; };
 		71874295216FCE99005FFDD2 /* DatabaseUpgradeToVersion18.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71874294216FCE98005FFDD2 /* DatabaseUpgradeToVersion18.swift */; };
 		718AAC112120382E00290183 /* SyncableTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAC102120382E00290183 /* SyncableTableCell.swift */; };
 		718AAC13212039E000290183 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAC12212039E000290183 /* TripCell.swift */; };
@@ -666,6 +667,7 @@
 		711E81D21FD4670B00708056 /* ReportCSVGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCSVGenerator.swift; sourceTree = "<group>"; };
 		711E81D41FD4695B00708056 /* TripCSVGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCSVGenerator.swift; sourceTree = "<group>"; };
 		7120099C1F12D0DE0049927E /* TickTock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickTock.swift; sourceTree = "<group>"; };
+		71217E6E218764C5004C2C42 /* DatabaseMigration15to19Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMigration15to19Tests.swift; sourceTree = "<group>"; };
 		7122778B1F756EA300090878 /* S3Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Service.swift; sourceTree = "<group>"; };
 		712A84E41F78363C00D988E7 /* RxSwift+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+Extensions.swift"; sourceTree = "<group>"; };
 		712A84E71F783BF300D988E7 /* APIAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAdapter.swift; sourceTree = "<group>"; };
@@ -2679,6 +2681,7 @@
 				A7A720E41CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift */,
 				57A8058C1E9672C000E68049 /* DatabaseUpgrade15Tests.swift */,
 				716C058D216D12CE00D3E10F /* DatabaseUpgrade19Tests.swift */,
+				71217E6E218764C5004C2C42 /* DatabaseMigration15to19Tests.swift */,
 			);
 			path = Migrations;
 			sourceTree = "<group>";
@@ -3693,7 +3696,7 @@
 			files = (
 				EAD15C771B087029003BB1F3 /* DatabaseReceiptsCopyMoveTest.m in Sources */,
 				714A9A731FCD9A27000A025B /* BackupTests.swift in Sources */,
-				71874293216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift in Sources */,
+				71217E70218769AD004C2C42 /* BaseDatabaseUpgradeTests.swift in Sources */,
 				A7F05BE71CFDA5760079F1AD /* TripsFetchedModelAdapterTests.swift in Sources */,
 				EA07BF6C1AF51D5D004D17F6 /* DatabaseTestsHelper.m in Sources */,
 				EA3C968A1AEA974100A2A5F9 /* WBReportUtilsTest.m in Sources */,
@@ -3729,6 +3732,7 @@
 				5762EA841ECDC2600032411A /* TripFullPDFGeneratorTest.swift in Sources */,
 				7123483821418F6D0038AAE5 /* LocalScansTrackerTests.swift in Sources */,
 				EA159E811AFE7CDC00DBB6CF /* NSDate+Calculations.m in Sources */,
+				71217E7321876A2D004C2C42 /* DatabaseMigration15to19Tests.swift in Sources */,
 				7123482621418F690038AAE5 /* EditDistanceModuleTest.swift in Sources */,
 				7123483F214190A00038AAE5 /* GeneratedMocks.swift in Sources */,
 				7123482121418F650038AAE5 /* TaxCalculatorTests.swift in Sources */,
