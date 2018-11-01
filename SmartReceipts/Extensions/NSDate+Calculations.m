@@ -23,9 +23,7 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
 }
 
 - (NSDate *)dateByAddingDays:(NSInteger)daysToAdd {
-    NSDateComponents *components = [[NSDateComponents alloc] init];
-    components.day = daysToAdd;
-    return [[NSDate gregorian] dateByAddingComponents:components toDate:self options:NSCalendarWrapComponents];
+    return [[NSDate gregorian] dateByAddingUnit:NSCalendarUnitDay value:daysToAdd toDate:self options:NSCalendarMatchNextTime];
 }
 
 - (BOOL)isOnSameDate:(NSDate *)date {
