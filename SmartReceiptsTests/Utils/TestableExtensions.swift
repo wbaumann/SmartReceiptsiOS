@@ -16,3 +16,27 @@ extension JSON {
         return try! JSON(data: jsonData)
     }
 }
+
+prefix operator ++
+prefix operator --
+prefix func ++<T: Numeric> (_ val: inout T) -> T {
+    val += 1
+    return val
+}
+
+prefix func --<T: Numeric> (_ val: inout T) -> T {
+    val -= 1
+    return val
+}
+
+postfix operator ++
+postfix operator --
+postfix func ++<T: Numeric> (_ val: inout T) -> T {
+    defer { val += 1 }
+    return val
+}
+
+postfix func --<T: Numeric> (_ val: inout T) -> T {
+    defer { val -= 1 }
+    return val
+}
