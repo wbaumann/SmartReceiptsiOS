@@ -25,7 +25,6 @@ final class PaymentMethodsView: FetchedTableViewController {
         super.viewDidLoad()
         
         title = LocalizedString("payment_methods")
-        setPresentationCellNib(TitleOnlyCell.viewNib())
         
         addItem.rx.tap.subscribe(onNext: {
             _ = self.showEditPaymentMethod().bind(to: self.presenter.paymentMethodAction)
@@ -33,9 +32,8 @@ final class PaymentMethodsView: FetchedTableViewController {
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
-        let titleCell = cell as! TitleOnlyCell
         let method = item as! PaymentMethod
-        titleCell.setTitle(method.method)
+        cell.textLabel?.text = method.method
     }
     
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {

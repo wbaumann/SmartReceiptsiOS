@@ -75,7 +75,7 @@ class TableViewDataSourceProxy: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID)!
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID) ?? UITableViewCell(style: .subtitle, reuseIdentifier: cellID)
         configureCell?(indexPath.row, cell, items.value[indexPath.row])
         return cell
     }

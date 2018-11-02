@@ -25,7 +25,6 @@ final class CategoriesView: FetchedTableViewController {
         super.viewDidLoad()
         
         title = LocalizedString("menu_main_categories")
-        setPresentationCellNib(CategoryCell.viewNib())
         
         addItem.rx.tap.subscribe(onNext: {
             _ = self.showEditCategory().bind(to: self.presenter.categoryAction)
@@ -51,10 +50,9 @@ final class CategoriesView: FetchedTableViewController {
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
-        let categoryCell = cell as! CategoryCell
         let category = item as! WBCategory
-        categoryCell.textLabel?.text = category.name
-        categoryCell.detailTextLabel?.text = category.code
+        cell.textLabel?.text = category.name
+        cell.detailTextLabel?.text = category.code
     }
     
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {
