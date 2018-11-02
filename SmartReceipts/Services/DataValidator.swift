@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DataValidationService {
+class DataValidator {
     
     func isValidPDF(data: Data) -> Bool {
         guard let dataProvider = CGDataProvider(data: data as CFData) else { return false }
