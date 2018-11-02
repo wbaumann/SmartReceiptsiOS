@@ -23,7 +23,7 @@ final class ReceiptMoveCopyView: FetchedTableViewController {
         super.viewDidLoad()
         
         AppTheme.customizeOnViewDidLoad(self)
-        setPresentationCellNib(TitleOnlyCell.viewNib())
+        //setPresentationCellNib(TitleOnlyCell.viewNib())
         
         if presenter.isCopyOrMove {
             navigationItem.title = LocalizedString("move.copy.receipt.controller.copy.title")
@@ -33,9 +33,8 @@ final class ReceiptMoveCopyView: FetchedTableViewController {
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
-        let titleCell = cell as! TitleOnlyCell
         let trip = item as! WBTrip
-        titleCell.setTitle(trip.name)
+        cell.textLabel?.text = trip.name
     }
     
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {

@@ -380,8 +380,6 @@
 		71FE9FF11F4778000043E7B4 /* TripTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9FEF1F4778000043E7B4 /* TripTabViewController.swift */; };
 		71FE9FF21F4778000043E7B4 /* TripTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71FE9FF01F4778000043E7B4 /* TripTabViewController.xib */; };
 		71FE9FF41F477F620043E7B4 /* FetchedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9FF31F477F620043E7B4 /* FetchedTableViewController.swift */; };
-		71FE9FF81F4787710043E7B4 /* TitleOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9FF61F4787710043E7B4 /* TitleOnlyCell.m */; };
-		71FE9FF91F4787710043E7B4 /* TitleOnlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71FE9FF71F4787710043E7B4 /* TitleOnlyCell.xib */; };
 		8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */; };
 		84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A5834D18EDF897003A464D /* WBReceiptAndIndex.m */; };
 		84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A6C82A18F510B6003B876F /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -447,7 +445,6 @@
 		EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D00C1B0629BE00C87678 /* ProperNameInputValidation.m */; };
 		EA0677F61B04E61A0058A326 /* StringPickableWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0677F51B04E61A0058A326 /* StringPickableWrapper.m */; };
 		EA07BF301AF3B472004D17F6 /* UIApplication+DismissKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF2F1AF3B472004D17F6 /* UIApplication+DismissKeyboard.m */; };
-		EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF391AF3C80C004D17F6 /* NSMutableString+Issues.m */; };
 		EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF3C1AF3C885004D17F6 /* NSString+Validation.m */; };
 		EA07BF441AF3F882004D17F6 /* DecimalInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF431AF3F882004D17F6 /* DecimalInputValidation.m */; };
 		EA07BF4A1AF40066004D17F6 /* DatabaseTableNames.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF491AF40066004D17F6 /* DatabaseTableNames.m */; };
@@ -477,8 +474,6 @@
 		EA1E60D81B2742660048E688 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA1E60D11B2742660048E688 /* InfoPlist.strings */; };
 		EA1E60D91B2742660048E688 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA1E60D31B2742660048E688 /* Localizable.strings */; };
 		EA22679F1B1E035F005761E7 /* ReceiptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA22679D1B1E035F005761E7 /* ReceiptCell.xib */; };
-		EA22FB4D1B1AF1A40060D23D /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA22FB4B1B1AF1A40060D23D /* CategoryCell.m */; };
-		EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA22FB4C1B1AF1A40060D23D /* CategoryCell.xib */; };
 		EA2B8D881B4EF44B0043A84B /* TripReportHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2B8D871B4EF44B0043A84B /* TripReportHeader.xib */; };
 		EA2B8D8C1B4EF8110043A84B /* PDFPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2B8D851B4EF27D0043A84B /* PDFPage.xib */; };
 		EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */ = {isa = PBXBuildFile; fileRef = EA36DE501B0118EE0034CC2D /* Database+Hints.m */; };
@@ -968,9 +963,6 @@
 		71FE9FEF1F4778000043E7B4 /* TripTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTabViewController.swift; sourceTree = "<group>"; };
 		71FE9FF01F4778000043E7B4 /* TripTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripTabViewController.xib; sourceTree = "<group>"; };
 		71FE9FF31F477F620043E7B4 /* FetchedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedTableViewController.swift; sourceTree = "<group>"; };
-		71FE9FF51F4787710043E7B4 /* TitleOnlyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleOnlyCell.h; sourceTree = "<group>"; };
-		71FE9FF61F4787710043E7B4 /* TitleOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleOnlyCell.m; sourceTree = "<group>"; };
-		71FE9FF71F4787710043E7B4 /* TitleOnlyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleOnlyCell.xib; sourceTree = "<group>"; };
 		7B397BE168915C982926C4BC /* Pods_SmartReceipts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartReceipts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8421A2011907E975001DF38D /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		84A5834C18EDF897003A464D /* WBReceiptAndIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBReceiptAndIndex.h; sourceTree = "<group>"; };
@@ -1063,8 +1055,6 @@
 		EA0677F51B04E61A0058A326 /* StringPickableWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringPickableWrapper.m; sourceTree = "<group>"; };
 		EA07BF2E1AF3B472004D17F6 /* UIApplication+DismissKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+DismissKeyboard.h"; sourceTree = "<group>"; };
 		EA07BF2F1AF3B472004D17F6 /* UIApplication+DismissKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+DismissKeyboard.m"; sourceTree = "<group>"; };
-		EA07BF381AF3C80C004D17F6 /* NSMutableString+Issues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Issues.h"; sourceTree = "<group>"; };
-		EA07BF391AF3C80C004D17F6 /* NSMutableString+Issues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Issues.m"; sourceTree = "<group>"; };
 		EA07BF3B1AF3C885004D17F6 /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
 		EA07BF3C1AF3C885004D17F6 /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
 		EA07BF411AF3F84E004D17F6 /* InputValidation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputValidation.h; sourceTree = "<group>"; };
@@ -1108,9 +1098,6 @@
 		EA1E60D21B2742660048E688 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = InfoPlist.strings; sourceTree = "<group>"; };
 		EA1E60D41B2742660048E688 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = Localizable.strings; sourceTree = "<group>"; };
 		EA22679D1B1E035F005761E7 /* ReceiptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiptCell.xib; sourceTree = "<group>"; };
-		EA22FB4A1B1AF1A40060D23D /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
-		EA22FB4B1B1AF1A40060D23D /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
-		EA22FB4C1B1AF1A40060D23D /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		EA2B8D851B4EF27D0043A84B /* PDFPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFPage.xib; sourceTree = "<group>"; };
 		EA2B8D871B4EF44B0043A84B /* TripReportHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripReportHeader.xib; sourceTree = "<group>"; };
 		EA36DE4F1B0118EE0034CC2D /* Database+Hints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Database+Hints.h"; sourceTree = "<group>"; };
@@ -2277,8 +2264,6 @@
 				A7F05BA91CFC07FD0079F1AD /* NumberFormatter+Extansions.swift */,
 				711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */,
 				A7A720E21CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift */,
-				EA07BF381AF3C80C004D17F6 /* NSMutableString+Issues.h */,
-				EA07BF391AF3C80C004D17F6 /* NSMutableString+Issues.m */,
 				A78215001CFFF24C00FD644A /* NSNumber+Extensions.swift */,
 				EA66777A1B06154F004D3993 /* NSString+Helpers.h */,
 				EA66777B1B06154F004D3993 /* NSString+Helpers.m */,
@@ -2358,12 +2343,6 @@
 		EA4DC9931AF1578300CEF1B9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				EA22FB4A1B1AF1A40060D23D /* CategoryCell.h */,
-				EA22FB4B1B1AF1A40060D23D /* CategoryCell.m */,
-				EA22FB4C1B1AF1A40060D23D /* CategoryCell.xib */,
-				71FE9FF51F4787710043E7B4 /* TitleOnlyCell.h */,
-				71FE9FF61F4787710043E7B4 /* TitleOnlyCell.m */,
-				71FE9FF71F4787710043E7B4 /* TitleOnlyCell.xib */,
 				718AAC102120382E00290183 /* SyncableTableCell.swift */,
 				718AAC12212039E000290183 /* TripCell.swift */,
 				EA98B51D1B075057006935AE /* TripCell.xib */,
@@ -2908,7 +2887,6 @@
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
 				71695E6C2023AEE000F1A7C9 /* SharedLocalizable.strings in Resources */,
 				EA1E60D51B2742660048E688 /* InfoPlist.strings in Resources */,
-				EA22FB4E1B1AF1A40060D23D /* CategoryCell.xib in Resources */,
 				714104E21FF43D7700C334C5 /* LaunchView.xib in Resources */,
 				EA22679F1B1E035F005761E7 /* ReceiptCell.xib in Resources */,
 				4D29DE8A216CEDBA00591F7B /* Localizable.strings in Resources */,
@@ -2927,7 +2905,6 @@
 				71F468321EEEDB03009F6CE7 /* EditTrip.storyboard in Resources */,
 				EA1E60D81B2742660048E688 /* InfoPlist.strings in Resources */,
 				71AF0EAE2007BE8D00AA4C37 /* DescribedSwitchCell.xib in Resources */,
-				71FE9FF91F4787710043E7B4 /* TitleOnlyCell.xib in Resources */,
 				EA2B8D8C1B4EF8110043A84B /* PDFPage.xib in Resources */,
 				4D29DE89216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
 				712D7E071FB793F900DE83EB /* Localizable.stringsdict in Resources */,
@@ -3447,7 +3424,6 @@
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
 				A7F05BD31CFD54430079F1AD /* Logger.swift in Sources */,
 				EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */,
-				EA22FB4D1B1AF1A40060D23D /* CategoryCell.m in Sources */,
 				719310411EDDC2810065B5AD /* WBSqlBuilder.m in Sources */,
 				71BC45531F9FB3A9003A5BD5 /* ScansPurchaseTracker.swift in Sources */,
 				71ACA7C61F5B69C90024903E /* DebugInteractor.swift in Sources */,
@@ -3562,10 +3538,8 @@
 				71A30F2F1EECB746001BA608 /* DataImport.swift in Sources */,
 				71AEDDE21EDF7FF400BAC0DD /* TripDistancesView.swift in Sources */,
 				A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */,
-				71FE9FF81F4787710043E7B4 /* TitleOnlyCell.m in Sources */,
 				71FB1D421F195D0D00742FF5 /* PaymentMethodsRouter.swift in Sources */,
 				71AF0EAC2007BE7A00AA4C37 /* DescribedSwitchCell.swift in Sources */,
-				EA07BF3A1AF3C80C004D17F6 /* NSMutableString+Issues.m in Sources */,
 				71AEDDCD1EDF6A2300BAC0DD /* AppTheme.swift in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */,
 				EA0677F61B04E61A0058A326 /* StringPickableWrapper.m in Sources */,

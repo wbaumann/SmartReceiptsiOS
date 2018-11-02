@@ -23,7 +23,6 @@
 #import "NSDate+Calculations.h"
 
 #import "WBDynamicPicker.h"
-#import "CategoryCell.h"
 
 #import "FetchedModel.h"
 #import "FetchedModelAdapter.h"
@@ -37,8 +36,6 @@
 #import "UIDevice+DeviceInfo.h"
 
 #import "ReceiptColumn.h"
-#import "TitleOnlyCell.h"
-
 #import "WBCategory.h"
 #import "WBImageStampler.h"
 #import "WBPreferences.h"
