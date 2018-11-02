@@ -86,7 +86,7 @@ extension ReceiptFilePicker: UIDocumentBrowserViewControllerDelegate {
                 var document = ReceiptDocument(fileURL: url)
                 guard let fileType = document.fileType else { return }
                 if fileType == PNG_TYPE || fileType == JPEG_TYPE {
-                    if let data = try? Data(contentsOf: url), DataValidationService().isValidImage(data: data) {
+                    if let data = try? Data(contentsOf: url), DataValidator().isValidImage(data: data) {
                         let img = UIImage(data: data)
                         let compressedImage = WBImageUtils.compressImage(img, withRatio: kImageCompression)
                         let compressedURL = ReceiptDocument.makeDocumentFrom(image: compressedImage!).localURL!
@@ -96,7 +96,7 @@ extension ReceiptFilePicker: UIDocumentBrowserViewControllerDelegate {
                         return
                     }
                 } else if fileType == PDF_TYPE {
-                    if let data = try? Data(contentsOf: url), !DataValidationService().isValidPDF(data: data) {
+                    if let data = try? Data(contentsOf: url), !DataValidator().isValidPDF(data: data) {
                         self.emitImportError()
                         return
                     }

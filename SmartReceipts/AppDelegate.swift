@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if url.pathExtension.isStringIgnoreCaseIn(array: ["png", "jpg", "jpeg"]) {
                 Logger.info("Launched for image")
-                if DataValidationService().isValidImage(url: tempURL) {
+                if DataValidator().isValidImage(url: tempURL) {
                     isFileImage = true
                     handlePDForImage(url: tempURL)
                 } else {
@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             } else if url.pathExtension.caseInsensitiveCompare("pdf") == .orderedSame {
                 Logger.info("Launched for pdf")
-                if DataValidationService().isValidPDF(url: tempURL) {
+                if DataValidator().isValidPDF(url: tempURL) {
                     isFileImage = false
                     handlePDForImage(url: tempURL)
                 } else {
