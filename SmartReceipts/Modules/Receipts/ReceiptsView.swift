@@ -115,7 +115,7 @@ final class ReceiptsView: FetchedTableViewController {
     }
     
     override func tappedObject(_ tapped: Any, indexPath: IndexPath) {
-        self.tapped = tapped as! WBReceipt
+        self.tapped = tapped as? WBReceipt
         if tableView.isEditing {
             presenter.editReceiptSubject.onNext(self.tapped)
         } else {

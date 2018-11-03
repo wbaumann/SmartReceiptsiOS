@@ -81,10 +81,7 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
 
 + (NSDate *)dateForUnit:(NSCalendarUnit)unit beforeDate:(NSDate *)date {
     NSDate *result;
-    [[NSDate gregorian] rangeOfUnit:unit
-                          startDate:&result
-                           interval:0
-                            forDate:date];
+    [[NSDate gregorian] rangeOfUnit:unit startDate:&result interval:0 forDate:date];
     return result;
 }
 

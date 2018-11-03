@@ -40,6 +40,7 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
         composer.setToRecipients(split(WBPreferences.defaultEmailRecipient()))
         composer.setCcRecipients(split(WBPreferences.defaultEmailCC()))
         composer.setBccRecipients(split(WBPreferences.defaultEmailBCC()))
+        composer.navigationBar.tintColor = .white
         
         for file in files {
             Logger.debug("func emailFiles: Attach \(file)")
@@ -61,12 +62,7 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
         }
         
         remove(files: files)
-        
-        composer.navigationBar.tintColor = UINavigationBar.appearance().tintColor
-        let barStyle = UIApplication.shared.statusBarStyle
-        presenter.present(vc: composer, animated: true) {
-            UIApplication.shared.statusBarStyle = barStyle
-        }
+        presenter.present(vc: composer, animated: true)
     }
     
     func shareFiles(_ files: [String]) {

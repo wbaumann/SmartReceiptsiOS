@@ -49,9 +49,6 @@
 + (NSString *)userID;
 + (void)setUserID:(NSString *)userID;
 
-+ (NSString *)fullName;
-+ (void)setFullName:(NSString *)fullName;
-
 + (int)defaultTripDuration;
 + (void)setDefaultTripDuration:(int)defaultTripDuration;
 

@@ -35,7 +35,7 @@ class ReportAssetsGenerator: NSObject {
     
     func setGenerated(_ fullPDF: Bool, imagesPDF: Bool, csv: Bool, imagesZip: Bool) {
         generate = Generation(fullPDF: fullPDF, imagesPDF: imagesPDF, csv: csv, imagesZip: imagesZip)
-        Logger.info("setGenerated: \(generate)")
+        Logger.info("setGenerated: \(String(describing: generate))")
     }
     
     /// Generate reports

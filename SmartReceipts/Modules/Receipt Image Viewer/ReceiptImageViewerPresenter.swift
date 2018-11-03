@@ -17,7 +17,7 @@ class ReceiptImageViewerPresenter: Presenter {
     var receipt: WBReceipt!
     
     override func setupView(data: Any) {
-        receipt = data as! WBReceipt
+        receipt = data as? WBReceipt
         view.setup(receipt: receipt)
         let path = receipt.imageFilePath(for: receipt.trip)
         image.accept(UIImage(contentsOfFile: path))

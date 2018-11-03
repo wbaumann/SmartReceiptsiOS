@@ -15,9 +15,9 @@ class FilesViewController: UIDocumentBrowserViewController {
         super.viewDidLoad()
         browserUserInterfaceStyle = .dark
         allowsDocumentCreation = false
+        view.tintColor = .white
         additionalTrailingNavigationBarButtonItems = [
-            UIBarButtonItem(title: LocalizedString("DIALOG_CANCEL"),
-                            style: .plain, target: self, action: #selector(FilesViewController.close))
+            UIBarButtonItem(title: LocalizedString("DIALOG_CANCEL"), style: .plain, target: self, action: #selector(close))
         ]
     }
     

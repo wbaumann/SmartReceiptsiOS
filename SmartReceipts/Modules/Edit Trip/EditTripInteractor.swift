@@ -16,12 +16,12 @@ class EditTripInteractor: Interactor {
     
     func configureSubscribers() {
         presenter.updateTripSubject.subscribe(onNext: { [weak self] trip in
-            Logger.debug("Update Trip: \(trip.name)")
+            Logger.debug("Update Trip: \(trip.name!)")
             self?.save(trip: trip, update: true)
         }).disposed(by: bag)
         
         presenter.addTripSubject.subscribe(onNext: { [weak self] trip in
-            Logger.debug("Add Trip: \(trip.name)")
+            Logger.debug("Add Trip: \(trip.name!)")
             self?.save(trip: trip)
         }).disposed(by: bag)
     }

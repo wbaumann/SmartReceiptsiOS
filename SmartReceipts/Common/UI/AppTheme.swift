@@ -44,10 +44,6 @@ class AppTheme: NSObject {
         
         // changes color of active elements like buttons and segments, unfortunately alertview cannot be costumized
         UIApplication.shared.keyWindow?.tintColor = primaryColor
-        
-        // chanes status bar color, however iOS built-in controllers (for example mail composer) may override it
-        UIApplication.shared.isStatusBarHidden = false
-        UIApplication.shared.statusBarStyle = .lightContent
     }
 }
 
