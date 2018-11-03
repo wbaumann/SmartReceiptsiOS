@@ -135,9 +135,9 @@ enum ScanStatus {
     
     var localizedText: String {
         switch self {
-        case .uploading: return LocalizedString("scan.status.uploading")
-        case .scanning: return LocalizedString("scan.status.scanning")
-        case .fetching: return LocalizedString("scan.status.fetching")
+        case .uploading: return LocalizedString("ocr_status_message_uploading_image")
+        case .scanning: return LocalizedString("ocr_status_message_performing_scan")
+        case .fetching: return LocalizedString("ocr_status_message_fetching_results")
         case .completed: return ""
         }
     }
