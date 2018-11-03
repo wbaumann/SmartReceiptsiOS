@@ -34,7 +34,7 @@ class ReceiptActionsPresenter: Presenter {
     }
     
     override func setupView(data: Any) {
-        receipt = data as! WBReceipt
+        receipt = data as? WBReceipt
         view.setup(receipt: receipt)
     }
     

@@ -24,7 +24,7 @@ class BackupFilePicker: NSObject {
             let fvc = FilesViewController(forOpeningFilesWithContentTypes: allowedTypes)
             fvc.delegate = self
             filesViewController = fvc
-            viewController.present(filesViewController, animated: true, completion: nil)
+            viewController.present(fvc, animated: true, completion: nil)
         }
         return urlSubject.asObservable()
     }

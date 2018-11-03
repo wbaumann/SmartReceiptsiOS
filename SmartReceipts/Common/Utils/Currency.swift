@@ -272,7 +272,7 @@ class Currency: NSObject, NSCoding {
     //MARK: NSCoding Protocol
     
     required init?(coder aDecoder: NSCoder) {
-        code = aDecoder.decodeObject(forKey: "code") as! String
+        code = aDecoder.decodeObject(forKey: "code") as? String
     }
     
     func encode(with aCoder: NSCoder) {

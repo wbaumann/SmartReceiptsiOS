@@ -74,16 +74,13 @@ extension SettingsView: SettingsViewInterface {
 extension SettingsView: MFMailComposeViewControllerDelegate {
     
     func sendFeedback(subject: String) {
-        if (!MFMailComposeViewController.canSendMail()) {
+        if !MFMailComposeViewController.canSendMail() {
             Logger.warning("Mail services are not available.")
             presenter.alertSubject
                 .onNext((title: LocalizedString("settings.feedback.email.error"),
                        message: LocalizedString("settings.feedback.email.not.configured.message")))
             return
         }
-        
-        let composeVC = MFMailComposeViewController()
-        composeVC.mailComposeDelegate = self
         
         // Configure the fields of the interface.
         var messageBody = ""
@@ -94,28 +91,24 @@ extension SettingsView: MFMailComposeViewControllerDelegate {
         messageBody += "\(UIDevice.current.deviceInfoString()!)\n"
         messageBody += "Locale: \(Locale.current.identifier)"
         
-        // Attach log files
-        let logFiles = Logger.logFiles()
-        for file in logFiles {
-            let data = NSData(contentsOfFile: file.filePath)
-            if data != nil {
-                composeVC .addAttachmentData(data! as Data, mimeType: "text/plain", fileName: file.fileName)
-            }
-        }
+        let composeVC = MFMailComposeViewController()
         
+        // Attach log files
+        Logger.logFiles()
+            .map { ($0.fileName, try? Data(contentsOf: URL(fileURLWithPath: $0.filePath))) }
+            .filter { $1 != nil }
+            .forEach { composeVC.addAttachmentData($1!, mimeType: "text/plain", fileName: $0) }
+        
+        composeVC.mailComposeDelegate = self
         composeVC.setToRecipients([FeedbackEmailAddress])
         composeVC.setSubject(subject)
         composeVC.setMessageBody(messageBody, isHTML: false)
-        composeVC.navigationBar.tintColor = UINavigationBar.appearance().tintColor
+        composeVC.navigationBar.tintColor = .white
         
-        let style = UIApplication.shared.statusBarStyle
-        present(composeVC, animated: true) { 
-            UIApplication.shared.statusBarStyle = style
-        }
+        present(composeVC, animated: true)
     }
     
-    func mailComposeController(_ controller: MFMailComposeViewController,
-         didFinishWith result: MFMailComposeResult, error: Error?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         if result == .failed {
             Logger.warning("MFMailComposeResultFailed: \(error!.localizedDescription)")
             presenter.alertSubject.onNext((title: LocalizedString("settings.feedback.email.error"),

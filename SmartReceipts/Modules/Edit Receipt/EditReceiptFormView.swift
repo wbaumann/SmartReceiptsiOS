@@ -55,7 +55,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
                 self.receipt.paymentMethod = pm
             }
         } else {
-            self.receipt = receipt!.copy() as! WBReceipt
+            self.receipt = receipt!.copy() as? WBReceipt
         }
         
         // Check conditions for automatic tax calculator

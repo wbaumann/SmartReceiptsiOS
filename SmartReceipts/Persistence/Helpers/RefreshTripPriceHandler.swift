@@ -15,7 +15,7 @@ protocol RefreshTripPriceHandler {
 
 extension RefreshTripPriceHandler {
     func refreshPriceForTrip(_ trip: WBTrip, inDatabase database: FMDatabase) {
-        Logger.debug("Refresh price on \(trip.name)")
+        Logger.debug("Refresh price on \(trip.name!)")
         timeMeasured("Price update") {
             //TODO jaanus: maybe lighter query - only price/currency/exchangeRate?
             let receipts = database.fetchUnmarkedForDeletionReceiptsForTrip(trip)
