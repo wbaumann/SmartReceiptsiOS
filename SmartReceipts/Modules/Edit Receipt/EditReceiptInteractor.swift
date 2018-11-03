@@ -62,7 +62,7 @@ class EditReceiptInteractor: Interactor {
                 .subscribe(onNext: { [unowned self] in
                     self.tooltipService.markConfigureOCRDismissed()
                 }).disposed(by: tooltipBag)
-            return LocalizedString("ocr.informational.tooltip.configure.text")
+            return LocalizedString("ocr_informational_tooltip_configure_text")
         }
         return nil
     }

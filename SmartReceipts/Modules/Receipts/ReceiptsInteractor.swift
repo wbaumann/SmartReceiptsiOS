@@ -79,7 +79,7 @@ class ReceiptsInteractor: Interactor {
                     priceCollection.addPrice(price)
                 }
             }
-            subtitle = String(format: LocalizedString("trips.controller.daily.total"), priceCollection.currencyFormattedTotalPrice(ignoreEmpty: false))
+            subtitle = String(format: LocalizedString("daily_total"), priceCollection.currencyFormattedTotalPrice(ignoreEmpty: false))
         }
         return (title, subtitle)
     }

@@ -959,7 +959,7 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "removeColumn", "returnSignature": "", "fullyQualifiedName": "removeColumn(_: Column, isCSV: Bool)", "parameterSignature": "_ column: Column, isCSV: Bool", "parameterSignatureWithoutNames": "column: Column, isCSV: Bool", "inputTypes": "Column, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "column, isCSV", "call": "column, isCSV: isCSV", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "column", type: "Column", range: CountableRange(1067..<1083), nameRange: CountableRange(0..<0)), CuckooGeneratorFramework.MethodParameter(label: Optional("isCSV"), name: "isCSV", type: "Bool", range: CountableRange(1085..<1096), nameRange: CountableRange(1085..<1090))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "removeColumn", "returnSignature": "", "fullyQualifiedName": "removeColumn(_: Column, isCSV: Bool)", "parameterSignature": "_ column: Column, isCSV: Bool", "parameterSignatureWithoutNames": "column: Column, isCSV: Bool", "inputTypes": "Column, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "column, isCSV", "call": "column, isCSV: isCSV", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "column", type: "Column", range: CountableRange(1068..<1084), nameRange: CountableRange(0..<0)), CuckooGeneratorFramework.MethodParameter(label: Optional("isCSV"), name: "isCSV", type: "Bool", range: CountableRange(1086..<1097), nameRange: CountableRange(1086..<1091))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func removeColumn(_ column: Column, isCSV: Bool)  {
         
             return cuckoo_manager.call("removeColumn(_: Column, isCSV: Bool)",
@@ -971,7 +971,7 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "reorder", "returnSignature": "", "fullyQualifiedName": "reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)", "parameterSignature": "columnLeft: Column, columnRight: Column, isCSV: Bool", "parameterSignatureWithoutNames": "columnLeft: Column, columnRight: Column, isCSV: Bool", "inputTypes": "Column, Column, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "columnLeft, columnRight, isCSV", "call": "columnLeft: columnLeft, columnRight: columnRight, isCSV: isCSV", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("columnLeft"), name: "columnLeft", type: "Column", range: CountableRange(1330..<1348), nameRange: CountableRange(1330..<1340)), CuckooGeneratorFramework.MethodParameter(label: Optional("columnRight"), name: "columnRight", type: "Column", range: CountableRange(1350..<1369), nameRange: CountableRange(1350..<1361)), CuckooGeneratorFramework.MethodParameter(label: Optional("isCSV"), name: "isCSV", type: "Bool", range: CountableRange(1371..<1382), nameRange: CountableRange(1371..<1376))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "reorder", "returnSignature": "", "fullyQualifiedName": "reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)", "parameterSignature": "columnLeft: Column, columnRight: Column, isCSV: Bool", "parameterSignatureWithoutNames": "columnLeft: Column, columnRight: Column, isCSV: Bool", "inputTypes": "Column, Column, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "columnLeft, columnRight, isCSV", "call": "columnLeft: columnLeft, columnRight: columnRight, isCSV: isCSV", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("columnLeft"), name: "columnLeft", type: "Column", range: CountableRange(1332..<1350), nameRange: CountableRange(1332..<1342)), CuckooGeneratorFramework.MethodParameter(label: Optional("columnRight"), name: "columnRight", type: "Column", range: CountableRange(1352..<1371), nameRange: CountableRange(1352..<1363)), CuckooGeneratorFramework.MethodParameter(label: Optional("isCSV"), name: "isCSV", type: "Bool", range: CountableRange(1373..<1384), nameRange: CountableRange(1373..<1378))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)  {
         
             return cuckoo_manager.call("reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)",
@@ -2419,7 +2419,7 @@ class MockEditTripInteractor: EditTripInteractor, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "save", "returnSignature": "", "fullyQualifiedName": "save(trip: WBTrip, update: Bool)", "parameterSignature": "trip: WBTrip, update: Bool", "parameterSignatureWithoutNames": "trip: WBTrip, update: Bool", "inputTypes": "WBTrip, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip, update", "call": "trip: trip, update: update", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(756..<768), nameRange: CountableRange(756..<760)), CuckooGeneratorFramework.MethodParameter(label: Optional("update"), name: "update", type: "Bool", range: CountableRange(770..<790), nameRange: CountableRange(770..<776))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "save", "returnSignature": "", "fullyQualifiedName": "save(trip: WBTrip, update: Bool)", "parameterSignature": "trip: WBTrip, update: Bool", "parameterSignatureWithoutNames": "trip: WBTrip, update: Bool", "inputTypes": "WBTrip, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip, update", "call": "trip: trip, update: update", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(758..<770), nameRange: CountableRange(758..<762)), CuckooGeneratorFramework.MethodParameter(label: Optional("update"), name: "update", type: "Bool", range: CountableRange(772..<792), nameRange: CountableRange(772..<778))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func save(trip: WBTrip, update: Bool)  {
         
             return cuckoo_manager.call("save(trip: WBTrip, update: Bool)",
@@ -6393,7 +6393,7 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "markLastOpened", "returnSignature": "", "fullyQualifiedName": "markLastOpened(trip: WBTrip)", "parameterSignature": "trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "trip: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(749..<761), nameRange: CountableRange(749..<753))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "markLastOpened", "returnSignature": "", "fullyQualifiedName": "markLastOpened(trip: WBTrip)", "parameterSignature": "trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "trip: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(750..<762), nameRange: CountableRange(750..<754))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func markLastOpened(trip: WBTrip)  {
         
             return cuckoo_manager.call("markLastOpened(trip: WBTrip)",
@@ -6690,6 +6690,7 @@ import Cuckoo
 @testable import SmartReceipts
 
 import Foundation
+import SafariServices
 import Viperit
 
 class MockTripsRouter: TripsRouter, Cuckoo.ClassMock {
@@ -6775,7 +6776,19 @@ class MockTripsRouter: TripsRouter, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "openEdit", "returnSignature": "", "fullyQualifiedName": "openEdit(trip: WBTrip)", "parameterSignature": "trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "trip: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(1281..<1293), nameRange: CountableRange(1281..<1285))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "openUserGuide", "returnSignature": "", "fullyQualifiedName": "openUserGuide()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+     override func openUserGuide()  {
+        
+            return cuckoo_manager.call("openUserGuide()",
+                parameters: (),
+                superclassCall:
+                    
+                    super.openUserGuide()
+                    )
+        
+    }
+    
+    // ["name": "openEdit", "returnSignature": "", "fullyQualifiedName": "openEdit(trip: WBTrip)", "parameterSignature": "trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "trip: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(1669..<1681), nameRange: CountableRange(1669..<1673))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func openEdit(trip: WBTrip)  {
         
             return cuckoo_manager.call("openEdit(trip: WBTrip)",
@@ -6799,7 +6812,7 @@ class MockTripsRouter: TripsRouter, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "openDetails", "returnSignature": "", "fullyQualifiedName": "openDetails(trip: WBTrip)", "parameterSignature": "trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "trip: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(1418..<1430), nameRange: CountableRange(1418..<1422))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "openDetails", "returnSignature": "", "fullyQualifiedName": "openDetails(trip: WBTrip)", "parameterSignature": "trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "trip: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(1806..<1818), nameRange: CountableRange(1806..<1810))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func openDetails(trip: WBTrip)  {
         
             return cuckoo_manager.call("openDetails(trip: WBTrip)",
@@ -6860,6 +6873,11 @@ class MockTripsRouter: TripsRouter, Cuckoo.ClassMock {
 	    func openAutoScans() -> Cuckoo.ClassStubNoReturnFunction<()> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openAutoScans()", parameterMatchers: matchers))
+	    }
+	    
+	    func openUserGuide() -> Cuckoo.ClassStubNoReturnFunction<()> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openUserGuide()", parameterMatchers: matchers))
 	    }
 	    
 	    func openEdit<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.ClassStubNoReturnFunction<(WBTrip)> where M1.MatchedType == WBTrip {
@@ -6935,6 +6953,12 @@ class MockTripsRouter: TripsRouter, Cuckoo.ClassMock {
 	    }
 	    
 	    @discardableResult
+	    func openUserGuide() -> Cuckoo.__DoNotUse<Void> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return cuckoo_manager.verify("openUserGuide()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
 	    func openEdit<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBTrip {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
 	        return cuckoo_manager.verify("openEdit(trip: WBTrip)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
@@ -6989,6 +7013,10 @@ class MockTripsRouter: TripsRouter, Cuckoo.ClassMock {
     }
     
      override func openAutoScans()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func openUserGuide()  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     

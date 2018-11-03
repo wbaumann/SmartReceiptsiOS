@@ -16,7 +16,7 @@
 }
 
 - (NSString *)valueForFooter:(NSArray *)rows forCSV:(BOOL)forCSV {
-    return LocalizedString(@"pdf.report.distance.total.label", nil);
+    return LocalizedString(@"total", nil);
 }
 
 @end

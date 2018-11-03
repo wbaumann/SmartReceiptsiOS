@@ -63,7 +63,7 @@ final class AuthView: UserInterface {
         Observable.combineLatest(emailValidator(), passwordValidator(), resultSelector: {
                 isVaildEmail, isValidPassword -> ValidationResult in
             if !isVaildEmail {
-                return (LocalizedString("login.fields.hint.email"), false)
+                return (LocalizedString("login_fields_hint_email"), false)
             } else if !isValidPassword {
                 return (LocalizedString("login_fields_hint_password"), false)
             } else {
