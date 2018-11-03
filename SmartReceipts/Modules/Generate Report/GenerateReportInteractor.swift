@@ -120,9 +120,9 @@ class GenerateReportInteractor: Interactor {
                 case .fullPdfTooManyColumns:
                     title = LocalizedString("report_pdf_error_too_many_columns_title")
                     if WBPreferences.printReceiptTableLandscape() {
-                        message = LocalizedString("generate.report.unsuccessful.alert.pdf.columns.message")
+                        message = LocalizedString("report_pdf_error_too_many_columns_message")
                     } else {
-                        message = LocalizedString("generate.report.unsuccessful.alert.pdf.columns.message.tryportrait")
+                        message = LocalizedString("report_pdf_error_too_many_columns_message_landscape")
                     }
                     
                     let openSettingsAction = UIAlertAction(title: LocalizedString("report_pdf_error_go_to_settings"),
@@ -136,7 +136,7 @@ class GenerateReportInteractor: Interactor {
                 case .csvFailed:
                     message = LocalizedString("DIALOG_EMAIL_CHECKBOX_CSV")
                 case .zipImagesFailed:
-                    message = LocalizedString("generate.report.option.zip.stamped")
+                    message = LocalizedString("DIALOG_EMAIL_CHECKBOX_ZIP_WITH_METADATA")
                 }
                 actions.append(UIAlertAction(title: LocalizedString("generic.button.title.ok"), style: .default, handler: nil))
                 self.presenter.presentSheet(title: title, message: message, actions: actions)
