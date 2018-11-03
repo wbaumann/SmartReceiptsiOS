@@ -5,7 +5,6 @@
 "app.delegate.import.error.alert.message" = "Failed to recognize the file as importable.";
 "app.delegate.import.success.alert.message" = "Successfully imported all files.";
 "app.text.bullet.character" = "•";
-"category.distance.code" = "DIST";
 "columns.controller.column.prefix" = "Col.";
 "columns.controller.picker.title" = "Columns";
 "columns.controller.title.csv" = "Configure CSV";

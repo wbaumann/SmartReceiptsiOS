@@ -78,7 +78,6 @@
             LocalizedString(@"category_meals_justified", nil), LocalizedString(@"category_meals_justified_code", nil), //
             LocalizedString(@"category_stationery_stations", nil), LocalizedString(@"category_stationery_stations_code", nil), //
             LocalizedString(@"category_training_fees", nil), LocalizedString(@"category_training_fees_code", nil), //
-            LocalizedString(@"pref_distance_header", nil), LocalizedString(@"category.distance.code", nil), //
     ];
 
     for (NSUInteger i = 0; i < cats.count - 1; i += 2) {
