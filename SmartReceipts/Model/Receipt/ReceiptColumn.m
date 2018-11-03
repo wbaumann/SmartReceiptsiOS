@@ -122,7 +122,7 @@ static NSArray<LegacyResolver *> *_resolvers;
     // for compability.
     // legacy string, expensable was renamed to reimbursable
     if ([columnName isEqualToString:Localized(@"column_item_deprecated_expensable")]) {
-        columnName = Localized(@"graphs_label_reimbursable");
+        columnName = Localized(@"column_item_reimbursable");
     }
     
     ReceiptColumn *column;

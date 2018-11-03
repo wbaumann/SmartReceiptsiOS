@@ -55,10 +55,10 @@
         [locations addObject:r.location];
     }
 
-    NSString *name = locations.count > 0 ? [locations componentsJoinedByString:@"; "] : LocalizedString(@"pref_distance_header", nil);
+    NSString *name = locations.count > 0 ? [locations componentsJoinedByString:@"; "] : LocalizedString(@"distance", nil);
     NSDate *date = distance.date;
     NSTimeZone *timeZone = distance.timeZone;
-    NSString *category = LocalizedString(@"pref_distance_header", nil);
+    NSString *category = LocalizedString(@"distance", nil);
     NSDecimalNumber *totalPrice = [self totalPriceForDistances:distances];
 
     WBReceipt *receipt = [[WBReceipt alloc] initWithId:0

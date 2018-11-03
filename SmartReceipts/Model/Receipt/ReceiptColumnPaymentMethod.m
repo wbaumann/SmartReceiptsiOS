@@ -13,7 +13,7 @@
 @implementation ReceiptColumnPaymentMethod
 
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV {
-    return receipt.paymentMethod ? receipt.paymentMethod.method : LocalizedString(@"payment.method.unspecified", nil);
+    return receipt.paymentMethod ? receipt.paymentMethod.method : LocalizedString(@"undefined", nil);
 }
 
 @end
