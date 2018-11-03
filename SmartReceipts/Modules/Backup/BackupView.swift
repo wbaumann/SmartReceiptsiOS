@@ -56,7 +56,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     private func localizeUI() {
         title = LocalizedString("backups")
         
-        manualBackupTitle.text = LocalizedString("backups_view_manual_title")
+        manualBackupTitle.text = LocalizedString("manual_backup_title")
         manualBackupDesctiption.text = LocalizedString("manual_backup_description")
         importButton.setTitle(LocalizedString("manual_backup_import").uppercased(), for: .normal)
         backupButton.setTitle(LocalizedString("manual_backup_export").uppercased(), for: .normal)

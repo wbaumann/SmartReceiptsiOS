@@ -45,7 +45,7 @@
 }
 
 - (void)testDefaultValuesAddedForCategories {
-    XCTAssertEqual(25, [self.db countRowsInTable:CategoriesTable.TABLE_NAME], @"Default categories not entered");
+    XCTAssertEqual(24, [self.db countRowsInTable:CategoriesTable.TABLE_NAME], @"Default categories not entered");
 }
 
 - (void)testDefaultValuesAddedForCSVColumns {

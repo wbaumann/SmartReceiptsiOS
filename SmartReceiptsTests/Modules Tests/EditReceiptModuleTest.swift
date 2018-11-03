@@ -65,7 +65,7 @@ class EditReceiptModuleTest: XCTestCase {
     }
     
     private func tooltipTextConfigure() -> String {
-        return LocalizedString("ocr.informational.tooltip.configure.text")
+        return LocalizedString("ocr_informational_tooltip_configure_text")
     }
     
     private func tooltipTextScansCount() -> String {

@@ -90,8 +90,8 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         form
         +++ Section()
         <<< PredectiveTextRow(NAME_ROW_TAG) { row in
-            row.title = LocalizedString("RECEIPTMENU_FIELD_NAME")
-            row.placeholder = LocalizedString("edit.receipt.name.placeholder")
+            row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_NAME")
+            row.placeholder = LocalizedString("DIALOG_RECEIPTMENU_HINT_NAME")
             row.value = receipt.name
         }.onChange({ [unowned self] row in
             self.receipt.name = row.value ?? ""
@@ -106,8 +106,8 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         })
     
         <<< DecimalRow(PRICE_ROW_TAG) { row in
-            row.title = LocalizedString("RECEIPTMENU_FIELD_PRICE")
-            row.placeholder = LocalizedString("edit.receipt.price.placeholder")
+            row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_PRICE_SHORT")
+            row.placeholder = LocalizedString("DIALOG_RECEIPTMENU_HINT_PRICE_SHORT")
             row.value = receipt.price().amount.doubleValue != 0 ?
                 receipt.price().amount.doubleValue : nil
         }.onChange({ [unowned self] row in
@@ -126,8 +126,8 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             
         <<< DecimalRow(TAX_ROW_TAG) { [unowned self] row in
             row.hidden = Condition(booleanLiteral: !WBPreferences.includeTaxField())
-            row.title = LocalizedString("RECEIPTMENU_FIELD_TAX")
-            row.placeholder = LocalizedString("edit.receipt.tax.placeholder")
+            row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_TAX")
+            row.placeholder = LocalizedString("DIALOG_RECEIPTMENU_HINT_TAX")
             row.value = self.isNewReceipt && !self.hasScan ? nil : self.receipt.taxAmount?.doubleValue
             
             if let calculator = self.taxCalculator {
@@ -158,7 +158,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         })
         
         <<< PickerInlineRow<String>(CURRENCY_ROW_TAG) { row in
-            row.title = LocalizedString("pref_general_default_currency_title")
+            row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_CURRENCY")
             row.options = Currency.allCurrencyCodesWithCached()
             row.value = receipt.currency.code
         }.onChange({ [unowned self] row in
@@ -173,7 +173,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         })
             
         <<< ExchangeRateRow(EXCHANGE_RATE_TAG) { row in
-            row.title = LocalizedString("column_item_exchange_rate")
+            row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_EXCHANGE_RATE")
             row.hidden = Condition.function([CURRENCY_ROW_TAG], { [unowned self] form -> Bool in
                 if let picker = form.rowBy(tag: self.CURRENCY_ROW_TAG) as? PickerInlineRow<String> {
                     return picker.value == self.trip.defaultCurrency.code
@@ -191,7 +191,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         })
         
         <<< DateInlineRow() { row in
-            row.title = LocalizedString("RECEIPTMENU_FIELD_DATE")
+            row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_DATE")
             row.value = receipt.date
             row.dateFormatter?.timeZone = receipt.timeZone
         }.onChange({ [unowned self] row in
@@ -203,7 +203,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         })
         
         <<< InlinePickerButtonRow(CATEGORIES_ROW_TAG) { [unowned self] row in
-            row.title = LocalizedString("filter_name_receipt_category")
+            row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_CATEGORY")
             row.options = allCategories()
             row.value = receipt.category?.name ?? ""
             row.buttonTitle = LocalizedString("manage_categories").uppercased()
@@ -214,8 +214,8 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         })
         
         <<< TextRow(COMMENT_ROW_TAG) { row in
-            row.title = LocalizedString("RECEIPTMENU_FIELD_COMMENT")
-            row.placeholder = LocalizedString("edit.receipt.comment.placeholder")
+            row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_COMMENT")
+            row.placeholder = LocalizedString("DIALOG_RECEIPTMENU_HINT_COMMENT")
             row.value = receipt.comment
         }.onChange({ [unowned self] row in
             self.receipt.comment = row.value ?? ""
@@ -237,7 +237,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         })
             
         <<< CheckRow() { row in
-            row.title = LocalizedString("graphs_label_reimbursable")
+            row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_EXPENSABLE")
             row.value = receipt.isReimbursable
         }.onChange({ [unowned self] row in
             self.receipt.isReimbursable = row.value!
@@ -247,7 +247,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         })
 
         <<< CheckRow() { row in
-            row.title = LocalizedString("edit.receipt.full.page.label")
+            row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_FULLPAGE")
             row.value = receipt.isFullPage
         }.onChange({ [unowned self] row in
             self.receipt.isFullPage = row.value!

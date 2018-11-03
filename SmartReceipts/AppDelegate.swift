@@ -129,14 +129,15 @@ extension AppDelegate {
         filePathToAttach = path
         
         if isFileImage {
-            let alert = UIAlertController(title: LocalizedString("app.delegate.attach.image.alert.title"),
-                message: LocalizedString("app.delegate.attach.image.alert.message"), preferredStyle: .alert)
+            // String(format: LocalizedString("dialog_attachment_text"), LocalizedString("image"))
+            let alert = UIAlertController(title: LocalizedString("receipt_attach_file"),
+                message: String(format: LocalizedString("dialog_attachment_text"), LocalizedString("image")), preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.ok"), style: .cancel, handler: nil))
             AdNavigationEntryPoint.navigationController?.visibleViewController?.present(alert, animated: true)
         } else {
-            let alert = UIAlertController(title: LocalizedString("app.delegate.attach.pdf.alert.title"),
-                message: LocalizedString("app.delegate.attach.pdf.alert.message"), preferredStyle: .alert)
+            let alert = UIAlertController(title: LocalizedString("receipt_attach_file"),
+                message: String(format: LocalizedString("dialog_attachment_text"), LocalizedString("pdf")), preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.ok"), style: .cancel, handler: nil))
             AdNavigationEntryPoint.navigationController?.visibleViewController?.present(alert, animated: true)
@@ -172,14 +173,14 @@ extension AppDelegate {
                     SyncService.shared.trySyncData()
                     hud.hide()
                     NotificationCenter.default.post(name: .SmartReceiptsImport, object: nil)
-                    let text = LocalizedString("app.delegate.import.success.alert.message")
+                    let text = LocalizedString("toast_import_complete")
                     _ = UIAlertController.showInfo(text: text, on: viewController).subscribe()
-                    Logger.debug("app.delegate.import.success")
-                }, onError: { _ in
+                    Logger.debug("Successfully imported all reciepts")
+                }, onError: { error in
                     hud.hide()
-                    let text = LocalizedString("app.delegate.import.error.alert.message")
+                    let text = LocalizedString("IMPORT_ERROR")
                     _ = UIAlertController.showInfo(text: text, on: viewController).subscribe()
-                    Logger.error("app.delegate.import.error")
+                    Logger.error("Failed to import this backup: \(error.localizedDescription)")
                 })
         }
     }

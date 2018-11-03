@@ -21,8 +21,8 @@ class ColumnsPresenter: Presenter {
         isCSV = data as! Bool
         updateData()
         
-        view.setNavTitle(isCSV ? LocalizedString("columns.controller.title.csv") :
-                                 LocalizedString("columns.controller.title.pdf"))
+        view.setNavTitle(isCSV ? LocalizedString("pref_output_custom_csv_title") :
+                                 LocalizedString("pref_output_custom_pdf_title"))
     }
     
     override func viewHasLoaded() {

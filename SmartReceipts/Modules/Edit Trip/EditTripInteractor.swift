@@ -35,7 +35,7 @@ class EditTripInteractor: Interactor {
             let action = update ? "update" : "insert"
             Logger.error("Can't \(action) report: \(trip.description)")
             presenter.presentAlert(title: LocalizedString("generic.error.alert.title"),
-                                 message: LocalizedString("edit_trip_error_trip_exists"))
+                                 message: LocalizedString("toast_error_trip_exists"))
         }
     }
 }
