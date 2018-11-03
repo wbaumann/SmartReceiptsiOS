@@ -29,7 +29,7 @@ class TripDistancesView: FetchedTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = LocalizedString("distances.controller.title")
+        navigationItem.title = LocalizedString("report_info_distance")
         setPresentationCellNib(DistanceCell.viewNib())
         configureUIActions()
         
