@@ -67,16 +67,23 @@ static NSString *const SmartReceiptsGregorianCalendarKey = @"SmartReceiptsGregor
 }
 
 - (NSDate *)dateAtBeginningOfDay {
-    return [NSDate dateForUnit:NSCalendarUnitDay beforeDate:self];
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSCalendarUnit units = NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents *components = [cal components:units fromDate:self];
+    [components setHour:0];
+    [components setMinute:0];
+    [components setSecond:0];
+    return [cal dateFromComponents:components];
 }
 
 - (NSDate *)dateAtEndOfDay {
-    // beginnning of day
-    NSDate *result = [NSDate dateForUnit:NSCalendarUnitDay beforeDate:self];
-    // beginning of next day
-    result = [result dateByAddingDays:1];
-    //end of day
-    return [NSDate dateWithTimeInterval:-1 sinceDate:result];
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSCalendarUnit units = NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents *components = [cal components:units fromDate:self];
+    [components setHour:23];
+    [components setMinute:59];
+    [components setSecond:59];
+    return [cal dateFromComponents:components];
 }
 
 + (NSDate *)dateForUnit:(NSCalendarUnit)unit beforeDate:(NSDate *)date {
