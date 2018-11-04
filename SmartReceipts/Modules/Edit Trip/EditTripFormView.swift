@@ -26,14 +26,15 @@ class EditTripFormView: FormViewController {
         super.init(nibName: nil, bundle: nil)
         isNewTrip = trip == nil
         self.trip = trip?.copy() as? WBTrip
-        if trip == nil {
+        if isNewTrip {
             self.trip = WBTrip()
-            self.trip?.startDate = NSDate().atBeginningOfDay()
-            var dayComponents = DateComponents()
-            dayComponents.day = Int(WBPreferences.defaultTripDuration()) - 1
-            self.trip?.endDate = (Calendar.current.date(byAdding: dayComponents,
-                            to: self.trip!.startDate)! as NSDate).atBeginningOfDay()
             self.trip?.defaultCurrency = Currency.currency(forCode: WBPreferences.defaultCurrency())
+            self.trip?.startDate = NSDate().atBeginningOfDay()
+            self.trip?.startTimeZone = .current
+            
+            let end = (NSDate().addingDays(Int(WBPreferences.defaultTripDuration()) - 1) as NSDate).atBeginningOfDay()
+            self.trip?.endDate = end
+            self.trip?.endTimeZone = .current
         }
     }
     
@@ -71,6 +72,8 @@ class EditTripFormView: FormViewController {
             endDateRow.minimumDate = row.value
         }).cellSetup({ cell, _ in
             cell.configureCell()
+        }).onExpandInlineRow({ _, _, datePickerRow in
+            datePickerRow.cell.datePicker.timeZone = self.trip?.startTimeZone
         })
         
         <<< DateInlineRow(END_DATE_TAG) { row in
@@ -83,6 +86,8 @@ class EditTripFormView: FormViewController {
             startDateRow.maximumDate = row.value
         }).cellSetup({ cell, _ in
             cell.configureCell()
+        }).onExpandInlineRow({ _, _, datePickerRow in
+            datePickerRow.cell.datePicker.timeZone = self.trip?.endTimeZone
         })
         
         <<< PickerInlineRow<String>() { row in

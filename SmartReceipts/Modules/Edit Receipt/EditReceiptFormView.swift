@@ -43,13 +43,13 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         isNewReceipt = receipt == nil
         if isNewReceipt {
             self.receipt = WBReceipt()
-            self.receipt.setPrice(NSDecimalNumber.zero, currency: trip.defaultCurrency.code)
+            self.receipt.setPrice(.zero, currency: trip.defaultCurrency.code)
             self.receipt.date = Date()
             self.receipt.category =  Database.sharedInstance().category(byName: proposedCategory())
-            self.receipt.exchangeRate = NSDecimalNumber.zero
+            self.receipt.exchangeRate = .zero
             self.receipt.isReimbursable = WBPreferences.expensableDefault()
             self.receipt.isFullPage = WBPreferences.assumeFullPage()
-            self.receipt.timeZone = TimeZone.current
+            self.receipt.timeZone = .current
             
             if let pm = Database.sharedInstance().allPaymentMethods().last {
                 self.receipt.paymentMethod = pm
