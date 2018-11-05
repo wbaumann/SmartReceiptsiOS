@@ -8,6 +8,9 @@
 
 import Foundation
 import Viperit
+import SafariServices
+
+private let USER_GUIDE_URL = "https://www.smartreceipts.co/guide"
 
 class TripsRouter: Router {
     
@@ -44,6 +47,12 @@ class TripsRouter: Router {
         AnalyticsManager.sharedManager.record(event: Event.Navigation.OcrConfiguration)
         let module = AppModules.OCRConfiguration.build()
         openModal(module: module)
+    }
+    
+    func openUserGuide() {
+        AnalyticsManager.sharedManager.record(event: Event.Navigation.OcrConfiguration)
+        let safari = SFSafariViewController(url: URL(string: USER_GUIDE_URL)!, entersReaderIfAvailable: true)
+        _view.present(safari, animated: true, completion: nil)
     }
     
     func openEdit(trip: WBTrip) {
