@@ -39,6 +39,11 @@ class TripsPresenter: Presenter {
                 self.router.openSettings()
             }).disposed(by: bag)
         
+        view.userGuideTap
+            .subscribe(onNext: {
+                self.router.openUserGuide()
+            }).disposed(by: bag)
+        
         view.autoScansTap
             .filter({ AuthService.shared.isLoggedIn })
             .subscribe(onNext: {
@@ -90,8 +95,6 @@ class TripsPresenter: Presenter {
             .subscribe(onNext: { trip in
                 self.router.openEdit(trip: trip)
             }).disposed(by: bag)
-        
-        
     }
     
     func presentSettings() {

@@ -16,6 +16,7 @@ protocol TripsViewInterface {
     var settingsTap: Observable<Void> { get }
     var autoScansTap: Observable<Void> { get }
     var backupTap: Observable<Void> { get }
+    var userGuideTap: Observable<Void> { get }
     var privacyTap: Observable<Void> { get }
     var addButton: UIButton { get }
     var debugButton: UIBarButtonItem { get }
@@ -257,6 +258,7 @@ extension TripsView: TripsViewInterface {
     var settingsTap: Observable<Void> { return  displayData.settingsTap }
     var autoScansTap: Observable<Void> { return  displayData.autoScansTap }
     var backupTap: Observable<Void> { return  displayData.backupTap }
+    var userGuideTap: Observable<Void> { return  displayData.userGuideTap }
     var privacyTap: Observable<Void> { return privacySubject }
     var debugButton: UIBarButtonItem { return _debugButton }
     var addButton: UIButton { return _addButton }

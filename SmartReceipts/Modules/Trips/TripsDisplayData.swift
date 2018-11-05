@@ -17,18 +17,21 @@ final class TripsDisplayData: DisplayData {
     private let settingsSubject = PublishSubject<Void>()
     private let autoScansSubject = PublishSubject<Void>()
     private let backupSubject = PublishSubject<Void>()
+    private let userGuideSubject = PublishSubject<Void>()
     
     private(set) var menuDisplayData: TripsMenuDisplayData!
     
     var settingsTap: Observable<Void> { return settingsSubject.asObservable() }
     var autoScansTap: Observable<Void> { return autoScansSubject.asObservable() }
     var backupTap: Observable<Void> { return backupSubject.asObservable() }
+    var userGuideTap: Observable<Void> { return userGuideSubject.asObservable() }
     
     required init() {
         let items: [MenuItem]  = [
             (LocalizedString("menu_main_settings"), settingsSubject),
             (LocalizedString("ocr_configuration_title"), autoScansSubject),
-            (LocalizedString("backups"), backupSubject)
+            (LocalizedString("backups"), backupSubject),
+            (LocalizedString("menu_main_usage_guide"), backupSubject)
         ]
         menuDisplayData = TripsMenuDisplayData(items: items)
     }
@@ -43,7 +46,10 @@ final class TripsDisplayData: DisplayData {
         let backupAction = UIAlertAction(title: LocalizedString("backups"),
             style: .default, handler: { _ in self.backupSubject.onNext(()) })
         
-        return [settingsAction, ocrSettingsAction, backupAction]
+        let userGuideAction = UIAlertAction(title: LocalizedString("menu_main_usage_guide"),
+            style: .default, handler: { _ in self.userGuideSubject.onNext(()) })
+        
+        return [settingsAction, ocrSettingsAction, backupAction, userGuideAction]
     }
     
 }
