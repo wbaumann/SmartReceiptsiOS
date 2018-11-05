@@ -9,7 +9,7 @@
 import UIKit
 import Viperit
 import RxSwift
-import MKDropdownMenu
+import RxCocoa
 
 //MARK: - Public Interface Protocol
 protocol TripsViewInterface {
@@ -40,45 +40,44 @@ final class TripsView: FetchedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         AppTheme.customizeOnViewDidLoad(self)
+        lastDateSeparator = WBPreferences.dateSeparator()
         setPresentationCellNib(TripCell.viewNib())
         navigationController?.setToolbarHidden(true, animated: false)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved), name: .SmartReceiptsSettingsSaved, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(fetchObjects), name: .SmartReceiptsImport, object: nil)
-        
-        lastDateSeparator = WBPreferences.dateSeparator()
-        
-        editItem.rx.tap.subscribe(onNext: { [unowned self] in
-            self.setEditing(!self.isEditing, animated: true)
-        }).disposed(by: bag)
+        title = PurchaseService().hasValidSubscriptionValue() ? AppTheme.appTitlePlus : AppTheme.appTitle
         
         configurePrivacyTooltip()
         configureDebug()
-        
-        let notifications = [AppNotificationCenter.syncProvider.asVoid(), AppNotificationCenter.didSyncBackup]
-        Observable<Void>.merge(notifications)
-            .subscribe(onNext: {
-               self.tableView.reloadData()
-            }).disposed(by: bag)
+        configureRx()
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        title = AppTheme.appTitle
+    private func configureRx() {
+        Observable<Void>.merge(AppNotificationCenter.syncProvider.asVoid(), AppNotificationCenter.didSyncBackup)
+            .subscribe {
+                self.tableView.reloadData()
+            }.disposed(by: bag)
         
-        // Commented, until fix it https://github.com/maxkonovalov/MKDropdownMenu/issues/43
-        //configureMenu()
+        NotificationCenter.default.rx.notification(.SmartReceiptsSettingsSaved)
+            .subscribe { [weak self] _ in
+                self?.settingsSaved()
+            }.disposed(by: bag)
         
-        view.layoutIfNeeded()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        title = String()
+        NotificationCenter.default.rx.notification(.SmartReceiptsAdsRemoved)
+            .subscribe { [weak self] _ in
+                self?.title = AppTheme.appTitlePlus
+            }.disposed(by: bag)
+        
+        NotificationCenter.default.rx.notification(.SmartReceiptsImport)
+            .subscribe { [weak self] _ in
+                self?.fetchObjects()
+            }.disposed(by: bag)
+        
+        editItem.rx.tap.subscribe { [unowned self] in
+            self.setEditing(!self.isEditing, animated: true)
+        }.disposed(by: bag)
     }
     
     private func configureDebug() {
@@ -88,23 +87,6 @@ final class TripsView: FetchedTableViewController {
             _debugButton.title = ""
             _debugButton.isEnabled = false
         #endif
-    }
-    
-    private func configureMenu() {
-        let menuIcon = #imageLiteral(resourceName: "more-horizontal")
-        let menu = MKDropdownMenu(frame: CGRect(x: 0, y: 0, width: 30, height: TOUCH_AREA))
-        let menuWidth: CGFloat = 230
-        menuButton.customView = menu
-        
-        menu.tintColor = .white
-        menu.delegate = displayData.menuDisplayData
-        menu.dataSource = displayData.menuDisplayData
-        menu.disclosureIndicatorImage = menuIcon
-        menu.disclosureIndicatorSelectionRotation = 0
-        menu.dropdownBouncesScroll = false
-        menu.useFullScreenWidth = true
-        menu.fullScreenInsetLeft = 8
-        menu.fullScreenInsetRight = UIScreen.main.bounds.width - menuWidth
     }
     
     func configurePrivacyTooltip() {
@@ -145,10 +127,8 @@ final class TripsView: FetchedTableViewController {
         present(actionSheet, animated: true, completion: nil)
     }
     
-    @objc func settingsSaved() {
-        if lastDateSeparator == WBPreferences.dateSeparator() {
-            return
-        }
+    private func settingsSaved() {
+        if lastDateSeparator == WBPreferences.dateSeparator() { return }
         lastDateSeparator = WBPreferences.dateSeparator()
         tableView.reloadData()
     }
@@ -247,10 +227,6 @@ final class TripsView: FetchedTableViewController {
         super.contentChanged()
         updatePricesWidth()
     }
-}
-
-extension TripsView: UISplitViewControllerDelegate {
-
 }
 
 //MARK: - Public interface

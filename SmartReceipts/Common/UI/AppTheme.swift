@@ -11,7 +11,8 @@ import Foundation
 class AppTheme: NSObject {
     
     static let appTitle = "Smart Receipts"
-    
+    static let appTitlePlus = "Smart Receipts Plus"
+
     static let buttonCornerRadius: CGFloat = 5
     
     // Colors
