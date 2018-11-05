@@ -102,7 +102,6 @@ PODS:
   - GTMSessionFetcher/Core (1.2.0)
   - GTMSessionFetcher/Full (1.2.0):
     - GTMSessionFetcher/Core (= 1.2.0)
-  - MKDropdownMenu (1.4)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -178,7 +177,6 @@ DEPENDENCIES:
   - GoogleAPIClientForREST/Drive
   - GoogleSignIn
   - GTMAppAuth
-  - MKDropdownMenu
   - MRProgress
   - RxAlamofire
   - RxBlocking
@@ -221,7 +219,6 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMOAuth2
     - GTMSessionFetcher
-    - MKDropdownMenu
     - MRProgress
     - nanopb
     - Protobuf
@@ -283,7 +280,6 @@ SPEC CHECKSUMS:
   GTMAppAuth: 8d724be29ab8f2f6d35b2bf929d76340c9d1f1b1
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
-  MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
@@ -300,6 +296,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 347144ea331dee5566be29a110d25d281a6b32ec
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 58999a85cea8910e51348ca123e3dfe236cd1751
+PODFILE CHECKSUM: 982a64d070f97ca28e95c84414e7a2cef32deb13
 
 COCOAPODS: 1.5.3
