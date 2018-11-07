@@ -25,15 +25,15 @@ class DebugInteractor: Interactor {
         })
     }
     
-    func scan() -> Observable<Scan> {
+    func scan() -> Maybe<Scan> {
         var hud: PendingHUDView?
         return ImagePicker.sharedInstance().rx_openOn(presenter._view)
             .filter({ $0 != nil })
             .map({ $0! })
-            .flatMap({ [unowned self] img -> Observable<Scan> in
+            .flatMap({ [unowned self] img -> Maybe<Scan> in
                 hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
                 hud?.observe(status: self.scanService.status)
-                return self.scanService.scan(image: img)
+                return self.scanService.scan(image: img).asMaybe()
             }).do(onNext: { scan in
                 hud?.hide()
             })

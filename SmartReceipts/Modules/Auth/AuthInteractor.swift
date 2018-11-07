@@ -34,18 +34,19 @@ class AuthInteractor: Interactor {
             switch event {
             case .next(let credentials):
                 self.authService.login(credentials: credentials)
-                    .catchError({ error -> Observable<LoginResponse> in
+                    .catchError({ error -> Single<LoginResponse> in
                         if let afError = error as? AFError, afError.responseCode == INVALID_CREDENTIALS_CODE {
                             self.presenter.errorHandler.onNext(LocalizedString("login_failure_credentials_toast"))
                         } else {
                             self.presenter.errorHandler.onNext(error.localizedDescription)
                         }
-                        return Observable.never()
+                        return .never()
                     }).filter({ $0.token != "" })
                     .map({ _ in })
                     .do(onNext: { [weak self] _ in
                         self?.presenter.successAuthSubject.onNext(())
-                    }).bind(to: self.presenter.successLogin)
+                    }).asObservable()
+                    .bind(to: self.presenter.successLogin)
                     .disposed(by: self.bag)
             default: break
             }
@@ -57,18 +58,19 @@ class AuthInteractor: Interactor {
             switch event {
             case .next(let credentials):
                 self.authService.signup(credentials: credentials)
-                    .catchError({ error -> Observable<String> in
+                    .catchError({ error -> Single<String> in
                         if let afError = error as? AFError, afError.responseCode == ACCOUNT_ALREADY_EXISTS_CODE {
                             self.presenter.errorHandler.onNext(LocalizedString("sign_up_failure_account_exists_toast"))
                         } else {
                             self.presenter.errorHandler.onNext(error.localizedDescription)
                         }
-                        return Observable.never()
+                        return .never()
                     }).filter({ $0 != "" })
                     .map({ _ in })
                     .do(onNext: { [weak self] _ in
                         self?.presenter.successAuthSubject.onNext(())
-                    }).bind(to: self.presenter.successSignup)
+                    }).asObservable()
+                    .bind(to: self.presenter.successSignup)
                     .disposed(by: self.bag)
             default: break
             }
@@ -80,10 +82,11 @@ class AuthInteractor: Interactor {
             switch event {
             case .next:
                 self.authService.logout()
-                    .catchError({ error -> Observable<Void> in
+                    .catchError({ error -> Single<Void> in
                         self.presenter.errorHandler.onNext(error.localizedDescription)
-                        return Observable.never()
-                    }).bind(to: self.presenter.successLogout)
+                        return .never()
+                    }).asObservable()
+                    .bind(to: self.presenter.successLogout)
                     .disposed(by: self.bag)
             default: break
             }

@@ -54,10 +54,10 @@
 		57C125191E12DAEF008551AC /* ServiceAccount.json in Resources */ = {isa = PBXBuildFile; fileRef = 57C125181E12DAEF008551AC /* ServiceAccount.json */; };
 		57EEBDC41E093C8F00974E53 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EEBDC31E093C8F00974E53 /* String+Extensions.swift */; };
 		7100F7761F5EF20300D4B4D9 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7100F7751F5EF20300D4B4D9 /* AuthService.swift */; };
-		7100F7781F5F08C600D4B4D9 /* NetworkingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7100F7771F5F08C600D4B4D9 /* NetworkingUtils.swift */; };
 		7109B00F1F61C35F0043AE04 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109B00E1F61C35F0043AE04 /* UserDefaults+Extensions.swift */; };
 		710A33DF1F8282D100D10344 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710A33DB1F827E2500D10344 /* PurchaseService.swift */; };
 		710A33E11F82CCCE00D10344 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710A33E01F82CCCE00D10344 /* StoreKit.framework */; };
+		710D458A219384F9005463F7 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D4589219384F9005463F7 /* APIProvider.swift */; };
 		710D98A21FE573540088B9BA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D98A11FE573540088B9BA /* UIView+Extensions.swift */; };
 		710DCEA71F7444C000C08C43 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710DCEA61F7444C000C08C43 /* User.swift */; };
 		710E587521386BAB00AAFC77 /* TooltipPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710E587421386BAB00AAFC77 /* TooltipPresenter.swift */; };
@@ -121,7 +121,6 @@
 		7123483E21418F7C0038AAE5 /* TestableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715606901FAFB3C500E09760 /* TestableExtensions.swift */; };
 		7123483F214190A00038AAE5 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C413D31EE6F826003CE891 /* GeneratedMocks.swift */; };
 		712A84E51F78363C00D988E7 /* RxSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A84E41F78363C00D988E7 /* RxSwift+Extensions.swift */; };
-		712A84E81F783BF300D988E7 /* APIAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A84E71F783BF300D988E7 /* APIAdapter.swift */; };
 		712A84EA1F783E9300D988E7 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A84E91F783E9300D988E7 /* Dictionary+Extensions.swift */; };
 		712BB2661F611DDE00F0380F /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712BB2651F611DDE00F0380F /* Error+Extensions.swift */; };
 		712D7E041FB793E600DE83EB /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 712D7E021FB793E500DE83EB /* Localizable.stringsdict */; };
@@ -142,6 +141,7 @@
 		714104E61FF43D7700C334C5 /* SuggestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714104DC1FF43D7700C334C5 /* SuggestionView.m */; };
 		714104E71FF43D7700C334C5 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714104DD1FF43D7700C334C5 /* TooltipView.swift */; };
 		714104E81FF43D7700C334C5 /* WBDynamicPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 714104DE1FF43D7700C334C5 /* WBDynamicPicker.m */; };
+		714142A12191FFEB004BB7A2 /* RecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714142A02191FFEB004BB7A2 /* RecognitionService.swift */; };
 		71437D6A213BD29600EC8542 /* CustomErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71437D69213BD29600EC8542 /* CustomErrors.swift */; };
 		714788462083CE6500FA5A76 /* PurchaseServiceCustomMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714788452083CE6500FA5A76 /* PurchaseServiceCustomMock.swift */; };
 		714901C11F0598B900772B6F /* CurrencyExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714901C01F0598B900772B6F /* CurrencyExchangeService.swift */; };
@@ -163,7 +163,7 @@
 		71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */; };
 		7156066E1FAE67CF00E09760 /* ScanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7156066D1FAE67CF00E09760 /* ScanCell.xib */; };
 		715606701FAE67DE00E09760 /* ScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156066F1FAE67DE00E09760 /* ScanCell.swift */; };
-		715606731FAF9BE500E09760 /* RecognitionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715606721FAF9BE500E09760 /* RecognitionAPI.swift */; };
+		715606731FAF9BE500E09760 /* SmartReceiptsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715606721FAF9BE500E09760 /* SmartReceiptsAPI.swift */; };
 		7156068F1FAFB29F00E09760 /* Scan.json in Resources */ = {isa = PBXBuildFile; fileRef = 7156068E1FAFB29F00E09760 /* Scan.json */; };
 		71572D851F15EA41001A1301 /* Columns.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71572D7F1F15EA41001A1301 /* Columns.storyboard */; };
 		71572D861F15EA41001A1301 /* ColumnsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71572D801F15EA41001A1301 /* ColumnsDisplayData.swift */; };
@@ -635,7 +635,6 @@
 		57C125181E12DAEF008551AC /* ServiceAccount.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ServiceAccount.json; path = ../ServiceAccount.json; sourceTree = "<group>"; };
 		57EEBDC31E093C8F00974E53 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7100F7751F5EF20300D4B4D9 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		7100F7771F5F08C600D4B4D9 /* NetworkingUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingUtils.swift; sourceTree = "<group>"; };
 		71097CA41F04350300223B72 /* DistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceTests.swift; sourceTree = "<group>"; };
 		71097CA61F04410100223B72 /* TaxCalculatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxCalculatorTests.swift; sourceTree = "<group>"; };
 		7109B00E1F61C35F0043AE04 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
@@ -644,6 +643,7 @@
 		710B813B1F1B6FFD000C97C4 /* ColumnsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnsModuleTest.swift; sourceTree = "<group>"; };
 		710B813D1F1B7074000C97C4 /* CategoriesModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesModuleTest.swift; sourceTree = "<group>"; };
 		710B813F1F1B708F000C97C4 /* PaymentMethodsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsModuleTest.swift; sourceTree = "<group>"; };
+		710D4589219384F9005463F7 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		710D98A11FE573540088B9BA /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		710DCEA61F7444C000C08C43 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		710E587421386BAB00AAFC77 /* TooltipPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipPresenter.swift; sourceTree = "<group>"; };
@@ -666,7 +666,6 @@
 		71217E6E218764C5004C2C42 /* DatabaseMigration15to19Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMigration15to19Tests.swift; sourceTree = "<group>"; };
 		7122778B1F756EA300090878 /* S3Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Service.swift; sourceTree = "<group>"; };
 		712A84E41F78363C00D988E7 /* RxSwift+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+Extensions.swift"; sourceTree = "<group>"; };
-		712A84E71F783BF300D988E7 /* APIAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAdapter.swift; sourceTree = "<group>"; };
 		712A84E91F783E9300D988E7 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
 		712BB2651F611DDE00F0380F /* Error+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
 		712D7E031FB793E500DE83EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = Localizable.stringsdict; sourceTree = "<group>"; };
@@ -697,6 +696,7 @@
 		714104DC1FF43D7700C334C5 /* SuggestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionView.m; sourceTree = "<group>"; };
 		714104DD1FF43D7700C334C5 /* TooltipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		714104DE1FF43D7700C334C5 /* WBDynamicPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDynamicPicker.m; sourceTree = "<group>"; };
+		714142A02191FFEB004BB7A2 /* RecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionService.swift; sourceTree = "<group>"; };
 		71437D69213BD29600EC8542 /* CustomErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrors.swift; sourceTree = "<group>"; };
 		714788452083CE6500FA5A76 /* PurchaseServiceCustomMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseServiceCustomMock.swift; sourceTree = "<group>"; };
 		714901BB1F05632200772B6F /* PaymentMethodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodTests.swift; sourceTree = "<group>"; };
@@ -722,7 +722,7 @@
 		71548A121EE9DA7E00287E48 /* GenerateReportShareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportShareService.swift; sourceTree = "<group>"; };
 		7156066D1FAE67CF00E09760 /* ScanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanCell.xib; sourceTree = "<group>"; };
 		7156066F1FAE67DE00E09760 /* ScanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCell.swift; sourceTree = "<group>"; };
-		715606721FAF9BE500E09760 /* RecognitionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionAPI.swift; sourceTree = "<group>"; };
+		715606721FAF9BE500E09760 /* SmartReceiptsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartReceiptsAPI.swift; sourceTree = "<group>"; };
 		715606891FAFA53B00E09760 /* ScanServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanServiceTests.swift; sourceTree = "<group>"; };
 		7156068B1FAFA99100E09760 /* PushNotificationServiceTestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationServiceTestable.swift; sourceTree = "<group>"; };
 		7156068E1FAFB29F00E09760 /* Scan.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Scan.json; sourceTree = "<group>"; };
@@ -1474,10 +1474,8 @@
 				71E2E57720DFD6A900BDE501 /* Auto Backup */,
 				714901C01F0598B900772B6F /* CurrencyExchangeService.swift */,
 				71EFE1E51F55E04000591C8C /* TooltipService.swift */,
-				7100F7751F5EF20300D4B4D9 /* AuthService.swift */,
 				716C04211F685467007F9CD2 /* CognitoService.swift */,
 				7122778B1F756EA300090878 /* S3Service.swift */,
-				712A84E71F783BF300D988E7 /* APIAdapter.swift */,
 				718D2DF01F7D459B00A69B6E /* PushNotificationService.swift */,
 				710A33DB1F827E2500D10344 /* PurchaseService.swift */,
 				71BC45501F9FB38C003A5BD5 /* LocalScansTracker.swift */,
@@ -1514,7 +1512,10 @@
 		715606711FAF9BCC00E09760 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				715606721FAF9BE500E09760 /* RecognitionAPI.swift */,
+				715606721FAF9BE500E09760 /* SmartReceiptsAPI.swift */,
+				710D4589219384F9005463F7 /* APIProvider.swift */,
+				7100F7751F5EF20300D4B4D9 /* AuthService.swift */,
+				714142A02191FFEB004BB7A2 /* RecognitionService.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -2326,7 +2327,6 @@
 				7120099C1F12D0DE0049927E /* TickTock.swift */,
 				71ACA7B91F5B5A830024903E /* FeatureFlags.swift */,
 				71ACA7CD1F5C58290024903E /* DebugStates.swift */,
-				7100F7771F5F08C600D4B4D9 /* NetworkingUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2967,7 +2967,9 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
@@ -2999,7 +3001,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
@@ -3181,7 +3185,9 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
@@ -3216,7 +3222,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
@@ -3329,6 +3337,7 @@
 				EA8D819A1AEA7C3100BAC943 /* ReceiptColumnImagePath.m in Sources */,
 				EA8D81781AEA668100BAC943 /* WBTrip.m in Sources */,
 				7190B9141F60427200F6CE7F /* AuthDisplayData.swift in Sources */,
+				714142A12191FFEB004BB7A2 /* RecognitionService.swift in Sources */,
 				71C2FD1220E7F71000DF068E /* NoOpBackupProvider.swift in Sources */,
 				EA8D817C1AEA6AF000BAC943 /* ReceiptColumn.m in Sources */,
 				EA8D81A61AEA7C7D00BAC943 /* ReceiptColumnName.m in Sources */,
@@ -3382,7 +3391,7 @@
 				71E2E57F20DFD8FB00BDE501 /* SyncProvider.swift in Sources */,
 				71ACA7C91F5B69C90024903E /* DebugView.swift in Sources */,
 				719B1FE91EF6032D0049BD71 /* EditReceiptDisplayData.swift in Sources */,
-				715606731FAF9BE500E09760 /* RecognitionAPI.swift in Sources */,
+				715606731FAF9BE500E09760 /* SmartReceiptsAPI.swift in Sources */,
 				7185AEF91EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift in Sources */,
 				7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */,
 				71AF49E11EFDA4810022B2E2 /* ReceiptImageViewerInteractor.swift in Sources */,
@@ -3483,7 +3492,6 @@
 				EA8D81A01AEA7C5A00BAC943 /* ReceiptColumnCurrency.m in Sources */,
 				714104E71FF43D7700C334C5 /* TooltipView.swift in Sources */,
 				71F468331EEEDB03009F6CE7 /* EditTripDisplayData.swift in Sources */,
-				7100F7781F5F08C600D4B4D9 /* NetworkingUtils.swift in Sources */,
 				71F6252020FBE39C009B777C /* SyncService.swift in Sources */,
 				7190B9171F60427200F6CE7F /* AuthRouter.swift in Sources */,
 				EA8D81911AEA7BF600BAC943 /* ReceiptColumnReportStartDate.m in Sources */,
@@ -3532,7 +3540,6 @@
 				71E2B57D1EEDD516001D02F1 /* TripsDisplayData.swift in Sources */,
 				7135E08A20C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift in Sources */,
 				71E2E57B20DFD83E00BDE501 /* DefaultSyncState.swift in Sources */,
-				712A84E81F783BF300D988E7 /* APIAdapter.swift in Sources */,
 				7111ADAC1F0EC4AF00DF77ED /* SettingsFormView.swift in Sources */,
 				71DB146A205E954C009B83E7 /* DatabaseUpgradeToVersion16.swift in Sources */,
 				7111ADAA1F0EC38100DF77ED /* SettingsView.swift in Sources */,
@@ -3567,6 +3574,7 @@
 				71FB1D411F195D0D00742FF5 /* PaymentMethodsPresenter.swift in Sources */,
 				EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */,
 				71572D891F15EA41001A1301 /* ColumnsRouter.swift in Sources */,
+				710D458A219384F9005463F7 /* APIProvider.swift in Sources */,
 				EA8D81821AEA7B5800BAC943 /* ReceiptColumnBlank.m in Sources */,
 				71EFE1E61F55E04000591C8C /* TooltipService.swift in Sources */,
 				4D004BB71D272836004DBB19 /* SmartReceiptsFormattableString.swift in Sources */,

@@ -15,20 +15,20 @@ fileprivate let RECOGNITION_KEY = "recognition"
 
 class ScanService {
     private var s3Service: S3Service!
-    private var recognitionAPI: RecognitionAPI!
+    private var recognitionService: RecognitionService!
     private var pushNotificationService: PushNotificationService!
     private var authService: AuthServiceInterface!
     private var scansPurchaseTracker: ScansPurchaseTracker!
     fileprivate let statusSubject = PublishSubject<ScanStatus>()
     
     init(s3Service: S3Service,
-         recognitionAPI: RecognitionAPI,
+         recognitionAPI: RecognitionService,
          pushService: PushNotificationService,
          authService: AuthServiceInterface,
          scansPurchaseTracker: ScansPurchaseTracker)
     {
         self.s3Service = s3Service
-        self.recognitionAPI = recognitionAPI
+        self.recognitionService = recognitionAPI
         self.pushNotificationService = pushService
         self.authService = authService
         self.scansPurchaseTracker = scansPurchaseTracker
@@ -36,7 +36,7 @@ class ScanService {
     
     convenience init(){
         self.init(s3Service: S3Service(),
-                  recognitionAPI: RecognitionAPI(),
+                  recognitionAPI: RecognitionService(),
                   pushService: PushNotificationService.shared,
                   authService: AuthService.shared,
                   scansPurchaseTracker: ScansPurchaseTracker.shared)
@@ -46,13 +46,13 @@ class ScanService {
         return statusSubject.asObservable()
     }
     
-    func scan(image: UIImage) -> Observable<Scan> {
+    func scan(image: UIImage) -> Single<Scan> {
         let doc = ReceiptDocument.makeDocumentFrom(image: image)
         return scan(document: doc)
     }
     
-    func scan(document: ReceiptDocument) -> Observable<Scan> {
-        guard let url = document.localURL else { return Observable<Scan>.just(Scan(filepath: document.localURL!)) }
+    func scan(document: ReceiptDocument) -> Single<Scan> {
+        guard let url = document.localURL else { return .just(Scan(filepath: document.localURL!)) }
         
         if WBPreferences.automaticScansEnabled() && FeatureFlags.ocrSupport.isEnabled &&
             authService.isLoggedIn && scansPurchaseTracker.hasAvailableScans {
@@ -68,27 +68,28 @@ class ScanService {
             Logger.debug("Ignoring OCR: \(isFeatureEnabled), \(isLoggedIn), \(hasAvailableScans), \(authScansEabled).")
             statusSubject.onNext(.completed)
             
-            return Observable.just(Scan(filepath: document.localURL!))
+            return .just(Scan(filepath: document.localURL!))
         }
     }
     
-    private func scanFrom(uploading: Observable<URL>, document: ReceiptDocument) -> Observable<Scan> {
-        return uploading
+    private func scanFrom(uploading: Observable<URL>, document: ReceiptDocument) -> Single<Scan> {
+        return uploading.asSingle()
             .do(onSubscribed: { AnalyticsManager.sharedManager.record(event: Event.ocrRequestStarted()) })
             .do(onError: { _ in
-                _ = AuthService.shared.getUser().subscribe(onNext: { CognitoService().saveCognitoData(user: $0) })
-            }).flatMap({ [weak self] url -> Observable<String> in
-                guard let api = self?.recognitionAPI else {
+                _ = AuthService.shared.getUser().subscribe(onSuccess: { CognitoService().saveCognitoData(user: $0) })
+            }).flatMap({ [weak self] url -> Single<String> in
+                guard let api = self?.recognitionService else {
                     self?.statusSubject.onNext(.completed)
-                    return Observable<String>.never()
+                    return Single<String>.never()
                 }
                 self?.statusSubject.onNext(.scanning)
                 return api.recognize(url: url, incognito: !WBPreferences.allowSaveImageForAccuracy())
-            }).flatMap({ [weak self] id -> Observable<String> in
+            })
+            .flatMap({ [weak self] id -> Single<String> in
                 if let recognition = self?.getRecognitionID(id: id) { return recognition }
-                return Observable.just(id)
-            }).flatMap({ [weak self] id -> Observable<Scan> in
-                guard let api = self?.recognitionAPI else { return Observable<Scan>.never() }
+                return .just(id)
+            }).flatMap({ [weak self] id -> Single<Scan> in
+                guard let api = self?.recognitionService else { return .never() }
                 self?.statusSubject.onNext(.fetching)
                 return api.getRecognition(id)
                     .timeout(NETWORK_TIMEOUT, scheduler: MainScheduler.instance)
@@ -96,18 +97,18 @@ class ScanService {
                         AnalyticsManager.sharedManager.record(event: Event.ocrRequestFailed())
                         AnalyticsManager.sharedManager.record(event: ErrorEvent(error: error))
                     }).map({ Scan(json: $0, filepath: document.localURL!) })
-                    .do(onNext: { [weak self] _ in
+                    .do(onSuccess: { [weak self] _ in
                         self?.statusSubject.onNext(.completed)
                         AnalyticsManager.sharedManager.record(event: Event.ocrRequestSucceeded())
                         ScansPurchaseTracker.shared.decrementRemainingScans()
                     })
-            }).catchError({ error -> Observable<Scan> in
-                return Observable<Scan>.just(Scan(filepath: document.localURL!))
+            }).catchError({ error -> Single<Scan> in
+                return .just(Scan(filepath: document.localURL!))
             })
     }
     
-    private func getRecognitionID(id: String) -> Observable<String> {
-        guard let pushService = self.pushNotificationService else { return Observable<String>.never() }
+    private func getRecognitionID(id: String) -> Single<String> {
+        guard let pushService = self.pushNotificationService else { return .never() }
         
         let recognitionByPush = pushService.notificationJSON
             .map({ return $0.dictionaryValue[RECOGNITION_KEY]?["id"].string ?? id })
@@ -124,6 +125,7 @@ class ScanService {
         return Observable.of(recognitionByPush, recognitionByTimeOut)
             .merge()
             .take(1)
+            .asSingle()
     }
 }
 

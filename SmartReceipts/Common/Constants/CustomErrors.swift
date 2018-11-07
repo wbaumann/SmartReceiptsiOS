@@ -13,3 +13,7 @@ enum DiskError: Error {
     case createFolderError
     case createFileError
 }
+
+enum RequestError: Error {
+    case notLoggedInError
+}

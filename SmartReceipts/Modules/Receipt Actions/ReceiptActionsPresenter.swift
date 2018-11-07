@@ -106,7 +106,7 @@ class ReceiptActionsPresenter: Presenter {
     private func takeImage() {
         ImagePicker.sharedInstance().rx_openOn(self.view as! UIViewController)
             .filter({ $0 != nil})
-            .subscribe(onNext: { [unowned self] image in
+            .subscribe(onSuccess: { [unowned self] image in
                 if self.interactor.attachImage(image!, to: self.receipt) {
                     self.view.updateForm()
                 }

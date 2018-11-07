@@ -61,14 +61,15 @@ class ReceiptsRouter: Router {
     
     func openCreatePhotoReceipt() {
         var hud: PendingHUDView?
+        
         self.subscription = ImagePicker.sharedInstance().rx_openCamera(on: _view)
             .filter({ $0 != nil })
             .map({ $0! })
-            .flatMap({ [unowned self] img -> Observable<Scan> in
+            .flatMap({ [unowned self] img -> Maybe<Scan> in
                 hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
                 hud?.observe(status: self.presenter.scanService.status)
-                return self.presenter.scanService.scan(image: img)
-            }).subscribe(onNext: { [unowned self] scan in
+                return self.presenter.scanService.scan(image: img).asMaybe()
+            }).subscribe(onSuccess: { [unowned self] scan in
                 hud?.hide()
                 self.openEditModule(with: scan)
             })
@@ -83,7 +84,7 @@ class ReceiptsRouter: Router {
                 hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
                 hud?.observe(status: self.presenter.scanService.status)
                 self.subscription = self.presenter.scanService.scan(document: doc)
-                    .subscribe(onNext: { [unowned self] scan in
+                    .subscribe(onSuccess: { [unowned self] scan in
                         hud?.hide()
                         self.openEditModule(with: scan)
                     })
