@@ -9,19 +9,21 @@
 import RxSwift
 
 extension ImagePicker {
-    func rx_openOn(_ viewController: UIViewController) -> Observable<UIImage?> {
-        let subject = PublishSubject<UIImage?>()
-        present(on: viewController, completion: { img in
-            subject.onNext(img)
-        })
-        return subject
+    func rx_openOn(_ viewController: UIViewController) -> Single<UIImage?> {
+        return .create { [weak self] single -> Disposable in
+            self?.present(on: viewController, completion: { img in
+                single(.success(img))
+            })
+            return Disposables.create()
+        }
     }
     
-    func rx_openCamera(on viewController: UIViewController) -> Observable<UIImage?> {
-        let subject = PublishSubject<UIImage?>()
-        presentCamera(on: viewController, completion: { img in
-            subject.onNext(img)
-        })
-        return subject
+    func rx_openCamera(on viewController: UIViewController) -> Single<UIImage?> {
+        return .create { [weak self] single -> Disposable in
+            self?.presentCamera(on: viewController, completion: { img in
+                single(.success(img))
+            })
+            return Disposables.create()
+        }
     }
 }

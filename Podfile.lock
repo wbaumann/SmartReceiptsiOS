@@ -102,6 +102,14 @@ PODS:
   - GTMSessionFetcher/Core (1.2.0)
   - GTMSessionFetcher/Full (1.2.0):
     - GTMSessionFetcher/Core (= 1.2.0)
+  - Moya (11.0.2):
+    - Moya/Core (= 11.0.2)
+  - Moya/Core (11.0.2):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (11.0.2):
+    - Moya/Core
+    - RxSwift (~> 4.0)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -136,6 +144,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.1)
+  - Result (3.2.4)
   - RxAlamofire (4.2.0):
     - RxAlamofire/Core (= 4.2.0)
   - RxAlamofire/Core (4.2.0):
@@ -177,6 +186,8 @@ DEPENDENCIES:
   - GoogleAPIClientForREST/Drive
   - GoogleSignIn
   - GTMAppAuth
+  - Moya
+  - Moya/RxSwift
   - MRProgress
   - RxAlamofire
   - RxBlocking
@@ -219,9 +230,11 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMOAuth2
     - GTMSessionFetcher
+    - Moya
     - MRProgress
     - nanopb
     - Protobuf
+    - Result
     - RxAlamofire
     - RxBlocking
     - RxCocoa
@@ -280,9 +293,11 @@ SPEC CHECKSUMS:
   GTMAppAuth: 8d724be29ab8f2f6d35b2bf929d76340c9d1f1b1
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
+  Moya: a725035953bc1c0eb1be505ab903984501d82440
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxAlamofire: 87a9c588541210cc3e4a1f843ccc3ecf3eb98b31
   RxBlocking: 64c051285261ca2339481e91b5f70eb06b03660a
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
@@ -296,6 +311,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 347144ea331dee5566be29a110d25d281a6b32ec
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 982a64d070f97ca28e95c84414e7a2cef32deb13
+PODFILE CHECKSUM: df67234a87a3242038b43faca5a043624ac0d74d
 
 COCOAPODS: 1.5.3

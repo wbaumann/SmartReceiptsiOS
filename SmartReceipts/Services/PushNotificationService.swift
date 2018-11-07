@@ -71,7 +71,7 @@ class PushNotificationService: NSObject {
     
     fileprivate func saveDevice(token: String) {
         AuthService.shared.saveDevice(token: token)
-            .subscribe(onNext: {
+            .subscribe(onSuccess: {
                 Logger.debug("FCM Token uploaded")
             }, onError: { error in
                 Logger.error("Token Upload Error: \(error.localizedDescription))")

@@ -9,6 +9,7 @@
 import RxSwift
 import StoreKit
 import SwiftyJSON
+import Moya
 import SwiftyStoreKit
 
 let PRODUCT_OCR_10 = "ios_ocr_purchase_10"
@@ -22,9 +23,14 @@ typealias SubscriptionValidation = (valid: Bool, expireTime: Date?)
 private var cachedValidation: SubscriptionValidation?
 
 class PurchaseService {
+    private let apiProvider: APIProvider<SmartReceiptsAPI>
     private var plusSubsribtionProduct: SKProduct?
     static fileprivate var cachedProducts = [SKProduct]()
     let bag = DisposeBag()
+    
+    init(apiProvider: APIProvider<SmartReceiptsAPI> = .init()) {
+        self.apiProvider = apiProvider
+    }
     
     func cacheProducts() {
         requestProducts().toArray()
@@ -224,22 +230,17 @@ class PurchaseService {
             return
         }
     
-        let params = ["encoded_receipt" : receiptString,
-                      "pay_service"     : "Apple Store",
-                      "goal"            : "Recognition"]
-        
-        APIAdapter.jsonBody(.post, endpoint("mobile_app_purchases"), parameters: params)
+        apiProvider.rx.request(.mobileAppPurchases(receipt: receiptString))
             .retry(3)
-            .do(onNext: { _ in
+            .do(onSuccess: { _ in
                 UserDefaults.standard.set(true, forKey: receiptString)
                 Logger.debug("Cached receipt: \(receiptString)")
             }).do(onError: { _ in
                 UserDefaults.standard.set(false, forKey: receiptString)
                 Logger.error("Can't cache receipt: \(receiptString)")
-            }).flatMap({ response -> Observable<Any> in
-                return ScansPurchaseTracker.shared.fetchAndPersistAvailableRecognitions()
-                    .map({ _ -> Any in return response })
-            }).subscribe(onNext: { response in
+            }).flatMap({ response -> Single<Any> in
+                return ScansPurchaseTracker.shared.fetchAndPersistAvailableRecognitions().map({ _ -> Any in return response })
+            }).subscribe(onSuccess: { response in
                 let jsonRespose = JSON(response)
                 Logger.debug(jsonRespose.description)
             }, onError: { error in

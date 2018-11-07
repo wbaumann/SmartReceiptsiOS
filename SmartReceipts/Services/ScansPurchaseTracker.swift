@@ -22,10 +22,9 @@ class ScansPurchaseTracker: NSObject {
         purchaseService.cacheProducts()
         AuthService.shared.loggedInObservable
             .filter({ $0 })
-            .flatMap({ _ -> Observable<Int> in
-                return self.fetchAndPersistAvailableRecognitions()
-            }).subscribe()
-            .disposed(by: bag)
+            .subscribe(onNext: { _ in
+                _ = self.fetchAndPersistAvailableRecognitions().subscribe()
+            }).disposed(by: bag)
         
         purchaseService.sendReceipt()
     }
@@ -34,14 +33,13 @@ class ScansPurchaseTracker: NSObject {
         LocalScansTracker.shared.scansCount -= 1
     }
     
-    func fetchAndPersistAvailableRecognitions() -> Observable<Int> {
+    func fetchAndPersistAvailableRecognitions() -> Single<Int> {
         return AuthService.shared.getUser()
             .filter({ $0 != nil })
-            .flatMap({ user -> Observable<Int> in
-                return Observable.just(user!.scansAvailable)
-            }).do(onNext: { count in
+            .map({ $0!.scansAvailable })
+            .do(onNext: { count in
                 LocalScansTracker.shared.scansCount = count
-            })
+            }).asObservable().asSingle()
     }
 }
 

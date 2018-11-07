@@ -11,14 +11,13 @@ import RxCocoa
 import RxAlamofire
 import Alamofire
 import SwiftyJSON
+import Moya
 
 fileprivate let JSON_ID_KEY = "id"
 fileprivate let JSON_TOKEN_KEY = "token"
 fileprivate let AUTH_TOKEN_KEY = "auth.token"
 fileprivate let AUTH_EMAIL_KEY = "auth.email"
 fileprivate let AUTH_ID_KEY = "auth.id"
-
-let JSON_HEADERS = ["Content-Type":"application/json"]
 
 protocol AuthServiceInterface {
     var isLoggedIn: Bool { get }
@@ -28,11 +27,11 @@ protocol AuthServiceInterface {
     var email: String { get }
     var id: String { get }
     
-    func login(credentials: Credentials) -> Observable<LoginResponse>
-    func signup(credentials: Credentials) -> Observable<String>
-    func logout() -> Observable<Void>
-    func getUser() -> Observable<User?>
-    func saveDevice(token: String) -> Observable<Void>
+    func login(credentials: Credentials) -> Single<LoginResponse>
+    func signup(credentials: Credentials) -> Single<String>
+    func logout() -> Single<Void>
+    func getUser() -> Single<User?>
+    func saveDevice(token: String) -> Single<Void>
 }
 
 class AuthService: AuthServiceInterface {
@@ -41,12 +40,14 @@ class AuthService: AuthServiceInterface {
     private let idVar = BehaviorRelay<String>(value: UserDefaults.standard.string(forKey: AUTH_ID_KEY) ?? "")
     
     private let isLoggedInVar: BehaviorRelay<Bool>!
+    private let apiProvider: APIProvider<SmartReceiptsAPI>
     
-    private init() {
+    init(apiProvider: APIProvider<SmartReceiptsAPI> = .init()) {
+        self.apiProvider = apiProvider
+
         let defaults = UserDefaults.standard
         defaults.synchronize()
-        let loggedIn = defaults.hasObject(forKey: AUTH_TOKEN_KEY) &&
-                       defaults.hasObject(forKey: AUTH_EMAIL_KEY)
+        let loggedIn = defaults.hasObject(forKey: AUTH_TOKEN_KEY) && defaults.hasObject(forKey: AUTH_EMAIL_KEY)
         isLoggedInVar = BehaviorRelay<Bool>(value: loggedIn)
     }
     
@@ -88,67 +89,45 @@ class AuthService: AuthServiceInterface {
         return value
     }
     
-    func login(credentials: Credentials) -> Observable<LoginResponse> {
-        let params = ["login_params" : [
-                "type": "login",
-                "email" : credentials.email,
-                "password": credentials.password
-                ]
-            ]
-        
-        return RxAlamofire.json(.post, endpoint("users/log_in"),
-            parameters: params, encoding: JSONEncoding.default, headers: JSON_HEADERS)
+    func login(credentials: Credentials) -> Single<LoginResponse> {
+       return apiProvider.rx.request(.login(credentials: credentials))
             .map({ object -> LoginResponse in
-                let json = JSON(object)
+                let json = JSON(object.data)
                 let id = json[JSON_ID_KEY].stringValue
                 let token = json[JSON_TOKEN_KEY].stringValue
                 return LoginResponse(id, token)
-            }).do(onNext: { [weak self] response in
+            }).do(onSuccess: { [weak self] response in
                 self?.save(token: response.token, email: credentials.email, id: response.id)
             })
     }
     
-    func signup(credentials: Credentials) -> Observable<String> {
-        let params = ["signup_params" : [
-                "type": "signup",
-                "email" : credentials.email,
-                "password": credentials.password
-                ]
-            ]
-        
-        return RxAlamofire.json(.post, endpoint("users/sign_up"),
-            parameters: params, encoding: JSONEncoding.default, headers: JSON_HEADERS)
-            .map({ object -> String in
-                let json = JSON(object)
-                return json[JSON_TOKEN_KEY].stringValue
-            }).do(onNext: { [weak self] token in
+    func signup(credentials: Credentials) -> Single<String> {
+        return apiProvider.rx.request(.signup(credentials: credentials))
+            .mapString(atKeyPath: JSON_TOKEN_KEY)
+            .do(onSuccess: { [weak self] token in
                 self?.save(token: token, email: credentials.email, id: nil)
             })
     }
     
-    func logout() -> Observable<Void> {
-        if !isLoggedIn {
-            return Observable<Void>.error(NSError(domain: "You are not logged in", code: 9000, userInfo: nil))
-        }
+    func logout() -> Single<Void> {
+        guard isLoggedIn else { return .error(RequestError.notLoggedInError) }
         
-        return APIAdapter.json(.delete, endpoint("users/log_out"), headers: nil)
+        return apiProvider.rx.request(.logout)
             .map({ _ in  })
-            .do(onNext: { self.clear() })
+            .do(onSuccess: { self.clear() })
             .do(onError: { _ in self.clear() })
     }
     
-    func getUser() -> Observable<User?> {
-        return APIAdapter.json(.get, endpoint("users/me"), headers: JSON_HEADERS)
+    func getUser() -> Single<User?> {
+        return apiProvider.rx.request(.user)
             .map({ response -> User? in
-                let json = JSON(response)
+                let json = JSON(response.data)
                 return User(json)
             })
     }
     
-    func saveDevice(token: String) -> Observable<Void> {
-        let params = ["user" : [ "registration_ids": [token] ] ]
-        return APIAdapter.jsonBody(.patch, endpoint("users/me"), parameters: params, headers: JSON_HEADERS)
-            .map({ _ in  })
+    func saveDevice(token: String) -> Single<Void> {
+        return apiProvider.rx.request(.saveDevice(token: token)).map({ _ in  })
     }
     
     private func save(token: String, email: String, id: String?) {
