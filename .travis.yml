@@ -6,7 +6,7 @@ xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
 notifications:
   email:
     recipients:
-      - support@smartreceipts.co
+      - ios-build-interest@smartreceipts.co
     on_success: never # default: change
     on_failure: always # default: always
 before_install:
