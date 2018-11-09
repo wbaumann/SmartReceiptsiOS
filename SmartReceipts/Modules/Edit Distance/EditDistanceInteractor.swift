@@ -34,21 +34,12 @@ class EditDistanceInteractor: Interactor {
         
         if database.save(distance) {
             Logger.debug("Distance has been \(asNewDistance ? "updated" : "added")")
-            validateDate(in: distance)
             presenter.close()
         } else {
             Logger.error("Distance can't be \(asNewDistance ? "updated" : "added")")
         }
     }
     
-    private func validateDate(in distance: Distance) {
-        Observable<Void>.just(())
-            .filter({distance.date > distance.trip.endDate || distance.date < distance.trip.startDate})
-            .subscribe(onNext: {
-                let message = LocalizedString("edit.distance.date.range.warning.message")
-                Toast.show(message)
-            }).disposed(by: bag)
-    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

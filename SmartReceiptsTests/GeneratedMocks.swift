@@ -4732,7 +4732,7 @@ class MockReceiptMoveCopyInteractor: ReceiptMoveCopyInteractor, Cuckoo.ClassMock
         
     }
     
-    // ["name": "fetchedModelAdapter", "returnSignature": " -> FetchedModelAdapter", "fullyQualifiedName": "fetchedModelAdapter(for: WBReceipt) -> FetchedModelAdapter", "parameterSignature": "for receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "for: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("for"), name: "receipt", type: "WBReceipt", range: CountableRange(754..<776), nameRange: CountableRange(754..<757))], "returnType": "FetchedModelAdapter", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
+    // ["name": "fetchedModelAdapter", "returnSignature": " -> FetchedModelAdapter", "fullyQualifiedName": "fetchedModelAdapter(for: WBReceipt) -> FetchedModelAdapter", "parameterSignature": "for receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "for: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("for"), name: "receipt", type: "WBReceipt", range: CountableRange(748..<770), nameRange: CountableRange(748..<751))], "returnType": "FetchedModelAdapter", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
      override func fetchedModelAdapter(for receipt: WBReceipt)  -> FetchedModelAdapter {
         
             return cuckoo_manager.call("fetchedModelAdapter(for: WBReceipt) -> FetchedModelAdapter",
@@ -4835,17 +4835,17 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.ClassMock {
     let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
     
-    // ["name": "isCopyOrMove", "stubType": "ClassToBeStubbedProperty", "@type": "InstanceVariable", "type": "Bool!", "isReadOnly": false, "accessibility": ""]
-     override var isCopyOrMove: Bool! {
+    // ["name": "isCopy", "stubType": "ClassToBeStubbedProperty", "@type": "InstanceVariable", "type": "Bool!", "isReadOnly": false, "accessibility": ""]
+     override var isCopy: Bool! {
         get {
             
-            return cuckoo_manager.getter("isCopyOrMove", superclassCall: super.isCopyOrMove)
+            return cuckoo_manager.getter("isCopy", superclassCall: super.isCopy)
             
         }
         
         set {
             
-            cuckoo_manager.setter("isCopyOrMove", value: newValue, superclassCall: super.isCopyOrMove = newValue)
+            cuckoo_manager.setter("isCopy", value: newValue, superclassCall: super.isCopy = newValue)
             
         }
         
@@ -4883,7 +4883,7 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(521..<530), nameRange: CountableRange(521..<525))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(515..<524), nameRange: CountableRange(515..<519))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func setupView(data: Any)  {
         
             return cuckoo_manager.call("setupView(data: Any)",
@@ -4915,8 +4915,8 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.ClassMock {
 	        self.cuckoo_manager = manager
 	    }
 	    
-	    var isCopyOrMove: Cuckoo.ClassToBeStubbedProperty<MockReceiptMoveCopyPresenter, Bool?> {
-	        return .init(manager: cuckoo_manager, name: "isCopyOrMove")
+	    var isCopy: Cuckoo.ClassToBeStubbedProperty<MockReceiptMoveCopyPresenter, Bool?> {
+	        return .init(manager: cuckoo_manager, name: "isCopy")
 	    }
 	    
 	    var receipt: Cuckoo.ClassToBeStubbedProperty<MockReceiptMoveCopyPresenter, WBReceipt?> {
@@ -4953,8 +4953,8 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.ClassMock {
 	    }
 	
 	    
-	    var isCopyOrMove: Cuckoo.VerifyProperty<Bool?> {
-	        return .init(manager: cuckoo_manager, name: "isCopyOrMove", callMatcher: callMatcher, sourceLocation: sourceLocation)
+	    var isCopy: Cuckoo.VerifyProperty<Bool?> {
+	        return .init(manager: cuckoo_manager, name: "isCopy", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
 	    var receipt: Cuckoo.VerifyProperty<WBReceipt?> {
@@ -4987,7 +4987,7 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.ClassMock {
 
  class ReceiptMoveCopyPresenterStub: ReceiptMoveCopyPresenter {
     
-     override var isCopyOrMove: Bool! {
+     override var isCopy: Bool! {
         get {
             return DefaultValueRegistry.defaultValue(for: (Bool!).self)
         }
@@ -6020,7 +6020,7 @@ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "delete", "returnSignature": "", "fullyQualifiedName": "delete(distance: Distance)", "parameterSignature": "distance: Distance", "parameterSignatureWithoutNames": "distance: Distance", "inputTypes": "Distance", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "distance", "call": "distance: distance", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("distance"), name: "distance", type: "Distance", range: CountableRange(1380..<1398), nameRange: CountableRange(1380..<1388))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "delete", "returnSignature": "", "fullyQualifiedName": "delete(distance: Distance)", "parameterSignature": "distance: Distance", "parameterSignatureWithoutNames": "distance: Distance", "inputTypes": "Distance", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "distance", "call": "distance: distance", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("distance"), name: "distance", type: "Distance", range: CountableRange(1368..<1386), nameRange: CountableRange(1368..<1376))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func delete(distance: Distance)  {
         
             return cuckoo_manager.call("delete(distance: Distance)",

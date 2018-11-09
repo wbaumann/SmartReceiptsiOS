@@ -56,10 +56,10 @@ class ReceiptMoveCopyModuleTest: XCTestCase {
         interactor.configureSubscribers()
         presenter.receipt = WBReceipt()
         
-        presenter.isCopyOrMove = true
+        presenter.isCopy = true
         presenter.tripTapSubject.onNext(WBTrip())
         
-        presenter.isCopyOrMove = false
+        presenter.isCopy = false
         presenter.tripTapSubject.onNext(WBTrip())
         
         verify(router, times(2)).close()

@@ -36,7 +36,7 @@ class AuthInteractor: Interactor {
                 self.authService.login(credentials: credentials)
                     .catchError({ error -> Observable<LoginResponse> in
                         if let afError = error as? AFError, afError.responseCode == INVALID_CREDENTIALS_CODE {
-                            self.presenter.errorHandler.onNext(LocalizedString("login.error.login.failed"))
+                            self.presenter.errorHandler.onNext(LocalizedString("login_failure_credentials_toast"))
                         } else {
                             self.presenter.errorHandler.onNext(error.localizedDescription)
                         }
@@ -59,7 +59,7 @@ class AuthInteractor: Interactor {
                 self.authService.signup(credentials: credentials)
                     .catchError({ error -> Observable<String> in
                         if let afError = error as? AFError, afError.responseCode == ACCOUNT_ALREADY_EXISTS_CODE {
-                            self.presenter.errorHandler.onNext(LocalizedString("login.error.signup.failed"))
+                            self.presenter.errorHandler.onNext(LocalizedString("sign_up_failure_account_exists_toast"))
                         } else {
                             self.presenter.errorHandler.onNext(error.localizedDescription)
                         }

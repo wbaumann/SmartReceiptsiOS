@@ -16,7 +16,7 @@ class ReceiptMoveCopyInteractor: Interactor {
     
     func configureSubscribers() {
         presenter.tripTapSubject.subscribe(onNext: { [unowned self] trip in
-            if self.presenter.isCopyOrMove {
+            if self.presenter.isCopy {
                 Database.sharedInstance().copy(self.presenter.receipt, to: trip)
             } else {
                 Database.sharedInstance().move(self.presenter.receipt, to: trip)
@@ -26,7 +26,7 @@ class ReceiptMoveCopyInteractor: Interactor {
     }
     
     func fetchedModelAdapter(for receipt: WBReceipt) -> FetchedModelAdapter {
-        return presenter.isCopyOrMove ?
+        return presenter.isCopy ?
             Database.sharedInstance().fetchedAdapterForAllTrips() :
             Database.sharedInstance().fetchedAdapter(forAllTripsExcluding: receipt.trip)
     }

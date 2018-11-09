@@ -28,7 +28,8 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
             return
         }
         
-        let suffix = files.count > 0 ? LocalizedString("generate.report.multiple.attached.suffix", comment: "") : LocalizedString("generate.report.one.attached.suffix", comment: "")
+        // TODO: Switch to using plurals once we integrate this with Twine
+        let suffix = files.count > 1 ? String(format: LocalizedString("reports_attached", comment: ""), "\(files.count)") : LocalizedString("report_attached", comment: "")
         let messageBody = "\(files.count) \(suffix)"
         
         let composer = MFMailComposeViewController()

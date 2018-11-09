@@ -71,7 +71,7 @@ class ReceiptActionsFormView: FormViewController {
     private func takeImageTitle() -> String {
         return attachmentType == .none ?
             LocalizedString("receipt.action.take.receipt.image") :
-            LocalizedString("receipt.action.retake.receipt.image")
+            LocalizedString("menu_receiptimage_retake")
     }
     
     private func viewButtonTitle() -> String {
@@ -99,9 +99,7 @@ class ReceiptActionsFormView: FormViewController {
                 LocalizedString("receipt.action.replace.pdf")
             
         case .none:
-            btnTitle = isFileImage ?
-                LocalizedString("receipt.action.attach.image") :
-                LocalizedString("receipt.action.attach.pdf")
+            btnTitle = LocalizedString("receipt_attach_file")
         }
         return btnTitle
     }

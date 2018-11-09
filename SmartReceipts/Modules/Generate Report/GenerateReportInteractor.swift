@@ -111,7 +111,7 @@ class GenerateReportInteractor: Interactor {
                 Logger.warning("ReportAssetsGenerator.generate() onError: \(error)")
                 
                 var actions = [UIAlertAction]()
-                var title = LocalizedString("generate.report.unsuccessful.alert.message")
+                var title = LocalizedString("report_pdf_generation_error")
                 var message = ""
                 
                 switch error {
@@ -147,7 +147,7 @@ class GenerateReportInteractor: Interactor {
     func validateSelection() -> Bool {
         if (!fullPdfReport.value && !pdfReportWithoutTable.value && !csvFile.value && !zipStampedJPGs.value) {
             presenter.presentAlert(title: LocalizedString("generic.error.alert.title"),
-                                   message: LocalizedString("generate.report.no.options.selected.alert.message"))
+                                   message: LocalizedString("DIALOG_EMAIL_TOAST_NO_SELECTION"))
             return false
         }
         return true
