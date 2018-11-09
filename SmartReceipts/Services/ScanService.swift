@@ -22,13 +22,13 @@ class ScanService {
     fileprivate let statusSubject = PublishSubject<ScanStatus>()
     
     init(s3Service: S3Service,
-         recognitionAPI: RecognitionService,
+         recognitionService: RecognitionService,
          pushService: PushNotificationService,
          authService: AuthServiceInterface,
          scansPurchaseTracker: ScansPurchaseTracker)
     {
         self.s3Service = s3Service
-        self.recognitionService = recognitionAPI
+        self.recognitionService = recognitionService
         self.pushNotificationService = pushService
         self.authService = authService
         self.scansPurchaseTracker = scansPurchaseTracker
@@ -36,7 +36,7 @@ class ScanService {
     
     convenience init(){
         self.init(s3Service: S3Service(),
-                  recognitionAPI: RecognitionService(),
+                  recognitionService: RecognitionService(),
                   pushService: PushNotificationService.shared,
                   authService: AuthService.shared,
                   scansPurchaseTracker: ScansPurchaseTracker.shared)

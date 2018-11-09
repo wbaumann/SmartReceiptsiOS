@@ -30,23 +30,23 @@ class AuthServiceTestable: AuthServiceInterface {
     var tokenObservable: Observable<String> { return negative ? .error(MockAuthError.testError) : .just(token) }
     
     
-    func login(credentials: Credentials) -> Observable<LoginResponse> {
+    func login(credentials: Credentials) -> Single<LoginResponse> {
         return negative ? .error(MockAuthError.testError) : .just(LoginResponse(id, token))
     }
     
-    func signup(credentials: Credentials) -> Observable<String> {
+    func signup(credentials: Credentials) -> Single<String> {
         return negative ? .error(MockAuthError.testError) : .just(token)
     }
     
-    func logout() -> Observable<Void> {
+    func logout() -> Single<Void> {
         return negative ? .error(MockAuthError.testError) : .just(())
     }
     
-    func getUser() -> Observable<User?> {
+    func getUser() -> Single<User?> {
         return negative ? .error(MockAuthError.testError) : .never()
     }
     
-    func saveDevice(token: String) -> Observable<Void> {
+    func saveDevice(token: String) -> Single<Void> {
         return negative ? .error(MockAuthError.testError) : .just(())
     }
     

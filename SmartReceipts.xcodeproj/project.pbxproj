@@ -2749,12 +2749,12 @@
 			buildConfigurationList = EA8D81D71AEA956600BAC943 /* Build configuration list for PBXNativeTarget "SmartReceiptsTests" */;
 			buildPhases = (
 				01F96578FE4DF2585F301DD8 /* [CP] Check Pods Manifest.lock */,
+				71C413D21EE6EE78003CE891 /* Cuckoo Tests */,
 				EA8D81CB1AEA956600BAC943 /* Sources */,
 				EA8D81CC1AEA956600BAC943 /* Frameworks */,
 				EA8D81CD1AEA956600BAC943 /* Resources */,
 				C20DB16583F6538F38361590 /* [CP] Embed Pods Frameworks */,
 				57505F951E3E518300686549 /* highlight Swift macro TODO/FIXME as build warnings */,
-				71C413D21EE6EE78003CE891 /* Cuckoo Tests */,
 				E87D0CC4F2C290579243B190 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -3133,7 +3133,7 @@
 				"$(SRCROOT)/SmartReceipts/Modules/OCR Configuration/OCRConfigurationInteractor.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/OCR Configuration/OCRConfigurationPresenter.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/OCR Configuration/OCRConfigurationRouter.swift",
-				"$(SRCROOT)/SmartReceipts/Services/APIs/RecognitionAPI.swift",
+				"$(SRCROOT)/SmartReceipts/Services/APIs/RecognitionService.swift",
 				"$(SRCROOT)/SmartReceipts/Services/S3Service.swift",
 			);
 			name = "Cuckoo Tests";
@@ -3141,7 +3141,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "OUTPUT_FILE=\"$PROJECT_DIR/SmartReceiptsTests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n${PODS_ROOT}/Cuckoo/run generate --testable \"$PROJECT_NAME\" --no-timestamp \\\n--output \"${OUTPUT_FILE}\"";
+			shellScript = "OUTPUT_FILE=\"$PROJECT_DIR/SmartReceiptsTests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n${PODS_ROOT}/Cuckoo/run generate --testable \"$PROJECT_NAME\" --no-timestamp \\\n--output \"${OUTPUT_FILE}\"\n";
 		};
 		A5F432BFC9D98FBC844827E5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
