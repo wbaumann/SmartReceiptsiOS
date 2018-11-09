@@ -17,7 +17,7 @@ import SwiftyJSON
 class ScanServiceTests: XCTestCase {
     let bag = DisposeBag()
     let s3ServiceMock = MockS3Service().withEnabledSuperclassSpy()
-    let recognitionAPIMock = MockRecognitionAPI().withEnabledSuperclassSpy()
+    let mockRecognitionService = MockRecognitionService()
     let pushService = PushNotificationServiceTestable()
     var scanService: ScanService!
     var authService = AuthServiceTestable()
@@ -37,7 +37,7 @@ class ScanServiceTests: XCTestCase {
         
         LocalScansTracker.shared.scansCount = 10
         scanService = ScanService(s3Service: s3ServiceMock,
-                                  recognitionAPI: recognitionAPIMock,
+                                  recognitionService: mockRecognitionService,
                                   pushService: pushService,
                                   authService: authService,
                                   scansPurchaseTracker: scansPurchaseTracker)
@@ -47,11 +47,11 @@ class ScanServiceTests: XCTestCase {
     }
     
     func configureStubs() {
-        stub(recognitionAPIMock) { mock in
-            mock.recognize(url: mockURL, incognito: false).thenReturn(Observable<String>.just(mockID))
-            mock.getRecognition(mockID).then({ _ -> Observable<JSON> in
+        stub(mockRecognitionService) { mock in
+            mock.recognize(url: mockURL, incognito: false).thenReturn(Single<String>.just(mockID))
+            mock.getRecognition(mockID).then({ _ -> Single<JSON> in
                 let json = JSON.loadFrom(filename: "Scan", type: "json")
-                return Observable<JSON>.just(json)
+                return .just(json)
             })
         }
         
@@ -70,8 +70,8 @@ class ScanServiceTests: XCTestCase {
         let scan = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         
         verify(s3ServiceMock).upload(file: mockURL)
-        verify(recognitionAPIMock).recognize(url: mockURL, incognito: false)
-        verify(recognitionAPIMock).getRecognition(mockID)
+        verify(mockRecognitionService).recognize(url: mockURL, incognito: false)
+        verify(mockRecognitionService).getRecognition(mockID)
         
         XCTAssertNotEqual(emptyScan, scan)
     }

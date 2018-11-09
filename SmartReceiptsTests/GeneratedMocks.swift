@@ -5740,7 +5740,7 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "openActions", "returnSignature": " -> ReceiptActionsPresenter", "fullyQualifiedName": "openActions(receipt: WBReceipt) -> ReceiptActionsPresenter", "parameterSignature": "receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "WBReceipt", range: CountableRange(3872..<3890), nameRange: CountableRange(3872..<3879))], "returnType": "ReceiptActionsPresenter", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
+    // ["name": "openActions", "returnSignature": " -> ReceiptActionsPresenter", "fullyQualifiedName": "openActions(receipt: WBReceipt) -> ReceiptActionsPresenter", "parameterSignature": "receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "WBReceipt", range: CountableRange(3892..<3910), nameRange: CountableRange(3892..<3899))], "returnType": "ReceiptActionsPresenter", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
      override func openActions(receipt: WBReceipt)  -> ReceiptActionsPresenter {
         
             return cuckoo_manager.call("openActions(receipt: WBReceipt) -> ReceiptActionsPresenter",
@@ -5752,7 +5752,7 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "openEdit", "returnSignature": "", "fullyQualifiedName": "openEdit(receipt: WBReceipt)", "parameterSignature": "receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "WBReceipt", range: CountableRange(4320..<4338), nameRange: CountableRange(4320..<4327))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "openEdit", "returnSignature": "", "fullyQualifiedName": "openEdit(receipt: WBReceipt)", "parameterSignature": "receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "WBReceipt", range: CountableRange(4340..<4358), nameRange: CountableRange(4340..<4347))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func openEdit(receipt: WBReceipt)  {
         
             return cuckoo_manager.call("openEdit(receipt: WBReceipt)",
@@ -7039,25 +7039,26 @@ class MockTripsRouter: TripsRouter, Cuckoo.ClassMock {
 }
 
 
-// MARK: - Mocks generated from file: SmartReceipts/Services/APIs/RecognitionAPI.swift
+// MARK: - Mocks generated from file: SmartReceipts/Services/APIs/RecognitionService.swift
 //
-//  RecognitionAPI.swift
+//  RecognitionService.swift
 //  SmartReceipts
 //
-//  Created by Bogdan Evsenev on 05/11/2017.
-//  Copyright © 2017 Will Baumann. All rights reserved.
+//  Created by Bogdan Evsenev on 06/11/2018.
+//  Copyright © 2018 Will Baumann. All rights reserved.
 //
 
 import Cuckoo
 @testable import SmartReceipts
 
+import Moya
 import RxSwift
 import SwiftyJSON
 
-class MockRecognitionAPI: RecognitionAPI, Cuckoo.ClassMock {
-    typealias MocksType = RecognitionAPI
-    typealias Stubbing = __StubbingProxy_RecognitionAPI
-    typealias Verification = __VerificationProxy_RecognitionAPI
+class MockRecognitionService: RecognitionService, Cuckoo.ClassMock {
+    typealias MocksType = RecognitionService
+    typealias Stubbing = __StubbingProxy_RecognitionService
+    typealias Verification = __VerificationProxy_RecognitionService
     let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
     
@@ -7065,10 +7066,10 @@ class MockRecognitionAPI: RecognitionAPI, Cuckoo.ClassMock {
     
 
     
-    // ["name": "getRecognition", "returnSignature": " -> Observable<JSON>", "fullyQualifiedName": "getRecognition(_: String) -> Observable<JSON>", "parameterSignature": "_ id: String", "parameterSignatureWithoutNames": "id: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "id", "call": "id", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "id", type: "String", range: CountableRange(285..<297), nameRange: CountableRange(0..<0))], "returnType": "Observable<JSON>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func getRecognition(_ id: String)  -> Observable<JSON> {
+    // ["name": "getRecognition", "returnSignature": " -> Single<JSON>", "fullyQualifiedName": "getRecognition(_: String) -> Single<JSON>", "parameterSignature": "_ id: String", "parameterSignatureWithoutNames": "id: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "id", "call": "id", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "id", type: "String", range: CountableRange(431..<443), nameRange: CountableRange(0..<0))], "returnType": "Single<JSON>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
+     override func getRecognition(_ id: String)  -> Single<JSON> {
         
-            return cuckoo_manager.call("getRecognition(_: String) -> Observable<JSON>",
+            return cuckoo_manager.call("getRecognition(_: String) -> Single<JSON>",
                 parameters: (id),
                 superclassCall:
                     
@@ -7077,10 +7078,10 @@ class MockRecognitionAPI: RecognitionAPI, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "recognize", "returnSignature": " -> Observable<String>", "fullyQualifiedName": "recognize(url: URL, incognito: Bool) -> Observable<String>", "parameterSignature": "url: URL, incognito: Bool", "parameterSignatureWithoutNames": "url: URL, incognito: Bool", "inputTypes": "URL, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "url, incognito", "call": "url: url, incognito: incognito", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("url"), name: "url", type: "URL", range: CountableRange(451..<459), nameRange: CountableRange(451..<454)), CuckooGeneratorFramework.MethodParameter(label: Optional("incognito"), name: "incognito", type: "Bool", range: CountableRange(461..<484), nameRange: CountableRange(461..<470))], "returnType": "Observable<String>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func recognize(url: URL, incognito: Bool)  -> Observable<String> {
+    // ["name": "recognize", "returnSignature": " -> Single<String>", "fullyQualifiedName": "recognize(url: URL, incognito: Bool) -> Single<String>", "parameterSignature": "url: URL, incognito: Bool", "parameterSignatureWithoutNames": "url: URL, incognito: Bool", "inputTypes": "URL, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "url, incognito", "call": "url: url, incognito: incognito", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("url"), name: "url", type: "URL", range: CountableRange(589..<597), nameRange: CountableRange(589..<592)), CuckooGeneratorFramework.MethodParameter(label: Optional("incognito"), name: "incognito", type: "Bool", range: CountableRange(599..<622), nameRange: CountableRange(599..<608))], "returnType": "Single<String>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
+     override func recognize(url: URL, incognito: Bool)  -> Single<String> {
         
-            return cuckoo_manager.call("recognize(url: URL, incognito: Bool) -> Observable<String>",
+            return cuckoo_manager.call("recognize(url: URL, incognito: Bool) -> Single<String>",
                 parameters: (url, incognito),
                 superclassCall:
                     
@@ -7090,7 +7091,7 @@ class MockRecognitionAPI: RecognitionAPI, Cuckoo.ClassMock {
     }
     
 
-	struct __StubbingProxy_RecognitionAPI: Cuckoo.StubbingProxy {
+	struct __StubbingProxy_RecognitionService: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
 	    init(manager: Cuckoo.MockManager) {
@@ -7098,19 +7099,19 @@ class MockRecognitionAPI: RecognitionAPI, Cuckoo.ClassMock {
 	    }
 	    
 	    
-	    func getRecognition<M1: Cuckoo.Matchable>(_ id: M1) -> Cuckoo.ClassStubFunction<(String), Observable<JSON>> where M1.MatchedType == String {
+	    func getRecognition<M1: Cuckoo.Matchable>(_ id: M1) -> Cuckoo.ClassStubFunction<(String), Single<JSON>> where M1.MatchedType == String {
 	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: id) { $0 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockRecognitionAPI.self, method: "getRecognition(_: String) -> Observable<JSON>", parameterMatchers: matchers))
+	        return .init(stub: cuckoo_manager.createStub(for: MockRecognitionService.self, method: "getRecognition(_: String) -> Single<JSON>", parameterMatchers: matchers))
 	    }
 	    
-	    func recognize<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(url: M1, incognito: M2) -> Cuckoo.ClassStubFunction<(URL, Bool), Observable<String>> where M1.MatchedType == URL, M2.MatchedType == Bool {
+	    func recognize<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(url: M1, incognito: M2) -> Cuckoo.ClassStubFunction<(URL, Bool), Single<String>> where M1.MatchedType == URL, M2.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(URL, Bool)>] = [wrap(matchable: url) { $0.0 }, wrap(matchable: incognito) { $0.1 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockRecognitionAPI.self, method: "recognize(url: URL, incognito: Bool) -> Observable<String>", parameterMatchers: matchers))
+	        return .init(stub: cuckoo_manager.createStub(for: MockRecognitionService.self, method: "recognize(url: URL, incognito: Bool) -> Single<String>", parameterMatchers: matchers))
 	    }
 	    
 	}
 
-	struct __VerificationProxy_RecognitionAPI: Cuckoo.VerificationProxy {
+	struct __VerificationProxy_RecognitionService: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
@@ -7125,33 +7126,33 @@ class MockRecognitionAPI: RecognitionAPI, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func getRecognition<M1: Cuckoo.Matchable>(_ id: M1) -> Cuckoo.__DoNotUse<Observable<JSON>> where M1.MatchedType == String {
+	    func getRecognition<M1: Cuckoo.Matchable>(_ id: M1) -> Cuckoo.__DoNotUse<Single<JSON>> where M1.MatchedType == String {
 	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: id) { $0 }]
-	        return cuckoo_manager.verify("getRecognition(_: String) -> Observable<JSON>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	        return cuckoo_manager.verify("getRecognition(_: String) -> Single<JSON>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func recognize<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(url: M1, incognito: M2) -> Cuckoo.__DoNotUse<Observable<String>> where M1.MatchedType == URL, M2.MatchedType == Bool {
+	    func recognize<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(url: M1, incognito: M2) -> Cuckoo.__DoNotUse<Single<String>> where M1.MatchedType == URL, M2.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(URL, Bool)>] = [wrap(matchable: url) { $0.0 }, wrap(matchable: incognito) { $0.1 }]
-	        return cuckoo_manager.verify("recognize(url: URL, incognito: Bool) -> Observable<String>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	        return cuckoo_manager.verify("recognize(url: URL, incognito: Bool) -> Single<String>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
 
 }
 
- class RecognitionAPIStub: RecognitionAPI {
+ class RecognitionServiceStub: RecognitionService {
     
 
     
 
     
-     override func getRecognition(_ id: String)  -> Observable<JSON> {
-        return DefaultValueRegistry.defaultValue(for: Observable<JSON>.self)
+     override func getRecognition(_ id: String)  -> Single<JSON> {
+        return DefaultValueRegistry.defaultValue(for: Single<JSON>.self)
     }
     
-     override func recognize(url: URL, incognito: Bool)  -> Observable<String> {
-        return DefaultValueRegistry.defaultValue(for: Observable<String>.self)
+     override func recognize(url: URL, incognito: Bool)  -> Single<String> {
+        return DefaultValueRegistry.defaultValue(for: Single<String>.self)
     }
     
 }
@@ -7169,6 +7170,7 @@ class MockRecognitionAPI: RecognitionAPI, Cuckoo.ClassMock {
 import Cuckoo
 @testable import SmartReceipts
 
+import Moya
 import RxSwift
 import StoreKit
 import SwiftyJSON
@@ -7245,7 +7247,7 @@ class MockPurchaseService: PurchaseService, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "purchase", "returnSignature": " -> Observable<PurchaseDetails>", "fullyQualifiedName": "purchase(prodcutID: String) -> Observable<PurchaseDetails>", "parameterSignature": "prodcutID: String", "parameterSignatureWithoutNames": "prodcutID: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "prodcutID", "call": "prodcutID: prodcutID", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("prodcutID"), name: "prodcutID", type: "String", range: CountableRange(3645..<3662), nameRange: CountableRange(3645..<3654))], "returnType": "Observable<PurchaseDetails>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
+    // ["name": "purchase", "returnSignature": " -> Observable<PurchaseDetails>", "fullyQualifiedName": "purchase(prodcutID: String) -> Observable<PurchaseDetails>", "parameterSignature": "prodcutID: String", "parameterSignatureWithoutNames": "prodcutID: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "prodcutID", "call": "prodcutID: prodcutID", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("prodcutID"), name: "prodcutID", type: "String", range: CountableRange(3831..<3848), nameRange: CountableRange(3831..<3840))], "returnType": "Observable<PurchaseDetails>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
      override func purchase(prodcutID: String)  -> Observable<PurchaseDetails> {
         
             return cuckoo_manager.call("purchase(prodcutID: String) -> Observable<PurchaseDetails>",
@@ -7257,7 +7259,7 @@ class MockPurchaseService: PurchaseService, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "price", "returnSignature": " -> Observable<String>", "fullyQualifiedName": "price(productID: String) -> Observable<String>", "parameterSignature": "productID: String", "parameterSignatureWithoutNames": "productID: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "productID", "call": "productID: productID", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("productID"), name: "productID", type: "String", range: CountableRange(5656..<5673), nameRange: CountableRange(5656..<5665))], "returnType": "Observable<String>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
+    // ["name": "price", "returnSignature": " -> Observable<String>", "fullyQualifiedName": "price(productID: String) -> Observable<String>", "parameterSignature": "productID: String", "parameterSignatureWithoutNames": "productID: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "productID", "call": "productID: productID", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("productID"), name: "productID", type: "String", range: CountableRange(5842..<5859), nameRange: CountableRange(5842..<5851))], "returnType": "Observable<String>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
      override func price(productID: String)  -> Observable<String> {
         
             return cuckoo_manager.call("price(productID: String) -> Observable<String>",
@@ -7293,7 +7295,7 @@ class MockPurchaseService: PurchaseService, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "isReceiptSent", "returnSignature": " -> Bool", "fullyQualifiedName": "isReceiptSent(_: String) -> Bool", "parameterSignature": "_ receipt: String", "parameterSignatureWithoutNames": "receipt: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "receipt", type: "String", range: CountableRange(7458..<7475), nameRange: CountableRange(0..<0))], "returnType": "Bool", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
+    // ["name": "isReceiptSent", "returnSignature": " -> Bool", "fullyQualifiedName": "isReceiptSent(_: String) -> Bool", "parameterSignature": "_ receipt: String", "parameterSignatureWithoutNames": "receipt: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "receipt", type: "String", range: CountableRange(7644..<7661), nameRange: CountableRange(0..<0))], "returnType": "Bool", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
      override func isReceiptSent(_ receipt: String)  -> Bool {
         
             return cuckoo_manager.call("isReceiptSent(_: String) -> Bool",
@@ -7413,7 +7415,7 @@ class MockPurchaseService: PurchaseService, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "verifySubscription", "returnSignature": " -> VerifySubscriptionResult", "fullyQualifiedName": "verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult", "parameterSignature": "receipt: ReceiptInfo", "parameterSignatureWithoutNames": "receipt: ReceiptInfo", "inputTypes": "ReceiptInfo", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "ReceiptInfo", range: CountableRange(13846..<13866), nameRange: CountableRange(13846..<13853))], "returnType": "VerifySubscriptionResult", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
+    // ["name": "verifySubscription", "returnSignature": " -> VerifySubscriptionResult", "fullyQualifiedName": "verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult", "parameterSignature": "receipt: ReceiptInfo", "parameterSignatureWithoutNames": "receipt: ReceiptInfo", "inputTypes": "ReceiptInfo", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "ReceiptInfo", range: CountableRange(13820..<13840), nameRange: CountableRange(13820..<13827))], "returnType": "VerifySubscriptionResult", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
      override func verifySubscription(receipt: ReceiptInfo)  -> VerifySubscriptionResult {
         
             return cuckoo_manager.call("verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult",
