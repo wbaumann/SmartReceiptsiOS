@@ -25,22 +25,15 @@
 "receipt_file_picker_cant_import_error" = "Can't import selected file";
 "drive_sync_error_unknown" = "Unknown Error";
 
-
 /** Legacy Android Strings (i.e. Ones that no longer existing on the master branch) **/
-"preview_receipt_action_remove" = "Remove";
-"preview_receipt_action_show_attachment" = "Show Attachment";
-"receipt.action.replace.image" = "Replace Image";
-"receipt.action.replace.image.with.pdf" = "Replace Image with PDF";
-"receipt.action.replace.pdf" = "Replace PDF";
-"receipt.action.replace.pdf.with.image" = "Replace PDF with Image";
-"receipt.action.retake.receipt.image" = "Retake Receipt Image";
-"receipt.action.swap.down" = "Swap Down";
-"receipt.action.swap.up" = "Swap Up";
-"receipt.action.take.receipt.image" = "Take Receipt Image";
-"receipt.action.view.receipt.image" = "View Receipt Image";
-"receipt.action.view.receipt.pdf" = "View Receipt PDF";
-"settings.layout.include.attachment.marker.label" = "Include Picture/PDF Marker";
-"settings_layout_display_photo_summary" = "Indicate if values have a photo/PDF";
+/** <MARKER - SECTION COMPLETE> **/
+"receipt_dialog_action_camera" = "Take Receipt Image";
+"receipt_dialog_action_swap_up" = "Swap Up";
+"receipt_dialog_action_swap_down" = "Swap Down";
+"action_send_attach" = "Attach %@ to Receipt";
+"action_send_replace" = "Replace Receipt %@";
+"pref_layout_display_photo_title" = "Include Picture/PDF Marker";
+"pref_layout_display_photo_summary" = "Indicate if values have a photo/PDF";
 
 
 /** Android System Strings (e.g. okay) **/

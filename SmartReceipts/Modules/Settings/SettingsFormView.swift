@@ -463,8 +463,8 @@ class SettingsFormView: FormViewController {
         })
             
         <<< DescribedSwitchRow() { row in
-            row.title = LocalizedString("settings.layout.include.attachment.marker.label")
-            row.onSubtitle = LocalizedString("settings_layout_display_photo_summary")
+            row.title = LocalizedString("pref_layout_display_photo_title")
+            row.onSubtitle = LocalizedString("pref_layout_display_photo_summary")
             row.offSubtitle = row.onSubtitle
             row.value = WBPreferences.layoutShowReceiptAttachmentMarker()
         }.onChange({ row in

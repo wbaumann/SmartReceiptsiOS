@@ -1,0 +1,9 @@
+/** Legacy Android Strings (i.e. Ones that no longer existing on the master branch) **/
+"receipt_dialog_action_camera" = "Tirar foto do recibo";
+"receipt_dialog_action_swap_up" = "Swap para cima";
+"receipt_dialog_action_swap_down" = "Swap para baixo";
+"action_send_attach" = "Anexar %@ ao recibo";
+"action_send_replace" = "Substituir recibo %@";
+
+"pref_layout_display_photo_title" = "Incluir marcados de Imagem/PDF";
+"pref_layout_display_photo_summary" = "Indica se os lançamentos têm uma foto/PDF";

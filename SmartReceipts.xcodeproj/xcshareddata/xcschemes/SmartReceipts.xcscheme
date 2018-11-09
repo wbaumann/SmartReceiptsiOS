@@ -56,7 +56,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "65A7A67A52C27A3A9FACB931E10390B3"
+               BlueprintIdentifier = "0AF7A751BDD3242EA51E481B86EB8363"
                BuildableName = "AWSS3.framework"
                BlueprintName = "AWSS3"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -140,7 +140,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "045A2FCE3366ED8A418CF5B407BEBDB2"
+               BlueprintIdentifier = "0F32982340C6013DA81094C00BB2C7B5"
                BuildableName = "Eureka.framework"
                BlueprintName = "Eureka"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -322,7 +322,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9F0965CE5DF8D7D6B14336CEC17A71AA"
+               BlueprintIdentifier = "B58DB641907F62BF064E7FB907EBBCB1"
                BuildableName = "Pods_SmartReceipts.framework"
                BlueprintName = "Pods-SmartReceipts"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -336,7 +336,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "07B6B12B265D215D854BD79F66AEF3D6"
+               BlueprintIdentifier = "90CA88E7418C5275C60D520733ED17F0"
                BuildableName = "Pods_SmartReceiptsTests.framework"
                BlueprintName = "Pods-SmartReceiptsTests"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -364,7 +364,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "89FF9F86AF12CF19A8B623794E3023FE"
+               BlueprintIdentifier = "93542518196B45F34A361200DC3B6B4E"
                BuildableName = "RxAlamofire.framework"
                BlueprintName = "RxAlamofire"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -378,7 +378,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0EEAC3C66A1EEA92313CBD9F2E4665F4"
+               BlueprintIdentifier = "E36C33526EAFAB485C00E73744A6DC7E"
                BuildableName = "RxBlocking.framework"
                BlueprintName = "RxBlocking"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -392,7 +392,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7E10769D13F224BA6F301EA1010EBBB2"
+               BlueprintIdentifier = "245F5A9D0743B9E9B6F0C9A7AF1EE3DD"
                BuildableName = "RxCocoa.framework"
                BlueprintName = "RxCocoa"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -406,7 +406,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DC86FEF97E68C9014F717D4B67E4CB65"
+               BlueprintIdentifier = "9D38E0454B0842495377ADA9CABE4886"
                BuildableName = "RxDataSources.framework"
                BlueprintName = "RxDataSources"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -420,7 +420,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "20A3ABA3881E86ABC88C053593E88129"
+               BlueprintIdentifier = "46850B1D6B26F4F8EA704EFD63D99FA5"
                BuildableName = "RxSwift.framework"
                BlueprintName = "RxSwift"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -434,7 +434,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "50A5E66A684C530C4517DF4D748ED9E6"
+               BlueprintIdentifier = "EA386B5D94CD707F040DEDD3980466DB"
                BuildableName = "RxTest.framework"
                BlueprintName = "RxTest"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -448,7 +448,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5BF9ADF92D5B0D1A06F810AA3BCB563A"
+               BlueprintIdentifier = "A39028593A10AFE306D402941E71F27E"
                BuildableName = "SwiftyJSON.framework"
                BlueprintName = "SwiftyJSON"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -462,7 +462,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A44E78CAB6873F21FBADDCB6FDE0C9C7"
+               BlueprintIdentifier = "02A604459196B709790B41A9DEE57B15"
                BuildableName = "SwiftyStoreKit.framework"
                BlueprintName = "SwiftyStoreKit"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -476,7 +476,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "193A7B77EC013C9D8E86BEF474990597"
+               BlueprintIdentifier = "AA59D0490106DC8BDB3D0E29B4998963"
                BuildableName = "Toaster.framework"
                BlueprintName = "Toaster"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -490,7 +490,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3D03FFB83AD839F9E13074E68F343A30"
+               BlueprintIdentifier = "F6ED9817F31F8B8E630284B8A3C60898"
                BuildableName = "Viperit.framework"
                BlueprintName = "Viperit"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -504,7 +504,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E37F4EBC1F9D0D11E353FBC951755666"
+               BlueprintIdentifier = "7AE476462821DB3C2124BB6C30EF0563"
                BuildableName = "XLPagerTabStrip.framework"
                BlueprintName = "XLPagerTabStrip"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -518,7 +518,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E914AFD03D95837839AA1D3B37B53F70"
+               BlueprintIdentifier = "BA204CD5A27B36B4C7452C7A1930910B"
                BuildableName = "XLPagerTabStrip.bundle"
                BlueprintName = "XLPagerTabStrip-XLPagerTabStrip"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -532,7 +532,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "80143E426F2A4955EABB5935F4861B1A"
+               BlueprintIdentifier = "6F1F0A96B97034E29EEBF62F5389FA7F"
                BuildableName = "Zip.framework"
                BlueprintName = "Zip"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">

@@ -16,6 +16,13 @@
 		4D29DE8D216CEDBA00591F7B /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D29DE7F216CEDBA00591F7B /* SharedLocalizable.strings */; };
 		4D29DE8E216CEDBA00591F7B /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D29DE82216CEDBA00591F7B /* SharedLocalizable.strings */; };
 		4D380F911B61240C001B43D2 /* GADConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D380F901B61240C001B43D2 /* GADConstants.m */; };
+		4D66E94D2196309000065140 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D66E94B2196309000065140 /* Localizable.strings */; };
+		4D66E950219630AE00065140 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D66E94E219630AE00065140 /* Localizable.strings */; };
+		4D66E953219630B700065140 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D66E951219630B700065140 /* Localizable.strings */; };
+		4D66E956219630C800065140 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D66E954219630C800065140 /* Localizable.strings */; };
+		4D66E959219630D400065140 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D66E957219630D400065140 /* Localizable.strings */; };
+		4D66E95C219630DE00065140 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D66E95A219630DE00065140 /* Localizable.strings */; };
+		4D66E95F219630FD00065140 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D66E95D219630FD00065140 /* Localizable.strings */; };
 		4DF229461928678A0008D359 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF229451928678A0008D359 /* AdSupport.framework */; };
 		4DF22948192867940008D359 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF22947192867940008D359 /* AudioToolbox.framework */; };
 		4DF2294A1928679D0008D359 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF229491928679D0008D359 /* AVFoundation.framework */; };
@@ -587,6 +594,13 @@
 		4D33F3E019D8964200FE4EC4 /* GADConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADConstants.h; sourceTree = "<group>"; };
 		4D380F901B61240C001B43D2 /* GADConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADConstants.m; sourceTree = "<group>"; };
 		4D39888A1DB985D500C394D1 /* SmartReceipts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartReceipts.entitlements; sourceTree = "<group>"; };
+		4D66E94C2196309000065140 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Localizable.strings; sourceTree = "<group>"; };
+		4D66E94F219630AE00065140 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localizable.strings; sourceTree = "<group>"; };
+		4D66E952219630B700065140 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Localizable.strings; sourceTree = "<group>"; };
+		4D66E955219630C800065140 /* iw */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = iw; path = Localizable.strings; sourceTree = "<group>"; };
+		4D66E958219630D400065140 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = Localizable.strings; sourceTree = "<group>"; };
+		4D66E95B219630DE00065140 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Localizable.strings; sourceTree = "<group>"; };
+		4D66E95E219630FD00065140 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = Localizable.strings; sourceTree = "<group>"; };
 		4DF229451928678A0008D359 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		4DF22947192867940008D359 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4DF229491928679D0008D359 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1277,6 +1291,7 @@
 			isa = PBXGroup;
 			children = (
 				4D29DE67216CEDB900591F7B /* SharedLocalizable.strings */,
+				4D66E95D219630FD00065140 /* Localizable.strings */,
 			);
 			path = uk.lproj;
 			sourceTree = "<group>";
@@ -1285,6 +1300,7 @@
 			isa = PBXGroup;
 			children = (
 				4D29DE6A216CEDB900591F7B /* SharedLocalizable.strings */,
+				4D66E95A219630DE00065140 /* Localizable.strings */,
 			);
 			path = ru.lproj;
 			sourceTree = "<group>";
@@ -1293,6 +1309,7 @@
 			isa = PBXGroup;
 			children = (
 				4D29DE6D216CEDB900591F7B /* SharedLocalizable.strings */,
+				4D66E94B2196309000065140 /* Localizable.strings */,
 			);
 			path = de.lproj;
 			sourceTree = "<group>";
@@ -1301,6 +1318,7 @@
 			isa = PBXGroup;
 			children = (
 				4D29DE70216CEDB900591F7B /* SharedLocalizable.strings */,
+				4D66E951219630B700065140 /* Localizable.strings */,
 			);
 			path = fr.lproj;
 			sourceTree = "<group>";
@@ -1309,6 +1327,7 @@
 			isa = PBXGroup;
 			children = (
 				4D29DE73216CEDB900591F7B /* SharedLocalizable.strings */,
+				4D66E957219630D400065140 /* Localizable.strings */,
 			);
 			path = pt.lproj;
 			sourceTree = "<group>";
@@ -1317,6 +1336,7 @@
 			isa = PBXGroup;
 			children = (
 				4D29DE7F216CEDBA00591F7B /* SharedLocalizable.strings */,
+				4D66E954219630C800065140 /* Localizable.strings */,
 			);
 			path = iw.lproj;
 			sourceTree = "<group>";
@@ -1325,6 +1345,7 @@
 			isa = PBXGroup;
 			children = (
 				4D29DE82216CEDBA00591F7B /* SharedLocalizable.strings */,
+				4D66E94E219630AE00065140 /* Localizable.strings */,
 			);
 			path = es.lproj;
 			sourceTree = "<group>";
@@ -2828,6 +2849,7 @@
 				7156066E1FAE67CF00E09760 /* ScanCell.xib in Resources */,
 				719B1FDC1EF603190049BD71 /* Receipts.storyboard in Resources */,
 				71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */,
+				4D66E94D2196309000065140 /* Localizable.strings in Resources */,
 				715B4EBE1F114A9C0021ACD8 /* PurchaseButtonCell.xib in Resources */,
 				71CF7A141F1020590004F389 /* InputTextCell.xib in Resources */,
 				71ACA7C41F5B69C90024903E /* Debug.storyboard in Resources */,
@@ -2837,13 +2859,17 @@
 				8421A2021907E975001DF38D /* MainStoryboard_iPhone.storyboard in Resources */,
 				4D29DE88216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
 				4D29DE8D216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
+				4D66E950219630AE00065140 /* Localizable.strings in Resources */,
 				714AC77B2041C63B003656DB /* DescribedButtonCell.xib in Resources */,
 				71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */,
 				EA40DC6B1B5559A1003BF545 /* FullPagePDFImageView.xib in Resources */,
 				EA1E60D61B2742660048E688 /* Localizable.strings in Resources */,
 				71FE9FF21F4778000043E7B4 /* TripTabViewController.xib in Resources */,
+				4D66E959219630D400065140 /* Localizable.strings in Resources */,
+				4D66E953219630B700065140 /* Localizable.strings in Resources */,
 				712D7E041FB793E600DE83EB /* Localizable.stringsdict in Resources */,
 				4D29DE87216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
+				4D66E95F219630FD00065140 /* Localizable.strings in Resources */,
 				7111ADA51F0EC38100DF77ED /* Settings.storyboard in Resources */,
 				719B1FE81EF6032D0049BD71 /* EditReceipt.storyboard in Resources */,
 				71572D851F15EA41001A1301 /* Columns.storyboard in Resources */,
@@ -2854,9 +2880,11 @@
 				84F4F35618CFCCD000F69A35 /* Images.xcassets in Resources */,
 				71695E6C2023AEE000F1A7C9 /* SharedLocalizable.strings in Resources */,
 				EA1E60D51B2742660048E688 /* InfoPlist.strings in Resources */,
+				4D66E95C219630DE00065140 /* Localizable.strings in Resources */,
 				714104E21FF43D7700C334C5 /* LaunchView.xib in Resources */,
 				EA22679F1B1E035F005761E7 /* ReceiptCell.xib in Resources */,
 				EA2B8D881B4EF44B0043A84B /* TripReportHeader.xib in Resources */,
+				4D66E956219630C800065140 /* Localizable.strings in Resources */,
 				EA40DC701B555CFE003BF545 /* FullPagePDFPageView.xib in Resources */,
 				71E8F3F51FA12452005BD447 /* OCRConfiguration.storyboard in Resources */,
 				716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */,
@@ -3790,6 +3818,62 @@
 				4D29DE83216CEDBA00591F7B /* es */,
 			);
 			name = SharedLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		4D66E94B2196309000065140 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D66E94C2196309000065140 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4D66E94E219630AE00065140 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D66E94F219630AE00065140 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4D66E951219630B700065140 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D66E952219630B700065140 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4D66E954219630C800065140 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D66E955219630C800065140 /* iw */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4D66E957219630D400065140 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D66E958219630D400065140 /* pt */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4D66E95A219630DE00065140 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D66E95B219630DE00065140 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4D66E95D219630FD00065140 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D66E95E219630FD00065140 /* uk */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		712D7E021FB793E500DE83EB /* Localizable.stringsdict */ = {

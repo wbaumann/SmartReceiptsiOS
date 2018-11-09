@@ -1,0 +1,9 @@
+/** Legacy Android Strings (i.e. Ones that no longer existing on the master branch) **/
+"receipt_dialog_action_camera" = "Prendre la photo du reçu";
+"receipt_dialog_action_swap_up" = "Déplacer vers le haut";
+"receipt_dialog_action_swap_down" = "Déplacer vers le bas";
+"action_send_attach" = "Joindre %@ au reçu";
+"action_send_replace" = "Remplacer le reçu %@";
+
+"pref_layout_display_photo_title" = "Inclure le marqueur Image/PDF";
+"pref_layout_display_photo_summary" = "Indiquer si les entrées ont une photo/un fichier PDF";

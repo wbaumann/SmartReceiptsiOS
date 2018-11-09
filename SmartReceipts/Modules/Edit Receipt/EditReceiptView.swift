@@ -129,13 +129,16 @@ final class EditReceiptView: UserInterface {
     }
     
     override var previewActionItems: [UIPreviewActionItem] {
-        let removeActionTitle = LocalizedString("preview_receipt_action_remove")
+        let removeActionTitle = LocalizedString("receipt_dialog_action_delete")
         let remove = UIPreviewAction(title: removeActionTitle, style: .destructive) { _, _ in
             self.previewRemoveAction.onNext(self.displayData.receipt!)
         }
         
         if let receipt = displayData.receipt, receipt.attachemntType != .none {
-            let viewActionTitle = LocalizedString("preview_receipt_action_show_attachment")
+            let viewActionTitle = displayData.receipt!.attachemntType == .image ?
+                String(format: LocalizedString("receipt_dialog_action_view"), LocalizedString("image")) :
+                String(format: LocalizedString("receipt_dialog_action_view"), LocalizedString("pdf"))
+            
             let viewAttachment = UIPreviewAction(title: viewActionTitle, style: .default) { _, _ in
                 self.previewShowAttachmentAction.onNext(self.displayData.receipt!)
             }
