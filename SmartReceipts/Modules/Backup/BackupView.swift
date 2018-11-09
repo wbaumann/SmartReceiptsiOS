@@ -272,7 +272,7 @@ extension BackupView {
                     } else {
                         Logger.error("Failed to properly export data")
                         self.presenter._router.openAlert(title: LocalizedString("generic.error.alert.title"),
-                                                       message: LocalizedString("settings.controller.export.error.message"))
+                                                       message: LocalizedString("EXPORT_ERROR"))
                     }
                 }
             }

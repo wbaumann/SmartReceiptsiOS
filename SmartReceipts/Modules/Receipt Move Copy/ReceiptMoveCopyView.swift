@@ -25,10 +25,10 @@ final class ReceiptMoveCopyView: FetchedTableViewController {
         AppTheme.customizeOnViewDidLoad(self)
         //setPresentationCellNib(TitleOnlyCell.viewNib())
         
-        if presenter.isCopyOrMove {
-            navigationItem.title = LocalizedString("move.copy.receipt.controller.copy.title")
+        if presenter.isCopy {
+            navigationItem.title = LocalizedString("copy")
         } else {
-            navigationItem.title = LocalizedString("move.copy.receipt.controller.move.title")
+            navigationItem.title = LocalizedString("move")
         }
     }
     

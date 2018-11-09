@@ -12,7 +12,7 @@ import RxSwift
 
 class ReceiptMoveCopyPresenter: Presenter {
     
-    var isCopyOrMove: Bool!
+    var isCopy: Bool!
     var receipt: WBReceipt!
     let tripTapSubject = PublishSubject<WBTrip>()
     
@@ -23,7 +23,7 @@ class ReceiptMoveCopyPresenter: Presenter {
     
     override func setupView(data: Any) {
         let inputData = data as! (receipt: WBReceipt, isCopyOrMove: Bool)
-        self.isCopyOrMove = inputData.isCopyOrMove
+        self.isCopy = inputData.isCopyOrMove
         self.receipt = inputData.receipt
         view.setup(fetchedModelAdapter: interactor.fetchedModelAdapter(for: inputData.receipt))
     }

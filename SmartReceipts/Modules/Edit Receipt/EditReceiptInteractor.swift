@@ -114,7 +114,7 @@ class EditReceiptInteractor: Interactor {
             .filter({ !WBPreferences.allowDataEntryOutsideTripBounds() })
             .filter({ receipt.date > receipt.trip.endDate || receipt.date < receipt.trip.startDate })
             .subscribe(onNext: {
-                let message = LocalizedString("edit.receipt.date.range.warning.message")
+                let message = LocalizedString("DIALOG_RECEIPTMENU_TOAST_BAD_DATE")
                 Toast.show(message)
         }).disposed(by: bag)
     }

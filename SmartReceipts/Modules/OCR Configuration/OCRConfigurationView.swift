@@ -51,7 +51,7 @@ final class OCRConfigurationView: UserInterface {
     
     private func configureRx() {
         ScansPurchaseTracker.shared.fetchAndPersistAvailableRecognitions()
-            .map { "\($0) \(LocalizedString("ocr.configuration.module.scans.remaining"))" }
+            .map { String(format: LocalizedString("ocr_configuration_scans_remaining"), "\($0)") }
             .subscribe(onNext: { [weak self] in
                 self?.setTitle($0, subtitle: AuthService.shared.email)
             }).disposed(by: bag)

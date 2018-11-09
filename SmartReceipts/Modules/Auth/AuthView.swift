@@ -146,6 +146,7 @@ extension AuthView: AuthViewInterface {
             self?.hud?.hide(true)
             switch event {
             case .next:
+                Logger.info("The user has successfully logged into Smart Receipts")
                 Toast.show(LocalizedString("login_success_toast"))
             default: break
             }
@@ -157,7 +158,8 @@ extension AuthView: AuthViewInterface {
             self?.hud?.hide(true)
             switch event {
             case .next:
-                Toast.show(LocalizedString("login.success.signup.toast"))
+                Logger.info("The user has successfully signed up for Smart Receipts")
+                Toast.show(LocalizedString("sign_up_success_toast"))
             default: break
             }
         })
@@ -168,7 +170,7 @@ extension AuthView: AuthViewInterface {
             self?.hud?.hide(true)
             switch event {
             case .next:
-                Toast.show(LocalizedString("login.success.logout.toast"))
+                Logger.info("Successfully logged out")
             default: break
             }
         })

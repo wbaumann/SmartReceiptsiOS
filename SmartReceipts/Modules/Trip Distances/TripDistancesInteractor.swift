@@ -36,7 +36,7 @@ class TripDistancesInteractor: Interactor {
             let price = receipt.exchangedPrice() ?? receipt.price()
             priceCollection.addPrice(price)
         }
-        return String(format: LocalizedString("trips.controller.distance.total"),
+        return String(format: LocalizedString("distance_total_item"),
                       priceCollection.currencyFormattedTotalPrice(ignoreEmpty: false))
     }
     

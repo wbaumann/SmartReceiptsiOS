@@ -75,7 +75,7 @@ extension String {
         if !self.isEmpty {
             self = self.appending("\n")
         }
-        self = self.appending("\(LocalizedString("app.text.bullet.character")) \(issue)")
+        self = self.appending("• \(issue)")
     }
     
     func isStringIgnoreCaseIn(array: [String]) -> Bool {

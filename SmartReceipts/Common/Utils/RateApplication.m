@@ -77,12 +77,12 @@ static NSString *const SRRateAppRatePressedKey = @"SRRateAppRatePressedKey";
     if ([NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){10,3,0}]) {
         [SKStoreReviewController requestReview];
     } else {
-        NSString *title = LocalizedString(@"rate.app.alert.title", nil);
-        NSString *message = LocalizedString(@"rate.app.alert.message", nil);
+        NSString *title = LocalizedString(@"rating_tooltip_text", nil);
+        NSString *message = LocalizedString(@"leave_feedback_text", nil);
         UIAlertControllerStyle style = UIAlertControllerStyleAlert;
         UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:style];
         
-        UIAlertAction *postitive = [UIAlertAction actionWithTitle:LocalizedString(@"yes", nil)
+        UIAlertAction *postitive = [UIAlertAction actionWithTitle:LocalizedString(@"apprating_dialog_positive", nil)
           style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
               [self markRatePressed];
               [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedRate]];
@@ -92,13 +92,13 @@ static NSString *const SRRateAppRatePressedKey = @"SRRateAppRatePressedKey";
               [UIApplication.sharedApplication openURL:[NSURL URLWithString:reviewURL] options:@{} completionHandler:nil];
          }];
         
-        UIAlertAction *negative = [UIAlertAction actionWithTitle:LocalizedString(@"no", nil)
+        UIAlertAction *negative = [UIAlertAction actionWithTitle:LocalizedString(@"apprating_dialog_negative", nil)
           style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
               [self markNoPressed];
               [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedNever]];
           }];
         
-        UIAlertAction *neutral = [UIAlertAction actionWithTitle:LocalizedString(@"rate.app.alert.neutral.button", nil)
+        UIAlertAction *neutral = [UIAlertAction actionWithTitle:LocalizedString(@"apprating_dialog_neutral", nil)
           style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
               [self rateLater];
               [[AnalyticsManager sharedManager] recordWithEvent:[Event ratingsUserSelectedLater]];

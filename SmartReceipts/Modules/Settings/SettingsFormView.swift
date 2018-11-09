@@ -68,7 +68,7 @@ class SettingsFormView: FormViewController {
                         guard let safeSelf = self else { return }
                         safeSelf.checkSubscription()
                     }, onError: { error in
-                        self.alertSubject.onNext((title: LocalizedString("settings.purchase.make.purchase.error.title"), message: error.localizedDescription))
+                        self.alertSubject.onNext((title: LocalizedString("purchase_failed"), message: error.localizedDescription))
                 }).disposed(by: self.bag)
             }
         })
@@ -88,7 +88,7 @@ class SettingsFormView: FormViewController {
                 .subscribe(onNext: { [weak self] validation in
                     self?.setupPurchased(expireDate: validation.expireTime)
                 }, onError: { error in
-                    self.alertSubject.onNext((title: LocalizedString("settings.purchase.restore.error.title"), message: error.localizedDescription))
+                    self.alertSubject.onNext((title: LocalizedString("purchase_unavailable"), message: error.localizedDescription))
                 }).disposed(by: self.bag)
         })
         
@@ -542,8 +542,8 @@ class SettingsFormView: FormViewController {
                     self?.purchaseRow.setPrice(string: price)
                 }, onError: { [weak self] error in
                     _ = self?.purchaseRow.markError().subscribe(onNext: { [weak self] in
-                        self?.alertSubject.onNext((title: LocalizedString("settings.purchase.price.retrieve.error.title"),
-                                                  message: LocalizedString("settings.purchase.price.retrieve.error.message")))
+                        self?.alertSubject.onNext((title: LocalizedString("purchase_failed"),
+                                                  message: LocalizedString("purchase_unavailable")))
                     })
                 })
             }
