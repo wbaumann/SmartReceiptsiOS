@@ -55,8 +55,8 @@ class ReceiptActionsFormView: FormViewController {
         <<< buttonRow(tag: TAKE_IMAGE_ROW, title: takeImageTitle(), bindSubject: takeImageTap)
         <<< buttonRow(title: LocalizedString("move"), bindSubject: moveTap)
         <<< buttonRow(title: LocalizedString("copy"), bindSubject: copyTap)
-        <<< buttonRow(title: LocalizedString("receipt.action.swap.up"), bindSubject: swapUpTap)
-        <<< buttonRow(title: LocalizedString("receipt.action.swap.down"), bindSubject: swapDownTap)
+        <<< buttonRow(title: LocalizedString("receipt_dialog_action_swap_up"), bindSubject: swapUpTap)
+        <<< buttonRow(title: LocalizedString("receipt_dialog_action_swap_down"), bindSubject: swapDownTap)
         
     }
     
@@ -70,16 +70,16 @@ class ReceiptActionsFormView: FormViewController {
     
     private func takeImageTitle() -> String {
         return attachmentType == .none ?
-            LocalizedString("receipt.action.take.receipt.image") :
+            LocalizedString("receipt_dialog_action_camera") :
             LocalizedString("menu_receiptimage_retake")
     }
     
     private func viewButtonTitle() -> String {
         var result = ""
-        if attachmentType == .image || attachmentType == .none {
-            result = LocalizedString("receipt.action.view.receipt.image")
+        if attachmentType == .image {
+            result = String(format: LocalizedString("receipt_dialog_action_view"), LocalizedString("image"))
         } else if attachmentType == .pdf {
-            result = LocalizedString("receipt.action.view.receipt.pdf")
+            result = String(format: LocalizedString("receipt_dialog_action_view"), LocalizedString("pdf"))
         }
         return result
     }
@@ -89,17 +89,13 @@ class ReceiptActionsFormView: FormViewController {
         var btnTitle = ""
         switch attachmentType {
         case .image:
-            btnTitle = isFileImage ?
-                LocalizedString("receipt.action.replace.image") :
-                LocalizedString("receipt.action.replace.image.with.pdf")
-            
+            btnTitle = String(format: LocalizedString("action_send_replace"), LocalizedString("image"))
         case .pdf:
-            btnTitle = isFileImage ?
-                LocalizedString("receipt.action.replace.pdf.with.image") :
-                LocalizedString("receipt.action.replace.pdf")
-            
+            btnTitle = String(format: LocalizedString("action_send_replace"), LocalizedString("pdf"))
         case .none:
-            btnTitle = LocalizedString("receipt_attach_file")
+            btnTitle = isFileImage ?
+                String(format: LocalizedString("action_send_attach"), LocalizedString("image")) :
+                String(format: LocalizedString("action_send_attach"), LocalizedString("pdf"))
         }
         return btnTitle
     }

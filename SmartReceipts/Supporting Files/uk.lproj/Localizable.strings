@@ -1,0 +1,9 @@
+/** Legacy Android Strings (i.e. Ones that no longer existing on the master branch) **/
+"receipt_dialog_action_camera" = "Зробити знімок чека";
+"receipt_dialog_action_swap_up" = "Поміняти місцями з верхнім";
+"receipt_dialog_action_swap_down" = "Поміняти місцями з нижнім";
+"action_send_attach" = "Прикріпити %@ до чеку";
+"action_send_replace" = "Замінити чек %@";
+
+"pref_layout_display_photo_title" = "Включати зображення/PDF-маркер";
+"pref_layout_display_photo_summary" = "Вказувати, чи містять елементи фото/PDF";

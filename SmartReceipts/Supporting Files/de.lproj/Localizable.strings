@@ -1,0 +1,9 @@
+/** Legacy Android Strings (i.e. Ones that no longer existing on the master branch) **/
+"receipt_dialog_action_camera" = "Belegbild machen";
+"receipt_dialog_action_swap_up" = "tauschen oben";
+"receipt_dialog_action_swap_down" = "tauschen unten";
+"action_send_attach" = "Zum Beleg  %@ hinzufügen";
+"action_send_replace" = "Beleg ersetzen %@";
+
+"pref_layout_display_photo_title" = "Fügen Sie Bild / PDF Marker hinzu";
+"pref_layout_display_photo_summary" = "Geben Sie an, ob Einträge ein Foto / PDF haben";
