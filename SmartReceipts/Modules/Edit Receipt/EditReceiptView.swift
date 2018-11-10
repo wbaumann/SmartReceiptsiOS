@@ -135,12 +135,12 @@ final class EditReceiptView: UserInterface {
         }
         
         if let receipt = displayData.receipt, receipt.attachemntType != .none {
-            let viewActionTitle = displayData.receipt!.attachemntType == .image ?
+            let viewActionTitle = receipt.attachemntType == .image ?
                 String(format: LocalizedString("receipt_dialog_action_view"), LocalizedString("image")) :
                 String(format: LocalizedString("receipt_dialog_action_view"), LocalizedString("pdf"))
             
             let viewAttachment = UIPreviewAction(title: viewActionTitle, style: .default) { _, _ in
-                self.previewShowAttachmentAction.onNext(self.displayData.receipt!)
+                self.previewShowAttachmentAction.onNext(receipt)
             }
             
             return [viewAttachment, remove]
