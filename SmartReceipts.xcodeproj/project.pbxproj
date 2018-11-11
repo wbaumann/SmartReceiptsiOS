@@ -128,6 +128,8 @@
 		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
 		7134DACC2106776B006BDCAA /* AppNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7134DACB2106776B006BDCAA /* AppNotificationCenter.swift */; };
 		7135E08A20C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */; };
+		713B7F6D219786ED007220EC /* SubscriptionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B7F6C219786ED007220EC /* SubscriptionsResponse.swift */; };
+		713B7F7021978DC2007220EC /* Moya+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B7F6F21978DC2007220EC /* Moya+Extensions.swift */; };
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
 		714042061FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714042051FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift */; };
 		714042081FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714042071FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift */; };
@@ -677,6 +679,8 @@
 		713360451EF310C90076D319 /* TripsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsModuleTest.swift; sourceTree = "<group>"; };
 		7134DACB2106776B006BDCAA /* AppNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNotificationCenter.swift; sourceTree = "<group>"; };
 		7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion17.swift; sourceTree = "<group>"; };
+		713B7F6C219786ED007220EC /* SubscriptionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsResponse.swift; sourceTree = "<group>"; };
+		713B7F6F21978DC2007220EC /* Moya+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya+Extensions.swift"; sourceTree = "<group>"; };
 		713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCSVGeneratorTest.swift; sourceTree = "<group>"; };
 		713D4C771F62AA0700F29C4C /* AuthModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthModuleTest.swift; sourceTree = "<group>"; };
 		714042051FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptColumnPriceMinusTax.swift; sourceTree = "<group>"; };
@@ -1394,6 +1398,47 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		713B7F682197836C007220EC /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				71BC45501F9FB38C003A5BD5 /* LocalScansTracker.swift */,
+				71BC45521F9FB3A9003A5BD5 /* ScansPurchaseTracker.swift */,
+				71D7D43D1FAA062300437CA9 /* ScanService.swift */,
+				716C04211F685467007F9CD2 /* CognitoService.swift */,
+				7122778B1F756EA300090878 /* S3Service.swift */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
+		713B7F6921978377007220EC /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				714901C01F0598B900772B6F /* CurrencyExchangeService.swift */,
+				71EFE1E51F55E04000591C8C /* TooltipService.swift */,
+				71E7303C1FF7E53000471287 /* MigrationService.swift */,
+				71F98AE0204737CB007AF935 /* DataValidator.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		713B7F6A2197839D007220EC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				710A33DB1F827E2500D10344 /* PurchaseService.swift */,
+				718D2DF01F7D459B00A69B6E /* PushNotificationService.swift */,
+				718ADF6420B33823005FEF4F /* AppMonitorService.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		713B7F6B219786CF007220EC /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				713B7F6C219786ED007220EC /* SubscriptionsResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 		713D35451EDA334300D8563D /* Ad */ = {
 			isa = PBXGroup;
 			children = (
@@ -1472,18 +1517,9 @@
 			children = (
 				715606711FAF9BCC00E09760 /* APIs */,
 				71E2E57720DFD6A900BDE501 /* Auto Backup */,
-				714901C01F0598B900772B6F /* CurrencyExchangeService.swift */,
-				71EFE1E51F55E04000591C8C /* TooltipService.swift */,
-				716C04211F685467007F9CD2 /* CognitoService.swift */,
-				7122778B1F756EA300090878 /* S3Service.swift */,
-				718D2DF01F7D459B00A69B6E /* PushNotificationService.swift */,
-				710A33DB1F827E2500D10344 /* PurchaseService.swift */,
-				71BC45501F9FB38C003A5BD5 /* LocalScansTracker.swift */,
-				71BC45521F9FB3A9003A5BD5 /* ScansPurchaseTracker.swift */,
-				71D7D43D1FAA062300437CA9 /* ScanService.swift */,
-				71E7303C1FF7E53000471287 /* MigrationService.swift */,
-				71F98AE0204737CB007AF935 /* DataValidator.swift */,
-				718ADF6420B33823005FEF4F /* AppMonitorService.swift */,
+				713B7F6921978377007220EC /* Local */,
+				713B7F682197836C007220EC /* Scan */,
+				713B7F6A2197839D007220EC /* Common */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1512,6 +1548,7 @@
 		715606711FAF9BCC00E09760 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				713B7F6B219786CF007220EC /* Responses */,
 				715606721FAF9BE500E09760 /* SmartReceiptsAPI.swift */,
 				710D4589219384F9005463F7 /* APIProvider.swift */,
 				7100F7751F5EF20300D4B4D9 /* AuthService.swift */,
@@ -2290,6 +2327,7 @@
 				71B5C5361FB1550F00FA0AB9 /* UIAlert+Extensions.swift */,
 				710D98A11FE573540088B9BA /* UIView+Extensions.swift */,
 				71E3CCE3207E9E8900C7FF2D /* TimeInterval+Extensions.swift */,
+				713B7F6F21978DC2007220EC /* Moya+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3483,6 +3521,7 @@
 				7165507D218CCAEB007B55FF /* CircleButton.swift in Sources */,
 				EA8D81741AEA668100BAC943 /* WBCategory.m in Sources */,
 				719B1FDE1EF603190049BD71 /* ReceiptsInteractor.swift in Sources */,
+				713B7F6D219786ED007220EC /* SubscriptionsResponse.swift in Sources */,
 				EA07BF4D1AF400CA004D17F6 /* Database+Distances.m in Sources */,
 				714DE8A3205319FF0066EA6F /* HorizontalPickerItemCell.swift in Sources */,
 				719310471EDDC3120065B5AD /* WBImageStampler.m in Sources */,
@@ -3498,6 +3537,7 @@
 				719B1FF91EF6033A0049BD71 /* ReceiptActionsView.swift in Sources */,
 				716F07E22034AFDF00166D63 /* BackupView.swift in Sources */,
 				719B1FDF1EF603190049BD71 /* ReceiptsPresenter.swift in Sources */,
+				713B7F7021978DC2007220EC /* Moya+Extensions.swift in Sources */,
 				A7D554CF1CFF061100169FD2 /* WBReceipt+Query.swift in Sources */,
 				57580D1C1DFAB58B0090C488 /* UIDevice+DeviceInfo.m in Sources */,
 				A7F05BC61CFC453C0079F1AD /* ReceiptColumnReceiptId.swift in Sources */,

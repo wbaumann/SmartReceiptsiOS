@@ -13,7 +13,7 @@ class CurrencyExchangeService {
     func exchangeRate(_ base: String, target: String, onDate date: Date,
                 forceRefresh: Bool = false) -> Observable<ExchangeResponse> {
         return Observable<ExchangeResponse>.create { observer -> Disposable in
-            if !PurchaseService().hasValidSubscriptionValue() {
+            if !PurchaseService.hasValidSubscriptionValue {
                 Logger.debug("No subscription, no exchange")
                 observer.onNext(ExchangeResponse(value: nil, error: .notEnabled))
                 return Disposables.create()

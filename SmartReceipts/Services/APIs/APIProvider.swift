@@ -22,8 +22,11 @@ class APIProvider<T: TargetType>: MoyaProvider<T> {
                   trackInflights: Bool = false) {
         
         var modifiedPlugins = plugins
-        modifiedPlugins.append(NetworkLoggerPlugin(verbose: true))
         modifiedPlugins.append(AuthorizationPlugin())
+        
+        if DebugStates.isDebug {
+            modifiedPlugins.append(NetworkLoggerPlugin(verbose: true))
+        }
         
         super.init(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, callbackQueue: callbackQueue, manager: manager, plugins: modifiedPlugins, trackInflights: trackInflights)
     }
@@ -34,8 +37,7 @@ class AuthorizationPlugin: PluginType {
     
     func process(_ result: Result<Response, MoyaError>, target: TargetType) -> Result<Response, MoyaError> {
         switch result {
-        case .success(let response):
-            if response.statusCode == TOKEN_ERROR_CODE { handleTokenError() }
+        case .success: break
         case .failure(let error):
             if error.code == TOKEN_ERROR_CODE { handleTokenError() }
         }

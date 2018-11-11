@@ -15,7 +15,9 @@ import SwiftyStoreKit
 let PRODUCT_OCR_10 = "ios_ocr_purchase_10"
 let PRODUCT_OCR_50 = "ios_ocr_purchase_50"
 let PRODUCT_PLUS = "ios_plus_sku_2"
+
 fileprivate let APPSTORE_INTERACTED = "appstore_interacted"
+fileprivate let CACHED_VALIDATION_EXPIRE = "cached_validation_expireTime"
 
 typealias SubscriptionValidation = (valid: Bool, expireTime: Date?)
 
@@ -30,6 +32,39 @@ class PurchaseService {
     
     init(apiProvider: APIProvider<SmartReceiptsAPI> = .init()) {
         self.apiProvider = apiProvider
+        
+        let expire = Date(timeIntervalSince1970: UserDefaults.standard.double(forKey: CACHED_VALIDATION_EXPIRE))
+        let valid = expire > Date()
+        if valid { cache(validation: (valid, expire)) }
+        
+        AuthService.shared.loggedInObservable
+            .filter({ $0 && !PurchaseService.hasValidSubscriptionValue })
+            .flatMap({ [unowned self] _ in
+                return self.apiProvider.rx.request(.subscriptions).mapModel(SubscriptionsResponse.self)
+            }).map({ response -> SubscriptionModel? in
+                return response.subscriptions.sorted(by: { $0.expiresAt > $1.expiresAt }).first
+            }).filter({ $0 != nil })
+            .map({ SubscriptionValidation($0!.expiresAt > Date(), $0!.expiresAt) })
+            .map({ validation -> SubscriptionValidation in
+                guard let cachedExpireTime = cachedValidation?.expireTime else { return validation }
+                return validation.expireTime! > cachedExpireTime ? validation : cachedValidation!
+            })
+            .filter({ $0.valid })
+            .do(onNext: { [weak self] validation in self?.cache(validation: validation) })
+            .subscribe(onNext: { [weak self] validation in
+                self?.cache(validation: validation)
+                NotificationCenter.default.post(name: .SmartReceiptsAdsRemoved, object: nil)
+            }).disposed(by: bag)
+    }
+    
+    private func cache(validation: SubscriptionValidation) {
+        cachedValidation = validation
+        guard let interval = validation.expireTime?.timeIntervalSince1970 else { return }
+        UserDefaults.standard.set(interval, forKey: CACHED_VALIDATION_EXPIRE)
+    }
+    
+    class var hasValidSubscriptionValue: Bool {
+        return DebugStates.isDebug && DebugStates.subscription() ? true : cachedValidation?.valid == true
     }
     
     func cacheProducts() {
@@ -45,9 +80,7 @@ class PurchaseService {
         let ids: Set = [PRODUCT_PLUS, PRODUCT_OCR_10, PRODUCT_OCR_50]
         return Observable<SKProduct>.create({ observer -> Disposable in
             SwiftyStoreKit.retrieveProductsInfo(ids) { result in
-                for product in result.retrievedProducts {
-                    observer.onNext(product)
-                }
+                result.retrievedProducts.forEach({ observer.onNext($0) })
             }
             return Disposables.create()
         }).do(onError: { error in
@@ -84,7 +117,7 @@ class PurchaseService {
                 self?.markAppStoreInteracted()
                 if restored {
                     Logger.debug("Successfuly restored Subscription")
-                    NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
+                    NotificationCenter.default.post(name: .SmartReceiptsAdsRemoved, object: nil)
                 }
             })
     }
@@ -95,7 +128,7 @@ class PurchaseService {
                 self?.markAppStoreInteracted()
                 self?.resetCache()
                 Logger.debug("Successful restore PLUS Subscription")
-                NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
+                NotificationCenter.default.post(name: .SmartReceiptsAdsRemoved, object: nil)
             }, onError: handleError(_:))
     }
     
@@ -164,7 +197,7 @@ class PurchaseService {
                 switch purchase.transaction.transactionState {
                 case .purchased, .restored:
                     if purchase.productId == PRODUCT_PLUS {
-                        NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
+                        NotificationCenter.default.post(name: .SmartReceiptsAdsRemoved, object: nil)
                     }
                 case .failed, .purchasing, .deferred:
                     break // do nothing
@@ -253,25 +286,17 @@ class PurchaseService {
     
     func resetCache() {
         cachedValidation = nil
+        UserDefaults.standard.set(0, forKey: CACHED_VALIDATION_EXPIRE)
     }
     
     func cacheSubscriptionValidation() {
         validateSubscription()
-            .do(onNext: { cachedValidation = $0 })
+            .do(onNext: { [weak self] in self?.cache(validation: $0) })
             .subscribe(onNext: { validation in
                 Logger.debug("Cached Validation: Valid = \(validation.valid), expire: \(String(describing: validation.expireTime))")
             }, onError: { error in
                 Logger.error(error.localizedDescription)
             }).disposed(by: bag)
-    }
-    
-    func hasValidSubscriptionValue() -> Bool {
-        if DebugStates.isDebug && DebugStates.subscription() {
-            return true
-        }
-        
-        guard let cached = cachedValidation else { return false }
-        return cached.valid
     }
     
     func hasValidSubscription() -> Observable<Bool> {
@@ -287,7 +312,8 @@ class PurchaseService {
     }
     
     func validateSubscription() -> Observable<SubscriptionValidation> {
-        if !isAppStoreInteracted() { return Observable<SubscriptionValidation>.just((false, nil)) }
+        if cachedValidation?.valid == true { return .just(cachedValidation!) }
+        if !isAppStoreInteracted() { return .just((false, nil)) }
         return forceValidateSubscription()
     }
     
@@ -323,7 +349,7 @@ class PurchaseService {
             return Disposables.create()
         }).catchError({ error -> Observable<SubscriptionValidation> in
             return Observable<SubscriptionValidation>.just((false, nil))
-        }).do(onNext: { cachedValidation = $0 })
+        }).do(onNext: { [weak self] in self?.cache(validation: $0) })
     }
     
     func verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult {
