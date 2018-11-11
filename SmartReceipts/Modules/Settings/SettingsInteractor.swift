@@ -24,7 +24,7 @@ class SettingsInteractor: Interactor {
         return purchaseService.forceValidateSubscription()
             .do(onNext: { validation in
                 if validation.valid {
-                    NotificationCenter.default.post(name: NSNotification.Name.SmartReceiptsAdsRemoved, object: nil)
+                    NotificationCenter.default.post(name: .SmartReceiptsAdsRemoved, object: nil)
                 }
             })
     }

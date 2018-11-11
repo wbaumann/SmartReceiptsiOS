@@ -15,6 +15,7 @@ enum SmartReceiptsAPI {
     case login(credentials: Credentials)
     case logout
     case user
+    case subscriptions
     case saveDevice(token: String)
     case recognition(id: String)
     case recognize(url: URL, incognito: Bool)
@@ -33,6 +34,7 @@ extension SmartReceiptsAPI: TargetType {
         case .login: return "/users/log_in"
         case .logout: return "/users/log_out"
         case .user: return "/users/me"
+        case .subscriptions: return "/subscriptions"
         case .saveDevice: return "/users/me"
         case .recognition(let id): return "/recognitions/\(id)"
         case .recognize: return "/recognitions"
@@ -46,6 +48,7 @@ extension SmartReceiptsAPI: TargetType {
         case .login: return .post
         case .logout: return .delete
         case .user: return .get
+        case .subscriptions: return .get
         case .saveDevice: return .patch
         case .recognition: return .get
         case .recognize: return .post
@@ -63,6 +66,7 @@ extension SmartReceiptsAPI: TargetType {
             return ["login_params" : [ "type": "login", "email" : creds.email, "password": creds.password] ]
         case .logout: return [:]
         case .user: return [:]
+        case .subscriptions: return [:]
         case .saveDevice(let token):
             return ["user" : [ "registration_ids": [token] ] ]
         case .recognition: return [:]
@@ -79,6 +83,7 @@ extension SmartReceiptsAPI: TargetType {
         case .login: return URLEncoding.httpBody
         case .logout: return URLEncoding.httpBody
         case .user: return URLEncoding.httpBody
+        case .subscriptions: return URLEncoding.httpBody
         case .saveDevice: return JSONEncoding.default
         case .recognition: return URLEncoding.httpBody
         case .recognize: return JSONEncoding.default
@@ -89,6 +94,7 @@ extension SmartReceiptsAPI: TargetType {
     var authParams: [String: Any] {
         switch self {
         case .user,
+             .subscriptions,
              .saveDevice,
              .recognize,
              .recognition,

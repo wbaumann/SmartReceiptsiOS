@@ -19,7 +19,7 @@ extension WBPreferences {
     }
     
     @objc static func isPDFFooterUnlocked() -> Bool {
-        return PurchaseService().hasValidSubscriptionValue()
+        return PurchaseService.hasValidSubscriptionValue
     }
 }
 

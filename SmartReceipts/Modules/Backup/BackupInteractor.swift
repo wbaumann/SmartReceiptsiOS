@@ -22,7 +22,7 @@ class BackupInteractor: Interactor {
     }
     
     func hasValidSubscription() -> Bool {
-        return purchaseService.hasValidSubscriptionValue()
+        return PurchaseService.hasValidSubscriptionValue
     }
     
     func downloadZip(_ backup: RemoteBackupMetadata) {

@@ -87,7 +87,7 @@ extension SettingsView: MFMailComposeViewControllerDelegate {
         // attach device info metadata
         messageBody += "\n\n\nDebug info:\n"
         messageBody += UIApplication.shared.appVersionInfoString()
-        messageBody += "Plus: \(PurchaseService().hasValidSubscriptionValue() ? "true" : "false")\n"
+        messageBody += "Plus: \(PurchaseService.hasValidSubscriptionValue ? "true" : "false")\n"
         messageBody += "\(UIDevice.current.deviceInfoString()!)\n"
         messageBody += "Locale: \(Locale.current.identifier)"
         

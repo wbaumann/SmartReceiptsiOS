@@ -43,7 +43,7 @@ final class TripsView: FetchedTableViewController {
         lastDateSeparator = WBPreferences.dateSeparator()
         setPresentationCellNib(TripCell.viewNib())
         navigationController?.setToolbarHidden(true, animated: false)
-        title = PurchaseService().hasValidSubscriptionValue() ? AppTheme.appTitlePlus : AppTheme.appTitle
+        title = PurchaseService.hasValidSubscriptionValue ? AppTheme.appTitlePlus : AppTheme.appTitle
         
         configurePrivacyTooltip()
         configureDebug()
