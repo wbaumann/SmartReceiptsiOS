@@ -130,6 +130,7 @@
 		7135E08A20C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */; };
 		713B7F6D219786ED007220EC /* SubscriptionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B7F6C219786ED007220EC /* SubscriptionsResponse.swift */; };
 		713B7F7021978DC2007220EC /* Moya+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B7F6F21978DC2007220EC /* Moya+Extensions.swift */; };
+		713B7F722198CFFC007220EC /* Subscriptions.json in Resources */ = {isa = PBXBuildFile; fileRef = 713B7F712198CFFC007220EC /* Subscriptions.json */; };
 		713D35521EDA4F4A00D8563D /* TripCSVGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */; };
 		714042061FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714042051FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift */; };
 		714042081FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714042071FF18A230011A0F6 /* ReceiptColumnExchangedPriceMinusTax.swift */; };
@@ -681,6 +682,7 @@
 		7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion17.swift; sourceTree = "<group>"; };
 		713B7F6C219786ED007220EC /* SubscriptionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsResponse.swift; sourceTree = "<group>"; };
 		713B7F6F21978DC2007220EC /* Moya+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya+Extensions.swift"; sourceTree = "<group>"; };
+		713B7F712198CFFC007220EC /* Subscriptions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Subscriptions.json; sourceTree = "<group>"; };
 		713D35511EDA4F4A00D8563D /* TripCSVGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCSVGeneratorTest.swift; sourceTree = "<group>"; };
 		713D4C771F62AA0700F29C4C /* AuthModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthModuleTest.swift; sourceTree = "<group>"; };
 		714042051FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptColumnPriceMinusTax.swift; sourceTree = "<group>"; };
@@ -1406,6 +1408,7 @@
 				71D7D43D1FAA062300437CA9 /* ScanService.swift */,
 				716C04211F685467007F9CD2 /* CognitoService.swift */,
 				7122778B1F756EA300090878 /* S3Service.swift */,
+				714142A02191FFEB004BB7A2 /* RecognitionService.swift */,
 			);
 			path = Scan;
 			sourceTree = "<group>";
@@ -1552,7 +1555,6 @@
 				715606721FAF9BE500E09760 /* SmartReceiptsAPI.swift */,
 				710D4589219384F9005463F7 /* APIProvider.swift */,
 				7100F7751F5EF20300D4B4D9 /* AuthService.swift */,
-				714142A02191FFEB004BB7A2 /* RecognitionService.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -1561,6 +1563,7 @@
 			isa = PBXGroup;
 			children = (
 				7156068E1FAFB29F00E09760 /* Scan.json */,
+				713B7F712198CFFC007220EC /* Subscriptions.json */,
 			);
 			path = JSONs;
 			sourceTree = "<group>";
@@ -2944,6 +2947,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				713B7F722198CFFC007220EC /* Subscriptions.json in Resources */,
 				EAE23CB51B1757590078F197 /* 2015_05_26_SmartReceipts.smr in Resources */,
 				7156068F1FAFB29F00E09760 /* Scan.json in Resources */,
 				EA6888D31AFE699A00A910FC /* receipts-dates-test.db in Resources */,
@@ -3167,12 +3171,12 @@
 				"$(SRCROOT)/SmartReceipts/Modules/Auth/AuthInteractor.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/Auth/AuthPresenter.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/Auth/AuthRouter.swift",
-				"$(SRCROOT)/SmartReceipts/Services/PurchaseService.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/OCR Configuration/OCRConfigurationInteractor.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/OCR Configuration/OCRConfigurationPresenter.swift",
 				"$(SRCROOT)/SmartReceipts/Modules/OCR Configuration/OCRConfigurationRouter.swift",
-				"$(SRCROOT)/SmartReceipts/Services/APIs/RecognitionService.swift",
-				"$(SRCROOT)/SmartReceipts/Services/S3Service.swift",
+				"$(SRCROOT)/SmartReceipts/Services/Scan/RecognitionService.swift",
+				"$(SRCROOT)/SmartReceipts/Services/Scan/S3Service.swift",
+				"$(SRCROOT)/SmartReceipts/Services/Common/PurchaseService.swift",
 			);
 			name = "Cuckoo Tests";
 			outputPaths = (

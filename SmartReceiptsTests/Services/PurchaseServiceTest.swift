@@ -10,17 +10,22 @@
 import XCTest
 import Cuckoo
 import RxSwift
+import Moya
+import SwiftyJSON
 
 class PurchaseServiceTest: XCTestCase {
     
     var purchaseService: MockPurchaseService!
     var purchaseServiceSuccess = PurchaseServiceCustomMockSuccess()
     var purchaseServiceFail = PurchaseServiceCustomMockFail()
+    var apiProvider: APIProvider<SmartReceiptsAPI>!
     
     override func setUp() {
         super.setUp()
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        
         purchaseService = MockPurchaseService().withEnabledSuperclassSpy()
+        
         configureStubs()
     }
     
@@ -64,23 +69,42 @@ class PurchaseServiceTest: XCTestCase {
     }
     
     func testValidSubscription() {
-        XCTAssertFalse(purchaseServiceSuccess.hasValidSubscriptionValue())
+        XCTAssertFalse(PurchaseService.hasValidSubscriptionValue)
         purchaseServiceSuccess.cacheSubscriptionValidation()
-        XCTAssertTrue(purchaseServiceSuccess.hasValidSubscriptionValue())
+        XCTAssertTrue(PurchaseService.hasValidSubscriptionValue)
     }
     
     func testResetCache() {
-        XCTAssertFalse(purchaseServiceSuccess.hasValidSubscriptionValue())
+        XCTAssertFalse(PurchaseService.hasValidSubscriptionValue)
         purchaseServiceSuccess.cacheSubscriptionValidation()
-        XCTAssertTrue(purchaseServiceSuccess.hasValidSubscriptionValue())
+        XCTAssertTrue(PurchaseService.hasValidSubscriptionValue)
         purchaseServiceSuccess.resetCache()
-        XCTAssertFalse(purchaseServiceSuccess.hasValidSubscriptionValue())
+        XCTAssertFalse(PurchaseService.hasValidSubscriptionValue)
     }
     
     func testExpiredSubscription() {
-        XCTAssertFalse(purchaseServiceFail.hasValidSubscriptionValue())
+        XCTAssertFalse(PurchaseService.hasValidSubscriptionValue)
         purchaseServiceFail.cacheSubscriptionValidation()
-        XCTAssertFalse(purchaseServiceFail.hasValidSubscriptionValue())
+        XCTAssertFalse(PurchaseService.hasValidSubscriptionValue)
     }
     
+    func testRestoreSubscription() {
+        XCTAssertFalse(PurchaseService.hasValidSubscriptionValue)
+        
+        let responseClosure = { (target: SmartReceiptsAPI) -> Endpoint in
+            let jsonData = try! JSON.loadFrom(filename: "Subscriptions", type: "json").rawData()
+            return Endpoint(url: URL(target: target).absoluteString,
+                            sampleResponseClosure: { .networkResponse(200, jsonData) },
+                            method: target.method,
+                            task: target.task,
+                            httpHeaderFields: target.headers)
+        }
+        
+        
+        let authService = AuthServiceTestable()
+        apiProvider = APIProvider<SmartReceiptsAPI>(endpointClosure: responseClosure, stubClosure: MoyaProvider.immediatelyStub)
+        _ = PurchaseService(apiProvider: apiProvider, authService: authService)
+        
+        XCTAssertTrue(PurchaseService.hasValidSubscriptionValue)
+    }
 }

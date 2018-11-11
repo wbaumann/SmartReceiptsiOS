@@ -26,21 +26,23 @@ private var cachedValidation: SubscriptionValidation?
 
 class PurchaseService {
     private let apiProvider: APIProvider<SmartReceiptsAPI>
+    private let authService: AuthServiceInterface
     private var plusSubsribtionProduct: SKProduct?
     static fileprivate var cachedProducts = [SKProduct]()
     let bag = DisposeBag()
     
-    init(apiProvider: APIProvider<SmartReceiptsAPI> = .init()) {
+    init(apiProvider: APIProvider<SmartReceiptsAPI> = .init(), authService: AuthServiceInterface = AuthService.shared) {
         self.apiProvider = apiProvider
+        self.authService = authService
         
         let expire = Date(timeIntervalSince1970: UserDefaults.standard.double(forKey: CACHED_VALIDATION_EXPIRE))
         let valid = expire > Date()
         if valid { cache(validation: (valid, expire)) }
         
-        AuthService.shared.loggedInObservable
+        authService.loggedInObservable
             .filter({ $0 && !PurchaseService.hasValidSubscriptionValue })
-            .flatMap({ [unowned self] _ in
-                return self.apiProvider.rx.request(.subscriptions).mapModel(SubscriptionsResponse.self)
+            .flatMap({ _ in
+                return apiProvider.rx.request(.subscriptions).mapModel(SubscriptionsResponse.self)
             }).map({ response -> SubscriptionModel? in
                 return response.subscriptions.sorted(by: { $0.expiresAt > $1.expiresAt }).first
             }).filter({ $0 != nil })
@@ -51,7 +53,9 @@ class PurchaseService {
             })
             .filter({ $0.valid })
             .do(onNext: { [weak self] validation in self?.cache(validation: validation) })
-            .subscribe(onNext: { [weak self] validation in
+            .do(onError: { error in
+                Logger.error(error.localizedDescription)
+            }).subscribe(onNext: { [weak self] validation in
                 self?.cache(validation: validation)
                 NotificationCenter.default.post(name: .SmartReceiptsAdsRemoved, object: nil)
             }).disposed(by: bag)
