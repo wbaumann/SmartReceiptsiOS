@@ -113,7 +113,7 @@ public class ExchangeRateCell: DecimalCell {
     private func showUnsupportedCurrrencyInfo() {
         alertPresenter?.presentAlert(LocalizedString("exchange.rate.error.unsupported.currency.title"),
                             message: LocalizedString("exchange.rate.error.unsupported.currency.message"),
-                      dismissButton: LocalizedString("generic.button.title.ok"))
+                      dismissButton: LocalizedString("generic_button_title_ok"))
     }
     
     private func openSettings() {

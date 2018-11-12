@@ -133,7 +133,7 @@ extension AuthView: AuthViewInterface {
             switch event {
             case .next(let errorMessage):
                 let alert = UIAlertController(title: LocalizedString("login.error.title"), message: errorMessage, preferredStyle: .alert)
-                let action = UIAlertAction(title: LocalizedString("generic.button.title.ok"), style: .cancel, handler: nil)
+                let action = UIAlertAction(title: LocalizedString("generic_button_title_ok"), style: .cancel, handler: nil)
                 alert.addAction(action)
                 self?.present(alert, animated: true, completion: nil)
             default: break

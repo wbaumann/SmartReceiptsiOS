@@ -133,13 +133,13 @@ extension AppDelegate {
             let alert = UIAlertController(title: LocalizedString("receipt_attach_file"),
                 message: String(format: LocalizedString("dialog_attachment_text"), LocalizedString("image")), preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.ok"), style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: LocalizedString("generic_button_title_ok"), style: .cancel, handler: nil))
             AdNavigationEntryPoint.navigationController?.visibleViewController?.present(alert, animated: true)
         } else {
             let alert = UIAlertController(title: LocalizedString("receipt_attach_file"),
                 message: String(format: LocalizedString("dialog_attachment_text"), LocalizedString("pdf")), preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.ok"), style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: LocalizedString("generic_button_title_ok"), style: .cancel, handler: nil))
             AdNavigationEntryPoint.navigationController?.visibleViewController?.present(alert, animated: true)
         }
     }

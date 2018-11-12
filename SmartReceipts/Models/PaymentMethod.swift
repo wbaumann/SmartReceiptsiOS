@@ -51,7 +51,10 @@ class PaymentMethod: NSObject, FetchedModel, Pickable {
     class func defaultMethod(_ database: Database = Database.sharedInstance()) -> PaymentMethod {
         let allMethods = database.allPaymentMethods()
         for method in allMethods! {
-            if method.method == LocalizedString("payment.method.unspecified", comment: "") {
+            if method.method == LocalizedString("payment_method_unspecified", comment: "") {
+                return method
+            } else if method.method == "Unspecified" {
+                // For legacy reasons from before we started supporting translations, we use this as the default fallback option
                 return method
             }
         }

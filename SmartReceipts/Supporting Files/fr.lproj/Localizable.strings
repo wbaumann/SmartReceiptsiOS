@@ -1,3 +1,9 @@
+/** Android System Strings (ok, untitled, error_message_title) **/
+"generic_button_title_ok" = "OK";
+"generic_error_alert_title" = "Erreur";
+"payment_method_unspecified" = "<Sans nom>";
+
+
 /** Legacy Android Strings (i.e. Ones that no longer existing on the master branch) **/
 "receipt_dialog_action_camera" = "Prendre la photo du reçu";
 "receipt_dialog_action_swap_up" = "Déplacer vers le haut";

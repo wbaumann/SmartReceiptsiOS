@@ -138,7 +138,7 @@ class GenerateReportInteractor: Interactor {
                 case .zipImagesFailed:
                     message = LocalizedString("DIALOG_EMAIL_CHECKBOX_ZIP_WITH_METADATA")
                 }
-                actions.append(UIAlertAction(title: LocalizedString("generic.button.title.ok"), style: .default, handler: nil))
+                actions.append(UIAlertAction(title: LocalizedString("generic_button_title_ok"), style: .default, handler: nil))
                 self.presenter.presentSheet(title: title, message: message, actions: actions)
             })
         }
@@ -146,7 +146,7 @@ class GenerateReportInteractor: Interactor {
     
     func validateSelection() -> Bool {
         if (!fullPdfReport.value && !pdfReportWithoutTable.value && !csvFile.value && !zipStampedJPGs.value) {
-            presenter.presentAlert(title: LocalizedString("generic.error.alert.title"),
+            presenter.presentAlert(title: LocalizedString("generic_error_alert_title"),
                                    message: LocalizedString("DIALOG_EMAIL_TOAST_NO_SELECTION"))
             return false
         }

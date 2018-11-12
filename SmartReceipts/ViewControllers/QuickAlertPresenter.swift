@@ -15,7 +15,7 @@ protocol QuickAlertPresenter: class {
 }
 
 extension QuickAlertPresenter where Self: UIViewController {
-    func presentAlert(_ title: String?, message: String, dismissButton: String = LocalizedString("generic.button.title.ok", comment: "")) {
+    func presentAlert(_ title: String?, message: String, dismissButton: String = LocalizedString("generic_button_title_ok", comment: "")) {
         let dismissAction = UIAlertAction(title: dismissButton, style: .default, handler: nil)
         presentAlert(title, message: message, actions: [dismissAction])
     }

@@ -1,3 +1,9 @@
+/** Android System Strings (ok, untitled, error_message_title) **/
+"generic_button_title_ok" = "OK";
+"generic_error_alert_title" = "Помилка";
+"payment_method_unspecified" = "<Без назви>";
+
+
 /** Legacy Android Strings (i.e. Ones that no longer existing on the master branch) **/
 "receipt_dialog_action_camera" = "Зробити знімок чека";
 "receipt_dialog_action_swap_up" = "Поміняти місцями з верхнім";
