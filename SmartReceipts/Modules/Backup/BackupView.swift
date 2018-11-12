@@ -271,7 +271,7 @@ extension BackupView {
                         self.showOptions(file: fileUrl)
                     } else {
                         Logger.error("Failed to properly export data")
-                        self.presenter._router.openAlert(title: LocalizedString("generic.error.alert.title"),
+                        self.presenter._router.openAlert(title: LocalizedString("generic_error_alert_title"),
                                                        message: LocalizedString("EXPORT_ERROR"))
                     }
                 }

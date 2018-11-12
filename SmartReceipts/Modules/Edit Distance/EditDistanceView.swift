@@ -49,7 +49,7 @@ final class EditDistanceView: UserInterface {
         } else {
             let title = LocalizedString("edit.distance.controller.validation.error.title")
             let alert = UIAlertController(title: title, message: errorsDescription, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.ok"), style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: LocalizedString("generic_button_title_ok"), style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
         }
     }

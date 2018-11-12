@@ -25,6 +25,12 @@
 "receipt_file_picker_cant_import_error" = "Can't import selected file";
 "drive_sync_error_unknown" = "Unknown Error";
 
+/** Android System Strings (ok, untitled, error_message_title) **/
+/** <MARKER - SECTION COMPLETE> **/
+"generic_button_title_ok" = "OK";
+"generic_error_alert_title" = "Error";
+"payment_method_unspecified" = "<Untitled>";
+
 /** Legacy Android Strings (i.e. Ones that no longer existing on the master branch) **/
 /** <MARKER - SECTION COMPLETE> **/
 "receipt_dialog_action_camera" = "Take Receipt Image";
@@ -32,14 +38,9 @@
 "receipt_dialog_action_swap_down" = "Swap Down";
 "action_send_attach" = "Attach %@ to Receipt";
 "action_send_replace" = "Replace Receipt %@";
+
 "pref_layout_display_photo_title" = "Include Picture/PDF Marker";
 "pref_layout_display_photo_summary" = "Indicate if values have a photo/PDF";
-
-
-/** Android System Strings (e.g. okay) **/
-"generic.button.title.ok" = "OK";
-"generic.error.alert.title" = "Error";
-"payment.method.unspecified" = "Unspecified";
 
 
 /** iOS Strings that slightly differ from Android and can be replaced with similar Android ones **/

@@ -24,7 +24,7 @@ extension Presenter {
 extension Router {
     func openAlert(title: String?, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: LocalizedString("generic.button.title.ok"), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizedString("generic_button_title_ok"), style: .cancel, handler: nil))
         _view.present(alert, animated: true, completion: nil)
     }
     

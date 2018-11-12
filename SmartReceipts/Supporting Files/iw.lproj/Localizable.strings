@@ -1,3 +1,16 @@
-/* 
-  TODO
-*/
+/** Android System Strings (ok, untitled, error_message_title) **/
+"generic_button_title_ok" = "אישור";
+"generic_error_alert_title" = "שגיאה";
+"payment_method_unspecified" = "‏>ללא כותרת<;
+
+
+/** Legacy Android Strings (i.e. Ones that no longer existing on the master branch) **/
+// TODO: Translate each of these items
+"receipt_dialog_action_camera" = "Take Receipt Image";
+"receipt_dialog_action_swap_up" = "Swap Up";
+"receipt_dialog_action_swap_down" = "Swap Down";
+"action_send_attach" = "Attach %@ to Receipt";
+"action_send_replace" = "Replace Receipt %@";
+
+"pref_layout_display_photo_title" = "Include Picture/PDF Marker";
+"pref_layout_display_photo_summary" = "Indicate if values have a photo/PDF";
