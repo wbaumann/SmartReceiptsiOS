@@ -293,6 +293,7 @@
 		71ACA7C91F5B69C90024903E /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7C31F5B69C90024903E /* DebugView.swift */; };
 		71ACA7CC1F5B6A360024903E /* DebugFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7CB1F5B6A360024903E /* DebugFormView.swift */; };
 		71ACA7CE1F5C58290024903E /* DebugStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ACA7CD1F5C58290024903E /* DebugStates.swift */; };
+		71AD6368219AD86200515A5E /* EurekaWhitespaceWorkaround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD6367219AD86200515A5E /* EurekaWhitespaceWorkaround.swift */; };
 		71AD67721F23FA810033B643 /* PredectiveTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD67711F23FA810033B643 /* PredectiveTextCell.swift */; };
 		71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71AEDDD61EDF7FF400BAC0DD /* TripDistances.storyboard */; };
 		71AEDDDE1EDF7FF400BAC0DD /* TripDistancesDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEDDD71EDF7FF400BAC0DD /* TripDistancesDisplayData.swift */; };
@@ -875,6 +876,7 @@
 		71ACA7C31F5B69C90024903E /* DebugView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		71ACA7CB1F5B6A360024903E /* DebugFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugFormView.swift; sourceTree = "<group>"; };
 		71ACA7CD1F5C58290024903E /* DebugStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugStates.swift; sourceTree = "<group>"; };
+		71AD6367219AD86200515A5E /* EurekaWhitespaceWorkaround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaWhitespaceWorkaround.swift; sourceTree = "<group>"; };
 		71AD67711F23FA810033B643 /* PredectiveTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredectiveTextCell.swift; sourceTree = "<group>"; };
 		71AEDDD61EDF7FF400BAC0DD /* TripDistances.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TripDistances.storyboard; sourceTree = "<group>"; };
 		71AEDDD71EDF7FF400BAC0DD /* TripDistancesDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDistancesDisplayData.swift; sourceTree = "<group>"; };
@@ -2368,6 +2370,7 @@
 				7120099C1F12D0DE0049927E /* TickTock.swift */,
 				71ACA7B91F5B5A830024903E /* FeatureFlags.swift */,
 				71ACA7CD1F5C58290024903E /* DebugStates.swift */,
+				71AD6367219AD86200515A5E /* EurekaWhitespaceWorkaround.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -3510,6 +3513,7 @@
 				719B1FF71EF6033A0049BD71 /* ReceiptActionsPresenter.swift in Sources */,
 				716F07E02034AFDF00166D63 /* BackupRouter.swift in Sources */,
 				7109B00F1F61C35F0043AE04 /* UserDefaults+Extensions.swift in Sources */,
+				71AD6368219AD86200515A5E /* EurekaWhitespaceWorkaround.swift in Sources */,
 				A78214F71CFFE60000FD644A /* OpenExchangeRates.swift in Sources */,
 				714104E31FF43D7700C334C5 /* WBActionSheetPicker.m in Sources */,
 				718AAC112120382E00290183 /* SyncableTableCell.swift in Sources */,
