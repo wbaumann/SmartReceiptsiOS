@@ -370,11 +370,14 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     }
 }
 
+private let whitespaceWorkaround = EurekaWhitespaceWorkaround()
 fileprivate extension BaseCell {
     fileprivate func configureCell() {
         textLabel?.font = AppTheme.boldFont
         detailTextLabel?.textColor = AppTheme.primaryColor
         detailTextLabel?.font = AppTheme.boldFont
+        guard let textCell = self as? TextCell else { return }
+        whitespaceWorkaround.configureWhiteSpaceWorkaround(forTextCell: textCell)
     }
 }
 

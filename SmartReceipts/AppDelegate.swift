@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppMonitorServiceFactory().createAppMonitor().configure()
         
         AppTheme.customizeOnAppLoad()
+        EurekaWhitespaceWorkaround.configureTextCells()
         Crashlytics.sharedInstance().debugMode = DebugStates.isDebug
         
         _ = FileManager.initTripsDirectory()
