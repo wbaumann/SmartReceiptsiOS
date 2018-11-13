@@ -30,35 +30,39 @@ final class ReceiptImageViewerView: UserInterface {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = displayData.receipt.name
+        let shareItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share-2"), style: .plain, target: self, action: #selector(share))
         
-        imageView = UIImageView(frame: self.scrollView.bounds)
+        navigationItem.title = displayData.receipt.name
+        navigationItem.rightBarButtonItem = shareItem
+        
+        imageView = UIImageView(frame: scrollView.bounds)
         scrollView.addSubview(imageView)
         imageView.contentMode = .scaleAspectFit
         
+        AppTheme.customizeOnViewDidLoad(self)
+        
+        configureRx()
+    }
+    
+    private func configureRx() {
         presenter.image.asObservable().bind(to: imageView.rx.image).disposed(by: bag)
         
-        rotateLeftButton.rx.tap.subscribe(onNext: { [unowned self] in
-            if let img = self.presenter.image.value {
-                self.presenter.image.accept(WBImageUtils.image(img, with: .left))
-            }
-        }).disposed(by: bag)
+        let observables = [rotateLeftButton.rx.tap.map { UIImage.Orientation.left },
+                           rotateRightButton.rx.tap.map { UIImage.Orientation.right }]
+        
+        Observable<UIImage.Orientation>.merge(observables)
+            .subscribe(onNext: { [unowned self] orientation in
+                guard let img = self.presenter.image.value else { return }
+                self.presenter.image.accept(WBImageUtils.image(img, with: orientation))
+            }).disposed(by: bag)
         
         cameraButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-            _ = ImagePicker.sharedInstance().rx_openOn(self)
-                .filter({ $0 != nil })
-                .asObservable()
-                .bind(to: self.presenter.image)
-        }).disposed(by: bag)
-        
-        rotateRightButton.rx.tap.subscribe(onNext: { [unowned self] in
-            if let img = self.presenter.image.value {
-                self.presenter.image.accept(WBImageUtils.image(img, with: .right))
-            }
-        }).disposed(by: bag)
-        
-        AppTheme.customizeOnViewDidLoad(self)
+                _ = ImagePicker.sharedInstance().rx_openOn(self)
+                    .filter({ $0 != nil })
+                    .asObservable()
+                    .bind(to: self.presenter.image)
+            }).disposed(by: bag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +83,12 @@ final class ReceiptImageViewerView: UserInterface {
         imageView.frame = scrollView.bounds
         scrollView.contentSize = scrollView.bounds.size
         scrollView.contentOffset = CGPoint(x: 0, y: 0)
+    }
+    
+    @objc private func share() {
+        guard let image = imageView.image else { return }
+        let sharePanel = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        present(sharePanel, animated: true, completion: nil)
     }
     
 }
