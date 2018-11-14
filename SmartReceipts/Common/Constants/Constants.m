@@ -30,6 +30,6 @@ void SRDelayedExecution(NSTimeInterval seconds, ActionBlock action) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, seconds * NSEC_PER_SEC), dispatch_get_main_queue(), action);
 }
 
-NSString *const FeedbackEmailAddress =              @"supp" @"port" @"@sma" @"rtreceipts.co";
+NSString *const FeedbackEmailAddress =              @"sup" @"port" @"@sma" @"rtreceipts.co";
 NSString *const FeedbackEmailSubject =              @"Smart Receipts - Feedback";
 NSString *const FeedbackBugreportEmailSubject =     @"Smart Receipts - Support";
