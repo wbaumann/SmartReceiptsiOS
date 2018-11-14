@@ -30,7 +30,7 @@ class PaymentMethodTests: SmartReceiptsTestsBase {
     }
     
     func testEqualPaymentMethod() {
-        let unspecifiedMethodName = "Unspecified"
+        let unspecifiedMethodName = LocalizedString("payment_method_unspecified", comment: "")
         XCTAssertTrue(paymentMethod.method == unspecifiedMethodName)
         
         let unspecifiedMethod = PaymentMethod(objectId: 100, method: unspecifiedMethodName)
