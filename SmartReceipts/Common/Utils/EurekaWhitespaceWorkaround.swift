@@ -6,6 +6,8 @@
 //  Copyright © 2018 Will Baumann. All rights reserved.
 //
 
+// Solution for https://github.com/xmartlabs/Eureka/issues/424
+
 import Foundation
 import Eureka
 
