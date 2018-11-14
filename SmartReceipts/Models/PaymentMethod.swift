@@ -8,6 +8,9 @@
 
 import FMDB
 
+// For legacy reasons from before we started supporting translations, we use this as the default fallback option
+fileprivate let LEGACY_DEFAULT_PAYMENT_METHOD = "Unspecified"
+
 @objcMembers
 class PaymentMethod: NSObject, FetchedModel, Pickable {
     var objectId: UInt = 0
@@ -53,8 +56,7 @@ class PaymentMethod: NSObject, FetchedModel, Pickable {
         for method in allMethods! {
             if method.method == LocalizedString("payment_method_unspecified", comment: "") {
                 return method
-            } else if method.method == "Unspecified" {
-                // For legacy reasons from before we started supporting translations, we use this as the default fallback option
+            } else if method.method == LEGACY_DEFAULT_PAYMENT_METHOD {
                 return method
             }
         }

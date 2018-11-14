@@ -1,7 +1,7 @@
 /** Android System Strings (ok, untitled, error_message_title) **/
 "generic_button_title_ok" = "ОК";
 "generic_error_alert_title" = "Ошибка";
-"payment_method_unspecified" = "<Без названия>;
+"payment_method_unspecified" = "<Без названия>";
 
 
 /** Legacy Android Strings (i.e. Ones that no longer existing on the master branch) **/
