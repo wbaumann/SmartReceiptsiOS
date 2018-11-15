@@ -36,8 +36,8 @@ final class EditDistanceView: UserInterface {
         let isEdit = displayData.distance != nil
         
         navigationItem.title = isEdit ?
-            LocalizedString("edit.distance.controller.edit.title") :
-            LocalizedString("edit.distance.controller.add.title")
+            LocalizedString("dialog_mileage_title_update") :
+            LocalizedString("dialog_mileage_title_create")
     }
     
     //MARK: Actions

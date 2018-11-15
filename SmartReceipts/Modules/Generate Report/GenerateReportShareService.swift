@@ -22,8 +22,8 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
     
     func emailFiles(_ files: [String]) {
         guard MFMailComposeViewController.canSendMail() else {
-            self.presenter.presentAlert(title: LocalizedString("generate.report.email.not.configured.title"),
-                                        message: LocalizedString("generate.report.email.not.configured.message"))
+            self.presenter.presentAlert(title: LocalizedString("generic_error_alert_title"),
+                                        message: LocalizedString("error_email_not_configured_message"))
             remove(files: files)
             return
         }

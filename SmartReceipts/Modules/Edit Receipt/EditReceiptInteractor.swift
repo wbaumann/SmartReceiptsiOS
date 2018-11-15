@@ -70,7 +70,7 @@ class EditReceiptInteractor: Interactor {
     private func save(receipt: WBReceipt) {
         receipt.lastLocalModificationTime = Date()
         if !Database.sharedInstance().save(receipt) {
-            presenter.present(errorDescription: LocalizedString("edit.receipt.generic.save.error.message"))
+            presenter.present(errorDescription: LocalizedString("database_error"))
             let action = receipt.objectId == 0 ? "insert" : "update"
             Logger.error("Can't \(action) receipt: \(receipt.description)")
         } else {

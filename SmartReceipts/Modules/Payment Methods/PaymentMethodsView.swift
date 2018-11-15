@@ -63,8 +63,8 @@ final class PaymentMethodsView: FetchedTableViewController {
                 textField.text = method?.method
             }
         
-            let saveTitle = isEdit ? LocalizedString("dialog_mileage_positive_update") :
-                                     LocalizedString("dialog_mileage_positive_create")
+            let saveTitle = isEdit ? LocalizedString("update") :
+                                     LocalizedString("add")
             alert.addAction(UIAlertAction(title: saveTitle, style: .default, handler: { [unowned self] _ in
                 let pm = method ?? PaymentMethod()
                 let method = alert.textFields!.first!.text
@@ -86,12 +86,6 @@ final class PaymentMethodsView: FetchedTableViewController {
         if method == nil || method!.isEmpty {
             presenter.presentAlert(title: LocalizedString("edit.payment.method.controller.save.error.title"),
                                  message: LocalizedString("edit.payment.method.controller.save.error.message"))
-            return false
-        }
-        
-        if Database.sharedInstance().hasPaymentMethod(withName: method!) {
-            presenter.presentAlert(title: LocalizedString("edit.payment.method.controller.save.error.title"),
-                                 message: LocalizedString("edit.payment.method.controller.save.error.exists.message"))
             return false
         }
         

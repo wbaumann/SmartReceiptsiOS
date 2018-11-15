@@ -186,7 +186,7 @@ final class TripsView: FetchedTableViewController {
         
         pCell.priceLabel.text = trip.formattedPrice()
         pCell.nameLabel.text = trip.name
-        pCell.dateLabel.text = String(format: LocalizedString("trips.controller.from.to.date.label.base"),
+        pCell.dateLabel.text = String(format: LocalizedString("trip_adapter_list_item_to"),
                                       dateFormatter.formattedDate(trip.startDate, in: trip.startTimeZone),
                                       dateFormatter.formattedDate(trip.endDate, in: trip.endTimeZone))
         pCell.priceWidthConstraint.constant = priceWidth

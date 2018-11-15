@@ -64,9 +64,9 @@
 
 "import_string_item" = "Імпорт %@";
 
-"item_code" = "Код:";
+"item_code" = "Код";
 
-"item_name" = "Ім'я:";
+"item_name" = "Ім'я";
 
 "move" = "Перемістити";
 
@@ -122,9 +122,7 @@
 "report_info_generate" = "Створити";
 
 /* ============= Report Generation ============== */
-"report_header_from" = "Від: %@";
-
-"report_header_to" = "До: %@";
+"report_header_duration" = "Від: %1$@ До: %2$@";
 
 "report_header_receipts_total" = "Загалом за чеками: %@";
 
@@ -362,7 +360,7 @@
 "attachment_error" = "Не вдається прикріпити цей файл.";
 
 /* ================== Trip Adapter ===================== */
-"trip_adapter_list_item_to" = " до ";
+"trip_adapter_list_item_to" = "%1$@ до %2$@";
 
 "trip_no_data" = "Судячи з усього, в даний час у вас немає звітів. Натисніть на кнопку + (плюс), щоб почати.\n\nСмарт Чеки дозволяють створювати звіти про витрати, відстежувати чеки всередині кожного з них, і швидко створювати звіти в форматах PDF і CSV. Швидко та просто! Крім того, обов'язково ознайомтесь з меню, щоб налаштувати категорії, звіти та інші параметри для ваших потреб.";
 
@@ -515,19 +513,19 @@
 
 "remote_backups_list_item_menu_restore" = "Відновити";
 
-"remote_backups_list_item_menu_delete" = "@string/delete";
+"remote_backups_list_item_menu_delete" = "Видалити";
 
 "remote_backups_list_item_menu_download_images" = "Скачати в ZIP";
 
 "remote_backups_list_item_menu_download_images_debug" = "[Debug] Скачати";
 
-"dialog_remote_backup_delete_title" = "@string/delete";
+"dialog_remote_backup_delete_title" = "Видалити";
 
 "dialog_remote_backup_delete_message" = "Ви впевнені, що хочете видалити резервну копію з пристрою %@? Ця операція не може бути скасована.";
 
 "dialog_remote_backup_delete_message_this_device" = "Ви впевнені, що хочете видалити резервну копію з цього пристрою? Ця операція не зможе бути скасована. Будь ласка, зверніть увагу, що ви можете відключити автоматичне резервне копіювання після того, як ця операція завершиться, або всі локальні дані можуть бути повторно синхронізовані.";
 
-"dialog_remote_backup_delete_positive" = "@string/delete";
+"dialog_remote_backup_delete_positive" = "Видалити";
 
 "dialog_remote_backup_delete_progress" = "Видалення резервної копії з пристрою %@…";
 

@@ -51,7 +51,7 @@ class EditDistanceFormView: FormViewController {
         
         form +++ Section()
         <<< DecimalRow(DISTANCE_ROW_TAG) { row in
-            row.title = LocalizedString("pref_distance_header")
+            row.title = LocalizedString("distance_distance_field")
             row.value = changedDistance?.distance?.doubleValue
             row.add(rule: RuleRequired())
             row.setupDecimalFormat()
@@ -79,7 +79,7 @@ class EditDistanceFormView: FormViewController {
         })
         
         <<< PickerInlineRow<String>() { row in
-            row.title = LocalizedString("RECEIPTMENU_FIELD_CURRENCY")
+            row.title = LocalizedString("dialog_currency_field")
             row.options = Currency.allCurrencyCodesWithCached()
             row.value = changedDistance?.rate.currency.code
         }.onChange({ [weak self] row in
@@ -101,7 +101,7 @@ class EditDistanceFormView: FormViewController {
         })
     
         <<< DateInlineRow() { [] row in
-            row.title = LocalizedString("RECEIPTMENU_FIELD_DATE")
+            row.title = LocalizedString("distance_date_field")
             row.value = changedDistance?.date
             row.dateFormatter?.timeZone = changedDistance?.timeZone
         }.onChange({ [weak self] row in
@@ -115,7 +115,7 @@ class EditDistanceFormView: FormViewController {
         })
     
         <<< TextRow() { row in
-            row.title = LocalizedString("RECEIPTMENU_FIELD_COMMENT")
+            row.title = LocalizedString("distance_comment_field")
             row.value = changedDistance?.comment
         }.onChange({ [weak self] row in
             self?.changedDistance?.comment = row.value

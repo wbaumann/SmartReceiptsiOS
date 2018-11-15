@@ -77,8 +77,8 @@ extension SettingsView: MFMailComposeViewControllerDelegate {
         if !MFMailComposeViewController.canSendMail() {
             Logger.warning("Mail services are not available.")
             presenter.alertSubject
-                .onNext((title: LocalizedString("settings.feedback.email.error"),
-                       message: LocalizedString("settings.feedback.email.not.configured.message")))
+                .onNext((title: LocalizedString("generic_error_alert_title"),
+                       message: LocalizedString("error_email_not_configured_message")))
             return
         }
         
@@ -111,7 +111,7 @@ extension SettingsView: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         if result == .failed {
             Logger.warning("MFMailComposeResultFailed: \(error!.localizedDescription)")
-            presenter.alertSubject.onNext((title: LocalizedString("settings.feedback.email.error"),
+            presenter.alertSubject.onNext((title: LocalizedString("generic_error_alert_title"),
                                          message: error!.localizedDescription))
         }
         dismiss(animated: true, completion: nil)

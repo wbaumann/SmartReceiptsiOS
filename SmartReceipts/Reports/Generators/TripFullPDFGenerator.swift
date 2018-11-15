@@ -80,7 +80,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         
         let startDate = dateFormatter.formattedDate(trip.startDate, in: trip.startTimeZone)!
         let endDate = dateFormatter.formattedDate(trip.endDate, in: trip.endTimeZone)!
-        pdfRender.appendHeader(row: String(format: LocalizedString("pdf.report.from.to.label.base"), startDate, endDate))
+        pdfRender.appendHeader(row: String(format: LocalizedString("report_header_duration"), startDate, endDate))
         
         if let costCenter = trip.costCenter, WBPreferences.trackCostCenter() && !costCenter.isEmpty {
             pdfRender.appendHeader(row: String(format: LocalizedString("report_header_comment"), costCenter))

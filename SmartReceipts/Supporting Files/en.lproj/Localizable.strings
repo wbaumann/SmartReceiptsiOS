@@ -1,10 +1,8 @@
 /** iOS-Specific Strings **/
-"columns.controller.column.prefix" = "Col.";
 "generate.report.share.method.email" = "E-mail";
 "generate.report.share.method.other" = "Other apps";
 "generate.report.share.method.sheet.title" = "Share by";
-"generate.report.email.not.configured.message" = "You must configured the iOS Mail app to use the E-mail option";
-"generate.report.email.not.configured.title" = "Can't send report";
+"error_email_not_configured_message" = "You must configure the iOS Mail app to use the E-mail option";
 "exchange.rate.subscription.info.message" = "Upgrade to Smart Receipts Plus to process exchange rates automatically";
 "ocr.configuration.module.purchase.title" = "%d OCR Scans (Smart Receipts)";
 "ocr.configuration.module.purchase.subtitle" = "Purchase %d Automatic Scans of Receipts (OCR)";
@@ -15,8 +13,6 @@
 "settings.allow.data.outside.trip.bounds.label" = "Allow data entry outside report start/end";
 "settings.purchase.restore.label" = "Restore purchase";
 "settings.purchase.subscription.valid.until.label.base" = "Valid until: %@";
-"settings.feedback.email.error" = "Can't send E-mail";
-"settings.feedback.email.not.configured.message" = "You must configured the iOS Mail app to use the E-mail option";
 "settings.camera.pixels.label" = "Pixels";
 "settings.camera.value.default.label" = "Default";
 "settings.max.camera.resolution.label" = "Max. Camera Height / Width";
@@ -42,23 +38,17 @@
 "pref_layout_display_photo_title" = "Include Picture/PDF Marker";
 "pref_layout_display_photo_summary" = "Indicate if values have a photo/PDF";
 
+/** iOS Strings that we should add to Android **/
+"edit.payment.method.controller.save.error.generic.message" = "Payment method could not be saved";
 
 /** iOS Strings that slightly differ from Android and can be replaced with similar Android ones **/
-"columns.controller.picker.title" = "Columns";
 "edit.category.edit.failure.message" = "Cannot edit this category";
-"edit.category.edit.placeholder.code" = "Code";
-"edit.category.edit.title.new" = "New Category";
-"edit.distance.controller.add.title" = "Add distance";
-"edit.distance.controller.edit.title" = "Edit distance";
 "edit.distance.controller.validation.distance.missing" = "Distance not entered";
 "edit.distance.controller.validation.error.title" = "Can't save distance";
 "edit.distance.controller.validation.rate.missing" = "Rate not entered";
-"edit.payment.method.controller.save.error.exists.message" = "Payment method with given name already exists";
 "edit.payment.method.controller.save.error.generic.message" = "Payment method could not be saved";
 "edit.payment.method.controller.save.error.message" = "Payment method name not entered";
 "edit.payment.method.controller.save.error.title" = "Can't save";
-"edit.receipt.generic.save.error.message" = "Cannot add this receipt";
-"edit.trip.name.missing.alert.message" = "Please enter a name";
 "exchange.rate.error.unsupported.currency.message" = "Automatic exchange rate is not available for given currency";
 "exchange.rate.error.unsupported.currency.title" = "Unsupported currency";
 "exchange.rate.retrieve.error.message" = "Could not retrieve exchange rate. Please try reloading or add manually.";
@@ -71,18 +61,6 @@
 "image.picker.sheet.take.photo.button.title" = "Take Photo";
 "image.picker.sheet.title" = "Select image from";
 "no.trips.empty.message" = "No report selected";
-"pdf.report.from.to.label.base" = "From: %@ To: %@";
-
-"trips.controller.from.to.date.label.base" = "%@ to %@";
-"login.error.title" = "Error";
-"ocr.configuration.module.description" = "Smart Receipts has integrated with Taggun to provide automatic scanning (ie OCR) services, which can extract receipt metadata like the price, tax, date, and merchant name from your photos.\n\nWe use a combination of Google Vision and Machine Learning to quickly (often in 5 seconds or less) deliver results, which will become increasingly accurate over time. Since these services have a per-usage charge, we will charge for each receipt scan below.\n\nTo try OCR, all new users get 2 free scans!";
-
 
 /** Untranslated Android Strings **/
 "settings_pdf_page_size" = "PDF Page Size:";
-
-
-/** Android Strings that need mapping fixes like '@string/delete' **/
-"remote_backups_list_item_menu_delete" = "Delete";
-"dialog_remote_backup_delete_title" = "Delete";
-"dialog_remote_backup_delete_positive" = "Delete";

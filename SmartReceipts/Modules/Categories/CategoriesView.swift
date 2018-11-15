@@ -73,22 +73,24 @@ final class CategoriesView: FetchedTableViewController {
             
             let isEdit = category != nil
             let title = isEdit ? LocalizedString("dialog_category_edit") :
-                                 LocalizedString("edit.category.edit.title.new")
+                                 LocalizedString("dialog_category_add")
             
             
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
             alert.addTextField { textField in
-                textField.placeholder = LocalizedString("RECEIPTMENU_FIELD_NAME")
+                textField.placeholder = LocalizedString("item_name")
                 textField.text = category?.name
             }
             
             alert.addTextField { textField in
-                textField.placeholder = LocalizedString("edit.category.edit.placeholder.code")
+                textField.placeholder = LocalizedString("item_code")
                 textField.text = category?.code
             }
             
-            let saveTitle = isEdit ? LocalizedString("dialog_mileage_positive_update") :
-                                     LocalizedString("dialog_mileage_positive_create")
+            // add => dialog_mileage_positive_create
+            // update => dialog_mileage_positive_update
+            let saveTitle = isEdit ? LocalizedString("update") :
+                                     LocalizedString("add")
             alert.addAction(UIAlertAction(title: saveTitle, style: .default, handler: { [unowned self] _ in
                 let forSave = category ?? WBCategory()
                 let name = alert.textFields!.first!.text

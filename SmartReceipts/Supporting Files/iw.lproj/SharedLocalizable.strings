@@ -64,9 +64,9 @@
 
 "import_string_item" = "%@ ייבא";
 
-"item_code" = ":קוד";
+"item_code" = "קוד";
 
-"item_name" = ":שם";
+"item_name" = "שם";
 
 "move" = "הזז";
 
@@ -122,9 +122,7 @@
 "report_info_generate" = "ייצר";
 
 /* ============= Report Generation ============== */
-"report_header_from" = "%@ :מאת";
-
-"report_header_to" = "%@ :אל";
+"report_header_duration" = "%2$@ :אל @%1$ :מאת";
 
 "report_header_receipts_total" = "%@ :סה״כ קבלות";
 
@@ -362,7 +360,7 @@
 "attachment_error" = "Unable to attach this file.";
 
 /* ================== Trip Adapter ===================== */
-"trip_adapter_list_item_to" = " אל ";
+"trip_adapter_list_item_to" = "%2$@ אל @%1$";
 
 "trip_no_data" = "אין לך דוחות מוגדרים כרגע. נסה ללחוץ על + על מנת להתחיל. \n\n האפליקציה מאפשר לך ליצור דוחות הוצאה, לעקוב אחרי קבלות בכל אחד מהדוחות, ולייצר דוחות PDF וCSV להוצאות שלך. זה קל ופשוט! בנוסף, ניתן לבצע התאמה אישית לקטגוריות, דוחות ושאר הגדרות בתפריט ההגדרות על מנת להתאים את התוכנה לצרכיך.";
 
@@ -515,19 +513,19 @@
 
 "remote_backups_list_item_menu_restore" = "שחזר";
 
-"remote_backups_list_item_menu_delete" = "@string/delete";
+"remote_backups_list_item_menu_delete" = "מחק";
 
 "remote_backups_list_item_menu_download_images" = "הורד כקובץ זיפ";
 
 "remote_backups_list_item_menu_download_images_debug" = "[Debug] הורד";
 
-"dialog_remote_backup_delete_title" = "@string/delete";
+"dialog_remote_backup_delete_title" = "מחק";
 
 "dialog_remote_backup_delete_message" = "אתה בטוח שאתה רוצה למחוק את הגיבויים שלך ממכשיר %@? פעולה זו הינה בלתי הפיכה.";
 
 "dialog_remote_backup_delete_message_this_device" = "אתה בטוח שאתה רוצה למחוק את הגיבוי שלך מהמכשיר הזה? הפעולה הינה בלתי הפיכה. אנא שים לב שרצוי לכבות את פונקציית הגיבויים האוטומטיים אחרי שהפעולה הזו הושלמה או שכל המידע המקומי עלול להיות מסונכרן שוב.";
 
-"dialog_remote_backup_delete_positive" = "@string/delete";
+"dialog_remote_backup_delete_positive" = "מחק";
 
 "dialog_remote_backup_delete_progress" = "מחק את הגיבוי שלך ממכשיר %@ …";
 
