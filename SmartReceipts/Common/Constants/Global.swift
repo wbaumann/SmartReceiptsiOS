@@ -33,9 +33,24 @@ func delayedExecution(_ afterSecons: TimeInterval, closure: @escaping () -> ()) 
 }
 
 func LocalizedString(_ key: String, comment: String = "") -> String {
-    var result = NSLocalizedString(key, tableName: nil, comment: comment)
+    // By default, attempt to load from our Shared set of strings
+    var result = NSLocalizedString(key, tableName: "SharedLocalizable", comment: comment)
     if result == key {
-        result = NSLocalizedString(key, tableName: "SharedLocalizable", comment: comment)
+        // If we failed to find this string in our SharedLocalizable.strings file, check Localizable.strings one
+        result = NSLocalizedString(key, tableName: nil, comment: comment)
+    }
+    if result == key {
+        // If we cannot find it in either, fall back to English
+        if let path = Bundle.main.path(forResource: "en", ofType: "lproj") {
+            if let enBundle = Bundle(path: path) {
+                // Check the English Localizable.strings file
+                result = NSLocalizedString(key, bundle: enBundle, comment: comment)
+                if result == key {
+                    // And finally fall back to the English SharedLocalizable.strings file
+                    result = NSLocalizedString(key, tableName: "SharedLocalizable", bundle: enBundle, comment: comment)
+                }
+            }
+        }
     }
     return result
 }
