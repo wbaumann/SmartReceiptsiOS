@@ -58,10 +58,7 @@ final class ReceiptImageViewerView: UserInterface {
         
         cameraButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-                _ = ImagePicker.sharedInstance().rx_openOn(self)
-                    .filter({ $0 != nil })
-                    .asObservable()
-                    .bind(to: self.presenter.image)
+                _ = ImagePicker.shared.presentPicker(on: self).asObservable().bind(to: self.presenter.image)
             }).disposed(by: bag)
     }
     
