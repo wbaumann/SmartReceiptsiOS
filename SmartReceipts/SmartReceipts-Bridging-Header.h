@@ -47,7 +47,6 @@
 #import "WBAutocompleteHelper.h"
 #import "DistancesToReceiptsConverter.h"
 #import "WBTextUtils.h"
-#import "ImagePicker.h"
 #import "WBImageUtils.h"
 #import "FetchedModelAdapterDelegate.h"
 #import "RateApplication.h"

@@ -204,6 +204,7 @@
 		716C04221F685467007F9CD2 /* CognitoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C04211F685467007F9CD2 /* CognitoService.swift */; };
 		716C058E216D12CE00D3E10F /* DatabaseUpgrade19Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C058D216D12CE00D3E10F /* DatabaseUpgrade19Tests.swift */; };
 		716C0590216D17AE00D3E10F /* android-receipts-v19.db in Resources */ = {isa = PBXBuildFile; fileRef = 716C058F216D17AE00D3E10F /* android-receipts-v19.db */; };
+		716D58A5219C8E1E00D6A6EA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D58A4219C8E1E00D6A6EA /* ImagePicker.swift */; };
 		716F07DD2034AFDF00166D63 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716F07D72034AFDF00166D63 /* Backup.storyboard */; };
 		716F07DE2034AFDF00166D63 /* BackupDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F07D82034AFDF00166D63 /* BackupDisplayData.swift */; };
 		716F07DF2034AFDF00166D63 /* BackupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F07D92034AFDF00166D63 /* BackupPresenter.swift */; };
@@ -309,7 +310,6 @@
 		71AF49E11EFDA4810022B2E2 /* ReceiptImageViewerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF49DB1EFDA4810022B2E2 /* ReceiptImageViewerInteractor.swift */; };
 		71AF49E21EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF49DC1EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift */; };
 		71AF49E31EFDA4810022B2E2 /* ReceiptImageViewerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF49DD1EFDA4810022B2E2 /* ReceiptImageViewerRouter.swift */; };
-		71AF49E71EFDBF850022B2E2 /* ImagePicker+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF49E61EFDBF850022B2E2 /* ImagePicker+Extensions.swift */; };
 		71AF49E81EFDCC010022B2E2 /* ReceiptImageViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF49DE1EFDA4810022B2E2 /* ReceiptImageViewerView.swift */; };
 		71B488C21EF42AF7008872E2 /* NoTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B488C11EF42AF7008872E2 /* NoTripsViewController.swift */; };
 		71B488C41EF47B1C008872E2 /* ObservableTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B488C31EF47B1C008872E2 /* ObservableTrips.swift */; };
@@ -490,7 +490,6 @@
 		EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CF09D1AE7C45C00B14B73 /* Constants.m */; };
 		EA40DC6B1B5559A1003BF545 /* FullPagePDFImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA40DC6A1B5559A1003BF545 /* FullPagePDFImageView.xib */; };
 		EA40DC701B555CFE003BF545 /* FullPagePDFPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA40DC6F1B555CFE003BF545 /* FullPagePDFPageView.xib */; };
-		EA46678F1AE7EA1700B4E502 /* ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA46678E1AE7EA1600B4E502 /* ImagePicker.m */; };
 		EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CBD1AF2866E0083FDD7 /* UIView+LoadHelpers.m */; };
 		EA4C5CC91AF288570083FDD7 /* UITableViewCell+Identifier.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C5CC81AF288570083FDD7 /* UITableViewCell+Identifier.m */; };
 		EA5963F41AF29B1A00935344 /* UIView+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5963F31AF29B1A00935344 /* UIView+Search.m */; };
@@ -774,6 +773,7 @@
 		716C04211F685467007F9CD2 /* CognitoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CognitoService.swift; sourceTree = "<group>"; };
 		716C058D216D12CE00D3E10F /* DatabaseUpgrade19Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgrade19Tests.swift; sourceTree = "<group>"; };
 		716C058F216D17AE00D3E10F /* android-receipts-v19.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "android-receipts-v19.db"; sourceTree = "<group>"; };
+		716D58A4219C8E1E00D6A6EA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		716F07D72034AFDF00166D63 /* Backup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Backup.storyboard; sourceTree = "<group>"; };
 		716F07D82034AFDF00166D63 /* BackupDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupDisplayData.swift; sourceTree = "<group>"; };
 		716F07D92034AFDF00166D63 /* BackupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupPresenter.swift; sourceTree = "<group>"; };
@@ -893,7 +893,6 @@
 		71AF49DC1EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptImageViewerPresenter.swift; sourceTree = "<group>"; };
 		71AF49DD1EFDA4810022B2E2 /* ReceiptImageViewerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptImageViewerRouter.swift; sourceTree = "<group>"; };
 		71AF49DE1EFDA4810022B2E2 /* ReceiptImageViewerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptImageViewerView.swift; sourceTree = "<group>"; };
-		71AF49E61EFDBF850022B2E2 /* ImagePicker+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImagePicker+Extensions.swift"; sourceTree = "<group>"; };
 		71B488C11EF42AF7008872E2 /* NoTripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTripsViewController.swift; sourceTree = "<group>"; };
 		71B488C31EF47B1C008872E2 /* ObservableTrips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTrips.swift; sourceTree = "<group>"; };
 		71B488C51EF48706008872E2 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
@@ -1124,8 +1123,6 @@
 		EA3CF09D1AE7C45C00B14B73 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		EA40DC6A1B5559A1003BF545 /* FullPagePDFImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullPagePDFImageView.xib; sourceTree = "<group>"; };
 		EA40DC6F1B555CFE003BF545 /* FullPagePDFPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullPagePDFPageView.xib; sourceTree = "<group>"; };
-		EA46678D1AE7EA1600B4E502 /* ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePicker.h; sourceTree = "<group>"; };
-		EA46678E1AE7EA1600B4E502 /* ImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePicker.m; sourceTree = "<group>"; };
 		EA4C5CBC1AF2866E0083FDD7 /* UIView+LoadHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LoadHelpers.h"; sourceTree = "<group>"; };
 		EA4C5CBD1AF2866E0083FDD7 /* UIView+LoadHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LoadHelpers.m"; sourceTree = "<group>"; };
 		EA4C5CC71AF288570083FDD7 /* UITableViewCell+Identifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Identifier.h"; sourceTree = "<group>"; };
@@ -1478,6 +1475,7 @@
 				714104D21FF43D7700C334C5 /* PendingHUDView.swift */,
 				714104D81FF43D7700C334C5 /* ScansPurchaseButton.swift */,
 				714104DD1FF43D7700C334C5 /* TooltipView.swift */,
+				716D58A4219C8E1E00D6A6EA /* ImagePicker.swift */,
 				714104D31FF43D7700C334C5 /* WBAbstractPicker.h */,
 				714104CE1FF43D7700C334C5 /* WBAbstractPicker.m */,
 				714104D01FF43D7700C334C5 /* WBDynamicPicker.h */,
@@ -1709,9 +1707,6 @@
 		717EE427201518C300819BDC /* Import */ = {
 			isa = PBXGroup;
 			children = (
-				EA46678D1AE7EA1600B4E502 /* ImagePicker.h */,
-				EA46678E1AE7EA1600B4E502 /* ImagePicker.m */,
-				71AF49E61EFDBF850022B2E2 /* ImagePicker+Extensions.swift */,
 				717EE42420139D0600819BDC /* ReceiptFilePicker.swift */,
 				71BF11D52036214200DD7FBE /* BackupFilePicker.swift */,
 			);
@@ -3518,6 +3513,7 @@
 				714104E31FF43D7700C334C5 /* WBActionSheetPicker.m in Sources */,
 				718AAC112120382E00290183 /* SyncableTableCell.swift in Sources */,
 				EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */,
+				716D58A5219C8E1E00D6A6EA /* ImagePicker.swift in Sources */,
 				EA8ABE421B1A1D1700DBFA29 /* Database+Categories.m in Sources */,
 				71E2E58120E0132B00BDE501 /* GoogleDriveService.swift in Sources */,
 				71572D881F15EA41001A1301 /* ColumnsPresenter.swift in Sources */,
@@ -3643,7 +3639,6 @@
 				71AF49E21EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift in Sources */,
 				71CC1B8521143BA0003D7056 /* BackupItemView.swift in Sources */,
 				71859DCE2010F97B00156B40 /* UpsellBannerAdView.swift in Sources */,
-				71AF49E71EFDBF850022B2E2 /* ImagePicker+Extensions.swift in Sources */,
 				71C014241F1AB14A005472B3 /* CategoriesInteractor.swift in Sources */,
 				714104E61FF43D7700C334C5 /* SuggestionView.m in Sources */,
 				71AF49E81EFDCC010022B2E2 /* ReceiptImageViewerView.swift in Sources */,
@@ -3669,7 +3664,6 @@
 				714042061FF188A70011A0F6 /* ReceiptColumnPriceMinusTax.swift in Sources */,
 				717EE42520139D0600819BDC /* ReceiptFilePicker.swift in Sources */,
 				7111ADA91F0EC38100DF77ED /* SettingsRouter.swift in Sources */,
-				EA46678F1AE7EA1700B4E502 /* ImagePicker.m in Sources */,
 				717865EB200A8738004684A6 /* CategoryColumns.swift in Sources */,
 				EA66777C1B06154F004D3993 /* NSString+Helpers.m in Sources */,
 				EA07BF301AF3B472004D17F6 /* UIApplication+DismissKeyboard.m in Sources */,

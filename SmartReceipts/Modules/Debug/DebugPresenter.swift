@@ -27,7 +27,7 @@ class DebugPresenter: Presenter {
             .disposed(by: bag)
     }
     
-    func scan() -> Maybe<Scan> {
+    func scan() -> Single<Scan> {
         return interactor.scan()
     }
     

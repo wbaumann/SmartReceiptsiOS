@@ -11,7 +11,6 @@ import Viperit
 import RxSwift
 
 class ReceiptActionsPresenter: Presenter {
-    
     private var receipt: WBReceipt!
     
     let editReceiptTap = PublishSubject<Void>()
@@ -70,10 +69,10 @@ class ReceiptActionsPresenter: Presenter {
         
         viewImageTap.subscribe(onNext: { [unowned self] in
             Logger.info("View Image Tap")
-            if self.receipt.attachemntType == .image {
-                AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewImage())
-            } else if self.receipt.attachemntType == .pdf {
-                AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewPdf())
+            switch self.receipt.attachemntType {
+            case .image: AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewImage())
+            case .pdf: AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewPdf())
+            default: break
             }
             self.router.close()
         }).disposed(by: bag)
@@ -104,13 +103,11 @@ class ReceiptActionsPresenter: Presenter {
     }
     
     private func takeImage() {
-        ImagePicker.sharedInstance().rx_openOn(self.view as! UIViewController)
-            .filter({ $0 != nil})
+        ImagePicker.shared.presentPicker(on: _view)
             .subscribe(onSuccess: { [unowned self] image in
-                if self.interactor.attachImage(image!, to: self.receipt) {
-                    self.view.updateForm()
-                }
-        }).disposed(by: bag)
+                guard self.interactor.attachImage(image, to: self.receipt) else { return }
+                self.view.updateForm()
+            }).disposed(by: bag)
     }
 }
 

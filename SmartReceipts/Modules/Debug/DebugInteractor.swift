@@ -19,22 +19,19 @@ class DebugInteractor: Interactor {
         return AnyObserver<Bool>(onNext: { value in
             DebugStates.setSubscription(value)
             if value {
-                let name = NSNotification.Name.SmartReceiptsAdsRemoved
-                NotificationCenter.default.post(name: name, object: nil)
+                NotificationCenter.default.post(name: .SmartReceiptsAdsRemoved, object: nil)
             }
         })
     }
     
-    func scan() -> Maybe<Scan> {
+    func scan() -> Single<Scan> {
         var hud: PendingHUDView?
-        return ImagePicker.sharedInstance().rx_openOn(presenter._view)
-            .filter({ $0 != nil })
-            .map({ $0! })
-            .flatMap({ [unowned self] img -> Maybe<Scan> in
+        return ImagePicker.shared.presentPicker(on: presenter._view)
+            .flatMap({ [unowned self] img -> Single<Scan> in
                 hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
                 hud?.observe(status: self.scanService.status)
-                return self.scanService.scan(image: img).asMaybe()
-            }).do(onNext: { scan in
+                return self.scanService.scan(image: img)
+            }).do(onSuccess: { scan in
                 hud?.hide()
             })
     }
