@@ -87,8 +87,6 @@ final class CategoriesView: FetchedTableViewController {
                 textField.text = category?.code
             }
             
-            // add => dialog_mileage_positive_create
-            // update => dialog_mileage_positive_update
             let saveTitle = isEdit ? LocalizedString("update") :
                                      LocalizedString("add")
             alert.addAction(UIAlertAction(title: saveTitle, style: .default, handler: { [unowned self] _ in
