@@ -64,9 +64,9 @@
 
 "import_string_item" = "Importar %@";
 
-"item_code" = "Código:";
+"item_code" = "Código";
 
-"item_name" = "Nombre:";
+"item_name" = "Nombre";
 
 "move" = "Mover";
 
@@ -122,9 +122,7 @@
 "report_info_generate" = "Generar";
 
 /* ============= Report Generation ============== */
-"report_header_from" = "Desde: %@";
-
-"report_header_to" = "Hasta: %@";
+"report_header_duration" = "Desde: %1$@ Hasta: %2$@";
 
 "report_header_receipts_total" = "Total de recibos: %@";
 
@@ -362,7 +360,7 @@
 "attachment_error" = "No se puede adjuntar este archivo.";
 
 /* ================== Trip Adapter ===================== */
-"trip_adapter_list_item_to" = "hasta";
+"trip_adapter_list_item_to" = "%1$@ hasta %2$@";
 
 "trip_no_data" = "No pareces tener informes definidos en el momento. Intenta hacer clic en el botón + (más) para comenzar.\n\nSmart Receipts te permite crear informes de gastos, controlar los recibos de cada uno y generar rápidamente informes en PDF y CSV para los totales de tus recibos. ¡Es fácil y rápido! También, asegúrate de revisar el menú para personalizar las categorías, informes y otros ajustes para que se adapten mejor a tus necesidades.";
 
@@ -515,19 +513,19 @@
 
 "remote_backups_list_item_menu_restore" = "Restaurar";
 
-"remote_backups_list_item_menu_delete" = "@string/delete";
+"remote_backups_list_item_menu_delete" = "Eliminar";
 
 "remote_backups_list_item_menu_download_images" = "Descargar a ZIP";
 
 "remote_backups_list_item_menu_download_images_debug" = "[Depuración] Descargar";
 
-"dialog_remote_backup_delete_title" = "@string/delete";
+"dialog_remote_backup_delete_title" = "Eliminar";
 
 "dialog_remote_backup_delete_message" = "¿Estás seguro que deseas eliminar tu copia de seguridad del dispositivo %@? Esta operación no se puede deshacer.";
 
 "dialog_remote_backup_delete_message_this_device" = "¿Estás seguro que deseas eliminar tu copia de seguridad de este dispositivo? Esta operación no se puede deshacer. Por favor ten en cuenta que debes deshabilitar las copias de seguridad automáticas luego de terminar esta operación, o todos los datos locales pueden ser sincronizados de nuevo.";
 
-"dialog_remote_backup_delete_positive" = "@string/delete";
+"dialog_remote_backup_delete_positive" = "Eliminar";
 
 "dialog_remote_backup_delete_progress" = "Eliminando tu copia de seguridad del dispositivo %@…";
 

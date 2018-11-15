@@ -44,7 +44,7 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
         
         
         dynamicPicker = WBDynamicPicker(type: WBDynamicPickerTypePicker, with: self)
-        dynamicPicker.setTitle(LocalizedString("columns.controller.picker.title"))
+        dynamicPicker.setTitle(LocalizedString("dialog_custom_csv_spinner"))
         dynamicPicker.delegate = self
         
         navigationController?.setToolbarHidden(false, animated: false)
@@ -66,7 +66,7 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
             configureCell: { (dataSource, table, idxPath, item) in
                 let cell = table.dequeueReusableCell(withIdentifier: "Cell", for: idxPath)
                 let number = idxPath.row + 1
-                cell.textLabel?.text = "\(LocalizedString("columns.controller.column.prefix")) \(number)"
+                cell.textLabel?.text = String(format: LocalizedString("column_item"), "\(number)")
                 cell.detailTextLabel?.text = item.name
                 return cell
         })

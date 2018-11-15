@@ -50,7 +50,7 @@ class EditTripFormView: FormViewController {
         form
         +++ Section()
         <<< TextRow(NAME_ROW_TAG) { row in
-            row.title = LocalizedString("RECEIPTMENU_FIELD_NAME")
+            row.title = LocalizedString("DIALOG_TRIPMENU_HINT_NAME")
             row.value = trip?.name
             row.add(rule: RuleRequired())
         }.onChange({ [unowned self] row in
@@ -91,7 +91,7 @@ class EditTripFormView: FormViewController {
         })
         
         <<< PickerInlineRow<String>() { row in
-            row.title = LocalizedString("pref_general_default_currency_title")
+            row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_CURRENCY")
             row.options = Currency.allCurrencyCodesWithCached()
             row.value = trip?.defaultCurrency.code ?? WBPreferences.defaultCurrency()
         }.onChange({ [unowned self] row in
@@ -101,7 +101,7 @@ class EditTripFormView: FormViewController {
         })
         
         <<< TextRow() { row in
-            row.title = LocalizedString("RECEIPTMENU_FIELD_COMMENT")
+            row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_COMMENT")
             row.value = trip?.comment ?? ""
         }.onChange({ [unowned self] row in
             self.trip?.comment = row.value ?? ""
@@ -128,7 +128,7 @@ class EditTripFormView: FormViewController {
     func done() {
         if let errors = form.rowBy(tag: NAME_ROW_TAG)?.validate() {
             if errors.count > 0 {
-                errorSubject.onNext(LocalizedString("edit.trip.name.missing.alert.message"))
+                errorSubject.onNext(LocalizedString("DIALOG_TRIPMENU_TOAST_MISSING_FIELD"))
             } else {
                 tripSubject.onNext(trip!)
             }

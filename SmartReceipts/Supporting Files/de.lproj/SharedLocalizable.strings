@@ -64,9 +64,9 @@
 
 "import_string_item" = "Import %@";
 
-"item_code" = "Code:";
+"item_code" = "Code";
 
-"item_name" = "Name:";
+"item_name" = "Name";
 
 "move" = "Bewegung";
 
@@ -122,9 +122,7 @@
 "report_info_generate" = "Generieren";
 
 /* ============= Report Generation ============== */
-"report_header_from" = "Von: %@";
-
-"report_header_to" = "An: %@";
+"report_header_duration" = "Von: %1$@ An: %2$@";
 
 "report_header_receipts_total" = "Belege Total: %@";
 
@@ -362,7 +360,7 @@
 "attachment_error" = "Diese Datei kann nicht angehängt werden.";
 
 /* ================== Trip Adapter ===================== */
-"trip_adapter_list_item_to" = " nach";
+"trip_adapter_list_item_to" = "%1$@ bis %2$@";
 
 "trip_no_data" = "Sie scheinen zur Zeit keine definierten Berichte haben. Versuchen Sie auf die + Taste (plus) zu klicken, um zu beginnen.\n\nSmart Receipts lässt Sie Kostenberichte, Track Belege erstellen und sehr schnell PDF & CSV-Berichte für Ihre Belegsummen generieren. Es ist schnell und einfach! Überprüfen Sie undedingt das Menü, um die Kategorien, Berichte und anderen Einstellungen bestens an Ihre Bedürfnisse anzupassen.";
 
@@ -515,19 +513,19 @@
 
 "remote_backups_list_item_menu_restore" = "Wiederherstellen";
 
-"remote_backups_list_item_menu_delete" = "@string/delete";
+"remote_backups_list_item_menu_delete" = "Löschen";
 
 "remote_backups_list_item_menu_download_images" = "Auf ZIP herunterladen";
 
 "remote_backups_list_item_menu_download_images_debug" = "[Debug] herunterladen";
 
-"dialog_remote_backup_delete_title" = "@string/delete";
+"dialog_remote_backup_delete_title" = "Löschen";
 
 "dialog_remote_backup_delete_message" = "Sind Sie sicher, dass Sie Ihre Sicherungskopie vom %@ Gerät löschen wollen? Dieser Vorgang kann nicht rückgängig gemacht werden.";
 
 "dialog_remote_backup_delete_message_this_device" = "Sind Sie sicher, dass Sie Ihren Backup auf diesem Gerät löschen wollen? Dieser Vorgang kann nicht rückgängig gemacht werden. Bitte beachten Sie, dass Sie die automatische Sicherungen ausschalten möchte, um nach dieser Vorgang abgeschlossen ist oder alle lokalen Daten neu synchronisiert werden können.";
 
-"dialog_remote_backup_delete_positive" = "@string/delete";
+"dialog_remote_backup_delete_positive" = "Löschen";
 
 "dialog_remote_backup_delete_progress" = "Löschen Sie Ihren Backup vom %@ Gerät …";
 

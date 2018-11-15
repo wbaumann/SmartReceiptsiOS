@@ -72,10 +72,17 @@ final class OCRConfigurationView: UserInterface {
     
     private func localizeLabels() {
         titleLabel.text = LocalizedString("ocr_configuration_welcome")
-        descriptionLabel.text = LocalizedString("ocr.configuration.module.description")
         availablePurchases.text = LocalizedString("ocr_configuration_available_purchases")
         autoScansLabel.text = LocalizedString("ocr_is_enabled")
         saveImagesLabel.text = LocalizedString("ocr_save_scans_to_improve_results")
+        
+        // Note: Android split these strings across multiple files, so we combine them here
+        let localizedDescriptionFormat = "%@\n\n%@\n\n%@"
+        let localizedDescription = String(format: localizedDescriptionFormat,
+                                          LocalizedString("ocr_configuration_information"),
+                                          LocalizedString("ocr_configuration_information_line2"),
+                                          LocalizedString("ocr_configuration_information_line3"))
+        descriptionLabel.text = localizedDescription
     }
 }
 

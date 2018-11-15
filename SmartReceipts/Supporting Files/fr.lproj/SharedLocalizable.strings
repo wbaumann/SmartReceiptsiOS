@@ -64,9 +64,9 @@
 
 "import_string_item" = "Importer %@";
 
-"item_code" = "Code :";
+"item_code" = "Code";
 
-"item_name" = "Nom :";
+"item_name" = "Nom";
 
 "move" = "Déplacer";
 
@@ -122,9 +122,7 @@
 "report_info_generate" = "Créer";
 
 /* ============= Report Generation ============== */
-"report_header_from" = "De : %@";
-
-"report_header_to" = "À : %@";
+"report_header_duration" = "De : %1$@ À : %2$@";
 
 "report_header_receipts_total" = "Total des reçus : %@";
 
@@ -362,7 +360,7 @@
 "attachment_error" = "Impossible de joindre ce fichier.";
 
 /* ================== Trip Adapter ===================== */
-"trip_adapter_list_item_to" = " à";
+"trip_adapter_list_item_to" = "%1$@ à %2$@";
 
 "trip_no_data" = "Il semblerait que vous n’ayez aucun rapport défini pour le moment. Cliquez sur le bouton + (plus) pour commencer.\n\nSmart Receipts vous permet de créer des notes de frais, de suivre les reçus dans chacune d’elle et de créer rapidement des rapports PDF et CSV pour la totalité de vos reçus. C’est rapide et facile ! Assurez-vous également de consulter le menu pour personnaliser les catégories, les rapports et d’autres paramètres pour qu’ils répondent mieux à vos besoins.";
 
@@ -515,19 +513,19 @@
 
 "remote_backups_list_item_menu_restore" = "Restaurer";
 
-"remote_backups_list_item_menu_delete" = "@string/delete";
+"remote_backups_list_item_menu_delete" = "Supprimer";
 
 "remote_backups_list_item_menu_download_images" = "Télécharger en ZIP";
 
 "remote_backups_list_item_menu_download_images_debug" = "[Débogage] Télécharger";
 
-"dialog_remote_backup_delete_title" = "@string/delete";
+"dialog_remote_backup_delete_title" = "Supprimer";
 
 "dialog_remote_backup_delete_message" = "Êtes-vous sûr de vouloir supprimer votre sauvegarde de l’appareil %@ ? Cette opération est irréversible.";
 
 "dialog_remote_backup_delete_message_this_device" = "Êtes-vous sûr de vouloir supprimer votre sauvegarde de cet appareil ? Cette opération est irréversible. Veuillez noter que vous pouvez désactiver les sauvegardes automatiques après cette opération ou toutes les données locales peuvent être resynchronisées.";
 
-"dialog_remote_backup_delete_positive" = "@string/delete";
+"dialog_remote_backup_delete_positive" = "Supprimer";
 
 "dialog_remote_backup_delete_progress" = "Suppression de votre sauvegarde de l'appareil %@…";
 

@@ -64,9 +64,9 @@
 
 "import_string_item" = "Importar %@";
 
-"item_code" = "Código:";
+"item_code" = "Código";
 
-"item_name" = "Nome:";
+"item_name" = "Nome";
 
 "move" = "Mover";
 
@@ -122,9 +122,7 @@
 "report_info_generate" = "Gerar";
 
 /* ============= Report Generation ============== */
-"report_header_from" = "De: %@";
-
-"report_header_to" = "Para: %@";
+"report_header_duration" = "De: %1$@ Para: %2$@";
 
 "report_header_receipts_total" = "Total de recibos: %@";
 
@@ -362,7 +360,7 @@
 "attachment_error" = "Não é possível anexar este arquivo.";
 
 /* ================== Trip Adapter ===================== */
-"trip_adapter_list_item_to" = "para";
+"trip_adapter_list_item_to" = "%1$@ para %2$@";
 
 "trip_no_data" = "Você não parece ter nenhum relatório definido no momento. Tente clicar no botão '+' para começar. \n\nO Smart Receipts permite criar relatórios de gastos, rastrear recibos em cada um deles e gerar rapidamente relatórios PDF e CSV para as totalizações. É fácil e rápido! Certifique-se de conferir o menu para personalizar as categorias, relatórios e outras configurações para adequá-las às suas necessidades.";
 
@@ -515,19 +513,19 @@
 
 "remote_backups_list_item_menu_restore" = "Restaurar";
 
-"remote_backups_list_item_menu_delete" = "@string/delete";
+"remote_backups_list_item_menu_delete" = "Excluir";
 
 "remote_backups_list_item_menu_download_images" = "Baixar para ZIP";
 
 "remote_backups_list_item_menu_download_images_debug" = "[Debug] Download";
 
-"dialog_remote_backup_delete_title" = "@string/delete";
+"dialog_remote_backup_delete_title" = "Excluir";
 
 "dialog_remote_backup_delete_message" = "Tem certeza de que deseja excluir o backup do dispositivo %@? Essa operação não pode ser desfeita.";
 
 "dialog_remote_backup_delete_message_this_device" = "Tem certeza de que deseja excluir o backup deste dispositivo? Essa operação não pode ser desfeita. É possível desabilitar o backup automático depois que a operação for concluída, ou todos os dados locais serão sincronizados novamente.";
 
-"dialog_remote_backup_delete_positive" = "@string/delete";
+"dialog_remote_backup_delete_positive" = "Excluir";
 
 "dialog_remote_backup_delete_progress" = "Excluindo seu backup do dispositivo %@…";
 
