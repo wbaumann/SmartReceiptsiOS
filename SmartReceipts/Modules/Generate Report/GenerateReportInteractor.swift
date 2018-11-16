@@ -86,12 +86,12 @@ class GenerateReportInteractor: Interactor {
                 self.presenter.hideHudFromView()
                 
                 var actions = [UIAlertAction]()
-                let message = LocalizedString("generate.report.share.method.sheet.title")
-                let emailAction = UIAlertAction(title: LocalizedString("generate.report.share.method.email"), style: .default) {
+                let message = LocalizedString("generate_report_share_method_sheet_title")
+                let emailAction = UIAlertAction(title: LocalizedString("generate_report_share_method_email"), style: .default) {
                     _ in
                     self.shareService?.emailFiles(files)
                 }
-                let otherAction = UIAlertAction(title: LocalizedString("generate.report.share.method.other"), style: .default) {
+                let otherAction = UIAlertAction(title: LocalizedString("generate_report_share_method_other"), style: .default) {
                     _ in
                     self.shareService?.shareFiles(files)
                 }

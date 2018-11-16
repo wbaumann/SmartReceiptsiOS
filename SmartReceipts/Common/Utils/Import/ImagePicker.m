@@ -52,21 +52,20 @@
         return;
     }
     
-    NSString *title = LocalizedString(@"image.picker.sheet.title", nil);
     UIAlertControllerStyle style = UIAlertControllerStyleActionSheet;
-    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:style];
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:style];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:LocalizedString(@"DIALOG_CANCEL", nil)
         style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
              [self setSelectionHandler:nil];
         }];
     
-    UIAlertAction *library = [UIAlertAction actionWithTitle:LocalizedString(@"image.picker.sheet.choose.existing.button.title", nil)
+    UIAlertAction *library = [UIAlertAction actionWithTitle:LocalizedString(@"receipt_attach_image", nil)
        style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
            [self presentImagePickerWithSource:UIImagePickerControllerSourceTypePhotoLibrary onController:controller];
        }];
     
-    UIAlertAction *photo = [UIAlertAction actionWithTitle:LocalizedString(@"image.picker.sheet.take.photo.button.title", nil)
+    UIAlertAction *photo = [UIAlertAction actionWithTitle:LocalizedString(@"receipt_attach_photo", nil)
        style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
            [self presentImagePickerWithSource:UIImagePickerControllerSourceTypeCamera onController:controller];
        }];

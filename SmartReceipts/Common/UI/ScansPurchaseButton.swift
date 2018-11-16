@@ -32,10 +32,10 @@ class ScansPurchaseButton: UIButton {
     }
     
     func setScans(count: Int) {
-        let titleFormat = LocalizedString("ocr.configuration.module.purchase.title")
+        let titleFormat = LocalizedString("ocr_configuration_module_purchase_title")
         title.text = String(format: titleFormat, count)
         
-        let subtitleFormat = LocalizedString("ocr.configuration.module.purchase.subtitle")
+        let subtitleFormat = LocalizedString("ocr_configuration_module_purchase_subtitle")
         subtitle.text = String(format: subtitleFormat, count)
     }
 }

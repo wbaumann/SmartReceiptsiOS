@@ -110,7 +110,7 @@ extension ReceiptFilePicker: UIDocumentBrowserViewControllerDelegate {
     }
     
     private func emitImportError() {
-        let errorInfo = [NSLocalizedDescriptionKey : LocalizedString("receipt_file_picker_cant_import_error")]
+        let errorInfo = [NSLocalizedDescriptionKey : LocalizedString("IMPORT_ERROR")]
         let error = NSError(domain: NSPOSIXErrorDomain, code: Int(EINVAL), userInfo: errorInfo)
         ReceiptFilePicker.sharedInstance.pickSubject?.onError(error)
     }

@@ -110,7 +110,7 @@ final class CategoriesView: FetchedTableViewController {
     
     private func validate(name: String?) -> Bool {
         if name == nil || name!.isEmpty {
-            presenter.presentAlert(title: nil, message: LocalizedString("edit.payment.method.controller.save.error.message"))
+            presenter.presentAlert(title: nil, message: LocalizedString("edit_payment_method_controller_save_error_message"))
             return false
         }
         return true
