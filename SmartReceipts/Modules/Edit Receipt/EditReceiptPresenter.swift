@@ -60,7 +60,7 @@ class EditReceiptPresenter: Presenter {
                 .flatMap({ _ -> Observable<UNAuthorizationStatus> in
                     PushNotificationService.shared.authorizationStatus()
                 }).flatMap({ status -> Observable<Void> in
-                    let text = LocalizedString("push.request.alert.text")
+                    let text = LocalizedString("push_request_alert_text")
                     return status == .notDetermined ? UIAlertController.showInfo(text: text) : Observable<Void>.just(())
                 }).subscribe(onNext: { [unowned self] in
                     _ = PushNotificationService.shared.requestAuthorization().subscribe()

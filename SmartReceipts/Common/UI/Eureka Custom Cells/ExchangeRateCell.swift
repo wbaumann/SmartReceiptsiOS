@@ -88,31 +88,31 @@ public class ExchangeRateCell: DecimalCell {
     }
     
     private func showErrorInfo() {
-        let retryAction = UIAlertAction(title: LocalizedString("exchange.rate.retrieve.error.retry.button"), style: .default) {
+        let retryAction = UIAlertAction(title: LocalizedString("exchange_rate_retrieve_error_retry_button"), style: .default) {
             [unowned self] action in
             self.row().updateTap.onNext(())
         }
         let okAction = UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil)
         
-        let alert = UIAlertController(title: LocalizedString("exchange.rate.retrieve.error.title"), message: LocalizedString("exchange.rate.retrieve.error.message"), preferredStyle: .alert)
+        let alert = UIAlertController(title: LocalizedString("generic_button_title_ok"), message: LocalizedString("exchange_rate_retrieve_error_message"), preferredStyle: .alert)
         alert.addAction(retryAction)
         alert.addAction(okAction)
         alertPresenter?.present(alert: alert, animanted: true, completion: nil)
     }
     
     private func showSubscriptionInfo() {
-        let cancelAction = UIAlertAction(title: LocalizedString("apprating_dialog_negative"), style: .cancel, handler: nil)
-        let detailsAction = UIAlertAction(title: LocalizedString("exchange.rate.subcsription.details.button"), style: .default) {
+        let cancelAction = UIAlertAction(title: LocalizedString("apprating_dialog_negative"), style: .default, handler: nil)
+        let detailsAction = UIAlertAction(title: LocalizedString("exchange_rate_subcsription_details_button"), style: .default) {
             _ in self.openSettings()
         }
-        alertPresenter?.presentAlert(LocalizedString("exchange.rate.subscription.info.title"),
-                            message: LocalizedString("exchange.rate.subscription.info.message"),
+        alertPresenter?.presentAlert(LocalizedString("pro_subscription"),
+                            message: LocalizedString("exchange_rate_subscription_info_message"),
                             actions: [detailsAction, cancelAction])
     }
     
     private func showUnsupportedCurrrencyInfo() {
-        alertPresenter?.presentAlert(LocalizedString("exchange.rate.error.unsupported.currency.title"),
-                            message: LocalizedString("exchange.rate.error.unsupported.currency.message"),
+        alertPresenter?.presentAlert(LocalizedString("generic_error_alert_title"),
+                            message: LocalizedString("exchange_rate_error_unsupported_currency_message"),
                       dismissButton: LocalizedString("generic_button_title_ok"))
     }
     

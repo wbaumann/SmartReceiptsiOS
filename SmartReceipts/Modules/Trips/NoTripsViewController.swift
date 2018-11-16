@@ -14,7 +14,7 @@ class NoTripsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        noTripsLabel.text = LocalizedString("no.trips.empty.message")
+        noTripsLabel.text = LocalizedString("no_trips_empty_message")
     }
 
 }

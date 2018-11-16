@@ -131,11 +131,11 @@ class EditDistanceFormView: FormViewController {
     func validate() -> String {
         var result = ""
         if let errors = form.rowBy(tag: DISTANCE_ROW_TAG)?.validate() {
-            errors.count > 0 ? result.appendIssue(LocalizedString("edit.distance.controller.validation.distance.missing")) : ()
+            errors.count > 0 ? result.appendIssue(LocalizedString("edit_distance_controller_validation_distance_missing")) : ()
         }
         
         if let errors = form.rowBy(tag: RATE_ROW_TAG)?.validate() {
-            errors.count > 0 ? result.appendIssue(LocalizedString("edit.distance.controller.validation.rate.missing")) : ()
+            errors.count > 0 ? result.appendIssue(LocalizedString("edit_distance_controller_validation_rate_missing")) : ()
         }
         
         return result

@@ -33,18 +33,17 @@ class ImagePicker: NSObject {
             return presentPicker(on: viewController, source: .photoLibrary)
         }
         
-        let title = LocalizedString("image.picker.sheet.title")
-        let actionSheet = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let cancel = UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel) { _ in
             self.singleObserver = nil
         }
         
-        let library = UIAlertAction(title: LocalizedString("image.picker.sheet.choose.existing.button.title"), style: .default) { _ in
+        let library = UIAlertAction(title: LocalizedString("receipt_attach_image"), style: .default) { _ in
             self.presentPicker(on: viewController, source: .photoLibrary)
         }
         
-        let photo = UIAlertAction(title: LocalizedString("image.picker.sheet.take.photo.button.title"), style: .default) { _ in
+        let photo = UIAlertAction(title: LocalizedString("receipt_attach_photo"), style: .default) { _ in
             self.presentPicker(on: viewController, source: .camera)
         }
 

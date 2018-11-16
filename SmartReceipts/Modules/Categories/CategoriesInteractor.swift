@@ -39,7 +39,7 @@ class CategoriesInteractor: Interactor {
         let success = update ? db.update(category) : db.save(category)
         
         if !success {
-            presenter.presentAlert(title: nil, message: LocalizedString("edit.category.edit.failure.message"))
+            presenter.presentAlert(title: nil, message: LocalizedString("generic_save_error"))
         }
     }
     

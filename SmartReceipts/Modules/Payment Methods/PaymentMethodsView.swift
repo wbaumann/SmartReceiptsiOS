@@ -84,8 +84,8 @@ final class PaymentMethodsView: FetchedTableViewController {
     
     private func validate(method: String?) -> Bool {
         if method == nil || method!.isEmpty {
-            presenter.presentAlert(title: LocalizedString("edit.payment.method.controller.save.error.title"),
-                                 message: LocalizedString("edit.payment.method.controller.save.error.message"))
+            presenter.presentAlert(title: LocalizedString("generic_error_alert_title"),
+                                 message: LocalizedString("edit_payment_method_controller_save_error_message"))
             return false
         }
         
