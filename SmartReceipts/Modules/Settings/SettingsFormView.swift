@@ -192,12 +192,6 @@ class SettingsFormView: FormViewController {
         }).cellSetup({ cell, _ in
             cell.textLabel?.numberOfLines = 3
         })
-        
-        <<< switchRow(LocalizedString("settings.allow.data.outside.trip.bounds.label"),
-            value: WBPreferences.allowDataEntryOutsideTripBounds())
-        .onChange({ row in
-            WBPreferences.setAllowDataEntryOutsideTripBounds(row.value!)
-        })
             
         <<< DecimalRow() { row in
             row.title = LocalizedString("pref_receipt_minimum_receipts_price_title")

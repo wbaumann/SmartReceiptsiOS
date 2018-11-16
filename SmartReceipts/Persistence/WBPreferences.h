@@ -118,9 +118,6 @@
 + (BOOL)isAutocompleteEnabled;
 + (void)setAutocompleteEnabled:(BOOL)value;
 
-+ (BOOL)allowDataEntryOutsideTripBounds;
-+ (void)setAllowDataEntryOutsideTripBounds:(BOOL)value;
-
 + (NSString *)pdfFooterString;
 + (void)setPDFFooterString:(NSString *)string;
 

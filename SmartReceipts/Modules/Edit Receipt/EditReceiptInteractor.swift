@@ -111,7 +111,6 @@ class EditReceiptInteractor: Interactor {
     
     private func validateDate(in receipt: WBReceipt) {
         Observable<Void>.just(())
-            .filter({ !WBPreferences.allowDataEntryOutsideTripBounds() })
             .filter({ receipt.date > receipt.trip.endDate || receipt.date < receipt.trip.startDate })
             .subscribe(onNext: {
                 let message = LocalizedString("DIALOG_RECEIPTMENU_TOAST_BAD_DATE")
