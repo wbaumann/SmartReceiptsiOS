@@ -20,6 +20,8 @@
 "auto_backup_current_service" = "Current Service";
 "receipt_file_picker_cant_import_error" = "Can't import selected file";
 "drive_sync_error_unknown" = "Unknown Error";
+"camera_permission_alert_message" = "Smart Receipts requires the Camera permission to take photos.";
+"camera_permission_alert_button" = "Launch Preferences";
 
 /** Android System Strings (ok, untitled, error_message_title) **/
 /** <MARKER - SECTION COMPLETE> **/
