@@ -23,7 +23,6 @@ static NSString * const STRING_DEFAULT_EMAIL_CC = @"EmailCC";
 static NSString * const STRING_DEFAULT_EMAIL_BCC = @"EmailBCC";
 static NSString * const STRING_DEFAULT_EMAIL_SUBJECT = @"EmailSubject";
 static NSString * const INT_DEFAULT_TRIP_DURATION = @"TripDuration";
-static NSString * const BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS = @"AllowDataOutsideTripBounds";
 static NSString * const BOOL_AUTOCOMPLETE_ENABLED = @"IsAutocompleteEnabled";
 static NSString * const STRING_USERNAME = @"UserName";
 static NSString * const BOOL_PREDICT_CATEGORIES = @"PredictCats";
@@ -107,7 +106,6 @@ static NSDictionary *getEntryTypes() {
     return @{
             INT_DEFAULT_TRIP_DURATION : tInt,
             BOOL_AUTOCOMPLETE_ENABLED : tBool,
-            BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS : tBool,
             FLOAT_MIN_RECEIPT_PRICE : tFloat,
 
             STRING_DEFAULT_EMAIL_TO : tString,
@@ -191,7 +189,6 @@ static NSDictionary *getDefaultValues() {
     return @{
             INT_DEFAULT_TRIP_DURATION : @3,
             BOOL_AUTOCOMPLETE_ENABLED : @(YES),
-            BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS : @(YES),
 
             FLOAT_MIN_RECEIPT_PRICE : @(MIN_FLOAT),
             STRING_DEFAULT_EMAIL_TO : @"",
@@ -606,14 +603,6 @@ static NSUserDefaults* instance() {
 
 + (void)setAutocompleteEnabled:(BOOL)value{
     [instance() setBool:value forKey:BOOL_AUTOCOMPLETE_ENABLED];
-}
-
-+ (BOOL)allowDataEntryOutsideTripBounds {
-    return [instance() boolForKey:BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS];
-}
-
-+ (void)setAllowDataEntryOutsideTripBounds:(BOOL)value{
-    [instance() setBool:value forKey:BOOL_ALLOW_DATA_OUTSIDE_TRIP_BOUNDS];
 }
     
 + (BOOL)analyticsEnabled {
