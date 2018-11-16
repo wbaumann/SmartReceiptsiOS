@@ -74,7 +74,7 @@ class SettingsFormView: FormViewController {
         })
             
         <<< ButtonRow() { row in
-            row.title = LocalizedString("settings.purchase.restore.label")
+            row.title = LocalizedString("settings_purchase_restore_label")
         }.cellUpdate({ cell, row in
             cell.textLabel?.textColor = AppTheme.primaryColor
         }).onCellSelection({ [unowned self] _, _ in
@@ -105,7 +105,7 @@ class SettingsFormView: FormViewController {
         }).onCellSelection({ [unowned self] _, row in
             if !row.isEnabled {
                 self.alertSubject.onNext((title: LocalizedString("pref_pro_header"),
-                                        message: LocalizedString("settings.pdf.footer.pro.message.body")))
+                                        message: LocalizedString("settings_pdf_footer_pro_message_body")))
             }
         })
         
@@ -345,7 +345,7 @@ class SettingsFormView: FormViewController {
             subtitle: LocalizedString("pref_receipt_payment_methods_summary"), route: .paymentMethods)
 
         +++ Section(LocalizedString("pref_camera_header"))
-        <<< segmentedRow(LocalizedString("settings.max.camera.resolution.label"),
+        <<< segmentedRow(LocalizedString("settings_max_camera_resolution_label"),
             options: imageOptions(), selected: imageOptionFromPreferences())
         .onChange({ row in
             WBPreferences.setCameraMaxHeightWidth(IMAGE_OPTIONS[row.value!])
@@ -510,11 +510,11 @@ class SettingsFormView: FormViewController {
     }
     
     private func imageOptions() -> [String] {
-        let pixelsString = LocalizedString("settings.camera.pixels.label")
+        let pixelsString = LocalizedString("settings_camera_pixels_label")
         let option1 = "512 "+pixelsString
         let option2 = "1024 "+pixelsString
         let option3 = "2048 "+pixelsString
-        let option4 = LocalizedString("settings.camera.value.default.label")
+        let option4 = LocalizedString("settings_camera_value_default_label")
         return [option1, option2, option3, option4]
     }
     

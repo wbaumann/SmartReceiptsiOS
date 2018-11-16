@@ -76,6 +76,7 @@ class ReceiptsRouter: Router {
         var hud: PendingHUDView?
         ReceiptFilePicker.sharedInstance.openFilePicker(on: _view)
             .do(onError: { [unowned self] error in
+                Logger.error("Import failed with: \(error.localizedDescription)")
                 self.openAlert(title: nil, message: error.localizedDescription)
             }).subscribe(onNext: { [unowned self] doc in
                 hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)

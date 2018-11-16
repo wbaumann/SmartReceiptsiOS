@@ -58,7 +58,7 @@ public final class PurchaseButtonRow: Row<PurchaseButtonCell>, RowType{
         
         let formattedDate = formatter.formattedDate(subscriptionDate, in: NSTimeZone.local)
         cell.subtitleLabel.text = String(format:
-            LocalizedString("settings.purchase.subscription.valid.until.label.base"), formattedDate!)
+            LocalizedString("settings_purchase_subscription_valid_until_label_base"), formattedDate!)
         
         cell.subtitleLabel.textColor = (subscriptionDate as NSDate).is(before: Date()) ?
             UIColor.red : UIColor.black

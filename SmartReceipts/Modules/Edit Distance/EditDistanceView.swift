@@ -47,7 +47,7 @@ final class EditDistanceView: UserInterface {
             let distance = formView!.changedDistance!
             presenter.save(distance: distance, asNewDistance: displayData.distance == nil)
         } else {
-            let title = LocalizedString("edit.distance.controller.validation.error.title")
+            let title = LocalizedString("generic_error_alert_title")
             let alert = UIAlertController(title: title, message: errorsDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: LocalizedString("generic_button_title_ok"), style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)

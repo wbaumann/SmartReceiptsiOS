@@ -35,8 +35,8 @@ class PaymentMethodsInteractor: Interactor {
         let success = update ? db.update(paymentMethod) : db.save(paymentMethod)
         
         if !success {
-            presenter.presentAlert(title: LocalizedString("edit.payment.method.controller.save.error.title"),
-                                 message: LocalizedString("edit.payment.method.controller.save.error.generic.message"))
+            presenter.presentAlert(title: LocalizedString("generic_error_alert_title"),
+                                 message: LocalizedString("generic_save_error"))
         }
     }
     

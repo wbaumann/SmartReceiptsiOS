@@ -239,7 +239,7 @@ extension BackupView {
             })
         }
         
-        let currentService = "\(LocalizedString("auto_backup_current_service")) - \(SyncProvider.current.localizedTitle())"
+        let currentService = String(format: LocalizedString("auto_backup_current_service"), SyncProvider.current.localizedTitle())
         let alert = UIAlertController(title: currentService, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
         alert.addAction(makeProviderAction(syncProvider:.googleDrive))
