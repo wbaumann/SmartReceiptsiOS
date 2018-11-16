@@ -1,3 +1,7 @@
+/** iOS-Specific Strings **/
+"camera_permission_alert_message" = "Smart Receipts требуется разрешение использовать камеру, чтобы делать снимки чеков.";
+"camera_permission_alert_button" = "Открыть настройки";
+
 /** Android System Strings (ok, untitled, error_message_title) **/
 "generic_button_title_ok" = "ОК";
 "generic_error_alert_title" = "Ошибка";

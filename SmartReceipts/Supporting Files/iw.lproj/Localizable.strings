@@ -1,3 +1,7 @@
+/** iOS-Specific Strings **/
+"camera_permission_alert_message" = "קבלות חכמות דורשות מהמצלמה לצלם תמונות";
+"camera_permission_alert_button" = "העדפות פתוחות";
+
 /** Android System Strings (ok, untitled, error_message_title) **/
 "generic_button_title_ok" = "אישור";
 "generic_error_alert_title" = "שגיאה";
