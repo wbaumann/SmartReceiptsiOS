@@ -58,16 +58,15 @@ class AuthInteractor: Interactor {
             switch event {
             case .next(let credentials):
                 self.authService.signup(credentials: credentials)
-                    .catchError({ error -> Single<String> in
+                    .catchError({ error -> Single<SignupResponse> in
                         if let afError = error as? AFError, afError.responseCode == ACCOUNT_ALREADY_EXISTS_CODE {
                             self.presenter.errorHandler.onNext(LocalizedString("sign_up_failure_account_exists_toast"))
                         } else {
                             self.presenter.errorHandler.onNext(error.localizedDescription)
                         }
                         return .never()
-                    }).filter({ $0 != "" })
-                    .map({ _ in })
-                    .do(onNext: { [weak self] _ in
+                    }).map({ _ in })
+                    .do(onSuccess: { [weak self] _ in
                         self?.presenter.successAuthSubject.onNext(())
                     }).asObservable()
                     .bind(to: self.presenter.successSignup)
