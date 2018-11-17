@@ -35,11 +35,8 @@ class ScansPurchaseTracker: NSObject {
     
     func fetchAndPersistAvailableRecognitions() -> Single<Int> {
         return AuthService.shared.getUser()
-            .filter({ $0 != nil })
-            .map({ $0!.scansAvailable })
-            .do(onNext: { count in
-                LocalScansTracker.shared.scansCount = count
-            }).asObservable().asSingle()
+            .map { $0.recognitionsAvailable }
+            .do(onSuccess: { LocalScansTracker.shared.scansCount = $0 })
     }
 }
 

@@ -10,11 +10,8 @@ import RxSwift
 import RxCocoa
 import RxAlamofire
 import Alamofire
-import SwiftyJSON
 import Moya
 
-fileprivate let JSON_ID_KEY = "id"
-fileprivate let JSON_TOKEN_KEY = "token"
 fileprivate let AUTH_TOKEN_KEY = "auth.token"
 fileprivate let AUTH_EMAIL_KEY = "auth.email"
 fileprivate let AUTH_ID_KEY = "auth.id"
@@ -28,9 +25,9 @@ protocol AuthServiceInterface {
     var id: String { get }
     
     func login(credentials: Credentials) -> Single<LoginResponse>
-    func signup(credentials: Credentials) -> Single<String>
+    func signup(credentials: Credentials) -> Single<SignupResponse>
     func logout() -> Single<Void>
-    func getUser() -> Single<User?>
+    func getUser() -> Single<User>
     func saveDevice(token: String) -> Single<Void>
 }
 
@@ -91,21 +88,17 @@ class AuthService: AuthServiceInterface {
     
     func login(credentials: Credentials) -> Single<LoginResponse> {
        return apiProvider.rx.request(.login(credentials: credentials))
-            .map({ object -> LoginResponse in
-                let json = JSON(object.data)
-                let id = json[JSON_ID_KEY].stringValue
-                let token = json[JSON_TOKEN_KEY].stringValue
-                return LoginResponse(id, token)
-            }).do(onSuccess: { [weak self] response in
+            .mapModel(LoginResponse.self)
+            .do(onSuccess: { [weak self] response in
                 self?.save(token: response.token, email: credentials.email, id: response.id)
             })
     }
     
-    func signup(credentials: Credentials) -> Single<String> {
+    func signup(credentials: Credentials) -> Single<SignupResponse> {
         return apiProvider.rx.request(.signup(credentials: credentials))
-            .mapString(atKeyPath: JSON_TOKEN_KEY)
-            .do(onSuccess: { [weak self] token in
-                self?.save(token: token, email: credentials.email, id: nil)
+            .mapModel(SignupResponse.self)
+            .do(onSuccess: { [weak self] response in
+                self?.save(token: response.token, email: credentials.email, id: response.id)
             })
     }
     
@@ -118,12 +111,10 @@ class AuthService: AuthServiceInterface {
             .do(onError: { _ in self.clear() })
     }
     
-    func getUser() -> Single<User?> {
+    func getUser() -> Single<User> {
         return apiProvider.rx.request(.user)
-            .map({ response -> User? in
-                let json = JSON(response.data)
-                return User(json)
-            })
+            .mapModel(UserResponse.self)
+            .map { $0.user }
     }
     
     func saveDevice(token: String) -> Single<Void> {
@@ -159,16 +150,6 @@ struct Credentials {
     init(_ email: String, _ password: String) {
         self.email = email
         self.password = password
-    }
-}
-
-struct LoginResponse {
-    var id: String
-    var token: String
-    
-    init(_ id: String, _ token: String) {
-        self.id = id
-        self.token = token
     }
 }
 

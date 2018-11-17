@@ -19,10 +19,8 @@ class CognitoService: AWSCognitoCredentialsProviderHelper {
         super.init(regionType: .USEast1, identityPoolId: "us-east-1:cdcc971a-b67f-4bc0-9a12-291b5d416518", useEnhancedFlow: true, identityProviderManager: nil)
     
         AuthService.shared.loggedInObservable
-            .filter({ $0 })
-            .flatMap({ _ in
-                return AuthService.shared.getUser().catchErrorJustReturn(nil)
-            }).filter({ $0 != nil })
+            .filter { $0 }
+            .flatMap { _ in return AuthService.shared.getUser() }
             .subscribe(onNext: { [weak self] user in
                 self?.saveCognitoData(user: user)
             }).disposed(by: bag)
