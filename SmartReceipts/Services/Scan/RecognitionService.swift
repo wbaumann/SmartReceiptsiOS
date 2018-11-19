@@ -17,9 +17,9 @@ class RecognitionService {
         self.apiProvider = apiProvider
     }
 
-    func getRecognition(_ id: String) -> Single<JSON> {
+    func getRecognition(_ id: String) -> Single<RecognitionResponse> {
         return apiProvider.rx.request(.recognition(id: id))
-            .map({ JSON($0.data) })
+            .mapModel(RecognitionResponse.self)
     }
     
     func recognize(url: URL, incognito: Bool = false) -> Single<String> {

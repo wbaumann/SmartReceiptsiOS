@@ -24,10 +24,10 @@ class DebugInteractor: Interactor {
         })
     }
     
-    func scan() -> Single<Scan> {
+    func scan() -> Single<ScanResult> {
         var hud: PendingHUDView?
         return ImagePicker.shared.presentPicker(on: presenter._view)
-            .flatMap({ [unowned self] img -> Single<Scan> in
+            .flatMap({ [unowned self] img -> Single<ScanResult> in
                 hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
                 hud?.observe(status: self.scanService.status)
                 return self.scanService.scan(image: img)

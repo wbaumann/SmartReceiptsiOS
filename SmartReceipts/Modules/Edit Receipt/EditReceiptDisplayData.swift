@@ -12,6 +12,6 @@ import Viperit
 class EditReceiptDisplayData: DisplayData {
     var receipt: WBReceipt?
     var trip: WBTrip!
-    var scan: Scan?
+    var scanResult: ScanResult?
     var needFirstResponder = true
 }

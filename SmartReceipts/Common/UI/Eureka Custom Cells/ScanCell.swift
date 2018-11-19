@@ -8,7 +8,7 @@
 
 import Eureka
 
-class ScanCell: Cell<Scan>, CellType {
+class ScanCell: Cell<ScanResult>, CellType {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var totalAmount: UILabel!
     @IBOutlet weak var taxAmount: UILabel!
@@ -22,14 +22,13 @@ class ScanCell: Cell<Scan>, CellType {
     
     public override func update() {
         super.update()
-        if let scan = row().value {
-            clear()
-            
-            title.text = scan.merchant
-            if let amount = scan.totalAmount { totalAmount.text = NSDecimalNumber(value: amount).stringValue }
-            if let tax = scan.taxAmount { taxAmount.text = NSDecimalNumber(value: tax).stringValue }
-            if let scanDate = scan.date { date.text = scanDate.dayString() }
-        }
+        guard let scan = row().value else { return }
+        clear()
+        
+        title.text = scan.recognition?.result.data.merchantName?.data
+        if let amount = scan.recognition?.result.amount { totalAmount.text = NSDecimalNumber(value: amount).stringValue }
+        if let tax = scan.recognition?.result.tax { taxAmount.text = NSDecimalNumber(value: tax).stringValue }
+        if let scanDate = scan.recognition?.result.data.date?.data { date.text = scanDate.dayString() }
     }
     
     func clear() {
