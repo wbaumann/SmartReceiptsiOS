@@ -139,11 +139,11 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
         })
     }
     
-    var scanObserver: AnyObserver<Scan> {
-        return AnyObserver<Scan>(onNext: { [weak self] scan in
+    var scanObserver: AnyObserver<ScanResult> {
+        return AnyObserver<ScanResult>(onNext: { [weak self] scanResult in
             if self == nil { return }
             let scanRow = self!.form.rowBy(tag: SCAN_ROW) as! ScanRow
-            scanRow.value = scan
+            scanRow.value = scanResult
             scanRow.updateCell()
         })
     }

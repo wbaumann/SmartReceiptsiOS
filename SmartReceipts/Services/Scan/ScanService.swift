@@ -46,13 +46,13 @@ class ScanService {
         return statusSubject.asObservable()
     }
     
-    func scan(image: UIImage) -> Single<Scan> {
+    func scan(image: UIImage) -> Single<ScanResult> {
         let doc = ReceiptDocument.makeDocumentFrom(image: image)
         return scan(document: doc)
     }
     
-    func scan(document: ReceiptDocument) -> Single<Scan> {
-        guard let url = document.localURL else { return .just(Scan(filepath: document.localURL!)) }
+    func scan(document: ReceiptDocument) -> Single<ScanResult> {
+        guard let url = document.localURL else { return .just(ScanResult(filepath: document.localURL!)) }
         
         if WBPreferences.automaticScansEnabled() && FeatureFlags.ocrSupport.isEnabled &&
             authService.isLoggedIn && scansPurchaseTracker.hasAvailableScans {
@@ -68,11 +68,11 @@ class ScanService {
             Logger.debug("Ignoring OCR: \(isFeatureEnabled), \(isLoggedIn), \(hasAvailableScans), \(authScansEabled).")
             statusSubject.onNext(.completed)
             
-            return .just(Scan(filepath: document.localURL!))
+            return .just(ScanResult(filepath: document.localURL!))
         }
     }
     
-    private func scanFrom(uploading: Observable<URL>, document: ReceiptDocument) -> Single<Scan> {
+    private func scanFrom(uploading: Observable<URL>, document: ReceiptDocument) -> Single<ScanResult> {
         return uploading.asSingle()
             .do(onSubscribed: { AnalyticsManager.sharedManager.record(event: Event.ocrRequestStarted()) })
             .do(onError: { _ in
@@ -88,22 +88,23 @@ class ScanService {
             .flatMap({ [weak self] id -> Single<String> in
                 if let recognition = self?.getRecognitionID(id: id) { return recognition }
                 return .just(id)
-            }).flatMap({ [weak self] id -> Single<Scan> in
-                guard let api = self?.recognitionService else { return .never() }
+            }).flatMap({ [weak self] id -> Single<ScanResult> in
+                guard let service = self?.recognitionService else { return .never() }
                 self?.statusSubject.onNext(.fetching)
-                return api.getRecognition(id)
+                return service.getRecognition(id)
+                    .map { $0.recognition }
                     .timeout(NETWORK_TIMEOUT, scheduler: MainScheduler.instance)
                     .do(onError: { error in
                         AnalyticsManager.sharedManager.record(event: Event.ocrRequestFailed())
                         AnalyticsManager.sharedManager.record(event: ErrorEvent(error: error))
-                    }).map({ Scan(json: $0, filepath: document.localURL!) })
+                    }).map({ ScanResult(recognition: $0, filepath: document.localURL!) })
                     .do(onSuccess: { [weak self] _ in
                         self?.statusSubject.onNext(.completed)
                         AnalyticsManager.sharedManager.record(event: Event.ocrRequestSucceeded())
                         ScansPurchaseTracker.shared.decrementRemainingScans()
                     })
-            }).catchError({ error -> Single<Scan> in
-                return .just(Scan(filepath: document.localURL!))
+            }).catchError({ error -> Single<ScanResult> in
+                return .just(ScanResult(filepath: document.localURL!))
             })
     }
     

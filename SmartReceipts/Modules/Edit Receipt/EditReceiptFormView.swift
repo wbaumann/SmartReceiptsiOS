@@ -261,18 +261,18 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         }
     }
     
-    func apply(scan: Scan?) {
+    func apply(scan: ScanResult?) {
         guard let gScan = scan else { return }
         hasScan = true
-        receipt.name = gScan.merchant ?? ""
-        receipt.date = gScan.date ?? Date()
+        receipt.name = gScan.recognition?.result.data.merchantName?.data ?? ""
+        receipt.date = gScan.recognition?.result.data.date?.data ?? Date()
         
-        if let amount = gScan.totalAmount {
+        if let amount = gScan.recognition?.result.data.totalAmount?.data {
             receipt.setPrice(NSDecimalNumber(value: amount), currency: trip.defaultCurrency.code)
         }
         
-        if let tax = gScan.taxAmount, WBPreferences.includeTaxField()  {
-            if let amount = gScan.totalAmount, WBPreferences.enteredPricePreTax() {
+        if let tax = gScan.recognition?.result.data.taxAmount?.data, WBPreferences.includeTaxField()  {
+            if let amount = gScan.recognition?.result.data.totalAmount?.data, WBPreferences.enteredPricePreTax() {
                 receipt.setPrice(NSDecimalNumber(value: amount - tax), currency: trip.defaultCurrency.code)
             }
             receipt.setTax(NSDecimalNumber(value: tax))

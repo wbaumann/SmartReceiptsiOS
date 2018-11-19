@@ -13,7 +13,7 @@ import RxSwift
 //MARK: - Public Interface Protocol
 protocol EditReceiptViewInterface {
     func setup(trip: WBTrip, receipt: WBReceipt?)
-    func setup(scan: Scan)
+    func setup(scanResult: ScanResult)
     
     var removeAction: Observable<WBReceipt> { get }
     var showAttachmentAction: Observable<WBReceipt> { get }
@@ -41,7 +41,7 @@ final class EditReceiptView: UserInterface {
         configureTitle()
         let formView = EditReceiptFormView(trip: displayData.trip, receipt: displayData.receipt)
         self.formView = formView
-        formView.apply(scan: displayData.scan)
+        formView.apply(scan: displayData.scanResult)
         formView.settingsTap = presenter.settingsTap
         formView.needFirstResponder = displayData.needFirstResponder
         addChild(formView)
@@ -162,8 +162,8 @@ extension EditReceiptView: EditReceiptViewInterface {
         displayData.receipt = receipt
     }
     
-    func setup(scan: Scan) {
-        displayData.scan = scan
+    func setup(scanResult: ScanResult) {
+        displayData.scanResult = scanResult
     }
 
     func disableFirstResponeder() {
