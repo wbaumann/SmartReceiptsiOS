@@ -7,7 +7,6 @@
 //
 
 import RxSwift
-import SwiftyJSON
 
 fileprivate let PUSH_TIMEOUT: RxTimeInterval = 15
 fileprivate let NETWORK_TIMEOUT: RxTimeInterval = 10
@@ -111,8 +110,8 @@ class ScanService {
     private func getRecognitionID(id: String) -> Single<String> {
         guard let pushService = self.pushNotificationService else { return .never() }
         
-        let recognitionByPush = pushService.notificationJSON
-            .map({ return $0.dictionaryValue[RECOGNITION_KEY]?["id"].string ?? id })
+        let recognitionByPush = pushService.notification
+            .map { _ in id }
             .do(onNext: { _ in
                 AnalyticsManager.sharedManager.record(event: Event.ocrPushMessageReceived())
             })

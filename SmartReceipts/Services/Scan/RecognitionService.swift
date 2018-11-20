@@ -7,7 +7,6 @@
 //
 
 import RxSwift
-import SwiftyJSON
 import Moya
 
 class RecognitionService {

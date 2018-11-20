@@ -10,15 +10,15 @@ import Foundation
 import UserNotifications
 import RxSwift
 import FirebaseMessaging
-import SwiftyJSON
 
 class PushNotificationService: NSObject {
-    fileprivate let notificationSubject = PublishSubject<JSON>()
-    let bag = DisposeBag()
     static let shared = PushNotificationService()
     
+    private let bag = DisposeBag()
+    fileprivate let notificationSubject = PublishSubject<RecognitionNotification>()
+    
     var token: String? { return Messaging.messaging().fcmToken }
-    var notificationJSON: Observable<JSON> { return notificationSubject.asObservable() }
+    var notification: Observable<RecognitionNotification> { return notificationSubject.asObservable() }
     
     override init() {}
     
@@ -29,17 +29,16 @@ class PushNotificationService: NSObject {
         AuthService.shared.loggedInObservable
             .filter({ $0 })
             .subscribe(onNext: { _ in
-                if let token = Messaging.messaging().fcmToken {
-                    Logger.debug("FCM Token: \(token)")
-                    self.saveDevice(token: token)
-                }
+                guard let token = Messaging.messaging().fcmToken else { return }
+                Logger.debug("FCM Token: \(token)")
+                self.saveDevice(token: token)
             }).disposed(by: bag)
 
     }
     
     func requestAuthorization() -> Observable<Void> {
         return Observable<Void>.create({ observer -> Disposable in
-            UNUserNotificationCenter.current().requestAuthorization(options: [.badge]) { _,_  in
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge]) { _, _  in
                 observer.onNext(())
                 observer.onCompleted()
             }
@@ -81,11 +80,12 @@ class PushNotificationService: NSObject {
 
 extension PushNotificationService: UNUserNotificationCenterDelegate, MessagingDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        if let data = notification.request.content.userInfo["gcm.notification.data"] {
-            let notificationJSON = JSON(data)
-            Logger.debug(notificationJSON.description)
-            notificationSubject.onNext(notificationJSON)
-        }
+        guard let dataString = notification.request.content.userInfo["gcm.notification.data"] as? String else { return }
+        guard let data = dataString.data(using: .utf8) else { return }
+        guard let notification = try? JSONDecoder().decode(RecognitionNotification.self, from: data) else { return }
+        
+        Logger.debug(dataString)
+        notificationSubject.onNext(notification)
     }
     
     @nonobjc func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
