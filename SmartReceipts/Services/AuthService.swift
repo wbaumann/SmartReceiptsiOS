@@ -118,11 +118,15 @@ class AuthService: AuthServiceInterface {
         
         return RxAlamofire.json(.post, endpoint("users/sign_up"),
             parameters: params, encoding: JSONEncoding.default, headers: JSON_HEADERS)
-            .map({ object -> String in
+            .map({ object -> (String, String) in
                 let json = JSON(object)
-                return json[JSON_TOKEN_KEY].stringValue
-            }).do(onNext: { [weak self] token in
-                self?.save(token: token, email: credentials.email, id: nil)
+                let id = json[JSON_ID_KEY].stringValue
+                let token = json[JSON_TOKEN_KEY].stringValue
+                return (token, id)
+            }).do(onNext: { [weak self] token, id in
+                self?.save(token: token, email: credentials.email, id: id)
+            }).map({ token, id -> String in
+                return token
             })
     }
     
