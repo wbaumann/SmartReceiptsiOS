@@ -78,6 +78,7 @@ final class AuthView: UserInterface {
         Observable.of(loginButton.rx.tap, signupButton.rx.tap, logoutButton.rx.tap)
             .merge()
             .subscribe(onNext: { [unowned self] _ in
+                self.view.endEditing(true)
                 self.hud = PendingHUDView.show(on: self.view)
             }).disposed(by: bag)
         

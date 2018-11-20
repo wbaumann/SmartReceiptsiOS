@@ -8,7 +8,6 @@
 
 import RxSwift
 import StoreKit
-import SwiftyJSON
 import Moya
 import SwiftyStoreKit
 
@@ -275,11 +274,11 @@ class PurchaseService {
             }).do(onError: { _ in
                 UserDefaults.standard.set(false, forKey: receiptString)
                 Logger.error("Can't cache receipt: \(receiptString)")
-            }).flatMap({ response -> Single<Any> in
-                return ScansPurchaseTracker.shared.fetchAndPersistAvailableRecognitions().map({ _ -> Any in return response })
-            }).subscribe(onSuccess: { response in
-                let jsonRespose = JSON(response)
-                Logger.debug(jsonRespose.description)
+            }).flatMap({ response -> Single<Response> in
+                return ScansPurchaseTracker.shared.fetchAndPersistAvailableRecognitions().map({ _ in response })
+            }).mapString()
+            .subscribe(onSuccess: { response in
+                Logger.debug(response)
             }, onError: { error in
                 Logger.error(error.localizedDescription)
             }).disposed(by: bag)
@@ -357,7 +356,7 @@ class PurchaseService {
     }
     
     func verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult {
-        return SwiftyStoreKit.verifySubscription(ofType: .nonRenewing(validDuration: TimeInterval.year), productId: PRODUCT_PLUS, inReceipt: receipt)
+        return SwiftyStoreKit.verifySubscription(ofType: .nonRenewing(validDuration: .year), productId: PRODUCT_PLUS, inReceipt: receipt)
     }
     
     func markAppStoreInteracted() {

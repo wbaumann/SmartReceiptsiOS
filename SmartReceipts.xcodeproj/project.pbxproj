@@ -239,6 +239,7 @@
 		718A1C9321A086E300E010A2 /* AuthResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A1C9221A086E300E010A2 /* AuthResponses.swift */; };
 		718A1C9521A211EB00E010A2 /* RecognitionResposnse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A1C9421A211EB00E010A2 /* RecognitionResposnse.swift */; };
 		718A1C9821A2134A00E010A2 /* Recognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A1C9721A2134A00E010A2 /* Recognition.swift */; };
+		718A1C9A21A368F100E010A2 /* RecognitionNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A1C9921A368F100E010A2 /* RecognitionNotification.swift */; };
 		718AAC112120382E00290183 /* SyncableTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAC102120382E00290183 /* SyncableTableCell.swift */; };
 		718AAC13212039E000290183 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAC12212039E000290183 /* TripCell.swift */; };
 		718AAC15212039EA00290183 /* ReceiptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAC14212039EA00290183 /* ReceiptCell.swift */; };
@@ -818,6 +819,7 @@
 		718A1C9221A086E300E010A2 /* AuthResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponses.swift; sourceTree = "<group>"; };
 		718A1C9421A211EB00E010A2 /* RecognitionResposnse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionResposnse.swift; sourceTree = "<group>"; };
 		718A1C9721A2134A00E010A2 /* Recognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recognition.swift; sourceTree = "<group>"; };
+		718A1C9921A368F100E010A2 /* RecognitionNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionNotification.swift; sourceTree = "<group>"; };
 		718AAC102120382E00290183 /* SyncableTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncableTableCell.swift; sourceTree = "<group>"; };
 		718AAC12212039E000290183 /* TripCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		718AAC14212039EA00290183 /* ReceiptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCell.swift; sourceTree = "<group>"; };
@@ -1780,6 +1782,7 @@
 				710DCEA61F7444C000C08C43 /* User.swift */,
 				71D7D43F1FAA079800437CA9 /* ScanResult.swift */,
 				718A1C9721A2134A00E010A2 /* Recognition.swift */,
+				718A1C9921A368F100E010A2 /* RecognitionNotification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3637,6 +3640,7 @@
 				714104DF1FF43D7700C334C5 /* WBAbstractPicker.m in Sources */,
 				EAE9DAEB1AF8EA5500F4FE76 /* DistanceLocationColumn.m in Sources */,
 				71BF11D62036214200DD7FBE /* BackupFilePicker.swift in Sources */,
+				718A1C9A21A368F100E010A2 /* RecognitionNotification.swift in Sources */,
 				71FB1D411F195D0D00742FF5 /* PaymentMethodsPresenter.swift in Sources */,
 				EA07BF3D1AF3C885004D17F6 /* NSString+Validation.m in Sources */,
 				71572D891F15EA41001A1301 /* ColumnsRouter.swift in Sources */,

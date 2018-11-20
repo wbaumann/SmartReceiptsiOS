@@ -145,7 +145,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
                     }).disposed(by: self.bag)
                 }
             }, onError: { error in
-                    Logger.error(error.localizedDescription)
+                Logger.error(error.localizedDescription)
             }).disposed(by: bag)
     }
     

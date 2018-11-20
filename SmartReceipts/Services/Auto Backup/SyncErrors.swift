@@ -7,13 +7,14 @@
 //
 
 import Foundation
-import SwiftyJSON
+import GoogleAPIClientForREST
+
+fileprivate typealias GoogleDriveErrorType = [String: [String: [[String: String]]?]]
 
 fileprivate let NO_REMOTE_DISK_SPACE_REASON = "storageQuotaExceeded"
 fileprivate let USER_REVOKED_REMOTE_RIGHTS_REASON = "invalid_grant"
 fileprivate let AUTH_LOGIN_REQUIRED_REASON = "required"
 fileprivate let USER_DELETED_REMOTE_DATA_REASON = "notFound"
-
 
 enum SyncError: Error {
     case noRemoteDiskSpace
@@ -24,10 +25,15 @@ enum SyncError: Error {
     static func error(_ error: Error) -> SyncError {
         let nsError = error as NSError
         var errorReason = ""
-        if let jsonData = nsError.userInfo["data"] as? Data, let json = try? JSON(data: jsonData),
-            let reason = json["error"]["errors"].array?.first?["reason"].string {
+        if let jsonData = nsError.userInfo["data"] as? Data,
+            let json = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: [String: Any]],
+            let errors = json?["error"]?["errors"] as? [[String: Any]],
+            let reason = errors.first?["reason"] as? String {
+            
             errorReason = reason
         } else if let reason = nsError.userInfo["error"] as? String {
+            errorReason = reason
+        } else if let reason = (nsError.userInfo["json"] as? [String: String])?["error"] {
             errorReason = reason
         }
         
