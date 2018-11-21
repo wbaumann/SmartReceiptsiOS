@@ -6,14 +6,21 @@
 //  Copyright © 2017 Will Baumann. All rights reserved.
 //
 
-import SwiftyJSON
+import Foundation
 
-extension JSON {
-    static func loadFrom(filename: String, type: String?) -> JSON {
+extension Decodable {
+    static func loadFrom(filename: String, type: String?) -> Self {
+        let data = Data.loadFrom(filename: filename, type: type)
+        return try! JSONDecoder.iso8601.decode(Self.self, from: data)
+
+    }
+}
+
+extension Data {
+    static func loadFrom(filename: String, type: String?) -> Data {
         let bundle = Bundle(for: ScanServiceTests.self)
         let path = bundle.path(forResource: filename, ofType: type)
-        let jsonData = NSData(contentsOfFile: path!) as! Data
-        return try! JSON(data: jsonData)
+        return try! NSData(contentsOfFile: path!) as Data
     }
 }
 

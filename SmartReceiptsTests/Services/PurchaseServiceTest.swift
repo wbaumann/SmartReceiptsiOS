@@ -11,7 +11,6 @@ import XCTest
 import Cuckoo
 import RxSwift
 import Moya
-import SwiftyJSON
 
 class PurchaseServiceTest: XCTestCase {
     
@@ -92,7 +91,7 @@ class PurchaseServiceTest: XCTestCase {
         XCTAssertFalse(PurchaseService.hasValidSubscriptionValue)
         
         let responseClosure = { (target: SmartReceiptsAPI) -> Endpoint in
-            let jsonData = try! JSON.loadFrom(filename: "Subscriptions", type: "json").rawData()
+            let jsonData = Data.loadFrom(filename: "Subscriptions", type: "json")
             return Endpoint(url: URL(target: target).absoluteString,
                             sampleResponseClosure: { .networkResponse(200, jsonData) },
                             method: target.method,

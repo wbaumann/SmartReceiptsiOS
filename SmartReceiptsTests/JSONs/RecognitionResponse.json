@@ -1,0 +1,52 @@
+{
+    "recognition": {
+        "id": "7490801211",
+        "status": "Complete",
+        "s3_path": "ocr/589FE575-70B4-4F89-9CB7-5D2E0CE5559A_img_temp.jpg",
+        "data": {
+            "recognition_data": {
+                "totalAmount": {
+                    "data": 23.66,
+                    "confidenceLevel": 0.9
+                },
+                "taxAmount": {
+                    "confidenceLevel": 0
+                },
+                "confidenceLevel": 0.7809999999999999,
+                "date": {
+                    "data": "2015-07-21T12:00:00.000Z",
+                    "confidenceLevel": 0.7
+                },
+                "merchantName": {
+                    "data": "Walmart",
+                    "confidenceLevel": 0.43
+                },
+                "merchantAddress": {
+                    "data": "3500 east main, 54452, Merrill, Россия",
+                    "confidenceLevel": 0.43
+                },
+                "merchantCity": {
+                    "data": "Merrill",
+                    "confidenceLevel": 0.43
+                },
+                "merchantState": {
+                    "data": "Wi",
+                    "confidenceLevel": 0.43
+                },
+                "merchantCountryCode": {
+                    "data": "RU",
+                    "confidenceLevel": 0.43
+                },
+                "merchantTypes": {
+                    "data": [
+                        "Miscellaneous Shop"
+                    ],
+                    "confidenceLevel": 0.43
+                }
+            },
+            "date": "2015-07-21T12:00:00.000Z",
+            "amount": 23.66
+        },
+        "created_at_iso8601": "2018-11-19T21:07:45.796Z"
+    }
+}

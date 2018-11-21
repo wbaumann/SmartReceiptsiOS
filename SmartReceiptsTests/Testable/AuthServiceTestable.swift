@@ -8,10 +8,8 @@
 
 @testable import SmartReceipts
 import RxSwift
-import SwiftyJSON
 
 class AuthServiceTestable: AuthServiceInterface {
-    
     var negative = false
     
     var isLoggedInValue = true
@@ -25,24 +23,27 @@ class AuthServiceTestable: AuthServiceInterface {
     
     var id: String { return "id" }
     
-    var loggedInObservable: Observable<Bool> { return negative ? .error(MockAuthError.testError) : .just(isLoggedIn) }
-    
-    var tokenObservable: Observable<String> { return negative ? .error(MockAuthError.testError) : .just(token) }
-    
-    
-    func login(credentials: Credentials) -> Single<LoginResponse> {
-        return negative ? .error(MockAuthError.testError) : .just(LoginResponse(id, token))
+    var loggedInObservable: Observable<Bool> {
+        return negative ? .error(MockAuthError.testError) : .just(isLoggedIn)
     }
     
-    func signup(credentials: Credentials) -> Single<String> {
+    var tokenObservable: Observable<String> {
         return negative ? .error(MockAuthError.testError) : .just(token)
+    }
+    
+    func login(credentials: Credentials) -> Single<LoginResponse> {
+        return negative ? .error(MockAuthError.testError) : .just(LoginResponse(id: id, token: token))
+    }
+    
+    func signup(credentials: Credentials) -> Single<SignupResponse> {
+        return negative ? .error(MockAuthError.testError) : .just(SignupResponse(id: id, token: token))
     }
     
     func logout() -> Single<Void> {
         return negative ? .error(MockAuthError.testError) : .just(())
     }
     
-    func getUser() -> Single<User?> {
+    func getUser() -> Single<User> {
         return negative ? .error(MockAuthError.testError) : .never()
     }
     

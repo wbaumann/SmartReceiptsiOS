@@ -25,14 +25,12 @@ def pods
     pod 'RxSwift'
     pod 'RxCocoa'
     pod 'RxDataSources'
-    pod 'RxAlamofire'
     pod 'Moya/RxSwift'
     
     # Utilites
     pod 'CocoaLumberjack/Swift'
     pod 'Alamofire'
     pod 'Moya'
-    pod 'SwiftyJSON'
     
     # Firebase
     pod 'Firebase/Core'
