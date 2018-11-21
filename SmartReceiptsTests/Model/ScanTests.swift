@@ -8,7 +8,8 @@
 
 @testable import SmartReceipts
 import XCTest
-import SwiftyJSON
+
+private let FAKE_URL = URL(fileURLWithPath: "")
 
 class ScanTests: XCTestCase {
     
@@ -21,44 +22,35 @@ class ScanTests: XCTestCase {
     }
     
     func testValidJSONParse() {
-        let json = JSON.loadFrom(filename: "Scan", type: "json")
-        let scan = Scan(json: json, image: #imageLiteral(resourceName: "launch_image"))
+        let response = RecognitionResponse.loadFrom(filename: "RecognitionResponse", type: "json")
+        let scanResult = ScanResult(recognition: response.recognition, filepath: FAKE_URL)
         
-        XCTAssertNotNil(scan.merchant)
-        XCTAssertNotNil(scan.taxAmount)
-        XCTAssertNotNil(scan.totalAmount)
-        XCTAssertNotNil(scan.date)
+        XCTAssertNotNil(scanResult.recognition)
+        XCTAssertEqual(scanResult.recognition?.result.data.totalAmount?.data, 23.66)
+        XCTAssertNil(scanResult.recognition?.result.data.taxAmount?.data)
+        XCTAssertNotNil(scanResult.recognition?.result.data.date?.data)
+        XCTAssertEqual(scanResult.recognition?.result.data.merchantName?.data, "Walmart")
+        XCTAssertEqual(scanResult.recognition?.result.data.merchantAddress?.data, "3500 east main, 54452, Merrill, Россия")
+        XCTAssertEqual(scanResult.recognition?.result.data.merchantCity?.data, "Merrill")
+        XCTAssertEqual(scanResult.recognition?.result.data.merchantState?.data, "Wi")
+        XCTAssertEqual(scanResult.recognition?.result.data.merchantCountryCode?.data, "RU")
+        XCTAssertEqual(scanResult.recognition?.result.data.merchantTypes?.data, ["Miscellaneous Shop"])
     }
     
-    func testInvalidJSONParse() {
-        let scan = Scan(json: JSON(), image: #imageLiteral(resourceName: "launch_image"))
+    func testDataEmptyJSONParse() {
+        let response = RecognitionResponse.loadFrom(filename: "RecognitionResponseEmpty", type: "json")
+        let scanResult = ScanResult(recognition: response.recognition, filepath: FAKE_URL)
         
-        XCTAssertNil(scan.merchant)
-        XCTAssertNil(scan.taxAmount)
-        XCTAssertNil(scan.totalAmount)
-        XCTAssertNil(scan.date)
-    }
-    
-    func testPartlyValidJSONParse() {
-        var json = JSON.loadFrom(filename: "Scan", type: "json")
-        json["recognition"]["data"].dictionaryObject?.removeValue(forKey: "recognition_data")
-        let scan = Scan(json: json, image: #imageLiteral(resourceName: "launch_image"))
+        XCTAssertNotNil(scanResult.recognition)
+        XCTAssertNil(scanResult.recognition?.result.data.totalAmount)
+        XCTAssertNil(scanResult.recognition?.result.data.taxAmount)
+        XCTAssertNil(scanResult.recognition?.result.data.date)
+        XCTAssertNil(scanResult.recognition?.result.data.merchantName)
+        XCTAssertNil(scanResult.recognition?.result.data.merchantAddress)
+        XCTAssertNil(scanResult.recognition?.result.data.merchantCity)
+        XCTAssertNil(scanResult.recognition?.result.data.merchantState)
+        XCTAssertNil(scanResult.recognition?.result.data.merchantCountryCode)
+        XCTAssertNil(scanResult.recognition?.result.data.merchantTypes)
         
-        XCTAssertNil(scan.merchant)
-        XCTAssertNil(scan.taxAmount)
-        XCTAssertNil(scan.totalAmount)
-        XCTAssertNil(scan.date)
-    }
-    
-    func testSomeFieldsJSONParse() {
-        var json = JSON.loadFrom(filename: "Scan", type: "json")
-        json["recognition"]["data"]["recognition_data"].dictionaryObject?.removeValue(forKey: "taxAmount")
-        json["recognition"]["data"]["recognition_data"].dictionaryObject?.removeValue(forKey: "date")
-        let scan = Scan(json: json, image: #imageLiteral(resourceName: "launch_image"))
-        
-        XCTAssertNotNil(scan.merchant)
-        XCTAssertNil(scan.taxAmount)
-        XCTAssertNotNil(scan.totalAmount)
-        XCTAssertNil(scan.date)
     }
 }

@@ -8,11 +8,11 @@
 
 @testable import SmartReceipts
 import RxSwift
-import SwiftyJSON
 
 class PushNotificationServiceTestable: PushNotificationService {
-    var notificationObservable: Observable<JSON>!
-    override var notificationJSON: Observable<JSON> {
+    var notificationObservable: Observable<RecognitionNotification>!
+    
+    override var notification: Observable<RecognitionNotification> {
         return notificationObservable
     }
 }

@@ -12,8 +12,8 @@ class ScanResult {
     private(set) var recognition: Recognition?
     private(set) var filepath: URL!
     
-    init(image: UIImage) {
-        recognition = nil
+    init(recognition: Recognition? = nil, image: UIImage) {
+        self.recognition = recognition
         self.filepath = cache(image: image)
     }
     

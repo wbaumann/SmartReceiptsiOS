@@ -12,7 +12,6 @@ import XCTest
 import RxTest
 import RxSwift
 import RxCocoa
-import SwiftyJSON
 
 class ScanServiceTests: XCTestCase {
     let bag = DisposeBag()
@@ -23,7 +22,7 @@ class ScanServiceTests: XCTestCase {
     var authService = AuthServiceTestable()
     var scansPurchaseTracker = ScansPurchaseTracker.shared
     
-    let notificationVar = BehaviorRelay(value: JSON())
+    let notificationVar = BehaviorRelay(value: RecognitionNotification(code: 10, message: "success"))
     let mockID = "1"
     var mockURL: URL!
     let mockImage = #imageLiteral(resourceName: "launch_image")
@@ -49,9 +48,9 @@ class ScanServiceTests: XCTestCase {
     func configureStubs() {
         stub(mockRecognitionService) { mock in
             mock.recognize(url: mockURL, incognito: false).thenReturn(Single<String>.just(mockID))
-            mock.getRecognition(mockID).then({ _ -> Single<JSON> in
-                let json = JSON.loadFrom(filename: "Scan", type: "json")
-                return .just(json)
+            mock.getRecognition(mockID).then({ _ -> Single<RecognitionResponse> in
+                let response = RecognitionResponse.loadFrom(filename: "RecognitionResponse", type: "json")
+                return .just(response)
             })
         }
         
@@ -66,7 +65,7 @@ class ScanServiceTests: XCTestCase {
     }
 
     func testScanSuccess() {
-        let emptyScan = Scan(image: mockImage)
+        let emptyScan = ScanResult(image: mockImage)
         let scan = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         
         verify(s3ServiceMock).upload(file: mockURL)
@@ -77,14 +76,14 @@ class ScanServiceTests: XCTestCase {
     }
     
     func testHasAvailableScans() {
-        let emptyScan = Scan(image: mockImage)
+        let emptyScan = ScanResult(image: mockImage)
         let scan1 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         LocalScansTracker.shared.scansCount = 0
         let scan2 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         LocalScansTracker.shared.scansCount = 10
         let scan3 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         
-        XCTAssertNotNil(scan1.merchant)
+        XCTAssertNotNil(scan1.recognition)
         XCTAssertNotEqual(emptyScan, scan1)
         XCTAssertNotEqual(scan1, scan2)
         XCTAssertNotEqual(scan2, scan3)
@@ -92,14 +91,14 @@ class ScanServiceTests: XCTestCase {
     }
     
     func testAutoScansFlag() {
-        let emptyScan = Scan(image: mockImage)
+        let emptyScan = ScanResult(image: mockImage)
         let scan1 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         WBPreferences.setAutomaticScansEnabled(false)
         let scan2 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         WBPreferences.setAutomaticScansEnabled(true)
         let scan3 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         
-        XCTAssertNotNil(scan1.merchant)
+        XCTAssertNotNil(scan1.recognition)
         XCTAssertNotEqual(emptyScan, scan1)
         XCTAssertNotEqual(scan1, scan2)
         XCTAssertNotEqual(scan2, scan3)
@@ -107,14 +106,14 @@ class ScanServiceTests: XCTestCase {
     }
     
     func testAuthLogin() {
-        let emptyScan = Scan(image: #imageLiteral(resourceName: "launch_image"))
+        let emptyScan = ScanResult(image: #imageLiteral(resourceName: "launch_image"))
         let scan1 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         authService.isLoggedInValue = false
         let scan2 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         authService.isLoggedInValue = true
         let scan3 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         
-        XCTAssertNotNil(scan1.merchant)
+        XCTAssertNotNil(scan1.recognition)
         XCTAssertNotEqual(emptyScan, scan1)
         XCTAssertNotEqual(scan1, scan2)
         XCTAssertNotEqual(scan2, scan3)

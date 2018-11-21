@@ -8,7 +8,6 @@
 
 import RxSwift
 import RxCocoa
-import RxAlamofire
 import Alamofire
 import Moya
 
