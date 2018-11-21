@@ -339,6 +339,10 @@
 		71C2FD1420E7F73500DF068E /* GoogleDriveBackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD1320E7F73500DF068E /* GoogleDriveBackupProvider.swift */; };
 		71CC1B8521143BA0003D7056 /* BackupItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC1B8421143BA0003D7056 /* BackupItemView.swift */; };
 		71CC1B8721143BBC003D7056 /* BackupItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CC1B8621143BBC003D7056 /* BackupItemView.xib */; };
+		71CC546F21A607FF000C9F45 /* AuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC546E21A607FF000C9F45 /* AuthServiceTests.swift */; };
+		71CC547121A60AFB000C9F45 /* LoginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 71CC547021A60AFB000C9F45 /* LoginResponse.json */; };
+		71CC547321A60B17000C9F45 /* SignupResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 71CC547221A60B17000C9F45 /* SignupResponse.json */; };
+		71CC547521A611DB000C9F45 /* UserResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 71CC547421A611DB000C9F45 /* UserResponse.json */; };
 		71CD20C91ED764DA006C4EE6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD20C81ED764DA006C4EE6 /* Currency.swift */; };
 		71CF7A121F1020440004F389 /* InputTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF7A111F1020440004F389 /* InputTextCell.swift */; };
 		71CF7A141F1020590004F389 /* InputTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CF7A131F1020590004F389 /* InputTextCell.xib */; };
@@ -928,6 +932,10 @@
 		71C413D31EE6F826003CE891 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		71CC1B8421143BA0003D7056 /* BackupItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupItemView.swift; sourceTree = "<group>"; };
 		71CC1B8621143BBC003D7056 /* BackupItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackupItemView.xib; sourceTree = "<group>"; };
+		71CC546E21A607FF000C9F45 /* AuthServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceTests.swift; sourceTree = "<group>"; };
+		71CC547021A60AFB000C9F45 /* LoginResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginResponse.json; sourceTree = "<group>"; };
+		71CC547221A60B17000C9F45 /* SignupResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SignupResponse.json; sourceTree = "<group>"; };
+		71CC547421A611DB000C9F45 /* UserResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserResponse.json; sourceTree = "<group>"; };
 		71CD20C81ED764DA006C4EE6 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Currency.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		71CF7A111F1020440004F389 /* InputTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextCell.swift; sourceTree = "<group>"; };
 		71CF7A131F1020590004F389 /* InputTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputTextCell.xib; sourceTree = "<group>"; };
@@ -1580,6 +1588,9 @@
 				7139EDE421A4966E000C4BE6 /* RecognitionResponseEmpty.json */,
 				7156068E1FAFB29F00E09760 /* RecognitionResponse.json */,
 				713B7F712198CFFC007220EC /* Subscriptions.json */,
+				71CC547021A60AFB000C9F45 /* LoginResponse.json */,
+				71CC547221A60B17000C9F45 /* SignupResponse.json */,
+				71CC547421A611DB000C9F45 /* UserResponse.json */,
 			);
 			path = JSONs;
 			sourceTree = "<group>";
@@ -1761,6 +1772,7 @@
 				715606891FAFA53B00E09760 /* ScanServiceTests.swift */,
 				714AFCC420053A45000176E9 /* MigrationServiceTest.swift */,
 				71E6299D20259D630049668B /* PurchaseServiceTest.swift */,
+				71CC546E21A607FF000C9F45 /* AuthServiceTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2970,13 +2982,16 @@
 			files = (
 				713B7F722198CFFC007220EC /* Subscriptions.json in Resources */,
 				EAE23CB51B1757590078F197 /* 2015_05_26_SmartReceipts.smr in Resources */,
+				71CC547121A60AFB000C9F45 /* LoginResponse.json in Resources */,
 				7156068F1FAFB29F00E09760 /* RecognitionResponse.json in Resources */,
 				EA6888D31AFE699A00A910FC /* receipts-dates-test.db in Resources */,
 				A73DBED71CF08694007C6268 /* android-receipts-v14.db in Resources */,
 				EA159E801AFE705000DBB6CF /* android-receipts-v11.db in Resources */,
 				71FC7DE420657D79000A60B9 /* GoogleService-Info.plist in Resources */,
 				EA69EF2D1AF0907300276B70 /* receipts_at_v11.db in Resources */,
+				71CC547521A611DB000C9F45 /* UserResponse.json in Resources */,
 				EA8ABE3B1B1A05FA00DBFA29 /* clean.db in Resources */,
+				71CC547321A60B17000C9F45 /* SignupResponse.json in Resources */,
 				EA8ABE3F1B1A147900DBFA29 /* exrtas-import-test.db in Resources */,
 				EA159E7F1AFE704D00DBB6CF /* android-receipts-v13.db in Resources */,
 				716C0590216D17AE00D3E10F /* android-receipts-v19.db in Resources */,
@@ -3805,6 +3820,7 @@
 				EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */,
 				EA8ABE441B1A1D6800DBFA29 /* DatabaseCategoriesTest.m in Sources */,
 				7123483121418F690038AAE5 /* OCRConfigurationModuleTest.swift in Sources */,
+				71CC546F21A607FF000C9F45 /* AuthServiceTests.swift in Sources */,
 				EA7634AA1B3DB34A00AD8737 /* WBPreferencesImportExportTest.m in Sources */,
 				7123482A21418F690038AAE5 /* ReceiptMoveCopyModuleTest.swift in Sources */,
 				57C0EED41E2D38B3001B4758 /* CustomLogFormatter.swift in Sources */,

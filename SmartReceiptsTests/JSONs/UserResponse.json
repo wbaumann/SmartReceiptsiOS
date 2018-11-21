@@ -1,0 +1,17 @@
+{
+    "user": {
+        "id": "123",
+        "email": "hello@test.com",
+        "created_at_iso8601": "2017-09-20T18:51:09.389Z",
+        "name": "name",
+        "display_name": "displayName",
+        "provider": "provider",
+        "registration_ids": [ "1" ],
+        "confirmed_at_iso8601": null,
+        "confirmation_sent_at_iso8601": "2017-09-20T18:51:09.391Z",
+        "cognito_token": "cognitoToken",
+        "cognito_token_expires_at_iso8601": "2018-11-21T22:53:01.000Z",
+        "identity_id": "identityId",
+        "recognitions_available": 100
+    }
+}
