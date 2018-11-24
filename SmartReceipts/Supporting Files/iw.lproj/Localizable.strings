@@ -1,20 +1,57 @@
 /** iOS-Specific Strings **/
-"camera_permission_alert_message" = "קבלות חכמות דורשות מהמצלמה לצלם תמונות";
-"camera_permission_alert_button" = "העדפות פתוחות";
+"generate_report_share_method_email" = "אי-מייל";
+"generate_report_share_method_other" = "אפליקציות אחרות";
+"generate_report_share_method_sheet_title" = "שלח באמצעות";
+"error_email_not_configured_message" = "עליך להגדיר את אפליקציית המייל של אפל כראוי על מנת לשלוח באמצעות אי-מייל";
+"exchange_rate_subcsription_details_button" = "הראה אפשרויות שדרוג";
+"exchange_rate_subscription_info_message" = "שדרג ל Smart Receipts Plus על מנת לעבד שערי המרת מטבע באופן אוטומטי";
+"ocr_configuration_module_purchase_title" = "%d סריקות OCR (Smart Receipts)";
+"ocr_configuration_module_purchase_subtitle" = "קנה %d סריקות אוטומטיות של קבות (OCR)";
+"push_request_alert_text" = "Smart Receipts משתמשת בנוטיפיקציות שקטות (קרי בלתי נראות) על מנת להשלים עיבוד של סריקות אוטומטיות ברקע ולהציג תוצאות מהר יותר. אפשור נוטיפיקציות פוש אלו יאפשר לנו לבצע סריקות מהר יותר.";
+"receipt_import_action_sheet_title" = "יבא מ:";
+"receipt_import_action_files" = "קבצים";
+"receipt_import_action_camera_roll" = "תמונות מהמצלמה";
+
+"settings.allow.data.outside.trip.bounds.label" = "אפשר הכנסת מידע מעבר לגבולות התחלת/סיום הדוח";
+"settings_purchase_restore_label" = "שחזר רכישה";
+"settings_purchase_subscription_valid_until_label_base" = "בתוקף עד: %@";
+"settings_camera_pixels_label" = "פיקסלים";
+"settings_camera_value_default_label" = "ברירת-מחדל";
+"settings_max_camera_resolution_label" = "גובה/רוחב מצלמה ברירת מחדל";
+"settings_pdf_footer_pro_message_body" = "רכוש מנוי של Smart Receipts Plus על מנת להסיר או לשנות את ההודעה בתחתית הדף";
+"auto_backup_current_service" = "שירות נוכחי: %@";
+"drive_sync_error_unknown" = "שגיאה בלתי-ידועה";
+"edit_distance_controller_validation_distance_missing" = "לא הוכנס מרחק";
+"edit_distance_controller_validation_rate_missing" = "לא הוכנס מחיר";
+"edit_payment_method_controller_save_error_message" = "לא הוכנס שם לאמצעי תשלום";
+"exchange_rate_error_unsupported_currency_message" = "שער המרה אוטומטי לא זמין למטבע הנוכחי";
+"exchange_rate_retrieve_error_message" = "עדכון שער ההמרה נכשל. אנא טען מחדש או הכנס את שער ההמרה ידנית";
+"exchange_rate_retrieve_error_retry_button" = "נסה שנית";
+"generate_report_toast_csv_report_distances" = "על מנת ליצור את הדוח הזה בבקשה אשר את האופציה: 'כלול טבלת מרחקים'";
+
+"camera_permission_alert_message" = "Smart Receipts דורשת להשתמש במצלמה על מנת לצלם תמונות.";
+"camera_permission_alert_button" = "העדפות הפעלה";
 
 /** Android System Strings (ok, untitled, error_message_title) **/
-"generic_button_title_ok" = "אישור";
+"generic_button_title_ok" = "תקין";
 "generic_error_alert_title" = "שגיאה";
-"payment_method_unspecified" = "‏ללא כותרת";
-
+"payment_method_unspecified" = "ללא כותרת";
 
 /** Legacy Android Strings (i.e. Ones that no longer existing on the master branch) **/
-// TODO: Translate each of these items
-"receipt_dialog_action_camera" = "Take Receipt Image";
-"receipt_dialog_action_swap_up" = "Swap Up";
-"receipt_dialog_action_swap_down" = "Swap Down";
-"action_send_attach" = "Attach %@ to Receipt";
-"action_send_replace" = "Replace Receipt %@";
+"receipt_dialog_action_camera" = "צלם תמונת קבלה";
+"receipt_dialog_action_swap_up" = "החלף מעלה";
+"receipt_dialog_action_swap_down" = "החלף מטה";
+"action_send_attach" = "צרף %@ לקבלה";
+"action_send_replace" = "החלף קבלה %@";
 
-"pref_layout_display_photo_title" = "Include Picture/PDF Marker";
-"pref_layout_display_photo_summary" = "Indicate if values have a photo/PDF";
+"pref_layout_display_photo_title" = "כלול סמן לתמונה/פידיאף";
+"pref_layout_display_photo_summary" = "ציין האם לערכים יש תמונה/פידיאף";
+
+/** iOS Strings that we should add to Android **/
+"generic_save_error" = "שמירת השינויים שלך נכשלה";
+
+/** Deprecated iOS Strings (Won't be translated) **/
+"no_trips_empty_message" = "לא נבחר דוח!";
+
+/** Untranslated Android Strings **/
+"settings_pdf_page_size" = "גודל דף פידיאף:";
