@@ -40,6 +40,7 @@ func LocalizedString(_ key: String, comment: String = "") -> String {
         result = NSLocalizedString(key, tableName: nil, comment: comment)
     }
     if result == key {
+        Logger.debug("Unknown String Key: \(key). Falling back to the English variant")
         // If we cannot find it in either, fall back to English
         if let path = Bundle.main.path(forResource: "en", ofType: "lproj") {
             if let enBundle = Bundle(path: path) {
