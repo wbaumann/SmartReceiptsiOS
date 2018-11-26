@@ -28,19 +28,21 @@ class TableContentRow: UIView {
     }
     
     func widthFor(value: String) -> CGFloat {
-        contentLabel?.lineBreakMode = .byWordWrapping
-        contentLabel?.numberOfLines = 0
-        contentLabel?.text = value
+        guard let label = contentLabel else { return 0 }
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.text = value.components(separatedBy: "; ").joined(separator: ";\n")
         let size = CGSize(width: 0, height: CGFloat.greatestFiniteMagnitude)
-        let fitSize = contentLabel?.sizeThatFits(size)
-        return fitSize!.width + (frame.width - contentLabel!.frame.width)
+        let fitSize = label.sizeThatFits(size)
+        return fitSize.width + (frame.width - label.frame.width)
     }
     
     func heightFor(value: String, width: CGFloat) -> CGFloat {
-        contentLabel?.text = value
-        let labelWidth = width - (frame.width - contentLabel!.frame.width)
+        guard let label = contentLabel else { return 0 }
+        label.text = value
+        let labelWidth = width - (frame.width - label.frame.width)
         let size = CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)
-        let fitSize = contentLabel?.sizeThatFits(size)
-        return fitSize!.height + (frame.height - contentLabel!.frame.height)
+        let fitSize = label.sizeThatFits(size)
+        return fitSize.height + (frame.height - label.frame.height)
     }
 }
