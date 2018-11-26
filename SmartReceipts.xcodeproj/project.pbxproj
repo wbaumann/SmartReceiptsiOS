@@ -352,6 +352,7 @@
 		71F6252020FBE39C009B777C /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F6251F20FBE39C009B777C /* SyncService.swift */; };
 		71F73E381FEAD02D0049F108 /* TableFooterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F73E371FEAD02D0049F108 /* TableFooterRow.swift */; };
 		71F98AE1204737CB007AF935 /* DataValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F98AE0204737CB007AF935 /* DataValidationService.swift */; };
+		71F9989921AC4E4200320256 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F9989821AC4E4200320256 /* Array+Extensions.swift */; };
 		71FB1D3E1F195D0D00742FF5 /* PaymentMethods.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FB1D381F195D0D00742FF5 /* PaymentMethods.storyboard */; };
 		71FB1D3F1F195D0D00742FF5 /* PaymentMethodsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D391F195D0D00742FF5 /* PaymentMethodsDisplayData.swift */; };
 		71FB1D401F195D0D00742FF5 /* PaymentMethodsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D3A1F195D0D00742FF5 /* PaymentMethodsInteractor.swift */; };
@@ -920,6 +921,7 @@
 		71F6251F20FBE39C009B777C /* SyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncService.swift; sourceTree = "<group>"; };
 		71F73E371FEAD02D0049F108 /* TableFooterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableFooterRow.swift; sourceTree = "<group>"; };
 		71F98AE0204737CB007AF935 /* DataValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidationService.swift; sourceTree = "<group>"; };
+		71F9989821AC4E4200320256 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		71FB1D381F195D0D00742FF5 /* PaymentMethods.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaymentMethods.storyboard; sourceTree = "<group>"; };
 		71FB1D391F195D0D00742FF5 /* PaymentMethodsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsDisplayData.swift; sourceTree = "<group>"; };
 		71FB1D3A1F195D0D00742FF5 /* PaymentMethodsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsInteractor.swift; sourceTree = "<group>"; };
@@ -2190,6 +2192,7 @@
 				71B5C5361FB1550F00FA0AB9 /* UIAlert+Extensions.swift */,
 				710D98A11FE573540088B9BA /* UIView+Extensions.swift */,
 				71E3CCE3207E9E8900C7FF2D /* TimeInterval+Extensions.swift */,
+				71F9989821AC4E4200320256 /* Array+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3294,6 +3297,7 @@
 				719B1FF51EF6033A0049BD71 /* ReceiptActionsDisplayData.swift in Sources */,
 				A7F05BE31CFD95710079F1AD /* FMDatabase+Receipts.swift in Sources */,
 				7190D4501EE88CC40081CB22 /* GenerateReportDisplayData.swift in Sources */,
+				71F9989921AC4E4200320256 /* Array+Extensions.swift in Sources */,
 				71ACA7CE1F5C58290024903E /* DebugStates.swift in Sources */,
 				EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */,
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
