@@ -84,7 +84,7 @@ class PDFPageView: UIView {
         element.frame = frame
         addSubview(element)
         
-        contentOffset! += frame.height + ElementsSpacing
+        contentOffset += frame.height + ElementsSpacing
     }
     
 }

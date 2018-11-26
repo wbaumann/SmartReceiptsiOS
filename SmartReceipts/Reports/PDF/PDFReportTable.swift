@@ -105,24 +105,24 @@ class PDFReportTable: UIView {
             yOffset = frame.height
         }
         
-        for row in rowToStart..<rows.count {
-            var prototype: TableContentRow!
-            if row % 2 == 0 {
-                prototype = rowOnePrototype
-            } else {
-                prototype = rowTwoPrototype
-            }
-            
-            let height = maxHeightForRow(array: rows[row], widths: columnsWidth, prototype: prototype)
+        let preparedRows = rows.enumerated()
+            .filter { $0.offset >= rowToStart }
+            .map { offset, element -> (values: [String], prototype: TableContentRow, index: Int) in
+                let prototype = offset % 2 == 0 ? rowOnePrototype : rowTwoPrototype
+                return (element, prototype!, offset)
+            }.adding((footers, footerRowPrototype, rows.endIndex))
+        
+        for row in preparedRows {
+            let height = maxHeightForRow(array: row.values, widths: columnsWidth, prototype: row.prototype)
             if yOffset + height > availableSpace {
-                rowsAdded = row
+                rowsAdded = row.index
                 setFrameHeight(to: yOffset)
                 return false
             }
-            yOffset = appendRow(row: rows[row], coloumnsWidths: columnsWidth, usingPrototype: prototype, yOffset: yOffset)
+            yOffset = appendRow(row: row.values, coloumnsWidths: columnsWidth, usingPrototype: row.prototype, yOffset: yOffset)
+            setFrameHeight(to: yOffset)
         }
-        yOffset = appendRow(row: footers, coloumnsWidths: columnsWidth, usingPrototype: footerRowPrototype, yOffset: yOffset)
-        setFrameHeight(to: yOffset)
+        
         return true
     }
     
