@@ -195,7 +195,7 @@ static NSDictionary *getDefaultValues() {
             STRING_DEFAULT_EMAIL_CC : @"",
             STRING_DEFAULT_EMAIL_BCC : @"",
             STRING_DEFAULT_EMAIL_SUBJECT : LocalizedString(@"EMAIL_DATA_SUBJECT", nil),
-            PDF_FOOTER_STRING : LocalizedString(@"pref_pro_pdf_footer_defaultValue", nil),
+            PDF_FOOTER_STRING : LocalizedString(@"pref_pro_pdf_footer_ios_defaultValue", nil),
             BOOL_INCLUDE_CATEGORICAL_SUMMATION : @NO,
             BOOL_SEPARATE_PAYMANTS_BY_CATEGORY : @NO,
             BOOL_OMIT_DEFAULT_PDF_TABLE : @NO,
