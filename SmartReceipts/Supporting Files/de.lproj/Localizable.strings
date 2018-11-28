@@ -32,6 +32,8 @@
 "camera_permission_alert_message" = "Smart Receipts erfordert die Erlaubnis der Kamera zum Fotografieren.";
 "camera_permission_alert_button" = "Starten Sie Einstellungen";
 
+"pref_pro_pdf_footer_ios_defaultValue" = "Bericht generiert mit Smart-Receipts für iOS";
+
 /** Android System Strings (ok, untitled, error_message_title) **/
 "generic_button_title_ok" = "OK";
 "generic_error_alert_title" = "Fehler";
