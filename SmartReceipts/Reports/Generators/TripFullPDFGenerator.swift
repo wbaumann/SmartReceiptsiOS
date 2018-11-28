@@ -172,10 +172,20 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
     }
     
     private func appendCategoricalSummationTable() {
-        let categoricalTable = ReportPDFTable(pdfRender: pdfRender, columns: categoryColumns())!
+        let receipts = Array(receiptsByCategories().values)
+        
+        let isDefaultCurrencies = receipts
+            .flatMap { $0 }
+            .filter { $0.currency != trip.defaultCurrency }
+            .isEmpty
+        
+        var columns = categoryColumns()
+        if isDefaultCurrencies { columns.removeLast() }
+        
+        let categoricalTable = ReportPDFTable(pdfRender: pdfRender, columns: columns)!
         categoricalTable.includeHeaders = true
         categoricalTable.includeFooters = false
-        categoricalTable.append(withRows: Array(receiptsByCategories().values))
+        categoricalTable.append(withRows: receipts)
     }
     
     
