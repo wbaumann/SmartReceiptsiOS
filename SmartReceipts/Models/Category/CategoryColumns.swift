@@ -13,10 +13,9 @@ class CategoryColumn: Column {
         return [
             CategoryNameColumn(type: 0, name: LocalizedString("category_name_field")),
             CategoryCodeColumn(type: 1, name: LocalizedString("category_code_field")),
-            CategoryCurrencyColumn(type: 2, name: LocalizedString("RECEIPTMENU_FIELD_CURRENCY")),
-            CategoryPriceColumn(type: 3, name: LocalizedString("category_price_field")),
-            CategoryTaxColumn(type: 4, name: LocalizedString("category_tax_field")),
-            CategoryPriceExchnagedColumn(type: 5, name: LocalizedString("category_price_exchanged_field"))
+            CategoryPriceColumn(type: 2, name: LocalizedString("category_price_field")),
+            CategoryTaxColumn(type: 3, name: LocalizedString("category_tax_field")),
+            CategoryPriceExchnagedColumn(type: 4, name: LocalizedString("category_price_exchanged_field"))
         ]
     }
     
@@ -46,20 +45,13 @@ class CategoryCodeColumn: CategoryColumn {
     }
 }
 
-class CategoryCurrencyColumn: CategoryColumn {
-    override func valueFrom(receipts: [WBReceipt]) -> String {
-        guard let firstReceipt = receipts.first else { return "" }
-        return firstReceipt.currency.code
-    }
-}
-
 class CategoryPriceColumn: CategoryColumn {
     override func valueFrom(receipts: [WBReceipt]) -> String {
         let total = PricesCollection()
         for rec in receipts {
             total.addPrice(rec.price())
         }
-        return total.amountAsString()
+        return total.currencyFormattedTotalPrice()
     }
 }
 
@@ -69,7 +61,10 @@ class CategoryTaxColumn: CategoryColumn {
         for rec in receipts {
             total.addPrice(rec.tax())
         }
-        return total.amountAsString()
+        
+        var result = total.currencyFormattedTotalPrice()
+        if result.isEmpty { result = Price(amount: 0, currency: receipts.first!.trip.defaultCurrency).currencyFormattedPrice() }
+        return result
     }
 }
 
@@ -86,12 +81,8 @@ class CategoryPriceExchnagedColumn: CategoryColumn {
             }
         }
         
-        if otherCollection.hasValue() {
-            let totalPrice = Price(amount: total, currency: receipts.first!.trip.defaultCurrency)
-            return "\(totalPrice.currencyFormattedPrice()); \(otherCollection.currencyFormattedPrice())"
-        } else {
-            return Price.stringFrom(amount: total)
-        }
+        let totalPrice = Price(amount: total, currency: receipts.first!.trip.defaultCurrency)
+        return "\(totalPrice.currencyFormattedPrice()); \(otherCollection.currencyFormattedTotalPrice())"
     }
 }
 
