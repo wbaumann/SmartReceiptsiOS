@@ -16,6 +16,7 @@ class CategoryColumn: Column {
             CategoryCurrencyColumn(type: 2, name: LocalizedString("RECEIPTMENU_FIELD_CURRENCY")),
             CategoryPriceColumn(type: 3, name: LocalizedString("category_price_field")),
             CategoryTaxColumn(type: 4, name: LocalizedString("category_tax_field")),
+            CategoryPriceExchnagedColumn(type: 5, name: LocalizedString("category_price_exchanged_field"))
         ]
     }
     
@@ -69,6 +70,28 @@ class CategoryTaxColumn: CategoryColumn {
             total.addPrice(rec.tax())
         }
         return total.amountAsString()
+    }
+}
+
+class CategoryPriceExchnagedColumn: CategoryColumn {
+    override func valueFrom(receipts: [WBReceipt]) -> String {
+        let otherCollection = PricesCollection()
+        var total = NSDecimalNumber.zero
+        
+        for rec in receipts {
+            if let exchangedPrice = rec.exchangedPrice() {
+                total = total.adding(exchangedPrice.amount)
+            } else {
+                otherCollection.addPrice(rec.price())
+            }
+        }
+        
+        if otherCollection.hasValue() {
+            let totalPrice = Price(amount: total, currency: receipts.first!.trip.defaultCurrency)
+            return "\(totalPrice.currencyFormattedPrice()); \(otherCollection.currencyFormattedPrice())"
+        } else {
+            return Price.stringFrom(amount: total)
+        }
     }
 }
 
