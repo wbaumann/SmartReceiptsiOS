@@ -6,13 +6,12 @@
 "exchange_rate_subcsription_details_button" = "Show Upgrade Options";
 "exchange_rate_subscription_info_message" = "Upgrade to Smart Receipts Plus to process exchange rates automatically";
 "ocr_configuration_module_purchase_title" = "%d OCR Scans (Smart Receipts)";
-"ocr_configuration_module_purchase_subtitle" = "Purchase %d Automatic Scans of Receipts (OCR)";
+"ocr_configuration_module_purchase_subtitle" = "Purchase";
 "push_request_alert_text" = "Smart Receipts uses silent Push Notifications (ie invisible ones) to complete OCR processing in the background and more rapidly present results. Enabling push notifications will allow us to perform scans more quickly.";
 "receipt_import_action_sheet_title" = "Import from:";
 "receipt_import_action_files" = "Files";
 "receipt_import_action_camera_roll" = "Camera Roll";
 
-"settings.allow.data.outside.trip.bounds.label" = "Allow data entry outside report start/end";
 "settings_purchase_restore_label" = "Restore purchase";
 "settings_purchase_subscription_valid_until_label_base" = "Valid until: %@";
 "settings_camera_pixels_label" = "Pixels";

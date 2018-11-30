@@ -12,7 +12,6 @@
 "receipt_import_action_files" = "Files";
 "receipt_import_action_camera_roll" = "Camera Roll";
 
-"settings.allow.data.outside.trip.bounds.label" = "Allow data entry outside report start/end";
 "settings_purchase_restore_label" = "Restore purchase";
 "settings_purchase_subscription_valid_until_label_base" = "Valid until: %@";
 "settings_camera_pixels_label" = "Pixels";

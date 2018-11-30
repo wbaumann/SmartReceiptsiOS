@@ -12,7 +12,6 @@
 "receipt_import_action_files" = "קבצים";
 "receipt_import_action_camera_roll" = "תמונות מהמצלמה";
 
-"settings.allow.data.outside.trip.bounds.label" = "אפשר הכנסת מידע מעבר לגבולות התחלת/סיום הדוח";
 "settings_purchase_restore_label" = "שחזר רכישה";
 "settings_purchase_subscription_valid_until_label_base" = "בתוקף עד: %@";
 "settings_camera_pixels_label" = "פיקסלים";

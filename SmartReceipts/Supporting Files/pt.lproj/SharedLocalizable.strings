@@ -6,10 +6,10 @@
 
 /********** Uncategorized **********/
 
-"EMAIL_DATA_SUBJECT" = "Recibos Inteligentes - %REPORT_NAME%";
+"EMAIL_DATA_SUBJECT" = "Smart Receipts - %REPORT_NAME%";
 
 /* ================= Preference Pro ================== */
-"pref_pro_pdf_footer_defaultValue" = "Relatório gerado usando o Recibos Inteligentes para Android";
+"pref_pro_pdf_footer_defaultValue" = "Relatório gerado usando o Smart Receipts para Android";
 
 /* =================== App Details ===================== */
 "app_name" = "Smart Receipts";
