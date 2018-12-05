@@ -1,37 +1,37 @@
 /** iOS-Specific Strings **/
-"generate_report_share_method_email" = "E-mail";
-"generate_report_share_method_other" = "Other apps";
-"generate_report_share_method_sheet_title" = "Send With";
-"error_email_not_configured_message" = "You must configure the iOS Mail app to use the E-mail option";
-"exchange_rate_subcsription_details_button" = "Show Upgrade Options";
-"exchange_rate_subscription_info_message" = "Upgrade to Smart Receipts Plus to process exchange rates automatically";
-"ocr_configuration_module_purchase_title" = "%d OCR Scans (Smart Receipts)";
-"ocr_configuration_module_purchase_subtitle" = "Purchase %d Automatic Scans of Receipts (OCR)";
-"push_request_alert_text" = "Smart Receipts uses silent Push Notifications (ie invisible ones) to complete OCR processing in the background and more rapidly present results. Enabling push notifications will allow us to perform scans more quickly.";
-"receipt_import_action_sheet_title" = "Import from:";
-"receipt_import_action_files" = "Files";
-"receipt_import_action_camera_roll" = "Camera Roll";
+"generate_report_share_method_email" = "Ел. Пошта";
+"generate_report_share_method_other" = "Другi додатки";
+"generate_report_share_method_sheet_title" = "Вiдправити через";
+"error_email_not_configured_message" = "Щоб використовувати Ел. пошту ви повинні налаштувати додаток \"Пошта\" в iOS";
+"exchange_rate_subcsription_details_button" = "Показаты варiанти оновлення";
+"exchange_rate_subscription_info_message" = "Оновити до Smart Receipts Plus для пiдключення автоматичного курсу обмiну";
+"ocr_configuration_module_purchase_title" = "%d OCR Скани (Smart Receipts)";
+"ocr_configuration_module_purchase_subtitle" = "Купити %d Автоматичних Скатiв для чекiв (OCR)";
+"push_request_alert_text" = "Smart Receipts використовує \"тихі\" Push-повідомлення (які, не видно), щоб швидше завершувати процес автоматичного сканування чекiв. Повiдомлення дозволять швидше отримувати результат і обробляти його.";
+"receipt_import_action_sheet_title" = "Імпотрт iз:";
+"receipt_import_action_files" = "Файли";
+"receipt_import_action_camera_roll" = "Фотоплiвка";
 
 "settings_purchase_restore_label" = "Restore purchase";
-"settings_purchase_subscription_valid_until_label_base" = "Valid until: %@";
-"settings_camera_pixels_label" = "Pixels";
-"settings_camera_value_default_label" = "Default";
-"settings_max_camera_resolution_label" = "Max. Camera Height / Width";
+"settings_purchase_subscription_valid_until_label_base" = "Дiйсна до: %@";
+"settings_camera_pixels_label" = "Пiкселi";
+"settings_camera_value_default_label" = "За замовчуванням";
+"settings_max_camera_resolution_label" = "Макс. Висота/Ширина фото";
 "settings_pdf_footer_pro_message_body" = "Purchase Smart Receipts Plus subscription to remove or change this message in report footer";
-"auto_backup_current_service" = "Current Service: %@";
-"drive_sync_error_unknown" = "Unknown Error";
-"edit_distance_controller_validation_distance_missing" = "Distance not entered";
-"edit_distance_controller_validation_rate_missing" = "Rate not entered";
-"edit_payment_method_controller_save_error_message" = "Payment method name not entered";
-"exchange_rate_error_unsupported_currency_message" = "Automatic exchange rate is not available for given currency";
-"exchange_rate_retrieve_error_message" = "Could not retrieve exchange rate. Please try reloading or add manually.";
-"exchange_rate_retrieve_error_retry_button" = "Retry";
-"generate_report_toast_csv_report_distances" = "To create this report please enable: 'Include Distance Table'";
+"auto_backup_current_service" = "Текущiй сервiс: %@";
+"drive_sync_error_unknown" = "Невiдома помилка";
+"edit_distance_controller_validation_distance_missing" = "Вiдстання не вказано";
+"edit_distance_controller_validation_rate_missing" = "Вартiсть не вказана";
+"edit_payment_method_controller_save_error_message" = "Iм'я спосiбу оплати не вказано";
+"exchange_rate_error_unsupported_currency_message" = "Автоматичний курс обміну не доступний для цієї валюти";
+"exchange_rate_retrieve_error_message" = "Курс обміну не отриман. Будь ласка, спробуйте оновити вручну.";
+"exchange_rate_retrieve_error_retry_button" = "Повтор";
+"generate_report_toast_csv_report_distances" = "Для створення цього звіту включіть в настройках: 'Включити таблицю відстаней'";
 
 "camera_permission_alert_message" = "Smart Receipts потрібен дозвіл використовувати камеру, щоб робити знімки чеків.";
 "camera_permission_alert_button" = "Відкрити настройки";
 
-"pref_pro_pdf_footer_ios_defaultValue" = "Report Generated using Smart Receipts for iOS";
+"pref_pro_pdf_footer_ios_defaultValue" = "Звiт пiдготовлен за допомогою Smart Receipts для iOS";
 
 /** Android System Strings (ok, untitled, error_message_title) **/
 "generic_button_title_ok" = "OK";
@@ -50,4 +50,4 @@
 "pref_layout_display_photo_summary" = "Вказувати, чи містять елементи фото/PDF";
 
 /** iOS Strings that we should add to Android **/
-"generic_save_error" = "Failed to save your changes";
+"generic_save_error" = "Помилка при збереження змiн";
