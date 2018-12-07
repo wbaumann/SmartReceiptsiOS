@@ -62,7 +62,7 @@ class GenerateReportFormView: FormViewController {
             self?.csvFile.onNext(row.value ?? false)
         })
     
-        <<< checkRow(title: LocalizedString("generate.report.option.zip.stamped"))
+        <<< checkRow(title: LocalizedString("DIALOG_EMAIL_CHECKBOX_ZIP_WITH_METADATA"))
         .onChange({ [weak self] row in
             self?.zipStampedJPGs?.onNext(row.value ?? false)
         })
