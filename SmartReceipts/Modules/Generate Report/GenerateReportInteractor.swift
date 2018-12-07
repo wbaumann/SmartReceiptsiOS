@@ -11,6 +11,7 @@ import Viperit
 import RxSwift
 import RxCocoa
 import Toaster
+import MessageUI
 
 class GenerateReportInteractor: Interactor {
     var generator: ReportAssetsGenerator?
@@ -85,21 +86,26 @@ class GenerateReportInteractor: Interactor {
                 TooltipService.shared.markReportGenerated()
                 self.presenter.hideHudFromView()
                 
+                if !MFMailComposeViewController.canSendMail() {
+                    self.shareService?.shareFiles(files)
+                    Logger.debug("Mail app not configured on this device")
+                    return
+                }
+                
                 var actions = [UIAlertAction]()
                 let message = LocalizedString("generate_report_share_method_sheet_title")
-                let emailAction = UIAlertAction(title: LocalizedString("generate_report_share_method_email"), style: .default) {
-                    _ in
+                
+                let emailAction = UIAlertAction(title: LocalizedString("generate_report_share_method_email"), style: .default) { _ in
                     self.shareService?.emailFiles(files)
                 }
-                let otherAction = UIAlertAction(title: LocalizedString("generate_report_share_method_other"), style: .default) {
-                    _ in
+                
+                let otherAction = UIAlertAction(title: LocalizedString("generate_report_share_method_other"), style: .default) { _ in
                     self.shareService?.shareFiles(files)
                 }
                 
                 actions.append(emailAction)
                 actions.append(otherAction)
-                actions.append(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: {
-                    _ in
+                actions.append(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: { _ in
                     for file in files { FileManager.deleteIfExists(filepath: file) }
                 }))
                 
@@ -125,8 +131,7 @@ class GenerateReportInteractor: Interactor {
                         message = LocalizedString("report_pdf_error_too_many_columns_message_landscape")
                     }
                     
-                    let openSettingsAction = UIAlertAction(title: LocalizedString("report_pdf_error_go_to_settings"),
-                                                           style: .default, handler: { _ in
+                    let openSettingsAction = UIAlertAction(title: LocalizedString("report_pdf_error_go_to_settings"), style: .default, handler: { _ in
                         self.presenter.presentOutputSettings()
                     })
                     actions.append(openSettingsAction)
