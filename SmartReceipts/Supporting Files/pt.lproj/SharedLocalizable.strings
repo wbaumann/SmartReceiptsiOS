@@ -513,19 +513,13 @@
 
 "remote_backups_list_item_menu_restore" = "Restaurar";
 
-"remote_backups_list_item_menu_delete" = "Excluir";
-
 "remote_backups_list_item_menu_download_images" = "Baixar para ZIP";
 
 "remote_backups_list_item_menu_download_images_debug" = "[Debug] Download";
 
-"dialog_remote_backup_delete_title" = "Excluir";
-
 "dialog_remote_backup_delete_message" = "Tem certeza de que deseja excluir o backup do dispositivo %@? Essa operação não pode ser desfeita.";
 
 "dialog_remote_backup_delete_message_this_device" = "Tem certeza de que deseja excluir o backup deste dispositivo? Essa operação não pode ser desfeita. É possível desabilitar o backup automático depois que a operação for concluída, ou todos os dados locais serão sincronizados novamente.";
-
-"dialog_remote_backup_delete_positive" = "Excluir";
 
 "dialog_remote_backup_delete_progress" = "Excluindo seu backup do dispositivo %@…";
 
