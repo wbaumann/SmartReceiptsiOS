@@ -42,6 +42,7 @@ class UpsellBannerAdView: UIView {
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.textColor = .white
         button.titleLabel?.textAlignment = .center
+        button.titleLabel?.numberOfLines = 2
         button.titleLabel?.font = AppTheme.boldFont
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: UI_MARGIN_16, bottom: 0, right: UI_MARGIN_16)
         button.translatesAutoresizingMaskIntoConstraints = false
