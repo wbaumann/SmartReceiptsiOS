@@ -487,9 +487,9 @@
 
 "manual_backup_title" = "Copia de seguridad manual:";
 
-"manual_backup_description" = "¡Haz copia de seguridad para mantener seguros tus recibos! Puedes restaurar tus datos importando el archivo de respaldo SmartReceipts.SMR, que se genera por medio del botón Copia de seguridad que encuentras a continuación.";
+"manual_backup_description" = "¡Haz copia de seguridad para mantener seguros tus recibos! Puedes restaurar tus datos importando el archivo de respaldo SmartReceipts.SMR, que se genera por medio del botón Backup que encuentras a continuación.";
 
-"manual_backup_export" = "Copia de seguridad";
+"manual_backup_export" = "Backup";
 
 "manual_backup_import" = "Importar";
 
