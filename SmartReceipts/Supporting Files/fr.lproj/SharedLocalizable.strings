@@ -513,19 +513,13 @@
 
 "remote_backups_list_item_menu_restore" = "Restaurer";
 
-"remote_backups_list_item_menu_delete" = "Supprimer";
-
 "remote_backups_list_item_menu_download_images" = "Télécharger en ZIP";
 
 "remote_backups_list_item_menu_download_images_debug" = "[Débogage] Télécharger";
 
-"dialog_remote_backup_delete_title" = "Supprimer";
-
 "dialog_remote_backup_delete_message" = "Êtes-vous sûr de vouloir supprimer votre sauvegarde de l’appareil %@ ? Cette opération est irréversible.";
 
 "dialog_remote_backup_delete_message_this_device" = "Êtes-vous sûr de vouloir supprimer votre sauvegarde de cet appareil ? Cette opération est irréversible. Veuillez noter que vous pouvez désactiver les sauvegardes automatiques après cette opération ou toutes les données locales peuvent être resynchronisées.";
-
-"dialog_remote_backup_delete_positive" = "Supprimer";
 
 "dialog_remote_backup_delete_progress" = "Suppression de votre sauvegarde de l'appareil %@…";
 

@@ -513,19 +513,13 @@
 
 "remote_backups_list_item_menu_restore" = "Відновити";
 
-"remote_backups_list_item_menu_delete" = "Видалити";
-
 "remote_backups_list_item_menu_download_images" = "Скачати в ZIP";
 
 "remote_backups_list_item_menu_download_images_debug" = "[Debug] Скачати";
 
-"dialog_remote_backup_delete_title" = "Видалити";
-
 "dialog_remote_backup_delete_message" = "Ви впевнені, що хочете видалити резервну копію з пристрою %@? Ця операція не може бути скасована.";
 
 "dialog_remote_backup_delete_message_this_device" = "Ви впевнені, що хочете видалити резервну копію з цього пристрою? Ця операція не зможе бути скасована. Будь ласка, зверніть увагу, що ви можете відключити автоматичне резервне копіювання після того, як ця операція завершиться, або всі локальні дані можуть бути повторно синхронізовані.";
-
-"dialog_remote_backup_delete_positive" = "Видалити";
 
 "dialog_remote_backup_delete_progress" = "Видалення резервної копії з пристрою %@…";
 

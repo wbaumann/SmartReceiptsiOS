@@ -160,7 +160,7 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images_debug"), style: .default, handler: { [unowned self] _ in
             self.presenter.downloadDebugZip(backup)
         }))
-        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_delete"), style: .destructive, handler: { [unowned self] _ in
+        alert.addAction(UIAlertAction(title: LocalizedString("delete"), style: .destructive, handler: { [unowned self] _ in
             self.openDelete(backup: backup)
         }))
         alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
@@ -181,13 +181,13 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     }
     
     private func openDelete(backup: RemoteBackupMetadata) {
-        let title = String(format: LocalizedString("dialog_remote_backup_delete_title"), backup.syncDeviceName)
+        let title = String(format: LocalizedString("delete"), backup.syncDeviceName)
         
         let isCurrent = presenter.isCurrentDevice(backup: backup)
         let format = isCurrent ? LocalizedString("dialog_remote_backup_delete_message_this_device") : LocalizedString("dialog_remote_backup_delete_message")
         let message = String(format: format, backup.syncDeviceName)
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: LocalizedString("dialog_remote_backup_delete_positive"), style: .default, handler: { [unowned self] _ in
+        alert.addAction(UIAlertAction(title: LocalizedString("delete"), style: .default, handler: { [unowned self] _ in
             self.presenter.deleteBackup(backup)
         }))
         alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))

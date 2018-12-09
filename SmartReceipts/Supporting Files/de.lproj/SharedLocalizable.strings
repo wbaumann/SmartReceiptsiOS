@@ -513,19 +513,13 @@
 
 "remote_backups_list_item_menu_restore" = "Wiederherstellen";
 
-"remote_backups_list_item_menu_delete" = "Löschen";
-
 "remote_backups_list_item_menu_download_images" = "Auf ZIP herunterladen";
 
 "remote_backups_list_item_menu_download_images_debug" = "[Debug] herunterladen";
 
-"dialog_remote_backup_delete_title" = "Löschen";
-
 "dialog_remote_backup_delete_message" = "Sind Sie sicher, dass Sie Ihre Sicherungskopie vom %@ Gerät löschen wollen? Dieser Vorgang kann nicht rückgängig gemacht werden.";
 
 "dialog_remote_backup_delete_message_this_device" = "Sind Sie sicher, dass Sie Ihren Backup auf diesem Gerät löschen wollen? Dieser Vorgang kann nicht rückgängig gemacht werden. Bitte beachten Sie, dass Sie die automatische Sicherungen ausschalten möchte, um nach dieser Vorgang abgeschlossen ist oder alle lokalen Daten neu synchronisiert werden können.";
-
-"dialog_remote_backup_delete_positive" = "Löschen";
 
 "dialog_remote_backup_delete_progress" = "Löschen Sie Ihren Backup vom %@ Gerät …";
 

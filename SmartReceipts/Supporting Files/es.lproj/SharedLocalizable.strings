@@ -513,19 +513,13 @@
 
 "remote_backups_list_item_menu_restore" = "Restaurar";
 
-"remote_backups_list_item_menu_delete" = "Eliminar";
-
 "remote_backups_list_item_menu_download_images" = "Descargar a ZIP";
 
 "remote_backups_list_item_menu_download_images_debug" = "[Depuración] Descargar";
 
-"dialog_remote_backup_delete_title" = "Eliminar";
-
 "dialog_remote_backup_delete_message" = "¿Estás seguro que deseas eliminar tu copia de seguridad del dispositivo %@? Esta operación no se puede deshacer.";
 
 "dialog_remote_backup_delete_message_this_device" = "¿Estás seguro que deseas eliminar tu copia de seguridad de este dispositivo? Esta operación no se puede deshacer. Por favor ten en cuenta que debes deshabilitar las copias de seguridad automáticas luego de terminar esta operación, o todos los datos locales pueden ser sincronizados de nuevo.";
-
-"dialog_remote_backup_delete_positive" = "Eliminar";
 
 "dialog_remote_backup_delete_progress" = "Eliminando tu copia de seguridad del dispositivo %@…";
 
