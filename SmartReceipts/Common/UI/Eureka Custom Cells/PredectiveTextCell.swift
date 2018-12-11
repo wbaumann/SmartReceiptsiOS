@@ -19,8 +19,10 @@ public class PredectiveTextCell: TextCell, AutocompleteHelperDelegate {
     private var autocompleteHelper: WBAutocompleteHelper?
     
     func enableAutocompleteHelper() {
-        autocompleteHelper = WBAutocompleteHelper(autocomplete: textField, useReceiptsHints: true)
-        autocompleteHelper?.delegate = self
+        if !containsCustomKeyboards() {
+            autocompleteHelper = WBAutocompleteHelper(autocomplete: textField, useReceiptsHints: true)
+            autocompleteHelper?.delegate = self
+        }
     }
     
     public override func textFieldDidEndEditing(_ textField: UITextField) {
@@ -40,6 +42,16 @@ public class PredectiveTextCell: TextCell, AutocompleteHelperDelegate {
     
     func didSelect(value: String) {
         row.value = value
+    }
+    
+    private func containsCustomKeyboards() -> Bool {
+        guard let keyboards = UserDefaults.standard.array(forKey: "AppleKeyboards") as? [String] else { return false }
+        for keyboard in keyboards {
+            if !keyboard.contains("@") {
+                return true
+            }
+        }
+        return false
     }
     
 }

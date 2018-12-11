@@ -25,8 +25,7 @@
 
 #pragma mark - Initializatioz
 
-- (id)initWithAutocompleteField:(UITextField *)field useReceiptsHints:(BOOL)forReceipts
-{
+- (id)initWithAutocompleteField:(UITextField *)field useReceiptsHints:(BOOL)forReceipts {
     self = [super init];
     if (self) {
         _field = field;
