@@ -56,8 +56,8 @@ final class TripsView: FetchedTableViewController {
     
     private func configureRx() {
         Observable<Void>.merge(AppNotificationCenter.syncProvider.asVoid(), AppNotificationCenter.didSyncBackup)
-            .subscribe {
-                self.tableView.reloadData()
+            .subscribe { [weak self] in
+                self?.tableView.reloadData()
             }.disposed(by: bag)
         
         NotificationCenter.default.rx.notification(.SmartReceiptsSettingsSaved)
