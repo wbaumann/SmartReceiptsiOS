@@ -35,8 +35,8 @@ class TripDistancesView: FetchedTableViewController {
         
         let notifications = [AppNotificationCenter.syncProvider.asVoid(), AppNotificationCenter.didSyncBackup]
         Observable<Void>.merge(notifications)
-            .subscribe(onNext: {
-                self.tableView.reloadData()
+            .subscribe(onNext: { [weak self] in
+                self?.tableView.reloadData()
             }).disposed(by: bag)
     }
     
