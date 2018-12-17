@@ -44,6 +44,7 @@ public class PredectiveTextCell: TextCell, AutocompleteHelperDelegate {
         row.value = value
     }
     
+    // Checking if user have custom keyboards to avoid issue with suggestion view and custom keyboard views conflict.
     private func containsCustomKeyboards() -> Bool {
         guard let keyboards = UserDefaults.standard.array(forKey: "AppleKeyboards") as? [String] else { return false }
         for keyboard in keyboards {
