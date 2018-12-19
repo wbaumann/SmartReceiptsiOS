@@ -86,7 +86,7 @@ class DatabaseUpgradeToVersion19: DatabaseMigration {
     private func updateDistanceParent(database: Database) -> Bool {
         var result = database.executeUpdate("ALTER TABLE \(DistanceTable.Name) ADD COLUMN \(DistanceTable.Column.ParentId) INTEGER REFERENCES \(TripsTable.Column.Name) ON DELETE CASCADE")
         
-         result = result && database.executeUpdate("UPDATE \(DistanceTable.Name) SET \(ReceiptsTable.Column.ParentId) = (SELECT \(TripsTable.Column.Id) FROM \(TripsTable.Name) WHERE \(TripsTable.Column.Name) = \(DEPRECATED_PARENT) LIMIT 1)")
+        result = result && database.executeUpdate("UPDATE \(DistanceTable.Name) SET \(DistanceTable.Column.ParentId) = (SELECT \(TripsTable.Column.Id) FROM \(TripsTable.Name) WHERE \(TripsTable.Column.Name) = \(DEPRECATED_PARENT) LIMIT 1)")
         
         result = result && database.executeUpdate("ALTER TABLE \(DistanceTable.Name) RENAME TO \(DistanceTable.Name)_tmp")
         
