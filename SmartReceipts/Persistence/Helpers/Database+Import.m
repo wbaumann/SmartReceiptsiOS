@@ -92,12 +92,14 @@
     }
 
     [self saveTrip:trip];
+    existing = [self tripWithName:trip.name];
 
     NSArray *receipts = [importFrom allReceiptsForTrip:trip];
     for (WBReceipt *receipt in receipts) {
         if (!receipt.isMarkedForDeletion) {
             [receipt setObjectId:0];
             [receipt setIsSynced:false];
+            [receipt setTrip:existing];
             [self saveReceipt:receipt];
         }
     }
@@ -105,6 +107,7 @@
     NSArray *distances = [importFrom allDistancesForTrip:trip];
     for (Distance *distance in distances) {
         [distance setObjectId:0];
+        [distance setTrip:existing];
         [self saveDistance:distance];
     }
 }
