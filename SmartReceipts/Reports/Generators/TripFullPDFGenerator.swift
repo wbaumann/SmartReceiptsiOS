@@ -80,14 +80,14 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         
         let startDate = dateFormatter.formattedDate(trip.startDate, in: trip.startTimeZone)!
         let endDate = dateFormatter.formattedDate(trip.endDate, in: trip.endTimeZone)!
-        pdfRender.appendHeader(row: String(format: LocalizedString("report_header_duration"), startDate, endDate))
+        pdfRender.appendHeader(row: String(format: WBPreferences.loclized(key: "report_header_duration"), startDate, endDate))
         
         if let costCenter = trip.costCenter, WBPreferences.trackCostCenter() && !costCenter.isEmpty {
-            pdfRender.appendHeader(row: String(format: LocalizedString("report_header_comment"), costCenter))
+            pdfRender.appendHeader(row: String(format: WBPreferences.loclized(key: "report_header_comment"), costCenter))
         }
         
         if let comment = trip.comment, !trip.comment.isEmpty {
-            pdfRender.appendHeader(row: String(format: LocalizedString("report_header_comment"), trip.comment))
+            pdfRender.appendHeader(row: String(format: WBPreferences.loclized(key: "report_header_comment"), trip.comment))
         }
         
         // Short Code for Get: currencyFormattedPrice()
@@ -96,26 +96,26 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         
         // Print the various tax totals if the IncludeTaxField is true and we have taxes
         if WBPreferences.includeTaxField() && taxesTotal.hasValue() {
-            pdfRender.appendHeader(row: String(format: LocalizedString("report_header_receipts_total_no_tax"), fp(noTaxesTotal)))
-            pdfRender.appendHeader(row: String(format: LocalizedString("report_header_receipts_total_tax"), fp(taxesTotal)))
-            pdfRender.appendHeader(row: String(format: LocalizedString("report_header_receipts_total_with_tax"), fp(receiptTotal)))
+            pdfRender.appendHeader(row: String(format: WBPreferences.loclized(key: "report_header_receipts_total_no_tax"), fp(noTaxesTotal)))
+            pdfRender.appendHeader(row: String(format: WBPreferences.loclized(key: "report_header_receipts_total_tax"), fp(taxesTotal)))
+            pdfRender.appendHeader(row: String(format: WBPreferences.loclized(key: "report_header_receipts_total_with_tax"), fp(receiptTotal)))
         } else if dists.count > 0 {
             // Prints the receipts total if we have distances AND (the IncludeTaxField setting is false OR the value of taxes is 0)
             // We use this to distinguish receipts vs distances when we do NOT have the tax breakdown
-            pdfRender.appendHeader(row: String(format: LocalizedString("report_header_receipts_total"), fp(receiptTotal)))
+            pdfRender.appendHeader(row: String(format: WBPreferences.loclized(key: "report_header_receipts_total"), fp(receiptTotal)))
         }
         
         // Print out the distances (if any)
         if dists.count > 0 {
-            pdfRender.appendHeader(row: String(format: LocalizedString("report_header_distance_total"), fp(distanceTotal)))
+            pdfRender.appendHeader(row: String(format: WBPreferences.loclized(key: "report_header_distance_total"), fp(distanceTotal)))
         }
         
         // Print the grand total
-        pdfRender.appendHeader(row: String(format: LocalizedString("report_header_grand_total"), fp(grandTotal)), style: .defaultBold)
+        pdfRender.appendHeader(row: String(format: WBPreferences.loclized(key: "report_header_grand_total"), fp(grandTotal)), style: .defaultBold)
         
         // Print the grand total (reimbursable)
         if !reportOnlyReimbursable && hasNonReimbursable {
-            let row = String(format: LocalizedString("report_header_receipts_total_reimbursable"), fp(reimbursableTotal))
+            let row = String(format: WBPreferences.loclized(key: "report_header_receipts_total_reimbursable"), fp(reimbursableTotal))
             pdfRender.appendHeader(row: row, style: .defaultBold)
         }
         

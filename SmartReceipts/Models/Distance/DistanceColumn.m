@@ -16,18 +16,19 @@
 #import "DistanceDateColumn.h"
 #import "DistanceCommentColumn.h"
 #import "LocalizedString.h"
+#import <SmartReceipts-Swift.h>
 
 @implementation DistanceColumn
 
 + (NSArray *)allColumns {
     return @[
-        [[DistanceLocationColumn alloc] initWithType:0 name:LocalizedString(@"distance_location_field", nil)],
-        [[DistancePriceColumn alloc] initWithType:1 name:LocalizedString(@"distance_price_field", nil)],
-        [[DistanceDistanceColumn alloc] initWithType:2 name:LocalizedString(@"distance_distance_field", nil)],
-        [[DistanceCurrencyColumn alloc] initWithType:3 name:LocalizedString(@"dialog_currency_field", nil)],
-        [[DistanceRateColumn alloc] initWithType:4 name:LocalizedString(@"distance_rate_field", nil)],
-        [[DistanceDateColumn alloc] initWithType:5 name:LocalizedString(@"distance_date_field", nil)],
-        [[DistanceCommentColumn alloc] initWithType:6 name:LocalizedString(@"distance_comment_field", nil)],
+        [[DistanceLocationColumn alloc] initWithType:0 name:[WBPreferences loclizedWithKey:@"distance_location_field"]],
+        [[DistancePriceColumn alloc] initWithType:1 name:[WBPreferences loclizedWithKey:@"distance_price_field"]],
+        [[DistanceDistanceColumn alloc] initWithType:2 name:[WBPreferences loclizedWithKey:@"distance_distance_field"]],
+        [[DistanceCurrencyColumn alloc] initWithType:3 name:[WBPreferences loclizedWithKey:@"dialog_currency_field"]],
+        [[DistanceRateColumn alloc] initWithType:4 name:[WBPreferences loclizedWithKey:@"distance_rate_field"]],
+        [[DistanceDateColumn alloc] initWithType:5 name:[WBPreferences loclizedWithKey:@"distance_date_field"]],
+        [[DistanceCommentColumn alloc] initWithType:6 name:[WBPreferences loclizedWithKey:@"distance_comment_field"]],
     ];
 }
 

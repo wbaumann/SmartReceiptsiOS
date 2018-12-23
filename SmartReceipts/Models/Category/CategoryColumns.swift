@@ -11,11 +11,11 @@ import Foundation
 class CategoryColumn: Column {
     class func allColumns() -> [CategoryColumn] {
         return [
-            CategoryNameColumn(type: 0, name: LocalizedString("category_name_field")),
-            CategoryCodeColumn(type: 1, name: LocalizedString("category_code_field")),
-            CategoryPriceColumn(type: 2, name: LocalizedString("category_price_field")),
-            CategoryTaxColumn(type: 3, name: LocalizedString("category_tax_field")),
-            CategoryPriceExchnagedColumn(type: 4, name: LocalizedString("category_price_exchanged_field"))
+            CategoryNameColumn(type: 0, name: WBPreferences.loclized(key: "category_name_field")),
+            CategoryCodeColumn(type: 1, name: WBPreferences.loclized(key: "category_code_field")),
+            CategoryPriceColumn(type: 2, name: WBPreferences.loclized(key: "category_price_field")),
+            CategoryTaxColumn(type: 3, name: WBPreferences.loclized(key: "category_tax_field")),
+            CategoryPriceExchnagedColumn(type: 4, name: WBPreferences.loclized(key: "category_price_exchanged_field"))
         ]
     }
     
