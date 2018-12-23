@@ -124,7 +124,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         
         //MARK: Render Tables
         
-        if !WBPreferences.omitDefaultPdfTable() {
+        if !WBPreferences.omitDefaultPdfTable() || !PurchaseService.hasValidSubscriptionValue  {
             appendReportsTable()
         }
 
@@ -132,11 +132,11 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
             appendDistancesTable()
         }
 
-        if WBPreferences.includeCategoricalSummation() {
+        if WBPreferences.includeCategoricalSummation() && PurchaseService.hasValidSubscriptionValue {
             appendCategoricalSummationTable()
         }
         
-        if WBPreferences.separatePaymantsByCategory() {
+        if WBPreferences.separatePaymantsByCategory() && PurchaseService.hasValidSubscriptionValue {
             appendSeparatedByCategoryTable()
         }
         
