@@ -33,27 +33,8 @@ func delayedExecution(_ afterSecons: TimeInterval, closure: @escaping () -> ()) 
 }
 
 func LocalizedString(_ key: String, comment: String = "") -> String {
-    // By default, attempt to load from our Shared set of strings
-    var result = NSLocalizedString(key, tableName: "SharedLocalizable", comment: comment)
-    if result == key {
-        // If we failed to find this string in our SharedLocalizable.strings file, check Localizable.strings one
-        result = NSLocalizedString(key, tableName: nil, comment: comment)
-    }
-    if result == key {
-        Logger.debug("Unknown String Key: \(key). Falling back to the English variant")
-        // If we cannot find it in either, fall back to English
-        if let path = Bundle.main.path(forResource: "en", ofType: "lproj") {
-            if let enBundle = Bundle(path: path) {
-                // Check the English Localizable.strings file
-                result = NSLocalizedString(key, bundle: enBundle, comment: comment)
-                if result == key {
-                    // And finally fall back to the English SharedLocalizable.strings file
-                    result = NSLocalizedString(key, tableName: "SharedLocalizable", bundle: enBundle, comment: comment)
-                }
-            }
-        }
-    }
-    return result
+    typealias OBJC_LocalizedString = LocalizedString
+    return OBJC_LocalizedString.from(key, comment: comment)
 }
 
 func MainStoryboard() -> UIStoryboard {

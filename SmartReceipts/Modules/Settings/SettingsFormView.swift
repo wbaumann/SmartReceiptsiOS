@@ -394,10 +394,20 @@ class SettingsFormView: FormViewController {
             WBPreferences.setPrintReceiptTableLandscape(row.value!)
         })
             
+        <<< PickerInlineRow<String>() { row in
+            row.title = LocalizedString("pref_output_preferred_language_title")
+            row.options = WBPreferences.languages.map { $0.name }
+            let preferred = WBPreferences.preferredReportLanguage()
+            row.value = WBPreferences.languageBy(identifier: preferred!)?.name
+        }.onChange({ row in
+            guard let lang = WBPreferences.languageBy(name: row.value!) else { return }
+            WBPreferences.setPreferredReportLanguage(lang.identifier)
+        })
+            
         <<< segmentedRow(LocalizedString("settings_pdf_page_size"),
             options: pdfFormats(), selected: pdfFormats().index(of: WBPreferences.prefferedPDFSize().rawValue) ?? 0)
         .onChange({ row in
-            WBPreferences.setPreferedRawPDFSize(PDFPageSize.pdfPageSizeBy(index: row.value!).rawValue)
+            WBPreferences.setPreferredRawPDFSize(PDFPageSize.pdfPageSizeBy(index: row.value!).rawValue)
         })
 
         <<< openModuleButton(LocalizedString("pref_output_custom_pdf_title"),

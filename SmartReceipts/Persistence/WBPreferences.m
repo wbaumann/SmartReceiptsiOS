@@ -66,6 +66,7 @@ static NSString *const STRING_PDF_PAGE_SIZE = @"PdfPageSize";
 static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_DATE = @"LayoutIncludeReceiptDate";
 static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_CATEGORY = @"LayoutIncludeReceiptCategory";
 static NSString *const BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER = @"LayoutIncludeReceiptPicture";
+static NSString *const STRING_PREFERRED_REPORT_LANGUAGE = @"PreferredReportLanguage";
 
 // Pro Settings
 static NSString *const PDF_FOOTER_STRING = @"PdfFooterString";
@@ -156,6 +157,7 @@ static NSDictionary *getEntryTypes() {
             BOOL_LAYOUT_SHOW_RECEIPT_DATE: tBool,
             BOOL_LAYOUT_SHOW_RECEIPT_CATEGORY: tBool,
             BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER: tBool,
+            STRING_PREFERRED_REPORT_LANGUAGE: tString,
             
             PDF_FOOTER_STRING: tString,
             BOOL_INCLUDE_CATEGORICAL_SUMMATION: tBool,
@@ -185,6 +187,12 @@ static NSDictionary *getDefaultValues() {
     //LOGGER_DEBUG
     [Logger debug:[NSString stringWithFormat:@"default currency: %@", currencyCode] file:[NSString stringWithUTF8String:__FILE__] function:@"" line:0];
     [Logger debug:[NSString stringWithFormat:@"default date separator: %@", dateSeparator] file:[NSString stringWithUTF8String:__FILE__] function:@"" line:0];
+    
+    
+    NSString *languageId = @"en";
+    if ([NSBundle.mainBundle.localizations containsObject:NSLocale.currentLocale.localeIdentifier]) {
+        languageId = NSLocale.currentLocale.localeIdentifier;
+    }
 
     return @{
             INT_DEFAULT_TRIP_DURATION : @3,
@@ -240,6 +248,7 @@ static NSDictionary *getDefaultValues() {
             BOOL_LAYOUT_SHOW_RECEIPT_DATE: @YES,
             BOOL_LAYOUT_SHOW_RECEIPT_CATEGORY: @NO,
             BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER: @NO,
+            STRING_PREFERRED_REPORT_LANGUAGE: languageId,
             
             BOOL_AUTOBACKUP_WIFI_ONLY: @YES,
             
@@ -365,7 +374,7 @@ static NSUserDefaults* instance() {
 
 + (NSString *)pdfFooterString {
     if (![WBPreferences isPDFFooterUnlocked]) {
-        return LocalizedString(@"pref_pro_pdf_footer_defaultValue", nil);
+        return [WBPreferences loclizedWithKey:@"pref_pro_pdf_footer_ios_defaultValue"];
     }
     
     return [instance() objectForKey:PDF_FOOTER_STRING];
@@ -540,11 +549,11 @@ static NSUserDefaults* instance() {
     [instance() setBool:value forKey:BOOL_PRINT_RECEIPT_TABLE_LANDSCAPE];
 }
 
-+ (NSString *)preferedRawPDFSize {
++ (NSString *)preferredRawPDFSize {
     return [instance() stringForKey:STRING_PDF_PAGE_SIZE];
 }
 
-+ (void)setPreferedRawPDFSize:(NSString *)preferedRawPDFSize {
++ (void)setPreferredRawPDFSize:(NSString *)preferedRawPDFSize {
     [instance() setObject:preferedRawPDFSize forKey:STRING_PDF_PAGE_SIZE];
 }
 
@@ -572,6 +581,13 @@ static NSUserDefaults* instance() {
     [instance() setBool:value forKey:BOOL_LAYOUT_SHOW_RECEIPT_ATTACHMENT_MARKER];
 }
 
++ (void)setPreferredReportLanguage:(NSString *)langugage {
+    [instance() setValue:langugage forKey:STRING_PREFERRED_REPORT_LANGUAGE];
+}
+
++ (NSString *)preferredReportLanguage {
+    return [instance() stringForKey:STRING_PREFERRED_REPORT_LANGUAGE];
+}
 
 + (NSInteger)cameraMaxHeightWidth {
     return [instance() integerForKey:INT_CAMERA_MAX_HEIGHT_WIDTH];

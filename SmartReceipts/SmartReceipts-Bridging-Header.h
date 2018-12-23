@@ -54,6 +54,7 @@
 #import "ReportCSVTable.h"
 #import "ReportPDFTable.h"
 #import "NSDate+Calculations.h"
+#import "LocalizedString.h"
 
 #import "InputValidation.h"
 

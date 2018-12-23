@@ -94,8 +94,8 @@
 + (BOOL)printReceiptTableLandscape;
 + (void)setPrintReceiptTableLandscape:(BOOL)value;
 
-+ (NSString *)preferedRawPDFSize;
-+ (void)setPreferedRawPDFSize:(NSString *)preferedRawPDFSize;
++ (NSString *)preferredRawPDFSize;
++ (void)setPreferredRawPDFSize:(NSString *)preferedRawPDFSize;
 
 + (BOOL)layoutShowReceiptDate;
 + (void)setLayoutShowReceiptDate:(BOOL)value;
@@ -105,6 +105,9 @@
 
 + (BOOL)layoutShowReceiptAttachmentMarker;
 + (void)setLayoutShowReceiptAttachmentMarker:(BOOL)value;
+
++ (void)setPreferredReportLanguage:(NSString *)langugage;
++ (NSString *)preferredReportLanguage;
 
 + (NSInteger)cameraMaxHeightWidth;
 + (void)setCameraMaxHeightWidth:(NSInteger)cameraMaxHeightWidth;

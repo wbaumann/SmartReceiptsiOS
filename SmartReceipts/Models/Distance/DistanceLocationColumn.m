@@ -16,7 +16,7 @@
 }
 
 - (NSString *)valueForFooter:(NSArray *)rows forCSV:(BOOL)forCSV {
-    return LocalizedString(@"total", nil);
+    return [WBPreferences loclizedWithKey:@"total"];
 }
 
 @end

@@ -193,7 +193,7 @@ static NSArray<LegacyResolver *> *_resolvers;
 }
 
 - (NSString *)columnName {
-    return Localized(self.localizedKey);
+    return [WBPreferences loclizedWithKey:self.localizedKey];
 }
 
 - (ReceiptColumn *)column {
