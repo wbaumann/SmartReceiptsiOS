@@ -40,7 +40,7 @@ extension WBPreferences {
         return WBPreferences.languages.first { name == $0.name }
     }
     
-    @objc class func loclized(key: String, comment: String = "") -> String {
+    @objc class func localized(key: String, comment: String = "") -> String {
         var result = key
         if let path = Bundle.main.path(forResource: WBPreferences.preferredReportLanguage(), ofType: "lproj") {
             if let enBundle = Bundle(path: path) {
@@ -53,8 +53,8 @@ extension WBPreferences {
         return result
     }
     
-    @objc class func loclized(key: String) -> String {
-        return WBPreferences.loclized(key: key, comment: "")
+    @objc class func localized(key: String) -> String {
+        return WBPreferences.localized(key: key, comment: "")
     }
 }
 

@@ -22,13 +22,13 @@
 
 + (NSArray *)allColumns {
     return @[
-        [[DistanceLocationColumn alloc] initWithType:0 name:[WBPreferences loclizedWithKey:@"distance_location_field"]],
-        [[DistancePriceColumn alloc] initWithType:1 name:[WBPreferences loclizedWithKey:@"distance_price_field"]],
-        [[DistanceDistanceColumn alloc] initWithType:2 name:[WBPreferences loclizedWithKey:@"distance_distance_field"]],
-        [[DistanceCurrencyColumn alloc] initWithType:3 name:[WBPreferences loclizedWithKey:@"dialog_currency_field"]],
-        [[DistanceRateColumn alloc] initWithType:4 name:[WBPreferences loclizedWithKey:@"distance_rate_field"]],
-        [[DistanceDateColumn alloc] initWithType:5 name:[WBPreferences loclizedWithKey:@"distance_date_field"]],
-        [[DistanceCommentColumn alloc] initWithType:6 name:[WBPreferences loclizedWithKey:@"distance_comment_field"]],
+        [[DistanceLocationColumn alloc] initWithType:0 name:[WBPreferences localizedWithKey:@"distance_location_field"]],
+        [[DistancePriceColumn alloc] initWithType:1 name:[WBPreferences localizedWithKey:@"distance_price_field"]],
+        [[DistanceDistanceColumn alloc] initWithType:2 name:[WBPreferences localizedWithKey:@"distance_distance_field"]],
+        [[DistanceCurrencyColumn alloc] initWithType:3 name:[WBPreferences localizedWithKey:@"dialog_currency_field"]],
+        [[DistanceRateColumn alloc] initWithType:4 name:[WBPreferences localizedWithKey:@"distance_rate_field"]],
+        [[DistanceDateColumn alloc] initWithType:5 name:[WBPreferences localizedWithKey:@"distance_date_field"]],
+        [[DistanceCommentColumn alloc] initWithType:6 name:[WBPreferences localizedWithKey:@"distance_comment_field"]],
     ];
 }
 
