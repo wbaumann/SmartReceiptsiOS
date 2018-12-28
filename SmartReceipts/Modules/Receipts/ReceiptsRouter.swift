@@ -62,7 +62,7 @@ class ReceiptsRouter: Router {
     func openCreatePhotoReceipt() {
         var hud: PendingHUDView?
         self.subscription = ImagePicker.shared.presentCamera(on: _view)
-            .flatMap({ img -> Single<ScanResult> in
+            .flatMap({ [unowned self] img -> Single<ScanResult> in
                 hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
                 hud?.observe(status: self.presenter.scanService.status)
                 return self.presenter.scanService.scan(image: img)

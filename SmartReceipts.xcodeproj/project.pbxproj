@@ -237,6 +237,7 @@
 		7185AEF81EFC1CC90038ED2A /* ReceiptMoveCopyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF21EFC1CC90038ED2A /* ReceiptMoveCopyPresenter.swift */; };
 		7185AEF91EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF31EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift */; };
 		7185AEFA1EFC1CC90038ED2A /* ReceiptMoveCopyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF41EFC1CC90038ED2A /* ReceiptMoveCopyView.swift */; };
+		7186E1E121D3EFFA00182500 /* QuickActionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186E1E021D3EFFA00182500 /* QuickActionService.swift */; };
 		71874295216FCE99005FFDD2 /* DatabaseUpgradeToVersion18.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71874294216FCE98005FFDD2 /* DatabaseUpgradeToVersion18.swift */; };
 		718A1C9121A07A0500E010A2 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A1C9021A07A0500E010A2 /* UserResponse.swift */; };
 		718A1C9321A086E300E010A2 /* AuthResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A1C9221A086E300E010A2 /* AuthResponses.swift */; };
@@ -267,6 +268,7 @@
 		719310411EDDC2810065B5AD /* WBSqlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193103A1EDDC2810065B5AD /* WBSqlBuilder.m */; };
 		719310421EDDC2810065B5AD /* WBTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7193103C1EDDC2810065B5AD /* WBTextUtils.m */; };
 		719310471EDDC3120065B5AD /* WBImageStampler.m in Sources */ = {isa = PBXBuildFile; fileRef = 719310441EDDC3120065B5AD /* WBImageStampler.m */; };
+		71939E9A21D14FD900A5BB27 /* AppDelegate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71939E9921D14FD900A5BB27 /* AppDelegate+Extensions.swift */; };
 		7194CAB81F3CBED00010552A /* FetchedModelAdapter+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194CAB71F3CBED00010552A /* FetchedModelAdapter+Rx.swift */; };
 		719B1FC61EF5E2150049BD71 /* TaxCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */; };
 		719B1FD21EF5FEBE0049BD71 /* Column.m in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FD01EF5FEBE0049BD71 /* Column.m */; };
@@ -821,6 +823,7 @@
 		7185AEF21EFC1CC90038ED2A /* ReceiptMoveCopyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyPresenter.swift; sourceTree = "<group>"; };
 		7185AEF31EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyRouter.swift; sourceTree = "<group>"; };
 		7185AEF41EFC1CC90038ED2A /* ReceiptMoveCopyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyView.swift; sourceTree = "<group>"; };
+		7186E1E021D3EFFA00182500 /* QuickActionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionService.swift; sourceTree = "<group>"; };
 		71874292216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDatabaseUpgradeTests.swift; sourceTree = "<group>"; };
 		71874294216FCE98005FFDD2 /* DatabaseUpgradeToVersion18.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion18.swift; sourceTree = "<group>"; };
 		718A1C9021A07A0500E010A2 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
@@ -857,6 +860,7 @@
 		7193103C1EDDC2810065B5AD /* WBTextUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTextUtils.m; sourceTree = "<group>"; };
 		719310431EDDC3120065B5AD /* WBImageStampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageStampler.h; sourceTree = "<group>"; };
 		719310441EDDC3120065B5AD /* WBImageStampler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageStampler.m; sourceTree = "<group>"; };
+		71939E9921D14FD900A5BB27 /* AppDelegate+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extensions.swift"; sourceTree = "<group>"; };
 		7194CAB71F3CBED00010552A /* FetchedModelAdapter+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FetchedModelAdapter+Rx.swift"; sourceTree = "<group>"; };
 		719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxCalculator.swift; sourceTree = "<group>"; };
 		719B1FD01EF5FEBE0049BD71 /* Column.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Column.m; sourceTree = "<group>"; };
@@ -1440,6 +1444,7 @@
 				71EFE1E51F55E04000591C8C /* TooltipService.swift */,
 				71E7303C1FF7E53000471287 /* MigrationService.swift */,
 				71F98AE0204737CB007AF935 /* DataValidator.swift */,
+				7186E1E021D3EFFA00182500 /* QuickActionService.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -2370,6 +2375,7 @@
 				71E3CCE3207E9E8900C7FF2D /* TimeInterval+Extensions.swift */,
 				713B7F6F21978DC2007220EC /* Moya+Extensions.swift */,
 				71F9989821AC4E4200320256 /* Array+Extensions.swift */,
+				71939E9921D14FD900A5BB27 /* AppDelegate+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3426,6 +3432,7 @@
 				A7F05BA21CFC038D0079F1AD /* ReceiptColumnTax.swift in Sources */,
 				71F73E381FEAD02D0049F108 /* TableFooterRow.swift in Sources */,
 				EA183E051B1C9F4C00577B3D /* Database+Columns.m in Sources */,
+				7186E1E121D3EFFA00182500 /* QuickActionService.swift in Sources */,
 				719B1FED1EF6032D0049BD71 /* EditReceiptView.swift in Sources */,
 				A78214F51CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift in Sources */,
 				715B4EBD1F114A9C0021ACD8 /* PurchaseButtonCell.swift in Sources */,
@@ -3674,6 +3681,7 @@
 				71F2B1CA2039EC5100581E65 /* InlinePickerButtonCell.swift in Sources */,
 				A7D554D11CFF0F5000169FD2 /* FMDatabase+Trips.swift in Sources */,
 				71AF49E21EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift in Sources */,
+				71939E9A21D14FD900A5BB27 /* AppDelegate+Extensions.swift in Sources */,
 				71CC1B8521143BA0003D7056 /* BackupItemView.swift in Sources */,
 				71859DCE2010F97B00156B40 /* UpsellBannerAdView.swift in Sources */,
 				71C014241F1AB14A005472B3 /* CategoriesInteractor.swift in Sources */,

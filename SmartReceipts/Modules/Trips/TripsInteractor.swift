@@ -10,7 +10,7 @@ import Foundation
 import Viperit
 import RxSwift
 
-fileprivate let LAST_OPENED_TRIP_KEY = "LastOpenedTripKey"
+let LAST_OPENED_TRIP_KEY = "LastOpenedTripKey"
 
 class TripsInteractor: Interactor {
     
@@ -32,12 +32,11 @@ class TripsInteractor: Interactor {
     }
     
     var lastOpenedTrip: Observable<WBTrip> {
-        return Maybe<WBTrip>.create(subscribe: { maybe in
+        return Single<WBTrip>.create(subscribe: { single in
             if let tripName = UserDefaults.standard.value(forKey: LAST_OPENED_TRIP_KEY) as? String,
                let trip = Database.sharedInstance().tripWithName(tripName) {
-                maybe(.success(trip))
+                single(.success(trip))
             }
-            maybe(.completed)
             return Disposables.create()
         }).asObservable()
         .subscribeOn(OperationQueueScheduler(operationQueue: OperationQueue()))
