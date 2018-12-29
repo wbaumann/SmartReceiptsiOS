@@ -29,8 +29,7 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
         }
         
         // TODO: Switch to using plurals once we integrate this with Twine
-        let suffix = files.count > 1 ? String(format: LocalizedString("reports_attached", comment: ""), "\(files.count)") : LocalizedString("report_attached", comment: "")
-        let messageBody = "\(files.count) \(suffix)"
+        let messageBody = files.count > 1 ? String(format: LocalizedString("reports_attached", comment: ""), "\(files.count)") : LocalizedString("report_attached", comment: "")
         
         let composer = MFMailComposeViewController()
         let subjectFormatter = SmartReceiptsFormattableString(fromOriginalText: WBPreferences.defaultEmailSubject())
