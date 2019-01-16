@@ -76,7 +76,7 @@ class AuthServiceTests: XCTestCase {
         XCTAssertEqual("name", user.name)
         XCTAssertEqual("displayName", user.displayName)
         XCTAssertEqual("provider", user.provider)
-        XCTAssertEqual("1", user.registrationIds.first)
+        XCTAssertEqual("1", user.registrationIds?.first)
         XCTAssertEqual("cognitoToken", user.cognitoToken)
         XCTAssertEqual("identityId", user.identityId)
         XCTAssertEqual(100, user.recognitionsAvailable)
