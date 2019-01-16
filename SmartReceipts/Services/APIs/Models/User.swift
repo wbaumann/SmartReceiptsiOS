@@ -13,13 +13,13 @@ struct User: Codable {
     private(set) var displayName: String?
     private(set) var cognitoTokenExpiresAt: Date
     private(set) var cognitoToken: String
-    private(set) var registrationIds: [String]
-    private(set) var email: String
+    private(set) var registrationIds: [String]?
+    private(set) var email: String?
     private(set) var name: String?
     private(set) var confirmedAt: Date?
     private(set) var identityId: String
-    private(set) var createdAt: String
-    private(set) var confirmationSentAt: Date
+    private(set) var createdAt: String?
+    private(set) var confirmationSentAt: Date?
     
     enum CodingKeys: String, CodingKey {
         case recognitionsAvailable = "recognitions_available"
