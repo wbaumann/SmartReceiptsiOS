@@ -35,7 +35,7 @@ class PDFImageView: UIView {
     
     func adjustImageSize() {
         let image = imageView.image
-        let scaled = WBImageUtils.image(image!, scaledTo: bounds.size)
+        let scaled = WBImageUtils.image(image!, scaledToFit: bounds.size)
         if let scaledAndCompressed = WBImageUtils.compressImage(scaled, withRatio: DEFAULT_COMPRESSION_QUALITY) {
             imageView.image = scaledAndCompressed
             if !scaledAndCompressed.hasContent {
