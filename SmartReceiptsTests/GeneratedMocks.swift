@@ -2749,6 +2749,7 @@ import Cuckoo
 @testable import SmartReceipts
 
 import Foundation
+import MessageUI
 import RxCocoa
 import RxSwift
 import Toaster
@@ -2823,7 +2824,7 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.ClassMock {
     
 
     
-    // ["name": "configure", "returnSignature": "", "fullyQualifiedName": "configure(with: WBTrip)", "parameterSignature": "with trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "with: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("with"), name: "trip", type: "WBTrip", range: CountableRange(904..<921), nameRange: CountableRange(904..<908))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "configure", "returnSignature": "", "fullyQualifiedName": "configure(with: WBTrip)", "parameterSignature": "with trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "with: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("with"), name: "trip", type: "WBTrip", range: CountableRange(921..<938), nameRange: CountableRange(921..<925))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func configure(with trip: WBTrip)  {
         
             return cuckoo_manager.call("configure(with: WBTrip)",
@@ -5740,7 +5741,7 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "openActions", "returnSignature": " -> ReceiptActionsPresenter", "fullyQualifiedName": "openActions(receipt: WBReceipt) -> ReceiptActionsPresenter", "parameterSignature": "receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "WBReceipt", range: CountableRange(3876..<3894), nameRange: CountableRange(3876..<3883))], "returnType": "ReceiptActionsPresenter", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
+    // ["name": "openActions", "returnSignature": " -> ReceiptActionsPresenter", "fullyQualifiedName": "openActions(receipt: WBReceipt) -> ReceiptActionsPresenter", "parameterSignature": "receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "WBReceipt", range: CountableRange(3891..<3909), nameRange: CountableRange(3891..<3898))], "returnType": "ReceiptActionsPresenter", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
      override func openActions(receipt: WBReceipt)  -> ReceiptActionsPresenter {
         
             return cuckoo_manager.call("openActions(receipt: WBReceipt) -> ReceiptActionsPresenter",
@@ -5752,7 +5753,7 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "openEdit", "returnSignature": "", "fullyQualifiedName": "openEdit(receipt: WBReceipt)", "parameterSignature": "receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "WBReceipt", range: CountableRange(4324..<4342), nameRange: CountableRange(4324..<4331))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "openEdit", "returnSignature": "", "fullyQualifiedName": "openEdit(receipt: WBReceipt)", "parameterSignature": "receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "WBReceipt", range: CountableRange(4339..<4357), nameRange: CountableRange(4339..<4346))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func openEdit(receipt: WBReceipt)  {
         
             return cuckoo_manager.call("openEdit(receipt: WBReceipt)",
@@ -6393,7 +6394,7 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "markLastOpened", "returnSignature": "", "fullyQualifiedName": "markLastOpened(trip: WBTrip)", "parameterSignature": "trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "trip: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(750..<762), nameRange: CountableRange(750..<754))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "markLastOpened", "returnSignature": "", "fullyQualifiedName": "markLastOpened(trip: WBTrip)", "parameterSignature": "trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "trip: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(738..<750), nameRange: CountableRange(738..<742))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func markLastOpened(trip: WBTrip)  {
         
             return cuckoo_manager.call("markLastOpened(trip: WBTrip)",

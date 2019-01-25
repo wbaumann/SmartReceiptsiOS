@@ -35,7 +35,7 @@ class CognitoService: AWSCognitoCredentialsProviderHelper {
             identityId = id
             return AWSTask(result: NSString(string: token))
         } else {
-            return AWSTask(result:nil)
+            return AWSTask(result: nil)
         }
     }
     
@@ -43,7 +43,7 @@ class CognitoService: AWSCognitoCredentialsProviderHelper {
         if AuthService.shared.isLoggedIn {
             return super.logins()
         } else {
-            return AWSTask(result:nil)
+            return AWSTask(result: nil)
         }
     }
     
