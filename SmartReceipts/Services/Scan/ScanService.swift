@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import Toaster
 
 fileprivate let PUSH_TIMEOUT: RxTimeInterval = 15
 fileprivate let NETWORK_TIMEOUT: RxTimeInterval = 10
@@ -72,11 +73,19 @@ class ScanService {
     }
     
     private func scanFrom(uploading: Observable<URL>, document: ReceiptDocument) -> Single<ScanResult> {
-        return uploading.asSingle()
+        return uploading
             .do(onSubscribed: { AnalyticsManager.sharedManager.record(event: Event.ocrRequestStarted()) })
-            .do(onError: { _ in
-                _ = AuthService.shared.getUser().subscribe(onSuccess: { CognitoService().saveCognitoData(user: $0) })
-            }).flatMap({ [weak self] url -> Single<String> in
+            .catchError({ _ -> Observable<URL> in
+                return AuthService.shared.getUser()
+                    .do(onSuccess: {
+                        CognitoService().clear()
+                        CognitoService().saveCognitoData(user: $0)
+                    })
+                    .do(onError: { [weak self] in self?.handle(error: $0) })
+                    .asObservable()
+                    .flatMap({ _ in uploading })
+            }).asSingle()
+            .flatMap({ [weak self] url -> Single<String> in
                 guard let api = self?.recognitionService else {
                     self?.statusSubject.onNext(.completed)
                     return Single<String>.never()
@@ -87,7 +96,8 @@ class ScanService {
             .flatMap({ [weak self] id -> Single<String> in
                 if let recognition = self?.getRecognitionID(id: id) { return recognition }
                 return .just(id)
-            }).flatMap({ [weak self] id -> Single<ScanResult> in
+            })
+            .flatMap({ [weak self] id -> Single<ScanResult> in
                 guard let service = self?.recognitionService else { return .never() }
                 self?.statusSubject.onNext(.fetching)
                 return service.getRecognition(id)
@@ -102,7 +112,8 @@ class ScanService {
                         AnalyticsManager.sharedManager.record(event: Event.ocrRequestSucceeded())
                         ScansPurchaseTracker.shared.decrementRemainingScans()
                     })
-            }).catchError({ error -> Single<ScanResult> in
+            })
+            .catchError({ error -> Single<ScanResult> in
                 return .just(ScanResult(filepath: document.localURL!))
             })
     }
@@ -126,6 +137,15 @@ class ScanService {
             .merge()
             .take(1)
             .asSingle()
+    }
+    
+    private func handle(error: Error) {
+        switch error.code {
+        case 300...599:
+            _ = AuthService.shared.logout()
+            Logger.debug(error.localizedDescription)
+        default: break
+        }
     }
 }
 
