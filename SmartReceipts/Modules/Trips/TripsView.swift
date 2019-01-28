@@ -18,16 +18,16 @@ protocol TripsViewInterface {
     var backupTap: Observable<Void> { get }
     var userGuideTap: Observable<Void> { get }
     var privacyTap: Observable<Void> { get }
-    var addButton: UIButton { get }
+    var addButtonTap: Observable<Void> { get }
     var debugButton: UIBarButtonItem { get }
 }
 
 //MARK: Trips View
-final class TripsView: FetchedTableViewController {
+final class TripsView: FetchedTableViewController, UITableViewDelegate {
     
     @IBOutlet fileprivate weak var menuButton: UIBarButtonItem!
     @IBOutlet fileprivate weak var _debugButton: UIBarButtonItem!
-    @IBOutlet fileprivate weak var _addButton: UIButton!
+    @IBOutlet fileprivate weak var addButton: UIButton!
     @IBOutlet fileprivate weak var editItem: UIBarButtonItem!
     
     fileprivate let privacySubject = PublishSubject<Void>()
@@ -50,34 +50,30 @@ final class TripsView: FetchedTableViewController {
         configureRx()
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     private func configureRx() {
         Observable<Void>.merge(AppNotificationCenter.syncProvider.asVoid(), AppNotificationCenter.didSyncBackup)
-            .subscribe { [weak self] in
+            .subscribe(onNext: { [weak self] _ in
                 self?.tableView.reloadData()
-            }.disposed(by: bag)
+            }).disposed(by: bag)
         
         NotificationCenter.default.rx.notification(.SmartReceiptsSettingsSaved)
-            .subscribe { [weak self] _ in
+            .subscribe(onNext: { [weak self] _ in
                 self?.settingsSaved()
-            }.disposed(by: bag)
+            }).disposed(by: bag)
         
         NotificationCenter.default.rx.notification(.SmartReceiptsAdsRemoved)
-            .subscribe { [weak self] _ in
+            .subscribe(onNext: { [weak self] _ in
                 self?.title = AppTheme.appTitlePlus
-            }.disposed(by: bag)
+            }).disposed(by: bag)
         
         NotificationCenter.default.rx.notification(.SmartReceiptsImport)
-            .subscribe { [weak self] _ in
+            .subscribe(onNext: { [weak self] _ in
                 self?.fetchObjects()
-            }.disposed(by: bag)
+            }).disposed(by: bag)
         
-        editItem.rx.tap.subscribe { [unowned self] in
-            self.setEditing(!self.isEditing, animated: true)
-        }.disposed(by: bag)
+        editItem.rx.tap.subscribe(onNext: { [unowned self] in
+            self.setEditing(true, animated: true)
+        }).disposed(by: bag)
     }
     
     private func configureDebug() {
@@ -196,7 +192,6 @@ final class TripsView: FetchedTableViewController {
         pCell.setState(state)
     }
     
-    
     override func configureSubrcibers(for adapter: FetchedModelAdapter?) {
         super.configureSubrcibers(for: adapter)
         guard let fetchedModelAdapter = adapter else { return }
@@ -218,7 +213,7 @@ final class TripsView: FetchedTableViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: animated)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DEFAULT_ANIMATION_DURATION) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + DEFAULT_ANIMATION_DURATION) {
             self.tableView.reloadData()
         }
     }
@@ -237,7 +232,7 @@ extension TripsView: TripsViewInterface {
     var userGuideTap: Observable<Void> { return  displayData.userGuideTap }
     var privacyTap: Observable<Void> { return privacySubject }
     var debugButton: UIBarButtonItem { return _debugButton }
-    var addButton: UIButton { return _addButton }
+    var addButtonTap: Observable<Void> { return addButton.rx.tap.asObservable() }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

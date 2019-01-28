@@ -82,6 +82,8 @@ class FetchedTableViewController: UserInterface {
                 let model = self.objectAtIndexPath(indexPath)
                 self.delete(object: model!, at: indexPath)
             }).disposed(by: bag)
+        
+        
     }
     
     func setPresentationCellNib(_ nib: UINib) {
