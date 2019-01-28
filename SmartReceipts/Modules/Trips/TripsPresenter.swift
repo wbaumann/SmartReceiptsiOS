@@ -29,7 +29,7 @@ class TripsPresenter: Presenter {
                 self.router.openDetails(trip: trip)
             }).disposed(by: bag)
         
-        view.addButton.rx.tap
+        view.addButtonTap
             .subscribe(onNext: {
                 self.router.openAddTrip()
             }).disposed(by: bag)
