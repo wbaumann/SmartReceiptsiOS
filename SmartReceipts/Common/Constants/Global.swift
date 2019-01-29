@@ -38,13 +38,18 @@ func LocalizedString(_ key: String, comment: String = "") -> String {
 }
 
 func MainStoryboard() -> UIStoryboard {
-    return UI_USER_INTERFACE_IDIOM() == .pad ?
-        UIStoryboard(name: "MainStoryboard_iPad", bundle: nil) :
-        UIStoryboard(name: "MainStoryboard_iPhone", bundle: nil)
+    #warning("ignore iPad Version")
+    
+//    return UI_USER_INTERFACE_IDIOM() == .pad ?
+//        UIStoryboard(name: "MainStoryboard_iPad", bundle: nil) :
+    return  UIStoryboard(name: "MainStoryboard_iPhone", bundle: nil)
 }
 
 func executeFor(iPhone: ()->(), iPad: ()->()) {
-    UI_USER_INTERFACE_IDIOM() == .pad ? iPad() : iPhone()
+    #warning("ignore iPad Version")
+    
+    iPhone()
+//    UI_USER_INTERFACE_IDIOM() == .pad ? iPad() : iPhone()
 }
 
 func screenScaled(_ value: CGFloat) -> CGFloat {
