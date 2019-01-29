@@ -72,7 +72,7 @@ final class TripsView: FetchedTableViewController, UITableViewDelegate {
             }).disposed(by: bag)
         
         editItem.rx.tap.subscribe(onNext: { [unowned self] in
-            self.setEditing(true, animated: true)
+            self.setEditing(!self.isEditing, animated: true)
         }).disposed(by: bag)
     }
     
