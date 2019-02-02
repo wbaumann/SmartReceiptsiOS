@@ -56,8 +56,8 @@ class TripCSVGenerator: ReportCSVGenerator {
         content.append(TABLE_SPACING)
         let receiptTable = ReportCSVTable(content: content, columns: categoryColumns())!
         receiptTable.includeHeaders = true
-        let receipts = receiptsByCategories()
-        receiptTable.append(withRows: Array(receipts.values))
+        let receipts = receiptsByCategories().flatMap { $0.receipts }
+        receiptTable.append(withRows: receipts)
     }
     
     private func appendSeparatedByCategoryTable(_ content: NSMutableString) {
@@ -66,7 +66,7 @@ class TripCSVGenerator: ReportCSVGenerator {
             let receiptTable = ReportCSVTable(content: content, columns: receiptColumns())!
             receiptTable.includeHeaders = true
             content.append(TABLE_SPACING)
-            content.append(category + "\n")
+            content.append(category.name + "\n")
             receiptTable.append(withRows: receipts)
         }
     }

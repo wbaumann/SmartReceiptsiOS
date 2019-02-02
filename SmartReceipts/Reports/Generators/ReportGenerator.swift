@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias CategoryReceipts = (category: WBCategory, receipts: [WBReceipt])
+
 @objcMembers
 class ReportGenerator: NSObject {
     private(set) var trip: WBTrip!
@@ -46,23 +48,27 @@ class ReportGenerator: NSObject {
         return distances?.allObjects() as! [Distance]
     }
     
-    func receiptsByCategories() -> [String: [WBReceipt]] {
-        var result = [String: [WBReceipt]]()
-        for receipt in receipts() {
-            guard let category = receipt.category else { continue }
-            if result[category.name] == nil {
-                result[category.name] = [WBReceipt]()
+    func receiptsByCategories() -> [CategoryReceipts] {
+        var result = [WBCategory: [WBReceipt]]()
+        let receipts = self.receipts()
+        
+        database.fetchedAdapterForCategories()?.allObjects()
+            .filterMap(WBCategory.self)
+            .forEach { category in
+                result[category] = receipts.filter { $0.category?.objectId == category.objectId }
             }
-            result[category.name]?.append(receipt)
-        }
         
         if WBPreferences.printDailyDistanceValues() {
             let dReceipts = DistancesToReceiptsConverter.convertDistances(distances()) as! [WBReceipt]
-            guard let category = dReceipts.first?.category else { return result }
-            result[category.name] = dReceipts
+            if let category = dReceipts.first?.category {
+                result[category] = dReceipts
+            }
         }
         
         return result
+            .filter { !$0.value.isEmpty }
+            .sorted { $0.key.customOrderId < $1.key.customOrderId }
+            .map { ($0.key, $0.value) }
     }
 }
 
