@@ -144,7 +144,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
     
     private func appendSeparatedByCategoryTable() {
         for (category, receipts) in receiptsByCategories() {
-            let receiptsTable = ReportPDFTable(title: category, pdfRender: pdfRender, columns: receiptColumns())!
+            let receiptsTable = ReportPDFTable(title: category.name, pdfRender: pdfRender, columns: receiptColumns())!
             receiptsTable.includeHeaders = true
             receiptsTable.includeFooters = true
             receiptsTable.append(withRows: receipts)
@@ -172,10 +172,9 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
     }
     
     private func appendCategoricalSummationTable() {
-        let receipts = Array(receiptsByCategories().values)
+        let receipts = receiptsByCategories().flatMap { $0.receipts }
         
         let isDefaultCurrencies = receipts
-            .flatMap { $0 }
             .filter { $0.currency != trip.defaultCurrency }
             .isEmpty
         
@@ -187,7 +186,6 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         categoricalTable.includeFooters = false
         categoricalTable.append(withRows: receipts)
     }
-    
     
 }
 

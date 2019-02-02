@@ -14,4 +14,8 @@ extension Array {
         array.append(element)
         return array
     }
+    
+    func filterMap<T>(_ type: T.Type) -> Array<T> {
+        return filter { $0 is T }.map { $0 as! T }
+    }
 }
