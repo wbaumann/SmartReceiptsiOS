@@ -18,7 +18,7 @@ import GoogleSignIn
 class AppDelegate: UIResponder, UIApplicationDelegate {
     static private(set) var instance: AppDelegate!
     
-    private let purchaseService = PurchaseService()
+    private var purchaseService: PurchaseService!
     
     fileprivate(set) var filePathToAttach: String?
     fileprivate(set) var isFileImage: Bool = false
@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
         AppDelegate.instance = self
+        
         AppMonitorServiceFactory().createAppMonitor().configure()
         
         AppTheme.customizeOnAppLoad()
@@ -46,8 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Logger.info("Language: \(Locale.preferredLanguages.first!)")
         
-        setupCustomExceptionHandler()
-        
+        purchaseService = PurchaseService()
         purchaseService.cacheSubscriptionValidation()
         purchaseService.logPurchases()
         purchaseService.completeTransactions()
@@ -183,22 +183,6 @@ extension AppDelegate {
                     _ = UIAlertController.showInfo(text: text, on: viewController).subscribe()
                     Logger.error("Failed to import this backup: \(error.localizedDescription)")
                 })
-        }
-    }
-    
-    fileprivate func setupCustomExceptionHandler() {
-        // Catches most but not all fatal errors
-        NSSetUncaughtExceptionHandler { exception in
-            RateApplication.sharedInstance().markAppCrash()
-            
-            var message = exception.description
-            message += "\n"
-            message += exception.callStackSymbols.description
-            Logger.error(message, file: "UncaughtExcepetion", function: "onUncaughtExcepetion", line: 0)
-            Crashlytics.sharedInstance().recordCustomExceptionName(exception.name.rawValue, reason: exception.reason, frameArray: [])
-            
-            let errorEvent = ErrorEvent(exception: exception)
-            AnalyticsManager.sharedManager.record(event: errorEvent)
         }
     }
 }
