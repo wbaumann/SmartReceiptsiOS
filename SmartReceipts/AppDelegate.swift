@@ -19,10 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static private(set) var instance: AppDelegate!
 
     var window: UIWindow?
+    private var purchaseService: PurchaseService!
     
     fileprivate(set) var isFileImage: Bool = false
     
-    private let purchaseService = PurchaseService()
     private lazy var quickActionService: QuickActionService = {
         let rootViewController = UIApplication.shared.keyWindow!.rootViewController!
         return QuickActionService(view: rootViewController)
@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
         AppDelegate.instance = self
+        
         AppMonitorServiceFactory().createAppMonitor().configure()
         
         AppTheme.customizeOnAppLoad()
@@ -50,8 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Logger.info("Language: \(Locale.preferredLanguages.first!)")
         
-        setupCustomExceptionHandler()
-        
+        purchaseService = PurchaseService()
         purchaseService.cacheSubscriptionValidation()
         purchaseService.logPurchases()
         purchaseService.completeTransactions()
@@ -129,24 +129,5 @@ extension AppDelegate {
         guard let path = filePathToAttach else { return }
         FileManager.deleteIfExists(filepath: path)
         filePathToAttach = nil
-    }
-}
-
-// MARK: Help Methods
-extension AppDelegate {
-    fileprivate func setupCustomExceptionHandler() {
-        // Catches most but not all fatal errors
-        NSSetUncaughtExceptionHandler { exception in
-            RateApplication.sharedInstance().markAppCrash()
-            
-            var message = exception.description
-            message += "\n"
-            message += exception.callStackSymbols.description
-            Logger.error(message, file: "UncaughtExcepetion", function: "onUncaughtExcepetion", line: 0)
-            Crashlytics.sharedInstance().recordCustomExceptionName(exception.name.rawValue, reason: exception.reason, frameArray: [])
-            
-            let errorEvent = ErrorEvent(exception: exception)
-            AnalyticsManager.sharedManager.record(event: errorEvent)
-        }
     }
 }
