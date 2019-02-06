@@ -27,6 +27,7 @@ class AppMonitorServiceFactory {
 class FirebaseAppMonitorService: AppMonitorService {
     func configure() {
         FirebaseApp.configure()
+        setupCustomExceptionHandler()
         enableAnalytics()
         applyPrivacySettings()
     }
@@ -39,6 +40,22 @@ class FirebaseAppMonitorService: AppMonitorService {
     private func applyPrivacySettings() {
         AnalyticsManager.sharedManager.setAnalyticsSending(allowed: WBPreferences.analyticsEnabled())
         if WBPreferences.crashTrackingEnabled() { Fabric.with([Crashlytics.self]) }
+    }
+    
+    private func setupCustomExceptionHandler() {
+        // Catches most but not all fatal errors
+        NSSetUncaughtExceptionHandler { exception in
+            RateApplication.sharedInstance().markAppCrash()
+            
+            var message = exception.description
+            message += "\n"
+            message += exception.callStackSymbols.description
+            Logger.error(message, file: "UncaughtExcepetion", function: "onUncaughtExcepetion", line: 0)
+            Crashlytics.sharedInstance().recordCustomExceptionName(exception.name.rawValue, reason: exception.reason, frameArray: [])
+            
+            let errorEvent = ErrorEvent(exception: exception)
+            AnalyticsManager.sharedManager.record(event: errorEvent)
+        }
     }
 }
 
