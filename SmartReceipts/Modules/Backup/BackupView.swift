@@ -151,8 +151,8 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
     
     private func openActions(for backup: RemoteBackupMetadata, item: BackupItemView?) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_restore"), style: .default, handler: { [unowned self] _ in
-            self.openImport(backup: backup)
+        alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_restore"), style: .default, handler: { [unowned self, item] _ in
+            self.openImport(backup: backup, item: item)
         }))
         alert.addAction(UIAlertAction(title: LocalizedString("remote_backups_list_item_menu_download_images"), style: .default, handler: { [unowned self] _ in
             self.presenter.downloadZip(backup)
@@ -163,11 +163,18 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         alert.addAction(UIAlertAction(title: LocalizedString("delete"), style: .destructive, handler: { [unowned self] _ in
             self.openDelete(backup: backup)
         }))
-        alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
+        
+        if let popoverController = alert.popoverPresentationController, let source = item?.dotsView  {
+            popoverController.sourceView = source
+            popoverController.sourceRect = CGRect(x: 0, y: source.bounds.midY, width: 0, height: 0)
+        } else {
+            alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
+        }
+        
         present(alert, animated: true, completion: nil)
     }
     
-    private func openImport(backup: RemoteBackupMetadata) {
+    private func openImport(backup: RemoteBackupMetadata, item: BackupItemView?) {
         let title = String(format: LocalizedString("import_string_item"), backup.syncDeviceName)
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: LocalizedString("import_string"), style: .default, handler: { [unowned self] _ in
@@ -176,7 +183,14 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
         alert.addAction(UIAlertAction(title: LocalizedString("dialog_import_text"), style: .default, handler: { _ in
             self.presenter.importBackup(backup, overwrite: true)
         }))
-        alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
+        
+        if let popoverController = alert.popoverPresentationController, let source = item?.dotsView  {
+            popoverController.sourceView = source
+            popoverController.sourceRect = CGRect(x: 0, y: source.bounds.midY, width: 0, height: 0)
+        } else {
+            alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
+        }
+        
         present(alert, animated: true, completion: nil)
     }
     
