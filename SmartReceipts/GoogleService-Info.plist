@@ -6,8 +6,6 @@
 	<string>ca-app-pub-3940256099942544/2934735716</string>
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
-	<key>TRACKING_ID</key>
-	<string>UA-40138219-3</string>
 	<key>CLIENT_ID</key>
 	<string>718869294394-6p4ic33brhs8nd4rgvu72q76o5mfvft2.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
@@ -25,18 +23,20 @@
 	<key>STORAGE_BUCKET</key>
 	<string>smart-receipts.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<true/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_GCM_ENABLED</key>
-	<false/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<false/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:718869294394:ios:18b418fa22b54840</string>
 	<key>DATABASE_URL</key>
 	<string>https://smart-receipts.firebaseio.com</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-5974528738468170~2027993441</string>
 </dict>
 </plist>
