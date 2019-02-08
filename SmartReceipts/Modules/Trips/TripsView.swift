@@ -112,10 +112,7 @@ final class TripsView: FetchedTableViewController, UITableViewDelegate {
         }
         
         if let popoverController = actionSheet.popoverPresentationController {
-            let arrowMargin = UI_MARGIN_16 + 20
-            popoverController.sourceView = self.view
-            popoverController.sourceRect = CGRect(x: arrowMargin, y: -UI_MARGIN_16, width: 0, height: 0)
-            popoverController.permittedArrowDirections = .up
+            popoverController.barButtonItem = menuButton
         } else {
             actionSheet.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
         }

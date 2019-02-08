@@ -14,6 +14,7 @@ class BackupItemView: UIView {
     @IBOutlet private weak var serviceName: UILabel!
     @IBOutlet private weak var syncDate: UILabel!
     @IBOutlet private weak var menu: UIButton!
+    @IBOutlet private(set) weak var dotsView: UIView!
     
     func setup(backup: RemoteBackupMetadata, isCurrentDevice: Bool =  false) {
         let format = isCurrentDevice ? LocalizedString("existing_remote_backup_current_device") : "%@"

@@ -85,12 +85,9 @@ final class ReceiptImageViewerView: UserInterface {
     @objc private func share() {
         guard let image = imageView.image else { return }
         let sharePanel = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-       
-        #warning("Fix iPad Version")
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            sharePanel.popoverPresentationController?.sourceView = view
-            sharePanel.popoverPresentationController?.permittedArrowDirections = .up
-            sharePanel.popoverPresentationController?.sourceRect = .init(x: view.bounds.width, y: 0, width: 0, height: 0)
+        
+        if let popoverController = sharePanel.popoverPresentationController {
+            popoverController.barButtonItem = navigationItem.rightBarButtonItem
         }
         
         present(sharePanel, animated: true, completion: nil)
