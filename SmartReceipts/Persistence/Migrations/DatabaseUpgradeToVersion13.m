@@ -21,6 +21,8 @@
 }
 
 - (BOOL)migrate:(Database *)database {
+    [AnalyticsManager.sharedManager recordWithEvent:[Event startDatabaseUpgrade:self.version]];
+    
     NSString *parent = @"parent";
     NSArray *distanceMigrateBase = @[@"INSERT INTO ", DistanceTable.TABLE_NAME, @"(", parent, @", ", DistanceTable.COLUMN_DISTANCE, @", ", DistanceTable.COLUMN_LOCATION, @", ", DistanceTable.COLUMN_DATE, @", ", DistanceTable.COLUMN_TIMEZONE, @", ", DistanceTable.COLUMN_COMMENT, @", ", DistanceTable.COLUMN_RATE_CURRENCY, @")",
             @" SELECT ", TripsTable.COLUMN_NAME, @", ", TripsTable.COLUMN_MILEAGE, @" , \"\" as ", DistanceTable.COLUMN_LOCATION, @", ", TripsTable.COLUMN_FROM, @", ", TripsTable.COLUMN_FROM_TIMEZONE, @" , \"\" as ", DistanceTable.COLUMN_COMMENT, @", "];
@@ -31,12 +33,16 @@
     NSArray *alterTripsWithProcessingStatus = @[@"ALTER TABLE ", TripsTable.TABLE_NAME, @" ADD ", TripsTable.COLUMN_PROCESSING_STATUS, @" TEXT"];
     NSArray *alterReceiptsWithProcessingStatus = @[@"ALTER TABLE ", ReceiptsTable.TABLE_NAME, @" ADD ", ReceiptsTable.COLUMN_PROCESSING_STATUS, @" TEXT"];
 
-    return [database createDistanceTable]
+    BOOL result = [database createDistanceTable]
             && [database executeUpdateWithStatementComponents:distanceMigrateNotNullCurrency]
             && [database executeUpdateWithStatementComponents:distanceMigrateNullCurrency]
             && [database executeUpdateWithStatementComponents:alterTripsWithCostCenter]
             && [database executeUpdateWithStatementComponents:alterTripsWithProcessingStatus]
             && [database executeUpdateWithStatementComponents:alterReceiptsWithProcessingStatus];
+    
+    [AnalyticsManager.sharedManager recordWithEvent:[Event finishDatabaseUpgrade:self.version success:result]];
+    
+    return result;
 }
 
 @end

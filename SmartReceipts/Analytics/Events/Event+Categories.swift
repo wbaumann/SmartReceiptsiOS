@@ -125,21 +125,23 @@ public extension Event {
     struct Informational {
         static let ConfigureReport = Event(category: Category.Informational, name: "ConfigureReports")
         static let ClickedBackupReminderTip = Event(category: Category.Informational, name: "ClickedBackupReminderTip")
+        static let StartDatabaseUpgrade = Event(category: Category.Informational, name: "StartDatabaseUpgrade")
+        static let FinishDatabaseUpgrade = Event(category: Category.Informational, name: "FinishDatabaseUpgrade")
     }
     
     struct OCR {
-        static let InfoTooltipShown = Event(category: Category.OCR, name: "OcrInfoTooltipShown");
-        static let InfoTooltipOpen = Event(category: Category.OCR, name: "OcrInfoTooltipOpen");
-        static let InfoTooltipDismiss = Event(category: Category.OCR, name: "OcrInfoTooltipDismiss");
-        static let ViewConfigurationPage = Event(category: Category.OCR, name: "OcrViewConfigurationPage");
-        static let PurchaseClicked = Event(category: Category.OCR, name: "OcrPurchaseClicked");
-        static let IsEnabledToggled = Event(category: Category.OCR, name: "OcrIsEnabledToggled");
-        static let IncognitoModeToggled = Event(category: Category.OCR, name: "OcrIncognitoModeToggled");
-        static let RequestStarted = Event(category: Category.OCR, name: "OcrRequestStarted");
-        static let PushMessageReceived = Event(category: Category.OCR, name: "OcrPushMessageReceived");
-        static let PushMessageTimeOut = Event(category: Category.OCR, name: "OcrPushMessageTimeOut");
-        static let RequestSucceeded = Event(category: Category.OCR, name: "OcrRequestSucceeded");
-        static let RequestFailed = Event(category: Category.OCR, name: "OcrRequestFailed");
+        static let InfoTooltipShown = Event(category: Category.OCR, name: "OcrInfoTooltipShown")
+        static let InfoTooltipOpen = Event(category: Category.OCR, name: "OcrInfoTooltipOpen")
+        static let InfoTooltipDismiss = Event(category: Category.OCR, name: "OcrInfoTooltipDismiss")
+        static let ViewConfigurationPage = Event(category: Category.OCR, name: "OcrViewConfigurationPage")
+        static let PurchaseClicked = Event(category: Category.OCR, name: "OcrPurchaseClicked")
+        static let IsEnabledToggled = Event(category: Category.OCR, name: "OcrIsEnabledToggled")
+        static let IncognitoModeToggled = Event(category: Category.OCR, name: "OcrIncognitoModeToggled")
+        static let RequestStarted = Event(category: Category.OCR, name: "OcrRequestStarted")
+        static let PushMessageReceived = Event(category: Category.OCR, name: "OcrPushMessageReceived")
+        static let PushMessageTimeOut = Event(category: Category.OCR, name: "OcrPushMessageTimeOut")
+        static let RequestSucceeded = Event(category: Category.OCR, name: "OcrRequestSucceeded")
+        static let RequestFailed = Event(category: Category.OCR, name: "OcrRequestFailed")
     }
 }
 
@@ -203,5 +205,26 @@ public extension Event {
     class func ocrRequestSucceeded() -> Event {return Event.OCR.RequestSucceeded}
     class func ocrRequestFailed() -> Event {return Event.OCR.RequestFailed}
     
+}
+
+// MARK: Database Events
+public extension Event {
+    private static let VERSION = "version"
+    private static let SUCCESS = "success"
+    
+    class func startDatabaseUpgrade(_ version: UInt) -> Event {
+        let event = Event.Informational.StartDatabaseUpgrade
+        event.dataPoints = [DataPoint(name: VERSION, value: version)]
+        return event
+    }
+    
+    class func finishDatabaseUpgrade(_ version: UInt, success: Bool) -> Event {
+        let event = Event.Informational.StartDatabaseUpgrade
+        event.dataPoints = [
+            DataPoint(name: VERSION, value: version),
+            DataPoint(name: SUCCESS, value: success)
+        ]
+        return event
+    }
 }
 

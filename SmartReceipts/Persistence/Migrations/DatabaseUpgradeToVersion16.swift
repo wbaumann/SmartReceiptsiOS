@@ -17,7 +17,9 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
     }
     
     override func migrate(_ database: Database) -> Bool {
-        return  updateCategoriesPrimaryKey(database) &&
+        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version()))
+        
+        let result = updateCategoriesPrimaryKey(database) &&
                 addCustomOrderIdToCategories(database) &&
                 updateCategoriesOrderId(database) &&
             
@@ -30,6 +32,10 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
 
                 addCustomOrderIdToCSVColumns(database) &&
                 updateCSVColumnsOrderId(database)
+        
+        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version(), success: result))
+        
+        return result
     }
     
     //MARK: - Receipts

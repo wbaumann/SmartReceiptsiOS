@@ -26,8 +26,10 @@
 }
 
 - (BOOL)migrate:(Database *)database {
+    [AnalyticsManager.sharedManager recordWithEvent:[Event startDatabaseUpgrade:self.version]];
+    
     FMDatabaseQueue *queue = database.databaseQueue;
-    return [self setupAndroidMetadataTableInQueue:queue]
+    BOOL result = [self setupAndroidMetadataTableInQueue:queue]
             && [database createTripsTable]
             && [database createReceiptsTable]
             && [database createCategoriesTable]
@@ -35,6 +37,10 @@
             && [database createPDFColumnsTable]
             && [self insertDefaultCategoriesIntoDatabase:database]
             && [self insertDefaultReceiptColumnsIntoDatabase:database];
+    
+    [AnalyticsManager.sharedManager recordWithEvent:[Event finishDatabaseUpgrade:self.version success:result]];
+    
+    return result;
 }
 
 - (BOOL)setupAndroidMetadataTableInQueue:(FMDatabaseQueue *)queue {

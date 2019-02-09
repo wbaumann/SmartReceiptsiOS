@@ -19,8 +19,13 @@ class DatabaseUpgradeToVersion15: DatabaseMigration {
     }
     
     override func migrate(_ database: Database) -> Bool {
-        let migrationSuccess = addSyncInformation(database)
-        return migrationSuccess
+        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version()))
+        
+        let result = addSyncInformation(database)
+        
+        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version(), success: result))
+        
+        return result
     }
     
     // MARK: - Private:
