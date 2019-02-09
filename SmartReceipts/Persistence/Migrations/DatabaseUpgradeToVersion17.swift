@@ -14,11 +14,18 @@ class DatabaseUpgradeToVersion17: DatabaseMigration {
     }
     
     override func migrate(_ database: Database) -> Bool {
+        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version()))
+        
+        var result = false
         if database.hasPaymentMethodCustomOrderIdColumn() {
-            return true
+            result = true
         } else {
-            return addCustomOrderIdPaymentMethods(database) && updatePaymentMethodsOrderId(database)
+            result = addCustomOrderIdPaymentMethods(database) && updatePaymentMethodsOrderId(database)
         }
+        
+        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version(), success: result))
+        
+        return result
     }
     
     private func addCustomOrderIdPaymentMethods(_ database: Database) -> Bool {

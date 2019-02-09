@@ -2,7 +2,7 @@
 //  DatabaseUpgradeToVersion18.swift
 //  SmartReceipts
 //
-//  Created by Bogdan Evsenev on 11/10/2018.u  iuuu fu
+//  Created by Bogdan Evsenev on 11/10/2018.
 //  Copyright © 2018 Will Baumann. All rights reserved.
 //
 
@@ -19,19 +19,26 @@ class DatabaseUpgradeToVersion18: DatabaseMigration {
     }
     
     override func migrate(_ database: Database) -> Bool {
+        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version()))
+        
         let pdfColumns = fetchColumns(table: PDFColumnTable.Name, database: database)
         let csvColumns = fetchColumns(table: CSVColumnTable.Name, database: database)
         
-        return updateColumnTable(table: PDFColumnTable.Name, columns: pdfColumns, database) &&
+        let result = updateColumnTable(table: PDFColumnTable.Name, columns: pdfColumns, database) &&
                updateColumnTable(table: CSVColumnTable.Name, columns: csvColumns, database)
+        
+        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version(), success: result))
+        
+        return result
     }
     
     private func updateColumnTable(table: String, columns: [ReceiptColumn], _ database: Database) -> Bool {
         var result = database.executeUpdate("ALTER TABLE \(table) ADD COLUMN \(COLUMN_TYPE) INTEGER DEFAULT 0")
         
         for column in columns {
-            let columnType = ReceiptColumn(name: column.name)?.сolumnType ?? 0
-            result = result && database.executeUpdate("UPDATE \(table) SET \(COLUMN_TYPE) = \(columnType) WHERE \(DEPRECATED_COLUMN_TYPE_AS_NAME) = '\(column.name!)'")
+            guard let columnName = column.name else { continue }
+            let columnType = ReceiptColumn(name: columnName)?.сolumnType ?? 0
+            result = result && database.executeUpdate("UPDATE \(table) SET \(COLUMN_TYPE) = \(columnType) WHERE \(DEPRECATED_COLUMN_TYPE_AS_NAME) = '\(columnName)'")
         }
         
         result = result && database.executeUpdate("ALTER TABLE \(table) RENAME TO \(table)_tmp")

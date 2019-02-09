@@ -20,7 +20,10 @@ class DatabaseUpgradeToVersion19: DatabaseMigration {
     }
     
     override func migrate(_ database: Database) -> Bool {
-        return updateTripsPrimaryKey(database: database) &&
+        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version()))
+        AnalyticsManager.sharedManager.record(event: .distancePersistNewDistance())
+        
+        let result = updateTripsPrimaryKey(database: database) &&
             
             updateDistanceParent(database: database) &&
             updateReceiptsParent(database: database) &&
@@ -32,6 +35,10 @@ class DatabaseUpgradeToVersion19: DatabaseMigration {
             addUUID(table: PaymentMethodsTable.Name, database: database) &&
             addUUID(table: CSVColumnTable.Name, database: database) &&
             addUUID(table: PDFColumnTable.Name, database: database)
+        
+        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version(), success: result))
+        
+        return result
     }
     
     private func addUUID(table: String, database: Database) -> Bool {
