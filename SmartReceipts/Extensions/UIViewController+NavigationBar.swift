@@ -6,60 +6,25 @@
 //  Copyright © 2017 Will Baumann. All rights reserved.
 //
 
-private let BACK_BUTTON_OFFSET: CGFloat = 72
-
 extension UIViewController {
     
-    func setTitle(_ title: String, subtitle: String, color: UIColor = UIColor.white) {
-        let width: CGFloat = 100
-        let height: CGFloat = 18
-        let x: CGFloat = view.bounds.width/2 - width/2
-        let titleView = UIView(frame: CGRect(x: x, y: 0, width: width, height: 44))
-        
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 4, width: width, height: height))
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+    func setTitle(_ title: String, subtitle: String, color: UIColor = .white) {
+        let titleLabel = UILabel(frame: .zero)
+        titleLabel.font = .boldSystemFont(ofSize: 16)
         titleLabel.textAlignment = .center
         titleLabel.textColor = color
         titleLabel.text = title
         
-        let subtitleLabel = UILabel(frame: CGRect(x: 0, y: 24, width: width, height: height))
-        subtitleLabel.font = UIFont.systemFont(ofSize: 14)
+        let subtitleLabel = UILabel(frame: .zero)
+        subtitleLabel.font = .systemFont(ofSize: 14)
         subtitleLabel.textAlignment = .center
         subtitleLabel.textColor = color
         subtitleLabel.text = subtitle
         
-        setupLabels([titleLabel, subtitleLabel], toMiddleOf: titleView)
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+        stackView.alignment = .center
+        stackView.axis = .vertical
         
-        titleView.addSubview(titleLabel)
-        titleView.addSubview(subtitleLabel)
-        
-        navigationItem.titleView = titleView
-    }
-    
-    fileprivate func resizeLabels(_ labels: [UILabel]) {
-        var width: CGFloat = 0
-        
-        // Calculate available width
-        for label in labels {
-            label.sizeToFit()
-            width = max(width, label.bounds.width)
-        }
-        width = min(width, view.bounds.width - BACK_BUTTON_OFFSET * 2)
-        
-        // Resize all labels to MAX width
-        for label in labels {
-            label.bounds = CGRect(x: label.bounds.origin.x, y: label.bounds.origin.y,
-                                  width: width, height: label.bounds.height)
-        }
-    }
-    
-    fileprivate func setupLabels(_ labels: [UILabel], toMiddleOf view: UIView) {
-        resizeLabels(labels)
-        let titleWidth = UIScreen.main.bounds.width * 0.5
-        view.bounds = CGRect(x: view.bounds.origin.x, y: view.bounds.origin.y,
-                                  width: titleWidth, height: view.bounds.height)
-        for label in labels {
-            label.center = CGPoint(x: view.bounds.width/2, y: label.center.y)
-        }
+        navigationItem.titleView = stackView
     }
 }
