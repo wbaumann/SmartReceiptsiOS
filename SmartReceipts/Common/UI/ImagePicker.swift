@@ -35,21 +35,24 @@ class ImagePicker: NSObject {
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let cancel = UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel) { _ in
-            self.singleObserver = nil
-        }
+        actionSheet.addAction(.init(title: LocalizedString("receipt_attach_photo"), style: .default) { [weak self] _ in
+            self?.presentPicker(on: viewController, source: .camera)
+        })
+       
+        actionSheet.addAction(.init(title: LocalizedString("receipt_attach_image"), style: .default) { [weak self] _ in
+            self?.presentPicker(on: viewController, source: .photoLibrary)
+        })
         
-        let library = UIAlertAction(title: LocalizedString("receipt_attach_image"), style: .default) { _ in
-            self.presentPicker(on: viewController, source: .photoLibrary)
-        }
+        actionSheet.addAction(.init(title: LocalizedString("DIALOG_CANCEL"), style: .cancel) { [weak self] _ in
+            self?.singleObserver = nil
+        })
         
-        let photo = UIAlertAction(title: LocalizedString("receipt_attach_photo"), style: .default) { _ in
-            self.presentPicker(on: viewController, source: .camera)
+        if let popover = actionSheet.popoverPresentationController {
+            let view = viewController.view
+            popover.sourceView = view
+            popover.sourceRect = CGRect(x: view!.bounds.midX, y: view!.bounds.midY, width: 0, height: 0)
+            popover.permittedArrowDirections = .init(rawValue: 0)
         }
-
-        actionSheet.addAction(photo)
-        actionSheet.addAction(library)
-        actionSheet.addAction(cancel)
         
         viewController.present(actionSheet, animated: true, completion: nil)
         
