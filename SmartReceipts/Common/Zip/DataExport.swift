@@ -27,10 +27,15 @@ class DataExport: NSObject {
         
         // DB
         let dbPath = workDirectory.asNSString.appendingPathComponent(SmartReceiptsDatabaseName)
-        let dbData = try! Data(contentsOf: dbPath.asFileURL)
         let dbExportPath = workDirectory.asNSString.appendingPathComponent(SmartReceiptsDatabaseExportName)
-        _ = FileManager.forceWrite(data: dbData, to: dbExportPath)
-        files.append(dbExportPath.asFileURL)
+        
+        if let dbData = try? Data(contentsOf: dbPath.asFileURL) {
+            _ = FileManager.forceWrite(data: dbData, to: dbExportPath)
+            files.append(dbExportPath.asFileURL)
+        } else {
+            Logger.debug("DB not found at path: \(dbPath)")
+            return ""
+        }
         
         // Preferences
         let preferences = WBPreferences.xmlString().data(using: .utf8)
