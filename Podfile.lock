@@ -188,7 +188,7 @@ DEPENDENCIES:
   - GTMAppAuth
   - Moya
   - Moya/RxSwift
-  - MRProgress
+  - MRProgress (from `https://github.com/EvsenevDev/MRProgress`, branch `disabled-motions`)
   - RxBlocking
   - RxCocoa
   - RxDataSources
@@ -230,7 +230,6 @@ SPEC REPOS:
     - GTMOAuth2
     - GTMSessionFetcher
     - Moya
-    - MRProgress
     - nanopb
     - Protobuf
     - Result
@@ -246,6 +245,9 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Floaty:
     :git: https://github.com/QuestofIranon/Floaty.git
+  MRProgress:
+    :branch: disabled-motions
+    :git: https://github.com/EvsenevDev/MRProgress
   Toaster:
     :git: https://github.com/devxoul/Toaster.git
   XLPagerTabStrip:
@@ -255,6 +257,9 @@ CHECKOUT OPTIONS:
   Floaty:
     :commit: c2b65fb7e0a2d294bb88adb036518241b84031f8
     :git: https://github.com/QuestofIranon/Floaty.git
+  MRProgress:
+    :commit: 37b27ab16643ca33d77d752da331cb074f06eeb0
+    :git: https://github.com/EvsenevDev/MRProgress
   Toaster:
     :commit: 9702ef816244cbdf8af890d4fc96103f854f7843
     :git: https://github.com/devxoul/Toaster.git
@@ -292,7 +297,7 @@ SPEC CHECKSUMS:
   GTMOAuth2: e8b6512c896235149df975c41d9a36c868ab7fba
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   Moya: a725035953bc1c0eb1be505ab903984501d82440
-  MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
+  MRProgress: b0c2bcff94ee700ac2aea810e1f51720c059cbd3
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
@@ -307,6 +312,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 347144ea331dee5566be29a110d25d281a6b32ec
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: aee478776f0e4add4da35a688030b88c26cfe443
+PODFILE CHECKSUM: 61cd0e96e74aca71bdc3866a0ba1f23fde8fdfb2
 
 COCOAPODS: 1.5.3
