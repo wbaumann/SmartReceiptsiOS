@@ -15,7 +15,7 @@ def pods
     pod 'Zip'
     
     # UI
-    pod 'MRProgress'
+    pod 'MRProgress', git: 'https://github.com/EvsenevDev/MRProgress', branch: 'disabled-motions'
     pod 'Eureka'
     pod 'XLPagerTabStrip', git: 'https://github.com/alexanderkhitev/XLPagerTabStrip.git'
     pod 'Floaty', git: 'https://github.com/QuestofIranon/Floaty.git'
