@@ -109,6 +109,8 @@
 	<string>${PRODUCT_NAME} cannot take photos unless you give it permission.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>${PRODUCT_NAME} cannot import photos unless you give it permission.</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>${PRODUCT_NAME} cannot save photos unless you give it permission.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchView</string>
 	<key>UIMainStoryboardFile</key>
