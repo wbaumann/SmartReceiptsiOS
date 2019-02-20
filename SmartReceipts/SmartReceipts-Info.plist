@@ -64,7 +64,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.14.1607</string>
+	<string>1.14.1608</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -79,7 +79,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1607</string>
+	<string>1608</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -107,10 +107,10 @@
 	<string>Advertisement would like to create a calendar event.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>${PRODUCT_NAME} cannot take photos unless you give it permission.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>${PRODUCT_NAME} cannot save photos unless you give it permission.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>${PRODUCT_NAME} cannot import photos unless you give it permission.</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>${PRODUCT_NAME} cannot save photos unless you give it permission.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchView</string>
 	<key>UIMainStoryboardFile</key>
