@@ -24,8 +24,8 @@ class DatabaseUpgradeToVersion18: DatabaseMigration {
         let pdfColumns = fetchColumns(table: PDFColumnTable.Name, database: database)
         let csvColumns = fetchColumns(table: CSVColumnTable.Name, database: database)
         
-        let result = updateColumnTable(table: PDFColumnTable.Name, columns: pdfColumns, database) &&
-               updateColumnTable(table: CSVColumnTable.Name, columns: csvColumns, database)
+        let result = updateColumnTable(table: PDFColumnTable.Name, columns: pdfColumns, database)
+                  && updateColumnTable(table: CSVColumnTable.Name, columns: csvColumns, database)
         
         AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version(), success: result))
         
@@ -33,7 +33,8 @@ class DatabaseUpgradeToVersion18: DatabaseMigration {
     }
     
     private func updateColumnTable(table: String, columns: [ReceiptColumn], _ database: Database) -> Bool {
-        var result = database.executeUpdate("ALTER TABLE \(table) ADD COLUMN \(COLUMN_TYPE) INTEGER DEFAULT 0")
+        var result = true
+        database.executeUpdate("ALTER TABLE \(table) ADD COLUMN \(COLUMN_TYPE) INTEGER DEFAULT 0")
         
         for column in columns {
             guard let columnName = column.name else { continue }
@@ -43,7 +44,7 @@ class DatabaseUpgradeToVersion18: DatabaseMigration {
         
         result = result && database.executeUpdate("ALTER TABLE \(table) RENAME TO \(table)_tmp")
         
-        result = result &&  database.executeUpdate("CREATE TABLE \(table)(\(PDFColumnTable.Column.Id) INTEGER PRIMARY KEY AUTOINCREMENT, \(COLUMN_TYPE) INTEGER DEFAULT 0, \(PDFColumnTable.Column.CustomOrderId) INTEGER DEFAULT 0,\(Database.SyncColumns.drive_sync_id) TEXT,\(Database.SyncColumns.drive_is_synced) BOOLEAN DEFAULT 0,\(Database.SyncColumns.drive_marked_for_deletion) BOOLEAN DEFAULT 0,\(Database.SyncColumns.last_local_modification_time) DATE)")
+        result = result && database.executeUpdate("CREATE TABLE \(table)(\(PDFColumnTable.Column.Id) INTEGER PRIMARY KEY AUTOINCREMENT, \(COLUMN_TYPE) INTEGER DEFAULT 0, \(PDFColumnTable.Column.CustomOrderId) INTEGER DEFAULT 0,\(Database.SyncColumns.drive_sync_id) TEXT,\(Database.SyncColumns.drive_is_synced) BOOLEAN DEFAULT 0,\(Database.SyncColumns.drive_marked_for_deletion) BOOLEAN DEFAULT 0,\(Database.SyncColumns.last_local_modification_time) DATE)")
         
         let insertColumns = [
             SyncStateColumns.Id,
@@ -55,8 +56,8 @@ class DatabaseUpgradeToVersion18: DatabaseMigration {
             PDFColumnTable.Column.Id
         ].joined(separator: ", ")
         
-        result = result &&  database.executeUpdate("INSERT INTO \(table)(\(insertColumns)) SELECT \(insertColumns) FROM \(table)_tmp")
-        result = result &&  database.executeUpdate("DROP TABLE \(table)_tmp")
+        result = result && database.executeUpdate("INSERT INTO \(table)(\(insertColumns)) SELECT \(insertColumns) FROM \(table)_tmp")
+        result = result && database.executeUpdate("DROP TABLE \(table)_tmp")
         
         return result
     }
