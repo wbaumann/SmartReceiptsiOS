@@ -46,7 +46,7 @@ final class EditReceiptView: UserInterface {
         formView.needFirstResponder = displayData.needFirstResponder
         addChild(formView)
         view.addSubview(formView.view)
-        
+
         configureUIActions()
         configureSubscribers()
         configureTooltip()
@@ -104,22 +104,24 @@ final class EditReceiptView: UserInterface {
     }
     
     private func configureTooltip() {
-        if let text = presenter.tooltipText() {
-            var screenWidth = false
-            executeFor(iPhone: { screenWidth = true }, iPad: { screenWidth = false })
-            tooltip = TooltipView.showOn(view: view, text: text, offset: CGPoint.zero, screenWidth: screenWidth)
-            formView.tableView.contentInset = UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0)
-            
-            tooltip?.rx.tap
-                .do(onNext: onTooltipClose)
-                .bind(to: presenter.tooltipTap)
-                .disposed(by: bag)
-            
-            tooltip?.rx.close
-                .do(onNext: onTooltipClose)
-                .bind(to: presenter.tooltipClose)
-                .disposed(by: bag)
-        }
+        guard let text = presenter.tooltipText() else { return }
+        var screenWidth = false
+        executeFor(iPhone: { screenWidth = true }, iPad: { screenWidth = false })
+        tooltip = TooltipView.showOn(view: view, text: text, offset: CGPoint.zero, screenWidth: screenWidth)
+        formView.tableView.contentInset = UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0)
+        
+        tooltip?.rx.tap
+            .do(onNext: { [weak self] in
+                self?.onTooltipClose()
+            }).bind(to: presenter.tooltipTap)
+            .disposed(by: bag)
+
+        tooltip?.rx.close
+            .do(onNext: { [weak self] in
+                self?.onTooltipClose()
+            }).bind(to: presenter.tooltipClose)
+            .disposed(by: bag)
+        
     }
     
     private func onTooltipClose() {
@@ -130,8 +132,9 @@ final class EditReceiptView: UserInterface {
     
     override var previewActionItems: [UIPreviewActionItem] {
         let removeActionTitle = LocalizedString("receipt_dialog_action_delete")
-        let remove = UIPreviewAction(title: removeActionTitle, style: .destructive) { _, _ in
-            self.previewRemoveAction.onNext(self.displayData.receipt!)
+        let remove = UIPreviewAction(title: removeActionTitle, style: .destructive) { [weak self] _, _ in
+            guard let receipt = self?.displayData.receipt else { return }
+            self?.previewRemoveAction.onNext(receipt)
         }
         
         if let receipt = displayData.receipt, receipt.attachemntType != .none {
@@ -139,8 +142,8 @@ final class EditReceiptView: UserInterface {
                 String(format: LocalizedString("receipt_dialog_action_view"), LocalizedString("image")) :
                 String(format: LocalizedString("receipt_dialog_action_view"), LocalizedString("pdf"))
             
-            let viewAttachment = UIPreviewAction(title: viewActionTitle, style: .default) { _, _ in
-                self.previewShowAttachmentAction.onNext(receipt)
+            let viewAttachment = UIPreviewAction(title: viewActionTitle, style: .default) { [weak self]  _, _ in
+                self?.previewShowAttachmentAction.onNext(receipt)
             }
             
             return [viewAttachment, remove]
@@ -196,3 +199,4 @@ private extension EditReceiptView {
         return _displayData as! EditReceiptDisplayData
     }
 }
+
