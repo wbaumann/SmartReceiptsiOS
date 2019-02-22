@@ -89,10 +89,10 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         
         form
         +++ Section()
-        <<< PredectiveTextRow(NAME_ROW_TAG) { row in
+        <<< PredectiveTextRow(NAME_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_NAME")
             row.placeholder = LocalizedString("DIALOG_RECEIPTMENU_HINT_NAME")
-            row.value = receipt.name
+            row.value = self.receipt.name
         }.onChange({ [unowned self] row in
             self.receipt.name = row.value ?? ""
         }).cellSetup({ [unowned self] cell, _ in
@@ -105,11 +105,10 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             }
         })
     
-        <<< DecimalRow(PRICE_ROW_TAG) { row in
+        <<< DecimalRow(PRICE_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_PRICE_SHORT")
             row.placeholder = LocalizedString("DIALOG_RECEIPTMENU_HINT_PRICE_SHORT")
-            row.value = receipt.price().amount.doubleValue != 0 ?
-                receipt.price().amount.doubleValue : nil
+            row.value = self.receipt.price().amount.doubleValue != 0 ? self.receipt.price().amount.doubleValue : nil
         }.onChange({ [unowned self] row in
             if let dec = row.value {
                 let amount = NSDecimalNumber(value: dec)
@@ -130,12 +129,11 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             row.placeholder = LocalizedString("DIALOG_RECEIPTMENU_HINT_TAX")
             row.value = self.isNewReceipt && !self.hasScan ? nil : self.receipt.taxAmount?.doubleValue
             
-            if let calculator = self.taxCalculator {
-                calculator.taxSubject.subscribe(onNext: {
-                    row.value = Double(string: $0)
-                    row.updateCell()
-                }).disposed(by: self.bag)
-            }
+            self.taxCalculator?.taxSubject.subscribe(onNext: {
+                row.value = Double(string: $0)
+                row.updateCell()
+            }).disposed(by: self.bag)
+            
         }.onChange({ [unowned self] row in
             self.receipt.setTax(NSDecimalNumber(value: row.value ?? 0))
         }).cellSetup({ cell, _ in
@@ -149,7 +147,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             
         <<< HorizontalPickerRow(TAX_PICKER_ROW_TAG) { row in
             row.hidden = Condition.function([], { [unowned self] _ in return self.needShowTaxPicker() })
-        }.onChange({ row in
+        }.onChange({ [unowned self] row in
             if let index = row.value {
                 let percent = self.taxPercents()[index]
                 self.setValue(cellTag: self.TAX_ROW_TAG, value: self.calculateTax(percent: percent))
@@ -157,10 +155,10 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             row.evaluateHidden()
         })
         
-        <<< PickerInlineRow<String>(CURRENCY_ROW_TAG) { row in
+        <<< PickerInlineRow<String>(CURRENCY_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_CURRENCY")
             row.options = Currency.allCurrencyCodesWithCached()
-            row.value = receipt.currency.code
+            row.value = self.receipt.currency.code
         }.onChange({ [unowned self] row in
             if let code = row.value {
                 self.receipt.setPrice(self.receipt.priceAmount, currency: code)
@@ -172,7 +170,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             cell.configureCell()
         })
             
-        <<< ExchangeRateRow(EXCHANGE_RATE_TAG) { row in
+        <<< ExchangeRateRow(EXCHANGE_RATE_TAG) { [unowned self] row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_EXCHANGE_RATE")
             row.hidden = Condition.function([CURRENCY_ROW_TAG], { [unowned self] form -> Bool in
                 if let picker = form.rowBy(tag: self.CURRENCY_ROW_TAG) as? PickerInlineRow<String> {
@@ -181,8 +179,9 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
                     return false
                 }
             })
-            row.value = receipt.exchangeRate?.doubleValue
-            row.updateTap.subscribe(onNext: { [unowned self] in self.updateExchangeRate() })
+            row.value = self.receipt.exchangeRate?.doubleValue
+            row.updateTap
+                .subscribe(onNext: { [unowned self] in self.updateExchangeRate() })
                 .disposed(by: self.bag)
         }.onChange({ [unowned self] row in
             self.receipt.exchangeRate = NSDecimalNumber(value: row.value ?? 0)
@@ -190,15 +189,15 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             cell.alertPresenter = self
         })
         
-        <<< DateInlineRow() { row in
+        <<< DateInlineRow() { [unowned self] row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_DATE")
-            row.value = receipt.date
-            row.dateFormatter?.timeZone = receipt.timeZone
+            row.value = self.receipt.date
+            row.dateFormatter?.timeZone = self.receipt.timeZone
         }.onChange({ [unowned self] row in
             self.receipt.date = row.value ?? Date()
         }).cellSetup({ cell, _ in
             cell.configureCell()
-        }).onExpandInlineRow({ _, _, datePickerRow in
+        }).onExpandInlineRow({ [unowned self] _, _, datePickerRow in
             datePickerRow.cell.datePicker.timeZone = self.receipt.timeZone
         })
         
@@ -213,10 +212,10 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             self.matchCategory(value: row.value)
         })
         
-        <<< TextRow(COMMENT_ROW_TAG) { row in
+        <<< TextRow(COMMENT_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_COMMENT")
             row.placeholder = LocalizedString("DIALOG_RECEIPTMENU_HINT_COMMENT")
-            row.value = receipt.comment
+            row.value = self.receipt.comment
         }.onChange({ [unowned self] row in
             self.receipt.comment = row.value ?? ""
         }).cellSetup({ cell, _ in
@@ -226,7 +225,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         <<< InlinePickerButtonRow(PAYMENT_METHODS_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("payment_method")
             row.options = Database.sharedInstance().allPaymentMethodsAsStrings()
-            row.value = receipt.paymentMethod.method
+            row.value = self.receipt.paymentMethod.method
             row.hidden = Condition.init(booleanLiteral: !WBPreferences.usePaymentMethods())
             row.buttonTitle = LocalizedString("manage_payment_methods").uppercased()
             self.managePaymentMethodsTap = row.buttonTap
@@ -236,9 +235,9 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             }
         })
             
-        <<< CheckRow() { row in
+        <<< CheckRow() { [unowned self] row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_EXPENSABLE")
-            row.value = receipt.isReimbursable
+            row.value = self.receipt.isReimbursable
         }.onChange({ [unowned self] row in
             self.receipt.isReimbursable = row.value!
         }).cellSetup({ cell, _ in
@@ -246,9 +245,9 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             cell.tintColor = AppTheme.primaryColor
         })
 
-        <<< CheckRow() { row in
+        <<< CheckRow() { [unowned self] row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_FULLPAGE")
-            row.value = receipt.isFullPage
+            row.value = self.receipt.isFullPage
         }.onChange({ [unowned self] row in
             self.receipt.isFullPage = row.value!
         }).cellSetup({ cell, _ in
@@ -352,13 +351,13 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     }
     
     private func updateExchangeRate() {
-        if let exchangeRow = form.rowBy(tag: EXCHANGE_RATE_TAG) as? ExchangeRateRow {
-            CurrencyExchangeService()
-                .exchangeRate(trip.defaultCurrency.code, target: receipt.currency.code, onDate: receipt.date)
-                .observeOn(MainScheduler.instance)
-                .bind(to: exchangeRow.responseSubject)
-                .disposed(by: bag)
-        }
+        guard let exchangeRow = form.rowBy(tag: EXCHANGE_RATE_TAG) as? ExchangeRateRow else { return }
+        CurrencyExchangeService()
+            .exchangeRate(trip.defaultCurrency.code, target: receipt.currency.code, onDate: receipt.date)
+            .observeOn(MainScheduler.instance)
+            .bind(to: exchangeRow.responseSubject)
+            .disposed(by: bag)
+        
     }
     
     fileprivate func allCategories() -> [String] {
