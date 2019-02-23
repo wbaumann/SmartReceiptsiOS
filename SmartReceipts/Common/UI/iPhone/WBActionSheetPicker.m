@@ -9,9 +9,9 @@
 #import "WBActionSheetPicker.h"
 
 @implementation WBActionSheetPicker {
+    __weak UIViewController *_viewController;
     UILabel *titleLabel;
     UIView *actionView;
-    UIViewController *_viewController;
     UIView *_rootView;
 }
 

@@ -50,9 +50,9 @@ class EditDistanceFormView: FormViewController {
         //MARK: FORM
         
         form +++ Section()
-        <<< DecimalRow(DISTANCE_ROW_TAG) { row in
+        <<< DecimalRow(DISTANCE_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("distance_distance_field")
-            row.value = changedDistance?.distance?.doubleValue
+            row.value = self.changedDistance?.distance?.doubleValue
             row.add(rule: RuleRequired())
             row.setupDecimalFormat()
         }.onChange({ [weak self] row in
@@ -62,9 +62,9 @@ class EditDistanceFormView: FormViewController {
             cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         })
         
-        <<< DecimalRow(RATE_ROW_TAG) { row in
+        <<< DecimalRow(RATE_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("distance_rate_field")
-            if changedDistance?.rate.amount.decimalValue != 0 {
+            if self.changedDistance?.rate.amount.decimalValue != 0 {
                 row.value = changedDistance?.rate.amount.doubleValue
             }
             row.add(rule: RuleRequired())
@@ -78,10 +78,10 @@ class EditDistanceFormView: FormViewController {
             cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         })
         
-        <<< PickerInlineRow<String>() { row in
+        <<< PickerInlineRow<String>() { [unowned self] row in
             row.title = LocalizedString("dialog_currency_field")
             row.options = Currency.allCurrencyCodesWithCached()
-            row.value = changedDistance?.rate.currency.code
+            row.value = self.changedDistance?.rate.currency.code
         }.onChange({ [weak self] row in
             let amount = self?.changedDistance?.rate?.amount ?? NSDecimalNumber(value: 0)
             let currency = row.value ?? WBPreferences.defaultCurrency()!
@@ -91,32 +91,32 @@ class EditDistanceFormView: FormViewController {
             cell.makeHighlitedValue()
         })
         
-        <<< TextRow() { row in
+        <<< TextRow() { [unowned self] row in
             row.title = LocalizedString("distance_location_field")
-            row.value = changedDistance?.location
+            row.value = self.changedDistance?.location
         }.onChange({ [weak self] row in
             self?.changedDistance?.location = row.value ?? ""
         }).cellSetup({ cell, _ in
             cell.makeBoldTitle()
         })
     
-        <<< DateInlineRow() { [] row in
+        <<< DateInlineRow() { [unowned self] row in
             row.title = LocalizedString("distance_date_field")
-            row.value = changedDistance?.date
-            row.dateFormatter?.timeZone = changedDistance?.timeZone
+            row.value = self.changedDistance?.date
+            row.dateFormatter?.timeZone = self.changedDistance?.timeZone
         }.onChange({ [weak self] row in
             self?.changedDistance?.date = row.value
             ReceiptsView.sharedInputCache[SREditDistanceDateCacheKey] = row.value
         }).cellSetup({ cell, _ in
             cell.makeBoldTitle()
             cell.makeHighlitedValue()
-        }).onExpandInlineRow({ _, _, datePickerRow in
+        }).onExpandInlineRow({ [unowned self] _, _, datePickerRow in
             datePickerRow.cell.datePicker.timeZone = self.changedDistance?.timeZone
         })
     
-        <<< TextRow() { row in
+        <<< TextRow() { [unowned self] row in
             row.title = LocalizedString("distance_comment_field")
-            row.value = changedDistance?.comment
+            row.value = self.changedDistance?.comment
         }.onChange({ [weak self] row in
             self?.changedDistance?.comment = row.value
         }).cellSetup({ cell, _ in
