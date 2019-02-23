@@ -8,28 +8,34 @@
 
 import RxSwift
 
-fileprivate let SMR_TYPE = "wb.smartreceipts.smr"
+private let SMR_TYPE = "wb.smartreceipts.smr"
+private let ALLOWED_TYPES = [SMR_TYPE]
 
 class BackupFilePicker: NSObject {
     static let sharedInstance = BackupFilePicker()
-    fileprivate var filesViewController: UIViewController!
-    fileprivate let urlSubject = PublishSubject<URL>()
+    private var filesViewController: UIViewController!
+    fileprivate var urlSubject: PublishSubject<URL>?
     
     private override init() {}
-    
-    private let allowedTypes = [SMR_TYPE]
-    
+
     func openFilePicker(on viewController: UIViewController) -> Observable<URL> {
+        self.urlSubject = .init()
+        
         if #available(iOS 11.0, *) {
-            let fvc = FilesViewController(forOpeningFilesWithContentTypes: allowedTypes)
-            fvc.delegate = self
-            filesViewController = fvc
-            viewController.present(fvc, animated: true, completion: nil)
+            if filesViewController == nil {
+                let fvc = FilesViewController(forOpeningFilesWithContentTypes: ALLOWED_TYPES)
+                fvc.delegate = self
+                filesViewController = fvc
+            }
+            viewController.present(filesViewController, animated: true, completion: nil)
+        } else {
+            Logger.error("BackupFilePicker not available on iOS < 11.0")
         }
-        return urlSubject.asObservable()
+        
+        return urlSubject!.asObservable()
     }
     
-    fileprivate func close(completion: VoidBlock? = nil) {
+    private func close(completion: VoidBlock? = nil) {
         filesViewController.dismiss(animated: true, completion: completion)
     }
 }
@@ -37,24 +43,20 @@ class BackupFilePicker: NSObject {
 extension BackupFilePicker: UIDocumentBrowserViewControllerDelegate {
     @available(iOS 11.0, *)
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL]) {
-        if let url = documentURLs.first {
-            close(completion: {
-                BackupDocument(fileURL: url).open()
-            })
-        }
+        guard let url = documentURLs.first else { return }
+        close { BackupDocument(fileURL: url).open() }
     }
 }
 
 
 fileprivate class BackupDocument: UIDocument {
-
     static let SMR_TEMP_NAME = "smr_temp.smr"
     static var smrTempURL: URL { return NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(SMR_TEMP_NAME)! }
 
     override func load(fromContents contents: Any, ofType typeName: String?) throws {
-        guard let data = contents as? Data else { return }
+        guard let data = contents as? Data, let subject = BackupFilePicker.sharedInstance.urlSubject else { return }
         try? data.write(to: BackupDocument.smrTempURL)
-        BackupFilePicker.sharedInstance.urlSubject.onNext(BackupDocument.smrTempURL)
+        subject.onNext(BackupDocument.smrTempURL)
     }
 }
 
