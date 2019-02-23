@@ -9,9 +9,9 @@
 #import "WBPopoverPicker.h"
 
 @implementation WBPopoverPicker {
+    __weak UIViewController *rootViewController;
     UIViewController *viewController;
     UILabel *titleLabel;
-    __weak UIViewController *rootViewController;
 }
 
 - (id)initAsDatePicker:(BOOL) asDatePicker withController:(UIViewController*) vc {

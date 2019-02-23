@@ -19,8 +19,7 @@
 
 @implementation WBDynamicPicker
 
-- (id)initWithType:(WBDynamicPickerType)type withController:(UIViewController*) vc
-{
+- (id)initWithType:(WBDynamicPickerType)type withController:(UIViewController*) vc {
     self = [super init];
     if (self) {
         if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ){
