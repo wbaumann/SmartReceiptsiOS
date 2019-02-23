@@ -101,7 +101,7 @@ class SettingsFormView: FormViewController {
         }.onChange({ row in
             WBPreferences.setPDFFooterString(row.value ?? "")
         }).cellUpdate({ cell, row in
-            cell.textField.font = UIFont.systemFont(ofSize: 14)
+            cell.textField.font = .systemFont(ofSize: 14)
         }).onCellSelection({ [unowned self] _, row in
             if !row.isEnabled {
                 self.alertSubject.onNext((title: LocalizedString("pref_pro_header"),
@@ -366,8 +366,7 @@ class SettingsFormView: FormViewController {
             subtitle: LocalizedString("pref_receipt_customize_categories_summary"), route: .categories)
         
         +++ Section(LocalizedString("pref_output_custom_csv_title"))
-        <<< openModuleButton(LocalizedString("pref_output_custom_csv_title"),
-            route: .columns(isCSV: true))
+        <<< openModuleButton(LocalizedString("pref_output_custom_csv_title"), route: .columns(isCSV: true))
     
         +++ Section(LocalizedString("pref_output_custom_pdf_title"))
         <<< DescribedSwitchRow() { row in
@@ -590,7 +589,7 @@ extension SettingsFormView {
             row.value = value
             row.cell.textField.placeholder = placeholder
         }.cellUpdate({ cell, row in
-            cell.textField.font = UIFont.systemFont(ofSize: 14)
+            cell.textField.font = .systemFont(ofSize: 14)
         })
     }
     
@@ -612,7 +611,7 @@ extension SettingsFormView {
             cell.textLabel?.textAlignment = .left
             cell.accessoryType = .disclosureIndicator
             cell.editingAccessoryType = cell.accessoryType
-            cell.textLabel?.textColor = UIColor.black
+            cell.textLabel?.textColor = .black
         }).onCellSelection({ [unowned self] _,_  in
             self.openModuleSubject.onNext(route)
         })
@@ -626,7 +625,7 @@ extension SettingsFormView {
                 cell.textLabel?.textAlignment = .left
                 cell.accessoryType = .disclosureIndicator
                 cell.editingAccessoryType = cell.accessoryType
-                cell.textLabel?.textColor = UIColor.black
+                cell.textLabel?.textColor = .black
             }).onCellSelection({ _,_  in
                 onTap?()
             })
@@ -648,7 +647,7 @@ extension SettingsFormView {
             row.options = options
             row.value = value
         }.cellUpdate({ cell, row in
-            cell.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+            cell.titleLabel?.font = .systemFont(ofSize: 12)
         })
     }
     

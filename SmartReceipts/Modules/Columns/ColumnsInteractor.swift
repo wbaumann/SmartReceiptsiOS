@@ -11,8 +11,6 @@ import Viperit
 import RxSwift
 
 class ColumnsInteractor: Interactor {
-    
-    
     func columns(forCSV: Bool) -> Observable<[Column]> {
         let columns = forCSV ? Database.sharedInstance().allCSVColumns() : Database.sharedInstance().allPDFColumns()
         for (idx, column) in columns!.enumerated() {
@@ -38,8 +36,9 @@ class ColumnsInteractor: Interactor {
     
     func reorder(columnLeft: Column, columnRight: Column, isCSV: Bool) {
         let db = Database.sharedInstance()!
-        let result = isCSV ? db.reorderCSVColumn(columnLeft, withCSVColumn: columnRight) :
-                             db.reorderPDFColumn(columnLeft, withPDFColumn: columnRight)
+        let result = isCSV
+            ? db.reorderCSVColumn(columnLeft, withCSVColumn: columnRight)
+            : db.reorderPDFColumn(columnLeft, withPDFColumn: columnRight)
         Logger.info("Reorder columns. Result: \(result)")
     }
     

@@ -26,7 +26,7 @@ final class CategoriesView: FetchedTableViewController {
         
         title = LocalizedString("menu_main_categories")
         
-        addItem.rx.tap.subscribe(onNext: {
+        addItem.rx.tap.subscribe(onNext: { [unowned self] in
             _ = self.showEditCategory().bind(to: self.presenter.categoryAction)
         }).disposed(by: bag)
         
@@ -72,8 +72,7 @@ final class CategoriesView: FetchedTableViewController {
         return Observable<CategoryAction>.create({ [unowned self] observer -> Disposable in
             
             let isEdit = category != nil
-            let title = isEdit ? LocalizedString("dialog_category_edit") :
-                                 LocalizedString("dialog_category_add")
+            let title = isEdit ? LocalizedString("dialog_category_edit") : LocalizedString("dialog_category_add")
             
             
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
@@ -87,21 +86,19 @@ final class CategoriesView: FetchedTableViewController {
                 textField.text = category?.code
             }
             
-            let saveTitle = isEdit ? LocalizedString("update") :
-                                     LocalizedString("add")
+            let saveTitle = isEdit ? LocalizedString("update") : LocalizedString("add")
             alert.addAction(UIAlertAction(title: saveTitle, style: .default, handler: { [unowned self] _ in
                 let forSave = category ?? WBCategory()
                 let name = alert.textFields!.first!.text
-                if self.validate(name: name) {
-                    forSave.name = name
-                    forSave.code = alert.textFields!.last!.text
-                    forSave.customOrderId = isEdit ? forSave.customOrderId : 0
-                    observer.onNext((category: forSave, update: isEdit))
-                }
+                
+                guard self.validate(name: name) else { return }
+                forSave.name = name
+                forSave.code = alert.textFields!.last!.text
+                forSave.customOrderId = isEdit ? forSave.customOrderId : 0
+                observer.onNext((category: forSave, update: isEdit))
             }))
             
-            alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"),
-                                          style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .default, handler: nil))
             
             self.present(alert, animated: true, completion: nil)
             return Disposables.create()

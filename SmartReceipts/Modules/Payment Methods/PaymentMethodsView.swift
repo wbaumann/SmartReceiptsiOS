@@ -26,9 +26,10 @@ final class PaymentMethodsView: FetchedTableViewController {
         
         title = LocalizedString("payment_methods")
         
-        addItem.rx.tap.subscribe(onNext: {
-            _ = self.showEditPaymentMethod().bind(to: self.presenter.paymentMethodAction)
-        }).disposed(by: bag)
+        addItem.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                _ = self.showEditPaymentMethod().bind(to: self.presenter.paymentMethodAction)
+            }).disposed(by: bag)
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
@@ -46,25 +47,22 @@ final class PaymentMethodsView: FetchedTableViewController {
     
     override func tappedObject(_ tapped: Any, indexPath: IndexPath) {
         let method = tapped as! PaymentMethod
-        showEditPaymentMethod(method).bind(to: presenter.paymentMethodAction).disposed(by: bag)
+        showEditPaymentMethod(method)
+            .bind(to: presenter.paymentMethodAction)
+            .disposed(by: bag)
     }
     
     func showEditPaymentMethod(_ method: PaymentMethod? = nil) -> Observable<PaymentMethodAction> {
         return Observable<PaymentMethodAction>.create({ [unowned self] observer -> Disposable in
-
             let isEdit = method != nil
-            let title = isEdit ? LocalizedString("payment_method_edit") :
-                                 LocalizedString("payment_method_add")
-            
-        
+            let title = isEdit ? LocalizedString("payment_method_edit") : LocalizedString("payment_method_add")
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
             alert.addTextField { textField in
                 textField.placeholder = LocalizedString("payment_method")
                 textField.text = method?.method
             }
         
-            let saveTitle = isEdit ? LocalizedString("update") :
-                                     LocalizedString("add")
+            let saveTitle = isEdit ? LocalizedString("update") : LocalizedString("add")
             alert.addAction(UIAlertAction(title: saveTitle, style: .default, handler: { [unowned self] _ in
                 let pm = method ?? PaymentMethod()
                 let method = alert.textFields!.first!.text
@@ -74,8 +72,7 @@ final class PaymentMethodsView: FetchedTableViewController {
                 }
             }))
                 
-            alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"),
-                                          style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .default, handler: nil))
             
             self.present(alert, animated: true, completion: nil)
             return Disposables.create()

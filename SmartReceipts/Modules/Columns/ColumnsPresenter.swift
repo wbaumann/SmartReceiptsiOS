@@ -21,23 +21,25 @@ class ColumnsPresenter: Presenter {
         isCSV = data as! Bool
         updateData()
         
-        view.setNavTitle(isCSV ? LocalizedString("pref_output_custom_csv_title") :
-                                 LocalizedString("pref_output_custom_pdf_title"))
+        view.setNavTitle(isCSV ? LocalizedString("pref_output_custom_csv_title") : LocalizedString("pref_output_custom_pdf_title"))
     }
     
     override func viewHasLoaded() {
-        reorderSubject.subscribe(onNext: { [unowned self] left, right in
-            self.interactor.reorder(columnLeft: left, columnRight: right, isCSV: self.isCSV)
-            self.updateData()
-        }).disposed(by: bag)
+        reorderSubject
+            .subscribe(onNext: { [unowned self] left, right in
+                self.interactor.reorder(columnLeft: left, columnRight: right, isCSV: self.isCSV)
+                self.updateData()
+            }).disposed(by: bag)
         
-        addSubject.subscribe(onNext: { [unowned self] column in
-            self.interactor.addColumn(column ,isCSV: self.isCSV)
-        }).disposed(by: bag)
+        addSubject
+            .subscribe(onNext: { [unowned self] column in
+                self.interactor.addColumn(column ,isCSV: self.isCSV)
+            }).disposed(by: bag)
         
-        removeSubject.subscribe(onNext: { [unowned self] column in
-            self.interactor.removeColumn(column ,isCSV: self.isCSV)
-        }).disposed(by: bag)
+        removeSubject
+            .subscribe(onNext: { [unowned self] column in
+                self.interactor.removeColumn(column ,isCSV: self.isCSV)
+            }).disposed(by: bag)
     }
     
     func nextObjectID() -> Int {
@@ -46,7 +48,10 @@ class ColumnsPresenter: Presenter {
     }
     
     func updateData() {
-        interactor.columns(forCSV: isCSV).bind(to: view.columnsVar).dispose()
+        interactor
+            .columns(forCSV: isCSV)
+            .bind(to: view.columnsVar)
+            .dispose()
     }
 }
 
