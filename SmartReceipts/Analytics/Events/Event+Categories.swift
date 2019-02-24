@@ -127,6 +127,7 @@ public extension Event {
         static let ClickedBackupReminderTip = Event(category: Category.Informational, name: "ClickedBackupReminderTip")
         static let StartDatabaseUpgrade = Event(category: Category.Informational, name: "StartDatabaseUpgrade")
         static let FinishDatabaseUpgrade = Event(category: Category.Informational, name: "FinishDatabaseUpgrade")
+        static let FailedDatabaseMigration = Event(category: Category.Informational, name: "FailedDatabaseMigration")
     }
     
     struct OCR {
@@ -219,11 +220,17 @@ public extension Event {
     }
     
     class func finishDatabaseUpgrade(_ version: UInt, success: Bool) -> Event {
-        let event = Event.Informational.StartDatabaseUpgrade
+        let event = Event.Informational.FinishDatabaseUpgrade
         event.dataPoints = [
             DataPoint(name: VERSION, value: version),
             DataPoint(name: SUCCESS, value: success)
         ]
+        return event
+    }
+    
+    class func failedDatabaseMigration(_ version: UInt) -> Event {
+        let event = Event.Informational.FailedDatabaseMigration
+        event.dataPoints = [ DataPoint(name: VERSION, value: version) ]
         return event
     }
 }
