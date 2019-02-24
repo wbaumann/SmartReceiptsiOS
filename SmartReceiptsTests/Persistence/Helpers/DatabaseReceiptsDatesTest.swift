@@ -11,6 +11,9 @@ import XCTest
 
 class DatabaseReceiptsDatesTest: SmartReceiptsTestsBase {
     
+    // Defines the accuracy buffer for these tests to avoid failures related to slower build times
+    let accuracyBuffer = TimeInterval(10)
+    
     var testTrip: WBTrip!
 
     override func setUp() {
@@ -31,13 +34,13 @@ class DatabaseReceiptsDatesTest: SmartReceiptsTestsBase {
     func testMaxSecondsYesterday() {
         let date = NSDate()
         let maxSeconds = db.maxSecondForReceipts(in: testTrip, on: date.addingDays(-1))
-        XCTAssertEqual(date.secondsOfDay(), maxSeconds, accuracy: 1)
+        XCTAssertEqual(date.secondsOfDay(), maxSeconds, accuracy: accuracyBuffer)
     }
     
     func testMaxSecondsToday() {
         let date = NSDate()
         let maxSeconds = db.maxSecondForReceipts(in: testTrip, on: date as Date)
-        XCTAssertEqual(date.secondsOfDay(), maxSeconds, accuracy: 1)
+        XCTAssertEqual(date.secondsOfDay(), maxSeconds, accuracy: accuracyBuffer)
     }
 
 }
