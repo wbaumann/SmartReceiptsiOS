@@ -60,6 +60,7 @@
         LOGGER_INFO(@"Migrate to version %tu", migration.version);
         if (![migration migrate:database]) {
             LOGGER_ERROR(@"Failed on migration %tu", migration.version);
+            [[AnalyticsManager sharedManager] recordWithEvent:[Event failedDatabaseMigration:migration.version]];
             return NO;
         }
 

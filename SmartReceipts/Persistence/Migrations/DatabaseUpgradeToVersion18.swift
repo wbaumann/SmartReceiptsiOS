@@ -34,6 +34,8 @@ class DatabaseUpgradeToVersion18: DatabaseMigration {
     
     private func updateColumnTable(table: String, columns: [ReceiptColumn], _ database: Database) -> Bool {
         var result = true
+
+        // Using `true` instead result of call this update to avoid duplicate colunmn crash after bug with unsafe unwrap `columnName`
         database.executeUpdate("ALTER TABLE \(table) ADD COLUMN \(COLUMN_TYPE) INTEGER DEFAULT 0")
         
         for column in columns {
