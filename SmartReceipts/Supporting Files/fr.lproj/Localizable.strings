@@ -32,6 +32,8 @@
 "camera_permission_alert_button" = "Préférences ouvertes";
 
 "pref_pro_pdf_footer_ios_defaultValue" = "Rapport généré en utilisant Recettes Intelligentes pour iOS";
+"migration_failed_alert_message" = "Echec de la mise à niveau de votre application. Nous avons besoin de données supplémentaires pour corriger cette erreur.";
+"migration_failed_alert_send_button" = "Envoyer un rapport d'erreur";
 
 /** Android System Strings (ok, untitled, error_message_title) **/
 "generic_button_title_ok" = "OK";

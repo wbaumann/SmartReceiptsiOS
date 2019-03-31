@@ -33,15 +33,15 @@
     return [self executeUpdate:[components componentsJoinedByString:@""]];
 }
 
-- (NSUInteger)databaseVersion {
-    __block NSUInteger version = 0;
+- (NSInteger)databaseVersion {
+    __block NSInteger version = 0;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        version = (NSUInteger) [db intForQuery:@"PRAGMA user_version"];
+        version = (NSInteger) [db intForQuery:@"PRAGMA user_version"];
     }];
     return version;
 }
 
-- (void)setDatabaseVersion:(NSUInteger)version {
+- (void)setDatabaseVersion:(NSInteger)version {
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
         [db executeUpdate:[NSString stringWithFormat:@"PRAGMA user_version = %tu", version]];
     }];

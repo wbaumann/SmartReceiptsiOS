@@ -45,4 +45,8 @@ extension FMDatabase {
         
         return results
     }
+    
+    func executeUpdate(_ sql: String) -> Bool {
+        return executeUpdate(sql, withParameterDictionary: [:])
+    }
 }

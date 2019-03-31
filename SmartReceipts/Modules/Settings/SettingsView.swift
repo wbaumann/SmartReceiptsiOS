@@ -20,11 +20,12 @@ protocol SettingsViewInterface {
 
 //MARK: SettingsView Class
 final class SettingsView: UserInterface {
-    
+
     @IBOutlet fileprivate weak var doneButtonItem: UIBarButtonItem!
     
     private var formView: SettingsFormView!
     private let bag = DisposeBag()
+    private lazy var feedbackComposer = FeedbackComposer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,10 @@ final class SettingsView: UserInterface {
     func subscriptionValidation() -> Observable<SubscriptionValidation> {
         return presenter.subscriptionValidation()
     }
+    
+    func sendFeedback(subject: String) {
+        feedbackComposer.present(on: self, subject: subject)
+    }
 }
 
 //MARK: - Public interface
@@ -67,54 +72,6 @@ extension SettingsView: SettingsViewInterface {
     
     func setupShowSettingsOption(_ option: ShowSettingsOption?) {
         displayData.showSettingsOption = option
-    }
-}
-
-//MARK: Email Composer
-extension SettingsView: MFMailComposeViewControllerDelegate {
-    
-    func sendFeedback(subject: String) {
-        if !MFMailComposeViewController.canSendMail() {
-            Logger.warning("Mail services are not available.")
-            presenter.alertSubject
-                .onNext((title: LocalizedString("generic_error_alert_title"),
-                       message: LocalizedString("error_email_not_configured_message")))
-            return
-        }
-        
-        // Configure the fields of the interface.
-        var messageBody = ""
-        // attach device info metadata
-        messageBody += "\n\n\nDebug info:\n"
-        messageBody += UIApplication.shared.appVersionInfoString()
-        messageBody += "Plus: \(PurchaseService.hasValidSubscriptionValue ? "true" : "false")\n"
-        messageBody += "\(UIDevice.current.deviceInfoString()!)\n"
-        messageBody += "Locale: \(Locale.current.identifier)"
-        
-        let composeVC = MFMailComposeViewController()
-        
-        // Attach log files
-        Logger.logFiles()
-            .map { ($0.fileName, try? Data(contentsOf: URL(fileURLWithPath: $0.filePath))) }
-            .filter { $1 != nil }
-            .forEach { composeVC.addAttachmentData($1!, mimeType: "text/plain", fileName: $0) }
-        
-        composeVC.mailComposeDelegate = self
-        composeVC.setToRecipients([FeedbackEmailAddress])
-        composeVC.setSubject(subject)
-        composeVC.setMessageBody(messageBody, isHTML: false)
-        composeVC.navigationBar.tintColor = .white
-        
-        present(composeVC, animated: true)
-    }
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        if result == .failed {
-            Logger.warning("MFMailComposeResultFailed: \(error!.localizedDescription)")
-            presenter.alertSubject.onNext((title: LocalizedString("generic_error_alert_title"),
-                                         message: error!.localizedDescription))
-        }
-        dismiss(animated: true, completion: nil)
     }
 }
 

@@ -10,9 +10,10 @@ import XCTest
 import FMDB
 @testable import SmartReceipts
 
-class BaseDatabaseUpgradeTests: XCTestCase {
+class BaseDatabaseUpgradeTests: SmartReceiptsTestsBase {
     
     var testDatabase: Database!
+    let databaseMigrator = DatabaseMigrator()
     
     override func setUp() {
         super.setUp()
@@ -20,7 +21,7 @@ class BaseDatabaseUpgradeTests: XCTestCase {
         testDatabase = createInMemoryDatabase(false)
         testDatabase.setNotificationsDisabled(true)
 
-        DatabaseMigration.run(migrations(), on: testDatabase)
+        databaseMigrator.run(migrations: migrations(), database: testDatabase)
     }
     
     func migrations() -> [DatabaseMigration] {

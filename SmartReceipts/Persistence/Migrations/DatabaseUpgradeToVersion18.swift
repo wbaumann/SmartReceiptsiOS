@@ -14,12 +14,12 @@ fileprivate let DEPRECATED_COLUMN_TYPE_AS_NAME = "type"
 
 class DatabaseUpgradeToVersion18: DatabaseMigration {
     
-    override func version() -> UInt {
+    var version: Int {
         return 18
     }
     
-    override func migrate(_ database: Database) -> Bool {
-        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version()))
+    func migrate(_ database: Database) -> Bool {
+        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version))
         
         let pdfColumns = fetchColumns(table: PDFColumnTable.Name, database: database)
         let csvColumns = fetchColumns(table: CSVColumnTable.Name, database: database)
@@ -27,7 +27,7 @@ class DatabaseUpgradeToVersion18: DatabaseMigration {
         let result = updateColumnTable(table: PDFColumnTable.Name, columns: pdfColumns, database)
                   && updateColumnTable(table: CSVColumnTable.Name, columns: csvColumns, database)
         
-        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version(), success: result))
+        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version, success: result))
         
         return result
     }

@@ -213,13 +213,13 @@ public extension Event {
     private static let VERSION = "version"
     private static let SUCCESS = "success"
     
-    class func startDatabaseUpgrade(_ version: UInt) -> Event {
+    class func startDatabaseUpgrade(_ version: Int) -> Event {
         let event = Event.Informational.StartDatabaseUpgrade
         event.dataPoints = [DataPoint(name: VERSION, value: version)]
         return event
     }
     
-    class func finishDatabaseUpgrade(_ version: UInt, success: Bool) -> Event {
+    class func finishDatabaseUpgrade(_ version: Int, success: Bool) -> Event {
         let event = Event.Informational.FinishDatabaseUpgrade
         event.dataPoints = [
             DataPoint(name: VERSION, value: version),

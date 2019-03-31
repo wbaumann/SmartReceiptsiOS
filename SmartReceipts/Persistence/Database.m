@@ -9,10 +9,10 @@
 #import <FMDB/FMDatabaseQueue.h>
 #import "Database.h"
 #import "Constants.h"
-#import "DatabaseMigration.h"
 #import "ReceiptFilesManager.h"
 #import "WBPreferences.h"
 #import "Database+Trips.h"
+#import <SmartReceipts-Swift.h>
 
 NSString *const DatabaseDidInsertModelNotification = @"DatabaseDidInsertModelNotification";
 NSString *const DatabaseDidDeleteModelNotification = @"DatabaseDidDeleteModelNotification";
@@ -24,6 +24,8 @@ NSString *const DatabaseDidReorderModelsNotification = @"DatabaseDidReorderModel
 
 @property (nonatomic, strong) FMDatabaseQueue *databaseQueue;
 @property (nonatomic, strong) ReceiptFilesManager *filesManager;
+@property (nonatomic, strong) DatabaseMigrator *databaseMigrator;
+
 @property (nonatomic, assign) BOOL disableFilesManager;
 @property (nonatomic, assign) BOOL disableNotifications;
 
@@ -63,6 +65,7 @@ NSString *const DatabaseDidReorderModelsNotification = @"DatabaseDidReorderModel
     if (self) {
         _pathToDatabase = path;
         _filesManager = [[ReceiptFilesManager alloc] initWithTripsFolder:tripsFolderPath];
+        _databaseMigrator = [DatabaseMigrator new];
 
         [self markKnownValues];
 
@@ -81,18 +84,18 @@ NSString *const DatabaseDidReorderModelsNotification = @"DatabaseDidReorderModel
 
 - (BOOL)open:(BOOL)migrateDatabase {
     NSLog(@"Open DB at: %@", self.pathToDatabase);
-    FMDatabaseQueue *db = [FMDatabaseQueue databaseQueueWithPath:self.pathToDatabase];
-    if (!db) {
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:self.pathToDatabase];
+    if (!queue) {
         return NO;
     }
 
-    [self setDatabaseQueue:db];
+    [self setDatabaseQueue:queue];
 
     if (!migrateDatabase) {
         return YES;
     }
 
-    return [DatabaseMigration migrateDatabase:self];
+    return [self.databaseMigrator migrateWithDatabase:self];
 }
 
 - (void)close {

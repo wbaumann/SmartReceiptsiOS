@@ -11,9 +11,7 @@ import FMDB
 
 extension Database {
     @objc func inDatabase(_ closure: @escaping (FMDatabase) -> ()) {
-        databaseQueue.inDatabase() {
-            database in
-            
+        databaseQueue.inDatabase() { database in
             closure(database)
         }
     }

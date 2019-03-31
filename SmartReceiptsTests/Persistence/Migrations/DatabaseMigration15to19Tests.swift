@@ -40,7 +40,7 @@ class DatabaseMigration15to19Tests: XCTestCase {
         databaseV15migrated.setNotificationsDisabled(true)
         databaseV19.setNotificationsDisabled(true)
         
-        let migrations = [
+        let migrations: [DatabaseMigration] = [
                 DatabaseCreateAtVersion11(),
                 DatabaseUpgradeToVersion12(),
                 DatabaseUpgradeToVersion13(),
@@ -52,7 +52,7 @@ class DatabaseMigration15to19Tests: XCTestCase {
                 DatabaseUpgradeToVersion19()
         ]
         
-        DatabaseMigration.run(migrations, on: databaseV15migrated)
+        DatabaseMigrator().run(migrations: migrations, database: databaseV15migrated)
     }
 
     override func tearDown() {

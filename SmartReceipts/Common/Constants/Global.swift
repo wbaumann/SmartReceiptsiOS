@@ -61,3 +61,7 @@ enum ReceiptAttachmentType {
     case pdf
     case none
 }
+
+func ABSTRACT_METHOD() {
+    preconditionFailure("ABSTRACT_METHOD")
+}

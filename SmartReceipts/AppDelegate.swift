@@ -43,9 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         _ = FileManager.initTripsDirectory()
         
-        if !Database.sharedInstance().open() {
-            NSException(name: NSExceptionName(rawValue: "DBOpenFail"), reason: nil, userInfo: [:]).raise()
-        }
+        guard Database.sharedInstance().open() else { return }
         
         RecentCurrenciesCache.shared.update()
         
