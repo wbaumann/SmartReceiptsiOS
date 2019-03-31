@@ -26,9 +26,9 @@ class GenerateReportModuleTest: XCTestCase {
         module.injectMock(interactor: MockGenerateReportInteractor().withEnabledSuperclassSpy())
         module.injectMock(router: MockGenerateReportRouter().withEnabledSuperclassSpy())
         
-        presenter = module.presenter as! MockGenerateReportPresenter
-        interactor = module.interactor as! MockGenerateReportInteractor
-        router = module.router as! MockGenerateReportRouter
+        presenter = module.presenter as? MockGenerateReportPresenter
+        interactor = module.interactor as? MockGenerateReportInteractor
+        router = module.router as? MockGenerateReportRouter
         
         configureStubs()
     }

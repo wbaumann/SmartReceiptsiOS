@@ -38,8 +38,8 @@ class EditReceiptModuleTest: XCTestCase {
         module.injectMock(interactor: interactor)
         module.injectMock(router: MockEditReceiptRouter().withEnabledSuperclassSpy())
         
-        presenter = module.presenter as! EditReceiptPresenter
-        router = module.router as! MockEditReceiptRouter
+        presenter = module.presenter as? EditReceiptPresenter
+        router = module.router as? MockEditReceiptRouter
         
         configureStubs()
         

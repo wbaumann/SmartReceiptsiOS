@@ -31,9 +31,9 @@ class TripsModuleTest: XCTestCase {
         module.injectMock(interactor: MockTripsInteractor().withEnabledSuperclassSpy())
         module.injectMock(router: MockTripsRouter().withEnabledSuperclassSpy())
         
-        presenter = module.presenter as! MockTripsPresenter
-        interactor = module.interactor as! MockTripsInteractor
-        router = module.router as! MockTripsRouter
+        presenter = module.presenter as? MockTripsPresenter
+        interactor = module.interactor as? MockTripsInteractor
+        router = module.router as? MockTripsRouter
         
         configureStubs()
     }

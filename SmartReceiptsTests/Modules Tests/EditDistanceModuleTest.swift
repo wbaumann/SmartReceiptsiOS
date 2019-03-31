@@ -28,9 +28,9 @@ class EditDistanceModuleTest: XCTestCase {
         module.injectMock(interactor: MockEditDistanceInteractor().withEnabledSuperclassSpy())
         module.injectMock(router: MockEditDistanceRouter().withEnabledSuperclassSpy())
         
-        presenter = module.presenter as! MockEditDistancePresenter
-        interactor = module.interactor as! MockEditDistanceInteractor
-        router = module.router as! MockEditDistanceRouter
+        presenter = module.presenter as? MockEditDistancePresenter
+        interactor = module.interactor as? MockEditDistanceInteractor
+        router = module.router as? MockEditDistanceRouter
         
         configureStubs()
     }

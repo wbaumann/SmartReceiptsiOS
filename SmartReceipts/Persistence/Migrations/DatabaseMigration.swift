@@ -40,10 +40,12 @@ class DatabaseMigrator: NSObject {
         
         if !migrationResult {
             database.close()
+            try? FileManager().removeItem(atPath: dbPath)
             _ = FileManager.forceCopy(from: copyPath, to: dbPath)
-            try? FileManager().removeItem(atPath: copyPath)
             
             processFailedMigration(databasePath: copyPath)
+        } else {
+            processSuccessMigration()
         }
         
         try? FileManager().removeItem(atPath: copyPath)

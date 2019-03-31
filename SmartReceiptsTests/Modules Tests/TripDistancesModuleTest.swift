@@ -26,8 +26,8 @@ class TripDistancesModuleTest: XCTestCase {
         module.injectMock(presenter: MockTripDistancesPresenter().withEnabledSuperclassSpy())
         module.injectMock(interactor: MockTripDistancesInteractor().withEnabledSuperclassSpy())
         
-        presenter = module.presenter as! MockTripDistancesPresenter
-        interactor = module.interactor as! MockTripDistancesInteractor
+        presenter = module.presenter as? MockTripDistancesPresenter
+        interactor = module.interactor as? MockTripDistancesInteractor
         
         configureStubs()
     }

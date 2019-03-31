@@ -1,5 +1,5 @@
 //
-//  DatabaseMigrationFailed.swift
+//  DatabaseMigration+Result.swift
 //  SmartReceipts
 //
 //  Created by Bogdan Evsenev on 30/03/2019.
@@ -50,6 +50,10 @@ extension DatabaseMigrator {
         actionSheet.addAction(cancel)
         
         window.rootViewController?.present(actionSheet, animated: true)
+    }
+    
+    func processSuccessMigration() {
+        UserDefaults.standard.set(0, forKey: FAILED_MIGRATION_COUNT_KEY)
     }
     
 }

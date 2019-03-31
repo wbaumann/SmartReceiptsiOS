@@ -29,9 +29,9 @@ class ColumnsModuleTest: XCTestCase {
         module.injectMock(interactor: MockColumnsInteractor().withEnabledSuperclassSpy())
         module.injectMock(router: MockColumnsRouter().withEnabledSuperclassSpy())
         
-        presenter = module.presenter as! ColumnsPresenter
-        interactor = module.interactor as! MockColumnsInteractor
-        router = module.router as! MockColumnsRouter
+        presenter = module.presenter as? ColumnsPresenter
+        interactor = module.interactor as? MockColumnsInteractor
+        router = module.router as? MockColumnsRouter
         
         configureStubs()
     }
