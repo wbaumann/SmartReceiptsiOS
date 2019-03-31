@@ -32,9 +32,9 @@ class ReceiptActionsModuleTest: XCTestCase {
         module.injectMock(interactor: MockReceiptActionsInteractor().withEnabledSuperclassSpy())
         module.injectMock(router: MockReceiptActionsRouter().withEnabledSuperclassSpy())
         
-        presenter = module.presenter as! ReceiptActionsPresenter
-        interactor = module.interactor as! MockReceiptActionsInteractor
-        router = module.router as! MockReceiptActionsRouter
+        presenter = module.presenter as? ReceiptActionsPresenter
+        interactor = module.interactor as? MockReceiptActionsInteractor
+        router = module.router as? MockReceiptActionsRouter
         
         configureStubs()
         presenter.configureSubscribers()

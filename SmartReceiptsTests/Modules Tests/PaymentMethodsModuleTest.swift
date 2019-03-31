@@ -33,9 +33,9 @@ class PaymentMethodsModuleTest: XCTestCase {
         module.injectMock(interactor: MockPaymentMethodsInteractor().withEnabledSuperclassSpy())
         module.injectMock(router: MockPaymentMethodsRouter().withEnabledSuperclassSpy())
         
-        presenter = module.presenter as! MockPaymentMethodsPresenter
-        interactor = module.interactor as! MockPaymentMethodsInteractor
-        router = module.router as! MockPaymentMethodsRouter
+        presenter = module.presenter as? MockPaymentMethodsPresenter
+        interactor = module.interactor as? MockPaymentMethodsInteractor
+        router = module.router as? MockPaymentMethodsRouter
         
         configureStubs()
     }

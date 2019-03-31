@@ -30,9 +30,9 @@ class ReceiptMoveCopyModuleTest: XCTestCase {
         module.injectMock(interactor: MockReceiptMoveCopyInteractor().withEnabledSuperclassSpy())
         module.injectMock(router: MockReceiptMoveCopyRouter().withEnabledSuperclassSpy())
         
-        presenter = module.presenter as! MockReceiptMoveCopyPresenter
-        interactor = module.interactor as! MockReceiptMoveCopyInteractor
-        router = module.router as! MockReceiptMoveCopyRouter
+        presenter = module.presenter as? MockReceiptMoveCopyPresenter
+        interactor = module.interactor as? MockReceiptMoveCopyInteractor
+        router = module.router as? MockReceiptMoveCopyRouter
         
         configureStubs()
     }

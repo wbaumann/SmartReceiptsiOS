@@ -44,9 +44,9 @@ class AuthModuleTest: XCTestCase {
         module.injectMock(interactor: MockAuthInteractor(authService: authService).withEnabledSuperclassSpy())
         module.injectMock(router: MockAuthRouter().withEnabledSuperclassSpy())
         
-        presenter = module.presenter as! MockAuthPresenter
-        interactor = module.interactor as! MockAuthInteractor
-        router = module.router as! MockAuthRouter
+        presenter = module.presenter as? MockAuthPresenter
+        interactor = module.interactor as? MockAuthInteractor
+        router = module.router as? MockAuthRouter
         
         configureStubs()
         result = ""

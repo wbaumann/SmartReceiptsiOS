@@ -245,7 +245,7 @@
 		71871504224FDEB70061D493 /* DatabaseUpgradeToVersion13.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718714F4224FDEB60061D493 /* DatabaseUpgradeToVersion13.swift */; };
 		71871505224FDEB70061D493 /* DatabaseMigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718714F8224FDEB70061D493 /* DatabaseMigration.swift */; };
 		71871506224FDEB70061D493 /* DatabaseCreateAtVersion11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718714F9224FDEB70061D493 /* DatabaseCreateAtVersion11.swift */; };
-		7187150822500E900061D493 /* DatabaseMigrationFailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7187150722500E8F0061D493 /* DatabaseMigrationFailed.swift */; };
+		7187150822500E900061D493 /* DatabaseMigration+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7187150722500E8F0061D493 /* DatabaseMigration+Result.swift */; };
 		7187150A225022040061D493 /* FeedbackComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71871509225022040061D493 /* FeedbackComposer.swift */; };
 		7187150F225039130061D493 /* DatabaseCreateAtVersion11Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7187150C225039130061D493 /* DatabaseCreateAtVersion11Tests.swift */; };
 		71871510225039130061D493 /* DatabaseUpgrade13Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7187150D225039130061D493 /* DatabaseUpgrade13Tests.swift */; };
@@ -833,7 +833,7 @@
 		718714F4224FDEB60061D493 /* DatabaseUpgradeToVersion13.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion13.swift; sourceTree = "<group>"; };
 		718714F8224FDEB70061D493 /* DatabaseMigration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseMigration.swift; sourceTree = "<group>"; };
 		718714F9224FDEB70061D493 /* DatabaseCreateAtVersion11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseCreateAtVersion11.swift; sourceTree = "<group>"; };
-		7187150722500E8F0061D493 /* DatabaseMigrationFailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMigrationFailed.swift; sourceTree = "<group>"; };
+		7187150722500E8F0061D493 /* DatabaseMigration+Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseMigration+Result.swift"; sourceTree = "<group>"; };
 		71871509225022040061D493 /* FeedbackComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackComposer.swift; sourceTree = "<group>"; };
 		7187150C225039130061D493 /* DatabaseCreateAtVersion11Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseCreateAtVersion11Tests.swift; sourceTree = "<group>"; };
 		7187150D225039130061D493 /* DatabaseUpgrade13Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgrade13Tests.swift; sourceTree = "<group>"; };
@@ -2774,7 +2774,7 @@
 			isa = PBXGroup;
 			children = (
 				718714F8224FDEB70061D493 /* DatabaseMigration.swift */,
-				7187150722500E8F0061D493 /* DatabaseMigrationFailed.swift */,
+				7187150722500E8F0061D493 /* DatabaseMigration+Result.swift */,
 				718714F9224FDEB70061D493 /* DatabaseCreateAtVersion11.swift */,
 				718714EA224FDEB50061D493 /* DatabaseUpgradeToVersion12.swift */,
 				718714F4224FDEB60061D493 /* DatabaseUpgradeToVersion13.swift */,
@@ -3382,7 +3382,7 @@
 				71E8F3FA1FA12452005BD447 /* OCRConfigurationView.swift in Sources */,
 				5726E5431E00423900F2141C /* AnalyticsManager.swift in Sources */,
 				712BB2661F611DDE00F0380F /* Error+Extensions.swift in Sources */,
-				7187150822500E900061D493 /* DatabaseMigrationFailed.swift in Sources */,
+				7187150822500E900061D493 /* DatabaseMigration+Result.swift in Sources */,
 				71762E7A1FD4713000AC1388 /* TripImagesPDFGenerator.swift in Sources */,
 				710E587521386BAB00AAFC77 /* TooltipPresenter.swift in Sources */,
 				719B1FE11EF603190049BD71 /* ReceiptsView.swift in Sources */,

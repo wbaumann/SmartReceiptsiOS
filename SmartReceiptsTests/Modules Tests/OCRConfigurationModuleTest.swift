@@ -35,9 +35,9 @@ class OCRConfigurationModuleTest: XCTestCase {
         module.injectMock(interactor: MockOCRConfigurationInteractor(purchaseService: purchaseService).withEnabledSuperclassSpy())
         module.injectMock(router: MockOCRConfigurationRouter().withEnabledSuperclassSpy())
         
-        presenter = module.presenter as! MockOCRConfigurationPresenter
-        interactor = module.interactor as! MockOCRConfigurationInteractor
-        router = module.router as! MockOCRConfigurationRouter
+        presenter = module.presenter as? MockOCRConfigurationPresenter
+        interactor = module.interactor as? MockOCRConfigurationInteractor
+        router = module.router as? MockOCRConfigurationRouter
         
         configureStubs()
     }

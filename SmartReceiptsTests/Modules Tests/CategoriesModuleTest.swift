@@ -34,9 +34,9 @@ class CategoriesModuleTest: XCTestCase {
         module.injectMock(interactor: MockCategoriesInteractor().withEnabledSuperclassSpy())
         module.injectMock(router: MockCategoriesRouter().withEnabledSuperclassSpy())
         
-        presenter = module.presenter as! MockCategoriesPresenter
-        interactor = module.interactor as! MockCategoriesInteractor
-        router = module.router as! MockCategoriesRouter
+        presenter = module.presenter as? MockCategoriesPresenter
+        interactor = module.interactor as? MockCategoriesInteractor
+        router = module.router as? MockCategoriesRouter
         configureStubs()
     }
     
