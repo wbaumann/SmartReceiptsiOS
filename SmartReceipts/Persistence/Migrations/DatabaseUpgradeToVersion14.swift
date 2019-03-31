@@ -9,16 +9,17 @@
 import Foundation
 
 class DatabaseUpgradeToVersion14: DatabaseMigration {
-    override func version() -> UInt {
+    
+    var version: Int {
         return 14
     }
     
-    override func migrate(_ database: Database) -> Bool {
-        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version()))
+    func migrate(_ database: Database) -> Bool {
+        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version))
         
         let result = addExchangeRateToReceipts(database)
         
-        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version(), success: result))
+        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version, success: result))
         
         return result
     }

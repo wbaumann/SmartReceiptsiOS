@@ -12,12 +12,12 @@ fileprivate let PARENT_COLUMN = "parent"
 fileprivate let DEPRECATED_CATEGORY = "category"
 
 class DatabaseUpgradeToVersion16: DatabaseMigration {
-    override func version() -> UInt {
+    var version: Int {
         return 16
     }
     
-    override func migrate(_ database: Database) -> Bool {
-        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version()))
+    func migrate(_ database: Database) -> Bool {
+        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version))
         
         let result = updateCategoriesPrimaryKey(database) &&
                 addCustomOrderIdToCategories(database) &&
@@ -33,7 +33,7 @@ class DatabaseUpgradeToVersion16: DatabaseMigration {
                 addCustomOrderIdToCSVColumns(database) &&
                 updateCSVColumnsOrderId(database)
         
-        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version(), success: result))
+        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version, success: result))
         
         return result
     }

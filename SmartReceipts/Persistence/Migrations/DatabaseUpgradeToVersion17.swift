@@ -9,12 +9,12 @@
 import Foundation
 
 class DatabaseUpgradeToVersion17: DatabaseMigration {
-    override func version() -> UInt {
+    var version: Int {
         return 17
     }
     
-    override func migrate(_ database: Database) -> Bool {
-        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version()))
+    func migrate(_ database: Database) -> Bool {
+        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version))
         
         var result = false
         if database.hasPaymentMethodCustomOrderIdColumn() {
@@ -23,7 +23,7 @@ class DatabaseUpgradeToVersion17: DatabaseMigration {
             result = addCustomOrderIdPaymentMethods(database) && updatePaymentMethodsOrderId(database)
         }
         
-        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version(), success: result))
+        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version, success: result))
         
         return result
     }

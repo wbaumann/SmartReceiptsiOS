@@ -10,8 +10,12 @@ import Foundation
 
 extension Array {
     func adding(_ element: Element) -> Array {
+        return adding([element])
+    }
+    
+    func adding(_ items: [Element]) -> Array {
         var array = self
-        array.append(element)
+        items.forEach { array.append($0) }
         return array
     }
     

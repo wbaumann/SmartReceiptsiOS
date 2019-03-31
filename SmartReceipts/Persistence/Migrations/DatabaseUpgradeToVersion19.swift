@@ -15,12 +15,12 @@ fileprivate typealias TripIdNamePair = (id: Int, name: String)
 
 class DatabaseUpgradeToVersion19: DatabaseMigration {
     
-    override func version() -> UInt {
+    var version: Int {
         return 19
     }
     
-    override func migrate(_ database: Database) -> Bool {
-        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version()))
+    func migrate(_ database: Database) -> Bool {
+        AnalyticsManager.sharedManager.record(event: .startDatabaseUpgrade(version))
         AnalyticsManager.sharedManager.record(event: .distancePersistNewDistance())
         
         let result = updateTripsPrimaryKey(database: database) &&
@@ -36,7 +36,7 @@ class DatabaseUpgradeToVersion19: DatabaseMigration {
             addUUID(table: CSVColumnTable.Name, database: database) &&
             addUUID(table: PDFColumnTable.Name, database: database)
         
-        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version(), success: result))
+        AnalyticsManager.sharedManager.record(event: .finishDatabaseUpgrade(version, success: result))
         
         return result
     }

@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "SmartReceiptsTestsBase.h"
-#import "DatabaseMigration.h"
 #import "Database.h"
 #import "Database+Functions.h"
 #import "DatabaseTestsHelper.h"
+#import <SmartReceipts-Swift.h>
 
 @interface DatabaseMigrationTest : SmartReceiptsTestsBase
 
@@ -33,7 +33,7 @@
 
     DatabaseTestsHelper *database = [self createAndOpenUnmigratedDatabaseWithPath:self.testDBPath];
     XCTAssertEqual(0, database.databaseVersion);
-    BOOL migrationSuccess = [DatabaseMigration migrateDatabase:database];
+    BOOL migrationSuccess = [[DatabaseMigrator new] migrateWithDatabase:database];
     XCTAssertTrue(migrationSuccess);
 
     XCTAssertEqual(19, database.databaseVersion);
@@ -48,7 +48,7 @@
 
     DatabaseTestsHelper *database = [self createAndOpenUnmigratedDatabaseWithPath:self.testDBPath];
     XCTAssertEqual(11, database.databaseVersion);
-    BOOL migrationSuccess = [DatabaseMigration migrateDatabase:database];
+    BOOL migrationSuccess = [[DatabaseMigrator new] migrateWithDatabase:database];
     XCTAssertTrue(migrationSuccess);
 
     XCTAssertEqual(19, database.databaseVersion);

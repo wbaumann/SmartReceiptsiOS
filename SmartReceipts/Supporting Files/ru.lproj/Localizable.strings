@@ -32,6 +32,8 @@
 "camera_permission_alert_button" = "Открыть настройки";
 
 "pref_pro_pdf_footer_ios_defaultValue" = "Отчет подготовлен с помощью Smart Receipts для iOS";
+"migration_failed_alert_message" = "Помилка оновлення програми. Нам потрібно більше даних, щоб виправити помилку.";
+"migration_failed_alert_send_button" = "Відправити звіт";
 
 /** Android System Strings (ok, untitled, error_message_title) **/
 "generic_button_title_ok" = "ОК";

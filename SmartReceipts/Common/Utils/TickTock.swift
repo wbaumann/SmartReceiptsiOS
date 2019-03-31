@@ -9,8 +9,7 @@
 import Foundation
 
 class TickTock {
-    
-    private var tickTime: Date!
+    private let tickTime: Date
     
     private init() {
         tickTime = Date()

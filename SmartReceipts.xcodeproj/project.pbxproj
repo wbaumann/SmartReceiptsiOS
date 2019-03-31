@@ -37,7 +37,6 @@
 		570515A51E02EFA500BB8FE4 /* ErrorEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570515A41E02EFA500BB8FE4 /* ErrorEvent.swift */; };
 		570515A71E04AA7D00BB8FE4 /* FirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570515A61E04AA7D00BB8FE4 /* FirebaseAnalytics.swift */; };
 		5726E5431E00423900F2141C /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726E5421E00423900F2141C /* AnalyticsManager.swift */; };
-		5757D6101E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5757D60F1E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift */; };
 		5757D6131E929ECA000F65F9 /* Database+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5757D6121E929ECA000F65F9 /* Database+Sync.swift */; };
 		5757D6141E929ECA000F65F9 /* Database+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5757D6121E929ECA000F65F9 /* Database+Sync.swift */; };
 		57580D1C1DFAB58B0090C488 /* UIDevice+DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 57580D1B1DFAB58B0090C488 /* UIDevice+DeviceInfo.m */; };
@@ -124,7 +123,6 @@
 		712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */; };
 		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
 		7134DACC2106776B006BDCAA /* AppNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7134DACB2106776B006BDCAA /* AppNotificationCenter.swift */; };
-		7135E08A20C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */; };
 		7139EDDF21A4869B000C4BE6 /* PushNotificationServiceTestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156068B1FAFA99100E09760 /* PushNotificationServiceTestable.swift */; };
 		7139EDE021A4869E000C4BE6 /* ScanServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715606891FAFA53B00E09760 /* ScanServiceTests.swift */; };
 		7139EDE121A486B6000C4BE6 /* ScanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FC42811FB36257009F0B18 /* ScanTests.swift */; };
@@ -181,7 +179,6 @@
 		7159BA0C1F06FB96004EABAA /* ExchangeRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */; };
 		715B4EBD1F114A9C0021ACD8 /* PurchaseButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B4EBB1F114A9C0021ACD8 /* PurchaseButtonCell.swift */; };
 		715B4EBE1F114A9C0021ACD8 /* PurchaseButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 715B4EBC1F114A9C0021ACD8 /* PurchaseButtonCell.xib */; };
-		715DC024217513E200ED5970 /* DatabaseUpgradeToVersion19.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715DC023217513E200ED5970 /* DatabaseUpgradeToVersion19.swift */; };
 		716138B91FD1ABDA00C73FB9 /* TableContentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716138B81FD1ABDA00C73FB9 /* TableContentRow.swift */; };
 		716138BB1FD1ABE900C73FB9 /* TableHeaderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716138BA1FD1ABE900C73FB9 /* TableHeaderRow.swift */; };
 		716138BD1FD1BB4B00C73FB9 /* RenderedPDFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716138BC1FD1BB4B00C73FB9 /* RenderedPDFLabel.swift */; };
@@ -238,7 +235,21 @@
 		7185AEF91EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF31EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift */; };
 		7185AEFA1EFC1CC90038ED2A /* ReceiptMoveCopyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185AEF41EFC1CC90038ED2A /* ReceiptMoveCopyView.swift */; };
 		7186E1E121D3EFFA00182500 /* QuickActionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186E1E021D3EFFA00182500 /* QuickActionService.swift */; };
-		71874295216FCE99005FFDD2 /* DatabaseUpgradeToVersion18.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71874294216FCE98005FFDD2 /* DatabaseUpgradeToVersion18.swift */; };
+		718714FA224FDEB70061D493 /* DatabaseUpgradeToVersion12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718714EA224FDEB50061D493 /* DatabaseUpgradeToVersion12.swift */; };
+		718714FC224FDEB70061D493 /* DatabaseUpgradeToVersion16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718714EC224FDEB50061D493 /* DatabaseUpgradeToVersion16.swift */; };
+		718714FD224FDEB70061D493 /* DatabaseUpgradeToVersion19.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718714ED224FDEB50061D493 /* DatabaseUpgradeToVersion19.swift */; };
+		718714FF224FDEB70061D493 /* DatabaseUpgradeToVersion15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718714EF224FDEB60061D493 /* DatabaseUpgradeToVersion15.swift */; };
+		71871500224FDEB70061D493 /* DatabaseUpgradeToVersion18.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718714F0224FDEB60061D493 /* DatabaseUpgradeToVersion18.swift */; };
+		71871502224FDEB70061D493 /* DatabaseUpgradeToVersion17.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718714F2224FDEB60061D493 /* DatabaseUpgradeToVersion17.swift */; };
+		71871503224FDEB70061D493 /* DatabaseUpgradeToVersion14.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718714F3224FDEB60061D493 /* DatabaseUpgradeToVersion14.swift */; };
+		71871504224FDEB70061D493 /* DatabaseUpgradeToVersion13.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718714F4224FDEB60061D493 /* DatabaseUpgradeToVersion13.swift */; };
+		71871505224FDEB70061D493 /* DatabaseMigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718714F8224FDEB70061D493 /* DatabaseMigration.swift */; };
+		71871506224FDEB70061D493 /* DatabaseCreateAtVersion11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718714F9224FDEB70061D493 /* DatabaseCreateAtVersion11.swift */; };
+		7187150822500E900061D493 /* DatabaseMigrationFailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7187150722500E8F0061D493 /* DatabaseMigrationFailed.swift */; };
+		7187150A225022040061D493 /* FeedbackComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71871509225022040061D493 /* FeedbackComposer.swift */; };
+		7187150F225039130061D493 /* DatabaseCreateAtVersion11Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7187150C225039130061D493 /* DatabaseCreateAtVersion11Tests.swift */; };
+		71871510225039130061D493 /* DatabaseUpgrade13Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7187150D225039130061D493 /* DatabaseUpgrade13Tests.swift */; };
+		71871511225039130061D493 /* DatabaseUpgrade12Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7187150E225039130061D493 /* DatabaseUpgrade12Tests.swift */; };
 		718A1C9121A07A0500E010A2 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A1C9021A07A0500E010A2 /* UserResponse.swift */; };
 		718A1C9321A086E300E010A2 /* AuthResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A1C9221A086E300E010A2 /* AuthResponses.swift */; };
 		718A1C9521A211EB00E010A2 /* RecognitionResposnse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A1C9421A211EB00E010A2 /* RecognitionResposnse.swift */; };
@@ -351,7 +362,6 @@
 		71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */; };
 		71D7D43E1FAA062300437CA9 /* ScanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7D43D1FAA062300437CA9 /* ScanService.swift */; };
 		71D7D4401FAA079800437CA9 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7D43F1FAA079800437CA9 /* ScanResult.swift */; };
-		71DB146A205E954C009B83E7 /* DatabaseUpgradeToVersion16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB1469205E954C009B83E7 /* DatabaseUpgradeToVersion16.swift */; };
 		71DF3A801F509512000CD1D6 /* NotifyMasterSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF3A7F1F509512000CD1D6 /* NotifyMasterSplitViewController.swift */; };
 		71E090F31F2F994B00C825A8 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E090F21F2F994B00C825A8 /* FileManager+Extensions.swift */; };
 		71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E2B5751EEDD516001D02F1 /* Trips.storyboard */; };
@@ -427,7 +437,6 @@
 		A79FDC731CEA0D7C00328DBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A79FDC721CEA0D7C00328DBB /* GoogleService-Info.plist */; };
 		A7A720E31CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A720E21CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift */; };
 		A7A720E51CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A720E41CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift */; };
-		A7AFB2421CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFB2411CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift */; };
 		A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFB2431CEC1F6800718744 /* PaymentMethod.swift */; };
 		A7AFB2461CEC219100718744 /* DatabaseTableNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFB2451CEC219100718744 /* DatabaseTableNames.swift */; };
 		A7B6FC5D1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B6FC5C1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift */; };
@@ -461,7 +470,6 @@
 		B375F50D1A177C9782941048 /* Pods_SmartReceiptsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A00E20F6F7D842A0665F496 /* Pods_SmartReceiptsTests.framework */; };
 		BA6656620F10C0BE9073C480 /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66588B7C2114029521A399 /* NSDate+Calculations.m */; };
 		BA665979E02A79C4610624F3 /* SmartReceiptsTestsBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BA665A5EFF5EE0F233A6FC66 /* SmartReceiptsTestsBase.m */; };
-		EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */; };
 		EA00D00D1B0629BE00C87678 /* ProperNameInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA00D00C1B0629BE00C87678 /* ProperNameInputValidation.m */; };
 		EA0677F61B04E61A0058A326 /* StringPickableWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0677F51B04E61A0058A326 /* StringPickableWrapper.m */; };
 		EA07BF301AF3B472004D17F6 /* UIApplication+DismissKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = EA07BF2F1AF3B472004D17F6 /* UIApplication+DismissKeyboard.m */; };
@@ -517,7 +525,6 @@
 		EA6888D31AFE699A00A910FC /* receipts-dates-test.db in Resources */ = {isa = PBXBuildFile; fileRef = EA6888D21AFE699A00A910FC /* receipts-dates-test.db */; };
 		EA69EF151AEFC81A00276B70 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF141AEFC81A00276B70 /* Database.m */; };
 		EA69EF241AEFEDCC00276B70 /* DatabaseMigrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF231AEFEDCC00276B70 /* DatabaseMigrationTest.m */; };
-		EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69EF291AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m */; };
 		EA69EF2D1AF0907300276B70 /* receipts_at_v11.db in Resources */ = {isa = PBXBuildFile; fileRef = EA69EF2C1AF0907300276B70 /* receipts_at_v11.db */; };
 		EA7634AA1B3DB34A00AD8737 /* WBPreferencesImportExportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7634A91B3DB34A00AD8737 /* WBPreferencesImportExportTest.m */; };
 		EA7634AD1B3DB61900AD8737 /* WBPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7634AC1B3DB61900AD8737 /* WBPreferences.m */; };
@@ -576,13 +583,8 @@
 		EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAF61AF8EAAE00F4FE76 /* DistanceRateColumn.m */; };
 		EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAF91AF8EAC000F4FE76 /* DistanceDateColumn.m */; };
 		EAE9DAFD1AF8EAD100F4FE76 /* DistanceCommentColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE9DAFC1AF8EAD100F4FE76 /* DistanceCommentColumn.m */; };
-		EAED9B221AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m in Sources */ = {isa = PBXBuildFile; fileRef = EAED9B211AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m */; };
 		EAF6FE121B543ABB0005E2CE /* PDFImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF6FE111B543ABB0005E2CE /* PDFImageView.xib */; };
 		EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADDD1AECD2D20000AC84 /* ReportGeneratorTest.m */; };
-		EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADE21AECF8E30000AC84 /* DatabaseMigration.m */; };
-		EAF9ADE61AECF8F80000AC84 /* DatabaseCreateAtVersion11.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADE51AECF8F80000AC84 /* DatabaseCreateAtVersion11.m */; };
-		EAF9ADE91AECF9200000AC84 /* DatabaseUpgradeToVersion12.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADE81AECF9200000AC84 /* DatabaseUpgradeToVersion12.m */; };
-		EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF9ADEB1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m */; };
 		FC6ADCCA2D4701B4B53E5370 /* Pods_SmartReceipts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B397BE168915C982926C4BC /* Pods_SmartReceipts.framework */; };
 /* End PBXBuildFile section */
 
@@ -634,7 +636,6 @@
 		570515A61E04AA7D00BB8FE4 /* FirebaseAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAnalytics.swift; sourceTree = "<group>"; };
 		572045CA1E9FB97700080FB8 /* RecentCurrenciesCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentCurrenciesCacheTests.swift; sourceTree = "<group>"; };
 		5726E5421E00423900F2141C /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
-		5757D60F1E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion15.swift; sourceTree = "<group>"; };
 		5757D6121E929ECA000F65F9 /* Database+Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+Sync.swift"; sourceTree = "<group>"; };
 		57580D1A1DFAB58B0090C488 /* UIDevice+DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceInfo.h"; sourceTree = "<group>"; };
 		57580D1B1DFAB58B0090C488 /* UIDevice+DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceInfo.m"; sourceTree = "<group>"; };
@@ -693,7 +694,6 @@
 		713360441EF310C90076D319 /* TripDistancesModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDistancesModuleTest.swift; sourceTree = "<group>"; };
 		713360451EF310C90076D319 /* TripsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsModuleTest.swift; sourceTree = "<group>"; };
 		7134DACB2106776B006BDCAA /* AppNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNotificationCenter.swift; sourceTree = "<group>"; };
-		7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion17.swift; sourceTree = "<group>"; };
 		7139EDE421A4966E000C4BE6 /* RecognitionResponseEmpty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RecognitionResponseEmpty.json; sourceTree = "<group>"; };
 		713B7F6C219786ED007220EC /* SubscriptionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsResponse.swift; sourceTree = "<group>"; };
 		713B7F6F21978DC2007220EC /* Moya+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya+Extensions.swift"; sourceTree = "<group>"; };
@@ -760,7 +760,6 @@
 		7159BA0B1F06FB96004EABAA /* ExchangeRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeRateCell.xib; sourceTree = "<group>"; };
 		715B4EBB1F114A9C0021ACD8 /* PurchaseButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseButtonCell.swift; sourceTree = "<group>"; };
 		715B4EBC1F114A9C0021ACD8 /* PurchaseButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseButtonCell.xib; sourceTree = "<group>"; };
-		715DC023217513E200ED5970 /* DatabaseUpgradeToVersion19.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion19.swift; sourceTree = "<group>"; };
 		716138B81FD1ABDA00C73FB9 /* TableContentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableContentRow.swift; sourceTree = "<group>"; };
 		716138BA1FD1ABE900C73FB9 /* TableHeaderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderRow.swift; sourceTree = "<group>"; };
 		716138BC1FD1BB4B00C73FB9 /* RenderedPDFLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderedPDFLabel.swift; sourceTree = "<group>"; };
@@ -824,8 +823,22 @@
 		7185AEF31EFC1CC90038ED2A /* ReceiptMoveCopyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyRouter.swift; sourceTree = "<group>"; };
 		7185AEF41EFC1CC90038ED2A /* ReceiptMoveCopyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyView.swift; sourceTree = "<group>"; };
 		7186E1E021D3EFFA00182500 /* QuickActionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionService.swift; sourceTree = "<group>"; };
+		718714EA224FDEB50061D493 /* DatabaseUpgradeToVersion12.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion12.swift; sourceTree = "<group>"; };
+		718714EC224FDEB50061D493 /* DatabaseUpgradeToVersion16.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion16.swift; sourceTree = "<group>"; };
+		718714ED224FDEB50061D493 /* DatabaseUpgradeToVersion19.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion19.swift; sourceTree = "<group>"; };
+		718714EF224FDEB60061D493 /* DatabaseUpgradeToVersion15.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion15.swift; sourceTree = "<group>"; };
+		718714F0224FDEB60061D493 /* DatabaseUpgradeToVersion18.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion18.swift; sourceTree = "<group>"; };
+		718714F2224FDEB60061D493 /* DatabaseUpgradeToVersion17.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion17.swift; sourceTree = "<group>"; };
+		718714F3224FDEB60061D493 /* DatabaseUpgradeToVersion14.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion14.swift; sourceTree = "<group>"; };
+		718714F4224FDEB60061D493 /* DatabaseUpgradeToVersion13.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion13.swift; sourceTree = "<group>"; };
+		718714F8224FDEB70061D493 /* DatabaseMigration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseMigration.swift; sourceTree = "<group>"; };
+		718714F9224FDEB70061D493 /* DatabaseCreateAtVersion11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseCreateAtVersion11.swift; sourceTree = "<group>"; };
+		7187150722500E8F0061D493 /* DatabaseMigrationFailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMigrationFailed.swift; sourceTree = "<group>"; };
+		71871509225022040061D493 /* FeedbackComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackComposer.swift; sourceTree = "<group>"; };
+		7187150C225039130061D493 /* DatabaseCreateAtVersion11Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseCreateAtVersion11Tests.swift; sourceTree = "<group>"; };
+		7187150D225039130061D493 /* DatabaseUpgrade13Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgrade13Tests.swift; sourceTree = "<group>"; };
+		7187150E225039130061D493 /* DatabaseUpgrade12Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgrade12Tests.swift; sourceTree = "<group>"; };
 		71874292216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDatabaseUpgradeTests.swift; sourceTree = "<group>"; };
-		71874294216FCE98005FFDD2 /* DatabaseUpgradeToVersion18.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion18.swift; sourceTree = "<group>"; };
 		718A1C9021A07A0500E010A2 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		718A1C9221A086E300E010A2 /* AuthResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponses.swift; sourceTree = "<group>"; };
 		718A1C9421A211EB00E010A2 /* RecognitionResposnse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionResposnse.swift; sourceTree = "<group>"; };
@@ -948,7 +961,6 @@
 		71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDateFormatter.m; sourceTree = "<group>"; };
 		71D7D43D1FAA062300437CA9 /* ScanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanService.swift; sourceTree = "<group>"; };
 		71D7D43F1FAA079800437CA9 /* ScanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResult.swift; sourceTree = "<group>"; };
-		71DB1469205E954C009B83E7 /* DatabaseUpgradeToVersion16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion16.swift; sourceTree = "<group>"; };
 		71DF3A7F1F509512000CD1D6 /* NotifyMasterSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifyMasterSplitViewController.swift; sourceTree = "<group>"; };
 		71E090F21F2F994B00C825A8 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		71E2B5751EEDD516001D02F1 /* Trips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trips.storyboard; sourceTree = "<group>"; };
@@ -1034,7 +1046,6 @@
 		A79FDC721CEA0D7C00328DBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7A720E21CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSIndexPath+Extensions.swift"; sourceTree = "<group>"; };
 		A7A720E41CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgrade14Tests.swift; sourceTree = "<group>"; };
-		A7AFB2411CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgradeToVersion14.swift; sourceTree = "<group>"; };
 		A7AFB2431CEC1F6800718744 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		A7AFB2451CEC219100718744 /* DatabaseTableNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTableNames.swift; sourceTree = "<group>"; };
 		A7B6FC5A1CF5DA2000CD53F1 /* WBReceiptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WBReceiptTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -1081,7 +1092,6 @@
 		BA66588B7C2114029521A399 /* NSDate+Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calculations.m"; sourceTree = "<group>"; };
 		BA665A5EFF5EE0F233A6FC66 /* SmartReceiptsTestsBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartReceiptsTestsBase.m; sourceTree = "<group>"; };
 		BD6975428A0492150C7B4926 /* Pods-SmartReceipts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartReceipts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts.debug.xcconfig"; sourceTree = "<group>"; };
-		EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTestVersion13.m; sourceTree = "<group>"; };
 		EA00D00B1B0629BE00C87678 /* ProperNameInputValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProperNameInputValidation.h; sourceTree = "<group>"; };
 		EA00D00C1B0629BE00C87678 /* ProperNameInputValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProperNameInputValidation.m; sourceTree = "<group>"; };
 		EA0677F31B04E5320058A326 /* Pickable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pickable.h; sourceTree = "<group>"; };
@@ -1167,7 +1177,6 @@
 		EA69EF131AEFC81A00276B70 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		EA69EF141AEFC81A00276B70 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 		EA69EF231AEFEDCC00276B70 /* DatabaseMigrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseMigrationTest.m; sourceTree = "<group>"; };
-		EA69EF291AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseUpgradeToVersion12Test.m; sourceTree = "<group>"; };
 		EA69EF2C1AF0907300276B70 /* receipts_at_v11.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = receipts_at_v11.db; sourceTree = "<group>"; };
 		EA7634A91B3DB34A00AD8737 /* WBPreferencesImportExportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBPreferencesImportExportTest.m; sourceTree = "<group>"; };
 		EA7634AB1B3DB61900AD8737 /* WBPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBPreferences.h; sourceTree = "<group>"; };
@@ -1271,17 +1280,8 @@
 		EAE9DAF91AF8EAC000F4FE76 /* DistanceDateColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceDateColumn.m; sourceTree = "<group>"; };
 		EAE9DAFB1AF8EAD100F4FE76 /* DistanceCommentColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceCommentColumn.h; sourceTree = "<group>"; };
 		EAE9DAFC1AF8EAD100F4FE76 /* DistanceCommentColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceCommentColumn.m; sourceTree = "<group>"; };
-		EAED9B211AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseCreateAtVersion11Test.m; sourceTree = "<group>"; };
 		EAF6FE111B543ABB0005E2CE /* PDFImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFImageView.xib; sourceTree = "<group>"; };
 		EAF9ADDD1AECD2D20000AC84 /* ReportGeneratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportGeneratorTest.m; sourceTree = "<group>"; };
-		EAF9ADE11AECF8E30000AC84 /* DatabaseMigration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseMigration.h; sourceTree = "<group>"; };
-		EAF9ADE21AECF8E30000AC84 /* DatabaseMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseMigration.m; sourceTree = "<group>"; };
-		EAF9ADE41AECF8F80000AC84 /* DatabaseCreateAtVersion11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseCreateAtVersion11.h; sourceTree = "<group>"; };
-		EAF9ADE51AECF8F80000AC84 /* DatabaseCreateAtVersion11.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseCreateAtVersion11.m; sourceTree = "<group>"; };
-		EAF9ADE71AECF9200000AC84 /* DatabaseUpgradeToVersion12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseUpgradeToVersion12.h; sourceTree = "<group>"; };
-		EAF9ADE81AECF9200000AC84 /* DatabaseUpgradeToVersion12.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseUpgradeToVersion12.m; sourceTree = "<group>"; };
-		EAF9ADEA1AECF9300000AC84 /* DatabaseUpgradeToVersion13.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseUpgradeToVersion13.h; sourceTree = "<group>"; };
-		EAF9ADEB1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseUpgradeToVersion13.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1505,6 +1505,7 @@
 				714104D81FF43D7700C334C5 /* ScansPurchaseButton.swift */,
 				714104DD1FF43D7700C334C5 /* TooltipView.swift */,
 				716D58A4219C8E1E00D6A6EA /* ImagePicker.swift */,
+				71871509225022040061D493 /* FeedbackComposer.swift */,
 				714104D31FF43D7700C334C5 /* WBAbstractPicker.h */,
 				714104CE1FF43D7700C334C5 /* WBAbstractPicker.m */,
 				714104D01FF43D7700C334C5 /* WBDynamicPicker.h */,
@@ -2728,10 +2729,10 @@
 			isa = PBXGroup;
 			children = (
 				EA69EF231AEFEDCC00276B70 /* DatabaseMigrationTest.m */,
-				EAED9B211AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m */,
-				EA69EF291AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m */,
-				EA00D0091B061F1B00C87678 /* DatabaseTestVersion13.m */,
 				71874292216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift */,
+				7187150C225039130061D493 /* DatabaseCreateAtVersion11Tests.swift */,
+				7187150E225039130061D493 /* DatabaseUpgrade12Tests.swift */,
+				7187150D225039130061D493 /* DatabaseUpgrade13Tests.swift */,
 				A7A720E41CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift */,
 				57A8058C1E9672C000E68049 /* DatabaseUpgrade15Tests.swift */,
 				716C058D216D12CE00D3E10F /* DatabaseUpgrade19Tests.swift */,
@@ -2772,20 +2773,17 @@
 		EAF9ADE01AECF8BF0000AC84 /* Migrations */ = {
 			isa = PBXGroup;
 			children = (
-				EAF9ADE41AECF8F80000AC84 /* DatabaseCreateAtVersion11.h */,
-				EAF9ADE51AECF8F80000AC84 /* DatabaseCreateAtVersion11.m */,
-				EAF9ADE11AECF8E30000AC84 /* DatabaseMigration.h */,
-				EAF9ADE21AECF8E30000AC84 /* DatabaseMigration.m */,
-				EAF9ADE71AECF9200000AC84 /* DatabaseUpgradeToVersion12.h */,
-				EAF9ADE81AECF9200000AC84 /* DatabaseUpgradeToVersion12.m */,
-				EAF9ADEA1AECF9300000AC84 /* DatabaseUpgradeToVersion13.h */,
-				EAF9ADEB1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m */,
-				A7AFB2411CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift */,
-				5757D60F1E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift */,
-				71DB1469205E954C009B83E7 /* DatabaseUpgradeToVersion16.swift */,
-				7135E08920C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift */,
-				71874294216FCE98005FFDD2 /* DatabaseUpgradeToVersion18.swift */,
-				715DC023217513E200ED5970 /* DatabaseUpgradeToVersion19.swift */,
+				718714F8224FDEB70061D493 /* DatabaseMigration.swift */,
+				7187150722500E8F0061D493 /* DatabaseMigrationFailed.swift */,
+				718714F9224FDEB70061D493 /* DatabaseCreateAtVersion11.swift */,
+				718714EA224FDEB50061D493 /* DatabaseUpgradeToVersion12.swift */,
+				718714F4224FDEB60061D493 /* DatabaseUpgradeToVersion13.swift */,
+				718714F3224FDEB60061D493 /* DatabaseUpgradeToVersion14.swift */,
+				718714EF224FDEB60061D493 /* DatabaseUpgradeToVersion15.swift */,
+				718714EC224FDEB50061D493 /* DatabaseUpgradeToVersion16.swift */,
+				718714F2224FDEB60061D493 /* DatabaseUpgradeToVersion17.swift */,
+				718714F0224FDEB60061D493 /* DatabaseUpgradeToVersion18.swift */,
+				718714ED224FDEB50061D493 /* DatabaseUpgradeToVersion19.swift */,
 			);
 			path = Migrations;
 			sourceTree = "<group>";
@@ -3366,7 +3364,7 @@
 				7159BA0A1F06F9B6004EABAA /* ExchangeRateCell.swift in Sources */,
 				A78214FD1CFFE8E900FD644A /* NSDate+Extensions.swift in Sources */,
 				A7F05BDF1CFD8FEC0079F1AD /* Database.swift in Sources */,
-				EAF9ADE91AECF9200000AC84 /* DatabaseUpgradeToVersion12.m in Sources */,
+				71871505224FDEB70061D493 /* DatabaseMigration.swift in Sources */,
 				71A30F2C1EEC9F05001BA608 /* DataExport.swift in Sources */,
 				A7F05B9E1CFB49BE0079F1AD /* Taxed.swift in Sources */,
 				EAE9DAF41AF8EA9600F4FE76 /* DistanceCurrencyColumn.m in Sources */,
@@ -3384,10 +3382,10 @@
 				71E8F3FA1FA12452005BD447 /* OCRConfigurationView.swift in Sources */,
 				5726E5431E00423900F2141C /* AnalyticsManager.swift in Sources */,
 				712BB2661F611DDE00F0380F /* Error+Extensions.swift in Sources */,
+				7187150822500E900061D493 /* DatabaseMigrationFailed.swift in Sources */,
 				71762E7A1FD4713000AC1388 /* TripImagesPDFGenerator.swift in Sources */,
 				710E587521386BAB00AAFC77 /* TooltipPresenter.swift in Sources */,
 				719B1FE11EF603190049BD71 /* ReceiptsView.swift in Sources */,
-				EAF9ADEC1AECF9300000AC84 /* DatabaseUpgradeToVersion13.m in Sources */,
 				712A84EA1F783E9300D988E7 /* Dictionary+Extensions.swift in Sources */,
 				718ADF6520B33823005FEF4F /* AppMonitorService.swift in Sources */,
 				7111ADA71F0EC38100DF77ED /* SettingsInteractor.swift in Sources */,
@@ -3421,13 +3419,13 @@
 				EA8D817C1AEA6AF000BAC943 /* ReceiptColumn.m in Sources */,
 				EA8D81A61AEA7C7D00BAC943 /* ReceiptColumnName.m in Sources */,
 				714104E81FF43D7700C334C5 /* WBDynamicPicker.m in Sources */,
+				718714FA224FDEB70061D493 /* DatabaseUpgradeToVersion12.swift in Sources */,
 				71CF7A121F1020440004F389 /* InputTextCell.swift in Sources */,
 				EA8D81A31AEA7C6B00BAC943 /* ReceiptColumnDate.m in Sources */,
 				71E8F3F61FA12452005BD447 /* OCRConfigurationDisplayData.swift in Sources */,
 				EA8D81851AEA7B7500BAC943 /* ReceiptColumnCategoryCode.m in Sources */,
 				71548A131EE9DA7E00287E48 /* GenerateReportShareService.swift in Sources */,
 				7190D4511EE88CC40081CB22 /* GenerateReportInteractor.swift in Sources */,
-				5757D6101E92837D000F65F9 /* DatabaseUpgradeToVersion15.swift in Sources */,
 				A7AFB2461CEC219100718744 /* DatabaseTableNames.swift in Sources */,
 				A7F05BA21CFC038D0079F1AD /* ReceiptColumnTax.swift in Sources */,
 				71F73E381FEAD02D0049F108 /* TableFooterRow.swift in Sources */,
@@ -3460,6 +3458,7 @@
 				71E2E57D20DFD88700BDE501 /* SyncState.swift in Sources */,
 				716138C71FD1E29300C73FB9 /* TripReportHeader.swift in Sources */,
 				7190B9151F60427200F6CE7F /* AuthInteractor.swift in Sources */,
+				718714FC224FDEB70061D493 /* DatabaseUpgradeToVersion16.swift in Sources */,
 				EA07BF441AF3F882004D17F6 /* DecimalInputValidation.m in Sources */,
 				EAD15C511B07C3A1003BB1F3 /* Database+Notify.m in Sources */,
 				714AC77F2042E84F003656DB /* WBPreferences.swift in Sources */,
@@ -3497,13 +3496,13 @@
 				7190D4501EE88CC40081CB22 /* GenerateReportDisplayData.swift in Sources */,
 				71F9989921AC4E4200320256 /* Array+Extensions.swift in Sources */,
 				71ACA7CE1F5C58290024903E /* DebugStates.swift in Sources */,
-				EAF9ADE31AECF8E30000AC84 /* DatabaseMigration.m in Sources */,
 				EA3C968E1AEBA4F600A2A5F9 /* ReportCSVTable.m in Sources */,
 				A7F05BD31CFD54430079F1AD /* Logger.swift in Sources */,
 				EA3CF09E1AE7C45C00B14B73 /* Constants.m in Sources */,
 				719310411EDDC2810065B5AD /* WBSqlBuilder.m in Sources */,
 				71BC45531F9FB3A9003A5BD5 /* ScansPurchaseTracker.swift in Sources */,
 				71ACA7C61F5B69C90024903E /* DebugInteractor.swift in Sources */,
+				71871500224FDEB70061D493 /* DatabaseUpgradeToVersion18.swift in Sources */,
 				7191F0E81EE20EBA0082DA47 /* DateFormatter+Extensions.swift in Sources */,
 				5785A4EF1E09DA0100C3CA0C /* AnalyticsLogger.swift in Sources */,
 				EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */,
@@ -3522,6 +3521,7 @@
 				EAE9DAF71AF8EAAE00F4FE76 /* DistanceRateColumn.m in Sources */,
 				716138BB1FD1ABE900C73FB9 /* TableHeaderRow.swift in Sources */,
 				71C2FD0D20E758AA00DF068E /* BackupProvidersManager.swift in Sources */,
+				71871504224FDEB70061D493 /* DatabaseUpgradeToVersion13.swift in Sources */,
 				71F4683B1EEF2E55009F6CE7 /* Viperit+Extensions.swift in Sources */,
 				EA8D81DD1AEA965D00BAC943 /* WBReportUtils.m in Sources */,
 				A7B6FC5D1CF5E26D00CD53F1 /* ReceiptColumnExchangeRate.swift in Sources */,
@@ -3551,6 +3551,7 @@
 				7109B00F1F61C35F0043AE04 /* UserDefaults+Extensions.swift in Sources */,
 				71AD6368219AD86200515A5E /* EurekaWhitespaceWorkaround.swift in Sources */,
 				A78214F71CFFE60000FD644A /* OpenExchangeRates.swift in Sources */,
+				7187150A225022040061D493 /* FeedbackComposer.swift in Sources */,
 				714104E31FF43D7700C334C5 /* WBActionSheetPicker.m in Sources */,
 				718AAC112120382E00290183 /* SyncableTableCell.swift in Sources */,
 				EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */,
@@ -3594,6 +3595,7 @@
 				716F07E12034AFDF00166D63 /* BackupInteractor.swift in Sources */,
 				71572D8A1F15EA41001A1301 /* ColumnsView.swift in Sources */,
 				EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */,
+				71871502224FDEB70061D493 /* DatabaseUpgradeToVersion17.swift in Sources */,
 				A7F05B9A1CFB49590079F1AD /* Priced.swift in Sources */,
 				71572D861F15EA41001A1301 /* ColumnsDisplayData.swift in Sources */,
 				71FE9FF11F4778000043E7B4 /* TripTabViewController.swift in Sources */,
@@ -3602,6 +3604,7 @@
 				7190B9181F60427200F6CE7F /* AuthView.swift in Sources */,
 				EA69EF151AEFC81A00276B70 /* Database.m in Sources */,
 				718A1C9321A086E300E010A2 /* AuthResponses.swift in Sources */,
+				718714FF224FDEB70061D493 /* DatabaseUpgradeToVersion15.swift in Sources */,
 				71F3E3271F0DDBC5008FE932 /* Price.swift in Sources */,
 				711E40541EE0D4ED00C043CF /* EditDistanceFormView.swift in Sources */,
 				EA183E081B1C9F5D00577B3D /* Database+CSVColumns.m in Sources */,
@@ -3613,6 +3616,7 @@
 				716138C91FD1E6E600C73FB9 /* PDFReportTable.swift in Sources */,
 				71AF49E31EFDA4810022B2E2 /* ReceiptImageViewerRouter.swift in Sources */,
 				716C04221F685467007F9CD2 /* CognitoService.swift in Sources */,
+				71871503224FDEB70061D493 /* DatabaseUpgradeToVersion14.swift in Sources */,
 				716F344F1EE040E100D0017A /* EditDistanceInteractor.swift in Sources */,
 				714AC77D2041C693003656DB /* DescribedButtonCell.swift in Sources */,
 				71A30F2F1EECB746001BA608 /* DataImport.swift in Sources */,
@@ -3624,10 +3628,8 @@
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */,
 				EA0677F61B04E61A0058A326 /* StringPickableWrapper.m in Sources */,
 				71E2B57D1EEDD516001D02F1 /* TripsDisplayData.swift in Sources */,
-				7135E08A20C9A7680081EE2F /* DatabaseUpgradeToVersion17.swift in Sources */,
 				71E2E57B20DFD83E00BDE501 /* DefaultSyncState.swift in Sources */,
 				7111ADAC1F0EC4AF00DF77ED /* SettingsFormView.swift in Sources */,
-				71DB146A205E954C009B83E7 /* DatabaseUpgradeToVersion16.swift in Sources */,
 				7111ADAA1F0EC38100DF77ED /* SettingsView.swift in Sources */,
 				716F34511EE040E100D0017A /* EditDistanceRouter.swift in Sources */,
 				EA07BF661AF51854004D17F6 /* FetchedModelAdapter.m in Sources */,
@@ -3641,13 +3643,11 @@
 				718A1C9521A211EB00E010A2 /* RecognitionResposnse.swift in Sources */,
 				7161DB511EE4907700399C9C /* AdPresentingContainerViewController.swift in Sources */,
 				71C014261F1AB14A005472B3 /* CategoriesRouter.swift in Sources */,
-				EAF9ADE61AECF8F80000AC84 /* DatabaseCreateAtVersion11.m in Sources */,
 				EA8D818E1AEA7BBC00BAC943 /* ReceiptColumnReportName.m in Sources */,
 				579DDFB21E2E4223004937F7 /* UIImage+Extensions.swift in Sources */,
-				71874295216FCE99005FFDD2 /* DatabaseUpgradeToVersion18.swift in Sources */,
-				715DC024217513E200ED5970 /* DatabaseUpgradeToVersion19.swift in Sources */,
 				717DDB98203B59A7000486C3 /* PickerButtonCell.swift in Sources */,
 				A7F05BBC1CFC31520079F1AD /* WBCurrency+Extensions.swift in Sources */,
+				718714FD224FDEB70061D493 /* DatabaseUpgradeToVersion19.swift in Sources */,
 				57691F001E10613500F78859 /* RateApplication.m in Sources */,
 				71ACA7BA1F5B5A830024903E /* FeatureFlags.swift in Sources */,
 				710D98A21FE573540088B9BA /* UIView+Extensions.swift in Sources */,
@@ -3669,7 +3669,6 @@
 				EA8D818B1AEA7BA400BAC943 /* ReceiptColumnUserID.m in Sources */,
 				EA8EB1071B0A4AAF00780BA3 /* ReceiptColumnReportComment.m in Sources */,
 				716138C31FD1C9F900C73FB9 /* FullPagePDFPageView.swift in Sources */,
-				A7AFB2421CEC1C5500718744 /* DatabaseUpgradeToVersion14.swift in Sources */,
 				EAD15C7A1B0881C2003BB1F3 /* ReceiptFilesManager.m in Sources */,
 				EA183E0B1B1C9F6C00577B3D /* Database+PDFColumns.m in Sources */,
 				71CD20C91ED764DA006C4EE6 /* Currency.swift in Sources */,
@@ -3684,6 +3683,7 @@
 				71939E9A21D14FD900A5BB27 /* AppDelegate+Extensions.swift in Sources */,
 				71CC1B8521143BA0003D7056 /* BackupItemView.swift in Sources */,
 				71859DCE2010F97B00156B40 /* UpsellBannerAdView.swift in Sources */,
+				71871506224FDEB70061D493 /* DatabaseCreateAtVersion11.swift in Sources */,
 				71C014241F1AB14A005472B3 /* CategoriesInteractor.swift in Sources */,
 				714104E61FF43D7700C334C5 /* SuggestionView.m in Sources */,
 				71AF49E81EFDCC010022B2E2 /* ReceiptImageViewerView.swift in Sources */,
@@ -3768,7 +3768,6 @@
 				7123481721418F650038AAE5 /* ReceiptColumnExchangedPriceTests.swift in Sources */,
 				A7A720E51CEF0EA000A3B5FF /* DatabaseUpgrade14Tests.swift in Sources */,
 				7139EDE321A49451000C4BE6 /* DateFormatter+Extensions.swift in Sources */,
-				EAED9B221AEE9FBA00BB8773 /* DatabaseCreateAtVersion11Test.m in Sources */,
 				EA07BF6E1AF525A4004D17F6 /* Database+Distances.m in Sources */,
 				7123483D21418F790038AAE5 /* MatchableExtensions.swift in Sources */,
 				7139EDE121A486B6000C4BE6 /* ScanTests.swift in Sources */,
@@ -3788,7 +3787,6 @@
 				7123483B21418F6D0038AAE5 /* MigrationServiceTest.swift in Sources */,
 				7139EDE221A4943D000C4BE6 /* Moya+Extensions.swift in Sources */,
 				7123481521418F610038AAE5 /* MigrationServiceTestable.swift in Sources */,
-				EA69EF2A1AF0102E00276B70 /* DatabaseUpgradeToVersion12Test.m in Sources */,
 				5762EA841ECDC2600032411A /* TripFullPDFGeneratorTest.swift in Sources */,
 				7123483821418F6D0038AAE5 /* LocalScansTrackerTests.swift in Sources */,
 				EA159E811AFE7CDC00DBB6CF /* NSDate+Calculations.m in Sources */,
@@ -3817,7 +3815,6 @@
 				7139EDE021A4869E000C4BE6 /* ScanServiceTests.swift in Sources */,
 				711C1D6B1F45DD5E00F5553F /* FetchedModelAdapterTests.swift in Sources */,
 				EA888A881AFB4FD600DF2AE6 /* DatabaseTripsTest.m in Sources */,
-				EA00D00A1B061F1B00C87678 /* DatabaseTestVersion13.m in Sources */,
 				7123482821418F690038AAE5 /* EditTripModuleTest.swift in Sources */,
 				57C0EED31E2D38B0001B4758 /* Logger.swift in Sources */,
 				EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */,
@@ -3830,6 +3827,7 @@
 				5757D6141E929ECA000F65F9 /* Database+Sync.swift in Sources */,
 				EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */,
 				EA8ABE441B1A1D6800DBFA29 /* DatabaseCategoriesTest.m in Sources */,
+				71871511225039130061D493 /* DatabaseUpgrade12Tests.swift in Sources */,
 				7123483121418F690038AAE5 /* OCRConfigurationModuleTest.swift in Sources */,
 				71CC546F21A607FF000C9F45 /* AuthServiceTests.swift in Sources */,
 				EA7634AA1B3DB34A00AD8737 /* WBPreferencesImportExportTest.m in Sources */,
@@ -3844,8 +3842,10 @@
 				7123481921418F650038AAE5 /* ReceiptColumnExchangeRateTests.swift in Sources */,
 				7123481C21418F650038AAE5 /* PricesCollectionTests.swift in Sources */,
 				7123482B21418F690038AAE5 /* ReceiptsModuleTest.swift in Sources */,
+				71871510225039130061D493 /* DatabaseUpgrade13Tests.swift in Sources */,
 				EA07BF591AF4D6E5004D17F6 /* DatabaseQueryBuilderTest.m in Sources */,
 				EA888A811AFA5D1D00DF2AE6 /* WBPreferencesTestHelper.m in Sources */,
+				7187150F225039130061D493 /* DatabaseCreateAtVersion11Tests.swift in Sources */,
 				57A8058D1E9672C000E68049 /* DatabaseUpgrade15Tests.swift in Sources */,
 				BA665979E02A79C4610624F3 /* SmartReceiptsTestsBase.m in Sources */,
 				7123483421418F6D0038AAE5 /* TooltipServiceTests.swift in Sources */,

@@ -18,8 +18,8 @@
 
 - (BOOL)executeUpdate:(NSString *)sqlStatement;
 - (BOOL)executeUpdateWithStatementComponents:(NSArray *)components;
-- (NSUInteger)databaseVersion;
-- (void)setDatabaseVersion:(NSUInteger)version;
+- (NSInteger)databaseVersion;
+- (void)setDatabaseVersion:(NSInteger)version;
 - (NSUInteger)countRowsInTable:(NSString *)tableName;
 - (BOOL)executeQuery:(DatabaseQueryBuilder *)query;
 - (BOOL)executeQuery:(DatabaseQueryBuilder *)query usingDatabase:(FMDatabase *)database;

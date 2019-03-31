@@ -13,12 +13,8 @@
 #import "Database.h"
 #import "Database+CSVColumns.h"
 #import "Database+PDFColumns.h"
-#import "DatabaseCreateAtVersion11.h"
-#import "DatabaseMigration.h"
 #import "DatabaseQueryBuilder.h"
 #import "DatabaseTableNames.h"
-#import "DatabaseUpgradeToVersion12.h"
-#import "DatabaseUpgradeToVersion13.h"
 
 #import "NSDate+Calculations.h"
 
