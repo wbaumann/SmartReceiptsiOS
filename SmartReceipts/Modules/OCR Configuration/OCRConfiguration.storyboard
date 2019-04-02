@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,13 +25,13 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="576"/>
                                 <subviews>
                                     <view contentMode="scaleAspectFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X1N-pM-HX2">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="627.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="599"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="600" verticalCompressionResistancePriority="600" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMI-xq-cpv">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="900" verticalCompressionResistancePriority="600" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMI-xq-cpv">
                                                 <rect key="frame" x="16" y="49" width="288" height="251"/>
-                                                <string key="text">Smart Receipts has integrated with Taggun to provide automatic scanning (ie OCR) services, which can extract receipt metadata like the price, tax, date, and merchant name from your photos. 
+                                                <mutableString key="text">Smart Receipts has integrated with Taggun to provide automatic scanning (ie OCR) services, which can extract receipt metadata like the price, tax, date, and merchant name from your photos. 
 We use a combination of Google Vision and Machine Learning to quickly (often in 5 seconds or less) deliver results, which will become increasingly accurate over time. Since these services have a per-usage charge, we will charge for each receipt scan below. 
-To try OCR, all new users get 2 free scans!</string>
+To try OCR, all new users get 2 free scans!</mutableString>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -186,6 +185,7 @@ To try OCR, all new users get 2 free scans!</string>
                                             <constraint firstItem="YOD-34-ock" firstAttribute="centerY" secondItem="reE-ir-Wvr" secondAttribute="centerY" id="GYo-60-sIo"/>
                                             <constraint firstAttribute="trailing" secondItem="0dC-cs-CAa" secondAttribute="trailing" constant="16" id="H1y-gf-UnQ"/>
                                             <constraint firstAttribute="trailing" secondItem="reE-ir-Wvr" secondAttribute="trailing" constant="16" id="HjL-FH-9o2"/>
+                                            <constraint firstAttribute="bottom" secondItem="tNz-Z1-pxa" secondAttribute="bottom" priority="990" constant="40" id="Ikj-gr-hr7"/>
                                             <constraint firstItem="1LH-ps-UJx" firstAttribute="leading" secondItem="jHC-vY-BPq" secondAttribute="trailing" constant="8" id="JYp-0H-gav"/>
                                             <constraint firstItem="YOD-34-ock" firstAttribute="leading" secondItem="X1N-pM-HX2" secondAttribute="leading" constant="16" id="Kan-2c-MJT"/>
                                             <constraint firstItem="hpf-uN-9yQ" firstAttribute="leading" secondItem="X1N-pM-HX2" secondAttribute="leading" constant="16" id="L7M-qz-PCi"/>
@@ -202,7 +202,6 @@ To try OCR, all new users get 2 free scans!</string>
                                             <constraint firstItem="VMI-xq-cpv" firstAttribute="leading" secondItem="X1N-pM-HX2" secondAttribute="leading" constant="16" id="nv1-GO-3AJ"/>
                                             <constraint firstItem="hpf-uN-9yQ" firstAttribute="bottom" secondItem="1LH-ps-UJx" secondAttribute="bottom" constant="16" id="ozJ-V8-bXj"/>
                                             <constraint firstAttribute="trailing" secondItem="VMI-xq-cpv" secondAttribute="trailing" constant="16" id="rOj-Bd-DCV"/>
-                                            <constraint firstAttribute="height" secondItem="VMI-xq-cpv" secondAttribute="height" multiplier="2.5" id="tqT-3Y-mkI"/>
                                             <constraint firstAttribute="trailing" secondItem="hpf-uN-9yQ" secondAttribute="trailing" constant="16" id="vEL-eG-e9w"/>
                                             <constraint firstItem="VMI-xq-cpv" firstAttribute="top" secondItem="CJG-kY-Toe" secondAttribute="bottom" constant="8" id="ver-gb-2vR"/>
                                         </constraints>
