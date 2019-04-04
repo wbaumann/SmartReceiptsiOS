@@ -10,6 +10,7 @@ import Foundation
 import Viperit
 import RxSwift
 import StoreKit
+import SwiftyStoreKit
 import Toaster
 
 class OCRConfigurationInteractor: Interactor {
@@ -29,16 +30,16 @@ class OCRConfigurationInteractor: Interactor {
         return purchaseService.requestProducts()
     }
     
-    func purchase(product: String) {
+    func purchase(product: String) -> Observable<PurchaseDetails> {
         let hud = PendingHUDView.show(on: presenter._view.view)
-        purchaseService.purchase(prodcutID: product)
-            .subscribe(onNext: { _ in
-                hud.hide()
-                let text = LocalizedString("purchase_succeeded")
-                Toast.show(text)
-            }, onError: { _ in
-                hud.hide()
-            }).disposed(by: bag)
+        return purchaseService.purchase(prodcutID: product)
+                .do(onNext: { _ in
+                    hud.hide()
+                    let text = LocalizedString("purchase_succeeded")
+                    Toast.show(text)
+                }, onError: { error in
+                    hud.hide()
+                })
     }
 }
 

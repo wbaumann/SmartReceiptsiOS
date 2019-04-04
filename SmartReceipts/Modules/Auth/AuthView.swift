@@ -52,6 +52,12 @@ final class AuthView: UserInterface {
         emailField.becomeFirstResponder()
         loginButton.layer.cornerRadius = BUTTON_CORNER_RADIUS
         signupButton.layer.cornerRadius = BUTTON_CORNER_RADIUS
+        
+        emailField.placeholder = LocalizedString("login_field_email_hint")
+        passwordField.placeholder = LocalizedString("login_field_password_hint")
+        
+        loginButton.setTitle(LocalizedString("login_button_text"), for: .normal)
+        signupButton.setTitle(LocalizedString("sign_up_button_text"), for: .normal)
     }
     
     private func configureRx() {
