@@ -19,23 +19,19 @@ class OCRConfigurationPresenter: Presenter {
             .subscribe(onNext: { [weak self] product in
                 guard let sSelf = self else { return }
                 let price = Observable<String>.just(product.localizedPrice)
-                if product.productIdentifier == PRODUCT_OCR_10 {
-                    _ = price.bind(to: sSelf.view.OCR10Price)
-                } else if product.productIdentifier == PRODUCT_OCR_50 {
-                    _ = price.bind(to: sSelf.view.OCR50Price)
+                switch product.productIdentifier {
+                case PRODUCT_OCR_10: _ = price.bind(to: sSelf.view.OCR10Price)
+                case PRODUCT_OCR_50: _ = price.bind(to: sSelf.view.OCR50Price)
+                default: break
                 }
             }).disposed(by: bag)
         
-        view.buy10ocr
-            .do(onNext: { Logger.debug("But 10 OCR Tap") })
-            .subscribe(onNext: { [unowned self] in
-                self.interactor.purchase(product: PRODUCT_OCR_10)
-            }).disposed(by: bag)
-        
-        view.buy50ocr
-            .do(onNext: { Logger.debug("But 50 OCR Tap") })
-            .subscribe(onNext: { [unowned self] in
-                self.interactor.purchase(product: PRODUCT_OCR_50)
+        Observable<String>
+            .merge([view.buy10ocr.map { PRODUCT_OCR_10 }, view.buy50ocr.map { PRODUCT_OCR_50  }])
+            .flatMap { self.interactor.purchase(product: $0) }
+            .delay(1, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.view.updateScansCount()
             }).disposed(by: bag)
     }
 }
