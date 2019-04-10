@@ -18,9 +18,9 @@ public final class PredectiveTextRow: FieldRow<PredectiveTextCell>, RowType {
 public class PredectiveTextCell: TextCell, AutocompleteHelperDelegate {
     private var autocompleteHelper: WBAutocompleteHelper?
     
-    func enableAutocompleteHelper() {
+    func enableAutocompleteHelper(useReceiptsHints: Bool) {
         if !containsCustomKeyboards() {
-            autocompleteHelper = WBAutocompleteHelper(autocomplete: textField, useReceiptsHints: true)
+            autocompleteHelper = WBAutocompleteHelper(autocomplete: textField, useReceiptsHints: useReceiptsHints)
             autocompleteHelper?.delegate = self
         }
     }
@@ -36,12 +36,15 @@ public class PredectiveTextCell: TextCell, AutocompleteHelperDelegate {
     }
     
     public override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let should = super.textField(textField, shouldChangeCharactersIn: range, replacementString: string)
         autocompleteHelper?.textField(textField, shouldChangeCharactersIn: range, replacementString: string)
-        return true
+        return should
     }
     
     func didSelect(value: String) {
-        row.value = value
+        let newValue = EurekaWhitespaceWorkaround.replaceNormalSpacesWithNonBreakingSpaces(value)
+        row.value = newValue
+        row.updateCell()
     }
     
     // Checking if user have custom keyboards to avoid issue with suggestion view and custom keyboard views conflict.
