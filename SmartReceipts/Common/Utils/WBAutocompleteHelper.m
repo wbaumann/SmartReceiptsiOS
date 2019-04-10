@@ -18,6 +18,7 @@
 @property (weak, nonatomic) UITextField *field;
 @property (strong, nonatomic) SuggestionView *suggestionView; // appears above keyboard
 @property (assign, nonatomic) BOOL forReceipts;
+@property (strong, nonatomic) NSArray *hints;
 
 @end
 
@@ -71,8 +72,7 @@
     
     // generate hints
     NSString *resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    NSArray *hints = [self getHintsForPrefix:resultString];
-    self.suggestionView.suggestions = hints;
+    self.hints = [self getHintsForPrefix:resultString];
     
     // reloads suggestionView:
     [self removeSuggestionView];
@@ -82,16 +82,12 @@
 #pragma mark - SuggestionView stuff
 
 - (void)showSuggestionView {
-    if (self.suggestionView.suggestions.count > 0) {
-
+    if (self.hints.count > 0) {
+        self.suggestionView.suggestions = self.hints;
         if ([self.field isFirstResponder]) {
-            [self.field resignFirstResponder];
-            
             self.field.inputAccessoryView = self.suggestionView;
             self.field.autocorrectionType = UITextAutocorrectionTypeNo;
             [self.field reloadInputViews];
-            
-            [self.field becomeFirstResponder];
         }
     }
 }
@@ -106,14 +102,10 @@
     
     // enables native OS autocompletion
     if ([self.field isFirstResponder]) {
-        [self.field resignFirstResponder];
-        
         _suggestionView = nil;
         self.field.inputAccessoryView = nil;
         self.field.autocorrectionType = UITextAutocorrectionTypeYes;
         [self.field reloadInputViews];
-        
-        [self.field becomeFirstResponder];
     }
 }
 

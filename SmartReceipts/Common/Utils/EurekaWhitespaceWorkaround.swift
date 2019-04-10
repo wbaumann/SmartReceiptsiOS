@@ -61,4 +61,8 @@ final class EurekaWhitespaceWorkaround {
         
         isDictation = id.contains(DICTATION_ID)
     }
+    
+    static func replaceNormalSpacesWithNonBreakingSpaces(_ string: String) -> String {
+        return string.replacingOccurrences(of: " ", with: REPLACING_CHAR)
+    }
 }

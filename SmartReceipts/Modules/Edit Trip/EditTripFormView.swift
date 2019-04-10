@@ -49,16 +49,19 @@ class EditTripFormView: FormViewController {
         //MARK: FORM
         form
         +++ Section()
-        <<< TextRow(NAME_ROW_TAG) { row in
+        <<< PredectiveTextRow(NAME_ROW_TAG) { row in
             row.title = LocalizedString("DIALOG_TRIPMENU_HINT_NAME")
             row.value = trip?.name
             row.add(rule: RuleRequired())
         }.onChange({ [unowned self] row in
             self.trip?.name = row.value ?? ""
-        }).cellSetup({ cell, _ in
+        }).cellSetup({ [unowned self] cell, _ in
             cell.configureCell()
             if self.isNewTrip {
-                _ = cell.textField.becomeFirstResponder()
+                cell.textField.becomeFirstResponder()
+            }
+            if WBPreferences.isAutocompleteEnabled() {
+                cell.enableAutocompleteHelper(useReceiptsHints: false)
             }
         })
         

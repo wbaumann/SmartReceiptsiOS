@@ -101,7 +101,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
                 cell.textField.becomeFirstResponder()
             }
             if WBPreferences.isAutocompleteEnabled() {
-                cell.enableAutocompleteHelper()
+                cell.enableAutocompleteHelper(useReceiptsHints: true)
             }
         })
     
