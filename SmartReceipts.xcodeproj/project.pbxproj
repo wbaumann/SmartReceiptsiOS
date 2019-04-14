@@ -3034,7 +3034,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
@@ -3099,7 +3099,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		29D842FE25B5B0D44098C01E /* [CP] Check Pods Manifest.lock */ = {
@@ -3230,7 +3230,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -3239,7 +3239,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartReceipts/Pods-SmartReceipts-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C20DB16583F6538F38361590 /* [CP] Embed Pods Frameworks */ = {
@@ -3248,7 +3248,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
@@ -3319,7 +3319,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E87D0CC4F2C290579243B190 /* [CP] Copy Pods Resources */ = {
@@ -3328,7 +3328,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -3337,7 +3337,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartReceiptsTests/Pods-SmartReceiptsTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EA1E60DA1B2742E40048E688 /* Check localization */ = {
