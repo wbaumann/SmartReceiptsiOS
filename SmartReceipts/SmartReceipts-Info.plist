@@ -107,10 +107,10 @@
 	<string>Advertisement would like to create a calendar event.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>${PRODUCT_NAME} cannot take photos unless you give it permission.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>${PRODUCT_NAME} cannot save photos unless you give it permission.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>${PRODUCT_NAME} cannot import photos unless you give it permission.</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>${PRODUCT_NAME} cannot save photos unless you give it permission.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchView</string>
 	<key>UIMainStoryboardFile</key>
@@ -133,6 +133,8 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    <key>LSSupportsOpeningDocumentsInPlace</key>
+    <true/>
 	<key>UISupportsDocumentBrowser</key>
 	<false/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
