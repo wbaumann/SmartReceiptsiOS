@@ -102,7 +102,8 @@ class DatabaseCreateAtVersion11: DatabaseMigration {
         while i < cats.count - 1 {
             let name = cats[i]
             let code = cats[i + 1]
-            let insert = "INSERT INTO \(CategoriesTable.Name) (\(CategoriesTable.Column.Name), \(CategoriesTable.Column.Code)) VALUES ('\(name)', '\(code)')"
+            let values = #""\#(name)", "\#(code)""#
+            let insert = "INSERT INTO \(CategoriesTable.Name) (\(CategoriesTable.Column.Name), \(CategoriesTable.Column.Code)) VALUES (\(values))"
             if !database.executeUpdate(insert) {
                 return false
             }
