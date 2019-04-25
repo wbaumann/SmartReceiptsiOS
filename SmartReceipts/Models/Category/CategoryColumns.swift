@@ -20,8 +20,13 @@ class CategoryColumn: Column {
     }
     
     override func value(fromRow row: Any!, forCSV: Bool) -> String! {
-        guard let categorizedReceipts = row as? (_: WBCategory, receipts: [WBReceipt]) else { return "" }
-        return valueFrom(receipts: categorizedReceipts.receipts)
+        if let receipt = row as? WBReceipt {
+            return valueFrom(receipts: [receipt])
+        } else if let categorizedReceipts = row as? (_: WBCategory, receipts: [WBReceipt]) {
+            return valueFrom(receipts: categorizedReceipts.receipts)
+        }
+        return ""
+        
     }
     
     func valueFrom(receipts: [WBReceipt]) -> String {
