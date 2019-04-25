@@ -184,7 +184,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         let categoricalTable = ReportPDFTable(pdfRender: pdfRender, columns: columns)!
         categoricalTable.includeHeaders = true
         categoricalTable.includeFooters = false
-        categoricalTable.append(withRows: receipts)
+        categoricalTable.append(withRows: receiptsByCategories())
     }
     
 }
