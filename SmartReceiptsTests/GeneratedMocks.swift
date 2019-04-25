@@ -3666,6 +3666,7 @@ import Cuckoo
 import Foundation
 import RxSwift
 import StoreKit
+import SwiftyStoreKit
 import Toaster
 import Viperit
 
@@ -3692,10 +3693,10 @@ class MockOCRConfigurationInteractor: OCRConfigurationInteractor, Cuckoo.ClassMo
         
     }
     
-    // ["name": "purchase", "returnSignature": "", "fullyQualifiedName": "purchase(product: String)", "parameterSignature": "product: String", "parameterSignatureWithoutNames": "product: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "product", "call": "product: product", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("product"), name: "product", type: "String", range: CountableRange(717..<732), nameRange: CountableRange(717..<724))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func purchase(product: String)  {
+    // ["name": "purchase", "returnSignature": " -> Observable<PurchaseDetails>", "fullyQualifiedName": "purchase(product: String) -> Observable<PurchaseDetails>", "parameterSignature": "product: String", "parameterSignatureWithoutNames": "product: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "product", "call": "product: product", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("product"), name: "product", type: "String", range: CountableRange(739..<754), nameRange: CountableRange(739..<746))], "returnType": "Observable<PurchaseDetails>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
+     override func purchase(product: String)  -> Observable<PurchaseDetails> {
         
-            return cuckoo_manager.call("purchase(product: String)",
+            return cuckoo_manager.call("purchase(product: String) -> Observable<PurchaseDetails>",
                 parameters: (product),
                 superclassCall:
                     
@@ -3718,9 +3719,9 @@ class MockOCRConfigurationInteractor: OCRConfigurationInteractor, Cuckoo.ClassMo
 	        return .init(stub: cuckoo_manager.createStub(for: MockOCRConfigurationInteractor.self, method: "requestProducts() -> Observable<SKProduct>", parameterMatchers: matchers))
 	    }
 	    
-	    func purchase<M1: Cuckoo.Matchable>(product: M1) -> Cuckoo.ClassStubNoReturnFunction<(String)> where M1.MatchedType == String {
+	    func purchase<M1: Cuckoo.Matchable>(product: M1) -> Cuckoo.ClassStubFunction<(String), Observable<PurchaseDetails>> where M1.MatchedType == String {
 	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: product) { $0 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockOCRConfigurationInteractor.self, method: "purchase(product: String)", parameterMatchers: matchers))
+	        return .init(stub: cuckoo_manager.createStub(for: MockOCRConfigurationInteractor.self, method: "purchase(product: String) -> Observable<PurchaseDetails>", parameterMatchers: matchers))
 	    }
 	    
 	}
@@ -3746,9 +3747,9 @@ class MockOCRConfigurationInteractor: OCRConfigurationInteractor, Cuckoo.ClassMo
 	    }
 	    
 	    @discardableResult
-	    func purchase<M1: Cuckoo.Matchable>(product: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == String {
+	    func purchase<M1: Cuckoo.Matchable>(product: M1) -> Cuckoo.__DoNotUse<Observable<PurchaseDetails>> where M1.MatchedType == String {
 	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: product) { $0 }]
-	        return cuckoo_manager.verify("purchase(product: String)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	        return cuckoo_manager.verify("purchase(product: String) -> Observable<PurchaseDetails>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
@@ -3765,8 +3766,8 @@ class MockOCRConfigurationInteractor: OCRConfigurationInteractor, Cuckoo.ClassMo
         return DefaultValueRegistry.defaultValue(for: Observable<SKProduct>.self)
     }
     
-     override func purchase(product: String)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func purchase(product: String)  -> Observable<PurchaseDetails> {
+        return DefaultValueRegistry.defaultValue(for: Observable<PurchaseDetails>.self)
     }
     
 }
