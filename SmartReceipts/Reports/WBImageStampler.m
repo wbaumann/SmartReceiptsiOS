@@ -21,13 +21,11 @@
 static const float IMG_SCALE_FACTOR = 2.1f;
 static const float HW_RATIO = 0.75f;
 
-@implementation WBImageStampler
-{
+@implementation WBImageStampler {
     WBDateFormatter *_dateFormatter;
 }
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         _dateFormatter = [[WBDateFormatter alloc] init];
@@ -39,14 +37,11 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
     [[NSString stringWithFormat:@"%@: %@", name, value] drawAtPoint:CGPointMake(x, y) withAttributes:attrs];
 }
 
-- (BOOL)zipToFile:(NSString *)outputPath stampedImagesForReceiptsAndIndexes:(NSArray *)receiptsAndIndexes inTrip:(WBTrip *)trip {
+- (BOOL)stampImagesForReceipts:(NSArray *_Nonnull)receipts inTrip:(WBTrip *_Nonnull)trip completion:(void(^_Nullable)(NSArray<NSURL *> * _Nonnull urls))completion {
     NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     NSMutableArray<NSURL *> *urls = [NSMutableArray new];
-    for (WBReceiptAndIndex *rwi in receiptsAndIndexes) {
+    for (WBReceipt *receipt in receipts) {
         @autoreleasepool {
-            WBReceipt *receipt = [rwi receipt];
-            //int index = [rwi index];
-            
             if (![receipt hasImage]) {
                 continue;
             }
@@ -70,15 +65,9 @@ static void drawEntry(float x, float y, NSString *name, NSString *value, NSDicti
         }
     }
     
-    NSError *error;
-    [DataExport zipFiles:urls to:outputPath error:&error];
+    completion(urls);
     [self removeFiles:urls];
-    if (error) {
-        ErrorEvent *errorEvent = [[ErrorEvent alloc] initWithError:error file:NSStringFromClass(self.class) function:@"zipToFile" line:71];
-        [[AnalyticsManager sharedManager] recordWithEvent:errorEvent];
-        [self removeFiles:urls];
-        return NO;
-    }
+    
     return YES;
 }
 

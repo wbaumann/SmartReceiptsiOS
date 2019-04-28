@@ -12,7 +12,5 @@
 #import "WBReceipt.h"
 
 @interface WBImageStampler : NSObject
-
--(BOOL) zipToFile:(NSString*) outputPath stampedImagesForReceiptsAndIndexes:(NSArray*) receiptsAndIndexes inTrip:(WBTrip*) trip;
-
+- (BOOL)stampImagesForReceipts:(NSArray *_Nonnull)receipts inTrip:(WBTrip *_Nonnull)trip completion:(void(^_Nullable)(NSArray<NSURL *> * _Nonnull urls))completion;
 @end
