@@ -231,28 +231,22 @@ class PDFReportTable: UIView {
     
     
     private func sum(array: [CGFloat]) -> CGFloat {
-        var result: CGFloat = 0
-        for i in 0..<array.count {
-            result += array[i]
-        }
-        return result
+        return array.reduce(into: 0) { $0 += $1 }
     }
     
     private func objectcsAt(indexes: NSMutableIndexSet, in array: [CGFloat]) -> [CGFloat] {
-        var result = [CGFloat]()
-        indexes.forEach { index in
-            if index < array.count {
-                result.append(array[index])
-            }
-        }
-        return result
+        return array.enumerated()
+            .filter { indexes.contains($0.offset) }
+            .map { $0.element }
     }
     
     private func canSqueezeColumn(title: String) -> Bool {
+        let title = title.replacingOccurrences(of: "\n", with: " ")
         return WBPreferences.localized(key: "RECEIPTMENU_FIELD_COMMENT") == title ||
             WBPreferences.localized(key: "RECEIPTMENU_FIELD_NAME") == title ||
             WBPreferences.localized(key: "column_item_report_comment") == title ||
-            WBPreferences.localized(key: "column_item_blank") == title
+            WBPreferences.localized(key: "column_item_blank") == title ||
+            WBPreferences.localized(key: "column_item_report_name") == title
     }
     
 }
