@@ -41,7 +41,7 @@ class ReportAssetsGenerator: NSObject {
     /// Generate reports
     ///
     /// - Parameter completion: [String] - array of resulting files (paths), GeneratorError - optional error
-    func generate(onSuccessHandler: ([String]) -> (), onErrorHandler: (GeneratorError) -> ()) {
+    func generate(onSuccessHandler: ([String]) -> (), onErrorHandler: @escaping (GeneratorError) -> ()) {
         var files = [String]()
         let db = Database.sharedInstance()
         
@@ -99,17 +99,23 @@ class ReportAssetsGenerator: NSObject {
             Logger.info("generate.imagesZip")
             clearPath(zipPath!)
             
-            let rai = WBReceiptAndIndex.receiptsAndIndices(fromReceipts: db?.allReceipts(for: trip), filteredWith: {  receipt in
-                return WBReportUtils.filterOutReceipt(receipt)
-            })
+            let receipts = WBReceiptAndIndex
+                .receiptsAndIndices(fromReceipts: db?.allReceipts(for: trip), filteredWith: {  WBReportUtils.filterOutReceipt($0) })!
+                .compactMap { ($0 as! WBReceiptAndIndex).receipt() }
             
-            let stamper = WBImageStampler()
-            if stamper.zip(toFile: zipPath, stampedImagesForReceiptsAndIndexes: rai, in: trip) {
-                files.append(zipPath!)
-            } else {
-                onErrorHandler(.zipImagesFailed)
-                return
+            let pdfUrls = receipts
+                .filter { $0.hasPDF()}
+                .compactMap { $0.imageFilePath(for: trip) }
+                .map { URL(fileURLWithPath: $0) }
+            
+            let result = WBImageStampler().stampImages(forReceipts: receipts, in: trip) { urls in
+                let files = urls.adding(pdfUrls)
+                do { try DataExport.zipFiles(files, to: zipPath!) }
+                catch { onErrorHandler(.zipImagesFailed) }
             }
+            
+            guard result else { return }
+            files.append(zipPath!)
         }
 
         onSuccessHandler(files)
