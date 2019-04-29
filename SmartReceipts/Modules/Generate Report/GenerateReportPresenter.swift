@@ -11,30 +11,23 @@ import Viperit
 import RxSwift
 
 class GenerateReportPresenter: Presenter {
-    
-    let fullPdfReport = BehaviorSubject<Bool>(value: false)
-    let pdfReportWithoutTable = BehaviorSubject<Bool>(value: false)
-    let csvFile = BehaviorSubject<Bool>(value: false)
-    let zipStampedJPGs = BehaviorSubject<Bool>(value: false)
-    
+
     override func viewHasLoaded() {
-        interactor.configureBinding()
         interactor.trackConfigureReportEvent()
     }
     
     override func setupView(data: Any) {
-        if let trip = data as? WBTrip {
-            interactor.configure(with: trip)
-        }
+        guard let trip = data as? WBTrip else { return }
+        interactor.configure(with: trip)
     }
     
     func close() {
         router.close()
     }
     
-    func generateReport() {
-        interactor.trackGeneratorEvents()
-        interactor.generateReport()
+    func generateReport(selection: GenerateReportSelection) {
+        interactor.trackGeneratorEvents(selection: selection)
+        interactor.generateReport(selection: selection)
     }
     
     func presentAlert(title: String, message: String) {

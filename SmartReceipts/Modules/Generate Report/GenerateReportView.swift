@@ -18,23 +18,16 @@ protocol GenerateReportViewInterface {
 
 //MARK: GenerateReport View
 final class GenerateReportView: UserInterface {
+    private var formView: GenerateReportFormView?
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIButton!
     var hud: PendingHUDView?
     
-    let settingsTapObservable = PublishSubject<Void>()
-    
     private let bag = DisposeBag()
-    
-    fileprivate var formView: GenerateReportFormView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        formView = GenerateReportFormView(fullPdf: presenter.fullPdfReport,
-                                       pdfNoTable: presenter.pdfReportWithoutTable,
-                                          csvFile: presenter.csvFile,
-                                       zipStamped: presenter.zipStampedJPGs)
-        formView?.settingsTapObservable = settingsTapObservable
+        formView = GenerateReportFormView()
         
         addChild(formView!)
         view.insertSubview(formView!.view, belowSubview: shareButton)
@@ -47,13 +40,12 @@ final class GenerateReportView: UserInterface {
         }).disposed(by: bag)
         
         shareButton.rx.tap.subscribe(onNext: { [weak self] in
-            if let navView = self?.navigationController?.view {
-                self?.hud = PendingHUDView.show(on: navView)
-                self?.presenter.generateReport()
-            }
+            guard let navView = self?.navigationController?.view, let selection = self?.formView?.selection else { return }
+            self?.hud = PendingHUDView.show(on: navView)
+            self?.presenter.generateReport(selection: selection)
         }).disposed(by: bag)
         
-        settingsTapObservable.subscribe(onNext: { [weak self] _ in
+        formView?.onSettingsTap.subscribe(onNext: { [weak self] _ in
             self?.presenter.presentOutputSettings()
         }).disposed(by: bag)
     }

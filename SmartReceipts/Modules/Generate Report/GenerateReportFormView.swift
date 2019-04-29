@@ -11,25 +11,10 @@ import Eureka
 import RxSwift
 
 class GenerateReportFormView: FormViewController {
+    private(set) var selection = GenerateReportSelection()
+    private var settingsTapSubject = PublishSubject<Void>()
     
-    private weak var fullPdfReport: BehaviorSubject<Bool>!
-    private weak var pdfReportWithoutTable: BehaviorSubject<Bool>!
-    private weak var csvFile: BehaviorSubject<Bool>!
-    private weak var zipStampedJPGs: BehaviorSubject<Bool>!
-    weak var settingsTapObservable: PublishSubject<Void>?
-    
-    init(fullPdf: BehaviorSubject<Bool>, pdfNoTable: BehaviorSubject<Bool>,
-         csvFile: BehaviorSubject<Bool>, zipStamped: BehaviorSubject<Bool>) {
-        super.init(nibName: nil, bundle: nil)
-        self.fullPdfReport = fullPdf
-        self.pdfReportWithoutTable = pdfNoTable
-        self.csvFile = csvFile
-        self.zipStampedJPGs = zipStamped
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var onSettingsTap: Observable<Void> { return settingsTapSubject.asObservable() }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,29 +27,34 @@ class GenerateReportFormView: FormViewController {
         }.cellSetup({ cell, _ in
             cell.tintColor = AppTheme.primaryColor
         }).onCellSelection({ [weak self] _,_ in
-            self?.settingsTapObservable?.onNext(())
+            self?.settingsTapSubject.onNext(())
         })
-        
+            
         
         +++ Section()
         <<< checkRow(title: LocalizedString("DIALOG_EMAIL_CHECKBOX_PDF_FULL"))
         .onChange({ [weak self] row in
-            self?.fullPdfReport.onNext(row.value ?? false)
+            self?.selection.fullPdfReport = row.value ?? false
         })
         
         <<< checkRow(title: LocalizedString("DIALOG_EMAIL_CHECKBOX_PDF_IMAGES"))
         .onChange({ [weak self] row in
-            self?.pdfReportWithoutTable?.onNext(row.value ?? false)
+            self?.selection.pdfReportWithoutTable = row.value ?? false
         })
     
         <<< checkRow(title: LocalizedString("DIALOG_EMAIL_CHECKBOX_CSV"))
         .onChange({ [weak self] row in
-            self?.csvFile.onNext(row.value ?? false)
+            self?.selection.csvFile = row.value ?? false
+        })
+            
+        <<< checkRow(title: LocalizedString("DIALOG_EMAIL_CHECKBOX_ZIP"))
+        .onChange({ [weak self] row in
+            self?.selection.zipFiles = row.value ?? false
         })
     
         <<< checkRow(title: LocalizedString("DIALOG_EMAIL_CHECKBOX_ZIP_WITH_METADATA"))
         .onChange({ [weak self] row in
-            self?.zipStampedJPGs?.onNext(row.value ?? false)
+            self?.selection.zipStampedJPGs = row.value ?? false
         })
     }
     
