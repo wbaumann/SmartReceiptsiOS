@@ -2824,7 +2824,7 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.ClassMock {
     
 
     
-    // ["name": "configure", "returnSignature": "", "fullyQualifiedName": "configure(with: WBTrip)", "parameterSignature": "with trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "with: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("with"), name: "trip", type: "WBTrip", range: CountableRange(921..<938), nameRange: CountableRange(921..<925))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "configure", "returnSignature": "", "fullyQualifiedName": "configure(with: WBTrip)", "parameterSignature": "with trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "with: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("with"), name: "trip", type: "WBTrip", range: CountableRange(584..<601), nameRange: CountableRange(584..<588))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func configure(with trip: WBTrip)  {
         
             return cuckoo_manager.call("configure(with: WBTrip)",
@@ -2832,18 +2832,6 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.ClassMock {
                 superclassCall:
                     
                     super.configure(with: trip)
-                    )
-        
-    }
-    
-    // ["name": "configureBinding", "returnSignature": "", "fullyQualifiedName": "configureBinding()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func configureBinding()  {
-        
-            return cuckoo_manager.call("configureBinding()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.configureBinding()
                     )
         
     }
@@ -2860,38 +2848,38 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "trackGeneratorEvents", "returnSignature": "", "fullyQualifiedName": "trackGeneratorEvents()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func trackGeneratorEvents()  {
+    // ["name": "trackGeneratorEvents", "returnSignature": "", "fullyQualifiedName": "trackGeneratorEvents(selection: GenerateReportSelection)", "parameterSignature": "selection: GenerateReportSelection", "parameterSignatureWithoutNames": "selection: GenerateReportSelection", "inputTypes": "GenerateReportSelection", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "selection", "call": "selection: selection", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("selection"), name: "selection", type: "GenerateReportSelection", range: CountableRange(895..<929), nameRange: CountableRange(895..<904))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+     override func trackGeneratorEvents(selection: GenerateReportSelection)  {
         
-            return cuckoo_manager.call("trackGeneratorEvents()",
-                parameters: (),
+            return cuckoo_manager.call("trackGeneratorEvents(selection: GenerateReportSelection)",
+                parameters: (selection),
                 superclassCall:
                     
-                    super.trackGeneratorEvents()
+                    super.trackGeneratorEvents(selection: selection)
                     )
         
     }
     
-    // ["name": "generateReport", "returnSignature": "", "fullyQualifiedName": "generateReport()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func generateReport()  {
+    // ["name": "generateReport", "returnSignature": "", "fullyQualifiedName": "generateReport(selection: GenerateReportSelection)", "parameterSignature": "selection: GenerateReportSelection", "parameterSignatureWithoutNames": "selection: GenerateReportSelection", "inputTypes": "GenerateReportSelection", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "selection", "call": "selection: selection", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("selection"), name: "selection", type: "GenerateReportSelection", range: CountableRange(1633..<1667), nameRange: CountableRange(1633..<1642))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+     override func generateReport(selection: GenerateReportSelection)  {
         
-            return cuckoo_manager.call("generateReport()",
-                parameters: (),
+            return cuckoo_manager.call("generateReport(selection: GenerateReportSelection)",
+                parameters: (selection),
                 superclassCall:
                     
-                    super.generateReport()
+                    super.generateReport(selection: selection)
                     )
         
     }
     
-    // ["name": "validateSelection", "returnSignature": " -> Bool", "fullyQualifiedName": "validateSelection() -> Bool", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Bool", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func validateSelection()  -> Bool {
+    // ["name": "validate", "returnSignature": " -> Bool", "fullyQualifiedName": "validate(selection: GenerateReportSelection) -> Bool", "parameterSignature": "selection: GenerateReportSelection", "parameterSignatureWithoutNames": "selection: GenerateReportSelection", "inputTypes": "GenerateReportSelection", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "selection", "call": "selection: selection", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("selection"), name: "selection", type: "GenerateReportSelection", range: CountableRange(6095..<6129), nameRange: CountableRange(6095..<6104))], "returnType": "Bool", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
+     override func validate(selection: GenerateReportSelection)  -> Bool {
         
-            return cuckoo_manager.call("validateSelection() -> Bool",
-                parameters: (),
+            return cuckoo_manager.call("validate(selection: GenerateReportSelection) -> Bool",
+                parameters: (selection),
                 superclassCall:
                     
-                    super.validateSelection()
+                    super.validate(selection: selection)
                     )
         
     }
@@ -2926,29 +2914,24 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportInteractor.self, method: "configure(with: WBTrip)", parameterMatchers: matchers))
 	    }
 	    
-	    func configureBinding() -> Cuckoo.ClassStubNoReturnFunction<()> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportInteractor.self, method: "configureBinding()", parameterMatchers: matchers))
-	    }
-	    
 	    func trackConfigureReportEvent() -> Cuckoo.ClassStubNoReturnFunction<()> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportInteractor.self, method: "trackConfigureReportEvent()", parameterMatchers: matchers))
 	    }
 	    
-	    func trackGeneratorEvents() -> Cuckoo.ClassStubNoReturnFunction<()> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportInteractor.self, method: "trackGeneratorEvents()", parameterMatchers: matchers))
+	    func trackGeneratorEvents<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.ClassStubNoReturnFunction<(GenerateReportSelection)> where M1.MatchedType == GenerateReportSelection {
+	        let matchers: [Cuckoo.ParameterMatcher<(GenerateReportSelection)>] = [wrap(matchable: selection) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportInteractor.self, method: "trackGeneratorEvents(selection: GenerateReportSelection)", parameterMatchers: matchers))
 	    }
 	    
-	    func generateReport() -> Cuckoo.ClassStubNoReturnFunction<()> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportInteractor.self, method: "generateReport()", parameterMatchers: matchers))
+	    func generateReport<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.ClassStubNoReturnFunction<(GenerateReportSelection)> where M1.MatchedType == GenerateReportSelection {
+	        let matchers: [Cuckoo.ParameterMatcher<(GenerateReportSelection)>] = [wrap(matchable: selection) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportInteractor.self, method: "generateReport(selection: GenerateReportSelection)", parameterMatchers: matchers))
 	    }
 	    
-	    func validateSelection() -> Cuckoo.ClassStubFunction<(), Bool> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportInteractor.self, method: "validateSelection() -> Bool", parameterMatchers: matchers))
+	    func validate<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.ClassStubFunction<(GenerateReportSelection), Bool> where M1.MatchedType == GenerateReportSelection {
+	        let matchers: [Cuckoo.ParameterMatcher<(GenerateReportSelection)>] = [wrap(matchable: selection) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportInteractor.self, method: "validate(selection: GenerateReportSelection) -> Bool", parameterMatchers: matchers))
 	    }
 	    
 	}
@@ -2990,33 +2973,27 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.ClassMock {
 	    }
 	    
 	    @discardableResult
-	    func configureBinding() -> Cuckoo.__DoNotUse<Void> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("configureBinding()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
 	    func trackConfigureReportEvent() -> Cuckoo.__DoNotUse<Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("trackConfigureReportEvent()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func trackGeneratorEvents() -> Cuckoo.__DoNotUse<Void> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("trackGeneratorEvents()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    func trackGeneratorEvents<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == GenerateReportSelection {
+	        let matchers: [Cuckoo.ParameterMatcher<(GenerateReportSelection)>] = [wrap(matchable: selection) { $0 }]
+	        return cuckoo_manager.verify("trackGeneratorEvents(selection: GenerateReportSelection)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func generateReport() -> Cuckoo.__DoNotUse<Void> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("generateReport()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    func generateReport<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == GenerateReportSelection {
+	        let matchers: [Cuckoo.ParameterMatcher<(GenerateReportSelection)>] = [wrap(matchable: selection) { $0 }]
+	        return cuckoo_manager.verify("generateReport(selection: GenerateReportSelection)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func validateSelection() -> Cuckoo.__DoNotUse<Bool> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("validateSelection() -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    func validate<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.__DoNotUse<Bool> where M1.MatchedType == GenerateReportSelection {
+	        let matchers: [Cuckoo.ParameterMatcher<(GenerateReportSelection)>] = [wrap(matchable: selection) { $0 }]
+	        return cuckoo_manager.verify("validate(selection: GenerateReportSelection) -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
@@ -3067,23 +3044,19 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.ClassMock {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
-     override func configureBinding()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
      override func trackConfigureReportEvent()  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
-     override func trackGeneratorEvents()  {
+     override func trackGeneratorEvents(selection: GenerateReportSelection)  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
-     override func generateReport()  {
+     override func generateReport(selection: GenerateReportSelection)  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
-     override func validateSelection()  -> Bool {
+     override func validate(selection: GenerateReportSelection)  -> Bool {
         return DefaultValueRegistry.defaultValue(for: Bool.self)
     }
     
@@ -3129,7 +3102,7 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(669..<678), nameRange: CountableRange(669..<673))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(379..<388), nameRange: CountableRange(379..<383))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func setupView(data: Any)  {
         
             return cuckoo_manager.call("setupView(data: Any)",
@@ -3153,19 +3126,19 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "generateReport", "returnSignature": "", "fullyQualifiedName": "generateReport()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func generateReport()  {
+    // ["name": "generateReport", "returnSignature": "", "fullyQualifiedName": "generateReport(selection: GenerateReportSelection)", "parameterSignature": "selection: GenerateReportSelection", "parameterSignatureWithoutNames": "selection: GenerateReportSelection", "inputTypes": "GenerateReportSelection", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "selection", "call": "selection: selection", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("selection"), name: "selection", type: "GenerateReportSelection", range: CountableRange(578..<612), nameRange: CountableRange(578..<587))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+     override func generateReport(selection: GenerateReportSelection)  {
         
-            return cuckoo_manager.call("generateReport()",
-                parameters: (),
+            return cuckoo_manager.call("generateReport(selection: GenerateReportSelection)",
+                parameters: (selection),
                 superclassCall:
                     
-                    super.generateReport()
+                    super.generateReport(selection: selection)
                     )
         
     }
     
-    // ["name": "presentAlert", "returnSignature": "", "fullyQualifiedName": "presentAlert(title: String, message: String)", "parameterSignature": "title: String, message: String", "parameterSignatureWithoutNames": "title: String, message: String", "inputTypes": "String, String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "title, message", "call": "title: title, message: message", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("title"), name: "title", type: "String", range: CountableRange(980..<993), nameRange: CountableRange(980..<985)), CuckooGeneratorFramework.MethodParameter(label: Optional("message"), name: "message", type: "String", range: CountableRange(995..<1010), nameRange: CountableRange(995..<1002))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "presentAlert", "returnSignature": "", "fullyQualifiedName": "presentAlert(title: String, message: String)", "parameterSignature": "title: String, message: String", "parameterSignatureWithoutNames": "title: String, message: String", "inputTypes": "String, String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "title, message", "call": "title: title, message: message", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("title"), name: "title", type: "String", range: CountableRange(767..<780), nameRange: CountableRange(767..<772)), CuckooGeneratorFramework.MethodParameter(label: Optional("message"), name: "message", type: "String", range: CountableRange(782..<797), nameRange: CountableRange(782..<789))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func presentAlert(title: String, message: String)  {
         
             return cuckoo_manager.call("presentAlert(title: String, message: String)",
@@ -3177,7 +3150,7 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "presentSheet", "returnSignature": "", "fullyQualifiedName": "presentSheet(title: String?, message: String?, actions: [UIAlertAction])", "parameterSignature": "title: String?, message: String?, actions: [UIAlertAction]", "parameterSignatureWithoutNames": "title: String?, message: String?, actions: [UIAlertAction]", "inputTypes": "String?, String?, [UIAlertAction]", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "title, message, actions", "call": "title: title, message: message, actions: actions", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("title"), name: "title", type: "String?", range: CountableRange(1104..<1118), nameRange: CountableRange(1104..<1109)), CuckooGeneratorFramework.MethodParameter(label: Optional("message"), name: "message", type: "String?", range: CountableRange(1120..<1136), nameRange: CountableRange(1120..<1127)), CuckooGeneratorFramework.MethodParameter(label: Optional("actions"), name: "actions", type: "[UIAlertAction]", range: CountableRange(1138..<1162), nameRange: CountableRange(1138..<1145))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "presentSheet", "returnSignature": "", "fullyQualifiedName": "presentSheet(title: String?, message: String?, actions: [UIAlertAction])", "parameterSignature": "title: String?, message: String?, actions: [UIAlertAction]", "parameterSignatureWithoutNames": "title: String?, message: String?, actions: [UIAlertAction]", "inputTypes": "String?, String?, [UIAlertAction]", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "title, message, actions", "call": "title: title, message: message, actions: actions", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("title"), name: "title", type: "String?", range: CountableRange(891..<905), nameRange: CountableRange(891..<896)), CuckooGeneratorFramework.MethodParameter(label: Optional("message"), name: "message", type: "String?", range: CountableRange(907..<923), nameRange: CountableRange(907..<914)), CuckooGeneratorFramework.MethodParameter(label: Optional("actions"), name: "actions", type: "[UIAlertAction]", range: CountableRange(925..<949), nameRange: CountableRange(925..<932))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func presentSheet(title: String?, message: String?, actions: [UIAlertAction])  {
         
             return cuckoo_manager.call("presentSheet(title: String?, message: String?, actions: [UIAlertAction])",
@@ -3189,7 +3162,7 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "present", "returnSignature": "", "fullyQualifiedName": "present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)", "parameterSignature": "vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?", "parameterSignatureWithoutNames": "vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?", "inputTypes": "UIViewController, Bool, Bool, (() -> Void)?", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": true, "@type": "ClassMethod", "accessibility": "", "parameterNames": "vc, animated, isPopover, completion", "call": "vc: vc, animated: animated, isPopover: isPopover, completion: completion", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("vc"), name: "vc", type: "UIViewController", range: CountableRange(1269..<1289), nameRange: CountableRange(1269..<1271)), CuckooGeneratorFramework.MethodParameter(label: Optional("animated"), name: "animated", type: "Bool", range: CountableRange(1291..<1312), nameRange: CountableRange(1291..<1299)), CuckooGeneratorFramework.MethodParameter(label: Optional("isPopover"), name: "isPopover", type: "Bool", range: CountableRange(1314..<1337), nameRange: CountableRange(1314..<1323)), CuckooGeneratorFramework.MethodParameter(label: Optional("completion"), name: "completion", type: "(() -> Void)?", range: CountableRange(1339..<1370), nameRange: CountableRange(1339..<1349))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "present", "returnSignature": "", "fullyQualifiedName": "present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)", "parameterSignature": "vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?", "parameterSignatureWithoutNames": "vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?", "inputTypes": "UIViewController, Bool, Bool, (() -> Void)?", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": true, "@type": "ClassMethod", "accessibility": "", "parameterNames": "vc, animated, isPopover, completion", "call": "vc: vc, animated: animated, isPopover: isPopover, completion: completion", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("vc"), name: "vc", type: "UIViewController", range: CountableRange(1056..<1076), nameRange: CountableRange(1056..<1058)), CuckooGeneratorFramework.MethodParameter(label: Optional("animated"), name: "animated", type: "Bool", range: CountableRange(1078..<1099), nameRange: CountableRange(1078..<1086)), CuckooGeneratorFramework.MethodParameter(label: Optional("isPopover"), name: "isPopover", type: "Bool", range: CountableRange(1101..<1124), nameRange: CountableRange(1101..<1110)), CuckooGeneratorFramework.MethodParameter(label: Optional("completion"), name: "completion", type: "(() -> Void)?", range: CountableRange(1126..<1157), nameRange: CountableRange(1126..<1136))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)  {
         
             return cuckoo_manager.call("present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)",
@@ -3261,9 +3234,9 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportPresenter.self, method: "close()", parameterMatchers: matchers))
 	    }
 	    
-	    func generateReport() -> Cuckoo.ClassStubNoReturnFunction<()> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportPresenter.self, method: "generateReport()", parameterMatchers: matchers))
+	    func generateReport<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.ClassStubNoReturnFunction<(GenerateReportSelection)> where M1.MatchedType == GenerateReportSelection {
+	        let matchers: [Cuckoo.ParameterMatcher<(GenerateReportSelection)>] = [wrap(matchable: selection) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportPresenter.self, method: "generateReport(selection: GenerateReportSelection)", parameterMatchers: matchers))
 	    }
 	    
 	    func presentAlert<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(title: M1, message: M2) -> Cuckoo.ClassStubNoReturnFunction<(String, String)> where M1.MatchedType == String, M2.MatchedType == String {
@@ -3331,9 +3304,9 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.ClassMock {
 	    }
 	    
 	    @discardableResult
-	    func generateReport() -> Cuckoo.__DoNotUse<Void> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("generateReport()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    func generateReport<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == GenerateReportSelection {
+	        let matchers: [Cuckoo.ParameterMatcher<(GenerateReportSelection)>] = [wrap(matchable: selection) { $0 }]
+	        return cuckoo_manager.verify("generateReport(selection: GenerateReportSelection)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
@@ -3394,7 +3367,7 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.ClassMock {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
-     override func generateReport()  {
+     override func generateReport(selection: GenerateReportSelection)  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
