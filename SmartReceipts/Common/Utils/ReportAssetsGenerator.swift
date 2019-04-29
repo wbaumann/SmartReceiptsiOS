@@ -8,13 +8,6 @@
 
 import Foundation
 
-private struct Generation {
-    let fullPDF: Bool
-    let imagesPDF: Bool
-    let csv: Bool
-    let imagesZip: Bool
-}
-
 class ReportAssetsGenerator: NSObject {
     
     // Generator's error representation
@@ -23,19 +16,17 @@ class ReportAssetsGenerator: NSObject {
         case fullPdfTooManyColumns  // can't place all PDF columns
         case imagesPdf
         case csvFailed
+        case zipFilesFailed
         case zipImagesFailed
     }
     
-    fileprivate let trip: WBTrip
-    fileprivate var generate: Generation!
+    private let trip: WBTrip
+    private let generate: GenerateReportSelection
     
-    init(trip: WBTrip) {
+    init(trip: WBTrip, generate: GenerateReportSelection) {
         self.trip = trip
-    }
-    
-    func setGenerated(_ fullPDF: Bool, imagesPDF: Bool, csv: Bool, imagesZip: Bool) {
-        generate = Generation(fullPDF: fullPDF, imagesPDF: imagesPDF, csv: csv, imagesZip: imagesZip)
-        Logger.info("setGenerated: \(String(describing: generate))")
+        self.generate = generate
+        Logger.info("Generate: \(String(describing: generate))")
     }
     
     /// Generate reports
@@ -49,11 +40,11 @@ class ReportAssetsGenerator: NSObject {
         
         let tripName = trip.name ?? "Report"
         let pdfPath = trip.file(inDirectoryPath: "\(tripName).pdf")
-        let pdfImagesPath = trip.file(inDirectoryPath: "\(tripName)Images.pdf")
+        let pdfImagesPath = trip.file(inDirectoryPath: "\(tripName)_images.pdf")
         let csvPath = trip.file(inDirectoryPath: "\(tripName).csv")
         let zipPath = trip.file(inDirectoryPath: "\(tripName).zip")
         
-        if generate.fullPDF {
+        if generate.fullPdfReport {
             Logger.info("generate.fullPDF")
             clearPath(pdfPath!)
             let generator = TripFullPDFGenerator(trip: trip, database: db!)
@@ -61,17 +52,13 @@ class ReportAssetsGenerator: NSObject {
             if generator.generateTo(path: pdfPath!) {
                 files.append(pdfPath!)
             } else {
-                if generator.pdfRender.tableHasTooManyColumns {
-                    onErrorHandler(.fullPdfTooManyColumns)
-                } else {
-                    onErrorHandler(.fullPdfFailed)
-                }
-            
+                let error: GeneratorError = generator.pdfRender.tableHasTooManyColumns ? .fullPdfTooManyColumns : .fullPdfFailed
+                onErrorHandler(error)
                 return
             }
         }
         
-        if generate.imagesPDF {
+        if generate.pdfReportWithoutTable {
             Logger.info("generate.imagesPDF")
             clearPath(pdfImagesPath!)
             let generator = TripImagesPDFGenerator(trip: trip, database: db!)
@@ -83,7 +70,7 @@ class ReportAssetsGenerator: NSObject {
             }
         }
         
-        if generate.csv {
+        if generate.csvFile {
             Logger.info("generate.csv")
             clearPath(csvPath!)
             let generator = TripCSVGenerator(trip: trip, database: db!)
@@ -95,36 +82,51 @@ class ReportAssetsGenerator: NSObject {
             }
         }
         
-        if generate.imagesZip {
-            Logger.info("generate.imagesZip")
+        if generate.zipFiles {
+            Logger.info("generate.filesZip")
             clearPath(zipPath!)
             
-            let receipts = WBReceiptAndIndex
-                .receiptsAndIndices(fromReceipts: db?.allReceipts(for: trip), filteredWith: {  WBReportUtils.filterOutReceipt($0) })!
-                .compactMap { ($0 as! WBReceiptAndIndex).receipt() }
+            do { try DataExport.zipFiles(reportUrls(), to: zipPath!) }
+            catch { onErrorHandler(.zipImagesFailed); return }
+            files.append(zipPath!)
+        }
+        
+        if generate.zipStampedJPGs {
+            Logger.info("generate.imagesZip")
+            let path = generate.zipFiles ? zipPath?.replacingOccurrences(of: ".zip", with: "_stamped.zip") : zipPath
+            clearPath(path!)
             
-            let pdfUrls = receipts
-                .filter { $0.hasPDF()}
-                .compactMap { $0.imageFilePath(for: trip) }
-                .map { URL(fileURLWithPath: $0) }
-            
-            let result = WBImageStampler().stampImages(forReceipts: receipts, in: trip) { urls in
-                let files = urls.adding(pdfUrls)
-                do { try DataExport.zipFiles(files, to: zipPath!) }
-                catch { onErrorHandler(.zipImagesFailed) }
+            let reportURLs = reportUrls()
+            let result = WBImageStampler().stampImages(forReceipts: receipts(), in: trip) { urls in
+                let files = Array(Set(urls.adding(reportURLs)))
+                do { try DataExport.zipFiles(files, to: path!) }
+                catch { onErrorHandler(.zipImagesFailed); return }
             }
             
             guard result else { return }
-            files.append(zipPath!)
+            files.append(path!)
         }
 
         onSuccessHandler(files)
     }
     
-    fileprivate func clearPath(_ path: String) {
-        if !FileManager.default.fileExists(atPath: path) {
-            return
-        }
+    private func reportUrls() -> [URL] {
+        let urls = receipts()
+            .compactMap { $0.imageFilePath(for: trip) }
+            .map { URL(fileURLWithPath: $0) }
+        
+        return urls
+    }
+    
+    private func receipts() -> [WBReceipt] {
+        let db = Database.sharedInstance()
+        return WBReceiptAndIndex
+            .receiptsAndIndices(fromReceipts: db?.allReceipts(for: trip), filteredWith: {  WBReportUtils.filterOutReceipt($0) })!
+            .compactMap { ($0 as? WBReceiptAndIndex)?.receipt() }
+    }
+    
+    private func clearPath(_ path: String) {
+        guard FileManager.default.fileExists(atPath: path) else { return }
 
         do {
             try FileManager.default.removeItem(atPath: path)

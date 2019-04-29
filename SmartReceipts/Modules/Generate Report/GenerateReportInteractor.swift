@@ -18,11 +18,6 @@ class GenerateReportInteractor: Interactor {
     var shareService: GenerateReportShareService?
     var trip: WBTrip!
     
-    private var fullPdfReport: BehaviorRelay         = BehaviorRelay(value: false)
-    private var pdfReportWithoutTable: BehaviorRelay = BehaviorRelay(value: false)
-    private var csvFile: BehaviorRelay               = BehaviorRelay(value: false)
-    private var zipStampedJPGs: BehaviorRelay        = BehaviorRelay(value: false)
-    
     private let bag = DisposeBag()
     
     var titleSubtitle: TitleSubtitle {
@@ -31,38 +26,36 @@ class GenerateReportInteractor: Interactor {
     
     func configure(with trip: WBTrip) {
         self.trip = trip
-        generator = ReportAssetsGenerator(trip: trip)
         shareService = GenerateReportShareService(presenter: presenter, trip: trip)
-    }
-    
-    func configureBinding() {
-        presenter.fullPdfReport.bind(to: fullPdfReport).disposed(by: bag)
-        presenter.pdfReportWithoutTable.bind(to: pdfReportWithoutTable).disposed(by: bag)
-        presenter.csvFile.bind(to: csvFile).disposed(by: bag)
-        presenter.zipStampedJPGs.bind(to: zipStampedJPGs).disposed(by: bag)
     }
     
     func trackConfigureReportEvent() {
         AnalyticsManager.sharedManager.record(event: Event.Informational.ConfigureReport)
     }
     
-    func trackGeneratorEvents() {
-        if fullPdfReport.value {
+    func trackGeneratorEvents(selection: GenerateReportSelection) {
+        if selection.fullPdfReport {
             AnalyticsManager.sharedManager.record(event: Event.Generate.FullPdfReport)
         }
-        if pdfReportWithoutTable.value {
+        if selection.pdfReportWithoutTable {
             AnalyticsManager.sharedManager.record(event: Event.Generate.ImagesPdfReport)
         }
-        if csvFile.value {
+        if selection.csvFile {
             AnalyticsManager.sharedManager.record(event: Event.Generate.CsvReport)
         }
-        if zipStampedJPGs.value {
+        if selection.zipFiles {
+            AnalyticsManager.sharedManager.record(event: Event.Generate.ZipReport)
+        }
+        if selection.zipStampedJPGs {
             AnalyticsManager.sharedManager.record(event: Event.Generate.StampedZipReport)
         }
     }
     
-    func generateReport() {
-        if needEnableDistance() {
+    func generateReport(selection: GenerateReportSelection) {
+        generator = ReportAssetsGenerator(trip: trip, generate: selection)
+        
+        let needEnableDistance = selection.csvFile && !WBPreferences.printDistanceTable() && Database.sharedInstance().allReceipts(for: trip).isEmpty
+        if needEnableDistance {
             Logger.debug("Empty Receipts and disabled Include Distances. Go to Settings")
             AnalyticsManager.sharedManager.record(event: Event.Generate.NothingToGenerateCSV)
             
@@ -72,16 +65,12 @@ class GenerateReportInteractor: Interactor {
             return
         }
         
-        if !validateSelection() {
+        if !validate(selection: selection) {
             presenter.hideHudFromView()
             return
         }
         
         delayedExecution(DEFAULT_ANIMATION_DURATION) {
-            
-            self.generator?.setGenerated(self.fullPdfReport.value, imagesPDF: self.pdfReportWithoutTable.value,
-                                          csv: self.csvFile.value, imagesZip: self.zipStampedJPGs.value)
-            
             self.generator!.generate(onSuccessHandler: { (files) in
                 TooltipService.shared.markReportGenerated()
                 self.presenter.hideHudFromView()
@@ -140,6 +129,8 @@ class GenerateReportInteractor: Interactor {
                     message = LocalizedString("DIALOG_EMAIL_CHECKBOX_PDF_IMAGES")
                 case .csvFailed:
                     message = LocalizedString("DIALOG_EMAIL_CHECKBOX_CSV")
+                case .zipFilesFailed:
+                    message = LocalizedString("DIALOG_EMAIL_CHECKBOX_ZIP")
                 case .zipImagesFailed:
                     message = LocalizedString("DIALOG_EMAIL_CHECKBOX_ZIP_WITH_METADATA")
                 }
@@ -149,17 +140,12 @@ class GenerateReportInteractor: Interactor {
         }
     }
     
-    func validateSelection() -> Bool {
-        if (!fullPdfReport.value && !pdfReportWithoutTable.value && !csvFile.value && !zipStampedJPGs.value) {
-            presenter.presentAlert(title: LocalizedString("generic_error_alert_title"),
-                                   message: LocalizedString("DIALOG_EMAIL_TOAST_NO_SELECTION"))
-            return false
+    func validate(selection: GenerateReportSelection) -> Bool {
+        let result = selection.isValid
+        if !result {
+            presenter.presentAlert(title: LocalizedString("generic_error_alert_title"), message: LocalizedString("DIALOG_EMAIL_TOAST_NO_SELECTION"))
         }
-        return true
-    }
-    
-    private func needEnableDistance() -> Bool {
-        return csvFile.value && !WBPreferences.printDistanceTable() && Database.sharedInstance().allReceipts(for: trip).isEmpty
+        return result
     }
     
 }

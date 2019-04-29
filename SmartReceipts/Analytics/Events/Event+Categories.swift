@@ -111,6 +111,7 @@ public extension Event {
         static let FullPdfReport = Event(category: Category.Generate, name: "FullPdfReport")
         static let ImagesPdfReport = Event(category: Category.Generate, name: "ImagesPdfReport")
         static let CsvReport = Event(category: Category.Generate, name: "CsvReport")
+        static let ZipReport = Event(category: Category.Generate, name: "ZipReport")
         static let StampedZipReport = Event(category: Category.Generate, name: "StampedZipReport")
         static let NothingToGenerateCSV = Event(category: Category.Generate, name: "EmptyReportsAndDisabledDistancesCSV")
     }
