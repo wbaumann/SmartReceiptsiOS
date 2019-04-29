@@ -41,22 +41,20 @@ class GenerateReportModuleTest: XCTestCase {
         }
         
         stub(interactor) { mock in
-            mock.generateReport().thenDoNothing()
+            mock.generateReport(selection: GenerateReportSelection()).thenDoNothing()
         }
     }
     
     override func tearDown() {
         super.tearDown()
     }
-    
+
     func testPresenterToIntractor() {
         presenter.viewHasLoaded()
-        verify(interactor).configureBinding()
-        verify(interactor).trackConfigureReportEvent()
-        
-        presenter.generateReport()
-        verify(interactor).trackGeneratorEvents()
-        verify(interactor).generateReport()
+
+        presenter.generateReport(selection: .init())
+        verify(interactor).trackGeneratorEvents(selection: GenerateReportSelection())
+        verify(interactor).generateReport(selection: GenerateReportSelection())
     }
     
     func testPresenterToRouter() {
@@ -69,29 +67,17 @@ class GenerateReportModuleTest: XCTestCase {
         presenter.presentEnableDistances()
         verify(router).openSettingsOnDisatnce()
     }
+}
+
+extension GenerateReportSelection: Equatable, Matchable {
+    public typealias MatchedType = GenerateReportSelection
     
-    func testPresenterRxFlags() {
-        presenter.viewHasLoaded()
-        
-        XCTAssertFalse(interactor.validateSelection())
-        
-        presenter.zipStampedJPGs.onNext(true)
-        XCTAssertTrue(interactor.validateSelection())
-        
-        presenter.fullPdfReport.onNext(true)
-        XCTAssertTrue(interactor.validateSelection())
-        
-        presenter.pdfReportWithoutTable.onNext(true)
-        XCTAssertTrue(interactor.validateSelection())
-        
-        presenter.csvFile.onNext(true)
-        XCTAssertTrue(interactor.validateSelection())
-        
-        presenter.zipStampedJPGs.onNext(false)
-        presenter.fullPdfReport.onNext(false)
-        presenter.csvFile.onNext(false)
-        presenter.pdfReportWithoutTable.onNext(false)
-        XCTAssertFalse(interactor.validateSelection())
+    public var matcher: ParameterMatcher<GenerateReportSelection> {
+        return ParameterMatcher<GenerateReportSelection>(matchesFunction: { $0 == self })
     }
     
+    public static func == (lhs: GenerateReportSelection, rhs: GenerateReportSelection) -> Bool {
+        return [lhs.csvFile, lhs.fullPdfReport, lhs.zipStampedJPGs, lhs.zipFiles, lhs.pdfReportWithoutTable] ==
+               [rhs.csvFile, rhs.fullPdfReport, rhs.zipStampedJPGs, rhs.zipFiles, rhs.pdfReportWithoutTable]
+    }
 }
