@@ -493,18 +493,24 @@ static NSString * const kDeprecatedParent = @"parent";
     return result;
 }
 
-- (BOOL)markAllReceiptsSynced:(BOOL)synced {
+- (BOOL)markAllEntriesSynced:(BOOL)synced {
     __block BOOL result;
-    NSMutableString *query = [NSMutableString stringWithFormat:@"UPDATE %@ SET %@ = %d",
-                              ReceiptsTable.TABLE_NAME, SyncStateColumns.DRIVE_SYNC_IS_SYNCED, synced];
+    [self.databaseQueue inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollback) {
+        result &= [self markTable:TripsTable.TABLE_NAME synced:synced database:db];
+        result &= [self markTable:ReceiptsTable.TABLE_NAME synced:synced database:db];
+        result &= [self markTable:DistanceTable.TABLE_NAME synced:synced database:db];
+        *rollback = !result;
+    }];
+    
+    return result;
+}
+
+- (BOOL)markTable:(NSString *)table synced:(BOOL)synced database:(FMDatabase *)db {
+    NSMutableString *query = [NSMutableString stringWithFormat:@"UPDATE %@ SET %@ = %d", table, SyncStateColumns.DRIVE_SYNC_IS_SYNCED, synced];
     if (!synced) {
         [query appendFormat:@", %@ = ''", SyncStateColumns.DRIVE_SYNC_ID];
     }
-    
-    [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [db executeUpdate:query];
-    }];
-    return result;
+    return [db executeUpdate:query];
 }
 
 @end

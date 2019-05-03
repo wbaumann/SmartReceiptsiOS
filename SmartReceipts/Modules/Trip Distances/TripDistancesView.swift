@@ -52,13 +52,12 @@ class TripDistancesView: FetchedTableViewController {
     func findMaxRateWidth() -> CGFloat {
         var max: CGFloat = 0
         for row in 0..<itemsCount {
-            if let distance = objectAtIndexPath(IndexPath(row: row, section: 0)) as? Distance {
-                let distanceString = Price.stringFrom(amount: distance.distance)
-                let bounds = distanceString.boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics,
-                 attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 21)], context: nil)
-                
-                max = CGFloat.maximum(max, bounds.width + 10)
-            }
+            guard let distance = objectAtIndexPath(IndexPath(row: row, section: 0)) as? Distance else { continue }
+            let distanceString = Price.stringFrom(amount: distance.distance)
+            let bounds = distanceString.boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics,
+             attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 21)], context: nil)
+            
+            max = CGFloat.maximum(max, bounds.width + 10)
         }
         return max
     }
@@ -71,33 +70,28 @@ class TripDistancesView: FetchedTableViewController {
         super.contentChanged()
         maxRateWidth = findMaxRateWidth()
         for cell in tableView.visibleCells {
-            if let dsCell = cell as? DistanceCell {
-                dsCell.setPriceLabelWidth(maxRateWidth)
-            }
+            guard let dsCell = cell as? DistanceCell else { continue }
+            dsCell.setPriceLabelWidth(maxRateWidth)
         }
         presenter.contentChanged.onNext(())
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
-        if let distanceCell = cell as? DistanceCell {
-            if let distance = item as? Distance {
-                dateFormatter.configure(timeZone: distance.timeZone!)
-                distanceCell.distanceLabel.text = Price.stringFrom(amount: distance.distance)
-                distanceCell.destinationLabel.text = distance.location;
-                distanceCell.totalLabel.text = distance.totalRate().mileageRateCurrencyFormattedPrice()
-                distanceCell.dateLabel.text = dateFormatter.string(from: distance.date)
-                distanceCell.setPriceLabelWidth(maxRateWidth)
-                
-                let state = ModelSyncState.modelState(modelChangeDate: distance.lastLocalModificationTime)
-                distanceCell.setState(state)
-            }
-        }
+        guard let distanceCell = cell as? DistanceCell, let distance = item as? Distance else { return }
+        dateFormatter.configure(timeZone: distance.timeZone!)
+        distanceCell.distanceLabel.text = Price.stringFrom(amount: distance.distance)
+        distanceCell.destinationLabel.text = distance.location;
+        distanceCell.totalLabel.text = distance.totalRate().mileageRateCurrencyFormattedPrice()
+        distanceCell.dateLabel.text = dateFormatter.string(from: distance.date)
+        distanceCell.setPriceLabelWidth(maxRateWidth)
+        
+        let state = ModelSyncState.modelState(modelChangeDate: distance.lastLocalModificationTime)
+        distanceCell.setState(state)
     }
     
     override func delete(object: Any!, at indexPath: IndexPath) {
-        if let distance = object as? Distance {
-            presenter.delete(distance: distance)
-        }
+        guard let distance = object as? Distance else { return }
+        presenter.delete(distance: distance)
     }
     
     override func tappedObject(_ tapped: Any, indexPath: IndexPath) {

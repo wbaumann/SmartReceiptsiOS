@@ -142,7 +142,7 @@ class EditTripFormView: FormViewController {
 
 private let whitespaceWorkaround = EurekaWhitespaceWorkaround()
 fileprivate extension BaseCell {
-    fileprivate func configureCell() {
+    func configureCell() {
         textLabel?.font = AppTheme.boldFont
         detailTextLabel?.textColor = AppTheme.primaryColor
         detailTextLabel?.font = AppTheme.boldFont
