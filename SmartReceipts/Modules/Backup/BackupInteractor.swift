@@ -40,13 +40,12 @@ class BackupInteractor: Interactor {
                 for file in result.files {
                     for trip in trips {
                         let receipts = database.allReceipts(for: trip) as! [WBReceipt]
-                        if !receipts.filter({ $0.imageFilePath(for: trip).contains(file.filename) }).isEmpty {
-                            let tripPath = tempDirPath.asNSString.appendingPathComponent(trip.name)
-                            _ = FileManager.createDirectiryIfNotExists(path: tripPath)
-                            let receiptPath = tripPath.asNSString.appendingPathComponent(file.filename)
-                            FileManager.default.createFile(atPath: receiptPath, contents: file.data, attributes: nil)
-                            urls.insert(tripPath.asFileURL)
-                        }
+                        guard !receipts.filter({ $0.imageFilePath(for: trip).contains(file.filename) }).isEmpty else { continue }
+                        let tripPath = tempDirPath.asNSString.appendingPathComponent(trip.name)
+                        _ = FileManager.createDirectiryIfNotExists(path: tripPath)
+                        let receiptPath = tripPath.asNSString.appendingPathComponent(file.filename)
+                        FileManager.default.createFile(atPath: receiptPath, contents: file.data, attributes: nil)
+                        urls.insert(tripPath.asFileURL)
                     }
                 }
                 
@@ -151,9 +150,8 @@ class BackupInteractor: Interactor {
     func deleteBackup(_ backup: RemoteBackupMetadata) {
         weak var hud = PendingHUDView.showFullScreen()
         BackupProvidersManager.shared.deleteBackup(remoteBackupMetadata: backup)
-            .andThen(BackupProvidersManager.shared.clearCurrentBackupConfiguration())
+            .andThen(onDeleteBackup(backup))
             .subscribe(onCompleted: { [weak self] in
-                Database.sharedInstance().markAllReceiptsSynced(false)
                 self?.presenter.updateBackups()
                 hud?.hide()
                 Toast.show(LocalizedString("dialog_remote_backup_delete_toast_success"))
@@ -197,6 +195,14 @@ class BackupInteractor: Interactor {
         presenter.updateBackups()
     }
     
+    private func onDeleteBackup(_ backup: RemoteBackupMetadata) -> Completable {
+        guard isCurrentDevice(backup: backup) else { return .empty() }
+        return BackupProvidersManager.shared.clearCurrentBackupConfiguration()
+            .do(onCompleted: {
+                Database.sharedInstance().markAllEntriesSynced(false)
+                AppNotificationCenter.postDidSyncBackup()
+            })
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
