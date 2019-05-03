@@ -371,7 +371,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
 
 private let whitespaceWorkaround = EurekaWhitespaceWorkaround()
 fileprivate extension BaseCell {
-    fileprivate func configureCell() {
+    func configureCell() {
         textLabel?.font = AppTheme.boldFont
         detailTextLabel?.textColor = AppTheme.primaryColor
         detailTextLabel?.font = AppTheme.boldFont
@@ -382,7 +382,7 @@ fileprivate extension BaseCell {
 
 //MARK: Prepare Cells
 fileprivate extension EditReceiptFormView {
-    fileprivate func proposedCategory() -> String {
+    func proposedCategory() -> String {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.hour], from: Date())
         let hour = components.hour!

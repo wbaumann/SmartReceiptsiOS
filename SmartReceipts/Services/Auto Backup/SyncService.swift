@@ -149,15 +149,13 @@ class SyncService {
     
     @objc private func didInsert(_ notification: Notification) {
         syncService?.syncDatabase()
-        if !canUploadReceipts { return }
+        guard canUploadReceipts else { return }
         
-        guard let receipt = notification.object as? WBReceipt else { return }
-        if !receipt.isSynced(syncProvider: .current) {
-            let objectID = Database.sharedInstance().nextReceiptID() - UInt(1)
-            guard let syncReceipt = Database.sharedInstance().receipt(byObjectID: objectID) else { return }
-            syncReceipt.trip = receipt.trip
-            syncService?.uploadFile(receipt: syncReceipt)
-        }
+        guard let receipt = notification.object as? WBReceipt, !receipt.isSynced(syncProvider: .current) else { return }
+        let objectID = Database.sharedInstance().nextReceiptID() - UInt(1)
+        guard let syncReceipt = Database.sharedInstance().receipt(byObjectID: objectID) else { return }
+        syncReceipt.trip = receipt.trip
+        syncService?.uploadFile(receipt: syncReceipt)
     }
     
     @objc private func didUpdate(_ notification: Notification)  {
