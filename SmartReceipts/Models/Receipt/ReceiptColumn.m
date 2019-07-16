@@ -188,7 +188,27 @@ static NSArray<LegacyResolver *> *_resolvers;
     NSString *localized = Localized(self.localizedKey);
     if ([name isEqualToString:localizedLegacy] || [name isEqualToString:localized]) {
         return [[self.columnClass alloc] initWithIndex:index type:self.type name:self.columnName];
+    } else {
+        for (NSString *locale in NSBundle.mainBundle.localizations) {
+            NSString *path = [[NSBundle mainBundle] pathForResource:locale ofType:@"lproj"];
+            if (path) {
+                NSBundle *bundle = [NSBundle bundleWithPath:path];
+                if (bundle) {
+                    localizedLegacy = [bundle localizedStringForKey:self.legacyKey value:@"" table:nil];
+                    localized = [bundle localizedStringForKey:self.localizedKey value:@"" table:nil];
+                    if ([localizedLegacy isEqualToString:self.legacyKey] || [localized isEqualToString:self.localizedKey]) {
+                        localizedLegacy = [bundle localizedStringForKey:self.legacyKey value:@"" table:@"SharedLocalizable"];
+                        localized = [bundle localizedStringForKey:self.localizedKey value:@"" table:@"SharedLocalizable"];
+                    }
+                    
+                    if ([name isEqualToString:localizedLegacy] || [name isEqualToString:localized]) {
+                        return [[self.columnClass alloc] initWithIndex:index type:self.type name:self.columnName];
+                    }
+                }
+            }
+        }
     }
+    
     return nil;
 }
 
