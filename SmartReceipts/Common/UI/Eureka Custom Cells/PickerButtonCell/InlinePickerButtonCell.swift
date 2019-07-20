@@ -11,8 +11,10 @@ import Eureka
 import RxSwift
 
 final class InlinePickerButtonCell : Cell<String>, CellType {
+    @IBOutlet private var _imageView: UIImageView!
     @IBOutlet fileprivate var titleLabel: UILabel!
     @IBOutlet fileprivate var valueLabel: UILabel!
+    @IBOutlet fileprivate var imageConstraint: NSLayoutConstraint!
     
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,9 +33,15 @@ final class InlinePickerButtonCell : Cell<String>, CellType {
     override func setup() {
         super.setup()
         selectionStyle = .default
+        imageConstraint.isActive = false
         titleLabel?.font = AppTheme.boldFont
         valueLabel?.font = AppTheme.boldFont
         valueLabel?.textColor = AppTheme.primaryColor
+    }
+    
+    func setCell(image: UIImage) {
+        _imageView.image = image
+        imageConstraint.isActive = true
     }
 }
 
@@ -71,6 +79,11 @@ final class InlinePickerButtonRow: _InlinePickerButtonRow, RowType, InlineRowTyp
     
     var options = [String]() {
         didSet { inlineRow?.options = options }
+    }
+    
+    func cellSetup(_ callback: @escaping ((InlinePickerButtonCell, InlinePickerButtonRow) -> Void)) -> InlinePickerButtonRow {
+        callback(self.cell, self)
+        return self
     }
     
     func setupInlineRow(_ inlineRow: PickerButtonRow) {

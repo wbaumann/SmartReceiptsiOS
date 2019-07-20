@@ -21,4 +21,16 @@ extension UIImage {
     func scaledImageSize(_ scale: CGFloat) -> CGSize {
         return CGSize(width: size.width * scale, height: size.height * scale)
     }
+    
+    static func image(text: String, font: UIFont) -> UIImage {
+        let label = UILabel(frame: .zero)
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        
+        UIGraphicsBeginImageContext(label.bounds.size)
+        label.layer.draw(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        return image!
+    }
 }
