@@ -357,6 +357,7 @@
 		71CC547321A60B17000C9F45 /* SignupResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 71CC547221A60B17000C9F45 /* SignupResponse.json */; };
 		71CC547521A611DB000C9F45 /* UserResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 71CC547421A611DB000C9F45 /* UserResponse.json */; };
 		71CD20C91ED764DA006C4EE6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD20C81ED764DA006C4EE6 /* Currency.swift */; };
+		71CE321922E1194C0060C9CB /* ExchangeRateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE321822E1194C0060C9CB /* ExchangeRateCalculator.swift */; };
 		71CF7A121F1020440004F389 /* InputTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF7A111F1020440004F389 /* InputTextCell.swift */; };
 		71CF7A141F1020590004F389 /* InputTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CF7A131F1020590004F389 /* InputTextCell.xib */; };
 		71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */; };
@@ -955,6 +956,7 @@
 		71CC547221A60B17000C9F45 /* SignupResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SignupResponse.json; sourceTree = "<group>"; };
 		71CC547421A611DB000C9F45 /* UserResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserResponse.json; sourceTree = "<group>"; };
 		71CD20C81ED764DA006C4EE6 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Currency.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		71CE321822E1194C0060C9CB /* ExchangeRateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateCalculator.swift; sourceTree = "<group>"; };
 		71CF7A111F1020440004F389 /* InputTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextCell.swift; sourceTree = "<group>"; };
 		71CF7A131F1020590004F389 /* InputTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputTextCell.xib; sourceTree = "<group>"; };
 		71D59CDA1EDDC993008991B7 /* WBDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDateFormatter.h; sourceTree = "<group>"; };
@@ -2180,6 +2182,7 @@
 				A78214F41CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift */,
 				A78214FA1CFFE86000FD644A /* ExchangeRate.swift */,
 				A78214F61CFFE60000FD644A /* OpenExchangeRates.swift */,
+				71CE321822E1194C0060C9CB /* ExchangeRateCalculator.swift */,
 			);
 			path = Exchange;
 			sourceTree = "<group>";
@@ -2889,6 +2892,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				uk,
 				ru,
@@ -3740,6 +3744,7 @@
 				7190D4561EE893900081CB22 /* GenerateReportFormView.swift in Sources */,
 				71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */,
 				714104E51FF43D7700C334C5 /* WBPopoverPicker.m in Sources */,
+				71CE321922E1194C0060C9CB /* ExchangeRateCalculator.swift in Sources */,
 				71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */,
 				7190D4541EE88CC40081CB22 /* GenerateReportView.swift in Sources */,
 				712A84E51F78363C00D988E7 /* RxSwift+Extensions.swift in Sources */,

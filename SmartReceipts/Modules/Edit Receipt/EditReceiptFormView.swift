@@ -15,6 +15,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     private let CURRENCY_ROW_TAG = "CurrencyRow"
     private let NAME_ROW_TAG = "NameRow"
     private let EXCHANGE_RATE_TAG = "ExchangeRateRow"
+    private let BASE_CURRENCY_PRICE_TAG = "BaseCurrencyPriceRow"
     private let COMMENT_ROW_TAG = "CommentRow"
     private let PAYMENT_METHODS_ROW_TAG = "PaymentMethodsRow"
     private let CATEGORIES_ROW_TAG = "CategoriesRow"
@@ -34,8 +35,10 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     private var receipt: WBReceipt!
     private var trip: WBTrip!
     private var taxCalculator: TaxCalculator?
+    private var exchangeRateCalculator = ExchangeRateCalculator()
     private let bag = DisposeBag()
     private var canShowTaxPicker = false
+    private var ignoreChanges = false
     
     init(trip: WBTrip, receipt: WBReceipt?) {
         super.init(nibName: nil, bundle: nil)
@@ -56,6 +59,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             }
         } else {
             self.receipt = receipt!.copy() as? WBReceipt
+            self.exchangeRateCalculator.price = receipt?.price().amount.doubleValue ?? 0
         }
         
         // Check conditions for automatic tax calculator
@@ -114,11 +118,13 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
                 let amount = NSDecimalNumber(value: dec)
                 self.receipt.setPrice(amount, currency: self.receipt.currency.code)
                 self.taxCalculator?.priceSubject.onNext(Decimal(dec))
+                self.exchangeRateCalculator.price = dec
             } else {
                 self.taxCalculator?.priceSubject.onNext(nil)
             }
             self.updateTaxPicker()
         }).cellSetup({ cell, _ in
+            cell.set(image: #imageLiteral(resourceName: "file-text"))
             cell.configureCell()
             cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         })
@@ -137,6 +143,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         }.onChange({ [unowned self] row in
             self.receipt.setTax(NSDecimalNumber(value: row.value ?? 0))
         }).cellSetup({ cell, _ in
+            cell.set(image: #imageLiteral(resourceName: "percent"))
             cell.configureCell()
             cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         }).onCellHighlightChanged({ [unowned self] cell, _ in
@@ -160,33 +167,73 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             row.options = Currency.allCurrencyCodesWithCached()
             row.value = self.receipt.currency.code
         }.onChange({ [unowned self] row in
-            if let code = row.value {
-                self.receipt.setPrice(self.receipt.priceAmount, currency: code)
-                if code != self.trip.defaultCurrency.code {
-                    self.updateExchangeRate()
-                }
+            guard let code = row.value else { return }
+            self.receipt.setPrice(self.receipt.priceAmount, currency: code)
+            if code != self.trip.defaultCurrency.code {
+                self.updateExchangeRate()
             }
+            
         }).cellSetup({ cell, _ in
+            cell.set(image: #imageLiteral(resourceName: "credit-card"))
             cell.configureCell()
         })
             
         <<< ExchangeRateRow(EXCHANGE_RATE_TAG) { [unowned self] row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_EXCHANGE_RATE")
             row.hidden = Condition.function([CURRENCY_ROW_TAG], { [unowned self] form -> Bool in
-                if let picker = form.rowBy(tag: self.CURRENCY_ROW_TAG) as? PickerInlineRow<String> {
-                    return picker.value == self.trip.defaultCurrency.code
-                } else {
-                    return false
-                }
+                let picker = self.form.rowBy(tag: self.CURRENCY_ROW_TAG) as? PickerInlineRow<String>
+                return picker?.value == self.trip.defaultCurrency.code
             })
             row.value = self.receipt.exchangeRate?.doubleValue
             row.updateTap
                 .subscribe(onNext: { [unowned self] in self.updateExchangeRate() })
                 .disposed(by: self.bag)
+            
+            self.exchangeRateCalculator.exchangeRateUpdate
+                .filter({ _ in !row.cell.textField.isEditing })
+                .subscribe(onNext: { [unowned self] value in
+                    self.ignoreChanges = true
+                    self.exchangeRateCalculator.exchangeRate = value
+                    self.receipt.exchangeRate = NSDecimalNumber(value: value)
+                    row.value = value
+                    row.updateCell()
+                    self.ignoreChanges = false
+                }).disposed(by: self.bag)
+            
         }.onChange({ [unowned self] row in
-            self.receipt.exchangeRate = NSDecimalNumber(value: row.value ?? 0)
+            if self.ignoreChanges { return }
+            let value = row.value ?? 0
+            self.receipt.exchangeRate = NSDecimalNumber(value: value)
+            self.exchangeRateCalculator.exchangeRate = value
         }).cellSetup({ [unowned self] cell, row in
+            cell.setCell(image: #imageLiteral(resourceName: "repeat"))
             cell.alertPresenter = self
+            cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
+        })
+            
+        <<< DecimalRow(BASE_CURRENCY_PRICE_TAG) { [unowned self] row in
+            row.title = LocalizedString("receipt_input_exchanged_result_hint")
+            row.hidden = Condition.function([CURRENCY_ROW_TAG], { [unowned self] form -> Bool in
+                let picker = self.form.rowBy(tag: self.CURRENCY_ROW_TAG) as? PickerInlineRow<String>
+                return picker?.value == self.trip.defaultCurrency.code
+            })
+            self.exchangeRateCalculator.baseCurrencyPriceUpdate
+                .filter({ _ in !row.cell.textField.isEditing })
+                .subscribe(onNext: { [unowned self] in
+                    self.ignoreChanges = true
+                    row.value = $0
+                    row.updateCell()
+                    self.ignoreChanges = false
+                }).disposed(by: self.bag)
+            
+        }.onChange({ [unowned self] row in
+            if self.ignoreChanges { return }
+            self.exchangeRateCalculator.baseCurrencyPrice = row.value ?? 0
+        }).cellSetup({ cell, _ in
+            let img = UIImage.image(text: self.trip.defaultCurrency.code, font: .boldSystemFont(ofSize: 12))
+            cell.set(image: img)
+            cell.configureCell()
+            cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         })
         
         <<< DateInlineRow() { [unowned self] row in
@@ -196,6 +243,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         }.onChange({ [unowned self] row in
             self.receipt.date = row.value ?? Date()
         }).cellSetup({ cell, _ in
+            cell.set(image: #imageLiteral(resourceName: "calendar"))
             cell.configureCell()
         }).onExpandInlineRow({ [unowned self] _, _, datePickerRow in
             datePickerRow.cell.datePicker.timeZone = self.receipt.timeZone
@@ -210,6 +258,8 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         }.onChange({ [unowned self] row in
             self.receipt.category = Database.sharedInstance().category(byName: row.value!)
             self.matchCategory(value: row.value)
+        }).cellSetup({ cell, _ in
+            cell.setCell(image: #imageLiteral(resourceName: "tag"))
         })
         
         <<< TextRow(COMMENT_ROW_TAG) { [unowned self] row in
@@ -219,6 +269,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         }.onChange({ [unowned self] row in
             self.receipt.comment = row.value ?? ""
         }).cellSetup({ cell, _ in
+            cell.set(image: #imageLiteral(resourceName: "message-square"))
             cell.configureCell()
         })
             
@@ -270,12 +321,11 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             receipt.setPrice(NSDecimalNumber(value: amount), currency: trip.defaultCurrency.code)
         }
         
-        if let tax = gScan.recognition?.result.data.taxAmount?.data, WBPreferences.includeTaxField()  {
-            if let amount = gScan.recognition?.result.data.totalAmount?.data, WBPreferences.enteredPricePreTax() {
-                receipt.setPrice(NSDecimalNumber(value: amount - tax), currency: trip.defaultCurrency.code)
-            }
-            receipt.setTax(NSDecimalNumber(value: tax))
+        guard let tax = gScan.recognition?.result.data.taxAmount?.data, WBPreferences.includeTaxField() else { return }
+        if let amount = gScan.recognition?.result.data.totalAmount?.data, WBPreferences.enteredPricePreTax() {
+            receipt.setPrice(NSDecimalNumber(value: amount - tax), currency: trip.defaultCurrency.code)
         }
+        receipt.setTax(NSDecimalNumber(value: tax))
     }
     
     func validate() {
@@ -284,9 +334,8 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     }
     
     func makeNameFirstResponder() {
-        if let nameRow = form.rowBy(tag: NAME_ROW_TAG) as? PredectiveTextRow {
-            nameRow.cell.textField.becomeFirstResponder()
-        }
+        guard let nameRow = form.rowBy(tag: NAME_ROW_TAG) as? PredectiveTextRow else { return }
+        nameRow.cell.textField.becomeFirstResponder()
     }
     
     private func needShowTaxPicker() -> Bool {
@@ -408,5 +457,12 @@ fileprivate extension EditReceiptFormView {
         }
         
         return categories.first!
+    }
+}
+
+fileprivate extension Cell {
+    func set(image: UIImage) {
+        imageView?.image = image.withRenderingMode(.alwaysTemplate)
+        imageView?.tintColor = .black
     }
 }

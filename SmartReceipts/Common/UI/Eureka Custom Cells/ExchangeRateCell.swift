@@ -10,9 +10,12 @@ import Eureka
 import RxSwift
 
 public class ExchangeRateCell: DecimalCell {
+    @IBOutlet private var _imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet private weak var button: UIButton!
     @IBOutlet weak var valueField: UITextField!
+    @IBOutlet fileprivate var imageConstraint: NSLayoutConstraint!
+    
     
     weak var alertPresenter: QuickAlertPresenter?
     
@@ -24,6 +27,7 @@ public class ExchangeRateCell: DecimalCell {
         titleLabel = label
         super.setup()
         titleLabel?.font = AppTheme.boldFont
+        imageConstraint.isActive = true
         textField.addTarget(self, action: #selector(ExchangeRateCell.valueChanged), for: .valueChanged)
         updateButton()
         
@@ -48,6 +52,11 @@ public class ExchangeRateCell: DecimalCell {
         titleLabel?.text = row.title
         textField?.text = row.value == nil ? nil : NSDecimalNumber(value: row.value!).stringValue
         updateButton()
+    }
+    
+    func setCell(image: UIImage) {
+        _imageView.image = image
+        imageConstraint.isActive = true
     }
     
     private func updateButton() {

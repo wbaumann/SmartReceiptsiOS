@@ -59,7 +59,7 @@ class ReceiptsInteractor: Interactor {
     }
     
     
-    func titleSubtitle() -> TitleSubtitle  {
+    func titleSubtitle() -> TitleSubtitle {
         let title = ("\(trip!.formattedPrice()!) - \(trip!.name!)")
         var subtitle: String!
             
