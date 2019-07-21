@@ -221,6 +221,7 @@
 		71762E781FD46F4800AC1388 /* ReportPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71762E771FD46F4800AC1388 /* ReportPDFGenerator.swift */; };
 		71762E7A1FD4713000AC1388 /* TripImagesPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71762E791FD4713000AC1388 /* TripImagesPDFGenerator.swift */; };
 		71762E7C1FD4716200AC1388 /* TripFullPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71762E7B1FD4716200AC1388 /* TripFullPDFGenerator.swift */; };
+		71771C6E22E3DF320012A85A /* ExchangeRateCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71771C6D22E3DF320012A85A /* ExchangeRateCalculatorTests.swift */; };
 		717865EB200A8738004684A6 /* CategoryColumns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717865EA200A8737004684A6 /* CategoryColumns.swift */; };
 		717DDB95203B5503000486C3 /* PickerButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717DDB93203B5503000486C3 /* PickerButtonCell.xib */; };
 		717DDB96203B5503000486C3 /* InlinePickerButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717DDB94203B5503000486C3 /* InlinePickerButtonCell.xib */; };
@@ -805,6 +806,7 @@
 		71762E771FD46F4800AC1388 /* ReportPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPDFGenerator.swift; sourceTree = "<group>"; };
 		71762E791FD4713000AC1388 /* TripImagesPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripImagesPDFGenerator.swift; sourceTree = "<group>"; };
 		71762E7B1FD4716200AC1388 /* TripFullPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripFullPDFGenerator.swift; sourceTree = "<group>"; };
+		71771C6D22E3DF320012A85A /* ExchangeRateCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateCalculatorTests.swift; sourceTree = "<group>"; };
 		717865EA200A8737004684A6 /* CategoryColumns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColumns.swift; sourceTree = "<group>"; };
 		717DDB93203B5503000486C3 /* PickerButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerButtonCell.xib; sourceTree = "<group>"; };
 		717DDB94203B5503000486C3 /* InlinePickerButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InlinePickerButtonCell.xib; sourceTree = "<group>"; };
@@ -1776,6 +1778,7 @@
 			children = (
 				7151F9DC20E6B59D00C4E894 /* SyncMapsTests.swift */,
 				7182CDCE1F085E9B00EAA320 /* CurrencyExchangeServiceTests.swift */,
+				71771C6D22E3DF320012A85A /* ExchangeRateCalculatorTests.swift */,
 				715936CF1F59E7FF00BD6F52 /* TooltipServiceTests.swift */,
 				71BC45541F9FC9B4003A5BD5 /* LocalScansTrackerTests.swift */,
 				711B072E1FA11E6C000ED7E5 /* ScansPurchaseTrackerTests.swift */,
@@ -3831,6 +3834,7 @@
 				7123481421418F610038AAE5 /* AuthServiceTestable.swift in Sources */,
 				5757D6141E929ECA000F65F9 /* Database+Sync.swift in Sources */,
 				EAD3EF871B0E0F2900CA1D4D /* DatabaseReceiptEditTest.m in Sources */,
+				71771C6E22E3DF320012A85A /* ExchangeRateCalculatorTests.swift in Sources */,
 				EA8ABE441B1A1D6800DBFA29 /* DatabaseCategoriesTest.m in Sources */,
 				71871511225039130061D493 /* DatabaseUpgrade12Tests.swift in Sources */,
 				7123483121418F690038AAE5 /* OCRConfigurationModuleTest.swift in Sources */,
