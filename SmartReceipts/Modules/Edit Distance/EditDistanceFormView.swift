@@ -104,6 +104,7 @@ class EditDistanceFormView: FormViewController {
             row.title = LocalizedString("distance_date_field")
             row.value = self.changedDistance?.date
             row.dateFormatter?.timeZone = self.changedDistance?.timeZone
+            row.dateFormatter?.addWeekdayFormat()
         }.onChange({ [weak self] row in
             self?.changedDistance?.date = row.value
             ReceiptsView.sharedInputCache[SREditDistanceDateCacheKey] = row.value
