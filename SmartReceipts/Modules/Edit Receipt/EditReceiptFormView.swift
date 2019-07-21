@@ -118,10 +118,10 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
                 let amount = NSDecimalNumber(value: dec)
                 self.receipt.setPrice(amount, currency: self.receipt.currency.code)
                 self.taxCalculator?.priceSubject.onNext(Decimal(dec))
-                self.exchangeRateCalculator.price = dec
             } else {
                 self.taxCalculator?.priceSubject.onNext(nil)
             }
+            self.exchangeRateCalculator.price = row.value ?? 0
             self.updateTaxPicker()
         }).cellSetup({ cell, _ in
             cell.set(image: #imageLiteral(resourceName: "file-text"))
