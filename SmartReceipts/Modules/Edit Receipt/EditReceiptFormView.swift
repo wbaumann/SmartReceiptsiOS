@@ -60,6 +60,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         } else {
             self.receipt = receipt!.copy() as? WBReceipt
             self.exchangeRateCalculator.price = receipt?.price().amount.doubleValue ?? 0
+            self.exchangeRateCalculator.exchangeRate = receipt?.exchangeRate?.doubleValue ?? 0
         }
         
         // Check conditions for automatic tax calculator
@@ -217,6 +218,9 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
                 let picker = self.form.rowBy(tag: self.CURRENCY_ROW_TAG) as? PickerInlineRow<String>
                 return picker?.value == self.trip.defaultCurrency.code
             })
+            
+            row.value = self.exchangeRateCalculator.price * self.exchangeRateCalculator.exchangeRate
+            
             self.exchangeRateCalculator.baseCurrencyPriceUpdate
                 .filter({ _ in !row.cell.textField.isEditing })
                 .subscribe(onNext: { [unowned self] in
