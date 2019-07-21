@@ -244,6 +244,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_DATE")
             row.value = self.receipt.date
             row.dateFormatter?.timeZone = self.receipt.timeZone
+            row.dateFormatter?.addWeekdayFormat()
         }.onChange({ [unowned self] row in
             self.receipt.date = row.value ?? Date()
         }).cellSetup({ cell, _ in

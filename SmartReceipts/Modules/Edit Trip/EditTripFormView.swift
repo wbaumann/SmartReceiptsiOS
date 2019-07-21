@@ -69,6 +69,7 @@ class EditTripFormView: FormViewController {
             row.title = LocalizedString("DIALOG_TRIPMENU_HINT_START")
             row.value = trip?.startDate
             row.dateFormatter?.timeZone = trip?.startTimeZone
+            row.dateFormatter?.addWeekdayFormat()
         }.onChange({ [unowned self] row in
             self.trip?.startDate = row.value!
             let endDateRow = self.form.rowBy(tag: self.END_DATE_TAG) as! DateInlineRow
@@ -83,6 +84,7 @@ class EditTripFormView: FormViewController {
             row.title = LocalizedString("DIALOG_TRIPMENU_HINT_END")
             row.value = trip?.endDate
             row.dateFormatter?.timeZone = trip?.endTimeZone
+            row.dateFormatter?.addWeekdayFormat()
         }.onChange({ [unowned self] row in
             self.trip?.endDate = row.value!
             let startDateRow = self.form.rowBy(tag: self.START_DATE_TAG) as! DateInlineRow
