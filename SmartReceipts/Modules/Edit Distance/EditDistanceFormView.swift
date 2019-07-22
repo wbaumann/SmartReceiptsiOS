@@ -30,7 +30,7 @@ class EditDistanceFormView: FormViewController {
             changedDistance?.location = ""
             
             let date = ReceiptsView.sharedInputCache[SREditDistanceDateCacheKey]
-            changedDistance?.date = date ?? trip.startDate
+            changedDistance?.date = date ?? (WBPreferences.defaultToFirstReportDate() ? trip.startDate : Date())
             changedDistance?.timeZone = TimeZone.current
             
             let amount = NSDecimalNumber(value: WBPreferences.distanceRateDefaultValue())

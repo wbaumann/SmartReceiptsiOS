@@ -47,7 +47,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         if isNewReceipt {
             self.receipt = WBReceipt()
             self.receipt.setPrice(.zero, currency: trip.defaultCurrency.code)
-            self.receipt.date = Date()
+            self.receipt.date = WBPreferences.defaultToFirstReportDate() ? trip.startDate : Date()
             self.receipt.category =  Database.sharedInstance().category(byName: proposedCategory())
             self.receipt.exchangeRate = .zero
             self.receipt.isReimbursable = WBPreferences.expensableDefault()
