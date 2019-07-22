@@ -33,6 +33,8 @@ public class PredectiveTextCell: TextCell, AutocompleteHelperDelegate {
     public override func textFieldDidBeginEditing(_ textField: UITextField) {
         super.textFieldDidBeginEditing(textField)
         autocompleteHelper?.textFieldDidBeginEditing(textField)
+        autocompleteHelper?.textField(textField, shouldChangeCharactersIn: .init(location: 0, length: 0), replacementString: "")
+        
     }
     
     public override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
