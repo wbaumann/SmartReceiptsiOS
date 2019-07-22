@@ -13,7 +13,7 @@ import RxSwift
 class GenerateReportFormView: FormViewController {
     private(set) var selection = GenerateReportSelection()
     private var settingsTapSubject = PublishSubject<Void>()
-    
+
     var onSettingsTap: Observable<Void> { return settingsTapSubject.asObservable() }
 
     override func viewDidLoad() {

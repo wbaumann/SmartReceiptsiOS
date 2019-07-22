@@ -138,7 +138,7 @@ static NSString* checkNoData(NSString* str) {
 }
 
 -(NSString*)imageFilePathForTrip:(WBTrip*)trip {
-    if (!_fileName) {
+    if (!checkNoData(_fileName)) {
         return nil;
     }
     return [[trip directoryPath] stringByAppendingPathComponent:_fileName];

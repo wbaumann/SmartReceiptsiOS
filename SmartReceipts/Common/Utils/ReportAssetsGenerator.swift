@@ -112,6 +112,7 @@ class ReportAssetsGenerator: NSObject {
     
     private func reportUrls() -> [URL] {
         let urls = receipts()
+            .filter { $0.hasFile(for: trip) }
             .compactMap { $0.imageFilePath(for: trip) }
             .map { URL(fileURLWithPath: $0) }
         
