@@ -24,6 +24,7 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
     fileprivate let subscriptionSubject = PublishSubject<Bool>()
     fileprivate let scanSubject = PublishSubject<Void>()
     private let s3Service = S3Service()
+    private let organizationService = OrganizationsService()
     private let bag = DisposeBag()
 
     override func viewDidLoad() {
@@ -42,7 +43,6 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
         }.onCellSelection({ [unowned self] _,_  in
             self.ocrConfigSubject.onNext(())
         })
-        
             
         +++ Section("Flags")
         <<< SwitchRow() { row in
@@ -136,6 +136,16 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
         }.onChange({ row in
             FeatureFlags.driveAppDataFolder = Feature(row.value!)
             _ = BackupProvidersManager.shared.clearCurrentBackupConfiguration().subscribe()
+        })
+        
+        +++ Section("Organizations")
+        <<< ButtonRow() { row in
+            row.title = "Get Organizations"
+        }.onCellSelection({ [unowned self] _, _ in
+            self.organizationService.getOrganizations()
+                .subscribe(onSuccess: { orgs in
+                    print(orgs)
+                }).disposed(by: self.bag)
         })
     }
     
