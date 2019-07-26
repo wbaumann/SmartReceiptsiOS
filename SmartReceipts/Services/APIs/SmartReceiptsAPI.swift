@@ -19,6 +19,7 @@ enum SmartReceiptsAPI {
     case recognition(id: String)
     case recognize(url: URL, incognito: Bool)
     case mobileAppPurchases(receipt: String)
+    case organizations
 }
 
 extension SmartReceiptsAPI: TargetType {
@@ -38,6 +39,7 @@ extension SmartReceiptsAPI: TargetType {
         case .recognition(let id): return "/recognitions/\(id)"
         case .recognize: return "/recognitions"
         case .mobileAppPurchases: return "/mobile_app_purchases"
+        case .organizations: return "/organizations"
         }
     }
     
@@ -52,6 +54,7 @@ extension SmartReceiptsAPI: TargetType {
         case .recognition: return .get
         case .recognize: return .post
         case .mobileAppPurchases: return .post
+        case .organizations: return .get
         }
     }
     
@@ -63,16 +66,18 @@ extension SmartReceiptsAPI: TargetType {
             return ["signup_params" : [ "type": "signup", "email" : creds.email, "password": creds.password] ]
         case .login(let creds):
             return ["login_params" : [ "type": "login", "email" : creds.email, "password": creds.password] ]
-        case .logout: return [:]
-        case .user: return [:]
-        case .subscriptions: return [:]
         case .saveDevice(let token):
             return ["user" : [ "registration_ids": [token] ] ]
-        case .recognition: return [:]
         case .recognize(let url, let incognito):
             return ["recognition": [ "s3_path" : "ocr/\(url.lastPathComponent)", "incognito" : incognito] ]
         case .mobileAppPurchases(let receipt):
             return ["encoded_receipt": receipt, "pay_service": "Apple Store", "goal": "Recognition"]
+            
+        case .subscriptions,
+             .user,
+             .recognition,
+             .logout,
+             .organizations: return [:]
         }
     }
     
@@ -87,6 +92,7 @@ extension SmartReceiptsAPI: TargetType {
         case .recognition: return URLEncoding.httpBody
         case .recognize: return JSONEncoding.default
         case .mobileAppPurchases: return JSONEncoding.default
+        case .organizations: return JSONEncoding.default
         }
     }
     
@@ -98,7 +104,8 @@ extension SmartReceiptsAPI: TargetType {
              .recognize,
              .recognition,
              .mobileAppPurchases,
-             .logout:
+             .logout,
+             .organizations:
             return ["auth_params[token]": AuthService.shared.token, "auth_params[id]": AuthService.shared.id]
             
         default:
@@ -107,7 +114,11 @@ extension SmartReceiptsAPI: TargetType {
     }
     
     var task: Task {
-        return .requestCompositeParameters(bodyParameters: parameters, bodyEncoding: parameterEncoding, urlParameters: authParams)
+        switch self {
+        case .organizations: return .requestParameters(parameters: authParams, encoding: URLEncoding.queryString)
+        default: return .requestCompositeParameters(bodyParameters: parameters, bodyEncoding: parameterEncoding, urlParameters: authParams)
+        }
+        
     }
     
     var sampleData: Data { return Data() }

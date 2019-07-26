@@ -144,18 +144,18 @@ class EditDistanceFormView: FormViewController {
 }
 
 fileprivate extension BaseCell {
-    fileprivate func makeBoldTitle() {
+    func makeBoldTitle() {
         textLabel?.font = AppTheme.boldFont
     }
     
-    fileprivate func makeHighlitedValue() {
+    func makeHighlitedValue() {
         detailTextLabel?.textColor = AppTheme.primaryColor
         detailTextLabel?.font = AppTheme.boldFont
     }
 }
 
 fileprivate extension DecimalRow {
-    fileprivate func setupDecimalFormat() {
+    func setupDecimalFormat() {
         let numberFormatter = NumberFormatter()
         numberFormatter.locale = Locale.current
         numberFormatter.numberStyle = .decimal
