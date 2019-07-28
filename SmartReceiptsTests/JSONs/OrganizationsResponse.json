@@ -1,0 +1,109 @@
+{
+    "organizations": [
+        {
+            "id": "4276018759",
+            "name": "Hello World",
+            "created_at_iso8601": "2019-07-24T17:54:04.393Z",
+            "app_settings": {
+                "Configurations": {
+                    "IsSettingsEnable": true
+                },
+                "Settings": {
+                    "TripDuration": 20,
+                    "isocurr": "RUB",
+                    "dateseparator": ".",
+                    "trackcostcenter": true,
+                    "PredictCats": true,
+                    "MatchNameCats": true,
+                    "MatchCommentCats": true,
+                    "OnlyIncludeExpensable": true,
+                    "ExpensableDefault": true,
+                    "IncludeTaxField": true,
+                    "TaxPercentage": 20.0,
+                    "PreTax": true,
+                    "EnableAutoCompleteSuggestions": true,
+                    "MinReceiptPrice": 40.0,
+                    "DefaultToFirstReportDate": true,
+                    "ShowReceiptID": true,
+                    "UseFullPage": true,
+                    "UsePaymentMethods": true,
+                    "IncludeCSVHeaders": true,
+                    "PrintByIDPhotoKey": true,
+                    "PrintCommentByPhoto": true,
+                    "EmailTo": "asd@xa.ss",
+                    "EmailCC": "asd@xa.ss",
+                    "EmailBCC": "asd@xa.ss",
+                    "EmailSubject": "SUBJECT",
+                    "SaveBW": true,
+                    "LayoutIncludeReceiptDate": true,
+                    "LayoutIncludeReceiptCategory": true,
+                    "LayoutIncludeReceiptPicture": true,
+                    "MileageTotalInReport": true,
+                    "MileageRate": 29.1,
+                    "MileagePrintTable": true,
+                    "MileageAddToPDF": true,
+                    "PdfFooterString": "popopop"
+                },
+                "Categories": [
+                    {
+                        "uuid": "812fecd7-075c-4688-9df0-90b046e61dcf",
+                        "Name": "Smart Tools",
+                        "Code": "TOOLS"
+                    }
+                ],
+                "PaymentMethods": [
+                    {
+                        "uuid": "ed1b2946-42c0-4b54-aa30-3dea7ece85dc",
+                        "Code": "BITCOIN"
+                    },
+                    {
+                        "uuid": "3617be26-415d-43e0-af06-e62ea2eb5089",
+                        "Code": "LOLS"
+                    },
+                    {
+                        "uuid": "41d44afe-c42e-4001-936b-43b2ebcaf074",
+                        "Code": "XAL"
+                    }
+                ],
+                "CSVColumns": [
+                    {
+                        "uuid": "17d38b74-5dcb-439e-b33a-4a6687921e60",
+                        "column_type": "14"
+                    },
+                    {
+                        "uuid": "0053700f-ff30-4d29-b8f9-e3fa9a16f296",
+                        "column_type": "15"
+                    }
+                ],
+                "PDFColumns": [
+                    {
+                        "uuid": "3b26f3f7-019c-49bb-8154-b96417971db5",
+                        "column_type": "14"
+                    },
+                    {
+                        "uuid": "44f076a3-29e3-4daa-9b66-ec7c5d063623",
+                        "column_type": "11"
+                    },
+                    {
+                        "uuid": "c265479f-649c-40d9-95e6-169b4f972810",
+                        "column_type": "15"
+                    }
+                ]
+            },
+            "error": {
+                "has_error": true,
+                "errors": ["error1"]
+            },
+            "organization_users": [
+                {
+                    "id": "7016219485",
+                    "organization_id": "4276018759",
+                    "user_id": "7016219485",
+                    "role": 1,
+                    "created_at_iso8601": "2019-07-24T17:54:05.972Z",
+                    "updated_at_iso8601": "2019-07-24T17:54:05.972Z"
+                }
+            ]
+        }
+    ]
+}

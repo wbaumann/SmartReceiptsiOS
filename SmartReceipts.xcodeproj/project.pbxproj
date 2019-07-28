@@ -407,6 +407,9 @@
 		71F73E381FEAD02D0049F108 /* TableFooterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F73E371FEAD02D0049F108 /* TableFooterRow.swift */; };
 		71F98AE1204737CB007AF935 /* DataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F98AE0204737CB007AF935 /* DataValidator.swift */; };
 		71F9989921AC4E4200320256 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F9989821AC4E4200320256 /* Array+Extensions.swift */; };
+		71FA6ABF22EE195700FEFB6D /* OrganizationsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 71FA6ABE22EE195700FEFB6D /* OrganizationsResponse.json */; };
+		71FA6AC122EE1DEB00FEFB6D /* OrganizationsSerivceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA6AC022EE1DEB00FEFB6D /* OrganizationsSerivceTests.swift */; };
+		71FA6AC322EE3EEB00FEFB6D /* OrganizationModelsConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA6AC222EE3EEB00FEFB6D /* OrganizationModelsConverter.swift */; };
 		71FB1D3E1F195D0D00742FF5 /* PaymentMethods.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FB1D381F195D0D00742FF5 /* PaymentMethods.storyboard */; };
 		71FB1D3F1F195D0D00742FF5 /* PaymentMethodsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D391F195D0D00742FF5 /* PaymentMethodsDisplayData.swift */; };
 		71FB1D401F195D0D00742FF5 /* PaymentMethodsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB1D3A1F195D0D00742FF5 /* PaymentMethodsInteractor.swift */; };
@@ -1011,6 +1014,9 @@
 		71F73E371FEAD02D0049F108 /* TableFooterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableFooterRow.swift; sourceTree = "<group>"; };
 		71F98AE0204737CB007AF935 /* DataValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidator.swift; sourceTree = "<group>"; };
 		71F9989821AC4E4200320256 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		71FA6ABE22EE195700FEFB6D /* OrganizationsResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = OrganizationsResponse.json; sourceTree = "<group>"; };
+		71FA6AC022EE1DEB00FEFB6D /* OrganizationsSerivceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationsSerivceTests.swift; sourceTree = "<group>"; };
+		71FA6AC222EE3EEB00FEFB6D /* OrganizationModelsConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationModelsConverter.swift; sourceTree = "<group>"; };
 		71FB1D381F195D0D00742FF5 /* PaymentMethods.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaymentMethods.storyboard; sourceTree = "<group>"; };
 		71FB1D391F195D0D00742FF5 /* PaymentMethodsDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsDisplayData.swift; sourceTree = "<group>"; };
 		71FB1D3A1F195D0D00742FF5 /* PaymentMethodsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsInteractor.swift; sourceTree = "<group>"; };
@@ -1611,6 +1617,7 @@
 				71CC547021A60AFB000C9F45 /* LoginResponse.json */,
 				71CC547221A60B17000C9F45 /* SignupResponse.json */,
 				71CC547421A611DB000C9F45 /* UserResponse.json */,
+				71FA6ABE22EE195700FEFB6D /* OrganizationsResponse.json */,
 			);
 			path = JSONs;
 			sourceTree = "<group>";
@@ -1794,6 +1801,7 @@
 				714AFCC420053A45000176E9 /* MigrationServiceTest.swift */,
 				71E6299D20259D630049668B /* PurchaseServiceTest.swift */,
 				71CC546E21A607FF000C9F45 /* AuthServiceTests.swift */,
+				71FA6AC022EE1DEB00FEFB6D /* OrganizationsSerivceTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2541,6 +2549,7 @@
 				71B488C51EF48706008872E2 /* Distance.swift */,
 				719B1FC51EF5E2150049BD71 /* TaxCalculator.swift */,
 				71B8610F1F0AD3080069E251 /* Price.swift */,
+				71FA6AC222EE3EEB00FEFB6D /* OrganizationModelsConverter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3003,6 +3012,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				713B7F722198CFFC007220EC /* Subscriptions.json in Resources */,
+				71FA6ABF22EE195700FEFB6D /* OrganizationsResponse.json in Resources */,
 				EAE23CB51B1757590078F197 /* 2015_05_26_SmartReceipts.smr in Resources */,
 				71CC547121A60AFB000C9F45 /* LoginResponse.json in Resources */,
 				7156068F1FAFB29F00E09760 /* RecognitionResponse.json in Resources */,
@@ -3401,6 +3411,7 @@
 				7187150822500E900061D493 /* DatabaseMigration+Result.swift in Sources */,
 				71762E7A1FD4713000AC1388 /* TripImagesPDFGenerator.swift in Sources */,
 				710E587521386BAB00AAFC77 /* TooltipPresenter.swift in Sources */,
+				71FA6AC322EE3EEB00FEFB6D /* OrganizationModelsConverter.swift in Sources */,
 				719B1FE11EF603190049BD71 /* ReceiptsView.swift in Sources */,
 				712A84EA1F783E9300D988E7 /* Dictionary+Extensions.swift in Sources */,
 				718ADF6520B33823005FEF4F /* AppMonitorService.swift in Sources */,
@@ -3814,6 +3825,7 @@
 				7123482621418F690038AAE5 /* EditDistanceModuleTest.swift in Sources */,
 				7123483F214190A00038AAE5 /* GeneratedMocks.swift in Sources */,
 				7123482121418F650038AAE5 /* TaxCalculatorTests.swift in Sources */,
+				71FA6AC122EE1DEB00FEFB6D /* OrganizationsSerivceTests.swift in Sources */,
 				7123482C21418F690038AAE5 /* EditReceiptModuleTest.swift in Sources */,
 				EAF9ADDE1AECD2D20000AC84 /* ReportGeneratorTest.m in Sources */,
 				EA8CEAE51AFCE6B40007B3F5 /* DatabaseDistancesSumTest.m in Sources */,
