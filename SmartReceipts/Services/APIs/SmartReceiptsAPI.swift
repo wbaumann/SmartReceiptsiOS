@@ -20,6 +20,7 @@ enum SmartReceiptsAPI {
     case recognize(url: URL, incognito: Bool)
     case mobileAppPurchases(receipt: String)
     case organizations
+    case saveOrganization(Organization)
 }
 
 extension SmartReceiptsAPI: TargetType {
@@ -39,7 +40,7 @@ extension SmartReceiptsAPI: TargetType {
         case .recognition(let id): return "/recognitions/\(id)"
         case .recognize: return "/recognitions"
         case .mobileAppPurchases: return "/mobile_app_purchases"
-        case .organizations: return "/organizations"
+        case .organizations, .saveOrganization: return "/organizations"
         }
     }
     
@@ -55,6 +56,7 @@ extension SmartReceiptsAPI: TargetType {
         case .recognize: return .post
         case .mobileAppPurchases: return .post
         case .organizations: return .get
+        case .saveOrganization: return .post
         }
     }
     
@@ -72,7 +74,8 @@ extension SmartReceiptsAPI: TargetType {
             return ["recognition": [ "s3_path" : "ocr/\(url.lastPathComponent)", "incognito" : incognito] ]
         case .mobileAppPurchases(let receipt):
             return ["encoded_receipt": receipt, "pay_service": "Apple Store", "goal": "Recognition"]
-            
+        case .saveOrganization(let organization):
+            return ["organization": organization]
         case .subscriptions,
              .user,
              .recognition,
@@ -93,6 +96,7 @@ extension SmartReceiptsAPI: TargetType {
         case .recognize: return JSONEncoding.default
         case .mobileAppPurchases: return JSONEncoding.default
         case .organizations: return JSONEncoding.default
+        case .saveOrganization: return JSONEncoding.default
         }
     }
     

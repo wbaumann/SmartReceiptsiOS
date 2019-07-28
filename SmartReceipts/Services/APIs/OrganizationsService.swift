@@ -13,6 +13,7 @@ import Moya
 
 protocol OrganizationsServiceInterface {
     func getOrganizations() -> Single<[Organization]>
+    func saveOrganization(_ organization: Organization) -> Single<Organization>
 }
 
 class OrganizationsService: OrganizationsServiceInterface {
@@ -26,5 +27,10 @@ class OrganizationsService: OrganizationsServiceInterface {
         return api.rx.request(.organizations)
             .mapModel(OrganizationsResponse.self)
             .map { $0.organizations }
+    }
+    
+    func saveOrganization(_ organization: Organization) -> Single<Organization> {
+        return api.rx.request(.saveOrganization(organization))
+            .mapModel(Organization.self)
     }
 }
