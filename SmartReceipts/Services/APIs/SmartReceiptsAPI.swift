@@ -40,7 +40,8 @@ extension SmartReceiptsAPI: TargetType {
         case .recognition(let id): return "/recognitions/\(id)"
         case .recognize: return "/recognitions"
         case .mobileAppPurchases: return "/mobile_app_purchases"
-        case .organizations, .saveOrganization: return "/organizations"
+        case .organizations: return "/organizations"
+        case .saveOrganization(let organization): return "/organizations/\(organization.id)"
         }
     }
     
@@ -56,7 +57,7 @@ extension SmartReceiptsAPI: TargetType {
         case .recognize: return .post
         case .mobileAppPurchases: return .post
         case .organizations: return .get
-        case .saveOrganization: return .post
+        case .saveOrganization: return .put
         }
     }
     
