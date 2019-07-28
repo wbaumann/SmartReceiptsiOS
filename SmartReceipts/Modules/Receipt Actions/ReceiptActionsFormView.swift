@@ -14,6 +14,7 @@ import RxSwift
 class ReceiptActionsFormView: FormViewController {
     
     private let TAKE_IMAGE_ROW = "TakeImageRow"
+    private let VIEW_IMAGE_ROW = "ViewImageRow"
     
     weak var editReceiptTap: PublishSubject<Void>!
     weak var handleAttachTap: PublishSubject<Void>!
@@ -47,10 +48,10 @@ class ReceiptActionsFormView: FormViewController {
                     AppDelegate.instance.filePathToAttach == nil
                   }))
         
-        <<< buttonRow(title: viewButtonTitle(), bindSubject: viewImageTap,
-                  condition: Condition.function([], { [unowned self] _ in
-                    self.attachmentType == .none
-                  }))
+        <<< buttonRow(tag: VIEW_IMAGE_ROW, title: viewButtonTitle(), bindSubject: viewImageTap,
+              condition: Condition.function([], { [unowned self] _ in
+                self.attachmentType == .none
+              }))
         
         <<< buttonRow(tag: TAKE_IMAGE_ROW, title: takeImageTitle(), bindSubject: takeImageTap)
         <<< buttonRow(title: LocalizedString("move"), bindSubject: moveTap)
@@ -66,6 +67,10 @@ class ReceiptActionsFormView: FormViewController {
         let takeImageRow = form.rowBy(tag: TAKE_IMAGE_ROW)
         takeImageRow?.title = takeImageTitle()
         takeImageRow?.reload()
+        
+        let viewImageRow = form.rowBy(tag: VIEW_IMAGE_ROW)
+        viewImageRow?.title = viewButtonTitle()
+        viewImageRow?.reload()
     }
     
     private func takeImageTitle() -> String {
