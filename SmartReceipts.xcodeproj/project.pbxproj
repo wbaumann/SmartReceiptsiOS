@@ -53,7 +53,7 @@
 		57C125191E12DAEF008551AC /* ServiceAccount.json in Resources */ = {isa = PBXBuildFile; fileRef = 57C125181E12DAEF008551AC /* ServiceAccount.json */; };
 		57EEBDC41E093C8F00974E53 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EEBDC31E093C8F00974E53 /* String+Extensions.swift */; };
 		7100F7761F5EF20300D4B4D9 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7100F7751F5EF20300D4B4D9 /* AuthService.swift */; };
-		7104A37522E8E4120027C5D9 /* OrgranizationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7104A37422E8E4120027C5D9 /* OrgranizationsService.swift */; };
+		7104A37522E8E4120027C5D9 /* OrganizationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7104A37422E8E4120027C5D9 /* OrganizationsService.swift */; };
 		7104A37722E902C00027C5D9 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7104A37622E902C00027C5D9 /* Organization.swift */; };
 		7109B00F1F61C35F0043AE04 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109B00E1F61C35F0043AE04 /* UserDefaults+Extensions.swift */; };
 		710A33DF1F8282D100D10344 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710A33DB1F827E2500D10344 /* PurchaseService.swift */; };
@@ -658,7 +658,7 @@
 		57C125181E12DAEF008551AC /* ServiceAccount.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ServiceAccount.json; path = ../ServiceAccount.json; sourceTree = "<group>"; };
 		57EEBDC31E093C8F00974E53 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7100F7751F5EF20300D4B4D9 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		7104A37422E8E4120027C5D9 /* OrgranizationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgranizationsService.swift; sourceTree = "<group>"; };
+		7104A37422E8E4120027C5D9 /* OrganizationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationsService.swift; sourceTree = "<group>"; };
 		7104A37622E902C00027C5D9 /* Organization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
 		71097CA41F04350300223B72 /* DistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceTests.swift; sourceTree = "<group>"; };
 		71097CA61F04410100223B72 /* TaxCalculatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxCalculatorTests.swift; sourceTree = "<group>"; };
@@ -1597,7 +1597,7 @@
 				715606721FAF9BE500E09760 /* SmartReceiptsAPI.swift */,
 				710D4589219384F9005463F7 /* APIProvider.swift */,
 				7100F7751F5EF20300D4B4D9 /* AuthService.swift */,
-				7104A37422E8E4120027C5D9 /* OrgranizationsService.swift */,
+				7104A37422E8E4120027C5D9 /* OrganizationsService.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -3758,7 +3758,7 @@
 				7190D4561EE893900081CB22 /* GenerateReportFormView.swift in Sources */,
 				71F3CFC11EDC856C00B04015 /* UIViewController+NavigationBar.swift in Sources */,
 				714104E51FF43D7700C334C5 /* WBPopoverPicker.m in Sources */,
-				7104A37522E8E4120027C5D9 /* OrgranizationsService.swift in Sources */,
+				7104A37522E8E4120027C5D9 /* OrganizationsService.swift in Sources */,
 				71CE321922E1194C0060C9CB /* ExchangeRateCalculator.swift in Sources */,
 				71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */,
 				7190D4541EE88CC40081CB22 /* GenerateReportView.swift in Sources */,
