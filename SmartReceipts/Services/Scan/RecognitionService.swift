@@ -17,12 +17,12 @@ class RecognitionService {
     }
 
     func getRecognition(_ id: String) -> Single<RecognitionResponse> {
-        return apiProvider.rx.request(.recognition(id: id))
+        return apiProvider.request(.recognition(id: id))
             .mapModel(RecognitionResponse.self)
     }
     
     func recognize(url: URL, incognito: Bool = false) -> Single<String> {
-        return apiProvider.rx.request(.recognize(url: url, incognito: incognito))
+        return apiProvider.request(.recognize(url: url, incognito: incognito))
             .mapString(atKeyPath: "recognition.id")
     }
 }

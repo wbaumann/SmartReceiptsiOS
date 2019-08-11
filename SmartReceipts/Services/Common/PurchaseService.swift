@@ -41,7 +41,7 @@ class PurchaseService {
         authService.loggedInObservable
             .filter({ $0 && !PurchaseService.hasValidSubscriptionValue })
             .flatMap({ _ in
-                return apiProvider.rx.request(.subscriptions).mapModel(SubscriptionsResponse.self)
+                return apiProvider.request(.subscriptions).mapModel(SubscriptionsResponse.self)
             }).map({ response -> SubscriptionModel? in
                 return response.subscriptions.sorted(by: { $0.expiresAt > $1.expiresAt }).first
             }).filter({ $0 != nil })
@@ -90,6 +90,12 @@ class PurchaseService {
             let errorEvent = ErrorEvent(error: error)
             AnalyticsManager.sharedManager.record(event: errorEvent)
         })
+    }
+    
+    func getSubscriptions() -> Single<[SubscriptionModel]> {
+        return apiProvider.request(.subscriptions)
+            .mapModel(SubscriptionsResponse.self)
+            .map { $0.subscriptions }
     }
     
     func restorePurchases() -> Observable<[Purchase]> {
@@ -266,7 +272,7 @@ class PurchaseService {
             return
         }
     
-        apiProvider.rx.request(.mobileAppPurchases(receipt: receiptString))
+        apiProvider.request(.mobileAppPurchases(receipt: receiptString))
             .retry(3)
             .do(onSuccess: { _ in
                 UserDefaults.standard.set(true, forKey: receiptString)

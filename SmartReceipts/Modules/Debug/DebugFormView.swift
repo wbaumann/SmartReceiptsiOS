@@ -20,6 +20,7 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
     
     fileprivate let loginSubject = PublishSubject<Void>()
     fileprivate let ocrConfigSubject = PublishSubject<Void>()
+    fileprivate let organizationsSubject = PublishSubject<Void>()
     fileprivate let testLoginSubject = PublishSubject<Void>()
     fileprivate let subscriptionSubject = PublishSubject<Bool>()
     fileprivate let scanSubject = PublishSubject<Void>()
@@ -147,6 +148,12 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
                     print(orgs)
                 }).disposed(by: self.bag)
         })
+        
+        <<< ButtonRow() { row in
+            row.title = "My Account Module"
+        }.onCellSelection({ [unowned self] _,_  in
+            self.organizationsSubject.onNext(())
+        })
     }
     
     var scanObserver: AnyObserver<ScanResult> {
@@ -163,6 +170,7 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
 extension Reactive where Base: DebugFormView  {
     var loginTap: Observable<Void> { return base.loginSubject }
     var ocrConfiurationTap: Observable<Void> { return base.ocrConfigSubject }
+    var organizationsTap: Observable<Void> { return base.organizationsSubject }
     var subscriptionChange: Observable<Bool> { return base.subscriptionSubject }
     var testLoginTap: Observable<Void> { return base.testLoginSubject }
     var scanTap: Observable<Void> { return base.scanSubject }

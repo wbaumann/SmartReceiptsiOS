@@ -159,7 +159,7 @@ PODS:
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxSwift (4.3.1)
+  - RxSwift (4.5.0)
   - RxTest (4.3.1):
     - RxSwift (~> 4.0)
   - SwiftyStoreKit (0.13.3)
@@ -304,7 +304,7 @@ SPEC CHECKSUMS:
   RxBlocking: 64c051285261ca2339481e91b5f70eb06b03660a
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
-  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   RxTest: ea97a208826906f3904c0debdd09575ebcbfe216
   SwiftyStoreKit: 9ebd15971e28aa2989825fe8bc092eb5f75dd0b2
   Toaster: 683521465d8d4d684baca3b55cd248030b51e813
