@@ -83,3 +83,41 @@ enum PDFPageSize: String {
         return sizes[index]
     }
 }
+
+extension WBPreferences {
+    static func apply(settings: SettingsModel) {
+        if let value = settings.tripDuration { setDefaultTripDuration(Int32(value)) }
+        if let value = settings.isocurr { setDefaultCurrency(value) }
+        if let value = settings.dateseparator { setDateSeparator(value) }
+        if let value = settings.trackcostcenter { setTrackCostCenter(value) }
+        if let value = settings.predictCategories { setPredictCategories(value) }
+        if let value = settings.matchNameCategories { setMatchNameToCategory(value) }
+        if let value = settings.matchCommentCategories { setMatchCommentToCategory(value) }
+        if let value = settings.onlyIncludeExpensable { setOnlyIncludeReimbursableReceiptsInReports(value) }
+        if let value = settings.expensableDefault { setExpensableDefault(value) }
+        if let value = settings.includeTaxField { setIncludeTaxField(value) }
+        if let value = settings.taxPercentage { setDefaultTaxPercentage(Float(value)) }
+        if let value = settings.preTax { setEnteredPricePreTax(value) }
+        if let value = settings.enableAutoCompleteSuggestions { setAutocompleteEnabled(value) }
+        if let value = settings.minReceiptPrice { setMinimumReceiptPriceToIncludeInReports(Float(value)) }
+        if let value = settings.defaultToFirstReportDate { setDefaultToFirstReportDate(value) }
+        if let value = settings.showReceiptID { setShowReceiptID(value) }
+        if let value = settings.useFullPage { setAssumeFullPage(value) }
+        if let value = settings.usePaymentMethods { setUsePaymentMethods(value) }
+        if let value = settings.printByIDPhotoKey { setPrintReceiptIDByPhoto(value) }
+        if let value = settings.printCommentByPhoto { setPrintCommentByPhoto(value) }
+        if let value = settings.emailTo { setDefaultEmailRecipient(value) }
+        if let value = settings.emailCC { setDefaultEmailCC(value) }
+        if let value = settings.emailBCC { setDefaultEmailBCC(value) }
+        if let value = settings.emailSubject { setDefaultEmailSubject(value) }
+        if let value = settings.saveBW { setCameraSaveImagesBlackAndWhite(value) }
+        if let value = settings.layoutIncludeReceiptDate { setLayoutShowReceiptDate(value) }
+        if let value = settings.layoutIncludeReceiptCategory { setLayoutShowReceiptCategory(value) }
+        if let value = settings.layoutIncludeReceiptPicture { setLayoutShowReceiptAttachmentMarker(value) }
+        if let value = settings.mileageTotalInReport { setTheDistancePriceBeIncludedInReports(value) }
+        if let value = settings.mileageRate { setDistanceRateDefaultValue(value) }
+        if let value = settings.mileagePrintTable { setPrintDistanceTable(value) }
+        if let value = settings.mileageAddToPDF { setPrintDailyDistanceValues(value) }
+        if let value = settings.pdfFooterString { setPDFFooterString(value) }
+    }
+}

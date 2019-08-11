@@ -25,7 +25,6 @@
 
 #import "NSDecimalNumber+WBNumberParse.h"
 #import "UIView+LoadHelpers.h"
-#import "UIApplication+DismissKeyboard.h"
 #import "NSDate+Calculations.h"
 
 #import "UIApplication+AppVersion.h"

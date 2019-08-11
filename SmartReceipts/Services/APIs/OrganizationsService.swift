@@ -24,13 +24,13 @@ class OrganizationsService: OrganizationsServiceInterface {
     }
     
     func getOrganizations() -> Single<[Organization]> {
-        return api.rx.request(.organizations)
+        return api.request(.organizations)
             .mapModel(OrganizationsResponse.self)
             .map { $0.organizations }
     }
     
     func saveOrganization(_ organization: Organization) -> Single<Organization> {
-        return api.rx.request(.saveOrganization(organization))
+        return api.request(.saveOrganization(organization))
             .mapModel(Organization.self)
     }
 }

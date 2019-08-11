@@ -40,6 +40,19 @@ extension Observable {
     }
 }
 
+extension Completable {
+    func asSingle() -> Single<Void> {
+        return Single<Void>.create(subscribe: { single -> Disposable in
+            let subscribe = self.subscribe(onCompleted: {
+                single(.success(()))
+            }, onError: {
+                single(.error($0))
+            })
+            return Disposables.create([subscribe])
+        })
+    }
+}
+
 extension Array {
     func asObservable() -> Observable<Element> {
         return .create({ observer -> Disposable in
@@ -49,5 +62,17 @@ extension Array {
             observer.onCompleted()
             return Disposables.create()
         })
+    }
+}
+
+extension Observable where Element == Void {
+    static var just: Observable<Element> {
+        return .just(())
+    }
+}
+
+extension ObserverType where E == Void {
+    func onNext() {
+        on(.next(()))
     }
 }

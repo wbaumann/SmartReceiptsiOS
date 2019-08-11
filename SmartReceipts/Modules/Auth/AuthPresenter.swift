@@ -11,7 +11,7 @@ import Viperit
 import RxSwift
 import Toaster
 
-protocol AuthModuleInterface {
+protocol AuthModuleInterface: class {
     var successAuth: Observable<Void> { get }
     func close()
 }

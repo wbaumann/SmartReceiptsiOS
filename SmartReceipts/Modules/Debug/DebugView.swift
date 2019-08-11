@@ -16,6 +16,7 @@ import Toaster
 protocol DebugViewInterface {
     var loginTap: Observable<Void> { get }
     var ocrConfigTap: Observable<Void> { get }
+    var organizationsTap: Observable<Void> { get }
     var subscriptionChange: Observable<Bool> { get }
 }
 
@@ -61,6 +62,7 @@ final class DebugView: UserInterface {
 extension DebugView: DebugViewInterface {
     var loginTap: Observable<Void> { return formView!.rx.loginTap }
     var ocrConfigTap: Observable<Void> { return formView!.rx.ocrConfiurationTap }
+    var organizationsTap: Observable<Void> { return formView!.rx.organizationsTap }
     var subscriptionChange: Observable<Bool> { return formView!.rx.subscriptionChange }
 }
 

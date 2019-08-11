@@ -86,7 +86,7 @@ class AuthService: AuthServiceInterface {
     }
     
     func login(credentials: Credentials) -> Single<LoginResponse> {
-       return apiProvider.rx.request(.login(credentials: credentials))
+       return apiProvider.request(.login(credentials: credentials))
             .mapModel(LoginResponse.self)
             .do(onSuccess: { [weak self] response in
                 self?.save(token: response.token, email: credentials.email, id: response.id)
@@ -94,7 +94,7 @@ class AuthService: AuthServiceInterface {
     }
     
     func signup(credentials: Credentials) -> Single<SignupResponse> {
-        return apiProvider.rx.request(.signup(credentials: credentials))
+        return apiProvider.request(.signup(credentials: credentials))
             .mapModel(SignupResponse.self)
             .do(onSuccess: { [weak self] response in
                 self?.save(token: response.token, email: credentials.email, id: response.id)
@@ -104,20 +104,20 @@ class AuthService: AuthServiceInterface {
     func logout() -> Single<Void> {
         guard isLoggedIn else { return .error(RequestError.notLoggedInError) }
         
-        return apiProvider.rx.request(.logout)
+        return apiProvider.request(.logout)
             .map({ _ in  })
             .do(onSuccess: { self.clear() })
             .do(onError: { _ in self.clear() })
     }
     
     func getUser() -> Single<User> {
-        return apiProvider.rx.request(.user)
+        return apiProvider.request(.user)
             .mapModel(UserResponse.self)
             .map { $0.user }
     }
     
     func saveDevice(token: String) -> Single<Void> {
-        return apiProvider.rx.request(.saveDevice(token: token)).map({ _ in  })
+        return apiProvider.request(.saveDevice(token: token)).map({ _ in  })
     }
     
     private func save(token: String, email: String, id: String?) {

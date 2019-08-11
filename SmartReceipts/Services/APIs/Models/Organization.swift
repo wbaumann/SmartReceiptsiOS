@@ -92,7 +92,6 @@ struct SettingsModel: Codable {
     let showReceiptID: Bool?
     let useFullPage: Bool?
     let usePaymentMethods: Bool?
-    let includeCSVHeaders: Bool?
     let printByIDPhotoKey: Bool?
     let printCommentByPhoto: Bool?
     let emailTo: String?
@@ -126,7 +125,6 @@ struct SettingsModel: Codable {
         case showReceiptID = "ShowReceiptID"
         case useFullPage = "UseFullPage"
         case usePaymentMethods = "UsePaymentMethods"
-        case includeCSVHeaders = "IncludeCSVHeaders"
         case printByIDPhotoKey = "PrintByIDPhotoKey"
         case printCommentByPhoto = "PrintCommentByPhoto"
         case emailTo = "EmailTo"

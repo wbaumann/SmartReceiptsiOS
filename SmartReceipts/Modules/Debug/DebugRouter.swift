@@ -26,7 +26,12 @@ class DebugRouter: Router {
         })
     }
     
-    
+    var organizationsTapSubscriber: AnyObserver<Void> {
+        return AnyObserver<Void>(onNext: {
+            let module = OrganizationsAssembly().build()
+            self._view.navigationController?.pushViewController(module, animated: true)
+        })
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
