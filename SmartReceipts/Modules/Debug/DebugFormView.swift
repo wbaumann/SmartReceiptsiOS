@@ -45,6 +45,12 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
             self.ocrConfigSubject.onNext(())
         })
             
+        <<< ButtonRow() { row in
+            row.title = "My Account Module"
+        }.onCellSelection({ [unowned self] _,_  in
+            self.organizationsSubject.onNext(())
+        })
+            
         +++ Section("Flags")
         <<< SwitchRow() { row in
             row.title = "Subscription"
@@ -149,11 +155,7 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
                 }).disposed(by: self.bag)
         })
         
-        <<< ButtonRow() { row in
-            row.title = "My Account Module"
-        }.onCellSelection({ [unowned self] _,_  in
-            self.organizationsSubject.onNext(())
-        })
+        
     }
     
     var scanObserver: AnyObserver<ScanResult> {

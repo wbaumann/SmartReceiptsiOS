@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Organizations View Controller-->
+        <!--Account View Controller-->
         <scene sceneID="yJx-Br-VUx">
             <objects>
-                <viewController id="ml3-P4-1m4" customClass="OrganizationsViewController" customModule="SmartReceipts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ml3-P4-1m4" customClass="AccountViewController" customModule="SmartReceipts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kx2-eF-MLl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -267,20 +267,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bc-10-GN1">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_image" translatesAutoresizingMaskIntoConstraints="NO" id="FpS-gH-Fa1">
-                                        <rect key="frame" x="-49" y="50" width="512" height="210"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="210" id="95S-Os-xz4"/>
-                                        </constraints>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="FpS-gH-Fa1">
+                                        <rect key="frame" x="32" y="50" width="350" height="213"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smart Receipts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgO-hi-jSk">
-                                        <rect key="frame" x="117.5" y="284" width="179" height="30"/>
+                                        <rect key="frame" x="117.5" y="287" width="179" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k51-bJ-qG4">
-                                        <rect key="frame" x="20" y="370" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="373" width="374" height="50"/>
                                         <color key="backgroundColor" red="0.4081522689" green="0.097592933009999994" blue="0.70692264699999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="DWq-VD-FcC"/>
@@ -293,12 +290,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="FpS-gH-Fa1" firstAttribute="leading" secondItem="5bc-10-GN1" secondAttribute="leading" constant="32" id="5gT-io-jUW"/>
                                     <constraint firstItem="k51-bJ-qG4" firstAttribute="leading" secondItem="5bc-10-GN1" secondAttribute="leading" constant="20" id="BNt-9Z-G4d"/>
                                     <constraint firstAttribute="trailing" secondItem="k51-bJ-qG4" secondAttribute="trailing" constant="20" id="FWe-vW-AKy"/>
-                                    <constraint firstItem="FpS-gH-Fa1" firstAttribute="centerX" secondItem="5bc-10-GN1" secondAttribute="centerX" id="Gzo-xX-fIs"/>
                                     <constraint firstItem="dgO-hi-jSk" firstAttribute="centerX" secondItem="5bc-10-GN1" secondAttribute="centerX" id="OZj-PU-HOJ"/>
                                     <constraint firstItem="FpS-gH-Fa1" firstAttribute="top" secondItem="5bc-10-GN1" secondAttribute="top" constant="50" id="V2O-lx-svb"/>
                                     <constraint firstItem="dgO-hi-jSk" firstAttribute="top" secondItem="FpS-gH-Fa1" secondAttribute="bottom" constant="24" id="Vlc-Gd-b6l"/>
+                                    <constraint firstAttribute="trailing" secondItem="FpS-gH-Fa1" secondAttribute="trailing" constant="32" id="cwg-4u-M6E"/>
                                     <constraint firstItem="k51-bJ-qG4" firstAttribute="top" secondItem="dgO-hi-jSk" secondAttribute="bottom" constant="56" id="nrD-3m-bfv"/>
                                 </constraints>
                             </view>
@@ -328,6 +326,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launch_image" width="512" height="512"/>
+        <image name="login_placeholder" width="315" height="213"/>
     </resources>
 </document>

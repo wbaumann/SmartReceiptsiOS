@@ -9,5 +9,5 @@
 import Foundation
 
 struct OrganizationsResponse: Codable {
-    let organizations: [Organization]
+    let organizations: [OrganizationModel]
 }

@@ -20,7 +20,7 @@ enum SmartReceiptsAPI {
     case recognize(url: URL, incognito: Bool)
     case mobileAppPurchases(receipt: String)
     case organizations
-    case saveOrganization(Organization)
+    case saveOrganization(OrganizationModel)
 }
 
 extension SmartReceiptsAPI: TargetType {

@@ -1,5 +1,5 @@
 //
-//  OrganizationsAssembly.swift
+//  AccountAssembly.swift
 //  SmartReceipts
 //
 //  Created Bogdan Evsenev on 29/07/2019.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-//typealias OrganizationsModule = (view: UIViewController, output: Action)
+//typealias AccountModule = (view: UIViewController, output: Action)
 
-class OrganizationsAssembly: ModuleAssembly {
+class AccountAssembly: ModuleAssembly {
 
     func build() -> UIViewController {
-        let view = OrganizationsViewController.create()
-        let router = OrganizationsRouter()
+        let view = AccountViewController.create()
+        let router = AccountRouter()
         
-        let viewModel = OrganizationsViewModel(
+        let viewModel = AccountViewModel(
             router: router,
             organizationsService: serviceFactory.organizationService,
             authService: serviceFactory.authService,

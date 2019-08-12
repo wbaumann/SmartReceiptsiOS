@@ -18,9 +18,9 @@ class OrganizationCell: UITableViewCell {
     @IBOutlet private weak var applyButton: UIButton!
     @IBOutlet private weak var cardView: UIView!
     
-    private var organization: Organization!
+    private var organization: OrganizationModel!
     
-    typealias OrganizationApplyAction = ((Organization)->Void)
+    typealias OrganizationApplyAction = ((OrganizationModel)->Void)
     var onApplyTap: OrganizationApplyAction? = nil
     
     override func awakeFromNib() {
@@ -35,7 +35,7 @@ class OrganizationCell: UITableViewCell {
         
     }
     
-    func configureCell(organization: Organization, role: OrganizationUser.Role) {
+    func configureCell(organization: OrganizationModel, role: OrganizationUser.Role) {
         self.organization = organization
         titleLabel.text = organization.name
         membersLabel.text = "Members count: \(organization.users.count)"

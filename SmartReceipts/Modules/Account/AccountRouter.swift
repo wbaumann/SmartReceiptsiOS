@@ -1,5 +1,5 @@
 //
-//  OrganizationsRouter.swift
+//  AccountRouter.swift
 //  SmartReceipts
 //
 //  Created Bogdan Evsenev on 29/07/2019.
@@ -9,12 +9,12 @@
 import UIKit
 import RxSwift
 
-protocol OrganizationsRouterProtocol {
+protocol AccountRouterProtocol {
     func openLogin() -> Completable
     func openOcr()
 }
 
-class OrganizationsRouter: OrganizationsRouterProtocol {
+class AccountRouter: AccountRouterProtocol {
     weak var moduleViewController: UIViewController!
     
     func openLogin() -> Completable {

@@ -1,5 +1,5 @@
 //
-//  OrganizationsViewController.swift
+//  AccountViewController.swift
 //  SmartReceipts
 //
 //  Created Bogdan Evsenev on 29/07/2019.
@@ -10,10 +10,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class OrganizationsViewController: UIViewController, Storyboardable {
-    var viewModel: OrganizationsViewModelProtocol!
+class AccountViewController: UIViewController, Storyboardable {
+    var viewModel: AccountViewModelProtocol!
     private let bag = DisposeBag()
-    private let dataSource = OrganizationsDataSource()
+    private let dataSource = AccountDataSource()
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var loginButton: UIButton!
@@ -67,7 +67,7 @@ class OrganizationsViewController: UIViewController, Storyboardable {
     
 }
 
-extension OrganizationsViewController: UITableViewDelegate {
+extension AccountViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         switch cell {
         case let cell as UserCell: cell.onLogoutTap = { [weak self] in self?.logoutTap() }
@@ -83,7 +83,7 @@ extension OrganizationsViewController: UITableViewDelegate {
         viewModel.onLogoutTap.onNext()
     }
     
-    private func applyTap(organiztion: Organization) {
+    private func applyTap(organiztion: OrganizationModel) {
         viewModel.onApplySettings.onNext(organiztion.appSettings)
     }
     
