@@ -28,7 +28,7 @@ class DebugRouter: Router {
     
     var organizationsTapSubscriber: AnyObserver<Void> {
         return AnyObserver<Void>(onNext: {
-            let module = OrganizationsAssembly().build()
+            let module = AccountAssembly().build()
             self._view.navigationController?.pushViewController(module, animated: true)
         })
     }

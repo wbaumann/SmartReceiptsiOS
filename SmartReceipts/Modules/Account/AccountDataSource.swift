@@ -1,5 +1,5 @@
 //
-//  OrganizationsDataSource.swift
+//  AccountDataSource.swift
 //  SmartReceipts
 //
 //  Created by Bogdan Evsenev on 08/08/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OrganizationsDataSource: NSObject, UITableViewDataSource {
+class AccountDataSource: NSObject, UITableViewDataSource {
     private var sections: [AccountSection] = []
     
     func update(dataSet: AccountDataSet) {
@@ -56,7 +56,7 @@ class OrganizationsDataSource: NSObject, UITableViewDataSource {
 
 struct AccountDataSet {
     let user: User
-    let organiztions: [Organization]
+    let organiztions: [OrganizationModel]
     let subscriptions: [SubscriptionModel]
     
     var sections: [AccountSection] {
@@ -84,7 +84,7 @@ struct AccountSection {
 enum AccountItem {
     case user(User)
     case ocrScans(Int)
-    case organization(Organization)
+    case organization(OrganizationModel)
     case subscription(SubscriptionModel)
 }
 

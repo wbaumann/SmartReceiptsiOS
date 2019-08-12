@@ -1,5 +1,5 @@
 //
-//  OrganizationsViewModel.swift
+//  AccountViewModel.swift
 //  SmartReceipts
 //
 //  Created Bogdan Evsenev on 29/07/2019.
@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import Toaster
 
-protocol OrganizationsViewModelProtocol {
+protocol AccountViewModelProtocol {
     func moduleDidLoad()
     var dataSet: Observable<AccountDataSet> { get }
     var onRefresh: AnyObserver<Void> { get }
@@ -22,8 +22,8 @@ protocol OrganizationsViewModelProtocol {
     var isAuthorized: Observable<Bool> { get }
 }
 
-class OrganizationsViewModel: OrganizationsViewModelProtocol {
-    private var router: OrganizationsRouterProtocol
+class AccountViewModel: AccountViewModelProtocol {
+    private var router: AccountRouterProtocol
     private let organizationsService: OrganizationsServiceInterface
     private let authService: AuthServiceInterface
     private let purhcaseService: PurchaseService
@@ -45,7 +45,7 @@ class OrganizationsViewModel: OrganizationsViewModelProtocol {
     var onOcrConfigureTap: AnyObserver<Void> { return ocrConfigureTapSubject.asObserver() }
     var isAuthorized: Observable<Bool> { return isAuthorizedRelay.asObservable() }
     
-    init(router: OrganizationsRouterProtocol,
+    init(router: AccountRouterProtocol,
          organizationsService: OrganizationsServiceInterface,
          authService: AuthServiceInterface,
          purhcaseService: PurchaseService)

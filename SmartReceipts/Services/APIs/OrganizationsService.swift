@@ -12,8 +12,8 @@ import Alamofire
 import Moya
 
 protocol OrganizationsServiceInterface {
-    func getOrganizations() -> Single<[Organization]>
-    func saveOrganization(_ organization: Organization) -> Single<Organization>
+    func getOrganizations() -> Single<[OrganizationModel]>
+    func saveOrganization(_ organization: OrganizationModel) -> Single<OrganizationModel>
 }
 
 class OrganizationsService: OrganizationsServiceInterface {
@@ -23,14 +23,14 @@ class OrganizationsService: OrganizationsServiceInterface {
         self.api = api
     }
     
-    func getOrganizations() -> Single<[Organization]> {
+    func getOrganizations() -> Single<[OrganizationModel]> {
         return api.request(.organizations)
             .mapModel(OrganizationsResponse.self)
             .map { $0.organizations }
     }
     
-    func saveOrganization(_ organization: Organization) -> Single<Organization> {
+    func saveOrganization(_ organization: OrganizationModel) -> Single<OrganizationModel> {
         return api.request(.saveOrganization(organization))
-            .mapModel(Organization.self)
+            .mapModel(OrganizationModel.self)
     }
 }

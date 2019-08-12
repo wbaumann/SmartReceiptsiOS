@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Organization: Codable {
+struct OrganizationModel: Codable {
     let id: String
     let name: String
     let createdAt: Date
