@@ -32,23 +32,19 @@ class AccountDataSource: NSObject, UITableViewDataSource {
         switch item {
         case .user(let user):
             let cell = tableView.dequeueCell(cell: UserCell.self)
-            cell.configureCell(user: user)
-            return cell
-            
+            return cell.configureCell(user: user)
+
         case .ocrScans(let count):
             let cell = tableView.dequeueCell(cell: OCRCell.self)
-            cell.configureCell(count: count)
-            return cell
+            return cell.configureCell(count: count)
             
         case .organization(let organization):
             let cell = tableView.dequeueCell(cell: OrganizationCell.self)
-            cell.configureCell(organization: organization, role: .admin)
-            return cell
+            return cell.configureCell(organization: organization, role: .admin)
             
         case .subscription(let subscription):
             let cell = tableView.dequeueCell(cell: SubscriptionCell.self)
-            cell.configureCell(subscription: subscription)
-            return cell
+            return cell.configureCell(subscription: subscription)
         }
     }
 }
@@ -62,8 +58,8 @@ struct AccountDataSet {
     var sections: [AccountSection] {
         var result: [AccountSection] = []
         
-        result.append(.init(title: "Profile:", items: [.user(user)]))
-        result.append(.init(title: "Automatic scans:", items: [.ocrScans(user.recognitionsAvailable)]))
+        result.append(.init(items: [.user(user)]))
+        result.append(.init(items: [.ocrScans(user.recognitionsAvailable)]))
         result.append(.init(title: "Organizations:", items: organiztions.map { .organization($0) } ))
         result.append(.init(title: "Subscriptions:", items: subscriptions.map { .subscription($0) } ))
         
