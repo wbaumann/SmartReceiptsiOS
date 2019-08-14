@@ -12,6 +12,7 @@ import RxSwift
 class UserCell: UITableViewCell {
     private let bag = DisposeBag()
     
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var emailLabel: UILabel!
     @IBOutlet private weak var logoutButton: UIButton!
     
@@ -19,14 +20,17 @@ class UserCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        logoutButton.apply(style: .main)
+        titleLabel.text = "Logged in as"
+        logoutButton.setTitle("Logout", for: .normal)
+        logoutButton.apply(style: .mainTextOnly)
         logoutButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.onLogoutTap?()
             }).disposed(by: bag)
     }
     
-    func configureCell(user: User) {
+    func configureCell(user: User) -> Self {
         emailLabel.text = user.email
+        return self
     }
 }

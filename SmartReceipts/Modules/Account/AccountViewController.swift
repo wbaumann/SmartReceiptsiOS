@@ -32,6 +32,8 @@ class AccountViewController: UIViewController, Storyboardable {
     }
     
     private func setupViews() {
+        loginButton.apply(style: .mainBig)
+        
         tableView.refreshControl = refreshControl
         tableView.dataSource = dataSource
         tableView.delegate = self
@@ -68,6 +70,40 @@ class AccountViewController: UIViewController, Storyboardable {
 }
 
 extension AccountViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if dataSource.tableView(tableView, titleForHeaderInSection: section) == nil { return 0.1 }
+        return Constants.headerHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let title = dataSource.tableView(tableView, titleForHeaderInSection: section) else { return nil }
+        let label = UILabel(frame: .init(x: UI_MARGIN_16, y: UI_MARGIN_16))
+        label.text = title
+        label.font = .semibold17
+        label.sizeToFit()
+        
+        let container = UIView()
+        container.addSubview(label)
+        return container
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return Constants.footerHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard section < tableView.numberOfSections - 1 else { return nil }
+        
+        let separatorFrame = CGRect(x: UI_MARGIN_16, y: 0, width: tableView.bounds.width, height: Constants.footerHeight)
+        let footer = UIView(frame: separatorFrame)
+        footer.backgroundColor = Constants.footerColor
+        
+        let container = UIView()
+        container.addSubview(footer)
+        return container
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         switch cell {
         case let cell as UserCell: cell.onLogoutTap = { [weak self] in self?.logoutTap() }
@@ -90,4 +126,10 @@ extension AccountViewController: UITableViewDelegate {
     private func onConfigureOcrTap() {
         viewModel.onOcrConfigureTap.onNext()
     }
+}
+
+private enum Constants {
+    static let headerHeight: CGFloat = 52
+    static let footerHeight: CGFloat = 0.5
+    static let footerColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
 }

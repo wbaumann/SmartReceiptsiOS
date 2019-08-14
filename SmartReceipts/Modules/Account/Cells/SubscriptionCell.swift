@@ -19,8 +19,14 @@ class SubscriptionCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func configureCell(subscription: SubscriptionModel) {
-        titleLabel.text = "Smart Receipts Plus"
-        expiresLabel.text = "Expires at: \(subscription.expiresAt)"
+    func configureCell(subscription: SubscriptionModel) -> Self {
+        titleLabel.text = subscription.productName
+        let formatter = WBDateFormatter()
+        if Calendar.current.isDateInToday(subscription.expiresAt) {
+            formatter.formatter.timeStyle = .short
+        }
+        let formattedDate = formatter.formattedDate(subscription.expiresAt, in: NSTimeZone.local)
+        expiresLabel.text = String(format: LocalizedString("settings_purchase_subscription_valid_until_label_base"), formattedDate!)
+        return self
     }
 }

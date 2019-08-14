@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIView {
-    func apply(style: ViewStyle) {
+    func apply(style: BaseViewStyle) {
         backgroundColor = style.backgroundColor
         layer.cornerRadius = style.cornerRadius
         layer.masksToBounds = style.masksToBounds
@@ -17,5 +17,9 @@ extension UIView {
         layer.shadowOpacity = style.shadowOpacity
         layer.shadowOffset = style.shadowOffset
         layer.shadowRadius = style.shadowRadius
+    }
+    
+    func apply(style: ViewStyle) {
+        apply(style: style as BaseViewStyle)
     }
 }
