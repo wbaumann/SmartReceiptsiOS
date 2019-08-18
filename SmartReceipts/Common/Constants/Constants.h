@@ -43,7 +43,7 @@ static NSUInteger const SmartReceiptTargetLaunchesForAppRating = 15;
 static NSUInteger const SmartReceiptDelayedLaunchesOnAppRatingLater = 10;
 static NSUInteger const SmartReceiptMinUsageDaysForRating = 7;
 
-static NSInteger const SmartReceiptExchangeRateDecimalPlaces = 10;
+static NSInteger const SmartReceiptExchangeRateDecimalPlaces = 2;
 
 extern NSString *const SmartReceiptAppStoreId;
 
