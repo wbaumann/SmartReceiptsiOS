@@ -22,3 +22,12 @@ extension NumberFormatter {
     }
     
 }
+
+extension NumberFormatter {
+    class var exchangeFieldFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 6
+        formatter.minimumIntegerDigits = 1
+        return formatter
+    }
+}

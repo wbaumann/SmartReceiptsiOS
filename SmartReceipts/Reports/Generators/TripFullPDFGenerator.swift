@@ -83,7 +83,7 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         pdfRender.appendHeader(row: String(format: WBPreferences.localized(key: "report_header_duration"), startDate, endDate))
         
         if let costCenter = trip.costCenter, WBPreferences.trackCostCenter() && !costCenter.isEmpty {
-            pdfRender.appendHeader(row: String(format: WBPreferences.localized(key: "report_header_comment"), costCenter))
+            pdfRender.appendHeader(row: String(format: WBPreferences.localized(key: "report_header_cost_center"), costCenter))
         }
         
         if let comment = trip.comment, !trip.comment.isEmpty {
