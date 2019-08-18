@@ -214,6 +214,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             
         <<< DecimalRow(BASE_CURRENCY_PRICE_TAG) { [unowned self] row in
             row.title = LocalizedString("receipt_input_exchanged_result_hint")
+            row.formatter = NumberFormatter.exchangeFieldFormatter
             row.hidden = Condition.function([CURRENCY_ROW_TAG], { [unowned self] form -> Bool in
                 let picker = self.form.rowBy(tag: self.CURRENCY_ROW_TAG) as? PickerInlineRow<String>
                 return picker?.value == self.trip.defaultCurrency.code

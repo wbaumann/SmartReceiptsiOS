@@ -16,6 +16,7 @@ public class ExchangeRateCell: DecimalCell {
     @IBOutlet weak var valueField: UITextField!
     @IBOutlet fileprivate var imageConstraint: NSLayoutConstraint!
     
+    private lazy var formatter: NumberFormatter = .exchangeFieldFormatter
     
     weak var alertPresenter: QuickAlertPresenter?
     
@@ -28,7 +29,7 @@ public class ExchangeRateCell: DecimalCell {
         super.setup()
         titleLabel?.font = AppTheme.boldFont
         imageConstraint.isActive = true
-        textField.addTarget(self, action: #selector(ExchangeRateCell.valueChanged), for: .valueChanged)
+        textField.addTarget(self, action: #selector(valueChanged), for: [.editingChanged, .editingDidBegin])
         updateButton()
         
         row().responseSubject.subscribe(onNext: { [unowned self] response in
@@ -41,16 +42,15 @@ public class ExchangeRateCell: DecimalCell {
         }).disposed(by: bag)
     }
     
-    @objc func valueChanged(){
-        row.value = (textField.text != nil || !textField.text!.isEmpty) ?
-            NSDecimalNumber(orZeroUsingCurrentLocale: textField.text).doubleValue : nil
+    @objc func valueChanged() {
+        row.value = textField.text?.isEmpty == false ? formatter.number(from: textField.text!)?.doubleValue : nil
         row.updateCell()
     }
     
     public override func update() {
         super.update()
         titleLabel?.text = row.title
-        textField?.text = row.value == nil ? nil : NSDecimalNumber(value: row.value!).stringValue
+        textField?.text = row.value == nil ? nil : formatter.string(from: NSDecimalNumber(value: row.value!))
         updateButton()
     }
     
