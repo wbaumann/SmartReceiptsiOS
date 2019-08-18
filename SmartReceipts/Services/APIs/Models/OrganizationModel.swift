@@ -84,10 +84,10 @@ struct SettingsModel: Codable {
     let onlyIncludeExpensable: Bool?
     let expensableDefault: Bool?
     let includeTaxField: Bool?
-    let taxPercentage: Double?
+    let taxPercentage: Float?
     let preTax: Bool?
     let enableAutoCompleteSuggestions: Bool?
-    let minReceiptPrice: Double?
+    let minReceiptPrice: Float?
     let defaultToFirstReportDate: Bool?
     let showReceiptID: Bool?
     let useFullPage: Bool?
