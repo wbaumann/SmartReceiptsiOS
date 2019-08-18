@@ -85,7 +85,7 @@ enum PDFPageSize: String {
 }
 
 extension WBPreferences {
-    static func apply(settings: SettingsModel) {
+    static func importModel(settings: SettingsModel) {
         if let value = settings.tripDuration { setDefaultTripDuration(Int32(value)) }
         if let value = settings.isocurr { setDefaultCurrency(value) }
         if let value = settings.dateseparator { setDateSeparator(value) }
@@ -96,10 +96,10 @@ extension WBPreferences {
         if let value = settings.onlyIncludeExpensable { setOnlyIncludeReimbursableReceiptsInReports(value) }
         if let value = settings.expensableDefault { setExpensableDefault(value) }
         if let value = settings.includeTaxField { setIncludeTaxField(value) }
-        if let value = settings.taxPercentage { setDefaultTaxPercentage(Float(value)) }
+        if let value = settings.taxPercentage { setDefaultTaxPercentage(value) }
         if let value = settings.preTax { setEnteredPricePreTax(value) }
         if let value = settings.enableAutoCompleteSuggestions { setAutocompleteEnabled(value) }
-        if let value = settings.minReceiptPrice { setMinimumReceiptPriceToIncludeInReports(Float(value)) }
+        if let value = settings.minReceiptPrice { setMinimumReceiptPriceToIncludeInReports(value) }
         if let value = settings.defaultToFirstReportDate { setDefaultToFirstReportDate(value) }
         if let value = settings.showReceiptID { setShowReceiptID(value) }
         if let value = settings.useFullPage { setAssumeFullPage(value) }
@@ -119,5 +119,43 @@ extension WBPreferences {
         if let value = settings.mileagePrintTable { setPrintDistanceTable(value) }
         if let value = settings.mileageAddToPDF { setPrintDailyDistanceValues(value) }
         if let value = settings.pdfFooterString { setPDFFooterString(value) }
+    }
+    
+    static var settingsModel: SettingsModel {
+        return .init(
+            tripDuration: Int(defaultTripDuration()),
+            isocurr: defaultCurrency(),
+            dateseparator: dateSeparator(),
+            trackcostcenter: trackCostCenter(),
+            predictCategories: predictCategories(),
+            matchNameCategories: matchNameToCategory(),
+            matchCommentCategories: matchCommentToCategory(),
+            onlyIncludeExpensable: onlyIncludeReimbursableReceiptsInReports(),
+            expensableDefault: expensableDefault(),
+            includeTaxField: includeTaxField(),
+            taxPercentage: defaultTaxPercentage(),
+            preTax: enteredPricePreTax(),
+            enableAutoCompleteSuggestions: isAutocompleteEnabled(),
+            minReceiptPrice: minimumReceiptPriceToIncludeInReports(),
+            defaultToFirstReportDate: defaultToFirstReportDate(),
+            showReceiptID: showReceiptID(),
+            useFullPage: assumeFullPage(),
+            usePaymentMethods: usePaymentMethods(),
+            printByIDPhotoKey: printReceiptIDByPhoto(),
+            printCommentByPhoto: printCommentByPhoto(),
+            emailTo: defaultEmailRecipient(),
+            emailCC: defaultEmailCC(),
+            emailBCC: defaultEmailBCC(),
+            emailSubject: defaultEmailSubject(),
+            saveBW: cameraSaveImagesBlackAndWhite(),
+            layoutIncludeReceiptDate: layoutShowReceiptDate(),
+            layoutIncludeReceiptCategory: layoutShowReceiptCategory(),
+            layoutIncludeReceiptPicture: layoutShowReceiptAttachmentMarker(),
+            mileageTotalInReport: isTheDistancePriceBeIncludedInReports(),
+            mileageRate: distanceRateDefaultValue(),
+            mileagePrintTable: printDistanceTable(),
+            mileageAddToPDF: printDailyDistanceValues(),
+            pdfFooterString: pdfFooterString()
+        )
     }
 }

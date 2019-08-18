@@ -70,7 +70,7 @@ class AccountViewModel: AccountViewModelProtocol {
         
         applySettingsSubject
             .subscribe(onNext: { appSettings in
-                WBPreferences.apply(settings: appSettings.settings)
+                WBPreferences.importModel(settings: appSettings.settings)
                 Toast.show("Settings applied")
             }).disposed(by: bag)
         
