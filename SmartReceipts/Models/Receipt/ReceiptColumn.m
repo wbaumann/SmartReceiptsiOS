@@ -118,6 +118,22 @@ static NSArray<LegacyResolver *> *_resolvers;
     return [ReceiptUnknownColumn new];
 }
 
++ (ReceiptColumn *)columnType:(NSInteger)type uuid:(NSString *)uuid{
+    ReceiptColumn *result;
+    for (LegacyResolver *resolver in _resolvers) {
+        if (resolver.type == type) {
+            result = [resolver column];
+            result.uuid = uuid;
+            return result;
+        }
+    }
+    
+    LOGGER_ERROR(@"Column not found by type: %ld", (long)type);
+    result = [ReceiptUnknownColumn new];
+    result.uuid = uuid;
+    return result;
+}
+
 + (ReceiptColumn *)columnWithIndex:(NSInteger)index name:(NSString *)columnName {
     // for compability.
     // legacy string, expensable was renamed to reimbursable

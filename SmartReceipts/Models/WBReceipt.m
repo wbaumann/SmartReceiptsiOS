@@ -235,7 +235,7 @@ static NSString* checkNoData(NSString* str) {
     NSString *paymentMethodName = [resultSet stringForColumn:PaymentMethodsTable.COLUMN_METHOD];
     
     if (paymentMethodName) {
-        PaymentMethod *pm = [[PaymentMethod alloc] initWithObjectId:paymentMethodId method:paymentMethodName];
+        PaymentMethod *pm = [[PaymentMethod alloc] initWithObjectId:paymentMethodId method:paymentMethodName uuid:@""];
         [self setPaymentMethod:pm];
     }
     
@@ -292,7 +292,7 @@ static NSString* checkNoData(NSString* str) {
 
 - (PaymentMethod *)paymentMethod {
     if (!_paymentMethod) {
-        _paymentMethod = [[PaymentMethod alloc] initWithObjectId:0 method:@""];
+        _paymentMethod = [[PaymentMethod alloc] initWithObjectId:0 method:@"" uuid:@""];
     }
     return _paymentMethod;
 }

@@ -120,7 +120,7 @@ extension AccountViewController: UITableViewDelegate {
     }
     
     private func applyTap(organiztion: OrganizationModel) {
-        viewModel.onApplySettings.onNext(organiztion.appSettings)
+        viewModel.onImportSettings.onNext(organiztion.appSettings)
     }
     
     private func onConfigureOcrTap() {

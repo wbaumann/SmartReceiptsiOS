@@ -73,7 +73,7 @@ struct OrganizationAppSettings: Codable {
     }
 }
 
-struct SettingsModel: Codable {
+struct SettingsModel: Codable, Equatable {
     let tripDuration: Int?
     let isocurr: String?
     let dateseparator: String?
@@ -151,7 +151,7 @@ struct ConfigurationsModel: Codable {
     }
 }
 
-struct CategoryModel: Codable {
+struct CategoryModel: Codable, Equatable {
     let uuid: String
     let code: String
     let name: String
@@ -163,7 +163,7 @@ struct CategoryModel: Codable {
     }
 }
 
-struct PaymentMethodModel: Codable {
+struct PaymentMethodModel: Codable, Equatable {
     let uuid: String
     let code: String
     
@@ -173,7 +173,7 @@ struct PaymentMethodModel: Codable {
     }
 }
 
-struct ColumnModel: Codable {
+struct ColumnModel: Codable, Equatable {
     let uuid: String
     let columnType: String
     

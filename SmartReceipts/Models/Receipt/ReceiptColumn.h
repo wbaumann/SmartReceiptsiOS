@@ -16,6 +16,7 @@
 + (ReceiptColumn *)columnWithIndex:(NSInteger)index name:(NSString *)columnName;
 + (ReceiptColumn *)columnName:(NSString *)columnName;
 + (ReceiptColumn *)columnType:(NSInteger)type;
++ (ReceiptColumn *)columnType:(NSInteger)type uuid:(NSString *)uuid;
 + (NSArray *)availableColumnsNames;
 - (NSString *)valueFromReceipt:(WBReceipt *)receipt forCSV:(BOOL)forCSV;
 

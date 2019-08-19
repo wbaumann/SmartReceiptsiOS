@@ -16,12 +16,13 @@ class PaymentMethod: NSObject, FetchedModel, Pickable {
     var objectId: UInt = 0
     var method: String!
     var customOrderId: Int = 0
-    var uuid: String! = ""
+    var uuid: String!
    
-    required init(objectId: UInt, method: String) {
+    required init(objectId: UInt, method: String, uuid: String = "") {
         super.init()
         self.objectId = objectId
         self.method = method
+        self.uuid = uuid
     }
     
     override required init() {
