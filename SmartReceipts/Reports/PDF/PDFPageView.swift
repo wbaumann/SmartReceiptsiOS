@@ -25,7 +25,10 @@ class PDFPageView: UIView {
         
         contentOffset = topLine.frame.origin.y + topLine.frame.height + ElementsSpacing
         footerLabel.font = PDFFontStyle.footer.font
-        footerLabel.text = WBPreferences.pdfFooterString()
+        
+        footerLabel.text = WBPreferences.isPDFFooterUnlocked()
+            ? WBPreferences.pdfFooterString()
+            : LocalizedString("pref_pro_pdf_footer_ios_defaultValue")
     }
     
     var contentWidth: CGFloat { return topLine.bounds.width }

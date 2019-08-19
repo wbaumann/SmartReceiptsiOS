@@ -15,7 +15,7 @@ protocol AccountViewModelProtocol {
     func moduleDidLoad()
     var dataSet: Observable<AccountDataSet> { get }
     var onRefresh: AnyObserver<Void> { get }
-    var onApplySettings: AnyObserver<OrganizationAppSettings> { get }
+    var onImportSettings: AnyObserver<OrganizationAppSettings> { get }
     var onLoginTap: AnyObserver<Void> { get }
     var onLogoutTap: AnyObserver<Void> { get }
     var onOcrConfigureTap: AnyObserver<Void> { get }
@@ -27,19 +27,20 @@ class AccountViewModel: AccountViewModelProtocol {
     private let organizationsService: OrganizationsServiceInterface
     private let authService: AuthServiceInterface
     private let purhcaseService: PurchaseService
+    private let modelConverter = OrganizationModelsConverter()
     private let bag = DisposeBag()
     
     private let dataSetSubject = PublishSubject<AccountDataSet>()
     private let refreshSubject = PublishSubject<Void>()
-    private let applySettingsSubject = PublishSubject<OrganizationAppSettings>()
+    private let importSettingsSubject = PublishSubject<OrganizationAppSettings>()
     private let loginTapSubject = PublishSubject<Void>()
     private let logoutTapSubject = PublishSubject<Void>()
     private let ocrConfigureTapSubject = PublishSubject<Void>()
     private let isAuthorizedRelay: BehaviorRelay<Bool>
     
-    var dataSet: Observable<AccountDataSet> { return dataSetSubject.asObservable() }
+    var dataSet: Observable<AccountDataSet> { return dataSetSubject }
     var onRefresh: AnyObserver<Void> { return refreshSubject.asObserver() }
-    var onApplySettings: AnyObserver<OrganizationAppSettings> { return applySettingsSubject.asObserver() }
+    var onImportSettings: AnyObserver<OrganizationAppSettings> { return importSettingsSubject.asObserver() }
     var onLoginTap: AnyObserver<Void> { return loginTapSubject.asObserver() }
     var onLogoutTap: AnyObserver<Void> { return logoutTapSubject.asObserver() }
     var onOcrConfigureTap: AnyObserver<Void> { return ocrConfigureTapSubject.asObserver() }
@@ -68,7 +69,7 @@ class AccountViewModel: AccountViewModelProtocol {
                 self?.dataSetSubject.onNext($0)
             }).disposed(by: bag)
         
-        applySettingsSubject
+        importSettingsSubject
             .subscribe(onNext: { appSettings in
                 WBPreferences.importModel(settings: appSettings.settings)
                 Toast.show("Settings applied")

@@ -20,7 +20,7 @@
 @property (nonatomic, readonly) NSString *header;
 @property (nonatomic, strong) NSString *uniqueIdentity;
 @property (nonatomic) NSInteger customOrderId;
-@property (nonatomic, readonly) NSString *uuid;
+@property (nonatomic) NSString *uuid;
 
 - (instancetype)initWithIndex:(NSInteger)index type:(NSInteger)type name:(NSString *)name;
 - (instancetype)initWithType:(NSInteger)type name:(NSString *)name;

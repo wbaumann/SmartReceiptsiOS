@@ -28,12 +28,20 @@ static NSString *const COLUMN_CUSTOM_ORDER_ID = @"custom_order_id";
 - (id)initWithName:(NSString *)name code:(NSString *)code {
     return [self initWithName:name code:code customOrderId:0];
 }
+
+- (id)initWithName:(NSString *)name code:(NSString *)code uuid:(NSString *)uuid {
+    return [self initWithName:name code:code customOrderId:0 objectId:0 uuid:uuid];
+}
     
 - (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId {
     return [self initWithName:name code:code customOrderId:customOrderId objectId:0];
 }
 
 - (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId objectId:(NSInteger)objectId {
+    return [self initWithName:name code:code customOrderId:customOrderId objectId:customOrderId uuid:@""];
+}
+
+- (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId objectId:(NSInteger)objectId uuid:(NSString *)uuid {
     self = [super init];
     if (self) {
         _objectId = objectId;
@@ -41,6 +49,7 @@ static NSString *const COLUMN_CUSTOM_ORDER_ID = @"custom_order_id";
         _originalName = name;
         _code = code;
         _customOrderId = customOrderId;
+        _uuid = uuid;
     }
     return self;
 }

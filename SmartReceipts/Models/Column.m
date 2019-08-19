@@ -25,6 +25,7 @@
         _customOrderId = index;
         _name = name;
         _сolumnType = type;
+        _uuid = @"";
     }
     return self;
 }

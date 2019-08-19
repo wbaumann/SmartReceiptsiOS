@@ -37,36 +37,6 @@ class OrganizationsServiceTests: XCTestCase {
         XCTAssertEqual(expected, converted)
     }
     
-    func testCategories() {
-        let organizations = try! service.getOrganizations().toBlocking().single()
-        let organization = organizations.first!
-        
-        let expected = [WBCategory(name: "Smart Tools", code: "TOOLS")]
-        let converted = converter.convertCategories(models: organization.appSettings.categories)
-        
-        XCTAssertEqual(expected, converted)
-    }
-    
-    func testPDFColumns() {
-        let organizations = try! service.getOrganizations().toBlocking().single()
-        let organization = organizations.first!
-        
-        let expected: [ReceiptColumn] = [.init(type: 14), .init(type: 11), .init(type: 15)]
-        let converted = converter.convertColumns(models: organization.appSettings.pdfColumns)
-        
-        XCTAssertEqual(expected, converted)
-    }
-    
-    func testCSVColumns() {
-        let organizations = try! service.getOrganizations().toBlocking().single()
-        let organization = organizations.first!
-        
-        let expected: [ReceiptColumn] = [.init(type: 14), .init(type: 15)]
-        let converted = converter.convertColumns(models: organization.appSettings.csvColumns)
-        
-        XCTAssertEqual(expected, converted)
-    }
-    
     func testParseRepsonseNotFailed() {
         let organizations = try! service.getOrganizations().toBlocking().single()
         XCTAssertEqual(1, organizations.count)
@@ -79,6 +49,104 @@ class OrganizationsServiceTests: XCTestCase {
         XCTAssertTrue(organization.error.hasError)
         XCTAssertEqual(1, organization.error.errors.count)
         XCTAssertEqual("error1", organization.error.errors.first)
+    }
+    
+    // MARK: CONVERT FROM MODELS
+    
+    func testCategoriesFromModels() {
+        let organizations = try! service.getOrganizations().toBlocking().single()
+        let organization = organizations.first!
+        
+        let expected = [WBCategory(name: "Smart Tools", code: "TOOLS")]
+        let converted = converter.convertCategories(models: organization.appSettings.categories)
+        
+        XCTAssertEqual(expected, converted)
+    }
+    
+    func testPaymentMethodsFromModels() {
+        let organizations = try! service.getOrganizations().toBlocking().single()
+        let expected = [PaymentMethod(objectId: 0, method: "BITCOIN"), .init(objectId: 0, method: "LOLS"), .init(objectId: 0, method: "XAL")]
+        let converted = converter.convertPaymentMethods(models: organizations.first!.appSettings.paymentMethods)
+        
+        XCTAssertEqual(expected, converted)
+    }
+    
+    func testPDFColumnsFromModels() {
+        let organizations = try! service.getOrganizations().toBlocking().single()
+        let organization = organizations.first!
+        
+        let expected: [ReceiptColumn] = [.init(type: 14), .init(type: 11), .init(type: 15)]
+        let converted = converter.convertColumns(models: organization.appSettings.pdfColumns)
+        
+        XCTAssertEqual(expected, converted)
+    }
+    
+    func testCSVColumnsFromModels() {
+        let organizations = try! service.getOrganizations().toBlocking().single()
+        let organization = organizations.first!
+        
+        let expected: [ReceiptColumn] = [.init(type: 14), .init(type: 15)]
+        let converted = converter.convertColumns(models: organization.appSettings.csvColumns)
+        
+        XCTAssertEqual(expected, converted)
+    }
+    
+    // MARK: CONVERT TO MODELS
+    
+    func testCategoriesToModels() {
+        let organizations = try! service.getOrganizations().toBlocking().single()
+        let expected = organizations.first!.appSettings.categories
+        
+        let categories = converter.convertCategories(models: organizations.first!.appSettings.categories)
+        let converted = converter.convertCategories(categories)
+        
+        XCTAssertEqual(expected, converted)
+    }
+    
+    func testPaymentMethodsToModels() {
+        let organizations = try! service.getOrganizations().toBlocking().single()
+        let expected = organizations.first!.appSettings.paymentMethods
+        
+        let paymentMethods = converter.convertPaymentMethods(models: organizations.first!.appSettings.paymentMethods)
+        let converted = converter.convertPaymentMethods(paymentMethods)
+        
+        XCTAssertEqual(expected, converted)
+    }
+    
+    func testPDFColumnsToModels() {
+        let organizations = try! service.getOrganizations().toBlocking().single()
+        let expected = organizations.first!.appSettings.pdfColumns
+        
+        let columns = converter.convertColumns(models: organizations.first!.appSettings.pdfColumns)
+        let converted = converter.convertColumns(columns)
+        
+        XCTAssertEqual(expected, converted)
+    }
+    
+    func testCSVColumnsToModels() {
+        let organizations = try! service.getOrganizations().toBlocking().single()
+        let expected = organizations.first!.appSettings.csvColumns
+        
+        let columns = converter.convertColumns(models: organizations.first!.appSettings.csvColumns)
+        let converted = converter.convertColumns(columns)
+        
+        XCTAssertEqual(expected, converted)
+    }
+    
+    // MARK: Import & Export
+    
+    func testImportExport() {
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        
+        let expected = try! service.getOrganizations().toBlocking().single().first!.appSettings.settings
+        
+        XCTAssertNotEqual(WBPreferences.settingsModel, expected)
+        
+        WBPreferences.importModel(settings: expected)
+        
+        XCTAssertEqual(WBPreferences.settingsModel, expected)
     }
 }
 
@@ -103,3 +171,12 @@ extension ReceiptColumn: Equatable {
         return obj.name == self.name && obj.сolumnType == self.сolumnType
     }
 }
+
+extension PaymentMethod: Equatable {
+    open override func isEqual(_ object: Any?) -> Bool {
+        guard let obj = object as? PaymentMethod else { return false }
+        return obj.method == obj.method
+    }
+}
+
+

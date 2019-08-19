@@ -373,10 +373,6 @@ static NSUserDefaults* instance() {
 }
 
 + (NSString *)pdfFooterString {
-    if (![WBPreferences isPDFFooterUnlocked]) {
-        return [WBPreferences localizedWithKey:@"pref_pro_pdf_footer_ios_defaultValue"];
-    }
-    
     return [instance() objectForKey:PDF_FOOTER_STRING];
 }
 

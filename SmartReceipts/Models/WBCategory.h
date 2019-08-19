@@ -19,8 +19,10 @@
 @property (nonatomic, readonly) NSString *uuid;
 
 - (id)initWithName:(NSString*)name code:(NSString*)code;
+- (id)initWithName:(NSString*)name code:(NSString*)code uuid:(NSString *)uuid;
 - (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId;
 - (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId objectId:(NSInteger)objectId;
+- (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId objectId:(NSInteger)objectId uuid:(NSString *)uuid;
 
 +(NSString*) CATEGORY_NAME_BREAKFAST;
 +(NSString*) CATEGORY_NAME_LUNCH;
