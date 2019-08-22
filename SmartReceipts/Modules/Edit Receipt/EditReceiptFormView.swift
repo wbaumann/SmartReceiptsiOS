@@ -35,7 +35,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     private var receipt: WBReceipt!
     private var trip: WBTrip!
     private var taxCalculator: TaxCalculator?
-    private var exchangeRateCalculator = ExchangeRateCalculator()
+    private var exchangeRateCalculator: ExchangeRateCalculator!
     private let bag = DisposeBag()
     private var canShowTaxPicker = false
     private var ignoreChanges = false
@@ -53,14 +53,17 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             self.receipt.isReimbursable = WBPreferences.expensableDefault()
             self.receipt.isFullPage = WBPreferences.assumeFullPage()
             self.receipt.timeZone = .current
+            self.exchangeRateCalculator = ExchangeRateCalculator()
             
             if let pm = Database.sharedInstance().allPaymentMethods().last {
                 self.receipt.paymentMethod = pm
             }
         } else {
             self.receipt = receipt!.copy() as? WBReceipt
-            self.exchangeRateCalculator.price = receipt?.price().amount.doubleValue ?? 0
-            self.exchangeRateCalculator.exchangeRate = receipt?.exchangeRate?.doubleValue ?? 0
+            
+            let price = receipt?.price().amount.doubleValue ?? 0
+            let exchangeRate = receipt?.exchangeRate?.doubleValue ?? 0
+            self.exchangeRateCalculator = ExchangeRateCalculator(price: price, exchangeRate: exchangeRate)
         }
         
         // Check conditions for automatic tax calculator
@@ -214,13 +217,14 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             
         <<< DecimalRow(BASE_CURRENCY_PRICE_TAG) { [unowned self] row in
             row.title = LocalizedString("receipt_input_exchanged_result_hint")
-            row.formatter = NumberFormatter.exchangeFieldFormatter
+            let formatter = NumberFormatter.exchangeFieldFormatter
+            row.formatter = formatter
+            row.useFormatterOnDidBeginEditing = true
+            row.value = self.exchangeRateCalculator.price * self.exchangeRateCalculator.exchangeRate
             row.hidden = Condition.function([CURRENCY_ROW_TAG], { [unowned self] form -> Bool in
                 let picker = self.form.rowBy(tag: self.CURRENCY_ROW_TAG) as? PickerInlineRow<String>
                 return picker?.value == self.trip.defaultCurrency.code
             })
-            
-            row.value = self.exchangeRateCalculator.price * self.exchangeRateCalculator.exchangeRate
             
             self.exchangeRateCalculator.baseCurrencyPriceUpdate
                 .filter({ _ in !row.cell.textField.isEditing })

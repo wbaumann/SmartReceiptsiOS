@@ -11,13 +11,8 @@ import Foundation
 extension NumberFormatter {
 
     class func formatDouble(_ value: Double, decimalPlaces: Int) -> String {
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.numberStyle = .decimal
-        formatter.usesGroupingSeparator = false
-        formatter.minimumFractionDigits = 0
+        let formatter = NumberFormatter.exchangeFieldFormatter
         formatter.maximumFractionDigits = decimalPlaces
-        formatter.roundingIncrement = 0.00000000000000001
         return formatter.string(from: NSNumber(value: value)) ?? "NaN"
     }
     
@@ -26,7 +21,11 @@ extension NumberFormatter {
 extension NumberFormatter {
     class var exchangeFieldFormatter: NumberFormatter {
         let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = 6
+        formatter.locale = Locale.current
+        formatter.numberStyle = .decimal
+        formatter.roundingIncrement = 0.00000000000000001
+        formatter.usesGroupingSeparator = false
+        formatter.maximumFractionDigits = SmartReceiptExchangeRateDecimalPlaces
         formatter.minimumIntegerDigits = 1
         return formatter
     }

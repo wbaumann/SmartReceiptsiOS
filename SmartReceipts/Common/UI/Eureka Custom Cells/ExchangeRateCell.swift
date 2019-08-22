@@ -29,7 +29,6 @@ public class ExchangeRateCell: DecimalCell {
         super.setup()
         titleLabel?.font = AppTheme.boldFont
         imageConstraint.isActive = true
-        textField.addTarget(self, action: #selector(valueChanged), for: [.editingChanged, .editingDidBegin])
         updateButton()
         
         row().responseSubject.subscribe(onNext: { [unowned self] response in
@@ -42,15 +41,9 @@ public class ExchangeRateCell: DecimalCell {
         }).disposed(by: bag)
     }
     
-    @objc func valueChanged() {
-        row.value = textField.text?.isEmpty == false ? formatter.number(from: textField.text!)?.doubleValue : nil
-        row.updateCell()
-    }
-    
     public override func update() {
         super.update()
         titleLabel?.text = row.title
-        textField?.text = row.value == nil ? nil : formatter.string(from: NSDecimalNumber(value: row.value!))
         updateButton()
     }
     
@@ -96,6 +89,11 @@ public class ExchangeRateCell: DecimalCell {
         return (row as! ExchangeRateRow)
     }
     
+    open override func textFieldDidEndEditing(_ textField: UITextField) {
+        formViewController()?.endEditing(of: self)
+        formViewController()?.textInputDidEndEditing(textField, cell: self)
+    }
+    
     private func showErrorInfo() {
         let retryAction = UIAlertAction(title: LocalizedString("exchange_rate_retrieve_error_retry_button"), style: .default) {
             [unowned self] action in
@@ -137,10 +135,24 @@ public class ExchangeRateCell: DecimalCell {
 }
 
 
-public final class ExchangeRateRow: Row<ExchangeRateCell>, RowType {
+public final class ExchangeRateRow: Row<ExchangeRateCell>, RowType, FormatterConformance, FieldRowConformance {
+    // FormatterConformance
+    public var formatter: Formatter? = NumberFormatter.exchangeFieldFormatter
+    public var useFormatterDuringInput: Bool = false
+    public var useFormatterOnDidBeginEditing: Bool? = true
+    // FieldRowConformance
+    public var titlePercentage: CGFloat? = nil
+    public var placeholder: String? = nil
+    public var placeholderColor: UIColor? = nil
+    
     required public init(tag: String?) {
         super.init(tag: tag)
         cellProvider = CellProvider<ExchangeRateCell>(nibName: "ExchangeRateCell")
+        displayValueFor = { value in
+            guard let value = value else { return nil }
+            let number = NSNumber(value: value)
+            return NumberFormatter.exchangeFieldFormatter.string(from: number)
+        }
     }
     
     let responseSubject = PublishSubject<ExchangeResponse>()

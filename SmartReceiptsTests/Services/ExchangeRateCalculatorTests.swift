@@ -38,13 +38,13 @@ class ExchangeRateCalculatorTests: XCTestCase {
         
         calculator.exchangeRate = 2
         calculator.exchangeRate = 1.5
-        calculator.exchangeRate = -2.578
+        calculator.exchangeRate = -2.57
         calculator.exchangeRate = 0
         
         let correctMessages = [
             next(0, 20.0),
             next(0, 15.0),
-            next(0, -25.78),
+            next(0, -25.7),
             next(0, 0)
         ]
         

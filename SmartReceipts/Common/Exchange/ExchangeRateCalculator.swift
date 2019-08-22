@@ -14,17 +14,22 @@ class ExchangeRateCalculator {
     let baseCurrencyPriceUpdate = PublishSubject<Double>()
     private let bag = DisposeBag()
     
+    init(price: Double = 0, exchangeRate: Double = 0) {
+        self.price = price
+        self.exchangeRate = exchangeRate
+    }
+    
     var price: Double = 0 {
         didSet {
             let result = price*exchangeRate
-            baseCurrencyPriceUpdate.onNext(result.formatted)
+            baseCurrencyPriceUpdate.onNext(result)
         }
     }
     
     var exchangeRate: Double = 0 {
         didSet {
             let result = price*exchangeRate
-            baseCurrencyPriceUpdate.onNext(result.formatted)
+            baseCurrencyPriceUpdate.onNext(result)
         }
     }
     
@@ -32,14 +37,7 @@ class ExchangeRateCalculator {
         didSet {
             if price == 0 { return }
             let result = baseCurrencyPrice/price
-            exchangeRateUpdate.onNext(result.formatted)
+            exchangeRateUpdate.onNext(result)
         }
-    }
-}
-
-extension Double {
-    var formatted: Double {
-        let string = String(format: "%.3f", self)
-        return Double(string: string) ?? 0
     }
 }
