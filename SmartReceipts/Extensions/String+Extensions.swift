@@ -87,3 +87,9 @@ extension String {
         return false
     }
 }
+
+extension Character {
+    var isDigit: Bool {
+        return "0"..."9" ~= self
+    }
+}
