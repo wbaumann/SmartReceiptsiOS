@@ -27,10 +27,10 @@ final class TripsDisplayData: DisplayData {
         let settingsAction = UIAlertAction(title: LocalizedString("menu_main_settings"),
             style: .default, handler: { _ in self.settingsSubject.onNext(()) })
         
-        let ocrSettingsAction = UIAlertAction(title: LocalizedString("ocr_configuration_title"),
+        let ocrSettingsAction = UIAlertAction(title: LocalizedString("menu_main_ocr_configuration"),
             style: .default, handler: { _ in self.autoScansSubject.onNext(()) })
         
-        let backupAction = UIAlertAction(title: LocalizedString("backups"),
+        let backupAction = UIAlertAction(title: LocalizedString("menu_main_export"),
             style: .default, handler: { _ in self.backupSubject.onNext(()) })
         
         let userGuideAction = UIAlertAction(title: LocalizedString("menu_main_usage_guide"),

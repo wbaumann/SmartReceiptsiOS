@@ -20,8 +20,8 @@ class UserCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.text = "Logged in as"
-        logoutButton.setTitle("Logout", for: .normal)
+        titleLabel.text = LocalizedString("logged_in_as")
+        logoutButton.setTitle(LocalizedString("logout_button_text"), for: .normal)
         logoutButton.apply(style: .mainTextOnly)
         logoutButton.rx.tap
             .subscribe(onNext: { [weak self] in

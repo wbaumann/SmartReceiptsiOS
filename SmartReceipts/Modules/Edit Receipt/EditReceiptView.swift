@@ -94,7 +94,7 @@ final class EditReceiptView: UserInterface {
                 newTitle = LocalizedString("DIALOG_RECEIPTMENU_TITLE_NEW")
             } else {
                 id = self?.displayData.receipt!.objectId
-                newTitle = LocalizedString("receipt_dialog_action_edit")
+                newTitle = LocalizedString("DIALOG_RECEIPTMENU_TITLE_EDIT")
             }
             newTitle = WBPreferences.showReceiptID() ? newTitle + " - \(id!)" : newTitle
             DispatchQueue.main.async { [weak self] in

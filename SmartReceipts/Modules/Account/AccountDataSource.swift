@@ -60,8 +60,8 @@ struct AccountDataSet {
         
         result.append(.init(items: [.user(user)]))
         result.append(.init(items: [.ocrScans(user.recognitionsAvailable)]))
-        result.append(.init(title: "Organizations:", items: organiztions.map { .organization($0) } ))
-        result.append(.init(title: "Subscriptions:", items: subscriptions.map { .subscription($0) } ))
+        result.append(.init(title: LocalizedString("organization_label"), items: organiztions.map { .organization($0) } ))
+        result.append(.init(title: LocalizedString("subscriptions_label"), items: subscriptions.map { .subscription($0) } ))
         
         return result.filter { !$0.items.isEmpty }
     }

@@ -64,7 +64,7 @@ class AccountViewController: UIViewController, Storyboardable {
     }
     
     private func localize() {
-        title = "My Account"
+        title = LocalizedString("menu_main_my_account")
     }
     
 }
