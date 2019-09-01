@@ -20,8 +20,8 @@ class OCRCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.text = "Automatic Scans (OCR)"
-        configureButton.setTitle("Configure", for: .normal)
+        titleLabel.text = LocalizedString("menu_main_ocr_configuration")
+        configureButton.setTitle(LocalizedString("configure_label"), for: .normal)
         configureButton.apply(style: .mainTextOnly)
         configureButton.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -30,7 +30,7 @@ class OCRCell: UITableViewCell {
     }
     
     func configureCell(count: Int) -> Self {
-        ocrCountLabel.text = "OCR Count: \(count)"
+        ocrCountLabel.text = String(format: LocalizedString("ocr_configuration_scans_remaining"), count)
         return self
     }
 }

@@ -41,7 +41,7 @@ class ReceiptActionsFormView: FormViewController {
         
         form
         +++ Section()
-        <<< buttonRow(title: LocalizedString("receipt_dialog_action_edit"), bindSubject: editReceiptTap)
+        <<< buttonRow(title: LocalizedString("DIALOG_RECEIPTMENU_TITLE_EDIT"), bindSubject: editReceiptTap)
             
         <<< buttonRow(title: handleAttachTitle(), bindSubject: handleAttachTap,
                   condition: Condition.function([], { _ in
