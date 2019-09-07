@@ -29,7 +29,7 @@ class OrganizationCell: UITableViewCell {
         super.awakeFromNib()
         roleLabel.layer.borderWidth = 1
         roleLabel.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
-        roleLabel.layer.cornerRadius = roleLabel.bounds.height/2
+        roleLabel.layer.cornerRadius = 12.5
         
         infoContainer.layer.cornerRadius = 8
         infoContainer.layer.masksToBounds = true
