@@ -72,7 +72,7 @@ class AccountViewModel: AccountViewModelProtocol {
         importSettingsSubject
             .subscribe(onNext: { appSettings in
                 WBPreferences.importModel(settings: appSettings.settings)
-                Toast.show("Settings applied")
+                Database.sharedInstance()?.importSettings(models: appSettings.models)
             }).disposed(by: bag)
         
         loginTapSubject

@@ -52,7 +52,8 @@
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:CategoriesTable.TABLE_NAME];
     [insert addParam:CategoriesTable.COLUMN_CODE value:category.code];
     [insert addParam:CategoriesTable.COLUMN_NAME value:category.name];
-    [insert addParam:CommonColumns.ENTITY_UUID value:[[NSUUID UUID] UUIDString]];
+    NSString *uuid = category.uuid ? category.uuid : [[NSUUID UUID] UUIDString];
+    [insert addParam:CommonColumns.ENTITY_UUID value:uuid];
     if (category.customOrderId >= 0) {
         [insert addParam:CategoriesTable.COLUMN_CUSTOM_ORDER_ID value:@(category.customOrderId)];
     }
