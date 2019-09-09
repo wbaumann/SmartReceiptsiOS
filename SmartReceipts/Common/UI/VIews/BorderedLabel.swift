@@ -18,5 +18,12 @@ class BorderedLabel: UILabel {
         super.drawText(in: rect.inset(by: textInsets))
     }
     
+    override var intrinsicContentSize: CGSize {
+        var size = super.intrinsicContentSize
+        size.width += textInsets.left + textInsets.right
+        size.height += textInsets.top + textInsets.bottom
+        return size
+    }
+    
 }
 

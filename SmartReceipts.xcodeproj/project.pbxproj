@@ -122,6 +122,7 @@
 		712A84E51F78363C00D988E7 /* RxSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A84E41F78363C00D988E7 /* RxSwift+Extensions.swift */; };
 		712A84EA1F783E9300D988E7 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A84E91F783E9300D988E7 /* Dictionary+Extensions.swift */; };
 		712BB2661F611DDE00F0380F /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712BB2651F611DDE00F0380F /* Error+Extensions.swift */; };
+		712CE89B232026C600051B5F /* Database+Organizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712CE89A232026C600051B5F /* Database+Organizations.swift */; };
 		712D7E041FB793E600DE83EB /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 712D7E021FB793E500DE83EB /* Localizable.stringsdict */; };
 		712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */; };
 		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
@@ -716,6 +717,7 @@
 		712A84E41F78363C00D988E7 /* RxSwift+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+Extensions.swift"; sourceTree = "<group>"; };
 		712A84E91F783E9300D988E7 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
 		712BB2651F611DDE00F0380F /* Error+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
+		712CE89A232026C600051B5F /* Database+Organizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Organizations.swift"; sourceTree = "<group>"; };
 		712D7E031FB793E500DE83EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = Localizable.stringsdict; sourceTree = "<group>"; };
 		712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsFormView.swift; sourceTree = "<group>"; };
 		713360411EF310C90076D319 /* EditDistanceModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceModuleTest.swift; sourceTree = "<group>"; };
@@ -2594,6 +2596,7 @@
 				A7F05BE21CFD95710079F1AD /* FMDatabase+Receipts.swift */,
 				A7D554D01CFF0F5000169FD2 /* FMDatabase+Trips.swift */,
 				A7D554D21CFF118700169FD2 /* RefreshTripPriceHandler.swift */,
+				712CE89A232026C600051B5F /* Database+Organizations.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -3774,6 +3777,7 @@
 				7111ADAA1F0EC38100DF77ED /* SettingsView.swift in Sources */,
 				716F34511EE040E100D0017A /* EditDistanceRouter.swift in Sources */,
 				EA07BF661AF51854004D17F6 /* FetchedModelAdapter.m in Sources */,
+				712CE89B232026C600051B5F /* Database+Organizations.swift in Sources */,
 				716138C51FD1CA6700C73FB9 /* PDFPageRenderView.swift in Sources */,
 				71FE9FF41F477F620043E7B4 /* FetchedTableViewController.swift in Sources */,
 				71437D6A213BD29600EC8542 /* CustomErrors.swift in Sources */,

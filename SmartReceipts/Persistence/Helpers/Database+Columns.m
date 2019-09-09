@@ -61,9 +61,9 @@
         
         for (Column *col in columns) {
             // Need to avoid issues with legacy columns replacement
-            BOOL result = oldDatabase ?
-                [self insertWithColumnName:col.name intoTable:tableName customOrderId:col.customOrderId usingDatabase:database] :
-                [self insertWithColumnType:col.сolumnType intoTable:tableName customOrderId:col.customOrderId usingDatabase:database];
+            BOOL result = oldDatabase
+                ? [self insertWithColumnName:col.name intoTable:tableName customOrderId:col.customOrderId uuid:nil usingDatabase:database]
+                : [self insertWithColumnType:col.сolumnType intoTable:tableName customOrderId:col.customOrderId uuid:nil usingDatabase:database];
             
             if (!result) {
                 *rollback = YES;
@@ -76,19 +76,22 @@
     return result;
 }
 
-- (BOOL)insertWithColumnType:(NSInteger)columnType intoTable:(NSString *)tableName customOrderId:(NSInteger)customOrderId usingDatabase:(FMDatabase *)database {
+- (BOOL)insertWithColumnType:(NSInteger)columnType intoTable:(NSString *)tableName customOrderId:(NSInteger)customOrderId uuid:(NSString *)uuid usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:tableName];
     [insert addParam:CSVTable.COLUMN_COLUMN_TYPE value:@(columnType)];
-    [insert addParam:CommonColumns.ENTITY_UUID value:[[NSUUID UUID] UUIDString]];
+    NSString *_uuid = uuid ? uuid : [[NSUUID UUID] UUIDString];
+    [insert addParam:CommonColumns.ENTITY_UUID value:_uuid];
     if (customOrderId >= 0) {
         [insert addParam:CSVTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
     }
     return [self executeQuery:insert usingDatabase:database];
 }
 
-- (BOOL)insertWithColumnName:(NSString *)columnName intoTable:(NSString *)tableName customOrderId:(NSInteger)customOrderId usingDatabase:(FMDatabase *)database {
+- (BOOL)insertWithColumnName:(NSString *)columnName intoTable:(NSString *)tableName customOrderId:(NSInteger)customOrderId uuid:(NSString *)uuid usingDatabase:(FMDatabase *)database {
     DatabaseQueryBuilder *insert = [DatabaseQueryBuilder insertStatementForTable:tableName];
     [insert addParam:CSVTable.COLUMN_TYPE value:columnName];
+    NSString *_uuid = uuid ? uuid : [[NSUUID UUID] UUIDString];
+    [insert addParam:CommonColumns.ENTITY_UUID value:_uuid];
     if (customOrderId >= 0) {
         [insert addParam:CSVTable.COLUMN_CUSTOM_ORDER_ID value:@(customOrderId)];
     }
@@ -158,7 +161,7 @@
 - (BOOL)addColumn:(Column *)column table:(NSString *)table {
     __block BOOL result;
     [self.databaseQueue inDatabase:^(FMDatabase *db) {
-        result = [self insertWithColumnType:column.сolumnType intoTable:table customOrderId:column.customOrderId usingDatabase:db];
+        result = [self insertWithColumnType:column.сolumnType intoTable:table customOrderId:column.customOrderId uuid:column.uuid usingDatabase:db];
     }];
     return result;
 }
