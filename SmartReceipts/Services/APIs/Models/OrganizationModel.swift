@@ -42,6 +42,8 @@ struct OrganizationUser: Codable {
     
     enum Role: Int, Codable {
         case admin = 1
+        case supportAdmin = 5
+        case user = 10
     }
 }
 
@@ -183,3 +185,8 @@ struct ColumnModel: Codable, Equatable {
     }
 }
 
+extension OrganizationModel {
+    func updatedBy(settings: OrganizationAppSettings) -> OrganizationModel {
+        return .init(id: id, name: name, createdAt: createdAt, appSettings: settings, error: error, users: users)
+    }
+}

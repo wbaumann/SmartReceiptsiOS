@@ -10,9 +10,11 @@ import UIKit
 
 class AccountDataSource: NSObject, UITableViewDataSource {
     private var sections: [AccountSection] = []
+    private var sycnedOrganizationId: String?
     
     func update(dataSet: AccountDataSet) {
         self.sections = dataSet.sections
+        self.sycnedOrganizationId = dataSet.sycnedOrganizationId
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,7 +42,8 @@ class AccountDataSource: NSObject, UITableViewDataSource {
             
         case .organization(let organization):
             let cell = tableView.dequeueCell(cell: OrganizationCell.self)
-            return cell.configureCell(organization: organization, role: .admin)
+            let synced = organization.id == sycnedOrganizationId
+            return cell.configureCell(organization: organization, role: .admin, synced: synced)
             
         case .subscription(let subscription):
             let cell = tableView.dequeueCell(cell: SubscriptionCell.self)
@@ -54,6 +57,7 @@ struct AccountDataSet {
     let user: User
     let organiztions: [OrganizationModel]
     let subscriptions: [SubscriptionModel]
+    let sycnedOrganizationId: String?
     
     var sections: [AccountSection] {
         var result: [AccountSection] = []

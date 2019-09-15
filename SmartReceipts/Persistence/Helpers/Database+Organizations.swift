@@ -40,6 +40,23 @@ extension Database {
             .filter { !catUuids.contains($0.uuid) }
             .forEach { save($0) }
     }
+    
+    
+    func exportModels() -> OrganizationSettingsModels {
+        let converter = OrganizationModelsConverter()
+        
+        let csvColumns = allCSVColumns() as! [ReceiptColumn]
+        let pdfColumns = (allPDFColumns() as! [ReceiptColumn])
+        let paymentMethods = allPaymentMethods() ?? []
+        let categories = listAllCategories() ?? []
+        
+        return .init(
+            categories: converter.convertCategories(categories),
+            paymentMethods: converter.convertPaymentMethods(paymentMethods),
+            pdfColumns: converter.convertColumns(pdfColumns),
+            csvColumns: converter.convertColumns(csvColumns)
+        )
+    }
 }
 
 extension OrganizationAppSettings {

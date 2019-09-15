@@ -76,7 +76,15 @@ extension SmartReceiptsAPI: TargetType {
         case .mobileAppPurchases(let receipt):
             return ["encoded_receipt": receipt, "pay_service": "Apple Store", "goal": "Recognition"]
         case .saveOrganization(let organization):
-            return ["organization": organization]
+            let jsonData = try! JSONEncoder().encode(organization)
+            let jsonString = String(data: jsonData, encoding: .utf8)
+            
+            
+            let data = try! JSONEncoder().encode(organization)
+            let dictionary = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
+            
+            print("JSON String : " + jsonString!)
+            return ["organization": dictionary]
         case .subscriptions,
              .user,
              .recognition,
