@@ -107,7 +107,9 @@ extension AccountViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         switch cell {
         case let cell as UserCell: cell.onLogoutTap = { [weak self] in self?.logoutTap() }
-        case let cell as OrganizationCell: cell.onApplyTap = { [weak self] in self?.applyTap(organiztion: $0) }
+        case let cell as OrganizationCell:
+            cell.onApplyTap = { [weak self] in self?.applyTap(organiztion: $0) }
+            cell.onUploadTap = { [weak self] in self?.uploadTap(organiztion: $0) }
         case let cell as OCRCell: cell.onConfigureTap = { [weak self] in self?.onConfigureOcrTap() }
         default: break
         }
@@ -120,7 +122,11 @@ extension AccountViewController: UITableViewDelegate {
     }
     
     private func applyTap(organiztion: OrganizationModel) {
-        viewModel.onImportSettings.onNext(organiztion.appSettings)
+        viewModel.onSyncOrganization.onNext(organiztion)
+    }
+    
+    private func uploadTap(organiztion: OrganizationModel) {
+        viewModel.onUploadSettings.onNext(organiztion)
     }
     
     private func onConfigureOcrTap() {

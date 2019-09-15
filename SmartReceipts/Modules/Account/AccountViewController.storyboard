@@ -141,40 +141,56 @@
                                                     <rect key="frame" x="16" y="8" width="343" height="220"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="252" horizontalCompressionResistancePriority="250" text="Organization" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laG-uZ-Rno">
-                                                            <rect key="frame" x="16.000000000000007" y="16" width="105.66666666666669" height="20.666666666666671"/>
+                                                            <rect key="frame" x="15.999999999999993" y="15.999999999999998" width="105.33333333333331" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="ADMIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLt-He-xVI" customClass="BorderedLabel" customModule="SmartReceipts" customModuleProvider="target">
-                                                            <rect key="frame" x="280.66666666666669" y="18" width="46.333333333333314" height="17"/>
+                                                            <rect key="frame" x="280.66666666666669" y="17.666666666666668" width="46.333333333333314" height="17.000000000000004"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4b-Xt-gJn">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Fcn-r5-TyT">
                                                             <rect key="frame" x="16" y="154" width="311" height="50"/>
-                                                            <color key="backgroundColor" red="0.18823529410000001" green="0.1058823529" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="50" id="FPk-lb-i2A"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                                            <state key="normal" title="Update organization settings">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </state>
-                                                        </button>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4b-Xt-gJn">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="147.66666666666666" height="50"/>
+                                                                    <color key="backgroundColor" red="0.18823529410000001" green="0.1058823529" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="50" id="FPk-lb-i2A"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                                    <state key="normal" title="Import Settings">
+                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </state>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hwu-wg-EJM">
+                                                                    <rect key="frame" x="163.66666666666663" y="0.0" width="147.33333333333337" height="50"/>
+                                                                    <color key="backgroundColor" red="0.18823529410000001" green="0.1058823529" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="50" id="Jjn-By-uO5"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                                    <state key="normal" title="Upload Settings">
+                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </state>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GjR-OA-dud">
-                                                            <rect key="frame" x="16" y="52.666666666666664" width="311" height="85.333333333333343"/>
+                                                            <rect key="frame" x="16" y="52.333333333333336" width="311" height="85.666666666666657"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert_icon" translatesAutoresizingMaskIntoConstraints="NO" id="dCh-pZ-hcG">
-                                                                    <rect key="frame" x="16" y="32.666666666666664" width="18" height="20"/>
+                                                                    <rect key="frame" x="16" y="32.999999999999993" width="18" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="18" id="Tck-s1-e1B"/>
                                                                         <constraint firstAttribute="height" constant="20" id="pHv-MG-C2q"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="You current settings are not not synced with this organization. Tap here to apply organization settings." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgY-nG-dJQ">
-                                                                    <rect key="frame" x="50" y="16.000000000000004" width="245" height="53.333333333333343"/>
+                                                                    <rect key="frame" x="50" y="15.999999999999996" width="245" height="53.666666666666657"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <color key="textColor" red="0.59215686274509804" green="0.50588235294117645" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>
@@ -193,16 +209,16 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="Y4b-Xt-gJn" secondAttribute="trailing" constant="16" id="BE4-ig-GZ7"/>
                                                         <constraint firstAttribute="trailing" secondItem="SLt-He-xVI" secondAttribute="trailing" constant="16" id="Fan-6K-ShZ"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Y4b-Xt-gJn" secondAttribute="bottom" constant="16" id="JDM-kN-2lS"/>
+                                                        <constraint firstItem="Fcn-r5-TyT" firstAttribute="top" secondItem="GjR-OA-dud" secondAttribute="bottom" constant="16" id="Fbf-Ni-gHw"/>
                                                         <constraint firstAttribute="trailing" secondItem="GjR-OA-dud" secondAttribute="trailing" constant="16" id="Rwi-Hc-oUv"/>
                                                         <constraint firstItem="laG-uZ-Rno" firstAttribute="leading" secondItem="9cH-MK-oy1" secondAttribute="leading" constant="16" id="Tbp-zo-nln"/>
-                                                        <constraint firstItem="Y4b-Xt-gJn" firstAttribute="leading" secondItem="9cH-MK-oy1" secondAttribute="leading" constant="16" id="c9n-W6-SNF"/>
-                                                        <constraint firstItem="Y4b-Xt-gJn" firstAttribute="top" secondItem="GjR-OA-dud" secondAttribute="bottom" constant="16" id="iWQ-ik-FER"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Fcn-r5-TyT" secondAttribute="trailing" constant="16" id="ddS-DT-IEZ"/>
                                                         <constraint firstItem="GjR-OA-dud" firstAttribute="leading" secondItem="9cH-MK-oy1" secondAttribute="leading" constant="16" id="rOs-bz-Ywh"/>
                                                         <constraint firstItem="GjR-OA-dud" firstAttribute="top" secondItem="laG-uZ-Rno" secondAttribute="bottom" constant="16" id="rQA-wB-eIL"/>
                                                         <constraint firstItem="laG-uZ-Rno" firstAttribute="top" secondItem="9cH-MK-oy1" secondAttribute="top" constant="16" id="vPh-eT-4fO"/>
+                                                        <constraint firstItem="Fcn-r5-TyT" firstAttribute="leading" secondItem="9cH-MK-oy1" secondAttribute="leading" constant="16" id="vSt-s4-Mgp"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Fcn-r5-TyT" secondAttribute="bottom" constant="16" id="vYx-wZ-q1w"/>
                                                         <constraint firstItem="SLt-He-xVI" firstAttribute="centerY" secondItem="laG-uZ-Rno" secondAttribute="centerY" id="vtD-hd-LCv"/>
                                                     </constraints>
                                                 </view>
@@ -217,13 +233,14 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="applyButton" destination="Y4b-Xt-gJn" id="Eek-m5-YzB"/>
                                             <outlet property="cardView" destination="9cH-MK-oy1" id="6Mx-8X-Hr6"/>
+                                            <outlet property="importButton" destination="Y4b-Xt-gJn" id="Eek-m5-YzB"/>
                                             <outlet property="infoContainer" destination="GjR-OA-dud" id="l7p-5r-u7o"/>
                                             <outlet property="infoIconView" destination="dCh-pZ-hcG" id="EVc-sl-02m"/>
                                             <outlet property="infoLabel" destination="cgY-nG-dJQ" id="3a7-6R-T5Y"/>
                                             <outlet property="roleLabel" destination="SLt-He-xVI" id="luw-Su-s0z"/>
                                             <outlet property="titleLabel" destination="laG-uZ-Rno" id="Dyd-5C-lsY"/>
+                                            <outlet property="uploadButton" destination="Hwu-wg-EJM" id="32b-rV-qe2"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SubscriptionCell" rowHeight="44" id="Qtw-I6-JK5" customClass="SubscriptionCell" customModule="SmartReceipts" customModuleProvider="target">
@@ -314,6 +331,11 @@
                             <constraint firstAttribute="bottom" secondItem="EzE-bZ-4Z0" secondAttribute="bottom" id="yH7-YV-de2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CL7-ib-8qD"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="5bc-10-GN1"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="authPlaceholder" destination="5bc-10-GN1" id="Diz-dQ-3cR"/>

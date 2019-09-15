@@ -41,7 +41,8 @@
 "generic_error_alert_title" = "Ошибка";
 "payment_method_unspecified" = "<Без названия>";
 "organization.user.role.admin" = "Админ";
-
+"organization.user.role.user" = "Пользователь";
+"organization.settings.upload" = "Сохранить настройки";
 
 /** Legacy Android Strings (i.e. Ones that no longer existing on the master branch) **/
 "receipt_dialog_action_camera" = "Сделать снимок чека";

@@ -36,6 +36,8 @@
 "migration_failed_alert_send_button" = "Fehlerbericht senden";
 "configure_label" = "Konfigurieren";
 "organization.user.role.admin" = "Admin";
+"organization.user.role.user" = "Benutzer";
+"organization.settings.upload" = "Einstellungen hochladen";
 
 /** Android System Strings (ok, untitled, error_message_title) **/
 "generic_button_title_ok" = "OK";

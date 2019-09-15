@@ -15,7 +15,8 @@ protocol AccountViewModelProtocol {
     func moduleDidLoad()
     var dataSet: Observable<AccountDataSet> { get }
     var onRefresh: AnyObserver<Void> { get }
-    var onImportSettings: AnyObserver<OrganizationAppSettings> { get }
+    var onSyncOrganization: AnyObserver<OrganizationModel> { get }
+    var onUploadSettings: AnyObserver<OrganizationModel> { get }
     var onLoginTap: AnyObserver<Void> { get }
     var onLogoutTap: AnyObserver<Void> { get }
     var onOcrConfigureTap: AnyObserver<Void> { get }
@@ -32,7 +33,8 @@ class AccountViewModel: AccountViewModelProtocol {
     
     private let dataSetSubject = PublishSubject<AccountDataSet>()
     private let refreshSubject = PublishSubject<Void>()
-    private let importSettingsSubject = PublishSubject<OrganizationAppSettings>()
+    private let syncOrganizationSubject = PublishSubject<OrganizationModel>()
+    private let onUploadSubject = PublishSubject<OrganizationModel>()
     private let loginTapSubject = PublishSubject<Void>()
     private let logoutTapSubject = PublishSubject<Void>()
     private let ocrConfigureTapSubject = PublishSubject<Void>()
@@ -40,7 +42,8 @@ class AccountViewModel: AccountViewModelProtocol {
     
     var dataSet: Observable<AccountDataSet> { return dataSetSubject }
     var onRefresh: AnyObserver<Void> { return refreshSubject.asObserver() }
-    var onImportSettings: AnyObserver<OrganizationAppSettings> { return importSettingsSubject.asObserver() }
+    var onSyncOrganization: AnyObserver<OrganizationModel> { return syncOrganizationSubject.asObserver() }
+    var onUploadSettings: AnyObserver<OrganizationModel> { return onUploadSubject.asObserver() }
     var onLoginTap: AnyObserver<Void> { return loginTapSubject.asObserver() }
     var onLogoutTap: AnyObserver<Void> { return logoutTapSubject.asObserver() }
     var onOcrConfigureTap: AnyObserver<Void> { return ocrConfigureTapSubject.asObserver() }
@@ -69,11 +72,31 @@ class AccountViewModel: AccountViewModelProtocol {
                 self?.dataSetSubject.onNext($0)
             }).disposed(by: bag)
         
-        importSettingsSubject
-            .subscribe(onNext: { appSettings in
-                WBPreferences.importModel(settings: appSettings.settings)
-                Database.sharedInstance()?.importSettings(models: appSettings.models)
+        syncOrganizationSubject
+            .do(onNext: { _ in Toast.show(LocalizedString("organization_apply_error")) })
+            .do(onError: { _ in Toast.show(LocalizedString("organization_apply_success")) })
+            .subscribe(onNext: { [weak self] organization in
+                self?.organizationsService.sync(organization: organization)
             }).disposed(by: bag)
+        
+        onUploadSubject
+            .map {
+                let models = Database.sharedInstance()!.exportModels()
+                let appSettings = OrganizationAppSettings(
+                    configurations: $0.appSettings.configurations,
+                    settings: WBPreferences.settingsModel,
+                    categories: models.categories,
+                    paymentMethods: models.paymentMethods,
+                    pdfColumns: models.pdfColumns,
+                    csvColumns: models.csvColumns)
+                return $0.updatedBy(settings: appSettings)
+            }.flatMap { [weak self]  in
+                return self?.organizationsService.saveOrganization($0) ?? .never()
+            }.do(onNext: { _ in Toast.show(LocalizedString("organization_apply_error")) })
+            .do(onError: { _ in Toast.show(LocalizedString("organization_update_error")) })
+            .catchError { _ in return .never() }
+            .subscribe()
+            .disposed(by: bag)
         
         loginTapSubject
             .flatMap { [weak self] in self?.router.openLogin().asSingle() ?? .never() }
@@ -103,10 +126,11 @@ class AccountViewModel: AccountViewModelProtocol {
         let user = authService.getUser().asObservable()
         let organizations = organizationsService.getOrganizations().asObservable()
         let subscriptions = purhcaseService.getSubscriptions().asObservable()
+        let organizationId = organizationsService.currentOrganiztionId
         
         return Observable.combineLatest(user, organizations, subscriptions)
             .asSingle()
-            .map { AccountDataSet(user: $0, organiztions: $1, subscriptions: $2) }
+            .map { AccountDataSet(user: $0, organiztions: $1, subscriptions: $2, sycnedOrganizationId: organizationId) }
     }
 }
 
