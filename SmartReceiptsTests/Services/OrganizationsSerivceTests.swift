@@ -175,7 +175,7 @@ extension ReceiptColumn: Equatable {
 extension PaymentMethod: Equatable {
     open override func isEqual(_ object: Any?) -> Bool {
         guard let obj = object as? PaymentMethod else { return false }
-        return obj.method == obj.method
+        return obj.method == self.method
     }
 }
 

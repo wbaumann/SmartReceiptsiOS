@@ -9,6 +9,8 @@
 import Foundation
 import FMDB
 
+let DB_VERSION_UUID = 19
+
 protocol DatabaseMigration {
     var version: Int { get }
     func migrate(_ database: Database) -> Bool
@@ -78,6 +80,9 @@ class DatabaseMigrator: NSObject {
         
         return true
     }
+    
+}
 
-
+extension DatabaseMigrator {
+    @objc static var UUIDVersion: Int = 19
 }

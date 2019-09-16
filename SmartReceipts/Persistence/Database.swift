@@ -17,6 +17,12 @@ extension Database {
     }
 }
 
+extension FMDatabase {
+    @objc func version() -> Int {
+        return Int(userVersion)
+    }
+}
+
 enum DatabaseError: Error {
     case openFailed
 }
