@@ -56,8 +56,12 @@
 - (BOOL)savePaymentMethod:(PaymentMethod *)method {
     DatabaseQueryBuilder *insertStatement = [DatabaseQueryBuilder insertStatementForTable:PaymentMethodsTable.TABLE_NAME];
     [insertStatement addParam:PaymentMethodsTable.COLUMN_METHOD value:method.method];
-    NSString *uuid = method.uuid ? method.uuid : [[NSUUID UUID] UUIDString];
-    [insertStatement addParam:CommonColumns.ENTITY_UUID value:uuid];
+    
+    if ([self databaseVersion] > DatabaseMigrator.UUIDVersion) {
+        NSString *uuid = method.uuid ? method.uuid : [[NSUUID UUID] UUIDString];
+        [insertStatement addParam:CommonColumns.ENTITY_UUID value:uuid];
+    }
+    
     if (method.objectId != 0) {
         [insertStatement addParam:PaymentMethodsTable.COLUMN_ID value:@(method.objectId)];
     }

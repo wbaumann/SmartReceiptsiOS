@@ -15,7 +15,7 @@ private let FAILS_TO_REPORT = 3
 extension DatabaseMigrator {
     
     func processFailedMigration(databasePath: String) {
-        Logger.error("Dabase Migration Failed!")
+        Logger.error("Database Migration Failed!")
         
         let failsCount = UserDefaults.standard.integer(forKey: FAILED_MIGRATION_COUNT_KEY) + 1
         UserDefaults.standard.set(failsCount, forKey: FAILED_MIGRATION_COUNT_KEY)
