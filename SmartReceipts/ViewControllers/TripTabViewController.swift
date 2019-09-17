@@ -38,7 +38,7 @@ class TripTabViewController: ButtonBarPagerTabStripViewController {
         settings.style.selectedBarHeight = 4
         settings.style.buttonBarLeftContentInset = 16
         settings.style.buttonBarRightContentInset = 16
-        settings.style.buttonBarItemsShouldFillAvailiableWidth = true
+        settings.style.buttonBarItemsShouldFillAvailableWidth = true
         
         let buttonFont = UIFont.boldSystemFont(ofSize: 12)
         
