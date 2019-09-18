@@ -17,9 +17,9 @@ import GoogleSignIn
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     static private(set) var instance: AppDelegate!
+    var bag = DisposeBag()
 
     var window: UIWindow?
-    private var purchaseService: PurchaseService!
     
     fileprivate(set) var isFileImage: Bool = false
     
@@ -49,18 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Logger.info("Language: \(Locale.preferredLanguages.first!)")
         
-        purchaseService = PurchaseService()
-        purchaseService.cacheSubscriptionValidation()
-        purchaseService.logPurchases()
-        purchaseService.completeTransactions()
-        
-        RateApplication.sharedInstance().markAppLaunch()
-        PushNotificationService.shared.initialize()
-        ScansPurchaseTracker.shared.initialize()
-        GoogleDriveService.shared.initialize()
-        SyncService.shared.initialize()
-        
-        MigrationService().migrate()
+        initializeServices()
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

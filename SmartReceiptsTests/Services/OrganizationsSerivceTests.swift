@@ -10,6 +10,7 @@
 import XCTest
 import Moya
 import RxSwift
+import RxOptional
 
 class OrganizationsServiceTests: XCTestCase {
     private let bag = DisposeBag()
@@ -135,7 +136,7 @@ class OrganizationsServiceTests: XCTestCase {
     
     // MARK: Import & Export
     
-    func testImportExport() {
+    func testImportExportSettings() {
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
@@ -147,6 +148,32 @@ class OrganizationsServiceTests: XCTestCase {
         WBPreferences.importModel(settings: expected)
         
         XCTAssertEqual(WBPreferences.settingsModel, expected)
+    }
+    
+    func testImportModels() {
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        
+        let database = Database.sharedInstance()!
+        
+        let csvUuidsBefore = (database.allCSVColumns() as! [ReceiptColumn]).map { $0.uuid }
+        let pdfUuidsBefore = (database.allPDFColumns() as! [ReceiptColumn]).map { $0.uuid }
+        let pmUuidsBefore = database.allPaymentMethods().map { $0.uuid }
+        let catUuidsBefore = database.listAllCategories().map { $0.uuid }
+        
+        let organization = try! service.getOrganizations().toBlocking().single().first!
+        database.importSettings(models: organization.appSettings.models)
+        
+        let csvUuidsAfter = (database.allCSVColumns() as! [ReceiptColumn]).map { $0.uuid }
+        let pdfUuidsAfter = (database.allPDFColumns() as! [ReceiptColumn]).map { $0.uuid }
+        let pmUuidsAfter = database.allPaymentMethods().map { $0.uuid }
+        let catUuidsAfter = database.listAllCategories().map { $0.uuid }
+        
+        XCTAssertNotEqual(csvUuidsBefore, csvUuidsAfter)
+        XCTAssertNotEqual(pdfUuidsBefore, pdfUuidsAfter)
+        XCTAssertNotEqual(pmUuidsBefore, pmUuidsAfter)
+        XCTAssertNotEqual(catUuidsBefore, catUuidsAfter)
     }
 }
 

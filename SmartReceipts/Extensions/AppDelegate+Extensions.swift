@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxOptional
 
 //MARK: - Import
 extension AppDelegate {
@@ -72,5 +73,38 @@ extension AppDelegate {
                     Logger.error("Failed to import this backup: \(error.localizedDescription)")
                 })
         }
+    }
+}
+
+// MARK: - Services initialize
+
+extension AppDelegate {
+    func initializeServices() {
+        let purchaseService = ServiceFactory.shared.purchaseService
+        purchaseService.cacheSubscriptionValidation()
+        purchaseService.logPurchases()
+        purchaseService.completeTransactions()
+        
+        RateApplication.sharedInstance().markAppLaunch()
+        PushNotificationService.shared.initialize()
+        ScansPurchaseTracker.shared.initialize()
+        GoogleDriveService.shared.initialize()
+        SyncService.shared.initialize()
+        
+        MigrationService().migrate()
+        
+        AuthService.shared.loggedInObservable
+            .filter { $0 }
+            .flatMap { _ -> Observable<(String, [OrganizationModel])> in
+                let organizationService = ServiceFactory.shared.organizationService
+                let idObservable = Observable.just(organizationService.currentOrganiztionId).filterNil().asObservable()
+                let organizationsObservable = organizationService.getOrganizations().asObservable()
+                return Observable.zip(idObservable, organizationsObservable)
+            }.map { id, organizations in
+                return organizations.first(where: { $0.id == id })
+            }.filterNil()
+            .subscribe(onNext: {
+                ServiceFactory.shared.organizationService.sync(organization: $0)
+            }).disposed(by: bag)
     }
 }

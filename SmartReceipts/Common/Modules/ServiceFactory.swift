@@ -21,10 +21,9 @@ class ServiceFactory: ServiceFatoryProtocol {
         return AuthService.shared
     }()
     
-    
-    var organizationService: OrganizationsServiceInterface {
+    var organizationService: OrganizationsServiceInterface = {
         return OrganizationsService()
-    }
+    }()
     
     var purchaseService: PurchaseService = {
         return PurchaseService()
