@@ -73,8 +73,8 @@ class AccountViewModel: AccountViewModelProtocol {
             }).disposed(by: bag)
         
         syncOrganizationSubject
-            .do(onNext: { _ in Toast.show(LocalizedString("organization_apply_error")) })
-            .do(onError: { _ in Toast.show(LocalizedString("organization_apply_success")) })
+            .do(onNext: { _ in Toast.show(LocalizedString("organization_apply_success")) })
+            .do(onError: { _ in Toast.show(LocalizedString("organization_apply_error")) })
             .subscribe(onNext: { [weak self] organization in
                 self?.organizationsService.sync(organization: organization)
             }).disposed(by: bag)
@@ -92,7 +92,7 @@ class AccountViewModel: AccountViewModelProtocol {
                 return $0.updatedBy(settings: appSettings)
             }.flatMap { [weak self]  in
                 return self?.organizationsService.saveOrganization($0) ?? .never()
-            }.do(onNext: { _ in Toast.show(LocalizedString("organization_apply_error")) })
+            }.do(onNext: { _ in Toast.show(LocalizedString("organization_update_success")) })
             .do(onError: { _ in Toast.show(LocalizedString("organization_update_error")) })
             .catchError { _ in return .never() }
             .subscribe()
