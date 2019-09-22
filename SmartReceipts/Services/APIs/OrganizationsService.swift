@@ -17,11 +17,13 @@ protocol OrganizationsServiceInterface {
     func getOrganizations() -> Single<[OrganizationModel]>
     func saveOrganization(_ organization: OrganizationModel) -> Single<OrganizationModel>
     func sync(organization: OrganizationModel)
+    func startSync()
     var currentOrganiztionId: String? { get }
 }
 
 class OrganizationsService: OrganizationsServiceInterface {
     private let api: APIProvider<SmartReceiptsAPI>
+    private let bag = DisposeBag()
     
     init(api: APIProvider<SmartReceiptsAPI> = .init()) {
         self.api = api
@@ -47,5 +49,21 @@ class OrganizationsService: OrganizationsServiceInterface {
         
         WBPreferences.importModel(settings: organization.appSettings.settings)
         Database.sharedInstance()?.importSettings(models: organization.appSettings.models)
+    }
+    
+    func startSync() {
+        AuthService.shared.loggedInObservable
+            .filter { $0 }
+            .flatMap { _ -> Observable<(String, [OrganizationModel])> in
+                let organizationService = ServiceFactory.shared.organizationService
+                let idObservable = Observable.just(organizationService.currentOrganiztionId).filterNil().asObservable()
+                let organizationsObservable = organizationService.getOrganizations().asObservable()
+                return Observable.zip(idObservable, organizationsObservable)
+            }.map { id, organizations in
+                return organizations.first(where: { $0.id == id })
+            }.filterNil()
+            .subscribe(onNext: {
+                ServiceFactory.shared.organizationService.sync(organization: $0)
+            }).disposed(by: bag)
     }
 }

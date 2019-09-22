@@ -93,18 +93,6 @@ extension AppDelegate {
         
         MigrationService().migrate()
         
-        AuthService.shared.loggedInObservable
-            .filter { $0 }
-            .flatMap { _ -> Observable<(String, [OrganizationModel])> in
-                let organizationService = ServiceFactory.shared.organizationService
-                let idObservable = Observable.just(organizationService.currentOrganiztionId).filterNil().asObservable()
-                let organizationsObservable = organizationService.getOrganizations().asObservable()
-                return Observable.zip(idObservable, organizationsObservable)
-            }.map { id, organizations in
-                return organizations.first(where: { $0.id == id })
-            }.filterNil()
-            .subscribe(onNext: {
-                ServiceFactory.shared.organizationService.sync(organization: $0)
-            }).disposed(by: bag)
+        ServiceFactory.shared.organizationService.startSync()
     }
 }
