@@ -218,6 +218,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         <<< DecimalRow(BASE_CURRENCY_PRICE_TAG) { [unowned self] row in
             row.title = LocalizedString("receipt_input_exchanged_result_hint")
             let formatter = NumberFormatter.exchangeFieldFormatter
+            formatter.maximumFractionDigits = 2
             row.formatter = formatter
             row.useFormatterOnDidBeginEditing = true
             row.value = self.exchangeRateCalculator.price * self.exchangeRateCalculator.exchangeRate
