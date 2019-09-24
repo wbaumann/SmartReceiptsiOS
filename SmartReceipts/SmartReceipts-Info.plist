@@ -161,5 +161,7 @@
 	</array>
 	<key>firebase_crashlytics_collection_enabled</key>
 	<false/>
+    <key>UIUserInterfaceStyle</key>
+    <string>Light</string>
 </dict>
 </plist>
