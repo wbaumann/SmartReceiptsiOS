@@ -23,6 +23,8 @@ extension UIImage {
     }
     
     static func image(text: String, font: UIFont) -> UIImage {
+        guard !text.isEmpty else { return .init() }
+        
         let label = UILabel(frame: .zero)
         label.font = font
         label.text = text
