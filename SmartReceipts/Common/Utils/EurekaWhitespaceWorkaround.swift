@@ -11,7 +11,7 @@
 import Foundation
 import Eureka
 
-private let REPLACING_CHAR = "\u{00a0}"
+let NON_BREAKING_SPACE = "\u{00a0}"
 private let DICTATION_ID = "dictation"
 
 final class EurekaWhitespaceWorkaround {
@@ -43,12 +43,12 @@ final class EurekaWhitespaceWorkaround {
         if isDictation { return }
         
         let cursor = textField.selectedTextRange
-        textField.text = textField.text?.replacingOccurrences(of: " ", with: REPLACING_CHAR)
+        textField.text = textField.text?.replacingOccurrences(of: " ", with: NON_BREAKING_SPACE)
         textField.selectedTextRange = cursor
     }
     
     @objc private func replaceNonBreakingSpacesWithNormalSpaces(textField: UITextField) {
-        textField.text = textField.text?.replacingOccurrences(of: REPLACING_CHAR, with: " ")
+        textField.text = textField.text?.replacingOccurrences(of: NON_BREAKING_SPACE, with: " ")
     }
     
     @objc func keyboardModeChanged(notification: Notification) {
@@ -63,6 +63,6 @@ final class EurekaWhitespaceWorkaround {
     }
     
     static func replaceNormalSpacesWithNonBreakingSpaces(_ string: String) -> String {
-        return string.replacingOccurrences(of: " ", with: REPLACING_CHAR)
+        return string.replacingOccurrences(of: " ", with: NON_BREAKING_SPACE)
     }
 }
