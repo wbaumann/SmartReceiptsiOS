@@ -11,7 +11,7 @@ import Viperit
 
 class EditDistanceRouter: Router {
     func close() {
-        _view.navigationController?.popViewController(animated: true)
+        _view.dismiss(animated: true, completion: nil)
     }
 }
 

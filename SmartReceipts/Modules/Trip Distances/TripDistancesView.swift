@@ -25,7 +25,7 @@ class TripDistancesView: FetchedTableViewController {
     private let bag = DisposeBag()
     
     @IBOutlet private var addButton: UIButton?
-    @IBOutlet private var doneButtonItem: UIBarButtonItem?
+    @IBOutlet private weak var doneButtonItem: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()

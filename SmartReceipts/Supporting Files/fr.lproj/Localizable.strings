@@ -51,6 +51,7 @@
 "receipt_dialog_action_swap_down" = "Déplacer vers le bas";
 "action_send_attach" = "Joindre %@ au reçu";
 "action_send_replace" = "Remplacer le reçu %@";
+"receipt_dialog_action_view" = "Voir le reçu %@";
 
 "pref_layout_display_photo_title" = "Inclure le marqueur Image/PDF";
 "pref_layout_display_photo_summary" = "Indiquer si les entrées ont une photo/un fichier PDF";

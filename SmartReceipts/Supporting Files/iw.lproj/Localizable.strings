@@ -50,6 +50,7 @@
 "receipt_dialog_action_swap_down" = "החלף מטה";
 "action_send_attach" = "צרף %@ לקבלה";
 "action_send_replace" = "החלף קבלה %@";
+"receipt_dialog_action_view" = "צפה בקבלה %@";
 
 "pref_layout_display_photo_title" = "כלול סמן לתמונה/פידיאף";
 "pref_layout_display_photo_summary" = "ציין האם לערכים יש תמונה/פידיאף";

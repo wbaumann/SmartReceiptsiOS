@@ -50,7 +50,8 @@
 "receipt_dialog_action_swap_up" = "Swap para cima";
 "receipt_dialog_action_swap_down" = "Swap para baixo";
 "action_send_attach" = "Anexar %@ ao recibo";
-"action_send_replace" = "Substituir recibo %@";
+"action_send_replace" = "Substituir Recibo %@";
+"receipt_dialog_action_view" = "Widok Recibo %@";
 
 "pref_layout_display_photo_title" = "Incluir marcados de Imagem/PDF";
 "pref_layout_display_photo_summary" = "Indica se os lançamentos têm uma foto/PDF";

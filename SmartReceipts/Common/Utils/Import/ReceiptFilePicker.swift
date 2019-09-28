@@ -38,8 +38,9 @@ class ReceiptFilePicker: NSObject {
             }))
             
             actionSheet.addAction(UIAlertAction(title: actionFilesTitle, style: .default, handler: { _ in
-                let fvc = FilesViewController(forOpeningFilesWithContentTypes: self.allowedTypes)
+                let fvc = UIDocumentPickerViewController(documentTypes: self.allowedTypes, in: .open)
                 fvc.delegate = self
+                UINavigationBar.appearance().tintColor = AppTheme.primaryColor
                 self.openedViewController = fvc
                 self.openPicker(on: viewController)
             }))
@@ -78,35 +79,36 @@ class ReceiptFilePicker: NSObject {
     }
 }
 
-extension ReceiptFilePicker: UIDocumentBrowserViewControllerDelegate {
-    @available(iOS 11.0, *)
-    func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL]) {
-        if let url = documentURLs.first {
-            close(completion: {
-                var document = ReceiptDocument(fileURL: url)
-                guard let fileType = document.fileType else { return }
-                if fileType == PNG_TYPE || fileType == JPEG_TYPE {
-                    if let data = try? Data(contentsOf: url), DataValidator().isValidImage(data: data) {
-                        let img = UIImage(data: data)
-                        let compressedImage = WBImageUtils.compressImage(img, withRatio: kImageCompression)
-                        let compressedURL = ReceiptDocument.makeDocumentFrom(image: compressedImage!).localURL!
-                        document = ReceiptDocument(fileURL: compressedURL)
-                    } else {
-                        self.emitImportError()
-                        return
-                    }
-                } else if fileType == PDF_TYPE {
-                    if let data = try? Data(contentsOf: url), !DataValidator().isValidPDF(data: data) {
-                        self.emitImportError()
-                        return
-                    }
+extension ReceiptFilePicker: UIDocumentPickerDelegate {
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        AppTheme.customizeOnAppLoad()
+        close(completion: {
+            var document = ReceiptDocument(fileURL: url)
+            guard let fileType = document.fileType else { return }
+            if fileType == PNG_TYPE || fileType == JPEG_TYPE {
+                if let data = try? Data(contentsOf: url), DataValidator().isValidImage(data: data) {
+                    let img = UIImage(data: data)
+                    let compressedImage = WBImageUtils.compressImage(img, withRatio: kImageCompression)
+                    let compressedURL = ReceiptDocument.makeDocumentFrom(image: compressedImage!).localURL!
+                    document = ReceiptDocument(fileURL: compressedURL)
+                } else {
+                    self.emitImportError()
+                    return
                 }
-                
-                return document.open()
-            })
-        } else {
-            close()
-        }
+            } else if fileType == PDF_TYPE {
+                if let data = try? Data(contentsOf: url), !DataValidator().isValidPDF(data: data) {
+                    self.emitImportError()
+                    return
+                }
+            }
+            
+            return document.open()
+        })
+    }
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        AppTheme.customizeOnAppLoad()
     }
     
     private func emitImportError() {

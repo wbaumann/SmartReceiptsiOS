@@ -159,7 +159,7 @@ final class ReceiptsView: FetchedTableViewController {
         floatyItem.icon = icon
         floatyItem.imageSize = floatyItem.icon!.scaledImageSize(0.75)
         floatyItem.iconImageView.center = floatyItem.center
-        floatyItem.handler = { _ in subject.onNext(()) }
+        floatyItem.handler = { [weak subject] _ in subject?.onNext(()) }
         floatyButton.addItem(item: floatyItem)
     }
     
