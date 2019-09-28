@@ -310,7 +310,6 @@
 		719B1FF81EF6033A0049BD71 /* ReceiptActionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FF21EF6033A0049BD71 /* ReceiptActionsRouter.swift */; };
 		719B1FF91EF6033A0049BD71 /* ReceiptActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FF31EF6033A0049BD71 /* ReceiptActionsView.swift */; };
 		719B1FFB1EF717000049BD71 /* EditReceiptFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B1FFA1EF717000049BD71 /* EditReceiptFormView.swift */; };
-		719B7E17201C98F7005F59A9 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B7E16201C98F7005F59A9 /* FilesViewController.swift */; };
 		71A30F2C1EEC9F05001BA608 /* DataExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A30F2B1EEC9F05001BA608 /* DataExport.swift */; };
 		71A30F2F1EECB746001BA608 /* DataImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A30F2D1EECAA34001BA608 /* DataImport.swift */; };
 		71ABEBD822FC8BD100F07596 /* AccountDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ABEBD722FC8BD100F07596 /* AccountDataSource.swift */; };
@@ -933,7 +932,6 @@
 		719B1FF21EF6033A0049BD71 /* ReceiptActionsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsRouter.swift; sourceTree = "<group>"; };
 		719B1FF31EF6033A0049BD71 /* ReceiptActionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsView.swift; sourceTree = "<group>"; };
 		719B1FFA1EF717000049BD71 /* EditReceiptFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReceiptFormView.swift; sourceTree = "<group>"; };
-		719B7E16201C98F7005F59A9 /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		71A30F2B1EEC9F05001BA608 /* DataExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExport.swift; sourceTree = "<group>"; };
 		71A30F2D1EECAA34001BA608 /* DataImport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataImport.swift; sourceTree = "<group>"; };
 		71A3F4D72038985E00117E90 /* InlinePickerButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InlinePickerButtonCell.swift; sourceTree = "<group>"; };
@@ -2803,7 +2801,6 @@
 			children = (
 				713D35451EDA334300D8563D /* Ad */,
 				71FE9FF31F477F620043E7B4 /* FetchedTableViewController.swift */,
-				719B7E16201C98F7005F59A9 /* FilesViewController.swift */,
 				A758CE931D01760C00169C7C /* QuickAlertPresenter.swift */,
 				710E587421386BAB00AAFC77 /* TooltipPresenter.swift */,
 				71FE9FEF1F4778000043E7B4 /* TripTabViewController.swift */,
@@ -3643,7 +3640,6 @@
 				7191F0E81EE20EBA0082DA47 /* DateFormatter+Extensions.swift in Sources */,
 				5785A4EF1E09DA0100C3CA0C /* AnalyticsLogger.swift in Sources */,
 				EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */,
-				719B7E17201C98F7005F59A9 /* FilesViewController.swift in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
 				EA8EB10A1B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m in Sources */,
 				71C014231F1AB14A005472B3 /* CategoriesDisplayData.swift in Sources */,

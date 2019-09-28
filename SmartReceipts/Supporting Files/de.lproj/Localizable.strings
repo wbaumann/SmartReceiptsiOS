@@ -51,6 +51,7 @@
 "receipt_dialog_action_swap_down" = "tauschen unten";
 "action_send_attach" = "Zum Beleg  %@ hinzufügen";
 "action_send_replace" = "Beleg ersetzen %@";
+"receipt_dialog_action_view" = "Аnzeigen Beleg %@";
 
 "pref_layout_display_photo_title" = "Fügen Sie Bild / PDF Marker hinzu";
 "pref_layout_display_photo_summary" = "Geben Sie an, ob Einträge ein Foto / PDF haben";

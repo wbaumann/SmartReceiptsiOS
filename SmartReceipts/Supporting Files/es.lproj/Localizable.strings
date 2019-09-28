@@ -51,6 +51,7 @@
 "receipt_dialog_action_swap_down" = "Intercambiar abajo";
 "action_send_attach" = "Adjuntar %@ al recibo";
 "action_send_replace" = "Reemplazar recibo %@";
+"receipt_dialog_action_view" = "Ver recibo %@";
 
 "pref_layout_display_photo_title" = "Incluir imagen/marcador PDF";
 "pref_layout_display_photo_summary" = "Indica si las entradas tienen una foto/PDF";

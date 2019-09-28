@@ -53,6 +53,10 @@ final class EditDistanceView: UserInterface {
             present(alert, animated: true, completion: nil)
         }
     }
+    
+    @IBAction private func onCancelTap() {
+        presenter.close()
+    }
 }
 
 //MARK: - Public interface

@@ -52,6 +52,7 @@
 "receipt_dialog_action_swap_down" = "Swap Down";
 "action_send_attach" = "Attach %@ to Receipt";
 "action_send_replace" = "Replace Receipt %@";
+"receipt_dialog_action_view" = "View Receipt %@";
 
 "pref_layout_display_photo_title" = "Include Picture/PDF Marker";
 "pref_layout_display_photo_summary" = "Indicate if values have a photo/PDF";

@@ -13,25 +13,21 @@ private let ALLOWED_TYPES = [SMR_TYPE]
 
 class BackupFilePicker: NSObject {
     static let sharedInstance = BackupFilePicker()
-    private var filesViewController: UIViewController!
+    
     fileprivate var urlSubject: PublishSubject<URL>?
+    
+    private lazy var filesViewController: UIViewController = {
+        let fvc = UIDocumentPickerViewController(documentTypes: ALLOWED_TYPES, in: .open)
+        fvc.delegate = self
+        return fvc
+    }()
     
     private override init() {}
 
     func openFilePicker(on viewController: UIViewController) -> Observable<URL> {
         self.urlSubject = .init()
-        
-        if #available(iOS 11.0, *) {
-            if filesViewController == nil {
-                let fvc = FilesViewController(forOpeningFilesWithContentTypes: ALLOWED_TYPES)
-                fvc.delegate = self
-                filesViewController = fvc
-            }
-            viewController.present(filesViewController, animated: true, completion: nil)
-        } else {
-            Logger.error("BackupFilePicker not available on iOS < 11.0")
-        }
-        
+        UINavigationBar.appearance().tintColor = AppTheme.primaryColor
+        viewController.present(filesViewController, animated: true, completion: nil)
         return urlSubject!.asObservable()
     }
     
@@ -40,14 +36,17 @@ class BackupFilePicker: NSObject {
     }
 }
 
-extension BackupFilePicker: UIDocumentBrowserViewControllerDelegate {
-    @available(iOS 11.0, *)
-    func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL]) {
-        guard let url = documentURLs.first else { return }
+extension BackupFilePicker: UIDocumentPickerDelegate {
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        AppTheme.customizeOnAppLoad()
         close { BackupDocument(fileURL: url).open() }
     }
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        AppTheme.customizeOnAppLoad()
+    }
 }
-
 
 fileprivate class BackupDocument: UIDocument {
     static let SMR_TEMP_NAME = "smr_temp.smr"

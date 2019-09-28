@@ -49,7 +49,8 @@
 "receipt_dialog_action_swap_up" = "Поменять местами с верхним";
 "receipt_dialog_action_swap_down" = "Поменять местами с нижним";
 "action_send_attach" = "Прикрепить %@ к чеку";
-"action_send_replace" = "Заменить чек %@";
+"action_send_replace" = "Заменить %@ чека";
+"receipt_dialog_action_view" = "Посмотреть %@ чека";
 
 "pref_layout_display_photo_title" = "Включать изображение/ PDF-маркер";
 "pref_layout_display_photo_summary" = "Указывать, содержат ли элементы фото/PDF";
