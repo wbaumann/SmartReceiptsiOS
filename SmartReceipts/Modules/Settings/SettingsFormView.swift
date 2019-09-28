@@ -83,7 +83,7 @@ class SettingsFormView: FormViewController {
                 .do(onNext: { [weak self] _ in
                     self?.hud?.hide()
                 }, onError: { [weak self] _ in
-                        self?.hud?.hide()
+                    self?.hud?.hide()
                 }).filter({ $0.valid })
                 .subscribe(onNext: { [weak self] validation in
                     self?.setupPurchased(expireDate: validation.expireTime)
