@@ -4283,6 +4283,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 31;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = UX5Z7CLP7J;
 				ENABLE_BITCODE = NO;
@@ -4293,6 +4294,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MARKETING_VERSION = 1.16.2000;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -4336,6 +4338,7 @@
 				CODE_SIGN_ENTITLEMENTS = "SmartReceipts/Supporting Files/SmartReceipts.entitlements";
 				CODE_SIGN_IDENTITY = "Developer ID Application: Smart Receipts LLC (UX5Z7CLP7J)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 31;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = UX5Z7CLP7J;
 				ENABLE_BITCODE = NO;
@@ -4346,6 +4349,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MARKETING_VERSION = 1.16.2000;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
