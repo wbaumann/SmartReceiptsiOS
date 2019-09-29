@@ -40,8 +40,13 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
         composer.setToRecipients(split(WBPreferences.defaultEmailRecipient()))
         composer.setCcRecipients(split(WBPreferences.defaultEmailCC()))
         composer.setBccRecipients(split(WBPreferences.defaultEmailBCC()))
-        composer.navigationBar.tintColor = AppTheme.primaryColor
-        composer.view.tintColor = AppTheme.primaryColor
+        
+        if #available(iOS 13.0, *) {
+            composer.navigationBar.tintColor = AppTheme.primaryColor
+            composer.view.tintColor = AppTheme.primaryColor
+        } else {
+            composer.navigationBar.tintColor = .white
+        }
         
         for file in files {
             Logger.debug("func emailFiles: Attach \(file)")

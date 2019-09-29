@@ -49,8 +49,13 @@ class FeedbackComposer: NSObject, MFMailComposeViewControllerDelegate {
         mailViewController.setToRecipients([FeedbackEmailAddress])
         mailViewController.setSubject(subject)
         mailViewController.setMessageBody(messageBody, isHTML: false)
-        mailViewController.navigationBar.tintColor = AppTheme.primaryColor
-        mailViewController.view.tintColor = AppTheme.primaryColor
+        
+        if #available(iOS 13.0, *) {
+            mailViewController.navigationBar.tintColor = AppTheme.primaryColor
+            mailViewController.view.tintColor = AppTheme.primaryColor
+        } else {
+            mailViewController.navigationBar.tintColor = .white
+        }
         
         viewController.present(mailViewController, animated: true)
     }
