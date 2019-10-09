@@ -40,7 +40,7 @@ class GoogleSyncService: SyncServiceProtocol {
     }
     
     func uploadFile(receipt: WBReceipt) {
-        if receiptUploadingIds.contains(receipt.objectId) { return }
+        guard receiptUploadingIds.contains(receipt.objectId) else { return }
         
         let name = receipt.imageFileName()
         let mime = receipt.attachemntType == .pdf ? DB_PDF_MIME : "image/\(name.asNSString.pathExtension)"
