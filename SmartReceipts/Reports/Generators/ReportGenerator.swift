@@ -52,11 +52,13 @@ class ReportGenerator: NSObject {
         var result = [WBCategory: [WBReceipt]]()
         let receipts = self.receipts()
         
-        database.fetchedAdapterForCategories()?.allObjects()
-            .filterMap(WBCategory.self)
-            .forEach { category in
-                result[category] = receipts.filter { $0.category?.objectId == category.objectId }
+        receipts.forEach {
+            guard let category = $0.category else { return }
+            if result[category] == nil {
+                result[category] = []
             }
+            result[category]?.append($0)
+        }
         
         if WBPreferences.printDailyDistanceValues() {
             let dReceipts = DistancesToReceiptsConverter.convertDistances(distances()) as! [WBReceipt]
