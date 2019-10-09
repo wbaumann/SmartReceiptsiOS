@@ -105,14 +105,14 @@ class SyncService {
         }
         
         unsyncedReceipts.asObservable()
+            .filter { !$0.isMarkedForDeletion(syncProvider: .current) }
+            .filter { $0.attachemntType != .none }
             // Added to avoid Google Drive requests rate
             .delayEach(seconds: 0.3, scheduler: BackgroundScheduler)
             .subscribe(onNext: { [unowned self] receipt in
-                if !receipt.isMarkedForDeletion(syncProvider: .current) {
-                    guard let trip = Database.sharedInstance().tripBy(id: receipt.parentKey) else { return }
-                    receipt.trip = trip
-                    self.syncService?.uploadFile(receipt: receipt)
-                }
+                guard let trip = Database.sharedInstance().tripBy(id: receipt.parentKey) else { return }
+                receipt.trip = trip
+                self.syncService?.uploadFile(receipt: receipt)
             }).disposed(by: bag)
     }
     
