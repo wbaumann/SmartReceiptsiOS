@@ -120,9 +120,7 @@ extension ReceiptFilePicker: UIDocumentPickerDelegate {
 
 extension ReceiptFilePicker: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
-        
-        guard let img = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage else { return }
+        guard let img = info.image else { return }
         let resultImage = WBImageUtils.compressImage(img, withRatio: kImageCompression)
         
         close(completion: { ReceiptDocument.makeDocumentFrom(image: resultImage!).open() })
@@ -168,14 +166,4 @@ class ReceiptDocument: UIDocument {
         doc.forceLoad(data: imgData, fileType: JPEG_TYPE)
         return doc
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
-	return input.rawValue
 }

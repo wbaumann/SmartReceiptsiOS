@@ -97,13 +97,12 @@ class ImagePicker: NSObject {
 extension ImagePicker: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        var chosenImage = info[.originalImage] as! UIImage
-        chosenImage = WBImageUtils.processImage(chosenImage)
-        chosenImage = WBImageUtils.compressImage(chosenImage, withRatio: COMPRESSION_RATIO)
-        
+        guard var img = info.image else { return }
+        img = WBImageUtils.processImage(img)
+        img = WBImageUtils.compressImage(img, withRatio: COMPRESSION_RATIO)
         
         picker.dismiss(animated: true) {
-            self.singleObserver?(.success(chosenImage))
+            self.singleObserver?(.success(img))
         }
     }
     
