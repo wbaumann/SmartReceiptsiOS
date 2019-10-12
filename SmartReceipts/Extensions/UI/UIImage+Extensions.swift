@@ -36,3 +36,10 @@ extension UIImage {
         return image!
     }
 }
+
+extension Dictionary where Key == UIImagePickerController.InfoKey {
+    var image: UIImage? {
+        let image = self[.editedImage] ?? self[.originalImage] ?? self[.cropRect]
+        return image as? UIImage
+    }
+}
