@@ -52,10 +52,10 @@ class EditReceiptPresenter: Presenter {
                 self.router.openCategories()
             }).disposed(by: bag)
         
-        tooltipTap.subscribe(onNext: { [unowned self] in
-            let authModule = self.router.openAuth()
+        tooltipTap.subscribe(onNext: { [weak self] in
+            guard let authModule = self?.router.openAuth() else { return }
             _ = authModule.successAuth
-                .map({ authModule.close() })
+                .do(onNext: { authModule.close() })
                 .delay(ANIMATIONS_DURATION, scheduler: MainScheduler.instance)
                 .flatMap({ _ -> Observable<UNAuthorizationStatus> in
                     PushNotificationService.shared.authorizationStatus()
@@ -64,7 +64,7 @@ class EditReceiptPresenter: Presenter {
                     return status == .notDetermined ? UIAlertController.showInfo(text: text) : Observable<Void>.just(())
                 }).subscribe(onNext: { [unowned self] in
                     _ = PushNotificationService.shared.requestAuthorization().subscribe()
-                    self.router.openAutoScans()
+                    self?.router.openAutoScans()
                 })
         }).disposed(by: bag)
     }
