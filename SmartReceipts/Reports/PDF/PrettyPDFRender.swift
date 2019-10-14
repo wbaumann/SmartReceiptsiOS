@@ -75,6 +75,9 @@ class PrettyPDFRender: NSObject {
     func renderPage(_ page: PDFPageView) {
         UIGraphicsBeginPDFPageWithInfo(page.bounds, nil)
         let context = UIGraphicsGetCurrentContext()
+        
+        page.layer.render(in: context!)
+        context?.clear(page.bounds)
         page.layer.render(in: context!)
     }
     
