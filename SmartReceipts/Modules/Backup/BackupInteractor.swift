@@ -85,7 +85,8 @@ class BackupInteractor: Interactor {
                 for url in urls { try? FileManager.default.removeItem(at: url) }
                 
                 return backupPath.asFileURL
-            }).do(onSuccess: { _ in
+            }).observeOn(MainScheduler.instance)
+            .do(onSuccess: { _ in
                 hud?.hide()
             }).filter({ $0 != nil })
             .subscribe(onSuccess: { [weak self] url in
@@ -170,19 +171,16 @@ class BackupInteractor: Interactor {
     }
     
     func saveCurrent(provider: SyncProvider) {
-        if provider == .googleDrive {
-            weak var hud = PendingHUDView.showFullScreen()
-            GoogleDriveService.shared.signIn(onUI: presenter.signInUIDelegate())
-                .subscribe(onNext: { [weak self] in
-                    self?.setup(provider: .googleDrive)
-                    hud?.hide()
-                }, onError: { [weak self] error in
-                    self?.setup(provider: .none)
-                    hud?.hide()
-                }).disposed(by: bag)
-        } else {
-            setup(provider: provider)
-        }
+        guard provider == .googleDrive else { setup(provider: provider); return }
+        weak var hud = PendingHUDView.showFullScreen()
+        GoogleDriveService.shared.signIn(onUI: presenter.signInUIDelegate())
+            .subscribe(onNext: { [weak self, weak hud] in
+                self?.setup(provider: .googleDrive)
+                hud?.hide()
+            }, onError: { [weak self] error in
+                self?.setup(provider: .none)
+                hud?.hide()
+            }).disposed(by: bag)
     }
     
     func setupUseWifiOnly(enabled: Bool) {
