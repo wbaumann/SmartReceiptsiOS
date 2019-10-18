@@ -106,7 +106,7 @@ class SyncService {
         
         unsyncedReceipts.asObservable()
             .filter { !$0.isMarkedForDeletion(syncProvider: .current) }
-            .filter { $0.attachemntType != .none }
+            .filter { !$0.isSynced }
             // Added to avoid Google Drive requests rate
             .delayEach(seconds: 0.3, scheduler: BackgroundScheduler)
             .subscribe(onNext: { [unowned self] receipt in

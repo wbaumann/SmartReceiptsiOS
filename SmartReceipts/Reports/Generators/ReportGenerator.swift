@@ -39,7 +39,8 @@ class ReportGenerator: NSObject {
     }
     
     func receipts() -> [WBReceipt] {
-        let receipts = database.allReceipts(for: trip, ascending: true) as! [WBReceipt]
+        var receipts = database.allReceipts(for: trip, ascending: true) as! [WBReceipt]
+        receipts = receipts.filter { !$0.isMarkedForDeletion }
         return ReceiptIndexer.indexReceipts(receipts, filter: { WBReportUtils.filterOutReceipt($0) })
     }
     

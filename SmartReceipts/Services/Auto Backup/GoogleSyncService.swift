@@ -40,7 +40,7 @@ class GoogleSyncService: SyncServiceProtocol {
     }
     
     func uploadFile(receipt: WBReceipt) {
-        guard receiptUploadingIds.contains(receipt.objectId) else { return }
+        guard !receiptUploadingIds.contains(receipt.objectId) else { return }
         
         let name = receipt.imageFileName()
         let mime = receipt.attachemntType == .pdf ? DB_PDF_MIME : "image/\(name.asNSString.pathExtension)"
@@ -78,6 +78,8 @@ class GoogleSyncService: SyncServiceProtocol {
         receipt.isMarkedForDeletion = true
         receipt.isSynced = false
         
+        Database.sharedInstance().save(receipt)
+        
         // We can't call save and delete here.
         // It's not safe for FetchedTableView, we can't guarantee safe call, because it's async operation.
         
@@ -90,7 +92,6 @@ class GoogleSyncService: SyncServiceProtocol {
                 Database.sharedInstance().delete(receipt)
                 Logger.debug("Delete synced receipt: \(receipt.name)")
             }, onError: { error in
-                Database.sharedInstance().save(receipt)
                 Logger.error("Delete Receipt file error - \(error.localizedDescription)")
                 Logger.debug("Mark for delete receipt: \(receipt.name)")
             }).disposed(by: bag)
