@@ -65,20 +65,23 @@ final class ReceiptsView: FetchedTableViewController {
         registerForPreviewing(with: self, sourceView: tableView)
     }
     
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        floatyButton.isHidden = editing
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
     @objc func tripUpdated(_ notification: Notification) {
-        if let trip = notification.object as? WBTrip {
-            Logger.debug("Updated Trip: \(trip.description)")
+        guard let trip = notification.object as? WBTrip, self.trip == trip else { return }
+        Logger.debug("Updated Trip: \(trip.description)")
+    
+        //TODO jaanus: check posting already altered object
+        self.trip = Database.sharedInstance().tripWithName(self.trip!.name)
+        contentChanged()
         
-            if self.trip != trip { return }
-        
-            //TODO jaanus: check posting already altered object
-            self.trip = Database.sharedInstance().tripWithName(self.trip!.name)
-            contentChanged()
-        }
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
