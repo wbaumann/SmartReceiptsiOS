@@ -46,7 +46,7 @@ class TripDistancesView: FetchedTableViewController {
 
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        tableView.setEditing(editing, animated: animated)
+        addButton?.isHidden = editing
     }
     
     func findMaxRateWidth() -> CGFloat {

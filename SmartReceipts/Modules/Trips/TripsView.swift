@@ -209,7 +209,7 @@ final class TripsView: FetchedTableViewController, UITableViewDelegate {
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        tableView.setEditing(editing, animated: animated)
+        addButton.isHidden = editing
         DispatchQueue.main.asyncAfter(deadline: .now() + DEFAULT_ANIMATION_DURATION) {
             self.tableView.reloadData()
         }
