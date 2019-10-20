@@ -1993,7 +1993,7 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(2637..<2646), nameRange: CountableRange(2637..<2641))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(2665..<2674), nameRange: CountableRange(2665..<2669))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func setupView(data: Any)  {
         
             return cuckoo_manager.call("setupView(data: Any)",
@@ -2017,7 +2017,7 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.ClassMock {
         
     }
     
-    // ["name": "present", "returnSignature": "", "fullyQualifiedName": "present(errorDescription: String)", "parameterSignature": "errorDescription: String", "parameterSignatureWithoutNames": "errorDescription: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "errorDescription", "call": "errorDescription: errorDescription", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("errorDescription"), name: "errorDescription", type: "String", range: CountableRange(3137..<3161), nameRange: CountableRange(3137..<3153))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    // ["name": "present", "returnSignature": "", "fullyQualifiedName": "present(errorDescription: String)", "parameterSignature": "errorDescription: String", "parameterSignatureWithoutNames": "errorDescription: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "errorDescription", "call": "errorDescription: errorDescription", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("errorDescription"), name: "errorDescription", type: "String", range: CountableRange(3165..<3189), nameRange: CountableRange(3165..<3181))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func present(errorDescription: String)  {
         
             return cuckoo_manager.call("present(errorDescription: String)",

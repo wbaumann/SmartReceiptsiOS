@@ -30,8 +30,7 @@
     return [self insertPaymentMethodWithName:LocalizedString(@"payment_method_default_cash", nil)]
             && [self insertPaymentMethodWithName:LocalizedString(@"payment_method_default_check", nil)]
             && [self insertPaymentMethodWithName:LocalizedString(@"payment_method_default_personal_card", nil)]
-            && [self insertPaymentMethodWithName:LocalizedString(@"payment_method_default_corporate_card", nil)]
-            && [self insertPaymentMethodWithName:LocalizedString(@"payment_method_unspecified", nil)];
+            && [self insertPaymentMethodWithName:LocalizedString(@"payment_method_default_corporate_card", nil)];
 }
 
 - (BOOL)insertPaymentMethodWithName:(NSString *)methodName {

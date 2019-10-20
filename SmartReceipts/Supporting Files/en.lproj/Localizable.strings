@@ -43,7 +43,6 @@
 /** <MARKER - SECTION COMPLETE> **/
 "generic_button_title_ok" = "OK";
 "generic_error_alert_title" = "Error";
-"payment_method_unspecified" = "<Untitled>";
 
 /** Legacy Android Strings (i.e. Ones that no longer existing on the master branch) **/
 /** <MARKER - SECTION COMPLETE> **/
