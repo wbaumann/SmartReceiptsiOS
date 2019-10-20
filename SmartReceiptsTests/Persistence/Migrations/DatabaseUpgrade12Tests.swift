@@ -24,6 +24,6 @@ class DatabaseUpgrade12Tests: BaseDatabaseUpgradeTests {
     }
     
     func testDefaultPaymentMethodsAddedByMigration() {
-        XCTAssertEqual(5, db.countRows(inTable: PaymentMethodsTable.Name))
+        XCTAssertEqual(4, db.countRows(inTable: PaymentMethodsTable.Name))
     }
 }
