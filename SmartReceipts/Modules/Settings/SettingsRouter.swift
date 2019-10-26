@@ -39,29 +39,17 @@ class SettingsRouter: Router {
     func openColumns(isCSV: Bool) {
         let module = AppModules.columns.build()
         module.presenter.setupView(data: isCSV)
-        executeFor(iPhone: {
-            module.router.show(from: _view)
-        }, iPad: {
-            module.router.pushTo(controller: _view.navigationController!)
-        })
+        module.router.show(from: _view)
     }
     
     func openPaymentMethods() {
         let module = AppModules.paymentMethods.build()
-        executeFor(iPhone: {
-            module.router.show(from: _view)
-        }, iPad: {
-            module.router.pushTo(controller: _view.navigationController!)
-        })
+        module.router.show(from: _view)
     }
     
     func openCategories() {
         let module = AppModules.categories.build()
-        executeFor(iPhone: {
-            module.router.show(from: _view)
-        }, iPad: {
-            module.router.pushTo(controller: _view.navigationController!)
-        })
+        module.router.show(from: _view)
     }
 }
 

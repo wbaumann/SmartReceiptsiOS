@@ -53,10 +53,8 @@ class TooltipPresenter {
         
         let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
         let text = syncError.localizedDescription
-        var screenWidth = false
-        executeFor(iPhone: { screenWidth = true }, iPad: { screenWidth = false })
         
-        syncErrorTooltip = TooltipView.showErrorOn(view: view, text: text, offset: offset, screenWidth: screenWidth)
+        syncErrorTooltip = TooltipView.showErrorOn(view: view, text: text, offset: offset)
         
         syncErrorTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
             self.syncErrorTooltip = nil
@@ -78,9 +76,7 @@ class TooltipPresenter {
             updateInsetsSubject.onNext(TOOLTIP_INSETS)
             let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
             
-            var screenWidth = false
-            executeFor(iPhone: { screenWidth = true }, iPad: { screenWidth = false })
-            reminderTooltip = TooltipView.showOn(view: view, text: text, image: #imageLiteral(resourceName: "info"), offset: offset, screenWidth: screenWidth)
+            reminderTooltip = TooltipView.showOn(view: view, text: text, image: #imageLiteral(resourceName: "info"), offset: offset)
             
             reminderTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
                 TooltipService.shared.markBackupReminderDismissed()
@@ -106,9 +102,7 @@ class TooltipPresenter {
             updateInsetsSubject.onNext(TOOLTIP_INSETS)
             let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
             
-            var screenWidth = false
-            executeFor(iPhone: { screenWidth = true }, iPad: { screenWidth = false })
-            reportTooltip = TooltipView.showOn(view: view, text: text, offset: offset, screenWidth: screenWidth)
+            reportTooltip = TooltipView.showOn(view: view, text: text, offset: offset)
             
             reportTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
                 TooltipService.shared.markMoveToGenerateDismiss()

@@ -18,11 +18,7 @@ class ReceiptsRouter: Router {
     
     func openDistances() {
         let module = AppModules.tripDistances.build()
-        executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: true, setupData: moduleTrip)
-        }, iPad: {
-            module.router.showIPadForm(from: _view, setupData: moduleTrip, needNavigationController: true)
-        })
+        module.router.show(from: _view, embedInNavController: true, setupData: moduleTrip)
     }
     
     func openImageViewer(for receipt: WBReceipt) {
@@ -48,11 +44,7 @@ class ReceiptsRouter: Router {
     
     func openGenerateReport() {
         let module = AppModules.generateReport.build()
-        executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: true, setupData: moduleTrip)
-        }, iPad: {
-            module.router.showIPadForm(from: _view, setupData: moduleTrip, needNavigationController: true)
-        })
+        module.router.show(from: _view, embedInNavController: true, setupData: moduleTrip)
     }
     
     func openCreateReceipt() {
@@ -93,11 +85,7 @@ class ReceiptsRouter: Router {
     
     func openActions(receipt: WBReceipt) -> ReceiptActionsPresenter {
         let module = AppModules.receiptActions.build()
-        executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: true, setupData: receipt)
-        }, iPad: {
-            module.router.showIPadForm(from: _view, setupData: receipt, needNavigationController: true)
-        })
+        module.router.show(from: _view, embedInNavController: true, setupData: receipt)
         return module.presenter as! ReceiptActionsPresenter
     }
     
@@ -111,21 +99,13 @@ class ReceiptsRouter: Router {
         
         let module = AppModules.editReceipt.build()
         let data = (trip: moduleTrip, receipt: receipt)
-        executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: true, setupData: data)
-        }, iPad: {
-            module.router.showIPadForm(from: _view, setupData: data, needNavigationController: true)
-        })
+        module.router.show(from: _view, embedInNavController: true, setupData: data)
     }
     
     private func openEditModule(with scan: ScanResult) {
         let module = AppModules.editReceipt.build()
         let data = (trip: moduleTrip, scan: scan)
-        executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: true, setupData: data)
-        }, iPad: {
-            module.router.showIPadForm(from: _view, setupData: data, needNavigationController: true)
-        })
+        module.router.show(from: _view, embedInNavController: true, setupData: data)
     }
     
 }

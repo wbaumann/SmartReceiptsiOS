@@ -34,11 +34,7 @@ class GenerateReportRouter: Router {
     func openSettings(option: ShowSettingsOption) {
         let module = AppModules.settings.build()
         module.presenter.setupView(data: option)
-        executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: true)
-        }, iPad: {
-            module.router.showIPadForm(from: _view, needNavigationController: true)
-        })
+        module.router.show(from: _view, embedInNavController: true)
     }
     
     func open(vc: UIViewController, animated: Bool = true, isPopover: Bool = false, completion: (() -> Void)? = nil) {

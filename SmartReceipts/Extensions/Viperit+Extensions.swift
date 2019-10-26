@@ -28,22 +28,6 @@ extension Router {
         _view.present(alert, animated: true, completion: nil)
     }
     
-    func showIPadForm(from: UIViewController, animated: Bool = true, setupData: Any? = nil, needNavigationController: Bool = false) {
-        var forShow: UIViewController! = _view
-        if let data = setupData {
-            _view._presenter.setupView(data: data)
-        }
-
-        if needNavigationController {
-            forShow = UINavigationController(rootViewController: _view)
-        }
-        
-        forShow.modalTransitionStyle = .coverVertical
-        forShow.modalPresentationStyle = .formSheet
-        
-        from.present(forShow, animated: animated, completion: nil)
-    }
-    
     func pushTo(controller: UINavigationController, animated: Bool = true, setupData: Any? = nil) {
         if let data = setupData {
             _view._presenter.setupView(data: data)
@@ -52,11 +36,7 @@ extension Router {
     }
     
     func openModal(module: Module) {
-        executeFor(iPhone: {
-            module.router.show(from: _view, embedInNavController: true)
-        }, iPad: {
-            module.router.showIPadForm(from: _view, needNavigationController: true)
-        })
+        module.router.show(from: _view, embedInNavController: true)
     }
 }
 

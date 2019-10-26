@@ -126,11 +126,7 @@ public class ExchangeRateCell: DecimalCell {
     private func openSettings() {
         let openFrom = alertPresenter as! UIViewController
         let module = AppModules.settings.build()
-        executeFor(iPhone: {
-            module.router.show(from: openFrom, embedInNavController: true)
-        }, iPad: {
-            module.router.showIPadForm(from: openFrom, needNavigationController: true)
-        })
+        module.router.show(from: openFrom, embedInNavController: true)
     }
 }
 
