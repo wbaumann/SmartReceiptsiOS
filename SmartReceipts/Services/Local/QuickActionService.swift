@@ -89,11 +89,7 @@ class QuickActionService {
         subscription = nil
         
         let module = AppModules.editReceipt.build()
-        executeFor(iPhone: {
-            module.router.show(from: view, embedInNavController: true, setupData: data)
-        }, iPad: {
-            module.router.showIPadForm(from: view, setupData: data, needNavigationController: true)
-        })
+        module.router.show(from: view, embedInNavController: true, setupData: data)
     }
     
     private func openEditModule(with scan: ScanResult) {

@@ -26,7 +26,7 @@ class TooltipView: UIView {
     private var widthFromScreen = false
     private let bag = DisposeBag()
     
-    static func showOn(view: UIView, text: String, image: UIImage? = nil, offset: CGPoint = .zero, screenWidth: Bool = false) -> TooltipView {
+    static func showOn(view: UIView, text: String, image: UIImage? = nil, offset: CGPoint = .zero, screenWidth: Bool = true) -> TooltipView {
         let width = screenWidth ? UIScreen.main.bounds.width : view.bounds.width
         let frame = CGRect(x: offset.x, y: offset.y, width: width, height: HEIGHT)
         let tooltip = TooltipView(frame: frame)
@@ -42,7 +42,7 @@ class TooltipView: UIView {
         return tooltip
     }
     
-    static func showErrorOn(view: UIView, text: String, image: UIImage? = nil, offset: CGPoint = .zero, screenWidth: Bool = false) -> TooltipView {
+    static func showErrorOn(view: UIView, text: String, image: UIImage? = nil, offset: CGPoint = .zero, screenWidth: Bool = true) -> TooltipView {
         let tooltip = showOn(view: view, text: text, image: image, offset: offset, screenWidth: screenWidth)
         tooltip.backgroundColor = AppTheme.errorColor
         return tooltip

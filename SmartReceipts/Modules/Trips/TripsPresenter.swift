@@ -21,7 +21,6 @@ class TripsPresenter: Presenter {
     
     override func viewHasLoaded() {
         interactor.configureSubscribers()
-        executeFor(iPhone: {}, iPad: { router.openNoTrips() })
         
         interactor.lastOpenedTrip
             .observeOn(MainScheduler.instance)

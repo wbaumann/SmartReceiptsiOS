@@ -65,12 +65,7 @@ class TripsRouter: Router {
     
     func openDetails(trip: WBTrip) {
         let tabs = TripTabViewController(trip: trip)
-        executeFor(iPhone: {
-            _view.navigationController?.pushViewController(tabs, animated: true)
-        }, iPad: {
-            let nav = UINavigationController(rootViewController: tabs)
-            _view.splitViewController?.show(nav, sender: nil)
-        })
+        _view.navigationController?.pushViewController(tabs, animated: true)
     }
     
     func openNoTrips() {
@@ -79,11 +74,7 @@ class TripsRouter: Router {
     }
     
     private func openEditTrip(_ trip: WBTrip?) {
-        executeFor(iPhone: {
-            AppModules.editTrip.build().router.show(from: _view, embedInNavController: true, setupData: trip)
-        }, iPad: {
-            AppModules.editTrip.build().router.showIPadForm(from: _view, setupData: trip, needNavigationController: true)
-        })
+        AppModules.editTrip.build().router.show(from: _view, embedInNavController: true, setupData: trip)
     }
 }
 

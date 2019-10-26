@@ -105,9 +105,7 @@ final class EditReceiptView: UserInterface {
     
     private func configureTooltip() {
         guard let text = presenter.tooltipText() else { return }
-        var screenWidth = false
-        executeFor(iPhone: { screenWidth = true }, iPad: { screenWidth = false })
-        tooltip = TooltipView.showOn(view: view, text: text, offset: CGPoint.zero, screenWidth: screenWidth)
+        tooltip = TooltipView.showOn(view: view, text: text, offset: CGPoint.zero)
         formView.tableView.contentInset = UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0)
         
         tooltip?.rx.tap
