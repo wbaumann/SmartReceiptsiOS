@@ -10,17 +10,14 @@ import Foundation
 import Viperit
 import RxSwift
 
+enum ReceiptAction {
+    case edit, attachImage, importImage, viewImage, move, copy, swapUp, swapDown
+}
+
 class ReceiptActionsPresenter: Presenter {
     private var receipt: WBReceipt!
     
-    let editReceiptTap = PublishSubject<Void>()
-    let handleAttachTap = PublishSubject<Void>()
-    let takeImageTap = PublishSubject<Void>()
-    let viewImageTap = PublishSubject<Void>()
-    let moveTap = PublishSubject<Void>()
-    let copyTap = PublishSubject<Void>()
-    let swapUpTap = PublishSubject<Void>()
-    let swapDownTap = PublishSubject<Void>()
+    let actionTap = PublishSubject<ReceiptAction>()
     
     let bag = DisposeBag()
     
@@ -48,58 +45,70 @@ class ReceiptActionsPresenter: Presenter {
     
     func configureSubscribers() {
         
-        editReceiptTap.subscribe(onNext: { [unowned self] in
-            Logger.info("Edit Receipt Tap")
-            AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuEdit())
-            self.router.close()
-        }).disposed(by: bag)
+        actionTap.filterCases(cases: .move)
+            .subscribe(onNext: { [weak self] action in
+                guard let self = self else { return }
+                AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuMoveCopy())
+                Logger.info("Move Receipt Tap")
+                self.router.openMove(receipt: self.receipt)
+            }).disposed(by: bag)
         
-        handleAttachTap.subscribe(onNext: { [unowned self] in
-            Logger.info("Attach File Tap")
-            AnalyticsManager.sharedManager.record(event: Event.receiptsImportPictureReceipt())
-            _ = self.interactor.attachAppInputFile(to: self.receipt)
-            self.router.close()
-        }).disposed(by: bag)
+        actionTap.filterCases(cases: .copy)
+            .subscribe(onNext: { [weak self] action in
+                guard let self = self else { return }
+                AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuMoveCopy())
+                Logger.info("Copy Receipt Tap")
+                self.router.openCopy(receipt: self.receipt)
+            }).disposed(by: bag)
         
-        takeImageTap.subscribe(onNext: {
-            Logger.info("Take Image Tap")
-            self.takeImage()
-            AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuRetakePhoto())
-        }).disposed(by: bag)
+        actionTap.filterCases(cases: .edit)
+            .subscribe(onNext: { [weak self] _ in
+                Logger.info("Edit Receipt Tap")
+                AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuEdit())
+                self?.router.close()
+            }).disposed(by: bag)
         
-        viewImageTap.subscribe(onNext: { [unowned self] in
-            Logger.info("View Image Tap")
-            switch self.receipt.attachemntType {
-            case .image: AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewImage())
-            case .pdf: AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewPdf())
-            default: break
-            }
-            self.router.close()
-        }).disposed(by: bag)
+        actionTap.filterCases(cases: .attachImage)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                Logger.info("Attach File Tap")
+                AnalyticsManager.sharedManager.record(event: Event.receiptsImportPictureReceipt())
+                _ = self.interactor.attachAppInputFile(to: self.receipt)
+                self.router.close()
+            }).disposed(by: bag)
         
-        moveTap.subscribe(onNext: { [unowned self] in
-            Logger.info("Move Receipt Tap")
-            AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuMoveCopy())
-            self.router.openMove(receipt: self.receipt)
-        }).disposed(by: bag)
+        actionTap.filterCases(cases: .importImage)
+            .subscribe(onNext: { [weak self] _ in
+                Logger.info("Take Image Tap")
+                self?.takeImage()
+                AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuRetakePhoto())
+            }).disposed(by: bag)
         
-        copyTap.subscribe(onNext: { [unowned self] in
-            Logger.info("Copy Receipt Tap")
-            AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuMoveCopy())
-            self.router.openCopy(receipt: self.receipt)
-        }).disposed(by: bag)
+        actionTap.filterCases(cases: .viewImage)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                Logger.info("View Image Tap")
+                switch self.receipt.attachemntType {
+                case .image: AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewImage())
+                case .pdf: AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuViewPdf())
+                default: break
+                }
+                self.router.close()
+            }).disposed(by: bag)
         
-        swapUpTap.subscribe(onNext: { [unowned self] in
-            Logger.info("SwapUp Receipt Tap")
-            AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuSwapUp())
-            self.router.close()
-        }).disposed(by: bag)
+        actionTap.filterCases(cases: .swapUp)
+            .subscribe(onNext: { [weak self] _ in
+                Logger.info("SwapUp Receipt Tap")
+                AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuSwapUp())
+                self?.router.close()
+            }).disposed(by: bag)
         
-        swapDownTap.subscribe(onNext: { [unowned self] in
-            Logger.info("SwapDown Receipt Tap")
-            AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuSwapDown())
-            self.router.close()
-        }).disposed(by: bag)
+        actionTap.filterCases(cases: .swapDown)
+            .subscribe(onNext: { [weak self] _ in
+                Logger.info("SwapDown Receipt Tap")
+                AnalyticsManager.sharedManager.record(event: Event.receiptsReceiptMenuSwapDown())
+                self?.router.close()
+            }).disposed(by: bag)
     }
     
     private func takeImage() {

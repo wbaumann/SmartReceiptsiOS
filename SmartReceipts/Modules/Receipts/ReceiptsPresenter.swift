@@ -36,23 +36,30 @@ class ReceiptsPresenter: Presenter {
         receiptActionsSubject.subscribe(onNext: { [unowned self] receipt in
             let actionsPresenter = self.router.openActions(receipt: receipt)
             
-            actionsPresenter.editReceiptTap
+            actionsPresenter.actionTap
+                .filterCases(cases: .edit)
                 .delay(VIEW_CONTROLLER_TRANSITION_DELAY, scheduler: MainScheduler.instance)
-                .subscribe(onNext: {
+                .subscribe(onNext: { _ in
                     self.router.openEdit(receipt: receipt)
                 }).disposed(by: self.bag)
             
-            actionsPresenter.swapUpTap.subscribe(onNext: {
-                self.interactor.swapUpReceipt(receipt)
-            }).disposed(by: self.bag)
+            actionsPresenter.actionTap
+                .filterCases(cases: .swapUp)
+                .subscribe(onNext: { _ in
+                    self.interactor.swapUpReceipt(receipt)
+                }).disposed(by: self.bag)
             
-            actionsPresenter.swapDownTap.subscribe(onNext: {
-                self.interactor.swapDownReceipt(receipt)
-            }).disposed(by: self.bag)
+            actionsPresenter.actionTap
+                .filterCases(cases: .swapDown)
+                .subscribe(onNext: { _ in
+                    self.interactor.swapDownReceipt(receipt)
+                }).disposed(by: self.bag)
             
-            actionsPresenter.viewImageTap.subscribe(onNext:{
-                self.presentAttachment(for: receipt)
-            }).disposed(by: self.bag)
+            actionsPresenter.actionTap
+                .filterCases(cases: .viewImage)
+                .subscribe(onNext: { _ in
+                    self.presentAttachment(for: receipt)
+                }).disposed(by: self.bag)
             
         }).disposed(by: bag)
     }

@@ -76,3 +76,9 @@ extension ObserverType where E == Void {
         on(.next(()))
     }
 }
+
+extension ObservableType where E: Equatable {
+    func filterCases(cases: E...) -> Observable<E> {
+        return filter { cases.contains($0) }
+    }
+}

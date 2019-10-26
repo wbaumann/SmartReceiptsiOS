@@ -8,6 +8,7 @@
 
 import UIKit
 import Viperit
+import RxSwift
 
 //MARK: - Public Interface Protocol
 protocol ReceiptActionsViewInterface {
@@ -18,6 +19,7 @@ protocol ReceiptActionsViewInterface {
 
 //MARK: ReceiptActionsView Class
 final class ReceiptActionsView: UserInterface {
+    private let bag = DisposeBag()
     
     @IBOutlet fileprivate weak var doneButtonItem: UIBarButtonItem!
     
@@ -30,14 +32,9 @@ final class ReceiptActionsView: UserInterface {
         
         formView = ReceiptActionsFormView(attachmentType: displayData.receipt.attachemntType)
         
-        formView.editReceiptTap = presenter.editReceiptTap
-        formView.handleAttachTap = presenter.handleAttachTap
-        formView.takeImageTap = presenter.takeImageTap
-        formView.viewImageTap = presenter.viewImageTap
-        formView.moveTap = presenter.moveTap
-        formView.copyTap = presenter.copyTap
-        formView.swapUpTap = presenter.swapUpTap
-        formView.swapDownTap = presenter.swapDownTap
+        formView.actionSubject
+            .bind(to: presenter.actionTap)
+            .disposed(by: bag)
         
         addChild(formView)
         view.addSubview(formView.view)
