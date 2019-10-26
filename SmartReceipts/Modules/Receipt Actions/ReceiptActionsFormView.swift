@@ -16,14 +16,7 @@ class ReceiptActionsFormView: FormViewController {
     private let TAKE_IMAGE_ROW = "TakeImageRow"
     private let VIEW_IMAGE_ROW = "ViewImageRow"
     
-    weak var editReceiptTap: PublishSubject<Void>!
-    weak var handleAttachTap: PublishSubject<Void>!
-    weak var takeImageTap: PublishSubject<Void>!
-    weak var viewImageTap: PublishSubject<Void>!
-    weak var moveTap: PublishSubject<Void>!
-    weak var copyTap: PublishSubject<Void>!
-    weak var swapUpTap: PublishSubject<Void>!
-    weak var swapDownTap: PublishSubject<Void>!
+    let actionSubject = PublishSubject<ReceiptAction>()
     
     var attachmentType: ReceiptAttachmentType = .none
     
@@ -41,23 +34,23 @@ class ReceiptActionsFormView: FormViewController {
         
         form
         +++ Section()
-        <<< buttonRow(title: LocalizedString("DIALOG_RECEIPTMENU_TITLE_EDIT"), bindSubject: editReceiptTap)
+        <<< buttonRow(title: LocalizedString("DIALOG_RECEIPTMENU_TITLE_EDIT"), action: .edit)
             
-        <<< buttonRow(title: handleAttachTitle(), bindSubject: handleAttachTap,
-                  condition: Condition.function([], { _ in
-                    AppDelegate.instance.filePathToAttach == nil
-                  }))
-        
-        <<< buttonRow(tag: VIEW_IMAGE_ROW, title: viewButtonTitle(), bindSubject: viewImageTap,
-              condition: Condition.function([], { [unowned self] _ in
-                self.attachmentType == .none
+        <<< buttonRow(title: handleAttachTitle(), action: .attachImage,
+              condition: Condition.function([], { _ in
+                AppDelegate.instance.filePathToAttach == nil
               }))
-        
-        <<< buttonRow(tag: TAKE_IMAGE_ROW, title: takeImageTitle(), bindSubject: takeImageTap)
-        <<< buttonRow(title: LocalizedString("move"), bindSubject: moveTap)
-        <<< buttonRow(title: LocalizedString("copy"), bindSubject: copyTap)
-        <<< buttonRow(title: LocalizedString("receipt_dialog_action_swap_up"), bindSubject: swapUpTap)
-        <<< buttonRow(title: LocalizedString("receipt_dialog_action_swap_down"), bindSubject: swapDownTap)
+    
+        <<< buttonRow(tag: VIEW_IMAGE_ROW, title: viewButtonTitle(), action: .viewImage,
+          condition: Condition.function([], { [unowned self] _ in
+            self.attachmentType == .none
+          }))
+    
+        <<< buttonRow(tag: TAKE_IMAGE_ROW, title: takeImageTitle(), action: .importImage)
+        <<< buttonRow(title: LocalizedString("move"), action: .move)
+        <<< buttonRow(title: LocalizedString("copy"), action: .copy)
+        <<< buttonRow(title: LocalizedString("receipt_dialog_action_swap_up"), action: .swapUp)
+        <<< buttonRow(title: LocalizedString("receipt_dialog_action_swap_down"), action: .swapDown)
         
     }
     
@@ -104,18 +97,20 @@ class ReceiptActionsFormView: FormViewController {
         }
         return btnTitle
     }
+    
+    func buttonRow(tag: String? = nil, title: String, action: ReceiptAction, condition: Condition? = nil) -> ButtonRow {
+        return
+            ButtonRow(tag) { row in
+                row.title = title
+                row.hidden = condition
+            }.onCellSelection({ [weak self] _, _ in
+                self?.actionSubject.onNext(action)
+            }).cellUpdate({ cell, row in
+                cell.textLabel?.textAlignment = .left
+            }).cellSetup({ cell, _ in
+                cell.tintColor = .black
+            })
+    }
 }
 
-fileprivate func buttonRow(tag: String? = nil, title: String, bindSubject: PublishSubject<Void>, condition: Condition? = nil) -> ButtonRow {
-    return
-        ButtonRow(tag) { row in
-            row.title = title
-            row.hidden = condition
-        }.onCellSelection({ [weak bindSubject] _, _ in
-            bindSubject?.onNext(())
-        }).cellUpdate({ cell, row in
-            cell.textLabel?.textAlignment = .left
-        }).cellSetup({ cell, _ in
-            cell.tintColor = UIColor.black
-        })
-}
+
