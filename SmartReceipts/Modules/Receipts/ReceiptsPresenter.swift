@@ -29,9 +29,10 @@ class ReceiptsPresenter: Presenter {
     override func viewHasLoaded() {
         interactor.configureSubscribers()
         
-        editReceiptSubject.subscribe(onNext: { [unowned self] receipt in
-            self.router.openEdit(receipt: receipt)
-        }).disposed(by: bag)
+        editReceiptSubject
+            .subscribe(onNext: { [unowned self] receipt in
+                self.router.openEdit(receipt: receipt)
+            }).disposed(by: bag)
         
         receiptActionsSubject.subscribe(onNext: { [unowned self] receipt in
             let actionsPresenter = self.router.openActions(receipt: receipt)

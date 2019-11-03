@@ -38,7 +38,7 @@ static NSString *const COLUMN_CUSTOM_ORDER_ID = @"custom_order_id";
 }
 
 - (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId objectId:(NSInteger)objectId {
-    return [self initWithName:name code:code customOrderId:customOrderId objectId:customOrderId uuid:@""];
+    return [self initWithName:name code:code customOrderId:customOrderId objectId:objectId uuid:@""];
 }
 
 - (id)initWithName:(NSString *)name code:(NSString *)code customOrderId:(NSInteger)customOrderId objectId:(NSInteger)objectId uuid:(NSString *)uuid {
