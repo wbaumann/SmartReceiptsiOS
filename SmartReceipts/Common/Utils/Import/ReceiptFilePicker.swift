@@ -73,38 +73,33 @@ class ReceiptFilePicker: NSObject {
         ipc.delegate = self
         return ipc
     }
-    
-    fileprivate func close(completion: VoidBlock? = nil) {
-        openedViewController?.dismiss(animated: true, completion: completion)
-    }
 }
 
 extension ReceiptFilePicker: UIDocumentPickerDelegate {
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         AppTheme.customizeOnAppLoad()
-        close(completion: {
-            var document = ReceiptDocument(fileURL: url)
-            guard let fileType = document.fileType else { return }
-            if fileType == PNG_TYPE || fileType == JPEG_TYPE {
-                if let data = try? Data(contentsOf: url), DataValidator().isValidImage(data: data) {
-                    let img = UIImage(data: data)
-                    let compressedImage = WBImageUtils.compressImage(img, withRatio: kImageCompression)
-                    let compressedURL = ReceiptDocument.makeDocumentFrom(image: compressedImage!).localURL!
-                    document = ReceiptDocument(fileURL: compressedURL)
-                } else {
-                    self.emitImportError()
-                    return
-                }
-            } else if fileType == PDF_TYPE {
-                if let data = try? Data(contentsOf: url), !DataValidator().isValidPDF(data: data) {
-                    self.emitImportError()
-                    return
-                }
+        openedViewController?.dismiss(animated: true, completion: nil)
+        var document = ReceiptDocument(fileURL: url)
+        guard let fileType = document.fileType else { return }
+        if fileType == PNG_TYPE || fileType == JPEG_TYPE {
+            if let data = try? Data(contentsOf: url), DataValidator().isValidImage(data: data) {
+                let img = UIImage(data: data)
+                let compressedImage = WBImageUtils.compressImage(img, withRatio: kImageCompression)
+                let compressedURL = ReceiptDocument.makeDocumentFrom(image: compressedImage!).localURL!
+                document = ReceiptDocument(fileURL: compressedURL)
+            } else {
+                self.emitImportError()
+                return
             }
-            
-            return document.open()
-        })
+        } else if fileType == PDF_TYPE {
+            if let data = try? Data(contentsOf: url), !DataValidator().isValidPDF(data: data) {
+                self.emitImportError()
+                return
+            }
+        }
+        
+        return document.open()
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
@@ -122,8 +117,9 @@ extension ReceiptFilePicker: UIImagePickerControllerDelegate, UINavigationContro
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let img = info.image else { return }
         let resultImage = WBImageUtils.compressImage(img, withRatio: kImageCompression)
-        
-        close(completion: { ReceiptDocument.makeDocumentFrom(image: resultImage!).open() })
+        openedViewController?.dismiss(animated: true, completion: {
+            ReceiptDocument.makeDocumentFrom(image: resultImage!).open()
+        })
     }
 }
 
