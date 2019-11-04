@@ -10,4 +10,4 @@ notifications:
     on_success: change # default: change
     on_failure: always # default: always
 before_install:
-- pod repo update
+- pod install
