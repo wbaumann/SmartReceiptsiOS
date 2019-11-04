@@ -57,12 +57,12 @@ class ReceiptActionsModuleTest: XCTestCase {
     }
     
     func testPresenterToRouter() {
-        presenter.swapUpTap.onNext(())
-        presenter.swapDownTap.onNext(())
-        presenter.copyTap.onNext(())
-        presenter.moveTap.onNext(())
-        presenter.handleAttachTap.onNext(())
-        presenter.viewImageTap.onNext(())
+        presenter.actionTap.onNext(.swapUp)
+        presenter.actionTap.onNext(.swapDown)
+        presenter.actionTap.onNext(.copy)
+        presenter.actionTap.onNext(.move)
+        presenter.actionTap.onNext(.attachImage)
+        presenter.actionTap.onNext(.viewImage)
         
         verify(router, times(4)).close()
         verify(router).openCopy(receipt: WBReceipt())
@@ -70,7 +70,7 @@ class ReceiptActionsModuleTest: XCTestCase {
     }
     
     func testPresenterToInteractor() {
-        presenter.handleAttachTap.onNext(())
+        presenter.actionTap.onNext(.attachImage)
         verify(interactor).attachAppInputFile(to: WBReceipt())
     }
 }
