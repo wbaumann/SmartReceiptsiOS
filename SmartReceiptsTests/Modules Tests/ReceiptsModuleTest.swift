@@ -98,8 +98,8 @@ class ReceiptsModuleTest: XCTestCase {
         presenter.viewHasLoaded()
         presenter.receiptActionsSubject.onNext(WBReceipt())
         
-        actionsPresneter.swapUpTap.onNext(())
-        actionsPresneter.swapDownTap.onNext(())
+        actionsPresneter.actionTap.onNext(.swapUp)
+        actionsPresneter.actionTap.onNext(.swapDown)
         
         verify(interactor).swapDownReceipt(WBReceipt())
         verify(interactor).swapUpReceipt(WBReceipt())
