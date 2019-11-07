@@ -27,6 +27,9 @@ jobs:
     steps:
       - checkout
       - run: bundle install
+      - run: 
+          name: Import Keys
+          command: echo $SECRETS_ENCRYPTION_KEY | base64 --decode | gpg --import
       - run:
           name: Fastlane
           command: bundle exec fastlane $FASTLANE_LANE

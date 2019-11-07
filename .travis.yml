@@ -1,13 +1,29 @@
 language: objective-c
-osx_image: xcode11
-xcode_workspace: SmartReceipts.xcworkspace
-xcode_scheme: SmartReceipts
-xcode_destination: platform=iOS Simulator,OS=13.0,name=iPhone 11
+osx_image: xcode11.1
 notifications:
   email:
     recipients:
       - ios-build-interest@smartreceipts.co
     on_success: change # default: change
     on_failure: always # default: always
-before_install:
-- pod install
+
+env:
+  - BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
+
+jobs:
+  install:
+  - bundle install
+
+  include:
+    - stage: test
+      name: "Unit Tests"
+      if: type = pull_request OR branch ~= release/*
+      script:
+        - fastlane tests
+
+    - stage: deploy
+      name: "Upload to TestFlight"
+      if: branch ~= release/*
+      script:
+        - echo $SECRETS_ENCRYPTION_KEY | base64 --decode | gpg --import
+        - fastlane test_flight
