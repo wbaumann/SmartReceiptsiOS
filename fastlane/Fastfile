@@ -18,6 +18,7 @@ platform :ios do
 
   before_all do
     setup_circle_ci
+    setup_travis
     cocoapods
   end
 
@@ -40,8 +41,9 @@ platform :ios do
   		skip_submission: true, 
   		skip_waiting_for_build_processing: true, 
   		apple_id: "905698613"
-  		)
+  	)
 	end
 
 end
+
 
