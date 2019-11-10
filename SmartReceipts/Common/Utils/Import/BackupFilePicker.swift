@@ -30,17 +30,14 @@ class BackupFilePicker: NSObject {
         viewController.present(filesViewController, animated: true, completion: nil)
         return urlSubject!.asObservable()
     }
-    
-    private func close(completion: VoidBlock? = nil) {
-        filesViewController.dismiss(animated: true, completion: completion)
-    }
 }
 
 extension BackupFilePicker: UIDocumentPickerDelegate {
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         AppTheme.customizeOnAppLoad()
-        close { BackupDocument(fileURL: url).open() }
+        BackupDocument(fileURL: url).open()
+        filesViewController.dismiss(animated: true, completion: nil)
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
