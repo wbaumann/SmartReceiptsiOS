@@ -27,6 +27,7 @@ jobs:
     steps:
       - checkout
       - run: bundle install
+      - run: brew install gpg
       - run: 
           name: Import Keys
           command: echo $SECRETS_ENCRYPTION_KEY | base64 --decode | gpg --import
@@ -44,6 +45,6 @@ workflows:
       - test-flight:
           filters:
             branches:
-              only: release/*
+              only: /release_.*/
           requires:
             - build-and-test

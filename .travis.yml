@@ -23,7 +23,7 @@ jobs:
 
     - stage: deploy
       name: "Upload to TestFlight"
-      if: branch ~= release/*
+      if: branch ~= release_*
       script:
         - echo $SECRETS_ENCRYPTION_KEY | base64 --decode | gpg --import
         - fastlane test_flight
