@@ -429,6 +429,8 @@
 		71F73E381FEAD02D0049F108 /* TableFooterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F73E371FEAD02D0049F108 /* TableFooterRow.swift */; };
 		71F98AE1204737CB007AF935 /* DataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F98AE0204737CB007AF935 /* DataValidator.swift */; };
 		71F9989921AC4E4200320256 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F9989821AC4E4200320256 /* Array+Extensions.swift */; };
+		71F9A711237DD85900797D9B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F9A710237DD85900797D9B /* TabBarViewController.swift */; };
+		71F9A713237DD89000797D9B /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F9A712237DD89000797D9B /* TabBar.swift */; };
 		71FA6ABF22EE195700FEFB6D /* OrganizationsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 71FA6ABE22EE195700FEFB6D /* OrganizationsResponse.json */; };
 		71FA6AC122EE1DEB00FEFB6D /* OrganizationsSerivceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA6AC022EE1DEB00FEFB6D /* OrganizationsSerivceTests.swift */; };
 		71FA6AC322EE3EEB00FEFB6D /* OrganizationModelsConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA6AC222EE3EEB00FEFB6D /* OrganizationModelsConverter.swift */; };
@@ -1054,6 +1056,8 @@
 		71F73E371FEAD02D0049F108 /* TableFooterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableFooterRow.swift; sourceTree = "<group>"; };
 		71F98AE0204737CB007AF935 /* DataValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidator.swift; sourceTree = "<group>"; };
 		71F9989821AC4E4200320256 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		71F9A710237DD85900797D9B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		71F9A712237DD89000797D9B /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		71FA6ABE22EE195700FEFB6D /* OrganizationsResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = OrganizationsResponse.json; sourceTree = "<group>"; };
 		71FA6AC022EE1DEB00FEFB6D /* OrganizationsSerivceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationsSerivceTests.swift; sourceTree = "<group>"; };
 		71FA6AC222EE3EEB00FEFB6D /* OrganizationModelsConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationModelsConverter.swift; sourceTree = "<group>"; };
@@ -1553,6 +1557,7 @@
 		714104CD1FF43D7700C334C5 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				71F9A714237DD89B00797D9B /* TabBarViewController */,
 				71B4A5D422F38577005E5FB2 /* Style */,
 				EA4DC9931AF1578300CEF1B9 /* Cells */,
 				7159BA061F06F692004EABAA /* Eureka Custom Cells */,
@@ -2179,6 +2184,15 @@
 				71F468381EEEF2AE009F6CE7 /* EditTripFormView.swift */,
 			);
 			path = "Edit Trip";
+			sourceTree = "<group>";
+		};
+		71F9A714237DD89B00797D9B /* TabBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				71F9A710237DD85900797D9B /* TabBarViewController.swift */,
+				71F9A712237DD89000797D9B /* TabBar.swift */,
+			);
+			path = TabBarViewController;
 			sourceTree = "<group>";
 		};
 		84A5834F18EDFBA9003A464D /* Items */ = {
@@ -3557,6 +3571,7 @@
 				A7F05BA21CFC038D0079F1AD /* ReceiptColumnTax.swift in Sources */,
 				71F73E381FEAD02D0049F108 /* TableFooterRow.swift in Sources */,
 				EA183E051B1C9F4C00577B3D /* Database+Columns.m in Sources */,
+				71F9A713237DD89000797D9B /* TabBar.swift in Sources */,
 				7186E1E121D3EFFA00182500 /* QuickActionService.swift in Sources */,
 				719B1FED1EF6032D0049BD71 /* EditReceiptView.swift in Sources */,
 				A78214F51CFFE50700FD644A /* CurrencyExchangeServiceHandler.swift in Sources */,
@@ -3887,6 +3902,7 @@
 				714104E51FF43D7700C334C5 /* WBPopoverPicker.m in Sources */,
 				7104A37522E8E4120027C5D9 /* OrganizationsService.swift in Sources */,
 				71CE321922E1194C0060C9CB /* ExchangeRateCalculator.swift in Sources */,
+				71F9A711237DD85900797D9B /* TabBarViewController.swift in Sources */,
 				71E2B57F1EEDD516001D02F1 /* TripsPresenter.swift in Sources */,
 				7190D4541EE88CC40081CB22 /* GenerateReportView.swift in Sources */,
 				712A84E51F78363C00D988E7 /* RxSwift+Extensions.swift in Sources */,
