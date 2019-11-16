@@ -55,7 +55,6 @@ final class ReceiptsView: FetchedTableViewController {
         configureFloatyButton()
         subscribe()
         
-        
         let notifications = [AppNotificationCenter.syncProvider.asVoid(), AppNotificationCenter.didSyncBackup]
         Observable<Void>.merge(notifications)
             .subscribe(onNext: { [weak self] in

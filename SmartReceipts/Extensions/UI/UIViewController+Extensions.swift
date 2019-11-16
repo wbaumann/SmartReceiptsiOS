@@ -8,13 +8,19 @@
 
 import UIKit
 
-protocol Storyboardable: class {
+protocol Storyboardable: UIViewController {
     static func create() -> Self
+    static func create(id: String?) -> Self
 }
 
 extension Storyboardable {
     static func create() -> Self {
-        let storyboard = UIStoryboard(name: "\(self)", bundle: nil)
-        return storyboard.instantiateInitialViewController() as! Self
+        return create(id: nil)
+    }
+    
+    static func create(id: String?) -> Self {
+        let sb = UIStoryboard(name: String(describing: self), bundle: nil)
+        guard let storyboardId = id else { return sb.instantiateInitialViewController() as! Self }
+        return sb.instantiateViewController(withIdentifier: storyboardId) as! Self
     }
 }

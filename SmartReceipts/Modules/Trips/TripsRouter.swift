@@ -64,8 +64,8 @@ class TripsRouter: Router {
     }
     
     func openDetails(trip: WBTrip) {
-        let tabs = TripTabViewController(trip: trip)
-        _view.navigationController?.pushViewController(tabs, animated: true)
+        let tabBarViewController = TripTabBarViewController.create(trip: trip)
+        _view.navigationController?.pushViewController(tabBarViewController, animated: true)
     }
     
     func openNoTrips() {
