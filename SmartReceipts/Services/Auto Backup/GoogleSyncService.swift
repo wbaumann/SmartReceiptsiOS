@@ -75,11 +75,11 @@ class GoogleSyncService: SyncServiceProtocol {
     }
     
     func deleteFile(receipt: WBReceipt) {
-        receipt.isMarkedForDeletion = true
-        receipt.isSynced = false
-        
-        Database.sharedInstance().save(receipt)
-        
+        if !receipt.isMarkedForDeletion || receipt.isSynced {
+            receipt.isMarkedForDeletion = true
+            receipt.isSynced = false
+            Database.sharedInstance().save(receipt)
+        }
         // We can't call save and delete here.
         // It's not safe for FetchedTableView, we can't guarantee safe call, because it's async operation.
         
