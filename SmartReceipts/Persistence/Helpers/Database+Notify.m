@@ -61,4 +61,10 @@
     });
 }
 
+- (void)executeWithoutNotification:(void(^)(Database *))block {
+    self.disableNotifications = YES;
+    block(self);
+    self.disableNotifications = NO;
+}
+
 @end

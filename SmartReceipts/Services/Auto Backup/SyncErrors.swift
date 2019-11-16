@@ -22,6 +22,8 @@ enum SyncError: Error {
     case userDeletedRemoteData
     case unknownError
     
+    static let FILE_NOT_FOUND_CODE = 404
+    
     static func error(_ error: Error) -> SyncError {
         let nsError = error as NSError
         var errorReason = ""

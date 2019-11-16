@@ -76,6 +76,7 @@ class GoogleSyncService: SyncServiceProtocol {
     
     func deleteFile(receipt: WBReceipt) {
         if !receipt.isMarkedForDeletion || receipt.isSynced {
+            Logger.debug("Mark for delete receipt: \(receipt.name)")
             receipt.isMarkedForDeletion = true
             receipt.isSynced = false
             Database.sharedInstance().save(receipt)
@@ -86,14 +87,14 @@ class GoogleSyncService: SyncServiceProtocol {
         guard let syncID = receipt.getSyncId(provider: .current), !syncID.isEmpty else { return }
         GoogleDriveService.shared.deleteFile(id: syncID)
             .do(onError: { [weak self] in self?.handleError($0) })
-            .do(onCompleted: {
+            .subscribe(onCompleted: {
+                Database.sharedInstance()?.executeWithoutNotification({ db in db?.delete(receipt) })
                 AppNotificationCenter.postDidSyncBackup()
-            }).subscribe(onCompleted: {
-                Database.sharedInstance().delete(receipt)
                 Logger.debug("Delete synced receipt: \(receipt.name)")
             }, onError: { error in
                 Logger.error("Delete Receipt file error - \(error.localizedDescription)")
-                Logger.debug("Mark for delete receipt: \(receipt.name)")
+                guard error.code == SyncError.FILE_NOT_FOUND_CODE else { return }
+                Database.sharedInstance()?.executeWithoutNotification({ db in db?.delete(receipt) })
             }).disposed(by: bag)
     }
     
