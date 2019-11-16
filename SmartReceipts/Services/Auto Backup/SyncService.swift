@@ -166,8 +166,6 @@ class SyncService {
         if !receipt.isSynced(syncProvider: .current) && !receipt.isMarkedForDeletion(syncProvider: .current) {
             let upload = receipt.getSyncId(provider: .current)?.isEmpty ?? true
             upload ? syncService?.uploadFile(receipt: receipt) : syncService?.replaceFile(receipt: receipt)
-        } else if !receipt.isSynced(syncProvider: .current) && receipt.isMarkedForDeletion(syncProvider: .current) {
-            deleteFile(receipt: receipt)
         }
     }
     

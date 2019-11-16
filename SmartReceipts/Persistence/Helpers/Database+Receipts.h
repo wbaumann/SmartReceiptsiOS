@@ -42,6 +42,8 @@ extern NSInteger const kDaysToOrderFactor;
 - (WBReceipt *)receiptByObjectID:(NSUInteger)objectID;
 - (BOOL)markAllEntriesSynced:(BOOL)synced;
 
+- (BOOL)deleteReceipt:(WBReceipt *)receipt;
+
 /**
  Recent currencies
  Returns most recently used currencies, ordered

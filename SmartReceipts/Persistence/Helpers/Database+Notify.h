@@ -18,5 +18,6 @@
 - (void)notifyDeleteOfModel:(id<FetchedModel>)model;
 - (void)notifyReorderOfModels:(NSArray *)models;
 - (void)notifySwapOfModels:(NSArray *)models;
+- (void)executeWithoutNotification:(void(^)(Database *))block;
 
 @end
