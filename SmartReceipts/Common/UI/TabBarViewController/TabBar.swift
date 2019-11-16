@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Tabbar: UITabBar {
+class TabBar: UITabBar {
     private let circleRadius: CGFloat = 37
     private let topOffset: CGFloat = 16
     private var shapeLayer: CALayer?
@@ -22,8 +22,11 @@ class Tabbar: UITabBar {
     
     private lazy var actionButton: UIButton = {
        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "tabbar_plus")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        button.sizeToFit()
+        let size: CGFloat = 48
+        button.bounds = .init(width: size, height: size)
+        button.backgroundColor = #colorLiteral(red: 0.2705882353, green: 0.1568627451, blue: 0.6235294118, alpha: 1)
+        button.layer.cornerRadius = size/2
+        button.setImage(#imageLiteral(resourceName: "white_plus").withRenderingMode(.alwaysOriginal), for: .normal)
         return button
     }()
     
@@ -37,7 +40,7 @@ class Tabbar: UITabBar {
         commonInit()
     }
     
-    private func commonInit() {
+    func commonInit() {
         addSubview(indicator)
         addSubview(actionButton)
     }
@@ -86,7 +89,7 @@ class Tabbar: UITabBar {
         self.addShape()
     }
 
-    func createPath() -> CGPath {
+    private func createPath() -> CGPath {
         let path = UIBezierPath()
         let centerWidth = frame.width / 2
         
