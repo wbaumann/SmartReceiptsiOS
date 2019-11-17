@@ -13,14 +13,7 @@ class TabBar: UITabBar {
     private let topOffset: CGFloat = 16
     private var shapeLayer: CALayer?
     
-    private lazy var indicator: UIView = {
-        let indicator = UIView(frame: .init(x: 0, y: 0, width: 40, height: 4))
-        indicator.backgroundColor = #colorLiteral(red: 0.2705882353, green: 0.1568627451, blue: 0.6235294118, alpha: 1)
-        indicator.layer.cornerRadius = 2
-        return indicator
-    }()
-    
-    private lazy var actionButton: UIButton = {
+    lazy var actionButton: UIButton = {
        let button = UIButton(type: .system)
         let size: CGFloat = 48
         button.bounds = .init(width: size, height: size)
@@ -28,6 +21,13 @@ class TabBar: UITabBar {
         button.layer.cornerRadius = size/2
         button.setImage(#imageLiteral(resourceName: "white_plus").withRenderingMode(.alwaysOriginal), for: .normal)
         return button
+    }()
+    
+    private lazy var indicator: UIView = {
+        let indicator = UIView(frame: .init(x: 0, y: 0, width: 40, height: 4))
+        indicator.backgroundColor = #colorLiteral(red: 0.2705882353, green: 0.1568627451, blue: 0.6235294118, alpha: 1)
+        indicator.layer.cornerRadius = 2
+        return indicator
     }()
     
     override init(frame: CGRect) {
