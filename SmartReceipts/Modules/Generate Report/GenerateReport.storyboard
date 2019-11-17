@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,22 +18,7 @@
                     <view key="view" contentMode="scaleToFill" id="SxC-bC-Ebd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gma-db-f1Z" customClass="CircleButton" customModule="SmartReceipts" customModuleProvider="target">
-                                <rect key="frame" x="309" y="601" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.41176470588235292" green="0.10196078431372549" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="J3Z-8H-m4E"/>
-                                    <constraint firstAttribute="height" constant="50" id="zXQ-m0-T88"/>
-                                </constraints>
-                                <state key="normal" image="share-2"/>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="QHN-W3-Y7P" firstAttribute="top" secondItem="Gma-db-f1Z" secondAttribute="bottom" constant="16" id="kwg-gK-0EN"/>
-                            <constraint firstAttribute="trailing" secondItem="Gma-db-f1Z" secondAttribute="trailing" constant="16" id="w6A-VC-qkj"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Generate Report" id="NvF-WO-na2">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Lkf-OX-RP0"/>
@@ -44,7 +27,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="cancelButton" destination="Lkf-OX-RP0" id="vRe-Co-Xo5"/>
-                        <outlet property="shareButton" destination="Gma-db-f1Z" id="0YP-Vk-1eq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIM-K8-nEX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -52,7 +34,4 @@
             <point key="canvasLocation" x="295" y="356"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="share-2" width="20" height="22"/>
-    </resources>
 </document>

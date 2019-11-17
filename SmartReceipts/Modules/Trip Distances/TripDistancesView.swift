@@ -18,13 +18,10 @@ protocol TripDistancesViewInterface {
 
 //MARK: TripDistances View
 class TripDistancesView: FetchedTableViewController {
-    
     private let dateFormatter = DateFormatter()
     private var maxRateWidth: CGFloat = 0
     
     private let bag = DisposeBag()
-    
-    @IBOutlet private var addButton: UIButton?
     @IBOutlet private weak var doneButtonItem: UIBarButtonItem?
     
     override func viewDidLoad() {
@@ -46,7 +43,6 @@ class TripDistancesView: FetchedTableViewController {
 
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        addButton?.isHidden = editing
     }
     
     func findMaxRateWidth() -> CGFloat {
@@ -104,15 +100,17 @@ class TripDistancesView: FetchedTableViewController {
             self?.dismiss(animated: true, completion: nil)
         }).disposed(by: bag)
         
-        addButton?.rx.tap.subscribe(onNext: { [weak self] in
-            self?.showEditDistance(with: (self?.trip, nil as Distance?))
-        }).disposed(by: bag)
-        
     }
     
     //MARK: Private
     private func showEditDistance(with data: Any?) {
         presenter.presentEditDistance(with: data)
+    }
+}
+
+extension TripDistancesView: TabHasMainAction {
+    func mainAction() {
+        showEditDistance(with: (trip, nil as Distance?))
     }
 }
 

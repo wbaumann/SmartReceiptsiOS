@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,21 +23,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOI-3Z-VEu" customClass="CircleButton" customModule="SmartReceipts" customModuleProvider="target">
-                                <rect key="frame" x="309" y="601" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.41176470590000003" green="0.1019607843" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="HQL-rp-AWJ"/>
-                                    <constraint firstAttribute="width" constant="50" id="QYs-Gd-a7B"/>
-                                </constraints>
-                                <state key="normal" image="white_plus"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Ng6-2X-I4o" secondAttribute="trailing" id="Dzp-zP-8g2"/>
-                            <constraint firstItem="vb6-4r-Epx" firstAttribute="top" secondItem="zOI-3Z-VEu" secondAttribute="bottom" constant="16" id="POA-cn-5z4"/>
-                            <constraint firstAttribute="trailing" secondItem="zOI-3Z-VEu" secondAttribute="trailing" constant="16" id="Rlb-Nd-zrR"/>
                             <constraint firstItem="Ng6-2X-I4o" firstAttribute="top" secondItem="kgt-o0-aP8" secondAttribute="top" id="WZs-mI-HTn"/>
                             <constraint firstItem="Ng6-2X-I4o" firstAttribute="leading" secondItem="kgt-o0-aP8" secondAttribute="leading" id="q5Z-BU-i2l"/>
                             <constraint firstItem="vb6-4r-Epx" firstAttribute="top" secondItem="Ng6-2X-I4o" secondAttribute="bottom" id="z6Y-cJ-3jH"/>
@@ -48,7 +37,6 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="addButton" destination="zOI-3Z-VEu" id="kZX-bp-Xvo"/>
                         <outlet property="tableView" destination="Ng6-2X-I4o" id="P6k-WE-n9W"/>
                     </connections>
                 </viewController>
@@ -59,6 +47,5 @@
     </scenes>
     <resources>
         <image name="plus" width="16" height="16"/>
-        <image name="white_plus" width="16" height="16"/>
     </resources>
 </document>

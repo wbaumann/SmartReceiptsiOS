@@ -198,6 +198,12 @@ final class ReceiptsView: FetchedTableViewController {
     }
 }
 
+extension ReceiptsView: TabHasMainAction {
+    func mainAction() {
+        print("ReceiptsView")
+    }
+}
+
 //MARK: TooltipApplicable
 extension ReceiptsView: TooltipApplicable {
     func viewForTooltip() -> UIView {

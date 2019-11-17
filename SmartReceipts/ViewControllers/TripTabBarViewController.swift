@@ -39,7 +39,7 @@ class TripTabBarViewController: TabBarViewController {
     // MARK: Private
     
     private func showMore() {
-        print("asdasd")
+        print("showMore")
     }
     
     private func setupViewControllers() {
