@@ -13,10 +13,6 @@ import RxCocoa
 
 //MARK: - Public Interface Protocol
 protocol TripsViewInterface {
-    var settingsTap: Observable<Void> { get }
-    var autoScansTap: Observable<Void> { get }
-    var backupTap: Observable<Void> { get }
-    var userGuideTap: Observable<Void> { get }
     var privacyTap: Observable<Void> { get }
     var addButtonTap: Observable<Void> { get }
     var debugButton: UIBarButtonItem { get }
@@ -103,21 +99,6 @@ final class TripsView: FetchedTableViewController, UITableViewDelegate {
                 TooltipService.shared.markPrivacyDismissed()
                 weakTable?.contentInset = UIEdgeInsets.zero
             }).disposed(by: bag)
-    }
-    
-    @IBAction private func menuTap() {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        for action in displayData.makeActions() {
-            actionSheet.addAction(action)
-        }
-        
-        if let popoverController = actionSheet.popoverPresentationController {
-            popoverController.barButtonItem = menuButton
-        } else {
-            actionSheet.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
-        }
-        
-        present(actionSheet, animated: true, completion: nil)
     }
     
     private func settingsSaved() {
@@ -223,10 +204,6 @@ final class TripsView: FetchedTableViewController, UITableViewDelegate {
 
 //MARK: - Public interface
 extension TripsView: TripsViewInterface {
-    var settingsTap: Observable<Void> { return  displayData.settingsTap }
-    var autoScansTap: Observable<Void> { return  displayData.autoScansTap }
-    var backupTap: Observable<Void> { return  displayData.backupTap }
-    var userGuideTap: Observable<Void> { return  displayData.userGuideTap }
     var privacyTap: Observable<Void> { return privacySubject }
     var debugButton: UIBarButtonItem { return _debugButton }
     var addButtonTap: Observable<Void> { return addButton.rx.tap.asObservable() }

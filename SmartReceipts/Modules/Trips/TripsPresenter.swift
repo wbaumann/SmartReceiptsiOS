@@ -32,46 +32,7 @@ class TripsPresenter: Presenter {
             .subscribe(onNext: {
                 self.router.openAddTrip()
             }).disposed(by: bag)
-        
-        view.settingsTap
-            .subscribe(onNext: {
-                self.router.openSettings()
-            }).disposed(by: bag)
-        
-        view.userGuideTap
-            .subscribe(onNext: {
-                self.router.openUserGuide()
-            }).disposed(by: bag)
-        
-        view.autoScansTap
-            .filter({ AuthService.shared.isLoggedIn })
-            .subscribe(onNext: {
-                self.router.openAutoScans()
-            }).disposed(by: bag)
-        
-        view.autoScansTap
-            .filter({ !AuthService.shared.isLoggedIn })
-            .subscribe(onNext: {
-                let authModule = self.router.openAuth()
-                _ = authModule.successAuth
-                    .map({ authModule.close() })
-                    .delay(VIEW_CONTROLLER_TRANSITION_DELAY, scheduler: MainScheduler.instance)
-                    .flatMap({ _ -> Observable<UNAuthorizationStatus> in
-                        PushNotificationService.shared.authorizationStatus()
-                    }).observeOn(MainScheduler.instance)
-                    .flatMap({ status -> Observable<Void> in
-                        let text = LocalizedString("push_request_alert_text")
-                        return status == .notDetermined ? UIAlertController.showInfo(text: text) : Observable<Void>.just(())
-                    }).subscribe(onNext: { [unowned self] in
-                        _ = PushNotificationService.shared.requestAuthorization().subscribe()
-                        self.router.openAutoScans()
-                    })
-            }).disposed(by: bag)
-        
-        view.backupTap
-            .subscribe(onNext: {
-                self.router.openBackup()
-            }).disposed(by: bag)
+    
         
         view.debugButton.rx.tap
             .subscribe(onNext: {
@@ -94,10 +55,6 @@ class TripsPresenter: Presenter {
             .subscribe(onNext: { trip in
                 self.router.openEdit(trip: trip)
             }).disposed(by: bag)
-    }
-    
-    func presentSettings() {
-        router.openSettings()
     }
     
     func presentAddTrip() {
