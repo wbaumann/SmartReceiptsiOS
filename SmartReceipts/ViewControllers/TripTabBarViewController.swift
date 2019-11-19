@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import SafariServices
 
 class TripTabBarViewController: TabBarViewController {
     private var titleSubtitleProtocols: [TitleSubtitleProtocol?]!
@@ -39,7 +40,7 @@ class TripTabBarViewController: TabBarViewController {
     // MARK: Private
     
     private func showMore() {
-        print("showMore")
+       presentMoreSheet()
     }
     
     private func setupViewControllers() {
@@ -58,6 +59,73 @@ class TripTabBarViewController: TabBarViewController {
             generateModule.view.tabConfigured(image: #imageLiteral(resourceName: "share_tab"), selected: #imageLiteral(resourceName: "share_tab_selected")),
             UIViewController().tabConfigured(image: #imageLiteral(resourceName: "more_tab"), selected: #imageLiteral(resourceName: "more_tab_selected"), tag: Constants.actionTag)
         ]
+    }
+}
+
+private extension TripTabBarViewController {
+    func presentMoreSheet() {
+        let settingsAction = UIAlertAction(title: LocalizedString("menu_main_settings"),
+                                           style: .default, handler: { [weak self] _ in self?.openSettings() })
+            
+        let ocrSettingsAction = UIAlertAction(title: LocalizedString("menu_main_ocr_configuration"),
+                                              style: .default, handler: { [weak self] _ in self?.openAutoScans() })
+            
+        let backupAction = UIAlertAction(title: LocalizedString("menu_main_export"),
+                                         style: .default, handler: { [weak self] _ in self?.openBackup() })
+        
+        let userGuideAction = UIAlertAction(title: LocalizedString("menu_main_usage_guide"),
+                                            style: .default, handler: { [weak self] _ in self?.openUserGuide() })
+            
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        [settingsAction, ocrSettingsAction, backupAction, userGuideAction].forEach { actionSheet.addAction($0) }
+        actionSheet.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func openAuth() -> AuthModuleInterface {
+        let module = AppModules.auth.build()
+        present(UINavigationController(rootViewController: module.view), animated: true, completion: nil)
+        return module.interface(AuthModuleInterface.self)
+    }
+    
+    func openAutoScans() {
+        if AuthService.shared.isLoggedIn {
+            AnalyticsManager.sharedManager.record(event: Event.Navigation.OcrConfiguration)
+            let module = AppModules.OCRConfiguration.build()
+            present(UINavigationController(rootViewController: module.view), animated: true, completion: nil)
+        } else {
+            let authModule = openAuth()
+            authModule.successAuth
+                .map({ authModule.close() })
+                .delay(VIEW_CONTROLLER_TRANSITION_DELAY, scheduler: MainScheduler.instance)
+                .flatMap({ _ -> Observable<UNAuthorizationStatus> in
+                    PushNotificationService.shared.authorizationStatus()
+                }).observeOn(MainScheduler.instance)
+                .flatMap({ status -> Observable<Void> in
+                    let text = LocalizedString("push_request_alert_text")
+                    return status == .notDetermined ? UIAlertController.showInfo(text: text) : Observable<Void>.just(())
+                }).subscribe(onNext: { [unowned self] in
+                    _ = PushNotificationService.shared.requestAuthorization().subscribe()
+                    self.openAutoScans()
+                }).disposed(by: bag)
+        }
+    }
+    
+    func openSettings() {
+        let module = AppModules.settings.build()
+        present(UINavigationController(rootViewController: module.view), animated: true, completion: nil)
+    }
+
+    func openBackup() {
+        let module = AppModules.backup.build()
+        present(UINavigationController(rootViewController: module.view), animated: true, completion: nil)
+    }
+    
+    func openUserGuide() {
+        let USER_GUIDE_URL = "https://www.smartreceipts.co/guide"
+        AnalyticsManager.sharedManager.record(event: Event.Navigation.OcrConfiguration)
+        let safari = SFSafariViewController(url: URL(string: USER_GUIDE_URL)!, entersReaderIfAvailable: true)
+        present(safari, animated: true, completion: nil)
     }
 }
 

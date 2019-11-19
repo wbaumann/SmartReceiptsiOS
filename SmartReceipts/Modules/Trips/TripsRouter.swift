@@ -10,16 +10,9 @@ import Foundation
 import Viperit
 import SafariServices
 
-private let USER_GUIDE_URL = "https://www.smartreceipts.co/guide"
-
 class TripsRouter: Router {
     
     private let moduleStoryboard = UIStoryboard(name: "Trips", bundle: nil)
-    
-    func openSettings() {
-        let module = AppModules.settings.build()
-        openModal(module: module)
-    }
     
     func openPrivacySettings() {
         let module = AppModules.settings.build()
@@ -27,32 +20,9 @@ class TripsRouter: Router {
         openModal(module: module)
     }
     
-    func openBackup() {
-        let module = AppModules.backup.build()
-        openModal(module: module)
-    }
-    
     func openDebug() {
         let module = AppModules.debug.build()
         openModal(module: module)
-    }
-    
-    func openAuth() -> AuthModuleInterface {
-        let module = AppModules.auth.build()
-        openModal(module: module)
-        return module.interface(AuthModuleInterface.self)
-    }
-    
-    func openAutoScans() {
-        AnalyticsManager.sharedManager.record(event: Event.Navigation.OcrConfiguration)
-        let module = AppModules.OCRConfiguration.build()
-        openModal(module: module)
-    }
-    
-    func openUserGuide() {
-        AnalyticsManager.sharedManager.record(event: Event.Navigation.OcrConfiguration)
-        let safari = SFSafariViewController(url: URL(string: USER_GUIDE_URL)!, entersReaderIfAvailable: true)
-        _view.present(safari, animated: true, completion: nil)
     }
     
     func openEdit(trip: WBTrip) {
