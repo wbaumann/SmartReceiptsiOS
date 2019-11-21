@@ -69,7 +69,7 @@ class DebugFormView: FormViewController, GIDSignInUIDelegate {
         +++ Section("Amazon S3")
         <<< ButtonRow() {row in
             row.title = "Upload Test Image"
-            row.cell.imageView?.image = #imageLiteral(resourceName: "launch_image")
+            row.cell.imageView?.image = #imageLiteral(resourceName: "login_placeholder")
         }.onCellSelection({ [unowned self] cell, row in
             if let imageURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("TestImage.jpg") {
                 try? #imageLiteral(resourceName: "launch_image").pngData()?.write(to: imageURL)
