@@ -1,6 +1,9 @@
 {
   "images" : [
-
+    {
+      "idiom" : "universal",
+      "filename" : "app_logo.pdf"
+    }
   ],
   "info" : {
     "version" : 1,
