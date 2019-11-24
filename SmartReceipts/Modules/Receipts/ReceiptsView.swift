@@ -78,22 +78,16 @@ final class ReceiptsView: FetchedTableViewController {
         Logger.debug("Updated Trip: \(trip.description)")
     
         //TODO jaanus: check posting already altered object
-        self.trip = Database.sharedInstance().tripWithName(self.trip!.name)
+        self.trip = Database.sharedInstance().tripWithName(self.trip.name)
         contentChanged()
-        
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
         let cell = cell as! ReceiptCell
         let receipt = item as! WBReceipt
+        cell.configure(receipt: receipt)
         
-        cell.priceLabel.text = receipt.formattedPrice()
-        cell.nameLabel.text = receipt.name
-        cell.dateLabel.text = showReceiptDate ? dateFormatter.formattedDate(receipt.date, in: receipt.timeZone) : ""
-        cell.categoryLabel.text = showReceiptCategory ? (receipt.category?.name ?? "") : ""
-        cell.markerLabel.text = showAttachmentMarker ? receipt.attachmentMarker() : ""
-        cell.priceWidthConstraint.constant = _priceWidth
-        cell.layoutIfNeeded()
+        
         
         var state: ModelSyncState = .disabled
         if SyncProvider.current != .none {
@@ -108,7 +102,6 @@ final class ReceiptsView: FetchedTableViewController {
 
     override func contentChanged() {
         super.contentChanged()
-        updatePricesWidth()
         presenter.contentChanged.onNext(())
     }
     
@@ -168,17 +161,6 @@ final class ReceiptsView: FetchedTableViewController {
     private func subscribe() {
         NotificationCenter.default.addObserver(self, selector: #selector(tripUpdated(_:)), name: .DatabaseDidUpdateModel, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved), name: .SmartReceiptsSettingsSaved, object: nil)
-    }
-    
-    private func updatePricesWidth() {
-        let w = computePriceWidth()
-        if w == _priceWidth { return }
-        
-        _priceWidth = w
-        for cell in tableView.visibleCells as! [ReceiptCell] {
-            cell.priceWidthConstraint.constant = w
-            cell.layoutIfNeeded()
-        }
     }
     
     private func computePriceWidth() -> CGFloat {

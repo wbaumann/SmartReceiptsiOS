@@ -23,7 +23,7 @@ class FetchedTableViewController: UserInterface {
     
     private(set) var placeholderTitle = ""
     
-    var trip: WBTrip?
+    var trip: WBTrip!
     var placeholderView: FetchedPlaceholderView?
     var itemsCount: Int { return fetchedModelAdapter?.allObjects().count ?? 0 }
     var fetchedItems: [Any] { return fetchedModelAdapter?.allObjects() ?? [Any]() }

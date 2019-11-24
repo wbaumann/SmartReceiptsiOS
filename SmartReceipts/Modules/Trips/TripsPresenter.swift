@@ -32,9 +32,8 @@ class TripsPresenter: Presenter {
             .subscribe(onNext: {
                 self.router.openAddTrip()
             }).disposed(by: bag)
-    
         
-        view.debugButton.rx.tap
+        view.debugButton?.rx.tap
             .subscribe(onNext: {
                 self.router.openDebug()
             }).disposed(by: bag)

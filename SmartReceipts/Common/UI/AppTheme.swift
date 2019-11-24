@@ -16,8 +16,8 @@ class AppTheme: NSObject {
     static let buttonCornerRadius: CGFloat = 5
     
     // Colors
-    static let primaryColor               = #colorLiteral(red: 0.4784313725, green: 0.1176470588, blue: 0.631372549, alpha: 1)
-    static let primaryDarkColor           = #colorLiteral(red: 0.4117647059, green: 0.1019607843, blue: 0.6, alpha: 1)
+    static let primaryColor               = UIColor.srViolet
+    static let primaryDarkColor           = UIColor.srViolet2
     static let accentColor                = #colorLiteral(red: 0.4078431373, green: 0.937254902, blue: 0.6784313725, alpha: 1)
     static let cellColor                  = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     static let errorColor                 = #colorLiteral(red: 0.8738889729, green: 0.1913453077, blue: 0.2091978607, alpha: 1)

@@ -7,12 +7,76 @@
 //
 
 import UIKit
+import RxSwift
 
 class ReceiptCell: SyncableTableCell {
-    @IBOutlet private(set) weak var priceLabel: UILabel!
-    @IBOutlet private(set) weak var nameLabel: UILabel!
-    @IBOutlet private(set) weak var dateLabel: UILabel!
-    @IBOutlet private(set) weak var categoryLabel: UILabel!
-    @IBOutlet private(set) weak var markerLabel: UILabel!
-    @IBOutlet private(set) weak var priceWidthConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var imageButton: UIButton!
+    @IBOutlet private weak var categoryLabel: UILabel!
+    
+    private let bag = DisposeBag()
+    
+    var onImageTap: VoidBlock?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        imageButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.onImageTap?()
+            }).disposed(by: bag)
+        
+        imageButton.layer.cornerRadius = Constants.imageRadius
+        imageButton.layer.masksToBounds = true
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageButton.setImage(Constants.cameraImage, for: .normal)
+    }
+    
+    @discardableResult
+    func configure(receipt: WBReceipt) -> Self {
+        priceLabel.text = receipt.formattedPrice()
+        nameLabel.text = receipt.name
+        categoryLabel.text = receipt.category?.name
+        
+        var image: UIImage?
+        let path = receipt.imageFilePath(for: receipt.trip)
+        
+        if receipt.hasImage() {
+            image = UIImage(contentsOfFile: path)
+        } else if receipt.hasPDF() {
+            image = generatePDFIcon(url: URL(fileURLWithPath: path))
+        }
+        
+        guard let buttonImage = image else { return self }
+        imageButton.setImage(buttonImage.withRenderingMode(.alwaysOriginal), for: .normal)
+    
+        return self
+    }
+    
+    private func generatePDFIcon(url: URL) -> UIImage? {
+        guard let document = CGPDFDocument(url as CFURL) else { return nil }
+        guard let page = document.page(at: 1) else { return nil }
+
+        let pageRect = page.getBoxRect(.mediaBox)
+        let renderer = UIGraphicsImageRenderer(size: pageRect.size)
+        let img = renderer.image { ctx in
+            UIColor.white.set()
+            ctx.fill(pageRect)
+            ctx.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
+            ctx.cgContext.scaleBy(x: 1.0, y: -1.0)
+            ctx.cgContext.drawPDFPage(page)
+        }
+
+        return img
+    }
+}
+
+private extension ReceiptCell {
+    struct Constants {
+        static let imageRadius: CGFloat = 9
+        static let cameraImage = #imageLiteral(resourceName: "camera-icon")
+    }
 }

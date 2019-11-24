@@ -15,14 +15,13 @@ import RxCocoa
 protocol TripsViewInterface {
     var privacyTap: Observable<Void> { get }
     var addButtonTap: Observable<Void> { get }
-    var debugButton: UIBarButtonItem { get }
+    var debugButton: UIBarButtonItem? { get }
 }
 
 //MARK: Trips View
 final class TripsView: FetchedTableViewController, UITableViewDelegate {
     
-    @IBOutlet fileprivate weak var menuButton: UIBarButtonItem!
-    @IBOutlet fileprivate weak var _debugButton: UIBarButtonItem!
+    @IBOutlet fileprivate weak var _debugButton: UIBarButtonItem?
     @IBOutlet fileprivate weak var addButton: UIButton!
     @IBOutlet fileprivate weak var editItem: UIBarButtonItem!
     
@@ -74,10 +73,9 @@ final class TripsView: FetchedTableViewController, UITableViewDelegate {
     
     private func configureDebug() {
         #if DEBUG
-            _debugButton.title = "DEBUG"
+            _debugButton?.title = "DEBUG"
         #else
-            _debugButton.title = ""
-            _debugButton.isEnabled = false
+            navigationItem.leftBarButtonItem = nil
         #endif
     }
     
@@ -113,45 +111,6 @@ final class TripsView: FetchedTableViewController, UITableViewDelegate {
 
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {
         return presenter.fetchedModelAdapter()
-    }
-    
-    private func updatePricesWidth() {
-        let w = computePriceWidth()
-        if w == priceWidth {
-            return
-        }
-        priceWidth = w
-        for cell in tableView.visibleCells {
-            if let pCell = cell as? TripCell {
-                pCell.priceWidthConstraint.constant = w
-                pCell.layoutIfNeeded()
-            }
-        }
-    }
-    
-    private func computePriceWidth() -> CGFloat {
-        var maxWidth: CGFloat = 0
-        
-        for i in 0..<itemsCount {
-            let trip = objectAtIndexPath(IndexPath(row: i, section: 0)) as! WBTrip
-            var formattedPrice = trip.formattedPrice()
-            
-            // Victor:
-            // In some cases WBTrip.pricesSummary becomes nil (say, when we removed any trip in this VC), actually it has been re-initialized without refresing 'pricesSummary'
-            // lines below solving the problem without breaking something else (as I afraid to do so)
-            if formattedPrice == nil {
-                Database.sharedInstance().refreshPriceForTrip(trip)
-                formattedPrice = trip.formattedPrice()
-            }
-            let b = (formattedPrice! as NSString).boundingRect(with: CGSize(width: 1000, height: 100),
-                options: .usesDeviceMetrics, attributes: [.font : UIFont.boldSystemFont(ofSize: 21)], context: nil)
-            maxWidth = max(maxWidth, b.width + 10)
-        }
-        
-        let priceLabelSpacing: CGFloat = 16
-        let priceToNameSpacing: CGFloat = 12
-        
-        return min((view.bounds.width - priceLabelSpacing * 2 - priceToNameSpacing)/2, maxWidth)
     }
     
     override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
@@ -198,14 +157,13 @@ final class TripsView: FetchedTableViewController, UITableViewDelegate {
     
     override func contentChanged() {
         super.contentChanged()
-        updatePricesWidth()
     }
 }
 
 //MARK: - Public interface
 extension TripsView: TripsViewInterface {
     var privacyTap: Observable<Void> { return privacySubject }
-    var debugButton: UIBarButtonItem { return _debugButton }
+    var debugButton: UIBarButtonItem? { return _debugButton }
     var addButtonTap: Observable<Void> { return addButton.rx.tap.asObservable() }
 }
 
