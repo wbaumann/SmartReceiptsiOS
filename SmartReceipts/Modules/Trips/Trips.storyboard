@@ -23,21 +23,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fws-IG-QsY" customClass="CircleButton" customModule="SmartReceipts" customModuleProvider="target">
-                                <rect key="frame" x="348" y="621" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.41176470588235292" green="0.10196078431372549" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="m64-ea-3v7"/>
-                                    <constraint firstAttribute="height" constant="50" id="xsM-pV-KlK"/>
-                                </constraints>
-                                <state key="normal" image="white_plus"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="vb6-4r-Epx" firstAttribute="top" secondItem="fws-IG-QsY" secondAttribute="bottom" constant="16" id="8dE-kj-MLo"/>
                             <constraint firstItem="oiC-Hc-lug" firstAttribute="top" secondItem="kgt-o0-aP8" secondAttribute="top" id="EfO-Bd-9Ue"/>
-                            <constraint firstAttribute="trailing" secondItem="fws-IG-QsY" secondAttribute="trailing" constant="16" id="aPG-H7-nlW"/>
                             <constraint firstItem="oiC-Hc-lug" firstAttribute="leading" secondItem="kgt-o0-aP8" secondAttribute="leading" id="m8o-UI-fbu"/>
                             <constraint firstAttribute="trailing" secondItem="oiC-Hc-lug" secondAttribute="trailing" id="mRW-ZL-cB6"/>
                             <constraint firstAttribute="bottom" secondItem="oiC-Hc-lug" secondAttribute="bottom" id="xuT-IH-oFE"/>
@@ -48,13 +37,16 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Smart Receipts" id="jh3-7q-ixi">
                         <barButtonItem key="leftBarButtonItem" title="Debug" id="Rd2-XL-xZo"/>
-                        <barButtonItem key="rightBarButtonItem" image="edit-2" id="S5m-dq-klV"/>
+                        <rightBarButtonItems>
+                            <barButtonItem image="edit-2" id="S5m-dq-klV"/>
+                            <barButtonItem title="Item" image="plus" id="8gc-KG-S8i"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="_debugButton" destination="Rd2-XL-xZo" id="1Pz-Se-a99"/>
-                        <outlet property="addButton" destination="fws-IG-QsY" id="Nzn-3v-TDX"/>
+                        <outlet property="addItem" destination="8gc-KG-S8i" id="Lug-p3-Ojv"/>
                         <outlet property="editItem" destination="S5m-dq-klV" id="dry-PJ-BGS"/>
                         <outlet property="tableView" destination="oiC-Hc-lug" id="se3-kH-BfB"/>
                     </connections>
@@ -101,6 +93,6 @@
     </scenes>
     <resources>
         <image name="edit-2" width="20" height="20"/>
-        <image name="white_plus" width="16" height="16"/>
+        <image name="plus" width="16" height="16"/>
     </resources>
 </document>

@@ -22,8 +22,8 @@ protocol TripsViewInterface {
 final class TripsView: FetchedTableViewController, UITableViewDelegate {
     
     @IBOutlet fileprivate weak var _debugButton: UIBarButtonItem?
-    @IBOutlet fileprivate weak var addButton: UIButton!
     @IBOutlet fileprivate weak var editItem: UIBarButtonItem!
+    @IBOutlet fileprivate weak var addItem: UIBarButtonItem!
     
     fileprivate let privacySubject = PublishSubject<Void>()
     
@@ -149,7 +149,6 @@ final class TripsView: FetchedTableViewController, UITableViewDelegate {
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        addButton.isHidden = editing
         DispatchQueue.main.asyncAfter(deadline: .now() + DEFAULT_ANIMATION_DURATION) {
             self.tableView.reloadData()
         }
@@ -164,7 +163,7 @@ final class TripsView: FetchedTableViewController, UITableViewDelegate {
 extension TripsView: TripsViewInterface {
     var privacyTap: Observable<Void> { return privacySubject }
     var debugButton: UIBarButtonItem? { return _debugButton }
-    var addButtonTap: Observable<Void> { return addButton.rx.tap.asObservable() }
+    var addButtonTap: Observable<Void> { return addItem.rx.tap.asObservable() }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)

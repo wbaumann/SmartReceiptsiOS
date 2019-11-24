@@ -51,7 +51,6 @@ PODS:
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/Reachability (~> 5.2)
     - Protobuf (~> 3.1)
-  - Floaty (4.2.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -184,7 +183,6 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/Messaging
-  - Floaty
   - FMDB
   - GoogleAPIClientForREST/Drive
   - GoogleSignIn
@@ -223,7 +221,6 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseInstanceID
     - FirebaseMessaging
-    - Floaty
     - FMDB
     - Google-Mobile-Ads-SDK
     - GoogleAPIClientForREST
@@ -278,7 +275,6 @@ SPEC CHECKSUMS:
   FirebaseCore: ea2d1816723ef21492b8e9113303e1350db5e08c
   FirebaseInstanceID: 97ea7a5dca9afd72c79bfcdddb7a44aa1cbb42a1
   FirebaseMessaging: acbd51fe1a172bf29abaaa6e93a60f98bbf8e4f9
-  Floaty: e2bd5a0f6f7f70899e26ff2da31081c8bee8d1b0
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   Google-Mobile-Ads-SDK: d0f10a7c4d7015db23075ff316602350d12049db
   GoogleAPIClientForREST: 5b95b38a0fa912e8ac7bdcf9e124578ef1a61bf2
@@ -306,6 +302,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 37217771d6118f69e392f8b389c3d851a7434af4
+PODFILE CHECKSUM: 1a5db30858756b1b8f5a93ecabf81228d1bc8eb2
 
 COCOAPODS: 1.8.4
