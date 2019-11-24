@@ -8,7 +8,6 @@
 
 import UIKit
 import Viperit
-import Floaty
 import RxSwift
 
 //MARK: - Public Interface Protocol
@@ -19,15 +18,12 @@ protocol ReceiptsViewInterface {
 
 //MARK: ReceiptsView Class
 final class ReceiptsView: FetchedTableViewController {
-    
     static var sharedInputCache = [String: Date]()
-    @IBOutlet weak var floatyButton: Floaty!
     
     private static let CELL_ID = "Cell"
     
     private var _imageForCreatorSegue: UIImage!
     private var _receiptForCreatorSegue: WBReceipt!
-    private var _priceWidth: CGFloat = 0
     private var tapped: WBReceipt!
     private var dateFormatter = WBDateFormatter()
     private var showReceiptDate = false
@@ -52,7 +48,6 @@ final class ReceiptsView: FetchedTableViewController {
         setPresentationCellNib(ReceiptCell.viewNib())
         
         lastDateSeparator = WBPreferences.dateSeparator()
-        configureFloatyButton()
         subscribe()
         
         let notifications = [AppNotificationCenter.syncProvider.asVoid(), AppNotificationCenter.didSyncBackup]
@@ -62,11 +57,6 @@ final class ReceiptsView: FetchedTableViewController {
             }).disposed(by: bag)
         
         registerForPreviewing(with: self, sourceView: tableView)
-    }
-    
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        floatyButton.isHidden = editing
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -138,41 +128,9 @@ final class ReceiptsView: FetchedTableViewController {
     
     //MARK: Private
     
-    private func configureFloatyButton() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            addFloatyItem(LocalizedString("receipt_action_camera"), icon: #imageLiteral(resourceName: "camera"), subject: presenter.createReceiptCameraSubject)
-        }
-        addFloatyItem(LocalizedString("receipt_action_text"), icon: #imageLiteral(resourceName: "file-text"), subject: presenter.createReceiptTextSubject)
-        addFloatyItem(LocalizedString("manual_backup_import"), icon: #imageLiteral(resourceName: "file-plus"), subject: presenter.importReceiptFileSubject)
-        floatyButton.sticky = true
-    }
-    
-    private func addFloatyItem(_ title: String?, icon: UIImage, subject: PublishSubject<Void>) {
-        let floatyItem = FloatyItem()
-        floatyItem.title = title
-        floatyItem.buttonColor = AppTheme.primaryDarkColor
-        floatyItem.icon = icon
-        floatyItem.imageSize = floatyItem.icon!.scaledImageSize(0.75)
-        floatyItem.iconImageView.center = floatyItem.center
-        floatyItem.handler = { [weak subject] _ in subject?.onNext(()) }
-        floatyButton.addItem(item: floatyItem)
-    }
-    
     private func subscribe() {
         NotificationCenter.default.addObserver(self, selector: #selector(tripUpdated(_:)), name: .DatabaseDidUpdateModel, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(settingsSaved), name: .SmartReceiptsSettingsSaved, object: nil)
-    }
-    
-    private func computePriceWidth() -> CGFloat {
-        var maxWidth: CGFloat = 0
-        for i in 0..<itemsCount {
-            let receipt = objectAtIndexPath(IndexPath(row: i, section: 0)) as! WBReceipt
-            let str = receipt.formattedPrice()
-            let b = (str as NSString).boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 21)], context: nil)
-            maxWidth = max(maxWidth, b.width + 10)
-        }
-        maxWidth = min(maxWidth, view.bounds.width/2)
-        return max(view.bounds.width/6, maxWidth)
     }
     
     deinit {
@@ -182,7 +140,23 @@ final class ReceiptsView: FetchedTableViewController {
 
 extension ReceiptsView: TabHasMainAction {
     func mainAction() {
-        print("ReceiptsView")
+        let sheet = ActionSheet()
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            sheet.addAction(title: LocalizedString("receipt_action_camera"), image: #imageLiteral(resourceName: "camera"))
+                .bind(to: presenter.createReceiptCameraSubject)
+                .disposed(by: bag)
+        }
+    
+        sheet.addAction(title: LocalizedString("receipt_action_text"), image: #imageLiteral(resourceName: "file-text"))
+            .bind(to: presenter.createReceiptTextSubject)
+            .disposed(by: bag)
+        
+        sheet.addAction(title: LocalizedString("manual_backup_import"), image: #imageLiteral(resourceName: "file-plus"))
+            .debug()
+            .bind(to: presenter.importReceiptFileSubject)
+            .disposed(by: bag)
+        
+        sheet.show()
     }
 }
 

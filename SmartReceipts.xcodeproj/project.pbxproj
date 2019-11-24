@@ -124,6 +124,9 @@
 		712BB2661F611DDE00F0380F /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712BB2651F611DDE00F0380F /* Error+Extensions.swift */; };
 		712CE89B232026C600051B5F /* Database+Organizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712CE89A232026C600051B5F /* Database+Organizations.swift */; };
 		712D7E041FB793E600DE83EB /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 712D7E021FB793E500DE83EB /* Localizable.stringsdict */; };
+		712F280E238AB47400880C5D /* ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F280C238AB47400880C5D /* ActionSheet.swift */; };
+		712F280F238AB47400880C5D /* ActionSheetViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712F280D238AB47400880C5D /* ActionSheetViewController.storyboard */; };
+		712F2812238AB63900880C5D /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F2811238AB63900880C5D /* UIApplication+Extensions.swift */; };
 		712F8E0D1EFAE38900E49638 /* ReceiptActionsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */; };
 		7133603F1EF30FDF0076D319 /* RecentCurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719310321EDDC2810065B5AD /* RecentCurrenciesCache.swift */; };
 		7134DACC2106776B006BDCAA /* AppNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7134DACB2106776B006BDCAA /* AppNotificationCenter.swift */; };
@@ -720,6 +723,9 @@
 		712BB2651F611DDE00F0380F /* Error+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
 		712CE89A232026C600051B5F /* Database+Organizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Organizations.swift"; sourceTree = "<group>"; };
 		712D7E031FB793E500DE83EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		712F280C238AB47400880C5D /* ActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheet.swift; sourceTree = "<group>"; };
+		712F280D238AB47400880C5D /* ActionSheetViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ActionSheetViewController.storyboard; sourceTree = "<group>"; };
+		712F2811238AB63900880C5D /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		712F8E0C1EFAE38900E49638 /* ReceiptActionsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsFormView.swift; sourceTree = "<group>"; };
 		713360411EF310C90076D319 /* EditDistanceModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceModuleTest.swift; sourceTree = "<group>"; };
 		713360421EF310C90076D319 /* EditTripModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTripModuleTest.swift; sourceTree = "<group>"; };
@@ -1479,6 +1485,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		712F2810238AB47B00880C5D /* ActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				712F280C238AB47400880C5D /* ActionSheet.swift */,
+				712F280D238AB47400880C5D /* ActionSheetViewController.storyboard */,
+			);
+			path = ActionSheet;
+			sourceTree = "<group>";
+		};
 		713572AA22F6F1A90069C9F5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -1565,6 +1580,7 @@
 				7159BA061F06F692004EABAA /* Eureka Custom Cells */,
 				714104D51FF43D7700C334C5 /* iPhone */,
 				714104D91FF43D7700C334C5 /* iPad */,
+				712F2810238AB47B00880C5D /* ActionSheet */,
 				71655086218CCC7A007B55FF /* AppTheme.swift */,
 				714104CF1FF43D7700C334C5 /* FetchedPlaceholderView.swift */,
 				714104D81FF43D7700C334C5 /* ScansPurchaseButton.swift */,
@@ -2098,6 +2114,7 @@
 				71E890A722EF7031002957CC /* UIViewController+Extensions.swift */,
 				71C7DAA422F8D83300740157 /* UITableView+Extensions.swift */,
 				71D7FA362304AAA8001F36E1 /* UIStructs+Extensions.swift */,
+				712F2811238AB63900880C5D /* UIApplication+Extensions.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -3063,6 +3080,7 @@
 				7185AEF51EFC1CC90038ED2A /* ReceiptMoveCopy.storyboard in Resources */,
 				EA07BF601AF4E801004D17F6 /* DistanceCell.xib in Resources */,
 				719B1FF41EF6033A0049BD71 /* ReceiptActions.storyboard in Resources */,
+				712F280F238AB47400880C5D /* ActionSheetViewController.storyboard in Resources */,
 				7156066E1FAE67CF00E09760 /* ScanCell.xib in Resources */,
 				719B1FDC1EF603190049BD71 /* Receipts.storyboard in Resources */,
 				71AEDDDD1EDF7FF400BAC0DD /* TripDistances.storyboard in Resources */,
@@ -3183,7 +3201,6 @@
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
-				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -3216,7 +3233,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
@@ -3399,7 +3415,6 @@
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
-				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -3435,7 +3450,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
@@ -3526,6 +3540,7 @@
 				5726E5431E00423900F2141C /* AnalyticsManager.swift in Sources */,
 				712BB2661F611DDE00F0380F /* Error+Extensions.swift in Sources */,
 				7187150822500E900061D493 /* DatabaseMigration+Result.swift in Sources */,
+				712F2812238AB63900880C5D /* UIApplication+Extensions.swift in Sources */,
 				71762E7A1FD4713000AC1388 /* TripImagesPDFGenerator.swift in Sources */,
 				710E587521386BAB00AAFC77 /* TooltipPresenter.swift in Sources */,
 				71FA6AC322EE3EEB00FEFB6D /* OrganizationModelsConverter.swift in Sources */,
@@ -3844,6 +3859,7 @@
 				71AF49E21EFDA4810022B2E2 /* ReceiptImageViewerPresenter.swift in Sources */,
 				71939E9A21D14FD900A5BB27 /* AppDelegate+Extensions.swift in Sources */,
 				71CC1B8521143BA0003D7056 /* BackupItemView.swift in Sources */,
+				712F280E238AB47400880C5D /* ActionSheet.swift in Sources */,
 				71B4A5DD22F389C9005E5FB2 /* View+Style.swift in Sources */,
 				71859DCE2010F97B00156B40 /* UpsellBannerAdView.swift in Sources */,
 				71871506224FDEB70061D493 /* DatabaseCreateAtVersion11.swift in Sources */,

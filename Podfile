@@ -18,7 +18,6 @@ def pods
     pod 'MRProgress', git: 'https://github.com/EvsenevDev/MRProgress', branch: 'disabled-motions'
     pod 'Eureka'
     pod 'XLPagerTabStrip'
-    pod 'Floaty'
     pod 'Toaster'
     
     # Rx

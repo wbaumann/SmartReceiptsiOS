@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7eU-s2-05q">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SuisseIntl-Medium.otf">
+            <string>SuisseIntl-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Action Sheet View Controller-->
+        <scene sceneID="LLS-W1-ROa">
+            <objects>
+                <viewController id="7eU-s2-05q" customClass="ActionSheetViewController" customModule="SmartReceipts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3BV-Pb-TO4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ue-QT-pl5">
+                                <rect key="frame" x="0.0" y="747" width="414" height="149"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="x0N-fv-PrB">
+                                <rect key="frame" x="10" y="747" width="394" height="115"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYQ-jl-GPI">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="58"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="58" id="cws-Ec-eBo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SuisseIntl-Medium" family="Suisse Int'l" pointSize="16"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="contentEdgeInsets" minX="14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="titleEdgeInsets" minX="14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Title" image="alert-triangle"/>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGP-ff-nMR">
+                                        <rect key="frame" x="0.0" y="59" width="394" height="1"/>
+                                        <color key="backgroundColor" red="0.24705882352941178" green="0.24705882352941178" blue="0.24705882352941178" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="bvc-wZ-wMi"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2y-wW-WYs">
+                                        <rect key="frame" x="0.0" y="61" width="394" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="NqB-v9-lDR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.18823529410000001" green="0.1058823529" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="lGP-ff-nMR" firstAttribute="width" secondItem="x0N-fv-PrB" secondAttribute="width" id="VF9-HI-DVt"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5ue-QT-pl5" secondAttribute="trailing" id="2D6-t7-AST"/>
+                            <constraint firstItem="5ue-QT-pl5" firstAttribute="leading" secondItem="3BV-Pb-TO4" secondAttribute="leading" id="5p6-A1-fwc"/>
+                            <constraint firstItem="Fo6-Lm-g5T" firstAttribute="bottom" secondItem="x0N-fv-PrB" secondAttribute="bottom" id="8nL-7Q-mTN"/>
+                            <constraint firstItem="x0N-fv-PrB" firstAttribute="leading" secondItem="Fo6-Lm-g5T" secondAttribute="leading" constant="10" id="WDe-di-KJE"/>
+                            <constraint firstItem="Fo6-Lm-g5T" firstAttribute="trailing" secondItem="x0N-fv-PrB" secondAttribute="trailing" constant="10" id="Wce-R3-KOQ"/>
+                            <constraint firstAttribute="bottom" secondItem="5ue-QT-pl5" secondAttribute="bottom" id="twm-we-ZDr"/>
+                            <constraint firstItem="5ue-QT-pl5" firstAttribute="top" secondItem="x0N-fv-PrB" secondAttribute="top" id="usX-KC-JTW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Fo6-Lm-g5T"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="aj7-7X-oW9" appends="YES" id="tLh-Mu-5oi"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="backView" destination="5ue-QT-pl5" id="MFr-p2-Gqh"/>
+                        <outlet property="closeButton" destination="T2y-wW-WYs" id="wJz-PV-Lt8"/>
+                        <outlet property="separator" destination="lGP-ff-nMR" id="RGN-3E-abL"/>
+                        <outlet property="stackView" destination="x0N-fv-PrB" id="ZBN-KY-4eu"/>
+                        <outlet property="tapGesture" destination="aj7-7X-oW9" id="11g-Ke-SeI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGg-hy-cRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="aj7-7X-oW9"/>
+            </objects>
+            <point key="canvasLocation" x="-384.80000000000001" y="89.505247376311857"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="alert-triangle" width="24" height="21"/>
+    </resources>
+</document>
