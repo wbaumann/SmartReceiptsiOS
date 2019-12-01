@@ -119,7 +119,11 @@ class TabBar: UITabBar {
     }
 
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        if (point.x < abs(center.x - circleRadius) || point.x > abs(center.x + circleRadius)) && point.y < topOffset { return false }
+        if (point.x < abs(center.x - circleRadius) || point.x > abs(center.x + circleRadius))
+            || point.y < 0
+            && point.y < topOffset
+        { return false }
+        
         return true
     }
 }
