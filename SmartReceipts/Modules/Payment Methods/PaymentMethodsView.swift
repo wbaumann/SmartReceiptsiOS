@@ -32,7 +32,7 @@ final class PaymentMethodsView: FetchedTableViewController {
             }).disposed(by: bag)
     }
     
-    override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
+    override func configureCell(cell: UITableViewCell, item: Any) {
         let method = item as! PaymentMethod
         cell.textLabel?.text = method.method
     }

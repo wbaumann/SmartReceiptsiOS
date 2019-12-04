@@ -72,7 +72,9 @@ final class ReceiptsView: FetchedTableViewController {
         contentChanged()
     }
     
-    override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
+    override var dataSourceType: TableViewDataSourceProxy.TableType { return .sections }
+    
+    override func configureCell(cell: UITableViewCell, item: Any) {
         let cell = cell as! ReceiptCell
         let receipt = item as! WBReceipt
         cell.configure(receipt: receipt)

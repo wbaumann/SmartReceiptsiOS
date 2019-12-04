@@ -218,6 +218,7 @@ static NSString * const kDeprecatedParent = @"parent";
 
 - (FetchedModelAdapter *)fetchedReceiptsAdapterForTrip:(WBTrip *)trip {
     DatabaseQueryBuilder *query = [WBReceipt selectAllUnmarkedForDeletion:trip];
+    [query orderBy:ReceiptsTable.COLUMN_DATE ascending:YES];
     return [self createAdapterUsingQuery:query forModel:[WBReceipt class] associatedModel:trip];
 }
 

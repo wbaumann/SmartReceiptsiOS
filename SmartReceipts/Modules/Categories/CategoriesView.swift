@@ -30,8 +30,8 @@ final class CategoriesView: FetchedTableViewController {
             _ = self.showEditCategory().bind(to: self.presenter.categoryAction)
         }).disposed(by: bag)
         
-        dataSource.canMoveRow = { _ in true }
-        dataSource.moveRow = { [unowned self] from, to in
+        proxyDataSource.canMoveRow = { _ in true }
+        proxyDataSource.moveRow = { [unowned self] from, to in
             let categoryOne = self.fetchedItems[from.row] as! WBCategory
             let categoryTwo = self.fetchedItems[to.row] as! WBCategory
             self.presenter.reorderSubject.onNext((categoryOne, categoryTwo))
@@ -49,7 +49,7 @@ final class CategoriesView: FetchedTableViewController {
         tableView.setEditing(editing, animated: animated)
     }
     
-    override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
+    override func configureCell(cell: UITableViewCell, item: Any) {
         let category = item as! WBCategory
         cell.textLabel?.text = category.name
         cell.detailTextLabel?.text = category.code
