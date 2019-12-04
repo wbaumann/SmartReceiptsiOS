@@ -113,7 +113,7 @@ final class TripsView: FetchedTableViewController, UITableViewDelegate {
         return presenter.fetchedModelAdapter()
     }
     
-    override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
+    override func configureCell(cell: UITableViewCell, item: Any) {
         let pCell = cell as! TripCell
         let trip = item as! WBTrip
         

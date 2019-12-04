@@ -72,7 +72,7 @@ class TripDistancesView: FetchedTableViewController {
         presenter.contentChanged.onNext(())
     }
     
-    override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
+    override func configureCell(cell: UITableViewCell, item: Any) {
         guard let distanceCell = cell as? DistanceCell, let distance = item as? Distance else { return }
         dateFormatter.configure(timeZone: distance.timeZone!)
         distanceCell.distanceLabel.text = Price.stringFrom(amount: distance.distance)

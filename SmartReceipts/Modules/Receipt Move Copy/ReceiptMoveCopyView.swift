@@ -32,7 +32,7 @@ final class ReceiptMoveCopyView: FetchedTableViewController {
         }
     }
     
-    override func configureCell(row: Int, cell: UITableViewCell, item: Any) {
+    override func configureCell(cell: UITableViewCell, item: Any) {
         let trip = item as! WBTrip
         cell.textLabel?.text = trip.name
     }

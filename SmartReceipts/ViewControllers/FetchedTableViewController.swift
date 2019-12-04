@@ -19,7 +19,7 @@ class FetchedTableViewController: UserInterface {
     private let FETCHED_COLLECTION_CELL_ID = "FetchedCollectionTableViewControllerCellIdentifier"
     private var bag = DisposeBag()
     private var fetchedModelAdapter: FetchedModelAdapter?
-    private(set) var dataSource: TableViewDataSourceProxy!
+    private(set) var proxyDataSource: TableViewDataSourceProxy!
     
     private(set) var placeholderTitle = ""
     
@@ -33,9 +33,9 @@ class FetchedTableViewController: UserInterface {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
         
-        dataSource = TableViewDataSourceProxy(tableView, cellID: FETCHED_COLLECTION_CELL_ID, configureCell: {
-            [unowned self] row, cell, item in
-            self.configureCell(row: row, cell: cell, item: item)
+        proxyDataSource = TableViewDataSourceProxy(tableView, cellID: FETCHED_COLLECTION_CELL_ID, type: dataSourceType, configureCell: {
+            [unowned self] cell, item in
+            self.configureCell( cell: cell, item: item)
         })
     }
     
@@ -57,9 +57,7 @@ class FetchedTableViewController: UserInterface {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if fetchedModelAdapter == nil {
-            fetchObjects()
-        }
+        fetchedModelAdapter == nil ? fetchObjects() : ()
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -68,7 +66,7 @@ class FetchedTableViewController: UserInterface {
     }
     
     private func configureTable() {
-        tableView.dataSource = dataSource
+        tableView.dataSource = proxyDataSource.dataSource
         
         tableView.rx.itemSelected
             .subscribe(onNext: { [unowned self] indexPath in
@@ -82,16 +80,16 @@ class FetchedTableViewController: UserInterface {
                 let model = self.objectAtIndexPath(indexPath)
                 self.delete(object: model!, at: indexPath)
             }).disposed(by: bag)
-        
-        
     }
     
     func setPresentationCellNib(_ nib: UINib) {
         tableView.register(nib, forCellReuseIdentifier: FETCHED_COLLECTION_CELL_ID)
     }
     
-    func configureCell(row: Int, cell: UITableViewCell, item: Any) {
-        Logger.debug("LOGGER_DEBUG(configureCell:atIndexPath:\(row)")
+    var dataSourceType: TableViewDataSourceProxy.TableType { return .plain }
+    
+    func configureCell(cell: UITableViewCell, item: Any) {
+        Logger.debug("LOGGER_DEBUG(configureCell:for \(item)")
     }
     
     //MARK: Placeholder
@@ -138,47 +136,47 @@ class FetchedTableViewController: UserInterface {
     }
     
     func objectAtIndexPath(_ indexPath: IndexPath) -> Any? {
-        return fetchedModelAdapter?.object(at: indexPath.row)
+        return proxyDataSource?.object(at: indexPath)
     }
     
     func configureSubrcibers(for adapter: FetchedModelAdapter?) {
         guard let fetchedModelAdapter = adapter else { return }
         
         Observable.just(fetchedModelAdapter.allObjects())
-            .bind(to: dataSource.items)
+            .bind(to: proxyDataSource.items)
             .disposed(by: bag)
 
         fetchedModelAdapter.rx.willChangeContent
-            .bind(to: dataSource.willChangeContent)
+            .bind(to: proxyDataSource.willChangeContent)
             .disposed(by: bag)
         
         fetchedModelAdapter.rx.didSetModels
-            .bind(to: dataSource.items)
+            .bind(to: proxyDataSource.items)
             .disposed(by: bag)
         
         fetchedModelAdapter.rx.didChangeContent
             .do(onNext: { [weak self] in self?.contentChanged() })
-            .bind(to: dataSource.didChangeContent)
+            .bind(to: proxyDataSource.didChangeContent)
             .disposed(by: bag)
         
         fetchedModelAdapter.rx.didInsert
-            .bind(to: dataSource.didInsert)
+            .bind(to: proxyDataSource.didInsert)
             .disposed(by: bag)
         
         fetchedModelAdapter.rx.didDelete
-            .bind(to: dataSource.didDelete)
+            .bind(to: proxyDataSource.didDelete)
             .disposed(by: bag)
         
         fetchedModelAdapter.rx.didUpdate
-            .bind(to: dataSource.didUpdate)
+            .bind(to: proxyDataSource.didUpdate)
             .disposed(by: bag)
         
         fetchedModelAdapter.rx.didMove
-            .bind(to: dataSource.didMove)
+            .bind(to: proxyDataSource.didMove)
             .disposed(by: bag)
         
         fetchedModelAdapter.rx.reloadData
-            .bind(to: dataSource.reloadData)
+            .bind(to: proxyDataSource.reloadData)
             .disposed(by: bag)
     }
     
