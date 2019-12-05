@@ -37,6 +37,9 @@ final class ReceiptsView: FetchedTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        
+        tableView.register(headerFooter: ReceiptsSectionHeader.self)
         
         ReceiptsView.sharedInputCache = [String: Date]()
         AppTheme.customizeOnViewDidLoad(self)
@@ -95,6 +98,7 @@ final class ReceiptsView: FetchedTableViewController {
     override func contentChanged() {
         super.contentChanged()
         presenter.contentChanged.onNext(())
+        tableView.reloadSections(Array(0..<tableView.numberOfSections), animationStyle: .none)
     }
     
     override func delete(object: Any!, at indexPath: IndexPath) {
@@ -207,6 +211,40 @@ extension ReceiptsView: UIViewControllerPreviewingDelegate {
         return module.view
     }
     
+}
+
+extension ReceiptsView: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let title = proxyDataSource.dataSource.tableView?(tableView, titleForHeaderInSection: section) else { return UIView(frame: .zero) }
+        let header = tableView.dequeueHeaderFooter(headerFooter: ReceiptsSectionHeader.self)
+        let firstReceipt = proxyDataSource.object(at: IndexPath(row: 0, section: section)) as! WBReceipt
+        
+        let price = fetchedItems
+            .map { $0 as! WBReceipt }
+            .filter { $0.sectionDate == firstReceipt.sectionDate }
+            .reduce(PricesCollection(), { result, receipt in
+                result.addPrice(receipt.price())
+                return result
+            }).currencyFormattedTotalPrice()
+        
+
+        return header.configure(title: title, subtitle: price)
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return Constatns.headerHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat(Float.ulpOfOne)
+    }
+    
+    private enum Constatns {
+        static let headerHeight: CGFloat = 54
+        
+    }
 }
 
 //MARK: - Public interface

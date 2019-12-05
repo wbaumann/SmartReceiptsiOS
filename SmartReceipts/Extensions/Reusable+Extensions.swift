@@ -10,24 +10,33 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol ReusableCell: class {
+protocol Reusable: class {
     static var identifier: String { get }
 }
 
-extension ReusableCell {
+extension Reusable {
     static var identifier: String {
         return String(describing: self.self)
     }
 }
 
-extension UITableViewCell: ReusableCell {}
+extension UITableViewCell: Reusable {}
+extension UITableViewHeaderFooterView: Reusable {}
 
 extension UITableView {
-    func register<Cell: UITableViewCell>(cell: Cell) {
+    func register<Cell: UITableViewCell>(cell: Cell.Type) {
         register(Cell.self, forCellReuseIdentifier: Cell.identifier)
     }
     
     func dequeueCell<Cell: UITableViewCell>(cell: Cell.Type) -> Cell {
         return dequeueReusableCell(withIdentifier: Cell.identifier) as! Cell
+    }
+    
+    func register<HeaderFooter: UITableViewHeaderFooterView>(headerFooter: HeaderFooter.Type) {
+        register(HeaderFooter.self, forHeaderFooterViewReuseIdentifier: HeaderFooter.identifier)
+    }
+    
+    func dequeueHeaderFooter<HeaderFooter: UITableViewHeaderFooterView>(headerFooter: HeaderFooter.Type) -> HeaderFooter {
+        return dequeueReusableHeaderFooterView(withIdentifier: HeaderFooter.identifier) as! HeaderFooter
     }
 }

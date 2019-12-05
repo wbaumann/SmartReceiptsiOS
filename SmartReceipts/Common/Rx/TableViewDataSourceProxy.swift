@@ -180,6 +180,12 @@ private class DateSectionedTableViewDataSource: TableViewDataSource {
     private var sectionedItems = [Date : [DateSectionItem]]()
     private var sortedKeys = [Date]()
     
+    private var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.configure()
+        return formatter
+    }()
+    
     override init(cellId: String, configureCell: TableViewDataSourceProxy.ConfigureCellClosure?, source: BehaviorRelay<[Any]>) {
         super.init(cellId: cellId, configureCell: configureCell, source: source)
         source.map { items in items as? [DateSectionItem] }
@@ -251,7 +257,7 @@ private class DateSectionedTableViewDataSource: TableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sortedKeys[section].dayString()
+        return dateFormatter.string(from: sortedKeys[section])
     }
 }
 

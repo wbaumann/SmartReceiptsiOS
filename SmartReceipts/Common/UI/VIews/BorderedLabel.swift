@@ -15,15 +15,24 @@ class BorderedLabel: UILabel {
     }
     
     override func drawText(in rect: CGRect) {
+        guard text?.isEmpty == false else { super.drawText(in: rect); return }
         super.drawText(in: rect.inset(by: textInsets))
     }
     
-    override var intrinsicContentSize: CGSize {
-        var size = super.intrinsicContentSize
-        size.width += textInsets.left + textInsets.right
-        size.height += textInsets.top + textInsets.bottom
-        return size
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        var superSize = super.sizeThatFits(size)
+        superSize.height += textInsets.top + textInsets.bottom
+        superSize.width += textInsets.left + textInsets.right
+        return superSize
     }
     
+    override var intrinsicContentSize: CGSize {
+        guard text?.isEmpty == false else { return super.intrinsicContentSize }
+
+        var size = super.intrinsicContentSize
+        size.height += textInsets.top + textInsets.bottom
+        size.width += textInsets.left + textInsets.right
+        return size
+    }
 }
 

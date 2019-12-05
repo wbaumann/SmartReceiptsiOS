@@ -19,7 +19,7 @@ protocol TripsViewInterface {
 }
 
 //MARK: Trips View
-final class TripsView: FetchedTableViewController, UITableViewDelegate {
+final class TripsView: FetchedTableViewController {
     
     @IBOutlet fileprivate weak var _debugButton: UIBarButtonItem?
     @IBOutlet fileprivate weak var editItem: UIBarButtonItem!
