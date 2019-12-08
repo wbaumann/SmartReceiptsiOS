@@ -158,7 +158,6 @@ extension ReceiptsView: TabHasMainAction {
             .disposed(by: bag)
         
         sheet.addAction(title: LocalizedString("manual_backup_import"), image: #imageLiteral(resourceName: "file-plus"))
-            .debug()
             .bind(to: presenter.importReceiptFileSubject)
             .disposed(by: bag)
         

@@ -20,7 +20,7 @@ class ActionSheet {
     }
     
     @discardableResult
-    func addAction(title: String, image: UIImage? = nil, style: ActionButton.Style = .normal) -> Observable<Void> {
+    func addAction(title: String, image: UIImage? = nil, style: ActionButtonView.Style = .normal) -> Observable<Void> {
         return sheetViewController.addAction(title: title, image: image, style: style)
     }
     
@@ -29,7 +29,7 @@ class ActionSheet {
     }
 }
 
-class ActionSheetViewController: UIViewController, Storyboardable {
+class ActionSheetViewController: UIViewController, Storyboardable, Containerable {
     private let bag = DisposeBag()
     
     @IBOutlet private weak var backView: UIView!
@@ -39,10 +39,15 @@ class ActionSheetViewController: UIViewController, Storyboardable {
     
     @IBOutlet private weak var tapGesture: UITapGestureRecognizer!
     
+    private let transitionDelegate = BottomSheetTransitionDelegate()
     fileprivate var closable: Bool = true
+    
+    var container: UIView { return backView }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        transitioningDelegate = transitionDelegate
         
         backView.layer.cornerRadius = 24
         backView.layer.shadowRadius = 32
@@ -69,11 +74,11 @@ class ActionSheetViewController: UIViewController, Storyboardable {
         stackView.addArrangedSubview(closeButton)
     }
     
-    func addAction(title: String, image: UIImage? = nil, style: ActionButton.Style) -> Observable<Void> {
-        let button = ActionButton(title: title, image: image, style: style)
-        stackView.addArrangedSubview(button)
+    func addAction(title: String, image: UIImage? = nil, style: ActionButtonView.Style) -> Observable<Void> {
+        let buttonView = ActionButtonView(title: title, image: image, style: style)
+        stackView.addArrangedSubview(buttonView)
         
-        return button.rx.tap.flatMap { _ -> Observable<Void> in
+        return buttonView.rx.tap.flatMap { _ -> Observable<Void> in
             return .create { [weak self] observer -> Disposable in
                 self?.dismiss(animated: true, completion: { observer.onNext() })
                 return Disposables.create()
@@ -82,22 +87,32 @@ class ActionSheetViewController: UIViewController, Storyboardable {
     }
 }
 
-class ActionButton: UIButton {
+class ActionButtonView: UIButton {
+    
     convenience init(title: String, image: UIImage? = nil, style: Style) {
         self.init(type: .system)
-        translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: 58).isActive = true
-        
-        contentEdgeInsets = .init(top: 0, left: 14, bottom: 0, right: 0)
-        titleEdgeInsets = .init(top: 0, left: 10, bottom: 0, right: 0)
-        contentHorizontalAlignment = .left
-        
-        setTitleColor(style.color, for: .normal)
-        setTitle(title, for: .normal)
         setImage(image, for: .normal)
-        
         tintColor = style.color
-        sizeToFit()
+        setTitle(title, for: .normal)
+        
+        titleLabel?.font = .regular16
+        
+        backgroundColor = .srBGR
+        layer.cornerRadius = 12
+        
+        heightAnchor.constraint(equalToConstant: 58).isActive = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        titleLabel?.sizeToFit()
+        titleLabel?.frame.origin.x = UI_MARGIN_16
+        
+        titleLabel?.center.y = bounds.midY
+        
+        guard let imageView = imageView else { return }
+        imageView.center.y = bounds.midY
+        imageView.frame.origin.x = bounds.width - imageView.bounds.width - 19
     }
     
     enum Style {
@@ -105,9 +120,89 @@ class ActionButton: UIButton {
         
         var color: UIColor {
             switch self {
-            case .normal: return .black
+            case .normal: return .srViolet2
             case .destructive: return .red
             }
         }
     }
+}
+
+class BottomSheetTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
+    private let transition = BottomSheetAnimationTransitioning()
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transition.forPresenting(true)
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transition.forPresenting(false)
+    }
+    
+}
+
+class BottomSheetAnimationTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
+    private var presenting = false
+    private var fadeView: UIView? = nil
+    
+    func forPresenting(_ presenting: Bool) -> Self {
+        self.presenting = presenting
+        return self
+    }
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return transitionContext?.isAnimated == true ? DEFAULT_ANIMATION_DURATION: 0
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        presenting
+            ? present(transitionContext: transitionContext)
+            : dismiss(transitionContext: transitionContext)
+    }
+    
+    func present(transitionContext: UIViewControllerContextTransitioning) {
+        let duration = transitionDuration(using: transitionContext)
+
+        let to = transitionContext.viewController(forKey: .to)!
+        let fromView = transitionContext.viewController(forKey: .from)!.view
+        transitionContext.containerView.frame = to.view.frame
+        to.view.frame = to.view.bounds
+
+        fadeView = UIView(frame: UIScreen.main.bounds)
+        fadeView?.backgroundColor = .clear
+        fromView?.insertSubview(fadeView!, belowSubview: transitionContext.containerView)
+        
+        let toContainer = transitionContext.containerView
+        let container = (toContainer as? Containerable)?.container ?? toContainer
+
+        toContainer.addSubview(to.view)
+
+        toContainer.frame = toContainer.frame.offsetBy(dx: 0, dy: container.bounds.height)
+        UIView.animate(withDuration: duration, animations: {
+            toContainer.frame = toContainer.frame.offsetBy(dx: 0, dy: -toContainer.bounds.height)
+            self.fadeView?.backgroundColor = UIColor.srBlack.withAlphaComponent(0.4)
+        }, completion: { completed in
+            transitionContext.completeTransition(completed)
+        })
+    }
+
+    func dismiss(transitionContext: UIViewControllerContextTransitioning) {
+        let duration = transitionDuration(using: transitionContext)
+
+        let from = transitionContext.viewController(forKey: .from)!
+        let fromContainer = from.view!
+        
+        let container = (fromContainer as? Containerable)?.container ?? fromContainer
+
+        UIView.animate(withDuration: duration, animations: {
+            transitionContext.containerView.frame = fromContainer.frame.offsetBy(dx: 0, dy: container.bounds.height)
+            self.fadeView?.backgroundColor = .clear
+        }, completion: { completed in
+            self.fadeView?.removeFromSuperview()
+            transitionContext.completeTransition(completed)
+        })
+    }
+}
+
+protocol Containerable {
+    var container: UIView { get }
 }
