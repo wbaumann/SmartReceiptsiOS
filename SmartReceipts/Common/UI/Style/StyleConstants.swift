@@ -17,6 +17,8 @@ extension UIFont {
     static var semibold11: UIFont = .systemFont(ofSize: 11, weight: .semibold)
     static var semibold15: UIFont = .systemFont(ofSize: 15, weight: .semibold)
     static var semibold17: UIFont = .systemFont(ofSize: 17, weight: .semibold)
+    
+    static var regular16: UIFont = .systemFont(ofSize: 16, weight: .regular)
 }
 
 
