@@ -351,7 +351,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "470FE31978DC918618A329D8B55C85FF"
-               BuildableName = "Protobuf.framework"
+               BuildableName = "protobuf.framework"
                BlueprintName = "Protobuf"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
             </BuildableReference>

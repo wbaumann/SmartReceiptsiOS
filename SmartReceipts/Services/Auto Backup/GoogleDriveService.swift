@@ -42,22 +42,25 @@ class GoogleDriveService: NSObject, GIDSignInDelegate {
         GIDSignIn.sharedInstance().scopes = authScopes
         GIDSignIn.sharedInstance().clientID = GOOGLE_CLIENT_ID
         GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().signInSilently()
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
     }
     
     func signInSilently() -> Observable<Void> {
         GIDSignIn.sharedInstance().scopes = authScopes
         signInSubject.dispose()
         signInSubject = PublishSubject<Void>()
-        return signInSubject.do(onSubscribed: { GIDSignIn.sharedInstance().signInSilently() })
+        defer { GIDSignIn.sharedInstance()?.restorePreviousSignIn() }
+        return signInSubject
     }
     
-    func signIn(onUI viewController: GIDSignInUIDelegate) -> Observable<Void> {
+    func signIn() -> Observable<Void> {
         GIDSignIn.sharedInstance().scopes = authScopes
         signInSubject.dispose()
         signInSubject = PublishSubject<Void>()
-        GIDSignIn.sharedInstance().uiDelegate = viewController
-        return signInSubject.do(onSubscribed: { GIDSignIn.sharedInstance().signIn() })
+        return signInSubject.do(onSubscribed: {
+            GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.topViewCtonroller
+            GIDSignIn.sharedInstance().signIn()
+        })
     }
     
     func signOut() -> Observable<Void> {

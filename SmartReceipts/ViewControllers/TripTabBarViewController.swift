@@ -11,7 +11,6 @@ import RxSwift
 import SafariServices
 
 class TripTabBarViewController: TabBarViewController {
-    private var titleSubtitleProtocols: [TitleSubtitleProtocol?]!
     private let bag = DisposeBag()
     private var trip: WBTrip!
     private var tooltipPresenter: TooltipPresenter!
@@ -53,10 +52,10 @@ class TripTabBarViewController: TabBarViewController {
         generateModule.presenter.setupView(data: trip)
         
         viewControllers = [
-            receiptsModule.view.tabConfigured(image: #imageLiteral(resourceName: "receipts_tab"), selected: #imageLiteral(resourceName: "receipts_tab_selected")),
-            distancesModule.view.tabConfigured(image: #imageLiteral(resourceName: "distances_tab"), selected: #imageLiteral(resourceName: "distances_tab_selected")),
+            receiptsModule.view.viewController.tabConfigured(image: #imageLiteral(resourceName: "receipts_tab"), selected: #imageLiteral(resourceName: "receipts_tab_selected")),
+            distancesModule.view.viewController.tabConfigured(image: #imageLiteral(resourceName: "distances_tab"), selected: #imageLiteral(resourceName: "distances_tab_selected")),
             UIViewController().tabDisabled(),
-            generateModule.view.tabConfigured(image: #imageLiteral(resourceName: "share_tab"), selected: #imageLiteral(resourceName: "share_tab_selected")),
+            generateModule.view.viewController.tabConfigured(image: #imageLiteral(resourceName: "share_tab"), selected: #imageLiteral(resourceName: "share_tab_selected")),
             UIViewController().tabConfigured(image: #imageLiteral(resourceName: "more_tab"), selected: #imageLiteral(resourceName: "more_tab_selected"), tag: Constants.actionTag)
         ]
     }
@@ -84,7 +83,7 @@ private extension TripTabBarViewController {
     
     func openAuth() -> AuthModuleInterface {
         let module = AppModules.auth.build()
-        present(UINavigationController(rootViewController: module.view), animated: true, completion: nil)
+        present(UINavigationController(rootViewController: module.view.viewController), animated: true, completion: nil)
         return module.interface(AuthModuleInterface.self)
     }
     
@@ -92,7 +91,7 @@ private extension TripTabBarViewController {
         if AuthService.shared.isLoggedIn {
             AnalyticsManager.sharedManager.record(event: Event.Navigation.OcrConfiguration)
             let module = AppModules.OCRConfiguration.build()
-            present(UINavigationController(rootViewController: module.view), animated: true, completion: nil)
+            present(UINavigationController(rootViewController: module.view.viewController), animated: true, completion: nil)
         } else {
             let authModule = openAuth()
             authModule.successAuth
@@ -113,12 +112,12 @@ private extension TripTabBarViewController {
     
     func openSettings() {
         let module = AppModules.settings.build()
-        present(UINavigationController(rootViewController: module.view), animated: true, completion: nil)
+        present(UINavigationController(rootViewController: module.view.viewController), animated: true, completion: nil)
     }
 
     func openBackup() {
         let module = AppModules.backup.build()
-        present(UINavigationController(rootViewController: module.view), animated: true, completion: nil)
+        present(UINavigationController(rootViewController: module.view.viewController), animated: true, completion: nil)
     }
     
     func openUserGuide() {

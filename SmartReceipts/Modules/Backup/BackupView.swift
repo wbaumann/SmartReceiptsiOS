@@ -16,14 +16,13 @@ import Toaster
 //MARK: - Public Interface Protocol
 protocol BackupViewInterface  {
     var importTap: Observable<Void> { get }
-    var signInUIDelegate: GIDSignInUIDelegate { get }
     func updateUI()
     func updateBackups()
     func showOptions(file: URL)
 }
 
 //MARK: BackupView Class
-final class BackupView: UserInterface, GIDSignInUIDelegate {
+final class BackupView: UserInterface {
     fileprivate var documentInteractionController: UIDocumentInteractionController!
     
     @IBOutlet private weak var closeButton: UIBarButtonItem!
@@ -240,7 +239,6 @@ final class BackupView: UserInterface, GIDSignInUIDelegate {
 //MARK: - Public interface
 extension BackupView: BackupViewInterface {
     var importTap: Observable<Void> { return importButton.rx.tap.asObservable() }
-    var signInUIDelegate: GIDSignInUIDelegate { return self }
 }
 
 //MARK: AutoBackup Selector

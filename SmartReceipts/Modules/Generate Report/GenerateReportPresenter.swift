@@ -55,16 +55,6 @@ class GenerateReportPresenter: Presenter {
     }
 }
 
-extension GenerateReportPresenter: TitleSubtitleProtocol {
-    var titleSubtitle: TitleSubtitle {
-        return interactor.titleSubtitle
-    }
-    
-    var contentChangedSubject: PublishSubject<Void>? {
-        return nil
-    }
-}
-
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
 private extension GenerateReportPresenter {

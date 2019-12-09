@@ -28,13 +28,13 @@ class AccountRouter: AccountRouterProtocol {
                 })
                 return Disposables.create()
             }.do(onCompleted: {
-                module.view.dismiss(animated: true, completion: nil)
+                module.view.viewController.dismiss(animated: true, completion: nil)
             })
     }
     
     func openOcr() {
         let module = AppModules.OCRConfiguration.build()
-        let nc = UINavigationController(rootViewController: module.view)
+        let nc = UINavigationController(rootViewController: module.view.viewController)
         moduleViewController.present(nc, animated: true, completion: nil)
     }
 }

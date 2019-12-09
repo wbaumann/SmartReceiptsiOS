@@ -3,6 +3,8 @@ platform :ios, '10.0'
 inhibit_all_warnings!
 use_frameworks!
 
+source 'https://cdn.cocoapods.org/'
+
 project 'SmartReceipts.xcodeproj'
 
 def pods
@@ -17,7 +19,6 @@ def pods
     # UI
     pod 'MRProgress', git: 'https://github.com/EvsenevDev/MRProgress', branch: 'disabled-motions'
     pod 'Eureka'
-    pod 'XLPagerTabStrip'
     pod 'Toaster'
     
     # Rx

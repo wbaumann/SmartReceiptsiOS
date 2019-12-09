@@ -18,7 +18,7 @@ class ReceiptsRouter: Router {
     
     func openDistances() {
         let module = AppModules.tripDistances.build()
-        module.router.show(from: _view, embedInNavController: true, setupData: moduleTrip)
+        module.router.show(from: _view.viewController, embedInNavController: true, setupData: moduleTrip)
     }
     
     func openImageViewer(for receipt: WBReceipt) {
@@ -26,7 +26,7 @@ class ReceiptsRouter: Router {
             .delay(0, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [unowned self] in
                 let module = AppModules.receiptImageViewer.build()
-                module.router.show(from: self._view, embedInNavController: false, setupData: receipt)
+                module.router.show(from: self._view.viewController, embedInNavController: false, setupData: receipt)
             }).disposed(by: bag)
     }
     
@@ -44,7 +44,15 @@ class ReceiptsRouter: Router {
     
     func openGenerateReport() {
         let module = AppModules.generateReport.build()
-        module.router.show(from: _view, embedInNavController: true, setupData: moduleTrip)
+        module.router.show(from: _view.viewController, embedInNavController: true, setupData: moduleTrip)
+    }
+    
+    func openBackups() {
+        let backupModuleView = AppModules.backup.build().view
+        let navController = UINavigationController(rootViewController: backupModuleView.viewController)
+        navController.modalTransitionStyle = .coverVertical
+        navController.modalPresentationStyle = .formSheet
+        _view.viewController.present(navController, animated: true, completion: nil)
     }
     
     func openCreateReceipt() {
@@ -53,7 +61,7 @@ class ReceiptsRouter: Router {
     
     func openCreatePhotoReceipt() {
         var hud: PendingHUDView?
-        self.subscription = ImagePicker.shared.presentCamera(on: _view)
+        self.subscription = ImagePicker.shared.presentCamera(on: _view.viewController)
             .flatMap({ [unowned self] img -> Single<ScanResult> in
                 hud = PendingHUDView.showFullScreen(text: ScanStatus.uploading.localizedText)
                 hud?.observe(status: self.presenter.scanService.status)
@@ -66,7 +74,7 @@ class ReceiptsRouter: Router {
     
     func openImportReceiptFile() {
         var hud: PendingHUDView?
-        ReceiptFilePicker.sharedInstance.openFilePicker(on: _view)
+        ReceiptFilePicker.sharedInstance.openFilePicker(on: _view.viewController)
             .do(onError: { [unowned self] error in
                 Logger.error("Import failed with: \(error.localizedDescription)")
                 self.openAlert(title: nil, message: error.localizedDescription)
@@ -85,7 +93,7 @@ class ReceiptsRouter: Router {
     
     func openActions(receipt: WBReceipt) -> ReceiptActionsPresenter {
         let module = AppModules.receiptActions.build()
-        module.router.show(from: _view, embedInNavController: true, setupData: receipt)
+        module.router.show(from: _view.viewController, embedInNavController: true, setupData: receipt)
         return module.presenter as! ReceiptActionsPresenter
     }
     
@@ -99,13 +107,13 @@ class ReceiptsRouter: Router {
         
         let module = AppModules.editReceipt.build()
         let data = (trip: moduleTrip, receipt: receipt)
-        module.router.show(from: _view, embedInNavController: true, setupData: data)
+        module.router.show(from: _view.viewController, embedInNavController: true, setupData: data)
     }
     
     private func openEditModule(with scan: ScanResult) {
         let module = AppModules.editReceipt.build()
         let data = (trip: moduleTrip, scan: scan)
-        module.router.show(from: _view, embedInNavController: true, setupData: data)
+        module.router.show(from: _view.viewController, embedInNavController: true, setupData: data)
     }
     
 }

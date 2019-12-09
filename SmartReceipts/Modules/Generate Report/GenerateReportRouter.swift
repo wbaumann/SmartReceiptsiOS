@@ -11,7 +11,7 @@ import Viperit
 
 class GenerateReportRouter: Router {
     func close() {
-        _view.dismiss(animated: true, completion: nil)
+        _view.viewController.dismiss(animated: true, completion: nil)
     }
     
     func openSheet(title: String?, message: String?, actions: [UIAlertAction]) {
@@ -19,7 +19,7 @@ class GenerateReportRouter: Router {
         for action in actions {
             sheet.addAction(action)
         }
-        _view.present(sheet, animated: true, completion: nil)
+        _view.viewController.present(sheet, animated: true, completion: nil)
     }
     
     func openSettingsOnDisatnce() {
@@ -34,7 +34,7 @@ class GenerateReportRouter: Router {
     func openSettings(option: ShowSettingsOption) {
         let module = AppModules.settings.build()
         module.presenter.setupView(data: option)
-        module.router.show(from: _view, embedInNavController: true)
+        module.router.show(from: _view.viewController, embedInNavController: true)
     }
     
     func open(vc: UIViewController, animated: Bool = true, isPopover: Bool = false, completion: (() -> Void)? = nil) {
@@ -42,11 +42,11 @@ class GenerateReportRouter: Router {
             // For iPad
             if let popover = vc.popoverPresentationController {
                 popover.permittedArrowDirections = .up
-                popover.sourceView = _view.view
-                popover.sourceRect = _view.navigationController?.navigationBar.frame ?? _view.view.frame
+                popover.sourceView = _view.viewController.view
+                popover.sourceRect = _view.viewController.navigationController?.navigationBar.frame ?? _view.viewController.view.frame
             }
         }
-        _view.present(vc, animated: animated, completion: completion)
+        _view.viewController.present(vc, animated: animated, completion: completion)
     }
 }
 

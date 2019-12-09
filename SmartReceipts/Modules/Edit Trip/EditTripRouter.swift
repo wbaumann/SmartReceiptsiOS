@@ -12,7 +12,7 @@ import Viperit
 class EditTripRouter: Router {
     
     func close() {
-        _view.navigationController?.dismiss(animated: true, completion: nil)
+        _view.viewController.navigationController?.dismiss(animated: true, completion: nil)
     }
     
 }

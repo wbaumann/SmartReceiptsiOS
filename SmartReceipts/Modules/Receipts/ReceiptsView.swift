@@ -140,18 +140,9 @@ final class ReceiptsView: FetchedTableViewController {
     }
     
     private func subscribeTooltip() {
-        
-        tripT
-        
-        
-        presenter.tooltipPresenter.updateInsets
-            .subscribe(onNext: { [weak self] insets in
-//            self?.applyInsetsForTooltip(insets)
-            }).disposed(by: bag)
-                
         presenter.tooltipPresenter.errorTap.subscribe(onNext: { [weak self] error in
             if error == .userRevokedRemoteRights {
-//                self?.showBackupsScreen()
+                self?.presenter.presentBackups()
             } else if error == .userDeletedRemoteData {
                 _ = BackupProvidersManager.shared.clearCurrentBackupConfiguration()
                     .subscribe(onCompleted: {
@@ -169,7 +160,7 @@ final class ReceiptsView: FetchedTableViewController {
         presenter.tooltipPresenter.reminderTap.do(onNext: {
             AnalyticsManager.sharedManager.record(event: Event.clickedBackupReminderTip())
         }).subscribe(onNext: { [weak self] in
-//            self?.showBackupsScreen()
+            self?.presenter.presentBackups()
         }).disposed(by: bag)
     }
 }
@@ -230,7 +221,7 @@ extension ReceiptsView: UIViewControllerPreviewingDelegate {
                 self.presenter.presentAttachment(for: receipt)
             }).disposed(by: bag)
         
-        return module.view
+        return module.view.viewController
     }
 }
 

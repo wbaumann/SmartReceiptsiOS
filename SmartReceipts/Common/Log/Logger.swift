@@ -30,9 +30,9 @@ final class Logger: NSObject {
         // “-DDEBUG” to the Debug section
         // “-DRELEASE” to the Release section
         #if DEBUG
-            defaultDebugLevel = .all
+            dynamicLogLevel = .all
         #else
-            defaultDebugLevel = .info
+            dynamicLogLevel = .info
         #endif
         
         // custom formatter
@@ -42,31 +42,29 @@ final class Logger: NSObject {
         // TTY = Xcode console
         if let ttyLogger = DDTTYLogger.sharedInstance {
             ttyLogger.logFormatter = formatter
-            DDLog.add(ttyLogger, with: defaultDebugLevel)
+            DDLog.add(ttyLogger, with: dynamicLogLevel)
         }
         
         // ASL = Apple System Logs
-        if let aslLogger = DDASLLogger.sharedInstance {
+        if let aslLogger = DDOSLogger.sharedInstance {
             aslLogger.logFormatter = formatter
-            DDLog.add(aslLogger, with: defaultDebugLevel)
+            DDLog.add(aslLogger, with: dynamicLogLevel)
         }
         
         // Persistent log file that saves up to 1MB of logs to disk, which can be attached as part of the support email.
-        if let fileLogger = fileLogger {
-            fileLogger.logFormatter = formatter
-            fileLogger.rollingFrequency = 0 // no limits
-            fileLogger.maximumFileSize = UInt64(1024 * 1024 * 1) // 1 MB
-            fileLogger.logFileManager.maximumNumberOfLogFiles = 0
-            fileLogger.logFileManager.logFilesDiskQuota = UInt64(1024 * 1024 * 2) // quota is 2 MB max
-            DDLog.add(fileLogger, with: defaultDebugLevel)
-        }
+        fileLogger.logFormatter = formatter
+        fileLogger.rollingFrequency = 0 // no limits
+        fileLogger.maximumFileSize = UInt64(1024 * 1024 * 1) // 1 MB
+        fileLogger.logFileManager.maximumNumberOfLogFiles = 0
+        fileLogger.logFileManager.logFilesDiskQuota = UInt64(1024 * 1024 * 2) // quota is 2 MB max
+        DDLog.add(fileLogger, with: dynamicLogLevel)
     }
     
     /// Log files
     ///
     /// - Returns: An array of DDLogFileInfo instances
     class func logFiles() -> [DDLogFileInfo] {
-        return sharedInstance.fileLogger?.logFileManager.sortedLogFileInfos ?? []
+        return sharedInstance.fileLogger.logFileManager.sortedLogFileInfos
     }
     
     // MARK: - Log levels
@@ -117,7 +115,7 @@ final class Logger: NSObject {
     private func logMacro(message: String, flag: DDLogFlag, file: String, function: String, line: UInt) {
         
         let message = DDLogMessage(message: message,
-                                   level: defaultDebugLevel,
+                                   level: dynamicLogLevel,
                                    flag: flag,
                                    context: 0,
                                    file: file,

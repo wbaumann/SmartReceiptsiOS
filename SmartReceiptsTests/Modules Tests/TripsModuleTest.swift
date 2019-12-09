@@ -59,7 +59,7 @@ class TripsModuleTest: XCTestCase {
     }
     
     func testPresenterToRouter() {
-        presenter._view.loadView()
+        presenter._view.viewController.loadView()
         
         presenter.presentAddTrip()
         verify(router).openAddTrip()
@@ -69,7 +69,7 @@ class TripsModuleTest: XCTestCase {
     }
     
     func testPresenterToInteractor() {
-        presenter._view.loadView()
+        presenter._view.viewController.loadView()
         presenter.viewHasLoaded()
         
         verify(interactor).configureSubscribers()

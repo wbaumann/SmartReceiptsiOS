@@ -11,8 +11,7 @@ import Viperit
 import RxSwift
 import RxCocoa
 
-class ReceiptsPresenter: Presenter {
-    
+class ReceiptsPresenter: Presenter {    
     let receiptActionsSubject = PublishSubject<WBReceipt>()
     let editReceiptSubject = PublishSubject<WBReceipt>()
     let receiptDeleteSubject = PublishSubject<WBReceipt>()
@@ -91,18 +90,11 @@ class ReceiptsPresenter: Presenter {
     func presentAttachment(for receipt: WBReceipt) {
         receipt.attachemntType == .image ? router.openImageViewer(for: receipt) : router.openPDFViewer(for: receipt)
     }
-}
-
-extension ReceiptsPresenter: TitleSubtitleProtocol {
-    var titleSubtitle: TitleSubtitle {
-        return interactor.titleSubtitle()
-    }
     
-    var contentChangedSubject: PublishSubject<Void>? {
-        return contentChanged
+    func presentBackups() {
+        router.openBackups()
     }
 }
-
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
 private extension ReceiptsPresenter {
