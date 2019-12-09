@@ -112,7 +112,7 @@ class ReceiptActionsPresenter: Presenter {
     }
     
     private func takeImage() {
-        ImagePicker.shared.presentPicker(on: _view)
+        ImagePicker.shared.presentPicker(on: _view.viewController)
             .subscribe(onSuccess: { [unowned self] image in
                 guard self.interactor.attachImage(image, to: self.receipt) else { return }
                 self.view.updateForm()

@@ -31,7 +31,7 @@ class OCRConfigurationInteractor: Interactor {
     }
     
     func purchase(product: String) -> Observable<PurchaseDetails> {
-        let hud = PendingHUDView.show(on: presenter._view.view)
+        let hud = PendingHUDView.show(on: presenter._view.viewController.view)
         return purchaseService.purchase(prodcutID: product)
                 .do(onNext: { _ in
                     hud.hide()

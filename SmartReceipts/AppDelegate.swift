@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppTheme.customizeOnAppLoad()
         EurekaWhitespaceWorkaround.configureTextCells()
         Crashlytics.sharedInstance().debugMode = DebugStates.isDebug
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID as! String]
         
         _ = FileManager.initTripsDirectory()
         
@@ -94,9 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 Logger.info("Loaded with unknown file")
             }
         } else {
-            let sourceApp = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String
-            let annotation = options[UIApplication.OpenURLOptionsKey.annotation]
-            return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApp, annotation: annotation)
+            return GIDSignIn.sharedInstance().handle(url)
         }
         return true
     }

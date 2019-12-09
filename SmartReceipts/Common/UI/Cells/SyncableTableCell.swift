@@ -32,7 +32,7 @@ class SyncableTableCell: UITableViewCell {
         let alert = UIAlertController(title: nil, message: LocalizedString("automatic_backups_info_dialog_message"), preferredStyle: .alert)
         alert.addAction(.init(title: LocalizedString("automatic_backups_info_dialog_positive"), style: .default, handler: { _ in
             let backupModuleView = AppModules.backup.build().view
-            let navController = UINavigationController(rootViewController: backupModuleView)
+            let navController = UINavigationController(rootViewController: backupModuleView.viewController)
             navController.modalTransitionStyle = .coverVertical
             navController.modalPresentationStyle = .formSheet
             root?.present(navController, animated: true, completion: nil)

@@ -14,7 +14,7 @@ class BackupRouter: Router {
     private let bag = DisposeBag()
     
     func openBackupImport() {
-        BackupFilePicker.sharedInstance.openFilePicker(on: self._view)
+        BackupFilePicker.sharedInstance.openFilePicker(on: self._view.viewController)
             .subscribe(onNext: { smrURL in
                 (UIApplication.shared.delegate as? AppDelegate)?.handleSMR(url: smrURL)
             }).disposed(by: bag)

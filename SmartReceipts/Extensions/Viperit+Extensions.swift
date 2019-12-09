@@ -15,28 +15,32 @@ extension Module {
     }
 }
 
-extension Presenter {
+extension PresenterProtocol {
     func presentAlert(title: String?, message: String) {
         _router.openAlert(title: title, message: message)
     }
 }
 
-extension Router {
+extension RouterProtocol {
     func openAlert(title: String?, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: LocalizedString("generic_button_title_ok"), style: .cancel, handler: nil))
-        _view.present(alert, animated: true, completion: nil)
+        _view.viewController.present(alert, animated: true, completion: nil)
     }
     
     func pushTo(controller: UINavigationController, animated: Bool = true, setupData: Any? = nil) {
         if let data = setupData {
-            _view._presenter.setupView(data: data)
+            _presenter.setupView(data: data)
         }
-        controller.pushViewController(_view, animated: animated)
+        controller.pushViewController(_view.viewController, animated: animated)
     }
     
     func openModal(module: Module) {
-        module.router.show(from: _view, embedInNavController: true)
+        module.router.show(from: _view.viewController, embedInNavController: true)
+    }
+    
+    func show(from: UIViewController, embedInNavController: Bool = false, setupData data: Any? = nil) {
+        (self as? Router)?.show(from: from, embedInNavController: embedInNavController, setupData: data)
     }
 }
 

@@ -12,7 +12,7 @@ import Viperit
 class ReceiptActionsRouter: Router {
     
     func close() {
-        _view.dismiss(animated: true, completion: nil)
+        _view.viewController.dismiss(animated: true, completion: nil)
     }
     
     func openMove(receipt: WBReceipt) {
@@ -26,7 +26,7 @@ class ReceiptActionsRouter: Router {
     private func openMoveCopy(receipt: WBReceipt, copyOrMove: Bool) {
         let data = (receipt, copyOrMove)
         let module = AppModules.receiptMoveCopy.build()
-        module.router.show(from: _view, embedInNavController: false, setupData: data)
+        module.router.show(from: _view.viewController, embedInNavController: false, setupData: data)
     }
     
 }

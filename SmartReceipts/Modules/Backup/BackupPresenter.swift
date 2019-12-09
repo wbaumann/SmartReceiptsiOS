@@ -55,10 +55,6 @@ class BackupPresenter: Presenter {
         return interactor.purchaseSubscription()
     }
     
-    func signInUIDelegate() -> GIDSignInUIDelegate {
-        return view.signInUIDelegate
-    }
-    
     func saveCurrent(provider: SyncProvider) {
         interactor.saveCurrent(provider: provider)
     }

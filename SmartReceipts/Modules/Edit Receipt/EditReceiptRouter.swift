@@ -15,11 +15,11 @@ class EditReceiptRouter: Router {
         let settingsVC = MainStoryboard().instantiateViewController(withIdentifier: "SettingsOverflow")
         settingsVC.modalTransitionStyle = .coverVertical
         settingsVC.modalPresentationStyle = .formSheet
-        _view.present(settingsVC, animated: true, completion: nil)
+        _view.viewController.present(settingsVC, animated: true, completion: nil)
     }
     
     func close(){
-        _view.dismiss(animated: true, completion: nil)
+        _view.viewController.dismiss(animated: true, completion: nil)
     }
     
     func openAuth() -> AuthModuleInterface {
@@ -35,12 +35,12 @@ class EditReceiptRouter: Router {
     
     func openPaymentMethods() {
         let module = AppModules.paymentMethods.build()
-        module.router.show(from: _view)
+        module.router.show(from: _view.viewController)
     }
     
     func openCategories() {
         let module = AppModules.categories.build()
-        module.router.show(from: _view)
+        module.router.show(from: _view.viewController)
     }
 }
 

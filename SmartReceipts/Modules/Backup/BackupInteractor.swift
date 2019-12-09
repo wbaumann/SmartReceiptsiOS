@@ -173,7 +173,7 @@ class BackupInteractor: Interactor {
     func saveCurrent(provider: SyncProvider) {
         guard provider == .googleDrive else { setup(provider: provider); return }
         weak var hud = PendingHUDView.showFullScreen()
-        GoogleDriveService.shared.signIn(onUI: presenter.signInUIDelegate())
+        GoogleDriveService.shared.signIn()
             .subscribe(onNext: { [weak self, weak hud] in
                 self?.setup(provider: .googleDrive)
                 hud?.hide()

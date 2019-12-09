@@ -29,15 +29,6 @@ class SyncService {
     private var syncProvider: SyncProvider?
     private var syncErrorsSubject = BehaviorSubject<SyncError?>(value: nil)
     
-    private init() {
-        GoogleDriveService.shared.signInSilently()
-            .subscribe({ _ in
-                self.updateSyncServiceIfNeeded()
-                self.configurePreferencesListeners()
-                self.configureNetworkListener()
-            }).disposed(by: bag)
-    }
-    
     private var canUploadReceipts: Bool {
         guard let net = network else { return false }
         return !WBPreferences.autobackupWifiOnly() || net.isReachableOnEthernetOrWiFi
@@ -48,6 +39,13 @@ class SyncService {
         center.addObserver(self, selector: #selector(didInsert(_:)), name: .DatabaseDidInsertModel, object: nil)
         center.addObserver(self, selector: #selector(didUpdate(_:)), name: .DatabaseDidUpdateModel, object: nil)
         center.addObserver(self, selector: #selector(didDelete(_:)), name: .DatabaseDidDeleteModel, object: nil)
+        
+        GoogleDriveService.shared.signInSilently()
+            .subscribe({ _ in
+                self.updateSyncServiceIfNeeded()
+                self.configurePreferencesListeners()
+                self.configureNetworkListener()
+            }).disposed(by: bag)
     }
     
     // MARK: - Configurations

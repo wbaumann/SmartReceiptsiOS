@@ -35,6 +35,6 @@ class FirebaseAnalytics: AnalyticsServiceProtocol {
     }
     
     func setAnalyticsSending(allowed: Bool) {
-        FirebaseConfiguration.shared.analyticsConfiguration.setAnalyticsCollectionEnabled(allowed)
+        Analytics.setAnalyticsCollectionEnabled(allowed)
     }
 }

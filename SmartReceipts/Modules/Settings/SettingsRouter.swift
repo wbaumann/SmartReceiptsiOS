@@ -25,7 +25,7 @@ class SettingsRouter: Router {
     }
     
     func close() {
-        _view.dismiss(animated: true, completion: nil)
+        _view.viewController.dismiss(animated: true, completion: nil)
     }
     
     func openPrivacyPolicy() {
@@ -39,17 +39,17 @@ class SettingsRouter: Router {
     func openColumns(isCSV: Bool) {
         let module = AppModules.columns.build()
         module.presenter.setupView(data: isCSV)
-        module.router.show(from: _view)
+        module.router.show(from: _view.viewController)
     }
     
     func openPaymentMethods() {
         let module = AppModules.paymentMethods.build()
-        module.router.show(from: _view)
+        module.router.show(from: _view.viewController)
     }
     
     func openCategories() {
         let module = AppModules.categories.build()
-        module.router.show(from: _view)
+        module.router.show(from: _view.viewController)
     }
 }
 
