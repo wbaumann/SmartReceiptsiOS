@@ -100,9 +100,8 @@ class TooltipPresenter {
         
         if let text = TooltipService.shared.generateTooltip(for: trip), reportTooltip == nil {
             updateInsetsSubject.onNext(TOOLTIP_INSETS)
-            let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
             
-            reportTooltip = TooltipView.showOn(view: view, text: text, offset: offset)
+            reportTooltip = TooltipView.showOn(view: view, text: text)
             
             reportTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
                 TooltipService.shared.markMoveToGenerateDismiss()

@@ -50,10 +50,24 @@ class ReceiptCell: SyncableTableCell {
             image = generatePDFIcon(url: URL(fileURLWithPath: path))
         }
         
+        updateState(receipt: receipt)
+        
         guard let buttonImage = image else { return self }
         imageButton.setImage(buttonImage.withRenderingMode(.alwaysOriginal), for: .normal)
     
         return self
+    }
+    
+    private func updateState(receipt: WBReceipt) {
+        var state: ModelSyncState = .disabled
+        if SyncProvider.current != .none {
+            if receipt.attachemntType != .none {
+                state = receipt.isSynced(syncProvider: .last) ? .synced : .notSynced
+            } else {
+                state = .modelState(modelChangeDate: receipt.lastLocalModificationTime)
+            }
+        }
+        setState(state)
     }
     
     private func generatePDFIcon(url: URL) -> UIImage? {

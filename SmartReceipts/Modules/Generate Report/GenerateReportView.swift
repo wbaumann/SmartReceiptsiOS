@@ -25,13 +25,12 @@ final class GenerateReportView: UserInterface {
     private let bag = DisposeBag()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         formView = GenerateReportFormView()
-
         addChild(formView!)
         formView?.view.frame = view.bounds
         view.addSubview(formView!.view)
         
+        super.viewDidLoad()
         configureUIActions()
     }
     
@@ -60,15 +59,8 @@ extension GenerateReportView: TabHasMainAction {
 
 //MARK: - Public interface
 extension GenerateReportView: GenerateReportViewInterface {
-    
     func hideHud() {
         hud?.hide()
-    }
-}
-
-extension GenerateReportView: InsetContent {
-    func apply(inset: UIEdgeInsets) {
-        formView?.tableView.contentInset = inset
     }
 }
 
