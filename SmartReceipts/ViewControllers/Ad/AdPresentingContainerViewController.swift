@@ -68,7 +68,6 @@ class AdPresentingContainerViewController: UIViewController {
         extras.additionalParameters = ["npa": npaParameter]
         request.register(extras)
         
-        request.testDevices = [kGADSimulatorID, "b5c0a5fccf83835150ed1fac6dd636e6"]
         bannerView?.adSize = getAdSize()
         bannerView?.load(request)
     }
@@ -130,6 +129,6 @@ class AdNavigationEntryPoint: UINavigationController {
     override func viewDidLoad() {
         let module = AppModules.trips.build()
         AdNavigationEntryPoint.navigationController = self
-        show(module.view, sender: nil)
+        show(module.view.viewController, sender: nil)
     }
 }

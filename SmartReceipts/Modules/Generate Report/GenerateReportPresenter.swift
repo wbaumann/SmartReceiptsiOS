@@ -11,7 +11,7 @@ import Viperit
 import RxSwift
 
 class GenerateReportPresenter: Presenter {
-
+    
     override func viewHasLoaded() {
         interactor.trackConfigureReportEvent()
     }

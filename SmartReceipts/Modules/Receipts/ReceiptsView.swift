@@ -14,6 +14,7 @@ import RxSwift
 protocol ReceiptsViewInterface {
     func setup(trip: WBTrip)
     func setup(fetchedModelAdapter: FetchedModelAdapter)
+    var viewForTooltip: UIView { get }
 }
 
 //MARK: ReceiptsView Class
@@ -59,11 +60,18 @@ final class ReceiptsView: FetchedTableViewController {
                 self?.tableView.reloadData()
             }).disposed(by: bag)
         
+        presenter.tooltipPresenter.updateInsets
+            .subscribe(onNext: { [weak self] in
+                self?.tableView.contentInset = $0
+            }).disposed(by: bag)
+        
         registerForPreviewing(with: self, sourceView: tableView)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter.tooltipPresenter.presentBackupReminderIfNeeded()
+        presenter.tooltipPresenter.presentGenerateIfNeeded()
     }
     
     @objc func tripUpdated(_ notification: Notification) {
@@ -81,18 +89,6 @@ final class ReceiptsView: FetchedTableViewController {
         let cell = cell as! ReceiptCell
         let receipt = item as! WBReceipt
         cell.configure(receipt: receipt)
-        
-        
-        
-        var state: ModelSyncState = .disabled
-        if SyncProvider.current != .none {
-            if receipt.attachemntType != .none {
-                state = receipt.isSynced(syncProvider: .last) ? .synced : .notSynced
-            } else {
-                state = .modelState(modelChangeDate: receipt.lastLocalModificationTime)
-            }
-        }
-        cell.setState(state)
     }
 
     override func contentChanged() {
@@ -142,6 +138,40 @@ final class ReceiptsView: FetchedTableViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
+    private func subscribeTooltip() {
+        
+        tripT
+        
+        
+        presenter.tooltipPresenter.updateInsets
+            .subscribe(onNext: { [weak self] insets in
+//            self?.applyInsetsForTooltip(insets)
+            }).disposed(by: bag)
+                
+        presenter.tooltipPresenter.errorTap.subscribe(onNext: { [weak self] error in
+            if error == .userRevokedRemoteRights {
+//                self?.showBackupsScreen()
+            } else if error == .userDeletedRemoteData {
+                _ = BackupProvidersManager.shared.clearCurrentBackupConfiguration()
+                    .subscribe(onCompleted: {
+                        SyncService.shared.trySyncData()
+                    })
+            } else if error == .noRemoteDiskSpace {
+                BackupProvidersManager.shared.markErrorResolved(syncErrorType: .noRemoteDiskSpace)
+            }
+        }).disposed(by: bag)
+        
+        presenter.tooltipPresenter.generateTap.subscribe(onNext: { [weak self] in
+//            self?.moveToViewController(at: 2)
+        }).disposed(by: bag)
+        
+        presenter.tooltipPresenter.reminderTap.do(onNext: {
+            AnalyticsManager.sharedManager.record(event: Event.clickedBackupReminderTip())
+        }).subscribe(onNext: { [weak self] in
+//            self?.showBackupsScreen()
+        }).disposed(by: bag)
+    }
 }
 
 extension ReceiptsView: TabHasMainAction {
@@ -162,13 +192,6 @@ extension ReceiptsView: TabHasMainAction {
             .disposed(by: bag)
         
         sheet.show()
-    }
-}
-
-//MARK: TooltipApplicable
-extension ReceiptsView: TooltipApplicable {
-    func viewForTooltip() -> UIView {
-        return tableView
     }
 }
 
@@ -209,7 +232,6 @@ extension ReceiptsView: UIViewControllerPreviewingDelegate {
         
         return module.view
     }
-    
 }
 
 extension ReceiptsView: UITableViewDelegate {
@@ -254,6 +276,10 @@ extension ReceiptsView: ReceiptsViewInterface {
     
     func setup(fetchedModelAdapter: FetchedModelAdapter) {
         displayData.fetchedModelAdapter = fetchedModelAdapter
+    }
+    
+    var viewForTooltip: UIView {
+        return view
     }
 }
 

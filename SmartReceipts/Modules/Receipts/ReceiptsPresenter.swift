@@ -24,10 +24,13 @@ class ReceiptsPresenter: Presenter {
     
     let bag = DisposeBag()
     
+    private (set) var tooltipPresenter: TooltipPresenter!
     var scanService: ScanService { return interactor.scanService }
     
     override func viewHasLoaded() {
         interactor.configureSubscribers()
+        
+        tooltipPresenter = TooltipPresenter(view: view.viewForTooltip, trip: interactor.trip)
         
         editReceiptSubject
             .subscribe(onNext: { [unowned self] receipt in
