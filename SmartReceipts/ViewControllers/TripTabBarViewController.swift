@@ -63,22 +63,25 @@ class TripTabBarViewController: TabBarViewController {
 
 private extension TripTabBarViewController {
     func presentMoreSheet() {
-        let settingsAction = UIAlertAction(title: LocalizedString("menu_main_settings"),
-                                           style: .default, handler: { [weak self] _ in self?.openSettings() })
-            
-        let ocrSettingsAction = UIAlertAction(title: LocalizedString("menu_main_ocr_configuration"),
-                                              style: .default, handler: { [weak self] _ in self?.openAutoScans() })
-            
-        let backupAction = UIAlertAction(title: LocalizedString("menu_main_export"),
-                                         style: .default, handler: { [weak self] _ in self?.openBackup() })
+        let actionSheet = ActionSheet()
         
-        let userGuideAction = UIAlertAction(title: LocalizedString("menu_main_usage_guide"),
-                                            style: .default, handler: { [weak self] _ in self?.openUserGuide() })
-            
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        [settingsAction, ocrSettingsAction, backupAction, userGuideAction].forEach { actionSheet.addAction($0) }
-        actionSheet.addAction(UIAlertAction(title: LocalizedString("DIALOG_CANCEL"), style: .cancel, handler: nil))
-        present(actionSheet, animated: true, completion: nil)
+        actionSheet.addAction(title: LocalizedString("menu_main_settings"), image: #imageLiteral(resourceName: "settings"))
+            .subscribe(onNext: { [weak self] in self?.openSettings() })
+            .disposed(by: bag)
+        
+        actionSheet.addAction(title: LocalizedString("menu_main_ocr_configuration"), image: #imageLiteral(resourceName: "cpu"))
+            .subscribe(onNext: { [weak self] in self?.openAutoScans() })
+            .disposed(by: bag)
+        
+        actionSheet.addAction(title: LocalizedString("menu_main_export"), image: #imageLiteral(resourceName: "upload-cloud"))
+            .subscribe(onNext: { [weak self] in self?.openBackup() })
+            .disposed(by: bag)
+        
+        actionSheet.addAction(title: LocalizedString("menu_main_usage_guide"), image: #imageLiteral(resourceName: "info"))
+            .subscribe(onNext: { [weak self] in self?.openUserGuide() })
+            .disposed(by: bag)
+        
+        actionSheet.show()
     }
     
     func openAuth() -> AuthModuleInterface {
