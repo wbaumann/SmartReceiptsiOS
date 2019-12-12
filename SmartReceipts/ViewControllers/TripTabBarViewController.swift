@@ -36,6 +36,12 @@ class TripTabBarViewController: TabBarViewController {
         super.tabBar(tabBar, didSelect: item)
     }
     
+    func openTab(at index: Int) {
+        guard let items = tabBar.items, index < items.count else { return }
+        selectedIndex = index
+        tabBar(tabBar, didSelect: items[index])
+    }
+    
     // MARK: Private
     
     private func showMore() {
@@ -142,6 +148,12 @@ private extension UIViewController {
     func tabDisabled() -> UIViewController {
         tabBarItem.isEnabled = false
         return self
+    }
+}
+
+extension UIViewController {
+    var tripTabBarConroller: TripTabBarViewController? {
+        return tabBarController as? TripTabBarViewController
     }
 }
 
