@@ -53,6 +53,7 @@ final class ReceiptsView: FetchedTableViewController {
         
         lastDateSeparator = WBPreferences.dateSeparator()
         subscribe()
+        subscribeTooltip()
         
         let notifications = [AppNotificationCenter.syncProvider.asVoid(), AppNotificationCenter.didSyncBackup]
         Observable<Void>.merge(notifications)
@@ -154,7 +155,7 @@ final class ReceiptsView: FetchedTableViewController {
         }).disposed(by: bag)
         
         presenter.tooltipPresenter.generateTap.subscribe(onNext: { [weak self] in
-//            self?.moveToViewController(at: 2)
+            self?.tripTabBarConroller?.openTab(at: 3)
         }).disposed(by: bag)
         
         presenter.tooltipPresenter.reminderTap.do(onNext: {
