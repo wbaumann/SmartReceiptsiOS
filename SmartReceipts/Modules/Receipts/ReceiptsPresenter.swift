@@ -36,35 +36,30 @@ class ReceiptsPresenter: Presenter {
                 self.router.openEdit(receipt: receipt)
             }).disposed(by: bag)
         
-        receiptActionsSubject.subscribe(onNext: { [unowned self] receipt in
-            let actionsPresenter = self.router.openActions(receipt: receipt)
-            
-            actionsPresenter.actionTap
-                .filterCases(cases: .edit)
-                .delay(VIEW_CONTROLLER_TRANSITION_DELAY, scheduler: MainScheduler.instance)
-                .subscribe(onNext: { _ in
-                    self.router.openEdit(receipt: receipt)
-                }).disposed(by: self.bag)
-            
-            actionsPresenter.actionTap
-                .filterCases(cases: .swapUp)
-                .subscribe(onNext: { _ in
-                    self.interactor.swapUpReceipt(receipt)
-                }).disposed(by: self.bag)
-            
-            actionsPresenter.actionTap
-                .filterCases(cases: .swapDown)
-                .subscribe(onNext: { _ in
-                    self.interactor.swapDownReceipt(receipt)
-                }).disposed(by: self.bag)
-            
-            actionsPresenter.actionTap
-                .filterCases(cases: .viewImage)
-                .subscribe(onNext: { _ in
-                    self.presentAttachment(for: receipt)
-                }).disposed(by: self.bag)
-            
-        }).disposed(by: bag)
+        receiptActionsSubject
+            .flatMap { receipt in ReceiptActionSheet(receipt: receipt).show().map { (receipt, $0) } }
+            .subscribe(onNext: { [weak self] receipt, action in
+                switch action {
+                case .edit: self?.router.openEdit(receipt: receipt)
+                case .swapUp: self?.interactor.swapUpReceipt(receipt)
+                case .swapDown: self?.interactor.swapDownReceipt(receipt)
+                case .move: self?.router.openMove(receipt: receipt)
+                case .copy: self?.router.openCopy(receipt: receipt)
+                case .delete: self?.receiptDeleteSubject.onNext(receipt)
+                case .attachImage: _ = self?.interactor.attachAppInputFile(to: receipt)
+                }
+            }).disposed(by: bag)
+    }
+    
+    func onReceiptImageTap(receipt: WBReceipt) {
+        receipt.attachemntType == .none ? takeImage(for: receipt) : presentAttachment(for: receipt)
+    }
+    
+    private func takeImage(for receipt: WBReceipt) {
+        ImagePicker.shared.presentPicker(on: _view.viewController)
+            .subscribe(onSuccess: { [weak self] image in
+                _ = self?.interactor.attachImage(image, to: receipt)
+            }).disposed(by: bag)
     }
     
     override func setupView(data: Any) {

@@ -91,10 +91,12 @@ class ReceiptsRouter: Router {
             }).disposed(by: bag)
     }
     
-    func openActions(receipt: WBReceipt) -> ReceiptActionsPresenter {
-        let module = AppModules.receiptActions.build()
-        module.router.show(from: _view.viewController, embedInNavController: true, setupData: receipt)
-        return module.presenter as! ReceiptActionsPresenter
+    func openMove(receipt: WBReceipt) {
+        openMoveCopy(receipt: receipt, copyOrMove: false)
+    }
+    
+    func openCopy(receipt: WBReceipt) {
+        openMoveCopy(receipt: receipt, copyOrMove: true)
     }
     
     func openEdit(receipt: WBReceipt) {
@@ -113,6 +115,12 @@ class ReceiptsRouter: Router {
     private func openEditModule(with scan: ScanResult) {
         let module = AppModules.editReceipt.build()
         let data = (trip: moduleTrip, scan: scan)
+        module.router.show(from: _view.viewController, embedInNavController: true, setupData: data)
+    }
+    
+    private func openMoveCopy(receipt: WBReceipt, copyOrMove: Bool) {
+        let data = (receipt, copyOrMove)
+        let module = AppModules.receiptMoveCopy.build()
         module.router.show(from: _view.viewController, embedInNavController: true, setupData: data)
     }
     

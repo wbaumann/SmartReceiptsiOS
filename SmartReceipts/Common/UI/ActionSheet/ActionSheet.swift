@@ -100,7 +100,7 @@ class ActionButtonView: UIButton {
         backgroundColor = .srBGR
         layer.cornerRadius = 12
         
-        heightAnchor.constraint(equalToConstant: 58).isActive = true
+        heightAnchor.constraint(equalToConstant: 52).isActive = true
     }
     
     override func layoutSubviews() {
