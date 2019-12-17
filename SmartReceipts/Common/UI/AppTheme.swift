@@ -13,7 +13,7 @@ class AppTheme: NSObject {
     static let appTitle = LocalizedString("sr_app_name")
     static let appTitlePlus = LocalizedString("sr_app_name_plus")
 
-    static let buttonCornerRadius: CGFloat = 5
+    static let buttonCornerRadius: CGFloat = 6
     
     // Colors
     static let primaryColor               = UIColor.srViolet

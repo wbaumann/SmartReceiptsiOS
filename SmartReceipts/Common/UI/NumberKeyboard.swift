@@ -43,7 +43,7 @@ class NumberKeyboard: UIView, UIInputViewAudioFeedback {
         decimalSeparator.setTitle(Locale.current.decimalSeparator, for: .normal)
         for view in roundedViews {
             view.layer.cornerRadius = AppTheme.buttonCornerRadius
-            view.layer.borderColor = AppTheme.primaryColor.cgColor
+            view.layer.borderColor = #colorLiteral(red: 0.9137254902, green: 0.9098039216, blue: 0.9254901961, alpha: 1)
             view.layer.borderWidth = 1
         }
     }
