@@ -90,6 +90,9 @@ final class ReceiptsView: FetchedTableViewController {
         let cell = cell as! ReceiptCell
         let receipt = item as! WBReceipt
         cell.configure(receipt: receipt)
+        cell.onImageTap = { [weak self] in
+            self?.presenter.onReceiptImageTap(receipt: receipt)
+        }
     }
 
     override func contentChanged() {
