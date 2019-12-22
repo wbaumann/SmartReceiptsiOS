@@ -82,6 +82,7 @@ final class ReceiptsView: FetchedTableViewController {
         //TODO jaanus: check posting already altered object
         self.trip = Database.sharedInstance().tripWithName(self.trip.name)
         contentChanged()
+        tableView.reloadSections(Array(0..<tableView.numberOfSections), animationStyle: .none)
     }
     
     override var dataSourceType: TableViewDataSourceProxy.TableType { return .sections }
@@ -98,7 +99,6 @@ final class ReceiptsView: FetchedTableViewController {
     override func contentChanged() {
         super.contentChanged()
         presenter.contentChanged.onNext(())
-        tableView.reloadSections(Array(0..<tableView.numberOfSections), animationStyle: .none)
     }
     
     override func delete(object: Any!, at indexPath: IndexPath) {
