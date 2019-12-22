@@ -16,17 +16,12 @@ class TripsPresenter: Presenter {
     let tripDetailsSubject = PublishSubject<WBTrip>()
     let tripEditSubject = PublishSubject<WBTrip>()
     let tripDeleteSubject = PublishSubject<WBTrip>()
+    private(set) var lastOpenedTrip: WBTrip?
     
     private let bag = DisposeBag()
     
     override func viewHasLoaded() {
         interactor.configureSubscribers()
-        
-        interactor.lastOpenedTrip
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { trip in
-                self.router.openDetails(trip: trip)
-            }).disposed(by: bag)
         
         view.addButtonTap
             .subscribe(onNext: {
@@ -54,6 +49,10 @@ class TripsPresenter: Presenter {
             .subscribe(onNext: { trip in
                 self.router.openEdit(trip: trip)
             }).disposed(by: bag)
+    }
+    
+    override func viewIsAboutToAppear() {
+        lastOpenedTrip = interactor.lastOpenedTrip
     }
     
     func presentAddTrip() {

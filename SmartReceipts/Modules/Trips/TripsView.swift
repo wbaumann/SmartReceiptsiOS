@@ -27,8 +27,6 @@ final class TripsView: FetchedTableViewController {
     
     fileprivate let privacySubject = PublishSubject<Void>()
     
-    private var priceWidth: CGFloat = 0
-    private let dateFormatter = WBDateFormatter()
     private var lastDateSeparator: String!
     private let bag = DisposeBag()
     
@@ -43,6 +41,12 @@ final class TripsView: FetchedTableViewController {
         configurePrivacyTooltip()
         configureDebug()
         configureRx()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
     }
     
     private func configureRx() {
@@ -116,17 +120,8 @@ final class TripsView: FetchedTableViewController {
     override func configureCell(cell: UITableViewCell, item: Any) {
         let pCell = cell as! TripCell
         let trip = item as! WBTrip
-        
-        pCell.priceLabel.text = trip.formattedPrice()
-        pCell.nameLabel.text = trip.name
-        pCell.dateLabel.text = String(format: LocalizedString("trip_adapter_list_item_to"),
-                                      dateFormatter.formattedDate(trip.startDate, in: trip.startTimeZone),
-                                      dateFormatter.formattedDate(trip.endDate, in: trip.endTimeZone))
-        pCell.priceWidthConstraint.constant = priceWidth
-        pCell.layoutIfNeeded()
-        
-        let state = ModelSyncState.modelState(modelChangeDate: trip.lastLocalModificationTime)
-        pCell.setState(state)
+        let selected = presenter.lastOpenedTrip?.objectId == trip.objectId
+        pCell.configure(trip: trip, selected: selected)
     }
     
     override func configureSubrcibers(for adapter: FetchedModelAdapter?) {

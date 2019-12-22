@@ -31,15 +31,9 @@ class TripsInteractor: Interactor {
         UserDefaults.standard.set(trip.name, forKey: LAST_OPENED_TRIP_KEY)
     }
     
-    var lastOpenedTrip: Observable<WBTrip> {
-        return Single<WBTrip>.create(subscribe: { single in
-            if let tripName = UserDefaults.standard.value(forKey: LAST_OPENED_TRIP_KEY) as? String,
-               let trip = Database.sharedInstance().tripWithName(tripName) {
-                single(.success(trip))
-            }
-            return Disposables.create()
-        }).asObservable()
-        .subscribeOn(OperationQueueScheduler(operationQueue: OperationQueue()))
+    var lastOpenedTrip: WBTrip? {
+        guard let tripName = UserDefaults.standard.value(forKey: LAST_OPENED_TRIP_KEY) as? String else { return nil }
+        return Database.sharedInstance().tripWithName(tripName)
     }
 }
 
