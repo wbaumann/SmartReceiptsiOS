@@ -8,28 +8,40 @@
 
 import UIKit
 import RxSwift
+import RxGesture
 import SafariServices
 
 class TripTabBarViewController: TabBarViewController {
     private let bag = DisposeBag()
-    private var trip: WBTrip!
+    private var trip: WBTrip?
     private var tooltipPresenter: TooltipPresenter!
-    
-    static func create(trip: WBTrip) -> TripTabBarViewController {
-        let result = Self.create()
-        result.trip = trip
-        return result
-    }
+    private var titleView: TripTitleView?
+    private var fetchedModelAdapter: FetchedModelAdapter!
     
     override func viewDidLoad() {
-        setupViewControllers()
         super.viewDidLoad()
+        self.trip = WBPreferences.lastOpenedTrip
+        fetchedModelAdapter = Database.sharedInstance()!.createUpdatingAdapterForAllTrips()
+        fetchedModelAdapter.rx.didChangeContent
+            .subscribe(onNext: { [weak self] _ in
+                guard let trip = self?.trip else { return }
+                Database.sharedInstance()!.refreshPriceForTrip(trip)
+                self?.trip = trip
+                self?.updateTitle(trip: trip)
+            }).disposed(by: bag)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setToolbarHidden(true, animated: false)
+        trip == nil ? showTrips(animated: false) : setupViewControllers(trip: trip!)
+        configureTitle()
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case Constants.unselectableTag: return
-        case Constants.actionTag: showMore(); return
+        case Constants.actionTag: showMoreSheet(); return
         default: break
         }
         
@@ -44,11 +56,29 @@ class TripTabBarViewController: TabBarViewController {
     
     // MARK: Private
     
-    private func showMore() {
-       presentMoreSheet()
+    private func configureTitle() {
+        titleView = TripTitleView.initFromNib()
+        navigationItem.titleView = titleView
+        titleView?.tintColor = .white
+        updateTitle(trip: trip)
+        
+        titleView?.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.showTrips(animated: true)
+            }).disposed(by: bag)
     }
     
-    private func setupViewControllers() {
+    private func updateTitle(trip: WBTrip?) {
+        if let trip = trip {
+            let total = "\(LocalizedString("total")): \(trip.formattedPrice()!)"
+            titleView?.set(title: trip.name, subtitle: total)
+        } else {
+            titleView?.set(title: LocalizedString("add"), subtitle: nil)
+        }
+    }
+    
+    private func setupViewControllers(trip: WBTrip) {
         let receiptsModule = AppModules.receipts.build()
         let distancesModule = AppModules.tripDistances.build()
         let generateModule = AppModules.generateReport.build()
@@ -68,7 +98,22 @@ class TripTabBarViewController: TabBarViewController {
 }
 
 private extension TripTabBarViewController {
-    func presentMoreSheet() {
+    
+    private func showTrips(animated: Bool) {
+        let module = AppModules.trips.build()
+        let nav = UINavigationController(rootViewController: module.view.viewController)
+        nav.modalPresentationStyle = .fullScreen
+        nav.modalTransitionStyle = .flipHorizontal
+        present(nav, animated: animated, completion: nil)
+        module.interface(TripsModuleInterface.self).tripSelected
+            .subscribe(onNext: { [weak self] trip in
+                self?.trip = trip
+                self?.updateTitle(trip: trip)
+                self?.setupViewControllers(trip: trip)
+            }).disposed(by: bag)
+    }
+    
+    func showMoreSheet() {
         let actionSheet = ActionSheet()
         
         actionSheet.addAction(title: LocalizedString("menu_main_settings"), image: #imageLiteral(resourceName: "settings"))

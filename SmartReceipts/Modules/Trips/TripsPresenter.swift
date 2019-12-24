@@ -11,17 +11,27 @@ import Viperit
 import RxSwift
 import UserNotifications
 
+protocol TripsModuleInterface {
+    var tripSelected: Observable<WBTrip> { get }
+}
+
 class TripsPresenter: Presenter {
-    
-    let tripDetailsSubject = PublishSubject<WBTrip>()
+    let tripSelectedSubject = PublishSubject<WBTrip>()
     let tripEditSubject = PublishSubject<WBTrip>()
     let tripDeleteSubject = PublishSubject<WBTrip>()
+    
     private(set) var lastOpenedTrip: WBTrip?
     
     private let bag = DisposeBag()
     
     override func viewHasLoaded() {
         interactor.configureSubscribers()
+        
+        tripSelectedSubject
+            .do(onNext: { WBPreferences.markLastOpened(trip: $0) })
+            .subscribe(onNext: { _ in
+                self.router.dismiss()
+            }).disposed(by: bag)
         
         view.addButtonTap
             .subscribe(onNext: {
@@ -38,21 +48,10 @@ class TripsPresenter: Presenter {
                 self.router.openPrivacySettings()
             }).disposed(by: bag)
         
-        tripDetailsSubject
-            .do(onNext: { [unowned self] trip in
-                self.interactor.markLastOpened(trip: trip)
-            }).subscribe(onNext: { trip in
-                self.router.openDetails(trip: trip)
-            }).disposed(by: bag)
-        
         tripEditSubject
             .subscribe(onNext: { trip in
                 self.router.openEdit(trip: trip)
             }).disposed(by: bag)
-    }
-    
-    override func viewIsAboutToAppear() {
-        lastOpenedTrip = interactor.lastOpenedTrip
     }
     
     func presentAddTrip() {
@@ -61,6 +60,12 @@ class TripsPresenter: Presenter {
     
     func fetchedModelAdapter() -> FetchedModelAdapter? {
         return interactor.fetchedModelAdapter()
+    }
+}
+
+extension TripsPresenter: TripsModuleInterface {
+    var tripSelected: Observable<WBTrip> {
+        return tripSelectedSubject
     }
 }
 

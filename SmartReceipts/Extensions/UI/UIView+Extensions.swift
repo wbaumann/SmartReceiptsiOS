@@ -24,4 +24,8 @@ extension UIView {
             return .zero
         }
     }
+    
+    class func initFromNib() -> Self {
+        return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?[0] as! Self
+    }
 }

@@ -26,6 +26,7 @@ def pods
     pod 'RxCocoa'
     pod 'RxDataSources'
     pod 'RxOptional'
+    pod 'RxGesture'
     pod 'Moya/RxSwift'
     
     # Utilites

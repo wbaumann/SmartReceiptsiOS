@@ -8,6 +8,8 @@
 
 typealias LanguageAlias = (name: String, identifier: String)
 
+private let LAST_OPENED_TRIP_KEY = "LastOpenedTripKey"
+
 extension WBPreferences {
     static func prefferedPDFSize() -> PDFPageSize {
         if let index = Int(string: preferredRawPDFSize()) {
@@ -55,6 +57,15 @@ extension WBPreferences {
     
     @objc class func localized(key: String) -> String {
         return WBPreferences.localized(key: key, comment: "")
+    }
+    
+    static func markLastOpened(trip: WBTrip) {
+        UserDefaults.standard.set(trip.name, forKey: LAST_OPENED_TRIP_KEY)
+    }
+    
+    static var lastOpenedTrip: WBTrip? {
+        guard let tripName = UserDefaults.standard.value(forKey: LAST_OPENED_TRIP_KEY) as? String else { return nil }
+        return Database.sharedInstance().tripWithName(tripName)
     }
 }
 

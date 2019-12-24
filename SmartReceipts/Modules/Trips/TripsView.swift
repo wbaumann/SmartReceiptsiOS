@@ -45,7 +45,6 @@ final class TripsView: FetchedTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         tableView.reloadData()
     }
     
@@ -120,7 +119,7 @@ final class TripsView: FetchedTableViewController {
     override func configureCell(cell: UITableViewCell, item: Any) {
         let pCell = cell as! TripCell
         let trip = item as! WBTrip
-        let selected = presenter.lastOpenedTrip?.objectId == trip.objectId
+        let selected = WBPreferences.lastOpenedTrip?.objectId == trip.objectId
         pCell.configure(trip: trip, selected: selected)
     }
     
@@ -129,7 +128,7 @@ final class TripsView: FetchedTableViewController {
         guard let fetchedModelAdapter = adapter else { return }
         
         fetchedModelAdapter.rx.didInsert.subscribe(onNext: { [unowned self] action in
-            self.presenter.tripDetailsSubject.onNext(action.object as! WBTrip)
+            self.presenter.tripSelectedSubject.onNext(action.object as! WBTrip)
         }).disposed(by: bag)
     }
     
@@ -139,7 +138,7 @@ final class TripsView: FetchedTableViewController {
     
     override func tappedObject(_ tapped: Any, indexPath: IndexPath) {
         let trip = tapped as! WBTrip
-        isEditing ? presenter.tripEditSubject.onNext(trip) : presenter.tripDetailsSubject.onNext(trip)
+        isEditing ? presenter.tripEditSubject.onNext(trip) : presenter.tripSelectedSubject.onNext(trip)
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {

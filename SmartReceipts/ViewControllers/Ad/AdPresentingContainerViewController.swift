@@ -127,8 +127,7 @@ class AdNavigationEntryPoint: UINavigationController {
      static fileprivate(set) var navigationController: UINavigationController?
     
     override func viewDidLoad() {
-        let module = AppModules.trips.build()
         AdNavigationEntryPoint.navigationController = self
-        show(module.view.viewController, sender: nil)
+        show(TripTabBarViewController.create(), sender: nil)
     }
 }

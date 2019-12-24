@@ -25,23 +25,18 @@ class QuickActionService {
     }
     
     func configureQuickActions() {
-        UIApplication.shared.shortcutItems = lastOpenedTrip == nil ?
+        UIApplication.shared.shortcutItems = WBPreferences.lastOpenedTrip == nil ?
             [] : [.init(action: .camera), .init(action: .text), .init(action: .import)]
     }
     
     func performAction(action: QuickAction) {
-        if lastOpenedTrip == nil { return }
+        if WBPreferences.lastOpenedTrip == nil { return }
         
         switch action {
         case .camera: openCreatePhotoReceipt()
         case .text: openCreateTextReceipt()
         case .import: openImportReceiptFile()
         }
-    }
-    
-    private var lastOpenedTrip: WBTrip? {
-        guard let tripName = UserDefaults.standard.value(forKey: LAST_OPENED_TRIP_KEY) as? String else { return nil }
-        return Database.sharedInstance().tripWithName(tripName)
     }
     
     private func openCreatePhotoReceipt() {
@@ -80,7 +75,7 @@ class QuickActionService {
     
     private func openCreateTextReceipt() {
         let receipt: WBReceipt? = nil
-        let data = (trip: lastOpenedTrip, receipt: receipt)
+        let data = (trip: WBPreferences.lastOpenedTrip, receipt: receipt)
         openEditModuleWith(data: data)
     }
     
@@ -93,7 +88,7 @@ class QuickActionService {
     }
     
     private func openEditModule(with scan: ScanResult) {
-        let data = (trip: lastOpenedTrip, scan: scan)
+        let data = (trip: WBPreferences.lastOpenedTrip, scan: scan)
         openEditModuleWith(data: data)
     }
 }
