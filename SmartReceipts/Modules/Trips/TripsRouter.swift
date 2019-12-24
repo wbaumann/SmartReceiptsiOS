@@ -33,11 +33,6 @@ class TripsRouter: Router {
         openEditTrip(nil)
     }
     
-    func openDetails(trip: WBTrip) {
-        let tabBarViewController = TripTabBarViewController.create(trip: trip)
-        _view.viewController.navigationController?.pushViewController(tabBarViewController, animated: true)
-    }
-    
     func openNoTrips() {
         let vc = moduleStoryboard.instantiateViewController(withIdentifier: "NoTrips")
         _view.viewController.splitViewController?.show(vc, sender: nil)

@@ -21,7 +21,8 @@ protocol ReceiptsViewInterface {
 final class ReceiptsView: FetchedTableViewController {
     static var sharedInputCache = [String: Date]()
     
-    private static let CELL_ID = "Cell"
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var subtitleLabel: UILabel!
     
     private var _imageForCreatorSegue: UIImage!
     private var _receiptForCreatorSegue: WBReceipt!
@@ -40,6 +41,7 @@ final class ReceiptsView: FetchedTableViewController {
         super.viewDidLoad()
         tableView.delegate = self
         
+        titleLabel.text = LocalizedString("report_info_receipts")
         tableView.register(headerFooter: ReceiptsSectionHeader.self)
         
         ReceiptsView.sharedInputCache = [String: Date]()
@@ -99,6 +101,7 @@ final class ReceiptsView: FetchedTableViewController {
     override func contentChanged() {
         super.contentChanged()
         presenter.contentChanged.onNext(())
+        subtitleLabel.text = String(format: LocalizedString("next_id"), Database.sharedInstance()!.nextReceiptID())
     }
     
     override func delete(object: Any!, at indexPath: IndexPath) {

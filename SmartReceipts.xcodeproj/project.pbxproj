@@ -58,6 +58,8 @@
 		7109B00F1F61C35F0043AE04 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109B00E1F61C35F0043AE04 /* UserDefaults+Extensions.swift */; };
 		710A33DF1F8282D100D10344 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710A33DB1F827E2500D10344 /* PurchaseService.swift */; };
 		710A33E11F82CCCE00D10344 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710A33E01F82CCCE00D10344 /* StoreKit.framework */; };
+		710BCA0323B021F100ACF50B /* TripTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 710BCA0223B021F100ACF50B /* TripTitleView.xib */; };
+		710BCA0523B021FF00ACF50B /* TripTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710BCA0423B021FF00ACF50B /* TripTitleView.swift */; };
 		710D458A219384F9005463F7 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D4589219384F9005463F7 /* APIProvider.swift */; };
 		710D98A21FE573540088B9BA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D98A11FE573540088B9BA /* UIView+Extensions.swift */; };
 		710DCEA71F7444C000C08C43 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710DCEA61F7444C000C08C43 /* User.swift */; };
@@ -689,6 +691,8 @@
 		710B813B1F1B6FFD000C97C4 /* ColumnsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnsModuleTest.swift; sourceTree = "<group>"; };
 		710B813D1F1B7074000C97C4 /* CategoriesModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesModuleTest.swift; sourceTree = "<group>"; };
 		710B813F1F1B708F000C97C4 /* PaymentMethodsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodsModuleTest.swift; sourceTree = "<group>"; };
+		710BCA0223B021F100ACF50B /* TripTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripTitleView.xib; sourceTree = "<group>"; };
+		710BCA0423B021FF00ACF50B /* TripTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTitleView.swift; sourceTree = "<group>"; };
 		710D4589219384F9005463F7 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		710D98A11FE573540088B9BA /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		710DCEA61F7444C000C08C43 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -1457,6 +1461,15 @@
 				570515A21E02EB5500BB8FE4 /* Event+Categories.swift */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		710BCA0123B021C600ACF50B /* TripTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				710BCA0223B021F100ACF50B /* TripTitleView.xib */,
+				710BCA0423B021FF00ACF50B /* TripTitleView.swift */,
+			);
+			path = TripTitleView;
 			sourceTree = "<group>";
 		};
 		7111AD9E1F0EC37300DF77ED /* Settings */ = {
@@ -2805,6 +2818,7 @@
 			isa = PBXGroup;
 			children = (
 				713D35451EDA334300D8563D /* Ad */,
+				710BCA0123B021C600ACF50B /* TripTitleView */,
 				71FE9FF31F477F620043E7B4 /* FetchedTableViewController.swift */,
 				A758CE931D01760C00169C7C /* QuickAlertPresenter.swift */,
 				710E587421386BAB00AAFC77 /* TooltipPresenter.swift */,
@@ -3093,6 +3107,7 @@
 				EA22679F1B1E035F005761E7 /* ReceiptCell.xib in Resources */,
 				EA2B8D881B4EF44B0043A84B /* TripReportHeader.xib in Resources */,
 				4D66E956219630C800065140 /* Localizable.strings in Resources */,
+				710BCA0323B021F100ACF50B /* TripTitleView.xib in Resources */,
 				EA40DC701B555CFE003BF545 /* FullPagePDFPageView.xib in Resources */,
 				71E8F3F51FA12452005BD447 /* OCRConfiguration.storyboard in Resources */,
 				716F344D1EE040E100D0017A /* EditDistance.storyboard in Resources */,
@@ -3184,6 +3199,7 @@
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
@@ -3213,6 +3229,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
@@ -3392,6 +3409,7 @@
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
@@ -3424,6 +3442,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
@@ -3689,6 +3708,7 @@
 				EA8ABE421B1A1D1700DBFA29 /* Database+Categories.m in Sources */,
 				71E2E58120E0132B00BDE501 /* GoogleDriveService.swift in Sources */,
 				71572D881F15EA41001A1301 /* ColumnsPresenter.swift in Sources */,
+				710BCA0523B021FF00ACF50B /* TripTitleView.swift in Sources */,
 				EAE9DAFD1AF8EAD100F4FE76 /* DistanceCommentColumn.m in Sources */,
 				EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */,
 				716138BF1FD1BCAD00C73FB9 /* FullPagePDFImageView.swift in Sources */,
