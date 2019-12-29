@@ -22,19 +22,22 @@ class TripDistancesView: FetchedTableViewController {
     private var maxRateWidth: CGFloat = 0
     
     private let bag = DisposeBag()
-    @IBOutlet private weak var doneButtonItem: UIBarButtonItem?
+    
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var subtitleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = LocalizedString("report_info_distance")
         setPresentationCellNib(DistanceCell.viewNib())
-        configureUIActions()
         
         let notifications = [AppNotificationCenter.syncProvider.asVoid(), AppNotificationCenter.didSyncBackup]
         Observable<Void>.merge(notifications)
             .subscribe(onNext: { [weak self] in
                 self?.tableView.reloadData()
             }).disposed(by: bag)
+        
+        titleLabel.text = LocalizedString("report_info_distance")
+        updateSubtitle()
     }
     
     override func createFetchedModelAdapter() -> FetchedModelAdapter? {
@@ -43,6 +46,12 @@ class TripDistancesView: FetchedTableViewController {
 
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+    }
+    
+    private func updateSubtitle() {
+        let distances = fetchedItems as! [Distance]
+        let totalMileage = distances.reduce(NSDecimalNumber.zero, { result, distance in result.adding(distance.distance)})
+        subtitleLabel.text = LocalizedString("total") + ": \(totalMileage)"
     }
     
     func findMaxRateWidth() -> CGFloat {
@@ -70,6 +79,7 @@ class TripDistancesView: FetchedTableViewController {
             dsCell.setPriceLabelWidth(maxRateWidth)
         }
         presenter.contentChanged.onNext(())
+        updateSubtitle()
     }
     
     override func configureCell(cell: UITableViewCell, item: Any) {
@@ -92,14 +102,6 @@ class TripDistancesView: FetchedTableViewController {
     
     override func tappedObject(_ tapped: Any, indexPath: IndexPath) {
         showEditDistance(with: (trip, tapped as? Distance))
-    }
-    
-    //MARK: Actions
-    private func configureUIActions() {
-        doneButtonItem?.rx.tap.subscribe(onNext: { [weak self] in
-            self?.dismiss(animated: true, completion: nil)
-        }).disposed(by: bag)
-        
     }
     
     //MARK: Private
