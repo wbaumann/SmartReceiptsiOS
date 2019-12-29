@@ -102,8 +102,7 @@ private extension TripTabBarViewController {
     private func showTrips(animated: Bool) {
         let module = AppModules.trips.build()
         let nav = UINavigationController(rootViewController: module.view.viewController)
-        nav.modalPresentationStyle = .fullScreen
-        nav.modalTransitionStyle = .flipHorizontal
+        nav.modalPresentationStyle = animated ? .formSheet : .fullScreen
         present(nav, animated: animated, completion: nil)
         module.interface(TripsModuleInterface.self).tripSelected
             .subscribe(onNext: { [weak self] trip in

@@ -381,6 +381,8 @@
 		71D7D4401FAA079800437CA9 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7D43F1FAA079800437CA9 /* ScanResult.swift */; };
 		71D7FA372304AAA8001F36E1 /* UIStructs+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7FA362304AAA8001F36E1 /* UIStructs+Extensions.swift */; };
 		71D7FA3A2304B64A001F36E1 /* BorderedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7FA392304B64A001F36E1 /* BorderedLabel.swift */; };
+		71D8005323B9161B002CBC9E /* GenerateReportHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8005223B9161B002CBC9E /* GenerateReportHeaderView.swift */; };
+		71D8005523B91624002CBC9E /* GenerateReportHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71D8005423B91624002CBC9E /* GenerateReportHeaderView.xib */; };
 		71DF3A801F509512000CD1D6 /* NotifyMasterSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF3A7F1F509512000CD1D6 /* NotifyMasterSplitViewController.swift */; };
 		71E090F31F2F994B00C825A8 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E090F21F2F994B00C825A8 /* FileManager+Extensions.swift */; };
 		71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E2B5751EEDD516001D02F1 /* Trips.storyboard */; };
@@ -1008,6 +1010,8 @@
 		71D7D43F1FAA079800437CA9 /* ScanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResult.swift; sourceTree = "<group>"; };
 		71D7FA362304AAA8001F36E1 /* UIStructs+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStructs+Extensions.swift"; sourceTree = "<group>"; };
 		71D7FA392304B64A001F36E1 /* BorderedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedLabel.swift; sourceTree = "<group>"; };
+		71D8005223B9161B002CBC9E /* GenerateReportHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateReportHeaderView.swift; sourceTree = "<group>"; };
+		71D8005423B91624002CBC9E /* GenerateReportHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateReportHeaderView.xib; sourceTree = "<group>"; };
 		71DF3A7F1F509512000CD1D6 /* NotifyMasterSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifyMasterSplitViewController.swift; sourceTree = "<group>"; };
 		71E090F21F2F994B00C825A8 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		71E2B5751EEDD516001D02F1 /* Trips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trips.storyboard; sourceTree = "<group>"; };
@@ -1912,6 +1916,7 @@
 		7190D43C1EE8891F0081CB22 /* Generate Report */ = {
 			isa = PBXGroup;
 			children = (
+				71D8005623B9162D002CBC9E /* Header */,
 				7190D4491EE88CC40081CB22 /* GenerateReport.storyboard */,
 				7190D44A1EE88CC40081CB22 /* GenerateReportDisplayData.swift */,
 				7190D44B1EE88CC40081CB22 /* GenerateReportInteractor.swift */,
@@ -2117,6 +2122,15 @@
 				71D7FA392304B64A001F36E1 /* BorderedLabel.swift */,
 			);
 			path = VIews;
+			sourceTree = "<group>";
+		};
+		71D8005623B9162D002CBC9E /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				71D8005423B91624002CBC9E /* GenerateReportHeaderView.xib */,
+				71D8005223B9161B002CBC9E /* GenerateReportHeaderView.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		71DDC2C21EEDBEAA00CFFDBC /* Trips */ = {
@@ -3095,6 +3109,7 @@
 				7111ADA51F0EC38100DF77ED /* Settings.storyboard in Resources */,
 				719B1FE81EF6032D0049BD71 /* EditReceipt.storyboard in Resources */,
 				71572D851F15EA41001A1301 /* Columns.storyboard in Resources */,
+				71D8005523B91624002CBC9E /* GenerateReportHeaderView.xib in Resources */,
 				71CC1B8721143BBC003D7056 /* BackupItemView.xib in Resources */,
 				7167239B1F10540200400BFF /* CustomSegmentedCell.xib in Resources */,
 				717DDB95203B5503000486C3 /* PickerButtonCell.xib in Resources */,
@@ -3846,6 +3861,7 @@
 				71E3CCE4207E9E8900C7FF2D /* TimeInterval+Extensions.swift in Sources */,
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				71F6251E20FBE395009B777C /* GoogleSyncService.swift in Sources */,
+				71D8005323B9161B002CBC9E /* GenerateReportHeaderView.swift in Sources */,
 				716F07DF2034AFDF00166D63 /* BackupPresenter.swift in Sources */,
 				718AAC15212039EA00290183 /* ReceiptCell.swift in Sources */,
 				71628C21204EF8330032EEB7 /* NumberKeyboard.swift in Sources */,
