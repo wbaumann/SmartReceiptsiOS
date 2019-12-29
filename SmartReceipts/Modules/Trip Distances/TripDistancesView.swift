@@ -28,6 +28,8 @@ class TripDistancesView: FetchedTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.separatorInset = .zero
         setPresentationCellNib(DistanceCell.viewNib())
         
         let notifications = [AppNotificationCenter.syncProvider.asVoid(), AppNotificationCenter.didSyncBackup]

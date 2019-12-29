@@ -40,6 +40,7 @@ final class ReceiptsView: FetchedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
+        tableView.separatorInset = .zero
         
         titleLabel.text = LocalizedString("report_info_receipts")
         tableView.register(headerFooter: ReceiptsSectionHeader.self)
