@@ -17,45 +17,35 @@ class ReceiptFilePicker: NSObject {
     static let sharedInstance = ReceiptFilePicker()
     fileprivate var pickSubject: PublishSubject<ReceiptDocument>?
     fileprivate var openedViewController: UIViewController?
+    var bag = DisposeBag()
     
     private let allowedTypes = [JPEG_TYPE, PNG_TYPE, PDF_TYPE]  //Temporarily disabled pdf imports from the "Files" screen for `Issue 5`
     
     private override init() {}
     
     func openFilePicker(on viewController: UIViewController) -> Observable<ReceiptDocument> {
+        bag = DisposeBag()
         pickSubject = PublishSubject<ReceiptDocument>()
         if #available(iOS 11.0, *) {
-            let title = LocalizedString("receipt_import_action_sheet_title")
-            let actionFilesTitle = LocalizedString("receipt_import_action_files")
-            let actionCameraRollTitle = LocalizedString("receipt_import_action_camera_roll")
-            let cancelActionTitle = LocalizedString("DIALOG_CANCEL")
+            let sheet = ActionSheet()
             
-            let actionSheet = UIAlertController(title: nil, message: title, preferredStyle: .actionSheet)
-            
-            actionSheet.addAction(UIAlertAction(title: actionCameraRollTitle, style: .default, handler: { _ in
-                self.openedViewController = self.imagePicker()
-                self.openPicker(on: viewController)
-            }))
-            
-            actionSheet.addAction(UIAlertAction(title: actionFilesTitle, style: .default, handler: { _ in
-                let fvc = UIDocumentPickerViewController(documentTypes: self.allowedTypes, in: .open)
-                fvc.delegate = self
-                UINavigationBar.appearance().tintColor = AppTheme.primaryColor
-                self.openedViewController = fvc
-                self.openPicker(on: viewController)
-            }))
-            
-            actionSheet.addAction(UIAlertAction(title: cancelActionTitle, style: .destructive, handler: nil))
-            
-            if let popoverController = actionSheet.popoverPresentationController {
-                let sourceView = viewController.view!
-                popoverController.sourceView = sourceView
-                popoverController.sourceRect = CGRect(x: sourceView.bounds.midX, y: sourceView.bounds.midY, width: 0, height: 0)
-                popoverController.permittedArrowDirections = []
-            }
-            
-            viewController.present(actionSheet, animated: true, completion: nil)
-            
+            sheet.addAction(title: LocalizedString("receipt_import_action_camera_roll"), image: #imageLiteral(resourceName: "gallery"))
+                .subscribe(onNext: { [weak self] _ in
+                    self?.openedViewController = self?.imagePicker()
+                    self?.openPicker(on: viewController)
+                }).disposed(by: bag)
+                
+            sheet.addAction(title: LocalizedString("receipt_import_action_files"), image: #imageLiteral(resourceName: "file-plus"))
+                .subscribe(onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    let fvc = UIDocumentPickerViewController(documentTypes: self.allowedTypes, in: .open)
+                    fvc.delegate = self
+                    UINavigationBar.appearance().tintColor = AppTheme.primaryColor
+                    self.openedViewController = fvc
+                    self.openPicker(on: viewController)
+                }).disposed(by: bag)
+                
+            sheet.show()
         } else {
             openedViewController = imagePicker()
             openPicker(on: viewController)

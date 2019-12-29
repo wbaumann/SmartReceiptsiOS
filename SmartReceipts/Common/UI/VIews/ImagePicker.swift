@@ -14,6 +14,8 @@ private let COMPRESSION_RATIO: CGFloat = 0.95
 
 class ImagePicker: NSObject {
     static let shared = ImagePicker()
+    
+    private var bag = DisposeBag()
     private override init() {}
     
     private var singleObserver: ((SingleEvent<UIImage>) -> ())?
@@ -28,33 +30,25 @@ class ImagePicker: NSObject {
     //MARK: - Interface
     
     func presentPicker(on viewController: UIViewController) -> Single<UIImage> {
+        bag = DisposeBag()
+        
         let hasCamera = UIImagePickerController.isSourceTypeAvailable(.camera)
         if !hasCamera {
             return presentPicker(on: viewController, source: .photoLibrary)
         }
         
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        actionSheet.addAction(.init(title: LocalizedString("receipt_attach_photo"), style: .default) { [weak self] _ in
-            self?.presentPicker(on: viewController, source: .camera)
-        })
-       
-        actionSheet.addAction(.init(title: LocalizedString("receipt_attach_image"), style: .default) { [weak self] _ in
-            self?.presentPicker(on: viewController, source: .photoLibrary)
-        })
-        
-        actionSheet.addAction(.init(title: LocalizedString("DIALOG_CANCEL"), style: .cancel) { [weak self] _ in
-            self?.singleObserver = nil
-        })
-        
-        if let popover = actionSheet.popoverPresentationController {
-            let view = viewController.view
-            popover.sourceView = view
-            popover.sourceRect = CGRect(x: view!.bounds.midX, y: view!.bounds.midY, width: 0, height: 0)
-            popover.permittedArrowDirections = .init(rawValue: 0)
-        }
-        
-        viewController.present(actionSheet, animated: true, completion: nil)
+        let sheet = ActionSheet()
+        sheet.addAction(title: LocalizedString("receipt_attach_photo"), image: #imageLiteral(resourceName: "camera"))
+            .subscribe(onNext: { [weak self] _ in
+                self?.presentPicker(on: viewController, source: .camera)
+            }).disposed(by: bag)
+            
+        sheet.addAction(title: LocalizedString("receipt_attach_image"), image: #imageLiteral(resourceName: "gallery"))
+            .subscribe(onNext: { [weak self] _ in
+                self?.presentPicker(on: viewController, source: .photoLibrary)
+            }).disposed(by: bag)
+            
+        sheet.show()
         
         return result()
     }
