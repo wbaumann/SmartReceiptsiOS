@@ -25,7 +25,7 @@ class ScanServiceTests: XCTestCase {
     let notificationVar = BehaviorRelay(value: RecognitionNotification(code: 10, message: "success"))
     let mockID = "1"
     var mockURL: URL!
-    let mockImage = #imageLiteral(resourceName: "launch_image")
+    let mockImage = #imageLiteral(resourceName: "generate_pdf")
     var receiptDocument: ReceiptDocument!
     
     
@@ -106,7 +106,7 @@ class ScanServiceTests: XCTestCase {
     }
     
     func testAuthLogin() {
-        let emptyScan = ScanResult(image: #imageLiteral(resourceName: "launch_image"))
+        let emptyScan = ScanResult(image: #imageLiteral(resourceName: "generate_pdf"))
         let scan1 = try! scanService.scan(document: receiptDocument).toBlocking().first()!
         authService.isLoggedInValue = false
         let scan2 = try! scanService.scan(document: receiptDocument).toBlocking().first()!

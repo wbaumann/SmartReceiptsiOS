@@ -22,7 +22,6 @@ class ReceiptsModuleTest: XCTestCase {
     
     var trip: WBTrip?
     let bag = DisposeBag()
-    let actionsPresneter = ReceiptActionsPresenter()
     
     override func setUp() {
         super.setUp()
@@ -47,14 +46,20 @@ class ReceiptsModuleTest: XCTestCase {
         r._presenter = presenter
         
         configureStubs()
+        setupData()
+        presenter._view.viewController.loadViewIfNeeded()
+    }
+    
+    private func setupData() {
+        let trip = WBTrip()
+        trip.name = "tripName"
+
+        presenter.setupView(data:trip)
     }
     
     func configureStubs() {
         stub(router) { mock in
             mock.openCreateReceipt().thenDoNothing()
-            mock.openActions(receipt: WBReceipt()).then({ _ -> ReceiptActionsPresenter in
-                return self.actionsPresneter
-            })
             mock.openCreatePhotoReceipt().thenDoNothing()
             mock.openPDFViewer(for: WBReceipt()).thenDoNothing()
             mock.openImageViewer(for: WBReceipt()).thenDoNothing()
@@ -66,8 +71,6 @@ class ReceiptsModuleTest: XCTestCase {
             mock.swapUpReceipt(WBReceipt()).thenDoNothing()
             mock.swapDownReceipt(WBReceipt()).thenDoNothing()
             mock.distanceReceipts().then({ [WBReceipt]() })
-            mock.titleSubtitle().then({ ("title", "subtitle") })
-        
         }
     }
     
@@ -76,11 +79,6 @@ class ReceiptsModuleTest: XCTestCase {
     }
     
     func testPresenterToRouter() {
-        let trip = WBTrip()
-        trip.name = "tripName"
-        
-        presenter.setupView(data:trip)
-        
         presenter.createReceiptCameraSubject.onNext(())
         presenter.importReceiptFileSubject.onNext(())
         presenter.createReceiptTextSubject.onNext(())
@@ -91,19 +89,13 @@ class ReceiptsModuleTest: XCTestCase {
     }
     
     func testPresenterToInteractor() {
-        let ts = presenter.titleSubtitle
-        XCTAssertTrue(ts.title == "title")
-        XCTAssertTrue(ts.subtitle == "subtitle")
+        let receipt = WBReceipt()
         
-        presenter.viewHasLoaded()
-        presenter.receiptActionsSubject.onNext(WBReceipt())
-        
-        actionsPresneter.actionTap.onNext(.swapUp)
-        actionsPresneter.actionTap.onNext(.swapDown)
+        presenter.receiptActionRelay.accept((receipt, .swapDown))
+        presenter.receiptActionRelay.accept((receipt, .swapUp))
         
         verify(interactor).swapDownReceipt(WBReceipt())
         verify(interactor).swapUpReceipt(WBReceipt())
-        verify(interactor).titleSubtitle()
     }
     
 }

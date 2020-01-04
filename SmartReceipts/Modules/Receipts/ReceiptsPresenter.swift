@@ -20,6 +20,7 @@ class ReceiptsPresenter: Presenter {
     let importReceiptFileSubject = PublishSubject<Void>()
     let contentChanged = PublishSubject<Void>()
     let viewReceiptAttachmentTap = PublishSubject<Void>()
+    let receiptActionRelay = PublishRelay<(WBReceipt, ReceiptAction)>()
     
     let bag = DisposeBag()
     
@@ -38,6 +39,10 @@ class ReceiptsPresenter: Presenter {
         
         receiptActionsSubject
             .flatMap { receipt in ReceiptActionSheet(receipt: receipt).show().map { (receipt, $0) } }
+            .bind(to: receiptActionRelay)
+            .disposed(by: bag)
+            
+        receiptActionRelay
             .subscribe(onNext: { [weak self] receipt, action in
                 switch action {
                 case .edit: self?.router.openEdit(receipt: receipt)

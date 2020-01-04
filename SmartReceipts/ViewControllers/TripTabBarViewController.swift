@@ -208,5 +208,3 @@ extension TripTabBarViewController {
         static let actionTag = -2
     }
 }
-
-typealias TitleSubtitle = (String, String?)
