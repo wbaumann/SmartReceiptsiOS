@@ -15,7 +15,7 @@ public class CustomSegmentedCell: Cell<Int>, CellType {
     public override func setup() {
         super.setup()
         super.selectionStyle = .none
-        height = { 52 }
+        height = { 58 }
     }
     
     public override func update() {

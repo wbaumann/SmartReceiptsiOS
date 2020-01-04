@@ -13,10 +13,4 @@ class DistanceCell: SyncableTableCell {
     @IBOutlet private(set) weak var destinationLabel: UILabel!
     @IBOutlet private(set) weak var totalLabel: UILabel!
     @IBOutlet private(set) weak var dateLabel: UILabel!
-    @IBOutlet private(set) weak var priceWidthConstraint: NSLayoutConstraint!
-    
-    func setPriceLabelWidth(_ width: CGFloat) {
-        priceWidthConstraint.constant = width
-        layoutIfNeeded()
-    }
 }

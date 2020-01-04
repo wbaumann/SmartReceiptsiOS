@@ -7502,21 +7502,6 @@ import Viperit
     
     
     
-     override func openDebug()  {
-        
-    return cuckoo_manager.call("openDebug()",
-            parameters: (),
-            escapingParameters: (),
-            superclassCall:
-                
-                super.openDebug()
-                ,
-            defaultCall: __defaultImplStub!.openDebug())
-        
-    }
-    
-    
-    
      override func openEdit(trip: WBTrip)  {
         
     return cuckoo_manager.call("openEdit(trip: WBTrip)",
@@ -7574,11 +7559,6 @@ import Viperit
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openPrivacySettings()", parameterMatchers: matchers))
 	    }
 	    
-	    func openDebug() -> Cuckoo.ClassStubNoReturnFunction<()> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openDebug()", parameterMatchers: matchers))
-	    }
-	    
 	    func openEdit<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.ClassStubNoReturnFunction<(WBTrip)> where M1.MatchedType == WBTrip {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openEdit(trip: WBTrip)", parameterMatchers: matchers))
@@ -7617,12 +7597,6 @@ import Viperit
 	    }
 	    
 	    @discardableResult
-	    func openDebug() -> Cuckoo.__DoNotUse<(), Void> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("openDebug()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
 	    func openEdit<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.__DoNotUse<(WBTrip), Void> where M1.MatchedType == WBTrip {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
 	        return cuckoo_manager.verify("openEdit(trip: WBTrip)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
@@ -7650,10 +7624,6 @@ import Viperit
 
     
      override func openPrivacySettings()   {
-        return DefaultValueRegistry.defaultValue(for: (Void).self)
-    }
-    
-     override func openDebug()   {
         return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     

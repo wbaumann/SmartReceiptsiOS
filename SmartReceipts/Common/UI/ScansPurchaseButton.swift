@@ -22,13 +22,15 @@ class ScansPurchaseButton: UIButton {
         
         rx.controlEvent(.touchDown)
             .subscribe(onNext: { [unowned self] in
-                self.backgroundColor  = AppTheme.buttonStyle1PressedColor
+                self.backgroundColor  = UIColor.srViolet2.withAlphaComponent(0.8)
             }).disposed(by: bag)
     
-        rx.controlEvent([.touchUpInside, .touchUpOutside])
+        rx.controlEvent([.touchUpInside, .touchUpOutside, .touchCancel])
             .subscribe(onNext: { [unowned self] in
-                self.backgroundColor  = AppTheme.buttonStyle1NormalColor
+                self.backgroundColor  = .srViolet2
             }).disposed(by: bag)
+        
+        apply(style: .mainBig)
     }
     
     func setScans(count: Int) {

@@ -19,7 +19,6 @@ protocol TripDistancesViewInterface {
 //MARK: TripDistances View
 class TripDistancesView: FetchedTableViewController {
     private let dateFormatter = DateFormatter()
-    private var maxRateWidth: CGFloat = 0
     
     private let bag = DisposeBag()
     
@@ -51,22 +50,11 @@ class TripDistancesView: FetchedTableViewController {
     }
     
     private func updateSubtitle() {
+        subtitleLabel.text = nil
         let distances = fetchedItems as! [Distance]
+        guard distances.isNotEmpty else { return }
         let totalMileage = distances.reduce(NSDecimalNumber.zero, { result, distance in result.adding(distance.distance)})
         subtitleLabel.text = LocalizedString("total") + ": \(totalMileage)"
-    }
-    
-    func findMaxRateWidth() -> CGFloat {
-        var max: CGFloat = 0
-        for row in 0..<itemsCount {
-            guard let distance = objectAtIndexPath(IndexPath(row: row, section: 0)) as? Distance else { continue }
-            let distanceString = Price.stringFrom(amount: distance.distance)
-            let bounds = distanceString.boundingRect(with: CGSize(width: 1000, height: 100), options: .usesDeviceMetrics,
-             attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 21)], context: nil)
-            
-            max = CGFloat.maximum(max, bounds.width + 10)
-        }
-        return max
     }
     
     override var placeholderTitle: String {
@@ -75,23 +63,18 @@ class TripDistancesView: FetchedTableViewController {
     
     override func contentChanged() {
         super.contentChanged()
-        maxRateWidth = findMaxRateWidth()
-        for cell in tableView.visibleCells {
-            guard let dsCell = cell as? DistanceCell else { continue }
-            dsCell.setPriceLabelWidth(maxRateWidth)
-        }
         presenter.contentChanged.onNext(())
         updateSubtitle()
     }
     
     override func configureCell(cell: UITableViewCell, item: Any) {
         guard let distanceCell = cell as? DistanceCell, let distance = item as? Distance else { return }
+        
         dateFormatter.configure(timeZone: distance.timeZone!)
         distanceCell.distanceLabel.text = Price.stringFrom(amount: distance.distance)
         distanceCell.destinationLabel.text = distance.location;
         distanceCell.totalLabel.text = distance.totalRate().mileageRateCurrencyFormattedPrice()
         distanceCell.dateLabel.text = dateFormatter.string(from: distance.date)
-        distanceCell.setPriceLabelWidth(maxRateWidth)
         
         let state = ModelSyncState.modelState(modelChangeDate: distance.lastLocalModificationTime)
         distanceCell.setState(state)

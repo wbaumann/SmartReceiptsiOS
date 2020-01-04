@@ -19,7 +19,7 @@ public class InputTextCell: TextCell {
         titleLabel = label
         textFieldColor = valueField.backgroundColor
         super.setup()
-        height = { 52 }
+        height = { 58 }
     }
     
     public override func update() {
