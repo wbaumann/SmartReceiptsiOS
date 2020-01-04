@@ -133,6 +133,12 @@ private extension TripTabBarViewController {
             .subscribe(onNext: { [weak self] in self?.openUserGuide() })
             .disposed(by: bag)
         
+        #if DEBUG
+        actionSheet.addAction(title: "DEBUG", image: #imageLiteral(resourceName: "alert-triangle"), style: .destructive)
+            .subscribe(onNext: { [weak self] in self?.openDebug() })
+            .disposed(by: bag)
+        #endif
+
         actionSheet.show()
     }
     
@@ -180,6 +186,11 @@ private extension TripTabBarViewController {
         AnalyticsManager.sharedManager.record(event: Event.Navigation.OcrConfiguration)
         let safari = SFSafariViewController(url: URL(string: USER_GUIDE_URL)!, entersReaderIfAvailable: true)
         present(safari, animated: true, completion: nil)
+    }
+    
+    func openDebug() {
+        let module = AppModules.debug.build()
+        present(UINavigationController(rootViewController: module.view.viewController), animated: true, completion: nil)
     }
 }
 

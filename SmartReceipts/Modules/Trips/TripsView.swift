@@ -15,13 +15,10 @@ import RxCocoa
 protocol TripsViewInterface {
     var privacyTap: Observable<Void> { get }
     var addButtonTap: Observable<Void> { get }
-    var debugButton: UIBarButtonItem? { get }
 }
 
 //MARK: Trips View
 final class TripsView: FetchedTableViewController {
-    
-    @IBOutlet fileprivate weak var _debugButton: UIBarButtonItem?
     @IBOutlet fileprivate weak var editItem: UIBarButtonItem!
     @IBOutlet fileprivate weak var addItem: UIBarButtonItem!
     
@@ -39,7 +36,6 @@ final class TripsView: FetchedTableViewController {
         title = PurchaseService.hasValidSubscriptionValue ? AppTheme.appTitlePlus : AppTheme.appTitle
         
         configurePrivacyTooltip()
-        configureDebug()
         configureRx()
     }
     
@@ -72,14 +68,6 @@ final class TripsView: FetchedTableViewController {
         editItem.rx.tap.subscribe(onNext: { [unowned self] in
             self.setEditing(!self.isEditing, animated: true)
         }).disposed(by: bag)
-    }
-    
-    private func configureDebug() {
-        #if DEBUG
-            _debugButton?.title = "DEBUG"
-        #else
-            navigationItem.leftBarButtonItem = nil
-        #endif
     }
     
     func configurePrivacyTooltip() {
@@ -156,7 +144,6 @@ final class TripsView: FetchedTableViewController {
 //MARK: - Public interface
 extension TripsView: TripsViewInterface {
     var privacyTap: Observable<Void> { return privacySubject }
-    var debugButton: UIBarButtonItem? { return _debugButton }
     var addButtonTap: Observable<Void> { return addItem.rx.tap.asObservable() }
 }
 
