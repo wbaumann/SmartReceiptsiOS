@@ -21,6 +21,8 @@ class TripTabBarViewController: TabBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.trip = WBPreferences.lastOpenedTrip
+        if let trip = self.trip { setupViewControllers(trip: trip) }
+        
         fetchedModelAdapter = Database.sharedInstance()!.createUpdatingAdapterForAllTrips()
         fetchedModelAdapter.rx.didChangeContent
             .subscribe(onNext: { [weak self] _ in
@@ -34,7 +36,7 @@ class TripTabBarViewController: TabBarViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setToolbarHidden(true, animated: false)
-        trip == nil ? showTrips(animated: false) : setupViewControllers(trip: trip!)
+        if trip == nil { showTrips(animated: false) }
         configureTitle()
     }
     
