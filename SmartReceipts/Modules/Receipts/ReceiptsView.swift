@@ -240,7 +240,7 @@ extension ReceiptsView: UITableViewDelegate {
         let header = tableView.dequeueHeaderFooter(headerFooter: ReceiptsSectionHeader.self)
         let firstReceipt = proxyDataSource.object(at: IndexPath(row: 0, section: section)) as! WBReceipt
         
-        let price = fetchedItems
+        var price = fetchedItems
             .map { $0 as! WBReceipt }
             .filter { $0.sectionDate == firstReceipt.sectionDate }
             .reduce(PricesCollection(), { result, receipt in
@@ -248,7 +248,8 @@ extension ReceiptsView: UITableViewDelegate {
                 return result
             }).currencyFormattedTotalPrice()
         
-
+        price = price.isEmpty ? Price(currencyCode: trip.defaultCurrency.code).currencyFormattedPrice() : price
+        
         return header.configure(title: title, subtitle: price)
         
     }
