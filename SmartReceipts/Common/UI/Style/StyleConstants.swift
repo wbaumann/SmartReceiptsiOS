@@ -9,8 +9,8 @@
 import UIKit
 
 extension UIColor {
-    static var violetMain: UIColor = #colorLiteral(red: 0.2705882353, green: 0.1568627451, blue: 0.6235294118, alpha: 1)
-    static var violetAccent: UIColor = #colorLiteral(red: 0.1882352941, green: 0.1058823529, blue: 0.5725490196, alpha: 1)
+    static var violetMain: UIColor = .srViolet
+    static var violetAccent: UIColor = .srViolet2
 }
 
 extension UIFont {

@@ -31,11 +31,11 @@ class BackupItemView: UIView {
     // MARK: - Actions
     
     @IBAction private func hightlight() {
-        menu.backgroundColor = #colorLiteral(red: 0.537254902, green: 0.137254902, blue: 0.7137254902, alpha: 0.07764570552)
+        menu.backgroundColor = #colorLiteral(red: 0.2020273507, green: 0.1010685936, blue: 0.5962305665, alpha: 0.09622073763)
     }
     
     @IBAction private func unhightlight() {
-        menu.backgroundColor = #colorLiteral(red: 0.537254902, green: 0.137254902, blue: 0.7137254902, alpha: 0)
+        menu.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
     }
 
 }

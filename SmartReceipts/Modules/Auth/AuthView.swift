@@ -58,6 +58,9 @@ final class AuthView: UserInterface {
         
         loginButton.setTitle(LocalizedString("login_button_text"), for: .normal)
         signupButton.setTitle(LocalizedString("sign_up_button_text"), for: .normal)
+        
+        loginButton.apply(style: .main)
+        signupButton.apply(style: .main)
     }
     
     private func configureRx() {
