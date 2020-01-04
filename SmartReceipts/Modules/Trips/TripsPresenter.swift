@@ -38,11 +38,6 @@ class TripsPresenter: Presenter {
                 self.router.openAddTrip()
             }).disposed(by: bag)
         
-        view.debugButton?.rx.tap
-            .subscribe(onNext: {
-                self.router.openDebug()
-            }).disposed(by: bag)
-        
         view.privacyTap
             .subscribe(onNext: {
                 self.router.openPrivacySettings()
