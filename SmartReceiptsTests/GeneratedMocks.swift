@@ -16,39 +16,64 @@ import RxSwift
 import Toaster
 import Viperit
 
-class MockAuthInteractor: AuthInteractor, Cuckoo.ClassMock {
-    typealias MocksType = AuthInteractor
-    typealias Stubbing = __StubbingProxy_AuthInteractor
-    typealias Verification = __VerificationProxy_AuthInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockAuthInteractor: AuthInteractor, Cuckoo.ClassMock {
+    
+     typealias MocksType = AuthInteractor
+    
+     typealias Stubbing = __StubbingProxy_AuthInteractor
+     typealias Verification = __VerificationProxy_AuthInteractor
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
-    // ["name": "login", "stubType": "ClassToBeStubbedReadOnlyProperty", "@type": "InstanceVariable", "type": "AnyObserver<Credentials>", "isReadOnly": true, "accessibility": ""]
+    private var __defaultImplStub: AuthInteractor?
+
+     func enableDefaultImplementation(_ stub: AuthInteractor) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
      override var login: AnyObserver<Credentials> {
         get {
-            
-            return cuckoo_manager.getter("login", superclassCall: super.login)
-            
+            return cuckoo_manager.getter("login",
+                superclassCall:
+                    
+                    super.login
+                    ,
+                defaultCall: __defaultImplStub!.login)
         }
         
     }
     
-    // ["name": "signup", "stubType": "ClassToBeStubbedReadOnlyProperty", "@type": "InstanceVariable", "type": "AnyObserver<Credentials>", "isReadOnly": true, "accessibility": ""]
+    
+    
      override var signup: AnyObserver<Credentials> {
         get {
-            
-            return cuckoo_manager.getter("signup", superclassCall: super.signup)
-            
+            return cuckoo_manager.getter("signup",
+                superclassCall:
+                    
+                    super.signup
+                    ,
+                defaultCall: __defaultImplStub!.signup)
         }
         
     }
     
-    // ["name": "logout", "stubType": "ClassToBeStubbedReadOnlyProperty", "@type": "InstanceVariable", "type": "AnyObserver<Void>", "isReadOnly": true, "accessibility": ""]
+    
+    
      override var logout: AnyObserver<Void> {
         get {
-            
-            return cuckoo_manager.getter("logout", superclassCall: super.logout)
-            
+            return cuckoo_manager.getter("logout",
+                superclassCall:
+                    
+                    super.logout
+                    ,
+                defaultCall: __defaultImplStub!.logout)
         }
         
     }
@@ -58,20 +83,23 @@ class MockAuthInteractor: AuthInteractor, Cuckoo.ClassMock {
 
     
 
-	struct __StubbingProxy_AuthInteractor: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_AuthInteractor: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
+	    
 	    
 	    var login: Cuckoo.ClassToBeStubbedReadOnlyProperty<MockAuthInteractor, AnyObserver<Credentials>> {
 	        return .init(manager: cuckoo_manager, name: "login")
 	    }
 	    
+	    
 	    var signup: Cuckoo.ClassToBeStubbedReadOnlyProperty<MockAuthInteractor, AnyObserver<Credentials>> {
 	        return .init(manager: cuckoo_manager, name: "signup")
 	    }
+	    
 	    
 	    var logout: Cuckoo.ClassToBeStubbedReadOnlyProperty<MockAuthInteractor, AnyObserver<Void>> {
 	        return .init(manager: cuckoo_manager, name: "logout")
@@ -80,25 +108,28 @@ class MockAuthInteractor: AuthInteractor, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_AuthInteractor: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_AuthInteractor: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
 	    }
 	
 	    
+	    
 	    var login: Cuckoo.VerifyReadOnlyProperty<AnyObserver<Credentials>> {
 	        return .init(manager: cuckoo_manager, name: "login", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
+	    
 	    var signup: Cuckoo.VerifyReadOnlyProperty<AnyObserver<Credentials>> {
 	        return .init(manager: cuckoo_manager, name: "signup", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
+	    
 	    
 	    var logout: Cuckoo.VerifyReadOnlyProperty<AnyObserver<Void>> {
 	        return .init(manager: cuckoo_manager, name: "logout", callMatcher: callMatcher, sourceLocation: sourceLocation)
@@ -107,10 +138,10 @@ class MockAuthInteractor: AuthInteractor, Cuckoo.ClassMock {
 	
 	    
 	}
-
 }
 
  class AuthInteractorStub: AuthInteractor {
+    
     
      override var login: AnyObserver<Credentials> {
         get {
@@ -119,12 +150,14 @@ class MockAuthInteractor: AuthInteractor, Cuckoo.ClassMock {
         
     }
     
+    
      override var signup: AnyObserver<Credentials> {
         get {
             return DefaultValueRegistry.defaultValue(for: (AnyObserver<Credentials>).self)
         }
         
     }
+    
     
      override var logout: AnyObserver<Void> {
         get {
@@ -157,19 +190,36 @@ import RxSwift
 import Toaster
 import Viperit
 
-class MockAuthModuleInterface: AuthModuleInterface, Cuckoo.ProtocolMock {
-    typealias MocksType = AuthModuleInterface
-    typealias Stubbing = __StubbingProxy_AuthModuleInterface
-    typealias Verification = __VerificationProxy_AuthModuleInterface
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: false)
+
+ class MockAuthModuleInterface: AuthModuleInterface, Cuckoo.ProtocolMock {
+    
+     typealias MocksType = AuthModuleInterface
+    
+     typealias Stubbing = __StubbingProxy_AuthModuleInterface
+     typealias Verification = __VerificationProxy_AuthModuleInterface
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: false)
 
     
-    // ["name": "successAuth", "stubType": "ProtocolToBeStubbedReadOnlyProperty", "@type": "InstanceVariable", "type": "Observable<Void>", "isReadOnly": true, "accessibility": ""]
+    private var __defaultImplStub: AuthModuleInterface?
+
+     func enableDefaultImplementation(_ stub: AuthModuleInterface) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
      var successAuth: Observable<Void> {
         get {
-            
-            return cuckoo_manager.getter("successAuth", superclassCall: Cuckoo.MockManager.crashOnProtocolSuperclassCall())
-            
+            return cuckoo_manager.getter("successAuth",
+                superclassCall:
+                    
+                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                    ,
+                defaultCall: __defaultImplStub!.successAuth)
         }
         
     }
@@ -178,25 +228,29 @@ class MockAuthModuleInterface: AuthModuleInterface, Cuckoo.ProtocolMock {
     
 
     
-    // ["name": "close", "returnSignature": "", "fullyQualifiedName": "close()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": false, "hasClosureParams": false, "@type": "ProtocolMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ProtocolStubNoReturnFunction"]
+    
+    
      func close()  {
         
-            return cuckoo_manager.call("close()",
-                parameters: (),
-                superclassCall:
-                    
-                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
-                    )
+    return cuckoo_manager.call("close()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                ,
+            defaultCall: __defaultImplStub!.close())
         
     }
     
 
-	struct __StubbingProxy_AuthModuleInterface: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_AuthModuleInterface: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
+	    
 	    
 	    var successAuth: Cuckoo.ProtocolToBeStubbedReadOnlyProperty<MockAuthModuleInterface, Observable<Void>> {
 	        return .init(manager: cuckoo_manager, name: "successAuth")
@@ -210,17 +264,18 @@ class MockAuthModuleInterface: AuthModuleInterface, Cuckoo.ProtocolMock {
 	    
 	}
 
-	struct __VerificationProxy_AuthModuleInterface: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_AuthModuleInterface: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
 	    }
 	
+	    
 	    
 	    var successAuth: Cuckoo.VerifyReadOnlyProperty<Observable<Void>> {
 	        return .init(manager: cuckoo_manager, name: "successAuth", callMatcher: callMatcher, sourceLocation: sourceLocation)
@@ -229,16 +284,16 @@ class MockAuthModuleInterface: AuthModuleInterface, Cuckoo.ProtocolMock {
 	
 	    
 	    @discardableResult
-	    func close() -> Cuckoo.__DoNotUse<Void> {
+	    func close() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class AuthModuleInterfaceStub: AuthModuleInterface {
+    
     
      var successAuth: Observable<Void> {
         get {
@@ -251,95 +306,131 @@ class MockAuthModuleInterface: AuthModuleInterface, Cuckoo.ProtocolMock {
     
 
     
-     func close()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     func close()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
 
 
-class MockAuthPresenter: AuthPresenter, Cuckoo.ClassMock {
-    typealias MocksType = AuthPresenter
-    typealias Stubbing = __StubbingProxy_AuthPresenter
-    typealias Verification = __VerificationProxy_AuthPresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockAuthPresenter: AuthPresenter, Cuckoo.ClassMock {
+    
+     typealias MocksType = AuthPresenter
+    
+     typealias Stubbing = __StubbingProxy_AuthPresenter
+     typealias Verification = __VerificationProxy_AuthPresenter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
-    // ["name": "successLogin", "stubType": "ClassToBeStubbedReadOnlyProperty", "@type": "InstanceVariable", "type": "AnyObserver<Void>", "isReadOnly": true, "accessibility": ""]
+    private var __defaultImplStub: AuthPresenter?
+
+     func enableDefaultImplementation(_ stub: AuthPresenter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
      override var successLogin: AnyObserver<Void> {
         get {
-            
-            return cuckoo_manager.getter("successLogin", superclassCall: super.successLogin)
-            
-        }
-        
-    }
-    
-    // ["name": "successSignup", "stubType": "ClassToBeStubbedReadOnlyProperty", "@type": "InstanceVariable", "type": "AnyObserver<Void>", "isReadOnly": true, "accessibility": ""]
-     override var successSignup: AnyObserver<Void> {
-        get {
-            
-            return cuckoo_manager.getter("successSignup", superclassCall: super.successSignup)
-            
-        }
-        
-    }
-    
-    // ["name": "successLogout", "stubType": "ClassToBeStubbedReadOnlyProperty", "@type": "InstanceVariable", "type": "AnyObserver<Void>", "isReadOnly": true, "accessibility": ""]
-     override var successLogout: AnyObserver<Void> {
-        get {
-            
-            return cuckoo_manager.getter("successLogout", superclassCall: super.successLogout)
-            
-        }
-        
-    }
-    
-    // ["name": "errorHandler", "stubType": "ClassToBeStubbedReadOnlyProperty", "@type": "InstanceVariable", "type": "AnyObserver<String>", "isReadOnly": true, "accessibility": ""]
-     override var errorHandler: AnyObserver<String> {
-        get {
-            
-            return cuckoo_manager.getter("errorHandler", superclassCall: super.errorHandler)
-            
-        }
-        
-    }
-    
-
-    
-
-    
-    // ["name": "viewHasLoaded", "returnSignature": "", "fullyQualifiedName": "viewHasLoaded()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func viewHasLoaded()  {
-        
-            return cuckoo_manager.call("viewHasLoaded()",
-                parameters: (),
+            return cuckoo_manager.getter("successLogin",
                 superclassCall:
                     
-                    super.viewHasLoaded()
-                    )
+                    super.successLogin
+                    ,
+                defaultCall: __defaultImplStub!.successLogin)
+        }
+        
+    }
+    
+    
+    
+     override var successSignup: AnyObserver<Void> {
+        get {
+            return cuckoo_manager.getter("successSignup",
+                superclassCall:
+                    
+                    super.successSignup
+                    ,
+                defaultCall: __defaultImplStub!.successSignup)
+        }
+        
+    }
+    
+    
+    
+     override var successLogout: AnyObserver<Void> {
+        get {
+            return cuckoo_manager.getter("successLogout",
+                superclassCall:
+                    
+                    super.successLogout
+                    ,
+                defaultCall: __defaultImplStub!.successLogout)
+        }
+        
+    }
+    
+    
+    
+     override var errorHandler: AnyObserver<String> {
+        get {
+            return cuckoo_manager.getter("errorHandler",
+                superclassCall:
+                    
+                    super.errorHandler
+                    ,
+                defaultCall: __defaultImplStub!.errorHandler)
+        }
         
     }
     
 
-	struct __StubbingProxy_AuthPresenter: Cuckoo.StubbingProxy {
+    
+
+    
+    
+    
+     override func viewHasLoaded()  {
+        
+    return cuckoo_manager.call("viewHasLoaded()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.viewHasLoaded()
+                ,
+            defaultCall: __defaultImplStub!.viewHasLoaded())
+        
+    }
+    
+
+	 struct __StubbingProxy_AuthPresenter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
+	    
 	    
 	    var successLogin: Cuckoo.ClassToBeStubbedReadOnlyProperty<MockAuthPresenter, AnyObserver<Void>> {
 	        return .init(manager: cuckoo_manager, name: "successLogin")
 	    }
 	    
+	    
 	    var successSignup: Cuckoo.ClassToBeStubbedReadOnlyProperty<MockAuthPresenter, AnyObserver<Void>> {
 	        return .init(manager: cuckoo_manager, name: "successSignup")
 	    }
 	    
+	    
 	    var successLogout: Cuckoo.ClassToBeStubbedReadOnlyProperty<MockAuthPresenter, AnyObserver<Void>> {
 	        return .init(manager: cuckoo_manager, name: "successLogout")
 	    }
+	    
 	    
 	    var errorHandler: Cuckoo.ClassToBeStubbedReadOnlyProperty<MockAuthPresenter, AnyObserver<String>> {
 	        return .init(manager: cuckoo_manager, name: "errorHandler")
@@ -353,29 +444,33 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_AuthPresenter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_AuthPresenter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
 	    }
 	
 	    
+	    
 	    var successLogin: Cuckoo.VerifyReadOnlyProperty<AnyObserver<Void>> {
 	        return .init(manager: cuckoo_manager, name: "successLogin", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
+	    
 	    
 	    var successSignup: Cuckoo.VerifyReadOnlyProperty<AnyObserver<Void>> {
 	        return .init(manager: cuckoo_manager, name: "successSignup", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
+	    
 	    var successLogout: Cuckoo.VerifyReadOnlyProperty<AnyObserver<Void>> {
 	        return .init(manager: cuckoo_manager, name: "successLogout", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
+	    
 	    
 	    var errorHandler: Cuckoo.VerifyReadOnlyProperty<AnyObserver<String>> {
 	        return .init(manager: cuckoo_manager, name: "errorHandler", callMatcher: callMatcher, sourceLocation: sourceLocation)
@@ -384,16 +479,16 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
+	    func viewHasLoaded() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class AuthPresenterStub: AuthPresenter {
+    
     
      override var successLogin: AnyObserver<Void> {
         get {
@@ -402,6 +497,7 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.ClassMock {
         
     }
     
+    
      override var successSignup: AnyObserver<Void> {
         get {
             return DefaultValueRegistry.defaultValue(for: (AnyObserver<Void>).self)
@@ -409,12 +505,14 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.ClassMock {
         
     }
     
+    
      override var successLogout: AnyObserver<Void> {
         get {
             return DefaultValueRegistry.defaultValue(for: (AnyObserver<Void>).self)
         }
         
     }
+    
     
      override var errorHandler: AnyObserver<String> {
         get {
@@ -427,8 +525,8 @@ class MockAuthPresenter: AuthPresenter, Cuckoo.ClassMock {
     
 
     
-     override func viewHasLoaded()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func viewHasLoaded()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -449,34 +547,50 @@ import Cuckoo
 import Foundation
 import Viperit
 
-class MockAuthRouter: AuthRouter, Cuckoo.ClassMock {
-    typealias MocksType = AuthRouter
-    typealias Stubbing = __StubbingProxy_AuthRouter
-    typealias Verification = __VerificationProxy_AuthRouter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockAuthRouter: AuthRouter, Cuckoo.ClassMock {
+    
+     typealias MocksType = AuthRouter
+    
+     typealias Stubbing = __StubbingProxy_AuthRouter
+     typealias Verification = __VerificationProxy_AuthRouter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: AuthRouter?
+
+     func enableDefaultImplementation(_ stub: AuthRouter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "close", "returnSignature": "", "fullyQualifiedName": "close()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func close()  {
         
-            return cuckoo_manager.call("close()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.close()
-                    )
+    return cuckoo_manager.call("close()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.close()
+                ,
+            defaultCall: __defaultImplStub!.close())
         
     }
     
 
-	struct __StubbingProxy_AuthRouter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_AuthRouter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -488,12 +602,12 @@ class MockAuthRouter: AuthRouter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_AuthRouter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_AuthRouter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -503,13 +617,12 @@ class MockAuthRouter: AuthRouter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func close() -> Cuckoo.__DoNotUse<Void> {
+	    func close() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class AuthRouterStub: AuthRouter {
@@ -518,8 +631,8 @@ class MockAuthRouter: AuthRouter, Cuckoo.ClassMock {
     
 
     
-     override func close()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func close()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -541,82 +654,110 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.ClassMock {
-    typealias MocksType = CategoriesInteractor
-    typealias Stubbing = __StubbingProxy_CategoriesInteractor
-    typealias Verification = __VerificationProxy_CategoriesInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.ClassMock {
+    
+     typealias MocksType = CategoriesInteractor
+    
+     typealias Stubbing = __StubbingProxy_CategoriesInteractor
+     typealias Verification = __VerificationProxy_CategoriesInteractor
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: CategoriesInteractor?
+
+     func enableDefaultImplementation(_ stub: CategoriesInteractor) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "configureSubscribers", "returnSignature": "", "fullyQualifiedName": "configureSubscribers()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func configureSubscribers()  {
         
-            return cuckoo_manager.call("configureSubscribers()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.configureSubscribers()
-                    )
+    return cuckoo_manager.call("configureSubscribers()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.configureSubscribers()
+                ,
+            defaultCall: __defaultImplStub!.configureSubscribers())
         
     }
     
-    // ["name": "save", "returnSignature": "", "fullyQualifiedName": "save(category: WBCategory, update: Bool)", "parameterSignature": "category: WBCategory, update: Bool", "parameterSignatureWithoutNames": "category: WBCategory, update: Bool", "inputTypes": "WBCategory, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "category, update", "call": "category: category, update: update", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("category"), name: "category", type: "WBCategory", range: CountableRange(944..<964), nameRange: CountableRange(944..<952)), CuckooGeneratorFramework.MethodParameter(label: Optional("update"), name: "update", type: "Bool", range: CountableRange(966..<978), nameRange: CountableRange(966..<972))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func save(category: WBCategory, update: Bool)  {
         
-            return cuckoo_manager.call("save(category: WBCategory, update: Bool)",
-                parameters: (category, update),
-                superclassCall:
-                    
-                    super.save(category: category, update: update)
-                    )
+    return cuckoo_manager.call("save(category: WBCategory, update: Bool)",
+            parameters: (category, update),
+            escapingParameters: (category, update),
+            superclassCall:
+                
+                super.save(category: category, update: update)
+                ,
+            defaultCall: __defaultImplStub!.save(category: category, update: update))
         
     }
     
-    // ["name": "reorder", "returnSignature": "", "fullyQualifiedName": "reorder(categoryLeft: WBCategory, categoryRight: WBCategory)", "parameterSignature": "categoryLeft: WBCategory, categoryRight: WBCategory", "parameterSignatureWithoutNames": "categoryLeft: WBCategory, categoryRight: WBCategory", "inputTypes": "WBCategory, WBCategory", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "categoryLeft, categoryRight", "call": "categoryLeft: categoryLeft, categoryRight: categoryRight", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("categoryLeft"), name: "categoryLeft", type: "WBCategory", range: CountableRange(1381..<1405), nameRange: CountableRange(1381..<1393)), CuckooGeneratorFramework.MethodParameter(label: Optional("categoryRight"), name: "categoryRight", type: "WBCategory", range: CountableRange(1407..<1432), nameRange: CountableRange(1407..<1420))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func reorder(categoryLeft: WBCategory, categoryRight: WBCategory)  {
         
-            return cuckoo_manager.call("reorder(categoryLeft: WBCategory, categoryRight: WBCategory)",
-                parameters: (categoryLeft, categoryRight),
-                superclassCall:
-                    
-                    super.reorder(categoryLeft: categoryLeft, categoryRight: categoryRight)
-                    )
+    return cuckoo_manager.call("reorder(categoryLeft: WBCategory, categoryRight: WBCategory)",
+            parameters: (categoryLeft, categoryRight),
+            escapingParameters: (categoryLeft, categoryRight),
+            superclassCall:
+                
+                super.reorder(categoryLeft: categoryLeft, categoryRight: categoryRight)
+                ,
+            defaultCall: __defaultImplStub!.reorder(categoryLeft: categoryLeft, categoryRight: categoryRight))
         
     }
     
-    // ["name": "delete", "returnSignature": "", "fullyQualifiedName": "delete(category: WBCategory)", "parameterSignature": "category: WBCategory", "parameterSignatureWithoutNames": "category: WBCategory", "inputTypes": "WBCategory", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "category", "call": "category: category", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("category"), name: "category", type: "WBCategory", range: CountableRange(1540..<1560), nameRange: CountableRange(1540..<1548))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func delete(category: WBCategory)  {
         
-            return cuckoo_manager.call("delete(category: WBCategory)",
-                parameters: (category),
-                superclassCall:
-                    
-                    super.delete(category: category)
-                    )
+    return cuckoo_manager.call("delete(category: WBCategory)",
+            parameters: (category),
+            escapingParameters: (category),
+            superclassCall:
+                
+                super.delete(category: category)
+                ,
+            defaultCall: __defaultImplStub!.delete(category: category))
         
     }
     
-    // ["name": "fetchedModelAdapter", "returnSignature": " -> FetchedModelAdapter?", "fullyQualifiedName": "fetchedModelAdapter() -> FetchedModelAdapter?", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Optional<FetchedModelAdapter>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func fetchedModelAdapter()  -> FetchedModelAdapter? {
+    
+    
+     override func fetchedModelAdapter() -> FetchedModelAdapter? {
         
-            return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
-                parameters: (),
-                superclassCall:
-                    
-                    super.fetchedModelAdapter()
-                    )
+    return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.fetchedModelAdapter()
+                ,
+            defaultCall: __defaultImplStub!.fetchedModelAdapter())
         
     }
     
 
-	struct __StubbingProxy_CategoriesInteractor: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_CategoriesInteractor: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -641,19 +782,19 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockCategoriesInteractor.self, method: "delete(category: WBCategory)", parameterMatchers: matchers))
 	    }
 	    
-	    func fetchedModelAdapter() -> Cuckoo.ClassStubFunction<(), Optional<FetchedModelAdapter>> {
+	    func fetchedModelAdapter() -> Cuckoo.ClassStubFunction<(), FetchedModelAdapter?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockCategoriesInteractor.self, method: "fetchedModelAdapter() -> FetchedModelAdapter?", parameterMatchers: matchers))
 	    }
 	    
 	}
 
-	struct __VerificationProxy_CategoriesInteractor: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_CategoriesInteractor: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -663,37 +804,36 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func configureSubscribers() -> Cuckoo.__DoNotUse<Void> {
+	    func configureSubscribers() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("configureSubscribers()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func save<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(category: M1, update: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBCategory, M2.MatchedType == Bool {
+	    func save<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(category: M1, update: M2) -> Cuckoo.__DoNotUse<(WBCategory, Bool), Void> where M1.MatchedType == WBCategory, M2.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBCategory, Bool)>] = [wrap(matchable: category) { $0.0 }, wrap(matchable: update) { $0.1 }]
 	        return cuckoo_manager.verify("save(category: WBCategory, update: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func reorder<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(categoryLeft: M1, categoryRight: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBCategory, M2.MatchedType == WBCategory {
+	    func reorder<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(categoryLeft: M1, categoryRight: M2) -> Cuckoo.__DoNotUse<(WBCategory, WBCategory), Void> where M1.MatchedType == WBCategory, M2.MatchedType == WBCategory {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBCategory, WBCategory)>] = [wrap(matchable: categoryLeft) { $0.0 }, wrap(matchable: categoryRight) { $0.1 }]
 	        return cuckoo_manager.verify("reorder(categoryLeft: WBCategory, categoryRight: WBCategory)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func delete<M1: Cuckoo.Matchable>(category: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBCategory {
+	    func delete<M1: Cuckoo.Matchable>(category: M1) -> Cuckoo.__DoNotUse<(WBCategory), Void> where M1.MatchedType == WBCategory {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBCategory)>] = [wrap(matchable: category) { $0 }]
 	        return cuckoo_manager.verify("delete(category: WBCategory)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func fetchedModelAdapter() -> Cuckoo.__DoNotUse<Optional<FetchedModelAdapter>> {
+	    func fetchedModelAdapter() -> Cuckoo.__DoNotUse<(), FetchedModelAdapter?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("fetchedModelAdapter() -> FetchedModelAdapter?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class CategoriesInteractorStub: CategoriesInteractor {
@@ -702,24 +842,24 @@ class MockCategoriesInteractor: CategoriesInteractor, Cuckoo.ClassMock {
     
 
     
-     override func configureSubscribers()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func configureSubscribers()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func save(category: WBCategory, update: Bool)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func save(category: WBCategory, update: Bool)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func reorder(categoryLeft: WBCategory, categoryRight: WBCategory)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func reorder(categoryLeft: WBCategory, categoryRight: WBCategory)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func delete(category: WBCategory)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func delete(category: WBCategory)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func fetchedModelAdapter()  -> FetchedModelAdapter? {
-        return DefaultValueRegistry.defaultValue(for: Optional<FetchedModelAdapter>.self)
+     override func fetchedModelAdapter() -> FetchedModelAdapter?  {
+        return DefaultValueRegistry.defaultValue(for: (FetchedModelAdapter?).self)
     }
     
 }
@@ -741,46 +881,65 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockCategoriesPresenter: CategoriesPresenter, Cuckoo.ClassMock {
-    typealias MocksType = CategoriesPresenter
-    typealias Stubbing = __StubbingProxy_CategoriesPresenter
-    typealias Verification = __VerificationProxy_CategoriesPresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockCategoriesPresenter: CategoriesPresenter, Cuckoo.ClassMock {
+    
+     typealias MocksType = CategoriesPresenter
+    
+     typealias Stubbing = __StubbingProxy_CategoriesPresenter
+     typealias Verification = __VerificationProxy_CategoriesPresenter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: CategoriesPresenter?
+
+     func enableDefaultImplementation(_ stub: CategoriesPresenter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "viewHasLoaded", "returnSignature": "", "fullyQualifiedName": "viewHasLoaded()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func viewHasLoaded()  {
         
-            return cuckoo_manager.call("viewHasLoaded()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.viewHasLoaded()
-                    )
+    return cuckoo_manager.call("viewHasLoaded()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.viewHasLoaded()
+                ,
+            defaultCall: __defaultImplStub!.viewHasLoaded())
         
     }
     
-    // ["name": "fetchedModelAdapter", "returnSignature": " -> FetchedModelAdapter?", "fullyQualifiedName": "fetchedModelAdapter() -> FetchedModelAdapter?", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Optional<FetchedModelAdapter>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func fetchedModelAdapter()  -> FetchedModelAdapter? {
+    
+    
+     override func fetchedModelAdapter() -> FetchedModelAdapter? {
         
-            return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
-                parameters: (),
-                superclassCall:
-                    
-                    super.fetchedModelAdapter()
-                    )
+    return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.fetchedModelAdapter()
+                ,
+            defaultCall: __defaultImplStub!.fetchedModelAdapter())
         
     }
     
 
-	struct __StubbingProxy_CategoriesPresenter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_CategoriesPresenter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -790,19 +949,19 @@ class MockCategoriesPresenter: CategoriesPresenter, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockCategoriesPresenter.self, method: "viewHasLoaded()", parameterMatchers: matchers))
 	    }
 	    
-	    func fetchedModelAdapter() -> Cuckoo.ClassStubFunction<(), Optional<FetchedModelAdapter>> {
+	    func fetchedModelAdapter() -> Cuckoo.ClassStubFunction<(), FetchedModelAdapter?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockCategoriesPresenter.self, method: "fetchedModelAdapter() -> FetchedModelAdapter?", parameterMatchers: matchers))
 	    }
 	    
 	}
 
-	struct __VerificationProxy_CategoriesPresenter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_CategoriesPresenter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -812,19 +971,18 @@ class MockCategoriesPresenter: CategoriesPresenter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
+	    func viewHasLoaded() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func fetchedModelAdapter() -> Cuckoo.__DoNotUse<Optional<FetchedModelAdapter>> {
+	    func fetchedModelAdapter() -> Cuckoo.__DoNotUse<(), FetchedModelAdapter?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("fetchedModelAdapter() -> FetchedModelAdapter?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class CategoriesPresenterStub: CategoriesPresenter {
@@ -833,12 +991,12 @@ class MockCategoriesPresenter: CategoriesPresenter, Cuckoo.ClassMock {
     
 
     
-     override func viewHasLoaded()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func viewHasLoaded()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func fetchedModelAdapter()  -> FetchedModelAdapter? {
-        return DefaultValueRegistry.defaultValue(for: Optional<FetchedModelAdapter>.self)
+     override func fetchedModelAdapter() -> FetchedModelAdapter?  {
+        return DefaultValueRegistry.defaultValue(for: (FetchedModelAdapter?).self)
     }
     
 }
@@ -859,34 +1017,47 @@ import Cuckoo
 import Foundation
 import Viperit
 
-class MockCategoriesRouter: CategoriesRouter, Cuckoo.ClassMock {
-    typealias MocksType = CategoriesRouter
-    typealias Stubbing = __StubbingProxy_CategoriesRouter
-    typealias Verification = __VerificationProxy_CategoriesRouter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockCategoriesRouter: CategoriesRouter, Cuckoo.ClassMock {
+    
+     typealias MocksType = CategoriesRouter
+    
+     typealias Stubbing = __StubbingProxy_CategoriesRouter
+     typealias Verification = __VerificationProxy_CategoriesRouter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: CategoriesRouter?
+
+     func enableDefaultImplementation(_ stub: CategoriesRouter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
 
-	struct __StubbingProxy_CategoriesRouter: Cuckoo.StubbingProxy {
+    
+
+	 struct __StubbingProxy_CategoriesRouter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
 	    
 	}
 
-	struct __VerificationProxy_CategoriesRouter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_CategoriesRouter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -896,7 +1067,6 @@ class MockCategoriesRouter: CategoriesRouter, Cuckoo.ClassMock {
 	
 	    
 	}
-
 }
 
  class CategoriesRouterStub: CategoriesRouter {
@@ -924,70 +1094,95 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockColumnsInteractor: ColumnsInteractor, Cuckoo.ClassMock {
-    typealias MocksType = ColumnsInteractor
-    typealias Stubbing = __StubbingProxy_ColumnsInteractor
-    typealias Verification = __VerificationProxy_ColumnsInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.ClassMock {
+    
+     typealias MocksType = ColumnsInteractor
+    
+     typealias Stubbing = __StubbingProxy_ColumnsInteractor
+     typealias Verification = __VerificationProxy_ColumnsInteractor
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: ColumnsInteractor?
+
+     func enableDefaultImplementation(_ stub: ColumnsInteractor) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "columns", "returnSignature": " -> Observable<[Column]>", "fullyQualifiedName": "columns(forCSV: Bool) -> Observable<[Column]>", "parameterSignature": "forCSV: Bool", "parameterSignatureWithoutNames": "forCSV: Bool", "inputTypes": "Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "forCSV", "call": "forCSV: forCSV", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("forCSV"), name: "forCSV", type: "Bool", range: CountableRange(262..<274), nameRange: CountableRange(262..<268))], "returnType": "Observable<[Column]>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func columns(forCSV: Bool)  -> Observable<[Column]> {
+
+    
+    
+    
+     override func columns(forCSV: Bool) -> Observable<[Column]> {
         
-            return cuckoo_manager.call("columns(forCSV: Bool) -> Observable<[Column]>",
-                parameters: (forCSV),
-                superclassCall:
-                    
-                    super.columns(forCSV: forCSV)
-                    )
+    return cuckoo_manager.call("columns(forCSV: Bool) -> Observable<[Column]>",
+            parameters: (forCSV),
+            escapingParameters: (forCSV),
+            superclassCall:
+                
+                super.columns(forCSV: forCSV)
+                ,
+            defaultCall: __defaultImplStub!.columns(forCSV: forCSV))
         
     }
     
-    // ["name": "addColumn", "returnSignature": "", "fullyQualifiedName": "addColumn(_: Column, isCSV: Bool)", "parameterSignature": "_ column: Column, isCSV: Bool", "parameterSignatureWithoutNames": "column: Column, isCSV: Bool", "inputTypes": "Column, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "column, isCSV", "call": "column, isCSV: isCSV", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "column", type: "Column", range: CountableRange(657..<673), nameRange: CountableRange(0..<0)), CuckooGeneratorFramework.MethodParameter(label: Optional("isCSV"), name: "isCSV", type: "Bool", range: CountableRange(675..<686), nameRange: CountableRange(675..<680))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func addColumn(_ column: Column, isCSV: Bool)  {
         
-            return cuckoo_manager.call("addColumn(_: Column, isCSV: Bool)",
-                parameters: (column, isCSV),
-                superclassCall:
-                    
-                    super.addColumn(column, isCSV: isCSV)
-                    )
+    return cuckoo_manager.call("addColumn(_: Column, isCSV: Bool)",
+            parameters: (column, isCSV),
+            escapingParameters: (column, isCSV),
+            superclassCall:
+                
+                super.addColumn(column, isCSV: isCSV)
+                ,
+            defaultCall: __defaultImplStub!.addColumn(column, isCSV: isCSV))
         
     }
     
-    // ["name": "removeColumn", "returnSignature": "", "fullyQualifiedName": "removeColumn(_: Column, isCSV: Bool)", "parameterSignature": "_ column: Column, isCSV: Bool", "parameterSignatureWithoutNames": "column: Column, isCSV: Bool", "inputTypes": "Column, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "column, isCSV", "call": "column, isCSV: isCSV", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "column", type: "Column", range: CountableRange(1058..<1074), nameRange: CountableRange(0..<0)), CuckooGeneratorFramework.MethodParameter(label: Optional("isCSV"), name: "isCSV", type: "Bool", range: CountableRange(1076..<1087), nameRange: CountableRange(1076..<1081))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func removeColumn(_ column: Column, isCSV: Bool)  {
         
-            return cuckoo_manager.call("removeColumn(_: Column, isCSV: Bool)",
-                parameters: (column, isCSV),
-                superclassCall:
-                    
-                    super.removeColumn(column, isCSV: isCSV)
-                    )
+    return cuckoo_manager.call("removeColumn(_: Column, isCSV: Bool)",
+            parameters: (column, isCSV),
+            escapingParameters: (column, isCSV),
+            superclassCall:
+                
+                super.removeColumn(column, isCSV: isCSV)
+                ,
+            defaultCall: __defaultImplStub!.removeColumn(column, isCSV: isCSV))
         
     }
     
-    // ["name": "reorder", "returnSignature": "", "fullyQualifiedName": "reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)", "parameterSignature": "columnLeft: Column, columnRight: Column, isCSV: Bool", "parameterSignatureWithoutNames": "columnLeft: Column, columnRight: Column, isCSV: Bool", "inputTypes": "Column, Column, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "columnLeft, columnRight, isCSV", "call": "columnLeft: columnLeft, columnRight: columnRight, isCSV: isCSV", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("columnLeft"), name: "columnLeft", type: "Column", range: CountableRange(1322..<1340), nameRange: CountableRange(1322..<1332)), CuckooGeneratorFramework.MethodParameter(label: Optional("columnRight"), name: "columnRight", type: "Column", range: CountableRange(1342..<1361), nameRange: CountableRange(1342..<1353)), CuckooGeneratorFramework.MethodParameter(label: Optional("isCSV"), name: "isCSV", type: "Bool", range: CountableRange(1363..<1374), nameRange: CountableRange(1363..<1368))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)  {
         
-            return cuckoo_manager.call("reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)",
-                parameters: (columnLeft, columnRight, isCSV),
-                superclassCall:
-                    
-                    super.reorder(columnLeft: columnLeft, columnRight: columnRight, isCSV: isCSV)
-                    )
+    return cuckoo_manager.call("reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)",
+            parameters: (columnLeft, columnRight, isCSV),
+            escapingParameters: (columnLeft, columnRight, isCSV),
+            superclassCall:
+                
+                super.reorder(columnLeft: columnLeft, columnRight: columnRight, isCSV: isCSV)
+                ,
+            defaultCall: __defaultImplStub!.reorder(columnLeft: columnLeft, columnRight: columnRight, isCSV: isCSV))
         
     }
     
 
-	struct __StubbingProxy_ColumnsInteractor: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_ColumnsInteractor: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -1014,12 +1209,12 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_ColumnsInteractor: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_ColumnsInteractor: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -1029,31 +1224,30 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func columns<M1: Cuckoo.Matchable>(forCSV: M1) -> Cuckoo.__DoNotUse<Observable<[Column]>> where M1.MatchedType == Bool {
+	    func columns<M1: Cuckoo.Matchable>(forCSV: M1) -> Cuckoo.__DoNotUse<(Bool), Observable<[Column]>> where M1.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(Bool)>] = [wrap(matchable: forCSV) { $0 }]
 	        return cuckoo_manager.verify("columns(forCSV: Bool) -> Observable<[Column]>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func addColumn<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ column: M1, isCSV: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Column, M2.MatchedType == Bool {
+	    func addColumn<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ column: M1, isCSV: M2) -> Cuckoo.__DoNotUse<(Column, Bool), Void> where M1.MatchedType == Column, M2.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(Column, Bool)>] = [wrap(matchable: column) { $0.0 }, wrap(matchable: isCSV) { $0.1 }]
 	        return cuckoo_manager.verify("addColumn(_: Column, isCSV: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func removeColumn<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ column: M1, isCSV: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Column, M2.MatchedType == Bool {
+	    func removeColumn<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ column: M1, isCSV: M2) -> Cuckoo.__DoNotUse<(Column, Bool), Void> where M1.MatchedType == Column, M2.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(Column, Bool)>] = [wrap(matchable: column) { $0.0 }, wrap(matchable: isCSV) { $0.1 }]
 	        return cuckoo_manager.verify("removeColumn(_: Column, isCSV: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func reorder<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable>(columnLeft: M1, columnRight: M2, isCSV: M3) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Column, M2.MatchedType == Column, M3.MatchedType == Bool {
+	    func reorder<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable>(columnLeft: M1, columnRight: M2, isCSV: M3) -> Cuckoo.__DoNotUse<(Column, Column, Bool), Void> where M1.MatchedType == Column, M2.MatchedType == Column, M3.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(Column, Column, Bool)>] = [wrap(matchable: columnLeft) { $0.0 }, wrap(matchable: columnRight) { $0.1 }, wrap(matchable: isCSV) { $0.2 }]
 	        return cuckoo_manager.verify("reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class ColumnsInteractorStub: ColumnsInteractor {
@@ -1062,20 +1256,20 @@ class MockColumnsInteractor: ColumnsInteractor, Cuckoo.ClassMock {
     
 
     
-     override func columns(forCSV: Bool)  -> Observable<[Column]> {
-        return DefaultValueRegistry.defaultValue(for: Observable<[Column]>.self)
+     override func columns(forCSV: Bool) -> Observable<[Column]>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<[Column]>).self)
     }
     
-     override func addColumn(_ column: Column, isCSV: Bool)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func addColumn(_ column: Column, isCSV: Bool)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func removeColumn(_ column: Column, isCSV: Bool)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func removeColumn(_ column: Column, isCSV: Bool)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func reorder(columnLeft: Column, columnRight: Column, isCSV: Bool)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -1097,70 +1291,95 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockColumnsPresenter: ColumnsPresenter, Cuckoo.ClassMock {
-    typealias MocksType = ColumnsPresenter
-    typealias Stubbing = __StubbingProxy_ColumnsPresenter
-    typealias Verification = __VerificationProxy_ColumnsPresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.ClassMock {
+    
+     typealias MocksType = ColumnsPresenter
+    
+     typealias Stubbing = __StubbingProxy_ColumnsPresenter
+     typealias Verification = __VerificationProxy_ColumnsPresenter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: ColumnsPresenter?
+
+     func enableDefaultImplementation(_ stub: ColumnsPresenter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(504..<513), nameRange: CountableRange(504..<508))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func setupView(data: Any)  {
         
-            return cuckoo_manager.call("setupView(data: Any)",
-                parameters: (data),
-                superclassCall:
-                    
-                    super.setupView(data: data)
-                    )
+    return cuckoo_manager.call("setupView(data: Any)",
+            parameters: (data),
+            escapingParameters: (data),
+            superclassCall:
+                
+                super.setupView(data: data)
+                ,
+            defaultCall: __defaultImplStub!.setupView(data: data))
         
     }
     
-    // ["name": "viewHasLoaded", "returnSignature": "", "fullyQualifiedName": "viewHasLoaded()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func viewHasLoaded()  {
         
-            return cuckoo_manager.call("viewHasLoaded()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.viewHasLoaded()
-                    )
+    return cuckoo_manager.call("viewHasLoaded()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.viewHasLoaded()
+                ,
+            defaultCall: __defaultImplStub!.viewHasLoaded())
         
     }
     
-    // ["name": "nextObjectID", "returnSignature": " -> Int", "fullyQualifiedName": "nextObjectID() -> Int", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Int", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func nextObjectID()  -> Int {
+    
+    
+     override func nextObjectID() -> Int {
         
-            return cuckoo_manager.call("nextObjectID() -> Int",
-                parameters: (),
-                superclassCall:
-                    
-                    super.nextObjectID()
-                    )
+    return cuckoo_manager.call("nextObjectID() -> Int",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.nextObjectID()
+                ,
+            defaultCall: __defaultImplStub!.nextObjectID())
         
     }
     
-    // ["name": "updateData", "returnSignature": "", "fullyQualifiedName": "updateData()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func updateData()  {
         
-            return cuckoo_manager.call("updateData()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.updateData()
-                    )
+    return cuckoo_manager.call("updateData()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.updateData()
+                ,
+            defaultCall: __defaultImplStub!.updateData())
         
     }
     
 
-	struct __StubbingProxy_ColumnsPresenter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_ColumnsPresenter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -1187,12 +1406,12 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_ColumnsPresenter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_ColumnsPresenter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -1202,31 +1421,30 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Any {
+	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<(Any), Void> where M1.MatchedType == Any {
 	        let matchers: [Cuckoo.ParameterMatcher<(Any)>] = [wrap(matchable: data) { $0 }]
 	        return cuckoo_manager.verify("setupView(data: Any)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
+	    func viewHasLoaded() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func nextObjectID() -> Cuckoo.__DoNotUse<Int> {
+	    func nextObjectID() -> Cuckoo.__DoNotUse<(), Int> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("nextObjectID() -> Int", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func updateData() -> Cuckoo.__DoNotUse<Void> {
+	    func updateData() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("updateData()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class ColumnsPresenterStub: ColumnsPresenter {
@@ -1235,20 +1453,20 @@ class MockColumnsPresenter: ColumnsPresenter, Cuckoo.ClassMock {
     
 
     
-     override func setupView(data: Any)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func setupView(data: Any)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func viewHasLoaded()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func viewHasLoaded()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func nextObjectID()  -> Int {
-        return DefaultValueRegistry.defaultValue(for: Int.self)
+     override func nextObjectID() -> Int  {
+        return DefaultValueRegistry.defaultValue(for: (Int).self)
     }
     
-     override func updateData()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func updateData()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -1269,34 +1487,47 @@ import Cuckoo
 import Foundation
 import Viperit
 
-class MockColumnsRouter: ColumnsRouter, Cuckoo.ClassMock {
-    typealias MocksType = ColumnsRouter
-    typealias Stubbing = __StubbingProxy_ColumnsRouter
-    typealias Verification = __VerificationProxy_ColumnsRouter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockColumnsRouter: ColumnsRouter, Cuckoo.ClassMock {
+    
+     typealias MocksType = ColumnsRouter
+    
+     typealias Stubbing = __StubbingProxy_ColumnsRouter
+     typealias Verification = __VerificationProxy_ColumnsRouter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: ColumnsRouter?
+
+     func enableDefaultImplementation(_ stub: ColumnsRouter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
 
-	struct __StubbingProxy_ColumnsRouter: Cuckoo.StubbingProxy {
+    
+
+	 struct __StubbingProxy_ColumnsRouter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
 	    
 	}
 
-	struct __VerificationProxy_ColumnsRouter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_ColumnsRouter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -1306,7 +1537,6 @@ class MockColumnsRouter: ColumnsRouter, Cuckoo.ClassMock {
 	
 	    
 	}
-
 }
 
  class ColumnsRouterStub: ColumnsRouter {
@@ -1335,34 +1565,50 @@ import RxSwift
 import Toaster
 import Viperit
 
-class MockEditDistanceInteractor: EditDistanceInteractor, Cuckoo.ClassMock {
-    typealias MocksType = EditDistanceInteractor
-    typealias Stubbing = __StubbingProxy_EditDistanceInteractor
-    typealias Verification = __VerificationProxy_EditDistanceInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockEditDistanceInteractor: EditDistanceInteractor, Cuckoo.ClassMock {
+    
+     typealias MocksType = EditDistanceInteractor
+    
+     typealias Stubbing = __StubbingProxy_EditDistanceInteractor
+     typealias Verification = __VerificationProxy_EditDistanceInteractor
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: EditDistanceInteractor?
+
+     func enableDefaultImplementation(_ stub: EditDistanceInteractor) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "save", "returnSignature": "", "fullyQualifiedName": "save(distance: Distance, asNewDistance: Bool)", "parameterSignature": "distance: Distance, asNewDistance: Bool", "parameterSignatureWithoutNames": "distance: Distance, asNewDistance: Bool", "inputTypes": "Distance, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "distance, asNewDistance", "call": "distance: distance, asNewDistance: asNewDistance", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("distance"), name: "distance", type: "Distance", range: CountableRange(519..<537), nameRange: CountableRange(519..<527)), CuckooGeneratorFramework.MethodParameter(label: Optional("asNewDistance"), name: "asNewDistance", type: "Bool", range: CountableRange(539..<558), nameRange: CountableRange(539..<552))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func save(distance: Distance, asNewDistance: Bool)  {
         
-            return cuckoo_manager.call("save(distance: Distance, asNewDistance: Bool)",
-                parameters: (distance, asNewDistance),
-                superclassCall:
-                    
-                    super.save(distance: distance, asNewDistance: asNewDistance)
-                    )
+    return cuckoo_manager.call("save(distance: Distance, asNewDistance: Bool)",
+            parameters: (distance, asNewDistance),
+            escapingParameters: (distance, asNewDistance),
+            superclassCall:
+                
+                super.save(distance: distance, asNewDistance: asNewDistance)
+                ,
+            defaultCall: __defaultImplStub!.save(distance: distance, asNewDistance: asNewDistance))
         
     }
     
 
-	struct __StubbingProxy_EditDistanceInteractor: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_EditDistanceInteractor: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -1374,12 +1620,12 @@ class MockEditDistanceInteractor: EditDistanceInteractor, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_EditDistanceInteractor: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_EditDistanceInteractor: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -1389,13 +1635,12 @@ class MockEditDistanceInteractor: EditDistanceInteractor, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func save<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(distance: M1, asNewDistance: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Distance, M2.MatchedType == Bool {
+	    func save<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(distance: M1, asNewDistance: M2) -> Cuckoo.__DoNotUse<(Distance, Bool), Void> where M1.MatchedType == Distance, M2.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(Distance, Bool)>] = [wrap(matchable: distance) { $0.0 }, wrap(matchable: asNewDistance) { $0.1 }]
 	        return cuckoo_manager.verify("save(distance: Distance, asNewDistance: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class EditDistanceInteractorStub: EditDistanceInteractor {
@@ -1404,8 +1649,8 @@ class MockEditDistanceInteractor: EditDistanceInteractor, Cuckoo.ClassMock {
     
 
     
-     override func save(distance: Distance, asNewDistance: Bool)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func save(distance: Distance, asNewDistance: Bool)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -1426,58 +1671,80 @@ import Cuckoo
 import Foundation
 import Viperit
 
-class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.ClassMock {
-    typealias MocksType = EditDistancePresenter
-    typealias Stubbing = __StubbingProxy_EditDistancePresenter
-    typealias Verification = __VerificationProxy_EditDistancePresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.ClassMock {
+    
+     typealias MocksType = EditDistancePresenter
+    
+     typealias Stubbing = __StubbingProxy_EditDistancePresenter
+     typealias Verification = __VerificationProxy_EditDistancePresenter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: EditDistancePresenter?
+
+     func enableDefaultImplementation(_ stub: EditDistancePresenter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(265..<274), nameRange: CountableRange(265..<269))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func setupView(data: Any)  {
         
-            return cuckoo_manager.call("setupView(data: Any)",
-                parameters: (data),
-                superclassCall:
-                    
-                    super.setupView(data: data)
-                    )
+    return cuckoo_manager.call("setupView(data: Any)",
+            parameters: (data),
+            escapingParameters: (data),
+            superclassCall:
+                
+                super.setupView(data: data)
+                ,
+            defaultCall: __defaultImplStub!.setupView(data: data))
         
     }
     
-    // ["name": "save", "returnSignature": "", "fullyQualifiedName": "save(distance: Distance, asNewDistance: Bool)", "parameterSignature": "distance: Distance, asNewDistance: Bool", "parameterSignatureWithoutNames": "distance: Distance, asNewDistance: Bool", "inputTypes": "Distance, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "distance, asNewDistance", "call": "distance: distance, asNewDistance: asNewDistance", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("distance"), name: "distance", type: "Distance", range: CountableRange(462..<480), nameRange: CountableRange(462..<470)), CuckooGeneratorFramework.MethodParameter(label: Optional("asNewDistance"), name: "asNewDistance", type: "Bool", range: CountableRange(482..<501), nameRange: CountableRange(482..<495))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func save(distance: Distance, asNewDistance: Bool)  {
         
-            return cuckoo_manager.call("save(distance: Distance, asNewDistance: Bool)",
-                parameters: (distance, asNewDistance),
-                superclassCall:
-                    
-                    super.save(distance: distance, asNewDistance: asNewDistance)
-                    )
+    return cuckoo_manager.call("save(distance: Distance, asNewDistance: Bool)",
+            parameters: (distance, asNewDistance),
+            escapingParameters: (distance, asNewDistance),
+            superclassCall:
+                
+                super.save(distance: distance, asNewDistance: asNewDistance)
+                ,
+            defaultCall: __defaultImplStub!.save(distance: distance, asNewDistance: asNewDistance))
         
     }
     
-    // ["name": "close", "returnSignature": "", "fullyQualifiedName": "close()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func close()  {
         
-            return cuckoo_manager.call("close()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.close()
-                    )
+    return cuckoo_manager.call("close()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.close()
+                ,
+            defaultCall: __defaultImplStub!.close())
         
     }
     
 
-	struct __StubbingProxy_EditDistancePresenter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_EditDistancePresenter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -1499,12 +1766,12 @@ class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_EditDistancePresenter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_EditDistancePresenter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -1514,25 +1781,24 @@ class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Any {
+	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<(Any), Void> where M1.MatchedType == Any {
 	        let matchers: [Cuckoo.ParameterMatcher<(Any)>] = [wrap(matchable: data) { $0 }]
 	        return cuckoo_manager.verify("setupView(data: Any)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func save<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(distance: M1, asNewDistance: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Distance, M2.MatchedType == Bool {
+	    func save<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(distance: M1, asNewDistance: M2) -> Cuckoo.__DoNotUse<(Distance, Bool), Void> where M1.MatchedType == Distance, M2.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(Distance, Bool)>] = [wrap(matchable: distance) { $0.0 }, wrap(matchable: asNewDistance) { $0.1 }]
 	        return cuckoo_manager.verify("save(distance: Distance, asNewDistance: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func close() -> Cuckoo.__DoNotUse<Void> {
+	    func close() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class EditDistancePresenterStub: EditDistancePresenter {
@@ -1541,16 +1807,16 @@ class MockEditDistancePresenter: EditDistancePresenter, Cuckoo.ClassMock {
     
 
     
-     override func setupView(data: Any)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func setupView(data: Any)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func save(distance: Distance, asNewDistance: Bool)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func save(distance: Distance, asNewDistance: Bool)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func close()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func close()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -1571,34 +1837,50 @@ import Cuckoo
 import Foundation
 import Viperit
 
-class MockEditDistanceRouter: EditDistanceRouter, Cuckoo.ClassMock {
-    typealias MocksType = EditDistanceRouter
-    typealias Stubbing = __StubbingProxy_EditDistanceRouter
-    typealias Verification = __VerificationProxy_EditDistanceRouter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockEditDistanceRouter: EditDistanceRouter, Cuckoo.ClassMock {
+    
+     typealias MocksType = EditDistanceRouter
+    
+     typealias Stubbing = __StubbingProxy_EditDistanceRouter
+     typealias Verification = __VerificationProxy_EditDistanceRouter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: EditDistanceRouter?
+
+     func enableDefaultImplementation(_ stub: EditDistanceRouter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "close", "returnSignature": "", "fullyQualifiedName": "close()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func close()  {
         
-            return cuckoo_manager.call("close()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.close()
-                    )
+    return cuckoo_manager.call("close()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.close()
+                ,
+            defaultCall: __defaultImplStub!.close())
         
     }
     
 
-	struct __StubbingProxy_EditDistanceRouter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_EditDistanceRouter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -1610,12 +1892,12 @@ class MockEditDistanceRouter: EditDistanceRouter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_EditDistanceRouter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_EditDistanceRouter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -1625,13 +1907,12 @@ class MockEditDistanceRouter: EditDistanceRouter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func close() -> Cuckoo.__DoNotUse<Void> {
+	    func close() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class EditDistanceRouterStub: EditDistanceRouter {
@@ -1640,8 +1921,8 @@ class MockEditDistanceRouter: EditDistanceRouter, Cuckoo.ClassMock {
     
 
     
-     override func close()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func close()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -1664,25 +1945,46 @@ import RxSwift
 import Toaster
 import Viperit
 
-class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.ClassMock {
-    typealias MocksType = EditReceiptInteractor
-    typealias Stubbing = __StubbingProxy_EditReceiptInteractor
-    typealias Verification = __VerificationProxy_EditReceiptInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.ClassMock {
+    
+     typealias MocksType = EditReceiptInteractor
+    
+     typealias Stubbing = __StubbingProxy_EditReceiptInteractor
+     typealias Verification = __VerificationProxy_EditReceiptInteractor
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
-    // ["name": "receiptFilePath", "stubType": "ClassToBeStubbedProperty", "@type": "InstanceVariable", "type": "URL?", "isReadOnly": false, "accessibility": ""]
+    private var __defaultImplStub: EditReceiptInteractor?
+
+     func enableDefaultImplementation(_ stub: EditReceiptInteractor) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
      override var receiptFilePath: URL? {
         get {
-            
-            return cuckoo_manager.getter("receiptFilePath", superclassCall: super.receiptFilePath)
-            
+            return cuckoo_manager.getter("receiptFilePath",
+                superclassCall:
+                    
+                    super.receiptFilePath
+                    ,
+                defaultCall: __defaultImplStub!.receiptFilePath)
         }
         
         set {
-            
-            cuckoo_manager.setter("receiptFilePath", value: newValue, superclassCall: super.receiptFilePath = newValue)
-            
+            cuckoo_manager.setter("receiptFilePath",
+                value: newValue,
+                superclassCall:
+                    
+                    super.receiptFilePath = newValue
+                    ,
+                defaultCall: __defaultImplStub!.receiptFilePath = newValue)
         }
         
     }
@@ -1691,39 +1993,46 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.ClassMock {
     
 
     
-    // ["name": "configureSubscribers", "returnSignature": "", "fullyQualifiedName": "configureSubscribers()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func configureSubscribers()  {
         
-            return cuckoo_manager.call("configureSubscribers()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.configureSubscribers()
-                    )
+    return cuckoo_manager.call("configureSubscribers()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.configureSubscribers()
+                ,
+            defaultCall: __defaultImplStub!.configureSubscribers())
         
     }
     
-    // ["name": "tooltipText", "returnSignature": " -> String?", "fullyQualifiedName": "tooltipText() -> String?", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Optional<String>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func tooltipText()  -> String? {
+    
+    
+     override func tooltipText() -> String? {
         
-            return cuckoo_manager.call("tooltipText() -> String?",
-                parameters: (),
-                superclassCall:
-                    
-                    super.tooltipText()
-                    )
+    return cuckoo_manager.call("tooltipText() -> String?",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.tooltipText()
+                ,
+            defaultCall: __defaultImplStub!.tooltipText())
         
     }
     
 
-	struct __StubbingProxy_EditReceiptInteractor: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_EditReceiptInteractor: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
-	    var receiptFilePath: Cuckoo.ClassToBeStubbedProperty<MockEditReceiptInteractor, URL?> {
+	    
+	    var receiptFilePath: Cuckoo.ClassToBeStubbedOptionalProperty<MockEditReceiptInteractor, URL> {
 	        return .init(manager: cuckoo_manager, name: "receiptFilePath")
 	    }
 	    
@@ -1733,48 +2042,49 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockEditReceiptInteractor.self, method: "configureSubscribers()", parameterMatchers: matchers))
 	    }
 	    
-	    func tooltipText() -> Cuckoo.ClassStubFunction<(), Optional<String>> {
+	    func tooltipText() -> Cuckoo.ClassStubFunction<(), String?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockEditReceiptInteractor.self, method: "tooltipText() -> String?", parameterMatchers: matchers))
 	    }
 	    
 	}
 
-	struct __VerificationProxy_EditReceiptInteractor: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_EditReceiptInteractor: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
 	    }
 	
 	    
-	    var receiptFilePath: Cuckoo.VerifyProperty<URL?> {
+	    
+	    var receiptFilePath: Cuckoo.VerifyOptionalProperty<URL> {
 	        return .init(manager: cuckoo_manager, name: "receiptFilePath", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
 	
 	    
 	    @discardableResult
-	    func configureSubscribers() -> Cuckoo.__DoNotUse<Void> {
+	    func configureSubscribers() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("configureSubscribers()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func tooltipText() -> Cuckoo.__DoNotUse<Optional<String>> {
+	    func tooltipText() -> Cuckoo.__DoNotUse<(), String?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("tooltipText() -> String?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class EditReceiptInteractorStub: EditReceiptInteractor {
+    
     
      override var receiptFilePath: URL? {
         get {
@@ -1789,12 +2099,12 @@ class MockEditReceiptInteractor: EditReceiptInteractor, Cuckoo.ClassMock {
     
 
     
-     override func configureSubscribers()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func configureSubscribers()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func tooltipText()  -> String? {
-        return DefaultValueRegistry.defaultValue(for: Optional<String>.self)
+     override func tooltipText() -> String?  {
+        return DefaultValueRegistry.defaultValue(for: (String?).self)
     }
     
 }
@@ -1817,29 +2127,50 @@ import RxSwift
 import UserNotifications
 import Viperit
 
-class MockEditReceiptModuleInterface: EditReceiptModuleInterface, Cuckoo.ProtocolMock {
-    typealias MocksType = EditReceiptModuleInterface
-    typealias Stubbing = __StubbingProxy_EditReceiptModuleInterface
-    typealias Verification = __VerificationProxy_EditReceiptModuleInterface
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: false)
+
+ class MockEditReceiptModuleInterface: EditReceiptModuleInterface, Cuckoo.ProtocolMock {
+    
+     typealias MocksType = EditReceiptModuleInterface
+    
+     typealias Stubbing = __StubbingProxy_EditReceiptModuleInterface
+     typealias Verification = __VerificationProxy_EditReceiptModuleInterface
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: false)
 
     
-    // ["name": "removeAction", "stubType": "ProtocolToBeStubbedReadOnlyProperty", "@type": "InstanceVariable", "type": "Observable<WBReceipt>", "isReadOnly": true, "accessibility": ""]
+    private var __defaultImplStub: EditReceiptModuleInterface?
+
+     func enableDefaultImplementation(_ stub: EditReceiptModuleInterface) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
      var removeAction: Observable<WBReceipt> {
         get {
-            
-            return cuckoo_manager.getter("removeAction", superclassCall: Cuckoo.MockManager.crashOnProtocolSuperclassCall())
-            
+            return cuckoo_manager.getter("removeAction",
+                superclassCall:
+                    
+                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                    ,
+                defaultCall: __defaultImplStub!.removeAction)
         }
         
     }
     
-    // ["name": "showAttachmentAction", "stubType": "ProtocolToBeStubbedReadOnlyProperty", "@type": "InstanceVariable", "type": "Observable<WBReceipt>", "isReadOnly": true, "accessibility": ""]
+    
+    
      var showAttachmentAction: Observable<WBReceipt> {
         get {
-            
-            return cuckoo_manager.getter("showAttachmentAction", superclassCall: Cuckoo.MockManager.crashOnProtocolSuperclassCall())
-            
+            return cuckoo_manager.getter("showAttachmentAction",
+                superclassCall:
+                    
+                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                    ,
+                defaultCall: __defaultImplStub!.showAttachmentAction)
         }
         
     }
@@ -1848,41 +2179,49 @@ class MockEditReceiptModuleInterface: EditReceiptModuleInterface, Cuckoo.Protoco
     
 
     
-    // ["name": "disableFirstResponder", "returnSignature": "", "fullyQualifiedName": "disableFirstResponder()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": false, "hasClosureParams": false, "@type": "ProtocolMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ProtocolStubNoReturnFunction"]
+    
+    
      func disableFirstResponder()  {
         
-            return cuckoo_manager.call("disableFirstResponder()",
-                parameters: (),
-                superclassCall:
-                    
-                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
-                    )
+    return cuckoo_manager.call("disableFirstResponder()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                ,
+            defaultCall: __defaultImplStub!.disableFirstResponder())
         
     }
     
-    // ["name": "makeNameFirstResponder", "returnSignature": "", "fullyQualifiedName": "makeNameFirstResponder()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": false, "hasClosureParams": false, "@type": "ProtocolMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ProtocolStubNoReturnFunction"]
+    
+    
      func makeNameFirstResponder()  {
         
-            return cuckoo_manager.call("makeNameFirstResponder()",
-                parameters: (),
-                superclassCall:
-                    
-                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
-                    )
+    return cuckoo_manager.call("makeNameFirstResponder()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                ,
+            defaultCall: __defaultImplStub!.makeNameFirstResponder())
         
     }
     
 
-	struct __StubbingProxy_EditReceiptModuleInterface: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_EditReceiptModuleInterface: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
+	    
 	    
 	    var removeAction: Cuckoo.ProtocolToBeStubbedReadOnlyProperty<MockEditReceiptModuleInterface, Observable<WBReceipt>> {
 	        return .init(manager: cuckoo_manager, name: "removeAction")
 	    }
+	    
 	    
 	    var showAttachmentAction: Cuckoo.ProtocolToBeStubbedReadOnlyProperty<MockEditReceiptModuleInterface, Observable<WBReceipt>> {
 	        return .init(manager: cuckoo_manager, name: "showAttachmentAction")
@@ -1901,21 +2240,23 @@ class MockEditReceiptModuleInterface: EditReceiptModuleInterface, Cuckoo.Protoco
 	    
 	}
 
-	struct __VerificationProxy_EditReceiptModuleInterface: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_EditReceiptModuleInterface: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
 	    }
 	
 	    
+	    
 	    var removeAction: Cuckoo.VerifyReadOnlyProperty<Observable<WBReceipt>> {
 	        return .init(manager: cuckoo_manager, name: "removeAction", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
+	    
 	    
 	    var showAttachmentAction: Cuckoo.VerifyReadOnlyProperty<Observable<WBReceipt>> {
 	        return .init(manager: cuckoo_manager, name: "showAttachmentAction", callMatcher: callMatcher, sourceLocation: sourceLocation)
@@ -1924,22 +2265,22 @@ class MockEditReceiptModuleInterface: EditReceiptModuleInterface, Cuckoo.Protoco
 	
 	    
 	    @discardableResult
-	    func disableFirstResponder() -> Cuckoo.__DoNotUse<Void> {
+	    func disableFirstResponder() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("disableFirstResponder()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func makeNameFirstResponder() -> Cuckoo.__DoNotUse<Void> {
+	    func makeNameFirstResponder() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("makeNameFirstResponder()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class EditReceiptModuleInterfaceStub: EditReceiptModuleInterface {
+    
     
      var removeAction: Observable<WBReceipt> {
         get {
@@ -1947,6 +2288,7 @@ class MockEditReceiptModuleInterface: EditReceiptModuleInterface, Cuckoo.Protoco
         }
         
     }
+    
     
      var showAttachmentAction: Observable<WBReceipt> {
         get {
@@ -1959,93 +2301,121 @@ class MockEditReceiptModuleInterface: EditReceiptModuleInterface, Cuckoo.Protoco
     
 
     
-     func disableFirstResponder()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     func disableFirstResponder()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     func makeNameFirstResponder()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     func makeNameFirstResponder()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
 
 
-class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.ClassMock {
-    typealias MocksType = EditReceiptPresenter
-    typealias Stubbing = __StubbingProxy_EditReceiptPresenter
-    typealias Verification = __VerificationProxy_EditReceiptPresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.ClassMock {
+    
+     typealias MocksType = EditReceiptPresenter
+    
+     typealias Stubbing = __StubbingProxy_EditReceiptPresenter
+     typealias Verification = __VerificationProxy_EditReceiptPresenter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: EditReceiptPresenter?
+
+     func enableDefaultImplementation(_ stub: EditReceiptPresenter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "viewHasLoaded", "returnSignature": "", "fullyQualifiedName": "viewHasLoaded()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func viewHasLoaded()  {
         
-            return cuckoo_manager.call("viewHasLoaded()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.viewHasLoaded()
-                    )
+    return cuckoo_manager.call("viewHasLoaded()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.viewHasLoaded()
+                ,
+            defaultCall: __defaultImplStub!.viewHasLoaded())
         
     }
     
-    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(2665..<2674), nameRange: CountableRange(2665..<2669))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func setupView(data: Any)  {
         
-            return cuckoo_manager.call("setupView(data: Any)",
-                parameters: (data),
-                superclassCall:
-                    
-                    super.setupView(data: data)
-                    )
+    return cuckoo_manager.call("setupView(data: Any)",
+            parameters: (data),
+            escapingParameters: (data),
+            superclassCall:
+                
+                super.setupView(data: data)
+                ,
+            defaultCall: __defaultImplStub!.setupView(data: data))
         
     }
     
-    // ["name": "close", "returnSignature": "", "fullyQualifiedName": "close()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func close()  {
         
-            return cuckoo_manager.call("close()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.close()
-                    )
+    return cuckoo_manager.call("close()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.close()
+                ,
+            defaultCall: __defaultImplStub!.close())
         
     }
     
-    // ["name": "present", "returnSignature": "", "fullyQualifiedName": "present(errorDescription: String)", "parameterSignature": "errorDescription: String", "parameterSignatureWithoutNames": "errorDescription: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "errorDescription", "call": "errorDescription: errorDescription", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("errorDescription"), name: "errorDescription", type: "String", range: CountableRange(3165..<3189), nameRange: CountableRange(3165..<3181))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func present(errorDescription: String)  {
         
-            return cuckoo_manager.call("present(errorDescription: String)",
-                parameters: (errorDescription),
-                superclassCall:
-                    
-                    super.present(errorDescription: errorDescription)
-                    )
+    return cuckoo_manager.call("present(errorDescription: String)",
+            parameters: (errorDescription),
+            escapingParameters: (errorDescription),
+            superclassCall:
+                
+                super.present(errorDescription: errorDescription)
+                ,
+            defaultCall: __defaultImplStub!.present(errorDescription: errorDescription))
         
     }
     
-    // ["name": "tooltipText", "returnSignature": " -> String?", "fullyQualifiedName": "tooltipText() -> String?", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Optional<String>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func tooltipText()  -> String? {
+    
+    
+     override func tooltipText() -> String? {
         
-            return cuckoo_manager.call("tooltipText() -> String?",
-                parameters: (),
-                superclassCall:
-                    
-                    super.tooltipText()
-                    )
+    return cuckoo_manager.call("tooltipText() -> String?",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.tooltipText()
+                ,
+            defaultCall: __defaultImplStub!.tooltipText())
         
     }
     
 
-	struct __StubbingProxy_EditReceiptPresenter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_EditReceiptPresenter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -2070,19 +2440,19 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockEditReceiptPresenter.self, method: "present(errorDescription: String)", parameterMatchers: matchers))
 	    }
 	    
-	    func tooltipText() -> Cuckoo.ClassStubFunction<(), Optional<String>> {
+	    func tooltipText() -> Cuckoo.ClassStubFunction<(), String?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockEditReceiptPresenter.self, method: "tooltipText() -> String?", parameterMatchers: matchers))
 	    }
 	    
 	}
 
-	struct __VerificationProxy_EditReceiptPresenter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_EditReceiptPresenter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -2092,37 +2462,36 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
+	    func viewHasLoaded() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Any {
+	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<(Any), Void> where M1.MatchedType == Any {
 	        let matchers: [Cuckoo.ParameterMatcher<(Any)>] = [wrap(matchable: data) { $0 }]
 	        return cuckoo_manager.verify("setupView(data: Any)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func close() -> Cuckoo.__DoNotUse<Void> {
+	    func close() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func present<M1: Cuckoo.Matchable>(errorDescription: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == String {
+	    func present<M1: Cuckoo.Matchable>(errorDescription: M1) -> Cuckoo.__DoNotUse<(String), Void> where M1.MatchedType == String {
 	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: errorDescription) { $0 }]
 	        return cuckoo_manager.verify("present(errorDescription: String)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func tooltipText() -> Cuckoo.__DoNotUse<Optional<String>> {
+	    func tooltipText() -> Cuckoo.__DoNotUse<(), String?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("tooltipText() -> String?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class EditReceiptPresenterStub: EditReceiptPresenter {
@@ -2131,24 +2500,24 @@ class MockEditReceiptPresenter: EditReceiptPresenter, Cuckoo.ClassMock {
     
 
     
-     override func viewHasLoaded()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func viewHasLoaded()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func setupView(data: Any)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func setupView(data: Any)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func close()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func close()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func present(errorDescription: String)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func present(errorDescription: String)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func tooltipText()  -> String? {
-        return DefaultValueRegistry.defaultValue(for: Optional<String>.self)
+     override func tooltipText() -> String?  {
+        return DefaultValueRegistry.defaultValue(for: (String?).self)
     }
     
 }
@@ -2169,94 +2538,125 @@ import Cuckoo
 import Foundation
 import Viperit
 
-class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.ClassMock {
-    typealias MocksType = EditReceiptRouter
-    typealias Stubbing = __StubbingProxy_EditReceiptRouter
-    typealias Verification = __VerificationProxy_EditReceiptRouter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.ClassMock {
+    
+     typealias MocksType = EditReceiptRouter
+    
+     typealias Stubbing = __StubbingProxy_EditReceiptRouter
+     typealias Verification = __VerificationProxy_EditReceiptRouter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: EditReceiptRouter?
+
+     func enableDefaultImplementation(_ stub: EditReceiptRouter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "openSettings", "returnSignature": "", "fullyQualifiedName": "openSettings()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func openSettings()  {
         
-            return cuckoo_manager.call("openSettings()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openSettings()
-                    )
+    return cuckoo_manager.call("openSettings()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openSettings()
+                ,
+            defaultCall: __defaultImplStub!.openSettings())
         
     }
     
-    // ["name": "close", "returnSignature": "", "fullyQualifiedName": "close()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func close()  {
         
-            return cuckoo_manager.call("close()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.close()
-                    )
+    return cuckoo_manager.call("close()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.close()
+                ,
+            defaultCall: __defaultImplStub!.close())
         
     }
     
-    // ["name": "openAuth", "returnSignature": " -> AuthModuleInterface", "fullyQualifiedName": "openAuth() -> AuthModuleInterface", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "AuthModuleInterface", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func openAuth()  -> AuthModuleInterface {
+    
+    
+     override func openAuth() -> AuthModuleInterface {
         
-            return cuckoo_manager.call("openAuth() -> AuthModuleInterface",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openAuth()
-                    )
+    return cuckoo_manager.call("openAuth() -> AuthModuleInterface",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openAuth()
+                ,
+            defaultCall: __defaultImplStub!.openAuth())
         
     }
     
-    // ["name": "openAutoScans", "returnSignature": "", "fullyQualifiedName": "openAutoScans()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openAutoScans()  {
         
-            return cuckoo_manager.call("openAutoScans()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openAutoScans()
-                    )
+    return cuckoo_manager.call("openAutoScans()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openAutoScans()
+                ,
+            defaultCall: __defaultImplStub!.openAutoScans())
         
     }
     
-    // ["name": "openPaymentMethods", "returnSignature": "", "fullyQualifiedName": "openPaymentMethods()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openPaymentMethods()  {
         
-            return cuckoo_manager.call("openPaymentMethods()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openPaymentMethods()
-                    )
+    return cuckoo_manager.call("openPaymentMethods()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openPaymentMethods()
+                ,
+            defaultCall: __defaultImplStub!.openPaymentMethods())
         
     }
     
-    // ["name": "openCategories", "returnSignature": "", "fullyQualifiedName": "openCategories()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openCategories()  {
         
-            return cuckoo_manager.call("openCategories()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openCategories()
-                    )
+    return cuckoo_manager.call("openCategories()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openCategories()
+                ,
+            defaultCall: __defaultImplStub!.openCategories())
         
     }
     
 
-	struct __StubbingProxy_EditReceiptRouter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_EditReceiptRouter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -2293,12 +2693,12 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_EditReceiptRouter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_EditReceiptRouter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -2308,43 +2708,42 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func openSettings() -> Cuckoo.__DoNotUse<Void> {
+	    func openSettings() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openSettings()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func close() -> Cuckoo.__DoNotUse<Void> {
+	    func close() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openAuth() -> Cuckoo.__DoNotUse<AuthModuleInterface> {
+	    func openAuth() -> Cuckoo.__DoNotUse<(), AuthModuleInterface> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openAuth() -> AuthModuleInterface", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openAutoScans() -> Cuckoo.__DoNotUse<Void> {
+	    func openAutoScans() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openAutoScans()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openPaymentMethods() -> Cuckoo.__DoNotUse<Void> {
+	    func openPaymentMethods() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openPaymentMethods()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openCategories() -> Cuckoo.__DoNotUse<Void> {
+	    func openCategories() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openCategories()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class EditReceiptRouterStub: EditReceiptRouter {
@@ -2353,28 +2752,28 @@ class MockEditReceiptRouter: EditReceiptRouter, Cuckoo.ClassMock {
     
 
     
-     override func openSettings()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openSettings()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func close()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func close()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openAuth()  -> AuthModuleInterface {
-        return DefaultValueRegistry.defaultValue(for: AuthModuleInterface.self)
+     override func openAuth() -> AuthModuleInterface  {
+        return DefaultValueRegistry.defaultValue(for: (AuthModuleInterface).self)
     }
     
-     override func openAutoScans()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openAutoScans()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openPaymentMethods()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openPaymentMethods()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openCategories()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openCategories()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -2396,46 +2795,65 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockEditTripInteractor: EditTripInteractor, Cuckoo.ClassMock {
-    typealias MocksType = EditTripInteractor
-    typealias Stubbing = __StubbingProxy_EditTripInteractor
-    typealias Verification = __VerificationProxy_EditTripInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockEditTripInteractor: EditTripInteractor, Cuckoo.ClassMock {
+    
+     typealias MocksType = EditTripInteractor
+    
+     typealias Stubbing = __StubbingProxy_EditTripInteractor
+     typealias Verification = __VerificationProxy_EditTripInteractor
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: EditTripInteractor?
+
+     func enableDefaultImplementation(_ stub: EditTripInteractor) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "configureSubscribers", "returnSignature": "", "fullyQualifiedName": "configureSubscribers()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func configureSubscribers()  {
         
-            return cuckoo_manager.call("configureSubscribers()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.configureSubscribers()
-                    )
+    return cuckoo_manager.call("configureSubscribers()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.configureSubscribers()
+                ,
+            defaultCall: __defaultImplStub!.configureSubscribers())
         
     }
     
-    // ["name": "save", "returnSignature": "", "fullyQualifiedName": "save(trip: WBTrip, update: Bool)", "parameterSignature": "trip: WBTrip, update: Bool", "parameterSignatureWithoutNames": "trip: WBTrip, update: Bool", "inputTypes": "WBTrip, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip, update", "call": "trip: trip, update: update", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(758..<770), nameRange: CountableRange(758..<762)), CuckooGeneratorFramework.MethodParameter(label: Optional("update"), name: "update", type: "Bool", range: CountableRange(772..<792), nameRange: CountableRange(772..<778))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func save(trip: WBTrip, update: Bool)  {
         
-            return cuckoo_manager.call("save(trip: WBTrip, update: Bool)",
-                parameters: (trip, update),
-                superclassCall:
-                    
-                    super.save(trip: trip, update: update)
-                    )
+    return cuckoo_manager.call("save(trip: WBTrip, update: Bool)",
+            parameters: (trip, update),
+            escapingParameters: (trip, update),
+            superclassCall:
+                
+                super.save(trip: trip, update: update)
+                ,
+            defaultCall: __defaultImplStub!.save(trip: trip, update: update))
         
     }
     
 
-	struct __StubbingProxy_EditTripInteractor: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_EditTripInteractor: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -2452,12 +2870,12 @@ class MockEditTripInteractor: EditTripInteractor, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_EditTripInteractor: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_EditTripInteractor: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -2467,19 +2885,18 @@ class MockEditTripInteractor: EditTripInteractor, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func configureSubscribers() -> Cuckoo.__DoNotUse<Void> {
+	    func configureSubscribers() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("configureSubscribers()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func save<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(trip: M1, update: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBTrip, M2.MatchedType == Bool {
+	    func save<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(trip: M1, update: M2) -> Cuckoo.__DoNotUse<(WBTrip, Bool), Void> where M1.MatchedType == WBTrip, M2.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBTrip, Bool)>] = [wrap(matchable: trip) { $0.0 }, wrap(matchable: update) { $0.1 }]
 	        return cuckoo_manager.verify("save(trip: WBTrip, update: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class EditTripInteractorStub: EditTripInteractor {
@@ -2488,12 +2905,12 @@ class MockEditTripInteractor: EditTripInteractor, Cuckoo.ClassMock {
     
 
     
-     override func configureSubscribers()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func configureSubscribers()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func save(trip: WBTrip, update: Bool)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func save(trip: WBTrip, update: Bool)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -2515,58 +2932,80 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockEditTripPresenter: EditTripPresenter, Cuckoo.ClassMock {
-    typealias MocksType = EditTripPresenter
-    typealias Stubbing = __StubbingProxy_EditTripPresenter
-    typealias Verification = __VerificationProxy_EditTripPresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockEditTripPresenter: EditTripPresenter, Cuckoo.ClassMock {
+    
+     typealias MocksType = EditTripPresenter
+    
+     typealias Stubbing = __StubbingProxy_EditTripPresenter
+     typealias Verification = __VerificationProxy_EditTripPresenter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: EditTripPresenter?
+
+     func enableDefaultImplementation(_ stub: EditTripPresenter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "viewHasLoaded", "returnSignature": "", "fullyQualifiedName": "viewHasLoaded()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func viewHasLoaded()  {
         
-            return cuckoo_manager.call("viewHasLoaded()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.viewHasLoaded()
-                    )
+    return cuckoo_manager.call("viewHasLoaded()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.viewHasLoaded()
+                ,
+            defaultCall: __defaultImplStub!.viewHasLoaded())
         
     }
     
-    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(469..<478), nameRange: CountableRange(469..<473))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func setupView(data: Any)  {
         
-            return cuckoo_manager.call("setupView(data: Any)",
-                parameters: (data),
-                superclassCall:
-                    
-                    super.setupView(data: data)
-                    )
+    return cuckoo_manager.call("setupView(data: Any)",
+            parameters: (data),
+            escapingParameters: (data),
+            superclassCall:
+                
+                super.setupView(data: data)
+                ,
+            defaultCall: __defaultImplStub!.setupView(data: data))
         
     }
     
-    // ["name": "close", "returnSignature": "", "fullyQualifiedName": "close()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func close()  {
         
-            return cuckoo_manager.call("close()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.close()
-                    )
+    return cuckoo_manager.call("close()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.close()
+                ,
+            defaultCall: __defaultImplStub!.close())
         
     }
     
 
-	struct __StubbingProxy_EditTripPresenter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_EditTripPresenter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -2588,12 +3027,12 @@ class MockEditTripPresenter: EditTripPresenter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_EditTripPresenter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_EditTripPresenter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -2603,25 +3042,24 @@ class MockEditTripPresenter: EditTripPresenter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
+	    func viewHasLoaded() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Any {
+	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<(Any), Void> where M1.MatchedType == Any {
 	        let matchers: [Cuckoo.ParameterMatcher<(Any)>] = [wrap(matchable: data) { $0 }]
 	        return cuckoo_manager.verify("setupView(data: Any)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func close() -> Cuckoo.__DoNotUse<Void> {
+	    func close() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class EditTripPresenterStub: EditTripPresenter {
@@ -2630,16 +3068,16 @@ class MockEditTripPresenter: EditTripPresenter, Cuckoo.ClassMock {
     
 
     
-     override func viewHasLoaded()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func viewHasLoaded()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func setupView(data: Any)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func setupView(data: Any)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func close()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func close()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -2660,34 +3098,50 @@ import Cuckoo
 import Foundation
 import Viperit
 
-class MockEditTripRouter: EditTripRouter, Cuckoo.ClassMock {
-    typealias MocksType = EditTripRouter
-    typealias Stubbing = __StubbingProxy_EditTripRouter
-    typealias Verification = __VerificationProxy_EditTripRouter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockEditTripRouter: EditTripRouter, Cuckoo.ClassMock {
+    
+     typealias MocksType = EditTripRouter
+    
+     typealias Stubbing = __StubbingProxy_EditTripRouter
+     typealias Verification = __VerificationProxy_EditTripRouter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: EditTripRouter?
+
+     func enableDefaultImplementation(_ stub: EditTripRouter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "close", "returnSignature": "", "fullyQualifiedName": "close()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func close()  {
         
-            return cuckoo_manager.call("close()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.close()
-                    )
+    return cuckoo_manager.call("close()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.close()
+                ,
+            defaultCall: __defaultImplStub!.close())
         
     }
     
 
-	struct __StubbingProxy_EditTripRouter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_EditTripRouter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -2699,12 +3153,12 @@ class MockEditTripRouter: EditTripRouter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_EditTripRouter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_EditTripRouter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -2714,13 +3168,12 @@ class MockEditTripRouter: EditTripRouter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func close() -> Cuckoo.__DoNotUse<Void> {
+	    func close() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class EditTripRouterStub: EditTripRouter {
@@ -2729,8 +3182,8 @@ class MockEditTripRouter: EditTripRouter, Cuckoo.ClassMock {
     
 
     
-     override func close()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func close()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -2755,67 +3208,94 @@ import RxSwift
 import Toaster
 import Viperit
 
-class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.ClassMock {
-    typealias MocksType = GenerateReportInteractor
-    typealias Stubbing = __StubbingProxy_GenerateReportInteractor
-    typealias Verification = __VerificationProxy_GenerateReportInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.ClassMock {
+    
+     typealias MocksType = GenerateReportInteractor
+    
+     typealias Stubbing = __StubbingProxy_GenerateReportInteractor
+     typealias Verification = __VerificationProxy_GenerateReportInteractor
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
-    // ["name": "generator", "stubType": "ClassToBeStubbedProperty", "@type": "InstanceVariable", "type": "ReportAssetsGenerator?", "isReadOnly": false, "accessibility": ""]
+    private var __defaultImplStub: GenerateReportInteractor?
+
+     func enableDefaultImplementation(_ stub: GenerateReportInteractor) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
      override var generator: ReportAssetsGenerator? {
         get {
-            
-            return cuckoo_manager.getter("generator", superclassCall: super.generator)
-            
+            return cuckoo_manager.getter("generator",
+                superclassCall:
+                    
+                    super.generator
+                    ,
+                defaultCall: __defaultImplStub!.generator)
         }
         
         set {
-            
-            cuckoo_manager.setter("generator", value: newValue, superclassCall: super.generator = newValue)
-            
+            cuckoo_manager.setter("generator",
+                value: newValue,
+                superclassCall:
+                    
+                    super.generator = newValue
+                    ,
+                defaultCall: __defaultImplStub!.generator = newValue)
         }
         
     }
     
-    // ["name": "shareService", "stubType": "ClassToBeStubbedProperty", "@type": "InstanceVariable", "type": "GenerateReportShareService?", "isReadOnly": false, "accessibility": ""]
+    
+    
      override var shareService: GenerateReportShareService? {
         get {
-            
-            return cuckoo_manager.getter("shareService", superclassCall: super.shareService)
-            
+            return cuckoo_manager.getter("shareService",
+                superclassCall:
+                    
+                    super.shareService
+                    ,
+                defaultCall: __defaultImplStub!.shareService)
         }
         
         set {
-            
-            cuckoo_manager.setter("shareService", value: newValue, superclassCall: super.shareService = newValue)
-            
+            cuckoo_manager.setter("shareService",
+                value: newValue,
+                superclassCall:
+                    
+                    super.shareService = newValue
+                    ,
+                defaultCall: __defaultImplStub!.shareService = newValue)
         }
         
     }
     
-    // ["name": "trip", "stubType": "ClassToBeStubbedProperty", "@type": "InstanceVariable", "type": "WBTrip!", "isReadOnly": false, "accessibility": ""]
+    
+    
      override var trip: WBTrip! {
         get {
-            
-            return cuckoo_manager.getter("trip", superclassCall: super.trip)
-            
+            return cuckoo_manager.getter("trip",
+                superclassCall:
+                    
+                    super.trip
+                    ,
+                defaultCall: __defaultImplStub!.trip)
         }
         
         set {
-            
-            cuckoo_manager.setter("trip", value: newValue, superclassCall: super.trip = newValue)
-            
-        }
-        
-    }
-    
-    // ["name": "titleSubtitle", "stubType": "ClassToBeStubbedReadOnlyProperty", "@type": "InstanceVariable", "type": "TitleSubtitle", "isReadOnly": true, "accessibility": ""]
-     override var titleSubtitle: TitleSubtitle {
-        get {
-            
-            return cuckoo_manager.getter("titleSubtitle", superclassCall: super.titleSubtitle)
-            
+            cuckoo_manager.setter("trip",
+                value: newValue,
+                superclassCall:
+                    
+                    super.trip = newValue
+                    ,
+                defaultCall: __defaultImplStub!.trip = newValue)
         }
         
     }
@@ -2824,88 +3304,102 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.ClassMock {
     
 
     
-    // ["name": "configure", "returnSignature": "", "fullyQualifiedName": "configure(with: WBTrip)", "parameterSignature": "with trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "with: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("with"), name: "trip", type: "WBTrip", range: CountableRange(584..<601), nameRange: CountableRange(584..<588))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func configure(with trip: WBTrip)  {
         
-            return cuckoo_manager.call("configure(with: WBTrip)",
-                parameters: (trip),
-                superclassCall:
-                    
-                    super.configure(with: trip)
-                    )
+    return cuckoo_manager.call("configure(with: WBTrip)",
+            parameters: (trip),
+            escapingParameters: (trip),
+            superclassCall:
+                
+                super.configure(with: trip)
+                ,
+            defaultCall: __defaultImplStub!.configure(with: trip))
         
     }
     
-    // ["name": "trackConfigureReportEvent", "returnSignature": "", "fullyQualifiedName": "trackConfigureReportEvent()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func trackConfigureReportEvent()  {
         
-            return cuckoo_manager.call("trackConfigureReportEvent()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.trackConfigureReportEvent()
-                    )
+    return cuckoo_manager.call("trackConfigureReportEvent()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.trackConfigureReportEvent()
+                ,
+            defaultCall: __defaultImplStub!.trackConfigureReportEvent())
         
     }
     
-    // ["name": "trackGeneratorEvents", "returnSignature": "", "fullyQualifiedName": "trackGeneratorEvents(selection: GenerateReportSelection)", "parameterSignature": "selection: GenerateReportSelection", "parameterSignatureWithoutNames": "selection: GenerateReportSelection", "inputTypes": "GenerateReportSelection", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "selection", "call": "selection: selection", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("selection"), name: "selection", type: "GenerateReportSelection", range: CountableRange(895..<929), nameRange: CountableRange(895..<904))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func trackGeneratorEvents(selection: GenerateReportSelection)  {
         
-            return cuckoo_manager.call("trackGeneratorEvents(selection: GenerateReportSelection)",
-                parameters: (selection),
-                superclassCall:
-                    
-                    super.trackGeneratorEvents(selection: selection)
-                    )
+    return cuckoo_manager.call("trackGeneratorEvents(selection: GenerateReportSelection)",
+            parameters: (selection),
+            escapingParameters: (selection),
+            superclassCall:
+                
+                super.trackGeneratorEvents(selection: selection)
+                ,
+            defaultCall: __defaultImplStub!.trackGeneratorEvents(selection: selection))
         
     }
     
-    // ["name": "generateReport", "returnSignature": "", "fullyQualifiedName": "generateReport(selection: GenerateReportSelection)", "parameterSignature": "selection: GenerateReportSelection", "parameterSignatureWithoutNames": "selection: GenerateReportSelection", "inputTypes": "GenerateReportSelection", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "selection", "call": "selection: selection", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("selection"), name: "selection", type: "GenerateReportSelection", range: CountableRange(1633..<1667), nameRange: CountableRange(1633..<1642))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func generateReport(selection: GenerateReportSelection)  {
         
-            return cuckoo_manager.call("generateReport(selection: GenerateReportSelection)",
-                parameters: (selection),
-                superclassCall:
-                    
-                    super.generateReport(selection: selection)
-                    )
+    return cuckoo_manager.call("generateReport(selection: GenerateReportSelection)",
+            parameters: (selection),
+            escapingParameters: (selection),
+            superclassCall:
+                
+                super.generateReport(selection: selection)
+                ,
+            defaultCall: __defaultImplStub!.generateReport(selection: selection))
         
     }
     
-    // ["name": "validate", "returnSignature": " -> Bool", "fullyQualifiedName": "validate(selection: GenerateReportSelection) -> Bool", "parameterSignature": "selection: GenerateReportSelection", "parameterSignatureWithoutNames": "selection: GenerateReportSelection", "inputTypes": "GenerateReportSelection", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "selection", "call": "selection: selection", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("selection"), name: "selection", type: "GenerateReportSelection", range: CountableRange(6095..<6129), nameRange: CountableRange(6095..<6104))], "returnType": "Bool", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func validate(selection: GenerateReportSelection)  -> Bool {
+    
+    
+     override func validate(selection: GenerateReportSelection) -> Bool {
         
-            return cuckoo_manager.call("validate(selection: GenerateReportSelection) -> Bool",
-                parameters: (selection),
-                superclassCall:
-                    
-                    super.validate(selection: selection)
-                    )
+    return cuckoo_manager.call("validate(selection: GenerateReportSelection) -> Bool",
+            parameters: (selection),
+            escapingParameters: (selection),
+            superclassCall:
+                
+                super.validate(selection: selection)
+                ,
+            defaultCall: __defaultImplStub!.validate(selection: selection))
         
     }
     
 
-	struct __StubbingProxy_GenerateReportInteractor: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_GenerateReportInteractor: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
-	    var generator: Cuckoo.ClassToBeStubbedProperty<MockGenerateReportInteractor, ReportAssetsGenerator?> {
+	    
+	    var generator: Cuckoo.ClassToBeStubbedOptionalProperty<MockGenerateReportInteractor, ReportAssetsGenerator> {
 	        return .init(manager: cuckoo_manager, name: "generator")
 	    }
 	    
-	    var shareService: Cuckoo.ClassToBeStubbedProperty<MockGenerateReportInteractor, GenerateReportShareService?> {
+	    
+	    var shareService: Cuckoo.ClassToBeStubbedOptionalProperty<MockGenerateReportInteractor, GenerateReportShareService> {
 	        return .init(manager: cuckoo_manager, name: "shareService")
 	    }
 	    
-	    var trip: Cuckoo.ClassToBeStubbedProperty<MockGenerateReportInteractor, WBTrip?> {
-	        return .init(manager: cuckoo_manager, name: "trip")
-	    }
 	    
-	    var titleSubtitle: Cuckoo.ClassToBeStubbedReadOnlyProperty<MockGenerateReportInteractor, TitleSubtitle> {
-	        return .init(manager: cuckoo_manager, name: "titleSubtitle")
+	    var trip: Cuckoo.ClassToBeStubbedOptionalProperty<MockGenerateReportInteractor, WBTrip> {
+	        return .init(manager: cuckoo_manager, name: "trip")
 	    }
 	    
 	    
@@ -2936,71 +3430,70 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_GenerateReportInteractor: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_GenerateReportInteractor: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
 	    }
 	
 	    
-	    var generator: Cuckoo.VerifyProperty<ReportAssetsGenerator?> {
+	    
+	    var generator: Cuckoo.VerifyOptionalProperty<ReportAssetsGenerator> {
 	        return .init(manager: cuckoo_manager, name: "generator", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
-	    var shareService: Cuckoo.VerifyProperty<GenerateReportShareService?> {
+	    
+	    var shareService: Cuckoo.VerifyOptionalProperty<GenerateReportShareService> {
 	        return .init(manager: cuckoo_manager, name: "shareService", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
-	    var trip: Cuckoo.VerifyProperty<WBTrip?> {
-	        return .init(manager: cuckoo_manager, name: "trip", callMatcher: callMatcher, sourceLocation: sourceLocation)
-	    }
 	    
-	    var titleSubtitle: Cuckoo.VerifyReadOnlyProperty<TitleSubtitle> {
-	        return .init(manager: cuckoo_manager, name: "titleSubtitle", callMatcher: callMatcher, sourceLocation: sourceLocation)
+	    var trip: Cuckoo.VerifyOptionalProperty<WBTrip> {
+	        return .init(manager: cuckoo_manager, name: "trip", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
 	
 	    
 	    @discardableResult
-	    func configure<M1: Cuckoo.Matchable>(with trip: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBTrip {
+	    func configure<M1: Cuckoo.Matchable>(with trip: M1) -> Cuckoo.__DoNotUse<(WBTrip), Void> where M1.MatchedType == WBTrip {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
 	        return cuckoo_manager.verify("configure(with: WBTrip)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func trackConfigureReportEvent() -> Cuckoo.__DoNotUse<Void> {
+	    func trackConfigureReportEvent() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("trackConfigureReportEvent()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func trackGeneratorEvents<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == GenerateReportSelection {
+	    func trackGeneratorEvents<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.__DoNotUse<(GenerateReportSelection), Void> where M1.MatchedType == GenerateReportSelection {
 	        let matchers: [Cuckoo.ParameterMatcher<(GenerateReportSelection)>] = [wrap(matchable: selection) { $0 }]
 	        return cuckoo_manager.verify("trackGeneratorEvents(selection: GenerateReportSelection)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func generateReport<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == GenerateReportSelection {
+	    func generateReport<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.__DoNotUse<(GenerateReportSelection), Void> where M1.MatchedType == GenerateReportSelection {
 	        let matchers: [Cuckoo.ParameterMatcher<(GenerateReportSelection)>] = [wrap(matchable: selection) { $0 }]
 	        return cuckoo_manager.verify("generateReport(selection: GenerateReportSelection)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func validate<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.__DoNotUse<Bool> where M1.MatchedType == GenerateReportSelection {
+	    func validate<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.__DoNotUse<(GenerateReportSelection), Bool> where M1.MatchedType == GenerateReportSelection {
 	        let matchers: [Cuckoo.ParameterMatcher<(GenerateReportSelection)>] = [wrap(matchable: selection) { $0 }]
 	        return cuckoo_manager.verify("validate(selection: GenerateReportSelection) -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class GenerateReportInteractorStub: GenerateReportInteractor {
+    
     
      override var generator: ReportAssetsGenerator? {
         get {
@@ -3011,6 +3504,7 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.ClassMock {
         
     }
     
+    
      override var shareService: GenerateReportShareService? {
         get {
             return DefaultValueRegistry.defaultValue(for: (GenerateReportShareService?).self)
@@ -3020,44 +3514,38 @@ class MockGenerateReportInteractor: GenerateReportInteractor, Cuckoo.ClassMock {
         
     }
     
+    
      override var trip: WBTrip! {
         get {
-            return DefaultValueRegistry.defaultValue(for: (WBTrip!).self)
+            return DefaultValueRegistry.defaultValue(for: (WBTrip?).self)
         }
         
         set { }
         
     }
     
-     override var titleSubtitle: TitleSubtitle {
-        get {
-            return DefaultValueRegistry.defaultValue(for: (TitleSubtitle).self)
-        }
-        
-    }
-    
 
     
 
     
-     override func configure(with trip: WBTrip)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func configure(with trip: WBTrip)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func trackConfigureReportEvent()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func trackConfigureReportEvent()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func trackGeneratorEvents(selection: GenerateReportSelection)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func trackGeneratorEvents(selection: GenerateReportSelection)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func generateReport(selection: GenerateReportSelection)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func generateReport(selection: GenerateReportSelection)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func validate(selection: GenerateReportSelection)  -> Bool {
-        return DefaultValueRegistry.defaultValue(for: Bool.self)
+     override func validate(selection: GenerateReportSelection) -> Bool  {
+        return DefaultValueRegistry.defaultValue(for: (Bool).self)
     }
     
 }
@@ -3079,142 +3567,185 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.ClassMock {
-    typealias MocksType = GenerateReportPresenter
-    typealias Stubbing = __StubbingProxy_GenerateReportPresenter
-    typealias Verification = __VerificationProxy_GenerateReportPresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.ClassMock {
+    
+     typealias MocksType = GenerateReportPresenter
+    
+     typealias Stubbing = __StubbingProxy_GenerateReportPresenter
+     typealias Verification = __VerificationProxy_GenerateReportPresenter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: GenerateReportPresenter?
+
+     func enableDefaultImplementation(_ stub: GenerateReportPresenter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "viewHasLoaded", "returnSignature": "", "fullyQualifiedName": "viewHasLoaded()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func viewHasLoaded()  {
         
-            return cuckoo_manager.call("viewHasLoaded()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.viewHasLoaded()
-                    )
+    return cuckoo_manager.call("viewHasLoaded()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.viewHasLoaded()
+                ,
+            defaultCall: __defaultImplStub!.viewHasLoaded())
         
     }
     
-    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(379..<388), nameRange: CountableRange(379..<383))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func setupView(data: Any)  {
         
-            return cuckoo_manager.call("setupView(data: Any)",
-                parameters: (data),
-                superclassCall:
-                    
-                    super.setupView(data: data)
-                    )
+    return cuckoo_manager.call("setupView(data: Any)",
+            parameters: (data),
+            escapingParameters: (data),
+            superclassCall:
+                
+                super.setupView(data: data)
+                ,
+            defaultCall: __defaultImplStub!.setupView(data: data))
         
     }
     
-    // ["name": "close", "returnSignature": "", "fullyQualifiedName": "close()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func close()  {
         
-            return cuckoo_manager.call("close()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.close()
-                    )
+    return cuckoo_manager.call("close()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.close()
+                ,
+            defaultCall: __defaultImplStub!.close())
         
     }
     
-    // ["name": "generateReport", "returnSignature": "", "fullyQualifiedName": "generateReport(selection: GenerateReportSelection)", "parameterSignature": "selection: GenerateReportSelection", "parameterSignatureWithoutNames": "selection: GenerateReportSelection", "inputTypes": "GenerateReportSelection", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "selection", "call": "selection: selection", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("selection"), name: "selection", type: "GenerateReportSelection", range: CountableRange(578..<612), nameRange: CountableRange(578..<587))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func generateReport(selection: GenerateReportSelection)  {
         
-            return cuckoo_manager.call("generateReport(selection: GenerateReportSelection)",
-                parameters: (selection),
-                superclassCall:
-                    
-                    super.generateReport(selection: selection)
-                    )
+    return cuckoo_manager.call("generateReport(selection: GenerateReportSelection)",
+            parameters: (selection),
+            escapingParameters: (selection),
+            superclassCall:
+                
+                super.generateReport(selection: selection)
+                ,
+            defaultCall: __defaultImplStub!.generateReport(selection: selection))
         
     }
     
-    // ["name": "presentAlert", "returnSignature": "", "fullyQualifiedName": "presentAlert(title: String, message: String)", "parameterSignature": "title: String, message: String", "parameterSignatureWithoutNames": "title: String, message: String", "inputTypes": "String, String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "title, message", "call": "title: title, message: message", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("title"), name: "title", type: "String", range: CountableRange(767..<780), nameRange: CountableRange(767..<772)), CuckooGeneratorFramework.MethodParameter(label: Optional("message"), name: "message", type: "String", range: CountableRange(782..<797), nameRange: CountableRange(782..<789))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func presentAlert(title: String, message: String)  {
         
-            return cuckoo_manager.call("presentAlert(title: String, message: String)",
-                parameters: (title, message),
-                superclassCall:
-                    
-                    super.presentAlert(title: title, message: message)
-                    )
+    return cuckoo_manager.call("presentAlert(title: String, message: String)",
+            parameters: (title, message),
+            escapingParameters: (title, message),
+            superclassCall:
+                
+                super.presentAlert(title: title, message: message)
+                ,
+            defaultCall: __defaultImplStub!.presentAlert(title: title, message: message))
         
     }
     
-    // ["name": "presentSheet", "returnSignature": "", "fullyQualifiedName": "presentSheet(title: String?, message: String?, actions: [UIAlertAction])", "parameterSignature": "title: String?, message: String?, actions: [UIAlertAction]", "parameterSignatureWithoutNames": "title: String?, message: String?, actions: [UIAlertAction]", "inputTypes": "String?, String?, [UIAlertAction]", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "title, message, actions", "call": "title: title, message: message, actions: actions", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("title"), name: "title", type: "String?", range: CountableRange(891..<905), nameRange: CountableRange(891..<896)), CuckooGeneratorFramework.MethodParameter(label: Optional("message"), name: "message", type: "String?", range: CountableRange(907..<923), nameRange: CountableRange(907..<914)), CuckooGeneratorFramework.MethodParameter(label: Optional("actions"), name: "actions", type: "[UIAlertAction]", range: CountableRange(925..<949), nameRange: CountableRange(925..<932))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func presentSheet(title: String?, message: String?, actions: [UIAlertAction])  {
         
-            return cuckoo_manager.call("presentSheet(title: String?, message: String?, actions: [UIAlertAction])",
-                parameters: (title, message, actions),
-                superclassCall:
-                    
-                    super.presentSheet(title: title, message: message, actions: actions)
-                    )
+    return cuckoo_manager.call("presentSheet(title: String?, message: String?, actions: [UIAlertAction])",
+            parameters: (title, message, actions),
+            escapingParameters: (title, message, actions),
+            superclassCall:
+                
+                super.presentSheet(title: title, message: message, actions: actions)
+                ,
+            defaultCall: __defaultImplStub!.presentSheet(title: title, message: message, actions: actions))
         
     }
     
-    // ["name": "present", "returnSignature": "", "fullyQualifiedName": "present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)", "parameterSignature": "vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?", "parameterSignatureWithoutNames": "vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?", "inputTypes": "UIViewController, Bool, Bool, (() -> Void)?", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": true, "@type": "ClassMethod", "accessibility": "", "parameterNames": "vc, animated, isPopover, completion", "call": "vc: vc, animated: animated, isPopover: isPopover, completion: completion", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("vc"), name: "vc", type: "UIViewController", range: CountableRange(1056..<1076), nameRange: CountableRange(1056..<1058)), CuckooGeneratorFramework.MethodParameter(label: Optional("animated"), name: "animated", type: "Bool", range: CountableRange(1078..<1099), nameRange: CountableRange(1078..<1086)), CuckooGeneratorFramework.MethodParameter(label: Optional("isPopover"), name: "isPopover", type: "Bool", range: CountableRange(1101..<1124), nameRange: CountableRange(1101..<1110)), CuckooGeneratorFramework.MethodParameter(label: Optional("completion"), name: "completion", type: "(() -> Void)?", range: CountableRange(1126..<1157), nameRange: CountableRange(1126..<1136))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)  {
         
-            return cuckoo_manager.call("present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)",
-                parameters: (vc, animated, isPopover, completion),
-                superclassCall:
-                    
-                    super.present(vc: vc, animated: animated, isPopover: isPopover, completion: completion)
-                    )
+    return cuckoo_manager.call("present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)",
+            parameters: (vc, animated, isPopover, completion),
+            escapingParameters: (vc, animated, isPopover, completion),
+            superclassCall:
+                
+                super.present(vc: vc, animated: animated, isPopover: isPopover, completion: completion)
+                ,
+            defaultCall: __defaultImplStub!.present(vc: vc, animated: animated, isPopover: isPopover, completion: completion))
         
     }
     
-    // ["name": "presentOutputSettings", "returnSignature": "", "fullyQualifiedName": "presentOutputSettings()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func presentOutputSettings()  {
         
-            return cuckoo_manager.call("presentOutputSettings()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.presentOutputSettings()
-                    )
+    return cuckoo_manager.call("presentOutputSettings()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.presentOutputSettings()
+                ,
+            defaultCall: __defaultImplStub!.presentOutputSettings())
         
     }
     
-    // ["name": "hideHudFromView", "returnSignature": "", "fullyQualifiedName": "hideHudFromView()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func hideHudFromView()  {
         
-            return cuckoo_manager.call("hideHudFromView()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.hideHudFromView()
-                    )
+    return cuckoo_manager.call("hideHudFromView()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.hideHudFromView()
+                ,
+            defaultCall: __defaultImplStub!.hideHudFromView())
         
     }
     
-    // ["name": "presentEnableDistances", "returnSignature": "", "fullyQualifiedName": "presentEnableDistances()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func presentEnableDistances()  {
         
-            return cuckoo_manager.call("presentEnableDistances()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.presentEnableDistances()
-                    )
+    return cuckoo_manager.call("presentEnableDistances()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.presentEnableDistances()
+                ,
+            defaultCall: __defaultImplStub!.presentEnableDistances())
         
     }
     
 
-	struct __StubbingProxy_GenerateReportPresenter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_GenerateReportPresenter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -3244,12 +3775,12 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportPresenter.self, method: "presentAlert(title: String, message: String)", parameterMatchers: matchers))
 	    }
 	    
-	    func presentSheet<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable>(title: M1, message: M2, actions: M3) -> Cuckoo.ClassStubNoReturnFunction<(String?, String?, [UIAlertAction])> where M1.MatchedType == String?, M2.MatchedType == String?, M3.MatchedType == [UIAlertAction] {
+	    func presentSheet<M1: Cuckoo.OptionalMatchable, M2: Cuckoo.OptionalMatchable, M3: Cuckoo.Matchable>(title: M1, message: M2, actions: M3) -> Cuckoo.ClassStubNoReturnFunction<(String?, String?, [UIAlertAction])> where M1.OptionalMatchedType == String, M2.OptionalMatchedType == String, M3.MatchedType == [UIAlertAction] {
 	        let matchers: [Cuckoo.ParameterMatcher<(String?, String?, [UIAlertAction])>] = [wrap(matchable: title) { $0.0 }, wrap(matchable: message) { $0.1 }, wrap(matchable: actions) { $0.2 }]
 	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportPresenter.self, method: "presentSheet(title: String?, message: String?, actions: [UIAlertAction])", parameterMatchers: matchers))
 	    }
 	    
-	    func present<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable, M4: Cuckoo.Matchable>(vc: M1, animated: M2, isPopover: M3, completion: M4) -> Cuckoo.ClassStubNoReturnFunction<(UIViewController, Bool, Bool, (() -> Void)?)> where M1.MatchedType == UIViewController, M2.MatchedType == Bool, M3.MatchedType == Bool, M4.MatchedType == (() -> Void)? {
+	    func present<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable, M4: Cuckoo.OptionalMatchable>(vc: M1, animated: M2, isPopover: M3, completion: M4) -> Cuckoo.ClassStubNoReturnFunction<(UIViewController, Bool, Bool, (() -> Void)?)> where M1.MatchedType == UIViewController, M2.MatchedType == Bool, M3.MatchedType == Bool, M4.OptionalMatchedType == (() -> Void) {
 	        let matchers: [Cuckoo.ParameterMatcher<(UIViewController, Bool, Bool, (() -> Void)?)>] = [wrap(matchable: vc) { $0.0 }, wrap(matchable: animated) { $0.1 }, wrap(matchable: isPopover) { $0.2 }, wrap(matchable: completion) { $0.3 }]
 	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportPresenter.self, method: "present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)", parameterMatchers: matchers))
 	    }
@@ -3271,12 +3802,12 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_GenerateReportPresenter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_GenerateReportPresenter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -3286,67 +3817,66 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
+	    func viewHasLoaded() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Any {
+	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<(Any), Void> where M1.MatchedType == Any {
 	        let matchers: [Cuckoo.ParameterMatcher<(Any)>] = [wrap(matchable: data) { $0 }]
 	        return cuckoo_manager.verify("setupView(data: Any)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func close() -> Cuckoo.__DoNotUse<Void> {
+	    func close() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func generateReport<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == GenerateReportSelection {
+	    func generateReport<M1: Cuckoo.Matchable>(selection: M1) -> Cuckoo.__DoNotUse<(GenerateReportSelection), Void> where M1.MatchedType == GenerateReportSelection {
 	        let matchers: [Cuckoo.ParameterMatcher<(GenerateReportSelection)>] = [wrap(matchable: selection) { $0 }]
 	        return cuckoo_manager.verify("generateReport(selection: GenerateReportSelection)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func presentAlert<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(title: M1, message: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == String, M2.MatchedType == String {
+	    func presentAlert<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(title: M1, message: M2) -> Cuckoo.__DoNotUse<(String, String), Void> where M1.MatchedType == String, M2.MatchedType == String {
 	        let matchers: [Cuckoo.ParameterMatcher<(String, String)>] = [wrap(matchable: title) { $0.0 }, wrap(matchable: message) { $0.1 }]
 	        return cuckoo_manager.verify("presentAlert(title: String, message: String)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func presentSheet<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable>(title: M1, message: M2, actions: M3) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == String?, M2.MatchedType == String?, M3.MatchedType == [UIAlertAction] {
+	    func presentSheet<M1: Cuckoo.OptionalMatchable, M2: Cuckoo.OptionalMatchable, M3: Cuckoo.Matchable>(title: M1, message: M2, actions: M3) -> Cuckoo.__DoNotUse<(String?, String?, [UIAlertAction]), Void> where M1.OptionalMatchedType == String, M2.OptionalMatchedType == String, M3.MatchedType == [UIAlertAction] {
 	        let matchers: [Cuckoo.ParameterMatcher<(String?, String?, [UIAlertAction])>] = [wrap(matchable: title) { $0.0 }, wrap(matchable: message) { $0.1 }, wrap(matchable: actions) { $0.2 }]
 	        return cuckoo_manager.verify("presentSheet(title: String?, message: String?, actions: [UIAlertAction])", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func present<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable, M4: Cuckoo.Matchable>(vc: M1, animated: M2, isPopover: M3, completion: M4) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == UIViewController, M2.MatchedType == Bool, M3.MatchedType == Bool, M4.MatchedType == (() -> Void)? {
+	    func present<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable, M4: Cuckoo.OptionalMatchable>(vc: M1, animated: M2, isPopover: M3, completion: M4) -> Cuckoo.__DoNotUse<(UIViewController, Bool, Bool, (() -> Void)?), Void> where M1.MatchedType == UIViewController, M2.MatchedType == Bool, M3.MatchedType == Bool, M4.OptionalMatchedType == (() -> Void) {
 	        let matchers: [Cuckoo.ParameterMatcher<(UIViewController, Bool, Bool, (() -> Void)?)>] = [wrap(matchable: vc) { $0.0 }, wrap(matchable: animated) { $0.1 }, wrap(matchable: isPopover) { $0.2 }, wrap(matchable: completion) { $0.3 }]
 	        return cuckoo_manager.verify("present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func presentOutputSettings() -> Cuckoo.__DoNotUse<Void> {
+	    func presentOutputSettings() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("presentOutputSettings()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func hideHudFromView() -> Cuckoo.__DoNotUse<Void> {
+	    func hideHudFromView() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("hideHudFromView()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func presentEnableDistances() -> Cuckoo.__DoNotUse<Void> {
+	    func presentEnableDistances() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("presentEnableDistances()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class GenerateReportPresenterStub: GenerateReportPresenter {
@@ -3355,44 +3885,44 @@ class MockGenerateReportPresenter: GenerateReportPresenter, Cuckoo.ClassMock {
     
 
     
-     override func viewHasLoaded()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func viewHasLoaded()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func setupView(data: Any)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func setupView(data: Any)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func close()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func close()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func generateReport(selection: GenerateReportSelection)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func generateReport(selection: GenerateReportSelection)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func presentAlert(title: String, message: String)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func presentAlert(title: String, message: String)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func presentSheet(title: String?, message: String?, actions: [UIAlertAction])  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func presentSheet(title: String?, message: String?, actions: [UIAlertAction])   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func present(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func presentOutputSettings()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func presentOutputSettings()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func hideHudFromView()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func hideHudFromView()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func presentEnableDistances()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func presentEnableDistances()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -3413,94 +3943,125 @@ import Cuckoo
 import Foundation
 import Viperit
 
-class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.ClassMock {
-    typealias MocksType = GenerateReportRouter
-    typealias Stubbing = __StubbingProxy_GenerateReportRouter
-    typealias Verification = __VerificationProxy_GenerateReportRouter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.ClassMock {
+    
+     typealias MocksType = GenerateReportRouter
+    
+     typealias Stubbing = __StubbingProxy_GenerateReportRouter
+     typealias Verification = __VerificationProxy_GenerateReportRouter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: GenerateReportRouter?
+
+     func enableDefaultImplementation(_ stub: GenerateReportRouter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "close", "returnSignature": "", "fullyQualifiedName": "close()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func close()  {
         
-            return cuckoo_manager.call("close()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.close()
-                    )
+    return cuckoo_manager.call("close()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.close()
+                ,
+            defaultCall: __defaultImplStub!.close())
         
     }
     
-    // ["name": "openSheet", "returnSignature": "", "fullyQualifiedName": "openSheet(title: String?, message: String?, actions: [UIAlertAction])", "parameterSignature": "title: String?, message: String?, actions: [UIAlertAction]", "parameterSignatureWithoutNames": "title: String?, message: String?, actions: [UIAlertAction]", "inputTypes": "String?, String?, [UIAlertAction]", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "title, message, actions", "call": "title: title, message: message, actions: actions", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("title"), name: "title", type: "String?", range: CountableRange(336..<350), nameRange: CountableRange(336..<341)), CuckooGeneratorFramework.MethodParameter(label: Optional("message"), name: "message", type: "String?", range: CountableRange(352..<368), nameRange: CountableRange(352..<359)), CuckooGeneratorFramework.MethodParameter(label: Optional("actions"), name: "actions", type: "[UIAlertAction]", range: CountableRange(370..<394), nameRange: CountableRange(370..<377))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openSheet(title: String?, message: String?, actions: [UIAlertAction])  {
         
-            return cuckoo_manager.call("openSheet(title: String?, message: String?, actions: [UIAlertAction])",
-                parameters: (title, message, actions),
-                superclassCall:
-                    
-                    super.openSheet(title: title, message: message, actions: actions)
-                    )
+    return cuckoo_manager.call("openSheet(title: String?, message: String?, actions: [UIAlertAction])",
+            parameters: (title, message, actions),
+            escapingParameters: (title, message, actions),
+            superclassCall:
+                
+                super.openSheet(title: title, message: message, actions: actions)
+                ,
+            defaultCall: __defaultImplStub!.openSheet(title: title, message: message, actions: actions))
         
     }
     
-    // ["name": "openSettingsOnDisatnce", "returnSignature": "", "fullyQualifiedName": "openSettingsOnDisatnce()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openSettingsOnDisatnce()  {
         
-            return cuckoo_manager.call("openSettingsOnDisatnce()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openSettingsOnDisatnce()
-                    )
+    return cuckoo_manager.call("openSettingsOnDisatnce()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openSettingsOnDisatnce()
+                ,
+            defaultCall: __defaultImplStub!.openSettingsOnDisatnce())
         
     }
     
-    // ["name": "openSettingsOnReportLayout", "returnSignature": "", "fullyQualifiedName": "openSettingsOnReportLayout()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openSettingsOnReportLayout()  {
         
-            return cuckoo_manager.call("openSettingsOnReportLayout()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openSettingsOnReportLayout()
-                    )
+    return cuckoo_manager.call("openSettingsOnReportLayout()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openSettingsOnReportLayout()
+                ,
+            defaultCall: __defaultImplStub!.openSettingsOnReportLayout())
         
     }
     
-    // ["name": "openSettings", "returnSignature": "", "fullyQualifiedName": "openSettings(option: ShowSettingsOption)", "parameterSignature": "option: ShowSettingsOption", "parameterSignatureWithoutNames": "option: ShowSettingsOption", "inputTypes": "ShowSettingsOption", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "option", "call": "option: option", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("option"), name: "option", type: "ShowSettingsOption", range: CountableRange(955..<981), nameRange: CountableRange(955..<961))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openSettings(option: ShowSettingsOption)  {
         
-            return cuckoo_manager.call("openSettings(option: ShowSettingsOption)",
-                parameters: (option),
-                superclassCall:
-                    
-                    super.openSettings(option: option)
-                    )
+    return cuckoo_manager.call("openSettings(option: ShowSettingsOption)",
+            parameters: (option),
+            escapingParameters: (option),
+            superclassCall:
+                
+                super.openSettings(option: option)
+                ,
+            defaultCall: __defaultImplStub!.openSettings(option: option))
         
     }
     
-    // ["name": "open", "returnSignature": "", "fullyQualifiedName": "open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)", "parameterSignature": "vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?", "parameterSignatureWithoutNames": "vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?", "inputTypes": "UIViewController, Bool, Bool, (() -> Void)?", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": true, "@type": "ClassMethod", "accessibility": "", "parameterNames": "vc, animated, isPopover, completion", "call": "vc: vc, animated: animated, isPopover: isPopover, completion: completion", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("vc"), name: "vc", type: "UIViewController", range: CountableRange(1176..<1196), nameRange: CountableRange(1176..<1178)), CuckooGeneratorFramework.MethodParameter(label: Optional("animated"), name: "animated", type: "Bool", range: CountableRange(1198..<1219), nameRange: CountableRange(1198..<1206)), CuckooGeneratorFramework.MethodParameter(label: Optional("isPopover"), name: "isPopover", type: "Bool", range: CountableRange(1221..<1244), nameRange: CountableRange(1221..<1230)), CuckooGeneratorFramework.MethodParameter(label: Optional("completion"), name: "completion", type: "(() -> Void)?", range: CountableRange(1246..<1277), nameRange: CountableRange(1246..<1256))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)  {
         
-            return cuckoo_manager.call("open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)",
-                parameters: (vc, animated, isPopover, completion),
-                superclassCall:
-                    
-                    super.open(vc: vc, animated: animated, isPopover: isPopover, completion: completion)
-                    )
+    return cuckoo_manager.call("open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)",
+            parameters: (vc, animated, isPopover, completion),
+            escapingParameters: (vc, animated, isPopover, completion),
+            superclassCall:
+                
+                super.open(vc: vc, animated: animated, isPopover: isPopover, completion: completion)
+                ,
+            defaultCall: __defaultImplStub!.open(vc: vc, animated: animated, isPopover: isPopover, completion: completion))
         
     }
     
 
-	struct __StubbingProxy_GenerateReportRouter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_GenerateReportRouter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -3510,7 +4071,7 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportRouter.self, method: "close()", parameterMatchers: matchers))
 	    }
 	    
-	    func openSheet<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable>(title: M1, message: M2, actions: M3) -> Cuckoo.ClassStubNoReturnFunction<(String?, String?, [UIAlertAction])> where M1.MatchedType == String?, M2.MatchedType == String?, M3.MatchedType == [UIAlertAction] {
+	    func openSheet<M1: Cuckoo.OptionalMatchable, M2: Cuckoo.OptionalMatchable, M3: Cuckoo.Matchable>(title: M1, message: M2, actions: M3) -> Cuckoo.ClassStubNoReturnFunction<(String?, String?, [UIAlertAction])> where M1.OptionalMatchedType == String, M2.OptionalMatchedType == String, M3.MatchedType == [UIAlertAction] {
 	        let matchers: [Cuckoo.ParameterMatcher<(String?, String?, [UIAlertAction])>] = [wrap(matchable: title) { $0.0 }, wrap(matchable: message) { $0.1 }, wrap(matchable: actions) { $0.2 }]
 	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportRouter.self, method: "openSheet(title: String?, message: String?, actions: [UIAlertAction])", parameterMatchers: matchers))
 	    }
@@ -3530,19 +4091,19 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportRouter.self, method: "openSettings(option: ShowSettingsOption)", parameterMatchers: matchers))
 	    }
 	    
-	    func open<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable, M4: Cuckoo.Matchable>(vc: M1, animated: M2, isPopover: M3, completion: M4) -> Cuckoo.ClassStubNoReturnFunction<(UIViewController, Bool, Bool, (() -> Void)?)> where M1.MatchedType == UIViewController, M2.MatchedType == Bool, M3.MatchedType == Bool, M4.MatchedType == (() -> Void)? {
+	    func open<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable, M4: Cuckoo.OptionalMatchable>(vc: M1, animated: M2, isPopover: M3, completion: M4) -> Cuckoo.ClassStubNoReturnFunction<(UIViewController, Bool, Bool, (() -> Void)?)> where M1.MatchedType == UIViewController, M2.MatchedType == Bool, M3.MatchedType == Bool, M4.OptionalMatchedType == (() -> Void) {
 	        let matchers: [Cuckoo.ParameterMatcher<(UIViewController, Bool, Bool, (() -> Void)?)>] = [wrap(matchable: vc) { $0.0 }, wrap(matchable: animated) { $0.1 }, wrap(matchable: isPopover) { $0.2 }, wrap(matchable: completion) { $0.3 }]
 	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportRouter.self, method: "open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)", parameterMatchers: matchers))
 	    }
 	    
 	}
 
-	struct __VerificationProxy_GenerateReportRouter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_GenerateReportRouter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -3552,43 +4113,42 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func close() -> Cuckoo.__DoNotUse<Void> {
+	    func close() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openSheet<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable>(title: M1, message: M2, actions: M3) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == String?, M2.MatchedType == String?, M3.MatchedType == [UIAlertAction] {
+	    func openSheet<M1: Cuckoo.OptionalMatchable, M2: Cuckoo.OptionalMatchable, M3: Cuckoo.Matchable>(title: M1, message: M2, actions: M3) -> Cuckoo.__DoNotUse<(String?, String?, [UIAlertAction]), Void> where M1.OptionalMatchedType == String, M2.OptionalMatchedType == String, M3.MatchedType == [UIAlertAction] {
 	        let matchers: [Cuckoo.ParameterMatcher<(String?, String?, [UIAlertAction])>] = [wrap(matchable: title) { $0.0 }, wrap(matchable: message) { $0.1 }, wrap(matchable: actions) { $0.2 }]
 	        return cuckoo_manager.verify("openSheet(title: String?, message: String?, actions: [UIAlertAction])", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openSettingsOnDisatnce() -> Cuckoo.__DoNotUse<Void> {
+	    func openSettingsOnDisatnce() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openSettingsOnDisatnce()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openSettingsOnReportLayout() -> Cuckoo.__DoNotUse<Void> {
+	    func openSettingsOnReportLayout() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openSettingsOnReportLayout()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openSettings<M1: Cuckoo.Matchable>(option: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == ShowSettingsOption {
+	    func openSettings<M1: Cuckoo.Matchable>(option: M1) -> Cuckoo.__DoNotUse<(ShowSettingsOption), Void> where M1.MatchedType == ShowSettingsOption {
 	        let matchers: [Cuckoo.ParameterMatcher<(ShowSettingsOption)>] = [wrap(matchable: option) { $0 }]
 	        return cuckoo_manager.verify("openSettings(option: ShowSettingsOption)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func open<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable, M4: Cuckoo.Matchable>(vc: M1, animated: M2, isPopover: M3, completion: M4) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == UIViewController, M2.MatchedType == Bool, M3.MatchedType == Bool, M4.MatchedType == (() -> Void)? {
+	    func open<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable, M4: Cuckoo.OptionalMatchable>(vc: M1, animated: M2, isPopover: M3, completion: M4) -> Cuckoo.__DoNotUse<(UIViewController, Bool, Bool, (() -> Void)?), Void> where M1.MatchedType == UIViewController, M2.MatchedType == Bool, M3.MatchedType == Bool, M4.OptionalMatchedType == (() -> Void) {
 	        let matchers: [Cuckoo.ParameterMatcher<(UIViewController, Bool, Bool, (() -> Void)?)>] = [wrap(matchable: vc) { $0.0 }, wrap(matchable: animated) { $0.1 }, wrap(matchable: isPopover) { $0.2 }, wrap(matchable: completion) { $0.3 }]
 	        return cuckoo_manager.verify("open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class GenerateReportRouterStub: GenerateReportRouter {
@@ -3597,28 +4157,28 @@ class MockGenerateReportRouter: GenerateReportRouter, Cuckoo.ClassMock {
     
 
     
-     override func close()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func close()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openSheet(title: String?, message: String?, actions: [UIAlertAction])  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openSheet(title: String?, message: String?, actions: [UIAlertAction])   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openSettingsOnDisatnce()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openSettingsOnDisatnce()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openSettingsOnReportLayout()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openSettingsOnReportLayout()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openSettings(option: ShowSettingsOption)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openSettings(option: ShowSettingsOption)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -3643,46 +4203,65 @@ import SwiftyStoreKit
 import Toaster
 import Viperit
 
-class MockOCRConfigurationInteractor: OCRConfigurationInteractor, Cuckoo.ClassMock {
-    typealias MocksType = OCRConfigurationInteractor
-    typealias Stubbing = __StubbingProxy_OCRConfigurationInteractor
-    typealias Verification = __VerificationProxy_OCRConfigurationInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockOCRConfigurationInteractor: OCRConfigurationInteractor, Cuckoo.ClassMock {
+    
+     typealias MocksType = OCRConfigurationInteractor
+    
+     typealias Stubbing = __StubbingProxy_OCRConfigurationInteractor
+     typealias Verification = __VerificationProxy_OCRConfigurationInteractor
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
+    private var __defaultImplStub: OCRConfigurationInteractor?
 
-    
-
-    
-    // ["name": "requestProducts", "returnSignature": " -> Observable<SKProduct>", "fullyQualifiedName": "requestProducts() -> Observable<SKProduct>", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Observable<SKProduct>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func requestProducts()  -> Observable<SKProduct> {
-        
-            return cuckoo_manager.call("requestProducts() -> Observable<SKProduct>",
-                parameters: (),
-                superclassCall:
-                    
-                    super.requestProducts()
-                    )
-        
-    }
-    
-    // ["name": "purchase", "returnSignature": " -> Observable<PurchaseDetails>", "fullyQualifiedName": "purchase(product: String) -> Observable<PurchaseDetails>", "parameterSignature": "product: String", "parameterSignatureWithoutNames": "product: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "product", "call": "product: product", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("product"), name: "product", type: "String", range: CountableRange(739..<754), nameRange: CountableRange(739..<746))], "returnType": "Observable<PurchaseDetails>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func purchase(product: String)  -> Observable<PurchaseDetails> {
-        
-            return cuckoo_manager.call("purchase(product: String) -> Observable<PurchaseDetails>",
-                parameters: (product),
-                superclassCall:
-                    
-                    super.purchase(product: product)
-                    )
-        
+     func enableDefaultImplementation(_ stub: OCRConfigurationInteractor) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
     }
     
 
-	struct __StubbingProxy_OCRConfigurationInteractor: Cuckoo.StubbingProxy {
+    
+
+    
+
+    
+    
+    
+     override func requestProducts() -> Observable<SKProduct> {
+        
+    return cuckoo_manager.call("requestProducts() -> Observable<SKProduct>",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.requestProducts()
+                ,
+            defaultCall: __defaultImplStub!.requestProducts())
+        
+    }
+    
+    
+    
+     override func purchase(product: String) -> Observable<PurchaseDetails> {
+        
+    return cuckoo_manager.call("purchase(product: String) -> Observable<PurchaseDetails>",
+            parameters: (product),
+            escapingParameters: (product),
+            superclassCall:
+                
+                super.purchase(product: product)
+                ,
+            defaultCall: __defaultImplStub!.purchase(product: product))
+        
+    }
+    
+
+	 struct __StubbingProxy_OCRConfigurationInteractor: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -3699,12 +4278,12 @@ class MockOCRConfigurationInteractor: OCRConfigurationInteractor, Cuckoo.ClassMo
 	    
 	}
 
-	struct __VerificationProxy_OCRConfigurationInteractor: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_OCRConfigurationInteractor: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -3714,19 +4293,18 @@ class MockOCRConfigurationInteractor: OCRConfigurationInteractor, Cuckoo.ClassMo
 	
 	    
 	    @discardableResult
-	    func requestProducts() -> Cuckoo.__DoNotUse<Observable<SKProduct>> {
+	    func requestProducts() -> Cuckoo.__DoNotUse<(), Observable<SKProduct>> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("requestProducts() -> Observable<SKProduct>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func purchase<M1: Cuckoo.Matchable>(product: M1) -> Cuckoo.__DoNotUse<Observable<PurchaseDetails>> where M1.MatchedType == String {
+	    func purchase<M1: Cuckoo.Matchable>(product: M1) -> Cuckoo.__DoNotUse<(String), Observable<PurchaseDetails>> where M1.MatchedType == String {
 	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: product) { $0 }]
 	        return cuckoo_manager.verify("purchase(product: String) -> Observable<PurchaseDetails>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class OCRConfigurationInteractorStub: OCRConfigurationInteractor {
@@ -3735,12 +4313,12 @@ class MockOCRConfigurationInteractor: OCRConfigurationInteractor, Cuckoo.ClassMo
     
 
     
-     override func requestProducts()  -> Observable<SKProduct> {
-        return DefaultValueRegistry.defaultValue(for: Observable<SKProduct>.self)
+     override func requestProducts() -> Observable<SKProduct>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<SKProduct>).self)
     }
     
-     override func purchase(product: String)  -> Observable<PurchaseDetails> {
-        return DefaultValueRegistry.defaultValue(for: Observable<PurchaseDetails>.self)
+     override func purchase(product: String) -> Observable<PurchaseDetails>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<PurchaseDetails>).self)
     }
     
 }
@@ -3763,34 +4341,50 @@ import RxSwift
 import StoreKit
 import Viperit
 
-class MockOCRConfigurationPresenter: OCRConfigurationPresenter, Cuckoo.ClassMock {
-    typealias MocksType = OCRConfigurationPresenter
-    typealias Stubbing = __StubbingProxy_OCRConfigurationPresenter
-    typealias Verification = __VerificationProxy_OCRConfigurationPresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockOCRConfigurationPresenter: OCRConfigurationPresenter, Cuckoo.ClassMock {
+    
+     typealias MocksType = OCRConfigurationPresenter
+    
+     typealias Stubbing = __StubbingProxy_OCRConfigurationPresenter
+     typealias Verification = __VerificationProxy_OCRConfigurationPresenter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: OCRConfigurationPresenter?
+
+     func enableDefaultImplementation(_ stub: OCRConfigurationPresenter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "viewHasLoaded", "returnSignature": "", "fullyQualifiedName": "viewHasLoaded()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func viewHasLoaded()  {
         
-            return cuckoo_manager.call("viewHasLoaded()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.viewHasLoaded()
-                    )
+    return cuckoo_manager.call("viewHasLoaded()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.viewHasLoaded()
+                ,
+            defaultCall: __defaultImplStub!.viewHasLoaded())
         
     }
     
 
-	struct __StubbingProxy_OCRConfigurationPresenter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_OCRConfigurationPresenter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -3802,12 +4396,12 @@ class MockOCRConfigurationPresenter: OCRConfigurationPresenter, Cuckoo.ClassMock
 	    
 	}
 
-	struct __VerificationProxy_OCRConfigurationPresenter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_OCRConfigurationPresenter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -3817,13 +4411,12 @@ class MockOCRConfigurationPresenter: OCRConfigurationPresenter, Cuckoo.ClassMock
 	
 	    
 	    @discardableResult
-	    func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
+	    func viewHasLoaded() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class OCRConfigurationPresenterStub: OCRConfigurationPresenter {
@@ -3832,8 +4425,8 @@ class MockOCRConfigurationPresenter: OCRConfigurationPresenter, Cuckoo.ClassMock
     
 
     
-     override func viewHasLoaded()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func viewHasLoaded()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -3854,34 +4447,47 @@ import Cuckoo
 import Foundation
 import Viperit
 
-class MockOCRConfigurationRouter: OCRConfigurationRouter, Cuckoo.ClassMock {
-    typealias MocksType = OCRConfigurationRouter
-    typealias Stubbing = __StubbingProxy_OCRConfigurationRouter
-    typealias Verification = __VerificationProxy_OCRConfigurationRouter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockOCRConfigurationRouter: OCRConfigurationRouter, Cuckoo.ClassMock {
+    
+     typealias MocksType = OCRConfigurationRouter
+    
+     typealias Stubbing = __StubbingProxy_OCRConfigurationRouter
+     typealias Verification = __VerificationProxy_OCRConfigurationRouter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: OCRConfigurationRouter?
+
+     func enableDefaultImplementation(_ stub: OCRConfigurationRouter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
 
-	struct __StubbingProxy_OCRConfigurationRouter: Cuckoo.StubbingProxy {
+    
+
+	 struct __StubbingProxy_OCRConfigurationRouter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
 	    
 	}
 
-	struct __VerificationProxy_OCRConfigurationRouter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_OCRConfigurationRouter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -3891,7 +4497,6 @@ class MockOCRConfigurationRouter: OCRConfigurationRouter, Cuckoo.ClassMock {
 	
 	    
 	}
-
 }
 
  class OCRConfigurationRouterStub: OCRConfigurationRouter {
@@ -3919,70 +4524,95 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.ClassMock {
-    typealias MocksType = PaymentMethodsInteractor
-    typealias Stubbing = __StubbingProxy_PaymentMethodsInteractor
-    typealias Verification = __VerificationProxy_PaymentMethodsInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.ClassMock {
+    
+     typealias MocksType = PaymentMethodsInteractor
+    
+     typealias Stubbing = __StubbingProxy_PaymentMethodsInteractor
+     typealias Verification = __VerificationProxy_PaymentMethodsInteractor
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: PaymentMethodsInteractor?
+
+     func enableDefaultImplementation(_ stub: PaymentMethodsInteractor) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "configureSubscribers", "returnSignature": "", "fullyQualifiedName": "configureSubscribers()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func configureSubscribers()  {
         
-            return cuckoo_manager.call("configureSubscribers()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.configureSubscribers()
-                    )
+    return cuckoo_manager.call("configureSubscribers()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.configureSubscribers()
+                ,
+            defaultCall: __defaultImplStub!.configureSubscribers())
         
     }
     
-    // ["name": "fetchedModelAdapter", "returnSignature": " -> FetchedModelAdapter?", "fullyQualifiedName": "fetchedModelAdapter() -> FetchedModelAdapter?", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Optional<FetchedModelAdapter>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func fetchedModelAdapter()  -> FetchedModelAdapter? {
+    
+    
+     override func fetchedModelAdapter() -> FetchedModelAdapter? {
         
-            return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
-                parameters: (),
-                superclassCall:
-                    
-                    super.fetchedModelAdapter()
-                    )
+    return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.fetchedModelAdapter()
+                ,
+            defaultCall: __defaultImplStub!.fetchedModelAdapter())
         
     }
     
-    // ["name": "save", "returnSignature": "", "fullyQualifiedName": "save(paymentMethod: PaymentMethod, update: Bool)", "parameterSignature": "paymentMethod: PaymentMethod, update: Bool", "parameterSignatureWithoutNames": "paymentMethod: PaymentMethod, update: Bool", "inputTypes": "PaymentMethod, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "paymentMethod, update", "call": "paymentMethod: paymentMethod, update: update", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("paymentMethod"), name: "paymentMethod", type: "PaymentMethod", range: CountableRange(870..<898), nameRange: CountableRange(870..<883)), CuckooGeneratorFramework.MethodParameter(label: Optional("update"), name: "update", type: "Bool", range: CountableRange(900..<912), nameRange: CountableRange(900..<906))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func save(paymentMethod: PaymentMethod, update: Bool)  {
         
-            return cuckoo_manager.call("save(paymentMethod: PaymentMethod, update: Bool)",
-                parameters: (paymentMethod, update),
-                superclassCall:
-                    
-                    super.save(paymentMethod: paymentMethod, update: update)
-                    )
+    return cuckoo_manager.call("save(paymentMethod: PaymentMethod, update: Bool)",
+            parameters: (paymentMethod, update),
+            escapingParameters: (paymentMethod, update),
+            superclassCall:
+                
+                super.save(paymentMethod: paymentMethod, update: update)
+                ,
+            defaultCall: __defaultImplStub!.save(paymentMethod: paymentMethod, update: update))
         
     }
     
-    // ["name": "delete", "returnSignature": "", "fullyQualifiedName": "delete(paymentMethod: PaymentMethod)", "parameterSignature": "paymentMethod: PaymentMethod", "parameterSignatureWithoutNames": "paymentMethod: PaymentMethod", "inputTypes": "PaymentMethod", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "paymentMethod", "call": "paymentMethod: paymentMethod", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("paymentMethod"), name: "paymentMethod", type: "PaymentMethod", range: CountableRange(1278..<1306), nameRange: CountableRange(1278..<1291))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func delete(paymentMethod: PaymentMethod)  {
         
-            return cuckoo_manager.call("delete(paymentMethod: PaymentMethod)",
-                parameters: (paymentMethod),
-                superclassCall:
-                    
-                    super.delete(paymentMethod: paymentMethod)
-                    )
+    return cuckoo_manager.call("delete(paymentMethod: PaymentMethod)",
+            parameters: (paymentMethod),
+            escapingParameters: (paymentMethod),
+            superclassCall:
+                
+                super.delete(paymentMethod: paymentMethod)
+                ,
+            defaultCall: __defaultImplStub!.delete(paymentMethod: paymentMethod))
         
     }
     
 
-	struct __StubbingProxy_PaymentMethodsInteractor: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_PaymentMethodsInteractor: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -3992,7 +4622,7 @@ class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockPaymentMethodsInteractor.self, method: "configureSubscribers()", parameterMatchers: matchers))
 	    }
 	    
-	    func fetchedModelAdapter() -> Cuckoo.ClassStubFunction<(), Optional<FetchedModelAdapter>> {
+	    func fetchedModelAdapter() -> Cuckoo.ClassStubFunction<(), FetchedModelAdapter?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockPaymentMethodsInteractor.self, method: "fetchedModelAdapter() -> FetchedModelAdapter?", parameterMatchers: matchers))
 	    }
@@ -4009,12 +4639,12 @@ class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_PaymentMethodsInteractor: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_PaymentMethodsInteractor: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -4024,31 +4654,30 @@ class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func configureSubscribers() -> Cuckoo.__DoNotUse<Void> {
+	    func configureSubscribers() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("configureSubscribers()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func fetchedModelAdapter() -> Cuckoo.__DoNotUse<Optional<FetchedModelAdapter>> {
+	    func fetchedModelAdapter() -> Cuckoo.__DoNotUse<(), FetchedModelAdapter?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("fetchedModelAdapter() -> FetchedModelAdapter?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func save<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(paymentMethod: M1, update: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == PaymentMethod, M2.MatchedType == Bool {
+	    func save<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(paymentMethod: M1, update: M2) -> Cuckoo.__DoNotUse<(PaymentMethod, Bool), Void> where M1.MatchedType == PaymentMethod, M2.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(PaymentMethod, Bool)>] = [wrap(matchable: paymentMethod) { $0.0 }, wrap(matchable: update) { $0.1 }]
 	        return cuckoo_manager.verify("save(paymentMethod: PaymentMethod, update: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func delete<M1: Cuckoo.Matchable>(paymentMethod: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == PaymentMethod {
+	    func delete<M1: Cuckoo.Matchable>(paymentMethod: M1) -> Cuckoo.__DoNotUse<(PaymentMethod), Void> where M1.MatchedType == PaymentMethod {
 	        let matchers: [Cuckoo.ParameterMatcher<(PaymentMethod)>] = [wrap(matchable: paymentMethod) { $0 }]
 	        return cuckoo_manager.verify("delete(paymentMethod: PaymentMethod)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class PaymentMethodsInteractorStub: PaymentMethodsInteractor {
@@ -4057,20 +4686,20 @@ class MockPaymentMethodsInteractor: PaymentMethodsInteractor, Cuckoo.ClassMock {
     
 
     
-     override func configureSubscribers()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func configureSubscribers()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func fetchedModelAdapter()  -> FetchedModelAdapter? {
-        return DefaultValueRegistry.defaultValue(for: Optional<FetchedModelAdapter>.self)
+     override func fetchedModelAdapter() -> FetchedModelAdapter?  {
+        return DefaultValueRegistry.defaultValue(for: (FetchedModelAdapter?).self)
     }
     
-     override func save(paymentMethod: PaymentMethod, update: Bool)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func save(paymentMethod: PaymentMethod, update: Bool)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func delete(paymentMethod: PaymentMethod)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func delete(paymentMethod: PaymentMethod)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -4092,46 +4721,65 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockPaymentMethodsPresenter: PaymentMethodsPresenter, Cuckoo.ClassMock {
-    typealias MocksType = PaymentMethodsPresenter
-    typealias Stubbing = __StubbingProxy_PaymentMethodsPresenter
-    typealias Verification = __VerificationProxy_PaymentMethodsPresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockPaymentMethodsPresenter: PaymentMethodsPresenter, Cuckoo.ClassMock {
+    
+     typealias MocksType = PaymentMethodsPresenter
+    
+     typealias Stubbing = __StubbingProxy_PaymentMethodsPresenter
+     typealias Verification = __VerificationProxy_PaymentMethodsPresenter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: PaymentMethodsPresenter?
+
+     func enableDefaultImplementation(_ stub: PaymentMethodsPresenter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "viewHasLoaded", "returnSignature": "", "fullyQualifiedName": "viewHasLoaded()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func viewHasLoaded()  {
         
-            return cuckoo_manager.call("viewHasLoaded()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.viewHasLoaded()
-                    )
+    return cuckoo_manager.call("viewHasLoaded()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.viewHasLoaded()
+                ,
+            defaultCall: __defaultImplStub!.viewHasLoaded())
         
     }
     
-    // ["name": "fetchedModelAdapter", "returnSignature": " -> FetchedModelAdapter?", "fullyQualifiedName": "fetchedModelAdapter() -> FetchedModelAdapter?", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Optional<FetchedModelAdapter>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func fetchedModelAdapter()  -> FetchedModelAdapter? {
+    
+    
+     override func fetchedModelAdapter() -> FetchedModelAdapter? {
         
-            return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
-                parameters: (),
-                superclassCall:
-                    
-                    super.fetchedModelAdapter()
-                    )
+    return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.fetchedModelAdapter()
+                ,
+            defaultCall: __defaultImplStub!.fetchedModelAdapter())
         
     }
     
 
-	struct __StubbingProxy_PaymentMethodsPresenter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_PaymentMethodsPresenter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -4141,19 +4789,19 @@ class MockPaymentMethodsPresenter: PaymentMethodsPresenter, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockPaymentMethodsPresenter.self, method: "viewHasLoaded()", parameterMatchers: matchers))
 	    }
 	    
-	    func fetchedModelAdapter() -> Cuckoo.ClassStubFunction<(), Optional<FetchedModelAdapter>> {
+	    func fetchedModelAdapter() -> Cuckoo.ClassStubFunction<(), FetchedModelAdapter?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockPaymentMethodsPresenter.self, method: "fetchedModelAdapter() -> FetchedModelAdapter?", parameterMatchers: matchers))
 	    }
 	    
 	}
 
-	struct __VerificationProxy_PaymentMethodsPresenter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_PaymentMethodsPresenter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -4163,19 +4811,18 @@ class MockPaymentMethodsPresenter: PaymentMethodsPresenter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
+	    func viewHasLoaded() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func fetchedModelAdapter() -> Cuckoo.__DoNotUse<Optional<FetchedModelAdapter>> {
+	    func fetchedModelAdapter() -> Cuckoo.__DoNotUse<(), FetchedModelAdapter?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("fetchedModelAdapter() -> FetchedModelAdapter?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class PaymentMethodsPresenterStub: PaymentMethodsPresenter {
@@ -4184,12 +4831,12 @@ class MockPaymentMethodsPresenter: PaymentMethodsPresenter, Cuckoo.ClassMock {
     
 
     
-     override func viewHasLoaded()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func viewHasLoaded()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func fetchedModelAdapter()  -> FetchedModelAdapter? {
-        return DefaultValueRegistry.defaultValue(for: Optional<FetchedModelAdapter>.self)
+     override func fetchedModelAdapter() -> FetchedModelAdapter?  {
+        return DefaultValueRegistry.defaultValue(for: (FetchedModelAdapter?).self)
     }
     
 }
@@ -4210,34 +4857,47 @@ import Cuckoo
 import Foundation
 import Viperit
 
-class MockPaymentMethodsRouter: PaymentMethodsRouter, Cuckoo.ClassMock {
-    typealias MocksType = PaymentMethodsRouter
-    typealias Stubbing = __StubbingProxy_PaymentMethodsRouter
-    typealias Verification = __VerificationProxy_PaymentMethodsRouter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockPaymentMethodsRouter: PaymentMethodsRouter, Cuckoo.ClassMock {
+    
+     typealias MocksType = PaymentMethodsRouter
+    
+     typealias Stubbing = __StubbingProxy_PaymentMethodsRouter
+     typealias Verification = __VerificationProxy_PaymentMethodsRouter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: PaymentMethodsRouter?
+
+     func enableDefaultImplementation(_ stub: PaymentMethodsRouter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
 
-	struct __StubbingProxy_PaymentMethodsRouter: Cuckoo.StubbingProxy {
+    
+
+	 struct __StubbingProxy_PaymentMethodsRouter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
 	    
 	}
 
-	struct __VerificationProxy_PaymentMethodsRouter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_PaymentMethodsRouter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -4247,7 +4907,6 @@ class MockPaymentMethodsRouter: PaymentMethodsRouter, Cuckoo.ClassMock {
 	
 	    
 	}
-
 }
 
  class PaymentMethodsRouterStub: PaymentMethodsRouter {
@@ -4255,415 +4914,6 @@ class MockPaymentMethodsRouter: PaymentMethodsRouter, Cuckoo.ClassMock {
 
     
 
-    
-}
-
-
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsInteractor.swift
-//
-//  ReceiptActionsInteractor.swift
-//  SmartReceipts
-//
-//  Created by Bogdan Evsenev on 18/06/2017.
-//  Copyright © 2017 Will Baumann. All rights reserved.
-//
-
-import Cuckoo
-@testable import SmartReceipts
-
-import Foundation
-import Viperit
-
-class MockReceiptActionsInteractor: ReceiptActionsInteractor, Cuckoo.ClassMock {
-    typealias MocksType = ReceiptActionsInteractor
-    typealias Stubbing = __StubbingProxy_ReceiptActionsInteractor
-    typealias Verification = __VerificationProxy_ReceiptActionsInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
-
-    
-
-    
-
-    
-    // ["name": "attachAppInputFile", "returnSignature": " -> Bool", "fullyQualifiedName": "attachAppInputFile(to: WBReceipt) -> Bool", "parameterSignature": "to receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "to: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("to"), name: "receipt", type: "WBReceipt", range: CountableRange(277..<298), nameRange: CountableRange(277..<279))], "returnType": "Bool", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func attachAppInputFile(to receipt: WBReceipt)  -> Bool {
-        
-            return cuckoo_manager.call("attachAppInputFile(to: WBReceipt) -> Bool",
-                parameters: (receipt),
-                superclassCall:
-                    
-                    super.attachAppInputFile(to: receipt)
-                    )
-        
-    }
-    
-    // ["name": "attachImage", "returnSignature": " -> Bool", "fullyQualifiedName": "attachImage(_: UIImage, to: WBReceipt) -> Bool", "parameterSignature": "_ image: UIImage, to receipt: WBReceipt", "parameterSignatureWithoutNames": "image: UIImage, receipt: WBReceipt", "inputTypes": "UIImage, WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "image, receipt", "call": "image, to: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "image", type: "UIImage", range: CountableRange(468..<484), nameRange: CountableRange(0..<0)), CuckooGeneratorFramework.MethodParameter(label: Optional("to"), name: "receipt", type: "WBReceipt", range: CountableRange(486..<507), nameRange: CountableRange(486..<488))], "returnType": "Bool", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func attachImage(_ image: UIImage, to receipt: WBReceipt)  -> Bool {
-        
-            return cuckoo_manager.call("attachImage(_: UIImage, to: WBReceipt) -> Bool",
-                parameters: (image, receipt),
-                superclassCall:
-                    
-                    super.attachImage(image, to: receipt)
-                    )
-        
-    }
-    
-
-	struct __StubbingProxy_ReceiptActionsInteractor: Cuckoo.StubbingProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	
-	    init(manager: Cuckoo.MockManager) {
-	        self.cuckoo_manager = manager
-	    }
-	    
-	    
-	    func attachAppInputFile<M1: Cuckoo.Matchable>(to receipt: M1) -> Cuckoo.ClassStubFunction<(WBReceipt), Bool> where M1.MatchedType == WBReceipt {
-	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptActionsInteractor.self, method: "attachAppInputFile(to: WBReceipt) -> Bool", parameterMatchers: matchers))
-	    }
-	    
-	    func attachImage<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ image: M1, to receipt: M2) -> Cuckoo.ClassStubFunction<(UIImage, WBReceipt), Bool> where M1.MatchedType == UIImage, M2.MatchedType == WBReceipt {
-	        let matchers: [Cuckoo.ParameterMatcher<(UIImage, WBReceipt)>] = [wrap(matchable: image) { $0.0 }, wrap(matchable: receipt) { $0.1 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptActionsInteractor.self, method: "attachImage(_: UIImage, to: WBReceipt) -> Bool", parameterMatchers: matchers))
-	    }
-	    
-	}
-
-	struct __VerificationProxy_ReceiptActionsInteractor: Cuckoo.VerificationProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	    private let callMatcher: Cuckoo.CallMatcher
-	    private let sourceLocation: Cuckoo.SourceLocation
-	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
-	        self.cuckoo_manager = manager
-	        self.callMatcher = callMatcher
-	        self.sourceLocation = sourceLocation
-	    }
-	
-	    
-	
-	    
-	    @discardableResult
-	    func attachAppInputFile<M1: Cuckoo.Matchable>(to receipt: M1) -> Cuckoo.__DoNotUse<Bool> where M1.MatchedType == WBReceipt {
-	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
-	        return cuckoo_manager.verify("attachAppInputFile(to: WBReceipt) -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func attachImage<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ image: M1, to receipt: M2) -> Cuckoo.__DoNotUse<Bool> where M1.MatchedType == UIImage, M2.MatchedType == WBReceipt {
-	        let matchers: [Cuckoo.ParameterMatcher<(UIImage, WBReceipt)>] = [wrap(matchable: image) { $0.0 }, wrap(matchable: receipt) { $0.1 }]
-	        return cuckoo_manager.verify("attachImage(_: UIImage, to: WBReceipt) -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	}
-
-}
-
- class ReceiptActionsInteractorStub: ReceiptActionsInteractor {
-    
-
-    
-
-    
-     override func attachAppInputFile(to receipt: WBReceipt)  -> Bool {
-        return DefaultValueRegistry.defaultValue(for: Bool.self)
-    }
-    
-     override func attachImage(_ image: UIImage, to receipt: WBReceipt)  -> Bool {
-        return DefaultValueRegistry.defaultValue(for: Bool.self)
-    }
-    
-}
-
-
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsPresenter.swift
-//
-//  ReceiptActionsPresenter.swift
-//  SmartReceipts
-//
-//  Created by Bogdan Evsenev on 18/06/2017.
-//  Copyright © 2017 Will Baumann. All rights reserved.
-//
-
-import Cuckoo
-@testable import SmartReceipts
-
-import Foundation
-import RxSwift
-import Viperit
-
-class MockReceiptActionsPresenter: ReceiptActionsPresenter, Cuckoo.ClassMock {
-    typealias MocksType = ReceiptActionsPresenter
-    typealias Stubbing = __StubbingProxy_ReceiptActionsPresenter
-    typealias Verification = __VerificationProxy_ReceiptActionsPresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
-
-    
-
-    
-
-    
-    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(662..<671), nameRange: CountableRange(662..<666))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func setupView(data: Any)  {
-        
-            return cuckoo_manager.call("setupView(data: Any)",
-                parameters: (data),
-                superclassCall:
-                    
-                    super.setupView(data: data)
-                    )
-        
-    }
-    
-    // ["name": "viewHasLoaded", "returnSignature": "", "fullyQualifiedName": "viewHasLoaded()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func viewHasLoaded()  {
-        
-            return cuckoo_manager.call("viewHasLoaded()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.viewHasLoaded()
-                    )
-        
-    }
-    
-    // ["name": "configureSubscribers", "returnSignature": "", "fullyQualifiedName": "configureSubscribers()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func configureSubscribers()  {
-        
-            return cuckoo_manager.call("configureSubscribers()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.configureSubscribers()
-                    )
-        
-    }
-    
-
-	struct __StubbingProxy_ReceiptActionsPresenter: Cuckoo.StubbingProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	
-	    init(manager: Cuckoo.MockManager) {
-	        self.cuckoo_manager = manager
-	    }
-	    
-	    
-	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.ClassStubNoReturnFunction<(Any)> where M1.MatchedType == Any {
-	        let matchers: [Cuckoo.ParameterMatcher<(Any)>] = [wrap(matchable: data) { $0 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptActionsPresenter.self, method: "setupView(data: Any)", parameterMatchers: matchers))
-	    }
-	    
-	    func viewHasLoaded() -> Cuckoo.ClassStubNoReturnFunction<()> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptActionsPresenter.self, method: "viewHasLoaded()", parameterMatchers: matchers))
-	    }
-	    
-	    func configureSubscribers() -> Cuckoo.ClassStubNoReturnFunction<()> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptActionsPresenter.self, method: "configureSubscribers()", parameterMatchers: matchers))
-	    }
-	    
-	}
-
-	struct __VerificationProxy_ReceiptActionsPresenter: Cuckoo.VerificationProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	    private let callMatcher: Cuckoo.CallMatcher
-	    private let sourceLocation: Cuckoo.SourceLocation
-	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
-	        self.cuckoo_manager = manager
-	        self.callMatcher = callMatcher
-	        self.sourceLocation = sourceLocation
-	    }
-	
-	    
-	
-	    
-	    @discardableResult
-	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Any {
-	        let matchers: [Cuckoo.ParameterMatcher<(Any)>] = [wrap(matchable: data) { $0 }]
-	        return cuckoo_manager.verify("setupView(data: Any)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func configureSubscribers() -> Cuckoo.__DoNotUse<Void> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("configureSubscribers()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	}
-
-}
-
- class ReceiptActionsPresenterStub: ReceiptActionsPresenter {
-    
-
-    
-
-    
-     override func setupView(data: Any)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-     override func viewHasLoaded()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-     override func configureSubscribers()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-}
-
-
-// MARK: - Mocks generated from file: SmartReceipts/Modules/Receipt Actions/ReceiptActionsRouter.swift
-//
-//  ReceiptActionsRouter.swift
-//  SmartReceipts
-//
-//  Created by Bogdan Evsenev on 18/06/2017.
-//  Copyright © 2017 Will Baumann. All rights reserved.
-//
-
-import Cuckoo
-@testable import SmartReceipts
-
-import Foundation
-import Viperit
-
-class MockReceiptActionsRouter: ReceiptActionsRouter, Cuckoo.ClassMock {
-    typealias MocksType = ReceiptActionsRouter
-    typealias Stubbing = __StubbingProxy_ReceiptActionsRouter
-    typealias Verification = __VerificationProxy_ReceiptActionsRouter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
-
-    
-
-    
-
-    
-    // ["name": "close", "returnSignature": "", "fullyQualifiedName": "close()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func close()  {
-        
-            return cuckoo_manager.call("close()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.close()
-                    )
-        
-    }
-    
-    // ["name": "openMove", "returnSignature": "", "fullyQualifiedName": "openMove(receipt: WBReceipt)", "parameterSignature": "receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "WBReceipt", range: CountableRange(340..<358), nameRange: CountableRange(340..<347))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func openMove(receipt: WBReceipt)  {
-        
-            return cuckoo_manager.call("openMove(receipt: WBReceipt)",
-                parameters: (receipt),
-                superclassCall:
-                    
-                    super.openMove(receipt: receipt)
-                    )
-        
-    }
-    
-    // ["name": "openCopy", "returnSignature": "", "fullyQualifiedName": "openCopy(receipt: WBReceipt)", "parameterSignature": "receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "WBReceipt", range: CountableRange(449..<467), nameRange: CountableRange(449..<456))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func openCopy(receipt: WBReceipt)  {
-        
-            return cuckoo_manager.call("openCopy(receipt: WBReceipt)",
-                parameters: (receipt),
-                superclassCall:
-                    
-                    super.openCopy(receipt: receipt)
-                    )
-        
-    }
-    
-
-	struct __StubbingProxy_ReceiptActionsRouter: Cuckoo.StubbingProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	
-	    init(manager: Cuckoo.MockManager) {
-	        self.cuckoo_manager = manager
-	    }
-	    
-	    
-	    func close() -> Cuckoo.ClassStubNoReturnFunction<()> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptActionsRouter.self, method: "close()", parameterMatchers: matchers))
-	    }
-	    
-	    func openMove<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.ClassStubNoReturnFunction<(WBReceipt)> where M1.MatchedType == WBReceipt {
-	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptActionsRouter.self, method: "openMove(receipt: WBReceipt)", parameterMatchers: matchers))
-	    }
-	    
-	    func openCopy<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.ClassStubNoReturnFunction<(WBReceipt)> where M1.MatchedType == WBReceipt {
-	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptActionsRouter.self, method: "openCopy(receipt: WBReceipt)", parameterMatchers: matchers))
-	    }
-	    
-	}
-
-	struct __VerificationProxy_ReceiptActionsRouter: Cuckoo.VerificationProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	    private let callMatcher: Cuckoo.CallMatcher
-	    private let sourceLocation: Cuckoo.SourceLocation
-	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
-	        self.cuckoo_manager = manager
-	        self.callMatcher = callMatcher
-	        self.sourceLocation = sourceLocation
-	    }
-	
-	    
-	
-	    
-	    @discardableResult
-	    func close() -> Cuckoo.__DoNotUse<Void> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func openMove<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBReceipt {
-	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
-	        return cuckoo_manager.verify("openMove(receipt: WBReceipt)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func openCopy<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBReceipt {
-	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
-	        return cuckoo_manager.verify("openCopy(receipt: WBReceipt)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	}
-
-}
-
- class ReceiptActionsRouterStub: ReceiptActionsRouter {
-    
-
-    
-
-    
-     override func close()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-     override func openMove(receipt: WBReceipt)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-     override func openCopy(receipt: WBReceipt)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
     
 }
 
@@ -4684,46 +4934,65 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockReceiptMoveCopyInteractor: ReceiptMoveCopyInteractor, Cuckoo.ClassMock {
-    typealias MocksType = ReceiptMoveCopyInteractor
-    typealias Stubbing = __StubbingProxy_ReceiptMoveCopyInteractor
-    typealias Verification = __VerificationProxy_ReceiptMoveCopyInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockReceiptMoveCopyInteractor: ReceiptMoveCopyInteractor, Cuckoo.ClassMock {
+    
+     typealias MocksType = ReceiptMoveCopyInteractor
+    
+     typealias Stubbing = __StubbingProxy_ReceiptMoveCopyInteractor
+     typealias Verification = __VerificationProxy_ReceiptMoveCopyInteractor
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: ReceiptMoveCopyInteractor?
+
+     func enableDefaultImplementation(_ stub: ReceiptMoveCopyInteractor) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "configureSubscribers", "returnSignature": "", "fullyQualifiedName": "configureSubscribers()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func configureSubscribers()  {
         
-            return cuckoo_manager.call("configureSubscribers()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.configureSubscribers()
-                    )
+    return cuckoo_manager.call("configureSubscribers()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.configureSubscribers()
+                ,
+            defaultCall: __defaultImplStub!.configureSubscribers())
         
     }
     
-    // ["name": "fetchedModelAdapter", "returnSignature": " -> FetchedModelAdapter", "fullyQualifiedName": "fetchedModelAdapter(for: WBReceipt) -> FetchedModelAdapter", "parameterSignature": "for receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "for: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("for"), name: "receipt", type: "WBReceipt", range: CountableRange(748..<770), nameRange: CountableRange(748..<751))], "returnType": "FetchedModelAdapter", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func fetchedModelAdapter(for receipt: WBReceipt)  -> FetchedModelAdapter {
+    
+    
+     override func fetchedModelAdapter(for receipt: WBReceipt) -> FetchedModelAdapter {
         
-            return cuckoo_manager.call("fetchedModelAdapter(for: WBReceipt) -> FetchedModelAdapter",
-                parameters: (receipt),
-                superclassCall:
-                    
-                    super.fetchedModelAdapter(for: receipt)
-                    )
+    return cuckoo_manager.call("fetchedModelAdapter(for: WBReceipt) -> FetchedModelAdapter",
+            parameters: (receipt),
+            escapingParameters: (receipt),
+            superclassCall:
+                
+                super.fetchedModelAdapter(for: receipt)
+                ,
+            defaultCall: __defaultImplStub!.fetchedModelAdapter(for: receipt))
         
     }
     
 
-	struct __StubbingProxy_ReceiptMoveCopyInteractor: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_ReceiptMoveCopyInteractor: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -4740,12 +5009,12 @@ class MockReceiptMoveCopyInteractor: ReceiptMoveCopyInteractor, Cuckoo.ClassMock
 	    
 	}
 
-	struct __VerificationProxy_ReceiptMoveCopyInteractor: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_ReceiptMoveCopyInteractor: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -4755,19 +5024,18 @@ class MockReceiptMoveCopyInteractor: ReceiptMoveCopyInteractor, Cuckoo.ClassMock
 	
 	    
 	    @discardableResult
-	    func configureSubscribers() -> Cuckoo.__DoNotUse<Void> {
+	    func configureSubscribers() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("configureSubscribers()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func fetchedModelAdapter<M1: Cuckoo.Matchable>(for receipt: M1) -> Cuckoo.__DoNotUse<FetchedModelAdapter> where M1.MatchedType == WBReceipt {
+	    func fetchedModelAdapter<M1: Cuckoo.Matchable>(for receipt: M1) -> Cuckoo.__DoNotUse<(WBReceipt), FetchedModelAdapter> where M1.MatchedType == WBReceipt {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
 	        return cuckoo_manager.verify("fetchedModelAdapter(for: WBReceipt) -> FetchedModelAdapter", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class ReceiptMoveCopyInteractorStub: ReceiptMoveCopyInteractor {
@@ -4776,12 +5044,12 @@ class MockReceiptMoveCopyInteractor: ReceiptMoveCopyInteractor, Cuckoo.ClassMock
     
 
     
-     override func configureSubscribers()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func configureSubscribers()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func fetchedModelAdapter(for receipt: WBReceipt)  -> FetchedModelAdapter {
-        return DefaultValueRegistry.defaultValue(for: FetchedModelAdapter.self)
+     override func fetchedModelAdapter(for receipt: WBReceipt) -> FetchedModelAdapter  {
+        return DefaultValueRegistry.defaultValue(for: (FetchedModelAdapter).self)
     }
     
 }
@@ -4803,41 +5071,70 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.ClassMock {
-    typealias MocksType = ReceiptMoveCopyPresenter
-    typealias Stubbing = __StubbingProxy_ReceiptMoveCopyPresenter
-    typealias Verification = __VerificationProxy_ReceiptMoveCopyPresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.ClassMock {
+    
+     typealias MocksType = ReceiptMoveCopyPresenter
+    
+     typealias Stubbing = __StubbingProxy_ReceiptMoveCopyPresenter
+     typealias Verification = __VerificationProxy_ReceiptMoveCopyPresenter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
-    // ["name": "isCopy", "stubType": "ClassToBeStubbedProperty", "@type": "InstanceVariable", "type": "Bool!", "isReadOnly": false, "accessibility": ""]
+    private var __defaultImplStub: ReceiptMoveCopyPresenter?
+
+     func enableDefaultImplementation(_ stub: ReceiptMoveCopyPresenter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
      override var isCopy: Bool! {
         get {
-            
-            return cuckoo_manager.getter("isCopy", superclassCall: super.isCopy)
-            
+            return cuckoo_manager.getter("isCopy",
+                superclassCall:
+                    
+                    super.isCopy
+                    ,
+                defaultCall: __defaultImplStub!.isCopy)
         }
         
         set {
-            
-            cuckoo_manager.setter("isCopy", value: newValue, superclassCall: super.isCopy = newValue)
-            
+            cuckoo_manager.setter("isCopy",
+                value: newValue,
+                superclassCall:
+                    
+                    super.isCopy = newValue
+                    ,
+                defaultCall: __defaultImplStub!.isCopy = newValue)
         }
         
     }
     
-    // ["name": "receipt", "stubType": "ClassToBeStubbedProperty", "@type": "InstanceVariable", "type": "WBReceipt!", "isReadOnly": false, "accessibility": ""]
+    
+    
      override var receipt: WBReceipt! {
         get {
-            
-            return cuckoo_manager.getter("receipt", superclassCall: super.receipt)
-            
+            return cuckoo_manager.getter("receipt",
+                superclassCall:
+                    
+                    super.receipt
+                    ,
+                defaultCall: __defaultImplStub!.receipt)
         }
         
         set {
-            
-            cuckoo_manager.setter("receipt", value: newValue, superclassCall: super.receipt = newValue)
-            
+            cuckoo_manager.setter("receipt",
+                value: newValue,
+                superclassCall:
+                    
+                    super.receipt = newValue
+                    ,
+                defaultCall: __defaultImplStub!.receipt = newValue)
         }
         
     }
@@ -4846,55 +5143,66 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.ClassMock {
     
 
     
-    // ["name": "viewHasLoaded", "returnSignature": "", "fullyQualifiedName": "viewHasLoaded()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func viewHasLoaded()  {
         
-            return cuckoo_manager.call("viewHasLoaded()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.viewHasLoaded()
-                    )
+    return cuckoo_manager.call("viewHasLoaded()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.viewHasLoaded()
+                ,
+            defaultCall: __defaultImplStub!.viewHasLoaded())
         
     }
     
-    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(515..<524), nameRange: CountableRange(515..<519))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func setupView(data: Any)  {
         
-            return cuckoo_manager.call("setupView(data: Any)",
-                parameters: (data),
-                superclassCall:
-                    
-                    super.setupView(data: data)
-                    )
+    return cuckoo_manager.call("setupView(data: Any)",
+            parameters: (data),
+            escapingParameters: (data),
+            superclassCall:
+                
+                super.setupView(data: data)
+                ,
+            defaultCall: __defaultImplStub!.setupView(data: data))
         
     }
     
-    // ["name": "close", "returnSignature": "", "fullyQualifiedName": "close()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func close()  {
         
-            return cuckoo_manager.call("close()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.close()
-                    )
+    return cuckoo_manager.call("close()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.close()
+                ,
+            defaultCall: __defaultImplStub!.close())
         
     }
     
 
-	struct __StubbingProxy_ReceiptMoveCopyPresenter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_ReceiptMoveCopyPresenter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
-	    var isCopy: Cuckoo.ClassToBeStubbedProperty<MockReceiptMoveCopyPresenter, Bool?> {
+	    
+	    var isCopy: Cuckoo.ClassToBeStubbedOptionalProperty<MockReceiptMoveCopyPresenter, Bool> {
 	        return .init(manager: cuckoo_manager, name: "isCopy")
 	    }
 	    
-	    var receipt: Cuckoo.ClassToBeStubbedProperty<MockReceiptMoveCopyPresenter, WBReceipt?> {
+	    
+	    var receipt: Cuckoo.ClassToBeStubbedOptionalProperty<MockReceiptMoveCopyPresenter, WBReceipt> {
 	        return .init(manager: cuckoo_manager, name: "receipt")
 	    }
 	    
@@ -4916,64 +5224,67 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_ReceiptMoveCopyPresenter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_ReceiptMoveCopyPresenter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
 	    }
 	
 	    
-	    var isCopy: Cuckoo.VerifyProperty<Bool?> {
+	    
+	    var isCopy: Cuckoo.VerifyOptionalProperty<Bool> {
 	        return .init(manager: cuckoo_manager, name: "isCopy", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
-	    var receipt: Cuckoo.VerifyProperty<WBReceipt?> {
+	    
+	    var receipt: Cuckoo.VerifyOptionalProperty<WBReceipt> {
 	        return .init(manager: cuckoo_manager, name: "receipt", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
 	
 	    
 	    @discardableResult
-	    func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
+	    func viewHasLoaded() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Any {
+	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<(Any), Void> where M1.MatchedType == Any {
 	        let matchers: [Cuckoo.ParameterMatcher<(Any)>] = [wrap(matchable: data) { $0 }]
 	        return cuckoo_manager.verify("setupView(data: Any)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func close() -> Cuckoo.__DoNotUse<Void> {
+	    func close() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class ReceiptMoveCopyPresenterStub: ReceiptMoveCopyPresenter {
     
+    
      override var isCopy: Bool! {
         get {
-            return DefaultValueRegistry.defaultValue(for: (Bool!).self)
+            return DefaultValueRegistry.defaultValue(for: (Bool?).self)
         }
         
         set { }
         
     }
+    
     
      override var receipt: WBReceipt! {
         get {
-            return DefaultValueRegistry.defaultValue(for: (WBReceipt!).self)
+            return DefaultValueRegistry.defaultValue(for: (WBReceipt?).self)
         }
         
         set { }
@@ -4984,16 +5295,16 @@ class MockReceiptMoveCopyPresenter: ReceiptMoveCopyPresenter, Cuckoo.ClassMock {
     
 
     
-     override func viewHasLoaded()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func viewHasLoaded()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func setupView(data: Any)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func setupView(data: Any)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func close()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func close()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -5014,34 +5325,50 @@ import Cuckoo
 import Foundation
 import Viperit
 
-class MockReceiptMoveCopyRouter: ReceiptMoveCopyRouter, Cuckoo.ClassMock {
-    typealias MocksType = ReceiptMoveCopyRouter
-    typealias Stubbing = __StubbingProxy_ReceiptMoveCopyRouter
-    typealias Verification = __VerificationProxy_ReceiptMoveCopyRouter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockReceiptMoveCopyRouter: ReceiptMoveCopyRouter, Cuckoo.ClassMock {
+    
+     typealias MocksType = ReceiptMoveCopyRouter
+    
+     typealias Stubbing = __StubbingProxy_ReceiptMoveCopyRouter
+     typealias Verification = __VerificationProxy_ReceiptMoveCopyRouter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: ReceiptMoveCopyRouter?
+
+     func enableDefaultImplementation(_ stub: ReceiptMoveCopyRouter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "close", "returnSignature": "", "fullyQualifiedName": "close()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func close()  {
         
-            return cuckoo_manager.call("close()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.close()
-                    )
+    return cuckoo_manager.call("close()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.close()
+                ,
+            defaultCall: __defaultImplStub!.close())
         
     }
     
 
-	struct __StubbingProxy_ReceiptMoveCopyRouter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_ReceiptMoveCopyRouter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -5053,12 +5380,12 @@ class MockReceiptMoveCopyRouter: ReceiptMoveCopyRouter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_ReceiptMoveCopyRouter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_ReceiptMoveCopyRouter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -5068,13 +5395,12 @@ class MockReceiptMoveCopyRouter: ReceiptMoveCopyRouter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func close() -> Cuckoo.__DoNotUse<Void> {
+	    func close() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("close()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class ReceiptMoveCopyRouterStub: ReceiptMoveCopyRouter {
@@ -5083,8 +5409,8 @@ class MockReceiptMoveCopyRouter: ReceiptMoveCopyRouter, Cuckoo.ClassMock {
     
 
     
-     override func close()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func close()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -5106,57 +5432,94 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.ClassMock {
-    typealias MocksType = ReceiptsInteractor
-    typealias Stubbing = __StubbingProxy_ReceiptsInteractor
-    typealias Verification = __VerificationProxy_ReceiptsInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.ClassMock {
+    
+     typealias MocksType = ReceiptsInteractor
+    
+     typealias Stubbing = __StubbingProxy_ReceiptsInteractor
+     typealias Verification = __VerificationProxy_ReceiptsInteractor
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
-    // ["name": "fetchedModelAdapter", "stubType": "ClassToBeStubbedProperty", "@type": "InstanceVariable", "type": "FetchedModelAdapter!", "isReadOnly": false, "accessibility": ""]
+    private var __defaultImplStub: ReceiptsInteractor?
+
+     func enableDefaultImplementation(_ stub: ReceiptsInteractor) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
      override var fetchedModelAdapter: FetchedModelAdapter! {
         get {
-            
-            return cuckoo_manager.getter("fetchedModelAdapter", superclassCall: super.fetchedModelAdapter)
-            
+            return cuckoo_manager.getter("fetchedModelAdapter",
+                superclassCall:
+                    
+                    super.fetchedModelAdapter
+                    ,
+                defaultCall: __defaultImplStub!.fetchedModelAdapter)
         }
         
         set {
-            
-            cuckoo_manager.setter("fetchedModelAdapter", value: newValue, superclassCall: super.fetchedModelAdapter = newValue)
-            
+            cuckoo_manager.setter("fetchedModelAdapter",
+                value: newValue,
+                superclassCall:
+                    
+                    super.fetchedModelAdapter = newValue
+                    ,
+                defaultCall: __defaultImplStub!.fetchedModelAdapter = newValue)
         }
         
     }
     
-    // ["name": "trip", "stubType": "ClassToBeStubbedProperty", "@type": "InstanceVariable", "type": "WBTrip!", "isReadOnly": false, "accessibility": ""]
+    
+    
      override var trip: WBTrip! {
         get {
-            
-            return cuckoo_manager.getter("trip", superclassCall: super.trip)
-            
+            return cuckoo_manager.getter("trip",
+                superclassCall:
+                    
+                    super.trip
+                    ,
+                defaultCall: __defaultImplStub!.trip)
         }
         
         set {
-            
-            cuckoo_manager.setter("trip", value: newValue, superclassCall: super.trip = newValue)
-            
+            cuckoo_manager.setter("trip",
+                value: newValue,
+                superclassCall:
+                    
+                    super.trip = newValue
+                    ,
+                defaultCall: __defaultImplStub!.trip = newValue)
         }
         
     }
     
-    // ["name": "scanService", "stubType": "ClassToBeStubbedProperty", "@type": "InstanceVariable", "type": "ScanService!", "isReadOnly": false, "accessibility": ""]
+    
+    
      override var scanService: ScanService! {
         get {
-            
-            return cuckoo_manager.getter("scanService", superclassCall: super.scanService)
-            
+            return cuckoo_manager.getter("scanService",
+                superclassCall:
+                    
+                    super.scanService
+                    ,
+                defaultCall: __defaultImplStub!.scanService)
         }
         
         set {
-            
-            cuckoo_manager.setter("scanService", value: newValue, superclassCall: super.scanService = newValue)
-            
+            cuckoo_manager.setter("scanService",
+                value: newValue,
+                superclassCall:
+                    
+                    super.scanService = newValue
+                    ,
+                defaultCall: __defaultImplStub!.scanService = newValue)
         }
         
     }
@@ -5165,95 +5528,131 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.ClassMock {
     
 
     
-    // ["name": "configureSubscribers", "returnSignature": "", "fullyQualifiedName": "configureSubscribers()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func configureSubscribers()  {
         
-            return cuckoo_manager.call("configureSubscribers()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.configureSubscribers()
-                    )
+    return cuckoo_manager.call("configureSubscribers()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.configureSubscribers()
+                ,
+            defaultCall: __defaultImplStub!.configureSubscribers())
         
     }
     
-    // ["name": "distanceReceipts", "returnSignature": " -> [WBReceipt]", "fullyQualifiedName": "distanceReceipts() -> [WBReceipt]", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "[WBReceipt]", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func distanceReceipts()  -> [WBReceipt] {
+    
+    
+     override func distanceReceipts() -> [WBReceipt] {
         
-            return cuckoo_manager.call("distanceReceipts() -> [WBReceipt]",
-                parameters: (),
-                superclassCall:
-                    
-                    super.distanceReceipts()
-                    )
+    return cuckoo_manager.call("distanceReceipts() -> [WBReceipt]",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.distanceReceipts()
+                ,
+            defaultCall: __defaultImplStub!.distanceReceipts())
         
     }
     
-    // ["name": "fetchedAdapter", "returnSignature": " -> FetchedModelAdapter", "fullyQualifiedName": "fetchedAdapter(for: WBTrip) -> FetchedModelAdapter", "parameterSignature": "for trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "for: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("for"), name: "trip", type: "WBTrip", range: CountableRange(1229..<1245), nameRange: CountableRange(1229..<1232))], "returnType": "FetchedModelAdapter", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func fetchedAdapter(for trip: WBTrip)  -> FetchedModelAdapter {
+    
+    
+     override func fetchedAdapter(for trip: WBTrip) -> FetchedModelAdapter {
         
-            return cuckoo_manager.call("fetchedAdapter(for: WBTrip) -> FetchedModelAdapter",
-                parameters: (trip),
-                superclassCall:
-                    
-                    super.fetchedAdapter(for: trip)
-                    )
+    return cuckoo_manager.call("fetchedAdapter(for: WBTrip) -> FetchedModelAdapter",
+            parameters: (trip),
+            escapingParameters: (trip),
+            superclassCall:
+                
+                super.fetchedAdapter(for: trip)
+                ,
+            defaultCall: __defaultImplStub!.fetchedAdapter(for: trip))
         
     }
     
-    // ["name": "swapUpReceipt", "returnSignature": "", "fullyQualifiedName": "swapUpReceipt(_: WBReceipt)", "parameterSignature": "_ receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "receipt", type: "WBReceipt", range: CountableRange(1431..<1451), nameRange: CountableRange(0..<0))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func swapUpReceipt(_ receipt: WBReceipt)  {
         
-            return cuckoo_manager.call("swapUpReceipt(_: WBReceipt)",
-                parameters: (receipt),
-                superclassCall:
-                    
-                    super.swapUpReceipt(receipt)
-                    )
+    return cuckoo_manager.call("swapUpReceipt(_: WBReceipt)",
+            parameters: (receipt),
+            escapingParameters: (receipt),
+            superclassCall:
+                
+                super.swapUpReceipt(receipt)
+                ,
+            defaultCall: __defaultImplStub!.swapUpReceipt(receipt))
         
     }
     
-    // ["name": "swapDownReceipt", "returnSignature": "", "fullyQualifiedName": "swapDownReceipt(_: WBReceipt)", "parameterSignature": "_ receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "receipt", type: "WBReceipt", range: CountableRange(1672..<1692), nameRange: CountableRange(0..<0))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func swapDownReceipt(_ receipt: WBReceipt)  {
         
-            return cuckoo_manager.call("swapDownReceipt(_: WBReceipt)",
-                parameters: (receipt),
-                superclassCall:
-                    
-                    super.swapDownReceipt(receipt)
-                    )
+    return cuckoo_manager.call("swapDownReceipt(_: WBReceipt)",
+            parameters: (receipt),
+            escapingParameters: (receipt),
+            superclassCall:
+                
+                super.swapDownReceipt(receipt)
+                ,
+            defaultCall: __defaultImplStub!.swapDownReceipt(receipt))
         
     }
     
-    // ["name": "titleSubtitle", "returnSignature": " -> TitleSubtitle", "fullyQualifiedName": "titleSubtitle() -> TitleSubtitle", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "TitleSubtitle", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func titleSubtitle()  -> TitleSubtitle {
+    
+    
+     override func attachAppInputFile(to receipt: WBReceipt) -> Bool {
         
-            return cuckoo_manager.call("titleSubtitle() -> TitleSubtitle",
-                parameters: (),
-                superclassCall:
-                    
-                    super.titleSubtitle()
-                    )
+    return cuckoo_manager.call("attachAppInputFile(to: WBReceipt) -> Bool",
+            parameters: (receipt),
+            escapingParameters: (receipt),
+            superclassCall:
+                
+                super.attachAppInputFile(to: receipt)
+                ,
+            defaultCall: __defaultImplStub!.attachAppInputFile(to: receipt))
+        
+    }
+    
+    
+    
+     override func attachImage(_ image: UIImage, to receipt: WBReceipt) -> Bool {
+        
+    return cuckoo_manager.call("attachImage(_: UIImage, to: WBReceipt) -> Bool",
+            parameters: (image, receipt),
+            escapingParameters: (image, receipt),
+            superclassCall:
+                
+                super.attachImage(image, to: receipt)
+                ,
+            defaultCall: __defaultImplStub!.attachImage(image, to: receipt))
         
     }
     
 
-	struct __StubbingProxy_ReceiptsInteractor: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_ReceiptsInteractor: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
-	    var fetchedModelAdapter: Cuckoo.ClassToBeStubbedProperty<MockReceiptsInteractor, FetchedModelAdapter?> {
+	    
+	    var fetchedModelAdapter: Cuckoo.ClassToBeStubbedOptionalProperty<MockReceiptsInteractor, FetchedModelAdapter> {
 	        return .init(manager: cuckoo_manager, name: "fetchedModelAdapter")
 	    }
 	    
-	    var trip: Cuckoo.ClassToBeStubbedProperty<MockReceiptsInteractor, WBTrip?> {
+	    
+	    var trip: Cuckoo.ClassToBeStubbedOptionalProperty<MockReceiptsInteractor, WBTrip> {
 	        return .init(manager: cuckoo_manager, name: "trip")
 	    }
 	    
-	    var scanService: Cuckoo.ClassToBeStubbedProperty<MockReceiptsInteractor, ScanService?> {
+	    
+	    var scanService: Cuckoo.ClassToBeStubbedOptionalProperty<MockReceiptsInteractor, ScanService> {
 	        return .init(manager: cuckoo_manager, name: "scanService")
 	    }
 	    
@@ -5283,102 +5682,118 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsInteractor.self, method: "swapDownReceipt(_: WBReceipt)", parameterMatchers: matchers))
 	    }
 	    
-	    func titleSubtitle() -> Cuckoo.ClassStubFunction<(), TitleSubtitle> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsInteractor.self, method: "titleSubtitle() -> TitleSubtitle", parameterMatchers: matchers))
+	    func attachAppInputFile<M1: Cuckoo.Matchable>(to receipt: M1) -> Cuckoo.ClassStubFunction<(WBReceipt), Bool> where M1.MatchedType == WBReceipt {
+	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsInteractor.self, method: "attachAppInputFile(to: WBReceipt) -> Bool", parameterMatchers: matchers))
+	    }
+	    
+	    func attachImage<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ image: M1, to receipt: M2) -> Cuckoo.ClassStubFunction<(UIImage, WBReceipt), Bool> where M1.MatchedType == UIImage, M2.MatchedType == WBReceipt {
+	        let matchers: [Cuckoo.ParameterMatcher<(UIImage, WBReceipt)>] = [wrap(matchable: image) { $0.0 }, wrap(matchable: receipt) { $0.1 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsInteractor.self, method: "attachImage(_: UIImage, to: WBReceipt) -> Bool", parameterMatchers: matchers))
 	    }
 	    
 	}
 
-	struct __VerificationProxy_ReceiptsInteractor: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_ReceiptsInteractor: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
 	    }
 	
 	    
-	    var fetchedModelAdapter: Cuckoo.VerifyProperty<FetchedModelAdapter?> {
+	    
+	    var fetchedModelAdapter: Cuckoo.VerifyOptionalProperty<FetchedModelAdapter> {
 	        return .init(manager: cuckoo_manager, name: "fetchedModelAdapter", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
-	    var trip: Cuckoo.VerifyProperty<WBTrip?> {
+	    
+	    var trip: Cuckoo.VerifyOptionalProperty<WBTrip> {
 	        return .init(manager: cuckoo_manager, name: "trip", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
-	    var scanService: Cuckoo.VerifyProperty<ScanService?> {
+	    
+	    var scanService: Cuckoo.VerifyOptionalProperty<ScanService> {
 	        return .init(manager: cuckoo_manager, name: "scanService", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
 	
 	    
 	    @discardableResult
-	    func configureSubscribers() -> Cuckoo.__DoNotUse<Void> {
+	    func configureSubscribers() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("configureSubscribers()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func distanceReceipts() -> Cuckoo.__DoNotUse<[WBReceipt]> {
+	    func distanceReceipts() -> Cuckoo.__DoNotUse<(), [WBReceipt]> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("distanceReceipts() -> [WBReceipt]", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func fetchedAdapter<M1: Cuckoo.Matchable>(for trip: M1) -> Cuckoo.__DoNotUse<FetchedModelAdapter> where M1.MatchedType == WBTrip {
+	    func fetchedAdapter<M1: Cuckoo.Matchable>(for trip: M1) -> Cuckoo.__DoNotUse<(WBTrip), FetchedModelAdapter> where M1.MatchedType == WBTrip {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
 	        return cuckoo_manager.verify("fetchedAdapter(for: WBTrip) -> FetchedModelAdapter", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func swapUpReceipt<M1: Cuckoo.Matchable>(_ receipt: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBReceipt {
+	    func swapUpReceipt<M1: Cuckoo.Matchable>(_ receipt: M1) -> Cuckoo.__DoNotUse<(WBReceipt), Void> where M1.MatchedType == WBReceipt {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
 	        return cuckoo_manager.verify("swapUpReceipt(_: WBReceipt)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func swapDownReceipt<M1: Cuckoo.Matchable>(_ receipt: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBReceipt {
+	    func swapDownReceipt<M1: Cuckoo.Matchable>(_ receipt: M1) -> Cuckoo.__DoNotUse<(WBReceipt), Void> where M1.MatchedType == WBReceipt {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
 	        return cuckoo_manager.verify("swapDownReceipt(_: WBReceipt)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func titleSubtitle() -> Cuckoo.__DoNotUse<TitleSubtitle> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("titleSubtitle() -> TitleSubtitle", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    func attachAppInputFile<M1: Cuckoo.Matchable>(to receipt: M1) -> Cuckoo.__DoNotUse<(WBReceipt), Bool> where M1.MatchedType == WBReceipt {
+	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
+	        return cuckoo_manager.verify("attachAppInputFile(to: WBReceipt) -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func attachImage<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ image: M1, to receipt: M2) -> Cuckoo.__DoNotUse<(UIImage, WBReceipt), Bool> where M1.MatchedType == UIImage, M2.MatchedType == WBReceipt {
+	        let matchers: [Cuckoo.ParameterMatcher<(UIImage, WBReceipt)>] = [wrap(matchable: image) { $0.0 }, wrap(matchable: receipt) { $0.1 }]
+	        return cuckoo_manager.verify("attachImage(_: UIImage, to: WBReceipt) -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class ReceiptsInteractorStub: ReceiptsInteractor {
     
+    
      override var fetchedModelAdapter: FetchedModelAdapter! {
         get {
-            return DefaultValueRegistry.defaultValue(for: (FetchedModelAdapter!).self)
+            return DefaultValueRegistry.defaultValue(for: (FetchedModelAdapter?).self)
         }
         
         set { }
         
     }
+    
     
      override var trip: WBTrip! {
         get {
-            return DefaultValueRegistry.defaultValue(for: (WBTrip!).self)
+            return DefaultValueRegistry.defaultValue(for: (WBTrip?).self)
         }
         
         set { }
         
     }
+    
     
      override var scanService: ScanService! {
         get {
-            return DefaultValueRegistry.defaultValue(for: (ScanService!).self)
+            return DefaultValueRegistry.defaultValue(for: (ScanService?).self)
         }
         
         set { }
@@ -5389,28 +5804,32 @@ class MockReceiptsInteractor: ReceiptsInteractor, Cuckoo.ClassMock {
     
 
     
-     override func configureSubscribers()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func configureSubscribers()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func distanceReceipts()  -> [WBReceipt] {
-        return DefaultValueRegistry.defaultValue(for: [WBReceipt].self)
+     override func distanceReceipts() -> [WBReceipt]  {
+        return DefaultValueRegistry.defaultValue(for: ([WBReceipt]).self)
     }
     
-     override func fetchedAdapter(for trip: WBTrip)  -> FetchedModelAdapter {
-        return DefaultValueRegistry.defaultValue(for: FetchedModelAdapter.self)
+     override func fetchedAdapter(for trip: WBTrip) -> FetchedModelAdapter  {
+        return DefaultValueRegistry.defaultValue(for: (FetchedModelAdapter).self)
     }
     
-     override func swapUpReceipt(_ receipt: WBReceipt)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func swapUpReceipt(_ receipt: WBReceipt)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func swapDownReceipt(_ receipt: WBReceipt)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func swapDownReceipt(_ receipt: WBReceipt)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func titleSubtitle()  -> TitleSubtitle {
-        return DefaultValueRegistry.defaultValue(for: TitleSubtitle.self)
+     override func attachAppInputFile(to receipt: WBReceipt) -> Bool  {
+        return DefaultValueRegistry.defaultValue(for: (Bool).self)
+    }
+    
+     override func attachImage(_ image: UIImage, to receipt: WBReceipt) -> Bool  {
+        return DefaultValueRegistry.defaultValue(for: (Bool).self)
     }
     
 }
@@ -5433,19 +5852,50 @@ import RxCocoa
 import RxSwift
 import Viperit
 
-class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.ClassMock {
-    typealias MocksType = ReceiptsPresenter
-    typealias Stubbing = __StubbingProxy_ReceiptsPresenter
-    typealias Verification = __VerificationProxy_ReceiptsPresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.ClassMock {
+    
+     typealias MocksType = ReceiptsPresenter
+    
+     typealias Stubbing = __StubbingProxy_ReceiptsPresenter
+     typealias Verification = __VerificationProxy_ReceiptsPresenter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
-    // ["name": "scanService", "stubType": "ClassToBeStubbedReadOnlyProperty", "@type": "InstanceVariable", "type": "ScanService", "isReadOnly": true, "accessibility": ""]
+    private var __defaultImplStub: ReceiptsPresenter?
+
+     func enableDefaultImplementation(_ stub: ReceiptsPresenter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
+     override var tooltipPresenter: TooltipPresenter! {
+        get {
+            return cuckoo_manager.getter("tooltipPresenter",
+                superclassCall:
+                    
+                    super.tooltipPresenter
+                    ,
+                defaultCall: __defaultImplStub!.tooltipPresenter)
+        }
+        
+    }
+    
+    
+    
      override var scanService: ScanService {
         get {
-            
-            return cuckoo_manager.getter("scanService", superclassCall: super.scanService)
-            
+            return cuckoo_manager.getter("scanService",
+                superclassCall:
+                    
+                    super.scanService
+                    ,
+                defaultCall: __defaultImplStub!.scanService)
         }
         
     }
@@ -5454,49 +5904,94 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.ClassMock {
     
 
     
-    // ["name": "viewHasLoaded", "returnSignature": "", "fullyQualifiedName": "viewHasLoaded()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func viewHasLoaded()  {
         
-            return cuckoo_manager.call("viewHasLoaded()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.viewHasLoaded()
-                    )
+    return cuckoo_manager.call("viewHasLoaded()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.viewHasLoaded()
+                ,
+            defaultCall: __defaultImplStub!.viewHasLoaded())
         
     }
     
-    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(2390..<2399), nameRange: CountableRange(2390..<2394))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
+     override func onReceiptImageTap(receipt: WBReceipt)  {
+        
+    return cuckoo_manager.call("onReceiptImageTap(receipt: WBReceipt)",
+            parameters: (receipt),
+            escapingParameters: (receipt),
+            superclassCall:
+                
+                super.onReceiptImageTap(receipt: receipt)
+                ,
+            defaultCall: __defaultImplStub!.onReceiptImageTap(receipt: receipt))
+        
+    }
+    
+    
+    
      override func setupView(data: Any)  {
         
-            return cuckoo_manager.call("setupView(data: Any)",
-                parameters: (data),
-                superclassCall:
-                    
-                    super.setupView(data: data)
-                    )
+    return cuckoo_manager.call("setupView(data: Any)",
+            parameters: (data),
+            escapingParameters: (data),
+            superclassCall:
+                
+                super.setupView(data: data)
+                ,
+            defaultCall: __defaultImplStub!.setupView(data: data))
         
     }
     
-    // ["name": "presentAttachment", "returnSignature": "", "fullyQualifiedName": "presentAttachment(for: WBReceipt)", "parameterSignature": "for receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "for: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("for"), name: "receipt", type: "WBReceipt", range: CountableRange(3119..<3141), nameRange: CountableRange(3119..<3122))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func presentAttachment(for receipt: WBReceipt)  {
         
-            return cuckoo_manager.call("presentAttachment(for: WBReceipt)",
-                parameters: (receipt),
-                superclassCall:
-                    
-                    super.presentAttachment(for: receipt)
-                    )
+    return cuckoo_manager.call("presentAttachment(for: WBReceipt)",
+            parameters: (receipt),
+            escapingParameters: (receipt),
+            superclassCall:
+                
+                super.presentAttachment(for: receipt)
+                ,
+            defaultCall: __defaultImplStub!.presentAttachment(for: receipt))
+        
+    }
+    
+    
+    
+     override func presentBackups()  {
+        
+    return cuckoo_manager.call("presentBackups()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.presentBackups()
+                ,
+            defaultCall: __defaultImplStub!.presentBackups())
         
     }
     
 
-	struct __StubbingProxy_ReceiptsPresenter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_ReceiptsPresenter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
+	    
+	    
+	    var tooltipPresenter: Cuckoo.ClassToBeStubbedReadOnlyProperty<MockReceiptsPresenter, TooltipPresenter?> {
+	        return .init(manager: cuckoo_manager, name: "tooltipPresenter")
+	    }
+	    
 	    
 	    var scanService: Cuckoo.ClassToBeStubbedReadOnlyProperty<MockReceiptsPresenter, ScanService> {
 	        return .init(manager: cuckoo_manager, name: "scanService")
@@ -5506,6 +6001,11 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.ClassMock {
 	    func viewHasLoaded() -> Cuckoo.ClassStubNoReturnFunction<()> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsPresenter.self, method: "viewHasLoaded()", parameterMatchers: matchers))
+	    }
+	    
+	    func onReceiptImageTap<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.ClassStubNoReturnFunction<(WBReceipt)> where M1.MatchedType == WBReceipt {
+	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsPresenter.self, method: "onReceiptImageTap(receipt: WBReceipt)", parameterMatchers: matchers))
 	    }
 	    
 	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.ClassStubNoReturnFunction<(Any)> where M1.MatchedType == Any {
@@ -5518,19 +6018,30 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsPresenter.self, method: "presentAttachment(for: WBReceipt)", parameterMatchers: matchers))
 	    }
 	    
+	    func presentBackups() -> Cuckoo.ClassStubNoReturnFunction<()> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsPresenter.self, method: "presentBackups()", parameterMatchers: matchers))
+	    }
+	    
 	}
 
-	struct __VerificationProxy_ReceiptsPresenter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_ReceiptsPresenter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
 	    }
 	
+	    
+	    
+	    var tooltipPresenter: Cuckoo.VerifyReadOnlyProperty<TooltipPresenter?> {
+	        return .init(manager: cuckoo_manager, name: "tooltipPresenter", callMatcher: callMatcher, sourceLocation: sourceLocation)
+	    }
+	    
 	    
 	    var scanService: Cuckoo.VerifyReadOnlyProperty<ScanService> {
 	        return .init(manager: cuckoo_manager, name: "scanService", callMatcher: callMatcher, sourceLocation: sourceLocation)
@@ -5539,28 +6050,48 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
+	    func viewHasLoaded() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Any {
+	    func onReceiptImageTap<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<(WBReceipt), Void> where M1.MatchedType == WBReceipt {
+	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
+	        return cuckoo_manager.verify("onReceiptImageTap(receipt: WBReceipt)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<(Any), Void> where M1.MatchedType == Any {
 	        let matchers: [Cuckoo.ParameterMatcher<(Any)>] = [wrap(matchable: data) { $0 }]
 	        return cuckoo_manager.verify("setupView(data: Any)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func presentAttachment<M1: Cuckoo.Matchable>(for receipt: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBReceipt {
+	    func presentAttachment<M1: Cuckoo.Matchable>(for receipt: M1) -> Cuckoo.__DoNotUse<(WBReceipt), Void> where M1.MatchedType == WBReceipt {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
 	        return cuckoo_manager.verify("presentAttachment(for: WBReceipt)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
+	    @discardableResult
+	    func presentBackups() -> Cuckoo.__DoNotUse<(), Void> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return cuckoo_manager.verify("presentBackups()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
 	}
-
 }
 
  class ReceiptsPresenterStub: ReceiptsPresenter {
+    
+    
+     override var tooltipPresenter: TooltipPresenter! {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (TooltipPresenter?).self)
+        }
+        
+    }
+    
     
      override var scanService: ScanService {
         get {
@@ -5573,16 +6104,24 @@ class MockReceiptsPresenter: ReceiptsPresenter, Cuckoo.ClassMock {
     
 
     
-     override func viewHasLoaded()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func viewHasLoaded()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func setupView(data: Any)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func onReceiptImageTap(receipt: WBReceipt)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func presentAttachment(for receipt: WBReceipt)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func setupView(data: Any)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
+    
+     override func presentAttachment(for receipt: WBReceipt)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
+    
+     override func presentBackups()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -5604,25 +6143,46 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockReceiptsRouter: ReceiptsRouter, Cuckoo.ClassMock {
-    typealias MocksType = ReceiptsRouter
-    typealias Stubbing = __StubbingProxy_ReceiptsRouter
-    typealias Verification = __VerificationProxy_ReceiptsRouter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.ClassMock {
+    
+     typealias MocksType = ReceiptsRouter
+    
+     typealias Stubbing = __StubbingProxy_ReceiptsRouter
+     typealias Verification = __VerificationProxy_ReceiptsRouter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
-    // ["name": "moduleTrip", "stubType": "ClassToBeStubbedProperty", "@type": "InstanceVariable", "type": "WBTrip!", "isReadOnly": false, "accessibility": ""]
+    private var __defaultImplStub: ReceiptsRouter?
+
+     func enableDefaultImplementation(_ stub: ReceiptsRouter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
      override var moduleTrip: WBTrip! {
         get {
-            
-            return cuckoo_manager.getter("moduleTrip", superclassCall: super.moduleTrip)
-            
+            return cuckoo_manager.getter("moduleTrip",
+                superclassCall:
+                    
+                    super.moduleTrip
+                    ,
+                defaultCall: __defaultImplStub!.moduleTrip)
         }
         
         set {
-            
-            cuckoo_manager.setter("moduleTrip", value: newValue, superclassCall: super.moduleTrip = newValue)
-            
+            cuckoo_manager.setter("moduleTrip",
+                value: newValue,
+                superclassCall:
+                    
+                    super.moduleTrip = newValue
+                    ,
+                defaultCall: __defaultImplStub!.moduleTrip = newValue)
         }
         
     }
@@ -5631,123 +6191,181 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.ClassMock {
     
 
     
-    // ["name": "openDistances", "returnSignature": "", "fullyQualifiedName": "openDistances()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openDistances()  {
         
-            return cuckoo_manager.call("openDistances()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openDistances()
-                    )
+    return cuckoo_manager.call("openDistances()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openDistances()
+                ,
+            defaultCall: __defaultImplStub!.openDistances())
         
     }
     
-    // ["name": "openImageViewer", "returnSignature": "", "fullyQualifiedName": "openImageViewer(for: WBReceipt)", "parameterSignature": "for receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "for: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("for"), name: "receipt", type: "WBReceipt", range: CountableRange(632..<654), nameRange: CountableRange(632..<635))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openImageViewer(for receipt: WBReceipt)  {
         
-            return cuckoo_manager.call("openImageViewer(for: WBReceipt)",
-                parameters: (receipt),
-                superclassCall:
-                    
-                    super.openImageViewer(for: receipt)
-                    )
+    return cuckoo_manager.call("openImageViewer(for: WBReceipt)",
+            parameters: (receipt),
+            escapingParameters: (receipt),
+            superclassCall:
+                
+                super.openImageViewer(for: receipt)
+                ,
+            defaultCall: __defaultImplStub!.openImageViewer(for: receipt))
         
     }
     
-    // ["name": "openPDFViewer", "returnSignature": "", "fullyQualifiedName": "openPDFViewer(for: WBReceipt)", "parameterSignature": "for receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "for: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("for"), name: "receipt", type: "WBReceipt", range: CountableRange(1036..<1058), nameRange: CountableRange(1036..<1039))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openPDFViewer(for receipt: WBReceipt)  {
         
-            return cuckoo_manager.call("openPDFViewer(for: WBReceipt)",
-                parameters: (receipt),
-                superclassCall:
-                    
-                    super.openPDFViewer(for: receipt)
-                    )
+    return cuckoo_manager.call("openPDFViewer(for: WBReceipt)",
+            parameters: (receipt),
+            escapingParameters: (receipt),
+            superclassCall:
+                
+                super.openPDFViewer(for: receipt)
+                ,
+            defaultCall: __defaultImplStub!.openPDFViewer(for: receipt))
         
     }
     
-    // ["name": "openGenerateReport", "returnSignature": "", "fullyQualifiedName": "openGenerateReport()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openGenerateReport()  {
         
-            return cuckoo_manager.call("openGenerateReport()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openGenerateReport()
-                    )
+    return cuckoo_manager.call("openGenerateReport()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openGenerateReport()
+                ,
+            defaultCall: __defaultImplStub!.openGenerateReport())
         
     }
     
-    // ["name": "openCreateReceipt", "returnSignature": "", "fullyQualifiedName": "openCreateReceipt()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
+     override func openBackups()  {
+        
+    return cuckoo_manager.call("openBackups()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openBackups()
+                ,
+            defaultCall: __defaultImplStub!.openBackups())
+        
+    }
+    
+    
+    
      override func openCreateReceipt()  {
         
-            return cuckoo_manager.call("openCreateReceipt()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openCreateReceipt()
-                    )
+    return cuckoo_manager.call("openCreateReceipt()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openCreateReceipt()
+                ,
+            defaultCall: __defaultImplStub!.openCreateReceipt())
         
     }
     
-    // ["name": "openCreatePhotoReceipt", "returnSignature": "", "fullyQualifiedName": "openCreatePhotoReceipt()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openCreatePhotoReceipt()  {
         
-            return cuckoo_manager.call("openCreatePhotoReceipt()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openCreatePhotoReceipt()
-                    )
+    return cuckoo_manager.call("openCreatePhotoReceipt()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openCreatePhotoReceipt()
+                ,
+            defaultCall: __defaultImplStub!.openCreatePhotoReceipt())
         
     }
     
-    // ["name": "openImportReceiptFile", "returnSignature": "", "fullyQualifiedName": "openImportReceiptFile()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openImportReceiptFile()  {
         
-            return cuckoo_manager.call("openImportReceiptFile()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openImportReceiptFile()
-                    )
+    return cuckoo_manager.call("openImportReceiptFile()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openImportReceiptFile()
+                ,
+            defaultCall: __defaultImplStub!.openImportReceiptFile())
         
     }
     
-    // ["name": "openActions", "returnSignature": " -> ReceiptActionsPresenter", "fullyQualifiedName": "openActions(receipt: WBReceipt) -> ReceiptActionsPresenter", "parameterSignature": "receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "WBReceipt", range: CountableRange(3551..<3569), nameRange: CountableRange(3551..<3558))], "returnType": "ReceiptActionsPresenter", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func openActions(receipt: WBReceipt)  -> ReceiptActionsPresenter {
+    
+    
+     override func openMove(receipt: WBReceipt)  {
         
-            return cuckoo_manager.call("openActions(receipt: WBReceipt) -> ReceiptActionsPresenter",
-                parameters: (receipt),
-                superclassCall:
-                    
-                    super.openActions(receipt: receipt)
-                    )
+    return cuckoo_manager.call("openMove(receipt: WBReceipt)",
+            parameters: (receipt),
+            escapingParameters: (receipt),
+            superclassCall:
+                
+                super.openMove(receipt: receipt)
+                ,
+            defaultCall: __defaultImplStub!.openMove(receipt: receipt))
         
     }
     
-    // ["name": "openEdit", "returnSignature": "", "fullyQualifiedName": "openEdit(receipt: WBReceipt)", "parameterSignature": "receipt: WBReceipt", "parameterSignatureWithoutNames": "receipt: WBReceipt", "inputTypes": "WBReceipt", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "WBReceipt", range: CountableRange(3832..<3850), nameRange: CountableRange(3832..<3839))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
+     override func openCopy(receipt: WBReceipt)  {
+        
+    return cuckoo_manager.call("openCopy(receipt: WBReceipt)",
+            parameters: (receipt),
+            escapingParameters: (receipt),
+            superclassCall:
+                
+                super.openCopy(receipt: receipt)
+                ,
+            defaultCall: __defaultImplStub!.openCopy(receipt: receipt))
+        
+    }
+    
+    
+    
      override func openEdit(receipt: WBReceipt)  {
         
-            return cuckoo_manager.call("openEdit(receipt: WBReceipt)",
-                parameters: (receipt),
-                superclassCall:
-                    
-                    super.openEdit(receipt: receipt)
-                    )
+    return cuckoo_manager.call("openEdit(receipt: WBReceipt)",
+            parameters: (receipt),
+            escapingParameters: (receipt),
+            superclassCall:
+                
+                super.openEdit(receipt: receipt)
+                ,
+            defaultCall: __defaultImplStub!.openEdit(receipt: receipt))
         
     }
     
 
-	struct __StubbingProxy_ReceiptsRouter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_ReceiptsRouter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
-	    var moduleTrip: Cuckoo.ClassToBeStubbedProperty<MockReceiptsRouter, WBTrip?> {
+	    
+	    var moduleTrip: Cuckoo.ClassToBeStubbedOptionalProperty<MockReceiptsRouter, WBTrip> {
 	        return .init(manager: cuckoo_manager, name: "moduleTrip")
 	    }
 	    
@@ -5772,6 +6390,11 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsRouter.self, method: "openGenerateReport()", parameterMatchers: matchers))
 	    }
 	    
+	    func openBackups() -> Cuckoo.ClassStubNoReturnFunction<()> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsRouter.self, method: "openBackups()", parameterMatchers: matchers))
+	    }
+	    
 	    func openCreateReceipt() -> Cuckoo.ClassStubNoReturnFunction<()> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsRouter.self, method: "openCreateReceipt()", parameterMatchers: matchers))
@@ -5787,9 +6410,14 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsRouter.self, method: "openImportReceiptFile()", parameterMatchers: matchers))
 	    }
 	    
-	    func openActions<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.ClassStubFunction<(WBReceipt), ReceiptActionsPresenter> where M1.MatchedType == WBReceipt {
+	    func openMove<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.ClassStubNoReturnFunction<(WBReceipt)> where M1.MatchedType == WBReceipt {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsRouter.self, method: "openActions(receipt: WBReceipt) -> ReceiptActionsPresenter", parameterMatchers: matchers))
+	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsRouter.self, method: "openMove(receipt: WBReceipt)", parameterMatchers: matchers))
+	    }
+	    
+	    func openCopy<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.ClassStubNoReturnFunction<(WBReceipt)> where M1.MatchedType == WBReceipt {
+	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockReceiptsRouter.self, method: "openCopy(receipt: WBReceipt)", parameterMatchers: matchers))
 	    }
 	    
 	    func openEdit<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.ClassStubNoReturnFunction<(WBReceipt)> where M1.MatchedType == WBReceipt {
@@ -5799,87 +6427,100 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_ReceiptsRouter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_ReceiptsRouter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
 	    }
 	
 	    
-	    var moduleTrip: Cuckoo.VerifyProperty<WBTrip?> {
+	    
+	    var moduleTrip: Cuckoo.VerifyOptionalProperty<WBTrip> {
 	        return .init(manager: cuckoo_manager, name: "moduleTrip", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
 	
 	    
 	    @discardableResult
-	    func openDistances() -> Cuckoo.__DoNotUse<Void> {
+	    func openDistances() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openDistances()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openImageViewer<M1: Cuckoo.Matchable>(for receipt: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBReceipt {
+	    func openImageViewer<M1: Cuckoo.Matchable>(for receipt: M1) -> Cuckoo.__DoNotUse<(WBReceipt), Void> where M1.MatchedType == WBReceipt {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
 	        return cuckoo_manager.verify("openImageViewer(for: WBReceipt)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openPDFViewer<M1: Cuckoo.Matchable>(for receipt: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBReceipt {
+	    func openPDFViewer<M1: Cuckoo.Matchable>(for receipt: M1) -> Cuckoo.__DoNotUse<(WBReceipt), Void> where M1.MatchedType == WBReceipt {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
 	        return cuckoo_manager.verify("openPDFViewer(for: WBReceipt)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openGenerateReport() -> Cuckoo.__DoNotUse<Void> {
+	    func openGenerateReport() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openGenerateReport()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openCreateReceipt() -> Cuckoo.__DoNotUse<Void> {
+	    func openBackups() -> Cuckoo.__DoNotUse<(), Void> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return cuckoo_manager.verify("openBackups()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func openCreateReceipt() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openCreateReceipt()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openCreatePhotoReceipt() -> Cuckoo.__DoNotUse<Void> {
+	    func openCreatePhotoReceipt() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openCreatePhotoReceipt()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openImportReceiptFile() -> Cuckoo.__DoNotUse<Void> {
+	    func openImportReceiptFile() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openImportReceiptFile()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openActions<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<ReceiptActionsPresenter> where M1.MatchedType == WBReceipt {
+	    func openMove<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<(WBReceipt), Void> where M1.MatchedType == WBReceipt {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
-	        return cuckoo_manager.verify("openActions(receipt: WBReceipt) -> ReceiptActionsPresenter", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	        return cuckoo_manager.verify("openMove(receipt: WBReceipt)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openEdit<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBReceipt {
+	    func openCopy<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<(WBReceipt), Void> where M1.MatchedType == WBReceipt {
+	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
+	        return cuckoo_manager.verify("openCopy(receipt: WBReceipt)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func openEdit<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<(WBReceipt), Void> where M1.MatchedType == WBReceipt {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBReceipt)>] = [wrap(matchable: receipt) { $0 }]
 	        return cuckoo_manager.verify("openEdit(receipt: WBReceipt)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class ReceiptsRouterStub: ReceiptsRouter {
     
+    
      override var moduleTrip: WBTrip! {
         get {
-            return DefaultValueRegistry.defaultValue(for: (WBTrip!).self)
+            return DefaultValueRegistry.defaultValue(for: (WBTrip?).self)
         }
         
         set { }
@@ -5890,40 +6531,48 @@ class MockReceiptsRouter: ReceiptsRouter, Cuckoo.ClassMock {
     
 
     
-     override func openDistances()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openDistances()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openImageViewer(for receipt: WBReceipt)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openImageViewer(for receipt: WBReceipt)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openPDFViewer(for receipt: WBReceipt)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openPDFViewer(for receipt: WBReceipt)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openGenerateReport()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openGenerateReport()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openCreateReceipt()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openBackups()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openCreatePhotoReceipt()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openCreateReceipt()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openImportReceiptFile()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openCreatePhotoReceipt()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openActions(receipt: WBReceipt)  -> ReceiptActionsPresenter {
-        return DefaultValueRegistry.defaultValue(for: ReceiptActionsPresenter.self)
+     override func openImportReceiptFile()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openEdit(receipt: WBReceipt)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openMove(receipt: WBReceipt)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
+    
+     override func openCopy(receipt: WBReceipt)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
+    
+     override func openEdit(receipt: WBReceipt)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -5944,25 +6593,46 @@ import Cuckoo
 import Foundation
 import Viperit
 
-class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.ClassMock {
-    typealias MocksType = TripDistancesInteractor
-    typealias Stubbing = __StubbingProxy_TripDistancesInteractor
-    typealias Verification = __VerificationProxy_TripDistancesInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.ClassMock {
+    
+     typealias MocksType = TripDistancesInteractor
+    
+     typealias Stubbing = __StubbingProxy_TripDistancesInteractor
+     typealias Verification = __VerificationProxy_TripDistancesInteractor
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
-    // ["name": "trip", "stubType": "ClassToBeStubbedProperty", "@type": "InstanceVariable", "type": "WBTrip!", "isReadOnly": false, "accessibility": ""]
+    private var __defaultImplStub: TripDistancesInteractor?
+
+     func enableDefaultImplementation(_ stub: TripDistancesInteractor) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
      override var trip: WBTrip! {
         get {
-            
-            return cuckoo_manager.getter("trip", superclassCall: super.trip)
-            
+            return cuckoo_manager.getter("trip",
+                superclassCall:
+                    
+                    super.trip
+                    ,
+                defaultCall: __defaultImplStub!.trip)
         }
         
         set {
-            
-            cuckoo_manager.setter("trip", value: newValue, superclassCall: super.trip = newValue)
-            
+            cuckoo_manager.setter("trip",
+                value: newValue,
+                superclassCall:
+                    
+                    super.trip = newValue
+                    ,
+                defaultCall: __defaultImplStub!.trip = newValue)
         }
         
     }
@@ -5971,51 +6641,61 @@ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.ClassMock {
     
 
     
-    // ["name": "fetchedModelAdapter", "returnSignature": " -> FetchedModelAdapter", "fullyQualifiedName": "fetchedModelAdapter(for: WBTrip) -> FetchedModelAdapter", "parameterSignature": "for trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "for: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("for"), name: "trip", type: "WBTrip", range: CountableRange(487..<503), nameRange: CountableRange(487..<490))], "returnType": "FetchedModelAdapter", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func fetchedModelAdapter(for trip: WBTrip)  -> FetchedModelAdapter {
+    
+    
+     override func fetchedModelAdapter(for trip: WBTrip) -> FetchedModelAdapter {
         
-            return cuckoo_manager.call("fetchedModelAdapter(for: WBTrip) -> FetchedModelAdapter",
-                parameters: (trip),
-                superclassCall:
-                    
-                    super.fetchedModelAdapter(for: trip)
-                    )
+    return cuckoo_manager.call("fetchedModelAdapter(for: WBTrip) -> FetchedModelAdapter",
+            parameters: (trip),
+            escapingParameters: (trip),
+            superclassCall:
+                
+                super.fetchedModelAdapter(for: trip)
+                ,
+            defaultCall: __defaultImplStub!.fetchedModelAdapter(for: trip))
         
     }
     
-    // ["name": "totalDistancePrice", "returnSignature": " -> String", "fullyQualifiedName": "totalDistancePrice() -> String", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "String", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func totalDistancePrice()  -> String {
+    
+    
+     override func totalDistancePrice() -> String {
         
-            return cuckoo_manager.call("totalDistancePrice() -> String",
-                parameters: (),
-                superclassCall:
-                    
-                    super.totalDistancePrice()
-                    )
+    return cuckoo_manager.call("totalDistancePrice() -> String",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.totalDistancePrice()
+                ,
+            defaultCall: __defaultImplStub!.totalDistancePrice())
         
     }
     
-    // ["name": "delete", "returnSignature": "", "fullyQualifiedName": "delete(distance: Distance)", "parameterSignature": "distance: Distance", "parameterSignatureWithoutNames": "distance: Distance", "inputTypes": "Distance", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "distance", "call": "distance: distance", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("distance"), name: "distance", type: "Distance", range: CountableRange(1368..<1386), nameRange: CountableRange(1368..<1376))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func delete(distance: Distance)  {
         
-            return cuckoo_manager.call("delete(distance: Distance)",
-                parameters: (distance),
-                superclassCall:
-                    
-                    super.delete(distance: distance)
-                    )
+    return cuckoo_manager.call("delete(distance: Distance)",
+            parameters: (distance),
+            escapingParameters: (distance),
+            superclassCall:
+                
+                super.delete(distance: distance)
+                ,
+            defaultCall: __defaultImplStub!.delete(distance: distance))
         
     }
     
 
-	struct __StubbingProxy_TripDistancesInteractor: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_TripDistancesInteractor: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
-	    var trip: Cuckoo.ClassToBeStubbedProperty<MockTripDistancesInteractor, WBTrip?> {
+	    
+	    var trip: Cuckoo.ClassToBeStubbedOptionalProperty<MockTripDistancesInteractor, WBTrip> {
 	        return .init(manager: cuckoo_manager, name: "trip")
 	    }
 	    
@@ -6037,51 +6717,52 @@ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_TripDistancesInteractor: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_TripDistancesInteractor: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
 	    }
 	
 	    
-	    var trip: Cuckoo.VerifyProperty<WBTrip?> {
+	    
+	    var trip: Cuckoo.VerifyOptionalProperty<WBTrip> {
 	        return .init(manager: cuckoo_manager, name: "trip", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
 	
 	    
 	    @discardableResult
-	    func fetchedModelAdapter<M1: Cuckoo.Matchable>(for trip: M1) -> Cuckoo.__DoNotUse<FetchedModelAdapter> where M1.MatchedType == WBTrip {
+	    func fetchedModelAdapter<M1: Cuckoo.Matchable>(for trip: M1) -> Cuckoo.__DoNotUse<(WBTrip), FetchedModelAdapter> where M1.MatchedType == WBTrip {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
 	        return cuckoo_manager.verify("fetchedModelAdapter(for: WBTrip) -> FetchedModelAdapter", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func totalDistancePrice() -> Cuckoo.__DoNotUse<String> {
+	    func totalDistancePrice() -> Cuckoo.__DoNotUse<(), String> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("totalDistancePrice() -> String", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func delete<M1: Cuckoo.Matchable>(distance: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Distance {
+	    func delete<M1: Cuckoo.Matchable>(distance: M1) -> Cuckoo.__DoNotUse<(Distance), Void> where M1.MatchedType == Distance {
 	        let matchers: [Cuckoo.ParameterMatcher<(Distance)>] = [wrap(matchable: distance) { $0 }]
 	        return cuckoo_manager.verify("delete(distance: Distance)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class TripDistancesInteractorStub: TripDistancesInteractor {
     
+    
      override var trip: WBTrip! {
         get {
-            return DefaultValueRegistry.defaultValue(for: (WBTrip!).self)
+            return DefaultValueRegistry.defaultValue(for: (WBTrip?).self)
         }
         
         set { }
@@ -6092,16 +6773,16 @@ class MockTripDistancesInteractor: TripDistancesInteractor, Cuckoo.ClassMock {
     
 
     
-     override func fetchedModelAdapter(for trip: WBTrip)  -> FetchedModelAdapter {
-        return DefaultValueRegistry.defaultValue(for: FetchedModelAdapter.self)
+     override func fetchedModelAdapter(for trip: WBTrip) -> FetchedModelAdapter  {
+        return DefaultValueRegistry.defaultValue(for: (FetchedModelAdapter).self)
     }
     
-     override func totalDistancePrice()  -> String {
-        return DefaultValueRegistry.defaultValue(for: String.self)
+     override func totalDistancePrice() -> String  {
+        return DefaultValueRegistry.defaultValue(for: (String).self)
     }
     
-     override func delete(distance: Distance)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func delete(distance: Distance)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -6123,82 +6804,110 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.ClassMock {
-    typealias MocksType = TripDistancesPresenter
-    typealias Stubbing = __StubbingProxy_TripDistancesPresenter
-    typealias Verification = __VerificationProxy_TripDistancesPresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.ClassMock {
+    
+     typealias MocksType = TripDistancesPresenter
+    
+     typealias Stubbing = __StubbingProxy_TripDistancesPresenter
+     typealias Verification = __VerificationProxy_TripDistancesPresenter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: TripDistancesPresenter?
+
+     func enableDefaultImplementation(_ stub: TripDistancesPresenter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "fetchedModelAdapter", "returnSignature": " -> FetchedModelAdapter", "fullyQualifiedName": "fetchedModelAdapter(for: WBTrip) -> FetchedModelAdapter", "parameterSignature": "for trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "for: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("for"), name: "trip", type: "WBTrip", range: CountableRange(341..<357), nameRange: CountableRange(341..<344))], "returnType": "FetchedModelAdapter", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func fetchedModelAdapter(for trip: WBTrip)  -> FetchedModelAdapter {
+
+    
+    
+    
+     override func fetchedModelAdapter(for trip: WBTrip) -> FetchedModelAdapter {
         
-            return cuckoo_manager.call("fetchedModelAdapter(for: WBTrip) -> FetchedModelAdapter",
-                parameters: (trip),
-                superclassCall:
-                    
-                    super.fetchedModelAdapter(for: trip)
-                    )
+    return cuckoo_manager.call("fetchedModelAdapter(for: WBTrip) -> FetchedModelAdapter",
+            parameters: (trip),
+            escapingParameters: (trip),
+            superclassCall:
+                
+                super.fetchedModelAdapter(for: trip)
+                ,
+            defaultCall: __defaultImplStub!.fetchedModelAdapter(for: trip))
         
     }
     
-    // ["name": "delete", "returnSignature": "", "fullyQualifiedName": "delete(distance: Distance)", "parameterSignature": "distance: Distance", "parameterSignatureWithoutNames": "distance: Distance", "inputTypes": "Distance", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "distance", "call": "distance: distance", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("distance"), name: "distance", type: "Distance", range: CountableRange(468..<486), nameRange: CountableRange(468..<476))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func delete(distance: Distance)  {
         
-            return cuckoo_manager.call("delete(distance: Distance)",
-                parameters: (distance),
-                superclassCall:
-                    
-                    super.delete(distance: distance)
-                    )
+    return cuckoo_manager.call("delete(distance: Distance)",
+            parameters: (distance),
+            escapingParameters: (distance),
+            superclassCall:
+                
+                super.delete(distance: distance)
+                ,
+            defaultCall: __defaultImplStub!.delete(distance: distance))
         
     }
     
-    // ["name": "presentEditDistance", "returnSignature": "", "fullyQualifiedName": "presentEditDistance(with: Any?)", "parameterSignature": "with data: Any?", "parameterSignatureWithoutNames": "data: Any?", "inputTypes": "Any?", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "with: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("with"), name: "data", type: "Any?", range: CountableRange(576..<591), nameRange: CountableRange(576..<580))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func presentEditDistance(with data: Any?)  {
         
-            return cuckoo_manager.call("presentEditDistance(with: Any?)",
-                parameters: (data),
-                superclassCall:
-                    
-                    super.presentEditDistance(with: data)
-                    )
+    return cuckoo_manager.call("presentEditDistance(with: Any?)",
+            parameters: (data),
+            escapingParameters: (data),
+            superclassCall:
+                
+                super.presentEditDistance(with: data)
+                ,
+            defaultCall: __defaultImplStub!.presentEditDistance(with: data))
         
     }
     
-    // ["name": "totalDistancePrice", "returnSignature": " -> String", "fullyQualifiedName": "totalDistancePrice() -> String", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "String", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func totalDistancePrice()  -> String {
+    
+    
+     override func totalDistancePrice() -> String {
         
-            return cuckoo_manager.call("totalDistancePrice() -> String",
-                parameters: (),
-                superclassCall:
-                    
-                    super.totalDistancePrice()
-                    )
+    return cuckoo_manager.call("totalDistancePrice() -> String",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.totalDistancePrice()
+                ,
+            defaultCall: __defaultImplStub!.totalDistancePrice())
         
     }
     
-    // ["name": "setupView", "returnSignature": "", "fullyQualifiedName": "setupView(data: Any)", "parameterSignature": "data: Any", "parameterSignatureWithoutNames": "data: Any", "inputTypes": "Any", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "data", "call": "data: data", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("data"), name: "data", type: "Any", range: CountableRange(778..<787), nameRange: CountableRange(778..<782))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func setupView(data: Any)  {
         
-            return cuckoo_manager.call("setupView(data: Any)",
-                parameters: (data),
-                superclassCall:
-                    
-                    super.setupView(data: data)
-                    )
+    return cuckoo_manager.call("setupView(data: Any)",
+            parameters: (data),
+            escapingParameters: (data),
+            superclassCall:
+                
+                super.setupView(data: data)
+                ,
+            defaultCall: __defaultImplStub!.setupView(data: data))
         
     }
     
 
-	struct __StubbingProxy_TripDistancesPresenter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_TripDistancesPresenter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -6213,7 +6922,7 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripDistancesPresenter.self, method: "delete(distance: Distance)", parameterMatchers: matchers))
 	    }
 	    
-	    func presentEditDistance<M1: Cuckoo.Matchable>(with data: M1) -> Cuckoo.ClassStubNoReturnFunction<(Any?)> where M1.MatchedType == Any? {
+	    func presentEditDistance<M1: Cuckoo.OptionalMatchable>(with data: M1) -> Cuckoo.ClassStubNoReturnFunction<(Any?)> where M1.OptionalMatchedType == Any {
 	        let matchers: [Cuckoo.ParameterMatcher<(Any?)>] = [wrap(matchable: data) { $0 }]
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripDistancesPresenter.self, method: "presentEditDistance(with: Any?)", parameterMatchers: matchers))
 	    }
@@ -6230,12 +6939,12 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_TripDistancesPresenter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_TripDistancesPresenter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -6245,37 +6954,36 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func fetchedModelAdapter<M1: Cuckoo.Matchable>(for trip: M1) -> Cuckoo.__DoNotUse<FetchedModelAdapter> where M1.MatchedType == WBTrip {
+	    func fetchedModelAdapter<M1: Cuckoo.Matchable>(for trip: M1) -> Cuckoo.__DoNotUse<(WBTrip), FetchedModelAdapter> where M1.MatchedType == WBTrip {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
 	        return cuckoo_manager.verify("fetchedModelAdapter(for: WBTrip) -> FetchedModelAdapter", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func delete<M1: Cuckoo.Matchable>(distance: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Distance {
+	    func delete<M1: Cuckoo.Matchable>(distance: M1) -> Cuckoo.__DoNotUse<(Distance), Void> where M1.MatchedType == Distance {
 	        let matchers: [Cuckoo.ParameterMatcher<(Distance)>] = [wrap(matchable: distance) { $0 }]
 	        return cuckoo_manager.verify("delete(distance: Distance)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func presentEditDistance<M1: Cuckoo.Matchable>(with data: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Any? {
+	    func presentEditDistance<M1: Cuckoo.OptionalMatchable>(with data: M1) -> Cuckoo.__DoNotUse<(Any?), Void> where M1.OptionalMatchedType == Any {
 	        let matchers: [Cuckoo.ParameterMatcher<(Any?)>] = [wrap(matchable: data) { $0 }]
 	        return cuckoo_manager.verify("presentEditDistance(with: Any?)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func totalDistancePrice() -> Cuckoo.__DoNotUse<String> {
+	    func totalDistancePrice() -> Cuckoo.__DoNotUse<(), String> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("totalDistancePrice() -> String", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Any {
+	    func setupView<M1: Cuckoo.Matchable>(data: M1) -> Cuckoo.__DoNotUse<(Any), Void> where M1.MatchedType == Any {
 	        let matchers: [Cuckoo.ParameterMatcher<(Any)>] = [wrap(matchable: data) { $0 }]
 	        return cuckoo_manager.verify("setupView(data: Any)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class TripDistancesPresenterStub: TripDistancesPresenter {
@@ -6284,24 +6992,24 @@ class MockTripDistancesPresenter: TripDistancesPresenter, Cuckoo.ClassMock {
     
 
     
-     override func fetchedModelAdapter(for trip: WBTrip)  -> FetchedModelAdapter {
-        return DefaultValueRegistry.defaultValue(for: FetchedModelAdapter.self)
+     override func fetchedModelAdapter(for trip: WBTrip) -> FetchedModelAdapter  {
+        return DefaultValueRegistry.defaultValue(for: (FetchedModelAdapter).self)
     }
     
-     override func delete(distance: Distance)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func delete(distance: Distance)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func presentEditDistance(with data: Any?)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func presentEditDistance(with data: Any?)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func totalDistancePrice()  -> String {
-        return DefaultValueRegistry.defaultValue(for: String.self)
+     override func totalDistancePrice() -> String  {
+        return DefaultValueRegistry.defaultValue(for: (String).self)
     }
     
-     override func setupView(data: Any)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func setupView(data: Any)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -6323,73 +7031,66 @@ import Foundation
 import RxSwift
 import Viperit
 
-class MockTripsInteractor: TripsInteractor, Cuckoo.ClassMock {
-    typealias MocksType = TripsInteractor
-    typealias Stubbing = __StubbingProxy_TripsInteractor
-    typealias Verification = __VerificationProxy_TripsInteractor
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockTripsInteractor: TripsInteractor, Cuckoo.ClassMock {
+    
+     typealias MocksType = TripsInteractor
+    
+     typealias Stubbing = __StubbingProxy_TripsInteractor
+     typealias Verification = __VerificationProxy_TripsInteractor
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
-    // ["name": "lastOpenedTrip", "stubType": "ClassToBeStubbedReadOnlyProperty", "@type": "InstanceVariable", "type": "Observable<WBTrip>", "isReadOnly": true, "accessibility": ""]
-     override var lastOpenedTrip: Observable<WBTrip> {
-        get {
-            
-            return cuckoo_manager.getter("lastOpenedTrip", superclassCall: super.lastOpenedTrip)
-            
-        }
-        
+    private var __defaultImplStub: TripsInteractor?
+
+     func enableDefaultImplementation(_ stub: TripsInteractor) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
     }
     
 
     
 
     
-    // ["name": "configureSubscribers", "returnSignature": "", "fullyQualifiedName": "configureSubscribers()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func configureSubscribers()  {
         
-            return cuckoo_manager.call("configureSubscribers()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.configureSubscribers()
-                    )
+    return cuckoo_manager.call("configureSubscribers()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.configureSubscribers()
+                ,
+            defaultCall: __defaultImplStub!.configureSubscribers())
         
     }
     
-    // ["name": "fetchedModelAdapter", "returnSignature": " -> FetchedModelAdapter?", "fullyQualifiedName": "fetchedModelAdapter() -> FetchedModelAdapter?", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Optional<FetchedModelAdapter>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func fetchedModelAdapter()  -> FetchedModelAdapter? {
-        
-            return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
-                parameters: (),
-                superclassCall:
-                    
-                    super.fetchedModelAdapter()
-                    )
-        
-    }
     
-    // ["name": "markLastOpened", "returnSignature": "", "fullyQualifiedName": "markLastOpened(trip: WBTrip)", "parameterSignature": "trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "trip: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(738..<750), nameRange: CountableRange(738..<742))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func markLastOpened(trip: WBTrip)  {
+    
+     override func fetchedModelAdapter() -> FetchedModelAdapter? {
         
-            return cuckoo_manager.call("markLastOpened(trip: WBTrip)",
-                parameters: (trip),
-                superclassCall:
-                    
-                    super.markLastOpened(trip: trip)
-                    )
+    return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.fetchedModelAdapter()
+                ,
+            defaultCall: __defaultImplStub!.fetchedModelAdapter())
         
     }
     
 
-	struct __StubbingProxy_TripsInteractor: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_TripsInteractor: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
-	    }
-	    
-	    var lastOpenedTrip: Cuckoo.ClassToBeStubbedReadOnlyProperty<MockTripsInteractor, Observable<WBTrip>> {
-	        return .init(manager: cuckoo_manager, name: "lastOpenedTrip")
 	    }
 	    
 	    
@@ -6398,81 +7099,54 @@ class MockTripsInteractor: TripsInteractor, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripsInteractor.self, method: "configureSubscribers()", parameterMatchers: matchers))
 	    }
 	    
-	    func fetchedModelAdapter() -> Cuckoo.ClassStubFunction<(), Optional<FetchedModelAdapter>> {
+	    func fetchedModelAdapter() -> Cuckoo.ClassStubFunction<(), FetchedModelAdapter?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripsInteractor.self, method: "fetchedModelAdapter() -> FetchedModelAdapter?", parameterMatchers: matchers))
 	    }
 	    
-	    func markLastOpened<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.ClassStubNoReturnFunction<(WBTrip)> where M1.MatchedType == WBTrip {
-	        let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockTripsInteractor.self, method: "markLastOpened(trip: WBTrip)", parameterMatchers: matchers))
-	    }
-	    
 	}
 
-	struct __VerificationProxy_TripsInteractor: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_TripsInteractor: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
 	    }
 	
 	    
-	    var lastOpenedTrip: Cuckoo.VerifyReadOnlyProperty<Observable<WBTrip>> {
-	        return .init(manager: cuckoo_manager, name: "lastOpenedTrip", callMatcher: callMatcher, sourceLocation: sourceLocation)
-	    }
-	    
 	
 	    
 	    @discardableResult
-	    func configureSubscribers() -> Cuckoo.__DoNotUse<Void> {
+	    func configureSubscribers() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("configureSubscribers()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func fetchedModelAdapter() -> Cuckoo.__DoNotUse<Optional<FetchedModelAdapter>> {
+	    func fetchedModelAdapter() -> Cuckoo.__DoNotUse<(), FetchedModelAdapter?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("fetchedModelAdapter() -> FetchedModelAdapter?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
-	    @discardableResult
-	    func markLastOpened<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBTrip {
-	        let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
-	        return cuckoo_manager.verify("markLastOpened(trip: WBTrip)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
 	}
-
 }
 
  class TripsInteractorStub: TripsInteractor {
     
-     override var lastOpenedTrip: Observable<WBTrip> {
-        get {
-            return DefaultValueRegistry.defaultValue(for: (Observable<WBTrip>).self)
-        }
-        
-    }
-    
 
     
 
     
-     override func configureSubscribers()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func configureSubscribers()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func fetchedModelAdapter()  -> FetchedModelAdapter? {
-        return DefaultValueRegistry.defaultValue(for: Optional<FetchedModelAdapter>.self)
-    }
-    
-     override func markLastOpened(trip: WBTrip)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func fetchedModelAdapter() -> FetchedModelAdapter?  {
+        return DefaultValueRegistry.defaultValue(for: (FetchedModelAdapter?).self)
     }
     
 }
@@ -6495,71 +7169,193 @@ import RxSwift
 import UserNotifications
 import Viperit
 
-class MockTripsPresenter: TripsPresenter, Cuckoo.ClassMock {
-    typealias MocksType = TripsPresenter
-    typealias Stubbing = __StubbingProxy_TripsPresenter
-    typealias Verification = __VerificationProxy_TripsPresenter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockTripsModuleInterface: TripsModuleInterface, Cuckoo.ProtocolMock {
+    
+     typealias MocksType = TripsModuleInterface
+    
+     typealias Stubbing = __StubbingProxy_TripsModuleInterface
+     typealias Verification = __VerificationProxy_TripsModuleInterface
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: false)
 
     
+    private var __defaultImplStub: TripsModuleInterface?
+
+     func enableDefaultImplementation(_ stub: TripsModuleInterface) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
 
     
-
     
-    // ["name": "viewHasLoaded", "returnSignature": "", "fullyQualifiedName": "viewHasLoaded()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func viewHasLoaded()  {
-        
-            return cuckoo_manager.call("viewHasLoaded()",
-                parameters: (),
+    
+     var tripSelected: Observable<WBTrip> {
+        get {
+            return cuckoo_manager.getter("tripSelected",
                 superclassCall:
                     
-                    super.viewHasLoaded()
-                    )
-        
-    }
-    
-    // ["name": "presentSettings", "returnSignature": "", "fullyQualifiedName": "presentSettings()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func presentSettings()  {
-        
-            return cuckoo_manager.call("presentSettings()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.presentSettings()
-                    )
-        
-    }
-    
-    // ["name": "presentAddTrip", "returnSignature": "", "fullyQualifiedName": "presentAddTrip()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func presentAddTrip()  {
-        
-            return cuckoo_manager.call("presentAddTrip()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.presentAddTrip()
-                    )
-        
-    }
-    
-    // ["name": "fetchedModelAdapter", "returnSignature": " -> FetchedModelAdapter?", "fullyQualifiedName": "fetchedModelAdapter() -> FetchedModelAdapter?", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Optional<FetchedModelAdapter>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func fetchedModelAdapter()  -> FetchedModelAdapter? {
-        
-            return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
-                parameters: (),
-                superclassCall:
-                    
-                    super.fetchedModelAdapter()
-                    )
+                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                    ,
+                defaultCall: __defaultImplStub!.tripSelected)
+        }
         
     }
     
 
-	struct __StubbingProxy_TripsPresenter: Cuckoo.StubbingProxy {
+    
+
+    
+
+	 struct __StubbingProxy_TripsModuleInterface: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
+	    }
+	    
+	    
+	    var tripSelected: Cuckoo.ProtocolToBeStubbedReadOnlyProperty<MockTripsModuleInterface, Observable<WBTrip>> {
+	        return .init(manager: cuckoo_manager, name: "tripSelected")
+	    }
+	    
+	    
+	}
+
+	 struct __VerificationProxy_TripsModuleInterface: Cuckoo.VerificationProxy {
+	    private let cuckoo_manager: Cuckoo.MockManager
+	    private let callMatcher: Cuckoo.CallMatcher
+	    private let sourceLocation: Cuckoo.SourceLocation
+	
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	        self.cuckoo_manager = manager
+	        self.callMatcher = callMatcher
+	        self.sourceLocation = sourceLocation
+	    }
+	
+	    
+	    
+	    var tripSelected: Cuckoo.VerifyReadOnlyProperty<Observable<WBTrip>> {
+	        return .init(manager: cuckoo_manager, name: "tripSelected", callMatcher: callMatcher, sourceLocation: sourceLocation)
+	    }
+	    
+	
+	    
+	}
+}
+
+ class TripsModuleInterfaceStub: TripsModuleInterface {
+    
+    
+     var tripSelected: Observable<WBTrip> {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (Observable<WBTrip>).self)
+        }
+        
+    }
+    
+
+    
+
+    
+}
+
+
+
+ class MockTripsPresenter: TripsPresenter, Cuckoo.ClassMock {
+    
+     typealias MocksType = TripsPresenter
+    
+     typealias Stubbing = __StubbingProxy_TripsPresenter
+     typealias Verification = __VerificationProxy_TripsPresenter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: TripsPresenter?
+
+     func enableDefaultImplementation(_ stub: TripsPresenter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
+     override var lastOpenedTrip: WBTrip? {
+        get {
+            return cuckoo_manager.getter("lastOpenedTrip",
+                superclassCall:
+                    
+                    super.lastOpenedTrip
+                    ,
+                defaultCall: __defaultImplStub!.lastOpenedTrip)
+        }
+        
+    }
+    
+
+    
+
+    
+    
+    
+     override func viewHasLoaded()  {
+        
+    return cuckoo_manager.call("viewHasLoaded()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.viewHasLoaded()
+                ,
+            defaultCall: __defaultImplStub!.viewHasLoaded())
+        
+    }
+    
+    
+    
+     override func presentAddTrip()  {
+        
+    return cuckoo_manager.call("presentAddTrip()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.presentAddTrip()
+                ,
+            defaultCall: __defaultImplStub!.presentAddTrip())
+        
+    }
+    
+    
+    
+     override func fetchedModelAdapter() -> FetchedModelAdapter? {
+        
+    return cuckoo_manager.call("fetchedModelAdapter() -> FetchedModelAdapter?",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.fetchedModelAdapter()
+                ,
+            defaultCall: __defaultImplStub!.fetchedModelAdapter())
+        
+    }
+    
+
+	 struct __StubbingProxy_TripsPresenter: Cuckoo.StubbingProxy {
+	    private let cuckoo_manager: Cuckoo.MockManager
+	
+	     init(manager: Cuckoo.MockManager) {
+	        self.cuckoo_manager = manager
+	    }
+	    
+	    
+	    var lastOpenedTrip: Cuckoo.ClassToBeStubbedReadOnlyProperty<MockTripsPresenter, WBTrip?> {
+	        return .init(manager: cuckoo_manager, name: "lastOpenedTrip")
 	    }
 	    
 	    
@@ -6568,85 +7364,82 @@ class MockTripsPresenter: TripsPresenter, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripsPresenter.self, method: "viewHasLoaded()", parameterMatchers: matchers))
 	    }
 	    
-	    func presentSettings() -> Cuckoo.ClassStubNoReturnFunction<()> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockTripsPresenter.self, method: "presentSettings()", parameterMatchers: matchers))
-	    }
-	    
 	    func presentAddTrip() -> Cuckoo.ClassStubNoReturnFunction<()> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripsPresenter.self, method: "presentAddTrip()", parameterMatchers: matchers))
 	    }
 	    
-	    func fetchedModelAdapter() -> Cuckoo.ClassStubFunction<(), Optional<FetchedModelAdapter>> {
+	    func fetchedModelAdapter() -> Cuckoo.ClassStubFunction<(), FetchedModelAdapter?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripsPresenter.self, method: "fetchedModelAdapter() -> FetchedModelAdapter?", parameterMatchers: matchers))
 	    }
 	    
 	}
 
-	struct __VerificationProxy_TripsPresenter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_TripsPresenter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
 	    }
 	
 	    
+	    
+	    var lastOpenedTrip: Cuckoo.VerifyReadOnlyProperty<WBTrip?> {
+	        return .init(manager: cuckoo_manager, name: "lastOpenedTrip", callMatcher: callMatcher, sourceLocation: sourceLocation)
+	    }
+	    
 	
 	    
 	    @discardableResult
-	    func viewHasLoaded() -> Cuckoo.__DoNotUse<Void> {
+	    func viewHasLoaded() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("viewHasLoaded()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func presentSettings() -> Cuckoo.__DoNotUse<Void> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("presentSettings()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func presentAddTrip() -> Cuckoo.__DoNotUse<Void> {
+	    func presentAddTrip() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("presentAddTrip()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func fetchedModelAdapter() -> Cuckoo.__DoNotUse<Optional<FetchedModelAdapter>> {
+	    func fetchedModelAdapter() -> Cuckoo.__DoNotUse<(), FetchedModelAdapter?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("fetchedModelAdapter() -> FetchedModelAdapter?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class TripsPresenterStub: TripsPresenter {
     
+    
+     override var lastOpenedTrip: WBTrip? {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (WBTrip?).self)
+        }
+        
+    }
+    
 
     
 
     
-     override func viewHasLoaded()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func viewHasLoaded()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func presentSettings()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func presentAddTrip()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func presentAddTrip()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-     override func fetchedModelAdapter()  -> FetchedModelAdapter? {
-        return DefaultValueRegistry.defaultValue(for: Optional<FetchedModelAdapter>.self)
+     override func fetchedModelAdapter() -> FetchedModelAdapter?  {
+        return DefaultValueRegistry.defaultValue(for: (FetchedModelAdapter?).self)
     }
     
 }
@@ -6668,191 +7461,122 @@ import Foundation
 import SafariServices
 import Viperit
 
-class MockTripsRouter: TripsRouter, Cuckoo.ClassMock {
-    typealias MocksType = TripsRouter
-    typealias Stubbing = __StubbingProxy_TripsRouter
-    typealias Verification = __VerificationProxy_TripsRouter
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockTripsRouter: TripsRouter, Cuckoo.ClassMock {
+    
+     typealias MocksType = TripsRouter
+    
+     typealias Stubbing = __StubbingProxy_TripsRouter
+     typealias Verification = __VerificationProxy_TripsRouter
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
+    private var __defaultImplStub: TripsRouter?
 
-    
-
-    
-    // ["name": "openSettings", "returnSignature": "", "fullyQualifiedName": "openSettings()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func openSettings()  {
-        
-            return cuckoo_manager.call("openSettings()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openSettings()
-                    )
-        
+     func enableDefaultImplementation(_ stub: TripsRouter) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
     }
     
-    // ["name": "openPrivacySettings", "returnSignature": "", "fullyQualifiedName": "openPrivacySettings()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+
+    
+
+    
+    
+    
      override func openPrivacySettings()  {
         
-            return cuckoo_manager.call("openPrivacySettings()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openPrivacySettings()
-                    )
+    return cuckoo_manager.call("openPrivacySettings()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openPrivacySettings()
+                ,
+            defaultCall: __defaultImplStub!.openPrivacySettings())
         
     }
     
-    // ["name": "openBackup", "returnSignature": "", "fullyQualifiedName": "openBackup()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func openBackup()  {
-        
-            return cuckoo_manager.call("openBackup()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openBackup()
-                    )
-        
-    }
     
-    // ["name": "openDebug", "returnSignature": "", "fullyQualifiedName": "openDebug()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
      override func openDebug()  {
         
-            return cuckoo_manager.call("openDebug()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openDebug()
-                    )
+    return cuckoo_manager.call("openDebug()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openDebug()
+                ,
+            defaultCall: __defaultImplStub!.openDebug())
         
     }
     
-    // ["name": "openAuth", "returnSignature": " -> AuthModuleInterface", "fullyQualifiedName": "openAuth() -> AuthModuleInterface", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "AuthModuleInterface", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func openAuth()  -> AuthModuleInterface {
-        
-            return cuckoo_manager.call("openAuth() -> AuthModuleInterface",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openAuth()
-                    )
-        
-    }
     
-    // ["name": "openAutoScans", "returnSignature": "", "fullyQualifiedName": "openAutoScans()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func openAutoScans()  {
-        
-            return cuckoo_manager.call("openAutoScans()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openAutoScans()
-                    )
-        
-    }
     
-    // ["name": "openUserGuide", "returnSignature": "", "fullyQualifiedName": "openUserGuide()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func openUserGuide()  {
-        
-            return cuckoo_manager.call("openUserGuide()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openUserGuide()
-                    )
-        
-    }
-    
-    // ["name": "openEdit", "returnSignature": "", "fullyQualifiedName": "openEdit(trip: WBTrip)", "parameterSignature": "trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "trip: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(1669..<1681), nameRange: CountableRange(1669..<1673))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
      override func openEdit(trip: WBTrip)  {
         
-            return cuckoo_manager.call("openEdit(trip: WBTrip)",
-                parameters: (trip),
-                superclassCall:
-                    
-                    super.openEdit(trip: trip)
-                    )
+    return cuckoo_manager.call("openEdit(trip: WBTrip)",
+            parameters: (trip),
+            escapingParameters: (trip),
+            superclassCall:
+                
+                super.openEdit(trip: trip)
+                ,
+            defaultCall: __defaultImplStub!.openEdit(trip: trip))
         
     }
     
-    // ["name": "openAddTrip", "returnSignature": "", "fullyQualifiedName": "openAddTrip()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func openAddTrip()  {
         
-            return cuckoo_manager.call("openAddTrip()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openAddTrip()
-                    )
+    return cuckoo_manager.call("openAddTrip()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openAddTrip()
+                ,
+            defaultCall: __defaultImplStub!.openAddTrip())
         
     }
     
-    // ["name": "openDetails", "returnSignature": "", "fullyQualifiedName": "openDetails(trip: WBTrip)", "parameterSignature": "trip: WBTrip", "parameterSignatureWithoutNames": "trip: WBTrip", "inputTypes": "WBTrip", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "trip", "call": "trip: trip", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("trip"), name: "trip", type: "WBTrip", range: CountableRange(1806..<1818), nameRange: CountableRange(1806..<1810))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
-     override func openDetails(trip: WBTrip)  {
-        
-            return cuckoo_manager.call("openDetails(trip: WBTrip)",
-                parameters: (trip),
-                superclassCall:
-                    
-                    super.openDetails(trip: trip)
-                    )
-        
-    }
     
-    // ["name": "openNoTrips", "returnSignature": "", "fullyQualifiedName": "openNoTrips()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
      override func openNoTrips()  {
         
-            return cuckoo_manager.call("openNoTrips()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.openNoTrips()
-                    )
+    return cuckoo_manager.call("openNoTrips()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openNoTrips()
+                ,
+            defaultCall: __defaultImplStub!.openNoTrips())
         
     }
     
 
-	struct __StubbingProxy_TripsRouter: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_TripsRouter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
-	    
-	    func openSettings() -> Cuckoo.ClassStubNoReturnFunction<()> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openSettings()", parameterMatchers: matchers))
-	    }
 	    
 	    func openPrivacySettings() -> Cuckoo.ClassStubNoReturnFunction<()> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openPrivacySettings()", parameterMatchers: matchers))
 	    }
 	    
-	    func openBackup() -> Cuckoo.ClassStubNoReturnFunction<()> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openBackup()", parameterMatchers: matchers))
-	    }
-	    
 	    func openDebug() -> Cuckoo.ClassStubNoReturnFunction<()> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openDebug()", parameterMatchers: matchers))
-	    }
-	    
-	    func openAuth() -> Cuckoo.ClassStubFunction<(), AuthModuleInterface> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openAuth() -> AuthModuleInterface", parameterMatchers: matchers))
-	    }
-	    
-	    func openAutoScans() -> Cuckoo.ClassStubNoReturnFunction<()> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openAutoScans()", parameterMatchers: matchers))
-	    }
-	    
-	    func openUserGuide() -> Cuckoo.ClassStubNoReturnFunction<()> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openUserGuide()", parameterMatchers: matchers))
 	    }
 	    
 	    func openEdit<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.ClassStubNoReturnFunction<(WBTrip)> where M1.MatchedType == WBTrip {
@@ -6865,11 +7589,6 @@ class MockTripsRouter: TripsRouter, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openAddTrip()", parameterMatchers: matchers))
 	    }
 	    
-	    func openDetails<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.ClassStubNoReturnFunction<(WBTrip)> where M1.MatchedType == WBTrip {
-	        let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openDetails(trip: WBTrip)", parameterMatchers: matchers))
-	    }
-	    
 	    func openNoTrips() -> Cuckoo.ClassStubNoReturnFunction<()> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockTripsRouter.self, method: "openNoTrips()", parameterMatchers: matchers))
@@ -6877,12 +7596,12 @@ class MockTripsRouter: TripsRouter, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_TripsRouter: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_TripsRouter: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -6892,73 +7611,36 @@ class MockTripsRouter: TripsRouter, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func openSettings() -> Cuckoo.__DoNotUse<Void> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("openSettings()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func openPrivacySettings() -> Cuckoo.__DoNotUse<Void> {
+	    func openPrivacySettings() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openPrivacySettings()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openBackup() -> Cuckoo.__DoNotUse<Void> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("openBackup()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func openDebug() -> Cuckoo.__DoNotUse<Void> {
+	    func openDebug() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openDebug()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openAuth() -> Cuckoo.__DoNotUse<AuthModuleInterface> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("openAuth() -> AuthModuleInterface", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func openAutoScans() -> Cuckoo.__DoNotUse<Void> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("openAutoScans()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func openUserGuide() -> Cuckoo.__DoNotUse<Void> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("openUserGuide()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func openEdit<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBTrip {
+	    func openEdit<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.__DoNotUse<(WBTrip), Void> where M1.MatchedType == WBTrip {
 	        let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
 	        return cuckoo_manager.verify("openEdit(trip: WBTrip)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openAddTrip() -> Cuckoo.__DoNotUse<Void> {
+	    func openAddTrip() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openAddTrip()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func openDetails<M1: Cuckoo.Matchable>(trip: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == WBTrip {
-	        let matchers: [Cuckoo.ParameterMatcher<(WBTrip)>] = [wrap(matchable: trip) { $0 }]
-	        return cuckoo_manager.verify("openDetails(trip: WBTrip)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func openNoTrips() -> Cuckoo.__DoNotUse<Void> {
+	    func openNoTrips() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("openNoTrips()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class TripsRouterStub: TripsRouter {
@@ -6967,48 +7649,24 @@ class MockTripsRouter: TripsRouter, Cuckoo.ClassMock {
     
 
     
-     override func openSettings()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openPrivacySettings()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openPrivacySettings()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openDebug()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openBackup()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openEdit(trip: WBTrip)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openDebug()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openAddTrip()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func openAuth()  -> AuthModuleInterface {
-        return DefaultValueRegistry.defaultValue(for: AuthModuleInterface.self)
-    }
-    
-     override func openAutoScans()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-     override func openUserGuide()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-     override func openEdit(trip: WBTrip)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-     override func openAddTrip()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-     override func openDetails(trip: WBTrip)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
-    }
-    
-     override func openNoTrips()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func openNoTrips()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }
@@ -7031,286 +7689,365 @@ import RxSwift
 import StoreKit
 import SwiftyStoreKit
 
-class MockPurchaseService: PurchaseService, Cuckoo.ClassMock {
-    typealias MocksType = PurchaseService
-    typealias Stubbing = __StubbingProxy_PurchaseService
-    typealias Verification = __VerificationProxy_PurchaseService
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
 
+ class MockPurchaseService: PurchaseService, Cuckoo.ClassMock {
+    
+     typealias MocksType = PurchaseService
+    
+     typealias Stubbing = __StubbingProxy_PurchaseService
+     typealias Verification = __VerificationProxy_PurchaseService
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: PurchaseService?
+
+     func enableDefaultImplementation(_ stub: PurchaseService) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
     
 
     
 
     
-    // ["name": "cacheProducts", "returnSignature": "", "fullyQualifiedName": "cacheProducts()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+
+    
+    
+    
      override func cacheProducts()  {
         
-            return cuckoo_manager.call("cacheProducts()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.cacheProducts()
-                    )
+    return cuckoo_manager.call("cacheProducts()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.cacheProducts()
+                ,
+            defaultCall: __defaultImplStub!.cacheProducts())
         
     }
     
-    // ["name": "requestProducts", "returnSignature": " -> Observable<SKProduct>", "fullyQualifiedName": "requestProducts() -> Observable<SKProduct>", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Observable<SKProduct>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func requestProducts()  -> Observable<SKProduct> {
+    
+    
+     override func requestProducts() -> Observable<SKProduct> {
         
-            return cuckoo_manager.call("requestProducts() -> Observable<SKProduct>",
-                parameters: (),
-                superclassCall:
-                    
-                    super.requestProducts()
-                    )
+    return cuckoo_manager.call("requestProducts() -> Observable<SKProduct>",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.requestProducts()
+                ,
+            defaultCall: __defaultImplStub!.requestProducts())
         
     }
     
-    // ["name": "getSubscriptions", "returnSignature": " -> Single<[SubscriptionModel]>", "fullyQualifiedName": "getSubscriptions() -> Single<[SubscriptionModel]>", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Single<[SubscriptionModel]>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func getSubscriptions()  -> Single<[SubscriptionModel]> {
+    
+    
+     override func getSubscriptions() -> Single<[SubscriptionModel]> {
         
-            return cuckoo_manager.call("getSubscriptions() -> Single<[SubscriptionModel]>",
-                parameters: (),
-                superclassCall:
-                    
-                    super.getSubscriptions()
-                    )
+    return cuckoo_manager.call("getSubscriptions() -> Single<[SubscriptionModel]>",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.getSubscriptions()
+                ,
+            defaultCall: __defaultImplStub!.getSubscriptions())
         
     }
     
-    // ["name": "restorePurchases", "returnSignature": " -> Observable<[Purchase]>", "fullyQualifiedName": "restorePurchases() -> Observable<[Purchase]>", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Observable<[Purchase]>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func restorePurchases()  -> Observable<[Purchase]> {
+    
+    
+     override func restorePurchases() -> Observable<[Purchase]> {
         
-            return cuckoo_manager.call("restorePurchases() -> Observable<[Purchase]>",
-                parameters: (),
-                superclassCall:
-                    
-                    super.restorePurchases()
-                    )
+    return cuckoo_manager.call("restorePurchases() -> Observable<[Purchase]>",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.restorePurchases()
+                ,
+            defaultCall: __defaultImplStub!.restorePurchases())
         
     }
     
-    // ["name": "restoreSubscription", "returnSignature": " -> Observable<Bool>", "fullyQualifiedName": "restoreSubscription() -> Observable<Bool>", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Observable<Bool>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func restoreSubscription()  -> Observable<Bool> {
+    
+    
+     override func restoreSubscription() -> Observable<Bool> {
         
-            return cuckoo_manager.call("restoreSubscription() -> Observable<Bool>",
-                parameters: (),
-                superclassCall:
-                    
-                    super.restoreSubscription()
-                    )
+    return cuckoo_manager.call("restoreSubscription() -> Observable<Bool>",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.restoreSubscription()
+                ,
+            defaultCall: __defaultImplStub!.restoreSubscription())
         
     }
     
-    // ["name": "purchaseSubscription", "returnSignature": " -> Observable<PurchaseDetails>", "fullyQualifiedName": "purchaseSubscription() -> Observable<PurchaseDetails>", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Observable<PurchaseDetails>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func purchaseSubscription()  -> Observable<PurchaseDetails> {
+    
+    
+     override func purchaseSubscription() -> Observable<PurchaseDetails> {
         
-            return cuckoo_manager.call("purchaseSubscription() -> Observable<PurchaseDetails>",
-                parameters: (),
-                superclassCall:
-                    
-                    super.purchaseSubscription()
-                    )
+    return cuckoo_manager.call("purchaseSubscription() -> Observable<PurchaseDetails>",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.purchaseSubscription()
+                ,
+            defaultCall: __defaultImplStub!.purchaseSubscription())
         
     }
     
-    // ["name": "purchase", "returnSignature": " -> Observable<PurchaseDetails>", "fullyQualifiedName": "purchase(prodcutID: String) -> Observable<PurchaseDetails>", "parameterSignature": "prodcutID: String", "parameterSignatureWithoutNames": "prodcutID: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "prodcutID", "call": "prodcutID: prodcutID", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("prodcutID"), name: "prodcutID", type: "String", range: CountableRange(6064..<6081), nameRange: CountableRange(6064..<6073))], "returnType": "Observable<PurchaseDetails>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func purchase(prodcutID: String)  -> Observable<PurchaseDetails> {
+    
+    
+     override func purchase(prodcutID: String) -> Observable<PurchaseDetails> {
         
-            return cuckoo_manager.call("purchase(prodcutID: String) -> Observable<PurchaseDetails>",
-                parameters: (prodcutID),
-                superclassCall:
-                    
-                    super.purchase(prodcutID: prodcutID)
-                    )
+    return cuckoo_manager.call("purchase(prodcutID: String) -> Observable<PurchaseDetails>",
+            parameters: (prodcutID),
+            escapingParameters: (prodcutID),
+            superclassCall:
+                
+                super.purchase(prodcutID: prodcutID)
+                ,
+            defaultCall: __defaultImplStub!.purchase(prodcutID: prodcutID))
         
     }
     
-    // ["name": "price", "returnSignature": " -> Observable<String>", "fullyQualifiedName": "price(productID: String) -> Observable<String>", "parameterSignature": "productID: String", "parameterSignatureWithoutNames": "productID: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "productID", "call": "productID: productID", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("productID"), name: "productID", type: "String", range: CountableRange(8075..<8092), nameRange: CountableRange(8075..<8084))], "returnType": "Observable<String>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func price(productID: String)  -> Observable<String> {
+    
+    
+     override func price(productID: String) -> Observable<String> {
         
-            return cuckoo_manager.call("price(productID: String) -> Observable<String>",
-                parameters: (productID),
-                superclassCall:
-                    
-                    super.price(productID: productID)
-                    )
+    return cuckoo_manager.call("price(productID: String) -> Observable<String>",
+            parameters: (productID),
+            escapingParameters: (productID),
+            superclassCall:
+                
+                super.price(productID: productID)
+                ,
+            defaultCall: __defaultImplStub!.price(productID: productID))
         
     }
     
-    // ["name": "completeTransactions", "returnSignature": "", "fullyQualifiedName": "completeTransactions()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func completeTransactions()  {
         
-            return cuckoo_manager.call("completeTransactions()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.completeTransactions()
-                    )
+    return cuckoo_manager.call("completeTransactions()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.completeTransactions()
+                ,
+            defaultCall: __defaultImplStub!.completeTransactions())
         
     }
     
-    // ["name": "appStoreReceipt", "returnSignature": " -> String?", "fullyQualifiedName": "appStoreReceipt() -> String?", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Optional<String>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func appStoreReceipt()  -> String? {
+    
+    
+     override func appStoreReceipt() -> String? {
         
-            return cuckoo_manager.call("appStoreReceipt() -> String?",
-                parameters: (),
-                superclassCall:
-                    
-                    super.appStoreReceipt()
-                    )
+    return cuckoo_manager.call("appStoreReceipt() -> String?",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.appStoreReceipt()
+                ,
+            defaultCall: __defaultImplStub!.appStoreReceipt())
         
     }
     
-    // ["name": "isReceiptSent", "returnSignature": " -> Bool", "fullyQualifiedName": "isReceiptSent(_: String) -> Bool", "parameterSignature": "_ receipt: String", "parameterSignatureWithoutNames": "receipt: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "receipt", type: "String", range: CountableRange(9858..<9875), nameRange: CountableRange(0..<0))], "returnType": "Bool", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func isReceiptSent(_ receipt: String)  -> Bool {
+    
+    
+     override func isReceiptSent(_ receipt: String) -> Bool {
         
-            return cuckoo_manager.call("isReceiptSent(_: String) -> Bool",
-                parameters: (receipt),
-                superclassCall:
-                    
-                    super.isReceiptSent(receipt)
-                    )
+    return cuckoo_manager.call("isReceiptSent(_: String) -> Bool",
+            parameters: (receipt),
+            escapingParameters: (receipt),
+            superclassCall:
+                
+                super.isReceiptSent(receipt)
+                ,
+            defaultCall: __defaultImplStub!.isReceiptSent(receipt))
         
     }
     
-    // ["name": "logPurchases", "returnSignature": "", "fullyQualifiedName": "logPurchases()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func logPurchases()  {
         
-            return cuckoo_manager.call("logPurchases()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.logPurchases()
-                    )
+    return cuckoo_manager.call("logPurchases()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.logPurchases()
+                ,
+            defaultCall: __defaultImplStub!.logPurchases())
         
     }
     
-    // ["name": "sendReceipt", "returnSignature": "", "fullyQualifiedName": "sendReceipt()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func sendReceipt()  {
         
-            return cuckoo_manager.call("sendReceipt()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.sendReceipt()
-                    )
+    return cuckoo_manager.call("sendReceipt()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.sendReceipt()
+                ,
+            defaultCall: __defaultImplStub!.sendReceipt())
         
     }
     
-    // ["name": "resetCache", "returnSignature": "", "fullyQualifiedName": "resetCache()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func resetCache()  {
         
-            return cuckoo_manager.call("resetCache()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.resetCache()
-                    )
+    return cuckoo_manager.call("resetCache()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.resetCache()
+                ,
+            defaultCall: __defaultImplStub!.resetCache())
         
     }
     
-    // ["name": "cacheSubscriptionValidation", "returnSignature": "", "fullyQualifiedName": "cacheSubscriptionValidation()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func cacheSubscriptionValidation()  {
         
-            return cuckoo_manager.call("cacheSubscriptionValidation()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.cacheSubscriptionValidation()
-                    )
+    return cuckoo_manager.call("cacheSubscriptionValidation()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.cacheSubscriptionValidation()
+                ,
+            defaultCall: __defaultImplStub!.cacheSubscriptionValidation())
         
     }
     
-    // ["name": "hasValidSubscription", "returnSignature": " -> Observable<Bool>", "fullyQualifiedName": "hasValidSubscription() -> Observable<Bool>", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Observable<Bool>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func hasValidSubscription()  -> Observable<Bool> {
+    
+    
+     override func hasValidSubscription() -> Observable<Bool> {
         
-            return cuckoo_manager.call("hasValidSubscription() -> Observable<Bool>",
-                parameters: (),
-                superclassCall:
-                    
-                    super.hasValidSubscription()
-                    )
+    return cuckoo_manager.call("hasValidSubscription() -> Observable<Bool>",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.hasValidSubscription()
+                ,
+            defaultCall: __defaultImplStub!.hasValidSubscription())
         
     }
     
-    // ["name": "subscriptionExpirationDate", "returnSignature": " -> Observable<Date?>", "fullyQualifiedName": "subscriptionExpirationDate() -> Observable<Date?>", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Observable<Date?>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func subscriptionExpirationDate()  -> Observable<Date?> {
+    
+    
+     override func subscriptionExpirationDate() -> Observable<Date?> {
         
-            return cuckoo_manager.call("subscriptionExpirationDate() -> Observable<Date?>",
-                parameters: (),
-                superclassCall:
-                    
-                    super.subscriptionExpirationDate()
-                    )
+    return cuckoo_manager.call("subscriptionExpirationDate() -> Observable<Date?>",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.subscriptionExpirationDate()
+                ,
+            defaultCall: __defaultImplStub!.subscriptionExpirationDate())
         
     }
     
-    // ["name": "validateSubscription", "returnSignature": " -> Observable<SubscriptionValidation>", "fullyQualifiedName": "validateSubscription() -> Observable<SubscriptionValidation>", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Observable<SubscriptionValidation>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func validateSubscription()  -> Observable<SubscriptionValidation> {
+    
+    
+     override func validateSubscription() -> Observable<SubscriptionValidation> {
         
-            return cuckoo_manager.call("validateSubscription() -> Observable<SubscriptionValidation>",
-                parameters: (),
-                superclassCall:
-                    
-                    super.validateSubscription()
-                    )
+    return cuckoo_manager.call("validateSubscription() -> Observable<SubscriptionValidation>",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.validateSubscription()
+                ,
+            defaultCall: __defaultImplStub!.validateSubscription())
         
     }
     
-    // ["name": "forceValidateSubscription", "returnSignature": " -> Observable<SubscriptionValidation>", "fullyQualifiedName": "forceValidateSubscription() -> Observable<SubscriptionValidation>", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Observable<SubscriptionValidation>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func forceValidateSubscription()  -> Observable<SubscriptionValidation> {
+    
+    
+     override func forceValidateSubscription() -> Observable<SubscriptionValidation> {
         
-            return cuckoo_manager.call("forceValidateSubscription() -> Observable<SubscriptionValidation>",
-                parameters: (),
-                superclassCall:
-                    
-                    super.forceValidateSubscription()
-                    )
+    return cuckoo_manager.call("forceValidateSubscription() -> Observable<SubscriptionValidation>",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.forceValidateSubscription()
+                ,
+            defaultCall: __defaultImplStub!.forceValidateSubscription())
         
     }
     
-    // ["name": "verifySubscription", "returnSignature": " -> VerifySubscriptionResult", "fullyQualifiedName": "verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult", "parameterSignature": "receipt: ReceiptInfo", "parameterSignatureWithoutNames": "receipt: ReceiptInfo", "inputTypes": "ReceiptInfo", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "receipt", "call": "receipt: receipt", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("receipt"), name: "receipt", type: "ReceiptInfo", range: CountableRange(15883..<15903), nameRange: CountableRange(15883..<15890))], "returnType": "VerifySubscriptionResult", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func verifySubscription(receipt: ReceiptInfo)  -> VerifySubscriptionResult {
+    
+    
+     override func verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult {
         
-            return cuckoo_manager.call("verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult",
-                parameters: (receipt),
-                superclassCall:
-                    
-                    super.verifySubscription(receipt: receipt)
-                    )
+    return cuckoo_manager.call("verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult",
+            parameters: (receipt),
+            escapingParameters: (receipt),
+            superclassCall:
+                
+                super.verifySubscription(receipt: receipt)
+                ,
+            defaultCall: __defaultImplStub!.verifySubscription(receipt: receipt))
         
     }
     
-    // ["name": "markAppStoreInteracted", "returnSignature": "", "fullyQualifiedName": "markAppStoreInteracted()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+    
+    
      override func markAppStoreInteracted()  {
         
-            return cuckoo_manager.call("markAppStoreInteracted()",
-                parameters: (),
-                superclassCall:
-                    
-                    super.markAppStoreInteracted()
-                    )
+    return cuckoo_manager.call("markAppStoreInteracted()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.markAppStoreInteracted()
+                ,
+            defaultCall: __defaultImplStub!.markAppStoreInteracted())
         
     }
     
-    // ["name": "isAppStoreInteracted", "returnSignature": " -> Bool", "fullyQualifiedName": "isAppStoreInteracted() -> Bool", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Bool", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func isAppStoreInteracted()  -> Bool {
+    
+    
+     override func isAppStoreInteracted() -> Bool {
         
-            return cuckoo_manager.call("isAppStoreInteracted() -> Bool",
-                parameters: (),
-                superclassCall:
-                    
-                    super.isAppStoreInteracted()
-                    )
+    return cuckoo_manager.call("isAppStoreInteracted() -> Bool",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.isAppStoreInteracted()
+                ,
+            defaultCall: __defaultImplStub!.isAppStoreInteracted())
         
     }
     
 
-	struct __StubbingProxy_PurchaseService: Cuckoo.StubbingProxy {
+	 struct __StubbingProxy_PurchaseService: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -7360,7 +8097,7 @@ class MockPurchaseService: PurchaseService, Cuckoo.ClassMock {
 	        return .init(stub: cuckoo_manager.createStub(for: MockPurchaseService.self, method: "completeTransactions()", parameterMatchers: matchers))
 	    }
 	    
-	    func appStoreReceipt() -> Cuckoo.ClassStubFunction<(), Optional<String>> {
+	    func appStoreReceipt() -> Cuckoo.ClassStubFunction<(), String?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockPurchaseService.self, method: "appStoreReceipt() -> String?", parameterMatchers: matchers))
 	    }
@@ -7427,12 +8164,12 @@ class MockPurchaseService: PurchaseService, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_PurchaseService: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_PurchaseService: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -7442,139 +8179,138 @@ class MockPurchaseService: PurchaseService, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func cacheProducts() -> Cuckoo.__DoNotUse<Void> {
+	    func cacheProducts() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("cacheProducts()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func requestProducts() -> Cuckoo.__DoNotUse<Observable<SKProduct>> {
+	    func requestProducts() -> Cuckoo.__DoNotUse<(), Observable<SKProduct>> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("requestProducts() -> Observable<SKProduct>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func getSubscriptions() -> Cuckoo.__DoNotUse<Single<[SubscriptionModel]>> {
+	    func getSubscriptions() -> Cuckoo.__DoNotUse<(), Single<[SubscriptionModel]>> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("getSubscriptions() -> Single<[SubscriptionModel]>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func restorePurchases() -> Cuckoo.__DoNotUse<Observable<[Purchase]>> {
+	    func restorePurchases() -> Cuckoo.__DoNotUse<(), Observable<[Purchase]>> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("restorePurchases() -> Observable<[Purchase]>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func restoreSubscription() -> Cuckoo.__DoNotUse<Observable<Bool>> {
+	    func restoreSubscription() -> Cuckoo.__DoNotUse<(), Observable<Bool>> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("restoreSubscription() -> Observable<Bool>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func purchaseSubscription() -> Cuckoo.__DoNotUse<Observable<PurchaseDetails>> {
+	    func purchaseSubscription() -> Cuckoo.__DoNotUse<(), Observable<PurchaseDetails>> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("purchaseSubscription() -> Observable<PurchaseDetails>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func purchase<M1: Cuckoo.Matchable>(prodcutID: M1) -> Cuckoo.__DoNotUse<Observable<PurchaseDetails>> where M1.MatchedType == String {
+	    func purchase<M1: Cuckoo.Matchable>(prodcutID: M1) -> Cuckoo.__DoNotUse<(String), Observable<PurchaseDetails>> where M1.MatchedType == String {
 	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: prodcutID) { $0 }]
 	        return cuckoo_manager.verify("purchase(prodcutID: String) -> Observable<PurchaseDetails>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func price<M1: Cuckoo.Matchable>(productID: M1) -> Cuckoo.__DoNotUse<Observable<String>> where M1.MatchedType == String {
+	    func price<M1: Cuckoo.Matchable>(productID: M1) -> Cuckoo.__DoNotUse<(String), Observable<String>> where M1.MatchedType == String {
 	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: productID) { $0 }]
 	        return cuckoo_manager.verify("price(productID: String) -> Observable<String>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func completeTransactions() -> Cuckoo.__DoNotUse<Void> {
+	    func completeTransactions() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("completeTransactions()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func appStoreReceipt() -> Cuckoo.__DoNotUse<Optional<String>> {
+	    func appStoreReceipt() -> Cuckoo.__DoNotUse<(), String?> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("appStoreReceipt() -> String?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func isReceiptSent<M1: Cuckoo.Matchable>(_ receipt: M1) -> Cuckoo.__DoNotUse<Bool> where M1.MatchedType == String {
+	    func isReceiptSent<M1: Cuckoo.Matchable>(_ receipt: M1) -> Cuckoo.__DoNotUse<(String), Bool> where M1.MatchedType == String {
 	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: receipt) { $0 }]
 	        return cuckoo_manager.verify("isReceiptSent(_: String) -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func logPurchases() -> Cuckoo.__DoNotUse<Void> {
+	    func logPurchases() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("logPurchases()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func sendReceipt() -> Cuckoo.__DoNotUse<Void> {
+	    func sendReceipt() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("sendReceipt()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func resetCache() -> Cuckoo.__DoNotUse<Void> {
+	    func resetCache() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("resetCache()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func cacheSubscriptionValidation() -> Cuckoo.__DoNotUse<Void> {
+	    func cacheSubscriptionValidation() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("cacheSubscriptionValidation()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func hasValidSubscription() -> Cuckoo.__DoNotUse<Observable<Bool>> {
+	    func hasValidSubscription() -> Cuckoo.__DoNotUse<(), Observable<Bool>> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("hasValidSubscription() -> Observable<Bool>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func subscriptionExpirationDate() -> Cuckoo.__DoNotUse<Observable<Date?>> {
+	    func subscriptionExpirationDate() -> Cuckoo.__DoNotUse<(), Observable<Date?>> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("subscriptionExpirationDate() -> Observable<Date?>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func validateSubscription() -> Cuckoo.__DoNotUse<Observable<SubscriptionValidation>> {
+	    func validateSubscription() -> Cuckoo.__DoNotUse<(), Observable<SubscriptionValidation>> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("validateSubscription() -> Observable<SubscriptionValidation>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func forceValidateSubscription() -> Cuckoo.__DoNotUse<Observable<SubscriptionValidation>> {
+	    func forceValidateSubscription() -> Cuckoo.__DoNotUse<(), Observable<SubscriptionValidation>> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("forceValidateSubscription() -> Observable<SubscriptionValidation>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func verifySubscription<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<VerifySubscriptionResult> where M1.MatchedType == ReceiptInfo {
+	    func verifySubscription<M1: Cuckoo.Matchable>(receipt: M1) -> Cuckoo.__DoNotUse<(ReceiptInfo), VerifySubscriptionResult> where M1.MatchedType == ReceiptInfo {
 	        let matchers: [Cuckoo.ParameterMatcher<(ReceiptInfo)>] = [wrap(matchable: receipt) { $0 }]
 	        return cuckoo_manager.verify("verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func markAppStoreInteracted() -> Cuckoo.__DoNotUse<Void> {
+	    func markAppStoreInteracted() -> Cuckoo.__DoNotUse<(), Void> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("markAppStoreInteracted()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func isAppStoreInteracted() -> Cuckoo.__DoNotUse<Bool> {
+	    func isAppStoreInteracted() -> Cuckoo.__DoNotUse<(), Bool> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return cuckoo_manager.verify("isAppStoreInteracted() -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class PurchaseServiceStub: PurchaseService {
@@ -7583,92 +8319,92 @@ class MockPurchaseService: PurchaseService, Cuckoo.ClassMock {
     
 
     
-     override func cacheProducts()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func cacheProducts()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func requestProducts()  -> Observable<SKProduct> {
-        return DefaultValueRegistry.defaultValue(for: Observable<SKProduct>.self)
+     override func requestProducts() -> Observable<SKProduct>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<SKProduct>).self)
     }
     
-     override func getSubscriptions()  -> Single<[SubscriptionModel]> {
-        return DefaultValueRegistry.defaultValue(for: Single<[SubscriptionModel]>.self)
+     override func getSubscriptions() -> Single<[SubscriptionModel]>  {
+        return DefaultValueRegistry.defaultValue(for: (Single<[SubscriptionModel]>).self)
     }
     
-     override func restorePurchases()  -> Observable<[Purchase]> {
-        return DefaultValueRegistry.defaultValue(for: Observable<[Purchase]>.self)
+     override func restorePurchases() -> Observable<[Purchase]>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<[Purchase]>).self)
     }
     
-     override func restoreSubscription()  -> Observable<Bool> {
-        return DefaultValueRegistry.defaultValue(for: Observable<Bool>.self)
+     override func restoreSubscription() -> Observable<Bool>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<Bool>).self)
     }
     
-     override func purchaseSubscription()  -> Observable<PurchaseDetails> {
-        return DefaultValueRegistry.defaultValue(for: Observable<PurchaseDetails>.self)
+     override func purchaseSubscription() -> Observable<PurchaseDetails>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<PurchaseDetails>).self)
     }
     
-     override func purchase(prodcutID: String)  -> Observable<PurchaseDetails> {
-        return DefaultValueRegistry.defaultValue(for: Observable<PurchaseDetails>.self)
+     override func purchase(prodcutID: String) -> Observable<PurchaseDetails>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<PurchaseDetails>).self)
     }
     
-     override func price(productID: String)  -> Observable<String> {
-        return DefaultValueRegistry.defaultValue(for: Observable<String>.self)
+     override func price(productID: String) -> Observable<String>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<String>).self)
     }
     
-     override func completeTransactions()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func completeTransactions()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func appStoreReceipt()  -> String? {
-        return DefaultValueRegistry.defaultValue(for: Optional<String>.self)
+     override func appStoreReceipt() -> String?  {
+        return DefaultValueRegistry.defaultValue(for: (String?).self)
     }
     
-     override func isReceiptSent(_ receipt: String)  -> Bool {
-        return DefaultValueRegistry.defaultValue(for: Bool.self)
+     override func isReceiptSent(_ receipt: String) -> Bool  {
+        return DefaultValueRegistry.defaultValue(for: (Bool).self)
     }
     
-     override func logPurchases()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func logPurchases()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func sendReceipt()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func sendReceipt()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func resetCache()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func resetCache()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func cacheSubscriptionValidation()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func cacheSubscriptionValidation()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func hasValidSubscription()  -> Observable<Bool> {
-        return DefaultValueRegistry.defaultValue(for: Observable<Bool>.self)
+     override func hasValidSubscription() -> Observable<Bool>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<Bool>).self)
     }
     
-     override func subscriptionExpirationDate()  -> Observable<Date?> {
-        return DefaultValueRegistry.defaultValue(for: Observable<Date?>.self)
+     override func subscriptionExpirationDate() -> Observable<Date?>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<Date?>).self)
     }
     
-     override func validateSubscription()  -> Observable<SubscriptionValidation> {
-        return DefaultValueRegistry.defaultValue(for: Observable<SubscriptionValidation>.self)
+     override func validateSubscription() -> Observable<SubscriptionValidation>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<SubscriptionValidation>).self)
     }
     
-     override func forceValidateSubscription()  -> Observable<SubscriptionValidation> {
-        return DefaultValueRegistry.defaultValue(for: Observable<SubscriptionValidation>.self)
+     override func forceValidateSubscription() -> Observable<SubscriptionValidation>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<SubscriptionValidation>).self)
     }
     
-     override func verifySubscription(receipt: ReceiptInfo)  -> VerifySubscriptionResult {
-        return DefaultValueRegistry.defaultValue(for: VerifySubscriptionResult.self)
+     override func verifySubscription(receipt: ReceiptInfo) -> VerifySubscriptionResult  {
+        return DefaultValueRegistry.defaultValue(for: (VerifySubscriptionResult).self)
     }
     
-     override func markAppStoreInteracted()  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     override func markAppStoreInteracted()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
-     override func isAppStoreInteracted()  -> Bool {
-        return DefaultValueRegistry.defaultValue(for: Bool.self)
+     override func isAppStoreInteracted() -> Bool  {
+        return DefaultValueRegistry.defaultValue(for: (Bool).self)
     }
     
 }
@@ -7689,46 +8425,65 @@ import Cuckoo
 import Moya
 import RxSwift
 
-class MockRecognitionService: RecognitionService, Cuckoo.ClassMock {
-    typealias MocksType = RecognitionService
-    typealias Stubbing = __StubbingProxy_RecognitionService
-    typealias Verification = __VerificationProxy_RecognitionService
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockRecognitionService: RecognitionService, Cuckoo.ClassMock {
+    
+     typealias MocksType = RecognitionService
+    
+     typealias Stubbing = __StubbingProxy_RecognitionService
+     typealias Verification = __VerificationProxy_RecognitionService
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
+    private var __defaultImplStub: RecognitionService?
 
-    
-
-    
-    // ["name": "getRecognition", "returnSignature": " -> Single<RecognitionResponse>", "fullyQualifiedName": "getRecognition(_: String) -> Single<RecognitionResponse>", "parameterSignature": "_ id: String", "parameterSignatureWithoutNames": "id: String", "inputTypes": "String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "id", "call": "id", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "id", type: "String", range: CountableRange(413..<425), nameRange: CountableRange(0..<0))], "returnType": "Single<RecognitionResponse>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func getRecognition(_ id: String)  -> Single<RecognitionResponse> {
-        
-            return cuckoo_manager.call("getRecognition(_: String) -> Single<RecognitionResponse>",
-                parameters: (id),
-                superclassCall:
-                    
-                    super.getRecognition(id)
-                    )
-        
-    }
-    
-    // ["name": "recognize", "returnSignature": " -> Single<String>", "fullyQualifiedName": "recognize(url: URL, incognito: Bool) -> Single<String>", "parameterSignature": "url: URL, incognito: Bool", "parameterSignatureWithoutNames": "url: URL, incognito: Bool", "inputTypes": "URL, Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "url, incognito", "call": "url: url, incognito: incognito", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("url"), name: "url", type: "URL", range: CountableRange(595..<603), nameRange: CountableRange(595..<598)), CuckooGeneratorFramework.MethodParameter(label: Optional("incognito"), name: "incognito", type: "Bool", range: CountableRange(605..<628), nameRange: CountableRange(605..<614))], "returnType": "Single<String>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func recognize(url: URL, incognito: Bool)  -> Single<String> {
-        
-            return cuckoo_manager.call("recognize(url: URL, incognito: Bool) -> Single<String>",
-                parameters: (url, incognito),
-                superclassCall:
-                    
-                    super.recognize(url: url, incognito: incognito)
-                    )
-        
+     func enableDefaultImplementation(_ stub: RecognitionService) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
     }
     
 
-	struct __StubbingProxy_RecognitionService: Cuckoo.StubbingProxy {
+    
+
+    
+
+    
+    
+    
+     override func getRecognition(_ id: String) -> Single<RecognitionResponse> {
+        
+    return cuckoo_manager.call("getRecognition(_: String) -> Single<RecognitionResponse>",
+            parameters: (id),
+            escapingParameters: (id),
+            superclassCall:
+                
+                super.getRecognition(id)
+                ,
+            defaultCall: __defaultImplStub!.getRecognition(id))
+        
+    }
+    
+    
+    
+     override func recognize(url: URL, incognito: Bool) -> Single<String> {
+        
+    return cuckoo_manager.call("recognize(url: URL, incognito: Bool) -> Single<String>",
+            parameters: (url, incognito),
+            escapingParameters: (url, incognito),
+            superclassCall:
+                
+                super.recognize(url: url, incognito: incognito)
+                ,
+            defaultCall: __defaultImplStub!.recognize(url: url, incognito: incognito))
+        
+    }
+    
+
+	 struct __StubbingProxy_RecognitionService: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -7745,12 +8500,12 @@ class MockRecognitionService: RecognitionService, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_RecognitionService: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_RecognitionService: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -7760,19 +8515,18 @@ class MockRecognitionService: RecognitionService, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func getRecognition<M1: Cuckoo.Matchable>(_ id: M1) -> Cuckoo.__DoNotUse<Single<RecognitionResponse>> where M1.MatchedType == String {
+	    func getRecognition<M1: Cuckoo.Matchable>(_ id: M1) -> Cuckoo.__DoNotUse<(String), Single<RecognitionResponse>> where M1.MatchedType == String {
 	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: id) { $0 }]
 	        return cuckoo_manager.verify("getRecognition(_: String) -> Single<RecognitionResponse>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func recognize<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(url: M1, incognito: M2) -> Cuckoo.__DoNotUse<Single<String>> where M1.MatchedType == URL, M2.MatchedType == Bool {
+	    func recognize<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(url: M1, incognito: M2) -> Cuckoo.__DoNotUse<(URL, Bool), Single<String>> where M1.MatchedType == URL, M2.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(URL, Bool)>] = [wrap(matchable: url) { $0.0 }, wrap(matchable: incognito) { $0.1 }]
 	        return cuckoo_manager.verify("recognize(url: URL, incognito: Bool) -> Single<String>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class RecognitionServiceStub: RecognitionService {
@@ -7781,12 +8535,12 @@ class MockRecognitionService: RecognitionService, Cuckoo.ClassMock {
     
 
     
-     override func getRecognition(_ id: String)  -> Single<RecognitionResponse> {
-        return DefaultValueRegistry.defaultValue(for: Single<RecognitionResponse>.self)
+     override func getRecognition(_ id: String) -> Single<RecognitionResponse>  {
+        return DefaultValueRegistry.defaultValue(for: (Single<RecognitionResponse>).self)
     }
     
-     override func recognize(url: URL, incognito: Bool)  -> Single<String> {
-        return DefaultValueRegistry.defaultValue(for: Single<String>.self)
+     override func recognize(url: URL, incognito: Bool) -> Single<String>  {
+        return DefaultValueRegistry.defaultValue(for: (Single<String>).self)
     }
     
 }
@@ -7808,58 +8562,80 @@ import AWSS3
 import Foundation
 import RxSwift
 
-class MockS3Service: S3Service, Cuckoo.ClassMock {
-    typealias MocksType = S3Service
-    typealias Stubbing = __StubbingProxy_S3Service
-    typealias Verification = __VerificationProxy_S3Service
-    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+ class MockS3Service: S3Service, Cuckoo.ClassMock {
+    
+     typealias MocksType = S3Service
+    
+     typealias Stubbing = __StubbingProxy_S3Service
+     typealias Verification = __VerificationProxy_S3Service
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
 
     
+    private var __defaultImplStub: S3Service?
 
-    
-
-    
-    // ["name": "upload", "returnSignature": " -> Observable<URL>", "fullyQualifiedName": "upload(image: UIImage) -> Observable<URL>", "parameterSignature": "image: UIImage", "parameterSignatureWithoutNames": "image: UIImage", "inputTypes": "UIImage", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "image", "call": "image: image", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("image"), name: "image", type: "UIImage", range: CountableRange(1194..<1208), nameRange: CountableRange(1194..<1199))], "returnType": "Observable<URL>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func upload(image: UIImage)  -> Observable<URL> {
-        
-            return cuckoo_manager.call("upload(image: UIImage) -> Observable<URL>",
-                parameters: (image),
-                superclassCall:
-                    
-                    super.upload(image: image)
-                    )
-        
-    }
-    
-    // ["name": "upload", "returnSignature": " -> Observable<URL>", "fullyQualifiedName": "upload(file: URL) -> Observable<URL>", "parameterSignature": "file url: URL", "parameterSignatureWithoutNames": "url: URL", "inputTypes": "URL", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "url", "call": "file: url", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("file"), name: "url", type: "URL", range: CountableRange(1595..<1608), nameRange: CountableRange(1595..<1599))], "returnType": "Observable<URL>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func upload(file url: URL)  -> Observable<URL> {
-        
-            return cuckoo_manager.call("upload(file: URL) -> Observable<URL>",
-                parameters: (url),
-                superclassCall:
-                    
-                    super.upload(file: url)
-                    )
-        
-    }
-    
-    // ["name": "downloadImage", "returnSignature": " -> Observable<UIImage>", "fullyQualifiedName": "downloadImage(_: URL, folder: String) -> Observable<UIImage>", "parameterSignature": "_ url: URL, folder: String", "parameterSignatureWithoutNames": "url: URL, folder: String", "inputTypes": "URL, String", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "url, folder", "call": "url, folder: folder", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "url", type: "URL", range: CountableRange(3003..<3013), nameRange: CountableRange(0..<0)), CuckooGeneratorFramework.MethodParameter(label: Optional("folder"), name: "folder", type: "String", range: CountableRange(3015..<3038), nameRange: CountableRange(3015..<3021))], "returnType": "Observable<UIImage>", "isOptional": false, "stubFunction": "Cuckoo.ClassStubFunction"]
-     override func downloadImage(_ url: URL, folder: String)  -> Observable<UIImage> {
-        
-            return cuckoo_manager.call("downloadImage(_: URL, folder: String) -> Observable<UIImage>",
-                parameters: (url, folder),
-                superclassCall:
-                    
-                    super.downloadImage(url, folder: folder)
-                    )
-        
+     func enableDefaultImplementation(_ stub: S3Service) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
     }
     
 
-	struct __StubbingProxy_S3Service: Cuckoo.StubbingProxy {
+    
+
+    
+
+    
+    
+    
+     override func upload(image: UIImage) -> Observable<URL> {
+        
+    return cuckoo_manager.call("upload(image: UIImage) -> Observable<URL>",
+            parameters: (image),
+            escapingParameters: (image),
+            superclassCall:
+                
+                super.upload(image: image)
+                ,
+            defaultCall: __defaultImplStub!.upload(image: image))
+        
+    }
+    
+    
+    
+     override func upload(file url: URL) -> Observable<URL> {
+        
+    return cuckoo_manager.call("upload(file: URL) -> Observable<URL>",
+            parameters: (url),
+            escapingParameters: (url),
+            superclassCall:
+                
+                super.upload(file: url)
+                ,
+            defaultCall: __defaultImplStub!.upload(file: url))
+        
+    }
+    
+    
+    
+     override func downloadImage(_ url: URL, folder: String) -> Observable<UIImage> {
+        
+    return cuckoo_manager.call("downloadImage(_: URL, folder: String) -> Observable<UIImage>",
+            parameters: (url, folder),
+            escapingParameters: (url, folder),
+            superclassCall:
+                
+                super.downloadImage(url, folder: folder)
+                ,
+            defaultCall: __defaultImplStub!.downloadImage(url, folder: folder))
+        
+    }
+    
+
+	 struct __StubbingProxy_S3Service: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	
-	    init(manager: Cuckoo.MockManager) {
+	     init(manager: Cuckoo.MockManager) {
 	        self.cuckoo_manager = manager
 	    }
 	    
@@ -7881,12 +8657,12 @@ class MockS3Service: S3Service, Cuckoo.ClassMock {
 	    
 	}
 
-	struct __VerificationProxy_S3Service: Cuckoo.VerificationProxy {
+	 struct __VerificationProxy_S3Service: Cuckoo.VerificationProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
 	    private let callMatcher: Cuckoo.CallMatcher
 	    private let sourceLocation: Cuckoo.SourceLocation
 	
-	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
 	        self.cuckoo_manager = manager
 	        self.callMatcher = callMatcher
 	        self.sourceLocation = sourceLocation
@@ -7896,25 +8672,24 @@ class MockS3Service: S3Service, Cuckoo.ClassMock {
 	
 	    
 	    @discardableResult
-	    func upload<M1: Cuckoo.Matchable>(image: M1) -> Cuckoo.__DoNotUse<Observable<URL>> where M1.MatchedType == UIImage {
+	    func upload<M1: Cuckoo.Matchable>(image: M1) -> Cuckoo.__DoNotUse<(UIImage), Observable<URL>> where M1.MatchedType == UIImage {
 	        let matchers: [Cuckoo.ParameterMatcher<(UIImage)>] = [wrap(matchable: image) { $0 }]
 	        return cuckoo_manager.verify("upload(image: UIImage) -> Observable<URL>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func upload<M1: Cuckoo.Matchable>(file url: M1) -> Cuckoo.__DoNotUse<Observable<URL>> where M1.MatchedType == URL {
+	    func upload<M1: Cuckoo.Matchable>(file url: M1) -> Cuckoo.__DoNotUse<(URL), Observable<URL>> where M1.MatchedType == URL {
 	        let matchers: [Cuckoo.ParameterMatcher<(URL)>] = [wrap(matchable: url) { $0 }]
 	        return cuckoo_manager.verify("upload(file: URL) -> Observable<URL>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	    @discardableResult
-	    func downloadImage<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ url: M1, folder: M2) -> Cuckoo.__DoNotUse<Observable<UIImage>> where M1.MatchedType == URL, M2.MatchedType == String {
+	    func downloadImage<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ url: M1, folder: M2) -> Cuckoo.__DoNotUse<(URL, String), Observable<UIImage>> where M1.MatchedType == URL, M2.MatchedType == String {
 	        let matchers: [Cuckoo.ParameterMatcher<(URL, String)>] = [wrap(matchable: url) { $0.0 }, wrap(matchable: folder) { $0.1 }]
 	        return cuckoo_manager.verify("downloadImage(_: URL, folder: String) -> Observable<UIImage>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
-
 }
 
  class S3ServiceStub: S3Service {
@@ -7923,16 +8698,16 @@ class MockS3Service: S3Service, Cuckoo.ClassMock {
     
 
     
-     override func upload(image: UIImage)  -> Observable<URL> {
-        return DefaultValueRegistry.defaultValue(for: Observable<URL>.self)
+     override func upload(image: UIImage) -> Observable<URL>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<URL>).self)
     }
     
-     override func upload(file url: URL)  -> Observable<URL> {
-        return DefaultValueRegistry.defaultValue(for: Observable<URL>.self)
+     override func upload(file url: URL) -> Observable<URL>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<URL>).self)
     }
     
-     override func downloadImage(_ url: URL, folder: String)  -> Observable<UIImage> {
-        return DefaultValueRegistry.defaultValue(for: Observable<UIImage>.self)
+     override func downloadImage(_ url: URL, folder: String) -> Observable<UIImage>  {
+        return DefaultValueRegistry.defaultValue(for: (Observable<UIImage>).self)
     }
     
 }

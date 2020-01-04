@@ -103,7 +103,6 @@
 		7123482621418F690038AAE5 /* EditDistanceModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360411EF310C90076D319 /* EditDistanceModuleTest.swift */; };
 		7123482721418F690038AAE5 /* TripsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360451EF310C90076D319 /* TripsModuleTest.swift */; };
 		7123482821418F690038AAE5 /* EditTripModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713360421EF310C90076D319 /* EditTripModuleTest.swift */; };
-		7123482921418F690038AAE5 /* ReceiptActionsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDD01F08663100EAA320 /* ReceiptActionsModuleTest.swift */; };
 		7123482A21418F690038AAE5 /* ReceiptMoveCopyModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDD41F08F9D100EAA320 /* ReceiptMoveCopyModuleTest.swift */; };
 		7123482B21418F690038AAE5 /* ReceiptsModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDD61F092B4200EAA320 /* ReceiptsModuleTest.swift */; };
 		7123482C21418F690038AAE5 /* EditReceiptModuleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182CDD81F092B5400EAA320 /* EditReceiptModuleTest.swift */; };
@@ -853,7 +852,6 @@
 		717EE42420139D0600819BDC /* ReceiptFilePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptFilePicker.swift; sourceTree = "<group>"; };
 		71808E4D23A6371700DFF3BA /* ReceiptActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptActionSheet.swift; sourceTree = "<group>"; };
 		7182CDCE1F085E9B00EAA320 /* CurrencyExchangeServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeServiceTests.swift; sourceTree = "<group>"; };
-		7182CDD01F08663100EAA320 /* ReceiptActionsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptActionsModuleTest.swift; sourceTree = "<group>"; };
 		7182CDD21F08F37200EAA320 /* MatchableExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchableExtensions.swift; sourceTree = "<group>"; };
 		7182CDD41F08F9D100EAA320 /* ReceiptMoveCopyModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptMoveCopyModuleTest.swift; sourceTree = "<group>"; };
 		7182CDD61F092B4200EAA320 /* ReceiptsModuleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptsModuleTest.swift; sourceTree = "<group>"; };
@@ -1844,7 +1842,6 @@
 				713360411EF310C90076D319 /* EditDistanceModuleTest.swift */,
 				713360451EF310C90076D319 /* TripsModuleTest.swift */,
 				713360421EF310C90076D319 /* EditTripModuleTest.swift */,
-				7182CDD01F08663100EAA320 /* ReceiptActionsModuleTest.swift */,
 				7182CDD41F08F9D100EAA320 /* ReceiptMoveCopyModuleTest.swift */,
 				7182CDD61F092B4200EAA320 /* ReceiptsModuleTest.swift */,
 				7182CDD81F092B5400EAA320 /* EditReceiptModuleTest.swift */,
@@ -3998,7 +3995,6 @@
 				EA5EF0D51AF7D959009FA608 /* FetchAdapterDelegateCheckHelper.m in Sources */,
 				7123482021418F650038AAE5 /* DistanceTests.swift in Sources */,
 				EA6888D11AFE696900A910FC /* DatabaseDatesTest.m in Sources */,
-				7123482921418F690038AAE5 /* ReceiptActionsModuleTest.swift in Sources */,
 				A709D7471CF34FFE00897DD9 /* DatabaseImportAndroidV14Tests.swift in Sources */,
 				EA36DE531B0119150034CC2D /* DatabaseHintsTest.m in Sources */,
 				7123481421418F610038AAE5 /* AuthServiceTestable.swift in Sources */,

@@ -41,7 +41,6 @@ class TripsModuleTest: XCTestCase {
     func configureStubs() {
         stub(router) { mock in
             mock.openAddTrip().thenDoNothing()
-            mock.openSettings().thenDoNothing()
             mock.openNoTrips().thenDoNothing()
         }
         
@@ -63,9 +62,6 @@ class TripsModuleTest: XCTestCase {
         
         presenter.presentAddTrip()
         verify(router).openAddTrip()
-        
-        presenter.presentSettings()
-        verify(router).openSettings()
     }
     
     func testPresenterToInteractor() {

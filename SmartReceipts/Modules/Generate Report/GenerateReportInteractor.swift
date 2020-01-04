@@ -20,10 +20,6 @@ class GenerateReportInteractor: Interactor {
     
     private let bag = DisposeBag()
     
-    var titleSubtitle: TitleSubtitle {
-        return (trip.name, trip.formattedPrice())
-    }
-    
     func configure(with trip: WBTrip) {
         self.trip = trip
         shareService = GenerateReportShareService(presenter: presenter, trip: trip)
