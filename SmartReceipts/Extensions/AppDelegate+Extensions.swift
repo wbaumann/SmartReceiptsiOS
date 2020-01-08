@@ -54,7 +54,7 @@ extension AppDelegate {
     
     func importZip(from: URL, overwrite: Bool) {
         guard let viewController = AdNavigationEntryPoint.navigationController?.visibleViewController else { return }
-        let hud = PendingHUDView.show(on: viewController.view)
+        let hud = PendingHUDView.showFullScreen()
         dataQueue.async {
             self.dataImport = DataImport(inputFile: from.path, output: FileManager.documentsPath)
             _ = self.dataImport.execute(overwrite: overwrite)
