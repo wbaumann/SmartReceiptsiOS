@@ -17,7 +17,7 @@ def pods
     pod 'Zip'
     
     # UI
-    pod 'MRProgress', git: 'https://github.com/EvsenevDev/MRProgress', branch: 'disabled-motions'
+    pod 'lottie-ios'
     pod 'Eureka'
     pod 'Toaster'
     

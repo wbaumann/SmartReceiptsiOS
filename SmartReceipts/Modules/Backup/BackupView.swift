@@ -266,7 +266,7 @@ extension BackupView {
         AnalyticsManager.sharedManager.record(event: Event.Navigation.BackupOverflow)
         
         let exportAction: (UIAlertAction) -> Void = { [unowned self] action in
-            let hud = PendingHUDView.show(on: self.navigationController!.view)
+            let hud = PendingHUDView.showFullScreen()
             let tick = TickTock.tick()
             DispatchQueue.global().async {
                 let export = DataExport(workDirectory: FileManager.documentsPath)

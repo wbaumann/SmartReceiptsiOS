@@ -231,6 +231,8 @@
 		71762E781FD46F4800AC1388 /* ReportPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71762E771FD46F4800AC1388 /* ReportPDFGenerator.swift */; };
 		71762E7A1FD4713000AC1388 /* TripImagesPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71762E791FD4713000AC1388 /* TripImagesPDFGenerator.swift */; };
 		71762E7C1FD4716200AC1388 /* TripFullPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71762E7B1FD4716200AC1388 /* TripFullPDFGenerator.swift */; };
+		717658B023C64E0E00753B5C /* PendingHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717658AF23C64E0E00753B5C /* PendingHUDView.xib */; };
+		717658B323C66BE100753B5C /* lamp_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 717658B223C66BE100753B5C /* lamp_lottie.json */; };
 		71771C6E22E3DF320012A85A /* ExchangeRateCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71771C6D22E3DF320012A85A /* ExchangeRateCalculatorTests.swift */; };
 		717865EB200A8738004684A6 /* CategoryColumns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717865EA200A8737004684A6 /* CategoryColumns.swift */; };
 		717DDB95203B5503000486C3 /* PickerButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717DDB93203B5503000486C3 /* PickerButtonCell.xib */; };
@@ -844,6 +846,8 @@
 		71762E771FD46F4800AC1388 /* ReportPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPDFGenerator.swift; sourceTree = "<group>"; };
 		71762E791FD4713000AC1388 /* TripImagesPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripImagesPDFGenerator.swift; sourceTree = "<group>"; };
 		71762E7B1FD4716200AC1388 /* TripFullPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripFullPDFGenerator.swift; sourceTree = "<group>"; };
+		717658AF23C64E0E00753B5C /* PendingHUDView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingHUDView.xib; sourceTree = "<group>"; };
+		717658B223C66BE100753B5C /* lamp_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lamp_lottie.json; sourceTree = "<group>"; };
 		71771C6D22E3DF320012A85A /* ExchangeRateCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateCalculatorTests.swift; sourceTree = "<group>"; };
 		717865EA200A8737004684A6 /* CategoryColumns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColumns.swift; sourceTree = "<group>"; };
 		717DDB93203B5503000486C3 /* PickerButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerButtonCell.xib; sourceTree = "<group>"; };
@@ -1806,6 +1810,14 @@
 			path = "Edit Distance";
 			sourceTree = "<group>";
 		};
+		717658B123C66BCA00753B5C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				717658B223C66BE100753B5C /* lamp_lottie.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		717865E9200A833F004684A6 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -2113,10 +2125,11 @@
 			isa = PBXGroup;
 			children = (
 				7165507C218CCAEB007B55FF /* CircleButton.swift */,
-				714104D21FF43D7700C334C5 /* PendingHUDView.swift */,
 				714104DD1FF43D7700C334C5 /* TooltipView.swift */,
 				716D58A4219C8E1E00D6A6EA /* ImagePicker.swift */,
 				71D7FA392304B64A001F36E1 /* BorderedLabel.swift */,
+				714104D21FF43D7700C334C5 /* PendingHUDView.swift */,
+				717658AF23C64E0E00753B5C /* PendingHUDView.xib */,
 			);
 			path = VIews;
 			sourceTree = "<group>";
@@ -2306,6 +2319,7 @@
 				A79FDC671CEA084000328DBB /* Analytics */,
 				4DF22941192867120008D359 /* Ads */,
 				84F4F34A18CFCCD000F69A35 /* Supporting Files */,
+				717658B123C66BCA00753B5C /* Resources */,
 				A7D080FA1CEAD2FD00B3C551 /* AppDelegate.swift */,
 				84F4F35518CFCCD000F69A35 /* Images.xcassets */,
 			);
@@ -3068,6 +3082,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				717658B023C64E0E00753B5C /* PendingHUDView.xib in Resources */,
 				717DDB96203B5503000486C3 /* InlinePickerButtonCell.xib in Resources */,
 				EA98B51E1B075057006935AE /* TripCell.xib in Resources */,
 				7190B9131F60427200F6CE7F /* Auth.storyboard in Resources */,
@@ -3126,6 +3141,7 @@
 				71FD058623804F18007EC5B9 /* TripTabBarViewController.storyboard in Resources */,
 				7190D44F1EE88CC40081CB22 /* GenerateReport.storyboard in Resources */,
 				4D29DE8E216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
+				717658B323C66BE100753B5C /* lamp_lottie.json in Resources */,
 				EA1309A51B50282A0045FDDE /* PDFReportTable.xib in Resources */,
 				71628C23204EFB7F0032EEB7 /* NumberKeyboard.xib in Resources */,
 				714DE8A02051C83F0066EA6F /* HorizontalPickerCell.xib in Resources */,
@@ -3205,7 +3221,6 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -3218,6 +3233,7 @@
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 				"${BUILT_PRODUCTS_DIR}/Viperit/Viperit.framework",
 				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -3235,7 +3251,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
@@ -3248,6 +3263,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Viperit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3415,7 +3431,6 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -3428,6 +3443,7 @@
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 				"${BUILT_PRODUCTS_DIR}/Viperit/Viperit.framework",
 				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/Cuckoo/Cuckoo.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
@@ -3448,7 +3464,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
@@ -3461,6 +3476,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Viperit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cuckoo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",

@@ -88,7 +88,7 @@ final class AuthView: UserInterface {
             .merge()
             .subscribe(onNext: { [unowned self] _ in
                 self.view.endEditing(true)
-                self.hud = PendingHUDView.show(on: self.view)
+                self.hud = PendingHUDView.showFullScreen()
             }).disposed(by: bag)
         
         loginButton.rx.tap
@@ -139,7 +139,7 @@ extension AuthView: AuthViewInterface {
     
     var errorHandler: AnyObserver<String> {
         return AnyObserver<String>(eventHandler: { [weak self] event in
-            self?.hud?.hide(true)
+            self?.hud?.hide()
             switch event {
             case .next(let errorMessage):
                 let alert = UIAlertController(title: LocalizedString("generic_error_alert_title"), message: errorMessage, preferredStyle: .alert)
@@ -153,7 +153,7 @@ extension AuthView: AuthViewInterface {
     
     var successLoginHandler: AnyObserver<Void> {
         return AnyObserver<Void>(eventHandler: { [weak self] event in
-            self?.hud?.hide(true)
+            self?.hud?.hide()
             switch event {
             case .next:
                 Logger.info("The user has successfully logged into Smart Receipts")
@@ -165,7 +165,7 @@ extension AuthView: AuthViewInterface {
     
     var successSignupHandler: AnyObserver<Void> {
         return AnyObserver<Void>(eventHandler: { [weak self] event in
-            self?.hud?.hide(true)
+            self?.hud?.hide()
             switch event {
             case .next:
                 Logger.info("The user has successfully signed up for Smart Receipts")
@@ -177,7 +177,7 @@ extension AuthView: AuthViewInterface {
     
     var successLogoutHandler: AnyObserver<Void> {
         return AnyObserver<Void>(eventHandler: { [weak self] event in
-            self?.hud?.hide(true)
+            self?.hud?.hide()
             switch event {
             case .next:
                 Logger.info("Successfully logged out")
