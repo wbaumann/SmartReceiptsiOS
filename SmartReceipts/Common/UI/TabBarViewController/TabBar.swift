@@ -52,12 +52,10 @@ class TabBar: UITabBar {
     }
     
     func updateIndicatorPosition(item: UITabBarItem?) {
-        guard let item = item, let index = items?.firstIndex(of: item) else { return }
-        guard let itemsCount = items?.count, itemsCount > 0 else { return }
-        let itemWidth = bounds.width/CGFloat(itemsCount)
-        let centerX = itemWidth * CGFloat(index) + itemWidth/2
+        guard let item = item else { return }
+        let itemFrame = (item.value(forKey: "view") as? UIView)?.frame ?? .zero
         let centerY = bounds.height - iOS10_safeAreaInsets().bottom
-        indicator.center = CGPoint(x: centerX, y: centerY)
+        indicator.center = CGPoint(x: itemFrame.midX, y: centerY)
     }
 
     private func addShape() {
