@@ -35,6 +35,9 @@ class PendingHUDView: UIView {
         if !isRunningTests {
             view.addSubview(hud)
         }
+        
+        hud.frame = view.bounds
+        hud.layoutIfNeeded()
         return hud
     }
     
