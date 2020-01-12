@@ -110,11 +110,11 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>Advertisement would like to create a calendar event.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>${PRODUCT_NAME} cannot take photos unless you give it permission.</string>
+	<string>${PRODUCT_NAME} asks it permission to take photos of receipts.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>${PRODUCT_NAME} cannot save photos unless you give it permission.</string>
+	<string>${PRODUCT_NAME} asks it permission to save receipts photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>${PRODUCT_NAME} cannot import photos unless you give it permission.</string>
+	<string>${PRODUCT_NAME} asks it permission to import photos of receipts.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchView</string>
 	<key>UIMainStoryboardFile</key>
