@@ -100,7 +100,7 @@ class ActionButtonView: UIButton {
         backgroundColor = .srBGR
         layer.cornerRadius = 12
         
-        heightAnchor.constraint(equalToConstant: 52).isActive = true
+        heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
     }
     
     override func layoutSubviews() {
@@ -112,7 +112,12 @@ class ActionButtonView: UIButton {
         
         guard let imageView = imageView else { return }
         imageView.center.y = bounds.midY
-        imageView.frame.origin.x = bounds.width - imageView.bounds.width - 19
+        imageView.frame.origin.x = bounds.width - imageView.bounds.width - Constants.imageRightMargin
+    }
+    
+    private enum Constants {
+        static let imageRightMargin: CGFloat = 19
+        static let buttonHeight: CGFloat = 52
     }
     
     enum Style {
