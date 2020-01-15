@@ -87,6 +87,9 @@
 }
 
 - (NSString *)formattedPrice {
+    if (self.pricesSummary == nil) {
+        self.pricesSummary = [[PricesCollection alloc] initWithCurrencyCode:self.defaultCurrency.code];
+    }
     return [self.pricesSummary currencyFormattedTotalPriceWithIgnoreEmpty:NO];
 }
 
