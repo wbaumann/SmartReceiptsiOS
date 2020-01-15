@@ -248,7 +248,7 @@ extension ReceiptsView: UITableViewDelegate {
                 return result
             }).currencyFormattedTotalPrice()
         
-        price = price.isEmpty ? Price(currencyCode: trip.defaultCurrency.code).currencyFormattedPrice() : price
+        price = price.isEmpty ? Price(currencyCode: firstReceipt.trip.defaultCurrency.code).currencyFormattedPrice() : price
         
         return header.configure(title: title, subtitle: price)
         

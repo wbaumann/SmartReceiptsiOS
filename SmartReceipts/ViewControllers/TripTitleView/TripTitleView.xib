@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,6 +57,7 @@
             <constraints>
                 <constraint firstItem="UPw-1Z-2VC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3UH-tn-R4U"/>
                 <constraint firstAttribute="trailing" secondItem="UPw-1Z-2VC" secondAttribute="trailing" id="AyL-Ki-DEk"/>
+                <constraint firstAttribute="width" constant="173" id="I9D-lh-mhJ"/>
                 <constraint firstAttribute="bottom" secondItem="UPw-1Z-2VC" secondAttribute="bottom" constant="8" id="nXE-Uv-Mrd"/>
                 <constraint firstItem="UPw-1Z-2VC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="r3B-QQ-I6r"/>
             </constraints>
@@ -65,6 +66,7 @@
                 <outlet property="arrrowImageView" destination="xqL-lg-3dT" id="KHG-0v-fAF"/>
                 <outlet property="subtitleLabel" destination="8cH-fM-Kjy" id="TqZ-GA-cFB"/>
                 <outlet property="titleLabel" destination="vFi-N5-BdS" id="Keq-lx-VMn"/>
+                <outlet property="widthConstraint" destination="I9D-lh-mhJ" id="oNE-Z9-c4E"/>
             </connections>
             <point key="canvasLocation" x="-110.86956521739131" y="-44.429347826086961"/>
         </view>

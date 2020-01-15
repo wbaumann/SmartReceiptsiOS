@@ -12,6 +12,7 @@ class TripTitleView: UIView {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var arrrowImageView: UIImageView!
     @IBOutlet private weak var subtitleLabel: UILabel!
+    @IBOutlet private weak var widthConstraint: NSLayoutConstraint!
     
     override var tintColor: UIColor! {
         didSet {
@@ -25,5 +26,8 @@ class TripTitleView: UIView {
         titleLabel.text = title
         subtitleLabel.text = subtitle
         subtitleLabel.isHidden = subtitle == nil
+        titleLabel.sizeToFit()
+        subtitleLabel.sizeToFit()
+        widthConstraint.constant = max(titleLabel.bounds.width, subtitleLabel.bounds.width) + UI_MARGIN_16
     }
 }
