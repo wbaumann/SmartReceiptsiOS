@@ -9,8 +9,15 @@
 import UIKit
 
 class DistanceCell: SyncableTableCell {
-    @IBOutlet private(set) weak var distanceLabel: UILabel!
-    @IBOutlet private(set) weak var destinationLabel: UILabel!
-    @IBOutlet private(set) weak var totalLabel: UILabel!
-    @IBOutlet private(set) weak var dateLabel: UILabel!
+    @IBOutlet private weak var distanceLabel: UILabel!
+    @IBOutlet private weak var destinationLabel: UILabel!
+    @IBOutlet private weak var totalLabel: UILabel!
+    
+    @discardableResult
+    func configure(distance: Distance) -> Self {
+        distanceLabel.text = Price.stringFrom(amount: distance.distance)
+        destinationLabel.text = distance.location
+        totalLabel.text = distance.totalRate().currencyFormattedPrice()
+        return self
+    }
 }

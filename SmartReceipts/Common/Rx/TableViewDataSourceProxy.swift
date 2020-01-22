@@ -271,3 +271,8 @@ extension WBReceipt: DateSectionItem {
     var id: String { return String(self.objectId) }
 }
 
+extension Distance: DateSectionItem {
+    var sectionDate: Date { return (date as NSDate).atBeginningOfDay() }
+    var id: String { return String(self.objectId) }
+}
+

@@ -29,6 +29,8 @@ class TripDistancesView: FetchedTableViewController {
         super.viewDidLoad()
         
         tableView.separatorInset = .zero
+        tableView.delegate = self
+        tableView.register(headerFooter: ReceiptsSectionHeader.self)
         setPresentationCellNib(DistanceCell.viewNib())
         
         let notifications = [AppNotificationCenter.syncProvider.asVoid(), AppNotificationCenter.didSyncBackup]
@@ -69,13 +71,8 @@ class TripDistancesView: FetchedTableViewController {
     
     override func configureCell(cell: UITableViewCell, item: Any) {
         guard let distanceCell = cell as? DistanceCell, let distance = item as? Distance else { return }
-        
         dateFormatter.configure(timeZone: distance.timeZone!)
-        distanceCell.distanceLabel.text = Price.stringFrom(amount: distance.distance)
-        distanceCell.destinationLabel.text = distance.location;
-        distanceCell.totalLabel.text = distance.totalRate().mileageRateCurrencyFormattedPrice()
-        distanceCell.dateLabel.text = dateFormatter.string(from: distance.date)
-        
+        distanceCell.configure(distance: distance)
         let state = ModelSyncState.modelState(modelChangeDate: distance.lastLocalModificationTime)
         distanceCell.setState(state)
     }
@@ -89,6 +86,8 @@ class TripDistancesView: FetchedTableViewController {
         showEditDistance(with: (trip, tapped as? Distance))
     }
     
+    override var dataSourceType: TableViewDataSourceProxy.TableType { return .sections }
+    
     //MARK: Private
     private func showEditDistance(with data: Any?) {
         presenter.presentEditDistance(with: data)
@@ -98,6 +97,40 @@ class TripDistancesView: FetchedTableViewController {
 extension TripDistancesView: TabHasMainAction {
     func mainAction() {
         showEditDistance(with: (trip, nil as Distance?))
+    }
+}
+
+extension TripDistancesView: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let title = proxyDataSource.dataSource.tableView?(tableView, titleForHeaderInSection: section) else { return UIView(frame: .zero) }
+        let header = tableView.dequeueHeaderFooter(headerFooter: ReceiptsSectionHeader.self)
+        let first = proxyDataSource.object(at: IndexPath(row: 0, section: section)) as! Distance
+        
+        var price = fetchedItems
+            .map { $0 as! Distance }
+            .filter { $0.sectionDate == first.sectionDate }
+            .reduce(PricesCollection(), { result, distance in
+                result.addPrice(distance.totalRate())
+                return result
+            }).currencyFormattedTotalPrice()
+        
+        price = price.isEmpty ? Price(currencyCode: first.trip.defaultCurrency.code).currencyFormattedPrice() : price
+        
+        return header.configure(title: title, subtitle: price)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return Constatns.headerHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat(Float.ulpOfOne)
+    }
+    
+    private enum Constatns {
+        static let headerHeight: CGFloat = 54
+        
     }
 }
 
