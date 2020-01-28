@@ -12,8 +12,6 @@ import RxSwift
 
 class TripDistancesPresenter: Presenter {
     
-    let contentChanged = PublishSubject<Void>()
-    
     func fetchedModelAdapter(for trip: WBTrip) -> FetchedModelAdapter {
         return interactor.fetchedModelAdapter(for: trip)
     }

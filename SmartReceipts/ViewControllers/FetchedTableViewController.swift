@@ -19,7 +19,7 @@ class FetchedTableViewController: UserInterface {
     private let FETCHED_COLLECTION_CELL_ID = "FetchedCollectionTableViewControllerCellIdentifier"
     private var bag = DisposeBag()
     private var fetchedModelAdapter: FetchedModelAdapter?
-    private(set) var proxyDataSource: TableViewDataSourceProxy!
+    private(set) var dataSource: FetchedTableViewDataSource!
     
     private(set) var placeholderTitle = ""
     
@@ -32,11 +32,32 @@ class FetchedTableViewController: UserInterface {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
-        
-        proxyDataSource = TableViewDataSourceProxy(tableView, cellID: FETCHED_COLLECTION_CELL_ID, type: dataSourceType, configureCell: {
-            [unowned self] cell, item in
-            self.configureCell( cell: cell, item: item)
-        })
+        dataSource = createDataSource()
+        dataSource.deleteRow = { [weak self] indexPath in
+            let model = self?.objectAtIndexPath(indexPath)
+            self?.delete(object: model!, at: indexPath)
+        }
+    }
+    
+    private func createDataSource() -> FetchedTableViewDataSource {
+        switch dataSourceType {
+        case .plain:
+            return FetchedTableViewDataSource.init(
+                tableView: tableView,
+                cellId: FETCHED_COLLECTION_CELL_ID,
+                configureCell: { [unowned self] cell, item in
+                    self.configureCell( cell: cell, item: item)
+                }
+            )
+        case .sections:
+            return DateSectionedTableViewDataSource.init(
+                tableView: tableView,
+                cellId: FETCHED_COLLECTION_CELL_ID,
+                configureCell: { [unowned self] cell, item in
+                    self.configureCell( cell: cell, item: item)
+                }
+            )
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -66,27 +87,17 @@ class FetchedTableViewController: UserInterface {
     }
     
     private func configureTable() {
-        tableView.dataSource = proxyDataSource.dataSource
-        
-        tableView.rx.itemSelected
-            .subscribe(onNext: { [unowned self] indexPath in
-                self.tableView.deselectRow(at: indexPath, animated: true)
-                let tapped = self.objectAtIndexPath(indexPath)
-                self.tappedObject(tapped!, indexPath: indexPath)
-            }).disposed(by: bag)
-        
-        tableView.rx.itemDeleted
-            .subscribe(onNext: { [unowned self] indexPath in
-                let model = self.objectAtIndexPath(indexPath)
-                self.delete(object: model!, at: indexPath)
-            }).disposed(by: bag)
+        tableView.dataSource = dataSource
+        tableView.delegate = self
     }
     
     func setPresentationCellNib(_ nib: UINib) {
         tableView.register(nib, forCellReuseIdentifier: FETCHED_COLLECTION_CELL_ID)
     }
     
-    var dataSourceType: TableViewDataSourceProxy.TableType { return .plain }
+    var dataSourceType: TableType {
+        return .plain
+    }
     
     func configureCell(cell: UITableViewCell, item: Any) {
         Logger.debug("LOGGER_DEBUG(configureCell:for \(item)")
@@ -136,48 +147,18 @@ class FetchedTableViewController: UserInterface {
     }
     
     func objectAtIndexPath(_ indexPath: IndexPath) -> Any? {
-        return proxyDataSource?.object(at: indexPath)
+        return dataSource?.object(at: indexPath)
     }
     
     func configureSubrcibers(for adapter: FetchedModelAdapter?) {
         guard let fetchedModelAdapter = adapter else { return }
-        
-        Observable.just(fetchedModelAdapter.allObjects())
-            .bind(to: proxyDataSource.items)
-            .disposed(by: bag)
+        fetchedModelAdapter.delegate = dataSource
+        dataSource.didSetModels(fetchedModelAdapter.allObjects())
 
-        fetchedModelAdapter.rx.willChangeContent
-            .bind(to: proxyDataSource.willChangeContent)
-            .disposed(by: bag)
-        
-        fetchedModelAdapter.rx.didSetModels
-            .bind(to: proxyDataSource.items)
-            .disposed(by: bag)
-        
         fetchedModelAdapter.rx.didChangeContent
-            .do(onNext: { [weak self] in self?.contentChanged() })
-            .bind(to: proxyDataSource.didChangeContent)
-            .disposed(by: bag)
-        
-        fetchedModelAdapter.rx.didInsert
-            .bind(to: proxyDataSource.didInsert)
-            .disposed(by: bag)
-        
-        fetchedModelAdapter.rx.didDelete
-            .bind(to: proxyDataSource.didDelete)
-            .disposed(by: bag)
-        
-        fetchedModelAdapter.rx.didUpdate
-            .bind(to: proxyDataSource.didUpdate)
-            .disposed(by: bag)
-        
-        fetchedModelAdapter.rx.didMove
-            .bind(to: proxyDataSource.didMove)
-            .disposed(by: bag)
-        
-        fetchedModelAdapter.rx.reloadData
-            .bind(to: proxyDataSource.reloadData)
-            .disposed(by: bag)
+            .subscribe(onNext: { [weak self] in
+                self?.contentChanged()
+            }).disposed(by: bag)
     }
     
     func contentChanged() {
@@ -196,5 +177,19 @@ class FetchedTableViewController: UserInterface {
     
     func tappedObject(_ tapped: Any, indexPath: IndexPath) {
         Logger.debug("tappedObject:atIndexPath:\(indexPath)")
+    }
+}
+
+extension FetchedTableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let tapped = self.objectAtIndexPath(indexPath)
+        tappedObject(tapped!, indexPath: indexPath)
+    }
+}
+
+extension FetchedTableViewController {
+    enum TableType {
+        case plain, sections
     }
 }

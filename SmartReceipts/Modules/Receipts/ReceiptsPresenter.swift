@@ -18,7 +18,6 @@ class ReceiptsPresenter: Presenter {
     let createReceiptTextSubject = PublishSubject<Void>()
     let createReceiptCameraSubject = PublishSubject<Void>()
     let importReceiptFileSubject = PublishSubject<Void>()
-    let contentChanged = PublishSubject<Void>()
     let viewReceiptAttachmentTap = PublishSubject<Void>()
     let receiptActionRelay = PublishRelay<(WBReceipt, ReceiptAction)>()
     

@@ -30,8 +30,8 @@ final class CategoriesView: FetchedTableViewController {
             _ = self.showEditCategory().bind(to: self.presenter.categoryAction)
         }).disposed(by: bag)
         
-        proxyDataSource.canMoveRow = { _ in true }
-        proxyDataSource.moveRow = { [unowned self] from, to in
+        dataSource.canMoveRow = { _ in true }
+        dataSource.moveRow = { [unowned self] from, to in
             let categoryOne = self.fetchedItems[from.row] as! WBCategory
             let categoryTwo = self.fetchedItems[to.row] as! WBCategory
             self.presenter.reorderSubject.onNext((categoryOne, categoryTwo))
