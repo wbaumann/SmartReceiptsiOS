@@ -65,7 +65,7 @@ class TripDistancesView: FetchedTableViewController {
     
     override func contentChanged() {
         super.contentChanged()
-        presenter.contentChanged.onNext(())
+        reloadHeaders()
         updateSubtitle()
     }
     
@@ -86,7 +86,9 @@ class TripDistancesView: FetchedTableViewController {
         showEditDistance(with: (trip, tapped as? Distance))
     }
     
-    override var dataSourceType: TableViewDataSourceProxy.TableType { return .sections }
+    override var dataSourceType: TableType {
+        return .sections
+    }
     
     //MARK: Private
     private func showEditDistance(with data: Any?) {
@@ -100,24 +102,37 @@ extension TripDistancesView: TabHasMainAction {
     }
 }
 
-extension TripDistancesView: UITableViewDelegate {
-    
+extension TripDistancesView {
+    func reloadHeaders() {
+        let visibleSections = Set(tableView.indexPathsForVisibleRows?.compactMap { $0.section } ?? [])
+        visibleSections.forEach { section in
+            guard let header = tableView.headerView(forSection: section) as? ReceiptsSectionHeader else { return }
+           configure(header: header, section: section)
+        }
+    }
+
+    func price(section: Int) -> String {
+       let first = dataSource.object(at: IndexPath(row: 0, section: section)) as! Distance
+       let price = fetchedItems
+           .map { $0 as! Distance }
+           .filter { $0.sectionDate == first.sectionDate }
+           .reduce(PricesCollection(), { result, distance in
+               result.addPrice(distance.totalRate())
+               return result
+           }).currencyFormattedTotalPrice()
+       
+       return price.isEmpty ? Price(currencyCode: first.trip.defaultCurrency.code).currencyFormattedPrice() : price
+    }
+
+    private func configure(header: ReceiptsSectionHeader, section: Int) {
+       guard let title = dataSource.tableView(tableView, titleForHeaderInSection: section) else { return }
+       _ = header.configure(title: title, subtitle: price(section: section))
+    }
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let title = proxyDataSource.dataSource.tableView?(tableView, titleForHeaderInSection: section) else { return UIView(frame: .zero) }
-        let header = tableView.dequeueHeaderFooter(headerFooter: ReceiptsSectionHeader.self)
-        let first = proxyDataSource.object(at: IndexPath(row: 0, section: section)) as! Distance
-        
-        var price = fetchedItems
-            .map { $0 as! Distance }
-            .filter { $0.sectionDate == first.sectionDate }
-            .reduce(PricesCollection(), { result, distance in
-                result.addPrice(distance.totalRate())
-                return result
-            }).currencyFormattedTotalPrice()
-        
-        price = price.isEmpty ? Price(currencyCode: first.trip.defaultCurrency.code).currencyFormattedPrice() : price
-        
-        return header.configure(title: title, subtitle: price)
+       guard let title = dataSource.tableView(tableView, titleForHeaderInSection: section) else { return UIView(frame: .zero) }
+       let header = tableView.dequeueHeaderFooter(headerFooter: ReceiptsSectionHeader.self)
+       return header.configure(title: title, subtitle: price(section: section))
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -126,6 +141,10 @@ extension TripDistancesView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat(Float.ulpOfOne)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 69
     }
     
     private enum Constatns {

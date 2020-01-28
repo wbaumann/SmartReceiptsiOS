@@ -83,12 +83,13 @@ final class ReceiptsView: FetchedTableViewController {
         Logger.debug("Updated Trip: \(trip.description)")
     
         //TODO jaanus: check posting already altered object
-        self.trip = Database.sharedInstance().tripWithName(self.trip.name)
+        self.trip = Database.sharedInstance().tripWithName(trip.name)
         contentChanged()
-        tableView.reloadSections(Array(0..<tableView.numberOfSections), animationStyle: .none)
     }
     
-    override var dataSourceType: TableViewDataSourceProxy.TableType { return .sections }
+    override var dataSourceType: TableType {
+        return .sections
+    }
     
     override func configureCell(cell: UITableViewCell, item: Any) {
         let cell = cell as! ReceiptCell
@@ -101,7 +102,7 @@ final class ReceiptsView: FetchedTableViewController {
 
     override func contentChanged() {
         super.contentChanged()
-        presenter.contentChanged.onNext(())
+        reloadHeaders()
         subtitleLabel.text = String(format: LocalizedString("next_id"), Database.sharedInstance()!.nextReceiptID())
     }
     
@@ -233,14 +234,19 @@ extension ReceiptsView: UIViewControllerPreviewingDelegate {
     }
 }
 
-extension ReceiptsView: UITableViewDelegate {
+extension ReceiptsView {
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let title = proxyDataSource.dataSource.tableView?(tableView, titleForHeaderInSection: section) else { return UIView(frame: .zero) }
-        let header = tableView.dequeueHeaderFooter(headerFooter: ReceiptsSectionHeader.self)
-        let firstReceipt = proxyDataSource.object(at: IndexPath(row: 0, section: section)) as! WBReceipt
-        
-        var price = fetchedItems
+    func reloadHeaders() {
+        let visibleSections = Set(tableView.indexPathsForVisibleRows?.compactMap { $0.section } ?? [])
+        visibleSections.forEach { section in
+            guard let header = tableView.headerView(forSection: section) as? ReceiptsSectionHeader else { return }
+            configure(header: header, section: section)
+        }
+    }
+    
+    func price(section: Int) -> String {
+        let firstReceipt = dataSource.object(at: IndexPath(row: 0, section: section)) as! WBReceipt
+        let price = fetchedItems
             .map { $0 as! WBReceipt }
             .filter { $0.sectionDate == firstReceipt.sectionDate }
             .reduce(PricesCollection(), { result, receipt in
@@ -248,10 +254,18 @@ extension ReceiptsView: UITableViewDelegate {
                 return result
             }).currencyFormattedTotalPrice()
         
-        price = price.isEmpty ? Price(currencyCode: firstReceipt.trip.defaultCurrency.code).currencyFormattedPrice() : price
-        
-        return header.configure(title: title, subtitle: price)
-        
+        return price.isEmpty ? Price(currencyCode: firstReceipt.trip.defaultCurrency.code).currencyFormattedPrice() : price
+    }
+    
+    private func configure(header: ReceiptsSectionHeader, section: Int) {
+        guard let title = dataSource.tableView(tableView, titleForHeaderInSection: section) else { return }
+        _ = header.configure(title: title, subtitle: price(section: section))
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let title = dataSource.tableView(tableView, titleForHeaderInSection: section) else { return UIView(frame: .zero) }
+        let header = tableView.dequeueHeaderFooter(headerFooter: ReceiptsSectionHeader.self)
+        return header.configure(title: title, subtitle: price(section: section))
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

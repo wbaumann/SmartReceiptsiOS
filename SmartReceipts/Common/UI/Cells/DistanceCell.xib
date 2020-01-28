@@ -17,24 +17,24 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f16-25-BkS">
-                        <rect key="frame" x="284" y="45" width="24" height="24"/>
+                        <rect key="frame" x="284" y="44" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="f16-25-BkS" secondAttribute="height" id="o69-vK-Wu5"/>
                         </constraints>
                         <color key="tintColor" red="0.18823529410000001" green="0.1058823529" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <state key="normal" image="cloud"/>
                     </button>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="USV-Ec-7LG">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="USV-Ec-7LG">
                         <rect key="frame" x="16" y="12" width="60" height="56"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WP4-Tg-4w3" userLabel="Distance">
-                                <rect key="frame" x="0.0" y="0.0" width="33" height="26"/>
+                                <rect key="frame" x="0.0" y="0.0" width="33" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="New York" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQ7-va-QX2">
-                                <rect key="frame" x="0.0" y="34" width="60" height="22"/>
+                                <rect key="frame" x="0.0" y="32" width="60" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" red="0.039215686274509803" green="0.0039215686274509803" blue="0.078431372549019607" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
