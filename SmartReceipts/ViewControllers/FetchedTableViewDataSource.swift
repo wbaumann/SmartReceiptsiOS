@@ -50,7 +50,7 @@ class FetchedTableViewDataSource: NSObject {
         return false
     }
     
-    func isChangedSection(item: Any) -> Bool {
+    func isChangedSection(item: Any!) -> Bool {
         return false
     }
 }
@@ -186,10 +186,10 @@ class DateSectionedTableViewDataSource: FetchedTableViewDataSource {
         return previousSectionedItems[sortedKeys[section]] == nil
     }
     
-    override func isChangedSection(item: Any) -> Bool {
-        guard let item = item as? DateSectionItem else { return false }
-        let previousItem = previousSectionedItems.flatMap { $0.value }.first(where: { $0.id == item.id })
-        return previousItem?.sectionDate != item.sectionDate
+    override func isChangedSection(item: Any!) -> Bool {
+        guard let dsItem = item as? DateSectionItem else { return false }
+        let previousItem = previousSectionedItems.flatMap { $0.value }.first(where: { $0.id == dsItem.id })
+        return previousItem?.sectionDate != dsItem.sectionDate
     }
     
     override func map(index: Int, deletion: Bool = false) -> IndexPath {
