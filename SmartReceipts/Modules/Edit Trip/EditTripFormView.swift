@@ -23,7 +23,9 @@ class EditTripFormView: FormViewController {
     private var trip: WBTrip?
     
     required init(trip: WBTrip?) {
-        super.init(nibName: nil, bundle: nil)
+        if #available(iOS 13.0, *) { super.init(style: .insetGrouped) }
+        else { super.init(style: .grouped) }
+        
         isNewTrip = trip == nil
         self.trip = trip?.copy() as? WBTrip
         if isNewTrip {
@@ -65,6 +67,7 @@ class EditTripFormView: FormViewController {
             }
         })
         
+        +++ Section()
         <<< DateInlineRow(START_DATE_TAG) { row in
             row.title = LocalizedString("DIALOG_TRIPMENU_HINT_START")
             row.value = trip?.startDate
@@ -94,7 +97,8 @@ class EditTripFormView: FormViewController {
         }).onExpandInlineRow({ _, _, datePickerRow in
             datePickerRow.cell.datePicker.timeZone = self.trip?.endTimeZone
         })
-        
+    
+        +++ Section()
         <<< PickerInlineRow<String>() { row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_CURRENCY")
             row.options = Currency.allCurrencyCodesWithCached()
@@ -105,6 +109,7 @@ class EditTripFormView: FormViewController {
             cell.configureCell()
         })
         
+        +++ Section()
         <<< TextRow() { row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_COMMENT")
             row.value = trip?.comment ?? ""
@@ -114,6 +119,7 @@ class EditTripFormView: FormViewController {
             cell.configureCell()
         })
         
+        +++ Section()
         <<< TextRow() { row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_COST_CENTER")
             row.value = trip?.costCenter ?? ""
@@ -128,6 +134,10 @@ class EditTripFormView: FormViewController {
         let startDateRow = self.form.rowBy(tag: self.START_DATE_TAG) as! DateInlineRow
         endDateRow.minimumDate = startDateRow.value
         startDateRow.maximumDate = endDateRow.value
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .ulpOfOne
     }
     
     func done() {
