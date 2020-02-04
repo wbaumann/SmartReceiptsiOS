@@ -41,7 +41,9 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     private var ignoreChanges = false
     
     init(trip: WBTrip, receipt: WBReceipt?) {
-        super.init(nibName: nil, bundle: nil)
+        if #available(iOS 13.0, *) { super.init(style: .insetGrouped) }
+        else { super.init(style: .grouped) }
+        
         self.trip = trip
         isNewReceipt = receipt == nil
         if isNewReceipt {
@@ -113,6 +115,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             }
         })
     
+        +++ Section()
         <<< DecimalRow(PRICE_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_PRICE_SHORT")
             row.placeholder = LocalizedString("DIALOG_RECEIPTMENU_HINT_PRICE_SHORT")
@@ -176,7 +179,6 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             if code != self.trip.defaultCurrency.code {
                 self.updateExchangeRate()
             }
-            
         }).cellSetup({ cell, _ in
             cell.set(image: #imageLiteral(resourceName: "credit-card"))
             cell.configureCell()
@@ -246,6 +248,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         })
         
+        +++ Section()
         <<< DateInlineRow() { [unowned self] row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_DATE")
             row.value = self.receipt.date
@@ -260,6 +263,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             datePickerRow.cell.datePicker.timeZone = self.receipt.timeZone
         })
         
+        +++ Section()
         <<< InlinePickerButtonRow(CATEGORIES_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_CATEGORY")
             row.options = allCategories()
@@ -296,7 +300,8 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
                 self.receipt.paymentMethod = pm
             }
         })
-            
+          
+        +++ Section()
         <<< CheckRow() { [unowned self] row in
             row.title = LocalizedString("DIALOG_RECEIPTMENU_HINT_EXPENSABLE")
             row.value = self.receipt.isReimbursable
@@ -320,6 +325,10 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
         if isNewReceipt {
             matchCategory(value: receipt.category?.name)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .ulpOfOne
     }
     
     func apply(scan: ScanResult?) {

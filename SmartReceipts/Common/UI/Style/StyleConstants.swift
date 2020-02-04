@@ -11,6 +11,7 @@ import UIKit
 extension UIColor {
     static var violetMain: UIColor = .srViolet
     static var violetAccent: UIColor = .srViolet2
+    static var halfBlack: UIColor = UIColor.black.withAlphaComponent(0.5)
 }
 
 extension UIFont {
@@ -21,6 +22,7 @@ extension UIFont {
     static var medium15: UIFont = .systemFont(ofSize: 15, weight: .medium)
     
     static var regular16: UIFont = .systemFont(ofSize: 16, weight: .regular)
+    static var regular13: UIFont = .systemFont(ofSize: 13, weight: .regular)
 }
 
 
