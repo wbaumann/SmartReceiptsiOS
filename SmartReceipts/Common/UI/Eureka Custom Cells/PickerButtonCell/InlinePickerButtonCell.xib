@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,19 +15,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIZ-bp-fCV">
-                    <rect key="frame" x="30" y="11.5" width="35.5" height="21"/>
+                    <rect key="frame" x="35" y="11.5" width="35.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-Yg-cRq">
-                    <rect key="frame" x="81.5" y="11.5" width="277.5" height="21"/>
+                    <rect key="frame" x="86.5" y="11.5" width="272.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                     <color key="textColor" red="0.53725490200000003" green="0.13725490200000001" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="257" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BYo-eF-bb2">
-                    <rect key="frame" x="15" y="14" width="0.0" height="16"/>
+                    <rect key="frame" x="20" y="14" width="0.0" height="16"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
             </subviews>
@@ -42,7 +40,7 @@
                 <constraint firstItem="eIZ-bp-fCV" firstAttribute="leading" secondItem="BYo-eF-bb2" secondAttribute="trailing" priority="720" constant="15" id="NqH-gp-hhW"/>
                 <constraint firstItem="eIZ-bp-fCV" firstAttribute="leading" secondItem="ylS-QC-G8c" secondAttribute="leading" priority="710" constant="15" id="fID-G7-Xas"/>
                 <constraint firstItem="BYo-eF-bb2" firstAttribute="centerY" secondItem="18u-6w-M0l" secondAttribute="centerY" id="mYv-Zm-efE"/>
-                <constraint firstItem="BYo-eF-bb2" firstAttribute="leading" secondItem="ylS-QC-G8c" secondAttribute="leading" constant="15" id="zlF-Dh-bIE"/>
+                <constraint firstItem="BYo-eF-bb2" firstAttribute="leading" secondItem="ylS-QC-G8c" secondAttribute="leading" constant="20" id="zlF-Dh-bIE"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="ylS-QC-G8c"/>

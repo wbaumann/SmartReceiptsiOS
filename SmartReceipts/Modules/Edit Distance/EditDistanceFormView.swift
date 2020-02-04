@@ -19,7 +19,9 @@ class EditDistanceFormView: FormViewController {
     private(set) var changedDistance: Distance?
     
     required init(trip: WBTrip, distance: Distance?) {
-        super.init(nibName: nil, bundle: nil)
+        if #available(iOS 13.0, *) { super.init(style: .insetGrouped) }
+        else { super.init(style: .grouped) }
+        
         self.distance = distance
         
         if let initialDistance = distance?.copy() as? Distance {
@@ -61,7 +63,7 @@ class EditDistanceFormView: FormViewController {
             cell.makeBoldTitle()
             cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         })
-        
+            
         <<< DecimalRow(RATE_ROW_TAG) { [unowned self] row in
             row.title = LocalizedString("distance_rate_field")
             if self.changedDistance?.rate.amount.decimalValue != 0 {
@@ -78,6 +80,7 @@ class EditDistanceFormView: FormViewController {
             cell.textField.inputView = NumberKeyboard.create(delegate: cell.textField)
         })
         
+        +++ Section()
         <<< PickerInlineRow<String>() { [unowned self] row in
             row.title = LocalizedString("dialog_currency_field")
             row.options = Currency.allCurrencyCodesWithCached()
@@ -91,6 +94,7 @@ class EditDistanceFormView: FormViewController {
             cell.makeHighlitedValue()
         })
         
+        +++ Section()
         <<< TextRow() { [unowned self] row in
             row.title = LocalizedString("distance_location_field")
             row.value = self.changedDistance?.location
@@ -115,6 +119,7 @@ class EditDistanceFormView: FormViewController {
             datePickerRow.cell.datePicker.timeZone = self.changedDistance?.timeZone
         })
     
+        +++ Section()
         <<< TextRow() { [unowned self] row in
             row.title = LocalizedString("distance_comment_field")
             row.value = self.changedDistance?.comment
@@ -123,6 +128,10 @@ class EditDistanceFormView: FormViewController {
         }).cellSetup({ cell, _ in
             cell.makeBoldTitle()
         })
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .ulpOfOne
     }
     
     /**

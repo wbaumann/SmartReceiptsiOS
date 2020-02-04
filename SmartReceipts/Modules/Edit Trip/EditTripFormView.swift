@@ -141,12 +141,11 @@ class EditTripFormView: FormViewController {
     }
     
     func done() {
-        if let errors = form.rowBy(tag: NAME_ROW_TAG)?.validate() {
-            if errors.count > 0 {
-                errorSubject.onNext(LocalizedString("DIALOG_TRIPMENU_TOAST_MISSING_FIELD"))
-            } else {
-                tripSubject.onNext(trip!)
-            }
+        guard let errors = form.rowBy(tag: NAME_ROW_TAG)?.validate() else { return }
+        if errors.count > 0 {
+            errorSubject.onNext(LocalizedString("DIALOG_TRIPMENU_TOAST_MISSING_FIELD"))
+        } else {
+            tripSubject.onNext(trip!)
         }
     }
     
