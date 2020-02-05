@@ -8,6 +8,7 @@
 
 import Foundation
 import CocoaLumberjack.Swift
+import Crashlytics
 
 /// Logger wrapper
 /// 
@@ -133,4 +134,8 @@ final class Logger: NSObject {
         DDLog.log(asynchronous: trueForErrors, message: message)
     }
     
+
+    class func logCrashlytics(_ string: String) {
+        CLSLogv("%@", getVaList([string]))
+    }
 }
