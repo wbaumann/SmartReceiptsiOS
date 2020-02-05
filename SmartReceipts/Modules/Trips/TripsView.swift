@@ -19,6 +19,7 @@ protocol TripsViewInterface {
 
 //MARK: Trips View
 final class TripsView: FetchedTableViewController {
+    @IBOutlet fileprivate weak var moreButton: UIBarButtonItem!
     @IBOutlet fileprivate weak var editItem: UIBarButtonItem!
     @IBOutlet fileprivate weak var addItem: UIBarButtonItem!
     
@@ -32,7 +33,6 @@ final class TripsView: FetchedTableViewController {
         AppTheme.customizeOnViewDidLoad(self)
         lastDateSeparator = WBPreferences.dateSeparator()
         setPresentationCellNib(TripCell.viewNib())
-        navigationController?.setToolbarHidden(true, animated: false)
         title = PurchaseService.hasValidSubscriptionValue ? AppTheme.appTitlePlus : AppTheme.appTitle
         
         configurePrivacyTooltip()
@@ -65,9 +65,15 @@ final class TripsView: FetchedTableViewController {
                 self?.fetchObjects()
             }).disposed(by: bag)
         
-        editItem.rx.tap.subscribe(onNext: { [unowned self] in
-            self.setEditing(!self.isEditing, animated: true)
-        }).disposed(by: bag)
+        editItem.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                self.setEditing(!self.isEditing, animated: true)
+            }).disposed(by: bag)
+        
+        moreButton.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                MainMenuActionSheet(openOn: self).show()
+            }).disposed(by: bag)
     }
     
     func configurePrivacyTooltip() {
@@ -79,14 +85,14 @@ final class TripsView: FetchedTableViewController {
         tooltipView.rx.tap
             .do(onNext: {
                 TooltipService.shared.markPrivacyOpened()
-                weakTable?.contentInset = UIEdgeInsets.zero
+                weakTable?.contentInset = .zero
             }).bind(to: privacySubject)
             .disposed(by: bag)
         
         tooltipView.rx.close
             .subscribe(onNext: {
                 TooltipService.shared.markPrivacyDismissed()
-                weakTable?.contentInset = UIEdgeInsets.zero
+                weakTable?.contentInset = .zero
             }).disposed(by: bag)
     }
     
@@ -121,19 +127,18 @@ final class TripsView: FetchedTableViewController {
     }
     
     override func delete(object: Any!, at indexPath: IndexPath) {
-        presenter.tripDeleteSubject.onNext(object as! WBTrip)
+        let trip = object as! WBTrip
+        if WBPreferences.lastOpenedTrip?.objectId == trip.objectId {
+            if #available(iOS 13.0, *) {
+                navigationController?.isModalInPresentation = true
+            }
+        }
+        presenter.tripDeleteSubject.onNext(trip)
     }
     
     override func tappedObject(_ tapped: Any, indexPath: IndexPath) {
         let trip = tapped as! WBTrip
         isEditing ? presenter.tripEditSubject.onNext(trip) : presenter.tripSelectedSubject.onNext(trip)
-    }
-    
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + DEFAULT_ANIMATION_DURATION) {
-            self.tableView.reloadData()
-        }
     }
     
     override func contentChanged() {

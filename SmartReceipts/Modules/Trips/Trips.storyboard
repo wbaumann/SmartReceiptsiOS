@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,6 +37,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="46E-Wz-wqR"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Smart Receipts" id="jh3-7q-ixi">
+                        <barButtonItem key="leftBarButtonItem" image="more_tab_selected" id="HJD-mO-PCZ"/>
                         <rightBarButtonItems>
                             <barButtonItem image="edit-2" id="S5m-dq-klV"/>
                             <barButtonItem title="Item" image="plus" id="8gc-KG-S8i"/>
@@ -47,6 +48,7 @@
                     <connections>
                         <outlet property="addItem" destination="8gc-KG-S8i" id="Lug-p3-Ojv"/>
                         <outlet property="editItem" destination="S5m-dq-klV" id="dry-PJ-BGS"/>
+                        <outlet property="moreButton" destination="HJD-mO-PCZ" id="70h-EB-TLj"/>
                         <outlet property="tableView" destination="oiC-Hc-lug" id="se3-kH-BfB"/>
                     </connections>
                 </viewController>
@@ -92,6 +94,7 @@
     </scenes>
     <resources>
         <image name="edit-2" width="20" height="20"/>
+        <image name="more_tab_selected" width="22" height="16"/>
         <image name="plus" width="16" height="16"/>
     </resources>
 </document>
