@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 extension FetchedTableViewController {
     typealias CanMoveClosure = (IndexPath) -> Bool
@@ -194,16 +195,30 @@ class DateSectionedTableViewDataSource: FetchedTableViewDataSource {
     
     override func map(index: Int, deletion: Bool = false) -> IndexPath {
         let rawItems = deletion ? previousItems : items
-        let item = rawItems[index] as! DateSectionItem
+        
+        Logger.logCrashlytics("rawItems.count: \(rawItems.count), index: \(index)")
+        guard let item = rawItems[index] as? DateSectionItem else {
+            Crashlytics.sharedInstance().recordError(DataSourceError.error(text: "item is not DateSectionItem"))
+            return .init(row: index, section: 0)
+        }
+        
         let keys = deletion ? previousSortedKeys : sortedKeys
         let section = keys.index(of: item.sectionDate) ?? 0
         let currentItems = deletion ? previousSectionedItems : sectionedItems
-        guard let items = currentItems[item.sectionDate] else { return .init(row: 0, section: section) }
+        
+        guard let items = currentItems[item.sectionDate] else {
+            Crashlytics.sharedInstance().recordError(DataSourceError.error(text: "currentItems not contains not item"))
+            return .init(row: 0, section: section)
+        }
+        
+        
         for (idx, element) in items.enumerated() {
             if element.id == item.id {
                 return .init(row: idx, section: section)
             }
         }
+        
+        Crashlytics.sharedInstance().recordError(DataSourceError.error(text: "can't map item at index \(index)"))
         return .init(row: 0, section: section)
     }
     
@@ -244,4 +259,14 @@ extension WBReceipt: DateSectionItem {
 extension Distance: DateSectionItem {
     var sectionDate: Date { return (date as NSDate).atBeginningOfDay() }
     var id: String { return String(self.objectId) }
+}
+
+fileprivate enum DataSourceError: LocalizedError {
+    case error(text: String)
+    
+    var errorDescription: String? {
+        switch self {
+        case .error(let text): return text
+        }
+    }
 }
