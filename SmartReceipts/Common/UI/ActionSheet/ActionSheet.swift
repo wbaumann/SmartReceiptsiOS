@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 class ActionSheet {
-    private var sheetViewController: ActionSheetViewController
+    private(set) var sheetViewController: ActionSheetViewController
     
     init(closable: Bool = true) {
         sheetViewController = ActionSheetViewController.create()
@@ -30,7 +30,7 @@ class ActionSheet {
 }
 
 class ActionSheetViewController: UIViewController, Storyboardable, Containerable {
-    private let bag = DisposeBag()
+    private (set) var bag = DisposeBag()
     
     @IBOutlet private weak var backView: UIView!
     @IBOutlet private weak var stackView: UIStackView!
@@ -64,7 +64,9 @@ class ActionSheetViewController: UIViewController, Storyboardable, Containerable
         Observable.merge(closeButton.rx.tap.asObservable(), tapGesture.rx.event.map({ _ in }))
             .filter { [weak self] in self?.closable == true }
             .subscribe(onNext: { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
+                self?.dismiss(animated: true, completion: { [weak self] in
+                    self?.bag = DisposeBag()
+                })
             }).disposed(by: bag)
     }
     

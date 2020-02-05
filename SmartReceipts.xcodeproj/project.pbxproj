@@ -378,6 +378,8 @@
 		71CF7A121F1020440004F389 /* InputTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF7A111F1020440004F389 /* InputTextCell.swift */; };
 		71CF7A141F1020590004F389 /* InputTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CF7A131F1020590004F389 /* InputTextCell.xib */; };
 		71D59CDD1EDDCA65008991B7 /* WBDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */; };
+		71D7596923EB3B8A00EBFD45 /* NotificationName+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7596823EB3B8A00EBFD45 /* NotificationName+Extensions.swift */; };
+		71D7596B23EB416F00EBFD45 /* MainMenuActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7596A23EB416F00EBFD45 /* MainMenuActionSheet.swift */; };
 		71D7D43E1FAA062300437CA9 /* ScanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7D43D1FAA062300437CA9 /* ScanService.swift */; };
 		71D7D4401FAA079800437CA9 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7D43F1FAA079800437CA9 /* ScanResult.swift */; };
 		71D7FA372304AAA8001F36E1 /* UIStructs+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7FA362304AAA8001F36E1 /* UIStructs+Extensions.swift */; };
@@ -1008,6 +1010,8 @@
 		71CF7A131F1020590004F389 /* InputTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputTextCell.xib; sourceTree = "<group>"; };
 		71D59CDA1EDDC993008991B7 /* WBDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDateFormatter.h; sourceTree = "<group>"; };
 		71D59CDB1EDDC993008991B7 /* WBDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDateFormatter.m; sourceTree = "<group>"; };
+		71D7596823EB3B8A00EBFD45 /* NotificationName+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extensions.swift"; sourceTree = "<group>"; };
+		71D7596A23EB416F00EBFD45 /* MainMenuActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuActionSheet.swift; sourceTree = "<group>"; };
 		71D7D43D1FAA062300437CA9 /* ScanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanService.swift; sourceTree = "<group>"; };
 		71D7D43F1FAA079800437CA9 /* ScanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResult.swift; sourceTree = "<group>"; };
 		71D7FA362304AAA8001F36E1 /* UIStructs+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStructs+Extensions.swift"; sourceTree = "<group>"; };
@@ -1590,6 +1594,7 @@
 				712F2810238AB47B00880C5D /* ActionSheet */,
 				71655086218CCC7A007B55FF /* AppTheme.swift */,
 				714104CF1FF43D7700C334C5 /* FetchedPlaceholderView.swift */,
+				71D7596A23EB416F00EBFD45 /* MainMenuActionSheet.swift */,
 				714104D81FF43D7700C334C5 /* ScansPurchaseButton.swift */,
 				71871509225022040061D493 /* FeedbackComposer.swift */,
 				714104D31FF43D7700C334C5 /* WBAbstractPicker.h */,
@@ -2540,6 +2545,7 @@
 				71F9989821AC4E4200320256 /* Array+Extensions.swift */,
 				71939E9921D14FD900A5BB27 /* AppDelegate+Extensions.swift */,
 				713572B122F794340069C9F5 /* Reusable+Extensions.swift */,
+				71D7596823EB3B8A00EBFD45 /* NotificationName+Extensions.swift */,
 				71D7FA352304AA73001F36E1 /* UI */,
 			);
 			path = Extensions;
@@ -3799,6 +3805,7 @@
 				716F344F1EE040E100D0017A /* EditDistanceInteractor.swift in Sources */,
 				714AC77D2041C693003656DB /* DescribedButtonCell.swift in Sources */,
 				71A30F2F1EECB746001BA608 /* DataImport.swift in Sources */,
+				71D7596923EB3B8A00EBFD45 /* NotificationName+Extensions.swift in Sources */,
 				71655090218CD013007B55FF /* NSString+Extensions.m in Sources */,
 				71AEDDE21EDF7FF400BAC0DD /* TripDistancesView.swift in Sources */,
 				A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */,
@@ -3871,6 +3878,7 @@
 				71C014241F1AB14A005472B3 /* CategoriesInteractor.swift in Sources */,
 				714104E61FF43D7700C334C5 /* SuggestionView.m in Sources */,
 				71AF49E81EFDCC010022B2E2 /* ReceiptImageViewerView.swift in Sources */,
+				71D7596B23EB416F00EBFD45 /* MainMenuActionSheet.swift in Sources */,
 				71E3CCE4207E9E8900C7FF2D /* TimeInterval+Extensions.swift in Sources */,
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				71F6251E20FBE395009B777C /* GoogleSyncService.swift in Sources */,
