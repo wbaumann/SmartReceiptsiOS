@@ -173,6 +173,12 @@
 
     id removed = [previousObjects lastObject];
     NSUInteger index = [previousObjectsForIndex indexOfObject:removed];
+    
+    if (index == NSNotFound) {
+        [self.delegate reloadData];
+        return;
+    }
+    
     [self.delegate willChangeContent];
 
     [self setModels:refreshed];
