@@ -31,7 +31,7 @@ final class SettingsView: UserInterface {
         super.viewDidLoad()
         navigationItem.title = LocalizedString("menu_main_settings")
         
-        formView = SettingsFormView(settingsView: self)
+        formView = SettingsFormView(settingsView: self, dateFormats: displayData.formats)
         formView.showOption = displayData.showSettingsOption
         formView.openModuleSubject = presenter.openModuleSubject
         formView.alertSubject = presenter.alertSubject

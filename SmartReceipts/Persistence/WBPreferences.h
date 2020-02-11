@@ -28,8 +28,8 @@
 + (BOOL)includeTaxField;
 + (void)setIncludeTaxField:(BOOL)includeTaxField;
 
-+ (NSString *)dateSeparator;
-+ (void)setDateSeparator:(NSString *)dateSeparator;
++ (NSString *)dateFormat;
++ (void)setDateFormat:(NSString *)dateFormat;
 
 + (NSString *)defaultEmailRecipient;
 + (void)setDefaultEmailRecipient:(NSString *)defaultEmailReceipient;
