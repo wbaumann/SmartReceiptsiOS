@@ -24,10 +24,8 @@
 
 -(NSString*) formattedDate:(NSDate*) date inTimeZone:(NSTimeZone*) timeZone {
     [_formatter setTimeZone:timeZone];
-    NSString *separator = [WBPreferences dateSeparator];
-    NSString *str = [_formatter stringFromDate:date];
-    NSString *oppSeparator = [self separatorForCurrentLocale];
-    return [str stringByReplacingOccurrencesOfString:oppSeparator withString:separator];
+    [_formatter setDateFormat:WBPreferences.dateFormat];
+    return [_formatter stringFromDate:date];
 }
 
 -(NSString*) formattedDateMs:(long long)dateMs inTimeZone:(NSTimeZone*) timeZone {

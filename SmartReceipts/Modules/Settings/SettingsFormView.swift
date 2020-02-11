@@ -27,10 +27,13 @@ class SettingsFormView: FormViewController {
     fileprivate var removeAdsProduct: SKProduct?
     fileprivate let bag = DisposeBag()
     
+    private let dateFormats: [String]
+    
     var hud: PendingHUDView?
     var showOption: ShowSettingsOption?
     
-    init(settingsView: SettingsView) {
+    init(settingsView: SettingsView, dateFormats: [String]) {
+        self.dateFormats = dateFormats
         super.init(nibName: nil, bundle: nil)
         self.settingsView = settingsView
     }
@@ -224,10 +227,22 @@ class SettingsFormView: FormViewController {
             cell.detailTextLabel?.textColor = AppTheme.primaryColor
         })
             
-        <<< segmentedRow(LocalizedString("pref_general_default_date_separator_title"),
-            options: ["-", "/", "."], selectedOption: WBPreferences.dateSeparator())
-        .onChange({ row in
-            WBPreferences.setDateSeparator(row.selectedOption)
+        <<< PickerInlineRow<String>() { [unowned self] row in
+            row.title = LocalizedString("pref_general_date_format_title")
+            
+            let dateFormatter = DateFormatter()
+            let date = Date()
+            dateFormatter.dateFormat = WBPreferences.dateFormat()
+            row.value = dateFormatter.string(from: date)
+            row.options = self.dateFormats.map { format in
+                dateFormatter.dateFormat = format
+                return dateFormatter.string(from: date)
+            }
+        }.onChange({ [weak self] row in
+            guard let self = self, let index = row.options.index(of: row.value!) else { return }
+            WBPreferences.setDateFormat(self.dateFormats[index])
+        }).cellSetup({ cell, _ in
+            cell.detailTextLabel?.textColor = AppTheme.primaryColor
         })
             
         <<< DescribedSwitchRow() { row in

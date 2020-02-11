@@ -25,13 +25,13 @@ final class TripsView: FetchedTableViewController {
     
     fileprivate let privacySubject = PublishSubject<Void>()
     
-    private var lastDateSeparator: String!
+    private var lastDateFormat: String!
     private let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         AppTheme.customizeOnViewDidLoad(self)
-        lastDateSeparator = WBPreferences.dateSeparator()
+        lastDateFormat = WBPreferences.dateFormat()
         setPresentationCellNib(TripCell.viewNib())
         title = PurchaseService.hasValidSubscriptionValue ? AppTheme.appTitlePlus : AppTheme.appTitle
         
@@ -97,8 +97,8 @@ final class TripsView: FetchedTableViewController {
     }
     
     private func settingsSaved() {
-        if lastDateSeparator == WBPreferences.dateSeparator() { return }
-        lastDateSeparator = WBPreferences.dateSeparator()
+        if lastDateFormat == WBPreferences.dateFormat() { return }
+        lastDateFormat = WBPreferences.dateFormat()
         tableView.reloadData()
     }
     

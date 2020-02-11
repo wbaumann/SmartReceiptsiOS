@@ -34,7 +34,7 @@ static NSString * const BOOL_ONLY_INCLUDE_REIMBURSABLE_ITEMS = @"OnlyIncludeExpe
 static NSString * const BOOL_EXPENSABLE_DEFAULT = @"ExpensableDefault";
 static NSString * const BOOL_INCLUDE_TAX_FIELD = @"IncludeTaxField";
 static NSString * const STRING_CURRENCY = @"isocurr";
-static NSString * const STRING_DATE_SEPARATOR = @"dateseparator";
+static NSString * const STRING_DATE_FORMAT = @"dateformat";
 static NSString * const FLOAT_MIN_RECEIPT_PRICE = @"MinReceiptPrice";
 // static NSString * const INT_VERSION_CODE = @"VersionCode";
 static NSString * const BOOL_DEFAULT_TO_FIRST_TRIP_DATE = @"DefaultToFirstReportDate";
@@ -128,7 +128,7 @@ static NSDictionary *getEntryTypes() {
 
             STRING_CURRENCY : tString,
 
-            STRING_DATE_SEPARATOR : tString,
+            STRING_DATE_FORMAT : tString,
             BOOL_DEFAULT_TO_FIRST_TRIP_DATE : tBool,
 
             INT_CAMERA_MAX_HEIGHT_WIDTH : tInt,
@@ -182,6 +182,7 @@ static NSDictionary *getDefaultValues() {
     currencyCode = [currency code];
 
     NSString *dateSeparator = [[[WBDateFormatter alloc] init] separatorForCurrentLocale];
+    NSString *dateFormat = [@[@"MM", @"dd", @"YYYY"] componentsJoinedByString:dateSeparator];
     
     // This macro is not supported here
     //LOGGER_DEBUG
@@ -222,7 +223,7 @@ static NSDictionary *getDefaultValues() {
 
             STRING_CURRENCY : currencyCode,
 
-            STRING_DATE_SEPARATOR : dateSeparator,
+            STRING_DATE_FORMAT : dateFormat,
             BOOL_DEFAULT_TO_FIRST_TRIP_DATE : @NO,
 
             INT_CAMERA_MAX_HEIGHT_WIDTH : @1024,
@@ -332,12 +333,12 @@ static NSUserDefaults* instance() {
     [instance() setBool:includeTaxField forKey:BOOL_INCLUDE_TAX_FIELD];
 }
 
-+ (NSString*) dateSeparator {
-    return [instance() stringForKey:STRING_DATE_SEPARATOR];
++ (NSString*) dateFormat {
+    return [instance() stringForKey:STRING_DATE_FORMAT];
 }
     
-+ (void) setDateSeparator:(NSString*) dateSeparator {
-    [instance() setObject:dateSeparator forKey:STRING_DATE_SEPARATOR];
++ (void) setDateFormat:(NSString*) dateFormat {
+    [instance() setObject:dateFormat forKey:STRING_DATE_FORMAT];
 }
 
 + (NSString *)defaultEmailRecipient {

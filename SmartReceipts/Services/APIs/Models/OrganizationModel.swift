@@ -78,7 +78,7 @@ struct OrganizationAppSettings: Codable {
 struct SettingsModel: Codable, Equatable {
     let tripDuration: Int?
     let isocurr: String?
-    let dateseparator: String?
+    let dateformat: String?
     let trackcostcenter: Bool?
     let predictCategories: Bool?
     let matchNameCategories: Bool?
@@ -111,7 +111,7 @@ struct SettingsModel: Codable, Equatable {
     let pdfFooterString: String?
     
     enum CodingKeys: String, CodingKey {
-        case isocurr, dateseparator, trackcostcenter
+        case isocurr, dateformat, trackcostcenter
         case tripDuration = "TripDuration"
         case predictCategories = "PredictCats"
         case matchNameCategories = "MatchNameCats"

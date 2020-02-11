@@ -99,7 +99,7 @@ extension WBPreferences {
     static func importModel(settings: SettingsModel) {
         if let value = settings.tripDuration { setDefaultTripDuration(Int32(value)) }
         if let value = settings.isocurr { setDefaultCurrency(value) }
-        if let value = settings.dateseparator { setDateSeparator(value) }
+        if let value = settings.dateformat { setDateFormat(value) }
         if let value = settings.trackcostcenter { setTrackCostCenter(value) }
         if let value = settings.predictCategories { setPredictCategories(value) }
         if let value = settings.matchNameCategories { setMatchNameToCategory(value) }
@@ -136,7 +136,7 @@ extension WBPreferences {
         return .init(
             tripDuration: Int(defaultTripDuration()),
             isocurr: defaultCurrency(),
-            dateseparator: dateSeparator(),
+            dateformat: dateFormat(),
             trackcostcenter: trackCostCenter(),
             predictCategories: predictCategories(),
             matchNameCategories: matchNameToCategory(),

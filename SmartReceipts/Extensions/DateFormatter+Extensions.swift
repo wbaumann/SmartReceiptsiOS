@@ -7,17 +7,13 @@
 //
 
 extension DateFormatter {
-    func configure(separator: String, timeZone: TimeZone = TimeZone.current) {
-        var template = DateFormatter.dateFormat(fromTemplate: "MMddyyyy", options: 0, locale: NSLocale.current)
-        template = template?.replacingOccurrences(of: "/", with: separator)
-        template = template?.replacingOccurrences(of: ".", with: separator)
-        template = template?.replacingOccurrences(of: "-", with: separator)
+    func configure(format: String, timeZone: TimeZone = TimeZone.current) {
         self.timeZone = timeZone
-        dateFormat = template
+        self.dateFormat = format
     }
     
     func configure(timeZone: TimeZone = TimeZone.current) {
-        configure(separator: WBPreferences.dateSeparator(), timeZone: timeZone)
+        configure(format: WBPreferences.dateFormat(), timeZone: timeZone)
     }
     
     static let iso8601: DateFormatter = {

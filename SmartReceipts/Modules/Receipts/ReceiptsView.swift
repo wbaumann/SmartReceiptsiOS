@@ -30,7 +30,7 @@ final class ReceiptsView: FetchedTableViewController {
     private var dateFormatter = WBDateFormatter()
     private var showReceiptDate = false
     private var showReceiptCategory = false
-    private var lastDateSeparator: String!
+    private var lastDateFormat: String!
     private var showAttachmentMarker = false
     fileprivate let bag = DisposeBag()
     
@@ -54,7 +54,7 @@ final class ReceiptsView: FetchedTableViewController {
         
         setPresentationCellNib(ReceiptCell.viewNib())
         
-        lastDateSeparator = WBPreferences.dateSeparator()
+        lastDateFormat = WBPreferences.dateFormat()
         subscribe()
         subscribeTooltip()
         
@@ -127,11 +127,11 @@ final class ReceiptsView: FetchedTableViewController {
         if showReceiptDate == WBPreferences.layoutShowReceiptDate()
             && showReceiptCategory == WBPreferences.layoutShowReceiptCategory()
             && showAttachmentMarker == WBPreferences.layoutShowReceiptAttachmentMarker()
-            && lastDateSeparator == WBPreferences.dateSeparator() {
+            && lastDateFormat == WBPreferences.dateFormat() {
             return
         }
         
-        lastDateSeparator = WBPreferences.dateSeparator()
+        lastDateFormat = WBPreferences.dateFormat()
         showReceiptDate = WBPreferences.layoutShowReceiptDate()
         showReceiptCategory = WBPreferences.layoutShowReceiptCategory()
         showAttachmentMarker = WBPreferences.layoutShowReceiptAttachmentMarker()
