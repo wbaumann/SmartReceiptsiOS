@@ -14,7 +14,7 @@ let TOOLTIP_INSETS = UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, r
 
 class TooltipView: UIView {
     
-    static let HEIGHT: CGFloat = 44
+    static let HEIGHT: CGFloat = 72
     
     fileprivate weak var scrollView: UIScrollView?
     fileprivate var textButton: UIButton!
@@ -30,6 +30,7 @@ class TooltipView: UIView {
         let width = screenWidth ? UIScreen.main.bounds.width : view.bounds.width
         let frame = CGRect(x: offset.x, y: offset.y, width: width, height: HEIGHT)
         let tooltip = TooltipView(frame: frame)
+        tooltip.autoresizingMask = .flexibleWidth
         tooltip.image.image = image
         tooltip.image.contentMode = .center
         tooltip.image.tintColor = .white
@@ -73,7 +74,18 @@ class TooltipView: UIView {
     private func configureView() {
         let font = UIFont.boldSystemFont(ofSize: 13)
         let frames = calculateFrames()
-        backgroundColor = AppTheme.accentColor
+        backgroundColor = .clear
+    
+        let containerView = UIView(frame: bounds)
+        containerView.frame.origin.y = UI_MARGIN_8
+        containerView.frame.origin.x = UI_MARGIN_8
+        containerView.frame.size.height -= UI_MARGIN_16
+        containerView.frame.size.width -= UI_MARGIN_16
+        containerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        containerView.backgroundColor = #colorLiteral(red: 0.368627451, green: 0.3647058824, blue: 0.3882352941, alpha: 1)
+        containerView.layer.cornerRadius = 12
+        
+        addSubview(containerView)
         
         textButton = UIButton(frame: frames.textButtonFrame)
         textButton.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -81,7 +93,7 @@ class TooltipView: UIView {
         textButton.titleLabel?.font = font
         
         closeButton = UIButton(frame: frames.closeButtonFrame)
-        closeButton.setImage(#imageLiteral(resourceName: "close_button"), for: .normal)
+        closeButton.setImage(#imageLiteral(resourceName: "close_circle"), for: .normal)
         closeButton.titleLabel?.font = font
         
         addSubview(textButton)
