@@ -171,7 +171,7 @@
 
     [previousObjects removeObjectsInArray:refreshed];
 
-    id removed = [previousObjects lastObject];
+    id removed = [previousObjectsForIndex lastObject];
     NSUInteger index = [previousObjectsForIndex indexOfObject:removed];
     
     if (index == NSNotFound) {

@@ -182,7 +182,7 @@ static NSDictionary *getDefaultValues() {
     currencyCode = [currency code];
 
     NSString *dateSeparator = [[[WBDateFormatter alloc] init] separatorForCurrentLocale];
-    NSString *dateFormat = [@[@"MM", @"dd", @"YYYY"] componentsJoinedByString:dateSeparator];
+    NSString *dateFormat = [@[@"MM", @"dd", @"yy"] componentsJoinedByString:dateSeparator];
     
     // This macro is not supported here
     //LOGGER_DEBUG
