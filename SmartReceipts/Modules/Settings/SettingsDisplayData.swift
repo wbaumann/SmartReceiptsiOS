@@ -34,9 +34,9 @@ enum DateFormat {
     
     func format(separator: String) -> String {
         switch self {
-        case .dayMonthYear: return ["dd", "MM", "YYYY"].joined(separator: separator)
-        case .monthDayYear: return ["MM", "dd", "YYYY"].joined(separator: separator)
-        case .yearMonthDay: return ["YYYY", "MM", "dd"].joined(separator: separator)
+        case .dayMonthYear: return ["dd", "MM", "yy"].joined(separator: separator)
+        case .monthDayYear: return ["MM", "dd", "yy"].joined(separator: separator)
+        case .yearMonthDay: return ["yy", "MM", "dd"].joined(separator: separator)
         }
     }
 }

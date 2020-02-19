@@ -11,7 +11,7 @@
                 "Settings": {
                     "TripDuration": 20,
                     "isocurr": "RUB",
-                    "dateseparator": ".",
+                    "dateformat": "MM/dd/yy",
                     "trackcostcenter": true,
                     "PredictCats": true,
                     "MatchNameCats": true,
