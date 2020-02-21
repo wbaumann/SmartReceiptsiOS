@@ -98,6 +98,7 @@ class FetchedModelAdapterTests: SmartReceiptsTestsBase {
         
         let location = "Male"
         let inserted = insertTestDinstance(location)
+        inserted.objectId = 1
         
         db.delete(inserted)
         fetchedModelAdapter.refreshContentAndNotifyDeleteChanges()
