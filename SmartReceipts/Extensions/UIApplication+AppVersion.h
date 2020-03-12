@@ -11,5 +11,6 @@
 @interface UIApplication (AppVersion)
 
 - (NSString *)appVersionInfoString;
+- (NSString *)version;
 
 @end

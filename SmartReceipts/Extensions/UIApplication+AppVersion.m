@@ -18,4 +18,8 @@
     return [NSString stringWithFormat:@"%@ version %@, build %@\n", appDisplayName, appVersion, appBuildVersion];
 }
 
+- (NSString *)version {
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+}
+
 @end

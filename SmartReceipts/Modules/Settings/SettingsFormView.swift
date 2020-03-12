@@ -521,6 +521,11 @@ class SettingsFormView: FormViewController {
         }.onChange({ row in
             WBPreferences.setAdPersonalizationEnabled(row.value!)
         })
+            
+        +++ Section(LocalizedString("pref_about_header"))
+        <<< openModuleButton(LocalizedString("pref_about_version_title"), subtitle: UIApplication.shared.version())
+        <<< openModuleButton(LocalizedString("pref_about_about_title"), route: .about)
+        <<< openModuleButton(LocalizedString("pref_about_terms_title"), route: .termsOfUse)
     
         +++ Section(LocalizedString("pref_help_header"))
         <<< openModuleButton(LocalizedString("pref_help_send_feedback_title"),
