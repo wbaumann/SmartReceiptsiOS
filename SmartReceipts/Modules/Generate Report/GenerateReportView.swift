@@ -47,7 +47,7 @@ final class GenerateReportView: UserInterface {
 
 extension GenerateReportView: TabHasMainAction {
     func mainAction() {
-        guard let navView = navigationController?.view, let selection = formView?.selection else { return }
+        guard let selection = formView?.selection else { return }
         hud = PendingHUDView.showFullScreen()
         presenter.generateReport(selection: selection)
     }

@@ -14,7 +14,11 @@ class SettingsRouter: Router {
     func openRoute(_ route: SettingsRoutes) {
         switch route {
         case .privacyPolicy:
-            openPrivacyPolicy()
+            open(url: "https://www.smartreceipts.co/privacy")
+        case .termsOfUse:
+            openAlert(title: nil, message: LocalizedString("pref_about_terms_dialogMessage"))
+        case .about:
+            openAlert(title: nil, message: LocalizedString("pref_about_about_dialogMessage"))
         case .columns(let isCSV):
             openColumns(isCSV: isCSV)
         case .paymentMethods:
@@ -29,11 +33,7 @@ class SettingsRouter: Router {
     }
     
     func openPrivacyPolicy() {
-        if let privacyPolicyURL = URL(string: "https://www.smartreceipts.co/privacy") {
-            if UIApplication.shared.canOpenURL(privacyPolicyURL) {
-                UIApplication.shared.open(privacyPolicyURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-            }
-        }
+        open(url: "https://www.smartreceipts.co/privacy")
     }
     
     func openColumns(isCSV: Bool) {
@@ -51,6 +51,16 @@ class SettingsRouter: Router {
         let module = AppModules.categories.build()
         module.router.show(from: _view.viewController)
     }
+    
+    private func open(url: String) {
+        guard let url = URL(string: url) else { return }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url,
+                options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]),
+                completionHandler: nil
+            )
+        }
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
@@ -65,6 +75,8 @@ enum SettingsRoutes {
     case columns(isCSV: Bool)
     case paymentMethods
     case categories
+    case about
+    case termsOfUse
 }
 
 // Helper function inserted by Swift 4.2 migrator.
