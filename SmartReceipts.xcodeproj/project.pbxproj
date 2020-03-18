@@ -366,6 +366,7 @@
 		71C2FD0F20E7F48C00DF068E /* BackupProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD0E20E7F48C00DF068E /* BackupProviderFactory.swift */; };
 		71C2FD1220E7F71000DF068E /* NoOpBackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD1120E7F71000DF068E /* NoOpBackupProvider.swift */; };
 		71C2FD1420E7F73500DF068E /* GoogleDriveBackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD1320E7F73500DF068E /* GoogleDriveBackupProvider.swift */; };
+		71C525D12420A3C000285F0D /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C525D02420A3C000285F0D /* Locale+Extensions.swift */; };
 		71C7DAA522F8D83300740157 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C7DAA422F8D83300740157 /* UITableView+Extensions.swift */; };
 		71CC1B8521143BA0003D7056 /* BackupItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC1B8421143BA0003D7056 /* BackupItemView.swift */; };
 		71CC1B8721143BBC003D7056 /* BackupItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CC1B8621143BBC003D7056 /* BackupItemView.xib */; };
@@ -997,6 +998,7 @@
 		71C2FD1120E7F71000DF068E /* NoOpBackupProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoOpBackupProvider.swift; sourceTree = "<group>"; };
 		71C2FD1320E7F73500DF068E /* GoogleDriveBackupProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveBackupProvider.swift; sourceTree = "<group>"; };
 		71C413D31EE6F826003CE891 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		71C525D02420A3C000285F0D /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Locale+Extensions.swift"; path = "../../../../Locale+Extensions.swift"; sourceTree = "<group>"; };
 		71C7DAA422F8D83300740157 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		71CC1B8421143BA0003D7056 /* BackupItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupItemView.swift; sourceTree = "<group>"; };
 		71CC1B8621143BBC003D7056 /* BackupItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackupItemView.xib; sourceTree = "<group>"; };
@@ -2546,6 +2548,7 @@
 				71939E9921D14FD900A5BB27 /* AppDelegate+Extensions.swift */,
 				713572B122F794340069C9F5 /* Reusable+Extensions.swift */,
 				71D7596823EB3B8A00EBFD45 /* NotificationName+Extensions.swift */,
+				71C525D02420A3C000285F0D /* Locale+Extensions.swift */,
 				71D7FA352304AA73001F36E1 /* UI */,
 			);
 			path = Extensions;
@@ -3653,6 +3656,7 @@
 				EA888A7C1AFA5C5900DF2AE6 /* Database+Receipts.m in Sources */,
 				A7F05BB21CFC15760079F1AD /* ExchangedTaxed.swift in Sources */,
 				84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */,
+				71C525D12420A3C000285F0D /* Locale+Extensions.swift in Sources */,
 				71FB1D401F195D0D00742FF5 /* PaymentMethodsInteractor.swift in Sources */,
 				EA10AD2F1B18B22000F2BCBB /* Database+Import.m in Sources */,
 				71F468341EEEDB03009F6CE7 /* EditTripInteractor.swift in Sources */,
