@@ -79,7 +79,8 @@ class TooltipService {
     }
     
     func tooltipPrivacy() -> String? {
-        return privacyTooltipUsed() ? nil : LocalizedString("tooltip_review_privacy")
+        let inserts = UserDefaults.standard.integer(forKey: REMINDER_INSERTS)
+        return Locale.current.isEurope || inserts > 0 && !privacyTooltipUsed() ? LocalizedString("tooltip_review_privacy") : nil
     }
     
     @objc private func didInsert(_ notification: Notification) {
