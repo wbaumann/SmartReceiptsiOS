@@ -72,25 +72,47 @@ class TooltipPresenter {
         reminderTooltip?.removeFromSuperview()
         reminderTooltip = nil
         
-        if let text = TooltipService.shared.tooltipBackupReminder(), reportTooltip == nil {
-            updateInsetsSubject.onNext(TOOLTIP_INSETS)
-            let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
-            
-            reminderTooltip = TooltipView.showOn(view: view, text: text, image: #imageLiteral(resourceName: "info"), offset: offset)
-            
-            reminderTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
-                TooltipService.shared.markBackupReminderDismissed()
-                self.reminderTapSubject.onNext(())
-                self.reminderTooltip = nil
-                self.updateViewInsets()
-            }).disposed(by: bag)
-            
-            reminderTooltip?.rx.close.subscribe(onNext: { [unowned self] in
-                TooltipService.shared.markBackupReminderDismissed()
-                self.reminderTooltip = nil
-                self.updateViewInsets()
-            }).disposed(by: bag)
-        }
+        guard let text = TooltipService.shared.tooltipBackupReminder(), reportTooltip == nil else { return }
+        updateInsetsSubject.onNext(TOOLTIP_INSETS)
+        let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
+        
+        reminderTooltip = TooltipView.showOn(view: view, text: text, image: #imageLiteral(resourceName: "info"), offset: offset)
+        
+        reminderTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
+            TooltipService.shared.markBackupReminderDismissed()
+            self.reminderTapSubject.onNext(())
+            self.reminderTooltip = nil
+            self.updateViewInsets()
+        }).disposed(by: bag)
+        
+        reminderTooltip?.rx.close.subscribe(onNext: { [unowned self] in
+            TooltipService.shared.markBackupReminderDismissed()
+            self.reminderTooltip = nil
+            self.updateViewInsets()
+        }).disposed(by: bag)
+    }
+    
+    func presentBackupPlusTooltip() {
+        reminderTooltip?.removeFromSuperview()
+        reminderTooltip = nil
+        
+        guard let text = TooltipService.shared.backupPlusReminder(), reportTooltip == nil else { return }
+        updateInsetsSubject.onNext(TOOLTIP_INSETS)
+        let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
+        
+        reminderTooltip = TooltipView.showOn(view: view, text: text, image: #imageLiteral(resourceName: "info"), offset: offset)
+        reminderTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
+            TooltipService.shared.markBackupPlusDismissed()
+            self.reminderTapSubject.onNext(())
+            self.reminderTooltip = nil
+            self.updateViewInsets()
+        }).disposed(by: bag)
+        
+        reminderTooltip?.rx.close.subscribe(onNext: { [unowned self] in
+            TooltipService.shared.markBackupPlusDismissed()
+            self.reminderTooltip = nil
+            self.updateViewInsets()
+        }).disposed(by: bag)
     }
     
     func presentGenerateIfNeeded() {
@@ -98,24 +120,23 @@ class TooltipPresenter {
             return
         }
         
-        if let text = TooltipService.shared.generateTooltip(for: trip), reportTooltip == nil {
-            updateInsetsSubject.onNext(TOOLTIP_INSETS)
-            
-            reportTooltip = TooltipView.showOn(view: view, text: text)
-            
-            reportTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
-                TooltipService.shared.markMoveToGenerateDismiss()
-                self.generateTapSubject.onNext(())
-                self.reportTooltip = nil
-                self.updateViewInsets()
-            }).disposed(by: bag)
-            
-            reportTooltip?.rx.close.subscribe(onNext: { [unowned self] in
-                TooltipService.shared.markMoveToGenerateDismiss()
-                self.reportTooltip = nil
-                self.updateViewInsets()
-            }).disposed(by: bag)
-        }
+        guard let text = TooltipService.shared.generateTooltip(for: trip), reportTooltip == nil else { return }
+        updateInsetsSubject.onNext(TOOLTIP_INSETS)
+        
+        reportTooltip = TooltipView.showOn(view: view, text: text)
+        
+        reportTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
+            TooltipService.shared.markMoveToGenerateDismiss()
+            self.generateTapSubject.onNext(())
+            self.reportTooltip = nil
+            self.updateViewInsets()
+        }).disposed(by: bag)
+        
+        reportTooltip?.rx.close.subscribe(onNext: { [unowned self] in
+            TooltipService.shared.markMoveToGenerateDismiss()
+            self.reportTooltip = nil
+            self.updateViewInsets()
+        }).disposed(by: bag)
     }
     
     private func updateViewInsets() {

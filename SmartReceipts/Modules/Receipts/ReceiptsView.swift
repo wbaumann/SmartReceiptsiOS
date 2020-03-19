@@ -75,6 +75,7 @@ final class ReceiptsView: FetchedTableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presenter.tooltipPresenter.presentBackupReminderIfNeeded()
+        presenter.tooltipPresenter.presentBackupPlusTooltip()
         presenter.tooltipPresenter.presentGenerateIfNeeded()
     }
     
