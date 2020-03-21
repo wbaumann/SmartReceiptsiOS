@@ -34,12 +34,30 @@ final class EditTripView: UserInterface {
         setupInitialState()
         configureUIActions()
         configureSubscribes()
+        configureTooltips()
     }
     
     private func setupInitialState() {
         navigationItem.title = self.displayData.trip == nil ?
             LocalizedString("DIALOG_TRIPMENU_TITLE_NEW") :
             LocalizedString("DIALOG_TRIPMENU_TITLE_EDIT")
+    }
+    
+    private func configureTooltips() {
+        guard let hint = TooltipService.shared.reportHint() else { return }
+        let tooltip = TooltipView.showOn(view: view, text: hint, offset: .zero)
+        formView.tableView.contentInset = UIEdgeInsets(top: tooltip.frame.height, left: 0, bottom: 0, right: 0)
+        Observable.merge([tooltip.rx.tap.asObservable(), tooltip.rx.close.asObservable()])
+        .subscribe(onNext: { [weak self] in
+            self?.onTooltipClose()
+            TooltipService.shared.markReportHintInteracted()
+        }).disposed(by: bag)
+    }
+    
+    private func onTooltipClose() {
+        UIView.animate(withDuration: DEFAULT_ANIMATION_DURATION, animations: {
+            self.formView.tableView.contentInset = UIEdgeInsets.zero
+        })
     }
     
     private func configureUIActions() {

@@ -49,7 +49,7 @@ final class EditReceiptView: UserInterface {
 
         configureUIActions()
         configureSubscribers()
-        configureTooltip()
+        configureTooltips()
         
         super.viewDidLoad()
     }
@@ -103,23 +103,16 @@ final class EditReceiptView: UserInterface {
         }
     }
     
-    private func configureTooltip() {
+    private func configureTooltips() {
         guard let text = presenter.tooltipText() else { return }
-        tooltip = TooltipView.showOn(view: view, text: text, offset: CGPoint.zero)
+        let tooltip = TooltipView.showOn(view: view, text: text, offset: .zero)
         formView.tableView.contentInset = UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0)
         
-        tooltip?.rx.tap
+        Observable.merge([tooltip.rx.tap.asObservable(), tooltip.rx.close.asObservable()])
             .do(onNext: { [weak self] in
                 self?.onTooltipClose()
             }).bind(to: presenter.tooltipTap)
             .disposed(by: bag)
-
-        tooltip?.rx.close
-            .do(onNext: { [weak self] in
-                self?.onTooltipClose()
-            }).bind(to: presenter.tooltipClose)
-            .disposed(by: bag)
-        
     }
     
     private func onTooltipClose() {

@@ -91,6 +91,7 @@ class TooltipView: UIView {
         textButton.titleLabel?.adjustsFontSizeToFitWidth = true
         textButton.contentHorizontalAlignment = .left
         textButton.titleLabel?.font = font
+        textButton.titleLabel?.lineBreakMode = .byWordWrapping
         
         closeButton = UIButton(frame: frames.closeButtonFrame)
         closeButton.setImage(#imageLiteral(resourceName: "close_circle"), for: .normal)
@@ -120,9 +121,9 @@ class TooltipView: UIView {
     }
     
     func updateFrame() {
-        let width = widthFromScreen ? UIScreen.main.bounds.width : superview!.bounds.width
-        self.frame = CGRect(x: self.offset.x, y: self.offset.y, width: width, height: TooltipView.HEIGHT)
         let frames = calculateFrames()
+        let width = widthFromScreen ? UIScreen.main.bounds.width : superview!.bounds.width
+        frame = CGRect(x: offset.x, y: offset.y, width: width, height: frames.textButtonFrame.height)
         textButton.frame = frames.textButtonFrame
         closeButton.frame = frames.closeButtonFrame
         image.frame = frames.imageFrame
@@ -137,7 +138,18 @@ class TooltipView: UIView {
         let width: CGFloat = image.image == nil ? 0 : TooltipView.HEIGHT - margin*2
         let closeButtonFrame = CGRect(x: bounds.width - TooltipView.HEIGHT - margin, y: 0, width: TooltipView.HEIGHT, height: TooltipView.HEIGHT)
         let imageFrame = CGRect(x: margin * 2, y: margin, width: width, height: TooltipView.HEIGHT - margin*2)
-        let textButtonFrame = CGRect(x: imageFrame.maxX + margin, y: 0, width: closeButtonFrame.origin.x - imageFrame.maxX + margin, height: TooltipView.HEIGHT)
+        
+        let textWidth = closeButtonFrame.origin.x - imageFrame.maxX + margin
+        let constraintSize = CGSize(width: textWidth, height: .greatestFiniteMagnitude)
+        let boundingBox = textButton?.titleLabel?.text?.boundingRect(
+            with: constraintSize,
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: UIFont.regular15],
+            context: nil
+        )
+        let textHeight = max(boundingBox?.height ?? 0, TooltipView.HEIGHT)
+
+        let textButtonFrame = CGRect(x: imageFrame.maxX + margin, y: 0, width: textWidth, height: textHeight)
         return (textButtonFrame, closeButtonFrame,imageFrame)
     }
 }

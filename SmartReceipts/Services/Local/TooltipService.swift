@@ -67,6 +67,14 @@ class TooltipService {
         return nil
     }
     
+    func reportHint() -> String? {
+        let inserts = UserDefaults.standard.integer(forKey: Keys.REMINDER_INSERTS)
+        if inserts == 0 && !marked(key: Keys.REPORT_HINT_INTERACTED) {
+            return LocalizedString("tooltip_first_report_hint")
+        }
+        return nil
+    }
+    
     func tooltipBackupReminder() -> String? {
         if needRemindByInserts() && needRemindByDays() {
             if UserDefaults.standard.bool(forKey: Keys.REMINDER_HAS_BACKUP) {
@@ -83,8 +91,7 @@ class TooltipService {
     
     func tooltipPrivacy() -> String? {
         let inserts = UserDefaults.standard.integer(forKey: Keys.REMINDER_INSERTS)
-        return (Locale.current
-            .isEurope || inserts > 0) && !privacyTooltipUsed() ? LocalizedString("tooltip_review_privacy") : nil
+        return (Locale.current.isEurope || inserts > 0) && !privacyTooltipUsed() ? LocalizedString("tooltip_review_privacy") : nil
     }
     
     @objc private func didInsert(_ notification: Notification) {
@@ -115,6 +122,10 @@ extension TooltipService {
     
     func markPrivacyDismissed() {
         mark(key: Keys.PRIVACY_DISSMISED)
+    }
+    
+    func markReportHintInteracted() {
+        mark(key: Keys.REPORT_HINT_INTERACTED)
     }
     
     func markBackupReminderDismissed() {
@@ -177,6 +188,7 @@ private extension TooltipService {
         static let REMINDER_INSERTS = "reminder.inserts"
         static let REMINDER_HAS_BACKUP = "reminder.has.backup"
         static let REMINDER_PLUS_BACKUP = "reminder.plus.backup"
+        static let REPORT_HINT_INTERACTED = "report.hint.interacted"
     }
     
     enum Constants {

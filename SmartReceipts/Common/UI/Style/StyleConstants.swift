@@ -21,6 +21,7 @@ extension UIFont {
     
     static var medium15: UIFont = .systemFont(ofSize: 15, weight: .medium)
     
+    static var regular15: UIFont = .systemFont(ofSize: 15, weight: .regular)
     static var regular16: UIFont = .systemFont(ofSize: 16, weight: .regular)
     static var regular13: UIFont = .systemFont(ofSize: 13, weight: .regular)
 }

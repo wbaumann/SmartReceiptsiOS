@@ -50,11 +50,9 @@ class TooltipPresenter {
         syncErrorTooltip = nil
         
         updateInsetsSubject.onNext(TOOLTIP_INSETS)
-        
-        let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
         let text = syncError.localizedDescription
         
-        syncErrorTooltip = TooltipView.showErrorOn(view: view, text: text, offset: offset)
+        syncErrorTooltip = TooltipView.showErrorOn(view: view, text: text)
         
         syncErrorTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
             self.syncErrorTooltip = nil
@@ -69,10 +67,10 @@ class TooltipPresenter {
     }
     
     func presentBackupReminderIfNeeded() {
+        guard let text = TooltipService.shared.tooltipBackupReminder(), reportTooltip == nil else { return }
         reminderTooltip?.removeFromSuperview()
         reminderTooltip = nil
         
-        guard let text = TooltipService.shared.tooltipBackupReminder(), reportTooltip == nil else { return }
         updateInsetsSubject.onNext(TOOLTIP_INSETS)
         let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
         
@@ -92,15 +90,32 @@ class TooltipPresenter {
         }).disposed(by: bag)
     }
     
-    func presentBackupPlusTooltip() {
+    func presentReportHint() {
+        guard let text = TooltipService.shared.reportHint(), reportTooltip == nil else { return }
         reminderTooltip?.removeFromSuperview()
         reminderTooltip = nil
         
-        guard let text = TooltipService.shared.backupPlusReminder(), reportTooltip == nil else { return }
         updateInsetsSubject.onNext(TOOLTIP_INSETS)
-        let offset = CGPoint(x: 0, y: TooltipView.HEIGHT)
         
-        reminderTooltip = TooltipView.showOn(view: view, text: text, image: #imageLiteral(resourceName: "info"), offset: offset)
+        reminderTooltip = TooltipView.showOn(view: view, text: text, image: #imageLiteral(resourceName: "info"))
+        guard let tooltip = reminderTooltip else { return }
+        Observable.merge([tooltip.rx.tap.asObservable(), tooltip.rx.close.asObservable()])
+            .subscribe(onNext: {
+                TooltipService.shared.markReportHintInteracted()
+                self.reminderTapSubject.onNext(())
+                self.reminderTooltip = nil
+                self.updateViewInsets()
+            }).disposed(by: bag)
+    }
+    
+    func presentBackupPlusTooltip() {
+        guard let text = TooltipService.shared.backupPlusReminder(), reportTooltip == nil else { return }
+        reminderTooltip?.removeFromSuperview()
+        reminderTooltip = nil
+        
+        updateInsetsSubject.onNext(TOOLTIP_INSETS)
+        
+        reminderTooltip = TooltipView.showOn(view: view, text: text, image: #imageLiteral(resourceName: "info"))
         reminderTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
             TooltipService.shared.markBackupPlusDismissed()
             self.reminderTapSubject.onNext(())
