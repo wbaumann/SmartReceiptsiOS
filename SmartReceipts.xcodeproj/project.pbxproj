@@ -367,6 +367,7 @@
 		71C2FD1220E7F71000DF068E /* NoOpBackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD1120E7F71000DF068E /* NoOpBackupProvider.swift */; };
 		71C2FD1420E7F73500DF068E /* GoogleDriveBackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD1320E7F73500DF068E /* GoogleDriveBackupProvider.swift */; };
 		71C525D12420A3C000285F0D /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C525D02420A3C000285F0D /* Locale+Extensions.swift */; };
+		71C6E3022426C01300D881A7 /* TooltipQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C6E3012426C01300D881A7 /* TooltipQuestion.swift */; };
 		71C7DAA522F8D83300740157 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C7DAA422F8D83300740157 /* UITableView+Extensions.swift */; };
 		71CC1B8521143BA0003D7056 /* BackupItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC1B8421143BA0003D7056 /* BackupItemView.swift */; };
 		71CC1B8721143BBC003D7056 /* BackupItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CC1B8621143BBC003D7056 /* BackupItemView.xib */; };
@@ -999,6 +1000,7 @@
 		71C2FD1320E7F73500DF068E /* GoogleDriveBackupProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveBackupProvider.swift; sourceTree = "<group>"; };
 		71C413D31EE6F826003CE891 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		71C525D02420A3C000285F0D /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Locale+Extensions.swift"; path = "../../../../Locale+Extensions.swift"; sourceTree = "<group>"; };
+		71C6E3012426C01300D881A7 /* TooltipQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipQuestion.swift; sourceTree = "<group>"; };
 		71C7DAA422F8D83300740157 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		71CC1B8421143BA0003D7056 /* BackupItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupItemView.swift; sourceTree = "<group>"; };
 		71CC1B8621143BBC003D7056 /* BackupItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackupItemView.xib; sourceTree = "<group>"; };
@@ -2132,6 +2134,7 @@
 			children = (
 				7165507C218CCAEB007B55FF /* CircleButton.swift */,
 				714104DD1FF43D7700C334C5 /* TooltipView.swift */,
+				71C6E3012426C01300D881A7 /* TooltipQuestion.swift */,
 				716D58A4219C8E1E00D6A6EA /* ImagePicker.swift */,
 				71D7FA392304B64A001F36E1 /* BorderedLabel.swift */,
 				714104D21FF43D7700C334C5 /* PendingHUDView.swift */,
@@ -3726,6 +3729,7 @@
 				71F468351EEEDB03009F6CE7 /* EditTripPresenter.swift in Sources */,
 				71AD67721F23FA810033B643 /* PredectiveTextCell.swift in Sources */,
 				EA7634AD1B3DB61900AD8737 /* WBPreferences.m in Sources */,
+				71C6E3022426C01300D881A7 /* TooltipQuestion.swift in Sources */,
 				7111ADA61F0EC38100DF77ED /* SettingsDisplayData.swift in Sources */,
 				EAE9DAE81AF8E97100F4FE76 /* DistanceColumn.m in Sources */,
 				71E8F3F71FA12452005BD447 /* OCRConfigurationPresenter.swift in Sources */,

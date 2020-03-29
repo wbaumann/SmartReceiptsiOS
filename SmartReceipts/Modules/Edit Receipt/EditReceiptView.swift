@@ -104,14 +104,41 @@ final class EditReceiptView: UserInterface {
     }
     
     private func configureTooltips() {
-        guard let text = presenter.tooltipText() else { return }
+        guard let text = presenter.tooltipText() else {
+            guard !WBPreferences.usePaymentMethods() && TooltipService.shared.paymentMethodHintAvailable() else { return }
+            let tooltip = TooltipQuestion.showOn(view: view, text: LocalizedString("pref_receipt_use_payment_methods_title"), offset: .zero)
+            formView.tableView.contentInset = UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0)
+            
+            tooltip.rx.yesAction
+                .subscribe(onNext: { [weak self] in
+                    WBPreferences.setUsePaymentMethods(true)
+                    self?.formView.checkHiddenPaymentMethod()
+                }).disposed(by: bag)
+            
+            Observable.merge([tooltip.rx.yesAction.asObservable(), tooltip.rx.noAction.asObservable()])
+                .subscribe(onNext: { [weak self] in
+                    self?.onTooltipClose()
+                }).disposed(by: bag)
+            
+            tooltip.rx.noAction
+                .subscribe(onNext: {
+                    TooltipService.shared.markReportHintInteracted()
+                }).disposed(by: bag)
+            
+            return
+        }
+        
         let tooltip = TooltipView.showOn(view: view, text: text, offset: .zero)
         formView.tableView.contentInset = UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0)
         
-        Observable.merge([tooltip.rx.tap.asObservable(), tooltip.rx.close.asObservable()])
+        Observable.merge([tooltip.rx.action.asObservable(), tooltip.rx.close.asObservable()])
             .do(onNext: { [weak self] in
                 self?.onTooltipClose()
-            }).bind(to: presenter.tooltipTap)
+            }).bind(to: presenter.tooltipClose)
+            .disposed(by: bag)
+        
+        tooltip.rx.action
+            .bind(to: presenter.tooltipTap)
             .disposed(by: bag)
     }
     

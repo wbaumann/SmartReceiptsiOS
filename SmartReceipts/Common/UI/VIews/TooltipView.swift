@@ -16,7 +16,6 @@ class TooltipView: UIView {
     
     static let HEIGHT: CGFloat = 72
     
-    fileprivate weak var scrollView: UIScrollView?
     fileprivate var textButton: UIButton!
     fileprivate var closeButton: UIButton!
     
@@ -26,7 +25,7 @@ class TooltipView: UIView {
     private var widthFromScreen = false
     private let bag = DisposeBag()
     
-    static func showOn(view: UIView, text: String, image: UIImage? = nil, offset: CGPoint = .zero, screenWidth: Bool = true) -> TooltipView {
+    class func showOn(view: UIView, text: String, image: UIImage? = nil, offset: CGPoint = .zero, screenWidth: Bool = true) -> TooltipView {
         let width = screenWidth ? UIScreen.main.bounds.width : view.bounds.width
         let frame = CGRect(x: offset.x, y: offset.y, width: width, height: HEIGHT)
         let tooltip = TooltipView(frame: frame)
@@ -101,13 +100,10 @@ class TooltipView: UIView {
         addSubview(closeButton)
         addSubview(image)
         
-        rx.close.subscribe(onNext: { [unowned self] in
-            self.close()
-        }).disposed(by: bag)
-        
-        rx.tap.subscribe(onNext: { [unowned self] in
-            self.close()
-        }).disposed(by: bag)
+        Observable.merge([rx.close.asObservable(), rx.action.asObservable()])
+            .subscribe(onNext: { [unowned self] in
+                self.close()
+            }).disposed(by: bag)
     }
     
     func close() {
@@ -155,7 +151,7 @@ class TooltipView: UIView {
 }
 
 extension Reactive where Base : TooltipView {
-    var tap: RxCocoa.ControlEvent<Swift.Void> { get { return base.textButton.rx.tap } }
+    var action: RxCocoa.ControlEvent<Swift.Void> { get { return base.textButton.rx.tap } }
     var close: RxCocoa.ControlEvent<Swift.Void> { get { return base.closeButton.rx.tap } }
 }
 
