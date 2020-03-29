@@ -73,6 +73,7 @@
 		7111ADAA1F0EC38100DF77ED /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADA41F0EC38100DF77ED /* SettingsView.swift */; };
 		7111ADAC1F0EC4AF00DF77ED /* SettingsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADAB1F0EC4AF00DF77ED /* SettingsFormView.swift */; };
 		711C1D6B1F45DD5E00F5553F /* FetchedModelAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711C1D6A1F45DD5E00F5553F /* FetchedModelAdapterTests.swift */; };
+		711DFF8A243140250068FFF1 /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711DFF89243140240068FFF1 /* Locale+Extensions.swift */; };
 		711E40541EE0D4ED00C043CF /* EditDistanceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */; };
 		711E40581EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */; };
 		711E81CF1FD45C5200708056 /* ReportGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E81CE1FD45C5200708056 /* ReportGenerator.swift */; };
@@ -366,7 +367,6 @@
 		71C2FD0F20E7F48C00DF068E /* BackupProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD0E20E7F48C00DF068E /* BackupProviderFactory.swift */; };
 		71C2FD1220E7F71000DF068E /* NoOpBackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD1120E7F71000DF068E /* NoOpBackupProvider.swift */; };
 		71C2FD1420E7F73500DF068E /* GoogleDriveBackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD1320E7F73500DF068E /* GoogleDriveBackupProvider.swift */; };
-		71C525D12420A3C000285F0D /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C525D02420A3C000285F0D /* Locale+Extensions.swift */; };
 		71C6E3022426C01300D881A7 /* TooltipQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C6E3012426C01300D881A7 /* TooltipQuestion.swift */; };
 		71C7DAA522F8D83300740157 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C7DAA422F8D83300740157 /* UITableView+Extensions.swift */; };
 		71CC1B8521143BA0003D7056 /* BackupItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC1B8421143BA0003D7056 /* BackupItemView.swift */; };
@@ -714,6 +714,7 @@
 		7111ADAB1F0EC4AF00DF77ED /* SettingsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFormView.swift; sourceTree = "<group>"; };
 		711B072E1FA11E6C000ED7E5 /* ScansPurchaseTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScansPurchaseTrackerTests.swift; sourceTree = "<group>"; };
 		711C1D6A1F45DD5E00F5553F /* FetchedModelAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedModelAdapterTests.swift; sourceTree = "<group>"; };
+		711DFF89243140240068FFF1 /* Locale+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
 		711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceFormView.swift; sourceTree = "<group>"; };
 		711E40571EE0DD1B00C043CF /* NSDecimalNumber+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Extensions.swift"; sourceTree = "<group>"; };
 		711E81CE1FD45C5200708056 /* ReportGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGenerator.swift; sourceTree = "<group>"; };
@@ -999,7 +1000,6 @@
 		71C2FD1120E7F71000DF068E /* NoOpBackupProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoOpBackupProvider.swift; sourceTree = "<group>"; };
 		71C2FD1320E7F73500DF068E /* GoogleDriveBackupProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveBackupProvider.swift; sourceTree = "<group>"; };
 		71C413D31EE6F826003CE891 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
-		71C525D02420A3C000285F0D /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Locale+Extensions.swift"; path = "../../../../Locale+Extensions.swift"; sourceTree = "<group>"; };
 		71C6E3012426C01300D881A7 /* TooltipQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipQuestion.swift; sourceTree = "<group>"; };
 		71C7DAA422F8D83300740157 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		71CC1B8421143BA0003D7056 /* BackupItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupItemView.swift; sourceTree = "<group>"; };
@@ -2550,8 +2550,8 @@
 				71F9989821AC4E4200320256 /* Array+Extensions.swift */,
 				71939E9921D14FD900A5BB27 /* AppDelegate+Extensions.swift */,
 				713572B122F794340069C9F5 /* Reusable+Extensions.swift */,
+				711DFF89243140240068FFF1 /* Locale+Extensions.swift */,
 				71D7596823EB3B8A00EBFD45 /* NotificationName+Extensions.swift */,
-				71C525D02420A3C000285F0D /* Locale+Extensions.swift */,
 				71D7FA352304AA73001F36E1 /* UI */,
 			);
 			path = Extensions;
@@ -3659,7 +3659,6 @@
 				EA888A7C1AFA5C5900DF2AE6 /* Database+Receipts.m in Sources */,
 				A7F05BB21CFC15760079F1AD /* ExchangedTaxed.swift in Sources */,
 				84A5834E18EDF897003A464D /* WBReceiptAndIndex.m in Sources */,
-				71C525D12420A3C000285F0D /* Locale+Extensions.swift in Sources */,
 				71FB1D401F195D0D00742FF5 /* PaymentMethodsInteractor.swift in Sources */,
 				EA10AD2F1B18B22000F2BCBB /* Database+Import.m in Sources */,
 				71F468341EEEDB03009F6CE7 /* EditTripInteractor.swift in Sources */,
@@ -3739,6 +3738,7 @@
 				A78214F71CFFE60000FD644A /* OpenExchangeRates.swift in Sources */,
 				71E890A422EF6D02002957CC /* AccountViewModel.swift in Sources */,
 				713572AC22F6F1CA0069C9F5 /* ModuleAssembly.swift in Sources */,
+				711DFF8A243140250068FFF1 /* Locale+Extensions.swift in Sources */,
 				71C7DAA522F8D83300740157 /* UITableView+Extensions.swift in Sources */,
 				7187150A225022040061D493 /* FeedbackComposer.swift in Sources */,
 				714104E31FF43D7700C334C5 /* WBActionSheetPicker.m in Sources */,
