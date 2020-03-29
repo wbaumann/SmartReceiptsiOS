@@ -28,6 +28,7 @@ class EditReceiptPresenter: Presenter {
     let settingsTap = PublishSubject<Void>()
     let tooltipClose = PublishSubject<Void>()
     let tooltipTap = PublishSubject<Void>()
+    let paymentMehtodInsert = PublishSubject<Void>()
     
     private let bag = DisposeBag()
     

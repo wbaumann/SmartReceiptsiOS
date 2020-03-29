@@ -86,7 +86,7 @@ final class ColumnsView: UserInterface, WBDynamicPickerDelegate {
     func configureRx() {
         tableView.rx.itemMoved
             .subscribe(onNext: { [unowned self] (from: IndexPath, to: IndexPath) in
-                var newColumns = self.displayData.columns.value
+                let newColumns = self.displayData.columns.value
                 
                 let columnOne = newColumns[from.row]
                 let columnTwo = newColumns[to.row]

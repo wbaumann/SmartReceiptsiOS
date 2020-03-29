@@ -21,36 +21,45 @@ class EditReceiptInteractor: Interactor {
     var receiptFilePath: URL?
     let bag = DisposeBag()
     
-    required init(authService: AuthServiceInterface,
-                  scansPurchaseTracker: ScansPurchaseTracker,
-                  tooltipService: TooltipService)
-    {
+    required init(
+        authService: AuthServiceInterface,
+        scansPurchaseTracker: ScansPurchaseTracker,
+        tooltipService: TooltipService
+    ) {
         self.authService = authService
         self.scansPurchaseTracker = scansPurchaseTracker
         self.tooltipService = tooltipService
     }
     
     convenience required init() {
-        self.init(authService: AuthService.shared,
-                  scansPurchaseTracker: ScansPurchaseTracker.shared,
-                  tooltipService: TooltipService.shared)
+        self.init(
+            authService: AuthService.shared,
+            scansPurchaseTracker: ScansPurchaseTracker.shared,
+            tooltipService: TooltipService.shared
+        )
     }
     
-    
     func configureSubscribers() {
-        presenter.addReceiptSubject.subscribe(onNext: { [unowned self] receipt in
-            Logger.debug("Added Receipt: \(receipt.name)")
-            AnalyticsManager.sharedManager.record(event: Event.receiptsPersistNewReceipt())
-            self.saveImage(to: receipt)
-            self.save(receipt: receipt)
-        }).disposed(by: bag)
+        presenter.addReceiptSubject
+            .subscribe(onNext: { [unowned self] receipt in
+                Logger.debug("Added Receipt: \(receipt.name)")
+                AnalyticsManager.sharedManager.record(event: Event.receiptsPersistNewReceipt())
+                self.saveImage(to: receipt)
+                self.save(receipt: receipt)
+            }).disposed(by: bag)
         
-        presenter.updateReceiptSubject.subscribe(onNext: { [unowned self] receipt in
-            Logger.debug("Updated Receipt: \(receipt.name)")
-            AnalyticsManager.sharedManager.record(event: Event.receiptsPersistUpdateReceipt())
-            self.replaceImageIfNeeded(receipt: receipt)
-            self.save(receipt: receipt)
-        }).disposed(by: bag)
+        presenter.updateReceiptSubject
+            .subscribe(onNext: { [unowned self] receipt in
+                Logger.debug("Updated Receipt: \(receipt.name)")
+                AnalyticsManager.sharedManager.record(event: Event.receiptsPersistUpdateReceipt())
+                self.replaceImageIfNeeded(receipt: receipt)
+                self.save(receipt: receipt)
+            }).disposed(by: bag)
+        
+        presenter.paymentMehtodInsert
+            .subscribe(onNext: { [weak self] in
+                self?.insertPaymentMethods()
+            }).disposed(by: bag)
     }
     
     func tooltipText() -> String? {
@@ -65,6 +74,27 @@ class EditReceiptInteractor: Interactor {
             return LocalizedString("ocr_informational_tooltip_configure_text")
         }
         return nil
+    }
+    
+    private func insertPaymentMethods() {
+        let csvColumns = Database.sharedInstance()?.allCSVColumns() as! [ReceiptColumn]
+        let pdfColumns = Database.sharedInstance()?.allPDFColumns() as! [ReceiptColumn]
+        
+        let columnName = LocalizedString("column_item_payment_method")
+        let columnType = 27
+        
+        if !csvColumns.contains(where: { $0.isKind(of: ReceiptColumnPaymentMethod.self) }) {
+            let index = Database.sharedInstance()!.nextCSVColumnObjectID()
+            let paymentMethodColumn = ReceiptColumnPaymentMethod(index: index,type: columnType, name: columnName)
+            Database.sharedInstance()!.addCSVColumn(paymentMethodColumn)
+        }
+        
+        if !pdfColumns.contains(where: { $0.isKind(of: ReceiptColumnPaymentMethod.self) }) {
+            let index = Database.sharedInstance()!.nextPDFColumnObjectID()
+            let paymentMethodColumn = ReceiptColumnPaymentMethod(index: index,type: columnType, name: columnName)
+            Database.sharedInstance()!.addPDFColumn(paymentMethodColumn)
+        }
+        
     }
     
     private func save(receipt: WBReceipt) {

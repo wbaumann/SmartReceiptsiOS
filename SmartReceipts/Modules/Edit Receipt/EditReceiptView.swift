@@ -109,12 +109,6 @@ final class EditReceiptView: UserInterface {
             let tooltip = TooltipQuestion.showOn(view: view, text: LocalizedString("pref_receipt_use_payment_methods_title"), offset: .zero)
             formView.tableView.contentInset = UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0)
             
-            tooltip.rx.yesAction
-                .subscribe(onNext: { [weak self] in
-                    WBPreferences.setUsePaymentMethods(true)
-                    self?.formView.checkHiddenPaymentMethod()
-                }).disposed(by: bag)
-            
             Observable.merge([tooltip.rx.yesAction.asObservable(), tooltip.rx.noAction.asObservable()])
                 .subscribe(onNext: { [weak self] in
                     self?.onTooltipClose()
@@ -123,6 +117,13 @@ final class EditReceiptView: UserInterface {
             tooltip.rx.noAction
                 .subscribe(onNext: {
                     TooltipService.shared.markReportHintInteracted()
+                }).disposed(by: bag)
+            
+            tooltip.rx.yesAction
+                .subscribe(onNext: { [weak self] in
+                    WBPreferences.setUsePaymentMethods(true)
+                    self?.formView.checkHiddenPaymentMethod()
+                    self?.presenter.paymentMehtodInsert.onNext()
                 }).disposed(by: bag)
             
             return

@@ -53,3 +53,5 @@
 
 #import "InputValidation.h"
 
+#import "ReceiptColumnPaymentMethod.h"
+
