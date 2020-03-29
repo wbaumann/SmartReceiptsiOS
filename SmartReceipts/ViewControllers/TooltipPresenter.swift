@@ -54,7 +54,7 @@ class TooltipPresenter {
         
         syncErrorTooltip = TooltipView.showErrorOn(view: view, text: text)
         
-        syncErrorTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
+        syncErrorTooltip?.rx.action.subscribe(onNext: { [unowned self] in
             self.syncErrorTooltip = nil
             self.errorTapSubject.onNext(syncError)
             self.updateViewInsets()
@@ -76,7 +76,7 @@ class TooltipPresenter {
         
         reminderTooltip = TooltipView.showOn(view: view, text: text, image: #imageLiteral(resourceName: "info"), offset: offset)
         
-        reminderTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
+        reminderTooltip?.rx.action.subscribe(onNext: { [unowned self] in
             TooltipService.shared.markBackupReminderDismissed()
             self.reminderTapSubject.onNext(())
             self.reminderTooltip = nil
@@ -99,7 +99,7 @@ class TooltipPresenter {
         
         reminderTooltip = TooltipView.showOn(view: view, text: text, image: #imageLiteral(resourceName: "info"))
         guard let tooltip = reminderTooltip else { return }
-        Observable.merge([tooltip.rx.tap.asObservable(), tooltip.rx.close.asObservable()])
+        Observable.merge([tooltip.rx.action.asObservable(), tooltip.rx.close.asObservable()])
             .subscribe(onNext: {
                 TooltipService.shared.markReportHintInteracted()
                 self.reminderTapSubject.onNext(())
@@ -116,7 +116,7 @@ class TooltipPresenter {
         updateInsetsSubject.onNext(TOOLTIP_INSETS)
         
         reminderTooltip = TooltipView.showOn(view: view, text: text, image: #imageLiteral(resourceName: "info"))
-        reminderTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
+        reminderTooltip?.rx.action.subscribe(onNext: { [unowned self] in
             TooltipService.shared.markBackupPlusDismissed()
             self.reminderTapSubject.onNext(())
             self.reminderTooltip = nil
@@ -140,7 +140,7 @@ class TooltipPresenter {
         
         reportTooltip = TooltipView.showOn(view: view, text: text)
         
-        reportTooltip?.rx.tap.subscribe(onNext: { [unowned self] in
+        reportTooltip?.rx.action.subscribe(onNext: { [unowned self] in
             TooltipService.shared.markMoveToGenerateDismiss()
             self.generateTapSubject.onNext(())
             self.reportTooltip = nil

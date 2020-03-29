@@ -75,18 +75,20 @@ class TooltipService {
         return nil
     }
     
+    func paymentMethodHintAvailable() -> Bool {
+        return !marked(key: Keys.PAYMENT_METHOD_HINT_CLOSED)
+    }
+    
     func tooltipBackupReminder() -> String? {
-        if needRemindByInserts() && needRemindByDays() {
-            if UserDefaults.standard.bool(forKey: Keys.REMINDER_HAS_BACKUP) {
-                let timeInterval = UserDefaults.standard.double(forKey: Keys.REMINDER_DATE)
-                let backupDate = Date(timeIntervalSince1970: timeInterval)
-                let days = Date().daysDifference(date: backupDate)
-                return String(format: LocalizedString("tooltip_backup_info_message"), days)
-            } else {
-                return LocalizedString("tooltip_no_backups_info_message")
-            }
+        guard needRemindByInserts() && needRemindByDays() else { return nil }
+        if UserDefaults.standard.bool(forKey: Keys.REMINDER_HAS_BACKUP) {
+            let timeInterval = UserDefaults.standard.double(forKey: Keys.REMINDER_DATE)
+            let backupDate = Date(timeIntervalSince1970: timeInterval)
+            let days = Date().daysDifference(date: backupDate)
+            return String(format: LocalizedString("tooltip_backup_info_message"), days)
+        } else {
+            return LocalizedString("tooltip_no_backups_info_message")
         }
-        return nil
     }
     
     func tooltipPrivacy() -> String? {
@@ -134,6 +136,10 @@ extension TooltipService {
     
     func markBackupPlusDismissed() {
         mark(key: Keys.REMINDER_PLUS_BACKUP)
+    }
+    
+    func markPaymentMethodHintClosed() {
+        mark(key: Keys.PAYMENT_METHOD_HINT_CLOSED)
     }
     
     func markBackup() {
@@ -189,6 +195,7 @@ private extension TooltipService {
         static let REMINDER_HAS_BACKUP = "reminder.has.backup"
         static let REMINDER_PLUS_BACKUP = "reminder.plus.backup"
         static let REPORT_HINT_INTERACTED = "report.hint.interacted"
+        static let PAYMENT_METHOD_HINT_CLOSED = "payment.method.hint.close"
     }
     
     enum Constants {

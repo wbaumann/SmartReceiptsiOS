@@ -47,7 +47,7 @@ final class EditTripView: UserInterface {
         guard let hint = TooltipService.shared.reportHint() else { return }
         let tooltip = TooltipView.showOn(view: view, text: hint, offset: .zero)
         formView.tableView.contentInset = UIEdgeInsets(top: tooltip.frame.height, left: 0, bottom: 0, right: 0)
-        Observable.merge([tooltip.rx.tap.asObservable(), tooltip.rx.close.asObservable()])
+        Observable.merge([tooltip.rx.action.asObservable(), tooltip.rx.close.asObservable()])
         .subscribe(onNext: { [weak self] in
             self?.onTooltipClose()
             TooltipService.shared.markReportHintInteracted()

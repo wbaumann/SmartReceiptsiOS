@@ -82,7 +82,7 @@ final class TripsView: FetchedTableViewController {
         tableView.contentInset = UIEdgeInsets(top: TooltipView.HEIGHT, left: 0, bottom: 0, right: 0)
 
         weak var weakTable = tableView
-        tooltipView.rx.tap
+        tooltipView.rx.action
             .do(onNext: {
                 TooltipService.shared.markPrivacyOpened()
                 weakTable?.contentInset = .zero

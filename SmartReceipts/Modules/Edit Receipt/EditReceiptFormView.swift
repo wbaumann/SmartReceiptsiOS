@@ -292,7 +292,7 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
             row.title = LocalizedString("payment_method")
             row.options = Database.sharedInstance().allPaymentMethodsAsStrings()
             row.value = self.receipt.paymentMethod.method
-            row.hidden = Condition.init(booleanLiteral: !WBPreferences.usePaymentMethods())
+            row.hidden = Condition.function([], { _ in !WBPreferences.usePaymentMethods() })
             row.buttonTitle = LocalizedString("manage_payment_methods").uppercased()
             self.managePaymentMethodsTap = row.buttonTap
         }.onChange({ [unowned self] row in
@@ -351,6 +351,10 @@ class EditReceiptFormView: FormViewController, QuickAlertPresenter {
     func validate() {
         receipt.trip = trip
         receiptSubject.onNext(receipt)
+    }
+    
+    func checkHiddenPaymentMethod() {
+        form.rowBy(tag: PAYMENT_METHODS_ROW_TAG)?.evaluateHidden()
     }
     
     func makeNameFirstResponder() {

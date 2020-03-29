@@ -42,7 +42,7 @@ class TripTabBarViewController: TabBarViewController {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
-        case Constants.unselectableTag: return
+        case TabBarViewController.Constants.unselectableTag: return
         case Constants.actionTag: showMoreSheet(); return
         default: break
         }
