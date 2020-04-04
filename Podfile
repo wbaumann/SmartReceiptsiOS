@@ -20,6 +20,7 @@ def pods
     pod 'lottie-ios'
     pod 'Eureka'
     pod 'Toaster'
+    pod 'Charts'
     
     # Rx
     pod 'RxSwift'

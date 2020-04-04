@@ -10,6 +10,9 @@ PODS:
   - AWSCore (2.12.3)
   - AWSS3 (2.12.3):
     - AWSCore (= 2.12.3)
+  - Charts (3.4.0):
+    - Charts/Core (= 3.4.0)
+  - Charts/Core (3.4.0)
   - CocoaLumberjack/Core (3.6.0)
   - CocoaLumberjack/Swift (3.6.0):
     - CocoaLumberjack/Core
@@ -161,6 +164,7 @@ DEPENDENCIES:
   - Alamofire
   - AWSCognito
   - AWSS3
+  - Charts
   - CocoaLumberjack/Swift
   - Crashlytics
   - Cuckoo
@@ -196,6 +200,7 @@ SPEC REPOS:
     - AWSCognito
     - AWSCore
     - AWSS3
+    - Charts
     - CocoaLumberjack
     - Crashlytics
     - Cuckoo
@@ -243,6 +248,7 @@ SPEC CHECKSUMS:
   AWSCognito: 32fb164c537b27794ce6f049e2d036f9e915f896
   AWSCore: a4b4aeb414bdfd55a5e8879adb4985c46da157d6
   AWSS3: 511a7b646572686c7e193aa19bd6a5cc43ec2977
+  Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Cuckoo: 4045c5a8ce378c919c20c5ff3d6dd11ded0ec699
@@ -284,6 +290,6 @@ SPEC CHECKSUMS:
   Viperit: a3dac14fdb04cd6fefe5fe44b5b6a4931a6d05da
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: df3944927022ce33c7fe88007c99355bc33988e6
+PODFILE CHECKSUM: 95f42fc1e3597f4acc2e77e6a33756acb6055554
 
 COCOAPODS: 1.8.4

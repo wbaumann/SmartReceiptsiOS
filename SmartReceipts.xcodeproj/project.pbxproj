@@ -72,6 +72,11 @@
 		7111ADA91F0EC38100DF77ED /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADA31F0EC38100DF77ED /* SettingsRouter.swift */; };
 		7111ADAA1F0EC38100DF77ED /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADA41F0EC38100DF77ED /* SettingsView.swift */; };
 		7111ADAC1F0EC4AF00DF77ED /* SettingsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111ADAB1F0EC4AF00DF77ED /* SettingsFormView.swift */; };
+		71136ACF243899A2003CFC67 /* GraphsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71136ACB243899A2003CFC67 /* GraphsRouter.swift */; };
+		71136AD0243899A2003CFC67 /* GraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71136ACC243899A2003CFC67 /* GraphsViewController.swift */; };
+		71136AD1243899A2003CFC67 /* GraphsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71136ACD243899A2003CFC67 /* GraphsAssembly.swift */; };
+		71136AD2243899A2003CFC67 /* GraphsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71136ACE243899A2003CFC67 /* GraphsViewModel.swift */; };
+		71136AD424389CC2003CFC67 /* GraphsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71136AD324389CC2003CFC67 /* GraphsViewController.storyboard */; };
 		711C1D6B1F45DD5E00F5553F /* FetchedModelAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711C1D6A1F45DD5E00F5553F /* FetchedModelAdapterTests.swift */; };
 		711DFF8A243140250068FFF1 /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711DFF89243140240068FFF1 /* Locale+Extensions.swift */; };
 		711E40541EE0D4ED00C043CF /* EditDistanceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711E40531EE0D4ED00C043CF /* EditDistanceFormView.swift */; };
@@ -712,6 +717,11 @@
 		7111ADA31F0EC38100DF77ED /* SettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		7111ADA41F0EC38100DF77ED /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7111ADAB1F0EC4AF00DF77ED /* SettingsFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFormView.swift; sourceTree = "<group>"; };
+		71136ACB243899A2003CFC67 /* GraphsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsRouter.swift; sourceTree = "<group>"; };
+		71136ACC243899A2003CFC67 /* GraphsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsViewController.swift; sourceTree = "<group>"; };
+		71136ACD243899A2003CFC67 /* GraphsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsAssembly.swift; sourceTree = "<group>"; };
+		71136ACE243899A2003CFC67 /* GraphsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsViewModel.swift; sourceTree = "<group>"; };
+		71136AD324389CC2003CFC67 /* GraphsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GraphsViewController.storyboard; sourceTree = "<group>"; };
 		711B072E1FA11E6C000ED7E5 /* ScansPurchaseTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScansPurchaseTrackerTests.swift; sourceTree = "<group>"; };
 		711C1D6A1F45DD5E00F5553F /* FetchedModelAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedModelAdapterTests.swift; sourceTree = "<group>"; };
 		711DFF89243140240068FFF1 /* Locale+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
@@ -1477,6 +1487,18 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
+		71011CE624351860008526FA /* Graphs */ = {
+			isa = PBXGroup;
+			children = (
+				71136AD324389CC2003CFC67 /* GraphsViewController.storyboard */,
+				71136ACC243899A2003CFC67 /* GraphsViewController.swift */,
+				71136ACE243899A2003CFC67 /* GraphsViewModel.swift */,
+				71136ACB243899A2003CFC67 /* GraphsRouter.swift */,
+				71136ACD243899A2003CFC67 /* GraphsAssembly.swift */,
+			);
+			path = Graphs;
+			sourceTree = "<group>";
+		};
 		710BCA0123B021C600ACF50B /* TripTitleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2039,6 +2061,7 @@
 				71E8F3EE1FA12423005BD447 /* OCR Configuration */,
 				716F07D62034AFB400166D63 /* Backup */,
 				71E8909C22EF6CF3002957CC /* Account */,
+				71011CE624351860008526FA /* Graphs */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -3154,6 +3177,7 @@
 				7190D44F1EE88CC40081CB22 /* GenerateReport.storyboard in Resources */,
 				4D29DE8E216CEDBA00591F7B /* SharedLocalizable.strings in Resources */,
 				717658B323C66BE100753B5C /* lamp_lottie.json in Resources */,
+				71136AD424389CC2003CFC67 /* GraphsViewController.storyboard in Resources */,
 				EA1309A51B50282A0045FDDE /* PDFReportTable.xib in Resources */,
 				71628C23204EFB7F0032EEB7 /* NumberKeyboard.xib in Resources */,
 				714DE8A02051C83F0066EA6F /* HorizontalPickerCell.xib in Resources */,
@@ -3225,6 +3249,7 @@
 				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
@@ -3255,6 +3280,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
@@ -3435,6 +3461,7 @@
 				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
@@ -3468,6 +3495,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
@@ -3741,14 +3769,17 @@
 				711DFF8A243140250068FFF1 /* Locale+Extensions.swift in Sources */,
 				71C7DAA522F8D83300740157 /* UITableView+Extensions.swift in Sources */,
 				7187150A225022040061D493 /* FeedbackComposer.swift in Sources */,
+				71136AD2243899A2003CFC67 /* GraphsViewModel.swift in Sources */,
 				714104E31FF43D7700C334C5 /* WBActionSheetPicker.m in Sources */,
 				71ABEBE022FCC70700F07596 /* SubscriptionCell.swift in Sources */,
 				718AAC112120382E00290183 /* SyncableTableCell.swift in Sources */,
 				EAE9DAFA1AF8EAC000F4FE76 /* DistanceDateColumn.m in Sources */,
 				716D58A5219C8E1E00D6A6EA /* ImagePicker.swift in Sources */,
 				EA8ABE421B1A1D1700DBFA29 /* Database+Categories.m in Sources */,
+				71136ACF243899A2003CFC67 /* GraphsRouter.swift in Sources */,
 				71E2E58120E0132B00BDE501 /* GoogleDriveService.swift in Sources */,
 				71572D881F15EA41001A1301 /* ColumnsPresenter.swift in Sources */,
+				71136AD1243899A2003CFC67 /* GraphsAssembly.swift in Sources */,
 				710BCA0523B021FF00ACF50B /* TripTitleView.swift in Sources */,
 				EAE9DAFD1AF8EAD100F4FE76 /* DistanceCommentColumn.m in Sources */,
 				EA3C96911AEBA50500A2A5F9 /* ReportPDFTable.m in Sources */,
@@ -3829,6 +3860,7 @@
 				EA07BF661AF51854004D17F6 /* FetchedModelAdapter.m in Sources */,
 				712CE89B232026C600051B5F /* Database+Organizations.swift in Sources */,
 				716138C51FD1CA6700C73FB9 /* PDFPageRenderView.swift in Sources */,
+				71136AD0243899A2003CFC67 /* GraphsViewController.swift in Sources */,
 				71FE9FF41F477F620043E7B4 /* FetchedTableViewController.swift in Sources */,
 				71437D6A213BD29600EC8542 /* CustomErrors.swift in Sources */,
 				EA07BF561AF4D129004D17F6 /* DatabaseQueryBuilder.m in Sources */,
