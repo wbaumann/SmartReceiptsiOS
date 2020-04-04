@@ -14,6 +14,7 @@ class FeatureFlags {
     static var organizationsSupport = Feature(true)
     static var useProdEndpoints = Feature(true)
     static var driveAppDataFolder = Feature(true)
+    static var graphs = Feature(true)
 }
 
 class Feature {
