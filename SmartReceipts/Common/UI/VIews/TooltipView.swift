@@ -143,7 +143,7 @@ class TooltipView: UIView {
             attributes: [.font: UIFont.regular15],
             context: nil
         )
-        let textHeight = max(boundingBox?.height ?? 0, TooltipView.HEIGHT)
+        let textHeight = max((boundingBox?.height ?? 0) + UI_MARGIN_16, TooltipView.HEIGHT)
 
         let textButtonFrame = CGRect(x: imageFrame.maxX + margin, y: 0, width: textWidth, height: textHeight)
         return (textButtonFrame, closeButtonFrame,imageFrame)
