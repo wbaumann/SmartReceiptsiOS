@@ -21,7 +21,7 @@ class ColumnsInteractor: Interactor {
     }
     
     func addColumn(_ column: Column, isCSV: Bool) {
-        let db = Database.sharedInstance()!
+        let db = Database.sharedInstance()
         let orderId = isCSV ? db.nextCustomOrderIdForCSVColumn() : db.nextCustomOrderIdForPDFColumn()
         column.customOrderId = orderId
         let result = isCSV ? db.addCSVColumn(column) : db.addPDFColumn(column)
@@ -29,13 +29,13 @@ class ColumnsInteractor: Interactor {
     }
     
     func removeColumn(_ column: Column, isCSV: Bool) {
-        let db = Database.sharedInstance()!
+        let db = Database.sharedInstance()
         let result = isCSV ? db.removeCSVColumn(column) : db.removePDFColumn(column)
         Logger.info("Remove Column '\(column.name!)'. Result: \(result)")
     }
     
     func reorder(columnLeft: Column, columnRight: Column, isCSV: Bool) {
-        let db = Database.sharedInstance()!
+        let db = Database.sharedInstance()
         let result = isCSV
             ? db.reorderCSVColumn(columnLeft, withCSVColumn: columnRight)
             : db.reorderPDFColumn(columnLeft, withPDFColumn: columnRight)

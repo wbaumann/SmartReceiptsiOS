@@ -47,7 +47,7 @@ class ReportAssetsGenerator: NSObject {
         if generate.fullPdfReport {
             Logger.info("generate.fullPDF")
             clearPath(pdfPath!)
-            let generator = TripFullPDFGenerator(trip: trip, database: db!)
+            let generator = TripFullPDFGenerator(trip: trip, database: db)
             
             if generator.generateTo(path: pdfPath!) {
                 files.append(pdfPath!)
@@ -61,7 +61,7 @@ class ReportAssetsGenerator: NSObject {
         if generate.pdfReportWithoutTable {
             Logger.info("generate.imagesPDF")
             clearPath(pdfImagesPath!)
-            let generator = TripImagesPDFGenerator(trip: trip, database: db!)
+            let generator = TripImagesPDFGenerator(trip: trip, database: db)
             if generator.generateTo(path: pdfImagesPath!) {
                 files.append(pdfImagesPath!)
             } else {
@@ -73,7 +73,7 @@ class ReportAssetsGenerator: NSObject {
         if generate.csvFile {
             Logger.info("generate.csv")
             clearPath(csvPath!)
-            let generator = TripCSVGenerator(trip: trip, database: db!)
+            let generator = TripCSVGenerator(trip: trip, database: db)
             if generator.generateTo(path: csvPath!) {
                 files.append(csvPath!)
             } else {
@@ -122,7 +122,7 @@ class ReportAssetsGenerator: NSObject {
     private func receipts() -> [WBReceipt] {
         let db = Database.sharedInstance()
         return WBReceiptAndIndex
-            .receiptsAndIndices(fromReceipts: db?.allReceipts(for: trip), filteredWith: {  WBReportUtils.filterOutReceipt($0) })!
+            .receiptsAndIndices(fromReceipts: db.allReceipts(for: trip), filteredWith: {  WBReportUtils.filterOutReceipt($0) })!
             .compactMap { ($0 as? WBReceiptAndIndex)?.receipt() }
     }
     

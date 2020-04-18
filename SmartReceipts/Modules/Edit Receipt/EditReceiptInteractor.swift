@@ -77,22 +77,22 @@ class EditReceiptInteractor: Interactor {
     }
     
     private func insertPaymentMethods() {
-        let csvColumns = Database.sharedInstance()?.allCSVColumns() as! [ReceiptColumn]
-        let pdfColumns = Database.sharedInstance()?.allPDFColumns() as! [ReceiptColumn]
+        let csvColumns = Database.sharedInstance().allCSVColumns() as! [ReceiptColumn]
+        let pdfColumns = Database.sharedInstance().allPDFColumns() as! [ReceiptColumn]
         
         let columnName = LocalizedString("column_item_payment_method")
         let columnType = 27
         
         if !csvColumns.contains(where: { $0.isKind(of: ReceiptColumnPaymentMethod.self) }) {
-            let index = Database.sharedInstance()!.nextCSVColumnObjectID()
+            let index = Database.sharedInstance().nextCSVColumnObjectID()
             let paymentMethodColumn = ReceiptColumnPaymentMethod(index: index,type: columnType, name: columnName)
-            Database.sharedInstance()!.addCSVColumn(paymentMethodColumn)
+            Database.sharedInstance().addCSVColumn(paymentMethodColumn)
         }
         
         if !pdfColumns.contains(where: { $0.isKind(of: ReceiptColumnPaymentMethod.self) }) {
-            let index = Database.sharedInstance()!.nextPDFColumnObjectID()
+            let index = Database.sharedInstance().nextPDFColumnObjectID()
             let paymentMethodColumn = ReceiptColumnPaymentMethod(index: index,type: columnType, name: columnName)
-            Database.sharedInstance()!.addPDFColumn(paymentMethodColumn)
+            Database.sharedInstance().addPDFColumn(paymentMethodColumn)
         }
         
     }

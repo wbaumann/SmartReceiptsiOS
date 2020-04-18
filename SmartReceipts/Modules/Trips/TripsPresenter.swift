@@ -61,7 +61,7 @@ class TripsPresenter: Presenter {
 extension TripsPresenter: TripsModuleInterface {
     var tripSelected: Observable<WBTrip> {
         return tripSelectedSubject
-            .do(onNext: { Database.sharedInstance()?.refreshPriceForTrip($0) })
+            .do(onNext: { Database.sharedInstance().refreshPriceForTrip($0) })
     }
 }
 

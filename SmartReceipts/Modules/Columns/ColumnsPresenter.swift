@@ -43,7 +43,7 @@ class ColumnsPresenter: Presenter {
     }
     
     func nextObjectID() -> Int {
-        let db = Database.sharedInstance()!
+        let db = Database.sharedInstance()
         return isCSV ? db.nextCSVColumnObjectID() : db.nextPDFColumnObjectID()
     }
     

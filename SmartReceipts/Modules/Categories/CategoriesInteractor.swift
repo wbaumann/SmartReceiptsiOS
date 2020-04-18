@@ -30,7 +30,7 @@ class CategoriesInteractor: Interactor {
     }
     
     func save(category: WBCategory, update: Bool) {
-        let db = Database.sharedInstance()!
+        let db = Database.sharedInstance()
         
         if !update {
             category.customOrderId = db.nextCustomOrderIdForCategory()

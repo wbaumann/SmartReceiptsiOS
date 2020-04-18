@@ -104,7 +104,7 @@ final class ReceiptsView: FetchedTableViewController {
     override func contentChanged() {
         super.contentChanged()
         reloadHeaders()
-        subtitleLabel.text = String(format: LocalizedString("next_id"), Database.sharedInstance()!.nextReceiptID())
+        subtitleLabel.text = String(format: LocalizedString("next_id"), Database.sharedInstance().nextReceiptID())
     }
     
     override func delete(object: Any!, at indexPath: IndexPath) {

@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,13 +15,50 @@
                     <view key="view" contentMode="scaleToFill" id="v90-X0-2wF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIg-8f-4et" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="175.5" width="374" height="180"/>
+                                <color key="backgroundColor" red="0.95294117647058818" green="0.94901960784313721" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="RjN-Zn-MRl"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yA2-BO-pfJ">
+                                <rect key="frame" x="344" y="72" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxb-0P-Dau">
+                                <rect key="frame" x="24" y="72" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95J-IB-xek">
+                                <rect key="frame" x="161.5" y="126" width="91.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95294117647058818" green="0.94901960784313721" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="REL-f2-oUH" firstAttribute="trailing" secondItem="yA2-BO-pfJ" secondAttribute="trailing" constant="24" id="7uT-mz-kuk"/>
+                            <constraint firstItem="uxb-0P-Dau" firstAttribute="top" secondItem="REL-f2-oUH" secondAttribute="top" constant="28" id="G7n-JT-ElO"/>
+                            <constraint firstItem="95J-IB-xek" firstAttribute="centerX" secondItem="v90-X0-2wF" secondAttribute="centerX" id="M3F-6Z-ArN"/>
+                            <constraint firstItem="uxb-0P-Dau" firstAttribute="leading" secondItem="REL-f2-oUH" secondAttribute="leading" constant="24" id="NZw-yr-pvp"/>
+                            <constraint firstItem="mIg-8f-4et" firstAttribute="leading" secondItem="REL-f2-oUH" secondAttribute="leading" constant="20" id="PEB-mR-EVB"/>
+                            <constraint firstItem="yA2-BO-pfJ" firstAttribute="centerY" secondItem="uxb-0P-Dau" secondAttribute="centerY" id="ULf-Lp-RcR"/>
+                            <constraint firstItem="mIg-8f-4et" firstAttribute="top" secondItem="95J-IB-xek" secondAttribute="bottom" constant="28" id="hNJ-eK-DKi"/>
+                            <constraint firstItem="REL-f2-oUH" firstAttribute="trailing" secondItem="mIg-8f-4et" secondAttribute="trailing" constant="20" id="lDq-dl-hTW"/>
+                            <constraint firstItem="95J-IB-xek" firstAttribute="top" secondItem="uxb-0P-Dau" secondAttribute="bottom" constant="24" id="lFa-bh-hsP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="REL-f2-oUH"/>
                     </view>
+                    <connections>
+                        <outlet property="chartView" destination="mIg-8f-4et" id="S0J-Fr-hZj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oo6-x9-Tqq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="96"/>
+            <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
         </scene>
     </scenes>
 </document>

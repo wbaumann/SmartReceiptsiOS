@@ -23,11 +23,11 @@ class TripTabBarViewController: TabBarViewController {
         self.trip = WBPreferences.lastOpenedTrip
         if let trip = self.trip { setupViewControllers(trip: trip) }
         
-        fetchedModelAdapter = Database.sharedInstance()!.createUpdatingAdapterForAllTrips()
+        fetchedModelAdapter = Database.sharedInstance().createUpdatingAdapterForAllTrips()
         fetchedModelAdapter.rx.didChangeContent
             .subscribe(onNext: { [weak self] _ in
                 guard let trip = self?.trip else { return }
-                Database.sharedInstance()!.refreshPriceForTrip(trip)
+                Database.sharedInstance().refreshPriceForTrip(trip)
                 self?.trip = trip
                 self?.updateTitle(trip: trip)
             }).disposed(by: bag)
@@ -61,8 +61,19 @@ class TripTabBarViewController: TabBarViewController {
     private func configureTitle() {
         titleView = TripTitleView.initFromNib()
         navigationItem.titleView = titleView
+        let graphsButton = UIBarButtonItem(image: #imageLiteral(resourceName: "graphs_item"), style: .done, target: nil, action: nil)
+        navigationItem.leftBarButtonItem = graphsButton
         titleView?.tintColor = .white
         updateTitle(trip: trip)
+        
+        graphsButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let trip = self?.trip else { return }
+                let graphsView = GraphsAssembly().build(trip: trip)
+                let nav = UINavigationController(rootViewController: graphsView)
+                self?.present(nav, animated: true, completion: nil)
+            }).disposed(by: bag)
+        
         
         titleView?.rx.tapGesture()
             .when(.recognized)

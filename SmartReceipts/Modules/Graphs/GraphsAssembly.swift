@@ -10,10 +10,10 @@ import UIKit
 
 class GraphsAssembly {
 
-    func build() -> UIViewController {
-        let view = GraphsViewController()
+    func build(trip: WBTrip) -> UIViewController {
+        let view = GraphsViewController.create()
         let router = GraphsRouter()
-        let viewModel = GraphsViewModel(router: router)
+        let viewModel = GraphsViewModel(router: router, trip: trip)
         
         view.viewModel = viewModel
         router.moduleViewController = view

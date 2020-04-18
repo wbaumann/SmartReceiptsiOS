@@ -106,6 +106,13 @@ class PricesCollection: Price {
         }
     }
     
+    override var amount: NSDecimalNumber! {
+        if currenciesCount() > 1 { return .zero }
+        return totals.reduce(.zero) { (result, pair) -> NSDecimalNumber in
+            result.adding(pair.value)
+        }
+    }
+    
     override func amountAsString() -> String {
         if currenciesCount() > 1 {
             return currencyFormattedTotalPrice()

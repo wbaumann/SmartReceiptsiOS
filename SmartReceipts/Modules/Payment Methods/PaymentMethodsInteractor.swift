@@ -31,7 +31,7 @@ class PaymentMethodsInteractor: Interactor {
     }
     
     func save(paymentMethod: PaymentMethod, update: Bool) {
-        let db = Database.sharedInstance()!
+        let db = Database.sharedInstance()
         let success = update ? db.update(paymentMethod) : db.save(paymentMethod)
         
         if !success {

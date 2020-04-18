@@ -34,7 +34,7 @@ class DatabaseMigrator: NSObject {
     }()
     
     @objc func migrate(database: Database) -> Bool {
-        let dbPath = database.pathToDatabase!
+        let dbPath = database.pathToDatabase
         let copyName = "migration_failed.db"
         let copyPath = dbPath.asNSString.deletingLastPathComponent.asNSString.appendingPathComponent(copyName)
         _ = FileManager.forceCopy(from: dbPath, to: copyPath)
