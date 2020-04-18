@@ -11,20 +11,21 @@
 
 @class ReceiptFilesManager;
 
-extern NSString *const DatabaseDidInsertModelNotification;
-extern NSString *const DatabaseDidDeleteModelNotification;
-extern NSString *const DatabaseDidUpdateModelNotification;
-extern NSString *const DatabaseDidSwapModelsNotification;
-extern NSString *const DatabaseDidReorderModelsNotification;
+extern NSString * _Nonnull const DatabaseDidInsertModelNotification;
+extern NSString * _Nonnull const DatabaseDidDeleteModelNotification;
+extern NSString * _Nonnull const DatabaseDidUpdateModelNotification;
+extern NSString * _Nonnull const DatabaseDidSwapModelsNotification;
+extern NSString * _Nonnull const DatabaseDidReorderModelsNotification;
 
 @interface Database : NSObject
 
-@property (nonatomic, strong, readonly) FMDatabaseQueue *databaseQueue;
-@property (nonatomic, strong, readonly) ReceiptFilesManager *filesManager;
-@property (nonatomic, readonly) FMDatabase *fmdb;
-@property (nonatomic, readonly) NSString *pathToDatabase;
+@property (nonatomic, strong, readonly) FMDatabaseQueue * _Nonnull databaseQueue;
+@property (nonatomic, strong, readonly) ReceiptFilesManager * _Nonnull filesManager;
+@property (nonatomic, readonly) FMDatabase * _Nonnull fmdb;
+@property (nonatomic, readonly) NSString * _Nonnull pathToDatabase;
 
-+ (instancetype)sharedInstance;
+
++ (_Nonnull instancetype)sharedInstance;
 
 - (BOOL)open;
 - (void)close;
@@ -33,7 +34,7 @@ extern NSString *const DatabaseDidReorderModelsNotification;
 
 @interface Database (ExposeForTests)
 
-- (id)initWithDatabasePath:(NSString *)path tripsFolderPath:(NSString *)tripsFolderPath;
+- (_Nonnull id)initWithDatabasePath:(NSString * _Nonnull)path tripsFolderPath:(NSString * _Nonnull)tripsFolderPath;
 - (BOOL)open:(BOOL)migrateDatabase;
 
 @end

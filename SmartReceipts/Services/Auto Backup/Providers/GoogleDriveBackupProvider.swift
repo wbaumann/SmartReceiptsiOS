@@ -76,7 +76,7 @@ class GoogleDriveBackupProvider: BackupProvider {
                     .map({ data -> Database in
                         let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(SYNC_DB_NAME)!
                         try? data.write(to: fileURL)
-                        return Database(databasePath: fileURL.absoluteString, tripsFolderPath: FileManager.tripsDirectoryPath)!
+                        return Database(databasePath: fileURL.absoluteString, tripsFolderPath: FileManager.tripsDirectoryPath)
                     })
             }).do(onError: { [weak self] in self?.handleError($0) })
     }
@@ -120,7 +120,7 @@ class GoogleDriveBackupProvider: BackupProvider {
                         let dbName = debug ? "\(dbFile.identifier!)_\(SYNC_DB_NAME)" : SYNC_DB_NAME
                         let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(dbName)!
                         try? data.write(to: fileURL)
-                        return Database(databasePath: fileURL.absoluteString, tripsFolderPath: FileManager.tripsDirectoryPath)!
+                        return Database(databasePath: fileURL.absoluteString, tripsFolderPath: FileManager.tripsDirectoryPath)
                     }).flatMap({ database -> Observable<BackupFetchResult> in
                         return receiptFiles.asObservable()
                             .filter({ $0.name != SYNC_DB_NAME })

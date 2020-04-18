@@ -12,8 +12,9 @@
 @class FetchedModelAdapter;
 @class FMDatabase;
 
-@interface Database (Categories)
+NS_ASSUME_NONNULL_BEGIN
 
+@interface Database (Categories)
 - (BOOL)createCategoriesTable;
 - (NSArray<WBCategory *> *)listAllCategories;
 - (BOOL)saveCategory:(WBCategory *)category;
@@ -24,5 +25,6 @@
 - (WBCategory *)categoryByID:(NSInteger )categoryId;
 - (FetchedModelAdapter *)fetchedAdapterForCategories;
 - (NSInteger)nextCustomOrderIdForCategory;
-
 @end
+
+NS_ASSUME_NONNULL_END

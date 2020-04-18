@@ -81,7 +81,7 @@ class AccountViewModel: AccountViewModelProtocol {
         
         onUploadSubject
             .map {
-                let models = Database.sharedInstance()!.exportModels()
+                let models = Database.sharedInstance().exportModels()
                 let appSettings = OrganizationAppSettings(
                     configurations: $0.appSettings.configurations,
                     settings: WBPreferences.settingsModel,

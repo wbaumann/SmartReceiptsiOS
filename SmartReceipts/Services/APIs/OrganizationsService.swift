@@ -48,7 +48,7 @@ class OrganizationsService: OrganizationsServiceInterface {
         UserDefaults.standard.set(organization.id, forKey: SYNC_ID)
         
         WBPreferences.importModel(settings: organization.appSettings.settings)
-        Database.sharedInstance()?.importSettings(models: organization.appSettings.models)
+        Database.sharedInstance().importSettings(models: organization.appSettings.models)
     }
     
     func startSync() {

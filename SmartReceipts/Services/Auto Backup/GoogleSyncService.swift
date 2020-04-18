@@ -88,13 +88,13 @@ class GoogleSyncService: SyncServiceProtocol {
         GoogleDriveService.shared.deleteFile(id: syncID)
             .do(onError: { [weak self] in self?.handleError($0) })
             .subscribe(onCompleted: {
-                Database.sharedInstance()?.executeWithoutNotification({ db in db?.delete(receipt) })
+                Database.sharedInstance().executeWithoutNotification({ db in db?.delete(receipt) })
                 AppNotificationCenter.postDidSyncBackup()
                 Logger.debug("Delete synced receipt: \(receipt.name)")
             }, onError: { error in
                 Logger.error("Delete Receipt file error - \(error.localizedDescription)")
                 guard error.code == SyncError.FILE_NOT_FOUND_CODE else { return }
-                Database.sharedInstance()?.executeWithoutNotification({ db in db?.delete(receipt) })
+                Database.sharedInstance().executeWithoutNotification({ db in db?.delete(receipt) })
             }).disposed(by: bag)
     }
     
@@ -122,7 +122,7 @@ class GoogleSyncService: SyncServiceProtocol {
     
     private let dbLock = NSLock()
     private func uploadDatabase() {
-        let dbPath = Database.sharedInstance().pathToDatabase!
+        let dbPath = Database.sharedInstance().pathToDatabase
         let data = try! Data(contentsOf: URL(fileURLWithPath: dbPath))
         
         syncQueue.async {
