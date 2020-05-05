@@ -8,19 +8,51 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 protocol GraphsViewModelProtocol {
     var dataSet: Observable<[GraphsCategoryDataSet]> { get }
+    var routeObserver: AnyObserver<GraphsRouter.Route> { get }
     var trip: WBTrip { get }
     func moduleDidLoad()
 }
 
 class GraphsViewModel: GraphsViewModelProtocol {
     private var router: GraphsRouterProtocol
+    private let bag = DisposeBag()
     let trip: WBTrip
     
-    var dataSet: Observable<[GraphsCategoryDataSet]> {
+    let routeRelay: PublishSubject<GraphsRouter.Route> = .init()
+    var routeObserver: AnyObserver<GraphsRouter.Route> {
+        return routeRelay.asObserver()
+    }
+    
+    init(router: GraphsRouterProtocol, trip: WBTrip) {
+        self.router = router
+        self.trip = trip
+    }
+
+    func moduleDidLoad() {
+        bind()
+        switchModel(to: .categories)
+        switchPeriod(to: .report)
+    }
+    
+    private func bind() {
+        routeRelay
+            .filterCases(cases: .period)
+            .flatMap { [weak self] _ in self?.router.openPeriod() ?? .never() }
+            .subscribe(onNext: { [weak self] in self?.switchPeriod(to: $0) })
+            .disposed(by: bag)
         
+        routeRelay
+            .filterCases(cases: .model)
+            .flatMap { [weak self] _ in self?.router.openModel() ?? .never() }
+            .subscribe(onNext: { [weak self] in self?.switchModel(to: $0) })
+            .disposed(by: bag)
+    }
+    
+    var dataSet: Observable<[GraphsCategoryDataSet]> {
         let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as [WBReceipt]
         let catCodes = Set(receipts.compactMap { $0.category?.code })
         let categories = Database.sharedInstance().listAllCategories().filter { catCodes.contains($0.code) }
@@ -34,13 +66,14 @@ class GraphsViewModel: GraphsViewModelProtocol {
         return .just(result)
     }
     
-    init(router: GraphsRouterProtocol, trip: WBTrip) {
-        self.router = router
-        self.trip = trip
+    // MARK: - PRIVATE
+    
+    private func switchPeriod(to: GraphsAssembly.PeriodSelection) {
+        
     }
-
-    func moduleDidLoad() {
-
+    
+    private func switchModel(to: GraphsAssembly.ModelSelection) {
+        
     }
 }
 
@@ -48,3 +81,5 @@ struct GraphsCategoryDataSet {
     let category: WBCategory
     let total: Price
 }
+
+
