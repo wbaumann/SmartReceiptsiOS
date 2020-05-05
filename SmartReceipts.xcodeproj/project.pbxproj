@@ -393,6 +393,7 @@
 		71D7FA3A2304B64A001F36E1 /* BorderedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7FA392304B64A001F36E1 /* BorderedLabel.swift */; };
 		71D8005323B9161B002CBC9E /* GenerateReportHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8005223B9161B002CBC9E /* GenerateReportHeaderView.swift */; };
 		71D8005523B91624002CBC9E /* GenerateReportHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71D8005423B91624002CBC9E /* GenerateReportHeaderView.xib */; };
+		71DC2F3D244CC30800A48BBF /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DC2F3C244CC30800A48BBF /* BarChart.swift */; };
 		71DF3A801F509512000CD1D6 /* NotifyMasterSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF3A7F1F509512000CD1D6 /* NotifyMasterSplitViewController.swift */; };
 		71E090F31F2F994B00C825A8 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E090F21F2F994B00C825A8 /* FileManager+Extensions.swift */; };
 		71E2B57C1EEDD516001D02F1 /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E2B5751EEDD516001D02F1 /* Trips.storyboard */; };
@@ -1032,6 +1033,7 @@
 		71D7FA392304B64A001F36E1 /* BorderedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedLabel.swift; sourceTree = "<group>"; };
 		71D8005223B9161B002CBC9E /* GenerateReportHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateReportHeaderView.swift; sourceTree = "<group>"; };
 		71D8005423B91624002CBC9E /* GenerateReportHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateReportHeaderView.xib; sourceTree = "<group>"; };
+		71DC2F3C244CC30800A48BBF /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		71DF3A7F1F509512000CD1D6 /* NotifyMasterSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifyMasterSplitViewController.swift; sourceTree = "<group>"; };
 		71E090F21F2F994B00C825A8 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		71E2B5751EEDD516001D02F1 /* Trips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trips.storyboard; sourceTree = "<group>"; };
@@ -1490,6 +1492,7 @@
 		71011CE624351860008526FA /* Graphs */ = {
 			isa = PBXGroup;
 			children = (
+				71DC2F3B244CC2E800A48BBF /* Charts */,
 				71136AD324389CC2003CFC67 /* GraphsViewController.storyboard */,
 				71136ACC243899A2003CFC67 /* GraphsViewController.swift */,
 				71136ACE243899A2003CFC67 /* GraphsViewModel.swift */,
@@ -2173,6 +2176,14 @@
 				71D8005223B9161B002CBC9E /* GenerateReportHeaderView.swift */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		71DC2F3B244CC2E800A48BBF /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				71DC2F3C244CC30800A48BBF /* BarChart.swift */,
+			);
+			path = Charts;
 			sourceTree = "<group>";
 		};
 		71DDC2C21EEDBEAA00CFFDBC /* Trips */ = {
@@ -3719,6 +3730,7 @@
 				EA8EB10A1B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m in Sources */,
 				71C014231F1AB14A005472B3 /* CategoriesDisplayData.swift in Sources */,
 				5705159B1E02B58500BB8FE4 /* DataPoint.swift in Sources */,
+				71DC2F3D244CC30800A48BBF /* BarChart.swift in Sources */,
 				71808E4E23A6371700DFF3BA /* ReceiptActionSheet.swift in Sources */,
 				7185AEF81EFC1CC90038ED2A /* ReceiptMoveCopyPresenter.swift in Sources */,
 				71572D871F15EA41001A1301 /* ColumnsInteractor.swift in Sources */,

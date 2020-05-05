@@ -22,3 +22,13 @@ class GraphsAssembly {
     }
 
 }
+
+extension GraphsAssembly {
+    enum PeriodSelection {
+        case report, daily, monthly
+    }
+
+    enum ModelSelection {
+        case categories, paymentMethods, dates
+    }
+}

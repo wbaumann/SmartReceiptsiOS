@@ -16,23 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIg-8f-4et" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="175.5" width="374" height="180"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIg-8f-4et" customClass="BarChart" customModule="SmartReceipts" customModuleProvider="target">
+                                <rect key="frame" x="20" y="179.5" width="374" height="180"/>
                                 <color key="backgroundColor" red="0.95294117647058818" green="0.94901960784313721" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="RjN-Zn-MRl"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yA2-BO-pfJ">
-                                <rect key="frame" x="344" y="72" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yA2-BO-pfJ">
+                                <rect key="frame" x="285" y="72" width="105" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="12" minY="8" maxX="12" maxY="8"/>
+                                <inset key="imageEdgeInsets" minX="8" minY="2" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Category" image="navigation_arrow_down"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxb-0P-Dau">
-                                <rect key="frame" x="24" y="72" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxb-0P-Dau">
+                                <rect key="frame" x="24" y="72" width="86" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="12" minY="8" maxX="12" maxY="8"/>
+                                <inset key="imageEdgeInsets" minX="8" minY="2" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Period" image="navigation_arrow_down"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95J-IB-xek">
-                                <rect key="frame" x="161.5" y="126" width="91.5" height="21.5"/>
+                                <rect key="frame" x="161.5" y="130" width="91.5" height="21.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -54,6 +64,8 @@
                     </view>
                     <connections>
                         <outlet property="chartView" destination="mIg-8f-4et" id="S0J-Fr-hZj"/>
+                        <outlet property="modelButton" destination="yA2-BO-pfJ" id="5mI-Mc-Lr7"/>
+                        <outlet property="periodButton" destination="uxb-0P-Dau" id="0Rp-mI-Kfu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oo6-x9-Tqq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -61,4 +73,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="navigation_arrow_down" width="16" height="16"/>
+    </resources>
 </document>
