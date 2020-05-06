@@ -52,8 +52,8 @@ class GraphsViewController: UIViewController, Storyboardable {
     
     private func setupChartData() {
         viewModel.dataSet
-            .subscribe(onNext: { [weak self] dataSets in
-                self?.chartView.buildChart(dataSets: dataSets)
+            .subscribe(onNext: { [weak self] dataSet in
+                self?.chartView.buildChart(dataSet: dataSet)
             }).disposed(by: bag)
     }
     

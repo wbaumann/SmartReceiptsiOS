@@ -62,6 +62,7 @@
 		710BCA0523B021FF00ACF50B /* TripTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710BCA0423B021FF00ACF50B /* TripTitleView.swift */; };
 		710D458A219384F9005463F7 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D4589219384F9005463F7 /* APIProvider.swift */; };
 		710D98A21FE573540088B9BA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D98A11FE573540088B9BA /* UIView+Extensions.swift */; };
+		710D999024623A1D004DAA6C /* GraphsPaymentMethodsDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D998F24623A1D004DAA6C /* GraphsPaymentMethodsDataSet.swift */; };
 		710DCEA71F7444C000C08C43 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710DCEA61F7444C000C08C43 /* User.swift */; };
 		710E587521386BAB00AAFC77 /* TooltipPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710E587421386BAB00AAFC77 /* TooltipPresenter.swift */; };
 		710EEE1522EA641D0025435A /* OrganizationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710EEE1422EA641D0025435A /* OrganizationsResponse.swift */; };
@@ -282,6 +283,7 @@
 		718AAC17212039F500290183 /* DistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAC16212039F500290183 /* DistanceCell.swift */; };
 		718ADF6520B33823005FEF4F /* AppMonitorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718ADF6420B33823005FEF4F /* AppMonitorService.swift */; };
 		718D2DF11F7D459B00A69B6E /* PushNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D2DF01F7D459B00A69B6E /* PushNotificationService.swift */; };
+		718F2D44246207B200E8F735 /* GraphsCategoryDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F2D43246207B200E8F735 /* GraphsCategoryDataSet.swift */; };
 		7190B9131F60427200F6CE7F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7190B90D1F60427200F6CE7F /* Auth.storyboard */; };
 		7190B9141F60427200F6CE7F /* AuthDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7190B90E1F60427200F6CE7F /* AuthDisplayData.swift */; };
 		7190B9151F60427200F6CE7F /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7190B90F1F60427200F6CE7F /* AuthInteractor.swift */; };
@@ -708,6 +710,7 @@
 		710BCA0423B021FF00ACF50B /* TripTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTitleView.swift; sourceTree = "<group>"; };
 		710D4589219384F9005463F7 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		710D98A11FE573540088B9BA /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		710D998F24623A1D004DAA6C /* GraphsPaymentMethodsDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsPaymentMethodsDataSet.swift; sourceTree = "<group>"; };
 		710DCEA61F7444C000C08C43 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		710E587421386BAB00AAFC77 /* TooltipPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipPresenter.swift; sourceTree = "<group>"; };
 		710EEE1422EA641D0025435A /* OrganizationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationsResponse.swift; sourceTree = "<group>"; };
@@ -912,6 +915,7 @@
 		718AAC16212039F500290183 /* DistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCell.swift; sourceTree = "<group>"; };
 		718ADF6420B33823005FEF4F /* AppMonitorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMonitorService.swift; sourceTree = "<group>"; };
 		718D2DF01F7D459B00A69B6E /* PushNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationService.swift; sourceTree = "<group>"; };
+		718F2D43246207B200E8F735 /* GraphsCategoryDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsCategoryDataSet.swift; sourceTree = "<group>"; };
 		7190B90D1F60427200F6CE7F /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		7190B90E1F60427200F6CE7F /* AuthDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthDisplayData.swift; sourceTree = "<group>"; };
 		7190B90F1F60427200F6CE7F /* AuthInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
@@ -1492,6 +1496,7 @@
 		71011CE624351860008526FA /* Graphs */ = {
 			isa = PBXGroup;
 			children = (
+				718F2D422462079900E8F735 /* DataSets */,
 				71DC2F3B244CC2E800A48BBF /* Charts */,
 				71136AD324389CC2003CFC67 /* GraphsViewController.storyboard */,
 				71136ACC243899A2003CFC67 /* GraphsViewController.swift */,
@@ -1941,6 +1946,15 @@
 				7104A37622E902C00027C5D9 /* OrganizationModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		718F2D422462079900E8F735 /* DataSets */ = {
+			isa = PBXGroup;
+			children = (
+				718F2D43246207B200E8F735 /* GraphsCategoryDataSet.swift */,
+				710D998F24623A1D004DAA6C /* GraphsPaymentMethodsDataSet.swift */,
+			);
+			path = DataSets;
 			sourceTree = "<group>";
 		};
 		7190B90C1F6041D400F6CE7F /* Auth */ = {
@@ -3668,6 +3682,7 @@
 				EA8D81941AEA7C0B00BAC943 /* ReceiptColumnReportEndDate.m in Sources */,
 				A7A720E31CEEFD8E00A3B5FF /* NSIndexPath+Extensions.swift in Sources */,
 				EA8D81971AEA7C1E00BAC943 /* ReceiptColumnImageName.m in Sources */,
+				710D999024623A1D004DAA6C /* GraphsPaymentMethodsDataSet.swift in Sources */,
 				713572B022F6F1E30069C9F5 /* ServiceFactory.swift in Sources */,
 				710DCEA71F7444C000C08C43 /* User.swift in Sources */,
 				EA07BF4A1AF40066004D17F6 /* DatabaseTableNames.m in Sources */,
@@ -3677,6 +3692,7 @@
 				716138C71FD1E29300C73FB9 /* TripReportHeader.swift in Sources */,
 				7190B9151F60427200F6CE7F /* AuthInteractor.swift in Sources */,
 				718714FC224FDEB70061D493 /* DatabaseUpgradeToVersion16.swift in Sources */,
+				718F2D44246207B200E8F735 /* GraphsCategoryDataSet.swift in Sources */,
 				EA07BF441AF3F882004D17F6 /* DecimalInputValidation.m in Sources */,
 				EAD15C511B07C3A1003BB1F3 /* Database+Notify.m in Sources */,
 				71B4A5D622F3858A005E5FB2 /* Styles.swift in Sources */,

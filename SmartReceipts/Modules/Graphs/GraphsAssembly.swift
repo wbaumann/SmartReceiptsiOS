@@ -20,7 +20,6 @@ class GraphsAssembly {
         
         return view
     }
-
 }
 
 extension GraphsAssembly {
