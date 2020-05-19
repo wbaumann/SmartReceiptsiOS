@@ -9,10 +9,11 @@
 import Foundation
 import Charts
 
-struct GraphsCategoryDataSet: BarChartDatSetProtocol {
+struct GraphsCategoryDataSet: ChartDataSetProtocol {
     let data: [GraphsCategoryData]
     let xLabels: [String]
     let entries: [BarChartDataEntry]
+    let chartType: ChartType = .barChart
 
     var title: String {
         return "Categories"

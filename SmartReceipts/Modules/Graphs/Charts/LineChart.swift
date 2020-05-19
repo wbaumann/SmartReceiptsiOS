@@ -1,50 +1,31 @@
 //
-//  BarChartView.swift
+//  LineChart.swift
 //  SmartReceipts
 //
-//  Created by Bogdan Evsenev on 19.04.2020.
+//  Created by Bogdan Evsenev on 13.05.2020.
 //  Copyright © 2020 Will Baumann. All rights reserved.
 //
 
 import Foundation
 import Charts
 
-protocol ChartDataSetProtocol {
-    var xLabels: [String] { get }
-    var entries: [BarChartDataEntry] { get }
-    var title: String { get }
-    var chartType: ChartType { get }
-}
-
-enum ChartType {
-    case barChart, lineChart
-}
-
-protocol ChartProtocol {
-    func buildChart(dataSet: ChartDataSetProtocol)
-}
-
-class BarChart: BarChartView, ChartProtocol {
+class LineChart: LineChartView, ChartProtocol {
     var valueFormatter: IValueFormatter?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         configure()
     }
-    
+
     private func configure() {
-        drawBarShadowEnabled = false
-        drawValueAboveBarEnabled = false
         pinchZoomEnabled = false
         doubleTapToZoomEnabled = false
         scaleXEnabled = false
         scaleYEnabled = false
-        highlightFullBarEnabled = false
         highlightPerTapEnabled = false
         highlightPerDragEnabled = false
         rightAxis.drawLabelsEnabled = false
         drawGridBackgroundEnabled = false
-        drawValueAboveBarEnabled = true
         
         xAxis.labelPosition = .bottom
         xAxis.labelFont = .semibold11
@@ -57,15 +38,14 @@ class BarChart: BarChartView, ChartProtocol {
     
     func buildChart(dataSet: ChartDataSetProtocol) {
         xAxis.valueFormatter = IndexAxisValueFormatter(values: dataSet.xLabels)
-        xAxis.labelCount = dataSet.xLabels.count
+//        xAxis.labelCount = dataSet.xLabels.count
         
-        let chartDataSet = BarChartDataSet(entries: dataSet.entries, label: dataSet.title)
+        let chartDataSet = LineChartDataSet(entries: dataSet.entries, label: dataSet.title)
         chartDataSet.valueFont = .systemFont(ofSize: 9, weight: .medium)
         chartDataSet.valueFormatter = valueFormatter
+//        chartDataSet.draw
         
         chartDataSet.colors = ChartColorTemplates.material()
-        data = BarChartData(dataSet: chartDataSet)
+        data = LineChartData(dataSet: chartDataSet)
     }
-    
 }
-

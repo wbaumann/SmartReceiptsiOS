@@ -16,7 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIg-8f-4et" customClass="BarChart" customModule="SmartReceipts" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YbY-12-ftj" customClass="BarChart" customModule="SmartReceipts" customModuleProvider="target">
+                                <rect key="frame" x="20" y="179.5" width="374" height="180"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.94901960780000005" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="YYb-xk-xsL"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="4Ms-Es-RIc"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIg-8f-4et" customClass="LineChart" customModule="SmartReceipts" customModuleProvider="target">
                                 <rect key="frame" x="20" y="179.5" width="374" height="180"/>
                                 <color key="backgroundColor" red="0.95294117647058818" green="0.94901960784313721" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -50,7 +58,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.94901960784313721" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="mIg-8f-4et" firstAttribute="trailing" secondItem="YbY-12-ftj" secondAttribute="trailing" id="54h-MK-NnX"/>
                             <constraint firstItem="REL-f2-oUH" firstAttribute="trailing" secondItem="yA2-BO-pfJ" secondAttribute="trailing" constant="24" id="7uT-mz-kuk"/>
+                            <constraint firstItem="mIg-8f-4et" firstAttribute="top" secondItem="YbY-12-ftj" secondAttribute="top" id="Aza-F9-GDS"/>
                             <constraint firstItem="uxb-0P-Dau" firstAttribute="top" secondItem="REL-f2-oUH" secondAttribute="top" constant="28" id="G7n-JT-ElO"/>
                             <constraint firstItem="95J-IB-xek" firstAttribute="centerX" secondItem="v90-X0-2wF" secondAttribute="centerX" id="M3F-6Z-ArN"/>
                             <constraint firstItem="uxb-0P-Dau" firstAttribute="leading" secondItem="REL-f2-oUH" secondAttribute="leading" constant="24" id="NZw-yr-pvp"/>
@@ -59,11 +69,14 @@
                             <constraint firstItem="mIg-8f-4et" firstAttribute="top" secondItem="95J-IB-xek" secondAttribute="bottom" constant="28" id="hNJ-eK-DKi"/>
                             <constraint firstItem="REL-f2-oUH" firstAttribute="trailing" secondItem="mIg-8f-4et" secondAttribute="trailing" constant="20" id="lDq-dl-hTW"/>
                             <constraint firstItem="95J-IB-xek" firstAttribute="top" secondItem="uxb-0P-Dau" secondAttribute="bottom" constant="24" id="lFa-bh-hsP"/>
+                            <constraint firstItem="mIg-8f-4et" firstAttribute="leading" secondItem="YbY-12-ftj" secondAttribute="leading" id="vbl-LP-DHV"/>
+                            <constraint firstItem="mIg-8f-4et" firstAttribute="bottom" secondItem="YbY-12-ftj" secondAttribute="bottom" id="zL3-GF-CjJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="REL-f2-oUH"/>
                     </view>
                     <connections>
-                        <outlet property="chartView" destination="mIg-8f-4et" id="S0J-Fr-hZj"/>
+                        <outlet property="barChartView" destination="YbY-12-ftj" id="Ifr-j0-IqA"/>
+                        <outlet property="lineChartView" destination="mIg-8f-4et" id="hy0-yJ-0bw"/>
                         <outlet property="modelButton" destination="yA2-BO-pfJ" id="5mI-Mc-Lr7"/>
                         <outlet property="periodButton" destination="uxb-0P-Dau" id="0Rp-mI-Kfu"/>
                     </connections>
