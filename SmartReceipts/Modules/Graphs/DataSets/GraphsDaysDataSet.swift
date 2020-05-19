@@ -1,25 +1,25 @@
 //
-//  GraphsPaymentMethodsDataSet.swift
+//  DaysDataSet.swift
 //  SmartReceipts
 //
-//  Created by Bogdan Evsenev on 06.05.2020.
+//  Created by Bogdan Evsenev on 09.05.2020.
 //  Copyright © 2020 Will Baumann. All rights reserved.
 //
 
 import Foundation
 import Charts
 
-struct GraphsPaymentMethodDataSet: ChartDataSetProtocol {
-    let data: [GraphsPaymentMethodData]
+struct GraphsDaysDataSet: ChartDataSetProtocol {
+    let data: [GraphsDaysData]
     let xLabels: [String]
     let entries: [BarChartDataEntry]
-    let chartType: ChartType = .barChart
-    
+    let chartType: ChartType = .lineChart
+
     var title: String {
-        return "Payment Methods"
+        return "Days"
     }
     
-    init(data: [GraphsPaymentMethodData], maxCount: Int = 5) {
+    init(data: [GraphsDaysData], maxCount: Int = 1000) {
         self.data = data
         
         var filteredDataSets = data
@@ -37,14 +37,15 @@ struct GraphsPaymentMethodDataSet: ChartDataSetProtocol {
             }
         
         self.xLabels = filteredDataSets.reduce([String]()) { result, dataSet -> [String] in
-            return result.adding(dataSet.paymentMethod.presentedValue())
+            return result.adding(dataSet.day)
         }
     }
 }
 
-extension GraphsPaymentMethodDataSet {
-    struct GraphsPaymentMethodData {
-        let paymentMethod: PaymentMethod
+extension GraphsDaysDataSet {
+    struct GraphsDaysData {
+        let day: String
         let total: Price
     }
 }
+

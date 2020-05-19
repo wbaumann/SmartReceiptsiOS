@@ -14,7 +14,8 @@ class GraphsViewController: UIViewController, Storyboardable {
     var viewModel: GraphsViewModelProtocol!
     private let bag = DisposeBag()
     
-    @IBOutlet private var chartView: BarChart!
+    @IBOutlet private var barChartView: BarChart!
+    @IBOutlet private var lineChartView: LineChart!
     @IBOutlet private var periodButton: UIButton!
     @IBOutlet private var modelButton: UIButton!
     
@@ -31,7 +32,9 @@ class GraphsViewController: UIViewController, Storyboardable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        chartView.valueFormatter = valueFormatter
+        barChartView.valueFormatter = valueFormatter
+        lineChartView.valueFormatter = valueFormatter
+        
         setupChartData()
         viewModel.moduleDidLoad()
         title = LocalizedString("report_info_graphs")
@@ -53,9 +56,24 @@ class GraphsViewController: UIViewController, Storyboardable {
     private func setupChartData() {
         viewModel.dataSet
             .subscribe(onNext: { [weak self] dataSet in
-                self?.chartView.buildChart(dataSet: dataSet)
+                self?.modelButton.set(title: dataSet.title)
+                self?.activateChart(dataSet: dataSet)
             }).disposed(by: bag)
     }
     
+    private func activateChart(dataSet: ChartDataSetProtocol) {
+        lineChartView.isHidden = true
+        barChartView.isHidden = true
+        let activeChart: ChartProtocol
+        switch dataSet.chartType {
+        case .barChart:
+            barChartView.isHidden = false
+            activeChart = barChartView
+        case .lineChart:
+            lineChartView.isHidden = false
+            activeChart = lineChartView
+        }
+        activeChart.buildChart(dataSet: dataSet)
+    }
     
 }

@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol GraphsViewModelProtocol {
-    var dataSet: Observable<BarChartDatSetProtocol> { get }
+    var dataSet: Observable<ChartDataSetProtocol> { get }
     var routeObserver: AnyObserver<GraphsRouter.Route> { get }
     var trip: WBTrip { get }
     func moduleDidLoad()
@@ -22,8 +22,8 @@ class GraphsViewModel: GraphsViewModelProtocol {
     private let bag = DisposeBag()
     let trip: WBTrip
     
-    let dataSetSubject: BehaviorSubject<BarChartDatSetProtocol>
-    var dataSet: Observable<BarChartDatSetProtocol> {
+    let dataSetSubject: BehaviorSubject<ChartDataSetProtocol>
+    var dataSet: Observable<ChartDataSetProtocol> {
         return dataSetSubject.asObservable()
     }
     
@@ -69,11 +69,11 @@ class GraphsViewModel: GraphsViewModelProtocol {
         switch selection {
         case .categories: dataSetSubject.onNext(categoryDataSet)
         case .paymentMethods: dataSetSubject.onNext(paymentMethodDataSet)
-        case .dates: print("swithed to dates")
+        case .dates: dataSetSubject.onNext(daysDataSet)
         }
     }
     
-    private var categoryDataSet: BarChartDatSetProtocol {
+    private var categoryDataSet: ChartDataSetProtocol {
         let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as [WBReceipt]
         let catCodes = Set(receipts.compactMap { $0.category?.code })
         let categories = Database.sharedInstance().listAllCategories().filter { catCodes.contains($0.code) }
@@ -86,7 +86,7 @@ class GraphsViewModel: GraphsViewModelProtocol {
         return GraphsCategoryDataSet(data: data)
     }
     
-    private var paymentMethodDataSet: BarChartDatSetProtocol {
+    private var paymentMethodDataSet: ChartDataSetProtocol {
         let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as [WBReceipt]
         let methodsSet = Set(receipts.compactMap { $0.paymentMethod.method })
         let paymentMethods = Database.sharedInstance().allPaymentMethods().filter { methodsSet.contains($0.method) }
@@ -97,6 +97,18 @@ class GraphsViewModel: GraphsViewModelProtocol {
             return .init(paymentMethod: method, total: price)
         }
         return GraphsPaymentMethodDataSet(data: data)
+    }
+    
+    private var daysDataSet: ChartDataSetProtocol {
+        let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as [WBReceipt]
+        let days = Set(receipts.map { $0.date.dayString() })
+        let data = days.map { day -> GraphsDaysDataSet.GraphsDaysData in
+            let price = PricesCollection(currencyCode: trip.defaultCurrency.code)
+            let dayReceipts = receipts.filter { $0.date.dayString() == day }
+            dayReceipts.forEach { price.addPrice($0.price()) }
+            return .init(day: day, total: price)
+        }
+        return GraphsDaysDataSet(data: data)
     }
 }
 

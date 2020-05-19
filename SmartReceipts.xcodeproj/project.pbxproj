@@ -63,6 +63,7 @@
 		710D458A219384F9005463F7 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D4589219384F9005463F7 /* APIProvider.swift */; };
 		710D98A21FE573540088B9BA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D98A11FE573540088B9BA /* UIView+Extensions.swift */; };
 		710D999024623A1D004DAA6C /* GraphsPaymentMethodsDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D998F24623A1D004DAA6C /* GraphsPaymentMethodsDataSet.swift */; };
+		710D999224662011004DAA6C /* GraphsDaysDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D999124662011004DAA6C /* GraphsDaysDataSet.swift */; };
 		710DCEA71F7444C000C08C43 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710DCEA61F7444C000C08C43 /* User.swift */; };
 		710E587521386BAB00AAFC77 /* TooltipPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710E587421386BAB00AAFC77 /* TooltipPresenter.swift */; };
 		710EEE1522EA641D0025435A /* OrganizationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710EEE1422EA641D0025435A /* OrganizationsResponse.swift */; };
@@ -217,6 +218,8 @@
 		7165509C218E133E007B55FF /* StatusBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165509B218E133E007B55FF /* StatusBar+Extensions.swift */; };
 		7167239A1F10540200400BFF /* CustomSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716723981F10540200400BFF /* CustomSegmentedCell.swift */; };
 		7167239B1F10540200400BFF /* CustomSegmentedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 716723991F10540200400BFF /* CustomSegmentedCell.xib */; };
+		71673D58246B43C3008FFA50 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71673D57246B43C3008FFA50 /* UIButton+Extensions.swift */; };
+		71673D5A246BD07E008FFA50 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71673D59246BD07E008FFA50 /* LineChart.swift */; };
 		71695E6C2023AEE000F1A7C9 /* SharedLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71695E6A2023AEE000F1A7C9 /* SharedLocalizable.strings */; };
 		716C04221F685467007F9CD2 /* CognitoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C04211F685467007F9CD2 /* CognitoService.swift */; };
 		716C058E216D12CE00D3E10F /* DatabaseUpgrade19Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C058D216D12CE00D3E10F /* DatabaseUpgrade19Tests.swift */; };
@@ -711,6 +714,7 @@
 		710D4589219384F9005463F7 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		710D98A11FE573540088B9BA /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		710D998F24623A1D004DAA6C /* GraphsPaymentMethodsDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsPaymentMethodsDataSet.swift; sourceTree = "<group>"; };
+		710D999124662011004DAA6C /* GraphsDaysDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsDaysDataSet.swift; sourceTree = "<group>"; };
 		710DCEA61F7444C000C08C43 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		710E587421386BAB00AAFC77 /* TooltipPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipPresenter.swift; sourceTree = "<group>"; };
 		710EEE1422EA641D0025435A /* OrganizationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationsResponse.swift; sourceTree = "<group>"; };
@@ -844,6 +848,8 @@
 		7165509B218E133E007B55FF /* StatusBar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatusBar+Extensions.swift"; sourceTree = "<group>"; };
 		716723981F10540200400BFF /* CustomSegmentedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedCell.swift; sourceTree = "<group>"; };
 		716723991F10540200400BFF /* CustomSegmentedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomSegmentedCell.xib; sourceTree = "<group>"; };
+		71673D57246B43C3008FFA50 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		71673D59246BD07E008FFA50 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		71695E6B2023AEE000F1A7C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = SharedLocalizable.strings; sourceTree = "<group>"; };
 		716C04211F685467007F9CD2 /* CognitoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CognitoService.swift; sourceTree = "<group>"; };
 		716C058D216D12CE00D3E10F /* DatabaseUpgrade19Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpgrade19Tests.swift; sourceTree = "<group>"; };
@@ -1953,6 +1959,7 @@
 			children = (
 				718F2D43246207B200E8F735 /* GraphsCategoryDataSet.swift */,
 				710D998F24623A1D004DAA6C /* GraphsPaymentMethodsDataSet.swift */,
+				710D999124662011004DAA6C /* GraphsDaysDataSet.swift */,
 			);
 			path = DataSets;
 			sourceTree = "<group>";
@@ -2165,6 +2172,7 @@
 				71C7DAA422F8D83300740157 /* UITableView+Extensions.swift */,
 				71D7FA362304AAA8001F36E1 /* UIStructs+Extensions.swift */,
 				712F2811238AB63900880C5D /* UIApplication+Extensions.swift */,
+				71673D57246B43C3008FFA50 /* UIButton+Extensions.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -2196,6 +2204,7 @@
 			isa = PBXGroup;
 			children = (
 				71DC2F3C244CC30800A48BBF /* BarChart.swift */,
+				71673D59246BD07E008FFA50 /* LineChart.swift */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -3719,6 +3728,7 @@
 				71F468341EEEDB03009F6CE7 /* EditTripInteractor.swift in Sources */,
 				71C2FD0F20E7F48C00DF068E /* BackupProviderFactory.swift in Sources */,
 				EA6677791B060FC4004D3993 /* ReceiptColumnPaymentMethod.m in Sources */,
+				71673D5A246BD07E008FFA50 /* LineChart.swift in Sources */,
 				716F344E1EE040E100D0017A /* EditDistanceDisplayData.swift in Sources */,
 				71655091218CD013007B55FF /* NSThread+Extensions.swift in Sources */,
 				A7F05BAC1CFC0AB00079F1AD /* ExchangedPriced.swift in Sources */,
@@ -3844,6 +3854,7 @@
 				71AEDDE11EDF7FF400BAC0DD /* TripDistancesRouter.swift in Sources */,
 				A7F05BE11CFD95390079F1AD /* FMDatabase+Functions.swift in Sources */,
 				716F07E12034AFDF00166D63 /* BackupInteractor.swift in Sources */,
+				71673D58246B43C3008FFA50 /* UIButton+Extensions.swift in Sources */,
 				71572D8A1F15EA41001A1301 /* ColumnsView.swift in Sources */,
 				EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */,
 				71871502224FDEB70061D493 /* DatabaseUpgradeToVersion17.swift in Sources */,
@@ -3948,6 +3959,7 @@
 				71AF49E81EFDCC010022B2E2 /* ReceiptImageViewerView.swift in Sources */,
 				71D7596B23EB416F00EBFD45 /* MainMenuActionSheet.swift in Sources */,
 				71E3CCE4207E9E8900C7FF2D /* TimeInterval+Extensions.swift in Sources */,
+				710D999224662011004DAA6C /* GraphsDaysDataSet.swift in Sources */,
 				EA8D81BB1AEA861400BAC943 /* ReceiptUnknownColumn.m in Sources */,
 				71F6251E20FBE395009B777C /* GoogleSyncService.swift in Sources */,
 				71D8005323B9161B002CBC9E /* GenerateReportHeaderView.swift in Sources */,
