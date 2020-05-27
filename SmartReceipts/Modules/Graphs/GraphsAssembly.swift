@@ -17,8 +17,10 @@ class GraphsAssembly {
         
         view.viewModel = viewModel
         router.moduleViewController = view
+        let nav = UINavigationController(rootViewController: view)
+        nav.modalPresentationStyle = .fullScreen
         
-        return view
+        return nav
     }
 }
 

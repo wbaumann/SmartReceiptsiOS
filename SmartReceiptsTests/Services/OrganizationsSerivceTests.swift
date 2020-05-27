@@ -155,7 +155,7 @@ class OrganizationsServiceTests: XCTestCase {
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
         
-        let database = Database.sharedInstance()!
+        let database = Database.sharedInstance()
         
         let csvUuidsBefore = (database.allCSVColumns() as! [ReceiptColumn]).map { $0.uuid }
         let pdfUuidsBefore = (database.allPDFColumns() as! [ReceiptColumn]).map { $0.uuid }

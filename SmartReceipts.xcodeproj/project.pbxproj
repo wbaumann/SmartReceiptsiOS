@@ -275,6 +275,7 @@
 		7187150F225039130061D493 /* DatabaseCreateAtVersion11Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7187150C225039130061D493 /* DatabaseCreateAtVersion11Tests.swift */; };
 		71871510225039130061D493 /* DatabaseUpgrade13Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7187150D225039130061D493 /* DatabaseUpgrade13Tests.swift */; };
 		71871511225039130061D493 /* DatabaseUpgrade12Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7187150E225039130061D493 /* DatabaseUpgrade12Tests.swift */; };
+		71888DBE247714AD003AD429 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71888DBD247714AD003AD429 /* PieChart.swift */; };
 		718A1C9121A07A0500E010A2 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A1C9021A07A0500E010A2 /* UserResponse.swift */; };
 		718A1C9321A086E300E010A2 /* AuthResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A1C9221A086E300E010A2 /* AuthResponses.swift */; };
 		718A1C9521A211EB00E010A2 /* RecognitionResposnse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A1C9421A211EB00E010A2 /* RecognitionResposnse.swift */; };
@@ -910,6 +911,7 @@
 		7187150D225039130061D493 /* DatabaseUpgrade13Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgrade13Tests.swift; sourceTree = "<group>"; };
 		7187150E225039130061D493 /* DatabaseUpgrade12Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUpgrade12Tests.swift; sourceTree = "<group>"; };
 		71874292216FB210005FFDD2 /* BaseDatabaseUpgradeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDatabaseUpgradeTests.swift; sourceTree = "<group>"; };
+		71888DBD247714AD003AD429 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		718A1C9021A07A0500E010A2 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		718A1C9221A086E300E010A2 /* AuthResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponses.swift; sourceTree = "<group>"; };
 		718A1C9421A211EB00E010A2 /* RecognitionResposnse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionResposnse.swift; sourceTree = "<group>"; };
@@ -2205,6 +2207,7 @@
 			children = (
 				71DC2F3C244CC30800A48BBF /* BarChart.swift */,
 				71673D59246BD07E008FFA50 /* LineChart.swift */,
+				71888DBD247714AD003AD429 /* PieChart.swift */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -3753,6 +3756,7 @@
 				5785A4EF1E09DA0100C3CA0C /* AnalyticsLogger.swift in Sources */,
 				EA36DE511B0118EE0034CC2D /* Database+Hints.m in Sources */,
 				84A6C82B18F510B6003B876F /* GDataXMLNode.m in Sources */,
+				71888DBE247714AD003AD429 /* PieChart.swift in Sources */,
 				EA8EB10A1B0A4AC400780BA3 /* ReceiptColumnReportCostCenter.m in Sources */,
 				71C014231F1AB14A005472B3 /* CategoriesDisplayData.swift in Sources */,
 				5705159B1E02B58500BB8FE4 /* DataPoint.swift in Sources */,

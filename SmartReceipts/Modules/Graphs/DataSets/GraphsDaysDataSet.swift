@@ -12,7 +12,7 @@ import Charts
 struct GraphsDaysDataSet: ChartDataSetProtocol {
     let data: [GraphsDaysData]
     let xLabels: [String]
-    let entries: [BarChartDataEntry]
+    let entries: [ChartDataEntry]
     let chartType: ChartType = .lineChart
 
     var title: String {

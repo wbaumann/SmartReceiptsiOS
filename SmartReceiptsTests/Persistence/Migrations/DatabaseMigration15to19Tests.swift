@@ -30,8 +30,8 @@ class DatabaseMigration15to19Tests: XCTestCase {
             }
         
             let database = Database(databasePath: copyPath, tripsFolderPath: NSTemporaryDirectory())
-            database?.open(false)
-            return database!
+            database.open(false)
+            return database
         }
         
         databaseV15migrated = database(name: "android-receipts-v15")
@@ -64,8 +64,8 @@ class DatabaseMigration15to19Tests: XCTestCase {
         XCTAssertEqual(databaseV15migrated.databaseVersion(), databaseV19.databaseVersion())
         
         // Next - verify each of our categories
-        let categoriesV19 = databaseV19.listAllCategories()!
-        let categoriesV15 = databaseV15migrated.listAllCategories()!
+        let categoriesV19 = databaseV19.listAllCategories()
+        let categoriesV15 = databaseV15migrated.listAllCategories()
         
         XCTAssertEqual(categoriesV15.count, categoriesV19.count)
         

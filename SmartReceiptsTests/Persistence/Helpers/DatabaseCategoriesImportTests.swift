@@ -39,8 +39,8 @@ class DatabaseCategoriesImportTests: XCTestCase {
         XCTAssertEqual(24, countAfter)
         
         let categories = database.listAllCategories()
-        XCTAssertNil(categoryByName("Airfare", categories: categories!), "Should have no category named Airfare")
-        XCTAssertNotNil(categoryByName("Cakes", categories: categories!), "Should have imported category named Cakes")
+        XCTAssertNil(categoryByName("Airfare", categories: categories), "Should have no category named Airfare")
+        XCTAssertNotNil(categoryByName("Cakes", categories: categories), "Should have imported category named Cakes")
     }
     
     func testCategoriesImportWithoutOverwrite() {
@@ -53,8 +53,8 @@ class DatabaseCategoriesImportTests: XCTestCase {
         XCTAssertEqual(25, countAfter)
         
         let categories = database.listAllCategories()
-        XCTAssertNotNil(categoryByName("Airfare", categories: categories!), "Should have previous category named Airfare")
-        XCTAssertNotNil(categoryByName("Cakes", categories: categories!), "Should have imported category named Cakes")
+        XCTAssertNotNil(categoryByName("Airfare", categories: categories), "Should have previous category named Airfare")
+        XCTAssertNotNil(categoryByName("Cakes", categories: categories), "Should have imported category named Cakes")
     }
     
     fileprivate func categoryByName(_ name: String, categories: [WBCategory]) -> WBCategory? {

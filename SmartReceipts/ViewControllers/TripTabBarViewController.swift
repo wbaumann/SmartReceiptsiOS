@@ -70,8 +70,7 @@ class TripTabBarViewController: TabBarViewController {
             .subscribe(onNext: { [weak self] in
                 guard let trip = self?.trip else { return }
                 let graphsView = GraphsAssembly().build(trip: trip)
-                let nav = UINavigationController(rootViewController: graphsView)
-                self?.present(nav, animated: true, completion: nil)
+                self?.present(graphsView, animated: true, completion: nil)
             }).disposed(by: bag)
         
         

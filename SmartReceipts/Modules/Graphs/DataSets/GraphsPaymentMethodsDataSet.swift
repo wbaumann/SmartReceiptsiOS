@@ -12,7 +12,7 @@ import Charts
 struct GraphsPaymentMethodDataSet: ChartDataSetProtocol {
     let data: [GraphsPaymentMethodData]
     let xLabels: [String]
-    let entries: [BarChartDataEntry]
+    let entries: [ChartDataEntry]
     let chartType: ChartType = .barChart
     
     var title: String {
