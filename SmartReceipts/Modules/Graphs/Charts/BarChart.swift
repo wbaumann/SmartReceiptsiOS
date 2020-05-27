@@ -11,13 +11,13 @@ import Charts
 
 protocol ChartDataSetProtocol {
     var xLabels: [String] { get }
-    var entries: [BarChartDataEntry] { get }
+    var entries: [ChartDataEntry] { get }
     var title: String { get }
     var chartType: ChartType { get }
 }
 
 enum ChartType {
-    case barChart, lineChart
+    case barChart, lineChart, pieChart
 }
 
 protocol ChartProtocol {

@@ -12,6 +12,7 @@ import RxSwift
 protocol GraphsRouterProtocol {
     func openPeriod() -> Observable<GraphsAssembly.PeriodSelection>
     func openModel() -> Observable<GraphsAssembly.ModelSelection>
+    func close()
 }
 
 class GraphsRouter: GraphsRouterProtocol {
@@ -36,11 +37,15 @@ class GraphsRouter: GraphsRouterProtocol {
             sheet.addAction(title: LocalizedString("RECEIPTMENU_FIELD_DATE")).map { .dates }
         ])
     }
+    
+    func close() {
+        moduleViewController.navigationController?.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension GraphsRouter {
     enum Route {
-        case period, model
+        case period, model, close
     }
 }
 

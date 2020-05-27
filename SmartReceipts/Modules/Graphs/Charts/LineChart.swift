@@ -18,22 +18,23 @@ class LineChart: LineChartView, ChartProtocol {
     }
 
     private func configure() {
-        pinchZoomEnabled = false
-        doubleTapToZoomEnabled = false
-        scaleXEnabled = false
-        scaleYEnabled = false
-        highlightPerTapEnabled = false
-        highlightPerDragEnabled = false
-        rightAxis.drawLabelsEnabled = false
-        drawGridBackgroundEnabled = false
+//        pinchZoomEnabled = false
+//        doubleTapToZoomEnabled = false
+//        scaleXEnabled = false
+//        scaleYEnabled = false
+//        highlightPerTapEnabled = false
+//        highlightPerDragEnabled = false
+//        rightAxis.drawLabelsEnabled = false
+//        drawGridBackgroundEnabled = false
+//
+//        xAxis.labelPosition = .bottom
+//        xAxis.labelFont = .semibold11
+//        xAxis.drawGridLinesEnabled = false
+//        xAxis.drawAxisLineEnabled = false
+//
+//        leftAxis.enabled = false
+//        rightAxis.enabled = false
         
-        xAxis.labelPosition = .bottom
-        xAxis.labelFont = .semibold11
-        xAxis.drawGridLinesEnabled = false
-        xAxis.drawAxisLineEnabled = false
-        
-        leftAxis.enabled = false
-        rightAxis.enabled = false
     }
     
     func buildChart(dataSet: ChartDataSetProtocol) {
@@ -43,6 +44,7 @@ class LineChart: LineChartView, ChartProtocol {
         let chartDataSet = LineChartDataSet(entries: dataSet.entries, label: dataSet.title)
         chartDataSet.valueFont = .systemFont(ofSize: 9, weight: .medium)
         chartDataSet.valueFormatter = valueFormatter
+        chartDataSet.lineWidth = 3
 //        chartDataSet.draw
         
         chartDataSet.colors = ChartColorTemplates.material()

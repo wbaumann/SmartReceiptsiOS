@@ -12,33 +12,31 @@ import Charts
 struct GraphsCategoryDataSet: ChartDataSetProtocol {
     let data: [GraphsCategoryData]
     let xLabels: [String]
-    let entries: [BarChartDataEntry]
-    let chartType: ChartType = .barChart
+    let entries: [ChartDataEntry]
+    let chartType: ChartType = .pieChart
 
     var title: String {
         return "Categories"
     }
     
-    init(data: [GraphsCategoryData], maxCount: Int = 5) {
+    init(data: [GraphsCategoryData]) {
         self.data = data
         
         var filteredDataSets = data
             .sorted(by: { $0.total.amount.doubleValue > $1.total.amount.doubleValue })
             .filter { $0.total.amount.doubleValue != 0 }
-    
-        if filteredDataSets.count > maxCount {
-            filteredDataSets = Array(filteredDataSets[..<maxCount])
+        
+        let labels = filteredDataSets.reduce([String]()) { result, dataSet -> [String] in
+            return result.adding(dataSet.category.name)
         }
         
         self.entries = filteredDataSets
             .enumerated()
             .map { index, dataSet in
-                return BarChartDataEntry(x: Double(index), y: dataSet.total.amount.doubleValue)
+                return PieChartDataEntry(value: dataSet.total.amount.doubleValue, label: labels[index])
             }
         
-        self.xLabels = filteredDataSets.reduce([String]()) { result, dataSet -> [String] in
-            return result.adding(dataSet.category.name)
-        }
+        self.xLabels = labels
     }
 }
 

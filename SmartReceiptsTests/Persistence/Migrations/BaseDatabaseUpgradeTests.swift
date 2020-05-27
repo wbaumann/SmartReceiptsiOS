@@ -31,15 +31,15 @@ class BaseDatabaseUpgradeTests: SmartReceiptsTestsBase {
     
     private func createInMemoryDatabase(_ migrated: Bool = true, tripsFolder: String = NSTemporaryDirectory()) -> Database {
         let database = Database(databasePath: ":memory:", tripsFolderPath: tripsFolder)
-        database?.open(migrated)
-        return database!
+        database.open(migrated)
+        return database
     }
     
     func unmigratedTemplateDatabaseWithName(_ name: String) -> Database {
         let path = Bundle(for: type(of: self)).path(forResource: name, ofType: "db")!
         let database = Database(databasePath: path, tripsFolderPath: NSTemporaryDirectory())
-        database?.open(false)
-        return database!
+        database.open(false)
+        return database
     }
     
     // MARK: checks methods:

@@ -46,6 +46,10 @@ class GraphsViewModel: GraphsViewModelProtocol {
     }
     
     private func bind() {
+        routeRelay.filterCases(cases: .close)
+            .subscribe(onNext: { [weak self] _ in self?.router.close() })
+            .disposed(by: bag)
+        
         routeRelay
             .filterCases(cases: .period)
             .flatMap { [weak self] _ in self?.router.openPeriod() ?? .never() }
@@ -75,21 +79,19 @@ class GraphsViewModel: GraphsViewModelProtocol {
     
     private var categoryDataSet: ChartDataSetProtocol {
         let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as [WBReceipt]
-        let catCodes = Set(receipts.compactMap { $0.category?.code })
-        let categories = Database.sharedInstance().listAllCategories().filter { catCodes.contains($0.code) }
-        let data = categories.map { category -> GraphsCategoryDataSet.GraphsCategoryData in
+        let categories = Set(receipts.compactMap { $0.category })
+        let data = categories.map { category -> GraphsCategoryDataSet.GraphsCategoryData? in
             let price = PricesCollection(currencyCode: trip.defaultCurrency.code)
             let cReceipts = receipts.filter { $0.category?.code == category.code }
             cReceipts.forEach { price.addPrice($0.price()) }
             return .init(category: category, total: price)
-        }
+        }.compactMap { $0 }
         return GraphsCategoryDataSet(data: data)
     }
     
     private var paymentMethodDataSet: ChartDataSetProtocol {
         let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as [WBReceipt]
-        let methodsSet = Set(receipts.compactMap { $0.paymentMethod.method })
-        let paymentMethods = Database.sharedInstance().allPaymentMethods().filter { methodsSet.contains($0.method) }
+        let paymentMethods = Set(receipts.compactMap { $0.paymentMethod })
         let data = paymentMethods.map { method -> GraphsPaymentMethodDataSet.GraphsPaymentMethodData in
             let price = PricesCollection(currencyCode: trip.defaultCurrency.code)
             let pmReceipts = receipts.filter { $0.paymentMethod == method}

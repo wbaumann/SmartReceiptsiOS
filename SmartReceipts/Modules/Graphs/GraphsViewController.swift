@@ -16,8 +16,10 @@ class GraphsViewController: UIViewController, Storyboardable {
     
     @IBOutlet private var barChartView: BarChart!
     @IBOutlet private var lineChartView: LineChart!
+    @IBOutlet private var pieChartView: PieChart!
     @IBOutlet private var periodButton: UIButton!
     @IBOutlet private var modelButton: UIButton!
+    @IBOutlet private var closeButton: UIBarButtonItem!
     
     private lazy var valueFormatter: IValueFormatter = {
         let locale = Locale.current as NSLocale
@@ -51,6 +53,10 @@ class GraphsViewController: UIViewController, Storyboardable {
         modelButton.rx.tap.map { .model }
             .bind(to: viewModel.routeObserver)
             .disposed(by: bag)
+        
+        closeButton.rx.tap.map { .close }
+            .bind(to: viewModel.routeObserver)
+            .disposed(by: bag)
     }
     
     private func setupChartData() {
@@ -64,6 +70,8 @@ class GraphsViewController: UIViewController, Storyboardable {
     private func activateChart(dataSet: ChartDataSetProtocol) {
         lineChartView.isHidden = true
         barChartView.isHidden = true
+        pieChartView.isHidden = true
+        
         let activeChart: ChartProtocol
         switch dataSet.chartType {
         case .barChart:
@@ -72,6 +80,9 @@ class GraphsViewController: UIViewController, Storyboardable {
         case .lineChart:
             lineChartView.isHidden = false
             activeChart = lineChartView
+        case .pieChart:
+            pieChartView.isHidden = false
+            activeChart = pieChartView
         }
         activeChart.buildChart(dataSet: dataSet)
     }
