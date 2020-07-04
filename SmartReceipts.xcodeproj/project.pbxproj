@@ -374,6 +374,9 @@
 		71C014251F1AB14A005472B3 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0141F1F1AB14A005472B3 /* CategoriesPresenter.swift */; };
 		71C014261F1AB14A005472B3 /* CategoriesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C014201F1AB14A005472B3 /* CategoriesRouter.swift */; };
 		71C014271F1AB14A005472B3 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C014211F1AB14A005472B3 /* CategoriesView.swift */; };
+		71C1E0EB247F96D400596106 /* PullUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1E0EA247F96D400596106 /* PullUpController.swift */; };
+		71C1E0ED2485A34D00596106 /* GraphsInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1E0EC2485A34D00596106 /* GraphsInfoViewController.swift */; };
+		71C1E0EF2485B81F00596106 /* GraphsInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1E0EE2485B81F00596106 /* GraphsInfoCell.swift */; };
 		71C2FD0D20E758AA00DF068E /* BackupProvidersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD0C20E758AA00DF068E /* BackupProvidersManager.swift */; };
 		71C2FD0F20E7F48C00DF068E /* BackupProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD0E20E7F48C00DF068E /* BackupProviderFactory.swift */; };
 		71C2FD1220E7F71000DF068E /* NoOpBackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2FD1120E7F71000DF068E /* NoOpBackupProvider.swift */; };
@@ -1018,6 +1021,9 @@
 		71C0141F1F1AB14A005472B3 /* CategoriesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
 		71C014201F1AB14A005472B3 /* CategoriesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesRouter.swift; sourceTree = "<group>"; };
 		71C014211F1AB14A005472B3 /* CategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		71C1E0EA247F96D400596106 /* PullUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullUpController.swift; sourceTree = "<group>"; };
+		71C1E0EC2485A34D00596106 /* GraphsInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsInfoViewController.swift; sourceTree = "<group>"; };
+		71C1E0EE2485B81F00596106 /* GraphsInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsInfoCell.swift; sourceTree = "<group>"; };
 		71C2FD0C20E758AA00DF068E /* BackupProvidersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupProvidersManager.swift; sourceTree = "<group>"; };
 		71C2FD0E20E7F48C00DF068E /* BackupProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupProviderFactory.swift; sourceTree = "<group>"; };
 		71C2FD1120E7F71000DF068E /* NoOpBackupProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoOpBackupProvider.swift; sourceTree = "<group>"; };
@@ -1508,6 +1514,8 @@
 				71DC2F3B244CC2E800A48BBF /* Charts */,
 				71136AD324389CC2003CFC67 /* GraphsViewController.storyboard */,
 				71136ACC243899A2003CFC67 /* GraphsViewController.swift */,
+				71C1E0EC2485A34D00596106 /* GraphsInfoViewController.swift */,
+				71C1E0EE2485B81F00596106 /* GraphsInfoCell.swift */,
 				71136ACE243899A2003CFC67 /* GraphsViewModel.swift */,
 				71136ACB243899A2003CFC67 /* GraphsRouter.swift */,
 				71136ACD243899A2003CFC67 /* GraphsAssembly.swift */,
@@ -1648,6 +1656,7 @@
 				714104D41FF43D7700C334C5 /* LaunchView.xib */,
 				71628C20204EF8320032EEB7 /* NumberKeyboard.swift */,
 				71628C22204EFB7F0032EEB7 /* NumberKeyboard.xib */,
+				71C1E0EA247F96D400596106 /* PullUpController.swift */,
 				71D7FA382304B5FF001F36E1 /* VIews */,
 			);
 			path = UI;
@@ -3863,6 +3872,7 @@
 				EA4C5CBE1AF2866E0083FDD7 /* UIView+LoadHelpers.m in Sources */,
 				71871502224FDEB70061D493 /* DatabaseUpgradeToVersion17.swift in Sources */,
 				A7F05B9A1CFB49590079F1AD /* Priced.swift in Sources */,
+				71C1E0EF2485B81F00596106 /* GraphsInfoCell.swift in Sources */,
 				71572D861F15EA41001A1301 /* ColumnsDisplayData.swift in Sources */,
 				711E81CF1FD45C5200708056 /* ReportGenerator.swift in Sources */,
 				7185AEFA1EFC1CC90038ED2A /* ReceiptMoveCopyView.swift in Sources */,
@@ -3891,6 +3901,7 @@
 				71655090218CD013007B55FF /* NSString+Extensions.m in Sources */,
 				71AEDDE21EDF7FF400BAC0DD /* TripDistancesView.swift in Sources */,
 				A7AFB2441CEC1F6800718744 /* PaymentMethod.swift in Sources */,
+				71C1E0EB247F96D400596106 /* PullUpController.swift in Sources */,
 				71FB1D421F195D0D00742FF5 /* PaymentMethodsRouter.swift in Sources */,
 				71AF0EAC2007BE7A00AA4C37 /* DescribedSwitchCell.swift in Sources */,
 				EA8D81B21AEA7CBD00BAC943 /* ReceiptColumnReimbursable.m in Sources */,
@@ -4011,6 +4022,7 @@
 				71AF49E01EFDA4810022B2E2 /* ReceiptImageViewerDisplayData.swift in Sources */,
 				7120099D1F12D0DE0049927E /* TickTock.swift in Sources */,
 				71762E781FD46F4800AC1388 /* ReportPDFGenerator.swift in Sources */,
+				71C1E0ED2485A34D00596106 /* GraphsInfoViewController.swift in Sources */,
 				7165509C218E133E007B55FF /* StatusBar+Extensions.swift in Sources */,
 				7185AEF71EFC1CC90038ED2A /* ReceiptMoveCopyInteractor.swift in Sources */,
 				71652EAE1F646758002C8228 /* Toast+Extensions.swift in Sources */,

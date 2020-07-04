@@ -11,6 +11,8 @@ import Foundation
 private let DateStringFormatterKey = "DateStringFormatterKey-yyyy-MM-dd"
 
 extension Date {
+    static var now: Date { Date() }
+    
     func dayString() -> String {
         return formatter().string(from: self)
     }
@@ -40,4 +42,5 @@ extension Date {
         let components = Calendar.current.dateComponents([.day], from: date1, to: date2)
         return components.day ?? 0
     }
+
 }

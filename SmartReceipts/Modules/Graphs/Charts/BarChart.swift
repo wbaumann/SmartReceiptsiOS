@@ -22,6 +22,7 @@ enum ChartType {
 
 protocol ChartProtocol {
     func buildChart(dataSet: ChartDataSetProtocol)
+    func color(at index: Int) -> UIColor?
 }
 
 class BarChart: BarChartView, ChartProtocol {
@@ -53,6 +54,10 @@ class BarChart: BarChartView, ChartProtocol {
         
         leftAxis.enabled = false
         rightAxis.enabled = false
+    }
+    
+    func color(at index: Int) -> UIColor? {
+        data?.dataSets.first?.color(atIndex: index)
     }
     
     func buildChart(dataSet: ChartDataSetProtocol) {
