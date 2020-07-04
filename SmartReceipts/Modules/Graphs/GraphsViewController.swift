@@ -21,6 +21,12 @@ class GraphsViewController: UIViewController, Storyboardable {
     @IBOutlet private var modelButton: UIButton!
     @IBOutlet private var closeButton: UIBarButtonItem!
     
+    private lazy var graphsInfoViewController: GraphsInfoViewController = {
+        let infoView = GraphsInfoViewController.create()
+        addPullUpController(infoView, initialStickyPointOffset: 400, animated: false, completion: nil)
+        return infoView
+    }()
+    
     private lazy var valueFormatter: IValueFormatter = {
         let locale = Locale.current as NSLocale
         let symbol = locale.displayName(forKey: .currencySymbol, value: viewModel.trip.defaultCurrency.code) ?? ""
@@ -45,7 +51,15 @@ class GraphsViewController: UIViewController, Storyboardable {
         bind()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     private func bind() {
+        viewModel.period.map { $0.title }
+            .bind(to: periodButton.rx.titleBinder())
+            .disposed(by: bag)
+        
         periodButton.rx.tap.map { .period }
             .bind(to: viewModel.routeObserver)
             .disposed(by: bag)
@@ -85,6 +99,29 @@ class GraphsViewController: UIViewController, Storyboardable {
             activeChart = pieChartView
         }
         activeChart.buildChart(dataSet: dataSet)
+        
+        
+        let items: [GraphsInfoDataSource.Item]
+        
+        items = dataSet.entries.enumerated().map { index, entry -> GraphsInfoDataSource.Item in
+            let title = dataSet.xLabels[index]
+            let value = entry.y
+            let color = activeChart.color(at: index) ?? .violetMain
+            return .init(title: title, total: "$ \(value)", color: color)
+        }
+
+        graphsInfoViewController.dataSource = GraphsInfoDataSource(items: items)
     }
     
+}
+
+extension GraphsAssembly.PeriodSelection {
+    var title: String {
+        switch self {
+        case .daily: return LocalizedString("graphs.period.day")
+        case .weekly: return LocalizedString("graphs.period.week")
+        case .monthly: return LocalizedString("graphs.period.month")
+        case .report: return LocalizedString("report")
+        }
+    }
 }

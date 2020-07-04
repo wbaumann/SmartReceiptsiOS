@@ -56,3 +56,7 @@
 
 /** iOS Strings that we should add to Android **/
 "generic_save_error" = "Ошибка при сохранение иземенений";
+
+"graphs.period.day" = "За день";
+"graphs.period.week" = "За неделю";
+"graphs.period.month" = "За месяц";

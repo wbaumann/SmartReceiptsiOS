@@ -23,8 +23,9 @@ class GraphsRouter: GraphsRouterProtocol {
         defer { sheet.show() }
         return Observable<GraphsAssembly.PeriodSelection>.merge([
             sheet.addAction(title: LocalizedString("report")).map { .report },
-            sheet.addAction(title: LocalizedString("receipt_action_camera")).map { .daily },
-            sheet.addAction(title: LocalizedString("receipt_action_text")).map { .monthly }
+            sheet.addAction(title: LocalizedString("graphs.period.day")).map { .daily },
+            sheet.addAction(title: LocalizedString("graphs.period.week")).map { .weekly },
+            sheet.addAction(title: LocalizedString("graphs.period.month")).map { .monthly }
         ])
     }
 

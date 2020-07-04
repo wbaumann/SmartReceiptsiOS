@@ -26,7 +26,7 @@ class GraphsAssembly {
 
 extension GraphsAssembly {
     enum PeriodSelection {
-        case report, daily, monthly
+        case report, daily, weekly, monthly
     }
 
     enum ModelSelection {

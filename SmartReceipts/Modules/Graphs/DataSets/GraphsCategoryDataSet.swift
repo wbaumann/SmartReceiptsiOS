@@ -22,7 +22,7 @@ struct GraphsCategoryDataSet: ChartDataSetProtocol {
     init(data: [GraphsCategoryData]) {
         self.data = data
         
-        var filteredDataSets = data
+        let filteredDataSets = data
             .sorted(by: { $0.total.amount.doubleValue > $1.total.amount.doubleValue })
             .filter { $0.total.amount.doubleValue != 0 }
         

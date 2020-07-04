@@ -57,3 +57,7 @@
 
 /** iOS Strings that we should add to Android **/
 "generic_save_error" = "Помилка при збереження змiн";
+
+"graphs.period.day" = "За день";
+"graphs.period.week" = "За тиждень";
+"graphs.period.month" = "За місяць";

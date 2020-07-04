@@ -20,6 +20,10 @@ class PieChart: PieChartView, ChartProtocol {
         legend.enabled = false
     }
     
+    func color(at index: Int) -> UIColor? {
+        data?.dataSets.first?.color(atIndex: index)
+    }
+    
     func buildChart(dataSet: ChartDataSetProtocol) {
         let chartDataSet = PieChartDataSet(entries: dataSet.entries, label: nil)
         chartDataSet.valueFont = .systemFont(ofSize: 9, weight: .medium)

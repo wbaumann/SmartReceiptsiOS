@@ -57,3 +57,7 @@
 
 /** iOS Strings that we should add to Android **/
 "generic_save_error" = "Falha ao salvar suas alterações";
+
+"graphs.period.day" = "Za dzień";
+"graphs.period.week" = "Za tydzień";
+"graphs.period.month" = "Za miesiąc";

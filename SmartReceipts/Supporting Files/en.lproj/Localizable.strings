@@ -65,3 +65,7 @@
 
 /** Untranslated Android Strings **/
 "settings_pdf_page_size" = "PDF Page Size:";
+
+"graphs.period.day" = "Last day";
+"graphs.period.week" = "Last week";
+"graphs.period.month" = "Last month";

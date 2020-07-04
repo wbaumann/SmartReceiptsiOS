@@ -62,3 +62,7 @@
 
 /** Untranslated Android Strings **/
 "settings_pdf_page_size" = "גודל דף פידיאף:";
+
+"graphs.period.day" = "ליום";
+"graphs.period.week" = "במהלך השבוע";
+"graphs.period.month" = "לחודש";

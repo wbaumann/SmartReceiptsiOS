@@ -57,3 +57,7 @@
 
 /** iOS Strings that we should add to Android **/
 "generic_save_error" = "Fehler beim Speichern der Änderungen";
+
+"graphs.period.day" = "Pro Tag";
+"graphs.period.week" = "Während der Woche";
+"graphs.period.month" = "Pro Monat";

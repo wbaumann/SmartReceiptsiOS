@@ -144,13 +144,13 @@ class GoogleSyncService: SyncServiceProtocol {
                 AppNotificationCenter.postDidSyncBackup()
                 self.dbLock.unlock()
             }).do(onError: { [weak self] in self?.handleError($0) })
-                .do(onError: { _ in
-                    self.dbLock.unlock()
-                }).subscribe(onSuccess: { file in
-                    Logger.debug("DB Synced")
-                }, onError: { error in
-                    Logger.error("DB Sync Error - \(error.localizedDescription)")
-                }).disposed(by: self.bag)
+            .do(onError: { _ in
+                self.dbLock.unlock()
+            }).subscribe(onSuccess: { file in
+                Logger.debug("DB Synced")
+            }, onError: { error in
+                Logger.error("DB Sync Error - \(error.localizedDescription)")
+            }).disposed(by: self.bag)
         }
     }
     
