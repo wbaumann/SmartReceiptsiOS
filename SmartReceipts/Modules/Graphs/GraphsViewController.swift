@@ -20,12 +20,11 @@ class GraphsViewController: UIViewController, Storyboardable {
     @IBOutlet private var periodButton: UIButton!
     @IBOutlet private var modelButton: UIButton!
     @IBOutlet private var closeButton: UIBarButtonItem!
+    @IBOutlet private var shareButton: UIBarButtonItem!
     
-    private lazy var graphsInfoViewController: GraphsInfoViewController = {
-        let infoView = GraphsInfoViewController.create()
-        addPullUpController(infoView, initialStickyPointOffset: 400, animated: false, completion: nil)
-        return infoView
-    }()
+    var activeChart: ChartProtocol?
+    
+    private var graphsInfoViewController: GraphsInfoViewController?
     
     private lazy var valueFormatter: IValueFormatter = {
         let locale = Locale.current as NSLocale
@@ -51,6 +50,14 @@ class GraphsViewController: UIViewController, Storyboardable {
         bind()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard let activeChart = activeChart, graphsInfoViewController == nil else { return }
+        let infoHeight = view.bounds.height - (activeChart.bounds.height + activeChart.frame.origin.y)
+        graphsInfoViewController = GraphsInfoViewController.create(maxHeight: infoHeight)
+        addPullUpController(graphsInfoViewController!, initialStickyPointOffset: infoHeight, animated: false, completion: nil)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -71,6 +78,23 @@ class GraphsViewController: UIViewController, Storyboardable {
         closeButton.rx.tap.map { .close }
             .bind(to: viewModel.routeObserver)
             .disposed(by: bag)
+        
+        shareButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.shareGraph()
+            }).disposed(by: bag)
+    }
+    
+    private func shareGraph() {
+        guard let activeChart = activeChart else { return }
+        let color = activeChart.backgroundColor
+        activeChart.backgroundColor = .white
+        let snapshot = activeChart.makeSnapshot()
+        activeChart.backgroundColor = color
+        
+        guard let image = snapshot else { return }
+        let shareVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        present(shareVC, animated: true, completion: nil)
     }
     
     private func setupChartData() {
@@ -86,7 +110,6 @@ class GraphsViewController: UIViewController, Storyboardable {
         barChartView.isHidden = true
         pieChartView.isHidden = true
         
-        let activeChart: ChartProtocol
         switch dataSet.chartType {
         case .barChart:
             barChartView.isHidden = false
@@ -98,19 +121,19 @@ class GraphsViewController: UIViewController, Storyboardable {
             pieChartView.isHidden = false
             activeChart = pieChartView
         }
-        activeChart.buildChart(dataSet: dataSet)
         
+        guard let activeChart = activeChart else { return }
+        activeChart.buildChart(dataSet: dataSet)
         
         let items: [GraphsInfoDataSource.Item]
         
         items = dataSet.entries.enumerated().map { index, entry -> GraphsInfoDataSource.Item in
             let title = dataSet.xLabels[index]
-            let value = entry.y
             let color = activeChart.color(at: index) ?? .violetMain
-            return .init(title: title, total: "$ \(value)", color: color)
+            return .init(title: title, total: "dataSet.tota", color: color)
         }
-
-        graphsInfoViewController.dataSource = GraphsInfoDataSource(items: items)
+    
+        graphsInfoViewController?.dataSource = GraphsInfoDataSource(items: items)
     }
     
 }

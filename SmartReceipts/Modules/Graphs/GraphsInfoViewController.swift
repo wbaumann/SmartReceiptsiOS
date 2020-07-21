@@ -8,6 +8,7 @@
 
 class GraphsInfoViewController: PullUpController {
     @IBOutlet private weak var tableView: UITableView!
+    private var maxHeight: CGFloat = 0
     
     var dataSource: GraphsInfoDataSource? {
         didSet {
@@ -23,13 +24,15 @@ class GraphsInfoViewController: PullUpController {
         view.layer.cornerRadius = 24
     }
     
-    static func create() -> Self {
+    static func create(maxHeight: CGFloat) -> Self {
         let sb = UIStoryboard(name: String(describing: GraphsViewController.self), bundle: nil)
-        return sb.instantiateViewController(withIdentifier: String(describing: Self.self)) as! Self
+        let this = sb.instantiateViewController(withIdentifier: String(describing: Self.self)) as! Self
+        this.maxHeight = maxHeight
+        return this
     }
     
     override var pullUpControllerPreferredSize: CGSize {
-        return .init(width: UIScreen.main.bounds.width, height: 400)
+        return .init(width: UIScreen.main.bounds.width, height: maxHeight)
     }
 }
 
@@ -48,7 +51,6 @@ class GraphsInfoDataSource: NSObject, UITableViewDataSource {
         return tableView.dequeueCell(cell: GraphsInfoCell.self)
             .configure(item: items[indexPath.row])
     }
-    
 }
 
 extension GraphsInfoDataSource {

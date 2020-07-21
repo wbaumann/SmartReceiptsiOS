@@ -28,4 +28,13 @@ extension UIView {
     class func initFromNib() -> Self {
         return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?[0] as! Self
     }
+    
+    func makeSnapshot() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
+        defer { UIGraphicsEndImageContext() }
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        layer.render(in: context)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        return image
+    }
 }

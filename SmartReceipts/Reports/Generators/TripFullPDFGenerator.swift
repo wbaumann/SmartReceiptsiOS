@@ -30,9 +30,6 @@ class TripFullPDFGenerator: TripImagesPDFGenerator {
         let taxesTotal = PricesCollection()
         let distanceTotal = PricesCollection()
         let grandTotal = PricesCollection()
-        let grandTotalReimbursable = PricesCollection()
-        
-        let pricesPreTax = WBPreferences.enteredPricePreTax()
         let reportOnlyReimbursable = WBPreferences.onlyIncludeReimbursableReceiptsInReports()
     
         var hasNonReimbursable = false
