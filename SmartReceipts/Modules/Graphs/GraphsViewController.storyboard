@@ -88,6 +88,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Q2c-dy-l2k">
                         <barButtonItem key="leftBarButtonItem" image="close_button" style="done" id="qEv-wC-K0w"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="share_tab" id="WbC-Hv-0Tm"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -98,6 +99,7 @@
                         <outlet property="modelButton" destination="yA2-BO-pfJ" id="5mI-Mc-Lr7"/>
                         <outlet property="periodButton" destination="uxb-0P-Dau" id="0Rp-mI-Kfu"/>
                         <outlet property="pieChartView" destination="aa1-Ar-bZ0" id="BKj-5F-WDf"/>
+                        <outlet property="shareButton" destination="WbC-Hv-0Tm" id="kfp-R7-vW7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oo6-x9-Tqq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -200,5 +202,6 @@
     <resources>
         <image name="close_button" width="14" height="14"/>
         <image name="navigation_arrow_down" width="16" height="16"/>
+        <image name="share_tab" width="20" height="22"/>
     </resources>
 </document>

@@ -14,7 +14,7 @@ struct GraphsCategoryDataSet: ChartDataSetProtocol {
     let xLabels: [String]
     let entries: [ChartDataEntry]
     let chartType: ChartType = .pieChart
-
+    
     var title: String {
         return "Categories"
     }

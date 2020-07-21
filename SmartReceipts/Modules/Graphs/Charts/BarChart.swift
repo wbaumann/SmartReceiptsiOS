@@ -14,13 +14,14 @@ protocol ChartDataSetProtocol {
     var entries: [ChartDataEntry] { get }
     var title: String { get }
     var chartType: ChartType { get }
+    //var formattedPrice: String { get }
 }
 
 enum ChartType {
     case barChart, lineChart, pieChart
 }
 
-protocol ChartProtocol {
+protocol ChartProtocol: UIView {
     func buildChart(dataSet: ChartDataSetProtocol)
     func color(at index: Int) -> UIColor?
 }
