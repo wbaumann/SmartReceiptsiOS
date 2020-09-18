@@ -19,7 +19,7 @@ def pods
     # UI
     pod 'lottie-ios'
     pod 'Eureka'
-    pod 'Toaster'
+    pod 'Toaster', :git => 'https://github.com/devxoul/Toaster.git', :branch => 'master'
     pod 'Charts'
     
     # Rx
