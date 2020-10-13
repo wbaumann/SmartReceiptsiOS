@@ -21,24 +21,32 @@ class GraphsViewController: UIViewController, Storyboardable {
     @IBOutlet private var modelButton: UIButton!
     @IBOutlet private var closeButton: UIBarButtonItem!
     @IBOutlet private var shareButton: UIBarButtonItem!
+    @IBOutlet private var graphsTitle: UILabel!
     
     var activeChart: ChartProtocol?
     
     private var graphsInfoViewController: GraphsInfoViewController?
     
     private lazy var valueFormatter: IValueFormatter = {
+        return DefaultValueFormatter(formatter: numberFormatter)
+    }()
+    
+    private lazy var numberFormatter: NumberFormatter = {
         let locale = Locale.current as NSLocale
         let symbol = locale.displayName(forKey: .currencySymbol, value: viewModel.trip.defaultCurrency.code) ?? ""
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.maximumFractionDigits = 2
+        numberFormatter.minimumFractionDigits = 2
         numberFormatter.negativeSuffix = " \(symbol)"
         numberFormatter.positiveSuffix = numberFormatter.negativeSuffix
-        return DefaultValueFormatter(formatter: numberFormatter)
+        return numberFormatter
     }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        pieChartView.valueFormatter = valueFormatter
         barChartView.valueFormatter = valueFormatter
         lineChartView.valueFormatter = valueFormatter
         
@@ -47,16 +55,15 @@ class GraphsViewController: UIViewController, Storyboardable {
         title = LocalizedString("report_info_graphs")
         periodButton.layer.cornerRadius = periodButton.bounds.height/2
         modelButton.layer.cornerRadius = modelButton.bounds.height/2
+        graphsTitle.text = viewModel.trip.name
         bind()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        guard let activeChart = activeChart, graphsInfoViewController == nil else { return }
-        let infoHeight = view.bounds.height - (activeChart.bounds.height + activeChart.frame.origin.y)
-        graphsInfoViewController = GraphsInfoViewController.create(maxHeight: infoHeight)
-        addPullUpController(graphsInfoViewController!, initialStickyPointOffset: infoHeight, animated: false, completion: nil)
+        configureInfoViewIfNeeded()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -83,6 +90,14 @@ class GraphsViewController: UIViewController, Storyboardable {
             .subscribe(onNext: { [weak self] in
                 self?.shareGraph()
             }).disposed(by: bag)
+    }
+    
+    private func configureInfoViewIfNeeded() {
+        guard let activeChart = activeChart, graphsInfoViewController == nil else { return }
+        let infoHeight = view.bounds.height - (activeChart.bounds.height + activeChart.frame.origin.y)
+        graphsInfoViewController = GraphsInfoViewController.create(maxHeight: infoHeight)
+        addPullUpController(graphsInfoViewController!, initialStickyPointOffset: infoHeight, animated: false, completion: nil)
+        setupChartData()
     }
     
     private func shareGraph() {
@@ -125,12 +140,11 @@ class GraphsViewController: UIViewController, Storyboardable {
         guard let activeChart = activeChart else { return }
         activeChart.buildChart(dataSet: dataSet)
         
-        let items: [GraphsInfoDataSource.Item]
-        
-        items = dataSet.entries.enumerated().map { index, entry -> GraphsInfoDataSource.Item in
+        let items = dataSet.entries.enumerated().map { index, entry -> GraphsInfoDataSource.Item in
             let title = dataSet.xLabels[index]
             let color = activeChart.color(at: index) ?? .violetMain
-            return .init(title: title, total: "dataSet.tota", color: color)
+            let total = numberFormatter.string(from: NSNumber(value: entry.y)) ?? "NaN"
+            return .init(title: title, total: total, color: color)
         }
     
         graphsInfoViewController?.dataSource = GraphsInfoDataSource(items: items)

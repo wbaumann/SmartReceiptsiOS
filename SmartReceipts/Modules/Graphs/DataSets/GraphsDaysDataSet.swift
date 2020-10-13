@@ -16,7 +16,7 @@ struct GraphsDaysDataSet: ChartDataSetProtocol {
     let chartType: ChartType = .lineChart
 
     var title: String {
-        return "Days"
+        return LocalizedString("RECEIPTMENU_FIELD_DATE")
     }
     
     init(data: [GraphsDaysData], maxCount: Int = 1000) {
