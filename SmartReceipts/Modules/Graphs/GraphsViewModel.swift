@@ -61,13 +61,20 @@ class GraphsViewModel: GraphsViewModelProtocol {
         
         routeRelay
             .filterCases(cases: .period)
-            .flatMap { [weak self] _ in self?.router.openPeriod() ?? .never() }
+            .flatMap { [weak self] _ -> Observable<GraphsAssembly.PeriodSelection> in
+                guard let self = self else { return .never() }
+                let dayAvailable = !self.receiptsIn(period: .init(selection: .daily)).isEmpty && self.currentModel != .dates
+                return self.router.openPeriod(dayAvailable: dayAvailable)
+            }
             .subscribe(onNext: { [weak self] in self?.switchPeriod(to: $0) })
             .disposed(by: bag)
         
         routeRelay
             .filterCases(cases: .model)
-            .flatMap { [weak self] _ in self?.router.openModel() ?? .never() }
+            .flatMap { [weak self] _ -> Observable<GraphsAssembly.ModelSelection> in
+                guard let self = self else { return .never() }
+                return self.router.openModel(dailyAvailable: self.periodSubject.value != .daily)
+            }
             .subscribe(onNext: { [weak self] in self?.switchModel(to: $0) })
             .disposed(by: bag)
     }
@@ -95,21 +102,16 @@ class GraphsViewModel: GraphsViewModelProtocol {
     }
     
     var datePeriod: DatePeriod {
-        switch periodSubject.value {
-        case .report: return DatePeriod(from: .distantPast, to: .distantFuture)
-        case .weekly: return DatePeriod(from: Date().addingTimeInterval(-.week), to: .now)
-        case .daily: return DatePeriod(from: Date().addingTimeInterval(-.day), to: .now)
-        case .monthly: return DatePeriod(from: Calendar.current.date(byAdding: .month, value: -1, to: .now)!, to: .now)
-        }
+        .init(selection: periodSubject.value)
     }
-    
-    private var receiptsInPeriod: [WBReceipt] {
-        let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as [WBReceipt]
-        return receipts.filter { datePeriod.included(date: $0.date) }
+     
+    private func receiptsIn(period: DatePeriod) -> [WBReceipt] {
+        let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as! [WBReceipt]
+        return receipts.filter { period.included(date: $0.date) }
     }
     
     private func categoryDataSet(period: GraphsAssembly.PeriodSelection) -> ChartDataSetProtocol {
-        let receipts = ((Database.sharedInstance().allReceipts(for: trip) ?? []) as [WBReceipt])
+        let receipts = ((Database.sharedInstance().allReceipts(for: trip) ?? []) as! [WBReceipt])
         let receiptsInPeriod = receipts.filter { datePeriod.included(date: $0.date) }
         let categories = Set(receiptsInPeriod.compactMap { $0.category })
         let data = categories.map { category -> GraphsCategoryDataSet.GraphsCategoryData? in
@@ -122,6 +124,7 @@ class GraphsViewModel: GraphsViewModelProtocol {
     }
     
     private func paymentMethodDataSet(period: GraphsAssembly.PeriodSelection) -> ChartDataSetProtocol {
+        let receiptsInPeriod = receiptsIn(period: datePeriod)
         let paymentMethods = Set(receiptsInPeriod.compactMap { $0.paymentMethod })
         let data = paymentMethods.map { method -> GraphsPaymentMethodDataSet.GraphsPaymentMethodData in
             let price = PricesCollection(currencyCode: trip.defaultCurrency.code)
@@ -133,6 +136,7 @@ class GraphsViewModel: GraphsViewModelProtocol {
     }
     
     private func daysDataSet(period: GraphsAssembly.PeriodSelection) -> ChartDataSetProtocol {
+        let receiptsInPeriod = receiptsIn(period: datePeriod)
         let days = Set(receiptsInPeriod.map { $0.date.dayString() })
         let data = days.map { day -> GraphsDaysDataSet.GraphsDaysData in
             let price = PricesCollection(currencyCode: trip.defaultCurrency.code)
@@ -144,7 +148,7 @@ class GraphsViewModel: GraphsViewModelProtocol {
     }
     
     private var categoryDataSet: ChartDataSetProtocol {
-        let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as [WBReceipt]
+        let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as! [WBReceipt]
         let categories = Set(receipts.compactMap { $0.category })
         let data = categories.map { category -> GraphsCategoryDataSet.GraphsCategoryData? in
             let price = PricesCollection(currencyCode: trip.defaultCurrency.code)
@@ -156,7 +160,7 @@ class GraphsViewModel: GraphsViewModelProtocol {
     }
     
     private var paymentMethodDataSet: ChartDataSetProtocol {
-        let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as [WBReceipt]
+        let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as! [WBReceipt]
         let paymentMethods = Set(receipts.compactMap { $0.paymentMethod })
         let data = paymentMethods.map { method -> GraphsPaymentMethodDataSet.GraphsPaymentMethodData in
             let price = PricesCollection(currencyCode: trip.defaultCurrency.code)
@@ -168,7 +172,7 @@ class GraphsViewModel: GraphsViewModelProtocol {
     }
     
     private var daysDataSet: ChartDataSetProtocol {
-        let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as [WBReceipt]
+        let receipts = (Database.sharedInstance().allReceipts(for: trip) ?? []) as! [WBReceipt]
         let days = Set(receipts.map { $0.date.dayString() })
         let data = days.map { day -> GraphsDaysDataSet.GraphsDaysData in
             let price = PricesCollection(currencyCode: trip.defaultCurrency.code)
@@ -180,10 +184,26 @@ class GraphsViewModel: GraphsViewModelProtocol {
     }
 }
 
+
+
 extension GraphsViewModel {
     struct DatePeriod {
         let from: Date
         let to: Date
+        
+        init(from: Date, to: Date) {
+            self.from = from
+            self.to = to
+        }
+        
+        init(selection: GraphsAssembly.PeriodSelection) {
+            switch selection {
+            case .report: self.init(from: .distantPast, to: .distantFuture)
+            case .weekly: self.init(from: Date().addingTimeInterval(-.week), to: .now)
+            case .daily: self.init(from: Date().addingTimeInterval(-.day), to: .now)
+            case .monthly: self.init(from: Calendar.current.date(byAdding: .month, value: -1, to: .now)!, to: .now)
+            }
+        }
         
         func included(date: Date) -> Bool {
             return date.timeIntervalSince1970 >= from.timeIntervalSince1970

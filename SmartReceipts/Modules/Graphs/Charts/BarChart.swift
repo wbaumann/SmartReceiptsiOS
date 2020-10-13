@@ -22,6 +22,7 @@ enum ChartType {
 }
 
 protocol ChartProtocol: UIView {
+    var valueFormatter: IValueFormatter? { get set }
     func buildChart(dataSet: ChartDataSetProtocol)
     func color(at index: Int) -> UIColor?
 }

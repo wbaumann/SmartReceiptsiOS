@@ -10,7 +10,8 @@ import Foundation
 import Charts
 
 class PieChart: PieChartView, ChartProtocol {
-
+    var valueFormatter: IValueFormatter?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         configure()
@@ -31,6 +32,7 @@ class PieChart: PieChartView, ChartProtocol {
         chartDataSet.valueLinePart1Length = 0.2
         chartDataSet.yValuePosition = .outsideSlice
         chartDataSet.colors = ChartColorTemplates.vordiplom()
+        chartDataSet.valueFormatter = valueFormatter
         let pieData = PieChartData(dataSet: chartDataSet)
         pieData.setValueFont(.systemFont(ofSize: 12, weight: .medium))
         pieData.setValueTextColor(.black)

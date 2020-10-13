@@ -18,6 +18,18 @@ class LineChart: LineChartView, ChartProtocol {
     }
 
     private func configure() {
+        xAxis.drawAxisLineEnabled = false
+        xAxis.drawGridLinesEnabled = false
+        xAxis.drawLimitLinesBehindDataEnabled = false
+        
+        leftAxis.drawAxisLineEnabled = false
+        leftAxis.drawGridLinesEnabled = false
+        leftAxis.drawLabelsEnabled = false
+        rightAxis.drawAxisLineEnabled = false
+        rightAxis.drawGridLinesEnabled = false
+        rightAxis.drawLabelsEnabled = false
+        
+        xAxis.labelPosition = .bottom
         
     }
     
@@ -35,5 +47,7 @@ class LineChart: LineChartView, ChartProtocol {
         
         chartDataSet.colors = ChartColorTemplates.material()
         data = LineChartData(dataSet: chartDataSet)
+        
+        
     }
 }

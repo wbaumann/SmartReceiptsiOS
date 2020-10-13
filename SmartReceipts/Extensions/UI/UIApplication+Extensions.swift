@@ -26,4 +26,12 @@ extension UIApplication {
             return false
         }
     }
+    
+    static var topNotchOffset: CGFloat {
+        if #available(iOS 11.0, *) {
+            return UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0
+        } else {
+            return 0
+        }
+    }
 }
