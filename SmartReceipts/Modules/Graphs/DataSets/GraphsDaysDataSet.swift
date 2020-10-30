@@ -23,7 +23,7 @@ struct GraphsDaysDataSet: ChartDataSetProtocol {
         self.data = data
         
         var filteredDataSets = data
-            .sorted(by: { $0.total.amount.doubleValue > $1.total.amount.doubleValue })
+            .sorted(by: { $0.dayDate > $1.dayDate })
             .filter { $0.total.amount.doubleValue != 0 }
     
         if filteredDataSets.count > maxCount {
@@ -44,6 +44,7 @@ struct GraphsDaysDataSet: ChartDataSetProtocol {
 
 extension GraphsDaysDataSet {
     struct GraphsDaysData {
+        let dayDate: Date
         let day: String
         let total: Price
     }

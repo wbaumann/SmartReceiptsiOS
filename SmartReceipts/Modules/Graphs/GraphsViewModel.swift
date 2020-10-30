@@ -142,7 +142,7 @@ class GraphsViewModel: GraphsViewModelProtocol {
             let price = PricesCollection(currencyCode: trip.defaultCurrency.code)
             let dayReceipts = receiptsInPeriod.filter { $0.date.dayString() == day }
             dayReceipts.forEach { price.addPrice($0.price()) }
-            return .init(day: day, total: price)
+            return .init(dayDate: dayReceipts.first!.date, day: day, total: price)
         }
         return GraphsDaysDataSet(data: data)
     }
@@ -178,7 +178,7 @@ class GraphsViewModel: GraphsViewModelProtocol {
             let price = PricesCollection(currencyCode: trip.defaultCurrency.code)
             let dayReceipts = receipts.filter { $0.date.dayString() == day }
             dayReceipts.forEach { price.addPrice($0.price()) }
-            return .init(day: day, total: price)
+            return .init(dayDate: dayReceipts.first!.date, day: day, total: price)
         }
         return GraphsDaysDataSet(data: data)
     }
