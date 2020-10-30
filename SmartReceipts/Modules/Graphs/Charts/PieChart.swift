@@ -36,7 +36,6 @@ class PieChart: PieChartView, ChartProtocol {
         let pieData = PieChartData(dataSet: chartDataSet)
         pieData.setValueFont(.systemFont(ofSize: 12, weight: .medium))
         pieData.setValueTextColor(.black)
-        data = pieData
-        
+        data = pieData.entryCount > 0 ? pieData : nil
     }
 }

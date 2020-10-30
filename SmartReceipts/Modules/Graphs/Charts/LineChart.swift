@@ -18,6 +18,9 @@ class LineChart: LineChartView, ChartProtocol {
     }
 
     private func configure() {
+        xAxis.spaceMin = 0.5
+        xAxis.spaceMax = 0.5
+        
         xAxis.drawAxisLineEnabled = false
         xAxis.drawGridLinesEnabled = false
         xAxis.drawLimitLinesBehindDataEnabled = false
@@ -28,6 +31,8 @@ class LineChart: LineChartView, ChartProtocol {
         rightAxis.drawAxisLineEnabled = false
         rightAxis.drawGridLinesEnabled = false
         rightAxis.drawLabelsEnabled = false
+        
+        xAxis.drawLabelsEnabled = false
         
         xAxis.labelPosition = .bottom
         
@@ -46,8 +51,8 @@ class LineChart: LineChartView, ChartProtocol {
         chartDataSet.lineWidth = 3
         
         chartDataSet.colors = ChartColorTemplates.material()
-        data = LineChartData(dataSet: chartDataSet)
-        
+        let chartData = LineChartData(dataSet: chartDataSet)
+        data = chartData.entryCount > 0 ? chartData : nil
         
     }
 }
