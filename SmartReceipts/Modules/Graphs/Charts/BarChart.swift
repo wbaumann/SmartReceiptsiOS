@@ -71,8 +71,8 @@ class BarChart: BarChartView, ChartProtocol {
         chartDataSet.valueFormatter = valueFormatter
         
         chartDataSet.colors = ChartColorTemplates.material()
-        data = BarChartData(dataSet: chartDataSet)
+        let chartData = BarChartData(dataSet: chartDataSet)
+        data = chartData.entryCount > 0 ? chartData : nil
     }
-    
 }
 
