@@ -1,3 +1,4 @@
 #import "GADConstants.h"
 
-NSString * const AD_UNIT_ID = @"Your unit here";
+NSString * const AD_UNIT_ID_BANNER = @"Your unit here";
+NSString * const AD_UNIT_ID_INTERSTITIAL = @"Your unit here";

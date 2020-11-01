@@ -90,6 +90,7 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
                 self?.presenter.close()
             }
             self?.remove(files: files)
+            self?.presenter.presentInterstitialAd()
         }
         presenter.present(vc: shareViewController, animated: true, isPopover: true, completion: nil)
     }
@@ -99,8 +100,9 @@ class GenerateReportShareService: NSObject, MFMailComposeViewControllerDelegate 
             Logger.error("Send email error: \(error)")
         }
         
-        controller.dismiss(animated: true) {
-            self.presenter.close()
+        controller.dismiss(animated: true) { [weak self] in
+            self?.presenter.close()
+            self?.presenter.presentInterstitialAd()
         }
     }
     

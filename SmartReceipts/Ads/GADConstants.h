@@ -8,4 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const AD_UNIT_ID;
+extern NSString * const AD_UNIT_ID_BANNER;
+extern NSString * const AD_UNIT_ID_INTERSTITIAL;

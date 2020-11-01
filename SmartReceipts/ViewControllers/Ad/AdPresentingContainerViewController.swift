@@ -33,7 +33,7 @@ class AdPresentingContainerViewController: UIViewController {
         adContainerHeight.constant = 0
 
         bannerView?.rootViewController = self
-        bannerView?.adUnitID = AD_UNIT_ID
+        bannerView?.adUnitID = AD_UNIT_ID_BANNER
         bannerView?.delegate = self
         bannerView?.tintColor = AppTheme.accentColor
         
