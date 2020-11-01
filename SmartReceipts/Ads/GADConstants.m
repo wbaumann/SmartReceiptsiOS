@@ -8,4 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-NSString * const AD_UNIT_ID = @"PLACEHOLDER";
+NSString * const AD_UNIT_ID_BANNER = @"PLACEHOLDER";
+NSString * const AD_UNIT_ID_INTERSTITIAL = @"PLACEHOLDER";
