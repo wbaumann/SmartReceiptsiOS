@@ -8,8 +8,23 @@
 
 import Foundation
 import Viperit
+import GoogleMobileAds
 
 class GenerateReportRouter: Router {
+    private var interstitial: GADInterstitial?
+    private var inerstitialDelegate: InerstitialDelegate?
+    
+    func prepareAds() {
+        guard !PurchaseService.hasValidSubscriptionValue else { return }
+        let updateBlock = { [weak self] in
+            self?.interstitial = GADInterstitial(adUnitID: AD_UNIT_ID_INTERSTITIAL)
+            self?.interstitial?.delegate = self?.inerstitialDelegate
+            self?.interstitial?.load(.init())
+        }
+        inerstitialDelegate = .init(updateClosure: updateBlock)
+        updateBlock()
+    }
+    
     func close() {
         _view.viewController.dismiss(animated: true, completion: nil)
     }
@@ -48,11 +63,28 @@ class GenerateReportRouter: Router {
         }
         _view.viewController.present(vc, animated: animated, completion: completion)
     }
+    
+    func openInterstitialAd() {
+        guard !PurchaseService.hasValidSubscriptionValue else { return }
+        interstitial?.present(fromRootViewController: _view.viewController)
+    }
 }
 
 // MARK: - VIPER COMPONENTS API (Auto-generated code)
 private extension GenerateReportRouter {
     var presenter: GenerateReportPresenter {
         return _presenter as! GenerateReportPresenter
+    }
+}
+
+private class InerstitialDelegate: NSObject, GADInterstitialDelegate {
+    private var updateClosure: VoidBlock
+    
+    init(updateClosure: @escaping VoidBlock) {
+        self.updateClosure = updateClosure
+    }
+    
+    func interstitialWillDismissScreen(_ ad: GADInterstitial) {
+        updateClosure()
     }
 }

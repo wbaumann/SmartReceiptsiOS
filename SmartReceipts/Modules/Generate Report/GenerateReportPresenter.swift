@@ -14,6 +14,7 @@ class GenerateReportPresenter: Presenter {
     
     override func viewHasLoaded() {
         interactor.trackConfigureReportEvent()
+        router.prepareAds()
     }
     
     override func setupView(data: Any) {
@@ -52,6 +53,10 @@ class GenerateReportPresenter: Presenter {
     
     func presentEnableDistances() {
         router.openSettingsOnDisatnce()
+    }
+    
+    func presentInterstitialAd() {
+        router.openInterstitialAd()
     }
 }
 

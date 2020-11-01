@@ -66,13 +66,13 @@ class GenerateReportInteractor: Interactor {
             return
         }
         
-        delayedExecution(DEFAULT_ANIMATION_DURATION) {
-            self.generator!.generate(onSuccessHandler: { (files) in
+        delayedExecution(DEFAULT_ANIMATION_DURATION) { [weak self] in
+            self?.generator!.generate(onSuccessHandler: { [weak self] (files) in
                 TooltipService.shared.markReportGenerated()
-                self.presenter.hideHudFromView()
+                self?.presenter.hideHudFromView()
                 
                 if !MFMailComposeViewController.canSendMail() {
-                    self.shareService?.shareFiles(files)
+                    self?.shareService?.shareFiles(files)
                     Logger.debug("Mail app not configured on this device")
                     return
                 }
@@ -80,12 +80,12 @@ class GenerateReportInteractor: Interactor {
                 var actions = [UIAlertAction]()
                 let message = LocalizedString("generate_report_share_method_sheet_title")
                 
-                let emailAction = UIAlertAction(title: LocalizedString("generate_report_share_method_email"), style: .default) { _ in
-                    self.shareService?.emailFiles(files)
+                let emailAction = UIAlertAction(title: LocalizedString("generate_report_share_method_email"), style: .default) { [weak self] _ in
+                    self?.shareService?.emailFiles(files)
                 }
                 
-                let otherAction = UIAlertAction(title: LocalizedString("generate_report_share_method_other"), style: .default) { _ in
-                    self.shareService?.shareFiles(files)
+                let otherAction = UIAlertAction(title: LocalizedString("generate_report_share_method_other"), style: .default) { [weak self] _ in
+                    self?.shareService?.shareFiles(files)
                 }
                 
                 actions.append(emailAction)
@@ -94,10 +94,10 @@ class GenerateReportInteractor: Interactor {
                     for file in files { FileManager.deleteIfExists(filepath: file) }
                 }))
                 
-                self.presenter.presentSheet(title: nil, message: message, actions: actions)
+                self?.presenter.presentSheet(title: nil, message: message, actions: actions)
                 
             }, onErrorHandler: { (error) in
-                self.presenter.hideHudFromView()
+                self?.presenter.hideHudFromView()
                 
                 Logger.warning("ReportAssetsGenerator.generate() onError: \(error)")
                 
@@ -117,7 +117,7 @@ class GenerateReportInteractor: Interactor {
                     }
                     
                     let openSettingsAction = UIAlertAction(title: LocalizedString("report_pdf_error_go_to_settings"), style: .default, handler: { _ in
-                        self.presenter.presentOutputSettings()
+                        self?.presenter.presentOutputSettings()
                     })
                     actions.append(openSettingsAction)
                     
@@ -131,7 +131,7 @@ class GenerateReportInteractor: Interactor {
                     message = LocalizedString("DIALOG_EMAIL_CHECKBOX_ZIP_WITH_METADATA")
                 }
                 actions.append(UIAlertAction(title: LocalizedString("generic_button_title_ok"), style: .default, handler: nil))
-                self.presenter.presentSheet(title: title, message: message, actions: actions)
+                self?.presenter.presentSheet(title: title, message: message, actions: actions)
             })
         }
     }
