@@ -99,6 +99,7 @@ class GraphsViewModel: GraphsViewModelProtocol {
         case .paymentMethods: dataSet = paymentMethodDataSet(period: period)
         }
         dataSetSubject.onNext(dataSet)
+        AnalyticsManager.sharedManager.record(event: .graphsSelection(period: "\(period)", model: "\(model)"))
     }
     
     var datePeriod: DatePeriod {

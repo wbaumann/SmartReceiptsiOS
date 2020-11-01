@@ -21,8 +21,9 @@ extension Event {
         case Informational = "Informational"
         case OnError = "OnError"
         case OCR = "OCR"
+        case Graphs = "Graphs"
         
-        static let allValues = [Purchases, Navigation, Reports, Receipts, Distance, Generate, Ratings, Informational, OnError, OCR]
+        static let allValues = [Purchases, Navigation, Reports, Receipts, Distance, Generate, Ratings, Informational, OnError, OCR, Graphs]
     }
 }
 
@@ -145,6 +146,11 @@ public extension Event {
         static let RequestSucceeded = Event(category: Category.OCR, name: "OcrRequestSucceeded")
         static let RequestFailed = Event(category: Category.OCR, name: "OcrRequestFailed")
     }
+    
+    struct Graphs {
+        static let GraphsShown = Event(category: .Graphs, name: "GraphsShown")
+        static let GraphsShare = Event(category: .Graphs, name: "GraphsShare")
+    }
 }
 
 
@@ -206,6 +212,11 @@ public extension Event {
     class func ocrPushMessageTimeOut() -> Event {return Event.OCR.PushMessageTimeOut}
     class func ocrRequestSucceeded() -> Event {return Event.OCR.RequestSucceeded}
     class func ocrRequestFailed() -> Event {return Event.OCR.RequestFailed}
+    
+    // MARK: - Event.Grpahs
+    class func graphsSelection(period: String, model: String) -> Event {
+        return .init(category: .Graphs, name: "Graphs.Selection \(period)-\(model)")
+    }
     
 }
 

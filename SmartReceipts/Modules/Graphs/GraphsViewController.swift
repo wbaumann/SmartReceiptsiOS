@@ -57,6 +57,8 @@ class GraphsViewController: UIViewController, Storyboardable {
         modelButton.layer.cornerRadius = modelButton.bounds.height/2
         graphsTitle.text = viewModel.trip.name
         bind()
+        
+        AnalyticsManager.sharedManager.record(event: Event.Graphs.GraphsShown)
     }
     
     override func viewDidLayoutSubviews() {
@@ -101,6 +103,8 @@ class GraphsViewController: UIViewController, Storyboardable {
     }
     
     private func shareGraph() {
+        AnalyticsManager.sharedManager.record(event: Event.Graphs.GraphsShare)
+        
         guard let activeChart = activeChart else { return }
         let color = activeChart.backgroundColor
         activeChart.backgroundColor = .white
