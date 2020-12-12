@@ -3741,6 +3741,21 @@ import Viperit
         
     }
     
+    
+    
+     override func presentInterstitialAd()  {
+        
+    return cuckoo_manager.call("presentInterstitialAd()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.presentInterstitialAd()
+                ,
+            defaultCall: __defaultImplStub!.presentInterstitialAd())
+        
+    }
+    
 
 	 struct __StubbingProxy_GenerateReportPresenter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
@@ -3798,6 +3813,11 @@ import Viperit
 	    func presentEnableDistances() -> Cuckoo.ClassStubNoReturnFunction<()> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportPresenter.self, method: "presentEnableDistances()", parameterMatchers: matchers))
+	    }
+	    
+	    func presentInterstitialAd() -> Cuckoo.ClassStubNoReturnFunction<()> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportPresenter.self, method: "presentInterstitialAd()", parameterMatchers: matchers))
 	    }
 	    
 	}
@@ -3876,6 +3896,12 @@ import Viperit
 	        return cuckoo_manager.verify("presentEnableDistances()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
+	    @discardableResult
+	    func presentInterstitialAd() -> Cuckoo.__DoNotUse<(), Void> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return cuckoo_manager.verify("presentInterstitialAd()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
 	}
 }
 
@@ -3925,6 +3951,10 @@ import Viperit
         return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
+     override func presentInterstitialAd()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
+    
 }
 
 
@@ -3941,6 +3971,7 @@ import Cuckoo
 @testable import SmartReceipts
 
 import Foundation
+import GoogleMobileAds
 import Viperit
 
 
@@ -3966,6 +3997,21 @@ import Viperit
 
     
 
+    
+    
+    
+     override func prepareAds()  {
+        
+    return cuckoo_manager.call("prepareAds()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.prepareAds()
+                ,
+            defaultCall: __defaultImplStub!.prepareAds())
+        
+    }
     
     
     
@@ -4057,6 +4103,21 @@ import Viperit
         
     }
     
+    
+    
+     override func openInterstitialAd()  {
+        
+    return cuckoo_manager.call("openInterstitialAd()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.openInterstitialAd()
+                ,
+            defaultCall: __defaultImplStub!.openInterstitialAd())
+        
+    }
+    
 
 	 struct __StubbingProxy_GenerateReportRouter: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
@@ -4065,6 +4126,11 @@ import Viperit
 	        self.cuckoo_manager = manager
 	    }
 	    
+	    
+	    func prepareAds() -> Cuckoo.ClassStubNoReturnFunction<()> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportRouter.self, method: "prepareAds()", parameterMatchers: matchers))
+	    }
 	    
 	    func close() -> Cuckoo.ClassStubNoReturnFunction<()> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
@@ -4096,6 +4162,11 @@ import Viperit
 	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportRouter.self, method: "open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)", parameterMatchers: matchers))
 	    }
 	    
+	    func openInterstitialAd() -> Cuckoo.ClassStubNoReturnFunction<()> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return .init(stub: cuckoo_manager.createStub(for: MockGenerateReportRouter.self, method: "openInterstitialAd()", parameterMatchers: matchers))
+	    }
+	    
 	}
 
 	 struct __VerificationProxy_GenerateReportRouter: Cuckoo.VerificationProxy {
@@ -4111,6 +4182,12 @@ import Viperit
 	
 	    
 	
+	    
+	    @discardableResult
+	    func prepareAds() -> Cuckoo.__DoNotUse<(), Void> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return cuckoo_manager.verify("prepareAds()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
 	    
 	    @discardableResult
 	    func close() -> Cuckoo.__DoNotUse<(), Void> {
@@ -4148,6 +4225,12 @@ import Viperit
 	        return cuckoo_manager.verify("open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
+	    @discardableResult
+	    func openInterstitialAd() -> Cuckoo.__DoNotUse<(), Void> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return cuckoo_manager.verify("openInterstitialAd()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
 	}
 }
 
@@ -4156,6 +4239,10 @@ import Viperit
 
     
 
+    
+     override func prepareAds()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
     
      override func close()   {
         return DefaultValueRegistry.defaultValue(for: (Void).self)
@@ -4178,6 +4265,10 @@ import Viperit
     }
     
      override func open(vc: UIViewController, animated: Bool, isPopover: Bool, completion: (() -> Void)?)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
+    
+     override func openInterstitialAd()   {
         return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     

@@ -54,6 +54,10 @@
     [insert addParam:CategoriesTable.COLUMN_NAME value:category.name];
     NSString *uuid = category.uuid ? category.uuid : [[NSUUID UUID] UUIDString];
     [insert addParam:CommonColumns.ENTITY_UUID value:uuid];
+    
+    if (category.objectId != 0) {
+        [insert addParam:CategoriesTable.COLUMN_ID value:@(category.objectId)];
+    }
     if (category.customOrderId >= 0) {
         [insert addParam:CategoriesTable.COLUMN_CUSTOM_ORDER_ID value:@(category.customOrderId)];
     }

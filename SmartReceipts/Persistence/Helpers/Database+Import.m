@@ -37,6 +37,9 @@
 
 @implementation Database (Import)
 
+static NSInteger paymentMethodOffset;
+static NSInteger categoryOffset;
+
 - (BOOL)importDataFromBackup:(NSString *)filePath overwrite:(BOOL)overwrite {
     if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         return NO;
@@ -52,19 +55,21 @@
     [self setDisableFilesManager:YES];
     [self setDisableNotifications:YES];
     
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"objectId" ascending:YES];
+    categoryOffset = [Database.sharedInstance.listAllCategories sortedArrayUsingDescriptors:@[sortDescriptor]].lastObject.objectId + 1;
+    
+    if (overwrite) {
+        for (WBTrip *trip in Database.sharedInstance.allTrips) {
+            [Database.sharedInstance deleteTrip:trip];
+        }
+    }
+    
     [self importCategoriesFrom:imported overwrite:overwrite];
     
     // Note: these 3 always overwrite to avoid data inconsistencies
     [self importCSVColumnsFrom:imported];
     [self importPDFColumnsFrom:imported];
     [self importPaymentMethodsFrom:imported];
-    
-    if (overwrite) {
-        NSArray *localTrips = [Database.sharedInstance allTrips];
-        for (WBTrip *trip in localTrips) {
-            [Database.sharedInstance deleteTrip:trip];
-        }
-    }
     
     NSArray *importedTrips = [imported allTrips];
     for (WBTrip *trip in importedTrips) {
@@ -150,6 +155,7 @@
         }
         
         existing = @[];
+        [existingIds removeAllObjects];
     }
     
     NSArray *imported = [database listAllCategories];
