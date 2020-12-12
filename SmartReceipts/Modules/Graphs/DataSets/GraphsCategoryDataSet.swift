@@ -16,7 +16,7 @@ struct GraphsCategoryDataSet: ChartDataSetProtocol {
     let chartType: ChartType = .pieChart
     
     var title: String {
-        return "Categories"
+        return LocalizedString("category_name_field")
     }
     
     init(data: [GraphsCategoryData]) {

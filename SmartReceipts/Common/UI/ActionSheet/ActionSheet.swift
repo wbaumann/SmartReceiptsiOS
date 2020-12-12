@@ -60,6 +60,7 @@ class ActionSheetViewController: UIViewController, Storyboardable, Containerable
         
         separator.isHidden = !closable
         closeButton.isHidden = !closable
+        closeButton.set(title: LocalizedString("DIALOG_CANCEL"))
         
         Observable.merge(closeButton.rx.tap.asObservable(), tapGesture.rx.event.map({ _ in }))
             .filter { [weak self] in self?.closable == true }

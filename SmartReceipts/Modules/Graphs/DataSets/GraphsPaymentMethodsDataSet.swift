@@ -16,7 +16,7 @@ struct GraphsPaymentMethodDataSet: ChartDataSetProtocol {
     let chartType: ChartType = .barChart
     
     var title: String {
-        return "Payment Methods"
+        return LocalizedString("column_item_payment_method")
     }
     
     init(data: [GraphsPaymentMethodData], maxCount: Int = 5) {
